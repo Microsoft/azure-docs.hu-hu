@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554042"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310920"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -266,7 +266,7 @@ A kezdéshez itt láthatók az ajánlott beállítások a táblázatban a függv
 - Cél: válassza ki a Log Analytics erőforrást
 - Kritériumok 
    - Jel neve: egyéni naplók keresése
-   - Keresési lekérdezés: `_LogOperation | where Operation == "Data Collection Status" | where Detail contains "OverQuota"`
+   - Keresési lekérdezés: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
    - A következő alapján: az eredmények száma
    - Feltétel: nagyobb, mint
    - Küszöbérték: 0

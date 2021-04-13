@@ -12,23 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 70b3ed53747deb1f3bdc90de8fe71f42f8f7ce13
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580485"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310019"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz (előzetes verzió)
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Ez a cikk egy IoT Edge átjáró és egy alsóbb rétegbeli IoT Edge-eszköz közötti megbízható kapcsolat létesítéséhez nyújt útmutatást.
-
->[!NOTE]
->Ehhez a szolgáltatáshoz a IoT Edge 1,2-es verziója szükséges, amely nyilvános előzetes verzióban, Linux-tárolókat futtat.
->
->Ez a cikk a IoT Edge 1,2-es verziójának legújabb előzetes kiadását mutatja be. Győződjön meg arról, hogy az eszközön a [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) vagy újabb verzió fut. A legújabb előzetes verziónak az eszközön való beszerzéséhez a következő témakörben talál további információt: [Install Azure IoT Edge for Linux (1,2-es verzió)](how-to-install-iot-edge.md) vagy [Update IoT Edge a 1,2-es verzióra](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 Egy átjáró-forgatókönyvben egy IoT Edge eszköz lehet átjáró és alsóbb rétegbeli eszköz is. Több IoT Edge átjáró is létrehozható az eszközök hierarchiájának létrehozásához. Az alsóbb rétegbeli (vagy gyermek) eszközök az átjáró (vagy a szülő) eszközön keresztül hitelesíthetők, és küldhetők vagy fogadhatnak üzeneteket.
 
@@ -162,13 +157,13 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
 
 1. Keresse meg a **megbízhatósági csomag tanúsítványa** szakaszt. Adja meg a megjegyzését, és frissítse a `trust_bundle_cert` paramétert a fájl URI-ja alapján a legfelső szintű hitelesítésszolgáltatói tanúsítványra az eszközön.
 
-1. Habár ez a funkció nyilvános előzetes verzióban érhető el, a IoT Edge eszközt úgy kell konfigurálnia, hogy az indításkor a IoT Edge-ügynök nyilvános előzetes verzióját használja.
+1. Ellenőrizze, hogy a IoT Edge eszköz az indításkor a IoT Edge ügynök megfelelő verzióját fogja-e használni.
 
-   Keresse meg az **alapértelmezett peremhálózati ügynök** szakaszt, és frissítse a rendszerkép értékét a nyilvános előzetes rendszerképre:
+   Keresse meg az **alapértelmezett peremhálózati ügynök** szakaszt, és ellenőrizze, hogy a rendszerkép értéke IoT Edge 1,2-es verzió-e. Ha nem, frissítse a következőket:
 
    ```toml
    [agent.config]
-   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
 1. Keresse meg a **PEREMHÁLÓZATI hitelesítésszolgáltatói tanúsítvány** szakaszt a konfigurációs fájlban. Az ebben a szakaszban szereplő sorok megjegyzésének visszaadása és a IoT Edge eszközön található tanúsítványhoz és kulcshoz tartozó fájlok URI-elérési útjának megadása.
@@ -200,21 +195,6 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
 
    >[!TIP]
    >A IoT Edge-ellenőrzési eszköz egy tárolót használ a diagnosztika egyes ellenőrzésének elvégzéséhez. Ha az eszközt az alsóbb rétegbeli IoT Edge eszközökön szeretné használni, győződjön meg arról, hogy hozzáférnek-e az eszközhöz `mcr.microsoft.com/azureiotedge-diagnostics:latest` , vagy hogy a tároló képe a saját tároló beállításjegyzékében van-e.
-
-## <a name="configure-runtime-modules-for-public-preview"></a>Futásidejű modulok konfigurálása nyilvános előzetes verzióhoz
-
-Habár ez a funkció nyilvános előzetes verzióban érhető el, konfigurálnia kell a IoT Edge eszközt az IoT Edge Runtime-modulok nyilvános előzetes verziójára. Az előző szakasz a edgeAgent konfigurálásának lépéseit ismerteti indításkor. A futásidejű modulokat is konfigurálnia kell az eszköz telepítéséhez.
-
-1. Konfigurálja a edgeHub modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
-
-1. Konfigurálja az alábbi környezeti változókat a edgeHub modulhoz:
-
-   | Name | Érték |
-   | - | - |
-   | `experimentalFeatures__enabled` | `true` |
-   | `experimentalFeatures__nestedEdgeEnabled` | `true` |
-
-1. Konfigurálja a edgeAgent modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Hálózati elkülönítésű alsóbb szintű eszközök
 
@@ -250,6 +230,8 @@ Az alsóbb rétegbeli átjáró-eszközök esetében a hálózati operátoroknak
 Az átjáró-hierarchia legfelső rétegében lévő IoT Edge eszköz olyan szükséges modulokkal rendelkezik, amelyeket az eszközön esetlegesen futtatott munkaterhelés-modulok mellett telepíteni kell rá.
 
 Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakoribb átjáró-forgatókönyvek kezeléséhez. Ebből a cikkből megtudhatja, hogyan állíthatja be a modulokat egy alapszintű konfigurációban. Részletesebb információkat és példákat a következő témakörben talál: [az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md) .
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
 1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
@@ -337,6 +319,109 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az utolsó lépéshez való ugráshoz.
 1. Válassza a **Létrehozás** lehetőséget az eszközön való üzembe helyezéshez.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. A [Azure Cloud Shell](https://shell.azure.com/)hozzon létre egy üzembe helyezési JSON-fájlt. Például:
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "The URL for the container registry you want this registry module to map to. For example, https://myregistry.azurecr"
+                               },
+                               "REGISTRY_PROXY_USERNAME": {
+                                   "value": "Username to authenticate to the container registry."
+                               },
+                               "REGISTRY_PROXY_PASSWORD": {
+                                   "value": "Password to authenticate to the container registry."
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy:1.0",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"443/tcp\": [{\"HostPort\":\"443\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "443"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25"
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {},
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Ez a telepítési fájl konfigurálja az API-proxy modult az 443-es port figyelésére. A port kötése ütközések elkerülése érdekében a fájl úgy konfigurálja a edgeHub modult, hogy ne hallgassa meg a 443-es portot. Ehelyett az API-proxy modul a 443-es porton továbbítja a edgeHub forgalmat.
+
+1. A következő parancs megadásával hozzon létre egy központi telepítést egy IoT Edge eszközön:
+
+   ```bash
+   az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
+   ```
+
+---
+
 ### <a name="deploy-modules-to-lower-layer-devices"></a>Modulok üzembe helyezése az alsóbb rétegbeli eszközökön
 
 Az átjáró-hierarchiák alsó rétegeiben lévő eszközök IoT Edge egy szükséges modullal kell rendelkezniük, amelyet az eszközön futtatott számítási feladatok modulján kívül is telepíteni kell.
@@ -347,7 +432,7 @@ Mielőtt megtárgyalja az átjáró-hierarchiákban IoT Edge eszközökhöz szü
 
 Ha az alsóbb rétegbeli eszközök nem tudnak csatlakozni a felhőhöz, de a modul rendszerképeit a szokásos módon szeretné lekérni, akkor az átjáró-hierarchia legfelső rétegbeli eszközét úgy kell konfigurálni, hogy kezelni tudja ezeket a kéréseket. A felső rétegbeli eszköznek a tároló-beállításjegyzékhez leképezett Docker **beállításjegyzék** -modult kell futtatnia. Ezután konfigurálja az API-proxy modult a tárolóra vonatkozó kérelmek átirányításához. Ezeket az adatokat a cikk korábbi szakaszaiban tárgyaljuk. Ebben a konfigurációban az alsó rétegbeli eszközök nem mutatnak a Felhőbeli tároló-jegyzékekre, hanem a felső rétegben futó beállításjegyzékre.
 
-A hívás helyett például az `mcr.microsoft.com/azureiotedge-api-proxy:latest` alsóbb rétegbeli eszközöknek kell meghívniuk `$upstream:443/azureiotedge-api-proxy:latest` .
+A hívás helyett például az `mcr.microsoft.com/azureiotedge-api-proxy:1.0` alsóbb rétegbeli eszközöknek kell meghívniuk `$upstream:443/azureiotedge-api-proxy:1.0` .
 
 A **$upstream** paraméter egy alsóbb rétegbeli eszköz szülőjének mutat, így a kérés az összes rétegen át fog haladni, amíg el nem éri a legfelső réteget, amely a beállításjegyzék-modulra irányuló proxy-környezet útválasztási kérelmeit átirányítja. Az `:443` ebben a példában szereplő portot le kell cserélni, amely a szülő eszközön lévő API-proxy modul által figyelt port.
 
@@ -369,7 +454,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
 Ha helyi tároló-beállításjegyzéket használ, vagy manuálisan adja meg a tároló lemezképeit az eszközön, ennek megfelelően frissítse a konfigurációs fájlt.

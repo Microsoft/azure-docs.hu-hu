@@ -15,6 +15,10 @@
     - name: Route Server-ARM-sablon konfigurálása
       href: quickstart-configure-template.md
   expanded: true
+- name: Példák
+  items:
+    - name: Resource Manager-sablonok
+      href: resource-manager-template-samples.md
 - name: Alapelvek
   items:
     - name: Útválasztási kiszolgáló – gyakori kérdések

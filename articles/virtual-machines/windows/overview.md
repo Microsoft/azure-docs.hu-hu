@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 799a7ea6d76df06cea9d3960f43fc78de9bdf5b6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 07562641ef866074dcf14cb01afd4d7ce071e467
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067792"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311005"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek az Azure-ban
 
@@ -50,7 +50,7 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot. |
-| REST API |Használja a [Helyek listázása](/rest/api/resources/subscriptions/subscriptions/listlocations) műveletet. |
+| REST API |Használja a [Helyek listázása](/rest/api/resources/subscriptions/listlocations) műveletet. |
 | Azure CLI |Használja az [az account list-locations](/cli/azure/account) műveletet. |
 
 ## <a name="availability"></a>Rendelkezésre állás

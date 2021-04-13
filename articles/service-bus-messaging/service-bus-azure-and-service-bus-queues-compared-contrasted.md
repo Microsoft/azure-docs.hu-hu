@@ -2,13 +2,13 @@
 title: Azure Storage-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 description: Elemzi az Azure által kínált két típusú várólista közötti különbségeket és hasonlóságokat.
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928307"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304358"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure: Storage Queues és Service Bus Queues által kínált két típusú várólista közötti különbségeket és hasonlóságokat elemzi. Ezen információk használatával tájékozott döntést hozhat arról, hogy melyik megoldás felel meg legjobban az igényeinek.
@@ -39,7 +39,7 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * A megoldásnak üzeneteket kell fogadnia a várólista lekérdezése nélkül. A Service Bus használatával a Service Bus által támogatott TCP-alapú protokollok használatával hosszú lekérdezési fogadási művelettel valósítható meg.
 * A megoldáshoz szükséges, hogy a várólista biztosítson egy garantált, első alkalommal kifelé irányuló (FIFO) rendezett kézbesítést.
 * A megoldásnak támogatnia kell az automatikus ismétlődő észlelést.
-* Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenetben található [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) -tulajdonsággal vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
+* Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenet **munkamenet-azonosító** tulajdonságával vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
 * A megoldás tranzakciós viselkedést és atomi kezelést igényel, ha több üzenetet küld vagy fogad egy várólistából.
 * Az alkalmazás a 64 KB-nál nagyobb méretű üzeneteket kezel, de valószínűleg nem fogja tudni megközelíteni az 256-KB korlátot.
 * A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információért tekintse át a következő cikkeket:
@@ -59,16 +59,16 @@ Ez a szakasz összehasonlítja a tárolási várólisták és a Service Bus vár
 
 | Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
-| Megrendelés jótállása |**Nem** <br/><br>További információ: az első megjegyzés a [További információk](#additional-information) szakaszban.</br> | **Igen – elsőként elsőként ki (FIFO)**<br/><br>(az [üzenet-munkamenetek](message-sessions.md)használatával) |
+| Megrendelés jótállása |**Nem** <br/><br>További információ: az első megjegyzés a [További információk](#additional-information) szakaszban.</br> | **Igen – elsőként elsőként ki (FIFO)**<br/><br>(üzenet- [munkamenetek](message-sessions.md)használatával) |
 | Kézbesítési garancia |**Legalább egyszer** |**Legalább egyszeri** (PeekLock fogadási mód használata). Ez az alapértelmezett érték) <br/><br/>**Legfeljebb egyszeri** (ReceiveAndDelete fogadási mód használata) <br/> <br/> További információ a különböző [fogadási módokról](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Atomi működés támogatása |**Nem** |**Igen**<br/><br/> |
-| Fogadások viselkedése |**Nem blokkoló**<br/><br/>(azonnal befejeződik, ha nem található új üzenet) |**Blokkolás időtúllépéssel vagy anélkül**<br/><br/>(hosszú lekérdezéseket, vagy az ["Comet Technique"](https://go.microsoft.com/fwlink/?LinkId=613759)-t kínál)<br/><br/>**Nem blokkoló**<br/><br/>(csak .NET felügyelt API-k használatával) |
-| Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>[QueueClient. OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) és [MessageSessionHandler. OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) munkamenetek .NET API. |
+| Fogadások viselkedése |**Nem blokkoló**<br/><br/>(azonnal befejeződik, ha nem található új üzenet) |**Blokkolás időtúllépéssel vagy anélkül**<br/><br/>(hosszú lekérdezéseket, vagy az ["Comet Technique"](https://go.microsoft.com/fwlink/?LinkId=613759)-t kínál)<br/><br/>**Nem blokkoló**<br/><br/>(csak .NET felügyelt API-k használata) |
+| Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>A .NET, a Java, a JavaScript és a go SDK-k leküldéses stílusú API-t biztosítanak. |
 | Fogadási mód |**Betekintés & bérletbe** |**Betekintés & zárolás**<br/><br/>**Fogadás & törlés** |
 | Kizárólagos hozzáférési mód |**Bérlet-alapú** |**Zárolási alapú** |
-| Bérlet/zárolás időtartama |**30 másodperc (alapértelmezett)**<br/><br/>**7 nap (maximum)** (a [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API használatával megújíthatja vagy felszabadíthatja az üzenetek bérletét). |**60 másodperc (alapértelmezett)**<br/><br/>Az [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API használatával megújíthat egy üzenet zárolását. |
-| Bérlet/zárolás pontossága |**Üzenet szintje**<br/><br/>Minden üzenet rendelkezhet eltérő időtúllépési értékkel, amelyet az üzenet feldolgozásakor szükség szerint frissíthet az [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API használatával. |**Várólista szintje**<br/><br/>(minden várólistához tartozik egy zárolási pontosság az összes üzenetre, de a zárolást a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API használatával újíthatja meg.) |
-| Kötegelt fogadás |**Igen**<br/><br/>(explicit módon megadhatja az üzenetek számát az üzenetek beolvasása során, legfeljebb 32 üzenet) |**Igen**<br/><br/>(a beolvasás előtti tulajdonság implicit engedélyezése vagy explicit módon a tranzakciók használatával) |
+| Bérlet/zárolás időtartama |**30 másodperc (alapértelmezett)**<br/><br/>**7 nap (maximum)** (a [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API használatával megújíthatja vagy felszabadíthatja az üzenetek bérletét). |**30 másodperc (alapértelmezett)**<br/><br/>Minden alkalommal megújíthatja az üzenet zárolását ugyanazon zárolási időtartamra, vagy használhatja az automatikus zárolás megújítása funkciót, ahol az ügyfél kezeli a zárolás megújítását. |
+| Bérlet/zárolás pontossága |**Üzenet szintje**<br/><br/>Minden üzenet rendelkezhet eltérő időtúllépési értékkel, amelyet az üzenet feldolgozásakor szükség szerint frissíthet az [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API használatával. |**Várólista szintje**<br/><br/>(minden várólistához tartozik egy zárolási pontosság, amely az összes üzenetére vonatkozik, de a zárolás megújítható az előző sorban leírtak szerint) |
+| Kötegelt fogadás |**Igen**<br/><br/>(explicit módon megadhatja az üzenetek számát az üzenetek beolvasása során, legfeljebb 32 üzenet) |**Igen**<br/><br/>(a beolvasás előtti tulajdonság vagy explicit módon a tranzakciók használatával) |
 | Kötegelt küldés |**Nem** |**Igen**<br/><br/>(tranzakciók vagy ügyféloldali kötegek használatával) |
 
 ### <a name="additional-information"></a>További információ
@@ -83,7 +83,7 @@ Ez a szakasz összehasonlítja a tárolási várólisták és a Service Bus vár
 * Service Bus a várólisták a helyi tranzakciók támogatását biztosítják egyetlen üzenetsor kontextusában.
 * A Service Bus által támogatott **fogadási és törlési** mód lehetővé teszi az üzenetkezelési műveletek számának (és a kapcsolódó költségek) csökkentését az Exchange-ben a lecsökkentett kézbesítési garancia érdekében.
 * A tárolási várólisták bérleteket biztosítanak az üzenetek bérletének meghosszabbítására. Ez a funkció lehetővé teszi, hogy a munkavégző folyamatok rövid bérleteket tartsanak fenn az üzenetekben. Tehát ha egy feldolgozó összeomlik, az üzenetet gyorsan fel lehet dolgozni egy másik feldolgozó. Emellett a feldolgozók kiterjeszthetik a bérletet egy üzenetben, ha az a jelenlegi címbérleti időpontnál hosszabb ideig fel kell dolgoznia.
-* A tárolási várólisták olyan láthatósági időtúllépést biztosítanak, amelyet egy üzenet enqueuing vagy dequeuing szolgáltatásával lehet beállítani. Emellett frissítheti a különböző címbérleti értékekkel rendelkező üzeneteket futásidőben, és frissítheti a különböző értékeket ugyanazon a várólistán lévő üzenetek között. Service Bus zárolási időtúllépések definiálva vannak a várólista metaadataiban. A zárolást azonban a [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) metódus meghívásával is megújíthatja.
+* A tárolási várólisták olyan láthatósági időtúllépést biztosítanak, amelyet egy üzenet enqueuing vagy dequeuing szolgáltatásával lehet beállítani. Emellett frissítheti a különböző címbérleti értékekkel rendelkező üzeneteket futásidőben, és frissítheti a különböző értékeket ugyanazon a várólistán lévő üzenetek között. Service Bus zárolási időtúllépések definiálva vannak a várólista metaadataiban. Ugyanakkor megújíthatja az üzenet zárolását az előre definiált zárolás időtartamára manuálisan, vagy használhatja az automatikus zárolás megújítása funkciót, amelyben az ügyfél kezeli a zárolás megújítását.
 * Service Bus várólistán a blokkoló fogadási művelet maximális időtúllépése 24 nap. Azonban a REST-alapú időtúllépések maximális értéke 55 másodperc.
 * A Service Bus által biztosított ügyféloldali kötegek lehetővé teszik, hogy egy üzenetsor-ügyfél több üzenetet is egy küldési műveletbe írjon. A kötegelt feldolgozás csak aszinkron küldési műveletekhez érhető el.
 * Az olyan funkciók, mint például a tárolási várólisták 200 – TB-os felső határa (többek között a fiókok virtualizálása) és a korlátlan várólisták ideális platformot biztosítanak az SaaS-szolgáltatók számára.
@@ -100,8 +100,8 @@ Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciál
 | Megmérgezhető üzenetek támogatása |**Igen** |**Igen** |
 | Helyben történő frissítés |**Igen** |**Igen** |
 | Kiszolgálóoldali tranzakciónapló |**Igen** |**Nem** |
-| Tárolási metrikák |**Igen**<br/><br/>A **perc mérőszámok** valós idejű mérőszámokat biztosítanak a rendelkezésre állás, a TPS, az API-hívások száma, a hibák száma és egyebek tekintetében. Ezek valós időben vannak összesítve, és néhány percen belül jelentést kapnak arról, hogy mi történt az éles környezetben. További információ: [a Storage Analytics mérőszámok ismertetése](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Igen**<br/><br/>(tömeges lekérdezések a [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)meghívásával) |
-| Állapotkezelés |**Nem** |**Igen**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. letiltva](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Tárolási metrikák |**Igen**<br/><br/>A **perc mérőszámok** valós idejű mérőszámokat biztosítanak a rendelkezésre állás, a TPS, az API-hívások száma, a hibák száma és egyebek tekintetében. Ezek valós időben vannak összesítve, és néhány percen belül jelentést kapnak arról, hogy mi történt az éles környezetben. További információ: [a Storage Analytics mérőszámok ismertetése](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Igen**<br/><br/>Az Azure Service Bus által támogatott metrikákkal kapcsolatos információkért lásd: [üzenet metrikái](service-bus-metrics-azure-monitor.md#message-metrics). |
+| Állapotkezelés |**Nem** |**Igen** (aktív, letiltva, SendDisabled, ReceiveDisabled. Ezekről az állapotokról a [várólista állapota](entity-suspend.md#queue-status)című témakörben talál további információt. |
 | Üzenet-továbbítás |**Nem** |**Igen** |
 | Várólista-törlési függvény |**Igen** |**Nem** |
 | Üzenetek csoportjai |**Nem** |**Igen**<br/><br/>(üzenetküldési munkamenetek használatával) |
@@ -113,14 +113,14 @@ Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciál
 ### <a name="additional-information"></a>További információ
 * Mindkét üzenetsor-kezelő technológia lehetővé teszi, hogy egy későbbi időpontban ütemezhető legyen az üzenet kézbesítése.
 * A várólista-továbbítás lehetővé teszi több ezer várólista számára, hogy az üzeneteiket egyetlen várólistára továbbítsák, amelyből a fogadó alkalmazás felhasználja az üzenetet. Ezt a mechanizmust használhatja a biztonság, a vezérlési folyamat és a tárolók elkülönítésére az egyes üzenetek közzétevői között.
-* A tárolási várólisták támogatást nyújtanak az üzenetek tartalmának frissítéséhez. Ezzel a funkcióval megtarthatja az állapotadatokat és a növekményes előrehaladási frissítéseket az üzenetbe, hogy az utolsó ismert ellenőrzőpontról feldolgozható legyen, és ne a semmiből kellene kezdenie. Service Bus várólistákkal ugyanezt a forgatókönyvet is engedélyezheti az üzenet-munkamenetek használatával. A munkamenetek lehetővé teszik az alkalmazások feldolgozási állapotának mentését és beolvasását (a [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) és a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)használatával).
+* A tárolási várólisták támogatást nyújtanak az üzenetek tartalmának frissítéséhez. Ezzel a funkcióval megtarthatja az állapotadatokat és a növekményes előrehaladási frissítéseket az üzenetbe, hogy az utolsó ismert ellenőrzőpontról feldolgozható legyen, és ne a semmiből kellene kezdenie. Service Bus várólistákkal ugyanezt a forgatókönyvet is engedélyezheti az üzenet-munkamenetek használatával. További információ: [üzenetküldési munkamenet állapota](message-sessions.md#message-session-state).
 * Service Bus várólisták támogatják a [Kézbesítetlen betűket](service-bus-dead-letter-queues.md). Hasznos lehet az alábbi feltételeknek megfelelő üzenetek elkülönítéséhez:
     - A fogadó alkalmazás nem tudja sikeresen feldolgozni az üzeneteket 
     - Az üzenetek a lejárt élettartam (TTL) tulajdonság miatt nem érhetik el a célját. A TTL érték azt határozza meg, hogy mennyi ideig marad az üzenet a várólistán. Service Bus esetén az üzenet egy $DeadLetterQueue nevű speciális várólistába kerül, amikor a TTL-időszak lejár.
 * Ha meg szeretné keresni a "méreg" üzeneteket a tárolási várólistákban, amikor egy üzenet dequeuing üzenetet küld, az alkalmazás megvizsgálja az üzenet [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) tulajdonságát. Ha a **DequeueCount** nagyobb, mint egy megadott küszöbérték, az alkalmazás áthelyezi az üzenetet egy alkalmazás által definiált "kézbesítetlen levél" várólistára.
 * A tárolási várólisták lehetővé teszik a várólistán végrehajtott összes tranzakció részletes naplójának, valamint az összesített mérőszámok beszerzését. Mindkét lehetőség hasznos lehet a hibakereséshez és annak megismeréséhez, hogy az alkalmazás hogyan használja a tárolási várólistákat. Emellett hasznosak lehetnek az alkalmazások teljesítményének finomhangolásához és a várólisták használatának költségeinek csökkentéséhez.
-* A Service Bus által támogatott üzenetküldési munkamenetek lehetővé teszik, hogy a logikai csoporthoz tartozó üzenetek egy fogadóhoz legyenek társítva. Az üzenetek és a hozzájuk tartozó fogadók közötti kapcsolathoz hasonló affinitást hoz létre. Ezt a speciális funkciót a Service Busban engedélyezheti egy üzenetben a [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) -azonosító tulajdonság beállításával. A fogadók ezt követően egy adott munkamenet-azonosítót és a megadott munkamenet-azonosítót megosztó üzeneteket fogadhatnak.
-* Service Bus várólisták ismétlődés-észlelési funkciója automatikusan eltávolítja a várólistára vagy témakörre küldött duplikált üzeneteket a [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) tulajdonság értéke alapján.
+* A Service Bus által támogatott [üzenetküldési munkamenetek](message-sessions.md) lehetővé teszik, hogy a logikai csoporthoz tartozó üzenetek egy fogadóhoz legyenek társítva. Az üzenetek és a hozzájuk tartozó fogadók közötti kapcsolathoz hasonló affinitást hoz létre. Ezt a speciális funkciót a Service Busban is engedélyezheti, ha a munkamenet-azonosító tulajdonságot egy üzenetre állítja be. A fogadók ezt követően egy adott munkamenet-azonosítót és a megadott munkamenet-azonosítót megosztó üzeneteket fogadhatnak.
+* Service Bus várólisták ismétlődés-észlelési funkciója automatikusan eltávolítja az üzenetsor vagy témakör számára küldött duplikált üzeneteket az üzenet azonosítója tulajdonság értéke alapján.
 
 ## <a name="capacity-and-quotas"></a>Kapacitás és kvóták
 Ez a szakasz a tárolási várólistákat és a Service Bus várólistákat a lehetséges [kapacitás és kvóták](service-bus-quotas.md) szempontjából hasonlítja össze.
@@ -172,14 +172,14 @@ Ez a szakasz a tárolási várólisták és Service Bus várólisták által tá
 | --- | --- | --- |
 | Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférés SAS-tokeneken keresztül. |SAS |
-| Identitás-szolgáltató összevonása |**Nem** |**Igen** |
+| Identitás-szolgáltató összevonása |**Igen** |**Igen** |
 
 ### <a name="additional-information"></a>További információ
 * A várólista-technológiák bármelyikére vonatkozó kérelmet hitelesíteni kell. A névtelen hozzáféréssel rendelkező nyilvános várólisták nem támogatottak. Az [sas](service-bus-sas.md)használatával ezt a forgatókönyvet csak írható sas, írásvédett sas vagy akár teljes hozzáférésű sas közzétételével kezelheti.
 * A tárolási várólisták által biztosított hitelesítési séma egy szimmetrikus kulcs használatát foglalja magában. Ez a kulcs egy kivonatoló alapú üzenethitelesítő kód (HMAC), amely az SHA-256 algoritmussal lett kiszámítva, és **Base64** -karakterláncként van kódolva. További információ a megfelelő protokollról: [Az Azure Storage-szolgáltatások hitelesítése](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). A Service Bus-várólisták a szimmetrikus kulcsokat használó hasonló modellt támogatják. További információ: [közös hozzáférésű aláírások hitelesítése Service Bussal](service-bus-sas.md).
 
 ## <a name="conclusion"></a>Összegzés
-A két technológia mélyebb megismerése révén tájékozott döntéseket hozhat, amelyekkel a várólista-technológiát és a-t használhatja. A tárolási várólisták vagy Service Bus-várólisták használatára vonatkozó döntés egyértelműen több tényezőtől függ. Ezek a tényezők nagy mértékben befolyásolhatják az alkalmazás és az architektúrájuk egyedi igényeit. 
+A két technológia mélyebb megismerése révén tájékozott döntéseket hozhat, amelyekkel a várólista-technológiát és a-t használhatja. A tárolási várólisták vagy Service Bus-várólisták használatára vonatkozó döntés egyértelműen számos tényezőtől függ. Ezek a tényezők nagy mértékben befolyásolhatják az alkalmazás és az architektúrájuk egyedi igényeit. 
 
 Érdemes lehet a tárolási várólistákat választani, például a következő esetekben:
 
@@ -187,7 +187,7 @@ A két technológia mélyebb megismerése révén tájékozott döntéseket hozh
 - Ha alapszintű kommunikációra és üzenetküldésre van szüksége a szolgáltatások között 
 - Az 80 GB-nál nagyobb méretű várólistákra van szükség
 
-Service Bus Queues számos speciális funkciót tartalmaz, például az alábbiakat. Így érdemes lehet választani, ha hibrid alkalmazást készít, vagy ha az alkalmazása más funkciókat is igényel.
+Service Bus Queues számos olyan speciális funkciót biztosít, mint például a következők. Így érdemes lehet választani, ha hibrid alkalmazást készít, vagy ha az alkalmazása más funkciókat is igényel.
 
 - [Munkamenetek](message-sessions.md)
 - [Tranzakciók](service-bus-transactions.md)

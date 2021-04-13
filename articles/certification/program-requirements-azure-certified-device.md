@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 948fe25da8468e887693fe8c9f75f675dfbea858
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969264"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308285"
 ---
 # <a name="azure-certified-device-requirements"></a>Az Azure Certified eszközre vonatkozó követelmények 
 (korábbi nevén IoT Hub)
@@ -40,7 +40,7 @@ Az Azure Certified eszköz minősítésének ígérete a következők:
 | **A következőkre vonatkozik**          | Levél eszköz/peremhálózati eszköz                                      |
 | **OS**                  | Független                                                     |
 | **Érvényesítés típusa**     | Automatizált                                                    |
-| **Érvényesítés**          | Az eszköznek minden telemetria-sémát el kell küldenie IoT Hubba. A Microsoft biztosítja a [portál munkafolyamatát](https://certify.azure.come) a tesztek végrehajtásához. Eszközről a felhőbe (kötelező): **1.** Ellenőrzi, hogy az eszköz küldhet-e üzenetet az AICS által felügyelt IoT Hub **2.** A felhasználónak meg kell adnia az üzenetek számát és gyakoriságát. **3.** A AICS ellenőrzi, hogy a telemetria fogadta-e a hub-példány |
+| **Érvényesítés**          | Az eszköznek minden telemetria-sémát el kell küldenie IoT Hubba. A Microsoft biztosítja a [portál munkafolyamatát](https://certify.azure.com/) a tesztek végrehajtásához. Eszközről a felhőbe (kötelező): **1.** Ellenőrzi, hogy az eszköz küldhet-e üzenetet az AICS által felügyelt IoT Hub **2.** A felhasználónak meg kell adnia az üzenetek számát és gyakoriságát. **3.** A AICS ellenőrzi, hogy a telemetria fogadta-e a hub-példány |
 | **Erőforrások**           | [Minősítési lépések](./overview.md) (az összes további erőforrással rendelkezik) |
 
 **Szükséges DPS: a teszt célja, hogy ellenőrizze az eszköz megvalósítását, és támogassa a IoT Hub Device Provisioning Service a három igazolási módszer egyikével.**

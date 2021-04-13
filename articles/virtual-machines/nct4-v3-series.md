@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e10177de1a40bf7ece7acde43a91686bd4c98e5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417807"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306449"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 sorozat 
 
@@ -23,12 +23,13 @@ Az NCasT4_v3 sorozatú virtuális gépeket [NVIDIA Tesla T4](https://www.nvidia.
 [ACU](acu.md): 230-260<br>
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Ultra-lemezek](disks-types.md#ultra-disk): támogatott[(További információ a](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) rendelkezésre állásról, a használatról és a teljesítményről) <br>
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
-NVIDIA NVLink Interconnect: támogatott<br>
+NVIDIA NVLink Interconnect: nem támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |

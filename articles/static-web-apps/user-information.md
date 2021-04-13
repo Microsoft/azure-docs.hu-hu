@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94844795"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313606"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Felhasználói információk elérése az Azure statikus Web Apps előzetes verziójában
 
@@ -25,12 +25,12 @@ Számos felhasználói felület nagy mértékben támaszkodik a felhasználói h
 
 Az ügyfél elsődleges adatobjektuma a felhasználó által azonosítható adatokat teszi elérhetővé az alkalmazás számára. Az ügyfél egyszerű objektumában a következő tulajdonságok szerepelnek:
 
-| Tulajdonság  | Leírás |
-|-----------|---------|
-| `identityProvider` | Az [identitás-szolgáltató](authentication-authorization.md)neve. |
-| `userId` | A felhasználó Azure-beli statikus Web Apps egyedi azonosítója. <ul><li>Az érték egyedi az alkalmazáson belüli alapon. Például ugyanaz a felhasználó más értéket ad vissza `userId` egy másik statikus Web Apps erőforráson.<li>Az érték továbbra is fennáll a felhasználó élettartama. Ha törli és hozzáadja ugyanazt a felhasználót az alkalmazáshoz, a `userId` rendszer létrehoz egy újat.</ul>|
-| `userDetails` | A felhasználó felhasználóneve vagy e-mail-címe. Egyes szolgáltatók a [felhasználó e-mail-címét](authentication-authorization.md)adják vissza, míg mások elküldik a [felhasználói leírót](authentication-authorization.md). |
-| `userRoles`     | A [felhasználó hozzárendelt szerepköreinek](authentication-authorization.md)tömbje. |
+| Tulajdonság           | Leírás                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identityProvider` | Az [identitás-szolgáltató](authentication-authorization.md)neve.                                                                                                                                                                                                                                                                                              |
+| `userId`           | A felhasználó Azure-beli statikus Web Apps egyedi azonosítója. <ul><li>Az érték egyedi az alkalmazáson belüli alapon. Például ugyanaz a felhasználó más értéket ad vissza `userId` egy másik statikus Web Apps erőforráson.<li>Az érték továbbra is fennáll a felhasználó élettartama. Ha törli és hozzáadja ugyanazt a felhasználót az alkalmazáshoz, a `userId` rendszer létrehoz egy újat.</ul> |
+| `userDetails`      | A felhasználó felhasználóneve vagy e-mail-címe. Egyes szolgáltatók a [felhasználó e-mail-címét](authentication-authorization.md)adják vissza, míg mások elküldik a [felhasználói leírót](authentication-authorization.md).                                                                                                                                                                    |
+| `userRoles`        | A [felhasználó hozzárendelt szerepköreinek](authentication-authorization.md)tömbje.                                                                                                                                                                                                                                                                                          |
 
 A következő példa egy példa ügyféloldali ügyfél-objektum:
 
@@ -39,7 +39,7 @@ A következő példa egy példa ügyféloldali ügyfél-objektum:
   "identityProvider": "facebook",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
   "userDetails": "user@example.com",
-  "userRoles": [ "anonymous", "authenticated" ]
+  "userRoles": ["anonymous", "authenticated"]
 }
 ```
 
@@ -53,7 +53,7 @@ Az<sup>1</sup> . [beolvasás](https://developer.mozilla.org/docs/Web/API/Fetch_A
 
 ```javascript
 async function getUserInfo() {
-  const response = await fetch("/.auth/me");
+  const response = await fetch('/.auth/me');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API-függvények
 
-A statikus Web Appsban az Azure Functions háttérrel elérhető API-függvények ugyanahhoz a felhasználói információhoz férhetnek hozzá, mint az ügyfélalkalmazás. Míg az API nem fogadja a felhasználó által azonosítható adatokat, nem hajtja végre a saját ellenőrzéseit, ha a felhasználó hitelesítése megtörtént, vagy megfelel egy szükséges szerepkörnek. A hozzáférés-vezérlési szabályok a fájlban vannak meghatározva [`routes.json`](routes.md) .
+A statikus Web Appsban az Azure Functions háttérrel elérhető API-függvények ugyanahhoz a felhasználói információhoz férhetnek hozzá, mint az ügyfélalkalmazás. Míg az API nem fogadja a felhasználó által azonosítható adatokat, nem hajtja végre a saját ellenőrzéseit, ha a felhasználó hitelesítése megtörtént, vagy megfelel egy szükséges szerepkörnek. A hozzáférés-vezérlési szabályok a fájlban vannak meghatározva [`staticwebapp.config.json`](routes.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -74,14 +74,14 @@ A következő példa azt mutatja be, hogyan lehet beolvasni és visszaadni a fel
 
 ```javascript
 module.exports = async function (context, req) {
-  const header = req.headers["x-ms-client-principal"];
-  const encoded = Buffer.from(header, "base64");
-  const decoded = encoded.toString("ascii");
+  const header = req.headers['x-ms-client-principal'];
+  const encoded = Buffer.from(header, 'base64');
+  const decoded = encoded.toString('ascii');
 
   context.res = {
     body: {
-      clientPrincipal: JSON.parse(decoded)
-    }
+      clientPrincipal: JSON.parse(decoded),
+    },
   };
 };
 ```
@@ -90,7 +90,7 @@ Feltételezve, hogy a fenti függvény neve `user` , a következő szintaxissal 
 
 ```javascript
 async function getUser() {
-  const response = await fetch("/api/user");
+  const response = await fetch('/api/user');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;

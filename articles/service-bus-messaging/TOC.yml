@@ -92,12 +92,20 @@
   items:
     - name: 'Queues, topics, and subscriptions'
       href: service-bus-queues-topics-subscriptions.md
+    - name: Üzenet-munkamenetek
+      href: message-sessions.md
     - name: Témakörszűrők és -műveletek
       href: topic-filters.md
     - name: Prémium szintű üzenettovábbítás
       href: service-bus-premium-messaging.md
     - name: Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - name: 'Üzenetek átvitele, zárolása és elszámolása'
+      href: message-transfers-locks-settlement.md
+    - name: Kézbesíthetetlen levelek sorai
+      href: service-bus-dead-letter-queues.md
+    - name: Üzenetszámlálók
+      href: message-counters.md
     - name: Teljesítmény optimalizálása
       href: service-bus-performance-improvements.md
     - name: Összevonás
@@ -162,16 +170,12 @@
           href: service-bus-filter-examples.md
         - name: Üzenetkezelés
           items:
-            - name: 'Queues, topics, and subscriptions'
-              href: service-bus-queues-topics-subscriptions.md
             - name: 'Java Message Service (JMS) 2,0 entitások'
               href: java-message-service-20-entities.md
             - name: Java Message Service (JMS) fejlesztői guide.md
               href: jms-developer-guide.md
             - name: 'Üzenetek, hasznos adatforgalom és szerializáció'
               href: service-bus-messages-payloads.md
-            - name: 'Üzenetek átvitele, zárolása és elszámolása'
-              href: message-transfers-locks-settlement.md
             - name: Üzenetek előkészítése és időbélyegek
               href: message-sequencing.md
             - name: Üzenetek lejárata (élettartama)
@@ -180,8 +184,6 @@
           href: service-bus-migrate-standard-premium.md
         - name: Particionált üzenetsorok és témakörök
           href: service-bus-partitioning.md
-        - name: Üzenet-munkamenetek
-          href: message-sessions.md
         - name: AMQP
           items:
             - name: Az AMQP áttekintése
@@ -198,14 +200,10 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Speciális funkciók
           items:
-            - name: Kézbesíthetetlen levelek sorai
-              href: service-bus-dead-letter-queues.md
             - name: Üzenetek előzetes betöltése
               href: service-bus-prefetch.md
             - name: Ismétlődő üzenetek észlelése
               href: duplicate-detection.md
-            - name: Üzenetszámlálók
-              href: message-counters.md
             - name: Üzenetek halasztása
               href: message-deferral.md
             - name: Üzenetek tallózása

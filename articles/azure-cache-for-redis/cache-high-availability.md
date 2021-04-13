@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203300"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308353"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Magas rendelkezésre állás az Azure cache Redis
 
@@ -21,9 +21,9 @@ A Redis készült Azure cache magas rendelkezésre állást biztosít a gyorsít
 
 | Beállítás | Leírás | Rendelkezésre állás | Standard | Prémium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Normál replikáció](#standard-replication)| Két csomópontos replikált konfiguráció egyetlen adatközpontban automatikus feladatátvételsel | 99.9% |✔|✔|-|
-| [Zónaredundancia](#zone-redundancy) | Több csomópontos replikált konfiguráció a AZs-ben automatikus feladatátvételsel | 99,95% (prémium szint), 99,99% (nagyvállalati szint) |-|Előnézet|Előnézet|
-| [Georeplikáció](#geo-replication) | Csatolt gyorsítótár-példányok két régióban, felhasználó által vezérelt feladatátvételsel | 99,999% (nagyvállalati szintű) |-|✔|Előnézet|
+| [Normál replikáció](#standard-replication)| Két csomópontos replikált konfiguráció egyetlen adatközpontban automatikus feladatátvételsel | 99,9% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |✔|✔|-|
+| [Zónaredundancia](#zone-redundancy) | Több csomópontos replikált konfiguráció a AZs-ben automatikus feladatátvételsel | Akár 99,99% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |-|Előnézet|Előnézet|
+| [Georeplikáció](#geo-replication) | Csatolt gyorsítótár-példányok két régióban, felhasználó által vezérelt feladatátvételsel | Akár 99,999% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |-|✔|Előnézet|
 
 ## <a name="standard-replication"></a>Normál replikáció
 

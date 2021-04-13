@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fdd62ebfe992398d33d2851a1aa1c66497296b5d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030987"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311192"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -59,7 +59,7 @@ A következő szabályok érvényesek:
 - A Log Analytics fürt Storage-fiókjai egyedi titkosítási kulcsot hoznak az összes Storage-fiókhoz, amely a "AEK" néven ismert.
 - A AEK a DEKs származtatása céljából használható, amelyek a lemezre írt adatblokkok titkosításához használt kulcsok.
 - Ha a kulcsot Key Vaultban konfigurálja, és a fürtben hivatkozik rá, az Azure Storage kérelmeket küld a Azure Key Vaultnak a AEK becsomagolásához és az adattitkosítási és visszafejtési műveletek elvégzéséhez.
-- A KEK soha nem hagyja el a Key Vault, és HSM-kulcsok esetén soha nem hagyja el a hardvert.
+- A KEK soha nem hagyja el a Key Vault.
 - Az Azure Storage a *fürterőforrás* -hez társított felügyelt identitást használja a Azure Key Vault hitelesítésére és elérésére Azure Active Directory használatával.
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kulcs létesítésének lépései
@@ -169,6 +169,9 @@ Válassza ki a kulcs aktuális verzióját Azure Key Vault a kulcs azonosítój�
 
 Frissítse a KeyVaultProperties a fürtben a kulcs azonosítójának részleteivel.
 
+>[!NOTE]
+>A Key rotációs szolgáltatás két módot támogat: az automatikus rotációt vagy az explicit verziójú verziófrissítést. a [kulcs elforgatásával](#key-rotation) határozhatja meg az Ön számára legmegfelelőbb módszert.
+
 A művelet aszinkron, és hosszabb időt is igénybe vehet.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
@@ -266,7 +269,9 @@ A fürt tárolója rendszeresen ellenőrzi a Key Vault a titkosítási kulcs kic
 
 ## <a name="key-rotation"></a>Kulcsrotálás
 
-Az ügyfél által felügyelt kulcs elforgatásához explicit frissítés szükséges a fürthöz a Azure Key Vault új kulcsának verziójával. [A fürt frissítése a kulcs azonosítójának részleteivel](#update-cluster-with-key-identifier-details). Ha nem frissíti az új kulcs verzióját a fürtben, a Log Analytics fürt tárterülete továbbra is az előző kulcsot használja a titkosításhoz. Ha letiltja vagy törli a régi kulcsot, mielőtt frissíti az új kulcsot a fürtben, a [visszavonási](#key-revocation) állapotba kerül.
+A kulcs forgatásának két módja van: 
+- Automatikus elforgatás – ha frissíti a fürtöt, ```"keyVaultProperties"``` de kihagyja a ```"keyVersion"``` tulajdonságot, vagy beállítja a értékre, ```""``` a Storage a legújabb verziókat fogja használni a autoamatically.
+- Kiadás explicit verziójának frissítése – ha frissíti a fürtöt, és a tulajdonságban megadja a kulcs verzióját ```"keyVersion"``` , minden új kulcs-verzióhoz explicit ```"keyVaultProperties"``` frissítés szükséges a fürtben: [a fürt frissítése a kulcs-azonosító részleteivel](#update-cluster-with-key-identifier-details). Ha Key Vault, de nem frissíti a fürtben, a Log Analytics fürt tárterülete továbbra is az előző kulcsot használja. Ha letiltja vagy törli a régi kulcsot, mielőtt frissíti az új kulcsot a fürtben, a [visszavonási](#key-revocation) állapotba kerül.
 
 Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 

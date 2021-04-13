@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259829"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305208"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -34,10 +34,10 @@ Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését 
 
 A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy egy felhasználó hogyan kíván dolgozni a Spark használatával. Ha egy készletet kezd használni, a rendszer létrehozza a Spark-munkamenetet, ha szükséges. A készlet azt szabályozza, hogy a munkamenet hány Spark-erőforrást fog használni, és hogy mennyi ideig tart a munkamenet az automatikus szüneteltetés előtt. Az adott munkamenet során használt Spark-erőforrásokért kell fizetnie, nem maga a készlet. Ily módon a Spark-készletek lehetővé teszik a Spark használatával végzett munkát anélkül, hogy aggódnia kellene a fürtök kezelésében. Ez hasonló a kiszolgáló nélküli SQL-készlet működéséhez.
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>NYC-taxi-adatelemzés a blob Storage-ban a Spark használatával
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>A New York-i taxi-adatelemzés a Spark-készlettel
 
 1. A szinapszis Studióban nyissa meg a **fejlesztés** hubot
-2. Hozzon létre egy új jegyzetfüzetet, amely az alapértelmezett nyelvet **PySpark (Python)** állítja be.
+2. Új jegyzetfüzet létrehozása
 3. Hozzon létre egy új kódlapot, és illessze be a következő kódot a cellába.
     ```py
     %%pyspark
@@ -49,22 +49,23 @@ A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy eg
 1. Ha csak a dataframe sémáját szeretné megtekinteni, futtasson egy cellát a következő kóddal:
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>A New York-i taxi-szolgáltatás betöltése a Spark nyctaxi-adatbázisba
 
-Az dataframe az elnevezett **adathalmazon** keresztül érhető el. Töltse be egy **nyctaxi** nevű Spark-adatbázisba.
+Az adatszolgáltatás a **DF** nevű dataframe keresztül érhető el. Töltse be egy **nyctaxi** nevű Spark-adatbázisba.
 
 1. Vegyen fel egy új kódlapot a jegyzetfüzetbe, majd írja be a következő kódot:
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
 
-1. Térjen vissza a jegyzetfüzetbe.
 1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. 
 
    ```py

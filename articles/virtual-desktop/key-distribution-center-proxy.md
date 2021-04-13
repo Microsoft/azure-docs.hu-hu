@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1e6d2f4fc0444be364ce3c07c14f6408b3f19fe
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446910"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307248"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos kulcsszolgáltató proxy konfigurálása (előzetes verzió)
 
@@ -29,7 +29,7 @@ A Windows rendszerű virtuális asztali szolgáltatásnak két összetevője van
 - A Windows rendszerű virtuális asztali ügyfél hírcsatornája, amely a felhasználók számára hozzáférést biztosít az elérhető asztali számítógépekhez vagy alkalmazásokhoz. Ez a hitelesítési folyamat Azure Active Directory történik, ami azt jelenti, hogy ez az összetevő nem a cikk középpontjában áll.
 - A felhasználó által a rendelkezésre álló erőforrások egyikét kiválasztó RDP-munkamenet. Ez az összetevő Kerberos-hitelesítést használ, és KDC-proxyt igényel a távoli felhasználók számára.
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a hírcsatornát a Windows rendszerű virtuális asztali ügyfélen a Azure Portalban. Ha szeretné megismerni a RD-átjáró szerepkör konfigurálásának módját, tekintse meg [a RD-átjáró szerepkör üzembe helyezése](/windows-server/remote/rd-gateway-role)című témakört.
+Ez a cikk bemutatja, hogyan konfigurálhatja a hírcsatornát a Windows rendszerű virtuális asztali ügyfélen a Azure Portalban. Ha szeretné megismerni a RD-átjáró szerepkör konfigurálásának módját, tekintse meg [a RD-átjáró szerepkör üzembe helyezése](/azure/virtual-desktop/rd-gateway-role)című témakört.
 
 ## <a name="requirements"></a>Követelmények
 

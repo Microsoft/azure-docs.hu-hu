@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 01/14/2020
+ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659698"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311753"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
@@ -99,7 +99,7 @@ A megfelelő adatátalakítással a neurális hálózat képes értelmezni a sz�
 
 A mélyreható tanulási módszereken alapuló szöveges elemzések nagy mennyiségű szöveges adat (például orvosi dokumentumok vagy költségek visszaigazolása) elemzését, a minták felismerését, valamint a szervezett és tömör információk létrehozását ismertetik.
 
-A vállalatok mély tanulással végeznek szöveges elemzést a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelése érdekében. Egy másik gyakori példa a biztosítási csalás: a szöveges elemzés gyakran a nagy mennyiségű dokumentum elemzésére szolgál, hogy felismerje a biztosítási követelések csalásának esélyét. 
+A vállalatok mély tanulással végeznek szöveges elemzést a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelése érdekében. Egy másik gyakori példa a biztosítási csalás: a szöveges elemzés gyakran a nagy mennyiségű dokumentum elemzésére szolgál, hogy felismerje a biztosítási követelések csalásának esélyét.
 
 ## <a name="artificial-neural-networks"></a>Mesterséges neurális hálózatok
 
@@ -111,15 +111,33 @@ A következő fejezetek a legnépszerűbb mesterséges neurális hálózati tipo
 
 A feedforward neurális hálózat a mesterséges neurális hálózat legegyszerűebb típusa. Egy feedforward-hálózatban az adatok csak egy irányba mozdulnak el a bemeneti rétegből a kimeneti rétegbe. A Feedforward neurális hálózatokat a rendszer a rejtett rétegek sorozatán keresztül alakítja át. Minden réteg idegsejtekből tevődik össze, és minden réteg teljesen csatlakoztatva van a rétegben lévő összes neuronokhoz. Az utolsó teljesen csatlakoztatott réteg (a kimeneti réteg) a generált előrejelzéseket jelöli.
 
-### <a name="recurrent-neural-network"></a>Visszatérő neurális hálózat
+### <a name="recurrent-neural-network-rnn"></a>Ismétlődő neurális hálózat (RNN)
 
 Az ismétlődő neurális hálózatok széles körben használják a mesterséges neurális hálózatot. Ezek a hálózatok elmentik egy réteg kimenetét, és visszaküldik a bemeneti rétegnek a réteg eredményének előrejelzéséhez. Az ismétlődő neurális hálózatok nagy tanulási képességekkel rendelkeznek. Ezek széles körben használatosak olyan összetett feladatokhoz, mint például az idősorozat-előrejelzés, a tanulási kézírás és a nyelv felismerése.
 
-### <a name="convolutional-neural-network"></a>Egyazon neurális hálózat
+### <a name="convolutional-neural-network-cnn"></a>Egyazon neurális hálózat (CNN)
 
 A többrendszeres neurális hálózat egy különösen hatékony mesterséges neurális hálózat, amely egyedi architektúrát mutat be. A rétegek három dimenzióban vannak rendezve: szélesség, magasság és mélység. Az egyik rétegben lévő neuronok nem a következő rétegben lévő összes neuronokhoz csatlakoznak, hanem csak a réteg neuronok kis régiójához. A végső kimenetet a rendszer a mélységi dimenzió mentén szervezett valószínűségi pontszámok egyetlen vektorára csökkenti. 
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
+
+### <a name="generative-adversarial-network-gan"></a>Generatív kontradiktórius hálózat (GAN)
+
+A generatív kontradiktórius hálózatok olyan generatív modellek, amelyek valósághű tartalmak, például képek létrehozására lettek kiképezve. Két hálózatból áll, mint a létrehozó és a nem megkülönböztető. Mindkét hálózat egyszerre van betanítva. A betanítás során a generátor véletlenszerű zajt használ az olyan új szintetikus adatmennyiségek létrehozásához, amelyek szorosan hasonlítanak a valós adatmennyiségre. A felhasználó a kimenetet bemenetként veszi át, és valós adatokat használ annak megállapítására, hogy a generált tartalom valós vagy szintetikus. Minden hálózat egymással verseng. A generátor megpróbál olyan szintetikus tartalmat generálni, amely nem különböztethető meg a valós tartalomtól, és a megkülönböztető kísérletet tesz a bemenetek helyes osztályozására valós vagy szintetikusként. A rendszer ezután a kimenetet használja mindkét hálózat súlyozásának frissítéséhez, hogy azok jobban tudják elérni a megfelelő célokat.
+
+A generatív kontradiktórius hálózatok segítségével olyan problémákat lehet megoldani, mint a képek fordítása és az életkor előrehaladtával.
+
+### <a name="transformers"></a>Transformers
+
+A transzformátorok olyan modell-architektúra, amely a sorozatokat, például a szöveg-vagy idősorozat-adatokkal kapcsolatos problémák megoldására alkalmas. [Kódoló és dekóder rétegekből](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)#Encoder)állnak. A kódoló bemenetet használ, és egy numerikus ábrázoláshoz rendeli, amely olyan adatokat tartalmaz, mint például a környezet. A dekóder adatokat használ a kódolóból egy kimenet, például lefordított szöveg létrehozásához. A különböző kódolókat és dekódereket tartalmazó más architektúrák által elvégezhető transzformátorok a figyelmet alrétegek. Fontos, hogy a bemenet adott részeire összpontosítson, a kontextus fontossága alapján a különböző bemenetekhez képest. Például egy újságcikk összefoglalásakor nem minden mondat vonatkozik a fő ötlet leírására. A cikk legfontosabb szavaira összpontosítva az összefoglalás egyetlen mondatban, a címsorban is elvégezhető.
+
+A transzformátorok olyan természetes nyelvi feldolgozási problémák megoldására használták, mint például a fordítás, a szöveg létrehozása, a kérdések megválaszolásának és a szöveg összegzése.
+
+A Transformers néhány jól ismert implementációja:
+
+- Kétirányú kódolók a transzformátorokból (BERT)
+- A generatív előre betanított transzformátor 2 (GPT-2)
+- A generatív előre betanított transzformátor 3 (GPT-3)
 
 ## <a name="next-steps"></a>Következő lépések
 

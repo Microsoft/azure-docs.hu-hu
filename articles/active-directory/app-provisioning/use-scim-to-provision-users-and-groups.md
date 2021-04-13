@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449449"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305599"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
@@ -62,7 +62,7 @@ A SCIM standard definiál egy sémát a felhasználók és csoportok kezeléséh
 Az **alapvető** felhasználói sémának csak három attribútumra van szüksége (az összes többi attribútum nem kötelező):
 
 - `id`, szolgáltató által definiált azonosító
-- `externalId`, ügyfél által definiált azonosító
+- `userName`, a felhasználó egyedi azonosítója (általában az Azure AD egyszerű felhasználónevéhez van leképezve)
 - `meta`, a szolgáltató által karbantartott *csak olvasható* metaadatok
 
 Az **alapszintű** felhasználói sémán kívül a scim standard a **vállalati** felhasználói bővítményt is definiálja egy olyan modellel, amely a felhasználói séma kiterjesztésére szolgál az alkalmazás igényeinek kielégítése érdekében. 

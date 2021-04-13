@@ -3,12 +3,12 @@ title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 31764b9adb1d0fc28a170fa2e6b5073812533083
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1c757895faee208590b638094591d246bf605d8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889841"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310614"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 

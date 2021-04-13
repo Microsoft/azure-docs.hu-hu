@@ -15,12 +15,12 @@ ms.date: 03/25/2021
 ms.author: mathoma
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 0b88884576a47db871c78b874104d4973ee9ba9a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84f2f4f679de80cd9b5fc986d40e084bae8a4cad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572383"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313759"
 ---
 # <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>Ellenőrzőlista: az Azure-beli virtuális gépeken való SQL Server teljesítményének bevált eljárásai
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Az Azure Virtual Machines SQL Server futtatásakor továbbra is ugyanazokat az a
 
 Az alábbiakban egy gyors ellenőrzőlista található a virtuálisgép-méretezéssel kapcsolatos ajánlott eljárások a SQL Server Azure-beli virtuális gépen való futtatásához: 
 
-- Használjon 4 vagy több vCPU rendelkező virtuálisgép-méretet, például a [Standard_M8-4ms](/../../virtual-machines/m-series), a [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)vagy a [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) vagy magasabbat. 
+- Használjon 4 vagy több vCPU rendelkező virtuálisgép-méretet, például a [Standard_M8-4ms](../../../virtual-machines/m-series.md), a [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)vagy a [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) vagy magasabbat. 
 - A SQL Server számítási feladatok legjobb teljesítményéhez használja a [memóriára optimalizált](../../../virtual-machines/sizes-memory.md) virtuálisgép-méreteket. 
 - A [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), az [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) sorozat, az [M-](../../../virtual-machines/m-series.md)és a [Mv2](../../../virtual-machines/mv2-series.md) sorozat a OLTP számítási feladatokhoz szükséges optimális memória-virtuális mag arányt kínálja. Mindkét M sorozatú virtuális gép a legnagyobb virtuális mag arányt kínálja a kritikus fontosságú számítási feladatokhoz, és az adatraktár-munkaterhelésekhez is ideális. 
 - Vegye fontolóra a kritikus és az adatraktár-számítási feladatok nagyobb virtuális mag arányát. 

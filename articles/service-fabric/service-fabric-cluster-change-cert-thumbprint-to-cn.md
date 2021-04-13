@@ -3,12 +3,12 @@ title: Fürt frissítése a tanúsítvány köznapi nevének használatára
 description: Megtudhatja, hogyan alakíthatja át az Azure Service Fabric-fürt tanúsítványát ujjlenyomat-alapú deklarációk és köznapi nevek között.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900790"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308013"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Fürtözött tanúsítványok konvertálása az ujjlenyomat-alapú deklarációk és köznapi nevek között
 
@@ -45,7 +45,7 @@ Tesztelési célból az önaláírt *tanúsítványt a* CN deklarálhatja, de cs
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Töltse fel a tanúsítványt, és telepítse a méretezési csoportba
 
-Az Azure-ban a tanúsítványok beszerzéséhez és üzembe helyezéséhez ajánlott módszer Azure Key Vault és annak eszközei. A fürtből álló virtuálisgép-méretezési csoportok minden csomópontján ki kell építeni egy tanúsítványnak megfelelő tanúsítványt. További információ: [Titkok a virtuálisgép-méretezési csoportokban](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm).
+Az Azure-ban a tanúsítványok beszerzéséhez és üzembe helyezéséhez ajánlott módszer Azure Key Vault és annak eszközei. A fürtből álló virtuálisgép-méretezési csoportok minden csomópontján ki kell építeni egy tanúsítványnak megfelelő tanúsítványt. További információ: [Titkok a virtuálisgép-méretezési csoportokban](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-securely-ship-a-certificate-to-the-vm-).
 
 Fontos, hogy a fürt tanúsítvány-deklarációjának módosítása előtt telepítse a jelenlegi és a célként megadott fürtöt a fürt minden csomópont-típusának virtuális gépei számára. A tanúsítvány kiállításáról egy Service Fabric csomópontra való kiépítés menetét a [tanúsítvány menete](cluster-security-certificate-management.md#the-journey-of-a-certificate)részletesen tárgyalja.
 

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605f495fbc5913663499f5411abcaa531cea97ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98071187"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312212"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>A szinapszis munkaterület funkcióinak engedélyezése dedikált SQL-készlethez (korábban SQL DW)
 
@@ -24,6 +24,7 @@ Az összes SQL-adattárház-felhasználó mostantól hozzáférhet és használh
 ## <a name="prerequisites"></a>Előfeltételek
 A szinapszis munkaterület funkcióinak az adattárházban való engedélyezése előtt meg kell győződnie arról, hogy a következőkkel rendelkezik
 - Az SQL logikai kiszolgálón futtatott SQL-erőforrások létrehozásához és kezeléséhez szükséges jogosultságok.
+- Írási engedélyek a gazdagépen SQL Server. 
 - Az Azure szinapszis-erőforrások létrehozásához szükséges jogosultságok.
 - A logikai kiszolgálón azonosított Azure Active Directory-rendszergazda
 

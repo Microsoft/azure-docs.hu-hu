@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247182"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308140"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -31,13 +31,13 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
     ![Bejelentkezés a saját folyamatok között](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. Az **+ új** alatt válassza **a + azonnali** lehetőséget.
+1. Az **+ új** területen válassza a **+ azonnali Felhőbeli folyamat** elemet.
 
-    ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. Adja meg a folyamat nevét, majd a folyamat kiváltási **módjának kiválasztása** területen válassza ki **a HTTP-kérés fogadásakor** lehetőséget.
 
-    ![Automatikus folyamat ablakának kihagyása gomb](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Automatikus folyamat ablakának kihagyása gomb](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. Kattintson a flow lépésre a kibontásához.
 
@@ -132,14 +132,18 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
     ```
 
 >[!NOTE]
->A konfiguráció ezen pontján lehetőség van arra, hogy egy CRM rendszerhez kapcsolódjon, vagy e-mailes értesítést konfiguráljon. Kövesse az Ön által választott további utasításokat.
+>A konfiguráció ezen pontján lehetőség van arra, hogy egy CRM rendszerhez kapcsolódjon, vagy konfiguráljon egy e-mailes értesítést. Kövesse az Ön által választott további utasításokat.
 
 ### <a name="connect-to-a-crm-system"></a>Kapcsolódás CRM rendszerhez
 
 1. Válassza az **+ Új lépés** gombot.
-1. Válassza ki az Ön által választott CRM-rendszert úgy, hogy megkeresi az **Összekötők és a műveletek keresését**. Válassza ki a **műveletek** lapon az új rekord létrehozásához szükséges műveletet. A következő képernyőn látható **egy új rekord létrehozása (Dynamics 365)** példaként.
+1. Válassza ki az Ön által választott CRM-rendszert úgy, hogy megkeresi az **Összekötők és a műveletek keresését**. A következő képernyő egy új rekord (Common Data Service) létrehozását mutatja be példaként.
 
     ![Új rekord létrehozása](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. Válassza a **műveletek fület** az **új rekord létrehozásához** szükséges művelettel.
+
+    ![Válassza az új rekord létrehozása lehetőséget.](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. Adja meg a CRM rendszerhez társított **szervezet nevét** . Az **entitás neve** legördülő listából válassza az **érdeklődők** lehetőséget.
 

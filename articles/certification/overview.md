@@ -1,20 +1,20 @@
 ---
 title: Az Azure Certified eszköz program áttekintése
-description: A partnereink és ügyfeleink számára készült Azure Certified-eszköz program áttekintése
-author: nikuntjo
+description: A partnereink és ügyfeleink számára készült Azure Certified-eszköz program áttekintése. Ezeket az erőforrásokat az eszköz minősítési folyamatának elindításához használhatja. Ismerje meg, hogyan hitelesítheti eszközét, az eszköz IoT az eszközre vonatkozó követelmények alapján.
+author: nkuntjoro
 ms.author: nikuntjo
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: 8f264c233a0e7cd14469a3931153decfe886061a
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969886"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307707"
 ---
-# <a name="what-is-azure-certified-device"></a>Mi az Azure Certified eszköz?
+# <a name="what-is-the-azure-certified-device-program"></a>Mi az Azure Certified eszköz program?
 
 Köszönjük érdeklődését az Azure Certified-eszköz programban! Ez a program az Azure-on futtatott IoT-eszközök egyszerű megkülönböztetését, előléptetését és megkeresését segíti. Az intelligens kamerákról a csatlakoztatott érzékelőkre az Edge-infrastruktúrának köszönhetően ez a továbbfejlesztett IoT-eszköz minősítési program segít az eszközök építői számára a termék láthatóságának növelésében, és a megoldások kiépítésében.
 
@@ -22,11 +22,11 @@ Köszönjük érdeklődését az Azure Certified-eszköz programban! Ez a progra
 
 Az Azure Certified program biztosítja, hogy az ügyfelek az Azure-on is jól működjenek. Ez egy olyan program, amely eszközöket, szolgáltatásokat és katalógust használ az iparági ismeretek megosztására a IoT-ökoszisztémán belül, hogy az építők és az ügyfelek számára egyaránt segítséget nyújtson.
 
-A program három tétele a következő:
+Az eszköz minősítési folyamata során a program három tételét:
 
 - **Ügyfelek bizalmának biztosítása:** Az ügyfelek magabiztosan vásárolhatnak olyan Azure Certified-eszközöket, amelyek a Microsoft ígéretét végzik.
 
-- **A megfelelő eszközökkel rendelkező ügyfelek partnerkereső:** Az eszközök építői a minősítéssel együtt kiemelik az egyedi képességeiket, és az ügyfelek könnyedén megtalálják az igényeiknek megfelelő termékeket.
+- **A megfelelő eszközökkel rendelkező ügyfelek partnerkereső:** Az eszközök építői a minősítéssel együtt kiemelik az egyedi képességeiket, és az ügyfelek könnyedén megtalálják az igényeiknek megfelelő, IoT minősítésű eszközöket.
 
 - **Minősített eszközök előléptetése:** Az eszköz-építők nagyobb láthatóságot, kapcsolattartást biztosítanak az ügyfelekkel, és használják a Microsoft Azure Certified eszköz márkáját.
 
@@ -34,12 +34,12 @@ A program három tétele a következő:
 
 Az Azure Certified eszköz program két különböző célközönséget szolgál ki.
 
-1. **Eszközök építői**: könnyedén megkülönböztetheti a IoT-eszköz képességeit, és hozzáférést nyerhet az Azure-on futó eszközök megbízható megvásárlására szolgáló globális célközönséghez. A termék láthatóságának növeléséhez és az ügyfelekhez való kapcsolódáshoz használja az Azure Certified Device Catalog eszközt.
-1.  **Megoldás-építők**: magabiztosan megtalálhatja és megvásárolhatja az Azure-ban futtatott IoT-eszközöket, hogy azok megfeleljenek bizonyos képességeknek. Egyszerűen megkeresheti és kiválaszthatja a IoT-megoldás megfelelő minősített eszközét az [Azure Certified-eszköz katalógusában](https://devicecatalog.azure.com/).
+1. **Eszközök építői**: készíthet IoT-eszközöket? Könnyedén megkülönböztetheti IoT-eszközének képességeit, és hozzáférést nyerhet az Azure-on futó eszközök megbízható megvásárlásához. A termék láthatóságának növeléséhez és az ügyfelekhez való kapcsolódáshoz használja az Azure Certified Device Catalog eszközt, és az adott IoT-eszköz követelményeinek megfelelően jelenítse meg az ügyfelet.
+1.  **Megoldás-építők**: kíváncsi a IoT minősített eszközökre? Az Azure-on futó IoT-eszközöket magabiztosan megkeresheti és megvásárolhatja, hogy azok megfeleljenek bizonyos IoT-követelményeknek. Egyszerűen megkeresheti és kiválaszthatja a IoT-megoldás megfelelő minősített eszközét az [Azure Certified-eszköz katalógusában](https://devicecatalog.azure.com/).
 
-## <a name="our-certification-programs"></a>A minősítési programok
+## <a name="our-certification-programs-and-iot-device-requirements"></a>A minősítési programok és a IoT-eszközökre vonatkozó követelmények.
 
-Jelenleg négy különböző tanúsítvány érhető el. Az egyes minősítések egy másik ügyfél-érték megvalósítására összpontosítanak. Az eszköz típusától és a célközönségtől függően kiválaszthatja, hogy melyik tanúsítvány (ok) a leginkább érvényes a alkalmazásra. Válassza ki az egyes programok címeit, hogy többet tudjon meg a program követelményeiről.
+Jelenleg négy különböző tanúsítvány érhető el. Az egyes minősítések egy másik ügyfél-érték megvalósítására összpontosítanak. Az eszköz típusától és a célközönségtől függően kiválaszthatja, hogy melyik tanúsítvány (ok) a leginkább érvényes a alkalmazásra. Válassza ki az egyes programok címeit, és ismerkedjen meg a program és a IoT követelményeivel.
 
 | Minősítési program         |  Áttekintés                      |
 ------------------------------|-------------------------------------------------|
@@ -50,21 +50,22 @@ Jelenleg négy különböző tanúsítvány érhető el. Az egyes minősítések
 
 ## <a name="how-to-certify-your-device"></a>Az eszköz tanúsítása
 
-Az eszközök tanúsítása négy fő lépést tesz szükségessé az [Azure Certified-eszköz portálon](https://certify.azure.com):
+Az eszközök tanúsítása több fő lépést is magában foglal az [Azure Certified-eszköz portálon](https://certify.azure.com):
 
-1. A projekt létrehozása
-1. Hardveres képességgel kapcsolatos információk megadása
-1. Az eszköz funkcióinak ellenőrzése
+1. Válassza ki az eszközre vonatkozó megfelelő minősítést a IoT-eszközökre vonatkozó követelmények alapján.
+1. Hozza létre a projektjét az [Azure Certified Device portálon](https://certify.azure.com).
+1. Adja meg az eszköz adatait, beleértve a hardver-képességgel kapcsolatos információkat az eszköz minősítési folyamatának megkezdéséhez.
+1. Eszköz funkcióinak ellenőrzése
 1. A felülvizsgálati folyamat elküldése és befejezése
 
-Az eszköz minősítése után a következő tevékenységek közül kettőt is elvégezhet: 
+Az eszköz minősítése után a következő tevékenységek közül kettőt is elvégezhet:
 
 1. Közzététel az Azure Certified Device Catalogban (nem kötelező)
 1. A projekt frissítése a jóváhagyás/közzététel után (opcionális)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Készen áll a minősítési utazás megkezdésére? Az alábbi források megtekintésével megkezdheti az eszköz tanúsítását!
+Készen áll a minősítési utazás megkezdésére? Tekintse meg az alábbi forrásokat az eszköz minősítési folyamatának elindításához!
 
 - [A minősítési folyamat elindítása](tutorial-00-selecting-your-certification.md)
 - Ha további kérdése vagy visszajelzése van, lépjen kapcsolatba [Az Azure Certified Device csapatával](mailto:iotcert@microsoft.com).

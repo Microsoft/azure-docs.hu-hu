@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99536933"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310665"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
+# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>API-kulcsok létrehozása és kezelése az Azure-Cognitive Search való hitelesítéshez
 
-A keresési szolgáltatásnak küldött összes kérésnek egy írásvédett API-kulcsra van szüksége, amely kifejezetten a szolgáltatáshoz lett létrehozva. Az API-kulcs az egyetlen mechanizmus a bejövő kérelmek hitelesítéséhez a keresési szolgáltatás végpontján, és minden kérelem esetében kötelező. 
+Egy keresési szolgáltatáshoz való kapcsolódáskor minden kérésnek tartalmaznia kell egy írásvédett API-kulcsot, amely kifejezetten a szolgáltatáshoz lett létrehozva. Az API-kulcs az egyetlen mechanizmus a bejövő kérelmek hitelesítéséhez a keresési szolgáltatás végpontján, és minden kérelem esetében kötelező. 
 
 + A [Rest-megoldásokban](search-get-started-rest.md) `api-key` általában a kérelem fejlécében van megadva.
 

@@ -1,18 +1,18 @@
 ---
 author: baanders
-description: a függvény alkalmazás közzétételére és konfigurálására szolgáló fájl belefoglalása
+description: fájl beterjesztése a függvényalkalmazás közzétételéhez és konfiguráláshoz
 ms.service: digital-twins
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: baanders
-ms.openlocfilehash: f9740c50bbfd178bccbbc2424796475f1eee12bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33785f7d7d34072c2c074ede69198a11ab49ff80
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951087"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327693"
 ---
-Ennek módjával kapcsolatos útmutatásért tekintse meg a [**Function alkalmazás közzététele az Azure**](../articles/digital-twins/how-to-create-azure-function.md#publish-the-function-app-to-azure) -ban című szakaszt az *útmutató: funkció beállítása az adat feldolgozásához* című cikkben.
+Ennek mikéntjéhez lásd a Függvényalkalmazás közzététele az [**Azure-ban**](../articles/digital-twins/how-to-create-azure-function.md#publish-the-function-app-to-azure) című szakaszt az Útmutató: Függvény beállítása az adatok feldolgozásához *című cikkben.*
 
 > [!IMPORTANT]
-> Ha első alkalommal hozza létre a Function alkalmazást az [Előfeltételek](#prerequisites) szakaszban, lehetséges, hogy már hozzárendelt egy hozzáférési szerepkört a függvényhez, és konfigurálta az alkalmazás beállításait az Azure Digital Twins-példányhoz való hozzáféréshez. Ezeket egyszer kell elvégezni a teljes Function alkalmazáshoz, ezért a folytatás előtt győződjön meg róla, hogy az alkalmazásban befejeződtek. A biztonsági hozzáférés beállítása a *IoT hub-adat* [**betöltéséhez**](../articles/digital-twins/how-to-create-azure-function.md#set-up-security-access-for-the-function-app) című témakörben talál útmutatást.
+> Előfordulhat, hogy az Előfeltételek szakaszban [](#prerequisites) első alkalommal hoz létre függvényalkalmazást, előfordulhat, hogy már hozzárendelt egy hozzáférési szerepkört a függvényhez, és konfigurálta hozzá az alkalmazásbeállításokat a Azure Digital Twins eléréséhez. Ezeket egyszer kell végrehajtani a teljes függvényalkalmazásban, ezért a folytatás előtt ellenőrizze, hogy befejeződött-e az alkalmazásban. A biztonsági hozzáférés [](../articles/digital-twins/how-to-create-azure-function.md#set-up-security-access-for-the-function-app) beállítása a függvényalkalmazáshoz című szakaszban talál útmutatást *a How to: Ingest IoT Hub data (Útmutató: IoT Hub-adatok befelé) című cikkhez.*

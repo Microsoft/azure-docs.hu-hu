@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f8bc517e70ac84cc7507a958213c7ca4e53d864
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323424"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313045"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>A TLS-megszakítás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
@@ -61,7 +61,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
 ### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Az Application Gateway által használandó kulcstartó, szabályzat és tanúsítvány létrehozása
 
 ```azurepowershell
-$keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
+$keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location
 Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $identity.PrincipalId
 
 $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
@@ -72,8 +72,6 @@ $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -Certifica
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
-> [!NOTE]
-> A-EnableSoftDelete jelzőt a TLS-megszakítás megfelelő működéséhez kell használni. Ha [Key Vault-törlést a portálon keresztül](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)konfigurálja, a megőrzési időtartamot 90 napon belül meg kell őrizni, az alapértelmezett értéket. A Application Gateway még nem támogatja az eltérő megőrzési időtartamot. 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 

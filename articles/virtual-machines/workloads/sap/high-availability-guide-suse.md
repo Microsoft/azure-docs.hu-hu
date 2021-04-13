@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: e33b514f61aec69c566eae455d2e59b1a66813f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d125f258be45889c6c917d9d1fe170bb9502cf7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673812"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307520"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 
@@ -206,7 +206,6 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. Adja meg az új Load Balancer-szabály nevét (például **NW1-LB-ASCs**)
          1. Válassza ki a korábban létrehozott előtérbeli IP-címet, háttér-készletet és állapot-mintavételt (például **NW1-ASCs-frontend**, **NW1-backend** és **NW1-ASCs-HP**)
          1. **Ha portok** kiválasztása
-         1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **NW1-LB-ERS**)

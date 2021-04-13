@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027618"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303151"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -28,26 +28,22 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 ## <a name="april-2021"></a>Április 2021
 
 Az áprilisi frissítések a következők:
-- [Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [A nemrég lehúzta Container Registry-lemezképek mostantól hetente újraellenőrzés alatt állnak (általánosan elérhető)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [A Kubernetes Azure Defender használata a hibrid és a többfelhős Kubernetes-üzembe helyezések (előzetes verzió) elleni védelemhez](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [A CMK ajánlásai átkerültek az ajánlott eljárások biztonsági vezérlésére](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender-riasztás elavult](#11-azure-defender-alerts-deprecated)
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzés két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>A nemrég lehúzta Container Registry-lemezképek mostantól hetente újraellenőrzés alatt állnak (általánosan elérhető)
 
-Az Azure [vendég-konfigurációs bővítménye](../governance/policy/concepts/guest-configuration.md) jelentést készít a Security Center, így biztosítva, hogy a virtuális gépek vendégen belüli beállításai megerősítve legyenek. Nincs szükség a bővítményre az ív-kompatibilis kiszolgálók esetében, mert az az ív csatlakoztatott számítógép ügynökének része. A kiterjesztéshez a számítógépen rendszer által felügyelt identitás szükséges.
+Az Azure Defender for Container nyilvántartó rendszer beépített sebezhetőségi képolvasót tartalmaz. Ez a képolvasó azonnal megkeresi a beállításjegyzékbe leküldeni kívánt képeket, valamint az elmúlt 30 napban lekért képeket.
 
-Négy új javaslatot adtunk hozzá a bővítmények leghatékonyabban Security Centerához.
+A rendszer minden nap új biztonsági réseket derít fel. Ezzel a frissítéssel az elmúlt 30 napban a kibocsátásiegység-forgalmi jegyzékből lekért képeket minden héten újra **megvizsgálja** . Ez biztosítja, hogy az újonnan felderített biztonsági rések azonosíthatók legyenek a lemezképekben.
 
-- Két javaslat arra kéri, hogy telepítse a bővítményt és a szükséges rendszer által felügyelt identitást:
-    - **A vendég konfiguráció bővítményét telepíteni kell a gépekre**
-    - **A Virtual Machines Guest Configuration bővítményt rendszerhez rendelt felügyelt identitással kell telepíteni**
+A vizsgálat a képek alapján történik, így ezek az újraellenőrzések nem díjkötelesek.
 
-- Ha a bővítmény telepítve van és fut, megkezdi a gépek naplózását, és a rendszer felszólítja, hogy megerősítse a beállításokat, például az operációs rendszer és a környezeti beállítások konfigurációját. Ez a két javaslat a Windows és a Linux rendszerű gépek megerősítését kéri az alábbiak szerint:
-    - **A Windows Defender Exploit Guard-nek engedélyezve kell lennie a gépeken**
-    - **A Linux rendszerű gépek hitelesítéséhez SSH-kulcsokra van szükség**
-
-További információ a [Azure Policy vendég konfigurációjának megismeréséhez](../governance/policy/concepts/guest-configuration.md).
+További információ erről a lapolvasóról: az [Azure Defender használata a tárolók beállításjegyzékében a lemezképek biztonsági rések vizsgálatához](defender-for-container-registries-usage.md).
 
 
 ### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>A Kubernetes Azure Defender használata a hibrid és a többfelhős Kubernetes-üzembe helyezések (előzetes verzió) elleni védelemhez
@@ -69,6 +65,40 @@ A Azure Security Center, az Azure Defender és az Azure arc-kompatibilis Kuberne
 További információ: az [Azure Defender használata a helyszíni és a többfelhős Kubernetes-fürtökkel való Kubernetes](defender-for-kubernetes-azure-arc.md).
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center javaslata az Azure Defender-bővítmény Azure arc-kompatibilis Kubernetes-fürtökön való üzembe helyezéséhez." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Négy új, a vendég konfigurációjával kapcsolatos javaslat (előzetes verzió)
+
+Az Azure [vendég-konfigurációs bővítménye](../governance/policy/concepts/guest-configuration.md) jelentést készít a Security Center, így biztosítva, hogy a virtuális gépek vendégen belüli beállításai megerősítve legyenek. Nincs szükség a bővítményre az ív-kompatibilis kiszolgálók esetében, mert az az ív csatlakoztatott számítógép ügynökének része. A kiterjesztéshez a számítógépen rendszer által felügyelt identitás szükséges.
+
+Négy új javaslatot adtunk hozzá a bővítmények leghatékonyabban Security Centerához.
+
+- Két javaslat arra kéri, hogy telepítse a bővítményt és a szükséges rendszer által felügyelt identitást:
+    - **A vendég konfiguráció bővítményét telepíteni kell a gépekre**
+    - **A Virtual Machines Guest Configuration bővítményt rendszerhez rendelt felügyelt identitással kell telepíteni**
+
+- Ha a bővítmény telepítve van és fut, megkezdi a gépek naplózását, és a rendszer felszólítja, hogy megerősítse a beállításokat, például az operációs rendszer és a környezeti beállítások konfigurációját. Ez a két javaslat a Windows és a Linux rendszerű gépek megerősítését kéri az alábbiak szerint:
+    - **A Windows Defender Exploit Guard-nek engedélyezve kell lennie a gépeken**
+    - **A Linux rendszerű gépek hitelesítéséhez SSH-kulcsokra van szükség**
+
+További információ a [Azure Policy vendég konfigurációjának megismeréséhez](../governance/policy/concepts/guest-configuration.md).
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>A CMK ajánlásai átkerültek az ajánlott eljárások biztonsági vezérlésére
+
+Minden szervezet biztonsági programja tartalmazza az adattitkosítási követelményeket. Alapértelmezés szerint az Azure-ügyfelek adatok titkosítva vannak a szolgáltatás által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok (CMK-EK) azonban általában a szabályozási megfelelőségi követelmények kielégítése érdekében szükségesek. A CMKs lehetővé teszi az adatai titkosítását egy Ön által létrehozott és birtokolt [Azure Key Vault](../key-vault/general/overview.md) kulccsal. Ez teljes körű irányítást és felelősséget biztosít a kulcsfontosságú életciklushoz, beleértve a rotációt és a felügyeletet.
+
+Azure Security Center biztonsági vezérlői a kapcsolódó biztonsági javaslatok logikai csoportjai, és tükrözik a sebezhető támadási felületet. Az egyes vezérlők maximális számú pontot adhatnak hozzá a biztonságos pontszámhoz, ha a vezérlőben felsorolt összes javaslatot szervizelni szeretné az összes erőforráshoz. Az **ajánlott biztonsági eljárások megvalósítása** a biztonsági ellenőrzés nulla pontot ér. Az ebben a vezérlőben található javaslatok nem érintik a biztonságos pontszámot.
+
+Az alább felsorolt javaslatok átkerülnek az **ajánlott biztonsági eljárások megvalósítására** szolgáló biztonsági szabályozásba, hogy jobban tükrözzék a nem kötelező jellegüket. Ez a lépés biztosítja, hogy ezek a javaslatok a legmegfelelőbb módon legyenek kielégítve a célnak.
+
+- Azure Cosmos DB fiókoknak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához
+- Azure Machine Learning-munkaterületeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)
+- Cognitive Services fiókoknak engedélyeznie kell az adattitkosítást az ügyfél által felügyelt kulccsal (CMK)
+- A tároló-beállításjegyzékeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)
+- Az SQL felügyelt példányainak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához
+- Az SQL-kiszolgálóknak az ügyfél által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához
+- A Storage-fiókoknak ügyfél által felügyelt kulcsot (CMK) kell használniuk a titkosításhoz
+
+Ismerje meg, hogy mely javaslatok szerepelnek a [biztonsági ellenőrzésekben és javaslataikban](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
 
 ### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender-riasztás elavult

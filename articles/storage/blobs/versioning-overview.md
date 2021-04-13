@@ -10,16 +10,16 @@ ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259744"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305055"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
-A blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja az objektumok korábbi verzióit.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
+A blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja az objektumok korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -35,21 +35,21 @@ További információ a Microsoft adatvédelmi javaslatairól: [Adatvédelem –
 
 ## <a name="how-blob-versioning-works"></a>A blob-verziószámozás működése
 
-A verzió rögzíti egy blob állapotát egy adott időpontban. Ha a blob verziószámozása engedélyezve van egy Storage-fiókhoz, az Azure Storage automatikusan létrehoz egy blob új verzióját a blob minden módosításának időpontjában.
+A verzió rögzíti egy blob állapotát egy adott időpontban. Mindegyik verziót AZONOSÍTÓval azonosítják. Ha a blob verziószámozása engedélyezve van egy Storage-fiókhoz, az Azure Storage automatikusan létrehoz egy új verziót egyedi AZONOSÍTÓval a Blobok első létrehozásakor és minden alkalommal, amikor a blob később módosul.
 
-Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az új blob a blob aktuális verziója (vagy az alap blob). Ha ezt követően módosítja a blobot, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a módosítás előtt. A módosított blob lesz az új aktuális verzió. Minden alkalommal létrejön egy új verzió, amikor módosítja a blobot.
+A verzióazonosító képes azonosítani az aktuális verziót vagy egy korábbi verziót. A blob egyszerre csak egy aktuális verziót tartalmazhat.
+
+Új blob létrehozásakor egyetlen verzió létezik, és ez a verzió az aktuális verzió. Ha módosít egy meglévő blobot, a jelenlegi verzió lesz az előző verzió. A rendszer létrehoz egy új verziót a frissített állapot rögzítéséhez, és az új verzió az aktuális verzió. Amikor töröl egy blobot, a blob aktuális verziója egy korábbi verzió lesz, és már nem létezik aktuális verzió. A blob korábbi verziói megmaradnak.
 
 Az alábbi ábra bemutatja, hogyan jönnek létre a verziók az írási műveletekben, és hogyan lehet a korábbi verziót az aktuális verzióra előléptetni:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="A blob verziószámozásának működését bemutató ábra":::
 
-Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, a blob aktuális verziója egy korábbi verzió lesz, és már nem létezik aktuális verzió. A blob korábbi verziói megmaradnak.
-
 A blob-verziók nem változtathatók meg. Egy meglévő blob-verzió tartalmát vagy metaadatait nem módosíthatja.
 
 Ha a Blobok egy része nagy számú verziót használ, növelheti a Blobok listázási műveleteinek késését. A Microsoft a Blobok kevesebb mint 1000 verzióját javasolja. Az életciklus-kezelési szolgáltatással automatikusan törölheti a régi verziókat. Az életciklus-kezeléssel kapcsolatos további információkért lásd: [a költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](storage-lifecycle-management-concepts.md).
 
-A blob verziószámozása az általános célú v2, a blob és a blob Storage-fiókok esetében érhető el. A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak.
+A blob verziószámozása a standard általános célú v2, a Premium Block blob és a régi blob Storage-fiókok esetében érhető el. A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak.
 
 Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob verziószámozását.
 
@@ -58,9 +58,9 @@ Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob v
 
 ### <a name="version-id"></a>Verzióazonosító
 
-Minden blob-verziót egy verzióazonosító azonosít. A verzióazonosító értéke a blob frissítésének időbélyegzője. A verzió AZONOSÍTÓját a rendszer a verzió létrehozásakor rendeli hozzá.
+Minden blob-verziót egy egyedi verziójú azonosító azonosít. A verzióazonosító értéke a blob frissítésének időbélyegzője. A verzió AZONOSÍTÓját a rendszer a verzió létrehozásakor rendeli hozzá.
 
-A blob egy adott verziójához olvasási vagy törlési műveleteket is végrehajthat, ha megadja annak verziószámát. Ha kihagyja a verzióazonosító AZONOSÍTÓját, a művelet az aktuális verzióra (az alap blobra) kerül.
+A blob egy adott verziójához olvasási vagy törlési műveleteket is végrehajthat, ha megadja annak verziószámát. Ha kihagyja a verzióazonosító AZONOSÍTÓját, a művelet az aktuális verzióra kerül.
 
 Amikor írási műveletet hív meg egy blob létrehozásához vagy módosításához, az Azure Storage az *x-MS-Version-ID* fejlécet adja vissza a válaszban. Ez a fejléc tartalmazza az írási művelet által létrehozott blob aktuális verziójának verziószámát.
 
@@ -70,11 +70,9 @@ A verzió-azonosító a verzió élettartama esetén azonos marad.
 
 Ha be van kapcsolva a blob verziószámozása, a Blobok minden írási művelete új verziót hoz létre. Az írási műveletek közé tartozik a [blob elhelyezése](/rest/api/storageservices/put-blob), a [letiltási lista](/rest/api/storageservices/put-block-list), a [blob másolása](/rest/api/storageservices/copy-blob)és a [blob metaadatainak beállítása](/rest/api/storageservices/set-blob-metadata).
 
-Ha az írási művelet egy új blobot hoz létre, akkor az eredményül kapott blob a blob aktuális verziója. Ha az írási művelet módosítja egy meglévő blobot, akkor az új adatrögzítés a frissített blobban történik, amely a jelenlegi verzió, az Azure Storage pedig egy olyan verziót hoz létre, amely menti a blob korábbi állapotát.
+Ha az írási művelet egy új blobot hoz létre, akkor az eredményül kapott blob a blob aktuális verziója. Ha az írási művelet módosítja egy meglévő blobot, akkor a jelenlegi verzió a korábbi verzió lesz, és a rendszer új aktuális verziót hoz létre a frissített blob rögzítéséhez.
 
-Az egyszerűség kedvéért a cikkben látható ábrák egyszerű egész értékként jelenítik meg a verzió AZONOSÍTÓját. A valóságban a verzió-azonosító egy időbélyeg. Az aktuális verzió kék színnel jelenik meg, a korábbi verziók pedig szürkén jelennek meg.
-
-Az alábbi ábrán látható, hogy az írási műveletek milyen hatással vannak a blob-verziókra. BLOB létrehozásakor a blob az aktuális verzió. Ha ugyanezt a blobot módosítják, a rendszer létrehoz egy új verziót a blob korábbi állapotának mentéséhez, és a frissített blob lesz az aktuális verzió.
+Az alábbi ábrán látható, hogy az írási műveletek milyen hatással vannak a blob-verziókra. Az egyszerűség kedvéért a cikkben látható ábrák egyszerű egész értékként jelenítik meg a verzió AZONOSÍTÓját. A valóságban a verzió-azonosító egy időbélyeg. Az aktuális verzió kék színnel jelenik meg, a korábbi verziók pedig szürkén jelennek meg.
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 

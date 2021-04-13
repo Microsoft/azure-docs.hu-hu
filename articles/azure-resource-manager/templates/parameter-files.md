@@ -2,13 +2,13 @@
 title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276643"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312042"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 
@@ -210,6 +210,8 @@ További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azu
 
 > [!NOTE]
 > A portál egyéni sablon paneljén nem lehet paraméter-fájlt használni.
+
+Ha az [Azure erőforráscsoport-projektet használja a Visual Studióban](create-visual-studio-deployment-project.md), győződjön meg arról, hogy a paraméter fájljának **felépítési művelete** **tartalomra** van beállítva.
 
 ## <a name="file-name"></a>Fájlnév
 

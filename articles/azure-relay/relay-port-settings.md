@@ -3,12 +3,12 @@ title: Azure Relay portbeállítások | Microsoft Docs
 description: Ez a cikk egy táblázatot tartalmaz, amely leírja a Azure Relay portszámának szükséges konfigurációját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81551055d967babaac6f12c3a23ce6b1e78afbd5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85314275"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314167"
 ---
 # <a name="azure-relay-port-settings"></a>Azure Relay portbeállítások
 
@@ -42,4 +42,4 @@ A Hibrid kapcsolatok WebSockets-t használ a 443-as porton a TLS-vel, amely az a
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Azure Relayről, tekintse meg a következő hivatkozásokat:
 * [Mi az Azure Relay?](relay-what-is-it.md)
-* [Relay – gyakori kérdések](relay-faq.md)
+* [Relay – gyakori kérdések](relay-faq.yml)

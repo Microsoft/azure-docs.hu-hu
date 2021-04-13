@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967336"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308965"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban
 
@@ -140,7 +140,7 @@ Tulajdonság értékének részletei:
 - `kind`: Adja meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - `forceUpdateTag`: Ha módosítja ezt az értéket a sablon központi telepítései között, akkor az üzembe helyezési parancsfájlt újra végre kell hajtani. Ha a `newGuid()` vagy a `utcNow()` függvényt használja, akkor mindkét függvény csak a paraméter alapértelmezett értékében használható. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
 - `containerSettings`: Itt adhatja meg az Azure Container instance testreszabásához szükséges beállításokat. Az üzembe helyezési parancsfájlhoz új Azure Container-példány szükséges. Meglévő Azure Container-példányt nem adhat meg. A tároló csoport nevét azonban a használatával szabhatja testre `containerGroupName` . Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
-- `storageAccountSettings`: A meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha `containerGroupName` nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
+- `storageAccountSettings`: A meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha `storageAccountName` nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Itt adhatja meg a használni kívánt modul verzióját. Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
 
   >[!IMPORTANT]
@@ -245,7 +245,7 @@ A következő sablon azt mutatja be, hogyan lehet értékeket átadni két `depl
 Az első erőforrásban definiál egy nevű változót `$DeploymentScriptOutputs` , és a kimeneti értékek tárolására használhatja azt. A sablonban lévő másik erőforrás kimeneti értékének eléréséhez használja a következőt:
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>Kimenetek használata a CLI-szkriptből
@@ -566,7 +566,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Leírás |
+| Hibakód | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem lehet törölni a nem terminál állapotú központi telepítési parancsfájl erőforrását, és a végrehajtás nem haladja meg az 1 órát. Vagy nem lehet újból futtatni ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl szövegtörzse is egy időben. |

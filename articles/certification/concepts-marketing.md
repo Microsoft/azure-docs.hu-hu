@@ -1,18 +1,18 @@
 ---
 title: Marketing tulajdonságai
 description: A portálon összegyűjtött különböző értékesítési mezők leírása, valamint azok megjelenítése az Azure Certified-eszköz katalógusában
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: template-concept
-ms.openlocfilehash: 45ecab18451ca0915ee3891278db47feb7469915
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969355"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304511"
 ---
 # <a name="marketing-properties"></a>Marketing tulajdonságai
 
@@ -75,7 +75,7 @@ A termék csempéje és a termékleírás oldalon a Shop gomb is elérhető. Ami
 ## <a name="external-links"></a>Külső hivatkozások
 A Product Description (termék leírása) oldalon található hivatkozások a partner által biztosított webhelyekre vagy fájlokra is kiterjednek, amelyek segítenek az ügyfélnek a termék jobb megismerésében. Az oldal tetején jelennek meg a termékleírás szövege alatt. A megjelenített hivatkozások eltérőek lesznek a különböző típusú eszközök és a minősítési programok esetében.
 
-| Hivatkozás | Leírás                  | A portálon való hozzáadás helye                |
+| Hivatkozás | Description                  | A portálon való hozzáadás helye                |
 |---------------|-------------------------|----------------------------------|
 | Útmutató az első lépésekhez * | Az eszköz Azure-szolgáltatásokkal való csatlakoztatására és használatára vonatkozó felhasználói utasításokat tartalmazó PDF-fájl | A portál első lépések útmutató szakaszának hozzáadása|
 | Gyártó lapja *|A gyártó oldalára mutató hivatkozás. Ez az oldal lehet az eszközhöz tartozó termék oldal vagy a vállalat kezdőlapja, ha a marketing lap nem érhető el. | A gyártó marketing lapja a marketing részleteiben |

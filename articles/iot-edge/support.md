@@ -4,16 +4,16 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b60deee6ccb95245839ee740c2b237b98315d483
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031168"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313198"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -171,9 +171,15 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 
 A kiadási eszközök és a kibocsátási megjegyzések az [Azure-iotedge kiadások](https://github.com/Azure/azure-iotedge/releases) oldalon érhetők el. IoT Edge Ez a szakasz a kibocsátási megjegyzések információit mutatja be, így könnyebben ábrázolhatja az egyes verziók összetevőit.
 
-IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszamenőlegesen kompatibilisek a régebbi verziójú összetevőkkel. A következő táblázat felsorolja az egyes kiadásokban található összetevőket:
+A következő táblázat felsorolja az egyes kiadásokban található összetevőket az 1.2.0-től kezdődően. A táblázatban felsorolt összetevők egyenként telepíthetők vagy frissíthetők, és visszamenőleg kompatibilisek a régebbi verziókkal.
 
-| Kiadás | Biztonsági démon | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby |
+| Kiadás | aziot – Edge | edgeHub<br>edgeAgent | aziot-Identity-Service |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+A következő táblázat felsorolja az egyes kiadásokban található összetevőket az 1,1 LTS-kiadásban. A táblázatban felsorolt összetevők egyenként telepíthetők vagy frissíthetők, és visszamenőleg kompatibilisek a régebbi verziókkal.
+
+| Kiadás | iotedge | edgeHub<br>edgeAgent | libiothsm | Moby |
 |--|--|--|--|--|
 | **1,1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
@@ -192,7 +198,8 @@ IoT Edge a Microsoft. Azure. Devices. Client SDK-t használja. További informá
 
 | IoT Edge-verzió | Microsoft. Azure. Devices. Client SDK-verzió |
 |------------------|--------------------------------------------|
-| 1,1 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1,1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |

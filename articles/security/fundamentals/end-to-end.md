@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: be270383b868abb7e2865920f4a3852e2f6210dc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031390"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310342"
 ---
 # <a name="end-to-end-security-in-azure"></a>Végpontok közötti biztonság az Azure-ban
 Az Azure az alkalmazások és szolgáltatások használatának egyik legjobb oka az, hogy kiaknázza a biztonsági eszközök és képességek széles körét. Ezek az eszközök és képességek segítik a biztonságos megoldások létrehozását a biztonságos Azure platformon. Microsoft Azure biztosítja az ügyféladatok titkosságát, integritását és rendelkezésre állását, ugyanakkor lehetővé teszi az átlátható elszámoltathatóságot is.
@@ -63,8 +63,8 @@ Az [Azure Security benchmark](../benchmarks/introduction.md) program olyan nagy 
 | [Azure DDoS Protection Standard](../../ddos-protection/ddos-protection-overview.md) | A DDoS-támadások elleni védelem érdekében fejlett DDoS-kockázatcsökkentő funkciókat biztosít. A rendszer automatikusan hangolja az adott Azure-erőforrások védelmére egy virtuális hálózaton. |
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | Globális, méretezhető belépési pont, amely a Microsoft globális peremhálózati hálózatát használja gyors, biztonságos és széles körben méretezhető webalkalmazások létrehozásához. |
 | [Azure Firewall](../../firewall/overview.md) | Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel. |
-| [Azure Key Vault](../../key-vault/general/overview.md) | Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel. |
-| [Key Vault felügyelt HSDM (előzetes verzió)](../../key-vault/managed-hsm/overview.md) | Teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. |
+| [Azure Key Vault](../../key-vault/general/overview.md) | Biztonságos titkos kulcsok tárolása tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz és egyéb titkokhoz. Key Vault is használható az adattitkosításhoz használt titkosítási kulcsok létrehozására és szabályozására. |
+| [Key Vault felügyelt HSM (előzetes verzió)](../../key-vault/managed-hsm/overview.md) | Teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. |
 | [Azure Private Link](../../private-link/private-link-overview.md) | Lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül. |
 | [Azure Application Gateway](../../application-gateway/overview.md) | Egy speciális webes forgalmi terheléselosztó, amely lehetővé teszi a webes alkalmazások forgalmának kezelését. Application Gateway a HTTP-kérések további attribútumain alapuló útválasztási döntéseket hozhat létre, például az URI elérési út vagy a gazdagép fejléceit. |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | Teljes körűen felügyelt nagyvállalati üzenetkezelés az üzenetsor-kezelés és a közzétételi – előfizetés témakörökben. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgál. |

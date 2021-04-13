@@ -73,5 +73,7 @@
       href: /powershell/module/Az.ConnectedKubernetes/
 - name: További források
   items:
+    - name: Az üzembe helyezés megtervezése
+      href: plan-at-scale-deployment.md
     - name: Azure Arc – gyorsútmutató
       href: 'https://azurearcjumpstart.io'

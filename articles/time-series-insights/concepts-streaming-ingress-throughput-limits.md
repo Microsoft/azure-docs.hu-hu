@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3c938e7fe180e6a9cf08031a2a4565486f3f77a9
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504634"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306517"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Adatfolyam-betöltési átviteli sebesség korlátai
 
@@ -59,7 +59,7 @@ A Azure Time Series Insights Gen2-környezet tervezésekor fontos figyelembe ven
 
 A *partíciók* a központban tárolt események rendezett sorrendje. A partíciók száma a központ létrehozási fázisában van beállítva, és nem módosítható.
 
-Event Hubs particionálással kapcsolatos ajánlott eljárások esetében ellenőrizze, [hogy hány partícióra van szükségem?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Event Hubs particionálással kapcsolatos ajánlott eljárások esetében ellenőrizze, [hogy hány partícióra van szükségem?](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)
 
 > [!NOTE]
 > Azure Time Series Insights Gen2 használt legtöbb IoT hub-nak csak négy partícióra van szüksége.

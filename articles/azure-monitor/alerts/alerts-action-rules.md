@@ -2,13 +2,13 @@
 title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036781"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304817"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -67,7 +67,7 @@ A rendelkezésre álló szűrők a következők:
 
 * **Súlyosság**  
 Ez a szabály csak a kijelölt megszakításokkal rendelkező riasztásokra vonatkozik.  
-Például a **Súlyosság = Sev1** azt jelenti, hogy a szabály csak a Sev1 súlyosságú riasztásokra vonatkozik.
+Például a **Súlyosság = "Sev1"** érték azt jelenti, hogy a szabály csak a Sev1 súlyosságú riasztásokra vonatkozik.
 * **Szolgáltatás figyelése**  
 Ez a szabály csak a kiválasztott figyelési szolgáltatásokból érkező riasztásokra vonatkozik.  
 A (z) **"Azure Backup" figyelő** például azt jelenti, hogy a szabály csak a biztonsági mentési riasztásokra vonatkozik (Azure Backup).
@@ -79,15 +79,22 @@ Ez a szabály csak az adott riasztási szabálytól érkező riasztásokra vonat
 Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.  
 _Megjegyzés – a riasztási szabályok megfelelő AZONOSÍTÓjának beszerzéséhez adja meg a riasztási szabályokat a parancssori felületről, vagy nyisson meg egy adott riasztási szabályt a portálon, majd kattintson a Tulajdonságok elemre, és másolja az "erőforrás-azonosító" értéket._
 * **Figyelési feltétel**  
-Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy **kilőtt** vagy **megoldott**.
+Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy " **tüzelt** " vagy **"megoldott"**.
 * **Leírás**  
 Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy adott karakterláncot tartalmaznak a riasztás leírása mezőben. Ez a mező tartalmazza a riasztási szabály leírását.  
 Például a **Leírás tartalmazza a "Prod"** kifejezést, amely azt jelenti, hogy a szabály csak a "Prod" karakterláncot tartalmazó riasztásokat fogja használni a leírásában.
 * **Riasztási környezet (hasznos adat)**  
 Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy vagy több meghatározott értéket tartalmaznak a riasztás környezeti mezőiben.  
-Például a **riasztási környezet (hasznos adat) tartalmazza a "Computer-01"** karakterláncot, amely azt jelenti, hogy a szabály csak azokra a riasztásokra vonatkozik, amelyek hasznos adatai tartalmazzák a "Computer-01" karakterláncot.
+Például a **riasztási környezet (hasznos adat) a "Computer-01"** karakterláncot tartalmazza, hogy a szabály csak olyan riasztásokra vonatkozzon, amelyek hasznos adatai tartalmazzák a "Computer-01" karakterláncot.
 
-Ha egy szabályban több szűrőt is beállít, mindegyiket alkalmazza. Ha például a **"= Virtual Machines** és **Súlyosság" = Sev0** értéket állítja be, akkor a szabály csak a virtuális gépeken futó Sev0-riasztásokra lesz érvényes.
+> [!NOTE]
+> Mindegyik szűrő legfeljebb öt értéket tartalmazhat.  
+> Például egy szűrő a figyelő szolgáltatásban legfeljebb öt figyelő szolgáltatás nevét tartalmazhat.
+
+
+
+
+Ha egy szabályban több szűrőt is beállít, mindegyiket alkalmazza. Ha például a **= "Virtual Machines"** és a **Súlyosság = "Sev0"** értéket állítja be, akkor a szabály csak a virtuális gépeken futó Sev0-riasztásokra lesz érvényes.
 
 ![Műveleti szabály szűrői](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -118,7 +125,7 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
 * Name
 * Az erőforráscsoport, amelyben mentve van
-* Leírás
+* Description
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

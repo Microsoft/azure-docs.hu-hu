@@ -71,6 +71,8 @@
           href: scenario-route-through-nvas-custom.md
         - name: Azure Firewall – egyéni
           href: scenario-route-between-vnets-firewall.md
+        - name: Application Gateway és háttérbeli készletek
+          href: scenario-secured-hub-app-gateway.md
     - name: Figyelés
       items:
         - name: Azure Monitor Insights virtuális WAN-hoz

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8fa0344a6959025856f002e1de4eb8700c32da5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030902"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311311"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -103,7 +103,7 @@ Log Analytics egy incidens-felügyeleti folyamattal rendelkezik, amelyet minden 
   * A Microsoft Azure szolgáltatásban dolgozó operátorok betanítási kötelezettségeket foglalnak magukban, amelyek a vásárlói adatokat üzemeltető bizalmas rendszerekhez férnek hozzá.
   * A Microsoft Security Response munkatársai speciális képzést kapnak a szerepköreik számára
 
-Ha bármilyen vásárlói adat elvesztését tapasztalja, egy napon belül értesítjük az egyes ügyfeleket. Az ügyfél adatvesztése azonban soha nem fordult elő a szolgáltatásban. 
+Habár nagyon ritka, a Microsoft egy napon belül értesíti az egyes ügyfeleket, ha az ügyféladatok jelentős elvesztése történik. 
 
 További információ arról, hogyan reagál a Microsoft a biztonsági incidensekre: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 

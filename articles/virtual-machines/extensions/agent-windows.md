@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607483"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309815"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
@@ -121,7 +121,7 @@ A tanúsítvány végleges eltávolításához el kell távolítania azt a ból 
 
 Virtuális gépek esetén a [Remove-AzVMSecret]() használatával távolítsa el a tanúsítványokat a alkalmazásból `OSProfile` .
 
-További információ a virtuálisgép-méretezési csoport tanúsítványainak tanúsítványáról: [Virtual Machine Scale sets-hogyan elavult tanúsítványok eltávolítása?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)
+További információ a virtuálisgép-méretezési csoport tanúsítványainak tanúsítványáról: [Virtual Machine Scale sets-hogyan elavult tanúsítványok eltávolítása?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-remove-deprecated-certificates-)
 
 
 ## <a name="next-steps"></a>Következő lépések

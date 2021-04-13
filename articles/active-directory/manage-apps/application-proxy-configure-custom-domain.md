@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49edab5ed20749cb705d160e5cdc46a16bdee951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadb23b9a8d00d484a9c42db9007d8c5b94b4c78
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258031"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306789"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD-alkalmazásproxyval
 
@@ -90,7 +90,7 @@ Az alkalmazás közzététele az Application proxyn keresztül egyéni tartomán
    
    ![Kattintson ide a tanúsítvány feltöltéséhez](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése** lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt. Ha a tanúsítvány érvénytelen, vagy probléma van a jelszóval, hibaüzenet jelenik meg. Az [alkalmazásproxy gyakori kérdéseiben](application-proxy-faq.md#application-configuration) néhány olyan hibaelhárítási lépés található, amelyet kipróbálhat.
+7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése** lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt. Ha a tanúsítvány érvénytelen, vagy probléma van a jelszóval, hibaüzenet jelenik meg. Az [alkalmazásproxy gyakori kérdéseiben](application-proxy-faq.yml#application-configuration) néhány olyan hibaelhárítási lépés található, amelyet kipróbálhat.
    
    ![Tanúsítvány feltöltése](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    

@@ -5,17 +5,17 @@ description: Az Blob Storage számára elérhető adatvédelmi lehetőségek és
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/22/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
-ms.openlocfilehash: afd98e629500bc90cc9ddd1ed4ab2472f733e845
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 90c83397089b77d30694041a37debc0731ea2a38
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803713"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304256"
 ---
 # <a name="data-protection-overview"></a>Az adatvédelem áttekintése
 
@@ -30,7 +30,7 @@ Ha a Storage-fiók és a benne található adatok alapszintű adatvédelmi lefed
 - Konfiguráljon egy Azure Resource Manager zárolást a Storage-fiókon, hogy megvédje a fiókot a törlés vagy a konfiguráció változásairól. [tudj meg többet...](../common/lock-account-resource.md)
 - A tárolók törlésének engedélyezése a Storage-fiók számára a törölt tárolók és annak tartalmának helyreállításához. [tudj meg többet...](soft-delete-container-enable.md)
 - BLOB állapotának mentése rendszeres időközönként:
-  - Blob Storage munkaterhelések esetében engedélyezze a blob verziószámozását, hogy a Blobok törlésekor vagy felülírásakor automatikusan mentse az adatok állapotát. [tudj meg többet...](versioning-enable.md)
+  - Blob Storage számítási feladatokhoz engedélyezze a blob verziószámozását, hogy minden alkalommal automatikusan mentse az adatai állapotát, amikor egy blob felülíródik. [tudj meg többet...](versioning-enable.md)
   - Azure Data Lake Storage munkaterhelések esetén manuális pillanatképeket készíthet az adatok állapotának mentéséhez egy adott időpontban. [tudj meg többet...](snapshots-overview.md)
 
 A következő szakasz részletesebben ismerteti ezeket a beállításokat, valamint az egyéb forgatókönyvekhez kapcsolódó további adatvédelmi lehetőségeket is.
@@ -46,7 +46,7 @@ A következő táblázat összefoglalja az Azure Storage-ban elérhető lehetős
 | A Storage-fiók törlésének vagy módosításának megakadályozása. | Azure Resource Manager zárolása<br />[tudj meg többet...](../common/lock-account-resource.md) | Zárolja az összes Storage-fiókot egy Azure Resource Manager zárolással, hogy megakadályozza a Storage-fiók törlését. | Védi a Storage-fiókot a törlés vagy a konfigurációs változások ellen.<br /><br />A nem biztosítja a fiókban lévő tárolók vagy Blobok törlését vagy felülírását. | Yes |
 | A tárolók és a Blobok törlésének és módosításának megakadályozása egy Ön által vezérelt intervallumban. | Módosíthatatlansági szabályzata egy tárolón<br />[tudj meg többet...](storage-blob-immutable-storage.md) | Állítson be egy módosíthatatlansági házirendet egy tárolón az üzleti szempontból fontos dokumentumok biztosításához, például a jogi vagy szabályozási megfelelőségi követelmények kielégítése érdekében. | Védelmet biztosít a tárolók és a Blobok számára az összes törlési és felülírási műveletből.<br /><br />Ha jogi vagy zárolt időalapú adatmegőrzési házirend van érvényben, a Storage-fiók is védelmet biztosít a törléstől. Azok a tárolók, amelyekhez nincs beállítva módosíthatatlansági házirend, nem védettek a törléssel. | Igen, előzetes verzióban |
 | Törölt tároló visszaállítása egy megadott intervallumon belül. | Tároló – Soft Delete (előzetes verzió)<br />[tudj meg többet...](soft-delete-container-overview.md) | Az összes Storage-fiók esetében engedélyezze a tárolók törlését, a minimális megőrzési időtartam pedig 7 nap.<br /><br />A Blobok verziószámozásának és a Blobok törlésének engedélyezése a tárolók törlésével együtt a tárolóban lévő egyes Blobok számára.<br /><br />Tárolja a különböző megőrzési időszakokat igénylő tárolókat külön Storage-fiókokban. | A törölt tárolók és annak tartalma visszaállítható a megőrzési időtartamon belül.<br /><br />Csak a tároló szintű műveletek (például a [törlési tároló](/rest/api/storageservices/delete-container)) állíthatók vissza. A tároló-helyreállító törlés nem teszi lehetővé, hogy a tárolóban lévő egyéni blobokat ne állítsa vissza, ha a blob törölve lett. | Igen, előzetes verzióban |
-| Egy blob állapotának automatikus mentése egy korábbi verzióban, ha a fájl felül van írva vagy törölve lett. | BLOB verziószámozása<br />[tudj meg többet...](versioning-overview.md) | A Blobok verziószámozásának engedélyezése, a tárolók helyreállított törlésével és a Blobok törlésével együtt, olyan tárolási fiókok esetében, amelyeknél a blob-adatvédelemhez optimális védelmet kell biztosítani.<br /><br />A költségek korlátozása érdekében tárolja azokat a blob-adattárakat, amelyek nem igényelnek verziószámozást külön fiókban. | Minden blob-felülírási vagy-törlési művelet létrehoz egy új verziót. Előfordulhat, hogy egy blobot egy korábbi verzióból lehet visszaállítani, ha a blobot törölték vagy felülírják. | No |
+| Egy blob állapotának automatikus mentése egy korábbi verzióban, ha a fájl felül van írva. | BLOB verziószámozása<br />[tudj meg többet...](versioning-overview.md) | A Blobok verziószámozásának engedélyezése, a tárolók helyreállított törlésével és a Blobok törlésével együtt, olyan tárolási fiókok esetében, amelyeknél a blob-adatvédelemhez optimális védelmet kell biztosítani.<br /><br />A költségek korlátozása érdekében tárolja azokat a blob-adattárakat, amelyek nem igényelnek verziószámozást külön fiókban. | Minden blob írási művelet létrehoz egy új verziót. Előfordulhat, hogy a blob aktuális verziója visszaállítható egy korábbi verzióról, ha az aktuális verziót törölték vagy felülírják. | No |
 | Törölt blob vagy blob-verzió visszaállítása egy megadott intervallumon belül. | Blobos törlés<br />[tudj meg többet...](soft-delete-blob-overview.md) | Az összes Storage-fiók esetében engedélyezze a Blobok törlését, a minimális megőrzési időtartam pedig 7 nap.<br /><br />Engedélyezze a Blobok verziószámozását és a tárolók helyreállított törlését a blob-adattörlési szolgáltatással a Blobok optimális védelméhez.<br /><br />Tárolja a különböző megőrzési időszakokat igénylő blobokat különálló Storage-fiókokban. | Lehet, hogy a törölt blob vagy blob verziója visszaállítható a megőrzési időn belül. | No |
 | Blokkos Blobok egy készletének visszaállítása egy korábbi időpontra. | Adott időpontnak megfelelő helyreállítás<br />[tudj meg többet...](point-in-time-restore-overview.md) | Ha az időponthoz tartozó visszaállítást egy korábbi állapotra kívánja használni, tervezze meg az alkalmazást, hogy törölje az egyes blokk-blobokat a tárolók törlése helyett. | A blokkos Blobok egy készlete a múltban megadott időpontban visszaállítható az állapotukra.<br /><br />Csak a blokk blobokon végrehajtott műveletek visszaállítása történik meg. A tárolók, a lapok Blobok vagy a hozzáfűzési Blobok által végrehajtott műveletek nem állnak újra. | No |
 | Egy blob állapotának manuális mentése egy adott időpontban. | BLOB pillanatképe<br />[tudj meg többet...](snapshots-overview.md) | A blob verziószámozás alternatívájaként ajánlott, ha a verziószámozás nem megfelelő a forgatókönyvhöz, a költségeket vagy egyéb szempontokat, illetve ha a Storage-fiókhoz engedélyezve van egy hierarchikus névtér. | Előfordulhat, hogy egy blobot egy pillanatképből lehet visszaállítani, ha a blob felülíródik. Ha a blob törölve lett, a pillanatképek is törlődnek. | Igen, előzetes verzióban |

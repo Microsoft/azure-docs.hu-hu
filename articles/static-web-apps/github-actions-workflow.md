@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: c0cb32bd3308affa473e9039d92bd3cb23acabee
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027533"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311328"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -50,33 +50,33 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-    - name: Build And Deploy
-      id: builddeploy
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-        action: 'upload'
-        ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-        app_location: '/' # App source code path
-        api_location: 'api' # Api source code path - optional
-        output_location: 'dist' # Built app content directory - optional
-        ###### End of Repository/Build Configurations ######
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+          action: 'upload'
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          app_location: '/' # App source code path
+          api_location: 'api' # Api source code path - optional
+          output_location: 'dist' # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
-    - name: Close Pull Request
-      id: closepullrequest
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        action: 'close'
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          action: 'close'
 ```
 
 ## <a name="triggers"></a>Triggerek
@@ -87,11 +87,11 @@ Egy GitHub-művelet [elindítja](https://help.github.com/actions/reference/event
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 ```
 
 A tulajdonsághoz társított beállításokon keresztül `on` meghatározhatja, hogy mely ágak indítanak el egy feladatot, és hogyan állíthatók be eseményindítók a különböző lekéréses kérelmek állapotára.
@@ -104,10 +104,10 @@ Minden esemény-eseményindítóhoz szükség van egy eseménykezelőre. A [fela
 
 A statikus Web Apps munkafolyamat-fájlban két elérhető feladat van.
 
-| Név  | Leírás |
-|---------|---------|
-|`build_and_deploy_job` | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján. |
-|`close_pull_request_job` | CSAK egy lekéréses kérelem lezárásakor hajtható végre, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
+| Név                     | Leírás                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján.          |
+| `close_pull_request_job` | CSAK egy lekéréses kérelem lezárásakor hajtható végre, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
 
 ## <a name="steps"></a>Lépések
 
@@ -115,10 +115,10 @@ A lépések a feladatok szekvenciális feladatai. A lépések olyan műveleteket
 
 A munkafolyamat-fájlok a következő lépéseket határozzák meg.
 
-| Feladat  | Lépések  |
-|---------|---------|
-| `build_and_deploy_job` |<ol><li>Kikeresi a tárházat a művelet környezetében.<li>Létrehozza és telepíti a tárházat az Azure statikus Web Appsba.</ol>|
-| `close_pull_request_job` | <ol><li>Értesíti az Azure statikus Web Apps, hogy egy lekéréses kérelem bezárult.</ol>|
+| Feladat                      | Lépések                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | <ol><li>Kikeresi a tárházat a művelet környezetében.<li>Létrehozza és telepíti a tárházat az Azure statikus Web Appsba.</ol> |
+| `close_pull_request_job` | <ol><li>Értesíti az Azure statikus Web Apps, hogy egy lekéréses kérelem bezárult.</ol>                                                        |
 
 ## <a name="build-and-deploy"></a>Létrehozás és üzembe helyezés
 
@@ -126,14 +126,14 @@ A nevű lépés az `Build and Deploy` Azure statikus Web Apps példányára ép�
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: '/' # App source code path
-    api_location: 'api' # Api source code path - optional
-    output_location: 'dist' # Built app content directory - optional
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: '/' # App source code path
+  api_location: 'api' # Api source code path - optional
+  output_location: 'dist' # Built app content directory - optional
+  ###### End of Repository/Build Configurations ######
 ```
 
 [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
@@ -146,10 +146,10 @@ A központi telepítés során futtatott parancsok részletes szabályozása is 
 
 Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívja a-t.
 
-| Parancs            | Leírás |
-|---------------------|-------------|
-| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Ha például egy szögletes alkalmazás üzemi buildjét szeretné beállítani, hozzon létre egy nevű NPM-parancsfájlt a `build-prod` futtatáshoz `ng build --prod` , és adja meg `npm run build-prod` az egyéni parancsként. Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:azure` parancsokat.  |
-| `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg. |
+| Parancs             | Leírás                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Ha például egy szögletes alkalmazás üzemi buildjét szeretné beállítani, hozzon létre egy nevű NPM-parancsfájlt a `build-prod` futtatáshoz `ng build --prod` , és adja meg `npm run build-prod` az egyéni parancsként. Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:azure` parancsokat. |
+| `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg.                                                                                                                                                                                                                                                                                                  |
 
 ## <a name="skip-app-build"></a>Alkalmazás-összeállítás kihagyása
 
@@ -159,33 +159,33 @@ Az alkalmazás létrehozásának kihagyásához állítsa a és a lehetőséget 
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: 'dist'  # Application build output generated by a previous step
-    api_location: 'api'   # Api source code path - optional
-    output_location: ''   # Leave this empty
-    skip_app_build: true
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: 'dist' # Application build output generated by a previous step
+  api_location: 'api' # Api source code path - optional
+  output_location: '' # Leave this empty
+  skip_app_build: true
+  ###### End of Repository/Build Configurations ######
 ```
 
-| Tulajdonság            | Leírás |
-|---------------------|-------------|
-| `skip_app_build`    | Az érték megadásával `true` kihagyhatja az előtér-alkalmazás felépítési lépéseit. |
+| Tulajdonság         | Leírás                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| `skip_app_build` | Az érték megadásával `true` kihagyhatja az előtér-alkalmazás felépítési lépéseit. |
 
 > [!NOTE]
 > Csak az előtér-alkalmazás buildjét lehet kihagyni. Ha az alkalmazás API-val rendelkezik, a rendszer továbbra is a statikus Web Apps GitHub-művelettel fogja felépíteni.
 
 ## <a name="route-file-location"></a>Útvonalfájl helye
 
-Testreszabhatja a munkafolyamatot, hogy megkeresse a [routes.jsa](routes.md) tárház bármely mappájába. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
+Testreszabhatja a munkafolyamatot, hogy megkeresse a [staticwebapp.config.jsa](routes.md) tárház bármely mappájába. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
 
-| Tulajdonság            | Leírás |
-|---------------------|-------------|
-| `routes_location` | Meghatározza azt a könyvtárat, ahol a _routes.js_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
+| Tulajdonság          | Leírás                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `routes_location` | Meghatározza azt a könyvtárat, ahol a _staticwebapp.config.js_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 
- Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _routes.js_ fájljának helye legyen explicit `output_location` .
+Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _staticwebapp.config.js_ fájljának helye legyen explicit `output_location` .
 
 ## <a name="environment-variables"></a>Környezeti változók
 
@@ -207,11 +207,11 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
+          action: 'upload'
           ###### Repository/Build Configurations
-          app_location: "/"
-          api_location: "api"
-          output_location: "public"
+          app_location: '/'
+          api_location: 'api'
+          output_location: 'public'
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
@@ -219,7 +219,7 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo-támogatás
 
-A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. Alapértelmezés szerint a statikus Web Apps munkafolyamat-fájl egy adattár összes fájlját nyomon követi, de úgy is beállíthatja, hogy egyetlen alkalmazást is megcélozjon. Ezért a monorepos esetében minden statikus alkalmazásnak saját konfigurációs fájlja van, amely az adattár *. GitHub/munkafolyamatok* mappájában párhuzamosan él.
+A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. Alapértelmezés szerint a statikus Web Apps munkafolyamat-fájl egy adattár összes fájlját nyomon követi, de úgy is beállíthatja, hogy egyetlen alkalmazást is megcélozjon. Ezért a monorepos esetében minden statikus alkalmazásnak saját konfigurációs fájlja van, amely az adattár _. GitHub/munkafolyamatok_ mappájában párhuzamosan él.
 
 ```files
 ├── .github
@@ -261,9 +261,9 @@ on:
 
 Ebben az esetben csak a következő fájlokban végrehajtott módosítások indítanak új buildet:
 
-- A *App1* mappában található összes fájl
-- A *api1* mappában található összes fájl
-- Az alkalmazás *Azure-static-Web-Apps-Purple-Pond. YML* munkafolyamat-fájljának módosításai
+- A _App1_ mappában található összes fájl
+- A _api1_ mappában található összes fájl
+- Az alkalmazás _Azure-static-Web-Apps-Purple-Pond. YML_ munkafolyamat-fájljának módosításai
 
 ## <a name="next-steps"></a>Következő lépések
 

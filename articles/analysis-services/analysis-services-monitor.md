@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3991eb421f42ec6645e3321d3a624e226fd12c67
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582668"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314252"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -37,7 +37,7 @@ A részletesebb diagnosztika végrehajtásához, a teljesítmény nyomon követ�
 
 A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegfelelőbbek a figyelési forgatókönyvekhez. Ugyanazon a diagramon csak az azonos egység mérőszámai jeleníthetők meg.
 
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Parancssori feladatok várólistájának hossza|Darabszám|Átlag|A parancsfájl-készlet várólistájában lévő feladatok száma.|
 |Összege|Kapcsolat: aktuális kapcsolatok|Darabszám|Átlag|A létesített ügyfélkapcsolatok aktuális száma.|
@@ -68,7 +68,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |RowsWrittenPerSec|Feldolgozás: másodpercenként írt sorok száma|CountPerSecond|Átlag|A sorok írásának sebessége a feldolgozás során.|
 |qpu_metric|QPU|Darabszám|Átlag|QPU. 0-100-es tartomány S1, 0-200 az S2 és 0-400 for S4 esetében|
 |QueryPoolBusyThreads|Lekérdezési készlet foglalt szálai|Darabszám|Átlag|A lekérdezési szál készletében lévő foglalt szálak száma.|
-|SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenként|CountPerSecond|Átlag|A sikeres kapcsolatok gyakorisága.|
+|SuccessfullConnectionsPerSec|Másodpercenkénti sikeres kapcsolatok száma|CountPerSecond|Átlag|A sikeres kapcsolatok gyakorisága.|
 |CommandPoolBusyThreads|Szálak: a parancssori készlet foglalt szálak|Darabszám|Átlag|A parancsfájl-készletben lévő foglalt szálak száma.|
 |CommandPoolIdleThreads|Szálak: parancssori készlet üresjárati szálai|Darabszám|Átlag|Az üresjárati szálak száma a parancs szálának készletében.|
 |LongParsingBusyThreads|Szálak: hosszú elemzés – foglalt szálak|Darabszám|Átlag|A foglalt szálak száma a hosszú elemzési szál készletében.|

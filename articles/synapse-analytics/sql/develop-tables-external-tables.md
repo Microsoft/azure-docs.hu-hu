@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667634"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304800"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -339,9 +339,9 @@ Megadja a tényleges adatok mappáját vagy fájljának elérési útját és f�
 Ha a mappa helyét adja meg, a kiszolgáló nélküli SQL-készlet lekérdezése a külső táblából lesz kiválasztva, és fájlokat kér le a mappából.
 
 > [!NOTE]
-> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat. Azokat a fájlokat adja vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat, kivéve, ha az elérési út végén megadja a/* * értéket.
 
-Ebben a példában, ha a LOCATION = '/WebData/', egy kiszolgáló nélküli SQL Pool-lekérdezés, a mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Ebben a példában, ha a LOCATION = '/WebData/', egy kiszolgáló nélküli SQL Pool-lekérdezés, akkor a mydata.txt sorokat ad vissza. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-tables-external-tables/folder-traversal.png)
 

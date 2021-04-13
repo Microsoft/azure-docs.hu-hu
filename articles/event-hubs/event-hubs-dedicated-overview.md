@@ -3,12 +3,12 @@ title: A dedikált Event hubok áttekintése – Azure Event Hubs | Microsoft Do
 description: Ez a cikk áttekintést nyújt a dedikált Azure Event Hubsről, amely az Event hub egybérlős üzembe helyezését kínálja.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715615"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310767"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>A dedikált Event Hubs áttekintése
 
@@ -71,4 +71,4 @@ A dedikált Event Hubs további részleteiért forduljon a Microsoft értékesí
 
 - [Event Hubs-fürt létrehozása a Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Dedikált Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/). Felveheti a kapcsolatot a Microsoft értékesítési képviselőjével vagy Microsoft ügyfélszolgálata a dedikált Event Hubs kapacitás további részleteinek megismeréséhez.
-- A [Event HUBS GYIK](event-hubs-faq.md) tartalmazza a díjszabási információkat, és válaszokat ad a Event Hubsekkel kapcsolatos gyakori kérdésekre.
+- A [Event HUBS GYIK](event-hubs-faq.yml) tartalmazza a díjszabási információkat, és válaszokat ad a Event Hubsekkel kapcsolatos gyakori kérdésekre.
