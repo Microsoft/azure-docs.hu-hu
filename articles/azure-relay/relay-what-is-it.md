@@ -3,12 +3,12 @@ title: Mi az Azure Relay? | Microsoft Docs
 description: Ez a cikk az Azure Relay szolgáltatásról nyújt áttekintést, amely a vállalati hálózaton futó, helyszíni szolgáltatásokat használó felhőalkalmazások fejlesztését teszi lehetővé anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a hálózati infrastruktúrán.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955382"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314201"
 ---
 # <a name="what-is-azure-relay"></a>Mi az Azure Relay?
 Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ezt úgy teheti meg, hogy nem nyit meg egy portot a tűzfalon, vagy zavaró módosításokat végez a vállalati hálózati infrastruktúrában. 
@@ -80,5 +80,5 @@ Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a b
 * [Ismerkedés a .NET-HTTP-kérésekkel](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Ismerkedés a Node WebSockets-szel](relay-hybrid-connections-node-get-started.md)
 * [Ismerkedés a Node-HTTP-kérésekkel](relay-hybrid-connections-http-requests-node-get-started.md)
-* [Relay – gyakori kérdések](relay-faq.md)
+* [Relay – gyakori kérdések](relay-faq.yml)
 

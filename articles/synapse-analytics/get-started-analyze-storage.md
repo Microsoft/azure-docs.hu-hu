@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az első lépések a Storage-fiókokban lévő adatelemzés'
-description: Ebből az oktatóanyagból megtudhatja, hogyan elemezheti a Storage-fiókban található információkat.
+title: 'Oktatóanyag: A Tárfiókok adatainak elemzése – első lépések'
+description: Ez az oktatóanyag bemutatja, hogyan elemezheti a tárfiókban található adatokat.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,27 +10,27 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: f18977bb92b37546d5980134cba858b1f76b464c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b88a7e6a9851018fce255fac0e39a30563b9bf4
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720015"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363835"
 ---
-# <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
+# <a name="analyze-data-in-a-storage-account"></a>Tárfiókban található adatok elemzése
 
-Ebből az oktatóanyagból megtudhatja, hogyan elemezheti a Storage-fiókban található információkat.
+Ez az oktatóanyag bemutatja, hogyan elemezheti a tárfiókban található adatokat.
 
 ## <a name="overview"></a>Áttekintés
 
-Eddig olyan forgatókönyveket ismertetünk, amelyekben az adatok a munkaterület adatbázisaiban találhatók. Most bemutatjuk, hogyan dolgozhat a fájlokkal a Storage-fiókokban. Ebben a forgatókönyvben a munkaterület és a munkaterület létrehozásakor megadott tároló elsődleges Storage-fiókját fogjuk használni.
+Az eddig olyan forgatókönyveket fedte le, amelyekben az adatok a munkaterületen lévő adatbázisokban találhatók. Most megmutatjuk, hogyan dolgozhat a tárfiókok fájljaival. Ebben a forgatókönyvben a munkaterület és a tároló elsődleges tárfiókját fogjuk használni, amit a munkaterület létrehozásakor adtunk meg.
 
-* A Storage-fiók neve: **contosolake**
-* A tároló neve a Storage-fiókban: **felhasználók**
+* A tárfiók neve: **contosolake**
+* A tárfiókban található tároló neve: **users**
 
-### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>CSV-és Parquet-fájlok létrehozása a Storage-fiókban
+### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>CSV- és Parquet-fájlok létrehozása a tárfiókban
 
-Futtassa a következő kódot egy jegyzetfüzetben egy új kód cellában. Létrehoz egy CSV-fájlt és egy Parquet-fájlt a Storage-fiókban.
+Futtassa az alábbi kódot egy új kódcellában lévő jegyzetfüzetben. Létrehoz egy CSV-fájlt és egy Parquet-fájlt a tárfiókban.
 
 ```py
 %%pyspark
@@ -40,15 +40,15 @@ df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
 df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
-### <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
+### <a name="analyze-data-in-a-storage-account"></a>Tárfiókban található adatok elemzése
 
-A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti, vagy egy ADLS Gen2-vagy blob Storage-fiókot a munkaterülethez társíthat "**Manage**" > "**társított szolgáltatások**" > "**New**" (az alábbi lépések az elsődleges ADLS Gen2 fiókra vonatkoznak).
+Elemezheti ADLS Gen2 a munkaterület alapértelmezett ADLS Gen2-fiókjában lévő adatokat, vagy a **"Manage**" > "**Linked Services**" > "**New**" (Az alábbi lépések az elsődleges ADLS Gen2-fiókra vonatkoznak) használatával kapcsolhatók a munkaterülethez.
 
-1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt** elemre.
-1. Nyissa meg az Azure-beli **Gen2**  >  **sajátmunkaterület (Primary-contosolake)**.
-1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats_csvformat** és **PassengerCountStats_parquetformat** nevű mappát kell látnia.
-1. Nyissa meg a **PassengerCountStats_parquetformat** mappát. A (z) rendszerben egy, a következőhöz hasonló nevű parketta-fájl jelenik meg: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. Kattintson a jobb gombbal a **. parketta** elemre, majd válassza az **új jegyzetfüzet** lehetőséget, majd válassza **a betöltés a DataFrame** lehetőséget. Egy új jegyzetfüzet jön létre a következőhöz hasonló cellával:
+1. A Synapse Studio az **Adatközpontba,** majd válassza a Csatolt **lehetőséget.**
+1. Ugrás a **Azure Data Lake Storage Gen2**  >  **(Elsődleges – contosolake) elemhez.**
+1. Válassza **a users (Primary) (Felhasználók (elsődleges) lehetőséget.** Meg kell lennie a **NYCTaxi mappának.** A fájlban két mappát kell **látnia: PassengerCountStats_csvformat** és **PassengerCountStats_parquetformat.**
+1. Nyissa meg **a PassengerCountStats_parquetformat** mappát. A fájlon belül egy parquet-fájl fog látni, például: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
+1. Kattintson a jobb gombbal **a .parquet fájlra,** majd válassza az **Új jegyzetfüzet** lehetőséget, majd válassza **a Betöltés DataFrame-be lehetőséget.** A rendszer létrehoz egy új jegyzetfüzetet egy ehhez hasonló cellával:
 
     ```py
     %%pyspark
@@ -57,8 +57,8 @@ A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti
     display(df.limit(10))
     ```
 
-1. Csatolja a **Spark1** nevű Spark-készlethez. Futtassa a cellát.
-1. Kattintson a vissza a **felhasználók** mappára. Kattintson a jobb gombbal a **. Parque** fájlra, majd válassza az **új SQL-parancsfájl** lehetőséget, majd válassza a  >  **Top 100 sort**. A következőhöz hasonló SQL-parancsfájlt hoz létre:
+1. Csatolja a Spark1 nevű **Spark-készletet.** Futtassa a cellát.
+1. Válassza a vissza lehetőséget **a users (felhasználók) mappába.** Kattintson ismét a jobb gombbal a **.parquet-fájlra,** majd válassza az Új **SQL-szkript**  >  **SELECT TOP 100 rows (ELSŐ 100 sor kiválasztása) lehetőséget.** A következőhöz hasonló SQL-szkriptet hoz létre:
 
     ```sql
     SELECT 
@@ -69,7 +69,7 @@ A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti
     ) AS [result]
     ```
 
-    A parancsfájl ablakban ellenőrizze, hogy a **Kapcsolódás** mező a **beépített kiszolgáló nélküli SQL-** készletre van-e beállítva.
+    A szkriptablakban győződjön meg arról, hogy a **Csatlakozás** a következőhöz mező a Beépített kiszolgáló nélküli **SQL-készletre** van beállítva.
 
 1. Futtassa a szkriptet.
 
@@ -78,4 +78,4 @@ A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tevékenységek koordinálása folyamatokkal](get-started-pipelines.md)
+> [Tevékenységek vezénylelése folyamatokkal](get-started-pipelines.md)

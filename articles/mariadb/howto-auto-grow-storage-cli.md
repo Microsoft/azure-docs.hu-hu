@@ -1,43 +1,43 @@
 ---
-title: Tárterület automatikus növekedése – Azure CLI – Azure Database for MariaDB
-description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növekedés tárolását a Azure Database for MariaDB Azure CLI használatával.
+title: Tárterület automatikus nőjön – Azure CLI – Azure Database for MariaDB
+description: Ez a cikk bemutatja, hogyan engedélyezheti a tárterület automatikus növekedését az Azure CLI használatával a Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9217960483409c015cf0bfeef86ffcfb858141b6
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: f2ae7a890fc1dab29b6cc99e4cc88087dbc6e052
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227143"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366181"
 ---
-# <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Azure Database for MariaDB tárterület automatikus növelése az Azure CLI használatával
-Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MariaDB-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
+# <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Tárterület automatikus Azure Database for MariaDB az Azure CLI használatával
+Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MariaDB-kiszolgáló tárolóját úgy, hogy az ne befolyásolja a számítási feladatokat.
 
-A [tárolási korlátot elérő](concepts-pricing-tiers.md#reaching-the-storage-limit)kiszolgáló csak olvasható értékre van állítva. Ha a Storage automatikus növekedése engedélyezve van, akkor a 100 GB-nál kevesebb kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület nagyobb 1 GB-os vagy 10%-ában kisebb. A 100 GB-nál több kiosztott tárterülettel rendelkező kiszolgálók esetében a kiosztott tárterület mérete 5%-kal nő, ha a szabad tárterület mérete a kiosztott tárterület méretének 5%-a alá esik. Az [itt](concepts-pricing-tiers.md#storage) megadott maximális tárolási korlátozások érvényesek.
+A [tárhelykorlátot](concepts-pricing-tiers.md#reaching-the-storage-limit)el érő kiszolgáló csak olvashatóra van állítva. Ha a tárterület automatikus mérete engedélyezve van, akkor a 100 GB-nál kisebb kiépítésű tárterülettel rendelkező kiszolgálók esetén a kiépített tárterület mérete 5 GB-kal nő, amint az ingyenes tárterület a kiépített tárterület 1 GB-nál nagyobb vagy 10%-a alá csökken. A 100 GB-nál nagyobb kiépített tárterülettel rendelkező kiszolgálók esetén a kiépített tárterület 5%-kal nő, ha a szabad tárterület a kiépített tárterület 10 GB-nál kisebb. Az itt megadott maximális tárolási [korlátok érvényesek.](concepts-pricing-tiers.md#storage)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez:
+Az útmutató befejezéséhez:
 
-- Szüksége van egy [Azure Database for MariaDB-kiszolgálóra](quickstart-create-mariadb-server-database-using-azure-cli.md).
+- Szüksége lesz egy [Azure Database for MariaDB kiszolgálóra.](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-## <a name="enable-mariadb-server-storage-auto-grow"></a>A MariaDB-kiszolgáló tárterületének automatikus növekedésének engedélyezése
+## <a name="enable-mariadb-server-storage-auto-grow"></a>MariaDB-kiszolgáló tárterületének automatikus növekedésének engedélyezése
 
-A kiszolgáló automatikus növekedésének engedélyezése egy meglévő kiszolgálón a következő paranccsal:
+Engedélyezze a kiszolgáló automatikus tárolókapacitását egy meglévő kiszolgálón a következő paranccsal:
 
 ```azurecli-interactive
 az mariadb server update --name mydemoserver --resource-group myresourcegroup --auto-grow Enabled
 ```
 
-A kiszolgáló automatikus növekedésének engedélyezése a tárolóban új kiszolgáló létrehozásakor a következő paranccsal:
+Engedélyezze a kiszolgáló automatikus tárolókapacitását új kiszolgáló létrehozásakor a következő paranccsal:
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.3
@@ -45,4 +45,4 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="next-steps"></a>Következő lépések
 
-Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md).
+Ismerje [meg, hogyan hozhat létre metrikákra vonatkozó riasztásokat.](howto-alert-metric.md)

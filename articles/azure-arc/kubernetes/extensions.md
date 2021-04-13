@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Bővítmények életciklusának üzembe helyezése és kezelése az Azure arc-kompatibilis Kubernetes
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312620"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes-fürt bővítményei
 
@@ -48,10 +48,10 @@ A szolgáltatás fogalmi áttekintése a [fürt bővítményeiben érhető el �
 
 ## <a name="currently-available-extensions"></a>Jelenleg elérhető bővítmények
 
-| Mellék | Leírás |
+| Mellék | Description |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | A Kubernetes-fürtön üzembe helyezett számítási feladatok teljesítményének láthatóságát biztosítja. Gyűjti a memória-és CPU-kihasználtsági mérőszámokat a vezérlőkből, a csomópontokból és a tárolóból. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Gyűjti a naplózási adatokat a Kubernetes-fürt vezérlési sík csomópontjairól. Ajánlásokat és veszélyforrási riasztásokat biztosít az összegyűjtött adatok alapján. |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | A biztonsághoz hasonló adatokat gyűjt, például a Kubernetes-fürt naplózási adatait. Ajánlásokat és veszélyforrási riasztásokat biztosít az összegyűjtött adatok alapján. |
 
 ## <a name="usage-of-cluster-extensions"></a>A fürt bővítményeinek használata
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>Meglévő bővítmény-példány frissítése
-
-Frissítsen egy bővítmény-példányt egy fürtön a `k8s-extension update` használatával, és adja át a frissítendő értékeket.  Ez a parancs csak a `auto-upgrade-minor-version` , `release-train` , és `version` tulajdonságokat frissíti. Például:
-
-- **A kiadási vonat frissítése:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **Kapcsolja ki az automatikus frissítést, és rögzítse a bővítmény példányát egy adott verzióra:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **Az automatikus frissítés bekapcsolása a bővítmény példánya esetében:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> A `version` paraméter csak akkor állítható be, ha a értéke `--auto-upgrade-minor-version` `false` .
 
 ### <a name="delete-extension-instance"></a>Bővítmény példányának törlése
 

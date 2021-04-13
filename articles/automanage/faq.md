@@ -1,6 +1,6 @@
 ---
-title: A Virtual Machines szolgáltatás Azure-beli autokezelése – gyakori kérdések
-description: Válaszok a virtuális gépekre vonatkozó Azure-beli automanaged szolgáltatással kapcsolatos gyakori kérdésekre.
+title: Azure Automanage gépekre vonatkozó gyakori kérdések
+description: Válaszok a virtuális gépek Azure Automanage kapcsolatos gyakori kérdésekre.
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,112 +8,115 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5a9ff7661fda372631d1bb912b1c137b37c7e07
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688008"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363359"
 ---
-# <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
+# <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések a virtuális Azure Automanage kapcsolatos kérdésekről
 
-Ez a cikk a [virtuális gépek Azure-beli automanage szolgáltatásával](automanage-virtual-machines.md)kapcsolatos leggyakoribb kérdésekre ad választ.
+Ez a cikk a virtuális gépek Azure Automanage [kapcsolatos leggyakoribb kérdésekre ad választ.](automanage-virtual-machines.md)
 
-Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN webhelyen](https://azure.microsoft.com/support/forums/)található Azure-fórumokra, és stack overflow. Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérést is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás lapon](https://azure.microsoft.com/support/options/)válassza a **támogatás** lekérése lehetőséget.
+Ha a cikk nem foglalkozik az Azure-ral kapcsolatos probléma megoldásával, keresse fel az Azure fórumait az MSDN-ről, és [Stack Overflow.](https://azure.microsoft.com/support/forums/) A problémát közzétenheti ezeken a fórumokon, vagy közzétenheti a [ @AzureSupport Twitteren.](https://twitter.com/AzureSupport) Elküldhet egy kérést Azure-támogatás is. Ha támogatási kérést küld, a Azure-támogatás [oldalán válassza](https://azure.microsoft.com/support/options/)a **Támogatás kérése lehetőséget.**
 
 
-## <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
+## <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage virtuális gépekhez
 
-**Milyen előfeltételekre van szükség az Azure automanage szolgáltatás engedélyezéséhez?**
+**Milyen előfeltételek szükségesek a Azure Automanage?**
 
-Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezésének előfeltételei:
+A következő előfeltételek a Azure Automanage:
 - Támogatott [Windows Server-verziók](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciók](automanage-linux.md#supported-linux-distributions-and-versions)
-- A virtuális gépeknek támogatott régióban kell lenniük
+- A virtuális gépeknek támogatott régióban kell lennie
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
-- Csak a nem méretezési csoportba tartozó virtuális gépek
-- Az automanage nem támogatja a homokozó-előfizetéseket.
+- Csak nem méretezési halmazú virtuális gépek
+- Az automatikus automatizálás jelenleg nem támogatja a sandbox-előfizetéseket
 
-**Milyen Azure RBAC engedélyre van szükség az automanage engedélyezéséhez?**
+**Milyen Azure RBAC-engedélyre van szükség az automatikus automatizálás engedélyezéséhez?**
 
-Ha egy meglévő automanage-fiókkal rendelkező virtuális gépen engedélyezi az automanage-alapú felügyeletet, akkor közreműködői szerepkörrel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található.
+Ha egy meglévő automanage-fiókkal rendelkezik egy virtuális gépen az automatikus automatizálás engedélyezését, közreműködői szerepkörre lesz szüksége ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található.
 
-Ha az engedélyezésekor új automanage-fiókot használ, rendelkeznie kell a tulajdonos szerepkörrel, vagy közreműködői + felhasználói hozzáférés rendszergazdai szerepkörrel kell rendelkeznie az előfizetéshez.
-
-
-**Mely régiók támogatottak?**
-
-A támogatott régiók teljes listája [itt](./automanage-virtual-machines.md#supported-regions)érhető el.
+Ha új automatikus felügyeleti fiókot használ az engedélyezéskor, akkor tulajdonosi vagy Közreműködő + Felhasználói hozzáférés-rendszergazda szerepkört kell használnia az előfizetéshez.
 
 
-**Mely funkciók automatizálják az Azure automatikus felügyeletét?**
+**Milyen régiók támogatottak?**
 
-Az [itt](automanage-virtual-machines.md)felsorolt szolgáltatások a virtuális gép életciklusa alatt beléptetések, konfigurálások és figyelők automatikus kezelése.
-
-**Az Azure automanage együttműködik az Azure arc-kompatibilis virtuális gépekkel?**
-
-Az automanage jelenleg nem támogatja az arc-kompatibilis virtuális gépeket.
-
-**Testreszabhatók a konfigurációk az Azure automanage szolgáltatásban?**
-
-Az ügyfelek a konfigurációs beállítások segítségével testre szabhatják az adott szolgáltatások beállításait, például a Azure Backup megőrzést. A módosítható beállítások teljes listájáért tekintse meg a dokumentációt [itt](automanage-virtual-machines.md#customizing-an-environment-using-preferences).
+A támogatott régiók teljes listája itt [érhető el.](./automanage-virtual-machines.md#supported-regions)
 
 
-**Működik az Azure automanage a Linux és a Windows rendszerű virtuális gépekkel?**
+**Mely képességeket Azure Automanage automatizálni?**
 
-Igen, tekintse meg a támogatott [Windows Server-verziókat](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciókat](automanage-linux.md#supported-linux-distributions-and-versions).
+Az itt felsorolt szolgáltatások automatikus regisztrációja, konfigurálása és figyelés a virtuális gép életciklusa [során.](automanage-virtual-machines.md)
 
+**Működik Azure Automanage a Azure Arc virtuális gépekkel?**
 
-**Szelektíven is alkalmazhatom az automanage-t csak a virtuális gépek készletén?**
+Az automatikus automatizálás jelenleg nem támogatja az Arc-kompatibilis virtuális gépeket.
 
-A kiválasztott új és meglévő virtuális gépeken a click és a Point egyszerűség lehetőséggel engedélyezhető az automanage szolgáltatás. Az automanage is bármikor letiltható.
+**Testre szabhatom a konfigurációkat a Azure Automanage?**
 
-
-**Támogatja az Azure automanage a virtuálisgép-méretezési csoportokban a virtuális gépeket?**
-
-Nem, az Azure automanage jelenleg nem támogatja a virtuálisgép-méretezési csoportokban lévő virtuális gépeket.
+Az ügyfelek konfigurációs beállítások segítségével testreszabhatják adott szolgáltatások beállításait, például Azure Backup megőrzési beállításokat. A módosítható beállítások teljes listáját az itt található [dokumentációban találhatja meg.](automanage-virtual-machines.md#customizing-an-environment-using-preferences)
 
 
-**Mennyibe kerül az Azure automanaged Cost?**
+**Működik Azure Automanage Linux és Windows rendszerű virtuális gépekkel is?**
 
-Az Azure automanage szolgáltatás díjmentesen elérhető nyilvános előzetes verzióban. A csatlakoztatott Azure-erőforrások (például Azure Backup) költséggel járnak.
-
-
-**Alkalmazhatom az Azure Policy használatával történő autofelügyeletet?**
-
-Igen, van egy beépített szabályzatunk, amely automatikusan alkalmazza az automatikus felügyeletet a megadott hatókörön belüli összes virtuális gépre. A környezeti konfigurációt (DevTest vagy éles környezet) is meg kell adnia az automatikus felügyelet fiókkal együtt. További információ az Azure Policy szolgáltatással való autofelügyelet engedélyezéséről [itt](virtual-machines-policy-enable.md).
+Igen, tekintse meg a [támogatott Windows Server-verziókat](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciókat.](automanage-linux.md#supported-linux-distributions-and-versions)
 
 
-**Mi az az automanage Account?**
+**Alkalmazhatom szelektíven az automatikus automatizálni a virtuális gépek egy halmazát?**
 
-Az automatikus felügyelet fiók egy MSI (Managed Service Identity), amely biztosítja a biztonsági környezetet, illetve azt az identitást, amely alatt az automatizált műveletek történnek.
-
-
-**Az automanage engedélyezése esetén a kiválasztott virtuális gép (ek) mellett további virtuális gépekre is hatással van?**
-
-Ha a virtuális gép egy meglévő Log Analytics-munkaterülethez van csatolva, a következő megoldások alkalmazásával fogjuk felhasználni a munkaterületet: Change Tracking, leltár és Update Management. Az adott munkaterülethez csatlakozó összes virtuális gépnek engedélyezve lesznek ezek a megoldások.
+Az automatikus automatizálható kattintással és egyszerűséggel a kiválasztott új és meglévő virtuális gépeken. Az automatikus automatizálható bármikor letiltható.
 
 
-**Módosíthatom a virtuális gép környezetét?**
+**Támogatja Azure Automanage virtuálisgép-méretezési készletben lévő virtuális gépeket?**
 
-Ekkor le kell tiltania a virtuális gép automatikusan felügyelt funkcióját, majd újra engedélyeznie kell az automatikusan felügyelt környezetet a kívánt környezettel és beállításokkal.
-
-
-**Ha a virtuális gép már konfigurálva van egy szolgáltatáshoz (például Update Management), az automatikusan kezeli az újrakonfigurálást?**
-Nem, az automanage nem konfigurálja újra. Elkezdjük figyelni a szolgáltatáshoz kapcsolódó erőforrásokat a drifthez.
+Nem, Azure Automanage virtuálisgép-méretezési készletben lévő virtuális gépek jelenleg nem támogatottak.
 
 
-**Miért van a virtuális gép hibás állapota az automanage portálon?**
+**Mennyibe kerül Azure Automanage?**
 
-Ha az állapotot *nem sikerült* megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
+Azure Automanage a nyilvános előzetes verzióban további költségek nélkül érhető el. A csatolt Azure-erőforrások, például Azure Backup, költségeket fognak felszámításra.
 
-**Hogyan szerezhetem be az automanage hibaelhárítási támogatását?**
 
-A [technikai támogatási esetekről szóló jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is megadhat. A **szolgáltatás** beállításnál keresse meg és válassza ki az *automanage* ( *felügyelet és felügyelet) szakaszt a figyelés és kezelés* szakaszban.
+**Alkalmazhatom az automatikus szolgáltatásokat az Azure Policyn keresztül?**
+
+Igen, van egy beépített szabályzatunk, amely automatikusan alkalmazza az automatikus adatokat a meghatározott hatókörben található összes virtuális gépre. A környezet konfigurációját (DevTest vagy Production) is meg kell adnia az Automanage-fiókkal együtt. Az Automatikus automatizálás Azure Policyvel való engedélyezéséről itt [olvashat bővebben.](virtual-machines-policy-enable.md)
+
+
+**Mi az az automatikus fiók?**
+
+Az automatikus felügyelet fiókja egy MSI (felügyeltszolgáltatás-identitás), amely biztosítja azt a biztonsági környezetet vagy identitást, amelyen az automatikus műveletek le vannak végezve.
+
+
+**Az Automatikus automatizálás engedélyezése hatással van a kiválasztott virtuális gépeken kívül további virtuális gépekre is?**
+
+Ha a virtuális gépe egy meglévő Log Analytics-munkaterülethez van kapcsolva, a munkaterületet újra felhasználjuk a következő megoldások alkalmazásával: Change Tracking, Inventory és Update Management. A munkaterülethez csatlakoztatott összes virtuális gépen engedélyezve lesznek ezek a megoldások.
+
+
+**Módosít tudom a virtuális gépem környezetét?**
+
+Ekkor le kell tiltania a virtuális gép automanage funkcióját, majd újra engedélyeznie kell az Automatikus automatizálás beállítást a kívánt környezettel és beállításokkal.
+
+
+**Ha a virtuális gépem már konfigurálva van egy szolgáltatáshoz, például a Update Management, az Automanage újrakonfigurálja?**
+Nem, az automatikus automatizálás nem konfigurálja újra. Elkezdjük figyelni a szolgáltatáshoz társított erőforrások eltérését.
+
+
+**Miért van Sikertelen állapotú a virtuális gépem az Automatikus portálon?**
+
+Ha a Sikertelen állapotot *látja,* az üzembe helyezés hibaelhárítása többféleképpen is lehetséges:
+* Az **Erőforráscsoportok menüben** válassza ki  az erőforráscsoportot, kattintson az Üzemelő példányok elemre, és itt tekintse meg a Sikertelen állapotot a hiba részleteivel együtt. 
+* Az **Előfizetések menüben** válassza ki az erőforráscsoportot, kattintson az Üzemelő **példányok** elemre, és itt tekintse meg a Sikertelen állapotot a hiba részleteivel együtt. 
+* Felkeresheti egy virtuális gép tevékenységnaplóját is, amely a "Konfigurációs profil-hozzárendelések létrehozása vagy frissítése" bejegyzést fogja tartalmazni. Ez további részleteket is tartalmazhat az üzemelő példányról.
+
+**Hogyan kaphatok hibaelhárítási támogatást az automanage-hez?**
+
+Műszaki támogatási jegyet is [be lehet nyújtatni.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) A Szolgáltatás **beállításnál** keresse meg és válassza az *Automatikus kezelés lehetőséget* a *Figyelés és felügyelet szakaszban.*
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Próbálja meg engedélyezni a Azure Portalban található virtuális gépek autofelügyeletét.
+Próbálja meg engedélyezni a virtuális gépek automatikus Azure Portal.
 
 > [!div class="nextstepaction"]
-> [A virtuális gépek autofelügyeletének engedélyezése a Azure Portalban](quick-create-virtual-machines-portal.md)
+> [A virtuális gépek automatikus Azure Portal](quick-create-virtual-machines-portal.md)

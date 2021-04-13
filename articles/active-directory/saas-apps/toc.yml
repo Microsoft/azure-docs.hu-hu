@@ -31,7 +31,7 @@
           href: academy-attendance-tutorial.md
         - name: Acadia
           href: acadia-tutorial.md
-        - name: Accenture Akadémia
+        - name: Accenture Academy
           href: accenture-academy-tutorial.md
         - name: Accredible
           href: accredible-tutorial.md
@@ -41,7 +41,7 @@
           href: aclp-tutorial.md
         - name: AcquireIO
           href: acquireio-tutorial.md
-        - name: Acunetix 360
+        - name: Axisetix 360
           href: acunetix-360-tutorial.md
         - name: Adaptive Insights
           href: adaptivesuite-tutorial.md
@@ -73,7 +73,7 @@
           href: airwatch-tutorial.md
         - name: Akamai
           href: akamai-tutorial.md
-        - name: AKASHI
+        - name: AK MASH
           href: akashi-tutorial.md
         - name: Alcumus Info Exchange
           href: alcumus-info-tutorial.md
@@ -91,7 +91,7 @@
           href: ally-tutorial.md
         - name: Amazon Business
           href: amazon-business-tutorial.md
-        - name: AWS Single-Account hozzáférés
+        - name: AWS Single-Account Access
           href: amazon-web-service-tutorial.md
         - name: Amazon Web Services (AWS) több fiók összekapcsolásához
           href: aws-multi-accounts-tutorial.md
@@ -181,7 +181,7 @@
           href: awarego-tutorial.md
         - name: AWS ClientVPN
           href: aws-clientvpn-tutorial.md
-        - name: AWS egyszeri Sign-On
+        - name: AWS Single Sign-On
           href: aws-single-sign-on-tutorial.md
         - name: Axiad-felhő
           href: axiad-cloud-tutorial.md
@@ -371,7 +371,7 @@
           href: newsignature-tutorial.md
         - name: CloudCords
           href: cloudcords-tutorial.md
-        - name: CloudKnox engedélyek kezelése platform
+        - name: CloudKnox engedélykezelési platform
           href: cloudknox-permissions-management-platform-tutorial.md
         - name: Cloudmore
           href: cloudmore-tutorial.md
@@ -435,7 +435,7 @@
           href: convercent-tutorial.md
         - name: Coralogix
           href: coralogix-tutorial.md
-        - name: Egy Sign-On sarokköve
+        - name: Cornerstone Single Sign-On
           href: cornerstone-ondemand-tutorial.md
         - name: CorpTax
           href: corptax-tutorial.md
@@ -525,9 +525,9 @@
           href: dynamicsignal-tutorial.md
         - name: Dynatrace
           href: dynatrace-tutorial.md
-        - name: Emődi
+        - name: EAB
           href: eab-navigate-tutorial.md
-        - name: Emődi implementáció
+        - name: EAB-implementáció
           href: eab-navigate-impl-tutorial.md
         - name: EAB Navigate Strategic Care
           href: eab-navigate-strategic-care-tutorial.md
@@ -635,7 +635,7 @@
           href: factset-tutorial.md
         - name: Fastly Edge felhő
           href: fastly-edge-cloud-tutorial.md
-        - name: FAX. PLUSZ
+        - name: Fax. Plusz
           href: fax.plus-tutorial.md
         - name: FCM HUB
           href: fcm-hub-tutorial.md
@@ -727,7 +727,7 @@
           href: github-ae-tutorial.md
         - name: GitHub Enterprise-felhő – nagyvállalati fiók
           href: github-enterprise-cloud-enterprise-account-tutorial.md
-        - name: GitHub vállalati felügyelt felhasználó
+        - name: GitHub Enterprise Managed User
           href: github-enterprise-managed-user-tutorial.md
         - name: GlassFrog
           href: glassfrog-tutorial.md
@@ -817,7 +817,7 @@
           href: hr2day-tutorial.md
         - name: HRworks Single Sign-On
           href: hrworks-single-sign-on-tutorial.md
-        - name: HSB-ThoughtSpot
+        - name: HSB ThoughtSpot
           href: hsb-thoughtspot-tutorial.md
         - name: Hub Planner
           href: hub-planner-tutorial.md
@@ -837,7 +837,7 @@
           href: iamip-patent-platform-tutorial.md
         - name: IBM Digital Business Automation on Cloud
           href: ibm-digital-business-automation-on-cloud-tutorial.md
-        - name: IBMid
+        - name: IBMid (IBMid)
           href: ibmid-tutorial.md
         - name: IBM Kenexa Survey Enterprise
           href: kenexasurvey-tutorial.md
@@ -1019,7 +1019,7 @@
           href: kisi-physical-security-tutorial.md
         - name: Kiteworks
           href: kiteworks-tutorial.md
-        - name: Klaxoon SAML
+        - name: Fogaján SAML
           href: klaxoon-saml-tutorial.md
         - name: Klue
           href: klue-tutorial.md
@@ -1119,7 +1119,7 @@
           href: manabipocket-tutorial.md
         - name: Mapbox
           href: mapbox-tutorial.md
-        - name: Maptician
+        - name: Maptician (Térképes)
           href: maptician-tutorial.md
         - name: Marketo
           href: marketo-tutorial.md
@@ -1287,7 +1287,7 @@
           href: onetrust-tutorial.md
         - name: Onit
           href: onit-tutorial.md
-        - name: Onshape
+        - name: Onshape (Onshape)
           href: onshape-tutorial.md
         - name: OnTrack
           href: ontrack-tutorial.md
@@ -1305,7 +1305,7 @@
           href: oracle-cloud-tutorial.md
         - name: Oracle Fusion ERP
           href: oracle-fusion-erp-tutorial.md
-        - name: Oracle PeopleSoft – az F5 BIG-IP APM által védett
+        - name: Oracle PeopleSoft – F5 BIG-IP APM által védett
           href: oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial.md
         - name: OrgChart Now
           href: orgchartnow-tutorial.md
@@ -1345,7 +1345,7 @@
           href: panorays-tutorial.md
         - name: Pantheon
           href: pantheon-tutorial.md
-        - name: Parkalot – parkoló kezelése
+        - name: Parkalot – Autóspark-kezelés
           href: parkalot-car-park-management-tutorial.md
         - name: PatentSQUARE
           href: patentsquare-tutorial.md
@@ -1401,7 +1401,7 @@
           href: podbean-tutorial.md
         - name: PolicyStat
           href: policystat-tutorial.md
-        - name: PoolParty szemantikai csomagja
+        - name: PoolParty Szemantikai csomag
           href: poolparty-semantic-suite-tutorial.md
         - name: PostBeyond
           href: postbeyond-tutorial.md
@@ -1511,7 +1511,7 @@
           href: reviewsnap-tutorial.md
         - name: Reward Gateway
           href: reward-gateway-tutorial.md
-        - name: Rewatch
+        - name: Rewatch (Újratár)
           href: rewatch-tutorial.md
         - name: RFPIO
           href: rfpio-tutorial.md
@@ -1545,7 +1545,7 @@
           href: runmyprocess-tutorial.md
     - name: S
       items:
-        - name: Saba felhő
+        - name: Saba Cloud
           href: saba-cloud-tutorial.md
         - name: Saba TalentSpace
           href: halogen-software-tutorial.md
@@ -1575,7 +1575,7 @@
           href: samlssojira-tutorial.md
         - name: Azure AD SAML Toolkit
           href: saml-toolkit-tutorial.md
-        - name: Samsung Knox és üzleti szolgáltatások
+        - name: Samsung Knox és Business Services
           href: samsung-knox-and-business-services-tutorial.md
         - name: Sansan
           href: sansan-tutorial.md
@@ -1593,7 +1593,7 @@
           href: sap-fiori-tutorial.md
         - name: SAP HANA
           href: saphana-tutorial.md
-        - name: Tudálékos
+        - name: Sapient
           href: sapient-tutorial.md
         - name: SAP NetWeaver
           href: sap-netweaver-tutorial.md
@@ -1671,7 +1671,7 @@
           href: shucchonavi-tutorial.md
         - name: Shutterstock
           href: shutterstock-tutorial.md
-        - name: Sigma számítástechnika
+        - name: Szigma-számítástechnika
           href: sigma-computing-tutorial.md
         - name: Signagelive
           href: signagelive-tutorial.md
@@ -1741,7 +1741,7 @@
           href: softeon-tutorial.md
         - name: Software AG Cloud
           href: software-ag-cloud-tutorial.md
-        - name: SolarWinds Service Desk
+        - name: SolarWinds ügyfélszolgálat
           href: samanage-tutorial.md
         - name: Soloinsight-CloudGate SSO
           href: soloinsight-cloudgate-sso-tutorial.md
@@ -1853,7 +1853,7 @@
           href: thoughtworks-mingle-tutorial.md
         - name: ThousandEyes
           href: thousandeyes-tutorial.md
-        - name: LXP megvirágzása
+        - name: Szabályozásos LXP
           href: thrive-lxp-tutorial.md
         - name: TicketManager
           href: ticketmanager-tutorial.md
@@ -1893,7 +1893,7 @@
           href: trakopolis-tutorial.md
         - name: Trakstar
           href: trakstar-tutorial.md
-        - name: TransPerfect GlobalLink-irányítópult
+        - name: TransPerfect GlobalLink irányítópult
           href: transperfect-globallink-dashboard-tutorial.md
         - name: Trelica
           href: trelica-tutorial.md
@@ -1925,7 +1925,7 @@
           href: ungerboeck-software-tutorial.md
         - name: UNIFI
           href: unifi-tutorial.md
-        - name: Online uniFLOW
+        - name: uniFLOW Online
           href: uniflow-online-tutorial.md
         - name: Upshotly
           href: upshotly-tutorial.md
@@ -1937,7 +1937,7 @@
           href: userecho-tutorial.md
         - name: UserVoice
           href: uservoice-tutorial.md
-        - name: ValidSign
+        - name: ValidSign (Érvényes aláírás)
           href: validsign-tutorial.md
         - name: Velpic SAML
           href: velpicsaml-tutorial.md
@@ -2132,7 +2132,7 @@
           href: atlassian-cloud-provisioning-tutorial.md
         - name: Azure Databricks SCIM-összekötő
           href: /azure/databricks/administration-guide/users-groups/scim/aad?bc=%2fazure%2factive-directory%2fsaas-apps%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fsaas-apps%2ftoc.json
-        - name: AWS egyszeri Sign-On
+        - name: AWS Single Sign-On
           href: aws-single-sign-on-provisioning-tutorial.md
         - name: BitaBIZ
           href: bitabiz-provisioning-tutorial.md
@@ -2210,7 +2210,7 @@
           href: github-provisioning-tutorial.md
         - name: GitHub AE
           href: github-ae-provisioning-tutorial.md
-        - name: GitHub vállalati felügyelt felhasználó
+        - name: GitHub Enterprise Managed User
           href: github-enterprise-managed-user-provisioning-tutorial.md
         - name: GoToMeeting
           href: citrixgotomeeting-provisioning-tutorial.md
@@ -2242,6 +2242,8 @@
           href: iprova-provisioning-tutorial.md
         - name: Jive
           href: jive-provisioning-tutorial.md
+        - name: Jostle
+          href: jostle-provisioning-tutorial.md
         - name: Juno Journey
           href: juno-journey-provisioning-tutorial.md
         - name: Keeper Password Manager & Digital Vault
@@ -2300,7 +2302,7 @@
           href: pingboard-provisioning-tutorial.md
         - name: Playvox
           href: playvox-provisioning-tutorial.md
-        - name: Preciate
+        - name: Előzetes érték
           href: preciate-provisioning-tutorial.md
         - name: PrinterLogic SaaS
           href: printer-logic-saas-provisioning-tutorial.md

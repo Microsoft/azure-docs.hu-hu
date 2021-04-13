@@ -1,6 +1,6 @@
 ---
-title: Közvetlen összevonás VÁLLALATKÖZI identitás-szolgáltatóval – Azure AD
-description: Közvetlenül összevonása SAML-vagy WS-Fed-szolgáltatóval, hogy a vendégek be tudják jelentkezni az Azure AD-alkalmazásokba
+title: Közvetlen összevonás egy identitásszolgáltatóval B2B-hez – Azure AD
+description: Közvetlenül összevont egy SAML- vagy WS-Fed-identitásszolgáltatóval, így a vendégek bejelentkeznek az Azure AD-alkalmazásokba
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,53 +12,53 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552291"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364906"
 ---
-# <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
+# <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás vendégfelhasználók AD FS külső szolgáltatókkal (előzetes verzió)
 
 > [!NOTE]
->  A közvetlen összevonás a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>  A közvetlen összevonás a nyilvános előzetes verzió egyik Azure Active Directory. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk azt ismerteti, hogyan állítható be a közvetlen összevonás egy másik szervezettel a B2B-együttműködéshez. Beállíthat közvetlen összevonást bármely olyan szervezettel, amelynek az Identity Provider (identitásszolgáltató) támogatja az SAML 2,0 vagy WS-Fed protokollt.
-Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az adott tartományhoz tartozó új vendég felhasználók saját identitásszolgáltató által felügyelt szervezeti fiókkal jelentkezhetnek be az Azure AD-bérlőbe, és megkezdhetik a velük való együttműködést. Nincs szükség arra, hogy a vendég felhasználó külön Azure AD-fiókot hozzon létre.
+Ez a cikk bemutatja, hogyan állíthat be közvetlen összevonást egy másik szervezettel a B2B-együttműködéshez. Közvetlen összevonást állíthat be bármely olyan szervezettel, amelynek identitásszolgáltatója (IdP) támogatja az SAML 2.0 vagy WS-Fed protokollt.
+Amikor közvetlen összevonást hoz létre egy partner idP-jával, az új vendégfelhasználók az ebben a tartományban a saját, idP által felügyelt szervezeti fiókjukkal jelentkezhetnek be az Azure AD-bérlőbe, és együttműködhet velük. A vendégfelhasználónak nem kell külön Azure AD-fiókot létrehoznia.
 
-## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor van hitelesítve a vendég felhasználó közvetlen összevonással?
-Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Íme néhány példa:
- - Ha a vendég felhasználói már beváltották a meghívókat, és ezt követően a szervezethez tartozó közvetlen összevonást is beállította, akkor a vendég felhasználói továbbra is ugyanazt a hitelesítési módszert használják, mint a közvetlen összevonás beállítása előtt.
- - Ha úgy állítja be a közvetlen kapcsolatot egy partner szervezettel, hogy meghívja a vendég felhasználókat, majd a partnervállalat később áthelyezi az Azure AD-be, a már beváltott meghívókat továbbra is a közvetlen összevonás fogja használni, feltéve, hogy a bérlői közvetlen összevonási házirend létezik.
- - Ha közvetlen kapcsolatot töröl egy partner szervezettel, a közvetlen kapcsolatot használó vendég felhasználók nem fognak tudni bejelentkezni.
+## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor hitelesíti a vendégfelhasználót közvetlen összevonással?
+A szervezettel való közvetlen összevonás beállítása után a meghívott új vendégfelhasználók közvetlen összevonással lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert az olyan vendégfelhasználóknál, akik már beváltják az Ön meghívását. Íme néhány példa:
+ - Ha a vendégfelhasználók már beváltják az Ön meghívását, és ezt követően közvetlen összevonást hoz létre a szervezettel, ezek a vendégfelhasználók továbbra is ugyanazt a hitelesítési módszert fogják használni, mint amelyet a közvetlen összevonás beállítása előtt használtak.
+ - Ha közvetlen összevonást hoz létre egy partnerszervezettel, és vendégfelhasználókat hív meg, majd a partnerszervezet később az Azure AD-be költözik, a meghívókat már beváltó vendégfelhasználók továbbra is a közvetlen összevonást fogják használni, ha a bérlőben létezik a közvetlen összevonási szabályzat.
+ - Ha töröl közvetlen összevonást egy partnerszervezettel, a jelenleg közvetlen összevonást használó vendégfelhasználók nem fognak tudni bejelentkezni.
 
-Ezen forgatókönyvek bármelyikében frissítheti a vendég felhasználó hitelesítési módszerét, ha [alaphelyzetbe állítja a beváltási állapotát](reset-redemption-status.md).
+Ezen forgatókönyvek bármelyikében frissítheti a vendégfelhasználó hitelesítési módszerét az érvényesítési [állapot visszaállításával.](reset-redemption-status.md)
 
-A közvetlen összevonás tartományi névterekhez van kötve, például contoso.com és fabrikam.com. AD FS vagy harmadik féltől származó identitásszolgáltató rendelkező közvetlen összevonási konfiguráció létrehozásakor a szervezetek egy vagy több tartományi névteret társítanak ezekhez a IDP. 
+A közvetlen összevonás tartománynévterekkel van összekötve, például a contoso.com és fabrikam.com. Amikor közvetlen összevonási konfigurációt hoznak létre AD FS vagy egy külső internetszolgáltatóval, a szervezetek egy vagy több tartománynévteret társítanának ezekhez az azonosítókhoz. 
 
 ## <a name="end-user-experience"></a>Végfelhasználói élmény 
-A közvetlen összevonással a vendég felhasználók saját szervezeti fiókjával jelentkezhetnek be az Azure AD-bérlőbe. Ha megosztott erőforrásokhoz férnek hozzá, és a rendszer kéri a bejelentkezést, a rendszer átirányítja a közvetlen összevonási felhasználókat a identitásszolgáltató. A sikeres bejelentkezés után a rendszer visszaküldi őket az Azure AD-nek az erőforrások eléréséhez. A közvetlen összevonási felhasználók frissítési jogkivonatai 12 órára érvényesek, az [áteresztő frissítési token alapértelmezett hossza](../develop/active-directory-configurable-token-lifetimes.md#exceptions) az Azure ad-ben. Ha az összevont identitásszolgáltató egyszeri bejelentkezés engedélyezve van, akkor a felhasználó egyszeri bejelentkezést fog tapasztalni, és a kezdeti hitelesítés után nem jelenik meg a bejelentkezési üzenet.
+Közvetlen összevonás esetén a vendégfelhasználók a saját szervezeti fiókjukkal jelentkeznek be az Azure AD-bérlőbe. Amikor megosztott erőforrásokhoz férnek hozzá, és a rendszer bejelentkezést kér, a rendszer átirányítja a közvetlen összevonási felhasználókat az internetszolgáltatójukhoz. A sikeres bejelentkezés után a rendszer visszaküldi őket az Azure AD-nek az erőforrások eléréséhez. A közvetlen összevonási felhasználók frissítési jogkivonatai 12 óráig érvényesek, az Azure AD-ben az áttért frissítési [jogkivonatok](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties) alapértelmezett hossza. Ha az összevont idP-n engedélyezve van az SSO, a felhasználó SSO-t fog tapasztalni, és a kezdeti hitelesítés után nem fog bejelentkezési kérést látni.
 
 ## <a name="sign-in-endpoints"></a>Bejelentkezési végpontok
 
-A közvetlen összevonási vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a saját hitelesítő adataival.
+A közvetlen összevonási vendégfelhasználók mostantól bejelentkeznek [a](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) több-bérlős vagy a Microsoft saját alkalmazásaiba egy közös végpont használatával (vagyis egy általános alkalmazás URL-címével, amely nem tartalmazza a bérlői környezetet). A bejelentkezési folyamat során a vendégfelhasználó a Bejelentkezési lehetőségeket választja, majd a Bejelentkezés egy **szervezetbe lehetőséget.** A felhasználó ezután be írja a szervezet nevét, és folytatja a bejelentkezést a saját hitelesítő adataival.
 
-A közvetlen összevonási vendég felhasználói olyan alkalmazás-végpontokat is használhatnak, amelyek tartalmazzák a bérlői adatokat, például:
+A közvetlen összevonási vendégfelhasználók olyan alkalmazásvégpontokat is használhatnak, amelyek tartalmazzák a bérlő adatait, például:
 
   * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
   * `https://portal.azure.com/<your tenant ID>`
 
-Azt is megteheti, hogy közvetlen kapcsolatot biztosít az összevonási vendég felhasználóinak egy alkalmazásra vagy erőforrásra, például a bérlői információkkal együtt `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
+Közvetlen összevonási vendégfelhasználóknak is adhat közvetlen hivatkozást egy alkalmazásra vagy erőforrásra a bérlői adatok (például ) megszava. `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`
 
 ## <a name="limitations"></a>Korlátozások
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS által ellenőrzött tartományok az Azure AD-ben
-A összevonása kívánt tartomány ***nem*** lehet DNS-ellenőrzés alatt állni az Azure ad-ben. Engedélyezheti a közvetlen összevonás felügyelet nélküli (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlők általi beállítását, mivel azok nem DNS-ellenőrzés alatt állnak.
+Az a tartomány, amelybe az összevont tartományt szeretné, nem ***lehet*** DNS-ellenőrzéssel ellenőrizni az Azure AD-ben. Közvetlen összevonást állíthat be nem hitelesített (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlőkhöz, mert azok nem DNS-ellenőrzés alatt áll.
 
 ### <a name="authentication-url"></a>Hitelesítési URL-cím
-A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amelyekben a hitelesítési URL tartománya megegyezik a céltartományban, vagy ha a hitelesítési URL-cím az egyik engedélyezett Identity Provider (ez a lista változhat):
+Közvetlen összevonás csak olyan szabályzatok esetében engedélyezett, amelyek hitelesítési URL-tartománya megegyezik a céltartománysal, vagy amelyek hitelesítési URL-címe ezen engedélyezett identitásszolgáltatók egyike (ez a lista változhat):
 
 -   accounts.google.com
 -   pingidentity.com
@@ -70,121 +70,121 @@ A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amely
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Ha például a **fabrikam.com** közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
+Ha például közvetlen összevonást ad meg a **fabrikam.com,** a hitelesítési `https://fabrikam.com/adfs` URL-cím át fogja menni az ellenőrzésen. Egy azonos tartományban található gazdagép is át lesz adhatja például a következőt: `https://sts.fabrikam.com/adfs` . A hitelesítési URL-cím vagy ugyanannak a tartománynak `https://fabrikamconglomerate.com/adfs` azonban nem fog `https://fabrikam.com.uk/adfs` átmenni.
 
-### <a name="signing-certificate-renewal"></a>Tanúsítvány megújításának aláírása
-Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
+### <a name="signing-certificate-renewal"></a>Aláíró tanúsítvány megújítása
+Ha megadja a metaadatok URL-címét az identitásszolgáltató beállításaiban, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor az lejár. Ha azonban a tanúsítványt bármilyen okból a lejárati idő előtt váltják le, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
 
 ### <a name="limit-on-federation-relationships"></a>Összevonási kapcsolatok korlátozása
-Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](/powershell/module/msonline/set-msoldomainfederationsettings) és a közvetlen szövetségeket is.
+Jelenleg legfeljebb 1000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső és](/powershell/module/msonline/set-msoldomainfederationsettings) a közvetlen összevonásokat is.
 
-### <a name="limit-on-multiple-domains"></a>Korlátozás több tartományra
-Jelenleg nem támogatottak a közvetlen összevonás ugyanahhoz a bérlőhöz tartozó több tartománnyal.
+### <a name="limit-on-multiple-domains"></a>Több tartomány korlátozása
+Jelenleg nem támogatjuk a közvetlen összevonást egy bérlő több tartományával.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Beállíthat közvetlen összevonást olyan tartománnyal, amelyhez nem felügyelt (e-mailben ellenőrzött) bérlő létezik? 
-Igen. Ha a tartomány még nem lett ellenőrizve, és a bérlő nem ment át a [rendszergazdai átvételre](../enterprise-users/domains-admin-takeover.md), beállíthatja, hogy a közvetlen összevonás legyen a tartománnyal. Nem felügyelt, vagy e-mailben ellenőrzött bérlők akkor jönnek létre, amikor egy felhasználó bevált egy B2B-meghívást, vagy önkiszolgáló regisztrációt hajt végre az Azure AD-ben olyan tartomány használatával, amely jelenleg nem létezik. Ezeket a tartományokat közvetlen összevonással is megadhatja. Ha a közvetlen összevonás DNS által ellenőrzött tartománnyal való beállítását kísérli meg a Azure Portal vagy a PowerShellen keresztül, akkor hibaüzenet jelenik meg.
-### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Ha a közvetlen összevonás és az egyszeri bejelentkezéses e-mail-hitelesítés egyaránt engedélyezve van, akkor melyik módszer elsőbbséget élvez?
-A közvetlen összevonás partner szervezettel való létrehozásakor elsőbbséget élvez az e-mailek egyszeri jelszavas hitelesítése az adott szervezet új vendég felhasználói számára. Ha a vendég felhasználó egyszeri jelszó-hitelesítéssel váltott ki egy meghívót a közvetlen összevonás beállítása előtt, akkor továbbra is egyszer használatos hitelesítő kódot használ. 
-### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Egy részlegesen szinkronizált bérlet miatt a közvetlen összevonási címek bejelentkezési problémái vannak?
-Nem, ebben a forgatókönyvben az [egyszeri jelszavas e-mail-](one-time-passcode.md) szolgáltatást kell használni. A "részlegesen szinkronizált bérlet" olyan partner Azure AD-bérlőre vonatkozik, ahol a helyszíni felhasználói identitások nem teljesen szinkronizálva vannak a felhővel. Egy vendég, amelynek identitása még nem létezik a felhőben, de a B2B-meghívás beváltására irányuló kísérlet nem fog tudni bejelentkezni. Az egyszeri jelszó funkció lehetővé teszi a vendég számára a bejelentkezést. A közvetlen összevonási funkciók olyan forgatókönyveket foglalnak magukban, ahol a vendég saját identitásszolgáltató által felügyelt szervezeti fiókkal rendelkezik, de a szervezet egyáltalán nem rendelkezik Azure AD-beli jelenléttel.
-### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Ha a közvetlen összevonás egy szervezettel van konfigurálva, minden vendéget el kell juttatni, és be kell váltania egy egyéni meghívót?
-A közvetlen összevonás beállítása nem változtatja meg azon vendég felhasználók hitelesítési módszerét, akik már beváltottak egy meghívót. A vendég felhasználói hitelesítési módszerét frissítheti a [beváltási állapotuk visszaállításával](reset-redemption-status.md).
-## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>1. lépés: a partner szervezet személyazonosság-szolgáltatójának konfigurálása
-Először is a partnervállalat a szükséges jogcímekhez és a függő entitások megbízhatóságához kell konfigurálnia az identitás-szolgáltatót. 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Be tudok állítani közvetlen összevonást egy olyan tartománnyal, amelyhez nem hitelesített (e-mailben ellenőrzött) bérlő található? 
+Igen. Ha a tartomány nem lett ellenőrizve, és [a](../enterprise-users/domains-admin-takeover.md)bérlő nem került rendszergazdai feladatátvételre, közvetlen összevonást állíthat be ezzel a tartománnyal. A nem vagy e-mailben ellenőrzött bérlők akkor vannak létrehozva, amikor egy felhasználó bevált egy B2B-meghívót, vagy önkiszolgáló regisztrációt hajt végre az Azure AD-re egy olyan tartomány használatával, amely jelenleg nem létezik. Ezekkel a tartományokkal közvetlen összevonást állíthat be. Ha egy DNS által ellenőrzött tartománnyal próbál közvetlen összevonást beállítani a Azure Portal vagy a PowerShell használatával, hibaüzenet jelenik meg.
+### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Ha a közvetlen összevonás és az e-mailes egyszeres PIN-kódos hitelesítés is engedélyezve van, melyik módszer élvez elsőbbséget?
+Ha közvetlen összevonást hoznak létre egy partnerszervezettel, az elsőbbséget élvez az e-mailes, egyszer történő PIN-kódos hitelesítéssel az adott szervezet új vendégfelhasználói számára. Ha egy vendégfelhasználó egyszeres PIN-kódos hitelesítéssel beváltott egy meghívót a közvetlen összevonás beállítása előtt, továbbra is az egyszeres PIN-kódos hitelesítést fogja használni. 
+### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>A közvetlen összevonás a részlegesen szinkronizált élettartam miatti bejelentkezési problémákat is megoldja?
+Nem, ebben a forgatókönyvben az e-mailes egyszer használt [PIN-kódot](one-time-passcode.md) kell használni. A "részlegesen szinkronizált bérlő" egy partner Azure AD-bérlőre vonatkozik, ahol a helyszíni felhasználói identitások nincsenek teljesen szinkronizálva a felhővel. Az olyan vendég, akinek az identitása még nem létezik a felhőben, de megpróbálja beváltani a B2B-meghívót, nem fog tudni bejelentkezni. Az egyszer használható PIN-kód funkció lehetővé teszi a vendég számára a bejelentkezést. A közvetlen összevonási funkció olyan helyzeteket szolgál ki, ahol a vendég saját, idP által felügyelt szervezeti fiókkal rendelkezik, de a szervezet egyáltalán nem rendelkezik Azure AD-jelenléttel.
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Miután konfigurálta a közvetlen összevonást egy szervezettel, minden vendéget el kell küldeni, és egyéni meghívót kell beváltani?
+A közvetlen összevonás beállítása nem módosítja az olyan vendégfelhasználók hitelesítési módszerét, akik már beváltottak egy meghívót Öntől. A vendégfelhasználó hitelesítési módszerét úgy frissítheti, hogy [visszaállítja az érvényesítési állapotukat.](reset-redemption-status.md)
+## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>1. lépés: A partnerszervezet identitásszolgáltatójának konfigurálása
+Először is a partnerszervezetnek konfigurálnia kell az identitásszolgáltatóját a szükséges jogcímekkel és a függő fél megbízhatóságával. 
 
 > [!NOTE]
-> Ha szeretné bemutatni, hogyan konfigurálhat egy identitás-szolgáltatót a közvetlen összevonáshoz, használja a Active Directory összevonási szolgáltatások (AD FS) (AD FS) példaként. Tekintse meg a [közvetlen összevonás konfigurálása AD FS](direct-federation-adfs.md)használatával című cikket, amely példákat mutat be a AD FS SAML-2,0 vagy WS-Fed identitás-szolgáltató konfigurálására a közvetlen összevonás előkészítéséhez.
+> Annak szemléltetésére, hogyan konfigurálható egy identitásszolgáltató a közvetlen összevonáshoz, Active Directory összevonási szolgáltatások (AD FS) (AD FS) használjuk. Tekintse meg a Közvetlen összevonás konfigurálása a [AD FS-val](direct-federation-adfs.md)cikket, amely példákat tartalmaz arra, hogyan konfigurálható az AD FS SAML 2.0-s vagy WS-Fed-identitásszolgáltatóként a közvetlen összevonás előkészítése érdekében.
 
-### <a name="saml-20-configuration"></a>SAML 2,0 konfiguráció
+### <a name="saml-20-configuration"></a>SAML 2.0-konfiguráció
 
-Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd:  [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](../hybrid/how-to-connect-fed-saml-idp.md).  
+Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használják identitásszolgáltatókkal egyesítődve az alább felsorolt konkrét követelményekkel. További információ az SAML-identitásszolgáltató és az Azure AD közötti megbízhatósági kapcsolat beállításával kapcsolatban:  [SAML 2.0](../hybrid/how-to-connect-fed-saml-idp.md)identitásszolgáltató használata egyszeri bejelentkezéshez.  
 
 > [!NOTE]
-> A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban, vagy egy engedélyezett identitás-szolgáltató tartományának kell lennie. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
+> A közvetlen összevonás céltartományát nem lehet DNS-ellenőrzésen átesni az Azure AD-ben. A hitelesítési URL-tartománynak egyeznie kell a céltartománysal, vagy egy engedélyezett identitásszolgáltató tartományának kell lennie. További [részleteket a Korlátozások](#limitations) szakaszban talál. 
 
-#### <a name="required-saml-20-attributes-and-claims"></a>Szükséges SAML 2,0 attribútumok és jogcímek
-Az alábbi táblázatokban a harmadik féltől származó identitás-szolgáltatónál konfigurálni kívánt attribútumok és jogcímek követelményei láthatók. Közvetlen összevonás beállításához a következő attribútumoknak kell szerepelniük az SAML 2,0-válaszban az identitás-szolgáltatótól. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is.
+#### <a name="required-saml-20-attributes-and-claims"></a>Szükséges SAML 2.0-attribútumok és jogcímek
+Az alábbi táblázatok a külső identitásszolgáltatónál konfigurált attribútumok és jogcímek követelményeit mutatják be. A közvetlen összevonás beállításához a következő attribútumokat kell megkapni az identitásszolgáltatóTÓL kapott SAML 2.0-válaszban. Ezek az attribútumok az online biztonsági jogkivonat-szolgáltatás XML-fájlját összekapcsolva vagy manuálisan megadásával konfigurálhatóak.
 
-Az SAML 2,0 válaszához szükséges attribútumok a identitásszolgáltató:
+Az idP SAML 2.0-válaszához szükséges attribútumok:
 
 |Attribútum  |Érték  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például: `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partnerazonosító kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
-A identitásszolgáltató által kiadott SAML 2,0-tokenhez szükséges jogcímek:
+Az idP által kiadott SAML 2.0-jogkivonathoz szükséges jogcímek:
 
 |Attribútum  |Érték  |
 |---------|---------|
-|NameID formátuma     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
-|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|NameID formátum     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
+|emailaddress (e-mail-cím)     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>WS-Fed konfiguráció 
-Az Azure AD B2B konfigurálható úgy, hogy az WS-Fed protokollt használó összevonása az alább felsorolt konkrét követelményekkel. A két WS-Fed-szolgáltató jelenleg az Azure AD-vel való kompatibilitásra lett tesztelve AD FS és Shibboleth is. A függő entitás megbízhatóságának az Azure AD-vel való WS-Fed megfelelőségének létrehozásával kapcsolatos további információkért tekintse meg az [Azure ad Identity Provider kompatibilitási dokumentációjában](https://www.microsoft.com/download/details.aspx?id=56843)elérhető "STS-integrációs dokumentum a WS protokollok használatával" című részt.
+### <a name="ws-fed-configuration"></a>WS-Fed konfigurálása 
+Az Azure AD B2B konfigurálható úgy, hogy az WS-Fed protokollt WS-Fed identitásszolgáltatókkal egyes, az alábbiakban felsorolt követelményekkel egyes követelményeket összeváljon. Jelenleg a két WS-Fed tesztelve lett az Azure AD-val való kompatibilitásra, többek között a AD FS és a Shibboleth. Az Azure AD-val kompatibilis WS-Fed-szolgáltató közötti megbízható függő fél létrehozásával kapcsolatos további információkért lásd az Azure AD identity [provider compatibility docs](https://www.microsoft.com/download/details.aspx?id=56843)(Az Azure AD identitásszolgáltatói kompatibilitási dokumentumokban található STS integration paper using WS Protocols (STS-integráció a WS-protokollok használatával) dokumentumban található.
 
 > [!NOTE]
-> A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban vagy egy engedélyezett identitás-szolgáltató tartományával. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
+> A közvetlen összevonás céltartományát nem lehet DNS-ellenőrzésen átesni az Azure AD-ben. A hitelesítési URL-cím tartományának egyeznie kell egy engedélyezett identitásszolgáltató céltartományával vagy tartományával. További [részleteket a Korlátozások](#limitations) szakaszban talál. 
 
 #### <a name="required-ws-fed-attributes-and-claims"></a>Szükséges WS-Fed attribútumok és jogcímek
 
-Az alábbi táblázatok a harmadik féltől származó WS-Fed identitás-szolgáltatónál konfigurált attribútumok és jogcímek követelményeit mutatják be. A közvetlen összevonás beállításához a következő attribútumokat kell megkapnia az Identitáskezelő WS-Fed üzenetében. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is.
+Az alábbi táblázatok a külső féltől származó identitásszolgáltatónál konfigurált konkrét attribútumok és jogcímek követelményeit WS-Fed mutatják be. A közvetlen összevonás beállításához a következő attribútumokat kell megkapni az WS-Fed az identitásszolgáltatótól. Ezek az attribútumok az online biztonsági jogkivonat-szolgáltatás XML-fájlra mutató hivatkozásával vagy manuális megadásával konfigurálhatóak.
 
-A WS-Fed üzenetben szereplő kötelező attribútumok a identitásszolgáltató:
+Az üzenetben kötelező WS-Fed az azonosítóból:
  
 |Attribútum  |Érték  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például: `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partnerazonosító kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-A identitásszolgáltató által kiadott WS-Fed jogkivonat számára szükséges jogcímek:
+Az internetszolgáltató által WS-Fed jogkivonathoz szükséges jogcímek:
 
 |Attribútum  |Érték  |
 |---------|---------|
-|ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
-|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|ImmutableID (Nem módosíthatóid)     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
+|e-mail-cím     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-## <a name="step-2-configure-direct-federation-in-azure-ad"></a>2. lépés: a közvetlen összevonás konfigurálása az Azure AD-ben 
-Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigurált identitás-szolgáltatóval. Használhatja az Azure AD-portált vagy a PowerShellt is. A közvetlen összevonási házirend érvénybe léptetése 5-10 percet is igénybe vehet. Ez idő alatt nem próbál beváltani egy meghívót a közvetlen összevonási tartományhoz. A következő attribútumok szükségesek:
-- Partner identitásszolgáltató kiállítói URI azonosítója
-- A partneri identitásszolgáltató passzív hitelesítési végpontja (csak HTTPS támogatott)
+## <a name="step-2-configure-direct-federation-in-azure-ad"></a>2. lépés: Közvetlen összevonás konfigurálása az Azure AD-ben 
+Ezután konfigurálja az összevonást az Azure AD 1. lépésében konfigurált identitásszolgáltatóval. Az Azure AD portált vagy a PowerShellt is használhatja. A közvetlen összevonási szabályzat 5–10 percet is igénybe vehet. Ez idő alatt ne próbálja meg beváltani a közvetlen összevonási tartományra vonatkozó meghívót. A következő attribútumok szükségesek:
+- A partnerazonosító kiállítói URI-ja
+- A partnerazonosító passzív hitelesítési végpontja (csak a https támogatott)
 - Tanúsítvány
 
-### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
+### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD portálon
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza ki a **külső identitások**  >  **összes identitás-szolgáltatóját**.
-3. Válassza az **Új SAML/ws-fed identitásszolgáltató** elemet.
+2. Válassza **a External Identities** Minden  >  **identitásszolgáltató lehetőséget.**
+3. Válassza **az Új SAML/WS-Fed idP lehetőséget.**
 
-    ![Új SAML-vagy WS-Fed-identitásszolgáltató hozzáadását jelző gomb](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Új SAML- vagy WS-Fed gomb képernyőképe](media/direct-federation/new-saml-wsfed-idp.png)
 
-4. Az **Új SAML/ws-fed identitásszolgáltató** oldalon az **Identity Provider protokoll** területen válassza az **SAML** vagy a **ws-fed** lehetőséget.
+4. Az Új **SAML/WS-Fed identitásszolgáltató** lap Identitásszolgáltató protokollja alatt válassza az **SAML** vagy **a WS-FED lehetőséget.**
 
-    ![Az SAML-vagy WS-Fed identitásszolgáltató-lapon az elemzés gombot ábrázoló képernyőfelvétel](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![Képernyőkép az SAML- vagy WS-Fed elemzési gombról](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
-5. Adja meg a partner szervezete tartománynevét, amely a közvetlen összevonás célként megadott tartományneve lesz.
-6. Feltölthet egy metaadat-fájlt a metaadatok részleteinek feltöltéséhez. Ha a metaadatok manuális bevitelét választja, adja meg a következő adatokat:
-   - Partner identitásszolgáltató tartományneve
-   - Partner identitásszolgáltató
-   - Partner identitásszolgáltató passzív kérelmező végpontja
+5. Adja meg a partnerszervezet tartománynevét, amely a közvetlen összevonás céltartományneve lesz
+6. Feltölthet egy metaadatfájlt a metaadatok részleteinek feltöltéséhez. Ha manuálisan adja meg a metaadatokat, adja meg a következő adatokat:
+   - A partnerazonosító tartományneve
+   - A partnerazonosító entitásazonosítója
+   - A partnerazonosító passzív kérelmezői végpontja
    - Tanúsítvány
    > [!NOTE]
-   > A metaadatok URL-címe nem kötelező, de erősen ajánlott. Ha megadja a metaadatok URL-címét, az Azure AD automatikusan megújíthatja az aláíró tanúsítványt, amikor lejár. Ha a tanúsítvány a lejárati idő előtt bármilyen okból forog, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem fogja tudni megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
+   > A metaadatok URL-címe nem kötelező, de erősen ajánlott. Ha a metaadatok URL-címét adja meg, az Azure AD automatikusan megújíthatja az aláíró tanúsítványt, amikor az lejár. Ha a tanúsítványt bármilyen okból a lejárati idő előtt váltják fel, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem fogja tudni megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
 
 7. Kattintson a **Mentés** gombra. 
 
-### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>Közvetlen összevonás konfigurálása az Azure AD-ben a PowerShell használatával
+### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>Közvetlen összevonás konfigurálása az Azure AD-ban a PowerShell használatával
 
-1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját. (Ha részletes lépések szükségesek, a vendég felhasználó hozzáadására szolgáló rövid útmutató tartalmazza a [legújabb AzureADPreview-modul telepítését](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module)ismertető szakaszt.) 
+1. Telepítse az Azure AD PowerShell for Graph modul legújabb verzióját ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Ha részletes lépésekre van szüksége, a vendégfelhasználó hozzáadásának rövid útmutatója tartalmazza a legújabb [AzureADPreview](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module)modul telepítése című szakaszt.) 
 2. Futtassa az alábbi parancsot: 
    ```powershell
    Connect-AzureAD
    ```
-1. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
-2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadatok fájljának értékeit. AD FS-kiszolgáló és a okta esetében az összevonási fájl federationmetadata.xml, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
+1. A bejelentkezési kérésnél jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
+2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadat-fájlban található értékeket. A AD FS Server és az Okta számára az összevonási fájl federationmetadata.xml, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -198,35 +198,35 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
    New-AzureADExternalDomainFederation -ExternalDomainName $domainName  -FederationSettings $federationSettings
    ```
 
-## <a name="step-3-test-direct-federation-in-azure-ad"></a>3. lépés: a közvetlen összevonás tesztelése az Azure AD-ben
-Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhasználó meghívásával. Részletekért lásd: [Azure ad B2B együttműködési felhasználók hozzáadása a Azure Portal](add-users-administrator.md).
+## <a name="step-3-test-direct-federation-in-azure-ad"></a>3. lépés: Közvetlen összevonás tesztelése az Azure AD-ben
+Most tesztelje a közvetlen összevonás beállítását egy új B2B-vendégfelhasználó meghívása által. Részletekért lásd: [Azure AD B2B együttműködési felhasználók hozzáadása a Azure Portal.](add-users-administrator.md)
  
-## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
+## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolatot?
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **külső identitások** lehetőséget.
-3. **Az összes Identity Provider** kijelölése
-4. Az **SAML/ws-fed identitás-szolgáltatók** területen válassza ki a szolgáltatót.
-5. Az identitás-szolgáltató részletei ablaktáblán frissítse az értékeket.
+2. Válassza a **External Identities** lehetőséget.
+3. Válassza a **Minden identitásszolgáltató lehetőséget**
+4. Az **SAML/WS-Fed identitásszolgáltatók alatt** válassza ki a szolgáltatót.
+5. Az identitásszolgáltató részleteit tartalmazó panelen frissítse az értékeket.
 6. Kattintson a **Mentés** gombra.
 
 
-## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonás eltávolítása?
-Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. A [beváltási állapotuk visszaállításával](reset-redemption-status.md)azonban ismét elérhetővé teheti az erőforrásokat. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
+## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonást?
+Eltávolíthatja a közvetlen összevonási beállítást. Ha így van, a meghívókat már beváltó közvetlen összevonási vendégfelhasználók nem fognak tudni bejelentkezni. Azonban ismét hozzáférést adhat nekik az erőforrásokhoz az érvényesítési [állapot alaphelyzetbe állításával.](reset-redemption-status.md) Identitásszolgáltatóval való közvetlen összevonás eltávolítása az Azure AD portálon:
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **külső identitások** lehetőséget.
-3. Válassza ki **az összes identitás szolgáltatót**.
-4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés** lehetőséget. 
-5. A törlés megerősítéséhez válassza az **Igen** lehetőséget. 
+2. Válassza a **External Identities** lehetőséget.
+3. Válassza a **Minden identitásszolgáltató lehetőséget.**
+4. Válassza ki az identitásszolgáltatót, majd válassza a **Törlés lehetőséget.** 
+5. Válassza az **Igen lehetőséget** a törlés megerősítéséhez. 
 
-Az identitás-szolgáltatóval való közvetlen összevonás eltávolítása a PowerShell használatával:
-1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
+Az identitásszolgáltatóval való közvetlen összevonás eltávolítása a PowerShell használatával:
+1. Telepítse az Azure AD PowerShell for Graph modul legújabb verzióját ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
 2. Futtassa az alábbi parancsot: 
    ```powershell
    Connect-AzureAD
    ```
-3. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
+3. A bejelentkezési kérésnél jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
 4. Írja be a következő parancsot:
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
@@ -234,4 +234,4 @@ Az identitás-szolgáltatóval való közvetlen összevonás eltávolítása a P
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [meghívás beváltási élményéről](redemption-experience.md) , ha a külső felhasználók különböző identitás-szolgáltatókkal jelentkeznek be.
+További információ a meghívó [beváltási élményről,](redemption-experience.md) amikor külső felhasználók jelentkeznek be különböző identitásszolgáltatókkal.

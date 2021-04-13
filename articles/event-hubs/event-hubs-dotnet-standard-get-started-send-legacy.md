@@ -4,12 +4,12 @@ description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7092c3a4c32fe2ad46b71c5a796ac811e4253dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f289b920b036629e5c518ce3c9e8ec521b1497c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653091"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310104"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről a **Microsoft. Azure. EventHubs** .net Core Library használatával.
@@ -367,6 +367,6 @@ Olvassa el a következő cikkeket:
     Ezek a minták a régi **Microsoft. Azure. EventHubs** könyvtárat használják, de egyszerűen frissítheti a legújabb **Azure. Messaging. EventHubs** könyvtár használatával. Ha át szeretné helyezni a mintát a régi könyvtárból az új verzióra, tekintse meg a [Microsoft. Azure. EventHubs-ről az Azure. Messaging. EventHubs-re való Migrálás útmutatóját](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Az Azure Event Hubs funkciói és terminológiája](event-hubs-features.md)
-- [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+- [Event Hubs – gyakori kérdések](event-hubs-faq.yml)
 
 

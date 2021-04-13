@@ -1,22 +1,22 @@
 ---
-title: Gyors útmutató – dokumentum-adatbázis létrehozása Azure Cosmos DB használatával a Java használatával
-description: Ez a rövid útmutató bemutatja a Azure Cosmos DB SQL API-hoz való kapcsolódáshoz és a lekérdezéshez használható Java-mintakód
+title: Rövid útmutató – Dokumentum-adatbázis létrehozása a Java használatával a Azure Cosmos DB
+description: Ez a rövid útmutató egy Java-kódmintát tartalmaz, amely az SQL API-hoz való csatlakozáshoz és a Azure Cosmos DB lekérdezéséhez használható
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1f81ddba717dc2a9df02fda82ef74b52da8fd82
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090409"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366045"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rövid útmutató: Java-alkalmazás összeállítása az SQL API Azure Cosmos DB adatok kezeléséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -24,34 +24,35 @@ ms.locfileid: "93090409"
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spark v3-összekötő](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és felügyel a Azure Portalból, és a GitHubról klónozott Java-alkalmazás használatával. Először hozzon létre egy Azure Cosmos DB SQL API-fiókot a Azure Portal használatával, majd hozzon létre egy Java-alkalmazást az SQL Java SDK használatával, majd adja hozzá az erőforrásokat a Cosmos DB-fiókhoz a Java-alkalmazás használatával. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot fog létrehozni és kezelni a Azure Portal- és egy GitHubról klónozott Java-alkalmazással. Először hozzon létre egy Azure Cosmos DB SQL API-fiókot az Azure Portal használatával, majd hozzon létre egy Java-alkalmazást az SQL Java SDK-val, majd adjon hozzá erőforrásokat Cosmos DB-fiókjához a Java-alkalmazással. Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi dokumentum-, tábla-, kulcs-érték és gráfadatbázisok gyors létrehozására és lekérdezésére globális elosztási és horizontális skáláztatási képességekkel.
 
 > [!IMPORTANT]  
-> Ez a rövid útmutató csak Azure Cosmos DB Java SDK v4 esetében érhető el. További információkért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), az Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos TIPPEKET](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatóját](troubleshoot-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
+> Ez a rövid útmutató csak Azure Cosmos DB Java SDK v4-es verziójához készült. További információkért tekintse meg a Azure Cosmos DB Java SDK [v4](sql-api-sdk-java-v4.md)kibocsátási megjegyzéseit, a Maven-adattárat, a Azure Cosmos DB Java SDK [v4](performance-tips-java-sdk-v4-sql.md)teljesítményével kapcsolatos tippeket és a Azure Cosmos DB Java SDK [v4](troubleshoot-java-sdk-v4-sql.md) hibaelhárítási útmutatóját. [](https://mvnrepository.com/artifact/com.azure/azure-cosmos) Ha jelenleg a v4-esnél régebbi verziót használ, a 4-es verzióra való frissítéshez tekintse meg [Azure Cosmos DB Java SDK v4-re](migrate-java-v4-sdk.md) való áttelepítésről készült útmutatót.
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs URI-ja használatával `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson a `JAVA_HOME` környezeti változóra arra a mappára, ahol a JDK telepítve van.
-- A [Maven bináris archívuma](https://maven.apache.org/download.cgi). Ubuntu rendszeren futtassa a következő parancsot a `apt-get install maven` Maven telepítéséhez:.
-- [Git](https://www.git-scm.com/downloads). Ubuntu rendszeren futtassa a parancsot a `sudo apt-get install git` git telepítéséhez.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja Azure Cosmos DB azure-előfizetés nélkül,](https://azure.microsoft.com/try/cosmosdb/) ingyenesen. Használhatja a [Azure Cosmos DB Emulatort](https://aka.ms/cosmosdb-emulator) a és a kulcs `https://localhost:8081` URI-ját `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` is.
+- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). A környezeti változót arra a mappára `JAVA_HOME` mutasson, ahová a JDK telepítve van.
+- Egy [Maven bináris archívum.](https://maven.apache.org/download.cgi) Ubuntun futtassa `apt-get install maven` a-t a Maven telepítéséhez.
+- [Git](https://www.git-scm.com/downloads): . Ubuntun futtassa `sudo apt-get install git` a-t a Git telepítéséhez.
 
 ## <a name="introductory-notes"></a>Bevezető megjegyzések
 
-*Egy Cosmos DB fiók szerkezete.* Az API-tól vagy programozási nyelvtől függetlenül Cosmos DB *fiók* nulla vagy több *adatbázist* tartalmaz, egy *adatbázis* (db) nulla vagy több *tárolót* tartalmaz, és egy *tároló* nulla vagy több elemet tartalmaz, ahogy az alábbi ábrán is látható:
+*A fiók Cosmos DB struktúrája.* Az API-któl vagy a programozási  nyelvtől függetlenül a Cosmos DB-fiókok nulla vagy több adatbázist *tartalmaznak,* egy adatbázis *(DB)* nulla vagy több tárolót *tartalmaz,* a tároló pedig nulla vagy több elemet tartalmaz, ahogyan az alábbi ábrán látható: 
 
-:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókentitások" border="false":::
 
-Az adatbázisokról, a tárolók és az elemek [itt](account-databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
+Az adatbázisokról, tárolókról és elemekről itt olvashat [bővebben.](account-databases-containers-items.md) Néhány fontos tulajdonság a tároló szintjén van meghatározva, többek között a kiosztott átviteli sebesség és a *partíciókulcs.*  
 
-A kiépített átviteli sebességet a kérések egységei (*RUs*) mérik, amelyek monetáris díjszabással rendelkeznek, és a fiók működési költsége jelentősen meghatározó tényező. A kiépített átviteli sebesség a tároló részletessége vagy az adatbázis-részletesség alapján választható ki, azonban a tároló szintű átviteli specifikáció általában előnyben részesített. Az átviteli sebességről itt olvashat bővebben [.](set-throughput.md)
+A kiépített átviteli sebességetkérelemegységekben (RU-kban) mérjük, amelyek pénzbeli árral és a fiók működési költségének jelentős meghatározó tényezői. A kiépített átviteli sebesség tárolónkénti részletességgel vagy adatbázisonkénti részletességgel választható ki, de általában a tárolószintű átviteli sebesség specifikációját részesíti előnyben. Az átviteli sebesség átvitelre való kiépítésről itt olvashat [bővebben.](set-throughput.md)
 
-Ahogy az elemek bekerülnek egy Cosmos DB tárolóba, az adatbázis horizontálisan nő, ha további tárterületet és számítási műveleteket ad hozzá a kérelmek kezeléséhez. A tárolási és a számítási kapacitás a *partícióknak* nevezett különálló egységekben lett felvéve, és a dokumentumokban egy mezőt kell kiválasztania, amely az egyes dokumentumokat egy partícióra képező partíciós kulcs. A partíciók kezelése az, hogy az egyes partíciók nagyjából egyenlő szeletet kapnak a partíciós kulcsok értékeinek tartományába. Ezért javasoljuk, hogy olyan partíciós kulcsot válasszon, amely viszonylag véletlenszerű vagy egyenletes eloszlású. Ellenkező esetben előfordulhat, hogy egyes partíciók lényegesen több kérést (*gyors partíciót*) látnak, míg más partíciók lényegesen kevesebb kérést látnak (*hideg partíció*), és ezt el kell kerülni. További információ a particionálásról [itt](partitioning-overview.md).
+Amikor elemeket szúr be egy Cosmos DB tárolóba, az adatbázis horizontálisan nő azáltal, hogy további tárterületet és számítási kapacitást ad hozzá a kérések kezeléshez. A tárolási és számítási kapacitás különálló egységekben, úgynevezett partíciókban lesz hozzáadva, és a dokumentumokban egy mezőt kell választania partíciókulcsként, amely az egyes dokumentumokat egy partícióra leképezi.  A partíciók kezelése úgy lehetséges, hogy minden partícióhoz nagyjából egyenlő szelet van rendelve a partíciókulcs-értékek tartományán belül; ezért javasoljuk, hogy válasszon egy viszonylag véletlenszerű vagy egyenletesen elosztott partíciókulcsot. Ellenkező esetben egyes partíciók lényegesen több kérést *látnak*(gyakran 8-65), míg más partíciók lényegesen kevesebb kérést *(hideg* partíciót) látnak, és ezt el kell kerülni. A particionálásról itt olvashat [bővebben.](partitioning-overview.md)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -87,61 +88,61 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben folytathatja [Az alkalmazás futtatása](#run-the-app) szakasszal. 
 
 
-# <a name="sync-api"></a>[Szinkronizálási API](#tab/sync)
+# <a name="sync-api"></a>[Sync API](#tab/sync)
 
-### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Adatbázis-erőforrások kezelése a szinkron (Sync) API használatával
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Adatbázis-erőforrások kezelése a szinkron (szinkron) API-val
 
-* `CosmosClient` inicializálás. Az `CosmosClient` ügyféloldali logikai ábrázolást biztosít az Azure Cosmos Database szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
+* `CosmosClient` inicializálás. A `CosmosClient` ügyféloldali logikai megjelenítést biztosít az Azure Cosmos adatbázis-szolgáltatás számára. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase` létrehozása.
+* `CosmosDatabase` Létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer` létrehozása.
+* `CosmosContainer` Létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Az elemek létrehozása a `createItem` metódus használatával.
+* Elem létrehozása a `createItem` metódussal.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* A pontok olvasása metódus használatával történik `readItem` .
+* A pont olvasása a metódussal `readItem` történik.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-* A JSON-alapú SQL-lekérdezések végrehajtása a metódus használatával történik `queryItems` .
+* A JSON-kapcsolaton keresztüli SQL-lekérdezések a metódussal vannak `queryItems` hajtva végre.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
-# <a name="async-api"></a>[Aszinkron API](#tab/async)
+# <a name="async-api"></a>[Async API](#tab/async)
 
-### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Adatbázis-erőforrások kezelése az aszinkron (aszinkron) API használatával
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Adatbázis-erőforrások kezelése az aszinkron (aszinkron) API-val
 
-* Az aszinkron API-hívások azonnal visszatérnek, és nem kell várakozni a kiszolgáló válaszára. Ennek fényében a következő kódrészletek megfelelő tervezési mintákat mutatnak az összes korábbi felügyeleti feladat aszinkron API-val történő végrehajtásához.
+* Az aszinkron API-hívások azonnal visszatérnek, és nem várnak választ a kiszolgálótól. Ennek fényében az alábbi kódrészletek megfelelő tervezési mintákat mutatnak be a fenti felügyeleti feladatok aszinkron API-val való végrehajtásához.
 
-* `CosmosAsyncClient` inicializálás. Az `CosmosAsyncClient` ügyféloldali logikai ábrázolást biztosít az Azure Cosmos Database szolgáltatáshoz. Ez az ügyfél a szolgáltatással kapcsolatos aszinkron kérelmek konfigurálásához és végrehajtásához használható.
+* `CosmosAsyncClient` inicializálás. A `CosmosAsyncClient` ügyféloldali logikai megjelenítést biztosít az Azure Cosmos adatbázis-szolgáltatás számára. Ezzel az ügyféllel konfigurálhatja és hajthatja végre a szolgáltatásra vonatkozó aszinkron kéréseket.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase` létrehozása.
+* `CosmosAsyncDatabase` Létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer` létrehozása.
+* `CosmosAsyncContainer` Létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* A szinkronizálási API-hoz hasonlóan az elem létrehozása a metódus használatával történik `createItem` . Ez a példa azt mutatja be, hogyan lehet hatékonyan kiadni számos aszinkron `createItem` kérelmet egy olyan reaktív adatfolyamra való feliratkozással, amely a kérelmeket és a kinyomtatási értesítéseket adja ki Mivel ez az egyszerű példa a befejezésre és a befejezésre fut, a `CountDownLatch` példányok használatával biztosítható, hogy a program nem záruljon le az elemek létrehozásakor. **A megfelelő aszinkron programozási gyakorlat nem blokkolja az aszinkron hívásokat – a reális használati esetekben a fő () ciklusból származó kérelmeket, amelyek határozatlan ideig hajtják végre a zárolást, így nincs szükség az aszinkron hívásokra.**
+* A szinkronizálási API-hoz is az elem létrehozása a `createItem` metódussal valósítható meg. Ez a példa bemutatja, hogyan lehet hatékonyan kiírni számos aszinkron kérést egy reaktív streamre való feliratkozás révén, amely kiírja a kéréseket és megjeleníti az `createItem` értesítéseket. Mivel ez az egyszerű példa a befejezésig fut és leáll, a példányok biztosítják, hogy a program ne legyen leállva az `CountDownLatch` elem létrehozása során. **A megfelelő aszinkron programozási gyakorlat nem blokkolja az aszinkron hívásokat – valós esetben a kérések egy határozatlan ideig futó main() hurokból jönnek létre, így nincs szükség az aszinkron hívásokra való rekeszresztésre.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* A szinkronizálási API-hoz hasonlóan a pont olvasása a metódus használatával történik `readItem` .
+* A szinkronizálási API-hoz is a pont olvasása a metódus `readItem` használatával történik.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
-* A szinkronizálási API-hoz hasonlóan a JSON-alapú SQL-lekérdezések is a metódus használatával lesznek elvégezve `queryItems` .
+* A szinkronizálási API-hoz is a JSON-n keresztüli SQL-lekérdezések a metódussal `queryItems` hajthatóak végre.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
@@ -163,7 +164,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
     mvn package
     ```
 
-3. A git-terminál ablakban a következő paranccsal indítsa el a Java-alkalmazást (a SYNCASYNCMODE helyére `sync` vagy `async` attól függően, hogy melyik mintát kívánja futtatni, cserélje le a YOUR_COSMOS_DB_HOSTNAMEt az idézett URI értékre a portálról, és cserélje le a YOUR_COSMOS_DB_MASTER_KEYt az idézett elsődleges kulcsra a portálról)
+3. A git terminálablakában a következő paranccsal indítsa el a Java-alkalmazást (cserélje le a SYNCASYNCMODE-t a vagy a kódra, attól függően, hogy melyik mintakódot szeretné futtatni, cserélje le a YOUR_COSMOS_DB_HOSTNAME-t a portálról származó, idézett `sync` URI-értékre, és cserélje le a YOUR_COSMOS_DB_MASTER_KEY-t a portálról származó, idézett elsődleges `async` kulcsra)
 
     ```bash
     mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
@@ -172,10 +173,10 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
     A terminálablakban értesítést kap a FamilyDB adatbázis létrejöttéről. 
     
-4. Az alkalmazás létrehoz egy nevű adatbázist `AzureSampleFamilyDB`
-5. Az alkalmazás létrehoz egy nevű tárolót `FamilyContainer`
-6. Az alkalmazás elvégzi a pont olvasását az objektumazonosítók és a partíciós kulcs érték használatával (amely a példában szereplő lastName). 
-7. Az alkalmazás lekérdezi az elemeket a vezetéknevet tartalmazó összes család lekéréséhez ("Andersen", "Wakefield", "Johnson")
+4. Az alkalmazás létrehoz egy adatbázist névvel `AzureSampleFamilyDB`
+5. Az alkalmazás létrehoz egy tárolót névvel `FamilyContainer`
+6. Az alkalmazás objektum- és partíciókulcs-érték (a példánkban lastName) használatával hajt végre pont olvasásokat. 
+7. Az alkalmazás lekérdezi az összes vezetéknévvel ('Andersen', 'Wakefield', 'Fog') lévő család lekérdezését.
 
 7. Az alkalmazás nem törli a létrehozott erőforrásokat. A portálra visszaváltva [törölje az erőforrásokat](#clean-up-resources)  a fiókból a felmerülő költségek elkerüléséhez.
 
@@ -189,7 +190,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB SQL API-fiókot, hogyan hozhat létre egy dokumentum-adatbázist és-tárolót a Adatkezelő használatával, és hogyan futtathat egy Java-alkalmazást a programozott módon történő futtatásához. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB SQL API-fiókot, hogyan hozhat létre dokumentum-adatbázist és -tárolót az Adatkezelő használatával, és hogyan futtathat egy Java-alkalmazást, hogy ugyanezt programozott módon tegye meg. Most már további adatokat importálhat a Azure Cosmos DB fiókjába. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

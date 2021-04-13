@@ -206,7 +206,7 @@
         - name: Az Akka Streams csatlakoztatása eseményközponthoz
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: GYIK – Kafkához készült Event Hubs
-          href: apache-kafka-frequently-asked-questions.md
+          href: apache-kafka-frequently-asked-questions.yml
     - name: Kezelés és monitorozás
       items:
         - name: Event Hubs-eseményközpontok monitorozása az Azure Monitoring segítségével
@@ -315,7 +315,7 @@
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-event-hubs
     - name: GYIK
-      href: event-hubs-faq.md
+      href: event-hubs-faq.yml
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Díjszabás

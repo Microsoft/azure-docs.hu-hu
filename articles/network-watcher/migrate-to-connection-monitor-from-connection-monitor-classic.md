@@ -1,7 +1,7 @@
 ---
-title: Migrálás a kapcsolódási figyelőbe a kapcsolódási figyelőből
+title: Áttelepítés kapcsolatfigyelő kapcsolatfigyelő
 titleSuffix: Azure Network Watcher
-description: Megtudhatja, hogyan telepítheti át a kapcsolódási figyelőt a Csatlakozáskezelő szolgáltatásból.
+description: Útmutató a kapcsolatfigyelő való kapcsolatfigyelő.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -12,60 +12,63 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730031"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366385"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrálás a Csatlakozáskezelő szolgáltatásból (klasszikus)
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Áttelepítés kapcsolatfigyelő kapcsolatfigyelő (klasszikus)
 
 > [!IMPORTANT]
-> A 2021. július 1-től kezdődően nem adhat hozzá új kapcsolódási figyelőket a Csatlakozáskezelő (klasszikus) szolgáltatáshoz, de továbbra is használhatja az 2021. július 1. előtt létrehozott meglévő kapcsolódási figyelőket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a (klasszikus) szolgáltatást az](migrate-to-connection-monitor-from-connection-monitor-classic.md)  Azure-Network Watcher új, a 2024. február 29. előtti kapcsolódási figyelője felé.
+> 2021. július 1-től kezdve nem fog tudni új kapcsolatfigyelőket hozzáadni a kapcsolatfigyelő -ben (klasszikus), de továbbra is használhatja a 2021. július 1. előtt létrehozott meglévő kapcsolatfigyelőket. A jelenlegi számítási feladatok szolgáltatáskimaradásának minimalizálása érdekében 2024. február 29., kapcsolatfigyelő [(klasszikus)](migrate-to-connection-monitor-from-connection-monitor-classic.md)  áttelepítése az Azure kapcsolatfigyelő új Network Watcher szolgáltatásba.
 
-A meglévő kapcsolódási figyelőket áttelepítheti új, továbbfejlesztett, néhány kattintással és nulla leállás után. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
+A meglévő kapcsolatfigyelőket új, továbbfejlesztett kapcsolatfigyelő át néhány kattintással, állásidő nélkül. További információ az előnyökről: [kapcsolatfigyelő.](./connection-monitor-overview.md)
 
-## <a name="key-points-to-note"></a>Jegyezze fel a legfontosabb pontokat
+## <a name="key-points-to-note"></a>Fontos pontok
 
-Az áttelepítés a következő eredményeket segíti elő:
+A migrálás a következő eredményeket teszi lehetővé:
 
-* Az ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. 
-* A meglévő kapcsolódási figyelők le vannak képezve a > a test Group > tesztelési formátumára. A **Szerkesztés** lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője tulajdonságait, letölthet egy sablont a kapcsolati figyelő módosításához, és beküldheti azt Azure Resource Manager használatával. 
-* Az Network Watcher bővítménnyel rendelkező Azure-beli virtuális gépek adatokat küldenek a munkaterületnek és a mérőszámoknak. A Csatlakozáskezelő az új metrikák (ChecksFailedPercent és RoundTripTimeMs) révén elérhetővé teszi az adatokat a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett. A régi mérőszámok új mérőszámokra lesznek áttelepítve, mint a ProbesFailedPercent-> ChecksFailedPercent és a AverageRoundtripMs-> RoundTripTimeMs.
+* Az ügynökök és a tűzfalbeállítások a rendszertől függően működnek. Nincs szükség módosításra. 
+* A meglévő kapcsolatfigyelők tesztformátumban kapcsolatfigyelő > tesztcsoporthoz > vannak leképezve. A Szerkesztés **lehetőség** kiválasztásával megtekintheti és módosíthatja az új kapcsolatfigyelő tulajdonságait, letölthet egy sablont a kapcsolatfigyelő módosításához, majd elküldheti Azure Resource Manager. 
+* A Network Watcher azure-beli virtuális gépek adatokat küldenek a munkaterületre és a metrikákra is. kapcsolatfigyelő a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett az új metrikákon (ChecksFailedPercent és RoundTripTimeMs) keresztül teszi elérhetővé az adatokat. A régi metrikák új metrikákba lesznek migrálva a ProbesFailedPercent -> ChecksFailedPercent és az AverageRoundtripMs -> RoundTripTimeMs.
 * Adatfigyelés:
-   * **Riasztások**: a rendszer automatikusan áttelepíti az új metrikákat.
-   * **Irányítópultok és integrációk**: a beállított mérőszámok manuális szerkesztését igényli. 
+   * **Riasztások:** Automatikusan áttelepítve az új metrikákra.
+   * **Irányítópultok és integrációk:** A metrikakészlet manuális szerkesztését igényli. 
     
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha egyéni munkaterületet használ, győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésben és a Log Analytics munkaterület régiójában. 
+1. Ha egyéni munkaterületet használ, győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésében és a Log Analytics-munkaterület régiójában. Ha nem jelenik meg, a következő hibaüzenet jelenik meg: "Az áttelepítés előtt engedélyezze a Network Watcher bővítményt a kiválasztott előfizetésben és a kiválasztott LA-munkaterületen."
+1. Ha a kapcsolatfigyelőben (klasszikus) forrásként használt virtuális gépeken már nincs engedélyezve a Network Watcher-bővítmény, a következő hibaüzenet jelenik meg: "A következő teszteket követő kapcsolatfigyelőket nem lehet importálni, mivel egy vagy több Azure-beli virtuális gépen nincs telepítve a Network Watcher bővítmény. Telepítse a Network Watcher bővítményt, és kattintson a frissítés gombra az importálásukhoz."
 
-## <a name="migrate-the-connection-monitors"></a>A hálózati figyelők migrálása
 
-1. Ha a régebbi kapcsolódási figyelőket át szeretné telepíteni az újabb verzióra, válassza a **Csatlakozáskezelő** lehetőséget, majd válassza a **kapcsolódási figyelők áttelepíteni** lehetőséget.
 
-    ![A kapcsolódási figyelők áttelepítését bemutató képernyőfelvétel a kapcsolódási figyelőhöz.](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
+## <a name="migrate-the-connection-monitors"></a>A kapcsolatfigyelők áttelepítése
+
+1. A régebbi kapcsolatfigyelőknek az újabbra való áttelepítéshez válassza a kapcsolatfigyelő **lehetőséget,** majd válassza a **Kapcsolatfigyelők áttelepítése lehetőséget.**
+
+    ![A kapcsolatfigyelők áttelepítését a kapcsolatfigyelő.](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
     
-1. Válassza ki az előfizetését és az áttelepíteni kívánt kapcsolódási figyelőket, majd válassza a **kijelölt áttelepít** lehetőséget. 
+1. Válassza ki az előfizetését és az átemelni kívánt kapcsolatfigyelőket, majd válassza a **Kiválasztott áttelepítés lehetőséget.** 
 
-Mindössze néhány kattintással áttelepítette a meglévő kapcsolódási figyelőket a Csatlakozáskezelő szolgáltatásba. A CM (klasszikus) és a CM közötti Migrálás után nem fogja tudni megtekinteni a figyelőt a CM (klasszikus) alatt.
+Mindössze néhány kattintással áttelepíti a meglévő kapcsolatfigyelőket a kapcsolatfigyelő. Miután migrálta a cm-ről (klasszikus) a CM-re, nem fogja látni a figyelőt a CM (klasszikus) alatt
 
-Mostantól testreszabhatja a Csatlakozáskezelő tulajdonságait, módosíthatja az alapértelmezett munkaterületet, letöltheti a sablonokat, és ellenőrizheti az áttelepítés állapotát. 
+Mostantól testre szabhatja kapcsolatfigyelő tulajdonságait, módosíthatja az alapértelmezett munkaterületet, letöltheti a sablonokat, és ellenőrizheti az áttelepítés állapotát. 
 
-Az áttelepítés megkezdése után a következő módosítások lépnek érvénybe: 
-* A Azure Resource Manager erőforrás az újabb kapcsolódási figyelőre módosul.
-    * A Csatlakozáskezelő neve, régiója és előfizetése változatlan marad. Az erőforrás-azonosító nem érvényes.
-    * Ha a Csatlakozáskezelő nincs testreszabva, a rendszer az előfizetésben és a Csatlakozáskezelő régiójában hozza létre az alapértelmezett Log Analytics munkaterületet. Ezt a munkaterületet a figyelési adattárolási pont tárolja. A teszt eredményének adatait a metrikák is tárolják.
-    * Minden teszt át lett telepítve egy *defaultTestGroup* nevű tesztelési csoportba.
-    * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. Az alapértelmezett nevek: *defaultSourceEndpoint* és *defaultDestinationEndpoint*.
-    * A rendszer áthelyezi a célport és a szondázás intervallumát egy *defaultTestConfiguration* nevű teszt-konfigurációba. A protokoll beállítása a portok értékei alapján történik. A sikeres küszöbértékek és egyéb opcionális tulajdonságok üresen maradnak.
-* A metrikák riasztásait a rendszer áttelepíti a kapcsolódási figyelő metrikáinak riasztására. A metrikák eltérnek, ezért a változás. További információ: [hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással](./connection-monitor-overview.md#metrics-in-azure-monitor).
-* Az áttelepített kapcsolatok figyelője már nem jelenik meg a régebbi verziójú kapcsolatkezelő megoldásként. Most már csak a figyelőben használhatók.
-* A külső integrációkat, például az Power BI-és Grafana-irányítópultokat, valamint a biztonsági információkkal és az eseménykezelő (SIEM) rendszerekkel való integrációt manuálisan kell áttelepíteni. Ez az egyetlen kézi lépés, amelyet a telepítő áttelepítéséhez kell végrehajtania.
+A migrálás megkezdése után a következő módosításokra kerül sor: 
+* A Azure Resource Manager erőforrás az újabb kapcsolatfigyelőre változik.
+    * A kapcsolatfigyelő neve, régiója és előfizetése változatlan marad. Az erőforrás-azonosítót ez nem befolyásolja.
+    * Ha a kapcsolatfigyelő nincs testre szabva, a rendszer létrehoz egy alapértelmezett Log Analytics-munkaterületet az előfizetésben és a kapcsolatfigyelő régiójában. Ezen a munkaterületen vannak tárolva a figyelési adatok. A teszteredmények adatait a rendszer a metrikákban is tárolja.
+    * Minden teszt egy *defaultTestGroup nevű tesztcsoportba lesz migrálva.*
+    * A forrás- és célvégpontokat a rendszer létrehoz és használ az új tesztcsoportban. Az alapértelmezett nevek a *defaultSourceEndpoint* és *a defaultDestinationEndpoint.*
+    * A célport és az tesztelési időköz egy *defaultTestConfiguration nevű tesztkonfigurációba lesz áthelyezve.* A protokoll a portértékek alapján van beállítva. A sikeresség küszöbértékei és az egyéb választható tulajdonságok üresen maradnak.
+* A rendszer metrikákra vonatkozó riasztásokat migrál kapcsolatfigyelő metrikák riasztásaiba. A metrikák eltérőek, ezért változik. További információ: Hálózati kapcsolatok [monitorozása a kapcsolatfigyelő.](./connection-monitor-overview.md#metrics-in-azure-monitor)
+* Az áttelepített kapcsolatfigyelők már nem jelennek meg régebbi kapcsolatfigyelő megoldásként. Most már csak a szolgáltatásban használhatók kapcsolatfigyelő.
+* Minden külső integrációt, például az Power BI és a Grafana irányítópultját, valamint a Biztonsági információ- és eseménykezelési (SIEM) rendszerekkel való integrációt manuálisan kell áttelepíteni. Ez az egyetlen manuális lépés, amely a beállítás áttelepítése során szükséges.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A kapcsolódási Figyelőről további információt a következő témakörben talál:
-* [Áttelepítés Network Performance Monitorról a kapcsolódási figyelőbe](./migrate-to-connection-monitor-from-network-performance-monitor.md)
-* [Csatlakozáskezelő létrehozása a Azure Portal használatával](./connection-monitor-create-using-portal.md)
+További információ a kapcsolatfigyelő:
+* [Áttelepítés Network Performance Monitor kapcsolatfigyelő](./migrate-to-connection-monitor-from-network-performance-monitor.md)
+* [Hozzon kapcsolatfigyelő a következővel: Azure Portal](./connection-monitor-create-using-portal.md)

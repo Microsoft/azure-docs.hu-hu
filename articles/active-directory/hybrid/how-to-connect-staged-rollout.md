@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385581"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306381"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Áttelepítés felhőalapú hitelesítésre szakaszos kibocsátással
 
@@ -92,7 +92,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 - A Windows 10 Hybrid JOIN vagy az Azure AD JOIN elsődleges frissítési jogkivonat beszerzése az összes verzióhoz, ha a felhasználó helyszíni UPN-azonosítója nem irányítható át. Ez a forgatókönyv a WS-Trust végpontra kerül vissza szakaszos bevezetési módban, de nem fog működni, ha a szakaszos áttelepítés befejeződött, és a felhasználói bejelentkezés már nem az összevonási kiszolgálón található.
 
   >[!NOTE]
-  >Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.  További információ a tartományi átváltás: [áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) és [áttelepítés az összevonási szolgáltatásból átmenő hitelesítésre](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  >Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.  A tartományi átváltás kapcsolatos további információkért lásd: [áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) , és [áttelepítés az áteresztő hitelesítésre](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
   
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
 

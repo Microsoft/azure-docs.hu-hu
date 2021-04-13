@@ -26,9 +26,11 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS-továbbítás konfigurálása
           href: dns-forwarding.md
-    - name: Storage
+        - name: A bejövő forgalom korlátozása
+          href: howto-restrict-egress.md
+    - name: Tárolás
       items:
-        - name: A PVC titkosítása az ügyfél által felügyelt kulccsal (előzetes verzió)
+        - name: PVC-k titkosítása ügyfél által felügyelt kulccsal (előzetes verzió)
           href: howto-encrypt-data-disks.md
         - name: Azure Files StorageClass létrehozása
           href: howto-create-a-storageclass.md

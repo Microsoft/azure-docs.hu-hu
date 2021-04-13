@@ -73,7 +73,7 @@
       href: concepts-connectivity.md
 - name: Kiszolgálófelügyelet
   items:
-    - name: Kiszolgálói fogalmak
+    - name: Kiszolgálóval kapcsolatos fogalmak
       href: concepts-servers.md
     - name: Korlátozások
       href: concepts-limits.md
@@ -106,23 +106,23 @@
     - name: Az üzletmenet folytonossága – bevezetés
       displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
       href: concepts-business-continuity.md
-    - name: Magas rendelkezésre állással kapcsolatos fogalmak
+    - name: Magas rendelkezésre állás – fogalmak
       href: concepts-high-availability.md
 - name: Hálózatkezelés
   items:
     - name: Kapcsolati architektúra
       href: concepts-connectivity-architecture.md
-    - name: Tűzfalszabályok – fogalmak
+    - name: Tűzfalszabályok – Fogalmak
       href: concepts-firewall-rules.md
     - name: Tűzfalszabályok konfigurálása
       items:
-        - name: Tűzfalszabályok konfigurálása Azure Portal használatával
+        - name: Tűzfalszabályok konfigurálása a Azure Portal
           href: howto-manage-firewall-portal.md
-        - name: Tűzfalszabályok konfigurálása az Azure CLI-vel
+        - name: Tűzfalszabályok konfigurálása az Azure CLI használatával
           href: howto-manage-firewall-cli.md
     - name: Virtual Network
       href: concepts-data-access-security-vnet.md
-    - name: Virtual Network konfigurálása
+    - name: A Virtual Network
       items:
         - name: Az Azure Portal használata
           href: howto-manage-vnet-portal.md
@@ -132,9 +132,9 @@
       href: concepts-data-access-security-private-link.md
     - name: Privát kapcsolat
       items:
-        - name: Privát hivatkozás konfigurálása Azure Portal használatával
+        - name: A Private Link konfigurálása Azure Portal
           href: howto-configure-privatelink-portal.md
-        - name: Privát hivatkozás konfigurálása az Azure CLI-vel
+        - name: Konfigurálás Private Link Azure CLI használatával
           href: howto-configure-privatelink-cli.md
     - name: Nyilvános hálózati hozzáférés megtagadása
       items:
@@ -149,23 +149,23 @@
     - name: Az Azure Policy biztonsági vezérlői
       displayName: 'regulatory, compliance, standards, domains'
       href: ./security-controls-policy.md
-    - name: A hálózati biztonság konfigurálása SSL használatával
+    - name: Hálózati biztonság konfigurálása SSL használatával
       href: concepts-ssl-connection-security.md
     - name: TLS konfigurálása
       href: howto-tls-configurations.md
     - name: Advanced Threat Protection
       href: concepts-data-access-and-security-threat-protection.md
-    - name: Az összetett veszélyforrások elleni védelem konfigurálása
+    - name: Az Advanced Threat Protection konfigurálása
       href: howto-database-threat-protection-portal.md
     - name: Naplózási fogalmak
       href: concepts-audit-logs.md
-    - name: Naplók konfigurálása
+    - name: Auditnaplók konfigurálása
       items:
         - name: Azure Portal
           href: howto-configure-audit-logs-portal.md
         - name: Azure CLI
           href: howto-configure-audit-logs-cli.md
-- name: Szolgáltatás karbantartása
+- name: Szolgáltatáskarbantartás
   items:
     - name: Tervezett karbantartás
       href: concepts-planned-maintenance-notification.md
@@ -183,6 +183,9 @@
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
+    - name: Törölt kiszolgáló visszaállítása
+      href: howto-restore-dropped-server.md
+      displayName: 'restore server,dropped, deleted, recover'
 - name: Figyelés és hangolás
   items:
     - name: Alapelvek
@@ -201,11 +204,13 @@
       href: concepts-query-performance-insight.md
     - name: Teljesítménnyel kapcsolatos javaslatok
       href: concepts-performance-recommendations.md
+    - name: Azure Advisor javaslatok
+      href: concepts-azure-advisor-recommendations.md
 - name: Replikáció
   items:
     - name: Beérkező adatokra épülő replikáció
       href: concepts-data-in-replication.md
-    - name: Az adatreplikálás konfigurálása
+    - name: A bekért adatreplikáció konfigurálása
       href: howto-data-in-replication.md
     - name: Olvasási replikák
       href: concepts-read-replicas.md
@@ -217,9 +222,9 @@
           href: howto-read-replicas-cli.md
         - name: Olvasási replikák létrehozása – Azure PowerShell
           href: howto-read-replicas-powershell.md
-- name: Áttelepítés
+- name: Migrálás
   items:
-    - name: Kiszolgáló migrálása
+    - name: Kiszolgáló áttelepítése
       href: howto-migrate-dump-restore.md
 - name: Hibaelhárítás
   items:

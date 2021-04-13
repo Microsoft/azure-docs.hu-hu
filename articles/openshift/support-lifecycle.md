@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/06/2021
+ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634328"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303542"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Az Azure Red Hat OpenShift 4 támogatási életciklusa
 
@@ -33,7 +33,7 @@ A verzióban lévő egyes számok általános kompatibilitást jeleznek az előz
 * **Alverzió**: körülbelül 3 havonta megjelent. Az alverziók frissítései tartalmazhatják a funkciók hozzáadását, a fejlesztéseket, az elavult, az eltávolítást, a hibajavításokat, a biztonsági fejlesztéseket és egyéb fejlesztéseket.
 * **Javítások**: általában hetente vagy igény szerint szabadítanak fel. A javítás verziófrissítése hibajavításokat, biztonsági fejlesztéseket és egyéb fejlesztéseket tartalmazhat.
 
-Az ügyfeleknek törekedniük kell a futtatott főverzió legújabb másodlagos kiadásának futtatására. Ha például az üzemi fürt 4,4-on van, és a 4,5 a 4 sorozat legújabb általánosan elérhető alverziója, akkor a lehető leghamarabb frissítsen a 4,5-ra.
+Az ügyfeleknek törekedniük kell a futtatott főverzió legújabb másodlagos kiadásának futtatására. Ha például az üzemi fürt 4,4-on van, és a 4,5 a 4 sorozat legújabb általánosan elérhető alverziója, akkor a lehető leghamarabb frissítsen a 4,5-ra. 
 
 ### <a name="upgrade-channels"></a>Frissítési csatornák
 
@@ -106,12 +106,16 @@ Tekintse meg az alábbi útmutatót a [korábbi Red Hat OpenShift Container plat
 
 **Mi történik, ha egy felhasználó egy alverzióval nem támogatott OpenShift-fürtöt frissít?**
 
-Ha az N-2 vagy régebbi verziót használ, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az N-2 verzióról N-1-re való frissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Például:
+Ha az N-2 vagy régebbi verzióval rendelkezik, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer arra kéri, hogy frissítsen a további támogatás fogadására. Ha az N-2 verzióról N-1-re való frissítés sikeres, a támogatáson belül vissza fog térni. Az N-3 verziójú vagy régebbi verzióról támogatott verzióra való frissítés kihívást jelenthet, és bizonyos esetekben nem lehetséges. Javasoljuk, hogy a lehetséges frissítési problémák elkerülése érdekében a fürtön tartsa a legújabb OpenShift-verziót. Például:
 * Ha a legrégebbi támogatott Azure Red Hat OpenShift 4.4. z, és a 4.3. z vagy régebbi verzióban van, akkor a támogatáson kívül van.
-* Ha a 4.3. z-ről 4.4. z vagy újabb verzióra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül.
+* Ha a 4.3. z-ről 4.4. z vagy újabb verzióra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül. 
 
 A fürt korábbi verzióra vagy visszaállításra való visszaállítása nem támogatott. Csak újabb verzióra való frissítés támogatott.
 
 **Mit jelent a "támogatáson kívül" kifejezés?**
 
-"A támogatáson kívül" azt jelenti, hogy a futtatott verzió a támogatott verziók listáján kívül esik, és előfordulhat, hogy a rendszer a támogatás kérelmezése után egy támogatott verzióra frissíti a fürtöt, kivéve, ha a verzió elavulttá tételét követő 30 napos türelmi időszakon belül van. Emellett az Azure Red Hat OpenShift a 30 napos türelmi időszak végén nem biztosít futtatókörnyezeti vagy SLA-garanciát a támogatott verziók listáján kívüli fürtökhöz.
+Ha az ARO-fürt olyan OpenShift-verziót futtat, amely nem szerepel a támogatott verziók listáján, vagy nem támogatott [fürtöt](https://docs.microsoft.com/azure/openshift/support-policies-v4)használ, a fürt "a támogatáson kívül" van. Ennek eredményeképpen:
+- Amikor támogatási jegyet nyit a fürthöz, a rendszer arra kéri, hogy frissítse a fürtöt egy támogatott verzióra. a támogatás megkezdése előtt, ha a verzió támogatásának lejárta utáni 30 napos türelmi időszakon belül van. 
+- A támogatáson kívüli fürtökre vonatkozó futtatókörnyezeti vagy SLA-garanciák érvénytelenek.
+- A támogatáson kívüli fürtöket csak a lehető leghatékonyabban kell kijavítani.
+- A támogatáson kívüli fürtöket nem figyeli a rendszer.

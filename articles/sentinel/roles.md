@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 04/11/2021
 ms.author: yelevin
-ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b64adbb63efaa4ce4781474f732bc9509d51029e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772552"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310325"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -31,8 +31,6 @@ Az Azure RBAC segítségével szerepköröket hozhat létre és rendelhet hozzá
 ## <a name="roles-for-working-in-azure-sentinel"></a>Az Azure Sentinel használatának szerepkörei
 
 ### <a name="azure-sentinel-specific-roles"></a>Azure Sentinel-specifikus szerepkörök
-
-Három dedikált beépített Azure Sentinel-szerepkör található.
 
 **Az Azure Sentinel beépített szerepkörei olvasási hozzáférést biztosítanak az Azure Sentinel-munkaterület adataihoz.**
 
@@ -54,19 +52,21 @@ Három dedikált beépített Azure Sentinel-szerepkör található.
 
 Előfordulhat, hogy az adott feladatra vonatkozó követelményekkel rendelkező felhasználóknak további szerepköröket vagy konkrét engedélyeket kell rendelniük a feladatok elvégzéséhez.
 
-- A fenyegetésekre adott válaszok automatizálására szolgáló forgatókönyvek használata
+- **A fenyegetésekre adott válaszok automatizálására szolgáló forgatókönyvek használata**
 
     **Az Azure** Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek **Azure Logic Appsre** épülnek, és külön Azure-erőforrások. Előfordulhat, hogy a biztonsági műveletek csapatának meghatározott tagjaihoz szeretne hozzárendelni Logic Apps biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletekhez. A [Logic app közreműködő](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkör használatával explicit engedélyeket rendelhet a forgatókönyvek használatához.
 
-- Adatforrások összekapcsolása az Azure Sentinel szolgáltatással
+- **Adatforrások összekapcsolása az Azure Sentinel szolgáltatással**
 
     Ahhoz, hogy egy felhasználó **adatösszekötőket** vegyen fel, hozzá kell rendelnie a felhasználó írási engedélyeit az Azure Sentinel munkaterületen. Emellett jegyezze fel a szükséges további engedélyeket az egyes összekötők számára, amint az a megfelelő összekötő lapon szerepel.
 
-- Vendég felhasználói incidensek kiosztása
+- **Vendég felhasználói incidensek kiosztása**
 
-    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure-szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve. 
+    Ha a vendégnek incidenseket kell tudnia hozzárendelni, az Azure Sentinel válaszadó szerepkörön kívül a felhasználónak is hozzá kell rendelnie a [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers)szerepkört. Vegye figyelembe, hogy ez a szerepkör *nem* Azure-szerepkör, hanem egy **Azure Active Directory** szerepkör, és a normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint hozzá van rendelve.
 
-A párhuzamos összehasonlításhoz tekintse meg az [alábbi táblázatot](#roles-and-allowed-actions).
+- **Munkafüzetek létrehozása és törlése**
+
+    Ahhoz, hogy egy felhasználó Azure Sentinel-munkafüzetet hozzon létre és töröljön, a felhasználót a [figyelési közreműködő](../role-based-access-control/built-in-roles.md#monitoring-contributor)Azure monitor szerepkörével is hozzá kell rendelni. Ez a szerepkör nem szükséges a munkafüzetek *használatához* , de csak a létrehozásához és törléséhez.
 
 ### <a name="other-roles-you-might-see-assigned"></a>A hozzárendelt egyéb szerepkörök
 
@@ -74,21 +74,23 @@ Az Azure Sentinel-specifikus Azure-szerepkörök hozzárendelésével más Azure
 
 - **Azure-szerepkörök:** [tulajdonos](../role-based-access-control/built-in-roles.md#owner), [közreműködő](../role-based-access-control/built-in-roles.md#contributor)és [olvasó](../role-based-access-control/built-in-roles.md#reader). Az Azure-szerepkörök hozzáférést biztosítanak az összes Azure-erőforráshoz, beleértve a Log Analytics munkaterületeket és az Azure Sentinel-erőforrásokat.
 
-- **Log Analytics szerepkörök:** [Log Analytics közreműködő](../role-based-access-control/built-in-roles.md#log-analytics-contributor) és [log Analytics olvasó](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics szerepkörök hozzáférést biztosítanak a Log Analytics-munkaterületekhez. 
+- **Log Analytics szerepkörök:** [Log Analytics közreműködő](../role-based-access-control/built-in-roles.md#log-analytics-contributor) és [log Analytics olvasó](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics szerepkörök hozzáférést biztosítanak a Log Analytics-munkaterületekhez.
 
 Ha például az Azure Sentinel **olvasó** szerepkörhöz hozzárendelt felhasználó, de az **Azure Sentinel közreműködő** szerepkört nem, akkor továbbra is szerkesztheti az elemeket az Azure sentinelben, ha az Azure-szintű **közreműködő** szerepkörhöz van rendelve. Ezért ha csak az Azure Sentinelben szeretne engedélyeket adni egy felhasználónak, gondosan távolítsa el a felhasználó korábbi engedélyeit, és ügyeljen arra, hogy ne szüntesse meg a szükséges hozzáférést egy másik erőforráshoz.
 
-## <a name="roles-and-allowed-actions"></a>Szerepkörök és engedélyezett műveletek
+## <a name="azure-sentinel-roles-and-allowed-actions"></a>Azure Sentinel-szerepkörök és engedélyezett műveletek
 
-Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett műveleteket foglalja össze. 
+Az alábbi táblázat összefoglalja az Azure Sentinel-szerepköröket és azok engedélyezett műveleteit az Azure Sentinelben.
 
-| Szerepkör | Forgatókönyvek létrehozása és futtatása| Munkafüzetek elemzési szabályok és más Azure Sentinel-erőforrások létrehozása | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
+| Szerepkör | Forgatókönyvek létrehozása és futtatása| Analitikus szabályok és egyéb Azure Sentinel-erőforrások létrehozása és szerkesztése [*](#workbooks) | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
 |---|---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | &#10003; |
 | Azure Sentinel Responder | -- | -- | &#10003; | &#10003; |
 | Azure Sentinel Contributor | -- | &#10003; | &#10003; | &#10003; |
 | Azure Sentinel közreműködő + Logic app közreműködő | &#10003; | &#10003; | &#10003; | &#10003; |
+| | | | | |
 
+<a name=workbooks></a>* A munkafüzetek létrehozásához és törléséhez a további [figyelési közreműködő](../role-based-access-control/built-in-roles.md#monitoring-contributor) szerepkörre van szükség. További információ: [további szerepkörök és engedélyek](#additional-roles-and-permissions).
 ## <a name="custom-roles-and-advanced-azure-rbac"></a>Egyéni szerepkörök és speciális Azure RBAC
 
 - **Egyéni szerepkörök**. Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.

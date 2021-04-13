@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027710"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306840"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Python-fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -100,7 +100,7 @@ Helyi fejlesztési környezet vagy távoli virtuális gép konfigurálása:
 
 1. Aktiválja az újonnan létrehozott Python virtuális környezetet.
 1. Telepítse a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install)-t.
-1. A helyi környezet a Azure Machine Learning munkaterület használatára való konfigurálásához [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
+1. Ha a helyi környezetet a Azure Machine Learning munkaterület használatára szeretné konfigurálni, [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
 
 Most, hogy beállította a helyi környezetét, készen áll a Azure Machine Learning használatának megkezdésére. A kezdéshez tekintse meg a [Azure Machine learning Python első lépések útmutatóját](tutorial-1st-experiment-sdk-setup-local.md) .
 

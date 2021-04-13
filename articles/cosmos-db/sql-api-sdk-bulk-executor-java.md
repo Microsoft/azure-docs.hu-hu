@@ -1,22 +1,22 @@
 ---
-title: 'Azure Cosmos DB: tömeges végrehajtó Java API, SDK &-erőforrások'
-description: Ismerkedjen meg a tömeges végrehajtó Java API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB tömeges végrehajtó Java SDK egyes verzióiban végrehajtott módosításokat.
+title: 'Azure Cosmos DB: Tömeges végrehajtó Java API, SDK & erőforrások'
+description: Ismerje meg a tömeges végrehajtó Java API-ját és SDK-ját, beleértve a kiadási dátumokat, a kieső dátumokat és a tömeges végrehajtó Java SDK-Azure Cosmos DB végrehajtott módosításokat.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ef75719686f9299fee56cad247ca49167171813
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d3c7026fd221b1a17b8efe56b03b2a26358c7ab
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577172"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364386"
 ---
-# <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtár: letöltési információ
+# <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtói kódtár: Információk letöltése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -30,7 +30,8 @@ ms.locfileid: "104577172"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark-összekötő](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP-összekötő](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
@@ -40,31 +41,31 @@ ms.locfileid: "104577172"
 
 | | Hivatkozás/megjegyzések |
 |---|---|
-|**Leírás**|A tömeges végrehajtó függvénytár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket végezzenek Azure Cosmos DB fiókokban. a tömeges végrehajtó függvénytár BulkImport és BulkUpdate névtereket biztosít. A BulkImport modul képes a dokumentumok egy optimalizált módon történő betöltésére, így a gyűjtemény számára kiépített átviteli sebesség a maximális mértékben felhasználható. A BulkUpdate modul a meglévő, az Azure Cosmos-tárolókban tárolt adatmennyiséget javításként is frissítheti.|
+|**Leírás**|A tömeges végrehajtói kódtár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveleteket hajtsanak végre Azure Cosmos DB fiókokban. A tömeges végrehajtói kódtár a BulkImport és a BulkUpdate névtereket biztosítja. A BulkImport modul képes a dokumentumok tömeges, optimalizált módon történő feltöltésére, hogy a gyűjteményhez kibocsátott átviteli sebességet a lehető legnagyobb mértékben felhasználja a rendszer. A BulkUpdate modul tömegesen frissítheti az Azure Cosmos-tárolókban lévő meglévő adatokat javításként.|
 |**SDK letöltése**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
-|**Tömeges végrehajtó könyvtár a GitHubban**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
-| **API-dokumentáció**| [Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Első lépések**|[Ismerkedés a tömeges végrehajtó függvénytár Java SDK-val](bulk-executor-java.md)|
-|**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/)|
+|**Tömeges végrehajtói kódtár a GitHubon**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
+| **API-dokumentáció**| [A Java API referenciadokumentációja](/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
+|**Első lépések**|[Első lépések a tömeges végrehajtói kódtár Java SDK-ját használva](bulk-executor-java.md)|
+|**Minimális támogatott futási idő**|[Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
-* Javítsa ki a DocumentAnalyzer. Java fájlt, hogy megfelelően kinyerje a beágyazott partíciós kulcs értékeit a JSON-ből.
+* A DocumentAnalyzer.java kijavítása a beágyazott partíciókulcs-értékek jsonból való helyes kinyeréséhez.
 
 ### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
-* Adja hozzá a BulkDelete műveletek funkcióit, és próbálkozzon újra a hibákkal, és adja vissza azon hibák listáját, amelyeket újra lehet próbálni.
+* Funkciók hozzáadása a BulkDelete műveletekhez adott hibák esetén való újrapróbálkozáshoz, valamint az újrapróbálható hibák listájának visszaadása a felhasználónak.
 
 ### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
-* A Cosmos SDK verziójának 2.4.7 frissítése.
+* A Cosmos SDK 2.4.7-es verziójának frissítése.
 
 ### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
-* Javítsa ki a "mergeAll" parancsot a "id" és a "Partition Key" érték folytatásához, hogy a rendszer az "id" és a "Partition Key" érték után elhelyezett javított dokumentum-tulajdonságokat hozzáadja a frissített elemek listájához.
+* Ki lett javítva, hogy a mergeAll az "id" és a partíciókulcs értékével folytatódjon, így az "id" után elhelyezett frissített dokumentumtulajdonságok és a partíciókulcs-értékek bekerülnek a frissített elemlistába.
 
 ### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
-* Frissítse a párhuzamossági fokot 1 értékre, és adja hozzá a hibakeresési naplókat a minibatch.
+* Frissítse az egyidejűség kezdő fokát 1-re, és hibakeresési naplókat ad hozzá a minibatch számára.

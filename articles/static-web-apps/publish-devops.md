@@ -1,89 +1,89 @@
 ---
-title: 'Oktatóanyag: Azure statikus Web Apps közzététele az Azure DevOps'
-description: Ismerje meg, hogyan teheti közzé az Azure statikus Web Apps az Azure DevOps használatával.
+title: 'Oktatóanyag: Azure Static Web Apps közzététele az Azure DevOps használatával'
+description: Megtudhatja, hogyan használhatja az Azure DevOpsot a Azure Static Web Apps.
 services: static-web-apps
 author: scubaninja
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 472cf7b69078b3247c393ff65139bc29e5683a32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f82ae60ab7f57b20a727deefa6e286d698ee5b6c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639368"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365756"
 ---
-# <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Oktatóanyag: Azure statikus Web Apps közzététele az Azure DevOps
+# <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Oktatóanyag: Azure Static Web Apps közzététele az Azure DevOps használatával
 
-Ez a cikk bemutatja, hogyan helyezhető üzembe az [Azure statikus Web Apps](./overview.md) az [Azure DevOps](https://dev.azure.com/)használatával.
+Ez a cikk bemutatja, hogyan helyezhet üzembe [Azure Static Web Apps](./overview.md) az [Azure DevOps használatával.](https://dev.azure.com/)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-- Azure statikus Web Apps-hely beállítása
-- Azure DevOps-folyamat létrehozása statikus webalkalmazások létrehozásához és közzétételéhez
+- Hely Azure Static Web Apps beállítása
+- Azure DevOps-folyamat létrehozása statikus webalkalmazás létrehozásához és közzétételéhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Aktív Azure-fiók:** Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://azure.microsoft.com/free/).
-- **Azure DevOps-projekt:** Ha még nem rendelkezik ilyennel, [létrehozhat egy projektet ingyenesen](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/).
-- **Azure DevOps-folyamat:** Ha segítségre van szüksége a kezdéshez, tekintse [meg az első folyamat létrehozása](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&preserve-view=true)című témakört.
+- **Aktív Azure-fiók:** Ha még nincs fiókja, ingyenesen [létrehozhat egy fiókot.](https://azure.microsoft.com/free/)
+- **Azure DevOps Project:** Ha még nem használhatja, ingyenesen létrehozhat [egy projektet.](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)
+- **Azure DevOps-folyamat:** Ha segítségre van szüksége az első lépésekhez, lásd: [Az első folyamat létrehozása.](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&preserve-view=true)
 
-## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Statikus Webalkalmazás létrehozása Azure DevOps-tárházban
+## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Statikus webalkalmazás létrehozása Azure DevOps-adattárban
 
   > [!NOTE]
-  > Ha rendelkezik egy meglévő alkalmazással a tárházban, ugorjon a következő szakaszra.
+  > Ha már van alkalmazása az adattárban, a következő szakaszra ugorhat.
 
-1. Navigáljon az Azure DevOps-tárházhoz.
+1. Lépjen az Azure DevOps-adattárra.
 
-1. Válassza az **Importálás** lehetőséget egy minta alkalmazás importálásának megkezdéséhez.
+1. Válassza **az Importálás** lehetőséget egy mintaalkalmazás importálásának megkezdéséhez.
   
-    :::image type="content" source="media/publish-devops/devops-repo.png" alt-text="DevOps-tárház":::
+    :::image type="content" source="media/publish-devops/devops-repo.png" alt-text="DevOps-repo":::
 
-1. A **klónozási URL-cím** mezőbe írja be a értéket `https://github.com/staticwebdev/vanilla-api.git` .
+1. A **Clone URL (Klón URL-címe)** mezőben adja meg a következőt: `https://github.com/staticwebdev/vanilla-api.git` .
 
 1. Válassza az **Importálás** lehetőséget.
 
 ## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com).
+1. Lépjen a [Azure Portal.](https://portal.azure.com)
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 
-1. **Statikus Web Apps** keresése.
+1. Keressen rá a **Static Web Apps.**
 
-1. Válassza a **statikus Web Apps (előzetes verzió)** lehetőséget.
+1. Válassza **Static Web Apps (előzetes verzió) lehetőséget.**
 
 1. Válassza a **Létrehozás** lehetőséget.
 
-1. Az _üzembe helyezés részletei_ területen válassza a **más** lehetőséget. Ez lehetővé teszi a kód használatát az Azure DevOps-tárházban.
+1. Az Üzembe _helyezés részletei alatt_ válassza az Egyéb **lehetőséget.** Ez lehetővé teszi a kód használatát az Azure DevOps-adattárban.
 
-    :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Központi telepítés részletei – egyéb":::
+    :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Üzembe helyezés részletei – egyéb":::
 
-1. Miután az üzembe helyezés sikeres volt, navigáljon az új statikus Web Apps erőforráshoz.
+1. Ha az üzembe helyezés sikeres volt, lépjen az új Static Web Apps erőforráshoz.
 
-1. Válassza a **központi telepítési jogkivonat kezelése** lehetőséget.
+1. Válassza az **Üzembe helyezési jogkivonat kezelése lehetőséget.**
 
-1. Másolja a **telepítési jogkivonatot** , és illessze be egy szövegszerkesztőbe egy másik képernyőn való használatra.
+1. Másolja ki **az üzembe helyezési jogkivonatot,** és illessze be egy szövegszerkesztőbe egy másik képernyőn való használathoz.
 
     > [!NOTE]
-    > Ez az érték most nincs elkülönítve, mert több értéket fog másolni és beilleszteni a következő lépésekbe.
+    > Ezt az értéket most félretesszük, mert a következő lépésekben további értékeket fog másolni és beilleszteni.
 
-    :::image type="content" source="media/publish-devops/deployment-token.png" alt-text="Üzembe helyezési jogkivonat":::
+    :::image type="content" source="media/publish-devops/deployment-token.png" alt-text="Üzembehelyi jogkivonat":::
 
-## <a name="create-the-pipeline-task-in-azure-devops"></a>Folyamat létrehozása az Azure DevOps
+## <a name="create-the-pipeline-task-in-azure-devops"></a>A folyamatfeladat létrehozása az Azure DevOpsban
 
-1. Navigáljon a korábban létrehozott Azure DevOps adattárhoz.
+1. Keresse meg a korábban létrehozott Azure DevOps-adattárat.
 
-1. Válassza a **Build beállítása** lehetőséget.
+1. Válassza a **Build beállítása lehetőséget.**
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="Buildelési folyamat":::
 
-1. A *folyamat konfigurálása* képernyőn válassza a **kezdő folyamat** lehetőséget.
+1. A Folyamat *konfigurálása képernyőn* válassza a Kezdő **folyamat lehetőséget.**
 
     :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="Folyamat konfigurálása":::
 
-1. Másolja és illessze be a következő YAML a folyamatba.
+1. Másolja és illessze be az alábbi YAML-t a folyamatba.
 
     ```yaml
     trigger:
@@ -93,6 +93,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
       vmImage: ubuntu-latest
     
     steps:
+      - checkout: self
+        submodules: true
+
       - task: AzureStaticWebApp@0
         inputs:
           app_location: "/" 
@@ -103,43 +106,43 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     ```
 
     > [!NOTE]
-    > Ha nem használja a minta alkalmazást, a, a és a értékének meg `app_location` `api_location` `output_location` kell változtatnia az alkalmazás értékeinek megfelelően.
+    > Ha nem használja a mintaalkalmazást, a , és értékét módosítania kell, hogy megegyeznek az `app_location` `api_location` alkalmazásban használt `output_location` értékekkel.
 
     [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
-    Az `azure_static_web_apps_api_token` érték önállóan felügyelt, és manuálisan van konfigurálva.
+    Az `azure_static_web_apps_api_token` érték önálló, és manuálisan van konfigurálva.
 
-1. Válasszon **változókat**.
+1. Válassza **a Változók lehetőséget.**
 
 1. Hozzon létre egy új változót.
 
-1. Nevezze el a változót **deployment_token** (a munkafolyamatban szereplő névvel egyező).
+1. A **változónak** deployment_token (a munkafolyamatban egyező névvel).
 
-1. Másolja a korábban beillesztett központi telepítési tokent egy szövegszerkesztőbe.
+1. Másolja ki a korábban egy szövegszerkesztőbe bemásolt üzembe helyezési jogkivonatot.
 
-1. Illessze be a központi telepítési tokent az _érték_ mezőbe.
+1. Illessze be az üzembe helyezési jogkivonatot az _Érték mezőbe._
 
-    :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Változó token":::
+    :::image type="content" source="media/publish-devops/variable-token.png" alt-text="Változó jogkivonat":::
 
-1. Válassza **az érték megtartása titkot**.
+1. Válassza **a Keep this value secret (Ez az érték maradjon titkos) lehetőséget.**
 
 1. Válassza az **OK** lehetőséget.
 
-1. Válassza a **Mentés** lehetőséget a folyamat YAML való visszatéréshez.
+1. Válassza **a Mentés lehetőséget** a folyamat YAML-hez való visszatéréshez.
 
-1. A _Mentés és Futtatás párbeszédpanel_ megnyitásához kattintson a **Mentés és Futtatás** gombra.
+1. Válassza **a Mentés és futtatás** lehetőséget a Mentés és _futtatás párbeszédpanel megnyitásához._
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="Folyamat":::
 
-1. Válassza a **Mentés és Futtatás** lehetőséget a folyamat futtatásához.
+1. A **folyamat futtatásához válassza** a Mentés és futtatás lehetőséget.
 
-1. Ha az üzembe helyezés sikeres volt, navigáljon az Azure statikus Web Apps **áttekintő oldalra** , amely a telepítési konfigurációra mutató hivatkozásokat tartalmaz. Figyelje meg, hogy a _forrás_ hivatkozás most az Azure DevOps adattárának ágra és helyére mutat.
+1. Ha az üzembe helyezés sikeres volt, lépjen a Azure Static Web Apps **áttekintési lapra,** amely az üzembe helyezési konfigurációra mutató hivatkozásokat tartalmaz. Figyelje _meg, hogy a Forrás_ hivatkozás most az Azure DevOps-adattár ágra és helyre mutat.
 
-1. Válassza ki az **URL-címet** az újonnan üzembe helyezett webhely megtekintéséhez.
+1. Az **újonnan üzembe helyezett webhelyet** az URL-cím kiválasztásával láthatja.
 
-    :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Központi telepítés helye":::
+    :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="Üzembe helyezés helye":::
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure statikus Web Apps konfigurálása](./configuration.md)
+> [Az Azure Static Web Apps](./configuration.md)

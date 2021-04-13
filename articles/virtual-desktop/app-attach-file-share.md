@@ -1,114 +1,110 @@
 ---
-title: Windows rendszerű virtuális asztali fájlmegosztási MSIX-alkalmazás csatlakoztatása – előzetes verzió – Azure
-description: Fájlmegosztás beállítása a Windows rendszerű virtuális asztali MSIX alkalmazáshoz.
+title: Windows Virtual Desktop MSIX-alkalmazás csatolásának beállítása – Azure
+description: Fájlmegosztás beállítása msix-alkalmazáshoz való csatoláshoz Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448389"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366402"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Fájlmegosztás beállítása a MSIX-alkalmazás csatolásához (előzetes verzió)
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>Fájlmegosztás beállítása AZ MSIX-alkalmazás csatolása számára
 
-> [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Minden MSIX-lemezképet egy olyan hálózati megosztáson kell tárolni, amelyet a felhasználók csak olvasási engedélyekkel rendelkező gazdagépkészletben tudnak elérni.
 
-Minden MSIX-lemezképet egy olyan hálózati megosztáson kell tárolni, amelyet a gazdagépek a csak olvasási jogosultságokkal rendelkező gazdagépek számára tudnak elérni.
-
-A MSIX-alkalmazás csatolása (előzetes verzió) nem rendelkezik függőségekkel a fájlmegosztás által használt tárolási háló típusával kapcsolatban. A MSIX-alkalmazás csatolási szempontjai ugyanazok, mint egy FSLogix-megosztás esetében. A tárolási követelményekkel kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
+Az MSIX-alkalmazás csatolása nem függ a fájlmegosztás által használt tárolóalkalmazás típusától. Az MSIX-alkalmazás csatolási megosztásának szempontjai ugyanazok, mint az FSLogix-megosztásokét figyelembe véve. További információ a tárolási követelményekről: Tárolási lehetőségek FSLogix-profiltárolókhoz a [Windows Virtual Desktop.](store-fslogix-profile.md)
 
 ## <a name="performance-requirements"></a>Teljesítményre vonatkozó követelmények
 
-A MSIX alkalmazás a rendszerkép méretére vonatkozó korlátokat a rendszertől függ attól függően, hogy milyen tárolási típust használ a VHD-vagy VHDx-fájlok tárolására, valamint a VHD-, a VHSD-vagy a CIM-fájlok és a fájlrendszer méretére vonatkozó korlátozásokat.
+Az MSIX-alkalmazás képméretkorlátai a VHD- vagy VHDX-fájlok tárolásához használt tárolótípustól, valamint a VHD-, VHSD- vagy CIM-fájlok méretkorlátozásaitól, valamint a fájlrendszertől függenek.
 
-Az alábbi táblázat azt mutatja be, hogy hány erőforrást tartalmaz egy 1 GB-os MSIX-rendszerkép egyetlen MSIX-alkalmazással az egyes virtuális gépekhez:
+Az alábbi táblázat egy példát mutat be arra, hogy egy 1 GB-os MSIX-rendszerképnek hány erőforrásra van szüksége egy MSIX-alkalmazással az egyes virtuális gépekhez:
 
 | Erőforrás             | Követelmények |
 |----------------------|--------------|
-| Állandó állapot IOPs    | 1 IOPs       |
-| Számítógép rendszerindítási bejelentkezés | 10 IOPs      |
-| Késés              | 400 MS       |
+| Stabil állapot I/O-i    | 1 I/O       |
+| Gép rendszerindítási bejelentkezése | 10 I/O      |
+| Késés              | 400 ms       |
 
-A követelmények nagy mértékben változhatnak attól függően, hogy hány MSIX csomagolt alkalmazást tárolnak a MSIX-rendszerképben. Nagyobb MSIX-lemezképek esetén további sávszélességet kell lefoglalnia.
+A követelmények nagy mértékben változhatnak az MSIX-lemezképben tárolt MSIX-csomagolt alkalmazások számától függően. Nagyobb MSIX-lemezképek esetén nagyobb sávszélességet kell lefoglalni.
 
 ### <a name="storage-recommendations"></a>Tárolásra vonatkozó javaslatok
 
-Az Azure több tárolási lehetőséget is kínál, amelyek a MISX-alkalmazásokhoz használhatók. Javasoljuk, hogy Azure Files vagy Azure NetApp Files használjon, mivel ezek a lehetőségek a legjobb értéket nyújtják a költségek és a felügyelet terhelése között. A [Windows rendszerű virtuális asztali FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md) összehasonlítják az Azure által kínált különböző felügyelt tárolási megoldásokat a Windows rendszerű virtuális asztali környezetekben.
+Az Azure több tárolási lehetőséget is kínál, amelyek a MISX-alkalmazások csatolása során használhatók. Javasoljuk, hogy Azure Files vagy Azure NetApp Files, mivel ezek a lehetőségek a legjobb értéket kínálják a költségek és a felügyelet többletterhelése között. Az [FSLogix-profiltárolók](store-fslogix-profile.md) tárolási lehetőségei a Windows Virtual Desktop az Azure által kínál különböző felügyelt tárolási megoldásokat hasonlítja össze az Windows Virtual Desktop.
 
-### <a name="optimize-msix-app-attach-performance"></a>A MSIX-alkalmazás teljesítményének optimalizálása
+### <a name="optimize-msix-app-attach-performance"></a>Az MSIX-alkalmazás csatolási teljesítményének optimalizálása
 
-Íme néhány további dolog, amit érdemes optimalizálni a MSIX-alkalmazás csatlakoztatási teljesítményének optimalizálása érdekében:
+Az MSIX-alkalmazás csatolási teljesítményének optimalizálása érdekében javasoljuk még néhány dolgot:
 
-- Az MSIX alkalmazáshoz használt tárolási megoldásnak ugyanabban az adatközpont-helyen kell lennie, mint a munkamenet-gazdagépeknek.
-- A teljesítmény szűk keresztmetszetének elkerülése érdekében zárja ki a következő VHD-, VHDX-és CIM-fájlokat a víruskeresőből:
+- Az MSIX-alkalmazás csatolására használt tárolási megoldásnak ugyanazon az adatközponton kell lennie, mint a munkamenetgazdának.
+- A teljesítménybeli szűk keresztmetszetek elkerülése érdekében zárja ki a következő VHD-, VHDX- és CIM-fájlokat a víruskereső vizsgálatokból:
    
-    - <MSIXAppAttachFileShare \> \* . VHD
+    - <MSIXAppAttachFileShare \> \* . Vhd
     - <MSIXAppAttachFileShare \> \* . VHDX
-    - \\\\storageaccount.file.core.windows.net- \\ megosztás \* \* . VHD
-    - \\\\storageaccount.file.core.windows.net- \\ megosztás \* \* . VHDX
-    - <MSIXAppAttachFileShare>. CIM
-    - \\\\storageaccount.file.core.windows.net- \\ megosztás \* \* . CIM
+    - \\\\storageaccount.file.core.windows.net \\ \* \* megosztás. Vhd
+    - \\\\storageaccount.file.core.windows.net \\ \* \* megosztás. VHDX
+    - <MSIXAppAttachFileShare>. Cim
+    - \\\\storageaccount.file.core.windows.net \\ \* \* megosztás. Cim
 
-- Válassza el a MSIX alkalmazáshoz tartozó Storage-hálót a FSLogix-profilok tárolói között.
-- Minden virtuálisgép-rendszerfióknak és felhasználói fióknak csak olvasási engedéllyel kell rendelkeznie a fájlmegosztás eléréséhez.
-- A Windows rendszerű virtuális asztal vész-helyreállítási terveinek tartalmaznia kell a MSIX alkalmazás csatolása a másodlagos feladatátvételi helyen. További információ a vész-helyreállításról: [az üzletmenet-folytonosság és a vész-helyreállítási terv beállítása](disaster-recovery.md).
+- Válassza el az MSIX-alkalmazás csatolásának tárolóját az FSLogix-profiltárolóktól.
+- A fájlmegosztás eléréséhez minden VM-rendszerfióknak és felhasználói fióknak csak olvasási jogosultsággal kell rendelkeznie.
+- Minden vészhelyreállítási tervnek Windows Virtual Desktop tartalmaznia kell az MSIX-alkalmazás csatolási fájlmegosztásának replikálása a másodlagos feladatátvételi helyen. További információ a vészhelyreállításról: [Üzletmenet-folytonossági](disaster-recovery.md)és vészhelyreállítási terv beállítása.
 
 ## <a name="how-to-set-up-the-file-share"></a>A fájlmegosztás beállítása
 
-A MSIX alkalmazás telepítési folyamata nagy mértékben megegyezik a [FSLogix-profilok telepítési folyamatával](create-host-pools-user-profile.md). Azonban különböző engedélyeket kell rendelnie a felhasználókhoz. Az MSIX alkalmazáshoz csak olvasási jogosultság szükséges a fájlmegosztás eléréséhez.
+Az MSIX-alkalmazás csatolási fájlmegosztásának telepítési folyamata nagyrészt megegyezik az [FSLogix-profilfájlmegosztások telepítési folyamatának folyamatához.](create-host-pools-user-profile.md) Ehhez azonban különböző engedélyeket kell hozzárendelni a felhasználókhoz. Az MSIX-alkalmazás csatolásához csak olvasási engedélyekre van szükség a fájlmegosztás eléréséhez.
 
-Ha a MSIX-alkalmazásait Azure Filesban tárolja, akkor a munkamenet-gazdagépek esetében az összes munkamenet-gazda virtuális gépnek hozzá kell rendelnie a Storage-fiók szerepköralapú hozzáférés-vezérlése (RBAC) és a fájlmegosztás új technológiai fájlrendszer (NTFS) engedélyeit a megosztáshoz.
+Ha MSIX-alkalmazásait az Azure Files-ban tárolja, akkor a munkamenetgazdákhoz minden munkamenetgazda virtuális géphez hozzá kell rendelnie tárfiók szerepköralapú hozzáférés-vezérlési (RBAC) és fájlmegosztási Új technológiai fájlrendszer (NTFS) engedélyeket a megosztáson.
 
-| Azure-objektum                      | Szükséges szerepkör                                     | Szerepkör-függvény                                  |
+| Azure-objektum                      | Szükséges szerepkör                                     | Szerepköri függvény                                  |
 |-----------------------------------|--------------------------------------------------|-----------------------------------------------|
-| Munkamenet-gazdagép (VM számítógép-objektumok)| Storage-fájladatok SMB-megosztásának közreműködője          | Olvasás és végrehajtás, olvasás, mappa tartalmának listázása  |
-| A fájlmegosztás rendszergazdái              | Storage-fájladatok SMB-megosztásának emelt szintű közreműködője | Teljes hozzáférés                                  |
-| A fájlmegosztás felhasználói               | Storage-fájladatok SMB-megosztásának közreműködője          | Olvasás és végrehajtás, olvasás, mappa tartalmának listázása  |
+| Munkamenetgazda (virtuális gép számítógép-objektumai)| Storage-fájladatok SMB-megosztásának közreműködője          | Read and Execute, Read, List folder contents (Mappa tartalmának olvasása és végrehajtása, olvasása, listása)  |
+| Fájlmegosztás rendszergazdái              | Storage-fájladatok SMB-megosztásának emelt szintű közreműködője | Teljes hozzáférés                                  |
+| Fájlmegosztáson található felhasználók               | Storage-fájladatok SMB-megosztásának közreműködője          | Read and Execute, Read, List folder contents (Mappa tartalmának olvasása és végrehajtása, olvasása, listása)  |
 
-A munkamenet-gazda virtuális gépek engedélyeinek a Storage-fiókhoz és a fájlmegosztáshoz való hozzárendeléséhez:
+Munkamenetgazda virtuális gépek engedélyeinek hozzárendelése a tárfiókhoz és a fájlmegosztáshoz:
 
-1. Hozzon létre egy Active Directory Domain Services (AD DS) biztonsági csoportot.
+1. Hozzon létre Active Directory Domain Services (AD DS) biztonsági csoportot.
 
-2. Adja hozzá a számítógép-fiókokat az összes munkamenet-gazda virtuális géphez a csoport tagjaiként.
+2. Vegye fel a munkamenetgazda virtuális gépek számítógépfiókját a csoport tagjaiként.
 
-3. Szinkronizálja a AD DS csoportot Azure Active Directory (Azure AD) szolgáltatásba.
+3. Szinkronizálja az AD DS csoportot Azure Active Directory (Azure AD) használatával.
 
 4. Tárfiók létrehozása.
 
-5. Hozzon létre egy fájlmegosztást a Storage-fiókban az Azure- [fájlmegosztás létrehozása](../storage/files/storage-how-to-create-file-share.md#create-file-share)című részben leírtak szerint.
+5. Hozzon létre egy fájlmegosztást a tárfiók alatt az Azure-fájlmegosztás [létrehozása útmutatását követve.](../storage/files/storage-how-to-create-file-share.md#create-file-share)
 
-6. Csatlakoztassa a Storage-fiókot úgy, hogy AD DS az első részben található utasításokat követve [: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module).
+6. Csatlakozzon a tárfiókhoz a AD DS az első rész utasításait követve: engedélyezze AD DS [azure-fájlmegosztások hitelesítését.](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)
 
-7. Rendelje hozzá a szinkronizált AD DS csoportot az Azure AD-hez, és rendelje hozzá a tárolási fiókhoz a tárolási fájl adatsmb-megosztás közreműködői szerepkört.
+7. Rendelje hozzá a szinkronizált AD DS csoportot az Azure AD-hez, és rendelje hozzá a tárfiókhoz a Storage-fájladatok SMB-megosztási közreműködője szerepkört.
 
-8. Csatlakoztassa a fájlmegosztást bármely munkamenet-gazdagéphez a második részben található utasításokat követve, a [megosztási szintű engedélyek hozzárendeléséhez az identitáshoz](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
+8. Csatlakoztassa a fájlmegosztást bármely munkamenetgazda számára a következő részben található utasításokat követve: megosztási szintű engedélyek hozzárendelése egy [identitáshoz.](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)
 
-9. Engedélyezze az NTFS-engedélyeket a fájlmegosztás számára a AD DS csoport számára.
+9. Adjon NTFS-engedélyeket a fájlmegosztásnak a AD DS számára.
 
-10. NTFS-engedélyek beállítása a felhasználói fiókokhoz. Szüksége lesz egy kiindulási egységre (OU) a AD DS arról, hogy a virtuális gépen lévő fiókok tartoznak a-hoz.
+10. Állítson be NTFS-engedélyeket a felhasználói fiókokhoz. Szüksége lesz egy olyan üzemeltetési egységre (OU), amely abból a AD DS amelybe a virtuális gép fiókjai tartoznak.
 
-Miután hozzárendelte az identitást a tárhelyhez, kövesse a [következő lépésekben](#next-steps) szereplő cikkek utasításait, hogy más szükséges engedélyeket adjon meg a virtuális gépekhez hozzárendelt identitáshoz.
+Miután hozzárendelt egy identitást a tárolóhoz, a [](#next-steps) Következő lépések cikkben található utasításokat követve adjon meg más szükséges engedélyeket a virtuális gépekhez rendelt identitáshoz.
 
-Arról is gondoskodnia kell, hogy a munkamenet-gazda virtuális gépei új technológiai fájlrendszerbeli (NTFS) engedélyekkel rendelkezzenek. Az engedélyek használatához rendelkeznie kell egy olyan operatív egység-tárolóval, amely Active Directory Domain Servicesból (AD DS) származik, és a felhasználóknak az adott operatív egység tagjainak kell lenniük.
+Arról is meg kell győződni, hogy a munkamenetgazda virtuális gépei new Technology File System (NTFS) engedélyekkel rendelkezik. Rendelkeznie kell egy operatívegység-tárolóval, amely a Active Directory Domain Services -től (AD DS) származik, és a felhasználóknak ennek az üzemeltetési egységnek a tagjainak kell lennie az engedélyek használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A fájlmegosztás beállítása után a következő műveleteket kell végrehajtania:
+A fájlmegosztás beállítása után a következő további dolgokat kell még megtennie:
 
-- Megtudhatja, hogyan állíthat be Azure Active Directory Domain Services (AD DS) a [profil létrehozása Azure Files és AD DS](create-file-share.md)használatával.
-- Megtudhatja, hogyan állíthatja be a Azure Files és az Azure AD DSt a [profil létrehozása a Azure Files és az azure AD DS](create-profile-container-adds.md)használatával.
-- Megtudhatja, hogyan állíthat be Azure NetApp Files a MSIX alkalmazáshoz a [profil létrehozása a Azure NetApp Files és a AD DS](create-fslogix-profile-container.md)használatával.
-- Megtudhatja, hogyan használhatja a virtuálisgép-alapú fájlmegosztást a [címkészlet létrehozása a gazdagéphez egy fájlmegosztás használatával](create-host-pools-user-profile.md).
+- A profiltárolók Azure Active Directory Domain Services (AD DS) beállítását a Profiltároló létrehozása Azure Files [és a AD DS.](create-file-share.md)
+- A profiltárolók Azure Files és Azure AD DS beállítását [a Profiltároló](create-profile-container-adds.md)létrehozása a Azure Files és a Azure AD DS.
+- Az MSIX-Azure NetApp Files beállítását a Profiltároló létrehozása a Azure NetApp Files és a [AD DS.](create-fslogix-profile-container.md)
+- A virtuálisgép-alapú fájlmegosztások használatát a Profiltároló létrehozása gazdagépkészlethez [fájlmegosztás használatával.](create-host-pools-user-profile.md)
 
-Ha elkészült, néhány további erőforrást talál, amelyek hasznosak lehetnek:
+Ha végzett, íme néhány további erőforrás, amelyek hasznosak lehetnek:
 
-- Kérje meg a közösségi kérdéseket a szolgáltatással kapcsolatban a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
-- A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.
-- [MSIX-alkalmazás szószedetének csatolása](app-attach-glossary.md)
+- A funkcióval kapcsolatos kérdéseit a [TechCo Windows Virtual Desktop fel.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
+- Visszajelzést is küldhet a Windows Virtual Desktop a [Windows Virtual Desktop visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
+- [MSIX-alkalmazás csatolása – szószedet](app-attach-glossary.md)
 - [MSIX-alkalmazás csatolása – GYIK](app-attach-faq.md)

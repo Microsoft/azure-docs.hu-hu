@@ -1,18 +1,21 @@
 ---
-title: Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
-description: Állítsa be a Windows Server feladatátvevő fürtöt (WSFC) az Azure VMware-megoldáson, és használja ki a WSFC-képességet igénylő megoldások előnyeit.
+title: A Windows Server feladatátvevő fürt konfigurálása az Azure VMware megoldás vSAN
+description: Állítsa be a Windows Server feladatátvevő fürtöt (WSFC) az Azure VMware megoldás vSAN natív megosztott lemezekkel.
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562239"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308683"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>A Windows Server feladatátvevő fürt konfigurálása az Azure VMware megoldás vSAN
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Windows Server feladatátvevő fürtöt az Azure VMware megoldásban. A jelen cikkben ismertetett megvalósítás a koncepciók és a tesztelési célok igazolására szolgál. Azt javasoljuk, hogy a helyszíni (CIB) konfigurációt csak az elhelyezési házirendek elérhetővé tételéhez használja.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Windows Server feladatátvevő fürtöt az Azure VMware megoldás vSAN natív megosztott lemezekkel. 
+
+>[!IMPORTANT]
+>A jelen cikkben ismertetett megvalósítás a koncepciók és a tesztelési célok igazolására szolgál. Azt javasoljuk, hogy a helyszíni (CIB) konfigurációt csak akkor használja, ha az elhelyezési házirendek elérhetővé válnak.
 
 A Windows Server feladatátvételi fürt (WSFC), korábbi nevén Microsoft Service cluster Service (MSCS), a Windows Server operációs rendszer (OS) egyik funkciója. A WSFC egy üzleti szempontból kritikus funkció, és számos alkalmazásra van szükség. A következő konfigurációk esetében például a WSFC szükséges:
 
@@ -43,7 +46,7 @@ Az Azure VMware-megoldás natív támogatást nyújt a virtualizált WSFC. Támo
 
 Az alábbi ábra az Azure VMware-megoldás saját Felhőbeli WSFC virtuális csomópontjainak architektúráját mutatja be. Itt látható, hogy hol találhatók az Azure VMware-megoldások, beleértve a WSFC virtuális kiszolgálókat (piros doboz) a szélesebb körű Azure platformmal kapcsolatban. Ez az ábra egy tipikus küllős architektúrát mutat be, de egy hasonló beállítás is lehetséges az Azure Virtual WAN használatával. Mindkettő az összes többi Azure-szolgáltatást is felhasználhatja.
 
-[![Az Azure VMware-megoldás saját Felhőbeli WSFC virtuális csomópontjainak architektúráját bemutató ábra.](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="A Windows Server feladatátvételi fürt virtuális csomópontjainak architektúra ábrája egy Azure VMware-megoldás saját felhőben." border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
 

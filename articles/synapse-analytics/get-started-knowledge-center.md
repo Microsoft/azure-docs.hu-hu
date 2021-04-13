@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: a26f46da7b392bd3b4a49aacb360a4c6147f8d2c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382640"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307894"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a szinapszis Studio Knowledge centert.
 
-## <a name="getting-to-the-knowledge-center"></a>Ismerkedés a Knowledge centerrel
+## <a name="introduction-to-the-knowledge-center"></a>A Knowledge Center bemutatása
 
 A Knowledge Center a szinapszis Studióban kétféleképpen megtalálható:
 
@@ -30,16 +30,19 @@ A Knowledge Center a szinapszis Studióban kétféleképpen megtalálható:
 
 Válassza a metódust, és nyissa meg a **tudásbázist**.
 
-## <a name="overview"></a>Áttekintés
-
-A **Tudásközpont** három dolgot tesz lehetővé:
+Amint látható, látni fogja, hogy a **Knowledge Center** lehetővé teszi, hogy három dolgot tegyenek:
 * A **mintákat azonnal használhatja**. Ha a szinapszis működésének gyors példáját szeretné használni, válassza ezt a lehetőséget.
 * **Tallózás** a katalógusban. Ez a beállítás lehetővé teszi a mintaadatok-készletek összekapcsolását és a mintakód hozzáadását SQL-parancsfájlok, jegyzetfüzetek és folyamatok formájában.
 * A **szinapszis Studio** bemutatása. Ez a lehetőség a szinapszis Studio alaprészének rövid bemutatóját veszi igénybe. Ez akkor hasznos, ha még soha nem használta a szinapszis Studio alkalmazást.
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>BLOB Storage felderítése kiszolgáló nélküli SQL-készlettel
+## <a name="exploring-use-samples-immediately"></a>Vizsgálat: azonnali minták használata
 
-1. Lépjen a **Knowledge Center webhelyre**, és kattintson a **minták azonnali használata** elemre.
+A szakasz három elemet tartalmaz:
+* Mintaadatok feltárása a Sparktal
+* SQL-alapú lekérdezések
+* Külső tábla létrehozása SQL-sel
+
+1. A **Tudásbázisban** kattintson a **minták azonnali használata** elemre.
 1. Válassza ki **az SQL-t a lekérdezési adatként**.
 1. Kattintson a **minta használata** lehetőségre.
 1. Ekkor megnyílik egy új minta SQL-parancsfájl.

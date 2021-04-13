@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218634"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309390"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Az Azure Static Web Apps előzetes verziójának hitelesítése és engedélyezése
 
@@ -24,7 +24,7 @@ Az Azure statikus Web Apps a következő szolgáltatók hitelesítésének kezel
 - Google<sup>1</sup>
 - Twitter
 
-A szolgáltatóra vonatkozó [meghívások](#invitations) társítják a felhasználókat a szerepkörökhöz, és az engedéllyel rendelkező felhasználók hozzáférést kapnak az [útvonalakhoz](routes.md) a fájl _routes.jsban_ meghatározott szabályok szerint.
+A szolgáltatóra vonatkozó [meghívások](#invitations) társítják a felhasználókat a szerepkörökhöz, és az engedéllyel rendelkező felhasználók hozzáférést kapnak az [útvonalakhoz](routes.md) a fájl _staticwebapp.config.jsban_ meghatározott szabályok szerint.
 
 Alapértelmezés szerint minden hitelesítő szolgáltató engedélyezve van. A hitelesítési szolgáltató korlátozásához tiltsa le a [hozzáférést](#block-an-authorization-provider) egy egyéni útválasztási szabállyal.
 
@@ -32,18 +32,18 @@ A hitelesítés és az engedélyezés témaköre jelentősen átfedésben van az
 
 ## <a name="roles"></a>Szerepkörök
 
-Minden olyan felhasználó, aki egy statikus webalkalmazáshoz fér hozzá, egy vagy több szerepkörhöz tartozik.  A felhasználók két beépített szerepkörrel rendelkezhetnek:
+Minden olyan felhasználó, aki egy statikus webalkalmazáshoz fér hozzá, egy vagy több szerepkörhöz tartozik. A felhasználók két beépített szerepkörrel rendelkezhetnek:
 
 - **Névtelen**: minden felhasználó automatikusan a _Névtelen_ szerepkörhöz tartozik.
 - **hitelesített**: a bejelentkezett összes felhasználó a _hitelesített_ szerepkörbe tartozik.
 
-A beépített szerepkörökön kívül új szerepköröket is létrehozhat, amelyeket meghívókkal rendelhet hozzá a felhasználókhoz, és hivatkozhat rájuk a fájl _routes.js_ .
+A beépített szerepkörökön kívül új szerepköröket is létrehozhat, amelyeket meghívókkal rendelhet hozzá a felhasználókhoz, és hivatkozhat rájuk a fájl _staticwebapp.config.js_ .
 
 ## <a name="role-management"></a>Szerepkör-kezelés
 
 ### <a name="add-a-user-to-a-role"></a>Felhasználó hozzáadása szerepkörhöz
 
-Ha felhasználókat szeretne hozzáadni a webhelyhez, olyan meghívókat hoz létre, amelyek lehetővé teszik a felhasználók adott szerepkörökhöz való hozzárendelését. A szerepkörök meghatározása és karbantartása a fájl _routes.js_ .
+Ha felhasználókat szeretne hozzáadni a webhelyhez, olyan meghívókat hoz létre, amelyek lehetővé teszik a felhasználók adott szerepkörökhöz való hozzárendelését. A szerepkörök meghatározása és karbantartása a fájl _staticwebapp.config.js_ .
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ A meghívások egyediek az egyes engedélyezési szolgáltatók számára, ezér
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| Engedélyezési szolgáltató | A felhasználó  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | e-mail-cím;     |
-| Facebook               | e-mail-cím;     |
-| GitHub                 | username          |
-| Google<sup>1</sup>     | e-mail-cím;     |
-| Twitter                | username          |
+| Engedélyezési szolgáltató | A felhasználó |
+| ---------------------- | ---------------- |
+| Azure Active Directory | e-mail-cím;    |
+| Facebook               | e-mail-cím;    |
+| GitHub                 | username         |
+| Google<sup>1</sup>     | e-mail-cím;    |
+| Twitter                | username         |
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)statikus Web Apps erőforrásához.
 1. A _Beállítások_ területen kattintson a **szerepkör-kezelés** elemre.
 1. Kattintson a **meghívás** gombra.
 1. Válasszon ki egy _engedélyezési szolgáltatót_ a lehetőségek listájából.
 1. Adja hozzá a címzett felhasználónevét vagy e-mail-címét a _Meghívási részletek_ mezőben.
-    - A GitHub és a Twitter esetében adja meg a felhasználónevet. Minden más esetében adja meg a címzett e-mail-címét.
+   - A GitHub és a Twitter esetében adja meg a felhasználónevet. Minden más esetében adja meg a címzett e-mail-címét.
 1. Válassza ki a statikus hely tartományát a _tartomány_ legördülő listából.
-    - A kiválasztott tartomány a meghívóban megjelenő tartomány. Ha a webhelyhez egyéni tartomány van társítva, akkor valószínűleg az egyéni tartományt szeretné kiválasztani.
+   - A kiválasztott tartomány a meghívóban megjelenő tartomány. Ha a webhelyhez egyéni tartomány van társítva, akkor valószínűleg az egyéni tartományt szeretné kiválasztani.
 1. Adja hozzá a szerepkörök neveinek vesszővel tagolt listáját a _szerepkör_ mezőben.
 1. Adja meg azt a maximális óraszámot, ameddig a meghívónak érvényesnek kell lennie.
-    - A maximális lehetséges korlát 168 óra, ami 7 nap.
+   - A maximális lehetséges korlát 168 óra, ami 7 nap.
 1. Kattintson az **Generate** (Létrehozás) gombra.
 1. Másolja a hivatkozást a _meghívó hivatkozás_ mezőjéből.
 1. Küldje el a meghívót arra a személyre, akinek hozzáférést ad az alkalmazásához.

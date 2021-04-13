@@ -1,46 +1,41 @@
 ---
-title: Windows rendszerű virtuális asztali MSIX-alkalmazás csatlakoztatása a portál előzetes verziójához – Azure
-description: A Windows rendszerű virtuális asztali MSIX-alkalmazás csatlakoztatása a Azure Portal használatával.
+title: Windows Virtual Desktop MSIX-alkalmazás csatolása portál – Azure
+description: MSIX-alkalmazás csatolásának beállítása Windows Virtual Desktop a Azure Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a849b65fd25e6943925ffa245430cd8a27529fdb
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448423"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366555"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>MSIX-alkalmazás csatolásának beállítása az Azure Portal használatával
 
-> [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ebből a cikkből megtudhatja, hogyan állíthatja be a MSIX-alkalmazás csatolását (előzetes verzió) egy Windows rendszerű virtuális asztali környezetben.
+Ez a cikk bemutatja, hogyan állíthatja be az MSIX-alkalmazás csatolását egy Windows Virtual Desktop környezetben.
 
 ## <a name="requirements"></a>Követelmények
 
 >[!IMPORTANT]
->Mielőtt elkezdené, győződjön meg róla, hogy kitölti és beküldi [ezt az űrlapot](https://aka.ms/enablemsixappattach) , hogy engedélyezze a MSIX-alkalmazás csatolását az előfizetésében. Ha nem rendelkezik jóváhagyott kéréssel, a MSIX-alkalmazás csatolása nem fog működni. A kérések jóváhagyása akár 24 óráig is eltarthat a munkaidőn belül. A kérés elfogadását és befejezését követően e-mailt fog kapni.
+>Mielőtt hozzá kezd, töltse ki és [](https://aka.ms/enablemsixappattach) küldje el ezt az űrlapot, hogy engedélyezze az MSIX-alkalmazás csatolását az előfizetésben. Ha nem rendelkezik jóváhagyott kérelemvel, az MSIX-alkalmazás csatolása nem fog működni. A kérelmek jóváhagyása a munkanapok során akár 24 órát is igénybe vehet. E-mailt fog kapni, ha a kérést elfogadták és befejezték.
 
-A MSIX-alkalmazás csatolásának konfigurálásához a következők szükségesek:
+Az MSIX-alkalmazás csatolásának konfiguráláshoz a következőre van szükség:
 
-- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali gépek (klasszikus) központi telepítésének megismeréséhez tekintse meg [a bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című témakört. A Windows rendszerű virtuális asztali Azure Resource Manager integrációs szolgáltatással való üzembe helyezésével kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
-- Egy Windows rendszerű virtuális asztali címkészlet, amely legalább egy aktív munkamenet-gazdagépet futtat.
-- Ennek az alkalmazáskészletnek az ellenőrzési környezetben kell lennie. 
-- A MSIX-csomagoló eszköz.
-- Egy MSIX csomagolt alkalmazás kibővült egy fájlmegosztásba feltöltött MSIX-rendszerképbe.
-- Egy fájlmegosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
-- A MSIX-rendszerkép feltöltésének helyét a gazdagépen lévő összes virtuális gép (VM) számára is elérhetővé kell tenni. A felhasználóknak csak olvasási jogosultsággal kell rendelkezniük a rendszerkép eléréséhez.
-- Ha a tanúsítvány nem nyilvánosan megbízható, kövesse a [tanúsítványok telepítése](app-attach.md#install-certificates)című témakör utasításait.
+- Egy működő Windows Virtual Desktop üzembe helyezéshez. A (klasszikus) Windows Virtual Desktop bérlők üzembe helyezéséről a Bérlő [létrehozása a](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)Windows Virtual Desktop. A gazdagépkészletek Windows Virtual Desktop telepítésével kapcsolatos Azure Resource Manager lásd: Gazdagépkészlet létrehozása [a Azure Portal.](./create-host-pools-azure-marketplace.md)
+- Egy Windows Virtual Desktop gazdagépkészlet legalább egy aktív munkamenetgazdával.
+- Ennek a gazdagépkészletnek az érvényesítési környezetben kell lennie. 
+- Az MSIX csomagolási eszköz.
+- MsIX-csomagba csomagolt alkalmazás, amely egy fájlmegosztásba feltöltött MSIX-rendszerképbe van kibontva.
+- Egy fájlmegosztás a Windows Virtual Desktop, ahol az MSIX-csomagot tárolni fogja.
+- Annak a fájlmegosztásnak, ahová az MSIX-rendszerképet feltöltötte, elérhetőnek kell lennie a gazdagépkészletben lévő összes virtuális gép (VM) számára is. A felhasználóknak csak olvasási engedélyekkel kell rendelkezniük a rendszerkép eléréséhez.
+- Ha a tanúsítvány nem megbízható nyilvánosan, kövesse a Tanúsítványok [telepítése útmutatót.](app-attach.md#install-certificates)
 
-## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Az automatikus frissítések kikapcsolása a MSIX alkalmazáshoz
+## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Az MSIX-alkalmazás csatolása alkalmazások automatikus frissítésének kikapcsolása
 
-Az első lépések előtt le kell tiltania az MSIX alkalmazáshoz tartozó alkalmazások automatikus frissítését. Az automatikus frissítések letiltásához futtatnia kell a következő parancsokat egy rendszergazda jogú parancssorban:
+Mielőtt hozzá kezd, le kell tiltania az MSIX alkalmazáshoz csatoló alkalmazások automatikus frissítéseit. Az automatikus frissítések letiltásához a következő parancsokat kell futtatnia egy rendszergazda jogú parancssorban:
 
 ```cmd
 rem Disable Store auto update:
@@ -60,181 +55,181 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 >[!NOTE]
 >Javasoljuk, hogy a Hyper-V engedélyezése után indítsa újra a virtuális gépet.
 
-## <a name="configure-the-msix-app-attach-management-interface"></a>A MSIX alkalmazás csatolása felügyeleti felület konfigurálása
+## <a name="configure-the-msix-app-attach-management-interface"></a>Az MSIX-alkalmazás csatolásának felügyeleti felületének konfigurálása
 
-Ezután le kell töltenie és konfigurálnia kell a MSIX alkalmazás csatolása felügyeleti felületet a Azure Portalhoz.
+Ezután le kell töltenie és konfigurálnia kell az MSIX alkalmazás csatolásának felügyeleti felületét a Azure Portal.
 
 A felügyeleti felület beállítása:
 
-1. [Nyissa meg a Azure Portal](https://portal.azure.com).
-2. Ha a bővítmény megbízhatóságának megadását kérő üzenet jelenik meg, válassza az **Engedélyezés lehetőséget**.
+1. [Nyissa meg a Azure Portal.](https://portal.azure.com)
+2. Ha a rendszer rákérdez, hogy megbízhatónak tartja-e a bővítményt, válassza az **Allow (Engedélyezése) lehetőséget.**
 
       > [!div class="mx-imgBorder"]
-      > ![A nem megbízható bővítmények ablakának képernyőképe. Az "engedélyezés" piros színnel van kiemelve.](media/untrusted-extensions.png)
+      > ![A nem megbízható bővítmények ablak képernyőképe. Az "Allow" piros színnel van kiemelve.](media/untrusted-extensions.png)
 
 
-## <a name="add-an-msix-image-to-the-host-pool"></a>MSIX-rendszerkép hozzáadása a gazdagéphez
+## <a name="add-an-msix-image-to-the-host-pool"></a>MSIX-rendszerkép hozzáadása a gazdagépkészlethez
 
-Ezután fel kell vennie a MSIX-rendszerképet a gazdagép-készletbe.
+Ezután hozzá kell adni az MSIX-rendszerképet a gazdagépkészlethez.
 
-A MSIX-rendszerkép hozzáadása:
+Az MSIX-rendszerkép hozzáadása:
 
 1. Nyissa meg az Azure Portalt.
 
-2. Adja meg a **Windows rendszerű virtuális asztalt** a keresési sávban, majd válassza ki a szolgáltatás nevét.
+2. Írja **Windows Virtual Desktop** a keresősávba, majd válassza ki a szolgáltatás nevét.
 
       > [!div class="mx-imgBorder"]
-      > ![Képernyőkép a felhasználóról a Azure Portal a keresősáv legördülő menüjéből válassza a "Windows virtuális asztal" lehetőséget. A "Windows virtuális asztal" vörös színnel van kiemelve.](media/find-and-select.png)
+      > ![Képernyőkép egy felhasználóról, aki a keresősáv legördülő menüjében a "Windows Virtual Desktop" lehetőséget Azure Portal. A "Windows Virtual Desktop" piros színnel van kiemelve.](media/find-and-select.png)
 
-3. Válassza ki azt a gazdagépet, ahol a MSIX-alkalmazásokat el szeretné helyezni.
+3. Válassza ki azt a gazdagépkészletet, ahová az MSIX-alkalmazásokat el tervezi tenni.
 
-4. Válassza az **MSIX-csomagok** lehetőséget, hogy az adatrácsot a gazdagéphez aktuálisan hozzáadott összes MSIX- **csomaggal** nyissa meg.
+4. Válassza **az MSIX-csomagok** lehetőséget az adatrács megnyitásához, amely a gazdagépkészlethez jelenleg hozzáadott összes **MSIX-csomagot** tartalmazza.
 
-5. Válassza a **+ Hozzáadás** lehetőséget a **MSIX-csomag hozzáadása** lap megnyitásához.
+5. Válassza **a + Hozzáadás** lehetőséget az **MSIX-csomag hozzáadása lap megnyitásához.**
 
-6. A **MSIX-csomag hozzáadása** lapon adja meg a következő értékeket:
+6. Az **MSIX-csomag hozzáadása lapon** adja meg a következő értékeket:
 
-      - A **MSIX rendszerkép elérési útja** mezőben adjon meg egy érvényes UNC elérési utat, amely a fájlmegosztás MSIX képére mutat. (Például: `\\storageaccount.file.core.windows.net\msixshare\appfolder\MSIXimage.vhd` .) Ha elkészült, a **Hozzáadás** gombra kattintva kiválaszthatja a MSIX-tárolót, hogy ellenőrizze, érvényes-e az elérési út.
+      - Az **MSIX-lemezkép elérési útjaként** adjon meg egy érvényes UNC elérési utat, amely a fájlmegosztás MSIX-lemezképére mutat. (Például: `\\storageaccount.file.core.windows.net\msixshare\appfolder\MSIXimage.vhd` .) Ha végzett, válassza a **Hozzáadás** lehetőséget az MSIX-tároló leellenőrzéshez, és ellenőrizze, hogy az elérési út érvényes-e.
 
-      - A **MSIX csomag** esetében válassza ki a megfelelő MSIX-csomag nevét a legördülő menüből. Ez a menü csak akkor lesz feltöltve, ha érvényes képelérési útvonalat adott meg a **MSIX-rendszerkép elérési útjában**.
+      - Az **MSIX-csomag mezőben** válassza ki a megfelelő MSIX-csomagnevet a legördülő menüből. Ez a menü csak akkor lesz kitöltve, ha érvényes képútvonalat adott meg az **MSIX-lemezkép elérési útján.**
 
-      - **Csomagbeli alkalmazások** esetén győződjön meg arról, hogy a lista tartalmazza az összes olyan MSIX alkalmazást, amelyet a MSIX-csomagban lévő felhasználók számára elérhetővé szeretne tenni.
+      - **Csomagalkalmazások esetén** győződjön meg arról, hogy a lista tartalmazza az összes olyan MSIX-alkalmazást, amely elérhetővé szeretne tenni az MSIX-csomagban található felhasználók számára.
 
-      - Szükség esetén megadhat egy **megjelenítendő nevet** is, ha azt szeretné, hogy a csomag jobban felhasználóbarát legyen a felhasználói környezetben.
+      - Ha azt szeretné, hogy **a** csomag felhasználóbarátabb legyen a felhasználói környezetben, adjon meg egy Megjelenítendő nevet.
 
-      - Győződjön meg arról, hogy a **verziószáma** megfelelő verziószámmal rendelkezik.
+      - Győződjön meg **arról, hogy** a Verzió a megfelelő verziószámmal rendelkezik.
 
-      - Válassza ki a használni kívánt **regisztrációs típust** . Az Ön által használt igények a következőktől függenek:
+      - Válassza ki **a használni** kívánt Regisztrációs típust. Az, hogy melyiket használja, az az igényeitől függ:
 
-    - Az **igény szerinti regisztráció** elhalasztja a MSIX alkalmazás teljes regisztrációját, amíg a felhasználó el nem indítja az alkalmazást. Ez a regisztrációs típus, amelyet ajánlott használni.
+    - **Az igény szerinti regisztráció** elhalasztja az MSIX-alkalmazás teljes regisztrációját, amíg a felhasználó el nem kezdi az alkalmazást. Javasoljuk, hogy ezt a regisztrációs típust használja.
 
-    - A **Bejelentkezés blokkolásának naplózása** csak akkor történik meg, amikor a felhasználó bejelentkezik. Ezt a típust nem javasoljuk, mert a felhasználók számára már több bejelentkezési időt is igénybe vehet.
+    - **A bejelentkezés blokkolása** csak akkor regisztrál, amikor a felhasználó bejelentkezik. Ez a típus nem ajánlott, mert a felhasználók számára hosszabb bejelentkezési időt is igénybe vehet.
 
-7.  Az **állapot** beállításnál válassza ki az előnyben részesített állapotot.
-    -  Az **aktív** állapot lehetővé teszi, hogy a felhasználók kommunikálhatnak a csomaggal.
-    -  Az **inaktív** állapot azt eredményezi, hogy a Windows virtuális asztal figyelmen kívül hagyja a csomagot, és nem továbbítja azt a felhasználóknak.
+7.  A **State (Állam)** mezőben válassza ki az előnyben részesített állapotot.
+    -  Az **Aktív állapot** lehetővé teszi, hogy a felhasználók kommunikálják a csomagot.
+    -  Az **Inaktív** állapot azt Windows Virtual Desktop, hogy a rendszer figyelmen kívül hagyja a csomagot, és nem kézbesíti azt a felhasználóknak.
 
-8. Ha elkészült, válassza a **Hozzáadás** lehetőséget.
+8. Ha végzett, válassza a Hozzáadás **lehetőséget.**
 
-## <a name="publish-msix-apps-to-an-app-group"></a>MSIX-alkalmazások közzététele az alkalmazás-csoportokban
+## <a name="publish-msix-apps-to-an-app-group"></a>MSIX-alkalmazások közzététele alkalmazáscsoportban
 
-Ezután közzé kell tennie az alkalmazásokat a csomagba. Ezt az asztali és a távoli alkalmazás-csoportok esetében is el kell végeznie.
+Ezután közzé kell tennie az alkalmazásokat a csomagban. Ezt az asztali és a távoli alkalmazáscsoportok esetében is meg kell tenni.
 
-Ha már rendelkezik MSIX-lemezképpel, ugorjon az [MSIX-alkalmazások közzététele az alkalmazás-csoportba](#publish-msix-apps-to-an-app-group)című lépésre. Ha az örökölt alkalmazásokat szeretné tesztelni, kövesse az [MSIX-csomag létrehozása egy virtuális gépen asztali telepítőből](/windows/msix/packaging-tool/create-app-package-msi-vm/) című témakör utasításait, hogy az örökölt alkalmazást egy MSIX-csomagba alakítsa át.
+Ha már rendelkezik MSIX-rendszerképpel, ugorjon az MSIX-alkalmazások közzététele [egy alkalmazáscsoportban részhez.](#publish-msix-apps-to-an-app-group) Ha örökölt alkalmazásokat szeretne tesztelni, kövesse az [MSIX-csomag](/windows/msix/packaging-tool/create-app-package-msi-vm/) létrehozása asztali telepítőből virtuális gépen útmutatásait az örökölt alkalmazás MSIX-csomagká való átalakításához.
 
 Az alkalmazások közzététele:
 
-1. A Windows rendszerű virtuális asztali erőforrás-szolgáltató területen válassza az **alkalmazások csoportok** fület.
+1. A Windows Virtual Desktop erőforrás-szolgáltatónál válassza az **Alkalmazáscsoportok** lapot.
 
-2. Válassza ki azt az erőforráscsoportot, amelyen közzé szeretné tenni az alkalmazásokat.
+2. Válassza ki azt az alkalmazáscsoportot, amelybe az alkalmazásokat közzé szeretné tenni.
 
    >[!NOTE]
-   >A MSIX alkalmazások a MSIX alkalmazással is továbbíthatók távoli alkalmazás-és asztali alkalmazás-csoportokhoz
+   >Az MSIX-alkalmazások az MSIX-alkalmazás távoli alkalmazáscsoportokhoz és asztali alkalmazáscsoportokhoz való csatolásával is kézbesíthatók
 
-3. Ha már az alkalmazás csoportban van, válassza az **alkalmazások** fület. Az **alkalmazások** rács az összes meglévő alkalmazást megjeleníti az alkalmazás csoporton belül.
+3. Az alkalmazáscsoportba való beszúrás után válassza az **Alkalmazások** lapot. Az **Alkalmazások rács** megjeleníti az alkalmazáscsoporton belüli összes meglévő alkalmazást.
 
-4. Válassza a **+ Hozzáadás** lehetőséget az **alkalmazás hozzáadása** lap megnyitásához.
+4. Válassza **a + Hozzáadás** lehetőséget az Alkalmazás hozzáadása lap **megnyitásához.**
 
       > [!div class="mx-imgBorder"]
-      > ![A felhasználó és a Hozzáadás gombra kattintva megnyílik az alkalmazás hozzáadása lap.](media/select-add.png)
+      > ![Képernyőkép a felhasználó + Hozzáadás lehetőségről az Alkalmazás hozzáadása lap megnyitásához](media/select-add.png)
 
-5. Az **alkalmazás forrásához** válassza ki az alkalmazás forrását.
-    - Ha asztali alkalmazás csoportot használ, válassza a MSIX- **csomag** lehetőséget.
+5. Az **Alkalmazás forrásaként** válassza ki az alkalmazás forrását.
+    - Asztali alkalmazáscsoport használata esetén válassza az **MSIX-csomag lehetőséget.**
       
       > [!div class="mx-imgBorder"]
-      > ![Képernyőkép a MSIX csomag kiválasztásáról az alkalmazás forrása legördülő menüből. A MSIX-csomag piros színnel van kiemelve.](media/select-source.png)
+      > ![Képernyőkép egy ügyfélről, aki kiválasztja az MSIX-csomagot az alkalmazásforrás legördülő menüjéből. Az MSIX-csomag piros színnel van kiemelve.](media/select-source.png)
     
-    - Ha távoli alkalmazás-csoportot használ, válasszon a következő lehetőségek közül:
+    - Ha távoli alkalmazáscsoportot használ, válasszon az alábbi lehetőségek közül:
         
         - Start menü
         - Alkalmazás elérési útja
         - MSIX-csomag
 
-    - Az **alkalmazás neve** mezőben adjon meg egy leíró nevet az alkalmazás számára.
+    - Az **Alkalmazás neve alatt** adjon meg egy leíró nevet az alkalmazásnak.
 
-    A következő választható szolgáltatásokat is konfigurálhatja:
+    A következő választható funkciókat is konfigurálhatja:
    
-    - A **megjelenítendő név** mezőben adjon meg egy új nevet a csomag számára, amelyet a felhasználók látni fognak.
+    - A **Megjelenítendő név alatt** adjon meg egy új nevet a csomagnak, amit a felhasználók látni fognak.
 
-    - A **Leírás** mezőben adja meg az alkalmazáscsomag rövid leírását.
+    - A **Leírás mezőben** adja meg az alkalmazáscsomag rövid leírását.
 
-    - Ha távoli alkalmazást használ, ezeket a beállításokat is megadhatja:
+    - Ha távoli alkalmazáscsoportot használ, a következő beállításokat is konfigurálhatja:
 
         - **Ikon elérési útja**
-        - **Ikon indexe**
-        - **Megjelenítés a webes hírcsatornában**
+        - **Ikonindex**
+        - **Show in web feed (Megjelenítése a webes hírcsatornában)**
 
 6. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
->Ha egy felhasználó a távoli alkalmazáscsoport és az asztali alkalmazáscsoport ugyanahhoz a készlethez van rendelve, akkor az asztali alkalmazáscsoport megjelenik a hírcsatornában.
+>Ha egy felhasználó távoli alkalmazáscsoporthoz és asztali alkalmazáscsoporthoz van rendelve ugyanattól a gazdagépkészlettől, az asztali alkalmazáscsoport megjelenik a hírcsatornában.
 
-## <a name="assign-a-user-to-an-app-group"></a>Felhasználó társítása egy alkalmazás-csoporthoz
+## <a name="assign-a-user-to-an-app-group"></a>Felhasználó hozzárendelése alkalmazáscsoporthoz
 
-Miután MSIX-alkalmazásokat rendelt egy alkalmazás-csoporthoz, hozzáférést kell biztosítania a felhasználóknak. A hozzáférést a közzétett MSIX-alkalmazásokkal rendelkező alkalmazáscsoport felhasználói vagy felhasználói csoportjainak hozzáadásával rendelheti hozzá. A felhasználók egy alkalmazás-csoporthoz való hozzárendeléséhez kövesse az [alkalmazás-csoportok kezelése a Azure Portal](manage-app-groups.md) segítségével című témakör útmutatását.
+Miután MSIX-alkalmazásokat adott hozzá egy alkalmazáscsoporthoz, hozzáférést kell ad a felhasználóknak. A hozzáférést úgy rendelheti hozzá, hogy felhasználókat vagy felhasználói csoportokat ad hozzá egy közzétett MSIX-alkalmazásokat használó alkalmazáscsoporthoz. Kövesse az Alkalmazáscsoportok kezelése [a](manage-app-groups.md) Azure Portal útmutatását a felhasználók alkalmazáscsoporthoz való hozzárendeléséhez.
 
 >[!NOTE]
->A távoli alkalmazások a nyilvános előzetes verzióban való tesztelésekor eltűnnek a MSIX, ha a távoli alkalmazások nem tudnak csatlakozni a hírcsatornához. Az alkalmazások nem jelennek meg, mert a kiértékelési környezetben használt alkalmazáskészletet az éles környezetben működő távoli asztali közvetítő kézbesíti. Mivel az éles környezetben található távoli asztali közvetítő nem regisztrálja a MSIX alkalmazás távoli alkalmazások csatolását, az alkalmazások nem jelennek meg a hírcsatornában.
+>Előfordulhat, hogy az MSIX-alkalmazás távoli alkalmazások csatolása eltűnik a hírcsatornából, amikor a nyilvános előzetes verzióban teszteli a távoli alkalmazásokat. Az alkalmazások nem jelennek meg, mert a kiértékelési környezetben használt gazdagépkészletet egy RD-közvetítő szolgálja ki az éles környezetben. Mivel az éles környezetben a távoli asztali közvetítő nem regisztrálja a távoli alkalmazásokat csatoló MSIX-alkalmazás jelenlétét, az alkalmazások nem jelennek meg a hírcsatornában.
 
 ## <a name="change-msix-package-state"></a>MSIX-csomag állapotának módosítása
 
-Ezután módosítania kell a MSIX-csomag állapotát **aktív** vagy **inaktív** értékre attól függően, hogy mit szeretne tenni a csomaggal. Az aktív csomagok olyan csomagok, amelyeket a felhasználók a közzétételük után kezelhetnek. A Windows rendszerű virtuális asztal figyelmen kívül hagyja az inaktív csomagokat, így a felhasználók nem tudnak kommunikálni az alkalmazásokkal a rendszeren belül.
+Ezután az MSIX-csomag állapotát Aktív vagy  **Inaktív** állapotra kell módosítania attól függően, hogy mit szeretne tenni a csomaggal. Az aktív csomagok olyan csomagok, amelyek a felhasználók számára elérhetőek a közzététel után. Az inaktív csomagokat a Windows Virtual Desktop figyelmen kívül hagyja, így a felhasználók nem léphetnek interakcióba a belső alkalmazásokkal.
 
-### <a name="change-state-with-the-applications-list"></a>Állapot módosítása az alkalmazások listájával
+### <a name="change-state-with-the-applications-list"></a>Állapot módosítása az Alkalmazások listával
 
-A csomag állapotának módosítása az alkalmazások listájával:
+A csomag állapotának módosítása az Alkalmazások listával:
 
-1. Nyissa meg a gazdagépet, és válassza a **MSIX-csomagok** lehetőséget. Ekkor meg kell jelennie a gazdagépen lévő összes meglévő MSIX-csomag listájának.
+1. A gazdagépkészletben válassza az **MSIX-csomagok lehetőséget.** A gazdagépkészletben megjelenik az összes meglévő MSIX-csomag listája.
 
-2. Válassza ki azokat a MSIX-csomagokat, amelyek állapotát módosítani szeretné, majd válassza az **Állapot módosítása** lehetőséget.
+2. Jelölje ki azokat az MSIX-csomagokat, amelyeknek módosítania kell az állapotokat, majd válassza **az Állapot módosítása lehetőséget.**
 
 ### <a name="change-state-with-update-package"></a>Állapot módosítása frissítési csomaggal
 
-A csomag állapotának módosítása frissítési csomaggal:
+A csomag állapotának módosítása egy frissítési csomaggal:
 
-1. Nyissa meg a gazdagépet, és válassza a **MSIX-csomagok** lehetőséget. Ekkor meg kell jelennie a gazdagépen lévő összes meglévő MSIX-csomag listájának.
+1. A gazdagépkészletben válassza az **MSIX-csomagok lehetőséget.** A gazdagépkészletben megjelenik az összes meglévő MSIX-csomag listája.
 
-2. Válassza ki annak a csomagnak a nevét, amelynek az állapotát módosítani szeretné a MSIX-csomag listából. Ekkor megnyílik a **frissítési csomag** lap.
+2. Válassza ki annak a csomagnak a nevét, amelynek állapotát módosítani szeretné az MSIX-csomagok listájából. Ezzel megnyitja a **Csomag frissítése lapot.**
 
-3. Kapcsolja az **állapot** kapcsolót **inaktívra** vagy **aktívra**, majd válassza a **Mentés lehetőséget.**
+3. Váltsa az **Állapot kapcsolót** **Inaktív** vagy **Aktív** állapotra, majd válassza a Mentés **lehetőséget.**
 
-## <a name="change-msix-package-registration-type"></a>MSIX-csomag regisztrációs típusának módosítása
+## <a name="change-msix-package-registration-type"></a>MSIX-csomagregisztráció típusának módosítása
 
 A csomag regisztrációs típusának módosítása:
 
-1. Válassza ki a **MSIX-csomagokat**. Ekkor meg kell jelennie a gazdagépen lévő összes meglévő MSIX-csomag listájának.
+1. Válassza az **MSIX-csomagok lehetőséget.** A gazdagépkészletben megjelenik az összes meglévő MSIX-csomag listája.
 
-2. Válassza a **csomag neve** lehetőséget a **MSIX-csomagok rácsban** , ezzel megnyitja a panelt a csomag frissítéséhez.
+2. Válassza **a Csomag neve lehetőséget** az **MSIX-csomagok rácsban.** Ezzel megnyitja a panelt a csomag frissítéséhez.
 
-3. Állítsa be a **regisztrációs típust** az **igény szerinti/bejelentkezési blokkolás** gomb használatával a kívánt módon, majd válassza a **Mentés lehetőséget.**
+3. Igény szerint válthat **a Regisztráció típusa** között az Igény **szerinti/Bejelentkezés blokkolási** gombbal, majd válassza a Mentés **lehetőséget.**
 
 ## <a name="remove-an-msix-package"></a>MSIX-csomag eltávolítása
 
-MSIX-csomag eltávolítása az alkalmazáskészletből:
+MSIX-csomag eltávolítása a gazdagépkészletből:
 
-1. Válassza ki a **MSIX-csomagokat**.  Ekkor meg kell jelennie a gazdagépen lévő összes meglévő MSIX-csomag listájának.
+1. Válassza az **MSIX-csomagok lehetőséget.**  A gazdagépkészletben megjelenik az összes meglévő MSIX-csomag listája.
 
-2. Kattintson a jobb oldalon található három pontra a törölni kívánt csomag nevére, majd válassza az **Eltávolítás** lehetőséget.
+2. Kattintson a törölni kívánt csomag nevének jobb oldalán található három pontra, majd válassza az Eltávolítás **lehetőséget.**
 
 ## <a name="remove-msix-apps"></a>MSIX-alkalmazások eltávolítása
 
-Az egyes MSIX-alkalmazások eltávolítása a csomagból:
+Egyes MSIX-alkalmazások eltávolítása a csomagból:
 
-1. Nyissa meg a gazdagépet, és válassza ki az **alkalmazáscsoport** elemet.
+1. A gazdagépkészletben válassza az **Alkalmazáscsoportok lehetőséget.**
 
-2. Válassza ki azt az erőforráscsoportot, amelyből el szeretné távolítani a MSIX-alkalmazásait.
+2. Válassza ki azt az alkalmazáscsoportot, amelyből el szeretné távolítani az MSIX-alkalmazásokat.
 
-3. Nyissa meg az **alkalmazások** lapot.
+3. Nyissa meg **az Alkalmazások** lapot.
 
-4. Válassza ki az eltávolítani kívánt alkalmazást, majd kattintson az **Eltávolítás** gombra.
+4. Válassza ki az eltávolítani kívánt alkalmazást, majd válassza az Eltávolítás **lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kérje meg a közösségi kérdéseket a szolgáltatással kapcsolatban a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+A funkcióval kapcsolatos kérdéseit a [TechCo Windows Virtual Desktop fel.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 
-A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.
+Visszajelzést is küldhet a Windows Virtual Desktop a [Windows Virtual Desktop visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
 
-Az alábbi cikkek hasznosnak bizonyulnak:
+Íme néhány további cikk, amelyek hasznosak lehetnek:
 
-- [MSIX-alkalmazás szószedetének csatolása](app-attach-glossary.md)
+- [MSIX-alkalmazás csatolása – szószedet](app-attach-glossary.md)
 - [MSIX-alkalmazás csatolása – GYIK](app-attach-faq.md)

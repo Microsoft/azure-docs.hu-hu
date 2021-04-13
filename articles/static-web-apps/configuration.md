@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218974"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312246"
 ---
 # <a name="configure-azure-static-web-apps"></a>Az Azure statikus Web Apps konfigurálása
 
@@ -33,7 +33,7 @@ A _staticwebapp.config.jsbekapcsolásának_ ajánlott helye a `app_location` [mu
 A részletekért tekintse meg a [példa konfigurációs](#example-configuration-file) fájlját.
 
 > [!IMPORTANT]
-> Ha létezik _staticwebapp.config.js_ , a rendszer figyelmen kívül hagyja a [fájl _routes.jsét_](./routes.md) .
+> Ha létezik _staticwebapp.config.js_ , a rendszer figyelmen kívül hagyja a [fájl _staticwebapp.config.jsét_](./routes.md) .
 
 ## <a name="routes"></a>Útvonalak
 
@@ -47,28 +47,28 @@ Az útválasztási szabályok lehetővé teszik az alkalmazáshoz való hozzáf�
 
 Az Útválasztás jelentős mértékben átfedésben van a hitelesítéssel (a felhasználó azonosításával) és az engedélyezéssel (a felhasználói képességek kiosztásával) kapcsolatos fogalmakkal. Ügyeljen rá, hogy olvassa el a [hitelesítési és engedélyezési](authentication-authorization.md) útmutatót a jelen cikk mellett.
 
-A statikus tartalom alapértelmezett fájlja a *index.html* fájl.
+A statikus tartalom alapértelmezett fájlja a _index.html_ fájl.
 
 ## <a name="defining-routes"></a>Útvonalak meghatározása
 
 Minden szabály egy útvonal mintából áll, valamint egy vagy több választható szabály-tulajdonsággal. Az útválasztási szabályok a tömbben vannak meghatározva `routes` . Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
 
-| Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
-| -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>|
-| `rewrite`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>  |
-| `redirect`        | Nem       | n.a.          | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul> |
-| `allowedRoles` | Nem       | névtelen     | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `headers`<a id="route-headers"></a> | Nem | n.a. | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul> |
-| `statusCode`   | Nem       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
-| `methods` | Nem | Minden metódus | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` . |
+| Szabály tulajdonsága                       | Kötelező | Alapértelmezett érték                        | Megjegyzés                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route`                             | Yes      | n.a.                                  | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `rewrite`                           | No       | n.a.                                  | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `redirect`                          | No       | n.a.                                  | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul>                                                                                                                                                                                                              |
+| `allowedRoles`                      | No       | névtelen                            | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
+| `headers`<a id="route-headers"></a> | No       | n.a.                                  | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul>                                                                                                                                                                                                                                                                                          |
+| `statusCode`                        | No       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `methods`                           | No       | Minden metódus                          | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` .                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 Minden tulajdonságnak konkrét célja van a kérelem/válasz folyamatban.
 
-| Cél | Tulajdonságok |
-|---|---|
-| Útvonalak egyeztetése | `route`, `methods` |
-| Engedélyezés az útvonal egyeztetése után | `allowedRoles` |
+| Cél                                        | Tulajdonságok                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Útvonalak egyeztetése                                   | `route`, `methods`                                                                           |
+| Engedélyezés az útvonal egyeztetése után             | `allowedRoles`                                                                               |
 | Folyamat egy szabály egyeztetése és engedélyezése után | `rewrite` (kérelem módosítása) <br><br>`redirect`, `headers` , `statusCode` (válasz módosítása) |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
@@ -118,7 +118,7 @@ A helyettesítő karakteres egyezéseket fájlkiterjesztés alapján is szűrhet
 ```json
 {
   "route": "/articles/*.html",
-  "headers" : {
+  "headers": {
     "Cache-Control": "public, max-age=604800, immutable"
   }
 }
@@ -171,15 +171,15 @@ Az alábbi példa a fájl struktúráját mutatja be, a következő eredmények 
 └── index.html
 ```
 
-| Kérelmek... | visszatérési érték... | az állapottal... |
-| --- | --- | --- |
-| *körülbelül* | A */index.html* fájl | `200` |
-| */images/logo.png* | A képfájl  | `200` |
-| */images/icon.svg* | A */index.html* fájl – mivel az *SVG* -fájlkiterjesztés nem szerepel a `/images/*.{png,jpg,gif}` szűrőben   | `200` |
-| */images/unknown.png* | A fájl nem található hiba  | `404` |
-| */css/unknown.css* | A fájl nem található hiba  | `404` |
-| */css/global.css* | A stíluslap fájl | `200` |
-| A */images* -vagy */CSS* -mappákon kívüli egyéb fájlok | A */index.html* fájl | `200` |
+| Kérelmek...                                         | visszatérési érték...                                                                                                    | az állapottal... |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------ |
+| _körülbelül_                                              | A _/index.html_ fájl                                                                                        | `200`              |
+| _/images/logo.png_                                     | A képfájl                                                                                                | `200`              |
+| _/images/icon.svg_                                     | A _/index.html_ fájl – mivel az _SVG_ -fájlkiterjesztés nem szerepel a `/images/*.{png,jpg,gif}` szűrőben | `200`              |
+| _/images/unknown.png_                                  | A fájl nem található hiba                                                                                          | `404`              |
+| _/css/unknown.css_                                     | A fájl nem található hiba                                                                                          | `404`              |
+| _/css/global.css_                                      | A stíluslap fájl                                                                                           | `200`              |
+| A _/images_ -vagy _/CSS_ -mappákon kívüli egyéb fájlok | A _/index.html_ fájl                                                                                        | `200`              |
 
 ## <a name="global-headers"></a>Globális fejlécek
 
@@ -201,35 +201,35 @@ A `responseOverrides` szakasz lehetőséget biztosít egyéni válasz definiál�
 
 A felülbíráláshoz a következő HTTP-kódok érhetők el:
 
-| Állapotkód | Értelmezés | Lehetséges ok |
-| --- | --- | --- |
-| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Hibás kérelem | Érvénytelen meghívó hivatkozás |
-| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nem engedélyezett | Korlátozott lapokra irányuló kérelem hitelesítés nélkül |
-| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden |<ul><li>A felhasználó be van jelentkezve, de nem rendelkezik a lap megtekintéséhez szükséges szerepkörökkel.<li>A felhasználó be van jelentkezve, de a futtatókörnyezet nem tudja beolvasni a felhasználói adatokat az identitás jogcímeiből.<li>Túl sok felhasználó jelentkezett be a webhelyre egyéni szerepkörökkel, ezért a futtatókörnyezet nem tud bejelentkezni a felhasználóba.</ul> |
-| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nem található | A fájl nem található |
+| Állapotkód                                                   | Értelmezés      | Lehetséges ok                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Hibás kérelem  | Érvénytelen meghívó hivatkozás                                                                                                                                                                                                                                                                            |
+| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nem engedélyezett | Korlátozott lapokra irányuló kérelem hitelesítés nélkül                                                                                                                                                                                                                                                  |
+| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden    | <ul><li>A felhasználó be van jelentkezve, de nem rendelkezik a lap megtekintéséhez szükséges szerepkörökkel.<li>A felhasználó be van jelentkezve, de a futtatókörnyezet nem tudja beolvasni a felhasználói adatokat az identitás jogcímeiből.<li>Túl sok felhasználó jelentkezett be a webhelyre egyéni szerepkörökkel, ezért a futtatókörnyezet nem tud bejelentkezni a felhasználóba.</ul> |
+| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nem található    | A fájl nem található                                                                                                                                                                                                                                                                                     |
 
 A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
 
 ```json
 {
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html",
-            "statusCode": 200
-        },
-        "401": {
-            "statusCode": 302,
-            "redirect": "/login"
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html",
-            "statusCode": 200
-        },
-        "404": {
-            "rewrite": "/custom-404.html",
-            "statusCode": 200
-        }
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html",
+      "statusCode": 200
+    },
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html",
+      "statusCode": 200
+    },
+    "404": {
+      "rewrite": "/custom-404.html",
+      "statusCode": 200
     }
+  }
 }
 ```
 
@@ -237,106 +237,106 @@ A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
 
 ```json
 {
-    "routes": [
-        {
-            "route": "/profile",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/admin/*",
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/images/*",
-            "headers": {
-                "cache-control": "must-revalidate, max-age=15770000"
-            }
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "GET" ],
-            "allowedRoles": ["registeredusers"]
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "PUT", "POST", "PATCH", "DELETE" ],
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/api/*",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/customers/contoso",
-            "allowedRoles": ["administrator", "customers_contoso"]
-        },
-        {
-            "route": "/login",
-            "rewrite": "/.auth/login/github"
-        },
-        {
-            "route": "/.auth/login/twitter",
-            "statusCode": 404
-        },
-        {
-            "route": "/logout",
-            "redirect": "/.auth/logout"
-        },
-        {
-            "route": "/calendar/*",
-            "rewrite": "/calendar.html"
-        },
-        {
-            "route": "/specials",
-            "redirect": "/deals",
-            "statusCode": 301
-        }
-    ],
-    "navigationFallback": {
-      "rewrite": "index.html",
-      "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  "routes": [
+    {
+      "route": "/profile",
+      "allowedRoles": ["authenticated"]
     },
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html"
-        },
-        "401": {
-            "redirect": "/login",
-            "statusCode": 302
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html"
-        },
-        "404": {
-            "rewrite": "/404.html"
-        }
+    {
+      "route": "/admin/*",
+      "allowedRoles": ["administrator"]
     },
-    "globalHeaders": {
-        "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+    {
+      "route": "/images/*",
+      "headers": {
+        "cache-control": "must-revalidate, max-age=15770000"
+      }
     },
-    "mimeTypes": {
-        ".json": "text/json"
+    {
+      "route": "/api/*",
+      "methods": ["GET"],
+      "allowedRoles": ["registeredusers"]
+    },
+    {
+      "route": "/api/*",
+      "methods": ["PUT", "POST", "PATCH", "DELETE"],
+      "allowedRoles": ["administrator"]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/customers/contoso",
+      "allowedRoles": ["administrator", "customers_contoso"]
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/github"
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/calendar/*",
+      "rewrite": "/calendar.html"
+    },
+    {
+      "route": "/specials",
+      "redirect": "/deals",
+      "statusCode": 301
     }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html"
+    },
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html"
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  }
 }
 ```
 
 A fenti konfiguráció alapján tekintse át a következő forgatókönyveket.
 
-| Kérelmek... | eredmények... |
-| --- | --- |
-| _/Profile_ | A hitelesített felhasználók kiszolgálják a _/profile/index.html_ fájlt. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_. |
-| _/admin_ | A _rendszergazdai_ szerepkörben lévő hitelesített felhasználók a _/Admin/index.html_ fájlt szolgálják ki. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_. |
-| _/logo.png_ | A rendszerképet egy egyéni gyorsítótárazási szabállyal szolgálja ki, ahol a maximális életkor valamivel több mint 182 nap (15 770 000 másodperc). |
-| _/api/admin_ | `GET` a _registeredusers_ szerepkörben hitelesített felhasználóktól érkező kéréseket a rendszer ELKÜLDI az API-nak. A _registeredusers_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` .<br/><br/>`POST`, `PUT` , `PATCH` és `DELETE` a _rendszergazdai_ szerepkörben lévő hitelesített felhasználóktól érkező kéréseket a rendszer elküldi az API-nak. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` . |
-| _/customers/contoso_ | Azok a hitelesített felhasználók, akik a _rendszergazdához_ vagy az _ügyfelekhez tartozó \_ contoso_ -szerepkörökhöz tartoznak, a _/Customers/contoso/index.html_ fájlt kézbesítik. A _rendszergazda_ vagy az _ügyfelek \_ contoso_ szerepkörrel nem rendelkező hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_. |
-| _/Belépés View_ | A nem hitelesített felhasználók a GitHub használatával hitelesíthetők. |
-| _/.auth/login/twitter_ | Mivel az útválasztási szabály letiltja a Twitter-engedélyezést, a rendszer `404` visszaadja a hibát, amely visszatérhet a Serving _/index.html_ `200` állapot kódjával. |
-| _/logout_ | A felhasználók ki vannak jelentkezve bármely hitelesítési szolgáltatóból. |
-| _/calendar/2021/01_ | A böngésző a _/calendar.html_ fájlt kézbesíti. |
-| _/specials_ | A böngésző véglegesen átirányítja a _/Deals_. |
-| _/data.jsbekapcsolva_ | A fájl a MIME- `text/json` típussal szolgált. |
-| _/About_ vagy bármely olyan mappa, amely megfelel az ügyféloldali útválasztási mintáknak | A _/index.html-_ fájl `200` állapotkódot szolgál. |
-| Nem létező fájl a _/images/_ mappában | `404`Hiba. |
+| Kérelmek...                                                    | eredmények...                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _/Profile_                                                        | A hitelesített felhasználók kiszolgálják a _/profile/index.html_ fájlt. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                                                                                                                                                                                                                              |
+| _/admin_                                                         | A _rendszergazdai_ szerepkörben lévő hitelesített felhasználók a _/Admin/index.html_ fájlt szolgálják ki. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                                                                                                          |
+| _/logo.png_                                                       | A rendszerképet egy egyéni gyorsítótárazási szabállyal szolgálja ki, ahol a maximális életkor valamivel több mint 182 nap (15 770 000 másodperc).                                                                                                                                                                                                                                                                                                                                   |
+| _/api/admin_                                                      | `GET` a _registeredusers_ szerepkörben hitelesített felhasználóktól érkező kéréseket a rendszer ELKÜLDI az API-nak. A _registeredusers_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` .<br/><br/>`POST`, `PUT` , `PATCH` és `DELETE` a _rendszergazdai_ szerepkörben lévő hitelesített felhasználóktól érkező kéréseket a rendszer elküldi az API-nak. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` . |
+| _/customers/contoso_                                              | A _rendszergazda_ vagy a _customers_contoso_ szerepkörökhöz tartozó hitelesített felhasználók a _/Customers/contoso/index.html_ fájlt szolgálják ki. A _rendszergazda_ vagy a _customers_contoso_ szerepkörökben nem szereplő hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                            |
+| _/Belépés View_                                                          | A nem hitelesített felhasználók a GitHub használatával hitelesíthetők.                                                                                                                                                                                                                                                                                                                                                                             |
+| _/.auth/login/twitter_                                            | Mivel az útválasztási szabály letiltja a Twitter-engedélyezést, a rendszer `404` visszaadja a hibát, amely visszatérhet a Serving _/index.html_ `200` állapot kódjával.                                                                                                                                                                                                                                                                                     |
+| _/logout_                                                         | A felhasználók ki vannak jelentkezve bármely hitelesítési szolgáltatóból.                                                                                                                                                                                                                                                                                                                                                                                          |
+| _/calendar/2021/01_                                               | A böngésző a _/calendar.html_ fájlt kézbesíti.                                                                                                                                                                                                                                                                                                                                                                                              |
+| _/specials_                                                       | A böngésző véglegesen átirányítja a _/Deals_.                                                                                                                                                                                                                                                                                                                                                                                            |
+| _/data.jsbekapcsolva_                                                      | A fájl a MIME- `text/json` típussal szolgált.                                                                                                                                                                                                                                                                                                                                                                                               |
+| _/About_ vagy bármely olyan mappa, amely megfelel az ügyféloldali útválasztási mintáknak | A _/index.html-_ fájl `200` állapotkódot szolgál.                                                                                                                                                                                                                                                                                                                                                                                    |
+| Nem létező fájl a _/images/_ mappában                     | `404`Hiba.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 <sup>1</sup> egyéni hibaüzenetet adhat meg egy [Válasz felülbírálási szabály](#response-overrides)használatával.
 

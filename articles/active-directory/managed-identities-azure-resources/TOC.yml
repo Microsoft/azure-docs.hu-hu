@@ -94,8 +94,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Használat Azure SDK-kal
           href: how-to-use-vm-sdk.md
-        - name: A virtuálisgép-bővítmény használatának befejezése és az Azure IMDS használatának megkezdése
-          href: howto-migrate-vm-extension.md
     - name: Másik Azure-erőforráshoz való hozzáférés hozzárendelése egy felügyelt identitáshoz
       items:
         - name: Portál

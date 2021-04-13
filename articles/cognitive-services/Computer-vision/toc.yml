@@ -3,7 +3,7 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Computer Vision áttekintése
+    - name: Computer Vision áttekintés
       href: overview.md
     - name: Nyelvi támogatás
       href: language-support.md
@@ -11,19 +11,19 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Újdonságok
       href: whats-new.md
-    - name: Computer Vision GYIK
+    - name: Computer Vision gyIK
       href: FAQ.md
 - name: Optikai karakterfelismerés (OCR)
   items:
-    - name: OCR – áttekintés
+    - name: Az OCR áttekintése
       href: overview-ocr.md
-    - name: OCR gyors útmutató
+    - name: OCR – rövid útmutató
       href: quickstarts-sdk/client-library.md
     - name: Példák
       href: /samples/browse/?products=azure&terms=computer-vision
     - name: Útmutatók
       items:
-        - name: Az olvasási API meghívása
+        - name: A Read API hívása
           href: Vision-API-How-to-Topics/call-read-api.md
         - name: Frissítés a Read 2.x verziójáról a Read 3.x verziójára
           href: upgrade-api-versions.md
@@ -34,7 +34,7 @@
               displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
             - name: Tárolók konfigurálása
               href: computer-vision-resource-container-config.md
-            - name: Migrálás az olvasási OCR-tároló v3-ra
+            - name: Áttelepítés az OCR-tároló olvasása 3-as virtuális gépre
               href: read-container-migration-guide.md
               displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
             - name: Használat Kubernetesszel és Helmmel
@@ -48,14 +48,12 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
     - name: Referencia
       items:
-        - name: OCR REST API v 3.2 előzetes verzió
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-        - name: OCR REST API v 3.1
+        - name: OCR REST API 3.2-es
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
+        - name: OCR REST API 3.1-es
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: OCR REST API v 2.1
+        - name: OCR REST API v2.1
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: OCR REST API 1.0-s verzió
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -72,9 +70,9 @@
           href: /powershell/module/azurerm.cognitiveservices/
 - name: Képelemzés
   items:
-    - name: Képek elemzése – áttekintés
+    - name: Képelemzés áttekintése
       href: overview-image-analysis.md
-    - name: Rendszerkép-elemzés – rövid útmutató
+    - name: Képelemzés – rövid útmutató
       href: quickstarts-sdk/image-analysis-client-library.md
     - name: Példák
       items:
@@ -84,7 +82,7 @@
           href: /samples/browse/?products=azure&terms=computer-vision
     - name: Útmutatók
       items:
-        - name: A rendszerkép-elemzési API meghívása
+        - name: Az Image Analysis API hívása
           href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
         - name: Videók valós idejű elemzése
           href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
@@ -120,14 +118,12 @@
           href: Tutorials/storage-lab-tutorial.md
     - name: Referencia
       items:
-        - name: Kép elemzése REST API v 3.2 előzetes verzió
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-        - name: Rendszerkép elemzése REST API v 3.1
+        - name: Képelemzési REST API 3.2-es
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b'
+        - name: Képelemzési REST API 3.1-es
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: Rendszerkép-elemzés REST API v 2.1
+        - name: Képelemzési REST API 2.1-es
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: Rendszerkép elemzése REST API 1.0-s verzió
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -144,13 +140,13 @@
           href: /powershell/module/azurerm.cognitiveservices/
 - name: Térbeli elemzés
   items:
-    - name: Térbeli elemzés – áttekintés
+    - name: Térbeli elemzés áttekintése
       href: intro-to-spatial-analysis-public-preview.md
     - name: Az MI felelős használata
       items:
         - name: Átláthatósági megjegyzések
           items:
-            - name: Térbeli elemzési használati esetek
+            - name: Térbeli elemzés – esetek
               href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
             - name: Jellemzők és korlátozások
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
@@ -166,7 +162,7 @@
           href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
     - name: Útmutatók
       items:
-        - name: A térbeli elemzési tároló használata
+        - name: A Spatial Analysis tároló használata
           items:
             - name: A gazdagép beállítása és a tároló futtatása
               href: spatial-analysis-container.md
@@ -186,15 +182,15 @@
   items:
     - name: Virtuális hálózatok konfigurálása
       href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: HRE-hitelesítés konfigurálása
+    - name: Az AAD-hitelesítés konfigurálása
       href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Az ügyfél által felügyelt kulcsok használata
+    - name: Ügyfél által kezelt kulcsok használata
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
 - name: Források
   items:
     - name: Régiós támogatás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: A modulok MEGISMERÉSe
+    - name: LEARN-modulok
       href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

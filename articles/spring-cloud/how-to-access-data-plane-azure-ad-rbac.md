@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505332"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311362"
 ---
 # <a name="access-config-server-and-service-registry"></a>A konfigurációs kiszolgáló és a szolgáltatás beállításjegyzékének elérése
 
@@ -47,15 +47,15 @@ Az Azure Spring Cloud-Adatolvasó szerepkör hozzárendelése után az ügyfelek
     ```
 2. Állítsa össze a végpontot. A Spring Cloud config Server és az Azure Spring Cloud által kezelt Spring Cloud Service-beállításjegyzék alapértelmezett végpontját támogatjuk. További információ: [üzemi használatra kész végpontok](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints). A Spring Cloud config Server és az Azure Spring Cloud által kezelt Spring Cloud Service-beállításjegyzék támogatott végpontjai teljes listája a végpontok elérésével is elérhető.
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Ha az Azure China-t használja, cserélje le `*.azuremicroservices.io` a `*.microservices.azure.cn` -t, és [Tudjon meg többet](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Nyissa meg az összeállított végpontot a hozzáférési jogkivonattal. Az engedélyezéshez helyezze a hozzáférési tokent egy fejlécbe.  Csak a "GET" metódus támogatott.
 
-    Például egy olyan végpont eléréséhez, mint *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* Az Eureka állapotának megtekintése.
+    Például egy " *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health "* végponthoz férhet hozzá az Eureka állapotának megtekintéséhez.
 
     Ha a válasz *401 nem engedélyezett*, ellenőrizze, hogy sikerült-e a szerepkör hozzárendelése.  A szerepkör érvénybe léptetéséhez több percet is igénybe vehet, vagy ellenőrizheti, hogy a hozzáférési jogkivonat nem járt-e le.
 

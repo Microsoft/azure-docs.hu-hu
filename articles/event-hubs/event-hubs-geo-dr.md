@@ -3,12 +3,12 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602638"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311209"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
@@ -205,7 +205,7 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
     - [JavaScript](event-hubs-node-get-started-send.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+* [Event Hubs – gyakori kérdések](event-hubs-faq.yml)
 * [Az Event Hubsot használó mintaalkalmazások](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640345"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307945"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -138,9 +138,9 @@ Ha a unstructured_data_path mappaként adja meg, akkor a kiszolgáló nélküli 
 A kiszolgáló nélküli SQL-készlet arra utasítja a mappákat, hogy az elérési út végén a/* érték megadásával például a következőt írja be: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat, kivéve, ha az elérési út végén megadja a/* * értéket. Emellett a Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat, kivéve, ha az elérési út végén megadja a/* * értéket.
 
-Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , a kiszolgáló nélküli SQL-készlet lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , a kiszolgáló nélküli SQL-készlet lekérdezése mydata.txt sorokat ad vissza. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 

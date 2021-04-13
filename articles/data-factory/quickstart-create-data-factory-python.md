@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Data Factory létrehozása a Python használatával'
-description: Az adatok előállítójának használatával az Azure Blob Storage egyik helyéről egy másik helyre másolhatja az adatait.
+title: 'Rövid útmutató: Alkalmazás Azure Data Factory Python használatával'
+description: Adat-előállító használatával adatokat másol egy Azure Blob Storage-beli helyről egy másik helyre.
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
@@ -9,38 +9,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309849"
+ms.locfileid: "107365093"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki Data Factory használt szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-python.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben a rövid útmutatóban egy adatelőállítót hoz létre a Python használatával. Az adatfeldolgozó folyamata az Azure Blob Storage egyik mappájából egy másikba másolja az adatait.
+Ebben a rövid útmutatóban egy adat-előállítót hoz létre a Python használatával. Az adat-előállítóban lévő folyamat adatokat másol az Egyik mappából egy másik mappába az Azure Blob Storage-ban.
 
-A Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi adatvezérelt munkafolyamatok létrehozását az adatáthelyezés és az adatátalakítások előkészítéséhez és automatizálásához. A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre és ütemezhet, folyamatok néven.
+Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatok mozgásának és átalakításának vezényléhez és automatizálásához. A Azure Data Factory létrehozhat és ütemezhet adatvezérelt munkafolyamatokat, más néven folyamatokat.
 
-A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok kimeneti adatokat tesznek közzé az adattárakban, például az Azure szinapszis Analytics for Business Intelligence-(BI-) alkalmazásokhoz.
+A folyamatok be tudnak adatokatni a legparabb adattárakból. A folyamatok olyan számítási szolgáltatásokkal feldolgoznak vagy alakítják át az adatokat, mint Azure HDInsight Hadoop, a Spark, Azure Data Lake Analytics és Azure Machine Learning. A folyamatok kimeneti adatokat tehetnek közzé olyan adattáraikban, Azure Synapse Analytics üzletiintelligencia- (BI-) alkalmazásokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.6 +](https://www.python.org/downloads/).
+* [Python 3.6+](https://www.python.org/downloads/).
 
-* [Egy Azure Storage-fiók](../storage/common/storage-account-create.md).
+* [Egy Azure Storage-fiók.](../storage/common/storage-account-create.md)
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (nem kötelező).
 
-* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs** és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. Jegyezze fel a következő értékeket, ahogy az a cikkben is látható a későbbi lépésekben való használathoz: az **alkalmazás azonosítója (az alábbi egyszerű szolgáltatásnév), a hitelesítési kulcs (az ügyfél titkos kulcsa) és a bérlő azonosítója.**
+* [Egy alkalmazás a Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Hozza létre az alkalmazást a hivatkozás lépéseit követve,  és rendelje hozzá a Közreműködő szerepkörhöz az ugyanabban a cikkben található utasításokat követve. Jegyezze fel a következő értékeket a későbbi lépésekben használt cikkben látható módon: alkalmazásazonosító (alább szolgáltatásnév-azonosító), hitelesítési kulcs (alább titkos ügyfélkulcs) és **bérlőazonosító.**
 
 ## <a name="create-and-upload-an-input-file"></a>Bemeneti fájl létrehozása és feltöltése
 
@@ -66,16 +66,16 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
     pip install azure-mgmt-datafactory
     ```
 
-    A [Data Factory PYTHON SDK](https://github.com/Azure/azure-sdk-for-python) támogatja a Python 2,7 és a 3.6 + programot.
+    A [Python SDK for Data Factory](https://github.com/Azure/azure-sdk-for-python) a Python 2.7 és 3.6+.
 
-4. A Python-csomag Azure Identity-hitelesítéshez való telepítéséhez futtassa a következő parancsot:
+4. Az Azure Identity-hitelesítéshez szükséges Python-csomag telepítéséhez futtassa a következő parancsot:
 
     ```python
     pip install azure-identity
     ```
     > [!NOTE] 
-    > Előfordulhat, hogy az "Azure-Identity" csomag egyes gyakori függőségeinél ütközik az "Azure-CLI"-vel. Ha bármilyen hitelesítési probléma teljesül, távolítsa el az Azure-CLI-t és annak függőségeit, vagy használjon tiszta gépet anélkül, hogy az "Azure-CLI" csomagot telepítené a működéséhez.
-    > Szuverén felhők esetén a megfelelő Felhőbeli konstansokat kell használnia.  A [többfelhős Pythonhoz készült Azure-kódtárak használatával kapcsolatban tekintse meg a következőt: Kapcsolódás az összes régióhoz | Microsoft Docs a Pythonhoz való kapcsolódáshoz a szuverén felhőkben.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    > Előfordulhat, hogy az "azure-identity" csomag ütközik az "azure-cli" csomaggal néhány gyakori függőségen. Ha bármilyen hitelesítési problémába találkozik, távolítsa el az "azure-cli" és annak függőségeit, vagy használjon egy tiszta gépet az "azure-cli" csomag telepítése nélkül, hogy működjön.
+    > Szuverén felhők esetén a megfelelő felhőspecifikus állandókat kell használnia.  Tekintse meg a [Connect to all regions using Azure libraries for Python Multi-cloud | Microsoft Docs a Pythonhoz szuverén](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain) felhőkben való csatlakozásra vonatkozó utasításokért.
     
     
 ## <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
@@ -225,8 +225,6 @@ Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
- > [!NOTE] 
- > A to pass paramétereket a folyamathoz, adja hozzá őket a JSON-karakterlánchoz params_for_pipeline a (z) **{"ParameterName1": "ParameterValue1"}** formátumban, a folyamathoz szükséges összes paraméternél. Ha paramétereket szeretne átadni egy adatfolyam, hozzon létre egy folyamat paramétert a paraméter neve/értéke tárolásához, majd használja a adatfolyam paraméterben található folyamat paramétert a következő formátumban: **@pipeline (). Parameters. parametername.**
 
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
@@ -243,6 +241,13 @@ Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza a **m
     copy_activity = CopyActivity(name=act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
+    
+    #Note1: To pass parameters to the pipeline, add them to the json string params_for_pipeline shown below in the format { “ParameterName1” : “ParameterValue1” } for each of the parameters needed in the pipeline.
+    #Note2: To pass parameters to a dataflow, create a pipeline parameter to hold the parameter name/value, and then consume the pipeline parameter in the dataflow parameter in the format @pipeline().parameters.parametername.
+    
+    p_name = 'copyPipeline'
+    params_for_pipeline = {}
+
     p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)

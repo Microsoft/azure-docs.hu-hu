@@ -1,5 +1,5 @@
 ---
-title: Az SDK-t hívó Azure kommunikációs szolgáltatások áttekintése
+title: Azure Communication Services SDK hívásának áttekintése
 titleSuffix: An Azure Communication Services concept document
 description: Áttekintést nyújt a hívó SDK-ról.
 author: mikben
@@ -9,133 +9,133 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ac9cef77569dffe461f7711195c5638e831aa218
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 28072184d47beb32dc03e0d6ba52328bfceb5b73
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110104"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364872"
 ---
-# <a name="calling-sdk-overview"></a>Az SDK meghívása – áttekintés
+# <a name="calling-sdk-overview"></a>Az SDK hívásának áttekintése
 
-A hívó SDK lehetővé teszi a végfelhasználók számára a hang-és video-kommunikációs élmények elvégzését. Ez az oldal részletes leírást nyújt a hívási funkciókról, beleértve a platform-és böngésző-támogatási információkat. A kezdéshez [azonnal tekintse](../../quickstarts/voice-video-calling/getting-started-with-calling.md) meg a gyors üzembe helyezést, vagy hívja meg a [Hero mintát](../../samples/calling-hero-sample.md). 
+A hívó SDK lehetővé teszi, hogy a végfelhasználói eszközök hang- és videokommunikációt használjanak. Ez az oldal részletes leírást nyújt a hívó funkciókról, beleértve a platform- és böngészőtámogatási információkat. Az első lépésekhez tekintse [](../../quickstarts/voice-video-calling/getting-started-with-calling.md) meg a Rövid útmutatók hívása vagy a [Főkép hívása mintát.](../../samples/calling-hero-sample.md) 
 
-A fejlesztés megkezdése után tekintse meg az [ismert problémák oldalát](../known-issues.md) , ahol megtalálhatja azokat a hibákat, amelyeken dolgozunk.
+Miután megkezdte a fejlesztést, [](../known-issues.md) tekintse meg az ismert problémák oldalát, és keresse meg a hibákat, amelyeken dolgozunk.
 
-A hívó SDK legfontosabb funkciói:
+A hívó SDK fő funkciói:
 
-- **Címzés** – az Azure kommunikációs szolgáltatások a kommunikációs végpontok kezeléséhez használt általános [identitásokat](../identity-model.md) biztosítanak. Az ügyfelek ezeket az identitásokat használják a szolgáltatás hitelesítésére és egymással való kommunikációra. Ezeket az identitásokat a hívó API-k használják, amelyek megtekinthetik az ügyfeleket a híváshoz (a beosztáshoz) kapcsolódóan.
-- **Titkosítás** – a hívó SDK titkosítja a forgalmat, és megakadályozza a vezetéken belüli illetéktelen módosítást. 
-- **Eszközkezelés és-média** – a hívó SDK a hang-és video-eszközökhöz való kötéshez biztosít eszközöket, kódolja a tartalmakat a kommunikációs adatsík való hatékony továbbításhoz, és a megadott formátumban jeleníti meg a tartalmat. A képernyő-és alkalmazás-megosztáshoz API-kat is biztosítunk.
-- **PSTN** – a hívó SDK képes fogadni és kezdeményezni a hagyományos, nyilvánosan átkapcsolt telefonos rendszerekkel való telefonhívásokat a Azure Portal vagy programozott [módon beszerzett telefonszámok használatával](../../quickstarts/telephony-sms/get-phone-number.md) .
-- **Csapatok ülései** – a hívó SDK [csatlakozhat a csapatok üléseihez](../../quickstarts/voice-video-calling/get-started-teams-interop.md) és a csapat hang-és videó-adatsík. 
-- **Értesítések** – a hívó SDK olyan API-kat biztosít, amelyek lehetővé teszik, hogy az ügyfelek értesítést kapjanak a bejövő hívásokról. Olyan helyzetekben, amikor az alkalmazás nem fut az előtérben, a minták elérhetők az [előugró értesítések](../notifications.md) ("pirítós") számára, hogy a végfelhasználók tájékoztassanak egy bejövő hívást. 
+- **Címzés –** Azure Communication Services általános [identitásokat biztosít,](../identity-model.md) amelyek a kommunikációs végpontok címzésére használhatók. Az ügyfelek ezekkel az identitásokkal hitelesítik magukat a szolgáltatásban, és kommunikálnak egymással. Ezek az identitások a hívási API-kban használatosak, így az ügyfelek számára láthatóvá teszi, hogy ki csatlakozik egy híváshoz (a névsorba).
+- **Titkosítás** – A hívó SDK titkosítja a forgalmat, és megakadályozza az illetéktelen módosításokat a hálózaton. 
+- **Eszközkezelés és** média – A hívó SDK olyan lehetőségeket biztosít, amelyek hang- és videoeszközökre kötik a tartalmakat, kódolják a tartalmakat a kommunikációs adatsíkon keresztüli hatékony átvitel érdekében, és renderelik a tartalmat a megadott kimeneti eszközökre és nézetekbe. A képernyő- és alkalmazásmegosztáshoz API-k is rendelkezésre állnak.
+- **PSTN –** A hívó SDK képes hanghívásokat fogadni és kezdeményezni a hagyományos, nyilvánosan átkapcsolt telefonos rendszerrel, a telefonos ügyfélszolgálati rendszerben beszerzett [Azure Portal](../../quickstarts/telephony-sms/get-phone-number.md) programozott módon.
+- **Teams-értekezletek** – A hívó SDK csatlakozhat a Teams-értekezletekhez, és interakcióba léphet a Teams hang- és videóadatsíkjával. [](../../quickstarts/voice-video-calling/get-started-teams-interop.md) 
+- **Értesítések –** A hívó SDK API-kat biztosít, amelyek lehetővé teszik, hogy az ügyfelek értesítést kapnak a bejövő hívásokról. Olyan helyzetekben, amikor az alkalmazás nem az előtérben [](../notifications.md) fut, minták érhetők el felugró értesítések ("bejelentések") küldhetőek, amelyek tájékoztatják a végfelhasználókat a bejövő hívásokról. 
 
 ## <a name="detailed-capabilities"></a>Részletes képességek 
 
-Az alábbi lista az SDK-kat hívó Azure kommunikációs szolgáltatásokban jelenleg elérhető funkciókat mutatja be.
+Az alábbi lista azokat a funkciókat sorolja fel, amelyek jelenleg elérhetők a Azure Communication Services AZDK-k hívása alatt.
 
-| Szolgáltatások csoportja | Képesség                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
+| Funkciók csoportja | Képesség                                                                                                          | Js  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Alapvető képességek | Egy-az-egyhez hívás elhelyezése két felhasználó között                                                                           | ✔️   | ✔️            | ✔️
-|                   | Csoportos hívás elhelyezése kettőnél több felhasználóval (legfeljebb 350 felhasználó)                                                       | ✔️   | ✔️            | ✔️
-|                   | Egy-az-egyhez hívás előléptetése két felhasználóval egy csoportos hívásban több mint két felhasználóval                                 | ✔️   | ✔️            | ✔️
-|                   | Csatlakozás egy csoportos híváshoz az elindítása után                                                                              | ✔️   | ✔️            | ✔️
-|                   | Egy másik VoIP-résztvevő meghívása egy folyamatos csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️
-|  Közepes hívások vezérlése | Videó be-és kikapcsolása                                                                                              | ✔️   | ✔️            | ✔️
-|                   | Mikrofon némítása/feloldása                                                                                                     | ✔️   | ✔️            | ✔️
-|                   | Váltás a kamerák között                                                                                              | ✔️   | ✔️            | ✔️
-|                   | Helyi tartás/letartás                                                                                                  | ✔️   | ✔️            | ✔️
+| Alapvető képességek | Egy-az-egyhez hívás két felhasználó között                                                                           | ✔️   | ✔️            | ✔️
+|                   | Csoportos hívás több mint két felhasználóval (legfeljebb 350 felhasználó)                                                       | ✔️   | ✔️            | ✔️
+|                   | Egy-az-egyhez hívás meg hirdetése két felhasználóval egy több mint két felhasználót használó csoporthívásba                                 | ✔️   | ✔️            | ✔️
+|                   | Csatlakozás csoportos híváshoz az elindulás után                                                                              | ✔️   | ✔️            | ✔️
+|                   | Egy másik VoIP-résztvevő meghívása egy folyamatban lévő csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️
+|  Középső hívásvezérlés | Videó be- és kikapcsolása                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Némítás/némítás nélküli mikrofon                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Váltás kamerák között                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Helyi hold/un-hold                                                                                                  | ✔️   | ✔️            | ✔️
 |                   | Aktív beszélő                                                                                                      | ✔️   | ✔️            | ✔️
-|                   | Válasszon hangszórót a hívásokhoz                                                                                            | ✔️   | ✔️            | ✔️
-|                   | Válassza ki a mikrofont a hívásokhoz                                                                                         | ✔️   | ✔️            | ✔️
-|                   | Résztvevő állapotának megjelenítése<br/>*Tétlen, korai adathordozó, csatlakozás, csatlakoztatott, betartva, a lobbyban, leválasztva*         | ✔️   | ✔️            | ✔️
-|                   | Hívás állapotának megjelenítése<br/>*Korai adathordozó, bejövő, csatlakozás, csengetés, csatlakoztatott, megtartás, leválasztás, leválasztva* | ✔️   | ✔️            | ✔️
-|                   | Annak megjelenítése, hogy a résztvevő el van-e némítva                                                                                      | ✔️   | ✔️            | ✔️
-|                   | Annak az okának a megjelenítése, amiért a résztvevő meghagyott egy hívást                                                                       | ✔️   | ✔️            | ✔️
-| Képernyő megosztása    | A teljes képernyő megosztása az alkalmazáson belülről                                                                 | ✔️   | ❌            | ❌
+|                   | Beszélő kiválasztása a hívásokhoz                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Mikrofon kiválasztása a hívásokhoz                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Résztvevő állapotának megjelenítése<br/>*Idle, Early media, Connecting, Connected, On hold, In Lobby, Disconnected*         | ✔️   | ✔️            | ✔️
+|                   | Hívás állapotának megjelenítése<br/>*Korai média, Bejövő, Csatlakozás, Csengés, Csatlakoztatva, Tartsa, Kapcsolat bontása, Leválasztva* | ✔️   | ✔️            | ✔️
+|                   | Annak megjelenítése, hogy egy résztvevő el van-e némítva                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Annak az oka, hogy egy résztvevő miért távozott a hívástól                                                                       | ✔️   | ✔️            | ✔️
+| Képernyőmegosztás    | A teljes képernyő megosztása az alkalmazáson belülről                                                                 | ✔️   | ❌            | ❌
 |                   | Egy adott alkalmazás megosztása (a futó alkalmazások listájából)                                                | ✔️   | ❌            | ❌
-|                   | Webböngészőt tartalmazó lap megosztása a megnyitott lapok listájából                                                                  | ✔️   | ❌            | ❌
-|                   | A résztvevő megtekintheti a távoli képernyő megosztását                                                                            | ✔️   | ✔️            | ✔️
-| Névsora            | Résztvevők listázása                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Böngészőlap megosztása a megnyitott lapok listájából                                                                  | ✔️   | ❌            | ❌
+|                   | A résztvevők megtekinthetik a távoli képernyő megosztását                                                                            | ✔️   | ✔️            | ✔️
+| Beosztásról            | Résztvevők listába sorolva                                                                                                   | ✔️   | ✔️            | ✔️
 |                   | Résztvevő eltávolítása                                                                                                | ✔️   | ✔️            | ✔️
-| PSTN              | Egy-az-egyhez hívás elhelyezése PSTN-résztvevővel                                                                     | ✔️   | ✔️            | ✔️
-|                   | Csoportos hívás elhelyezése PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
-|                   | Egy-az-egyhez hívás előléptetése PSTN-résztvevővel egy csoportos hívásban                                                 | ✔️   | ✔️            | ✔️
-|                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️
-| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   | ✔️   | ✔️            | ✔️
-| Eszközkezelés | Engedély kérése hang és/vagy videó használatára                                                                       | ✔️   | ✔️            | ✔️
-|                   | Kamera listájának beolvasása                                                                                                     | ✔️   | ✔️            | ✔️
+| Pstn              | Egy-az-egyhez hívás egy PSTN-résztvevővel                                                                     | ✔️   | ✔️            | ✔️
+|                   | Csoportos hívás a PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
+|                   | Egy-az-egyhez hívás megléptet egy PSTN-résztvevővel csoportos hívásba                                                 | ✔️   | ✔️            | ✔️
+|                   | Csoportos hívásból való kitárcsázás PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️
+| Általános kérdések           | Tesztelje a mikrofont, a beszélőt és a kamerát egy hangtesztelési szolgáltatással (amely a 8:echo123 hívásával érhető el)                   | ✔️   | ✔️            | ✔️
+| Eszközkezelés | Kérjen engedélyt hang- és/vagy videóhasználatra                                                                       | ✔️   | ✔️            | ✔️
+|                   | Kameralista lekérte                                                                                                     | ✔️   | ✔️            | ✔️
 |                   | Kamera beállítása                                                                                                          | ✔️   | ✔️            | ✔️
-|                   | Kiválasztott kamera beolvasása                                                                                                 | ✔️   | ✔️            | ✔️
-|                   | Mikrofonok listájának beolvasása                                                                                                 | ✔️   | ✔️            | ✔️
-|                   | Mikrofon beállítása                                                                                                      | ✔️   | ✔️            | ✔️
-|                   | Kiválasztott mikrofon beolvasása                                                                                             | ✔️   | ✔️            | ✔️
-|                   | Hangszórók listájának beolvasása                                                                                                   | ✔️   | ✔️            | ✔️
-|                   | Hangszóró beállítása                                                                                                         | ✔️   | ✔️            | ✔️
-|                   | Kiválasztott hangszóró beolvasása                                                                                                | ✔️   | ✔️            | ✔️
-| Videó megjelenítése   | Egyetlen videó renderelése számos helyen (helyi kamera vagy távoli stream)                                                  | ✔️   | ✔️            | ✔️
-|                   | Skálázási mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️
-|                   | Távoli video stream megjelenítése                                                                                          | ✔️   | ✔️            | ✔️
+|                   | A kiválasztott kamera be- és lekért                                                                                                 | ✔️   | ✔️            | ✔️
+|                   | Mikrofonlista lekérte                                                                                                 | ✔️   | ❌           |❌  
+|                   | Mikrofon beállítása                                                                                                      | ✔️   | ❌           | ❌  
+|                   | A kiválasztott mikrofon be- és lekért                                                                                             | ✔️   | ❌           | ❌  
+|                   | Beszélők listájának lekért listája                                                                                                   | ✔️   | ❌           | ❌  
+|                   | Beszélő beállítása                                                                                                         | ✔️   | ❌           | ❌  
+|                   | Kiválasztott beszélő be- és lekérte                                                                                                | ✔️   | ❌           | ❌  
+| Videóre renderelés   | Egyetlen videó renderelése számos helyen (helyi kamera vagy távoli stream)                                                  | ✔️   | ✔️            | ✔️
+|                   | Méretezési mód beállítása/frissítése                                                                                           | ✔️   | ✔️            | ✔️
+|                   | Távoli videóstream renderelése                                                                                          | ✔️   | ✔️            | ✔️
 
-## <a name="calling-sdk-streaming-support"></a>Az SDK streaming támogatásának meghívása
-A kommunikációs szolgáltatások hívó SDK a következő folyamatos átviteli konfigurációkat támogatja:
+## <a name="calling-sdk-streaming-support"></a>SDK-streamelési támogatás hívása
+A Communication Services hívó SDK a következő streamkonfigurációkat támogatja:
 
 | Korlát          |Webes | Android/iOS|
 |-----------|----|------------|
-|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
-|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
+|**Az egyidejűleg elküldhető kimenő streamek számára** |1 videó vagy 1 képernyőmegosztás | 1 videó + 1 képernyőmegosztás|
+|**Az egyidejűleg renderelhet bejövő streamek számára** |1 videó vagy 1 képernyőmegosztás| 6 videó + 1 képernyőmegosztás |
 
-## <a name="calling-sdk-timeouts"></a>Az SDK időtúllépésének meghívása
+## <a name="calling-sdk-timeouts"></a>SDK-időtúllépések hívása
 
-A következő időtúllépések érvényesek az SDK-kat hívó kommunikációs szolgáltatásokra:
+A következő időtúllépések vonatkoznak a Communication Services az SDK-k hívásakor:
 
 | Művelet           | Időtúllépés hossza másodpercben |
 | -------------- | ---------- |
-| Újracsatlakozási/eltávolítási résztvevő | 120 |
-| Új modális hívás hozzáadása vagy eltávolítása (videó vagy képernyőfelvétel indítása/leállítása) | 40 |
-| Hívási átviteli művelet időtúllépése | 60 |
-| 1:1 hívási idő időtúllépése | 85 |
-| Csoportos hívás létesítésének időtúllépése | 85 |
-| PSTN-hívás létesítésének időtúllépése | 115 |
-| 1:1-hívások előléptetése egy csoportos hívás időkorlátja számára | 115 |
+| Újracsatlakozás/eltávolítási résztvevő | 120 |
+| Új módúság hozzáadása vagy eltávolítása egy hívásból (Videó vagy képernyőmegosztás kezdése/leállítása) | 40 |
+| Hívásátviteli művelet időtúllépése | 60 |
+| 1:1 A hívás-létesítés időtúllépése | 85 |
+| Csoporthívás-létesítés időkorlátja | 85 |
+| PSTN-hívás létesítésének időkorlátja | 115 |
+| Csoporthívás időtúllépése 1:1 előléptetve | 115 |
 
-## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>Az operációs rendszer és a böngésző SDK-támogatását meghívó JavaScript
+## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>JavaScript-hívási SDK-támogatás operációs rendszer és böngésző szerint
 
-A következő táblázat a jelenleg elérhető támogatott böngészők készletét tartalmazza. A böngésző legújabb három verzióját támogatjuk, hacsak másként nincs jelezve.
+Az alábbi táblázat a jelenleg elérhető támogatott böngészőket mutatja be. A böngésző legújabb három verzióját támogatjuk, hacsak nincs másként jelezve.
 
-| Platform                         | Chrome | Safari  | Edge (króm) |
+| Platform                         | Chrome | Safari*  | Edge (Chromium) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
-| macOS * * *                         |  ✔️    | ✔️**   | ❌             |
-| Windows * * *                       |  ✔️    | ❌     | ✔️             |
+| macOS                         |  ✔️    | ✔️**   | ❌             |
+| Windows!                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-* A Safari-verziók 13.1 + támogatottak, az 1:1-hívások nem támogatottak a Safarion.
+*A Safari 13.1-es és újabb verziói támogatottak, az 1:1-es hívások a Safariban nem támogatottak.
 
-* * A Safari 14 +/macOS 11 + szükséges a kimenő videók támogatásához.
+**Safari 14+/macOS 11+ szükséges a kimenő videótámogatáshoz.
 
-A kimenő képernyő megosztása csak asztali platformokon (Windows, macOS és Linux rendszeren) támogatott, a böngésző verziójától függetlenül, és semmilyen mobil platformon (Android, iOS, iPad és Tablet) nem támogatott.
+A kimenő képernyőmegosztás csak asztali platformokon (Windows, macOS és Linux) támogatott, a böngésző verziójától függetlenül, és semmilyen mobilplatformon (Android, iOS, iPad és táblagép) nem támogatott.
 
-Egy iOS-alkalmazás a Safariban nem tudja enumerálni/kiválasztani a MIC és a hangszórók eszközeit (például Bluetooth); Ez az operációs rendszer korlátozása, és mindig csak egy eszköz van.
+A Safariban egy iOS-alkalmazás nem képes a mikrofon- és beszélőeszközök (például Bluetooth) számbavételére/kiválasztására; Ez az operációs rendszer korlátozása, és mindig csak egy eszköz van.
 
 
-## <a name="calling-client---browser-security-model"></a>Ügyfél-böngésző biztonsági modell meghívása
+## <a name="calling-client---browser-security-model"></a>Ügyfél hívása – böngésző biztonsági modellje
 
-### <a name="user-webrtc-over-https"></a>Felhasználói WebRTC HTTPS-kapcsolaton keresztül
+### <a name="user-webrtc-over-https"></a>Felhasználói WebRTC HTTPS-protokollon keresztül
 
-WebRTC API-k `getUserMedia` , például a szükséges, hogy az API-kat meghívó alkalmazás HTTPS-en keresztül legyen kézbesítve.
+Az olyan WebRTC API-k, mint például megkövetelik, hogy az ezeket az API-kat megindító alkalmazás `getUserMedia` HTTPS-protokollon keresztül szolgálja ki őket.
 
-A helyi fejlesztéshez használhatja a következőt: `http://localhost` .
+Helyi fejlesztéshez használhatja a `http://localhost` et.
 
-### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>Az SDK-t hívó kommunikációs szolgáltatások beágyazása iframe-ben
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>A hívó SDK Communication Services beágyazása iframe-be
 
-A különböző böngészők elfogadják az új [engedélyek házirendjét (más néven szolgáltatási szabályzatot)](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute) . Ez a házirend hatással van a hívási forgatókönyvekre azáltal, hogy azt szabályozza, hogyan érhetik el az alkalmazások az eszköz kameráját és mikrofonját egy kereszthivatkozásos iframe-elem használatával.
+A különböző böngészők új engedély-szabályzatot [(más](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute) néven szolgáltatás-szabályzatot) hoznak létre. Ez a szabályzat úgy befolyásolja a hívási forgatókönyveket, hogy szabályozza, hogyan férhetnek hozzá az alkalmazások egy eszköz kamerához és mikrofonhoz egy iframe-elemen keresztül.
 
-Ha iframe-t szeretne használni az alkalmazás egy másik tartományból való tárolásához, az `allow` attribútumot a megfelelő értékkel kell hozzáadnia az IFRAME-hez.
+Ha egy iframe-et szeretne használni az alkalmazás egy másik tartományból származó részének a gazdagépére, hozzá kell adni a megfelelő értékű attribútumot az `allow` iframe-hez.
 
-Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
+Ez az iframe például kamera- és mikrofon-hozzáférést is lehetővé tesz:
 
 ```html
 <iframe allow="camera *; microphone *">
@@ -144,9 +144,9 @@ Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
+> [A hívásának első lépések](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
-- Tudnivalók a [hívási típusokról](../voice-video-calling/about-call-types.md)
-- [A PSTN-megoldás megtervezése](../telephony-sms/plan-solution.md)
+- További információ a [hívástípusokról](../voice-video-calling/about-call-types.md)
+- [A PSTN-megoldás megterve](../telephony-sms/plan-solution.md)

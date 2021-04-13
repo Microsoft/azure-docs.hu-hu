@@ -1,138 +1,142 @@
 ---
-title: 800-os korláttal nem rendelkező erőforrások száma
-description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
+title: 800 darabszámkorlát nélküli erőforrások
+description: Felsorolja azokat az Azure-erőforrástípusokat, amelyek egy erőforráscsoportban több mint 800 példánysal is lehet.
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 05f96597fb572005f7f32599b19d62ff2cb311cc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210176"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366538"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Erőforráscsoportonként legfeljebb 800 példány
 
-Alapértelmezés szerint az egyes erőforráscsoportok esetében akár 800 példányt is üzembe helyezhet. Bizonyos erőforrástípusok azonban mentesülnek az 800-es példány korlátján. Ez a cikk azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz. Az összes többi erőforrás-típus 800 példányra van korlátozva.
+Alapértelmezés szerint minden erőforráscsoportban legfeljebb 800 erőforrástípust helyezhet üzembe. Egyes erőforrástípusok azonban mentesülnek a 800-as példánykorlát alól. Ez a cikk azokat az Azure-erőforrástípusokat sorolja fel, amelyek több mint 800 példánya lehet egy erőforráscsoportban. Minden más erőforrástípus legfeljebb 800 példány lehet.
 
-Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgálattal, hogy el lehessen távolítani az 800-es példány korlátját. Ezek az erőforrástípusok ebben a cikkben vannak feltüntetve.
+Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgálattal, hogy eltávolítsa a 800-as példánykorlátot. Ezeket az erőforrástípusokat ebben a cikkben olvashatja.
 
-## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+
+* resourceHealthAlertRules
 * smartDetectorAlertRules
- 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft. AzureStack
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* edgeSubscriptions
-* linkedSubscriptions
-* regisztrációk
+* edgeSubscriptions (edgeSubscriptions)
+* linkedSubscriptions (linkedSubscriptions)
+* Regisztrációk
 * regisztrációk/customerSubscriptions
 * regisztrációk/termékek
 
-## <a name="microsoftbotservice"></a>Microsoft. BotService
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* botServices – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételkor növelhető.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* lemezek
-* katalógusok
-* galériák/lemezképek
-* galériák/lemezképek/verziók
+* Lemezek
+* Galériák
+* katalógusok/képek
+* katalógusok/képek/verziók
 * images
 * pillanatképek
-* virtualMachineScaleSets – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* virtualMachineScaleSets – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételkor növelhető.
 * virtualMachines
 
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 * containerGroups
 
-## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
-* kibocsátásiegység-forgalmi jegyzékek/buildTasks
-* kibocsátásiegység-forgalmi jegyzékek/buildTasks/listSourceRepositoryProperties
-* kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések
-* kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések/listBuildArguments
-* kibocsátásiegység-forgalmi jegyzékek/eventGridFilters
-* kibocsátásiegység-forgalmi jegyzékek/replikálások
-* kibocsátásiegység-forgalmi jegyzékek/feladatok
-* kibocsátásiegység-forgalmi jegyzékek/webhookok
+* beállításregisztrálók/buildTasks
+* registries/buildTasks/listSourceRepositoryProperties
+* beállításregisztrálók/buildTasks/steps
+* registries/buildTasks/steps/listBuildArguments
+* beállításregisztrálók/eventGridFilters
+* beállításregisztrációs jegyzékek/replikációk
+* beállításregisztrálók/feladatok
+* beállításregisztrálók/webhookok
 
-## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
+## <a name="microsoftd365customerinsights"></a>Microsoft.D365CustomerInsights
 
-* esetben
+* Példányok
 
-## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* kiszolgálók
+* Szerverek
 
-## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* flexibleServers
-* kiszolgálók
+* flexibleServers (rugalmas kiszolgáló)
+* Szerverek
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
-* flexibleServers
-* serverGroups
-* kiszolgálók
+* flexibleServers (rugalmas kiszolgáló)
+* serverGroups (kiszolgálócsoportok)
+* serverGroupsv2
+* Szerverek
 * serversv2
 
-## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* menetrend
+* Menetrend
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsofteventhub"></a>Microsoft. EventHub
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* fürtök
-* névterek
+* Klaszterek
+* Névterek
 
-## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 * experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
-* szoftver
+* Szoftver
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
-* gépek – legfeljebb 5 000 példányt támogat
-* bővítmények – a virtuálisgép-bővítmények korlátlan számú példányát támogatja
+* machines – legfeljebb 5000 példányt támogat
+* gépek/bővítmények – korlátlan számú virtuálisgép-bővítménypéldányt támogat
 
-## <a name="microsoftinsights"></a>Microsoft. bepillantások
+## <a name="microsoftinsights"></a>microsoft.insights
 
-* metricalerts
+* metricalerts (metrika-mérőszámok)
 
-## <a name="microsoftlogic"></a>Microsoft. Logic
+## <a name="microsoftlogic"></a>Microsoft.Logic
 
-* integrationAccounts
-* munkafolyamatok
+* integrationAccounts (integrationAccounts)
+* Munkafolyamatok
 
-## <a name="microsoftmedia"></a>Microsoft. Media
+## <a name="microsoftmedia"></a>Microsoft.Media
 
-* Mediaservices/liveEvents
+* mediaservices/liveEvents
 
-## <a name="microsoftnetapp"></a>Microsoft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
-* netAppAccounts
+* netAppAccounts (netAppAccounts)
 * netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/kötetek
-* netAppAccounts/capacityPools/kötetek/mountTargets
-* netAppAccounts/capacityPools/kötetek/Pillanatképek
+* netAppAccounts/capacityPools/volumes
+* netAppAccounts/capacityPools/volumes/mountTargets
+* netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -151,8 +155,8 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * dnszones/SOA
 * dnszones/SRV
 * dnszones/TXT
-* dnszones/mind
-* dnszones/rekordhalmazok
+* dnszones/all
+* dnszones/recordsets
 * networkIntentPolicies
 * networkInterfaces
 * privateDnsZones
@@ -164,60 +168,61 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * privateDnsZones/SOA
 * privateDnsZones/SRV
 * privateDnsZones/TXT
-* privateDnsZones/mind
+* privateDnsZones/all
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* Nyilvános IP – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* publicIPAddresses – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételkor növelhető.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* workspaceCollections – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételen növelhető.
 
-## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
-* kapacitás – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* autoScaleVCores – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételen növelhető.
+* capacities – Alapértelmezés szerint legfeljebb 800 példány lehet. Ez a korlát az ügyfélszolgálattal való kapcsolatfelvételen növelhető.
 
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* névterek
+* Névterek
 
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-* feladatgyűjtemények
+* jobcollections (feladatoszlopok)
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* névterek
+* Névterek
 
-## <a name="microsoftsingularity"></a>Microsoft. szingularitás
+## <a name="microsoftsingularity"></a>Microsoft.Singularity
 
 * fiókok
-* fiókok/accountQuotaPolicies
-* fiókok/groupPolicies
+* accounts/accountQuotaPolicies
+* accounts/groupPolicies
 * fiókok/feladatok
 * fiókok/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* storageAccounts
+* storageAccounts (tárfiókok)
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 * kiszolgálók/adatbázisok
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/API-k
-* helyek
+* apiManagementAccounts/apis
+* Helyek
 
 ## <a name="next-steps"></a>Következő lépések
 
-A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](azure-subscription-service-limits.md)című témakörben tekintheti meg.
+A kvóták és korlátok teljes listájáért lásd: Azure-előfizetések és -szolgáltatások [korlátai, kvótái és megkötései.](azure-subscription-service-limits.md)

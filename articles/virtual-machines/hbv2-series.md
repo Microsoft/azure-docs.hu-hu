@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 6978c8588b877c065a78bfd6e99a01f9f75066f3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 25f0933c2d0b8b3c8ec227ce52c974a50a671043
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800856"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309730"
 ---
 # <a name="hbv2-series"></a>HBv2 sorozat
 
@@ -23,6 +23,7 @@ A HBv2 sorozatú virtuális gépek 200 GB/s Mellanox, HDR-InfiniBand rendelkezne
 
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Ultra-lemezek](disks-types.md#ultra-disk): támogatott[(További információ a](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) rendelkezésre állásról, a használatról és a teljesítményről) <br>
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>

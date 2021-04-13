@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499135"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312977"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall aktív FTP-támogatás
 
@@ -20,6 +20,12 @@ Az aktív FTP szolgáltatással az FTP-kiszolgáló kezdeményezi az adatkapcsol
 
 Alapértelmezés szerint az aktív FTP-támogatás le van tiltva a Azure Firewallon az FTP-parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében `PORT` . A Azure PowerShell, az Azure CLI vagy egy Azure ARM-sablon használatával történő üzembe helyezéskor azonban engedélyezheti az aktív FTP-t.
 
+Az aktív módú FTP támogatásához a következő TCP-portokat kell megnyitni:
+
+- FTP-kiszolgáló (21-es port) bárhonnan (az ügyfél kezdeményezi a csatlakozást)
+- Az FTP-kiszolgáló 21-es portja > 1023-as portra (a kiszolgáló válaszol az ügyfél vezérlési portjára)
+- Az FTP-kiszolgáló 20-ös portja a 1023-es portokra > az ügyfeleken (a kiszolgáló adatkapcsolatot kezdeményez az ügyfél adatportjával)
+- Az FTP-kiszolgáló 20. portja a 1023-as portokon > az ügyfeleken (az ügyfél a nyugták küldi a kiszolgáló adatportjára)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

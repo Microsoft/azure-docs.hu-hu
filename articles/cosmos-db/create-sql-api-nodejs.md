@@ -1,22 +1,22 @@
 ---
-title: Gyors útmutató – Node.js használata Azure Cosmos DB SQL API-fiókból való lekérdezéshez
-description: Hogyan használható a Node.js egy olyan alkalmazás létrehozásához, amely Azure Cosmos DB SQL API-fiókhoz csatlakozik, és lekérdezi az adatlekérdezéseket.
+title: Rövid útmutató – Lekérdezés Node.js SQL API Azure Cosmos DB fiókból
+description: A Node.js az SQL API-fiókhoz Azure Cosmos DB és adatokat lekérdező alkalmazás létrehozásához.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ead4004813cf6415dfa1c7da3d308d93ea49a773
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090205"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365909"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: a Node.js használata az adatok Azure Cosmos DB SQL API-fiókból való összekapcsolásához és lekérdezéséhez
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: Csatlakozás és Node.js SQL API-fiókból Azure Cosmos DB adatok lekérdezése Azure Cosmos DB használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -24,56 +24,57 @@ ms.locfileid: "93090205"
 > - [.NET V4](create-sql-api-dotnet-V4.md)
 > - [Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spark v3-összekötő](create-sql-api-spark.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és felügyel a Azure Portalból, és egy, a GitHubról klónozott Node.js alkalmazás használatával. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot fog létrehozni és kezelni a Azure Portal-ból, valamint egy GitHubról klónozott Node.js használatával. Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amellyel gyorsan hozhat létre és lekérdezhet dokumentum-, tábla-, kulcs-érték és gráfadatbázisokat globális elosztási és horizontális skálázású képességekkel.
 
-## <a name="walkthrough-video"></a>Útmutató videó
+## <a name="walkthrough-video"></a>Bemutató videó
 
-Tekintse meg ezt a videót a cikk tartalmának teljes bemutatójában.
+Tekintse meg ezt a videót a cikk tartalmának teljes körű bemutatójért.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Quickstart-Use-Nodejs-to-connect-and-query-data-from-Azure-Cosmos-DB-SQL-API-account/player]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs URI-ja használatával `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Node.js 6.0.0 +](https://nodejs.org/).
-- [Git](https://www.git-scm.com/downloads).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Vagy [próbálja Azure Cosmos DB azure-előfizetés nélkül,](https://azure.microsoft.com/try/cosmosdb/) ingyenesen. Használhatja a [Azure Cosmos DB Emulatort](https://aka.ms/cosmosdb-emulator) a és a kulcs `https://localhost:8081` URI-ját `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` is.
+- [Node.js 6.0.0+ .](https://nodejs.org/)
+- [Git](https://www.git-scm.com/downloads): .
 
 ## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos-fiók létrehozása
 
-Ehhez a rövid útmutatóhoz az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) lehetőséget használhatja Azure Cosmos-fiók létrehozásához.
+Ebben a rövid útmutatóban használhatja az ingyenes [Azure Cosmos DB lehetőséget](https://azure.microsoft.com/try/cosmosdb/) egy Azure Cosmos-fiók létrehozásához.
 
-1. Navigáljon az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) oldalra.
+1. Lépjen az ingyenes [Azure Cosmos DB oldalára.](https://azure.microsoft.com/try/cosmosdb/)
 
-1. Válassza ki az **SQL** API-fiókot, és válassza a **Létrehozás** lehetőséget. Jelentkezzen be Microsoft-fiók használatával.
+1. Válassza ki az **SQL** API-fiókot, majd válassza a **Létrehozás lehetőséget.** Jelentkezzen be az Microsoft-fiók.
 
-1. A bejelentkezés sikeres befejezését követően az Azure Cosmos-fióknak készen kell állnia. Válassza a **Megnyitás lehetőséget a Azure Portal** az újonnan létrehozott fiók megnyitásához.
+1. A sikeres bejelentkezés után az Azure Cosmos-fióknak készen kell állnia. Válassza **a Megnyitás lehetőséget Azure Portal** az újonnan létrehozott fiók megnyitásához.
 
-Az "ingyenes Azure Cosmos DB ingyen" lehetőséghez nincs szükség Azure-előfizetésre, és az Azure Cosmos-fiókot egy 30 napos időszakra is felkínálja. Ha hosszabb ideig szeretné használni az Azure Cosmos-fiókot, ehelyett [hozzon létre egy fiókot](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) az Azure-előfizetésén belül.
+A "Azure Cosmos DB ingyenes" lehetőség nem igényel Azure-előfizetést, és korlátozott, 30 napos időszakra kínál Azure Cosmos-fiókot. Ha hosszabb ideig szeretné használni az Azure Cosmos-fiókot, ehelyett az Azure-előfizetésen belül kell létrehoznia a fiókot. [](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)
 
 ## <a name="add-a-container"></a>Tároló hozzáadása
 
-Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és egy tároló létrehozásához.
+Most már használhatja a Adatkezelő eszközét egy Azure Portal tároló létrehozásához.
 
-1. Válassza ki **adatkezelő**  >  **új tárolót**.
+1. Válassza **Adatkezelő**  >  **Új tároló lehetőséget.**
 
-   A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
+   A **jobb oldalon** megjelenik a Tároló hozzáadása terület. Előfordulhat, hogy jobbra kell görgetnie, hogy lássa.
 
    :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
 
-2. A **tároló hozzáadása** lapon adja meg az új tároló beállításait.
+2. A Tároló **hozzáadása lapon** adja meg az új tároló beállításait.
 
    | Beállítás           | Ajánlott érték | Leírás                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Adatbázis-azonosító**   | Feladatok           | Az új adatbázisnak adja a _Feladatok_ nevet. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?` szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
-   | **Átviteli sebesség**    | 400             | Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.                                                                                                                                                                                                                                                    |
-   | **Tároló azonosítója**  | Elemek           | Adja meg az _elemeket_ az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.                                                                                                                                                                                                                                                               |
-   | **Partíciókulcs** | /kategória       | A cikkben ismertetett minta a _/category_ használja a partíciós kulcsként.                                                                                                                                                                                                                                                                                                           |
+   | **Adatbázis-azonosító**   | Feladatok           | Az új adatbázisnak adja a _Feladatok_ nevet. Az adatbázisneveknek 1–255 karakter hosszúságúnak kell lennie, és nem tartalmazhatnak vagy záró `/, \\, #, ?` szóközt. Jelölje be **az Adatbázis átviteli sebességének kiépítése** lehetőséget, amely lehetővé teszi az adatbázis számára kibocsátott átviteli sebesség megosztását az adatbázis összes tárolója között. Ez a lehetőség segít a költségmegtakarításban is. |
+   | **Átviteli sebesség**    | 400             | Hagyja az átviteli sebességet másodpercenként 400 kérelemegységen (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.                                                                                                                                                                                                                                                    |
+   | **Tároló azonosítója**  | Elemek           | Az _új tárolónak_ adja az Elemek nevet. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.                                                                                                                                                                                                                                                               |
+   | **Partíciókulcs** | /kategória       | A cikkben leírt minta a _/category_ partíciókulcsot használja.                                                                                                                                                                                                                                                                                                           |
 
-   Az előző beállításokon kívül opcionálisan hozzáadhat **egyedi kulcsokat** a tárolóhoz. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. A tárolók létrehozásakor egyedi kulcsokra vonatkozó szabályzat létrehozásával biztosíthatja, hogy a partíciós kulcs egy vagy több értéke egyedi legyen. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md) kapcsolatos cikkben talál.
+   A fenti beállításokon kívül egyedi kulcsokat is hozzáadhat **a** tárolóhoz. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. Ha egy tároló létrehozásakor létrehoz egy egyedi kulcs-szabályzatot, azzal biztosítja, hogy partíciókulcsonként egy vagy több érték egyedi legyen. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md) kapcsolatos cikkben talál.
 
    Kattintson az **OK** gombra. Az Adatkezelő megjeleníti az új adatbázist és tárolót.
 
@@ -87,7 +88,7 @@ Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon létre egy Node.js alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa.
+Most pedig klónozunk egy Node.js a GitHubról, beállítjuk a kapcsolati sztringet, és futtatjuk azt.
 
 1. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
@@ -97,43 +98,43 @@ Most hozzon létre egy Node.js alkalmazást a GitHubról, állítsa be a kapcsol
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha szeretné megtanulni, hogyan jönnek létre az Azure Cosmos Database-erőforrások a kódban, tekintse át az alábbi kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra.
+Ez a lépés nem kötelező. Ha meg szeretne tanulni a kódban létrehozott Azure Cosmos-adatbázis-erőforrásokról, tekintse át az alábbi kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra.
 
-Ha már ismeri az SQL JavaScript SDK korábbi verzióját, akkor a feltételek _gyűjteményét_ és _dokumentumát_ is használhatja. Mivel Azure Cosmos DB [több API-modellt](introduction.md)is támogat, [a JavaScript SDK 2.0](https://www.npmjs.com/package/@azure/cosmos) -s vagy újabb verziója az általános feltételek _tárolóját_ használja, amely lehet gyűjtemény, gráf vagy tábla, valamint a tároló tartalmának leírására szolgáló _elem_ .
+Ha már ismeri az SQL JavaScript SDK előző verzióját, akkor a rendszer a gyűjtemény és a dokumentum _kifejezéseket_ is _láthatja._ Mivel a Azure Cosmos DB több [API-modellt](introduction.md)is támogat, a [JavaScript SDK 2.0-s](https://www.npmjs.com/package/@azure/cosmos) vagy újabb verziója a  tároló általános kifejezését használja, amely lehet gyűjtemény, gráf vagy tábla, valamint egy elem a tároló tartalmának leírására. 
 
-A Cosmos DB JavaScript SDK neve " @azure/cosmos ", és telepíthető a NPM...
+A Cosmos DB JavaScript SDK neve " , és telepíthető @azure/cosmos az npm...
 
 ```bash
 npm install @azure/cosmos
 ```
 
-Az alábbi kódrészletek mind a _app.js_ fájlból származnak.
+Az alábbi kódrészletek mind a fájlból _app.js_ vannak.
 
-- A a `CosmosClient` NPM-csomagból lett importálva `@azure/cosmos` .
+- A `CosmosClient` importálva van az `@azure/cosmos` npm-csomagból.
 
   ```javascript
   const CosmosClient = require("@azure/cosmos").CosmosClient;
   ```
 
-- Egy új `CosmosClient` objektum inicializálása megtörtént.
+- A rendszer `CosmosClient` inicializál egy új objektumot.
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
   ```
 
-- Válassza ki a "feladatok" adatbázist.
+- Válassza ki a "Feladatok" adatbázist.
 
   ```javascript
   const database = client.database(databaseId);
   ```
 
-- Válassza ki az "Items" tárolót/gyűjteményt.
+- Válassza az "Elemek" tárolót/gyűjteményt.
 
   ```javascript
   const container = database.container(containerId);
   ```
 
-- Válassza ki az összes elemet az "Items" tárolóban.
+- Válassza ki az "Elemek" tároló összes elemét.
 
   ```javascript
   // query to return all items
@@ -170,35 +171,35 @@ Az alábbi kódrészletek mind a _app.js_ fájlból származnak.
   ```
 
 > [!NOTE]
-> A "frissítés" és a "Törlés" metódusban az elemet a meghívásával kell kiválasztani az adatbázisból `container.item()` . Az átadott két paraméter az elemek és az elemek partíciós kulcsának azonosítója. Ebben az esetben a egyenlőség kulcs a "Category" (kategória) mező értéke.
+> Az "update" és a "delete" metódusban is ki kell választani az elemet az adatbázisból a `container.item()` hívásával. A két átadott paraméter az elem azonosítója és az elem partíciókulcsa. Ebben az esetben a parition key a "category" mező értéke.
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Most lépjen vissza a Azure Portalra az Azure Cosmos-fiók kapcsolati sztring adatainak beszerzéséhez. Másolja a kapcsolati karakterláncot az alkalmazásba, hogy az képes legyen csatlakozni az adatbázishoz.
+Most vissza a Azure Portal az Azure Cosmos-fiók kapcsolati sztringjének részleteiért. Másolja a kapcsolati sztringet az alkalmazásba, hogy az csatlakozni tud az adatbázishoz.
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a bal oldali navigációs menüben a **kulcsok** elemet, majd válassza az **írási/olvasási kulcsok** elemet. A következő lépésben a képernyő jobb oldalán található másolási gombok használatával másolja az URI-t és az elsődleges kulcsot a _app.js_ fájlba.
+1. A fiók Azure Cosmos DB a Azure Portal [a](https://portal.azure.com/)bal oldali  navigációs sávon válassza a Kulcsok, majd az **Írási/olvasási kulcsok lehetőséget.** A képernyő jobb oldalán található másolási gombokkal másolja az URI-t és az elsődleges kulcsot _app.js_ következő lépésben található fájlba.
 
    :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén":::
 
 2. Nyissa meg a _config.js_ fájlt.
 
-3. Másolja az URI-értéket a portálról (a másolás gomb használatával), és adja meg a végpont kulcs értékét a _config.jsban_.
+3. Másolja ki az URI-értéket a portálról (a másolási gombbal), és azt a végpontkulcs értékeként a _config.js._
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Ezután másolja ki az elsődleges kulcs értékét a portálról, és adja meg aconfig.jsértékének értékét `config.key` . __ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a portálról, és azt a értékeként a `config.key` _fájlbanconfig.js._ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
    `key: "<Your Azure Cosmos account key>"`
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. Futtassa a parancsot `npm install` egy terminálban a " @azure/cosmos " NPM-csomag telepítéséhez
+1. Futtassa `npm install` a következőt egy terminálban: " @azure/cosmos " npm-csomag telepítése
 
 2. Futtassa a `node app.js` parancsot egy terminálban a node-alkalmazás elindításához.
 
-3. Az ebben a rövid útmutatóban korábban létrehozott két elem ki van listázva. Létrejön egy új tétel. Az elem "isComplete" jelzője "true" (igaz) értékre frissül, és végül az elem törlődik.
+3. Megjelenik a rövid útmutatóban korábban létrehozott két elem. A rendszer létrehoz egy új elemet. Az elem "isComplete" jelzője "true" (igaz) értékre frissül, és végül törli az elemet.
 
-Ezzel a minta-alkalmazással folytathatja a kísérletet, vagy visszatérhet az adataihoz Adatkezelő, módosíthat és dolgozhat.
+Folytathatja a kísérletezést ezzel a mintaalkalmazással, vagy visszamehet a Adatkezelő, módosíthatja és használhatja az adatait.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
@@ -206,7 +207,7 @@ Ezzel a minta-alkalmazással folytathatja a kísérletet, vagy visszatérhet az 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy tárolót a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
-> [Adatimportálás az Azure Cosmos db-be](import-data.md)
+> [adatok importálása az Azure Cosmos DB-be](import-data.md)

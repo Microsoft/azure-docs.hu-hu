@@ -4,27 +4,22 @@ description: Szimulált TPM használata Linux rendszerű virtuális gépen az Az
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166598"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312399"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Az eszközök [kiépítési szolgáltatásával](../iot-dps/index.yml)automatikusan kiépítheti Azure IoT Edge eszközöket. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> Jelenleg a TPM-hitelesítés használatával történő automatikus kiépítés nem támogatott IoT Edge 1,2-es verzióban.
-:::moniker-end
 
 A feladatok a következők:
 
@@ -34,7 +29,7 @@ A feladatok a következők:
 1. Telepítse a IoT Edge futtatókörnyezetet, és kapcsolja az eszközt a IoT Hubhoz.
 
 > [!TIP]
-> Ez a cikk bemutatja, hogyan tesztelheti a DPS-kiépítési modult a TPM-szimulátor használatával, de a fizikai TPM-hardverek, például az [Infineon OPTIGA &trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), egy Azure Certified for IoT-eszköz esetében.
+> Ez a cikk bemutatja, hogyan tesztelheti a DPS-kiépítési modult a TPM-szimulátor használatával, de a fizikai TPM-hardverek, például az [Infineon OPTIGA &trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), egy Azure Certified for IoT-eszköz esetében.
 >
 > Ha fizikai eszközt használ, ugorjon a jelen cikk [fizikai eszközről származó kiépítési információinak lekérése](#retrieve-provisioning-information-from-a-physical-device) szakaszára.
 
@@ -191,6 +186,9 @@ Az eszköz kiépítéséhez kövesse az [Azure IoT Edge futtatókörnyezet telep
 
 Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszközt az általa használt információval az eszköz kiépítési szolgáltatásához való kapcsolódáshoz és a IoT Hubához.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** , amely az előző fejezetekben lett összegyűjtve.
 
 1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
@@ -216,11 +214,52 @@ Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszk�
    # dynamic_reprovisioning: false
    ```
 
-   Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
-
 1. Frissítse a és a értékét a `scope_id` `registration_id` DPS és az eszköz adataival.
 
+1. Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
+
+1. Mentse és zárja be a fájlt.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** , amely az előző fejezetekben lett összegyűjtve.
+
+1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a TPM-kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. Frissítse a és a értékét a `id_scope` `registration_id` DPS és az eszköz adataival.
+
+1. Megkeresheti a fájl automatikus újraépítésének mód szakaszát is. A `auto_reprovisioning_mode` paraméter használatával konfigurálhatja az eszköz újralétesítési viselkedését a, vagy rendszerre `Dynamic` `AlwaysOnStartup` `OnErrorOnly` . További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
+
+1. Mentse és zárja be a fájlt.
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge hozzáférés biztosítása a TPM-hez
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 A IoT Edge futtatókörnyezetnek hozzá kell férnie a TPM-hez, hogy automatikusan kiépítse az eszközt.
 
@@ -272,9 +311,68 @@ A rendszerszintű beállítások felülbírálása érdekében engedélyezheti a
    ```
 
    Ha nem látja, hogy a megfelelő engedélyek lettek alkalmazva, próbálja meg újraindítani a gépet a udev frissítéséhez.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet újraindítása
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+A IoT Edge futtatókörnyezet olyan TPM-szolgáltatásra támaszkodik, amely a közvetítő eszköz TPM-hez való hozzáférését használja. A szolgáltatásnak hozzá kell férnie a TPM-hez, hogy automatikusan kiépítse az eszközt.
 
+Hozzáférést biztosíthat a TPM-hez, ha felülbírálja a rendszerszintű beállításokat, így a `aziottpm` szolgáltatásnak rendszergazdai jogosultságokkal kell rendelkeznie. Ha nem szeretné megemelni a szolgáltatási jogosultságokat, az alábbi lépéseket követve manuálisan is megadhatja a TPM-hozzáférést.
+
+1. Keresse meg az eszközön a TPM hardveres modul elérési útját, és mentse helyi változóként.
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. Hozzon létre egy új szabályt, amely megadja a IoT Edge Runtime hozzáférést a tpm0.
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. Nyissa meg a szabályok fájlt.
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. Másolja a következő hozzáférési adatokat a szabályok fájlba.
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. Mentse és zárja be a fájlt.
+
+6. Aktiválja a udev rendszerét az új szabály kiértékeléséhez.
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. Ellenőrizze, hogy a szabály alkalmazása sikeresen megtörtént-e.
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   A sikeres kimenet a következőképpen jelenik meg:
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   Ha nem látja, hogy a megfelelő engedélyek lettek alkalmazva, próbálja meg újraindítani a gépet a udev frissítéséhez.
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>IoT Edge újraindítása és sikeres telepítés ellenőrzése
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Indítsa újra a IoT Edge futtatókörnyezetet, hogy az az eszközön végrehajtott összes konfigurációs módosítást felveszi.
 
    ```bash
@@ -287,6 +385,12 @@ Ellenőrizze, hogy fut-e a IoT Edge futtatókörnyezet.
    sudo systemctl status iotedge
    ```
 
+Daemon-naplók vizsgálata.
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 Ha a kiépítési hibák jelennek meg, előfordulhat, hogy a konfiguráció módosítása még nem lépett érvénybe. Próbálkozzon újra a IoT Edge démon újraindításával.
 
    ```bash
@@ -294,22 +398,40 @@ Ha a kiépítési hibák jelennek meg, előfordulhat, hogy a konfiguráció mód
    ```
 
 Vagy próbálja meg újraindítani a virtuális gépet, és ellenőrizze, hogy a módosítások érvénybe lépnek-e egy új indításkor.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Alkalmazza az eszközön végrehajtott konfigurációs módosításokat.
 
-Ha a futtatókörnyezet sikeresen elindult, beléphet a IoT Hubba, és láthatja, hogy az új eszköz automatikusan lett kiépítve. Az eszköz most már készen áll IoT Edge modulok futtatására.
+   ```bash
+   sudo iotedge config apply
+   ```
 
-A IoT Edge démon állapotának bejelölése.
+Ellenőrizze, hogy fut-e a IoT Edge futtatókörnyezet.
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 Daemon-naplók vizsgálata.
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+Ha a kiépítési hibák jelennek meg, előfordulhat, hogy a konfiguráció módosítása még nem lépett érvénybe. Próbálja meg újraindítani a IoT Edge démont.
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+Vagy próbálja meg újraindítani a virtuális gépet, és ellenőrizze, hogy a módosítások érvénybe lépnek-e egy új indításkor.
+:::moniker-end
+<!-- end 1.2 -->
+
+Ha a futtatókörnyezet sikeresen elindult, beléphet a IoT Hubba, és láthatja, hogy az új eszköz automatikusan lett kiépítve. Az eszköz most már készen áll IoT Edge modulok futtatására.
 
 Futó modulok listázása.
 

@@ -35,6 +35,8 @@
           href: roles.md
         - name: Hozzáférés kezelése erőforrás alapján
           href: resource-context-rbac.md
+        - name: A MSSP szellemi tulajdonának védelme
+          href: mssp-protect-intellectual-property.md
     - name: Fejlett többfázisú támadásészlelés
       href: fusion.md
     - name: Automatizálás (SZÁRNYALás)

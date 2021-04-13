@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Az Azure RBAC használata engedélyezési ellenőrzésekhez az Azure arc-kompatibilis Kubernetes-fürtökön
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451014"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304205"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>Azure RBAC az Azure arc-kompatibilis Kubernetes-fürtökhöz
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Active Directory integrálása az Azure arc-kompatibilis Kubernetes-fürtökkel
 
-A Kubernetes [ClusterRoleBinding és a RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) típusú objektumtípusok segítségével natív módon definiálhatja az Kubernetes-hitelesítést. Az Azure RBAC Azure Active Directory és szerepkör-hozzárendeléseket is használhat az Azure-ban a fürt engedélyezési ellenőrzésének vezérléséhez. Ez azt jelenti, hogy mostantól használhatja az Azure szerepkör-hozzárendeléseket a Kubernetes-objektumok, például az üzembe helyezés, a pod és a szolgáltatás olvasási, írási és törlési lehetőségének részletes szabályozásához.
+A Kubernetes [ClusterRoleBinding és a RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) típusú objektumtípusok segítségével natív módon definiálhatja az Kubernetes-hitelesítést. Ezzel a szolgáltatással Azure Active Directory és szerepkör-hozzárendeléseket használhat az Azure-ban a fürt engedélyezési ellenőrzésének vezérléséhez. Ez azt jelenti, hogy mostantól használhatja az Azure szerepkör-hozzárendeléseket a Kubernetes-objektumok, például az üzembe helyezés, a pod és a szolgáltatás olvasási, írási és törlési lehetőségének részletes szabályozásához.
 
 A szolgáltatás fogalmi áttekintése elérhető az [Azure RBAC – Azure arc-kompatibilis Kubernetes](conceptual-azure-rbac.md) cikkben.
 
@@ -274,10 +274,10 @@ Az Azure arc-kompatibilis Kubernetes-erőforrás tulajdonosai használhatnak be�
 
 | Szerepkör | Leírás |
 |---|---|
-| Azure arc Kubernetes megjelenítője | Lehetővé teszi a csak olvasási hozzáférést a névtérben lévő legtöbb objektum megtekintéséhez. Ez a szerepkör nem teszi lehetővé a titkok megtekintését. Ennek az az oka, hogy a `read` titkos kulcsok engedélyei lehetővé teszik `ServiceAccount` a névtérben lévő hitelesítő adatokhoz való hozzáférést, ami viszont lehetővé teszi az API-hozzáférés használatát `ServiceAccount` (a jogosultságok kiterjesztését). |
-| Azure arc Kubernetes-író | Olvasási/írási hozzáférést tesz lehetővé a névtér legtöbb objektumához. Ez a szerepkör nem teszi lehetővé a szerepkörök vagy szerepkör-kötések megtekintését és módosítását. Ez a szerepkör azonban lehetővé teszi a titkok elérését és a hüvelyek futtatását `ServiceAccount` a névtérben, így a névtér bármelyikének API-hozzáférési szintjeinek megszerzésére használható `ServiceAccount` . |
-| Az Azure arc Kubernetes rendszergazdája | Lehetővé teszi a rendszergazdai hozzáférést. Egy RoleBinding használó névtéren belül kell megadni. Ha RoleBinding használja, az olvasási/írási hozzáférést biztosít a névtérben található legtöbb erőforráshoz, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. Ez a szerepkör nem engedélyez írási hozzáférést az erőforrás-kvótához vagy magához a névtérhez. |
-| Azure arc Kubernetes-fürt rendszergazdája | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végrehajtson bármilyen erőforráson. A ClusterRoleBinding használatakor teljes hozzáférést biztosít a fürt összes erőforrásához és az összes névtérhez. A RoleBinding használatakor teljes hozzáférést biztosít a szerepkör-kötés névterében lévő összes erőforráshoz, beleértve a névteret is.|
+| [Azure arc Kubernetes megjelenítője](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Lehetővé teszi a csak olvasási hozzáférést a névtérben lévő legtöbb objektum megtekintéséhez. Ez a szerepkör nem teszi lehetővé a titkok megtekintését. Ennek az az oka, hogy a `read` titkos kulcsok engedélyei lehetővé teszik `ServiceAccount` a névtérben lévő hitelesítő adatokhoz való hozzáférést, ami viszont lehetővé teszi az API-hozzáférés használatát `ServiceAccount` (a jogosultságok kiterjesztését). |
+| [Azure arc Kubernetes-író](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Olvasási/írási hozzáférést tesz lehetővé a névtér legtöbb objektumához. Ez a szerepkör nem teszi lehetővé a szerepkörök vagy szerepkör-kötések megtekintését és módosítását. Ez a szerepkör azonban lehetővé teszi a titkok elérését és a hüvelyek futtatását `ServiceAccount` a névtérben, így a névtér bármelyikének API-hozzáférési szintjeinek megszerzésére használható `ServiceAccount` . |
+| [Az Azure arc Kubernetes rendszergazdája](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Lehetővé teszi a rendszergazdai hozzáférést. Egy RoleBinding használó névtéren belül kell megadni. Ha RoleBinding használja, az olvasási/írási hozzáférést biztosít a névtérben található legtöbb erőforráshoz, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. Ez a szerepkör nem engedélyez írási hozzáférést az erőforrás-kvótához vagy magához a névtérhez. |
+| [Azure arc Kubernetes-fürt rendszergazdája](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végrehajtson bármilyen erőforráson. A ClusterRoleBinding használatakor teljes hozzáférést biztosít a fürt összes erőforrásához és az összes névtérhez. A RoleBinding használatakor teljes hozzáférést biztosít a szerepkör-kötés névterében lévő összes erőforráshoz, beleértve a névteret is.|
 
 A Azure Portal-on lévő fürterőforrás paneljén létrehozhat olyan szerepkör-hozzárendeléseket, amelyek az arc-kompatibilis Kubernetes-fürthöz vannak hozzárendelve `Access Control (IAM)` . Az Azure CLI-parancsokat is használhatja az alább látható módon:
 

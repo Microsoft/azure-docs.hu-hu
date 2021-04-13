@@ -1,98 +1,98 @@
 ---
 title: Mi az az Azure Cosmos DB elemzési tár?
-description: Ismerkedjen meg Azure Cosmos DB tranzakciós (sor-alapú) és analitikai (oszlop alapú) tárolóval. A nagyméretű számítási feladatokhoz és a tranzakciós tárolóból az analitikai tárolóba történő automatikus szinkronizálás előnyei, valamint a teljesítményre gyakorolt hatás
+description: A Azure Cosmos DB (soralapú) és analitikai (oszlopalapú) tárolók megismerása. Az elemzési tár előnyei, a nagy léptékű számítási feladatok teljesítményre gyakorolt hatása, valamint a tranzakciós tárolóból az elemzési tárba való automatikus adatszinkronizálás
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046212"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364606"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB elemzési tároló?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-A Azure Cosmos DB Analytical Store egy teljesen elkülönített oszlop, amely lehetővé teszi, hogy a nagy léptékű elemzéseket a Azure Cosmos DB működési adatain keresztül engedélyezze, anélkül, hogy ez hatással lenne a tranzakciós munkaterhelésekre. 
+Azure Cosmos DB elemzési adattár egy teljesen elkülönített oszloptároló, amely lehetővé teszi a nagy léptékű elemzéseket a felhőbeli operatív Azure Cosmos DB anélkül, hogy ez hatással lenne a tranzakciós számítási feladatokra. 
 
-Azure Cosmos DB tranzakciós tároló a séma-agnosztikus, és lehetővé teszi, hogy a tranzakciós alkalmazásait a séma vagy az indexelés kezelése nélkül lehessen megismételni. Ezzel szemben Azure Cosmos DB Analytical Store sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. Ez a cikk az analitikai tár részletes ismertetését ismerteti.
+Azure Cosmos DB tranzakciós tároló sématől független, és lehetővé teszi a tranzakciós alkalmazások iterálását séma- vagy indexkezelés nélkül. Ezzel szemben a Azure Cosmos DB elemzési tároló az elemzési lekérdezési teljesítményre való optimalizálás érdekében van sémában. Ez a cikk az elemzési tárhellyel kapcsolatos részletes információkat ismerteti.
 
-## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Kihívások az operatív adatok nagy méretű elemzésével
+## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Az operatív adatok nagy léptékű elemzésének kihívásai
 
-Egy Azure Cosmos DB tárolóban lévő többmodelles operatív adatértékek belsőleg tárolódnak egy indexelt sorokon alapuló "tranzakciós tárolóban". A sor tárolási formátuma lehetővé teszi a gyors tranzakciós olvasást és írást az ezredmásodpercekben megadott válaszidő és az operatív lekérdezések esetében. Ha az adatkészlet nagy mennyiségű, az összetett analitikus lekérdezések költségesek lehetnek az ebben a formátumban tárolt adatok kiépített átviteli sebessége alapján. A kiépített átviteli sebesség nagy mértékben felhasználható a valós idejű alkalmazások és szolgáltatások által használt tranzakciós munkaterhelések teljesítményére.
+A többmodelles üzemeltetési adatok egy Azure Cosmos DB tárolóban egy indexelt soralapú "tranzakciós tárolóban" tárolódnak. A sortároló formátuma lehetővé teszi a gyors tranzakciós olvasásokat és írásokat az ezredmásodpercekben megrendelt válaszidőkben, valamint a műveleti lekérdezéseket. Ha az adatkészlet mérete megnő, az összetett elemzési lekérdezések költségesek lehetnek az ebben a formátumban tárolt adatokhoz kiépített átviteli sebesség tekintetében. A kiépített átviteli sebesség magas használata hatással van a valós idejű alkalmazások és szolgáltatások által használt tranzakciós számítási feladatok teljesítményére.
 
-A nagy mennyiségű adatok elemzéséhez a rendszer kinyeri az operatív adatok Azure Cosmos DB tranzakciós tárolójából, és egy külön adatrétegben tárolja azokat. Az adatraktárban és az adattárban lévő adattárolók például megfelelő formátumban tárolódnak. Ezek az adatok később nagy léptékű elemzésekhez használatosak, és a számítási motor, például a Apache Spark-fürtök használatával elemezhetők. Az analitikus tárolás és a számítási rétegek az operatív adatokból való elkülönítése további késleltetést eredményez, mivel az ETL (kinyerés, átalakítás, betöltés) folyamatok ritkábban futnak a tranzakciós számítási feladatokra gyakorolt lehetséges hatás csökkentése érdekében.
+A nagy mennyiségű adat elemzéséhez hagyományosan az operatív adatokat Azure Cosmos DB a tranzakciós tárolóból, és egy külön adatrétegben tárolják. Az adatokat például egy adattárházban vagy data lake-ben tárolják egy megfelelő formátumban. Ezeket az adatokat később nagy léptékű elemzésekhez, majd számítási motorral, például az adatfürtök Apache Spark elemezni. Az elemzési tárterület és a számítási rétegek operatív adatoktól való elkülönítése további késést eredményezhet, mivel az ETL-folyamatok (kinyerés, átalakítás, betöltés) ritkábban futnak a tranzakciós számítási feladatokra gyakorolt potenciális hatás minimalizálása érdekében.
 
-Az ETL-folyamatok akkor is bonyolultak lesznek, ha az operatív információkra vonatkozó frissítéseket az újonnan betöltött működési adatmennyiség kezelésekor hasonlítják össze. 
+Az ETL-folyamatok az operatív adatok frissítésének kezelésekor is összetetté válnak, szemben a csak az újonnan betöltött operatív adatok kezelésével. 
 
-## <a name="column-oriented-analytical-store"></a>Oszlop-orientált analitikai tár
+## <a name="column-oriented-analytical-store"></a>Oszloporientált elemzési tároló
 
-Azure Cosmos DB analitikus tároló foglalkozik a hagyományos ETL-folyamatokkal kapcsolatos bonyolultsági és késési kihívásokkal. Azure Cosmos DB az analitikus tároló automatikusan szinkronizálhatja az operatív adatait egy külön oszlopos tárolóba. Az oszlopos tároló formátuma alkalmas a nagyméretű analitikai lekérdezések optimalizált módon történő elvégzésére, ami az ilyen lekérdezések késésének javítását eredményezi.
+Azure Cosmos DB elemzési tároló a hagyományos ETL-folyamatok összetettségi és késési kihívásaival foglalkozik. Azure Cosmos DB elemzési tár képes automatikusan szinkronizálni az operatív adatokat egy külön oszloptárolóba. Az oszloptároló formátuma megfelelő a nagy léptékű elemzési lekérdezések optimalizált módon való hajtható végre, ami javítja az ilyen lekérdezések késését.
 
-Az Azure szinapszis-hivatkozás használatával most már nem ETL HTAP-megoldásokat hozhat létre az Azure szinapszis Analytics Azure Cosmos DB analitikus áruházához való közvetlen hivatkozással. Lehetővé teszi a közel valós idejű, nagy léptékű elemzések futtatását az operatív adatain.
+A Azure Synapse Link használatával mostantól ETL-t nem használó HTAP-megoldásokat építhet ki, ha közvetlenül hivatkozik egy Azure Cosmos DB elemzési Azure Synapse Analytics. Segítségével közel valós idejű, nagy léptékű elemzéseket futtathat az operatív adatokon.
 
-## <a name="features-of-analytical-store"></a>Az analitikai tároló funkciói 
+## <a name="features-of-analytical-store"></a>Az elemzésitár funkciói 
 
-Amikor engedélyezi az analitikai tárolót egy Azure Cosmos DB tárolón, a tárolóban lévő operatív adatai alapján létrejön egy új, belső tároló. Ez az oszlop tárolja az adott tárolóhoz tartozó sor-orientált tranzakciós tárolótól függetlenül. Az operatív adataihoz tartozó lapkákat, frissítéseket és törléseket a rendszer automatikusan szinkronizálja az analitikus tárolóba. Az adatszinkronizáláshoz nincs szükség az adatmódosítási csatornára vagy ETL-ra.
+Ha engedélyezi az elemzési tárolót egy Azure Cosmos DB tárolón, a rendszer belsőleg létrehoz egy új oszloptárolót a tárolóban lévő működési adatok alapján. Ez az oszloptároló az ehhez a tárolóhoz kapcsolódó sororientált tranzakciós tárolótól elkülönítve lesz megőrzve. Az operatív adatok beszúrása, frissítése és törlése automatikusan szinkronizálódik az elemzési tárba. Az adatok szinkronizálása nem szükséges a változáscsatornához vagy az ETL-hez.
 
-### <a name="column-store-for-analytical-workloads-on-operational-data"></a>A működési adatok elemzési számítási feladatainak tárolására szolgáló oszlop
+### <a name="column-store-for-analytical-workloads-on-operational-data"></a>Oszloptár az üzemeltetési adatokon futtatott elemzési számítási feladatokhoz
 
-Az analitikai számítási feladatok jellemzően a kiválasztott mezők összesítéseit és szekvenciális vizsgálatait foglalják magukban. Az adatok egy oszlop – fő sorrendbe való tárolásával az analitikai tároló lehetővé teszi, hogy az egyes mezőkhöz tartozó értékek egy csoportja együtt legyen szerializálva. Ez a formátum csökkenti az adott mezőkhöz tartozó statisztikák vizsgálatához vagy számításához szükséges IOPS. Jelentősen javítja a lekérdezések válaszideje a nagy adathalmazokon végzett vizsgálatok során. 
+Az elemzési számítási feladatok általában aggregációkat és a kiválasztott mezők egymást követő vizsgálatait foglalják magukban. Az adatok oszlopos sorrendben való tárolásával az elemzési tároló lehetővé teszi az egyes mezők értékeinek egy csoportjának együttes szerializálását. Ez a formátum csökkenti az adott mezők statisztikáinak vizsgálatához vagy kiszámításához szükséges IOPS-t. Ez jelentősen javítja a nagy adatkészletek vizsgálatának lekérdezési válaszideit. 
 
 Ha például az operatív táblák formátuma a következő:
 
-:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="Példa operatív táblázatra" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="Példa operatív táblára" border="false":::
 
-A sor tároló a fenti, soronként szerializált, soros formában megőrzött adatmennyiséget tárolja a lemezen. Ez a formátum lehetővé teszi a gyorsabb tranzakciós olvasási, írási és működési lekérdezéseket, például a "a Product1 vonatkozó információk visszaadása". Mivel azonban az adatkészlet nagy mértékben növekszik, és ha összetett analitikai lekérdezéseket szeretne futtatni az adaton, költséges lehet. Ha például a "berendezés" kategóriába tartozó termék értékesítési trendjeit szeretné lekérni különböző üzleti egységeken és hónapokon keresztül, akkor összetett lekérdezést kell futtatnia. Az adathalmaz nagyméretű vizsgálata költséges lehet a kiépített átviteli sebesség szempontjából, és hatással lehet a valós idejű alkalmazásokat és szolgáltatásokat használó tranzakciós számítási feladatok teljesítményére is.
+A sortároló a fenti adatokat sorbanként szerializált formában tárolja a lemezen. Ez a formátum gyorsabb tranzakciós olvasásokat, írásokat és műveleti lekérdezéseket tesz lehetővé, például a "Return information about Product1" (A Product1 termékre vonatkozó információk visszaküldése) lehetőséget. Ha azonban az adatkészlet mérete nagy, és összetett elemzési lekérdezéseket szeretne futtatni az adatokon, az költséges lehet. Ha például a "Berendezések" kategóriába tartozó termék értékesítési trendjeit szeretné lekérdezni különböző üzleti egységekben és hónapokban, egy összetett lekérdezést kell futtatnia. Az adatkészlet nagy méretű átvizsgálása költséges lehet a kiépített átviteli sebesség szempontjából, és hatással lehet a valós idejű alkalmazásokat és szolgáltatásokat szolgáltató tranzakciós számítási feladatok teljesítményére is.
 
-Az analitikus tároló, amely egy oszlopos tároló, alkalmasabb az ilyen lekérdezésekhez, mert hasonló adatmezőket szerializál, és csökkenti a lemez IOPS.
+Az elemzésitár, amely egy oszloptároló, jobban megfelel az ilyen lekérdezésekhez, mert hasonló adatmezőket szerializál, és csökkenti a lemez IOPS-ét.
 
-Az alábbi képen a tranzakciós sor tárolója és az analitikai oszlop tárolója látható Azure Cosmos DBban:
+Az alábbi képen a tranzakcióssor-tároló és az elemzési oszloptároló látható a Azure Cosmos DB:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Tranzakciós sorok tárolása és analitikai oszlopainak tárolása Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Tranzakciós sortároló vs elemzési oszloptároló a Azure Cosmos DB" border="false":::
 
-### <a name="decoupled-performance-for-analytical-workloads"></a>Leválasztott teljesítmény az analitikai számítási feladatokhoz
+### <a name="decoupled-performance-for-analytical-workloads"></a>Leválasztott teljesítmény elemzési számítási feladatokhoz
 
-Az analitikus lekérdezések miatt nincs hatással a tranzakciós számítási feladatok teljesítményére, mivel az analitikai tároló elkülönül a tranzakciós tárolótól.  Az analitikai tárolónak nincs szüksége elkülönített kérelmekre (RUs).
+Az elemzési lekérdezések nem befolyásolják a tranzakciós számítási feladatok teljesítményét, mivel az elemzési tároló elkülönül a tranzakciós tárolótól.  Az elemzési tárolóhoz nem szükséges külön kérelemegységet (RU-t) lefoglalni.
 
 ### <a name="auto-sync"></a>Automatikus szinkronizálás
 
-Az automatikus szinkronizálás a Azure Cosmos DB teljes körűen felügyelt képességeire utal, ahol a lapkák, a frissítések és az operatív adatok törlését automatikusan szinkronizálja a tranzakciós tárolóból az analitikai tárolóba közel valós időben. Az automatikus szinkronizálás késése általában 2 percen belül megtörténik. Ha a megosztott átviteli sebességű adatbázis nagy mennyiségű tárolóval rendelkezik, az egyes tárolók automatikus szinkronizálási késése magasabb lehet, és akár 5 percet is igénybe vehet. Szeretnénk többet megtudni, hogy ez a késés hogyan illeszkedik a forgatókönyvekhez. Ehhez kérjük, lépjen kapcsolatba a [Azure Cosmos db csapatával](mailto:cosmosdbsynapselink@microsoft.com).
+Az automatikus szinkronizálás a Azure Cosmos DB teljes körűen felügyelt képességére utal, ahol a rendszer a beszúrásokat, a frissítéseket és az operatív adatok törlését automatikusan szinkronizálja a tranzakciós tárolóból az elemzési tárba közel valós időben. Az automatikus szinkronizálás késése általában 2 percen belül meg fog csökkenni. Nagy számú tárolóval megosztott átviteli sebességet biztosító adatbázisok esetén az egyes tárolók automatikus szinkronizálásának késése magasabb lehet, és akár 5 percet is igénybe vehet. Szeretnénk többet megtudni arról, hogyan illeszkedik ez a késés az Ön forgatókönyveibe. Ennek érdekében forduljon a Azure Cosmos DB [csapathoz.](mailto:cosmosdbsynapselink@microsoft.com)
 
-Az automatikus szinkronizálási képesség az analitikai tárolóval együtt a következő alapvető előnyöket nyújtja:
+Az automatikus szinkronizálás és az elemzési tár a következő fő előnyöket biztosítja:
 
-### <a name="scalability--elasticity"></a>Méretezhetőség & rugalmasság
+### <a name="scalability--elasticity"></a>Méretezhetőség és & rugalmasság
 
-A horizontális particionálással a Azure Cosmos DB tranzakciós tároló rugalmasan méretezheti a tárterületet és az átviteli sebességet anélkül, hogy leállás nélkül lenne. A tranzakciós tárolóban a horizontális particionálás rugalmas & rugalmasságot biztosít az automatikus szinkronizálásban, így biztosítva, hogy az adatkezelés közel valós időben történjen az analitikai tárolóba. Az adatszinkronizálás a tranzakciós adatforgalomtól függetlenül történik, függetlenül attól, hogy 1000 művelet/mp vagy 1 000 000 művelet/mp, és nem befolyásolja a tranzakciós tárolóban kiépített átviteli sebességet. 
+A horizontális particionálás használatával a Azure Cosmos DB tárolók állásidő nélkül, rugalmasan méretezheti a tárterületet és az átviteli sebességet. A tranzakciós tároló horizontális particionálásának skálázhatósága & az automatikus szinkronizálás rugalmasságát, így közel valós időben szinkronizálhatja az adatokat az elemzési tárba. Az adatszinkronizálás a tranzakciós forgalom átviteli sebességétől függetlenül megtörténik, függetlenül attól, hogy 1000 művelet/mp vagy 1 millió művelet/mp, és ez nem befolyásolja a tranzakciós tárolóban kiépített átviteli sebességet. 
 
-### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Séma frissítéseinek automatikus kezelése
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Sémafrissítések automatikus kezeléséhez
 
-Azure Cosmos DB tranzakciós tároló a séma-agnosztikus, és lehetővé teszi, hogy a tranzakciós alkalmazásait a séma vagy az indexelés kezelése nélkül lehessen megismételni. Ezzel szemben Azure Cosmos DB Analytical Store sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. Az automatikus szinkronizálási képességgel Azure Cosmos DB felügyeli a séma következtetéseit a tranzakciós tároló legújabb frissítésein.  Emellett a séma-ábrázolást is kezeli az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését.
+Azure Cosmos DB tranzakciós tároló sématől független, és lehetővé teszi a tranzakciós alkalmazások iterálását séma- vagy indexkezelés nélkül. Ezzel szemben a Azure Cosmos DB elemzési tároló az elemzési lekérdezési teljesítményre való optimalizálás érdekében van sémában. Az automatikus szinkronizálási funkcióval a Azure Cosmos DB felügyeli a séma következtetését a tranzakciós tároló legújabb frissítései alapján.  Emellett az elemzési tároló sémarezentációját is kezeli használatra, beleértve a beágyazott adattípusok kezelését is.
 
-Ahogy a séma fejlődik, és az új tulajdonságok idővel bővülnek, az analitikai tároló automatikusan a tranzakciós tároló összes korábbi sémájában egyesítő sémát jelenít meg.
+Ahogy a séma fejlődik, és idővel új tulajdonságokat ad hozzá, az elemzési tároló automatikusan egy uniós sémát hoz létre a tranzakciós tároló összes előzménysémában.
 
-#### <a name="schema-constraints"></a>Séma megkötései
+#### <a name="schema-constraints"></a>Sémakorlátozások
 
-A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív adatra, amikor az analitikai tároló automatikusan kikövetkeztet és helyesen jelöli meg a sémát:
+Ha engedélyezi az elemzési tároló számára, hogy automatikusan kivezénylje és megfelelően reprezentálja a sémát, a következő korlátozások vonatkoznak a Azure Cosmos DB adatokra:
 
-* Legfeljebb 1000 tulajdonságot tartalmazhat a séma bármely beágyazási szintjén, valamint a maximálisan megengedett 127-os mélységet.
-  * Az analitikai tárolóban csak az első 1000-tulajdonságok jelennek meg.
-  * Az analitikai tárolóban csak az első 127 beágyazott szint jelenik meg.
+* A séma beágyazási szintjén legfeljebb 1000 tulajdonság és legfeljebb 127 beágyazási mélység lehet.
+  * Az elemzési tároló csak az első 1000 tulajdonságot ábrázolja.
+  * Az elemzési tárolóban csak az első 127 beágyazott szint lesz ábrázolva.
 
-* Míg a JSON-dokumentumok (és Cosmos DB gyűjtemények/tárolók) az egyediség szempontjából érzékenyek a kis-és nagybetűkre, az analitikai tároló nem.
+* Bár a JSON-dokumentumok (Cosmos DB gyűjtemények/tárolók) megkülönböztetik a kis- és nagybetűket az egyediség szempontjából, az elemzési tároló nem.
 
-  * **Ugyanebben a dokumentumban:** Az azonos szintű tulajdonságok neveinek egyedinek kell lenniük, ha a kis-és nagybetűket összehasonlítják. A következő JSON-dokumentum például azonos szinten található: "Name" és "Name". Habár érvényes JSON-dokumentum, nem felel meg az egyediségi megkötésnek, ezért a rendszer nem fogja teljes mértékben megjeleníteni az analitikai tárolóban. Ebben a példában a "név" és a "név" a kis-és nagybetűket megkülönböztető módon hasonlítja össze. Csak `"Name": "fred"` az analitikus tárolóban lesz megjelenítve, mert ez az első előfordulás. És `"name": "john"` egyáltalán nem fog megjelenni.
+  * **Ugyanabban a dokumentumban:** Az azonos szinten található tulajdonságneveknek egyedinek kell lennie, ha a kis- és a kis- és a nagy A következő JSON-dokumentumban például a "Név" és a "név" azonos szinten van. Bár ez egy érvényes JSON-dokumentum, nem felel meg az egyediség korlátozásának, ezért nem lesz teljes egészében ábrázolva az elemzési tárolóban. Ebben a példában a "Név" és a "név" ugyanaz, mint a kis- és a nagy- és a kis- és a nagy- és kis- és nagy között. Csak az elemzési tárolóban lesz `"Name": "fred"` ábrázolva, mert ez az első előfordulás. A `"name": "john"` és a nem is lesz ábrázolva.
   
   
   ```json
   {"id": 1, "Name": "fred", "name": "john"}
   ```
   
-  * **Különböző dokumentumokban:** Ugyanazon a szinten és ugyanazzal a névvel, de különböző esetekben a tulajdonságok ugyanabban az oszlopban lesznek ábrázolva, az első előfordulás nevének formátuma alapján. A következő JSON-dokumentumok például `"Name"` és `"name"` ugyanazon a szinten vannak. Mivel az első dokumentum formátuma `"Name"` , ez a tulajdonság neve lesz az analitikus tárolóban. Ez azt jelenti, hogy az analitikus tárolóban az oszlop neve lesz `"Name"` . `"fred"`A és `"john"` a is képviselteti magát az `"Name"` oszlopban.
+  * **Különböző dokumentumokban:** Az azonos szintű és azonos nevű tulajdonságok, de különböző esetekben ugyanazon az oszlopon belül lesznek ábrázolva az első előfordulás névformátumának használatával. Az alábbi JSON-dokumentumokban például a `"Name"` és `"name"` a azonos szintű. Mivel az első dokumentumformátum , ezt fogja használni a tulajdonság nevének ábrázolása az `"Name"` elemzési tárolóban. Más szóval az elemzésitárban az oszlop neve `"Name"` lesz. Az `"fred"` `"john"` oszlopban a és a is lesz `"Name"` ábrázolva.
 
 
   ```json
@@ -101,63 +101,64 @@ A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív ada
   ```
 
 
-* A gyűjtemény első dokumentuma határozza meg a kezdeti analitikai tárolási sémát.
-  * A dokumentum első szintjén lévő tulajdonságok oszlopként lesznek megjelenítve.
-  * A kezdeti sémánál nagyobb tulajdonságokkal rendelkező dokumentumok új oszlopokat hoznak majd ki az analitikus tárolóban.
+* A gyűjtemény első dokumentuma a kezdeti elemzésitár-sémát határozza meg.
+  * A dokumentum első szintjén lévő tulajdonságok oszlopokként fognak ábrázolni.
+  * A kezdeti sémánál több tulajdonsággal kapcsolatos dokumentumok új oszlopokat hoznak létre az elemzési tárolóban.
   * Az oszlopok nem távolíthatók el.
-  * Egy gyűjtemény összes dokumentumának törlése nem állítja vissza az analitikai tároló sémáját.
-  * Nincs séma-verziószámozás. A tranzakciós áruházból kikövetkeztetett utolsó verzió az, amit az analitikus tárolóban fog látni.
+  * A gyűjteményben található összes dokumentum törlése nem állítja alaphelyzetbe az elemzésitár-sémát.
+  * A séma verziószámozása nem stb. A tranzakciós tárolóból kikövetkeztetett utolsó verzió az elemzési tárolóban látható.
 
-* Jelenleg nem támogatjuk az Azure szinapszis Spark olvasási oszlopának nevét, amely üres karaktereket (szóközöket) tartalmaz.
+* Jelenleg nem támogatjuk az üres Azure Synapse (szóközöket) tartalmazó Spark-oszlopok olvasását.
 
-* Eltérő viselkedést vár a explicit `null` értékek tekintetében:
-  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket `0` (nulla) fogják beolvasni.
-  * Az Azure Szinapszisban az SQL Server nélküli készletek beolvassák ezeket az értékeket, mintha a `NULL` gyűjtemény első dokumentuma ugyanazzal a tulajdonsággal, egy adattípussal rendelkező értékkel is rendelkezik `non-numeric` .
-  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket `0` (nulla) fogják beolvasni, ha a gyűjtemény első dokumentuma ugyanazon tulajdonság esetében egy `numeric` adattípussal rendelkező érték.
+* Eltérő viselkedést várnak el az explicit értékek `null` tekintetében:
+  * A Spark-Azure Synapse ezeket az értékeket `0` (nulla) jelölik.
+  * Az sql serverless pools in Azure Synapse úgy olvassa be ezeket az értékeket, mintha a gyűjtemény első dokumentuma ugyanennél a tulajdonságnál egy `NULL` `non-numeric` adattípusú értéket tartalmaz.
+  * Az sql serverless pools in Azure Synapse (nulla) értékként olvassa be ezeket az értékeket, ha a gyűjtemény első dokumentumában ugyanennek a tulajdonságnak van egy `0` `numeric` adattípusú értéke.
 
-* A hiányzó oszlopok tekintetében eltérő viselkedés várható:
-  * Az Azure Szinapszisban található Spark-készletek ezeket az oszlopokat jelölik `undefined` .
-  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az oszlopokat jelölik `NULL` .
+* A hiányzó oszlopok esetében eltérő viselkedés várható:
+  * A spark-Azure Synapse ezeket az oszlopokat a következőként `undefined` képviselik: .
+  * A kiszolgáló nélküli SQL-készletek Azure Synapse ezeket az oszlopokat a következőként képviselik: `NULL` .
 
 #### <a name="schema-representation"></a>Sémaábrázolás
 
 Az elemzési tárban két módon lehet ábrázolni a sémákat. Mindkettő kompromisszumos megoldást jelent az oszlopos ábrázolás egyszerűsége, a polimorf sémák kezelése és a lekérdezés egyszerűsége szempontjából:
 
-* Jól definiált séma-ábrázolás
-* Teljes hűségű séma ábrázolása
+* Jól definiált sémarezentáció
+* Teljes hűségű sémaredrezentáció
 
 > [!NOTE]
-> Az SQL (Core) API-fiókok esetében, ha az analitikai tároló engedélyezve van, az analitikus tárolóban az alapértelmezett séma-ábrázolás jól definiálva van. Míg a MongoDB-fiókok Azure Cosmos DB API-hoz tartozó alapértelmezett séma az analitikus tárolóban teljes körű megbízhatósági sémát ábrázol. Ha olyan forgatókönyvekkel rendelkezik, amelyek eltérő séma-ábrázolást igényelnek, mint az egyes API-k alapértelmezett ajánlata, akkor a [Azure Cosmos db csapata](mailto:cosmosdbsynapselink@microsoft.com) számára engedélyezze azt.
+> Az SQL (Core) API-fiókok esetében, ha az elemzési tároló engedélyezve van, az elemzési tároló alapértelmezett sémarezentációja jól definiálva van. Míg a MongoDB-fiókokhoz Azure Cosmos DB API esetében az elemzési tároló alapértelmezett sémarezentációja egy teljes körű sémarerezentáció. Ha az egyes API-k alapértelmezett ajánlataitól eltérő sémarerezentációra [](mailto:cosmosdbsynapselink@microsoft.com) van szükség, akkor az engedélyezéshez Azure Cosmos DB a csapathoz.
 
-**Jól definiált séma-ábrázolás**
+**Jól definiált sémarezentáció**
 
-A jól definiált séma-ábrázolás egy egyszerű táblázatos ábrázolást hoz létre a séma-agnosztikus adatokat a tranzakciós tárolóban. A jól definiált séma-ábrázolás a következő szempontokat mutatja be:
+A jól definiált sémareplikáció a sématől független adatok egyszerű táblázatos ábrázolása a tranzakciós tárolóban. A séma jól meghatározott reprezentációja a következő szempontokat tartalmazza:
 
-* Egy tulajdonságnak mindig ugyanaz a típusa több elemen belül.
+* Egy tulajdonságnak mindig ugyanaz a típusa több elem között.
+* Csak 1 típusváltást engedélyezünk, null értékről bármely más adattípusra. Az első nem null előfordulás határozza meg az oszlop adattípusát.
 
-  * Például `{"a":123} {"a": "str"}` nem rendelkezik jól definiált sémával, mert `"a"` néha egy sztring, és néha egy szám. Ebben az esetben az analitikai tároló regisztrálja az adattípust az adattípusként `"a"` `“a”` a tároló élettartamában lévő első előfordulási elemben. A dokumentum továbbra is szerepelni fog az analitikus tárolóban, de azok az elemek, amelyekben a különböző adattípusok `"a"` nem változnak.
+  * A például nem rendelkezik jól meghatározott sémával, mert `{"a":123} {"a": "str"}` `"a"` néha sztring, néha szám. Ebben az esetben az elemzési tároló a adattípusát regisztrálja adattípusként a tároló élettartamának első alkalommal előforduló `"a"` `“a”` elemében. A dokumentum továbbra is szerepelni fog az elemzési tárolóban, de azok az elemek, amelyek adattípusa `"a"` eltér, nem.
   
-    Ez az állapot nem vonatkozik a null tulajdonságokra. Például `{"a":123} {"a":null}` még mindig jól definiálva van.
+    Ez a feltétel nem vonatkozik a null értékű tulajdonságokra. A például `{"a":123} {"a":null}` még mindig jól definiálva van.
 
-* A tömbök típusának egyetlen ismétlődő típust kell tartalmaznia.
+* A tömbtípusoknak egyetlen ismétlődő típust kell tartalmaznia.
 
-  * Például `{"a": ["str",12]}` nem egy jól definiált séma, mert a tömb egész és sztring típusú kombinációt tartalmaz.
+  * A például nem jól meghatározott séma, mert a tömb egész számokból és sztringtípusokból `{"a": ["str",12]}` áll.
 
 > [!NOTE]
-> Ha a Azure Cosmos DB analitikus tároló a jól definiált séma-ábrázolást követi, és a fenti specifikációt bizonyos elemek megszegik, akkor ezek az elemek nem lesznek felszámítva az analitikai tárolóba.
+> Ha a Azure Cosmos DB adattár követi a jól meghatározott sémarezentációt, és a fenti specifikációt egyes elemek megsértik, akkor ezek az elemek nem fognak szerepelni az elemzési tárolóban.
 
-* Eltérő viselkedést vár a jól definiált sémák különböző típusaira vonatkozóan:
-  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket jelölik `undefined` .
-  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket jelölik `NULL` .
+* A jól meghatározott sémák különböző típusainak különböző viselkedését várja el:
+  * A spark-Azure Synapse ezeket az értékeket a következőként fogják `undefined` ábrázolni: .
+  * A kiszolgáló nélküli SQL-Azure Synapse ezeket az értékeket a következőként fogják ábrázolni: `NULL` .
 
 
-**Teljes hűségű séma ábrázolása**
+**Teljes hűségű sémarezentáció**
 
-A teljes körű megbízhatósági séma ábrázolásának célja, hogy kezelje a séma-független operatív adatban található polimorf sémák teljes szélességét. Ebben a séma-ábrázolásban egyetlen elem sem kerül el az analitikus tárolóból, még akkor sem, ha a jól definiált sémák megkötései (azaz a vegyes adattípus-mezők és a vegyes adattípusok tömbök) nem sérülnek.
+A teljes fidelitási séma-ábrázolás úgy lett kialakítva, hogy a sémafüggetlen működési adatokban a polimorf sémák teljes egészét kezelni tudja. Ebben a sémarezentációban a rendszer akkor sem dob el elemeket az elemzési tárolóból, ha megsérti a jól meghatározott sémakorlátozásokat (amelyek nem vegyes adattípusú mezők vagy vegyes adattípusú tömbök).
 
-Ez úgy érhető el, hogy az operatív adatok levél tulajdonságait lefordítja az analitikai tárolóba, külön oszlopokkal, a tulajdonságban lévő értékek adattípusa alapján. A levél tulajdonságainak neve az analitikai tároló sémájában lévő utótagként van kiterjesztve úgy, hogy a lekérdezések kétértelműség nélkül is elérhetők legyenek.
+Ez úgy érhető el, hogy az operatív adatok levéltulajdonságait az elemzési tárolóba fordítja le különböző oszlopokkal a tulajdonság értékeinek adattípusa alapján. A levéltulajdonságok nevei az elemzésitár-séma utótagjaként az adattípusokkal bővülnek, így kétértelmű lekérdezések is lehetnek.
 
-Tegyük fel például, hogy a tranzakciós tárolóban a következő minta dokumentum szerepel:
+Vegyük például a következő mintadokumentumot a tranzakciós tárolóban:
 
 ```json
 {
@@ -173,96 +174,96 @@ salary: 1000000
 }
 ```
 
-A `streetNo` beágyazott objektumon belüli Leaf tulajdonság `address` oszlopként fog szerepelni az analitikai tároló sémájában `address.object.streetNo.int32` . Az adattípust a rendszer utótagként adja hozzá az oszlophoz. Így ha egy másik dokumentum kerül be a tranzakciós tárolóba, ahol a Leaf tulajdonság értéke `streetNo` "123" (Megjegyzés: karakterlánc), az analitikai tároló sémája automatikusan a korábban írt oszlop típusának módosítása nélkül fejlődik. Az analitikai tárolóhoz hozzáadott új oszlop, `address.object.streetNo.string` amelyben a "123" érték van tárolva.
+A beágyazott objektum levéltulajdonságát az elemzésitár-sémában `streetNo` `address` oszlopként kell `address.object.streetNo.int32` ábrázolni. Az adattípus utótagként lesz hozzáadva az oszlophoz. Így ha egy másik dokumentumot adnak a tranzakciós tárolóhoz, ahol a levéltulajdonság értéke "123" (figyelje meg, hogy sztring), az elemzési tároló sémája automatikusan fejlődik anélkül, hogy módosítanának egy korábban megírt oszlop `streetNo` típusát. Az elemzési tárolóhoz hozzáadott új oszlop, ahol az `address.object.streetNo.string` "123" érték van tárolva.
 
-**Az utótagok megfeleltetésének adattípusa**
+**Adattípus az utótag leképezéséhez**
 
-Itt látható az összes tulajdonság adattípusa és az utótag-ábrázolások az analitikus tárolóban:
+Az alábbi térkép az elemzési tárolóban található összes tulajdonságadattípust és azok utótag-ábrázolásait ábrázolja:
 
 |Eredeti adattípus  |Utótag  |Példa  |
 |---------|---------|---------|
-| Dupla |  ".float64" |    24,99|
-| Tömb | ". Array" |    ["a", "b"]|
-|Bináris | ". Binary" |0|
-|Logikai    | ". bool"   |Igaz|
-|Int32  | ". Int32"  |123|
-|Int64  | ". Int64"  |255486129307|
-|Null   | ". null"   | null|
-|Sztring|    ". String" | „ABC”|
-|Időbélyeg |    ". Timestamp" |  Időbélyeg (0, 0)|
-|DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
-|ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
-|Dokumentum   |". Object" |    {"a": "a"}|
+| Dupla |  ".float64" |    24.99|
+| Tömb | ".array" |    ["a", "b"]|
+|Bináris | ".binary" |0|
+|Logikai    | ".bool"   |Igaz|
+|Int32  | ".int32"  |123|
+|Int64  | ".int64"  |255486129307|
+|Null   | ".null"   | null|
+|Sztring|    ".string" | „ABC”|
+|Időbélyeg |    ".timestamp" |  Időbélyeg(0, 0)|
+|DateTime   |".date"    | ISODate("2020-08-21T07:43:07.375Z")|
+|ObjectId   |".objectId"    | ObjectId("5f3f7b59330ec25c132623a2")|
+|Dokumentum   |".object" |    {"a": "a"}|
 
-### <a name="cost-effective-archival-of-historical-data"></a>A korábbi adatmennyiségek költséghatékony archiválása
+### <a name="cost-effective-archival-of-historical-data"></a>Előzményadatok költséghatékony archiválása
 
-Az adatbontás az adatok elkülönítését jelenti a különböző forgatókönyvekhez optimalizált tárolási infrastruktúra között. Ezzel javítva a végpontok közötti adatverem teljes teljesítményét és költséghatékonyságát. Az analitikai tárolóval a Azure Cosmos DB mostantól támogatja a tranzakciós tárolóból származó adatok automatikus leválasztását a különböző adatelrendezésekkel rendelkező analitikai tárolóba. A tranzakciós tárolóhoz képest a tárolási költségeket tekintve optimalizált analitikai tároló lehetővé teszi, hogy a korábbi elemzések során jóval nagyobb mennyiségű működési adat legyen megtartva.
+Az adatrétegezés az adatok elkülönítését jelenti a különböző forgatókönyvekhez optimalizált tárolási infrastruktúrák között. Ezáltal javul a teljes adatsor általános teljesítménye és költséghatékonysága. Az elemzési táras Azure Cosmos DB mostantól támogatja az adatok automatikus rétegezését a tranzakciós tárolóból a különböző adatelrendezésű elemzési tárolókba. A tranzakciós tárhoz képest a tárolási költségek szempontjából optimalizált elemzési tár lehetővé teszi a működési adatok sokkal hosszabb horizontának megőrzését az előzményelemzéshez.
 
-Miután az analitikai tároló engedélyezve lett a tranzakciós munkaterhelések adatmegőrzési igényei alapján, beállíthatja, hogy a "tranzakciós tár élettartama (tranzakciós TTL)" tulajdonsága automatikusan törölje a rekordokat a tranzakciós tárolóból egy adott időszak után. Hasonlóképpen, az "analitikai tár élettartama (analitikai TTL)" lehetővé teszi az analitikus tárolóban megőrzött adatok életciklusának kezelését a tranzakciós tárolótól függetlenül. Az analitikai tár engedélyezésével és a TTL-tulajdonságok konfigurálásával zökkenőmentesen elvégezheti a két áruház adatmegőrzési időszakának meghatározását.
+Miután engedélyezte az elemzési tárolót, a tranzakciós számítási feladatok adatmegőrzési igényei alapján konfigurálhatja a Tranzakciós tárolói idő (Tranzakciós TTL) tulajdonságot úgy, hogy egy bizonyos idő után automatikusan törölve legyen a rekordok a tranzakciós tárolóból. Hasonlóképpen, az elemzésitár élettartamának (elemzési élettartam) lehetővé teszi az elemzési tárolóban megőrzött adatok életciklusának kezelését a tranzakciós tárolótól függetlenül. Az elemzési tároló engedélyezésével és az TTL-tulajdonságok konfigurálásával zökkenőmentesen rétegezést és adatmegőrzési időszakot határozhat meg a két tárolóhoz.
 
 ### <a name="global-distribution"></a>Globális terjesztés
 
-Ha globálisan elosztott Azure Cosmos DB-fiókkal rendelkezik, a tárolóhoz tartozó analitikai tároló engedélyezése után a fiók minden régiójában elérhető lesz.  Az operatív adatai minden változása globálisan replikálódik minden régióban. Az elemzési lekérdezéseket hatékonyan futtathatja az adatai legközelebbi regionális példányán Azure Cosmos DBban.
+Ha globálisan elosztott fiókkal Azure Cosmos DB, miután engedélyezi az elemzési tárolót egy tárolóhoz, az a fiók minden régiójában elérhető lesz.  Az operatív adatok módosításai globálisan replikálva vannak az összes régióban. Az elemzési lekérdezéseket hatékonyan futtathatja az adatok legközelebbi regionális példányán a Azure Cosmos DB.
 
 ### <a name="security"></a>Biztonság
 
-Az analitikai tárolóval megegyező hitelesítés megegyezik egy adott adatbázis tranzakciós tárolójával. A hitelesítéshez elsődleges vagy csak olvasható kulcsokat is használhat. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
+Az elemzési tárolóval való hitelesítés ugyanaz, mint egy adott adatbázis tranzakciós tárolója. A hitelesítéshez elsődleges vagy csak olvasható kulcsokat használhat. A Spark-jegyzetfüzetek Synapse Studio szolgáltatás használatával megakadályozhatja a Azure Cosmos DB-kulcsok beillesztését. A linked service-hez való hozzáférés mindenki számára elérhető, aki hozzáféréssel rendelkezik a munkaterülethez.
 
-### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Több Azure szinapszis Analytics-futtatókörnyezet támogatása
+### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Több Azure Synapse Analytics támogatása
 
-Az analitikai tároló úgy van optimalizálva, hogy skálázhatóságot, rugalmasságot és teljesítményt nyújtson az analitikus számítási feladatokhoz, és ez nem függ a számítási futtatási időktől. A tárolási technológia önállóan felügyelhető, hogy manuális erőfeszítések nélkül optimalizálja az elemzési számítási feladatokat.
+Az elemzési tároló úgy van optimalizálva, hogy skálázhatóságot, rugalmasságot és teljesítményt nyújtson az elemzési számítási feladatokhoz anélkül, hogy a számítási feladatok futási időtől függenének. A tárolási technológia önálló kezelése révén manuális munka nélkül optimalizálhatja az elemzési számítási feladatokat.
 
-Az analitikai tárolási rendszer az analitikai számítási rendszerből való leválasztásával a Azure Cosmos DB analitikus tárolóban lévő adatok az Azure szinapszis Analytics által támogatott különböző elemzési futtatókörnyezetekkel párhuzamosan kérhetők le. Napjainkban az Azure szinapszis Analytics Apache Spark és kiszolgáló nélküli SQL-készletet támogat Azure Cosmos DB analitikus tárolóval.
+Ha leválasztja az elemzési tárrendszert az elemzési számítási rendszerről, az Azure Cosmos DB elemzési tárban található adatok lekérdezhetőek egyidejűleg a Azure Synapse Analytics. A mai naptól a Azure Synapse Analytics támogatja Apache Spark sql-készleteket és Azure Cosmos DB elemzési tárolóval.
 
 > [!NOTE]
-> Az analitikus áruházból csak az Azure szinapszis Analytics futtatási idejét tudja olvasni. A tranzakciós tárolóba visszaírhatja az adatait a kiszolgálóként szolgáló rétegként.
+> Az elemzésitárból csak a futási idő Azure Synapse Analytics olvashat. Az adatokat kiszolgáló rétegként visszaírhatja a tranzakciós tárolóba.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a> Árképzési
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Árképzés
 
-Az analitikus tároló egy fogyasztáson alapuló díjszabási modellt követ, amelyben a következőkért kell fizetnie:
+Az elemzési tára egy használatalapú díjszabási modellt követ, amelyben a következőkért kell fizetnie:
 
-* Tárolás: az analitikus tárolóban megőrzött adatmennyiség, beleértve az analitikus TTL által meghatározott múltbeli adatmennyiséget.
+* Tárolás: az elemzési tárban havonta megőrzött adatok mennyisége, beleértve az elemzési TTL által meghatározott előzményadatokat is.
 
-* Analitikus írási műveletek: az operatív adatok frissítéseinek teljes körű kezelése a tranzakciós tárolóból az analitikai tárolóba (automatikus szinkronizálás)
+* Elemzési írási műveletek: az operatív adatok frissítésének teljes körűen felügyelt szinkronizálása az elemzési tárba a tranzakciós tárolóból (automatikus szinkronizálás)
 
-* Analitikai olvasási műveletek: az Azure szinapszis Analytics Spark-készlet és a kiszolgáló nélküli SQL-készlet futtatási ideje alapján végrehajtott olvasási műveletek az analitikus tárolón.
+* Elemzési olvasási műveletek: a Spark-készletből az elemzési Azure Synapse Analytics és a kiszolgáló nélküli SQL-készlet futási időiből végrehajtott olvasási műveletek.
 
-Az analitikus tároló díjszabása nem azonos a tranzakciós áruház díjszabási modelljével. Az analitikai tár nem rendelkezik kiépített RUs-koncepcióval. Tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/), amely részletesen ismerteti az analitikus tároló díjszabási modelljét.
+Az elemzésitár díjszabása elkülönül a tranzakciós tároló díjszabási modelljétől. Az elemzési tárolóban nem oszlott el a kiépített ru-k fogalma. Az [elemzési Azure Cosmos DB díjszabási modelljével](https://azure.microsoft.com/pricing/details/cosmos-db/)kapcsolatos részletes információkért lásd a Azure Cosmos DB oldalon.
 
-Ahhoz, hogy egy Azure Cosmos DB-tárolón az analitikai tárolót engedélyező magas szintű költségbecslés legyen elérhető, használhatja a [Azure Cosmos db Capacity Plannert](https://cosmos.azure.com/capacitycalculator/) , és megbecsülheti az analitikai tárolási és írási műveletek költségeit. Az analitikus olvasási műveletek költségei az elemzési számítási feladatok jellemzőitől függenek, de magas szintű becslésként az analitikai tárolóban található 1 TB-os adatok vizsgálata általában 130 000 analitikai olvasási műveletet eredményez, és $0,065-os költséget eredményez.
+Az Azure Cosmos DB-tároló elemzési tárának engedélyezéséhez szükséges magas szintű költségbecsléshez használhatja az [Azure Cosmos DB Capacity Plannert,](https://cosmos.azure.com/capacitycalculator/) és megbecsülheti az elemzési tárolási és írási műveletek költségeit. Az elemzési olvasási műveletek költségei az elemzési számítási feladatok jellemzőitől függnek, de magas szintű becslésként az elemzési tárolóban található 1 TB adatvizsgálat általában 130 000 elemzési olvasási műveletet eredményez, és 0,065 dollár költséget eredményez.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analitikus élettartam (TTL)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Elemzési idő –live (TTL)
 
 Az elemzési élettartam jelzi, hogy mennyi ideig kell megőrizni az adott tároló adatait az elemzési tárban. 
 
-Ha az analitikai tároló engedélyezve van, a beszúrja, frissíti, törli az operatív adatokba automatikusan szinkronizálja a tranzakciós tárolóból az analitikai tárolóba, a tranzakciós TTL-konfigurációtól függetlenül. A működési adatoknak az analitikai tárolóban való megőrzését a tároló szintjén található analitikai TTL-érték szabályozhatja az alább megadott módon:
+Ha engedélyezve van az elemzési tár, a rendszer a tranzakciós TTL-konfigurációtól függetlenül automatikusan szinkronizálja az operatív adatok beszúrásokat, frissítéseket és törléseket a tranzakciós tárból az elemzési tárba. Ezen működési adatok elemzési tárolóban való megőrzése az elemzési TTL-értékkel szabályozható a tároló szintjén, az alábbiak szerint:
 
-A tárolók analitikai ÉLETTARTAMa a következő `AnalyticalStoreTimeToLiveInSeconds` tulajdonsággal van beállítva:
+A tárolóra vonatkozó elemzési TTL a tulajdonság használatával van `AnalyticalStoreTimeToLiveInSeconds` beállítva:
 
-* Ha az érték "0", hiányzik (vagy NULL értékre van állítva): az analitikai tároló le van tiltva, és nem replikálódnak adatok a tranzakciós tárolóból az analitikai tárolóba
+* Ha az érték "0", hiányzik (vagy null értékre van állítva): az elemzési tároló le van tiltva, és a tranzakciós tárolóból nem replikál adatokat az elemzési tárolóba
 
-* Ha van, és az érték "-1" értékű: az analitikai tároló megőrzi az összes korábbi adatát, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének. Ez a beállítás azt jelzi, hogy az analitikai tároló a működési adatok végtelen megőrzésével rendelkezik
+* Ha jelen van, és az érték "-1" értékre van állítva: az elemzési tároló az összes előzményadatot megőrzi, függetlenül a tranzakciós tárolóban tárolt adatok megőrzésétől. Ez a beállítás azt jelzi, hogy az elemzési tároló az operatív adatok végtelen megőrzésével rendelkezik
 
-* Ha van, és az érték egy "n" pozitív számra van beállítva: az elemek a tranzakciós tároló utolsó módosításának időpontját követően lejárnak az "n" analitikai tárolóban. Ez a beállítás kihasználható, ha az elemzési tárolóban korlátozott ideig szeretné megőrizni az operatív adatait, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének.
+* Ha jelen van, és az érték egy "n" pozitív számra van állítva: az elemek az elemzési tárolóban az utolsó módosítás időpontja után másodperccel lejárnak a tranzakciós tárolóban. Ez a beállítás akkor hasznos, ha az elemzési tárolóban korlátozott ideig szeretné megőrizni az operatív adatokat, függetlenül attól, hogy a tranzakciós tárolóban tárolt adatokat meg szeretné-e őrizni
 
 Néhány megfontolandó szempont:
 
-*   Miután az analitikai tár engedélyezve lett egy analitikai TTL-értékkel, később más érvényes értékre is frissítheti. 
-*   Míg a tranzakciós TTL beállítható a tárolóban vagy az elem szintjén, az analitikai élettartam jelenleg csak a tároló szintjén állítható be.
-*   A működési adatok megőrzését az analitikus tárolóban az analitikai TTL >= tranzakciós élettartam beállításával érheti el a tároló szintjén.
-*   Az analitikai tár a tranzakciós tároló tükrözésére az analitikai TTL = tranzakciós TTL beállításával végezhető el.
+*   Miután az elemzési tárolót elemzési TTL-értékkel engedélyezte, később frissítheti egy másik érvényes értékre. 
+*   Bár a tranzakciós TTL beállítható tároló- vagy elemszinten, az elemzési TTL-t csak a tároló szintjén lehet beállítani.
+*   A működési adatok hosszabb megőrzését érheti el az elemzési tárolóban, ha az elemzési élettartamot (TTL) >= tranzakciós TTL-t a tároló szintjén.
+*   Az elemzési tároló úgy használhatja a tranzakciós tárolót, hogy az elemzési TTL = tranzakciós TTL beállításával tükrözi a tranzakciós tárolót.
 
-Ha az analitikai tárolót egy tárolón engedélyezi:
+Ha engedélyezi az elemzési tárolót egy tárolón:
 
-* A Azure Portal az analitikai TTL beállítás az alapértelmezett-1 értékre van állítva. Ezt az értéket "n" másodpercre módosíthatja, ha a Adatkezelő alatt navigál a tároló beállításai között. 
+* A Azure Portal elemzési TTL beállítás alapértelmezett -1 értékre van állítva. Ezt az értéket "n" másodpercre módosíthatja, ha a tárolóbeállításokra navigál az Adatkezelő. 
  
-* Az Azure SDK-ból vagy a PowerShellből vagy a CLI-ből az analitikai élettartam beállítás engedélyezve lehet az-1 vagy az "n" értékre. 
+* Az Azure SDK, a PowerShell vagy a parancssori felület használatával az elemzési TTL-beállítás a -1 vagy az n érték beállításával engedélyezhető. 
 
-További információ: [az analitikai élettartam konfigurálása egy tárolón](configure-synapse-link.md#create-analytical-ttl).
+További tudnivalókért lásd az [elemzési TTL tárolókon való konfigurálását.](configure-synapse-link.md#create-analytical-ttl)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért lásd a következő dokumentumokat:
+További tudnivalókért tekintse meg a következő dokumentumokban:
 
 * [Azure Cosmos DB-hez készült Azure Synapse Link](synapse-link.md)
 

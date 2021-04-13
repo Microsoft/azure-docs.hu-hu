@@ -1,6 +1,6 @@
 ---
-title: Felügyelt virtuális hálózat & felügyelt magánhálózati végpontok
-description: Ismerkedjen meg a felügyelt virtuális hálózattal és a felügyelt privát végpontokkal Azure Data Factoryban.
+title: Felügyelt virtuális hálózatok & privát végpontok
+description: Ismerje meg a felügyelt virtuális hálózatokat és a felügyelt privát végpontokat a Azure Data Factory.
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
@@ -9,89 +9,133 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 6730a5cfca1b6c04d3c738aac2bdf3c097d5daf5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303202"
+ms.locfileid: "107364610"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk ismerteti a felügyelt Virtual Network és a felügyelt privát végpontokat a Azure Data Factoryban.
+Ez a cikk a felügyelt Virtual Network és a felügyelt privát végpontokat ismerteti a Azure Data Factory.
 
 
 ## <a name="managed-virtual-network"></a>Felügyelt virtuális hálózat
 
-Ha Azure Data Factory felügyelt Virtual Networkon (VNET) belül hoz létre Azure Integration Runtime (IR), az integrációs modult a felügyelt Virtual Network fogja kiépíteni, és a magánhálózati végpontokat a támogatott adattárakhoz való biztonságos csatlakozásra fogja használni. 
+Amikor létrehoz egy Azure Integration Runtime (IR) Azure Data Factory Managed Virtual Network (VNET) hálózatban, az integrációs környezet a felügyelt Virtual Network-vel lesz kiépítve, és privát végpontokat fog használni a támogatott adattárakhoz való biztonságos csatlakozáshoz. 
 
-A felügyelt Virtual Networkon belüli Azure IR létrehozása biztosítja az adatintegrációs folyamat elkülönítését és védelmét. 
+A felügyelt Azure IR belüli Virtual Network biztosítja az adatintegrációs folyamat elkülönített és biztonságos folyamatát. 
 
-A felügyelt Virtual Network használatának előnyei:
+A felügyelt szolgáltatás használatának Virtual Network:
 
-- Felügyelt Virtual Network esetén kiszervezheti a Virtual Network Azure Data Factoryre való felügyeletének terhét. Nem kell létrehoznia olyan alhálózatot Azure Integration Runtimehoz, amely végül sok magánhálózati IP-címet használhat a Virtual Network, és a hálózati infrastruktúra korábbi megtervezését igényli. 
-- Az adatintegrációk biztonságos elvégzéséhez nincs szükség az Azure hálózatkezelési szolgáltatásának alapos ismeretére. Ehelyett a biztonságos ETL-vel való Ismerkedés sokkal egyszerűbbé teszi az adatmérnökök számára. 
-- A felügyelt Virtual Network és a felügyelt privát végpontok is megvédik az kiszűrése. 
+- Felügyelt Virtual Network a terhelést a felügyelt Virtual Network a Azure Data Factory. Nem kell alhálózatot létrehoznia a Azure Integration Runtime, amely végül számos magánhálózati IP-t használhatna a Virtual Network és ehhez a hálózati infrastruktúra előzetes megtervezésére lenne szükség. 
+- Az adatintegráció biztonságos ához nincs szükség az Azure-hálózattal kapcsolatos mélyebb ismeretekre. Ehelyett a biztonságos ETL használata sokkal egyszerűbb az adatmérnökök számára. 
+- A felügyelt Virtual Network privát végpontokkal együtt védelmet nyújt az adatok kiszivárgása ellen. 
 
 > [!IMPORTANT]
->A felügyelt VNet jelenleg csak a Azure Data Factory régióval azonos régióban támogatott.
+>A felügyelt virtuális hálózat jelenleg csak ugyanabban a régióban támogatott, mint Azure Data Factory régióban.
  
 
 ![Az ADF felügyelt Virtual Network architektúrája](./media/managed-vnet/managed-vnet-architecture-diagram.png)
 
 ## <a name="managed-private-endpoints"></a>Felügyelt privát végpontok
 
-A felügyelt magánhálózati végpontok a Azure Data Factory felügyelt Virtual Network létrehozott privát végpontok, amelyek az Azure-erőforrásokra mutató privát hivatkozást hoznak létre. Ezeket a privát végpontokat az Azure Data Factory kezeli az Ön nevében. 
+A felügyelt privát végpontok olyan privát végpontok, amelyek a Azure Data Factory felügyelt Virtual Network azure-erőforrásokra mutató privát kapcsolat létrehozásához hoztak létre. Ezeket a privát végpontokat az Azure Data Factory kezeli az Ön nevében. 
 
-![Új felügyelt magánhálózati végpont](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
+![Új felügyelt privát végpont](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure-(Pásti-) szolgáltatások (például az Azure Storage, az Azure Cosmos DB, az Azure szinapszis Analytics) elérését.
+Azure Data Factory támogatja a privát hivatkozásokat. A privát kapcsolat lehetővé teszi az Azure-szolgáltatások (például az Azure Storage, Azure Cosmos DB, Azure Synapse Analytics) Azure Synapse Analytics.
 
-Privát kapcsolat használatakor az adattárak és a felügyelt Virtual Network közötti adatforgalom teljes egészében a Microsoft gerinc hálózatán halad át. A privát hivatkozás védi az adatkiszűrése kockázatait. Privát végpont létrehozásával létrehozhat egy erőforrásra mutató privát hivatkozást.
+Privát kapcsolat használatakor az adattárai és a felügyelt Virtual Network közötti forgalom teljes egészében a Microsoft gerinchálózatán keresztül történik. Private Link adatszivárgási kockázatok ellen nyújt védelmet. Az erőforrásokra mutató privát kapcsolatot egy privát végpont létrehozásával lehet létrehozni.
 
-A magánhálózati végpont egy magánhálózati IP-címet használ a felügyelt Virtual Networkban, hogy hatékonyan hozza a szolgáltatást. A magánhálózati végpontok egy adott erőforrásra vannak leképezve az Azure-ban, és nem a teljes szolgáltatás. Az ügyfelek korlátozhatják a szervezete által jóváhagyott adott erőforráshoz való kapcsolódást. További információ a [privát kapcsolatokról és a privát végpontokról](../private-link/index.yml).
+A privát végpont privát IP-címet használ a felügyelt Virtual Network, hogy hatékonyan beveszi a szolgáltatást. A privát végpontok egy adott Azure-erőforrásra vannak leképezve, nem a teljes szolgáltatásra. Az ügyfelek korlátozhatják a szervezet által jóváhagyott adott erőforráshoz való csatlakozást. További információ a privát [kapcsolatokról és a privát végpontokról.](../private-link/index.yml)
 
 > [!NOTE]
-> Javasoljuk, hogy felügyelt privát végpontokat hozzon létre az összes Azure-adatforráshoz való kapcsolódáshoz. 
+> Javasoljuk, hogy felügyelt privát végpontokat hozzon létre az összes Azure-adatforráshoz való csatlakozáshoz. 
  
 > [!WARNING]
-> Ha egy Pásti-adattár (blob, ADLS Gen2, Azure szinapszis Analytics) rendelkezik egy már létrehozott privát végponttal, és akkor is, ha az összes hálózatról engedélyezi a hozzáférést, az ADF csak felügyelt privát végponton keresztül férhet hozzá. Győződjön meg róla, hogy ilyen helyzetekben Hozzon létre egy privát végpontot. 
+> Ha egy PaaS-adattár (Blob, ADLS Gen2, Azure Synapse Analytics) már létrehozott egy privát végpontot, és még ha minden hálózatról engedélyezi is a hozzáférést, az ADF csak felügyelt privát végponttal férhet hozzá. Ilyen esetekben mindenképpen privát végpontot hozzon létre. 
 
-A privát végponti kapcsolatok "függő" állapotban jönnek létre, amikor felügyelt privát végpontot hoz létre Azure Data Factoryban. A rendszer elindít egy jóváhagyási munkafolyamatot. A magánhálózati kapcsolat erőforrásának tulajdonosa a kapcsolat jóváhagyása vagy elutasítása.
+A privát végpontkapcsolat "Függőben" állapotban jön létre, amikor felügyelt privát végpontot hoz létre a Azure Data Factory. Jóváhagyási munkafolyamat van elindítva. A privát kapcsolat erőforrás-tulajdonosa felelős a kapcsolat jóváhagyásáért vagy elutasításáért.
 
 ![Privát végpont kezelése](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
 
-Ha a tulajdonos jóváhagyja a kapcsolatot, a magánhálózati kapcsolat létrejött. Ellenkező esetben a magánhálózati kapcsolat nem lesz létrehozva. Mindkét esetben a felügyelt magánhálózati végpont a kapcsolatok állapotával lesz frissítve.
+Ha a tulajdonos jóváhagyja a kapcsolatot, létrejön a privát kapcsolat. Ellenkező esetben a privát kapcsolat nem lesz létrejött. A felügyelt privát végpont mindkét esetben frissülni fog a kapcsolat állapotával.
 
 ![Felügyelt privát végpont jóváhagyása](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
-Csak egy felügyelt magánhálózati végpont engedélyezett állapotban küldhet forgalmat egy adott privát kapcsolati erőforrásnak.
+Csak jóváhagyott állapotban lévő felügyelt privát végpont küldhet forgalmat egy adott privát kapcsolati erőforrásnak.
 
-## <a name="interactive-authoring"></a>Interaktív szerzői műveletek
-Az interaktív szerzői képességek olyan funkciókhoz használatosak, mint a kapcsolat tesztelése, a mappák listájának és a táblázatok listájának lekérése, a séma beolvasása és az előnézet. Az ADF által felügyelt virtuális hálózatban lévő Azure Integration Runtime létrehozásakor vagy szerkesztésekor engedélyezheti az interaktív szerzői műveleteket. A háttérrendszer előre lefoglalja a számítási funkciókat az interaktív szerzői funkciókhoz. Ellenkező esetben a számítás minden olyan interaktív művelet elvégzése után le lesz foglalva, amely több időt vesz igénybe. Az interaktív létrehozás élettartama (TTL) 60 perc, ami azt jelenti, hogy az utolsó interaktív szerzői művelethez tartozó 60 perc elteltével automatikusan le lesz tiltva.
+## <a name="interactive-authoring"></a>Interaktív tartalom
+Az interaktív szerzői képességek olyan funkciókhoz használhatók, mint a kapcsolat tesztelése, a mappalista és a táblalista tallózása, a séma lekértése és az adatok előnézete. Az interaktív létrehozást az ADF által felügyelt virtuális hálózaton Azure Integration Runtime létrehozásakor vagy szerkesztésekor engedélyezheti. A háttérszolgáltatás előre lefoglalja a számítást az interaktív szerzői funkciókhoz. Ellenkező esetben a rendszer minden alkalommal lefoglalja a számítást, amikor bármilyen interaktív műveletet hajt végre, ami több időt fog végezni. Az interaktív szerzői műveletekhez szükséges idő (TTL) 60 perc, ami azt jelenti, hogy az utolsó interaktív szerzői művelettől 60 perc után automatikusan le lesz tiltva.
 
-![Interaktív szerzői műveletek](./media/managed-vnet/interactive-authoring.png)
+![Interaktív tartalom](./media/managed-vnet/interactive-authoring.png)
+
+## <a name="create-managed-virtual-network-via-azure-powershell"></a>Felügyelt virtuális hálózat létrehozása Azure PowerShell
+```powershell
+$subscriptionId = ""
+$resourceGroupName = ""
+$factoryName = ""
+$managedPrivateEndpointName = ""
+$integrationRuntimeName = ""
+$apiVersion = "2018-06-01"
+$privateLinkResourceId = ""
+
+$vnetResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default"
+$privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default/managedprivateendpoints/${managedPrivateEndpointName}"
+$integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
+
+# Create managed Virtual Network resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+
+# Create managed private endpoint resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
+        privateLinkResourceId = "${privateLinkResourceId}"
+        groupId = "blob"
+    }
+
+# Create integration runtime resource enabled with VNET
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeResourceId}" -Properties @{
+        type = "Managed"
+        typeProperties = @{
+            computeProperties = @{
+                location = "AutoResolve"
+                dataFlowProperties = @{
+                    computeType = "General"
+                    coreCount = 8
+                    timeToLive = 0
+                }
+            }
+        }
+        managedVirtualNetwork = @{
+            type = "ManagedVirtualNetworkReference"
+            referenceName = "default"
+        }
+    }
+
+```
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 ### <a name="supported-data-sources"></a>Támogatott adatforrások
-Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli privát kapcsolaton keresztül csatlakozhatnak.
+Az alábbi adatforrások privát kapcsolaton keresztüli csatlakozása támogatott az ADF által felügyelt Virtual Network.
 - Azure Blob-tároló
 - Azure Table Storage
 - Azure Files
-- Azure Data Lake Gen2
-- Azure SQL Database (nem tartalmazza az Azure SQL felügyelt példányát)
+- 2. generációs Azure Data Lake
+- Azure SQL Database (nem tartalmazza a Azure SQL Managed Instance)
 - Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
-- Azure Private link Service
+- Azure Private Link Szolgáltatás
 - Azure Search
 - Azure Database for MySQL
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 
-### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory felügyelt Virtual Network a következő Azure-régiókban érhető el:
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory felügyelt Virtual Network a következő Azure-régiókban érhetők el:
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA nyugati középső régiója
@@ -105,7 +149,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Délkelet-Ázsia
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
-- Kelet-Norvégia
+- Kelet-Kelet
 - Kelet-Japán
 - Nyugat-Japán
 - Dél-Korea középső régiója
@@ -116,17 +160,17 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Kelet-Kanada
 - Közép-Kanada
 
-### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Kimenő kommunikáció nyilvános végponton keresztül, felügyelt Virtual Network
-- A kimenő kommunikációhoz csak az 443-es port van megnyitva.
+### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Kimenő kommunikáció nyilvános végponton keresztül az ADF által felügyelt Virtual Network
+- A kimenő kommunikációhoz csak a 443-as port van megnyitva.
 - Az Azure Storage és az Azure Data Lake Gen2 nyilvános végponton keresztüli, az ADF felügyelt virtuális hálózatából történő csatlakoztatása nem támogatott.
 
-### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault társított szolgáltatásának létrehozása 
-- Amikor társított szolgáltatást hoz létre az Azure Key Vaulthoz, nincs az Azure integrációs modulra irányuló hivatkozás. Így nem hozhat létre privát végpontot a Azure Key Vault társított szolgáltatásának létrehozásakor. Ha azonban olyan adattárakhoz hoz létre társított szolgáltatást, amelyek Azure Key Vault társított szolgáltatásra hivatkoznak, és ez a társított szolgáltatás olyan Azure Integration Runtime, amelyeken engedélyezve van a felügyelt Virtual Network, akkor a létrehozás során létre tud hozni egy privát végpontot a Azure Key Vault társított szolgáltatáshoz. 
-- A Azure Key Vault társított szolgáltatásának **tesztelési** művelete csak az URL-formátumot ellenőrzi, de nem végez hálózati műveletet.
-- A **privát végpontot használó** oszlop mindig üresen jelenik meg, még akkor is, ha Azure Key Vaulthoz hoz létre privát végpontot.
-![Privát végpont a AKV](./media/managed-vnet/akv-pe.png)
+### <a name="linked-service-creation-of-azure-key-vault"></a>Az összekapcsolt szolgáltatás létrehozása Azure Key Vault 
+- Amikor társított szolgáltatást hoz létre az Azure Key Vaulthoz, nincs az Azure integrációs modulra irányuló hivatkozás. Így nem hozhat létre privát végpontot a csatolt szolgáltatás létrehozása Azure Key Vault. Ha azonban olyan adattárakhoz hoz létre csatolt szolgáltatást, amelyek egy csatolt szolgáltatásra hivatkoznak, és erre a linked Service-szolgáltatásra hivatkozik Azure Integration Runtime felügyelt Virtual Network engedélyezve van, akkor a létrehozás során létrehozhat egy privát végpontot a Azure Key Vault-hez csatolt szolgáltatáshoz. Azure Key Vault 
+- **Tesztelje a** kapcsolati műveletet a Azure Key Vault szolgáltatáshoz csak az URL-formátumot érvényesíti, hálózati műveletet azonban nem.
+- A **Privát végpont használata oszlop** mindig üresként jelenik meg, még akkor is, ha privát végpontot hoz létre a Azure Key Vault.
+![Privát végpont az AKV-hez](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Oktatóanyag: [másolási folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-copy-data-portal-private.md) 
-- Oktatóanyag: [leképezési adatfolyam folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-data-flow-private.md)
+- Oktatóanyag: [Másolási folyamat létrehozása felügyelt Virtual Network privát végpontok használatával](tutorial-copy-data-portal-private.md) 
+- Oktatóanyag: [Adatfolyam-leképezési folyamat létrehozása felügyelt Virtual Network privát végpontok használatával](tutorial-data-flow-private.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a folyamatok integrálásának első lépései'
-description: Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a folyamatokat és tevékenységeket a szinapszis Studio használatával.
+title: 'Oktatóanyag: Első lépések a folyamatokkal való integrációhoz'
+description: Ez az oktatóanyag bemutatja, hogyan integrálhatók folyamatok és tevékenységek a Synapse Studio.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,38 +10,39 @@ ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 22631cfd872ed226fc78a97d38c423fbc300f78e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 05c33db130bfa3fcc1a4f5d75935294fcc0ba1d7
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304714"
+ms.locfileid: "107365467"
 ---
-# <a name="integrate-with-pipelines"></a>Integráció a folyamatokkal
+# <a name="integrate-with-pipelines"></a>Integrálás folyamatokkal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a folyamatokat és tevékenységeket a szinapszis Studio használatával. 
+Ez az oktatóanyag bemutatja, hogyan integrálhatók folyamatok és tevékenységek a Synapse Studio. 
 
 ## <a name="create-a-pipeline-and-add-a-notebook-activity"></a>Folyamat létrehozása és jegyzetfüzet-tevékenység hozzáadása
 
 
 
-1. A szinapszis Studióban nyissa meg az **integrációs** hubot.
-1. Válassza **+**  >  a **folyamat** lehetőséget egy új folyamat létrehozásához. Kattintson az új folyamat objektumra a folyamat-tervező megnyitásához.
-1. A **tevékenységek** területen bontsa ki a **szinapszis** mappát, és húzzon egy **Jegyzetfüzet** -objektumot a tervezőbe.
-1. Válassza a jegyzetfüzet tevékenység tulajdonságai párbeszédpanel **Beállítások** lapját. A legördülő listából kiválaszthatja az aktuális szinapszis-munkaterületről származó összes jegyzetfüzetet.
+1. A Synapse Studio az Integrálás **központot.**
+1. Új **+**  >  **folyamat létrehozásához** válassza a Folyamat lehetőséget. Kattintson az új folyamat objektumra a Folyamattervező megnyitásához.
+1. A **Tevékenységek alatt** bontsa ki a **Synapse mappát,** és húzzon egy **Notebook-objektumot** a tervezőbe.
+1. Válassza a **Jegyzetfüzet-tevékenység** tulajdonságai párbeszédpanel Beállítások lapját. A legördülő listában az aktuális Synapse-munkaterület bármelyik jegyzetfüzetét kiválaszthatja.
 
-## <a name="schedule-the-pipeline-to-run-every-hour"></a>A folyamat óránkénti futtatásának ütemezett futtatása
+## <a name="schedule-the-pipeline-to-run-every-hour"></a>A folyamat ütemezése óránkénti futásra
 
-1. A folyamatban válassza a **Hozzáadás trigger**  >  **új/szerkesztés** lehetőséget.
-1. Az **eseményindító kiválasztása** területen válassza az **új** lehetőséget, majd állítsa az **ismétlődést** "minden 1 órában" értékre.
+1. A folyamatban válassza az **Eseményindító hozzáadása**  >  **Új/szerkesztés lehetőséget.**
+1. Az **Eseményindító kiválasztása mezőben** válassza az **Új** lehetőséget, és állítsa az **Ismétlődés** beállítását "1 óránként" beállításra.
 1. Válassza az **OK** lehetőséget. 
 1. Kattintson **Az összes közzététele** gombra. 
 
 
-## <a name="monitor-pipeline"></a>Folyamat figyelése
+## <a name="monitor-pipeline-execution"></a>Folyamat végrehajtásának monitorozása
 
-1. Miután közzétette a folyamatot, hogy a folyamat azonnal fusson, és ne várjon a következő órára, válassza az **aktiválási**  >  **trigger hozzáadása most** lehetőséget.
-1. A szinapszis Studióban nyissa meg a **figyelő** központot, és válassza a **folyamat futtatása** lehetőséget a folyamat végrehajtási folyamatának figyeléséhez.
+1. A folyamat közzététele után a folyamat azonnali futtatásához a következő óra várakozása nélkül válassza az **Eseményindító hozzáadása**  >  **eseményindító most lehetőséget.**
+1. A Synapse Studio a Figyelő **központot.**
+1. Válassza **a Folyamatfuttatások lehetőséget** a folyamat végrehajtási folyamatának monitorozása érdekében.
 
 
 

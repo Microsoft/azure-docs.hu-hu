@@ -4,12 +4,12 @@ description: További információ az X. 509 tanúsítvánnyal védett Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7976d1419aeb0dda3ec2f94a32e9b185a6c14be7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100099506"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304868"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
 
@@ -90,10 +90,10 @@ Ezen a ponton a tárolóban létezik egy tanúsítvány, amely készen áll a fe
 ### <a name="certificate-provisioning"></a>Tanúsítvány kiépítés
 Említettük a "kiépítési ügynököt", amely az a entitás, amely a saját titkos kulcsával együtt lekéri a tanúsítványt a tárolóból, és telepíti azt a fürt mindegyik gazdagépére. (Ne felejtse el, hogy Service Fabric nem hoz létre tanúsítványokat.) Kontextusban a fürtöt Azure-beli virtuális gépek és/vagy virtuálisgép-méretezési csoportok gyűjteménye fogja üzemeltetni. Az Azure-ban a tanúsítványnak a tárolóból egy virtuális gépre/VMSS való kiépítését a következő mechanizmusokkal lehet megvalósítani – feltéve, hogy a fentiek szerint a kiépítési ügynök korábban "Get" engedélyt kapott a tár tulajdonosának: 
   - ad-hoc: az operátor lekéri a tanúsítványt a tárolóból (pfx/PKCS #12 vagy PEM), és telepíti az egyes csomópontokon.
-  - az üzembe helyezés során a "Secret" virtuálisgép-méretezési csoportként: a számítási szolgáltatás az első fél identitását használja a kezelő nevében, a tanúsítványt egy sablon – üzembe helyezést engedélyező tárolóból, és telepíti a virtuálisgép-méretezési csoport minden csomópontján ([például így](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)van). vegye figyelembe, hogy ez csak a verziószámmal ellátott titkos kódok kiépítés teszi lehetővé.
-  - a [Key Vault VM-bővítmény](../virtual-machines/extensions/key-vault-windows.md)használata; Ez lehetővé teszi a tanúsítványok verzió nélküli deklarációkkal történő kihelyezését a megfigyelt tanúsítványok rendszeres frissítésével. Ebben az esetben a virtuális gépnek és a VMSS rendelkeznie kell egy [felügyelt identitással](../virtual-machines/security-policy.md#managed-identities-for-azure-resources), egy olyan identitással, amely hozzáférést kapott a megfigyelt tanúsítványokat tartalmazó tároló (k) hoz.
+  - az üzembe helyezés során a "Secret" virtuálisgép-méretezési csoportként: a számítási szolgáltatás az első fél identitását használja a kezelő nevében, a tanúsítványt egy sablon – üzembe helyezést engedélyező tárolóból, és telepíti a virtuálisgép-méretezési csoport minden csomópontján ([például így](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates)van). vegye figyelembe, hogy ez csak a verziószámmal ellátott titkos kódok kiépítés teszi lehetővé.
+  - a [Key Vault VM-bővítmény](../virtual-machines/extensions/key-vault-windows.md)használata; Ez lehetővé teszi a tanúsítványok verzió nélküli deklarációkkal történő kihelyezését a megfigyelt tanúsítványok rendszeres frissítésével. Ebben az esetben a virtuális gépnek és a VMSS rendelkeznie kell egy [felügyelt identitással](/virtual-machines/security-policy.md#managed-identities-for-azure-resources), egy olyan identitással, amely hozzáférést kapott a megfigyelt tanúsítványokat tartalmazó tároló (k) hoz.
 
-Az ad-hoc mechanizmus több okból nem ajánlott, a biztonságtól a rendelkezésre állásig, és a továbbiakban nem lesz tárgyalva. részletekért tekintse meg a [virtuális gépek méretezési csoportjaiban található tanúsítványokat](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).
+Az ad-hoc mechanizmus több okból nem ajánlott, a biztonságtól a rendelkezésre állásig, és a továbbiakban nem lesz tárgyalva. részletekért tekintse meg a [virtuális gépek méretezési csoportjaiban található tanúsítványokat](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates).
 
 A VMSS-/Compute-based kiépítés a biztonság és a rendelkezésre állás előnyeit mutatja be, de korlátozásokat is tartalmaz. Ehhez szükséges, hogy a tanúsítványokat verzióval ellátott titokként állapítsa meg, így csak az ujjlenyomattal deklarált tanúsítványokkal védett fürtök számára megfelelő. Ezzel szemben a Key Vault virtuálisgép-bővítményekre épülő kiépítés mindig telepíti a megfigyelt tanúsítványok legújabb verzióját, ami csak a tulajdonos köznapi neve által deklarált tanúsítványokkal védett fürtök esetében alkalmas. A kiemeléshez ne használjon autofrissítéses kiépítési mechanizmust (például a KVVM-bővítményt) a példány által deklarált tanúsítványok esetében (azaz ujjlenyomat alapján) – a rendelkezésre állás elvesztésének kockázata jelentős.
 

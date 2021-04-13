@@ -1,6 +1,6 @@
 ---
-title: VM-lemezek biztonsági mentése Azure Stack Edge Pro GPU-eszközön a PowerShell használatával
-description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure Stack Edge Pro GPU-eszközön futó virtuálisgép-lemezekről.
+title: VIRTUÁLISgép-lemezek biztonsági Azure Stack Edge Pro GPU-eszközön a PowerShell használatával
+description: Ez a cikk a GPU-eszközön futó virtuálisgép-lemezeken lévő adatok biztonsági Azure Stack Edge Pro ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,52 +8,52 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ea860f58caba25ef3027fbf7bc4728355a7ca1bc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5fad2a9e1789b98ac541e8a0d95c77131905544d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315439"
+ms.locfileid: "107364727"
 ---
-# <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>Virtuálisgép-lemezek biztonsági mentése Azure Stack Edge Pro GPU-n keresztül Azure PowerShell
+# <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>GPU-n Azure Stack Edge Pro virtuálisgép-lemezek biztonsági Azure PowerShell
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Ez a cikk azt ismerteti, hogyan hozhatók létre biztonsági másolatok a Azure Stack Edge Pro GPU-eszközön futó virtuálisgép-lemezekről Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan hozhat létre biztonsági másolatot egy GPU Azure Stack Edge Pro eszközön található virtuálisgép-lemezekről a Azure PowerShell.
 
 > [!IMPORTANT]
-> Ez az eljárás a leállított virtuális gépek esetében használatos. A futó virtuális gépek biztonsági mentéséhez ajánlott egy külső gyártótól származó biztonsági mentési eszközt használni.
+> Ez az eljárás leállított virtuális gépekhez használható. A futó virtuális gépek biztonsági mentéséhez azt javasoljuk, hogy külső biztonsági mentési eszközt használjon.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A következő lépések összefoglalják az eszközön található virtuálisgép-lemezek biztonsági mentésének magas szintű munkafolyamatát:
+Az alábbi lépések összefoglalják az eszköz virtuálisgép-lemezének biztonságimentése magas szintű munkafolyamatát:
 
 1. Állítsa le a virtuális gépet.
-1. Készítsen pillanatképet a virtuális gép lemezéről.
-1. Másolja a pillanatképet egy helyi Storage-fiókba VHD-ként.
+1. Pillanatfelvétel készítése a virtuálisgép-lemezről.
+1. Másolja a pillanatképet egy helyi tárfiókba virtuális merevlemezként.
 1. Töltse fel a VHD-t egy külső célra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakról:
+Mielőtt biztonságimentéseket ad a virtuális gépekről, győződjön meg a következőről:
 
-- Olyan ügyfélhez fér hozzá, amelyet az eszközhöz való kapcsolódáshoz fog használni.
-    - Az ügyfél egy [támogatott operációs rendszert](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)futtat.
-    - Az ügyfél az eszköz helyi Azure Resource Manager való kapcsolódásra van konfigurálva, mint a [Kapcsolódás a Azure Resource Managerhez eszközhöz](azure-stack-edge-gpu-connect-resource-manager.md)című részben leírtak szerint.
+- Rendelkezik hozzáféréssel egy ügyfélhez, amely az eszközhöz való csatlakozáshoz használható.
+    - Az ügyfél egy támogatott [operációs rendszert futtat.](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)
+    - Az ügyfél úgy van konfigurálva, hogy csatlakozzon az eszköz Azure Resource Manager helyi számítógépéhez a Csatlakozás Azure Resource Manager [eszközhöz útmutatása alapján.](azure-stack-edge-gpu-connect-resource-manager.md)
 
-## <a name="verify-connection-to-local-azure-resource-manager"></a>Helyi Azure Resource Managerhoz való kapcsolódás ellenőrzése
+## <a name="verify-connection-to-local-azure-resource-manager"></a>Kapcsolat ellenőrzése a helyi Azure Resource Manager
 
 [!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
-## <a name="back-up-a-vm-disk"></a>VM-lemez biztonsági mentése
+## <a name="back-up-a-vm-disk"></a>Virtuálisgép-lemez biztonsági visszaállítása
 
-1. Az eszközön futó virtuális gépek listájának beolvasása. Azonosítsa a leállítani kívánt virtuális gépet.
+1. Szerezze be az eszközön futó virtuális gépek listáját. Azonosítsa a leállítani kívánt virtuális gépet.
 
     ```powershell
     Get-AzureRMVM
     ```
 
-    Íme egy példa a kimenetre:
+    Példa a kimenetre:
 
     ```powershell
     PS C:\Users\user> Get-AzureRMVM
@@ -73,7 +73,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     Stop-AzureRMVM –ResourceGroupName <Resource group name> -Name <VM name>
     ```
 
-    Íme egy példa a kimenetre:
+    Példa a kimenetre:
 
     ```powershell
     PS C:\Users\user> Stop-AzureRMVM -ResourceGroupName myaserg2 -Name myasetestvm1
@@ -90,17 +90,17 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     
     PS C:\Users\user>
     ```
-    A virtuális gépet a Azure Portal is leállíthatja.
+    A virtuális gépet le is állíthatja a Azure Portal.
  
 
-2. Készítsen pillanatképet a VM-lemezről, és mentse a pillanatképet egy helyi erőforráscsoporthoz. Ezt az eljárást az operációs rendszer és az adatlemezek esetében is használhatja.
+2. Pillanatfelvétel készítése a virtuálisgép-lemezről, és a pillanatkép mentése egy helyi erőforráscsoportba. Ezt az eljárást operációs rendszerhez és adatlemezhez is használhatja.
 
-   1. Lekérheti az eszközön lévő lemezek listáját, vagy egy adott erőforráscsoporthoz. Jegyezze fel a lemez nevét, amelyről biztonsági másolatot szeretne készíteni.
+   1. Lekérte az eszközén vagy egy adott erőforráscsoportban található lemezek listáját. Jegyezze fel a lemez nevét, amelyről biztonsági adatokat kell biztonsági adatokat visszamentenünk.
 
         ```powershell
         Get-AzureRMDisk -ResourceGroupName <Resource group name>
         ```   
-        Íme egy példa a kimenetre:
+        Példa a kimenetre:
 
         ```powershell
         PS C:\Users\user> $Disk = Get-AzureRMDisk -ResourceGroupName myaserg2
@@ -109,7 +109,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
         myasetestvm1_disk1_0ed91809927f4023b7aceb6eeca51c05
         PS C:\Users\user>
         ```
-   1. Hozzon létre egy helyi erőforráscsoportot a virtuális gép pillanatképének célhelyként való kiszolgálásához.
+   1. Hozzon létre egy helyi erőforráscsoportot, amely a virtuális gép pillanatképének céljaként szolgál.
 
         ```powershell
         PS C:\Users\user> New-AzureRmResourceGroup -ResourceGroupName myaserg3 -Location dbelocal
@@ -123,7 +123,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
         PS C:\Users\user>
         ```
 
-   1. Állítsa be a paramétereket.
+   1. Állítson be néhány paramétert.
 
       ```powershell
       $DiskResourceGroup = <Disk resource group>
@@ -132,19 +132,19 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
       $DestinationRG = <Snapshot destination resource group>
       ```
 
-   3. Állítsa be a pillanatkép-konfigurációt, és végezze el a pillanatképet.
+   3. Állítsa be a pillanatkép-konfigurációt, és vegye le a pillanatképet.
 
         ```powershell
         $Disk = Get-AzureRmDisk -ResourceGroupName $DiskResourceGroup -DiskName $DiskName
         $SnapshotConfig = New-AzureRmSnapshotConfig -SourceUri $Disk.Id -CreateOption Copy -Location 'dbelocal'
         $Snapshot = New-AzureRmSnapshot -Snapshot $SnapshotConfig -SnapshotName $SnapshotName -ResourceGroupName $DestinationRG
         ```
-        Ellenőrizze, hogy a pillanatkép a cél erőforráscsoporthoz lett-e létrehozva.
+        Ellenőrizze, hogy a pillanatkép létrejött-e a cél erőforráscsoportban.
 
         ```powershell
         Get-AzureRMSnapshot -ResourceGroupName $DestinationRG
         ```
-        Íme egy példa a kimenetre:
+        Példa a kimenetre:
 
         ```powershell
         PS C:\Users\user> $DiskResourceGroup = "myaserg2"
@@ -174,11 +174,11 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
         PS C:\Users\user>
         ```
 
-## <a name="copy-the-snapshot-into-a-local-storage-account"></a>A pillanatkép másolása helyi Storage-fiókba
+## <a name="copy-the-snapshot-into-a-local-storage-account"></a>Pillanatkép másolása helyi tárfiókba
 
-   Másolja a pillanatképeket egy helyi Storage-fiókba az eszközön. 
+   Másolja a pillanatképeket egy helyi tárfiókba az eszközén. 
 
-1. Állítsa be a paramétereket. 
+1. Állítson be néhány paramétert. 
 
     ```powershell
     $StorageAccountRG = <Local storage account resource group>
@@ -188,13 +188,13 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     $DestFileName = <Blob file name> 
     ```
 
-1. Hozzon létre egy helyi Storage-fiókot az eszközön. 
+1. Hozzon létre egy helyi tárfiókot az eszközén. 
 
     ```powershell
     New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Storage account resource group> -Location DBELocal -SkuName Standard_LRS
     ```
 
-    Íme egy példa a kimenetre: 
+    Példa a kimenetre: 
 
     ```powershell
     PS C:\Users\user> New-AzureRmStorageAccount -Name myasesa4 -ResourceGroupName myaserg4 -Location DBELocal -SkuName Standard_LRS
@@ -205,7 +205,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     PS C:\Users\user>
     ```
 
-1. Hozzon létre egy tárolót a létrehozott helyi Storage-fiókban. 
+1. Hozzon létre egy tárolót a létrehozott helyi tárfiókban. 
 
     ```powershell
     $keys = Get-AzureRmStorageAccountKey -ResourceGroupName $StorageAccountRG -Name $StorageAccountName
@@ -213,7 +213,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     $storageContext = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $keyValue -Protocol Http -Endpoint $StorageEndpointSuffix;
     $container = New-AzureStorageContainer -Name $DestStorageContainer -Context $storageContext -Permission Container -ErrorAction Ignore;    
     ```
-    Íme egy példa a kimenetre:
+    Példa a kimenetre:
 
     ```powershell
     PS C:\Users\user> $StorageAccountName = "myasesa4"                                                              
@@ -255,11 +255,11 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     PS C:\Users\user>
     ```    
 
-    A Azure Storage Explorer használatával [helyi Storage-fiókot is létrehozhat](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#create-a-storage-account) , majd [létrehozhat egy tárolót a helyi Storage-fiókban](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload) az eszközön. 
+    Használhatja a Azure Storage Explorer [helyi](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#create-a-storage-account) tárfiók létrehozásához, majd a Tároló létrehozása [a](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload) helyi tárfiókban az eszközén. 
 
 
 
-1. Töltse le a pillanatképet a helyi Storage-fiókba.
+1. Töltse le a pillanatképet a helyi tárfiókba.
 
    ```powershell
    $sassnapshot = Grant-AzureRmSnapshotAccess -ResourceGroupName $DestinationRG -SnapshotName $SnapshotName -Access 'Read' -DurationInSecond 3600
@@ -267,7 +267,7 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
    Start-AzureStorageBlobCopy -AbsoluteUri $sassnapshot.AccessSAS -DestContainer $DestStorageContainer -DestContext $destContext -DestBlob $DestFileName
    ```
 
-    Íme egy példa a kimenetre:
+    Példa a kimenetre:
 
     ```powershell
     PS C:\Users\user> $sassnapshot= Grant-AzureRmSnapshotAccess -ResourceGroupName $DestinationRG -SnapshotName $SnapshotName -Access 'Read' -DurationInSecond 3600
@@ -305,18 +305,22 @@ A virtuális gépek biztonsági mentése előtt győződjön meg az alábbiakró
     PS C:\Users\user>
     ```
 
+    Az Storage Explorer is ellenőrizheti, hogy a pillanatkép megfelelően lett-e átmásolva a tárfiókba.
+
+    ![Storage Explorer a biztonsági mentést a helyi tárfiókban található tárolóban](media/azure-stack-edge-gpu-back-up-virtual-machine-disks/back-up-virtual-machine-disk-1.png)
+
 ## <a name="download-vhd-to-external-target"></a>VHD letöltése külső célra
 
-Ha külső helyre szeretné áthelyezni a biztonsági másolatokat, Azure Storage Explorer vagy AzCopy is használhat.
+A biztonsági másolatok külső helyre való áthelyezéséhez használhatja a Azure Storage Explorer az AzCopyt.
 
-- A következő AzCopy parancs használatával töltse le a VHD-t egy külső célra.
+- A következő AzCopy-paranccsal töltse le a VHD-t egy külső célra.
 
     ```powershell
     azcopy copy "https://<local storage account name>.blob.<device name>.<DNS domain>/<container name>/<filename><SAS query string>" <destination target>
     ```
 
-- A Azure Storage Explorer Azure Stack Edge használatával történő beállításához és használatához tekintse meg a [használati Storage Explorer a feltöltéshez](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload)című részben található utasításokat.
+- Az alkalmazás és a Azure Storage Explorer beállítását és Azure Stack Edge lásd a Use Storage Explorer for upload (Az Storage Explorer [használata feltöltéshez) dokumentumban található utasításokat.](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload)
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Virtuális gépek üzembe helyezése a Azure stack Edge Pro GPU-eszközön sablonok használatával](azure-stack-edge-gpu-deploy-virtual-machine-templates.md).
+[Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával.](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)

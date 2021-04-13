@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d432d20660cd1b7ee59c9ef72f9db04bc0009481
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942664"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306585"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight-alkalmazást Linux-alapú HDInsight-fürtön is telepíthet. Ebből a cikkből megtudhatja, hogyan tehet közzé egy HDInsight-alkalmazást az Azure Marketplace-en. Az Azure Marketplace-en való közzétételsel kapcsolatos általános információkért tekintse meg az [ajánlat közzététele az Azure piactéren](../marketplace/overview.md)című témakört.
@@ -83,7 +83,8 @@ Hozzon létre egy. zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepí
 ## <a name="publish-the-application"></a>Az alkalmazás közzététele
 HDInsight-alkalmazás közzététele:
 
-1. Jelentkezzen be az [Azure Publishing](https://publish.windowsazure.com/)szolgáltatásba.
+1. Jelentkezzen be az Azure Publishing szolgáltatásba.
+
 2. A bal oldali menüben válassza a **megoldás sablonok** lehetőséget.
 3. Adjon meg egy címet, majd válassza **az új megoldás sablon létrehozása** lehetőséget.
 4. Ha még nem regisztrálta a szervezetét, válassza **a Fejlesztői központ fiók létrehozása lehetőséget, és csatlakozzon az Azure-programhoz**.  További információt a [Microsoft fejlesztői fiók létrehozása](../marketplace/overview.md)című témakörben talál.

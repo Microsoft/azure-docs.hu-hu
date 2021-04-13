@@ -4,12 +4,12 @@ description: Ez a cikk a GitHubon elérhető Azure-Event Hubs minták listáját
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e0f8026683302f6b54924625b132e79cb194bad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b7cd4a1ca08f359a2328d7a92239516c39d7e62
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87499420"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311600"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-Tárházak az Azure-Event Hubs mintákkal 
 Event Hubs mintákat a [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)talál. Ezek a minták az [Azure Event Hubs](./index.yml)főbb funkcióit mutatják be. Ez a cikk az elérhető mintákat kategorizálja és ismerteti, az egyesekre mutató hivatkozásokkal.
@@ -60,4 +60,4 @@ Event Hubs a következő cikkekben talál további információt:
 
 - [Event Hubs áttekintése](./event-hubs-about.md)
 - [Event Hubs-szolgáltatások](event-hubs-features.md)
-- [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+- [Event Hubs – gyakori kérdések](event-hubs-faq.yml)

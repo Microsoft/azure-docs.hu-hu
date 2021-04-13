@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574974"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310393"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -35,8 +35,8 @@ A foglalásokhoz egy előfizetést vagy erőforráscsoportokat állíthat be hat
 
 Az igényeitől függően három lehetősége van a foglalás hatókörének beállítására:
 
-- **Egy erőforráscsoportra vonatkozó hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
-- **Egy előfizetésre vonatkozó hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található egyező erőforrásokra alkalmazza.
+- **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
+- **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.
 - **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza.
     - A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A foglalás megosztott hatóköre több Active Directory-bérlőt tartalmazna egy regisztrációban.
     - Microsoft Ügyfélszerződéses ügyfelek esetében a számlázási környezet a számlázási profil.
@@ -44,9 +44,9 @@ Az igényeitől függően három lehetősége van a foglalás hatókörének be�
 
 A foglalási kedvezmények a használatra történő alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
 
-1. Erőforráscsoport hatókörű foglalások
-2. Egyetlen hatókörrel rendelkező foglalások
-3. Megosztott hatókörrel rendelkező foglalások
+1. Egyetlen erőforráscsoport-hatókörrel rendelkező foglalások
+2. Egyetlen előfizetési hatókörrel rendelkező foglalások
+3. Fenntartások közös hatókörrel (több előfizetéssel), korábban ismertetve
 
 A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lépjen a foglalásra, kattintson a **Konfigurálás** lehetőségre, és állítsa be újból a foglalás hatókörét. A foglalás hatókörének újbóli beállítása nem számít kereskedelmi tranzakciónak. A foglalási időszak nem módosul. A hatókör frissítésével kapcsolatos további információkért lásd [a foglalás megvásárlása utáni hatókörfrissítést](manage-reserved-vm-instance.md#change-the-reservation-scope) bemutató cikket.
 

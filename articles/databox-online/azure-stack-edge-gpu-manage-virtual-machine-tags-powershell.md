@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556184"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305555"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Virtuálisgép-címkék kezelése Azure Stack Edge-n keresztül Azure PowerShell
 
@@ -36,17 +36,7 @@ Mielőtt üzembe helyezhet egy virtuális gépet az eszközön a PowerShell hasz
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>Helyi Azure Resource Managerhoz való kapcsolódás ellenőrzése
 
-Ellenőrizze, hogy a következő lépések használhatók-e az eszköz ügyfélről való eléréséhez.
-
-Ellenőrizze, hogy az ügyfél tud-e csatlakozni a helyi Azure Resource Managerhoz. 
-
-1. Helyi eszköz API-k hívása a hitelesítéshez:
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. Adja meg a felhasználónevet `EdgeArmUser` és a jelszót Azure Resource Manager használatával történő kapcsolódáshoz. Ha nem emlékszik a jelszóra, [állítsa Alaphelyzetbe Azure Resource Manager jelszavát](azure-stack-edge-gpu-set-azure-resource-manager-password.md) , és ezt a jelszót használja a bejelentkezéshez.
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>Címke hozzáadása egy virtuális géphez

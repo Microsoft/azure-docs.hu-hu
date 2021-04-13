@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109165"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312705"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R műszaki specifikációk
 
@@ -24,41 +24,44 @@ Az Azure Stack Edge Pro R-eszköz hardveres összetevői megfelelnek a jelen cik
 
 Az Azure Stack Edge Pro R-eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
-| Specifikáció       | Érték                  |
-|---------------------|------------------------|
-| CPU    | 2 X Intel Xeon Silver 4114 processzor<br>20 phsyical mag (10/CPU)<br>40 logikai mag (vCPU) (20 processzor)  |
-| Memória              | 256 GB RAM (2666 MT/s)     |
-
+| Specifikáció  | Érték                                             |
+|----------------|---------------------------------------------------|
+| CPU-típus       | Dual Intel Xeon Silver 4114 CPU                   |
+| CPU: nyers       | 20 összes mag, 40 összesen vCPU                    |
+| CPU: felhasználható    | 32 vCPU                                          |
+| Memória típusa    | Dell-kompatibilis 16 GB RDIMM, 2666 MT/s, kettős rangsor |
+| Memória: nyers    | 256 GB RAM (16 x 16 GB)                           |
+| Memória: felhasználható | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>Számítási gyorsítási specifikációk
 
 A grafikus processzorok (GPU) minden olyan eszközön elérhetők, amely lehetővé teszi a Kubernetes, a Deep learning és a gépi tanulási forgatókönyvek használatát.
 
-| Specifikáció           | Érték                  |
+| Specifikáció           | Érték                      |
 |-------------------------|----------------------------|
-| GPU   | Egy nVidia T4 GPU <br> További információ: [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).| 
+| GPU   | Egy nVidia T4 GPU <br> További információ: [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/). | 
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 
 Az Azure Stack Edge Pro R-eszköz két 100-240 V-os tápegységgel (PSUs) rendelkezik, nagy teljesítményű ventilátorokkal. A két PSUs redundáns energiaellátási konfigurációt biztosít. Ha egy PSU meghibásodik, az eszköz továbbra is általában a másik PSU-gépen működik, amíg le nem cseréli a hibás modult. A következő táblázat a PSUs műszaki specifikációit sorolja fel.
 
-| Specifikáció           | 550 W PSU                  |
-|-------------------------|----------------------------|
-| Maximális kimeneti teljesítmény    | 550 W                      |
-| Hő elszóródása (maximum)                   | 2891 BTU/HR                |
-| Gyakoriság               | 50/60 Hz                   |
-| Feszültség-tartomány kiválasztása | Automatikus hatókör: 115-230 V AC |
-| Gyors csatlakoztatás           | Yes                        |
+| Specifikáció              | 550 W PSU                  |
+|----------------------------|----------------------------|
+| Maximális kimeneti teljesítmény       | 550 W                      |
+| Hő elszóródása (maximum) | 2891 BTU/HR                |
+| Gyakoriság                  | 50/60 Hz                   |
+| Feszültség-tartomány kiválasztása    | Automatikus hatókör: 115-230 V AC |
+| Gyors csatlakoztatás              | Yes                        |
 
 ## <a name="network-specifications"></a>Hálózati specifikációk
 
-Az Azure Stack Edge Pro R-eszközhöz négy hálózati adapter tartozik, a PORT1-PORT4. 
+Az Azure Stack Edge Pro R-eszközhöz négy hálózati adapter tartozik, a PORT1-PORT4.
 
 
-|Specifikáció  |Leírás                              |
+|Specifikáció         |Description                       |
 |----------------------|----------------------------------|
-|Hálózati adapterek    |**2 x 1 GbE RJ45** <br> Az 1-es PORTOT a rendszer felügyeleti felületként használja a kezdeti beállításhoz, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. PORT a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP.     |
-|Hálózati adapterek    |**2 x 25 GbE SFP28** <br> Ezek az adatillesztők 3. és 4. PORT konfigurálható DHCP (alapértelmezett) vagy statikusként.            |
+|Hálózati adapterek    |**2 x 1 GbE RJ45** <br> Az 1. PORT a kezdeti beállítás felügyeleti felülete, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület statikus IP-re áll vissza. <br>A másik interfész, a 2-es PORT, amely a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. |
+|Hálózati adapterek    |**2 x 25 GbE SFP28** <br> Ezek az adatillesztők a 3. PORTon és a 4-es PORTon DHCP-(alapértelmezett) vagy statikusként konfigurálhatók. |
 
 Az Azure Stack Edge Pro R-eszköz a következő hálózati hardverrel rendelkezik:
 
@@ -69,27 +72,27 @@ Az Azure Stack Edge Pro R-eszköz a következő hálózati hardverrel rendelkezi
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők teljes listájáért keresse fel a következőt: [Mellanox Dual port 25G ConnectX-4 Channel hálózati adapter kompatibilis termékek](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
+A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők teljes listájáért nyissa meg a [Mellanox Dual port 25G ConnectX-4 Channel hálózati adapterrel kompatibilis termékeket](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
-Az Azure Stack Edge Pro R-eszközök 8 adatlemezzel és 2 M. 2 SATA lemezzel rendelkeznek, amelyek operációsrendszer-lemezként szolgálnak. További információért látogasson el az [M. 2 SATA-lemezekre](https://en.wikipedia.org/wiki/M.2).
+Azure Stack Edge Pro R-eszközökhöz nyolc adatlemez és két M. 2 SATA lemez tartozik, amelyek operációs rendszer lemezként szolgálnak. További információért látogasson el az [M. 2 SATA-lemezekre](https://en.wikipedia.org/wiki/M.2).
 
 #### <a name="storage-for-1-node-device"></a>1 csomópontos eszköz tárterülete
 
-Az alábbi táblázat az 1 csomópontos eszköz tárolási kapacitását tartalmazza.
+Az alábbi táblázat az 1 csomópontos eszköz tárolókapacitását ismerteti.
 
 |     Specifikáció                          |     Érték             |
 |--------------------------------------------|-----------------------|
 |    SSD-meghajtók száma     |    8                  |
 |    Egyetlen SSD-kapacitás                     |    8 TB               |
 |    Teljes kapacitás                          |    64 TB              |
-|    Teljes felhasználható kapacitás *                  |    ~ 42 TB          |
+|    Teljes felhasználható kapacitás *                  |    ~ 42 TB            |
 
 **Bizonyos területek belső használatra vannak fenntartva.*
 
@@ -148,7 +151,7 @@ Az eszköz súlya a ház konfigurációjától függ.
 
 |     Ház                                 |     Tömeg          |
 |-----------------------------------------------|---------------------|
-|    1 – csomópontos eszköz + robusztus eset súlya a záró sapkával     |    ~ 114 lbs.          |
+|    1 – csomópontos eszköz + robusztus eset súlya a záró sapkával     |    ~ 114 lbs          |
 
 <!--#### For the 4-node system
 

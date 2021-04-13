@@ -1,43 +1,39 @@
 ---
-title: Windows rendszerű virtuális asztali MSIX alkalmazás csatolja az előnézet PowerShellt – Azure
-description: A Windows rendszerű virtuális asztali MSIX-alkalmazás csatlakoztatása a PowerShell használatával.
+title: Windows Virtual Desktop MSIX-alkalmazás csatlakoztatása a PowerShellhez – Azure
+description: MSIX-alkalmazás csatolásának beállítása Windows Virtual Desktop PowerShell használatával.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8b6bad32ec653fb2ba63c6940cf6a89a13a8afd0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448321"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365399"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>A MSIX-alkalmazás csatolásának (előzetes verzió) beállítása a PowerShell használatával
+# <a name="set-up-msix-app-attach-using-powershell"></a>MSIX-alkalmazás csatolásának beállítása a PowerShell használatával
 
-> [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-A Azure Portal mellett manuálisan is beállíthatja a MSIX-alkalmazás csatolását (előzetes verzió) a PowerShell használatával. Ebből a cikkből megtudhatja, hogyan használhatja a PowerShellt a MSIX-alkalmazás csatolásának beállításához.
+A Azure Portal manuálisan is beállíthatja az MSIX-alkalmazás csatolását a PowerShell-sel. Ez a cikk bemutatja, hogyan állíthatja be az MSIX-alkalmazás csatolását a PowerShell használatával.
 
 ## <a name="requirements"></a>Követelmények
 
 >[!IMPORTANT]
->Mielőtt elkezdené, győződjön meg róla, hogy kitölti és beküldi [ezt az űrlapot](https://aka.ms/enablemsixappattach) , hogy engedélyezze a MSIX-alkalmazás csatolását az előfizetésében. Ha nem rendelkezik jóváhagyott kéréssel, a MSIX-alkalmazás csatolása nem fog működni. A kérések jóváhagyása akár 24 óráig is eltarthat a munkaidőn belül. A kérés elfogadását és befejezését követően e-mailt fog kapni.
+>Mielőtt hozzá is kezd, töltse ki [](https://aka.ms/enablemsixappattach) és küldje el ezt az űrlapot, hogy engedélyezze az MSIX-alkalmazás csatolását az előfizetésben. Ha nem rendelkezik jóváhagyott kérelemvel, az MSIX-alkalmazás csatolása nem fog működni. A kérelmek jóváhagyása a munkanapok során akár 24 órát is igénybe vehet. E-mailt fog kapni, ha a kérést elfogadták és befejezték.
 
-A MSIX-alkalmazás csatolásának konfigurálásához a következők szükségesek:
+Az MSIX-alkalmazás csatolásának konfiguráláshoz a következőre lesz szüksége:
 
-- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali gépek (klasszikus) központi telepítésének megismeréséhez tekintse meg [a bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című témakört. A Windows rendszerű virtuális asztali Azure Resource Manager integrációs szolgáltatással való üzembe helyezésével kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
-- Egy Windows rendszerű virtuális asztali címkészlet, amely legalább egy aktív munkamenet-gazdagépet futtat.
-- Ennek az alkalmazáskészletnek az ellenőrzési környezetben kell lennie.
-- Egy asztali távoli alkalmazás csoportja.
-- A MSIX-csomagoló eszköz.
-- Egy MSIX csomagolt alkalmazás kibővült egy fájlmegosztásba feltöltött MSIX-rendszerképbe.
-- Egy fájlmegosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
-- A MSIX-rendszerkép feltöltésének helyét a gazdagépen lévő összes virtuális gép (VM) számára is elérhetővé kell tenni. A felhasználóknak csak olvasási jogosultsággal kell rendelkezniük a rendszerkép eléréséhez.
-- Töltse le és telepítse a PowerShell Core-t.
-- Töltse le a nyilvános előzetes Azure PowerShell modult, és bontsa ki egy helyi mappába.
+- Egy működő Windows Virtual Desktop üzembe helyezéshez. A (klasszikus) Windows Virtual Desktop bérlők üzembe helyezésének elsajátításért lásd: Bérlő létrehozása [a Windows Virtual Desktop.](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) A gazdagépkészletek Windows Virtual Desktop telepítésével kapcsolatos Azure Resource Manager lásd: Gazdagépkészlet létrehozása [a Azure Portal.](./create-host-pools-azure-marketplace.md)
+- Egy Windows Virtual Desktop gazdagépkészlet legalább egy aktív munkamenetgazdával.
+- Ennek a gazdagépkészletnek az érvényesítési környezetben kell lennie.
+- Távoli asztali alkalmazáscsoport.
+- Az MSIX csomagolási eszköz.
+- MsIX-csomagba csomagolt alkalmazás egy fájlmegosztásba feltöltött MSIX-rendszerképbe kibontva.
+- A fájlmegosztás a Windows Virtual Desktop, ahol az MSIX-csomagot tárolni fogja.
+- Annak a fájlmegosztásnak, ahová az MSIX-rendszerképet feltöltötte, elérhetőnek kell lennie a gazdagépkészlet összes virtuális gépe (VM) számára is. A felhasználóknak csak olvasási engedélyekkel kell rendelkezniük a rendszerkép eléréséhez.
+- Töltse le és telepítse PowerShell Core.
+- Töltse le a nyilvános előzetes Azure PowerShell modult, és bontsa ki egy helyi mappára.
 - Telepítse az Azure-modult a következő parancsmag futtatásával:
 
     ```powershell
@@ -46,54 +42,54 @@ A MSIX-alkalmazás csatolásának konfigurálásához a következők szükséges
 
 ## <a name="sign-in-to-azure-and-import-the-module"></a>Jelentkezzen be az Azure-ba, és importálja a modult
 
-Ha minden követelmény elkészült, nyissa meg a PowerShell Core-t egy rendszergazda jogú parancssorban, és futtassa a következő parancsmagot:
+Ha minden követelmény készen áll, nyissa meg a PowerShell Core-t egy rendszergazda jogú parancssorban, és futtassa a következő parancsmagot:
 
 ```powershell
 Connect-AzAccount
 ```
 
-A futtatása után hitelesítse a fiókját a hitelesítő adataival. Ebben az esetben előfordulhat, hogy az eszköz URL-címét vagy tokenjét kell megadnia.
+A futtatás után hitelesítse a fiókját a hitelesítő adataival. Ebben az esetben a rendszer az eszköz URL-címét vagy jogkivonatát kéri.
 
-## <a name="import-the-azwindowsvirtualdesktop-module"></a>Az az. WindowsVirtualDesktop modul importálása
+## <a name="import-the-azwindowsvirtualdesktop-module"></a>Az Az.WindowsVirtualDesktop modul importálása
 
-A cikk utasításait az az. DesktopVirtualization modulnak kell követnie.
+Az Ebben a cikkben található utasításoknak megfelelően az Az.DesktopVirtualization modulra lesz szüksége.
 
 >[!NOTE]
->A nyilvános előzetes verzióban külön ZIP-fájlként adjuk meg a modult, amelyet manuálisan kell importálnia.
+>A nyilvános előzetes verzióhoz a modult külön ZIP-fájlokként biztosítjuk, amelyek manuálisan importálhatóak.
 
-A Kezdés előtt a következő parancsmag futtatásával megállapíthatja, hogy az az. DesktopVirtualization modul már telepítve van-e a munkamenetben vagy a virtuális gépen:
+Mielőtt elkezdené, a következő parancsmag futtatásával láthatja, hogy az Az.DesktopVirtualization modul már telepítve van-e a munkameneten vagy virtuális gépen:
 
 ```powershell
 Get-Module | Where-Object { $_.Name -Like "desktopvirtualization" }
 ```
 
-Ha a WAN használatával eltávolítja a modul egy meglévő példányát, és megkezdi az áttelepítést, futtassa a következő parancsmagot:
+Ha el kell távolítania a modul egy meglévő példányát, és elölről kell kezdenie, futtassa a következő parancsmagot:
 
 ```powershell
 Uninstall-Module Az.DesktopVirtualization
 ```
 
-Ha a modul blokkolva van a virtuális gépen, futtassa ezt a parancsmagot a tiltás feloldásához:
+Ha a modul le van tiltva a virtuális gépen, futtassa ezt a parancsmagot a tiltás feloldásához:
 
 ```powershell
 Unblock-File "<path>\Az.DesktopVirtualization.psm1"
 ```
 
-Ezzel a törléssel elfogyott az idő a modul importálásához.
+A tisztítás után ideje importálni a modult.
 
-1. Futtassa a következő parancsmagot, majd nyomja le az **R** billentyűt, amikor a rendszer felszólítja, hogy fogadja el az egyéni kód futtatását.
+1. Futtassa a következő parancsmagot, majd nyomja le az **R** billentyűt, amikor a rendszer kéri, hogy egyeztesen az egyéni kód futtatásával.
 
    ```powershell
    Import-Module -Name "<path>\Az.DesktopVirtualization.psm1" -Verbose
    ```
 
-2. Miután futtatta az importálási parancsmagot, ellenőrizze, hogy rendelkezik-e a MSIX-parancsmagokkal a következő parancsmag futtatásával:
+2. Az importálási parancsmag futtatása után a következő parancsmag futtatásával ellenőrizze, hogy az tartalmazza-e az MSIX-parancsmagokat:
 
    ```powershell
    Get-Command -Module Az.DesktopVirtualization | Where-Object { $_.Name -match "MSIX" }
    ```
 
-   Ha a parancsmagok vannak, a kimenetnek a következőhöz hasonlóan kell kinéznie:
+   Ha a parancsmagok vannak, a kimenetnek így kell kinéznie:
 
    ```powershell
    CommandType     Name                                               Version    Source
@@ -111,19 +107,19 @@ Ezzel a törléssel elfogyott az idő a modul importálásához.
    Function        Update-AzWvdMsixPackage                            0.0        Az.DesktopVirtualization
    ```
 
-   Ha nem látja ezt a kimenetet, zárjunk be minden PowerShell-és PowerShell Core-munkamenetet, és próbálkozzon újra.
+   Ha nem látja ezt a kimenetet, zárja be az összes PowerShellt, és PowerShell Core munkameneteket, és próbálkozzon újra.
 
 ## <a name="set-up-helper-variables"></a>Segítő változók beállítása
 
-Miután importálta a modult, be kell állítania a segítő változókat. Az alábbi példák azt mutatják be, hogyan végezheti el az egyes műveleteket.
+A modul importálása után be kell állítania a segítő változókat. Az alábbi példák bemutatják, hogyan kell mindegyiket megtenni.
 
-Az előfizetés-azonosító beszerzése:
+Az előfizetés azonosítójának lekért száma:
 
 ```powershell
 Get-AzContext -ListAvailable | fl
 ```
 
-Egy Azure-bérlő és-előfizetés környezetének kiválasztása a következő névvel:
+Azure-bérlő és -előfizetés környezetének kiválasztása névvel:
 
 ```powershell
 $obj = Select-AzContext -Name "<Name>"
@@ -141,57 +137,57 @@ A munkaterület nevének beállítása:
 $ws = "<WorksSpaceName>"
 ```
 
-Az alkalmazáskészlet nevének beállítása:
+A gazdagépkészlet nevének beállítása:
 
 ```powershell
 $hp = "<HostPoolName>"
 ```
 
-Az erőforráscsoport beállítása, amelyben a munkamenet-gazda virtuális gépek konfigurálva vannak:
+Az erőforráscsoport beállítása, amelyben a munkamenetgazda virtuális gépei konfigurálva vannak:
 
 ```powershell
 $rg = "<ResourceGroupName>"
 ```
 
-Végül pedig ellenőrizze, hogy helyesen állította-e be az összes változót:
+Végül pedig ellenőrizze, hogy helyesen beállította-e az összes változót:
 
 ```powershell
 Get-AzWvdWorkspace -Name $ws -ResourceGroupName $rg -SubscriptionId $subID
 ```
 
-## <a name="add-an-msix-package-to-a-host-pool"></a>MSIX-csomag hozzáadása gazdagép-készlethez
+## <a name="add-an-msix-package-to-a-host-pool"></a>MSIX-csomag hozzáadása gazdagépkészlethez
 
-Ha mindent beállított, itt az ideje, hogy hozzáadja a MSIX-csomagot egy gazdagép-készlethez. Ehhez először be kell szereznie az MSIX-rendszerkép UNC elérési útját.
+Miután mindent beállított, itt az ideje, hogy hozzáadja az MSIX-csomagot egy gazdagépkészlethez. Ezt először az MSIX-rendszerkép UNC elérési útjának be kell szereznie.
 
-Az UNC elérési úton futtassa ezt a parancsmagot a MSIX rendszerkép kibontásához:
+Az UNC elérési út használatával futtassa ezt a parancsmagot az MSIX-rendszerkép kibontásához:
 
 ```powershell
 $obj = Expand-AzWvdMsixImage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subID -Uri <UNCPath>
 ```
 
-Futtassa ezt a parancsmagot a MSIX-csomag a kívánt alkalmazáskészlethez való hozzáadásához:
+A parancsmag futtatásával adja hozzá az MSIX-csomagot a kívánt gazdagépkészlethez:
 
 ```powershell
 New-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId -PackageAlias $obj.PackageAlias -DisplayName <DisplayName> -ImagePath <UNCPath> -IsActive:$true
 ```
 
-Ha elkészült, erősítse meg, hogy a csomag a következő parancsmaggal lett létrehozva:
+Ha végzett, a következő parancsmaggal ellenőrizze, hogy a csomag létrejött-e:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object {$_.PackageFamilyName -eq $obj.PackageFamilyName}
 ```
 
-## <a name="remove-an-msix-package-from-a-host-pool"></a>MSIX-csomag eltávolítása egy gazdagépről
+## <a name="remove-an-msix-package-from-a-host-pool"></a>MSIX-csomag eltávolítása gazdagépkészletből
 
-Csomag eltávolítása az állomásról:
+Csomag eltávolítása gazdagépkészletből:
 
-Szerezze be a parancsmaggal rendelkező gazdagépekhez társított összes csomag listáját, majd keresse meg a kimenetben eltávolítani kívánt csomag nevét:
+Szerezze be a parancsmaggal a gazdagépkészlethez társított összes csomag listáját, majd keresse meg az eltávolítani kívánt csomag nevét a kimenetben:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId 
 ```
 
-Azt is megteheti, hogy egy adott csomagot is kap a megjelenítendő neve alapján a következő parancsmaggal:
+A következő parancsmaggal le is kaphat egy adott csomagot a megjelenített neve alapján:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object { $_.Name -like "Power" }
@@ -203,21 +199,21 @@ A csomag eltávolításához futtassa a következő parancsmagot:
 Remove-AzWvdMsixPackage -FullName $obj.PackageFullName -HostPoolName $hp -ResourceGroupName $rg
 ```
 
-## <a name="publish-msix-apps-to-an-app-group"></a>MSIX-alkalmazások közzététele az alkalmazás-csoportokban
+## <a name="publish-msix-apps-to-an-app-group"></a>MSIX-alkalmazások közzététele alkalmazáscsoportban
 
-A szakasz utasításait csak akkor követheti el, ha az előző szakaszokban szereplő utasításokat követte. Ha van egy aktív munkamenet-gazdagéptel rendelkező gazdagépe, legalább egy asztali alkalmazáscsoport, és egy MSIX-csomagot adott hozzá a gazdagéphez, készen áll a folytatásra.
+Csak akkor kövesse az ebben a szakaszban található utasításokat, ha befejezte az előző szakaszokban található utasításokat. Ha aktív munkamenetgazdával, legalább egy asztali alkalmazáscsoporttal rendelkezik egy gazdagépkészletben, és MSIX-csomagot adott hozzá a gazdagépkészlethez, készen áll az indulásra.
 
-Ha közzé szeretne tenni egy alkalmazást a MSIX-csomagból egy alkalmazás-csoportba, meg kell találnia a nevét, majd ezt a nevet kell használnia a közzétételi parancsmagban.
+Ha az MSIX-csomagból közzétenné az alkalmazást egy alkalmazáscsoportban, meg kell találnia a nevét, majd ezt a nevet kell használnia a közzétételi parancsmagban.
 
 Alkalmazás közzététele:
 
-Futtassa ezt a parancsmagot az összes elérhető alkalmazás csoport listázásához:
+Futtassa ezt a parancsmagot az összes elérhető alkalmazáscsoport listához:
 
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName $rg -SubscriptionId $subId
 ```
 
-Ha megtalálta annak az alkalmazás-csoportnak a nevét, amelyen közzé kívánja tenni az alkalmazásokat, használja a következő parancsmag nevét:
+Ha megtalálta annak az alkalmazáscsoportnak a nevét, amelybe alkalmazásokat szeretne közzétenni, használja a nevét ebben a parancsmagban:
 
 ```powershell
 $grName = "<AppGroupName>"
@@ -225,28 +221,28 @@ $grName = "<AppGroupName>"
 
 Végül közzé kell tennie az alkalmazást.
 
-- A MSIX-alkalmazás asztali alkalmazás-csoportba való közzétételéhez futtassa a következő parancsmagot:
+- Az MSIX-alkalmazás asztali alkalmazáscsoportban való közzétételéhez futtassa a következő parancsmagot:
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0
    ```
 
-- Az alkalmazás távoli alkalmazás-csoportba való közzétételéhez futtassa a következő parancsmagot:
+- Ha az alkalmazást egy távoli alkalmazáscsoportban is közzéteheti, futtassa inkább a következő parancsmagot:
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0 -MsixPackageApplicationId $obj.PackageApplication.AppId
    ```
 
 >[!NOTE]
->Ha egy felhasználó egy távoli alkalmazás-csoporthoz és egy asztali alkalmazáscsoport ugyanahhoz a készlethez van hozzárendelve, amikor a felhasználó a távoli asztalhoz csatlakozik, akkor mindkét csoport MSIX-alkalmazásait fogja látni.
+>Ha egy felhasználó egy távoli alkalmazáscsoporthoz és egy asztali alkalmazáscsoporthoz is hozzá van rendelve ugyanabban a gazdagépkészletben, amikor a felhasználó a távoli asztalhoz csatlakozik, mindkét csoport MSIX-alkalmazásait láthatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kérje meg a közösségi kérdéseket a szolgáltatással kapcsolatban a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+A funkcióval kapcsolatos kérdéseit a [TechCo Windows Virtual Desktop fel.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 
-A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.
+Visszajelzést is küldhet a Windows Virtual Desktop a [Windows Virtual Desktop visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
 
-Az alábbi cikkek hasznosnak bizonyulnak:
+Íme néhány további cikk, amelyek hasznosak lehetnek:
 
-- [MSIX-alkalmazás szószedetének csatolása](app-attach-glossary.md)
+- [MSIX-alkalmazás csatolása – szószedet](app-attach-glossary.md)
 - [MSIX-alkalmazás csatolása – GYIK](app-attach-faq.md)
