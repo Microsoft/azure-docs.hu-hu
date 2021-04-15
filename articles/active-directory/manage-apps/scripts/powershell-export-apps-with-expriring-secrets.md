@@ -1,30 +1,30 @@
 ---
-title: PowerShell-minta – alkalmazások exportálása a lejáró titkokkal és tanúsítványokkal Azure Active Directory bérlőben.
-description: PowerShell-példa, amely az összes olyan alkalmazást exportálja, amely lejáró titkokat és tanúsítványokat biztosít a Azure Active Directory bérlő megadott alkalmazásaihoz.
+title: PowerShell-minta – Lejáró titkos adatokat és tanúsítványokat tartalmazó alkalmazások exportálása Azure Active Directory bérlőben.
+description: PowerShell-példa, amely exportálja az összes alkalmazást, amely lejáró titkos okkal és tanúsítványokkal rendelkezik a bérlőben Azure Active Directory alkalmazásokhoz.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f129e06904497b43eff8a3f0221fb57565ac112
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149715"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375406"
 ---
-# <a name="export-apps-with-expiring-secrets-and-certificates"></a>Alkalmazások exportálása lejáró titkokkal és tanúsítványokkal
+# <a name="export-apps-with-expiring-secrets-and-certificates"></a>Lejáró titkos adatokat és tanúsítványokat feljáró alkalmazások exportálása
 
-Ez a PowerShell-parancsfájl például az összes olyan alkalmazás-regisztrációt exportálja, amely lejáró titkokkal, tanúsítványokkal és tulajdonosokkal rendelkezik a megadott alkalmazásokhoz a címtárból egy CSV-fájlban.
+Ez a PowerShell-példaszkvóta egy CSV-fájlba exportálja a címtárból az összes lejáró titkos okkal, tanúsítványokkal és azok tulajdonosával együtt az alkalmazásregisztrációkat.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph](/powershell/azure/active-directory/install-adv2) modulra (AzureAD) vagy az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) előzetes verziójára (AzureADPreview) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -32,19 +32,19 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a módosítások nélkül közvetlenül is használható. A rendszergazda a lejárati dátummal kapcsolatos információkat, valamint azt, hogy szeretné-e már lejárt titkokat vagy tanúsítványokat látni.
+A szkript közvetlenül, módosítás nélkül használható. A rendszergazda a lejárati dátumról, valamint arról is megkérdezi, hogy szeretné-e látni a már lejárt titkos kulcsokat vagy tanúsítványokat.
 
-A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
-A "New-Object" parancs létrehoz egy objektumot, amelyet a CSV-fájl exportálásának oszlopaihoz kíván használni.
-A "$Path" változót közvetlenül a PowerShellben, a CSV-fájl elérési útjával módosíthatja, ha azt szeretné, hogy az exportálás nem interaktív.
+Az "Add-Member" parancs felelős a CSV-fájlban lévő oszlopok létrehozásáért.
+A "New-Object" parancs létrehoz egy objektumot, amely a CSV-fájl exportálási oszlopaihoz lesz használva.
+A "$Path" változót közvetlenül a PowerShellben módosíthatja egy CSV-fájl elérési útjában, ha az exportálást nem interaktívnak szeretné részesíte előnyben.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Beolvas egy alkalmazást a címtárból. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Egy alkalmazás tulajdonosait kérdezi le a címtárból. |
+| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Lekér egy alkalmazást a címtárból. |
+| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Lekéri egy alkalmazás tulajdonosait a címtárból. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+Az Azure AD PowerShell-modullal kapcsolatos további információkért lásd: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazások kezeléséhez: [Azure ad PowerShell-példák az alkalmazások kezeléséhez](../app-management-powershell-samples.md).
+Az alkalmazáskezelésre vonatkozó egyéb PowerShell-példákért lásd: [Azure AD PowerShell-példák az alkalmazáskezeléshez.](../app-management-powershell-samples.md)

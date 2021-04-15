@@ -1,9 +1,9 @@
 ---
-title: PowerShell-minta – csoport társítása alkalmazásproxy-alkalmazáshoz
-description: PowerShell-példa, amely egy csoportot rendel egy Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz.
+title: PowerShell-minta – Csoport hozzárendelése alkalmazásproxy alkalmazáshoz
+description: PowerShell-példa, amely csoportot rendel egy Azure Active Directory (Azure AD) alkalmazásproxy alkalmazáshoz.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 77c4cfeb45510b1a06e02e398e20006f385511b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57c0319efe9353355dc59d9380860569ccbb18cb
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548563"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375627"
 ---
-# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Csoport társítása egy adott Azure AD Application Proxy-alkalmazáshoz
+# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Csoport hozzárendelése egy adott Azure AD-alkalmazásproxy alkalmazáshoz
 
-Ez a PowerShell-parancsfájl lehetővé teszi, hogy egy adott csoportot rendeljen hozzá egy Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz.
+Ez a PowerShell-példaszk szkript lehetővé teszi egy adott csoport hozzárendelését egy Azure Active Directory (Azure AD) alkalmazásproxy alkalmazáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Ez a PowerShell-parancsfájl lehetővé teszi, hogy egy adott csoportot rendelje
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph](/powershell/azure/active-directory/install-adv2) modulra (AzureAD) vagy az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) előzetes verziójára (AzureADPreview) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,10 +38,10 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 | Parancs | Jegyzetek |
 |---|---|
-| [New-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/New-azureadgroupapproleassignment) | Csoport társítása egy alkalmazás-szerepkörhöz. |
+| [New-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/New-azureadgroupapproleassignment) | Hozzárendel egy csoportot egy alkalmazás-szerepkörhöz. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+Az Azure AD PowerShell-modullal kapcsolatos további információkért lásd: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).
+További PowerShell-példák alkalmazásproxy Azure [AD PowerShell-példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)
