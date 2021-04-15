@@ -1,122 +1,122 @@
 ---
-title: Az alkalmazások beleegyezett az alkalmazásokkal és a Azure Active Directoryi engedélyezési kérelmek kiértékelésével
-description: Megtudhatja, hogyan kezelheti a belefoglalt kéréseket, amikor a felhasználó beleegyezik, vagy korlátozott, és hogyan értékelheti ki a bérlői szintű rendszergazdai beleegyező kéréseket Azure Active Directory-alkalmazásban.
+title: Az alkalmazásokhoz való hozzájárulás kezelése és a hozzájárulási kérelmek kiértékelása a Azure Active Directory
+description: Megtudhatja, hogyan kezelheti a hozzájárulási kérelmeket, ha a felhasználói jóváhagyás le van tiltva vagy korlátozva van, és hogyan értékelheti ki a bérlői rendszergazdai jóváhagyásra vonatkozó kéréseket a Azure Active Directory.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: phsignor
-ms.openlocfilehash: c41543cdfff4e5ffaad614f6cb7a539d78a0bdae
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3405181f9bace023950e583dfe1a334216bf0aa0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105561"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373944"
 ---
-# <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével
+# <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazásokhoz való hozzájárulás kezelése és a hozzájárulási kérelmek értékelése
 
-A Microsoft [javasolja](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) , hogy tiltsa le az alkalmazásokhoz való végfelhasználói hozzájárulásukat. Ez központosítja a szervezet biztonsági és identitás-felügyeleti csapatának döntéshozatali folyamatát.
+A Microsoft [javasolja](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) az alkalmazások végfelhasználói jóváhagyásának letiltését. Ez központosítja a döntéshozatali folyamatot a szervezet biztonsági és identitás-rendszergazdai csapatával.
 
-A végfelhasználók belefoglalásának letiltását vagy korlátozását követően számos fontos szempontot kell figyelembe venni, hogy a szervezet biztonságban maradjon, miközben továbbra is lehetővé teszi az üzleti szempontból kritikus fontosságú alkalmazások használatát. Ezek a lépések elengedhetetlenek a szervezet támogatási csapatának és informatikai rendszergazdáinak, valamint a nem felügyelt fiókok harmadik féltől származó alkalmazásokban való használatának elkerüléséhez.
+A végfelhasználói jóváhagyás letiltás vagy korlátozás után több fontos szempontot is figyelembe kell vennie annak érdekében, hogy a szervezet biztonságban maradjon, miközben továbbra is lehetővé teszi az üzleti fontosságú alkalmazások használatát. Ezek a lépések elengedhetetlenek a szervezet támogatási csapatára és rendszergazdáira gyakorolt hatás minimalizálásához, miközben megakadályozzák a nem használt fiókok használatát a külső alkalmazásokban.
 
-## <a name="process-changes-and-education"></a>Folyamatok változásai és oktatás
+## <a name="process-changes-and-education"></a>Változások és oktatás feldolgozása
 
- 1. Érdemes lehet engedélyezni a rendszergazdai [hozzájárulási munkafolyamatot](configure-admin-consent-workflow.md) , hogy a felhasználók közvetlenül a beleegyezési képernyőn kérjenek rendszergazdai jóváhagyást.
+ 1. Fontolja meg a [rendszergazdai jóváhagyás munkafolyamatának engedélyezését,](configure-admin-consent-workflow.md) hogy a felhasználók közvetlenül a hozzájárulási képernyőről kérjenek rendszergazdai jóváhagyást.
 
- 2. Győződjön meg arról, hogy az összes rendszergazda tisztában van az [engedélyek és a hozzájárulási keretrendszerrel](../develop/consent-framework.md), hogyan működik a [hozzájárulási](../develop/application-consent-experience.md) kérés, és hogyan [értékelhető ki a bérlői szintű rendszergazdai hozzájárulás iránti kérelem](#evaluating-a-request-for-tenant-wide-admin-consent).
- 3. Tekintse át a szervezete meglévő folyamatait, hogy a felhasználók rendszergazdai jóváhagyást kérjenek egy alkalmazáshoz, és szükség esetén végezze el a szükséges frissítéseket. Ha a folyamatok módosulnak:
-    * Frissítse a kapcsolódó dokumentációt, figyelést, automatizálást stb.
-    * Az összes érintett felhasználó, fejlesztő, támogatási csoport és rendszergazdák számára a folyamat változásainak közlése.
+ 2. Győződjön meg arról, hogy az összes [](../develop/application-consent-experience.md) rendszergazda megértette az engedélyeket és a hozzájárulási keretrendszert, [](../develop/consent-framework.md)a hozzájárulási kérés működését, valamint a bérlői szintű rendszergazdai hozzájárulásra vonatkozó kérelem [kiértékelését.](#evaluating-a-request-for-tenant-wide-admin-consent)
+ 3. Tekintse át a szervezet meglévő felhasználói folyamatait, amelyekben rendszergazdai jóváhagyást kérhetnek egy alkalmazáshoz, és szükség esetén frissítést is kérhetnek. Ha a folyamatok módosulnak:
+    * Frissítse a vonatkozó dokumentációt, monitorozást, automatizálást stb.
+    * A folyamat változásainak kommunikálása az összes érintett felhasználóval, fejlesztővel, támogatási csapattal és informatikai rendszergazdával.
 
 ## <a name="auditing-and-monitoring"></a>Naplózás és figyelés
 
-1. Az [alkalmazások naplózása és az engedélyek](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) megadásával biztosítható, hogy ne legyenek biztosítva indokolatlan vagy gyanús alkalmazások számára az adathozzáférés.
+1. [Naplózhatja az alkalmazásokat,](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) és engedélyeket kapott a szervezetben annak érdekében, hogy korábban ne kapjon hozzáférést az adatokhoz a nem biztonságos vagy gyanús alkalmazások számára.
 
-2. Tekintse át a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) további ajánlott eljárások és a OAuth-hozzájárulást kérő gyanús alkalmazások elleni védelem érdekében.
+2. Az [Office 365-ben](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) a hamis hozzájárulási jogosultságok észlelése és szervizelése cikk további ajánlott eljárásokat és védelmet biztosít az OAuth-hozzájárulást kérő gyanús alkalmazások ellen.
 
 3. Ha a szervezet rendelkezik a megfelelő licenccel:
 
-    * [A Microsoft Cloud app Security további OAuth alkalmazás-naplózási funkcióit](/cloud-app-security/investigate-risky-oauth)használhatja.
-    * [Azure monitor munkafüzetek használata az engedélyek és a](../reports-monitoring/howto-use-azure-monitor-workbooks.md) hozzájuk kapcsolódó tevékenységek figyeléséhez. A *beleegyező* adatellenőrzési munkafüzet az alkalmazások megtekintését teszi lehetővé a sikertelen beleegyező kérelmek száma alapján. Ez hasznos lehet a rendszergazdák számára az alkalmazások prioritásának áttekintésére és eldöntésére, hogy a rendszergazda beleegyezik-e.
+    * További [OAuth alkalmazás-naplózási funkciókat a](/cloud-app-security/investigate-risky-oauth)Microsoft Cloud App Security.
+    * A [Azure Monitor munkafüzetek használatával figyelheti az engedélyeket és a hozzájárulással](../reports-monitoring/howto-use-azure-monitor-workbooks.md) kapcsolatos tevékenységeket. A *Consent Insights* munkafüzetben megtekintheti az alkalmazásokat a sikertelen hozzájárulási kérelmek száma alapján. Ez hasznos lehet az alkalmazások rendszergazdák számára való rangsorolatában, hogy áttekintsék és eldöntsék, meg kell-e adni nekik a rendszergazdai jóváhagyást.
 
-### <a name="additional-considerations-for-reducing-friction"></a>További szempontok a súrlódás csökkentése érdekében
+### <a name="additional-considerations-for-reducing-friction"></a>További szempontok a súrlódások csökkentéséhez
 
-A már használatban lévő, megbízható, üzleti szempontból kritikus fontosságú alkalmazások hatásának minimalizálásához érdemes proaktív módon megadnia a rendszergazdai jóváhagyást olyan alkalmazásokhoz, amelyek nagy számú felhasználói hozzájárulást biztosítanak:
+A már használatban van megbízható, üzletileg kritikus alkalmazásokra gyakorolt hatás minimalizálása érdekében fontolja meg a rendszergazdai jóváhagyás proaktív megadását a nagy számú felhasználói jóváhagyással rendelkező alkalmazásokhoz:
 
-1. Készítsen leltárt a szervezethez már hozzáadott alkalmazásokról a bejelentkezési naplók vagy a jóváhagyások engedélyezése tevékenység alapján. A PowerShell- [parancsfájlok](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) segítségével gyorsan és egyszerűen felderítheti az alkalmazásokat nagy számú felhasználói hozzájárulási támogatással.
+1. A bejelentkezési naplók vagy a hozzájárulási engedélyekkel kapcsolatos tevékenységek alapján leltárt kell venni a szervezetben már hozzáadott alkalmazásokról. A [PowerShell-szkriptek](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) segítségével gyorsan és egyszerűen felderíthetők a nagy számú felhasználói hozzájárulással megadott alkalmazások.
 
-2. Értékelje ki azokat a legfelső szintű alkalmazásokat, amelyek még nem kaptak rendszergazdai beleegyezett.
+2. Értékelje ki a legfontosabb alkalmazásokat, amelyek még nem kaptak rendszergazdai jóváhagyást.
 
    > [!IMPORTANT]
-   > Körültekintően értékelje ki az alkalmazást, mielőtt a bérlői szintű rendszergazdai hozzájárulást megadta, még akkor is, ha a szervezet számos felhasználója már beleegyezett magával.
+   > Alaposan értékelje ki az alkalmazást, mielőtt bérlői szintű rendszergazdai hozzájárulást ad, még akkor is, ha a szervezet számos felhasználója már bele is egy adott magának.
 
-3. Minden jóváhagyott alkalmazáshoz adja meg a bérlői szintű rendszergazdai jóváhagyást az alábbi módszerek egyikének használatával.
+3. Minden jóváhagyott alkalmazáshoz adjon bérlői szintű rendszergazdai jóváhagyást az alább dokumentált módszerek egyikével.
 
-4. Az egyes jóváhagyott alkalmazások esetében érdemes [korlátozni a felhasználói hozzáférés korlátozását](configure-user-consent.md).
+4. Minden jóváhagyott alkalmazáshoz érdemes korlátozni [a felhasználói hozzáférést.](configure-user-consent.md)
 
-## <a name="evaluating-a-request-for-tenant-wide-admin-consent"></a>Kérelem kiértékelése a bérlői szintű rendszergazdai engedélyhez
+## <a name="evaluating-a-request-for-tenant-wide-admin-consent"></a>Bérlői szintű rendszergazdai hozzájárulásra vonatkozó kérelem értékelése
 
-A bérlői szintű rendszergazdai jóváhagyás megadása kényes művelet.  Az engedélyek a teljes szervezet nevében kapnak engedélyt, és tartalmazhatnak a magas jogosultsági szintű műveletekhez szükséges engedélyeket. Például: szerepkör-kezelés, teljes hozzáférés az összes postaládához vagy az összes webhelyhez, valamint teljes körű felhasználó megszemélyesítés.
+A bérlői szintű rendszergazdai jóváhagyás megadása bizalmas művelet.  Az engedélyek a teljes szervezet nevében meg lesznek adni, és tartalmazhatnak a kiemelt jogosultságú műveletek megkísérléséhez szükséges engedélyeket is. Ilyen például a szerepkörkezelés, az összes postaláda vagy az összes hely teljes hozzáférése és a teljes felhasználói megszemélyesítés.
 
-A bérlői szintű rendszergazdai jóváhagyás megadása előtt meg kell győződnie arról, hogy megbízhatónak tartja az alkalmazást és az alkalmazás közzétevőjét az Ön által biztosított hozzáférés szintjén. Ha nem biztos abban, hogy az alkalmazást milyen módon vezérli, és miért kéri az alkalmazás az engedélyeket, ne *adjon meg beleegyezést*.
+A bérlői szintű rendszergazdai jóváhagyás megadása előtt meg kell győződnie arról, hogy az alkalmazás és az alkalmazás közzétevője megbízik az ön által biztosított hozzáférési szinten. Ha nem biztos abban, hogy tudja, ki vezérli az alkalmazást, és miért kéri az engedélyeket, ne *adja meg a hozzájárulást.*
 
-Az alábbi lista néhány olyan javaslatot tartalmaz, amelyeket figyelembe kell venni a rendszergazdai jóváhagyás megadására irányuló kérelem kiértékelése során.
+Az alábbi lista néhány javaslatot tartalmaz, amelyek a rendszergazdai hozzájárulás megadására vonatkozó kérelem kiértékelését ajánlásokat tartalmaznak.
 
-* **Ismerje meg az [engedélyeket és a beleegyezési keretrendszert](../develop/consent-framework.md) a Microsoft Identity platformon.**
+* **A Microsoft [identitásplatformján az engedélyeket és a](../develop/consent-framework.md) hozzájárulási keretrendszert értheti meg.**
 
-* **Ismerje meg a [delegált engedélyek és az alkalmazás engedélyei](../develop/v2-permissions-and-consent.md#permission-types)közötti különbséget.**
+* **A delegált és az alkalmazásengedélyek [közötti különbség.](../develop/v2-permissions-and-consent.md#permission-types)**
 
-   Az alkalmazás engedélyei lehetővé teszik az alkalmazás számára a teljes szervezethez tartozó adathozzáférést felhasználói beavatkozás nélkül. A delegált engedélyek lehetővé teszik, hogy az alkalmazás olyan felhasználó nevében járjon el, aki egy bizonyos ponton be lett jelentkezve az alkalmazásba.
+   Az alkalmazásengedélyek lehetővé teszik, hogy az alkalmazás a teljes szervezet adataihoz hozzáférjen felhasználói beavatkozás nélkül. A delegált engedélyek lehetővé teszik, hogy az alkalmazás egy olyan felhasználó nevében jár el, aki egy adott ponton bejelentkezett az alkalmazásba.
 
-* **Ismerje meg a kért engedélyeket.**
+* **A kért engedélyeket értse meg.**
 
-   Az alkalmazás által kért engedélyek szerepelnek a [hozzájárulási kérésben](../develop/application-consent-experience.md). Az engedély címének kibontásakor megjelenik az engedély leírása. Az alkalmazás engedélyeinek leírása általában "bejelentkezett felhasználó nélkül" végződik. A delegált engedélyek leírása általában a bejelentkezett felhasználó nevében végződik. A Microsoft Graph API-ra vonatkozó engedélyek leírása [Microsoft Graph engedélyek hivatkozása](/graph/permissions-reference) – további API-k dokumentációja a közzétett engedélyek megismeréséhez.
+   Az alkalmazás által kért engedélyek a hozzájárulási [kérésben vannak felsorolva.](../develop/application-consent-experience.md) Az engedély címének kibontása megjeleníti az engedély leírását. Az alkalmazásengedélyek leírása általában "bejelentkezett felhasználó nélkül" végződik. A delegált engedélyek leírása általában a következőre végződik: "a bejelentkezett felhasználó nevében". A Microsoft Graph API engedélyeinek leírását az [Microsoft Graph Permissions Reference](/graph/permissions-reference) (Engedélyek referenciája) dokumentumban találhatja meg. A további API-k dokumentációjában tájékozódhat az elérhetővé tévő engedélyekről.
 
-   Ha nem érti a kért engedélyt, ne adjon meg *beleegyezést*.
+   Ha nem érti a kért engedélyeket, *ne adja meg a hozzájárulást.*
 
-* **Megtudhatja, hogy melyik alkalmazás kér engedélyeket, és ki tette közzé az alkalmazást.**
+* **Annak a tudomásán, hogy melyik alkalmazás kér engedélyeket, és ki tette közzé az alkalmazást.**
 
-   Legyen óvatos a más alkalmazásokhoz hasonló rosszindulatú alkalmazásokkal.
+   Legyen óvatos az olyan rosszindulatú alkalmazásokkal, amelyek más alkalmazásokhoz hasonlónak próbálnak kinézni.
 
-   Ha nem fér hozzá egy alkalmazás vagy annak közzétevője legitimitásához, ne *adjon meg jóváhagyást*. Ehelyett kérjen további megerősítést (például közvetlenül az alkalmazás közzétevője).
+   Ha nem biztos egy alkalmazás vagy annak közzétevője hitelességében, *ne adja meg a hozzájárulást.* Ehelyett kérjen további megerősítést (például közvetlenül az alkalmazás-közzétevőtől).
 
-* **Győződjön meg arról, hogy a kért engedélyek összhangban vannak az alkalmazás által várt funkciókkal.**
+* **Győződjön meg arról, hogy a kért engedélyek igazodnak az alkalmazástól elvárt funkciókhoz.**
 
-   Előfordulhat például, hogy egy SharePoint-webhelyeket kezelő alkalmazás delegált hozzáférést igényel az összes webhelycsoport olvasásához, de nem feltétlenül szükséges teljes hozzáférést biztosítani az összes postaládához, vagy teljes megszemélyesítési jogosultságot a címtárban.
+   Előfordulhat például, hogy egy SharePoint-webhelykezelést kínáló alkalmazásnak delegált hozzáférésre van szüksége az összes webhelycsoport olvasásához, de nem feltétlenül van szükség teljes hozzáférésre az összes postaládához vagy a címtár teljes megszemélyesítési jogosultságára.
 
-   Ha azt gyanítja, hogy az alkalmazás a szükségesnél több engedélyt kér, ne *adjon* meg belefoglalást. További részletekért vegye fel a kapcsolatot az alkalmazás gyártójával.
+   Ha azt gyanítja, hogy az alkalmazás a szükségesnél több engedélyt kér, *ne adja meg a hozzájárulást.* További részletekért lépjen kapcsolatba az alkalmazás kiadójával.
 
-## <a name="granting-consent-as-an-administrator"></a>A jóváhagyás engedélyezése rendszergazdaként
+## <a name="granting-consent-as-an-administrator"></a>Hozzájárulás megadása rendszergazdaként
 
-### <a name="granting-tenant-wide-admin-consent"></a>A bérlői szintű rendszergazdai jóváhagyás megadása
-Az Azure AD PowerShell-lel vagy a hozzájárulási kéréssel megadhatja, hogy a bérlői szintű rendszergazdai hozzájárulást a Azure Portal, az Azure AD PowerShell vagy a belefoglalt engedély használatával adja [meg az alkalmazásnak](grant-admin-consent.md) , amely részletes útmutatást biztosít a bérlői szintű rendszergazdai jóváhagyáshoz
+### <a name="granting-tenant-wide-admin-consent"></a>Bérlői szintű rendszergazdai jóváhagyás megadása
+Lásd: [Grant tenant-wide admin consent to an application](grant-admin-consent.md) (Bérlői szintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz) című témakörben részletes útmutatást kap a bérlői szintű rendszergazdai jóváhagyás Azure Portal-ból, az Azure AD PowerShell használatával vagy a hozzájárulási kérésből.
 
-### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Jóváhagyás megadása egy adott felhasználó nevében
-A teljes szervezethez való hozzáférés megadása helyett a rendszergazda a [Microsoft Graph API](/graph/use-the-api) -val is megadhatja a delegált engedélyeknek egy adott felhasználó nevében való jóváhagyását. További információ: [hozzáférés beszerzése egy felhasználó nevében](/graph/auth-v2-user).
+### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Hozzájárulás megadása egy adott felhasználó nevében
+Ahelyett, hogy a teljes szervezet számára jóváhagyást ad, a rendszergazda a [Microsoft Graph API-val](/graph/use-the-api) is engedélyt adhat a delegált engedélyekhez egyetlen felhasználó nevében. További információ: [Hozzáférés lekérte egy felhasználó nevében.](/graph/auth-v2-user)
 
-## <a name="limiting-user-access-to-applications"></a>Az alkalmazásokhoz való felhasználói hozzáférés korlátozása
-A felhasználók az alkalmazásokhoz való hozzáférését továbbra is korlátozhatja, még akkor is, ha a bérlői szintű rendszergazdai jogosultságot megadták. A felhasználók alkalmazáshoz való hozzárendelésének megkövetelésével kapcsolatos további információkért lásd: [a felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
+## <a name="limiting-user-access-to-applications"></a>A felhasználók alkalmazásokhoz való hozzáférésének korlátozása
+A felhasználók alkalmazásokhoz való hozzáférése továbbra is korlátozható, még akkor is, ha a bérlői szintű rendszergazdai hozzájárulást megadták. A felhasználók alkalmazáshoz való hozzárendelésének megkövetelésével kapcsolatos további információkért lásd a felhasználók és csoportok [hozzárendelésének módszereit.](./assign-user-or-group-access-portal.md)
 
-További információk a további összetett forgatókönyvek kezeléséről: az [Azure ad használata az alkalmazás-hozzáférés kezeléséhez](what-is-access-management.md).
+A további összetett forgatókönyvek kezelésével kapcsolatos általánosabb információkért lásd: Using Azure AD for application access management (Az Azure AD használata [alkalmazás-hozzáférés-kezeléshez).](what-is-access-management.md)
 
-## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Minden jövőbeli felhasználói beleegyező művelet letiltása bármely alkalmazáshoz
-A teljes címtár felhasználói beleegyezésének letiltása megakadályozza, hogy a végfelhasználók bármilyen alkalmazást fogadnak el. A rendszergazdák továbbra is engedélyezhetik a felhasználó nevében való hozzájárulásukat. Ha többet szeretne megtudni az alkalmazások beleegyezéséről, és miért nem szeretne beleegyezést kapni, olvassa el a [felhasználói és rendszergazdai beleegyezést](../develop/howto-convert-app-to-be-multi-tenant.md)ismertető témakört.
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Az összes jövőbeli felhasználói hozzájárulási művelet letiltása bármely alkalmazáshoz
+A felhasználói jóváhagyás letiltása a teljes címtárra vonatkozik, így a végfelhasználók nem járulnak hozzá az alkalmazásokhoz. A rendszergazdák továbbra is járulnak hozzá a felhasználó nevében. Az alkalmazás-jóváhagyással kapcsolatos további információkért, valamint annak okával kapcsolatban, hogy Ön miért szeretne vagy miért nem, olvassa el A felhasználói és rendszergazdai [hozzájárulás ismertetése című témakört.](../develop/howto-convert-app-to-be-multi-tenant.md)
 
-Ha le szeretné tiltani az összes jövőbeli felhasználói beleegyező műveletet a teljes címtárban, kövesse az alábbi lépéseket:
-1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
-2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
-3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
-4.  A navigációs menüben válassza a **felhasználók és csoportok** lehetőséget.
+Ha le szeretné tiltani az összes jövőbeli felhasználói hozzájárulási műveletet a teljes címtárban, kövesse az alábbi lépéseket:
+1.  Nyissa meg [**Azure Portal,**](https://portal.azure.com/) és jelentkezzen be globális **rendszergazdaként.**
+2.  Nyissa meg **Azure Active Directory bővítményt**  a bal oldali fő navigációs menü tetején található Minden szolgáltatás elemre kattintva.
+3.  Írja be **a "Azure Active Directory"** elemet a szűrő keresőmezőbe, és válassza ki **Azure Active Directory** elemet.
+4.  A **navigációs menüben válassza a** Felhasználók és csoportok lehetőséget.
 5.  Válassza a **Felhasználói beállítások** elemet.
-6.  Tiltsa le az összes jövőbeli felhasználói megkötési műveletet úgy, hogy a **felhasználók engedélyezik, hogy az alkalmazások hozzáférjenek az adatokhoz** , és **ne** kattintson a **Save (Mentés** ) gombra.
+6.  Tiltsa le az összes  jövőbeli felhasználói hozzájárulási műveletet. Ehhez a Felhasználók engedélyezhetik az alkalmazásoknak az adataikhoz való hozzáférést beállítást a Nem beállításra, majd **kattintson** a **Mentés gombra.**
 
 ## <a name="next-steps"></a>Következő lépések
-* [Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
-* [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
+* [Öt lépés az identitás-infrastruktúra biztonságossá tétele érdekében](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
+* [A rendszergazdai jóváhagyás munkafolyamatának konfigurálása](configure-admin-consent-workflow.md)
 * [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
+* [Engedélyek és jóváhagyás a Microsoft identitásplatformján](../develop/v2-permissions-and-consent.md)

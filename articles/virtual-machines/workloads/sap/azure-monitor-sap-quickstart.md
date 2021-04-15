@@ -1,108 +1,108 @@
 ---
-title: SAP-megoldások Azure Monitor üzembe helyezése a Azure Portal
-description: SAP-megoldások Azure Monitor üzembe helyezése a Azure Portal
+title: Sap Azure Monitor megoldások üzembe helyezése a Azure Portal
+description: Sap Azure Monitor megoldások üzembe helyezése a Azure Portal
 author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 096f0425a6893d68341b97c821481fa0adf2f95c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554059"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375270"
 ---
-# <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
+# <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>A Azure Monitor for SAP Solutions üzembe helyezése Azure Portal
 
-Az SAP-megoldások erőforrásainak Azure Monitor a [Azure Portal](https://azure.microsoft.com/features/azure-portal)használatával hozhatók létre. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a Azure Monitor SAP-megoldások üzembe helyezéséhez és a szolgáltatók konfigurálásához.
+Azure Monitor for SAP Solutions erőforrások a következővel [Azure Portal:](https://azure.microsoft.com/features/azure-portal). Ez a módszer egy böngészőalapú felhasználói felületet biztosít a Azure Monitor for SAP Solutions és konfigurálja a szolgáltatókat.
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
-## <a name="create-monitoring-resource"></a>Figyelési erőforrás létrehozása
+## <a name="create-monitoring-resource"></a>Monitorozási erőforrás létrehozása
 
-1. Válassza ki Azure Monitor az **Azure Marketplace**-en elérhető **SAP-megoldásokhoz** .
+1. Válassza **Azure Monitor for SAP Solutions** lehetőséget **a Azure Marketplace** közül.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="A rendszerkép az Azure Marketplace-en elérhető SAP-megoldások Azure Monitor kiválasztását mutatja be." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="Az SAP-megoldásokhoz Azure Monitor ajánlat kiválasztását bemutató kép Azure Marketplace." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
-2. Az **alapvető beállítások** lapon adja meg a szükséges értékeket. Ha alkalmazható, használhat meglévő Log Analytics munkaterületet.
+2. Az Alapvető **beállítások lapon** adja meg a szükséges értékeket. Ha lehetséges, használhat egy meglévő Log Analytics-munkaterületet.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="A Azure Portal konfigurációs beállításainak megjelenítése." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="A konfigurációs Azure Portal megjelenítése." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
-3. A virtuális hálózat kiválasztásakor győződjön meg arról, hogy a figyelni kívánt rendszerek elérhetők a VNET belülről. 
+3. Virtuális hálózat kiválasztásakor győződjön meg arról, hogy a figyelni kívánt rendszerek elérhetőek a virtuális hálózaton belülről. 
 
    > [!IMPORTANT]
-   > Ha a **megosztás** lehetőséget választja a Microsofttal való adatmegosztáshoz, a támogatási csapatunk további támogatást biztosít.
+   > Ha a **Megosztás** lehetőséget választjuk a Microsofttal való adatmegosztáshoz, a támogatási csapatunk további támogatást nyújthat.
 
 ## <a name="configure-providers"></a>Szolgáltatók konfigurálása
 
 ### <a name="sap-hana-provider"></a>SAP HANA szolgáltató 
 
-1. Válassza a **szolgáltató** lapot a konfigurálni kívánt szolgáltatók hozzáadásához. A figyelési erőforrás telepítése után több szolgáltatót is hozzáadhat egy másik után, vagy hozzáadhatja őket. 
+1. Válassza **a Szolgáltató** lapot a konfigurálni kívánt szolgáltatók hozzáadásához. Több szolgáltatót is hozzáadhat, vagy hozzáadhatja őket a figyelési erőforrás üzembe helyezése után. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Megjeleníti a szolgáltató lapot, és további szolgáltatókat adhat hozzá a Azure Monitor SAP-megoldásokhoz." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="A szolgáltató lapon további szolgáltatókat adhat hozzá a Azure Monitor for SAP Solutions." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő menüből válassza a **SAP HANA** lehetőséget. 
+2. Válassza **a Szolgáltató hozzáadása lehetőséget,** **SAP HANA** a legördülő menüből. 
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy SAP HANA szolgáltató konfigurálva van a SAP HANA "Master" csomóponthoz.
+   > Győződjön meg SAP HANA, hogy a szolgáltató konfigurálva van SAP HANA fő csomóponthoz.
 
 3. Adja meg a HANA-kiszolgáló magánhálózati IP-címét.
 
-4. Adja meg a használni kívánt adatbázis-bérlő nevét. Bármelyik bérlőt kiválaszthatja, de javasoljuk a **SYSTEMDB** használatát, mivel a figyelési területek szélesebb körét teszi lehetővé. 
+4. Adja meg a használni kívánt adatbázis-bérlő nevét. Bármelyik bérlőt választhatja, javasoljuk a **SYSTEMDB használatát,** mivel az szélesebb körű figyelési területet tesz lehetővé. 
 
-5. Adja meg a HANA-adatbázishoz tartozó SQL-portszámot. A portszámnak a ( **[3]**[  +  **instance #]**  +  **[13]** formátumban kell lennie. Például 30013. 
+5. Adja meg a HANA-adatbázishoz társított SQL-portszámot. A portszám formátumának a következőnek kell lennie: **[3]**  +  **[instance#]**  +  **[13]**. Például: 30013. 
 
-6. Adja meg a használni kívánt adatbázis-felhasználónevet. Győződjön meg arról, hogy az adatbázis-felhasználónak van hozzárendelve a **figyelés** és a **katalógus olvasási** szerepköre. 
+6. Adja meg a használni kívánt adatbázis-felhasználónevet. Győződjön meg arról, hogy az adatbázis-felhasználó rendelkezik hozzárendelt **figyelési** **és katalógus-olvasási szerepkörökkel.** 
 
-7. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
+7. Ha elkészült, válassza a **Szolgáltató hozzáadása lehetőséget.** Folytassa szükség szerint további szolgáltatók hozzáadását, vagy válassza az **Áttekintés + létrehozás** lehetőséget az üzembe helyezés befejezéséhez.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="A szolgáltatói információk hozzáadásakor a konfigurációs beállítások képe." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="A szolgáltatói adatok hozzáadásakor rendelkezésre álló konfigurációs beállítások képe." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
-### <a name="high-availability-cluster-pacemaker-provider"></a>Magas rendelkezésre állású fürt (pacemaker) szolgáltatója
+### <a name="high-availability-cluster-pacemaker-provider"></a>Magas rendelkezésre állású fürtszolgáltató (Pacemaker)
 
-1. Válassza ki a **magas rendelkezésre állású fürtöt (pacemaker)** a legördülő menüből. 
+1. A legördülő menüben válassza a Magas rendelkezésre állású fürt **(Pacemaker)** lehetőséget. 
 
    > [!IMPORTANT]
-   > A magas rendelkezésre állású fürt (pacemaker) szolgáltatójának konfigurálásához győződjön meg arról, hogy a ha_cluster_provider telepítve van az egyes csomópontokon. További információ: [Ha a fürt exportőre](https://github.com/ClusterLabs/ha_cluster_exporter#installation)
+   > A magas rendelkezésre állású fürt (Pacemaker) szolgáltatójának konfigurálása érdekében győződjön meg arról, hogy a ha_cluster_provider minden csomóponton telepítve van. További információ: [HA-fürtök halmaza](https://github.com/ClusterLabs/ha_cluster_exporter#installation)
 
-2. Adja meg a Prometheus-végpontot a formájában http://IP:9664/metrics . 
+2. Adja meg a Prometheus végpontot a következő formában: http://IP:9664/metrics . 
  
-3. Adja meg a rendszerazonosító (SID), az állomásnév és a fürt nevét.
+3. Adja meg a rendszerazonosítót (SID), az állomásnevet és a fürt nevét.
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
+4. Ha elkészült, válassza a **Szolgáltató hozzáadása lehetőséget.** Folytassa szükség szerint további szolgáltatók hozzáadását, vagy válassza az **Áttekintés + létrehozás** lehetőséget az üzembe helyezés befejezéséhez.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="A rendszerkép a HA-fürt pacemaker-szolgáltatójához kapcsolódó beállításokat jeleníti meg." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="A képen a HA-fürt Pacemaker szolgáltatójához kapcsolódó lehetőségek láthatóak." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
-### <a name="os-linux-provider"></a>Operációs rendszer (Linux) szolgáltatója 
+### <a name="os-linux-provider"></a>Operációsrendszer-szolgáltató (Linux) 
 
-1. Válassza az operációs rendszer (Linux) lehetőséget a legördülő menüből 
-
->[!IMPORTANT]
-> Az operációs rendszer (Linux) szolgáltatójának konfigurálásához győződjön meg arról, hogy a Node_Exporter legújabb verziója telepítve van minden olyan gazdagépen (BareMetal vagy virtuális gépen), amelyet figyelni szeretne. Használja ezt a [link] ( https://prometheus.io/download/#node_exporter) a legújabb verzió megkereséséhez. További információ: [Node_Exporter](https://github.com/prometheus/node_exporter)
-
-2. Adjon meg egy nevet, amely a BareMetal-példány azonosítója lesz.
-3. Adja meg a Node exportőr végpontot a formájában http://IP:9100/metrics .
+1. Válassza az Operációs rendszer (Linux) lehetőséget a legördülő menüből 
 
 >[!IMPORTANT]
-> Használja a Linux-gazdagép magánhálózati IP-címét. Győződjön meg arról, hogy a gazdagép és az AMS erőforrás ugyanabban a VNET van. 
+> Az operációs rendszer (Linux) szolgáltatójának konfiguráláskor győződjön meg arról, hogy a Node_Exporter legújabb verziója telepítve van minden monitorni kívánt gazdagépen (BareMetal vagy VM). Használja ezt a [hivatkozást] ( https://prometheus.io/download/#node_exporter) a legújabb verzió megkereshez. További információ: [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. Adja meg a nevet, amely az BareMetal-példány azonosítója lesz.
+3. Adja meg a csomópont-végpontot a következő formában: http://IP:9100/metrics .
+
+>[!IMPORTANT]
+> Használja a Linux-gazdagép magánhálózati IP-címét. Győződjön meg arról, hogy a gazdagép és az AMS erőforrás ugyanazon a virtuális hálózaton található. 
 
 >[!Note]
-> A tűzfal "9100" portját meg kell nyitni a Linux-gazdagépen.
->Ha a tűzfal-cmd: Firewall-cmd--Permanent--Add-port = 9100/TCP tűzfal-cmd--reload a UFW használata esetén: UFW Allow 9100/TCP UFW reload
+> A "9100" tűzfalportot meg kell nyitni a Linux-gazdagépen.
+>Firewall-cmd használata esetén: firewall-cmd --permanent --add-port=9100/tcp firewall-cmd --reload Ha az ufw: ufw allow 9100/tcp ufw reload
 
 >[!Tip]
-> Ha a Linux-gazdagép egy Azure-beli virtuális gép, ügyeljen arra, hogy az összes megfelelő NSG engedélyezze a bejövő forgalmat a 9100-as porton a forrásként.
+> Ha a linuxos gazdagép Egy Azure-beli virtuális gép, győződjön meg arról, hogy az összes vonatkozó NSG engedélyezi a bejövő forgalmat a 9100-as porton a "VirtualNetwork" forrásként.
  
-5. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget   . 
+5. Ha elkészült, válassza a **Szolgáltató hozzáadása lehetőséget.** Folytassa szükség szerint további szolgáltatók hozzáadását, vagy válassza az **Áttekintés + létrehozás** lehetőséget az üzembe helyezés   befejezéséhez. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server szolgáltató
 
-1. A Microsoft SQL Server-szolgáltató hozzáadása előtt futtassa a következő parancsfájlt SQL Server Management Studio egy olyan felhasználó létrehozásához, amely a szolgáltató konfigurálásához szükséges megfelelő engedélyekkel rendelkezik.
+1. A Microsoft SQL Server hozzáadása előtt futtassa a következő szkriptet a SQL Server Management Studio a szolgáltató konfiguráláshoz szükséges engedélyekkel rendelkező felhasználó létrehozásához.
 
    ```sql
    USE [<Database to monitor>]
@@ -129,14 +129,40 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
    GO
    ``` 
 
-2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő menüből válassza a **Microsoft SQL Server** lehetőséget. 
+2. Válassza **a Szolgáltató hozzáadása lehetőséget,** **Microsoft SQL Server** a legördülő menüből. 
 
-3. Töltse ki a mezőket a Microsoft SQL Serverhoz tartozó adatok használatával. 
+3. Töltse ki a mezőket a saját Microsoft SQL Server. 
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
+4. Ha elkészült, válassza a **Szolgáltató hozzáadása lehetőséget.** Folytassa szükség szerint további szolgáltatók hozzáadását, vagy válassza az **Áttekintés + létrehozás** lehetőséget az üzembe helyezés befejezéséhez.
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="A rendszerkép a Microsoft SQL Server-szolgáltató hozzáadásával kapcsolatos információkat jeleníti meg." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="A képen a szolgáltató hozzáadásával kapcsolatos Microsoft SQL Server látható." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+
+### <a name="sap-netweaver-provider"></a>SAP NetWeaver szolgáltató
+
+#### <a name="pre-requisites-for-adding-netweaver-provider"></a>A NetWeaver szolgáltató hozzáadásának előfeltételei
+
+Az "SAP start service" számos szolgáltatást nyújt, beleértve az SAP-rendszer monitorozását. Az "SAPControl" egy SOAP webszolgáltatás-felület, amely ezeket a képességeket teszi elérhetővé. Ez az SAPControl webszolgáltatási felület megkülönbözteti a védett és a nem [védett](https://wiki.scn.sap.com/wiki/display/SI/Protected+web+methods+of+sapstartsrv) webszolgáltatás-metódusokat. Bizonyos metrikák lekérésének lehetővé tennie bizonyos metódusok védmét. Az aktuális kiadáshoz szükséges metódusok vélmének feloldása érdekében kövesse az alábbi lépéseket az egyes SAP-rendszerekhez:
+
+1. SAP GUI-kapcsolat megnyitása az SAP-kiszolgálóhoz
+2. Bejelentkezés rendszergazdai fiókkal
+3. RZ10 tranzakció végrehajtása
+4. Válassza ki a megfelelő profilt (DEFAULT. PFL)
+5. Válassza a Kiterjesztett karbantartás lehetőséget, majd kattintson a Módosítás gombra. 
+6. Módosítsa a "service/protectedwebmethods" érintett paraméter értékét "SDEFAULT -GetQueueStatistic –ABAPGetWPTable –EnqGetStatistic –GetProcessList" értékre az ajánlott beállításra, és kattintson a Másolás gombra.
+7. Vissza profil mentése és >kiválasztása
+8. A paraméter érvénybe lépő újraindítási rendszere
+
+#### <a name="installing-netweaver-provider-on-the-azure-portal"></a>NetWeaver szolgáltató telepítése a Azure Portal
+1.  Győződjön meg arról, hogy az előfeltételként szükséges lépések befejeződtek, és a kiszolgáló újraindult
+2.  A Azure Portal AMS alatt válassza a Szolgáltató hozzáadása, majd az SAP NetWeaver lehetőséget a legördülő menüből.
+3.  Adja meg az SAP-rendszer és az altartomány állomásnevét (ha van)
+4.  Adja meg a megadott állomásnévnek megfelelő példányszámot 
+5.  Adja meg a rendszerazonosítót (SID)
+6.  Ha elkészült, válassza a Szolgáltató hozzáadása lehetőséget.
+7.  Folytassa szükség szerint további szolgáltatók hozzáadását, vagy válassza az Áttekintés + létrehozás lehetőséget az üzembe helyezés befejezéséhez
+
+![image](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az [SAP-megoldások Azure monitor](azure-monitor-overview.md)
+További információ [a](azure-monitor-overview.md) Azure Monitor for SAP Solutions

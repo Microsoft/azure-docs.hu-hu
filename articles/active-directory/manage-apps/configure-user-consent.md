@@ -1,67 +1,67 @@
 ---
-title: Annak konfigurálása, hogy a végfelhasználók miként egyeznek az Azure AD-vel az alkalmazásokkal
-description: Megtudhatja, hogyan és mikor férhet hozzá a felhasználók a szervezet adataihoz hozzáférő alkalmazásokhoz.
+title: A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása az Azure AD-vel
+description: Megtudhatja, hogyan és mikor lehet kezelni, hogy a felhasználók hogyan és mikor járulnak hozzá olyan alkalmazásokhoz, amelyek hozzáférhetnek a szervezet adataihoz.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a651f6201c9f60500c9191821edb7eb76b8535
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643609"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374437"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
-Az alkalmazásait a Microsoft Identity platformmal integrálva engedélyezheti a felhasználók számára, hogy munkahelyi vagy iskolai fiókjával jelentkezzenek be, és hozzáférjenek a szervezet adataihoz, és így gazdag adatvezérelt felhasználói élményt nyújtsanak.
+Alkalmazásait integrálhatja a Microsoft identitásplatformmal, így a felhasználók bejelentkezhetnek munkahelyi vagy iskolai fiókjukkal, és hozzáférhetnek a szervezeti adatokhoz, így gazdag adatvezérelt felhasználói élményt kínálnak.
 
-Ahhoz, hogy egy alkalmazás hozzáférhessen a szervezet adataihoz, a felhasználónak meg kell adnia az alkalmazás engedélyeit. A különböző engedélyek különböző hozzáférési szinteket tesznek lehetővé. Alapértelmezés szerint az összes felhasználó beleegyezik abba, hogy a rendszergazdai jogosultságokat nem igénylő engedélyekkel rendelkező alkalmazások is beleegyeznek. Alapértelmezés szerint például egy felhasználó hozzájárulhat ahhoz, hogy egy alkalmazás hozzáférjen a postaládához, de nem tud beleegyezni, hogy az alkalmazás korlátlanul hozzáférhessen a szervezet összes fájljának olvasásához és írásához.
+Ahhoz, hogy egy alkalmazás hozzáfér a szervezet adataihoz, a felhasználónak engedélyeket kell adnunk az alkalmazásnak erre. A különböző engedélyek különböző hozzáférési szinteket engedik. Alapértelmezés szerint minden felhasználó engedélyt ad az alkalmazásoknak olyan engedélyekhez való hozzájárulására, amelyekhez nincs szükség rendszergazdai jóváhagyásra. A felhasználók például alapértelmezés szerint engedélyezhetik, hogy az alkalmazások hozzáférjenek a postaládájukhoz, de nem engedélyezhetik, hogy egy alkalmazás a szervezet összes fájljának olvasson és írjon.
 
-Azáltal, hogy lehetővé teszi, hogy a felhasználók alkalmazásokat adjanak az adathozzáféréshez, a felhasználók könnyen vásárolhatnak hasznos alkalmazásokat, és hatékonyan dolgozhatnak. Bizonyos helyzetekben azonban ez a konfiguráció akkor is jelenthet kockázatot, ha a rendszer nem figyeli és nem ellenőrzi körültekintően.
+Azáltal, hogy a felhasználók hozzáférést adhatnak az alkalmazásoknak az adatokhoz, a felhasználók könnyen hasznos alkalmazásokat szerezhetnek be, és hatékonyan dolgozhatnak. Bizonyos helyzetekben azonban ez a konfiguráció kockázatot jelenthet, ha nem figyelik és nem irányítják körültekintően.
 
 > [!IMPORTANT]
-> Annak érdekében, hogy csökkentse a felhasználókat a szervezet adataihoz való hozzáférést biztosító rosszindulatú alkalmazások kockázatát, javasoljuk, hogy csak a [hitelesített közzétevő](../develop/publisher-verification-overview.md)által közzétett alkalmazásokhoz engedélyezze a felhasználói jóváhagyást.
+> Annak érdekében, hogy csökkentse annak kockázatát, hogy rosszindulatú alkalmazások kísérelik megtévesztni a felhasználókat a szervezeti adatokhoz való hozzáférés megadásában, javasoljuk, hogy csak az ellenőrzött közzétevő által közzétett alkalmazásokhoz engedélyezze a felhasználói [jóváhagyást.](../develop/publisher-verification-overview.md)
 
-## <a name="user-consent-settings"></a>Felhasználói beleegyező beállítások
+## <a name="user-consent-settings"></a>Felhasználói hozzájárulási beállítások
 
-Az alkalmazás-engedélyezési szabályzatok azokat a feltételeket írják le, amelyeknek teljesülniük kell ahhoz, hogy az alkalmazás jóvá lehessen hagyni. Ezek a szabályzatok tartalmazhatják a hozzáférést kérő alkalmazás feltételeit, valamint az alkalmazás által kért engedélyeket.
+Az alkalmazás-hozzájárulási szabályzatok azokat a feltételeket írják le, amelyeket az alkalmazás beleegyezése előtt meg kell adni. Ezek a szabályzatok a hozzáférést kérő alkalmazásra vonatkozó feltételeket, valamint az alkalmazás által kért engedélyeket is tartalmazhatnak.
 
-Ha kiválasztja, hogy mely alkalmazás-jóváhagyási szabályzatok érvényesek az összes felhasználóra vonatkozóan, megadhatja a korlátozásokat, amikor a végfelhasználók jóváhagyják az alkalmazásokat
+Ha kiválasztja, hogy mely alkalmazás-hozzájárulási szabályzatok vonatkoznak az összes felhasználóra, korlátokat állíthat be arra, hogy mikor adhatnak engedélyt a végfelhasználók az alkalmazásoknak, és mikor kell rendszergazdai felülvizsgálatot és jóváhagyást kérniük:
 
-* **Felhasználói jóváhagyás letiltása** – a felhasználók nem adhatnak engedélyeket az alkalmazásoknak. A felhasználók továbbra is bejelentkezhetnek azokba az alkalmazásokba, amelyekre korábban beleegyezett, vagy amelyeket a rendszergazdák jóváhagytak a nevükben, de nem jogosultak új engedélyekre vagy új alkalmazásokra. Csak azok a felhasználók férhetnek hozzá az új alkalmazásokhoz, akik olyan címtárbeli szerepkört adtak meg, amely belefoglalja a jóváhagyást.
+* **Felhasználói hozzájárulás letiltása –** A felhasználók nem adhatnak engedélyeket az alkalmazásoknak. A felhasználók továbbra is bejelentkezhetnek az olyan alkalmazásokba, amelyekhez korábban hozzájárultak, vagy amelyeket a rendszergazdák a nevükben engedik, de nem kaphatnak engedélyt az új engedélyek vagy az új alkalmazások saját kezű kezű hozzájárulására. Csak azok a felhasználók fognak hozzájárulni az új alkalmazásokhoz, akik címtárbeli szerepkört kaptak, amely a hozzájárulás megadásának engedélyével rendelkezik.
 
-* A felhasználók beleegyeznek **az ellenőrzött közzétevők vagy a szervezete alkalmazásaiba, de csak a kiválasztott engedélyek esetében** – minden felhasználó csak olyan alkalmazásokat tud jóváhagyni, amelyeket egy [ellenőrzött közzétevő](../develop/publisher-verification-overview.md) és a bérlőben regisztrált alkalmazások tettek közzé. A felhasználók csak az "alacsony hatású" besorolású engedélyekkel rendelkezhetnek. Be kell [sorolnia az engedélyeket](configure-permission-classifications.md) annak kiválasztásához, hogy a felhasználók milyen engedélyeket vehetnek igénybe.
+* A felhasználók engedélyt kaphatnak az ellenőrzött közzétevőktől vagy a szervezettől származó **alkalmazásokhoz,** de csak ön által kiválasztott engedélyek esetén – Minden felhasználó csak olyan alkalmazásokat hagyhat el, amelyek közzétette egy ellenőrzött közzétevő és [a](../develop/publisher-verification-overview.md) bérlőben regisztrált alkalmazások. A felhasználók csak az Ön által "alacsony hatásúként" besorolt engedélyekhez járulnak hozzá. Az [engedélyeket osztályoznia](configure-permission-classifications.md) kell annak kiválasztásához, hogy a felhasználók mely engedélyekhez járulhatnak hozzá.
 
-* A felhasználók beleegyeznek **az összes** alkalmazásba – ez a beállítás lehetővé teszi, hogy minden felhasználó beleegyezést kérjen bármely alkalmazáshoz a rendszergazdai hozzájárulást nem igénylő engedélyekhez.
+* **A felhasználók minden alkalmazáshoz** engedélyt kaphatnak – Ez a beállítás lehetővé teszi, hogy minden felhasználó elfogadja az olyan engedélyeket, amelyekhez nincs szükség rendszergazdai jóváhagyásra, bármely alkalmazáshoz.
 
-* **Egyéni alkalmazás-engedélyezési házirend** – a felhasználói belekötést szabályozó feltételekkel kapcsolatos további lehetőségekért [létrehozhat egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy), és beállíthatja, hogy a felhasználói beleegyezik.
+* **Egyéni alkalmazás-hozzájárulási** szabályzat – A felhasználói jóváhagyásra vonatkozó [](manage-app-consent-policies.md#create-a-custom-app-consent-policy)feltételek további beállításaihoz létrehozhat egyéni alkalmazás-hozzájárulási szabályzatot, és konfigurálhatja őket a felhasználói hozzájárulás létrehozására.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A felhasználói beleegyező beállítások konfigurálása a Azure Portal használatával:
+A felhasználói hozzájárulási beállítások konfigurálása a Azure Portal:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator).
-1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **beleegyezett és engedélyek**  >  **felhasználói beleegyező beállításait**.
-1. **Az alkalmazások felhasználói beleegyezike** területen válassza ki, hogy az összes felhasználóra vonatkozóan melyik beleegyező beállítást szeretné konfigurálni.
-1. A beállítások mentéséhez kattintson a **Mentés** gombra.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális [rendszergazdaként.](../roles/permissions-reference.md#global-administrator)
+1. Válassza **Azure Active Directory** Vállalati alkalmazások Hozzájárulás és engedélyek  >    >    >  **Felhasználói hozzájárulási beállítások lehetőséget.**
+1. A **Felhasználói jóváhagyás az alkalmazásokhoz alatt** válassza ki az összes felhasználó számára konfigurálni kívánt hozzájárulási beállítást.
+1. A **beállítások mentéséhez** válassza a Mentés lehetőséget.
 
-:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Felhasználói beleegyező beállítások":::
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Felhasználói hozzájárulási beállítások":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)legújabb Azure ad PowerShell-előnézeti modullal kiválaszthatja, hogy melyik alkalmazás-engedélyezési házirend szabályozza az alkalmazások felhasználói engedélyeit.
+Az Azure AD PowerShell előzetes verziójának legújabb modulját [(AzureADPreview)](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)használva kiválaszthatja, hogy mely alkalmazás-hozzájárulási szabályzat szabályozza az alkalmazások felhasználói hozzájárulását.
 
-#### <a name="disable-user-consent"></a>Felhasználói engedély letiltása
+#### <a name="disable-user-consent"></a>Felhasználói jóváhagyás letiltása
 
-A felhasználói engedély letiltásához állítsa be a felhasználói beleegyezett a következőre vonatkozó engedélyezési házirendeket:
+A felhasználói jóváhagyás letiltásához állítsa be a felhasználói jóváhagyást szabályozó hozzájárulási szabályzatokat üresen:
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
@@ -69,9 +69,9 @@ A felhasználói engedély letiltásához állítsa be a felhasználói beleegye
      -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
   ```
 
-#### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>Alkalmazás-engedélyezési szabályzat hatálya alá tartozó felhasználói engedély engedélyezése
+#### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>Az alkalmazás-hozzájárulási szabályzat hatálya alá tartozó felhasználói jóváhagyás engedélyezése
 
-Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy melyik alkalmazás-engedélyezési szabályzatnak kell szabályoznia a felhasználók engedélyeit az alkalmazások jóváhagyásának biztosításához:
+A felhasználói jóváhagyás engedélyezése érdekében válassza ki, hogy melyik alkalmazás-hozzájárulási szabályzat szabályozza a felhasználók engedélyét az alkalmazásokhoz való hozzájárulás megadásához:
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
@@ -79,14 +79,14 @@ Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy
      -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
-A helyére írja be az `{consent-policy-id}` alkalmazni kívánt szabályzat azonosítóját. Kiválaszthat egy létrehozott [egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , vagy a következő beépített szabályzatok közül választhat:
+Cserélje le a helyére annak a szabályzatnak az `{consent-policy-id}` azonosítóját, amit alkalmazni szeretne. Választhat egy ön által [létrehozott egyéni](manage-app-consent-policies.md#create-a-custom-app-consent-policy) alkalmazás-hozzájárulási szabályzatot, vagy választhat az alábbi beépített szabályzatok közül:
 
 | ID (Azonosító) | Leírás |
 |:---|:------------|
-| Microsoft-User-default – alacsony | **A felhasználók jóváhagyásának engedélyezése az ellenőrzött közzétevők alkalmazásai számára a kiválasztott engedélyekhez**<br /> Korlátozott felhasználói jóváhagyás engedélyezése csak az ellenőrzött közzétevők és a bérlőben regisztrált alkalmazások alkalmazásai számára, és csak az "alacsony hatás" besorolású engedélyek esetében. (Ne felejtse el [besorolni az engedélyeket](configure-permission-classifications.md) annak kiválasztásához, hogy a felhasználók milyen engedélyeket adhatnak meg.) |
-| Microsoft-User-default-Legacy | **Felhasználói beleegyezett alkalmazások engedélyezése**<br /> Ez a beállítás lehetővé teszi, hogy minden felhasználó beleegyezést kérjen minden olyan engedélyhez, amely nem igényel rendszergazdai hozzájárulást bármely alkalmazáshoz |
+| microsoft-user-default-low | **Felhasználói jóváhagyás engedélyezése az ellenőrzött közzétevőktől származó alkalmazásokhoz a kiválasztott engedélyekhez**<br /> Csak az ellenőrzött közzétevőktől és a bérlőben regisztrált alkalmazásoktól származó korlátozott felhasználói jóváhagyást engedélyezze, és csak az "Alacsony hatás" besorolású engedélyekhez. (Ne felejtse el [](configure-permission-classifications.md) besorolni az engedélyeket annak kiválasztásához, hogy a felhasználók mely engedélyekhez járulhatnak hozzá.) |
+| microsoft-user-default-legacy | **Felhasználói jóváhagyás engedélyezése alkalmazásokhoz**<br /> Ez a beállítás lehetővé teszi, hogy minden felhasználó elfogadja az olyan engedélyeket, amelyekhez nincs szükség rendszergazdai jóváhagyásra, bármely alkalmazáshoz |
   
-Ha például engedélyezni kívánja a felhasználói engedélyt a beépített szabályzattal `microsoft-user-default-low` :
+Például a beépített szabályzat hatálya alá tartozó felhasználói jóváhagyás `microsoft-user-default-low` engedélyezéséhez:
 
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
@@ -97,39 +97,39 @@ Set-AzureADMSAuthorizationPolicy `
 ---
 
 > [!TIP]
-> [Engedélyezze a rendszergazdai hozzájárulási munkafolyamatot](configure-admin-consent-workflow.md) , amely lehetővé teszi, hogy a felhasználók a rendszergazda felülvizsgálati és jóváhagyási kérelmét kérjenek a felhasználótól, ha például a felhasználó hozzájárulása le van tiltva, vagy ha egy alkalmazás olyan engedélyeket kér, amelyet a felhasználó nem engedélyez.
+> [](configure-admin-consent-workflow.md) A rendszergazdai hozzájárulási munkafolyamat engedélyezésével a felhasználók kérhetik egy olyan alkalmazás rendszergazdai jóváhagyását és jóváhagyását, amelyhez a felhasználó nem járulhat hozzá – például ha a felhasználói jóváhagyás le van tiltva, vagy ha egy alkalmazás olyan engedélyeket kér, amelyek megadására a felhasználó nem jogosult.
 
-## <a name="risk-based-step-up-consent"></a>Kockázatalapú lépésekre vonatkozó beleegyezett
+## <a name="risk-based-step-up-consent"></a>Kockázatalapú, felfelé való lépéshez szükséges hozzájárulás
 
-A kockázatalapú lépésekre [vonatkozó](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)beleegyezikés segít csökkenteni a felhasználókat olyan kártékony alkalmazásokkal szemben, amelyek nem tesznek lehetővé jogcímeket. Ha a Microsoft egy kockázatos végfelhasználói kérést észlel, a kérelemhez "Step-up" értékre van szükség a rendszergazdai beleegyező művelethez. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményezi a viselkedést, ha engedélyezve van a végfelhasználói engedély.
+A kockázatalapú, felfelé irányuló hozzájárulás segít csökkenteni a felhasználók kitettségét az olyan rosszindulatú alkalmazásoknak, amelyek hamis hozzájárulási [kérelmeket hoznak.](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) Ha a Microsoft kockázatos végfelhasználói hozzájárulási kérelmet észlel, a kérelemhez a rendszergazdai hozzájárulás "lépésére" lesz szükség. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményez viselkedésváltozást, ha a végfelhasználói jóváhagyás engedélyezve van.
 
-Kockázatos beleegyezési kérelem észlelésekor a beleegyezés kérése üzenet jelenik meg, amely jelzi, hogy a rendszergazda jóváhagyása szükséges. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó a kérést egy rendszergazdának küldheti el további áttekintés céljából közvetlenül a hozzájárulási kérésből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
+Kockázatos hozzájárulási kérelem észlelésekor a hozzájárulási kérés egy üzenetet jelenít meg, amely jelzi, hogy rendszergazdai jóváhagyásra van szükség. Ha a [rendszergazdai jóváhagyás kérésének munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó közvetlenül a hozzájárulási kérésből elküldheti a kérést egy rendszergazdának további ellenőrzésre. Ha nincs engedélyezve, a következő üzenet jelenik meg:
 
-* **AADSTS90094:** &lt; &gt; a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+* **AADSTS90094:** &lt; A clientAppDisplayName tulajdonságnak engedélyre van szüksége a szervezetben csak egy rendszergazda által &gt; megadó erőforrások eléréséhez. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
-Ebben az esetben a naplózási esemény a "ApplicationManagement" kategóriába kerül, az "alkalmazás beleegyezése", a "kockázatos alkalmazás észlelése" állapot oka is.
+Ebben az esetben a rendszer naplózza a naplózási eseményeket az "ApplicationManagement" kategóriával, a "Hozzájárulás az alkalmazáshoz" tevékenységtípussal és a "Kockázatos alkalmazás észlelve" állapot okával.
 
 > [!IMPORTANT]
-> A rendszergazdáknak a kérelmek jóváhagyása előtt körültekintően ki kell [értékelniük az összes jóváhagyási kérést](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) , különösen akkor, ha a Microsoft kockázatot észlelt.
+> A rendszergazdáknak alaposan [ki kell](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) értékelniük az összes hozzájárulási kérelmet a kérelem jóváhagyása előtt, különösen akkor, ha a Microsoft kockázatot észlelt.
 
-### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú lépésenkénti belefoglalási engedély letiltása vagy újbóli engedélyezése a PowerShell használatával
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú, részletes hozzájárulás letiltása vagy újra engedélyezése a PowerShell használatával
 
-A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)Azure ad PowerShell-előnézeti modullal letilthatja a rendszergazdai belefoglaláshoz szükséges lépéseket olyan esetekben, amikor a Microsoft észleli a kockázatokat, vagy ha korábban letiltották, újra engedélyezi.
+Az Azure AD PowerShell előzetes verziójának moduljával [(AzureADPreview)](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)letilthatja a rendszergazdai jóváhagyásra vonatkozó lépést olyan esetekben, amikor a Microsoft kockázat észlelését észleli, vagy újra engedélyezheti, ha korábban letiltották.
 
-1. Győződjön meg arról, hogy a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modult és a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is telepítette.
+1. Győződjön meg arról, hogy az [AzureADPreview modult](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) használja. Ez a lépés akkor fontos, ha telepítette az [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modult és az [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is).
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-1. Kapcsolódjon az Azure AD PowerShell-hez.
+1. Csatlakozás az Azure AD PowerShellhez.
 
    ```powershell
    Connect-AzureAD
    ```
 
-1. Az aktuális érték beolvasása a bérlőben a **beleegyező házirend-beállítások** címtár-beállításainál. Ehhez ellenőrizni kell, hogy a szolgáltatáshoz tartozó címtár-beállítások létre lettek-e hozva, és ha nem, akkor a megfelelő címtár-beállítási sablon értékeit használja.
+1. A hozzájárulási szabályzat beállításai címtárbeállítás **aktuális értékének lekérése** a bérlőben. Ehhez ellenőriznie kell, hogy létrejöttek-e a szolgáltatás címtárbeállítási, és ha nem, használja a megfelelő címtárbeállítási sablon értékeit.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -143,13 +143,13 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
     $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
 
-1. A beállítások értékének megismerése:
+1. A beállítási értékeket a következő okkal értheti meg:
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
+    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelölő, amely jelzi, hogy a rendszer letiltja-e a felhasználói jóváhagyást kockázatos kérés észlelésekor. |
 
-1. A kívánt konfiguráció frissítési beállításainak értéke:
+1. Frissítse a kívánt konfiguráció beállításértékét:
 
     ```powershell
     # Disable risk-based step-up consent entirely
@@ -177,12 +177,12 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 További tudnivalók:
 
-* [Felhasználói beleegyező beállítások konfigurálása](configure-user-consent.md)
+* [Felhasználói hozzájárulási beállítások konfigurálása](configure-user-consent.md)
 * [Alkalmazás-hozzájárulási szabályzatok kezelése](manage-app-consent-policies.md)
-* [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
-* [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
+* [A rendszergazdai jóváhagyás munkafolyamatának konfigurálása](configure-admin-consent-workflow.md)
+* [Útmutató az alkalmazásokhoz való hozzájárulás kezeléséhez és a hozzájárulási kérelmek kiértékeléséhez](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
+* [Engedélyek és jóváhagyás a Microsoft identitásplatformján](../develop/v2-permissions-and-consent.md)
 
-Segítség kérése vagy válaszok keresése a kérdéseire:
-* [Azure AD a Microsoft Q&A-ben.](/answers/topics/azure-active-directory.html)
+Segítségért vagy a kérdéseire adott válaszokért:
+* [Azure AD a Microsoft Q&A-n.](/answers/topics/azure-active-directory.html)

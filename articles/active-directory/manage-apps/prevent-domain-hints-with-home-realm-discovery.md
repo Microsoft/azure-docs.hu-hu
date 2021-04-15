@@ -1,59 +1,57 @@
 ---
-title: A bejelentkezés automatikus gyorsulásának letiltása az Azure AD-ben a Kezdőlap tartomány-felderítési házirend használatával
-description: Ismerje meg, hogyan akadályozhatja meg domain_hint az automatikus gyorsítást az összevont IDP.
+title: Bejelentkezés automatikus gyorsításának megakadályozása az Azure AD-ban a kezdőlap-felderítési szabályzat használatával
+description: Megtudhatja, hogyan akadályozhatja meg domain_hint az automatikus gyorsítást az összevont IP-kbe.
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: hirsin
-ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: iangithinji
+ms.reviewer: hirsin
+ms.openlocfilehash: b89e0e1c8bd8109fac8b4b7c05a845a3e234b617
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589378"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375550"
 ---
-# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Az automatikus gyorsítás letiltása egy összevont IDENTITÁSSZOLGÁLTATÓ a Kezdőlap tartomány-felderítési házirenddel való felhasználói bejelentkezés során
+# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Az automatikus gyorsítás letiltása összevont idP-re a felhasználói bejelentkezés során a Home Realm Discovery szabályzatával
 
-A [Kezdőlap tartományának felderítési szabályzata](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) a rendszergazdák számára több módon szabályozza a felhasználók hitelesítésének módját és helyét. A `domainHintPolicy` HRD szabályzat szakasza segítséget nyújt az összevont felhasználók átirányításához a felhőben felügyelt [](../authentication/howto-authentication-passwordless-security-key.md)hitelesítő adatokkal (például:...), ezzel biztosítva, hogy mindig felkeresik az Azure ad bejelentkezési oldalát, és a tartományi javaslatok miatt nem gyorsítják fel automatikusan az összevont identitásszolgáltató.
+[A Kezdőlap tartományfelderítési szabályzata](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) több módszert is kínál a rendszergazdáknak a felhasználók hitelesítésének módja és helyének szabályozása érdekében. A HRD-szabályzat szakasza segít az összevont felhasználók felhőben felügyelt hitelesítő adatokba (például a FIDO-ba) való áttelepítésében, mivel biztosítja, hogy mindig felkeresik az Azure AD bejelentkezési oldalát, és a tartományi tippek miatt ne gyorsítsák fel automatikusan az összevont `domainHintPolicy` idP-t. [](../authentication/howto-authentication-passwordless-security-key.md)
 
-Erre a szabályzatra olyan helyzetekben van szükség, amikor a rendszergazda nem tudja ellenőrizni vagy frissíteni a tartományhoz való hozzáadást a bejelentkezés során.  Például `outlook.com/contoso.com` elküldi a felhasználót egy bejelentkezési oldalra a `&domain_hint=contoso.com` hozzáfűzött paraméterrel, hogy automatikusan felgyorsítsa a felhasználót a tartomány összevont identitásszolgáltató `contoso.com` . Az összevont IDENTITÁSSZOLGÁLTATÓ eljuttatott felügyelt hitelesítő adatokkal rendelkező felhasználók nem jelentkezhetnek be a felügyelt hitelesítő adataik használatával, így csökkentve a biztonságot, és bosszantó bejelentkezési élményekkel kezelhetik a felhasználókat. A felügyelt hitelesítő adatokkal rendelkező rendszergazdáknak [is be kell állítania ezt a házirendet](#suggested-use-within-a-tenant) annak biztosításához, hogy a felhasználók mindig használhassák a felügyelt hitelesítő adataikat.
+Erre a szabályzatra olyan helyzetekben van szükség, amikor az alkalmazások nem tudják szabályozni vagy frissíteni a tartományi tippek hozzáadását a bejelentkezés során.  A például egy olyan bejelentkezési oldalra küldi a felhasználót, amely a paramétert fűzi hozzá, hogy automatikusan felgyorsítsa a felhasználót közvetlenül a tartomány összevont `outlook.com/contoso.com` `&domain_hint=contoso.com` idP-je `contoso.com` számára. Az összevont idP-nek küldött felügyelt hitelesítő adatokkal rendelkező felhasználók nem tudnak bejelentkezni a felügyelt hitelesítő adataik használatával, ami csökkenti a biztonságot, és frusztrálja a felhasználókat a véletlenszerű bejelentkezési élményekkel. A rendszergazdáknak a [](#suggested-use-within-a-tenant) felügyelt hitelesítő adatokat is be kell állítaniuk, hogy a felhasználók mindig használják a felügyelt hitelesítő adataikat.
 
 ## <a name="domainhintpolicy-details"></a>DomainHintPolicy részletei
 
-A HRD szabályzat DomainHintPolicy szakasza egy JSON-objektum, amely lehetővé teszi, hogy a rendszergazda bizonyos tartományokat és alkalmazásokat is letiltson a tartomány-emlékeztető használatával.  Ez a funkció azt jelzi, hogy az Azure AD bejelentkezési lapja úgy viselkedik, mintha a `domain_hint` bejelentkezési kérelem egyik paramétere sem volt jelen.
+A HRD-szabályzat DomainHintPolicy szakasza egy JSON-objektum, amely lehetővé teszi, hogy a rendszergazda letiltson bizonyos tartományokat és alkalmazásokat a tartománymutató használata ellen.  Funkcionálisan ez arra utasítja az Azure AD bejelentkezési oldalát, hogy úgy viselkedjen, mintha a bejelentkezési kérelem egyik paramétere `domain_hint` nem lenne jelen.
 
-### <a name="the-respect-and-ignore-policy-sections"></a>A szabályzatok betartása és figyelmen kívül hagyása
+### <a name="the-respect-and-ignore-policy-sections"></a>A Figyelembe és figyelmen kívül hagyás szabályzat szakasz
 
 |Section | Értelmezés | Értékek |
 |--------|---------|--------|
-|`IgnoreDomainHintForDomains` |Ha ezt a tartományi emlékeztetőt elküldi a kérelemben, hagyja figyelmen kívül. |Tartományi címek tömbje (például `contoso.com` ). Szintén támogatja `all_domains`|
-|`RespectDomainHintForDomains`| Ha a kérelemben ezt a tartományi emlékeztetőt küldi el a rendszer, akkor is vegye figyelembe, `IgnoreDomainHintForApps` hogy a kérésben szereplő alkalmazás ne legyen automatikusan felgyorsítva. Ezzel lelassíthatja az elavult tartományi útmutatók bevezetését a hálózaton belül – jelezheti, hogy egyes tartományokat továbbra is fel kell gyorsítani. | Tartományi címek tömbje (például `contoso.com` ). Szintén támogatja `all_domains`|
-|`IgnoreDomainHintForApps`| Ha az alkalmazástól érkező kérelem egy tartományi emlékeztetővel érkezik, hagyja figyelmen kívül. | Alkalmazás-azonosítók (GUID-EK) tömbje. Szintén támogatja `all_apps`|
-|`RespectDomainHintForApps` |Ha az alkalmazástól érkező kérelem egy tartományi emlékeztetőt tartalmaz, akkor is vegye figyelembe, `IgnoreDomainHintForDomains` hogy az adott tartományt is tartalmazza. Annak biztosítására szolgál, hogy egyes alkalmazások továbbra is működőképesek legyenek, ha a felderítése tartományi javaslatok nélkül történik. | Alkalmazás-azonosítók (GUID-EK) tömbje. Szintén támogatja `all_apps`|
+|`IgnoreDomainHintForDomains` |Ha a kérésben ez a tartománymutató van elküldve, hagyja figyelmen kívül. |Tartománycímek tömbje (például `contoso.com` ). Emellett támogatja a `all_domains`|
+|`RespectDomainHintForDomains`| Ha a kérésben ez a tartománymutató van elküldve, akkor is tartsa tiszteletben, ha azt jelzi, hogy a kérésben található alkalmazás nem `IgnoreDomainHintForApps` gyorsulhat automatikusan. Ezzel lelassíthatja a hálózaton belüli elavult tartománymutatók bevezetési folyamatát – jelezheti, hogy egyes tartományokat továbbra is fel kell gyorsítani. | Tartománycímek tömbje (például `contoso.com` ). Emellett támogatja a `all_domains`|
+|`IgnoreDomainHintForApps`| Ha az alkalmazástól származó kérés tartományi tippet is ad, hagyja figyelmen kívül. | Alkalmazás-azonosítók (GUID-k) tömbje. Emellett támogatja a `all_apps`|
+|`RespectDomainHintForApps` |Ha az alkalmazástól származó kérés tartományi tippet tartalmaz, akkor is tartsa tiszteletben, ha az ebbe a `IgnoreDomainHintForDomains` tartományba tartozik. Arra használható, hogy bizonyos alkalmazások továbbra is megfelelően tudjanak dolgozni, ha azt tapasztalja, hogy tartománymutatók nélkül törnek el. | Alkalmazás-azonosítók (GUID-k) tömbje. Emellett támogatja a `all_apps`|
 
-### <a name="policy-evaluation"></a>Szabályzat kiértékelése
+### <a name="policy-evaluation"></a>Szabályzatok kiértékelése
 
-A DomainHintPolicy logika minden olyan bejövő kérelemnél fut, amely egy tartományi emlékeztetőt tartalmaz, és felgyorsítja a kérésben szereplő két adat – a tartomány a tartományi útmutatóban, valamint az ügyfél-azonosító (az alkalmazás) alapján. Egy tartomány vagy alkalmazás rövid – "tiszteletben" tartása elsőbbséget élvez az utasítással szemben az adott tartományra vagy alkalmazásra vonatkozó tartományi célzásra.
+A DomainHintPolicy logika minden olyan bejövő kérésen fut, amely tartománymutatót tartalmaz, és a kérés két adata – a tartománymutató tartománya és az ügyfél-azonosító (az alkalmazás) alapján gyorsul. Röviden: egy tartományra vagy alkalmazásra vonatkozó "Figyelembe" utasítás elsőbbséget élvez az adott tartományra vagy alkalmazásra vonatkozó tartománymutató figyelmen kívül hagyása utasítással.
 
-1. Ha nincs tartományi tipp-házirend, vagy ha a 4 szakaszban egyik sem hivatkozik az alkalmazásra vagy a tartományi javaslatra, [a rendszer kiértékeli a többi HRD-házirendet](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies).
-1. Ha egy vagy több (vagy mindkettő) `RespectDomainHintForApps` vagy `RespectDomainHintForDomains` szakasz tartalmazza a kérelemben szereplő alkalmazást vagy a tartományhoz tartozó emlékeztetőt, akkor a rendszer automatikusan felgyorsítja a felhasználót az összevont identitásszolgáltató.
-1. Ha egy vagy több (vagy mindkettő) `IgnoreDomainHintsForApps` vagy `IgnoreDomainHintsForDomains` hivatkozik rá az alkalmazásra, illetve a kérelemben szereplő tartományra, és nem hivatkoznak a "tisztelet" szakaszra, akkor a kérés nem lesz automatikusan felgyorsítva, és a felhasználó az Azure ad bejelentkezési oldalán marad, hogy adjon meg egy felhasználónevet.
+1. Tartománymutató-szabályzat hiányában, vagy ha a 4 szakasz egyike sem hivatkozik az említett alkalmazásra vagy tartománymutatóra, a rendszer a [többi HRD-szabályzatot is kiértékeli.](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)
+1. Ha a vagy a szakasz egyik (vagy mindkét) része tartalmazza az alkalmazás- vagy tartománymutatót a kérésben, akkor a felhasználó automatikusan fel lesz gyorsulva az összevont `RespectDomainHintForApps` `RespectDomainHintForDomains` idP-be, amint a rendszer kéri.
+1. Ha a vagy az egyik (vagy mindkettő) az alkalmazásra vagy a tartománymutatóra hivatkozik a kérésben, és a "Tiszteletben" szakaszok nem hivatkoznak rá, akkor a kérés nem lesz automatikusan felgyorsítva, és a felhasználó az Azure AD bejelentkezési oldalán marad, és meg kell adnia `IgnoreDomainHintsForApps` egy felhasználónevet. `IgnoreDomainHintsForDomains`
 
-Miután a felhasználó megadta a felhasználónevet a bejelentkezési oldalon, használhatja a felügyelt hitelesítő adatait, ha vannak regisztrálva.  Ha úgy dönt, hogy nem használ felügyelt hitelesítő adatokat, vagy nincsenek regisztrálva, akkor a rendszer a szokásos módon a hitelesítő adatok bevitelére vonatkozó összevont IDENTITÁSSZOLGÁLTATÓ fogja elvégezni.
+Miután a felhasználó megadta a felhasználónevet a bejelentkezési oldalon, használhatja a felügyelt hitelesítő adatait, ha regisztrált már.  Ha úgy dönt, hogy nem használ felügyelt hitelesítő adatokat, vagy nincs regisztrálva, a rendszer a szokásos módon a hitelesítő adatok megadásához az összevont idP-hez fogja használni őket.
 
-## <a name="suggested-use-within-a-tenant"></a>Javasolt használat a bérlőn belül
+## <a name="suggested-use-within-a-tenant"></a>Bérlőn belüli javasolt használat
 
-Az összevont tartományok rendszergazdáinak be kell állítania a HRD szabályzat ezen szakaszát egy négyéves tervben. A terv célja, hogy végül a bérlő összes felhasználója számára elérhető legyen a saját felügyelt hitelesítő adatai, függetlenül a tartománytól vagy az alkalmazástól. mentse azokat az alkalmazásokat, amelyek nem rendelkeznek a használattal rögzített függőségekkel `domain_hint` .  Ez a csomag segít a rendszergazdáknak megkeresni ezeket az alkalmazásokat, felvenni őket az új szabályzat alól, és folytatni a többi bérlőre való váltást.
+Az összevont tartományok rendszergazdái egy négyfázisú tervben állíthatják be a HRD-szabályzat ezen szakaszát. Ennek a tervnek az a célja, hogy a bérlő összes felhasználója használva legyen a felügyelt hitelesítő adataik tartománytól vagy alkalmazástól függetlenül, mentse azokat az alkalmazásokat, amelyek erősen függnek a `domain_hint` használattól.  Ez a csomag segít a rendszergazdáknak megtalálni ezeket az alkalmazásokat, mentesíteni őket az új szabályzat alól, és folytatni a módosítás a bérlő többi részét.
 
-1. Válasszon ki egy tartományt, hogy először ezt a változást állítsa be.  Ez lesz a tesztelési tartománya, ezért válasszon egyet, amely jobban megoldható lehet az UX-ben történt változásokkal kapcsolatban (azaz egy másik bejelentkezési oldalt lát).  Ez figyelmen kívül hagyja a tartománynevet használó összes alkalmazás összes tartományi emlékeztetőjét. A szabályzat [beállítása](#configuring-policy-through-graph-explorer) a bérlőben – alapértelmezett HRD házirend:
+1. Válasszon egy tartományt a módosítás kezdeti bevezetéséhez.  Ez lesz a teszttartománya, ezért válasszon egy olyant, amely a felhasználói felület változásaira jobban reagál (azaz egy másik bejelentkezési oldalt lát).  Ez figyelmen kívül hagyja az összes olyan alkalmazás tartományi tippjét, amely ezt a tartománynevet használja. [Állítsa](#configuring-policy-through-graph-explorer) be ezt a szabályzatot a bérlő alapértelmezett HRD-szabályzatában:
 
 ```json
  "DomainHintPolicy": { 
@@ -64,7 +62,7 @@ Az összevont tartományok rendszergazdáinak be kell állítania a HRD szabály
 } 
 ```
 
-2. Visszajelzés küldése a tartomány felhasználóinak. Gyűjtsön adatokat azokról az alkalmazásokról, amelyek a változás eredményeképpen kitörtek – függőségük van a tartományhoz való használattal, és frissíteni kell. Egyelőre adja hozzá őket a következő `RespectDomainHintForApps` szakaszhoz:
+2. Gyűjtsön visszajelzést a teszttartomány felhasználóitól. Gyűjtse össze az olyan alkalmazások adatait, amelyek ennek a változásnak az következtében felsülnek – függőségi viszonyban vannak a tartománymutatók használatáról, és frissíteni kell őket. Most adja hozzá őket a `RespectDomainHintForApps` szakaszhoz:
 
 ```json
  "DomainHintPolicy": { 
@@ -75,7 +73,7 @@ Az összevont tartományok rendszergazdáinak be kell állítania a HRD szabály
 } 
 ```
 
-3. Folytassa a szabályzat bevezetésének új tartományokra való kiterjesztését, és gyűjtsön további visszajelzést.
+3. Folytassa a szabályzat új tartományokra való kiszélesedő bővítését, és gyűjtsön további visszajelzéseket.
 
 ```json
  "DomainHintPolicy": { 
@@ -86,7 +84,7 @@ Az összevont tartományok rendszergazdáinak be kell állítania a HRD szabály
 } 
 ```
 
-4. Fejezze be a bevezetést – a minden tartományra kiterjedő célt, amely alól a továbbiakban is fel kell gyorsítani a következőket:
+4. A bevezetés befejezése – az összes tartomány megcélzása, a további gyorsítást folytató tartományok mentesítve:
 
 ```json
  "DomainHintPolicy": { 
@@ -97,15 +95,15 @@ Az összevont tartományok rendszergazdáinak be kell állítania a HRD szabály
 } 
 ```
 
-Miután a 4. lépés elvégezte az összes felhasználót, kivéve a (z `guestHandlingDomain.com` ) rendszert, bejelentkezhet az Azure ad bejelentkezési oldalára, még akkor is, ha a tartományi javaslatok egyébként egy összevont identitásszolgáltató automatikus gyorsítását okozzák.  Ez alól kivételt képez, ha a bejelentkezést kérő alkalmazás az egyik kivétel alá esik – ezen alkalmazások esetében az összes tartományi mutatót továbbra is elfogadjuk.
+Miután a 4. lépés befejeződött, az összes felhasználó bejelentkezhet az Azure AD bejelentkezési oldalán, kivéve az összes felhasználót, még akkor is, ha a tartománymutatók automatikusan gyorsítást okoznak egy összevont `guestHandlingDomain.com` idP-re.  Ez alól kivételt képez, ha a bejelentkezést kérő alkalmazás az egyik kivételt képezte – ezekhez az alkalmazásokhoz minden tartományi tipp továbbra is el lesz fogadva.
 
-## <a name="configuring-policy-through-graph-explorer"></a>Házirend konfigurálása a Graph Explorerben
+## <a name="configuring-policy-through-graph-explorer"></a>Szabályzat konfigurálása a Graph Explorerrel
 
-A [HRD házirendet](/graph/api/resources/homeRealmDiscoveryPolicy) a szokásos módon állítsa be Microsoft Graph használatával.  
+Állítsa be [a HRD-szabályzatot](/graph/api/resources/homeRealmDiscoveryPolicy) a szokásos módon a Microsoft Graph.  
 
-1. Adja meg a Policy. ReadWrite. ApplicationConfiguration engedélyt a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer).  
+1. Adja meg a Policy.ReadWrite.ApplicationConfiguration engedélyt a [Graph Explorerben.](https://developer.microsoft.com/graph/graph-explorer)  
 1. Az URL-cím használata `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`
-1. Tegye közzé az új szabályzatot erre az URL-címre, vagy a javítást, `/policies/homerealmdiscoveryPolicies/{policyID}` Ha felülírja egy meglévőt.
+1. TEGYE közzé az új szabályzatot erre az URL-címre, vagy a PATCH-et, ha felülír `/policies/homerealmdiscoveryPolicies/{policyID}` egy meglévőt.
 
 POST vagy PATCH tartalma:
 
@@ -119,11 +117,11 @@ POST vagy PATCH tartalma:
 }
 ```
 
-A Graph használatakor ügyeljen arra, hogy perjel használatával elkerülje a `Definition` JSON szakaszt.  
+A Graph használata esetén mindenképpen használjon perjeleket `Definition` a JSON-szakasz kivédésében.  
 
-`isOrganizationDefault` igaznak kell lennie, de a displayName és a definíció is változhat.
+`isOrganizationDefault` Igaznak kell lennie, de a displayName és a definíció változhat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése](../authentication/howto-authentication-passwordless-security-key.md)
+* [Jelszó nélküli biztonsági kulcsos bejelentkezés engedélyezése](../authentication/howto-authentication-passwordless-security-key.md)
 * [Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](../authentication/howto-authentication-passwordless-phone.md)
