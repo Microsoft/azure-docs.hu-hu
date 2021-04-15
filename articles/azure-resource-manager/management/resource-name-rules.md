@@ -1,464 +1,464 @@
 ---
 title: Erőforrás-elnevezési korlátozások
-description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
+description: Megjeleníti az Azure-erőforrások elnevezésére vonatkozó szabályokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e260c9055b26d82f2fd2f8458d287a35a838f40f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210193"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477791"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
-Ez a cikk az Azure-erőforrások elnevezési szabályait és korlátozásait foglalja össze. Az erőforrások elnevezésével kapcsolatos javaslatokért lásd: [ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Ez a cikk az Azure-erőforrások elnevezési szabályait és korlátozásait foglalja össze. Az erőforrások elnevezésére vonatkozó javaslatokat lásd: [Ajánlott elnevezési és címkézési konvenciók.](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 
-Ez a cikk erőforrás-szolgáltatói névtér alapján sorolja fel az erőforrásokat. Az erőforrás-szolgáltatók Azure-szolgáltatásokkal való egyezésének listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](azure-services-resource-providers.md)című témakörében tekintheti meg.
+Ez a cikk erőforrás-szolgáltatói névtér szerint sorolja fel az erőforrásokat. Az erőforrás-szolgáltatók Azure-szolgáltatásokkal való egyeztetésének listáját lásd: [Erőforrás-szolgáltatók Azure-szolgáltatásokhoz.](azure-services-resource-providers.md)
 
-Az erőforrásnevek nem megkülönböztetik a kis-és nagybetűket, kivéve, ha az érvényes karakterek oszlopban szerepelnek.
+Az erőforrásnevek nem érzékenyek, kivéve, ha az érvényes karakterek oszlopban fel van jelölve.
 
-Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozik:
+A következő táblázatokban az alfanumerikus kifejezés a következőre utal:
 
-* **a** – **z** (kisbetűs)
-* **A** – **Z** (nagybetűs)
-* **0** – **9** (szám)
+* **a–z** (kisbetűk) 
+* **A–Z** (nagybetűk) 
+* **0 és** **9** között (számok)
 
-## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | kiszolgálók | erőforráscsoport | 3-63 | Kisbetűk és számok.<br><br>Kezdje kisbetűvel. |
-
-## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
+## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | szolgáltatás | globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel, és az alfanumerikus karakterrel végződik. |
+> | Szerverek | erőforráscsoport | 3-63 | Kisbetűk és számok.<br><br>Kezdje kisbetűvel. |
+
+## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | szolgáltatás | Globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel, és végződik alfanumerikus karakterekkel. |
 > | szolgáltatás/API-k | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/problémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/problémák/mellékletek | issue | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/problémák/megjegyzések | issue | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/műveletek | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/műveletek/Címkék | művelet | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/kiadások | api | 1–80 | Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdő és záró alfanumerikus vagy aláhúzással. |
-> | szolgáltatás/API-k/sémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/tagDescriptions | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/Címkék | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-Version-sets | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/authorizationServers | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/háttérrendszer | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / api-k / problémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / apis / problémák / mellékletek | issue | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / apis / problémák / megjegyzések | issue | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / api-k / műveletek | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / apis / műveletek / címkék | művelet | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / api-k / kiadások | api | 1–80 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek.<br><br>Kezdjen és végződve alfanumerikus vagy aláhúzásjelet használva. |
+> | szolgáltatás / api-k / sémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | service / apis / tagDescriptions | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / api-k / címkék | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /api-version-sets | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /engedélyezésKiszolgálók | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/háttérkiszolgálók | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/tanúsítványok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/diagnosztika | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /diagnosztika | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/csoportok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/csoportok/felhasználók | csoport | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/identityProviders | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / csoportok / felhasználók | csoport | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/identitásProviders | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/naplózók | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/értesítések | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/értesítések/recipientEmails | értesítés | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/openidConnectProviders | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/házirendek | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /értesítések | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / értesítések / recipientEmails | értesítés | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / openidConnectProviders | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/szabályzatok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/termékek | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/termékek/API-k | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/termékek/csoportok | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/termékek/Címkék | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/tulajdonságok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / termékek / api-k | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / termékek /csoportok | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás / termékek / címkék | product | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /tulajdonságok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/előfizetések | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/Címkék | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás /címkék | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/sablonok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/felhasználók | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 
-## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
+## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | configurationStores | erőforráscsoport | 5-50 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
+> | configurationStores | erőforráscsoport | 5-50 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | zárak | hozzárendelés hatóköre | 1–90 | Alfanumerikus karakterek, időszakok, aláhúzások, kötőjelek és zárójelek.<br><br>Nem végződhet ponttal. |
-> | policyAssignments | hozzárendelés hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve<br><br>1-24 erőforrás neve a felügyeleti csoport hatókörében | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
-> | policyDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
-> | policySetDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve<br><br>1-24 erőforrás neve a felügyeleti csoport hatókörében | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel.  |
+> | Zárak | hozzárendelés hatóköre | 1–90 | Alfanumerikus karakterek, pont, aláhúzásjel, kötőjel és zárójel.<br><br>Nem végződhet pontra. |
+> | policyAssignments | hozzárendelés hatóköre | 1–128 megjelenített név<br><br>1–64 erőforrásnév<br><br>1–24 erőforrásnév a felügyeleti csoport hatókörében | A megjelenített név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat és nem `%` végződhet pontra vagy szóközre. |
+> | policyDefinitions (szabályzatdefiníciók) | a definíció hatóköre | 1–128 megjelenített név<br><br>1–64 erőforrásnév | A megjelenített név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat és nem `%` végződhet pontra vagy szóközre. |
+> | policySetDefinitions | a definíció hatóköre | 1–128 megjelenített név<br><br>1–64 erőforrásnév<br><br>1–24 erőforrásnév a felügyeleti csoport hatókörében | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat és nem `%` végződhet pontra vagy szóközre.  |
 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | automationAccounts | erőforráscsoport & régiója <br>(Lásd az alábbi megjegyzést) | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel, és az alfanumerikus karakterrel végződik. |
-> | automationAccounts/tanúsítványok | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel.  |
-> | automationAccounts/kapcsolatok | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel. |
-> | automationAccounts/hitelesítő adatok | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel. |
-> | automationAccounts/runbookok | Automation-fiók | 1–63 | Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdje a betűvel.  |
-> | automationAccounts/ütemtervek | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel. |
-> | automationAccounts/változók | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel. |
-> | automationAccounts/figyelők | Automation-fiók | 1–63 |  Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdje a betűvel. |
-> | automationAccounts/webhookok | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközzel. |
+> | automationAccounts | erőforráscsoport & régió <br>(Lásd az alábbi megjegyzést) | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel, és végződve alfanumerikussal. |
+> | automationAccounts / tanúsítványok | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre.  |
+> | automationAccounts /connections | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre. |
+> | automationAccounts /credentials | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre. |
+> | automationAccounts/runbookok | Automation-fiók | 1–63 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek.<br><br>Kezdje betűvel.  |
+> | automationAccounts /schedules | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre. |
+> | automationAccounts / változók | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre. |
+> | automationAccounts /watchers | Automation-fiók | 1–63 |  Alfanumerikus karakterek, aláhúzásjelek és kötőjelek.<br><br>Kezdje betűvel. |
+> | automationAccounts /webhooks | Automation-fiók | 1-128 | Nem használható:<br> `<>*%&:\?.+/` <br><br>Nem végződhet szóközre. |
 
 > [!NOTE]
-> Az Automation-fiókok nevei régiónként és erőforráscsoporthoz egyediek. Előfordulhat, hogy a törölt Automation-fiókok neve nem érhető el azonnal.
+> Az Automation-fióknevek régiónként és erőforráscsoportonként egyediek. Előfordulhat, hogy a törölt Automation-fiókok nevei nem érhetők el azonnal.
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | batchAccounts | Régió | 3–24 | Kisbetűk és számok. |
-> | batchAccounts/alkalmazások | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
-> | batchAccounts/tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
-> | batchAccounts/készletek | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
+> | batchAccounts (kötegek száma) | Region | 3–24 | Kisbetűk és számok. |
+> | batchAccounts / applications | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
+> | batchAccounts / tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
+> | batchAccounts /pools | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
 
-## <a name="microsoftblockchain"></a>Microsoft. Blockchain
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | blockchainMembers | globális | 2-20 | Kisbetűk és számok.<br><br>Kezdje kisbetűvel. |
-
-## <a name="microsoftbotservice"></a>Microsoft. BotService
+## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | botServices | globális | 2–64 |  Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. |
-> | botServices/csatornák | bot Service | 2–64 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. |
-> | botServices/kapcsolatok | bot Service | 2–64 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. |
-> | enterpriseChannels | erőforráscsoport | 2–64 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. |
+> | blockchainMembers | Globális | 2-20 | Kisbetűk és számok.<br><br>Kezdje kisbetűvel. |
 
-## <a name="microsoftcache"></a>Microsoft. cache
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | Redis | globális | 1–63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. Egymást követő kötőjelek nem engedélyezettek. |
-> | Redis/firewallRules | Redis | 1-256 | Alfanumerikus karaktereket |
+> | botServices | Globális | 2–64 |  Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. |
+> | botServices /channels | bot service | 2–64 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. |
+> | botServices / Kapcsolatok | bot service | 2–64 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. |
+> | enterpriseChannels | erőforráscsoport | 2–64 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. |
 
-## <a name="microsoftcdn"></a>Microsoft. CDN
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | profilok | erőforráscsoport | 1-260 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | profilok/végpontok | globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-
-## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
+## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | Tanúsítványrendelések | erőforráscsoport | 3-30 | Alfanumerikus karaktereket. |
+> | Redis | Globális | 1–63 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. Egymást követő kötőjelek nem engedélyezettek. |
+> | Redis/firewallRules | Redis | 1-256 | Alfanumerikus karakterek |
 
-## <a name="microsoftcognitiveservices"></a>Microsoft. CognitiveServices
+## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fiókok | erőforráscsoport | 2–64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | Profilok | erőforráscsoport | 1-260 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | profilok/végpontok | Globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+
+## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | certificateOrders (tanúsítványrendelések) | erőforráscsoport | 3-30 | Alfanumerikus karakterek. |
+
+## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | fiókok | erőforráscsoport | 2–64 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | availabilitySets | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | diskEncryptionSets | erőforráscsoport | 1–80 | Alfanumerikus karakterek és aláhúzások. |
-> | lemezek | erőforráscsoport | 1–80 | Alfanumerikus karakterek és aláhúzások. |
-> | katalógusok | erőforráscsoport | 1–80 | Alfanumerikus karakterek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | galériák/alkalmazások | katalógus | 1–80 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | galériák/alkalmazások/verziók | alkalmazás | 32 bites egész szám | Számok és időszakok. |
-> | galériák/lemezképek | katalógus | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
-> | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>A Windows rendszerű virtuális gépek nem tartalmazhatnak pontot, és nem állhatnak kötőjeltel.<br><br>A Linux rendszerű virtuális gépek nem végződhet ponttal vagy kötőjeltel. |
-> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | availabilitySets (rendelkezésre állási készlet) | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjeles végződő. |
+> | diskEncryptionSets | erőforráscsoport | 1–80 | Alfanumerikus karakterek és aláhúzásjelek. |
+> | Lemezek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
+> | Galériák | erőforráscsoport | 1–80 | Alfanumerikus karakterek és időszakok.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | katalógusok /alkalmazások | katalógus | 1–80 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | katalógusok / alkalmazások/verziók | Alkalmazás | 32 bites egész szám | Számok és időszakok. |
+> | katalógusok /képek | katalógus | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, kötőjelek és időszakok.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | katalógusok / képek / verziók | image | 32 bites egész szám | Számok és időszakok. |
+> | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjeles végződő. |
+> | virtualMachines | erőforráscsoport | 1–15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használhat szóközt vagy a következő karaktereket:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>A Windows rendszerű virtuális gépek nem tartalmazhatnak kötőjellel végződő vagy időszakot.<br><br>A Linux rendszerű virtuális gépek nem végződnek pontokkal vagy kötőjellel. |
+> | virtualMachineScaleSets | erőforráscsoport | 1–15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használhat szóközt vagy a következő karaktereket:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Nem kezdődhet aláhúzásjelekkel. Nem végződhet pontra vagy kötőjelre. |
 
 > [!NOTE]
-> Az Azure-beli virtuális gépek két különböző névvel rendelkeznek: az erőforrás neve és az állomásnév. Amikor létrehoz egy virtuális gépet a portálon, ugyanazt az értéket használja mindkét névhez. Az előző táblázatban szereplő korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.
+> Az Azure-beli virtuális gépeknek két különböző neve van: erőforrásnév és gazdagépnév. Amikor létrehoz egy virtuális gépet a portálon, a rendszer ugyanazt az értéket használja mindkét névhez. Az előző táblázatban található korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.
 
-## <a name="microsoftcommunication"></a>Microsoft. Communication
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | communicationServices | globális | 1–63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftcommunication"></a>Microsoft.Communication
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | containerGroups | erőforráscsoport | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Szomszédos kötőjelek használata nem megengedett. |
+> | communicationServices | Globális | 1–63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | kibocsátásiegység | globális | 5-50 | Alfanumerikus karaktereket. |
-> | kibocsátásiegység-forgalmi jegyzékek/buildTasks | registry | 5-50 | Alfanumerikus karaktereket. |
-> | kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések | felépítési feladat | 5-50 | Alfanumerikus karaktereket. |
-> | kibocsátásiegység-forgalmi jegyzékek/replikálások | registry | 5-50 | Alfanumerikus karaktereket. |
-> | kibocsátásiegység-forgalmi jegyzékek/scopeMaps | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kibocsátásiegység-forgalmi jegyzékek/feladatok | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kibocsátásiegység-forgalmi jegyzékek/jogkivonatok | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok | registry | 5-50 | Alfanumerikus karaktereket. |
-
-## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | managedClusters | erőforráscsoport | 1–63 | Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | openShiftManagedClusters | erőforráscsoport | 1-30 | Alfanumerikus karaktereket. |
+> | containerGroups | erőforráscsoport | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. Szomszédos kötőjelek használata nem megengedett. |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft. CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | Hubs | erőforráscsoport | 1-64 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel.  |
-> | hubok/Applyallocationpolicy | hub | 1-50 | Alfanumerikus karakterek, aláhúzások és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | hubok és összekötők | hub | 1-128 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/összekötők/leképezések | összekötő | 1-128 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/interakciók | hub | 1-128 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/KPI | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/hivatkozások | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/előrejelzések | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/profilok | hub | 1-128 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/relationshipLinks | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/kapcsolatok | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/roleAssignments | hub | 1-128 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-> | hubok/nézetek | hub | 1-512 | Alfanumerikus karakterek és aláhúzások.<br><br>Kezdje a betűvel. |
-
-## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | szövetségek | erőforráscsoport | 1-180 | Nem használható:<br>`%&\\?/`<br><br>Nem végződhet ponttal vagy szóközzel. |
-> | resourceProviders | erőforráscsoport | 3-64 | Nem használható:<br>`%&\\?/`<br><br>Nem végződhet ponttal vagy szóközzel. |
+> | Nyilvántartások | Globális | 5-50 | Alfanumerikus karakterek. |
+> | beállításregisztrálók / buildTasks | registry | 5-50 | Alfanumerikus karakterek. |
+> | beállításregisztrálók / buildTasks/steps | buildfeladat | 5-50 | Alfanumerikus karakterek. |
+> | beállításregisztrációs jegyzékek /replikációk | registry | 5-50 | Alfanumerikus karakterek. |
+> | beállítás-nyilvántartások / scopeMaps | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | beállításregisztrálók /feladatok | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | beállításregisztrálók /jogkivonatok | registry | 5-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | beállításregisztrálók /webhookok | registry | 5-50 | Alfanumerikus karakterek. |
 
-## <a name="microsoftdatabox"></a>Microsoft. DataBox
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | feladatok | erőforráscsoport | 3–24 | Alfanumerikus karakterek, kötőjelek, aláhúzások és időszakok. |
-
-## <a name="microsoftdatabricks"></a>Microsoft. Databricks
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | munkaterületek | erőforráscsoport | 3-30 | Alfanumerikus karakterek, aláhúzások és kötőjelek |
-
-## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
+## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | előállítók | globális | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | gyárak/adatfolyamok | gyári | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
-> | gyárak/adatkészletek | gyári | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
-> | gyárak/integrationRuntimes | gyári | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | gyárak/linkedservices | gyári | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
-> | gyárak/folyamatok | gyári | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
-> | gyárak/eseményindítók | gyári | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
-> | gyárak/triggerek/rerunTriggers | eseményindító | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikusan. |
+> | managedClusters (felügyelt fürtök) | erőforráscsoport | 1–63 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+> | openShiftManagedClusters | erőforráscsoport | 1-30 | Alfanumerikus karakterek. |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
+## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fiókok | globális | 3–24 | Kisbetűk és számok. |
-> | fiókok/computePolicies | account | 3-60 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | fiókok/dataLakeStoreAccounts | account | 3–24 | Kisbetűk és számok. |
-> | fiókok/firewallRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | fiókok/storageAccounts | account | 3-60 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
+> | Csomópontok | erőforráscsoport | 1-64 | Alfanumerikus karakterek.<br><br>Kezdje betűvel.  |
+> | hubok / authorizationPolicies | Hub | 1-50 | Alfanumerikus karakterek, aláhúzásjelek és időszakok.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | hubok/összekötők | Hub | 1-128 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok / összekötők/leképezések | összekötő | 1-128 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /interakciók | Hub | 1-128 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok / kpi | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /hivatkozások | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok / előrejelzések | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok/profilok | Hub | 1-128 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /relationshipLinks | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /kapcsolatok | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /roleAssignments | Hub | 1-128 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
+> | hubok /nézetek | Hub | 1-512 | Alfanumerikus karakterek és aláhúzásjelek.<br><br>Kezdje betűvel. |
 
-## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | fiókok | globális | 3–24 | Kisbetűk és számok. |
-> | fiókok/firewallRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | fiókok/virtualNetworkRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-
-## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | services | erőforráscsoport | 2-62 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások.<br><br>Kezdje alfanumerikusan. |
-> | szolgáltatások/projektek | szolgáltatás | 2-57 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások.<br><br>Kezdje alfanumerikusan. |
-
-## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
+## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | kiszolgálók | globális | 3-63 | Kisbetűs karakterek, kötőjelek és számok.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/adatbázisok | kiszolgálók | 1–63 | Alfanumerikus karakterek és kötőjelek. |
-> | kiszolgálók/firewallRules | kiszolgálók | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kiszolgálók/virtualNetworkRules | kiszolgálók | 1-128 | Alfanumerikus karakterek és kötőjelek. |
+> | Egyesületek | erőforráscsoport | 1-180 | Nem használható:<br>`%&\\?/`<br><br>Nem végződhet pontra vagy szóközre. |
+> | resourceProviders (erőforrás-providers) | erőforráscsoport | 3-64 | Nem használható:<br>`%&\\?/`<br><br>Nem végződhet pontra vagy szóközre. |
 
-## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
+## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | kiszolgálók | globális | 3-63 | Kisbetűs karakterek, kötőjelek és számok.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/adatbázisok | kiszolgálók | 1–63 | Alfanumerikus karakterek és kötőjelek. |
-> | kiszolgálók/firewallRules | kiszolgálók | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kiszolgálók/virtualNetworkRules | kiszolgálók | 1-128 | Alfanumerikus karakterek és kötőjelek. |
+> | Munkahelyek | erőforráscsoport | 3–24 | Alfanumerikus karakterek, kötőjelek, aláhúzásjelek és pontértékek. |
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
+## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | kiszolgálók | globális | 3-63 | Kisbetűs karakterek, kötőjelek és számok.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/adatbázisok | kiszolgálók | 1–63 | Alfanumerikus karakterek és kötőjelek. |
-> | kiszolgálók/firewallRules | kiszolgálók | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kiszolgálók/virtualNetworkRules | kiszolgálók | 1-128 | Alfanumerikus karakterek és kötőjelek. |
+> | munkaterületek | erőforráscsoport | 3-30 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek |
+
+## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Gyárak | Globális | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | gyárak/adatfolyamok | Gyár | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikussal. |
+> | gyárak/adatkészletek | Gyár | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikussal. |
+> | gyárak /integrationRuntimes | Gyár | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | gyárak /linkedservices | Gyár | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikus karakterekkel. |
+> | gyárak/folyamatok | Gyár | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikus karakterekkel. |
+> | gyárak/eseményindítók | Gyár | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikus karakterekkel. |
+> | gyárak / eseményindítók / újrafuttatók | Ravaszt | 1-260 | Nem használható:<br>`<>*#.%&:\\+?/`<br><br>Kezdje alfanumerikus karakterekkel. |
+
+## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | fiókok | Globális | 3–24 | Kisbetűk és számok. |
+> | fiókok / computePolicies | account | 3-60 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | accounts / dataLakeStoreAccounts | account | 3–24 | Kisbetűk és számok. |
+> | fiókok /firewallRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | fiókok / storageAccounts | account | 3-60 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+
+## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | fiókok | Globális | 3–24 | Kisbetűk és számok. |
+> | fiókok /firewallRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | fiókok / virtualNetworkRules | account | 3-50 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+
+## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | services | erőforráscsoport | 2-62 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel.<br><br>Kezdje alfanumerikus karakterekkel. |
+> | szolgáltatások/projektek | szolgáltatás | 2-57 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel.<br><br>Kezdje alfanumerikus karakterekkel. |
+
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Szerverek | Globális | 3-63 | Kisbetűk, kötőjelek és számok.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | kiszolgálók /adatbázisok | Szerverek | 1–63 | Alfanumerikus karakterek és kötőjelek. |
+> | servers /firewallRules | Szerverek | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | servers /virtualNetworkRules | Szerverek | 1-128 | Alfanumerikus karakterek és kötőjelek. |
+
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Szerverek | Globális | 3-63 | Kisbetűk, kötőjelek és számok.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | kiszolgálók /adatbázisok | Szerverek | 1–63 | Alfanumerikus karakterek és kötőjelek. |
+> | servers /firewallRules | Szerverek | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | servers /virtualNetworkRules | Szerverek | 1-128 | Alfanumerikus karakterek és kötőjelek. |
+
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Szerverek | Globális | 3-63 | Kisbetűk, kötőjelek és számok.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | kiszolgálók /adatbázisok | Szerverek | 1–63 | Alfanumerikus karakterek és kötőjelek. |
+> | servers /firewallRules | Szerverek | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | servers /virtualNetworkRules | Szerverek | 1-128 | Alfanumerikus karakterek és kötőjelek. |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | IotHubs | globális | 3-50 | Alfanumerikus karakterek és kötőjelek.<br><br>A kötőjel nem végződhet. |
-> | IotHubs/tanúsítványok | IoT hub | 1-64 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások. |
-> | IotHubs/eventHubEndpoints/ConsumerGroups | eventHubEndpoints | 1-50 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások. |
-> | provisioningServices | erőforráscsoport | 3-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterrel végződik. |
-> | provisioningServices/tanúsítványok | provisioningServices | 1-64 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások. |
+> | IotHubs | Globális | 3-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Nem végződhet kötőjellel. |
+> | IotHubs / tanúsítványok | IoT Hub | 1-64 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel. |
+> | IotHubs / eventHubEndpoints / ConsumerGroups | eventHubEndpoints | 1-50 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel. |
+> | provisioningServices | erőforráscsoport | 3-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekkel végződik. |
+> | provisioningServices / tanúsítványok | provisioningServices | 1-64 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel. |
 
-## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | Labs | erőforráscsoport | 1-50 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
-> | Labor/customimages | Lab | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és zárójelek. |
-> | laborok/képletek | Lab | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és zárójelek. |
-> | Labor/virtualmachines | Lab | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. Nem lehet az összes szám. |
+> | Labs | erőforráscsoport | 1-50 | Alfanumerikus karakterek, aláhúzásjelek és kötőjelek. |
+> | labs / customimages | Labor | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, kötőjelek és zárójelek. |
+> | tesztkörnyezetek /képletek | Labor | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, kötőjelek és zárójelek. |
+> | tesztkörnyezetek /virtualmachines | Labor | 1–15 (Windows)<br>1-64 (Linux) | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. Nem lehet minden szám. |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | databaseAccounts | globális | 3-44 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. |
+> | databaseAccounts (adatbázis-fiókok) | Globális | 3-44 | Kisbetűk, számok és kötőjelek.<br><br>Kezdje kisbetűvel vagy számmal. |
 
-## <a name="microsofteventgrid"></a>Microsoft. EventGrid
+## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | tartományok | erőforráscsoport | 3-50 | Alfanumerikus karakterek és kötőjelek. |
+> | Tartományok | erőforráscsoport | 3-50 | Alfanumerikus karakterek és kötőjelek. |
 > | tartományok/témakörök | domain | 3-50 | Alfanumerikus karakterek és kötőjelek. |
-> | eventSubscriptions | erőforráscsoport | 3-64 | Alfanumerikus karakterek és kötőjelek. |
-> | témakörök | erőforráscsoport | 3-50 | Alfanumerikus karakterek és kötőjelek. |
+> | eventSubscriptions (eventSubscriptions) | erőforráscsoport | 3-64 | Alfanumerikus karakterek és kötőjelek. |
+> | Témák | erőforráscsoport | 3-50 | Alfanumerikus karakterek és kötőjelek. |
 
-## <a name="microsofteventhub"></a>Microsoft. EventHub
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | fürtök | erőforráscsoport | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Betűvel vagy számmal végződik. |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Betűvel vagy számmal végződik. |
-> | névterek/engedélyezési szabályok | névtér | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró betűvel vagy számmal. |
-> | névterek/disasterRecoveryConfigs | névtér | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró betűvel vagy számmal. |
-> | névterek/eventhubs | névtér | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró betűvel vagy számmal. |
-> | névterek/eventhubs/engedélyezési szabályok | Event hub | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró betűvel vagy számmal. |
-> | névterek/eventhubs/consumergroups | Event hub | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró betűvel vagy számmal. |
-
-## <a name="microsofthdinsight"></a>Microsoft. HDInsight
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fürtök | globális | 3-59 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdő és záró betűvel vagy számmal. |
+> | Klaszterek | erőforráscsoport | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik. |
+> | Névterek | Globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik. |
+> | névterek / Engedélyezési szabályok | névtér | 1-50 | Alfanumerikus karakterek, pontokat, kötőjeleket és aláhúzásjeleket.<br><br>Betűvel vagy számmal kezdődnek és végződnek. |
+> | névterek / disasterRecoveryConfigs | névtér | 1-50 | Alfanumerikus karakterek, pontokat, kötőjeleket és aláhúzásjeleket.<br><br>Betűvel vagy számmal kezdődnek és végződnek. |
+> | névterek / eventhubs | névtér | 1-50 | Alfanumerikus karakterek, pontokat, kötőjeleket és aláhúzásjeleket.<br><br>Betűvel vagy számmal kezdje és végződve. |
+> | névterek / eventhubs / authorizationRules | eseményközpont | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Betűvel vagy számmal kezdődnek és végződnek. |
+> | névterek / eventhubs /consumergroups | eseményközpont | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Betűvel vagy számmal kezdődnek és végződnek. |
 
-## <a name="microsoftimportexport"></a>Microsoft. ImportExport
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | feladatok | erőforráscsoport | 2–64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. |
-
-## <a name="microsoftinsights"></a>Microsoft. bepillantások
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | actionGroups | erőforráscsoport | 1-260 | Nem használható:<br>`/&%\?` <br><br>Nem végződhet szóközzel vagy ponttal.  |
-> | összetevők | erőforráscsoport | 1-260 | Nem használható:<br>`%&\?/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
-> | scheduledQueryRules | erőforráscsoport | 1-260 | Nem használható:<br>`*<>%{}&:\\?/#` <br><br>Nem végződhet szóközzel vagy ponttal.  |
-> | metricAlerts | erőforráscsoport | 1-260 | Nem használható:<br>`*#&+:<>?@%{}\/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
-> | activityLogAlerts | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%{}&:\\?+/#` <br><br>Nem végződhet szóközzel vagy ponttal.  |
-
-## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
+## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | IoTApps | globális | 2-63 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. |
+> | Klaszterek | Globális | 3-59 | Alfanumerikus karakterek és kötőjelek<br><br>Betűvel vagy számmal kezdődnek és végződnek. |
 
-## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
+## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | boltívek | globális | 3–24 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Betűvel vagy számmal végződik. Egymást követő kötőjelek nem szerepelhetnek. |
-> | tárolók/titkok | Tároló | 1-127 | Alfanumerikus karakterek és kötőjelek. |
+> | Munkahelyek | erőforráscsoport | 2–64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. |
+
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | actionGroups (műveletcsoportok) | erőforráscsoport | 1-260 | Nem használható:<br>`/&%\?` <br><br>Nem végződhet szóközre vagy pontra.  |
+> | Összetevők | erőforráscsoport | 1-260 | Nem használható:<br>`%&\?/` <br><br>Nem végződhet szóközre vagy pontra.  |
+> | scheduledQueryRules | erőforráscsoport | 1-260 | Nem használható:<br>`*<>%{}&:\\?/#` <br><br>Nem végződhet szóközre vagy pontra.  |
+> | metricAlerts (mérőszámok) | erőforráscsoport | 1-260 | Nem használható:<br>`*#&+:<>?@%{}\/` <br><br>Nem végződhet szóközre vagy pontra.  |
+> | activityLogAlerts | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%{}&:\\?+/#` <br><br>Nem végződhet szóközre vagy pontra.  |
+
+## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | IoTApps | Globális | 2-63 | Kisbetűk, számok és kötőjelek.<br><br>Kezdje kisbetűvel vagy számmal. |
+
+## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Boltívek | Globális | 3–24 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik. Nem tartalmazhatnak egymást követő kötőjeleket. |
+> | tárolók /titkos kulcsok | Tároló | 1-127 | Alfanumerikus karakterek és kötőjelek. |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fürtök | globális | 4-22 | Kisbetűk és számok.<br><br>Kezdje a betűvel. |
-> | /Clusters/adatbázisok | cluster | 1-260 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
-> | /Clusters/adatbázisok/dataConnections | adatbázis | 1-40 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
-> | /Clusters/adatbázisok/eventhubconnections | adatbázis | 1-40 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
+> | Klaszterek | Globális | 4-22 | Kisbetűk és számok.<br><br>Kezdje betűvel. |
+> | /clusters / adatbázisok | cluster | 1-260 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
+> | /clusters / databases / dataConnections | adatbázis | 1-40 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
+> | /clusters / databases / eventhubconnections | adatbázis | 1-40 | Alfanumerikus karakterek, kötőjelek, szóközök és időszakok. |
 
-## <a name="microsoftlogic"></a>Microsoft. Logic
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | integrationAccounts | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts/szerelvények | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts / batchConfigurations | integrációs fiók | 1-20 | Alfanumerikus karaktereket. |
-> | integrationAccounts/tanúsítványok | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts/Maps | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts/partnerek | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts / rosettanetprocessconfigurations | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts/sémák | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationAccounts/munkamenetek | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-> | integrationServiceEnvironments | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások. |
-> | integrationServiceEnvironments/król | integrációs szolgáltatási környezet | 1–80 | Alfanumerikus karakterek, kötőjelek, időszakok és aláhúzások. |
-> | munkafolyamatok | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzások, időszakok és zárójelek. |
-
-## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
+## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | commitmentPlans | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközzel. |
-> | webServices | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközzel. |
-> | munkaterületek | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközzel. |
+> | integrationAccounts (integrationAccounts) | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts/assemblies | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts / batchConfigurations | integrációs fiók | 1-20 | Alfanumerikus karakterek. |
+> | integrationAccounts/certificates | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts / maps | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts /partners | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts /tottanetprocessconfigurations | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts /schemas | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationAccounts/sessions | integrációs fiók | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+> | integrationServiceEnvironments | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel. |
+> | integrationServiceEnvironments / managedApis | integrációs szolgáltatási környezet | 1–80 | Alfanumerikus karakterek, kötőjelek, pont és aláhúzásjel. |
+> | Munkafolyamatok | erőforráscsoport | 1–80 | Alfanumerikus karakterek, kötőjelek, aláhúzásjel, pont és zárójel. |
+
+## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | commitmentPlans (kötelezettségvállalásisíkok) | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközre. |
+> | webServices | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközre. |
+> | munkaterületek | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%&:?+/\\`<br><br>Nem végződhet szóközre. |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -466,261 +466,261 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | munkaterületek | erőforráscsoport | 3-33 | Alfanumerikus karakterek és kötőjelek. |
-> | munkaterületek/számítások | munkaterület | 2–16 | Alfanumerikus karakterek és kötőjelek. |
+> | munkaterületek /számítási erőforrások | munkaterület | 2–16 | Alfanumerikus karakterek és kötőjelek. |
 
-## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | userAssignedIdentities | erőforráscsoport | 3-128 | Alfanumerikus karakterek, kötőjelek és aláhúzások<br><br>Kezdje betűvel vagy számmal. |
-
-## <a name="microsoftmaps"></a>Microsoft. Maps
+## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fiókok | erőforráscsoport | 1-98 (az erőforráscsoport neve és a fiók neve) | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. |
+> | userAssignedIdentities (userAssignedIdentities) | erőforráscsoport | 3-128 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek<br><br>Kezdje betűvel vagy számmal. |
 
-## <a name="microsoftmedia"></a>Microsoft. Media
+## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | Mediaservices | erőforráscsoport | 3–24 | Kisbetűk és számok. |
-> | Mediaservices/liveEvents | Media Service | 1-32 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikusan. |
-> | Mediaservices/liveEvents/liveOutputs | Élő esemény | 1-256 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikusan. |
-> | Mediaservices/streamingEndpoints | Media Service | 1-24 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikusan. |
+> | fiókok | erőforráscsoport | 1–98 (erőforráscsoport és fióknév) | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikussal. |
+
+## <a name="microsoftmedia"></a>Microsoft.Media
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | mediaservices | erőforráscsoport | 3–24 | Kisbetűk és számok. |
+> | mediaservices /liveEvents | Media service | 1-32 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikussal. |
+> | mediaservices / liveEvents / liveOutputs | Élő esemény | 1-256 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikussal. |
+> | mediaservices / streamingEndpoints | Media service | 1-24 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje alfanumerikussal. |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | applicationGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | applicationSecurityGroups | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | azureFirewalls | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | bastionHosts | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | kapcsolatok | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | dnsZones | erőforráscsoport | 1-63 karakter<br><br>2 – 34 felirat<br><br>Minden címke egy ponttal elválasztott karakterből áll. Például a **contoso.com** 2 címkével rendelkezik. | Az egyes címkék alfanumerikus karaktereket, aláhúzásokat és kötőjeleket tartalmazhatnak.<br><br>Mindegyik címkét egy pont választja el egymástól. |
-> | expressRouteCircuits | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | firewallPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | firewallPolicies / ruleGroups | tűzfal házirendje | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | frontDoors | globális | 5-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | frontdoorWebApplicationFirewallPolicies | erőforráscsoport | 1-128 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
-> | loadBalancers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | loadBalancers/inboundNatRules | terheléselosztó | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | localNetworkGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | networkInterfaces | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | networkSecurityGroups | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | networkSecurityGroups/securityRules | hálózati biztonsági csoport | 1–80 |  Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | networkWatchers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | privateDnsZones | erőforráscsoport | 1-63 karakter<br><br>2 – 34 felirat<br><br>Minden címke egy ponttal elválasztott karakterből áll. Például a **contoso.com** 2 címkével rendelkezik. | Az egyes címkék alfanumerikus karaktereket, aláhúzásokat és kötőjeleket tartalmazhatnak.<br><br>Mindegyik címkét egy pont választja el egymástól. |
-> | privateDnsZones / virtualNetworkLinks | privát DNS-zóna | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | Nyilvános IP | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | publicIPPrefixes | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | routeFilters | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | routeFilters / routeFilterRules | útvonal szűrője | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | routeTables | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | routeTables/útvonalak | útvonaltábla | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | serviceEndpointPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | trafficmanagerprofiles | globális | 1–63 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | virtualNetworkGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | virtualNetworks | erőforráscsoport | 2–64 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | virtualnetworks/alhálózatok | virtuális hálózat | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | virtualNetworks/virtualNetworkPeerings | virtuális hálózat | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | virtualWans | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | vpnGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | vpnGateways/VPN | VPN-átjáró | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
-> | vpnSites | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
+> | applicationGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | applicationSecurityGroups | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | azureFirewalls | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjeles végződő. |
+> | bastionHosts | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | Kapcsolatok | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | dnsZones (dnsZones) | erőforráscsoport | 1–63 karakter<br><br>2–34 címke<br><br>Minden címke egy pontokkal elválasztott karakterkészlet. Például a **contoso.com** 2 címkével rendelkezik. | Minden címke tartalmazhat alfanumerikus karaktereket, aláhúzásjeleket és kötőjeleket.<br><br>Minden címke pontokkal van elválasztva. |
+> | expressRouteCircuits | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | firewallPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | firewallPolicies / ruleGroups | tűzfal-szabályzat | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | frontDoors (frontDoors) | Globális | 5-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+> | frontdoorWebApplicationFirewallPolicies | erőforráscsoport | 1-128 | Alfanumerikus karakterek.<br><br>Kezdje betűvel. |
+> | loadBalancers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | loadBalancers / inboundNatRules | terheléselosztás | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | localNetworkGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | networkInterfaces | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | networkSecurityGroups | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | networkSecurityGroups / securityRules | hálózati biztonsági csoport | 1–80 |  Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | networkWatchers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | privateDnsZones | erőforráscsoport | 1–63 karakter<br><br>2–34 címke<br><br>Minden címke egy pontokkal elválasztott karakterkészlet. Például a **contoso.com** 2 címkével rendelkezik. | Minden címke tartalmazhat alfanumerikus karaktereket, aláhúzásjeleket és kötőjeleket.<br><br>Minden címkét pont választ el egymástól. |
+> | privateDnsZones / virtualNetworkLinks | privát DNS-zóna | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | publicIPAddresses | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | publicIPPrefixes | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | routeFilters (útvonalszűrők) | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | routeFilters / routeFilterRules | útvonalszűrő | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | routeTables | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | routeTables /routes | útvonaltábla | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | serviceEndpointPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | trafficmanagerprofiles | Globális | 1–63 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+> | virtualNetworkGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | virtualNetworks | erőforráscsoport | 2–64 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | virtualnetworks /alhálózatok | virtuális hálózat | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | virtualNetworks / virtualNetworkPeerings | virtuális hálózat | 1–80 | Alfanumerikus karakterek, aláhúzásjel, pont és kötőjel.<br><br>Kezdje alfanumerikus karakterekkel. Alfanumerikus vagy aláhúzásjel végződő. |
+> | virtualWans | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | vpnGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | vpnGateways / vpnConnections | VPN-átjáró | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
+> | vpnSites (vpnSites) | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzásjelek, időszakok és kötőjelek.<br><br>Kezdje alfanumerikussal. Alfanumerikus vagy aláhúzásjel végződő. |
 
-## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
-> | névterek/engedélyezési szabályok | névtér | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
-> | névterek/notificationHubs | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
-> | névterek/notificationHubs/engedélyezési szabályok | értesítési központ | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
-
-## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
+## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | fürtök | erőforráscsoport | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | munkaterületek | globális | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | Névterek | Globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdje betűvel. Alfanumerikus karakterekkel végződik. |
+> | névterek / Engedélyezési szabályok | névtér | 1-256 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alfanumerikus karaktereket indít el. |
+> | névterek / notificationHubs | névtér | 1-260 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alfanumerikus karaktereket indít el. |
+> | névterek / notificationHubs / AuthorizationRules | értesítési központ | 1-256 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alfanumerikus karaktereket kezdjen. |
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
-
-## <a name="microsoftportal"></a>Microsoft. Portal
+## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | irányítópultok | erőforráscsoport | 3-160 | Alfanumerikus karakterek és kötőjelek.<br><br>Ha korlátozott karaktereket szeretne használni, vegyen fel egy **Hidden-title** nevű címkét a használni kívánt irányítópult-névvel. A portál ezt a nevet jeleníti meg az irányítópult megjelenítésekor. |
+> | Klaszterek | erőforráscsoport | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | munkaterületek | Globális | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | workspaceCollections | régió | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Nem kezdődhet kötőjeltel. Egymást követő kötőjelek nem használhatók. |
-
-## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | kapacitások | régió | 3-63 | Kisbetűk vagy számok<br><br>Kezdje kisbetűvel. |
+> | megoldások | munkaterület | N/A | A Microsoft által írt megoldásoknál a névnek a következő mintában kell lennie:<br>`SolutionType(WorkspaceName)`<br><br>A külső felek által írt megoldásokhoz a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis- és nagybetűket. |
 
-## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | boltívek | erőforráscsoport | 2-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. |
-> | tárolók/backupPolicies | tár | 3-150 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. A kötőjel nem végződhet. |
-
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik. |
-> | névterek/engedélyezési szabályok | névtér | 1-50 |  Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/HybridConnections | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/HybridConnections/engedélyezési szabályok | hibrid kapcsolatok | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/WcfRelays | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/WcfRelays/engedélyezési szabályok | WCF-továbbító | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | irányítópultok | erőforráscsoport | 3-160 | Alfanumerikus karakterek és kötőjelek.<br><br>Ha korlátozott karaktereket szeretne használni, adjon hozzá egy **hidden-title nevű** címkét a használni kívánt irányítópult nevével. A portál megjeleníti ezt a nevet az irányítópult megjelenítésekor. |
 
-## <a name="microsoftresources"></a>Microsoft. Resources
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | központi telepítések | erőforráscsoport | 1-64 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
-> | resourcegroups | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek, időszakok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nem végződhet ponttal. |
-> | tagNames | erőforrás | 1-512 | Nem használható:<br>`<>%&\?/` |
+> | workspaceCollections (munkaterület-collections) | régió | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Nem kezdődhet kötőjellel. Nem használhat egymást követő kötőjeleket. |
+
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Kapacitások | régió | 3-63 | Kisbetűk vagy számok<br><br>Kezdje kisbetűvel. |
+
+## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Boltívek | erőforráscsoport | 2-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. |
+> | tárolók / backupPolicies | tár | 3-150 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Nem végződhet kötőjellel. |
+
+## <a name="microsoftrelay"></a>Microsoft.Relay
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Névterek | Globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik. |
+> | névterek / Engedélyezési szabályok | névtér | 1-50 |  Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | névterek / HybridConnections | névtér | 1-260 | Alfanumerikus karakterek, pontokat, kötőjeleket, aláhúzásjeleket és perjeleket.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | névterek / HybridConnections/authorizationRules | hibrid kapcsolat | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | névterek / WcfRelays | névtér | 1-260 | Alfanumerikus karakterek, pontokat, kötőjeleket, aláhúzásjeleket és perjeleket.<br><br>Alfanumerikus karakterekből indul ki és végződik. |
+> | névterek / WcfRelays / authorizationRules | Wcf Relay | 1-50 | Alfanumerikus karakterek, pontokat, kötőjeleket és aláhúzásjeleket.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+
+## <a name="microsoftresources"></a>Microsoft.Resources
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Telepítések | erőforráscsoport | 1-64 | Alfanumerikus karakterek, aláhúzásjelek, zárójelek, kötőjelek és pontokat. |
+> | erőforráscsoportok | előfizetést | 1–90 | Alfanumerikus karakterek, aláhúzásjelek, zárójelek, kötőjelek, pontok és Unicode-karakterek, amelyek megfelelnek a [regex dokumentációjának.](/rest/api/resources/resourcegroups/createorupdate)<br><br>Nem végződhet pontra. |
+> | tagNames (címkenevek) | Erőforrás | 1-512 | Nem használható:<br>`<>%&\?/` |
 > | tagNames / tagValues | címke neve | 1-256 | Minden karakter. |
-> | templateSpecs | erőforráscsoport | 1–90 | Alfanumerikus karakterek, aláhúzások, zárójelek, kötőjelek és időszakok. |
+> | templateSpecs | erőforráscsoport | 1–90 | Alfanumerikus karakterek, aláhúzásjelek, zárójelek, kötőjelek és pontokat. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik.<br><br>További információt a [névtér létrehozása](/rest/api/servicebus/create-namespace)című témakörben talál. |
-> | névterek/engedélyezési szabályok | névtér | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
-> | névterek/disasterRecoveryConfigs | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
-> | névterek/migrationConfigurations | névtér |  | Mindig **$default** kell lennie. |
-> | névterek/várólisták | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/várólisták/engedélyezési szabályok | üzenetsor | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
-> | névterek/témakörök | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | névterek/témakörök/engedélyezési szabályok | témakör | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
-> | névterek/témakörök/előfizetések | témakör | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
-> | névterek/témakörök/előfizetések/szabályok | előfizetést | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
+> | Névterek | Globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik.<br><br>További információ: [Névtér létrehozása.](/rest/api/servicebus/create-namespace) |
+> | névterek / Engedélyezési szabályok | névtér | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alphnumerikus karakterekkel kezdődnek és végződnek. |
+> | névterek / disasterRecoveryConfigs | Globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Alfanumerikus karakterekkel végződik. |
+> | névterek / migrationConfigurations | névtér |  | Mindig a **$default.** |
+> | névterek /üzenetsorok | névtér | 1-260 | Alfanumerikus karakterek, pontokat, kötőjeleket, aláhúzásjeleket és perjeleket.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+> | névterek / üzenetsorok / engedélyezési szabályok | üzenetsor | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>A kezdéshez és a véghez alphnumerikus karaktereket kell bejelenni. |
+> | névterek /témakörök | névtér | 1-260 | Alfanumerikus karakterek, pontokat, kötőjeleket, aláhúzásjeleket és perjeleket.<br><br>Alfanumerikus karakterekkel kezdődnek és végződnek. |
+> | névterek / témakörök / authorizationRules | témakör | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>A kezdéshez és a véghez alphnumerikus karaktereket kell bevetni. |
+> | névterek / témakörök / előfizetések | témakör | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>A kezdéshez és a véghez alphnumerikus karaktereket kell bejelenni. |
+> | névterek / témakörök / előfizetések / szabályok | előfizetést | 1-50 | Alfanumerikus karakterek, pont, kötőjel és aláhúzásjel.<br><br>Alphnumerikus karakterekkel kezdődnek és végződnek. |
 
-## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | fürtök | régió | 4-23 | Kisbetűk, számok és kötőjelek.<br><br>Kezdje kisbetűvel. Kisbetűs betűvel vagy számmal végződik. |
-
-## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
+## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | signalR | globális | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Betűvel vagy számmal végződik.  |
+> | Klaszterek | régió | 4-23 | Kisbetűk, számok és kötőjelek.<br><br>Kezdje kisbetűvel. Kisbetűvel vagy számmal végződik. |
+
+## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | signalR | Globális | 3-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik.  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | managedInstances | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. <br><br> Nem lehet speciális karakter, például: `@` . |
-> | kiszolgálók | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/rendszergazdák | kiszolgáló |  | Kell lennie `ActiveDirectory` . |
-> | kiszolgálók/adatbázisok | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
-> | kiszolgálók/adatbázisok/syncGroups | adatbázis | 1-150 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | kiszolgálók/elasticPools | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
-> | kiszolgálók/failoverGroups | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/firewallRules | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:;\/?`<br><br>Nem végződhet ponttal. |
+> | managedInstances | Globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. <br><br> Nem tartalmazhat speciális karaktereket, például `@` : . |
+> | Szerverek | Globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | kiszolgálók/rendszergazdák | kiszolgáló |  | A(nak) kell `ActiveDirectory` lennie. |
+> | kiszolgálók/adatbázisok | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet pontra vagy szóközre. |
+> | servers / databases / syncGroups | adatbázis | 1-150 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | servers /elasticPools | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet pontra vagy szóközre. |
+> | servers /failoverGroups | Globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | servers /firewallRules | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:;\/?`<br><br>Nem végződhet pontra. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | storageAccounts | globális | 3–24 | Kisbetűk és számok. |
-> | storageAccounts/blobServices | tárfiók |  | Kell lennie `default` . |
-> | storageAccounts/blobServices/tárolók | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. Egymást követő kötőjelek nem használhatók. |
-> | storageAccounts/fileServices | tárfiók |  | Kell lennie `default` . |
-> | storageAccounts/fileServices/megosztások | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
-> | storageAccounts/managementPolicies | tárfiók |  | Kell lennie `default` . |
-> | blob | tároló | 1–1024 | Bármely URL-karakter, kis-és nagybetűk megkülönböztetése |
-> | üzenetsor | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
-> | tábla | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
+> | storageAccounts (tárfiókok) | Globális | 3–24 | Kisbetűk és számok. |
+> | storageAccounts / blobServices | tárfiók |  | A(nak) kell `default` lennie. |
+> | storageAccounts / blobServices / tárolók | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>Kezdje kisbetűvel vagy számmal. Nem használhat egymást követő kötőjeleket. |
+> | storageAccounts / fileServices | tárfiók |  | A(nak) kell `default` lennie. |
+> | storageAccounts / fileServices / shares | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. Nem használhat egymást követő kötőjeleket. |
+> | storageAccounts / managementPolicies | tárfiók |  | A(nak) kell `default` lennie. |
+> | blob | tároló | 1–1024 | Bármilyen URL-karakter, megkülönbözteti a kis- és nagybetűket |
+> | üzenetsor | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>Nem kezdődhet vagy végződhet kötőjellel. Nem használhat egymást követő kötőjeleket. |
+> | tábla | tárfiók | 3-63 | Alfanumerikus karakterek.<br><br>Kezdje betűvel. |
 
-## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | storageSyncServices | erőforráscsoport | 1-260 | Alfanumerikus karakterek, szóközök, időszakok, kötőjelek és aláhúzások.<br><br>Nem végződhet ponttal vagy szóközzel. |
-> | storageSyncServices / syncGroups | Storage Sync szolgáltatás | 1-260 | Alfanumerikus karakterek, szóközök, időszakok, kötőjelek és aláhúzások.<br><br>Nem végződhet ponttal vagy szóközzel. |
-
-## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
+## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | kezelők | erőforráscsoport | 2-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
+> | storageSyncServices | erőforráscsoport | 1-260 | Alfanumerikus karakterek, szóközök, pont, kötőjel és aláhúzásjel.<br><br>Nem végződhet pontra vagy szóközre. |
+> | storageSyncServices / syncGroups | tárolószinkronizálási szolgáltatás | 1-260 | Alfanumerikus karakterek, szóközök, pont, kötőjel és aláhúzásjel.<br><br>Nem végződhet pontra vagy szóközre. |
 
-## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Entitás | Hatókör | Hossz | Érvényes karakterek |
-> | --- | --- | --- | --- |
-> | streamingjobs | erőforráscsoport | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | streamingjobs/függvények | folyamatos átviteli feladatok | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | streamingjobs/bemenetek | folyamatos átviteli feladatok | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | streamingjobs/kimenetek | folyamatos átviteli feladatok | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-> | streamingjobs/átalakítások | folyamatos átviteli feladatok | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
-
-## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
+## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | környezetben | erőforráscsoport | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
-> | környezetek/accessPolicies | környezet | 1–90 | Nem használható:<br> `'<>%&:\?/#` |
-> | környezetek/eventSources | környezet | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
-> | környezetek/referenceDataSets | környezet | 3-63 | Alfanumerikus karaktereket |
+> | Vezetők | erőforráscsoport | 2-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Alfanumerikus karakterekkel végződik. |
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | tanúsítványok | erőforráscsoport | 1-260 | Nem használható:<br>`/` <br><br>Nem végződhet szóközzel vagy ponttal.  | 
+> | streamingjobs | erőforráscsoport | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | streamingjobs / függvények | streamelési feladat | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | streamingjobs/bemenetek | streamelési feladat | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | streamingjobs /outputs | streamelési feladat | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+> | streamingjobs /átalakítások | streamelési feladat | 3-63 | Alfanumerikus karakterek, kötőjelek és aláhúzásjelek. |
+
+## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | Környezetben | erőforráscsoport | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
+> | környezetek / accessPolicies | környezet | 1–90 | Nem használható:<br> `'<>%&:\?/#` |
+> | környezetek /eventSources | környezet | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
+> | környezetek / referenceDataSets | környezet | 3-63 | Alfanumerikus karakterek |
+
+## <a name="microsoftweb"></a>Microsoft.Web
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | tanúsítványok | erőforráscsoport | 1-260 | Nem használható:<br>`/` <br><br>Nem végződhet szóközre vagy pontra.  | 
 > | kiszolgálófarmok | erőforráscsoport | 1-40 | Alfanumerikus karakterek és kötőjelek. |
-> | helyek | globális vagy tartományi. Lásd az alábbi megjegyzést. | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | helyek/bővítőhelyek | hely | 2-59 | Alfanumerikus karakterek és kötőjelek. |
+> | Helyek | globális vagy tartományonkénti. Lásd az alábbi megjegyzést. | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>Nem kezdődhet vagy végződhet kötőjellel. |
+> | helyek/tárolóhelyek | Oldalon | 2-59 | Alfanumerikus karakterek és kötőjelek. |
 
 > [!NOTE]
-> Egy webhelynek globálisan egyedi URL-címmel kell rendelkeznie. Ha üzemeltetési csomagot használó webhelyet hoz létre, az URL-cím a következő: `http://<app-name>.azurewebsites.net` . Az alkalmazás nevének globálisan egyedinek kell lennie. App Service Environment használó webhely létrehozásakor az alkalmazás nevének egyedinek kell lennie a [tartományon belül a app Service Environment számára](../../app-service/environment/using-an-ase.md#app-access). Mindkét esetben a hely URL-címe globálisan egyedi.
+> A webhelynek globálisan egyedi URL-lel kell lennie. Ha üzemeltetési tervet használó webhelyet hoz létre, az URL-cím `http://<app-name>.azurewebsites.net` a következő: . Az alkalmazás nevének globálisan egyedinek kell lennie. Ha olyan webhelyet hoz létre, amely App Service Environment, az alkalmazás nevének egyedinek kell lennie a [App Service Environment.](../../app-service/environment/using-an-ase.md#app-access) A webhely URL-címe mindkét esetben globálisan egyedi.
 >
-> A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
+> Azure Functions microsoft.web/sites elnevezési szabályokkal és korlátozásokkal rendelkezik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.
+Az erőforrások elnevezésére vonatkozó javaslatokért [lásd: Ready: Recommended naming and tagging conventions (Kész: Ajánlott elnevezési és címkézési konvenciók).](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)

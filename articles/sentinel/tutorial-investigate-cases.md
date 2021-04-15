@@ -1,6 +1,6 @@
 ---
-title: Incidensek vizsgálata az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Sentinelt olyan speciális riasztási szabályok létrehozására, amelyek a hozzárendelhető és kivizsgálható incidenseket hoznak létre.
+title: Incidensek kivizsgálása Azure Sentinel| Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Azure Sentinel riasztási szabályokat a hozzárendelni és kivizsgálni képes incidensek létrehozásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,105 +12,111 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790986"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375838"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: Incidensek kivizsgálása Azure Sentinel
 
 > [!IMPORTANT]
-> A vizsgálati gráf mostantól **általánosan elérhető**. 
+> A vizsgálati gráf mostantól **általánosan elérhető.** 
 
-Ez az oktatóanyag segítséget nyújt az incidensek vizsgálatához az Azure Sentinel használatával. Miután csatlakoztatta az adatforrásokat az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel lehetővé teszi, hogy speciális riasztási szabályokat hozzon létre, amelyek a hozzárendelhető és kivizsgálható incidenseket eredményeznek.
+Ez az oktatóanyag segítséget nyújt az incidensek kivizsgálásában Azure Sentinel. Miután csatlakoztatta az adatforrásokat a Azure Sentinel, szeretne értesítést látni, ha valami gyanús történik. Ennek lehetővé teszi a Azure Sentinel, hogy speciális riasztási szabályokat hozzon létre, amelyek hozzárendelheti és kivizsgálhatja az incidenseket.
 
-Ez a cikk a következőket ismerteti:
+Ez a cikk a következővel foglalkozik:
 > [!div class="checklist"]
 > * Incidensek vizsgálata
 > * A vizsgálati gráf használata
 > * Reagálás a fenyegetésekre
 
-Egy incidens több riasztást is tartalmazhat. Ez egy adott vizsgálatra vonatkozó összes releváns bizonyíték összesítése. A rendszer az **elemzés** lapon létrehozott elemzési szabályok alapján létrehoz egy incidenst. A riasztásokhoz kapcsolódó tulajdonságok, például a súlyosság és az állapot az incidens szintjén vannak megadva. Miután engedélyezte az Azure Sentinel számára, hogy megtudja, milyen veszélyforrásokat keres, és hogyan keresheti meg őket, figyelheti az észlelt fenyegetéseket az incidensek kivizsgálásával.
+Egy incidens több riasztást is tartalmazhat. Egy adott vizsgálat összes releváns bizonyítékának összesítése. A rendszer az Elemzés oldalon létrehozott elemzési  szabályok alapján hoz létre incidenst. A riasztásokkal kapcsolatos tulajdonságok, például a súlyosság és az állapot az incidens szintjén vannak beállítva. Miután tudatta Azure Sentinel, hogy milyen típusú fenyegetéseket keres, és hogyan találhatja meg őket, az incidensek vizsgálatának segítségével figyelheti az észlelt fenyegetéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
+- Az incidenst csak akkor tudja kivizsgálni, ha az entitásleképezés mezőit használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
 
-- Ha van olyan vendég felhasználója, akinek incidenseket kell hozzárendelnie, a felhasználónak hozzá kell rendelnie az Azure AD-bérlő [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers) szerepkörét. A normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint van hozzárendelve.
+- Ha van egy vendégfelhasználója, aki incidenseket szeretne hozzárendelni, a felhasználóhoz címtárolvasó szerepkört kell rendelni az Azure AD-bérlőben. [](../active-directory/roles/permissions-reference.md#directory-readers) A normál (nem vendég) felhasználók alapértelmezés szerint ehhez a szerepkörhöz vannak hozzárendelve.
 
 ## <a name="how-to-investigate-incidents"></a>Incidensek vizsgálata
 
-1. Válassza az **incidensek** lehetőséget. Az **incidensek** oldalon megtudhatja, hogy hány incidens van, hány van nyitva, hányan van **folyamatban**, és hány lezárult. Minden incidensnél láthatja a bekövetkezett időt, valamint az incidens állapotát. Tekintse meg a súlyosságot, hogy eldöntse, melyik incidenst kell először kezelni.
+1. Válassza **az Incidents (Incidensek) lehetőséget.** Az **Incidensek** lapon megtekintheti, hogy hány incidense van, hány nyitott, hány folyamatban lévőre van beállítva, és hány van lezárva. Minden incidensnél láthatja a beesés idejét és állapotát. A súlyosság alapján döntse el, hogy mely incidenseket kell elsőként kezelnie.
 
     ![Incidens súlyosságának megtekintése](media/tutorial-investigate-cases/incident-severity.png)
 
-1. Igény szerint szűrheti az incidenseket, például az állapot vagy a súlyosság alapján.
+1. Az incidenseket szükség szerint szűrheti, például állapot vagy súlyosság szerint.
 
-1. A vizsgálat megkezdéséhez válasszon ki egy adott incidenst. A jobb oldalon megtekintheti az incidens részletes információit, beleértve annak súlyosságát, az érintett entitások számának összefoglalását, az eseményt kiváltó nyers eseményeket és az incidens egyedi AZONOSÍTÓját.
+1. A vizsgálat megkezdéséhez válasszon ki egy adott incidenst. A jobb oldalon részletes információkat láthat az incidensről, beleértve annak súlyosságát, az érintett entitások számának összegzését, az incidenst kiváltó nyers eseményeket, valamint az incidens egyedi azonosítóját.
 
-1. Az incidensben lévő riasztásokkal és entitásokkal kapcsolatos további részletek megtekintéséhez válassza az incidens lapon a **teljes részletek megtekintése** lehetőséget, és tekintse át az incidens információit összefoglaló kapcsolódó lapokat. A **riasztások** lapon tekintse át magát a riasztást. Láthatja a riasztással kapcsolatos összes releváns információt – a riasztást kiváltó lekérdezést, a lekérdezésekben visszaadott eredmények számát, valamint a riasztásokra vonatkozó forgatókönyvek futtatásának lehetőségét. Az incidensek még mélyebb részletezéséhez válassza ki az **események** számát. Ekkor megnyílik a lekérdezés, amely létrehozta az eredményeket, és a riasztást kiváltó eseményeket Log Analyticsban. Az **entitások** lapon a riasztási szabály definíciójának részeként leképezett összes entitás látható.
+1. Az incidensben található riasztások és entitások további  részleteinek megtekintéséhez válassza a Teljes adatok megtekintése az incidens oldalon lehetőséget, és tekintse át az incidens adatait összegő megfelelő lapokat. 
 
-    ![Riasztás részleteinek megtekintése](media/tutorial-investigate-cases/alert-details.png)
+    ![Riasztás részleteinek megtekintése](media/tutorial-investigate-cases/incident-timeline.png)
 
-1. Ha aktívan vizsgálja az incidenst, érdemes lehet az incidens állapotát **előre** beállítani, amíg be nem zárjuk.
+    Például:
 
-1. Az incidensek egy adott felhasználóhoz rendelhetők hozzá. Minden incidenshez hozzárendelhet egy tulajdonost az **incidens tulajdonosa** mező beállításával. Az összes incidens nincs hozzárendelve. Megjegyzéseket is hozzáadhat, hogy más elemzők megértsék a megvizsgált személyeket és az incidensek körét.
+    - Az **Idősor lapon** tekintse át az incidensben lévő riasztások és könyvjelzők idővonalát, ami segíthet rekonstruálni a támadói tevékenység idővonalát.
+    - A **Riasztások lapon** tekintse át magát a riasztást. A riasztásra vonatkozó összes releváns információt láthatja – a riasztást kiváltó lekérdezést, a lekérdezésenként visszaadott eredmények számát, valamint a forgatókönyveket a riasztások alapján futtathatja. Az incidens további részletezésében válassza ki az Események **számát.** Ez megnyitja az eredményeket generáló lekérdezést és a Log Analyticsben a riasztást kiváltó eseményeket. 
+    - Az **Entitások lapon** láthatja a riasztási szabály definíciójának részeként leképezett összes entitást.
 
-    ![Incidens társítása a felhasználóhoz](media/tutorial-investigate-cases/assign-incident-to-user.png)
+1. Ha aktívan vizsgál egy incidenst, jó ötlet, ha az incidens  állapotát Folyamatban állapotra állítsa, amíg be nem zárja.
 
-1. A vizsgálati Térkép **megtekintéséhez válassza a vizsgálat lehetőséget** .
+1. Az incidensek hozzárendelhetőek egy adott felhasználóhoz. Minden incidenshez hozzárendelhet egy tulajdonost az Incidens tulajdonosa **mező beállításával.** Minden incidens hozzárendeletlenként kezdődik. Megjegyzéseket is hozzáadhat, hogy más elemzők is megértsék, mit vizsgált meg, és milyen aggodalmai vannak az incidensekkel kapcsolatban.
 
-## <a name="use-the-investigation-graph-to-deep-dive"></a>A vizsgálati gráf részletes használata
+    ![Incidens hozzárendelése a felhasználóhoz](media/tutorial-investigate-cases/assign-incident-to-user.png)
 
-A vizsgálati gráf lehetővé teszi, hogy az elemzők a megfelelő kérdéseket tegyenek fel az egyes vizsgálatokhoz. A vizsgálati gráf segítségével megismerheti a hatókört, és azonosíthatja a lehetséges biztonsági fenyegetéseket, ha a releváns adatokat bármilyen érintett entitással korrelálja. A grafikonon bemutatott összes entitást kiválaszthatja, és kiválaszthatja a különböző bővítési lehetőségek között.  
+1. Válassza **a Vizsgálat** lehetőséget a vizsgálati térkép megtekintéséhez.
+
+## <a name="use-the-investigation-graph-to-deep-dive"></a>A vizsgálati gráf használata a mély leásáshoz
+
+A vizsgálati gráf lehetővé teszi az elemzők számára, hogy az egyes vizsgálatokhoz megfelelő kérdéseket tenek fel. A vizsgálati gráf segít a lehetséges biztonsági fenyegetések hatókörének és kiváltó okának azonosításában azáltal, hogy a releváns adatokat az érintett entitásokkal korrelál. Mélyebbre áshat, és megvizsgálhatja a gráfon megjelenő entitásokat, ha kiválasztja azt, és kiválasztja a különböző bővítési lehetőségeket.  
   
-A vizsgálati gráf a következőket biztosítja:
+A vizsgálati gráf a következőt biztosítja:
 
-- **Vizualizációs környezet a nyers adatokból**: az élő, a vizualizációs gráf a nyers adatokból automatikusan kinyert entitás-kapcsolatokat jeleníti meg. Ez lehetővé teszi a különböző adatforrások közötti kapcsolatok egyszerű megtekintését.
+- **Vizuális környezet nyers adatokból:** Az élő, vizuális gráf a nyers adatokból automatikusan kinyert entitáskapcsolatokat jeleníti meg. Így könnyedén láthatja a különböző adatforrások kapcsolatait.
 
-- **Teljes vizsgálat hatókörének felderítése**: a vizsgálat hatókörének kibontása beépített feltárási lekérdezésekkel a szabálysértés teljes hatókörének felépítéséhez.
+- **Teljes vizsgálati hatókör felderítése:** Bővítse ki a vizsgálati hatókört a beépített feltárási lekérdezésekkel, hogy feltárja a biztonsági incidensek teljes hatókörét.
 
-- **Beépített vizsgálat lépései**: az előre meghatározott feltárási lehetőségekkel győződjön meg arról, hogy a megfelelő kérdéseket a fenyegetés szemében kéri.
+- **Beépített vizsgálati lépések:** Előre meghatározott feltárási lehetőségekkel győződjön meg arról, hogy a megfelelő kérdéseket teszi fel egy fenyegetéssel szemben.
 
 A vizsgálati gráf használata:
 
-1. Válasszon ki egy incidenst, majd kattintson a **vizsgálat** elemre. Ezzel elvégzi a vizsgálati gráfot. A gráf szemléltető térképet biztosít a riasztáshoz közvetlenül kapcsolódó entitásokhoz, és minden további kapcsolódó erőforrást.
+1. Válasszon ki egy incidenst, majd válassza a **Vizsgálat lehetőséget.** Ezzel a vizsgálati gráfra kerül. A gráf a riasztáshoz közvetlenül kapcsolódó entitások és a további csatlakoztatott erőforrások szemléltető térképét biztosítja.
 
    > [!IMPORTANT] 
-   > - Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
+   > - Csak akkor tudja kivizsgálni az incidenst, ha az entitásleképezés mezőit használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
    >
-   > - Az Azure Sentinel jelenleg **legfeljebb 30 napos incidensek** vizsgálatát támogatja.
+   > - Azure Sentinel jelenleg a legfeljebb **30 napos incidensek vizsgálatát támogatja.**
 
    ![Térkép megtekintése](media/tutorial-investigate-cases/map1.png)
 
-1. Válasszon ki egy entitást az **entitások** panel megnyitásához, hogy áttekintse az adott entitás információit.
+1. Válasszon ki egy entitást az **Entitások panel megnyitásához,** hogy áttekintheti az entitásra vonatkozó információkat.
 
-    ![Térképbeli entitások megtekintése](media/tutorial-investigate-cases/map-entities.png)
+    ![Entitások megtekintése a térképen](media/tutorial-investigate-cases/map-entities.png)
   
-1. Kiterjesztheti a vizsgálatot úgy, hogy az egyes entitások fölé viszi azokat a kérdéseket, amelyeket a biztonsági szakértők és az elemzők által a vizsgálat elmélyítése érdekében hoztak létre. Ezeket a beállításokat nevezzük a **lekérdezéseknek**.
+1. Bontsa ki a vizsgálatot úgy, hogy a kurzort az egyes entitások fölé egeret mutatva felfedi a biztonsági szakértők és elemzők által entitástípusonként megtervezett kérdések listáját a vizsgálat elmélyítése érdekében. Ezeket a lehetőségeket feltáró **lekérdezésnek hívjuk.**
 
     ![További részletek](media/tutorial-investigate-cases/exploration-cases.png)
 
-   A számítógépen például a kapcsolódó riasztások is igényelhetők. Ha kijelöl egy feltárási lekérdezést, a rendszer visszaadja az eredményül kapott jogosultságokat a gráfhoz. Ebben a példában a **kapcsolódó riasztások** kiválasztása a következő riasztásokat adta vissza a gráfba:
+   Egy számítógépen például kérhet kapcsolódó riasztásokat. Ha egy feltárási lekérdezést választ, az eredményül kapott entitek visszakerülnek a gráfba. Ebben a példában a **Kapcsolódó riasztások lehetőség kiválasztásával** a következő riasztásokat adhatja vissza a diagramon:
 
     ![Kapcsolódó riasztások megtekintése](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek az **események \>** lehetőséget választva történő megnyitásának lehetőségét.
+1. Minden egyes feltárási lekérdezésnél kiválaszthatja a nyers eseményeredmények és a Log Analyticsben használt lekérdezés megnyitásának beállítását az **Események lehetőség \> kiválasztásával.**
 
-1. Az incidens megismerése érdekében a gráf párhuzamos idővonalat biztosít.
+1. Az incidenst a grafikon párhuzamos idővonallal mutatja be.
 
-    ![Térkép idővonalának megtekintése](media/tutorial-investigate-cases/map-timeline.png)
+    ![Idővonal megtekintése a térképen](media/tutorial-investigate-cases/map-timeline.png)
 
-1. Vigye az egérmutatót az ütemterv fölé, és tekintse meg, hogy mely dolgokon történt a gráf az adott időpontban.
+1. Vigye az egérmutatót az idővonal fölé, hogy lássa, mely dolgok történtek a grafikonon.
 
-    ![A riasztások vizsgálatához használja a Térkép idővonalát](media/tutorial-investigate-cases/use-timeline.png)
+    ![Idővonal használata a térképen a riasztások vizsgálatához](media/tutorial-investigate-cases/use-timeline.png)
 
-## <a name="closing-an-incident"></a>Incidens bezárása
+## <a name="closing-an-incident"></a>Incidens lezárása
 
-Ha feloldott egy adott incidenst (például amikor a vizsgálat elérte a következtetést), az incidens állapotát **Lezártra** kell állítania. Ha így tesz, a rendszer arra kéri, hogy osztályozza az incidenst a zárás okának megadásával. Ez a lépés kötelező. Kattintson a **besorolás kiválasztása** lehetőségre, és válasszon a következők közül a legördülő listából:
+Miután megoldott egy adott incidenst (például amikor a vizsgálat elérte a következtetését), az incidens állapotát Lezártra kell **állítania.** Ha így történik, a rendszer megkéri, hogy sorolja be az incidenst a bezárásának okának megadásával. Ez a lépés kötelező. Kattintson **a Besorolás kiválasztása** elemre, és válasszon egyet a következők közül a legördülő listából:
 
 - Valós pozitív – gyanús tevékenység
 - Jóindulatú pozitív – gyanús, de nem váratlan
@@ -118,14 +124,14 @@ Ha feloldott egy adott incidenst (például amikor a vizsgálat elérte a követ
 - Álpozitív – helytelen adatok
 - Meghatározatlan
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Képernyőkép, amely kiemeli a Select besorolási listán elérhető besorolásokat.":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Képernyőkép a Besorolás kiválasztása listában elérhető besorolásokról.":::
 
-A megfelelő besorolás kiválasztása után adjon hozzá egy leíró szöveget a **Megjegyzés** mezőben. Ez akkor lehet hasznos, ha vissza kell térnie erre az eseményre. Ha elkészült, kattintson az **alkalmaz** gombra, és az incidens le lesz zárva.
+A megfelelő besorolás kiválasztása után adjon hozzá leíró szöveget a Megjegyzés **mezőben.** Ez akkor lehet hasznos, ha vissza kell hivatkozni erre az incidensre. Ha **végzett,** kattintson az Alkalmaz gombra, és az incidens lezárul.
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban megtanulta, hogyan kezdheti el az incidensek vizsgálatát az Azure Sentinel használatával. Folytassa az Oktatóanyaggal, hogy [miként reagálhat a fenyegetésekre automatizált forgatókönyvek használatával](tutorial-respond-threats-playbook.md).
+Ebben az oktatóanyagban megtanulta, hogyan vizsgál meg incidenseket a Azure Sentinel. Folytassa azzal az oktatóanyagot, amelyből [megtudhatja, hogyan reagálhat a fenyegetésekre automatizált forgatókönyvekkel.](tutorial-respond-threats-playbook.md)
 > [!div class="nextstepaction"]
-> [Válaszoljon a fenyegetésekre](tutorial-respond-threats-playbook.md) , hogy automatizálja a fenyegetésekre adott válaszokat.
+> [Reagálás a fenyegetésekre](tutorial-respond-threats-playbook.md) adott válaszok automatizálása érdekében.
 
