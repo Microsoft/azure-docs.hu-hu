@@ -1,29 +1,29 @@
 ---
-title: 'Gyors útmutató: statikus HTML-Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első HTML-Hello World Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: Statikus HTML-webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az Hello World HTML Azure App Service kódot. Az üzembe helyezés a Git használatával lehetséges, amely az üzembe helyezés számos App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 538d414ce606b944fcea7adbb1c817386e13090e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178575"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379570"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a <abbr title="HTTP-alapú szolgáltatás webes alkalmazások, REST API-k és mobil háttérbeli alkalmazások üzemeltetéséhez.">Azure App Service</abbr>. Ez a rövid útmutató [Cloud Shellban](../cloud-shell/overview.md)is elvégezhető, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI](/cli/azure/install-azure-cli)-vel.
+Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe alapszintű HTML+CSS-webhelyet <abbr title="HTTP-alapú szolgáltatás webalkalmazások, REST API-k és mobil háttéralkalmazások üzemeltetéséhez.">Azure App Service</abbr>. Ezt a rövid útmutatót [](../cloud-shell/overview.md)a következő Cloud Shell fogja végrehajtani, de helyileg is futtathatja ezeket a parancsokat az [Azure CLI-val.](/cli/azure/install-azure-cli)
 
-## <a name="1-prepare-your-environment"></a>1. a környezet előkészítése
+## <a name="1-prepare-your-environment"></a>1. A környezet előkészítése
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-A [Cloud Shellban](../cloud-shell/overview.md)hozzon létre egy gyors üzembe helyezési könyvtárat, majd váltson rá.
+A [Cloud Shell](../cloud-shell/overview.md)hozzon létre egy gyorsindítási könyvtárat, majd váltsa át a könyvtárra.
 
 ```bash
 mkdir quickstart
@@ -40,7 +40,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="2-create-a-web-app"></a>2. Webalkalmazás létrehozása
 
-Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. **Cserélje le** `<app-name>` globálisan egyedi névvel.
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. **Csere** `<app-name>` egy globálisan egyedi névvel.
 
 ```bash
 cd html-docs-hello-world
@@ -51,28 +51,28 @@ az webapp up --location westeurope --name <app_name> --html
 <details>
 <summary>Hibaelhárítás</summary>
 <ul>
-<li>Ha a <code>az</code> parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a <a href="#1-prepare-your-environment">környezet előkészítése</a>című témakörben leírtak szerint.</li>
-<li>Cserélje le a <code>&lt;app-name&gt;</code> karaktert az összes Azure-beli egyedi névre ( <em> érvényes karakterek: <code>a-z</code> , <code>0-9</code> és <code>-</code> </em> ). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.</li>
-<li>Az <code>--sku F1</code> argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.</li>
-<li>Az <code>--html</code> argumentum azt mondja, hogy az összes mappa tartalmát statikus tartalomként kezeli, és letiltja a Build automationt.</li>
-<li>Igény szerint megadhatja az argumentumot <code>--location &lt;location-name&gt;</code> , ahol az <code>&lt;location-name&gt;</code> egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> .</li>
+<li>Ha a parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a <code>az</code> <a href="#1-prepare-your-environment">környezet előkészítésével () leírtak szerint.</a></li>
+<li>Cserélje le a helyére a teljes Azure-ban egyedi nevet ( érvényes <code>&lt;app-name&gt;</code> <em> karakterek: <code>a-z</code> , és <code>0-9</code> <code>-</code> </em> ). Jó minta lehet a vállalat nevének és egy alkalmazásazonosítónak a kombinációja.</li>
+<li>A <code>--sku F1</code> argumentum létrehozza a webalkalmazást az Ingyenes tarifacsomagban. Ezt az argumentumot kihagyva gyorsabb prémium szintet használjon, amely óránkénti költségeket használ.</li>
+<li>A argumentum szerint a mappa tartalmát statikus tartalomként kell kezelni, és le kell tiltani a <code>--html</code> build automatizálását.</li>
+<li>Igény szerint meg is használhatja a <code>--location &lt;location-name&gt;</code> argumentumot, ahol az egy elérhető <code>&lt;location-name&gt;</code> Azure-régió. Az Azure-fiókhoz elérhető régiók listáját az parancs futtatásával lehet <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> lekérni.</li>
 </ul>
 </details>
 
-A parancs végrehajtása több percet is igénybe vehet. 
+A parancs befejezése eltarthat néhány percig. 
 
 <details>
-<summary>Mi történik <code>az webapp up</code> ?</summary>
+<summary>Mi a <code>az webapp up</code> baj?</summary>
 <p>Az <code>az webapp up</code> parancs a következő műveleteket hajtja végre:</p>
 <ul>
 <li>Egy alapértelmezett erőforráscsoport létrehozása.</li>
-<li>Hozzon létre egy alapértelmezett App Service csomagot.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Hozzon létre egy app Service alkalmazást</a> a megadott névvel.</li>
-<li>A <a href="/azure/app-service/deploy-zip">zip telepíti</a> a fájlokat az aktuális munkakönyvtárból az alkalmazásba.</li>
-<li>A futtatása közben üzeneteket biztosít az erőforrás-létrehozással, a naplózással és a ZIP-telepítéssel kapcsolatban.</li>
+<li>Hozzon létre egy App Service tervet.</li>
+<li><a href="/cli/azure/webapp#az-webapp-create">Hozzon létre App Service alkalmazást</a> a megadott névvel.</li>
+<li><a href="/azure/app-service/deploy-zip">Tömörítsen fájlokat</a> az aktuális munkakönyvtárból az alkalmazásba.</li>
+<li>A futtatás közben üzeneteket biztosít az erőforrások létrehozásáról, a naplózásról és a ZIP üzembe helyezéséről.</li>
 </ul>
 
-Amikor befejeződik, a következő példához hasonló információkat jelenít meg:
+Amikor befejeződik, az alábbi példához hasonló információkat jelenít meg:
 
 ```output
 {
@@ -90,13 +90,13 @@ Amikor befejeződik, a következő példához hasonló információkat jelenít 
 
 </details>
 
-Az erőforrások későbbi törléséhez szüksége lesz az `resourceGroup` értékre. [](#6-clean-up-resources)
+Később szüksége lesz `resourceGroup` az értékre az [erőforrások megtisztítása](#6-clean-up-resources) érdekében.
 
 <hr/>
 
-## <a name="3-browse-to-the-app"></a>3. tallózással keresse meg az alkalmazást
+## <a name="3-browse-to-the-app"></a>3. Tallózással keresse meg az alkalmazást
 
-A böngészőben nyissa meg az alkalmazás URL-címét: `http://<app_name>.azurewebsites.net` .
+Egy böngészőben ugrás az alkalmazás URL-címére: `http://<app_name>.azurewebsites.net` .
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -104,25 +104,25 @@ Az oldal Azure App Service webalkalmazásként fut.
 
 <hr/>
 
-## <a name="4-update-and-redeploy-the-app"></a>4. az alkalmazás frissítése és újbóli üzembe helyezése
+## <a name="4-update-and-redeploy-the-app"></a>4. Az alkalmazás frissítése és ismételt üzembe állása
 
-A Cloud Shell **írja be** `nano index.html` a nano Text Editor megnyitásához. 
+A gép Cloud Shell  `nano index.html` gépelje be a nano szövegszerkesztőt. 
 
-A `<h1>` fejléc címkéjén módosítsa a "Azure app Service-Sample statikus HTML-hely" kifejezést a "Azure app Service" értékre.
+A `<h1>` fejléccímkében módosítsa a "Azure App Service - Sample Static HTML Site" (Statikus HTML-mintawebhely) kódot "Azure App Service" névre.
 
 ![Nano index.html](media/quickstart-html/nano-index-html.png)
 
-**Mentse** a módosításokat a parancs használatával `^O` .
+**Mentse** a módosításokat a `^O` paranccsal.
 
-**Lépjen ki** a nano parancs használatával `^X` .
+**Lépjen ki a** nano alkalmazásból a paranccsal. `^X`
 
-Telepítse újra az alkalmazást a `az webapp up` paranccsal.
+Az alkalmazás újratelepítése a `az webapp up` paranccsal.
 
 ```bash
 az webapp up --html
 ```
 
-Váltson vissza arra a böngészőablakra, amely megnyílik a **Tallózás az alkalmazáshoz** lépéshez.
+Váltson vissza az alkalmazás tallózása lépésben megnyitott **böngészőablakra.**
 
 **Frissítse** az oldalt.
 
@@ -130,15 +130,15 @@ Váltson vissza arra a böngészőablakra, amely megnyílik a **Tallózás az al
 
 <hr/>
 
-## <a name="5-manage-your-new-azure-app"></a>5. az új Azure-alkalmazás kezelése
+## <a name="5-manage-your-new-azure-app"></a>5. Az új Azure-alkalmazás kezelése
 
-**Navigáljon** a [Azure Portal](https://portal.azure.com). 
+**Lépjen** a [Azure Portal](https://portal.azure.com)., 
 
-**Keresse** meg és **válassza ki** a **app Services**.
+**Keresse meg** és válassza **a App Services.** 
 
-![Válassza ki a App Services a Azure Portal](./media/quickstart-html/portal0.png)
+![A App Services válassza a Azure Portal](./media/quickstart-html/portal0.png)
 
-**Válassza ki** az Azure-alkalmazás nevét.
+**Válassza** ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-html/portal1.png)
 
@@ -150,7 +150,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 <hr/>
 
-## <a name="6-clean-up-resources"></a>6. erőforrások törlése
+## <a name="6-clean-up-resources"></a>6. Erőforrások tisztítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával. Ne feledje, hogy az erőforráscsoport neve automatikusan jött létre a [webalkalmazást létrehozó](#2-create-a-web-app) lépés során.
 

@@ -1,21 +1,21 @@
 ---
-title: Az Azure Service Fabric beépített szabályzat-definíciói
-description: Az Azure Service Fabric beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure Service Fabric
+description: Felsorolja Azure Policy Azure-erőforrások beépített szabályzatdefinícióit Service Fabric. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: be5dcec1ae598b066005292b9809881b9aa60f1b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: cb47fc89ef4499e847d5ac1d9ca3dd7373ced824
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090366"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498381"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Az Azure Service Fabric beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Azure Policy Azure-előfizetés beépített definíciói Service Fabric
 
-Ez az oldal az Azure Service Fabric beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal az [Azure-Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe Service Fabric. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-service-fabric"></a>Azure Service Fabric
 

@@ -1,158 +1,158 @@
 ---
-title: A rendszergazdai beleegyező munkafolyamat konfigurálása – Azure Active Directory | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja a végfelhasználók számára, hogy hozzáférést kérjenek a rendszergazdai jogosultságot igénylő alkalmazásokhoz.
+title: A rendszergazdai jóváhagyás munkafolyamatának konfigurálása – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja úgy a végfelhasználókat, hogy rendszergazdai jóváhagyást igénylő alkalmazásokhoz kérjenek hozzáférést.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 9811c3d1833a02ad3cbaf22b9f0b31fd2da5bb6d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105323"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375185"
 ---
-# <a name="configure-the-admin-consent-workflow"></a>Rendszergazdai engedélyezési munkafolyamat konfigurálása
+# <a name="configure-the-admin-consent-workflow"></a>A rendszergazdai jóváhagyás munkafolyamatának konfigurálása
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a rendszergazdai jogosultságok munkafolyamat funkciója, amely lehetővé teszi a végfelhasználók számára, hogy hozzáférést kérjenek az olyan alkalmazásokhoz, amelyekhez rendszergazdai engedély szükséges.
+Ez a cikk azt ismerteti, hogyan engedélyezheti a rendszergazdai jóváhagyás munkafolyamat-funkcióját, amellyel a végfelhasználók rendszergazdai jóváhagyást igénylő alkalmazásokhoz kérhetnek hozzáférést.
 
-Rendszergazdai jogosultsági szintű munkafolyamat nélkül a felhasználó egy olyan bérlőnél, amelynél a felhasználói beleegyezik, le lesz tiltva, amikor olyan alkalmazáshoz próbálnak hozzáférni, amely a szervezeti adathozzáféréshez szükséges engedélyekkel rendelkezik. A felhasználó általános hibaüzenetet kap arról, hogy nem engedélyezett az alkalmazáshoz való hozzáférés, és a rendszergazdától kérhet segítséget. Gyakran azonban a felhasználó nem tudja, hogy kivel kell kapcsolatba lépnie, hogy az alkalmazásban új helyi fiókot adjon meg vagy hozzon létre. Még akkor is, ha a rendszergazda értesítést kap, nincs mindig olyan gördülékeny folyamat, amely segítséget nyújt a rendszergazda számára a hozzáférés engedélyezéséhez és a felhasználók értesítéséhez.
+Rendszergazdai hozzájárulási munkafolyamat nélkül a felhasználói jóváhagyást letiltó bérlő felhasználója le lesz tiltva, amikor olyan alkalmazáshoz próbál hozzáférni, amelyhez engedélyre van szükség a szervezeti adatok eléréséhez. A felhasználó egy általános hibaüzenetet kap, amely szerint nem jogosult hozzáférni az alkalmazáshoz, és segítséget kell kérnie a rendszergazdától. A felhasználó azonban gyakran nem tudja, hogy kit kell kapcsolatba lépnie, ezért vagy fel kell vennie a kapcsolatot, vagy új helyi fiókot kell létrehoznia az alkalmazásban. Még ha a rendszergazda értesítést is kap, nem mindig van olyan gördülékeny folyamat, amely lehetővé teszi a rendszergazda számára a hozzáférés megadását és a felhasználók értesítését.
  
-A rendszergazdai hozzájárulási munkafolyamat lehetővé teszi, hogy a rendszergazdák biztonságos módon biztosítsák a hozzáférést a rendszergazdai jóváhagyást igénylő alkalmazásokhoz. Ha egy felhasználó megpróbál hozzáférni egy alkalmazáshoz, de nem tud beleegyezést adni, akkor a rendszergazdai jóváhagyásra vonatkozó kérelmet küldhet. A rendszer e-mailben küldi el a kérelmet a véleményezők számára kijelölt rendszergazdáknak. A felülvizsgáló végrehajtja a kérést, és a felhasználó értesítést kap a műveletről.
+A rendszergazdai jóváhagyás munkafolyamata biztonságos lehetőséget biztosít a rendszergazdáknak a rendszergazdai jóváhagyást igénylő alkalmazásokhoz való hozzáférés megadására. Ha egy felhasználó megpróbál hozzáférni egy alkalmazáshoz, de nem tud hozzájárulást adni, rendszergazdai jóváhagyásra vonatkozó kérést küldhet. A kérelmet a rendszer e-mailben küldi el a felülvizsgálóként kijelölt rendszergazdáknak. A felülvizsgáló a kérelemre vonatkozó műveletet is el fog sajátni, és a felhasználó értesítést kap a műveletről.
 
-A kérések jóváhagyásához a véleményezőnek globális rendszergazdának, felhőalapú alkalmazás-rendszergazdának vagy alkalmazás-rendszergazdának kell lennie. A véleményezőnek már rendelkeznie kell a hozzájuk rendelt rendszergazdai szerepkörök valamelyikével. Egyszerűen jelölje ki őket, mivel a véleményezők nem emelik fel a jogosultságokat.
+A kérelmek jóváhagyásához a felülvizsgálónak globális rendszergazdának, felhőalkalmazás-rendszergazdának vagy alkalmazás-rendszergazdának kell lennie. A felülvizsgálónak már hozzá kell rendelnie egy ilyen rendszergazdai szerepkört; A jogosultságai egyszerűen csak felülvizsgálóként való megtervezése nem emeli a jogosultsági szintjüket.
 
-## <a name="enable-the-admin-consent-workflow"></a>Rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése
+## <a name="enable-the-admin-consent-workflow"></a>A rendszergazdai jóváhagyás munkafolyamatának engedélyezése
 
-A rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése és a véleményezők kiválasztása:
+A rendszergazdai jóváhagyás munkafolyamatának engedélyezése és a felülvizsgálók kiválasztása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
-2. A bal oldali navigációs menü tetején kattintson a **minden szolgáltatás** elemre. Megnyílik a **Azure Active Directory bővítmény** .
-3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki **a Azure Active Directory** elemet.
-4. A navigációs menüben kattintson a **vállalati alkalmazások** elemre. 
-5. A **kezelés** területen válassza a **felhasználói beállítások** lehetőséget.
-6. A **rendszergazdai jogosultságok kérése** területen a felhasználók a rendszergazda beleegyezett **az alkalmazásba, hogy nem tudnak beleegyezni** az **Igen** értékre.
+2. Kattintson **a minden szolgáltatás** elemre a bal oldali navigációs menü tetején. Megnyílik **a Azure Active Directory bővítmény.**
+3. A szűrő keresőmezőbe írja be a "**Azure Active Directory"** parancsot, és válassza ki **Azure Active Directory** elemet.
+4. A navigációs menüben kattintson a Vállalati **alkalmazások elemre.** 
+5. A **Kezelés alatt** válassza a Felhasználói beállítások **lehetőséget.**
+6. A **Rendszergazdai hozzájárulási kérelmek alatt** állítsa be, hogy A **felhasználók** rendszergazdai jóváhagyást kérhetnek az olyan alkalmazásokhoz, amelyekhez nem tudnak igen **engedélyt adni.**
 
-   ![Rendszergazdai engedélyekkel rendelkező munkafolyamat beállításainak konfigurálása](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
+   ![Rendszergazdai jóváhagyás munkafolyamat-beállításainak konfigurálása](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
 6. Adja meg az alábbi beállításokat:
 
-   * **Válassza a felhasználók lehetőséget a rendszergazdai engedélyezési kérelmek áttekintéséhez**. Válassza ki a munkafolyamathoz tartozó véleményezőket a globális rendszergazda, a Felhőbeli alkalmazás-rendszergazda és az alkalmazás-rendszergazda szerepkörrel rendelkező felhasználók készletében.
-   * **A kiválasztott felhasználók e-mail-értesítéseket kapnak a kérelmekről**. Az e-mail-értesítések engedélyezése vagy letiltása a felülvizsgálók számára a kérelem elküldésekor.  
-   * A **kiválasztott felhasználók megkapják a kérelmek lejáratára vonatkozó emlékeztetőket**. Az emlékeztető e-mail-értesítéseinek engedélyezése vagy letiltása a felülvizsgálók számára, ha egy kérés hamarosan lejár.  
-   * A **beleegyező kérelem érvényessége (nap) után lejár**. Itt adhatja meg, hogy a kérelmek meddig maradjanak érvényesek.
+   * **Válassza ki a felhasználókat a rendszergazdai hozzájárulási kérelmek áttekintésére.** Jelölje ki a munkafolyamat felülvizsgálóit olyan felhasználók közül, akik globális rendszergazdai, felhőalkalmazás-rendszergazdai és alkalmazás-rendszergazdai szerepkörökkel rendelkezik.
+   * **A kiválasztott felhasználók e-mailes értesítéseket kapnak a kérelmekről.** E-mail-értesítések engedélyezése vagy letiltása a felülvizsgálóknak kérés esetén.  
+   * **A kiválasztott felhasználók a kérelem lejáratára vonatkozó emlékeztetőket kapnak.** Emlékeztető e-mail-értesítések engedélyezése vagy letiltása a felülvizsgálóknak, amikor egy kérés hamarosan lejár.  
+   * **A hozzájárulási kérelem (nap) után lejár.** Adja meg, hogy a kérelmek mennyi ideig maradnak érvényesek.
 
-7. Kattintson a **Mentés** gombra. Akár egy óráig is eltarthat, amíg a funkció engedélyezve lesz.
+7. Kattintson a **Mentés** gombra. A funkció engedélyezése akár egy órát is el is vehet.
 
 > [!NOTE]
-> A munkafolyamat felülvizsgálók hozzáadásához vagy eltávolításához módosítsa a rendszergazdai jogosultságok **kérése – véleményezők listájának kiválasztása lehetőséget** . Vegye figyelembe, hogy a szolgáltatás jelenlegi korlátozása, hogy a felülvizsgálók megőrzik a véleményezők számára kijelölt kérelmek felülvizsgálatának lehetőségét.
+> A munkafolyamat felülvizsgálóit a Rendszergazdai hozzájárulási kérelmek kiválasztása felülvizsgálók listájának módosításával adhat hozzá **vagy távolíthat el.** Vegye figyelembe, hogy a funkció jelenlegi korlátozása az, hogy a felülvizsgálók továbbra is felülvizsgálhatják a felülvizsgálóként megjelölt kérelmeket.
 
-## <a name="how-users-request-admin-consent"></a>Rendszergazdai engedély kérése a felhasználóktól
+## <a name="how-users-request-admin-consent"></a>Hogyan kérik a felhasználók a rendszergazdai jóváhagyást?
 
-Ha a rendszergazdai hozzájárulási munkafolyamat engedélyezve van, a felhasználók eligényelhetik a rendszergazdai jóváhagyást egy olyan alkalmazáshoz, amelyhez nem jogosultak beleegyezésre. A következő lépések a felhasználó felhasználói élményét írják le jóváhagyás kérelmezése során. 
+A rendszergazdai jóváhagyás munkafolyamatának engedélyezése után a felhasználók rendszergazdai jóváhagyást kérhetnek egy olyan alkalmazáshoz, amely jóváhagyására jogosulatlanok. A következő lépések ismertetik a jóváhagyás kérelmezése során szerzett felhasználói élményt. 
 
 1. A felhasználó megpróbál bejelentkezni az alkalmazásba.
 
-2. A **jóváhagyás szükséges** üzenet jelenik meg. A felhasználó megadhatja az alkalmazáshoz való hozzáféréshez szükséges indoklást, majd kiválasztja a **kérelem jóváhagyását**.
+2. Megjelenik **a Jóváhagyás szükséges** üzenet. A felhasználó bejeleti az alkalmazáshoz való hozzáférésre vonatkozó indoklást, majd kiválasztja **a Jóváhagyás kérése lehetőséget.**
 
-   ![A képernyőképen egy kötelező jóváhagyást kérő párbeszédpanel jelenik meg, amelyen jóváhagyást igényelhet.](media/configure-admin-consent-workflow/end-user-justification.png)
+   ![A Jóváhagyás szükséges párbeszédpanel képernyőképe, ahol jóváhagyást kérhet.](media/configure-admin-consent-workflow/end-user-justification.png)
 
-3. A **kérelem elküldött** üzenete megerősíti, hogy a kérést elküldték a rendszergazdának. Ha a felhasználó több kérést küld, csak az első kérést küldi el a rendszer a rendszergazdának.
+3. A **Kérés elküldve** üzenet megerősíti, hogy a kérés el lett küldve a rendszergazdának. Ha a felhasználó több kérelmet küld, csak az első kérés lesz elküldve a rendszergazdának.
 
-   ![A képernyőképen látható a kérelem elküldése megerősítve.](media/configure-admin-consent-workflow/end-user-sent-request.png)
+   ![A kérés elküldését megerősítő üzenetet bemutató képernyőkép.](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
- 4. A felhasználó e-mailben értesítést kap, ha a kérelmét jóváhagyják, megtagadják vagy letiltották. 
+ 4. A felhasználó e-mailes értesítést kap, ha a kérését jóváhagyják, elutasítják vagy blokkolják. 
 
-## <a name="review-and-take-action-on-admin-consent-requests"></a>Rendszergazdai engedélyekkel kapcsolatos kérelmek áttekintése és beavatkozása
+## <a name="review-and-take-action-on-admin-consent-requests"></a>Rendszergazdai hozzájárulási kérelmek áttekintése és a szükséges intézkedések
 
-A rendszergazdai engedélyezési kérelmek áttekintése és a művelet végrehajtása:
+A rendszergazdai hozzájárulási kérelmek áttekintése és a művelet:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a rendszergazdai engedélyezési munkafolyamat egyik regisztrált véleményezője.
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menü tetején. Megnyílik a **Azure Active Directory bővítmény** .
-3. A szűrő keresése mezőbe írja be a "**Azure Active Directory**" kifejezést, majd válassza ki a **Azure Active Directory** elemet.
-4. A navigációs menüben kattintson a **vállalati alkalmazások** elemre.
-5. A **tevékenység** területen válassza a **rendszergazdai beleegyező kérelmek** lehetőséget.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) rendszergazdai hozzájárulási munkafolyamat egyik regisztrált felülvizsgálójaként.
+2. Válassza **a minden** szolgáltatás lehetőséget a bal oldali navigációs menü tetején. Megnyílik **a Azure Active Directory bővítmény.**
+3. A szűrő keresőmezőbe írja be a "**Azure Active Directory"** parancsot, és válassza ki **Azure Active Directory** elemet.
+4. A navigációs menüben kattintson a Vállalati **alkalmazások elemre.**
+5. A **Tevékenység alatt** válassza a **Rendszergazdai hozzájárulási kérelmek lehetőséget.**
 
    > [!NOTE]
-   > A felülvizsgálók csak azokat a rendszergazdai kérelmeket láthatják, amelyeket a rendszer felülvizsgáló való kijelölése után hozott létre.
+   > A felülvizsgálók csak azokat a rendszergazdai kérelmeket látják, amelyek azután jöttek létre, hogy felülvizsgálóként jelölték meg őket.
 
 1. Válassza ki a kért alkalmazást.
 2. Tekintse át a kérelem részleteit:  
 
-   * Ha szeretné megtekinteni, hogy ki kér hozzáférést, és miért, válassza a **kért:** lapot.
-   * Ha szeretné megtekinteni, hogy az alkalmazás milyen engedélyeket kér, válassza az **engedélyek ellenőrzése és a beleegyezikés** engedélyezése lehetőséget.
+   * A hozzáférést kérő felhasználók és azok okának a megtekintése érdekében válassza a **Kért lapfület.**
+   * Az alkalmazás által kért engedélyeket az Engedélyek és jóváhagyás áttekintése lehetőséget **választva láthatja.**
 
-8. Értékelje ki a kérést, és végezze el a megfelelő műveletet:
+8. Értékelje ki a kérést, és a megfelelő műveletet:
 
-   * **A kérelem jóváhagyása**. A kérelem jóváhagyásához adja meg a rendszergazdai jóváhagyást az alkalmazáshoz. A kérelem jóváhagyása után az összes kérelmező értesítést kap arról, hogy hozzáférést kapott.  
-   * **A kérés elutasítása**. A kérelem elutasításához meg kell adnia egy indoklást, amely az összes kérelmező számára elérhető lesz. A kérések elutasítása után az összes kérelmező értesítést kap arról, hogy megtagadták az alkalmazáshoz való hozzáférést. A kérések elutasítása nem akadályozza meg, hogy a felhasználók a jövőben ismét rendszergazdai jogosultságot kérjenek az alkalmazáshoz.  
-   * **A kérelem letiltása**. Egy kérelem letiltásához meg kell adnia egy indoklást, amely az összes kérelmező számára elérhető lesz. A kérések letiltása után minden kérelmező értesítést kap arról, hogy megtagadták az alkalmazáshoz való hozzáférést. A kérések blokkolása egy egyszerű szolgáltatásnév-objektumot hoz létre a bérlőben, letiltott állapotban. A felhasználók a jövőben nem igényelhetnek rendszergazdai jogosultságot az alkalmazáshoz.
+   * **Hagyja jóvá a kérelmet.** Kérelem jóváhagyásához adjon rendszergazdai jóváhagyást az alkalmazásnak. A kérelem jóváhagyása után minden kérelmező értesítést kap arról, hogy hozzáférést kaptak.  
+   * **Tiltsa le a kérést.** A kérelem megtagadása érdekében meg kell indokolni, hogy a kérelem minden kérelmezője számára biztosított legyen. A kérelem megtagadás után minden kérelmező értesítést kap arról, hogy az alkalmazáshoz való hozzáférése meg lett tagadva. A kérelmek elutasítása nem akadályozza meg, hogy a felhasználók a jövőben ismét rendszergazdai jóváhagyást kérjenek az alkalmazáshoz.  
+   * **Tiltsa le a kérést.** A kérelem blokkolása érdekében meg kell indokolni, hogy az összes kérelmezőt meg tudja adni. Ha egy kérés blokkolva van, a rendszer értesíti az összes kérelmezőt az alkalmazáshoz való hozzáférés megtagadásról. A kérések blokkolása szolgáltatásnév-objektumot hoz létre a bérlőben letiltott állapotban. A felhasználók a jövőben nem kérhetnek rendszergazdai jóváhagyást az alkalmazáshoz.
  
 ## <a name="email-notifications"></a>E-mail-értesítések
  
-Ha be van állítva, az összes felülvizsgáló e-mail-értesítést kap, ha:
+Ha konfigurálva van, az összes felülvizsgáló e-mailes értesítést kap, ha:
 
-* Új kérelem lett létrehozva
-* Egy kérelem lejárt
-* Egy kérelem a lejárati dátum közelében van  
+* Új kérés lett létrehozva
+* Egy kérés lejárt
+* Egy kérés közeledik a lejárati dátumhoz  
  
-A kérelmező e-mail-értesítéseket fog kapni, ha:
+A kérelmező a következő e-mail-értesítéseket kapja:
 
-* Új hozzáférési kérést küldenek
-* A kérelem lejárt
-* A kérést a rendszer megtagadta vagy letiltotta
-* A kérelem jóváhagyása megtörtént
+* Új hozzáférési kérést küldnek be
+* A kérésük lejárt
+* A kérésüket elutasították vagy blokkolták
+* A kérelem jóvá lett hagyva
  
 ## <a name="audit-logs"></a>Naplók 
  
-Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti.
+Az alábbi táblázat a rendszergazdai jóváhagyás munkafolyamatához elérhető forgatókönyveket és auditértékeket ismerteti.
 
-|Eset  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Könyvvizsgálói színész  |Naplózási naplók korlátai  |
+|Eset  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Audit Actor  |Az auditnaplók korlátozásai  |
 |---------|---------|---------|---------|---------|---------|
-|A beleegyező kérelem munkafolyamatát engedélyező rendszergazda        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend létrehozása sablon          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet            |
-|Rendszergazda letilthatja a beleegyező kérelem munkafolyamatát       |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának törlése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|Rendszergazda a beleegyező munkafolyamat-konfigurációk frissítése        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának frissítése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|A végfelhasználó rendszergazdai beleegyező kérelmet hoz létre az alkalmazáshoz       |Hozzáférési felülvizsgálatok           |Szabályzat         |Kérelem létrehozása           |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
-|Rendszergazdai jóváhagyást kérő véleményezők jóváhagyása       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            |Jelenleg nem található a rendszergazdai jogosultsággal rendelkező felhasználói környezet vagy alkalmazás-azonosító.           |
-|Rendszergazdai beleegyező kérést elutasító felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement           |Minden kérelem jóváhagyása a Business flow-ban          |Alkalmazás környezete            | Jelenleg nem találja a rendszergazdai jóváhagyásra vonatkozó kérést elutasító színész felhasználói környezetét.          |
+|A hozzájárulási kérelem munkafolyamatát engedélyező rendszergazda        |Hozzáférési felülvizsgálatok           |UserManagement           |Cégirányítási szabályzat sablonjának létrehozása          |Alkalmazáskörnyezet            |A felhasználói környezet jelenleg nem található            |
+|A hozzájárulási kérelem munkafolyamatának rendszergazdai letiltása       |Hozzáférési felülvizsgálatok           |UserManagement           |Cégirányítási szabályzat sablonjának törlése          |Alkalmazáskörnyezet            |A felhasználói környezet jelenleg nem található           |
+|A hozzájárulási munkafolyamat konfigurációjának rendszergazdai frissítése        |Hozzáférési felülvizsgálatok           |UserManagement           |Cégirányítási szabályzat sablonjának frissítése          |Alkalmazáskörnyezet            |A felhasználói környezet jelenleg nem található           |
+|Rendszergazdai hozzájárulási kérelmet hozó végfelhasználó egy alkalmazáshoz       |Hozzáférési felülvizsgálatok           |Szabályzat         |Kérés létrehozása           |Alkalmazáskörnyezet            |A felhasználói környezet jelenleg nem található           |
+|Rendszergazdai hozzájárulási kérelmet jóváhagyó felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement (Felhasználó-hozzáférés)           |Az üzleti folyamat összes kérésének jóváhagyása          |Alkalmazáskörnyezet            |Jelenleg nem találja azt a felhasználói környezetet vagy alkalmazásazonosítót, amely rendszergazdai jóváhagyást kapott.           |
+|Rendszergazdai hozzájárulási kérelmet elutasító felülvizsgálók       |Hozzáférési felülvizsgálatok           |UserManagement (Felhasználó-hozzáférés)           |Az üzleti folyamat összes kérésének jóváhagyása          |Alkalmazáskörnyezet            | Jelenleg nem találja annak az aktornak a felhasználói környezetét, amely megtagadta a rendszergazdai hozzájárulási kérelmet          |
 
 ## <a name="faq"></a>GYIK 
 
-**Bekapcsoltam ezt a munkafolyamatot, de a funkciók kipróbálásakor miért nem látom az új "jóváhagyás szükséges" kérést, amely lehetővé teszi a hozzáférést?**
+**Bekapcsoltam ezt a munkafolyamatot, de a funkció tesztelésekor miért nem látom az új "Jóváhagyás szükséges" kérést, amely hozzáférést kér?**
 
-A funkció bekapcsolását követően akár 60 percet is igénybe vehet, amíg a végfelhasználók megtekinthetik a frissítést. A konfiguráció megfelelő működésének ellenőrzéséhez tekintse meg a **EnableAdminConsentRequests** értéket az API-ban `https://graph.microsoft.com/beta/settings` .
+A funkció bekapcsolása után akár 60 percig is eltarthat, hogy a végfelhasználók látják a frissítést. Az **EnableAdminConsentRequests** érték API-ban való megtekintésével ellenőrizheti, hogy a konfiguráció megfelelően életbe `https://graph.microsoft.com/beta/settings` került-e.
 
-**Felülvizsgáló miért nem látom az összes függőben lévő kérelmet?**
+**Felülvizsgálóként miért nem látom az összes függőben lévő kérelmet?**
 
-A felülvizsgálók csak azokat a rendszergazdai kérelmeket láthatják, amelyeket a rendszer felülvizsgáló való kijelölése után hozott létre. Így ha a közelmúltban hozzáadott egy véleményezőt, akkor a hozzárendelés előtt létrehozott kérelmek nem jelennek meg.
+A felülvizsgálók csak azokat a rendszergazdai kérelmeket láthatják, amelyek azután jöttek létre, hogy felülvizsgálóként jelölték meg őket. Így ha nemrég adva lett felülvizsgálóként, a hozzárendelés előtt létrehozott kérelmek nem fognak látszatra.
 
-**Ha felülvizsgáló, akkor miért látok több kérelmet ugyanahhoz az alkalmazáshoz?**
+**Felülvizsgálóként miért látok több kérést ugyanannak az alkalmazásnak?**
   
-Ha egy alkalmazás fejlesztője úgy konfigurálta az alkalmazást, hogy statikus és dinamikus beleegyezik, hogy hozzáférést Kérjen a végfelhasználói adatszolgáltatáshoz, két rendszergazdai beleegyező kérés jelenik meg. Az egyik kérelem a statikus engedélyeket jelöli, a másik pedig a dinamikus engedélyeket.
+Ha egy alkalmazásfejlesztő úgy konfigurálta az alkalmazását, hogy statikus és dinamikus hozzájárulással kérjen hozzáférést a végfelhasználói adatokhoz, két rendszergazdai hozzájárulási kérelem fog látni. Az egyik kérés a statikus engedélyeket, a másik a dinamikus engedélyeket jelöli.
 
-**A kérelmező megtekintheti a kérésem állapotát?**  
+**Kérelmezőként ellenőriznem kell a kérésem állapotát?**  
 
-Nem, most a kérelmezőknek csak e-mail-értesítéseken keresztül kaphatják meg a frissítéseket.
+Nem, a kérelmezők jelenleg csak e-mailes értesítéseken keresztül kaphatják meg a frissítéseket.
 
-**Felülvizsgáló lehet jóváhagyni az alkalmazást, de nem mindenki számára?**
+**Felülvizsgálóként jóváhagyhatja az alkalmazást, de nem mindenki számára?**
  
-Ha aggódik a rendszergazdai jóváhagyás megadásával, és a bérlő összes felhasználója számára lehetővé teszi az alkalmazás használatát, javasoljuk, hogy tiltsa le a kérést. Ezután adja meg manuálisan a rendszergazdai jóváhagyást az alkalmazáshoz való hozzáférés korlátozásával, a felhasználó hozzárendelésének megkövetelésével, valamint a felhasználók vagy csoportok az alkalmazáshoz való hozzárendelésével. További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
+Ha aggódik a rendszergazdai jóváhagyás megadása és a bérlő összes felhasználója számára az alkalmazás használatának engedélyezésével kapcsolatban, javasoljuk, hogy tiltsa le a kérést. Ezután manuálisan adja meg a rendszergazdai jóváhagyást az alkalmazáshoz való hozzáférés korlátozásával a felhasználó-hozzárendelés és a felhasználók vagy csoportok alkalmazáshoz való hozzárendelésével. További információ: Felhasználók és csoportok [hozzárendelésének módszerei.](./assign-user-or-group-access-portal.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az alkalmazásokkal való hozzájárulásról: [Azure Active Directory beleegyezési keretrendszer](../develop/consent-framework.md).
+Az alkalmazásokhoz való hozzájárulással kapcsolatos további információkért lásd: Azure Active Directory [hozzájárulási keretrendszer.](../develop/consent-framework.md)
 
 [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
 
 [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
 
-[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
+[Engedélyek és jóváhagyás a Microsoft identitásplatformján](../develop/v2-permissions-and-consent.md)
 
-[Azure AD a Microsoft Q&A](/answers/topics/azure-active-directory.html)
+[Azure AD a Microsoft Q&A-n](/answers/topics/azure-active-directory.html)

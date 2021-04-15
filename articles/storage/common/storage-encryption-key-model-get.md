@@ -1,7 +1,7 @@
 ---
-title: A Storage-fiókhoz használt titkosítási kulcs modellének meghatározása
+title: A tárfiókhoz használt titkosításikulcs-modell meghatározása
 titleSuffix: Azure Storage
-description: A Azure Portal, a PowerShell vagy az Azure CLI használatával megtudhatja, hogyan kezelje a titkosítási kulcsokat a Storage-fiókhoz. A kulcsokat a Microsoft (alapértelmezett) vagy az ügyfél kezelheti. Az ügyfél által felügyelt kulcsokat Azure Key Vault kell tárolni.
+description: A Azure Portal, a PowerShell vagy az Azure CLI használatával ellenőrizheti, hogyan kezelik a tárfiók titkosítási kulcsait. A kulcsokat a Microsoft (alapértelmezés) vagy az ügyfél is képes kezelni. A felhasználó által kezelt kulcsokat a következő tárolóban Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,47 +10,47 @@ ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f59e4238c983cdb336500a68c52730ae5346b1c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: ef0f32ecc59bea6ee7a0f7ff12083fd2358c223c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91612421"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478913"
 ---
-# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>A Storage-fiókhoz használt Azure Storage titkosítási kulcs modelljének meghatározása
+# <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>A tárfiókhoz használt Azure Storage titkosításikulcs-modell meghatározása
 
-A Storage-fiókban tárolt adatait a rendszer automatikusan titkosítja az Azure Storage-ban. Az Azure Storage encryption két lehetőséget kínál a titkosítási kulcsok kezelésére a Storage-fiók szintjén:
+A tárfiókban tárolt adatokat az Azure Storage automatikusan titkosítja. Az Azure Storage Encryption két lehetőséget kínál a titkosítási kulcsok kezelésére a tárfiók szintjén:
 
-- **Microsoft által felügyelt kulcsok.** Alapértelmezés szerint a Microsoft kezeli a Storage-fiók titkosításához használt kulcsokat.
-- **Ügyfél által felügyelt kulcsok.** Lehetősége van a Storage-fiók titkosítási kulcsainak kezelésére is. Az ügyfél által felügyelt kulcsokat Azure Key Vault kell tárolni.
+- **Microsoft által felügyelt kulcsok.** Alapértelmezés szerint a Microsoft kezeli a tárfiók titkosításához használt kulcsokat.
+- **Felhasználó által kezelt kulcsok.** Dönthet úgy is, hogy a tárfiók titkosítási kulcsait kezeli. A felhasználó által kezelt kulcsokat a következő tárolóban Azure Key Vault.
 
-Emellett egy titkosítási kulcsot is megadhat egy egyedi kérelem szintjén egy blob Storage-művelethez. Ha a kérelemben titkosítási kulcs van megadva, a kulcs felülbírálja a Storage-fiókban aktív titkosítási kulcsot. További információ: a [felhasználó által megadott kulcs megadása a blob Storage-ra vonatkozó kérelemben](../blobs/storage-blob-customer-provided-key.md).
+Emellett egyes Blob Storage-műveletekre vonatkozó egyedi kérések szintjén is meg lehet adni titkosítási kulcsot. Ha a kéréshez titkosítási kulcs van megadva, az felülírja a tárfiókon aktív titkosítási kulcsot. További információ: Ügyfél által megadott kulcs [megadása a Blob Storage-hoz való kéréshez.](../blobs/storage-blob-customer-provided-key.md)
 
-A titkosítási kulcsokkal kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](storage-service-encryption.md).
+További információ a titkosítási kulcsokról: [Azure Storage encryption for data at rest (Az Azure Storage titkosítása az adattároláshoz).](storage-service-encryption.md)
 
-## <a name="check-the-encryption-key-model-for-the-storage-account"></a>A Storage-fiók titkosítási kulcsának modellje
+## <a name="check-the-encryption-key-model-for-the-storage-account"></a>A tárfiók titkosítási kulcsmodellének ellenőrzése
 
-Az alábbi módszerek egyikével meghatározhatja, hogy a Storage-fiók Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja-e a titkosításhoz.
+Annak megállapításához, hogy egy tárfiók a Microsoft által felügyelt vagy az ügyfél által kezelt kulcsokat használ-e a titkosításhoz, használja az alábbi módszerek egyikét.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-A következő lépésekkel ellenőrizheti a Storage-fiók titkosítási modelljét a Azure Portal használatával:
+A tárfiók titkosítási modelljének ellenőrzéshez kövesse az Azure Portal lépéseket:
 
 1. Az Azure Portalon lépjen a tárfiókra.
-1. Válassza ki a **titkosítási** beállítást, és jegyezze fel a beállítást.
+1. Válassza a **Titkosítás beállítást,** és jegyezze fel a beállítást.
 
-Az alábbi képen egy Microsoft által felügyelt kulcsokkal titkosított Storage-fiók látható:
+Az alábbi képen egy, a Microsoft által felügyelt kulcsokkal titkosított tárfiók látható:
 
-![Microsoft által felügyelt kulcsokkal titkosított fiók megtekintése](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
+![A Microsoft által felügyelt kulcsokkal titkosított fiók megtekintése](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
 
-Az alábbi képen pedig az ügyfél által felügyelt kulcsokkal titkosított Storage-fiók látható:
+Az alábbi képen egy ügyfél által kezelt kulcsokkal titkosított tárfiók látható:
 
-![A titkosítási kulcs beállítását bemutató képernyőfelvétel Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
+![Képernyőkép a titkosítási kulcs beállításról a Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha a PowerShell használatával szeretné megtekinteni a Storage-fiók titkosítási modelljét, hívja meg a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) parancsot, majd tekintse meg a fiókhoz tartozó **forrás** tulajdonságot.
+A tárfiók titkosítási modelljének PowerShell használatával való ellenőrzéshez hívja meg a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) parancsot, majd ellenőrizze a fiók **KeySource** tulajdonságát.
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -58,11 +58,11 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-Ha a **forrás** tulajdonság értéke `Microsoft.Storage` , akkor a fiók a Microsoft által felügyelt kulcsokkal van titkosítva. Ha a **forrás** tulajdonság értéke `Microsoft.Keyvault` , akkor a fiók titkosítása az ügyfél által felügyelt kulcsokkal történik.
+Ha a **KeySource** tulajdonság értéke , akkor a fiók a Microsoft által felügyelt `Microsoft.Storage` kulcsokkal van titkosítva. Ha a **KeySource** tulajdonság értéke , akkor a fiók ügyfél által kezelt kulcsokkal `Microsoft.Keyvault` van titkosítva.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Ha az Azure CLI használatával szeretné megtekinteni a Storage-fiók titkosítási modelljét, hívja meg az az [Storage Account show](/cli/azure/storage/account#az-storage-account-show) parancsot, majd tekintse meg a fiókhoz tartozó **forrás** tulajdonságot.
+A tárfiók titkosítási modelljének Azure CLI használatával való ellenőrzéshez hívja meg az [az storage account show](/cli/azure/storage/account#az-storage-account-show) parancsot, majd ellenőrizze a fiók **keySource** tulajdonságát.
 
 ```azurecli-interactive
 key_source=$(az storage account show \
@@ -72,11 +72,11 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-Ha a **forrás** tulajdonság értéke `Microsoft.Storage` , akkor a fiók a Microsoft által felügyelt kulcsokkal van titkosítva. Ha a **forrás** tulajdonság értéke `Microsoft.Keyvault` , akkor a fiók titkosítása az ügyfél által felügyelt kulcsokkal történik.
+Ha a **keySource** tulajdonság értéke , akkor a fiók a Microsoft által felügyelt `Microsoft.Storage` kulcsokkal van titkosítva. Ha a **keySource** tulajdonság értéke , akkor a fiók ügyfél által kezelt kulcsokkal `Microsoft.Keyvault` van titkosítva.
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
-- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)
+- [Felhasználó által kezelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)

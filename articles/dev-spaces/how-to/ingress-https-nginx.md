@@ -1,36 +1,36 @@
 ---
-title: Egyéni NGINX bemenő vezérlő használata és HTTPS konfigurálása
+title: Egyéni NGINX bejövő vezérlő használata és HTTPS konfigurálása
 services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
-description: Megtudhatja, hogyan konfigurálhatja az Azure dev Spaces-t egyéni NGINX bejövő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
-keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: c5ef14074c6e601bcd8a23ce62921d67b01ba3bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+description: Megtudhatja, hogyan konfigurálhatja az Azure Dev Spacest egy egyéni NGINX bejövő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t ezzel a bejövő vezérlővel
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók, Helm, szolgáltatási háló, szolgáltatási háló útválasztása, kubectl, k8s
+ms.custom: devx-track-js
+ms.openlocfilehash: a0c8fa453115936b61b2cdae299e07ae10356ed3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198132"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378771"
 ---
-# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Egyéni NGINX bemenő vezérlő használata és HTTPS konfigurálása
+# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Egyéni NGINX bejövő vezérlő használata és HTTPS konfigurálása
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure dev Spaces-t egyéni NGINX bejövő adatkezelő használatára. A cikk azt is bemutatja, hogyan konfigurálhatja az egyéni bejövő vezérlőt a HTTPS használatára.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Dev Spacest egy egyéni NGINX bejövő vezérlő használatára. Ez a cikk azt is bemutatja, hogyan konfigurálhatja az egyéni bejövő forgalomvezérlőt HTTPS használatára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot][azure-account-create].
-* Az [Azure CLI telepítve van][az-cli].
-* Azure Kubernetes Service (ak) fürt, amelyen engedélyezve van az Azure dev Spaces.
-* a [kubectl][kubectl] telepítve van.
-* A [Helm 3 telepítve van][helm-installed].
-* Egy [DNS-zónával][dns-zone]rendelkező [egyéni tartomány][custom-domain] .  Ez a cikk azt feltételezi, hogy az egyéni tartomány és a DNS-zóna ugyanabban az erőforráscsoporthoz van, mint az AK-fürt, de az egyéni tartományt és a DNS-zónát egy másik erőforráscsoporthoz is lehet használni.
+* [Telepítette az Azure CLI-t.][az-cli]
+* Azure Kubernetes Service (AKS-) fürt, engedélyezett Azure Dev Spaces-sel.
+* [kubectl][kubectl] telepítve.
+* [A Helm 3 telepítve van.][helm-installed]
+* [Egyéni tartomány][custom-domain] DNS-zónával. [][dns-zone]  Ez a cikk feltételezi, hogy az egyéni tartomány és a DNS-zóna ugyanabban az erőforráscsoportban található, mint az AKS-fürt, de egy másik erőforráscsoportban is használhat egyéni tartományt és DNS-zónát.
 
-## <a name="configure-a-custom-nginx-ingress-controller"></a>Egyéni NGINX beáramló vezérlő konfigurálása
+## <a name="configure-a-custom-nginx-ingress-controller"></a>Egyéni NGINX bejövő vezérlő konfigurálása
 
-Kapcsolódjon a fürthöz a [kubectl][kubectl]és a Kubernetes parancssori ügyfél használatával. Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Csatlakozzon a fürthöz a [kubectl][kubectl], a Kubernetes parancssori ügyfél használatával. Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -44,13 +44,13 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-Adja hozzá a [hivatalos stabil Helm-tárházat][helm-stable-repo], amely tartalmazza az NGINX beáramló vezérlő Helm diagramját.
+Adja hozzá [a hivatalos stabil Helm-adattárat,][helm-stable-repo]amely az NGINX bejövő vezérlő Helm-diagramját tartalmazza.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Hozzon létre egy Kubernetes-névteret az NGINX beáramló vezérlőhöz, és telepítse azt a használatával `helm` .
+Hozzon létre egy Kubernetes-névteret az NGINX bejövő forgalomvezérlőhöz, és telepítse a `helm` használatával.
 
 ```console
 kubectl create ns nginx
@@ -58,19 +58,19 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> A fenti példa egy nyilvános végpontot hoz létre a bejövő vezérlőhöz. Ha ehelyett privát végpontot kell használnia a bejövő adatvezérlőhöz, adja hozzá a *--set vezérlő. Service. Megjegyzések kifejezést. Service \\ . Beta \\ . kubernetes \\ . IO/Azure-Load-Balancer-belső "= true* paraméter a *Helm install* parancshoz. Például:
+> A fenti példa létrehoz egy nyilvános végpontot a bejövő forgalom vezérlője számára. Ha ehelyett privát végpontot kell használnia a bejövő forgalomvezérlőhöz, adja hozzá a *--set controller.service.annotations halmazt." service \\ .beta \\ .kubernetes \\ .io/azure-load-balancer-internal"=true* paraméter a *Helm install parancshoz.* Például:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
-> Ez a titkos végpont a virtuális hálózaton belül van, ahol az AK-beli fürtöt telepítették.
+> Ez a privát végpont az AKS-fürtöt üzembe helyező virtuális hálózaton belül van elérhető.
 
-Szerezze be az NGINX bejövő adatkezelő szolgáltatás IP-címét a [kubectl Get][kubectl-get]használatával.
+Szerezze be az NGINX bejövő forgalomvezérlő szolgáltatás IP-címét a [kubectl get használatával.][kubectl-get]
 
 ```console
 kubectl get svc -n nginx --watch
 ```
 
-A minta kimenet az *Nginx* -névtérben lévő összes szolgáltatás IP-címeit jeleníti meg.
+A mintakimenet az nginx névtérben az összes szolgáltatás *IP-címét* megjeleníti.
 
 ```console
 NAME                                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
@@ -80,7 +80,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-Adjon hozzá *egy* rekordot a DNS-zónához az NGINX szolgáltatás külső IP-címével az [az Network DNS Record-set A Add-Record][az-network-dns-record-set-a-add-record]paranccsal.
+Adjon hozzá *egy A* rekordot a DNS-zónához az NGINX szolgáltatás külső [IP-címével az az network dns record-set a add-record használatával.][az-network-dns-record-set-a-add-record]
 
 ```azurecli
 az network dns record-set a add-record \
@@ -90,20 +90,20 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-A fenti példa *egy* rekordot vesz fel a *MY_CUSTOM_DOMAIN* DNS-zónába.
+A fenti példa egy *A* rekordot ad hozzá a *MY_CUSTOM_DOMAIN* DNS-zónához.
 
-Ebben a cikkben az [Azure dev Spaces Bike Sharing Sample Application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használatával mutatjuk be az Azure dev Spaces szolgáltatást. Az alkalmazás klónozása a GitHubról, majd a címtárba való navigálása:
+Ebben a cikkben az Azure Dev Spaces Bike [Sharing mintaalkalmazását](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használjuk az Azure Dev Spaces használatának szemléltető példáihoz. Klónozza az alkalmazást a GitHubról, és lépjen a könyvtárába:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissítéseket:
-* Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát Nginx-vel *. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
-* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: Nginx # Custom beáramló*. 
+Nyissa [meg a values.yaml adatokat,][values-yaml] és tegye a következőket:
+* Cserélje le  a<REPLACE_ME_WITH_HOST_SUFFIX>*összes példányát nginx-re. MY_CUSTOM_DOMAIN* a tartományt használja a *MY_CUSTOM_DOMAIN.* 
+* Cserélje *kubernetes.io/ingress.class: traefik-azds # Dev Spaces-specific* helyére *kubernetes.io/ingress.class: nginx # Egyéni bejövő forgalom*. 
 
-Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
+Az alábbiakban egy példa látható egy frissített `values.yaml` fájlra:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -124,29 +124,29 @@ gateway:
       - dev.gateway.nginx.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
 ```
 
-Mentse a módosításokat, és zárjuk be a fájlt.
+Mentse a módosításokat, és zárja be a fájlt.
 
-Hozza létre a *fejlesztői* területet a minta alkalmazással a használatával `azds space select` .
+Hozza létre *a Dev* Space-t a mintaalkalmazással a `azds space select` használatával.
 
 ```console
 azds space select -n dev -y
 ```
 
-Telepítse a minta alkalmazást a használatával `helm install` .
+A mintaalkalmazás üzembe helyezése a `helm install` használatával.
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-A fenti példa telepíti a minta alkalmazást a *fejlesztői* névtérbe.
+A fenti példa üzembe helyez egy mintaalkalmazást a *dev névtérben.*
 
-Jelenítse meg az URL-címeket, amelyekkel elérheti a minta alkalmazást a használatával `azds list-uris` .
+Jelenítse meg a mintaalkalmazás a használatával való eléréséhez szükséges URL-címeket. `azds list-uris`
 
 ```console
 azds list-uris
 ```
 
-Az alábbi kimenet a példákban szereplő URL-címeket mutatja `azds list-uris` .
+Az alábbi kimenet a következő példa URL-címeit jeleníti `azds list-uris` meg: .
 
 ```console
 Uri                                                  Status
@@ -155,19 +155,19 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-A parancsból nyissa meg a nyilvános URL-címet a *bikesharingweb* szolgáltatáshoz `azds list-uris` . A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a következő: `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
+Navigáljon *a bikesharingweb szolgáltatáshoz* a parancs nyilvános URL-címének `azds list-uris` megnyitásával. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
-> Ha a *bikesharingweb* szolgáltatás helyett hibaüzenet jelenik meg, ellenőrizze, hogy a *kubernetes.IO/ingress.Class* jegyzetét és a gazdagépet **is** frissítette-e a *Values. YAML* fájlban.
+> Ha a *bikesharingweb* szolgáltatás helyett hibalap jelenik  meg, ellenőrizze, hogy frissítette-e a kubernetes.io/ingress.class jegyzetet és a gazdagépet a *values.yaml fájlban.* 
 
-A `azds space select` parancs használatával hozzon létre egy gyermek területet a *dev* -ben, és sorolja fel az URL-címeket a gyermek fejlesztői terület eléréséhez.
+Az paranccsal hozzon létre egy gyermekhelyet a Dev alatt, és listába sorolja a gyermek Dev Space eléréséhez szükséges `azds space select` URL-címeket. 
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Az alábbi kimenet a példaként szolgáló URL-címeket mutatja be a `azds list-uris` *azureuser1* gyermek-fejlesztési térben található minta alkalmazás eléréséhez.
+Az alábbi kimenet a minta URL-címeit mutatja be a mintaalkalmazás eléréséhez az `azds list-uris` *azureuser1* gyermek Dev Space-térben.
 
 ```console
 Uri                                                  Status
@@ -176,11 +176,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Nyissa meg a *bikesharingweb* szolgáltatást a *azureuser1* gyermekének fejlesztői területén, és nyissa meg a paranccsal a nyilvános URL-címet `azds list-uris` . A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a *azureuser1* gyermekének fejlesztői területén `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
+Navigáljon *a bikesharingweb* szolgáltatáshoz az *azureuser1* gyermek Dev Space-térben a parancs nyilvános URL-címének `azds list-uris` megnyitásával. A fenti példában az *azureuser1* gyermek Dev Space *bikesharingweb* szolgáltatásának nyilvános URL-címe `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` a következő: .
 
-## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>Az NGINX bejövő adatkezelő beállítása a HTTPS használatára
+## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>Az NGINX bejövő forgalomvezérlő konfigurálása HTTPS használatára
 
-A [tanúsítvány-kezelő][cert-manager] segítségével automatizálhatja a TLS-tanúsítvány felügyeletét, amikor az NGINX bejövő adatvezérlőt HTTPS használatára konfigurálja. `helm`A paranccsal telepítheti a *certmanager* -diagramot.
+A [tanúsítványkezelővel][cert-manager] automatizálhatja a TLS-tanúsítvány kezelését, amikor az NGINX bejövő forgalomvezérlőt HTTPS használatára konfigurálja. A `helm` *certmanager diagram telepítéséhez használja* a következőt: .
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -190,7 +190,7 @@ helm repo update
 helm install cert-manager --namespace nginx --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Hozzon létre egy `letsencrypt-clusterissuer.yaml` fájlt, és frissítse az e-mail mezőt az e-mail-címével.
+Hozzon `letsencrypt-clusterissuer.yaml` létre egy fájlt, és frissítse az e-mail-mezőt az e-mail-címével.
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -210,15 +210,15 @@ spec:
 ```
 
 > [!NOTE]
-> Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer*.
+> A teszteléshez egy előkészítési [kiszolgálót][letsencrypt-staging-issuer] is használhat a *ClusterIssuerhez.*
 
-`kubectl`Az alkalmazással használható `letsencrypt-clusterissuer.yaml` .
+Az `kubectl` alkalmazáshoz használja a következőt: `letsencrypt-clusterissuer.yaml` .
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-Frissítse a [Values. YAML][values-yaml] , és adja meg a *CERT-Manager* és a https használatának részleteit. Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
+Frissítse [a values.yaml-t,][values-yaml] hogy tartalmazza a *tanúsítványkezelő* és a HTTPS használatának részleteit. Az alábbiakban egy példa látható egy frissített `values.yaml` fájlra:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -249,19 +249,19 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-A minta alkalmazás frissítése a használatával `helm` :
+Frissítse a mintaalkalmazást a `helm` használatával:
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Navigáljon az alkalmazáshoz a *dev/azureuser1* , és figyelje meg, hogy a rendszer átirányítja a https használatára. Azt is figyelje meg, hogy az oldal betöltődik, de a böngésző bizonyos hibákat jelez. A böngésző konzoljának megnyitásakor a hiba a HTTP-erőforrások betöltésére tett HTTPS-oldalra vonatkozik. Például:
+Keresse meg a mintaalkalmazást a *dev/azureuser1* gyermektérben, és figyelje meg, hogy a rendszer átirányítja a HTTPS használatára. Figyelje meg azt is, hogy az oldal betöltődik, de a böngészőben néhány hiba jelenik meg. A böngészőkonzol megnyitásakor a hiba egy HTTP-erőforrásokat betöltő HTTPS-oldalhoz kapcsolódik. Például:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-A hiba elhárításához frissítse az [BikeSharingWeb/azds. YAML][azds-yaml] -et az alábbihoz hasonló módon:
+A hiba kijavításaként frissítse a [BikeSharingWeb/azds.yaml fájlját][azds-yaml] az alábbihoz hasonló módon:
 
 ```yaml
 ...
@@ -279,7 +279,7 @@ A hiba elhárításához frissítse az [BikeSharingWeb/azds. YAML][azds-yaml] -e
 ...
 ```
 
-A [BikeSharingWeb/package.js][package-json] frissítése az *URL-* csomagra vonatkozó függőséggel.
+Frissítse [a BikeSharingWeb/package.jsaz][package-json] URL-csomag *függőségével.*
 
 ```json
 {
@@ -291,7 +291,7 @@ A [BikeSharingWeb/package.js][package-json] frissítése az *URL-* csomagra vona
 ...
 ```
 
-Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.jsban][helpers-js] a https használatára:
+Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.js][helpers-js] a HTTPS használatára:
 
 ```javascript
 ...
@@ -308,18 +308,18 @@ Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.jsban][he
 ...
 ```
 
-Navigáljon a `BikeSharingWeb` címtárhoz, és a használatával `azds up` futtassa a frissített *BikeSharingWeb* szolgáltatást.
+Lépjen a `BikeSharingWeb` könyvtárba, és futtassa a frissített `azds up` *BikeSharingWeb* szolgáltatást a használatával.
 
 ```console
 cd ../BikeSharingWeb/
 azds up
 ```
 
-Navigáljon az alkalmazáshoz a *dev/azureuser1* , és figyelje meg, hogy a rendszer a HTTPS-t hibák nélkül használja.
+Keresse meg a mintaalkalmazást a *dev/azureuser1* gyermektérben, és figyelje meg, hogy a rendszer hiba nélkül átirányítja a HTTPS használatára.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure dev Spaces működéséről.
+További információ az Azure Dev Spacesről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Dev Spaces működése](../how-dev-spaces-works.md)

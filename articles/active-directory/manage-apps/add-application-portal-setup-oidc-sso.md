@@ -1,81 +1,81 @@
 ---
-title: 'Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben'
-description: Ez a rövid útmutató végigvezeti a OIDC-alapú egyszeri bejelentkezés (SSO) beállításának folyamatán a Azure Active Directory (Azure AD) bérlőben lévő alkalmazásokhoz.
+title: 'Rövid útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben'
+description: Ez a rövid útmutató végigvezeti az OIDC-alapú egyszeri bejelentkezés (SSO) beállításának folyamatán az Azure Active Directory-bérlőben (Azure AD)-bérlőben.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
-ms.author: kenwith
-ms.openlocfilehash: e5695d5ded92e9bb41d39a082790cfbb456dbc38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: 2e0b49a73422a2f71af37e103e9d4fd6a18a1f61
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258354"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378941"
 ---
-# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
+# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rövid útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
 
-A Azure Active Directory (Azure AD) bérlőhöz hozzáadott alkalmazás egyszeri bejelentkezésének (SSO) beállításával megkezdheti az egyszerűsített felhasználói bejelentkezések használatát. Miután beállította az egyszeri bejelentkezést, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be egy alkalmazásba. Az egyszeri bejelentkezést az Azure AD ingyenes kiadása tartalmazza.
+Első lépések az egyszerűsített felhasználói bejelentkezések használatában az egyszeri bejelentkezés (SSO) beállításával az Azure Active Directory- (Azure AD-) bérlőhöz hozzáadott alkalmazásokhoz. Az SSO beállítása után a felhasználók azure AD hitelesítő adataik használatával bejelentkeznek az alkalmazásokba. Az SSO az Azure AD ingyenes kiadásában található meg.
 
-További információ a OIDC-alapú egyszeri bejelentkezésről: a [OIDC-alapú egyszeri bejelentkezés megismerése](configure-oidc-single-sign-on.md).
+További információ az OIDC-alapú egyszeri bejelentkezésről: [Understand OIDC-based single sign-on (Az OIDC-alapú egyszeri bejelentkezés megismerőe).](configure-oidc-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-bérlőhöz hozzáadott alkalmazás egyszeri bejelentkezésének beállításához a következők szükségesek:
+Az SSO beállításához az Azure AD-bérlőhöz hozzáadott alkalmazásokhoz a következő szükséges:
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- A következő szerepkörök egyike: globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás rendszergazdája vagy az egyszerű szolgáltatásnév tulajdonosa.
-- Egy olyan alkalmazás, amely támogatja az egyszeri bejelentkezést, és már előre konfigurálták, és hozzá lett adva az Azure AD-gyűjteményhez. A legtöbb alkalmazás használhatja az Azure AD-t az egyszeri bejelentkezéshez. Az Azure AD-katalógusban található alkalmazások előre konfigurálva vannak. Ha az alkalmazás nem szerepel a listáján, vagy egy egyéni fejlesztésű alkalmazás, akkor továbbra is használhatja az Azure AD-vel. Tekintse meg az oktatóanyagokat és az egyéb dokumentációt a tartalomjegyzékben. Ez a rövid útmutató az egyszeri bejelentkezéshez előre konfigurált, és az alkalmazások fejlesztői által az Azure AD-katalógusba való felvételre összpontosít.
-- Nem kötelező: az [alkalmazások megtekintésének](view-applications-portal.md)befejezése.
-- Nem kötelező: az [alkalmazás hozzáadásának](add-application-portal.md)befejezése.
-- Nem kötelező: [alkalmazás konfigurálásának](add-application-portal-configure.md)befejezése.
-- Nem kötelező: a [felhasználók hozzárendelésének befejezése egy alkalmazáshoz](add-application-portal-assign-users.md).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Az alábbi szerepkörök egyike: globális rendszergazda, felhőalkalmazás-rendszergazda, alkalmazás-rendszergazda vagy a szolgáltatásnév tulajdonosa.
+- Egy alkalmazás, amely támogatja az SSO-t, és amely már előre konfigurálva van, és hozzá lett adva az Azure AD-katalógushoz. A legtöbb alkalmazás használhatja az Azure AD-t az SSO-hoz. Az Azure AD-katalógusban található alkalmazások előre konfigurálva vannak. Ha az alkalmazás nem szerepel a listán, vagy egyénileg fejlesztett alkalmazás, akkor is használhatja az Azure AD-val. Tekintse meg a tartalomjegyzékben található oktatóanyagokat és egyéb dokumentációt. Ez a rövid útmutató azokra az alkalmazásokra összpontosít, amelyek előre konfigurálva voltak az SSO-hoz, és az alkalmazásfejlesztők hozzáadták őket az Azure AD-katalógushoz.
+- Nem kötelező: Az alkalmazások [megtekintésének befejezése.](view-applications-portal.md)
+- Nem kötelező: Az [Alkalmazás hozzáadása elem befejezése.](add-application-portal.md)
+- Nem kötelező: Az alkalmazás [konfigurálásának befejezése.](add-application-portal-configure.md)
+- Nem kötelező: A felhasználók [alkalmazáshoz való hozzárendelésének befejezése.](add-application-portal-assign-users.md)
 
 >[!IMPORTANT]
->A rövid útmutató lépéseinek teszteléséhez használjon nem éles környezetet.
+>A rövid útmutató lépéseit nem éles környezetben tesztelje.
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Egyszeri bejelentkezés engedélyezése egy alkalmazáshoz
 
-Ha olyan alkalmazást ad hozzá, amely a OIDC standard for SSO-t használja, akkor a telepítő gombja van. Amikor kiválasztja a gombot, lépjen az alkalmazások webhelyre, és fejezze be az alkalmazás regisztrációs folyamatát. Az alkalmazás hozzáadásának folyamatát az ebben a sorozatban korábban elérhető alkalmazás hozzáadása című rövid útmutatóban tárgyaljuk. Ha már hozzáadott alkalmazást konfigurál, tekintse meg az első rövid útmutatót. Végigvezeti Önt a bérlőn már meglévő alkalmazások megtekintésén. 
+Ha olyan alkalmazást ad hozzá, amely az SSO-hez az OIDC szabványt használja, akkor egy beállítási gomb található. Amikor a gombra kattint, az alkalmazás webhelyére lép, és befejezi az alkalmazás regisztrációját. Az alkalmazások hozzáadásának folyamatát a sorozat korábbi, Alkalmazás hozzáadása gyorsútmutatója fedi le. Ha már hozzáadott alkalmazást konfigurál, nézze meg az első rövid útmutatót. Végigvezeti a bérlőn már telepített alkalmazások megtekintésén. 
 
 Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
-1. A sorozat korábbi rövid útmutatójában megtanulta, hogyan adhat hozzá egy alkalmazást, amely az Azure AD-bérlőt fogja használni az Identitáskezelés során. Ha az alkalmazás fejlesztője a OIDC standardot használta az SSO megvalósításához, akkor az alkalmazás hozzáadásakor megjelenik egy regisztrációs gomb. 
+1. A sorozat korábbi, rövid útmutatója azt is bemutatja, hogyan adhat hozzá olyan alkalmazást, amely az Azure AD-bérlőt fogja használni az identitáskezeléshez. Ha az alkalmazás fejlesztője az OIDC szabványt használta az SSO megvalósításához, akkor az alkalmazás hozzáadásakor egy regisztráció gombot fog látni. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="A képernyőképen az egyszeri bejelentkezési lehetőség és a regisztrációs gomb látható." lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="Képernyőkép az egyszeri bejelentkezés lehetőségről és a regisztráció gombról." lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
 
-2. Válassza a **regisztráció** lehetőséget, és az alkalmazás fejlesztői bejelentkezési oldalára kerül sor. Jelentkezzen be Azure Active Directory bejelentkezési hitelesítő adataival. 
+2. Válassza **a Regisztráció lehetőséget,** és meg fog jelenni az alkalmazásfejlesztők bejelentkezési oldala. Jelentkezzen be Azure Active Directory hitelesítő adataival. 
 
    > [!IMPORTANT]
-    > Ha már rendelkezik előfizetéssel az alkalmazáshoz, akkor a felhasználói adatok érvényesítése és a bérlő/könyvtár adatai történnek. Ha az alkalmazás nem tudja ellenőrizni a felhasználót, akkor a rendszer átirányítja Önt az Application Service vagy a hiba oldalára.
+    > Ha már rendelkezik előfizetéssel az alkalmazáshoz, a rendszer érvényesíti a felhasználói adatokat és a bérlői/címtáradatokat. Ha az alkalmazás nem tudja ellenőrizni a felhasználót, akkor átirányítja az alkalmazásszolgáltatásra való regisztrációhoz vagy a hibalapra.
 
-3. A sikeres hitelesítés után egy párbeszédpanel jelenik meg, amely a rendszergazdai jóváhagyást kéri. Válassza **a jóváhagyva lehetőséget a szervezet nevében** , majd válassza az **elfogadás** lehetőséget. A felhasználói és rendszergazdai engedélyekkel kapcsolatos további információkért lásd: [felhasználói és rendszergazdai jogosultságok megismerése](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
+3. A sikeres hitelesítés után megjelenik egy párbeszédpanel, amely rendszergazdai jóváhagyást kér. Válassza **a Jóváhagyás a szervezet nevében lehetőséget, majd** válassza az Elfogadás **lehetőséget.** A felhasználói és rendszergazdai hozzájárulással kapcsolatos további információkért lásd: A felhasználói és rendszergazdai [hozzájárulás megismerve.](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Képernyőfelvétel: az alkalmazás beleegyezési képernyője." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Képernyőkép egy alkalmazás hozzájárulási képernyőről." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. A rendszer hozzáadja az alkalmazást a bérlőhöz, és megjelenik az alkalmazás kezdőlapja.
 
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
+> Az alkalmazáskezelést a következő Graph API automatizálhatja: [Alkalmazáskezelés automatizálása a Microsoft Graph API-val.](/graph/application-saml-sso-configure-api)
 
-Itt talál egy videót a OIDC-alapú alkalmazások Azure AD-hez való hozzáadásával kapcsolatos további részletekért.
+Lássunk egy videót, amely az OIDC-alapú alkalmazások Azure AD-hez való hozzáadásának további részleteit tartalmazza.
 
-OIDC-alapú alkalmazás hozzáadása Azure Active Directory
+OIDC-alapú alkalmazás hozzáadása a Azure Active Directory
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
+Ha végzett ezzel a rövid útmutató-sorozattal, érdemes törölnie az alkalmazást a tesztbérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója fedi le. Lásd: [Alkalmazás törlése.](delete-application-portal.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
+A következő cikk azt is bemutatja, hogyan törölhet alkalmazásokat.
 > [!div class="nextstepaction"]
 > [Alkalmazás törlése](delete-application-portal.md)

@@ -1,197 +1,215 @@
 ---
-title: Az Azure Sentinel újdonságai
-description: Ez a cikk az Azure Sentinel új funkcióit ismerteti az elmúlt néhány hónapban.
+title: A Azure Sentinel
+description: Ez a cikk az elmúlt Azure Sentinel új funkcióit ismerteti.
 services: sentinel
 author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/08/2021
+ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490298"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376035"
 ---
-# <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
+# <a name="whats-new-in-azure-sentinel"></a>A Azure Sentinel
 
-Ez a cikk az Azure Sentinel legújabb funkcióit, valamint a kapcsolódó szolgáltatások új funkcióit sorolja fel, amelyek az Azure Sentinel fejlett felhasználói élményt biztosítanak.
+Ez a cikk a szolgáltatáshoz hozzáadott Azure Sentinel és a kapcsolódó szolgáltatások új funkcióit sorolja fel, amelyek továbbfejlesztett felhasználói élményt biztosítanak a Azure Sentinel.
 
-A korábbi funkciókkal kapcsolatos információkért tekintse meg a [Tech Community blogs](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)című témakört.
+A korábbi funkciókról a Tech Community blogja [nyújt tájékoztatást.](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)
 
-A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure előzetes verziójának kiegészítő feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak az olyan Azure-funkciókra vonatkozó további jogi feltételek, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelennek meg az általánosan elérhetővé tételben.
+A feljegyzett funkciók jelenleg előzetes verzióban állnak rendelkezésre. Az [Azure előzetes verzió kiegészítő feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) további jogi feltételeket tartalmaznak, amelyek a bétaverzióban, előzetes verzióban vagy más, általánosan elérhető Azure-funkciókra vonatkoznak.
 
 
 > [!TIP]
-> A Microsoft fenyegetésekkel foglalkozó csapatai az [Azure Sentinel közösséghez](https://github.com/Azure/Azure-Sentinel)járulnak hozzá a lekérdezésekhez, a forgatókönyvekhez, a munkafüzetekhez és a jegyzetfüzetekhez, beleértve a csapat által alkalmazkodni és használni kívánt konkrét [vadászati lekérdezéseket](https://github.com/Azure/Azure-Sentinel) is. 
+> A Microsoft veszélyforrás-keresési csapatai lekérdezésekkel, forgatókönyvekkel, munkafüzetekkel és jegyzetfüzetekkel járulnak hozzá a [Azure Sentinel közösségének,](https://github.com/Azure/Azure-Sentinel)beleértve a csapatai által adaptálható és használható speciális veszélyforrás-keresési lekérdezéseket is. [](https://github.com/Azure/Azure-Sentinel)
 >
-> Ön is hozzájárulhat! Csatlakozzon hozzánk az [Azure Sentinel Threat Hunters GitHub-közösségében](https://github.com/Azure/Azure-Sentinel/wiki).
-> 
+> Ön is közreműködhet! Csatlakozzon hozzánk a [Azure Sentinel ThreatHub-közösségében.](https://github.com/Azure/Azure-Sentinel/wiki)
+>
 
-## <a name="march-2021"></a>Március 2021
+## <a name="april-2021"></a>2021. április
 
-- [A munkafüzetek automatikus frissítésének beállítása megtekintési módban](#set-workbooks-to-automatically-refresh-while-in-view-mode)
+- [Incidens idővonala (nyilvános előzetes verzió)](#incident-timeline-public-preview)
+
+### <a name="incident-timeline-public-preview"></a>Incidens idővonala (nyilvános előzetes verzió)
+
+Az incidens részleteit tartalmazó oldal első lapja most az Idővonal, amely az incidensben lévő riasztások és könyvjelzők idővonalát jeleníti meg. Az incidens idővonala segíthet jobban megérteni az incidenst, és rekonstruálni a támadói tevékenység idővonalát a kapcsolódó riasztások és könyvjelzők között.
+
+- Jelöljön ki egy elemet az idősoron, hogy az incidens környezetének elhagyása nélkül lássa annak részleteit
+- Szűrje az idővonal tartalmát, hogy csak riasztásokat vagy könyvjelzőket, illetve egy adott súlyosságú vagy MITRE-taktikával megjelölt elemeket mutasson.
+- A Rendszerriasztás **azonosítója** hivatkozásra kattintva megtekintheti a teljes rekordot, vagy az **Események** hivatkozást a kapcsolódó események megtekintéséhez a **Naplók területen.**
+
+Például:
+
+:::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="Incidens idővonal lapja":::
+
+További információ: [Oktatóanyag: Incidensek kivizsgálása a Azure Sentinel.](tutorial-investigate-cases.md)
+
+## <a name="march-2021"></a>2021. március
+
+- [Munkafüzetek automatikus frissítésének beállítása megtekintési módban](#set-workbooks-to-automatically-refresh-while-in-view-mode)
 - [Új észlelések a Azure Firewall](#new-detections-for-azure-firewall)
-- [Automatizálási szabályok és incidensek által aktivált](#automation-rules-and-incident-triggered-playbooks) forgatókönyvek (beleértve az összes új forgatókönyv-dokumentációt)
-- [Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
-- [Azure Sentinel-munkafüzetek nyomtatása vagy Mentés PDF formátumban](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
-- [Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
+- [Automatizálási szabályok és incidens által](#automation-rules-and-incident-triggered-playbooks) aktivált forgatókönyvek (beleértve a teljesen új forgatókönyv dokumentációját)
+- [Új riasztások bővülése: bővített entitásleképezés és egyéni részletek](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Kinyomtathatja a Azure Sentinel munkafüzeteket, vagy pdf-fájlként mentheti őket](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
+- [Az incidensszűrők és a rendezési beállítások mostantól mentve vannak a munkamenetben (nyilvános előzetes verzió)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)](#microsoft-365-defender-incident-integration-public-preview)
-- [Új Microsoft szolgáltatás-összekötők a Azure Policy használatával](#new-microsoft-service-connectors-using-azure-policy)
+- [Új Microsoft-szolgáltatás-összekötők Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
 
-### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>A munkafüzetek automatikus frissítésének beállítása megtekintési módban
+### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>Munkafüzetek automatikus frissítésének beállítása megtekintési módban
 
-Az Azure Sentinel-felhasználók mostantól az új [Azure monitor képességgel](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555) képesek automatikusan frissíteni a munkafüzet-adataikat a megtekintési munkamenet során.
+Azure Sentinel a felhasználók mostantól az új Azure Monitor [a](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555) munkafüzet adatainak automatikus frissítésére egy megtekintési munkamenet során.
 
-Az egyes munkafüzetek vagy munkafüzetek sablonjában válassza :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: az **automatikus frissítés** lehetőséget az intervallum beállításainak megjelenítéséhez. Válassza ki az aktuális nézet-munkamenethez használni kívánt beállítást, majd kattintson az **alkalmaz** gombra.
+Az időközi beállítások megjelenítéséhez minden munkafüzetben vagy munkafüzetsablonban válassza az :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: **Automatikus** frissítés lehetőséget. Válassza ki az aktuális megtekintési munkamenethez használni kívánt lehetőséget, majd válassza az **Alkalmaz lehetőséget.**
 
-- A támogatott frissítési időközök **5 perc** és **1 nap** közé esnek.
-- Alapértelmezés szerint az automatikus frissítés ki van kapcsolva. A teljesítmény optimalizálása érdekében a rendszer minden alkalommal kikapcsolja az automatikus frissítést, amikor lezárta a munkafüzetet, és nem a háttérben fut. Szükség szerint kapcsolja be az automatikus frissítést a következő alkalommal, amikor megnyitja a munkafüzetet.
-- A munkafüzet szerkesztésekor a rendszer szünetelteti az automatikus frissítést, és minden alkalommal újraindul az automatikus frissítési időközök, amikor a szerkesztési mód megtekintési módjára vált vissza.
+- A támogatott frissítési időközök **5 perctől 1** **napig esnek.**
+- Alapértelmezés szerint az automatikus frissítés ki van kapcsolva. A teljesítmény optimalizálása érdekében az automatikus frissítés is ki van kapcsolva minden alkalommal, amikor bezár egy munkafüzetet, és nem fut a háttérben. A munkafüzet következő megnyitásakor szükség szerint kapcsolja be újra az automatikus frissítést.
+- Az automatikus frissítés szünetel a munkafüzet szerkesztése közben, és az automatikus frissítési időközök minden alkalommal újraindulnak, amikor visszakapcsol szerkesztési módból megtekintési módra.
 
-    Az intervallumok akkor is újraindulnak, ha manuálisan frissíti a munkafüzetet a :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **frissítés** gombra kattintva.
+    Az időközök akkor is újraindulnak, ha manuálisan frissíti a munkafüzetet a Frissítés :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **gombbal.**
 
-További információt az [oktatóanyag: az adatok megjelenítése és figyelése](tutorial-monitor-your-data.md) és a [Azure monitor dokumentációjában](../azure-monitor/visualize/workbooks-overview.md)talál.
+További információkért [lásd: Oktatóanyag: Az](tutorial-monitor-your-data.md) adatok vizualizációja és figyelése, valamint [a Azure Monitor dokumentációja.](../azure-monitor/visualize/workbooks-overview.md)
 
 ### <a name="new-detections-for-azure-firewall"></a>Új észlelések a Azure Firewall
 
-A Azure Firewall több beépített észlelése is hozzá lett adva az Azure Sentinel [elemzési](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) területéhez. Ezek az új észlelések lehetővé teszik a biztonsági csapatoknak, hogy riasztást kapjanak, ha a belső hálózaton lévő gépek megpróbálnak lekérdezni vagy csatlakozni az ismert IOCs társított internetes tartományneveket vagy IP-címeket az észlelési szabály lekérdezésében meghatározottak szerint.
+A rendszer számos, a szolgáltatáshoz Azure Firewall, az [Elemzés](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) területhez hozzáadott, Azure Sentinel. Ezekkel az új észlelésekkel a biztonsági csapatok riasztásokat kapnak, ha a belső hálózaton található gépek az észlelési szabály lekérdezésében meghatározottak szerint internetes tartományneveket vagy ismert I/O-khoz társított IP-címeket próbálnak lekérdezni vagy csatlakozni hozzájuk.
 
 Az új észlelések a következők:
 
-- [Solorigate Network Beacon](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
-- [Ismert GALLIUM-tartományok és-kivonatok](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
-- [Ismert IRÍDIUM IP-cím](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
-- [Ismert foszfor-csoport tartománya/IP-címe](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
-- [A DCU Takedown részét képező TALLIUM-tartományok](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
-- [Ismert CINKgel kapcsolatos maldoc-kivonat](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
-- [Ismert stroncium-csoport tartományai](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
-- [NOBÉLIUM – tartomány és IP-IOCs – március 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+- [Fogarasi hálózati adatgyűjtő jelek](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+- [Ismert GALLIUM-tartományok és -hashek](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+- [Ismert IRIDIUM IP-cím](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+- [Ismert tartomány-/IP-csoporttartományok a Különböző csoportokban](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+- [A DCU-lekért terület THALLIUM-tartománya](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+- [Ismert, a MALDOC-maldochoz kapcsolódó kivonat](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [Ismert STRONTIUM-csoporttartományok](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+- [ARRAIUM – Tartományi és IP-I/O-k – 2021. március](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
 
 
-Az Azure-tűzfalakkal kapcsolatos észlelések folyamatosan hozzáadódnak a beépített sablon-gyűjteményhez. A Azure Firewall legutóbbi észlelésének lekéréséhez a **szabály sablonok** területen szűrje az **adatforrásokat** **Azure Firewall** szerint:
+Az Azure Firewall észlelései folyamatosan hozzáadva a beépített sablonkatatárhoz. Az adatforrások legújabb észlelésének Azure Firewall a **Szabálysablonok** alatt szűrje az adatforrásokat **a** **Azure Firewall:**
 
-:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="Új észlelések az elemzési hatékonysági munkafüzetben":::
+:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="Új észlelések az Analytics hatékonysági munkafüzetében":::
 
-További információ: [új észlelések Azure Firewall az Azure sentinelben](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958).
+További információ: [Új észlelések](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958)a Azure Firewall a Azure Sentinel.
 
-### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automatizálási szabályok és incidensek által aktivált forgatókönyvek
+### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automatizálási szabályok és incidens által aktivált forgatókönyvek
 
-Az Automation-szabályok az Azure Sentinel új koncepciója, amellyel központilag kezelhető az incidensek kezelésének automatizálása. Amellett, hogy az incidensekhez (nem csak az előtte lévő riasztásokhoz) rendel hozzá forgatókönyveket, az Automation-szabályok lehetővé teszik a több elemzési szabályra adott válaszok automatizálását, automatikus címkézését, hozzárendelését vagy bezárását, és a végrehajtott műveletek sorrendjét. Az automatizálási szabályok egyszerűsítik az automatizálási használatot az Azure Sentinelben, és lehetővé teszik az incidensek összehangolása folyamataihoz tartozó összetett munkafolyamatok egyszerűsítését.
+Az automatizálási szabályok új fogalmat Azure Sentinel, amely lehetővé teszi az incidenskezelés automatizálásának központi kezelését. Amellett, hogy lehetővé teszi, hogy forgatókönyveket rendeljen incidenshez (nem csak a riasztások számára, mint korábban), az automatizálási szabályok lehetővé teszik több elemzési szabályra adott válaszok automatizálását egyszerre, az incidensek automatikus címkézését, hozzárendelését vagy lezárását anélkül, hogy forgatókönyveket kellene végrehajtani, és szabályozni tudja a végrehajtandó műveletek sorrendjét. Az automatizálási szabályok leegyszerűsítik az automatizálási Azure Sentinel, és lehetővé teszik az incidens-vezénylési folyamatok összetett munkafolyamatainak egyszerűsítését.
 
-További információ az [automatizálási szabályok részletes ismertetéséről](automate-incident-handling-with-automation-rules.md).
+További információért olvassa el az [automatizálási szabályok teljes magyarázatát.](automate-incident-handling-with-automation-rules.md)
 
-A fentiekben leírtak szerint az forgatókönyvek mostantól a riasztási trigger mellett is aktiválhatók az incidens-triggerrel. Az incidensek triggere nagyobb mennyiségű bemenetet biztosít a használathoz (mivel az incidens magában foglalja az összes riasztást és az entitás adatait is), így még nagyobb teljesítményt és rugalmasságot biztosít a válasz munkafolyamataiban. Az incidensek által aktivált forgatókönyvek aktiválása az Automation-szabályoknak való meghívásával történik.
+Ahogy korábban említettük, a forgatókönyveket a riasztási eseményindító mellett az incidens eseményindítóval is aktiválhatja. Az incidens eseményindítója nagyobb bemeneti adatokat biztosít a forgatókönyv számára (mivel az incidens tartalmazza az összes riasztási és entitásadatot is), így még nagyobb teljesítményt és rugalmasságot biztosít a válasz-munkafolyamatokban. Az incidens által aktivált forgatókönyveket automatizálási szabályokból hívjuk meg.
 
-További információ a forgatókönyvek [fejlett képességeiről](automate-responses-with-playbooks.md), valamint az automatizálási szabályokkal és az Automation-szabályokkal együtt a [válaszadási munkafolyamat](tutorial-respond-threats-playbook.md) kiépítéséről.
+További információ a forgatókönyvekkel kapcsolatos továbbfejlesztett [](tutorial-respond-threats-playbook.md) [képességekről,](automate-responses-with-playbooks.md)valamint a forgatókönyvekkel és automatizálási szabályokkal való válasz-munkafolyamatok felhasználásával való meghozásról.
 
-### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Új riasztások bővülése: bővített entitásleképezés és egyéni részletek
 
-A riasztásokat két új módon gazdagíthatja, így könnyebben használhatóvá teheti őket.
+A riasztásokat két új módon bővíti, hogy használhatóbbak és informatívabbak.
 
-Kezdje azzal, hogy az entitást a következő szintre rendeli. Mostantól csaknem 20 típusú entitást, felhasználókat, gazdagépeket és IP-címeket, fájlokat és folyamatokat, postaládákat, Azure-erőforrásokat és IoT-eszközöket is leképezheti. Az egyes entitásokhoz több azonosító is használható az egyedi azonosítás megerősítése érdekében. Ez sokkal gazdagabb adathalmazt biztosít az incidensekben, így szélesebb körű korrelációt és nagyobb teljesítményű vizsgálatot biztosít. [Ismerje meg, hogyan képezhetők le az entitások](map-data-fields-to-entities.md) a riasztásokban.
+Első lépésként az entitásleképezést a következő szintre kell felhozni. Most már szinte 20 entitást leképezhet felhasználókra, gazdagépekre és IP-címekre, fájlokra és folyamatokra, postaládákra, Azure-erőforrásokra és IoT-eszközökre. Minden entitáshoz több azonosítót is használhat az egyedi azonosítás megerősítéséhez. Ez sokkal gazdagabb adatkészletet biztosít az incidensek során, szélesebb korrelációt és hatékonyabb vizsgálatot biztosítva. [Ismerje meg a riasztások entitások leképezésének](map-data-fields-to-entities.md) új módját.
 
-[További információ az entitásokról](entities-in-azure-sentinel.md) , valamint az [elérhető entitások és azonosítóik teljes listájának](entities-reference.md)megtekintése.
+[További információ az entitásokról,](entities-in-azure-sentinel.md) valamint az elérhető entitások és azonosítóik [teljes listája.](entities-reference.md)
 
-A kivizsgálható és a reagálási képességek még nagyobb lendületet adhatnak a riasztások a nyers eseményekből való testreszabásával. Az események tartalmának láthatósága az incidensekben, így egyre nagyobb hatékonyságot és rugalmasságot biztosít a biztonsági fenyegetések megválaszolásában és kivizsgálásában. [Ismerje meg, hogyan kezelheti az egyéni adatokat](surface-custom-details-in-alerts.md) a riasztásokban.
+A riasztások testreszabásával még nagyobb hatékonyságot adhat a vizsgálati és reagálási képességeknek a nyers események részleteinek kijelzésére. Az eseménytartalmak láthatóságának biztosítása az incidensekbe, így nagyobb hatékonyságot és rugalmasságot biztosít a biztonsági fenyegetésekre való reagálás és a fenyegetések kivizsgálása terén. [Megtudhatja, hogyan hozhat létre egyéni részleteket](surface-custom-details-in-alerts.md) a riasztások között.
 
 
 
-### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Azure Sentinel-munkafüzetek nyomtatása vagy Mentés PDF formátumban
+### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Kinyomtathatja a Azure Sentinel munkafüzeteket, vagy pdf-fájlként mentheti őket
 
-Most már nyomtathat Azure Sentinel-munkafüzeteket, amelyek lehetővé teszik a PDF-fájlok exportálását és helyi vagy megosztási mentését is.
+Mostantól kinyomtathat Azure Sentinel munkafüzeteket, így pdf-fájlba is exportálhatja őket, és helyileg vagy megosztással mentheti őket.
 
-A munkafüzetben válassza a Beállítások menüt, > a :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Tartalom nyomtatása** lehetőséget. Ezután válassza ki a nyomtatót, vagy válassza a **Mentés PDF** -ként igény szerint lehetőséget.
+A munkafüzetben válassza a Tartalom nyomtatása > :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **menüt.** Ezután jelölje ki a nyomtatót, vagy válassza a **Mentés PDF-fájlként lehetőséget.**
 
-:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Nyomtassa ki a munkafüzetet, vagy mentse PDF-ként.":::
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Nyomtassa ki a munkafüzetet, vagy mentse PDF-fájlként.":::
 
-További információ: [oktatóanyag: adatok megjelenítése és figyelése](tutorial-monitor-your-data.md).
+További információ: [Oktatóanyag: Adatok vizualizációja és monitorezése.](tutorial-monitor-your-data.md)
 
-### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)
+### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Incidensszűrők és rendezési beállítások mentése a munkamenetbe (nyilvános előzetes verzió)
 
-Az incidensek szűrése és rendezése mostantól az Azure Sentinel-munkamenetben történik, még a termék más területein való navigálás során is.
-Ha továbbra is ugyanabban a munkamenetben van, az Azure Sentinel [incidensek](tutorial-investigate-cases.md) területén a szűrők és a rendezés ugyanúgy jelenik meg, ahogy elhagyta.
+Az incidensszűrők és -rendezés mostantól a teljes Azure Sentinel mentve lesz, még akkor is, ha a termék más területeire navigál.
+Ha még mindig ugyanabban a munkamenetben van, az [](tutorial-investigate-cases.md) Incidensek területre visszatérve a Azure Sentinel ugyanúgy jeleníti meg a szűrőket és a rendezést, ahogy azt elhagyta.
 
 > [!NOTE]
-> Az incidensek szűrését és rendezését az Azure Sentinel vagy a böngésző frissítése után nem menti a rendszer.
+> A rendszer nem menti az incidensszűrőket és a rendezést, miután Azure Sentinel vagy frissítette a böngészőt.
 
 ### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)
 
-Az Azure Sentinel [Microsoft 365 Defender-(M365D-)](/microsoft-365/security/mtp/microsoft-threat-protection) incidens-integrációja lehetővé teszi, hogy az összes M365D-incidenst az Azure sentinelbe továbbítsa, és mindkét portál között szinkronizálja őket. A M365D-ből (korábbi nevén Microsoft Threat Protection vagy MTP) származó incidensek tartalmazzák az összes kapcsolódó riasztást, entitást és releváns információt, így elegendő kontextust biztosítanak az osztályozás és az előzetes vizsgálat végrehajtásához az Azure Sentinelben. A Sentinelben az incidensek kétirányúan szinkronizálva maradnak a M365D, így kihasználhatja az incidensek vizsgálatának mindkét portáljának előnyeit.
+Azure Sentinel Microsoft 365 Defender [(M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) incidensintegrációja lehetővé teszi, hogy az összes M365D-incidenst streamelje az Azure Sentinel és szinkronizálja őket mindkét portál között. Az M365D (korábbi nevén Microsoft Veszélyforrások elleni védelem vagy MTP) incidensei tartalmazzák az összes kapcsolódó riasztást, entitást és releváns információt, így elegendő kontextust biztosítva az osztályozáshoz és az előzetes vizsgálathoz a Azure Sentinel. A Sentinelben az Incidensek kétirányú szinkronban maradnak az M365D-ben, így kihasználhatja mindkét portál előnyeit az incidens vizsgálata során.
 
-Az Azure Sentinel és a Microsoft 365 Defender együttes használatával mindkét világból a legjobbat nyújtja. Részletesen betekintést nyerhet arról, hogy a SIEM a szervezet teljes körű információs erőforrásait tartalmazza, valamint a testre szabott és személyre szabott vizsgálati teljesítmény mélységét, amelyet a XDR a Microsoft 365 erőforrásainak megóvására biztosít, és mindkettőt koordinálja és szinkronizálja a zökkenőmentes SOC-művelethez.
+Az Azure Sentinel és Microsoft 365 Defender együttes használata mindkét világ legjobbját biztosítja. A SIEM által a teljes szervezetben rendelkezésre álló információforrás-hatókört, valamint az XDR által az Microsoft 365-erőforrások védelme érdekében az Microsoft 365-erőforrások védelmére rendelkezésre álló testreszabott és testre szabott vizsgálati teljesítményt is biztosítja, amelyek a zökkenőmentes SOC-műveletek érdekében szinkronizálva és koordinálva is rendelkezésre áll.
 
-További információ: [Microsoft 365 Defender-integráció az Azure sentinelrel](microsoft-365-defender-sentinel-integration.md).
+További információ: [Microsoft 365 Defender integrációja a Azure Sentinel.](microsoft-365-defender-sentinel-integration.md)
 
-### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Új Microsoft szolgáltatás-összekötők a Azure Policy használatával
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Új Microsoft-szolgáltatás-összekötők Azure Policy
 
-A [Azure Policy](../governance/policy/overview.md) egy Azure-szolgáltatás, amely lehetővé teszi, hogy szabályzatok használatával kényszerítse és szabályozza az erőforrások tulajdonságait. A szabályzatok használata biztosítja, hogy az erőforrások megfeleljenek az informatikai irányítási előírásoknak.
+[Azure Policy](../governance/policy/overview.md) egy Azure-szolgáltatás, amely lehetővé teszi, hogy szabályzatok használatával kényszerítsen és vezérelni egy erőforrás tulajdonságait. A szabályzatok használata biztosítja, hogy az erőforrások megfeleljenek az it-irányítási szabványoknak.
 
-A szabályzatok által szabályozható erőforrások tulajdonságai között a diagnosztika és a naplózási naplók létrehozása és felügyelete látható. Az Azure Sentinel mostantól Azure Policy használatával lehetővé teszi, hogy a diagnosztikai naplók közös készletét alkalmazza az Azure Sentinelbe bevenni kívánt naplók egy adott típusának összes (aktuális és jövőbeli) erőforrására. Azure Policy Köszönjük, hogy erőforrás szerint nem kell beállítania a diagnosztikai naplók beállításait erőforrásként.
+A szabályzatokkal vezérelhető erőforrások tulajdonságai között a diagnosztikai és auditnaplók létrehozása és kezelése áll. Azure Sentinel a Azure Policy segítségével a diagnosztikai naplók beállításainak közös készletét alkalmazhatja egy adott típusú (aktuális és jövőbeli) erőforrásra, amelynek a naplóit be szeretné Azure Sentinel. A Azure Policy erőforrásnak köszönhetően nem kell erőforrás szerint beállítania a diagnosztikai naplók beállításait.
 
-A Azure Policy-alapú összekötők mostantól a következő Azure-szolgáltatásokhoz érhetők el:
+Azure Policy-alapú összekötők már elérhetők a következő Azure-szolgáltatásokhoz:
 - [Azure Key Vault](connect-azure-key-vault.md) (nyilvános előzetes verzió)
-- [Azure Kubernetes szolgáltatás](connect-azure-kubernetes-service.md) (nyilvános előzetes verzió)
-- Azure SQL-adatbázisok/-kiszolgálók (GA)
+- [Azure Kubernetes Service](connect-azure-kubernetes-service.md) (nyilvános előzetes verzió)
+- Azure SQL/kiszolgálók (GA)
 
-Az ügyfelek továbbra is képesek lesznek manuálisan elküldeni a naplókat bizonyos példányokhoz, és nem kell használniuk a szabályzat motorját.
+Az ügyfelek továbbra is manuálisan küldhetik el a naplókat adott példányokhoz, és nem kell használni a szabályzatmotort.
 
 ## <a name="february-2021"></a>2021. február
 
-- [Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet](#cybersecurity-maturity-model-certification-cmmc-workbook)
-- [Harmadik féltől származó adatösszekötők](#third-party-data-connectors)
-- [UEBA az entitások oldalán (nyilvános előzetes verzió)](#ueba-insights-in-the-entity-page-public-preview)
-- [Továbbfejlesztett incidensek keresése (nyilvános előzetes verzió)](#improved-incident-search-public-preview)
+- [Cybersecurity Maturity Model Certification (CMMC) munkafüzet](#cybersecurity-maturity-model-certification-cmmc-workbook)
+- [Külső adat-összekötők](#third-party-data-connectors)
+- [UEBA-elemzések az entitás oldalán (nyilvános előzetes verzió)](#ueba-insights-in-the-entity-page-public-preview)
+- [Továbbfejlesztett incidenskeresés (nyilvános előzetes verzió)](#improved-incident-search-public-preview)
 
-### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Cybersecurity Maturity Model Certification (CMMC) munkafüzet
 
-Az Azure Sentinel CMMC munkafüzete lehetővé teszi a CMMC-vezérlőkhöz igazított naplók megtekintését a Microsoft portfóliójában, beleértve a Microsoft biztonsági ajánlatait, az Office 365, a Teams, az Intune, a Windows Virtual Desktop és sok más funkciót.
+Az Azure Sentinel CMMC-munkafüzet olyan mechanizmust biztosít, amely lehetővé teszi a Microsoft-portfólió CMMC-vezérlőihez igazított naplólekérdezések megtekintését, beleértve többek között a Microsoft biztonsági ajánlatait, az Office 365-öt, a Teamset, az Intune-t és Windows Virtual Desktop.
 
-A CMMC-munkafüzet lehetővé teszi a biztonsági építészek, mérnökök, biztonsági műveleti elemzők, vezetők és informatikai szakemberek számára, hogy a Felhőbeli számítási feladatok biztonsági helyzetének megfelelő helyzetet kapjanak. A Microsoft ajánlatok kiválasztására, tervezésére, üzembe helyezésére és konfigurálására vonatkozó javaslatok a megfelelő CMMC követelményekkel és eljárásokkal való összehangolásra is vonatkoznak.
+A CMMC-munkafüzet lehetővé teszi a biztonsági tervezők, mérnökök, biztonsági üzemeltetési elemzők, vezetők és informatikai szakemberek számára, hogy helyzettudatosságot szerezzenek a felhőalapú számítási feladatok biztonsági helyzetével kapcsolatban. Emellett javaslatok is rendelkezésre állnak a Microsoft-ajánlatok kiválasztásához, tervezéséhez, üzembe helyezéséhez és konfigurálásához a CMMC követelményeinek és gyakorlatának megfelelően.
 
-Még ha nem is kell megfelelnie a CMMC, a CMMC-munkafüzet hasznos lehet a biztonsági üzemeltetési központok kiépítésében, a riasztások fejlesztésében, a fenyegetések megjelenítésében és a számítási feladatok helyzetének megismerésében.
+Még ha nem is kell megfelelnie a CMMC-nek, a CMMC-munkafüzet hasznos lehet a biztonsági műveleti központok kialakításában, a riasztások kialakításában, a fenyegetések megjelenítésében és a számítási feladatok helyzetre vonatkozó tájékoztatásában.
 
-Nyissa meg a CMMC-munkafüzetet az Azure Sentinel- **munkafüzetek** területén. Válassza a **sablon** lehetőséget, majd keresse meg a **CMMC**.
+A CMMC-munkafüzet a Azure Sentinel **területen érhető** el. Válassza **a Sablon** lehetőséget, majd keressen rá a **CMMC kifejezésre.**
 
-:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="A CMMC-munkafüzet-útmutató be-és kikapcsolása" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
+:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="A CMMC-munkafüzet útmutatóját be- és kikapcsolni" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
 
 
 További információkért lásd:
 
-- [Azure Sentinel kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
+- [Azure Sentinel Cybersecurity Maturity Model Certification (CMMC) munkafüzet](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
 - [Oktatóanyag: Az adatok megjelenítése és figyelése](tutorial-monitor-your-data.md)
 
 
-### <a name="third-party-data-connectors"></a>Harmadik féltől származó adatösszekötők
+### <a name="third-party-data-connectors"></a>Külső adat-összekötők
 
-A harmadik féltől származó integrációs gyűjtemények folyamatosan növekednek, és az elmúlt két hónapban harminc összekötőt adnak hozzá. Itt található egy lista:
+A harmadik féltől származó integrációk gyűjteménye folyamatosan bővül, és az elmúlt két hónapban 30 összekötőt adtak hozzá. Megjelenik egy lista:
 
-- [Agari adathalászat elleni védelem és márka védelme](connect-agari-phishing-defense.md)
+- [Agari Adathalász védelem és márkavédelem](connect-agari-phishing-defense.md)
 - [Akamai biztonsági események](connect-akamai-security-events.md)
-- [Active Directory Alsid](connect-alsid-active-directory.md)
+- [Alsid a Active Directory](connect-alsid-active-directory.md)
 - [Apache HTTP-kiszolgáló](connect-apache-http-server.md)
 - [Aruba ClearPass](connect-aruba-clearpass.md)
-- [BlackBerry CylancePROTECT](connect-data-sources.md)
+- [Blackberry CylancePROTECT](connect-data-sources.md)
 - [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
-- [Cisco tűzerő eStreamer](connect-data-sources.md)
+- [Cisco Firepower eStreamer](connect-data-sources.md)
 - [Cisco Meraki](connect-cisco-meraki.md)
 - [Cisco Umbrella](connect-cisco-umbrella.md)
-- [Cisco Unified Computing System (FKR)](connect-cisco-ucs.md)
-- [ESET nagyvállalati ellenőr](connect-data-sources.md)
-- [ESET biztonsági felügyeleti központ](connect-data-sources.md)
-- [Google Workspace (korábban G csomag)](connect-google-workspace.md)
-- [Inperverz WAF-átjáró](connect-imperva-waf-gateway.md)
+- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
+- [ESET Enterprise Inspector](connect-data-sources.md)
+- [ESET Security Management Center](connect-data-sources.md)
+- [Google-munkaterület (korábban G Suite)](connect-google-workspace.md)
+- [Imperva WAF-átjáró](connect-imperva-waf-gateway.md)
 - [Juniper SRX](connect-juniper-srx.md)
 - [Netskope](connect-data-sources.md)
 - [NXLog DNS-naplók](connect-nxlog-dns.md)
-- [NXLog Linux audit](connect-nxlog-linuxaudit.md)
-- [Onapsis platform](connect-data-sources.md)
-- [Proofpoint on demand – E-mail biztonság (POD)](connect-proofpoint-pod.md)
-- [Qualys biztonsági rések kezelése – Tudásbázis](connect-data-sources.md)
+- [NXLog Linux-naplózás](connect-nxlog-linuxaudit.md)
+- [Onapsis Platform](connect-data-sources.md)
+- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
+- [Qualys biztonsági rések kezelésével kapcsolatos tudásbázis](connect-data-sources.md)
 - [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
-- [SonicWall tűzfal](connect-data-sources.md)
+- [SonicWall Firewall](connect-data-sources.md)
 - [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
 - [Squid Proxy](connect-squid-proxy.md)
 - [Symantec Endpoint Protection](connect-data-sources.md)
@@ -199,25 +217,25 @@ A harmadik féltől származó integrációs gyűjtemények folyamatosan növeke
 - [Trend Micro XDR](connect-data-sources.md)
 - [VMware ESXi](connect-vmware-esxi.md)
 
-### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA az entitások oldalán (nyilvános előzetes verzió)
+### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA-elemzések az entitás oldalán (nyilvános előzetes verzió)
 
-Az Azure Sentinel-entitások részletes oldalain [betekintési panel](identify-threats-with-entity-behavior-analytics.md#entity-insights)jelenik meg, amely az entitás viselkedési információit jeleníti meg, és segít a rendellenességek és a biztonsági fenyegetések gyors azonosításában.
+A Azure Sentinel-adatok oldalai egy [](identify-threats-with-entity-behavior-analytics.md#entity-insights)Elemzés panelt biztosítanak, amely viselkedési elemzéseket jelenít meg az entitásról, és segít gyorsan azonosítani az anomáliákat és a biztonsági fenyegetéseket.
 
-Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos időkeretet választott ki, akkor ez a betekintő ablaktábla a következő új szakaszt is tartalmazza a UEBA-eredményekhez:
+Ha az UEBA engedélyezve van, és legalább négy napos időkeretet választott ki, akkor ez az Elemzések panel az [UEBA-elemzések](ueba-enrichments.md)következő új szakaszait is tartalmazza:
 
-|Section  |Description  |
+|Section  |Leírás  |
 |---------|---------|
-|**UEBA-ismeretek**     | A rendellenes felhasználói tevékenységek összegzése: <br>-Földrajzi helyeken, eszközökön és környezeteken keresztül<br>– A felhasználók saját előzményeihez képest időbeli és gyakorisági horizonton keresztül <br>– A társak viselkedéséhez képest <br>-A szervezet viselkedéséhez képest     |
-|**Felhasználói partnerek biztonsági csoporttagság alapján**     |   Felsorolja az Azure AD biztonsági csoportok tagságán alapuló felhasználói partnereket, így biztosítva a biztonsági műveleti csapatok számára a hasonló engedélyekkel rendelkező más felhasználók listáját.  |
-|**Felhasználói hozzáférési engedélyek az Azure-előfizetéshez**     |     Megjeleníti a felhasználó hozzáférési engedélyeit az Azure-előfizetésekhez közvetlenül elérhető, vagy Azure AD-csoportokon/egyszerű szolgáltatásokon keresztül.   |
-|**A felhasználóval kapcsolatos veszélyforrás-mutatók**     |  A felhasználó tevékenységeiben szereplő IP-címekkel kapcsolatos ismert fenyegetések gyűjteményét listázza. A fenyegetéseket a fenyegetés típusa és családja sorolja fel, és a Microsoft fenyegetési intelligencia szolgáltatása gazdagítja őket.       |
+|**UEBA-elemzések**     | Összegzi a rendellenes felhasználói tevékenységeket: <br>- Földrajzi helyek, eszközök és környezetek között<br>– Idő- és gyakorisági horizontok szerint a felhasználó saját előzményeihez képest <br>– A társviszonyok viselkedésével összehasonlítva <br>– A szervezet viselkedéséhez képest     |
+|**Felhasználói társviszonyok biztonságicsoport-tagság alapján**     |   Felsorolja a felhasználó társviszonyait az Azure AD biztonsági csoportok tagsága alapján, és a biztonsági műveleti csapatok számára biztosítja a hasonló engedélyekkel rendelkező többi felhasználó listáját.  |
+|**Felhasználói hozzáférési engedélyek az Azure-előfizetéshez**     |     Megjeleníti a felhasználó hozzáférési engedélyét a közvetlenül vagy Azure AD-csoportokon/szolgáltatásnévn keresztül elérhető Azure-előfizetések számára.   |
+|**A felhasználóhoz kapcsolódó fenyegetésjelzők**     |  A felhasználó tevékenységeiben ábrázolt IP-címekre vonatkozó ismert fenyegetések gyűjteményét sorolja fel. A fenyegetések a fenyegetések típusa és a család szerint vannak felsorolva, és a Microsoft fenyegetésintelligencia-szolgáltatása bővíti őket.       |
 |     |         |
 
-### <a name="improved-incident-search-public-preview"></a>Továbbfejlesztett incidensek keresése (nyilvános előzetes verzió)
+### <a name="improved-incident-search-public-preview"></a>Továbbfejlesztett incidenskeresés (nyilvános előzetes verzió)
 
-Javítottuk az Azure Sentinel incidensek keresésének élményét, ami lehetővé teszi, hogy gyorsabban navigáljon az incidenseken keresztül, amikor egy adott fenyegetést vizsgál meg.
+Továbbfejlesztettük a Azure Sentinel keresési élményét, így gyorsabban navigálhat az incidensek között egy adott fenyegetés kivizsgálása során.
 
-Ha az Azure Sentinelben incidenseket keres, mostantól a következő incidensek közül választhat:
+Amikor incidenseket keres a Azure Sentinel, a következő incidensadatok alapján kereshet:
 
 - ID (Azonosító)
 - Cím
@@ -227,149 +245,149 @@ Ha az Azure Sentinelben incidenseket keres, mostantól a következő incidensek 
 
 ## <a name="january-2021"></a>2021. január
 
-- [Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
-- [Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)](#azsecurityinsights-powershell-module-public-preview)
+- [Elemzési szabály varázsló: Továbbfejlesztett lekérdezésszerkesztési élmény (nyilvános előzetes verzió)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
+- [Az.SecurityInsights PowerShell-modul (nyilvános előzetes verzió)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-összekötő](#sql-database-connector)
 - [Dynamics 365-összekötő (nyilvános előzetes verzió)](#dynamics-365-connector-public-preview)
-- [Javított incidensek megjegyzései](#improved-incident-comments)
+- [Továbbfejlesztett incidens-megjegyzések](#improved-incident-comments)
 - [Dedikált Log Analytics-fürtök](#dedicated-log-analytics-clusters)
-- [Logic apps – felügyelt identitások](#logic-apps-managed-identities)
-- [Továbbfejlesztett szabályok finomhangolása az analitikai szabályok előzetes verziójának diagramjaival](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
+- [Logic Apps felügyelt identitások](#logic-apps-managed-identities)
+- [Továbbfejlesztett szabály-finomhangolás az elemzési szabály előzetes verziójú grafikonjai segítségével](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
-### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Elemzési szabály varázsló: Továbbfejlesztett lekérdezésszerkesztési élmény (nyilvános előzetes verzió)
 
-Az Azure Sentinel ütemezett elemzési szabály varázsló most a következő fejlesztéseket biztosítja a lekérdezések írásához és szerkesztéséhez:
+A Azure Sentinel ütemezett elemzési szabály varázslója mostantól a következő fejlesztéseket biztosítja a lekérdezések írása és szerkesztése során:
 
--   Egy bővíthető szerkesztési ablak, amely több képernyős területet biztosít a lekérdezés megtekintéséhez.
--   A lekérdezés kódjában szereplő legfontosabb szavak kiemelése.
+-   Egy kibontható szerkesztőablak, amely több képernyőterületet biztosít a lekérdezés megtekintéséhez.
+-   Kulcsszavak kiemelése a lekérdezési kódban.
 -   Bővített automatikus kiegészítés támogatása.
--   Valós idejű lekérdezések érvényessége. A lekérdezésben szereplő hibák mostantól piros blokkként jelennek meg a görgetősávon, és a **szabály logikája** lap neve piros pont. Emellett a hibákkal rendelkező lekérdezések nem menthetők.
+-   Valós idejű lekérdezés-ellenőrzések. A lekérdezés hibái mostantól piros blokkként mutatja a görgetősávot, és piros pontként a **Szabálylogika** beállítása lap neve alatt. Ezenkívül a hibákkal kapcsolatos lekérdezések nem menthetők.
 
-További információt az [oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez](tutorial-detect-threats-custom.md)című témakörben talál.
-### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)
+További információ: [Oktatóanyag: Egyéni elemzési szabályok létrehozása a fenyegetések észlelésére.](tutorial-detect-threats-custom.md)
+### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az.SecurityInsights PowerShell-modul (nyilvános előzetes verzió)
 
-Az Azure Sentinel mostantól támogatja az új az [. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modult.
+Azure Sentinel már támogatja az új [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modult.
 
-Az az **. SecurityInsights** modul támogatja a közös Azure Sentinel-használati eseteket, például az incidensekkel való interakciót a szobrok, a súlyosság, a tulajdonos és így tovább, a megjegyzések és címkék hozzáadásával és könyvjelzők létrehozásával.
+Az **Az.SecurityInsights** modul támogatja a gyakori Azure Sentinel-használati eseteket, például az incidensekkel való interakciót a incidensek módosítása, súlyosság, tulajdonos stb., megjegyzések és címkék hozzáadása az incidensekhez, valamint könyvjelzők létrehozása.
 
-Habár javasoljuk, hogy a CI/CD-folyamathoz [Azure Resource Manager-(ARM-)](../azure-resource-manager/templates/index.yml) sablonokat használjon, az az **. SecurityInsights** modul az üzembe helyezés utáni feladatok esetében hasznos, és a SoC automationt célozza meg.  Például a SOC Automation tartalmazhatja az adatösszekötők konfigurálásának lépéseit, az elemzési szabályok létrehozását, illetve az Automation-műveletek az elemzési szabályokhoz való hozzáadását.
+Bár a [CI Azure Resource Manager](../azure-resource-manager/templates/index.yml) CD-folyamathoz ajánlott arm-sablonokat használni, az **Az.SecurityInsights** modul hasznos az üzembe helyezés utáni feladatokhoz, és soC-automatizálásra van kicélzva.  Az SOC-automatizálás tartalmazhat például adat-összekötők konfigurálásának lépéseit, elemzési szabályokat hozhat létre, vagy automatizálási műveleteket adhat hozzá az elemzési szabályokhoz.
 
-További információkért, beleértve az elérhető parancsmagok teljes listáját és leírását, a paraméterek leírását és a példákat lásd az az [. SecurityInsights PowerShell-dokumentációban](/powershell/module/az.securityinsights/).
+További információkért, beleértve az elérhető parancsmagok teljes listáját és leírását, a paraméterleírásokat és példákat, tekintse meg az [Az.SecurityInsights PowerShell-dokumentációját.](/powershell/module/az.securityinsights/)
 
 ### <a name="sql-database-connector"></a>SQL Database-összekötő
 
-Az Azure Sentinel mostantól egy Azure SQL Database-összekötőt biztosít, amellyel az adatbázisok naplózási és diagnosztikai naplóit továbbíthatja az Azure Sentinelbe, és folyamatosan figyelheti a tevékenységeket az összes példányban.
+Azure Sentinel egy Azure SQL-összekötőt biztosít, amellyel az adatbázisok naplózási és diagnosztikai naplóit streamelheti az Azure Sentinel-ba, és folyamatosan figyelheti az összes példány tevékenységét.
 
-Az Azure SQL egy teljes körűen felügyelt, szolgáltatásként szolgáló platform, amely az adatbázis-kezelési funkciókat, például a verziófrissítést, a javítást, a biztonsági mentést és a figyelést kezeli, felhasználói beavatkozás nélkül.
+Azure SQL egy teljes körűen felügyelt, szolgáltatásként elérhető (PaaS) adatbázismotor, amely a legtöbb adatbázis-kezelési funkciót kezeli, például a frissítés, a javítás, a biztonsági mentések és a monitorozás felhasználói beavatkozás nélkül.
 
-További információkért lásd: az [Azure SQL Database diagnosztika és a naplózási naplók összekötése](connect-azure-sql-logs.md).
+További információ: [Connect Azure SQL database diagnostics and auditing logs (Adatbázis-diagnosztikai és auditnaplók csatlakoztatása).](connect-azure-sql-logs.md)
 
 ### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365-összekötő (nyilvános előzetes verzió)
 
-Az Azure Sentinel mostantól egy összekötőt biztosít a Microsoft Dynamics 365-hez, amely lehetővé teszi a Dynamics 365-alkalmazások felhasználói, felügyeleti és támogatási tevékenységének naplóinak begyűjtését az Azure Sentinelbe. Ezekkel az értékekkel a lehetséges biztonsági rések teljes adatfeldolgozási műveleteinek naplózását és elemzését végezheti el.
+Azure Sentinel már biztosít egy összekötőt a Microsoft Dynamics 365-höz, amellyel a Dynamics 365-alkalmazások felhasználói, rendszergazdai és támogatási tevékenységnaplóit gyűjtheti Azure Sentinel. Ezeket az adatokat felhasználhatja a teljes adatfeldolgozási művelet naplózására és az esetleges biztonsági incidensek elemzésére.
 
-További információ: [a Dynamics 365-tevékenység naplófájljainak összekapcsolása az Azure Sentinel](connect-dynamics-365.md)szolgáltatással.
+További információ: [Dynamics 365-tevékenységnaplók csatlakoztatása Azure Sentinel.](connect-dynamics-365.md)
 
-### <a name="improved-incident-comments"></a>Javított incidensek megjegyzései
+### <a name="improved-incident-comments"></a>Továbbfejlesztett incidens-megjegyzések
 
-Az elemzők incidensekkel kapcsolatos megjegyzéseket alkalmaznak az incidensekkel való együttműködésre, a folyamatok és a lépések manuális vagy egy forgatókönyv részeként történő dokumentálására. 
+Az elemzők az incidensek megjegyzései alapján dolgoznak együtt az incidensekkel, dokumentálják a folyamatokat és lépéseket manuálisan vagy egy forgatókönyv részeként. 
 
-A továbbfejlesztett incidensek kommentálása lehetővé teszi a megjegyzések formázását, valamint a meglévő megjegyzések szerkesztését és törlését.
+Továbbfejlesztett incidens-megjegyzések használata lehetővé teszi a megjegyzések formázását, valamint a meglévő megjegyzések szerkesztését vagy törlését.
 
-További információ: [incidensek automatikus létrehozása a Microsoft biztonsági értesítéseiből](create-incidents-from-alerts.md).
+További információ: [Incidensek automatikus létrehozása a Microsoft biztonsági riasztásaiból.](create-incidents-from-alerts.md)
 ### <a name="dedicated-log-analytics-clusters"></a>Dedikált Log Analytics-fürtök
 
-Az Azure Sentinel mostantól támogatja a dedikált Log Analytics-fürtöket központi telepítési lehetőségként. Javasoljuk, hogy a dedikált fürtöt a következőket érdemes figyelembe venni:
+Azure Sentinel már támogatja a dedikált Log Analytics-fürtök üzembe helyezési lehetőségként való beállítását. Javasoljuk, hogy a következőkor érdemes megfontolni egy dedikált fürt használatát:
 
-- **Naponta több mint 1 TB** -nyi betöltés az Azure Sentinel-munkaterületre
-- **Több Azure Sentinel-munkaterülettel rendelkezik** az Azure-regisztrációban
+- **Naponta több mint 1 TB** bemenő száma a Azure Sentinel munkaterületre
+- **Több munkaterület Azure Sentinel az** Azure-regisztrációban
 
-A dedikált fürtök lehetővé teszik olyan funkciók használatát, mint az ügyfél által felügyelt kulcsok, a kulcstároló, a kettős titkosítás és a több munkaterületre kiterjedő lekérdezések, ha ugyanazon a fürtön több munkaterülettel rendelkezik.
+A dedikált fürtök lehetővé teszik olyan szolgáltatások használatát, mint az ügyfelek által kezelt kulcsok, a zárolási kulcs, a dupla titkosítás és a gyorsabb munkaterületközi lekérdezések, ha több munkaterület van ugyanazon a fürtön.
 
-További információ: [Azure monitor naplók dedikált fürtök](../azure-monitor/logs/logs-dedicated-clusters.md).
+További információ: dedikált [Azure Monitor naplók létrehozása.](../azure-monitor/logs/logs-dedicated-clusters.md)
 
-### <a name="logic-apps-managed-identities"></a>Logic apps – felügyelt identitások
+### <a name="logic-apps-managed-identities"></a>Logic Apps felügyelt identitások
 
-Az Azure Sentinel mostantól támogatja a felügyelt identitások használatát az Azure Sentinel Logic Apps-összekötőhöz, amely lehetővé teszi, hogy a további identitások létrehozása helyett közvetlenül egy adott forgatókönyvhöz engedélyezze az engedélyeket az Azure Sentinelben való működéshez.
+Azure Sentinel már támogatja a Azure Sentinel Logic Apps-összekötő felügyelt identitását, így lehetővé teszi, hogy további identitások létrehozása helyett közvetlenül egy adott forgatókönyvnek adjon engedélyeket a Azure Sentinel való működéshez.
 
-- **Felügyelt identitás nélkül** az Logic apps-összekötő külön identitást igényel egy Azure Sentinel RBAC-szerepkörrel az Azure Sentinel futtatásához. A különálló identitás lehet egy Azure AD-felhasználó vagy egy egyszerű szolgáltatásnév, például egy Azure AD-beli regisztrált alkalmazás.
+- **Felügyelt identitás nélkül a** Logic Apps-összekötőhöz külön identitásra van szükség egy Azure Sentinel RBAC-szerepkörhöz, hogy a Azure Sentinel. A különálló identitás lehet egy Azure AD-felhasználó vagy egy szolgáltatásnév, például egy Azure AD-ban regisztrált alkalmazás.
 
-- A **felügyelt identitás támogatásának bekapcsolása a logikai alkalmazásban** regisztrálja a logikai alkalmazást az Azure ad-ben, és megadja az objektum azonosítóját. Az Azure Sentinel objektum-azonosítójával társítsa a logikai alkalmazást egy Azure RBAC-szerepkörrel az Azure Sentinel-munkaterületen. 
+- **A felügyelt identitás támogatásának bekapcsolása** a logikai alkalmazásban regisztrálja a logikai alkalmazást az Azure AD-ban, és egy objektumazonosítót ad meg. A munkaterület objektumazonosítójával Azure Sentinel logikai alkalmazást egy Azure RBAC-szerepkörhöz rendelheti hozzá a Azure Sentinel munkaterületen. 
 
 További információkért lásd:
 
-- [Hitelesítés felügyelt identitással Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
-- [Az Azure Sentinel Logic Apps-összekötő dokumentációja](/connectors/azuresentinel) 
+- [Hitelesítés felügyelt identitással a Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
+- [Azure Sentinel Logic Apps összekötő dokumentációja](/connectors/azuresentinel) 
 
-### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Továbbfejlesztett szabályok finomhangolása az analitikai szabályok előzetes verziójának diagramjaival (nyilvános előzetes verzió)
+### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Továbbfejlesztett szabályhangolás az elemzési szabály előzetes verziójú grafikonjai segítségével (nyilvános előzetes verzió)
 
-Az Azure Sentinel mostantól segít jobban meghangolni az elemzési szabályokat, így növelheti a pontosságot és csökkentheti a zajt.
+Azure Sentinel segítségével jobban finomhangolhatja az elemzési szabályokat, így növelheti azok pontosságát és csökkentheti a zajt.
 
-Miután szerkeszt egy elemzési szabályt a **szabály logikájának beállítása** lapon, keresse meg a jobb oldalon található **eredmények szimulálása** lehetőséget. 
+Miután szerkesztett egy elemzési szabályt a **Szabálylogika** beállítása lapon, keresse meg az Eredmények **szimulációja** területet a jobb oldalon. 
 
-Válassza a **tesztelés az aktuális adattal** lehetőséget, hogy az Azure Sentinel szimulálja az elemzési szabály utolsó 50 futtatását. A rendszer létrehoz egy gráfot, amely megjeleníti a szabály által generált riasztások átlagos számát a kiértékelt nyers esemény adatai alapján. 
+Válassza **a Tesztelés az aktuális adatokkal** lehetőséget, Azure Sentinel futtathatja az elemzési szabály legutóbbi 50 futtatásának szimulációját. A rendszer létrehoz egy grafikont, amely a szabály által generált riasztások átlagos számát mutatja a kiértékelt nyers eseményadatok alapján. 
 
-További információ: [a szabály lekérdezési logikájának megadása és a beállítások konfigurálása](tutorial-detect-threats-custom.md#define-the-rule-query-logic-and-configure-settings).
+További információ: [A szabálylekérdezés logikájának meghatározása és beállítások konfigurálása.](tutorial-detect-threats-custom.md#define-the-rule-query-logic-and-configure-settings)
 
 ## <a name="december-2020"></a>2020. december
 
-- [80 új beépített vadászati lekérdezések](#80-new-built-in-hunting-queries)
-- [Log Analytics ügynök fejlesztése](#log-analytics-agent-improvements)
+- [80 új beépített keresési lekérdezés](#80-new-built-in-hunting-queries)
+- [A Log Analytics-ügynök fejlesztései](#log-analytics-agent-improvements)
 
-### <a name="80-new-built-in-hunting-queries"></a>80 új beépített vadászati lekérdezések
+### <a name="80-new-built-in-hunting-queries"></a>80 új beépített keresési lekérdezés
  
-Az Azure Sentinel beépített vadászati lekérdezései lehetővé teszik a SOC-elemzők számára a jelenlegi észlelési lefedettség hiányának csökkentését és az új vadászati érdeklődők meggyújtását.
+Azure Sentinel SOC-elemzők a beépített keresési lekérdezésekkel csökkenthetik a jelenlegi észlelési lefedettség hiányosságait, és új keresési érdeklődőket küldhetnek.
 
-Ez az Azure Sentinel-frissítés olyan új vadászati lekérdezéseket tartalmaz, amelyek lefedettséget biztosítanak a MITRE ATT&a CK Framework Matrixban:
+Ez a frissítés Azure Sentinel új keresési lekérdezéseket tartalmaz, amelyek lefedettséget biztosítanak a MITRE ATT és&CK-keretrendszer mátrixában:
 
 - **Gyűjtemény**
 - **Parancs és vezérlés**
-- **Hitelesítőadat-hozzáférés**
+- **Hitelesítő adatok elérése**
 - **Felderítés**
-- **Végrehajtási**
-- **Kiszűrése**
+- **Futtatási**
+- **Kiszivárgás**
 - **Hatás**
 - **Kezdeti hozzáférés**
 - **Kitartás**
 - **Jogosultság eszkalációja**
 
-A hozzáadott vadászati lekérdezések célja, hogy segítsen megtalálni a gyanús tevékenységeket a környezetben. Habár a jogszerű tevékenységet és a potenciálisan rosszindulatú tevékenységeket is visszaadhatják, hasznosak lehetnek a vadászatra. 
+A hozzáadott keresési lekérdezések célja, hogy segítsenek a gyanús tevékenységek keresésében a környezetben. Bár szabályos és potenciálisan rosszindulatú tevékenységeket is visszaadhatnak, hasznosak lehetnek a veszélykeresésben. 
 
-Ha a lekérdezések futtatása után biztos abban, hogy az eredményeket megbízik, érdemes lehet konvertálni az elemzési szabályokba, vagy a vadászat eredményeit meglévő vagy új incidensekhez hozzáadni.
+Ha a lekérdezések futtatása után biztos az eredményekben, akkor ezeket elemzési szabályokká konvertálhatja, vagy keresési eredményeket adhat hozzá a meglévő vagy új incidensekhez.
 
-Az összes hozzáadott lekérdezés az Azure Sentinel Hunting oldalon érhető el. További információ: [a fenyegetések vadászata az Azure Sentinel](hunting.md)szolgáltatással.
+Az összes hozzáadott lekérdezés elérhető a Keresési Azure Sentinel oldalon. További információ: [Veszélyforrások elleni veszélyforrások elleni Azure Sentinel.](hunting.md)
 
-### <a name="log-analytics-agent-improvements"></a>Log Analytics ügynök fejlesztése
+### <a name="log-analytics-agent-improvements"></a>A Log Analytics-ügynök fejlesztései
 
-Az Azure Sentinel felhasználói a következő Log Analytics-ügynökkel kapcsolatos előnyöket élvezhetik:
+Azure Sentinel Log Analytics-ügynök következő fejlesztései a felhasználók számára:
 
-- **Több operációs rendszer támogatása**, például a CentOS 8, a RedHat 8 és a SUSE Linux 15.
-- A Python **3 támogatása** a Python 2 mellett
+- **Több operációs rendszer támogatása,** köztük a CentOS 8, a RedHat 8 és a SUSE Linux 15.
+- **A Python 3 támogatása** a Python 2 mellett
 
-Az Azure Sentinel a Log Analytics ügynök használatával eljuttatja az eseményeket a munkaterületre, beleértve a Windows biztonsági eseményeit, a syslog-eseményeket, a CEF-naplókat és egyebeket.
+Azure Sentinel Log Analytics-ügynökkel küld eseményeket a munkaterületre, beleértve a Windows biztonság eseményeket, a Syslog-eseményeket, a CEF-naplókat stb.
 
 > [!NOTE]
-> A Log Analytics ügynök más néven OMS-ügynök vagy a Microsoft monitoring Agent (MMA). 
+> A Log Analytics-ügynököt néha OMS-ügynöknek vagy Microsoft Monitoring Agentnek (MMA) is nevezik. 
 > 
 
-További információkért tekintse meg a [log Analytics dokumentációját](../azure-monitor/agents/log-analytics-agent.md) és a [log Analytics ügynök kibocsátási megjegyzéseit](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
+További információkért tekintse meg a [Log Analytics dokumentációját](../azure-monitor/agents/log-analytics-agent.md) és a [Log Analytics-ügynök kibocsátási megjegyzéseit.](https://github.com/microsoft/OMS-Agent-for-Linux/releases)
 ## <a name="november-2020"></a>2020. november
 
-- [A forgatókönyvek állapotának monitorozása az Azure Sentinelben](#monitor-your-playbooks-health-in-azure-sentinel)
+- [A forgatókönyv állapotának figyelése a Azure Sentinel](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender-összekötő (nyilvános előzetes verzió)](#microsoft-365-defender-connector-public-preview)
 
-### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>A forgatókönyvek állapotának monitorozása az Azure Sentinelben
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>A forgatókönyv állapotának figyelése a Azure Sentinel
 
-Az Azure Sentinel-forgatókönyvek olyan [Azure log-alkalmazásokban](../logic-apps/index.yml)létrehozott munkafolyamatokon alapulnak, amelyek segítségével a feladatok, az üzleti folyamatok és a munkafolyamatok ütemezhetők, automatizálható és hangolható. A forgatókönyvek automatikusan meghívhatók az incidensek létrehozásakor, illetve a osztályozásakor és az incidensek használatakor is. 
+Azure Sentinel-forgatókönyv az [Azure Log Appsben](../logic-apps/index.yml)készült munkafolyamatokra épül, amely egy felhőszolgáltatás, amely segít a feladatok, üzleti folyamatok és munkafolyamatok ütemezésében, automatizálásában és vezénylésében. A forgatókönyveket automatikusan meghívhatja incidens létrehozásakor, vagy az incidensek osztályozása és az azzal való munka során. 
 
-A forgatókönyvek állapotának, teljesítményének és használatának megtalálása érdekében egy forgatókönyvek **állapotának monitorozása** nevű [munkafüzetet](../azure-monitor/visualize/workbooks-overview.md) adtunk hozzá. 
+A forgatókönyvei állapotának, teljesítményének és használatának elemzéséhez hozzáadtunk [](../azure-monitor/visualize/workbooks-overview.md) egy Forgatókönyv-állapotfigyelés **nevű munkafüzetet.** 
 
-A forgatókönyvek **állapotának figyelése** munkafüzettel figyelheti a forgatókönyvek állapotát, vagy a sikeres vagy sikertelen futtatások mennyiségében megkeresheti a rendellenességeket. 
+A **Forgatókönyv állapotmonitorozási** munkafüzet segítségével monitoroznia kell a forgatókönyvei állapotát, vagy rendellenességeket kell keresnie a sikeres vagy sikertelen futtatások mennyiségében. 
 
-A forgatókönyvek **állapotának figyelésére szolgáló** munkafüzet mostantól elérhető az Azure Sentinel templates galériájában:
+A **Forgatókönyv állapotának figyelése** munkafüzet mostantól elérhető a Azure Sentinel Sablonok gyűjteményben:
 
-:::image type="content" source="media/whats-new/playbook-monitoring-workbook.gif" alt-text="Példa a forgatókönyvek állapotának figyelésére szolgáló munkafüzetre":::
+:::image type="content" source="media/whats-new/playbook-monitoring-workbook.gif" alt-text="Minta forgatókönyv állapotfigyelési munkafüzete":::
 
 További információkért lásd:
 
@@ -379,22 +397,22 @@ További információkért lásd:
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender-összekötő (nyilvános előzetes verzió)
  
-Az Azure Sentinel Microsoft 365 Defender-összekötője lehetővé teszi a speciális vadászati naplók (a nyers események adattípusának) továbbítását Microsoft 365 Defenderből az Azure Sentinelbe. 
+A Microsoft 365 Defender-összekötő Azure Sentinel lehetővé teszi a speciális keresési naplók (a nyers eseményadatok típusa) streamelését a Microsoft 365 Defenderből a Azure Sentinel. 
 
-A [Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/) a [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) biztonsági esernyőbe való integrálásával mostantól összegyűjtheti a Microsoft Defender a végpontok speciális vadászati eseményeit az Microsoft 365 Defender-összekötő használatával, és közvetlenül az Azure Sentinel munkaterületen található új, célra épülő táblákba továbbíthatja őket. 
+A Microsoft [Defender for Endpoint (MDATP)](/windows/security/threat-protection/) az [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) biztonsági gyűjtésbe való integrálásával összegyűjtheti a Microsoft Defender végponti speciális keresési eseményekhez való használatát az Microsoft 365 Defender-összekötővel, és közvetlenül streamelheti azokat az Azure Sentinel-munkaterület új, célra szolgáló tábláiba. 
 
-Az Azure Sentinel-táblázatok a Microsoft 365 Defender-portálon használt sémára épülnek, és teljes hozzáférést biztosítanak a speciális vadászati naplók teljes készletéhez. 
+A Azure Sentinel táblák a Microsoft 365 Defender portálon használt sémára épülnek, és teljes hozzáférést biztosítanak a speciális keresési naplók teljes készletének. 
 
-További információ: [adatok Összekötése Microsoft 365 defenderből az Azure sentinelbe](connect-microsoft-365-defender.md).
+További információ: [Adatok csatlakoztatása a Microsoft 365 Defenderből a Azure Sentinel.](connect-microsoft-365-defender.md)
 
 > [!NOTE]
-> Microsoft 365 Defender korábbi nevén Microsoft Threat Protection vagy MTP. A Microsoft Defender for Endpoint korábban a Microsoft Defender komplex veszélyforrások elleni védelmi vagy MDATP néven ismert.
+> Microsoft 365 Defender korábbi nevén Microsoft Veszélyforrások elleni védelem MTP volt. A Microsoft Defender for Endpoint korábban Microsoft Defender Advanced Threat Protection vagy MDATP néven volt ismert.
 > 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[A fedélzeti Azure Sentinel](quickstart-onboard.md)
+>[On-board Azure Sentinel](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
 >[Áttekinthető riasztások](quickstart-get-visibility.md)

@@ -1,82 +1,82 @@
 ---
-title: Azure Active Directory alkalmazás-felügyeleti tanúsítványok – gyakori kérdések
-description: A Azure Active Directory identitás-szolgáltatóként (identitásszolgáltató) használó alkalmazások tanúsítványainak kezelésével kapcsolatos gyakori kérdések (GYIK) című témakörben talál válaszokat.
+title: Azure Active Directory alkalmazáskezelési tanúsítványokra vonatkozó gyakori kérdések
+description: A cikk tájékoztatást ad a tanúsítványok identitásszolgáltatóként (IDP) való használatával Azure Active Directory alkalmazások tanúsítványkezelésével kapcsolatos gyakori kérdésekre (GYIK).
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/19/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: secherka, mifarca, shchaur, shravank, sureshja
-ms.openlocfilehash: 928bf02e2d628379738483b40631e36f0f929176
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0868c942a023662a1a6d3053477d85b0245fef4b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803718"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376239"
 ---
-# <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory (Azure AD) alkalmazás-felügyeleti tanúsítványok – gyakori kérdések
+# <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory (Azure AD) alkalmazáskezelési tanúsítványokkal kapcsolatos gyakori kérdések
 
-Ez a lap a Azure Active Directory (Azure AD) identitás-szolgáltatóként (identitásszolgáltató) használó alkalmazások tanúsítványainak kezelésével kapcsolatos gyakori kérdésekre ad választ.
+Ez az oldal az alkalmazások tanúsítványának identitásszolgáltatóként (IdP Azure Active Directory (Azure AD) való kezelésével kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="is-there-a-way-to-generate-a-list-of-expiring-saml-signing-certificates"></a>Van lehetőség a lejáró SAML-aláíró tanúsítványok listájának előállítására?
+## <a name="is-there-a-way-to-generate-a-list-of-expiring-saml-signing-certificates"></a>Létre lehet hozni egy listát a lejáró SAML aláíró tanúsítványokról?
 
-Az összes alkalmazás-regisztrációt exportálhatja egy CSV-fájlban lévő címtárból a megadott alkalmazásokhoz tartozó lejáró titkokkal, tanúsítványokkal és tulajdonosokkal a [PowerShell-parancsfájlok](app-management-powershell-samples.md)használatával. 
+Egy CSV-fájlba exportálhatja az összes olyan alkalmazásregisztrációt, amely lejáró titkos [](app-management-powershell-samples.md)adatokat, tanúsítványokat és azok tulajdonosát a megadott alkalmazásokhoz használja egy CSV-fájlban. 
 
-## <a name="where-can-i-find-the-information-about-soon-to-expire-certificates-renewal-steps"></a>Hol találhatom meg a tanúsítvány-megújítási lépések lejáratának hamarosan megjelenő információkat?
+## <a name="where-can-i-find-the-information-about-soon-to-expire-certificates-renewal-steps"></a>Hol találom a hamarosan elévülni képes tanúsítványok megújítási lépéseit?
 
 A lépéseket [itt](manage-certificates-for-federated-single-sign-on.md#renew-a-certificate-that-will-soon-expire) találhatja meg.
 
-## <a name="how-can-i-customize-the-expiration-date-for-the-certificates-issued-by-azure-ad"></a>Hogyan lehet testreszabni az Azure AD által kiadott tanúsítványok lejárati dátumát?
+## <a name="how-can-i-customize-the-expiration-date-for-the-certificates-issued-by-azure-ad"></a>Hogyan szabhatom testre az Azure AD által kiadott tanúsítványok lejárati dátumát?
 
-Alapértelmezés szerint az Azure AD úgy konfigurálja a tanúsítványt, hogy három év után lejárjon, amikor az SAML egyszeri bejelentkezés konfigurálása során automatikusan létrejön. Mivel a mentés után nem lehet módosítani a tanúsítvány dátumát, létre kell hoznia egy új tanúsítványt. Ennek módjával kapcsolatban tekintse meg az [összevonási tanúsítvány lejárati idejének testreszabását és az új tanúsítványra való átadását](manage-certificates-for-federated-single-sign-on.md#customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate)ismertető témakört.
+Alapértelmezés szerint az Azure AD úgy konfigurálja a tanúsítványt, hogy három év után lejárjon, amikor automatikusan létrejön az SAML egyszeri bejelentkezési konfigurációja során. Mivel a mentés után nem módosíthatja a tanúsítvány dátumát, létre kell hoznia egy új tanúsítványt. Az erre vonatkozó lépésekért tekintse meg az összevonási tanúsítvány lejárati dátumának testreszabását és egy új tanúsítványra való [átváltását.](manage-certificates-for-federated-single-sign-on.md#customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate)
 
-## <a name="how-can-i-automate-the-certificates-expiration-notifications"></a>Hogyan automatizálható a tanúsítványok lejárati értesítései?
+## <a name="how-can-i-automate-the-certificates-expiration-notifications"></a>Hogyan automatizálhatóak a tanúsítványok lejárati értesítései?
 
-Az Azure AD e-mailben értesítést küld a 60, 30 és 7 nappal az SAML-tanúsítvány lejárta előtt. Az értesítések fogadásához több e-mail-címet is hozzáadhat. 
+Az Azure AD az SAML-tanúsítvány lejárta előtt 60, 30 és 7 nappal e-mailes értesítést küld. Az értesítések fogadására több e-mail-címet is hozzáadhat. 
 
 > [!NOTE]
-> Akár 5 e-mail-címet is hozzáadhat az értesítési listához (beleértve az alkalmazást hozzáadó rendszergazda e-mail-címét). Ha több személyt kell értesítenie, használja a terjesztési lista e-mailjeit. 
+> Az Értesítési listához legfeljebb 5 e-mail-címet adhat hozzá (beleértve annak a rendszergazdának az e-mail-címét is, aki hozzáadta az alkalmazást). Ha további személyeket kell értesítenie, használja a terjesztési lista e-mailjeit. 
 
-Az értesítések küldéséhez használni kívánt e-mailek megadásához tekintse meg az [e-mail értesítési címek hozzáadása a tanúsítvány lejáratához](manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)című témakört.
+Azon e-mailek megadásához, amelyekre az értesítéseket szeretné küldeni, lásd: [E-mail-értesítési](manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)címek hozzáadása a tanúsítvány lejáratához.
 
-A szolgáltatástól kapott e-mail-értesítések szerkesztésére és testreszabására nincs lehetőség `aadnotification@microsoft.com` . Azonban a [PowerShell-parancsfájlok](app-management-powershell-samples.md)segítségével exportálhatja az alkalmazások regisztrációját, és megtekintheti a titkos kulcsokat és tanúsítványokat.
+A szolgáltatástól kapott e-mail-értesítéseket nem lehet szerkeszteni vagy testre `aadnotification@microsoft.com` szabni. A lejárt titkos kulcsok és tanúsítványok használatával azonban exportálhatja az alkalmazásregisztrációkat [a PowerShell-szkriptekkel.](app-management-powershell-samples.md)
 
-## <a name="who-can-update-the-certificates"></a>Kik frissíthetik a tanúsítványokat?
+## <a name="who-can-update-the-certificates"></a>Ki frissítheti a tanúsítványokat?
 
-Az alkalmazás vagy a globális rendszergazda vagy az alkalmazás rendszergazdája Azure Portal felhasználói felületen, a PowerShellben vagy a Microsoft Graphon keresztül frissítheti a tanúsítványokat.
+Az alkalmazás tulajdonosa vagy globális rendszergazda vagy alkalmazás-rendszergazda frissítheti a tanúsítványokat Azure Portal felhasználói felületen, a PowerShellben vagy Microsoft Graph.
 
 ## <a name="i-need-more-details-about-certificate-signing-options"></a>További részletekre van szükségem a tanúsítvány-aláírási beállításokkal kapcsolatban.
 
-Az Azure AD-ben beállíthat tanúsítvány-aláírási beállításokat és a tanúsítvány-aláírási algoritmust. További információ: [Advanced SAML-jogkivonat tanúsítvány-aláírási lehetőségei az Azure ad-alkalmazásokhoz](certificate-signing-options.md).
+Az Azure AD-ban beállíthatja a tanúsítvány-aláírási beállításokat és a tanúsítvány-aláíró algoritmust. További információ: [Advanced SAML token certificate signing options for Azure AD apps (Speciális SAML-jogkivonat-tanúsítvány-aláírási beállítások Azure AD-alkalmazásokhoz).](certificate-signing-options.md)
 
-## <a name="i-need-to-replace-the-certificate-for-azure-ad-application-proxy-applications-and-need-more-instructions"></a>Le kell cserélni az Azure AD Application Proxy-alkalmazások tanúsítványát, és további útmutatásra van szükség.
+## <a name="i-need-to-replace-the-certificate-for-azure-ad-application-proxy-applications-and-need-more-instructions"></a>Le kell cserélnem az Azure AD-tanúsítványt alkalmazásproxy alkalmazásokhoz, és további utasításokra van szükségem.
 
-Az Azure AD Application Proxy-alkalmazások tanúsítványainak cseréjéhez lásd: [PowerShell-minta – a tanúsítvány cseréje az Application proxy-alkalmazásokban](scripts/powershell-get-custom-domain-replace-cert.md).
+Az Azure AD-alkalmazásproxy tanúsítványok cseréjéhez lásd: PowerShell-minta – Tanúsítvány cseréje alkalmazásproxy [alkalmazásokban.](scripts/powershell-get-custom-domain-replace-cert.md)
 
-## <a name="how-do-i-manage-certificates-for-custom-domains-in-azure-ad-application-proxy"></a>Hogyan az Azure AD Application Proxy egyéni tartományokhoz tartozó tanúsítványok kezelése?
+## <a name="how-do-i-manage-certificates-for-custom-domains-in-azure-ad-application-proxy"></a>Hogyan egyéni tartományok tanúsítványait az Azure AD-alkalmazásproxy?
 
-Ha a helyszíni alkalmazást egyéni tartomány használatára szeretné konfigurálni, egy ellenőrzött Azure Active Directory egyéni tartományra, egy, az egyéni tartomány PFX-tanúsítványára, valamint egy, a konfigurálandó helyszíni alkalmazásra van szükség. További információ: [Egyéni tartományok az Azure ad Application proxyban](application-proxy-configure-custom-domain.md). 
+Ahhoz, hogy egy helyszíni alkalmazást egyéni tartomány használatára konfigurálni tudja Azure Active Directory, egy ellenőrzött egyéni tartományra, egy PFX-tanúsítványra az egyéni tartományhoz és egy konfigurálni szükséges helyszíni alkalmazásra van szükség. További információ: Egyéni tartományok az [Azure AD-alkalmazásproxy.](application-proxy-configure-custom-domain.md) 
 
-## <a name="i-need-to-update-the-token-signing-certificate-on-the-application-side-where-can-i-get-it-on-azure-ad-side"></a>Frissíteni kell a jogkivonat-aláíró tanúsítványt az alkalmazás oldalán. Honnan szerezhetem be az Azure AD-t?
+## <a name="i-need-to-update-the-token-signing-certificate-on-the-application-side-where-can-i-get-it-on-azure-ad-side"></a>Frissítenem kell a jogkivonat-aláíró tanúsítványt az alkalmazás oldalán. Hol kaphatom meg az Azure AD oldalán?
 
-Az SAML X. 509 tanúsítvány megújítása: [SAML aláíró tanúsítvány](configure-saml-single-sign-on.md#saml-signing-certificate).
+Az SAML X.509-tanúsítvány megújítását lásd: [SAML-aláíró tanúsítvány.](configure-saml-single-sign-on.md#saml-signing-certificate)
 
-## <a name="what-is-azure-ad-signing-key-rollover"></a>Mi az az Azure AD-aláírási kulcs rollover?
+## <a name="what-is-azure-ad-signing-key-rollover"></a>Mi az az Azure AD aláírókulcs-visszaállítás?
 
-További részletek [itt](../develop/active-directory-signing-key-rollover.md)találhatók. 
+További részleteket itt [talál.](../develop/active-directory-signing-key-rollover.md) 
 
-## <a name="how-do-i-renew-application-token-encryption-certificate"></a>Hogyan az alkalmazás-jogkivonat titkosítási tanúsítványának megújítása?
+## <a name="how-do-i-renew-application-token-encryption-certificate"></a>Hogyan az alkalmazás jogkivonat-titkosítási tanúsítványát?
 
-Az alkalmazás-jogkivonat titkosítási tanúsítványának megújítását lásd: [jogkivonat-titkosítási tanúsítvány megújítása vállalati alkalmazásokhoz](howto-saml-token-encryption.md). 
+Az alkalmazás jogkivonat-titkosítási tanúsítványának megújításához lásd: Jogkivonat-titkosítási tanúsítvány megújítása [vállalati alkalmazásokhoz.](howto-saml-token-encryption.md) 
 
-## <a name="how-do-i-renew-application-token-signing-certificate"></a>Hogyan az alkalmazás-jogkivonat aláíró tanúsítványának megújítása?
+## <a name="how-do-i-renew-application-token-signing-certificate"></a>Hogyan az alkalmazás jogkivonat-aláíró tanúsítványát?
 
-Az alkalmazás-jogkivonat aláíró tanúsítványának megújítását lásd: [jogkivonat-aláíró tanúsítvány megújítása vállalati alkalmazáshoz](manage-certificates-for-federated-single-sign-on.md).
+Az alkalmazás jogkivonat-aláíró tanúsítványának megújításához lásd: How to renew a token signing certificate for an enterprise application (Jogkivonat-aláíró tanúsítvány megújítása vállalati [alkalmazáshoz).](manage-certificates-for-federated-single-sign-on.md)
 
-## <a name="how-do-i-update-azure-ad-after-changing-my-federation-certificates"></a>Az összevonási tanúsítványok módosítása után Hogyan frissíteni az Azure AD-t?
+## <a name="how-do-i-update-azure-ad-after-changing-my-federation-certificates"></a>Hogyan az Azure AD-t az összevonási tanúsítványok módosítása után?
 
-Ha az összevonási tanúsítványok módosítása után szeretné frissíteni az Azure AD-t, tekintse meg a [Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása](../hybrid/how-to-connect-fed-o365-certs.md)című témakört.
+Ha az összevonási tanúsítványok módosítása után frissítenie kell az Azure AD-t, tekintse meg a tanúsítvány-összevonási tanúsítványok megújítását Microsoft 365 [és Azure Active Directory.](../hybrid/how-to-connect-fed-o365-certs.md)

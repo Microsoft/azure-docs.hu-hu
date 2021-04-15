@@ -1,21 +1,21 @@
 ---
-title: A Azure Batch beépített szabályzat-definíciói
-description: A Azure Batch Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók a Azure Batch
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Batch. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c278588e3035c6197018cc563abdc5f842c08a49
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: e013d27d2c8e813fc2eb6d0f288a98e0867d8889
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092253"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497242"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-batch"></a>A Azure Batch beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Policy beépített definíciók a Azure Batch
 
-Ez az oldal a Azure Batch [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure Batch. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-batch"></a>Azure Batch
 

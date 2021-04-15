@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
-description: Az Azure virtuálisgép-méretezési csoportok fejlettebb hálózatkezelési tulajdonságainak konfigurálása.
+description: Az Azure-beli virtuálisgép-méretezési készletek speciális hálózati tulajdonságainak konfigurálása.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 9ad761f289805d15d316fc6f528a0049adb36b30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mimckitt
+ms.openlocfilehash: e427d51068115db27a36243d738c0e93a10d3cb1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97722317"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375916"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -42,8 +42,8 @@ Az Azure Gyorsított hálózatkezelés javítja a hálózati teljesítményt az�
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure-beli virtuálisgép-méretezési csoportok Azure Load Balancer
-[Azure Load Balancer és Virtual Machine Scale sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) további információt talál arról, hogyan konfigurálhatja a standard Load Balancer Virtual Machine Scale sets alapján a forgatókönyv szerint.
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure-beli virtuálisgép-méretezési Azure Load Balancer
+A [Azure Load Balancer és Virtual Machine Scale Sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) további információért tekintse meg, hogyan konfigurálhatja standard Load Balancer a Virtual Machine Scale Sets-konfigurációval.
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway-re hivatkozó méretezési csoport létrehozása
 Ha alkalmazásátjárót használó méretezési csoportot szeretne létrehozni, akkor hivatkozzon az alkalmazásátjáró háttércímkészletére a méretezési csoport ipConfigurations szakaszában, mint ebben az ARM-sablonkonfigurációban:
@@ -86,7 +86,7 @@ Ha egyéni DNS-kiszolgálókat szeretne konfigurálni egy Azure-sablonban, adja 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Konfigurálható virtuálisgép-tartománynevekkel rendelkező méretezési csoport létrehozása
 Ha olyan méretezési csoportot szeretne létrehozni a CLI használatával, amelyben a virtuális gépek egyéni DNS-névvel rendelkeznek, adja hozzá a **--vm-domain-name** argumentumot a **virtual machine scale set create** parancshoz, majd ezek után adja meg a tartománynév sztringjét.
 
-Ha egy Azure-sablonban szeretné beállítani a tartománynevet, adjon hozzá egy **dnsSettings** -tulajdonságot a méretezési csoport **networkinterfaceconfigurations szakaszához** szakaszhoz. Például:
+A tartománynév Azure-sablonban való beállításához adjon hozzá egy **dnsSettings** tulajdonságot a méretezési csoport **networkInterfaceConfigurations szakaszához.** Például:
 
 ```json
 "networkProfile": {
@@ -125,14 +125,14 @@ A virtuális gépek egyéni DNS-nevének kimenete az alábbi módon kell, hogy k
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Nyilvános IPv4-cím virtuális gépenként
-Az Azure méretezési csoportok virtuális gépeinek általában nincs szükségük saját nyilvános IP-címre. A legtöbb esetben gazdaságosabb és biztonságosabb a nyilvános IP-címek betöltését egy terheléselosztó vagy egy különálló virtuális gép (más néven Jumpbox) számára, amely a bejövő kapcsolatokat igény szerint a méretezési csoportba tartozó virtuális gépekre irányítja (például a bejövő NAT-szabályokon keresztül).
+Az Azure méretezési csoportok virtuális gépeinek általában nincs szükségük saját nyilvános IP-címre. A legtöbb esetben gazdaságosabb és biztonságosabb egy nyilvános IP-címet hozzárendelni egy terheléselosztáshoz vagy egy különálló virtuális géphez (más néven jumpboxhoz), amely ezután szükség szerint a bejövő kapcsolatokat a méretezési készlet virtuális gépei felé irányítsa (például bejövő NAT-szabályokon keresztül).
 
 Egyes helyzetek azonban megkövetelik, hogy a méretezési csoport virtuális gépei saját nyilvános IP-címmel rendelkezzenek. Egy ilyen példa a játékok, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel, amely elvégzi a játék fizikai világának feldolgozását. Egy másik példa, ha a különböző régiókban található virtuális gépeknek külső kapcsolatokat kell létesítenie egymással egy elosztott adatbázisban.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Méretezési csoport létrehozása úgy, hogy minden virtuális gép saját IP-címmel rendelkezzen
 Ha olyan méretezési csoportot szeretne létrehozni a CLI használatával, amely minden egyes virtuális géphez hozzárendel egy nyilvános IP-címet, adja hozzá a **--public-ip-per-vm** paramétert a **vmss create** parancshoz. 
 
-Ha Azure-sablonnal szeretne létrehozni egy méretezési készletet, győződjön meg arról, hogy a Microsoft. számítási/virtualMachineScaleSets erőforrásának API-verziója legalább **2017-03-30**, és adjon hozzá egy **publicIpAddressConfiguration** JSON-tulajdonságot a méretezési csoport ipConfigurations szakaszához. Például:
+Ha Azure-sablonnal szeretne méretezési csoportokat létrehozni, győződjön meg arról, hogy a Microsoft.Compute/virtualMachineScaleSets erőforrás api-verziója **legalább 2017-03-30,** és adjon hozzá egy **publicIpAddressConfiguration** JSON-tulajdonságot a méretezési csoport ipConfigurations szakaszához. Például:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -148,7 +148,7 @@ Példasablon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quicksta
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>A méretezési csoportban található virtuális gépek nyilvános IP-címének lekérdezése
 A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címek listáját az **az vmss list-instance-public-ips** paranccsal kérheti le a CLI használatával.
 
-A skálázási csoport nyilvános IP-címeinek a PowerShell használatával történő listázásához használja a _Get-AzPublicIpAddress_ parancsot. Például:
+A méretezési készlet nyilvános IP-címeinek PowerShell használatával való listához használja a _Get-AzPublicIpAddress_ parancsot. Például:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
@@ -169,7 +169,7 @@ Az [Azure Resource Explorer](https://resources.azure.com) lekérdezése:
 1. Bontsa ki az előfizetést.
 1. Bontsa ki az erőforráscsoportot.
 1. Bontsa ki a *Szolgáltatók* csomópontot.
-1. Bontsa ki a *Microsoft. számítás* elemet.
+1. *Bontsa ki a Microsoft.Compute csomópontot.*
 1. Bontsa ki a *virtualMachineScaleSets* csomópontot.
 1. Bontsa ki a méretezési csoportot.
 1. Kattintson a *publicipaddresses* elemre.
@@ -382,11 +382,11 @@ az vmss show \
 ]
 ```
 
-## <a name="make-networking-updates-to-specific-instances"></a>Hálózati frissítések elkészítése adott példányokra
+## <a name="make-networking-updates-to-specific-instances"></a>Hálózatfrissítések adott példányokhoz
 
-A hálózatkezelési frissítéseket meghatározott virtuálisgép-méretezési csoport példányain végezheti el. 
+A hálózattal kapcsolatos frissítéseket adott virtuálisgép-méretezésikészlet-példányokhoz is beállíthatja. 
 
-`PUT`A példány használatával frissítheti a hálózati konfigurációt. Ezzel olyan műveleteket végezhet, mint például a hálózati adapterek hozzáadása vagy eltávolítása, vagy egy példány eltávolítása a háttér-készletből.
+A `PUT` példányon keresztül frissítheti a hálózati konfigurációt. Ez olyan dolgokra használható, mint a hálózati adapterek (HÁLÓZATI adapterek) hozzáadása vagy eltávolítása, vagy egy példány eltávolítása a háttérkészletből.
 
 ```
 PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
@@ -394,13 +394,13 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 
 Az alábbi példa bemutatja, hogyan adhat hozzá egy második IP-konfigurációt a hálózati adapterhez.
 
-1. `GET` egy adott virtuálisgép-méretezési csoport példányának részletei.
+1. `GET` egy adott virtuálisgép-méretezésikészlet-példány részletei.
     
     ``` 
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *A következő egyszerűsítettük a példában szereplő hálózati paraméterek megjelenítését.*
+    *Az alábbiakban egyszerűsítettük, hogy ebben a példában csak a hálózati paramétereket mutassa.*
 
     ```json
     {
@@ -450,14 +450,14 @@ Az alábbi példa bemutatja, hogyan adhat hozzá egy második IP-konfigurációt
     }
     ```
  
-2. `PUT` a példányon a frissítéssel adja hozzá a további IP-konfigurációt. Ez hasonló a továbbiak hozzáadásához `networkInterfaceConfiguration` .
+2. `PUT` a példányon, frissítse a gombra, hogy hozzáadja a további IP-konfigurációt. Ez hasonló a további `networkInterfaceConfiguration` hozzáadásához.
 
     
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *A következő egyszerűsítettük a példában szereplő hálózati paraméterek megjelenítését.*
+    *Az alábbiakban egyszerűsítettük, hogy ebben a példában csak a hálózati paramétereket mutassa.*
 
     ```json
       {

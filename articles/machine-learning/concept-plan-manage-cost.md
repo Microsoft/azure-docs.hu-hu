@@ -1,37 +1,37 @@
 ---
 title: Költségtervezés és a költségek kezelése
 titleSuffix: Azure Machine Learning
-description: Megtervezheti és kezelheti a költségek elemzésével Azure Machine Learning a Azure Portalban. A további költségmegtakarítási tippek segítségével csökkentheti a költségeket az ML-modellek kiépítésekor.
+description: Tervezze meg és kezelje a Azure Machine Learning költségelemzéssel a Azure Portal. További költségmegtakarítási tippek a gépi tanulási modellek kiépítésekor a költségek csökkentéséhez.
 author: sdgilley
 ms.author: sgilley
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, devx-track-azurecli
 ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 6f4a8e4b8cbc35dca9f48bbec84e9023e82f6a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501635"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478641"
 ---
-# <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
+# <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A költségek megterve és kezelése a Azure Machine Learning
 
-Ez a cikk a Azure Machine Learning költségeinek megtervezését és kezelését ismerteti. Első lépésként az Azure díjszabási kalkulátor segítségével megtervezheti a költségeket, mielőtt erőforrásokat hozna létre. Ezután adja hozzá az Azure-erőforrásokat, és tekintse át a becsült költségeket. Végül a költséghatékony tippeket használhatja a modell felügyelt Azure Machine Learning számítási fürtökkel való betanításához.
+Ez a cikk a költségek tervezését és kezelését ismerteti a Azure Machine Learning. Először az Azure díjkalkulátor használatával tervezze meg a költségeket, mielőtt erőforrásokat ad hozzá. Ezután az Azure-erőforrások hozzáadása során tekintse át a becsült költségeket. Végül költségmegtakarítási tippeket használhat a modell felügyelt számítási Azure Machine Learning való betanításkor.
 
-Azure Machine Learning erőforrások használatának elkezdése után a Cost Management szolgáltatással állíthatja be a költségvetéseket, és figyelheti a költségeket. Tekintse át az előre jelzett költségeket, és azonosítsa a kiadási trendeket, hogy azonosítsa azokat a területeket, ahol érdemes lehet eljárni.
+Az erőforrások használatának Azure Machine Learning a költségkezelési funkciók használatával állíthatja be a költségvetéseket és figyelheti a költségeket. Tekintse át az előre jelzett költségeket, és azonosítsa a költési trendeket, hogy azonosítsa azokat a területeket, ahol érdemes lehet cselekedni.
 
-Ismerje meg, hogy a Azure Machine Learning költségei csak a havi költségek egy részét jelentik az Azure-számlán. Ha más Azure-szolgáltatásokat használ, akkor az Azure-előfizetésében használt összes Azure-szolgáltatás és erőforrás után, beleértve a harmadik féltől származó szolgáltatásokat is. Ez a cikk a Azure Machine Learning költségeinek tervezését és kezelését ismerteti. Miután megismerte Azure Machine Learning költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésében használt összes Azure-szolgáltatás költségeit.
+Ne feledjük, hogy a Azure Machine Learning költségei csak egy részét jelentik az Azure-számla havi költségeinek. Ha más Azure-szolgáltatásokat használ, akkor az Azure-előfizetésében használt összes Azure-szolgáltatásért és -erőforrásért, beleértve a külső szolgáltatásokat is. Ez a cikk a költségek tervezését és kezelését ismerteti a Azure Machine Learning. Ha már ismeri a szolgáltatások költségeinek kezelését, Azure Machine Learning hasonló módszereket alkalmazhat az előfizetésben használt összes Azure-szolgáltatás költségeinek kezelésére.
 
-A gépi tanulási modellek betanításakor a felügyelt Azure Machine Learning számítási fürtök segítségével kihasználhatja a költségmegtakarítással járó tippeket:
+A gépi tanulási modellek betanításakor felügyelt Azure Machine Learning számítási fürtök használatával további költségmegtakarítási tippeket használhat:
 
-* A betanítási fürtök konfigurálása automatikus skálázáshoz
-* Kvóták beállítása az előfizetéshez és a munkaterületekhez
-* Leállítási szabályzatok beállítása a betanítási futtatáshoz
-* Alacsony prioritású virtuális gépek használata (VM)
-* Azure-beli fenntartott VM-példány használata
+* A betanító fürtök konfigurálása automatikus skálázáshoz
+* Kvóták beállítása az előfizetéshez és a munkaterülethez
+* Leállító szabályzatok beállítása a betanítás futtatásához
+* Alacsony prioritású virtuális gépek használata
+* Azure-beli fenntartott virtuálisgép-példány használata
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,89 +39,89 @@ A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott 
 
 További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
-## <a name="estimate-costs-before-using-azure-machine-learning"></a>A költségek becslése a használata előtt Azure Machine Learning
+## <a name="estimate-costs-before-using-azure-machine-learning"></a>Költségbecslés a Azure Machine Learning
 
-Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) megbecsülheti a költségeket, mielőtt létrehozza az erőforrásokat egy Azure Machine learning-fiókban. A bal oldalon válassza az **AI + Machine learning** lehetőséget, majd a kezdéshez válassza a **Azure Machine learning** lehetőséget.  
+Az [Azure-díjkalkulátor használatával](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) megbecsülheti a költségeket, mielőtt erőforrásokat hoz létre egy Azure Machine Learning fiókban. A bal oldalon válassza az **AI + Machine Learning** lehetőséget, majd **Azure Machine Learning** a kezdéshez.  
 
-A következő képernyőkép a kalkulátor használatával mutatja be a költségbecslést:
+Az alábbi képernyőképen a költségbecslés látható a kalkulátor használatával:
 
-:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="Költségbecslés az Azure kalkulátorban":::
+:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="Költségbecslés az Azure-kalkulátorban":::
 
-Amikor új erőforrásokat ad hozzá a munkaterülethez, térjen vissza ehhez a kalkulátorhoz, és adja hozzá ugyanezt az erőforrást a költségbecslés frissítéséhez.
+Amikor új erőforrásokat ad hozzá a munkaterülethez, térjen vissza ehhez a kalkulátorhoz, és itt adja hozzá ugyanezt az erőforrást a költségbecslések frissítéséhez.
 
-További információ: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+További információ: díjszabás [Azure Machine Learning.](https://azure.microsoft.com/pricing/details/machine-learning?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
-## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>A Azure Machine Learning teljes számlázási modelljének megismerése
+## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>A teljes számlázási modell Azure Machine Learning
 
-Azure Machine Learning olyan Azure-infrastruktúrán fut, amely költségekkel jár együtt, Azure Machine Learning az új erőforrás telepítésekor. Fontos tisztában lenni azzal, hogy további infrastruktúra merülhet fel. Az üzembe helyezett erőforrások módosításakor ezt a költségeket kell kezelnie. 
+Azure Machine Learning Azure-infrastruktúrán futnak, amely az új erőforrás üzembe helyezésekor Azure Machine Learning költségek mellett költségekkel is jár. Fontos megérteni, hogy további infrastruktúra is felmerülhet a költségekben. Ezt a költséget akkor kell kezelnie, amikor módosítja az üzembe helyezett erőforrásokat. 
 
-### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Általában a Azure Machine Learningekkel felmerülő költségek
+### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>A jellemzően az előfizetéssel együtt Azure Machine Learning
 
-Ha Azure Machine Learning-munkaterülethez hoz létre erőforrásokat, az egyéb Azure-szolgáltatások erőforrásai is létrejönnek. Ezek a következők:
+Amikor erőforrásokat hoz létre egy Azure Machine Learning munkaterülethez, más Azure-szolgáltatások erőforrásai is létrejönnek. Ezek a következők:
 
 * [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) Alapszintű fiók
-* [Azure Block blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (általános célú v1)
+* [Azure Block Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (általános célú v1)
 * [Key Vault](https://azure.microsoft.com/pricing/details/key-vault?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 * [Application Insights](https://azure.microsoft.com/en-us/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
  
-### <a name="costs-might-accrue-after-resource-deletion"></a>A költségek az erőforrás törlése után merülhetnek fel
+### <a name="costs-might-accrue-after-resource-deletion"></a>Az erőforrás törlése után felmerülhet a költségek
 
-Ha töröl egy Azure Machine Learning munkaterületet a Azure Portalban vagy az Azure CLI-vel, a következő erőforrások továbbra is fennállnak. Amíg nem törli őket, továbbra is felmerülnek a költségek.
+Ha töröl egy Azure Machine Learning munkaterületet a Azure Portal vagy az Azure CLI használatával, a következő erőforrások továbbra is létezni fog. A költségek továbbra is felhalmozottak, amíg Ön nem törli őket.
 
 * Azure Container Registry
 * Azure Block Blob Storage
 * Key Vault
 * Application Insights
 
-Ha a munkaterületet ezekkel a függő erőforrásokkal együtt szeretné törölni, használja az SDK-t:
+A munkaterület és a függő erőforrások törléséhez használja az SDK-t:
 
 ```python
 ws.delete(delete_dependent_resources=True)
 ```
 
-Ha az Azure Kubernetes szolgáltatást (ak) hozza létre a munkaterületen, vagy ha bármilyen számítási erőforrást csatlakoztat a munkaterülethez, ezeket külön kell törölnie [Azure Portalban](https://portal.azure.com).
+Ha létrehoz egy Azure Kubernetes Service (AKS)-t a munkaterületen, vagy ha számítási erőforrásokat csatol a munkaterülethez, ezeket külön kell törölnie a [Azure Portal.](https://portal.azure.com)
 
-### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Azure-előfizetési kredit használata Azure Machine Learning
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Azure-előrefizetési kredit használata Azure Machine Learning
 
-Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Azure Machine Learning díjat fizethet. Az Azure-előfizetések azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
+Az azure Azure Machine Learning előrefizetési kreditjével (korábbi neve pénzügyi kötelezettségvállalással) fizetheti ki a díjakat. Az Azure-előrefizetés azonban nem használható fel harmadik féltől származó termékek és szolgáltatások díjának kifizetése érdekében, beleértve a Azure Marketplace.
 
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 
-A költségek kezeléséhez [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. 
+A költségek kezeléséhez [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. A költségvetések és riasztások Azure-előfizetések és -erőforráscsoportok számára vannak létrehozva, így egy általános költségfigyelési stratégia részeként hasznosak. 
 
-A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgáltatásokhoz szűrőkkel hozhatók létre, ha a figyelésben részletesebb részletességre van szükség. A szűrők segítségével biztosíthatja, hogy véletlenül ne hozzon létre olyan új erőforrásokat, amelyek további pénzbe kerülnek. Ha többet szeretne megtudni a szűrési lehetőségekről, amikor költségvetést hoz létre, tekintse meg a [csoportosítási és szűrési beállítások](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)című témakört.
+A költségvetések adott erőforrásokra vagy szolgáltatásokra vonatkozó szűrőkkel is létrehozhatóak az Azure-ban, ha részletesebb monitorozást szeretne. A szűrőkkel biztosítható, hogy ne hozzon létre véletlenül olyan új erőforrásokat, amelyek többletköltséggel járnak. A költségvetés létrehozásakor elérhető szűrési lehetőségekkel kapcsolatos további információkért lásd: [Csoportosítási és szűrési beállítások.](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 ## <a name="export-cost-data"></a>Költségadatok exportálása
 
-A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
+A [költségadatokat egy tárfiókba](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) is exportálhatja. Ez akkor hasznos, ha vagy másoknak kell további adatelemzést végzette a költségek alapján. A pénzügyi csapatok például az Excel vagy a Power BI. A költségeket napi, heti vagy havi ütemezés szerint exportálhatja, és egyéni dátumtartományt állíthat be. Költségadatok exportálása a költségadatkészletek lekérésének ajánlott módja.
 
-## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>Egyéb módszerek a Azure Machine Learning költségeinek kezeléséhez és csökkentéséhez
+## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>Egyéb módszerek a költségek kezelésére és csökkentésére a Azure Machine Learning
 
-Ezekkel a tippekkel a gépi tanulási számítási erőforrásokra vonatkozó költségeket is megteheti.
+Ezekkel a tippekkel költségeket tartalmazhat a gépi tanulási számítási erőforrásokon.
 
-### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning számítási fürt (AmlCompute) használata
+### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Számítási Azure Machine Learning használata (AmlCompute)
 
-A folyamatosan változó adatváltozások esetén gyors és gördülékeny modell-képzésre és-képzésre van szükség a pontos modellek fenntartása érdekében. A folyamatos képzés azonban a GPU-k mélyreható tanulási modelljeire is kikerül. 
+A folyamatosan változó adatokhoz gyors és zökkenőmentes modellképzésre és újratanolásra van szükség a pontos modellek fenntartásához. A folyamatos betanítás azonban költséggel jár, különösen a GPU-k mélytanulásos modelljei esetében. 
 
-Azure Machine Learning felhasználók használhatják a felügyelt Azure Machine Learning számítási fürtöt, más néven AmlCompute. A AmlCompute számos GPU-és CPU-beállítást támogat. A AmlCompute az előfizetése nevében, Azure Machine Learning alapján üzemelteti. Ugyanezt a vállalati szintű biztonsági, megfelelőségi és irányítási funkciókat biztosítja az Azure IaaS Cloud Scale-ben.
+Azure Machine Learning AmlCompute néven Azure Machine Learning felügyelt számítási fürtöt. Az AmlCompute számos GPU- és CPU-lehetőséget támogat. Az AmlCompute belsőleg üzemel az előfizetése nevében a Azure Machine Learning. Ugyanazt a nagyvállalati szintű biztonságot, megfelelőséget és irányítást biztosítja az Azure IaaS felhőméretű környezetekben is.
 
-Mivel ezek a számítási készletek az Azure IaaS-infrastruktúráján belül vannak, a képzést az infrastruktúra többi részével megegyező biztonsági és megfelelőségi követelményekkel helyezheti üzembe, méretezheti és kezelheti.  Ezek az üzembe helyezések az előfizetésében történnek, és engedelmeskednek az irányítás szabályainak. További információ a [Azure Machine learning számítási](how-to-create-attach-compute-cluster.md)feladatokról.
+Mivel ezek a számítási készletek az Azure IaaS-infrastruktúrájának részétik, a betanítás az infrastruktúra többi részével azonos biztonsági és megfelelőségi követelményekkel helyezhető üzembe, skálázható és kezelhető.  Ezek az üzemelő példányok az előfizetésben fordulnak elő, és betartják a cégirányítási szabályokat. További információ az [Azure Machine Learning számításról.](how-to-create-attach-compute-cluster.md)
 
-### <a name="configure-training-clusters-for-autoscaling"></a>Betanítási fürtök konfigurálása automatikus skálázáshoz
+### <a name="configure-training-clusters-for-autoscaling"></a>Betanító fürtök konfigurálása automatikus skálázáshoz
 
-A fürtök automatikus skálázása a munkaterhelés követelményei alapján csökkenti a költségeket, így csak a szükséges igényeket használhatja.
+A fürtök a számítási feladatok követelményei alapján való automatikus skálázása segít csökkenteni a költségeket, hogy csak a szükséges költségeket használja.
 
-A AmlCompute-fürtök úgy vannak kialakítva, hogy a számítási feladatok alapján dinamikusan méretezhetőek legyenek. A fürt akár a konfigurált csomópontok maximális számáig is méretezhető. Ahogy az egyes futtatások befejeződik, a fürt felszabadítja a csomópontokat, és a beállított minimális csomópontok számának megfelelően méretezhető.
+Az AmlCompute-fürtök a számítási feladatok alapján dinamikus méretezésre vannak tervezve. A fürt a konfigurált csomópontok maximális számára skálázható fel. Az egyes futtatásokkal a fürt felszabadítja a csomópontokat, és a megadott minimális csomópontszámra skáláz.
 
 [!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
 
-Azt is beállíthatja, hogy a csomópont mennyi ideig tétlen legyen a skálázás előtt. Alapértelmezés szerint a leskálázás előtti üresjárati idő 120 másodpercre van állítva.
+Azt is beállíthatja, hogy a csomópont mennyi ideig tétlen a leskálás előtt. Alapértelmezés szerint a leskálás előtti üresjárati idő 120 másodpercre van beállítva.
 
-+ Ha kevesebb iterációs kísérletezést végez, csökkentse ezt az időt a költségek megtakarítása érdekében.
-+ Ha nagy mértékben ismétlődő fejlesztési/tesztelési kísérleteket hajt végre, akkor előfordulhat, hogy meg kell nőnie az időt, hogy a képzési parancsfájl vagy környezet minden módosítása után ne fizessen az állandó skálázásra.
++ Ha kevesebb iteratív kísérletezést végez, csökkentse ezt az időt a költségek csökkentése érdekében.
++ Ha nagy mértékben iteratív fejlesztési/tesztelési kísérletezést végez, lehet, hogy növelnie kell az időt, hogy ne fizessen az állandó fel- és leméretezésért a betanító szkript vagy a környezet minden módosítása után.
 
-A AmlCompute-fürtök konfigurálhatók a munkaterhelési követelmények Azure Portalban való módosításához a [AMLCOMPUTE SDK osztály](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute), a [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)és a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)-k használatával.
+Az AmlCompute-fürtök a Azure Portal-ben a változó számítási feladatok követelményeihez konfigurálhatóak az [AmlCompute SDK-osztály](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute), az [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)és a REST API-k [használatával.](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -129,39 +129,39 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 ### <a name="set-quotas-on-resources"></a>Erőforrások kvótáinak beállítása
 
-A AmlCompute [kvóta (vagy korlát) konfigurációt](how-to-manage-quotas.md#azure-machine-learning-compute)tartalmaz. Ez a kvóta virtuálisgép-család (például Dv2 sorozat, NCv3 sorozat), és az egyes előfizetések régiónként eltérőek. Az előfizetések kis alapértékekkel kezdődnek, és ezzel a beállítással szabályozható, hogy az előfizetésében milyen Amlcompute-erőforrások legyenek elérhetők. 
+Az AmlCompute [kvóta-konfigurációval (vagy korlátmal) is jár.](how-to-manage-quotas.md#azure-machine-learning-compute) Ez a kvóta a virtuálisgép-család (például Dv2 sorozat, NCv3 sorozat) szerint van megszava, és régiónként eltérő az egyes előfizetések esetében. Az előfizetések kis alapértelmezett értékekkel kezdődnek a kezdéshez, de ezzel a beállítással szabályozhatja az előfizetésben elérhető Amlcompute-erőforrások mennyiségét. 
 
-Konfigurálja a [munkaterület-szintű kvótát](how-to-manage-quotas.md#workspace-level-quotas)is a virtuálisgép-család szerint az előfizetésben található minden egyes munkaterülethez. Így részletesebben szabályozhatja az egyes munkaterületek által felmerülhető költségeket, és korlátozhatja bizonyos virtuálisgép-családokat. 
+Konfigurálja [a munkaterület-szintű kvótát is a](how-to-manage-quotas.md#workspace-level-quotas)virtuálisgép-család szerint az előfizetésen belüli egyes munkaterületek esetében. Így részletesebben szabályozhatja az egyes munkaterületek költségeit, és korlátozhatja egyes virtuálisgép-családokat. 
 
-Ha a kvótákat a munkaterület szintjén szeretné beállítani, kezdje a [Azure Portal](https://portal.azure.com).  Válasszon ki egy munkaterületet az előfizetésben, majd a bal oldali ablaktáblán válassza a **kihasználtságok és kvóták** lehetőséget. Ezután válassza a **kvóták konfigurálása** lapot a kvóták megtekintéséhez. A kvóta beállításához jogosultságok szükségesek az előfizetési hatókörben, mivel ez egy olyan beállítás, amely több munkaterületet érint.
+A kvóták munkaterületi szinten való beállítását kezdje a [Azure Portal.](https://portal.azure.com)  Válasszon ki egy munkaterületet az előfizetésében, majd a bal **oldali panelen** válassza a Használat + kvóták lehetőséget. Ezután válassza a **Kvóták konfigurálása** lapot a kvóták megtekintéséhez. A kvóta beállításához jogosultságokra van szükség az előfizetés hatókörében, mivel ez egy olyan beállítás, amely több munkaterületet is érint.
 
-### <a name="set-run-autotermination-policies"></a>Az automegszakítási szabályzatok futtatásának beállítása 
+### <a name="set-run-autotermination-policies"></a>Futtatás automatikus terminációs szabályzatának beállítása 
 
-Bizonyos esetekben konfigurálnia kell a betanítási időszakokat, hogy azok az időtartamra korlátozzák, vagy korán megszakítsák őket. Ha például Azure Machine Learning beépített hiperparaméter-hangolást vagy automatizált gépi tanulást használ.
+Bizonyos esetekben úgy kell konfigurálnia a betanítás futását, hogy az korlátozza az időtartamukat, vagy korán állítsa le őket. Ha például az alkalmazás beépített Azure Machine Learning hiperparaméterek finomhangolását vagy automatizált gépi tanulást használ.
 
 Íme néhány lehetőség:
-* Definiáljon egy nevű paramétert a `max_run_duration_seconds` RunConfiguration annak a maximális időtartamnak a szabályozására, ameddig a Futtatás kiterjeszthető a kiválasztott számítási lehetőségre (helyi vagy távoli Felhőbeli számítás).
-* A [hiperparaméter-hangoláshoz](how-to-tune-hyperparameters.md#early-termination)adjon meg egy korai megszakítási szabályzatot egy bandita-házirendből, egy középértékes leállítási házirendből vagy egy csonkolt kiválasztási szabályzatból. A hiperparaméter-lóversenyfogadások további szabályozásához használja a következő paramétereket: `max_total_runs` vagy `max_duration_minutes` .
-* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a  `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, mint a és a a `iteration_timeout_minutes` `experiment_timeout_minutes` Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
+* Definiálnia kell egy nevű paramétert a RunConfigurationban a futtatás által a választott számításon (helyi vagy távoli felhőalapú számítás) meghosszabbítható `max_run_duration_seconds` maximális időtartam szabályozásához.
+* [Hiperparaméter-finomhangoláshoz](how-to-tune-hyperparameters.md#early-termination)határozzon meg egy korai leállítási szabályzatot egy Median leállítási szabályzatból, egy mediánleállítási szabályzatból vagy egy csonkolási kiválasztási szabályzatból. A hiperparaméteres lekérdezések további vezérlése érdekében használjon olyan paramétereket, mint a `max_total_runs` vagy `max_duration_minutes` a .
+* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)a jelzővel állítson be hasonló leállító  `enable_early_stopping` szabályzatokat. A futtatás vagy a teljes kísérlet maximális időtartamának szabályozására olyan tulajdonságokat is használhat, mint a és `iteration_timeout_minutes` `experiment_timeout_minutes` a .
 
 ### <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Alacsony prioritású virtuális gépek használata
 
-Az Azure-ban a virtuális gépek méretezési csoportjaiban, a Batchben és a Machine Learning szolgáltatásban Low-Priority virtuális gépeken túl nem használt kapacitást használhat. Ezek a foglalások előre emptible, de kedvezményes áron érhetők el a dedikált virtuális gépekhez képest. Általánosságban elmondható, hogy Low-Priority virtuális gépek használatát javasoljuk a Batch-munkaterhelésekhez. Azokat is érdemes használni, ahol a megszakítások az Újraküldés (a Batch-következtetések esetében) vagy az újraindítások (az ellenőrzőpontokkal folytatott mély tanulási képzések esetén) helyreállítására használhatók.
+Az Azure lehetővé teszi, hogy felesleges kihasználatlan kapacitást használjon virtuális Low-Priority virtuális gépekként a virtuálisgép-méretezési készletekben, a Batchben és a Machine Learning szolgáltatásban. Ezek a lefoglalások előre kiüríthetetlenek, de alacsonyabb áron állnak elő a dedikált virtuális gépekhez képest. Általában ajánlott virtuális gépeket Low-Priority Batch számítási feladatokhoz. Akkor is érdemes használni őket, ha a megszakítások helyreállíthatók újraküldetésekkel (Batch-következtetéshez) vagy újraindításokkal (ellenőrzőpontokkal való mélytanulás esetén).
 
-Low-Priority virtuális gépek egyetlen kvótával rendelkeznek a dedikált kvóta értéktől, amely a VM-család. [További információ a AmlCompute-kvótákkal kapcsolatban](how-to-manage-quotas.md).
+Low-Priority virtuális gépek egyetlen kvótával vannak elválasztva a dedikált kvótaértéktől, amely a virtuálisgép-család szerint van megszabadva. További [információ az AmlCompute-kvótákról.](how-to-manage-quotas.md)
 
- Low-Priority virtuális gépek nem működnek számítási példányok esetén, mert támogatniuk kell az interaktív notebook-élményt.
+ Low-Priority virtuális gépek nem működnek számítási példányok esetén, mivel támogatniuk kell az interaktív jegyzetfüzet-felületeket.
 
 ### <a name="use-reserved-instances"></a>Fenntartott példányok használata
 
-A számítási erőforrások pénzének megtakarításának egy másik módja az Azure Reserved VM instance. Ennek az ajánlatnak a keretében egy-vagy hároméves szerződéssel kell eljutnia. Ezek az árengedmények az utólagos elszámolású díjak 72%-ában érvényesek, és közvetlenül a havi Azure-számlára vonatkoznak.
+A számítási erőforrások megtakarításának másik módja az Azure Reserved VM Instance. Ezzel az ajánlatkal egy- vagy hároméves feltételeket vállal. Ezek a kedvezmények a használat alapján fizetett árak 72%-a között vannak, és közvetlenül a havi Azure-számlára érvényesek.
 
-Azure Machine Learning a számítás a fenntartott példányokat is támogatja. Ha egy vagy három éves fenntartott példányt vásárol, a rendszer automatikusan kedvezményt alkalmaz a Azure Machine Learning felügyelt számítási feladatokra.
+Azure Machine Learning Compute eredendően támogatja a fenntartott példányokat. Ha egy egy- vagy hároméves fenntartott példányt vásárol, automatikusan kedvezményt alkalmazunk a Azure Machine Learning számításra.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.
-- További információ a [váratlan költségek megelőzéséről](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Vegye figyelembe a [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamát.
+- [Megtudhatja, hogyan optimalizálhatja felhővel való befektetését a Azure Cost Management.](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- További információ a költségek költségelemzéssel [való kezeléséről.](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- Ismerje meg, hogyan [előzheti meg a váratlan költségeket.](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- Vegyen részt [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oktató kurzusán.

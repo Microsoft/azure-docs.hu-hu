@@ -1,77 +1,77 @@
 ---
-title: 'Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben'
-description: Ez a rövid útmutató végigvezeti az SAML-alapú egyszeri bejelentkezés (SSO) beállításának folyamatán a Azure Active Directory (Azure AD) bérlőben lévő alkalmazásokhoz.
+title: 'Rövid útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben'
+description: Ez a rövid útmutató végigvezeti az SAML-alapú egyszeri bejelentkezés (SSO) beállításán az Azure Active Directory-bérlőben (Azure AD)-bérlőben.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
-ms.author: kenwith
-ms.openlocfilehash: 44a838bdce4721d24bd0bdbb45ac7b36ceb34e71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: 802cc744063ba2bf1110915ae9b22c9c00e09cfa
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102488369"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378907"
 ---
-# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
+# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rövid útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
 
-A Azure Active Directory (Azure AD) bérlőhöz hozzáadott alkalmazás egyszeri bejelentkezésének (SSO) beállításával megkezdheti az egyszerűsített felhasználói bejelentkezések használatát. Miután beállította az egyszeri bejelentkezést, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be egy alkalmazásba. Az egyszeri bejelentkezést az Azure AD ingyenes kiadása tartalmazza.
+Az egyszerűsített felhasználói bejelentkezések használatának első lépésekéhez egyszeri bejelentkezést (SSO) kell bejellni az Azure Active Directory- (Azure AD-) bérlőhöz hozzáadott alkalmazásokhoz. Az SSO beállítása után a felhasználók bejelentkeznek az alkalmazásba az Azure AD-beli hitelesítő adataik használatával. Az SSO az Azure AD ingyenes kiadásában található meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-bérlőhöz hozzáadott alkalmazás egyszeri bejelentkezésének beállításához a következők szükségesek:
+Az SSO beállításához az Azure AD-bérlőhöz hozzáadott alkalmazásokhoz a következő szükséges:
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- A következő szerepkörök egyike: globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás rendszergazdája vagy az egyszerű szolgáltatásnév tulajdonosa.
-- Egy olyan alkalmazás, amely támogatja az egyszeri bejelentkezést, és már előre konfigurálták, és hozzá lett adva az Azure AD-gyűjteményhez. A legtöbb alkalmazás használhatja az Azure AD-t az egyszeri bejelentkezéshez. Az Azure AD-katalógusban található alkalmazások előre konfigurálva vannak. Ha az alkalmazás nem szerepel a listáján, vagy egy egyéni fejlesztésű alkalmazás, akkor továbbra is használhatja az Azure AD-vel. Tekintse meg az oktatóanyagokat és az egyéb dokumentációt a tartalomjegyzékben. Ez a rövid útmutató az egyszeri bejelentkezéshez előre konfigurált, és az alkalmazások fejlesztői által az Azure AD-katalógusba való felvételre összpontosít.
-- Nem kötelező: az [alkalmazások megtekintésének](view-applications-portal.md)befejezése.
-- Nem kötelező: az [alkalmazás hozzáadásának](add-application-portal.md)befejezése.
-- Nem kötelező: [alkalmazás konfigurálásának](add-application-portal-configure.md)befejezése.
-- Nem kötelező: a [felhasználók hozzárendelésének befejezése egy alkalmazáshoz](add-application-portal-assign-users.md).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- A következő szerepkörök egyike: globális rendszergazda, felhőalkalmazás-rendszergazda, alkalmazás-rendszergazda vagy a szolgáltatásnév tulajdonosa.
+- Olyan alkalmazás, amely támogatja az SSO-t, és amely már előre konfigurálva van, és hozzá lett adva az Azure AD-katalógushoz. A legtöbb alkalmazás használhatja az Azure AD-t az SSO-hoz. Az Azure AD-katalógusban található alkalmazások előre konfigurálva vannak. Ha az alkalmazás nem szerepel a listán, vagy egyénileg fejlesztett alkalmazás, akkor is használhatja az Azure AD-val. Tekintse meg a tartalomjegyzékben található oktatóanyagokat és egyéb dokumentációkat. Ez a rövid útmutató az SSO-hoz előre konfigurált és az alkalmazásfejlesztők által az Azure AD-katalógushoz hozzáadott alkalmazásokra összpontosít.
+- Nem kötelező: Az alkalmazások [megtekintése befejeztével.](view-applications-portal.md)
+- Nem kötelező: Az [Alkalmazás hozzáadása elem befejezése.](add-application-portal.md)
+- Nem kötelező: Az alkalmazás [konfigurálása befejeztével.](add-application-portal-configure.md)
+- Nem kötelező: A felhasználók [alkalmazáshoz való hozzárendelésének befejezése.](add-application-portal-assign-users.md)
 
 
 >[!IMPORTANT]
->A rövid útmutató lépéseinek teszteléséhez használjon nem éles környezetet.
+>A rövid útmutató lépéseit nem éles környezetben tesztelje.
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Egyszeri bejelentkezés engedélyezése egy alkalmazáshoz
 
-Miután befejezte az alkalmazás hozzáadását az Azure AD-bérlőhöz, megjelenik az Áttekintés oldal. Ha már hozzáadott alkalmazást konfigurál, tekintse meg az első rövid útmutatót. Végigvezeti Önt a bérlőhöz hozzáadott alkalmazások megtekintésén.
+Miután befejezte egy alkalmazás hozzáadását az Azure AD-bérlőhöz, megjelenik az áttekintő oldal. Ha már hozzáadott alkalmazást konfigurál, nézze meg az első rövid útmutatót. Ez végigvezeti a bérlőhöz hozzáadott alkalmazások megtekintésén.
 
 Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások** lehetőséget. Ezután keresse meg és válassza ki azt az alkalmazást, amelyet be szeretne állítani az egyszeri bejelentkezéshez.
-1. A **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget az **egyszeri bejelentkezési** ablaktábla szerkesztéshez való megnyitásához.
+1. Az Azure AD portálon válassza a Vállalati **alkalmazások lehetőséget.** Ezután keresse meg és válassza ki az egyszeri bejelentkezéshez beállítani kívánt alkalmazást.
+1. A Kezelés **szakaszban** válassza az **Egyszeri bejelentkezés** lehetőséget az Egyszeri **bejelentkezés** panel szerkesztéshez való megnyitásához.
 
     > [!IMPORTANT]
-    > Ha az alkalmazás az egyszeri bejelentkezés OpenID Connect (OIDC) szabványát használja, akkor a navigációban nem jelenik meg egyszeri bejelentkezés lehetőség. Tekintse meg a OIDC-alapú egyszeri bejelentkezésről szóló rövid útmutatót, amelyből megtudhatja, hogyan állíthatja be.
+    > Ha az alkalmazás az OpenID Connect (OIDC) szabványt használja az egyszeri bejelentkezéshez, akkor nem fog egyszeri bejelentkezési lehetőséget látni a navigációban. Ennek beállítását az OIDC-alapú SSO rövid útmutatója alapján sajátítsa el.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="A képernyőképen az Azure AD portál egyszeri bejelentkezési konfiguráció lapja látható.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Képernyőkép az Azure AD portál egyszeri bejelentkezés konfigurációs oldalának képernyőképe.":::
 
-1. Válassza az **SAML** lehetőséget az SSO-konfiguráció lap megnyitásához. Ebben a példában az egyszeri bejelentkezéshez konfigurált alkalmazás GitHub. Miután beállította a GitHubot, a felhasználók bejelentkezhetnek a GitHubra az Azure AD-bérlőben lévő hitelesítő adataik használatával.
+1. Válassza **az SAML** lehetőséget az SSO konfigurációs oldalának megnyitásához. Ebben a példában az SSO-ra konfigurált alkalmazás a GitHub. A GitHub beállítása után a felhasználók bejelentkeznek a GitHubba az Azure AD-bérlőből származó hitelesítő adataik használatával.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezési konfiguráció oldal a GitHubon.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Képernyőkép a GitHub Egyszeri bejelentkezés konfigurációs oldalának képernyőképe.":::
 
-1. Az Azure AD az SAML-alapú SSO használatára való konfigurálásának folyamata az alkalmazástól függően változhat. Van egy hivatkozás a GitHub útmutatására. Az egyéb alkalmazásokhoz kapcsolódó útmutatókért lásd: [útmutatók az SaaS-alkalmazások integrálásához a Azure Active Directory](/azure/active-directory/saas-apps/)használatával.
-1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beállításához kövesse az útmutatót. Számos alkalmazás rendelkezik konkrét előfizetési követelményekkel az egyszeri bejelentkezés működéséhez. A GitHub például nagyvállalati előfizetést igényel.
+1. Az alkalmazás konfigurálása az Azure AD SAML-alapú SSO-hoz való használatára az alkalmazástól függően eltérő lehet. A GitHubhoz elérhető útmutatásra mutató hivatkozás. További útmutatók más alkalmazásokhoz: [Oktatóanyagok SaaS-alkalmazások](/azure/active-directory/saas-apps/)integrálásához a Azure Active Directory.
+1. Kövesse az útmutatót az SSO beállításához az alkalmazáshoz. Számos alkalmazás rendelkezik egyedi előfizetési követelményekkel az SSO-funkciókhoz. A GitHubhoz például nagyvállalati előfizetés szükséges.
     > [!TIP]
-    > További információ az SAML konfigurációs lehetőségeiről: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
+    > Az SAML konfigurációs beállításaival kapcsolatos további információkért lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása.](configure-saml-single-sign-on.md)
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezés lehetősége a GitHub díjszabási oldalának vállalati előfizetésében.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Képernyőkép az Egyszeri bejelentkezés lehetőségről a GitHub díjszabási oldalának Vállalati előfizetésében.":::
 
 > [!TIP]
-> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
+> Az alkalmazáskezelést a következő Graph API automatizálhatja: Az alkalmazáskezelés [automatizálása a Microsoft Graph API-val.](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
+Ha végzett ezzel a rövid útmutató-sorozattal, érdemes törölnie az alkalmazást a tesztbérlő törléséhez. Az alkalmazás törlésével a sorozat utolsó rövid útmutatója az Alkalmazás törlése( ) [cikkből áll.](delete-application-portal.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
+A következő cikk azt is bemutatja, hogyan törölhet alkalmazásokat.
 > [!div class="nextstepaction"]
 > [Alkalmazás törlése](delete-application-portal.md)
