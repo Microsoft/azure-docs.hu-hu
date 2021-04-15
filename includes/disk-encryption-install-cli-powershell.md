@@ -7,63 +7,63 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 64db4de6628fcd8f3cf160bb2bde1b577219cb10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: include file
+ms.openlocfilehash: 3d8cd9891329e86ce47dac6d8d44af529c104b61
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729867"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386585"
 ---
-Azure Disk Encryption engedélyezhető és felügyelhető az [Azure CLI](/cli/azure) -n és [Azure PowerShellon](/powershell/azure/new-azureps-module-az)keresztül. Ehhez telepítenie kell az eszközöket helyileg, és csatlakoznia kell az Azure-előfizetéséhez.
+Azure Disk Encryption az [Azure CLI](/cli/azure) és a használatával engedélyezhetők és [kezelhetők Azure PowerShell.](/powershell/azure/new-azureps-module-az) A telepítéshez helyileg kell telepítenie az eszközöket, és csatlakoznia kell az Azure-előfizetéséhez.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli)című témakör lépéseit követve helyileg is telepítheti.
+Az [Azure CLI 2.0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmasan lekérdezi az adatokat, támogatja a hosszú ideig futó műveleteket nem blokkoló folyamatokként, és megkönnyíti a szkriptek futtatását. Helyileg telepítheti az Azure CLI telepítéséhez szükséges [lépéseket követve.](/cli/azure/install-azure-cli)
 
-Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index#az-login) parancsot.
+Az [Azure-fiókba az Azure CLI-val](/cli/azure/authenticate-azure-cli)való bejelentkezéshez használja az az [login](/cli/azure/reference-index#az-login) parancsot.
 
 ```azurecli
 az login
 ```
 
-Ha ki szeretné választani a bejelentkezni kívánt bérlőt, használja a következőt:
+Ha ki szeretne választani egy bérlőt, amelybe be szeretne jelentkezni, használja a következőt:
     
 ```azurecli
 az login --tenant <tenant>
 ```
 
-Ha több előfizetéssel rendelkezik, és meg szeretne adni egy adott ilyet, szerezze be az előfizetések listáját az [az Account List](/cli/azure/account#az-account-list) paranccsal, és adja meg az az [Account set](/cli/azure/account#az-account-set)paranccsal.
+Ha több előfizetéssel rendelkezik, és szeretne megadni egy adott előfizetést, az [az account listával](/cli/azure/account#az-account-list) szerezze be az előfizetési listáját, és adja meg az [az account set értéket.](/cli/azure/account#az-account-set)
      
 ```azurecli
 az account list
 az account set --subscription "<subscription name or ID>"
 ```
 
-További információ: Ismerkedés [Az Azure CLI 2,0](/cli/azure/get-started-with-azure-cli)-mel. 
+További információ: [Az Azure CLI 2.0](/cli/azure/get-started-with-azure-cli)használatának első lépések. 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Az [Azure PowerShell az modul](/powershell/azure/new-azureps-module-az) olyan parancsmagokat biztosít, amelyek a [Azure Resource Manager](../articles/azure-resource-manager/management/overview.md) modellt használják az Azure-erőforrások kezeléséhez. A böngészőben a [Azure Cloud Shell](../articles/cloud-shell/overview.md)használatával is használhatja, vagy telepítheti a helyi gépre a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című részben leírtak szerint. 
+Az [Azure PowerShell az modul](/powershell/azure/new-azureps-module-az) olyan parancsmagokat biztosít, [](../articles/azure-resource-manager/management/overview.md) amelyek a Azure Resource Manager használatával kezelik az Azure-erőforrásokat. Használhatja a böngészőjében a [Azure Cloud Shell,](../articles/cloud-shell/overview.md)vagy telepítheti a helyi gépére az Install the Azure PowerShell module (Az Azure PowerShell [telepítése) Azure PowerShell használatával.](/powershell/azure/install-az-ps) 
 
-Ha már helyileg telepítette, győződjön meg arról, hogy a Azure Disk Encryption konfigurálásához a Azure PowerShell SDK legújabb verzióját használja. Töltse le [Azure PowerShell kiadás](https://github.com/Azure/azure-powershell/releases)legújabb verzióját.
+Ha már telepítve van helyileg, győződjön meg arról, hogy az Azure PowerShell SDK legújabb verzióját használja a Azure Disk Encryption. Töltse le a legújabb Azure PowerShell [kiadását.](https://github.com/Azure/azure-powershell/releases)
 
-Ha [Azure PowerShell használatával szeretne bejelentkezni az Azure-fiókjába](/powershell/azure/authenticate-azureps), használja a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot.
+Az [Azure-fiókba való bejelentkezéshez használja Azure PowerShell](/powershell/azure/authenticate-azureps) [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Ha több előfizetéssel rendelkezik, és meg szeretne adni egyet, a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmaggal listázhatja őket, majd a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmagot:
+Ha több előfizetéssel rendelkezik, és szeretne megadni egyet, használja a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmagot a listához, majd a [Set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmagot:
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
 ```
 
-A [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) parancsmag futtatásával ellenőrizheti, hogy a megfelelő előfizetés van-e kiválasztva.
+A [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) parancsmag futtatása ellenőrzi, hogy a megfelelő előfizetés lett-e kiválasztva.
 
-A Azure Disk Encryption-parancsmagok telepítésének megerősítéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) parancsmagot:
+Annak megerősítéséhez Azure Disk Encryption hogy a parancsmagok telepítve vannak, használja a [Get-command](/powershell/module/microsoft.powershell.core/get-command) parancsmagot:
      
 ```powershell
 Get-command *diskencryption*
 ```
-További információ: [Bevezetés a Azure PowerShell](/powershell/azure/get-started-azureps)használatába.
+További információ: [Ismerkedés a Azure PowerShell.](/powershell/azure/get-started-azureps)

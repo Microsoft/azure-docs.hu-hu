@@ -1,6 +1,6 @@
 ---
-title: Application Gateway integráció a szolgáltatási végpontokkal – Azure App Service | Microsoft Docs
-description: Leírja, hogyan integrálható a Application Gateway a szolgáltatás-végpontokkal védett Azure App Serviceokkal.
+title: Application Gateway szolgáltatásvégpontokkal való integráció – Azure App Service | Microsoft Docs
+description: A Application Gateway szolgáltatásvégpontokkal Azure App Service integrációt ismerteti.
 services: app-service
 documentationcenter: ''
 author: madsd
@@ -13,77 +13,77 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18
+ms.openlocfilehash: f1d517ba37bbef95d1863485c8c3b6313f196c11
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98209856"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374913"
 ---
-# <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
-A App Service három változata van, amelyek némileg eltérő konfigurációt igényelnek az Azure Application Gateway-nal való integrációhoz. A variációk közé tartoznak a rendszeres App Service – többek között a több-bérlős, belső Load Balancer (ILB) App Service Environment (Bevezetés) és a külső betekintő is. Ez a cikk bemutatja, hogyan konfigurálhatja azt App Service (több-bérlős), és megvitathatja a ILB és a külső beadással kapcsolatos szempontokat.
+# <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway szolgáltatásvégpontokkal való integráció
+Az integrációnak három változata App Service, amelyek némileg eltérő konfigurációt igényelnek az integrációhoz a Azure Application Gateway. A változatok közé App Service ( más néven több-bérlős, belső Load Balancer (ILB) App Service Environment (ASE) és külső ASE. Ez a cikk bemutatja, hogyan konfigurálhatja az ILB App Service (több-bérlős) környezetekkel, és ismerteti az ILB-sel és a külső ASE környezetekkel kapcsolatos szempontokat.
 
 ## <a name="integration-with-app-service-multi-tenant"></a>Integráció App Service (több-bérlős)
-App Service (több-bérlős) nyilvános internettel rendelkező végponttal rendelkezik. A [szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) használatával csak az Azure-Virtual Networkon belül egy adott alhálózatról engedélyezheti a forgalmat, és minden mást blokkolhat. A következő forgatókönyvben ezt a funkciót fogjuk használni annak biztosítására, hogy egy App Service-példány csak adott Application Gateway-példányról kapjon forgalmat.
+App Service (több-bérlős) nyilvános internetkapcsolattal rendelkezik végponttal. A [szolgáltatásvégpontokkal egy](../../virtual-network/virtual-network-service-endpoints-overview.md) Azure-beli virtuális hálózatban csak egy adott alhálózatról Virtual Network minden mást blokkolhat. A következő forgatókönyvben ezzel a funkcióval biztosítjuk, hogy egy App Service-példány csak egy adott példányról fogad Application Gateway forgalmat.
 
-:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Az ábrán az Azure-Virtual Network egy Application Gateway található, és a tűzfal ikonján keresztül áramlik az alkalmazások példányaira App Service.":::
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Az ábra azt mutatja, hogy az internet egy Azure-Application Gateway-Virtual Network található virtuális hálózatba áramlik, és onnan egy tűzfalikonon keresztül a felhőben lévő alkalmazáspéldányok App Service.":::
 
-A konfiguráció két részből áll, a App Service és a Application Gateway létrehozása mellett. Az első rész a szolgáltatás-végpontok engedélyezése azon Virtual Network alhálózatában, ahol a Application Gateway üzembe lett helyezve. A szolgáltatási végpontok biztosítják, hogy az alhálózatot elhagyó összes hálózati forgalom az adott alhálózati AZONOSÍTÓval legyen felcímkézve a App Service. A második rész az adott webalkalmazás hozzáférési korlátozásának beállítása annak biztosítására, hogy csak az adott alhálózati AZONOSÍTÓval címkézett forgalom legyen engedélyezett. A beállítástól függően különböző eszközök használatával is konfigurálhatja.
+Ennek a konfigurációnak két része van a App Service és a Application Gateway. Az első rész a szolgáltatásvégpontokat annak a szolgáltatásnak az alhálózatán engedélyezi Virtual Network a Application Gateway üzembe helyezése. A szolgáltatásvégpontokkal biztosítható, hogy az alhálózatot az alhálózat felé App Service forgalom az adott alhálózati azonosítóval legyen megcímkézve. A második rész az adott webalkalmazás hozzáférési korlátozásának beállítása annak biztosítása érdekében, hogy csak az adott alhálózat-azonosítóval címkézett forgalom legyen engedélyezett. Konfigurálhatja különböző eszközökkel, attól függően, hogy milyen előnyben részesítheti.
 
 ## <a name="using-azure-portal"></a>Az Azure Portal használata
-A Azure Portal segítségével négy lépést követve üzembe helyezheti és konfigurálhatja a telepítőt. Ha meglévő erőforrásai vannak, akkor kihagyhatja az első lépéseket.
-1. Hozzon létre egy App Servicet a App Service dokumentációjában található rövid útmutatók valamelyikével, például: [.net Core](../quickstart-dotnetcore.md) rövid útmutató
-2. Hozzon létre egy Application Gateway a [portál](../../application-gateway/quick-create-portal.md)rövid útmutatójának használatával, de hagyja ki a háttérbeli célok hozzáadása szakaszt.
-3. Konfigurálja [app Service háttérként a Application Gatewayban](../../application-gateway/configure-web-app-portal.md), de hagyja ki a hozzáférés korlátozása szakaszt.
-4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule).
+A Azure Portal lépésekkel négy lépést kell követnie a telepítés építéshez és konfiguráláshoz. Ha rendelkezik meglévő erőforrásokkal, kihagyhatja az első lépéseket.
+1. Hozzon App Service a dokumentációban található gyorsútmutatók App Service,például a [.NET Core gyorsútmutatóval.](../quickstart-dotnetcore.md)
+2. Hozzon létre Application Gateway a portál gyors [üzembe helyezési](../../application-gateway/quick-create-portal.md)útmutatójának használatával, de hagyja ki a Háttércélok hozzáadása szakaszt.
+3. Konfigurálja [App Service háttérként a](../../application-gateway/configure-web-app-portal.md)Application Gateway, de hagyja ki a Hozzáférés korlátozása szakaszt.
+4. Végül hozza létre [a hozzáférési korlátozást szolgáltatásvégpontokkal.](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule)
 
-Most már elérheti a App Servicet a Application Gatewayon keresztül, de ha közvetlenül próbál hozzáférni a App Servicehoz, egy 403 HTTP-hibaüzenetet kell kapnia, amely azt jelzi, hogy a webhely le van állítva.
+Most már hozzáférhet a App Service Application Gateway-on keresztül, de ha megpróbálja közvetlenül elérni az App Service-t, 403-as HTTP-hibaüzenetet kell kapnia, amely jelzi, hogy a webhely le van állítva.
 
-![A képernyőkép a 403-es hiba szövegét jeleníti meg – tiltott.](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
+![A 403-as – Tiltott hiba szövegét bemutató képernyőkép.](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablonok használata
-A [Resource Manager-alapú telepítési sablon][template-app-gateway-app-service-complete] teljes forgatókönyvet fog kiépíteni. A forgatókönyv egy App Service-példányból áll, amely szolgáltatás-végpontokkal van lezárva, és a hozzáférési korlátozás csak a Application Gateway érkező forgalom fogadására szolgál. A sablon számos intelligens alapértéket és egyedi Postfix-értéket tartalmaz, amelyeket az erőforrás-nevekhez adnak hozzá, hogy egyszerű legyen. A felülbíráláshoz a tárház klónozása vagy a sablon letöltése és szerkesztése szükséges. 
+A [Resource Manager üzembe helyezési sablon][template-app-gateway-app-service-complete] kiépít egy teljes forgatókönyvet. A forgatókönyv egy szolgáltatásvégpontokkal zárolt App Service és hozzáférési korlátozást tartalmaz, amely csak a szolgáltatástól Application Gateway. A sablon számos intelligens alapértelmezett értéket és egyedi utótagot tartalmaz, amelyek egyszerűvé tehetővé tehetőek az erőforrásnevekben. A felülbírálásukhoz klónoznia kell az tárat, vagy le kell töltenie a sablont, és szerkesztenie kell azt. 
 
-A sablon alkalmazásához használhatja a sablon leírásában található üzembe helyezés az Azure-ban gombot, vagy használhatja a megfelelő PowerShell/CLI-t.
+A sablon alkalmazáshoz használhatja a sablon leírásában található Üzembe helyezés az Azure-ban gombot, vagy használhatja a megfelelő PowerShellt/CLI-t.
 
-## <a name="using-azure-command-line-interface"></a>Az Azure parancssori felületének használata
-Az [Azure CLI-minta](../../app-service/scripts/cli-integrate-app-service-with-application-gateway.md) kiépít egy app Service a szolgáltatás-végpontokkal és a hozzáférés korlátozásával, hogy csak a Application Gateway érkező forgalmat fogadja. Ha egy meglévő Application Gatewayból csak egy meglévő App Service forgalmát kell elkülöníteni, a következő parancs elegendő.
+## <a name="using-azure-command-line-interface"></a>Az Azure parancssori felület használata
+Az [Azure CLI-minta](../../app-service/scripts/cli-integrate-app-service-with-application-gateway.md) üzembe fog App Service szolgáltatásvégpontokkal és hozzáférési korlátozásokkal zárolt virtuális Application Gateway. Ha csak el kell különítenie egy meglévő App Service a meglévő Application Gateway, a következő parancs elegendő.
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group myRG --name myWebApp --rule-name AppGwSubnet --priority 200 --subnet mySubNetName --vnet-name myVnetName
 ```
 
-Az alapértelmezett konfigurációban a parancs biztosítja a szolgáltatás-végpont konfigurációjának telepítését az alhálózatban, valamint a App Service hozzáférési korlátozását.
+Az alapértelmezett konfigurációban a parancs biztosítja a szolgáltatásvégpont konfigurációjának beállítását az alhálózaton, valamint a hozzáférés korlátozását a App Service.
 
-## <a name="considerations-for-ilb-ase"></a>A ILB-vel kapcsolatos megfontolások
-A ILB-betanító nem teszi elérhetővé az internetet, és a példány és a Application Gateway közötti forgalom már el van különítve a Virtual Network. Az alábbi [útmutató a ILB-bevezetőt](../environment/integrate-with-application-gateway.md) konfigurálja, és Azure Portal használatával integrálható egy Application Gateway. 
+## <a name="considerations-for-ilb-ase"></a>Megfontolandó szempontok az ILB ASE-hez
+Az ILB ASE nincs kitéve az internetnek, és a példány és egy Application Gateway közötti forgalom ezért már el van különítve a Virtual Network. Az alábbi [útmutató egy](../environment/integrate-with-application-gateway.md) ILB ASE-t konfigurál, és integrálja azt egy Application Gateway használatával Azure Portal. 
 
-Ha biztosítani szeretné, hogy csak az Application Gateway alhálózatról érkező forgalom jusson el a központhoz, konfigurálhat egy hálózati biztonsági csoportot (NSG), amely hatással van a központba tartozó összes webalkalmazásra. A NSG megadhatja az alhálózat IP-tartományát és opcionálisan a portokat (80/443). Győződjön meg arról, hogy nem bírálja felül a NSG megfelelő működéséhez [szükséges szabályokat](../environment/network-info.md#network-security-groups) .
+Ha biztosítani szeretné, hogy csak az Application Gateway-alhálózatról származó forgalom érje el az ASE-t, konfigurálhat egy hálózati biztonsági csoportot (NSG-t), amely az ASE összes webalkalmazását érinti. Az NSG-hez megadhatja az alhálózat IP-tartományát és opcionálisan a portokat (80/443). Győződjön meg arról, hogy nem bírálta felül az ASE megfelelő működéséhez szükséges [NSG-szabályokat.](../environment/network-info.md#network-security-groups)
 
-Ha el szeretné különíteni a forgalmat egy egyéni webalkalmazáshoz, IP-alapú hozzáférési korlátozásokat kell használnia, mivel a szolgáltatási végpontok nem fognak működni a központilag. Az IP-címnek a Application Gateway példány magánhálózati IP-címének kell lennie.
+Az egyes webalkalmazások forgalmának elkülönítéséhez IP-alapú hozzáférési korlátozásokat kell használnia, mivel a szolgáltatásvégpont nem fog működni az ASE-hez. Az IP-címnek a nyilvános példány magánhálózati IP Application Gateway kell lennie.
 
-## <a name="considerations-for-external-ase"></a>Külső benyújtás szempontjai
-A külső kiegészítő szolgáltatás nyilvános terhelésű terheléselosztó, például több-bérlős App Service. A szolgáltatási végpontok nem működnek a beadáshoz, ezért az IP-alapú hozzáférési korlátozásokat az Application Gateway példány nyilvános IP-címével kell használnia. Külső kiegészítő szolgáltatás a Azure Portal használatával történő létrehozásához [kövesse ezt a](../environment/create-external-ase.md) rövid útmutatót
+## <a name="considerations-for-external-ase"></a>Megfontolandó szempontok a külső ASE környezethez
+A külső ASE rendelkezik nyilvános terheléselelosztással, például több-bérlős App Service. A szolgáltatásvégpont nem működik az ASE-hez, ezért ip-alapú hozzáférési korlátozásokat kell használnia a Application Gateway nyilvános IP-címével. Ha külső ASE-t a Azure Portal, kövesse ezt a [rövid útmutatót](../environment/create-external-ase.md)
 
 [template-app-gateway-app-service-complete]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2/ "Azure Resource Manager sablon a teljes forgatókönyvhöz"
 
-## <a name="considerations-for-kuduscm-site"></a>Az kudu/SCM-hely szempontjai
-Az SCM-hely, más néven kudu, egy rendszergazdai hely, amely minden webalkalmazáshoz megtalálható. Nem lehet visszafordítani az SCM-hely proxyját, és a legvalószínűbb, hogy az egyes IP-címekre vagy egy adott alhálózatra is le szeretné zárni.
+## <a name="considerations-for-kuduscm-site"></a>Megfontolandó szempontok a Kudu/scm-helyhez
+Az scm webhely, más néven Kudu, egy felügyeleti webhely, amely minden webalkalmazáshoz létezik. Az scm-hely fordított proxyját nem lehet fordított valószínűséggel különálló IP-címekre vagy egy adott alhálózatra is zárolni.
 
-Ha ugyanazokat a hozzáférési korlátozásokat szeretné használni, mint a fő hely, akkor a következő parancs használatával örökli a beállításokat.
+Ha a fő helyével azonos hozzáférési korlátozásokat szeretne használni, a következő paranccsal örökölheti a beállításokat.
 
 ```azurecli-interactive
 az webapp config access-restriction set --resource-group myRG --name myWebApp --use-same-restrictions-for-scm-site
 ```
 
-Ha egyéni hozzáférési korlátozásokat szeretne beállítani az SCM-helyhez, hozzáférési korlátozásokat adhat hozzá az alábbihoz hasonló--SCM-site jelzővel.
+Ha egyéni hozzáférési korlátozásokat szeretne beállítani az SCM-helyhez, az alábbihoz hasonló módon hozzáadhat hozzáférési korlátozásokat az --scm-site jelzővel.
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group myRG --name myWebApp --scm-site --rule-name KudoAccess --priority 200 --ip-address 208.130.0.0/16
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a App Service Environmentről: [app Service Environment dokumentáció](/azure/app-service/environment).
+További információt a dokumentációban App Service Environment a [App Service Environment talál.](/azure/app-service/environment)
 
-A webalkalmazás további védelme érdekében a Application Gateway webalkalmazási tűzfallal kapcsolatos információk az [Azure webalkalmazási tűzfal dokumentációjában](../../web-application-firewall/ag/ag-overview.md)találhatók.
+A webalkalmazás további biztonságossá Web Application Firewall a Application Gateway kapcsolatos információkat az Azure Web Application Firewall [dokumentációjában találhat.](../../web-application-firewall/ag/ag-overview.md)

@@ -10,34 +10,34 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: bcbf2137e578f703cf70b1b47952736aa50f7f17
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 31704e705b828cc0070e3b79f5d527cfa9deb0c3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106178309"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386749"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt hozzá kezd, győződjön meg a következő lépésekről:
 
-- Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
-- A [Python](https://www.python.org/downloads/) telepítése
-- Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell jegyeznie az erőforrás- **végpontot**
-- [Felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a "csevegés" értékre állítsa, és jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot.
+- Hozzon létre egy aktív előfizetéssel működő Azure-fiókot. Részletekért lásd: [Ingyenes fiók létrehozása.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- A [Python telepítése](https://www.python.org/downloads/)
+- Hozzon létre egy Azure Communication Services erőforrást. Részletekért lásd: [Azure Communication-erőforrás létrehozása.](../../create-communication-resource.md) Ehhez a rövid útmutatóhoz rögzítenie kell **az** erőforrás-végpontot
+- Egy [felhasználói hozzáférési jogkivonat.](../../access-tokens.md) Ügyeljen arra, hogy a hatókört "chat" (csevegés) beállításra állítsa, és jegyezze fel a jogkivonat-sztringet és a userId sztringet.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
+Nyissa meg a terminált vagy a parancsablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg.
 
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
 
-Szövegszerkesztő használatával hozzon létre egy **Start-chat.py** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a program struktúráját, beleértve az alapszintű kivételek kezelését. Ehhez a rövid útmutatóhoz tartozó forráskódot a következő részekben adja hozzá ehhez a fájlhoz.
+Egy szövegszerkesztővel hozzon  létre egy start-chat.py nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a program struktúráját, beleértve az alapszintű kivételkezelést is. Ehhez a fájlhoz a rövid útmutató összes forráskódját a következő szakaszokban adjuk hozzá.
 
 ```python
 import os
@@ -61,18 +61,18 @@ pip install azure-communication-chat
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek a Pythonhoz készült Azure kommunikációs szolgáltatások csevegési SDK főbb funkcióit kezelik.
+Az alábbi osztályok és felületek kezelik a Pythonhoz készült Azure Communication Services Chat SDK néhány fő funkcióját.
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| ChatClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
+| ChatClient | Erre az osztályra a Csevegés funkcióhoz van szükség. Példányosithatja az előfizetési adataival, majd a használatával létrehozhat, lekért és törölhet szálakat. |
+| ChatThreadClient | Erre az osztályra a csevegési szál funkcióhoz van szükség. Egy példányt a ChatClienten keresztül szerezhet be, majd üzenetek küldésére,fogadására/frissítésére/törlésére, felhasználók hozzáadására,eltávolítására/leküldésére, gépelési értesítések küldésére és nyugták olvasására használhatja. |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját, és a `Access Token` rendszer az előfeltételként szükséges lépések részeként generálta. További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
+Csevegési ügyfél létrehozásához a Communications Service végpontját és az előfeltételként létrehozott végpontot fogja `Access Token` használni az előfeltételként szükséges lépések részeként. További információ a [felhasználói hozzáférési jogkivonatokkal kapcsolatban.](../../access-tokens.md)
 
-Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezelő szolgáltatási szintet, de ajánlott. További részletek a [csevegési architektúrával](../../../concepts/chat/concepts.md) kapcsolatban az alábbi dokumentációban olvashatók.
+Ez a rövid útmutató nem terjed ki a csevegőalkalmazás jogkivonatai kezelésére vonatkozó szolgáltatási szint létrehozására, bár ajánlott. A csevegési architektúra további részleteiért tekintse meg az alábbi [dokumentációt](../../../concepts/chat/concepts.md)
 
 ```console
 pip install azure-communication-identity
@@ -85,28 +85,26 @@ endpoint = "https://<RESOURCE_NAME>.communication.azure.com"
 chat_client = ChatClient(endpoint, CommunicationTokenCredential("<Access Token>"))
 ```
 
-## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
+## <a name="start-a-chat-thread"></a>Csevegési szál elindítani
 
-`create_chat_thread`Csevegési szál létrehozásához használja a metódust.
+A `create_chat_thread` metódussal hozzon létre egy csevegési szálat.
 
-- A használatával `topic` adjon meg egy téma témakört; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `update_thread` .
-- A a `thread_participants` `ChatThreadParticipant` csevegési szálba felvenni kívánt elemek listázásához használja `ChatThreadParticipant` a `CommunicationUserIdentifier` típust `user` , amelyet a [felhasználó létrehozása](../../access-tokens.md#create-an-identity) után kapott.
+- Egy `topic` témakört a használatával adhat meg; A témakör a csevegési szál függvény használatával való létrehozása után `update_thread` frissíthető.
+- A használatával listába sorolja a csevegési szálhoz hozzáadni szükséges et. A típus a `thread_participants` `ChatParticipant` `ChatParticipant` `CommunicationUserIdentifier` `user` következő: , [](../../access-tokens.md#create-an-identity) amit a felhasználó létrehozása után kapott meg
 
-`CreateChatThreadResult` az eredmény egy szál létrehozásával tért vissza, és a `id` létrehozott csevegési szál beolvasására használható. Ezt `id` követően a metódus használatával lehet lekérni egy `ChatThreadClient` objektumot `get_chat_thread_client` . `ChatThreadClient` más csevegési műveletek elvégzésére is használható a csevegési szálhoz.
+`CreateChatThreadResult` A egy szál létrehozásából visszaadott eredmény. A használatával lekérheti a létrehozott `id` csevegési szál 1-ét. Ezzel `id` lekérhet egy objektumot a `ChatThreadClient` `get_chat_thread_client` metódussal. `ChatThreadClient` más csevegési műveletek elvégzésére is használható a csevegőszálon.
 
 ```python
-from azure.communication.chat import ChatThreadParticipant
-
 topic="test topic"
 
 create_chat_thread_result = chat_client.create_chat_thread(topic)
 chat_thread_client = chat_client.get_chat_thread_client(create_chat_thread_result.chat_thread.id)
 ```
 
-## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
-A `get_chat_thread_client` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A művelet végrehajtásához használható a létrehozott szálon: résztvevők hozzáadása, üzenet küldése stb. thread_id a meglévő csevegési szál egyedi azonosítója.
+## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének lekérte
+A `get_chat_thread_client` metódus egy szál ügyfelét adja vissza egy már létező szálhoz. Használható műveletek végrehajtásához a létrehozott szálon: résztvevők hozzáadása, üzenet küldése stb. thread_id a meglévő csevegési szál egyedi azonosítója.
 
-`ChatThreadClient` más csevegési műveletek elvégzésére is használható a csevegési szálhoz.
+`ChatThreadClient` más csevegési műveletek elvégzésére is használható a csevegőszálon.
 
 ```python
 thread_id = create_chat_thread_result.chat_thread.id
@@ -114,13 +112,13 @@ chat_thread_client = chat_client.get_chat_thread_client(thread_id)
 ```
 
 
-## <a name="list-all-chat-threads"></a>Az összes csevegési szál listázása
-A `list_chat_threads` metódus egy típusú iterációt ad vissza `ChatThreadItem` . Az összes csevegési szál listázására használható.
+## <a name="list-all-chat-threads"></a>Az összes csevegési szál listása
+A `list_chat_threads` metódus típusú iterátort ad `ChatThreadItem` vissza. Az összes csevegési szál listázásra használható.
 
-- Ezzel `start_time` a beállítással adhatja meg a legkorábbi időpontot, hogy a csevegési szálakat akár be lehessen olvasni.
-- Ezzel `results_per_page` a beállítással adhatja meg, hogy legfeljebb hány csevegési szálat ad vissza oldalanként.
+- A `start_time` használatával megadhatja a legkorábbi időpontban a csevegési szálak beállítását.
+- A használatával adhatja meg az egy oldalon visszaadott `results_per_page` csevegési szálak maximális számát.
 
-Az a válasz, amely a `[ChatThreadItem]` szálak listázása után tért vissza.
+A iterátora `[ChatThreadItem]` a listázási szálak válasza
 
 ```python
 from datetime import datetime, timedelta
@@ -135,15 +133,15 @@ for chat_thread_item_page in chat_threads.by_page():
 ```
 
 
-## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
+## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése egy csevegési szálnak
 
-A `send_message` metódus használatával küldhet üzenetet egy imént létrehozott csevegési szálra, amelyet thread_id azonosít.
+A metódussal küldhet üzenetet egy most létrehozott csevegési szálnak, amelyet a `send_message` thread_id.
 
-- `content`A csevegési üzenet tartalmának megadásához használja a következőt:
-- `chat_message_type`Az üzenet tartalomtípusának megadásához használja a következőt:. A lehetséges értékek a következők: "text" és "HTML"; Ha nincs megadva az alapértelmezett "text" érték, a rendszer hozzárendeli.
-- A használatával `sender_display_name` adja meg a feladó megjelenítendő nevét;
+- A `content` használatával adja meg a csevegőüzenet tartalmát;
+- Az `chat_message_type` üzenet tartalmának típusának megadásához használja a parancsot. A lehetséges értékek a "text" és a "html"; ha nincs megadva a "text" alapértelmezett értéke, a rendszer hozzárendeli.
+- A `sender_display_name` küldő megjelenítendő nevének megadásához használja a következőt:
 
-`SendChatMessageResult` az üzenet elküldésekor kapott válasz egy azonosítót tartalmaz, amely az üzenet egyedi azonosítója.
+`SendChatMessageResult` A az üzenetküldés által visszaadott válasz, amely egy azonosítót tartalmaz, amely az üzenet egyedi azonosítója.
 
 ```python
 from azure.communication.chat import ChatMessageType
@@ -163,14 +161,14 @@ print("Message sent: id: ", send_message_result_w_enum.id)
 ```
 
 
-## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
+## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegőüzenetek fogadása egy csevegési szálból
 
-A csevegési üzeneteket lekérheti a `list_messages` metódus megadott időközönkénti lekérdezésével.
+A csevegőüzenetek lekérése a metódus megadott időközönkénti `list_messages` lekérdezésével történik.
 
-- Ezzel `results_per_page` a beállítással adhatja meg, hogy legfeljebb hány üzenetet adjon vissza oldalanként.
-- Ezzel `start_time` a beállítással adhatja meg a legkorábbi időpontot, hogy az üzenetek fel legyenek használva.
+- A használatával adhatja meg az egy oldalonként `results_per_page` visszaadott üzenetek maximális számát.
+- A használatával adhatja meg a `start_time` legkorábbi időpontban küldött üzeneteket.
 
-Az az üzenet, amely az `[ChatMessage]` üzenetek listázása által visszaadott válasz.
+A iterátora `[ChatMessage]` a listázási üzenetekből visszaadott válasz
 
 ```python
 from datetime import datetime, timedelta
@@ -183,16 +181,16 @@ for chat_message_page in chat_messages.by_page():
         print("ChatMessage: Id=", chat_message.id, "; Content=", chat_message.content.message)
 ```
 
-`list_messages` az üzenet legújabb verzióját adja vissza, beleértve a és a használatával az üzenettel történt módosításokat és törléseket `update_message` is `delete_message` . A törölt üzenetek esetében `ChatMessage.deleted_on` egy DateTime értéket ad vissza, amely azt jelzi, hogy az üzenet törölve lett. A szerkesztett üzenetek esetében `ChatMessage.edited_on` egy DateTime értéket ad vissza, amely azt jelzi, hogy mikor lett szerkesztve az üzenet. Az üzenetek létrehozásának eredeti időpontja elérhető a használatával `ChatMessage.created_on` , amely az üzenetek rendezésére használható.
+`list_messages` az üzenet legújabb verzióját adja vissza, beleértve az üzenettel történt módosításokat vagy törléseket a és `update_message` a `delete_message` használatával. A törölt üzenetekhez `ChatMessage.deleted_on` egy datetime értéket ad vissza, amely jelzi, hogy az üzenet mikor lett törölve. Szerkesztett üzenetekhez a visszaad egy dátum/idő értéket, amely az üzenet `ChatMessage.edited_on` szerkesztésének időpontját jelzi. Az üzenetek létrehozásának eredeti ideje a használatával érhető el, amely az `ChatMessage.created_on` üzenetek megrendelésére használható.
 
-`list_messages` a által azonosítható különböző típusú üzeneteket ad vissza `ChatMessage.type` . 
+`list_messages` A a által azonosítható különböző típusú üzeneteket ad `ChatMessage.type` vissza. 
 
-További információ az üzenetek típusairól: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
+Az üzenettípusokról itt olvashat bővebben: [Üzenettípusok.](../../../concepts/chat/concepts.md#message-types)
 
-## <a name="send-read-receipt"></a>Olvasási visszaigazolás küldése
-A `send_read_receipt` metódussal egy felhasználó nevében könyvelhető olvasási beérkezési esemény egy szálra.
+## <a name="send-read-receipt"></a>Olvasási nyugták küldése
+A metódussal olvasási nyugtát közzétenhet egy szálon egy `send_read_receipt` felhasználó nevében.
 
-- Ezzel a `message_id` beállítással adhatja meg az aktuális felhasználó által olvasott legújabb üzenet azonosítóját.
+- A használatával adhatja meg az aktuális felhasználó által `message_id` beolvasott legújabb üzenet azonosítóját.
 
 ```python
 content='hello world'
@@ -202,17 +200,17 @@ chat_thread_client.send_read_receipt(message_id=send_message_result.id)
 ```
 
 
-## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó hozzáadása résztvevőként a csevegési szálhoz
 
-A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és további résztvevőket vegyen fel/távolítson el. A metódus meghívása előtt `add_participants` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+A csevegési szál létrehozása után felhasználókat adhat hozzá és távolíthat el róla. A felhasználók hozzáadásával hozzáférést ad nekik, hogy üzeneteket tudjanak küldeni a csevegési szálnak, és további résztvevőket adhatnak hozzá vagy távolíthatnak el. A metódus hívása előtt győződjön meg arról, hogy beszerezte az adott felhasználó új hozzáférési `add_participants` jogkivonatát és identitását. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra a csevegő ügyfelének inicializálása érdekében.
 
-Egy vagy több felhasználó a metódus használatával adható hozzá a csevegési szálhoz `add_participants` , a megadott új hozzáférési jogkivonat és azonosítás minden felhasználó számára elérhető.
+A metódussal egy vagy több felhasználó is hozzáadható a csevegőszálhoz, feltéve, hogy az új hozzáférési jogkivonat és azonosítás minden felhasználó `add_participants` számára elérhető.
 
-A értéket `list(tuple(ChatThreadParticipant, CommunicationError))` adja vissza. A résztvevő sikeres hozzáadása után a rendszer üres listát vár. Ha hiba történt a résztvevő hozzáadásakor, a lista a sikertelen résztvevőkkel együtt jelenik meg, az észlelt hiba mellett.
+A `list(tuple(ChatParticipant, CommunicationError))` visszaadott érték. Ha a résztvevő hozzáadása sikeres volt, üres lista várható. Ha hiba történik a résztvevő hozzáadása során, a listán a sikertelen résztvevők és az észlelt hiba is fel lesz töltve.
 
 ```python
 from azure.communication.identity import CommunicationIdentityClient
-from azure.communication.chat import ChatThreadParticipant
+from azure.communication.chat import ChatParticipant
 from datetime import datetime
 
 # create 2 users
@@ -225,14 +223,14 @@ new_users = [identity_client.create_user() for i in range(2)]
 # user_id = 'some user id'
 # user_display_name = "Wilma Flinstone"
 # new_user = CommunicationUserIdentifier(user_id)
-# participant = ChatThreadParticipant(
+# participant = ChatParticipant(
 #     user=new_user,
 #     display_name=user_display_name,
 #     share_history_time=datetime.utcnow())
 
 participants = []
 for _user in new_users:
-  chat_thread_participant = ChatThreadParticipant(
+  chat_thread_participant = ChatParticipant(
     user=_user,
     display_name='Fred Flinstone',
     share_history_time=datetime.utcnow()
@@ -255,26 +253,26 @@ if retry:
 ```
 
 
-## <a name="list-thread-participants-in-a-chat-thread"></a>Hozzászóláslánc résztvevőinek listázása egy csevegési szálban
+## <a name="list-thread-participants-in-a-chat-thread"></a>Csevegési szál résztvevőinek listása
 
-A résztvevők hozzáadásához hasonlóan egy szál résztvevőit is listázhatja.
+A résztvevők hozzáadásához hasonlóan egy szál résztvevőit is listába sorolhatja.
 
-A `list_participants` szál résztvevőinek beolvasására használható.
-- Használat `results_per_page` , nem kötelező, a visszaadott résztvevők maximális száma oldalanként.
-- A nem kötelező lehetőséggel `skip` kihagyhatja a résztvevőket egy adott pozícióra válaszként.
+A `list_participants` használatával lekéri a szál résztvevőit.
+- Használja a következőt: , nem kötelező, a laponként `results_per_page` visszaadott résztvevők maximális száma.
+- A , nem kötelező használatával a résztvevőket a válaszban `skip` megadott pozícióra ugorhatja.
 
-Az a `[ChatThreadParticipant]` válasza, hogy a résztvevők a lista résztvevőit adják vissza.
+A iterátora `[ChatParticipant]` a résztvevőktől visszaadott válasz
 
 ```python
 chat_thread_participants = chat_thread_client.list_participants()
 for chat_thread_participant_page in chat_thread_participants.by_page():
     for chat_thread_participant in chat_thread_participant_page:
-        print("ChatThreadParticipant: ", chat_thread_participant)
+        print("ChatParticipant: ", chat_thread_participant)
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Futtassa az alkalmazást az alkalmazás könyvtárából a `python` paranccsal.
+Futtassa az alkalmazást az alkalmazáskönyvtárból az `python` paranccsal.
 
 ```console
 python start-chat.py

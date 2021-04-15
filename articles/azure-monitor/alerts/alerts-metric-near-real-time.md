@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016100"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104881"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -29,7 +29,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 
 |Erőforrás típusa  |Támogatott méretek |Több erőforrásból álló riasztások| Elérhető metrikák|
 |---------|---------|-----|----------|
-|Microsoft. Aadiam/azureADMetrics | Igen | Nem | |
+|Microsoft. Aadiam/azureADMetrics | Igen | Nem | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | Igen | Nem | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft. AppConfiguration/configurationStores |Igen | Nem | [Alkalmazás konfigurációja](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/Spring | Igen | Nem | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
@@ -38,6 +38,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. BotService/botServices | Igen | Nem | [Bot Services](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft. cache/Redis | Igen | Yes | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft. CDN/profilok | Igen | Nem | [CDN-profilok](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Nem | Nem | [Klasszikus Virtual Machines](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -49,8 +50,8 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. számítás/cloudServices | Igen | Nem |  [Felhőszolgáltatások](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
 |Microsoft. számítási/cloudServices/szerepkörök | Igen | Nem |  [Cloud Service-szerepkörök](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | Yes | Igen<sup>1</sup> | [Virtual Machines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
-|Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
+|Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtual Machine Scale Sets](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tároló csoportok](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft. Tárolószolgáltatás/managedClusters | Igen | Nem | [Felügyelt fürtök](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Yes | [Data Box](../essentials/metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
@@ -86,7 +87,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. Media/Mediaservices/streamingEndpoints | Igen | Nem | [Media Services streaming-végpontok](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
 |Microsoft. NetApp/netAppAccounts/capacityPools | Igen | Yes | [Azure NetApp-kapacitási készletek](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft. NetApp/netAppAccounts/capacityPools/kötetek | Igen | Yes | [Azure NetApp-kötetek](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway-átjárók](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](../essentials/metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](../essentials/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft. Network/expressRouteCircuits | Igen | Nem |[ExpressRoute-áramkörök](../essentials/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
