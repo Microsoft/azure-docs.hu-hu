@@ -1,24 +1,24 @@
 ---
-title: A Azure Database for PostgreSQL beépített szabályzat-definíciói
-description: A Azure Database for PostgreSQL Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók a Azure Database for PostgreSQL
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Database for PostgreSQL. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: cc2152823605054226fb1092db2498b7c458587f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 61e8246c8eddced3138227364f22e8f021c4ea94
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090468"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496561"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>A Azure Database for PostgreSQL beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>Azure Policy beépített definíciók a Azure Database for PostgreSQL
 
-Ez az oldal a Azure Database for PostgreSQL [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Database for PostgreSQL e. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 

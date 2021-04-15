@@ -1,24 +1,24 @@
 ---
-title: Az Azure HDInsight beépített szabályzat-definíciói
-description: Felsorolja Azure Policy az Azure HDInsight beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók a Azure HDInsight
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure HDInsight. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 897c3d0030a16ac139360277771446d9d73a2fcb
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 94671937bfdfa01b8f10ba5eb7f6ff9956bdec00
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094480"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497123"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Az Azure HDInsight beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Azure Policy beépített definíciók a Azure HDInsight
 
-Ez az oldal az Azure HDInsight beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure HDInsight. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-hdinsight"></a>Azure HDInsight
 

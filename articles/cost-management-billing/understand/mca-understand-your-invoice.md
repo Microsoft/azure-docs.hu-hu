@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050443"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484598"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>A Microsoft-ügyfélszerződés számláin szereplő kifejezések
 
@@ -22,13 +22,25 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure-beli számlázási f
 
 A számla tartalmazza a díjak összesítését, valamint a fizetésre vonatkozó utasításokat. A számlát letöltheti Portable Document Format (.pdf) formátumban az [Azure Portalról](https://portal.azure.com/), vagy kérheti, hogy e-mailben legyen elküldve. További információ: [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md).
 
-Tekintse meg a [Microsoft ügyfél-szerződéssel kapcsolatos számláját](https://www.youtube.com/watch?v=e2LGZZ7GubA) bemutató videót, amelyből megtudhatja, hogyan elemezheti a számláját, és hogyan elemezheti azt.
+Tekintse meg [a Számla Microsoft Ügyfélszerződés videóját,](https://www.youtube.com/watch?v=e2LGZZ7GubA) amelyből megismerheti a számlát, és megtudhatja, hogyan elemezheti a rajta szereplő díjakat.
 
 >[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Számlázási időszak
 
 A számlázás havi rendszerességgel történik. A számlázás napját megtalálhatja az [Azure Portalon](https://portal.azure.com/) a számlázási profil tulajdonságai alatt, a *számla dátuma* szakaszban. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
+
+Ha nagyvállalati szerződésről migrál egy Microsoft Ügyfélszerződés, a migrálás dátumáig továbbra is megkapja az EA számláit. Az új számla a Microsoft Ügyfélszerződés az áttelepítést követően a hónap ötödik napján jön létre. Az első számla a migrálás dátumának részleges díját mutatja. A későbbi számlák havonta jönnek létre, és az egyes havi díjakat mutatják.
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>A fizetéses előfizetések változásai
+
+Az előfizetések átváltása, átadása vagy lemondása esetén a legutóbb létrehozott számla tartalmazza az előző számlázási ciklus és az új hiányos számlázási ciklus költségeit.
+
+Például:
+
+Tegyük fel, hogy a fizetéses előfizetés számlázási ciklusa minden hónap 8. naptól 7-ig tart. Az előfizetés november 16-án Microsoft Ügyfélszerződés át egy Microsoft Ügyfélszerződés. A legutóbbi, fizetéses számlában a 2020. október 8. és 2020. november 7. között számlázott díjak vannak. Emellett az új részleges számlázási ciklus díjai is Microsoft Ügyfélszerződés 2020. november 8. és 2020. november 16. között. Lássunk egy példát.
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="Példa egy számlára a legutóbbi számlázási ciklussal." lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>A számlában használatos kifejezések és leírásaik
 

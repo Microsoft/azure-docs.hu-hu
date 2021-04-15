@@ -1,15 +1,19 @@
-- name: Microsoft Customer Agreement – dokumentáció
+- name: Microsoft Ügyfélszerződés dokumentációja
   href: index.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Áttekintés
   expanded: true
   items:
-    - name: Microsoft Customer Agreement – áttekintés
+    - name: Microsoft Ügyfélszerződés áttekintése
       href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Alapelvek
   items:
-    - name: A használati és számlázási ciklus megismerése
+    - name: Ellenőrzőlista a szerződés aláírása után
+      href: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Bérlők kezelése a szerződésében
+      href: manage-tenants.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: A használati és számlázási ciklusok
       href: ../understand/mca-understand-your-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Használat és díjak fájl használati feltételei
+    - name: Használati adatok és díjak fájlhasználati feltételei
       href: ../understand/mca-understand-your-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Oktatóanyagok
   items:
@@ -22,7 +26,7 @@
   items:
     - name: Számlázás beállítása
       href: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: A Számlázási fiók első lépései
+    - name: A számlázási fiókkal kapcsolatos első lépések
       href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: A számla rendszerezése
       href: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
@@ -40,13 +44,17 @@
       href: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: A számla befizetése
       href: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Számlázási tulajdonjog beszerzése
+    - name: Számlázási tulajdonjog átadása
       href: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Az EA átmigrálása a Microsoft Customer Agreement API-khoz
+    - name: EA áttelepítése Microsoft Ügyfélszerződés API-kba
       href: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Használat és díjak megtekintése és letöltése
+    - name: Használati adatok és díjak megtekintése és letöltése
       href: ../understand/download-azure-daily-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Az Azure díjszabásának megtekintése és letöltése
       href: ../manage/ea-pricing.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: EA-feladatok egy Microsoft-ügyfél szerződésben
+    - name: EA-feladatok egy Microsoft Ügyfélszerződés
       href: ../manage/mca-enterprise-operations.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Hibaelhárítás
+      items:
+        - name: Előfizetés-hozzáférés
+          href: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

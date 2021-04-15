@@ -1,26 +1,26 @@
 ---
-title: CLI-példa a naplózásra és az összetett veszélyforrások elleni védelemre – Azure SQL Database
-description: Példa az Azure CLI-szkriptre a naplózás és az összetett veszélyforrások elleni védelem konfigurálásához egy Azure SQL Database
+title: Cli-példa a naplózásra és az Advanced Threat Protectionre – Azure SQL Database
+description: Azure CLI-példaszkprogram a naplózás és az Advanced Threat Protection konfigurál egy Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security
+ms.custom: security, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/09/2021
-ms.openlocfilehash: 7450911dabe04ea04ba16ec5e648f09ecf4a616f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1af5c3ede32ab85652b7f35d53694a77a36947b8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095987"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478250"
 ---
-# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>A CLI használata SQL Database naplózás és az összetett veszélyforrások elleni védelem konfigurálásához
+# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>A cli használatával konfigurálhatja a SQL Database és az Advanced Threat Protectiont
 
-Ez az Azure CLI parancsfájl-példa SQL Database naplózási és komplex veszélyforrások elleni védelmet konfigurálja.
+Ez az Azure CLI-példaszk SQL Database és az Advanced Threat Protection naplózását.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -76,20 +76,20 @@ az sql db threat-policy update --email-account-admins Disabled --email-addresses
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Minta leírása
+## <a name="sample-reference"></a>Mintahivatkozás
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Leírás |
 |---|---|
-| [az SQL db audit-Policy](/cli/azure/sql/db/audit-policy) | Beállítja egy adatbázis naplózási szabályzatát. |
-| [az SQL db Threat-Policy](/cli/azure/sql/db/threat-policy) | Egy összetett veszélyforrások elleni védelmi szabályzatot állít be egy adatbázison. |
+| [az sql db audit-policy](/cli/azure/sql/db/audit-policy) | Beállítja egy adatbázis naplózási szabályzatát. |
+| [az sql db threat-policy](/cli/azure/sql/db/threat-policy) | Advanced Threat Protection-szabályzatot állít be egy adatbázishoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

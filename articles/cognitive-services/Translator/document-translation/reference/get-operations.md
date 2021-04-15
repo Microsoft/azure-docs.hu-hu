@@ -1,7 +1,7 @@
 ---
-title: Dokumentumok fordítása – lekérési műveletek
+title: Dokumentumfordítási get műveletek
 titleSuffix: Azure Cognitive Services
-description: A Get Operations metódus az elküldött batch-kérelmek listáját és az egyes kérelmek állapotát adja vissza.
+description: A get operations metódus visszaadja az elküldött kötegelt kérelmek listáját és az egyes kérések állapotát.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
@@ -10,108 +10,108 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613025"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484676"
 ---
-# <a name="document-translation-get-operations"></a>Dokumentum fordítása: lekérési műveletek
+# <a name="document-translation-get-operations"></a>Dokumentumfordítás: get műveletek
 
-A Get Operations metódus az elküldött batch-kérelmek listáját és az egyes kérelmek állapotát adja vissza. Ez a lista csak a felhasználó által küldött batch-kérelmeket tartalmazza (az előfizetés alapján). Az egyes kérelmek állapota az azonosító szerint van rendezve.
+A Get Operations metódus visszaadja az elküldött kötegelt kérelmek listáját és az egyes kérések állapotát. Ez a lista csak a felhasználó által elküldött kötegelt kérelmeket tartalmazza (az előfizetés alapján). Az egyes kérések állapota id szerint van rendezve.
 
-Ha a kérések száma meghaladja a lapozási korlátot, a rendszer kiszolgálóoldali lapozást használ. A többoldalas válaszok részleges eredményt jeleznek, és a válaszban egy folytatási tokent tartalmaznak. A folytatási token hiánya azt jelenti, hogy nincsenek elérhető további lapok.
+Ha a kérelmek száma meghaladja a lapozási korlátot, a rendszer kiszolgálóoldali lapozást használ. A lapszámozott válaszok részleges eredményt jeleznek, és folytatási tokent is tartalmaznak a válaszban. A folytatási token hiánya azt jelenti, hogy nem áll rendelkezésre további oldal.
 
-$top és $skip lekérdezési paraméterekkel megadható a visszaadott eredmények száma és a gyűjtemény eltolása.
+$top és $skip lekérdezési paraméterekkel megadható a visszaadni kívánt eredmények száma és a gyűjtemény eltolása.
 
-A kiszolgáló tiszteletben tartja az ügyfél által megadott értékeket. Az ügyfeleknek azonban elő kell készülniük a különböző oldalméret vagy folytatási tokent tartalmazó válaszok kezelésére.
+A kiszolgáló az ügyfél által megadott értékeket is beveszi. Az ügyfeleket azonban fel kell készíteni az olyan válaszok kezelésére, amelyek más oldalméretet vagy folytatási tokent tartalmaznak.
 
-Ha $top és $skip is szerepel, a kiszolgálónak először $skip kell alkalmaznia, majd $top a gyűjteményen. 
+Ha a $top és $skip is tartalmazza, a kiszolgálónak először alkalmaznia kell $skip, majd $top a gyűjteményre. 
 
 > [!NOTE]
-> Ha a kiszolgáló nem tudja megbecsülni $top és/vagy $skip, a kiszolgálónak hibát kell visszaadnia az ügyfélnek, és nem csupán figyelmen kívül hagyja a lekérdezés beállításait. Ez csökkenti annak kockázatát, hogy az ügyfél feltételezi a visszaadott adatmennyiséget.
+> Ha a kiszolgáló nem tudja figyelembe $top és/vagy $skip-t, a kiszolgálónak hibát kell visszaadni az ügyfélnek, amely erről tájékoztatja, és nem kell figyelmen kívül hagynia a lekérdezési beállításokat. Ez csökkenti annak kockázatát, hogy az ügyfél feltételezéseket hoz a visszaadott adatokkal kapcsolatban.
 
 ## <a name="request-url"></a>URL-cím kérése
 
-Kérelem küldése `GET` a következőnek:
+Kérés küldése a `GET` következőre:
 ```HTTP
 GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
 ```
 
-Megtudhatja, hogyan keresheti meg az [Egyéni tartománynevet](../get-started-with-document-translation.md#find-your-custom-domain-name).
+Ismerje meg, hogyan találhatja meg [az egyéni tartománynevét.](../get-started-with-document-translation.md#find-your-custom-domain-name)
 
 > [!IMPORTANT]
 >
-> * **A dokumentum-fordítási szolgáltatáshoz tartozó összes API-kérelemhez egyéni tartományi végpont szükséges**.
-> * Nem használhatja a végpontot a Azure Portal erőforrás- _kulcsok és a végpontok_ oldalán, sem a globális Translator végponton –, `api.cognitive.microsofttranslator.com` hogy http-kéréseket lehessen felvenni a dokumentumok fordítására.
+> * **A Document Translation szolgáltatásnak minden API-kérelemhez egyéni tartományvégpontra van szükség.**
+> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal a globális fordítóvégpontot sem a dokumentumfordításra vonatkozó  `api.cognitive.microsofttranslator.com` HTTP-kérések igénylésére.
 
-## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
+## <a name="request-parameters"></a>Kérelemparaméterek
 
-A lekérdezési karakterláncon átadott kérési paraméterek a következők:
+A lekérdezési sztringen átadott kérelemparaméterek a következőek:
 
 |Lekérdezési paraméter|Kötelező|Leírás|
 |--- |--- |--- |
-|$skip|Hamis|Hagyja ki a gyűjtemény $skip bejegyzéseit. Ha a $top és a $skip is meg van adva, a rendszer először a $skip alkalmazza.|
-|$top|Hamis|Végezze el a gyűjtemény $top bejegyzéseit. Ha a $top és a $skip is meg van adva, a rendszer először a $skip alkalmazza.|
+|$skip|Hamis|Hagyja ki $skip gyűjtemény összes bejegyzését. Ha a $top és a $skip is meg van adva, a $skip lesz alkalmazva.|
+|$top|Hamis|Vegye $top gyűjtemény összes bejegyzését. Ha a $top és a $skip is meg van adva, a $skip lesz alkalmazva.|
 
 ## <a name="request-headers"></a>Kérésfejlécek
 
-A kérelem fejlécei:
+A kérelemfejlécek a következőek:
 
 |Fejlécek|Leírás|
 |--- |--- |
-|Ocp-Apim-Subscription-Key|Kötelező kérelem fejléce|
+|Ocp-Apim-Subscription-Key|Szükséges kérelemfejléc|
 
-## <a name="response-status-codes"></a>Válasz-állapotkódok
+## <a name="response-status-codes"></a>Válasz állapotkódok
 
-A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
+A kérések által visszaadott lehetséges HTTP-állapotkódok a következők.
 
 |Állapotkód|Leírás|
 |--- |--- |
-|200|OK gombra. Sikeres kérés, és visszaadja az összes művelet állapotát. HeadersRetry-After: integerETag: string|
-|400|Hibás kérelem. Érvénytelen kérés. Adja meg a bemeneti paramétereket.|
-|401|Jogosulatlan. A hitelesítő adatok ellenőrzéséhez.|
+|200|OK gombra. Sikeres kérés, és az összes művelet állapotát adja vissza. HeadersRetry-After: integerETag: sztring|
+|400|Hibás kérés. Érvénytelen kérés. Ellenőrizze a bemeneti paramétereket.|
+|401|Jogosulatlan. Ellenőrizze a hitelesítő adatait.|
 |500|Belső kiszolgálóhiba.|
-|Egyéb állapotkódok|<ul><li>Túl sok kérelem</li><li>A kiszolgáló átmenetileg nem érhető el</li></ul>|
+|Egyéb állapotkódok|<ul><li>Túl sok kérelem</li><li>A kiszolgáló ideiglenesen nem érhető el</li></ul>|
 
-## <a name="get-operations-response"></a>Műveletek beolvasása – válasz
+## <a name="get-operations-response"></a>Műveletek lekért válasza
 
-### <a name="successful-get-operations-response"></a>Sikeres lekérési műveletekre adott válasz
+### <a name="successful-get-operations-response"></a>Sikeres get operations válasz
 
-A sikeres válasz a következő információkat adja vissza.
+A sikeres válasz az alábbi adatokat tartalmazza.
 
 |Név|Típus|Leírás|
 |--- |--- |--- |
 |id|sztring|A művelet azonosítója.|
-|createdDateTimeUtc|sztring|A művelet létrehozásának dátuma és időpontja.|
-|lastActionDateTimeUtc|sztring|A művelet állapotának frissítésének dátuma és időpontja.|
-|status|Sztring|A feladatok vagy dokumentumok lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Megszakítása</li><li>Sikertelen</li><li>NotStarted</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed</li></ul>|
-|összegzés|StatusSummary[]|Az alább felsorolt részleteket tartalmazó összefoglalás.|
-|összefoglalás. Total|egész szám|A dokumentumok száma összesen.|
-|összefoglalás. sikertelen|egész szám|A dokumentumok száma nem sikerült.|
-|összefoglalás. sikeres|egész szám|A dokumentumok száma sikeresen lefordítva.|
-|összefoglalás. inelőrehaladás|egész szám|A folyamatban lévő dokumentumok száma.|
-|összefoglalás. notYetStarted|egész szám|A még nem megkezdett dokumentumok száma.|
-|összefoglalás. megszakítva|egész szám|A dokumentumok száma megszakítva.|
-|összefoglalás. totalCharacterCharged|egész szám|A felszámított karakterek teljes száma.|
+|createdDateTimeUtc|sztring|Művelet létrehozási dátumának időpontja.|
+|lastActionDateTimeUtc|sztring|A művelet állapotának frissítésének dátuma.|
+|status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nincs indítás)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
+|összegzés|StatusSummary[]|Az alább felsorolt részleteket tartalmazó összegzés.|
+|summary.total|egész szám|Az összes dokumentum száma.|
+|summary.failed|egész szám|A sikertelen dokumentumok száma.|
+|summary.success|egész szám|A sikeresen lefordított dokumentumok száma.|
+|summary.inProgress (összegzés.inProgress)|egész szám|A folyamatban lévő dokumentumok száma.|
+|summary.notYetStarted|egész szám|A feldolgozásra még nem elindított dokumentumok száma.|
+|summary.cancelled|egész szám|A lemondott dokumentumok száma.|
+|summary.totalCharacterCharged|egész szám|A felszámért karakterek teljes száma.|
 
-###<a name="error-response"></a>Hiba válasza
+### <a name="error-response"></a>Hibaválasz
 
 |Név|Típus|Leírás|
 |--- |--- |--- |
-|code|sztring|A magas szintű hibakódokat tartalmazó enumerálások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
+|code|sztring|Magas szintű hibakódokat tartalmazó felsorolások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument (Érvénytelen nyelv)</li><li>InvalidRequest (Érvénytelen kérdés)</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|
-|cél|sztring|Lekéri a hiba forrását. Egy érvénytelen dokumentum esetében például a "Documents" vagy a "Document id" lenne.|
-|innerError|InnerErrorV2|Új belső hiba formátuma, amely megfelel a Cognitive Services API-irányelveknek. Tartalmazza a szükséges tulajdonságokat: ErrorCode, üzenet és opcionális tulajdonságok célpontja, részletek (kulcs érték párok), belső hiba (ez lehet beágyazott).|
-|innerError. code|sztring|Hibakód-karakterlánc beolvasása.|
-|innerError. Message|sztring|Magas szintű hibaüzenetet kap.|
+|Cél|sztring|Lekérte a hiba forrását. Ez lehet például "documents" (dokumentumok) vagy "document id" (dokumentumazonosító) érvénytelen dokumentum esetén.|
+|innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza a szükséges ErrorCode tulajdonságokat, az üzenetet és az opcionális céltulajdonságokat, a részleteket (kulcs-érték párt), a belső hibát (ez beágyazható).|
+|innerError.code|sztring|Lekérte a kód hibasringet.|
+|innerError.message|sztring|Magas szintű hibaüzenetet kap.|
 
 ## <a name="examples"></a>Példák
 
 ### <a name="example-successful-response"></a>Példa sikeres válaszra
 
-A következő példa egy sikeres választ mutat be.
+Az alábbi példa egy sikeres választ mutat be.
 
 ```JSON
 {
@@ -135,9 +135,9 @@ A következő példa egy sikeres választ mutat be.
 }
 ```
 
-### <a name="example-error-response"></a>Példa a hiba válaszára
+### <a name="example-error-response"></a>Példa hibaválaszra
 
-A következő példa egy hibaüzenetet választ. A többi hibakód sémája ugyanaz.
+Az alábbiakban egy példa egy hibaválaszra. A többi hibakód sémája ugyanaz.
 
 Állapotkód: 500
 
@@ -157,7 +157,7 @@ A következő példa egy hibaüzenetet választ. A többi hibakód sémája ugya
 
 ## <a name="next-steps"></a>Következő lépések
 
-A gyors üzembe helyezéssel kapcsolatos további információkért tekintse meg a dokumentumok fordításának és az ügyféloldali kódtár használatának lépéseit.
+A dokumentumfordítás és az ügyféloldali kódtár használatával kapcsolatos további információkért kövesse a rövid útmutatót.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a dokumentumok fordításával](../get-started-with-document-translation.md)
+> [A dokumentumfordítás első lépések](../get-started-with-document-translation.md)
