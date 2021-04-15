@@ -1,6 +1,6 @@
 ---
-title: 'CLI: ASP.NET Core alkalmazás létrehozása az ACR-ből'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a példa bemutatja, hogyan hozhat létre egy linuxos ASP.NET Core alkalmazást az ACR-ből.
+title: 'CLI: ASP.NET Core-alkalmazás létrehozása az ACR-ről'
+description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan hozhat létre Linux-ASP.NET Core-alkalmazást az ACR-ból.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -8,22 +8,22 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/13/2018
 ms.author: msangapu
-ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: b4c96b14a24cdc4b953d072dd51f4cb0ca5d67c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-dotnet, mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 4d4e2ccd8a433f0c0e83236941f78d4e2fad0f45
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006055"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479083"
 ---
-# <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>ASP.NET Core-alkalmazás létrehozása Docker-tárolóban a App Serviceból a Azure Container Registry
+# <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>ASP.NET Core-alkalmazás létrehozása egy Docker-tárolóban a App Service Azure Container Registry
 
-Ez a minta parancsfájl létrehoz egy erőforráscsoportot, egy Linux App Service tervet és egy alkalmazást. Ezután üzembe helyez ASP.NET Core-alkalmazást az Azure Container Registryben található Docker-tárolóval.
+Ez a példaszkprogram létrehoz egy erőforráscsoportot, egy Linux-App Service-tervet és egy alkalmazást. Ezután üzembe helyez ASP.NET Core-alkalmazást az Azure Container Registryben található Docker-tárolóval.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Az Azure CLI 2.0.52 vagy újabb verziójára lesz szüksége. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+Az Azure CLI 2.0.52-es vagy újabb verziójára lesz szüksége. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,7 +40,7 @@ Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Se
 | [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
 | [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) | Beállítja a App Service alkalmazás Docker-tárolóját. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) | Beállítja a Docker-tárolót App Service alkalmazáshoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

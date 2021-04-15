@@ -1,120 +1,120 @@
 ---
-title: Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
-description: Ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virtuális gépekről az Azure Monitor ügynök használatával történő adatgyűjtéshez.
+title: Adatgyűjtés konfigurálása a Azure Monitor ügynökhöz (előzetes verzió)
+description: Ez a cikk azt ismerteti, hogyan hozható létre adatgyűjtési szabály a virtuális gépekről a virtuális gépekről a Azure Monitor használatával.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884f048ac099cfc6b799fe266172a0eecef3db6f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022976"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478369"
 ---
-# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
+# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor ügynökhöz (előzetes verzió)
 
-Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező és a küldendő adatforrásokat határozzák meg. Ez a cikk azt ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virtuális gépekről az Azure Monitor ügynök használatával történő adatgyűjtéshez.
+Az adatgyűjtési szabályok (Data Collection Rules, DCR) határozzák meg a Azure Monitor és megszabadják az adatok elküldési helyének megadását. Ez a cikk bemutatja, hogyan hozhat létre olyan adatgyűjtési szabályt, amely adatokat gyűjt a virtuális gépekről a Azure Monitor ügynök használatával.
 
-Az adatgyűjtési szabályok teljes leírását lásd: [adatgyűjtési szabályok a Azure monitorban (előzetes verzió)](data-collection-rule-overview.md).
+Az adatgyűjtési szabályok teljes leírását lásd: Adatgyűjtési szabályok a [Azure Monitor (előzetes verzió) .](data-collection-rule-overview.md)
 
 > [!NOTE]
-> Ez a cikk azt ismerteti, hogyan konfigurálhatja a virtuális gépeket a jelenleg előzetes verzióban elérhető Azure Monitor ügynökkel. Az általánosan elérhető ügynökök leírását, valamint az adatok gyűjtését az [Azure monitor ügynökök áttekintését](agents-overview.md) ismertető cikkben talál.
+> Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális gépek adatait a jelenleg előzetes verzióban Azure Monitor ügynökkel. Az [általánosan Azure Monitor](agents-overview.md) ügynökök leírását és az adatok gyűjtésére való használatuk ismertetését lásd: Overview of Azure Monitor agents (A Azure Monitor-ügynökök áttekintése).
 
-## <a name="data-collection-rule-associations"></a>Adatgyűjtési szabály társításai
+## <a name="data-collection-rule-associations"></a>Adatgyűjtési szabályok társításai
 
-A DCR virtuális gépre való alkalmazásához létre kell hoznia egy társítást a virtuális géphez. Előfordulhat, hogy egy virtuális gép több DCR is társítható, és a DCR-hez több virtuális gép is tartozhat. Ez lehetővé teszi, hogy Definiáljon egy adott követelménynek megfelelő DCR-készletet, és azokat csak azokra a virtuális gépekre alkalmazza, amelyekre érvényesek. 
+A DCR virtuális gépre való alkalmazáshoz létre kell hoznia egy társítást a virtuális géphez. Egy virtuális gép több tartományvezérlőhöz is társítva lehet, és egy DCR-hez több virtuális gép is társítva lehet. Ez lehetővé teszi tartományvezérlők egy adott követelménynek megfelelő készletének definiálát, és csak azokra a virtuális gépekre alkalmazza őket, amelyekre érvényesek. 
 
-Vegyünk például egy olyan környezetet, amely egy üzletági alkalmazást futtató virtuális gépeket és a SQL Servert futtató többi alkalmazást futtat. Lehet, hogy egy alapértelmezett adatgyűjtési szabály vonatkozik az összes virtuális gépre, és elkülöníti az adatgyűjtési szabályokat, amelyek kifejezetten az üzletági alkalmazásra és a SQL Serverre vonatkozó adatokat gyűjtenek. Az adatgyűjtési szabályokhoz tartozó virtuális gépek társításai az alábbi ábrához hasonlóan jelennek meg.
+Vehet például egy olyan környezetet, amely egy üzletági alkalmazást futtató virtuális gépeket, mások pedig SQL Server. Előfordulhat, hogy van egy alapértelmezett adatgyűjtési szabálya, amely az összes virtuális gépre vonatkozik, és külön adatgyűjtési szabályokkal, amelyek kifejezetten az üzleti alkalmazásra és a virtuális gépekre vonatkozó adatokat SQL Server. A virtuális gépek és az adatgyűjtési szabályok társításai az alábbi ábrához hasonlóan néznek ki.
 
-![A diagramon az üzletági alkalmazások és a Central-i t-default és a LOB-alkalmazás nevű adatgyűjtési szabályokhoz társított virtuális SQL Server gépek jelennek meg a SQL Serverhoz.](media/data-collection-rule-azure-monitor-agent/associations.png)
+![Diagram az üzletági alkalmazásokat üzemeltető virtuális gépeket és SQL Server központi-i t-default nevű adatgyűjtési szabályokhoz és üzletági alkalmazásokhoz, valamint a központi-i t-default és az s q l-hez társított SQL Server.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 
 
-## <a name="create-rule-and-association-in-azure-portal"></a>Szabály és társítás létrehozása Azure Portalban
+## <a name="create-rule-and-association-in-azure-portal"></a>Szabály és társítás létrehozása a Azure Portal
 
-A Azure Portal használatával létrehozhat egy adatgyűjtési szabályt, és az előfizetésében lévő virtuális gépeket hozzárendelheti a szabályhoz. A rendszer automatikusan telepíti a Azure Monitor ügynököt, és felügyelt identitást hozott létre minden olyan virtuális géphez, amelyen még nincs telepítve.
+A virtuális Azure Portal létrehozhat egy adatgyűjtési szabályt, és hozzárendelheti az előfizetésében lévő virtuális gépeket a szabályhoz. A Azure Monitor ügynök automatikusan telepítve lesz, és létrejön egy felügyelt identitás minden olyan virtuális géphez, amely még nincs telepítve.
 
 > [!IMPORTANT]
-> Jelenleg ismert probléma van, ha az adatgyűjtési szabály olyan virtuális gépen hoz létre felügyelt identitást, amely már rendelkezik felhasználó által hozzárendelt felügyelt identitással, a felhasználó által hozzárendelt identitás le van tiltva.
+> Jelenleg van egy ismert probléma, amely miatt, ha az adatgyűjtési szabály létrehoz egy felügyelt identitást egy olyan virtuális gépen, amely már rendelkezik felhasználó által hozzárendelt felügyelt identitással, a felhasználó által hozzárendelt identitás le lesz tiltva.
 
-A Azure Portal **Azure monitor** menüjében válassza az **adatgyűjtési szabályok** lehetőséget a **Beállítások** szakaszban. Új adatgyűjtési szabály és hozzárendelés hozzáadásához kattintson a **Hozzáadás** gombra.
+A **Azure Monitor** menüben válassza Azure Portal **Adatgyűjtési** szabályok lehetőséget a **Beállítások szakaszban.** Új **adatgyűjtési** szabály és hozzárendelés hozzáadásához kattintson a Hozzáadás gombra.
 
-[![Adatgyűjtés szabályai](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png#lightbox)
+[![Adatgyűjtési szabályok](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rules.png#lightbox)
 
-Új szabály és társítások létrehozásához kattintson a **Hozzáadás** gombra. Adja meg a **szabály nevét** , és adja meg az **előfizetést** és az **erőforráscsoportot**. Itt adható meg, hogy a rendszer hová hozza létre a DCR-t. A virtuális gépek és azok társításai a bérlő bármelyik előfizetésében vagy erőforráscsoporthoz tartozhatnak.
+Kattintson **a Hozzáadás** gombra egy új szabály és társításhalmaz létrehozásához. Adjon meg egy **szabálynevet,** és adjon meg egy **előfizetést** és **egy erőforráscsoportot.** Ez határozza meg a DCR létrehozási helyét. A virtuális gépek és társításaik a bérlő bármely előfizetésében vagy erőforráscsoportában lehetek.
 
-[![Az adatgyűjtési szabály alapjai](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png#lightbox)
+[![Adatgyűjtési szabályok – alapok](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-basics.png#lightbox)
 
-A **Virtual Machines (virtuális gépek** ) lapon adja hozzá azokat a virtuális gépeket, amelyeknek alkalmaznia kell az adatgyűjtési szabályt. Az Azure Virtual Machines és az Azure arc-kompatibilis kiszolgálók is szerepelni fognak a környezetben. A Azure Monitor ügynök a még nem telepített virtuális gépekre lesz telepítve.
+A Virtuális **gépek lapon** adjon hozzá olyan virtuális gépeket, amelyekre alkalmazni kell az adatgyűjtési szabályt. Mind az Azure-beli virtuális Azure Arc, mind a környezetben engedélyezett kiszolgálóknak fel kell sorolva lennie. A Azure Monitor Agent olyan virtuális gépekre lesz telepítve, amelyeken még nincs telepítve.
 
 [![Adatgyűjtési szabály virtuális gépei](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-virtual-machines.png#lightbox)
 
-Az adatgyűjtés **és** küldés lapon kattintson az **adatforrás hozzáadása** lehetőségre egy adatforrás és egy célhely hozzáadásához. Válasszon ki egy **adatforrást**, és válassza ki a megfelelő adatokat a kiválasztáshoz. A teljesítményszámlálók esetében kiválaszthatja az objektumok előre meghatározott készletét és mintavételi sebességét. Eseményeknél naplókat vagy létesítményeket, valamint a súlyossági szintet is kiválaszthatja. 
+A Collect **and deliver (Gyűjtés és kézbesítés) lapon** kattintson az Add data source **(Adatforrás hozzáadása)** elemre egy adatforrás- és célkészlet hozzáadásához. Válassza ki az **Adatforrás típusát,** és megjelennek a kiválasztható adatok. A teljesítményszámlálókhoz előre meghatározott objektumkészletből és azok mintavételezési arányból választhat. Eseményekhez választhat a naplók vagy létesítmények egy halmaza és a súlyossági szint közül. 
 
-[![Alapszintű adatforrás](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
+[![Adatforrás alapszintű](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Ha más naplókat és teljesítményszámlálókat szeretne megadni a [jelenleg támogatott adatforrásokból](azure-monitor-agent-overview.md#data-sources-and-destinations) , vagy az eseményeket XPath-lekérdezések használatával szeretné szűrni, válassza az **Egyéni** lehetőséget. Ezután megadhat egy [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) -értéket a gyűjtött értékek bármelyikéhez. Példák: példa a [DCR](data-collection-rule-overview.md#sample-data-collection-rule) -re.
+A jelenleg támogatott adatforrások egyéb [](azure-monitor-agent-overview.md#data-sources-and-destinations) naplóinak és teljesítményszámlálóinak megadásához vagy az események XPath-lekérdezésekkel való szűréséhez válassza az Egyéni **lehetőséget.** Ezután megadhat egy [XPath-t ](https://www.w3schools.com/xml/xpath_syntax.asp) a begyűjteni kívánt értékekhez. Példákért tekintse meg a [Minta DCR-t.](data-collection-rule-overview.md#sample-data-collection-rule)
 
 [![Adatforrás egyéni](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
-A **cél** lapon adjon hozzá egy vagy több célhelyet az adatforrás számára. A Windows-események és a syslog-adatforrások csak Azure Monitor naplókba küldhetők el. A teljesítményszámlálók mindkét Azure Monitor metrikára és Azure Monitor naplókra is küldhetnek.
+A Cél **lapon** adjon hozzá egy vagy több célhelyet az adatforráshoz. A Windows-esemény- és Syslog-adatforrások csak a naplókba Azure Monitor küldenek. A teljesítményszámlálók a metrikáknak és Azure Monitor naplóknak Azure Monitor küldenek.
 
 [![Cél](media/data-collection-rule-azure-monitor-agent/data-collection-rule-destination.png)](media/data-collection-rule-azure-monitor-agent/data-collection-rule-destination.png#lightbox)
 
-Kattintson az **adatforrás hozzáadása** lehetőségre, majd **tekintse át a + létrehozás** lehetőséget, és tekintse át az adatgyűjtési szabály és a virtuális gépek készletével való társítás részleteit. Kattintson a **Létrehozás** elemre a létrehozásához.
+Kattintson **az Adatforrás hozzáadása,** majd a Felülvizsgálat **+ létrehozás** elemre az adatgyűjtési szabály részleteinek és a virtuális gépek készletéhez való társításának áttekintéséhez. Kattintson **a Létrehozás** gombra a létrehozásához.
 
 > [!NOTE]
-> Az adatgyűjtési szabály és a társítások létrehozása után akár 5 percet is igénybe vehet, amíg a célhelyek el nem jutnak.
+> Az adatgyűjtési szabály és a társítások létrehozása után akár 5 percig is eltarthat, mire a rendszer elküldi az adatokat a célhelyre.
 
-## <a name="limit-data-collection-with-custom-xpath-queries"></a>Az adatgyűjtés korlátozása egyéni XPath-lekérdezésekkel
-Mivel egy Log Analytics munkaterületen összegyűjtött adatokért kell fizetnie, csak a szükséges adatokat kell összegyűjtenie. Az alapszintű konfiguráció használata a Azure Portalban csak korlátozott számú eseményt tud gyűjteni. Az alkalmazások és a rendszernaplók esetében ez az összes olyan napló, amely egy adott súlyossággal rendelkezik. Biztonsági naplók esetén ez az összes naplózási művelet, vagy az összes naplózási hiba naplója.
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>Adatgyűjtés korlátozása egyéni XPath-lekérdezésekkel
+Mivel a Log Analytics-munkaterületen gyűjtött adatokért díjat kell fizetnie, csak a szükséges adatokat kell összegyűjtenie. Ha alapszintű konfigurációt használ a Azure Portal csak korlátozottan tudja szűrni a gyűjthető eseményeket. Alkalmazás- és rendszernaplókhoz ez mind egy adott súlyosságú napló. Biztonsági naplók esetén ez mind a sikeres naplózási vagy az audithiba-naplókra vonatkozó.
 
-További szűrők megadásához egyéni konfigurációt kell használnia, és meg kell adnia egy XPath-t, amely kiszűri a nem használt eseményeket. Az XPath-bejegyzések az űrlapon íródnak `LogName!XPathQuery` . Előfordulhat például, hogy csak az alkalmazás eseménynaplójában lévő eseményeket szeretné visszaadni az 1035-es azonosítójú eseményhez. Az események XPathQuery `*[System[EventID=1035]]` . Mivel az alkalmazás eseménynaplójában szeretné lekérni az eseményeket, az XPath a következő lesz: `Application!*[System[EventID=1035]]`
+További szűrők megadásához egyéni konfigurációt kell használnia, és meg kell adnia egy XPath-t, amely kiszűri a nem használt eseményeket. Az XPath-bejegyzések a következő formában vannak `LogName!XPathQuery` megírva: . Előfordulhat például, hogy csak az 1035-ös eseményazonosítójú eseményeket szeretné visszaadni az alkalmazás eseménynaplójában. Ezen események XPathQuery-lekérdezése a következő lenne: `*[System[EventID=1035]]` . Mivel az eseményeket az alkalmazás eseménynaplójában szeretné lekérni, az XPath a következő lenne: `Application!*[System[EventID=1035]]`
 
-Tekintse meg az [xpath 1,0 korlátozásait](/windows/win32/wes/consuming-events#xpath-10-limitations) a Windows-Eseménynapló által támogatott XPath-korlátozások listájában.
+A Windows eseménynapló által támogatott XPath korlátozási listájáért tekintse meg az XPath [1.0](/windows/win32/wes/consuming-events#xpath-10-limitations) korlátozásai részt.
 
 > [!TIP]
-> A `Get-WinEvent` `FilterXPath` XPathQuery érvényességének teszteléséhez használja a PowerShell-parancsmagot a paraméterrel. Az alábbi parancsfájl egy példát mutat be.
+> Az XPathQuery érvényességének tesztelésére használja a PowerShell-parancsmagot `Get-WinEvent` `FilterXPath` a paraméterrel. Az alábbi szkript erre mutat egy példát.
 > 
 > ```powershell
 > $XPath = '*[System[EventID=1035]]'
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
 >
-> - Ha a rendszer visszaadja az eseményeket, a lekérdezés érvényes.
-> - Ha a *rendszer nem talált olyan eseményt, amely megfelel a megadott kiválasztási feltételeknek*, a lekérdezés érvényes lehet, de a helyi gépen nincsenek egyező események.
-> - Ha a *megadott lekérdezés érvénytelen* üzenetet kap, a lekérdezés szintaxisa érvénytelen. 
+> - Ha a visszaadott események érvényesek, a lekérdezés érvényes.
+> - Ha a Nem találhatók olyan események, amelyek megfelelnek a megadott kiválasztási feltételeknek üzenet jelenik *meg,* a lekérdezés érvényes lehet, de nincsenek egyező események a helyi gépen.
+> - Ha a Következő üzenet jelenik meg: A megadott lekérdezés *érvénytelen,* a lekérdezés szintaxisa érvénytelen. 
 
-A következő táblázat példákat mutat be az események egyéni XPath használatával történő szűrésére.
+Az alábbi táblázat példákat mutat be az események egyéni XPath használatával való szűrésére.
 
-| Leírás |  XPath |
+| Leírás |  Xpath |
 |:---|:---|
-| Csak a rendszeresemények összegyűjtése a következő azonosítójú eseménnyel: eseményazonosító = 4648 |  `System!*[System[EventID=4648]]`
-| Csak olyan rendszeresemények gyűjtése, amelyeknek az eseményazonosító = 4648 és a consent.exe folyamat neve | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
-| Az összes kritikus, hiba, figyelmeztetés és információs esemény összegyűjtése a rendszer eseménynaplójában, kivéve az Event ID = 6 (az illesztőprogram betöltve) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
-| Az összes sikeres és sikertelen biztonsági esemény gyűjtése a 4624-es azonosítójú esemény kivételével (sikeres bejelentkezés) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+| Csak olyan rendszeresemények gyűjtése, amelyek eseményazonosítója = 4648 |  `System!*[System[EventID=4648]]`
+| Csak olyan rendszereseményeket gyűjtsön, amelyek eseményazonosítója = 4648, és a folyamat neve consent.exe | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
+| Gyűjtsön össze minden kritikus, hiba-, figyelmeztetési és információs eseményt a rendszer eseménynaplójában, kivéve az Eseményazonosító = 6 (illesztőprogram betöltve) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| Gyűjtsön össze minden sikeres és sikertelen biztonsági eseményt, kivéve a 4624-es eseményazonosítót (sikeres bejelentkezés) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
 
 
-## <a name="create-rule-and-association-using-rest-api"></a>Szabály és társítás létrehozása REST API használatával
+## <a name="create-rule-and-association-using-rest-api"></a>Szabály és társítás létrehozása REST API
 
-Az alábbi lépéseket követve hozzon létre egy adatgyűjtési szabályt és társításokat a REST API használatával.
+Az alábbi lépésekkel hozzon létre egy adatgyűjtési szabályt és társításokat a REST API.
 
-1. Manuálisan hozza létre a DCR-fájlt a [DCR](data-collection-rule-overview.md#sample-data-collection-rule)-ben látható JSON-formátum használatával.
+1. Hozza létre manuálisan a DCR-fájlt a minta [DCR-fájlban látható JSON-formátummal.](data-collection-rule-overview.md#sample-data-collection-rule)
 
-2. Hozza létre a szabályt a [REST API](/rest/api/monitor/datacollectionrules/create#examples)használatával.
+2. Hozza létre a szabályt a [REST API.](/rest/api/monitor/datacollectionrules/create#examples)
 
-3. Hozzon létre egy társítást az egyes virtuális gépekhez az adatgyűjtési szabályhoz a [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples)használatával.
+3. Hozzon létre társítást az egyes virtuális gépek és az adatgyűjtési szabályok között az [REST API.](/rest/api/monitor/datacollectionruleassociations/create#examples)
 
 
-## <a name="create-association-using-resource-manager-template"></a>Társítás létrehozása a Resource Manager-sablonnal
+## <a name="create-association-using-resource-manager-template"></a>Társítás létrehozása Resource Manager sablonnal
 
-Resource Manager-sablonnal nem hozhatók létre adatgyűjtési szabályok, de az Azure-beli virtuális gépek vagy az Azure arc-kompatibilis kiszolgálók között egy Resource Manager-sablonnal is létrehozhatók társítások. A példákat lásd: [Resource Manager-sablonok minták a Azure monitor adatgyűjtési szabályaihoz](./resource-manager-data-collection-rules.md) a sablonokhoz.
+Egy Azure-beli virtuális gép vagy egy engedélyezett Azure Arc között létrehozhat társítást egy Resource Manager sablon használatával. A [Resource Manager a sablonmintákat](./resource-manager-data-collection-rules.md) az adatgyűjtési szabályokhoz Azure Monitor sablonmintákat tartalmazó dokumentumban.
 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure monitor-ügynökről](azure-monitor-agent-overview.md).
-- További információ az [adatgyűjtési szabályokról](data-collection-rule-overview.md).
+- További információ a [Azure Monitor ügynökről.](azure-monitor-agent-overview.md)
+- További információ az [adatgyűjtési szabályokról.](data-collection-rule-overview.md)

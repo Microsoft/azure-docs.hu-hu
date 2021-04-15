@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: statikus HTML-Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első HTML-Hello World Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: Statikus HTML-webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az Hello World HTML Azure App Service kódot. Az üzembe helyezést a Git használatával kell üzembe helyezni, amely az üzembe helyezés számos App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.custom: mvc, cli-validate, seodec18
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-html-uiex
-ms.openlocfilehash: 1a179f30b4004eba105780ee73e25394e6a569a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a33889277c9f6cc60f5e81aff520e27828a1d06
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708985"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379621"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a Azure App Service. Ez a rövid útmutató [Cloud Shellban](../cloud-shell/overview.md)is elvégezhető, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI](/cli/azure/install-azure-cli)-vel.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe alapszintű HTML+CSS-webhelyet a Azure App Service. Ezt a rövid útmutatót [](../cloud-shell/overview.md)a következő Cloud Shell fogja végrehajtani, de helyileg is futtathatja ezeket a parancsokat az [Azure CLI-val.](/cli/azure/install-azure-cli)
 
 ![Mintaalkalmazás kezdőlapja](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -46,7 +46,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet. A statikus tartalmat a jelző jelzi `--html` .
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet. A statikus tartalmat a jelző `--html` jelzi.
 
 ```bash
 cd html-docs-hello-world
@@ -84,7 +84,7 @@ Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-A böngészőben nyissa meg az alkalmazás URL-címét: `http://<app_name>.azurewebsites.net` .
+Egy böngészőben ugrás az alkalmazás URL-címére: `http://<app_name>.azurewebsites.net` .
 
 Az oldal Azure App Service webalkalmazásként fut.
 
@@ -112,11 +112,11 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott webalkalmazás kezeléséhez keresse meg a [Azure Portal](https://portal.azure.com), és válassza a **app Services** lehetőséget. 
+A létrehozott webalkalmazás kezeléséhez az Azure Portal [keresse](https://portal.azure.com)meg és válassza **a** App Services. 
 
-![Válassza ki a App Services a Azure Portal](./media/quickstart-html/portal0.png)
+![A App Services válassza a Azure Portal](./media/quickstart-html/portal0.png)
 
-A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
+A **App Services** válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-html/portal1.png)
 

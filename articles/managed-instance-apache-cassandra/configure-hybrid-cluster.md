@@ -1,57 +1,66 @@
 ---
-title: Gyors útmutató – hibrid fürt konfigurálása az Azure felügyelt példányával az Apache Cassandra-vel
-description: Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az Azure felügyelt példányával az Apache Cassandra használatával.
+title: Rövid útmutató – Hibrid fürt konfigurálása felügyelt Azure-példányokkal az Apache Cassandrában
+description: Ez a rövid útmutató bemutatja, hogyan konfigurálható egy hibrid fürt az Apache Cassandrára vonatkozó felügyelt Azure-példányokkal.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: b022bff9db87c248881cd18cc21569aaef8f404a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f3ad2a5d5b275ff611653855eff73bd36afda9f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562137"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379417"
 ---
-# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Gyors útmutató: hibrid fürt konfigurálása Azure felügyelt példánnyal az Apache Cassandra (előzetes verzió) szolgáltatáshoz
+# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Rövid útmutató: Hibrid fürt konfigurálása felügyelt Azure-példányokkal az Apache Cassandrában (előzetes verzió)
 
-Az Apache Cassandra Azure felügyelt példánya automatizált üzembe helyezési és skálázási műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontok számára. Ez a szolgáltatás segít felgyorsítani a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
+Az Apache Cassandrára használható Felügyelt Azure-példány automatizált üzembe helyezési és méretezési műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontokhoz. Ez a szolgáltatás segít felgyorsítani a hibrid forgatókönyveket, és csökkenteni a folyamatos karbantartást.
 
 > [!IMPORTANT]
-> Az Apache Cassandra Azure felügyelt példánya jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Managed Instance for Apache Cassandra jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az Azure CLI-parancsok használatával. Ha a meglévő adatközpontok egy helyszíni vagy saját üzemeltetésű környezetben vannak, az Azure felügyelt példányát használhatja az Apache Cassandra használatával más adatközpontok hozzáadásához a fürthöz, és karbantarthatja azokat.
+Ez a rövid útmutató azt mutatja be, hogyan használhatók az Azure CLI-parancsok egy hibrid fürt konfigurálására. Ha meglévő adatközpontjai egy saját vagy egy adott környezetben vannak, az Apache Cassandrára használt Azure Managed Instance használatával további adatközpontokat adhat hozzá a fürthöz, és tarthatja karban azokat.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Ehhez a cikkhez az Azure CLI 2.12.1 vagy újabb verziójára van szükség. Ha Azure Cloud Shell használ, a legújabb verzió már telepítve van.
+* Ehhez a cikkhez az Azure CLI 2.12.1-es vagy újabb verziójára van szükség. Ha az alkalmazást Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-* Az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) a saját üzemeltetésű vagy helyszíni környezethez való csatlakozással. A helyszíni környezetek Azure-hoz való csatlakoztatásával kapcsolatos további információkért tekintse meg a helyszíni [hálózat csatlakoztatása az Azure-hoz](/azure/architecture/reference-architectures/hybrid-networking/) című cikket.
+* [Az Azure Virtual Network](../virtual-network/virtual-networks-overview.md) kapcsolatot biztosít a saját vagy a saját környezetéhez. A helyszíni környezetek Azure-hoz való csatlakoztatásával kapcsolatos további információkért tekintse meg a Helyszíni hálózat csatlakoztatása az [Azure-hoz cikket.](/azure/architecture/reference-architectures/hybrid-networking/)
 
 ## <a name="configure-a-hybrid-cluster"></a><a id="create-account"></a>Hibrid fürt konfigurálása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és navigáljon a Virtual Network-erőforráshoz.
+1. Jelentkezzen be a [Azure Portal,](https://portal.azure.com/) és lépjen a Virtual Network erőforráshoz.
 
-1. Nyissa meg az **alhálózatok** lapot, és hozzon létre egy új alhálózatot. Ha többet szeretne megtudni az **alhálózat hozzáadása** űrlap mezőiről, tekintse meg a [Virtual Network](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) cikket:
+1. Nyissa meg **az Alhálózatok lapot,** és hozzon létre egy új alhálózatot. Az Alhálózat hozzáadása űrlap  mezőivel kapcsolatos további információkért tekintse meg a Virtual Network [cikket:](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)
 
-   :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Adjon hozzá egy új alhálózatot a Virtual Networkhoz." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Adjon hozzá egy új alhálózatot a Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Most alkalmazzuk a VNet és az alhálózatra vonatkozó speciális engedélyeket, amelyeket a Cassandra felügyelt példány igényel az Azure CLI használatával. Használja a `az role assignment create` parancsot, cserélje le a,, `<subscription ID>` `<resource group name>` `<VNet name>` és `<subnet name>` értéket a megfelelő értékekre:
+    > [!NOTE]
+    > Az Apache Cassandrához használható felügyelt Azure-példány üzembe helyezéséhez internet-hozzáférés szükséges. Az üzembe helyezés meghiúsul olyan környezetekben, ahol az internet-hozzáférés korlátozott. Győződjön meg arról, hogy nem blokkolja a virtuális hálózatban a következő, a felügyelt Cassandra megfelelő működését nélkülözhetetlen Azure-szolgáltatásokhoz való hozzáférést:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Azure Monitoring
+    > - Azure Active Directory
+    > - Azure Security
+
+1. Most speciális engedélyeket alkalmazunk arra a virtuális hálózatra és alhálózatra, amelyre a Cassandra managed Instance-nek szüksége van az Azure CLI használatával. Használja a parancsot, és cserélje le a `az role assignment create` `<subscription ID>` , és `<resource group name>` `<VNet name>` értékeket a megfelelő értékekre:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]
-   > Az `assignee` `role` előző parancs és értékei rögzített szolgáltatási elv és szerepkör-azonosítók.
+   > Az előző parancs és értékei rögzített szolgáltatásmértékek, illetve `assignee` `role` szerepkör-azonosítók.
 
-1. Ezután konfigurálni fogjuk a hibrid fürt erőforrásait. Mivel már rendelkezik fürttel, a fürt neve csak logikai erőforrás lesz a meglévő fürt nevének azonosításához. Ügyeljen arra, hogy a `clusterName` következő parancsfájlban definiált és változók esetén a meglévő fürt nevét használja `clusterNameOverride` . Szüksége lesz a vetőmag-csomópontokra, a nyilvános Ügyféltanúsítványok használatára is (ha a Cassandra-végponton nyilvános/titkos kulcsot konfigurált), és a meglévő fürt pletykák-tanúsítványait.
+1. A következő lépés az erőforrások konfigurálása a hibrid fürthöz. Mivel már rendelkezik fürtöt, a fürt neve itt csak a meglévő fürt nevét azonosító logikai erőforrás lesz. Ügyeljen arra, hogy a meglévő fürt nevét használja a következő szkriptben a `clusterName` és `clusterNameOverride` változók definiálása során. Szüksége lesz a magcsomópontokra, a nyilvános ügyféltanúsítványokra (ha nyilvános/titkos kulcsot konfigurált a Cassandra-végponton), valamint a meglévő fürt tanúsítványaira is.
 
    > [!NOTE]
-   > Az `delegatedManagementSubnetId` alábbi módon megadható változó értéke pontosan ugyanaz, mint a `--scope` fenti parancsban megadott érték:
+   > Az alább megadott változó értéke pontosan megegyezik a fenti parancsban megadott `delegatedManagementSubnetId` `--scope` értékkel:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -75,9 +84,9 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
    ```
 
     > [!NOTE]
-    > Tudnia kell, hogy a meglévő nyilvános és/vagy pletyka-tanúsítványok hol vannak tárolva. Ha bizonytalan, akkor futtatnia kell `keytool -list -keystore <keystore-path> -rfc -storepass <password>` a tanúsítványokat a tanúsítványok kinyomtatásához. 
+    > Tudnia kell, hol vannak a meglévő nyilvános és/vagy tanúsítványtanúsítványok. Ha nem biztos abban, hogy a parancs futtatásával `keytool -list -keystore <keystore-path> -rfc -storepass <password>` kinyomtathatja a tanúsítványokat. 
 
-1. A fürterőforrás létrehozása után futtassa a következő parancsot a fürt telepítési részleteinek beszerzéséhez:
+1. A fürterőforrás létrehozása után futtassa a következő parancsot a fürt telepítési részleteinek lekértéhez:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -88,12 +97,12 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
        --resource-group $resourceGroupName \
    ```
 
-1. Az előző parancs a felügyelt példány környezetére vonatkozó adatokat adja vissza. Szüksége lesz a Gossip-tanúsítványokra, hogy azok a meglévő adatközpont csomópontjaira is telepíthetők legyenek. Az alábbi képernyőfelvételen az előző parancs kimenete és a tanúsítványok formátuma látható:
+1. Az előző parancs a felügyelt példány környezetével kapcsolatos információkat ad vissza. A tanúsítványtanúsítványokra azért van szükség, hogy telepítheti őket a meglévő adatközpont csomópontjaira. Az alábbi képernyőképen az előző parancs kimenete és a tanúsítványok formátuma látható:
 
-   :::image type="content" source="./media/configure-hybrid-cluster/show-cluster.png" alt-text="A tanúsítvány adatainak beolvasása a fürtből." lightbox="./media/configure-hybrid-cluster/show-cluster.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/show-cluster.png" alt-text="Szerezze be a tanúsítvány adatait a fürtből." lightbox="./media/configure-hybrid-cluster/show-cluster.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-cluster.png) -->
 
-1. Ezután hozzon létre egy új adatközpontot a hibrid fürtben. Ügyeljen arra, hogy a változó értékeit a fürt részleteivel helyettesítse:
+1. Ezután hozzon létre egy új adatközpontot a hibrid fürtben. A változóértékeket cserélje le a fürt adataira:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -110,7 +119,7 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
        --node-count 9 
    ```
 
-1. Most, hogy létrejött az új adatközpont, futtassa az adatközpont megjelenítése parancsot a részletek megtekintéséhez:
+1. Most, hogy létrehozta az új adatközpontot, futtassa az adatközpont megjelenítése parancsot a részletek megtekintéséhez:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -123,20 +132,20 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
        --data-center-name $dataCenterName 
    ```
 
-1. Az előző parancs kimenete az új adatközpont vetőmag-csomópontjai. Adja hozzá az új adatközponthoz tartozó vetőmag-csomópontokat a meglévő adatközpont konfigurációjához a *Cassandra. YAML* fájlban. És telepítse a felügyelt példány pletykák tanúsítványait, amelyeket korábban gyűjtött:
+1. Az előző parancs kimenete az új adatközpont magcsomópontjai. Adja hozzá az új adatközpont magcsomópontját a meglévő adatközpont konfigurációhoz a *cassandra.yaml fájlban.* Telepítse a felügyelt példány korábban összegyűjtött tanúsítványait:
 
-   :::image type="content" source="./media/configure-hybrid-cluster/show-datacenter.png" alt-text="Adatközpont részleteinek beolvasása." lightbox="./media/configure-hybrid-cluster/show-datacenter.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/show-datacenter.png" alt-text="Az adatközpont részleteinek lekérte." lightbox="./media/configure-hybrid-cluster/show-datacenter.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-datacenter.png) -->
 
     > [!NOTE]
-    > Ha további adatközpontokat szeretne hozzáadni, megismételheti a fenti lépéseket, de csak a magok csomópontjaira van szükség. 
+    > Ha további adatközpontokat szeretne hozzáadni, megismételheti a fenti lépéseket, de csak a magcsomópontokra van szüksége. 
 
-1. Végül a következő CQL-lekérdezéssel frissítse a replikációs stratégiát az egyes webhelyeken, hogy az összes adatközpontot a fürtön belül is tartalmazza:
+1. Végül használja a következő CQL-lekérdezést az egyes kulcsterek replikációs stratégiájának frissítéséhez, hogy az tartalmazza a fürt összes adatközpontját:
 
    ```bash
    ALTER KEYSPACE "ks" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3};
    ```
-   Emellett frissítenie kell a jelszó táblákat is:
+   A jelszótáblákat is frissítenie kell:
 
    ```bash
     ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
@@ -144,25 +153,25 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a Virtual Networkre vonatkozó engedélyek alkalmazása során hibát tapasztal, például *nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban a "e5007d2c-4b13-4a74-9b6a-605d99f03501"* értékre, akkor ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek a portálról való alkalmazásához lépjen a meglévő virtuális hálózat **hozzáférés-vezérlés (iam)** paneljére, és adjon hozzá egy szerepkör-hozzárendelést a "Azure Cosmos db" szerepkörhöz a "hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg, amikor a "Azure Cosmos DB" kifejezésre keres rá, adja hozzá a bejegyzéseket a következő képen látható módon: 
+Ha hibába ütközik az Virtual Network-engedélyek alkalmazásakor, például Nem található felhasználó vagy szolgáltatásnév a gráfadatbázisban az *"e5007d2c-4b13-4a74-9b6a-605d99f03501"* gráfadatbázisban, ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek portálról való alkalmazásához válassza a meglévő virtuális hálózat Hozzáférés-vezérlés **(IAM)** panelét, és adjon hozzá egy "Azure Cosmos DB" szerepkör-hozzárendelést a "Hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg a "Azure Cosmos DB" keresésekor, adja hozzá mindkét bejegyzést az alábbi képen látható módon: 
 
    :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Engedélyek alkalmazása" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
 
 > [!NOTE] 
-> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandra által felügyelt Azure-példányok nem rendelkeznek háttérbeli függőségekkel Azure Cosmos DB.  
+> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandrára felügyelt Azure Managed Instanced nem rendelkezik háttérbeli függőségekkel a Azure Cosmos DB.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem kívánja tovább használni ezt a felügyelt példány-fürtöt, törölje a következő lépésekkel:
+Ha nem folytatja a felügyeltpéldány-fürt használatát, törölje a következő lépésekkel:
 
-1. Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget.
-1. A listából válassza ki az ehhez a rövid útmutatóhoz létrehozott erőforráscsoportot.
-1. Az erőforráscsoport **Áttekintés** paneljén válassza az **erőforráscsoport törlése** elemet.
-3. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+1. A bal oldali menüben válassza Azure Portal **erőforráscsoportok lehetőséget.**
+1. A listából válassza ki a rövid útmutatóhoz létrehozott erőforráscsoportot.
+1. Az erőforráscsoport Áttekintés **panelen** válassza az **Erőforráscsoport törlése lehetőséget.**
+3. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre hibrid fürtöt az Azure CLI-vel és az Azure felügyelt példányával az Apache Cassandra használatával. Most már megkezdheti a fürttel való munkát.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre hibrid fürtöt az Azure CLI és az Apache Cassandrára használt Felügyelt Azure-példány használatával. Most már elkezdhet dolgozni a fürtön.
 
 > [!div class="nextstepaction"]
-> [Azure felügyelt példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI használatával](manage-resources-cli.md)
+> [Felügyelt Azure-példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI használatával](manage-resources-cli.md)

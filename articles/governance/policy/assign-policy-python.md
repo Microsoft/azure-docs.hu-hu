@@ -1,21 +1,21 @@
 ---
-title: 'Rövid útmutató: új szabályzat-hozzárendelés a Pythonban'
-description: Ebben a rövid útmutatóban a Python használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
+title: 'Rövid útmutató: Új szabályzat-hozzárendelés a Python használatával'
+description: Ebben a rövid útmutatóban a Python használatával fog létrehozni egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.date: 03/02/2021
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c9a0d6bb00d82748505304264aeaefa409c4b06
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742330"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379400"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Python használatával
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Rövid útmutató: Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Python használatával
 
-Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre a felügyelt lemezeket nem használó virtuális gépek azonosításához. Ha elkészült, azonosíthatja azokat a virtuális gépeket, amelyek _nem megfelelőek_.
+Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban létrehoz egy szabályzat-hozzárendelést a felügyelt lemezeket nem használó virtuális gépek azonosításához. Ha elkészült, azonosíthatja a nem megfelelő _virtuális gépeket._
 
-A Python-függvénytár az Azure-erőforrások parancssorból vagy parancsfájlokból való kezelésére szolgál. Ez az útmutató bemutatja, hogyan hozhat létre szabályzat-hozzárendelést a Python Library használatával.
+A Python-kódtár az Azure-erőforrások parancssorból vagy szkriptekkel való kezelésére szolgál. Ez az útmutató azt ismerteti, hogyan használható a Python-kódtár szabályzat-hozzárendelések létrehozására.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,24 +23,24 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-the-policy-library"></a>A házirend-könyvtár hozzáadása
+## <a name="add-the-policy-library"></a>A Szabályzattár hozzáadása
 
-Ahhoz, hogy a Python működjön a Azure Policyval, a könyvtárat hozzá kell adni. Ez a könyvtár működik, ahol a Python használható, beleértve [a Windows 10 vagy a](/windows/wsl/install-win10) helyileg telepített bash-t is.
+Ahhoz, hogy a Python Azure Policy, a kódtárat hozzá kell adni. Ez a kódtár mindenhol működik, ahol a Python használható, beleértve a [Bash on Windows 10](/windows/wsl/install-win10) helyileg telepítettet.
 
-1. Győződjön meg arról, hogy a legújabb Python telepítve van (legalább **3,8**). Ha még nincs telepítve, töltse le a következő címen: [Python.org](https://www.python.org/downloads/).
+1. Ellenőrizze, hogy telepítve van-e a legújabb Python **(legalább 3.8-as verzió).** Ha még nincs telepítve, töltse le a [Python.org.](https://www.python.org/downloads/)
 
-1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább **2.5.1**). Ha még nincs telepítve, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+1. Ellenőrizze, hogy telepítve van-e a legújabb Azure CLI **(legalább 2.5.1).** Ha még nincs telepítve, tekintse meg [az Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
    > [!NOTE]
-   > Az Azure CLI-vel engedélyezni kell a Python használatát a **CLI-alapú hitelesítés** használatához az alábbi példákban. További információ az egyéb lehetőségekről: [hitelesítés a Pythonhoz készült Azure Management librarys használatával](/azure/developer/python/azure-sdk-authenticate).
+   > Az alábbi példákban az Azure CLI-nek kell engedélyeznie, hogy a Python a **CLI-alapú** hitelesítést használja. További információ az egyéb lehetőségekről: [Hitelesítés a Pythonhoz készült Azure felügyeleti kódtárakkal.](/azure/developer/python/azure-sdk-authenticate)
 
-1. Hitelesítés az Azure CLI-n keresztül.
+1. Hitelesítés az Azure CLI használatával.
 
    ```azurecli
    az login
    ```
 
-1. A kiválasztható Python-környezetben telepítse a szükséges kódtárakat a Azure Policyhoz:
+1. A választott Python-környezetben telepítse a szükséges kódtárakat a Azure Policy:
 
    ```bash
    # Add the Python library for Python
@@ -54,9 +54,9 @@ Ahhoz, hogy a Python működjön a Azure Policyval, a könyvtárat hozzá kell a
    ```
 
    > [!NOTE]
-   > Ha a Python telepítve van az összes felhasználó számára, akkor ezeket a parancsokat emelt szintű konzolról kell futtatni.
+   > Ha a Python minden felhasználó számára telepítve van, ezeket a parancsokat emelt szintű konzolról kell futtatni.
 
-1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-policyinsights`**0.5.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és  `azure-cli-core` legalább **2.5.0** -nek kell lennie.
+1. Ellenőrizze, hogy a kódtárak telepítve vannak-e. `azure-mgmt-policyinsights`**0.5.0-s** vagy újabb, `azure-mgmt-resource` **9.0.0-s** vagy újabb, `azure-cli-core` és **2.5.0-s** vagy újabb verziónak kell lennie.
 
    ```bash
    # Check each installed library
@@ -65,9 +65,9 @@ Ahhoz, hogy a Python működjön a Azure Policyval, a könyvtárat hozzá kell a
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és hozzárendeli **azokat a naplózási virtuális gépeket, amelyek nem használnak Managed Disks** ( `06a78e20-9358-41c9-923c-fb736d382a4d` ) definíciót. Ez a szabályzat-definíció olyan erőforrásokat azonosít, amelyek nem felelnek meg a szabályzat-definícióban meghatározott feltételeknek.
+Ebben a rövid útmutatóban létrehoz egy szabályzat-hozzárendelést, és hozzárendeli a Felügyelt lemezeket **nem** használó virtuális gépek naplózása ( `06a78e20-9358-41c9-923c-fb736d382a4d` ) definíciót. Ez a szabályzatdefiníció azonosítja azokat az erőforrásokat, amelyek nem kompatibilisek a szabályzatdefinícióban meghatározott feltételekkel.
 
-Új szabályzat-hozzárendelés létrehozásához futtassa a következő kódot:
+Futtassa a következő kódot egy új szabályzat-hozzárendelés létrehozásához:
 
 ```python
 # Import specific methods and models from other libraries
@@ -92,22 +92,22 @@ print(policyAssignment)
 Az előző parancsok a következő információkat használják:
 
 Hozzárendelés részletei:
-- **DISPLAY_NAME** – a házirend-hozzárendelés megjelenítendő neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_ történik.
-- **policy_definition_id** – a házirend-definíció elérési útja, amely alapján létrehozza a hozzárendelést. Ebben az esetben ez a házirend-definíciós _virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket_. Ebben a példában a házirend-definíció beépített, és az elérési út nem tartalmaz felügyeleti csoportot vagy előfizetési adatokat.
-- **hatókör** – a hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrásokat vagy erőforrásokat kíván érvényesíteni. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
+- **display_name** – A szabályzat-hozzárendelés megjelenítendő neve. Ebben az esetben felügyelt lemezeket nem használó virtuális gépek naplózása _hozzárendelést használ._
+- **policy_definition_id** – A szabályzatdefiníció elérési útja, amely alapján létrehozza a hozzárendelést. Ebben az esetben ez a felügyelt lemezeket nem használó virtuális gépek naplózása szabályzatdefiníció _azonosítója._ Ebben a példában a szabályzatdefiníció egy beépített, és az elérési út nem tartalmazza a felügyeleti csoport vagy az előfizetés adatait.
+- **scope** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrásokon vagy erőforráscsoporton lesz kényszerítve. Ez a felügyeleti csoporttól az egyes erőforrásokon át is lehet. Ne `{scope}` feledjük a helyére az alábbi minták egyikét:
   - Felügyeleti csoport: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
   - Előfizetés: `/subscriptions/{subscriptionId}`
   - Erőforráscsoport: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Erőforrás `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
-- **description (Leírás** ) – mélyebb magyarázat arról, hogy mit tesz a szabályzat, vagy miért van hozzárendelve ehhez a hatókörhöz.
+  - Erőforrás: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
+- **description** – A szabályzat tevékenységének vagy a hatókörhöz való hozzárendelésének mélyebb magyarázata.
 
 Hozzárendelés létrehozása:
 
-- Hatókör – ez a hatókör határozza meg, hogy a szabályzat-hozzárendelés hol lesz mentve. A hozzárendelés részleteiben szereplő hatókörnek léteznie kell ezen a hatókörön belül.
+- Hatókör – Ez a hatókör határozza meg, hogy a rendszer hová menti a szabályzat-hozzárendelést. A hozzárendelés részleteiben beállított hatókörnek ebben a hatókörben kell lennie.
 - Name – A hozzárendelés tényleges neve. A fenti példában az _audit-vm-manageddisks_ nevet használtuk.
-- Szabályzat-hozzárendelés – az előző lépésben létrehozott Python **PolicyAssignment** objektum.
+- Szabályzat-hozzárendelés – Az előző lépésben létrehozott Python **PolicyAssignment** objektum.
 
-Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
+Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának meghatározásához.
 
 ## <a name="identify-non-compliant-resources"></a>A nem megfelelő erőforrások azonosítása
 
@@ -132,7 +132,7 @@ results = policyInsightsClient.policy_states.list_query_results_for_subscription
 print(results)
 ```
 
-A helyére írja be azt `{subscriptionId}` az előfizetést, amelyre vonatkozóan meg szeretné jeleníteni a szabályzat-hozzárendelés megfelelőségi eredményeit. Az egyéb hatókörök és az adatösszesítési módok listáját lásd: [házirend állapotának módszerei](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods).
+Cserélje `{subscriptionId}` le a helyére azt az előfizetést, amely a szabályzat-hozzárendelés megfelelőségi eredményeit szeretné látni. Az egyéb hatókörök listájáért és az adatok összegzésének módjaiért lásd: [Szabályzatállapot-metódusok.](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods)
 
 Az eredmények a következő példához hasonlók:
 
@@ -147,7 +147,7 @@ Az eredmények a következő példához hasonlók:
 }
 ```
 
-Az eredmények megegyeznek a szabályzat-hozzárendelés **erőforrás-megfelelőség** lapján látható Azure Portal nézetben.
+Az eredmények megegyeznek a  szabályzat-hozzárendelés Erőforrás-megfelelőség lapján látható Azure Portal nézetben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -168,13 +168,13 @@ policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-m
 print(policyAssignment)
 ```
 
-Cserélje le `{scope}` ugyanazt a hatókört, amelyet a szabályzat-hozzárendelés létrehozásához használt.
+Cserélje `{scope}` le a helyére ugyanazt a hatókört, mint a szabályzat-hozzárendelés létrehozásához.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 
-Ha többet szeretne megtudni a szabályzat-definíciók hozzárendeléséről, hogy ellenőrizze, hogy az új erőforrások megfelelőek-e, folytassa a következő oktatóanyaggal:
+Ha többet szeretne megtudni az új erőforrások megfelelőnek minősülő szabályzatdefiníciók hozzárendelésről, folytassa a következő oktatóanyagokkal:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./tutorials/create-and-manage.md)

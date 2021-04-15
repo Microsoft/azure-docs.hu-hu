@@ -7,35 +7,35 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: cynthn
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 6432c125c4fedd962faa28a4c84c7494300b0472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file
+ms.openlocfilehash: 1c06f5ab8995e7285365fa2d0ee77c327be2b1bd
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92755736"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386933"
 ---
-## <a name="list-information"></a>Információk listázása
+## <a name="list-information"></a>Listainformációk
 
-A rendelkezésre álló képtárak helyének, állapotának és egyéb információinak lekérése az az [SIG List](/cli/azure/sig#az-sig-list)paranccsal.
+Az az sig list használatával lekérhetők az elérhető rendszerkép-katalógusok helye, [állapota és egyéb adatai.](/cli/azure/sig#az-sig-list)
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Egy katalógus képdefinícióinak listázása, beleértve az operációs rendszer típusával és állapotával kapcsolatos információkat az [az SIG rendszerkép-definition List](/cli/azure/sig/image-definition#az-sig-image-definition-list)paranccsal.
+Az [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list)használatával listába sorolja a katalógusban található rendszerkép-definíciókat, beleértve az operációs rendszer típusával és állapotával kapcsolatos információkat.
 
 ```azurecli-interactive 
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-A katalógusban szereplő megosztott rendszerkép-verziók listázása az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version#az-sig-image-version-list)paranccsal.
+Listába sorolja egy katalógus megosztott rendszerkép-verzióit [az az sig image-version list használatával.](/cli/azure/sig/image-version#az-sig-image-version-list)
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
-Szerezze be egy rendszerkép-verzió AZONOSÍTÓját az [az SIG rendszerkép-Version show](/cli/azure/sig/image-version#az-sig-image-version-show)paranccsal.
+Szerezze be egy rendszerképverzió azonosítóját [az az sig image-version show használatával.](/cli/azure/sig/image-version#az-sig-image-version-show)
 
 ```azurecli-interactive
 az sig image-version show \
