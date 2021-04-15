@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Central eszköz kapcsolatainak megoldása | Microsoft Docs
-description: Az eszközön található adatok nem IoT Central
+title: Eszközkapcsolatok hibaelhárítása Azure IoT Central | Microsoft Docs
+description: Elháríthatja, hogy miért nem látja az eszközökről származó adatokat a IoT Central
 services: iot-central
 author: dominicbetts
 ms.author: dobett
@@ -8,60 +8,60 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: ae40571b958897b5f06c4ae72a9049a585561872
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064715"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378567"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
-Ebből a dokumentumból megtudhatja, hogy az eszköz fejlesztői miért nem jelennek meg az alkalmazásban, hogy az eszközök milyen adatokat küldenek IoT Centralnak.
+Ez a dokumentum segít az eszközfejlesztőknek megtudni, hogy az eszközök IoT Central miért nem találják meg az adatokat az alkalmazásban.
 
 Két fő területet kell megvizsgálni:
 
-- Eszköz kapcsolódási problémái
-  - A hitelesítési problémák, például az eszköz hitelesítő adatai érvénytelenek
-  - Hálózati kapcsolattal kapcsolatos problémák
-  - Az eszköz nincs jóváhagyva, vagy le van tiltva
-- Az eszköz tartalmának alakzatával kapcsolatos problémák
+- Eszközkapcsolati problémák
+  - Hitelesítési problémák, például az eszköz hitelesítő adatai érvénytelenek
+  - Hálózati kapcsolati problémák
+  - Az eszköz nincs jóváhagyva vagy letiltva
+- Az eszköz hasznos adatokatalakzatának problémái
 
-Ez a hibaelhárítási útmutató az eszközök csatlakozási problémáit és az eszköz hasznos adataival kapcsolatos problémákra koncentrál.
+Ez a hibaelhárítási útmutató az eszközkapcsolati problémákra és az eszköz hasznos adatalakzatának problémáira összpontosít.
 
-## <a name="device-connectivity-issues"></a>Eszköz kapcsolódási problémái
+## <a name="device-connectivity-issues"></a>Eszközkapcsolati problémák
 
-Ez a szakasz segít megállapítani, hogy az adatai eljussanak-e IoT Central.
+Ez a szakasz segít megállapítani, hogy az adatok elérik-e IoT Central.
 
 Ha még nem tette meg, telepítse az `az cli` eszközt és a `azure-iot` bővítményt.
 
-A telepítésének megismeréséhez `az cli` lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+A telepítésének elsajátításért `az cli` lásd: [Az Azure CLI telepítése.](/cli/azure/install-azure-cli)
 
-A [](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) bővítmény telepítéséhez `azure-iot` futtassa a következő parancsot:
+A [bővítmény](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) `azure-iot` telepítéséhez futtassa a következő parancsot:
 
 ```azurecli
 az extension add --name azure-iot
 ```
 
 > [!NOTE]
-> Előfordulhat, hogy a rendszer `uamqp` a bővítmény első futtatásakor kéri a könyvtár telepítését.
+> Előfordulhat, hogy a rendszer a bővítményparancs első futtatásakor a kódtár telepítését `uamqp` kéri.
 
-Ha telepítette a `azure-iot` bővítményt, indítsa el az eszközt, és ellenőrizze, hogy az üzenetek küldésének módja a IoT Central.
+A bővítmény telepítése után indítsa el az eszközt, és nézze meg, hogy az elküldött üzenetek úton vannak-e a `azure-iot` IoT Central.
 
-Az alábbi parancsokkal jelentkezzen be az előfizetésbe, ahol a IoT Central alkalmazást használja:
+Az alábbi parancsokkal jelentkezzen be arra az előfizetésre, amelyben a IoT Central van:
 
 ```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
-Az eszköz által küldött telemetria figyeléséhez használja a következő parancsot:
+Az eszköz által küldött telemetria figyelése a következő paranccsal:
 
 ```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
-Ha az eszköz sikeresen csatlakozott a IoT Centralhoz, a következőhöz hasonló kimenet jelenik meg:
+Ha az eszköz sikeresen csatlakozott a IoT Central, a következőhöz hasonló kimenetet fog látni:
 
 ```output
 Monitoring telemetry.
@@ -80,13 +80,13 @@ Filtering on device: device-001
 }
 ```
 
-Ha figyelni szeretné a tulajdonság frissítését, az eszköz IoT Central a következő előnézeti paranccsal végez cserét:
+A tulajdonságfrissítések figyelése érdekében az eszköz IoT Central az alábbi előzetes verziójú parancsot használja:
 
 ```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
-Ha az eszköz sikeresen elküldte a tulajdonságokat, a következőhöz hasonló kimenet jelenik meg:
+Ha az eszköz sikeresen elküldi a tulajdonságfrissítéseket, a következőhöz hasonló kimenet fog látni:
 
 ```output
 Changes in reported properties:
@@ -96,21 +96,21 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-Ha megjelenik az adatai a terminálon, akkor az adatai a IoT Central alkalmazásnak megfelelően jelennek meg.
+Ha az adatok megjelennek a terminálon, akkor az adatok olyan távol esnek a IoT Central alkalmazásáig.
 
-Ha néhány perc elteltével sem jelenik meg az adat, próbálja meg lenyomni `Enter` a `return` billentyűzeten a vagy a billentyűt arra az esetre, ha a kimenet beragadt.
+Ha néhány perc után nem jelennek meg adatok, próbálja meg megnyomni a vagy a billentyűt a billentyűzeten, ha a `Enter` `return` kimenet elakadt.
 
-Ha továbbra sem jelenik meg az adatok a terminálon, akkor valószínű, hogy az eszköz hálózati kapcsolati problémákkal rendelkezik, vagy nem küldi el megfelelően az adatokat IoT Central.
+Ha továbbra sem jelennek meg adatok a terminálon, valószínű, hogy az eszközön hálózati kapcsolati problémák vannak, vagy nem küldi el megfelelően az adatokat a IoT Central.
 
-### <a name="check-the-provisioning-status-of-your-device"></a>Az eszköz kiépítési állapotának keresése
+### <a name="check-the-provisioning-status-of-your-device"></a>Az eszköz kiépítési állapotának ellenőrzése
 
-Ha az adatai nem jelennek meg a figyelőben, ellenőrizze az eszköz kiépítési állapotát a következő parancs futtatásával:
+Ha az adatok nem jelennek meg a figyelőben, ellenőrizze az eszköz kiépítési állapotát a következő parancs futtatásával:
 
 ```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
-Az alábbi kimenet egy olyan eszközt mutat be, amely nem kapcsolódik a csatlakozáshoz:
+Az alábbi kimenet egy olyan eszközre mutat példát, amely nem csatlakozik:
 
 ```json
 {
@@ -130,65 +130,73 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Leírás | Lehetséges kockázatcsökkentés |
 | - | - | - |
 | Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
-| Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
-| Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
-| Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#device-registration) |
-| Nincs társítva | Az eszköz nincs társítva egy eszköz sablonnal. | Társítsa az eszközt egy eszköz sablonnal, hogy IoT Central tudja, hogyan kell elemezni az adatelemzést. |
+| Regisztrálva | Az eszköz még nem csatlakozott a IoT Central. | Ellenőrizze, hogy vannak-e csatlakozási problémák az eszköznaplókban. |
+| Blokkolva | Az eszköz nem csatlakozik a IoT Central. | Az eszköz nem csatlakozik a IoT Central alkalmazáshoz. Oldja fel az eszköz zárolását a IoT Central, majd próbálja meg újra. További információ: Eszközök [blokkolása.](concepts-get-connected.md#device-status-values) |
+| Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nem engedélyezett a IoT Central való csatlakozáshoz. Hagyja jóvá az eszközt a IoT Central majd próbálja újra. További információ: Eszközök [jóváhagyása](concepts-get-connected.md#device-registration) |
+| Társítatlan | Az eszköz nincs eszközsablonhoz társítva. | Társítsa az eszközt egy eszközsablonhoz, IoT Central tudja, hogyan elemezze az adatokat. |
 
-További információ az [Eszközállapot-kódokról](concepts-get-connected.md#device-status-values).
+További információ az [eszközállapot-kódokról:](concepts-get-connected.md#device-status-values).
 
 ### <a name="error-codes"></a>Hibakódok
 
-Ha továbbra sem tudja diagnosztizálni, hogy az adatai miért nem jelennek meg `monitor-events` , a következő lépés az eszköz által jelentett hibakódok megkeresése.
+Ha továbbra sem tudja diagnosztizálni, hogy az adatok miért nem jelenhetnek meg az -ban, a következő lépés az eszköz által jelentett `monitor-events` hibakódok megjelenítése.
 
-Indítsa el a hibakeresési munkamenetet az eszközön, vagy gyűjtsön naplókat az eszközről. Keresse meg az eszköz által jelentett hibakódokat.
+Indítson el egy hibakeresési munkamenetet az eszközön, vagy gyűjtsön naplókat az eszközről. Ellenőrizze, hogy vannak-e olyan hibakódok, amelyekről az eszköz jelentést készít.
 
-Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehetséges műveletek láthatók.
+Az alábbi táblázatok a gyakori hibakódokat és a lehetséges megoldási műveleteket mutatják be.
 
-Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
+Ha a hitelesítési folyamattal kapcsolatos problémákat lát:
 
-| Hibakód | Leírás | Lehetséges enyhítés |
+| Hibakód | Leírás | Lehetséges kockázatcsökkentés |
 | - | - | - |
-| 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
-| 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |
-| 404 | Az eszköz kiépítési szolgáltatásának példánya vagy egy erőforrás, például egy regisztráció nem létezik. | Az [ügyfélszolgálatot tartalmazó jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 412 | A `ETag` kérelemben szereplő nem felel meg a `ETag` meglévő erőforrásnak, mint RFC7232. | Az [ügyfélszolgálatot tartalmazó jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Csökkentse az üzenetek gyakoriságát, Ossza szét a feladatokat több eszköz között. |
-| 500 | Belső hiba történt. | Nyújtson be [egy jegyet az ügyfélszolgálattal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és ellenőrizze, hogy tud-e további segítséget nyújtani. |
+| 400 | A kérelem törzse érvénytelen. Például nem elemezhető, vagy az objektum nem érvényesíthető. | Győződjön meg arról, hogy az igazolási folyamat részeként a megfelelő kérelem törzsét küldi el, vagy eszközoldali SDK-t használ. |
+| 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt, vagy nem vonatkozik a kérés URI-jra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz a megfelelő hitelesítő adatokkal rendelkezik. |
+| 404 | A Device Provisioning Service-példány vagy egy erőforrás, például egy regisztráció nem létezik. | [Nyújtson be egy jegyet az ügyfélszolgálattal.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) |
+| 412 | A kérelemben lévő nem egyezik meg a meglévő erőforrás erőforrásának a `ETag` `ETag` RFC7232 szabványnak megfelelővel. | [Nyújtson be egy jegyet az ügyfélszolgálattal.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) |
+| 429 | A műveleteket a szolgáltatás szabályozása alatt állnak. Konkrét szolgáltatási korlátokért lásd: IoT Hub Device Provisioning Service [korlátozások.](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits) | Az üzenetek gyakoriságának csökkentése, a felelősségek felosztása több eszköz között. |
+| 500 | Belső hiba történt. | [Ha további segítségre van szüksége,](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) nyújtson be egy jegyet az ügyfélszolgálatnak. |
 
-## <a name="payload-shape-issues"></a>Hasznos adattartalom-alakzatokkal kapcsolatos problémák
+### <a name="file-upload-error-codes"></a>Fájlfeltöltési hibakódok
 
-Ha azt állapította meg, hogy az eszköz adatokat küld a IoT Centralnak, a következő lépés annak biztosítása, hogy az eszköz érvényes formátumban küldje el az adatokat.
+Az alábbi lista azokat a gyakori hibakódokat sorolja fel, amelyek akkor jelenhetnek meg, ha egy eszköz megpróbál feltölteni egy fájlt a felhőbe. Ne feledje, hogy mielőtt az eszköz feltölthet egy fájlt, konfigurálnia kell az eszköz [fájlfeltöltését](howto-configure-file-uploads.md) az alkalmazásban.
 
-A gyakori problémák két fő kategóriába sorolhatók, amelyek hatására az eszközök nem jelennek meg IoT Centralban:
+| Hibakód | Leírás | Lehetséges kockázatcsökkentés |
+| - | - | - |
+| 403006  | Túllépte az egyidejű fájlfeltöltési műveletek számát. Minden eszközoldali ügyfél legfeljebb 10 egyidejű fájlfeltöltést tölthet fel. | Győződjön meg arról, hogy az eszköz IoT Central értesítést a fájlfeltöltési művelet befejezéséről. Ha ez nem működik, próbálja meg csökkenteni a kérés időtúllépését. |
 
-- Az eszköz adattípusának nem megfelelő eszköz sablonja:
-  - Nem egyeznek meg a nevek, például az elírások vagy a kis-és nagybetűk egyeztetésével kapcsolatos problémák.
-  - Nem modellezett tulajdonságok, amelyekben a séma nincs definiálva az eszköz sablonjában.
-  - A séma eltérése, mint például a sablonban definiált típus `boolean` , de az érték egy karakterlánc.
-  - Ugyanaz a telemetria-név több felületen is definiálva van, de az eszköz nem IoT Plug and Play megfelelő.
-- Érvénytelen az adatalakzat JSON-értéke. További információ: [telemetria, Property és Command hasznos](concepts-telemetry-properties-commands.md)adatok.
+## <a name="payload-shape-issues"></a>Hasznos formában kapcsolatos problémák
 
-Ha szeretné megállapítani, hogy a probléma melyik kategóriába esik, futtassa a legmegfelelőbb parancsot a forgatókönyvhöz:
+Miután megállapította, hogy az eszköz adatokat küld a IoT Central, a következő lépés annak biztosítása, hogy az eszköz érvényes formátumban küldi el az adatokat.
 
-- A telemetria érvényesítéséhez használja az előnézet parancsot:
+A gyakori problémák két fő kategóriája miatt az eszközadatok nem jelennek meg a IoT Central:
+
+- Eszközsablonok eltérése az eszközadatok között:
+  - Az elnevezések, például az el hibák vagy a kis- és az esetegyeztetési problémák eltérése.
+  - Nem módosított tulajdonságok, amelyekben a séma nincs definiálva az eszközsablonban.
+  - A sémák nem egyezőek, például a sablonban típusként definiált típus, de az `boolean` adatok sztringek.
+  - Ugyanazt a telemetrianevet több felületen definiálja a rendszer, de az eszköz nem IoT Plug and Play megfelelő.
+- Az adatalakzat érvénytelen JSON. További információ: [Telemetria,](concepts-telemetry-properties-commands.md)tulajdonság és hasznos parancsok.
+
+A probléma kategóriáinak észleléséhez futtassa a forgatókönyvnek legmegfelelőbb parancsot:
+
+- A telemetria érvényesítéséhez használja az előzetes verzió parancsát:
 
     ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
-- A tulajdonságok frissítéseinek ellenőrzéséhez használja az előnézet parancsot
+- A tulajdonságfrissítések ellenőrzéséhez használja az előzetes verzió parancsát
 
     ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-Előfordulhat, hogy a rendszer először a `uamqp` parancs futtatásakor kéri a könyvtár telepítését `validate` .
+Előfordulhat, hogy a rendszer a parancs első futtatásakor kéri a `uamqp` kódtár `validate` telepítését.
 
-Az alábbi kimenet a validate parancs által jelzett hibát és figyelmeztető üzeneteket jeleníti meg:
+Az alábbi kimenet a validate parancstól származó hiba- és figyelmeztető üzeneteket mutatja be:
 
 ```output
 Validating telemetry.
@@ -202,16 +210,16 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-Ha inkább grafikus felhasználói felületet szeretne használni, a IoT Central **nyers** adatnézet használatával ellenőrizze, hogy valami nincs-e modellezve. A **nyers adatok** nézet nem ismeri fel, hogy az eszköz helytelenül formázott JSON-t küld-e.
+Ha grafikus felhasználói felület használatát részesíti előnyben, használja a IoT Central **Nyers** adatok nézetben, hogy lássa, van-e nem modellezés alatt. A **Nyers adatok** nézet nem észleli, ha az eszköz helytelenül formázott JSON-adatokat küld.
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Képernyőfelvétel a nyers adatnézetről":::
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="A Nyers adatok nézet képernyőképe":::
 
-Ha észlelte a problémát, lehet, hogy frissítenie kell az eszköz belső vezérlőprogramja, vagy létre kell hoznia egy új sablont, amely korábban nem modellezett adatmodelleket modellez.
+Ha észlelte a problémát, előfordulhat, hogy frissítenie kell az eszköz belső vezérlőprogramját, vagy létre kell hoznia egy új eszközsablont, amely korábban nem módosított adatokat modellel.
 
-Ha úgy döntött, hogy olyan új sablont hoz létre, amely helyesen modellezi az adatmodelleket, telepítse át az eszközöket a régi sablonból az új sablonba. További információ: [eszközök kezelése az Azure IoT Central alkalmazásban](howto-manage-devices.md).
+Ha úgy döntött, hogy létrehoz egy új sablont, amely megfelelően modelle az adatokat, akkor a régi sablonból az új sablonba telepítheti át az eszközöket. További tudnivalókért lásd: Eszközök kezelése a Azure IoT Central [alkalmazásban.](howto-manage-devices.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure- [támogatási jegyet](https://portal.azure.com/#create/Microsoft.Support)is megadhat.
+Ha további segítségre van szüksége, kapcsolatba léphet az Azure-szakértőkkel az MSDN Azure-on, és Stack Overflow [fórumain.](https://azure.microsoft.com/support/community/) Másik lehetőségként be is Azure-támogatás [jegyet.](https://portal.azure.com/#create/Microsoft.Support)
 
-További információ: az [Azure IoT-támogatás és a Súgó beállításai](../../iot-fundamentals/iot-support-help.md).
+További információ: [Azure IoT támogatási és súgóbeállítások.](../../iot-fundamentals/iot-support-help.md)

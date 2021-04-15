@@ -8,9 +8,11 @@
       href: core/overview-iot-central-tour.md
     - name: Legutóbbi frissítések
       items:
-        - name: Február 2021 új és frissített funkciók
+        - name: 2021. március– új és frissített funkciók
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-march-2021/'
+        - name: 2021. február – új és frissített funkciók
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
-        - name: Január 2021 új és frissített funkciók
+        - name: 2021. január– új és frissített funkciók
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: '2020. november: új és továbbfejlesztett funkciók'
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
@@ -57,7 +59,7 @@
           href: core/tutorial-define-gateway-device-type.md
         - name: IoT Edge-eszköz csatlakoztatása
           href: core/tutorial-add-edge-as-leaf-device.md
-    - name: Integrált megoldások készítése
+    - name: Integrált megoldások kiépítése
       items:
         - name: Eszközcsoport létrehozása
           href: core/tutorial-use-device-groups.md
@@ -131,29 +133,29 @@
       href: core/concepts-architecture.md
     - name: Útmutató eszközfejlesztők számára
       href: core/overview-iot-central-developer.md
-    - name: Megoldás-előkészítő útmutató
+    - name: Megoldáskészítői útmutató
       href: core/overview-iot-central-solution-builder.md
     - name: Rendszergazdai útmutató
       href: core/overview-iot-central-admin.md
-    - name: Kezelői útmutató
+    - name: Útmutató az operátorhoz
       href: core/overview-iot-central-operator.md
     - name: Mik azok az alkalmazássablonok?
       href: core/concepts-app-templates.md
-    - name: Iparági specifikus alkalmazások sablonjai
+    - name: Iparágspecifikus alkalmazássablonok
       items:
         - name: Retail
           items:
             - name: Áttekintés
               href: retail/overview-iot-central-retail.md
-            - name: Áruházbeli elemzési pénztári architektúra
+            - name: Az üzletben tárolt elemzések kiveszi az architektúrát
               href: retail/store-analytics-architecture.md
-            - name: Intelligens leltár felügyeleti architektúrája
+            - name: Intelligens leltárkezelési architektúra
               href: retail/architecture-smart-inventory-management.md
             - name: Csatlakoztatott logisztikai architektúra
               href: retail/architecture-connected-logistics.md
             - name: Digitális terjesztési központ
               href: retail/architecture-digital-distribution-center.md
-            - name: Micro-teljesítési központ architektúrája
+            - name: Mikro-teljesítőközpont architektúrája
               href: retail/architecture-micro-fulfillment-center.md
             - name: Videóelemzés – objektum- és mozgásérzékelés
               href: retail/architecture-video-analytics.md
@@ -169,11 +171,11 @@
           items:
             - name: Áttekintés
               href: government/overview-iot-central-government.md
-            - name: Csatlakoztatott hulladék-figyelési architektúra
+            - name: Csatlakoztatott szemét monitorozási architektúrája
               href: government/concepts-connectedwastemanagement-architecture.md
-            - name: Víz-felhasználás figyelési architektúrája
+            - name: A vízfogyasztás monitorozásának architektúrája
               href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: Vízminőség-figyelési architektúra
+            - name: Vízminőség-monitorozási architektúra
               href: government/concepts-waterqualitymonitoring-architecture.md
         - name: Egészségügy
           items:
@@ -217,7 +219,7 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Más IoT-felhők csatlakoztatása
           href: core/howto-build-iotc-device-bridge.md
-    - name: Integrált megoldások készítése
+    - name: Integrált megoldások kiépítése
       items:
         - name: Csempék hozzáadása az irányítópulthoz
           href: core/howto-add-tiles-to-your-dashboard.md
@@ -241,7 +243,7 @@
           href: core/howto-create-custom-analytics.md
         - name: Adatok vizualizációja a Power BI-ban
           href: core/howto-connect-powerbi.md
-        - name: Az alkalmazás összekapcsolhatók a Dynamics 365 Field Services szolgáltatással
+        - name: Az alkalmazás csatlakoztatása a Dynamics 365 Field Serviceshez
           href: government/how-to-configure-connected-field-services.md
     - name: Eszközök kezelése
       items:
@@ -249,7 +251,7 @@
           href: core/howto-manage-devices.md
         - name: Feladat futtatása
           href: core/howto-run-a-job.md
-        - name: Eszközök áthelyezése IoT Hub
+        - name: Eszközök áthelyezése a IoT Hub
           href: core/how-to-move-device-to-iot.md
     - name: A megoldás felügyelete
       items:
@@ -263,7 +265,7 @@
           href: core/howto-customize-ui.md
         - name: Az alkalmazás exportálása
           href: core/howto-use-app-templates.md
-        - name: A v2 migrálása v3 alkalmazásba
+        - name: V2 áttelepítése 3-as alkalmazásba
           href: core/howto-migrate.md
         - name: Alkalmazásállapot monitorozása
           href: core/howto-monitor-application-health.md
@@ -309,7 +311,7 @@
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
-    - name: IoT Szószedet
+    - name: IoT-szószedet
       href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:

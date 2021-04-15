@@ -1,6 +1,6 @@
 ---
-title: Alsóbb rétegbeli IoT Edge-eszközök csatlakoztatása – Azure IoT Edge | Microsoft Docs
-description: IoT Edge eszköz konfigurálása Azure IoT Edge Gateway-eszközökhöz való kapcsolódáshoz.
+title: Lefelé irányuló IoT Edge csatlakoztatása – Azure IoT Edge | Microsoft Docs
+description: Egy átjáróeszköz konfigurálása IoT Edge átjáróeszközökhöz való Azure IoT Edge való csatlakozáshoz.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -12,117 +12,117 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310019"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484319"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz IoT Edge csatlakoztatása Azure IoT Edge átjáróhoz
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
-Ez a cikk egy IoT Edge átjáró és egy alsóbb rétegbeli IoT Edge-eszköz közötti megbízható kapcsolat létesítéséhez nyújt útmutatást.
+Ez a cikk útmutatást nyújt a megbízható kapcsolat létesítéhez egy IoT Edge átjáró és egy lefelé irányuló IoT Edge között.
 
-Egy átjáró-forgatókönyvben egy IoT Edge eszköz lehet átjáró és alsóbb rétegbeli eszköz is. Több IoT Edge átjáró is létrehozható az eszközök hierarchiájának létrehozásához. Az alsóbb rétegbeli (vagy gyermek) eszközök az átjáró (vagy a szülő) eszközön keresztül hitelesíthetők, és küldhetők vagy fogadhatnak üzeneteket.
+Átjáróforgatókönyvben a IoT Edge egy átjáró és egy lefelé irányuló eszköz is lehet. Több IoT Edge is rétegezhet az eszközök hierarchiájának létrehozásához. Az alhálózati (vagy gyermek) eszközök hitelesíthetők és üzeneteket küldhetnek vagy fogadhatnak az átjáróeszközükön (vagy szülőeszközükön) keresztül.
 
-Az átjáró-hierarchiában két különböző konfiguráció van IoT Edge-eszközökhöz, és ez a cikk mindkettőt is tárgyalja. Az első a **legfelső réteg** IoT Edge eszköz. Ha több IoT Edge-eszköz csatlakozik egymáshoz, minden olyan eszköz, amely nem rendelkezik fölérendelt eszközzel, de közvetlenül kapcsolódik a IoT Hubhoz, a felső rétegben kell tekinteni. Az eszköz feladata, hogy a kérelmeket az alatta lévő összes eszközről kezelje. A másik konfiguráció minden IoT Edge eszközre érvényes a hierarchia **alsóbb rétegében** . Ezek az eszközök lehetnek átjárók más alsóbb rétegbeli IoT és IoT Edge eszközökhöz, de a saját szülői eszközein keresztül is át kell irányítani a kommunikációt.
+Az átjáróhierarchiában a IoT Edge két különböző konfigurációja van, és ez a cikk mindkettőre vonatkozik. Az első az **eszköz** felső IoT Edge rétege. Ha több IoT Edge eszköz csatlakozik egymással, minden olyan eszköz, amely nem rendelkezik szülőeszközvel, de közvetlenül csatlakozik IoT Hub a felső réteghez. Ez az eszköz felelős az alatta lévő összes eszköztől származó kérések kezeléséért. A másik konfiguráció minden olyan IoT Edge eszközre vonatkozik, amely a **hierarchia** alsó rétegében található. Ezek az eszközök lehetnek más lefelé irányuló IoT- és IoT Edge-eszközök átjárói, de a kommunikációt a saját szülőeszközökön keresztül is át kell irányítanuk.
 
-Egyes hálózati architektúrák megkövetelik, hogy a hierarchiában csak a legfelső IoT Edge eszköz tud csatlakozni a felhőhöz. Ebben a konfigurációban a hierarchia alsóbb rétegeiben lévő összes IoT Edge-eszköz csak az átjáróval (vagy a szülővel) és az alárendelt (vagy gyermek) eszközökkel tud kommunikálni.
+Egyes hálózati architektúrák megkövetelik, hogy csak a IoT Edge legfelső szintű eszköz kapcsolódhat a felhőhöz. Ebben a konfigurációban a IoT Edge alsóbb rétegeiben lévő összes eszköz csak az átjáróeszközével (vagy szülőeszközével) és az alsóbb rétegbeli (vagy gyermek) eszközökkel tud kommunikálni.
 
-A cikkben ismertetett lépések a [IoT Edge-eszköz konfigurálása, amely transzparens átjáróként működik](how-to-create-transparent-gateway.md), amely egy IoT Edge eszköz átjáróként való használatát állítja be az alsóbb rétegbeli IoT-eszközökhöz. Ugyanazok az alapvető lépések érvényesek az összes átjáróra:
+A cikkben található összes lépés a Configure [an IoT Edge device to](how-to-create-transparent-gateway.md)act as a transparent gateway (A IoT Edge-eszköz konfigurálása transzparens átjáróként) cikkben található lépésekre épül, amely egy IoT Edge-eszközt állít be átjáróként az lefelé irányuló IoT-eszközök számára. Ugyanezek az alapvető lépések vonatkoznak az összes átjáró-forgatókönyvre:
 
-* **Hitelesítés**: hozzon létre IoT hub identitásokat az átjáró-hierarchiában lévő összes eszközhöz.
-* **Engedélyezés**: állítsa be a szülő/gyermek kapcsolatot IoT hub, hogy a gyermek eszközök csatlakozzanak a fölérendelt eszközhöz, például a IoT hubhoz.
-* **Átjáró felderítése**: gondoskodjon arról, hogy a gyermek eszköz a helyi hálózaton találja a fölérendelt eszközét.
-* **Biztonságos kapcsolat**: hozzon létre biztonságos kapcsolatot az azonos lánc részét képező megbízható tanúsítványokkal.
+* **Hitelesítés:** Hozzon IoT Hub identitásokat az átjáróhierarchiában lévő összes eszköz számára.
+* **Engedélyezés:** Állítsa be a szülő-gyermek kapcsolatot a IoT Hub, hogy úgy engedélyezze a gyermekeszközöknek a szülőeszközükhöz való csatlakozást, mintha a szülőeszközhöz IoT Hub.
+* **Átjárófelderítés:** Győződjön meg arról, hogy a gyermekeszköz megtalálja a szülőeszközét a helyi hálózaton.
+* **Biztonságos kapcsolat:** Biztonságos kapcsolat létrehozása megbízható tanúsítványokkal, amelyek ugyanannak a láncnak a részei.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy ingyenes vagy standard IoT hub.
-* Legalább két **IoT Edge eszköz**, az egyik a legfelső rétegű eszköz, és egy vagy több alsóbb rétegbeli eszköz. Ha nem áll rendelkezésre IoT Edge eszköz, [futtathatja Azure IoT Edge Ubuntu rendszerű virtuális gépeken](how-to-install-iot-edge-ubuntuvm.md)is.
-* Ha az Azure CLI-t használja az eszközök létrehozásához és kezeléséhez, az Azure CLI v 2.3.1-es verziója az Azure IoT Extension v 0.10.6 vagy újabb verzióra van telepítve.
+* Ingyenes vagy standard IoT Hub.
+* Legalább két **IoT Edge eszköz,** az egyik a legfelső rétegben lévő eszköz, egy vagy több alsó rétegben lévő eszköz. Ha nem állnak rendelkezésre IoT Edge eszközök, futtathatja a Azure IoT Edge Ubuntu virtuális [gépeken.](how-to-install-iot-edge-ubuntuvm.md)
+* Ha az Azure CLI-t használja az eszközök létrehozásához és kezeléséhez, az Azure CLI 2.3.1-es vagy újabb verzióval rendelkezik az Azure IoT-bővítmény 0.10.6-os vagy újabb verzióval.
 
-Ez a cikk részletesen ismerteti azokat a lépéseket és lehetőségeket, amelyekkel a forgatókönyvhöz megfelelő átjáró-hierarchia hozható létre. Interaktív oktatóanyagért lásd: [IoT Edge-eszközök hierarchiájának létrehozása átjárók használatával](tutorial-nested-iot-edge.md).
+Ez a cikk részletes lépéseket és lehetőségeket tartalmaz a forgatókönyvnek megfelelő átjáróhierarchia létrehozásához. Irányított oktatóanyag: Új eszközök [hierarchiájának létrehozása IoT Edge átjárók használatával.](tutorial-nested-iot-edge.md)
 
-## <a name="create-a-gateway-hierarchy"></a>Átjáró-hierarchia létrehozása
+## <a name="create-a-gateway-hierarchy"></a>Átjáróhierarchia létrehozása
 
-IoT Edge átjáró-hierarchiát úgy hozhat létre, hogy meghatározza a forgatókönyvben szereplő IoT Edge eszközök szülő/gyermek kapcsolatait. Beállíthat egy fölérendelt eszközt új eszköz identitásának létrehozásakor, vagy egy meglévő eszköz identitásának szülőjét és gyermekeit is kezelheti.
+Az átjáró-IoT Edge létrehozásához szülő-gyermek kapcsolatokat kell definiálni a forgatókönyvben IoT Edge eszközökhöz. Új eszközidentitás létrehozásakor beállíthatja a szülőeszközt, vagy kezelheti egy meglévő eszközidentitás szülő- és gyermekét.
 
-A szülő-gyermek kapcsolatok beállításának lépése arra jogosítja fel a gyermekeket, hogy csatlakozzanak a fölérendelt eszközhöz, például IoT Hubhoz.
+A szülő-gyermek kapcsolatok beállításának lépése úgy engedélyezi a gyermekeszközöknek a szülőeszközükhöz való csatlakozást, mint a IoT Hub.
 
-Csak IoT Edge eszközök lehetnek szülő eszközök, de a IoT Edge-eszközök és a IoT-eszközök is gyermekek lehetnek. A szülőnek több gyermeke is lehet, de egy gyermek csak egyetlen szülővel rendelkezhet. Az átjáró-hierarchiát a szülő-gyermek csoportok összeláncolásával hozza létre, így az egyik eszköz gyermeke egy másik szülő.
+Csak IoT Edge eszközök szülőeszközök, de a IoT Edge és az IoT-eszközök is lehettek gyermekek. Egy szülőnek sok gyermeke lehet, de egy gyermeknek csak egy szülője lehet. Az átjáróhierarchia szülő/gyermek készletek láncolásával jön létre, hogy az egyik eszköz gyermeke egy másik eszköz szülője.
 
 <!-- TODO: graphic of gateway hierarchy -->
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal a szülő-gyermek kapcsolatot kezelheti új eszköz-identitások létrehozásakor vagy meglévő eszközök szerkesztésével.
+A Azure Portal kezelheti a szülő-gyermek kapcsolatot új eszköz-identitások létrehozásakor vagy meglévő eszközök szerkesztésével.
 
-Új IoT Edge-eszköz létrehozásakor lehetősége van a szülő és gyermek eszközök kiválasztására az adott központban lévő meglévő IoT Edge-eszközök listájából.
+Amikor létrehoz egy új IoT Edge, lehetősége van szülő- és gyermekeszközöket választani a központ meglévő IoT Edge eszközeinek listájából.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
-1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
-1. Válassza **a IoT Edge eszköz hozzáadása** lehetőséget.
-1. Az eszköz-azonosító és a hitelesítési beállítások megadása mellett beállíthat **egy fölérendelt eszközt** , vagy **kiválaszthatja a gyermek eszközöket**.
-1. Válassza ki a szülőként vagy gyermekként használni kívánt eszközt vagy eszközöket.
+1. A [Azure Portal](https://portal.azure.com)lépjen az IoT Hubra.
+1. Válassza **IoT Edge** a navigációs menüből a Kívánt elemet.
+1. Válassza **a IoT Edge hozzáadása lehetőséget.**
+1. Az eszközazonosító és a hitelesítési beállítások megadása mellett a Szülőeszköz beállítása vagy **a** Gyermekeszközök kiválasztása lehetőséget **is használhatja.**
+1. Válassza ki a szülőként vagy gyermekként kívánt eszközt vagy eszközöket.
 
-A meglévő eszközökhöz szülő-gyermek kapcsolatokat is létrehozhat vagy kezelhet.
+Meglévő eszközökhöz szülő-gyermek kapcsolatokat is létrehozhat vagy kezelhet.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
-1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
-1. Válassza ki a felügyelni kívánt eszközt a **IoT Edge eszközök** listájából.
-1. Válassza **a szülő eszköz beállítása vagy a** **gyermek eszközök kezelése** lehetőséget.
-1. Adjon hozzá vagy távolítson el minden szülő-vagy gyermek-eszközt.
+1. A [Azure Portal](https://portal.azure.com)lépjen az IoT Hubra.
+1. Válassza **IoT Edge** a navigációs menüből a Kívánt elemet.
+1. Válassza ki a felügyelni kívánt eszközt a IoT Edge **listájából.**
+1. Válassza **a Szülőeszköz beállítása vagy a** **Gyermekeszközök kezelése lehetőséget.**
+1. Hozzáadhat vagy eltávolíthat szülő- vagy gyermekeszközöket.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI-hez készült [Azure-IOT](/cli/azure/ext/azure-iot) bővítmény parancsokat biztosít a IOT-erőforrások kezeléséhez. A IoT és a IoT Edge eszközök szülő/gyermek kapcsolatát kezelheti új eszköz-identitások létrehozásakor vagy meglévő eszközök szerkesztésével.
+Az Azure CLI [azure-iot](/cli/azure/iot) bővítménye parancsokat biztosít az IoT-erőforrások kezeléséhez. Az IoT- és a IoT Edge-eszközök szülő-gyermek kapcsolatát új eszköz identitások létrehozásakor vagy meglévő eszközök szerkesztésével kezelheti.
 
-Az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) set of parancsok lehetővé teszik az adott eszköz szülő-és gyermek-kapcsolatainak kezelését.
+Az [az iot hub device-identity](/cli/azure/iot/hub/device-identity) parancskészlet lehetővé teszi az adott eszköz szülő-gyermek kapcsolatainak kezelését.
 
-A `create` parancs paramétereket tartalmaz a gyermek eszközök hozzáadásához és a szülő eszköz beállításához az eszköz létrehozásakor.
+A `create` parancs paramétereket tartalmaz a gyermekeszközök hozzáadásához és a szülőeszköz beállításához az eszköz létrehozásakor.
 
-A további eszköz-azonosító parancsok, beleértve a, a `add-children` `list-children` és a és a `remove-children` `get-parent` `set-parent` , lehetővé teszik a szülő-gyermek kapcsolatok kezelését a meglévő eszközökhöz.
+A további eszközidentitási parancsok, például a , a és a és a , lehetővé teszik a meglévő eszközök `add-children` `list-children` `remove-children` `get-parent` `set-parent` szülő-gyermek kapcsolatainak kezelését.
 
 ---
 
 ## <a name="prepare-certificates"></a>Tanúsítványok előkészítése
 
-A tanúsítványok konzisztens láncát az azonos átjáró-hierarchiában található eszközök között kell telepíteni, hogy azok egymás közötti biztonságos kommunikációt hozzanak létre. A hierarchiában lévő összes eszköznek, akár IoT Edge eszköznek, akár egy IoT Leaf eszköznek, ugyanarra a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatára van szüksége. A hierarchia minden IoT Edge eszköze a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának gyökeréhez.
+Egy egységes tanúsítványláncot kell telepíteni az azonos átjáróhierarchiában lévő eszközökre, hogy biztonságos kommunikációt létesítsen közöttük. A hierarchiában lévő összes eszköznek , akár IoT Edge, akár IoT levéleszközről van szó, ugyanazon legfelső szintű hitelesítésszolgáltatói tanúsítvány másolatára van szüksége. Ezután IoT Edge hierarchiában lévő összes eszköz ezt a legfelső szintű hitelesítésszolgáltatói tanúsítványt használja az eszköz hitelesítésszolgáltatói tanúsítványának legfelső szintű tanúsítványaként.
 
-Ezzel a beállítással minden alsóbb rétegbeli IoT Edge eszköz-vagy IoT-eszköz képes ellenőrizni a szülő identitását annak ellenőrzésével, hogy a csatlakoztatott edgeHub rendelkezik-e a megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal aláírt kiszolgálói tanúsítvánnyal.
+Ezzel a beállítással minden alsóbb rétegbeli IoT Edge-eszköz vagy IoT levéleszköz ellenőrizheti a szülője identitását annak ellenőrzésével, hogy az edgeHub, amelyhez csatlakozik, rendelkezik-e a megosztott legfelső szintű hitelesítésszolgáltatói tanúsítvány által aláírt kiszolgálótanúsítvánnyal.
 
 <!-- TODO: certificate graphic -->
 
 Hozza létre a következő tanúsítványokat:
 
-* Egy **legfelső szintű hitelesítésszolgáltatói tanúsítvány**, amely egy adott átjáró-hierarchiában lévő összes eszköz legfelső szintű megosztott tanúsítványa. Ez a tanúsítvány minden eszközre telepítve van.
-* Minden olyan **köztes tanúsítvány** , amelyet fel szeretne venni a főtanúsítvány-láncba.
-* Az **eszköz hitelesítésszolgáltatói tanúsítványa** és a hozzá tartozó **titkos kulcs**, amelyet a gyökér és a köztes tanúsítvány generál. Az átjáró-hierarchiában minden IoT Edge eszközhöz egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szükség.
+* Egy **legfelső szintű hitelesítésszolgáltatói** tanúsítvány, amely az adott átjáróhierarchiában lévő összes eszköz legfelső szintű megosztott tanúsítványa. Ez a tanúsítvány minden eszközön telepítve van.
+* A **főtanúsítvány-láncba** foglalni kívánt köztes tanúsítványok.
+* Egy **eszköz hitelesítésszolgáltatói** tanúsítványa és titkos **kulcsa,** amelyet a fő- és köztes tanúsítványok hoznak létre. Az átjáróhierarchiában minden egyes IoT Edge egyedi eszköz-hitelesítésszolgáltatói tanúsítványra van szükség.
 
-Használhat önaláírt hitelesítésszolgáltatót, vagy vásárolhat egy megbízható kereskedelmi hitelesítésszolgáltatótól (például Baltimore, VeriSign, Digicert vagy GlobalSign).
+Használhat önaírt hitelesítésszolgáltatót, vagy vásárolhat egyet egy megbízható kereskedelmi hitelesítésszolgáltatótól( például Baltimore, Verisign, Digicert vagy GlobalSign).
 
-Ha nem rendelkezik saját tanúsítványokkal, [létrehozhat bemutató tanúsítványokat IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md). A cikk lépéseit követve hozzon létre egy gyökér-és köztes tanúsítványokat, majd hozzon létre IoT Edge eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat az egyes eszközökhöz.
+Ha nem rendelkezik saját tanúsítványokkal, létrehozhat bemutatótanúsítványokat az [eszköz IoT Edge teszteléséhez.](how-to-create-test-certificates.md) A cikkben található lépéseket követve hozzon létre egy fő- és köztes tanúsítványkészletet, majd hozzon létre IoT Edge összes eszköz hitelesítésszolgáltatói tanúsítványait.
 
-## <a name="configure-iot-edge-on-devices"></a>IoT Edge konfigurálása eszközökön
+## <a name="configure-iot-edge-on-devices"></a>Eszközök IoT Edge konfigurálása
 
-Az átjáróként való IoT Edge beállításának lépései nagyon hasonlítanak a IoT Edge alsóbb rétegbeli eszközként való beállításának lépéseihez.
+Az átjáróként való IoT Edge lépései nagyon hasonlóak az IoT Edge eszközként való beállításának lépéseihez.
 
-Az átjárók felderítésének engedélyezéséhez minden IoT Edge átjáró-eszközt egy olyan **állomásnévvel** kell konfigurálni, amelyet a gyermek eszköze a helyi hálózaton való kereséshez használni fog. Minden alsóbb rétegbeli IoT Edge eszközt a kapcsolódáshoz **parent_hostname** kell konfigurálni. Ha egyetlen IoT Edge eszköz szülő és gyermek eszköz is, mindkét paraméternek szüksége van.
+Az átjárófelderítés engedélyezéséhez minden IoT Edge átjáróeszközt olyan állomásnévvel kell konfigurálni, amely alapján **a** gyermekeszköze megkeresi azt a helyi hálózaton. Minden lefelé irányuló IoT Edge eszközt konfigurálni kell  egy olyan parent_hostname, amelyhez csatlakozni tud. Ha egyetlen IoT Edge eszköz szülő- és gyermekeszköz is, akkor mindkét paraméterre szüksége lesz.
 
-A biztonságos kapcsolatok engedélyezéséhez az átjáró-forgatókönyvben minden IoT Edge eszközt egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell konfigurálni, és az átjáró-hierarchia összes eszköze által megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát.
+A biztonságos kapcsolatok engedélyezéséhez az átjáró forgatókönyvében minden IoT Edge-eszközt egyedi eszköz-hitelesítésszolgáltatói tanúsítvánnyal és az átjáróhierarchiában lévő összes eszköz által megosztott főtanúsítvánnyal kell konfigurálni.
 
-Az eszközön már telepítve kell lennie IoT Edge. Ha nem, kövesse az [IoT Edge-eszköz regisztrálásának](how-to-register-device.md) lépéseit IoT hub, majd [telepítse a Azure IoT Edge futtatókörnyezetet](how-to-install-iot-edge.md).
+Az eszközön már IoT Edge kell lennie. Ha nem, kövesse [az IoT Edge-eszköz](how-to-register-device.md) regisztrálása a IoT Hub, majd az Install the Azure IoT Edge runtime (Az Azure IoT Edge [telepítése) lépéseit.](how-to-install-iot-edge.md)
 
-Az ebben a szakaszban ismertetett lépések a **legfelső szintű hitelesítésszolgáltatói tanúsítványra** és az **eszköz hitelesítésszolgáltatói tanúsítványára, valamint** a jelen cikk korábbi részében tárgyalt titkos kulcsra hivatkoznak. Ha egy másik eszközön hozta létre ezeket a tanúsítványokat, azok elérhetők lesznek az eszközön. Átviheti a fájlokat fizikailag, például USB-meghajtóval, egy szolgáltatással (például [Azure Key Vault](../key-vault/general/overview.md)), vagy egy olyan funkcióval, mint a [biztonságos fájlmásolás](https://www.ssh.com/ssh/scp/).
+Az ebben a szakaszban található lépések  a cikk korábbi részében tárgyalt legfelső szintű **hitelesítésszolgáltatói** tanúsítványra, eszköz-hitelesítésszolgáltatói tanúsítványra és titkos kulcsra hivatkoznak. Ha ezeket a tanúsítványokat egy másik eszközön hozta létre, akkor elérhetővé kell tenni őket ezen az eszközön. A fájlokat fizikai átvitelre is használhatja, például USB-meghajtóval, egy olyan szolgáltatással, mint a [Azure Key Vault,](../key-vault/general/overview.md)vagy egy olyan funkcióval, mint a [Biztonságos fájlmásolás.](https://www.ssh.com/ssh/scp/)
 
-A következő lépésekkel konfigurálhatja a IoT Edget az eszközön.
+A következő lépésekkel konfigurálhatja IoT Edge eszközén.
 
-Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási engedéllyel a tanúsítványokat és kulcsokat tároló könyvtárhoz.
+Győződjön meg arról, hogy az **iotedge** felhasználó olvasási engedélyekkel rendelkezik a tanúsítványokat és kulcsokat tartó címtárhoz.
 
-1. Telepítse a **legfelső szintű hitelesítésszolgáltatói tanúsítványt** erre a IoT Edge eszközre.
+1. Telepítse a **legfelső szintű hitelesítésszolgáltatói tanúsítványt** ezen a IoT Edge eszközön.
 
    ```bash
    sudo cp <path>/<root ca certificate>.pem /usr/local/share/ca-certificates/<root ca certificate>.pem.crt
@@ -134,7 +134,7 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
    sudo update-ca-certificates
    ```
 
-   A parancs kimenete azt eredményezi, hogy az egyik tanúsítvány hozzá lett adva a/etc/SSL/certs.
+   Ennek a parancsnak azt kell megjelenítenie, hogy egy tanúsítvány hozzá lett adva az /etc/ssl/certs parancshoz.
 
 1. Nyissa meg az IoT Edge konfigurációs fájlját.
 
@@ -143,30 +143,30 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
    ```
 
    >[!TIP]
-   >Ha a konfigurációs fájl még nem létezik az eszközön, használja `/etc/aziot/config.toml.edge.template` sablonként egy létrehozáshoz.
+   >Ha a konfigurációs fájl még nem létezik az eszközön, a sablon `/etc/aziot/config.toml.edge.template` használatával hozzon létre egyet.
 
-1. Keresse meg a **hostname** szakaszt a konfigurációs fájlban. A paramétert tartalmazó sor megjegyzésének visszaadása `hostname` , és az érték frissítése a IoT Edge eszköz teljes tartománynevére (FQDN) vagy IP-címére.
+1. Keresse meg **az Állomásnév szakaszt** a konfigurációs fájlban. A paramétert tartalmazó sornál ne legyen felváltva, és frissítse az értéket úgy, hogy az legyen a teljes tartománynév (FQDN) vagy az IoT Edge `hostname` IP-címe.
 
-   Ennek a paraméternek az értéke, amelyet az alsóbb rétegbeli eszközök fognak használni az átjáróhoz való kapcsolódáshoz. Az állomásnév alapértelmezés szerint a számítógépnévre kerül, de az alárendelt eszközök csatlakoztatásához a teljes tartománynév vagy az IP-cím szükséges.
+   Ennek a paraméternek az értéke az, amit a lefelé irányuló eszközök az átjáróhoz való csatlakozáshoz fognak használni. Az állomásnév alapértelmezés szerint a gép nevét veszi fel, de a teljes tartománynév vagy az IP-cím szükséges az lefelé irányuló eszközök csatlakoztatásához.
 
-   Használjon 64 karakternél rövidebb állomásnevet, amely a kiszolgálói tanúsítvány köznapi nevének a karakteres korlátja.
+   Használjon 64 karakternél rövidebb állomásnevet, amely a kiszolgálói tanúsítvány köznevének karakterkorlátja.
 
-   Konzisztensnek kell lennie az állomásnév-mintázattal az átjáró-hierarchián belül. Használjon teljes tartománynevet vagy IP-címet, de mindkettőt nem.
+   Az átjáróhierarchiában konzisztensnek kell lennie az állomásnév mintával. FQDN-eket vagy IP-címeket használjon, de mindkettőt ne.
 
-1. *Ha ez az eszköz egy alárendelt eszköz*, keresse meg a **szülő hostname** szakaszt. A Megjegyzés `parent_hostname` kihagyása és a paraméter frissítése a fölérendelt eszköz teljes tartománynevére vagy IP-címére, függetlenül attól, hogy a szülő eszköz konfigurációs fájljában az állomásnév van megadva.
+1. *Ha az eszköz gyermekeszköz,* keresse meg a **Szülő állomásnév szakaszt.** A nem kívánt érték megadása után frissítse a paramétert a szülőeszköz teljes tartománynevére vagy IP-címére, a szülőeszköz konfigurációs fájljában megadott gazdanévnek `parent_hostname` megfelelő értékkel.
 
-1. Keresse meg a **megbízhatósági csomag tanúsítványa** szakaszt. Adja meg a megjegyzését, és frissítse a `trust_bundle_cert` paramétert a fájl URI-ja alapján a legfelső szintű hitelesítésszolgáltatói tanúsítványra az eszközön.
+1. Keresse meg **a Megbízhatósági csomag tanúsítványa szakaszt.** A paramétert pedig frissítse az eszköz legfelső szintű hitelesítésszolgáltatói tanúsítványának `trust_bundle_cert` URI-azonosítóját használva.
 
-1. Ellenőrizze, hogy a IoT Edge eszköz az indításkor a IoT Edge ügynök megfelelő verzióját fogja-e használni.
+1. Ellenőrizze, IoT Edge az eszköz a IoT Edge megfelelő verzióját használja-e az indításakor.
 
-   Keresse meg az **alapértelmezett peremhálózati ügynök** szakaszt, és ellenőrizze, hogy a rendszerkép értéke IoT Edge 1,2-es verzió-e. Ha nem, frissítse a következőket:
+   Keresse meg **a Default Edge Agent** szakaszt, és ellenőrizze, hogy a rendszerkép értéke az 1.2-es IoT Edge-e. Ha nem, frissítse:
 
    ```toml
    [agent.config]
    image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
-1. Keresse meg a **PEREMHÁLÓZATI hitelesítésszolgáltatói tanúsítvány** szakaszt a konfigurációs fájlban. Az ebben a szakaszban szereplő sorok megjegyzésének visszaadása és a IoT Edge eszközön található tanúsítványhoz és kulcshoz tartozó fájlok URI-elérési útjának megadása.
+1. Keresse meg **a peremhálózati hitelesítésszolgáltató tanúsítványa** szakaszt a konfigurációs fájlban. A szakasz sorait ne adja meg, és adja meg a tanúsítvány és a kulcsfájlok elérési útját a IoT Edge eszközön.
 
    ```toml
    [edge_ca]
@@ -174,9 +174,9 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
    pk = "file:///<path>/<device CA key>"
    ```
 
-1. Mentse `Ctrl+O` a () és a Bezárás ( `Ctrl+X` ) konfigurációs fájlt.
+1. Mentse ( ) és zárja be ( ) a `Ctrl+O` `Ctrl+X` konfigurációs fájlt.
 
-1. Ha korábban más tanúsítványokat is használt a IoT Edgehoz, törölje az alábbi két könyvtár fájljait, hogy megbizonyosodjon róla, hogy az új tanúsítványok érvénybe lépnek:
+1. Ha korábban már használt más tanúsítványokat a IoT Edge törölje a következő két könyvtárban található fájlokat, hogy az új tanúsítványok biztosan alkalmazva legyen:
 
    * `/var/lib/aziot/certd/certs`
    * `/var/lib/aziot/keyd/keys`
@@ -187,61 +187,61 @@ Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási 
    sudo iotedge config apply
    ```
 
-1. Keressen hibákat a konfigurációban.
+1. Ellenőrizze, hogy vannak-e hibák a konfigurációban.
 
    ```bash
    sudo iotedge check --verbose
    ```
 
    >[!TIP]
-   >A IoT Edge-ellenőrzési eszköz egy tárolót használ a diagnosztika egyes ellenőrzésének elvégzéséhez. Ha az eszközt az alsóbb rétegbeli IoT Edge eszközökön szeretné használni, győződjön meg arról, hogy hozzáférnek-e az eszközhöz `mcr.microsoft.com/azureiotedge-diagnostics:latest` , vagy hogy a tároló képe a saját tároló beállításjegyzékében van-e.
+   >A IoT Edge ellenőrzőeszköz egy tárolót használ a diagnosztikai ellenőrzés végrehajtásához. Ha ezt az eszközt lefelé irányuló vagy IoT Edge szeretné használni, győződjön meg arról, hogy hozzáférnek az eszközhöz, vagy hogy a tároló rendszerképe elérhető a `mcr.microsoft.com/azureiotedge-diagnostics:latest` privát tárolójegyzékben.
 
-## <a name="network-isolate-downstream-devices"></a>Hálózati elkülönítésű alsóbb szintű eszközök
+## <a name="network-isolate-downstream-devices"></a>Lefelé irányuló eszközök hálózati elkülönítése
 
-A cikkben ismertetett lépések IoT Edge az eszközöket átjáróként vagy alsóbb rétegbeli eszközként, és megbízható kapcsolatot hoznak létre egymás között. Az átjáró eszköz az alsóbb rétegbeli eszköz és a IoT Hub közötti interakciókat kezeli, beleértve a hitelesítést és az üzenet-útválasztást is. Az alsóbb rétegbeli IoT Edge eszközökön üzembe helyezett modulok továbbra is létrehozhatják saját kapcsolataikat a Cloud Services szolgáltatással.
+A cikkben eddig található lépések átjáróként IoT Edge eszközként vagy lefelé irányuló eszközként konfigurálták az eszközöket, és megbízható kapcsolatot hoznak létre közöttük. Az átjáróeszköz kezeli az lefelé irányuló eszköz és a IoT Hub közötti interakciókat, beleértve a hitelesítést és az üzenetek útválasztását. Az lefelé irányuló IoT Edge üzembe helyezett modulok továbbra is létrehozhatnak saját kapcsolatokat a felhőszolgáltatásokkal.
 
-Bizonyos hálózati architektúrák, például az ISA-95 szabványt követők, az internetkapcsolatok számának minimalizálására törekednek. Ezekben az esetekben az alsóbb rétegbeli IoT Edge eszközöket közvetlen internetkapcsolat nélkül is konfigurálhatja. Az útválasztási IoT Hub az átjáró eszközön keresztüli kommunikáción túl az alsóbb rétegbeli IoT Edge-eszközök az átjáró eszközét használhatják az összes Felhőbeli kapcsolathoz.
+Egyes hálózati architektúrák, például az ISA-95 szabványnak megfelelők, igyekeznek minimalizálni az internetkapcsolatok számát. Ilyen esetekben közvetlen internetkapcsolat nélkül konfigurálhat lefelé irányuló IoT Edge eszközöket. Az IoT Hub kommunikáció átjáróeszközön keresztüli útválasztásán túl az IoT Edge-eszközök az átjáróeszközre támaszkodhatnak az összes felhőbeli kapcsolathoz.
 
-Ez a hálózati konfiguráció megköveteli, hogy csak az átjáró-hierarchia legfelső rétegében lévő IoT Edge eszköz legyen közvetlen kapcsolat a felhővel. Az alsó rétegekben IoT Edge eszközök csak a fölérendelt eszközzel vagy bármely gyermek eszközzel tudnak kommunikálni. Az átjáró-eszközök speciális moduljai lehetővé teszik ezt a forgatókönyvet, beleértve a következőket:
+Ez a hálózati konfiguráció megköveteli, hogy csak IoT Edge átjáróhierarchia felső rétegében lévő IoT Edge létesítsen közvetlen kapcsolatot a felhővel. IoT Edge rétegben lévő összes eszköz csak a szülőeszközével vagy gyermekeszközével kommunikálhat. Az átjáróeszközökön elérhető speciális modulok lehetővé teszik ezt a forgatókönyvet, beleértve a következőket:
 
-* Az **API-proxy modult** minden olyan IoT Edge átjárón meg kell adni, amely alatt egy másik IoT Edge eszköz található. Ez azt jelenti, hogy az alsó réteg kivételével az átjáró-hierarchia *minden rétegén* kell lennie. Ez a modul egy [Nginx](https://nginx.org) fordított proxyt használ a http-adat hálózati rétegeken keresztüli továbbítására egyetlen porton keresztül. Kiválóan konfigurálható a modul Twin és a környezeti változók segítségével, így az átjáró-forgatókönyv követelményeinek megfelelően módosítható.
+* Az **API-proxymodulra** minden olyan átjárón szükség van IoT Edge amely alatt egy másik IoT Edge található. Ez azt jelenti, hogy az *átjáróhierarchia* minden rétegén lennie kell, kivéve az alsó réteget. Ez a modul [egy nginx fordított](https://nginx.org) proxyt használ a HTTP-adatok hálózati rétegeken keresztüli egyetlen porton való útválasztásához. Nagy mértékben konfigurálható az ikermodul és a környezeti változók segítségével, így az átjáró forgatókönyvének követelményeihez igazítható.
 
-* A **Docker beállításjegyzék-modulját** az átjáró-hierarchia *felső rétegében* lévő IoT Edge átjárón lehet központilag telepíteni. Ez a modul felelős a tároló lemezképek lekéréséhez és gyorsítótárazásához az alsóbb rétegekben lévő összes IoT Edge eszköz nevében. A modul felső rétegen való üzembe helyezésének alternatívája egy helyi beállításjegyzék használata, vagy a tároló lemezképek manuális betöltése az eszközökre, és a modul lekérési házirendje **soha nem** lesz beállítva.
+* A **Docker beállításjegyzék-modul** az átjáróhierarchia  IoT Edge felső rétegében található átjáró átjárón helyezhető üzembe. Ez a modul felelős a tároló-rendszerképek leolvasásáért és gyorsítótárazásáért az összes IoT Edge rétegben található eszköz nevében. A modul felső rétegben való üzembe helyezésének alternatívája egy helyi regisztrációs adatbázis használata, vagy a tároló rendszerképének manuális betöltése az eszközökre, és a modul le pull-szabályzatának **beállítása soha.**
 
-* A **IoT Edge Azure-Blob Storage** az átjáró-hierarchia *felső rétegében* lévő IoT Edge átjárón telepíthetők. Ez a modul felelős az alsóbb rétegekben lévő összes IoT Edge eszköz nevében lévő Blobok feltöltéséhez. A Blobok feltöltésének lehetősége is lehetővé teszi az alacsonyabb rétegekben lévő IoT Edge eszközök hasznos hibaelhárítási funkcióját, például a modul naplójának feltöltését és a támogatási csomagok feltöltését.
+* A **Azure Blob Storage IoT Edge** az átjáróhierarchia felső IoT Edge átjárón helyezhetők üzembe.  Ez a modul felelős a blobok feltöltéséért az összes IoT Edge rétegben lévő eszköz nevében. A blobok feltöltésének lehetősége emellett hasznos hibaelhárítási funkciókat is IoT Edge, például a modulnapló feltöltését és a csomagfeltöltés támogatását.
 
 ### <a name="network-configuration"></a>Hálózati konfiguráció
 
-A legfelső rétegben lévő összes átjáró-eszközhöz a hálózati operátoroknak a következőket kell tenniük:
+A felső rétegben lévő összes átjáróeszközhöz a hálózati operátorok a következőt kell:
 
-* Adjon meg statikus IP-címet vagy teljes tartománynevet (FQDN).
-* Engedélyezze az IP-címről érkező kimenő kommunikációt az Azure IoT Hub-állomásnévre a 443 (HTTPS) és a 5671 (AMQP) porton keresztül.
-* Engedélyezze a kimenő kommunikációt erről az IP-címről a Azure Container Registry állomásnévre az 443-as (HTTPS) porton keresztül.
+* Adjon meg egy statikus IP-címet vagy teljes tartománynevet (FQDN).
+* Engedélyezze az erről az IP-címről kimenő kommunikációt a Azure IoT Hub állomásnévre a 443-as (HTTPS) és az 5671-es (AMQP) porton keresztül.
+* Engedélyezze a kimenő kommunikációt erről az IP-címről a Azure Container Registry állomásnévvel a 443-as (HTTPS) porton keresztül.
 
-  Az API-proxy modul egyszerre csak egy tároló-beállításjegyzékhez tud kapcsolatot kezelni. Javasoljuk, hogy minden tároló lemezképet, beleértve a Microsoft Container Registry (mcr.microsoft.com) által biztosított nyilvános rendszerképeket, amelyeket a privát tároló beállításjegyzékében tárol.
+  Az API-proxymodul egyszerre csak egy tároló-beállításjegyzék kapcsolatait tudja kezelni. Javasoljuk, hogy a privát tárolójegyzékben tárolja az összes tároló rendszerképét, beleértve a Microsoft Container Registry (mcr.microsoft.com) által biztosított nyilvános rendszerképeket is.
 
-Az alsóbb rétegbeli átjáró-eszközök esetében a hálózati operátoroknak a következőket kell tenniük:
+Az alsóbb rétegben található átjáróeszközökhöz a hálózati operátorok a következőt kell:
 
 * Adjon meg egy statikus IP-címet.
-* Engedélyezze az IP-címről érkező kimenő kommunikációt a szülő átjáró IP-címére a 443 (HTTPS) és a 5671 (AMQP) porton keresztül.
+* Engedélyezze az erről az IP-címről a szülőátjáró IP-címére irányuló kimenő kommunikációt a 443-as (HTTPS) és az 5671-es (AMQP) porton keresztül.
 
-### <a name="deploy-modules-to-top-layer-devices"></a>Modulok üzembe helyezése a legfelső rétegbeli eszközökön
+### <a name="deploy-modules-to-top-layer-devices"></a>Modulok üzembe helyezése a felső réteg eszközein
 
-Az átjáró-hierarchia legfelső rétegében lévő IoT Edge eszköz olyan szükséges modulokkal rendelkezik, amelyeket az eszközön esetlegesen futtatott munkaterhelés-modulok mellett telepíteni kell rá.
+Az IoT Edge-hierarchia felső rétegében található IoT Edge szükséges modulokat az eszközön futtatott számítási feladatokhoz szükséges modulok mellett telepíteni kell rá.
 
-Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakoribb átjáró-forgatókönyvek kezeléséhez. Ebből a cikkből megtudhatja, hogyan állíthatja be a modulokat egy alapszintű konfigurációban. Részletesebb információkat és példákat a következő témakörben talál: [az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md) .
+Az API-proxymodul úgy lett kialakítva, hogy a leggyakoribb átjáróforgatókönyvek kezeléséhez legyen testre szabva. Ez a cikk a modulok alapszintű konfigurációban való beállítását és egy példát mutat be. Részletesebb információkért és példákért tekintse meg a Configure [the API proxy module for your gateway hierarchy scenario (AZ API-proxy](how-to-configure-api-proxy-module.md) konfigurálása az átjáróhierarchia forgatókönyvéhez) modult.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
-1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
-1. Válassza ki a legfelső rétegbeli eszközt, amelyet a **IoT Edge eszközök** listájáról konfigurál.
+1. A [Azure Portal](https://portal.azure.com)lépjen az IoT Hubra.
+1. Válassza **IoT Edge** a navigációs menüből a Kívánt elemet.
+1. Válassza ki a konfigurálni kívánt felső rétegben lévő eszközt a IoT Edge **listájából.**
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
-1. A **IoT Edge-modulok** szakaszban válassza a **Hozzáadás** , majd a **piactér modul** elemet.
-1. Keresse meg és válassza ki a **IOT Edge API-proxy** modult.
-1. Válassza ki az API-proxy modul nevét a telepített modulok listájából, és frissítse a következő modul beállításait:
-   1. A **környezeti változók** lapon frissítse a **NGINX_DEFAULT_PORT** értékét a következőre: `443` .
-   1. A **tároló létrehozása beállítások** lapon frissítse a port kötéseit a 443-es hivatkozási portra.
+1. A IoT Edge **modulok szakaszban** válassza a **Hozzáadás, majd** a **Marketplace-modul lehetőséget.**
+1. Keresse meg és válassza ki a **IoT Edge API-proxy modult.**
+1. Válassza ki az API-proxymodul nevét az üzembe helyezett modulok listájából, és frissítse a következő modulbeállításokat:
+   1. A Környezeti **változók lapon** frissítse a változó értékét **NGINX_DEFAULT_PORT** `443` értékre.
+   1. A Tároló **létrehozása beállítások lapon** frissítse a portkötéseket a 443-as portra való hivatkozáshoz.
 
       ```json
       {
@@ -257,9 +257,9 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
       }
       ```
 
-   Ezek a módosítások az API-proxy modult úgy konfigurálja, hogy az 443-es porton figyeljen. Ha meg szeretné akadályozni a port kötésének ütközését, a edgeHub modult úgy kell konfigurálnia, hogy ne figyelje a 443-es portot. Ehelyett az API-proxy modul a 443-es porton továbbítja a edgeHub forgalmat.
+   Ezek a módosítások úgy konfigurálják az API-proxymodult, hogy a 443-as portot figyelje. A portkötések ütközésének elkerülése érdekében úgy kell konfigurálnia az edgeHub-modult, hogy ne figyelje a 443-as portot. Ehelyett az API-proxymodul a 443-as porton keresztül irányít minden edgeHub-forgalmat.
 
-1. Válassza ki a **futtatókörnyezet beállításait** , és keresse meg a edgeHub modul létrehozási beállításait. Törölje az 443-es porthoz tartozó port kötését, hagyja ki a 5671 és 8883-as portok kötéseit.
+1. Válassza **a Futásidejű beállítások lehetőséget,** és keresse meg az edgeHub-modul létrehozási beállításait. Törölje a 443-as port portkötését, és hagyja meg az 5671-es és a 8883-as port kötését.
 
    ```json
    {
@@ -280,22 +280,22 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
    }
    ```
 
-1. Kattintson a **Save (Mentés** ) gombra a futásidejű beállítások módosításainak mentéséhez.
-1. Válassza a **Hozzáadás** újra, majd a **IoT Edge modul** lehetőséget.
-1. Adja meg a következő értékeket a Docker beállításjegyzék-modul telepítéséhez a központi telepítéshez:
-   1. **IoT Edge modul neve**: `registry`
-   1. A **modul beállításai** lapon a **rendszerkép URI-ja**: `registry:latest`
-   1. A **környezeti változók** lapon adja hozzá a következő környezeti változókat:
+1. A **futásidejű** beállítások módosításainak mentéséhez válassza a Mentés lehetőséget.
+1. Válassza **ismét a Hozzáadás** lehetőséget, majd IoT Edge **modult.**
+1. Adja meg a következő értékeket, hogy hozzáadja a Docker beállításjegyzék-modult az üzemelő példányhoz:
+   1. **IoT Edge modul neve:**`registry`
+   1. A **Modulbeállítások lapon,** a **Rendszerkép URI-ját:**`registry:latest`
+   1. A Környezeti **változók lapon** adja hozzá a következő környezeti változókat:
 
-      * **Név**: `REGISTRY_PROXY_REMOTEURL` **érték**: annak a tároló-beállításjegyzéknek az URL-címe, amelyhez a beállításjegyzék-modult le szeretné képezni. Például: `https://myregistry.azurecr`.
+      * **Név:** Érték: Annak a tárolójegyzéknek az `REGISTRY_PROXY_REMOTEURL` URL-címe, amelybe a beállításjegyzék-modult leképezni szeretné. Például: `https://myregistry.azurecr`.
 
-        A beállításjegyzék-modul csak egy tároló-beállításjegyzékhez képezhető le, ezért azt javasoljuk, hogy az összes tároló lemezképe egyetlen privát tároló-beállításjegyzékben legyen.
+        A beállításjegyzék-modul csak egy tároló-beállításjegyzékhez tud leképezni, ezért javasoljuk, hogy az összes tárolólemezképet egyetlen privát tárolójegyzékben tárolja.
 
-      * **Name**: `REGISTRY_PROXY_USERNAME` **Value**: username a Container registryben való hitelesítéshez.
+      * **Név:** `REGISTRY_PROXY_USERNAME` **Érték:** Felhasználónév a tároló-beállításjegyzékben való hitelesítéshez.
 
-      * **Name**: `REGISTRY_PROXY_PASSWORD` **Value**: jelszó a tároló beállításjegyzékében való hitelesítéshez.
+      * **Név:** `REGISTRY_PROXY_PASSWORD` **Érték:** A tároló-beállításjegyzékben való hitelesítéshez használt jelszó.
 
-   1. A **tároló létrehozása beállítások** lapon illessze be a következőt:
+   1. A Tároló **létrehozása beállítások lapon illessze** be a következőt:
 
       ```json
       {
@@ -311,13 +311,13 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
       }
       ```
 
-1. A **Hozzáadás** gombra kattintva adja hozzá a modult a központi telepítéshez.
-1. Válassza a Next (tovább) lehetőséget **: útvonalakon** lépjen a következő lépésre.
-1. Ha engedélyezni szeretné az eszközről a felhőbe irányuló üzeneteket az alsóbb rétegbeli eszközökről a IoT Hub elérésére, adjon meg egy útvonalat, amely az összes üzenetet átadja IoT Hubnak. Például:
-    1. **Név**: `Route`
-    1. **Érték**: `FROM /messages/* INTO $upstream`
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az utolsó lépéshez való ugráshoz.
-1. Válassza a **Létrehozás** lehetőséget az eszközön való üzembe helyezéshez.
+1. Válassza **a Hozzáadás** lehetőséget a modul üzembe helyezéshez való hozzáadásához.
+1. Válassza **a Tovább: Útvonalak lehetőséget** a következő lépéshez.
+1. Ha engedélyezni szeretné, hogy az eszközről a felhőbe irányuló üzenetek a lefelé irányuló eszközökről IoT Hub, olyan útvonalat kell tartalmaznia, amely az összes üzenetet továbbítja a IoT Hub. Például:
+    1. **Név:**`Route`
+    1. **Érték:**`FROM /messages/* INTO $upstream`
+1. Az **utolsó lépéshez válassza** az Áttekintés + létrehozás lehetőséget.
+1. Válassza **a Létrehozás lehetőséget** az eszköz üzembe helyezéséhez.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -412,9 +412,9 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
    }
    ```
 
-   Ez a telepítési fájl konfigurálja az API-proxy modult az 443-es port figyelésére. A port kötése ütközések elkerülése érdekében a fájl úgy konfigurálja a edgeHub modult, hogy ne hallgassa meg a 443-es portot. Ehelyett az API-proxy modul a 443-es porton továbbítja a edgeHub forgalmat.
+   Ez az üzembe helyezési fájl úgy konfigurálja az API-proxymodult, hogy a 443-as portot figyelje. A portkötések ütközésének elkerülése érdekében a fájl úgy konfigurálja az edgeHub-modult, hogy ne figyelje a 443-as portot. Ehelyett az API-proxymodul a 443-as porton keresztül irányít minden edgeHub-forgalmat.
 
-1. A következő parancs megadásával hozzon létre egy központi telepítést egy IoT Edge eszközön:
+1. A következő paranccsal hozzon létre üzembe helyezést egy IoT Edge eszközön:
 
    ```bash
    az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
@@ -422,31 +422,31 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
 
 ---
 
-### <a name="deploy-modules-to-lower-layer-devices"></a>Modulok üzembe helyezése az alsóbb rétegbeli eszközökön
+### <a name="deploy-modules-to-lower-layer-devices"></a>Modulok üzembe helyezése alsóbb rétegű eszközökön
 
-Az átjáró-hierarchiák alsó rétegeiben lévő eszközök IoT Edge egy szükséges modullal kell rendelkezniük, amelyet az eszközön futtatott számítási feladatok modulján kívül is telepíteni kell.
+IoT Edge átjáróhierarchia alsó rétegeiben lévő összes eszközhöz egy szükséges modul szükséges, amely az eszközön futtatott számítási feladatokhoz használható modulok mellett telepítve lesz.
 
-#### <a name="route-container-image-pulls"></a>Útvonal-tároló képe lekérése
+#### <a name="route-container-image-pulls"></a>Tároló rendszerkép-lekért útvonalának útválasztása
 
-Mielőtt megtárgyalja az átjáró-hierarchiákban IoT Edge eszközökhöz szükséges proxy modult, fontos tisztában lennie azzal, hogy az alacsonyabb rétegekben lévő IoT Edge-eszközök Hogyan kapják meg a modul lemezképeit.
+Mielőtt az átjáróhierarchiákban lévő IoT Edge eszközökhöz szükséges proxymodult tárgyalja, fontos megérteni, hogy az alsóbb rétegben IoT Edge eszközök hogyan kapják meg a modul rendszerképeit.
 
-Ha az alsóbb rétegbeli eszközök nem tudnak csatlakozni a felhőhöz, de a modul rendszerképeit a szokásos módon szeretné lekérni, akkor az átjáró-hierarchia legfelső rétegbeli eszközét úgy kell konfigurálni, hogy kezelni tudja ezeket a kéréseket. A felső rétegbeli eszköznek a tároló-beállításjegyzékhez leképezett Docker **beállításjegyzék** -modult kell futtatnia. Ezután konfigurálja az API-proxy modult a tárolóra vonatkozó kérelmek átirányításához. Ezeket az adatokat a cikk korábbi szakaszaiban tárgyaljuk. Ebben a konfigurációban az alsó rétegbeli eszközök nem mutatnak a Felhőbeli tároló-jegyzékekre, hanem a felső rétegben futó beállításjegyzékre.
+Ha az alsó rétegbeli eszközök nem tudnak csatlakozni a felhőhöz, de azt szeretné, hogy a szokásos módon kérik le a modul rendszerképeit, az átjáróhierarchia felső rétegbeli eszközét úgy kell konfigurálni, hogy kezelje ezeket a kéréseket. A felső rétegbeli eszköznek  futtatnia kell egy Docker beállításjegyzék-modult, amely le van képezve a tárolójegyzékre. Ezután konfigurálja az API-proxymodult, hogy a tárolókéréseket a modulhoz irányítsa. Ezeket a részleteket a cikk korábbi szakaszai ismertetik. Ebben a konfigurációban az alsó rétegbeli eszközök nem a felhőbeli tárolóregisztrációs adatbázisra, hanem a felső rétegben futó beállításjegyzékre mutatnak.
 
-A hívás helyett például az `mcr.microsoft.com/azureiotedge-api-proxy:1.0` alsóbb rétegbeli eszközöknek kell meghívniuk `$upstream:443/azureiotedge-api-proxy:1.0` .
+A hívása helyett például az `mcr.microsoft.com/azureiotedge-api-proxy:1.0` alsó rétegben található eszközöknek a hívását kell használniuk. `$upstream:443/azureiotedge-api-proxy:1.0`
 
-A **$upstream** paraméter egy alsóbb rétegbeli eszköz szülőjének mutat, így a kérés az összes rétegen át fog haladni, amíg el nem éri a legfelső réteget, amely a beállításjegyzék-modulra irányuló proxy-környezet útválasztási kérelmeit átirányítja. Az `:443` ebben a példában szereplő portot le kell cserélni, amely a szülő eszközön lévő API-proxy modul által figyelt port.
+A **$upstream** paraméter egy alsóbb rétegbeli eszköz szülőszámára mutat, így a kérés az összes réteget át fogja irányítva, amíg el nem éri a felső réteget, amely egy proxykörnyezet a tárolókéréseket a beállításjegyzék-modulhoz irányítja. Ebben a példában a portot arra a portra kell cserélni, amelyet a szülőeszköz `:443` API-proxymodulja figyel.
 
-Az API-proxy modul csak egyetlen beállításjegyzék-modulhoz irányítható, és mindegyik beállításjegyzék-modul csak egy tároló-beállításjegyzékhez képezhető le. Ezért minden olyan képet, amelyet az alsóbb rétegbeli eszközöknek le kell húznia, egyetlen tároló-beállításjegyzékben kell tárolni.
+Az API-proxymodul csak egy beállításjegyzék-modulhoz irányítható, és minden beállításjegyzék-modul csak egy tároló-beállításjegyzékhez tud leképezni. Ezért az alsóbb rétegbeli eszközök által lekért rendszerképeket egyetlen tárolójegyzékben kell tárolni.
 
-Ha nem szeretné, hogy az alsóbb rétegbeli eszközök lekéréses kérelmeket hozzanak egy átjáró-hierarchián keresztül, egy másik lehetőség a helyi beállításjegyzék-megoldás kezelése. Vagy leküldheti a modul lemezképeit az eszközökre az üzembe helyezések létrehozása előtt, majd a **imagePullPolicy** **nem** értékre állíthatja.
+Ha nem szeretné, hogy az alsóbb rétegbeli eszközök modul lekéréses kérelmeket használjanak egy átjáróhierarchián keresztül, egy másik lehetőség egy helyi beállításjegyzék-megoldás kezelése. Vagy az üzembe helyezések létrehozása előtt az eszközökre is lekuláljuk a modul rendszerképeit, majd az **imagePullPolicy vezérlőt** állítsa **never (soha) beállításra.**
 
-#### <a name="bootstrap-the-iot-edge-agent"></a>A IoT Edge-ügynök indítása
+#### <a name="bootstrap-the-iot-edge-agent"></a>A IoT Edge rendszerindítása
 
-A IoT Edge ügynök az első futtatókörnyezet-összetevő, amely bármely IoT Edge eszközön elindul. Győződjön meg arról, hogy minden alsóbb rétegbeli IoT Edge eszköz elérheti a edgeAgent-modul rendszerképét az indításkor, majd hozzáférhet az üzembe helyezésekhez, és elindíthatja a modul többi rendszerképét is.
+A IoT Edge ügynök az első olyan futásidejű összetevő, amely bármely IoT Edge indul. Meg kell győződni arról, hogy az alsóbb rétegbeli IoT Edge-eszközök hozzáférhetnek az edgeAgent modul rendszerképéhez az indításkor, majd hozzáférhetnek az üzemelő példányhoz, és elindítják a modul többi rendszerképét.
 
-Ha a konfigurációs fájlt egy IoT Edge eszközön nyitja meg a hitelesítési információk, tanúsítványok és a szülő állomásnév megadásához, frissítse az edgeAgent-tároló rendszerképét is.
+Amikor a konfigurációs fájlba kerül egy IoT Edge-eszközön, és meg kell adnia a hitelesítési adatait, tanúsítványait és szülő gazdanevét, frissítse az edgeAgent tároló rendszerképét is.
 
-Ha a legfelső szintű átjáró eszköze a tároló képkérelmének kezelésére van konfigurálva, cserélje le `mcr.microsoft.com` a nevet a szülő állomásnévre és az API-proxy figyelési portjára. A központi telepítési jegyzékfájlban `$upstream` billentyűparancsként is használható, de ehhez a edgeHub modulnak kell kezelnie az útválasztást, és ez a modul nem indult el ezen a ponton. Például:
+Ha a legfelső szintű átjáróeszköz a tároló rendszerkép-kérelmek kezeléséhez van konfigurálva, cserélje le a helyére a szülő állomásnevet és az `mcr.microsoft.com` API-proxy figyelőportját. Az üzembe helyezési jegyzékben használhatja a parancsot parancsikonként, de ehhez az edgeHub-modulnak kell kezelnie az útválasztást, és ez a modul még nem indult `$upstream` el. Például:
 
 ```toml
 [agent]
@@ -457,24 +457,24 @@ type = "docker"
 image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
-Ha helyi tároló-beállításjegyzéket használ, vagy manuálisan adja meg a tároló lemezképeit az eszközön, ennek megfelelően frissítse a konfigurációs fájlt.
+Ha helyi tárolójegyzéket használ, vagy manuálisan biztosítja a tároló rendszerképeket az eszközön, ennek megfelelően frissítse a konfigurációs fájlt.
 
-#### <a name="configure-runtime-and-deploy-proxy-module"></a>Futtatókörnyezet konfigurálása és proxy modul üzembe helyezése
+#### <a name="configure-runtime-and-deploy-proxy-module"></a>A futásidő konfigurálása és proxymodul üzembe helyezése
 
-Az **API-proxy modul** szükséges a felhő és az alsóbb rétegbeli IoT Edge eszközök közötti kommunikáció útválasztásához. A hierarchia alsó rétegében lévő IoT Edge eszköz, amely nem tartalmaz alsóbb szintű IoT Edge-eszközöket, nincs szüksége erre a modulra.
+Az **API-proxymodul** szükséges a felhő és az összes lefelé irányuló eszköz közötti összes kommunikáció IoT Edge útválasztásához. A IoT Edge alsó rétegében található, alsóbb rétegbeli eszközöknek nincs szükségük IoT Edge a modulra.
 
-Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakoribb átjáró-forgatókönyvek kezeléséhez. Ez a cikk röviden ismerteti a modulok alapszintű konfigurációban való beállításának lépéseit. Részletesebb információkat és példákat a következő témakörben talál: [az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md) .
+Az API-proxymodul úgy lett kialakítva, hogy a leggyakoribb átjáró-forgatókönyvek kezeléséhez legyen testre szabva. Ez a cikk röviden ismerteti a modulok alapszintű konfigurációban való beállításának lépéseit. Részletesebb információkért és példákért tekintse meg az [API-proxymodul konfigurálása az átjáróhierarchia](how-to-configure-api-proxy-module.md) forgatókönyvéhezcímet.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
-1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
-1. Válassza ki az alsó rétegbeli eszközt, amelyet a **IoT Edge eszközök** listájáról konfigurál.
+1. A [Azure Portal](https://portal.azure.com)lépjen az IoT Hubra.
+1. Válassza **IoT Edge** a navigációs menüből a Kívánt elemet.
+1. Válassza ki a konfigurálni kívánt alsó rétegben található eszközt a IoT Edge **listájából.**
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
-1. A **IoT Edge-modulok** szakaszban válassza a **Hozzáadás** , majd a **piactér modul** elemet.
-1. Keresse meg és válassza ki a **IOT Edge API-proxy** modult.
-1. Válassza ki az API-proxy modul nevét a telepített modulok listájából, és frissítse a következő modul beállításait:
-   1. A **modul beállításai** lapon frissítse a **rendszerkép URI** értékét. Cserélje le a `mcr.microsoft.com` elemet a `$upstream:443` kérdésre.
-   1. A **környezeti változók** lapon frissítse a **NGINX_DEFAULT_PORT** értékét a következőre: `443` .
-   1. A **tároló létrehozása beállítások** lapon frissítse a port kötéseit a 443-es hivatkozási portra.
+1. A IoT Edge **modulok szakaszban** válassza a **Hozzáadás, majd** a **Marketplace-modul lehetőséget.**
+1. Keresse meg és válassza ki a **IoT Edge API-proxy modult.**
+1. Válassza ki az API-proxymodul nevét az üzembe helyezett modulok listájából, és frissítse a következő modulbeállításokat:
+   1. A **Modulbeállítások lapon** frissítse a Kép **URI értékét.** Cserélje le a `mcr.microsoft.com` elemet a `$upstream:443` kérdésre.
+   1. A Környezeti **változók lapon** frissítse a változó értékét **NGINX_DEFAULT_PORT** `443` értékre.
+   1. A Tároló **létrehozása beállítások lapon** frissítse a portkötéseket a 443-as portra való hivatkozáshoz.
 
       ```json
       {
@@ -490,13 +490,13 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
       }
       ```
 
-   Ezek a módosítások az API-proxy modult úgy konfigurálja, hogy az 443-es porton figyeljen. Ha meg szeretné akadályozni a port kötésének ütközését, a edgeHub modult úgy kell konfigurálnia, hogy ne figyelje a 443-es portot. Ehelyett az API-proxy modul a 443-es porton továbbítja a edgeHub forgalmat.
+   Ezek a módosítások úgy konfigurálják az API-proxymodult, hogy a 443-as portot figyelje. A portkötések ütközésének elkerülése érdekében úgy kell konfigurálnia az edgeHub-modult, hogy ne figyelje a 443-as portot. Ehelyett az API-proxymodul a 443-as porton keresztül irányít minden edgeHub-forgalmat.
 
-1. Válassza a **futtatókörnyezet beállításait**.
-1. A edgeHub modul beállításainak frissítése:
+1. Válassza **a Futásidejű beállítások lehetőséget.**
+1. Frissítse az edgeHub-modul beállításait:
 
-   1. A **rendszerkép** mezőben cserélje le a- `mcr.microsoft.com` t `$upstream:443` .
-   1. A **create Options (beállítások létrehozása** ) mezőben törölje az 443-es porthoz tartozó port kötését, hagyja ki a 5671 és 8883 port kötéseit.
+   1. A Kép **mezőben** cserélje le a `mcr.microsoft.com` helyére a következőt: `$upstream:443` .
+   1. A **Beállítások létrehozása mezőben** törölje a 443-as port portkötését, és hagyja meg az 5671-es és a 8883-as port kötését.
 
    ```json
    {
@@ -517,19 +517,19 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
    }
    ```
 
-1. A edgeAgent modul beállításainak frissítése:
-   1. A **rendszerkép** mezőben cserélje le a- `mcr.microsoft.com` t `$upstream:443` .
+1. Frissítse az edgeAgent modul beállításait:
+   1. A Kép **mezőben** cserélje le a `mcr.microsoft.com` helyére a következőt: `$upstream:443` .
 
-1. Kattintson a **Save (Mentés** ) gombra a futásidejű beállítások módosításainak mentéséhez.
-1. Válassza a Next (tovább) lehetőséget **: útvonalakon** lépjen a következő lépésre.
-1. Ha engedélyezni szeretné az eszközről a felhőbe irányuló üzeneteket az alsóbb rétegbeli eszközökről a IoT Hub elérésére, adjon meg egy útvonalat, amely az összes üzenetet átadja `$upstream` . A felsőbb rétegbeli paraméter a fölérendelt eszközre mutat alsó rétegű eszközök esetén. Például:
-    1. **Név**: `Route`
-    1. **Érték**: `FROM /messages/* INTO $upstream`
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az utolsó lépéshez való ugráshoz.
-1. Válassza a **Létrehozás** lehetőséget az eszközön való üzembe helyezéshez.
+1. A **futásidejű** beállítások módosításainak mentéséhez válassza a Mentés lehetőséget.
+1. Válassza **a Tovább: Útvonalak lehetőséget** a következő lépéshez.
+1. Ahhoz, hogy a lefelé irányuló eszközök eszközről a felhőbe irányuló üzenetei elérhűek IoT Hub egy útvonalat, amely az összes üzenetet a felé `$upstream` továbbítja. A felsőbb rétegbeli paraméter alsóbb rétegbeli eszközök esetén a szülőeszközre mutat. Például:
+    1. **Név:**`Route`
+    1. **Érték:**`FROM /messages/* INTO $upstream`
+1. Az **utolsó lépéshez válassza** az Áttekintés + létrehozás lehetőséget.
+1. Válassza **a Létrehozás lehetőséget** az eszköz üzembe helyezéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
 [IoT Edge-eszköz használata átjáróként](iot-edge-as-gateway.md)
 
-[Az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md)
+[Az API-proxymodul konfigurálása az átjáróhierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md)

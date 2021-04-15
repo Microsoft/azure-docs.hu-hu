@@ -1,35 +1,35 @@
 ---
-title: PowerShell-minták a Azure Active Directory-alkalmazások kezeléséhez
-description: Ezek a PowerShell-minták a Azure Active Directory-bérlőben felügyelt alkalmazásokhoz használatosak. Ezeket a parancsfájlokat használhatja a titkokkal és tanúsítványokkal kapcsolatos lejárati információk megkereséséhez.
+title: PowerShell-minták Azure Active Directory alkalmazáskezeléshez
+description: Ezek a PowerShell-minták a saját bérlőben Azure Active Directory alkalmazásokhoz használhatók. Ezekkel a példaszk szkriptekkel lejárati információkat találhat a titkos kulcsokról és tanúsítványokról.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 02/18/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b6314935bfafc2fe6288c30619e1d01242a991d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636188"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378822"
 ---
-# <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-példák az alkalmazások kezeléséhez
+# <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-példák az alkalmazáskezeléshez
 
-Az alábbi táblázat az Azure AD-alkalmazások kezeléséhez használható PowerShell-parancsfájlokra mutató hivatkozásokat tartalmaz. A mintákhoz a következők szükségesek:
-- A [AzureAD v2 PowerShell a Graph modulhoz](/powershell/azure/active-directory/install-adv2) vagy
-- A [Graph modul előzetes verziójának AzureAD v2 PowerShell-verziója](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), hacsak másként nincs jelezve.
+Az alábbi táblázat az Azure AD-alkalmazáskezelés PowerShell-példaszk szkriptpépéire mutató hivatkozásokat tartalmaz. Ezekhez a mintákhoz a következő két szükséges:
+- Az [AzureAD V2 PowerShell for Graph modul,](/powershell/azure/active-directory/install-adv2) vagy
+- Az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)előzetes verziója, hacsak másként nincs jelezve.
 
-A példákban használt parancsmagokkal kapcsolatos további információkért lásd: [alkalmazások](/powershell/module/azuread/#applications).
+A mintákban használt parancsmagokkal kapcsolatos további információkért lásd: [Applications (Alkalmazások).](/powershell/module/azuread/#applications)
 
 | Hivatkozás | Leírás |
 |---|---|
-|**Application Management-parancsfájlok**||
-| [Titkok és tanúsítványok exportálása (alkalmazás-regisztrációk)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | A titkok és tanúsítványok exportálása Azure Active Directory bérlőben az alkalmazások regisztrálásához. |
-| [Titkok és tanúsítványok exportálása (vállalati alkalmazások)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | A Azure Active Directory bérlőben lévő nagyvállalati alkalmazásokhoz tartozó titkok és tanúsítványok exportálása. |
-| [A lejáró titkok és tanúsítványok exportálása](scripts/powershell-export-apps-with-expriring-secrets.md) | Az alkalmazások regisztrációjának exportálása a lejáró titkokkal és tanúsítványokkal, valamint azok tulajdonosainak Azure Active Directory bérlőben. |
-| [A titkok és tanúsítványok exportálása a szükséges dátum után lejár](scripts/powershell-export-apps-with-secrets-beyond-required.md) | A titkokat és tanúsítványokat tartalmazó alkalmazás-regisztrációk exportálása a Azure Active Directory bérlőn a szükséges dátumon túl lejár. Ez a nem interaktív Client_Credentials OAuth folyamatot használja. |
+|**Alkalmazáskezelési szkriptek**||
+| [Titkos kulcsok és tanúsítványok exportálása (alkalmazásregisztrációk)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Titkos kulcsok és tanúsítványok exportálása az alkalmazásregisztrációkhoz Azure Active Directory bérlőben. |
+| [Titkos kulcsok és tanúsítványok exportálása (vállalati alkalmazások)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Titkos kulcsok és tanúsítványok exportálása vállalati alkalmazásokhoz Azure Active Directory bérlőben. |
+| [Lejáró titkos kulcsok és tanúsítványok exportálása](scripts/powershell-export-apps-with-expriring-secrets.md) | Exportálja az alkalmazásregisztrációkat a lejáró titkos adatokat és tanúsítványokat, valamint azok tulajdonosait a Azure Active Directory bérlőben. |
+| [Titkos kulcsok és tanúsítványok exportálása a szükséges dátumon túl](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Exportálja a titkos adatokat és tanúsítványokat a bérlőben a szükséges dátumnál Azure Active Directory tanúsítványokat. Ez a nem interaktív Oauth-Client_Credentials használja. |

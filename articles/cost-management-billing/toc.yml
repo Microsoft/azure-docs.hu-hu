@@ -48,7 +48,7 @@
           href: understand/analyze-unexpected-charges.md
         - name: Költségek kezelése automatizálással
           href: costs/manage-automation.md
-        - name: Nagyméretű adatkészletek lekérése exportálással
+        - name: Nagy méretű adatkészletek lekérése exportálással
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management partnerek számára
           href: costs/get-started-partners.md
@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Használati adatok egyéni előfizetések esetén
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: A nagyvállalati és a Microsoft ügyfél-szerződés használati adatok
+        - name: Vállalati és Microsoft Ügyfélszerződés használati adatok
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Számlázás
       items:
@@ -148,7 +148,7 @@
               href: manage/understand-mca-roles.md
             - name: Hivatkozás partnerazonosítóra
               href: manage/link-partner-id.md
-            - name: Partner-azonosító csatolása a Power apps-fiókokhoz
+            - name: Partnerazonosító csatolása Power Apps fiókokhoz
               href: manage/link-partner-id-power-apps-accounts.md
         - name: Előfizetések adminisztrálása
           items:
@@ -162,9 +162,9 @@
               href: manage/azurestudents-subscription-disabled.md
             - name: Tulajdonjogok átadása
               href: manage/billing-subscription-transfer.md
-            - name: Tulajdonjog kérelmezése – Microsoft-ügyfélszerződés
+            - name: Tulajdonjog Microsoft Ügyfélszerződés átadása
               href: manage/mca-request-billing-ownership.md
-            - name: Tulajdonjog kérelmezése – Microsoft-partnerszerződés
+            - name: Tulajdonjog Microsoft Partnerszerződés átadása
               href: manage/mpa-request-ownership.md
             - name: AWS-integráció beállítása és konfigurálása
               href: costs/aws-integration-set-up-configure.md
@@ -206,7 +206,7 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Előfizetés lemondása
               href: manage/cancel-azure-subscription.md
-            - name: Előfizetési házirendek kezelése
+            - name: Előfizetési szabályzatok kezelése
               href: manage/manage-azure-subscription-policy.md
         - name: Előfizetések programozott létrehozása
           items:
@@ -296,7 +296,7 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: Migrálás EA-ról MCA API-kra
           href: costs/migrate-cost-management-api.md
-        - name: Szerepkörök társítása az EA SPN-hez
+        - name: Szerepkörök hozzárendelése EA SPN-hez
           href: manage/assign-roles-azure-service-principals.md
         - name: Migrálás az EA-jelentésekből az Azure Resource Manager API-kba
           href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
@@ -394,15 +394,15 @@
       href: /rest/api/cost-management
     - name: Azure használati REST API
       href: /rest/api/consumption
-    - name: Felhasználás REST API ARM költségvetési sablon
+    - name: Használat REST API ARM-költségvetés sablonja
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API-minták
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: A Cost Management Azure PowerShell-parancsmagjai
+    - name: Azure PowerShell parancsmagok a Cost Management
       href: /powershell/module/Az.CostManagement
     - name: Számlázásautomatizálási forgatókönyvek
       href: manage/cost-management-automation-scenarios.md
-    - name: Az Azure kiskereskedelmi díjszabása REST API
+    - name: Az Azure kiskereskedelmi árainak REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure számlázási REST API
       href: /rest/api/billing
@@ -410,19 +410,19 @@
       href: manage/consumption-api-overview.md
     - name: Azure használati REST API
       href: /rest/api/consumption
-    - name: A vállalati jelentéskészítés REST API áttekintése
+    - name: Vállalati jelentéskészítési REST API áttekintése
       href: manage/enterprise-api.md
-    - name: Vállalati jelentéskészítés – REST API-k
+    - name: Vállalati jelentéskészítési REST API-k
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Lefoglalások
       items:
         - name: Reservations REST API
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Azure PowerShell-parancsmagok foglaláshoz
+        - name: Azure PowerShell foglalási parancsmagok
           href: /powershell/module/azurerm.reservations
-        - name: Azure CLI a foglalásokhoz
+        - name: Azure CLI foglaláshoz
           href: /cli/azure/reservations/reservation
-        - name: Használat részletei REST API
+        - name: Használati adatok REST API
           href: /rest/api/consumption/usagedetails
         - name: Foglalások részletei REST API
           href: /rest/api/consumption/reservationsdetails
