@@ -1,6 +1,6 @@
 ---
-title: Azure-szerepkörök kiosztása az REST API-Azure RBAC
-description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
+title: Azure-szerepkörök hozzárendelése a REST API – Azure RBAC
+description: Megtudhatja, hogyan adhat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, szolgáltatásnév vagy felügyelt identitás számára a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,30 +11,30 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 9a61f54530f25ac33c6ef097698198a11cf1275e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 3baf44a4240b23b41ce2e80dc22dbda4c7d0672a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581447"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363716"
 ---
-# <a name="assign-azure-roles-using-the-rest-api"></a>Azure-szerepkörök kiosztása a REST API használatával
+# <a name="assign-azure-roles-using-the-rest-api"></a>Azure-szerepkörök hozzárendelése a REST API
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket a REST API használatával.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Ez a cikk azt ismerteti, hogyan rendelhet szerepköröket a REST API.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
-## <a name="assign-an-azure-role"></a>Azure-szerepkör kiosztása
+## <a name="assign-an-azure-role"></a>Azure-szerepkör hozzárendelése
 
-Egy szerepkör hozzárendeléséhez használja a [szerepkör-hozzárendeléseket – hozzon létre](/rest/api/authorization/roleassignments/create) REST API, és adja meg a rendszerbiztonsági tag, a szerepkör-definíció és a hatókört. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/write` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
+Szerepkör hozzárendeléshez használja [](/rest/api/authorization/roleassignments/create) a Szerepkör-hozzárendelések – Létrehozás REST API a rendszerbiztonsági tag, a szerepkör-definíció és a hatókör megadását. Az API hívásához hozzáféréssel kell lennie a `Microsoft.Authorization/roleAssignments/write` művelethez. A beépített szerepkörökből csak [a](built-in-roles.md#owner) Tulajdonos és a Felhasználói [hozzáférés](built-in-roles.md#user-access-administrator) rendszergazdája kap hozzáférést ehhez a művelethez.
 
-1. Használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API, vagy tekintse meg a [beépített szerepköröket](built-in-roles.md) a hozzárendelni kívánt szerepkör-definíció azonosítójának lekéréséhez.
+1. Használja a [Szerepkör-definíciók – Lista](/rest/api/authorization/roledefinitions/list) REST API vagy tekintse meg a Beépített szerepkörök listában a hozzárendelni kívánt [szerepkör-definíció](built-in-roles.md) azonosítójának lekért azonosítóját.
 
-1. Egy GUID-eszköz használatával állítson be egy egyedi azonosítót, amelyet a rendszer a szerepkör-hozzárendelési azonosítóhoz fog használni. Az azonosító formátuma: `00000000-0000-0000-0000-000000000000`
+1. A GUID eszközzel hozzon létre egy egyedi azonosítót, amely a szerepkör-hozzárendelési azonosítóhoz lesz használva. Az azonosító formátuma a következő: `00000000-0000-0000-0000-000000000000`
 
-1. Kezdje a következő kéréssel és szövegtörzstel:
+1. Kezdje a következő kéréssel és törzstel:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
@@ -49,7 +49,7 @@ Egy szerepkör hozzárendeléséhez használja a [szerepkör-hozzárendeléseket
     }
     ```
 
-1. Az URI-n belül cserélje le a *{scope}* értéket a szerepkör-hozzárendelés hatókörére.
+1. Az URI-ben cserélje *le a {scope}* helyére a szerepkör-hozzárendelés hatókörét.
 
     > [!div class="mx-tableFixed"]
     > | Hatókör | Típus |
@@ -59,11 +59,11 @@ Egy szerepkör hozzárendeléséhez használja a [szerepkör-hozzárendeléseket
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Erőforrás |
 
-    Az előző példában a Microsoft. web egy olyan erőforrás-szolgáltató, amely egy App Service példányra hivatkozik. Hasonlóképpen használhatja bármely más erőforrás-szolgáltatót, és megadhatja a hatókört. További információ: [Azure erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md) és támogatott [Azure erőforrás-szolgáltatói műveletek](resource-provider-operations.md).  
+    Az előző példában a microsoft.web egy erőforrás-szolgáltató, amely egy App Service hivatkozik. Hasonlóképpen bármely más erőforrás-szolgáltatót is használhat, és megadhatja a hatókört. További információ: Azure erőforrás-szolgáltatók és [-típusok,](../azure-resource-manager/management/resource-providers-and-types.md) [valamint támogatott Azure-erőforrás-szolgáltatói műveletek.](resource-provider-operations.md)  
 
-1. Cserélje le a *{roleAssignmentId}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
+1. Cserélje *le a {roleAssignmentId}* helyére a szerepkör-hozzárendelés GUID-azonosítóját.
 
-1. A kérelem törzsében cserélje le a *{scope}* helyére a szerepkör-hozzárendelés hatókörét.
+1. A kérelem törzsében cserélje *le a {scope}* helyére a szerepkör-hozzárendelés hatókörét.
 
     > [!div class="mx-tableFixed"]
     > | Hatókör | Típus |
@@ -73,11 +73,11 @@ Egy szerepkör hozzárendeléséhez használja a [szerepkör-hozzárendeléseket
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le a *{roleDefinitionId}* helyére a szerepkör-definíció azonosítóját.
+1. Cserélje *le a {roleDefinitionId} helyére* a szerepkör-definíció azonosítóját.
 
-1. Cserélje le a *{principalId}* helyére annak a felhasználónak, csoportnak vagy egyszerű szolgáltatásnak az azonosítóját, amely hozzá lesz rendelve a szerepkörhöz.
+1. Cserélje *le a {principalId}* helyére a szerepkörhöz hozzárendelni fog felhasználó, csoport vagy szolgáltatásnév objektumazonosítóját.
 
-A következő kérelem és törzs rendeli hozzá a [biztonságimásolat-olvasó](built-in-roles.md#backup-reader) szerepkört egy felhasználóhoz az előfizetés hatókörében:
+A következő kérés és [](built-in-roles.md#backup-reader) törzs hozzárendeli a Biztonságimásolat-olvasó szerepkört egy felhasználóhoz az előfizetés hatókörében:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
@@ -92,7 +92,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
 }
 ```
 
-Az alábbi ábrán egy példa látható a kimenetre:
+Az alábbiakban egy példa látható a kimenetre:
 
 ```json
 {
@@ -111,14 +111,14 @@ Az alábbi ábrán egy példa látható a kimenetre:
 }
 ```
 
-### <a name="new-service-principal"></a>Új egyszerű szolgáltatásnév
+### <a name="new-service-principal"></a>Új szolgáltatásnév
 
-Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, akkor a szerepkör-hozzárendelés meghiúsulhat. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet.
+Ha létrehoz egy új szolgáltatásnévt, és azonnal megpróbál hozzárendelni egy szerepkört a szolgáltatásnévhez, a szerepkör-hozzárendelés bizonyos esetekben meghiúsulhat. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört a szolgáltatásnévhez, előfordulhat, hogy a szerepkör-hozzárendelés sikertelen lesz. A hiba oka valószínűleg a replikáció késése. A szolgáltatásnév egy régióban jön létre; A szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnévvel.
 
-Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot a `ServicePrincipal` szerepkör-hozzárendelés létrehozásakor kell beállítania. A szerepkör-hozzárendelést is be kell állítania `apiVersion` `2018-09-01-preview` vagy később.
+A forgatókönyv megoldásához használja a Szerepkör-hozzárendelések [–](/rest/api/authorization/roleassignments/create) Létrehozás REST API és állítsa a tulajdonságot a `principalType` következőre: `ServicePrincipal` . A vagy újabb `apiVersion` beállítását is `2018-09-01-preview` be kell állítania.
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2018-09-01-preview
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-09-01-preview
 ```
 
 ```json
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure-beli szerepkör-hozzárendelések listázása a REST API használatával](role-assignments-list-rest.md)
+- [Azure-beli szerepkör-hozzárendelések felsorolása a REST API](role-assignments-list-rest.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)
-- [Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával](custom-roles-rest.md)
+- [Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API](custom-roles-rest.md)
