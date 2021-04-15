@@ -1,53 +1,53 @@
 ---
-title: Vállalati alkalmazás elrejtése a felhasználó Azure AD-beli felhasználói felületéről
-description: Vállalati alkalmazások elrejtése Azure Active Directory hozzáférési panelek vagy Microsoft 365-indítók felhasználói felületéről.
+title: Vállalati alkalmazás elrejtése az Azure AD felhasználói felületén
+description: Vállalati alkalmazás elrejtése a felhasználói élmény elől a hozzáférési panelek Azure Active Directory indító Microsoft 365 számára.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8469b48b92f3f9a645a0c05441e6c1943b02e16f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a90f3e3aeb1d68c6c6e6eeea29c04ff7880dccd3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258880"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374199"
 ---
-# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Vállalati alkalmazások elrejtése a Azure Active Directoryban lévő végfelhasználók számára
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Vállalati alkalmazások elrejtése a végfelhasználók elől a Azure Active Directory
 
-Útmutató a végfelhasználók MyApps paneljén vagy Microsoft 365 Indítóban található alkalmazások elrejtéséhez. Ha egy alkalmazás rejtve van, a felhasználók továbbra is rendelkeznek engedéllyel az alkalmazáshoz. 
+Útmutatás az alkalmazások elrejtéséhez a végfelhasználók MyApps paneljére vagy Microsoft 365 indítóján. Ha egy alkalmazás rejtett, a felhasználók továbbra is engedélyekkel rendelkezik az alkalmazáshoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Alkalmazás-rendszergazdai jogosultságok szükségesek az alkalmazások elrejtéséhez a MyApps panelen és a Microsoft 365 Indítóban.
+alkalmazás-rendszergazda szükséges, hogy elrejtsen egy alkalmazást a MyApps panelen, és Microsoft 365 indítóját.
 
-Az összes Microsoft 365 alkalmazás elrejtéséhez globális rendszergazdai jogosultságok szükségesek.
+globális rendszergazda összes alkalmazás elrejtéséhez Microsoft 365 jogosultságok szükségesek.
 
 
-## <a name="hide-an-application-from-the-end-user"></a>Alkalmazás elrejtése a végfelhasználótól
-A következő lépésekkel rejtheti el az alkalmazást a MyApps panelen, és Microsoft 365 az Application Launcher alkalmazást.
+## <a name="hide-an-application-from-the-end-user"></a>Alkalmazás elrejtése a végfelhasználó elől
+Az alábbi lépésekkel elrejthet egy alkalmazást a MyApps panelen, és Microsoft 365 alkalmazásindítót.
 
-1.  Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként a címtárában.
+1.  Jelentkezzen be a [Azure Portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
 2.  Válassza a **Azure Active Directory** lehetőséget.
-3.  Válassza a **vállalati alkalmazások** lehetőséget. A **vállalati alkalmazások – minden alkalmazás** panel nyílik meg.
-4.  Az **alkalmazás típusa** területen válassza a **vállalati alkalmazások** lehetőséget, ha még nincs kiválasztva.
-5.  Keresse meg az elrejteni kívánt alkalmazást, majd kattintson az alkalmazásra.  Megnyílik az alkalmazás áttekintése.
+3.  Válassza a **Vállalati alkalmazások lehetőséget.** Megnyílik **a Vállalati alkalmazások – Minden alkalmazás** panel.
+4.  Az **Alkalmazás típusa alatt** válassza a Vállalati **alkalmazások** lehetőséget, ha még nincs kiválasztva.
+5.  Keresse meg az elrejteni kívánt alkalmazást, és kattintson az alkalmazásra.  Megnyílik az alkalmazás áttekintése.
 6.  Kattintson a **Tulajdonságok** elemre. 
-7.  A **látható felhasználók számára?** kérdés, kattintson a **nem** gombra.
+7.  A **Felhasználók számára látható kérdés esetén kattintson** a Nem **gombra.**
 8.  Kattintson a **Mentés** gombra.
 
 > [!NOTE]
-> Ezek az utasítások csak a vállalati alkalmazásokra érvényesek.
+> Ezek az utasítások csak vállalati alkalmazásokra vonatkoznak.
 
-## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Alkalmazások elrejtése az Azure AD PowerShell használatával
+## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Alkalmazás elrejtése az Azure AD PowerShell használatával
 
-Ha el szeretné rejteni egy alkalmazást a MyApps panelen, manuálisan is hozzáadhatja az HideApp címkét az alkalmazás egyszerű szolgáltatásához. Futtassa az alábbi [AzureAD PowerShell](/powershell/module/azuread/#service_principals) -parancsokat, hogy az alkalmazás **látható legyen a felhasználók számára?** tulajdonság értéke **nem**. 
+Ha el szeretne rejteni egy alkalmazást a MyApps panelen, manuálisan hozzáadhatja az HideApp címkét az alkalmazás szolgáltatásnévhez. Futtassa a következő [AzureAD PowerShell-parancsokat,](/powershell/module/azuread/#service_principals) hogy az alkalmazás **Visible** tulajdonságát a Felhasználók? tulajdonságra állítsa **a No (Nem) beállításra.** 
 
 ```PowerShell
 Connect-AzureAD
@@ -59,20 +59,20 @@ $tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 
-## <a name="hide-microsoft-365-applications-from-the-myapps-panel"></a>Microsoft 365 alkalmazások elrejtése a MyApps panelen
+## <a name="hide-microsoft-365-applications-from-the-myapps-panel"></a>Alkalmazások Microsoft 365 a MyApps panelen
 
-A következő lépésekkel elrejtheti az összes Microsoft 365 alkalmazást a MyApps panelen. Az alkalmazások továbbra is láthatók az Office 365-portálon.
+Az alábbi lépésekkel elrejtheti az összes Microsoft 365 a MyApps panelen. Az alkalmazások továbbra is láthatók az Office 365 portálon.
 
-1.  Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként a címtárában.
+1.  Jelentkezzen be a [Azure Portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
 2.  Válassza a **Azure Active Directory** lehetőséget.
 3.  Válassza a **Felhasználók** lehetőséget.
 4.  Válassza a **Felhasználói beállítások** elemet.
-5.  A **vállalati alkalmazások** területen kattintson **a kezelés a végfelhasználók általi indítás és az alkalmazások megtekintése** elemre.
-6.  A **felhasználók csak az office 365-alkalmazásokat látják az office 365-portálon**, kattintson az **Igen** gombra.
+5.  A **Vállalati alkalmazások alatt** kattintson a Manage how end users launch and view their applications (A végfelhasználók **alkalmazásindítási és -megtekintési mikéntének kezelése) elemre.**
+6.  A Felhasználók csak az Office 365-alkalmazásokat láthatják **az Office 365 portálon,** kattintson az Igen **gombra.**
 7.  Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
-* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](./assign-user-or-group-access-portal.md)
+* [Az összes saját csoport](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
+* [Felhasználó- vagy csoport-hozzárendelés eltávolítása vállalati alkalmazásból](./assign-user-or-group-access-portal.md)
 * [Vállalati alkalmazás nevének vagy emblémájának módosítása](./add-application-portal-configure.md)

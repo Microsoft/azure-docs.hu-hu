@@ -1,44 +1,44 @@
 ---
-title: A OIDC-alapú egyszeri bejelentkezés (SSO) megismerése az Azure Active Directoryban lévő alkalmazásokhoz
-description: Az OIDC-alapú egyszeri bejelentkezés (SSO) megismerése Azure Active Directory alkalmazásokban.
+title: Az OIDC-alapú egyszeri bejelentkezés (SSO) a Azure Active Directory
+description: Az OIDC-alapú egyszeri bejelentkezés (SSO) használata a Azure Active Directory.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ffaa55d4aa482e8f0eda93b1b32db6310d17e2a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 990e0c09f8a49b83bc68d7123f5f8146a3551575
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255249"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374539"
 ---
-# <a name="understand-oidc-based-single-sign-on"></a>A OIDC-alapú egyszeri bejelentkezés ismertetése
-Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applications-portal.md) megtudhatta, hogyan használhatja az Azure ad-t az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használatával. Ez a cikk részletesebben ismerteti azokat az alkalmazásokat, amelyek az OpenID Connect standardot használják az egyszeri bejelentkezés megvalósításához. 
+# <a name="understand-oidc-based-single-sign-on"></a>Az OIDC-alapú egyszeri bejelentkezés
+Az [alkalmazáskezelés](view-applications-portal.md) gyorsútmutató-sorozatában megtanulta, hogyan használhatja az Azure AD-t identitásszolgáltatóként (IdP) egy alkalmazáshoz. Ez a cikk részletesebben ismerteti az egyszeri bejelentkezést OpenID Connect szabványos alkalmazásokat. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-Az alkalmazások Azure Active Directory bérlőhöz való hozzáadásának folyamata az alkalmazás által megvalósított egyszeri bejelentkezés típusától függ. Ha többet szeretne megtudni az Azure AD-t használó alkalmazásokhoz használható egyszeri bejelentkezési lehetőségekről, tekintse meg az [egyszeri bejelentkezés lehetőségeit](sso-options.md). Ez a cikk a OIDC-alapú alkalmazásokat ismerteti.
+Az alkalmazásnak a Azure Active Directory való hozzáadásának folyamata a megvalósított alkalmazás egyszeri bejelentkezésének típusától függ. Az Azure AD-t identitáskezelésre használható alkalmazásokhoz elérhető egyszeri bejelentkezési lehetőségekkel kapcsolatos további információkért lásd: Egyszeri [bejelentkezési lehetőségek.](sso-options.md) Ez a cikk az OIDC-alapú alkalmazásokat tartalmazza.
 
 
 ## <a name="basic-oidc-configuration"></a>Alapszintű OIDC-konfiguráció
-A gyors üzembe helyezési [sorozatban](add-application-portal-setup-oidc-sso.md)van egy cikk, amely az egyszeri bejelentkezés konfigurálását ismerteti. Ebben a témakörben megtudhatja, hogyan adhat hozzá egy OIDC-alapú alkalmazást az Azure-bérlőhöz.
+A [gyorsútmutató-sorozatban](add-application-portal-setup-oidc-sso.md)az egyszeri bejelentkezés konfigurálását egy cikk írja le. Ebből megtudhatja, hogyan adhat hozzá OIDC-alapú alkalmazást az Azure-bérlőhöz.
 
-A jó megoldás, ha olyan alkalmazást ad hozzá, amely az egyszeri bejelentkezéshez a OIDC standardot használja, a konfiguráció minimális. Íme egy rövid videó, amely bemutatja, hogyan adhat hozzá egy OIDC-alapú alkalmazást a bérlőhöz.
+Az OIDC szabványt az egyszeri bejelentkezéshez használó alkalmazások hozzáadásával az a jó, hogy a konfiguráció minimális. Az alábbi rövid videó bemutatja, hogyan adhat hozzá OIDC-alapú alkalmazást a bérlőhöz.
 
-OIDC-alapú alkalmazás hozzáadása Azure Active Directory
+OIDC-alapú alkalmazás hozzáadása a Azure Active Directory
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
-A felhasználói és rendszergazdai engedélyekkel kapcsolatos további információkért lásd: [felhasználói és rendszergazdai jogosultságok megismerése](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
+A felhasználói és rendszergazdai hozzájárulással kapcsolatos további információkért lásd: A felhasználói és rendszergazdai [hozzájárulás megismerve.](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Gyorsindítás sorozat az alkalmazás-kezelésben](add-application-portal-setup-oidc-sso.md)
+- [Gyorsútmutató-sorozat az alkalmazáskezelésről](add-application-portal-setup-oidc-sso.md)
 - [Az egyszeri bejelentkezés beállításai](sso-options.md)
 - [Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával](../develop/howto-convert-app-to-be-multi-tenant.md)
