@@ -1,6 +1,6 @@
 ---
-title: azcopy-feladatok folytatása | Microsoft Docs
-description: Ez a cikk a azcopy-feladatok folytatására szolgáló parancsra vonatkozó tudnivalókat tartalmaz.
+title: azcopy jobs resume | Microsoft Docs
+description: Ez a cikk az azcopy jobs resume parancs referenciainformációit biztosítja.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 30c0a31cc58ee6f1bbe78af017be42ae7d410fe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 497aa3a77397a8a587badc0911176cd092eb1f23
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878409"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503337"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
-Folytatja a meglévő feladatot a megadott AZONOSÍTÓJÚ feladattal.
+Folytatja a meglévő feladatot a megadott feladatazonosítóval.
 
 ## <a name="synopsis"></a>Áttekintés
 
@@ -25,30 +25,29 @@ Folytatja a meglévő feladatot a megadott AZONOSÍTÓJÚ feladattal.
 azcopy jobs resume [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó elméleti cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
+- [Adatok átvitele az AzCopy és a Blob Storage használatával](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
 |Beállítás|Leírás|
 |--|--|
-|--cél-sas-karakterlánc|A megadott AZONOSÍTÓJÚ feladathoz tartozó cél SAS|
-|– karakterlánc kizárása|Szűrő: a sikertelen átvitel (ek) kizárása a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
-|-h,-– Súgó|A folytatási parancshoz tartozó súgótartalom megjelenítése.|
-|--karakterlánc belefoglalása|Szűrő: csak ezeket a sikertelen átviteleket adja meg a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
-|--Source-sas karakterlánc |a megadott AZONOSÍTÓJÚ feladathoz tartozó forrás SAS-je.|
+|--destination-sas sztring|Az adott feladatazonosító céljának cél SAS-azonosítója.|
+|--exclude string|Szűrő: Zárja ki ezeket a sikertelen átvitel(eket) a feladat végrehajtásakor. A fájlokat a következővel kell elválasztani: ;.|
+|-h, --help|Súgótartalom megjelenítése a resume parancshoz.|
+|--include string|Szűrő: csak ezeket a sikertelen átvitel(eket) foglalja bele a feladat végrehajtásakor. A fájlokat a következővel kell elválasztani: ;.|
+|--source-sas sztring |a forrás SAS-forrása az adott feladatazonosítóhoz.|
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülőparancsok által örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--Cap-Mbps lebegőpontos|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
-|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
-|--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
+|--cap-mbps lebegőpontos érték|Megabit/másodpercben megszabja az átviteli sebességet. A pillanatnyi átviteli sebesség kis mértékben eltérhet a felső felsőértéktől. Ha ez a beállítás nulla vagy nincs megadva, az átviteli sebesség nincs korlátozva.|
+|--output-type string|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "text".|
+|--trusted-microsoft-suffixes sztring   |További tartomány-utótagokat ad meg, Azure Active Directory bejelentkezési jogkivonatokat lehet küldeni.  Az alapértelmezett érték a '*.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Az itt felsoroltak az alapértelmezett értékhez kerülnek. A biztonság érdekében itt csak a Microsoft Azure helyezzen el. Több bejegyzést pontosvesszővel válassza el egymástól.|
 
 ## <a name="see-also"></a>Lásd még
 

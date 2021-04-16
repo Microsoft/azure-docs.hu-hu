@@ -1,24 +1,24 @@
 ---
-title: Gyors útmutató – csapatokhoz való csatlakozás
+title: Rövid útmutató – Csatlakozás Teams-értekezlethez
 author: askaur
 ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106793"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564558"
 ---
-## <a name="joining-the-meeting-chat"></a>Az értekezlet csevegésének csatlakoztatása 
+## <a name="joining-the-meeting-chat"></a>Csatlakozás a megbeszéléshez 
 
-A csapatok együttműködési képességének engedélyezése után a kommunikációs szolgáltatások felhasználója a hívó SDK használatával külső felhasználóként hívhatja meg a csapatokat. A híváshoz való csatlakozáskor a rendszer résztvevőként hozzáadja őket az értekezlet csevegéséhez, ahol üzeneteket küldhet és fogadhat a hívás más felhasználóival. A felhasználó nem férhet hozzá a híváshoz való csatlakozás előtt küldött csevegési üzenetekhez. Az értekezlethez való csatlakozáshoz és a csevegés megkezdéséhez kövesse a következő lépéseket.
+Ha a Teams-együttműködés engedélyezve van, Communication Services felhasználó külső felhasználóként csatlakozhat a Teams-híváshoz a Hívó SDK használatával. Ha csatlakozik a híváshoz, akkor az is résztvevőként lesz hozzáadva a megbeszéléshez, ahol üzeneteket küldhetnek és fogadhatnak más felhasználókkal a hívás során. A felhasználó nem fog hozzáférni a híváshoz való csatlakozás előtt küldött csevegési üzenetekhez. Az értekezlethez való csatlakozáshoz és a csevegéshez kövesse a következő lépéseket.
 
-## <a name="install-the-chat-packages"></a>A csevegési csomagok telepítése
+## <a name="install-the-chat-packages"></a>A csevegőcsomagok telepítése
 
-A `npm install` parancs használatával telepítse a szükséges kommunikációs szolgáltatások SDK-kat a javascripthez.
+A `npm install` JavaScripthez szükséges Communication Services az paranccsal.
 
 ```console
 npm install @azure/communication-common --save
@@ -32,13 +32,13 @@ npm install @azure/communication-chat --save
 npm install @azure/communication-calling --save
 ```
 
-A (z `--save` ) lehetőség a könyvtárat listázza a **package.js** fájlon belüli függőségként.
+A beállítás függőségként listázza a kódtárat apackage.js`--save` **fájlban.**
 
-## <a name="add-the-teams-ui-controls"></a>A csapatok felhasználói felületi vezérlőinek hozzáadása
+## <a name="add-the-teams-ui-controls"></a>A Teams felhasználói felület vezérlőinek hozzáadása
 
-Cserélje le a kódot index.html-re az alábbi kódrészlettel.
-A lap tetején található szövegmezők megadhatják a csapatok Értekezletének környezetét és az értekezlet szálának AZONOSÍTÓját. A "Join Teams Meeting" gomb a megadott értekezlethez való csatlakozáshoz lesz használva.
-Az oldal alján megjelenik egy csevegési előugró ablak. Felhasználható üzenetek küldésére az értekezlet szálon, és valós időben jelenik meg a szálon küldött összes üzenet, amikor az ACS-felhasználó tagja.
+Cserélje le az l index.htma következő kódrészletre.
+Az oldal tetején található szövegmezők a Teams-értekezlet környezetének és az értekezlet szálazonosítójának a beíratása során használhatók. A "Join Teams Meeting" (Csatlakozás a Teams-értekezlethez) gombbal csatlakozhat a megadott értekezlethez.
+A lap alján megjelenik egy előugró csevegés. Használható üzenetek küldésére az értekezlet szálán, és valós időben fog megjeleníteni minden, a szálra küldött üzenetet, amíg az ACS-felhasználó tag.
 
 ```html
 <!DOCTYPE html>
@@ -140,13 +140,13 @@ Az oldal alján megjelenik egy csevegési előugró ablak. Felhasználható üze
 </html>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>A csapatok felhasználói felületének vezérlésének engedélyezése
+## <a name="enable-the-teams-ui-controls"></a>A Teams felhasználói felületi vezérlőinek engedélyezése
 
 Cserélje le a client.js fájl tartalmát a következő kódrészletre.
 
-A kódrészleten belül cserélje le a 
-- `SECRET CONNECTION STRING` a kommunikációs szolgáltatás kapcsolati karakterláncával 
-- `ENDPOINT URL` a kommunikációs szolgáltatás végpontjának URL-címével
+A kódrészleten belül cserélje le a helyére a következőt: 
+- `SECRET CONNECTION STRING` a kommunikációs szolgáltatás kapcsolati sztringjával 
+- `ENDPOINT URL` a kommunikációs szolgáltatás végponti URL-címével
 
 ```javascript
 // run using
@@ -284,27 +284,27 @@ sendMessageButton.addEventListener("click", async () =>
   });
 ```
 
-## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>A kommunikációs szolgáltatások felhasználóinak csevegési szálának beolvasása a csapatoknak
+## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Teams-értekezlet csevegési szálának lehívása egy Communication Services számára
 
-A Teams Meeting link és chat a Graph API-k használatával kérhető le, részletesen a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta). A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ezt a hivatkozást a `onlineMeeting` [Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)-k [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta) alatt elérhető erőforrás részeként adja vissza a rendszer `threadId` . A válasz egy olyan objektummal fog rendelkezni `chatInfo` , amely tartalmazza a `threadID` . 
+A Teams-értekezlet hivatkozása és csevegése a Graph API-k használatával olvasható be, a [Graph dokumentációjában talál részletes információt.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) A Communication Services hívó SDK egy teljes Teams-értekezlethivatkozást fogad el. Ez a hivatkozás az erőforrás részeként lesz visszaadva, amely a Graph API-k segítségével a tulajdonság alatt érhető el. A következőt `onlineMeeting` is beszerezheti: [ `joinWebUrl` ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) [](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) `threadId` . A válasz tartalmazni fog egy objektumot, amely tartalmazza a `chatInfo` `threadID` következőt: . 
 
-A Meeting Meeting Information (összevont **értekezlet** ) URL-címében is lekérheti a szükséges értekezleti információkat és a szál azonosítóját, ha a teams
-A csapatok Értekezletének hivatkozása a következőképpen néz ki: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . A `threadId` lesz a `meeting_chat_thread_id` hivatkozás. A használata előtt győződjön meg arról, hogy az `meeting_chat_thread_id` nem érhető el. A következő formátumúnak kell lennie: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`
+A szükséges értekezletadatokat és szálazonosítót a Teams-értekezlet meghívásában található **Join Meeting** URL -címről is lekérte.
+A Teams-értekezlet hivatkozása a következő: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . A `threadId` a `meeting_chat_thread_id` hivatkozásban található hely lesz. A használata előtt győződjön meg arról, `meeting_chat_thread_id` hogy a nincs beágyazva. A következő formátumban kell lennie: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`
 
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A webpack felhasználói használhatják az `webpack-dev-server` alkalmazást az alkalmazás létrehozásához és futtatásához. Futtassa az alábbi parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
+A Webpack felhasználói a használatával `webpack-dev-server` buildlik és futtatják az alkalmazást. Futtassa a következő parancsot az alkalmazásgazda egy helyi webkiszolgálón való kötegbe csomagolához:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 ```
 
-Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A következőnek kell megjelennie:
+Nyissa meg a böngészőt, és navigáljon a következőre: http://localhost:8080/ . A következőnek kell megjelennie:
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Képernyőkép a befejezett JavaScript-alkalmazásról.":::
+:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Az elkészült JavaScript-alkalmazás képernyőképe.":::
 
-Szúrja be a Teams Meeting hivatkozást és a szál AZONOSÍTÓját a szövegmezőbe. A Teams Meeting szolgáltatáshoz való csatlakozáshoz kattintson a *Csatlakozás csapatok Értekezlete* gombra. Miután az ACS-felhasználót bevezette az értekezletbe, a kommunikációt a kommunikációs szolgáltatások alkalmazásán belülről is elvégezheti. A csevegés megkezdéséhez navigáljon a lap alján található mezőbe.
+Szúrja be a Teams-értekezlet hivatkozását és szálazonosítóját a szövegmezőkbe. A *Teams-értekezlethez való csatlakozáshoz nyomja* le a Join Teams Meeting (Csatlakozás a Teams-értekezlethez) gombot. Miután az ACS-felhasználót felvették az értekezletre, a saját alkalmazásában Communication Services beszélgethet. A csevegéshez lépjen az oldal alján található mezőbe.
 
 > [!NOTE] 
-> Jelenleg csak az üzenetek küldése, fogadása és szerkesztése támogatott a Teams együttműködési forgatókönyvek esetében. Más funkciók, mint például a kijelzők és a kommunikációs szolgáltatások felhasználói a Teams Meeting más felhasználóinak hozzáadásával vagy eltávolításával még nem támogatottak.  
+> Jelenleg csak az üzenetek küldése, fogadása és szerkesztése támogatott a Teamsben való együttműködési forgatókönyvek esetében. Más funkciók, például a jelzők begépelése Communication Services felhasználók teams-értekezlethez való hozzáadását vagy eltávolítását még nem támogatják.  

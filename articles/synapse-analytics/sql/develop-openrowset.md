@@ -1,6 +1,6 @@
 ---
-title: A OPENROWSET használata kiszolgáló nélküli SQL-készletben
-description: Ez a cikk a kiszolgáló nélküli SQL-készletben található OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
+title: Az OPENROWSET használata kiszolgáló nélküli SQL-készletben
+description: Ez a cikk az OPENROWSET kiszolgáló nélküli SQL-készletben való szintaxisát és az argumentumok használatát ismerteti.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307945"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566426"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Az OPENROWSET használata kiszolgáló nélküli SQL-készlet használatával a Azure Synapse Analytics
 
-A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. A kiszolgáló nélküli SQL-készlet erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
+A `OPENROWSET(BULK...)` függvény lehetővé teszi az Azure Storage-ban lévő fájlokhoz való hozzáférést. `OPENROWSET` A függvény beolvassa egy távoli adatforrás (például fájl) tartalmát, és sorok halmazaként adja vissza a tartalmat. A kiszolgáló nélküli SQL-készlet erőforrásán belül az OPENROWSET tömeges sorhalmaz-szolgáltató az OPENROWSET függvény hívása és a BULK beállítás megadásával érhető el.  
 
-A `OPENROWSET` függvény hivatkozhat a `FROM` lekérdezés záradékára úgy, mintha a tábla neve lenne `OPENROWSET` . Olyan beépített TÖMEGES szolgáltatón keresztül támogatja a tömeges műveleteket, amely lehetővé teszi, hogy egy fájlból származó adatok beolvassák és visszaadjanak a sorhalmazban.
+A függvényre a lekérdezés záradékában lehet hivatkozni, mintha `OPENROWSET` `FROM` táblanév `OPENROWSET` lenne. Támogatja a tömeges műveleteket egy beépített BULK szolgáltatón keresztül, amely lehetővé teszi egy fájl adatainak sorhalmazként való olvasását és visszaadása.
 
 ## <a name="data-source"></a>Adatforrás
 
-A OPENROWSET függvény a szinapszis SQL-ben beolvassa a fájl (ok) tartalmát egy adatforrásból. Az adatforrás egy Azure Storage-fiók, amely explicit módon hivatkozható a `OPENROWSET` függvényben, vagy dinamikusan következtetni lehet az olvasni kívánt fájlok URL-címére.
-A `OPENROWSET` függvény opcionálisan tartalmazhat egy `DATA_SOURCE` paramétert a fájlokat tartalmazó adatforrás megadásához.
-- `OPENROWSET` a nem használható a `DATA_SOURCE` fájlok tartalmának közvetlen olvasására a megadott URL-címről a következő `BULK` beállítással:
+A fájl Synapse SQL OPENROWSET függvénye beolvassa a fájl(ak) tartalmát egy adatforrásból. Az adatforrás egy Azure-tárfiók, és explicit módon hivatkozhat rá a függvényben, vagy dinamikusan kikövetkeztetheti az olvasni kívánt fájlok `OPENROWSET` URL-címével.
+A függvény tartalmazhat egy paramétert is a fájlokat tartalmazó `OPENROWSET` `DATA_SOURCE` adatforrás megadásához.
+- `OPENROWSET` A without használatával közvetlenül beolvasható a fájlok tartalma a beállításként megadott `DATA_SOURCE` `BULK` URL-helyről:
 
     ```sql
     SELECT *
@@ -34,9 +34,9 @@ A `OPENROWSET` függvény opcionálisan tartalmazhat egy `DATA_SOURCE` paraméte
                     FORMAT = 'PARQUET') AS file
     ```
 
-Ezzel a módszerrel gyorsan és egyszerűen elolvashatja a fájlok tartalmát előzetes konfigurálás nélkül. Ez a beállítás lehetővé teszi, hogy az alapszintű hitelesítési lehetőség használatával hozzáférjen a tárolóhoz (Azure ad áteresztő Azure AD-bejelentkezésekhez és SAS-jogkivonat SQL-bejelentkezésekhez). 
+Ez egy gyors és egyszerű módszer a fájlok tartalmának olvasására előzetes konfiguráció nélkül. Ez a beállítás lehetővé teszi, hogy az alapszintű hitelesítési lehetőséggel hozzáférjen a tárolóhoz (Azure AD-alapú bejelentkezések esetén Azure AD-áthaladás és SAS-jogkivonat sql-bejelentkezések esetén). 
 
-- `OPENROWSET` a `DATA_SOURCE` használatával a megadott Storage-fiókban található fájlok érhetők el:
+- `OPENROWSET` A `DATA_SOURCE` a megadott tárfiókban lévő fájlok elérésére használható:
 
     ```sql
     SELECT *
@@ -46,26 +46,26 @@ Ezzel a módszerrel gyorsan és egyszerűen elolvashatja a fájlok tartalmát el
     ```
 
 
-    Ezzel a beállítással konfigurálhatja a Storage-fiók helyét az adatforrásban, és megadhatja a tároló eléréséhez használandó hitelesítési módszert. 
+    Ezzel a beállítással konfigurálhatja a tárfiók helyét az adatforrásban, és megadhatja a tároló eléréséhez használni kívánt hitelesítési módszert. 
     
     > [!IMPORTANT]
-    > `OPENROWSET``DATA_SOURCE`a nem biztosít gyors és egyszerű módszert a tárolási fájlok eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure ad-identitás](develop-storage-files-storage-access-control.md?tabs=user-identity) vagy nyilvánosan elérhető fájlok használatával férhet hozzá a fájlokhoz. Ha nagyobb teljesítményű hitelesítési beállításokra van szüksége, használja `DATA_SOURCE` a kapcsolót, és adja meg a tárhely eléréséhez használni kívánt hitelesítő adatokat.
+    > `OPENROWSET` A nélkül gyors és egyszerű módszert kínál a tárolófájlok `DATA_SOURCE` eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure AD-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity) vagy nyilvánosan elérhető fájljaik használatával férhet hozzá a fájlokhoz. Ha hatékonyabb hitelesítési lehetőségekre van szüksége, használja a lehetőséget, és adja meg a tároló eléréséhez használni kívánt `DATA_SOURCE` hitelesítő adatokat.
 
 
 ## <a name="security"></a>Biztonság
 
-Egy adatbázis-felhasználónak engedéllyel kell rendelkeznie `ADMINISTER BULK OPERATIONS` a `OPENROWSET` függvény használatához.
+Az adatbázis-felhasználónak engedéllyel `ADMINISTER BULK OPERATIONS` kell rendelkeznie a függvény `OPENROWSET` használatára.
 
-A tároló rendszergazdájának engedélyeznie kell a felhasználók számára, hogy érvényes SAS-jogkivonatot biztosítanak, vagy engedélyezni kell az Azure AD-rendszerbiztonsági tag számára a tárolási fájlok elérését. További információ a tárterület-hozzáférés-vezérlésről [ebben a cikkben](develop-storage-files-storage-access-control.md).
+A tár-rendszergazdának azt is engedélyeznie kell, hogy a felhasználó érvényes SAS-jogkivonatot biztosítson a fájlokhoz, vagy engedélyezze az Azure AD-rendszerbiztonsági tag számára a tárfájlokhoz való hozzáférést. A tárterület-hozzáférés-vezérlésről ebben [a cikkben talál további információt.](develop-storage-files-storage-access-control.md)
 
-`OPENROWSET` a következő szabályok segítségével határozhatja meg, hogyan hitelesíthető a tárolóban:
-- A `OPENROWSET` `DATA_SOURCE` hitelesítési mechanizmus nélkül a hívó típusától függ.
-  - Bármely felhasználó használhatja `OPENROWSET` anélkül `DATA_SOURCE` , hogy nyilvánosan elérhető fájlokat kellene beolvasnia az Azure Storage-ban.
-  - Az Azure AD-bejelentkezések saját [Azure ad-identitással](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) férhetnek hozzá a védett fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik `Storage Reader` engedéllyel az Azure Storage szolgáltatásban).
-  - Az SQL-bejelentkezések `OPENROWSET` `DATA_SOURCE` a nyilvánosan elérhető fájlok, az SAS-token használatával védett fájlok, illetve a szinapszis munkaterület felügyelt identitása nélkül is használhatók. [Létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot](develop-storage-files-storage-access-control.md#examples) a tárolási fájlok elérésének engedélyezéséhez. 
-- A `OPENROWSET` és a `DATA_SOURCE` hitelesítési mechanizmus a hivatkozott adatforráshoz rendelt adatbázis-hatókörű hitelesítő adatokban van definiálva. Ez a beállítás lehetővé teszi a nyilvánosan elérhető tárolók elérését, vagy az SAS-token, a munkaterület felügyelt identitása vagy [a hívó Azure ad-identitása](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (ha a hívó az Azure ad rendszerbiztonsági tag) használatával fér hozzá a tárolóhoz. Ha `DATA_SOURCE` olyan Azure Storage-ra hivatkozik, amely nem nyilvános, [adatbázis-hatókörű hitelesítő adatokat kell létrehoznia](develop-storage-files-storage-access-control.md#examples) , és hivatkozni kell rá a `DATA SOURCE` tároló-fájlok elérésének engedélyezéséhez.
+`OPENROWSET` a következő szabályok alapján határozza meg a tárolóban való hitelesítést:
+- A `OPENROWSET` hitelesítési mechanizmus nélkül a hívó `DATA_SOURCE` típusától függ.
+  - Bármely felhasználó használhatja `OPENROWSET` anélkül, hogy beolvasná a nyilvánosan elérhető `DATA_SOURCE` fájlokat az Azure Storage-ban.
+  - Az Azure AD-bejelentkezések a saját [Azure AD-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) használatával férhetnek hozzá a védett fájlokhoz, ha az Azure Storage lehetővé teszi az Azure AD-felhasználó számára a mögöttes fájlokhoz való hozzáférést (például ha a hívó rendelkezik engedéllyel az `Storage Reader` Azure Storage-hoz).
+  - Az SQL-bejelentkezések a nyilvánosan elérhető fájlokhoz, SAS-jogkivonattal védett fájlokhoz vagy a Synapse-munkaterület felügyelt identitásához való hozzáférés nélkül is `OPENROWSET` `DATA_SOURCE` használhatók. A tárolófájlokhoz való [hozzáféréshez kiszolgálói](develop-storage-files-storage-access-control.md#examples) hatókörű hitelesítő adatokat kell létrehoznia. 
+- A hitelesítési mechanizmussal a hivatkozott adatforráshoz rendelt, adatbázisra vonatkozó hitelesítő adatok `OPENROWSET` `DATA_SOURCE` határozzák meg. Ez a beállítás lehetővé teszi a nyilvánosan elérhető tárolók vagy a tárolók elérését SAS-jogkivonat, a munkaterület felügyelt identitása vagy a hívó [Azure AD-identitása](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) használatával (ha a hívó Azure AD-rendszerbiztonsági tag). Ha nem nyilvános Azure Storage-tárolóra hivatkozik, létre kell hoznia az adatbázisra vonatkozó hitelesítő adatokat, és hivatkozni kell rá a tárolófájlokhoz `DATA_SOURCE` való [](develop-storage-files-storage-access-control.md#examples) `DATA SOURCE` hozzáféréshez.
 
-A hívónak engedéllyel kell rendelkeznie `REFERENCES` a hitelesítő adatok tárolásához való használatához.
+A hívónak engedéllyel kell `REFERENCES` rendelkeznie a hitelesítő adatokhoz a tárolóban való hitelesítéshez.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -102,66 +102,66 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 
 ## <a name="arguments"></a>Argumentumok
 
-A lekérdezéshez célként megadott adatokat tartalmazó bemeneti fájlok esetében két lehetőség közül választhat. Az érvényes értékek a következők:
+A lekérdezés céladatát tartalmazó bemeneti fájlokhoz két lehetőség közül választhat. Az érvényes értékek a következők:
 
-- "CSV" – minden olyan tagolt szövegfájlt tartalmaz, amely sorok/oszlopok elválasztókkal rendelkezik. Bármely karakter használható mező elválasztóként, például TSV: FIELDTERMINATOR = Tab.
+- CSV – Sor-/oszlopelválasztókat tartalmazó tagolt szövegfájlokat tartalmaz. Bármilyen karakter használható mezőelválasztóként, például TSV: FIELDTERMINATOR = tabulátor.
 
-- "PARQUEt" – bináris fájl parketta formátumban 
+- PARQUET – Parquet formátumú bináris fájl 
 
 **"unstructured_data_path"**
 
-Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív elérési út lehet:
-- A "://" formátumú abszolút elérési út \<prefix> \<storage_account_path> / \<storage_path> lehetővé teszi a felhasználók számára, hogy közvetlenül beolvassák a fájlokat.
-- Relatív elérési út a (z) "<storage_path>" formátumban, amelyet a paraméterrel kell használni, `DATA_SOURCE` és a <storage_account_path> helyen definiált fájl mintáját ismerteti `EXTERNAL DATA SOURCE` . 
+Az unstructured_data_path az adatok elérési útját lekért útvonal abszolút vagy relatív elérési út lehet:
+- A ' :// ' formátumú abszolút elérési út \<prefix> \<storage_account_path> / \<storage_path> lehetővé teszi a felhasználó számára a fájlok közvetlen olvasását.
+- Relatív elérési út "<storage_path>" formátumban, amely a paraméterrel együtt használható, és leírja a fájlmintát a `DATA_SOURCE` fájlban <storage_account_path> helyen `EXTERNAL DATA SOURCE` belül. 
 
-Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, amelyek az adott külső adatforráshoz kapcsolódnak. 
+Az alábbiakban találja a megfelelő értékeket, amelyek az adott külső <storage account path> adatforrásra hivatkoznak. 
 
-| Külső adatforrás       | Előtag | Storage-fiók elérési útja                                 |
+| Külső adatforrás       | Előtag | Tárfiók elérési útja                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | http [s]  | \<storage_account>. blob.core.windows.net/path/file   |
-| Azure Blob Storage         | wasb [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
-| Azure Data Lake Storage Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Storage Gen2 | http [s]  | \<storage_account>. dfs.core.windows.net/Path/file   |
-| Azure Data Lake Storage Gen2 | abfs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Blob Storage         | http[s]  | \<storage_account>.blob.core.windows.net/path/file   |
+| Azure Blob Storage         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
+| Azure Data Lake Storage Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net /path/file   |
+| Azure Data Lake Storage Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
 
-Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
+Megadja a tárterületen belüli elérési utat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az összes fájlt beolvassa az adott tárolóból vagy mappából. Az almappákban lévő fájlok nem lesznek benne. 
 
-A helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
-Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population* kezdődő összes mappából származó *populációval* kezdődik:  
+Helyettesítő karakterek használatával több fájlt vagy mappát célozhat meg. Több nem megfelelő helyettesítő karakter használata engedélyezett.
+Az alábbi példa beolvassa az  összes csv-fájlt a */csv/population* fájltól kezdődően az összes mappából:   
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Ha a unstructured_data_path mappaként adja meg, akkor a kiszolgáló nélküli SQL-készlet lekérdezése lekéri a fájlokat a mappából. 
+Ha megadja, hogy unstructured_data_path mappa legyen, a kiszolgáló nélküli SQL-készlet lekérdezése ebből a mappából fogja lekérni a fájlokat. 
 
-A kiszolgáló nélküli SQL-készlet arra utasítja a mappákat, hogy az elérési út végén a/* érték megadásával például a következőt írja be: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
+Utasíthatja a kiszolgáló nélküli SQL-készletet, hogy az elérési út végén a /* megadásával járja be a mappákat, ahogy az az alábbi példában is használhatja: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat, kivéve, ha az elérési út végén megadja a/* * értéket.
+> A Hadooptól és a PolyBase-től eltérően a kiszolgáló nélküli SQL-készlet csak akkor ad vissza almappákat, ha az elérési út végén a /** értéket adja meg. A Hadoophoz és a PolyBase-hez hasonlóan nem ad vissza olyan fájlokat, amelyek fájlneve aláhúzással (_) vagy pontokkal (.) kezdődik.
 
-Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , a kiszolgáló nélküli SQL-készlet lekérdezése mydata.txt sorokat ad vissza. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Az alábbi példában, ha a unstructured_data_path= , egy kiszolgáló nélküli SQL-készlet lekérdezése fog sorokat visszaadni a `https://mystorageaccount.dfs.core.windows.net/webdata/` mydata.txt. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
-![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
+![Rekurzív adatok külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 
 `[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
-A WITH záradék segítségével megadhatja a fájlokból beolvasni kívánt oszlopokat.
+A WITH záradék lehetővé teszi a fájlokból beolvasni kívánt oszlopok megadását.
 
-- CSV-adatfájlok esetén az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni. Ha a HEADER_ROW = TRUE érték van használatban, az oszlop kötése a sorszám helyett az oszlop neve alapján történik.
+- CSV-adatfájlok esetén az összes oszlop beolvassa az oszlopneveket és azok adattípusait. Ha oszlopok egy részkészletét szeretné használni, sorszámszámok használatával válassza ki az oszlopokat az eredeti adatfájlokból sorszám szerint. Az oszlopokat a sorszám jelölése köti. Ha HEADER_ROW = TRUE érték van használva, akkor az oszlopkötés az oszlop neve alapján történik a sorszám pozíciója helyett.
     > [!TIP]
-    > Kihagyhatja a záradékot a CSV-fájlokhoz is. Az adattípusok automatikusan kikövetkeztetve lesznek a fájl tartalmából. A HEADER_ROW argumentum használatával megadhatja a fejlécsor létezését, amelyben az oszlop neve beolvasható a fejlécsorból. A részletekért lásd: [automatikus séma-felderítés](#automatic-schema-discovery).
+    > A CSV-fájlokra vonatkozó WITH záradékot is kihagyhatja. Az adattípusok automatikusan kikövetkeztetve lesznek a fájl tartalmából. A argumentum HEADER_ROW megadhatja a fejlécsor meglétét, amely esetben az oszlopnevek a fejlécsorból lesznek beolvasva. Részletekért tekintse meg az [automatikus sémafelderítést.](#automatic-schema-discovery)
     
-- A parketta-adatfájlok esetében adja meg az oszlopok neveit, amelyek megfelelnek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve, és megkülönböztetik a kis-és nagybetűket. Ha a WITH záradék ki van hagyva, a rendszer a Parquet-fájlokból származó összes oszlopot visszaadja.
+- Parquet-adatfájlok esetén olyan oszlopneveket adjon meg, amelyek megegyeznek az eredeti adatfájlokban szereplő oszlopnevekkel. Az oszlopok név alapján lesznek kötve, és megkülönböztetik a kis- és nagybetűket. Ha a WITH záradék nincs megadva, a Rendszer a Parquet-fájlok összes oszlopát visszaadja.
     > [!IMPORTANT]
-    > A parketta-fájlokban lévő oszlopnevek megkülönböztetik a kis-és nagybetűket. Ha a (z) nevű oszlopnevet a parketta-fájlban szereplő oszlopnév alapján adja meg, a rendszer NULL értékeket ad vissza ehhez az oszlophoz.
+    > A Parquet-fájlokban az oszlopnevek megkülönböztetik a kis- és nagybetűket. Ha a Parquet-fájlban a kis- és a nagy cas-értékeket adja meg, a rendszer NULL értékeket ad vissza az oszlophoz.
 
 
-column_name = a kimeneti oszlop neve. Ha meg van adni, ez a név felülbírálja a forrásfájl és a JSON-elérési úton megadott oszlopnév nevét, ha van ilyen. Ha json_path nincs megadva, a rendszer automatikusan hozzáadja a "$ .column_name" értéket. A viselkedés json_path argumentumának bejelölése.
+column_name = A kimeneti oszlop neve. Ha meg van téve, ez a név felülírja a forrásfájlban lévő oszlopnevet, és ha van ilyen, akkor a JSON-útvonalban megadott oszlopnevet. Ha json_path nincs megadva, a rendszer automatikusan hozzáadja "$.column_name" értékként. Ellenőrizze, json_path-e a viselkedést az argumentumban.
 
-column_type = a kimeneti oszlop adattípusa. Az implicit adattípus-konverziót itt fogja megtenni.
+column_type = A kimeneti oszlop adattípusa. Az implicit adattípus-konverzióra itt kerül sor.
 
-column_ordinal = a forrásfájl (ok) oszlopának sorszáma. Ezt az argumentumot a rendszer figyelmen kívül hagyja a Parquet-fájlokban, mivel a kötés név alapján történik. A következő példa csak egy CSV-fájlból származó második oszlopot ad vissza:
+column_ordinal = a forrásfájl(k) oszlopának sorszáma. A Parquet-fájlok ezt az argumentumot figyelmen kívül hagyják, mivel a kötés név alapján történik. Az alábbi példa egy második oszlopot ad vissza csak egy CSV-fájlból:
 
 ```sql
 WITH (
@@ -172,137 +172,137 @@ WITH (
 )
 ```
 
-json_path = [JSON-elérésiút kifejezése](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) oszlopra vagy beágyazott tulajdonságra. Az alapértelmezett [elérésiút-mód](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE) a LAX.
+json_path = [JSON elérési út kifejezése](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) oszlopra vagy beágyazott tulajdonságra. Az [alapértelmezett elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE) módja a lax.
 
 > [!NOTE]
-> A szigorú módú lekérdezés sikertelen lesz, ha a megadott elérési út nem létezik. A LAX mód lekérdezése sikeres lesz, és a JSON Path kifejezés kiértékelése NULL értékre történik.
+> Szigorú módban a lekérdezés hibát jelez, ha a megadott elérési út nem létezik. Lax módban a lekérdezés sikeres lesz, és a JSON-útvonal kifejezés kiértékelése NULL lesz.
 
 **\<bulk_options>**
 
-FIELDTERMINATOR = ' field_terminator '
+FIELDTERMINATOR ='field_terminator'
 
-Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**").
+A használni használt mező-lezáró megadása. A mező alapértelmezett lezáró a vessző ("**,**").
 
-ROWTERMINATOR = ' row_terminator ' '
+ROWTERMINATOR ='row_terminator''
 
-Meghatározza a használandó sort. Ha a lezáró sor nincs megadva, a rendszer az alapértelmezett megszakítások egyikét fogja használni. PARSER_VERSION = "1,0" alapértelmezett lezárói a következők: \r\n, \n és \r. A PARSER_VERSION = "2,0" alapértelmezett lezárói a következők: \r\n és \n.
+A használni használt sorterminátort adja meg. Ha nincs megadva sorterminátor, a rendszer az egyik alapértelmezett lezárót használja. Az alapértelmezett lezárók PARSER_VERSION = '1.0' : \r\n, \n és \r. Az alapértelmezett lezárók a PARSER_VERSION = '2.0' = \r\n és \n.
 
-ESCAPE_CHAR = "char"
+ESCAPE_CHAR = 'char'
 
-Meghatározza a fájlban található karaktert, amely a fájl összes elválasztó értékének kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik. 
+Megadja a fájl azon karakterét, amely a saját maga és a fájl összes elválasztóértékének a escape-karaktereként használható. Ha a escape-karaktert nem magát, vagy az elválasztó értékek bármelyikét követi, a rendszer eldobja a escape-karaktert az érték beolvasásakor. 
 
-A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE vagy nincs-e engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
+A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE vagy nincs engedélyezve. A hányados karakter kivédésében nem lesz használva. Az hányados karaktert egy másik hányados karakterrel kell escape-karakterrel megszűkülni. Az idéző karakter csak akkor jelenik meg az oszlopértékben, ha az érték idéző karaktereket tartalmaz.
 
-FIRSTROW = ' first_row ' 
+FIRSTROW = 'first_row' 
 
-Meghatározza a betöltendő első sor számát. Az alapértelmezett érték 1, és jelzi a megadott adatfájl első sorát. A sorok száma a sorok lezáróinak számlálásával határozható meg. A FIRSTROW 1-alapú.
+Az első betöltés sorának számát adja meg. Az alapértelmezett érték 1, és a megadott adatfájl első sorát jelzi. A sorszámokat a sorterminátorok megszámlálása határozza meg. A FIRSTROW 1-alapú.
 
-FIELDQUOTE = ' field_quote ' 
+FIELDQUOTE = 'field_quote' 
 
-Megadja azt a karaktert, amely a CSV-fájlban idézőjelként lesz használva. Ha nincs megadva, a rendszer az idézőjel karaktert (") fogja használni. 
+Egy olyan karaktert ad meg, amely idézőjelként lesz használva a CSV-fájlban. Ha nincs megadva, a rendszer az idézőjel karaktert (") használja. 
 
-DATA_COMPRESSION = "data_compression_method"
+DATA_COMPRESSION = 'data_compression_method'
 
-Meghatározza a tömörítési módszert. Csak PARSER_VERSION = "1.0" esetén támogatott. A következő tömörítési módszer támogatott:
+A tömörítési metódust határozza meg. Csak a PARSER_VERSION='1.0' támogatja. A következő tömörítési módszer támogatott:
 
-- GZIP
+- Gzip
 
-PARSER_VERSION = "parser_version"
+PARSER_VERSION = 'parser_version'
 
-A fájlok olvasásakor használandó elemző verzió megadása. Jelenleg támogatott CSV-elemző verziója 1,0 és 2,0:
+Megadja a fájlok olvas olvasása során használt elemzőverziót. A CSV-elemző jelenleg az 1.0-s és 2.0-s verziókat támogatja:
 
-- PARSER_VERSION = "1,0"
-- PARSER_VERSION = "2,0"
+- PARSER_VERSION = '1.0'
+- PARSER_VERSION = '2.0'
 
-A CSV-elemző 1,0-es verziója alapértelmezett, és gazdag funkció. Az 2,0-es verzió a teljesítményre van felépítve, és nem támogatja az összes beállítást és kódolást. 
+A CSV-elemző 1.0-s verziója alapértelmezett, és funkciókban gazdag. A 2.0-s verzió teljesítményre készült, és nem támogat minden lehetőséget és kódolást. 
 
-CSV-elemző 1,0-es verziójának sajátosságai:
+A CSV-elemző 1.0-s verziójának sajátosságai:
 
 - A következő beállítások nem támogatottak: HEADER_ROW.
 
-CSV-elemző 2,0-es verziójának sajátosságai:
+A CSV-elemző 2.0-s verziójának sajátosságai:
 
-- Az adattípusok nem támogatottak.
-- A karakteres oszlop maximális hossza 8000.
-- A sorok maximális méretének korlátja 8 MB.
+- Nem minden adattípus támogatott.
+- A karakteroszlopok maximális hossza 8000.
+- A sorok maximális méretkorlátja 8 MB.
 - A következő beállítások nem támogatottak: DATA_COMPRESSION.
-- Az idézőjelek közé tartozó üres karakterlánc ("") üres sztringként van értelmezve.
-- A dátum adattípusának támogatott formátuma: éééé-hh-nn
-- Az időadattípus támogatott formátuma: óó: PP: SS [. frakcionált másodperc]
-- Támogatott formátum a DATETIME2 adattípushoz: éééé-hh-nn óó: PP: SS [. frakcionált másodperc]
+- Az idézett üres sztring ("") üres sztringként van értelmezve.
+- A DATE adattípus támogatott formátuma: YYYY-MM-DD
+- A TIME adattípus támogatott formátuma: HH:MM:SS[.fractional seconds]
+- A DATETIME2 adattípus támogatott formátuma: YYYY-MM-DD HH:MM:SS[.fractional seconds]
 
-HEADER_ROW = {TRUE | HAMIS
+HEADER_ROW = { TRUE | FALSE }
 
-Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett érték a FALSE. PARSER_VERSION = "2.0" támogatja. Ha az értéke igaz, az oszlopok nevei az első sorból lesznek beolvasva a FIRSTROW argumentum alapján. Ha az igaz és a séma a WITH paranccsal van megadva, az oszlopnevek kötése oszlop neve alapján történik, nem pedig a sorszámok.
+Meghatározza, hogy a CSV-fájl tartalmaz-e fejlécsort. Az alapértelmezett érték FALSE (HAMIS). A következő PARSER_VERSION='2.0'. HA IGAZ, az oszlopnevek az első sorból lesznek beolvasva a FIRSTROW argumentumnak megfelelően. Ha a TRUE (IGAZ) és a schema (séma) a WITH használatával van megadva, az oszlopnevek kötése oszlopnév alapján történik, nem pedig sorszámok alapján.
 
-ADATFÁJLTÍPUS = {' char ' | "(widechar)"}
+DATAFILETYPE = { 'char' | 'widechar' }
 
-A kódolást adja meg: az UTF8-hoz használt char ((widechar)) a UTF16-fájlok esetében használatos.
+Kódolást ad meg: a char utF8, widechar az UTF16-fájlokhoz használatos.
 
-KÓDLAP = {"ACP" | "OEM" | "NYERS" | "code_page"}
+CODEPAGE = { 'ACP' | OEM-| "RAW" | "code_page" }
 
-Megadja az adatfájlban szereplő adatkód oldalát. Az alapértelmezett érték 65001 (UTF-8 kódolás). Erről a lehetőségről [itt](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)talál további információt.
+Megadja az adatfájlban található adatok kódlapját. Az alapértelmezett érték 65001 (UTF-8 kódolás). Erről a lehetőségről itt talál [további információt.](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)
 
-## <a name="fast-delimited-text-parsing"></a>Gyors tagolt szöveg elemzése
+## <a name="fast-delimited-text-parsing"></a>Gyors elválasztójeles szöveg-elemzési
 
-Két tagolt szöveges elemző verziója használható. A CSV-elemző 1,0-es verziója alapértelmezett, és a szolgáltatás gazdag, míg az elemző verziója a 2,0-es verzióra van építve. A 2,0-es elemző teljesítményének fejlesztése a fejlett elemzési technikáktól és a többszálas elemzéstől származik. A sebességbeli különbség nagyobb lesz, ahogy a fájlméret növekszik.
+Két tagolt szöveg elemzőverziót használhat. A CSV-elemző 1.0-s verziója alapértelmezett, és gazdag funkciókat biztosít, míg az elemző 2.0-s verziója teljesítményre lett felépítve. Az elemző 2.0 teljesítménybeli javulását a fejlett elemzési technikák és a többszálas módszer is lehetővé tért. A fájlméret növekedésével a sebességkülönbség nagyobb lesz.
 
-## <a name="automatic-schema-discovery"></a>Séma automatikus felderítése
+## <a name="automatic-schema-discovery"></a>Automatikus sémafelderítés
 
-Egyszerűen lekérdezheti a CSV-és a Parquet-fájlokat anélkül, hogy a záradékot kihagyva tudná vagy megadhatja a sémát. Az oszlopnevek és az adattípusok kikövetkeztetve lesznek a fájlokból.
+A WITH záradék kihagyása nélkül is egyszerűen lekérdezhet CSV- és Parquet-fájlokat a séma ismerete vagy megadása nélkül. Az oszlopnevek és adattípusok a fájlokból lesznek kikövetkeztetve.
 
-A Parquet-fájlok olyan oszlop-metaadatokat tartalmaznak, amelyek beolvasva lesznek, a típusú leképezések a [parketta típus-hozzárendelésekben](#type-mapping-for-parquet)találhatók. Tekintse [meg a parketta-fájlok olvasását a minták sémájának megadása nélkül](#read-parquet-files-without-specifying-schema) .
+A Parquet-fájlok oszlopmetaadatokat tartalmaznak, amelyek be lesznek olvasva, a típusleképezések pedig a [Parquet](#type-mapping-for-parquet)típusleképezésében találhatók. Ellenőrizze [a Parquet-fájlok olvasását séma megadása nélkül](#read-parquet-files-without-specifying-schema) a mintákhoz.
 
-A CSV-fájlok oszlopainak nevei a fejlécsorból is olvashatók. Megadhatja, hogy a fejlécsor létezik-e HEADER_ROW argumentum használatával. Ha HEADER_ROW = FALSE, az általános oszlopnevek lesznek használatban: C1, C2,... CN, ahol n a fájlban lévő oszlopok száma. Az adattípusok az első 100 adatsorokból lesznek kikövetkeztetve. Tekintse [meg a CSV-fájlok olvasását a minták sémájának megadása nélkül](#read-csv-files-without-specifying-schema) .
+CSV-fájloknál az oszlopnevek a fejlécsorból olvashatók. Az argumentum használatával megadhatja, hogy a fejlécsor létezik HEADER_ROW létezik. Ha HEADER_ROW = FALSE, általános oszlopneveket fog használni: C1, C2, ... Cn, ahol n a fájlban lévő oszlopok száma. Az adattípusok az első 100 adatsorból lesznek kikövetkeztetve. Ellenőrizze [a CSV-fájlok olvasását séma megadása nélkül](#read-csv-files-without-specifying-schema) a mintákhoz.
 
 > [!IMPORTANT]
-> Vannak olyan esetek, amikor a megfelelő adattípus nem következtethető ki, mert az adatok hiánya és a nagyobb adattípusok használata nem lehetséges. Ez a teljesítmény terhelését eredményezi, és különösen fontos a karakteres oszlopok esetében, amelyek varchar (8000) értékre lesznek utalva. Az optimális teljesítmény érdekében [tekintse meg a késleltetett adattípusokat](best-practices-sql-on-demand.md#check-inferred-data-types) , és [használja a megfelelő adattípusokat](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Vannak olyan esetek, amikor az információ hiánya miatt nem lehet kikövetkeztetni a megfelelő adattípust, és inkább nagyobb adattípust fog használni. Ez teljesítménybeli többletterhelést eredményez, és különösen fontos a karakteroszlopok esetén, amelyek varchar(8000) ként lesznek kikövetkeztetve. Az optimális teljesítmény érdekében ellenőrizze a [kikövetkeztetett adattípusokat,](best-practices-sql-on-demand.md#check-inferred-data-types) [és használja a megfelelő adattípusokat.](best-practices-sql-on-demand.md#use-appropriate-data-types)
 
-### <a name="type-mapping-for-parquet"></a>Típus leképezése a parketta számára
+### <a name="type-mapping-for-parquet"></a>Típusleképezés a Parquethez
 
-A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A következő táblázat leírja, hogyan vannak leképezve a parketta típusai az SQL natív típusaira.
+A Parquet-fájlok minden oszlop típusleírását tartalmazzák. Az alábbi táblázat bemutatja, hogyan vannak leképezve a Parquet-típusok natív SQL-típusokra.
 
-| Parketta típusa | Parketta logikai típusa (jegyzet) | SQL-adattípus |
+| Parquet-típus | Parquet logikai típus (jegyzet) | SQL-adattípus |
 | --- | --- | --- |
-| LOGIKAI | | bit |
-| BINÁRIS/BYTE_ARRAY | | varbinary |
-| DUPLÁN | | float |
-| FLOAT | | valós szám |
+| Logikai | | bit |
+| BINARY /BYTE_ARRAY | | varbinary (varbinary) |
+| Dupla | | float |
+| Úszó | | valós szám |
 | INT32 | | int |
 | INT64 | | bigint |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |binary |
-| BINÁRIS |UTF8 |varchar \* (UTF8-rendezés) |
-| BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
-| BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
-| FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
-| BINÁRIS |DECIMÁLIS |tizedes tört |
-| BINÁRIS |JSON |varchar (8000) \* (UTF8-rendezés) |
-| BINÁRIS |BSON | Nem támogatott |
-| FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |tizedes tört |
-| BYTE_ARRAY |IDŐKÖZ | Nem támogatott |
-| INT32 |INT (8, igaz) |smallint |
-| INT32 |INT (16, igaz) |smallint |
-| INT32 |INT (32, true) |int |
-| INT32 |INT (8, hamis) |tinyint |
-| INT32 |INT (16, hamis) |int |
-| INT32 |INT (32, hamis) |bigint |
+| Bináris |UTF8 |varchar \* (UTF8 rendezés) |
+| Bináris |Karakterlánc |varchar \* (UTF8 rendezés) |
+| Bináris |Enum|varchar \* (UTF8 rendezés) |
+| FIXED_LEN_BYTE_ARRAY |Uuid |uniqueidentifier |
+| Bináris |Decimális |tizedes tört |
+| Bináris |JSON |varchar(8000) \* (UTF8 rendezés) |
+| Bináris |BSON (BSON) | Nem támogatott |
+| FIXED_LEN_BYTE_ARRAY |Decimális |tizedes tört |
+| BYTE_ARRAY |Intervallum | Nem támogatott |
+| INT32 |INT(8, true) |smallint |
+| INT32 |INT(16, true) |smallint |
+| INT32 |INT(32, true) |int |
+| INT32 |INT(8, false) |tinyint |
+| INT32 |INT(16, false) |int |
+| INT32 |INT(32, false) |bigint |
 | INT32 |DATE |dátum |
-| INT32 |DECIMÁLIS |tizedes tört |
-| INT32 |IDŐ (MILLIS)|time |
-| INT64 |INT (64, true) |bigint |
-| INT64 |INT (64, hamis) |decimális (20, 0) |
-| INT64 |DECIMÁLIS |tizedes tört |
-| INT64 |IDŐ (MICROS) |az időpontok (NANOs) nem támogatottak |
-|INT64 |IDŐBÉLYEG (MALOM/MICROS) |datetime2 – az IDŐBÉLYEG (NANOs) nem támogatott |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (8000), szerializálva JSON-ban |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (8000), szerializálva JSON-ban |
+| INT32 |Decimális |tizedes tört |
+| INT32 |TIME (MILLIS)|time |
+| INT64 |INT(64, true) |bigint |
+| INT64 |INT(64, false) |decimal(20,0) |
+| INT64 |Decimális |tizedes tört |
+| INT64 |TIME (MICROS) |time – A TIME(NANOS) nem támogatott |
+|INT64 |TIMESTAMP (MILLIS /MICROS) |datetime2 – A TIMESTAMP(NANOS) nem támogatott |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |Lista |varchar(8000), JSON-ba szerializálva |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Megjelenítése|varchar(8000), JSON-ba szerializálva |
 
 ## <a name="examples"></a>Példák
 
-### <a name="read-csv-files-without-specifying-schema"></a>CSV-fájlok olvasása séma meghatározása nélkül
+### <a name="read-csv-files-without-specifying-schema"></a>CSV-fájlok olvasása séma megadása nélkül
 
-Az alábbi példa olyan CSV-fájlt olvas be, amely az oszlopnevek és az adattípusok meghatározása nélkül tartalmazza a fejlécsort: 
+Az alábbi példa beolvassa a fejlécsort tartalmazó CSV-fájlt oszlopnevek és adattípusok megadása nélkül: 
 
 ```sql
 SELECT 
@@ -314,7 +314,7 @@ FROM OPENROWSET(
     HEADER_ROW = TRUE) as [r]
 ```
 
-Az alábbi példa olyan CSV-fájlt olvas be, amely nem tartalmaz fejlécet az oszlopnevek és az adattípusok meghatározása nélkül: 
+Az alábbi példa beolvassa a fejlécsort nem tartalmazó CSV-fájlt oszlopnevek és adattípusok megadása nélkül: 
 
 ```sql
 SELECT 
@@ -325,9 +325,9 @@ FROM OPENROWSET(
     PARSER_VERSION = '2.0') as [r]
 ```
 
-### <a name="read-parquet-files-without-specifying-schema"></a>A Parquet-fájlok beolvasása a séma meghatározása nélkül
+### <a name="read-parquet-files-without-specifying-schema"></a>Parquet-fájlok olvasása séma megadása nélkül
 
-A következő példa visszaadja az első sor összes oszlopát a számbavételi adatkészletből, a parketta formátuma, valamint az oszlopnevek és az adattípusok megadása nélkül: 
+Az alábbi példa Parquet formátumban, az oszlopnevek és adattípusok megadása nélkül adja vissza az első sor összes oszlopát a nép néphalmazból: 
 
 ```sql
 SELECT 
@@ -341,7 +341,7 @@ FROM
 
 ### <a name="read-specific-columns-from-csv-file"></a>Adott oszlopok olvasása CSV-fájlból
 
-A következő példa csak két olyan oszlopot ad vissza, amelyekben az 1. és 4. sorszám szerepel a Population*. csv fájlokban. Mivel a fájlokban nem szerepel fejlécsor, a rendszer az első sor olvasását indítja el:
+Az alábbi példa csak két oszlopot ad vissza 1 és 4 sorszámmal a population*.csv fájlokból. Mivel a fájlokban nincs fejlécsor, az első sorból kezd olvasni:
 
 ```sql
 SELECT 
@@ -359,7 +359,7 @@ WITH (
 
 ### <a name="read-specific-columns-from-parquet-file"></a>Adott oszlopok olvasása a Parquet-fájlból
 
-A következő példa a Népszámlálás adatkészletének első sorából csak két oszlopot ad vissza, a parketta formátuma: 
+Az alábbi példa csak két oszlopot ad vissza a néphalmaz első sorában Parquet formátumban: 
 
 ```sql
 SELECT 
@@ -375,9 +375,9 @@ WITH (
 ) AS [r]
 ```
 
-### <a name="specify-columns-using-json-paths"></a>Oszlopok megadása JSON-elérési utak használatával
+### <a name="specify-columns-using-json-paths"></a>Oszlopok megadása JSON-útvonalak használatával
 
-Az alábbi példa bemutatja, hogyan használhatja a [JSON elérésiút-kifejezéseket](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) a with záradékban, és különbséget mutat a szigorú és a LAX elérésiút-módok között: 
+Az alábbi példa bemutatja, hogyan használhatók a [JSON-útvonalkifejezések](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) a WITH záradékban, és bemutatja a szigorú és a laxás elérésiút-módok közötti különbségeket: 
 
 ```sql
 SELECT 
@@ -403,4 +403,4 @@ AS [r]
 
 ## <a name="next-steps"></a>Következő lépések
 
-További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.
+További példákért tekintse [](query-data-storage.md) meg a lekérdezési adatok tárolásának rövid útmutatóját, amelyből megtudhatja, hogyan olvashatja be a `OPENROWSET` [CSV-](query-single-csv-file.md), [PARQUET-](query-parquet-files.md)és [JSON-fájlformátumokat.](query-json-files.md) Tekintse meg [az optimális](best-practices-sql-on-demand.md) teljesítmény eléréséhez ajánlott eljárásokat. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS használatával.](develop-tables-cetas.md)

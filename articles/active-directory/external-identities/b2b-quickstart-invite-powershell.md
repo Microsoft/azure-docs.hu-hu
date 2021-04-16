@@ -1,29 +1,32 @@
 ---
-title: 'Gyors útmutató: vendég felhasználó hozzáadása a PowerShell használatával – Azure AD'
+title: 'Rövid útmutató: Vendégfelhasználó hozzáadása a PowerShell használatával – Azure AD'
 description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználó számára meghívót a PowerShell használatával.
 services: active-directory
-ms.service: active-directory
-ms.subservice: B2B
-ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: mimart
 author: msmimart
+ms.author: mimart
 manager: celestedg
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.date: 08/28/2018
+ms.topic: quickstart
+ms.service: active-directory
+ms.subservice: B2B
+ms.custom:
+- it-pro
+- seo-update-azuread-jan
+- mode-api
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07fa0551aee6241594b9c7d043666dad001adb62
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 765d8ea99167512e553cef9cc6f7fed583eff469
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056708"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529822"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rövid útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
 Az Azure Active Directory B2B együttműködés sokféle lehetőséget nyújt a külső partnerek alkalmazásokba és szolgáltatásokba történő meghívására. Az előző rövid útmutatóban láthattuk, hogyan lehet vendégfelhasználókat közvetlenül az Azure Active Directory admin portálon felvenni. Felhasználók felvételéhez a PowerShell is használható, akár egyenként, akár kötegben. Ebben a rövid útmutatóban a New-AzureADMSInvitation paranccsal adunk új vendég felhasználót az Azure bérlőhöz.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha nem rendelkezik Azure-előfizetéssel, [](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) kezdés előtt hozzon létre egy ingyenes fiókot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +78,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
 
 ## <a name="send-an-invitation"></a>Meghívó küldése
 
-1. Ha egy meghívót szeretne elküldeni a teszt e-mail-fiókjába, futtassa a következő PowerShell-parancsot (cserélje le a **"sanda"** és a **sanda \@ fabrikam.com** a teszt e-mail fiókjának nevére és e-mail-címére): 
+1. Ha meghívót küld a teszt e-mail-fiókjába, futtassa a következő PowerShell-parancsot (cserélje le a **"Sanda"** és **sanda \@ fabrikam.com** a teszt e-mail-fiók nevére és e-mail-címére): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,7 +94,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Ellenőrizze a kimenetet, és győződjön meg róla, hogy a meghívott felhasználó szerepel-e az egyszerű felhasználónévvel (UPN) a következő formátumban: *emailaddress*#EXT # \@ *tartomány*. Például *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
+3. Ellenőrizze a kimenetben, hogy a meghívott felhasználó szerepel-e a listán egyszerű felhasználónévvel (UPN) a következő formátumban: *emailaddress*#EXT# \@ *tartomány.* Például a *sanda_fabrikam.com#EXT# \@ contoso.onmicrosoft.com,* contoso.onmicrosoft.com a szervezet, amelytől a meghívókat küldte.
 
    ![A vendégfelhasználó felvételét mutató PowerShell kimenet](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

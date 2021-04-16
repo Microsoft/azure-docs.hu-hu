@@ -1,23 +1,24 @@
 ---
-title: 'Gyors útmutató: Azure szinapszis-munkaterület létrehozása Azure Resource Manager sablon alapján'
-description: Megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: Sablon Azure Synapse munkaterület Azure Resource Manager létrehozása'
+description: Megtudhatja, hogyan hozhat létre Synapse-munkaterületet egy Azure Resource Manager (ARM-sablon) használatával.
 services: azure-resource-manager
 author: julieMSFT
-ms.service: azure-resource-manager
+ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7317b7f51c6d0f9d72e3aad81794a569276d2145
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740374"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566120"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása ARM-sablonnal
+# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Rövid útmutató: Azure Synapse létrehozása ARM-sablonnal
 
-Ez a Azure Resource Manager sablon (ARM-sablon) egy Azure-beli szinapszis-munkaterületet hoz létre, amely mögöttes Data Lake Storage. Az Azure szinapszis munkaterület biztonságos együttműködési határ az Azure szinapszis Analytics elemzési folyamataihoz.
+Ez Azure Resource Manager sablon (ARM-sablon) létrehoz egy Azure Synapse-munkaterületet a mögöttes Data Lake Storage. A Azure Synapse munkaterület biztonságos együttműködési határ az elemzési folyamatok számára a Azure Synapse Analytics.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-A sablon áttekintéséhez válassza a **Megjelenítés** hivatkozást. Ezután válassza a **Sablon szerkesztése** lehetőséget.
+A sablont a Vizualizáció hivatkozásra **kattintva tudja** áttekinteni. Ezután válassza **a Sablon szerkesztése lehetőséget.**
 
 [![Vizualizáció](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -42,26 +43,26 @@ A sablon két erőforrást határoz meg:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza ki az alábbi rendszerképet az Azure-ba való bejelentkezéshez és a sablon megnyitásához. Ez a sablon egy szinapszis-munkaterületet hoz létre.
+1. Az alábbi kép kiválasztásával jelentkezzen be az Azure-ba, és nyissa meg a sablont. Ez a sablon egy Synapse-munkaterületet hoz létre.
 
-   [![Üzembe helyezés az Azure 2-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+   [![Üzembe helyezés az Azure 2-ben](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 1. Adja meg vagy frissítse a következő értékeket:
 
-   - **Előfizetés**: válasszon ki egy Azure-előfizetést.
-   - **Erőforráscsoport**: válassza az **új létrehozása** elemet, és adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**. Egy új erőforráscsoport segíti az erőforrás karbantartását.
-   - **Régió**: válasszon régiót.  Például: **USA középső régiója**.
-   - **Név**: adjon meg egy nevet a munkaterületnek.
-   - **SQL-rendszergazdai bejelentkezés**: adja meg a SQL Server rendszergazdai felhasználónevét.
-   - **SQL-rendszergazda jelszava**: adja meg a SQL Server rendszergazdai jelszavát.
-   - **Címke értékei**: fogadja el az alapértelmezett értéket.
-   - **Áttekintés és létrehozás**: válassza a lehetőséget.
-   - **Létrehozás**: válassza a lehetőséget.
+   - **Előfizetés:** Válasszon ki egy Azure-előfizetést.
+   - **Erőforráscsoport:** Válassza az **Új létrehozása lehetőséget,** adjon meg egy egyedi nevet az erőforráscsoportnak, majd kattintson az **OK gombra.** Egy új erőforráscsoport megkönnyíti az erőforrások tisztítását.
+   - **Régió:** Válasszon ki egy régiót.  Például: **USA középső régiója**.
+   - **Név:** Adja meg a munkaterület nevét.
+   - **SQL-rendszergazdai bejelentkezés:** Adja meg a rendszergazda felhasználónevét a SQL Server.
+   - **SQL-rendszergazda jelszava:** Adja meg a rendszergazdai jelszót a SQL Server.
+   - **Címkeértékek:** Fogadja el az alapértelmezett értéket.
+   - **Áttekintés és létrehozás:** Válassza ki.
+   - **Létrehozás:** Válassza a lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az Azure szinapszis Analyticsről és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ha többet szeretne megtudni a Azure Synapse Analytics és Azure Resource Manager, folytassa az alábbi cikkekkel.
 
-- Az [Azure szinapszis Analytics áttekintése](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+- Olvassa el [a Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 - További információ az [Azure Resource Managerről](../azure-resource-manager/management/overview.md)
 - [Az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

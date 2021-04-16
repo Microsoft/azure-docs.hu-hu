@@ -1,37 +1,37 @@
 ---
 title: Rendszerintegrációs partnerek
-description: Az Azure szinapszis Analytics szolgáltatást kínáló iparági rendszerintegrátorok listája
+description: Ügyfélmegoldásokat felhasználómegoldásokat felhasználó iparági rendszerintegrátorok Azure Synapse Analytics
 services: synapse-analytics
 author: periclesrocha
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc33b8e6b9dc2e014e3ffa38cb7a957b7dfaad2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96121848"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566494"
 ---
-# <a name="azure-synapse-analytics-system-integration-partners"></a>Azure szinapszis Analytics rendszerintegrációs partnerek
+# <a name="azure-synapse-analytics-system-integration-partners"></a>Azure Synapse Analytics integrációs partnerek
 
-Ez a cikk kiemeli a Microsoft rendszerintegrációs partner vállalatoknak az Azure szinapszis-nal való megoldását.
+Ez a cikk a Microsoft rendszerintegrációs partnervállalatait emeli ki, amelyek megoldásokat hoznak létre Azure Synapse.
 
 ## <a name="system-integration-partners"></a>Rendszerintegrációs partnerek
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozás |
 | ------- | ----------- | -------------------- |
-| ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>A 45000 + dedikált szakemberek, a Accenture Microsoft üzleti csoport – a Avanade által működtetett – segítségével a vállalatok a digitális zavarás korában is fejlődnek.|[Partner oldal](https://www.accenture.com/us-en/services/microsoft-index)<br>|
-| ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>A Adatis olyan szolgáltatásokat kínál, amelyek speciális adatelemzési, adatstratégiai és tanácsadói szolgáltatások, világszínvonalú kézbesítés és felügyelt szolgáltatások számára specializáltak. |[Partner oldal](https://adatis.co.uk/)<br> |
-| ![Kék gránit](./media/sql-data-warehouse-partner-public-preview/blue-granite-logo.png) |**Kék gránit**<br>A BlueGranite-katalizátor for Analytics egy olyan elkötelezettségi megközelítés, amely a "think Big, de kicsi" filozófiát is tartalmazza. Az együttműködésen alapuló és stratégiai előadásokkal kezdve a kék gránit az ügyfelekkel együttműködve felderítheti, létrehozhatja és felhasználhatja az új modern adatelemzési és elemzési megoldások értékét a Microsoft Platform legújabb technológiáinak használatával.|[Partner oldal](https://www.blue-granite.com/)<br>|
-| ![Globális Capax](./media/sql-data-warehouse-partner-public-preview/capax-global-logo.png) |**Globális Capax**<br>A már meglévő információk jobb kihasználásával fejlesztjük vállalkozását, így az üzleti céljaihoz illeszkedő egyéni megoldásokat hozhat létre, és beállíthatja a hosszú távú sikert. Jól bevált mintákat és gyakorlatot kombinálunk a technológiával, miközben a csapatunk számos iparági és kereskedelmi szoftverfejlesztési felületét hasznosítjuk. Megosztjuk a technológiával, az innovációval és az ügyfél-elégedettséggel kapcsolatos szenvedélyt. Büszkék vagyunk arra, hogy mi hajtjuk végre projektjeink sikerességét, és alapvető fontosságú, hogy az emberek miért használják az Egyesült államokbeli partnereket.|[Partner oldal](https://www.capaxglobal.com/)<br>|
-| ![Coeo](./media/sql-data-warehouse-partner-public-preview/coeo-logo.png) |**Coeo**<br>A Coeo csapata olyan felhőalapú tanácsadókat tartalmaz, amelyek nagy tapasztalattal rendelkeznek az Azure-adatbázisokban, valamint a rugalmas és méretezhető analitikai megoldások biztosítására dedikált BI-tanácsadók. A Coeo segítségével áthelyezheti a hibrid vagy teljes körű Azure-megoldást.|[Partner oldal](https://www.coeo.com/solution/technology/microsoft-azure/)<br>|
-| ![Cognizant azért](./media/sql-data-warehouse-partner-public-preview/cognizant-logo.png) |**Cognizant azért**<br>A Microsoft stratégiai partnereként tudatában van a tanácsadási ismeretek és a tapasztalatok, amelyek segítenek az ügyfeleknek a felhőbe való utazásban. Az összes ügyfél-projekt esetében a tudatában kihasználja erős partneri együttműködését a Microsofttal, hogy maximalizálja az ügyfelek előnyeit az Azure-architektúra alapján.|[Partner oldal](https://www.cognizant.com/partners/microsoftazure)<br>|
-| ![Neal-elemzés](./media/sql-data-warehouse-partner-public-preview/neal-analytics-logo.png) |**Neal-elemzés**<br>A Neal Analytics lehetővé teszi a vállalatok számára, hogy átalakítsák a digitális átalakítási utat az adatok értékes eszközökre és versenyelőnyt biztosítanak. A gépi tanulással és az adattervezéssel kapcsolatos ismereteink alapján kihasználjuk az adattovábbítási árrés növelését és a nyereséges elemzési projekteket. Az adatelemzésre, üzleti intelligenciára, Cognitive Servicesra, gyakorlati INTELLIGENCIára, adatkezelésra és IoT szakosodott tanácsadók közül a Neal Analytics megbízható megoldást kínál az egyedi üzleti problémák megoldására és a különböző iparágakban végzett műveletek optimalizálására.|[Partner oldal](https://nealanalytics.com/)<br>|
-| ![Gyakorlatias működés](./media/sql-data-warehouse-partner-public-preview/pragmatic-works-logo.png) |**Gyakorlatias működés**<br>A pragmatikus működés segít kihasználni az adatai értékét azáltal, hogy több felhasználót és alkalmazást helyez el ugyanazon az adatkészleten. A Felhőbeli környezetét az üzleti igényeknek megfelelő számos megoldással megnyithatja, felgyorsíthatja és karbantarthatja.|[Partner oldal](https://www.pragmaticworks.com/)<br>|
+| ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Az Avanade által működtetett Accenture Microsoft Business Group több mint 45 000 kijelölt szakember együttesen segít a vállalatoknak a digitális üzemkimaradások idején való tartásban.|[Partneroldal](https://www.accenture.com/us-en/services/microsoft-index)<br>|
+| ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>Az Adatis olyan szolgáltatásokat kínál, amelyek fejlett adatelemzésre, adatstratégia és tanácsadás, világosztályú kézbesítés és felügyelt szolgáltatások szolgáltatásokat kínálnak. |[Partneroldal](https://adatis.co.uk/)<br> |
+| ![Kék gránit](./media/sql-data-warehouse-partner-public-preview/blue-granite-logo.png) |**Kék gránit**<br>A BlueGranite-i analitikai elemző egy olyan elkötelezettségi megközelítés, amely a "nagy, de kicsiben kezdeni" filályukat is beveszi. Az együttműködésen alapuló megálmozással és a stratégiai munkamenetekkel kezdve a Blue Collaborative az ügyfelekkel együttműködve felfedezi, létrehozza és megvalósítja az új, modern adat- és elemzési megoldások értékét a Microsoft platform legújabb technológiái használatával.|[Partneroldal](https://www.blue-granite.com/)<br>|
+| ![Capax Global](./media/sql-data-warehouse-partner-public-preview/capax-global-logo.png) |**Capax Global**<br>Üzletét úgy fejlesztjük tovább, hogy jobban kihasználhatja a már eddig is rendelkezésre található információkat. Az üzleti céloknak megfelelő egyéni megoldások létrehozása és a hosszú távú siker beállítása. Jól bevált mintákat és eljárásokat egyesítünk a technológiával, és a csapatunk számos iparági és kereskedelmi szoftverfejlesztési tapasztalatát felhasználjuk. Iránti szenvedélyünk a technológia, az innováció és az ügyfelek elégedettsége. A projektek sikerességéhez és a velük való partneri partneri kapcsolatban alapvető fontosságú, hogy a mi célunk legyen.|[Partneroldal](https://www.capaxglobal.com/)<br>|
+| ![Coeo](./media/sql-data-warehouse-partner-public-preview/coeo-logo.png) |**Coeo**<br>A Coeo csapata az Azure-adatbázisokban mély szakértelemmel rendelkező felhőtanácsadókat, valamint a rugalmas és skálázható analytikus megoldások biztosítása érdekében dedikált BI-tanácsadókat tartalmaz. A Coeo segítségével áttérhet egy hibrid vagy teljes Azure-megoldásra.|[Partneroldal](https://www.coeo.com/solution/technology/microsoft-azure/)<br>|
+| ![Tudatában](./media/sql-data-warehouse-partner-public-preview/cognizant-logo.png) |**Tudatában**<br>A Microsoft stratégiai partnerként a Cognizant tanácsadási készségekkel és tapasztalattal rendelkezik, hogy segítsen az ügyfeleknek a felhőbe való utazásban. A Cognizant minden ügyfélprojekthez a Microsofttal való erős partnerkapcsolatát használja az Azure-architektúra ügyfél-előnyeinek maximalizálása érdekében.|[Partneroldal](https://www.cognizant.com/partners/microsoftazure)<br>|
+| ![Neal Analytics](./media/sql-data-warehouse-partner-public-preview/neal-analytics-logo.png) |**Neal Analytics**<br>A Neal Analytics segít a vállalatoknak eligazodni a digitális átalakulási folyamat során az adatok értékes eszközökké és versenyelőnyökké konvertálásában. Gépi tanulási és adatmérnöki szakértelmünknek segítségével adatokkal növeljük a nyereséget és a kifizetődő elemzési projekteket. A Neal Analytics az adattudomány, az üzleti intelligencia, a Cognitive Services, a gyakorlati AI, a adatkezelés és az IoT szakterületén dolgozó tanácsadókból áll, akik megbízhatóan oldják meg az egyedi üzleti problémákat, és optimalizálják a különböző iparágak műveleteit.|[Partneroldal](https://nealanalytics.com/)<br>|
+| ![Gyakorlati munkák](./media/sql-data-warehouse-partner-public-preview/pragmatic-works-logo.png) |**Gyakorlati munkák**<br>A gyakorlati works segítségével kihasználhatja az adatok értékét azáltal, hogy több felhasználót és alkalmazást biztosít ugyanazon az adatkészleten. A felhőkörnyezetet számos, az üzleti igényeinek megfelelő megoldással kezdjük meg, gyorsítjuk fel és tartjuk karban.|[Partneroldal](https://www.pragmaticworks.com/)<br>|
 
 ## <a name="next-steps"></a>Következő lépések
-Ha többet szeretne megtudni más partnereinkről, tekintse meg az [üzleti intelligencia partnereket](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnereket](sql-data-warehouse-partner-data-integration.md), a [adatkezelés partnereket](sql-data-warehouse-partner-data-management.md), valamint [Machine learning & AI-partnereket](sql-data-warehouse-partner-machine-learning-ai.md).
+További információ a többi partnerről: [](sql-data-warehouse-partner-business-intelligence.md)Üzletiintelligencia-partnerek, Adatintegrációs [partnerek,](sql-data-warehouse-partner-data-integration.md) [adatkezelés partnerek,](sql-data-warehouse-partner-data-management.md)és [AI-partnerek Machine Learning & is.](sql-data-warehouse-partner-machine-learning-ai.md)
 

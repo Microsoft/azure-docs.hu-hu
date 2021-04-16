@@ -1,21 +1,24 @@
 ---
-title: Rövid útmutató – tároló-példány létrehozása – Azure Resource Manager sablon
-description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást.
+title: Rövid útmutató – Tárolópéldány létrehozása – Azure Resource Manager sablon
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont fog használni egy elkülönített Azure-tárolópéldányban futó tárolóba helyezett webalkalmazás gyors üzembe helyezéséhez.
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
-ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- devx-track-js
+- mode-arm
+ms.openlocfilehash: 5e8b9e1b2a396bb20b35dd69efe26758ba0db543
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91309081"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537501"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban ARM-sablon használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Rövid útmutató: Tárolópéldány üzembe helyezése az Azure-ban ARM-sablon használatával
 
-A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra. Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy elkülönített Docker-tároló üzembe helyezéséhez és a webalkalmazás nyilvános IP-címmel való elérhetővé tételéhez.
+A Azure Container Instances egyszerűséggel és sebességgel futtathat kiszolgáló nélküli Docker-tárolókat az Azure-ban. Üzembe helyezhet egy alkalmazást igény szerint egy tárolópéldányon, ha nincs szüksége egy teljes tárolóvezénylési platformra, például a Azure Kubernetes Service. Ebben a rövid útmutatóban egy Azure Resource Manager-sablonnal (ARM-sablonnal) helyez üzembe egy elkülönített Docker-tárolót, és elérhetővé teszi a webalkalmazását egy nyilvános IP-címmel.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -33,11 +36,11 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 :::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json":::
 
-A következő erőforrás van definiálva a sablonban:
+A sablon a következő erőforrást definiálja:
 
-* **[Microsoft. ContainerInstance/containerGroups](/azure/templates/microsoft.containerinstance/containergroups)**: hozzon létre egy Azure Container-csoportot. Ez a sablon egyetlen tároló példányból álló csoportot határoz meg.
+* **[Microsoft.ContainerInstance/containerGroups:](/azure/templates/microsoft.containerinstance/containergroups)** hozzon létre egy Azure-tárolócsoportot. Ez a sablon egy egyetlen tárolópéldányból álló csoportot definiál.
 
-További Azure Container Instances-sablonok a gyorsindítási [sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular)katalógusában találhatók.
+További Azure Container Instances sablonmintákat a gyorsindítási [sablongyűjteményben talál.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -48,34 +51,34 @@ További Azure Container Instances-sablonok a gyorsindítási [sablonok](https:/
  2. Válassza ki vagy adja meg a következő értékeket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
-    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Példa: **USA középső** régiója.
-    * **Név**: fogadja el a példány generált nevét, vagy adjon meg egy nevet.
-    * **Rendszerkép**: fogadja el az alapértelmezett rendszerkép nevét. Ez a minta linuxos rendszerkép egy olyan kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt kiszolgáló Node.js. 
+    * **Erőforráscsoport:** válassza az **Új létrehozása** lehetőséget, adjon egyedi nevet az erőforráscsoportnak, majd kattintson az **OK gombra.**
+    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Például: **AZ USA középső középső államoka.**
+    * **Név:** fogadja el a példány létrehozott nevét, vagy adjon meg egy nevet.
+    * **Kép:** fogadja el az alapértelmezett rendszerképnevet. Ez a Linux-rendszerképminta egy statikus HTML-oldalt Node.js webalkalmazást tartalmaz. 
 
     Fogadja el az alapértelmezett értékeket a többi tulajdonsághoz.
 
-    Tekintse át a használati feltételeket. Ha elfogadja, jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
+    Tekintse át a használati feltételeket. Ha elfogadja, válassza az Elfogadom a fenti feltételeket és **feltételeket lehetőséget.**
 
-    ![Sablon tulajdonságai](media/container-instances-quickstart-template/template-properties.png)
+    ![Sablontulajdonságok](media/container-instances-quickstart-template/template-properties.png)
 
  3. A példány sikeres létrehozása után értesítést kap:
 
-    ![Portál értesítése](media/container-instances-quickstart-template/deployment-notification.png)
+    ![Portálértesítés](media/container-instances-quickstart-template/deployment-notification.png)
 
- Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül a Azure PowerShell, az Azure CLI és a REST API is használható. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-cli.md).
+ Az Azure Portalon helyezhető üzembe a sablon. A Azure Portal mellett használhatja a Azure PowerShell, az Azure CLI és a REST API. További információ az egyéb üzembe helyezési módszerekről: [Sablonok üzembe helyezése.](../azure-resource-manager/templates/deploy-cli.md)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-A tároló példány tulajdonságainak áttekintéséhez használja a Azure Portal vagy egy eszközt, például az [Azure CLI](container-instances-quickstart.md) -t.
+A tárolópéldány Azure Portal vagy egy olyan eszközzel, mint az [Azure CLI,](container-instances-quickstart.md) tekintse át a tárolópéldány tulajdonságait.
 
-1. A portálon keressen rá a Container Instancesra, és válassza ki a létrehozott Container-példányt.
+1. A portálon keressen rá a Container Instances, és válassza ki a létrehozott tárolópéldányt.
 
-1. Az **Áttekintés** lapon jegyezze fel a példány **állapotát** és az **IP-címét**.
+1. Az Áttekintés **lapon** jegyezze fel a **példány állapotát** és **IP-címét.**
 
     ![Példány áttekintése](media/container-instances-quickstart-template/aci-overview.png)
 
-2. Miután az állapota *fut*, navigáljon az IP-címre a böngészőben. 
+2. Ha az állapota *Fut,* keresse meg az IP-címet a böngészőben. 
 
     ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben](media/container-instances-quickstart-template/view-application-running-in-an-azure-container-instance.png)
 
@@ -83,22 +86,22 @@ A tároló példány tulajdonságainak áttekintéséhez használja a Azure Port
 
 A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy az azon futtatott alkalmazással kapcsolatos hibák elhárítása során.
 
-A tároló naplóinak megtekintéséhez a **Beállítások** területen válassza a **tárolók**  >  **naplók** lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
+A tároló naplóinak megtekintéséhez a Beállítások **alatt válassza** a **Tárolónaplók**  >  **lehetőséget.** Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
 
 ![Tárolónaplók az Azure Portalon](media/container-instances-quickstart-template/aci-logs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés** lehetőséget. A rendszer kérésére erősítse meg a törlést.
+Ha végzett a tárolóval, a tárolópéldány **Áttekintés** lapján válassza a **Törlés lehetőséget.** A rendszer kérésére erősítse meg a törlést.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban létrehozott egy Azure-tárolópéldányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](./container-instances-tutorial-prepare-app.md)
+> [Oktatóanyag: Tároló rendszerképének létrehozása a Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
+A sablonok létrehozásának folyamatát részletesen ismertető oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Oktatóanyag: Az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

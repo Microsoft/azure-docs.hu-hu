@@ -1,45 +1,44 @@
 ---
-title: Kapcsolódás a szinapszis SQL-hez
-description: Kapcsolódjon a szinapszis SQL-hez.
-services: synapse-analytics
+title: Csatlakozás Synapse SQL
+description: Kapcsolódás a Synapse SQL.
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3165b72ae5612aaeaa66a95299db97182fef2232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677578"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565542"
 ---
-# <a name="connect-to-synapse-sql"></a>Kapcsolódás a szinapszis SQL-hez
-Kapcsolódjon a szinapszis SQL-képességhez az Azure szinapszis Analytics szolgáltatásban.
+# <a name="connect-to-synapse-sql"></a>Csatlakozás Synapse SQL
+Kapcsolódj a Synapse SQL képességhez a Azure Synapse Analytics.
 
-## <a name="supported-tools-for-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlethez támogatott eszközök
+## <a name="supported-tools-for-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlet támogatott eszközei
 
-A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes mértékben támogatott a 1.18.0 verziótól kezdődően. A SSMS részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) az 1.18.0-s verziótól kezdve teljes mértékben támogatott. Az SSMS a 18.5-ös verziótól kezdve részben támogatott, így csak a csatlakozáshoz és a lekérdezéshez használható.
 
 > [!NOTE]
-> Ha egy HRE-bejelentkezésnél a lekérdezés végrehajtása során több mint 1 óra van nyitva, a HRE-ra épülő lekérdezések sikertelenek lesznek. Ez magában foglalja a tárolás lekérdezését a HRE átmenő és az HRE-t használó utasításokkal (például külső szolgáltató létrehozása). Ez hatással van minden olyan eszközre, amely megtartja a kapcsolatokat, például a SSMS és a HIRDETÉSEKET tartalmazó lekérdezés-szerkesztőben. Azok az eszközök, amelyek új kapcsolatokat nyitnak meg egy lekérdezés végrehajtásához, mint például a szinapszis Studio, nem érintettek.
+> Ha egy AAD-bejelentkezés a lekérdezés végrehajtásakor több mint 1 órán keresztül van megnyitva, az AAD-re támaszkodó lekérdezések meghiúsulnak. Ebbe beletartozik a tároló lekérdezése az AAD átmenő szolgáltatásával és az AAD-val kommunikáló utasításokkal (például CREATE EXTERNAL PROVIDER). Ez minden olyan eszközre hatással van, amely nyitva tartja a kapcsolatokat, például az SSMS és az ADS lekérdezésszerkesztőjét. Azok az eszközök, amelyek új kapcsolatokat nyitnak meg egy lekérdezés végrehajtásához, például Synapse Studio, nem érintik.
 
-> A probléma megoldásához újraindíthatja a SSMS, vagy csatlakozhat a HIRDETÉSekhez, és leválaszthatja azokat. 
+> A probléma megoldásához újraindíthatja az SSMS-t, vagy csatlakozhat az ADS-hez, és leválaszthatja a kapcsolatot. 
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
 
-A következő példában a dedikált SQL-készlet kiszolgálójának neve: showdemoweu.sql.azuresynapse.net.
-A kiszolgáló nélküli SQL-készlet kiszolgálójának neve a következő példában: showdemoweu-ondemand.sql.azuresynapse.net.
+A következő példában a dedikált SQL-készlet kiszolgálóneve: showdemoweu.sql.azuresynapse.net.
+A kiszolgáló nélküli SQL-készlet kiszolgálóneve a következő példában: showdemoweu-ondemand.sql.azuresynapse.net.
 
 A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Válassza a **szinapszis-munkaterületek** lehetőséget.
+2. A **Synapse-munkaterületeken válassza a lehetőséget.**
 3. Válassza ki azt a munkaterületet, amelyhez csatlakozni szeretne.
-4. Ugrás az áttekintéshez.
+4. Ugrás az áttekintésre.
 5. Keresse meg a teljes kiszolgálónevet.
 
 ## <a name="sql-pool"></a>**SQL-készlet**
@@ -48,10 +47,10 @@ A teljes kiszolgálónév lekérdezése:
 
 ## <a name="serverless-sql-pool"></a>**kiszolgáló nélküli SQL-készlet**
 
-![Teljes kiszolgálónév kiszolgáló nélküli SQL-készlete](./media/connect-overview/server-connect-example-sqlod.png)
+![Teljes kiszolgálónév kiszolgáló nélküli SQL-készlet](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
-A szinapszis SQL támogatja a [ADO.net](/dotnet/framework/data/adonet/), az [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), a [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)és a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)használatát. A legújabb verzió és dokumentáció megkereséséhez válasszon egyet az előző illesztőprogramok közül. Ha az illesztőprogramhoz tartozó kapcsolati karakterláncot szeretné automatikusan létrehozni a Azure Portalból, válassza az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+Synapse SQL a [következő ADO.NET:](/dotnet/framework/data/adonet/), [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)és [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). A legújabb verzió és dokumentáció megkereséhez válasszon egyet a fenti illesztőprogramok közül. Ha automatikusan létre kell hoznia a kapcsolati sztringet az  Ön által használt illesztő számára a Azure Portal válassza az előző példában látható Adatbázis-kapcsolati sztringek megjelenítése lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -81,7 +80,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Kapcsolati beállítások
-A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létrehozása során Szabványosít. Ezek a beállítások nem lehetnek felülbírálva, és a következők:
+Synapse SQL egyes beállításokat szabványosít a kapcsolat és az objektum létrehozása során. Ezek a beállítások nem bírálhatóak felül, és a következők lehetnek:
 
 | Adatbázis-beállítások | Érték |
 |:--- |:--- |
@@ -92,7 +91,7 @@ A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létr
 
 ## <a name="recommendations"></a>Javaslatok
 
-A kiszolgáló nélküli **SQL Pool** -lekérdezések végrehajtásához a javasolt eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
+Kiszolgáló nélküli **SQL-készletlekérdezések** végrehoz ajánlott eszközöket Azure Data Studio [és](get-started-azure-data-studio.md) Azure Synapse Studióban.
 
 ## <a name="next-steps"></a>Következő lépések
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-hez.
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). További információ a hitelesítési lehetőségekről: [Hitelesítés](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)Synapse SQL.

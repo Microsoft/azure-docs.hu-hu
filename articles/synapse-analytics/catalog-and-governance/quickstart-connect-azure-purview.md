@@ -1,52 +1,52 @@
 ---
 title: Azure Purview-fiók csatlakoztatása 
-description: Egy Azure-beli hatáskörébe tartozó fiók összekötése egy szinapszis-munkaterülettel.
-services: synapse-analytics
+description: Azure Purview-fiók csatlakoztatása Synapse-munkaterülethez.
 author: julieMSFT
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73ea2f43591d1c7ca2d42591e14b4ff04eb7e496
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad9250d022f02db06c9c5251c1fccfbfb730af67
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628628"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567876"
 ---
-# <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Rövid útmutató: Azure-beli hatáskörébe tartozó fiók összekötése egy szinapszis-munkaterülettel 
+# <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Rövid útmutató: Azure Purview-fiók csatlakoztatása Synapse-munkaterülethez 
 
 
-Ebben a rövid útmutatóban egy Azure-beli hatáskörébe tartozó fiókot fog regisztrálni egy szinapszis-munkaterületre. Ez a kapcsolat lehetővé teszi az Azure hatáskörébe tartozó eszközök felderítését, és a szinapszis-képességekkel való kommunikációt. 
+Ebben a rövid útmutatóban egy Azure Purview-fiókot fog regisztrálni egy Synapse-munkaterületre. Ez a kapcsolat lehetővé teszi az Azure Purview-eszközök felderítését és a Synapse-képességeken keresztüli interakciót. 
 
-A következő feladatokat végezheti el a Szinapszisban: 
-- A felső keresőmező használatával megkeresheti a hatáskörébe tartozó eszközöket kulcsszavak alapján 
-- Az adatok megértése metaadatok, Lineage, jegyzetek alapján 
-- Az adatokat a munkaterülethez társított szolgáltatásokkal vagy integrációs adatkészletekkel csatlakoztathatja 
-- Az adatkészletek elemzése szinapszis Apache Spark, szinapszis SQL és adatfolyam 
+A Synapse-ban a következő feladatokat hajthatja végre: 
+- A felső keresőmezővel kulcsszavak alapján keresheti meg a Purview-eszközöket 
+- Az adatok metaadatok, leszármakozás, jegyzetek alapján való magyarázata 
+- Az adatok csatlakoztatása a munkaterülethez csatolt szolgáltatásokkal vagy integrációs adatkészletekkel 
+- Az adatkészletek elemzése a Synapse Apache Spark, Synapse SQL és Adatfolyam 
 
 ## <a name="prerequisites"></a>Előfeltételek 
-- [Azure-beli hatáskörébe tartozó fiók](../../purview/create-catalog-portal.md) 
-- [Szinapszis-munkaterület](../quickstart-create-workspace.md) 
+- [Azure Purview-fiók](../../purview/create-catalog-portal.md) 
+- [Synapse-munkaterület](../quickstart-create-workspace.md) 
 
-## <a name="signin-toa-synapse-workspace"></a>Bejelentkezés egy szinapszis-munkaterületre 
+## <a name="signin-toa-synapse-workspace"></a>Bejelentkezés Synapse-munkaterületre 
 
-Lépjen a  [https://web.azuresynapse.net](https://web.azuresynapse.net) munkaterületre, és jelentkezzen be. 
+A  [https://web.azuresynapse.net](https://web.azuresynapse.net) webhelyre lépve jelentkezzen be a munkaterületre. 
 
-## <a name="permissions-for-connecting-an-azure-purview-account"></a>Azure-beli hatáskörébe tartozó fiók csatlakoztatásához szükséges engedélyek 
+## <a name="permissions-for-connecting-an-azure-purview-account"></a>Engedélyek az Azure Purview-fiókok csatlakoztatáshoz 
 
-- Ahhoz, hogy egy Azure-beli hatáskörébe tartozó fiókot egy szinapszis munkaterülethez lehessen kapcsolni, Azure Portal IAM-ban **közreműködői** szerepkörre van szüksége a szinapszis munkaterületen, és hozzá kell férnie az Azure hatáskörébe tartozó fiókhoz. További részletek: Azure-beli [hatáskörébe tartozó engedélyek](../../purview/catalog-permissions.md).
+- Ha Azure Purview-fiókot szeretne csatlakoztatni egy Synapse-munkaterülethez, közreműködői szerepkörre van szüksége **a** Synapse-munkaterületen az Azure Portal IAM-ból, és hozzá kell férni az Azure Purview-fiókhoz. További részletekért lásd: [Azure Purview permissions (Azure Purview-engedélyek).](../../purview/catalog-permissions.md)
 
 ## <a name="connect-an-azure-purview-account"></a>Azure Purview-fiók csatlakoztatása  
 
-- A szinapszis munkaterületen válassza az Azure- **felügyelet kezelése** lehetőséget  ->  . Válassza **a Kapcsolódás a hatáskörébe fiókhoz** lehetőséget. 
-- Kiválaszthatja **Az Azure-előfizetést** , vagy **manuálisan is megadhatja**. Az **Azure-előfizetésből** kiválaszthatja azt a fiókot, amelyhez hozzá tud férni. 
-- A csatlakozás után látnia kell a hatáskörébe tartozó fiók nevét az **Azure hatáskörébe tartozó fiókban**. 
-- Az adatkereséshez használhatja a szinapszis munkaterület felső középső sávján található keresési sávot. 
+- A Synapse-munkaterületen, a **Manage**  ->  **Azure Purview (Az Azure-beli végleges nézet kezelése) alatt található.** Válassza **a Csatlakozás egy Purview-fiókhoz lehetőséget.** 
+- Választhat a **From Azure subscription (Azure-előfizetésből) vagy a** Enter manually **(Manuálisan) lehetőséget.** **Az Azure-előfizetésben** kiválaszthatja azt a fiókot, amelyhez hozzáféréssel rendelkezik. 
+- Ha csatlakoztatva van, a Nézet fiók neve az **Azure Purview-fiók** lapon látható lesz. 
+- Az adatok kereséséhez használhatja a Synapse-munkaterület tetején található keresősávot. 
 
-## <a name="nextsteps"></a>További lépések 
+## <a name="nextsteps"></a>Következő lépések 
 
-[Azure szinapszis-eszközök regisztrálása és vizsgálata az Azure hatáskörébe](../../purview/register-scan-azure-synapse-analytics.md)
+[Az azure-beli Azure Synapse regisztrálása és beolvasása](../../purview/register-scan-azure-synapse-analytics.md)
 
 [Adatok felfedezése, csatlakoztatása és feltárása Synapse-ban az Azure Purview segítségével](how-to-discover-connect-analyze-azure-purview.md)   

@@ -1,7 +1,7 @@
 ---
-title: Docker-lekérés a Hangulatelemzés tárolóhoz
+title: Docker pull a Hangulatelemzés tárolóhoz
 titleSuffix: Azure Cognitive Services
-description: Docker-lekérési parancs Hangulatelemzés tárolóhoz
+description: Docker pull parancs Hangulatelemzés tárolóhoz
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,34 +9,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 549ecf940c53267db6b3caa576c4c24db414337a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a550e120331a8255281d51725d2d5fc8ca1e05
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90906005"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564418"
 ---
-#### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>Docker-lekérés a Hangulatelemzés v3 tárolóhoz
+#### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>Docker-lekért tároló Hangulatelemzés v3-tárolóhoz
 
-Az érzelmek elemzése tároló v3 tárolója több nyelven is elérhető. Az angol tárolóhoz tartozó tároló letöltéséhez használja az alábbi parancsot. 
+A hangulatelemzési tároló v3 tárolója több nyelven is elérhető. Az angol nyelvű tároló tárolóját az alábbi paranccsal töltheti le. 
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3.0-en
 ```
 
-Egy másik nyelvhez tartozó tároló letöltéséhez cserélje le az `en` alábbi nyelvi kódok egyikét. 
+Ha egy másik nyelvhez is le kell töltenie a tárolót, cserélje le a helyére `en` az alábbi nyelvkódok valamelyikét. 
 
-| Text Analytics tároló | Nyelvkód |
+| Text Analytics Tároló | Nyelvkód |
 |--|--|
-| Angol | `en` |
-| Spanyol | `es` |
-| Francia | `fr` |
-| Olasz | `it` |
-| Német | `de` |
-| Egyszerűsített kínai | `zh` |
-| Kínai – hagyományos | `zht` |
-| Japán | `ja` |
-| Portugál | `pt` |
-| Holland | `nl` |
+| Chinese-Simplified    |   `zh-hans`   |
+| Chinese-Traditional   |   `zh-hant`   |
+| Holland                 |     `nl`      |
+| Angol               |     `en`      |
+| Francia                |     `fr`      |
+| Német                |     `de`      |
+| Hindi                 |    `hi`       |
+| Olasz               |     `it`      |
+| Japán              |     `ja`      |
+| Koreai                |     `ko`      |
+| Norvég (Bokmål)   |     `no`      |
+| Portugál (Brazília)   |    `pt-BR`    |
+| Portugál (Portugália) |    `pt-PT`    |
+| Spanyol               |     `es`      |
+| Török               |     `tr`      |
 
-A Text Analytics tárolók számára elérhető címkék teljes leírását lásd: [Docker hub](https://go.microsoft.com/fwlink/?linkid=2018654).
+A tárolókhoz elérhető címkék teljes Text Analytics lásd: [Docker Hub.](https://go.microsoft.com/fwlink/?linkid=2018654)

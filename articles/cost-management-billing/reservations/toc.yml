@@ -53,7 +53,7 @@
       href: reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Használati adatok egyéni előfizetések esetén
       href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: A nagyvállalati és a Microsoft ügyfél-szerződés használati adatok
+    - name: Vállalati és Microsoft Ügyfélszerződés használati adatok
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Útmutatók
   expanded: true
@@ -102,9 +102,9 @@
           href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
         - name: Virtual machines (Virtuális gépek)
           href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
-    - name: 'Megtekintés, kezelés és optimalizálás a vásárlás után'
+    - name: 'Engedélyek, Megtekintés és kezelés'
       items:
-        - name: Megtekintésre és felügyeletre vonatkozó engedélyek
+        - name: Megtekintési és kezelési engedélyek
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Foglalások megtekintése CSP-ként
           href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -112,23 +112,27 @@
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Az optimalizálási beállítás módosítása
           href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
-        - name: Cserére és visszatérítésre vonatkozó foglalások
-          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Jelentési költségek
+    - name: Kihasználtsági és költségjelentések
       items:
+        - name: Foglalás kihasználtságának megtekintése
+          href: reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Foglalási tranzakciók megtekintése
           href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Foglalási költségek visszatérítése
           href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Csere és visszatérítés
+      items:
+        - name: Cserére és visszatérítésre vonatkozó foglalások
+          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Foglalások megújítása
       items:
         - name: Foglalás megújítása
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Hibaelhárítás
       items:
-        - name: Foglalási vásárló keresése az Azure-naplókból
+        - name: Foglalásvásárló megkeresésekor az Azure-naplókban
           href: find-reservation-purchaser-from-logs.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: A bérlők közötti átvitel hibáinak megoldása
+        - name: Bérlők közötti átvitelek hibaelhárítása
           href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Nincs jogosult előfizetés
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json

@@ -7,19 +7,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 02/02/2018
 ms.author: msangapu
-ms.custom: include file
-ms.openlocfilehash: 3239f7b584af6345a2dc7f2859f749698b012263
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 366b43bd2db061822843087160d0d1f5ec3f5b69
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102245071"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510684"
 ---
 <!-- Please keep this file set to PHP 7.2, as that's the highest PHP version Laravel supports (as shown in the PHP+MySQL tutorial) -->
 
-Hozzon létre egy [webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` app Service tervben. 
+Hozzon létre [egy webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` App Service tervben. 
 
-A Cloud Shell a [`az webapp create`](/cli/azure/webapp#az-webapp-create) parancsot használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.2` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) . 
+A Cloud Shell az parancsot [`az webapp create`](/cli/azure/webapp#az-webapp-create) használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.2` lett. Az összes támogatott futásidőt a futtatásával [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) láthatja. 
 
 ```azurecli-interactive
 # Bash
@@ -46,7 +46,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
+Létrehozott egy ™ új webalkalmazást, engedélyezett Git-telepítéssel.
 
 > [!NOTE]
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.

@@ -1,25 +1,25 @@
 ---
-title: Dedikált SQL-készlet (korábban SQL DW) létrehozása egy Azure Resource Manager használatával
+title: Dedikált SQL-készlet (korábban SQL DW) létrehozása Azure Resource Manager sablon használatával
 description: Megtudhatja, hogyan hozhat létre Azure Synapse Analytics SQL-készletet egy Azure Resource Manager használatával.
 services: azure-resource-manager
 author: julieMSFT
+ms.service: azure-resource-manager
+ms.topic: quickstart
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.topic: quickstart
-ms.service: azure-resource-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 3e05fda65e4383f66cf9553ee7e083c18367b937
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 73f4baf1e48b5495d513fbabe66763538c8cca57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534285"
+ms.locfileid: "107568471"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Rövid útmutató: Dedikált AZURE SYNAPSE ANALYTICS SQL-készlet (korábban SQL DW) létrehozása ARM-sablon használatával
+# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Rövid útmutató: Dedikált Azure Synapse Analytics SQL-készlet (korábban SQL DW) létrehozása ARM-sablonnal
 
-Ez Azure Resource Manager sablon (ARM-sablon) létrehoz egy dedikált SQL-készletet (korábban SQL DW), amely transzparens adattitkosítás engedélyezett. A dedikált SQL-készlet (korábban SQL DW) a vállalati adatraktározási funkciókra utal, amelyek általánosan elérhetők a Azure Synapse.
+Ez Azure Resource Manager sablon (ARM-sablon) létrehoz egy dedikált SQL-készletet (korábban SQL DW-t), amely transzparens adattitkosítás engedélyezett. A dedikált SQL-készlet (korábban SQL DW) a vállalati adatraktározás azon funkcióit jelenti, amelyek általánosan elérhetők a Azure Synapse.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -62,9 +62,9 @@ A sablon egy erőforrást határoz meg:
    * **Áttekintés és létrehozás:** Válassza ki.
    * **Létrehozás:** Válassza a lehetőséget.
 
-## <a name="review-deployed-resources"></a>Az üzembe helyezett erőforrások áttekintése
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-Használhatja a Azure Portal az üzembe helyezett erőforrások ellenőrzéséhez, vagy használhatja az Azure CLI-t vagy Azure PowerShell szkriptet az üzembe helyezett erőforrások listához.
+Az üzembe helyezett erőforrásokat a Azure Portal ellenőrizheti, vagy az Azure CLI vagy Azure PowerShell szkript használatával listhatja az üzembe helyezett erőforrásokat.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -109,8 +109,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy dedikált SQL-készletet (korábban SQL DW-t) egy ARM-sablonnal, és érvényesítette az üzembe helyezést. Ha többet szeretne megtudni a Azure Synapse Analytics és Azure Resource Manager, tekintse meg az alábbi cikkeket.
+Ebben a rövid útmutatóban létrehozott egy dedikált SQL-készletet (korábbi nevén SQL DW-t) egy ARM-sablonnal, és érvényesítette az üzembe helyezést. Ha többet szeretne megtudni a Azure Synapse Analytics és Azure Resource Manager, tekintse meg az alábbi cikkeket.
 
-- Olvassa el [a Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)
+- Áttekintés a [Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)
 - [Az első ARM-sablon létrehozása és üzembe helyezése](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

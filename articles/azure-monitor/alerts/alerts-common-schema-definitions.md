@@ -1,25 +1,25 @@
 ---
-title: A riasztási séma definíciói a Azure Monitor
-description: A Azure Monitor általános riasztási séma-definícióinak ismertetése
+title: Riasztási sémadefiníciók a Azure Monitor
+description: A riasztások gyakori riasztási sémadefinícióinak Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 5ec2adc4594c71f640b027d799b0a3c133ca2333
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308659"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565117"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
-Ez a cikk a Azure Monitor [általános riasztási sémájának definícióit](./alerts-common-schema.md) ismerteti, beleértve a webhookok, a Azure Logic apps, a Azure functions és a Azure Automation runbookok. 
+Ez a cikk [](./alerts-common-schema.md) a riasztási sémák gyakori definícióit ismerteti a Azure Monitor, beleértve a webhookok, Azure Logic Apps, Azure Functions és Azure Automation definícióit. 
 
-Minden riasztási példány leírja az érintett erőforrást és a riasztás okát. Ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
-* **Essentials**: az összes riasztási típussal közös szabványosított mezők összessége, amelyek leírják, hogy a riasztás milyen erőforrást tartalmaz, valamint további gyakori riasztási metaadatok (például a súlyosság vagy a leírás). A súlyosság definíciói a [riasztások áttekintésében](alerts-overview.md#overview)találhatók. 
-* **Riasztási környezet**: a riasztás okát leíró mezők összessége, a riasztás típusától függően változó mezőkkel. Például egy metrikai riasztás olyan mezőket tartalmaz, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információkat. 
+Minden riasztáspéldány leírja az érintett erőforrást és a riasztás okát. Ezeket a példányokat a következő szakaszokban, a közös sémában ismertetjük:
+* **Alapvető erőforrások:** Szabványosított mezők készlete, amelyek az összes riasztástípus esetében közösek, és amelyek leírják, hogy a riasztás milyen erőforráson található, valamint további gyakori riasztási metaadatok (például súlyosság vagy leírás). A súlyossági definíciók a riasztások [áttekintésében találhatók.](alerts-overview.md#overview) 
+* **Riasztási környezet:** A riasztás okát leíró mezők, amelyek a riasztás típusától függően eltérő mezőket tartalmaznak. Egy metrikariasztás például olyan mezőket tartalmaz, mint a metrikák neve és a metrika értéke a riasztási környezetben, míg a tevékenységnapló-riasztások a riasztást generáló eseményről tartalmaznak információkat. 
 
-**Példa riasztási adattartalomra**
+**Riasztás hasznosadat-mintája**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -72,21 +72,21 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 | Mező | Leírás|
 |:---|:---|
-| alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
-| alertRule | Annak a riasztási szabálynak a neve, amely a riasztási példányt generálta. |
+| alertId | A riasztáspéldányt azonosító egyedi erőforrás-azonosító. |
+| alertRule (riasztásiszabály) | A riasztáspéldányt generáló riasztási szabály neve. |
 | Súlyosság | A riasztás súlyossága. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3 vagy Sev4. |
-| signalType | Meghatározza azt a jelet, amelyen a riasztási szabályt meghatározták. Lehetséges értékek: metrika, napló vagy tevékenység naplója. |
-| monitorCondition | Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van **állítva.** Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele **Megoldottra** van állítva.   |
-| monitoringService | A riasztást létrehozó figyelési szolgáltatás vagy megoldás. A riasztási környezet mezőit a figyelési szolgáltatás diktálja. |
-| alertTargetIds | A riasztások által érintett Azure Resource Manager-azonosítók listája. Log Analytics munkaterületen vagy Application Insights példányon megadott naplózási riasztás esetén ez a megfelelő munkaterület vagy alkalmazás. |
-| originAlertId | A riasztási példány azonosítója, amelyet a figyelési szolgáltatás generál. |
-| firedDateTime | A riasztási példánynak az egyezményes világidő (UTC) szerinti elindításának dátuma és időpontja. |
-| resolvedDateTime | Az a dátum és idő, amikor a riasztási példány figyelési feltétele az UTC szerint **megoldva** értékre van állítva. Jelenleg csak metrikus riasztásokra alkalmazható.|
+| signalType (jeltípus) | Azonosítja azt a jelet, amelyen a riasztási szabály definiálva lett. Lehetséges értékek: Metrika, Napló vagy Tevékenységnapló. |
+| monitorCondition | Amikor egy riasztás riasztás történik, a riasztás figyelése a Következőre van **beállítva: Fired (Kibocsátva).** Ha a riasztást kiváltó mögöttes állapot kigyógyul, a figyelés feltétele a Resolved (Feloldva) **állapotra lesz beállítva.**   |
+| monitoringService | A riasztást generáló monitorozási szolgáltatás vagy megoldás. A riasztási környezet mezőit a figyelőszolgáltatás határozza meg. |
+| alertTargetIds | A riasztások Azure Resource Manager érintett célként érintett biztonsági és biztonsági figyelő-Azure Resource Manager listája. Log Analytics-munkaterületen vagy -példányon definiált naplóriasztás Application Insights a megfelelő munkaterület vagy alkalmazás. |
+| originAlertId (forrásazonosító) | A riasztáspéldány azonosítója, amelyet a figyelőszolgáltatás generál. |
+| firedDateTime | A riasztáspéldány a következő időpontban való egyezményes világidő (UTC) időpontban. |
+| resolvedDateTime | Az a dátum és idő, amikor a riasztáspéldány figyelő feltételének beállítása **Resolved (Feloldva)** UTC-ben. Jelenleg csak metrika-riasztások esetén alkalmazható.|
 | leírás | A riasztási szabályban meghatározott leírás. |
-|essentialsVersion| Az Essentials szakasz verziószáma.|
-|alertContextVersion | A szakasz verziószáma `alertContext` . |
+|essentialsVersion| Az alapvető szolgáltatások szakasz verziószáma.|
+|alertContextVersion | A szakasz `alertContext` verziószáma. |
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "essentials": {
@@ -110,11 +110,11 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 ## <a name="alert-context"></a>Riasztási környezet
 
-### <a name="metric-alerts-excluding-availability-tests"></a>Metrikus riasztások (kivéve a rendelkezésre állási teszteket)
+### <a name="metric-alerts-excluding-availability-tests"></a>Metrikákra vonatkozó riasztások (a rendelkezésre állási tesztek kivételével)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -145,11 +145,11 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 }
 ```
 
-### <a name="metric-alerts-availability-tests"></a>Metrikus riasztások (rendelkezésre állási tesztek)
+### <a name="metric-alerts-availability-tests"></a>Metrikákra vonatkozó riasztások (rendelkezésre állási tesztek)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -179,11 +179,11 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ### <a name="log-alerts"></a>Naplóriasztások
 
 > [!NOTE]
-> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt a jelző ellenőrzésével állapíthatja meg `IncludeSearchResults` . Ha a keresési eredmények nem szerepelnek, a vagy a használatával érheti el a `LinkToFilteredSearchResultsAPI` `LinkToSearchResultsAPI` lekérdezési eredményeket a [log Analytics API](/rest/api/loganalytics/dataaccess/query/get)-val.
+> Az egyéni e-mail tárgyával és/vagy JSON-adatforgalommal definiált naplóriasztásokat úgy engedélyezi, hogy a közös séma visszaállítsa az e-mail tárgyát és/vagy hasznos adatsémáját az alábbiak szerint leírtra. A közös sémával rendelkező riasztások felső méretkorlátja riasztásonként 256 KB. A keresési eredmények nem ágyazódnak be a naplóriasztás hasznos adataiba, ha a riasztás mérete átlépi ezt a küszöbértéket. Ezt a jelzővel állapíthatja `IncludeSearchResults` meg. Ha a keresési eredmények nem szerepelnek, a vagy a használatával férhet hozzá a lekérdezési eredményekhez `LinkToFilteredSearchResultsAPI` `LinkToSearchResultsAPI` a Log Analytics [API-val.](/rest/api/loganalytics/dataaccess/query/get)
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -259,7 +259,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -331,7 +331,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -375,7 +375,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -402,7 +402,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -435,7 +435,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -465,7 +465,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -498,7 +498,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 #### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -542,7 +542,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ```
 #### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-**Mintavételezési értékek**
+**Mintaértékek**
 ```json
 {
   "alertContext": {
@@ -571,5 +571,5 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [közös riasztási sémáról](./alerts-common-schema.md).
-- Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](./alerts-common-schema-integrations.md).
+- További információ a gyakori [riasztási sémáról.](./alerts-common-schema.md)
+- Megtudhatja, hogyan hozhat létre olyan logikai alkalmazást, amely a gyakori riasztási sémát [használja az összes riasztás kezeléséhez.](./alerts-common-schema-integrations.md)

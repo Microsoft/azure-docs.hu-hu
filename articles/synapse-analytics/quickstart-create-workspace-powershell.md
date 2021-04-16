@@ -1,78 +1,78 @@
 ---
-title: 'Gyors útmutató: szinapszis-munkaterület létrehozása Azure PowerShell használatával'
-description: Az útmutató lépéseinek követésével hozzon létre egy Azure szinapszis-munkaterületet a Azure PowerShell használatával.
+title: 'Rövid útmutató: Synapse-munkaterület létrehozása Azure PowerShell'
+description: Hozzon létre Azure Synapse munkaterületet Azure PowerShell az útmutató lépéseit követve.
 services: synapse-analytics
 author: alehall
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: overview
+ms.subservice: workspace
 ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f02833ef7497c34b72db6b858a51c6046bbf3df
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675766"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567570"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása Azure PowerShell
+# <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rövid útmutató: Azure Synapse-munkaterület létrehozása Azure PowerShell
 
-Azure PowerShell az Azure-erőforrások közvetlenül a PowerShellből való kezelésére szolgáló parancsmagok halmaza. Használhatja a böngészőjében az Azure Cloud Shell-lel. Azt is megteheti, hogy macOS, Linux vagy Windows rendszeren is telepíthető.
+Azure PowerShell egy parancsmagkészlet, amely közvetlenül a PowerShellből kezeli az Azure-erőforrásokat. Használhatja a böngészőjében az Azure Cloud Shell-lel. MacOS, Linux vagy Windows rendszeren is telepítheti.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet a Azure PowerShell használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Synapse-munkaterületet a Azure PowerShell.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md)
+- [Azure Data Lake Storage Gen2 tárfiók létrehozása](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
-    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, engedélyeznie kell a **hierarchikus névteret** a Storage-fiók létrehozásakor a Storage-fiók [létrehozása](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)című témakörben leírtak szerint.
+    > A Azure Synapse munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókba. Az elsődleges tárfiókként összekapcsolt tárfiókok számára engedélyeznie kell a **hierarchikus** névteret a tárfiók létrehozásakor a [Tárfiók létrehozása alatt](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)leírtak szerint.
 
-Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című témakörben talál.
+Ha úgy dönt, hogy a Cloud Shell használja, további információt [a](../cloud-shell/overview.md) Azure Cloud Shell áttekintésében talál.
 
-### <a name="install-the-azure-powershell-module-locally"></a>A Azure PowerShell modul helyi telepítése
+### <a name="install-the-azure-powershell-module-locally"></a>Az Azure PowerShell modul helyi telepítése
 
-Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az Az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmaggal. További információ az Az PowerShell-modul telepítéséről: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
-A Azure PowerShell-hitelesítéssel kapcsolatos további információkért tekintse [meg a bejelentkezés a Azure PowerShellkal](/powershell/azure/authenticate-azureps)című témakört.
+További információ az Azure PowerShell való hitelesítésről: [Bejelentkezés a Azure PowerShell.](/powershell/azure/authenticate-azureps)
 
-### <a name="install-the-azure-synapse-powershell-module"></a>Az Azure szinapszis PowerShell-modul telepítése
+### <a name="install-the-azure-synapse-powershell-module"></a>Az Azure Synapse PowerShell-modul telepítése
 
 > [!IMPORTANT]
-> Míg az az **. szinapszis** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
+> Bár az **Az.Synapse** PowerShell-modul előzetes verzióban érhető el, külön kell telepítenie a `Install-Module` parancsmag használatával. Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Synapse
 ```
 
-## <a name="create-an-azure-synapse-workspace-using-azure-powershell"></a>Azure-beli szinapszis-munkaterület létrehozása Azure PowerShell használatával
+## <a name="create-an-azure-synapse-workspace-using-azure-powershell"></a>Munkaterület Azure Synapse a Azure PowerShell
 
-1. Adja meg a szükséges környezeti változókat az Azure szinapszis-munkaterület erőforrásainak létrehozásához.
+1. Definiálja a szükséges környezeti változókat az erőforrások létrehozásához Azure Synapse munkaterülethez.
 
-   |        Változó neve        |                                                 Leírás                                                 |
+   |        Változó neve        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
-   | StorageAccountName          | A meglévő ADLS Gen2 Storage-fiók neve.                                                           |
-   | StorageAccountResourceGroup | A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve.                                             |
-   | FileShareName               | A meglévő Storage-fájlrendszer neve.                                                                  |
-   | SynapseResourceGroup        | Válassza ki az Azure szinapszis-erőforráscsoport új nevét.                                                    |
-   | Region                      | Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
-   | SynapseWorkspaceName        | Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez.                                                  |
+   | StorageAccountName          | A meglévő tárfiók ADLS Gen2 neve.                                                           |
+   | StorageAccountResourceGroup | A meglévő tárfiók ADLS Gen2 erőforráscsoport neve.                                             |
+   | FileShareName (Fájlmegosztás neve)               | A meglévő tároló fájlrendszerének neve.                                                                  |
+   | SynapseResourceGroup        | Válasszon egy új nevet a Azure Synapse erőforráscsoportnak.                                                    |
+   | Region                      | Válasszon egyet az [Azure-régiók közül.](https://azure.microsoft.com/global-infrastructure/geographies/#overview) |
+   | SynapseWorkspaceName        | Válasszon egyedi nevet az új munkaterület Azure Synapse számára.                                                  |
    | SqlUser                     | Válasszon egy értéket egy új felhasználónévhez.                                                                          |
-   | SqlPassword                 | Válasszon biztonságos jelszót.                                                                                   |
-   | Ügyfélip                    | Annak a rendszernek a nyilvános IP-címe, amelyen a PowerShellt futtatja.                                             |
+   | SqlPassword                 | Válasszon egy biztonságos jelszót.                                                                                   |
+   | ClientIP                    | Annak a rendszernek a nyilvános IP-címe, amelyről a PowerShellt futtatja.                                             |
    |                             |                                                                                                             |
 
-1. Erőforráscsoport létrehozása tárolóként az Azure szinapszis-munkaterülethez:
+1. Hozzon létre egy erőforráscsoportot tárolóként a Azure Synapse számára:
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $SynapseResourceGroup -Location $Region
    ```
 
-1. Azure szinapszis-munkaterület létrehozása:
+1. Hozzon létre egy Azure Synapse munkaterületet:
 
    ```azurepowershell-interactive
    $Cred = New-Object -TypeName System.Management.Automation.PSCredential ($SqlUser, (ConvertTo-SecureString $SqlPassword -AsPlainText -Force))
@@ -88,14 +88,14 @@ Install-Module -Name Az.Synapse
    New-AzSynapseWorkspace @WorkspaceParams
    ```
 
-1. Webes és fejlesztői URL-cím beszerzése az Azure szinapszis-munkaterülethez:
+1. Webes és fejlesztői URL-cím le Azure Synapse munkaterülethez:
 
    ```azurepowershell-interactive
    $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Web
    $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Dev
    ```
 
-1. Hozzon létre egy tűzfalszabály, amely lehetővé teszi az Azure szinapszis-munkaterület elérését a gépről:
+1. Hozzon létre egy tűzfalszabályt, amely engedélyezi a Azure Synapse gépről a munkaterülethez való hozzáférést:
 
    ```azurepowershell-interactive
    $FirewallParams = @{
@@ -108,22 +108,22 @@ Install-Module -Name Az.Synapse
    New-AzSynapseFirewallRule @FirewallParams
    ```
 
-1. Nyissa meg a munkaterület eléréséhez a környezeti változóban tárolt Azure szinapszis-munkaterület webes URL-címét `WorkspaceWeb` :
+1. Nyissa meg Azure Synapse munkaterület környezeti változóban tárolt webes URL-címét a `WorkspaceWeb` munkaterület eléréséhez:
 
    ```azurepowershell-interactive
    Start-Process $WorkspaceWeb
    ```
 
-   ![Azure szinapszis-munkaterület webes felülete](media/quickstart-create-synapse-workspace-powershell/create-workspace-powershell-1.png)
+   ![Azure Synapse webes megnyitása](media/quickstart-create-synapse-workspace-powershell/create-workspace-powershell-1.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure szinapszis-munkaterület törléséhez kövesse az alábbi lépéseket.
+Kövesse az alábbi lépéseket a munkaterület Azure Synapse törléséhez.
 
 > [!WARNING]
-> Az Azure szinapszis-munkaterület törlésével a rendszer eltávolítja az elemzési motorokat és a tárolt SQL-készletek és munkaterület-metaadatok adatbázisában tárolt adatokat. A továbbiakban nem lesz lehetséges az SQL-vagy Apache Spark-végpontokhoz való kapcsolódás. Minden kódrészlet törölve lesz (lekérdezések, jegyzetfüzetek, feladatdefiníciók és folyamatok). A munkaterület törlése **nem** befolyásolja a munkaterülethez csatolt Data Lake Store Gen2 lévő adatműveleteket.
+> A munkaterület Azure Synapse eltávolítja a tárolt SQL-készletek és munkaterület-metaadatok adatbázisában tárolt elemzési motorokat és adatokat. Többé nem lehet majd csatlakozni az SQL- vagy Apache Spark végpontjaihoz. Minden kód-összetevő (lekérdezések, jegyzetfüzetek, feladatdefiníciók és folyamatok) törlődik. A munkaterület törlése nincs **hatással** a munkaterülethez Data Lake Store Gen2-ben található adatokra.
 
-Ha az ebben a cikkben létrehozott Azure szinapszis munkaterület nem szükséges, a következő példa futtatásával törölheti.
+Ha a Azure Synapse létrehozott munkaterületre nincs szükség, az alábbi példa futtatásával törölheti.
 
 ```azurepowershell-interactive
 Remove-AzSynapseWorkspace -Name $SynapseWorkspaceNam -ResourceGroupName $SynapseResourceGroup
@@ -131,4 +131,4 @@ Remove-AzSynapseWorkspace -Name $SynapseWorkspaceNam -ResourceGroupName $Synapse
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.
+A következő lépés az [SQL-készletek](quickstart-create-sql-pool-studio.md) vagy a Apache Spark [létrehozása](quickstart-create-apache-spark-pool-studio.md) az adatok elemzéséhez és felderítéséhez.

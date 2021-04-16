@@ -1,74 +1,74 @@
 ---
-title: Az Azure hatáskörébe tartozó szinapszisok felderítése, összekötése és megismerése
-description: Útmutató az adatfelderítéshez, a kapcsolódáshoz és a szinapszisok megismeréséhez
-services: synapse-analytics
+title: Adatok felderítése, csatlakoztatása és felfedezése a Synapse-ban az Azure Purview használatával
+description: Útmutató az adatok felderítéséhez, csatlakoztatásukhoz és feltárásukhoz a Synapse-ban
 author: Rodrigossz
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79090bfbf08cde3f18b1ca734b8af22d16e7e0ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f98507fa72f4503700bf39393063dd1ecc650e91
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628662"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567893"
 ---
-# <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Az Azure hatáskörébe tartozó szinapszisok felderítése, összekötése és megismerése 
+# <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Adatok felderítése, csatlakoztatása és felfedezése a Synapse-ban az Azure Purview használatával 
 
-Ebből a dokumentumból megtudhatja, milyen típusú interakciókat kell végrehajtania, amikor egy Azure-beli hatáskörébe tartozó fiókot Szinapszisba regisztrál. 
+Ebben a dokumentumban megismerheti az Azure Purview-fiók Synapse-regisztrációja során végrehajtható interakciók típusát. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- [Azure-beli hatáskörébe tartozó fiók](../../purview/create-catalog-portal.md) 
-- [Szinapszis-munkaterület](../quickstart-create-workspace.md) 
-- [Azure-beli hatáskörébe tartozó fiók összekötése a Szinapszisba](quickstart-connect-azure-purview.md) 
+- [Azure Purview-fiók](../../purview/create-catalog-portal.md) 
+- [Synapse-munkaterület](../quickstart-create-workspace.md) 
+- [Azure Purview-fiók csatlakoztatása a Synapse-hez](quickstart-connect-azure-purview.md) 
 
-## <a name="using-azure-purview-in-synapse"></a>Az Azure-beli hatáskörébe használata a Szinapszisban 
+## <a name="using-azure-purview-in-synapse"></a>Az Azure Purview használata a Synapse-ban 
 
-Az Azure-beli hatáskörébe a Szinapszisban való használatához hozzáféréssel kell rendelkeznie ehhez a hatáskörébe tartozó fiókhoz. A szinapszis átadja a hatáskörébe tartozó engedélyeit. Ha például egy kurátori jogosultsági szerepkörrel rendelkezik, az Azure hatáskörébe tartozó metaadatokat is szerkesztheti. 
+Az Azure Purview synapse-beli használatához hozzá kell férni ehhez a Purview-fiókhoz. A Synapse átadja a Purview engedélyt. Ha például egy curator jogosultsági szerepköre van, szerkesztheti az Azure Purview által beolvasott metaadatokat. 
 
-### <a name="data-discovery-search-datasets"></a>Adatfelderítés: az adathalmazok keresése 
+### <a name="data-discovery-search-datasets"></a>Adatfelderítés: adatkészletek keresése 
 
-Az Azure hatáskörébe tartozó, regisztrált és beolvasott adatmennyiség felderítéséhez használhatja a szinapszis munkaterület felső középső sávján található keresési sávot. Győződjön meg arról, hogy az Azure hatáskörébe kattint az összes szervezeti adattal való kereséshez. 
+Az Azure Purview által regisztrált és beolvasott adatok felderítéséhez használhatja a Synapse-munkaterület tetején található keresősávot. Győződjön meg arról, hogy az Azure Purview lehetőséget választja az összes szervezeti adat kereséséhez. 
 
-[![Azure hatáskörébe tartozó eszközök keresése](./media/purview-access.png)](./media/purview-access.png#lightbox)
+[![Azure Purview-eszközök keresése](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
-## <a name="azure-purview-actions"></a>Azure-beli hatáskörébe tartozó műveletek 
+## <a name="azure-purview-actions"></a>Azure Purview-műveletek 
 
-Itt látható a Szinapszisban elérhető Azure-beli hatáskörébe tartozó funkciók listája: 
-- A metaadatok **áttekintése** 
-- A metaadatok **sémájának** megtekintése és szerkesztése besorolásokkal, szószedeti feltételekkel, adattípusokkal és leírásokkal 
-- A függőségek megismeréséhez és a hatás elemzéséhez tekintse meg a **Lineage** nézetet. További információ: [Lineage](../../purview/catalog-lineage-user-guide.md)
-- Megtekintheti és szerkesztheti a **névjegyeket** , amelyekkel megtudhatja, ki a tulajdonos vagy szakértő egy adatkészleten 
-- Egy adott adatkészlet hierarchikus függőségeinek megismeréséhez **kapcsolódik** . Ez a felhasználói élmény hasznos az adathierarchia tallózásához.
+Az alábbi lista a Synapse-ban elérhető Azure Purview-funkciókat tartalmazza: 
+- **A** metaadatok áttekintése 
+- A metaadatok **sémájának** megtekintése és szerkesztése besorolásokkal, szószedetekkel, adattípusokkal és leírásokkal 
+- A **leszúszás megtekintése** a függőségek és a hatáselemzés megtekintéséhez. További információ: [leszúslatás](../../purview/catalog-lineage-user-guide.md)
+- A kapcsolattartók **megtekintése és szerkesztése** annak megtekintéséhez, hogy ki egy adatkészlet tulajdonosa vagy szakértője 
+- **Egy** adott adatkészlet hierarchikus függőségeinek a rendszerével kapcsolatos. Ez a felhasználói élmény hasznos lehet az adathierarchia böngészéséhez.
 
-## <a name="actions-that-you-can-perform-over-datasets-with-synapse-resources"></a>A szinapszis-erőforrásokkal rendelkező adatkészleteken végrehajtható műveletek 
+## <a name="actions-that-you-can-perform-over-datasets-with-synapse-resources"></a>Synapse-erőforrásokkal adatkészletek végrehajtásához szükséges műveletek 
 
-### <a name="connect-data-to-synapse"></a>Adatkapcsolat a Szinapszishoz 
+### <a name="connect-data-to-synapse"></a>Adatok csatlakoztatása a Synapse-hoz 
 
-- Létrehozhat egy **új társított szolgáltatást** a szinapszishoz. Ehhez a művelethez az szükséges, hogy a rendszer átmásolja az adatait a Szinapszisba, vagy megossza azokat az adatközpontban (támogatott adatforrások esetén, például ADLSg2) 
-- Objektumok, például fájlok, mappák vagy táblák esetében közvetlenül létrehozhat egy **új integrációs adatkészletet** , és kihasználhat egy meglévő társított szolgáltatást, ha már létrehozták 
+- Létrehozhat egy új **összekapcsolt szolgáltatást** a Synapse-hoz. Ez a művelet szükséges ahhoz, hogy adatokat másoljon a Synapse-be, vagy az adatközpontban legyen (olyan támogatott adatforrások esetén, mint az ADLSg2) 
+- Az olyan objektumokhoz, mint a fájlok, mappák vagy táblák, közvetlenül létrehozhat egy új **integrációs adatkészletet,** és egy már létrehozott meglévő csatolt szolgáltatást is kihasználhat 
 
-Még nem következtethető ki, hogy van-e meglévő társított szolgáltatás vagy integrációs adatkészlet. 
+Még nem tudjuk kiveszni, hogy van-e meglévő csatolt szolgáltatás vagy integrációs adatkészlet. 
 
-###  <a name="develop-in-synapse"></a>Fejlesztés a Szinapszisban 
+###  <a name="develop-in-synapse"></a>Fejlesztés a Synapse-ban 
 
-Három műveletet végezhet el: **új SQL-parancsfájlt**, **új jegyzetfüzetet** és **új adatfolyamot**. 
+Három műveletet hajthat végre: **Új SQL-szkript,** Új **jegyzetfüzet** és Új **Adatfolyam.** 
 
-Az **új SQL-szkripttel** a támogatás típusától függően a következőket teheti: 
-- Tekintse meg az első 100 sort, hogy megértse az adatalakzatokat. 
-- Külső tábla létrehozása a szinapszis SQL Database-ből 
-- Az adatgyűjtés egy szinapszis SQL Database-adatbázisba 
+Az **Új SQL-szkript használatával** a támogatás típusától függően a következő lehetőségeket használhatja: 
+- Tekintse meg az első 100 sort, hogy megértse az adatok alakját. 
+- Külső tábla létrehozása Synapse SQL adatbázisból 
+- Adatok betöltése egy Synapse SQL adatbázisba 
  
-Az **új jegyzetfüzettel** a következőket teheti: 
-- Adatgyűjtés Spark-DataFrame 
-- Hozzon létre egy Spark-táblázatot (ha ezt a parketta formátuma teszi meg, létrehoz egy kiszolgáló nélküli SQL Pool-táblázatot is). 
+Az **Új jegyzetfüzettel** a következő lehetőségeket használhatja: 
+- Adatok betöltése Spark DataFrame-be 
+- Hozzon létre egy Spark-táblát (ha parquet formátummal használja, akkor egy kiszolgáló nélküli SQL-készlettáblát is létrehoz). 
  
-Az **új adatfolyam** használatával olyan integrációs adatkészletet hozhat létre, amely egy adatfolyam-folyamat forrásaként használható. Az adatfolyam a kód nélküli fejlesztői képesség az adatok átalakításához. További információ az [adatáramlás használatáról a szinapszisban](../quickstart-data-flow.md).
+A **New data flow (Új adatfolyam)** segítségével létrehozhat egy integrációs adatkészletet, amely felhasználható egy adatforrásra egy adatfolyam-folyamatban. Az adatfolyam kód nélküli fejlesztői képesség az adatátalakítás végrehajtásához. További információ az adatfolyam [Synapse-ban való használatával kapcsolatban.](../quickstart-data-flow.md)
 
-##  <a name="nextsteps"></a>További lépések 
+##  <a name="nextsteps"></a>Következő lépések 
 
-- [Azure szinapszis-eszközök regisztrálása és vizsgálata az Azure hatáskörébe](../../purview/register-scan-azure-synapse-analytics.md)
-- [Adatkeresés az Azure-beli hatáskörébe Data Catalog](../../purview/how-to-search-catalog.md)
+- [Az azure-beli Azure Synapse regisztrálása és beolvasása](../../purview/register-scan-azure-synapse-analytics.md)
+- [Adatok keresése az Azure Purview-Data Catalog](../../purview/how-to-search-catalog.md)

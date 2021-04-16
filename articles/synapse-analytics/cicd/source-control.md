@@ -1,174 +1,174 @@
 ---
-title: Verziókövetés a szinapszis Studióban
-description: Ismerje meg, hogyan konfigurálhatja a verziókövetés az Azure szinapszis Studióban
-services: synapse-analytics
+title: Forrásvezérlés a Synapse Studio
+description: Megtudhatja, hogyan konfigurálhatja a forrásvezérlést a Azure Synapse Studióban
 author: liud
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f1b459c2644472463004c231f5827ff653d2da1
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98796961"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567842"
 ---
-# <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
+# <a name="source-control-in-azure-synapse-studio"></a>Forrásvezérlés a Azure Synapse Studióban
 
-Alapértelmezés szerint az Azure szinapszis Studio szerzője közvetlenül a szinapszis szolgáltatáson keresztül. Ha együttműködésre van szüksége a git használatával a verziókövetés számára, a szinapszis Studio lehetővé teszi, hogy a munkaterületet a git-adattárral, az Azure DevOps vagy a GitHubral társítsa. 
+Alapértelmezés szerint a Azure Synapse a Studio szerzői közvetlenül a Synapse szolgáltatásban. Ha együttműködésre van szüksége a Git használatával a verzióvezérléshez, a Synapse Studio lehetővé teszi a munkaterület társítását egy Git-adattárakhoz, az Azure DevOpshoz vagy a GitHubhoz. 
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat egy szinapszis-munkaterületen, ha engedélyezve van a git-tárház. Emellett kiemeljük az ajánlott eljárásokat és a hibaelhárítási útmutatót is.
+Ez a cikk bemutatja, hogyan konfigurálhatja és munkához egy Synapse-munkaterületet engedélyezett Git-adattárak használatával. Emellett kiemelünk néhány ajánlott gyakorlatot és egy hibaelhárítási útmutatót is.
 
 > [!NOTE]
-> Az Azure szinapszis Studio git-integrációja nem érhető el a Azure Government felhőben.
+> Azure Synapse Studio Git-integrációja nem érhető el a Azure Government Cloudban.
 
-## <a name="configure-git-repository-in-synapse-studio"></a>A git-tárház konfigurálása a szinapszis Studióban 
+## <a name="configure-git-repository-in-synapse-studio"></a>Git-adattár konfigurálása a Synapse Studio 
 
-A szinapszis Studio elindítása után beállíthatja a git-tárházat a munkaterületen. A szinapszis Studio-munkaterület egyszerre csak egy git-tárházhoz társítható. 
+A Synapse Studio után konfigurálhat egy Git-adattárat a munkaterületen. Egy Synapse Studio munkaterület egyszerre csak egy Git-adattárhoz társítható. 
 
 ### <a name="configuration-method-1-global-bar"></a>1. konfigurációs módszer: globális sáv
 
-A szinapszis Studio globális sávján kattintson a **szinapszis élő** legördülő menüre, majd válassza a **kódlap beállítása** lehetőséget.
+A Synapse Studio sávon válassza a **Synapse Live** legördülő menüt, majd válassza a **Kódtár beállítása lehetőséget.**
 
-![A kód-adattár beállításainak konfigurálása szerzői műveletekből](media/configure-repo-1.png)
+![A kódtár beállításainak konfigurálása szerzői beállításokból](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-manage-hub"></a>2. konfigurációs módszer: a hub kezelése
+### <a name="configuration-method-2-manage-hub"></a>2. konfigurációs módszer: Központ kezelése
 
-Nyissa meg a szinapszis Studio felügyelet központját. Válassza a **git-konfiguráció** elemet a **verziókövetés** szakaszban. Ha nincs csatlakoztatva adattár, kattintson a **Konfigurálás** elemre.
+A Manage (Kezelés) Synapse Studio. A **Verzióvezérlés szakaszban** válassza a **Git-konfiguráció** lehetőséget. Ha nincs csatlakoztatva adattár, kattintson a Configure (Konfigurálás) **gombra.**
 
-![A Code adattár beállításainak konfigurálása a felügyeleti központban](media/configure-repo-2.png)
+![A kódtár beállításainak konfigurálása a felügyeleti központban](media/configure-repo-2.png)
 
 > [!NOTE]
-> A munkaterület-közreműködőként, tulajdonosként vagy magasabb szintű szerepkörökként megadott felhasználók konfigurálhatják, módosíthatják a git-tárházat az Azure szinapszis Studióban 
+> A munkaterület közreműködőjeként, tulajdonosaként vagy magasabb szintű szerepköreként megadott felhasználók konfigurálhatja, szerkeszthetik a beállítást, és leválaszthatja a Git-adattárat a Azure Synapse Studióban 
 
-A munkaterületen az Azure DevOps vagy a GitHub git-tárházat is csatlakozhat.
+A munkaterületen csatlakoztathatja az Azure DevOpsot vagy a GitHub Git-adattárat.
 
-## <a name="connect-with-azure-devops-git"></a>Kapcsolódjon az Azure DevOps git-vel 
+## <a name="connect-with-azure-devops-git"></a>Kapcsolódás az Azure DevOps Git használatával 
 
-A szinapszis-munkaterületet társíthatja egy Azure DevOps adattárral a verziókövetés, az együttműködés, a verziószámozás és így tovább. Ha nem rendelkezik Azure DevOps adattárral, a tárház erőforrásainak létrehozásához kövesse az [alábbi utasításokat](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
+Synapse-munkaterületet társíthat egy Azure DevOps-adattárhoz a verziókezelés, az együttműködés, a verziókezelés stb. érdekében. Ha nem rendelkezik Azure DevOps-adattárral, [](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) kövesse ezeket az utasításokat az adattár erőforrásainak létrehozásához.
 
-### <a name="azure-devops-git-repository-settings"></a>Az Azure DevOps git-tárházának beállításai
+### <a name="azure-devops-git-repository-settings"></a>Az Azure DevOps Git-adattár beállításai
 
-A git-tárházhoz való csatlakozáskor először válassza ki az adattár típusát Azure DevOps git néven, majd válasszon ki egy Azure AD-bérlőt a legördülő listából, és kattintson a **Folytatás** gombra.
+A Git-adattárhoz való csatlakozáskor először válassza ki az adattár típusát Azure DevOps gitként, majd válasszon ki egy Azure AD-bérlőt a legördülő listából, majd kattintson a **Folytatás gombra.**
 
-![A kódlap beállításainak konfigurálása](media/connect-with-azuredevops-repo-selected.png)
+![A kódtár beállításainak konfigurálása](media/connect-with-azuredevops-repo-selected.png)
 
-A konfigurációs ablaktábla a következő Azure DevOps git-beállításokat jeleníti meg:
+A konfigurációs panelen a következő Azure DevOps git-beállítások érhetők el:
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
+| **Adattár típusa** | Az Azure Repos kódtár típusa.<br/> | Azure DevOps Git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
-| **Azure DevOps-fiók** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet nevét itt találja: `https://{organization name}.visualstudio.com` . Bejelentkezhet az [Azure Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
-| **Projektnév** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét itt találja: `https://{organization name}.visualstudio.com/{project name}` . | `<your Azure Repos project name>` |
-| **RepositoryName** | Az Azure Repos-kód tárházának neve. Az Azure Repos-projektek git-adattárakat tartalmaznak, amelyekkel a projekt növekedésével kezelhetők a forráskód. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a projektben. | `<your Azure Repos code repository name>` |
-| **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a `master` . Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. Kijelölhet meglévő ágakat, vagy létrehozhat új | `<your collaboration branch name>` |
-| **Gyökérmappa** | Az Azure Repos együttműködési ág gyökérkönyvtára. | `<your root folder name>` |
-| **Meglévő erőforrások importálása adattárba** | Megadja, hogy a rendszer importálja-e a meglévő erőforrásokat a szinapszis studióból egy Azure Repos git-tárházba. Jelölje be a jelölőnégyzetet a munkaterület-erőforrások (a készletek kivételével) importálásához a társított git-tárházba JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat. Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Bejelölve (alapértelmezett) |
-| **Erőforrás importálása ebbe az elágazásba** | Válassza ki, hogy az erőforrásokat (SQL-parancsfájl, jegyzetfüzet, Spark-feladatdefiníció, adatkészlet, adatfolyam stb.) melyik ágat importálja a rendszer. 
+| **Azure DevOps-fiók** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet nevét itt találja: `https://{organization name}.visualstudio.com` . Az Azure [Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) bejelentkezve hozzáférhet Visual Studio profilhoz, és láthatja az adattárakat és a projekteket. | `<your organization name>` |
+| **ProjectName (Projekt neve)** | Az Azure Repos-projekt neve. Az Azure Repos projekt nevét itt találja: `https://{organization name}.visualstudio.com/{project name}` . | `<your Azure Repos project name>` |
+| **RepositoryName (Adattár neve)** | Az Azure Repos-kódtár neve. Az Azure Repos-projektek Git-adattárakat tartalmaznak a forráskód a projekt növekedésével való kezeléséhez. Létrehozhat egy új adattárat, vagy használhat egy meglévő adattárat, amely már a projektben van. | `<your Azure Repos code repository name>` |
+| **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a következő: `master` . Módosítsa ezt a beállítást arra az esetre, ha egy másik ágból szeretne erőforrásokat közzétenni. Kiválaszthat meglévő ágakat, vagy létrehozhat újat | `<your collaboration branch name>` |
+| **Gyökérmappa** | A gyökérmappa az Azure Repos együttműködési ágban. | `<your root folder name>` |
+| **Meglévő erőforrások importálása az adattárba** | Megadja, hogy importálja-e a meglévő Synapse Studio egy Azure Repos Git-adattárba. Jelölje be a jelölőnégyzetet a munkaterület erőforrásainak JSON formátumban történő importáláshoz (a készletek kivételével) a társított Git-adattárba. Ez a művelet egyenként exportálja az egyes erőforrásokat. Ha ez a jelölőnégyzet nincs bejelölve, a rendszer nem importálja a meglévő erőforrásokat. | Bejelölve (alapértelmezett) |
+| **Erőforrás importálása ebbe az ágba** | Válassza ki, hogy az erőforrások (sql-szkript, jegyzetfüzet, Spark-feladatdefiníció, adatkészlet, adatfolyam stb.) melyik ágba importálhatók. 
 
-A tárház hivatkozásával gyorsan rámutathat arra a git-tárházra, amelyhez csatlakozni szeretne. 
+Az adattár hivatkozásával is gyorsan rámutathat arra a Git-adattárra, amelyhez csatlakozni szeretne. 
 
-### <a name="use-a-different-azure-active-directory-tenant"></a>Másik Azure Active Directory bérlő használata
+### <a name="use-a-different-azure-active-directory-tenant"></a>Másik bérlő Azure Active Directory használata
 
-Az Azure Repos git-tárháza lehet egy másik Azure Active Directory bérlő. Másik Azure Active Directory-bérlő megadásához rendszergazdai engedélyekkel kell rendelkeznie az Ön által használt Azure-előfizetésben. További információ: előfizetés- [rendszergazda módosítása](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)
+Az Azure Repos Git-adattár egy másik bérlőben Azure Active Directory lehet. Másik Azure Active Directory-bérlő megadásához rendszergazdai engedélyekkel kell rendelkeznie az Ön által használt Azure-előfizetésben. További információ: [Előfizetés-rendszergazda módosítása](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)
 
 > [!IMPORTANT]
-> Egy másik Azure Active Directoryhoz való kapcsolódáshoz a bejelentkezett felhasználónak az Active Directory részét kell képeznie. 
+> Ha egy másik Azure Active Directory szeretne csatlakozni, a bejelentkezett felhasználónak az adott Active Directory részének kell lennie. 
 
-### <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiók használata
+### <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiók
 
-Ha személyes Microsoft-fiók szeretne használni a git-integrációhoz, összekapcsolhatja a személyes Azure-tárházat a szervezete Active Directory.
+Ha személyes adattárat Microsoft-fiók Git-integrációhoz, a személyes Azure-adattárat a szervezet saját Active Directory.
 
-1. Adja hozzá személyes Microsoft-fiókét a szervezet Active Directory vendégként. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../../active-directory/external-identities/add-users-administrator.md).
+1. Adja hozzá Microsoft-fiók személyes adatait a Active Directory-fiókhoz vendégként. További információ: [B2B Azure Active Directory felhasználók hozzáadása a Azure Portal.](../../active-directory/external-identities/add-users-administrator.md)
 
-2. Jelentkezzen be a Azure Portalba személyes Microsoft-fiókával. Ezután váltson a szervezet Active Directoryra.
+2. Jelentkezzen be a Azure Portal a személyes Microsoft-fiók. Ezután váltson a szervezet Active Directory.
 
-3. Nyissa meg az Azure DevOps szakaszt, ahol most megjelenik a személyes tárháza. Válassza ki a tárházat, és kapcsolódjon Active Directory.
+3. Ugrás az Azure DevOps szakaszra, ahol láthatja a személyes adattát. Válassza ki a repo-t, és csatlakozzon Active Directory.
 
-Ezeket a konfigurációs lépéseket követően a saját tárháza akkor érhető el, ha git-integrációt állít be a szinapszis Studióban.
+A konfigurációs lépések után a személyes adattár elérhetővé válik, amikor beállít egy Git-integrációt a Synapse Studio.
 
-További információ az Azure Repos szervezet Active Directoryhoz való csatlakoztatásáról: [a szervezet csatlakoztatása Azure Active Directoryhoz](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+További információ az Azure-adattáraknak a szervezet Active Directory való csatlakoztatásával kapcsolatban: [A](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)szervezet csatlakoztatása Azure Active Directory.
 
-## <a name="connect-with-github"></a>Kapcsolódjon a GitHubhoz 
+## <a name="connect-with-github"></a>Kapcsolódás a GitHubbal 
 
- A munkaterületet társíthatja egy GitHub-adattárral a verziókövetés, az együttműködés, a verziószámozás érdekében. Ha nem rendelkezik GitHub-fiókkal vagy-adattárral, kövesse az [alábbi utasításokat](https://github.com/join) az erőforrások létrehozásához.
+ A munkaterületeket GitHub-adattárakhoz társíthatja a verziók vezérlése, együttműködése és verziószámozása érdekében. Ha nem rendelkezik GitHub-fiókkal vagy -adattárakkal, kövesse ezeket az [utasításokat](https://github.com/join) az erőforrások létrehozásához.
 
-A szinapszis Studióval való integrációja támogatja a nyilvános GitHub (azaz a [https://github.com](https://github.com) ) és a GitHub Enterprise használatát is. Használhatja a nyilvános és a privát GitHub-adattárakat is, amíg a GitHubon olvasási és írási engedéllyel rendelkezik a tárházhoz.
+A GitHub és a Synapse Studio a nyilvános GitHubot (azaz ) és [https://github.com](https://github.com) a GitHub Enterprise-t is támogatja. Nyilvános és privát GitHub-adattárakat is használhat, ha rendelkezik olvasási és írási engedéllyel a GitHub-adattárhoz.
 
 ### <a name="github-settings"></a>GitHub-beállítások
 
-A git-tárházhoz való csatlakozáskor először válassza ki a tárház típusát GitHub néven, majd adja meg a GitHub-fiókját vagy a GitHub vállalati kiszolgáló URL-címét, ha a GitHub Enterprise Servert használja, és kattintson a **Folytatás** gombra.
+A Git-adattárhoz való csatlakozáskor először válassza ki az adattár típusát GitHubként, majd adja meg a GitHub-fiókját vagy a GitHub Enterprise Server URL-címét, ha a GitHub Enterprise Servert használja, majd kattintson a Folytatás gombra.
 
 ![GitHub-adattár beállításai](media/connect-with-github-repo-1.png)
 
-A konfigurációs ablaktábla a GitHub-tárház következő beállításait jeleníti meg:
+A konfigurációs panelen az alábbi GitHub-adattárbeállítások érhetők el:
 
 | **Beállítás** | **Leírás**  | **Érték**  |
 |:--- |:--- |:--- |
-| **Tárház típusa** | Az Azure Repos Code adattár típusa. | GitHub |
-| **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kiválasztva (alapértelmezett) |
-| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökér URL-címe (a helyi GitHub Enterprise Server esetében HTTPS-nek kell lennie). Példa: `https://github.mydomain.com`. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
-| **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https: \/ /GitHub.com/{Account Name}/{repository neve} helyről érhető el. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
-| **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
-| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
-| **Gyökérmappa** | A legfelső szintű mappa a GitHub-együttműködési ágban. |`<your root folder name>` |
-| **Meglévő erőforrások importálása adattárba** | Megadja, hogy a rendszer importálja-e a meglévő erőforrásokat a szinapszis studióból egy git-tárházba. Jelölje be a jelölőnégyzetet a munkaterület-erőforrások (a készletek kivételével) importálásához a társított git-tárházba JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat. Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
-| **Erőforrás importálása ebbe az elágazásba** | Válassza ki az erőforrásokat (SQL-szkript, jegyzetfüzet, Spark-feladatdefiníció, adatkészlet, adatfolyam stb.). 
+| **Adattár típusa** | Az Azure Repos kódtár típusa. | GitHub |
+| **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kijelölve (alapértelmezett) |
+| **GitHub Enterprise URL-címe** | A GitHub Enterprise gyökér URL-címe (HTTPS-nek kell lennie a helyi GitHub Enterprise-kiszolgálóhoz). Példa: `https://github.mydomain.com`. Csak akkor szükséges, ha **a GitHub Enterprise** használata van kiválasztva | `<your GitHub enterprise url>` |                                                           
+| **GitHub-fiók** | A GitHub-fiók neve. Ez a név a következő helyen található: \/ /github.com/{fióknév}/{adattár neve}. Ha erre az oldalra lép, meg kell adnia a GitHub OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
+| **Adattár neve**  | A GitHub-kódtár neve. A GitHub-fiókok Git-adattárakat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új adattárat, vagy használhat egy meglévő adattárat, amely már a fiókjában van. | `<your repository name>` |
+| **Együttműködési ág** | A Közzétételhez használt GitHub-együttműködési ág. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást arra az esetre, ha egy másik ágból szeretne erőforrásokat közzétenni. | `<your collaboration branch>` |
+| **Gyökérmappa** | A gyökérmappa a GitHub-együttműködési ágban. |`<your root folder name>` |
+| **Meglévő erőforrások importálása az adattárba** | Megadja, hogy importálni kell-e a meglévő Synapse Studio egy Git-adattárba. Jelölje be a jelölőnégyzetet a munkaterület erőforrásainak JSON formátumban történő importáláshoz (a készletek kivételével) a társított Git-adattárba. Ez a művelet egyenként exportálja az egyes erőforrásokat. Ha ez a jelölőnégyzet nincs bejelölve, a rendszer nem importálja a meglévő erőforrásokat. | Kiválasztva (alapértelmezett) |
+| **Erőforrás importálása ebbe az ágba** | Válassza ki, hogy az erőforrások (sql-szkript, jegyzetfüzet, Spark-feladat definíciója, adatkészlet, adatfolyam stb.) melyik ága lesz importálva. 
 
 ### <a name="github-organizations"></a>GitHub-szervezetek
 
-A GitHub-szervezethez való csatlakozáshoz a szervezetnek engedélyt kell adnia a szinapszis Studiónak. A szervezeten belül rendszergazdai engedélyekkel rendelkező felhasználónak el kell végeznie az alábbi lépéseket.
+A GitHub-szervezethez való csatlakozáshoz a szervezetnek engedélyt kell adni a Synapse Studio. A szervezeten rendszergazdai engedélyekkel rendelkező felhasználónak el kell végeznie az alábbi lépéseket.
 
 #### <a name="connecting-to-github-for-the-first-time"></a>Csatlakozás a GitHubhoz első alkalommal
 
-Ha első alkalommal csatlakozik a GitHubhoz a szinapszis studióból, kövesse az alábbi lépéseket egy GitHub-szervezethez való csatlakozáshoz.
+Ha először csatlakozik a GitHubhoz a Synapse Studio, kövesse az alábbi lépéseket egy GitHub-szervezethez való csatlakozáshoz.
 
-1. A git-konfiguráció ablaktáblán adja meg a szervezet nevét a *GitHub-fiók* mezőben. Megjelenik a GitHubba való bejelentkezésre vonatkozó kérés. 
+1. A Git konfigurációs panelen írja be a szervezet nevét a *GitHub-fiók mezőbe.* Megjelenik egy üzenet, amely a GitHubra való bejelentkezésre kéri. 
 
 1. Jelentkezzen be a felhasználói hitelesítő adataival.
 
-1. A rendszer felkéri, hogy engedélyezze a szinapszis-t az *Azure szinapszis* nevű alkalmazásként. Ezen a képernyőn megjelenik egy lehetőség, hogy engedélyt adjon a szinapszisnak a szervezet elérésére. Ha nem látja az engedélyt, kérje meg a rendszergazdát, hogy manuálisan adja meg az engedélyt a GitHubon keresztül.
+1. A rendszer megkéri, hogy engedélyezze a Synapse-t a következő *alkalmazásként: Azure Synapse.* Ezen a képernyőn megjelenik egy lehetőség, amely engedélyt ad a Synapse számára a szervezet eléréséhez. Ha nem látja az engedélyek megadásának beállítását, kérjen meg egy rendszergazdát, hogy manuálisan adja meg az engedélyt a GitHubon keresztül.
 
-Ha követte ezeket a lépéseket, a munkaterület a szervezeten belüli nyilvános és privát adattárakhoz is csatlakozhat. Ha nem tud csatlakozni, próbálja meg törölni a böngésző gyorsítótárát, és próbálkozzon újra.
+Ha követi ezeket a lépéseket, a munkaterület nyilvános és privát adattárakhoz is képes lesz csatlakozni a szervezeten belül. Ha nem tud csatlakozni, próbálja meg törölni a böngésző gyorsítótárát, és próbálkozzon újra.
 
-#### <a name="already-connected-to-github-using-a-personal-account"></a>Már csatlakoztatva van a GitHubhoz egy személyes fiók használatával
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Már csatlakoztatva van a GitHubhoz egy személyes fiókkal
 
-Ha már csatlakozott a GitHubhoz, és csak egy személyes fiók elérésére vonatkozó engedélyt kapott, kövesse az alábbi lépéseket egy szervezet engedélyeinek megadásához.
+Ha már csatlakozott a GitHubhoz, és csak engedélyt adott egy személyes fiók eléréséhez, kövesse az alábbi lépéseket az engedélyek szervezet számára való megadásához.
 
-1. Lépjen a GitHubra, és nyissa meg a **beállításokat**.
+1. Nyissa meg a GitHubot, és nyissa meg a **Beállításokat.**
 
     ![GitHub-beállítások megnyitása](media/github-settings.png)
 
-1. Válassza az **alkalmazások** lehetőséget. Az **OAuth-alkalmazások engedélyezése** lapon az *Azure szinapszisot* kell látnia.
+1. Válassza az **Alkalmazások lehetőséget.** Az **Authorized OAuth apps (Engedélyezett OAuth-alkalmazások)** lapon a *következőnek* kell Azure Synapse.
 
-    ![OAuth-alkalmazások engedélyezése](media/authorize-app.png)
+    ![OAuth-alkalmazások hitelesítése](media/authorize-app.png)
 
-1. Válassza ki az *Azure szinapszisot* , és adja meg a szervezethez való hozzáférést.
+1. Válassza ki *Azure Synapse,* és adjon hozzáférést a szervezetnek.
 
     ![Szervezeti engedély megadása](media/grant-organization-permission.png)
 
-A lépések elvégzése után a munkaterület a szervezeten belüli nyilvános és privát adattárakhoz is csatlakozhat.
+A lépések befejezése után a munkaterület nyilvános és privát adattárakhoz is képes lesz csatlakozni a szervezeten belül.
 
 ## <a name="version-control"></a>Verziókövetés
 
-A verziókövetés-rendszerek (más néven a _verziókövetés_) lehetővé teszik a fejlesztők számára a kód és a változások követését. A verziókövetés elengedhetetlen eszköz a több fejlesztő projektjeihez.
+A verzióvezérlő rendszerek (más néven _verzióvezérlés)_ lehetővé teszik a fejlesztők számára a kódon való együttműködést és a változások nyomon követését. A forrásvezérlés elengedhetetlen eszköz a többfejlesztős projektekhez.
 
-### <a name="creating-feature-branches"></a>Szolgáltatási ágak létrehozása
+### <a name="creating-feature-branches"></a>Szolgáltatáságak létrehozása
 
-A szinapszis studióhoz társított minden git-tárház együttműködési ágat tartalmaz. ( `main` vagy `master` az alapértelmezett együttműködési ág). A felhasználók létrehozhatnak szolgáltatási ágakat is, ha a ág legördülő menüben az **+ új ág** lehetőségre kattintanak. Miután megjelenik az új ág ablaktábla, adja meg a szolgáltatási ág nevét.
+Minden git-adattár, amely egy Synapse Studio rendelkezik egy együttműködési ággal. ( `main` vagy az alapértelmezett együttműködési `master` ág). A felhasználók a legördülő menü **+ Új** ág lehetőségére kattintva is létrehozhatnak funkcióágakat. Miután megjelenik az új ág panel, adja meg a funkcióág nevét.
 
 ![Új ág létrehozása](media/create-new-branch.png)
 
-Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az együttműködési ágra, kattintson az ág legördülő listára, és válassza a **pull-kérelem létrehozása** lehetőséget. Ezzel a művelettel megadhatja a git-szolgáltatót, ahol a pull-kérelmeket, a kódok felülvizsgálatát és az együttműködési ág módosításait egyesítheti. Csak a szinapszis szolgáltatásban lehet közzétenni az együttműködési ágban. 
+Ha készen áll arra, hogy egyesítse a funkcióág módosításait az együttműködési ággal, kattintson az ág legördülő menüre, és válassza a **Create pull request (Lekéréses kérelem létrehozása) lehetőséget.** Ezzel a művelettel a Git-szolgáltatóhoz kerül, ahol lekéréses kérelmeket emelhet ki, kódokat kérhet le, és egyesítheti a módosításokat az együttműködési ággal. Csak az együttműködési ágból tehet közzé a Synapse szolgáltatásban. 
 
 ![Új lekéréses kérelem létrehozása](media/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-Alapértelmezés szerint a szinapszis Studio létrehozza a munkaterület-sablonokat, és elmenti őket egy nevű ágra `workspace_publish` . Egyéni közzétételi ág konfigurálásához vegyen fel egy `publish_config.json` fájlt az együttműködési ág gyökérmappa mappájába. Közzétételkor a szinapszis Studio beolvassa ezt a fájlt, megkeresi a mezőt `publishBranch` , és menti a munkaterület-sablon fájljait a megadott helyre. Ha a ág nem létezik, a szinapszis Studio automatikusan létrehozza azt. És példa arra, hogy a fájl milyen módon néz ki:
+Alapértelmezés szerint a Synapse Studio létrehozza a munkaterület-sablonokat, és menti őket egy nevű `workspace_publish` ágba. Egyéni közzétételi ág konfiguráláskor adjon hozzá egy fájlt az együttműködési ág `publish_config.json` gyökérmappába. A közzétételkor a Synapse Studio beolvassa ezt a fájlt, a mezőt keres, és a munkaterület sablonfájlját a megadott `publishBranch` helyre menti. Ha az ág nem létezik, a Synapse Studio automatikusan létrehozza. A fájl például az alábbi módon néz ki:
 
 ```json
 {
@@ -176,68 +176,68 @@ Alapértelmezés szerint a szinapszis Studio létrehozza a munkaterület-sablono
 }
 ```
 
-Az Azure szinapszis Studio egyszerre csak egy közzétételi ágat tartalmazhat. Új közzétételi ág megadásakor az előző közzétételi ág nem lett törölve. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
+Azure Synapse Studio egyszerre csak egy közzétételi ággal lehet. Új közzétételi ág megadásakor az előző közzétételi ág nem törlődik. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
 
 
-### <a name="publish-code-changes"></a>Kód módosításának közzététele
+### <a name="publish-code-changes"></a>Kód módosításainak közzététele
 
-Az együttműködési ág módosításainak egyesítése után a **Közzététel** gombra kattintva manuálisan közzéteheti a kód módosításait az együttműködési ágban a szinapszis szolgáltatásban.
+Az együttműködési ág módosításainak egyesítése után kattintson a **Közzététel** gombra a kód módosításainak manuális közzétételéhez az együttműködési ágban a Synapse szolgáltatásban.
 
 ![Változások közzétevése](media/gitmode-publish.png)
 
-Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzétételi ág és a függőben lévő módosítások helyesek. A módosítások ellenőrzése után kattintson az **OK** gombra a közzététel megerősítéséhez.
+Megnyílik egy oldalpanel, ahol megerősítheti, hogy a közzétételi ág és a függőben lévő módosítások helyesek. A módosítások ellenőrzése után kattintson az **OK gombra** a közzététel megerősítéséhez.
 
-![A megfelelő közzétételi ág megerősítése](media/publish-change.png)
+![A megfelelő közzétételi ág ellenőrzése](media/publish-change.png)
 
 > [!IMPORTANT]
-> Az együttműködési ág nem jellemző a szolgáltatásban üzembe helyezett funkciókra. Az együttműködési ág módosításait *manuálisan kell közzétenni* .
+> Az együttműködési ág nem reprezentációja a szolgáltatásban üzembe helyezett erőforrásoknak. Az együttműködési ág módosításait *manuálisan kell* közzétenni szolgáltatásként.
 
-## <a name="switch-to-a-different-git-repository"></a>Váltás másik git-tárházra
+## <a name="switch-to-a-different-git-repository"></a>Váltás másik Git-adattárra
 
-Ha másik git-tárházra szeretne váltani, lépjen a git-konfiguráció lapra a felügyeleti központ **forrás vezérlőelem** területén. Válassza a **Leválasztás** lehetőséget. 
+Másik Git-adattárra úgy válthat át, hogy a Verziókezelés alatti felügyeleti központ Git-konfigurációs **lapjára vált.** Válassza a **Leválasztás lehetőséget.** 
 
 ![Git ikon](media/remove-repository.png)
 
-Adja meg a munkaterület nevét, és kattintson a **Leválasztás** elemre a munkaterülethez társított git-tárház eltávolításához.
+Adja meg a munkaterület nevét, majd kattintson a **Leválasztás** gombra a munkaterülethez társított Git-adattár eltávolításához.
 
-Miután eltávolította az aktuális tárházhoz való társítást, beállíthatja, hogy a git-beállítások egy másik tárházat használjanak, majd meglévő erőforrásokat importáljon az új tárházba.
+Miután eltávolítja az aktuális adattárhoz való társítást, konfigurálhatja a Git-beállításokat egy másik adattár használatára, majd importálhatja a meglévő erőforrásokat az új adattárba.
 
 > [!IMPORTANT]
-> A git-konfiguráció egy munkaterületről való eltávolítása nem töröl semmit az adattárból. A szinapszis munkaterület minden közzétett erőforrást tartalmaz majd. Továbbra is szerkesztheti a munkaterületet közvetlenül a szolgáltatáson.
+> A Git-konfiguráció munkaterületről való eltávolítása nem töröl semmit az adattárból. A Synapse-munkaterület az összes közzétett erőforrást tartalmazza. A munkaterületet továbbra is közvetlenül a szolgáltatásban szerkesztheti.
 
-## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a git-integrációhoz
+## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a Git-integrációhoz
 
--   **Engedélyek**. Miután egy git-tárház csatlakozott a munkaterülethez, bárki, aki hozzáférhet a git-adattárhoz a munkaterület bármely szerepkörével, frissítheti az összetevőket, például az SQL-parancsfájlt, a jegyzetfüzetet, a Spark-feladat definícióját, az adatkészletet, a adatfolyam és a folyamatot a git módban. Általában nem szeretné, hogy minden csapattag rendelkezzen a munkaterület frissítéséhez szükséges engedélyekkel. Csak a git-tárház engedélyezése a munkaterület-összetevőhöz tartozó szerzők számára. 
--   **Együttműködés**. Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a [szolgáltatási ágak létrehozása](source-control.md#creating-feature-branches)című témakörben leírt lekéréses kérelem-felülvizsgálati folyamaton halad át.
--   **Szinapszis élő üzemmód**. A git módban való közzététel után az összes változás a szinapszis élő módban jelenik meg. A szinapszis élő módban a közzététel le van tiltva. És megtekintheti az összetevők élő módban való futtatását, ha a megfelelő engedélyt kapta. 
--   Összetevők **szerkesztése a Studióban**. A szinapszis Studio az egyetlen hely, amellyel engedélyezheti a munkaterület forrás-és szinkronizálási módosításait a git szolgáltatásban. Az SDK-val, a PowerShell-lel végzett módosítások nem lesznek szinkronizálva a git használatával. Javasoljuk, hogy mindig szerkessze az összetevőt a Studióban, ha a git engedélyezve van.
+-   **Engedélyek.** Miután csatlakoztatta a munkaterülethez a Git-adattárat, bárki, aki a munkaterület bármely szerepkörével hozzáférhet a Git-adattárhoz, frissítheti az olyan összetevőket, mint az sql-szkript, a notebook, a spark-feladatdefiníció, az adatkészlet, az adatfolyam és a folyamat Git módban. Általában nem szeretné, hogy a csapat minden tagja jogosultsággal rendelkezik a munkaterület frissítéséhez. Csak a Synapse-munkaterület összetevő-készítőinek adjon engedélyt a Git-adattár számára. 
+-   **Együttműködés**. Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezést az együttműködési ágba. Ez a korlátozás segíthet megelőzni a hibákat, mivel minden bejelentkezés egy lekéréses kérelem felülvizsgálati folyamatán megy keresztül, amely a [Funkcióágak létrehozása alatt áll.](source-control.md#creating-feature-branches)
+-   **Synapse élő mód.** A Git módban való közzététel után az összes módosítás megjelenik az élő Synapse módban. Az élő Synapse módban a közzététel le van tiltva. Az összetevők akkor is megtekinthetők és futtathatók élő módban, ha a megfelelő engedélyekkel rendelkezik. 
+-   **Összetevők szerkesztése a Studióban.** A Synapse Studio az egyetlen hely, ahol engedélyezheti a munkaterület verziókezelését, és automatikusan szinkronizálhatja a git módosításait. Az SDK-n, a PowerShellen keresztüli módosítás nem lesz szinkronizálva a Gitbe. Javasoljuk, hogy mindig szerkessze az összetevőt a Studióban, ha a git engedélyezve van.
 
-## <a name="troubleshooting-git-integration"></a>A git-integráció hibaelhárítása
+## <a name="troubleshooting-git-integration"></a>Git-integráció hibaelhárítása
 
-### <a name="access-to-git-mode"></a>Hozzáférés a git-módhoz 
+### <a name="access-to-git-mode"></a>Hozzáférés a Git módhoz 
 
-Ha engedélyt kapott a munkaterülethez társított GitHub git-tárházhoz, akkor a git-üzemmódhoz nem férhet hozzá: 
+Ha engedélyt kapott a munkaterülethez csatolt GitHub Git-adattárhoz, de nem fér hozzá a Git módhoz: 
 
-1. Törölje a gyorsítótárat, és frissítse az oldalt. 
+1. Ürítse ki a gyorsítótárat, és frissítse az oldalt. 
 
 1. Jelentkezzen be a GitHub-fiókjába.
 
 ### <a name="stale-publish-branch"></a>Elavult közzétételi ág
 
-Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a legutóbbi közzététel ellenére elavult erőforrásokat tartalmaz, próbálkozzon az alábbi lépésekkel:
+Ha a közzétételi ág nincs szinkronban az együttműködési ággal, és a legutóbbi közzététel ellenére elavult erőforrásokat tartalmaz, próbálkozzon az alábbi lépésekkel:
 
-1. Az aktuális git-tárház eltávolítása
+1. Az aktuális Git-adattár eltávolítása
 
-1. Konfigurálja újra a git-t ugyanazzal a beállításokkal, de győződjön meg arról, hogy a **meglévő erőforrások importálása a tárházba** jelölőnégyzet be van jelölve, és válassza ki ugyanazt az ágat.  
+1. Konfigurálja újra a Gitet ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **Meglévő** erőforrások importálása az adattárba beállítás be van jelölve, és válassza ki ugyanazt az ágat.  
 
 1. Lekéréses kérelem létrehozása a változások együttműködési ágba való egyesítéséhez 
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-- A szinapszis Studio nem engedélyezi a bekötések vagy az erőforrások szelektív közzétételét. 
-- A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
-- A Studio alkalmazásban a DELETE művelet megtervezésével közvetlenül a git-ben lesz végrehajtva
+- Synapse Studio nem engedélyezi a véglegesítések vagy az erőforrások szelektív közzétételét. 
+- Synapse Studio nem támogatja a véglegesítési üzenetek testreszabását.
+- A studio törlési művelete terv szerint közvetlenül a gitben lesz véglegesítve
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A folyamatos integráció és üzembe helyezés megvalósításához tekintse meg a [folyamatos integrációt és teljesítést (CI/CD)](continuous-integration-deployment.md).
+* A folyamatos integráció és üzembe helyezés implementációja: Folyamatos integráció és [teljesítés (CI/CD).](continuous-integration-deployment.md)

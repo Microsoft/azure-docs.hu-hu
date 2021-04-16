@@ -1,68 +1,58 @@
 ---
-title: Adatok valós idejű megjelenítése az Azure IoT Hub – Power BI
-description: A Power BI használatával megjelenítheti az érzékelőből összegyűjtött hőmérsékleti és páratartalom-adatokat, és elküldheti azokat az Azure IoT hubhoz.
+title: Adatok valós idejű vizualizációja Azure IoT Hub – Power BI
+description: A Power BI az érzékelőből gyűjtött és az Azure IoT Hubnak küldött hőmérséklet- és páratartalom-adatok megjelenítésére.
 author: robinsh
-keywords: valós idejű adatvizualizáció, élő adatvizualizáció, érzékelő adatvizualizációja
+keywords: valós idejű adatvizualizáció, élő adatvizualizáció, érzékelőadatok vizualizációja
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177334"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567111"
 ---
-# <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT Hub használatával Power BI
+# <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Valós idejű érzékelőadatok vizualizációja a Azure IoT Hub a Power BI
 
-![Végpontok közötti diagram](./media/iot-hub-live-data-visualization-in-power-bi/end-to-end-diagram.png)
+![Végpontok között ábrázolt diagram](./media/iot-hub-live-data-visualization-in-power-bi/end-to-end-diagram.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>Ismertetett témák
+Ebből a cikkből megtudhatja, hogyan vizualizálhatja az Azure IoT Hub által kapott valós idejű érzékelőadatokat a Power BI. Ha webalkalmazással szeretné vizualizálni az IoT Hubban található adatokat, tekintse meg a következőt: Valós idejű érzékelőadatok vizualizációja webalkalmazással a [Azure IoT Hub.](iot-hub-live-data-visualization-in-web-apps.md)
 
-Megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amelyeket az Azure IoT hub a Power BI használatával kap. Ha egy webalkalmazással szeretné megjeleníteni az IoT hub adatait, tekintse meg a [webalkalmazások használata az Azure IoT hub valós idejű érzékelők adatainak megjelenítéséhez](iot-hub-live-data-visualization-in-web-apps.md)című témakört.
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="what-you-do"></a>Teendők
-
-* Felhasználói csoport hozzáadásával az IoT hub készen áll az adathozzáférésre.
-
-* Hozzon létre, konfiguráljon és futtasson egy Stream Analytics feladatot az IoT hub-ból az Ön Power BI-fiókjába való adatátvitel során.
-
-* Hozzon létre és tegyen közzé egy Power BI jelentést az adatgyűjtés megjelenítéséhez.
-
-## <a name="what-you-need"></a>Amire szükség lesz
-
-* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például a [málna PI és a node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek a cikkek a következő követelményekre vonatkoznak:
+* Töltse ki a [Raspberry Pi online szimulátor oktatóanyagát](iot-hub-raspberry-pi-web-simulator-get-started.md) vagy az eszköz egyik oktatóanyagát. A [Raspberry Pi-hoz ](iot-hub-raspberry-pi-kit-node-get-started.md) például használhatja a node.jsvagy a [Telemetria](quickstart-send-telemetry-dotnet.md) küldése gyorsútmutatók valamelyikét. Ezek a cikkek a következő követelményeket fedik le:
   
   * Aktív Azure-előfizetés.
-  * Az előfizetéshez tartozó Azure IoT hub.
-  * Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
+  * Egy Azure IoT Hub az előfizetésben.
+  * Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT Hubnak.
 
-* Power BI-fiók. ([Power bi ingyenes kipróbálása](https://powerbi.microsoft.com/))
+* Power BI-fiók. ([Próbálja Power BI ingyenes )](https://powerbi.microsoft.com/)
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="create-configure-and-run-a-stream-analytics-job"></a>Stream Analytics-feladatok létrehozása, konfigurálása és futtatása
+## <a name="create-configure-and-run-a-stream-analytics-job"></a>Új feladat létrehozása, konfigurálása és Stream Analytics futtatása
 
-Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létrehozása után meg kell határoznia a bemeneteket, a kimeneteket és az adatok lekéréséhez használt lekérdezést.
+Először hozzunk létre egy Stream Analytics feladatot. A feladat létrehozása után meg kell határoznia az adatok lekéréséhez használt bemeneteket, kimeneteket és lekérdezést.
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analyticsi feladatot**.
+1. A [Azure Portal](https://portal.azure.com)válassza az **Erőforrás létrehozása eszközök internetes hálózata** Stream Analytics  >    >  **feladatot.**
 
 2. Adja meg a feladat alábbi adatait.
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie.
 
-   **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot, amelyet az IoT hub használ.
+   **Erőforráscsoport:** Használja ugyanazt az erőforráscsoportot, mint az IoT Hub.
 
-   **Hely**: használja ugyanazt a helyet, mint az erőforráscsoport.
+   **Hely:** Használja ugyanazt a helyet, mint az erőforráscsoport.
 
-   ![Stream Analytics-feladatok létrehozása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
+   ![Új Stream Analytics létrehozása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
 3. Válassza a **Létrehozás** lehetőséget.
 
@@ -72,25 +62,25 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
 2. A **Feladattopológia** területen válassza a **Bemenetek** lehetőséget.
 
-3. A **bemenetek** ablaktáblán válassza a **stream-bemenet hozzáadása** lehetőséget, majd a legördülő listából válassza a **IoT hub** lehetőséget. Az új beviteli panelen adja meg a következő adatokat:
+3. A **Bemenetek panelen** válassza a **Streambemenet** hozzáadása lehetőséget, majd válassza IoT Hub lehetőséget a legördülő listából.  Az új beviteli panelen adja meg a következő adatokat:
 
-   **Bemeneti alias**: adjon meg egy egyedi aliast a bevitelhez.
+   **Bemeneti alias:** Adjon meg egy egyedi aliast a bemenethez.
 
-   **Válassza ki IoT hub az előfizetésből**: jelölje be ezt a választógombot.
+   **Válassza IoT Hub előfizetésből:** Jelölje be ezt a választógombot.
 
-   **Előfizetés**: válassza ki az oktatóanyaghoz használni kívánt Azure-előfizetést.
+   **Előfizetés:** Válassza ki az oktatóanyaghoz használt Azure-előfizetést.
 
-   **IoT hub**: válassza ki az oktatóanyaghoz használni kívánt IoT hub.
+   **IoT Hub:** Válassza IoT Hub oktatóanyaghoz használt IoT Hub lehetőséget.
 
    **Végpont**: Válassza az **Üzenetkezelés** lehetőséget.
 
-   **Megosztott elérési házirend neve**: válassza ki annak a megosztott hozzáférési szabályzatnak a nevét, amelyet az IoT hub-hoz használni kíván stream Analytics feladatokhoz. Ebben az oktatóanyagban a *szolgáltatás* lehetőséget választhatja. A *szolgáltatási* házirendet alapértelmezés szerint az új IoT-hubokon hozza létre, és engedélyt ad az IoT hub által elérhető Felhőbeli végpontok küldésére és fogadására. További információ: hozzáférés- [vezérlés és engedélyek](iot-hub-devguide-security.md#access-control-and-permissions).
+   **Megosztott hozzáférési szabályzat neve:** Válassza ki annak a megosztott hozzáférési szabályzatnak a nevét, Stream Analytics az IoT Hubhoz használni kívánt megosztott hozzáférési szabályzatot. Ebben az oktatóanyagban a szolgáltatás lehetőséget *választhatja.* A *szolgáltatási* szabályzat alapértelmezés szerint új IoT Hubon jön létre, és engedélyt ad az IoT Hub által elérhetővé tévő felhőoldali végpontokra való küldésre és fogadásra. További információ: [Hozzáférés-vezérlés és engedélyek.](iot-hub-devguide-security.md#access-control-and-permissions)
 
-   **Megosztott elérési házirend kulcsa**: Ez a mező automatikusan ki van töltve a megosztott elérési szabályzat nevének kiválasztása alapján.
+   **Megosztott hozzáférési szabályzat kulcsa:** Ez a mező automatikusan ki lesz töltve a megosztott hozzáférési szabályzat nevéhez kiválasztott beállítás alapján.
 
-   **Fogyasztói csoport**: válassza ki a korábban létrehozott fogyasztói csoportot.
+   **Fogyasztói csoport:** Válassza ki a korábban létrehozott fogyasztói csoportot.
 
-   Hagyja meg az összes többi mezőt az alapértelmezett értékeken.
+   Hagyja meg az összes többi mező alapértelmezett beállítását.
 
    ![Bemenet hozzáadása egy Stream Analytics feladathoz az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job.png)
 
@@ -100,23 +90,23 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
 1. A **Feladattopológia** területen válassza a **Kimenetek** lehetőséget.
 
-2. A **kimenetek** ablaktáblán válassza a **hozzáadás** és a **Power bi** lehetőséget.
+2. A **Kimenetek panelen** válassza a **Hozzáadás lehetőséget, majd** **kattintson Power BI.**
 
-3. Az **Power bi – új kimenet** ablaktáblán válassza az **Engedélyezés** lehetőséget, és kövesse az utasításokat, hogy bejelentkezzen a Power bi-fiókjába.
+3. A Power BI – Új kimenet **panelen** válassza az Authorize (Engedély) lehetőséget, és kövesse az utasításokat a Power BI bejelentkezéshez. 
 
-4. Miután bejelentkezett a Power BIba, adja meg a következő adatokat:
+4. Miután bejelentkezett a Power BI, adja meg a következő adatokat:
 
-   **Kimeneti alias**: a kimenet egyedi aliasa.
+   **Kimeneti alias:** A kimenet egyedi aliasa.
 
-   **Csoport munkaterület**: válassza ki a célcsoport-munkaterületet.
+   **Csoport munkaterülete:** Válassza ki a célcsoport-munkaterületet.
 
-   **Adatkészlet neve**: adja meg az adatkészlet nevét.
+   **Adatkészlet neve:** Adja meg az adatkészlet nevét.
 
-   **Táblázat neve**: adjon meg egy Táblanév nevet.
+   **Tábla neve:** Adja meg a tábla nevét.
 
-   **Hitelesítési mód**: hagyja meg az alapértelmezett értéket.
+   **Hitelesítési mód:** Hagyja meg az alapértelmezett értéket.
 
-   ![Kimenet hozzáadása Stream Analytics feladatokhoz az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job.png)
+   ![Kimenet hozzáadása Stream Analytics Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job.png)
 
 5. Kattintson a **Mentés** gombra.
 
@@ -128,37 +118,37 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
 3. A `[YourOutputAlias]` elemet cserélje le a feladat kimeneti áljelére.
 
-   ![Lekérdezés hozzáadása Stream Analytics feladatokhoz az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/add-query-to-stream-analytics-job.png)
+   ![Lekérdezés hozzáadása egy azure-Stream Analytics feladathoz](./media/iot-hub-live-data-visualization-in-power-bi/add-query-to-stream-analytics-job.png)
 
-4. Válassza a **lekérdezés mentése** lehetőséget.
+4. Válassza a **Lekérdezés mentése lehetőséget.**
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-A stream Analyticsi feladatokban válassza az **Áttekintés** lehetőséget, majd kattintson **az indítás**  >  **most**  >  **Indítás** gombra. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
+A Stream Analytics válassza az **Áttekintés,** majd az **Indítás**  >  **most indítás**  >  **lehetőséget.** Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
-![Stream Analytics-feladatok futtatása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
+![Feladat futtatása Stream Analytics Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
-## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Power BI jelentés létrehozása és közzététele az adatgyűjtés megjelenítéséhez
+## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Jelentés létrehozása és Power BI az adatok megjelenítéséhez
 
-A következő lépések bemutatják, hogyan hozhat létre és tehet közzé jelentést a Power BI szolgáltatás használatával. Ezeket a lépéseket néhány módosítással követheti, ha az "új Look" kifejezést szeretné használni Power BIban. A különbségek megismeréséhez és az "új nézet" megkereséséhez tekintse meg az [Power bi szolgáltatás új megjelenését](/power-bi/consumer/service-new-look).
+Az alábbi lépések azt mutatják be, hogyan hozhat létre és tehet közzé jelentést a Power BI szolgáltatás. Ha az "új megjelenést" szeretné használni a Power BI. A különbségek és az "új megjelenés" közötti navigáláshoz tekintse meg az új megjelenést a [Power BI szolgáltatás.](/power-bi/consumer/service-new-look)
 
-1. Győződjön meg arról, hogy az eszközön fut a minta alkalmazás. Ha nem, tekintse át az oktatóanyagokat az [eszköz beállítása](./iot-hub-raspberry-pi-kit-node-get-started.md)alatt.
+1. Győződjön meg arról, hogy a mintaalkalmazás fut az eszközön. Ha nem, tekintse meg az Eszköz beállítása [alatt található oktatóanyagokat.](./iot-hub-raspberry-pi-kit-node-get-started.md)
 
 2. Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/en-us/)-fiókjába.
 
-3. Válassza ki a használni kívánt munkaterületet, **saját munkaterületet**.
+3. Válassza ki a használt Saját **munkaterületet.**
 
-4. Válassza az **adatkészletek** lehetőséget.
+4. Válassza **az Adatkészletek lehetőséget.**
 
-   A Stream Analytics-feladathoz tartozó kimenet létrehozásakor megadott adatkészlet jelenik meg.
+   Látnia kell az adatkészletet, amely a feladat kimenetének létrehozásakor Stream Analytics meg.
 
-5. A létrehozott adatkészlet esetében válassza a **jelentés hozzáadása** lehetőséget (az adatkészlet nevének jobb oldalán lévő első ikon).
+5. A létrehozott adatkészlethez válassza a Jelentés hozzáadása **lehetőséget** (az adatkészlet nevétől jobbra található első ikont).
 
-   ![Microsoft Power BI-jelentés létrehozása](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-create-report.png)
+   ![Microsoft-jelentés Power BI létrehozása](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-create-report.png)
 
 6. Hozzon létre egy vonaldiagramot, amely a valós időben jeleníti meg a hőmérséklet változását.
 
-   1. A jelentés létrehozása lap **vizualizációk** paneljén válassza a diagram ikont egy vonalas diagram hozzáadásához.
+   1. A **jelentéskészítési oldal** Vizualizációk panelen válassza a vonaldiagram ikont vonaldiagram hozzáadásához.
 
    2. A **Mezők** panelen bontsa ki Stream Analytics-feladat kimenetének létrehozásakor megadott táblát.
 
@@ -168,37 +158,37 @@ A következő lépések bemutatják, hogyan hozhat létre és tehet közzé jele
 
       Létrejön a vonaldiagram. Az X tengely az UTC időzóna szerinti dátumot is időt mutatja. Az Y tengelyen az érzékelőből származó hőmérsékleti adatok láthatók.
 
-      ![Vonali diagram hozzáadása a Microsoft Power BI jelentéshez](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temperature.png)
+      ![Hőmérsékleti vonaldiagram hozzáadása microsoftos Power BI jelentéshez](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temperature.png)
 
-7. Hozzon létre egy másik vonaldiagramot, amely a valós időben jeleníti meg a páratartalom változását. Ehhez kattintson a vászon egy üres részére, és kövesse a fenti lépéseket, hogy az y tengely x tengelyén és **nedvességtartalmán** **EventEnqueuedUtcTime** .
+7. Hozzon létre egy másik vonaldiagramot, amely a valós időben jeleníti meg a páratartalom változását. Ehhez kattintson a vászon egy üres részére, és a fenti lépésekkel helyezze az **EventEnqueuedUtcTime** helyére az x tengelyt és a páratartalmat az y tengelyen. 
 
-   ![Diagram hozzáadása a páratartalomhoz egy Microsoft Power BI jelentéshez](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
+   ![Vonaldiagram hozzáadása a páratartalommal kapcsolatos Microsoft-Power BI jelentéshez](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
-8. A jelentés mentéséhez válassza a **Mentés** lehetőséget.
+8. A **jelentés mentéséhez** válassza a Mentés lehetőséget.
 
-9. Válassza a **jelentések** lehetőséget a bal oldali ablaktáblán, majd válassza ki az imént létrehozott jelentést.
+9. A **bal oldali** panelen válassza a Jelentések lehetőséget, majd válassza ki az előbb létrehozott jelentést.
 
-10. Válassza   >  **a fájl webes közzététel** lehetőséget.
+10. Válassza **a Fájl** közzététele a  >  **weben lehetőséget.**
 
-    ![A Microsoft Power BI jelentés webes közzétételének kiválasztása](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-select-publish-to-web.png)
+    ![Válassza a Webes közzététel lehetőséget a Microsoft Power BI jelentéshez](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-select-publish-to-web.png)
 
     > [!NOTE]
-    > Ha értesítést kap a rendszergazdától a beágyazási kód létrehozásának engedélyezéséhez, előfordulhat, hogy kapcsolatba kell lépnie velük. A lépés elvégzéséhez engedélyezni kell a beágyazási kód létrehozását.
+    > Ha értesítést kap, hogy lépjen kapcsolatba a rendszergazdával a beágyazási kód létrehozásának engedélyezéséhez, előfordulhat, hogy kapcsolatba kell lépnie velük. A lépés befejezéséhez engedélyezni kell a beágyazási kód létrehozását.
     >
-    > ![Forduljon a rendszergazdai értesítéshez](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
+    > ![Kapcsolatfelvétel a rendszergazdai értesítéssel](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
 
-11. Válassza a **beágyazási kód létrehozása** lehetőséget, majd válassza a **Közzététel** lehetőséget.
+11. Válassza **a Beágyazási kód létrehozása,** majd a **Közzététel lehetőséget.**
 
-Megadhatja a jelentés hivatkozását, amelyet bárki megoszthat a jelentésekhez való hozzáféréshez, valamint egy kódrészletet, amellyel a jelentést beépítheti a blogjába vagy a webhelyre.
+Meg van biztosítanak egy jelentéshivatkozást, amely bárkivel megosztható a jelentéshez való hozzáféréshez, valamint egy kódrészletet, amely a jelentés a blogba vagy webhelybe való integrálására használható.
 
-![Microsoft Power BI-jelentés közzététele](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-web-output.png)
+![Microsoft-jelentés Power BI közzététele](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-web-output.png)
 
-A Microsoft a mobileszköz-irányítópultok és-jelentések megtekintését és Power BI interakcióját is biztosítja a [Power bi Mobile apps](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) szolgáltatásban.
+A Microsoft Power BI [mobilalkalmazásokat](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) is kínál a mobileszközén Power BI irányítópultok és jelentések megtekintéséhez és a velük való interakcióhoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Sikeresen felhasználta Power BI az Azure IoT hub valós idejű érzékelői adatainak megjelenítéséhez.
+Sikeresen használta a Power BI az Azure IoT Hub valós idejű érzékelői adatainak megjelenítésére.
 
-Az Azure IoT Hubból származó adatok megjelenítésének másik módja: [webalkalmazás használata az azure IoT hub valós idejű érzékelők adatainak megjelenítéséhez](iot-hub-live-data-visualization-in-web-apps.md).
+A vizualizációk adatainak Azure IoT Hub lásd: Webalkalmazás használata valós idejű érzékelőadatok vizualizálására a [Azure IoT Hub.](iot-hub-live-data-visualization-in-web-apps.md)
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

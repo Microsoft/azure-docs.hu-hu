@@ -1,30 +1,30 @@
 ---
-title: Gyors útmutató – csapatokhoz való csatlakozás egy webalkalmazásból
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Azure kommunikációs szolgáltatások Meghívási SDK for JavaScript használatával
+title: Rövid útmutató – Teams-értekezlethez csatlakozás webalkalmazásból
+description: Ez az oktatóanyag bemutatja, hogyan csatlakozhat Teams-értekezlethez az Azure Communication Services Calling SDK for JavaScript használatával
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6747d1d3cfba1c9e2bee7a8a7a48d67d6bed9f8e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108186"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564428"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy Teams-találkozóhoz az Azure kommunikációs szolgáltatások a JavaScripthez készült Calling SDK használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat Teams-értekezlethez a JavaScripthez készült Azure Communication Services használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy működő [kommunikációs szolgáltatás, amely webes alkalmazást hív](../getting-started-with-calling.md)meg.
-- [Csapatok üzembe helyezése](/deployoffice/teams-install).
+- Egy működő [Communication Services, amely a webalkalmazást hívja meg.](../getting-started-with-calling.md)
+- Egy [Teams-üzemelő példány.](/deployoffice/teams-install)
 
 
-## <a name="add-the-teams-ui-controls"></a>A csapatok felhasználói felületi vezérlőinek hozzáadása
+## <a name="add-the-teams-ui-controls"></a>A Teams felhasználói felület vezérlőinek hozzáadása
 
-Cserélje le a kódot index.html-re az alábbi kódrészlettel.
-A rendszer a Teams Meeting-környezet megadására fogja használni a szövegmezőt, és a gomb a megadott értekezlethez való csatlakozáshoz használható:
+Cserélje le az l index.htma következő kódrészletre.
+A szövegmezőben megadjuk a Teams-értekezlet környezetét, és a gomb használatával csatlakozunk a megadott értekezlethez:
 
 ```html
 <!DOCTYPE html>
@@ -53,9 +53,9 @@ A rendszer a Teams Meeting-környezet megadására fogja használni a szövegmez
 </html>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>A csapatok felhasználói felületének vezérlésének engedélyezése
+## <a name="enable-the-teams-ui-controls"></a>A Teams felhasználói felületi vezérlőinek engedélyezése
 
-Cserélje le client.js fájl tartalmát az alábbi kódrészlettel.
+Cserélje le a client.js tartalmát a következő kódrészletre.
 
 ```javascript
 import { CallClient } from "@azure/communication-calling";
@@ -110,21 +110,21 @@ teamsMeetingJoinButton.addEventListener("click", () => {
 });
 ```
 
-## <a name="get-the-teams-meeting-link"></a>A Teams Meeting-hivatkozás beszerzése
+## <a name="get-the-teams-meeting-link"></a>A Teams-értekezlet hivatkozásának lehívása
 
-A Teams Meeting hivatkozás a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ez a hivatkozás az erőforrás részeként `onlineMeeting` érhető el, a [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta) alatt elérhető módon, a Teams Meeting Meeting (összevont **értekezlet** ) URL-címéhez tartozó szükséges értekezlet-információkat is lekérheti.
+A Teams-értekezlet hivatkozása Graph API-k használatával olvasható be. Ennek részletes leírását a [Graph dokumentációjában találhatja](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)meg.
+A Communication Services hívó SDK egy teljes Teams-értekezlethivatkozást fogad el. Ez a hivatkozás az erőforrás részeként lesz visszaadva, amely a tulajdonság alatt érhető el A szükséges értekezletadatokat a Join Meeting URL (Csatlakozás az értekezlet URL-címéhez) oldalon is lekérhetők a `onlineMeeting` Teams-értekezlet [ `joinWebUrl` ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) meghívásában. 
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A webpack felhasználói használhatják az `webpack-dev-server` alkalmazást az alkalmazás létrehozásához és futtatásához. Futtassa az alábbi parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
+A Webpack felhasználói a használatával `webpack-dev-server` buildlik és futtatják az alkalmazást. Futtassa a következő parancsot az alkalmazásgazda helyi webkiszolgálón való kötegbe való kötegl akkorához:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 ```
 
-Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A következőnek kell megjelennie:
+Nyissa meg a böngészőt, és lépjen a következőre: http://localhost:8080/ . A következőnek kell megjelennie:
 
-:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="Képernyőkép a befejezett JavaScript-alkalmazásról.":::
+:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="A kész JavaScript-alkalmazás képernyőképe.":::
 
-Szúrja be a csapatok kontextusát a szövegmezőbe, majd nyomja meg a *Csatlakozás* a csapatok között lehetőséget a Teams Meeting szolgáltatáshoz való csatlakozáshoz a kommunikációs szolgáltatások alkalmazásából.
+Szúrja be a Teams-környezetet a szövegmezőbe, majd nyomja le a *Join Teams Meeting* (Teams-értekezlethez való csatlakozás) gombot, hogy csatlakozzon a Teams-értekezlethez a Communication Services alkalmazásból.

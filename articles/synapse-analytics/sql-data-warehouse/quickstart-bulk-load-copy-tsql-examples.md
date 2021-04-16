@@ -1,38 +1,38 @@
 ---
 title: Hitelesítési mechanizmusok a COPY utasítással
-description: Az adatmennyiség tömeges betöltésére szolgáló hitelesítési mechanizmusok körvonalazása
+description: Az adatok tömeges betöltésének hitelesítési mechanizmusait ismerteti
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 70e8f15b2b02008f24c87cfe70372fccbf0506fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 510f2556fba42176817b782fe48d01d76eaa3fd7
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568454"
 ---
-# <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
+# <a name="securely-load-data-using-synapse-sql"></a>Adatok biztonságos betöltése a Synapse SQL
 
-Ez a cikk a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)biztonságos hitelesítési mechanizmusaival kapcsolatos példákat mutatja be és ismerteti. A MÁSOLÁSi utasítás az adatok tömeges betöltésének legrugalmasabb és biztonságos módja a szinapszis SQL-ben.
+Ez a cikk a COPY utasítás biztonságos hitelesítési mechanizmusait emeli ki és mutat [be példákkal.](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) A COPY utasítás az adatok tömeges betöltésének legrugalmasabb és legbiztonságosabb módja a Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Támogatott hitelesítési mechanizmusok
 
-A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok támogatott hitelesítési módszereit. Ez a forrás tárolási helyére és a hiba fájljának helyére vonatkozik.
+Az alábbi mátrix az egyes fájltípusokat és tárfiókokat támogató hitelesítési módszereket ismerteti. Ez a forrástárhelyre és a hibafájl helyére vonatkozik.
 
-|                          |                CSV                |                      Parquet                       |                        ORC                         |
+|                          |                CSV                |                      Parquet                       |                        Ork                         |
 | :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
-|  **Azure Blob Storage**  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |                      SAS/KULCS                       |                      SAS/KULCS                       |
-| **Azure Data Lake Gen2** | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service elsődleges/kulcs/HRE | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service elsődleges/kulcs/HRE |
+|  **Azure Blob Storage**  | SAS/MSI/SZOLGÁLTATÁSNÉV/KULCS/AAD |                      SAS/KULCS                       |                      SAS/KULCS                       |
+| **2. generációs Azure Data Lake** | SAS/MSI/SZOLGÁLTATÁSNÉV/KULCS/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/SZOLGÁLTATÁSNÉV/KULCS/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/SZOLGÁLTATÁSNÉV/KULCS/AAD |
 
-1: a hitelesítési módszerhez a külső hely elérési útjában lévő. blob-végpontot (**. blob**. Core.Windows.net) kell megadni.
+1: A külső hely elérési útjának .blob végpontjára (**.blob**.core.windows.net) van szükség ehhez a hitelesítési módszerhez.
 
-2: a hitelesítési módszerhez a külső hely elérési útjában található. DFS-végpontot (**. DFS**. Core.Windows.net) kötelező megadni.
+2: Ehhez a hitelesítési módszerhez a külső elérési úton található .dfs végpontra (**.dfs**.core.windows.net) van szükség.
 
-## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Storage-fiók kulcsa a LF-rel a lezáró sor (Unix stílusú új sor)
+## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Tárfiókkulcs, sorválasztóként LF (Unix-stílusú új sor)
 
 
 ```sql
@@ -49,9 +49,9 @@ WITH (
 ```
 > [!IMPORTANT]
 >
-> - Használja a hexadecimális értéket (0x0A) a soremelés/sortörési karakter megadásához. Megjegyzés: a COPY utasítás a "\n" karakterláncot "\r\n"-ként értelmezi (a kocsivissza karakter).
+> - A hexadecimális érték (0x0A) használatával adja meg a Sorcsatorna/Sorsor karaktert. Vegye figyelembe, hogy a COPY utasítás az \n sztringet \r\n formátumban értelmezi (kocsivissza sor sor).
 
-## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. Közös hozzáférésű aláírások (SAS) a CRLF (Windows Style New line)
+## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. Közös hozzáférésű jogosultságok (SAS) a CRLF-fel sorválasztóként (Windows stílusú új sor)
 ```sql
 COPY INTO target_table
 FROM 'https://adlsgen2account.dfs.core.windows.net/myblobcontainer/folder1/'
@@ -66,21 +66,21 @@ WITH (
 
 > [!IMPORTANT]
 >
-> - Ne adja meg a ROWTERMINATOR "\r\n" néven, amely "\r\r\n" lesz értelmezve, és elemzési problémákhoz vezethet
+> - Ne adja meg a ROWTERMINATOR értéket \r\n értékként, amelyet a rendszer \r\r\nként értelmez, és elemzési problémákat okozhat
 
 ## <a name="c-managed-identity"></a>C. Felügyelt identitás
 
-A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fiók VNet van csatolva. 
+Felügyelt identitás hitelesítése akkor szükséges, ha a tárfiók egy virtuális hálózathoz van csatlakoztatva. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 1. Telepítse az Azure PowerShellt a kapcsolódó [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) alapján.
 2. Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szerint.
-3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
+3. Az Azure Storage-fiók Tűzfalak és virtuális hálózatok **beállításai menüjében** be kell Microsoft-szolgáltatások a Tárfiók elérésének engedélyezése megbízható fiókok **számára** beállítást. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
 
 #### <a name="steps"></a>Lépések
 
-1. Ha önálló dedikált SQL-készlettel rendelkezik, regisztrálja az SQL Servert Azure Active Directory (HRE) a PowerShell használatával: 
+1. Ha önálló dedikált SQL-készlete van, regisztrálja az SQL Servert az Azure Active Directory (AAD) szolgáltatásban a PowerShell használatával: 
 
    ```powershell
    Connect-AzAccount
@@ -88,34 +88,34 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-   Ez a lépés nem szükséges egy szinapszis-munkaterületen található dedikált SQL-készletekhez.
+   Ez a lépés nem szükséges a Synapse-munkaterületen belüli dedikált SQL-készletekhez.
 
-1. Ha van egy szinapszis-munkaterülete, regisztrálja a munkaterület rendszer által felügyelt identitását:
+1. Ha Synapse-munkaterülettel dolgozik, regisztrálja a munkaterület rendszer által felügyelt identitását:
 
-   1. Nyissa meg a szinapszis munkaterületet a Azure Portal
-   2. Ugrás a felügyelt identitások panelre 
-   3. Győződjön meg arról, hogy a "folyamatok engedélyezése" beállítás engedélyezve van
+   1. A synapse-munkaterület megnyitása a Azure Portal
+   2. Ugrás a Felügyelt identitások panelre 
+   3. Győződjön meg arról, hogy az "Allow Pipelines" (Folyamatok engedélyezése) beállítás engedélyezve van
    
-   ![Munkaterület-rendszermsi-fájl regisztrálása](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+   ![Munkaterület-rendszer regisztrálása msi](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
 
-1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md)segítségével.
+1. Hozzon **létre egy általános célú v2-tárfiókot** az útmutató [segítségével.](../../storage/common/storage-account-create.md)
 
    > [!NOTE]
    >
-   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md)segítségével.
-   > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](../../storage/blobs/data-lake-storage-known-issues.md).
+   > - Ha általános célú v1- vagy Blob Storage-fiókja van, először frissítenie kell **a v2-re** az útmutató [használatával.](../../storage/common/storage-account-upgrade.md)
+   > - A probléma ismert Azure Data Lake Storage Gen2 tekintse meg ezt az [útmutatót.](../../storage/blobs/data-lake-storage-known-issues.md)
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-adatközreműködő** Azure-szerepkört a dedikált SQL-készletet futtató kiszolgálóhoz vagy munkaterülethez, amelyet a Azure Active Directory (HRE) regisztrált.
+1. A tárfiók alatt lépjen a Access Control **(IAM) pontra,** és válassza a **Szerepkör-hozzárendelés hozzáadása lehetőséget.** Rendeljen **Storage-blobadatok közreműködője** Azure-szerepkört a dedikált SQL-készletet üzemeltető kiszolgálóhoz vagy munkaterülethez, amelyet az Azure Active Directory (AAD) regisztrált.
 
    > [!NOTE]
-   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+   > Ezt a lépést csak a Tulajdonos jogosultsággal rendelkező tagok hajthatja végre. Különböző beépített Azure-szerepkörökért tekintse meg ezt az [útmutatót.](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
    
     > [!IMPORTANT]
-    > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
+    > Adja meg a **Storage-blobadatok** tulajdonosa, közreműködője vagy olvasó Azure-szerepkörét.  Ezek a szerepkörök eltérnek az Azure beépített Tulajdonos, Közreműködő és Olvasó szerepköreitől. 
 
-    ![Azure RBAC-engedély betöltésének engedélyezése](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-engedély megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-4. Most már futtathatja a "felügyelt identitás" megadását megadó MÁSOLÁSi utasítást:
+4. Most már futtathatja a "Managed Identity" (Felügyelt identitás) megadásával rendelkező COPY utasítást:
 
     ```sql
     COPY INTO dbo.target_table
@@ -129,16 +129,16 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az Azure ad-felhasználóhoz. 
+1. A tárfiókja alatt lépjen a Access Control **(IAM) pontra,** és válassza a **Szerepkör-hozzárendelés hozzáadása lehetőséget.** Rendeljen **Storage-blobadatok tulajdonosi,** közreműködői vagy olvasói Azure-szerepkört az Azure AD-felhasználóhoz. 
 
     > [!IMPORTANT]
-    > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
+    > Adja meg a Storage **Blob-adatok** tulajdonosa, Közreműködő vagy Olvasó Azure-szerepkört.  Ezek a szerepkörök eltérnek az Azure beépített Tulajdonos, Közreműködő és Olvasó szerepköreitől.
 
-    ![Azure RBAC-engedély betöltésének engedélyezése](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Azure RBAC-engedély megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentáción](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)keresztül. 
+2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentációban.](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell) 
 
-3. Kapcsolódjon az SQL-készlethez Active Directory használatával, ahol a MÁSOLÁSi utasítást a hitelesítő adatok megadása nélkül is futtathatja:
+3. Csatlakozzon az SQL-készlethez a Active Directory, ahol a HITELESÍTŐ adatok megadása nélkül futtathatja a COPY utasítást:
 
     ```sql
     COPY INTO dbo.target_table
@@ -152,12 +152,12 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="e-service-principal-authentication"></a>E. Szolgáltatásnév-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. [Azure Active Directory-alkalmazás létrehozása](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
-2. [Alkalmazás AZONOSÍTÓjának beolvasása](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
-3. [A hitelesítési kulcs beszerzése](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
-4. [A v1 OAuth 2,0 token végpontjának beolvasása](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Olvasási, írási és végrehajtási engedélyek kiosztása az Azure ad-alkalmazáshoz](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a Storage-fiókban
-6. Ezután futtathatja a COPY utasítást:
+1. [Új Azure Active Directory létrehozása](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [Alkalmazásazonosító lekérte](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [A hitelesítési kulcs lekérte](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [A V1 OAuth 2.0 jogkivonatvégpont beszerzése](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. Olvasási, írási és végrehajtási engedélyek hozzárendelése az [Azure AD-alkalmazáshoz](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a tárfiókban
+6. Most már futtathatja a COPY utasítást:
 
     ```sql
     COPY INTO dbo.target_table
@@ -172,9 +172,9 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 
 > [!IMPORTANT]
 >
-> - Az OAuth 2,0 token végpont **v1** -es verziójának használata
+> - Az OAuth 2.0-jogkivonatvégpont **V1** verziójának használata
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) kapcsolatos cikket.
-- Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](./design-elt-data-loading.md#what-is-elt) cikket
+- A részletes [szintaxist a COPY utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) cikkben talál
+- Az ajánlott [betöltési eljárásokért](./design-elt-data-loading.md#what-is-elt) tekintse meg az adatbetöltés áttekintését ismertető cikket

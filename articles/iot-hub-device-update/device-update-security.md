@@ -1,95 +1,97 @@
 ---
-title: Az Azure IoT Hub eszköz frissítésének biztonsága | Microsoft Docs
-description: Ismerje meg, hogy a IoT Hub eszköz frissítése hogyan gondoskodik az eszközök biztonságos frissítéséről.
+title: Biztonsági beállítások eszközfrissítése Azure IoT Hub | Microsoft Docs
+description: Az eszközök eszközfrissítésének IoT Hub az eszközök biztonságos frissítését.
 author: lichris
 ms.author: lichris
-ms.date: 2/11/2021
+ms.date: 4/15/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489429"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567298"
 ---
-# <a name="device-update-security-model"></a>Eszköz frissítése biztonsági modell
+# <a name="device-update-security-model"></a>Eszközfrissítési biztonsági modell
 
-A IoT Hub eszköz frissítése biztonságos módszert kínál az eszköz belső vezérlőprogram, lemezképek és alkalmazások frissítéseinek telepítéséhez a IoT-eszközökre. A munkafolyamat egy teljes körű biztonságos csatornát biztosít egy teljes körű felügyeleti modellel, amelyet az eszköz a frissítés megbízhatóságának, módosításának és szándékos állapotának bizonyítására használhat fel.
+A IoT Hub eszközfrissítés biztonságos módszert kínál az eszköz belső vezérlőprogramjának, rendszerképének és alkalmazásának frissítésére az IoT-eszközökön. A munkafolyamat egy teljes körű biztonságos csatornát biztosít egy teljes felügyeleti modellel, amely segítségével az eszközök igazolják, hogy a frissítés megbízható, módosítatlan és szándékos.
 
-Az eszköz frissítési munkafolyamatának minden lépése különböző biztonsági funkciókkal és folyamatokkal védett, így biztosítva, hogy a folyamat minden lépése biztonságos handoff hajtson végre a következőre. Az eszköz frissítési ügyfelének azonosítja és megfelelően kezeli az összes törvénytelen frissítési kérelmet. Az ügyfél emellett ellenőrzi, hogy a tartalom megbízható-e, nem módosult-e, és szándékos-e.
+Az eszközfrissítési munkafolyamat minden lépése különböző biztonsági funkciókkal és folyamatokkal van védve, hogy a folyamat minden lépése biztonságos módon adja át a következőt. Az eszközfrissítési ügyfél azonosítja és megfelelően kezeli az illegitimate frissítési kéréseket. Az ügyfél minden letöltést ellenőriz annak érdekében, hogy a tartalom megbízható, módosítatlan és szándékos legyen.
 
-## <a name="for-solution-operators"></a>Megoldási operátorok esetén
+## <a name="for-solution-operators"></a>Megoldáskezelők számára
 
-Ahogy a megoldás-kezelők frissítéseket importálnak az eszközük frissítési példányára, a szolgáltatás feltölti és ellenőrzi a bináris fájlok frissítését, hogy azok ne legyenek módosítva, vagy egy rosszindulatú felhasználó kicserélte őket. Az ellenőrzés után az eszköz frissítési szolgáltatása létrehoz egy belső [frissítési jegyzékfájlt](./update-manifest.md) az importálási jegyzékből és más metaadatokból. Ezt követően az eszköz frissítési szolgáltatása aláírja ezt a frissítési jegyzékfájlt.
+Mivel a megoldáskezelők frissítéseket importálnak az eszközfrissítési példányukba, a szolgáltatás feltölti és ellenőrzi a frissítési bináris fájlokat, hogy egy rosszindulatú felhasználó ne módosította vagy cserélte-e fel őket. Az ellenőrzés után a Device Update [](./update-manifest.md) szolgáltatás létrehoz egy belső frissítési jegyzékfájlt, amely az importálási jegyzékből és más metaadatokból származó fájl-hashekkel rendelkezik. Ezt a frissítési jegyzékfájlt ezután aláírja az eszközfrissítési szolgáltatás.
 
-Amikor a megoldás kezelője egy eszköz frissítésére vonatkozó kéréseket küld, a védett IoT Hub csatornán továbbítanak egy aláírt üzenetet az eszközre. A kérelem aláírását az eszköz az eszköz frissítési ügynöke által hitelesítettként ellenőrzi. 
+Miután betöltötte a szolgáltatást, és az Azure-ban tárolta, az Azure Storage szolgáltatás automatikusan titkosítja a bináris fájlok frissítését és a kapcsolódó ügyfél-metaadatokat. Az eszközfrissítési szolgáltatás nem biztosít automatikusan további titkosítást, de lehetővé teszi a fejlesztők számára a tartalom titkosítását, mielőtt a tartalom elérné az eszközfrissítési szolgáltatást.
 
-Az eredményül kapott bináris letöltéseket a frissítési jegyzékfájl aláírásának ellenőrzése biztosítja. A frissítési jegyzékfájl tartalmazza a bináris fájl kivonatait, így ha a jegyzékfájl megbízható, az eszköz frissítési ügynöke megbízik a kivonatokban, és megfelel a bináris fájljainak. Miután letöltötte és ellenőrizte a frissítési bináris fájlt, azt a rendszer az eszközön lévő telepítőnek adja.
+Amikor a megoldáskezelő egy eszköz frissítését kéri, a rendszer aláírt üzenetet küld a védett IoT Hub az eszközre. A kérelem aláírását az eszköz eszközfrissítési ügynöke ellenőrzi hitelesként. 
 
-## <a name="for-device-builders"></a>Eszköz-építők számára
+Az eredményül kapott bináris letöltések a frissítési jegyzék aláírásának ellenőrzésével vannak biztosítva. A frissítési jegyzékfájl tartalmazza a bináris fájl hasheit, így ha a jegyzék megbízhatónak lett va, a Device Update-ügynök megbízik a hashében, és megfelel a bináris fájloknak. Miután letöltötte és ellenőrizte a frissítési bináris adatokat, biztonságosan átadjuk az eszköz telepítőjéhez.
 
-Annak biztosítása érdekében, hogy az eszköz frissítési szolgáltatása egyszerű, alacsony teljesítményű eszközökre legyen méretezhető, a biztonsági modell nyers aszimmetrikus kulcsokat és nyers aláírásokat használ. JSON-alapú formátumokat használnak, például JSON webes tokeneket & JSON-webkulcsokat.
+## <a name="for-device-builders"></a>Eszközszerkesztők számára
 
-### <a name="securing-update-content-via-the-update-manifest"></a>Frissítési tartalom biztonságossá tétele a frissítési jegyzékfájl használatával
+Annak érdekében, hogy az eszközfrissítési szolgáltatás egyszerű, kis teljesítményű eszközökre skálázjon le, a biztonsági modell nyers aszimmetrikus kulcsokat és nyers aláírásokat használ. JSON-alapú formátumokat, például JSON webtokeneket és JSON-& használják.
 
-A frissítési jegyzékfájl ellenőrzése két aláírás használatával történik. Az aláírások az *aláíró* kulcsokat és a *legfelső szintű* kulcsokat tartalmazó struktúra használatával jönnek létre.
+### <a name="securing-update-content-via-the-update-manifest"></a>A frissítési tartalom biztonságossá tétele a frissítési jegyzéken keresztül
 
-Az eszköz frissítési ügynöke beágyazott nyilvános kulcsokkal rendelkezik, amelyek az összes eszköz Update-kompatibilis eszközhöz használhatók. Ezek a *legfelső szintű* kulcsok. A megfelelő titkos kulcsokat a Microsoft vezérli.
+A frissítési jegyzék két aláírással van ellenőrizve. Az aláírások aláírókulcsokból és  gyökérkulcsokból álló struktúra *használatával vannak létrehozva.*
 
-A Microsoft olyan nyilvános/titkos kulcspárt is létrehoz, amely nem szerepel az eszköz frissítési Ügynökében, vagy az eszközön van tárolva. Ez az *aláíró* kulcs.
+Az eszközfrissítési ügynök beágyazott nyilvános kulcsokkal rendelkezik, amelyek minden eszközfrissítéssel kompatibilis eszközhöz használhatók. Ezek a *gyökérkulcsok.* A megfelelő titkos kulcsokat a Microsoft vezérli.
 
-Ha egy frissítést importál az IoT Hub eszköz frissítésére, és a frissítési jegyzékfájlt a szolgáltatás hozza létre, a szolgáltatás aláírja a jegyzékfájlt az aláíró kulccsal, és magába foglalja az aláíró kulcsot, amelyet egy legfelső szintű kulcs aláír. Amikor a rendszer elküldi a frissítési jegyzékfájlt az eszközre, az eszköz frissítési ügynöke a következő aláírási adatként fogadja el:
+A Microsoft létrehoz egy nyilvános/titkos kulcspárt is, amely nem része az eszközfrissítési ügynöknek, vagy amely az eszközön van tárolva. Ez az *aláírókulcs.*
 
-1. Maga az aláírás értéke.
-2. A #1 létrehozásához használt algoritmus.
-3. A #1 létrehozásához használt aláíró kulcs nyilvánoskulcs-információi.
-4. A nyilvános aláíró kulcs aláírása #3ban.
-5. A #3 létrehozásához használt legfelső szintű kulcs nyilvános kulcsának azonosítója.
-6. A #4 létrehozásához használt algoritmus.
+Amikor frissítést importál az IoT Hub eszközfrissítéseibe, és a szolgáltatás generálja a frissítési jegyzékfájlt, a szolgáltatás aláírja a jegyzékfájlt az aláírókulccsal, és magában foglalja magát az aláírókulcsot, amelyet egy gyökérkulcs ír alá. Amikor a frissítési jegyzékfájlt elküldi az eszköznek, az eszközfrissítési ügynök a következő aláírási adatokat kapja meg:
 
-Az eszköz frissítési ügynöke a fent meghatározott információk alapján ellenőrzi, hogy a nyilvános aláíró kulcs aláírása a legfelső szintű kulccsal van-e aláírva. Az eszköz frissítési ügynöke ezután ellenőrzi, hogy a frissítési jegyzékfájl aláírása alá van-e írva az aláíró kulcs. Ha minden aláírás helyes, a frissítési jegyzékfájlt az eszköz frissítési ügynöke megbízhatónak tekinti. Mivel a frissítési jegyzékfájl magában foglalja a frissítési fájloknak megfelelő fájlkivonat-kivonatokat, a frissítési fájlok is megtekinthetők, ha a kivonatok megegyeznek.
+1. Maga az aláírási érték.
+2. A jelentés létrehozásához használt #1.
+3. A kulcs létrehozásához használt aláírókulcs nyilvános #1.
+4. A nyilvános aláírókulcs aláírása a #3.
+5. A kulcs létrehozásához használt legfelső szintű kulcs nyilvános #3.
+6. Az adatok létrehozásához használt #4.
 
-A root és az aláíró kulcsok lehetővé teszik a Microsoft számára, hogy rendszeres időközönként ellássák az aláíró kulcsot, amely az ajánlott biztonsági eljárás.
+Az eszközfrissítési ügynök a fent megadott információk alapján ellenőrzi, hogy a nyilvános aláírókulcs aláírása a legfelső szintű kulccsal van-e aláírva. Az eszközfrissítési ügynök ezután ellenőrzi, hogy a frissítési jegyzék aláírását az aláírókulcs írja-e alá. Ha az összes aláírás helyes, a frissítési jegyzék megbízhatónak fog lenni a Device Update Agent számára. Mivel a frissítési jegyzékfájl magában foglalja a frissítési fájloknak megfelelő fájl-hashelőket, a frissítési fájlok akkor is megbízhatók, ha a hashek megegyeznek.
 
-### <a name="json-web-signature-jws"></a>JSON webes aláírás (JWS)
+A legfelső szintű és aláírókulcsok lehetővé teszik, hogy a Microsoft rendszeres időközönként legördülje az aláírókulcsot, ami biztonsági ajánlott eljárás.
 
-A `updateManifestSignature` használatával biztosítható, hogy a-ben található információk `updateManifest` nem lettek illetéktelenül módosítva. A a JSON `updateManifestSignature` -Webkulcsokat használó JSON webes aláírással jön létre, amely lehetővé teszi a források ellenőrzését. Az aláírás egy Base64Url-kódolású karakterlánc, amely a következő három szakaszt ismerteti: ".".  A JSON-kulcsok és-tokenek elemzéséhez és ellenőrzéséhez tekintse meg a [jws_util. h segítő módszereit](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) .
+### <a name="json-web-signature-jws"></a>JSON webaláírás (JWS)
 
-A JSON web Signature egy széles körben használt [javasolt IETF szabvány](https://tools.ietf.org/html/rfc7515) a tartalmak JSON-alapú adatstruktúrákkal történő aláírásához. Az adatok integritásának biztosítására az adatok aláírásának ellenőrzésével van lehetőség. További információt a JSON web Signature (JWS) [RFC 7515](https://www.rfc-editor.org/info/rfc7515)-ben találhat.
+A a segítségével gondoskodik arról, hogy a által tartalmazott információkat `updateManifestSignature` `updateManifest` ne módosítják illetéktelenül. A `updateManifestSignature` előállítása JSON webes aláírással és JSON-webkulcsokkal, lehetővé téve a forrás ellenőrzését. Az aláírás egy Base64Url kódolású sztring, három szakaszsal, "." karakterekkel.  Tekintse meg [a jws_util.h](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) segítő metódusokat a JSON-kulcsok és -jogkivonatok ellenőrzéséhez és ellenőrzéséhez.
 
-### <a name="json-web-token"></a>JSON Web Token
+A JSON Web Signature egy széles körben használt [ajánlott IETF-szabvány](https://tools.ietf.org/html/rfc7515) tartalom JSON-alapú adatstruktúrák használatával való aláírásához. Ezzel biztosíthatja az adatok integritását az adatok aláírásának ellenőrzéséhez. További információt a JSON Web Signature (JWS) [RFC 7515 (JWS) RFC 7515 webhelyén talál.](https://www.rfc-editor.org/info/rfc7515)
 
-A JSON webes jogkivonatok egy nyílt, iparági [szabványnak](https://tools.ietf.org/html/rfc7519) megfelelő módszer, amely a jogcímeket két fél közötti biztonságos ábrázolására kéri.
+### <a name="json-web-token"></a>JSON-webtoken
+
+A JSON Web Tokens egy nyílt, iparági [szabványnak](https://tools.ietf.org/html/rfc7519) megfelelő módszer a jogcímek biztonságos ábrázolása két fél között.
 
 ### <a name="root-keys"></a>Legfelső szintű kulcsok
 
-Minden eszköz-frissítési eszköz tartalmaz legfelső szintű kulcsot. Ezek a kulcsok az összes eszköz-frissítés aláírásának legfelső szintű bizalmi kapcsolata. Az aláírásokat a fenti legfelső szintű kulcsok egyikén kell összekapcsolni, hogy azok megbízhatónak tekintendők.
+Minden eszközfrissítési eszköz gyökérkulcsokat tartalmaz. Ezek a kulcsok az eszközfrissítés összes aláírásának megbízhatósági gyökerét biztosítják. Minden aláírást ezen legfelső szintű kulcsok egyikében kell összefűzni, hogy megbízhatónak minősülnek.
 
-A legfelső szintű kulcsok az idő múlásával változnak, mivel az aláírási kulcsok rendszeres, biztonsági okokból történő elforgatása megfelelő. Ennek eredményeképpen az eszköz frissítési ügynökének szoftverének frissítenie kell magát a legfelső szintű kulcsokkal. 
+A legfelső szintű kulcsok készlete idővel megváltozik, mivel biztonsági okokból rendszeresen cserélendők az aláírókulcsok. Ennek eredményeképpen az eszközfrissítési ügynök szoftverének frissítenie kell magát a legújabb legfelső szintű kulcsokkal. 
 
 ### <a name="signatures"></a>Aláírások
 
-Az összes aláírást egy, a legfelső szintű kulcs által aláírt aláíró (nyilvános) kulcs fogja elhelyezni. Az aláírás azonosítja, melyik legfelső szintű kulcsot használta az aláíró kulcs aláírására. 
+Minden aláíráshoz a legfelső szintű kulcsok egyikében aláírt aláírási (nyilvános) kulcs fog igazodni. Az aláírás azonosítja az aláírókulcs aláírásához használt legfelső szintű kulcsot. 
 
-Az eszköz frissítési ügynökének ellenőriznie kell az aláírásokat úgy, hogy először ellenőrzi, hogy az aláíró (nyilvános) kulcs aláírása megfelelő, érvényes-e, és aláírja-e a jóváhagyott legfelső szintű kulcsok egyikét. Az aláírási kulcs sikeres ellenőrzése után maga az aláírás is érvényesíthető a most megbízható aláírás nyilvános kulcsának használatával.
+Az eszközfrissítési ügynöknek először ellenőriznie kell az aláírásokat annak ellenőrzésével, hogy az aláíró (nyilvános) kulcs aláírása megfelelő, érvényes és a jóváhagyott legfelső szintű kulcsok egyikével van aláírva. Az aláírókulcs sikeres ellenőrzése után maga az aláírás is érvényesíthető a már megbízhatónak bizonyult aláíró nyilvános kulccsal.
 
-Az aláíró kulcsok sokkal gyorsabb ütemben vannak elforgatva, mint a legfelső szintű kulcsok, ezért a különböző aláíró kulcsok által aláírt üzeneteket kell elvárnia. 
+Az aláírókulcsok a legfelső szintű kulcsoknál sokkal gyorsabb ütemben vannak elforgatva, ezért különböző aláírókulcsokkal aláírt üzenetekre számít. 
 
-Az aláíró kulcsok visszavonását az eszköz frissítési szolgáltatása felügyeli, így a felhasználók nem kísérlik meg az aláíró kulcsok gyorsítótárazását. Mindig az aláírást kísérő kulcsot használja.
+Az aláírókulcsok visszavonását az eszközfrissítési szolgáltatás kezeli, így a felhasználók nem próbálkoznak az aláírókulcsok gyorsítótárazása során. Mindig használja az aláíráshoz tartozó aláírókulcsot.
 
 ### <a name="receiving-updates"></a>Frissítések fogadása
 
-Az eszköz frissítési ügynöke által fogadott frissítési kérések egy aláírt frissítési jegyzékfájl (UM) dokumentumot tartalmaznak. Az ügynöknek ellenőriznie kell, hogy az UM aláírása megfelelő és sértetlen-e. Ezt úgy végezheti el, hogy ellenőrzi, hogy az UM-aláírás aláíró kulcsát egy megfelelő legfelső szintű kulccsal aláírta-e. Ha elkészült, az ügynök érvényesíti az egyesített üzenetküldési aláírást az aláíró kulcson.
+Az eszközfrissítési ügynök által fogadott frissítési kérelmek aláírt frissítési jegyzékfájlt (UM) tartalmaznak. Az ügynöknek ellenőriznie kell, hogy az UM aláírása megfelelő és érintetlen-e. Ez annak ellenőrzését jelenti, hogy az UM-aláírás aláírókulcsát egy megfelelő legfelső szintű kulcs írta alá. Ha ez megtörtént, az ügynök ellenőrzi az UM-aláírást az aláírókulcson.
 
-Az egyesített üzenetküldési aláírás érvényesítése után az eszköz frissítési ügynöke "igazság forrásaként" is megbízhat. Az összes további biztonsági megbízhatóság ebből a forrásból ered. 
+Az UM-aláírás ellenőrzése után az eszközfrissítési ügynök "igazságforrásként" megbízik benne. Minden további biztonsági megbízhatóság ebből a forrásból ered. 
 
-Az UM URL-eket és fájlkivonat-tartalmakat tartalmaz a letöltéshez és a telepítéshez. Miután az ügynök letöltött egy bináris frissítést, ellenőriznie kell a frissítést az UM-ben található fájlkivonat-kivonaton. Ez egy tranzitív megbízhatósági modellt biztosít a letöltés ellenőrzéséhez. Ez nem csak azt biztosítja, hogy a tartalom sértetlen (nem módosult), de megerősíti, hogy a letöltött elemek valóban a letöltésre szánták. 
+Az UM a letölteni és telepíteni kívánt tartalom URL-címeit és fájl-hasheiit tartalmazza. Miután az ügynök letöltött egy frissítési bináris fájlt, ellenőriznie kell a frissítést az UM-fájl kivonatán. Ez tranzitív megbízhatósági modellt biztosít a letöltések érvényesítéséhez. Nem csupán biztosítja, hogy a tartalom érintetlen (nem módosult), hanem azt is megerősíti, hogy a letöltött tartalom valóban az volt, amit le kellett volna tölteni. 
 
 ### <a name="securing-the-device"></a>Az eszköz biztonságossá tétele
 
-Fontos annak biztosítása, hogy az eszközön a frissítéssel kapcsolatos biztonsági eszközök megfelelően biztonságosak és védve legyenek az eszközön. Az eszközöket, például a legfelső szintű kulcsokat védeni kell a módosítással szemben. Ezt többféleképpen is megteheti, például biztonsági eszközök (TPM, SGX ENKLÁVÉHOZ, HSM vagy más biztonsági eszközök) használata, vagy akár az eszköz frissítési ügynökének is. Az utóbbi megköveteli, hogy az eszköz frissítési ügynökének kódja digitálisan alá legyen írva, és a rendszer kódja integritásának támogatása engedélyezve legyen az ügynök kódjának rosszindulatú módosításával szembeni védelemhez.
+Fontos, hogy az eszközfrissítéshez kapcsolódó biztonsági eszközök megfelelően védettek és védettek az eszközön. Az eszközöket, például a gyökérkulcsokat védeni kell a módosításokkal szemben. Ezt többféleképpen is meg lehet tenni, például biztonsági eszközök (TPM, SGX, HSM, egyéb biztonsági eszközök) használatával, vagy akár szoftveres kódolással az eszközfrissítési ügynökben. Az utóbbi megköveteli, hogy az eszközfrissítési ügynök kódja digitálisan alá legyen írva, és hogy a rendszer kódintegritás-támogatása védve legyen az ügynökkód rosszindulatú módosításával szemben.
 
-További biztonsági intézkedések is megadhatók, például annak biztosítása, hogy az összetevőről az összetevőbe való handoff biztonságos módon történjen. Például egy adott elkülönített fiók regisztrálása a különböző összetevők futtatásához. A hálózati kommunikációt (például REST API hívásokat) csak a helyi állomásra korlátozza.
+További biztonsági intézkedések lehetnek indokoltak, például annak biztosítása, hogy az összetevőről az összetevőre való leosztás biztonságos módon történik. Például regisztrálhat egy adott elkülönített fiókot a különböző összetevők futtatásához. A hálózatalapú kommunikáció (például a REST API hívások) korlátozása csak a localhostra.
 
-**[Következő lépés: További információ arról, hogy az eszköz frissítése hogyan használja az Azure RBAC](.\device-update-control-access.md)**
+**[Következő lépés: További információ arról, hogyan használja az eszközfrissítés az Azure RBAC-t](.\device-update-control-access.md)**

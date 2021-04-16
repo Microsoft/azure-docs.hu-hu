@@ -1,89 +1,89 @@
 ---
-title: 'SQL Server a felügyelt Azure SQL-példányhoz: teljesítmény elemzése'
-description: Ismerje meg, hogyan hozhatja létre és hasonlíthatja össze a teljesítmény alapkonfigurációját, amikor áttelepíti SQL Server adatbázisait az Azure SQL felügyelt példányára.
+title: 'SQL Server a Azure SQL Managed Instance: Teljesítmény alapkonfigurációja'
+description: Megtudhatja, hogyan hozhat létre és hasonlíthatja össze a teljesítményre vonatkozó alapkonfigurációkat a SQL Server-adatbázisok Azure SQL Managed Instance.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47684bf29f1f34b8c9c59c04b7d33d234505cc2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023673"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389706"
 ---
-# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>Áttelepítési teljesítmény: SQL Server az Azure SQL felügyelt példányának teljesítmény-elemzéséhez
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>Migrálás teljesítménye: SQL Server Azure SQL Managed Instance teljesítménykonfigurációhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
-Hozzon létre egy alapkonfigurációt, amely összehasonlítja a számítási feladatok teljesítményét egy SQL felügyelt példányon a SQL Serveron futó eredeti munkaterheléssel. 
+Hozzon létre egy teljesítménykonfigurációt, hogy összehasonlítsa a számítási feladatok teljesítményét egy SQL Managed Instance és az eredeti számítási feladat SQL Server. 
 
-## <a name="create-a-baseline"></a>Alapterv létrehozása
+## <a name="create-a-baseline"></a>Alapkonfiguráció létrehozása
 
-Ideális esetben a teljesítmény a Migrálás után hasonló vagy jobb, ezért fontos, hogy az alapértékeket a forráson méri és jegyezze fel, majd összehasonlítsa őket a célként megadott környezettel. A teljesítmény-alapterv olyan paraméterek összessége, amelyek meghatározzák az átlagos számítási feladatot a forráson. 
+Ideális esetben a teljesítmény hasonló vagy jobb a migrálás után, ezért fontos mérni és rögzíteni az alapkonfiguráció teljesítményértékeket a forráson, majd össze kell hasonlítani őket a célkörnyezettel. A teljesítmény-alapkonfiguráció olyan paraméterek készlete, amelyek meghatározzák az átlagos számítási feladatot a forráson. 
 
-Válasszon ki egy fontos és az üzleti számítási feladatnak megfelelő lekérdezési készletet. Mérje fel és dokumentálja a lekérdezésekhez tartozó minimális/átlagos/maximális időtartamot és CPU-használatot, valamint a forráskiszolgáló teljesítmény-metrikáit, például az átlagos/maximális CPU-használatot, az átlagos/maximális lemez i/o-késést, az átviteli sebességet, a IOPS, az átlagos/maximális oldal élettartamát, valamint a tempdb átlagos maximális méretét. 
+Válassza ki azokat a lekérdezéseket, amelyek fontosak a számára, és amelyek az üzleti tevékenységi feladatok reprezentatívak. Mérje meg és dokumentálja a lekérdezések minimális/átlagos/maximális időtartamát és PROCESSZORhasználatát, valamint a forráskiszolgáló teljesítménymetrikákat, például az átlagos/maximális CPU-használatot, az átlagos/maximális lemez I/O-késést, az átviteli sebességet, az IOPS-t, az átlagos/maximális oldal-várható élettartamot és a tempdb átlagos maximális méretét. 
 
-A következő erőforrások segíthetnek a teljesítmény alaptervének definiálásában: 
+A következő erőforrások segíthetnek meghatározni a teljesítmény alapkonfigurációt: 
 
    - [CPU-használat figyelése ](https://techcommunity.microsoft.com/t5/azure-sql-database/monitor-cpu-usage-on-sql-server-and-azure-sql/ba-p/680777#M131)
-   - [Memóriahasználat](/sql/relational-databases/performance-monitor/monitor-memory-usage)   figyelése és határozza meg a különböző összetevők által használt memória mennyiségét, például a puffer készletét, a terv gyorsítótárát, az erőforráskészlet-készletet, [a memóriabeli OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage)stb. Emellett meg kell találnia az oldal átlagos és csúcsérték értékét a memória várható élettartama teljesítményszámláló számára. 
-   - A lemez i/o-használatának figyelése a forrás SQL Server példányon a [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)   nézet vagy [teljesítményszámlálók](/sql/relational-databases/performance-monitor/monitor-disk-usage)használatával. 
-   - A számítási feladatok és a lekérdezési teljesítmény figyelése a dinamikus felügyeleti nézetek (vagy a lekérdezési tároló) vizsgálatával, ha SQL Server 2016-es és újabb verzióról végez áttelepítést). Azonosítsa a számítási feladatok legfontosabb lekérdezésének átlagos időtartamát és CPU-felhasználását. 
+   - [Memóriahasználat figyelése](/sql/relational-databases/performance-monitor/monitor-memory-usage)   és határozza meg a különböző összetevők, például a pufferkészlet, a tervgyorsítótár, az oszloptárkészlet, a memóriabeli [OLTP stb.](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage)által használt memória mennyiségét. Emellett a Page Life Expectancy memóriateljesítmény-számláló átlag- és csúcsértékét is meg kell találnia. 
+   - Monitorja a lemez I/O-használatát a SQL Server példányon a [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)    [teljesítményszámlálók használatával.](/sql/relational-databases/performance-monitor/monitor-disk-usage) 
+   - Figyelje a számítási feladatokat és a lekérdezések teljesítményét a dinamikus felügyeleti nézetek vizsgálatával (vagy a Lekérdezéstárat, ha a 2016-os vagy SQL Server-os vagy újabb rendszerről mi történik). A számítási feladat legfontosabb lekérdezései átlagos időtartamának és CPU-használatának azonosítása. 
 
-A forrás-SQL Server teljesítményével kapcsolatos problémákat a Migrálás előtt kell kezelni. Az ismert problémák bármely új rendszerbe történő áttelepítése váratlan eredményeket eredményezhet, és érvénytelenítheti a teljesítmény összehasonlítását. 
+A forrás-adatforrás teljesítményével kapcsolatos SQL Server a migrálás előtt meg kell oldani. Az ismert problémák új rendszerekre való áttelepítése váratlan eredményeket okozhat, és érvényteleníthet minden teljesítmény-összehasonlítást. 
 
 
 ## <a name="compare-performance"></a>Teljesítmény összehasonlítása 
 
-Miután meghatározta az alapkonfigurációt, hasonlítsa össze a hasonló számítási feladatok teljesítményét a célként megadott SQL felügyelt példányon. A pontosság érdekében fontos, hogy az SQL felügyelt példányának környezete a lehető legnagyobb mértékben összehasonlítható legyen a SQL Server környezettel. 
+Az alapkonfiguráció meghatározása után hasonlítsa össze a hasonló számítási feladatok teljesítményét a SQL Managed Instance. A pontosság érdekében fontos, hogy a SQL Managed Instance a lehető legnagyobb mértékben hasonlítható legyen össze SQL Server környezettel. 
 
-A felügyelt SQL-példányok infrastruktúrájának eltérései pontosan nem valószínűek, hogy a megfelelő teljesítményt használják. Előfordulhat, hogy egyes lekérdezések a vártnál gyorsabban futnak, míg mások lassabbak lehetnek. Ennek az összehasonlításnak a célja annak ellenőrzése, hogy a felügyelt példány terhelési teljesítménye megfelel-e SQL Server (átlagos) teljesítményének, valamint az eredeti teljesítménnyel nem egyező teljesítménnyel rendelkező kritikus lekérdezések azonosításának. 
+Az infrastruktúra SQL Managed Instance, amelyek miatt a teljesítmény egyeztetése nagyon valószínűtlen. Egyes lekérdezések a vártnál gyorsabban futhatnak, míg mások lassabbak. Az összehasonlítás célja annak ellenőrzése, hogy a számítási feladatok felügyelt példányon való teljesítménye megegyezik-e az SQL Server teljesítményével (átlagosan), és azonosítani kell az olyan kritikus fontosságú lekérdezéseket, amelyek teljesítménye nem egyezik meg az eredeti teljesítményével. 
 
 A teljesítmény-összehasonlítás valószínűleg a következő eredményeket eredményezi: 
 
-- A felügyelt példányon a munkaterhelés teljesítménye igazodik, vagy jobb, mint a forrás-SQL Server munkaterhelés-teljesítménye. Ebben az esetben sikeresen megerősítette, hogy az áttelepítés sikeres volt. 
+- A számítási feladatok teljesítménye a felügyelt példányon igazodik vagy jobb, mint a számítási feladatok teljesítménye a SQL Server. Ebben az esetben sikeresen megerősítette, hogy a migrálás sikeres volt. 
 
-- A teljesítménnyel kapcsolatos paraméterek és lekérdezések többsége a vártnak megfelelően működik, és bizonyos kivételek miatt csökkenhet a teljesítmény. Ebben az esetben azonosítsa a különbségeket és azok fontosságát. Ha van olyan fontos lekérdezés, amely csökkentett teljesítményű, akkor vizsgálja meg, hogy az alapul szolgáló SQL-csomagok módosultak-e, vagy hogy a lekérdezések elérik-e az erőforrás-korlátokat. Ezt úgy is elháríthatja, ha a kritikus lekérdezésekre mutató javaslatokat alkalmaz (például a kompatibilitási szint módosítása, az örökölt kardinális kalkulátor) vagy közvetlenül, vagy a tervezési útmutatók használatával. Győződjön meg arról, hogy a statisztikák és az indexek naprakészek és egyenértékűek mindkét környezetben. 
+- A számítási feladatban a teljesítményparaméterek és a lekérdezések többsége a várt módon működik, és néhány kivétel csökkent teljesítményt eredményez. Ebben az esetben azonosítsa a különbségeket és azok fontosságát. Ha vannak olyan fontos lekérdezések, amelyek teljesítménye csökkent, vizsgálja meg, hogy a mögöttes SQL-csomagok módosultak-e, vagy a lekérdezések túllépik-e az erőforráskorlátokat. Ezt csökkentheti, ha közvetlenül vagy tervútmutatókkal alkalmaz néhány tippet a kritikus lekérdezésekre (például a kompatibilitási szint módosítása vagy az örökölt számosságbecsülő). Győződjön meg arról, hogy a statisztikák és az indexek naprakészek és egyenértékűek mindkét környezetben. 
 
-- A legtöbb lekérdezés lassabb egy felügyelt példányon a forrás-SQL Server példánnyal összehasonlítva. Ebben az esetben próbálja meg megállapítani a különbség kiváltó okait, például az [erőforrás-korlátok elérését](../../managed-instance/resource-limits.md#service-tier-characteristics) , például az IO, a memória vagy a példány naplózási korlátját. Ha nincs olyan erőforrás-korlátozás, amely a különbséget okozza, próbálja meg módosítani az adatbázis kompatibilitási szintjét, vagy módosítsa az adatbázis beállításait, például a örökölt kardinális becslést, majd futtassa újra a tesztet. Tekintse át a felügyelt példány vagy a lekérdezési tár nézetei által megadott javaslatokat a romlott teljesítményű lekérdezések azonosításához. 
+- A legtöbb lekérdezés lassabban fut egy felügyelt példányon, mint a SQL Server példányon. Ebben az esetben próbálja azonosítani a különbség kiváltó [](../../managed-instance/resource-limits.md#service-tier-characteristics) okait, például az erőforráskorlátok (például az I/O, a memória vagy a példánynaplók sebességére vonatkozó korlátok) elérésének okait. Ha nincsenek a különbséget okozó erőforráskorlátok, próbálja meg módosítani az adatbázis kompatibilitási szintjét, vagy módosítsa az adatbázis beállításait, például az örökölt számosságbecslést, majd futtassa újra a tesztet. Tekintse át a felügyelt példány vagy a lekérdezéstár nézetei által nyújtott javaslatokat a regressziós teljesítményű lekérdezések azonosításához. 
 
-A felügyelt SQL-példány beépített automatikus javítási funkcióval rendelkezik, amely alapértelmezés szerint engedélyezve van. Ez a funkció biztosítja, hogy a múltban ledolgozott lekérdezések nem csökkennek a jövőben. Ha ez a funkció nincs engedélyezve, futtassa a munkaterhelést a régi beállításokkal, így az SQL felügyelt példánya megismerheti a teljesítmény alapkonfigurációját. Ezután engedélyezze a szolgáltatást, és futtassa újra a munkafolyamatot az új beállításokkal. 
+SQL Managed Instance rendelkezik egy beépített automatikus tervkorrekciós funkcióval, amely alapértelmezés szerint engedélyezve van. Ez a funkció biztosítja, hogy a múltban jól működött lekérdezések ne romolnak a jövőben. Ha ez a funkció nincs engedélyezve, futtassa a számítási feladatot a régi beállításokkal, hogy SQL Managed Instance megismerheti a teljesítmény alapkonfigurációját. Ezután engedélyezze a funkciót, és futtassa újra a számítási feladatot az új beállításokkal. 
 
-Módosítsa a teszt paramétereit, vagy frissítsen magasabb szolgáltatási szintre, hogy elérje az igényeinek megfelelő munkaterhelés-teljesítmény optimális konfigurációját. 
+Az igényeinek megfelelő számítási feladat teljesítményének optimális konfigurációjának elérése érdekében módosítja a teszt paramétereit, vagy frissítsen magasabb szolgáltatási szintekre. 
 
 ## <a name="monitor-performance"></a>Teljesítmény figyelése 
 
-Az SQL felügyelt példánya fejlett eszközöket biztosít a figyeléshez és a hibaelhárításhoz, és a példány teljesítményének figyeléséhez használja őket. A figyelni kívánt főbb mérőszámok a következők: 
+SQL Managed Instance speciális eszközöket biztosít a monitorozáshoz és a hibaelhárításhoz, és érdemes használni őket a példány teljesítményének figyelése érdekében. A figyelt legfontosabb metrikák a következőek: 
 
-- A példány CPU-használata annak megállapítására, hogy a kiépített virtuális mag száma megfelelő-e a számítási feladathoz. 
-- Lap – várható élettartam a felügyelt példányon annak megállapítása érdekében, hogy szüksége van-e [további memóriára](https://techcommunity.microsoft.com/t5/azure-sql-database/do-you-need-more-memory-on-azure-sql-managed-instance/ba-p/563444).
--  Statisztikák, például INSTANCE_LOG_GOVERNOR vagy PAGEIOLATCH, amelyek a tárolási IO-problémákat azonosítják, különösen a általános célú szinten, ahol szükség lehet a fájlok előzetes lefoglalására a jobb IO-teljesítmény eléréséhez. 
+- Cpu-használat a példányon annak meghatározásához, hogy a kiépített virtuális magok száma megfelel-e a számítási feladatnak. 
+- A felügyelt példány lap-várható élettartama annak meghatározásához, hogy szüksége van-e [további memóriára.](https://techcommunity.microsoft.com/t5/azure-sql-database/do-you-need-more-memory-on-azure-sql-managed-instance/ba-p/563444)
+-  Olyan statisztikák INSTANCE_LOG_GOVERNOR mint a INSTANCE_LOG_GOVERNOR vagy a PAGEIOLATCH, amelyek azonosítják általános célú tárolási I/O-problémákat, különösen az általános célú szinten, ahol előfordulhat, hogy a jobb I/O-teljesítmény érdekében előre le kell foglalnia a fájlokat. 
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok  
 
-A teljesítmény összehasonlításakor vegye figyelembe a következőket: 
+A teljesítmény összehasonlíthatóságakor vegye figyelembe a következőket: 
 
-- A beállítások egyeznek a forrás és a cél között. Ellenőrizze, hogy a különböző példányok, adatbázisok és tempdb beállítások egyenértékűek-e a két környezet között. A konfigurációban, a kompatibilitási szintekben, a titkosítási beállításokban, a nyomkövetési jelzők stb.-ben a teljesítmény megváltoztatható. 
+- A beállítások megegyeznek a forrás és a cél között. Ellenőrizze, hogy a különböző példány-, adatbázis- és tempdb-beállítások egyenértékűek-e a két környezet között. A konfiguráció, a kompatibilitási szintek, a titkosítási beállítások, a nyomkövetési jelzők stb. eltérései mind eltérést mutatnak a teljesítményben. 
 
-- A tárterület az [ajánlott eljárásoknak](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)megfelelően van konfigurálva. Például a általános célú esetében előfordulhat, hogy a teljesítmény növelése érdekében a fájlok méretét előre le kell foglalni. 
+- A tárolás az ajánlott eljárások [szerint van konfigurálva.](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525) Előfordulhat például, általános célú a teljesítmény javítása érdekében előre le kell foglalnia a fájlok méretét. 
 
-- Vannak olyan [kulcsfontosságú környezeti eltérések](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) , amelyek a felügyelt példányok és a SQL Server közötti teljesítménybeli különbségeket okozhatják. Azonosítsa a környezethez kapcsolódó kockázatokat, amelyek hozzájárulhatnak a teljesítménnyel kapcsolatos problémákhoz. 
+- A [környezetben alapvető különbségek lehetnek,](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) amelyek a felügyelt példányok és a felügyelt példányok közötti teljesítménybeli SQL Server. Azonosítsa a környezet szempontjából releváns kockázatokat, amelyek hozzájárulhatnak a teljesítménybeli problémákhoz. 
 
-- A lekérdezési tárolót és az automatikus finomhangolást engedélyezni kell az SQL felügyelt példányán, mivel segítenek a számítási feladatok teljesítményének mérésében és a lehetséges teljesítménybeli problémák automatikus enyhítésében. 
+- A lekérdezéstárat és az automatikus hangolást engedélyezni kell a SQL Managed Instance mivel ezek segítenek a számítási feladatok teljesítményének mérésében és a potenciális teljesítménybeli problémák automatikus csökkentésében. 
 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az új Azure SQL felügyelt példány környezetének optimalizálásával kapcsolatos további információkért tekintse meg a következő forrásokat: 
+Az új környezet optimalizálásával kapcsolatos további Azure SQL Managed Instance az alábbi forrásokban található: 
 
-- [Hogyan állapítható meg, hogy az Azure SQL felügyelt példányain miért különbözik a számítási feladatok teljesítményének SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
-- [Az SQL felügyelt példány és a SQL Server közötti teljesítménybeli különbségek fő okai](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
-- [Tárolási teljesítmény – ajánlott eljárások és szempontok az Azure SQL felügyelt példányaihoz (általános célú)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Valós idejű Teljesítményfigyelés a felügyelt Azure SQL-példányhoz (ez archivált, ez a cél?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Hogyan lehet azonosítani, hogy miért különbözik a számítási feladatok Azure SQL Managed Instance teljesítménye a SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
+- [A teljesítménybeli különbségek fő okai a SQL Managed Instance és a SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
+- [Tárolási teljesítményre vonatkozó ajánlott eljárások és szempontok Azure SQL Managed Instance (általános célú)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
+- [Valós idejű teljesítményfigyelés Azure SQL Managed Instance (archivált, ez a cél?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

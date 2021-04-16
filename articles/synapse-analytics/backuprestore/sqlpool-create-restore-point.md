@@ -1,7 +1,6 @@
 ---
-title: Felhasználó által definiált visszaállítási pont létrehozása egy dedikált SQL-készlethez
-description: Ebből a témakörből megtudhatja, hogyan hozhat létre felhasználó által definiált visszaállítási pontot a dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban a Azure Portal használatával.
-services: synapse-analytics
+title: Felhasználó által megadott visszaállítási pont létrehozása dedikált SQL-készlethez
+description: Megtudhatja, hogyan használhatja a Azure Portal egy felhasználó által definiált visszaállítási pontot dedikált SQL-készlethez a Azure Synapse Analytics.
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,30 +10,30 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b695f6c7aabc21541fcc48efed54bbecd022f65a
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94579538"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567927"
 ---
 # <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy új, felhasználó által definiált visszaállítási pontot egy dedikált SQL-készlethez az Azure szinapszis Analyticsben a Azure Portal használatával.
+Ebből a cikkből megtudhatja, hogyan hozhat létre új, felhasználó által definiált visszaállítási pontot egy dedikált SQL-készlethez a Azure Synapse Analytics a Azure Portal.
 
 ## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Felhasználó által definiált visszaállítási pontok létrehozása a Azure Portal
 
-A felhasználó által definiált visszaállítási pontok a Azure Portal használatával is létrehozhatók.
+Felhasználó által definiált visszaállítási pontok is Azure Portal.
 
-1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
+1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) fiókjába.
 
-2. Navigáljon arra a dedikált SQL-készletre, amelyhez visszaállítási pontot kíván létrehozni.
+2. Keresse meg azt a dedikált SQL-készletet, amely számára visszaállítási pontot kíván létrehozni.
 
-3. Válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új visszaállítási pont** lehetőséget. Ha az új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy a dedikált SQL-készlet nincs szüneteltetve.
+3. A **bal oldali panelen** válassza az Áttekintés, majd az **+ Új visszaállítási pont lehetőséget.** Ha az Új visszaállítási pont gomb nincs engedélyezve, győződjön meg arról, hogy a dedikált SQL-készlet nincs szüneteltetve.
 
     ![Új visszaállítási pont](../media/sql-pools/create-sqlpool-restore-point-01.png)
 
-4. Adja meg a felhasználó által definiált visszaállítási pont nevét, majd kattintson az **alkalmaz** gombra. A felhasználó által definiált visszaállítási pontok alapértelmezett megőrzési időtartama hét nap.
+4. Adja meg a felhasználó által megadott visszaállítási pont nevét, majd kattintson az **Alkalmaz gombra.** A felhasználó által megadott visszaállítási pontok alapértelmezett megőrzési ideje hét nap.
 
     ![A visszaállítási pont neve](../media/sql-pools/create-sqlpool-restore-point-02.png)
 
