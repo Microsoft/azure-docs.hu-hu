@@ -25,12 +25,12 @@ ms.locfileid: "107496758"
 
 A szolgáltatáscímke egy adott Azure-szolgáltatásból származó IP-címelőtagok csoportját jelöli. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és a címek változásával automatikusan frissíti a szolgáltatáscímkét, így minimalizálja a hálózati biztonsági szabályok gyakori frissítésének összetettségét.
 
-A szolgáltatáscímkék használatával hálózati biztonsági [](./network-security-groups-overview.md#security-rules) csoportok vagy hálózati biztonsági csoportok hálózati hozzáférés-vezérlését határozhatja [Azure Firewall.](../firewall/service-tags.md) Biztonsági szabályok létrehozásakor használjon szolgáltatáscímkéket adott IP-címek helyett. A szolgáltatáscímke nevének (például **ApiManagement)**  a  szabály megfelelő forrás- vagy célmezőben való megadásával engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
+A szolgáltatáscímkékkel hálózati biztonsági csoportok [](./network-security-groups-overview.md#security-rules) vagy hálózati biztonsági csoportok hálózati hozzáférés-vezérlését határozhatja [Azure Firewall.](../firewall/service-tags.md) Biztonsági szabályok létrehozásakor használjon szolgáltatáscímkéket adott IP-címek helyett. A szolgáltatáscímke nevének (például **ApiManagement)**  a  szabály megfelelő forrás- vagy célmezőben való megadásával engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
 
 > [!NOTE] 
 > 2021 márciusában a felhasználó által megadott útvonalakban explicit IP-címtartományok helyett [szolgáltatáscímkéket is használhat.](./virtual-networks-udr-overview.md) Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. 
 
-A szolgáltatáscímkék használatával hálózatelszigetelést érhet el, és megvédheti Azure-erőforrásait az általános internettől, miközben nyilvános végpontokkal bíró Azure-szolgáltatásokat érhet el. Hozzon létre bejövő/kimenő hálózati biztonságicsoport-szabályokat az **internetre/internetről** kimenő forgalom [](#available-service-tags) megtagadása érdekében, és engedélyezze az **AzureCloudba** irányuló vagy onnan kimenő forgalmat, vagy adott Azure-szolgáltatások egyéb elérhető szolgáltatáscímkéit.
+A szolgáltatáscímkék használatával hálózatelszigetelést érhet el, és megvédheti Azure-erőforrásait az általános internettől, miközben nyilvános végpontokkal bíró Azure-szolgáltatásokat érhet el. Hozzon létre bejövő/kimenő hálózati biztonságicsoport-szabályokat az **internetre/internetről** kimenő forgalom [](#available-service-tags) megtagadása érdekében, és engedélyezze az **AzureCloudba** vagy az azure-szolgáltatások egyéb elérhető szolgáltatáscímkéibe irányuló és az onnan kimenő forgalmat.
 
 ![Az Azure-szolgáltatások hálózati elkülönítése szolgáltatáscímkék használatával](./media/service-tags-overview/service_tags.png)
 
@@ -70,10 +70,10 @@ Alapértelmezés szerint a szolgáltatáscímkék a teljes felhő tartományát 
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Kimenő | Nem | Igen |
 | **AzureDevSpaces** | Azure Dev Spaces. | Kimenő | Nem | Nem |
 | **AzureDevOps** | Azure Dev Ops.<br/><br/>*Megjegyzés: Ez a címke jelenleg nem konfigurálható az Azure Portalon keresztül*| Bejövő | Nem | Igen |
-| **AzureDigitalTwins** | Azure Digital Twins.<br/><br/>*Megjegyzés:* Ezzel a címkével vagy a címkével lefedett IP-címekkel korlátozható az eseményútvonalakhoz konfigurált végpontok hozzáférése. *Ez a címke jelenleg nem konfigurálható az Azure Portalon keresztül* | Bejövő | Nem | Igen |
+| **AzureDigitalTwins** | Azure Digital Twins.<br/><br/>*Megjegyzés:* Ez a címke vagy a címke által lefedett IP-címek felhasználhatók az eseményútvonalakhoz konfigurált végpontok elérésének korlátozására. *Ez a címke jelenleg nem konfigurálható az Azure Portalon keresztül* | Bejövő | Nem | Igen |
 | **AzureEventGrid** | Azure Event Grid. | Mindkettő | Nem | Nem |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door. | Mindkettő | Nem | Nem |
-| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke az **AzureActiveDirectory,** **az AzureFrontDoor.Frontend** és az **AzureFrontDoor.FirstParty címkéktől** függ. | Kimenő | Nem | Nem |
+| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke az **AzureActiveDirectory,** **az AzureFrontDoor.Frontend és** az **AzureFrontDoor.FirstParty címkéktől** függ. | Kimenő | Nem | Nem |
 | **AzureIoTHub** | Azure IoT Hub. | Kimenő | Nem | Nem |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Megjegyzés:* Ez a címke az **AzureActiveDirectory címkétől függ.** | Kimenő | Igen | Igen |
 | **AzureLoadBalancer** | Az Azure-infrastruktúra terheléselosztási szolgáltatása. A címke lefordítja annak a gazdagépnek a virtuális [IP-címét](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16), ahonnan az Azure állapot-mintavételei származnak. Ez csak a mintavételi forgalomra vonatkozik, a háttérerőforrásra nem. Ha nem használ ilyen Azure Load Balancer, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
@@ -104,7 +104,7 @@ Alapértelmezés szerint a szolgáltatáscímkék a teljes felhő tartományát 
 | **PowerBI** | PowerBi. *Megjegyzés: Ez a címke jelenleg nem konfigurálható az Azure Portalon keresztül.* | Mindkettő | Nem | Nem|
 | **PowerQueryOnline** | Power Query Online. | Mindkettő | Nem | Nem |
 | **ServiceBus** | Azure Service Bus prémium szolgáltatási szintet használó forgalmat. | Kimenő | Igen | Igen |
-| **ServiceFabric** | Azure Service Fabric.<br/><br/>*Megjegyzés:* Ez a címke a Service Fabric vezérlősík szolgáltatásvégpontját jelöli régiónként. Ez lehetővé teszi az ügyfelek számára, hogy felügyeleti műveleteket hajtsanak végre Service Fabric fürtökön a virtuális hálózatukról (pl. https:// westus.servicefabric.azure.com) | Mindkettő | Nem | Nem |
+| **ServiceFabric** | Azure Service Fabric.<br/><br/>*Megjegyzés:* Ez a címke a Service Fabric vezérlősík szolgáltatásvégpontját jelöli régiónként. Ez lehetővé teszi az ügyfelek számára, hogy felügyeleti műveleteket hajtsanak végre Service Fabric fürtökön a virtuális hálózatukról (pl. végpont). https:// westus.servicefabric.azure.com) | Mindkettő | Nem | Nem |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure Synapse Analytics.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de nem a szolgáltatás adott példányait. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. Ez a címke nem vonatkozik a felügyelt SQL-példányra. | Kimenő | Igen | Igen |
 | **SqlManagement** | Felügyeleti forgalom SQL-dedikált üzemelő példányok esetén. | Mindkettő | Nem | Igen |
 | **Storage** | Azure Storage. <br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de nem a szolgáltatás adott példányait. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. | Kimenő | Igen | Igen |
@@ -138,28 +138,28 @@ Programozott módon lekérheti a szolgáltatáscímkék aktuális listáját az 
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
-> Az új Szolgáltatáscímke-adatok propagálása az API-eredményekben akár 4 hetet is igénybe vesz. A válasz metaadataiban a módosítási szám akkor lesz megnövelve, amikor ez történik. Az eredmények között átmeneti különbségek lehetnek, ha eltérő helyértékeket ad meg. Amikor az eredményeket NSG-szabályok létrehozására használja, a hely paraméterét úgy kell beállítania, hogy megfeleljen az NSG régiójának. 
+> Az új Szolgáltatáscímke-adatok propagálása az API-eredményekben akár 4 hetet is igénybe vesz. A válasz metaadataiban a módosítási szám akkor lesz megnövelve, amikor ez történik. Az eredmények között átmeneti különbségek lehetnek, ha eltérő helyértékeket ad meg. Ha az eredményeket NSG-szabályok létrehozására használja, a helyparamatert úgy kell beállítania, hogy megfeleljen az NSG régiójának. 
 
 > [!NOTE]
 > Az API-adatok azokat a címkéket képviselik, amelyek NSG-szabályokkal használhatók. Ez a címkék egy része jelenleg a letölthető JSON-fájlban található. A nyilvános előzetes verzióban azonban nem garantáljuk, hogy az adatok az egyik frissítéstől a következőig változatlanok maradnak. 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Szolgáltatáscímkék felderítése letölthető JSON-fájlokkal 
-Letöltheti a szolgáltatáscímkék aktuális listáját tartalmazó JSON-fájlokat az IP-címtartomány részleteivel együtt. Ezeket a listákat hetente frissítjük és közzétenjük. Az egyes felhők helyei:
+Letöltheti az aktuális szolgáltatáscímkéket tartalmazó JSON-fájlokat az IP-címtartomány részleteivel együtt. Ezeket a listákat hetente frissítjük és közzétenjük. Az egyes felhők helyei:
 
 - [Nyilvános Azure](https://www.microsoft.com/download/details.aspx?id=56519)
 - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 
-Az ezekben a fájlokban található IP-címtartományok CIDR-ként vannak megszabadva. 
+Az ezekben a fájlokban lévő IP-címtartományok CIDR-ként vannak megszabadva. 
 
 > [!NOTE]
->Az információk egy része XML-fájlokban lett közzétéve az [Azure Public,](https://www.microsoft.com/download/details.aspx?id=41653)az [Azure China](https://www.microsoft.com/download/details.aspx?id=42064)és az Azure [Germany esetében.](https://www.microsoft.com/download/details.aspx?id=54770) Ezek az XML-letöltések 2020. június 30-ig elavultak, és a továbbiakban nem lesznek elérhetők. A Discovery API- vagy JSON-fájlletöltéseket az előző szakaszokban leírtak szerint érdemes átemelni.
+>Az információk egy részcsoportja XML-fájlokban lett közzétéve az [Azure Public,](https://www.microsoft.com/download/details.aspx?id=41653)az [Azure China](https://www.microsoft.com/download/details.aspx?id=42064)és az Azure [Germany esetében.](https://www.microsoft.com/download/details.aspx?id=54770) Ezek az XML-letöltések 2020. június 30-ig elavultak lesznek, és a továbbiakban nem lesznek elérhetők. A Discovery API- vagy JSON-fájlletöltéseket az előző szakaszokban leírtak szerint érdemes átemelni.
 
 ### <a name="tips"></a>Tippek 
-- A frissítéseket az egyik közzétételből a következőbe észlelheti, ha a JSON-fájlban nagyobb *changeNumber* értékeket észlel. Minden alszakasznak (például **Storage.WestUS)** saját *changeNumber* értéke van, amely a módosítások előfordulásakor növekszik. A fájl *changeNumber* felső szintje az alszakaszok bármelyikének módosításakor növekszik.
+- A frissítéseket az egyik közzétételtől a következőig észlelheti, ha a JSON-fájlban nagyobb *changeNumber* értékeket észlel. Minden alszakasz (például **Storage.WestUS)** saját *changeNumber* számokkal rendelkezik, amely a módosítások előfordulásakor növekszik. A fájl *changeNumber* felső szintje akkor növekszik, ha az alszakaszok bármelyike módosul.
 - A szolgáltatáscímke-információk (például a Storage összes címtartományának lekérte a WestUS-ban) elemzési példáiért tekintse meg a [Service Tag Discovery API PowerShell-dokumentációját.](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- Amikor új IP-címeket ad hozzá a szolgáltatáscímkékhez, azok legalább egy hétig nem lesznek használatban az Azure-ban. Ez időt biztosít minden olyan rendszer frissítésére, amely a szolgáltatáscímkékhez társított IP-címek nyomon követésére lehet szükség.
+- Amikor új IP-címeket ad hozzá a szolgáltatáscímkékhez, azok legalább egy hétig nem lesznek használatban az Azure-ban. Ez időt ad arra, hogy frissítsen minden olyan rendszert, amely esetleg nyomon követi a szolgáltatáscímkékhez társított IP-címeket.
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, [hogyan hozhat létre hálózati biztonsági csoportot.](tutorial-filter-network-traffic.md)

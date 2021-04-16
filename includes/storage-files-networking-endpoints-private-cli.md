@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84465076"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511804"
 ---
-Ha privát végpontot szeretne létrehozni a Storage-fiókhoz, először meg kell adnia egy hivatkozást a Storage-fiókjára, valamint azt a virtuális hálózati alhálózatot, amelyhez hozzá szeretné adni a magánhálózati végpontot. Cserélje le a,, `<storage-account-resource-group-name>` ,,  `<storage-account-name>` és az `<vnet-resource-group-name>` `<vnet-name>` `<vnet-subnet-name>` alábbit:
+Ha privát végpontot szeretne létrehozni a tárfiókhoz, először be kell szereznie a tárfiókra és a virtuális hálózat alhálózatra vonatkozó hivatkozást, amelyhez hozzá szeretné adni a privát végpontot. Cserélje `<storage-account-resource-group-name>` le az alábbi , , , és  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` `<vnet-subnet-name>` helyére:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"
@@ -47,7 +47,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Privát végpont létrehozásához először győződjön meg arról, hogy az alhálózat magánhálózati végpontjának hálózati házirendje le van tiltva. Ezután létrehozhat egy privát végpontot a parancs használatával `az network private-endpoint create` .
+Privát végpont létrehozásához először meg kell győződnie arról, hogy az alhálózat privát végpont hálózati szabályzata le van tiltva. Ezután létrehozhat egy privát végpontot az `az network private-endpoint create` paranccsal.
 
 ```bash
 # Disable private endpoint network policies
@@ -75,7 +75,7 @@ privateEndpoint=$(az network private-endpoint create \
     tr -d '"')
 ```
 
-Az Azure saját DNS-zóna létrehozása lehetővé teszi a Storage-fiók eredeti nevét, például a `storageaccount.file.core.windows.net` virtuális hálózatban lévő magánhálózati IP-címek feloldását. Bár a privát végpontok létrehozásának perspektívája nem kötelező, kifejezetten az Azure-fájlmegosztás Active Directory-rendszerbiztonsági tag használatával történő csatlakoztatásához vagy a REST APIon keresztül történő hozzáféréshez szükséges.  
+Az Azure privát DNS-zóna létrehozása lehetővé teszi a tárfiók eredeti nevét, például a virtuális hálózaton belüli magánhálózati `storageaccount.file.core.windows.net` IP-cím feloldása. Bár a privát végpont létrehozása szempontjából nem kötelező, kifejezetten szükséges az Azure-fájlmegosztás AD-felhasználónévvel történő csatlakoztatásához vagy a végponton keresztüli REST API.  
 
 ```bash
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -140,7 +140,7 @@ then
 fi
 ```
 
-Most, hogy már rendelkezik a saját DNS-zónára mutató hivatkozással, létre kell hoznia egy rekordot a Storage-fiókhoz.
+Most, hogy már van hivatkozása a privát DNS-zónára, létre kell hoznia egy A rekordot a tárfiókhoz.
 
 ```bash
 privateEndpointNIC=$(az network private-endpoint show \

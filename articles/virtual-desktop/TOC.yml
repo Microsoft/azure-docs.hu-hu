@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Kapcsolódás a Microsoft Store-ügyfélhez
           href: connect-microsoft-store.md
-        - name: Kapcsolat a vékony ügyfelekkel
+        - name: Csatlakozás vékony ügyfelekkel
           href: linux-overview.md
     - name: Eszközátirányítások konfigurálása
       href: configure-device-redirections.md
@@ -66,7 +66,7 @@
           href: create-profile-container-adds.md
         - name: Az Azure Files és az AD DS használata
           href: create-file-share.md
-        - name: Az Office telepítése a FSLogix alkalmazás-tárolókkal
+        - name: Az Office telepítése FSLogix-alkalmazástárolók használatával
           href: fslogix-office-app-rule-editor.md
     - name: Gazdagépkészlet beállításainak konfigurálása
       items:
@@ -106,7 +106,7 @@
           href: app-attach-image-prep.md
         - name: Fájlmegosztás beállítása
           href: app-attach-file-share.md
-        - name: A MSIXMGR eszköz beállítása
+        - name: Az MSIXMGR eszköz beállítása
           href: app-attach-msixmgr.md
     - name: A Microsoft Teams használata
       href: teams-on-wvd.md
@@ -126,12 +126,14 @@
       href: disaster-recovery.md
     - name: A KDC-proxy beállítása
       href: key-distribution-center-proxy.md
-    - name: Virtuális gép indítása a kapcsolaton
+    - name: Virtuális gép indítás csatlakozáson
       items:
-        - name: Virtuális gép indításának beállítása a kapcsolaton
+        - name: Virtuális gép start on Connect beállítása
           href: start-virtual-machine-connect.md
-        - name: Virtuális gép elindítása a csatlakozási GYIK-ban
+        - name: Virtuális gép indítás csatlakozáson – gyakori kérdések
           href: start-virtual-machine-connect-faq.md
+    - name: Kiürítési mód beállítása
+      href: drain-mode.md
 - name: Alapelvek
   items:
     - name: Beépített szerepkörök
@@ -214,7 +216,7 @@
       href: linux-overview.md
     - name: Azure CLI
       href: /cli/azure/ext/desktopvirtualization/desktopvirtualization
-    - name: Azure Monitor költségek becslése
+    - name: Becsült Azure Monitor költségek
       href: azure-monitor-costs.md
     - name: Támogatott RDP-fájlbeállítások
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context

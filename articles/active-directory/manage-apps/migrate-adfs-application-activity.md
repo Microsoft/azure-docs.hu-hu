@@ -1,138 +1,136 @@
 ---
-title: AD FS-alkalmazások áthelyezése a tevékenység-jelentés használatával Azure Active Directory | Microsoft Docs "
-description: Az Active Directory összevonási szolgáltatások (AD FS) (AD FS) alkalmazási tevékenység jelentés segítségével gyorsan áttelepítheti az alkalmazásokat a AD FSról a Azure Active Directory (Azure AD) szolgáltatásba. Ez a AD FS áttelepítési eszköz azonosítja az Azure AD-vel való kompatibilitást, és áttelepítési útmutatót biztosít.
+title: A tevékenységjelentés használatával áthelyezi AD FS alkalmazásokat a Azure Active Directory | Microsoft Docs"
+description: A Active Directory összevonási szolgáltatások (AD FS) (AD FS) alkalmazástevékenység-jelentéssel gyorsan minálhatja az alkalmazásokat a AD FS-Azure Active Directory (Azure AD) szolgáltatásba. Ez a migrálási eszköz AD FS azonosítja az Azure AD-kompatibilitást, és útmutatást nyújt a migráláshoz.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/14/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b9265a61b0879078332b8ccc2d10e711b4ac8f1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589463"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377420"
 ---
-# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Alkalmazások mi AD FS Azure AD-be az alkalmazástevékenységi jelentés használatával
 
-Számos szervezet Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával teszi lehetővé az egyszeri bejelentkezést a felhőalapú alkalmazásokhoz. Jelentős előnyökkel jár a AD FS-alkalmazások Azure AD-ba való áthelyezése a hitelesítéshez, különösen a Cost Management, a kockázatkezelés, a termelékenység, a megfelelőség és a szabályozás szempontjából. Az Azure AD-vel kompatibilis alkalmazások és az áttelepítési lépések azonosítása azonban időigényes lehet.
+Számos szervezet Active Directory összevonási szolgáltatások (AD FS) (AD FS) a felhőalapú alkalmazásokba való egyszeri bejelentkezéshez. A hitelesítés szempontjából jelentős előnyökkel jár, ha AD FS alkalmazásait az Azure AD-be, különösen a költségkezelés, a kockázatkezelés, a hatékonyság, a megfelelőség és a szabályozás szempontjából. Azonban az Azure AD-val kompatibilis alkalmazások és a konkrét migrálási lépések azonosítása időigényes lehet.
 
-A AD FS alkalmazás-tevékenység jelentés a Azure Portal lehetővé teszi, hogy gyorsan azonosítsa, hogy mely alkalmazások képesek áttelepíteni az Azure AD-be. Az Azure AD-vel való kompatibilitás érdekében az összes AD FS alkalmazást értékeli, ellenőrzi a problémákat, és útmutatást ad az egyes alkalmazások áttelepítésre való előkészítéséhez. A AD FS alkalmazás-tevékenység jelentéssel a következőket teheti:
+A AD FS Azure Portal alkalmazástevékenység-jelentésével gyorsan azonosíthatja, hogy mely alkalmazásai migrálhatóak az Azure AD-be. Felméri az összes AD FS Azure AD-kompatibilitás érdekében, ellenőrzi az esetleges problémákat, és útmutatást nyújt az egyes alkalmazások migrálásra való előkészítéséhez. A AD FS jelentéssel a következőt teheti meg:
 
-* **Fedezze fel AD FS alkalmazásait és hatókörét az áttelepítés során.** A AD FS alkalmazás-tevékenység jelentés felsorolja a szervezetben lévő összes olyan AD FS alkalmazást, amelynek az elmúlt 30 napban aktív felhasználói bejelentkezés volt. A jelentés az Azure AD-be való áttelepítésre felkészültséget jelző alkalmazások. A jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait AD FS például az Office 365-ben. Például a "urn: Federation: MicrosoftOnline" nevű függő entitások.
+* **Fedezze fel AD FS alkalmazásokat, és hatókört a migrálás hatókörére.** Az AD FS tevékenységjelentés felsorolja a AD FS összes olyan alkalmazását, amely aktív felhasználói bejelentkezéssel volt bejelentkezve az elmúlt 30 napban. A jelentés azt jelzi, hogy az alkalmazások az Azure AD-be való migrálásra készek. A jelentés nem jeleníti meg a Microsofttal kapcsolatos függő AD FS, például az Office 365-ben. Ilyen lehet például az "urn:federation:MicrosoftOnline" nevű függő felek.
 
-* **Alkalmazások rangsorolása az áttelepítéshez.** Azon egyedi felhasználók számának lekérése, akik az elmúlt 1, 7 vagy 30 napban bejelentkezett az alkalmazásba az alkalmazás áttelepítésének sikeressége vagy kockázata alapján.
-* **Futtassa az áttelepítési teszteket és javítsa ki a problémákat.** A Reporting szolgáltatás automatikusan futtatja a teszteket annak megállapítására, hogy az alkalmazás készen áll-e az áttelepítés Az eredmények áttelepítési állapotként jelennek meg az AD FS alkalmazás tevékenység jelentésében. Ha az AD FS konfigurációja nem kompatibilis az Azure AD-konfigurációval, a konfiguráció az Azure AD-ben való kezelésével kapcsolatos útmutatást kap.
+* **Alkalmazások rangsorolása a migráláshoz.** Az alkalmazásba az elmúlt 1, 7 vagy 30 nap során bejelentkezett egyedi felhasználók számának megállapítása az alkalmazás áttelepítésének kritikussága vagy kockázata alapján.
+* **Migrálási tesztek futtatása és a problémák megoldása.** A jelentéskészítési szolgáltatás automatikusan futtat teszteket annak megállapításához, hogy az alkalmazás készen áll-e az áttelepítésre. Az eredmények a AD FS tevékenységjelentésben jelennek meg migrálási állapotként. Ha a AD FS konfigurációja nem kompatibilis az Azure AD-konfigurációval, konkrét útmutatást kap a konfiguráció Azure AD-beli kezelése során.
 
-A AD FS alkalmazás tevékenységi adatai a következő rendszergazdai szerepkörökhöz rendelt felhasználók számára érhetők el: globális rendszergazda, jelentéskészítő olvasó, biztonsági olvasó, alkalmazás-rendszergazda vagy Felhőbeli alkalmazás rendszergazdája.
+Az AD FS-tevékenység adatai a következő rendszergazdai szerepkörök bármelyikéhez hozzárendelt felhasználók számára érhetők el: globális rendszergazda, jelentésolvasó, biztonsági olvasó, alkalmazás-rendszergazda vagy felhőalkalmazás-rendszergazda.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A szervezetnek jelenleg AD FS kell használnia az alkalmazások eléréséhez.
-* Az Azure AD Connect Health engedélyezni kell az Azure AD-bérlőben.
-* A AD FS-ügynök Azure AD Connect Health telepíteni kell.
+* A szervezetnek jelenleg a AD FS kell használnia az alkalmazások eléréséhez.
+* Azure AD Connect Health engedélyezni kell az Azure AD-bérlőben.
+* A Azure AD Connect Health ügynök AD FS kell telepíteni.
    * [További információ a Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
-   * [Ismerkedés a Azure AD Connect Health beállításával és a AD FS-ügynök telepítésével](../hybrid/how-to-connect-health-agent-install.md)
+   * [Első lépések a Azure AD Connect Health és a AD FS telepítésében](../hybrid/how-to-connect-health-agent-install.md)
 
 >[!IMPORTANT] 
->A Azure AD Connect Health telepítése után a várt alkalmazások közül néhányat nem láthat. A AD FS alkalmazási tevékenység jelentés csak AD FS függő entitásokat jelenít meg az elmúlt 30 napban felhasználói bejelentkezéssel. Emellett a jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait, például az Office 365-et.
+>Több oka is van annak, hogy nem fogja látni az összes olyan alkalmazást, amely a telepítés után Azure AD Connect Health. Az AD FS tevékenységjelentés csak azokat a függő AD FS jeleníti meg, akik az elmúlt 30 napban jelentkeznek be felhasználói fiókkal. Emellett a jelentés nem jeleníti meg a Microsofthoz kapcsolódó függő felek, például az Office 365- et.
 
-## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Az áttelepíthető AD FS alkalmazások felderítése 
+## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Az AD FS áttelepíthető alkalmazások felderítése 
 
-A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **használat &** a bejelentési jelentések területen elérhető Azure Portalban érhető el. A AD FS alkalmazási tevékenység jelentés elemzi az egyes AD FS alkalmazásait annak megállapítására, hogy az áttelepíthető-e, vagy ha további felülvizsgálatra van szükség. 
+Az AD FS tevékenységjelentés az Azure AD Azure Portal jelentéskészítési & **érhető** el. Az AD FS-tevékenységjelentés elemzi az AD FS, hogy az adott alkalmazás migrálható-e az adott ként, vagy további felülvizsgálatra van-e szükség. 
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan rendszergazdai szerepkörrel, amely hozzáféréssel rendelkezik AD FS alkalmazás-tevékenységgel kapcsolatos adathoz (globális rendszergazda, jelentéskészítő olvasó, biztonsági olvasó, alkalmazás-rendszergazda vagy Felhőbeli alkalmazás rendszergazdája).
+1. Jelentkezzen be [](https://portal.azure.com) az Azure Portal rendszergazdai szerepkörével, amely hozzáféréssel rendelkezik AD FS alkalmazástevékenységi adatokhoz (globális rendszergazda, jelentésolvasó, biztonsági olvasó, alkalmazás-rendszergazda vagy felhőalkalmazás-rendszergazda).
 
-2. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **vállalati alkalmazások** lehetőséget.
+2. Válassza **Azure Active Directory** lehetőséget, majd válassza a Vállalati **alkalmazások lehetőséget.**
 
-3. A **tevékenység** területen válassza a **használat &** az elemzése lehetőséget, majd válassza a **AD FS alkalmazás tevékenység** elemet a szervezetben lévő összes AD FS alkalmazás listájának megnyitásához.
+3. A **Tevékenység alatt** válassza a Usage &  **Insights** lehetőséget, majd válassza AD FS alkalmazástevékenység lehetőséget a szervezet összes AD FS listájának megnyitásához.
 
-   ![AD FS alkalmazási tevékenység](media/migrate-adfs-application-activity/adfs-application-activity.png)
+   ![AD FS alkalmazástevékenység](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
-4. Tekintse meg az **áttelepítési állapotot** a AD FS alkalmazás-tevékenység listán szereplő egyes alkalmazásokhoz:
+4. Az alkalmazástevékenységek listájában AD FS összes alkalmazáshoz tekintse meg a **Migrálás állapotát:**
 
-   * Az **Áttelepítésre kész érték** azt jelenti, hogy a AD FS alkalmazás konfigurációja teljes mértékben támogatott az Azure ad-ben, és a-ként is telepíthető.
+   * **A migrálható** azt jelenti, AD FS alkalmazáskonfiguráció teljes mértékben támogatott az Azure AD-ben, és a migrálható.
 
-   * Az **igények felülvizsgálata** azt jelenti, hogy az alkalmazás egyes beállításai áttelepíthetők az Azure ad-be, de át kell tekintenie azokat a beállításokat, amelyek nem telepíthetők át.
+   * **Az Áttekintés** szükséges azt jelenti, hogy az alkalmazás egyes beállításai áttelepítve lesznek az Azure AD-be, de át kell vizsgálnia a beállításokat, amelyek nem migrálhatóak a megadott módon.
 
-   * A **további szükséges lépések** azt jelentik, hogy az Azure ad nem támogatja az alkalmazás egyes beállításait, így az alkalmazás jelenlegi állapotában nem telepíthető át.
+   * **A további szükséges lépések** azt jelentik, hogy az Azure AD nem támogatja az alkalmazás egyes beállításait, ezért az alkalmazás nem migrálható az aktuális állapotában.
 
-## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>Egy alkalmazás készültségének kiértékelése áttelepítésre 
+## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>Egy alkalmazás migrálásra való készenlétének kiértékelése 
 
-1. Az áttelepítési adatok megnyitása a AD FS alkalmazási tevékenység listában kattintson az **áttelepítés állapota** oszlopban található állapotra. Ekkor megjelenik az átadott konfigurációs tesztek összegzése, valamint az esetleges áttelepítési problémák.
+1. A AD FS tevékenység listájában kattintson a Migrálás állapota oszlopban lévő állapotra a migrálás részleteinek megnyitásához.  Itt láthatja az elvégzett konfigurációs tesztek összegzését, valamint az esetleges migrálási problémákat.
 
    ![A migrálás részletei](media/migrate-adfs-application-activity/migration-details.png)
 
-2. Kattintson egy üzenetre további áttelepítési szabály részleteinek megnyitásához. A tesztelt tulajdonságok teljes listájáért tekintse meg az alábbi [AD FS alkalmazás-konfigurációs tesztek](#ad-fs-application-configuration-tests) táblázatban.
+2. Kattintson egy üzenetre a további migrálási szabályok részleteinek megnyitásához. A tesztelt tulajdonságok teljes listáját az alábbi AD FS alkalmazáskonfigurációs tesztek [táblázatában](#ad-fs-application-configuration-tests) láthatja.
 
-   ![Áttelepítési szabály részletei](media/migrate-adfs-application-activity/migration-rule-details.png)
+   ![Migrálási szabály részletei](media/migrate-adfs-application-activity/migration-rule-details.png)
 
-### <a name="ad-fs-application-configuration-tests"></a>Alkalmazás-konfigurációs tesztek AD FS
+### <a name="ad-fs-application-configuration-tests"></a>AD FS tesztek konfigurálása
 
-A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes konfigurációs tesztet.
+Az alábbi táblázat az alkalmazásokon végrehajtott összes konfigurációs AD FS sorolja fel.
 
-|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
+|Eredmény  |Pass/Warning/Fail  |Leírás  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson át az Azure AD MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
-|Test-ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-Fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
-|Test-ADFSRPAllowedAuthenticationClassReferences <br> A függő entitás beállította a AllowedAuthenticationClassReferences.       | Sikeres/sikertelen          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy az alkalmazás úgy legyen konfigurálva, hogy csak bizonyos hitelesítési típusokat engedélyezzen. Javasoljuk, hogy a feltételes hozzáférés használatával elérje ezt a képességet. Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).          |
-|Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Sikeres/sikertelen          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy az alkalmazás úgy legyen konfigurálva, hogy figyelmen kívül hagyja az SSO-cookie-kat, és **mindig kérdezze** Az Azure AD-ben a feltételes hozzáférési szabályzatok segítségével kezelheti a hitelesítési munkamenetet, így hasonló viselkedést érhet el. [További információ a hitelesítési munkamenetek kezelésének feltételes hozzáféréssel történő konfigurálásáról](../conditional-access/howto-conditional-access-session-lifetime.md).          |
-|Test-ADFSRPAutoUpdateEnabled <br> A függő entitás AutoUpdateEnabled értéke TRUE (igaz)       | Továbbítás/figyelmeztetés          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy a AD FS úgy legyen konfigurálva, hogy az összevonási metaadatokon belüli módosítások alapján automatikusan frissítse az alkalmazást. Az Azure AD nem támogatja ezt a ma, de nem blokkolja az alkalmazás Azure AD-be való áttelepítését.           |
-|Test-ADFSRPClaimsProviderName <br> A függő entitás több ClaimsProviders engedélyezve van       | Sikeres/sikertelen          | Ez a beállítás AD FS meghívja azokat az identitás-szolgáltatókat, amelyekről a függő entitás fogad jogcímeket. Az Azure AD-ben engedélyezheti a külső együttműködést az Azure AD B2B használatával. [További információ az Azure ad B2B-ről](../external-identities/what-is-b2b.md).          |
-|Test-ADFSRPDelegationAuthorizationRules      | Sikeres/sikertelen          | Az alkalmazáshoz egyéni delegálási engedélyezési szabályok vannak meghatározva. Ez egy WS-Trust koncepció, amelyet az Azure AD támogat a modern hitelesítési protokollok, például az OpenID Connect és a OAuth 2,0 használatával. [További információ a Microsoft Identity platformról](../develop/v2-protocols-oidc.md).          |
-|Test-ADFSRPImpersonationAuthorizationRules       | Továbbítás/figyelmeztetés          | Az alkalmazáshoz egyéni megszemélyesítési engedélyezési szabályok vannak meghatározva.Ez egy WS-Trust koncepció, amelyet az Azure AD támogat a modern hitelesítési protokollok, például az OpenID Connect és a OAuth 2,0 használatával. [További információ a Microsoft Identity platformról](../develop/v2-protocols-oidc.md).          |
-|Test-ADFSRPIssuanceAuthorizationRules <br> A IssuanceAuthorization legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | Az alkalmazás AD FSban definiált egyéni kiállítási engedélyezési szabályokkal rendelkezik.Az Azure AD támogatja ezt a funkciót az Azure AD feltételes hozzáférésével. [További információ a feltételes hozzáférésről](../conditional-access/overview.md). <br> Az alkalmazásokhoz való hozzáférést az alkalmazáshoz rendelt felhasználók vagy csoportok is korlátozhatják. [További információ a felhasználók és csoportok az alkalmazásokhoz való hozzárendeléséről](./assign-user-or-group-access-portal.md).            |
-|Test-ADFSRPIssuanceTransformRules <br> A IssuanceTransform legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | Az alkalmazásnak egyéni kiállítási átalakítási szabályai vannak definiálva AD FSban. Az Azure AD támogatja a jogkivonatban kiadott jogcímek testreszabását. További információ: [a vállalati alkalmazások SAML-jogkivonatában kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md).           |
-|Test-ADFSRPMonitoringEnabled <br> A függő entitás MonitoringEnabled értéke TRUE (igaz).       | Továbbítás/figyelmeztetés          | Ez a beállítás a AD FS lehetővé teszi annak megadását, hogy a AD FS úgy legyen konfigurálva, hogy az összevonási metaadatokon belüli módosítások alapján automatikusan frissítse az alkalmazást. Az Azure AD nem támogatja ezt a ma, de nem blokkolja az alkalmazás Azure AD-be való áttelepítését.           |
-|Test-ADFSRPNotBeforeSkew <br> NotBeforeSkewCheckResult      | Továbbítás/figyelmeztetés          | A AD FS az SAML-token NotBefore és NotOnOrAfter időpontját is lehetővé teszi. Az Azure AD alapértelmezés szerint automatikusan kezeli ezt.          |
-|Test-ADFSRPRequestMFAFromClaimsProviders <br> A függő entitás RequestMFAFromClaimsProviders értéke TRUE (igaz).       | Továbbítás/figyelmeztetés          | A AD FS ez a beállítás határozza meg az MFA viselkedését, ha a felhasználó egy másik jogcím-szolgáltatótól származik. Az Azure AD-ben engedélyezheti a külső együttműködést az Azure AD B2B használatával. Ezután feltételes hozzáférési szabályzatokat alkalmazhat a vendég-hozzáférések elleni védelemhez. További információ az [Azure ad B2B](../external-identities/what-is-b2b.md) és a [feltételes hozzáférésről](../conditional-access/overview.md).          |
-|Test-ADFSRPSignedSamlRequestsRequired <br> A függő entitás SignedSamlRequestsRequired értéke TRUE (igaz)       | Sikeres/sikertelen          | Az alkalmazás a AD FSban van konfigurálva az SAML-kérelem aláírásának ellenőrzéséhez. Az Azure AD aláírt SAML-kérelmet fogad el; azonban nem ellenőrzi az aláírást. Az Azure AD különböző módszerekkel véd a rosszindulatú hívásokkal szemben. Az Azure AD például az alkalmazásban konfigurált válasz URL-címeket használja az SAML-kérelem érvényesítéséhez. Az Azure AD csak jogkivonatot küld az alkalmazáshoz konfigurált válasz URL-címekre. Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
-|Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Továbbítás/figyelmeztetés         | Az alkalmazás egyéni jogkivonat élettartamára van konfigurálva. A AD FS alapértelmezett értéke egy óra.Az Azure AD a feltételes hozzáférés használatával támogatja ezt a funkciót. További információ: [a hitelesítési munkamenetek kezelésének beállítása feltételes hozzáféréssel](../conditional-access/howto-conditional-access-session-lifetime.md).          |
-|A függő entitás a jogcímek titkosítására van beállítva. Ezt az Azure AD támogatja       | Sikeres          | Az Azure AD segítségével titkosíthatja az alkalmazásnak eljuttatott tokent. További információ: az [Azure ad SAML-jogkivonat titkosításának konfigurálása](./howto-saml-token-encryption.md).          |
-|EncryptedNameIdRequiredCheckResult      | Sikeres/sikertelen          | Az alkalmazás úgy van konfigurálva, hogy Titkosítsa a nameID jogcímet az SAML-jogkivonatban.Az Azure AD segítségével titkosíthatja az alkalmazásnak eljuttatott teljes tokent.Az egyes jogcímek titkosítása még nem támogatott. További információ: az [Azure ad SAML-jogkivonat titkosításának konfigurálása](./howto-saml-token-encryption.md).         |
+|Test-ADFSRPAdditionalAuthenticationRules <br> A rendszer legalább egy nem áttelepíthető szabályt észlelt az AdditionalAuthentication esetén.       | Pass/Warning          | A függő fél olyan szabályokkal rendelkezik, amelyek kérik a többtényezős hitelesítést (MFA). Az Azure AD-be való áthelyezéshez ezeket a szabályokat feltételes hozzáférési szabályzatokként kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy lépjen a Azure AD MFA. [További információ a feltételes hozzáférésről.](../authentication/concept-mfa-howitworks.md)        |
+|Test-ADFSRPAdditionalWSFedEndpoint <br> A függő függőben az AdditionalWSFedEndpoint true (igaz) értékkel rendelkezik.       | Sikeres/sikertelen          | A szolgáltatásban a függő AD FS több WS-Fed helyességi feltételvégpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyve, amelyben ez az eredmény blokkolja a migrálást, [tudajuk meg velünk a következőt:](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
+|Test-ADFSRPAllowedAuthenticationClassReferences <br> A függő fél beállította az AllowedAuthenticationClassReferences osztályt.       | Sikeres/sikertelen          | Ez a beállítás AD FS megadhatja, hogy az alkalmazás csak bizonyos hitelesítési típusok számára legyen-e konfigurálva. Javasoljuk, hogy ezt a képességet feltételes hozzáféréssel érjük el. Ha van olyan forgatókönyve, amelyben ez az eredmény blokkolja a migrálást, [tudajuk meg velünk a következőt:](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [További információ a feltételes hozzáférésről.](../authentication/concept-mfa-howitworks.md)          |
+|Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Sikeres/sikertelen          | Ez a beállítás AD FS megadhatja, hogy az alkalmazás az SSO cookie-k figyelmen kívül hagyása és az Always Prompt for Authentication (Mindig hitelesítésre való kérés) **legyen-e konfigurálva.** Az Azure AD-ban a hitelesítési munkamenet feltételes hozzáférési szabályzatokkal kezelhető, így hasonló viselkedést érhet el. [További információ a hitelesítési munkamenetek feltételes hozzáféréssel való felügyeletének konfigurálásával kapcsolatban.](../conditional-access/howto-conditional-access-session-lifetime.md)          |
+|Test-ADFSRPAutoUpdateEnabled <br> A függő fél AutoUpdateEnabled beállítása true (igaz)       | Pass/Warning          | Ezzel a AD FS megadhatja, hogy a AD FS az összevonási metaadatokon belüli változások alapján automatikusan frissítse-e az alkalmazást. Az Azure AD ezt jelenleg nem támogatja, de nem szabad blokkolni az alkalmazás Azure AD-be való migrálását.           |
+|Test-ADFSRPClaimsProviderName <br> A függő függő félhez több jogcímprovider is engedélyezve van       | Sikeres/sikertelen          | Ez a beállítás AD FS hívja meg az identitásszolgáltatókat, amelyektől a függő fél jogcímeket fogad. Az Azure AD-ben külső együttműködést engedélyezhet az Azure AD B2B használatával. [További információ az Azure AD B2B-ről.](../external-identities/what-is-b2b.md)          |
+|Test-ADFSRPDelegationAuthorizationRules      | Sikeres/sikertelen          | Az alkalmazáshoz egyéni delegálásengedélyezési szabályok vannak definiálva. Ez egy olyan WS-Trust, amelyet az Azure AD támogat a modern hitelesítési protokollok, például a OpenID Connect és az OAuth 2.0 használatával. [További információ a Microsoft Identity Platformról.](../develop/v2-protocols-oidc.md)          |
+|Test-ADFSRPImpersonationAuthorizationRules       | Pass/Warning          | Az alkalmazáshoz egyéni megszemélyesítési engedélyezési szabályok vannak definiálva.Ez egy olyan WS-Trust, amelyet az Azure AD támogat a modern hitelesítési protokollok, például az OpenID Connect és az OAuth 2.0 használatával. [További információ a Microsoft Identity Platformról.](../develop/v2-protocols-oidc.md)          |
+|Test-ADFSRPIssuanceAuthorizationRules <br> A rendszer legalább egy nem áttelepíthető szabályt észlelt a issuanceAuthorization esetén.       | Pass/Warning          | Az alkalmazás egyéni kiállításengedélyezési szabályokkal rendelkezik, amelyek a AD FS.Az Azure AD ezt a funkciót az Azure AD feltételes hozzáféréssel támogatja. [További információ a feltételes hozzáférésről.](../conditional-access/overview.md) <br> Az alkalmazáshoz való hozzáférést az alkalmazáshoz rendelt felhasználók vagy csoportok szerint is korlátozhatja. [További információ a felhasználók és csoportok alkalmazásokhoz való hozzárendeléséhez való hozzárendeléséhez.](./assign-user-or-group-access-portal.md)            |
+|Test-ADFSRPIssuanceTransformRules <br> A rendszer legalább egy nem migrálható szabályt észlelt a IssuanceTransform számára.       | Pass/Warning          | Az alkalmazás egyéni kiállítási átalakítási szabályokkal rendelkezik, amelyek a AD FS. Az Azure AD támogatja a jogkivonatban kiadott jogcímek testreszabását. További tudnivalókért lásd [az SAML-jogkivonatban](../develop/active-directory-saml-claims-customization.md)kiadott jogcímek vállalati alkalmazásokhoz való testreszabását.           |
+|Test-ADFSRPMonitoringEnabled <br> A függő függő félHez a MonitoringEnabled true (igaz) érték van beállítva.       | Pass/Warning          | Ezzel a AD FS megadhatja, hogy a AD FS az összevonási metaadatokon belüli módosítások alapján automatikusan frissítse-e az alkalmazást. Az Azure AD ezt jelenleg nem támogatja, de nem szabad blokkolni az alkalmazás Azure AD-be való migrálását.           |
+|Test-ADFSRPNotBeforeSkew <br> NotBeforeSkewCheckResult      | Pass/Warning          | AD FS az SAML-jogkivonat NotBefore és NotOnOrAfter ideje alapján engedélyezi az időeltéréseket. Az Azure AD ezt alapértelmezés szerint automatikusan kezeli.          |
+|Test-ADFSRPRequestMFAFromClaimsProviders <br> A függő fél RequestMFAFromClaimsProviders beállítása igaz.       | Pass/Warning          | Ez a beállítás AD FS MFA viselkedését határozza meg, ha a felhasználó egy másik jogcímszolgáltatótól származik. Az Azure AD-ben külső együttműködést engedélyezhet az Azure AD B2B használatával. Ezután feltételes hozzáférési szabályzatokat alkalmazhat a vendég hozzáférés védelmére. További információ az [Azure AD B2B-ről](../external-identities/what-is-b2b.md) és [a feltételes hozzáférésről.](../conditional-access/overview.md)          |
+|Test-ADFSRPSignedSamlRequestsRequired <br> A függő fél SignedSamlRequestsRequired beállítása true (igaz)       | Sikeres/sikertelen          | Az alkalmazás úgy van konfigurálva a AD FS, hogy ellenőrizze az aláírást az SAML-kérelemben. Az Azure AD aláírt SAML-kérelmet fogad el; Az aláírást azonban nem ellenőrzi. Az Azure AD-nek különböző módszerei vannak a rosszindulatú hívások elleni védelemhez. Az Azure AD például az alkalmazásban konfigurált válasz URL-címeket használja az SAML-kérelem érvényesítéséhez. Az Azure AD csak az alkalmazáshoz konfigurált válasz URL-címekre küld jogkivonatot. Ha van olyan forgatókönyve, amelyben ez az eredmény blokkolja a migrálást, [tudajuk meg a következőt:](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
+|Test-ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Pass/Warning         | Az alkalmazás egyéni jogkivonat-élettartamra van konfigurálva. Az AD FS alapértelmezett érték egy óra.Az Azure AD feltételes hozzáféréssel támogatja ezt a funkciót. További információ: [Hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel.](../conditional-access/howto-conditional-access-session-lifetime.md)          |
+|A függő fél a jogcímek titkosítására van beállítva. Ezt az Azure AD támogatja       | Sikeres          | Az Azure AD-val titkosíthatja az alkalmazásnak küldött jogkivonatot. További információ: [Configure Azure AD SAML token encryption (Az Azure AD SAML-jogkivonat titkosításának konfigurálása).](./howto-saml-token-encryption.md)          |
+|EncryptedNameIdRequiredCheckResult      | Sikeres/sikertelen          | Az alkalmazás úgy van konfigurálva, hogy titkosítsa a nameID jogcímet az SAML-jogkivonatban.Az Azure AD-val titkosíthatja az alkalmazásnak küldött teljes jogkivonatot.Bizonyos jogcímek titkosítása még nem támogatott. További információ: [Configure Azure AD SAML token encryption (Az Azure AD SAML-jogkivonat titkosításának konfigurálása).](./howto-saml-token-encryption.md)         |
 
-## <a name="check-the-results-of-claim-rule-tests"></a>A jogcím-szabályhoz tartozó tesztek eredményeinek ellenőrzése
+## <a name="check-the-results-of-claim-rule-tests"></a>Jogcímszabály-tesztek eredményeinek ellenőrzése
 
-Ha AD FS-ben konfigurálta az alkalmazáshoz tartozó jogcímet, akkor a felhasználói élmény részletes elemzést nyújt az összes jogcím-szabályról. Láthatja, hogy mely jogcímek helyezhetők át az Azure AD szolgáltatásba, és melyeknek további felülvizsgálatra van szükségük.
+Ha konfigurált egy jogcímszabályt az alkalmazáshoz a AD FS, a felhasználói élmény részletes elemzést biztosít az összes jogcímszabályhoz. Látni fogja, hogy mely jogcímszabályokat lehet áthelyezni az Azure AD-be, és melyekhez van szükség további felülvizsgálatra.
 
-1. Az áttelepítési adatok megnyitása a AD FS alkalmazási tevékenység listában kattintson az **áttelepítés állapota** oszlopban található állapotra. Ekkor megjelenik az átadott konfigurációs tesztek összegzése, valamint az esetleges áttelepítési problémák.
+1. A AD FS tevékenység listájában kattintson a Migrálás állapota oszlopban lévő állapotra a migrálás részleteinek megnyitásához.  Itt láthatja az elvégzett konfigurációs tesztek összegzését, valamint az esetleges migrálási problémákat.
 
-2. Az **áttelepítési szabály részletei** lapon bontsa ki az eredményeket, hogy megjelenítse az esetleges áttelepítési problémák részleteit, és további útmutatást kapjon. A kipróbált jogcímek részletes listáját a következő témakörben találja: a jogcím-szabályok [tesztelési táblázatának eredményeinek ellenőrzése](#check-the-results-of-claim-rule-tests) .
+2. Az **Áttelepítési szabály részletei lapon** bontsa ki az eredményeket a lehetséges migrálási problémák részleteinek megjelenítéséhez és további útmutatáshoz. Az összes tesztelt jogcímszabály részletes listáját az [alábbi, A](#check-the-results-of-claim-rule-tests) jogcímszabály-tesztek eredményeinek ellenőrzése táblázatban olvashatja.
 
-   Az alábbi példa a IssuanceTransform szabály áttelepítési szabályának részleteit mutatja be. Felsorolja a jogcím azon részeit, amelyeket felül kell vizsgálni és kezelni kell, mielőtt áttelepíti az alkalmazást az Azure AD szolgáltatásba.
+   Az alábbi példa a IssuanceTransform szabály áttelepítési szabályának részleteit mutatja be. Felsorolja a jogcím azon részeit, amelyek felülvizsgálata és kezelése szükséges az alkalmazás Azure AD-be való áttelepítése előtt.
 
-   ![Áttelepítési szabály részletei – további útmutatás](media/migrate-adfs-application-activity/migration-rule-details-guidance.png)
+   ![A migrálási szabály részletesen tartalmaz további útmutatást](media/migrate-adfs-application-activity/migration-rule-details-guidance.png)
 
-### <a name="claim-rule-tests"></a>Jogcím-szabály tesztelése
+### <a name="claim-rule-tests"></a>Jogcímszabály-tesztek
 
-A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes jogcímet.
+Az alábbi táblázat az összes olyan jogcímszabály-tesztet felsorolja, amely a AD FS történik.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|UNSUPPORTED_CONDITION_PARAMETER      | A Condition utasítás reguláris kifejezéseket használ annak kiértékeléséhez, hogy a jogcím megfelel-e egy adott mintának.Ahhoz, hogy hasonló funkciókat lehessen elérni az Azure AD-ben, az előre definiált átalakítást, például a IfEmpty (), a StartWith (), a () függvényt is használhatja egyebek között. További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).          |
-|UNSUPPORTED_CONDITION_CLASS      | A Condition utasítás több olyan feltételt tartalmaz, amelyeket a kiállítási utasítás futtatása előtt ki kell értékelni.Az Azure AD ezt a funkciót a jogcím átalakítási funkcióiról is támogatja, ahol több jogcím értékét is kiértékelheti.További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).          |
-|UNSUPPORTED_RULE_TYPE      | Nem sikerült felismerni a jogcím szabályát. A jogcímek Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [az SAML-jogkivonat által a vállalati alkalmazásokhoz kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md).          |
-|CONDITION_MATCHES_UNSUPPORTED_ISSUER      | A Condition utasítás olyan kiállítót használ, amely nem támogatott az Azure AD-ben.Jelenleg az Azure AD nem a Active Directory vagy az Azure AD-től eltérő áruházakból származó jogcímeket állítja le. Ha ez blokkolja az alkalmazások Azure AD-ba való áttelepítését, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).         |
-|UNSUPPORTED_CONDITION_FUNCTION      | A Condition utasítás összesítő függvénnyel állítja ki vagy adja hozzá az egyes jogcímeket, a egyezések számától függetlenül.Az Azure AD-ben kiértékelheti a felhasználó attribútumát, hogy eldöntse, milyen értéket kell használnia a jogcímek számára a (z) IfEmpty (), a StartWith (), a () függvényekkel együtt, többek között.További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).          |
-|RESTRICTED_CLAIM_ISSUED      | A Condition utasítás olyan jogcímet használ, amely korlátozott az Azure AD-ben. Lehet, hogy kiállít egy korlátozott jogcímet, de nem módosíthatja a forrását, vagy nem alkalmazhat átalakítást. További információ: az [Azure ad-ben egy adott alkalmazás jogkivonatában kibocsátott jogcímek testreszabása](../develop/active-directory-claims-mapping.md).          |
-|EXTERNAL_ATTRIBUTE_STORE      | A kiállítási utasítás a Active Directory eltérő attribútum-tárolót használ. Jelenleg az Azure AD nem a Active Directory vagy az Azure AD-től eltérő áruházakból származó jogcímeket állítja le. Ha ez az eredmény blokkolja az alkalmazások Azure AD-ba való áttelepítését, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
-|UNSUPPORTED_ISSUANCE_CLASS      | A kiállítási utasítás a Hozzáadás elem használatával adja hozzá a jogcímeket a bejövő jogcímek készletéhez. Az Azure AD-ben ez több jogcím-átalakításként is konfigurálható.További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-claims-mapping.md).         |
-|UNSUPPORTED_ISSUANCE_TRANSFORMATION      | A kiállítási utasítás reguláris kifejezéseket használ a kibocsátott jogcím értékének átalakításához.Ahhoz, hogy hasonló funkciókat lehessen elérni az Azure AD-ben, használhatja az előre definiált transzformációt, például a Extract (), a Trim (), a ToLower, a többit is. További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).          |
+|UNSUPPORTED_CONDITION_PARAMETER      | A condition utasítás reguláris kifejezésekkel értékeli ki, hogy a jogcím megfelel-e egy bizonyos mintának.Az Azure AD hasonló funkcióinak eléréséhez használhat többek között olyan előre definiált átalakításokat, mint például az IfEmpty(), a StartWith(), a Contains(). További információ: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz.](../develop/active-directory-saml-claims-customization.md)          |
+|UNSUPPORTED_CONDITION_CLASS      | A condition utasítás több feltétellel rendelkezik, amelyek kiértékelése szükséges a kiállítási utasítás futtatása előtt.Az Azure AD támogathatja ezt a funkciót a jogcím átalakítási függvényeivel, ahol több jogcímértéket értékelhet ki.További információ: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz.](../develop/active-directory-saml-claims-customization.md)          |
+|UNSUPPORTED_RULE_TYPE      | A jogcímszabályt nem sikerült felismerni. További információ a jogcímek Azure AD-beli konfigurálásról: Az SAML-jogkivonatban kibocsátott jogcímek testreszabása [vállalati alkalmazásokhoz.](../develop/active-directory-saml-claims-customization.md)          |
+|CONDITION_MATCHES_UNSUPPORTED_ISSUER      | A condition utasítás olyan kiállítót használ, amelyet az Azure AD nem támogat.Az Azure AD jelenleg nem más tárolókból származó jogcímeket hoz Active Directory Azure AD-ból. Ha ez nem akadályozza meg az alkalmazások Azure AD-be való áttelepítését, [tudtossa velünk.](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire)         |
+|UNSUPPORTED_CONDITION_FUNCTION      | A condition utasítás egy összesítő függvénnyel ad ki vagy ad hozzá egyetlen jogcímet az egyezések számától függetlenül.Az Azure AD-ban kiértékelheti egy felhasználó attribútumát, hogy eldöntse, milyen értéket szeretne használni a jogcímhez többek között az IfEmpty(), a StartWith(), a Contains() függvényekkel.További információ: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz.](../develop/active-directory-saml-claims-customization.md)          |
+|RESTRICTED_CLAIM_ISSUED      | A condition utasítás egy, az Azure AD-ban korlátozott jogcímet használ. Előfordulhat, hogy ki tud adni egy korlátozott jogcímet, de a forrását nem módosíthatja, és nem alkalmazhat átalakítást. További információ: Egy adott alkalmazás jogkivonatai által kibocsátott jogcímek testreszabása az [Azure AD-ban.](../develop/active-directory-claims-mapping.md)          |
+|EXTERNAL_ATTRIBUTE_STORE      | A kiállítási utasítás egy eltérő attribútumtárat használ, Active Directory. Az Azure AD jelenleg nem olyan különböző tárolókból származó jogcímeket Active Directory az Azure AD-ból. Ha ez az eredmény akadályozza az alkalmazások Azure AD-be való áttelepítését, [tudajuk meg velünk a következőt:](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
+|UNSUPPORTED_ISSUANCE_CLASS      | A kiállítási utasítás az ADD segítségével adja hozzá a jogcímeket a bejövő jogcímkészlethez. Az Azure AD-ban ez több jogcím-átalakításként is konfigurálható.További információ: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz.](../develop/active-directory-claims-mapping.md)         |
+|UNSUPPORTED_ISSUANCE_TRANSFORMATION      | A kiállítási utasítás reguláris kifejezésekkel alakítja át a kiveszni szánt jogcím értékét.Az Azure AD hasonló funkcióinak eléréséhez használhat többek között olyan előre definiált átalakításokat, mint például az Extract(), a Trim(), a ToLower. További információ: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz.](../develop/active-directory-saml-claims-customization.md)          |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>A jelentésben nem látható az összes AD FS alkalmazás
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>Nem látom az összes AD FS a jelentésben
 
- Ha telepítette Azure AD Connect állapotát, de továbbra is megjelenik a telepítésre vonatkozó kérés, vagy ha nem látja az összes AD FS alkalmazást a jelentésben, előfordulhat, hogy nem rendelkezik aktív AD FS alkalmazásokkal, vagy a AD FS alkalmazásai Microsoft-alkalmazás.
+ Ha telepítette az Azure AD Connect Health-t, de továbbra is a telepítésére vonatkozó kérést látja, vagy nem látja az összes AD FS-alkalmazást a jelentésben, előfordulhat, hogy nem aktív AD FS-alkalmazásokkal, vagy a AD FS-alkalmazások Microsoft-alkalmazások.
  
- A AD FS alkalmazás tevékenység jelentés felsorolja az aktív felhasználók által az elmúlt 30 napban bejelentkező összes AD FS alkalmazást. Emellett a jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait AD FS például az Office 365-ben. Például az "urn: Federation: MicrosoftOnline", a "microsoftonline", a "Microsoft: winhello: CERT: prov: Server" nevű függő entitások nem jelennek meg a listában.
+ Az AD FS tevékenységjelentés a szervezetben AD FS összes alkalmazás listáját tartalmazza, amelyekbe az aktív felhasználók bejelentkeztek az elmúlt 30 napban. Emellett a jelentés nem jeleníti meg a Microsofthoz kapcsolódó függő AD FS az Office 365-ben. Például az "urn:federation:MicrosoftOnline", "microsoftonline", "microsoft:winhello:cert:prov:server" nevű függő felek nem megjelenik a listában.
 
 
 
@@ -140,7 +138,7 @@ A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott össze
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Videó: az alkalmazások áttelepítésére szolgáló AD FS tevékenység jelentés használata](https://www.youtube.com/watch?v=OThlTA239lU)
+- [Videó: A AD FS-tevékenységjelentés használata alkalmazás áttelepítéséhez](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)
 - [Alkalmazások hozzáférésének kezelése](what-is-access-management.md)
 - [Azure AD Connect-összevonás](../hybrid/how-to-connect-fed-whatis.md)

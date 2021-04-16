@@ -1,9 +1,9 @@
 ---
-title: PowerShell-minta – az alkalmazásproxy-alkalmazáshoz tartozó felhasználók & csoportok listázása
-description: PowerShell-példa, amely felsorolja az adott Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz rendelt összes felhasználót és csoportot.
+title: PowerShell-minta – Felhasználók és & felsorolása alkalmazásproxy alkalmazáshoz
+description: PowerShell-példa egy adott alkalmazáshoz (Azure AD Azure Active Directory rendelt összes felhasználó és csoport alkalmazásproxy felsorolásához.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 540df7cbe2d35cd705e9d2b88f66a82604951957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fdbf2ab7d33978a72e7455f3e2f5ba591cc4ab7
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548542"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375491"
 ---
-# <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Alkalmazásproxy-alkalmazáshoz rendelt felhasználók és csoportok megjelenítése
+# <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Egy alkalmazáshoz hozzárendelt felhasználók és csoportok alkalmazásproxy megjelenítése
 
-Ez a PowerShell-parancsfájl egy adott Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz rendelt felhasználókat és csoportokat sorolja fel.
+Ez a PowerShell-példaszkértő példa egy adott alkalmazáshoz (Azure AD Azure Active Directory rendelt felhasználókat és csoportokat alkalmazásproxy sorolja fel.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Ez a PowerShell-parancsfájl egy adott Azure Active Directory (Azure AD) alkalma
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph](/powershell/azure/active-directory/install-adv2) modulra (AzureAD) vagy az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) előzetes verziójára (AzureADPreview) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,14 +38,14 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADUser](/powershell/module/AzureAD/get-azureaduser)| Felhasználó beolvasása. |
-| [Get-AzureADGroup](/powershell/module/AzureAD/get-azureadgroup)| Egy csoport beolvasása. |
-| [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Egy egyszerű szolgáltatásnév beolvasása. |
-| [Get-AzureADUserAppRoleAssignment](/powershell/module/AzureAD/get-azureaduserapproleassignment) | Felhasználói alkalmazás szerepkör-hozzárendelésének beolvasása. |
-| [Get-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/get-azureadgroupapproleassignment) | Csoportbeli alkalmazás szerepkör-hozzárendelésének beolvasása. |
+| [Get-AzureADUser](/powershell/module/AzureAD/get-azureaduser)| Lekért egy felhasználót. |
+| [Get-AzureADGroup](/powershell/module/AzureAD/get-azureadgroup)| Lekért egy csoportot. |
+| [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Lekért egy szolgáltatásnév. |
+| [Get-AzureADUserAppRoleAssignment](/powershell/module/AzureAD/get-azureaduserapproleassignment) | Felhasználói alkalmazás szerepkör-hozzárendelésének lekérte. |
+| [Get-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/get-azureadgroupapproleassignment) | Csoportalkalmazás szerepkör-hozzárendelésének lekérte. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+További információ az Azure AD PowerShell-modulról: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).
+További PowerShell-példák a alkalmazásproxy: [Azure AD PowerShell-példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)

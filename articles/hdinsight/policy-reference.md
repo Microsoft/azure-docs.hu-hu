@@ -1,5 +1,5 @@
 ---
-title: Beépített szabályzatdefiníciók a Azure HDInsight
+title: Beépített szabályzatdefiníciók az Azure HDInsight
 description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure HDInsight. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 04/14/2021
 ms.topic: reference
@@ -16,7 +16,7 @@ ms.locfileid: "107497123"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Azure Policy beépített definíciók a Azure HDInsight
 
-Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure HDInsight. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure HDInsight e. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

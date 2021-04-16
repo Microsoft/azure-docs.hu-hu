@@ -1,11 +1,11 @@
 ---
-title: Virtuálisgép-méretezési csoportok által használt meglévő Load Balancer frissítése vagy törlése
+title: Virtuálisgép-méretezési csoport által használt meglévő terheléselosztási rendszer frissítése vagy törlése
 titleSuffix: Update or delete an existing load balancer used by virtual machine scale sets
-description: Ezzel a cikkből megtudhatja, hogyan kezdheti el az Azure standard Load Balancer és a virtuálisgép-méretezési csoportokat.
+description: Ez az azure-beli virtuálisgép-méretezési standard Load Balancer első lépések.
 services: load-balancer
 documentationcenter: na
 author: irenehua
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2079eeb97ac935ba24c6ff0616a58fbb28a962f4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218723"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480086"
 ---
-# <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportokkal használt terheléselosztó frissítése vagy törlése
+# <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoport által használt terheléselosztás frissítése vagy törlése
 
-Ha a virtuálisgép-méretezési csoportokkal és a Azure Load Balancer egy példányával dolgozik, a következőket teheti:
+A virtuálisgép-méretezési készletekkel és a virtuálisgép Azure Load Balancer a következőkkel dolgozhat:
 
 - Szabályok hozzáadása, frissítése és törlése.
 - Konfigurációk hozzáadása.
-- Törölje a Load balancert.
+- Törölje a terheléselosztást.
 
-## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Terheléselosztó beállítása a virtuálisgép-méretezési csoportok horizontális felskálázásához
+## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Terheléselosztás beállítása a virtuálisgép-méretezési készletek horizontális felskálzálhatósága érdekében
 
-Győződjön meg arról, hogy a Azure Load Balancer példánya egy [bejövő NAT](/cli/azure/network/lb/inbound-nat-pool) -készlettel rendelkezik, és hogy a virtuálisgép-méretezési csoport a terheléselosztó backend-készletében van. A Load Balancer automatikusan új bejövő NAT-szabályokat hoz létre a bejövő NAT-készletben, amikor új virtuálisgép-példányok kerülnek a virtuálisgép-méretezési csoportba.
+Győződjön meg arról, hogy a Azure Load Balancer egy bejövő [NAT-készlet](/cli/azure/network/lb/inbound-nat-pool) be van állítva, és hogy a virtuálisgép-méretezési készlet a terheléselosztás háttérkészletében található. Load Balancer automatikusan új bejövő NAT-szabályokat hoz létre a bejövő NAT-készletben, amikor új virtuálisgép-példányokat ad hozzá a virtuálisgép-méretezési csoporthoz.
 
-Annak ellenőrzését, hogy a bejövő NAT-készlet megfelelően van-e beállítva:
+A bejövő NAT-készlet megfelelő beállításának ellenőrzése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza a **minden erőforrás** elemet. Ezután válassza a **MyLoadBalancer** lehetőséget az erőforráslista listából.
-1. A **Beállítások** területen válassza a **bejövő NAT-szabályok** elemet. Ha a jobb oldali ablaktáblában megjelenik a virtuálisgép-méretezési csoport minden egyes példányához létrehozott szabályok listája, akkor az összes beállítás a méretezéshez bármikor felhasználható.
+1. A bal oldali menüben válassza a **Minden erőforrás lehetőséget.** Ezután válassza **ki a MyLoadBalancer ot** az erőforráslistából.
+1. A **Beállítások alatt** válassza a Bejövő **NAT-szabályok lehetőséget.** Ha a jobb oldali panelen megjelenik a virtuálisgép-méretezési készletben az egyes példányok számára létrehozott szabályok listája, akkor bármikor felméretezést is lehet beállítani.
 
 ## <a name="add-inbound-nat-rules"></a>Bejövő NAT-szabályok hozzáadása
 
-Az egyes bejövő NAT-szabályok nem vehetők fel. A virtuálisgép-méretezési csoport összes példányához azonban hozzáadhat egy bejövő NAT-szabályt a definiált előtér-porttartomány és a háttér-port használatával.
+Egyéni bejövő NAT-szabályok nem hozzáadhatóak. A virtuálisgép-méretezési készlet összes példánya számára hozzáadhat azonban bejövő NAT-szabályokat meghatározott elő- és háttérporttartományokkal.
 
-A virtuálisgép-méretezési csoportokhoz tartozó bejövő NAT-szabályok teljes készletének hozzáadásához először hozzon létre egy bejövő NAT-készletet a terheléselosztó számára. Ezután hivatkozzon a bejövő NAT-készletre a virtuálisgép-méretezési csoport hálózati profiljából. Megjelenik egy teljes példa a CLI használatával.
+A virtuálisgép-méretezési készletek bejövő NAT-szabályainak egész készletének hozzáadásához először hozzon létre egy bejövő NAT-készletet a terheléselosztásban. Ezután hivatkozhat a bejövő NAT-készletre a virtuálisgép-méretezési készlet hálózati profiljából. Megjelenik egy teljes példa a CLI használatával.
 
-Az új bejövő NAT-készletnek nem lehetnek átfedésben lévő előtér-porttartomány a meglévő bejövő NAT-készletekkel. A beállított meglévő bejövő NAT-készletek megtekintéséhez használja ezt a CLI- [parancsot](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list):
+Az új bejövő NAT-készlet porttartománya nem lehet átfedésben a meglévő bejövő NAT-készletekkel. A meglévő beállított bejövő NAT-készletek megtekintéséhez használja ezt a [CLI-parancsot:](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list)
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 
@@ -62,15 +62,15 @@ Az új bejövő NAT-készletnek nem lehetnek átfedésben lévő előtér-portta
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
 ```
 ## <a name="update-inbound-nat-rules"></a>Bejövő NAT-szabályok frissítése
 
-Az egyes bejövő NAT-szabályok nem frissíthetők. A bejövő NAT-szabályok készletét azonban frissítheti egy meghatározott előtér-porttartomány és egy háttér-port használatával a virtuálisgép-méretezési csoport összes példányához.
+Az egyes bejövő NAT-szabályok nem frissíthetők. A bejövő NAT-szabályok készletét azonban frissítheti egy meghatározott előoldali porttartománysal és egy háttérporttal a virtuálisgép-méretezési készlet összes példánya számára.
 
-A virtuálisgép-méretezési csoportokhoz tartozó bejövő NAT-szabályok teljes készletének frissítéséhez frissítse a bejövő NAT-készletet a terheléselosztó számára.
+A virtuálisgép-méretezési készletek bejövő NAT-szabályainak teljes készletének frissítéséhez frissítse a bejövő NAT-készletet a terheléselosztásban.
     
 ```azurecli-interactive
 az network lb inbound-nat-pool update 
@@ -83,9 +83,9 @@ az network lb inbound-nat-pool update
 
 ## <a name="delete-inbound-nat-rules"></a>Bejövő NAT-szabályok törlése
 
-Az egyes bejövő NAT-szabályok nem törölhetők, azonban a bejövő NAT-készlet törlésével törölheti a bejövő NAT-szabályok teljes készletét.
+Az egyes bejövő NAT-szabályok nem törölhetők, de a bejövő NAT-készlet törlésével törölheti a bejövő NAT-szabályok teljes készletét.
 
-A NAT-készlet törléséhez először távolítsa el azt a méretezési csoportból. A CLI-t használó teljes példa itt látható:
+A NAT-készlet törléséhez először távolítsa el a méretezési csoportból. Itt látható egy teljes példa a CLI használatával:
 
 ```azurecli-interactive
     az vmss update
@@ -98,7 +98,7 @@ A NAT-készlet törléséhez először távolítsa el azt a méretezési csoport
        --name MyVMSS
     az network lb inbound-nat-pool delete
        --resource-group MyResourceGroup
-       -–lb-name MyLoadBalancer
+       -â€“lb-name MyLoadBalancer
        --name MyNatPool
 ```
 
@@ -106,17 +106,17 @@ A NAT-készlet törléséhez először távolítsa el azt a méretezési csoport
 
 Több IP-konfiguráció hozzáadása:
 
-1. A bal oldali menüben válassza a **minden erőforrás** elemet. Ezután válassza a **MyLoadBalancer** lehetőséget az erőforráslista listából.
-1. A **Beállítások** területen válassza a előtér **IP-konfiguráció** elemet. Ezután válassza a **Hozzáadás** elemet.
-1. Az előtérbeli **IP-cím hozzáadása** lapon adja meg az értékeket, majd kattintson **az OK gombra**.
-1. Kövesse az oktatóanyag [5. lépését](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) és a [6. lépését](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) , ha új terheléselosztási szabályokra van szükség.
-1. Szükség esetén hozza létre a bejövő NAT-szabályok új készletét az újonnan létrehozott előtér-IP-konfigurációk használatával. Egy példa az előző szakaszban található.
+1. A bal oldali menüben válassza a **Minden erőforrás lehetőséget.** Ezután válassza **ki a MyLoadBalancer** erőforráslistát.
+1. A **Beállítások alatt** válassza az **Előtere IP-konfigurációja lehetőséget.** Ezután válassza a **Hozzáadás** elemet.
+1. Az **Előtere IP-címének hozzáadása lapon** adja meg az értékeket, majd kattintson az **OK gombra.**
+1. Ha [új terheléselosztási](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) szabályokra van szükség, kövesse az oktatóanyag [5. és 6.](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) lépését.
+1. Hozzon létre új bejövő NAT-szabályokat az újonnan létrehozott előoldali IP-konfigurációk használatával, ha szükséges. Erre az előző szakaszban talál példát.
 
-## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>Több Virtual Machine Scale Sets egyetlen Load Balancer mögött
+## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>Egyetlen Virtual Machine Scale Sets mögött több Load Balancer
 
-Bejövő NAT-készlet létrehozása a Load Balancerban, a virtuálisgép-méretezési csoport hálózati profiljában a bejövő NAT-készletre hivatkozva, végül frissítse a példányokat a módosítások érvénybe léptetéséhez. Ismételje meg az összes Virtual Machine Scale Sets lépéseit.
+Hozzon létre bejövő NAT-készletet a Load Balancer, hivatkozik a bejövő NAT-készletre a virtuálisgép-méretezési csoport hálózati profiljában, és végül frissítse a példányokat, hogy a módosítások életbe lépnek. Ismételje meg a lépéseket minden Virtual Machine Scale Sets.
 
-Ügyeljen arra, hogy különálló bejövő NAT-készleteket hozzon létre, amelyek nem átfedésben vannak a frontend-tartományokkal.
+Mindenképpen hozzon létre külön bejövő NAT-készleteket, amelyek nem fedik át az előoldali porttartományokat.
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 
@@ -134,7 +134,7 @@ Bejövő NAT-készlet létrehozása a Load Balancerban, a virtuálisgép-mérete
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
           
@@ -153,28 +153,28 @@ Bejövő NAT-készlet létrehozása a Load Balancerban, a virtuálisgép-mérete
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS2
 ```
 
-## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport által használt előtér-IP-konfiguráció törlése
+## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport által használt előoldali IP-konfiguráció törlése
 
-A méretezési csoport által használt előtér-IP-konfiguráció törlése:
+A méretezési csoport által használt előoldali IP-konfiguráció törlése:
 
- 1. Először törölje a bejövő NAT-készletet (a bejövő NAT-szabályok készletét), amely az előtér-IP-konfigurációra hivatkozik. A bejövő szabályok törlésének utasításait az előző szakaszban találja.
- 1. Törölje az előtér-IP-konfigurációra hivatkozó terheléselosztási szabályt.
- 1. Törölje az előtér-IP-konfigurációt.
+ 1. Először törölje az előoldali IP-konfigurációra hivatkozó bejövő NAT-készletet (a bejövő NAT-szabályok készletét). A bejövő szabályok törlésére vonatkozó utasításokat az előző szakaszban talál.
+ 1. Törölje az előoldali IP-konfigurációra hivatkozó terheléselosztási szabályt.
+ 1. Törölje az előoldali IP-konfigurációt.
 
-## <a name="delete-a-load-balancer-used-by-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport által használt terheléselosztó törlése
+## <a name="delete-a-load-balancer-used-by-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport által használt terheléselosztás törlése
 
-A méretezési csoport által használt előtér-IP-konfiguráció törlése:
+A méretezési csoport által használt előoldali IP-konfiguráció törlése:
 
- 1. Először törölje a bejövő NAT-készletet (a bejövő NAT-szabályok készletét), amely az előtér-IP-konfigurációra hivatkozik. A bejövő szabályok törlésének utasításait az előző szakaszban találja.
- 1. Törölje a virtuálisgép-méretezési csoportját tartalmazó háttér-készletre hivatkozó terheléselosztási szabályt.
- 1. Távolítsa el a `loadBalancerBackendAddressPool` hivatkozást a virtuálisgép-méretezési csoport hálózati profiljából.
+ 1. Először törölje az előoldali IP-konfigurációra hivatkozó bejövő NAT-készletet (a bejövő NAT-szabályok készletét). A bejövő szabályok törlésére vonatkozó utasításokat az előző szakaszban talál.
+ 1. Törölje a virtuálisgép-méretezési készletet tartalmazó háttérkészletre hivatkozó terheléselosztási szabályt.
+ 1. Távolítsa el `loadBalancerBackendAddressPool` a hivatkozást a virtuálisgép-méretezési készlet hálózati profiljából.
  
- A CLI-t használó teljes példa itt látható:
+ Itt látható egy teljes példa a CLI használatával:
 
 ```azurecli-interactive
     az vmss update
@@ -186,10 +186,10 @@ A méretezési csoport által használt előtér-IP-konfiguráció törlése:
        --resource-group MyResourceGroup
        --name MyVMSS
 ```
-Végezetül törölje a terheléselosztó erőforrását.
+Végül törölje a terheléselosztási erőforrást.
  
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a Azure Load Balancer és a virtuálisgép-méretezési csoportokról, olvassa el a fogalmakat ismertető témakört.
+A virtuálisgép-méretezési Azure Load Balancer és a virtuálisgép-méretezési készletekkel kapcsolatos további információkért olvassa el a fogalmakat.
 
-> [Azure Load Balancer a virtuálisgép-méretezési csoportokkal](load-balancer-standard-virtual-machine-scale-sets.md)
+> [Azure Load Balancer virtuálisgép-méretezési készletekkel való kapcsolat](load-balancer-standard-virtual-machine-scale-sets.md)
