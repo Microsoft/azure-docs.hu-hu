@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép létrehozása általánosított rendszerképből az Azure CLI használatával
-description: Hozzon létre egy virtuális gépet egy általánosított rendszerkép-verzióból az Azure CLI használatával.
+title: Virtuális gép létrehozása általános rendszerképből az Azure CLI használatával
+description: Virtuális gép létrehozása általános rendszerképverzióból az Azure CLI használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bcaf85f61a4d8cf4d23c9c5be7f46d765d77dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41c6995f16b836231142520362f9aace7d91ffe0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551042"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500311"
 ---
-# <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Virtuális gép létrehozása általánosított rendszerkép-verzióból a parancssori felület használatával
+# <a name="create-a-vm-from-a-generalized-image-version-using-the-azure-cli"></a>Virtuális gép létrehozása általános rendszerképverzióból az Azure CLI használatával
 
-Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt [általánosított rendszerkép-verzióból](./shared-image-galleries.md#generalized-and-specialized-images) . Ha speciális rendszerkép használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása speciális rendszerképből](vm-specialized-image-version-powershell.md)című témakört. 
+Hozzon létre egy [virtuális](./shared-image-galleries.md#generalized-and-specialized-images) gépet egy virtuális gépen tárolt általános rendszerképverzióból Shared Image Gallery. Ha egy speciális rendszerkép használatával szeretne virtuális gépet létrehozni, tekintse meg a virtuális gép specializált rendszerképből [való létrehozásáról való lásd:](vm-specialized-image-version-powershell.md). 
 
 
-## <a name="get-the-image-id"></a>A rendszerkép AZONOSÍTÓjának beolvasása
+## <a name="get-the-image-id"></a>A rendszerkép azonosítójának lekérte
 
-A katalógusban szereplő képdefiníciók listázása az az [SIG rendszerkép-definition List](/cli/azure/sig/image-definition#az-sig-image-definition-list) paranccsal, hogy megtekintse a definíciók nevét és azonosítóját.
+Listsa ki a katalógusban található képdefiníciókat [az az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) használatával, hogy lássa a definíciók nevét és azonosítóját.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -33,9 +33,9 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. A lemezkép legújabb verziójának használatához állítsa `--image` a rendszerkép-DEFINÍCIÓ azonosítóját. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. A rendszerkép legújabb verziójának használatára állítsa be a `--image` rendszerkép definíciójának azonosítóját. 
 
-Szükség szerint cserélje le az erőforrás-neveket ebben a példában. 
+Ebben a példában szükség szerint cserélje le az erőforrásneveket. 
 
 ```azurecli-interactive 
 imgDef="/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition"
@@ -55,8 +55,8 @@ az vm create\
    --generate-ssh-keys
 ```
 
-Egy adott verziót is használhat a paraméterhez tartozó rendszerkép-verzió AZONOSÍTÓjának használatával `--image` . Például a következő rendszerkép *-verzió használata* `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` :
+Egy adott verziót is használhat a paraméter rendszerképverzió-azonosítójának `--image` használatával. Ha például az *1.0.0-s rendszerképverziót használja, írja* be a következőt: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` .
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját.
+[Az Azure Image Builder (előzetes verzió)](./image-builder-overview.md) segíthet automatizálni a rendszerképverzió létrehozását, sőt akár egy meglévő rendszerképverzióból is frissíthet és létrehozhat egy új [rendszerképverziót.](./linux/image-builder-gallery-update-image-version.md)

@@ -1,200 +1,200 @@
 ---
-title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása SAP HANA
-description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
+title: Az SAP HANA biztonsági mentési hibáinak elhárítása
+description: Ez a cikk azt ismerteti, hogyan háríthatja el azokat a gyakori hibákat, amelyek akkor fordulhatnak elő, Azure Backup biztonsági SAP HANA biztonsági mentésekor.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf4c26aa32d65ec63ec84d85e454adaaf2ece8d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713337"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517232"
 ---
-# <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
+# <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure-beli SAP HANA biztonsági mentésének hibaelhárítása
 
-Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos hibaelhárítási információkat tartalmaz. A jelenleg támogatott SAP HANA biztonsági mentési forgatókönyvekkel kapcsolatos további információkért tekintse meg a [forgatókönyvek támogatása](sap-hana-backup-support-matrix.md#scenario-support)című témakört.
+Ez a cikk az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentése hibaelhárítási információkat tartalmaz. A jelenleg támogatott biztonsági mentési SAP HANA további információért lásd: [Forgatókönyv támogatása.](sap-hana-backup-support-matrix.md#scenario-support)
 
 ## <a name="prerequisites-and-permissions"></a>Előfeltételek és engedélyek
 
-A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeket](tutorial-backup-sap-hana-db.md#prerequisites) , valamint azt, hogy [Mit tartalmaz az előzetes regisztrációs parancsfájl](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
+A biztonsági mentések [konfigurálása](tutorial-backup-sap-hana-db.md#prerequisites) [előtt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) tekintse meg az előfeltételeket és a Mit csinál az előzetes regisztrációs szkript? szakaszt.
 
 ## <a name="common-user-errors"></a>Gyakori felhasználói hibák
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Hibaüzenet**      | <span style="font-weight:normal">A Azure Backup nem rendelkezik a biztonsági mentés végrehajtásához szükséges szerepkör-jogosultságokkal</span>    |
+| **Hibaüzenet**      | <span style="font-weight:normal">Azure Backup nem rendelkezik a biztonsági mentés elvégzéséhez szükséges szerepköri jogosultságokkal</span>    |
 | ---------------------- | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Lehetséges, hogy a szerepkör felül lett írva.                          |
-| **Javasolt művelet** | A probléma megoldásához futtassa a szkriptet a **felderítési adatbázis** panelen, vagy töltse le [itt](https://aka.ms/scriptforpermsonhana). Azt is megteheti, hogy hozzáadja a "SAP_INTERNAL_HANA_SUPPORT" szerepkört a munkaterhelés biztonsági mentési felhasználóhoz (AZUREWLBACKUPHANAUSER). |
+| **Lehetséges okok**    | Előfordulhat, hogy a szerepkört felülírták.                          |
+| **Javasolt művelet** | A probléma megoldásához futtassa a szkriptet a **Felderítési adatbázis** panelen, vagy töltse le [ide.](https://aka.ms/scriptforpermsonhana) Másik lehetőségként adja hozzá a "SAP_INTERNAL_HANA_SUPPORT" szerepkört a Workload Backup-felhasználóhoz (AZUREWLBACKUPHANAUSER). |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-| Hibaüzenet      | <span style="font-weight:normal">Nem sikerült csatlakozni a HANA rendszerhez</span>                        |
+| Hibaüzenet      | <span style="font-weight:normal">Nem sikerült csatlakozni a HANA-rendszerhez</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Lehet, hogy a SAP HANA példány nem található.<br/>A HANA-adatbázissal való interakcióhoz Azure Backup szükséges engedélyek nincsenek beállítva. |
-| **Javasolt művelet** | Ellenőrizze, hogy a SAP HANA-adatbázis működik-e. Ha az adatbázis működik és fut, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [Előregisztráció parancsfájlt](https://aka.ms/scriptforpermsonhana) a hiányzó engedélyek hozzáadásához. |
+| **Lehetséges okok**    | Előfordulhat SAP HANA hogy a példány nem omlott.<br/>A HANA-Azure Backup való kommunikációhoz szükséges engedélyek nincsenek beállítva. |
+| **Javasolt művelet** | Ellenőrizze, hogy SAP HANA-e az adatbázis. Ha az adatbázis működik, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [előregistration](https://aka.ms/scriptforpermsonhana) szkriptet a hiányzó engedélyek hozzáadásához. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-| Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA példány érvénytelen vagy nem található.</span>  |
+| Hibaüzenet      | <span style="font-weight:normal">A SAP HANA példány érvénytelen vagy nem található</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Egyetlen Azure-beli virtuális gépen több SAP HANA példányról nem készíthető biztonsági másolat. |
-| **Javasolt művelet** | Futtassa az [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) arra a SAP HANA példányra, amelyről biztonsági másolatot szeretne készíteni. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| **Lehetséges okok**    | Több SAP HANA azure-beli virtuális gépen nem lehet biztonságimentni. |
+| **Javasolt művelet** | Futtassa [az előkészítő](https://aka.ms/scriptforpermsonhana) szkriptet a SAP HANA példányon, amelyről biztonsági szeretne biztonsági példányt. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. |
 
 ### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
 
 | Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA művelet nem támogatott</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | A SAP HANA Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
-| **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
+| **Lehetséges okok**    | Azure Backup a SAP HANA nem támogatja a növekményes biztonsági mentést és a natív ügyfeleken (Studio/ SAP HANA Vagy DBA-adatbázison) végrehajtott műveleteket |
+| **Javasolt művelet** | További információért tekintse meg a [következőt:](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
 | Hibaüzenet      | <span style="font-weight:normal">A biztonsági mentési napló lánca megszakadt</span>                                    |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Lehetséges, hogy a napló biztonsági mentésének célhelye a backint-ről a fájlrendszerre lett frissítve, vagy a backint végrehajtható fájl módosítva lett. |
-| **Javasolt művelet** | A probléma megoldásához indítson el egy teljes biztonsági mentést                   |
+| **Lehetséges okok**    | Előfordulhat, hogy a napló biztonsági mentési célhelyét a backintről a fájlrendszerre frissítették, vagy a backint végrehajtható fájlja módosult |
+| **Javasolt művelet** | Teljes biztonsági mentés aktiválása a probléma megoldásához                   |
 
 ### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
-| Hibaüzenet      | <span style="font-weight:normal">SDC a MDC frissítését észlelte</span>                                   |
+| Hibaüzenet      | <span style="font-weight:normal">SDC–MDC frissítés észlelhető</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. |
-| **Javasolt művelet** | A probléma megoldásához kövesse a SDC-ben felsorolt lépéseket a [MDC frissítéséhez](#sdc-to-mdc-upgrade-with-a-change-in-sid) |
+| **Lehetséges okok**    | Az SAP HANA-példány frissítve lett az SDC-ről az MDC-re. A biztonsági mentések sikertelenek lesznek a frissítés után. |
+| **Javasolt művelet** | A probléma megoldásához kövesse az [SDC–MDC](#sdc-to-mdc-upgrade-with-a-change-in-sid) frissítésben felsorolt lépéseket |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | Hibaüzenet      | <span style="font-weight:normal">A rendszer érvénytelen backint-konfigurációt észlelt</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek Azure Backup |
-| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása** lehetőséget. |
+| **Lehetséges okok**    | A háttérparaméterek helytelenül vannak megadva a Azure Backup |
+| **Javasolt művelet** | Ellenőrizze, hogy be vannak-e állítva a következő (backint) paraméterek:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Ha vannak backint-alapú paraméterek a HOST-ban, távolítsa el őket. Ha a paraméterek nincsenek jelen a GAZDAGÉP szinten, de manuálisan, adatbázisszinten lett módosítva, a korábbiakban leírtak szerint vissza kell állítani őket a megfelelő értékekre. Vagy futtassa a [védelem leállítását,](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) és őrizze meg a biztonsági mentési adatokat a Azure Portal, majd válassza a **Biztonsági mentés folytatása lehetőséget.** |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
-|Hibaüzenet  |A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek  |
+|Hibaüzenet  |A visszaállítás forrás- és célrendszere nem kompatibilis  |
 |---------|---------|
-|Lehetséges okok   | A visszaállításra kijelölt forrás-és célként használt rendszerek nem kompatibilisek        |
-|Javasolt művelet   |   Győződjön meg arról, hogy a visszaállítási forgatókönyv nem szerepel a lehetséges inkompatibilis visszatárolások következő listáján: <br><br>   **1. eset:** A SYSTEMDB nem nevezhető át a visszaállítás során.  <br><br> **2. eset:** Forrás-SDC és cél-MDC: a forrásadatbázis nem állítható vissza SYSTEMDB vagy bérlői adatbázisként a célhelyen. <br><br> **3. eset:** Forrás-MDC és cél-SDC: a forrásadatbázis (SYSTEMDB vagy bérlői adatbázis) nem állítható vissza a célhelyre. <br><br>  További információ: **1642148** -es Megjegyzés az [SAP support kezdőpanelban](https://launchpad.support.sap.com). |
+|Lehetséges okok   | A visszaállításhoz kiválasztott forrás- és célrendszerek nem kompatibilisek        |
+|Javasolt művelet   |   Győződjön meg arról, hogy a visszaállítási forgatókönyv nem szerepel a lehetséges inkompatibilis visszaállítások alábbi listájában: <br><br>   **1. eset:** A SYSTEMDB nem nevezhető át a visszaállítás során.  <br><br> **2. eset:** Forrás – SDC és cél – MDC: A forrásadatbázis nem állítható vissza SYSTEMDB- vagy bérlőadatbázisként a célon. <br><br> **3. eset:** Forrás – MDC és cél – SDC: A forrásadatbázis (SYSTEMDB vagy bérlői adatbázis) nem állítható vissza a célra. <br><br>  További információért tekintse meg a **1642148-as** megjegyzést az [SAP támogatási indítópultban.](https://launchpad.support.sap.com) |
 
 ## <a name="restore-checks"></a>Visszaállítási ellenőrzések
 
-### <a name="single-container-database-sdc-restore"></a>Egy tároló-adatbázis (SDC) visszaállítása
+### <a name="single-container-database-sdc-restore"></a>Egytárolós adatbázis (SDC) visszaállítása
 
-Ügyeljen a bevitelre, miközben egyetlen tároló-adatbázist (SDC) állít vissza a HANA-hoz egy másik SDC-gépre. Az adatbázis nevét kisbetűs értékkel kell megadni, és zárójelek között a "SDC" utótaggal kell kiegészíteni. A HANA-példány a fővárosokban fog megjelenni.
+A HANA egyetlen tárolóadatbázisának (SDC) egy másik SDC-gépre való visszaállítása közben kell gondoskodnia a bemenetekről. Az adatbázis nevét kisbetűvel kell adni, az "sdc" pedig szögletes zárójelben. A HANA-példány nagybetűkben jelenik meg.
 
-Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. A biztonsági mentési elemek lapon megjelenik a biztonsági mentési elem neve **"H21 (SDC)"** néven. Ha megpróbálja visszaállítani az adatbázist egy másik cél SDC, tegyük fel, hogy a H11 a következő bemeneti adatokat kell megadni.
+Tegyük fel, hogy egy "H21" SDC HANA-példányról biztonságimentett. A biztonsági mentési elemek oldalán a biztonsági mentési elem neve **"h21(sdc)" lesz.** Ha megpróbálja visszaállítani ezt az adatbázist egy másik cél SDC-re, például h11-re, akkor a következő bemeneteket kell biztosítani.
 
 ![Visszaállított SDC-adatbázis neve](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Vegye figyelembe a következő szempontokat:
 
-- Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve. Ebben az esetben a H21 (SDC).
-- A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC kapcsolatban a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
-- Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzet bejelölésével engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
-- A Linux megkülönbözteti a kis-és nagybetűket. Ezért ügyeljen arra, hogy megőrizze a kis-és nagybetűket.
+- Alapértelmezés szerint a visszaállított adatbázis neve a biztonságimásolat-elem nevével lesz kitöltve. Ebben az esetben h21(sdc).
+- A cél H11-ként való kiválasztása nem módosítja automatikusan a visszaállított adatbázis nevét. **A parancsnak a h11(sdc)** gombra kell módosítania. Az SDC-vel kapcsolatban a visszaállított adatbázisnév lesz a célpéldány azonosítója, amely kisbetűket tartalmaz, az "sdc" pedig szögletes zárójelben.
+- Mivel az SDC csak egyetlen adatbázissal is képes, be kell jelölje be a jelölőnégyzetet a meglévő adatbázisadatok felülbírálására a helyreállítási pont adataival.
+- A Linux megkülönbözteti a kis- és nagybetűket. Ezért ügyeljen az eset megőrzésére.
 
-### <a name="multiple-container-database-mdc-restore"></a>Több tároló-adatbázis (MDC) visszaállítása
+### <a name="multiple-container-database-mdc-restore"></a>Több tárolóadatbázis (MDC) visszaállítása
 
-A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez a visszaállítás felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Tehát miután a rendszeradatbázist visszaállította egy cél példányra, futtassa újra az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
+A HANA több tárolóadatbázisában a standard konfiguráció a SYSTEMDB + 1 vagy több bérlői adatbázis. Egy teljes adatbázispéldány SAP HANA systemdb és bérlői adatbázisok visszaállítását jelenti. Az egyik először visszaállítja a SYSTEMDB adatbázist, majd folytatja a Bérlői adatbázist. A rendszer-adatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációját. Ez a visszaállítás felülbírálja a célpéldány BackInt-hez kapcsolódó információit is. Tehát miután a rendszer-adatbázis visszaáll egy célpéldányra, futtassa újra az előregisztrációs szkriptet. Csak az ezt követő bérlői adatbázis-visszaállítások lesznek sikeresek.
 
-## <a name="back-up-a-replicated-vm"></a>Replikált virtuális gép biztonsági mentése
+## <a name="back-up-a-replicated-vm"></a>Replikált virtuális gép biztonsági visszaállítása
 
 ### <a name="scenario-1"></a>1\. példa
 
-Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép úgy lett felépítve, hogy szimulálja a régi virtuális gépet. Vagyis a beállítások pontosan ugyanazok. (Ennek az az oka, hogy az eredeti virtuális gép törölve lett, és a visszaállítás a virtuális gép biztonsági másolatából vagy Azure Site Recovery) történt.
+Az eredeti virtuális gép replikálása egy virtuális Azure Site Recovery azure-beli virtuális gép biztonsági mentésének használatával történt. Az új virtuális gép a régi virtuális gép szimulálására lett felépítve. Ez azt jelenti, hogy a beállítások pontosan ugyanazok. (Ennek az az oka, hogy az eredeti virtuális gép törölve lett, és a visszaállítás a virtuális gép biztonsági másolatából vagy az Azure Site Recovery).
 
-Ez a forgatókönyv két lehetséges esetet tartalmazhat. Ismerje meg, hogyan készíthet biztonsági mentést a replikált virtuális gépről mindkét esetben:
+Ez a forgatókönyv két lehetséges esetet tartalmazhat. Ismerje meg, hogyan lehet biztonsági adatokat biztonságira másolni a replikált virtuális gépről mindkét esetben:
 
-1. Az új létrehozott virtuális gép neve azonos, és ugyanabban az erőforráscsoportban és előfizetésben található, mint a törölt virtuális gép.
+1. A létrehozott új virtuális gép neve megegyezik, és ugyanabban az erőforráscsoportban és előfizetésben található, mint a törölt virtuális gép.
 
-    - A bővítmény már megtalálható a virtuális gépen, de a szolgáltatások egyike sem látható
-    - Az előzetes regisztrációs parancsfájl futtatása
-    - Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
-    - A már meglévő biztonsági másolati adatbázisok (a törölt virtuális gépről) sikeresen elindulnak a biztonsági mentés során
+    - A bővítmény már jelen van a virtuális gépen, de egyik szolgáltatás számára sem látható
+    - Az előzetes regisztrációs szkript futtatása
+    - Regisztrálja újra ugyanannak a gépnek a bővítményét a Azure Portal **(** Biztonsági mentési nézet részletei -> válassza ki a megfelelő Azure-beli virtuális gépet  ->   >-regisztrációt)
+    - A már meglévő biztonságimentett adatbázisoknak (a törölt virtuális gépről) sikeresen el kell kezdenie a biztonsági mentéset
 
-2. Az új létrehozott virtuális gép a következők valamelyikével rendelkezik:
+2. A létrehozott új virtuális gép a következő két okkal rendelkezik:
 
-    - egy másik név, mint a törölt virtuális gép
-    - ugyanaz a neve, mint a törölt virtuális gép, de egy másik erőforráscsoport vagy előfizetés (a törölt virtuális géphez képest)
+    - a törölt virtuális gép nevétől eltérő név
+    - ugyanaz a név, mint a törölt virtuális gépnek, de más erőforráscsoportban vagy előfizetésben található (a törölt virtuális géphez képest)
 
-    Ebben az esetben hajtsa végre a következő lépéseket:
+    Ebben az esetben tegye a következőket:
 
-    - A bővítmény már megtalálható a virtuális gépen, de a szolgáltatások egyike sem látható
-    - Az előzetes regisztrációs parancsfájl futtatása
-    - Ha felderíti és megóvja az új adatbázisokat, megtekintheti az ismétlődő aktív adatbázisokat a portálon. Ennek elkerüléséhez [állítsa le a védelmet](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi adatbázisok megőrzéséhez. Ezután folytassa a fennmaradó lépésekkel.
-    - A biztonsági mentést lehetővé tevő adatbázisok felderítése
-    - Biztonsági másolatok engedélyezése ezeken az adatbázisokon
-    - A már meglévő biztonsági másolati adatbázisok (a törölt virtuális gépről) továbbra is a tárolóban lesznek tárolva (a biztonsági mentések a szabályzatnak megfelelően megmaradnak)
+    - A bővítmény már jelen van a virtuális gépen, de egyik szolgáltatás számára sem látható
+    - Az előzetes regisztrációs szkript futtatása
+    - Ha felderíti és védi az új adatbázisokat, ismétlődő aktív adatbázisokat fog látni a portálon. Ennek elkerülése érdekében állítsa le a [védelmet](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi adatbázisok adatainak megőrzésével. Ezután folytassa a további lépésekkel.
+    - Adatbázisok felderítése a biztonsági mentés engedélyezéséhez
+    - Biztonsági mentések engedélyezése ezeken az adatbázisokon
+    - A már meglévő biztonsági másolatba került adatbázisok (a törölt virtuális gépről) továbbra is a tárolóban lesznek tárolva (a biztonsági másolataik a szabályzatnak megfelelően lesznek megőrizve)
 
 ### <a name="scenario-2"></a>2\. példa
 
-Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép a tartalomból lett kiépítve – sablonként való használatra. Ez egy új biztonsági azonosítóval rendelkező virtuális gép.
+Az eredeti virtuális gép replikálása Azure Site Recovery Azure-beli virtuális gép biztonsági mentésének használatával történt. Az új virtuális gép a tartalomból lett kiépítve – sablonként használható. Ez egy új virtuális gép, új SID azonosítóval.
 
-Az alábbi lépéseket követve engedélyezheti a biztonsági mentéseket az új virtuális gépen:
+Kövesse az alábbi lépéseket a biztonsági mentések engedélyezéséhez az új virtuális gépen:
 
-- A bővítmény már megtalálható a virtuális gépen, de nem látható a szolgáltatások egyikén sem
-- Futtassa az előzetes regisztrációs parancsfájlt. Az új virtuális gép SID-je alapján két forgatókönyv fordulhat elő:
-  - Az eredeti virtuális gép és az új virtuális gép ugyanazzal a SID-vel rendelkezik. Az előzetes regisztrációs parancsfájl futtatása sikeresen megtörténik.
-  - Az eredeti virtuális gép és az új virtuális gép eltérő biztonsági azonosítóval rendelkezik. Az előzetes regisztrációs parancsfájl sikertelen lesz. Ha segítséget szeretne kapni ebben a forgatókönyvben, forduljon az ügyfélszolgálathoz.
-- Fedezze fel azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni
-- Biztonsági másolatok engedélyezése ezeken az adatbázisokon
+- A bővítmény már jelen van a virtuális gépen, de egyik szolgáltatás számára sem látható
+- Futtassa az előzetes regisztrációs szkriptet. Az új virtuális gép biztonsági azonosítója alapján két forgatókönyv merülhet fel:
+  - Az eredeti virtuális gép és az új virtuális gép biztonsági azonosítója megegyezik. Az előzetes regisztrációs szkript sikeresen le fog futni.
+  - Az eredeti virtuális gép és az új virtuális gép eltérő BIZTONSÁGI okkal van megszűkve. Az előzetes regisztrációs szkript sikertelen lesz. Ha segítségre van szüksége ebben a forgatókönyvben, forduljon az ügyfélszolgálathoz.
+- Felderítheti az adatbázisokat, amelyekről biztonsági mentéset szeretne.
+- Biztonsági mentések engedélyezése ezeken az adatbázisokon
 
-## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>A SDC verziófrissítése vagy a MDC verziófrissítése ugyanazon a virtuális gépen
+## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>SDC-verziófrissítés vagy MDC-verziófrissítés ugyanazon a virtuális gépen
 
-Az operációs rendszer, a SDC verziójának változása vagy a MDC változása nem okozhatja a SID-változások kezelését a következőképpen:
+Az operációs rendszer, az SDC-verzióváltás vagy az MDC-verzió olyan módosítása, amely nem okoz SID-változást, a következőképpen kezelhető:
 
-- Győződjön meg arról, hogy az új operációsrendszer-verzió, a SDC vagy a MDC verziója jelenleg [támogatott a Azure Backup](sap-hana-backup-support-matrix.md#scenario-support)
-- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) az adatbázis megőrzése érdekében
-- A frissítés vagy a frissítés végrehajtása
-- Futtassa újra az előzetes regisztrációs parancsfájlt. A frissítési folyamat gyakran el is távolíthatja [a szükséges szerepköröket](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does). Az előzetes regisztrációs szkript futtatása segít ellenőrizni az összes szükséges szerepkört.
-- Az adatbázis védelmének újbóli folytatása
+- Győződjön meg arról, hogy az új operációsrendszer-, SDC- vagy MDC-verziót a Azure Backup [](sap-hana-backup-support-matrix.md#scenario-support)
+- [A védelem leállítása az adatbázis adatainak](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) megőrzésével
+- Frissítés vagy frissítés végrehajtása
+- Futtassa újra az előzetes regisztrációs szkriptet. A frissítési folyamat gyakran eltávolítja a [szükséges szerepköröket.](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) Az előzetes regisztrációs szkript futtatása segít ellenőrizni az összes szükséges szerepkört.
+- Az adatbázis védelmének újraindítása
 
-## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC a MDC frissítéséhez a SID módosítása nélkül
+## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC-ről MDC-re való frissítés a SID módosítása nélkül
 
-A SDC-ről a MDC-re irányuló frissítések a következőképpen kezelhetők:
+Az SDC-ről az MDC-be való frissítés, amely nem okoz biztonsági azonosító-változást, a következőképpen kezelhető:
 
-- Győződjön meg arról, hogy az új MDC-verziót jelenleg a [Azure Backup támogatja](sap-hana-backup-support-matrix.md#scenario-support)
-- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében
-- Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
-- Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) újrafuttatása
-- Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
-- Válassza az egyazon virtuális géphez tartozó adatbázisok újbóli **felderítése** elemet. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
-- A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrzött a régi biztonsági másolati adat.
+- Győződjön meg arról, hogy az új MDC-verziót [a](sap-hana-backup-support-matrix.md#scenario-support) Azure Backup
+- [Védelem leállítása a](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) régi SDC-adatbázis adatainak megőrzésével
+- Hajtsa végre a frissítést. A befejezést követően a HANA-rendszer MDC lesz rendszer-adatbázissal és bérlői adatbázisokkal
+- Az előzetes regisztrációs [szkript újrafuttat](https://aka.ms/scriptforpermsonhana)
+- Regisztrálja újra ugyanannak a gépnek a bővítményét a Azure Portal **(** Biztonsági mentési nézet részletei -> válassza ki a megfelelő Azure-beli virtuális gépet  ->   >-regisztrációt)
+- Válassza **az Ugyanazon virtuális gép adatbázisának** újrakérte lehetőséget. Ennek a műveletnek a 3. lépésben SYSTEMDB-ként és bérlői adatbázisként kell mutatnia az új adatbázisokat, nem pedig SDC-ként
+- A régebbi SDC-adatbázis továbbra is létezni fog a tárolóban, és a szabályzatnak megfelelően megőrzi a régi biztonságimentett adatokat
 - Az adatbázisok biztonsági mentésének konfigurálása
 
-## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>SDC a MDC frissítéséhez a SID módosításával
+## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>SDC-ről MDC-re való frissítés biztonsági azonosítóval való módosítással
 
-A SDC-ről a MDC-re történő frissítés a következő módon kezelhető:
+Az SDC-ről az MDC-re való frissítés, amely biztonsági azonosítóváltást okoz, a következőképpen kezelhető:
 
-- Győződjön meg arról, hogy az új MDC-verziót jelenleg a [Azure Backup támogatja](sap-hana-backup-support-matrix.md#scenario-support)
-- A **védelem leállítása** a régi SDC-adatbázis megőrzése érdekében
-- Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
-- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a megfelelő részletekkel (új SID és MDC). A SID-változás miatt előfordulhat, hogy a parancsfájl sikeres futtatásával problémákba ütközik. Ha problémákba ütközik, lépjen kapcsolatba Azure Backup támogatási szolgálattal.
-- Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
-- Válassza az egyazon virtuális géphez tartozó adatbázisok újbóli **felderítése** elemet. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
-- A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrizte a régi biztonsági mentést.
+- Győződjön meg arról, hogy az új MDC-verziót [a](sap-hana-backup-support-matrix.md#scenario-support) Azure Backup
+- **Védelem leállítása a** régi SDC-adatbázis adatainak megőrzésével
+- Hajtsa végre a frissítést. A befejezést követően a HANA-rendszer MDC lesz rendszer-adatbázissal és bérlői adatbázisokkal
+- Futtassa újra [az előzetes regisztrációs szkriptet](https://aka.ms/scriptforpermsonhana) a megfelelő adatokkal (új SID és MDC). A biztonsági azonosítók módosítása miatt problémákat okozhat a szkript sikeres futtatása. Ha problémákba Azure Backup forduljon az ügyfélszolgálathoz.
+- Regisztrálja újra ugyanannak a gépnek a bővítményét a Azure Portal **(** Biztonsági mentési nézet részletei -> Válassza ki a megfelelő Azure-beli virtuális gépet  ->   >-regisztrációt)
+- Válassza **az Ugyanazon virtuális gép adatbázisának újraszibabadulása** lehetőséget. Ennek a műveletnek a 3. lépésben SYSTEMDB és Tenant DB ként kell mutatnia az új adatbázisokat, nem pedig SDC-ként
+- A régebbi SDC-adatbázis továbbra is létezni fog a tárolóban, és a szabályzatnak megfelelően megőrzi a régi biztonságimentett adatokat
 - Az adatbázisok biztonsági mentésének konfigurálása
 
-## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
+## <a name="re-registration-failures"></a>Újraregisztrációs hibák
 
-A következő tünetek közül egyet vagy többet kell megvizsgálnia az ismételt regisztrálási művelet elindítása előtt:
+Az újra regisztráló művelet aktiválása előtt ellenőrizze az alábbi jelenségek közül egyet vagy többet:
 
-- Az összes művelet (például a biztonsági mentés, a visszaállítás és a biztonsági mentés konfigurálása) a virtuális gépen meghiúsul a következő hibakódok egyikével: **WorkloadExtensionNotReachable, UserErrorWorkloadExtensionNotInstalled, WorkloadExtensionNotPresent, WorkloadExtensionDidntDequeueMsg**.
-- Ha a biztonsági mentési elem **biztonsági mentési állapota** területen **nem érhető el**, akkor zárja ki az összes többi olyan okot, amely ugyanazokat az állapotot eredményezheti:
+- Minden művelet (például biztonsági mentés, visszaállítás és biztonsági mentés konfigurálása) sikertelen a virtuális gépen a következő hibakódok egyikével: **WorkloadExtensionNotReachable, UserErrorWorkloadExtensionNotInstalled, WorkloadExtensionNotPresent, WorkloadExtensionDidntDequeueMsg.**
+- Ha **a biztonsági** mentési elem Biztonsági mentés állapota területén a **Nem** elérhető jelenik meg, zárja ki az összes többi olyan okét, amelyek ugyanezt az állapotot eredményezhetik:
 
-  - Nincs engedélye a biztonsági mentéssel kapcsolatos műveletek elvégzésére a virtuális gépen
-  - A virtuális gép le van állítva, ezért a biztonsági mentések nem hajthatók végre
+  - Nincs engedélye a biztonsági mentéssel kapcsolatos műveletek végrehajtásához a virtuális gépen
+  - A virtuális gép le van állított, így nem lehet biztonsági mentéseket készíteni
   - Hálózati problémák
 
-Ezek a tünetek a következő okok valamelyike miatt merülhetnek fel:
+Ezek a tünetek az alábbi okok közül egy vagy több miatt jelentkezhetnek:
 
-- A bővítmény törölve lett vagy el lett távolítva a portálról.
-- A virtuális gép időben vissza lett állítva a helyi lemez visszaállítása révén.
-- A virtuális gép leállt egy hosszabb ideig, így lejárt a bővítmény konfigurációja.
-- A virtuális gép törölve lett, és egy másik virtuális gép lett létrehozva ugyanazzal a névvel és ugyanabban az erőforráscsoporthoz, mint a törölt virtuális gép.
+- Egy bővítményt töröltek vagy eltávolítottak a portálról.
+- A virtuális gépet visszaállították az időben a lemez egy helyhez való visszaállítása során.
+- A virtuális gép hosszabb időre leállt, ezért a bővítménykonfiguráció lejárt.
+- A virtuális gép törölve lett, és egy másik virtuális gép is létrejött ugyanazokkal a névvel és erőforráscsoportban, mint a törölt virtuális gép.
 
-Az előző forgatókönyvekben azt javasoljuk, hogy a virtuális gépen újra regisztrálja a műveletet.
+Az előző forgatókönyvekben javasoljuk, hogy aktiváljon egy újra regisztrálási műveletet a virtuális gépen.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével kapcsolatos [gyakori kérdéseket](./sap-hana-faq-backup-azure-vm.md) .
+- Tekintse át [az](./sap-hana-faq-backup-azure-vm.yml) Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentése során gyakran feltett kérdéseket.

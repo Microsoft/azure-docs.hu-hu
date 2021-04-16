@@ -1,20 +1,20 @@
 ---
-title: SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
-description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való DPM/Azure Backup kiszolgáló védelméről
+title: SharePoint-farm biztonsági biztonságiának biztonsági használata az Azure-ba a DPM használatával
+description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba Azure Backup DPM/Azure Backup kiszolgálói védelméről
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3524107b545c151fcf931b89c629a61d83f47ace
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91254431"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515158"
 ---
-# <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
+# <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági biztonságiának biztonsági használata az Azure-ba a DPM használatával
 
-A SharePoint-farmról biztonsági mentést készíthet a System Center Data Protection Manager (DPM) szolgáltatással való Microsoft Azureére, ugyanúgy, mint az egyéb adatforrások biztonsági mentése. Azure Backup rugalmasságot biztosít a biztonsági mentési ütemezésben napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és adatmegőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. A DPM lehetővé teszi a helyi lemezek másolását a gyors helyreállítási idejű célkitűzésekhez (RTO), valamint a másolatok Azure-ba történő tárolását gazdaságos, hosszú távú adatmegőrzésre.
+A SharePoint-farmok biztonsági Microsoft Azure a System Center Data Protection Manager (DPM) használatával, ugyanúgy, mint más adatforrások. Azure Backup a biztonsági mentési ütemezésben rugalmasságot biztosít a napi, heti, havi vagy éves biztonsági mentési pontok létrehozásához, és megőrzési házirend-beállításokat biztosít a különböző biztonsági mentési pontokhoz. A DPM lehetővé teszi a helyi lemezmásolatok tárolására a gyors helyreállítási időre vonatkozó célkitűzések (RTO) és a másolatok Azure-ba való tárolására a gazdaságos, hosszú távú megőrzés érdekében.
 
-A SharePoint az Azure-ba történő biztonsági mentése nagyon hasonló folyamat a SharePoint helyi DPM történő biztonsági mentésének DPM. Az Azure-ra vonatkozó különös megfontolásokat ebben a cikkben fogjuk feltüntetni.
+A SharePoint azure-ba való biztonsági biztonságiolása a DPM-hez hasonló folyamat, mint a SharePoint helyi biztonságimentés a DPM-re. Ebben a cikkben az Azure-ral kapcsolatos konkrét szempontokat ismertetünk.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint által támogatott verziók és kapcsolódó védelmi forgatókönyvek
 
@@ -22,58 +22,58 @@ A támogatott SharePoint-verziók, illetve a biztonsági mentésükhöz szüksé
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A SharePoint-farmok Azure-ba történő biztonsági mentése előtt néhány dolgot meg kell erősítenie.
+Néhány dolgot meg kell erősítenie, mielőtt biztonsági szolgáltatásokat ad egy SharePoint-farmról az Azure-ba.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt győződjön meg arról, hogy teljesítette az [Microsoft Azure Backup használatára vonatkozó összes előfeltételt](backup-azure-dpm-introduction.md#prerequisites-and-limitations) a munkaterhelések elleni védelemhez. Az előfeltételek egyes feladatai közé tartozik a Backup-tároló létrehozása, a tár hitelesítő adatainak letöltése, Azure Backup ügynök telepítése, valamint a DPM/Azure Backup Server regisztrálása a tárolóval.
+A folytatás előtt győződjön meg arról, hogy az összes előfeltétel teljesült a számítási feladatok Microsoft Azure Backup [való](backup-azure-dpm-introduction.md#prerequisites-and-limitations) használatának előfeltételeivel. Az előfeltételek többek között a következők: biztonsági mentési tároló létrehozása, tároló hitelesítő adatainak letöltése, Azure Backup ügynök telepítése és a DPM/Azure Backup Server regisztrálása a tárolóban.
 
-További előfeltételeket és korlátozásokat a [SharePoint biztonsági mentése a DPM](/system-center/dpm/back-up-sharepoint#prerequisites-and-limitations) című cikkben találhat.
+További előfeltételeket és korlátozásokat a SharePoint biztonsági modulról [a DPM-hez való biztonsági frissítését bemutató cikkben talál.](/system-center/dpm/back-up-sharepoint#prerequisites-and-limitations)
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 
-A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd: a [biztonsági mentés konfigurálása](/system-center/dpm/back-up-sharepoint#configure-backup) a DPM dokumentációjában.
+A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd [a DPM dokumentációjának Biztonsági](/system-center/dpm/back-up-sharepoint#configure-backup) mentés konfigurálása dokumentumát.
 
 ## <a name="monitoring"></a>Figyelés
 
-A biztonsági mentési feladat figyeléséhez kövesse a [DPM biztonsági mentésének figyelése](/system-center/dpm/back-up-sharepoint#monitoring) című témakör útmutatását.
+A biztonsági mentési feladat figyelése érdekében kövesse a DPM biztonsági [mentésének figyelése](/system-center/dpm/back-up-sharepoint#monitoring)
 
 ## <a name="restore-sharepoint-data"></a>SharePoint-adatok helyreállítása
 
-A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a SharePoint- [adatok visszaállítása](/system-center/dpm/back-up-sharepoint#restore-sharepoint-data)című témakörben olvashat bővebben.
+A SharePoint-elemek lemezről a DPM segítségével való visszaállításával kapcsolatos információkért lásd: [SharePoint-adatok visszaállítása.](/system-center/dpm/back-up-sharepoint#restore-sharepoint-data)
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>SharePoint-adatbázis visszaállítása az Azure-ból a DPM használatával
 
-1. SharePoint tartalom-adatbázis helyreállításához tallózzon a különböző helyreállítási pontok között (ahogy az előzőekben látható), és válassza ki a visszaállítani kívánt helyreállítási pontot.
+1. SharePoint-tartalomadatbázis helyreállításához tallózhat a különböző helyreállítási pontok között (ahogy korábban látható), és kiválaszthatja a visszaállítani kívánt helyreállítási pontot.
 
-    ![DPM SharePoint-Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
-2. A SharePoint-katalógus elérhető adatainak megjelenítéséhez kattintson duplán a SharePoint helyreállítási pontra.
+    ![DPM SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
+2. Kattintson duplán a SharePoint helyreállítási pontra az elérhető SharePoint-katalógus információinak a megjelenítése érdekében.
 
    > [!NOTE]
-   > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a DPM-kiszolgálón nem érhető el katalógus-információ (metaadatok). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
+   > Mivel a SharePoint-farm hosszú távú megőrzésre van védve az Azure-ban, a DPM-kiszolgálón nem érhetők el katalógusadatok (metaadatok). Ennek eredményeképpen minden alkalommal, amikor helyre kell állítani egy időponthoz tartozó SharePoint-tartalom-adatbázist, újból katalogizálni kell a SharePoint-farmot.
    >
    >
-3. Válassza az **újrakatalogizálás** lehetőséget.
+3. Válassza **a Re-catalog (Újrakatalógus) lehetőséget.**
 
-    ![DPM SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
+    ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    Megnyílik a **felhő-újrakatalogizálás** állapota ablak.
+    Megnyílik **a Cloud Recatalog** állapotablaka.
 
-    ![DPM SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
+    ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot *sikeresre* változik. Válassza a **Bezárás** gombot.
+    A katalogizálás befejezése után az állapot Sikeres *állapotra változik.* Válassza a **Bezárás** gombot.
 
-    ![DPM SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a DPM- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás** lehetőséget.
+    ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
+4. Válassza ki a **DPM** Helyreállítás lapján látható SharePoint-objektumot a tartalom-adatbázis struktúrájának lekért beállításához. Kattintson a jobb gombbal az elemre, majd válassza a Helyreállítás **lehetőséget.**
 
-    ![DPM SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
+    ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
+5. Ezen a ponton kövesse a cikk korábbi, helyreállítási lépéseit egy SharePoint-tartalomadatbázis lemezről való helyreállításához.
 
-## <a name="switching-the-front-end-web-server"></a>A Front-End webkiszolgáló váltása
+## <a name="switching-the-front-end-web-server"></a>A webkiszolgáló Front-End váltása
 
-Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [Front-End webkiszolgáló váltása](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)című témakör útmutatását.
+Ha egynél több előoldali webkiszolgálóval is van, és át szeretné váltani a DPM által a farm védelmére használt kiszolgálót, kövesse a Front-End [váltása webkiszolgálóracímű útmutatót.](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Backup Server és DPM – gyakori kérdések](backup-azure-dpm-azure-server-faq.md)
+* [Azure Backup Server DPM – gyakori kérdések](backup-azure-dpm-azure-server-faq.yml)
 * [A System Center Data Protection Manager hibaelhárítása](backup-azure-scdpm-troubleshooting.md)

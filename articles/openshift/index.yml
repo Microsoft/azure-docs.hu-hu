@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: fad34c10d02d4a9daa8795cf77ab76903d8360f4
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100633206"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107501195"
 landingContent:
 - title: AZ Azure Red Hat OpenShift bemutatása
   linkLists:
@@ -26,23 +26,23 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Azure Red Hat OpenShift 4-fürt létrehozása
+    - text: Azure Red Hat OpenShift-fürt létrehozása
       url: tutorial-create-cluster.md
-    - text: Csatlakozás Azure Red Hat OpenShift 4-fürthöz
+    - text: Csatlakozás Azure Red Hat OpenShift fürthöz
       url: tutorial-connect-cluster.md
-    - text: Azure Red Hat OpenShift 4-fürt törlése
+    - text: Azure Red Hat OpenShift-fürt törlése
       url: tutorial-delete-cluster.md
 - title: Beállítás
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Privát Azure Red Hat OpenShift 4-fürt létrehozása
-      url: ./howto-create-private-cluster-3x.md
-    - text: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz
+    - text: Privát fürt Azure Red Hat OpenShift létrehozása
+      url: ./howto-create-private-cluster-4x.md
+    - text: DNS-továbbítás konfigurálása egy Azure Red Hat OpenShift fürthöz
       url: dns-forwarding.md
-    - text: Az Azure Red Hat OpenShift 4 beépített tárolóregisztrációs adatbázisának konfigurálása
+    - text: Beépített tároló-beállításjegyzék konfigurálása a Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Open Liberty-/WebSphere Liberty-alkalmazások üzembe helyezése Azure Red Hat OpenShift 4-fürtökön
+    - text: Open Azure Red Hat OpenShift-/WebSphere Fog-alkalmazás üzembe helyezése Azure Red Hat OpenShift fürtön
       url: howto-deploy-java-liberty-app.md
 - title: Referencia
   linkLists:

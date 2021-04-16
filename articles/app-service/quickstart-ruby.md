@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: Ruby-alkalmazás létrehozása'
-description: Ismerkedjen meg Azure App Service az első Ruby-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
+title: 'Rövid útmutató: Ruby-alkalmazás létrehozása'
+description: A Azure App Service első Ruby-alkalmazását üzembe helyezheti egy Linux-tárolóban a App Service.
 keywords: azure app service, linux, oss, ruby, rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 45c87f690c24e989a797cbd82147b9125e447e79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: dc64dfa277e97fe7487ce91a140e73b9ec44e086
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97561783"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483519"
 ---
-# <a name="create-a-ruby-on-rails-app-in-app-service"></a>Ruby on Rails-alkalmazás létrehozása App Service
+# <a name="create-a-ruby-on-rails-app-in-app-service"></a>Ruby on Rails-alkalmazás létrehozása a App Service
 
-A [linuxon Azure app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Ruby on Rails-alkalmazást a Linuxon a [Cloud Shell](../cloud-shell/overview.md)használatával app Service.
+[Azure App Service on Linux](overview.md#app-service-on-linux) egy nagymértékben skálázható, önjavítást használó webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Egy Ruby on Rails-alkalmazást App Service on Linux a [Cloud Shell.](../cloud-shell/overview.md)
 
 > [!NOTE]
-> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem támogatott Ruby-verziót szeretne használni, [azt egy egyéni tárolóban kell futtatnia](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha egy másik platformot szeretne használni, például a Sinatrát, vagy ha nem támogatott Ruby-verziót szeretne használni, egy egyéni tárolóban kell [futtatnia.](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux)
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -26,7 +26,7 @@ A [linuxon Azure app Service](overview.md#app-service-on-linux) a Linux operáci
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2,6 vagy újabb telepítése</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2.6-os vagy újabb verzió telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése
@@ -41,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. Nyisson meg egy terminálablakot, váltson át a `hello-world` könyvtárra, és használja a `rails server` parancsot a kiszolgáló elindításához.
 
-Az első lépés a szükséges gemek telepítése. A `Gemfile` minta tartalmazza a mintát, ezért csak futtassa a következő parancsot:
+Az első lépés a szükséges gemek telepítése. A minta tartalmaz `Gemfile` egy et, ezért csak futtassa a következő parancsot:
 
 ```bash
 bundle install
@@ -69,7 +69,7 @@ Webböngészőjével a `http://localhost:3000` hely megkeresésével helyileg te
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Nyissa meg az alkalmazást, és tekintse meg az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazást. Cserélje le az _&lt; alkalmazás nevét>_ a webalkalmazás nevére.
+Tallózással keresse meg az alkalmazást, és tekintse meg az újonnan létrehozott webalkalmazást a beépített rendszerképpel. Cserélje _&lt; le az>_ a webalkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -81,7 +81,7 @@ Az új webalkalmazásnak így kell kinéznie:
 
 ## <a name="deploy-your-application"></a>Az alkalmazás üzembe helyezése
 
-Futtassa a következő parancsokat a helyi alkalmazás üzembe helyezéséhez az Azure-webalkalmazásban:
+Futtassa a következő parancsokat a helyi alkalmazás Azure-webalkalmazásban való üzembe helyezéséhez:
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -107,7 +107,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    a6e73a2..ae34be9  main -> main
 ```
 
-Miután az üzembe helyezés befejeződött, várjon körülbelül 10 másodpercet a webalkalmazás újraindításához, majd navigáljon a webalkalmazáshoz, és ellenőrizze az eredményeket.
+Az üzembe helyezés befejezése után várjon körülbelül 10 másodpercet, amíg a webalkalmazás újraindul, majd lépjen a webalkalmazáshoz, és ellenőrizze az eredményeket.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -116,7 +116,7 @@ http://<app-name>.azurewebsites.net
 ![frissített webalkalmazás](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Az alkalmazás újraindítása közben megfigyelheti a HTTP-állapotkódot a `Error 503 Server unavailable` böngészőben, vagy az `Hey, Ruby developers!` alapértelmezett lapot is. Az alkalmazás teljes újraindítása eltarthat néhány percig.
+> Az alkalmazás újraindítása közben megfigyelheti a HTTP-állapotkódot a böngészőben `Error 503 Server unavailable` vagy az `Hey, Ruby developers!` alapértelmezett oldalon. Az alkalmazás teljes újraindítása eltarthat néhány percig.
 >
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
@@ -124,7 +124,7 @@ http://<app-name>.azurewebsites.net
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Ruby on Rails és postgres](tutorial-ruby-postgres-app.md)
+> [Oktatóanyag: Ruby on Rails és Postgres](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
 > [Ruby-alkalmazás konfigurálása](configure-language-ruby.md)

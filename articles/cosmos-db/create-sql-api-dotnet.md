@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: c7dc3a230e2cd3f990771c297de29891de347089
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 21b2459294b3465ba147cb454b93ac0da0081c5d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363410"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480885"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rövid útmutató: .NET-konzolalkalmazás összeállítása az SQL API Azure Cosmos DB erőforrásainak kezeléséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "107363410"
 
 A .NET-hez Azure Cosmos DB SQL API ügyféloldali kódtárának első lépések. A dokumentum lépéseit követve telepítse a .NET-csomagot, készítsen alkalmazást, és próbálja ki az alapszintű CRUD-műveletekhez szükséges példakódot a Azure Cosmos DB. 
 
-Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen mérethez nyílt API-kat igényel. Az adatbázis-Azure Cosmos DB kulcs-/érték-, dokumentum- és gráfadatbázisok gyors létrehozásához és lekérdezéséhez használhatja. Használja a Azure Cosmos DB SQL API .NET-hez való ügyféloldali kódtárát a következőre:
+Azure Cosmos DB a Microsofté™ gyors NoSQL-adatbázisa, amely bármilyen mérethez nyílt API-kat igényel. Az adatbázis-Azure Cosmos DB kulcs-/érték-, dokumentum- és gráfadatbázisok gyors létrehozásához és lekérdezéséhez használhatja. Használja a Azure Cosmos DB SQL API .NET-hez ügyféloldali kódtárát a következőre:
 
 * Azure Cosmos-adatbázis és -tároló létrehozása
 * Mintaadatok hozzáadása a tárolóhoz
@@ -42,7 +42,7 @@ Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen mérethez 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés [– hozzon létre](https://azure.microsoft.com/free/) egyet ingyenesen, vagy [kipróbálhatja](https://azure.microsoft.com/try/cosmosdb/) Azure Cosmos DB azure-előfizetés, ingyenes és kötelezettségvállalások nélkül. 
+* Azure-előfizetés [– hozzon létre](https://azure.microsoft.com/free/) egyet ingyenesen, vagy [kipróbálhatja Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ingyenes előfizetés, ingyenes és kötelezettségvállalások nélkül. 
 * A [.NET Core 2.1 SDK vagy újabb.](https://dotnet.microsoft.com/download/dotnet-core/2.1)
 
 ## <a name="setting-up"></a>Beállítása
@@ -53,7 +53,7 @@ Ez a szakasz végigvezeti egy Azure Cosmos-fiók létrehozásának és egy olyan
 
 Ha az Ingyenes [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lehetőséget használja egy Azure Cosmos-fiók létrehozásához, létre kell hoznia egy SQL API típusú **Azure Cosmos DB-fiókot.** Egy Azure Cosmos DB tesztfiók már létre van hozva. Nem kell explicit módon létrehoznia a fiókot, így kihagyhatja ezt a szakaszt, és továbbléphet a következő szakaszra.
 
-Ha saját Azure-előfizetéssel rendelkezik, vagy ingyenes előfizetést hozott létre, explicit módon hozzon létre egy Azure Cosmos-fiókot. A következő kód létrehoz egy Azure Cosmos-fiókot munkamenet-konzisztenciával. A fiók replikálása a és a `South Central US` rendszerben `North Central US` történt.  
+Ha saját Azure-előfizetéssel rendelkezik, vagy ingyenesen létrehozott egy előfizetést, explicit módon hozzon létre egy Azure Cosmos-fiókot. A következő kód létrehoz egy Azure Cosmos-fiókot munkamenet-konzisztenciával. A fiók replikálása a és a `South Central US` rendszerben `North Central US` történt.  
 
 A fiókkal Azure Cloud Shell Azure Cosmos-fiókot. Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével. Ebben a rövid útmutatóban válassza a **Bash mód** lehetőséget. Azure Cloud Shell tárfiókra is szükség van, akkor létrehozhat egyet, amikor a rendszer erre kéri.
 
@@ -131,7 +131,7 @@ A mintaalkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókjában. A 
 
 1. Lépjen az Azure Cosmos-fiókjához.
 
-1. Nyissa meg **a Kulcsok panelt,** és másolja ki a fiók **URI-ját** és **ELSŐDLEGES** KULCSát. Az URI és a kulcsok értékeit a következő lépésben fogja hozzáadni egy környezeti változóhoz.
+1. Nyissa meg **a Kulcsok panelt,** és másolja ki a fiók **URI-ját** és **ELSŐDLEGES** KULCSát. A következő lépésben hozzáadja az URI és a kulcsok értékeit egy környezeti változóhoz.
 
 ### <a name="set-the-environment-variables"></a>A környezeti változók beállítása
 
@@ -160,18 +160,18 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 
  ## <a name="object-model"></a><a id="object-model"></a>Objektummodell
 
-Az alkalmazás létrehozása előtt nézzük meg az erőforrás-hierarchiát a Azure Cosmos DB és az erőforrások létrehozásához és eléréséhez használt objektummodellhez. A Azure Cosmos DB a következő sorrendben hozza létre az erőforrásokat:
+Az alkalmazás létrehozása előtt nézzük meg az erőforrások hierarchiáját a Azure Cosmos DB és az erőforrások létrehozásához és eléréséhez használt objektummodellhez. A Azure Cosmos DB a következő sorrendben hozza létre az erőforrásokat:
 
 * Azure Cosmos-fiók 
 * Adatbázisok 
 * Tárolók 
 * Elemek
 
-A különböző entitások hierarchiájának további tudnivalókért tekintse meg az [adatbázisok,](account-databases-containers-items.md) tárolók és elemek a Azure Cosmos DB cikkét. Ezeket az erőforrásokat a következő .NET-osztályokkal fogja használni:
+A különböző entitások hierarchiáját az [adatbázisok,](account-databases-containers-items.md) tárolók és elemek a következő cikkben Azure Cosmos DB meg. Ezeket az erőforrásokat a következő .NET-osztályokkal fogja használni:
 
 * [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) – Ez az osztály ügyféloldali logikai megjelenítést biztosít a Azure Cosmos DB számára. Az ügyfélobjektum a szolgáltatásra vonatkozó kérések konfigurálára és végrehajtására használható.
 
-* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) – Ez a metódus (ha még nem létezik) vagy (ha már létezik) adatbázis-erőforrást hoz létre aszinkron műveletként. 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) – Ez a metódus aszinkron műveletként létrehoz (ha még nem létezik) vagy lekért (ha már létezik) egy adatbázis-erőforrást. 
 
 * [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync)– – Ez a metódus aszinkron műveletként hoz létre (ha még nem létezik) vagy (ha már létezik) egy tárolót. A válasz állapotkódját ellenőrizve megállapíthatja, hogy a tároló újonnan lett létrehozva (201) vagy egy meglévő tároló lett visszaadva (200). 
 * [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) – Ez a metódus egy elemet hoz létre a tárolóban. 
@@ -250,7 +250,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-A **Program.cs fájlhoz** adja hozzá az előző lépésben beállított környezeti változókat beolvasó kódot. Határozza meg `CosmosClient` a , a és az `Database` `Container` objektumokat. Ezután adja hozzá a kódot a fő metódushoz, amely az Azure Cosmos-fiók erőforrásainak kezelésére `GetStartedDemoAsync` használt metódust hívja meg. 
+A **Program.cs fájlhoz** adja hozzá az előző lépésben beállított környezeti változókat beolvasó kódot. Definiálja `CosmosClient` a , és `Database` `Container` objektumokat. Ezután adja hozzá a kódot a fő metódushoz, amely a metódust hívja meg, amelyben `GetStartedDemoAsync` az Azure Cosmos-fiók erőforrásait kezeli. 
 
 ```csharp
 namespace todo
@@ -307,7 +307,7 @@ public class Program
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása 
 
-Definiálja `CreateDatabaseAsync` a metódust a `program.cs` osztályon belül. Ez a metódus létrehozza `FamilyDatabase` a et, ha még nem létezik.
+Definiálja `CreateDatabaseAsync` a metódust a `program.cs` osztályon belül. Ez a metódus létrehozza `FamilyDatabase` a metódust, ha még nem létezik.
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -384,7 +384,7 @@ private async Task AddItemsToContainerAsync()
 
 ### <a name="query-the-items"></a>Az elemek lekérdezése
 
-Az elem beszúrása után egy lekérdezés futtatásával lekérdezheti az "Andersen" család részleteit. Az alábbi kód bemutatja, hogyan hajthatja végre a lekérdezést közvetlenül az SQL-lekérdezés használatával. A "Annak" család részleteit lekért SQL-lekérdezés a következő: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Definiálja `QueryItemsAsync` a metódust a `program.cs` osztályon belül, és adja hozzá a következő kódot:
+Az elem beszúrása után egy lekérdezés futtatásával lekérdezheti az "Andersen" család részleteit. Az alábbi kód bemutatja, hogyan hajthatja végre a lekérdezést közvetlenül az SQL-lekérdezés használatával. A "Majd" család részleteinek lekért SQL-lekérdezése a következő: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Definiálja `QueryItemsAsync` a metódust a `program.cs` osztályon belül, és adja hozzá a következő kódot:
 
 
 ```csharp

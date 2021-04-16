@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1213d5f7421cc71255f29d013fa47878559110ee
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364610"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481582"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -49,7 +49,7 @@ A felügyelt privát végpontok olyan privát végpontok, amelyek a Azure Data F
 
 Azure Data Factory támogatja a privát hivatkozásokat. A privát kapcsolat lehetővé teszi az Azure-szolgáltatások (például az Azure Storage, Azure Cosmos DB, Azure Synapse Analytics) Azure Synapse Analytics.
 
-Privát kapcsolat használatakor az adattárai és a felügyelt Virtual Network közötti forgalom teljes egészében a Microsoft gerinchálózatán keresztül történik. Private Link adatszivárgási kockázatok ellen nyújt védelmet. Az erőforrásokra mutató privát kapcsolatot egy privát végpont létrehozásával lehet létrehozni.
+Privát kapcsolat használatakor az adattárak és a felügyelt Virtual Network közötti forgalom teljes egészében a Microsoft gerinchálózatán keresztül történik. Private Link adatszivárgási kockázatok ellen nyújt védelmet. Az erőforrásokra mutató privát kapcsolatot egy privát végpont létrehozásával lehet létrehozni.
 
 A privát végpont privát IP-címet használ a felügyelt Virtual Network, hogy hatékonyan beveszi a szolgáltatást. A privát végpontok egy adott Azure-erőforrásra vannak leképezve, nem a teljes szolgáltatásra. Az ügyfelek korlátozhatják a szervezet által jóváhagyott adott erőforráshoz való csatlakozást. További információ a privát [kapcsolatokról és a privát végpontokról.](../private-link/index.yml)
 
@@ -69,8 +69,8 @@ Ha a tulajdonos jóváhagyja a kapcsolatot, létrejön a privát kapcsolat. Elle
 
 Csak jóváhagyott állapotban lévő felügyelt privát végpont küldhet forgalmat egy adott privát kapcsolati erőforrásnak.
 
-## <a name="interactive-authoring"></a>Interaktív tartalom
-Az interaktív szerzői képességek olyan funkciókhoz használhatók, mint a kapcsolat tesztelése, a mappalista és a táblalista tallózása, a séma lekértése és az adatok előnézete. Az interaktív létrehozást az ADF által felügyelt virtuális hálózaton Azure Integration Runtime létrehozásakor vagy szerkesztésekor engedélyezheti. A háttérszolgáltatás előre lefoglalja a számítást az interaktív szerzői funkciókhoz. Ellenkező esetben a rendszer minden alkalommal lefoglalja a számítást, amikor bármilyen interaktív műveletet hajt végre, ami több időt fog végezni. Az interaktív szerzői műveletekhez szükséges idő (TTL) 60 perc, ami azt jelenti, hogy az utolsó interaktív szerzői művelettől 60 perc után automatikusan le lesz tiltva.
+## <a name="interactive-authoring"></a>Interaktív szerzői
+Az interaktív szerzői képességek olyan funkciókhoz használhatók, mint a kapcsolat tesztelése, a mappalista és a táblalista tallózása, a séma lekért használata és az adatok előnézete. Az interaktív tartalomszerkesztés az ADF által felügyelt virtuális Azure Integration Runtime létrehozásakor vagy szerkesztésekor engedélyezhető. A háttérszolgáltatás előre lefoglalja a számítást az interaktív szerzői funkciókhoz. Ellenkező esetben a rendszer minden alkalommal lefoglalja a számítást, amikor bármilyen interaktív műveletet hajt végre, ami több időt fog eltelni. Az interaktív szerzői műveletekhez szükséges idő (TTL) 60 perc, ami azt jelenti, hogy az utolsó interaktív szerzői művelettől 60 perc után automatikusan le lesz tiltva.
 
 ![Interaktív tartalom](./media/managed-vnet/interactive-authoring.png)
 
@@ -120,10 +120,10 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 ### <a name="supported-data-sources"></a>Támogatott adatforrások
-Az alábbi adatforrások privát kapcsolaton keresztüli csatlakozása támogatott az ADF által felügyelt Virtual Network.
-- Azure Blob-tároló
-- Azure Table Storage
-- Azure Files
+Az alábbi adatforrások privát kapcsolaton keresztüli csatlakozást támogatnak az ADF felügyelt Virtual Network.
+- Azure Blob Storage (az 1-es tárfiókkal együtt)
+- Azure Table Storage (a Storage-fiók V1-es fiókja nem tartalmazza)
+- Azure Files (a Storage-fiók V1-es fiókja nem tartalmazza)
 - 2. generációs Azure Data Lake
 - Azure SQL Database (nem tartalmazza a Azure SQL Managed Instance)
 - Azure Synapse Analytics
@@ -167,7 +167,7 @@ Az alábbi adatforrások privát kapcsolaton keresztüli csatlakozása támogato
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Az összekapcsolt szolgáltatás létrehozása Azure Key Vault 
 - Amikor társított szolgáltatást hoz létre az Azure Key Vaulthoz, nincs az Azure integrációs modulra irányuló hivatkozás. Így nem hozhat létre privát végpontot a csatolt szolgáltatás létrehozása Azure Key Vault. Ha azonban olyan adattárakhoz hoz létre csatolt szolgáltatást, amelyek egy csatolt szolgáltatásra hivatkoznak, és erre a linked Service-szolgáltatásra hivatkozik Azure Integration Runtime felügyelt Virtual Network engedélyezve van, akkor a létrehozás során létrehozhat egy privát végpontot a Azure Key Vault-hez csatolt szolgáltatáshoz. Azure Key Vault 
 - **Tesztelje a** kapcsolati műveletet a Azure Key Vault szolgáltatáshoz csak az URL-formátumot érvényesíti, hálózati műveletet azonban nem.
-- A **Privát végpont használata oszlop** mindig üresként jelenik meg, még akkor is, ha privát végpontot hoz létre a Azure Key Vault.
+- A Using **private endpoint (Privát végpont** használata) oszlop mindig üresként jelenik meg, még akkor is, ha privát végpontot hoz létre a Azure Key Vault.
 ![Privát végpont az AKV-hez](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Következő lépések

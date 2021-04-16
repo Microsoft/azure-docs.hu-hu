@@ -121,6 +121,8 @@
       href: support-policies-v4.md
     - name: Az ARO 4 támogatási életciklusa
       href: support-lifecycle.md
+    - name: Felelősségi mátrix
+      href: responsibility-matrix.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: A Red Hat OpenShift 4 dokumentációja

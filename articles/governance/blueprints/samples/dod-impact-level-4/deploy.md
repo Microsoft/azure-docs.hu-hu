@@ -1,25 +1,25 @@
 ---
-title: DoD Impact Level 4 terv minta
-description: A DoD Impact Level 4 tervre vonatkozó lépések üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 04/02/2021
+title: DoD Impact Level 4 tervminta
+description: A DoD Impact Level 4 tervminta üzembe helyezési lépései, beleértve a terv összetevő-paraméterének részleteit.
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: fcea8dab551be18b4dfca81bd179f89d17b01bdf
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ce0d2d162bf77c147e0e4bc26e68964cd50f4372
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386941"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378448"
 ---
-# <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 terv minta üzembe helyezése
+# <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 tervminta üzembe helyezése
 
-Az Azure-tervezetek a Defense Impact Level 4 (DoD IL4) tervezet mintájának üzembe helyezéséhez a következő lépéseket kell végrehajtani:
+Az Azure Blueprints Department of Defense Impact Level 4 (DoD IL4) tervmintáját a következő lépésekben kell üzembe helyezni:
 
 > [!div class="checklist"]
 > - Új terv létrehozása a mintából
 > - A minta másolatának megjelölése **Közzétettként**
 > - A terv másolatának hozzárendelése egy meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
+Ha még nincs előfizetése Azure Government igényelj [próba-előfizetést](https://azure.microsoft.com/global-infrastructure/government/request/) a kezdés előtt.
 
 ## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
@@ -29,12 +29,12 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg a **DoD Impact Level 4** tervezet mintát _más minták_ alatt, és válassza a **minta használata** lehetőséget.
+1. Keresse meg a **DoD Impact Level 4** tervmintát az Egyéb minták _alatt,_ és válassza **a Minta használata lehetőséget.**
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
-   - **Terv neve**: adjon meg egy nevet a DoD Impact Level 4 terv mintájának másolatához.
-   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
+   - **Terv neve:** Adja meg a DoD Impact Level 4 tervminta másolatának nevét.
+   - **Definíció helye:** A három ponttal válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
 1. Válassza az oldal tetején lévő _Összetevők_ lapot, vagy az oldal alján lévő **Következő: Összetevők** lehetőséget.
 
@@ -42,17 +42,17 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 ## <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
-A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a DoD Impact Level 4 vezérlőn kívülről is áthelyezhető.
+A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A tervminta másolata testre szabható a környezet és az igények szerint, de ez a módosítás távolodhat a DoD Impact Level 4 vezérlőivel való igazítástól.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
 1. Válassza a bal oldali **Tervdefiníciók** oldalt. A szűrőkkel keresse meg a tervminta másolatát, majd válassza ki.
 
-1. Válassza ki az oldal tetején található **Terv közzététele** lehetőséget. A jobb oldalt megjelenő új oldalon adja meg a tervminta másolatának **verzióját**. Ez a tulajdonság akkor hasznos, ha később módosításokat végez. Adjon meg olyan **módosítási megjegyzéseket** , mint például a DoD IL4 Blueprint minta első verziója. Ezután válassza a lap alján található **Közzététel** lehetőséget.
+1. Válassza ki az oldal tetején található **Terv közzététele** lehetőséget. A jobb oldalt megjelenő új oldalon adja meg a tervminta másolatának **verzióját**. Ez a tulajdonság akkor hasznos, ha később módosításokat végez. Adjon **meg módosítási megjegyzéseket,** például: "A DoD IL4 tervmintából közzétett első verzió.". Ezután válassza a lap alján található **Közzététel** lehetőséget.
 
 ## <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+A tervminta sikeres közzététele után hozzárendelhető egy előfizetéshez a felügyeleti csoporton belül, amelybe mentve lett. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -64,11 +64,11 @@ Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozz�
 
    - Alapvető beállítások
 
-     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez létrejön egy hozzárendelés a beírt paraméterekkel.
-     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
+     - **Előfizetések:** Válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban van, amelybe a tervminta másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez létrejön egy hozzárendelés a beírt paraméterekkel.
+     - **Hozzárendelés neve:** A rendszer előre kitölti a nevet a terv neve alapján.
        Módosítsa igény szerint, vagy hagyja meg az eredetit.
-     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
+     - **Hely:** Válassza ki azt a régiót, ahol a felügyelt identitás létre lesz hozva. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [Azure-erőforrások felügyelt identitása.](../../../../active-directory/managed-identities-azure-resources/overview.md)
+     - **Tervdefiníció verziója:** Válassza **ki** a tervminta másolatának Közzétett verzióját.
 
    - Hozzárendelés zárolása
 
@@ -76,11 +76,11 @@ Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozz�
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
+     Hagyja meg az alapértelmezett _rendszer által hozzárendelt_ felügyelt identitás beállítást.
 
    - Összetevő paraméterei
 
-     Az ebben a szakaszban megadott paraméterek arra az összetevőre érvényesek, amelyben meg lettek határozva. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
+     Az ebben a szakaszban megadott paraméterek arra az összetevőre érvényesek, amelyben meg lettek határozva. Ezek a paraméterek [dinamikus paraméterek,](../../concepts/parameters.md#dynamic-parameters) mivel a terv hozzárendelése során vannak meghatározva. A teljes lista- vagy összetevőparamétereket és azok leírását az [Artifact parameters table (Összetevő-paraméterek táblázata) tartalmazza.](#artifact-parameters-table)
 
 1. Az összes paraméter megadása után válassza az oldal alján lévő **Hozzárendelés** lehetőséget. Létrejön a terv hozzárendelése, és megkezdődik az összetevő üzembe helyezése. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának ellenőrzéséhez nyissa meg a terv hozzárendelését.
 
@@ -94,49 +94,49 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyek|Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a szervezet megadhat az erőforrások üzembe helyezésekor. A földrajzi megfelelőségi követelmények betartására szolgál.|
-|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett helyek|Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A földrajzi megfelelőségi követelmények betartására szolgál.|
-|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A megőrzési időtartam napokban megadott értéke (a 0 korlátlan megőrzést jelez)|Megőrzési napok (nem kötelező, 180 nap, ha nincs megadva)|
-|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Az SQL Server naplózásához használt Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd). Fontos – a naplózás megfelelő működéséhez ne törölje vagy nevezze át az erőforráscsoportot vagy a Storage-fiókokat.|
-|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja|Ezt az előtagot a hálózati biztonsági csoport helyével együtt kell összekapcsolni a létrehozott Storage-fiók nevének létrehozásához.|
-|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell)|Az az erőforráscsoport, amelyben a Storage-fiók létre lesz hozva. Ez az erőforráscsoport már léteznie kell.|
-|A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics-munkaterület linuxos virtuálisgép-méretezési csoportokhoz|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
-|A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: \[\]|
-|A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|A Linux rendszerű virtuális gépek Log Analytics munkaterülete|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
-|A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: \[\]|
-|A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics munkaterület a Windows rendszerű virtuális gépek méretezési csoportjaihoz|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
-|A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: \[\]|
-|Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Log Analytics munkaterület a Windows rendszerű virtuális gépekhez|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
-|Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: \[\]|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A rendszergazdák helyi csoportba foglalandó tagok|A rendszergazdák helyi csoportba kizárandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A rendszergazdák helyi csoportból kizárandó tagok|A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)között.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell|Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A hosszú távú geo-redundáns biztonsági mentést engedélyezni kell az Azure SQL Database-adatbázisokhoz|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A Geo-redundáns tárterületet engedélyezni kell a Storage-fiókokhoz|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A webalkalmazás csak HTTPS protokollon keresztül érhető el|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az elavult fiókokat el kell távolítani az előfizetésből|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazás elérését|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
+|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett helyek|Ezzel a szabályzattal korlátozhatja, hogy a szervezet mely helyeken hozhat létre erőforráscsoportokat. A földrajzi megfelelőségi követelmények betartására szolgál.|
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A megőrzési időtartam napokban megadott értéke (a 0 korlátlan adatmegőrzést jelez)|Megőrzési napok (nem kötelező, 180 nap, ha nincs megadva)|
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Az SQL Server naplózási szolgáltatásának tárfiókjának erőforráscsoport-neve|A naplózás az adatbázis-eseményeket az Azure Storage-fiók naplóiba írja (minden régióban létrejön egy tárfiók, ahol létrejön egy SQL Server, amelyet az adott régióban található összes kiszolgáló megoszt). Fontos – a naplózás megfelelő működéséhez ne törölje vagy nevezze át az erőforráscsoportot vagy a tárfiókokat.|
+|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|Tárfiók-előtag a hálózati biztonsági csoportok diagnosztikához|Ez az előtag a hálózati biztonsági csoport helyével kombinálva lesz létrehozva a tárfiók neveként.|
+|Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoportok diagnosztikához használt tárfiók erőforráscsoport-neve (léteznie kell)|Az erőforráscsoport, amelybe a tárfiók létre lesz hozva. Ennek az erőforráscsoportnak már léteznie kell.|
+|Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuálisgép-méretezési készletekhez|Szabályzat-hozzárendelés|Log Analytics-munkaterület Linux rendszerű virtuálisgép-méretezési készletekhez|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, manuálisan kell megadnia a "Log Analytics-közreműködő" engedélyt (vagy hasonlót) a szabályzat-hozzárendelés főazonosítójának.|
+|Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuálisgép-méretezési készletekhez|Szabályzat-hozzárendelés|Nem kötelező: Azon virtuálisgép-rendszerképek listája, amelyek támogatják a Linux operációs rendszer hatókörbe való felvételét|Egy üres tömb használatával jelezhető, hogy nincsenek választható paraméterek: \[\]|
+|Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépekhez|Szabályzat-hozzárendelés|Log Analytics-munkaterület Linux rendszerű virtuális gépekhez|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, manuálisan kell megadnia a "Log Analytics-közreműködő" engedélyt (vagy hasonlót) a szabályzat-hozzárendelés főazonosítójának.|
+|Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépekhez|Szabályzat-hozzárendelés|Nem kötelező: Azon virtuálisgép-rendszerképek listája, amelyek támogatják a Linux operációs rendszer hatókörbe való felvételét|Üres tömbök használatával jelezhető, hogy nincsenek választható paraméterek: \[\]|
+|Log Analytics-ügynök üzembe helyezése Windows rendszerű virtuálisgép-méretezési készletekhez|Szabályzat-hozzárendelés|Log Analytics-munkaterület Windows rendszerű virtuálisgép-méretezési készletekhez|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, manuálisan kell megadnia a "Log Analytics-közreműködő" engedélyt (vagy hasonlót) a szabályzat-hozzárendelés fő azonosítójának.|
+|Log Analytics-ügynök üzembe helyezése Windows rendszerű virtuálisgép-méretezési készletekhez|Szabályzat-hozzárendelés|Nem kötelező: Azon virtuálisgép-rendszerképek listája, amelyek a hatókörbe felvenni támogatott Windows operációs rendszereket támogatnak|Egy üres tömb használatával jelezhető, hogy nincsenek választható paraméterek: \[\]|
+|Log Analytics-ügynök üzembe helyezése Windows rendszerű virtuális gépekhez|Szabályzat-hozzárendelés|Log Analytics-munkaterület Windows rendszerű virtuális gépekhez|Ha ez a munkaterület a hozzárendelés hatókörén kívül esik, manuálisan kell megadnia a "Log Analytics-közreműködő" engedélyt (vagy hasonlót) a szabályzat-hozzárendelés fő azonosítójának.|
+|Log Analytics-ügynök üzembe helyezése Windows rendszerű virtuális gépekhez|Szabályzat-hozzárendelés|Nem kötelező: Azon virtuálisgép-rendszerképek listája, amelyeken támogatott a Windows operációs rendszer hozzáadása a hatókörbe|Egy üres tömb használatával jelezhető, hogy nincsenek választható paraméterek: \[\]|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A Rendszergazdák helyi csoport tagjai|Azon tagok pontosvesszővel tagolt listája, amelyek a Rendszergazdák helyi csoportból kizárhatók. Pl. Rendszergazda; myUser1; myUser2|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A Rendszergazdák helyi csoportból kizárható tagok|Azon tagok pontosvesszővel tagolt listája, amelyeknek szerepelnie kell a Rendszergazdák helyi csoportban. Pl. Rendszergazda; myUser1; myUser2|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyek esetében engedélyezni kell a diagnosztikai naplókat|Azon erőforrástípusok listája, amelyek naplózva vannak, ha a diagnosztikai naplók beállítása nincs engedélyezve. Az elfogadható értékeket a diagnosztikai [naplók Azure Monitor talál.](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Log Analytics-munkaterület azonosítója, amelyhez a virtuális gépeket konfigurálni kell|Ez annak a Log Analytics-munkaterületnek az azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A hosszú távú georedundáns biztonsági mentést engedélyezni kell a Azure SQL adatbázisokhoz|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A sebezhetőségi felmérést engedélyezni kell a felügyelt SQL-példányon|A szabályzat hatásaival kapcsolatos információk a [További Azure Policy találhatók.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon|A szabályzat hatásaival kapcsolatos információkat a További Azure Policy [oldalon talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Engedélyezni kell a georedundáns tárolást a tárfiókok számára|A szabályzat hatásaival kapcsolatos információk a [További Azure Policy találhatók.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A georedundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL|A szabályzat hatásaival kapcsolatos információk a [További Azure Policy találhatók.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A georedundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL|A szabályzat hatásaival kapcsolatos információk a [További Azure Policy találhatók.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A webalkalmazásnak csak HTTPS-protokollon keresztül szabad elérhetőnek lennie|A szabályzat hatásaival kapcsolatos információkat a További Azure Policy [oldalon talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A függvényalkalmazásnak csak HTTPS-protokollon keresztül szabad elérhetőnek lennie|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az írási engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az elavult fiókokat el kell távolítani az előfizetésből|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A CORS-nak nem szabad minden erőforrás számára engedélyeznie a webalkalmazáshoz való hozzáférést|A szabályzat hatásaival kapcsolatos információkat a [További Azure Policy talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|A virtuálisgép-méretezési készletek rendszerfrissítéseit telepíteni kell|A szabályzat hatásaival kapcsolatos információk a [További Azure Policy találhatók.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetéséhez olvasási engedélyekkel rendelkező fiókokon|A szabályzat hatásaival kapcsolatos információkat a További Azure Policy [oldalon talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetés tulajdonosi engedélyekkel rendelkező fiókjaiban|A szabályzat hatásaival kapcsolatos információkat a További Azure Policy [oldalon talál.](../../../policy/concepts/effects.md)|
+|\[Előzetes \] verzió: DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban|A szabályzat hatásaival kapcsolatos információkat a További Azure Policy [oldalon talál.](../../../policy/concepts/effects.md)|
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy áttekintette a DoD Impact Level 4 tervrajzi minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlési leképezés megismeréséhez:
+Most, hogy áttekintte a DoD Impact Level 4 tervminta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlőelem-leképezés megismerése érdekében:
 
 > [!div class="nextstepaction"]
-> [DoD Impact Level 4 tervezet – áttekintés](./index.md) 
->  [DoD Impact Level 4 tervezet – vezérlési leképezés](./control-mapping.md)
+> [DoD Impact Level 4 terv – Áttekintés](./index.md) 
+>  [DoD Impact Level 4 terv – Vezérlőelem-leképezés](./control-mapping.md)
 
 További cikkek a tervekről és a használatukról:
 

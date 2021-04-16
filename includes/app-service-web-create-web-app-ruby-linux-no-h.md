@@ -7,17 +7,17 @@ ms.service: app-service
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: 2f88c8766ccf41b2491c7fa88e29853f73eed471
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 07ce4171e4adb6af87d0bb6f638dfa2c161be025
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244880"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483518"
 ---
-Hozzon létre egy [webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` app Service tervben. 
+Hozzon létre [egy webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` App Service tervben. 
 
-A Cloud Shell a [`az webapp create`](/cli/azure/webapp) parancsot használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `RUBY|2.6.2` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes --linux`](/cli/azure/webapp) . 
+A Cloud Shell az parancsot [`az webapp create`](/cli/azure/webapp) használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `RUBY|2.6.2` lett. Az összes támogatott futásidőt a futtatásával [`az webapp list-runtimes --linux`](/cli/azure/webapp) láthatja. 
 
 ```azurecli-interactive
 # Bash
@@ -44,7 +44,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
+Létrehozott egy ™ új webalkalmazást, engedélyezett Git-telepítéssel.
 
 > [!NOTE]
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.

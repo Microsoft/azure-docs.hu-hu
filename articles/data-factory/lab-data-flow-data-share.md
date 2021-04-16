@@ -1,519 +1,518 @@
 ---
-title: Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
-description: Adatmásolás, átalakítás és megosztás az Azure Data Factory és az Azure-beli adatmegosztás használatával
+title: Adatintegráció Azure Data Factory és Azure Data Share
+description: Adatok másolása, átalakítása és megosztása Azure Data Factory és Azure Data Share
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: d3924c38f760a9698735a2757bdad2af5beb0e24
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006157"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518824"
 ---
-# <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
+# <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció Azure Data Factory és Azure Data Share
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mivel az ügyfelek a modern adattárház-és elemzési projektekhez csatlakoznak, nem csupán több adatmennyiségre van szükségük, hanem a saját adatbirtokában is jobban megtekinthetik az adatmennyiséget. Ez a workshop azt mutatja be, hogy a Azure Data Factory és az Azure-beli adatmegosztás fejlesztése hogyan egyszerűsíthető az Azure-beli Adatintegráció és-kezelés 
+Ahogy az ügyfelek modern adattárház- és elemzési projektekbe kezdik őket, nem csupán több adatra van szükségük, hanem az adataik jobb láthatóságára is az adattáraikban. Ez a workshop bemutatja, hogyan egyszerűsíthető Azure Data Factory és Azure Data Share azure-beli adatintegráció és -kezelés. 
 
-Ha a Code-Free ETL/ELT lehetővé teszi, hogy átfogó képet hozzon létre az adatokon, a Azure Data Factory fejlesztése lehetővé teszi, hogy az adatmérnökök magabiztosan és így nagyobb értéket kapjanak a vállalat számára. Az Azure-beli adatmegosztás lehetővé teszi, hogy az üzleti vállalkozások megosztójának irányítását irányított módon végezze el.
+A kódmentes ETL/ELT engedélyezésétől az adatok átfogó nézetének létrehozásáig az Azure Data Factory fejlesztései lehetővé teszik az adatmérnökök számára, hogy magabiztosan több adatot és ezáltal több értéket teremtsen a vállalat számára. Azure Data Share lehetővé teszi az üzleti és üzleti megosztás szabályozott módon való megosztását.
 
-Ebben a workshopban Azure Data Factory (ADF) használatával végezheti el az adatok Azure SQL Databaseba való betöltését Azure Data Lake Storage Gen2 (ADLS Gen2). Miután megtörtént az adatgyűjtés a tóban, át kell alakítania a leképezési adatfolyamatok, a gyári natív transzformációs szolgáltatás és az Azure szinapszis Analytics között. Ezt követően az Azure-adatmegosztás használatával megoszthatja a táblázatot az átalakított adataival és néhány további adattal. 
+Ebben a workshopban a Azure Data Factory (ADF) fogja használni az adatok Azure SQL Database (Azure Data Lake Storage Gen2) ADLS Gen2. Miután leküldi az adatokat a lake-be, átalakíthatja őket leképezési adatfolyamok, az adat-előállító natív átalakítási szolgáltatása segítségével, és át fogja őket Azure Synapse Analytics. Ezután átalakított adatokkal, valamint további adatokkal osztja meg a táblát a Azure Data Share. 
 
-A laborban használt adatkészletek New York-i taxik. A SQL Database-adatbázisba való importáláshoz töltse le a [taxi-bacpac fájlt](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
+A laborban használt adatok a New York-i taxi adatai. Az adatbázisba való importáláshoz töltse SQL Database [taxiadatok bacpac fájlját.](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-* **Azure SQL Database**: Ha nem rendelkezik SQL-adatbázissal, Ismerje meg, hogyan [hozhat létre SQL db-fiókot](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
+* **Azure SQL Database:** Ha nincs SQL DB-adatbázisa, ismerje meg, hogyan hozhat létre [SQL DB-fiókot](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
 
-* **Azure Data Lake Storage Gen2 Storage-fiók**: Ha nem rendelkezik ADLS Gen2 Storage-fiókkal, megtudhatja, hogyan [hozhat létre ADLS Gen2 Storage](../storage/common/storage-account-create.md)-fiókot.
+* **Azure Data Lake Storage Gen2 tárfiók:** Ha nem ADLS Gen2 tárfiókkal, megtudhatja, hogyan hozhat létre ADLS Gen2 [tárfiókot.](../storage/common/storage-account-create.md)
 
-* **Azure szinapszis Analytics**: Ha nem rendelkezik Azure szinapszis Analytics-elemzéssel, Ismerje meg, hogyan [hozhat létre Azure-beli szinapszis Analytics-példányt](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure Synapse Analytics:** Ha még nem Azure Synapse Analytics, megtudhatja, hogyan hozhat létre egy [Azure Synapse Analytics-példányt.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 
-* **Azure Data Factory**: Ha még nem hozott létre egy adatelőállítót, olvassa el [a hogyan hozhat létre egy adatelőállítót](./quickstart-create-data-factory-portal.md).
+* **Azure Data Factory:** Ha még nem hozott létre adat-előállítót, tekintse meg az adat-előállítók [létrehozásáról készült következőt:](./quickstart-create-data-factory-portal.md).
 
-* **Azure-adatmegosztás**: Ha még nem hozott létre adatmegosztást, olvassa el az [adatmegosztás létrehozása](../data-share/share-your-data.md#create-a-data-share-account)című témakört.
+* **Azure Data Share:** Ha még nem hozott létre adat megosztást, tekintse meg az adat megosztások [létrehozásáról készült részt.](../data-share/share-your-data.md#create-a-data-share-account)
 
-## <a name="set-up-your-azure-data-factory-environment"></a>A Azure Data Factory környezet beállítása
+## <a name="set-up-your-azure-data-factory-environment"></a>A saját Azure Data Factory beállítása
 
-Ebből a szakaszból megtudhatja, hogyan érheti el a Azure Data Factory felhasználói felületét (ADF UX) a Azure Portal. Egyszer az ADF UX-ben három társított szolgáltatást fog konfigurálni az általunk használt adattárakhoz: Azure SQL DB, ADLS Gen2 és Azure szinapszis Analytics.
+Ebben a szakaszban megtudhatja, hogyan férhet hozzá az Azure Data Factory felhasználói élményhez (ADF UX) a Azure Portal. Az ADF felhasználói felületét használva minden használt adattárhoz három csatolt szolgáltatást fog konfigurálni: Azure SQL DB, ADLS Gen2 és Azure Synapse Analytics.
 
-Azure Data Factory társított szolgáltatásokban adja meg a kapcsolati adatokat a külső erőforrásokhoz. Azure Data Factory jelenleg több mint 85 összekötőt támogat.
+A Azure Data Factory szolgáltatásokban határozzák meg a külső erőforrások kapcsolati adatait. Azure Data Factory jelenleg több mint 85 összekötőt támogat.
 
-### <a name="open-the-azure-data-factory-ux"></a>Az Azure Data Factory UX megnyitása
+### <a name="open-the-azure-data-factory-ux"></a>Nyissa meg a Azure Data Factory felhasználói felületét
 
-1. Nyissa meg a [Azure Portalt](https://portal.azure.com) a Microsoft Edge vagy a Google Chrome böngészőben.
-1. A lap tetején található keresősáv használatával keressen rá az "adatgyárak" kifejezésre.
+1. Nyissa meg [Azure Portal](https://portal.azure.com) böngészőben Microsoft Edge Google Chrome böngészőben.
+1. Az oldal tetején található keresősáv használatával keressen rá a "Data Factories" kifejezésre
 
     ![1. portál](media/lab-data-flow-data-share/portal1.png)
-1. Kattintson a saját adatgyár-erőforrására az erőforrás panel megnyitásához.
+1. Kattintson az adat-előállító erőforrására az erőforrás panel megnyitásához.
 
     ![2. portál](media/lab-data-flow-data-share/portal2.png)
-1. Az ADF UX megnyitásához kattintson a **Szerző és a figyelő** elemre. Az ADF UX a adf.azure.com címen is elérhető.
+1. Az ADF **felhasználói felület megnyitásához** kattintson az Author and Monitor (Szerkesztés és figyelés) elemre. Az ADF felhasználói felület a következő adf.azure.com.
 
     ![3. portál](media/lab-data-flow-data-share/portal3.png)
-1. A rendszer átirányítja az ADF UX weboldalára. Ez az oldal a gyors indulású, az oktatói videókat és az oktatóanyagokra mutató hivatkozásokat tartalmaz a adat-előállítói fogalmak megismeréséhez. A szerzői műveletek elindításához kattintson a bal oldali sáv ceruza ikonjára.
+1. A rendszer átirányítja az ADF felhasználói felület kezdőlapjára. Ez az oldal gyorsútfelvételeket, oktatóvideókat és az adat-előállítóval kapcsolatos fogalmakat ismertető oktatóanyagokra mutató hivatkozásokat tartalmaz. A szerzői beállítások szerkesztésének elkezdésében kattintson a ceruza ikonra a bal oldali sávon.
 
-    ![Portál konfigurálása](media/lab-data-flow-data-share/configure1.png)
+    ![A portál konfigurálása](media/lab-data-flow-data-share/configure1.png)
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása
 
-1. A szerzői műveletek lapon olyan adat-előállítói erőforrásokat hozhat létre, mint a folyamatok, adatkészletek, adatfolyamatok, eseményindítók és társított szolgáltatások. Társított szolgáltatás létrehozásához kattintson a jobb alsó sarokban található **kapcsolatok** gombra.
+1. Csatolt szolgáltatás létrehozásához a bal oldali sávon válassza  a Manage **hub** (Központ kezelése) lehetőséget, majd a Kapcsolatok panelen válassza a **Linked services** (Csatolt szolgáltatások) lehetőséget, majd az **Új** lehetőséget egy új összekapcsolt szolgáltatás hozzáadásához.
 
-    ![Portál 2. konfigurálása](media/lab-data-flow-data-share/configure2.png)
-1. Új társított szolgáltatás hozzáadásához a kapcsolatok lapon kattintson az **új** elemre.
+    ![2. konfigurálás a portálon](media/lab-data-flow-data-share/configure2.png)
+1. Az elsőként konfigurált összekapcsolt szolgáltatás egy Azure SQL adatbázis. A keresősáv használatával szűrheti az adattárlistát. Kattintson a **Azure SQL Database** csempére, majd a Folytatás gombra.
 
-    ![Portál konfigurálása 3](media/lab-data-flow-data-share/configure3.png)
-1. Az elsőként konfigurált társított szolgáltatás egy Azure SQL-adatbázis. A keresősáv használatával szűrheti az adattár-listát. Kattintson a **Azure SQL Database** csempére, és kattintson a Folytatás gombra.
+    ![4. konfigurálás a portálon](media/lab-data-flow-data-share/configure-4.png)
+1. Az SQL DB konfigurációs panelen adja meg az "SQLDB" nevet a csatolt szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy az adat-előállító csatlakozni tud az adatbázishoz. HA SQL-hitelesítést használ, adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevet és a jelszót. A Kapcsolat tesztelése gombra kattintva ellenőrizheti, hogy a **kapcsolati adatok helyesek-e.** Ha **elkészült, kattintson** a Létrehozás gombra.
 
-    ![Portál konfigurálása 4](media/lab-data-flow-data-share/configure-4.png)
-1. Az SQL DB konfigurációs ablaktábláján írja be a "SQLDB" nevet a társított szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy a adat-előállító csatlakozhasson az adatbázishoz. SQL-hitelesítés használata esetén adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevét és a jelszavát. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
+    ![5. konfigurálás a portálon](media/lab-data-flow-data-share/configure5.png)
 
-    ![Portál 5. konfigurálás](media/lab-data-flow-data-share/configure5.png)
+### <a name="create-an-azure-synapse-analytics-linked-service"></a>Összekapcsolt Azure Synapse Analytics létrehozása
 
-### <a name="create-an-azure-synapse-analytics-linked-service"></a>Azure szinapszis Analytics társított szolgáltatás létrehozása
+1. Ismételje meg ugyanezt a folyamatot egy új Azure Synapse Analytics hozzáadásához. A kapcsolatok lapon kattintson az Új **elemre.** Válassza a **Azure Synapse Analytics** csempét, majd kattintson a Folytatás gombra.
 
-1. Ismételje meg ugyanezt a folyamatot egy Azure szinapszis Analytics társított szolgáltatás hozzáadásához. A kapcsolatok lapon kattintson az **új** elemre. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
+    ![6. konfigurálás a portálon](media/lab-data-flow-data-share/configure-6.png)
+1. A csatolt szolgáltatás konfigurációs panelen adja meg az "SQLDW" nevet a csatolt szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy az adat-előállító csatlakozni tud az adatbázishoz. HA SQL-hitelesítést használ, adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevet és a jelszót. A Kapcsolat tesztelése gombra kattintva ellenőrizheti, hogy a **kapcsolati adatok helyesek-e.** Ha **elkészült,** kattintson a Létrehozás gombra.
 
-    ![Portál – 6. konfigurálás](media/lab-data-flow-data-share/configure-6.png)
-1. A társított szolgáltatás konfigurációja ablaktáblán írja be a "SQLDW" nevet a társított szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy a adat-előállító csatlakozhasson az adatbázishoz. SQL-hitelesítés használata esetén adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevét és a jelszavát. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
+    ![7. konfigurálás a portálon](media/lab-data-flow-data-share/configure-7.png)
 
-    ![Portál konfigurálása 7](media/lab-data-flow-data-share/configure-7.png)
+### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Összekapcsolt Azure Data Lake Storage Gen2 létrehozása
 
-### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Azure Data Lake Storage Gen2 társított szolgáltatás létrehozása
+1. A labor utolsó szükséges csatolt szolgáltatása egy Azure Data Lake Storage gen2.  A kapcsolatok lapon kattintson az Új **elemre.** Válassza ki **a Azure Data Lake Storage Gen2** csempét, és kattintson a Folytatás gombra.
 
-1. Az ehhez a laborhoz szükséges utolsó társított szolgáltatás egy Azure Data Lake Storage Gen2.  A kapcsolatok lapon kattintson az **új** elemre. Válassza ki a **Azure Data Lake Storage Gen2** csempét, és kattintson a Folytatás gombra.
+    ![8. konfigurálás a portálon](media/lab-data-flow-data-share/configure8.png)
+1. A csatolt szolgáltatás konfigurációs panelén adja meg az "ADLSGen2" nevet a csatolt szolgáltatás neveként. Ha fiókkulcsos hitelesítést használ, válassza ki ADLS Gen2 tárfiókját a **Tárfiók** neve legördülő menüből. A Kapcsolat tesztelése gombra kattintva ellenőrizheti, hogy a kapcsolati adatok **helyesek-e.** Ha **elkészült,** kattintson a Létrehozás gombra.
 
-    ![Portál konfigurálása 8](media/lab-data-flow-data-share/configure8.png)
-1. A társított szolgáltatás konfigurációja ablaktáblán írja be a "ADLSGen2" nevet a társított szolgáltatás neveként. Ha a fiók kulcsos hitelesítését használja, válassza ki ADLS Gen2 Storage-fiókját a **Storage-fiók neve** legördülő listából. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
+    ![9. konfigurálás a portálon](media/lab-data-flow-data-share/configure9.png)
 
-    ![Portál konfigurálása 9](media/lab-data-flow-data-share/configure9.png)
+### <a name="turn-on-data-flow-debug-mode"></a>Adatfolyam hibakeresési módjának bekapcsolása
 
-### <a name="turn-on-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód bekapcsolása
+Az Adatok *átalakítása leképezési adatfolyam használatával szakaszban* leképezési adatfolyamokat fog feléjük építeni. A leképezési adatfolyamok létrehozása előtt ajánlott bekapcsolni a hibakeresési módot, amely lehetővé teszi az átalakítási logika másodpercek alatt való tesztelését egy aktív Spark-fürtön.
 
-Az *adatátalakítás a leképezési adatfolyam használatával* szakaszban a leképezési adatfolyamatok kiépítése. A leképezési adatforgalom kiépítése előtt ajánlott eljárás a hibakeresési mód bekapcsolása, amely lehetővé teszi, hogy másodpercek alatt tesztelje az átalakítási logikát egy aktív Spark-fürtön.
+A hibakeresés bekapcsolához  kattintson az Adatfolyam hibakeresése csúszkára az adatfolyam-vászon vagy folyamatvászon felső sávjában, ha **adatfolyam-tevékenységek vannak.** Kattintson az OK gombra, amikor megjelenik a megerősítő párbeszédpanel. A fürt létrehozása körülbelül 5–7 percet is igénybe fog venni. Folytassa a *következővel: Adatok* be Azure SQL adatbázisból ADLS Gen2 másolási tevékenységgel inicializálás közben.
 
-A hibakeresés bekapcsolásához kattintson a Factory felső sávján található **adatfolyam-hibakeresés** csúszkára. Kattintson az OK gombra a megerősítő párbeszédpanel előugró ablakában. A fürt körülbelül 5-7 percet vesz igénybe. Folytassa az *Azure SQL db-ből származó adatok betöltését ADLS Gen2 a másolási tevékenységgel az* inicializáláskor.
+![10-es konfigurálás a portálon](media/lab-data-flow-data-share/configure10.png)
 
-![A portál 10. beállítása](media/lab-data-flow-data-share/configure10.png)
+![11-es konfigurálás a portálon](media/lab-data-flow-data-share/configure11.png)
 
-## <a name="ingest-data-using-the-copy-activity"></a>Adatbevitel a másolási tevékenység használatával
+## <a name="ingest-data-using-the-copy-activity"></a>Adatok bemásolása a másolási tevékenységgel
 
-Ebben a szakaszban egy másolási tevékenységgel rendelkező folyamatot fog létrehozni, amely egy Azure SQL-ADATBÁZISból egy táblázatot tölt be egy ADLS Gen2 Storage-fiókba. Megtudhatja, hogyan adhat hozzá egy folyamatot, konfigurálhat egy adatkészletet, és hogyan végezhet hibakeresést az ADF UX használatával. Az ebben a szakaszban használt konfigurációs minta alkalmazható a kapcsolódó adattárból a fájl alapú adattárba történő másolásra.
+Ebben a szakaszban olyan másolási tevékenységgel fog létrehozni egy folyamatot, amely egy tábla egy Azure SQL-adatbázisból egy ADLS Gen2 tárfiókba. Megtudhatja, hogyan adhat hozzá folyamatot, hogyan konfigurálhatja az adatkészletet, és hogyan lehet hibakeresést végezni egy folyamaton az ADF felhasználói felület segítségével. Az ebben a szakaszban használt konfigurációs minta alkalmazható a relációs adattárból egy fájlalapú adattárba való másolásra.
 
-Azure Data Factory egy folyamat olyan tevékenységek logikai csoportosítása, amelyek együttesen végeznek feladatokat. A tevékenységek határozzák meg az adatokon végrehajtandó műveletet. Egy adatkészlet a társított szolgáltatásban használni kívánt adatokat mutat.
+A Azure Data Factory a folyamatok olyan tevékenységek logikai csoportosítása, amelyek együtt végeznek el egy feladatot. A tevékenységek meghatározzák az adatokon végrehajtani szükséges műveletet. Az adatkészletek a csatolt szolgáltatásban használni kívánt adatokra mutatnak.
 
-### <a name="create-a-pipeline-with-a-copy-activity"></a>Másolási tevékenységgel rendelkező folyamat létrehozása
+### <a name="create-a-pipeline-with-a-copy-activity"></a>Másolási tevékenységgel kapcsolatos folyamat létrehozása
 
-1. A gyári erőforrások ablaktáblán kattintson a plusz ikonra az új erőforrás menü megnyitásához. Válassza a **folyamat** lehetőséget.
+1. A gyári erőforrások panelen kattintson a plusz ikonra az új erőforrásmenü megnyitásához. Válassza a **Folyamat lehetőséget.**
 
-    ![Portál 1. példánya](media/lab-data-flow-data-share/copy1.png)
-1. A folyamat vászonjának **általános** lapján adjon nevet a folyamatnak, amely valamilyen leíró jellegű, például "IngestAndTransformTaxiData".
+    ![1. másolás a portálon](media/lab-data-flow-data-share/copy1.png)
+1. A **folyamatvászon** Általános lapján nevezze el a folyamatot leíró nevet, például: "IngestAndTransformTaxiData".
 
-    ![Portál 2. másolata](media/lab-data-flow-data-share/copy2.png)
-1. A folyamat vászonjának tevékenységek paneljén nyissa meg az **áthelyezés és átalakítás** egyezést, és húzza az **adatmásolási** tevékenység alakzatot a vászonra. Adjon egy leíró nevet a másolási tevékenységnek, például "IngestIntoADLS".
+    ![2. másolás a portálon](media/lab-data-flow-data-share/copy2.png)
+1. A folyamatvászon Tevékenységek panelen  nyissa meg az Áthelyezés  és átalakítás inklúziót, és húzza az Adatok másolása tevékenységet a vászonra. Adjon leíró nevet a másolási tevékenységnek, például: "IngestIntoADLS".
 
-    ![Portál – 3. másolat](media/lab-data-flow-data-share/copy3.png)
+    ![3. másolás a portálon](media/lab-data-flow-data-share/copy3.png)
 
-### <a name="configure-azure-sql-db-source-dataset"></a>Az Azure SQL DB-forrás adatkészletének konfigurálása
+### <a name="configure-azure-sql-db-source-dataset"></a>Adatbázis Azure SQL adatkészlet konfigurálása
 
-1. Kattintson a másolási tevékenység **forrás** fülére. Új adatkészlet létrehozásához kattintson az **új** elemre. A forrás lesz a "dbo" tábla. A korábban konfigurált "SQLDB" társított szolgáltatásban található TripData.
+1. Kattintson a **másolási tevékenység** Forrás lapfülére. Új adatkészlet létrehozásához kattintson az Új **elemre.** A forrás a "dbo" tábla lesz. A TripData a korábban konfigurált "SQLDB" csatolt szolgáltatásban található.
 
-    ![Portal 4. példánya](media/lab-data-flow-data-share/copy4.png)
-1. Keresse meg **Azure SQL Database** , majd kattintson a Folytatás gombra.
+    ![Portál másolása 4](media/lab-data-flow-data-share/copy4.png)
+1. Keressen rá a **Azure SQL Database,** majd kattintson a Folytatás gombra.
 
-    ![Portál 5. példánya](media/lab-data-flow-data-share/copy-5.png)
-1. Hívja meg a "TripData" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripData "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
+    ![Portál másolása 5](media/lab-data-flow-data-share/copy-5.png)
+1. Hívja meg az adatkészletet "TripData"-nak. Csatolt szolgáltatásként válassza az "SQLDB" lehetőséget. Válassza a "dbo" táblanevet. TripData a tábla neve legördülő menüből. Importálja a **sémát a kapcsolatból/tárolóból.** Ha elkészült, kattintson az OK gombra.
 
-    ![Portál 6. példánya](media/lab-data-flow-data-share/copy6.png)
+    ![Portál másolása 6](media/lab-data-flow-data-share/copy6.png)
 
-Sikeresen létrehozta a forrás adatkészletet. Győződjön meg arról, hogy a forrás beállításai között az alapértelmezett érték **tábla** van kiválasztva a lekérdezés használata mezőben.
+Sikeresen létrehozta a forrásadatkészletet. Győződjön meg arról, hogy a forrásbeállításokban az alapértelmezett **Tábla** érték van kiválasztva a lekérdezés használata mezőben.
 
-### <a name="configure-adls-gen2-sink-dataset"></a>ADLS Gen2 fogadó adatkészlet konfigurálása
+### <a name="configure-adls-gen2-sink-dataset"></a>Fogadó ADLS Gen2 konfigurálása
 
-1. Kattintson a másolási tevékenység **mosogató** fülére. Új adatkészlet létrehozásához kattintson az **új** elemre.
+1. Kattintson a **másolási tevékenység Fogadó** fülére. Új adatkészlet létrehozásához kattintson az Új **elemre.**
 
-    ![Portál 7. példánya](media/lab-data-flow-data-share/copy7.png)
-1. Keresse meg **Azure Data Lake Storage Gen2** , majd kattintson a Folytatás gombra.
+    ![Portál másolása 7](media/lab-data-flow-data-share/copy7.png)
+1. Keressen rá a **Azure Data Lake Storage Gen2,** majd kattintson a Folytatás gombra.
 
-    ![Portál 8. példánya](media/lab-data-flow-data-share/copy8.png)
-1. A formátum kiválasztása ablaktáblán válassza a **DelimitedText** lehetőséget a CSV-fájl írásakor. Kattintson a Folytatás gombra.
+    ![8. másolás a portálon](media/lab-data-flow-data-share/copy8.png)
+1. A formátum kiválasztása panelen válassza a **Tagolt Szöveg** lehetőséget, miközben egy CSV-fájlba ír. Kattintson a Folytatás gombra.
 
-    ![A Portal 9. másolása](media/lab-data-flow-data-share/copy9.png)
-1. Nevezze el a fogadó adatkészletet "TripDataCSV". A társított szolgáltatásként válassza a "ADLSGen2" lehetőséget. Adja meg, hová szeretné írni a CSV-fájlt. Például megírhatja az adatait a `trip-data.csv` tárolóba a fájlba `staging-container` . Állítsa az **első sort fejlécként** igaz értékre, ha azt szeretné, hogy a kimeneti adatokat fejlécek legyenek. Mivel még nem található fájl a célhelyen, állítsa a **séma importálása** **nincs** értékre. Ha elkészült, kattintson az OK gombra.
+    ![9. másolás a portálon](media/lab-data-flow-data-share/copy9.png)
+1. A fogadó adatkészletnek nevezze el a "TripDataCSV" nevet. Válassza az "ADLSGen2" lehetőséget csatolt szolgáltatásként. Adja meg, hová szeretné írni a CSV-fájlt. Az adatokat például a tárolóban található `trip-data.csv` fájlba `staging-container` írhatja. Állítsa **az Első sor fejlécét** true (igaz) értékre, mivel azt szeretné, hogy a kimeneti adatok fejlécekkel is tartalmazzanak. Mivel még nincs fájl a célhelyen, állítsa a **Séma importálása** beállítását None (Nincs) **beállításra.** Ha elkészült, kattintson az OK gombra.
 
-    ![Portál 10. példánya](media/lab-data-flow-data-share/copy10.png)
+    ![Portál másolása 10](media/lab-data-flow-data-share/copy10.png)
 
-### <a name="test-the-copy-activity-with-a-pipeline-debug-run"></a>A másolási tevékenység tesztelése egy folyamat hibakeresési futtatásával
+### <a name="test-the-copy-activity-with-a-pipeline-debug-run"></a>A másolási tevékenység tesztelése folyamat hibakeresési futtatásával
 
-1. A másolási tevékenység helyes működésének ellenőrzéséhez kattintson a folyamat vászon tetején található **hibakeresés** gombra a hibakeresési Futtatás végrehajtásához. A hibakeresési műveletek lehetővé teszik a folyamat végpontok közötti vagy teljes körű tesztelését, mielőtt a rendszer közzéteszi azt a Refactory szolgáltatásban.
+1. Annak ellenőrzéséhez, hogy a  másolási tevékenység megfelelően működik-e, kattintson a folyamatvászon tetején található Hibakeresés gombra a hibakeresési futtatás végrehajtásához. A hibakeresési futtatás lehetővé teszi a folyamat tesztelését akár végpontok között, akár egy töréspontig, mielőtt közzétenjük az adat-előállító szolgáltatásban.
 
-    ![Portál 11. példánya](media/lab-data-flow-data-share/copy11.png)
-1. A hibakeresési Futtatás figyeléséhez nyissa meg a folyamat vászon **kimenet** lapját. A figyelés képernyő 20 másodpercenként automatikusan frissül, vagy ha manuálisan kattint a frissítés gombra. A másolási tevékenység speciális figyelési nézettel rendelkezik, amely a **műveletek** oszlopban található szem szemüveg ikonra kattintva érhető el.
+    ![A portál másolása 11](media/lab-data-flow-data-share/copy11.png)
+1. A hibakeresési futtatás monitorozásához válassza a folyamatvászon **Kimenet** lapját. A figyelési képernyő 20 másodpercenként automatikusan frissül, vagy ha manuálisan kattint a frissítés gombra. A másolási tevékenység speciális figyelési nézetet biztosít, amely a Műveletek oszlopban található szemüveg ikonra **kattintva érhető** el.
 
-    ![Portál 12. példánya](media/lab-data-flow-data-share/copy12.png)
-1. A másolás figyelése nézet a tevékenység végrehajtási részleteit és a teljesítmény jellemzőit adja meg. Megtekintheti az olyan információkat, mint például az olvasott/írt, a sorok olvasása/írása, a fájlok olvasása/írása és az átviteli sebesség. Ha úgy konfigurálta a mindent, hogy az ADLS-fogadó egyetlen fájljába írja a 49 999 sort.
+    ![Portál másolása 12](media/lab-data-flow-data-share/copy12.png)
+1. A másolásfigyelési nézet a tevékenység végrehajtási adatait és teljesítményjellemzőit tartalmazza. Olyan információkat láthat, mint az adatok olvasása/írása, a sorok olvasása/írása, a fájlok olvasása/írása és az átviteli sebesség. Ha mindent megfelelően konfigurált, 49 999 sort kell látnia, amelyek egy fájlba vannak írva az ADLS-fogadóban.
 
-    ![Portál 13. példánya](media/lab-data-flow-data-share/copy13.png)
-1. Mielőtt továbblép a következő szakaszra, a rendszer azt javasolja, hogy tegye közzé a változtatásokat a Refactory szolgáltatásban úgy, hogy az **összes közzététele** elemre kattint a Factory felső sávján. A laborban nem tárgyalt Azure Data Factory támogatja a teljes git-integrációt. A git-integráció lehetővé teszi a verziókövetés, az ismétlődő mentést egy adattárban, és az együttműködés egy adatgyárban. További információ: [verziókövetés a Azure Data Factoryban](./source-control.md#troubleshooting-git-integration).
+    ![Portálmásolat 13](media/lab-data-flow-data-share/copy13.png)
+1. Mielőtt továbblép a következő szakaszra, javasolt közzétenni a módosításokat a Data Factory szolgáltatásban a gyári felső sáv **Publish all** (Az összes közzététele) parancsára kattintva. Bár ez a labor nem terjed ki rá, a Azure Data Factory támogatja a teljes Git-integrációt. A Git-integráció lehetővé teszi a verziószám-vezérlést, az iteratív mentést az adattárban és az együttműködést az adat-előállítókban. További információkért lásd a [forrásvezérlőt a Azure Data Factory.](./source-control.md#troubleshooting-git-integration)
 
-    ![Portal publish 1](media/lab-data-flow-data-share/publish1.png)
+    ![1. közzététel a portálon](media/lab-data-flow-data-share/publish1.png)
 
 ## <a name="transform-data-using-mapping-data-flow"></a>Adatok átalakítása adatfolyam-leképezéssel
 
-Most, hogy sikeresen átmásolta az adatokat a Azure Data Lake Storageba, itt az ideje, hogy csatlakozzon, és összesítse az adatokat egy adattárházba. A leképezési adatfolyamot fogjuk használni, Azure Data Factory a vizuálisan tervezett átalakítási szolgáltatást. Az adatfolyamatok leképezése lehetővé teszi a felhasználók számára az átalakítási logikai kódok kifejlesztését, és az ADF szolgáltatás által kezelt Spark-fürtökön történő végrehajtását.
+Most, hogy sikeresen átmásolta az adatokat a Azure Data Lake Storage, ideje az adatokat egy adattárházba egyesíteni és összesíteni. A leképezési adatfolyamot fogjuk használni, Azure Data Factory vizuálisan megtervezett átalakítási szolgáltatást használjuk. Az adatfolyamok leképezése lehetővé teszi a felhasználók számára, hogy átalakítási logikai kódot fejlessnek ki és hajtsanak végre az ADF szolgáltatás által felügyelt Spark-fürtökön.
 
-Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakaszban létrehozott "TripDataCSV" adatkészletet egy "dbo" táblával. A "SQLDB" tárolt TripFares négy fő oszlop alapján. Ezután az oszlop alapján összesíti az adatokat `payment_type` , hogy kiszámítsa bizonyos mezők átlagát, és az Azure szinapszis Analytics-táblázatba írja őket.
+Az ebben a lépésben létrehozott belső adatfolyam az előző szakaszban létrehozott "TripDataCSV" adatkészletet egy "dbo" táblával illeszti össze. A TripFares négy kulcsoszlop alapján van tárolva az SQLDB-adatbázisban. Ezután az adatok oszlop alapján összesítve kiszámítják bizonyos mezők átlagát, és egy táblázatban `payment_type` Azure Synapse Analytics meg.
 
 ### <a name="add-a-data-flow-activity-to-your-pipeline"></a>Adatfolyam-tevékenység hozzáadása a folyamathoz
 
-1. A folyamat vászonjának tevékenységek paneljén nyissa meg az **áthelyezés és átalakítás** , majd az **adatfolyam** tevékenység a vászonra húzásával.
+1. A folyamatvásznon a Tevékenységek  panelen nyissa meg  az Áthelyezés és átalakítás ét, majd húzza az Adatfolyam tevékenységet a vászonra.
 
-    ![Portál adatfolyama 1](media/lab-data-flow-data-share/dataflow1.png)
-1. A megnyíló oldalsó ablaktáblán válassza az **új adatfolyam létrehozása** elemet, és válassza az **adatforgalom leképezése** lehetőséget. Kattintson az **OK** gombra.
+    ![1. portáladatfolyam](media/lab-data-flow-data-share/dataflow1.png)
+1. A megnyíló oldalpanelen válassza az **Új adatfolyam** létrehozása, majd az **Adatfolyam leképezése lehetőséget.** Kattintson az **OK** gombra.
 
-    ![Portál adatforgalmának 2](media/lab-data-flow-data-share/dataflow2.png)
-1. A rendszer átirányítja az adatáramlási vászonra, ahol felépítheti az átalakítási logikát. Az Általános lapon nevezze el a "JoinAndAggregateData" adatfolyamatot.
+    ![2. portáladatfolyam](media/lab-data-flow-data-share/dataflow2.png)
+1. A rendszer arra az adatfolyam-vászonra irányítja, ahol az átalakítási logikát fogja építeni. Az általános lapon adja az adatfolyamnak a "JoinAndAggregateData" nevet.
 
-    ![Portál adatforgalmának 3](media/lab-data-flow-data-share/dataflow3.png)
+    ![3. portáladatfolyam](media/lab-data-flow-data-share/dataflow3.png)
 
-### <a name="configure-your-trip-data-csv-source"></a>Az utazási adatai CSV-forrásának konfigurálása
+### <a name="configure-your-trip-data-csv-source"></a>Az útadatok CSV-forrásának konfigurálása
 
-1. Először a két forrás átalakítását kell beállítania. Az első forrás a "TripDataCSV" DelimitedText adatkészletre mutat. A forrás-átalakítás hozzáadásához kattintson a vászon **hozzáadása** mezőjére.
+1. Első lépésként konfigurálja a két forrásátalakítást. Az első forrás a "TripDataCSV" tagoltText adatkészletre mutat. Forrásátalakítás hozzáadásához kattintson a vásznon **a Forrás** hozzáadása mezőre.
 
-    ![Portál adatfolyama 4](media/lab-data-flow-data-share/dataflow4.png)
-1. Nevezze el a forrás "TripDataCSV" nevet, és válassza ki a "TripDataCSV" adatkészletet a forrás legördülő menüből. Ha nem emlékszik, akkor a rendszer kezdetben nem importált sémát az adatkészlet létrehozásakor, mert ott nem található adat. Mivel `trip-data.csv` most már létezik, kattintson a **Szerkesztés** gombra az adatkészlet-beállítások lapon való ugráshoz.
+    ![4. portáladatfolyam](media/lab-data-flow-data-share/dataflow4.png)
+1. Adja a forrásnak a "TripDataCSV" nevet, és válassza ki a "TripDataCSV" adatkészletet a forrás legördülő menüből. Ne feledje, hogy az adatkészlet létrehozásakor nem importált sémát, mert ott nem voltak adatok. Mivel `trip-data.csv` már létezik, kattintson a **Szerkesztés** gombra az adatkészlet beállításai lapra való ugráshoz.
 
-    ![Portál adatfolyama 5](media/lab-data-flow-data-share/dataflow5.png)
-1. Nyissa meg a TAB **sémát** , és kattintson a **séma importálása** elemre. Válassza ki a **Kapcsolódás/áruházból** lehetőséget közvetlenül a file Store-ból való importáláshoz. a karakterlánc típusú 14 oszlopnak szerepelnie kell.
+    ![5. portáladatfolyam](media/lab-data-flow-data-share/dataflow5.png)
+1. A Lap sémája **lapon kattintson** a **Séma importálása elemre.** Válassza **a From connection/store (Kapcsolat/tárolóból)** lehetőséget a fájltárolóból való közvetlen importáláshoz. 14 sztring típusú oszlopnak kell megjelennie.
 
-    ![Portál-adatfolyam 6](media/lab-data-flow-data-share/dataflow6.png)
-1. Lépjen vissza a "JoinAndAggregateData" adatfolyamathoz. Ha a hibakeresési fürt elindult (a hibakeresési csúszka mellett egy zöld kör jelzi), az adatok az **adatelőnézet** lapon olvashatók be. Az adatelőnézet beolvasásához kattintson a **frissítés** gombra.
+    ![6. portáladatfolyam](media/lab-data-flow-data-share/dataflow6.png)
+1. Vissza "JoinAndAggregateData" adatfolyamhoz. Ha a hibakeresési fürt elindult (ezt egy zöld kör jelzi a hibakeresési csúszka mellett), az Adatok előnézete lapon pillanatképet készíthet az **adatokról.** Kattintson **a Frissítés** gombra az adatelőnézet lekéréséhez.
 
-    ![Portál – adatfolyam 7](media/lab-data-flow-data-share/dataflow7.png)
+    ![7. portáladatfolyam](media/lab-data-flow-data-share/dataflow7.png)
 
 > [!Note]
-> Az adatelőnézet nem ír.
+> Az adatelőnézet nem ír adatokat.
 
-### <a name="configure-your-trip-fares-sql-db-source"></a>Az utazás díjszabásának konfigurálása SQL DB-forráshoz
+### <a name="configure-your-trip-fares-sql-db-source"></a>Az utazássalúti adatok konfigurálása – SQL DB-forrás
 
-1. A második felvenni kívánt forrás az "dbo" SQL DB-táblára mutat. TripFares'. A "TripDataCSV" forrás alatt egy másik **hozzáadási forrás** mező jelenik meg. Kattintson rá egy új forrás átalakítás hozzáadásához.
+1. A második hozzáadott forrás a "dbo" SQL DB-táblára mutat. TripFares" (Utazásfarmok) A "TripDataCSV" forrás alatt egy újabb **Forrás hozzáadása mező található.** Kattintson rá egy új forrásátalakítás hozzáadásához.
 
-    ![Portál – adatfolyam 8](media/lab-data-flow-data-share/dataflow8.png)
-1. Nevezze el ezt a forrást: "TripFaresSQL". Az új SQL DB-adatkészlet létrehozásához kattintson a forrás adatkészlet mező melletti **új** elemre.
+    ![8. portáladatfolyam](media/lab-data-flow-data-share/dataflow8.png)
+1. A forrásnak nevezze el a "TripFaresSQL" nevet. Új **SQL** DB-adatkészlet létrehozásához kattintson a forrásadatkészlet mező melletti Új elemre.
 
-    ![Portál adatfolyama 9](media/lab-data-flow-data-share/dataflow9.png)
-1. Válassza ki a **Azure SQL Database** csempét, és kattintson a Folytatás gombra. *Megjegyzés: Előfordulhat, hogy az adatelőállítóban található számos összekötő nem támogatott a leképezési adatfolyamban. Az adatoknak az egyik forrásból való átalakításához a másolási tevékenység használatával egy támogatott forrásba kell* bevenni.
+    ![9. portáladatfolyam](media/lab-data-flow-data-share/dataflow9.png)
+1. Válassza a **Azure SQL Database** csempét, és kattintson a Folytatás gombra. Megjegyzés: Előfordulhat, hogy az adat-előállító számos összekötőt nem támogat a leképezési *adatfolyam. Az egyik ilyen forrásból* származó adatok átalakításához a másolási tevékenység használatával egy támogatott forrásba kell behozni őket.
 
-    ![Portál adatfolyama 10](media/lab-data-flow-data-share/dataflow-10.png)
-1. Hívja meg a "TripFares" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripFares "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
+    ![Portáladatfolyam 10](media/lab-data-flow-data-share/dataflow-10.png)
+1. Hívja meg az adatkészletet "TripFares"-nak. Csatolt szolgáltatásként válassza az "SQLDB" lehetőséget. Válassza a "dbo" táblanevet. TripFares a tábla neve legördülő menüből. Importálja a **sémát a kapcsolatból/tárolóból.** Ha elkészült, kattintson az OK gombra.
 
-    ![Portál – adatfolyam 11](media/lab-data-flow-data-share/dataflow11.png)
-1. Az adatelőnézet **lapon megtekintheti az adatait** .
+    ![11. portáladatfolyam](media/lab-data-flow-data-share/dataflow11.png)
+1. Az adatok ellenőrzéséhez lekér egy adatelőnézetet az **Adatelőnézet lapon.**
 
-    ![Portál adatfolyama 12](media/lab-data-flow-data-share/dataflow12.png)
+    ![A portál adatfolyama 12](media/lab-data-flow-data-share/dataflow12.png)
 
-### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>Belső illesztés TripDataCSV és TripFaresSQL
+### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>A TripDataCSV és a TripFaresSQL belső illesztés
 
-1. Új átalakítás hozzáadásához kattintson a "TripDataCSV" jobb alsó sarkában található plusz ikonra. **Több bemenet/kimenet** területen válassza a **Csatlakozás** lehetőséget.
+1. Új átalakítás hozzáadásához kattintson a TripDataCSV jobb alsó sarkában található plusz ikonra. A **Multiple inputs/outputs (Több bemenet/kimenet) alatt válassza** a Join (Csatlakozás) **lehetőséget.**
 
-    ![1. portál csatlakoztatása](media/lab-data-flow-data-share/join1.png)
-1. Nevezze el az "InnerJoinWithTripFares" illesztési átalakítót. Válassza a jobb oldali stream legördülő menüből a "TripFaresSQL" elemet. Válassza a **belső** lehetőséget az összekapcsolás típusaként. Ha többet szeretne megtudni a különböző illesztési típusokról a leképezési adatfolyamban, tekintse meg a [Csatlakozás típusai](./data-flow-join.md#join-types)című részt.
+    ![Csatlakozás a portálhoz 1](media/lab-data-flow-data-share/join1.png)
+1. Az illesztés-átalakításnak nevezze el az "InnerJoinWithTripFares" nevet. Válassza a TripFaresSQL lehetőséget a jobb stream legördülő menüből. Az **illesztés típusaként** válassza a Belső lehetőséget. A leképezési adatfolyamok különböző illesztési típusaival kapcsolatos további információkért lásd: [illesztési típusok.](./data-flow-join.md#join-types)
 
-    Válassza ki, hogy mely oszlopokat kívánja egyeztetni az egyes adatfolyamok **között az illesztési feltételek** legördülő listából. További illesztési feltétel hozzáadásához kattintson a egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint az összes csatlakoztatási feltétel össze van foglalva egy és operátorral, ami azt jelenti, hogy az összes feltételnek teljesülnie kell az egyeztetéshez. Ebben a laborban szeretnénk egyeztetni a következő oszlopokat:,, `medallion` `hack_license` `vendor_id` és `pickup_datetime`
+    Válassza ki az egyes streamek oszlopait az Illesztés **feltételei** legördülő menüben. További illesztés feltétel hozzáadásához kattintson egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint minden összekapcsolás feltételt egy AND operátorral kombinál, ami azt jelenti, hogy az egyezéshez minden feltételnek teljesülnie kell. Ebben a laborban a következő oszlopokat szeretnénk megfeleltetni: `medallion` `hack_license` , , `vendor_id` és `pickup_datetime`
 
-    ![Portál csatlakoztatása 2](media/lab-data-flow-data-share/join2.png)
-1. Ellenőrizze, hogy sikeresen csatlakozott-e 25 oszlophoz egy adatelőnézetsel együtt.
+    ![Portál-csatlakozás 2](media/lab-data-flow-data-share/join2.png)
+1. Ellenőrizze, hogy sikeresen összekapcsolt-e 25 oszlopot egy adatelőnézettel.
 
-    ![3. portál csatlakoztatása](media/lab-data-flow-data-share/join3.png)
+    ![Portál-csatlakozás 3](media/lab-data-flow-data-share/join3.png)
 
-### <a name="aggregate-by-payment_type"></a>Összesítés payment_type szerint
+### <a name="aggregate-by-payment_type"></a>Összesítés payment_type
 
-1. Az illesztés átalakításának befejezése után vegyen fel egy összesített átalakítást a "InnerJoinWithTripFares" melletti plusz ikonra kattintva. Válassza az **Összesítés** lehetőséget a **séma-módosító** alatt.
+1. Miután befejezte az illesztés átalakítását, adjon hozzá egy összesítési átalakítást az InnerJoinWithTripFares melletti plusz ikonra kattintva. A **Sémamódosító** alatt válassza az Összesítés **lehetőséget.**
 
-    ![Portál Agg 1](media/lab-data-flow-data-share/agg1.png)
-1. Adja a "AggregateByPaymentType" összesítő átalakítás nevét. Válassza `payment_type` a csoportosítás oszlop szerint lehetőséget.
+    ![Portál 1. agg.](media/lab-data-flow-data-share/agg1.png)
+1. Az összesített átalakításnak nevezze el az "AggregateByPaymentType" nevet. Csoportosítás `payment_type` oszlopként válassza a lehetőséget.
 
-    ![2. portál Agg](media/lab-data-flow-data-share/agg2.png)
-1. Nyissa meg az **összesítések** lapot. Itt két összesítést kell megadnia:
-    * Az átlagos viteldíj fizetési típus szerint csoportosítva
-    * A teljes utazási távolság fizetési típus szerint csoportosítva
+    ![2. portál](media/lab-data-flow-data-share/agg2.png)
+1. Ugrás az **Összesítések lapra.** Itt két aggregációt fog megadni:
+    * Az átlagos ár fizetési típus szerint csoportosítva
+    * Az utazás teljes távolsága fizetési típus szerint csoportosítva
 
-    Először létre kell hoznia az átlagos viteldíj kifejezést. Az **oszlop hozzáadása vagy kiválasztása** feliratú szövegmezőbe írja be a következőt: "average_fare".
+    Először létre kell hoznia az átlagos árkifejezést. Az Add or **select a column**(Oszlop hozzáadása vagy kiválasztása) szövegmezőbe írja be a "average_fare" szöveget.
 
-    ![3. portál Agg](media/lab-data-flow-data-share/agg3.png)
-1. Az összesítési kifejezés megadásához kattintson a **kifejezés megadása** feliratú kék mezőre. Ekkor megnyílik az adatáramlási kifejezés-szerkesztő, amely a bemeneti séma, a beépített függvények és műveletek, valamint a felhasználó által definiált paraméterek használatával vizuálisan hozza létre az adatfolyam-kifejezéseket. A Kifejezésszerkesztő funkcióival kapcsolatos további információkért tekintse meg a Kifejezésszerkesztő [dokumentációját](./concepts-data-flow-expression-builder.md).
+    ![Portál 3. agg.](media/lab-data-flow-data-share/agg3.png)
+1. Az aggregáció kifejezésének beíratása után kattintson az Enter expression (Kifejezés beírása) **feliratú kék dobozra.** Ez megnyitja az adatfolyam-kifejezésszerkesztőt, amely adatfolyam-kifejezések vizuális létrehozására használható bemeneti sémával, beépített függvényekkel és műveletekkel, valamint felhasználó által definiált paraméterekkel. A kifejezésszerkesztő képességeivel kapcsolatos további információkért tekintse meg a [kifejezésszerkesztő dokumentációját.](./concepts-data-flow-expression-builder.md)
 
-    Az átlagos viteldíj beszerzéséhez használja az `avg()` összesítési függvényt, hogy összesítse az `total_amount` oszlopot egy egész számra `toInteger()` . Az adatáramlás kifejezésének nyelvében ez a következőként van definiálva: `avg(toInteger(total_amount))` . Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
+    Az átlagos ár lekért értékhez használja az aggregátum függvényt az egész számra való áttört oszlop összesítésére a `avg()` `total_amount` `toInteger()` használatával. Az adatfolyam-kifejezésnyelvben ez a következőként van `avg(toInteger(total_amount))` definiálva: . Ha **végzett, kattintson** a Mentés gombra, és fejezze be a munkát.
 
-    ![Portál Agg 4](media/lab-data-flow-data-share/agg4.png)
-1. További aggregációs kifejezés hozzáadásához kattintson a mellette található plusz ikonra `average_fare` . Válassza az **oszlop hozzáadása** lehetőséget.
+    ![Portál 4. agg.](media/lab-data-flow-data-share/agg4.png)
+1. További aggregátumkifejezés hozzáadásához kattintson a melletti plusz `average_fare` ikonra. Válassza **az Oszlop hozzáadása lehetőséget.**
 
-    ![Portál Agg 5](media/lab-data-flow-data-share/agg5.png)
-1. Az **oszlop hozzáadása vagy kiválasztása** feliratú szövegmezőbe írja be a következőt: "total_trip_distance". Ahogy az utolsó lépésben, nyissa meg a kifejezés-szerkesztőt a kifejezésbe való belépéshez.
+    ![Portál 5. agg.](media/lab-data-flow-data-share/agg5.png)
+1. Az Add or **select a column**(Oszlop hozzáadása vagy kiválasztása) szövegmezőbe írja be a "total_trip_distance" szöveget. Ahogyan az előző lépésben is, nyissa meg a kifejezésszerkesztőt, és írja be a kifejezést.
 
-    A teljes utazási távolság beszerzéséhez használja az `sum()` összesítési függvényt, hogy összesítse az `trip_distance` oszlopot egy egész számmal `toInteger()` . Az adatáramlás kifejezésének nyelvében ez a következőként van definiálva: `sum(toInteger(trip_distance))` . Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
+    A teljes út távolságának lekért értékhez használja az aggregátum függvényt az oszlop egész számra való összesítésére a `sum()` `trip_distance` `toInteger()` használatával. Az adatfolyam-kifejezésnyelvben ez a következőként van `sum(toInteger(trip_distance))` definiálva: . Ha **végzett, kattintson** a Mentés gombra, és fejezze be a munkát.
 
-    ![Portál Agg 6](media/lab-data-flow-data-share/agg6.png)
-1. Tesztelje az átalakítási logikát az **adatelőnézet** lapon. Amint láthatja, a korábbinál jóval kevesebb sor és oszlop szerepel. Csak az ebben az átalakításban definiált három csoportosítási és összesítési oszlop folytatja a műveletet. Mivel a mintában csak öt fizetéstípus-csoport van, csak öt sor van leképezve.
+    ![Portál 6. agg.](media/lab-data-flow-data-share/agg6.png)
+1. Tesztelje az átalakítási logikát az **Adatelőnézet lapon.** Amint látható, a korábbiaknál lényegesen kevesebb sor és oszlop van. Csak az átalakításban meghatározott három csoport és aggregációs oszlop folytatja a lefelé irányuló munkát. Mivel a mintában csak öt fizetésitípus-csoport van, a kimenet csak öt sort tartalmaz.
 
-    ![Portál Agg 7](media/lab-data-flow-data-share/agg7.png)
+    ![Portál 7. agg.](media/lab-data-flow-data-share/agg7.png)
 
-### <a name="configure-you-azure-synapse-analytics-sink"></a>Az Azure szinapszis Analytics-fogadó konfigurálása
+### <a name="configure-you-azure-synapse-analytics-sink"></a>A fogadó Azure Synapse Analytics konfigurálása
 
-1. Most, hogy elvégezte az átalakítási logikát, készen állunk arra, hogy az Azure szinapszis Analytics-táblázatban lévő adatvesztést. Vegyen fel egy fogadó transzformációt a **cél** szakaszban.
+1. Most, hogy befejeztük az átalakítási logikát, készen állunk arra, hogy az adatokat egy új táblába Azure Synapse Analytics. Adjon hozzá egy fogadóátalakítást a **Cél szakaszban.**
 
     ![Portál fogadója 1](media/lab-data-flow-data-share/sink1.png)
-1. Nevezze el a fogadó "SQLDWSink" nevet. Az új Azure szinapszis Analytics-adatkészlet létrehozásához kattintson a fogadó adatkészlet mező melletti **új** elemre.
+1. A fogadónak nevezze el az "SQLDWSink" nevet. Kattintson **a** fogadó adatkészlet mező melletti Új gombra egy új Azure Synapse Analytics létrehozásához.
 
-    ![2. portál](media/lab-data-flow-data-share/sink2.png)
+    ![2. portál-fogadó](media/lab-data-flow-data-share/sink2.png)
 
-1. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
+1. Válassza a **Azure Synapse Analytics** csempét, majd kattintson a Folytatás gombra.
 
-    ![3. portál](media/lab-data-flow-data-share/sink-3.png)
-1. Hívja meg a "AggregatedTaxiData" adatkészletet. A társított szolgáltatásként válassza a "SQLDW" lehetőséget. Válassza az **új tábla létrehozása** lehetőséget, és nevezze el az új tábla dbo. AggregateTaxiData. Ha elkészült, kattintson az OK gombra.
+    ![Portál fogadója 3](media/lab-data-flow-data-share/sink-3.png)
+1. Hívja meg az "AggregatedTaxiData" adatkészletet. Válassza az "SQLDW" lehetőséget csatolt szolgáltatásként. Válassza **az Új tábla létrehozása lehetőséget,** és adja az új táblának a dbo nevet. AggregateTaxiData. Ha elkészült, kattintson az OK gombra
 
     ![Portál fogadója 4](media/lab-data-flow-data-share/sink4.png)
-1. Nyissa meg a fogadó **Beállítások** lapját. Mivel új táblát hozunk létre, ki kell választania a tábla létrehozása lehetőséggel az **újbóli létrehozás táblát** . Törölje az **előkészítés engedélyezése** beállítást, amely azt jelzi, hogy sor-vagy batch-beszúrást végez-e.
+1. Ugrás a **fogadó Beállítások** lapra. Mivel új táblát hozunk létre, a Tábla újbóli létrehozása lehetőséget kell választanunk **a** tábla művelet alatt. Törölje a **Enable staging (Előkészítés** engedélyezése) kijelölését, ami azt határozza meg, hogy sorról sorra vagy kötegbe van-e beszúrva.
 
     ![Portál fogadója 5](media/lab-data-flow-data-share/sink5.png)
 
-Sikeresen létrehozta az adatfolyamatot. Most itt az ideje, hogy egy folyamat tevékenységében fusson.
+Sikeresen létrehozta az adatfolyamot. Itt az ideje, hogy egy folyamattevékenységben futtassa.
 
-### <a name="debug-your-pipeline-end-to-end"></a>A folyamat végpontok közötti hibakeresése
+### <a name="debug-your-pipeline-end-to-end"></a>A folyamat hibakeresése végpontok között
 
-1. Lépjen vissza a **IngestAndTransformData** folyamat lapjára. Figyelje meg a "IngestIntoADLS" másolási tevékenység zöld mezőjét. Húzza át a "JoinAndAggregateData" adatfolyam-tevékenységre. Ez létrehoz egy "sikeres" műveletet, ami azt eredményezi, hogy az adatfolyam tevékenysége csak akkor fut le, ha a másolás sikeres.
+1. Vissza **IngestAndTransformData** folyamat lapját. Figyelje meg a zöld mezőt az IngestIntoADLS másolási tevékenységen. Húzza át a JoinAndAggregateData adatfolyam-tevékenységre. Ez "sikeresség esetén" létrehoz egy "sikeres" tevékenységet, ami miatt az adatfolyam-tevékenység csak akkor fut, ha a másolás sikeres volt.
 
     ![1. portál-folyamat](media/lab-data-flow-data-share/pipeline1.png)
-1. Ahogy a másolási tevékenység esetében, kattintson a **hibakeresés** gombra a hibakeresési Futtatás végrehajtásához. Hibakeresési műveletek esetén az adatfolyam-tevékenység az aktív hibakeresési fürtöt fogja használni az új fürt felpörgetése helyett. Ez a folyamat eltarthat egy kicsit több, mint egy percet.
+1. Ahogyan a másolási tevékenységhez is, a **hibakeresési futtatás** végrehajtásához kattintson a Hibakeresés elemre. Hibakeresési futtatás esetén az adatfolyam-tevékenység az aktív hibakeresési fürtöt fogja használni ahelyett, hogy új fürtöt aktiválna. A folyamat végrehajtása kissé több mint egy percet fog igénybe venni.
 
     ![2. portál-folyamat](media/lab-data-flow-data-share/pipeline2.png)
-1. A másolási tevékenységhez hasonlóan az adatfolyam speciális figyelési nézettel is rendelkezik, melyet a tevékenység befejezésekor a szemüveg ikon is elérhet.
+1. A másolási tevékenységhez hasonló az adatfolyam is rendelkezik egy speciális figyelési nézettel, amelyet a szemüveg ikon a tevékenység befejezésekor elért.
 
     ![3. portál-folyamat](media/lab-data-flow-data-share/pipeline3.png)
-1. A figyelés nézetben megtekintheti az egyszerűsített adatfolyam-diagramot, valamint a végrehajtás időpontját és sorait az egyes végrehajtási fázisokban. Ha helyesen tette meg, akkor a tevékenységnek öt sorba kell tartoznia az összesített 49 999-sorokban.
+1. A figyelési nézetben egy egyszerűsített adatfolyam-diagramot láthat, valamint az egyes végrehajtási fázisok végrehajtási időit és sorait. Ha helyesen tette, 49 999 sort kellett volna öt sorra összesítenie ebben a tevékenységben.
 
     ![4. portál-folyamat](media/lab-data-flow-data-share/pipeline4.png)
-1. Az átalakításra kattintva további részleteket tudhat meg a végrehajtásáról, például particionálja az adatokat, illetve az új/frissített/eldobott oszlopokat.
+1. Az átalakításra kattintva további részleteket kaphat a végrehajtásról, például a particionálási információkat és az új/frissített/eldobott oszlopokat.
 
-    ![Portál adatcsatorna 5](media/lab-data-flow-data-share/pipeline5.png)
+    ![5. portál-folyamat](media/lab-data-flow-data-share/pipeline5.png)
 
-Ezzel befejezte a tesztkörnyezet adatelőállító részét. Tegye közzé erőforrásait, ha az eseményindítókkal szeretné működővé tenni őket. Sikeresen futtatott egy folyamatot, amely Azure SQL Database adatokat töltött le Azure Data Lake Storage a másolási tevékenység használatával, majd összesíti az adatokat egy Azure szinapszis Analyticsbe. Az adatgyűjtés sikeres ellenőrzéséhez tekintse meg a SQL Server magát.
+Ezzel befejezte a labor adat-előállító részét. Ha triggerekkel szeretné aktiválni az erőforrásokat, tegye közzé őket. Sikeresen futtatott egy folyamatot, amely adatokat betöltött a Azure SQL Database-Azure Data Lake Storage másolási tevékenységgel, majd az adatokat egy Azure Synapse Analytics. Az adatok sikeres megíratásának ellenőrzéséhez a saját maga SQL Server meg.
 
 ## <a name="share-data-using-azure-data-share"></a>Adatmegosztás az Azure Data Share szolgáltatás használatával
 
-Ebből a szakaszból megtudhatja, hogyan állíthat be új adatmegosztást a Azure Portal használatával. Ez magában foglalja egy új adatmegosztás létrehozását, amely adatkészleteket fog tartalmazni Azure Data Lake Store Gen2 és az Azure szinapszis Analyticsből. Ezután konfigurálhat egy pillanatkép-ütemtervet, amely lehetővé teszi az adatok számára, hogy automatikusan frissítse a velük megosztott adatok frissítését. Ezután meghívja a címzetteket az adatmegosztásra. 
+Ebben a szakaszban megtudhatja, hogyan állíthat be új adat megosztását a Azure Portal. Ehhez létre kell majd hoznunk egy új adat megosztást, amely az Azure Data Lake Store Gen2 és a Azure Synapse Analytics. Ezután konfigurálni fog egy pillanatkép-ütemezést, amely lehetőséget ad az adat felhasználóinak a velük megosztott adatok automatikus frissítésére. Ezután meghívja a címzetteket az adat-megosztásba. 
 
-Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó* lesz. Az adatfogyasztóként elsajátíthatja az adatmegosztási meghívások elfogadásának folyamatát, beállíthatja, hogy a rendszer hol fogadja el az adatokat, és hogyan rendelje hozzá az adatkészleteket a különböző tárolóhelyekhez. Ezután elindít egy pillanatképet, amely az Önnel megosztott adatok másolását a megadott célhelyre másolja. 
+Miután létrehozott egy adat megosztását, át kell váltania a tálat, és az lesz az *adat felhasználója.* Adatfelvevőként végig fog menni egy adatmegoszolási meghívó elfogadásán, annak konfigurálásán, hogy hol szeretné megkapni az adatokat, és hogyan lehet az adatkészleteket különböző tárolási helyekre leképezni. Ezután elindít egy pillanatképet, amely a megadott célhelyre másolja az Ön által megosztott adatokat. 
 
-### <a name="sharing-data-data-provider-flow"></a>Adatmegosztás (adatszolgáltatói folyamat)
+### <a name="sharing-data-data-provider-flow"></a>Adatok megosztása (adatszolgáltatói folyamat)
 
-1. Nyissa meg a Azure Portalt a Microsoft Edge vagy a Google Chrome böngészőben.
+1. Nyissa meg Azure Portal böngészőben vagy Microsoft Edge Google Chrome böngészőben.
 
-1. A lap tetején található keresősáv használatával keressen rá az **Adatmegosztások** keresése elemre.
+1. Az oldal tetején található keresősáv használatával keressen rá az **Adatmegosztások kifejezésre**
 
-    ![Portál hirdetései](media/lab-data-flow-data-share/portal-ads.png)
+    ![Portálhirdetések](media/lab-data-flow-data-share/portal-ads.png)
 
-1. Válassza ki a "provider" nevű adatmegosztási fiókot a névben. Például: **DataProvider0102**. 
+1. Válassza ki azt az adat-megosztási fiókot, amely nevében a "Provider" (Szolgáltató) név van megszabadva. Például: **DataProvider0102.** 
 
-1. Válassza **az adatmegosztás megkezdése** lehetőséget.
+1. Válassza **az Adatok megosztásának elkezdása lehetőséget**
 
-    ![Megosztás megkezdése](media/lab-data-flow-data-share/ads-start-sharing.png)
+    ![Megosztás kezdete](media/lab-data-flow-data-share/ads-start-sharing.png)
 
-1. Válassza a **+ Létrehozás** lehetőséget az új adatmegosztás konfigurálásának megkezdéséhez. 
+1. Az **új adat megosztásának** konfigurálásához válassza a +Létrehozás lehetőséget. 
 
-1. A **megosztás neve** területen adjon meg egy tetszőleges nevet. Ez az adatfogyasztó által látható megosztási név, ezért ügyeljen arra, hogy adjon meg egy leíró nevet, például TaxiData.
+1. A **Megosztás neve alatt** adjon meg egy kívánt nevet. Ez az adat fogyasztója számára látható megosztásnév, ezért mindenképpen adjon neki leíró nevet, például TaxiData.
 
-1. A **Leírás** alatt helyezzen el egy mondatot, amely leírja az adatmegosztás tartalmát. Az adatmegosztás az egész világra kiterjedő taxi-adatmennyiséget fogja tartalmazni, amelyet számos tároló tárol, például az Azure szinapszis Analytics és a Azure Data Lake Store. 
+1. A **Leírás alatt** helyezzen el egy mondatot, amely leírja az adat megosztásának tartalmát. Az adat megosztás a taxis utazások világszerte elérhető adatait fogja tartalmazni, amelyek számos üzletben lesznek tárolva, beleértve a Azure Synapse Analytics Azure Data Lake Store. 
 
-1. A **használati feltételek** alatt adja meg azokat a feltételeket, amelyeket az adatfogyasztónak be kell tartania. Néhány példa: "Ne ossza meg ezeket az adatvédelmet a szervezeten kívül" vagy "a jogi megállapodásra" hivatkozik. 
+1. A **Használati feltételek** adja meg azokat a kifejezéseket, amelyek betartását az adat fogyasztója szeretné. Ilyen például a "Ne ossza el az adatokat a szervezeten kívül" vagy a "Tekintse meg a jogi megállapodásokat". 
 
     ![Megosztás részletei](media/lab-data-flow-data-share/ads-details.png)
 
 1. Válassza a **Folytatás** lehetőséget. 
 
-1. Válassza az **adatkészletek hozzáadása** lehetőséget 
+1. Válassza **az Adatkészletek hozzáadása lehetőséget** 
 
     ![1. adatkészlet hozzáadása](media/lab-data-flow-data-share/add-dataset.png)
 
-1. Válassza az **Azure szinapszis Analytics** elemet, és válassza ki az Azure szinapszis Analytics azon tábláját, amelyet az ADF-transzformációk befoglaltak.
+1. Válassza **Azure Synapse Analytics** lehetőséget, és válasszon ki egy táblát a Azure Synapse Analytics, amelybe az ADF-átalakítások beültek.
 
-    ![Adatkészlet SQL-adatbázisának hozzáadása](media/lab-data-flow-data-share/add-dataset-sql.png)
+    ![Sql-adatkészlet hozzáadása](media/lab-data-flow-data-share/add-dataset-sql.png)
 
 
-1. A folytatáshoz meg kell adni egy parancsfájlt, amelyet futtatnia kell. A megadott parancsfájl létrehoz egy felhasználót az SQL-adatbázisban, hogy az Azure-beli adatmegosztási MSI hitelesítse magát a nevében. 
+1. A folytatás előtt kap egy szkriptet, amit futtatnia kell. A megadott szkript létrehoz egy felhasználót az SQL-adatbázisban, hogy Azure Data Share MSI hitelesítsen a nevében. 
 
 > [!IMPORTANT]
-> A szkript futtatása előtt be kell állítania magát a SQL Server Active Directory-rendszergazdája számára. 
+> A szkript futtatása előtt be kell állítania magát a Active Directory rendszergazdájaként a SQL Server. 
 
-1. Nyisson meg egy új fület, és navigáljon a Azure Portal. Másolja ki a megadott parancsfájlt, és hozzon létre egy felhasználót abban az adatbázisban, amelynek az adatait meg szeretné osztani. Ehhez jelentkezzen be a EDW-adatbázisba a Query Explorer (előzetes verzió) használatával a HRE-hitelesítés használatával. 
+1. Nyisson meg egy új lapot, és lépjen a Azure Portal. Másolja ki a megadott szkriptet, hogy létrehoz egy felhasználót abban az adatbázisban, amelyből adatokat szeretne megosztani. Ehhez AAD-hitelesítéssel kell bejelentkeznie az EDW-adatbázisba a Lekérdezéskezelő (előzetes verzió) használatával. 
 
-    A parancsfájlt úgy kell módosítania, hogy a felhasználó létrehozása zárójelek között történjen. Például
+    Módosítania kell a szkriptet, hogy a létrehozott felhasználó szögletes zárójelek között osson. Pl:
     
-    a [dataprovider-XXXX] felhasználó létrehozása a külső bejelentkezésből;  exec sp_addrolemember db_owner, [dataprovider-XXXX];
+    create user [dataprovider-xxxx] from external login;  exec sp_addrolemember db_owner, [dataprovider-xxxx];
     
-1. Váltson vissza az Azure-adatmegosztásra, ahol adatkészleteket adott hozzá az adatmegosztáshoz. 
+1. Váltson vissza arra Azure Data Share, ahol adatkészleteket adott hozzá az adat megosztásához. 
 
-1. Válassza a **EDW** lehetőséget, majd válassza a **AggregatedTaxiData** lehetőséget a táblához. 
+1. Válassza **az EDW lehetőséget,** majd válassza **az AggregatedTaxiData** táblát. 
 
-1. Válassza az **adatkészlet hozzáadása** lehetőséget
+1. Válassza **az Adatkészlet hozzáadása lehetőséget**
 
-    Most már van egy SQL-táblázatunk, amely az adatkészlet részét képezi. Ezután további adatkészleteket fogunk hozzáadni a Azure Data Lake Storeból. 
+    Most már van egy SQL-táblánk, amely az adatkészletünk része. A következő lépés az Azure-beli virtuális Data Lake Store. 
 
-1. Válassza az **adatkészlet hozzáadása** lehetőséget, és válassza ki **Azure Data Lake Store Gen2**
+1. Válassza **az Adatkészlet hozzáadása, majd** az Azure Data Lake Store **Gen2 lehetőséget**
 
-    ![Adatkészlet ADLs hozzáadása](media/lab-data-flow-data-share/add-dataset-adls.png)
+    ![Adatkészlet-adls hozzáadása](media/lab-data-flow-data-share/add-dataset-adls.png)
 
 1. Kattintson a **Tovább** gombra.
 
-1. Bontsa ki a *wwtaxidata*. A *Boston taxi-adatközpont* kibontása. Figyelje meg, hogy a fájlok szintjén is megosztható. 
+1. *Bontsa ki a wwtaxidata adatokat.* *Bontsa ki a Boston Taxi Data (Boston taxi adatai) adatokat.* Figyelje meg, hogy a megosztást a fájl szintjére is le lehet osztani. 
 
-1. Válassza ki a *Boston taxi* -adatmappát, és adja hozzá a teljes mappát az adatmegosztáshoz. 
+1. Válassza a *Boston Taxi Data* mappát, hogy a teljes mappát hozzáadja az adat megosztásához. 
 
-1. Válassza az **adatkészletek hozzáadása** lehetőséget
+1. Válassza **az Adatkészletek hozzáadása lehetőséget**
 
-1. Tekintse át a hozzáadott adatkészleteket. Az adatmegosztáshoz hozzá kell adni egy SQL-táblázatot és egy ADLS Gen2 mappát. 
+1. Tekintse át a hozzáadott adatkészleteket. Hozzá kell adni egy SQL-táblát és egy ADLS Gen2 nevű mappát az adat-megosztáshoz. 
 
 1. Válassza a **Folytatás** elemet
 
-1. Ezen a képernyőn adhat hozzá címzetteket az adatmegosztáshoz. A hozzáadott címzettek megkapják az adatmegosztásra vonatkozó meghívókat. Ennek a labornak a céljára 2 e-mail címet kell hozzáadnia:
+1. Ezen a képernyőn hozzáadhat címzetteket az adat-megosztáshoz. A hozzáadt címzettek meghívókat kapnak az adat megosztására. Ebben a laborban két e-mail-címet kell hozzáadnia:
 
-    1. Az Azure-előfizetés e-mail-címe. 
+    1. A megadott Azure-előfizetés e-mail-címe. 
 
         ![Címzettek hozzáadása](media/lab-data-flow-data-share/add-recipients.png)
 
-    1. Adja hozzá a nevet a kitalált adatfogyasztónak *janedoe@fabrikam.com* .
+    1. Adja hozzá a nevet a nevű fiktív adat *janedoe@fabrikam.com* felhasználóhoz.
 
-1. Ezen a képernyőn beállíthat egy pillanatkép-beállítást az adatfogyasztó számára. Ez lehetővé teszi, hogy az Ön által meghatározott időközönként rendszeres frissítéseket kapjon az adatairól. 
+1. Ezen a képernyőn konfigurálhat egy pillanatkép-beállítást az adat fogyasztója számára. Ez lehetővé teszi számukra, hogy rendszeres frissítéseket fogadjanak az adatokról az Ön által meghatározott időközönként. 
 
-1. Vizsgálja meg a **Pillanatkép-ütemezéseket** , és konfigurálja az adatok óránkénti frissítését az *Ismétlődés* legördülő lista használatával.  
+1. Jelölje **be a Pillanatkép** ütemezése jelölőnégyzetet, és konfigurálja az adatok óránkénti frissítését az *Ismétlődés legördülő* menüben.  
 
 1. Válassza a **Létrehozás** lehetőséget.
 
-    Most már rendelkezik aktív adatmegosztással. Lehetővé teszi, hogy az adatmegosztás létrehozásakor megtekintse az adatszolgáltatóként megjelenített tudnivalókat. 
+    Most már van aktív adat-megosztása. Áttekintheti, hogy mit láthat adatszolgáltatóként adat-megosztás létrehozásakor. 
 
-1. Válassza ki a létrehozott adatmegosztást, a **DataProvider** címet. Az **adatmegosztásban** megjelenő **megosztások** lehetőség kiválasztásával navigáljon hozzá. 
+1. Válassza ki a létrehozott, **DataProvider** című adat megosztását. A megosztások között az Elküldött megosztások lehetőség **kiválasztásával** **navigálhat Data Share.** 
 
-1. Kattintson a pillanatkép-ütemterv elemre. Ha ezt választja, letilthatja a pillanatkép-ütemtervet. 
+1. Kattintson a Pillanatkép ütemezése elemre. Ha úgy dönt, letilthatja a pillanatkép-ütemezést. 
 
-1. Ezután válassza az **adatkészletek** lapot. A létrehozást követően további adatkészleteket is hozzáadhat ehhez az adatmegosztáshoz. 
+1. Ezután válassza az **Adatkészletek** lapot. A létrehozás után további adatkészleteket is hozzáadhat ehhez az adat megosztáshoz. 
 
-1. Válassza az **előfizetés megosztása** lapot. Még nem léteznek megosztási előfizetések, mert az adatfogyasztó még nem fogadta el a meghívót.
+1. Válassza az **Előfizetések megosztása** lapot. Még nem léteznek megosztási előfizetések, mert az adat fogyasztója még nem fogadta el a meghívást.
 
-1. Navigáljon a **meghívások** lapra. Itt láthatja a függőben lévő meghívó (k) listáját. 
+1. Lépjen a **Meghívók lapra.** Itt láthatja a függőben lévő meghívó(k) listáját. 
 
-    ![Függőben lévő meghívások](media/lab-data-flow-data-share/pending-invites.png)
+    ![Függőben lévő meghívók](media/lab-data-flow-data-share/pending-invites.png)
 
-1. Válassza ki a meghívót *janedoe@fabrikam.com* . Válassza a Törlés elemet. Ha a címzett még nem fogadta el a meghívót, többé nem fogja tudni megtenni. 
+1. Válassza ki a *janedoe@fabrikam.com* meghívását. Válassza a Törlés elemet. Ha a címzett még nem fogadta el a meghívót, akkor erre már nem lesz képes. 
 
-1. Válassza az **Előzmények** fület. Semmi sem jelenik meg, mert az adatfogyasztó még nem fogadta el a meghívót, és nem váltott ki pillanatképet. 
+1. Válassza az **Előzmények** lapot. Egyelőre semmi sem jelenik meg, mert az adat fogyasztója még nem fogadta el a meghívást, és aktivált egy pillanatképet. 
 
-### <a name="receiving-data-data-consumer-flow"></a>Adatfogadás (adatfeldolgozó folyamat)
+### <a name="receiving-data-data-consumer-flow"></a>Adatok fogadása (adat fogyasztói folyamat)
 
-Most, hogy áttekintette az adatmegosztást, készen állunk arra, hogy átkapcsoljuk a kontextust, és felhasználjuk az adatfeldolgozást. 
+Most, hogy áttekintettünk egy adat megosztását, készen állunk a környezetváltásra és az adathasználói skentő elhasználódására. 
 
-Most már rendelkeznie kell egy Azure-beli adatmegosztási meghívással a Beérkezett üzenetek mappájában Microsoft Azure. Indítsa el az Outlook Web Access (outlook.com) alkalmazást, és jelentkezzen be az Azure-előfizetéséhez megadott hitelesítő adatok használatával.
+Most már egy meghívóval Azure Data Share a beérkezett üzenetek között a Microsoft Azure. Indítsa el az Outlook Web Accesst (outlook.com), és jelentkezzen be az Azure-előfizetéséhez megadott hitelesítő adatokkal.
 
-A kapott e-mailben kattintson a meghívás > megtekintése elemre. Ezen a ponton szimulálni kell az adatfogyasztói élményt, amikor elfogad egy adatszolgáltatót az adatmegosztásra. 
+A kapott e-mailben kattintson a "Meghívók megtekintése >". Ezen a ponton szimulálni fogja az adat fogyasztói élményét, amikor adatszolgáltatói meghívót fogad az adat megosztására. 
 
 ![Meghívó e-mailben](media/lab-data-flow-data-share/email-invite.png)
 
-A rendszer kérheti az előfizetés kiválasztását. Győződjön meg arról, hogy a tesztkörnyezetben használt előfizetést választotta. 
+Előfordulhat, hogy a rendszer arra kéri, hogy válasszon ki egy előfizetést. Győződjön meg arról, hogy azt az előfizetést választja ki, ahol a laborban dolgozott. 
 
-1. Kattintson a meghívót *DataProvider* címre. 
+1. Kattintson a *DataProvider (Adatprovider) című meghívásra.* 
 
-1. Ebben a Meghívási képernyőn a korábban adatszolgáltatóként konfigurált adatmegosztással kapcsolatos különböző adatokat láthatja. Tekintse át a részleteket, és fogadja el a használati feltételeket, ha meg van megadva.
+1. Ezen a Meghívó képernyőn számos részletet fog észrevenni a korábban adatszolgáltatóként konfigurált adatmegoszlottról. Tekintse át a részleteket, és fogadja el a használati feltételeket, ha meg van téve.
 
-1. Válassza ki azt az előfizetést és erőforráscsoportot, amely már létezik a laborhoz. 
+1. Válassza ki a tesztkörnyezethez már létező előfizetést és erőforráscsoportot. 
 
-1. **Adatmegosztási fiók** esetén válassza a **DataConsumer** lehetőséget. Létrehozhat egy új adatmegosztási fiókot is. 
+1. Az **Adat share-fiók mezőben** válassza a **DataConsumer lehetőséget.** Létrehozhat egy új adat share-fiókot is. 
 
-1. A **fogadott megosztás neve** mellett láthatja, hogy az alapértelmezett megosztás neve az adatszolgáltató által megadott név. Adjon meg egy felhasználóbarát nevet, amely leírja a kapott információkat, például a **TaxiDataShare**.
+1. Figyelje meg, hogy **a Fogadott megosztás neve** mellett az alapértelmezett megosztásnév az adatszolgáltató által megadott név. Adjon egy felhasználóbarát nevet a megosztásnak, amely leírja a kapni fog adatokat, például **TaxiDataShare.**
 
-    ![Meghívás elfogadása](media/lab-data-flow-data-share/consumer-accept.png)
+    ![Meghívó elfogadása](media/lab-data-flow-data-share/consumer-accept.png)
 
-1. Dönthet úgy, hogy **most elfogadja és konfigurálja** a **későbbiekben, vagy elfogadja és konfigurálja** azokat. Ha az elfogadás és a Konfigurálás lehetőséget választja, meg kell adnia egy olyan Storage-fiókot, amelyben az összes adatmásolt. Ha később elfogadja és konfigurálja a megosztást, a megosztásban lévő adatkészletek le lesznek képezve, és manuálisan kell leképezni őket. Ezt később is eldönthetjük. 
+1. Választhatja az Elfogadás és **konfigurálás most vagy** az **Elfogadás és konfigurálás később lehetőséget.** Ha úgy dönt, hogy most elfogadja és konfigurálja, meg kell adnia egy tárfiókot, ahová az összes adatot másolnia kell. Ha később elfogadja és konfigurálja az adatokat, a megosztásban található adatkészletek leképezetlenek lesznek, és manuálisan kell leképezni őket. Erre később még lesz lehetőség. 
 
-1. Válassza **az elfogadás és konfigurálás később** lehetőséget. 
+1. Válassza az **Elfogadás lehetőséget, és konfigurálja később.** 
 
-    Ennek a beállításnak a konfigurálásakor a rendszer létrehoz egy megosztási előfizetést, de nincs hová rendelve az adatterületnek, mert nincs leképezve célhely. 
+    A beállítás konfigurálásakor a rendszer létrehoz egy megosztási előfizetést, de az adatok leesnek, mivel még nem lett leképezve cél. 
 
-    Ezután konfigurálni fogjuk az adatmegosztáshoz tartozó adatkészlet-hozzárendeléseket. 
+    A következő lépés az adatleképezések konfigurálása az adat megosztásához. 
 
-1. Válassza ki a kapott megosztást (az 5. lépésben megadott nevet).
+1. Válassza ki a Fogadott megosztást (az 5. lépésben megadott nevet).
 
-    Az **trigger pillanatképe** szürkén jelenik meg, de a megosztás aktív. 
+    **Az eseményindító pillanatképe** szürkével van kiszürkülve, de a megosztás aktív. 
 
-1. Válassza az **adatkészletek** lapot. Figyelje meg, hogy minden adatkészlet le van képezve, ami azt jelenti, hogy nincs célhelye az adatmásoláshoz. 
+1. Válassza az **Adatkészletek lapot.** Figyelje meg, hogy minden adatkészlet Leképezetlen, ami azt jelenti, hogy nincs céljuk az adatok másolására. 
 
-    ![nem leképezett adatkészletek](media/lab-data-flow-data-share/unmapped.png)
+    ![leképezetlen adatkészletek](media/lab-data-flow-data-share/unmapped.png)
 
-1. Válassza ki az Azure szinapszis Analytics-táblázatot, majd válassza a **+ leképezés a célként** lehetőséget.
+1. Válassza ki a Azure Synapse Analytics, majd válassza **a + Leképezés a célhoz lehetőséget.**
 
-1. A képernyő jobb oldalán válassza ki a **cél adattípus** legördülő listát. 
+1. A képernyő jobb oldalán válassza a Cél **adattípus legördülő** menüt. 
 
-    Az SQL-adattárakat számos adattárhoz hozzárendelheti. Ebben az esetben egy Azure SQL Database lesz hozzárendelve.
+    Az SQL-adatokat számos adattárra leképezheti. Ebben az esetben egy új alkalmazásra fogunk leképezni Azure SQL Database.
 
-    ![leképezés](media/lab-data-flow-data-share/mapping-options.png)
+    ![Hozzárendelés](media/lab-data-flow-data-share/mapping-options.png)
     
-    Választható Válassza ki **Azure Data Lake Store Gen2** a célként megadott adattípusként. 
+    (Nem kötelező) Cél **adattípusként Data Lake Store Azure Data Lake Store Gen2** lehetőséget. 
     
-    Választható Válassza ki azt az előfizetést, erőforráscsoportot és Storage-fiókot, amelyet már dolgozott. 
+    (Nem kötelező) Válassza ki azt az előfizetést, erőforráscsoportot és tárfiókot, amelyben dolgozott. 
     
-    Választható Dönthet úgy is, hogy az adatait CSV-vagy parketta-formátumban fogadja az adattóba. 
+    (Nem kötelező) Választhat, hogy csv vagy parquet formátumban fogadja az adatokat a data lake-be. 
 
-1. A **célként megadott adattípus** mellett válassza a Azure SQL Database lehetőséget. 
+1. A Cél **adattípus mellett válassza** a Azure SQL Database. 
 
-1. Válassza ki azt az előfizetést, erőforráscsoportot és Storage-fiókot, amelyet már dolgozott. 
+1. Válassza ki azt az előfizetést, erőforráscsoportot és tárfiókot, amelyben dolgozott. 
 
-    ![leképezés az SQL-re](media/lab-data-flow-data-share/map-to-sqldb.png)
+    ![leképezés sql-be](media/lab-data-flow-data-share/map-to-sqldb.png)
 
-1. A folytatás előtt létre kell hoznia egy új felhasználót a SQL Server a megadott parancsfájl futtatásával. Először másolja a vágólapra megadott parancsfájlt. 
+1. A folytatás előtt létre kell hoznia egy új felhasználót a SQL Server szkript futtatásával. Először másolja a megadott szkriptet a vágólapra. 
 
-1. Nyisson meg egy új Azure Portal lapot. Ne zárjuk be a meglévő fület, mert egy pillanat alatt vissza kell térnie rá. 
+1. Nyisson meg egy Azure Portal lapot. Ne zárja be a meglévő lapot, mert hamarosan vissza kell majd jönnie. 
 
-1. Az új lapon megnyitva navigáljon az **SQL-adatbázisokhoz**.
+1. A megnyitott új lapon lépjen az **SQL-adatbázisok lapra.**
 
-1. Válassza ki az SQL-adatbázist (csak az előfizetésében kell lennie). Ügyeljen arra, hogy ne válassza ki az adatraktárat. 
+1. Válassza ki az SQL-adatbázist (csak egynek kell lennie az előfizetésben). Ügyeljen arra, hogy ne válassza ki az adattárházat. 
 
-1. A **Lekérdezés-szerkesztő kiválasztása (előzetes verzió)**
+1. Lekérdezésszerkesztő **kiválasztása (előzetes verzió)**
 
-1. A HRE-hitelesítés használatával jelentkezzen be a lekérdezés-szerkesztőbe. 
+1. AAD-hitelesítés használata a Lekérdezésszerkesztőbe való bejelentkezéshez. 
 
-1. Futtassa az adatmegosztásban megadott lekérdezést (a 14. lépésben átmásolva a vágólapra). 
+1. Futtassa az adat megosztásában megadott lekérdezést (a 14. lépésben a vágólapra másolható). 
 
-    Ez a parancs lehetővé teszi, hogy az Azure-beli adatmegosztási szolgáltatás felügyelt identitásokat használjon az Azure-szolgáltatásokhoz, hogy hitelesítse a SQL Server, hogy képes legyen az adatai másolására. 
+    Ez a parancs lehetővé Azure Data Share, hogy az Azure Data Share szolgáltatás felügyelt identitásokat használjon az Azure-szolgáltatásokhoz a hitelesítéshez a SQL Server, hogy adatokat másoltat a szolgáltatásba. 
 
-1. Lépjen vissza az eredeti lapra, és válassza a **leképezés célhelyre** lehetőséget.
+1. Vissza az eredeti lapra, és válassza a **Leképezés célként lehetőséget.**
 
-1. Ezután válassza ki az adatkészlet részét képező Azure Data Lake Gen2 mappát, és rendelje hozzá egy Azure Blob Storage-fiókhoz. 
+1. Ezután válassza ki az adatkészlet részét tartalmazó Azure Data Lake Gen2 mappát, és képezi le egy Azure Blob Storage fiókra. 
 
     ![storage](media/lab-data-flow-data-share/storage-map.png)
 
-    Az összes hozzárendelt adatkészlet esetében most már készen áll az adatok fogadására az adatszolgáltatótól. 
+    Most, hogy minden adatkészlet le van leképezve, készen áll az adatok fogadására az adatszolgáltatótól. 
 
-    ![leképezve](media/lab-data-flow-data-share/all-mapped.png)
+    ![Leképezés](media/lab-data-flow-data-share/all-mapped.png)
     
-1. Válassza a **részletek** lehetőséget. 
+1. Válassza a **Részletek lehetőséget.** 
 
-    Figyelje meg, hogy az **trigger pillanatképe** már nem szürkén jelenik meg, mert az adatmegosztás most már rendelkezik célhelyekkel a másoláshoz.
+    Figyelje meg, **hogy a Trigger snapshot** (Eseményindító pillanatképe) már nincs szürkével kiszürkülve, mivel az adat megosztásának most már vannak célhelyei, amelyekbe másolni lehet.
 
-1. Válassza a pillanatkép elindítása-> teljes másolás lehetőséget. 
+1. Válassza az Eseményindító pillanatkép -> Teljes másolás lehetőséget. 
 
-    ![eseményindító](media/lab-data-flow-data-share/trigger-full.png)
+    ![Ravaszt](media/lab-data-flow-data-share/trigger-full.png)
 
-    Ekkor megkezdődik az adatok másolása az új adatmegosztási fiókba. Valós forgatókönyv esetén ezek az adatok egy harmadik féltől származnak. 
+    Ezzel adatokat másol az új adat share-fiókjába. Egy valós forgatókönyvben ezek az adatok egy harmadik féltől jönnek. 
 
-    Az adatgyűjtés körülbelül 3-5 percet vesz igénybe. A folyamat figyeléséhez kattintson az **Előzmények** lapra. 
+    Az adatok körülbelül 3–5 percet fognak igénybe venni. A folyamat előrehaladását az Előzmények lapra **kattintva követheti** nyomon. 
 
-    Amíg megvárja, navigáljon az eredeti adatmegosztáshoz (DataProvider), és tekintse meg a **Share Subscriptions and History (megosztás előfizetések** és **Előzmények** ) lap állapotát. Figyelje meg, hogy már van aktív előfizetés, és adatszolgáltatóként is megfigyelheti, hogy az adatfogyasztó megkezdte-e a velük megosztott adatforgalom fogadását. 
+    Várakozás közben navigáljon az eredeti adat megosztáshoz (DataProvider), és tekintse meg az Előfizetések és **előzmények** megosztása **lap** állapotát. Figyelje meg, hogy most már van aktív előfizetés, és adatszolgáltatóként azt is figyelheti, hogy az adat fogyasztója mikor kezdte meg fogadni a velük megosztott adatokat. 
 
-1. Váltson vissza az adatfogyasztó adatmegosztására. Az trigger állapotának sikeres megkeresése után navigáljon a cél SQL-adatbázishoz és a-tóhoz, és tekintse meg, hogy az adatai a megfelelő tárolókban vannak-e. 
+1. Lépjen vissza az adat fogyasztója adat megosztásához. Ha az eseményindító állapota sikeres, navigáljon a cél SQL-adatbázishoz és a Data Lake-hez, és tekintse meg, hogy az adatok a megfelelő tárolókba megtörténtek-e. 
 
 Gratulálunk, befejezte a labort!

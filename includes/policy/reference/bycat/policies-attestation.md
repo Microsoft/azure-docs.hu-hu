@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 057722b81311fe465d7b303165c816574a927bba
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fc7bf4b6df1fd5ee3ac98d4ae29567be72bfaf4a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090694"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498609"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Az Azure-igazolási szolgáltatóknak privát végpontokat kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7b256a2d-058b-41f8-bed9-3f870541c40a) |A privát végpontok lehetővé teszik az Azure-igazolási szolgáltatók Azure-erőforrásokhoz való összekapcsolását anélkül, hogy forgalmat kellene küldeni a nyilvános interneten keresztül. A nyilvános hozzáférés megakadályozása révén a privát végpontok segítenek megvédeni a nem kívánt névtelen hozzáféréseket. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Attestation/Attestation_PrivateLink_AuditIfNotExists.json) |
+|[Azure Attestation szolgáltatóknak privát végpontokat kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7b256a2d-058b-41f8-bed9-3f870541c40a) |A privát végpontokkal anélkül csatlakoztathat Azure Attestation szolgáltatókat az Azure-erőforrásokhoz, hogy a nyilvános interneten keresztül forgalmat küldenének. A nyilvános hozzáférés megakadályozásával a privát végpontok segítenek megvédeni a nem szükséges névtelen hozzáférést. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Attestation/Attestation_PrivateLink_AuditIfNotExists.json) |

@@ -1,87 +1,87 @@
 ---
-title: Azure-igazolás beállítása Azure PowerShell
-description: Igazolási szolgáltató beállítása és konfigurálása Azure PowerShell használatával.
+title: A Azure Attestation beállítása Azure PowerShell
+description: Igazolásszolgáltató beállítása és konfigurálása a Azure PowerShell.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80f0efe0894c54d1499bbfdce2317a38dff9299d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501124"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481616"
 ---
-# <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Gyors útmutató: Azure-igazolás beállítása Azure PowerShell
+# <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rövid útmutató: A Azure Attestation beállítása Azure PowerShell
 
-Az alábbi lépések végrehajtásával hozzon létre és konfiguráljon egy igazolási szolgáltatót Azure PowerShell használatával. A Azure PowerShell telepítésével és futtatásával kapcsolatos információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/) című témakört.
+Az alábbi lépésekkel hozhat létre és konfigurálhatja az igazolásszolgáltatót a Azure PowerShell. A [Azure PowerShell](/powershell/azure/) telepítésének és futtatásának mikéntjéhez lásd a Azure PowerShell.
 
-Vegye figyelembe, hogy a PowerShell-galéria elavult Transport Layer Security (TLS) 1,0-es és 1,1-es verzióval rendelkezik. A TLS 1,2 vagy újabb verzió használata javasolt. Így a következő hibák jelenhetnek meg:
+Vegye figyelembe, hogy a PowerShell-galéria elavult Transport Layer Security (TLS) 1.0-s és 1.1-es verziói. A TLS 1.2-es vagy újabb verziója ajánlott. Ezért a következő hibákat kaphatja:
 
-- Figyelmeztetés: nem sikerült feloldani a (z) "" csomag forrását https://www.powershellgallery.com/api/v2
-- PackageManagement\Install-Package: nem található egyezés a megadott keresési feltételekhez és a modul nevéhez. 
+- FIGYELMEZTETÉS: Nem sikerült feloldani a következő csomagforrást: https://www.powershellgallery.com/api/v2 '
+- PackageManagement\Install-Package: Nem található egyezés a megadott keresési feltételekhez és a modul nevéhez 
 
-A PowerShell-galéria folytatásához futtassa a következő parancsot a Install-Module parancsok előtt.
+Ha továbbra is használni PowerShell-galéria, futtassa a következő parancsot a Install-Module parancsai előtt
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 ```
 
-## <a name="install-azattestation-powershell-module"></a>Az az. tanúsító PowerShell-modul telepítése
+## <a name="install-azattestation-powershell-module"></a>Az Az.Attestation PowerShell-modul telepítése
 
-Az Azure PowerShell-mel rendelkező számítógépen telepítse az az. tanúsító PowerShell-modult, amely az Azure igazolási parancsmagokat tartalmazza.  
+A virtuális gépre Azure PowerShell az Az.Attestation PowerShell-modult, amely parancsmagokat tartalmaz a Azure Attestation.  
 
 ### <a name="initial-installation"></a>Kezdeti telepítés
 
-Az összes meglévő PowerShell-ablak leállítása.
+Bontsa le az összes meglévő PowerShell-ablakot.
 
-Az "aktuális felhasználó" telepítéséhez nyisson meg egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
+Az "aktuális felhasználó" számára való telepítéshez indítson el egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
 
 ```powershell
 Install-Module -Name Az.Attestation -AllowClobber -Scope CurrentUser
 ```
 
-A "minden felhasználó" telepítéséhez nyisson meg egy emelt szintű PowerShell-ablakot, és futtassa a következőt:
+A "minden felhasználó" számára való telepítéshez indítson el egy emelt szintű PowerShell-ablakot, és futtassa a következőt:
 
 ```powershell
 Install-Module -Name Az.Attestation -AllowClobber -Scope AllUsers
 ```
 
-A rendszergazda jogú PowerShell-konzol bezárásához.
+Zárja be az emelt szintű PowerShell-konzolt.
 
 ### <a name="update-the-installation"></a>A telepítés frissítése
 
-Az összes meglévő PowerShell-ablak leállítása.
+Bontsa le az összes meglévő PowerShell-ablakot.
 
-A "jelenlegi felhasználó" frissítéséhez nyisson meg egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
-
-```powershell
-Update-Module -Name Az.Attestation
-```
-
-A "minden felhasználó" frissítéséhez nyisson meg egy emelt szintű PowerShell-ablakot, és futtassa a következőt:
+Az "aktuális felhasználó" frissítéséhez indítson el egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
 
 ```powershell
 Update-Module -Name Az.Attestation
 ```
 
-A rendszergazda jogú PowerShell-konzol bezárásához.
+A "minden felhasználó" frissítéséhez indítson el egy emelt szintű PowerShell-ablakot, és futtassa a következőt:
+
+```powershell
+Update-Module -Name Az.Attestation
+```
+
+Zárja be az emelt szintű PowerShell-konzolt.
 
 ### <a name="get-installed-modules"></a>Telepített modulok beolvasása
 
-Az igazolási műveletek támogatásához szükséges az modulok minimális verziója:
+Az Az modulok minimális verziója, amely az igazolási műveletek támogatásához szükséges:
 - Az 4.5.0
-- Az. accounts 1.9.2
-- Az. igazolási 0.1.8
+- Az.Accounts 1.9.2
+- Az.Attestation 0.1.8
 
-Futtassa az alábbi parancsot az összes modul telepített verziójának ellenőrzéséhez 
+Futtassa az alábbi parancsot az összes Az modul telepített verziójának ellenőrzéséhez 
 
 ```powershell
 Get-InstalledModule
 ```
-Ha a verziók nem felelnek meg a minimális követelménynek, futtassa Update-Module parancsokat.
+Ha a verziók nem egyeznek meg a minimális követelménnyel, futtassa a Update-Module parancsokat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -91,20 +91,20 @@ Jelentkezzen be az Azure-ba a PowerShell-konzolon (emelt szintű hozzáférési 
 Connect-AzAccount
 ```
 
-Ha szükséges, váltson az Azure-igazoláshoz használni kívánt előfizetésre.
+Ha szükséges, váltson arra az előfizetésre, amely a Azure Attestation.
 
 ```powershell
 Set-AzContext -Subscription <subscription id>  
 ```
 
-## <a name="register-microsoftattestation-resource-provider"></a>A Microsoft. tanúsító erőforrás-szolgáltató regisztrálása
+## <a name="register-microsoftattestation-resource-provider"></a>A Microsoft.Attestation erőforrás-szolgáltató regisztrálása
 
-Regisztrálja a Microsoft. tanúsító erőforrás-szolgáltatót az előfizetésben. Az Azure erőforrás-szolgáltatókkal és az erőforrás-szolgáltatók konfigurálásával és kezelésével kapcsolatos további információkért lásd: [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md). Vegye figyelembe, hogy az erőforrás-szolgáltató regisztrálását csak egyszer kell megadnia egy előfizetéshez.
+Regisztrálja a Microsoft.Attestation erőforrás-szolgáltatót az előfizetésben. További információ az Azure-erőforrásszolgáltatókról, valamint az erőforrás-szolgáltatók konfigurálásról és kezelésről: [Azure erőforrás-szolgáltatók és -típusok.](../azure-resource-manager/management/resource-providers-and-types.md) Vegye figyelembe, hogy egy előfizetéshez csak egyszer kell regisztrálni egy erőforrás-szolgáltatót.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Attestation
 ```
-## <a name="regional-availability-of-azure-attestation"></a>Az Azure-igazolás regionális elérhetősége
+## <a name="regional-availability-of-azure-attestation"></a>A Azure Attestation
 
 ```powershell
 (Get-AzResourceProvider -ProviderNamespace Microsoft.Attestation)[0].Locations
@@ -112,7 +112,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Attestation
 
 ## <a name="create-an-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az igazolási szolgáltatóhoz. Vegye figyelembe, hogy más Azure-erőforrások (beleértve az ügyfélalkalmazás-példánnyal rendelkező virtuális gépeket is) ugyanabba az erőforráscsoporthoz helyezhetők.
+Hozzon létre egy erőforráscsoportot az igazolási szolgáltatóhoz. Vegye figyelembe, hogy más Azure-erőforrások (beleértve az ügyfélalkalmazás-példányt is) ugyanoda az erőforráscsoportba is helyezzenek.
 
 ```powershell
 $location = "uksouth" 
@@ -120,30 +120,30 @@ $attestationResourceGroup = "<attestation provider resource group name>"
 New-AzResourceGroup -Name $attestationResourceGroup -Location $location 
 ```
 
-## <a name="create-and-manage-an-attestation-provider"></a>Igazolási szolgáltató létrehozása és kezelése
+## <a name="create-and-manage-an-attestation-provider"></a>Igazolásszolgáltató létrehozása és kezelése
 
-New-AzAttestation létrehoz egy igazolási szolgáltatót.
+New-AzAttestation létrehoz egy igazolásszolgáltatót.
 
 ```powershell
 $attestationProvider = "<attestation provider name>" 
 New-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Location $location
 ```
 
-A PolicySignerCertificateFile egy olyan fájl, amely megbízható aláíró kulcsok készletét adja meg. Ha meg van adva fájlnév a PolicySignerCertificateFile paraméterhez, az igazolási szolgáltató csak aláírt JWT formátumú szabályzatokkal konfigurálható. Az egyéb szabályzatok szövegben vagy aláíratlan JWT formátumban is konfigurálhatók.
+A PolicySignerCertificateFile egy olyan fájl, amely megbízható aláírókulcsokat határoz meg. Ha a PolicySignerCertificateFile paraméterhez fájlnév van megadva, az igazolási szolgáltató csak aláírt JWT formátumú házirendekkel konfigurálható. Egyéb szabályzatok szövegben vagy aláíratlan JWT formátumban konfigurálhatóak.
 
 ```powershell
 New-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Location $location -PolicySignersCertificateFile "C:\test\policySignersCertificates.pem"
 ```
 
-A PolicySignersCertificateFile minta esetében lásd: [házirend-aláíró tanúsítvány példái](policy-signer-examples.md).
+A PolicySignersCertificateFile minta esetében tekintse meg a [szabályzat-aláíró tanúsítványra vonatkozó példákat.](policy-signer-examples.md)
 
-Get-AzAttestation lekéri az igazolási szolgáltató tulajdonságait, például az állapot-és AttestURI. Jegyezze fel a AttestURI, mert később szükség lesz rá.
+Get-AzAttestation lekéri az igazolásszolgáltató tulajdonságait, például az állapotot és az AttestURI-t. Jegyezze fel az AttestURI-t, mert később szüksége lesz rá.
 
 ```azurepowershell
 Get-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup  
 ```
 
-A fenti parancsnak az alábbihoz hasonló kimenetet kell létrehoznia: 
+A fenti parancsnak az alábbihoz hasonló kimenetet kell előállítania: 
 
 ```
 Id:/subscriptions/MySubscriptionID/resourceGroups/MyResourceGroup/providers/Microsoft.Attestation/attestationProviders/MyAttestationProvider
@@ -157,7 +157,7 @@ Tags:
 TagsTable: 
 ```
 
-Az igazoló szolgáltatók a Remove-AzAttestation parancsmag használatával törölhetők.  
+Az igazolási szolgáltatók a következő parancsmag Remove-AzAttestation törölhetők.  
 
 ```powershell
 Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
@@ -165,30 +165,30 @@ Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationR
 
 ## <a name="policy-management"></a>Szabályzatkezelés
 
-A házirendek kezeléséhez az Azure AD-felhasználónak a következő engedélyekkel kell rendelkeznie a "Actions" esetében:
-- Microsoft. igazolás/attestationProviders/igazolás/olvasás
-- Microsoft. igazolás/attestationProviders/igazolás/írás
-- Microsoft. igazolás/attestationProviders/igazolás/törlés
+A szabályzatok kezeléséhez egy Azure AD-felhasználónak a következő engedélyekre van szüksége a "Műveletekhez":
+- Microsoft.Attestation/attestationProviders/attestation/read
+- Microsoft.Attestation/attestationProviders/attestation/write
+- Microsoft.Attestation/attestationProviders/attestation/delete
 
-Ezek az engedélyek egy AD-felhasználóhoz társíthatók, például a "tulajdonos" (helyettesítő engedélyek), a "közreműködő" (helyettesítő engedélyek) vagy az "igazolás közreműködője" (csak az Azure-hitelesítésre vonatkozó egyedi engedélyek).  
+Ezeknek a műveleteknek a végrehajtásához az Azure AD-felhasználónak "Igazolási közreműködő" szerepkörben kell lennie az igazolásszolgáltatón. Ezek az engedélyek olyan szerepkörökkel is öröklhetőek, mint a "Tulajdonos" (helyettesítő karakterek engedélyei), a "Közreműködő" (helyettesítő karakterek engedélyei) az előfizetés/erőforráscsoport szintjén.  
 
-A szabályzatok olvasásához egy Azure AD-felhasználónak a következő engedélyre van szüksége a "műveletek" művelethez:
-- Microsoft. igazolás/attestationProviders/igazolás/olvasás
+A szabályzatok olvasásához egy Azure AD-felhasználónak a következő engedélyre van szüksége a "Műveletekhez":
+- Microsoft.Attestation/attestationProviders/attestation/read
 
-Ez az engedély hozzárendelhető egy AD-felhasználóhoz egy olyan szerepkörön keresztül, mint az "olvasó" (helyettesítő karakteres engedélyek) vagy az "igazolási olvasó" (csak az Azure-hitelesítésre vonatkozó egyedi engedélyek).
+A művelet végrehajtásához az Azure AD-felhasználónak "Igazolásolvasó" szerepkörre van szükség az igazolásszolgáltatón. Az olvasási engedély olyan szerepkörökkel is örökölhető, mint például az "Olvasó" (helyettesítő karakteres engedélyek) az előfizetés/erőforráscsoport szintjén.  
 
-Az alábbi PowerShell-parancsmagok egy igazolási szolgáltató (egy póló egyszerre) házirend-kezelését biztosítják.
+Az alábbi PowerShell-parancsmagok biztosítják az igazolásszolgáltató (egyszerre egy TEE) szabályzatkezelését.
 
-Get-AzAttestationPolicy a megadott TEE aktuális házirendjét adja vissza. A parancsmag a szabályzat szöveg-és JWT-formátumában jeleníti meg a szabályzatot.
+Get-AzAttestationPolicy a megadott TEE aktuális szabályzatát adja vissza. A parancsmag a szabályzat szövegében és JWT formátumában is megjeleníti a szabályzatot.
 
 ```powershell
 $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-A támogatott TEE-típusok a következők: "SgxEnclave", "OpenEnclave" és "VbsEnclave".
+A támogatott TEE-típusok: "SgxEnclave", "OpenEnclave" és "VbsEnclave".
 
-Set-AttestationPolicy új szabályzatot állít be a megadott PÓLÓhoz. A parancsmag a szabályzatot szöveges vagy JWT formátumban fogadja el, és a PolicyFormat paraméter vezérli. A "text" a PolicyFormat alapértelmezett értéke. 
+Set-AttestationPolicy új szabályzatot állít be a megadott TEE-hez. A parancsmag szöveges vagy JWT formátumú házirendet fogad el, és a PolicyFormat paraméterrel vezérelhető. A PolicyFormat alapértelmezett értéke a "Text". 
 
 ```powershell
 $policyFormat = "<policy format>"
@@ -196,13 +196,13 @@ $policy=Get-Content -path "C:\test\policy.txt" -Raw
 Set-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType -Policy $policy -PolicyFormat $policyFormat 
 ```
 
-Ha a PolicySignerCertificateFile egy igazolási szolgáltató létrehozásakor van megadva, a szabályzatok csak aláírt JWT formátumban konfigurálhatók. Az egyéb szabályzatok szövegben vagy aláíratlan JWT formátumban is konfigurálhatók.
+Ha a PolicySignerCertificateFile meg van állítva az igazolási szolgáltató létrehozása során, a szabályzatok csak aláírt JWT formátumban konfigurálhatóak. Az egyéb szabályzatok szövegben vagy aláíratlan JWT formátumban konfigurálhatóak.
 
-A JWT formátumú igazolási szabályzatnak tartalmaznia kell egy "AttestationPolicy" nevű jogcímet. Az aláírt szabályzat esetében a JWT a meglévő házirend-aláíró tanúsítványoknak megfelelő titkos kulccsal kell aláírni.
+A JWT formátumú igazolási szabályzatnak tartalmaznia kell egy "AttestationPolicy" nevű jogcímet. Az aláírt szabályzatok esetében a JWT-t a meglévő szabályzat-aláíró tanúsítványok bármelyikének megfelelő titkos kulccsal kell aláírni.
 
-A házirend-minták esetében tekintse meg az [igazolási szabályzat példáit](policy-examples.md).
+Szabályzatmintákat az igazolási szabályzat [példáiban talál.](policy-examples.md)
 
-Reset-AzAttestationPolicy alaphelyzetbe állítja a szabályzatot a megadott TEE alapértelmezett értékére.
+Reset-AzAttestationPolicy visszaállítja a szabályzatot az alapértelmezettre a megadott TEE-hez.
 
 ```powershell
 Reset-AzAttestationPolicy -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
@@ -210,7 +210,7 @@ Reset-AzAttestationPolicy -Name $attestationProvider -ResourceGroupName $attesta
 
 ## <a name="policy-signer-certificates-management"></a>Házirend-aláíró tanúsítványok kezelése
 
-Az alábbi PowerShell-parancsmagok az igazolási szolgáltató házirend-aláíró tanúsítványainak kezelését biztosítják:
+Az alábbi PowerShell-parancsmagok az igazolási szolgáltató házirend-aláíró tanúsítványait biztosítják:
 
 ```powershell
 Get-AzAttestationPolicySigners -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
@@ -220,15 +220,15 @@ Add-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $att
 Remove-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Signer <signer>
 ```
 
-A házirend-aláíró tanúsítvány egy "Maa-policyCertificate" nevű aláírt JWT. A jogcím értéke egy olyan JWK, amely a hozzáadandó megbízható aláírási kulcsot tartalmazza. A JWT a meglévő házirend-aláíró tanúsítványoknak megfelelő titkos kulccsal kell aláírni.
+A szabályzat-aláíró tanúsítvány egy aláírt JWT, "maa-policyCertificate" nevű jogcímmal. A jogcím értéke egy JWK, amely tartalmazza a hozzáadható megbízható aláírókulcsot. A JWT-t a meglévő házirend-aláíró tanúsítványoknak megfelelő titkos kulccsal kell aláírni.
 
-Vegye figyelembe, hogy a házirend-aláíró tanúsítvány szemantikai manipulációjának a PowerShellen kívül kell történnie. A PowerShell-lel kapcsolatban ez egy egyszerű karakterlánc.
+Vegye figyelembe, hogy a szabályzat-aláíró tanúsítványának minden szemantikai manipulációját a PowerShellen kívül kell tenni. Ami a PowerShellt illeti, ez egy egyszerű sztring.
 
-A házirend-aláíró tanúsítvány mintája: [példák a házirend-aláíró tanúsítványára](policy-signer-examples.md).
+A szabályzat-aláíró tanúsítványmintát a szabályzat-aláíró tanúsítvány [példáiban talál.](policy-signer-examples.md)
 
-További információ a parancsmagokról és a hozzájuk tartozó paraméterekről: [Azure igazolási PowerShell-parancsmagok](/powershell/module/az.attestation/#attestation) 
+A parancsmagokkal és paramétereivel kapcsolatos további információkért lásd: Azure Attestation [PowerShell-parancsmagok](/powershell/module/az.attestation/#attestation) 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
-- [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](/samples/browse/?expanded=azure&terms=attestation)
+- [Igazolási szabályzat írása és aláírása](author-sign-policy.md)
+- [SGX-enklávé tanúsítsa kódminták használatával](/samples/browse/?expanded=azure&terms=attestation)

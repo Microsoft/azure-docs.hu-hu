@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: d3d2afa3b02d4ab4524d9b5c5d5f981cddebe1a9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673847"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512566"
 ---
-A Storage-fiók nyilvános végpontjának a szolgáltatási végpontokat használó meghatározott virtuális hálózatokra való hozzáférésének korlátozásához először össze kell gyűjtenie a Storage-fiók és a virtuális hálózat adatait. Töltse ki a,,,, `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` és `<subnet-name>` az adatokat az adatok gyűjtéséhez.
+Ahhoz, hogy a szolgáltatásvégpontokkal meghatározott virtuális hálózatokra korlátozzuk a tárfiók nyilvános végpontjának hozzáférését, először a tárfiókkal és a virtuális hálózattal kapcsolatos adatokat kell összegyűjtenünk. Az információk gyűjtéséhez töltse ki a `<storage-account-resource-group>` , , , és `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` `<subnet-name>` adatokat.
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group>"
@@ -44,7 +44,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Ahhoz, hogy az Azure hálózati háló a virtuális hálózatról érkező forgalmat a Storage-fiók nyilvános végpontjának beszerzéséhez engedélyezi, a virtuális hálózat alhálózatának elérhetőnek kell lennie a `Microsoft.Storage` szolgáltatás végpontjának. A következő CLI-parancsok hozzáadja a `Microsoft.Storage` szolgáltatás-végpontot az alhálózathoz, ha még nem létezik.
+Ahhoz, hogy az Azure hálózati hálója a virtuális hálózatról származó forgalmat elirányodja a tárfiók nyilvános végpontjára, a virtuális hálózat alhálózatán elérhetővé kell tenni a `Microsoft.Storage` szolgáltatásvégpontot. A következő CLI-parancsok hozzáadják a szolgáltatásvégpontot az alhálózathoz, ha az még `Microsoft.Storage` nincs ott.
 
 ```bash
 serviceEndpoints=$(az network vnet subnet show \
@@ -82,7 +82,7 @@ then
 fi
 ```
 
-A Storage-fiók felé irányuló forgalom korlátozásának utolsó lépése egy hálózati szabály létrehozása, és a Storage-fiók hálózati szabályának beállítása.
+A tárfiókra való forgalom korlátozásának utolsó lépése egy hálózati szabály létrehozása és hozzáadása a tárfiók hálózati szabálykészlethez.
 
 ```azurecli
 az storage account network-rule add \

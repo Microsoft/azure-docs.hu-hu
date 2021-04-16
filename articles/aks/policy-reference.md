@@ -1,21 +1,21 @@
 ---
-title: Az Azure Kubernetes Service beépített szabályzat-definíciói
-description: Az Azure Kubernetes szolgáltatás beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók a Azure Kubernetes Service
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Kubernetes Service. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6cfa9564c6fc863740a5ab93c53bf9278b9fb530
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 40c3d48e7f969eabc6b2ff81a149e0d93fe8e8c1
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090271"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500524"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy beépített definíciók a Azure Kubernetes Service
 
-Ez az oldal az Azure Kubernetes szolgáltatás beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Kubernetes Service e. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="initiatives"></a>Kezdeményezések
 
@@ -23,7 +23,7 @@ Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-defi
 
 ## <a name="policy-definitions"></a>Szabályzatdefiníciók
 
-### <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
+### <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 

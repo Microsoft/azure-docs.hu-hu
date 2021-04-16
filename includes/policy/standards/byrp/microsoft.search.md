@@ -43,7 +43,7 @@ További információ erről a megfelelőségi szabványról: [CIS Microsoft Azu
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
-Annak áttekintését, Azure Policy az összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el erre a megfelelőségi szabványra, tekintse meg a [Azure Policy compliance - HIPAA HITRUST 9.2 (A HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md)szabványnak megfelelő szabályozási megfelelőség) cikk nyújt áttekintést.
+Annak áttekintését, hogy az Azure Policy összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el erre a megfelelőségi szabványra, lásd: [Azure Policy regulatory compliance - HIPAA HITRUST 9.2 (A HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md)szabványnak megfelelő szabályozásnak való megfelelőség).
 További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
 |Tartomány |Vezérlőazonosító |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Szabályzat verziója<br /><sub>(GitHub)</sub>  |

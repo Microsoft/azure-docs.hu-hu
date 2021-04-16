@@ -1,118 +1,122 @@
 ---
-title: Azonosítók – űrlap felismerő
+title: IDs - Form Recognizer
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az Identity Documents-ből származó adatok kinyerésével kapcsolatos fogalmakat az űrlap-felismerő előre elkészített azonosítói API-val.
+description: Megismeri az identitásdokumentumok adatkinyerésével kapcsolatos fogalmakat Form Recognizer előre felépített azonosítók API-val.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 00e51d2c9515191b6d127355f49eeed3000a46ed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285356"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514713"
 ---
-# <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Űrlap-felismerő előre elkészített azonosító kártya (azonosító) modellje
+# <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer (ID) dokumentummodell létrehozása
 
-Az Azure-űrlap felismerője az előre elkészített azonosítók modelljével elemezheti és kinyerheti a kormányzati azonosítók (azonosítók) adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/overview-ocr.md) képességeket kombinálja az azonosító képességekkel a globális Passportok és az Egyesült államokbeli illesztőprogram-licencek (az összes 50-es állam és DC) legfontosabb adatainak kinyeréséhez. Az azonosítók API Kinyeri a legfontosabb információkat ezekből az azonosító dokumentumokból, például az utónévből, a vezetéknevből, a születési dátumból, a bizonylatszámből és egyebekből. Ez az API az űrlap felismerő v 2.1 előzetes verziójában érhető el felhőalapú szolgáltatásként és helyszíni tárolóként.
+Az Azure Form Recognizer az előre összeállított azonosítómodell használatával elemezheti és kinyerheti a kormányzati azonosítókból származó információkat. A hatékony optikai [karakterfelismerési (OCR)](../computer-vision/overview-ocr.md) képességeket és az azonosítófelismerési képességeket kombinálva kulcsfontosságú információkat képes kinyerni a Worldwide Passports és az Egyesült Államok driver's Licenses (mind az 50 állam és D.C.) licenceiből. Az Azonosítók API kinyeri a kulcsfontosságú információkat az identitásdokumentumból, például a vezetéknevet, a vezetéknevet, a születési dátumot, a dokumentum számát stb. Ez az API a Form Recognizer 2.1-es verzió előzetes kiadásában érhető el felhőszolgáltatásként és egy saját tárolóként.
 
-## <a name="what-does-the-id-service-do"></a>Mire szolgál az ID szolgáltatás? 
+## <a name="what-does-the-id-service-do"></a>Mire való az azonosítószolgáltatás?
 
-Az előre elkészített azonosítók szolgáltatás kibontja a globális Passportok és az Egyesült államokbeli illesztőprogram-licencek kulcsfontosságú értékeit, és egy szervezett, strukturált JSON-válaszban adja vissza őket. 
+Az előre összeállított IDs szolgáltatás kinyeri a fő értékeket a globális passports és az EGYESÜLT Államok Driver's Licenses szolgáltatásból, és egy szervezett, strukturált JSON-válaszban adja vissza őket.
 
-![Minta-illesztőprogram licence](./media/id-example-drivers-license.JPG)
+### <a name="drivers-license-example"></a>**Példa illesztői licencre**
+
+![Minta illesztőlicenc](./media/id-example-drivers-license.JPG)
+
+### <a name="passport-example"></a>**Passport-példa**
 
 ![Minta Passport](./media/id-example-passport-result.JPG)
 
 ### <a name="fields-extracted"></a>Kinyert mezők
 
-|Név| Típus | Leírás | Érték | 
+|Név| Típus | Leírás | Érték |
 |:-----|:----|:----|:----|
-|  Ország | ország | ISO 3166 szabványnak megfelelő országkód | USA | 
-|  DateOfBirth | dátum | DOB éééé-hh-nn formátumban | "1980-01-01" | 
-|  DateOfExpiration | dátum | Lejárati dátum éééé-hh-nn formátumban | "2019-05-05" |  
-|  DocumentNumber | sztring | A kapcsolódó Passport-szám, az illesztőprogram licencének száma stb. | "340020013" |  
-|  FirstName | sztring | A megadott név és a középső kezdőbetű kinyerve, ha van ilyen | Jennifer | 
-|  LastName | sztring | Kinyert vezetékneve | Brooks |   
-|  Állampolgárság | ország | ISO 3166 szabványnak megfelelő országkód | USA |
-|  szex | gender | A lehetséges kinyert értékek a következők: "M", "F" és "X" | F | 
-|  MachineReadableZone | object | Kinyert Passport-OCR, beleértve két 44 karakterből álló sort | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<<<<<<<<<<<<<<<<<<<<<<< 6 715816" |
-|  DocumentType | sztring | Bizonylattípus, például Passport, jogosítvány | Passport |  
-|  Cím | sztring | Kinyert címek (csak az illesztőprogram licence) | "123 UTCA, AHOL A VÁROSA WA 99999-1234"|
-|  Region | sztring | Kinyert régió, állam, tartomány stb. (csak az illesztőprogram licence) | Washington | 
+|  Ország | ország | Az ISO 3166 szabványnak megfelelő országkód | "USA" |
+|  DateOf (Dátum) | dátum | DOB YYYYY-MM-DD formátumban | "1980-01-01" |
+|  DateOfExpiration (Lejárat dátuma) | dátum | Lejárati dátum YYYY-MM-DD formátumban | "2019-05-05" |
+|  DocumentNumber (Dokumentumszám) | sztring | Kapcsolódó passport-szám, illesztőlicenc-szám stb. | "340020013" |
+|  FirstName | sztring | Kinyert given name and middle initial if applicable (Kinyert megadott név és a középső kezdeti név, ha van) | "LOVE" |
+|  LastName | sztring | Kinyert vezetéknév | "MERT" |
+|  Állampolgárság | ország | Az ISO 3166 szabványnak megfelelő országkód | "USA" |
+|  szex | gender | Lehetséges kinyert értékek: "M", "F" és "X" | "F" |
+|  MachineReadableZone | object | Kinyert Passport MRZ, két sornyi, 44 karakterből áll | "P<USA<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<<<<<<<<<<<<<<<<<<<<<<< 6 715816" |
+|  DocumentType (Dokumentumtípus) | sztring | Dokumentumtípus, például Passport, Driver's License | "passport" |
+|  Cím | sztring | Kibontott cím (csak illesztőprogram-licenc esetén) | "123 STREET ADDRESS YOUR CITY WA 99999-1234"|
+|  Region | sztring | Kibontott régió, állam, tartomány stb. (csak sofőrlicenc) | "Washington" |
 
 ### <a name="additional-features"></a>További funkciók
 
-Az azonosítók API a következő információkat is megadja:
+Az IDs API a következő információkat is visszaadja:
 
-* Mező megbízhatósági szintje (minden mező a hozzá tartozó megbízhatósági értéket adja vissza)
-* OCR nyers szöveg (OCR – kinyert szöveges kimenet a teljes bevételezéshez)
-* Az USA-beli illesztőprogram-licencek egyes kinyert mezőinek határoló mezője
-* A géppel olvasható zóna (OCR) korlátja a Passportokon
+* Mező megbízhatósági szintje (minden mező egy társított megbízhatósági értéket ad vissza)
+* OCR nyers szöveg (OCR által kinyert szöveges kimenet a teljes nyugtához)
+* Az Usa-beli illesztőprogramok licenceiben kinyert mezők határolókerete
+* Határolókeret a géppel olvasható zónához (MRZ) a Passportson
 
   > [!NOTE]
-  > Az előre elkészített azonosítók nem azonosítják az azonosító hitelességét
+  > Az előre felépített azonosítók nem észlelik az azonosító hitelességét
   >
-  > Az űrlap-felismerő előre elkészített azonosítói kinyerik az azonosító adatokból származó legfontosabb adatokból. Azonban nem ismeri fel az eredeti személyazonossági dokumentum érvényességét vagy hitelességét. 
+  > Form Recognizer előre felépített azonosítók kulcsadatokatnyernek ki az azonosítóadatokból. Nem észleli azonban az eredeti személyazonossági dokumentum érvényességét vagy hitelességét.
 
 ## <a name="try-it-out"></a>Próbálja ki
 
-Az űrlap-felismerő azonosítók szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
+A felhasználói Form Recognizer az online felhasználói felületi eszközben próbálhat ki:
 
 > [!div class="nextstepaction"]
-> [Előre elkészített modellek kipróbálása](https://fott-preview.azurewebsites.net/)
+> [Előre összeállított modellek kipróbálása](https://fott-preview.azurewebsites.net/)
 
 ## <a name="input-requirements"></a>Bemeneti követelmények
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>Támogatott azonosító típusok  
+## <a name="supported-id-types"></a>Támogatott azonosítótípusok
 
-* **Előre elkészített azonosítók v 2.1 – előzetes verzió. 3** Kinyeri a legfontosabb értékeket a globális Passportok és az Egyesült államokbeli illesztőprogramok licencei alapján. 
+* **Előre felépített, 2.1-preview.3-as verziójú ID-k** Kinyeri a fő értékeket a globális passportok és az Egyesült Államok illesztőprogram-licenceiből.
 
   > [!NOTE]
-  > AZONOSÍTÓ típusa támogatás 
+  > Azonosítótípus támogatása
   >
-  > A jelenleg támogatott azonosító típusok a következők: Worldwide Passport és US Driver 's licenses. Aktívan arra törekszünk, hogy a világ más személyazonossági dokumentumaihoz is kiterjesszék az AZONOSÍTÓnk támogatását.
+  > A jelenleg támogatott azonosítótípusok közé tartozik a globális passport és az Egyesült Államok illesztőprogram-licencei. Aktívan szeretnénk bővíteni az azonosítók támogatását a világ más identitásdokumentumaira.
 
-## <a name="post-analyze-id-document"></a>Az elemzési azonosító dokumentum közzététele
+## <a name="post-analyze-id-document"></a>POST analyze id dokumentum
 
-Az elemzési [azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) művelet egy, az azonosítóhoz tartozó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [Azonosító elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) művelet bemenetként egy azonosító képét vagy PDF-fájlját veszi fel, és kinyeri a fontos értékeket. A hívás egy nevű válaszfejléc-mezőt ad `Operation-Location` vissza. Az érték egy URL-cím, amely tartalmazza a következő lépésben használni kívánt `Operation-Location` eredményazonosítót.
 
-|Válasz fejléce| Eredmény URL-címe |
+|Válaszfejléc| Eredmény URL-címe |
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>Elemzési azonosító dokumentum eredményének beolvasása
+## <a name="get-analyze-id-document-result"></a>GET Analyze Id dokumentum eredménye
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-A második lépés a [**Get elemezze IdDocument eredményének**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult) meghívása. Ez a művelet az elemzési azonosító művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
+A második lépés az Analyze [**idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult) művelet hívása. Ez a művelet bemenete az Elemzésazonosító művelet által létrehozott eredményazonosító. Egy JSON-választ ad vissza, amely egy **állapotmezőt** tartalmaz az alábbi lehetséges értékekkel. Ezt a műveletet iteratívan kell meghívni, amíg a sikeres értékkel nem **tér** vissza. A másodpercenkénti kérelmek (RPS) sebességének túllépése érdekében használjon 3–5 másodperces időközt.
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|
-|status | sztring | notStarted: az elemzési művelet nem indult el. |
-| |  | fut: az elemzési művelet folyamatban van. |
-| |  | sikertelen: az elemzési művelet meghiúsult. |
-| |  | sikeres: az elemzési művelet sikeresen befejeződött. |
+|status | sztring | notStarted: Az elemzési művelet még nem indult el. |
+| |  | running: Az elemzési művelet folyamatban van. |
+| |  | failed: Az elemzési művelet sikertelen volt. |
+| |  | succeeded: Az elemzési művelet sikeres volt. |
 
-Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a bevételezési és a szöveges felismerési eredményeket. Az azonosítók eredményét névvel ellátott mezőértékeket tartalmazó szótárként rendezi a rendszer, ahol minden érték tartalmazza a kinyert szöveget, a normalizált értéket, a határoló mezőt, a megbízhatóságot és a megfelelő szavakat. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
+Ha az **állapot mezőben** a **sikeres érték szerepel,** a JSON-válasz tartalmazza a nyugták megértését és a szövegfelismerés eredményeit. Az adatokat a rendszer elnevezett mezőértékek szótáraként rendezi, ahol minden érték tartalmazza a kinyert szöveget, a normalizált értéket, a határolókeretet, a megbízhatóságot és a megfelelő szóelemeket. A szövegfelismerés eredménye sorok és szavak hierarchiájaként van rendezve, szöveggel, határolókeretekkel és megbízhatósági információkkal.
 
-![Példa a Bevételezés eredményeire](./media/id-example-passport-result.JPG)
+![mintás nyugtaeredmények](./media/id-example-passport-result.JPG)
 
-### <a name="sample-json-output"></a>Példa JSON-kimenetre
+### <a name="sample-json-output"></a>JSON-kimenetminta
 
-Tekintse meg a sikeres JSON-válasz következő példáját: a `readResults` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `documentResults` csomópont tartalmazza a modell által felderített azonosító értékeket. Ez a csomópont olyan hasznos kulcs/érték párokat is talál, mint az utónév, a vezetéknév, a bizonylatszám és sok más.
+Tekintse meg a sikeres JSON-válasz alábbi példáját: A csomópont tartalmazza az `readResults` összes felismert szöveget. A szöveg lap, sor, majd egyéni szavak szerint van rendezve. A `documentResults` csomópont tartalmazza a modell által felderített azonosítóértékeket. Ezen a csomóponton olyan hasznos kulcs/érték párokat is talál, mint például az első név, a vezetéknév, a dokumentum száma stb.
 
 ```json
-{ 
+{
    "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
@@ -157,7 +161,7 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a `readResults` cso
           ...
       }
     ],
-    
+
      "documentResults": [
       {
         "docType": "prebuilt:idDocument:passport",
@@ -243,13 +247,12 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a `readResults` cso
 }
 ```
 
-
 ## <a name="next-steps"></a>Következő lépések
 
-- Próbálja ki a saját azonosítóit és mintáit az [űrlap-felismerő minta felhasználói felületén](https://fott-preview.azurewebsites.net/).
-- Egy [űrlap-felismerő](quickstarts/client-library.md) rövid útmutatójának elvégzésével megkezdheti az azonosító-feldolgozó alkalmazás írását az űrlap-felismerővel a választott fejlesztői nyelven.
+* Próbálja ki a saját felhasználói felületének Form Recognizer [mintáit és mintáit.](https://fott-preview.azurewebsites.net/)
+* Rövid útmutató [Form Recognizer az](quickstarts/client-library.md) azonosítófeldolgozó alkalmazások írásának első Form Recognizer az Ön által választott fejlesztői nyelven.
 
 ## <a name="see-also"></a>Lásd még
 
 * [**Mi a Form Recognizer?**](./overview.md)
-* [**REST API dokumentációs dokumentumok**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+* [**REST API referencia-dokumentumok**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

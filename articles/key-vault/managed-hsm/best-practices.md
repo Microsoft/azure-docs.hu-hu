@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások Azure Key Vault felügyelt HSM használatával
-description: Ez a dokumentum a Key Vault használatának ajánlott eljárásait ismerteti.
+title: A Managed HSM Azure Key Vault eljárások
+description: Ez a dokumentum a Key Vault
 services: key-vault
 author: amitbapat
 tags: azure-key-vault
@@ -9,43 +9,45 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90995360"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482517"
 ---
-# <a name="best-practices-when-using-managed-hsm"></a>Ajánlott eljárások a felügyelt HSM használatakor
+# <a name="best-practices-when-using-managed-hsm"></a>Ajánlott eljárások a Managed HSM használatával kapcsolatban
 
-## <a name="control-access-to-your-managed-hsm"></a>A felügyelt HSM hozzáférésének szabályozása
+## <a name="control-access-to-your-managed-hsm"></a>A felügyelt HSM-hez való hozzáférés szabályozása
 
-A felügyelt HSM egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsoknak. Mivel ezek a kulcsok bizalmasak és üzleti szempontból kritikus fontosságúak, ügyeljen arra, hogy biztonságos hozzáférést biztosítson a felügyelt HSM úgy, hogy csak a jogosult alkalmazásokat és felhasználókat engedélyezi. Ez a [cikk](access-control.md) áttekintést nyújt a hozzáférési modellről. A hitelesítéssel és engedélyezéssel, valamint a szerepköralapú hozzáférés-vezérléssel foglalkozik.
-- Hozzon létre egy [Azure Active Directory biztonsági csoportot](../../active-directory/fundamentals/active-directory-manage-groups.md) a HSM-rendszergazdák számára (a rendszergazdai szerepkör egyéni felhasználókhoz rendelése helyett). Ez megakadályozza az "adminisztrációs zárolást", ha az egyes fiókok törlése történik.
-- A felügyeleti csoportok, előfizetések, erőforráscsoportok és felügyelt HSM hozzáférésének zárolása az Azure RBAC segítségével szabályozhatja a felügyeleti csoportok, előfizetések és erőforráscsoportok hozzáférését.
-- Kulcsos szerepkör-hozzárendelések létrehozása [felügyelt HSM helyi RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac) használatával
-- A minimális jogosultság-hozzáférési tag használata szerepkörök hozzárendeléséhez
+A Managed HSM egy olyan felhőszolgáltatás, amely védi a titkosítási kulcsokat. Mivel ezek a kulcsok bizalmasak és üzleti szempontból kritikus fontosságúak, ügyeljen arra, hogy biztonságossá tegye a felügyelt HSM-hez való hozzáférést úgy, hogy csak a jogosult alkalmazások és felhasználók számára engedélyezi a hozzáférést. Ez [a cikk](access-control.md) áttekintést nyújt a hozzáférési modellről. Ismerteti a hitelesítést és engedélyezést, valamint a szerepköralapú hozzáférés-vezérlést.
+- Hozzon [létre Azure Active Directory biztonsági](../../active-directory/fundamentals/active-directory-manage-groups.md) csoportot a HSM-rendszergazdák számára (ahelyett, hogy rendszergazdai szerepkört rendelné egyénekhez). Ez megakadályozza a "felügyelet zárolását" az egyes fiókok törlése esetén.
+- A felügyeleti csoportokhoz, előfizetésekhez, erőforráscsoportokhoz és felügyelt HSM-hez való hozzáférés zárolása – Az Azure RBAC használatával szabályozhatja a felügyeleti csoportokhoz, előfizetésekhez és erőforráscsoportokhoz való hozzáférést
+- Hozzon létre kulcsonkénti szerepkör-hozzárendeléseket [a Managed HSM helyi RBAC használatával.](access-control.md#data-plane-and-managed-hsm-local-rbac)
+- A feladatok elkülönítésének fenntartása érdekében ne rendeljen több szerepkört ugyanazokhoz a rendszerbiztonsági csoportokhoz. 
+- A szerepkörök hozzárendelése a legkisebb jogosultsági szintű jogosultsággal rendelkező rendszerbiztonsági tag használatával.
+- Hozzon létre egyéni szerepkör-definíciót pontos engedélyekkel.
 
-## <a name="choose-regions-that-support-availability-zones"></a>Válassza ki a rendelkezésre állási zónákat támogató régiókat
+## <a name="choose-regions-that-support-availability-zones"></a>Rendelkezésre állási zónákat támogató régiók kiválasztása
 
-- A legjobb magas rendelkezésre állás és a zóna rugalmasságának biztosítása érdekében válassza ki az Azure-régiókat, ahol a [Availability Zones](../../availability-zones/az-overview.md) támogatottak. Ezek a régiók a Azure Portal javasolt régióiként jelennek meg.
+- A legjobb magas rendelkezésre állás és zónatűrés biztosítása [](../../availability-zones/az-overview.md) érdekében válassza ki az Azure-régiókat, Availability Zones támogatottak. Ezek a régiók "Ajánlott régiók"ként jelennek meg a Azure Portal.
 
 ## <a name="backup"></a>Backup
 
-- Győződjön meg arról, hogy rendszeresen készít biztonsági mentést a HSM-ről. A biztonsági mentések a HSM szintjén és a megadott kulcsok esetében is megoldhatók. 
+- Győződjön meg arról, hogy rendszeres biztonsági másolatokat készít a HSM-ről. A biztonsági mentések a HSM szintjén és adott kulcsoknál is készítve vannak. 
 
 ## <a name="turn-on-logging"></a>Naplózás bekapcsolása
 
-- [Kapcsolja be a naplózást](logging.md) a HSM-hez. Riasztásokat is beállíthat.
+- [Kapcsolja be a](logging.md) naplózást a HSM-hez. Riasztásokat is beállít.
 
-## <a name="turn-on-recovery-options"></a>Helyreállítási beállítások bekapcsolása
+## <a name="turn-on-recovery-options"></a>Helyreállítási beállítások bekapcsolás
 
-- Alapértelmezés szerint a [Soft delete](../general/soft-delete-overview.md) be van kapcsolva.
-- Ha azt szeretné, hogy a rendszer csak a Soft delete bekapcsolását követően engedélyezze a védelem kitisztítását,
+- [A Soft Delete](../general/soft-delete-overview.md) alapértelmezés szerint be van kapcsolva.
+- Kapcsolja be a végleges törlés elleni védelmet, ha a HSM kényszerített törlését még akkor is meg szeretné őrizni, ha a soft delete be van kapcsolva.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A teljes biztonsági mentéssel [és](backup-restore.md) visszaállítással kapcsolatos információkért tekintse meg a HSM biztonsági mentéséről és visszaállításáról szóló információkat.
-- Lásd: [felügyelt HSM naplózása](logging.md) , amelyből megtudhatja, hogyan konfigurálhatja a naplózást a Azure monitor használatával
-- Lásd: [felügyelt HSM-kulcsok kezelése](key-management.md) a kulcskezelő szolgáltatáshoz.
-- A szerepkör-hozzárendelések kezeléséhez lásd: [felügyelt HSM szerepkör-kezelés](role-management.md) .
+- A teljes HSM biztonsági [mentéssel/visszaállítással](backup-restore.md) kapcsolatos információkért lásd: Teljes biztonsági mentés/visszaállítás.
+- A [managed HSM-naplózással kapcsolatos](logging.md) további Azure Monitor a naplózás konfiguráláskor
+- A kulcskezeléshez lásd: [Felügyelt HSM-kulcsok](key-management.md) kezelése.
+- Lásd: Managed HSM role management for managing role assignments (Felügyelt [HSM szerepkörkezelés](role-management.md) a szerepkör-hozzárendelések kezeléséhez).

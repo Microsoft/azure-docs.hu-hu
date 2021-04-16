@@ -1,71 +1,71 @@
 ---
 title: Oktatóanyag – API-k importálása és kezelése – Azure API Management és Visual Studio Code | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure API Management bővítmény a Visual Studio Code-hoz az API-k importálásához, teszteléséhez és kezeléséhez.
+description: Ebből az oktatóanyagból megtudhatja, hogyan importálhat, tesztelhet és kezelhet API-kat az Azure API Management Code-hoz Visual Studio Code-hoz.
 ms.service: api-management
 author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649546"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482330"
 ---
-# <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Oktatóanyag: az API-k importálásához és kezeléséhez használja a Visual Studio Code API Management bővítményét
+# <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Oktatóanyag: API-API Management importálása és kezelése Visual Studio Code-hoz használható Visual Studio bővítmény
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Visual Studio Code-hoz készült API Management-bővítményt a API Management gyakori műveleteihez. A jól ismert Visual Studio Code-környezet használatával API-kat importálhat, frissíthet, tesztelheti és kezelheti.
+Ez az oktatóanyag bemutatja, hogyan használhatja a API Management Code-hoz Visual Studio bővítményt a API Management. A kódkörnyezet ismerős Visual Studio API-kat importálhat, frissíthet, tesztelhet és kezelhet.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * API importálása API Managementba
+> * API importálása API Management
 > * Az API szerkesztése
-> * API Management házirendek alkalmazása
+> * Alkalmazás API Management szabályzatok
 > * Az API tesztelése
 
 
-:::image type="content" source="media/visual-studio-code-tutorial/tutorial-api-result.png" alt-text="API API Management-bővítményben":::
+:::image type="content" source="media/visual-studio-code-tutorial/tutorial-api-result.png" alt-text="API a API Management bővítményben":::
 
-A további API Management funkciók bevezetését a [Azure Portal](import-and-publish.md)használatával foglalkozó API Management oktatóanyagokban találhatja meg.
+A további API Management a API Management oktatóanyagaiból [Azure Portal be.](import-and-publish.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az [Azure API Management terminológiájának](api-management-terminology.md) ismertetése
-- Győződjön meg arról, hogy telepítette a [Visual Studio Code](https://code.visualstudio.com/) -ot és a legújabb [Azure API Management-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) -hoz
+- Az [Azure API Management terminológiája](api-management-terminology.md)
+- Győződjön meg arról, [hogy telepítette Visual Studio](https://code.visualstudio.com/) Code-et és a legújabb [Azure API Management-bővítményt a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 - [API Management-példány létrehozása](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>API importálása
 
-Az alábbi példa JSON formátumú OpenAPI-specifikációt importál API Managementba. A Microsoft biztosítja az ebben a példában használt háttér-API-t, és az Azure-on üzemelteti azt `https://conferenceapi.azurewebsites.net?format=json` .
+Az alábbi példa JSON formátumban importál egy OpenAPI-specifikációt a API Management. A Microsoft biztosítja az ebben a példában használt háttér-API-t, és az Azure-ban a következő oldalon szolgáltatja: `https://conferenceapi.azurewebsites.net?format=json` .
 
-1. A Visual Studio Code-ban válassza ki az Azure ikont a tevékenység sávjából.
-1. Az Explorer ablaktáblán bontsa ki a létrehozott API Management példányt.
-1. Kattintson a jobb gombbal az **API**-k elemre, majd válassza **az Importálás a OpenAPI hivatkozásból** lehetőséget. 
-1. Ha a rendszer kéri, adja meg a következő értékeket:
-    1. **OpenAPI-hivatkozás** JSON formátumú tartalomhoz. Ehhez a példához: *https://conferenceapi.azurewebsites.net?format=json* .
-    Ez az URL-cím az a szolgáltatás, amely megvalósítja a példa API-t. API Management továbbítja a kéréseket erre a címnek.
-    1. Egy **API-név**, például a *bemutató-Conference-API*, amely egyedi a API Management-példányban. Ez a név csak betűket, számokat és kötőjeleket tartalmazhat. Az első és az utolsó karakternek alfanumerikusnak kell lennie. Ez a név az API meghívásához használt elérési úton található.
+1. A Visual Studio kódban válassza az Azure ikont a tevékenységsávon.
+1. Az Explorer panelen bontsa ki a API Management létrehozott új példányt.
+1. Kattintson a jobb gombbal az **API-k elemre,** és válassza az **Importálás OpenAPI-hivatkozásból lehetőséget.** 
+1. Amikor a rendszer kéri, adja meg a következő értékeket:
+    1. JSON formátumú tartalomra mutató **OpenAPI-hivatkozás.** Ebben a példában: *https://conferenceapi.azurewebsites.net?format=json* .
+    Ez az URL-cím a példa API-t megvalósító szolgáltatás. API Management a kérelmeket erre a címre továbbítja.
+    1. Egy **API-név**, például *demo-conference-api,* amely egyedi a API Management példányban. Ez a név csak betűket, számokat és kötőjeleket tartalmazhat. Az első és az utolsó karakternek alfanumerikusnak kell lennie. Ez a név az API hívásához használt elérési útban használatos.
 
-Az API sikeres importálása után megjelenik az Explorer ablaktáblán, és az elérhető API-műveletek az **Operations** csomópont alatt jelennek meg.
+Az API sikeres importálása után az megjelenik az Explorer panelen, és az elérhető API-műveletek a Műveletek csomópont alatt **jelennek** meg.
 
-:::image type="content" source="media/visual-studio-code-tutorial/tutorial-api-operations.png" alt-text="Importált API az Explorer ablaktáblán":::
+:::image type="content" source="media/visual-studio-code-tutorial/tutorial-api-operations.png" alt-text="Importált API az Explorer panelen":::
 
 ## <a name="edit-the-api"></a>Az API szerkesztése
 
-Az API-t szerkesztheti a Visual Studio Code-ban. Szerkessze például az API Resource Manager JSON-leírását a szerkesztő ablakban az API eléréséhez használt **http** -protokoll eltávolításához. Ezután válassza a **fájl**  >  **Mentés** lehetőséget.
+Az API-t a Kód Visual Studio szerkesztheti. Például a szerkesztőablakban szerkessze Resource Manager API JSON-leírását, hogy eltávolítsa az API eléréséhez használt HTTP-protokollt.  Ezután válassza a **Fájl**  >  **mentése lehetőséget.**
 
-:::image type="content" source="media/visual-studio-code-tutorial/import-demo-api.png" alt-text="JSON-Leírás szerkesztése":::
+:::image type="content" source="media/visual-studio-code-tutorial/import-demo-api.png" alt-text="JSON-leírás szerkesztése":::
 
-A OpenAPI formátumának szerkesztéséhez kattintson a jobb gombbal az API nevére az Explorer ablaktáblán, és válassza a **OpenAPI szerkesztése** lehetőséget. Végezze el a módosításokat, majd válassza a **fájl**  >  **Mentés** lehetőséget.
+Az OpenAPI formátum szerkesztéséhez kattintson a jobb gombbal az API nevére az Explorer panelen, és válassza az **OpenAPI szerkesztése lehetőséget.** Mentse a módosításokat, majd válassza a **Fájl mentése**  >  **lehetőséget.**
 
-## <a name="apply-policies-to-the-api"></a>Házirendek alkalmazása az API-ra 
+## <a name="apply-policies-to-the-api"></a>Szabályzatok alkalmazása az API-ban 
 
-API Management az API-khoz konfigurálható [házirendeket](api-management-policies.md) biztosít. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A szabályzatok globálisak lehetnek, amelyek a API Management-példány összes API-ra érvényesek, vagy hatókörük egy adott API-vagy API-műveletre is vonatkozhat.
+API Management [api-khoz](api-management-policies.md) konfigurálható szabályzatokat biztosít. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A szabályzatok globálisak is, amelyek a API Management-példányban szereplő összes API-ra vonatkoznak, vagy egy adott API- vagy API-művelet hatókörére is vonatkozhatnak.
 
-Ez a szakasz bemutatja, hogyan alkalmazhat néhány gyakori kimenő házirendet az API-ra, amely átalakítja az API-választ. Az ebben a példában szereplő szabályzatok megváltoztatja a válasz fejléceit, és elrejti az eredeti háttérbeli URL-címeket, amelyek megjelennek a válasz törzsében.
+Ez a szakasz bemutatja, hogyan alkalmazhat néhány gyakori kimenő szabályzatot az API-válasz átalakítására. A példában található szabályzatok módosítják a válaszfejléceket, és elrejtik a válasz törzsében megjelenő eredeti háttér-URL-címeket.
 
-1. Az Explorer ablaktáblán válassza a **házirend** elemet az importált *bemutató-konferencia-API* alatt. A házirend-fájl a szerkesztő ablakban nyílik meg. Ez a fájl az API összes műveletére vonatkozó házirendeket konfigurál. 
+1. Az Explorer panelen az **importált** *demo-conference-api* alatt válassza a Szabályzat lehetőséget. A szabályzatfájl megnyílik a szerkesztőablakban. Ez a fájl az API összes műveletére konfigurál szabályzatokat. 
 
 1. Frissítse a fájlt a következő tartalommal a `<outbound>` elemben:
     ```html
@@ -81,66 +81,66 @@ Ez a szakasz bemutatja, hogyan alkalmazhat néhány gyakori kimenő házirendet 
     [...]
     ```
 
-    * Az első `set-header` házirend egy egyéni válasz fejlécét adja meg bemutató célra.
-    * A második `set-header` szabályzat törli az **X-alapú-by** fejlécet, ha létezik. Ez a fejléc felfedi az API-háttérben használt alkalmazás-keretrendszert, a közzétevők pedig gyakran eltávolítják azt.
-    * A `redirect-content-urls` házirend a válasz törzsében lévő, a API Management átjárón keresztül az egyenértékű hivatkozásokra mutató hivatkozásokat.
+    * Az első `set-header` szabályzat egy egyéni válaszfejlécet ad hozzá bemutatási célokra.
+    * A második `set-header` szabályzat törli az **X-Powered-By fejlécet,** ha az létezik. Ez a fejléc felfedheti az API-háttéralkalmazásban használt alkalmazás-keretrendszert, és a közzétevők gyakran eltávolítják.
+    * A szabályzat újraírja (maszkok) a hivatkozásokat a válasz törzsében, hogy az átjárón keresztül a megfelelő `redirect-content-urls` hivatkozásokra API Management mutasson.
     
-1. Mentse a fájlt. Ha a rendszer kéri, válassza a **feltöltés** lehetőséget a fájl felhőbe való feltöltéséhez.
+1. Mentse a fájlt. Ha a rendszer kéri, válassza a Feltöltés **lehetőséget** a fájl felhőbe való feltöltéshez.
 
 ## <a name="test-the-api"></a>Az API tesztelése
 
-### <a name="get-the-subscription-key"></a>Az előfizetési kulcs beszerzése
+### <a name="get-the-subscription-key"></a>Az előfizetői kulcs lekért
 
-Az importált API és az alkalmazott szabályzatok teszteléséhez szüksége lesz egy előfizetési kulcsra a API Management-példányhoz.
+Az importált API és az alkalmazott szabályzatok teszteléséhez szüksége lesz egy előfizetési kulcsra a API Management példányhoz.
 
-1. Az Explorer ablaktáblán kattintson a jobb gombbal a API Management példányának nevére.
-1. Válassza az **előfizetési kulcs másolása** lehetőséget.
+1. Az Explorer panelen kattintson a jobb gombbal a API Management nevére.
+1. Válassza az **Előfizetési kulcs másolása lehetőséget.**
 
-    :::image type="content" source="media/visual-studio-code-tutorial/copy-subscription-key.png" alt-text="Előfizetés kulcsának másolása":::
+    :::image type="content" source="media/visual-studio-code-tutorial/copy-subscription-key.png" alt-text="Előfizetői kulcs másolása":::
 
 ### <a name="test-an-api-operation"></a>API-művelet tesztelése
 
-1. Az Explorer ablaktáblán bontsa ki az importált *demo-Conference-API* alatt lévő **Operations** csomópontot.
-1. Válasszon egy műveletet, például *GetSpeakers*.
-1. A szerkesztő ablakban a **OCP-APIM-előfizetés-Key** elem mellett cserélje le `{{SubscriptionKey}}` a elemet a másolt előfizetési kulcsra.
+1. Az Explorer panelen **bontsa** ki a Műveletek csomópontot az importált *demo-conference-api* alatt.
+1. Válasszon ki egy műveletet, például a *GetSpeakers* műveletet, majd kattintson a jobb gombbal a műveletre, és válassza a **Művelet tesztelése lehetőséget.**
+1. A szerkesztőablakban, az **Ocp-Apim-Subscription-Key** mellett cserélje le a helyére a `{{SubscriptionKey}}` kimásott előfizetői kulcsot.
 1. Válassza a **Kérés elküldése** elemet. 
 
-:::image type="content" source="media/visual-studio-code-tutorial/test-api.png" alt-text="API-kérelem küldése a Visual Studio Code-ból":::
+:::image type="content" source="media/visual-studio-code-tutorial/test-api.png" alt-text="API-kérés küldése a Visual Studio Code-ból":::
 
-Ha a kérelem sikeres, a háttérrendszer **200 OK** és néhány adattal válaszol.
+Ha a kérés sikeres, a háttér a **200 OK** és néhány adat válaszával válaszol.
 
 :::image type="content" source="media/visual-studio-code-tutorial/test-api-policies.png" alt-text="API-tesztelési művelet":::
 
-Figyelje meg a válaszban a következő adatokat:
-* A rendszer hozzáadja az **Egyéni** fejlécet a válaszhoz.
-* Az **X-alapú-by** fejléc nem jelenik meg a válaszban.
-* Az API-háttér URL-címei átirányítva lesznek a API Management átjáróra, ebben az esetben `https://apim-hello-world.azure-api.net/demo-conference-api` .
+Figyelje meg a válaszban a következő részleteket:
+* A **rendszer hozzáadja** az Egyéni fejlécet a válaszhoz.
+* Az **X-Powered-By fejléc** nem jelenik meg a válaszban.
+* Az API-háttérkiszolgáló URL-címeit a rendszer átirányítja API Management átjáróra, ebben az esetben a következőre: `https://apim-hello-world.azure-api.net/demo-conference-api` .
 
-### <a name="trace-the-api-operation"></a>Az API-művelet nyomon követése
+### <a name="trace-the-api-operation"></a>Az API-művelet nyomkövetése
 
-Az API-művelet hibakereséséhez segítséget nyújtó részletes nyomkövetési információkat a **OCP-APIM-Trace-Location** mellett megjelenő hivatkozásra kattintva tekintheti meg. 
+Az API-művelet hibakeresését segítő részletes nyomkövetési információkért válassza az **Ocp-APIM-Trace-Location** melletti hivatkozást. 
 
-Az adott helyen található JSON-fájl bejövő, háttérbeli és kimenő nyomkövetési adatokat tartalmaz, így meghatározhatja, hogy a kérést követően milyen problémák történnek.
+Az ezen a helyen található JSON-fájl bejövő, háttér- és kimenő nyomkövetési adatokat tartalmaz, így meghatározhatja, hol fordulnak elő problémák a kérés után.
 
 > [!TIP]
-> Az API-műveletek tesztelésekor a API Management bővítmény lehetővé teszi a választható [szabályzatok hibakeresését](api-management-debug-policies.md) (a fejlesztői szolgáltatási szinten érhető el).
+> Az API-műveletek tesztelőjekor a API Management [](api-management-debug-policies.md) bővítmény lehetővé teszi a választható szabályzat-hibakeresést (amely a Fejlesztői szolgáltatási szinten érhető el).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, távolítsa el a API Management példányt a [API Management szolgáltatás](get-started-create-service-instance.md#clean-up-resources) és az erőforráscsoport törléséhez kattintson a jobb gombbal, és válassza a **Megnyitás a portálon** lehetőséget.
+Ha már nincs rá szükség, távolítsa el a  API Management-példányt. Kattintson a jobb gombbal, és válassza a Megnyitás a portálon gombra a API Management [szolgáltatás](get-started-create-service-instance.md#clean-up-resources) és annak erőforráscsoportjának törléséhez.
 
-Másik lehetőségként kiválaszthatja a **delete API Management** elemet a API Management példány törléséhez (ez a művelet nem törli az erőforráscsoportot).
+Másik lehetőségként a Törlés lehetőséget **API Management** hogy csak a API Management-példányt törölje (ez a művelet nem törli annak erőforráscsoportját).
 
-:::image type="content" source="media/visual-studio-code-tutorial/vscode-apim-delete.png" alt-text="API Management példány törlése a VS Code-ból":::
+:::image type="content" source="media/visual-studio-code-tutorial/vscode-apim-delete.png" alt-text="Új API Management törlése a VS Code-ból":::
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag a Visual Studio Code-hoz készült API Management bővítmény számos funkcióját ismerteti, amelyeket az API-k importálására és kezelésére használhat. Megtanulta végrehajtani az alábbi műveleteket:
+Ez az oktatóanyag a API Management Code-hoz Visual Studio funkcióit mutatta be, amelyek API-k importálására és kezelésére használhatók. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * API importálása API Managementba
+> * API importálása API Management
 > * Az API szerkesztése
-> * API Management házirendek alkalmazása
+> * Alkalmazás API Management szabályzatok
 > * Az API tesztelése
 
-A API Management bővítmény további funkciókat biztosít az API-kkal való együttműködéshez. Például [hibakeresési házirendek](api-management-debug-policies.md) (a fejlesztői szolgáltatási szinten érhetők el), illetve [elnevezett értékek](api-management-howto-properties.md)létrehozása és kezelése.
+A API Management bővítmény további funkciókat biztosít az API-okkal való munkához. Például [hibakeresési (a](api-management-debug-policies.md) Fejlesztői szolgáltatási szinten elérhető) vagy elnevezett értékek létrehozása és [kezelése.](api-management-howto-properties.md)

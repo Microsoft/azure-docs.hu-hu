@@ -1,55 +1,54 @@
 ---
-title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár a Pythonhoz'
-description: A Pythonhoz készült űrlap-felismerő ügyféloldali kódtár használatával létrehozhat egy űrlapot feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
+title: 'Rövid útmutató: Form Recognizer Pythonhoz készült ügyféloldali kódtár létrehozása'
+description: A Form Recognizer Pythonhoz készült ügyféloldali kódtár használatával létrehozhat egy űrlapfeldolgozó alkalmazást, amely kulcs/érték párokat és táblaadatokat von ki az egyéni dokumentumokból.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 03/19/2021
+ms.date: 04/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 606755333856f6dd97ab6c5158ac67f122a1237d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073760"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516427"
 ---
-<!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
+> * A cikkben olvasható kód az egyszerűség kedvéért szinkron metódusokat és nem biztonságos hitelesítőadat-tárolót használ. Tekintse meg az alábbi referenciadokumentációt.
 
-[Dokumentáció](/python/api/azure-ai-formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Referenciadokumentáció](/python/api/azure-ai-formrecognizer)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-  * A Python-telepítésnek tartalmaznia kell a [pip](https://pip.pypa.io/en/stable/)-et. Ha a parancssorban fut, ellenőrizze, hogy a pip telepítve van-e `pip --version` . Szerezze be a pip-et a Python legújabb verziójának telepítésével.
-* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip*) **alatt található fájlokat** .
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-  * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-  * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+  * A Python-telepítésnek tartalmaznia kell a [pip et.](https://pip.pypa.io/en/stable/) A parancssorban futtatva ellenőrizheti, hogy telepítve `pip --version` van-e a pip. A python legújabb verziójának telepítésével szerezze be a pip-et.
+* Egy Azure Storage-blob, amely betanító adatok egy halmazát tartalmazza. A [betanítás adatkészletének összeállítására](../../build-training-data-set.md) vonatkozó tippekért és lehetőségekért tekintse meg a betanítás adatkészletének összeállítása egyéni modellhez való összeállítását. Ebben a rövid útmutatóban a mintaadatkészlet **Betanítás** mappájában [található](https://go.microsoft.com/fwlink/?linkid=2090451) fájlokat használhatja (töltse le és bontsa ki a *sample_data.zip).*
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Form Recognizer-erőforrást, Form Recognizer erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás gombra.**
+  * A létrehozott erőforrás kulcsának és végpontjának szüksége lesz az alkalmazás a Form Recognizer API-hoz való csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+  * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-A Python telepítése után a következő módon telepítheti az űrlap-felismerő ügyféloldali kódtár legújabb verzióját:
+A Python telepítése után az ügyféloldali kódtár legújabb verzióját Form Recognizer a következővel:
 
-#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
+#### <a name="v21-preview"></a>[2.1-es verzió előzetes verziója](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Az űrlap-felismerő 3.1.0 SDK az _API 2,1-es verziójának előzetes verzióját_ tükrözi. 2. Használja az 2,1 [](../../quickstarts/client-library.md) -es _API-verzióhoz tartozó REST API előzetes verzióját. 3_.
+> A Form Recognizer 3.1.0b4 az SDK legújabb előzetes verziója, amely az _API 2.1 preview.3-as verzióját tükrözi._
 
 #### <a name="v20"></a>[2.0-s verzió](#tab/ga)
 
@@ -58,68 +57,69 @@ pip install azure-ai-formrecognizer
 ```
 
 > [!NOTE]
-> Az űrlap-felismerő 3.0.0 SDK az API 2.0-s verzióját tükrözi
+> A Form Recognizer 3.0.0 SDK az API 2.0-s verzióját tükrözi
 
 ---
 
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új Python-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. Ezután importálja a következő kódtárakat.
+Hozzon létre egy új Python-alkalmazást a kívánt szerkesztőben vagy IDE-ban. Ezután importálja a következő kódtárakat.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ezt a [GitHubon találhatja](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)meg, amely ebben a rövid útmutatóban található példakódokat tartalmazza.
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. 
+Hozzon létre változókat az erőforrás Azure-végpontja és kulcsa számára.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
 ## <a name="object-model"></a>Objektummodell
 
-Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első a `form_recognizer_client` szolgáltatás lekérdezésére szolgál az űrlap mezőinek és tartalmának felismeréséhez. A második a `form_training_client` használatos egyéni modellek létrehozásához és kezeléséhez, amelyek segítségével javíthatja az elismerést. 
+A Form Recognizer két különböző ügyféltípust hozhat létre. Az első a `form_recognizer_client` használatával lekérdezi a szolgáltatást az űrlapmezők és -tartalmak felismeréséhez. A második egyéni modellek létrehozására és kezelésére használható, amelyek a felismerés `form_training_client` javításához használhatók. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
-`form_recognizer_client` a következő műveleteit biztosítja:
+`form_recognizer_client` A a következő műveleteket biztosítja:
 
-* Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellek használatával.
-* Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.
-* A beérkezések gyakori mezőinek felismerése, az űrlap-felismerő szolgáltatásban egy előre betanított modell használatával.
+* Űrlapmezők és tartalmak felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellekkel.
+* Űrlaptartalmak, köztük táblák, vonalak és szavak felismerése modell betanítása nélkül.
+* Gyakori mezők felismerése nyugtákból egy előre betanított nyugtamodell használatával a Form Recognizer szolgáltatásban.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
-`form_training_client` a következő műveleteit biztosítja:
+`form_training_client` A a következő műveleteket biztosítja:
 
-* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez. A betanítási adatkészletek létrehozásával kapcsolatos részletesebb magyarázatért tekintse [meg a szolgáltatás dokumentációját a címke nélküli modell betanításához](#train-a-model-without-labels) .
-* Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek elemzéséhez. Tekintse [meg a szolgáltatás dokumentációját a modell betanítása](#train-a-model-with-labels) című témakörben, amely részletesebben ismerteti a címkék egy betanítási adatkészletbe való alkalmazásának részletes ismertetését.
-* A fiókban létrehozott modellek kezelése.
-* Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
+* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez. A [betanítási adatkészletek](#train-a-model-without-labels) létrehozásának részletesebb magyarázatát a címke nélküli modellek betanítása szolgáltatásdokumentációjában találhatja meg.
+* Egyéni modellek betanítása adott mezők és értékek elemzéséhez az egyéni űrlapok címkézése segítségével. A címkék [betanítása](#train-a-model-with-labels) a betanítás adatkészletére való alkalmazásának részletesebb magyarázatát a szolgáltatás címkézett modellbeképező dokumentációjában találhatja meg.
+* A fiókjában létrehozott modellek kezelése.
+* Egyéni modell másolása egyik erőforrásból Form Recognizer másikba.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
+> A modellek grafikus felhasználói felülettel, például a Form Recognizer eszközzel is [betaníthatóak.](../../quickstarts/label-tool.md)
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Pythonhoz készült űrlap-felismerő ügyféloldali kódtár használatával:
+Ezek a kódrészletek a következő feladatok elvégzését mutatják be a Pythonhoz készült Form Recognizer kódtárával:
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
-#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
+#### <a name="v21-preview"></a>[2.1-es verzió előzetes verziója](#tab/preview)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Elrendezés elemzése](#analyze-layout)
-* [Visszaigazolások elemzése](#analyze-receipts)
-* [Üzleti kártyák elemzése](#analyze-business-cards)
+* [Nyugták elemzése](#analyze-receipts)
+* [Névjegykártyák elemzése](#analyze-business-cards)
 * [Számlák elemzése](#analyze-invoices)
-* [Egyéni modell betanítása](#train-a-custom-model)
+* [Identitásdokumentumok elemzése](#analyze-identity-documents)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
+* [Egyéni modell betanítása](#train-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 
 #### <a name="v20"></a>[2.0-s verzió](#tab/ga)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Elrendezés elemzése](#analyze-layout)
-* [Visszaigazolások elemzése](#analyze-receipts)
+* [Nyugták elemzése](#analyze-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -128,32 +128,33 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Itt két ügyfél-objektumot kell hitelesítenie a fent megadott előfizetési változók használatával. **AzureKeyCredential** objektumot fog használni, így ha szükséges, az API-kulcsot új ügyfélalkalmazások létrehozása nélkül is frissítheti.
+Itt két ügyfélobjektumot fog hitelesíteni a fent meghatározott előfizetési változók használatával. Egy **AzureKeyCredential** objektumot fog használni, így szükség esetén új ügyfélobjektumok létrehozása nélkül frissítheti az API-kulcsot.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
 
-## <a name="get-assets-for-testing"></a>Eszközök beszerzése teszteléshez
+## <a name="get-assets-for-testing"></a>Eszközök lekérte a teszteléshez
 
-Hozzá kell adnia a képzési és tesztelési adatok URL-címeire mutató hivatkozásokat.
+A betanítás és a tesztelési adatok URL-címére mutató hivatkozásokat kell hozzáadnia.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-  
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
-* Használja az alábbi mintákban található minta űrlap-és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) is elérhetők, vagy a fenti lépésekkel lekérheti az egyes dokumentumok sas URL-címét a blob Storage-ban. 
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-lekérés":::
+
+* Használja az alábbi mintákban található mintaűrlapokat és nyugtaképeket (amelyek szintén elérhetők a [GitHubon,](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) vagy a fenti lépésekkel le tudja szerezni egy adott dokumentum SAS URL-címét a Blob Storage-ban). 
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](/python/api/azure-ai-formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+> Az útmutatóban a kódrészletek URL-címek által elért távoli űrlapokat használnak. Ha inkább helyi űrlapdokumentumokat szeretne feldolgozni, tekintse meg a kapcsolódó metódusokat a [referenciadokumentációban és](/python/api/azure-ai-formrecognizer) [példákban.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="analyze-layout"></a>Elrendezés elemzése
 
-Az űrlap-felismerő használatával elemezheti a dokumentumokat, vonalakat és szavakat a dokumentumokban anélkül, hogy egy modellt kellene betanítania. További információ az elrendezés kinyeréséről: az [elrendezés fogalmi útmutatója](../../concept-layout.md).
+A dokumentumokkal Form Recognizer, vonalakat és szavakat elemezhet a dokumentumokban anélkül, hogy modellt kellene betanítanunk. Az elrendezéskinyerésről az Elrendezés fogalmi [útmutatóban található további információ.](../../concept-layout.md)
 
-Egy adott URL-címen található fájl tartalmának elemzéséhez használja a `begin_recognize_content_from_url` metódust. A visszaadott érték objektumok gyűjteménye `FormPage` : egyet a beküldött dokumentum minden lapján. Az alábbi kód megismétli ezeket az objektumokat, és kinyomtatja a kinyert kulcs/érték párokat és a táblák adatait.
+Egy adott URL-címen található fájl tartalmának elemzéséhez használja a `begin_recognize_content_from_url` metódust. A visszaadott érték objektumok gyűjteménye: egy az elküldött dokumentum minden `FormPage` oldalához. A következő kód végig lépked ezeken az objektumokon, és kinyomtatja a kinyert kulcs/érték párokat és táblaadatokat.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> A helyi rendszerképekből is kérhet tartalmat. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) metódusokat, például: `begin_recognize_content` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> Helyi képekről is lekért tartalom. Lásd a [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) például: `begin_recognize_content` . Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
 
 ### <a name="output"></a>Kimenet
 
@@ -178,16 +179,89 @@ Confidence score: 1.0
 
 ```
 
+## <a name="analyze-receipts"></a>Nyugták elemzése
+
+Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki közös mezőket az USA-nyugtákból egy előre betanított nyugtamodell használatával. A nyugták elemzésével kapcsolatos további információkért lásd a [nyugta fogalmi útmutatóját.](../../concept-receipts.md) Az URL-címről származó nyugták elemzéséhez használja a `begin_recognize_receipts_from_url` metódust.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
+
+> [!TIP]
+> A helyi nyugták rendszerképét is elemezheti. Lásd a [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) például: `begin_recognize_receipts` . Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
+
+### <a name="output"></a>Kimenet
+
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
+```
+
+## <a name="analyze-business-cards"></a>Névjegykártyák elemzése
+
+#### <a name="v21-preview"></a>[2.1-es verzió előzetes verziója](#tab/preview)
+
+Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki általános mezőket angol névjegykártyákból egy előre betanított modell használatával. A névjegykártya-elemzéssel kapcsolatos további információkért lásd a [névjegykártyák fogalmi útmutatóját.](../../concept-business-cards.md) 
+
+A névjegykártyák URL-címből való elemzéséhez használja a `begin_recognize_business_cards_from_url` metódust.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> Helyi névjegykártya-képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) például: `begin_recognize_business_cards` . Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+---
+
 ## <a name="analyze-invoices"></a>Számlák elemzése
 
-#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
+#### <a name="v21-preview"></a>[2.1-es verzió előzetes verziója](#tab/preview)
 
-Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával. A számlázási elemzéssel kapcsolatos további információkért tekintse meg a [számla fogalmi útmutatóját](../../concept-invoices.md). A számlák URL-címről való elemzéséhez használja a `begin_recognize_invoices_from_url` metódust. 
+Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki gyakori mezőket az értékesítési számlákból egy előre betanított modell használatával. A számlaelemzéssel kapcsolatos további információkért lásd a számla [fogalmi útmutatóját.](../../concept-invoices.md) 
+
+A számlák URL-címről való elemzéséhez használja a `begin_recognize_invoices_from_url` metódust.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> A helyi számla lemezképeit is elemezheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) metódusokat, például: `begin_recognize_invoices` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> Helyi számlaképeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) például: `begin_recognize_invoices` . Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+---
+
+## <a name="analyze-identity-documents"></a>Identitásdokumentumok elemzése
+
+#### <a name="v21-preview"></a>[2.1-es verzió előzetes verziója](#tab/preview)
+
+Ez a szakasz azt mutatja be, hogyan elemezheti és vonhat ki kulcsfontosságú információkat a kormány által kiadott azonosítási dokumentumokból ( világszerte használt útlevelek és az Egyesült Államok sofőrlicencei) az előre összeállított Form Recognizer használatával. A számlaelemzéssel kapcsolatos további információkért tekintse meg az előre összeállított azonosítási modell [fogalmi útmutatóját.](../../concept-identification-cards.md)
+
+Az URL-címből származó identitásdokumentumok elemzéséhez használja a `begin_recognize_id_documents_from_url` metódust.
+
+:::code language="python" source="~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py" id="snippet_id":::
+
+> [!TIP]
+> Az identitásdokumentum-képeket is elemezheti. _Lásd a_ [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) például: `begin_recognize_id_documents` . _A helyi rendszerképeket_ érintő forgatókönyvekért tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakódot is.
 
 #### <a name="v20"></a>[2.0-s verzió](#tab/ga)
 
@@ -198,23 +272,22 @@ Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az értékesítési sz�
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-Ez a szakasz bemutatja, hogyan lehet a modelleket saját adataival betanítani. A betanított modellek olyan strukturált adatokat tudnak kialakítani, amelyek az eredeti dokumentum kulcs/érték kapcsolatait tartalmazzák. A modell betanítása után tesztelheti és áttaníthatja, és végül a használatával megbízhatóan kinyerheti az adatokból az igényeknek megfelelő további formákat.
+Ez a szakasz bemutatja, hogyan betanítható egy modell a saját adataival. A betanított modell olyan strukturált adatokat képes kihozni, amelyek tartalmazzák a kulcs/érték kapcsolatokat az eredeti űrlapdokumentumban. A modell betanítása után tesztelheti és újra betaníthatja, és végül arra használhatja, hogy az igényeinek megfelelően megbízhatóan kinyerje az adatokat több űrlapról.
 
 > [!NOTE]
-> A modelleket grafikus felhasználói felülettel is betaníthatja, például az [űrlap-felismerő minta feliratozási eszközét](../../quickstarts/label-tool.md).
+> A modelleket grafikus felhasználói felülettel is betaníthatja, például a Form Recognizer [eszköz mintacímkéző eszközével.](../../quickstarts/label-tool.md)
 
 ### <a name="train-a-model-without-labels"></a>Modell betanítása címkék nélkül
 
-Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez a betanítási dokumentumok manuális címkézése nélkül.
+Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzésére a betanító dokumentumok manuális címkézése nélkül.
 
-A következő kód a betanítási ügyfelet használja a `begin_training` modell betanításához egy adott dokumentumon. A visszaadott `CustomFormModel` objektum információt tartalmaz a modell által elemezhető típusokról, valamint az egyes űrlapokból kinyerhető mezőkről. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
+A következő kód a betanító ügyfelet használja a függvénnyel egy modell `begin_training` adott dokumentumkészleten való betanítához. A visszaadott objektum információkat tartalmaz a modell által elemzett űrlaptípusokról és az egyes űrlaptípusokból `CustomFormModel` kinyerni kívánt mezőkről. A következő kódblokk kinyomtatja ezt az információt a konzolon.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
-
 ### <a name="output"></a>Kimenet
 
-A [PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)-ból elérhető betanítási adatokkal betanított modell kimenete.
+Ez a Python SDK-ból elérhető betanításadatokkal betanított [modell kimenete.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)
 
 ```console
 Model ID: 628739de-779c-473d-8214-d35c72d3d4f7
@@ -248,16 +321,16 @@ Document errors: []
 
 ### <a name="train-a-model-with-labels"></a>Modell betanítása címkékkel
 
-Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. A visszaadott `CustomFormModel` érték jelzi a modell által kinyerhető mezőket, valamint az egyes mezők becsült pontosságát. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
+Egyéni modelleket is betaníthat a betanítás dokumentumainak manuális címkézése által. A címkékkel való betanítás bizonyos helyzetekben jobb teljesítményt eredményez. A visszaadott érték jelzi a modell által kinyerhető mezőket, valamint az egyes mezőkben található becsült `CustomFormModel` pontosságot. A következő kódblokk kinyomtatja ezt az információt a konzolon.
 
 > [!IMPORTANT]
-> Ha címkéket szeretne betanítani, `\<filename\>.pdf.labels.json` a blob Storage-tárolóban speciális címke-információs fájlokkal () kell rendelkeznie a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Ha megkapta őket, meghívhatja a `begin_training` függvényt a következőre beállított *use_training_labels* paraméterrel: `true` .
+> A címkékkel való betanításhoz speciális címkeinformációs fájlokra () van szükség a Blob Storage-tárolóban a `\<filename\>.pdf.labels.json` betanítás dokumentumai mellett. A [Form Recognizer mintacímkéző eszköz](../../quickstarts/label-tool.md) felhasználói felülettel segít létrehozni ezeket a címkefájlokat. Ha már rendelkezik velük, a függvényt úgy hívhatja meg, hogy a `begin_training` *use_training_labels* paraméter értéke `true` lesz.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
 ### <a name="output"></a>Kimenet
 
-A [PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)-ból elérhető betanítási adatokkal betanított modell kimenete.
+Ez a Python SDK-ból elérhető betanításadatokkal betanított [modell kimenete.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)
 
 ```console
 Model ID: ae636292-0b14-4e26-81a7-a0bfcbaf7c91
@@ -292,22 +365,21 @@ Document errors: []
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Űrlapok elemzése egyéni modellel
 
-Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információkat és az egyéb tartalmakat az egyéni űrlapok típusaiból, a saját űrlapjaival betanított modellek használatával.
+Ez a szakasz azt mutatja be, hogyan lehet kulcs/érték információkat és egyéb tartalmakat kinyerni az egyéni űrlaptípusokból a saját űrlapokkal betanított modellek használatával.
 
 > [!IMPORTANT]
-> Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az ID-t az alábbi metódusba tudja adni. Lásd a [modell betanítása](#train-a-model-without-labels) szakaszt.
+> Ennek a forgatókönyvnek a megvalósításához már betanított egy modellt, hogy az azonosítóját az alábbi metódusnak tovább tudja adni. Lásd [a Modell betanítás szakaszát.](#train-a-model-without-labels)
 
-A `begin_recognize_custom_forms_from_url` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
+A metódust fogja `begin_recognize_custom_forms_from_url` használni. A visszaadott érték objektumok gyűjteménye: egy az elküldött dokumentum minden `RecognizedForm` oldalához. Az alábbi kód kinyomtatja az elemzési eredményeket a konzolon. Kinyomtatja az egyes felismert mezőket és a hozzájuk tartozó értékeket, valamint egy megbízhatósági pontszámot.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> A helyi lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) metódusokat, például: `begin_recognize_custom_forms` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
-
+> Helyi képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) például: `begin_recognize_custom_forms` . Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
 
 ### <a name="output"></a>Kimenet
 
-Az előző példa modelljét használva a következő kimenet van megadva.
+Az előző példában használt modell a következő kimenetet tartalmazza.
 
 ```console
 Form type: form-ae636292-0b14-4e26-81a7-a0bfcbaf7c91
@@ -328,62 +400,14 @@ Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
 
-## <a name="analyze-receipts"></a>Visszaigazolások elemzése
-
-Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával. További információ a bevételezési elemzésről: a [nyugták fogalmi útmutatója](../../concept-receipts.md). Az URL-címekről történő visszaigazolások elemzéséhez használja a `begin_recognize_receipts_from_url` metódust. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
-
-> [!TIP]
-> Elemezheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) metódusokat, például: `begin_recognize_receipts` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
-
-### <a name="output"></a>Kimenet
-
-```console
-ReceiptType: Itemized has confidence 0.659
-MerchantName: Contoso Contoso has confidence 0.516
-MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
-MerchantPhoneNumber: None has confidence 0.99
-TransactionDate: 2019-06-10 has confidence 0.985
-TransactionTime: 13:59:00 has confidence 0.968
-Receipt Items:
-...Item #1
-......Name: 8GB RAM (Black) has confidence 0.916
-......TotalPrice: 999.0 has confidence 0.559
-...Item #2
-......Quantity: None has confidence 0.858
-......Name: SurfacePen has confidence 0.858
-......TotalPrice: 99.99 has confidence 0.386
-Subtotal: 1098.99 has confidence 0.964
-Tax: 104.4 has confidence 0.713
-Total: 1203.39 has confidence 0.774
-```
-
-## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
-
-#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
-
-Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md). Az üzleti kártyák URL-címről való elemzéséhez használja a `begin_recognize_business_cards_from_url` metódust. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
-
-> [!TIP]
-> A helyi névjegykártya-lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) metódusokat, például: `begin_recognize_business_cards` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
-
-#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
-
-> [!IMPORTANT]
-> Ez a funkció nem érhető el a kiválasztott API-verzióban.
-
----
 
 ## <a name="manage-your-custom-models"></a>Egyéni modellek kezelése
 
-Ez a szakasz bemutatja, hogyan kezelheti a fiókjában tárolt egyéni modelleket. 
+Ez a szakasz bemutatja, hogyan kezelheti a fiókjában tárolt egyéni modelleket.
 
-### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>A FormRecognizer-erőforrás fiókban található modellek számának megkeresése
+### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Ellenőrizze a modellek számát a FormRecognizer erőforrásfiókban
 
-A következő kódrészlet ellenőrzi, hogy az űrlap-felismerő fiókban hány modell lett mentve, és összehasonlítja azt a fiókra vonatkozó korláttal.
+A következő kódblokk ellenőrzi, hogy hány modellt mentett a Form Recognizer-fiókjába, és összehasonlítja azt a fiókkorláthoz.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
 
@@ -394,16 +418,16 @@ A következő kódrészlet ellenőrzi, hogy az űrlap-felismerő fiókban hány 
 Our account has 5 custom models, and we can have at most 5000 custom models
 ```
 
-### <a name="list-the-models-currently-stored-in-the-resource-account"></a>Az erőforrás-fiókban jelenleg tárolt modellek listázása
+### <a name="list-the-models-currently-stored-in-the-resource-account"></a>Az erőforrásfiókban jelenleg tárolt modellek felsorolása
 
-A következő kódrészlet felsorolja a fiókban lévő aktuális modelleket, és kiírja az adataikat a-konzolra. Emellett az első modellre mutató hivatkozást is ment.
+A következő kódblokk felsorolja a fiókjában lévő aktuális modelleket, és megjeleníti azok részleteit a konzolon. Az első modellre való hivatkozást is menti.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
 
 
 ### <a name="output"></a>Kimenet
 
-Ez egy minta kimenet a teszt fiókhoz.
+Ez egy mintakimenet a tesztfiókhoz.
 
 ```console
 We have models with the following ids:
@@ -414,16 +438,16 @@ b4b5df77-8538-4ffb-a996-f67158ecd305
 c6309148-6b64-4fef-aea0-d39521452699
 ```
 
-### <a name="get-a-specific-model-using-the-models-id"></a>Adott modell beszerzése a modell AZONOSÍTÓjának használatával
+### <a name="get-a-specific-model-using-the-models-id"></a>Adott modell lekérte a modell azonosítóját
 
-A következő kódrészlet az előző szakaszban mentett modell AZONOSÍTÓját használja, és a használatával kéri le a modell részleteit.
+A következő kódblokk az előző szakaszban mentett modellazonosítót használja a modell részleteinek lekéréshez.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
 
 ### <a name="output"></a>Kimenet
 
-Ez az előző példában létrehozott egyéni modell kimenete.
+Ez az előző példában létrehozott egyéni modell mintakimenete.
 
 ```console
 Model ID: ae636292-0b14-4e26-81a7-a0bfcbaf7c91
@@ -432,16 +456,16 @@ Training started on: 2020-08-20 23:20:56+00:00
 Training completed on: 2020-08-20 23:20:57+00:00
 ```
 
-### <a name="delete-a-model-from-the-resource-account"></a>Modell törlése az erőforrás-fiókból
+### <a name="delete-a-model-from-the-resource-account"></a>Modell törlése az erőforrásfiókból
 
-Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a kód törli az előző szakaszban használt modellt.
+A modell a fiókjából is törölhető, ha az azonosítójára hivatkozik. Ez a kód törli az előző szakaszban használt modellt.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
+Futtassa az alkalmazást a `python` gyorsindítási fájlban található paranccsal.
 
 ```console
 python quickstart-file.py
@@ -449,7 +473,7 @@ python quickstart-file.py
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
+Ha törölni vagy eltávolítani szeretne egy Cognitive Services előfizetést, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított összes többi erőforrást is törli.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -458,27 +482,27 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ### <a name="general"></a>Általános kérdések
 
-Az űrlap-felismerő ügyféloldali kódtára az [Azure Core](https://aka.ms/azsdk-python-azure-core)-ban definiált kivételeket fogja növelni.
+A Form Recognizer ügyféloldali kódtár az Azure Core-ban definiált [kivételeket fogja kihozni.](https://aka.ms/azsdk-python-azure-core)
 
 ### <a name="logging"></a>Naplózás
 
-Ez a függvénytár a [szabványos naplózási függvénytárat](https://docs.python.org/3/library/logging.html) használja a naplózáshoz. A HTTP-munkamenetek (URL-címek, fejlécek stb.) alapszintű információit a rendszer az információs szinten naplózza.
+Ez a kódtár a [szabványos naplózási kódtárat használja a](https://docs.python.org/3/library/logging.html) naplózáshoz. A HTTP-munkamenetekkel (URL-címekkel, fejlécekkel stb.) kapcsolatos alapvető információkat az INFO szinten naplózza a rendszer.
 
-A HIBAKERESÉSi szint részletes naplózása, beleértve a kérés/válasz törzseit és a nem kitakart fejléceket is, a kulcsszó argumentummal rendelkező ügyfélen engedélyezhető `logging_enable` :
+A HIBAKERESÉSi szint részletes naplózása, beleértve a kérések/válaszok szövegeit és a nem válaszoló fejléceket, engedélyezhető az ügyfélen a `logging_enable` kulcsszó argumentummal:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_logging)]
 
 
-Hasonlóképpen, `logging_enable` egy művelet részletes naplózását is engedélyezheti, még akkor is, ha nincs engedélyezve az ügyfél számára:
+A hasonlóképpen lehetővé teszi a részletes naplózást egyetlen művelethez, még akkor is, ha az ügyfél számára nincs `logging_enable` engedélyezve:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban az űrlap felismerő Python ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
+Ebben a rövid útmutatóban az Form Recognizer Python-ügyféloldali kódtárat használta modellek betanítása és űrlapok különböző módon való elemzéséhez. Ezután tippeket tanulhat egy jobb betanítású adathalmaz létrehozásához és pontosabb modellek létrehozásához.
 
 > [!div class="nextstepaction"]
 > [Betanítási adathalmaz létrehozása](../../build-training-data-set.md)
 
 * [Mi a Form Recognizer?](../../overview.md)
-* A jelen útmutatóban található mintakód a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)érhető el.
+* Az útmutatóban található mintakód a [GitHubon található.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py)

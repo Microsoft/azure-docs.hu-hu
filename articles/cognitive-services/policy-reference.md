@@ -1,24 +1,24 @@
 ---
-title: Az Azure Cognitive Services beépített szabályzat-definíciói
-description: Az Azure Cognitive Services beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure Cognitive Services
+description: A Azure Policy beépített szabályzatdefinícióit Azure Cognitive Services. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 82d3469a33228a0ce4dda4d4d31e649aa2969e15
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: bf97c37f370b0250203757c37928be38e51175d7
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093596"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500982"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy beépített szabályzat-definíciók az Azure Cognitive Services
+# <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy beépített szabályzatdefiníciók a Azure Cognitive Services
 
-Ez az oldal az Azure Cognitive Services beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Cognitive Services e. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
 

@@ -5,7 +5,7 @@
   items:
     - name: Az Azure Communication Services bemutatása
       href: overview.md
-    - name: Támogatás és Súgó lehetőségek
+    - name: Támogatási és súgóbeállítások
       href: support.md
 - name: Rövid útmutatók
   expanded: true
@@ -16,7 +16,7 @@
       href: quickstarts/access-tokens.md
     - name: Felügyelt identitások használata
       href: quickstarts/managed-identity.md
-    - name: Felügyelt identitások beállítása a parancssori felületről
+    - name: Felügyelt identitások beállítása a CLI-ről
       href: quickstarts/managed-identity-from-cli.md
     - name: Csevegés
       items:
@@ -28,7 +28,7 @@
       items:
         - name: Telefonszám lekérése
           href: quickstarts/telephony-sms/get-phone-number.md
-        - name: Telefonszám behelyezése az Azure-ba
+        - name: Telefonszám portszáma az Azure-ba
           href: quickstarts/telephony-sms/port-phone-number.md
         - name: Telefonhívás hozzáadása az alkalmazáshoz
           href: quickstarts/voice-video-calling/pstn-call.md
@@ -42,7 +42,7 @@
       items:
         - name: Hanghívás hozzáadása az alkalmazáshoz
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
-        - name: Videohívás hozzáadása az alkalmazáshoz (JavaScript)
+        - name: Videóhívás hozzáadása az alkalmazáshoz (JavaScript)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: A hívó SDK használata
           href: quickstarts/voice-video-calling/calling-client-samples.md
@@ -50,53 +50,53 @@
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
     - name: Felhasználói felületi keretrendszer
       items:
-        - name: Az összetett összetevők első lépései
+        - name: Ismerkedés az összetett összetevőkkel
           href: quickstarts/ui-framework/get-started-with-composites.md
-        - name: Első lépések az alapösszetevőkkel
+        - name: Alapösszetevők – első lépések
           href: quickstarts/ui-framework/get-started-with-components.md
-        - name: Saját FELHASZNÁLÓIFELÜLET-keretrendszer összetevő létrehozása
+        - name: Saját FELHASZNÁLÓI felületi keretrendszer-összetevő létrehozása
           href: quickstarts/ui-framework/create-your-own-components.md
 - name: Oktatóanyagok
   expanded: false
   items:
     - name: Megbízható hitelesítési szolgáltatás létrehozása az Azure Functions használatával
       href: tutorials/trusted-service-tutorial.md
-    - name: 'HTTP-kérelem aláírása HMAC-aláírással C használatával #'
+    - name: 'HTTP-kérés aláírása HMAC-aláírással C használatával #'
       href: tutorials/hmac-header-tutorial.md
-    - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
+    - name: Webalkalmazás előkészítése Communication Services (Node.js)
       href: tutorials/building-app-start.md
-    - name: Az ACS SMS API aláírása és kérése a Poster használatával
+    - name: Aláírás és kérések kérése az ACS SMS API Postmannel
       href: tutorials/postman-tutorial.md
 - name: Fogalmak
   expanded: false
   items:
     - name: Csevegés
       items:
-        - name: A csevegési SDK áttekintése
+        - name: Csevegési SDK – áttekintés
           href: concepts/chat/sdk-features.md
         - name: Csevegéssel kapcsolatos alapfogalmak
           href: concepts/chat/concepts.md
     - name: Telefonos funkciók és SMS
       items:
-        - name: SMS SDK – áttekintés
+        - name: Az SMS SDK áttekintése
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS-sel kapcsolatos alapfogalmak
           href: concepts/telephony-sms/concepts.md
         - name: Telefonos fogalmak
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Telefonszám-típusok
+        - name: Telefonszámtípusok
           href: concepts/telephony-sms/plan-solution.md
         - name: A SIP-interfész infrastruktúrájának követelményei
           href: concepts/telephony-sms/sip-interface-infrastructure.md
-        - name: SMS – GYAKORI KÉRDÉSEK
+        - name: SMS – gyakori kérdések
           href: concepts/telephony-sms/sms-faq.md
-        - name: Üzenetküldési szabályzat
+        - name: Üzenetkezelési szabályzat
           href: concepts/telephony-sms/messaging-policy.md
     - name: Hang- és videóhívás
       items:
         - name: Ismert problémák
           href: concepts/known-issues.md
-        - name: Az SDK meghívása – áttekintés
+        - name: A hívó SDK áttekintése
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
           href: concepts/voice-video-calling/about-call-types.md
@@ -104,7 +104,7 @@
           href: concepts/voice-video-calling/network-requirements.md
         - name: Hívási folyamatok
           href: concepts/call-flows.md
-        - name: Folyamat-topológiák hívása
+        - name: Folyamat topológiák hívása
           href: concepts/detailed-call-flows.md
     - name: Felhasználói felületi keretrendszer
       items:
@@ -112,17 +112,6 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Felhasználói felületi keretrendszer képességei
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Adatok és műveletek
-      items:
-        - name: Szolgáltatási események (EventGrid)
-          href: ../event-grid/event-schema-communication-services.md
-          maintainContext: true
-        - name: Naplózás és diagnosztika
-          href: concepts/logging-and-diagnostics.md
-        - name: Mérőszámok
-          href: concepts/metrics.md
-        - name: Hibaelhárítás
-          href: concepts/troubleshooting-info.md
     - name: SDK-k és REST API-k
       href: concepts/sdk-options.md
     - name: Ügyfél- és kiszolgálói architektúra
@@ -139,6 +128,15 @@
       href: concepts/notifications.md
     - name: Teams-együttműködés
       href: concepts/teams-interop.md
+    - name: Szolgáltatási események (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: Naplózás és diagnosztika
+      href: concepts/logging-and-diagnostics.md
+    - name: Mérőszámok
+      href: concepts/metrics.md
+    - name: Hibaelhárítás
+      href: concepts/troubleshooting-info.md
 - name: Példák
   items:
     - name: Áttekintés
@@ -185,7 +183,7 @@
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
         - name: SMS (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
-    - name: Azonosító kódtárak
+    - name: Identitáskódtárak
       items:
         - name: Identitás (JavaScript)
           href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'

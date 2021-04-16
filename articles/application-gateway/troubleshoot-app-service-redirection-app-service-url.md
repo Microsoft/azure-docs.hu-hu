@@ -1,60 +1,60 @@
 ---
-title: App Service URL-címhez való átirányítás hibakeresése
+title: Url-címre való átirányítás App Service hibaelhárítása
 titleSuffix: Azure Application Gateway
-description: Ez a cikk azt ismerteti, hogyan lehet elhárítani az átirányítási problémát az Azure Application Gateway Azure App Service
+description: Ez a cikk az átirányítási probléma elhárításáról nyújt információt, ha Azure Application Gateway a Azure App Service
 services: application-gateway
-author: abshamsft
+author: jaesoni
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.author: jaysoni
+ms.openlocfilehash: 6aad1cf1269a7c3dc082482c39fdc4a079fc3240
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182886"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514886"
 ---
-# <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
+# <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A App Service kapcsolatos problémák Application Gateway
 
-Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a problémákat, amikor a Azure App Service az Azure-Application Gateway háttérbeli célként való használatakor merülhet fel.
+Megtudhatja, hogyan diagnosztizálhatja és oldhatja meg az olyan problémákat, amelyek akkor merülhetnek fel Azure App Service ha háttércélként használják a Azure Application Gateway.
 
 ## <a name="overview"></a>Áttekintés
 
-Ebből a cikkből megtudhatja, hogyan lehet elhárítani a következő problémákat:
+Ebből a cikkből megtudhatja, hogyan háríthatja el a következő problémákat:
 
-* Az App Service URL-címe elérhető a böngészőben, ha van átirányítás.
-* Az App Service ARRAffinity cookie-tartománya az eredeti gazdagép helyett az App Service-állomásnévre, a example.azurewebsites.net-ra van állítva.
+* Az App Service URL-címe átirányításkor nyílik a böngészőben.
+* Az App Service ARRAffinity cookie-tartománya az eredeti gazdagép helyett az App Service-example.azurewebsites.net van beállítva.
 
-Ha egy háttérbeli alkalmazás átirányítási választ küld, előfordulhat, hogy át szeretné irányítani az ügyfelet egy másik URL-címre, mint amelyet a háttérbeli alkalmazás adott meg. Ezt akkor teheti meg, ha egy app Service-t egy Application Gateway mögött futtat, és megköveteli, hogy az ügyfél átirányítsa a relatív elérési útját. Ilyen például a contoso.azurewebsites.net/path1 és a contoso.azurewebsites.net/path2 közötti átirányítás. 
+Amikor egy háttéralkalmazás átirányítási választ küld, előfordulhat, hogy a háttéralkalmazás által megadott URL-címtől eltérő URL-címre szeretné átirányítani az ügyfelet. Ezt akkor érdemes megtenni, ha az App Service-t egy Alkalmazásátjáró mögött üzemeltetik, és az ügyfélnek átirányítást kell igényelni a relatív elérési úthoz. Ilyen például az átirányítás a contoso.azurewebsites.net/path1-contoso.azurewebsites.net/path2. 
 
-Amikor az App Service átirányítási választ küld, ugyanazt az állomásnevet használja a válasz Location fejlécében, mint az Application Gateway által fogadott kérelemben szereplőnek. Az ügyfél például közvetlenül a contoso.azurewebsites.net/path2 küldi a kérést ahelyett, hogy az Application Gateway-contoso.com/path2. Nem szeretné megkerülni az Application Gatewayt.
+Amikor az App Service átirányítási választ küld, ugyanazt az állomásnevet használja a válasz helyfejlécében, mint az Application Gatewaytől kapott kérelemben. Az ügyfél például közvetlenül a szolgáltatásnak contoso.azurewebsites.net/path2 kérést, nem pedig az Application Gateway contoso.com/path2. Nem szeretné megkerülni az Alkalmazásátjárót.
 
-A probléma a következő fő okok miatt fordulhat elő:
+Ez a probléma a következő fő okok miatt fordulhat elő:
 
-- Az átirányítás konfigurálva van az App Service-ben. Az átirányítás olyan egyszerű lehet, mint egy záró perjel hozzáadása a kéréshez.
-- Azure Active Directory hitelesítés, ami az átirányítás okát okozza.
+- Konfigurálta az átirányítást az App Service-hez. Az átirányítás egyszerű lehet, ha egy záró perjelet ad hozzá a kéréshez.
+- Már van Azure Active Directory hitelesítése, ami az átirányítást okozza.
 
-Emellett, ha az Application Gateway mögötti app Servicest használ, az Application gatewayhez (example.com) társított tartománynév eltér az App Service-szolgáltatás tartománynevétől (például example.azurewebsites.net). Az App Service által beállított ARRAffinity-cookie tartományi értéke a example.azurewebsites.net tartománynevet adja meg, amely nem kívánatos. Az eredeti állomásnévnek (example.com) a cookie-ban a tartománynév értéknek kell lennie.
+Emellett ha alkalmazásszolgáltatásokat használ egy Alkalmazásátjáró mögött, az Application Gatewayhez társított tartománynév (example.com) eltér az App Service tartománynevének nevétől (például example.azurewebsites.net). Az App Service által beállított ARRAffinity cookie tartományi értéke example.azurewebsites.net, ami nem kívánatos. Az eredeti gazdanévnek (example.com) a cookie-ban található tartománynév értéknek kell lennie.
 
-## <a name="sample-configuration"></a>Minta konfigurációja
+## <a name="sample-configuration"></a>Mintakonfiguráció
 
-- HTTP-figyelő: alapszintű vagy többhelyes
-- Háttérbeli címkészlet: App Service
-- HTTP-beállítások: **válassza az állomásnév lehetőséget a háttér címe** beállításnál
-- Mintavétel: **válassza az állomásnév lehetőséget a http-beállítások** engedélyezve
+- HTTP- figyelő: Alapszintű vagy többhelyű
+- Háttércímkészlet: App Service
+- HTTP-beállítások: **Válasszon gazdagépnevet az engedélyezett háttércímből**
+- Mintavétel: **Válassza ki az engedélyezett HTTP-beállítások gazdagépnevét**
 
 ## <a name="cause"></a>Ok
 
-App Service egy több-bérlős szolgáltatás, ezért a kérelemben szereplő állomásfejléc használatával irányítja át a kérést a megfelelő végpontra. App Services, *. azurewebsites.net (Say, contoso.azurewebsites.net) alapértelmezett tartományneve eltér az Application Gateway tartománynevétől (azaz contoso.com). 
+App Service egy több-bérlős szolgáltatás, ezért a kérésben található állomásfejlécet használja a kérés megfelelő végpontra való útválasztására. A App Services *.azurewebsites.net (például contoso.azurewebsites.net) alapértelmezett tartományneve eltér az alkalmazásátjáró tartománynevéhez (például contoso.com). 
 
-Az ügyfél eredeti kérelme az Application Gateway tartományneve, a contoso.com pedig az állomásnév. Úgy kell konfigurálnia az Application Gateway-t, hogy módosítsa az eredeti kérelemben szereplő állomásnevet az App Service állomásneve, amikor a kérést az App Service háttér felé irányítja. Az Application Gateway HTTP-beállítási konfigurációjában használja a kapcsoló- **kiválasztó gazdagépet a háttérbeli címről** . Használja a Switch **pick hostname elemet a háttérbeli http-beállítások közül** az állapot mintavételi konfigurációjában.
+Az ügyféltől származó eredeti kérés állomásneve az Application Gateway contoso.com neve. Konfigurálnia kell az Application Gatewayt, hogy módosítsa az állomásnevet az App Service gazdagépnevére vonatkozó eredeti kérésben, amikor a kérést az App Service háttéralkalmazásához adja. Használja a **Gazdagépnév beállítása a háttércímből** kapcsolót az alkalmazásátjáró HTTP-beállítási konfigurációjában. Használja a **Gazdagépnév beállítása a háttér-HTTP-beállításokból** kapcsolót az állapot-mintavétel konfigurációjában.
 
 
 
-![Az Application Gateway megváltoztatja az állomásnév nevét](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
+![Az Application Gateway módosítja az állomásnevet](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-Ha az App Service átirányítást végez, a felülbírált állomásnév contoso.azurewebsites.net az eredeti állomásnév helyett a contoso.com, kivéve, ha másként van konfigurálva. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
+Amikor az App Service átirányítást tesz, a helyfejlécben a felülbírált gazdanevet contoso.azurewebsites.net használja az eredeti állomásnév helyett contoso.com, hacsak másként nincs konfigurálva. Ellenőrizze az alábbi példaként található kérés- és válaszfejléceket.
 ```
 ## Request headers to Application Gateway:
 
@@ -76,43 +76,41 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotkód van az átirányításhoz. A Location fejlécben az App Service állomásneve az eredeti állomásnév helyett `www.contoso.com` .
+Az előző példában figyelje meg, hogy a válaszfejléc átirányítási állapotkódja 301. A helyfejlécben az eredeti gazdanév helyett az App Service állomásneve `www.contoso.com` található.
 
-## <a name="solution-rewrite-the-location-header"></a>Megoldás: a hely fejlécének újraírása
+## <a name="solution-rewrite-the-location-header"></a>Megoldás: A helyfejléc átírása
 
-A Location (hely) fejlécben állítsa be az állomásnév nevét az Application Gateway tartománynevére. Ehhez hozzon létre egy [Újraírási szabályt](./rewrite-http-headers.md) egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Emellett olyan műveletet is végre kell hajtania, amely újraírja a Location fejlécet, hogy az Application Gateway állomásneve legyen. További információ: a [Location fejléc újraírásának](./rewrite-http-headers.md#modify-a-redirection-url)útmutatója.
+A hely fejlécében állítsa be az állomásnevet az alkalmazásátjáró tartománynevére. Ehhez hozzon létre egy újraírási szabályt egy olyan feltétellel, amely kiértékeli, hogy [a](./rewrite-http-headers.md) válaszban található helyfejléc tartalmaz-e azurewebsites.net. Egy műveletet is végre kell hajtanának a helyfejléc átírásához, hogy az application gateway gazdagépnevét tartalmazza. További információkért lásd a helyfejléc [átírásának utasításait.](./rewrite-http-headers.md#modify-a-redirection-url)
 
 > [!NOTE]
-> A HTTP-fejléc újraírásának támogatása csak a Application Gateway [Standard_v2 és WAF_V2 SKU](./application-gateway-autoscaling-zone-redundant.md) esetében érhető el. Ha v1 SKU-t használ, javasoljuk, hogy [telepítse a v1-ről v2-re](./migrate-v1-v2.md). A v2 SKU-hoz elérhető újraírást és egyéb [speciális képességeket](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) kívánja használni.
+> A HTTP-fejléc átírásának támogatása csak az Standard_v2-WAF_v2 [termékváltozatához](./application-gateway-autoscaling-zone-redundant.md) Application Gateway. Javasoljuk, hogy a fejlécátíráshoz és [](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) a [2-es](./migrate-v1-v2.md) termékváltozattal elérhető egyéb speciális képességekhez a v2-re mirating to migrating to v2 (Átírás fejlécek átírása) és egyéb speciális képességek.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatív megoldás: Egyéni tartománynév használata
 
-Ha v1 SKU-t használ, nem tudja újraírni a hely fejlécét. Ez a funkció csak a v2 SKU esetében érhető el. Az átirányítási probléma megoldásához adja meg ugyanazt az állomásnevet, amelyet az Application Gateway az App Service-nek is fogad, a gazdagép felülbírálásának végrehajtása helyett.
+A App Service funkció Custom Domain megoldás, amely mindig átirányítja a forgalmat Application Gateway tartománynevére (a `www.contoso.com` példánkban). Ez a konfiguráció az ARR affinitási cookie-k problémájára is megoldást nyújt. Alapértelmezés szerint az ARRAffinity cookie-tartomány az App Service alapértelmezett állomásnevére (example.azurewebsites.net) van beállítva a Application Gateway tartományneve helyett. Ezért ilyen esetekben a böngésző elutasítja a cookie-t a kérés és a cookie tartománynevének eltérése miatt.
 
-Az App Service mostantól átirányítja az átirányítást (ha van ilyen) ugyanazon az eredeti állomásfejléc-fejlécen, amely az Application gatewayre mutat, és nem a saját.
+A megadott metódust az Átirányítás és az ARRAffinity cookie-tartományel nem egyező problémái esetén is használhatja. Ehhez a módszerhez szüksége lesz az egyéni tartomány DNS-zónához való hozzáférésére.
 
-Egy egyéni tartománynak kell lennie, és a következő eljárást kell követnie:
+**1.** lépés: Állítson be egy Custom Domain a App Service, és ellenőrizze a tartomány tulajdonjogát a [CNAME & TXT DNS-rekordok hozzáadásával.](../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+A rekordok a következő módon néznek ki:
+-  `www.contoso.com` A CNAME-BEN `contoso.azurewebsite.net`
+-  `asuid.www.contoso.com` IN TXT " `<verification id string>` "
 
-- Regisztrálja a tartományt az App Service egyéni tartomány listájában. Az App Service teljes tartománynevére mutató CNAME-t kell megadnia az egyéni tartományban. További információ: [meglévő egyéni DNS-név leképezése Azure app Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
-    ![App Service – egyéni tartomány listája](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+**2.** lépés: Az előző lépésben található CNAME rekordra csak a tartomány-ellenőrzéshez volt szükség. Végső soron szükség van a forgalomra az útvonaltervezéshez Application Gateway. Így módosíthatja a `www.contoso.com` CNAME-et úgy, hogy Application Gateway teljes tartománynevére mutasson. Ha teljes tartománynevet szeretne beállítani a Application Gateway, lépjen a nyilvános IP-cím erőforráshoz, és rendeljen hozzá egy "DNS-név címkét". A frissített CNAME rekordnak most a következőnek kell lennie: 
+-  `www.contoso.com` A CNAME-BEN `contoso.eastus.cloudapp.azure.com`
 
-- Az App Service készen áll az állomásnév elfogadására `www.contoso.com` . Módosítsa a DNS-beli CNAME-bejegyzést úgy, hogy az az Application Gateway teljes tartománynevére mutasson, például: `appgw.eastus.cloudapp.azure.com` .
 
-- DNS-lekérdezés esetén győződjön meg arról, hogy a tartomány `www.contoso.com` az Application Gateway teljes tartománynevére van feloldva.
+**3.** lépés: Tiltsa le a "Gazdagépnév beállítása a háttércímből" beállítást a társított HTTP-beállításhoz.
 
-- Az egyéni mintavétel beállításával letilthatja a **pick hostname elemet a háttérbeli http-beállítások közül**. A Azure Portal törölje a jelölést a mintavételi beállítások között. A PowerShellben ne használja a **-PickHostNameFromBackendHttpSettings** kapcsolót a **set-AzApplicationGatewayProbeConfig** parancsban. A mintavétel állomásnév mezőjében adja meg az App Service teljes tartománynevét (example.azurewebsites.net). Az Application Gateway által küldött mintavételi kérelmek ezt a teljes tartománynevet a gazdagép fejlécében hajtják végre.
+A PowerShellben ne használja a `-PickHostNameFromBackendAddress` kapcsolót a `Set-AzApplicationGatewayBackendHttpSettings` parancsban.
 
-  > [!NOTE]
-  > A következő lépéshez győződjön meg arról, hogy az egyéni mintavétel nincs társítva a háttérbeli HTTP-beállításokhoz. A HTTP-beállítások ezen a ponton továbbra is a **háttérbeli címek közül** választhatnak.
 
-- Állítsa be az Application Gateway HTTP-beállításait, hogy letiltsa a **pick hostname elemet a háttér-címről**. A Azure Portal törölje a jelölőnégyzet jelölését. A PowerShellben ne használja a **-PickHostNameFromBackendAddress** kapcsolót a **set-AzApplicationGatewayBackendHttpSettings** parancsban.
+**4.** lépés: Ahhoz, hogy a mintavételek kifogástalan állapotúként és működési forgalomként határozzák meg a háttérkiszolgálót, állítson be egy egyéni állapot-mintavételt gazdagépmezővel a gazdagép egyéni vagy alapértelmezett App Service.
 
-- Rendelje vissza az egyéni mintavételt a háttérbeli HTTP-beállításokhoz, és ellenőrizze, hogy a háttér állapota Kifogástalan-e.
+A PowerShellben ne használja a kapcsolót a parancsban, és a mintavétel -HostName kapcsolója App Service vagy alapértelmezett `-PickHostNameFromBackendHttpSettings` `Set-AzApplicationGatewayProbeConfig` tartományát használja.
 
-- Az Application Gatewaynek ekkor el kell küldenie ugyanazt az állomásnevet az `www.contoso.com` app Service-be. Az átirányítás ugyanazon az állomásnéven történik. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
-
-Az előző lépések végrehajtásához a PowerShell használatával egy meglévő beállításhoz használja az alábbi minta PowerShell-parancsfájlt. Figyelje meg, hogy nem használtuk a **-PickHostname** kapcsolókat a mintavétel és a http-beállítások konfigurációjában.
+Az előző lépések meglévő telepítéshez a PowerShell használatával való megvalósításához használja a következő PowerShell-példaszkprogramot. Figyelje meg, hogy nem használtuk a **-PickHostname** kapcsolókat a mintavétel és a HTTP-beállítások konfigurációjában.
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
@@ -144,4 +142,4 @@ Set-AzApplicationGateway -ApplicationGateway $gw
   ```
   ## <a name="next-steps"></a>Következő lépések
 
-Ha a fenti lépések nem oldották meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
+Ha a fenti lépések nem oldják meg a problémát, nyisson egy [támogatási jegyet.](https://azure.microsoft.com/support/options/)

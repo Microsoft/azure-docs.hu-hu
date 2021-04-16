@@ -16,7 +16,7 @@ ms.locfileid: "107496986"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Azure Policy Azure hálózati szolgáltatások beépített definíciói
 
-Ez az oldal az Azure [Azure Policy](../governance/policy/overview.md) beépített szabályzatdefinícióit indexeli. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
+Ez az oldal az Azure [Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciói indexe. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

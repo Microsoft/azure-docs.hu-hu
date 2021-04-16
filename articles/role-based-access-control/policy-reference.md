@@ -1,24 +1,24 @@
 ---
-title: Az Azure RBAC beépített szabályzat-definíciói
-description: Felsorolja Azure Policy az Azure RBAC beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure RBAC-hez
+description: Az Azure Policy Azure RBAC beépített szabályzatdefinícióit sorolja fel. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 792e984f8b717c7ec5474df7021a72b5e3b49ca4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0517a273684c26001af5a8e7e11eb5df56e04f86
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094820"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500114"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Az Azure RBAC beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Azure Policy Azure RBAC beépített definíciói
 
-Ez az oldal az Azure RBAC beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal az Azure RBAC [Azure Policy](../governance/policy/overview.md) szabályzatdefiníciók indexe. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-rbac"></a>Azure RBAC-vel
 

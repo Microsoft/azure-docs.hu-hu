@@ -1,7 +1,7 @@
 ---
-title: Modellek üzembe helyezése Azure Container Instances
+title: Modellek üzembe helyezése a Azure Container Instances
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként Azure Container Instances használatával.
+description: Megtudhatja, hogyan helyezheti üzembe Azure Machine Learning modelleket webszolgáltatásként a Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,60 +11,60 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 5bf3c92f07cc33b35a070a3479e0063a63c9e43a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eaf58f4f951547e6e4e461803e79844f99e630a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522019"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501739"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése az Azure Container Instances szolgáltatásban
 
-Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Container Instances (ACI) Azure Machine Learning használatával. Azure Container Instances használata, ha a következő feltételek egyike igaz:
+Megtudhatja, hogyan helyezhet Azure Machine Learning egy modellt webszolgáltatásként a Azure Container Instances (ACI) szolgáltatásban. Akkor Azure Container Instances, ha az alábbi feltételek egyike teljesül:
 
-- Gyorsan üzembe kell helyeznie és ellenőriznie kell a modellt. Előre nem kell létrehoznia ACI-tárolókat. Ezek a telepítési folyamat részeként jönnek létre.
-- A fejlesztés alatt álló modellt tesztel. 
+- Gyorsan üzembe kell helyeznie és ellenőriznie kell a modellt. Nem kell előre ACI-tárolókat létrehoznia. Ezek az üzembe helyezési folyamat részeként vannak létrehozva.
+- Egy fejlesztés alatt áll modellt tesztel. 
 
-Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos információkért lásd: a [kvóták és a régió rendelkezésre állása Azure Container instances](../container-instances/container-instances-quotas.md) cikkben.
+Az ACI kvótáiról és régiónkénti rendelkezésre állásról további információt a Kvóták és régiók rendelkezésre állása [a](../container-instances/container-instances-quotas.md) Azure Container Instances cikkben talál.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy a webszolgáltatásba való üzembe helyezés előtt helyileg végezzen hibakeresést, további információ: [helyi hibakeresés](./how-to-troubleshoot-deployment-local.md)
+> A webszolgáltatásban való üzembe helyezés előtt javasoljuk a helyi hibakeresést. További információ: [Helyi hibakeresés](./how-to-troubleshoot-deployment-local.md)
 >
 > További információ: Azure Machine Learning – [Üzembe helyezés helyi notebookba](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md)(Munkaterület Azure Machine Learning létrehozása).
 
-- A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
+- A munkaterületen regisztrált gépi tanulási modell. Ha még nem regisztrált modellel, tekintse meg a modellek üzembe helyezésének [mikéntjéhez és helyéhez lásd:](how-to-deploy-and-where.md).
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+- Az [Azure CLI-bővítmény Machine Learning szolgáltatáshoz,](reference-azure-machine-learning-cli.md) [a Azure Machine Learning Python SDK-hoz](/python/api/overview/azure/ml/intro)vagy a [Azure Machine Learning Visual Studio Code-bővítményhez.](tutorial-setup-vscode-extension.md)
 
-- A cikkben szereplő __Python__ -kódrészletek azt feltételezik, hogy a következő változók vannak beállítva:
+- A __cikkben__ a Python-kódrészletek feltételezik, hogy a következő változók vannak beállítva:
 
-    * `ws` – Állítsa be a munkaterületre.
+    * `ws` – Állítsa be a munkaterületet.
     * `model` – Állítsa be a regisztrált modellt.
-    * `inference_config` – Állítsa be a modellre vonatkozó következtetési konfigurációt.
+    * `inference_config` – Állítsa be a modell következtetési konfigurációját.
 
-    A változók beállításával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
+    A változók beállításával kapcsolatos további információkért lásd: [Modellek üzembe](how-to-deploy-and-where.md)helyezése.
 
-- A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
+- A __cikkben__ a CLI-kódrészletek feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. További információ a dokumentum létrehozásáról: [Modellek üzembe](how-to-deploy-and-where.md)helyezése.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Ha a virtuális hálózatban Azure Container Instancest használ, a virtuális hálózatnak ugyanabban az erőforráscsoporthoz kell tartoznia, mint a Azure Machine Learning-munkaterületnek.
-* Ha a virtuális hálózaton belül Azure Container Instancest használ, a munkaterület Azure Container Registry (ACR) nem lehet a virtuális hálózatban is.
+* Ha virtuális Azure Container Instances használ, a virtuális hálózatnak ugyanabban az erőforráscsoportban kell lennie, mint a Azure Machine Learning munkaterületen.
+* Ha virtuális Azure Container Instances belül használ, a munkaterület Azure Container Registry (ACR) nem lehet a virtuális hálózatban.
 
-További információ: [a virtuális hálózatokkal való következtetések biztonságossá tétele](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
+További információkért lásd: [How to secure deferencing with virtual networks (A](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)virtuális hálózatokkal való biztonságos dedokencia).
 
 ## <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
-Azure Container Instances modell üzembe helyezéséhez hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__ is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+A modell üzembe helyezéséhez a Azure Container Instances hozzon létre egy üzembe helyezési konfigurációt, amely leírja __a__ szükséges számítási erőforrásokat. Például a magok száma és a memória. Emellett szükség van egy __következtetési__ konfigurációra is, amely leírja a modell és a webszolgáltatás gazdagépéhez szükséges környezetet. A következtetési konfiguráció létrehozásával kapcsolatos további információkért lásd: [Modellek](how-to-deploy-and-where.md)üzembe helyezése.
 
 > [!NOTE]
-> * Az ACI csak olyan kisméretű modellekhez alkalmas, amelyek mérete 1 GB. 
-> * Azt javasoljuk, hogy egy egycsomópontos AK-t használjon a nagyobb modellek fejlesztéséhez.
-> * A telepítendő modellek száma az üzemelő példányok esetében 1 000 modellre korlátozódik (tárolóként). 
+> * Az ACI csak 1 GB-nál kisebb méretű kis modellekhez alkalmas. 
+> * Nagyobb modellek fejlesztéshez és teszteléshez egycsomópontos AKS használatát javasoljuk.
+> * Az üzembe helyezendő modellek száma üzemelő példányonként legfeljebb 1000 modell lehet (tárolónként). 
 
 ### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -78,15 +78,15 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
+A példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő referenciadokumentumokat:
 
 * [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
-* [Modell. Deploy](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Model.deploy](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>A parancssori felület használata
+### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
-A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje le a `mymodel:1` nevet a regisztrált modell nevére és verziójára. Cserélje le `myservice` a nevet a következő szolgáltatáshoz:
+A parancssori felület használatával való üzembe helyezéshez használja a következő parancsot. Cserélje `mymodel:1` le a helyére a regisztrált modell nevét és verzióját. Cserélje `myservice` le a helyére a szolgáltatás nevét:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -94,24 +94,24 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-További információ: az [ml Model Deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) Reference. 
+További információért tekintse meg az [az ml model deploy reference (az az ml model deploy referencia)](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) referenciát. 
 
 ## <a name="using-vs-code"></a>A VS Code használata
 
-Lásd: [modellek üzembe helyezése a vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)-ban.
+Lásd: [Modellek üzembe helyezése a VS Code-kóddal.](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)
 
 > [!IMPORTANT]
-> A teszteléshez nem kell ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint jönnek létre.
+> Az előzetes teszteléshez nem kell ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint létrejönnek.
 
 > [!IMPORTANT]
-> A rendszer az összes létrehozott ACI-erőforráshoz hozzáfűzi a kivonatoló munkaterület azonosítóját, amely az azonos munkaterületről származó összes ACI-nevet ugyanazzal az utótaggal fogja ellátni. A Azure Machine Learning szolgáltatás neve továbbra is az ügyfél által megadott "service_name" lesz, és az Azure Machine Learning SDK API-khoz kapcsolódó összes felhasználónak nincs szüksége módosításra. Nem biztosítunk garanciát a létrehozott mögöttes erőforrások neveire.
+> A kivonatolt munkaterület-azonosítót az összes létrehozott mögöttes ACI-erőforráshoz hozzáfűzjük, és az ugyanattól a munkaterülettől származó összes ACI-névnek ugyanaz lesz az utótagja. A Azure Machine Learning service neve továbbra is ugyanaz az ügyfél által megadott "service_name" lesz, és az SDK API Azure Machine Learning felé néző összes felhasználónak nincs szüksége módosításra. A mögöttes erőforrások nevére nem vállalunk garanciát.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
-* [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
+* [Üzembehelyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
+* [A webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
-* [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
-* [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
-* [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
+* [Webszolgáltatásként üzembe helyezett gépi tanulási modell felhasználta](how-to-consume-web-service.md)
+* [Monitor a Azure Machine Learning modelleket a Application Insights](how-to-enable-app-insights.md)
+* [Adatok gyűjtése éles modellekhez](how-to-enable-data-collection.md)
