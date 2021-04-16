@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
-  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.openlocfilehash: 703ea98a1db6f706395ea2c5f66bac0edc2b2f01
+  ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/09/2021
-  ms.locfileid: "100007754"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107481684"
 landingContent:
 - title: Az Azure Digital Twins bemutatása
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Mintaforgatókönyv felfedezése
-      url: quickstart-adt-explorer.md
+      url: quickstart-azure-digital-twins-explorer.md
 - title: További információ az oktatóanyagokkal
   linkLists:
   - linkListType: tutorial
@@ -113,15 +113,15 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: 'Képzési terv: fejlesztés az Azure digitális Twins szolgáltatással'
+    - text: 'Képzési út: Fejlesztés Azure Digital Twins'
       url: /learn/paths/develop-azure-digital-twins/
   - linkListType: learn
     links:
-    - text: 'A modul ismertetése: az Azure digitális Twins bemutatása'
+    - text: 'Learn-modul: Bevezetés a Azure Digital Twins'
       url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
-    - text: 'A modul megismerése: Azure digitális Twins-gráf készítése csokoládé gyári gépsor'
+    - text: 'Learn-modul: Azure Digital Twins-diagram összeállítása egy csokoládégyár-gyártósorhoz'
       url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
-    - text: 'A modul megismerése: az adatgyűjtés az Azure digitális Twins szolgáltatásba'
+    - text: 'Learn-modul: Adatok be- és Azure Digital Twins'
       url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
-    - text: 'A modul megismerése: az Azure Digital Twins kimenete az alárendelt szolgáltatásokba'
+    - text: 'Learn-modul: A Azure Digital Twins kimenete az lefelé irányuló szolgáltatásokba'
       url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

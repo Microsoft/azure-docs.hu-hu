@@ -1,48 +1,49 @@
 ---
 title: Eltérések az Azure Data Factoryhoz képest
-description: Ismerje meg, hogyan különbözik az Azure szinapszis Analytics adatintegrációs képességei a Azure Data Factory
+description: Megtudhatja, hogyan különböznek a Azure Synapse Analytics adatintegrációs képességei a Azure Data Factory
 services: synapse-analytics
 author: kromerm
 ms.service: synapse-analytics
+ms.subservice: pipeline
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 144bdf5e94f753090dd73e5839b6c1fd25f11811
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183641"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567638"
 ---
-# <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció az Azure szinapszis Analyticsben és Azure Data Factory
+# <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció a Azure Synapse Analytics és Azure Data Factory
 
-Az Azure szinapszis Analyticsben az adatintegrációs képességek, például a szinapszis-folyamatok és az Adatáramlások a Azure Data Factoryon alapulnak. További információ: [What is Azure Data Factory](../../data-factory/introduction.md).
+A Azure Synapse Analytics az olyan adatintegrációs képességek, mint a Synapse-folyamatok és az adatfolyamok az adatintegrációs képességeken Azure Data Factory. További információkért lásd [a Azure Data Factory.](../../data-factory/introduction.md)
 
 
-## <a name="available-features-in-adf--azure-synapse-analytics"></a>Az ADF elérhető funkciói & Azure szinapszis Analytics
+## <a name="available-features-in-adf--azure-synapse-analytics"></a>Az ADF-ben elérhető & Azure Synapse Analytics
 
-Tekintse meg az alábbi táblázatot a funkciók rendelkezésre állásához:
+Tekintse meg az alábbi táblázatban a funkciók rendelkezésre állását:
 
 | Kategória                 | Szolgáltatás    |  Azure Data Factory  | Azure Synapse Analytics |
 | ------------------------ | ---------- | :------------------: | :---------------------: |
-| **Integration Runtime**  | A SSIS és a SSIS Integration Runtime használata | ✓ | ✗ |
-|                          | Régiók közötti Integration Runtime támogatása (adatfolyamatok) | ✓ | ✗ |
-|                          | Integration Runtime megosztás | ✓<br><small>*Megosztható különböző adatüzemek között* | ✗ |
-|                          | Élettartam | ✓ | ✗ |
-| **Folyamatok tevékenységei** | SSIS-csomag tevékenység | ✓ | ✗ |
-|                          | Power Query tevékenység támogatása | ✓ | ✓ |
-| **A Template Gallery és a Knowledge Center** | Megoldássablonok | ✓<br><small>*Azure Data Factory sablon-gyűjtemény* | ✓<br><small>*A szinapszis munkaterület tudásalapú központja* |
-| **GIT-tárház integrációja** | GIT-integráció | ✓ | ✓ |
-| **Figyelés**           | Spark-feladatok figyelése adatfolyamként | ✗ | ✓<br><small>*A szinapszis Spark-készletek kihasználása* |
+| **Integration Runtime**  | Az SSIS és a SSIS Integration Runtime | ✓ | ✗ |
+|                          | Régiók közötti adatforgalom Integration Runtime (adatfolyamok) | ✓ | ✗ |
+|                          | Integration Runtime megosztás | ✓<br><small>*Megosztható különböző adat-üzemek között* | ✗ |
+|                          | Az idő az élőben | ✓ | ✗ |
+| **Folyamattevékenységek** | SSIS-csomagtevékenység | ✓ | ✗ |
+|                          | Az Power Query támogatása | ✓ | ✓ |
+| **Sablongaléria és tudásközpont** | Megoldássablonok | ✓<br><small>*Azure Data Factory sablongyűjtemény* | ✓<br><small>*Synapse Workspace Knowledge Center* |
+| **GIT-adattár integrációja** | GIT-integráció | ✓ | ✓ |
+| **Figyelés**           | Spark-feladatok monitorozása Adatfolyam | ✗ | ✓<br><small>*A Synapse Spark-készletek kihasználás* |
 |                          | Integráció a Azure Monitor | ✓ | ✗ |
-| **Lineage** | Támogatja a kifelé irányuló közzétételi folyamat törzsét  | ✓ | ✗ |  
+| **Lineage** | Támogatja a folyamatokból való leszárazás adatainak a Végleges nézetben való közzétételét  | ✓ | ✗ |  
 
 > [!Note]
-> Az **élő élettartam** egy olyan Azure Integration Runtime-beállítás, amely lehetővé teszi, hogy a Spark-fürt az adatfolyamok végrehajtása után egy ideig *melegen maradjon* .
+> **Az időtartam** egy Azure Integration Runtime beállítás, amely lehetővé teszi, hogy a Spark-fürt egy ideig meleg maradjon az adatfolyam végrehajtását követően. 
 >
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen meg az adatintegrációval a szinapszis munkaterületen azáltal, hogy megtanulja, hogyan kell beolvasni az [adatAzure Data Lake Storage Gen2-fiókba](data-integration-data-lake.md).
+A Synapse-munkaterület adatintegrációjának első lépésekhez megtanulja, hogyan lehet adatokat Azure Data Lake Storage [gen2-fiókba.](data-integration-data-lake.md)

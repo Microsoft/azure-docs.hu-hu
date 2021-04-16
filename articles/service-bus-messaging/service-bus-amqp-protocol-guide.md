@@ -1,416 +1,415 @@
 ---
-title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Microsoft Docs
-description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
+title: AMQP 1.0 a Azure Service Bus és Event Hubs protokoll-útmutatóban | Microsoft Docs
+description: Protokoll-útmutató az AMQP 1.0 kifejezésekhez és leíráshoz a Azure Service Bus és Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 8575e17cd06a4153928837e6990c764d7a29993f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624489"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502062"
 ---
-# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 Azure Service Bus és Event Hubs protokoll-útmutatóban
 
-Az 1,0-as speciális üzenetsor-kezelési protokoll egy szabványosított kialakítási és adatátviteli protokoll a két fél közötti üzenetek aszinkron, biztonságos és megbízható átviteléhez. Ez az Azure Service Bus üzenetkezelés és az Azure Event Hubs elsődleges protokollja.  
+Az Advanced Message Queueing Protocol 1.0 egy szabványosított keretezési és átviteli protokoll aszinkron, biztonságos és megbízható üzenetek átviteléhez két fél között. Ez az üzenetkezelés és Azure Service Bus elsődleges Azure Event Hubs.  
 
-A AMQP 1,0 az olyan széleskörű iparági együttműködés eredménye, amely többek között a Microsoft és a Red Hat köztes, a nagyvállalati szintű üzenetkezeléssel rendelkező felhasználókkal, például a JP Morgan Chasetel közösen egyesítve a pénzügyi szolgáltatások iparágát. A AMQP protokoll és a bővítmények specifikációinak technikai szabványosítási fóruma az OASIS, és nemzetközi szabványként, ISO/IEC 19494:2014-ként megszerezte a formális jóváhagyást. 
+Az AMQP 1.0 annak a széles körű iparági együttműködésnek az eredménye, amely olyan középszolgáltatói szállítókat hozott össze, mint a Microsoft és a Red Hat, és számos üzenetküldő közvetítőszolgáltató felhasználó, például a JP Morgan Morgan képviseli a pénzügyi szolgáltatási iparágat. Az AMQP protokoll és a bővítmény specifikációinak műszaki szabványosítási fóruma AZ AQP, és az ISO/IEC 19494:2014 nemzetközi szabványként hivatalos jóváhagyást ért el. 
 
 ## <a name="goals"></a>Célok
 
-Ez a cikk összefoglalja az AMQP 1,0 üzenetkezelési specifikációjának alapvető fogalmait az [Oasis AMQP technikai Bizottsága](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) által fejlesztett kiterjesztési specifikációk és a Azure Service Bus megvalósításának és a specifikációk alapján történő összeállításának módját ismerteti.
+Ez a cikk összefoglalja az AMQP 1.0 üzenetkezelési specifikáció alapvető fogalmait és az [AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) műszaki bizottság által kifejlesztett bővítményspecifikációkat, és elmagyarázza, hogyan valósítja meg és építi fel ezeket a specifikációkat az Azure Service Bus.
 
-A cél minden olyan fejlesztő számára, aki bármilyen platformon meglévő AMQP 1,0-alapú ügyfélszoftvert használ, hogy a AMQP 1,0-on keresztül képes legyen kommunikálni a Azure Service Bus használatával.
+A cél minden olyan fejlesztő számára, aki bármely meglévő AMQP 1.0-ügyfél vermét használja bármely platformon, hogy az AMQP 1.0 Azure Service Bus keresztül kommunikálhat a Azure Service Bus ügyféllel.
 
-Az általános célú AMQP 1,0-stackek, például az [Apache csontos proton](https://qpid.apache.org/proton/index.html) vagy a [AMQP.net Lite](https://github.com/Azure/amqpnetlite), implementálják az összes alapvető AMQP 1,0, például a munkameneteket és a hivatkozásokat. Ezeket az alapvető elemeket esetenként egy magasabb szintű API-val burkoltuk. Az Apache proton még két, a kötelező Messenger API-t és a reaktív reaktor API-t is kínálja.
+Az általános célú AMQP 1.0-vermek, például az [Apache Qpid Proton](https://qpid.apache.org/proton/index.html) vagy az [AMQP.NET Lite,](https://github.com/Azure/amqpnetlite)implementálják az AMQP 1.0 protokoll összes alapvető elemét, például a munkameneteket vagy a hivatkozásokat. Ezek az alapvető elemek néha egy magasabb szintű API-val vannak becsomagolva; Az Apache Proton még kettőt is kínál, az imperatív Messenger API-t és a reaktív Reactor API-t.
 
-A következő vitában feltételezzük, hogy a AMQP-kapcsolatok,-munkamenetek és-hivatkozások, valamint a keretek és a folyamatok vezérlésének kezelése a megfelelő verem (például Apache proton-C) alapján történik, és nem igényel sok figyelmet az alkalmazás fejlesztőitől. Absztraktan feltételezzük, hogy létezik néhány API-primitív, például a csatlakozás lehetősége, valamint a *küldő* és a *fogadó* absztrakciós objektumok valamilyen formájának létrehozása, amelyek ezután valamilyen formában `send()` és `receive()` művelettel rendelkeznek.
+A következő beszélgetésben feltételezzük, hogy az AMQP-kapcsolatok, -munkamenetek és -hivatkozások, valamint a képkockaátvitelek és a folyamatvezérlés kezelését a megfelelő verem (például Apache Proton-C) kezeli, és az alkalmazásfejlesztők bármilyen külön figyelmet nem igényelnek. Absztrakt módon feltételezzük néhány API-primitív meglétét, például a kapcsolódási  képességet, valamint a küldő és a fogadó absztrakciós objektumának valamilyen formáját, amelyek aztán valamilyen típusú és művelettel  `send()` is `receive()` rendelkezik.
 
-A Azure Service Bus speciális képességeinek, például az üzenetek böngészésének vagy a munkamenetek kezelésének megvitatásakor ezek a funkciók AMQP feltételekkel vannak elmagyarázva, de a feltételezett API-absztrakcióhoz hasonlóan rétegzett pszeudo-implementációnak is.
+Az alkalmazások speciális Azure Service Bus, például az üzenetek tallózása vagy a munkamenetek kezelése során ezeket a funkciókat AMQP-kifejezésekkel mutatjuk be, de a feltételezett API-absztrakción felül réteges pszeudo-implementációként is ismertetünk.
 
-## <a name="what-is-amqp"></a>Mi az a AMQP?
+## <a name="what-is-amqp"></a>Mi az AMQP?
 
-A AMQP egy keretezési és adatátviteli protokoll. A keretezés azt jelenti, hogy olyan bináris adatfolyamok szerkezetét biztosítja, amelyek a hálózati kapcsolatok bármelyik irányában áramlanak. A struktúra körvonalazza az *adatkeretek* elnevezésű különböző adatblokkokat a csatlakoztatott felek között. Az átvitel képességei biztosítják, hogy mindkét kommunikációs fél közösen megértse a keretek átadásának időpontját, és az átvitelek teljesnek tekintendők.
+Az AMQP egy keretezés és átviteli protokoll. A keretezés azt jelenti, hogy struktúrát biztosít a hálózati kapcsolat mindkét irányában áramló bináris adatfolyamok számára. A struktúra külön adatblokkokat( képkockákat) biztosít a csatlakoztatott felek közötti adatcseréhez.  Az átviteli képességek biztosítják, hogy mindkét kommunikáló fél közös képet kapjon arról, hogy mikor kell átvitni a képkockákat, és mikor tekintendők befejezettnek.
 
-A AMQP munkacsoport által a korábbi lejárt verzióktól eltérően, amelyeket továbbra is használ néhány üzenet-közvetítő, a munkacsoport végleges és szabványosított AMQP 1,0-es protokollja nem írja elő az üzenet-átvitelszervező jelenlétét, illetve az egyes entitások egy adott topológiáját.
+Az AMQP-munkacsoport által korábban létrehozott, néhány üzenetközvetítő által még használatban lévő lejárt vázlatverzióktól eltérően a munkacsoport végleges és szabványos AMQP 1.0 protokollja nem írja elő az üzenetközvetítők vagy az entitások adott topológiája jelenlétét az üzenetközvetítőn belül.
 
-A protokoll használható a szimmetrikus társ-társ kommunikációhoz, a várólistákat és a közzétételi/előfizetési entitásokat támogató üzenetküldési műveletekhez, ahogy az Azure Service Bus. Az üzenetkezelési infrastruktúrával való interakcióhoz is használható, ahol az interakciós minták eltérnek a normál várólistáktól, az Azure Event Hubs esetében is. Az Event hub úgy viselkedik, mint egy üzenetsor, amikor az eseményeket elküldjük, de a soros tárolási szolgáltatáshoz hasonlóan viselkednek, ha az események beolvasása megtörtént. némileg hasonlít egy szalagos meghajtóra. Az ügyfél egy eltolást választ a rendelkezésre álló adatfolyamba, majd az összes olyan eseményt kiszolgálja, amely az eltolástól a legújabb elérhetővé válik.
+A protokoll használható szimmetrikus, egyenrangú kommunikációhoz az üzenetsorokat támogató üzenetközvetítők és a közzétételi/előfizetési Azure Service Bus kommunikációhoz. Az üzenetkezelési infrastruktúrával való interakcióhoz is használható, ahol az interakciós minták eltérnek a normál üzenetsorok mintáitól, ahogyan az Azure Event Hubs. Az eseményközpontok üzenetsorként viselkednek, amikor eseményeket küldnek neki, de inkább soros tárolási szolgáltatásként viselkednek, amikor beolvassa az eseményeket; A egy szalagos meghajtóhoz hasonlít. Az ügyfél egy eltolást választ a rendelkezésre álló adatfolyamba, majd az ettől az eltolástól a legújabb elérhetőre kézbesíti az összes eseményt.
 
-A AMQP 1,0 protokollt úgy tervezték, hogy kiterjeszthető legyen, és további specifikációkat engedélyezzen a képességeinek javítása érdekében. A jelen dokumentumban ismertetett három kiterjesztési specifikáció ezt mutatja be. A meglévő HTTPS/WebSockets infrastruktúrával való kommunikációhoz nehéz lehet a natív AMQP TCP-portok konfigurálása. A kötési specifikáció határozza meg, hogyan lehet a AMQP-t websocketek fölé felvenni. Ahhoz, hogy az üzenetkezelési infrastruktúrát egy kérés/válasz módon kezelje felügyeleti célokra, vagy speciális funkciókat nyújtson, a AMQP-kezelési specifikáció meghatározza a szükséges alapszintű interakciós primitíveket. Az összevont hitelesítési modell integrációja esetében a AMQP-jogcím-alapú biztonsági specifikáció határozza meg, hogyan kell társítani és megújítani a hivatkozásokhoz társított engedélyezési jogkivonatokat.
+Az AMQP 1.0 protokollt úgy tervezték, hogy bővíthető legyen, és további specifikációkat biztosít a képességeinek javítása érdekében. Ezt a dokumentumban tárgyalt három bővítménysokaját szemlélteti. A meglévő HTTPS/WebSockets-infrastruktúrán keresztüli kommunikációhoz a natív AMQP TCP-portok konfigurálása nehézkes lehet. A kötési specifikáció az AMQP WebSocket-rétegekre való rétegzét határozza meg. Az üzenetkezelési infrastruktúrával felügyeleti célokból kérés/válasz módon történő kommunikációhoz vagy speciális funkciókhoz az AMQP felügyeleti specifikáció határozza meg a szükséges alapszintű interakciós primitíveket. Az összevont engedélyezési modell integrációjához az AMQP jogcímalapú biztonsági specifikáció határozza meg, hogyan társíthatja és újíthatja meg a hivatkozásokhoz társított engedélyezési jogkivonatokat.
 
-## <a name="basic-amqp-scenarios"></a>Alapszintű AMQP forgatókönyvek
+## <a name="basic-amqp-scenarios"></a>Alapszintű AMQP-forgatókönyvek
 
-Ez a szakasz a AMQP 1,0 alapszintű használatát ismerteti Azure Service Bus, amely magában foglalja a kapcsolatok, a munkamenetek és a hivatkozások létrehozását, valamint az üzenetek átvitelét Service Bus entitásokból, például várólistákból, témakörökből és előfizetésből.
+Ez a szakasz az AMQP 1.0 és az Azure Service Bus alapszintű használatát ismerteti, beleértve a kapcsolatok, munkamenetek és hivatkozások létrehozását, valamint az üzenetek Service Bus-entitások, például üzenetsorok, témakörök és előfizetések közötti átvitelét.
 
-A leghitelesebb forrás, amelyből megismerheti, hogy a AMQP hogyan működik a [AMQP 1,0 specifikációban](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html), de a specifikációt a megvalósítás pontos útmutatója, és nem a protokoll tanítása érdekében írták. Ez a szakasz az AMQP 1,0-et használó Service Bus használatának leírásához szükséges nagy terminológia bevezetését ismerteti. A AMQP átfogóbb bevezetéséhez, valamint a AMQP 1,0 szélesebb körű megvitatására tekintse át [ezt a videó tanfolyamot][this video course].
+Az AMQP működését a leg mérvadóbb forrás az [AMQP 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html)specifikációja, de a specifikáció úgy lett megírva, hogy pontosan a megvalósítást irányítsa, és ne a protokoll tanítását. Ez a szakasz az AMQP 1.0 használatának leírására Service Bus terminológiát ismerteti. Az AMQP átfogóbb bemutatásához, valamint az AMQP 1.0 szélesebb körű bemutatásához tekintse át ezt a [videós kurzust.][this video course]
 
 ### <a name="connections-and-sessions"></a>Kapcsolatok és munkamenetek
 
-A AMQP meghívja a kommunikáló programok *tárolóit*; Ezek olyan *csomópontokat* tartalmaznak, amelyek a tárolóban lévő entitásokat kommunikálják. A várólista lehet egy csomópont. A AMQP lehetővé teszi a többszörös használatot, így egyetlen kapcsolat használható a csomópontok közötti számos kommunikációs útvonalhoz. egy alkalmazás-ügyfél például egyidejűleg tud fogadni egy várólistából, és ugyanazon a hálózati kapcsolaton keresztül küld egy másik várólistára.
+Az AMQP a kommunikáló programok *tárolóit hívja;* Ezek *csomópontokat tartalmaznak,* amelyek a tárolókon belüli kommunikáló entitások. Az üzenetsor lehet ilyen csomópont. Az AMQP lehetővé teszi a multiplexolást, így egyetlen kapcsolat használható a csomópontok közötti számos kommunikációs útvonalhoz; Egy alkalmazás ügyfél például egyidejűleg fogadhatja az egyik üzenetsort, és ugyanazon a hálózati kapcsolaton keresztül küldhet üzeneteket egy másik üzenetsorba.
 
-![A tárolók közötti munkameneteket és kapcsolatokat bemutató diagram.][1]
+![A tárolók közötti munkameneteket és kapcsolatokat bemutató ábra.][1]
 
-A hálózati kapcsolat így a tárolóra van rögzítve. Az ügyfél szerepkör tárolója kezdeményezi a kimenő TCP szoftvercsatorna-kapcsolatot a fogadó szerepkör egyik tárolójában, amely figyeli és fogadja a bejövő TCP-kapcsolatokat. A kapcsolati kézfogás magában foglalja a protokoll verziószámának egyeztetését, a Transport Level Security (TLS/SSL) használatának bejelentését vagy egyeztetését, valamint egy hitelesítési/engedélyezési kézfogást a SASL alapuló kapcsolati hatókörben.
+A hálózati kapcsolat így a tárolóhoz van horgonyozva. Ezt az ügyfélszerepkör tárolója kezdeményezi, amely kimenő TCP szoftvercsatornás kapcsolatot létesít a fogadói szerepkör egyik tárolója felé, amely a bejövő TCP-kapcsolatokat figyeli és fogadja. A kapcsolati kézfogás magában foglalja a protokoll verziójának egyeztetését, a Transport Level Security (TLS/SSL) használatának deklarál vagy egyeztetését, valamint egy hitelesítési/engedélyezési kézfogást a SASL-alapú kapcsolati hatókörben.
 
-Azure Service Bus a TLS-t mindig használni kell. Támogatja a 5671-es TCP-porton keresztüli kapcsolatokat, így a TCP-kapcsolat első bekerül a TLS-be a AMQP protokoll kézfogásának megadása előtt, valamint támogatja a 5672-es TCP-porton keresztüli csatlakozásokat, amelyekkel a kiszolgáló azonnal a TLS-kapcsolat kötelező frissítését biztosítja a AMQP által meghatározott modell használatával. A AMQP WebSockets kötés létrehoz egy alagutat a 443-as TCP-porton, amely ezután egyenértékű a AMQP 5671-kapcsolatokkal.
+Azure Service Bus TLS-t mindig használni kell. Támogatja az 5671-es TCP-porton keresztüli kapcsolatokat, ahol a TCP-kapcsolatot először át kell írni a TLS-sel, mielőtt belépne az AMQP protokoll kézfogásba, valamint támogatja az 5672-es TCP-porton keresztüli kapcsolatokat is, ahol a kiszolgáló azonnal kötelező frissítést biztosít a TLS-hez az AMQP által előírt modell használatával. Az AMQP WebSockets kötés egy alagutat hoz létre a 443-as TCP-porton keresztül, amely ezután egyenértékű az AMQP 5671-es kapcsolatokkal.
 
-A kapcsolatok és a TLS beállítása után Service Bus két SASL mechanizmust kínál:
+A kapcsolat és a TLS beállítása után a Service Bus KÉT SASL-mechanizmust kínál:
 
-* SASL PLAIN általában a Felhasználónév és a jelszó hitelesítő adatainak egy kiszolgálóra való átadására szolgál. Service Bus nem rendelkezik fiókkal, de névvel ellátott [megosztott hozzáférésű biztonsági szabályok](service-bus-sas.md), amelyek jogosultságokat biztosítanak, és egy kulccsal vannak társítva. A rendszer a Felhasználónév és a kulcs (Base64 kódolású szöveg) nevét használja jelszóként. A választott szabállyal társított jogosultságok szabályozzák a kapcsolatban engedélyezett műveleteket.
-* A SASL NÉVTELENül használja a SASL-engedélyezés megkerülését, ha az ügyfél szeretné használni a később ismertetett jogcímbarát (CBS) modellt. Ezzel a beállítással egy ügyfélkapcsolatot névtelenül lehet létrehozni egy rövid ideig, amíg az ügyfél csak a CBS-végponttal tud kommunikálni, és a CBS-kézfogásnak be kell fejeződnie.
+* SASL PLAIN gyakran használják felhasználónév és jelszó hitelesítő adatainak a kiszolgálónak való megadására. Service Bus nem rendelkezik fiókokkal, de [](service-bus-sas.md)megosztott hozzáférésű biztonsági szabályok () nevű szabályok, amelyek jogot osztják ki, és egy kulcshoz vannak társítva. A rendszer egy szabály nevét használja felhasználónévként, a kulcsot (base64 kódolású szövegként) pedig jelszóként. A kiválasztott szabályhoz társított jogosultságok szabályozzák a kapcsolaton engedélyezett műveleteket.
+* A SASL ANONYMOUS az SASL-hitelesítés megkerülését jelenti, ha az ügyfél a későbbiekben ismertetett jogcímalapú biztonsági (CBS) modellt szeretné használni. Ezzel a beállítással egy rövid ideig névtelenül létesíthet ügyfélkapcsolatot, amelynek során az ügyfél csak a CBS-végponttal kommunikálhat, és a CBS-kézfogásnak be kell fejeződnie.
 
-A szállítási kapcsolat létrejötte után a tárolók kinyilvánítják a maximálisan kezelni kívánt képkockákat, és az Üresjárati időkorlát után egyoldalúan bontja a kapcsolatot, ha nincs tevékenység a kapcsolaton.
+Az átviteli kapcsolat létrejötte után a tárolók azt a maximális keretméretet deklarálják, amelyet hajlandóak kezelni, és az üresjárati időtúllépés után egymás után megszakítják a kapcsolatot, ha nincs tevékenység a kapcsolatban.
 
-Azt is nyilatkozzák, hogy hány párhuzamos csatorna támogatott. A csatorna egy egyirányú, kimenő, virtuális átviteli útvonal a kapcsolatok tetején. A munkamenetek minden összekapcsolt tárolóból egy kétirányú kommunikációs útvonalat alkotnak.
+Emellett azt is deklarálják, hogy hány párhuzamos csatorna támogatott. A csatorna egy egyirányú, kimenő, virtuális átviteli útvonal a kapcsolat felett. A munkamenetek minden összekapcsolt tárolóból egy csatornát hoznak létre kétirányú kommunikációs útvonalon.
 
-A munkamenetek ablakos folyamat-ellenőrzési modellel rendelkeznek; a munkamenetek létrehozásakor mindkét fél kijelenti, hogy hány képkockát szeretne fogadni a fogadási ablakába. Ahogy a felek Exchange-keretek, az átvitt keretek kitöltik az ablakot, és az átvitel leáll, amikor az ablak megtelt, és amíg az ablak alaphelyzetbe nem áll a *flow performatív* (a *performatív* a két fél között cserélt protokoll szintű kézmozdulatok AMQP kifejezése).
+A munkamenetek ablakalapú folyamvezérlési modellel vannak; A munkamenet létrehozásakor minden fél bejelentette, hogy hány képkockát fogad el a fogadási ablakban. Ahogy a felek képkockákat cserélnek, az átvitt képkockák kitöltik az ablakot, és az átvitelek leállnak, amikor az ablak megtelik, és amíg az ablak nincs alaphelyzetbe állítva vagy ki nem bontva a folyamat *performative* (a *performative* a két fél közötti protokollszintű kézmozdulatok AMQP-kifejezése).
 
-Ez az ablak alapú modell nagyjából hasonlít az ablakos folyamatok vezérlésének TCP-fogalmára, de a szoftvercsatornán belüli munkamenet szintjén. A protokoll azon koncepciója, amely lehetővé teszi több egyidejű munkamenet használatát, így a magas prioritású forgalmat a korábbi, az országúti expressz sávban, például a normál forgalomnál lehet kirohanni.
+Ez az ablakalapú modell nagyjából hasonló az ablakalapú folyamatvezérlés TCP-fogalmához, de a szoftvercsatornán belüli munkamenet szintjén. A protokoll koncepciója szerint több egyidejű munkamenetet is engedélyezhet, így a magas prioritású forgalom a normál forgalom szabályozása után, például egy gyorsforgalmi expressz sávon haladhat át.
 
-Azure Service Bus jelenleg pontosan egy munkamenetet használ az egyes kapcsolatokhoz. A Service Bus maximális mérete 262 144 bájt (256-K bájt) Service Bus standard. 1 048 576 (1 MB) Service Bus prémium és Event Hubs. A Service Bus nem határoz meg egy adott munkamenet-szintű szabályozási időszakot, de a kapcsolati szintű folyamatvezérlés részeként rendszeresen alaphelyzetbe állítja az ablakot (lásd [a következő szakaszt](#links)).
+Azure Service Bus jelenleg minden kapcsolathoz pontosan egy munkamenetet használ. A Service Bus maximális keretméret 262 144 bájt (256 K bájt) a Standard Service Bus számára. Prémium és prémium szintű Service Bus 1 048 576 (1 MB) Event Hubs. Service Bus nem ír elő konkrét munkamenetszintű szabályozási ablakokat, de a hivatkozásszintű folyamatvezérlés részeként rendszeresen alaphelyzetbe állítja az ablakot (lásd a következő [szakaszt).](#links)
 
-A kapcsolatok, a csatornák és a munkamenetek elmúlóak. Ha az alapul szolgáló kapcsolat összeomlik, a kapcsolatok, a TLS-alagút, a SASL engedélyezési környezet, és a munkameneteket újra kell létrehozni.
+A kapcsolatok, a csatornák és a munkamenetek időfokosak. Ha a mögöttes kapcsolat összeomol, a kapcsolatokat, a TLS-alagutat, az SASL-hitelesítési környezetet és a munkameneteket újra kellabni.
 
-### <a name="amqp-outbound-port-requirements"></a>AMQP kimenő portokra vonatkozó követelmények
+### <a name="amqp-outbound-port-requirements"></a>AmQP kimenő portra vonatkozó követelmények
 
-A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi tűzfalon kell megnyitnia a 5671-es és a 5672-es portot. A portok mellett szükség lehet további portok megnyitására is, ha a [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) szolgáltatás engedélyezve van. `EnableLinkRedirect` a egy új üzenetkezelési funkció, amely segít az egyugrásos kihagyásban az üzenetek fogadása közben, így segítve az átviteli sebesség növelését. Az ügyfél az alábbi képen látható módon elkezdi a közvetlen kommunikációt a 104XX a porttartomány-tartományon keresztül. 
+Az AMQP-kapcsolatokat TCP protokollon használó ügyfelek számára az 5671-es és az 5672-es portot meg kell nyitni a helyi tűzfalon. Ezeken a portokon kívül további portokat is meg kell nyitni, ha az [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) funkció engedélyezve van. `EnableLinkRedirect` A egy új üzenetkezelési funkció, amely segít az egy ugrásos üzenetek fogadása közbeni kihagyásban, így növeli az átviteli sebességet. Az ügyfél közvetlenül a háttérszolgáltatással kommunikálna a 104XX porttartományon keresztül, ahogy az alábbi képen látható. 
 
-![Cél portok listája][4]
+![Célportok listája][4]
 
-A .NET-ügyfelek meghiúsulnak a SocketException ("a hozzáférési engedélyeik által tiltott szoftvercsatornák elérésére tett kísérlet"), ha a tűzfal blokkolja ezeket a portokat. A szolgáltatás letiltható `EnableAmqpLinkRedirect=false` a kapcsolati karakterlánc beállításával, amely arra kényszeríti az ügyfeleket, hogy az 5671-as porton keresztül kommunikáljanak a távoli szolgáltatással.
+A .NET-ügyfél SocketException (Szoftvercsatorna-kivédés) hibát adna vissza ("A szoftvercsatornák elérésére tett kísérlet a hozzáférési engedélyei által tiltott módon történt"), ha a tűzfal blokkolja ezeket a portokat. A szolgáltatás letiltható a kapcsolati sztring beállításával, amely arra kényszeríti az ügyfeleket, hogy az 5671-es porton keresztül kommunikáljanak a távoli `EnableAmqpLinkRedirect=false` szolgáltatással.
 
 
 ### <a name="links"></a>Hivatkozások
 
-A AMQP a hivatkozásokon keresztül továbbítja az üzeneteket. A hivatkozás egy munkameneten keresztül létrehozott kommunikációs útvonal, amely lehetővé teszi, hogy az üzeneteket az egyik irányba vigye át. az átvitel állapotának egyeztetése a kapcsolaton keresztül történik, és kétirányú a csatlakoztatott felek között.
+Az AMQP hivatkozásokon keresztül továbbítja az üzeneteket. A hivatkozás egy munkameneten keresztül létrehozott kommunikációs útvonal, amely lehetővé teszi az üzenetek átvitelét egy irányban; az átadási állapot egyeztetése a csatlakoztatott felek közötti kapcsolaton és kétirányú kapcsolaton keresztül ért véget.
 
-![Képernyőfelvétel a két tároló közötti kapcsolati kapcsolattal rendelkező munkamenetről.][2]
+![Képernyőkép egy két tároló közötti kapcsolaton keresztüli munkamenetről.][2]
 
-A hivatkozásokat a tárolók bármikor létrehozhatják egy meglévő munkamenet során, így a AMQP számos más protokolltól, például a HTTP-től és a MQTT-tól eltérő módon hozhatók létre, ahol az átvitel és az átadás útvonalának megkezdése kizárólagos jogosultságot biztosít a szoftvercsatorna-kapcsolatot létrehozó fél számára.
+A hivatkozások bármikor és egy meglévő munkamenetben is létrejönnek tárolók használatával, ami miatt az AMQP eltér számos más protokolltól, például a HTTP-től és az MQTT-től, ahol az átvitelek és átviteli útvonalak kezdeményezése a szoftvercsatorna-kapcsolatot létrehozó fél kizárólagos jogosultsága.
 
-A csatolást kezdeményező tároló megkéri a szemközti tárolót, hogy fogadjon egy hivatkozást, és kiválasztja a küldő vagy a fogadó szerepkört. Ebből kifolyólag a tárolók nem hozhatnak létre egyirányú vagy kétirányú kommunikációs útvonalakat, és az utóbbit a hivatkozások pár hivatkozása is létrehozhatja.
+A hivatkozás kezdeményező tároló arra kéri az ellenkező tárolót, hogy fogadja el a hivatkozást, és a küldő vagy a fogadó szerepkört választja. Ezért bármelyik tároló kezdeményezhet egyirányú vagy kétirányú kommunikációs útvonalak létrehozását, amelyek közül az utóbbi hivatkozáspárokként van modellve.
 
-A hivatkozások neve és a csomópontokhoz van társítva. Ahogy azt az elején is említettük, a csomópontok egy tárolón belüli kommunikáló entitások.
+A hivatkozások neve és csomópontokhoz vannak társítva. Ahogy az elején is volt, a csomópontok a tárolón belüli kommunikáló entitások.
 
-Service Bus a csomópontok közvetlenül egyenértékűek egy üzenetsor, egy témakör, egy előfizetés vagy egy üzenetsor vagy előfizetés kézbesítetlen levelek-alvárólistájának. A AMQP használt csomópont neve ezért a Service Bus névtérben található entitás relatív neve. Ha a várólista neve, akkor az a `myqueue` AMQP-csomópont neve is. A témakör-előfizetés a HTTP API-konvenciót követi a "Subscriptions" (előfizetések) erőforrás-gyűjteménybe rendezve, így a témakör **mytopic** **a AMQP** csomópont neve **mytopic/Subscriptions/sub**.
+A Service Bus csomópontok közvetlenül egyenértékűek az üzenetsorokkal, témakörökvel, előfizetésekkel vagy az üzenetsorok vagy előfizetések holtponti alsorokkal. Az AMQP-ben használt csomópontnév ezért az entitás relatív neve az Service Bus névtéren belül. Ha az üzenetsor neve `myqueue` , akkor ez az AMQP-csomópont neve is. A témakör-előfizetés úgy követi a HTTP API-konvenciót, hogy egy  "előfizetések" erőforrás-gyűjteménybe rendezi őket, így a **mytopic** témakör előfizetési alcsoportja a **mytopic/subscriptions/sub** AMQP csomópontnévvel rendelkezik.
 
-A Connecting ügyfélnek a hivatkozások létrehozásához helyi csomópont nevét is kell használnia. Service Bus nem a csomópontok neveivel kapcsolatos előírásokat tartalmaz, és nem értelmezi őket. A AMQP 1,0-ügyfelek általában egy sémát használnak annak biztosítására, hogy az ideiglenes csomópontok nevei egyediek legyenek az ügyfél hatókörében.
+A kapcsolat létrehozásához a csatlakozó ügyfélnek is helyi csomópontnevet kell használnia; Service Bus nem előíró a csomópontok neveivel kapcsolatban, és nem értelmezi azokat. Az AMQP 1.0-ügyfél vermek általában egy sémát használnak annak érdekében, hogy ezek a körívív csomópontnevek egyediek az ügyfél hatókörében.
 
 ### <a name="transfers"></a>Transzferek
 
-A kapcsolat létrejötte után az üzenetek átvihetők a hivatkozás fölé. A AMQP az átvitelt egy explicit protokoll-kézmozdulattal (az *átvitel* performatív) hajtja végre, amely egy hivatkozáson keresztül áthelyezi az üzenetet a feladótól a fogadóba. Az átvitel akkor fejeződik be, amikor a rendszer "rendezi", ami azt jelenti, hogy mindkét fél közösen megértette az átvitel eredményét.
+Miután létrejött egy hivatkozás, az üzenetek átvihetők a hivatkozáson keresztül. Az AMQP-ben az átvitel explicit protokollos kézmozdulattal (az átviteli művelettel) van végrehajtva, amely egy üzenetet továbbít a küldőtől a fogadóhoz egy hivatkozáson keresztül.  Az átadás akkor fejeződik be, ha az átadás "megegyezésre kész", ami azt jelenti, hogy mindkét fél megosztottan érti az átadás kimenetelét.
 
-![Egy diagram, amely a küldő és a fogadó közötti üzenet átvitelét, valamint az abból származó hajlamot mutatja.][3]
+![Diagram egy üzenet küldő és fogadó közötti átviteléről, valamint az eredményként kapott diszpozícióról.][3]
 
-A legegyszerűbb esetben a küldő dönthet úgy, hogy "előre rendezve" üzenetet küld, ami azt jelenti, hogy az ügyfél nem érdekli az eredmény, és a fogadó nem ad visszajelzést a művelet eredményéről. Ezt a módot a Service Bus a AMQP protokoll szintjén támogatja, de az ügyféloldali API-k egyikében sincs kitéve.
+A legegyszerűbb esetben a küldő dönthet úgy, hogy előre meghatározott üzeneteket küld, ami azt jelenti, hogy az ügyfelet nem érdekli az eredmény, és a fogadó nem ad visszajelzést a művelet eredményéről. Ezt a módot a Service Bus AMQP protokollszinten támogatja, de egyik ügyfél API-ban sem teszi elérhetővé.
 
-A rendszeres eset az, hogy az üzeneteket a rendszer nem rendezi, és a fogadó ezt követően az elfogadást vagy elutasítást jelzi a *törlési* performatív használatával. Elutasítás akkor következik be, ha a fogadó semmilyen okból nem fogadja el az üzenetet, és az Elutasítási üzenet a AMQP által definiált hibával kapcsolatos információkat tartalmaz. Ha az üzenetek elutasítása a Service Bus belső hibái miatt történik, a szolgáltatás az adott struktúrán belül további adatokat ad vissza, amelyek a támogatási kérések bejelentésére szolgáló diagnosztikai útmutatók biztosításához használhatók. További információ a hibákról.
+A szokásos eset az, hogy az üzenetek küldése nem egyértelmű, a fogadó pedig az elfogadást vagy az elutasítást jelzi a *diszpozíció* teljesítményéről. Elutasításra akkor kerül sor, ha a címzett bármilyen okból nem tudja elfogadni az üzenetet, és az elutasítási üzenet az okról tartalmaz információt, amely az AMQP által meghatározott hibastruktúra. Ha az üzeneteket a Service Bus belső hibái miatt utasítják el, a szolgáltatás további információkat ad vissza a struktúrán belül, amelyek segítségével diagnosztikai tippeket lehet adni a támogatási munkatársaknak, ha támogatási kéréseket küld. A hibákról a későbbiekben olvashat bővebben.
 
-Az elutasítás egy speciális formája a *felszabadított* állapot, amely azt jelzi, hogy a fogadó nem rendelkezik technikai kifogással az átvitelhez, de nem érdekli az átvitel rendezése is. Ez az eset például akkor áll fenn, ha egy üzenetet egy Service Bus ügyfélnek küldenek, és az ügyfél úgy dönt, hogy "elhagyja" az üzenetet, mert nem tudja végrehajtani az üzenet feldolgozásával létrejövő munkát. az üzenet kézbesítése nem vétkes. Ennek az állapotnak a variációja a *módosított* állapot, amely lehetővé teszi, hogy az üzenet a megjelenésének megfelelően módosítható legyen. A Service Bus jelenleg nem használja ezt az állapotot.
+Az elutasítás egy speciális  formája a felszabadított állapot, amely azt jelzi, hogy a címzettnek nincs technikai kifogásolása az átadással szemben, és nem is érdekli az átadás rendezése. Ez az eset például akkor áll fenn, amikor egy üzenetet kézbesít egy Service Bus-ügyfélnek, és az ügyfél úgy dönt, hogy "felhagy" az üzenettel, mert nem tudja végrehajtani az üzenet feldolgozásával kapcsolatos munkát; az üzenetek kézbesítése nem hibás. Ennek az állapotnak egy változata a *módosított* állapot, amely lehetővé teszi az üzenet módosítását annak kiadott állapotában. Ezt az állapotot jelenleg nem használja a Service Bus a következő: .
 
-A AMQP 1,0 specifikáció a *kapott* további állapotot határozza meg, amely különösen segít a kapcsolat helyreállításának kezelésében. A link Recovery lehetővé teszi egy hivatkozás állapotának, valamint az új kapcsolaton és munkameneten felüli függőben lévő kézbesítések helyreállítását, ha az előző kapcsolat és a munkamenet megszakadt.
+Az AMQP 1.0 specifikáció egy fogadott nevű további diszpozíciós állapotot határoz *meg,* amely kifejezetten segít a hivatkozás-helyreállítás kezelésében. A kapcsolat helyreállítása lehetővé teszi a hivatkozás és a függőben lévő kézbesítések állapotának újrakonfigurálását egy új kapcsolat és munkamenet után, amikor az előző kapcsolat és munkamenet elveszett.
 
-Service Bus nem támogatja a csatolások helyreállítását; Ha az ügyfél elveszíti a kapcsolatot, hogy Service Bus egy nem teljesített üzenetküldési folyamatban, az üzenet átvitele megszakad, és az ügyfélnek újra kell kapcsolódnia, újra létre kell hoznia a hivatkozást, majd újra kell próbálkoznia az átvitelsel.
+Service Bus nem támogatja a hivatkozás-helyreállítást; Ha az ügyfél függőben lévő, nem Service Bus üzenetátvitellel elveszíti a kapcsolatot az Service Bus-hoz, akkor az üzenetátvitel megszakad, és az ügyfélnek újra kell csatlakoznia, újból fel kell szabadodni a hivatkozást, majd újra meg kell próbálkozni az átvitellel.
 
-Ennek megfelelően a Service Bus és Event Hubs támogatja a "legalább egyszer" típusú átvitelt, ahol a küldő biztos lehet abban, hogy az üzenetet tárolják és elfogadták, de nem támogatják a "pontosan egyszeri" átvitelt a AMQP szinten, ahol a rendszer megkísérli a kapcsolat helyreállítását, és folytatja a kézbesítési állapot egyeztetését az üzenetkezelés megkettőzésének elkerülése érdekében.
+Ezért az Service Bus és az Event Hubs támogatják az "legalább egyszer" történő átvitelt, ahol a küldő számára biztosítható az üzenet tárolása és elfogadottása, de nem támogatják az AMQP szintjén az "pontosan egyszer" történő átvitelt, ahol a rendszer megkísérli helyreállítani a hivatkozást, és folytatná a kézbesítési állapot egyeztetését az üzenetátadás duplikálásának elkerülése érdekében.
 
-A lehetséges duplikált küldések kompenzálása érdekében a Service Bus támogatja az ismétlődő észlelést a várólisták és témakörök választható funkciójaként. A duplikált észlelési funkció az összes bejövő üzenet üzenet-azonosítóját rögzíti egy felhasználó által meghatározott időablakban, majd csendesen eldobja az azonos üzenet-azonosítókkal küldött üzeneteket az adott ablakban.
+A lehetséges ismétlődő kérések kompenzálására a Service Bus támogatja a duplikált elemek észlelését mint választható funkciót az üzenetsorok és témakörök számára. A duplikált észlelés egy felhasználó által megadott időablakban rögzíti az összes bejövő üzenet üzenet-azonosítóját, majd csendesen eldobja az azonos üzenet-azonosítóval küldött összes üzenetet ugyanabban az ablakban.
 
 ### <a name="flow-control"></a>Folyamatvezérlés
 
-A korábban tárgyalt munkamenet-szintű folyamat-vezérlési modellen kívül minden hivatkozás saját flow-vezérlési modellel rendelkezik. A munkamenet-szintű folyamat vezérlése megvédi a tárolót attól, hogy egyszerre túl sok képkockát kezeljen, a kapcsolati szintű flow-vezérlés pedig az alkalmazás felügyeletét, hogy hány üzenetet szeretne kezelni egy hivatkozásról és mikor.
+A korábban tárgyalt munkamenetszintű folyamatvezérlési modellen kívül minden hivatkozás saját folyamatvezérlési modellel rendelkezik. A munkamenetszintű folyamvezérlés megvédi a tárolót attól, hogy egyszerre túl sok képkockát kezeljen, a kapcsolatszintű folyamvezérlés pedig az alkalmazásra helyezi a felelőst, hogy hány üzenetet szeretne kezelni egy hivatkozásból, és mikor.
 
-![A forrás, a cél, a forrásport, a célport és a protokoll nevét bemutató napló képernyőképe. Az első sorban a 10401-as célport (0x28 A 1) feketén van.][4]
+![Képernyőkép egy naplóról, amely a forrást, a célt, a forrásportot, a célportot és a protokoll nevét mutatja. Az első sorban az 10401-es célport (0x28 A 1) fekete színben van felvázolva.][4]
 
-Egy hivatkozáson az átvitelek csak akkor történnek, ha a küldőnek van elegendő *hivatkozása*. A link Credit a fogadó által a *flow* performatív használatával beállított számláló, amely egy hivatkozásra terjed ki. Ha a küldőhöz hivatkozás-jóváírás van hozzárendelve, az üzenetek kézbesítésével megkísérli ezt a jóváírást használni. Minden üzenet kézbesítése eggyel csökkenti a fennmaradó hivatkozás-jóváírást. A hivatkozás felhasználása után a kézbesítések leállnak.
+Hivatkozás esetén az átvitel csak akkor történhet meg, ha a küldő elegendő *hivatkozási jóváírással rendelkezik.* A hivatkozási jóváírás a fogadó  által beállított számláló, amely a folyamat teljesítménymutatóját használja, és amelynek hatóköre egy hivatkozásra terjed ki. Amikor a küldőhöz hivatkozási kreditet rendelnek, üzenetek kézbesítése által megkísérli a kreditet használni. Minden egyes üzenetk kézbesítése 1-el szorra lecsitja a fennmaradó hivatkozási kreditet. A hivatkozási kreditek használata után a kézbesítések leállnak.
 
-Ha Service Bus a fogadó szerepkörben van, az azonnal biztosítja a küldő számára a bőséges hivatkozási jóváírást, így az üzenetek azonnal elküldhetők. A kapcsolati kreditek használatakor Service Bus alkalmanként egy *flow* -performatív küld a küldőnek a kapcsolati kreditek egyenlegének frissítéséhez.
+Amikor Service Bus a címzett szerepkörben van, azonnal bőséges hivatkozási kreditet biztosít a küldőnek, így azonnal elküldheti az üzeneteket. A hivatkozási kreditek használata során a Service Bus időnként olyan folyamatot küld *a* küldőnek, amely frissíti a hivatkozási kreditegyenleget.
 
-A küldő szerepkörben Service Bus üzeneteket küld az összes függőben lévő hivatkozás jóváírásának használatára.
+A küldő szerepkörben a Service Bus üzeneteket küld, hogy felhasználhatja a függőben lévő hivatkozási krediteket.
 
-Az API szintjén a "Receive" hívás egy olyan *folyamatot* performatív, amelyet az ügyfél Service Bus küld, és Service Bus a hitelkeretet az első elérhető, kinyitott üzenet alapján, zárolással és a sorból való átvitelsel. Ha nincs elérhető üzenet a kézbesítéshez, az adott entitással létesített bármelyik kapcsolatra vonatkozó, az adott entitáshoz tartozó fennmaradó kreditet az érkezési sorrendben rögzíti a rendszer, és az üzenetek zárolva lesznek, és az elérhetővé válnak, hogy a rendelkezésre álló krediteket használják.
+Az API szintjén a "fogadási"  hívás az ügyfél által az Service Bus-nak küldött folyamat-teljesítményre utal, és a Service Bus felhasználja ezt a kreditet az üzenetsorból az első elérhető, feloldott üzenet fogadása, zárolása és átvitele által. Ha nincs azonnal elérhető üzenet kézbesítésre, az adott entitással létrehozott bármilyen kapcsolaton keresztüli, függőben lévő kreditek az érkezésük sorrendjében rögzítve maradnak, és az üzenetek zárolva lesznek és át lesznek adva, amint elérhetővé válnak, hogy a fennálló krediteket használják.
 
-Az üzenet zárolása akkor jelenik meg, ha az átvitel bekerül az egyik olyan terminál-állapotba, amelyet *elfogadtak*, *visszautasítanak* vagy *felszabadítanak*. Az üzenet el lesz távolítva Service Bus a terminál állapotának *elfogadásakor*. Service Bus marad, és a következő fogadónak küldi el, amikor az átvitel eléri a többi állapotot. Service Bus automatikusan áthelyezi az üzenetet az entitás kézbesítetlen levelek-sorába, amikor eléri az entitás számára engedélyezett maximális kézbesítési értéket az ismételt elutasítás vagy kiadás miatt.
+Az üzenetek zárolása akkor szabadul fel, ha az átvitel  *elfogadott,* elutasított vagy kiadott terminál-államba *kerül.* Az üzenet el lesz távolítva a Service Bus a terminálállapot elfogadott *állapotából.* A rendszer a Service Bus, és a következő fogadóhoz továbbítja, amikor az átvitel eléri a többi államot. Service Bus automatikusan áthelyezi az üzenetet az entitás kézbesítő üzenetsorába, amikor az ismétlődő elutasítások vagy kiadások miatt eléri az entitáshoz engedélyezett maximális kézbesítési darabszámot.
 
-Annak ellenére, hogy a Service Bus API-k közvetlenül nem tesznek elérhetővé ilyen lehetőséget, az alacsonyabb szintű AMQP protokoll-ügyfél a link-Credit modellt használva a "lekéréses" interakciót az egyes fogadási kérelmek egy "leküldéses stílusú" modellbe való kiküldésére használhatja, ha nagyszámú hivatkozás-jóváírást bocsát ki, majd a további interakció nélkül elérhetővé válik. A leküldéses szolgáltatás a [MessagingFactory. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) vagy a [MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) tulajdonság beállításain keresztül támogatott. Ha nem nulla, a AMQP-ügyfél a hivatkozási jóváírásként használja.
+Bár a Service Bus API-k jelenleg nem fedik fel közvetlenül ezt a lehetőséget, egy alacsonyabb szintű AMQP protokoll-ügyfél a link-credit modell használatával minden fogadási kérelemhez egy egységnyi kredit kiadásának "lekéréses stílusú" interakcióját válthatja "leküldéses stílusú" modellé azáltal, hogy nagy számú hivatkozási kreditet ad ki, majd üzeneteket kap, amint további interakciók nélkül elérhetővé válnak. A leküldés a [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) vagy [a MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) tulajdonságbeállításokkal támogatott. Ha nem nulla, az AMQP-ügyfél azt használja hivatkozási kreditként.
 
-Ebben a kontextusban fontos tisztában lenni azzal, hogy az entitáson belüli üzenet zárolásának lejárati ideje akkor kezdődik el, amikor az üzenetet az entitásról küldi el, nem pedig az üzenet a drótra helyezésekor. Ha az ügyfél készenléti állapotot jelez az üzenetek küldéséhez a hivatkozás jóváírásával, ezért a rendszer az üzeneteket aktívan a hálózaton keresztül húzza, és készen áll a kezelésre. Ellenkező esetben előfordulhat, hogy az üzenet zárolása még az üzenet lejárta előtt lejár. A kapcsolati kreditek vezérlésének használata közvetlenül tükrözi az azonnali készültséget a fogadónak küldött, elérhető üzenetek kezeléséhez.
+Ebben a kontextusban fontos tudni, hogy az entitáson belüli üzenet zárolásának lejárati ideje akkor kezdődik, amikor az üzenetet az entitástól veszik, nem pedig akkor, amikor az üzenet a vezetékre van kötve. Amikor az ügyfél azt jelzi, hogy készen áll az üzenetek fogadására hivatkozási kredit kiállításával, akkor várhatóan aktívan leküldi az üzeneteket a hálózaton, és készen áll a kezelésükre. Ellenkező esetben előfordulhat, hogy az üzenet zárolása lejárt az üzenet kézbesítése előtt. A link-credit folyamatvezérlés használatának közvetlenül tükröznie kell a fogadónak küldött elérhető üzenetek azonnali készenlétét.
 
-Az alábbi szakaszokban a performatív folyamat sematikus áttekintése található a különböző API-interakciók során. Mindegyik szakasz egy másik logikai műveletet ír le. Előfordulhat, hogy az interakciók némelyike "lusta", ami azt jelenti, hogy csak szükség esetén hajthatók végre. Előfordulhat, hogy az üzenet küldőjének létrehozása nem okoz hálózati interakciót az első üzenet küldése vagy kérése előtt.
+Összefoglalva, a következő szakaszok a különböző API-interakciók során a teljesítményre vonatkozó folyamat sematikus áttekintését biztosítják. Minden szakasz más logikai műveletet ír le. Ezen interakciók némelyike lehet "lusta", ami azt jelenti, hogy csak szükség esetén végezhetők el. Előfordulhat, hogy az üzenetküldő létrehozása nem okoz hálózati interakciót, amíg az első üzenetet el nem küldi vagy le nem kéri.
 
-Az alábbi táblázatban látható nyilak a performatív irányát mutatják.
+Az alábbi táblázatban látható nyilak a megfelelő folyamirányt mutatják.
 
-#### <a name="create-message-receiver"></a>Üzenet fogadójának létrehozása
-
-| Ügyfél | Service Bus |
-| --- | --- |
-| – > csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = {entitás neve},<br/>Target = {ügyfél-hivatkozási azonosító}<br/>) |Az ügyfél az entitást fogadóként csatolja |
-| Service Bus a hivatkozás végét csatoló válaszok |< – csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**Feladó**,<br/>forrás = {entitás neve},<br/>Target = {ügyfél-hivatkozási azonosító}<br/>) |
-
-#### <a name="create-message-sender"></a>Üzenet feladójának létrehozása
+#### <a name="create-message-receiver"></a>Üzenet fogadó létrehozása
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**Feladó**,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {entitás neve}<br/>) |Nincs művelet |
-| Nincs művelet |< – csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {entitás neve}<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |Az ügyfél fogadóként csatolja az entitást |
+| Service Bus válasza csatolja a hivatkozás végét |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>)` |
 
-#### <a name="create-message-sender-error"></a>Üzenet feladójának létrehozása (hiba)
-
-| Ügyfél | Service Bus |
-| --- | --- |
-| – > csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**Feladó**,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {entitás neve}<br/>) |Nincs művelet |
-| Nincs művelet |< – csatolás (<br/>név = {hivatkozás neve},<br/>Handle = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = null,<br/>Target = null<br/>)<br/><br/>< – leválasztás (<br/>Handle = {numerikus leíró},<br/>lezárva =**igaz**,<br/>hiba = {hiba adatai}<br/>) |
-
-#### <a name="close-message-receiversender"></a>Üzenet fogadójának/feladójának lezárása
+#### <a name="create-message-sender"></a>Üzenetküldő létrehozása
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > leválasztás (<br/>Handle = {numerikus leíró},<br/>lezárva =**igaz**<br/>) |Nincs művelet |
-| Nincs művelet |< – leválasztás (<br/>Handle = {numerikus leíró},<br/>lezárva =**igaz**<br/>) |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Nincs művelet |
+| Nincs művelet |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |
+
+#### <a name="create-message-sender-error"></a>Üzenetküldő létrehozása (hiba)
+
+| Ügyfél | Service Bus |
+| --- | --- |
+| `--> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>)` |Nincs művelet |
+| Nincs művelet |`<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>)` |
+
+#### <a name="close-message-receiversender"></a>Üzenet fogadójának/feladójának bezárása
+
+| Ügyfél | Service Bus |
+| --- | --- |
+| `--> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |Nincs művelet |
+| Nincs művelet |`<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>)` |
 
 #### <a name="send-success"></a>Küldés (sikeres)
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > átvitel (<br/>kézbesítési azonosító = {numerikus leíró},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,, több =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |Nincs művelet |
-| Nincs művelet |< – hajlam (<br/>szerepkör = fogadó,<br/>első = {kézbesítési azonosító},<br/>utolsó = {kézbesítési azonosító},<br/>kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Nincs művelet |
+| Nincs művelet |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |
 
 #### <a name="send-error"></a>Küldés (hiba)
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > átvitel (<br/>kézbesítési azonosító = {numerikus leíró},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,, több =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |Nincs művelet |
-| Nincs művelet |< – hajlam (<br/>szerepkör = fogadó,<br/>első = {kézbesítési azonosító},<br/>utolsó = {kézbesítési azonosító},<br/>kiegyenlített =**igaz**,<br/>állapot =**visszautasítva**(<br/>hiba = {hiba adatai}<br/>)<br/>) |
+| `--> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |Nincs művelet |
+| Nincs művelet |`<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>)` |
 
 #### <a name="receive"></a>Fogadás
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > folyamat (<br/>Link-Credit = 1<br/>) |Nincs művelet |
-| Nincs művelet |< átvitel (<br/>kézbesítési azonosító = {numerikus leíró},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,<br/>további =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |
-| – >i hajlam (<br/>szerepkör =**fogadó**,<br/>első = {kézbesítési azonosító},<br/>utolsó = {kézbesítési azonosító},<br/>kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |Nincs művelet |
+| `--> flow(<br/>link-credit=1<br/>)` |Nincs művelet |
+| Nincs művelet |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=**receiver**,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Nincs művelet |
 
 #### <a name="multi-message-receive"></a>Több üzenet fogadása
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| – > folyamat (<br/>Link-Credit = 3<br/>) |Nincs művelet |
-| Nincs művelet |< átvitel (<br/>kézbesítési azonosító = {numerikus leíró},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,<br/>további =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |
-| Nincs művelet |< átvitel (<br/>kézbesítési azonosító = {numerikus leíró + 1},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,<br/>további =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |
-| Nincs művelet |< átvitel (<br/>kézbesítési azonosító = {numerikus leíró + 2},<br/>Delivery-tag = {bináris leíró},<br/>kiegyenlített =**hamis**,<br/>további =**hamis**,<br/>állapot =**Null**,<br/>Folytatás =**hamis**<br/>) |
-| – >i hajlam (<br/>szerepkör = fogadó,<br/>első = {kézbesítési azonosító},<br/>utolsó = {kézbesítési azonosító + 2},<br/>kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |Nincs művelet |
+| `--> flow(<br/>link-credit=3<br/>)` |Nincs művelet |
+| Nincs művelet |`< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Nincs művelet |`< transfer(<br/>delivery-id={numeric handle+1},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| Nincs művelet |`< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)` |
+| `--> disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>)` |Nincs művelet |
 
 ### <a name="messages"></a>Üzenetek
 
-A következő szakaszokból megtudhatja, hogy a rendszer milyen tulajdonságokat használ a standard AMQP-üzenet szakaszokból Service Bus és hogyan képezi le a Service Bus API-készletet.
+A következő szakaszok ismertetik, hogy a Service Bus a szabványos AMQP-üzenetszakaszok mely tulajdonságait használják, és hogyan vannak leképezve a Service Bus API-készletre.
 
-Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP `application-properties` térképére.
+Minden olyan tulajdonságot, amit az alkalmazásnak meg kell határoznia, az AMQP térképére kell `application-properties` leképezni.
 
 #### <a name="header"></a>fejléc
 
 | Mezőnév | Használat | API neve |
 | --- | --- | --- |
-| tartós |- |- |
-| prioritású |- |- |
-| ttl |Az üzenet élettartama |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| első – beszerző |- |- |
-| kézbesítések száma |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Tartós |- |- |
+| Prioritás |- |- |
+| ttl |Az üzenethez való idő |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| first-acquirer |- |- |
+| kézbesítések száma |- |[DeliveryCount (Kézbesítési cím száma)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="properties"></a>properties
 
 | Mezőnév | Használat | API neve |
 | --- | --- | --- |
-| üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
-| felhasználóként a(z) |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Ide:](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| tárgy |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Content-Type |Az alkalmazás által definiált Content-Type jelző a törzshöz, amelyet a Service Bus nem értelmez. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Content-Encoding |Az alkalmazás által definiált tartalom-kódolási jelző a törzshöz, amelyet a Service Bus nem értelmez. |Nem érhető el a Service Bus API-n keresztül. |
-| abszolút – lejárat – idő |Kijelenti, hogy az üzenet abszolút azonnali érvényessége lejár. Figyelmen kívül hagyva a bemeneten (a fejléc ÉLETTARTAMa megfigyelt), a mérvadó a kimeneten. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| létrehozás ideje |Deklarálja, hogy az üzenet mikor lett létrehozva. Nem használja Service Bus |Nem érhető el a Service Bus API-n keresztül. |
-| csoport azonosítója |Az alkalmazás által definiált azonosító egy kapcsolódó üzenethez. Service Bus-munkamenetekhez használatos. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Csoport – sorozat |Az üzenet relatív sorszámát azonosító számláló a munkameneten belül. Service Bus figyelmen kívül hagyva. |Nem érhető el a Service Bus API-n keresztül. |
-| Válasz – csoport – azonosító |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| üzenetazonosító |Az üzenet alkalmazás által definiált, szabad űrlapos azonosítója. Duplikált elemek észlelésére használható. |[MessageId (Üzenetazonosító)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| felhasználói azonosító |Alkalmazás által definiált felhasználói azonosító, amelyet nem a Service Bus. |Nem érhető el a Service Bus API-n keresztül. |
+| felhasználóként a(z) |Alkalmazás által definiált célazonosító, amelyet nem a Service Bus. |[Ide:](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| tárgy |Alkalmazás által definiált üzenetcélú azonosító, nem értelmezhető Service Bus |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |Alkalmazás által definiált válaszútvonal-jelző, amelyet nem a Service Bus. |[ReplyTo (Válasz válasza)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| korrelációs azonosító |Alkalmazás által definiált korrelációs azonosító, amelyet nem a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type (tartalomtípus) |A törzs alkalmazás által definiált tartalomtípus-jelzője, amelyet nem a Service Bus. |[ContentType (Tartalomtípus)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| tartalomkódolás |A törzs alkalmazás által definiált tartalomkódolási jelzője, amelyet nem a Service Bus. |Nem érhető el a Service Bus API-n keresztül. |
+| abszolút lejárati idő |Deklarálja, hogy az üzenet mely abszolút azonnali lejárati idejekor jár le. A bemenetnél figyelmen kívül hagyva (a fejléc TTL-jének megfigyelése), a kimenet mérvadó. |[ExpiresAtUtc (Lejárati idő)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| létrehozás ideje |Deklarálja, hogy az üzenet mikor jött létre. Nem használja a Service Bus |Nem érhető el a Service Bus API-n keresztül. |
+| group-id (csoportazonosító) |Egy kapcsolódó üzenetkészlet alkalmazás által meghatározott azonosítója. A munkamenetekhez Service Bus használható. |[Munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| csoportsorozat |A munkameneten belüli üzenet relatív sorszámát azonosító számláló. A rendszer figyelmen kívül hagyja Service Bus. |Nem érhető el a Service Bus API-n keresztül. |
+| reply-to-group-id |- |[ReplyToSessionId (Válasz-válaszazonosító)](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
-#### <a name="message-annotations"></a>Üzenetek megjegyzései
+#### <a name="message-annotations"></a>Üzenetjegyzetek
 
-Néhány más Service Bus-üzenet tulajdonságai is vannak, amelyek nem részei a AMQP-üzenet tulajdonságainak, és a rendszer `MessageAnnotations` az üzenettel együtt továbbítja azokat.
+Vannak más Service Bus-üzenettulajdonságok is, amelyek nem részei az AMQP-üzenettulajdonságoknak, és az üzenetben a következőként vannak `MessageAnnotations` átküzenetként átkedve.
 
-| Jegyzet leképezési kulcsa | Használat | API neve |
+| Jegyzetleképozási kulcs | Használat | API neve |
 | --- | --- | --- |
-| x-opt-Scheduled-sorba helyezni-Time | Deklarálja, hogy mikor jelenjen meg az üzenet az entitáson |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
-| x-opt-Partition-Key | Az alkalmazás által definiált kulcs, amely azt határozza meg, hogy az üzenet melyik partíción belül kell, hogy legyen. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
-| x – opt-on-Partition-Key | Az alkalmazás által definiált partíciós kulcs értéke, ha tranzakciót kell használni az üzenetek átviteli várólistán keresztüli küldéséhez. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
-| x – opt-várólistán lévő – idő | A szolgáltatás által definiált UTC-idő, amely az üzenet enqueuing tényleges időpontját jelöli. A bemenet figyelmen kívül hagyva. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
-| x – opt-Sequence – szám | A szolgáltatás által meghatározott egyedi szám, amely egy üzenethez van rendelve. | [Sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
-| x – opt-offset | Az üzenet szolgáltatás által definiált várólistán lévő sorszáma. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
-| x – opt-Locked – csak | Szolgáltatás által definiált. Az a dátum és idő, ameddig az üzenet zárolva lesz a várólistában/előfizetésben. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
-| x – opt-kézbesítetlen levelek – forrás | Szolgáltatás által definiált. Ha az üzenet a kézbesítetlen levelek várólistáról érkezik, az eredeti üzenet forrása. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
+| x-opt-scheduled-enqueue-time | Deklarálta, hogy az üzenet mikor jelenjen meg az entitáson |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | Alkalmazás által definiált kulcs, amely azt határozza meg, hogy az üzenet melyik partícióba megjelenik. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | Alkalmazás által meghatározott partíciókulcs-érték, ha tranzakcióval küld üzeneteket egy átviteli üzenetsoron keresztül. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | A szolgáltatás által megadott UTC-idő, amely az üzenet elősorolásának tényleges idejét mutatja. Bemenet esetén figyelmen kívül hagyva. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | Egy üzenethez hozzárendelt, szolgáltatás által definiált egyedi szám. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | Az üzenet szolgáltatás által megadott szekvenciája. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | Szolgáltatás által definiált. Az a dátum és idő, ameddig az üzenet zárolva lesz az üzenetsorban/előfizetésben. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | Szolgáltatás által definiált. Ha az üzenet a nem szöveges üzenetsorból érkezik, az az eredeti üzenet forrása. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Tranzakciós képesség
 
-Egy tranzakció két vagy több műveletet kapcsol össze egyetlen végrehajtási hatókörbe. Természeténél fogva az ilyen tranzakciónak biztosítania kell, hogy az adott műveleti csoportba tartozó összes művelet a sikeres vagy a sikertelen műveletekkel együtt járjon el.
-A műveletek egy azonosító alapján vannak csoportosítva `txn-id` .
+Egy tranzakció két vagy több műveletet kapcsol össze egyetlen végrehajtási hatókörbe. Természeténél fogva az ilyen tranzakcióknak biztosítaniuk kell, hogy egy adott műveletcsoporthoz tartozó összes művelet együtt sikeres vagy sikertelen legyen.
+A műveletek egy azonosító alapján vannak `txn-id` csoportosítva.
 
-A tranzakciós interakcióhoz az ügyfél a-ként működik `transaction controller` , amely a csoportba csoportosítható műveleteket vezérli. Service Bus szolgáltatás működik, `transactional resource` és a által kért feladatokat végzi el `transaction controller` .
+Tranzakciós interakciókhoz az ügyfél egy műveletként működik, amely a csoportosított `transaction controller` műveleteket vezérli. Service Bus Szolgáltatás a szolgáltatásként működik, és a kérésének megfelelő munkát `transactional resource` `transaction controller` végez.
 
-Az ügyfél és a szolgáltatás az a-en keresztül kommunikál `control link` , amelyet az ügyfél létesített. Az `declare` és az `discharge` üzeneteket a vezérlő a vezérlő hivatkozásán keresztül továbbítja a tranzakciók lefoglalásához és befejezéséhez (nem a tranzakciós munka körülhatárolása). A tényleges küldés/fogadás nem történik meg ezen a hivatkozáson. A rendszer minden kért tranzakciós műveletet explicit módon azonosít a kívánt módon `txn-id` , ezért előfordulhat, hogy a kapcsolaton bármilyen kapcsolaton lehet. Ha a vezérlő hivatkozása le van zárva, amíg léteznek nem kiosztható tranzakciók, akkor a rendszer azonnal visszaállítja az összes ilyen tranzakciót, és megkísérli a további tranzakciós munkát végezni rajtuk. A vezérlési hivatkozás üzenetei nem lehetnek előre rendezve.
+Az ügyfél és a szolgáltatás a ügyfél által létrehozott kapcsolaton keresztül `control link` kommunikál. A vezérlő a vezérlő hivatkozásán keresztül küldi el a és a üzenetet a tranzakciók lefoglalása és befejezése érdekében (ezek nem a tranzakciós munka `declare` `discharge` demarkálását jelölik). A tényleges küldés/fogadás nem ezen a hivatkozáson történik. A kért tranzakciós műveleteket a rendszer explicit módon azonosítja a kívánt értékekkel, ezért a kapcsolat bármely `txn-id` hivatkozásán előfordulhatnak. Ha a vezérlőkapcsolat le van zárva, amíg léteznek nem lezárt tranzakciók, akkor a rendszer azonnal visszaállítja az összes ilyen tranzakciót, és a további tranzakciós feladatokra tett kísérletek sikertelenek lesznek. A vezérlőhivatkozáson található üzeneteket nem szabad előre rendezni.
 
-Minden kapcsolatnak meg kell indítania a saját vezérlési hivatkozását, hogy képes legyen elindítani és leállítani a tranzakciókat. A szolgáltatás definiál egy olyan speciális célt, amely a-ként működik `coordinator` . Az ügyfél/vezérlő egy vezérlőelem-hivatkozást hoz létre ehhez a célhoz. A vezérlési hivatkozás egy entitás határán kívül esik, azaz ugyanaz a vezérlési kapcsolat használható több entitás tranzakcióinak elindításához és kiteljesítéséhez.
+Minden kapcsolatnak saját vezérlési hivatkozást kell kezdeményezni, hogy el tudja kezdeni és el tudja vetni a tranzakciókat. A szolgáltatás meghatároz egy speciális célt, amely a következőként működik: `coordinator` . Az ügyfél/vezérlő létrehoz egy vezérlőkapcsolatot a célhoz. A vezérlőkapcsolat egy entitáson kívül esik, azaz ugyanaz a vezérlőkapcsolat több entitás tranzakcióinak kezdeményezésére és kezdeményezésére is használható.
 
 #### <a name="starting-a-transaction"></a>Tranzakció indítása
 
-A tranzakciós munka megkezdéséhez. a vezérlőnek a koordinátortól kell beszereznie `txn-id` . Ez egy típusú üzenet küldésével történik `declare` . Ha a deklaráció sikeres, a koordinátor a hozzárendelt művelettel ellátott törlési eredménnyel válaszol `txn-id` .
+A tranzakciós munka megkezdése. A vezérlőnek a `txn-id` koordinátortól kell beszereznie egy et. Ezt egy típusüzenet `declare` küldésvel teszi meg. Ha a deklaráció sikeres, a koordinátor egy diszpozíciós eredménnyel válaszol, amely magában hordozza a hozzárendelt `txn-id` et.
 
 | Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
 | :--- | :---: | :--- |
-| csatolja<br/>név = {hivatkozás neve},<br/>... ,<br/>szerepkör =**Feladó**,<br/>Target =**koordinátor**<br/>) | ------> |  |
-|  | <------ | csatolja<br/>név = {hivatkozás neve},<br/>... ,<br/>Target = koordinátor ()<br/>) |
-| transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (**deklarálás ()**)}| ------> |  |
-|  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot =**deklarált**(<br/>**tranzakció-ID**= {tranzakció azonosítója}<br/>))|
+| attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**koordinátor**<br/>) | ------> |  |
+|  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Deklarált**(<br/>**txn-id**={tranzakcióazonosító}<br/>))|
 
-#### <a name="discharging-a-transaction"></a>Tranzakció kitöltése
+#### <a name="discharging-a-transaction"></a>Tranzakció kidiagramolása
 
-A vezérlő a tranzakciós munkát arra a következtetésre jut `discharge` , hogy üzenetet küld a koordinátornak. A vezérlő azt jelzi, hogy a tranzakciós munkát véglegesíteni vagy vissza kívánja állítani, ha a `fail` jelzőt a mentesítési törzsre állítja be. Ha a koordinátor nem tudja befejezni a mentesítést, a rendszer elutasítja az üzenetet a következővel: `transaction-error` .
+Az adatkezelő a tranzakciós munka zárásához üzenetet küld a `discharge` koordinátornak. A vezérlő jelzi, hogy véglegesít vagy vissza szeretne gördülni a tranzakciós munkát úgy, hogy berakja a jelölőt `fail` a törzsre. Ha a koordinátor nem tudja befejezni a szavazást, a rendszer elutasítja az üzenetet, és az eredmény a következőt hordozja: `transaction-error` .
 
-> Megjegyzés: a sikertelen = igaz érték egy tranzakció visszaállítására utal, és a sikertelen = hamis a véglegesítés.
+> Megjegyzés: a fail=true egy tranzakció visszaállítását, a fail=false pedig Véglegesítést jelenti.
 
 | Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
 | :--- | :---: | :--- |
-| transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
-|  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={tranzakcióazonosító}<br/>))|
 | | . . . <br/>Tranzakciós munka<br/>egyéb hivatkozásokon<br/> . . . |
-| transzfer<br/>kézbesítés-azonosító = 57,...)<br/>{ AmqpValue (<br/>**Mentesítés (tranzakció-ID = 0, <br/> Fail = false)**)}| ------> |  |
-| | <------ | törlése <br/> első = 57, utolsó = 57, <br/>állapot =**elfogadva ()**)|
+| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Foga(txn-id=0, <br/> fail=false)**)}| ------> |  |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
 
-#### <a name="sending-a-message-in-a-transaction"></a>Üzenet küldése egy tranzakcióban
+#### <a name="sending-a-message-in-a-transaction"></a>Üzenet küldése tranzakcióban
 
-Az összes tranzakciós tevékenység a `transactional-state` tranzakció-azonosítóval ellátott tranzakciós kézbesítési állapottal történik. Üzenetek küldése esetén a tranzakciós állapotot az üzenet adatátviteli kerete végzi. 
-
-| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
-| :--- | :---: | :--- |
-| transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
-|  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
-| transzfer<br/>Handle = 1,<br/>kézbesítés-azonosító = 1, <br/>**állapot = <br/> TransactionalState ( <br/> tranzakció-ID = 0)**)<br/>adattartalom| ------> |  |
-| | <------ | törlése <br/> első = 1, utolsó = 1, <br/>State =**TransactionalState ( <br/> tranzakció-ID = 0, <br/> eredmény = elfogadva ()**))|
-
-#### <a name="disposing-a-message-in-a-transaction"></a>Üzenet ártalmatlanítása egy tranzakcióban
-
-Az üzenet-törlés olyan műveleteket tartalmaz, mint a `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Ha egy tranzakción belül szeretné elvégezni ezeket a műveleteket, adja át a-nek a `transactional-state` rendelkezésére álló műveletet.
+Minden tranzakciós munka a txn-id azonosítót hordozó `transactional-state` tranzakciós kézbesítési állapotmal történik. Üzenetek küldése esetén a tranzakciós állapotot az üzenet átviteli kerete továbbítja. 
 
 | Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
 | :--- | :---: | :--- |
-| transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
-|  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
-| | <------ |transzfer<br/>Handle = 2,<br/>kézbesítés-azonosító = 11, <br/>állapot = null)<br/>adattartalom|  
-| törlése <br/> első = 11, utolsó = 11, <br/>State =**TransactionalState ( <br/> tranzakció-ID = 0, <br/> eredmény = elfogadva ()**))| ------> |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={tranzakcióazonosító}<br/>))|
+| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state= <br/> TransactionalState( <br/> txn-id=0)**)<br/>{ hasznos tartalom }| ------> |  |
+| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState( <br/> txn-id=0, <br/> outcome=Accepted() ))**|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>Üzenet felfedése egy tranzakcióban
+
+Az üzenetek eloszlása olyan műveleteket foglal magába, mint `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` a . Ha ezeket a műveleteket egy tranzakción belül kell végrehajtania, adja át a `transactional-state` et a disztúcióval együtt.
+
+| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={tranzakcióazonosító}<br/>))|
+| | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ hasznos tartalom }|  
+| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState( <br/> txn-id=0, <br/> outcome=Accepted() ))**| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Speciális Service Bus képességek
 
-Ez a szakasz az Azure Service Bus fejlett képességeit mutatja be, amelyek a AMQP vázlatos bővítményein alapulnak, és jelenleg a AMQP-i oázis technikai bizottságban vannak kifejlesztve. Service Bus megvalósítja ezeknek a vázlatoknak a legújabb verzióit, és bevezeti azokat a módosításokat, amelyek a standard állapot eléréséhez szükségesek.
+Ez a szakasz az AMQP Azure Service Bus kiterjesztések vázlatán alapuló, az AMQP műszaki bizottságának fejlesztés alatt álló speciális képességeivel foglalkozik. Service Bus a vázlatok legújabb verzióit valósítja meg, és változásokat vezet be, amikor ezek a vázlatok elérik a standard állapotot.
 
 > [!NOTE]
-> A Service Bus üzenetkezelés speciális műveletei a kérelem/válasz mintán keresztül támogatottak. Ezeknek a műveleteknek a részleteiről a [Service Bus AMQP 1,0-es cikkében, a kérelem-válasz alapú műveletek](service-bus-amqp-request-response.md)című cikkben olvashat.
+> Service Bus üzenetkezelés speciális műveletei kérés-válasz mintán keresztül támogatottak. A műveletek részleteit a következő cikkben, az [AMQP 1.0 Service Bus: request-response-based operations (kérés-válasz-alapú műveletek)című cikkben olvashatja.](service-bus-amqp-request-response.md)
 > 
 > 
 
-### <a name="amqp-management"></a>AMQP-kezelés
+### <a name="amqp-management"></a>AMQP-felügyelet
 
-A AMQP-felügyeleti specifikáció a jelen cikkben tárgyalt draft-bővítmények közül az első. Ez a specifikáció olyan protokollok készletét határozza meg, amelyek a AMQP protokollon felül vannak, amelyek lehetővé teszik a felügyeleti interakciót a AMQP-en keresztül az üzenetkezelési infrastruktúrával. A specifikáció általános műveleteket (például *Létrehozás*, *olvasás*, *frissítés* és *Törlés* ) határoz meg az üzenetkezelési infrastruktúrán belüli entitások és a lekérdezési műveletek készletének kezeléséhez.
+Az AMQP felügyeleti specifikáció a cikkben tárgyalt első vázlatos bővítmény. Ez a specifikáció az AMQP protokollra rétegzett protokollkészletet határozza meg, amely lehetővé teszi az üzenetkezelési infrastruktúrával való felügyeleti interakciókat az AMQP-on keresztül. A specifikáció olyan általános műveleteket határoz meg,  mint például a *létrehozás,* *olvasás,* frissítés *és* törlés az üzenetküldési infrastruktúrán belüli entitások és lekérdezési műveletek egy halmazának kezeléséhez.
 
-Ezek a kézmozdulatok az ügyfél és az üzenetkezelési infrastruktúra közötti kérés/válasz interakciót igénylik, ezért a specifikáció meghatározza, hogyan modellezhető az interakciós minta a AMQP: az ügyfél csatlakozik az üzenetkezelési infrastruktúrához, elindítja a munkamenetet, majd létrehoz egy pár hivatkozást. Egy hivatkozáson az ügyfél feladóként működik, a másik pedig fogadóként viselkedik, így egy pár olyan hivatkozást hoz létre, amely kétirányú csatornaként működhet.
+Ezekhez a kézmozdulathoz szükség van egy kérés/válasz interakcióra az ügyfél és az üzenetkezelési infrastruktúra között, ezért a specifikáció meghatározza, hogyan modellelhető ez az interakciós minta az AMQP-ben: az ügyfél csatlakozik az üzenetkezelési infrastruktúrához, munkamenetet kezdeményez, majd létrehoz egy hivatkozáspárt. Az egyik hivatkozáson az ügyfél küldőként, a másikon fogadóként működik, így létrehoz egy hivatkozáspárt, amely kétirányú csatornaként működik.
 
 | Logikai művelet | Ügyfél | Service Bus |
 | --- | --- | --- |
-| Kérelemre adott válasz elérési útjának létrehozása |– > csatolás (<br/>név = {*hivatkozás neve*},<br/>Handle = {*numerikus leíró*},<br/>szerepkör =**Feladó**,<br/>forrás =**Null**,<br/>Target = "myentity/$management"<br/>) |Nincs művelet |
-| Kérelemre adott válasz elérési útjának létrehozása |Nincs művelet |\<-- attach(<br/>név = {*hivatkozás neve*},<br/>Handle = {*numerikus leíró*},<br/>szerepkör =**fogadó**,<br/>forrás = null,<br/>Target = "myentity"<br/>) |
-| Kérelemre adott válasz elérési útjának létrehozása |– > csatolás (<br/>név = {*hivatkozás neve*},<br/>Handle = {*numerikus leíró*},<br/>szerepkör =**fogadó**,<br/>forrás = "myentity/$management",<br/>Target = "myclient $ id"<br/>) | |
-| Kérelemre adott válasz elérési útjának létrehozása |Nincs művelet |\<-- attach(<br/>név = {*hivatkozás neve*},<br/>Handle = {*numerikus leíró*},<br/>szerepkör =**Feladó**,<br/>forrás = "myentity",<br/>Target = "myclient $ id"<br/>) |
+| Kérés válaszának elérési útja |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>)` |Nincs művelet |
+| Kérés válaszának elérési útja |Nincs művelet |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>)` |
+| Kérés válaszának elérési útja |`--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>)` | |
+| Kérés válaszának elérési útja |Nincs művelet |`\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>)` |
 
-Ennek a hivatkozásnak a helyén a kérelem/válasz implementáció egyszerű: a kérelem az üzenetküldési infrastruktúrán belüli, a mintát értelmező entitásnak küldött üzenet. Abban az esetben, ha a Request-Message ( *Tulajdonságok* ) szakaszban a *Válasz címzettje* mező arra a *cél* azonosítóra van beállítva, amelyre a választ kézbesíteni kívánja. A kezelő entitás feldolgozza a kérést, majd továbbítja a választ a hivatkozáson keresztül, amelynek a *célként* megadott azonosítója megegyezik a jelzett *Válasz-* azonosítóval.
+Ennek a hivatkozáspárnak a megvalósítása egyszerű: a kérés egy, az üzenetkezelési infrastruktúrán belüli entitásnak küldött üzenet, amely megérti ezt a mintát. Ebben a kérelemüzenetben a properties (tulajdonságok) szakaszban található  *reply-to (válasz-válasz)* mező annak a hivatkozásnak a célazonosítója, amelyre a választ küldeni kell.  A kezelő entitás feldolgozza a kérést, majd azon  a hivatkozáson keresztül kézbesíti a választ, amelynek célazonosítója megegyezik a jelzett *válasz-válasz azonosítóval.*
 
-A minta nyilvánvalóan megköveteli, hogy az ügyfél tárolója és a válasz céljának ügyfél által generált azonosítója egyedi legyen az összes ügyfélnél, és biztonsági okokból is nehéz megjósolni.
+A minta nyilvánvalóan megköveteli, hogy az ügyféltároló és a válasz célhely ügyfél által létrehozott azonosítója egyedi legyen az összes ügyfélen, és biztonsági okokból szintén nehezen megjósolható legyen.
 
-A felügyeleti protokollhoz és az összes többi olyan protokollhoz használt üzenetváltás, amely ugyanazt a mintát használja az alkalmazás szintjén; nem határozzák meg az új AMQP protokoll szintű kézmozdulatokat. Ez szándékos, így az alkalmazások azonnal kihasználhatják ezeket a bővítményeket a megfelelő AMQP 1,0-veremmel.
+A felügyeleti protokollhoz és az összes többi, ugyanazt a mintát használ protokollhoz használt üzenetváltás az alkalmazás szintjén történik; nem határoznak meg új AMQP protokollszintű kézmozdulatokat. Ez szándékos, hogy az alkalmazások azonnal kihasználják ezeket a bővítményeket a megfelelő AMQP 1.0 vermekkel.
 
-Service Bus jelenleg nem valósítja meg a felügyeleti specifikáció alapvető funkcióit, de a felügyeleti specifikáció által meghatározott kérelem/válasz minta alapja a jogcímek biztonsági funkciója, és csaknem az összes, a következő szakaszokban tárgyalt fejlett képesség:
+Service Bus jelenleg nem valósítja meg a felügyeleti specifikáció alapvető funkcióit, de a felügyeleti specifikáció által meghatározott kérés-válasz minta alapvető a jogcímalapú biztonsági funkció és a következő szakaszokban tárgyalt fejlett képességek szinte mindegyikéhez:
 
-### <a name="claims-based-authorization"></a>Jogcím-alapú hitelesítés
+### <a name="claims-based-authorization"></a>Jogcímalapú engedélyezés
 
-A AMQP jogcím-alapú engedélyezési (CBS) specifikációjának vázlata a felügyeleti specifikáció kérés/válasz mintáján alapul, és általános modellt ismertet az összevont biztonsági jogkivonatok AMQP-vel való használatáról.
+Az AMQP jogcímalapú-engedélyezés (CBS) specifikációs vázlata a felügyeleti specifikáció kérés-válasz mintára épül, és általánosított modellt ír le az összevont biztonsági jogkivonatok AMQP-val való használatára.
 
-A bevezetésben tárgyalt AMQP alapértelmezett biztonsági modellje a SASL-on alapul, és integrálható a AMQP-kapcsolatok kézfogásával. A SASL használata azzal az előnnyel jár, hogy olyan bővíthető modellt biztosít, amelyhez olyan mechanizmusok vannak meghatározva, amelyekben bármely, a SASL-ra hivatalosan támaszkodó protokoll kihasználható. Ezen mechanizmusok között "egyszerű" a felhasználónevek és a jelszavak átvitele, a "külső" a TLS-szintű biztonsághoz való kötéshez, "névtelen", hogy kifejezze a explicit hitelesítés/engedélyezés hiányát, valamint számos további mechanizmust, amelyek lehetővé teszik a hitelesítés és/vagy az engedélyezési hitelesítő adatok vagy tokenek továbbítását.
+A bevezetésben tárgyalt AMQP alapértelmezett biztonsági modellje a SASL-alapú, és integrálható az AMQP kapcsolati kézfogással. Az SASL használatának előnye, hogy olyan olyan kitehető modellt biztosít, amelyhez definiálva van egy mechanizmuskészlet, amelyből az SASL-t hivatalosan használó protokollok előnyösek. Ezen mechanizmusok között a felhasználónév és jelszó átvitele "EGYSZERŰ", a TLS-szintű biztonsághoz való kötéshez "EXTERNAL", az explicit hitelesítés/engedélyezés hiányának kifejezésére "ANONYMOUS", valamint a hitelesítési és/vagy hitelesítési hitelesítő adatok vagy jogkivonatok átadását lehetővé tágan kiegészítő mechanizmusok állnak rendelkezésre.
 
-A AMQP SASL-integrációja két hátránya van:
+Az AMQP SASL-integrációjának két hátránya van:
 
-* Minden hitelesítő adat és jogkivonat hatóköre a kapcsolatra terjed ki. Az üzenetkezelési infrastruktúra eltérő hozzáférés-vezérlést biztosíthat az egyes entitások alapján; Tegyük fel például, hogy egy jogkivonat tulajdonosának az A várólistára kell küldenie, de a B várólistára nem. A kapcsolaton rögzített engedélyezési környezettel nem lehet egyetlen kapcsolatot használni, de az A és A B üzenetsor esetében eltérő hozzáférési tokeneket is használhat.
-* A hozzáférési jogkivonatok jellemzően csak korlátozott ideig érvényesek. Ez az érvényesség megköveteli, hogy a felhasználó rendszeresen újraszerezze a jogkivonatokat, és lehetőséget biztosít a jogkivonat kiállítójának, hogy megtagadja a friss token kiküldését, ha a felhasználó hozzáférési engedélyei megváltoztak. A AMQP-kapcsolatok hosszú ideig tarthatnak. A SASL-modell csak a tokenek megadásának lehetőségét biztosítja a kapcsolat időpontjában, ami azt jelenti, hogy az üzenetkezelési infrastruktúrának le kell bontania az ügyfelet, amikor a token lejár, vagy el kell fogadnia annak kockázatát, hogy a hozzáférési jogokkal rendelkező ügyfelekkel folytatott folyamatos kommunikáció engedélyezve legyen az átmeneti időszakban.
+* Minden hitelesítő adat és jogkivonat hatóköre a kapcsolatra terjed ki. Előfordulhat, hogy az üzenetkezelési infrastruktúra entitásonként szeretne különböző hozzáférés-vezérlést biztosítani; Például lehetővé teszi, hogy egy jogkivonat bearerének elküldje az A üzenetsorba, de ne a B üzenetsorba. Ha az engedélyezési környezet a kapcsolatra van alapozva, nem lehet egyetlen kapcsolatot használni, és mégis különböző hozzáférési jogkivonatokat használni az A üzenetsorhoz és a B üzenetsorhoz.
+* A hozzáférési jogkivonatok általában csak korlátozott ideig érvényesek. Ez az érvényesség megköveteli a felhasználótól, hogy rendszeres időközönként újra le kell kérnie a jogkivonatokat, és lehetőséget nyújt a jogkivonat-kibocsátónak, hogy visszautasítsa egy új jogkivonat kiadását, ha a felhasználó hozzáférési engedélyei módosulnak. Az AMQP-kapcsolatok hosszú ideig is előfordulhatnak. Az SASL-modell csak a csatlakozáskor ad lehetőséget a jogkivonat beállításának, ami azt jelenti, hogy az üzenetkezelési infrastruktúrának le kell kapcsolnia az ügyfelet a jogkivonat lejártakor, vagy el kell fogadnia annak a kockázatát, hogy folyamatos kommunikációt tesz lehetővé egy olyan ügyféllel, aki hozzáférési jogosultságai időközben vissza lett vonva.
 
-A Service Bus által megvalósított AMQP CBS-specifikáció lehetővé teszi a két probléma elegáns megkerülő megoldását: lehetővé teszi, hogy az ügyfél a hozzáférési jogkivonatokat társítsa az egyes csomópontokhoz, és a jogkivonatokat a lejáratuk előtt frissítse, anélkül, hogy az üzenet áramlását megszakítja.
+Az Service Bus által megvalósított AMQP CBS-specifikáció elegáns áthidaló megoldást kínál mindkét problémára: Lehetővé teszi, hogy az ügyfél hozzáférési jogkivonatokat társítson az egyes csomópontokkal, és frissítse ezeket a jogkivonatokat a lejáratuk előtt, az üzenetfolyam megszakítása nélkül.
 
-A CBS definiál egy *$CBS* nevű virtuális felügyeleti csomópontot, amelyet az üzenetkezelési infrastruktúra biztosít. A felügyeleti csomópont az üzenetkezelési infrastruktúra bármely más csomópontjának nevében fogadja el a jogkivonatokat.
+A CBS egy virtuális felügyeleti csomópontot határoz meg $cbs *nevű* virtuális felügyeleti csomópontot, amelyet az üzenetkezelési infrastruktúra biztosít. A felügyeleti csomópont fogadja a jogkivonatokat az üzenetkezelési infrastruktúra többi csomópontja nevében.
 
-A protokoll-kézmozdulat a felügyeleti specifikáció által meghatározott kérelem/válasz típusú Exchange. Ez azt jelenti, hogy az ügyfél összekapcsolja az *$CBS* csomópontot, majd átadja a kérést a kimenő hivatkozáson, majd megvárja a választ a bejövő hivatkozáson.
+A protokoll kézmozdulat a felügyeleti specifikációban meghatározott kérés/válasz csere. Ez azt jelenti, hogy az  ügyfél létrehoz egy pár hivatkozást a $cbs-csomóponttal, majd továbbít egy kérést a kimenő hivatkozáson, majd megvárja a választ a bejövő hivatkozáson.
 
-A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
+A kérésüzenet az alábbi alkalmazástulajdonságokat tartalmazza:
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |No |sztring |**Put-token** |
-| típus |No |sztring |A felhelyezni kívánt jogkivonat típusa. |
-| name |No |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
-| lejárati |Yes |időbélyeg |A jogkivonat lejárati ideje. |
+| művelet |Nem |sztring |**put-token** |
+| típus |Nem |sztring |A beírt jogkivonat típusa. |
+| name |Nem |sztring |A "célközönség", amelyre a jogkivonat vonatkozik. |
+| Lejárati |Igen |időbélyeg |A jogkivonat lejárati ideje. |
 
-A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
+A *name tulajdonság* azonosítja azt az entitást, amelyhez a jogkivonatot társítja. Ebben Service Bus ez az üzenetsor vagy témakör/előfizetés elérési útja. A *type tulajdonság* azonosítja a jogkivonat típusát:
 
 | Jogkivonat típusa | Jogkivonat leírása | Törzs típusa | Jegyzetek |
 | --- | --- | --- | --- |
-| amqp: JWT |JSON Web Token (JWT) |AMQP érték (karakterlánc) |Még nem érhető el. |
-| amqp: SWT |Egyszerű webes jogkivonat (SWT) |AMQP érték (karakterlánc) |Csak a HRE/ACS által kiállított SWT-tokenek esetében támogatott |
-| servicebus. Windows. net: sastoken |SAS-token Service Bus |AMQP érték (karakterlánc) |- |
+| `jwt` |JSON-webtoken (JWT) |AMQP-érték (sztring) |Még nem érhető el. |
+| `servicebus.windows.net:sastoken` |Service Bus SAS-jogkivonat használata |AMQP-érték (sztring) |- |
 
-Tokenek ruházza fel a jogosultságokat. A Service Bus három alapvető jogosultsággal rendelkezik: a Küldés lehetővé teszi a küldést, a "Figyelés" lehetőséget, és a "kezelés" lehetővé teszi az entitások kezelését. A HRE/ACS által kiállított SWT-tokenek explicit módon tartalmazzák a jogcímeket. Service Bus SAS-tokenek a névtéren vagy az entitáson konfigurált szabályokra vonatkoznak, és ezek a szabályok jogosultságokkal vannak konfigurálva. Ha aláírja a jogkivonatot a szabályhoz társított kulccsal, így a token kifejezi a megfelelő jogosultságokat. A *put-tokent* használó entitáshoz társított jogkivonat lehetővé teszi, hogy a csatlakoztatott ügyfél a jogkivonat-jogosultságok alapján kommunikáljon az entitással. Egy hivatkozás, amelyben az ügyfél a *küldő* szerepkört igényli, a "Küldés" jogosultság szükséges. a *fogadó* szerepkörnek a "Listen" jogosultsággal kell rendelkeznie.
+Jogkivonatok– jogkivonat-konferenciajogok. Service Bus három alapvető jogról tud: a "Küldés" engedélyezi a küldést, a "Figyelés" engedélyezi a fogadást, a "Kezelés" pedig lehetővé teszi az entitások kezelését. Service Bus SAS-jogkivonatok a névtéren vagy entitáson konfigurált szabályokra vonatkoznak, és ezek a szabályok jogosultságokkal vannak konfigurálva. Ha aláírja a jogkivonatot a szabályhoz társított kulccsal, azzal kifejezi a megfelelő jogokat. A *put-tokent* használó entitáshoz társított jogkivonat lehetővé teszi a csatlakoztatott ügyfél számára, hogy jogkivonat-jogosultságok szerint kommunikálja az entitást. Egy olyan hivatkozáshoz, ahol az ügyfél átveszi a *küldő* szerepkört, "Küldés" jog szükséges; A fogadói *szerepkört átvevő* szerepkör használatához a "Figyel" jog szükséges.
 
-A válaszüzenet a következő *alkalmazás-tulajdonságok* értékekkel rendelkezik
+A válaszüzenet az alábbi *alkalmazástulajdonság-értékeket* tartalmazza
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapot kódja |No |int |HTTP-válasz kódja **[RFC2616]**. |
-| állapot – Leírás |Yes |sztring |Az állapot leírása. |
+| állapotkód |Nem |int |HTTP-válaszkód **[RFC2616]**. |
+| status-description (állapot leírása) |Igen |sztring |Az állapot leírása. |
 
-Az ügyfél többször is meghívhatja a *put-tokent* , illetve az üzenetkezelési infrastruktúra bármely entitására. A jogkivonatok hatóköre az aktuális ügyfél, és az aktuális kapcsolatra van rögzítve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
+Az ügyfél többször is *hívhatja a put-tokent* az üzenetkezelési infrastruktúra bármely entitása esetében. A jogkivonatok hatóköre az aktuális ügyfélre terjed ki, és az aktuális kapcsolatra van kikötve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
 
-A jelenlegi Service Bus implementáció csak a "névtelen" SASL metódussal együtt engedélyezi a CBS használatát. Az SASL-kézfogás előtt mindig léteznie kell egy SSL/TLS-kapcsolatnak.
+A jelenlegi Service Bus implementáció csak a CBS-t engedélyezi a "ANONYMOUS" SASL-metódussal együtt. Az SSL/TLS-kapcsolatnak mindig léteznie kell az SASL-kézfogás előtt.
 
-A névtelen mechanizmust ezért a kiválasztott AMQP 1,0-ügyfélnek kell támogatnia. A névtelen hozzáférés azt jelenti, hogy a kezdeti kapcsolati kézfogás, beleértve a kezdeti munkamenet létrehozását is, Service Bus nem tudja, hogy ki hozza létre a kapcsolatot.
+Ezért a kiválasztott AMQP 1.0-ügyfélnek támogatnia kell a ANONYMOUS mechanizmust. A névtelen hozzáférés azt jelenti, hogy a kezdeti kapcsolati kézfogás, beleértve a kezdeti munkamenet létrehozását is, anélkül történik, Service Bus tudná, ki hoz létre kapcsolatot.
 
-A kapcsolat és a munkamenet létrejötte után csatolja az *$CBS* csomópontra mutató hivatkozásokat, és a *put-token* kérés küldését az egyetlen engedélyezett művelet. Egy érvényes jogkivonatot a kapcsolat létrejötte után 20 másodpercen belül egy *put-jogkivonat* -kérelemmel kell beállítani, ha a kapcsolat létrejött, de a kapcsolat egyoldalúan eldobásra kerül a Service Bus használatával.
+Miután létrejött a kapcsolat és a munkamenet,  csak a hivatkozások csatolása $cbs csomópontra és a *put-token* kérelem küldése engedélyezett műveletek. Egy érvényes jogkivonatot sikeresen be kell állítani egy *put-token* kérelem használatával egy entitáscsomóponthoz a kapcsolat létrejötte után 20 másodpercen belül, ellenkező esetben a kapcsolat el lett Service Bus.
 
-Az ügyfél ezt követően felelős a jogkivonat lejáratának nyomon követéséhez. Ha egy jogkivonat lejár, Service Bus azonnal elveszíti a kapcsolat összes hivatkozását a megfelelő entitáshoz. A probléma megelőzése érdekében az ügyfél bármikor lecserélheti a csomóponthoz tartozó jogkivonatot egy újat a virtuális *$CBS* felügyeleti csomóponton, ugyanazzal az *üzembe helyezett jogkivonat-* kézmozdulattal, és anélkül, hogy a különböző hivatkozásokon futó hasznos adatforgalomhoz kellene fordulnia.
+Ezt követően az ügyfél felelős a jogkivonat lejáratának nyomon követéséért. Amikor egy jogkivonat lejár, Service Bus a rendszer azonnal eldobja a megfelelő entitáshoz tartozó kapcsolat összes hivatkozását. A probléma elkerülése érdekében az ügyfél bármikor lecserélheti a csomópont jogkivonatát egy újra a virtuális *$cbs* felügyeleti csomóponton ugyanazon *put-token* kézmozdulattal, és anélkül, hogy akadályozná a különböző hivatkozásokon áthaladó hasznos adatforgalmat.
 
-### <a name="send-via-functionality"></a>Küldési funkciók
+### <a name="send-via-functionality"></a>Küldési funkció
 
-A [küldési/továbbítási küldő](service-bus-transactions.md#transfers-and-send-via) olyan funkció, amely lehetővé teszi, hogy a Service Bus egy adott üzenetet továbbítson egy cél entitásnak egy másik entitáson keresztül. Ezzel a funkcióval egyetlen tranzakcióban végezheti el az entitások közötti műveleteket.
+[A Send-via /Transfer Sender](service-bus-transactions.md#transfers-and-send-via) egy olyan funkció, amely lehetővé teszi, hogy a Service Bus egy adott üzenetet továbbküld egy célentitásnak egy másik entitáson keresztül. Ez a funkció egyetlen tranzakció entitásai közötti műveletek végrehajtásához használható.
 
-Ezzel a funkcióval létre kell hoznia egy küldőt, és létre kell hoznia a hivatkozást `via-entity` . A hivatkozás létrehozása közben további információk is átkerülnek a hivatkozáson található üzenetek/átvitelek valódi céljának meghatározásához. Miután a csatolás sikeres volt, a hivatkozáson küldött összes üzenet automatikusan továbbítva lesz a *cél – entitás* felé a következőn keresztül: *entitás*. 
+Ezzel a funkcióval létrehoz egy küldőt, és létrehozza a hivatkozását `via-entity` a következőre: . A hivatkozás létrehozása során a hivatkozáson található üzenetek/átvitelek valódi célhelyének létrehozására a rendszer további információkat ad át. Ha a csatolás sikeres volt, a hivatkozáson küldött összes  üzenetet a rendszer automatikusan továbbítja a célentitásnak *a-entitáson keresztül.* 
 
-> Megjegyzés: a hivatkozás létrehozása előtt el kell indítani a hitelesítést mind az *entitások* , mind a *rendeltetési entitás* számára.
+> Megjegyzés: A hivatkozás létrehozása előtt a hitelesítést *entitáson és* célentitáson keresztül is végre kell hajtanunk. 
 
 | Ügyfél | Irány | Service Bus |
 | :--- | :---: | :--- |
-| csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = feladó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target =**{on-Entity}**,<br/>**Properties = Térkép [( <br/> com. Microsoft: átvitel-cél-címe = <br/> {cél-entitás})]** ) | ------> | |
-| | <------ | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = fogadó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {on-Entity},<br/>tulajdonságok = Térkép [(<br/>com. Microsoft: átvitel-cél-címe =<br/>{cél-entitás})] ) |
+| attach(<br/>name={link name},<br/>role=sender,<br/>source={ügyfélkapcsolat azonosítója},<br/>target=**{via-entity}**,<br/>**properties=map [( <br/> com.microsoft:transfer-destination-address= <br/> {destination-entity})]**) | ------> | |
+| | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={ügyfélkapcsolat azonosítója},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity})]) |
 
 ## <a name="next-steps"></a>Következő lépések
 
-A AMQP kapcsolatos további információkért tekintse meg a következő hivatkozásokat:
+Ha többet szeretne megtudni az AMQP-ről, látogasson el a következő hivatkozásokra:
 
 * [Service Bus AMQP áttekintése]
-* [AMQP 1,0 támogatás Service Bus particionált várólisták és témakörök számára]
-* [AMQP Service Bus Windows Serverhez]
+* [AMQP 1.0-támogatás Service Bus üzenetsorok és témakörök számára]
+* [AMQP a Service Bus Windows Server rendszerben]
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -419,5 +418,5 @@ A AMQP kapcsolatos további információkért tekintse meg a következő hivatko
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
-[AMQP 1,0 támogatás Service Bus particionált várólisták és témakörök számára]: 
+[AMQP 1.0-támogatás Service Bus üzenetsorok és témakörök számára]: 
 [AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

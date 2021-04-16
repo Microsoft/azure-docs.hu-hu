@@ -1,44 +1,50 @@
 ### YamlMime:Landing
-title: Ismerkedés a Microsoft Customer szerződéssel
-summary: Ismerkedés a számlázás és az előfizetések kezelésével a Microsoft-ügyfél szerződése alapján. Megtudhatja, hogyan értelmezheti és optimalizálhatja a költségeket, miközben biztonságos hozzáférést biztosít a számlázási környezethez.
+title: Első lépések a Microsoft Ügyfélszerződés
+summary: Első lépések a számlázás és az előfizetések kezelésével a saját Microsoft Ügyfélszerződés. Megtudhatja, hogyan értheti meg és optimalizálhatja a költségeket, miközben biztonságos hozzáférést biztosít a számlázási környezethez.
 metadata:
-  title: Ismerkedés a Microsoft Customer szerződéssel
-  description: Ismerje meg, hogyan kezdheti meg a Microsoft-ügyfél szerződését.
+  title: Első lépések a Microsoft Ügyfélszerződés
+  description: Ismerje meg, hogyan ismerkedés a Microsoft Ügyfélszerződés.
   ms.service: cost-management-billing
   ms.subservice: billing
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 03/01/2021
-  ms.openlocfilehash: f2dcb2687a5a765e674a3dce7ac9016e58056b81
-  ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+  ms.date: 04/07/2021
+  ms.openlocfilehash: bc04150b8aedcb02fcee888b390e2819c97d7a01
+  ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/16/2021
-  ms.locfileid: "103574714"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107478097"
 landingContent:
 - title: Bevezetés
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi a Microsoft-ügyfél szerződése?
+    - text: Mi az a Microsoft Ügyfélszerződés?
       url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: get-started
+    links:
+    - text: A szerződés elfogadása utáni következő legfontosabb lépések
+      url: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
   - linkListType: how-to-guide
     links:
-    - text: Áthelyezés a hitelkártyáról a számlára
+    - text: Számlázási tulajdonjog átadása a PAYG-ről az MCA-nak
       url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: Hozzáférési előfizetések tartományi AZONOSÍTÓval
+    - text: Számlázási tulajdonjog átadása ea-ból MCA-be
       url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - text: Rendszergazda beállítása az előfizetés felhasználóinak kezeléséhez
       url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - text: Új előfizetéseket hozhat létre.
       url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Előfizetés-hozzáférés hibaelhárítása
+      url: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - title: Számlázás kezelése
   linkLists:
   - linkListType: concept
     links:
-    - text: A számlázási ciklus megértése
+    - text: A számlázási ciklusok
       url: ../understand/mca-understand-your-invoice.md#billing-period
   - linkListType: tutorial
     links:
@@ -46,23 +52,21 @@ landingContent:
       url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
   - linkListType: how-to-guide
     links:
-    - text: Mi az a számlázási profil, és hogyan kezelhető?
+    - text: Mi az a számlázási profil, és hogyan kezelem?
       url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: Számla fizetése számlán
-      url: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: Számlás fizetés bankkártyával vagy bankkártyával, illetve ellenőrzéssel vagy átutalással
+    - text: A számla fizetése
       url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: Rendszergazda beállítása a számlázás kezelésére
+    - text: Rendszergazda beállítása a számlázás kezeléséhez
       url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: A szerződéssel kapcsolatos számlázás megkezdése
+    - text: A szerződésem számlázásának kezdete
       url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - text: Előfizetés tulajdonosának megkeresése
+    - text: Az előfizetés tulajdonosának megkeresve
       url: ../manage/add-change-subscription-administrator.md#assign-a-subscription-administrator
   - linkListType: video
     links:
     - text: Költségek rendszerezése
       url: https://www.youtube.com/watch?v=7RxTfShGHwU
-    - text: Számlázási fiókhoz való hozzáférés kezelése
+    - text: A számlázási fiókhoz való hozzáférés kezelése
       url: https://www.youtube.com/watch?v=9sqglBlKkho
     - text: A számla értelmezése
       url: https://www.youtube.com/watch?v=e2LGZZ7GubA
@@ -72,3 +76,5 @@ landingContent:
     links:
     - text: Mi az Active Directory?
       url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Bérlők kezelése
+      url: manage-tenants.md

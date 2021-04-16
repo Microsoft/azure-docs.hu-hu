@@ -1,24 +1,24 @@
 ---
-title: Beépített szabályzat-definíciók
-description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure szinapszis Analytics szolgáltatáshoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók
+description: A Azure Policy beépített szabályzatdefinícióit Azure Synapse Analytics. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 90542301b73395335fdb82382403800aa739f88f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8b1210e0d706161cbc790002ca7d9b7659a20c7b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094367"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498262"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics beépített definícióinak Azure Policy 
+# <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure Policy beépített definíciók a Azure Synapse Analytics 
 
-Ez az oldal az Azure szinapszis beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure Synapse. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-synapse"></a>Azure Synapse
 

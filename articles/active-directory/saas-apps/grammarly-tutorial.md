@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció nyelvtanilag | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és nyelvtan között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása nyelvtani | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést Azure Active Directory és nyelvtani beállítások között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,134 +9,133 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02fcd8fc14a300b7031677185a91d7e6c9aa3b09
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447704"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518354"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció nyelvtanilag
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása nyelvtanilag
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a nyelvtani integrációt Azure Active Directory (Azure AD) használatával. Az Azure AD-vel való nyelvtani integráció során a következőket teheti:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a Grammarlyt a Azure Active Directory (Azure AD) használatával. Ha integrálja a Grammarlyt az Azure AD-val, a következőt használhatja:
 
-* A nyelvtani hozzáféréssel rendelkező Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával való Nyelvtanba.
+* Az Azure AD vezérlése, aki nyelvtani hozzáféréssel rendelkezik.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a Grammarlyba az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* A nyelvtani egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Nyelvtani egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD SSO-t.
 
-* Nyelvtanilag támogatja a **identitásszolgáltató** KEZDEMÉNYEZett SSO-t
-* Nyelvtanilag támogatja a felhasználók üzembe helyezésének **időpontját**
+* A grammarly támogatja **az internetszolgáltató által** kezdeményezett SSO-t.
+* A grammarly támogatja **az "időben" felhasználóáthelyezést.**
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója rögzített sztringérték, így csak egy példány konfigurálható egy bérlőben.
 
 ## <a name="add-grammarly-from-the-gallery"></a>Nyelvtan hozzáadása a katalógusból
 
-A nyelvtanilag az Azure AD-be való integráció konfigurálásához nyelvtanilag hozzá kell adnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Grammarly és az Azure AD integrációjának konfigurálásához hozzá kell adni a Grammarlyt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **nyelvtan** kifejezést a keresőmezőbe.
-1. Válassza a **nyelvtanilag** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a **Vállalati alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a **Grammarly (Nyelvtan)** kifejezéseket a keresőmezőbe.
+1. Válassza **a Grammarly (Nyelvtan)** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
+## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>Az Azure AD SSO konfigurálása és tesztelése nyelvtani használathoz
 
-## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>Azure AD SSO konfigurálása és tesztelése nyelvtanilag
+Konfigurálja és tesztelje az Azure AD SSO-t a Grammarly használatával egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között nyelvtanilag.
 
-Konfigurálja és tesztelje az Azure AD SSO-t nyelvtanilag egy **B. Simon** nevű teszt felhasználó használatával. Az SSO működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között nyelvtanilag.
+Az Azure AD SSO Grammarly használatával való konfiguráláshoz és teszteléshez hajtsa végre a következő lépéseket:
 
-Az Azure AD SSO nyelvtanilag történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
-
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Nyelvtanilag egyszeri bejelentkezés konfigurálása](#configure-grammarly-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre nyelvtanilag tesztelő felhasználót](#create-grammarly-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódik, a "B. Simon", nyelvtani jogosultsággal rendelkező fél számára.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használják ezt a funkciót.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[A Grammarly SSO konfigurálása](#configure-grammarly-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazásoldalon.
+    1. **[Nyelvtani tesztfelhasználó létrehozása](#create-grammarly-test-user)** – a B.Simon nyelvtani megfelelője, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-1. A Azure Portal a **nyelvtanilag** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal **a Grammarly** application integration (Nyelvtani alkalmazásintegráció) oldalon keresse meg a **Kezelés** szakaszt, és válassza az egyszeri **bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer kiválasztása lapon** válassza az **SAML lehetőséget.**
+1. A Set **up single sign-on with SAML** (Egyszeri bejelentkezés beállítása SAML-sel) oldalon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az **SAML-alapkonfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre ki vannak töltve az Azure-ral. A felhasználónak a Mentés gombra kattintva mentenie kell a **konfigurációt.**
 
 
-1. A nyelvtanilag alkalmazás az SAML-kijelentéseket egy adott formátumban várja. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A nyelvtani alkalmazás egy adott formátumban várja az SAML helyességi feltételeket. Ezek az attribútumok is előre ki vannak töltve, de a követelményeknek megfelelően áttekintheti őket.
     
-    | Name |  Forrás attribútum|
+    | Name |  Forrásattribútum|
     | -------------- | --------- |
-    | FirstName | User. givenName |
-    | LastName | felhasználó. vezetéknév |
-    | EmailAddress | User. egyszerű név|
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | EmailAddress | user.principalname|
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az Egyszeri bejelentkezés beállítása **SAML-sel** lap **SAML** aláíró tanúsítvány szakaszában keresse meg a  **Tanúsítvány (Base64)** et, majd válassza a Letöltés lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/certificatebase64.png)
 
-1. A **nyelvtani beállítás** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **Nyelvtan beállítása szakaszban** másolja ki a követelménynek megfelelő URL-címet/URL-címeket.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon számára engedélyezheti az Azure egyszeri bejelentkezés használatát azáltal, hogy nyelvtani hozzáférést biztosít.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát úgy, hogy hozzáférést ad a Nyelvtanhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza a **nyelvtanilag** lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza a **Nyelvtan lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör van kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-## <a name="configure-grammarly-sso"></a>Nyelvtani egyszeri bejelentkezés konfigurálása
+## <a name="configure-grammarly-sso"></a>Nyelvtani SSO konfigurálása
 
-Ha **nyelvtanilag** szeretné beállítani az egyszeri bejelentkezést, másolja át a **bejelentkezési URL-címet**, az **Azure ad-azonosítót** és a letöltött **tanúsítványt (Base64)** a nyelvtani felügyeleti panelre. [Ismerje meg, hogyan](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
+Az egyszeri bejelentkezés nyelvtani konfiguráláshoz át kell másolnia a Bejelentkezési **URL-címet,** az **Azure AD-azonosítót** és a letöltött tanúsítványt **(Base64)** a Nyelvtani rendszergazda panelre.  [Ismerje meg, hogyan](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
-### <a name="create-grammarly-test-user"></a>Nyelvtanilag tesztelő felhasználó létrehozása
+### <a name="create-grammarly-test-user"></a>Nyelvtani tesztfelhasználó létrehozása
 
-Ebben a szakaszban a B. Simon nevű felhasználó nyelvtanilag lett létrehozva. A nyelvtanilag támogatja a felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik nyelvtanilag, akkor a hitelesítés után létrejön egy újat.
+Ebben a szakaszban egy B.Simon nevű felhasználót hozunk létre Nyelvtanilag. A nyelvtan támogatja az alapértelmezés szerint engedélyezett, felhasználóhoz való, időben való üzembehelyezést. Ebben a szakaszban nem található műveletelem. Ha a felhasználó még nem létezik a Nyelvtanban, a hitelesítés után létrejön egy új.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
-Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját.
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie ahhoz a nyelvtanhoz, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+* Kattintson az Alkalmazás tesztelése a Azure Portal lehetőségre, és automatikusan be kell jelentkezve lennie a Grammarlyba, amelyhez beállította az SSO-t.
 
-2. Használhatja a Microsoft Access panelt. Amikor a hozzáférési panelen a nyelvtani csempére kattint, automatikusan be kell jelentkeznie a Nyelvtanba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft Saját alkalmazások. Amikor a nyelvtan csempére kattint a Saját alkalmazások, automatikusan be kell jelentkezve a Grammarlybe, amelyhez beállította az SSO-t. További információ a [Saját alkalmazások: Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A nyelvtani konfigurálást követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+A Nyelvtan konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

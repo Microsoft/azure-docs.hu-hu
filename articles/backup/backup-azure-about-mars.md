@@ -1,18 +1,18 @@
 ---
-title: Tudnivalók a MARS-ügynökről
+title: A MARS-ügynökről
 description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági mentési forgatókönyveket
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e01694aca386482f9ff7ba52593c88326ba3d62
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87562599"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517742"
 ---
-# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
+# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Az Microsoft Azure Recovery Services- (MARS-) ügynökről
 
-Ez a cikk azt ismerteti, hogyan használja a Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba.
+Ez a cikk azt ismerteti, hogy a Azure Backup-szolgáltatás hogyan használja az Microsoft Azure Recovery Services- (MARS-) ügynököt fájlok, mappák és kötetek és rendszerállapotok biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba.
 
 ## <a name="backup-scenarios"></a>Biztonsági mentési forgatókönyvek
 
@@ -20,52 +20,52 @@ A MARS-ügynök a következő biztonsági mentési forgatókönyveket támogatja
 
 ![MARS biztonsági mentési forgatókönyvek](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
 
-- **Fájlok és mappák: a** Windows-fájlok és-mappák szelektív védelemmel való ellátása.
-- **Kötet szintje**: a számítógép teljes Windows-kötetének a megóvása.
-- **Rendszerszintű**: a teljes Windows rendszerállapotának biztosítása.
+- **Fájlok és mappák:** Windows-fájlok és -mappák szelektív védelme.
+- **Kötetszint:** A gép teljes Windows-kötetének védelme.
+- **Rendszerszint:** Egy teljes Windows rendszerállapot védelme.
 
 ### <a name="additional-scenarios"></a>További helyzetek
 
-- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines** szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+- **Adott fájlok és** mappák biztonsági mentése az Azure-beli virtuális gépeken: Az Azure-beli virtuális gépek (VM-ek) biztonsági mentése során az elsődleges módszer egy Azure Backup bővítmény használata a virtuális gépen. A bővítmény a teljes virtuális gépről biztonsági ment. Ha egy virtuális gépen belül bizonyos fájlokról és mappákról szeretne biztonsági mentéset, telepítheti a MARS-ügynököt az Azure-beli virtuális gépeken. További információ: [Architektúra: Beépített Azure-beli virtuális gép biztonsági mentése.](./backup-architecture.md#architecture-built-in-azure-vm-backup)
 
-- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés* folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
+- **Offline átvitel:** Az adatok kezdeti teljes biztonsági mentése az Azure-ba általában nagy mennyiségű adatot továbbít, és nagyobb hálózati sávszélességet igényel. A későbbi biztonsági mentések csak a különbözeti vagy növekményes adatmennyiséget továbbítják. Azure Backup a kezdeti biztonsági mentéseket tömöríti. Az offline töltés *folyamata* során a Azure Backup lemezeket használhat a tömörített kezdeti biztonsági mentési adatok offline feltöltéséhez az Azure-ba. További információ: offline [Azure Backup biztonsági mentés Azure Data Box.](offline-backup-azure-data-box.md)
 
 ## <a name="restore-scenarios"></a>Visszaállítási forgatókönyvek
 
 A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
-![MARS helyreállítási forgatókönyvek](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
+![A MARS helyreállítási forgatókönyvei](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
-- **Ugyanazon kiszolgáló**: az a kiszolgáló, amelyen a biztonsági másolatot eredetileg létrehozták.
-  - **Fájlok és mappák**: válassza ki a visszaállítani kívánt fájlokat és mappákat.
-  - **Kötet szintje**: válassza ki a visszaállítani kívánt kötetet és helyreállítási pontot. Ezután állítsa vissza ugyanarra a helyre vagy egy másik helyre ugyanazon a gépen.  Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
-  - **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, hogy a visszaállítás ugyanarra a gépre történjen egy adott helyen.
+- **Ugyanaz a kiszolgáló:** Az a kiszolgáló, amelyen a biztonsági mentést eredetileg létrehozták.
+  - **Fájlok és mappák:** Válassza ki a visszaállítani kívánt fájlokat és mappákat.
+  - **Kötetszint:** Válassza ki a visszaállítani kívánt kötetet és helyreállítási pontot. Ezután állítsa vissza ugyanannak a helynek vagy egy másik helynek ugyanazon a gépen.  Másolatot készíthet a meglévő fájlokról, felülírhatja a meglévő fájlokat, vagy kihagyhatja a meglévő fájlok helyreállítását.
+  - **Rendszerszint:** Válassza ki a rendszerállapotot és a helyreállítási pontot, hogy egy adott helyen visszaállítsa ugyanannak a gépnek a visszaállítását.
 
-- **Másodlagos kiszolgáló**: a biztonsági mentést végző kiszolgálótól eltérő kiszolgáló.
-  - **Fájlok és mappák**: válassza ki azokat az egyes fájlokat és mappákat, amelyeknek a helyreállítási pontját szeretné visszaállítani a célszámítógépen.
-  - **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani egy másik helyre. Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
-  - **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, ha rendszerállapot-fájlként szeretné visszaállítani egy másik számítógépre.
+- **Alternatív kiszolgáló:** Egy másik kiszolgáló, amely nem az a kiszolgáló, amelyről a biztonsági mentés készült.
+  - **Fájlok és mappák:** Válassza ki azokat a fájlokat és mappákat, amelyeknek helyreállítási pontját vissza szeretné állítani a célgépre.
+  - **Kötetszint:** Válassza ki a másik helyre visszaállítani kívánt kötetet és helyreállítási pontot. Másolatot készíthet a meglévő fájlokról, felülírhatja a meglévő fájlokat, vagy kihagyhatja a meglévő fájlok helyreállítását.
+  - **Rendszerszint:** Válassza ki a rendszerállapotot és a helyreállítási pontot, hogy rendszerállapot-fájlként egy másik gépre állítsa vissza.
 
 ## <a name="backup-process"></a>A biztonsági mentés folyamata
 
-1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a **biztonsági mentési célokból** válassza a fájlok, mappák és a rendszerállapot lehetőséget.
-2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](./install-mars-agent.md#download-the-mars-agent) egy helyszíni gépre.
+1. A Azure Portal hozzon létre egy [Recovery Services-tárolót,](install-mars-agent.md#create-a-recovery-services-vault)és válasszon fájlokat, mappákat és rendszerállapotot a **Biztonsági mentés céljai közül.**
+2. [Töltse le a Recovery Services-tároló hitelesítő adatait és ügynöktelepítőjét](./install-mars-agent.md#download-the-mars-agent) egy helyszíni gépre.
 
-3. [Telepítse az ügynököt](./install-mars-agent.md#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.
-4. A-ügyfél ügynök-konzolján [konfigurálja a biztonsági mentést](./backup-windows-with-mars-agent.md#create-a-backup-policy) , és adja meg a biztonsági mentést, a biztonsági mentés idejét (az ütemezést), a biztonsági másolatok megőrzésének idejét az Azure-ban (az adatmegőrzési szabályzatban), és a védelem megkezdéséhez.
+3. [Telepítse az ügynököt,](./install-mars-agent.md#install-and-register-the-agent) és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóban.
+4. Az ügyfél ügynökkonzolján [](./backup-windows-with-mars-agent.md#create-a-backup-policy) konfigurálja a biztonsági mentést annak megadásához, hogy miről, mikor (az ütemezésről), mennyi ideig kell megőrizni a biztonsági másolatokat az Azure-ban (a megőrzési házirendet), és mikor kezdje meg a védelmet.
 
-![Azure Backup-ügynök diagramja](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+![Azure Backup ügynök ábrája](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
 ### <a name="additional-information"></a>További információ
 
-- A **kezdeti biztonsági** mentés (az első biztonsági mentés) a biztonsági mentési beállításoknak megfelelően fut.  A MARS-ügynök a VSS-t használja a biztonsági mentésre kijelölt kötetek időpontra vonatkozó pillanatképének elkészítéséhez. Az ügynök csak a Windows rendszeríró műveletet használja a pillanatkép rögzítéséhez. Nem használ semmilyen Application VSS-írót, és nem rögzíti az alkalmazás-konzisztens pillanatképeket. A pillanatképnek a VSS-vel való elkészítése után a MARS-ügynök létrehoz egy virtuális merevlemezt (VHD) a biztonsági mentés konfigurálásakor megadott gyorsítótár-mappában. Az ügynök az egyes adatblokkok ellenőrzőösszegeit is tárolja.
+- A **kezdeti biztonsági mentés** (első biztonsági mentés) a biztonsági mentési beállításoknak megfelelően fut.  A MARS-ügynök a VSS-t használja a biztonsági mentéshez kiválasztott kötetek időponthoz készült pillanatképének készítéséhez. Az ügynök csak a Windows rendszeríró műveletet használja a pillanatkép rögzítéséhez. Nem használ alkalmazás VSS-írókat, és nem rögzít alkalmazás-konzisztens pillanatképeket. Miután a VSS-sel készített pillanatképet, a MARS-ügynök létrehoz egy virtuális merevlemezt (VHD) a biztonsági mentés konfigurálásakor megadott gyorsítótármappában. Az ügynök az egyes adatblokkok ellenőrzőanyagát is tárolja.
 
-- A **növekményes biztonsági mentések** (az azt követő biztonsági másolatok) a megadott ütemezés szerint futnak. A növekményes biztonsági mentések során a módosított fájlok azonosíthatók, és létrejön egy új VHD. A virtuális merevlemez tömörítve és titkosítva van, majd a rendszer elküldje a tárolónak. A növekményes biztonsági mentés befejeződése után az új VHD a kezdeti replikáció után létrehozott VHD-vel lesz egyesítve. Ez az egyesített VHD biztosítja a legújabb, a folyamatban lévő biztonsági mentéshez való összehasonlításhoz használt állapotot.
+- **A növekményes** biztonsági mentések (későbbi biztonsági mentések) a megadott ütemezés szerint futnak. A növekményes biztonsági mentések során a rendszer azonosítja a módosított fájlokat, és létrehoz egy új virtuális merevlemezt. A VHD tömörítve és titkosítva van, majd a tárolóba lesz elküldve. A növekményes biztonsági mentés befejezése után az új virtuális merevlemez egyesül a kezdeti replikáció után létrehozott virtuális merevlemezsel. Ez az egyesített VHD a legújabb állapotot biztosítja a folyamatban lévő biztonsági mentések összehasonlításához.
 
-- A MARS-ügynök **optimalizált módban** futtathatja a biztonsági mentési FELADATOT az USN (frissítési sorszám) módosítási napló használatával, vagy nem optimalizált **módban** , ha a címtárakban vagy fájlokban lévő módosításokat ellenőrzi a teljes kötet vizsgálatával. Az optimalizálatlan mód lassabb, mert az ügynöknek a köteten lévő összes fájlt be kell olvasnia, és össze kell hasonlítani a metaadatokkal a módosított fájlok meghatározásához.  A **kezdeti biztonsági mentés** mindig nem optimalizált módban fog futni. Ha az előző biztonsági mentés sikertelen volt, a következő ütemezett biztonsági mentési feladatokra nem optimalizált módban fog futni. Ha többet szeretne megtudni ezekről a módokról és azok ellenőrzéséről, tekintse meg [ezt a cikket](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
+- A MARS-ügynök futtathatja  a biztonsági mentési feladatot optimalizált módban az USN  (Frissítési sorszám) módosítási naplóval, vagy nem optimalizált módban a könyvtárak vagy fájlok változásainak ellenőrzéséhez a teljes kötet vizsgálatával. Az optimalizált mód lassabb, mert az ügynöknek be kell olvasnia a köteten lévő összes fájlt, és össze kell hasonlítani a metaadatokkal a módosított fájlok meghatározásához.  A **kezdeti biztonsági** mentés mindig nem optimalizált módban fog futni. Ha az előző biztonsági mentés sikertelen volt, akkor a következő ütemezett biztonsági mentési feladat nem optimalizált módban fog futni. Ha többet szeretne megtudni ezekről a módokról és az ellenőrzésükről, tekintse meg [ezt a cikket.](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)
 
 ## <a name="next-steps"></a>Következő lépések
 
 [A MARS-ügynök támogatási mátrixa](./backup-support-matrix-mars-agent.md)
 
-[MARS-ügynök – gyakori kérdések](./backup-azure-file-folder-backup-faq.md)
+[MARS-ügynök – gyakori kérdések](./backup-azure-file-folder-backup-faq.yml)

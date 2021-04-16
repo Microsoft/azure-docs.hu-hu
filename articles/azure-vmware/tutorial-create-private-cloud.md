@@ -1,38 +1,38 @@
 ---
-title: Oktatóanyag – Azure VMware-megoldás saját Felhőbeli üzembe helyezése
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy Azure VMware-megoldást saját felhőben
+title: Oktatóanyag – Magánfelhő Azure VMware Solution üzembe helyezése
+description: Megtudhatja, hogyan hozhat létre és helyezhet Azure VMware Solution magánfelhőt
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89a44ce7e5910609068f72c321971ced2e3646b4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462167"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374845"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Magánfelhő Azure VMware Solution üzembe helyezése
 
-Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üzembe az Azure-ban. A minimális kezdeti üzembe helyezés három gazdagép. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre.
+Azure VMware Solution vSphere-fürt üzembe helyezését teszi lehetővé az Azure-ban. A minimális kezdeti üzembe helyezés három gazdagép. Egyszerre csak egy gazdagépet lehet hozzáadni, fürtönként legfeljebb 16 gazdagépet.
 
-Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
+Mivel Azure VMware Solution nem teszi lehetővé a magánfelhő kezelését a helyszíni vCenterben indításkor, további konfigurációra van szükség. Ezeket az eljárásokat és a kapcsolódó előfeltételeket ez az oktatóanyag is lefedi.
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
-> * Azure VMware-megoldás saját felhő létrehozása
-> * A privát felhő üzembe helyezésének ellenőrzése
+> * Magánfelhő Azure VMware Solution létrehozása
+> * Az üzembe helyezett magánfelhő ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Megfelelő rendszergazdai jogosultságok és engedélyek a privát felhő létrehozásához. Az előfizetésben legalább közreműködő szinten kell lennie.
-- Az Azure VMware-megoldás üzembe helyezéséhez kövesse a [tervezési](production-ready-deployment-steps.md) cikkben összegyűjtött információkat.
-- Győződjön meg arról, hogy a megfelelő hálózatkezelés konfigurálva van az [oktatóanyag: hálózati ellenőrzőlista](tutorial-network-checklist.md)című témakörben leírtak szerint.
-- A gazdagépek üzembe helyezése megtörtént, és a Microsoft. AVS erőforrás-szolgáltató regisztrálva van a [kérés gazdagépek és a Microsoft. AVS erőforrás-szolgáltató engedélyezése](enable-azure-vmware-solution.md)című témakörben leírtak szerint.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Megfelelő rendszergazdai jogosultságok és engedélyek a magánfelhők létrehozásához. Legalább közreműködői szinten kell lennie az előfizetésben.
+- Kövesse a tervezési cikkben összegyűjtött [információkat](production-ready-deployment-steps.md) a Azure VMware Solution.
+- Győződjön meg arról, hogy a megfelelő hálózat konfigurálva van az [Oktatóanyag: Hálózati ellenőrzőlista.](tutorial-network-checklist.md)
+- A gazdagépek üzembe vannak írva, és a Microsoft.AVS erőforrás-szolgáltató regisztrálva lett a Gazdagépek kérése és a [Microsoft.AVS erőforrás-szolgáltató engedélyezését tartalmazó cikk alapján.](enable-azure-vmware-solution.md)
 
 ## <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 
-A [Azure Portal](#azure-portal) vagy az [Azure parancssori](#azure-cli)felületének használatával létrehozhat egy Azure VMware-megoldáshoz tartozó saját felhőt is.
+Magánfelhőt a Azure VMware Solution vagy az Azure CLI Azure Portal [használatával](#azure-portal) [hozhat létre.](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -40,15 +40,15 @@ A [Azure Portal](#azure-portal) vagy az [Azure parancssori](#azure-cli)felület�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát felhőt létrehozni, az Azure CLI-t használhatja a Azure Cloud Shell használatával.  Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](/cli/azure/ext/vmware/vmware).
+A Azure Portal helyett Azure VMware Solution azure cli-t használhatja az Azure Cloud Shell.  A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/ext/vmware/vmware)
 
 #### <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
-Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
+A **kódblokk jobb** felső sarkában válassza a Kipróbálom lehetőséget. A böngészőablakot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza **a Másolás** lehetőséget a kódblokkok másoláshoz, illessze be a Cloud Shell, majd nyomja le az **Enter** billentyűt a futtatáshoz.
 
 #### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot [az "az group create" paranccsal.](/cli/azure/group) Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 
@@ -57,16 +57,16 @@ az group create --name myResourceGroup --location eastus
 
 #### <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 
-Adja meg az erőforráscsoport nevét, a saját felhőt, a helyet és a fürt méretét.
+Adja meg az erőforráscsoport és a magánfelhő nevét, a helyet és a fürt méretét.
 
 | Tulajdonság  | Leírás  |
 | --------- | ------------ |
-| **-g** (erőforráscsoport neve)     | A saját felhőalapú erőforrásaihoz tartozó erőforráscsoport neve.        |
-| **-n** (saját felhő neve)     | Az Azure VMware-megoldás saját Felhőbeli neve.        |
-| **--hely**     | A saját felhőhöz használt hely.         |
-| **– fürt mérete**     | A fürt mérete. A minimális érték 3.         |
-| **--Network-Block**     | A CIDR IP-cím hálózati blokkja, amelyet a saját felhőhöz használ. A Címterület nem fedi át az előfizetésben és a helyszíni hálózatokban lévő más virtuális hálózatokban használt címeket.        |
-| **--SKU** | Az SKU értéke: AV36 |
+| **-g** (erőforráscsoport neve)     | A magánfelhőbeli erőforrások erőforráscsoport-neve.        |
+| **-n** (magánfelhő neve)     | A magánfelhő Azure VMware Solution neve.        |
+| **--location**     | A magánfelhőhöz használt hely.         |
+| **--cluster-size**     | A fürt mérete. A minimális érték 3.         |
+| **--network-block**     | A magánfelhőhöz használt CIDR IP-cím hálózati blokk. A címblokk nem lehet átfedésben az előfizetésben és a helyszíni hálózatokban található más virtuális hálózatokban használt címblokkokkal.        |
+| **--sku** | A termékváltozat értéke: AV36 |
 
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
@@ -74,19 +74,19 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
 
-Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](/cli/azure/ext/vmware/vmware).
+A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/ext/vmware/vmware)
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Azure VMware-megoldás saját felhő létrehozása
-> * A privát felhő üzembe helyezésének ellenőrzése
-> * Azure VMware-megoldás saját felhő törlése
+> * Magánfelhő Azure VMware Solution létrehozása
+> * Az üzembe helyezett magánfelhő ellenőrzése
+> * Magánfelhő Azure VMware Solution törlése
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre egy Jump Box-t. A Jump Box használatával csatlakozhat a környezethez, hogy helyileg kezelhesse a saját felhőjét.
+Folytassa a következő oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre jump boxot. A jump box használatával csatlakozhat a környezetéhez, így helyileg kezelheti a magánfelhőt.
 
 
 > [!div class="nextstepaction"]
-> [Hozzáférés egy Azure VMware-megoldáshoz – saját felhő](tutorial-access-private-cloud.md)
+> [Hozzáférés Azure VMware Solution magánfelhőhöz](tutorial-access-private-cloud.md)

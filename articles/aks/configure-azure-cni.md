@@ -1,122 +1,122 @@
 ---
-title: Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogyan konfigurálhatja az Azure CNI (Advanced) hálózatkezelést az Azure Kubernetes szolgáltatásban (ak), beleértve az AK-fürtök meglévő virtuális hálózatba és alhálózatba való telepítését is.
+title: Hálózati Azure CNI konfigurálása a Azure Kubernetes Service (AKS) szolgáltatásban
+description: Megtudhatja, hogyan konfigurálhatja Azure CNI (speciális) hálózatépítést az Azure Kubernetes Service -ban (AKS), beleértve egy AKS-fürt üzembe helyezését egy meglévő virtuális hálózatban és alhálózaton.
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.custom: references_regions
-ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 62885a4695e7b061a5e7f0e70496cde4663c943d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504252"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478930"
 ---
-# <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Hálózati Azure CNI konfigurálása a Azure Kubernetes Service (AKS) szolgáltatásban
 
-Alapértelmezés szerint az AK-fürtök a [kubenet][kubenet]-t használják, és létrehoznak egy virtuális hálózatot és egy alhálózatot. A *kubenet* a csomópontok egy virtuális hálózati alhálózatból kapnak IP-címet. A hálózati címfordítás (NAT) ezután konfigurálva van a csomópontokon, és a hüvelyek a csomópont IP-címe mögött "rejtett" IP-címet kapnak. Ezzel a módszerrel csökkenthető az IP-címek száma, amelyeket a hüvelyek számára a hálózati térben le kell foglalni.
+Alapértelmezés szerint az AKS-fürtök a [kubenetet][kubenet]használják, és létrejön egy virtuális hálózat és egy alhálózat. A *kubenettel a* csomópontok egy IP-címet szereznek be egy virtuális hálózat alhálózatán. Ezután konfigurálja a hálózati címfordítást (NAT) a csomópontokon, és a podok egy "rejtett" IP-címet kapnak a csomópont IP-címe mögött. Ez a megközelítés csökkenti a podok számára a hálózati térben lefoglalni szükséges IP-címek számát.
 
-Az [Azure Container Network Interface (CNI)][cni-networking]használatával minden Pod IP-címet kap az alhálózatból, és közvetlenül elérhető. Ezeknek az IP-címeknek egyedinek kell lenniük a hálózati térben, és előre kell tervezni. Mindegyik csomóponthoz tartozik egy konfigurációs paraméter az általa támogatott hüvelyek maximális számához. A csomópontok azonos számú IP-címet, majd az adott csomópont előtt fenntartanak. Ennek a megközelítésnek több megtervezésre van szüksége, és gyakran az IP-címek kimerülését, illetve a fürtök egy nagyobb alhálózaton való újraépítését igényli, mivel az alkalmazás által igényelt növekedés.
+A [Azure Container Networking Interface (CNI) minden][cni-networking]pod kap egy IP-címet az alhálózatról, és közvetlenül elérhető. Ezeknek az IP-címeknek egyedinek kell lennie a hálózati térben, és előre meg kell tervezni őket. Minden csomópont rendelkezik egy konfigurációs paraméterrel a támogatott podok maximális számára. Ezután a csomópontonkénti azonos számú IP-címet a rendszer előre lefoglalja az adott csomópont számára. Ez a megközelítés több tervezést igényel, és gyakran az IP-címek kimerítéséhez vagy a fürtök egy nagyobb alhálózaton való újraépítéséhez vezet az alkalmazás igényeinek növekedésével.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat az *Azure CNI* hálózatkezelési szolgáltatásával virtuális hálózati alhálózatot egy AK-fürthöz. A hálózati beállításokkal és a szempontokkal kapcsolatos további információkért lásd: [hálózati fogalmak a Kubernetes és az AK][aks-network-concepts]-hoz.
+Ez a cikk bemutatja, hogyan hozhat *Azure CNI* hálózati alhálózatokat egy AKS-fürthöz, és hogyan használhatja őket. A hálózati beállításokkal és szempontokkal kapcsolatos további információkért lásd: Hálózati fogalmak [a Kuberneteshez és az AKS-hez.][aks-network-concepts]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
-* Az AK-fürtök nem használhatják a,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` , vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány, a pod címtartomány vagy a fürt virtuális hálózati címtartomány-tartományát.
-* Az AK-fürt által használt fürt identitásának legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
+* Az AKS-fürt virtuális hálózatának engedélyeznie kell a kimenő internetkapcsolatot.
+* Az AKS-fürtök nem használhatnak , , vagy értékeket a Kubernetes szolgáltatás címtartományához, pod címtartományához vagy fürt virtuális hálózati `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` címtartományához.
+* Az AKS-fürt által használt fürtidentitásnak legalább Hálózati közreműködő engedéllyel kell rendelkeznie a virtuális hálózat alhálózatán. [](../role-based-access-control/built-in-roles.md#network-contributor) Ha a beépített [](../role-based-access-control/custom-roles.md) Hálózati közreműködő szerepkör használata helyett egyéni szerepkört szeretne definiálni, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* Az AK-csomóponti készlethez rendelt alhálózat nem lehet [delegált alhálózat](../virtual-network/subnet-delegation-overview.md).
+* Az AKS-csomópontkészlethez rendelt alhálózat nem lehet [delegált alhálózat.](../virtual-network/subnet-delegation-overview.md)
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>A fürt IP-címzésének megtervezése
 
-Az Azure CNI hálózatkezeléssel konfigurált fürtök további tervezést igényelnek. A virtuális hálózat és az alhálózata méretének meg kell felelnie a futtatni kívánt hüvelyek számának és a fürt csomópontjainak.
+A hálózati Azure CNI konfigurált fürtök további tervezést igényelnek. A virtuális hálózat és az alhálózat méretének igazodva kell lennie a futtatni kívánt podok és a fürt csomópontjainak számához.
 
-A hüvelyek és a fürt csomópontjainak IP-címei a virtuális hálózaton belüli megadott alhálózathoz vannak rendelve. Mindegyik csomópont elsődleges IP-címmel van konfigurálva. Alapértelmezés szerint 30 további IP-cím előre konfigurálva van az Azure CNI, amelyek a csomóponton ütemezett hüvelyekhez vannak rendelve. Ha kibővíti a fürtöt, az egyes csomópontok Hasonlóképpen az alhálózat IP-címeivel vannak konfigurálva. Megtekintheti a [maximális hüvelyek/csomópontok számát](#maximum-pods-per-node)is.
+A podok és a fürt csomópontjainak IP-címei a virtuális hálózat megadott alhálózatán vannak hozzárendelve. Minden csomópont egy elsődleges IP-címmel van konfigurálva. Alapértelmezés szerint 30 további IP-címet konfigurál a Azure CNI, amelyek a csomóponton ütemezett podokhoz vannak rendelve. A fürt horizontális felskálán való horizontális felskálán az egyes csomópontok hasonlóan vannak konfigurálva az alhálózat IP-címekkel. A podok [csomópontonkénti maximális száma is megtekinthető.](#maximum-pods-per-node)
 
 > [!IMPORTANT]
-> A szükséges IP-címek számának tartalmaznia kell a frissítési és skálázási műveletek szempontjait. Ha úgy állítja be az IP-címtartományt, hogy csak a rögzített számú csomópontot támogassa, a fürt nem frissíthető és nem méretezhető.
+> A szükséges IP-címek számának figyelembe kell vennie a frissítési és skálázási műveleteket. Ha az IP-címtartományt úgy adja meg, hogy csak meghatározott számú csomópontot támogatzon, akkor nem frissítheti vagy skálázhatja a fürtöt.
 >
-> * Az AK-fürt **frissítésekor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak, és a rendszer eltávolítja egy régebbi csomópontot a fürtből. Ennek a működés közbeni frissítési folyamatnak legalább egy további IP-blokkot kell használnia. Ezután a csomópontok száma megtörténik `n + 1` .
->   * Ez a megfontolás különösen fontos a Windows Server-csomópontok készletének használatakor. Az AK-beli Windows Server-csomópontok nem alkalmazzák automatikusan a Windows-frissítéseket, hanem a csomópont-készleten végeznek frissítést. Ez a frissítés új csomópontokat helyez üzembe a legújabb Window Server 2019 Alapcsomópont-lemezkép és biztonsági javítások alapján. A Windows Server-csomópontok készletének frissítésével kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+> * Amikor frissíti **az** AKS-fürtöt, a rendszer egy új csomópontot helyez üzembe a fürtön. A szolgáltatások és a számítási feladatok elkezdenek futni az új csomóponton, és a rendszer eltávolít egy régebbi csomópontot a fürtből. Ehhez a működés közbeni frissítési folyamathoz legalább egy további IP-címblokknak elérhetőnek kell lennie. A csomópontok száma ekkor `n + 1` .
+>   * Ez a szempont különösen fontos a Windows Server-csomópontkészletek használata esetén. Az AKS-beli Windows Server-csomópontok nem alkalmazzák automatikusan a Windows-frissítéseket, hanem a csomópontkészlet frissítését hajtják végre. Ez a frissítés új csomópontokat helyez üzembe a Windows Server 2019 legújabb alapcsomópont-rendszerképével és biztonsági javításokkal. A Windows Server-csomópontkészletek frissítésével kapcsolatos további információkért lásd: Csomópontkészlet frissítése az [AKS-ban.][nodepool-upgrade]
 >
-> * AK-fürtök **skálázásakor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak. Az IP-címtartományt figyelembe kell vennie, hogyan érdemes felmérni a fürt által támogatott csomópontok és hüvelyek számát. A frissítési műveletekhez egy további csomópontot is bele kell foglalni. Ezután a csomópontok száma megtörténik `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
+> * Az  AKS-fürtök skálázásakor a rendszer egy új csomópontot helyez üzembe a fürtön. A szolgáltatások és a számítási feladatok az új csomóponton kezdenek futni. Az IP-címtartománynak figyelembe kell vennie, hogy a fürt által támogatott csomópontok és podok száma hogyan skálázható fel horizontálisan. A frissítési műveletekhez egy további csomópontot is bele kell foglalni. A csomópontok száma ekkor `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
 
-Ha azt szeretné, hogy a csomópontok a maximális számú hüvelyt futtassák, és a hüvelyek rendszeres megsemmisítését és üzembe helyezését is lehetővé teszi, akkor a csomópontok további IP-címeit is érdemes figyelembe venni Ezek a további IP-címek figyelembe veszik, hogy a szolgáltatás törölhető, és az új szolgáltatás üzembe helyezésének és a cím megvásárlásának IP-címe is eltarthat.
+Ha azt várja, hogy a csomópontok a podok maximális számát futtatják, és rendszeresen megsemmisítik és üzembe helyezik a podokat, akkor csomópontonként néhány további IP-címet is figyelembe kell venünk. Ezek a további IP-címek figyelembe vehetnek néhány másodpercet, amíg egy szolgáltatás törlődik, és megkezdődik az új szolgáltatás üzembe helyezése és a cím lekért IP-címe.
 
-Az AK-fürtök IP-címének csomagja egy virtuális hálózatból, a csomópontok és hüvelyek legalább egy alhálózatból, valamint egy Kubernetes-szolgáltatási címtartományből áll.
+Az AKS-fürt IP-címzési terve egy virtuális hálózatból, legalább egy alhálózatból áll a csomópontok és podok számára, valamint egy Kubernetes-szolgáltatás címtartománya.
 
-| Címtartomány/Azure-erőforrás | Korlátok és méretezés |
+| Címtartomány /Azure-erőforrás | Korlátok és méretezés |
 | --------- | ------------- |
-| Virtuális hálózat | Az Azure-beli virtuális hálózat lehet olyan nagy, mint/8, de 65 536 konfigurált IP-címekre van korlátozva. Vegye figyelembe az összes hálózati igényt, beleértve a más virtuális hálózatokban lévő szolgáltatásokkal való kommunikációt a címterület konfigurálása előtt. Ha például egy címtartomány túl nagy részét állítja be, akkor előfordulhat, hogy a hálózaton belül átfedésben van más címtartomány.|
-| Alhálózat | Elég nagynak kell lennie ahhoz, hogy megfeleljen a fürtben esetlegesen kiépített csomópontoknak, hüvelyeknek és az összes Kubernetes és Azure-erőforrásnak. Ha például belső Azure Load Balancer telepít, az előtér-IP-címek a fürt alhálózatán vannak lefoglalva, nem nyilvános IP-címek. Az alhálózat méretének figyelembe kell vennie a frissítési műveleteket vagy a jövőbeli méretezési igényeket is.<p />Az alhálózat *minimális* méretének kiszámításához, beleértve egy további csomópontot a frissítési műveletekhez: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Példa 50 csomópontos fürtre: `(51) + (51  * 30 (default)) = 1,581` (/21 vagy nagyobb)<p/>Példa egy 50 csomópontos fürtre, amely a további 10 csomópontok vertikális felskálázását is magában foglalja: `(61) + (61 * 30 (default)) = 1,891` (/21 vagy nagyobb)<p>Ha a fürt létrehozásakor nem ad meg maximális számú hüvelyt egy csomóponton, a csomópontok maximális száma *30* értékre van állítva. Az IP-címek minimálisan szükséges száma az adott értéken alapul. Ha az IP-címek minimális követelményeit eltérő maximális értékre számítja ki, tekintse meg a következő témakört: [a hüvelyek maximális számának beállítása](#configure-maximum---new-clusters) a fürt telepítésekor ezt az értéket. |
-| A Kubernetes Service címtartománya | Ezt a tartományt nem szabad az ehhez a virtuális hálózathoz csatlakoztatott bármely hálózati elemhez használni. A szolgáltatási címek CIDR kisebbnek kell lennie, mint/12. Ezt a tartományt a különböző AK-fürtökön is felhasználhatja. |
-| A Kubernetes DNS-szolgáltatás IP-címe | Az Kubernetes szolgáltatási címtartomány azon IP-címe, amelyet a fürtszolgáltatás felderítése fog használni. Ne használja az első IP-címet a címtartományból, például. 1. Az alhálózat tartományának első címe a *kubernetes. default. SVC. cluster. local* címen található. |
-| Docker-híd címe | A Docker-híd hálózati címe az összes Docker-telepítésben található alapértelmezett *docker0* híd hálózati címe. Habár a *docker0* híd nem használatos az AK-fürtök vagy maguk a hüvelyek számára, a címnek úgy kell beállítania, hogy továbbra is támogassa az olyan forgatókönyveket, mint például a *Docker Build* az AK-fürtön belül. A Docker-híd hálózati címéhez ki kell választania egy CIDR, mert különben a Docker automatikusan kiválaszt egy alhálózatot, ami ütközik más CIDRs. Olyan címtartományt kell választania, amely nem ütközik a hálózatok többi CIDRs, beleértve a fürt Service CIDR és a pod CIDR. A 172.17.0.1/16 alapértelmezett értéke. Ezt a tartományt a különböző AK-fürtökön is felhasználhatja. |
+| Virtuális hálózat | Az Azure-beli virtuális hálózat akár /8 méretű is lehet, de legfeljebb 65 536 konfigurált IP-címre van korlátozva. A címtér konfigurálása előtt vegye figyelembe a hálózattal kapcsolatos összes igényét, beleértve a más virtuális hálózatokban lévő szolgáltatásokkal való kommunikációt is. Ha például túl nagy címteret konfigurál, problémákba kerülhet a hálózaton belüli más címterek átfedése miatt.|
+| Alhálózat | Elég nagynak kell lennie ahhoz, hogy elférje a fürtben kiépített csomópontokat, podokat, valamint az összes Kubernetes- és Azure-erőforrást. Ha például belső ip-Azure Load Balancer üzembe, annak előtér-IP-eket a fürt alhálózata, nem pedig a nyilvános IP-k osztják ki. Az alhálózat méretének figyelembe kell vennie a frissítési műveleteket vagy a jövőbeli méretezési igényeket is.<p />Az alhálózat *minimális* méretének kiszámítása, beleértve egy további csomópontot a frissítési műveletekhez: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Példa 50 csomópontos fürtre: `(51) + (51  * 30 (default)) = 1,581` (/21 vagy nagyobb)<p/>Példa egy 50 csomópontos fürtre, amely egy további 10 csomópont horizontális felskáláshoz való üzembe építést is tartalmaz: `(61) + (61 * 30 (default)) = 1,891` (/21 vagy nagyobb)<p>Ha a fürt létrehozásakor nem adja meg a podok csomópontonkénti maximális számát, a podok csomópontonkénti maximális száma *30* lesz. A szükséges IP-címek minimális száma ezen az értéken alapul. Ha egy másik maximális értékre számítja ki [](#configure-maximum---new-clusters) a minimális IP-címre vonatkozó követelményeket, tekintse meg, hogyan konfigurálhatja a podok csomópontonkénti maximális számát ennek az értéknek a beállítását a fürt üzembe helyezésekor. |
+| A Kubernetes Service címtartománya | Ezt a tartományt ne használja a virtuális hálózat egyik hálózati eleme sem, és nem kapcsolód hozzá. A szolgáltatáscím CIDR-nek /12-esnél kisebbnek kell lennie. Ezt a tartományt újra felhasználhatja a különböző AKS-fürtökben. |
+| A Kubernetes DNS-szolgáltatás IP-címe | A Fürtszolgáltatás felderítése által használt, a Kubernetes szolgáltatás címtartományán belüli IP-cím. Ne használja a címtartomány első IP-címét, például .1. A rendszer az alhálózati tartomány első címét használja a *kubernetes.default.svc.cluster.local címhez.* |
+| Docker-híd címe | A Docker-híd hálózati címe az összes Docker-telepítésben található alapértelmezett *docker0* híd hálózati címe. Bár az AKS-fürtök és maguk a podok nem használják a *Docker0-hidat,* ezt a címet úgy kell beállítania, hogy továbbra is támogassa az olyan forgatókönyveket, mint az AKS-fürtön belüli *docker build.* A Docker-híd hálózati címéhez CIDR-t kell választani, mert ellenkező esetben a Docker automatikusan választ alhálózatot, ami ütközhet más CIDR-ekkel. Olyan címteret kell választania, amely nem ütközik a hálózat többi CIDR-ével, beleértve a fürt szolgáltatásának CIDR-ját és a pod CIDR-ját. Az alapértelmezett érték: 172.17.0.1/16. Ezt a tartományt újra felhasználhatja a különböző AKS-fürtökben. |
 
-## <a name="maximum-pods-per-node"></a>Hüvelyek maximális száma/csomópont
+## <a name="maximum-pods-per-node"></a>Podok maximális száma csomópontonként
 
-A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI* Hálózatkezelés és a fürt üzembe helyezése közötti alapértelmezett maximális szám a hüvelyek száma *szerint* változik.
+Egy AKS-fürtben csomópontonként legfeljebb 250 pod lehet. A *podok* csomópontonkénti alapértelmezett maximális száma a *kubenet* és Azure CNI *hálózat* és a fürttelepítés módja között változik.
 
-| Üzembe helyezési módszer | Kubenet alapértelmezett értéke | Alapértelmezett Azure-CNI | Konfigurálható az üzembe helyezéskor |
+| Üzembe helyezési módszer | Kubenet alapértelmezett | Azure CNI alapértelmezett | Üzembe helyezéskor konfigurálható |
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 110 (a csomópont-készletek lapon van konfigurálva) | No |
+| Portál | 110 | 110 (a Csomópontkészletek lapon konfigurálva) | Nem |
 
-### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
+### <a name="configure-maximum---new-clusters"></a>Maximális érték konfigurálása – új fürtök
 
-A csomópontok maximális számát a fürt központi telepítésének idején vagy új csomópont-készletek hozzáadásakor konfigurálhatja. Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal végzi a telepítést, a csomópontok maximális számát a 250 értékre állíthatja.
+A podok csomópontonkénti maximális számát a fürt üzembe helyezésekor vagy új csomópontkészletek hozzáadásakor konfigurálhatja. Ha az Üzembe helyezést az Azure CLI-val vagy egy Resource Manager sablonnal telepíti, a podok csomópontonkénti maximális értékét beállíthatja 250-re.
 
-Ha nem ad meg maxPods az új csomópontok létrehozásakor, az Azure CNI esetében a 30 alapértelmezett érték jelenik meg.
+Ha nem adja meg a maxPods értéket az új csomópontkészletek létrehozásakor, az alapértelmezett érték 30 lesz a Azure CNI.
 
-A csomópontok maximális számaként megadott minimális érték kényszerítve van, hogy a rendszer a fürt állapotának kritikus fontosságú területét biztosítsa. A maximális hüvelyek esetében beállítható minimális érték 10, ha és csak akkor, ha az egyes csomópontok készletének konfigurációja legalább 30 hüvelyből áll. Például a maximális hüvelyek/csomópontok minimum 10 értékre való beállítása megköveteli, hogy minden egyes csomópont-készlet legalább 3 csomóponttal rendelkezzen. Ez a követelmény minden létrehozott új csomópont-készletre vonatkozik, így ha a 10 a csomópontok maximális hüvelye van definiálva, minden további hozzáadott csomópontnak legalább 3 csomóponttal kell rendelkeznie.
+A fürt állapota szempontjából kritikus fontosságú rendszerpodok számára a podok csomópontonkénti maximális értékének minimális értéke van kényszerítve. A csomópontonkénti podok maximális számára beállítható minimális érték 10, ha és csak akkor, ha az egyes csomópontkészletek konfigurációjában van legalább 30 pod. Ha például a csomópontonkénti podok maximális számát 10-re adhatja meg, akkor minden egyes csomópontkészletnek legalább 3 csomóponttal kell rendelkezik. Ez a követelmény minden létrehozott új csomópontkészletre vonatkozik, így ha a csomópontonkénti 10 pod maximális podként van meghatározva, minden további hozzáadott csomópontkészletnek legalább 3 csomóponttal kell lennie.
 
 | Hálózatkezelés | Minimum | Maximum |
 | -- | :--: | :--: |
-| Azure-CNI | 10 | 250 |
+| Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
 
 > [!NOTE]
-> A fenti táblázatban szereplő minimális értéket szigorúan kényszeríti az AK szolgáltatás. Nem állíthat be olyan maxPods értéket, amely kisebb, mint a minimálisan megjelenő érték, így megakadályozhatja, hogy a fürt el tudja kezdeni.
+> A fenti táblázatban megadott minimális értéket szigorúan az AKS-szolgáltatás érvényesíti. Nem állíthat be a maxPods értékét a minimálisan látható értéknél alacsonyabbra, mert ez megakadályozhatja a fürt elindulását.
 
-* **Azure CLI**: határozza meg az `--max-pods` argumentumot, amikor üzembe helyez egy fürtöt az az [AK Create][az-aks-create] paranccsal. A maximális érték 250.
-* **Resource Manager-sablon**: a `maxPods` [ManagedClusterAgentPoolProfile] objektumban megadhatja a tulajdonságot, amikor Resource Manager-sablonnal telepít egy fürtöt. A maximális érték 250.
-* **Azure Portal**: a többcsomópontos hüvelyek maximális száma nem módosítható, ha fürtöt telepít a Azure Portal. Az Azure CNI hálózatkezelési fürtök a Azure Portal használatával történő üzembe helyezéskor a csomópontokon 30 hüvelyre korlátozódnak.
+* **Azure CLI:** Adja meg a argumentumot, amikor az az aks create paranccsal helyez üzembe egy `--max-pods` [fürtöt.][az-aks-create] A maximális érték 250.
+* **Resource Manager sablon:** Adja meg `maxPods` a [ManagedClusterAgentPoolProfile] objektum tulajdonságát, amikor fürtöt helyez üzembe egy Resource Manager sablonnal. A maximális érték 250.
+* **Azure Portal:** Csomópontonként nem módosíthatja a podok maximális számát, amikor fürtöt helyez üzembe a Azure Portal. Azure CNI fürtök csomópontonként legfeljebb 30 podot Azure Portal.
 
-### <a name="configure-maximum---existing-clusters"></a>Maximálisan meglévő fürtök konfigurálása
+### <a name="configure-maximum---existing-clusters"></a>Maximális érték konfigurálása – meglévő fürtök
 
-Az új maxPod létrehozásakor a Node (csomópontok száma) beállítás is meghatározható. Ha a maxPod egy meglévő fürtön kell megnövelni, adjon hozzá egy új csomópont-készletet az új kívánt maxPod-számhoz. Miután elvégezte a hüvelyek új készletbe való áttelepítését, törölje a régi készletet. A fürtben lévő bármelyik régebbi készlet törléséhez győződjön meg arról, hogy a [rendszercsomópont-készletek dokumentumban][system-node-pools]meghatározott módon állítja be a csomópont-készlet módjait.
+A maxPod csomópontonként beállítás új csomópontkészlet létrehozásakor határozható meg. Ha növelni szeretné a maxPod csomópontonkénti beállítást egy meglévő fürtön, adjon hozzá egy új csomópontkészletet az új kívánt maxPod számmal. Miután mirating your pods to the new pool (Podok áttelepítése az új készletbe) törölje a régebbi készletet. A fürtben található régebbi készletek törléséhez győződjön meg arról, hogy a rendszer-csomópontkészletek dokumentumban meghatározott csomópontkészlet-módokat [ad meg.][system-node-pools]
 
-## <a name="deployment-parameters"></a>Központi telepítési paraméterek
+## <a name="deployment-parameters"></a>Üzembe helyezési paraméterek
 
-AK-fürt létrehozásakor a következő paraméterek konfigurálhatók az Azure CNI hálózatkezeléshez:
+AKS-fürt létrehozásakor a következő paraméterek konfigurálhatók a Azure CNI számára:
 
-**Virtuális hálózat**: az a virtuális hálózat, amelybe telepíteni kívánja a Kubernetes-fürtöt. Ha új virtuális hálózatot szeretne létrehozni a fürthöz, válassza az *új létrehozása* elemet, és kövesse a *virtuális hálózat létrehozása* szakasz lépéseit. Az Azure-beli virtuális hálózatok korlátaival és kvótákkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+**Virtuális hálózat:** Az a virtuális hálózat, amelyben üzembe szeretné helyezni a Kubernetes-fürtöt. Ha új virtuális hálózatot szeretne létrehozni a  fürthöz, válassza az Új létrehozása lehetőséget, és kövesse a Virtuális hálózat *létrehozása szakaszban található lépéseket.* További információ az Azure-beli virtuális hálózatok korlátairól és kvótáiról: Azure-előfizetések és -szolgáltatások [korlátai, kvótái és megkötései.](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)
 
-**Alhálózat**: azon a virtuális hálózaton belüli alhálózat, ahová a fürtöt telepíteni kívánja. Ha létre szeretne hozni egy új alhálózatot a fürt virtuális hálózatában, válassza az *új létrehozása* lehetőséget, és kövesse az *alhálózat létrehozása* szakaszban leírt lépéseket. A hibrid kapcsolatok esetében a címtartomány nem fedi át a környezetében lévő többi virtuális hálózatot.
+**Alhálózat:** Annak a virtuális hálózatnak az alhálózata, ahol a fürtöt üzembe szeretné helyezni. Ha új alhálózatot szeretne létrehozni a fürt virtuális  hálózatában, válassza az Új létrehozása lehetőséget, és kövesse az Alhálózat *létrehozása szakaszban található lépéseket.* Hibrid kapcsolatok esetén a címtartomány nem lehet átfedésben a környezet többi virtuális hálózatával.
 
-**Azure hálózati beépülő modul**: Ha az Azure hálózati beépülő modult használja, a belső terheléselosztó szolgáltatás "ExternalTrafficPolicy = local" értékkel nem érhető el olyan virtuális gépekről, amelyek nem tartoznak az AK-fürthöz tartozó clusterCIDR.
+**Azure hálózati** beépülő modul: Az Azure hálózati beépülő modul használata esetén az "externalTrafficPolicy=Local" belső LoadBalancer szolgáltatás nem érhető el olyan virtuális gépekről, amelyek IP-címe nem AKS-fürthöz tartozik a clusterCIDR-ben.
 
-**Kubernetes szolgáltatási címtartomány**: Ez a paraméter azon virtuális IP-címek készlete, amelyeket a Kubernetes a fürt belső [szolgáltatásaihoz][services] rendel hozzá. A következő követelményeknek megfelelő magánhálózati címtartományt is használhat:
+**Kubernetes-szolgáltatás címtartománya:** Ez a paraméter a kubernetes által [][services] a fürt belső szolgáltatásaihoz hozzárendelt virtuális IP-címek halmaza. Bármilyen olyan privát címtartományt használhat, amely megfelel az alábbi követelményeknek:
 
-* Nem lehet a fürt virtuális hálózati IP-címének tartományán belül
-* Nem lehet átfedésben más olyan virtuális hálózatokkal, amelyekkel a fürt virtuális hálózati társai
-* Nem lehet átfedésben a helyszíni IP-címekkel
-* Nem lehet a (,) vagy a () tartományon belül `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16``192.0.2.0/24`
+* Nem lehet a fürt virtuális hálózatának IP-címtartományában
+* Nem lehet átfedésben más olyan virtuális hálózatokkal, amelyek között a fürt virtuális hálózatai társviszonyban vannak
+* Nem lehet átfedésben a helyszíni IP-ekkel
+* Nem lehet a `169.254.0.0/16` , `172.30.0.0/16` , , vagy `172.31.0.0/16` tartományon belül `192.0.2.0/24`
 
-Habár technikailag lehetséges egy szolgáltatási címtartomány megadására ugyanazon a virtuális hálózaton belül, mint a fürt, ez nem ajánlott. Az előre nem látható viselkedés az átfedésben lévő IP-tartományok használata esetén eredményezhet. További információkért tekintse meg a jelen cikk [Gyakori kérdések](#frequently-asked-questions) című szakaszát. A Kubernetes-szolgáltatásokkal kapcsolatos további információkért lásd: [szolgáltatások][services] a Kubernetes dokumentációjában.
+Bár technikailag lehetséges szolgáltatási címtartományt megadni ugyanazon a virtuális hálózaton belül, mint a fürtöt, ez nem ajánlott. Kiszámíthatatlan viselkedés eredményezhet átfedésben lévő IP-címtartományok használata esetén. További információért tekintse meg a cikk [GYIK](#frequently-asked-questions) szakaszát. A Kubernetes-szolgáltatásokkal kapcsolatos további információkért lásd a Szolgáltatások című [dokumentumot][services] a Kubernetes dokumentációjában.
 
-**KUBERNETES DNS-szolgáltatás IP-címe**: a fürt DNS-szolgáltatásának IP-címe. A címnek a *Kubernetes szolgáltatási címtartományába* kell tartoznia. Ne használja az első IP-címet a címtartományból, például. 1. Az alhálózat tartományának első címe a *kubernetes. default. SVC. cluster. local* címen található.
+**Kubernetes DNS-szolgáltatás IP-címe:** A fürt DNS-szolgáltatásának IP-címe. A címnek a *Kubernetes szolgáltatási címtartományába* kell tartoznia. Ne használja a címtartomány első IP-címét, például a .1-et. Az alhálózati tartomány első címét a *kubernetes.default.svc.cluster.local címhez használja* a rendszer.
 
-**Docker-híd címe**: a Docker-híd hálózati címe az összes Docker-telepítésben megtalálható alapértelmezett *docker0* -híd hálózati címnek felel meg. Habár a *docker0* híd nem használatos az AK-fürtök vagy maguk a hüvelyek számára, a címnek úgy kell beállítania, hogy továbbra is támogassa az olyan forgatókönyveket, mint például a *Docker Build* az AK-fürtön belül. A Docker-híd hálózati címéhez ki kell választania egy CIDR, mert máskülönben a Docker automatikusan kiválaszt egy alhálózatot, ami ütközik más CIDRs. Olyan címtartományt kell választania, amely nem ütközik a hálózatok többi CIDRs, beleértve a fürt Service CIDR és a pod CIDR.
+**Docker-híd címe:** A Docker-híd hálózati címe az összes Docker-telepítésben található alapértelmezett *Docker0-híd* hálózati címét jelöli. Bár az AKS-fürtök és maguk a podok nem használják a *Docker0-hidat,* ezt a címet úgy kell beállítania, hogy továbbra is támogassa az olyan forgatókönyveket, mint az AKS-fürtön belüli *docker build.* CiDR-t kell választania a Docker-híd hálózati címéhez, mert ellenkező esetben a Docker automatikusan kiválaszt egy alhálózatot, amely ütközhet más CIDR-ekkel. Olyan címteret kell választania, amely nem ütközik a hálózat többi CIDR-ével, beleértve a fürt szolgáltatás cidr-ját és a pod CIDR-ját.
 
-## <a name="configure-networking---cli"></a>Hálózatkezelés konfigurálása – parancssori felület
+## <a name="configure-networking---cli"></a>Hálózat konfigurálása – CLI
 
-Ha AK-fürtöt hoz létre az Azure CLI-vel, akkor az Azure CNI hálózatkezelést is konfigurálhatja. Az alábbi parancsokkal létrehozhat egy új AK-fürtöt az Azure CNI Networking szolgáltatással.
+Amikor létrehoz egy AKS-fürtöt az Azure CLI-val, konfigurálhatja a Azure CNI is. Az alábbi parancsokkal hozzon létre egy új AKS-fürtöt, Azure CNI engedélyezni.
 
-Először szerezze be annak az alhálózatnak az alhálózati erőforrás-AZONOSÍTÓját, amelybe az AK-fürtöt csatlakoztatni kívánja:
+Először szerezze be annak a meglévő alhálózatnak az alhálózati erőforrás-azonosítóját, amelyhez az AKS-fürt csatlakozik:
 
 ```azurecli-interactive
 $ az network vnet subnet list \
@@ -127,7 +127,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-A speciális hálózatkezelést használó fürt létrehozásához használja az az [AK Create][az-aks-create] parancsot az `--network-plugin azure` argumentummal. Frissítse az `--vnet-subnet-id` értéket az előző lépésben összegyűjtött alhálózati azonosítóval:
+Az [az aks create paranccsal][az-aks-create] és a argumentummal hozzon létre `--network-plugin azure` egy fürtöt speciális hálózattal. Frissítse az értéket az előző lépésben gyűjtött `--vnet-subnet-id` alhálózat-azonosítóval:
 
 ```azurecli-interactive
 az aks create \
@@ -141,13 +141,13 @@ az aks create \
     --generate-ssh-keys
 ```
 
-## <a name="configure-networking---portal"></a>Hálózatkezelés konfigurálása – portál
+## <a name="configure-networking---portal"></a>Hálózat konfigurálása – portál
 
-A Azure Portal következő képernyőképe egy példát mutat be ezeknek a beállításoknak az AK-fürt létrehozásakor történő konfigurálására:
+Az alábbi képernyőképen Azure Portal AKS-fürt létrehozása során látható példa ezeknek a beállításoknak a konfigurálásához:
 
-! [Speciális hálózatkezelési konfiguráció a Azure Portal] [portál-01-hálózatkezelés-speciális]
+! [Speciális hálózatkonfiguráció a Azure Portal] [portal-01-networking-advanced]
 
-## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>Az IP-címek dinamikus kiosztása és a bővített alhálózat támogatása (előzetes verzió)
+## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>IP-k dinamikus kiosztása és továbbfejlesztett alhálózati támogatás (előzetes verzió)
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -156,21 +156,21 @@ A Azure Portal következő képernyőképe egy példát mutat be ezeknek a beál
 >
 > * USA nyugati középső régiója
 
-A hagyományos CNI való hátránya a pod IP-címek kimerülése, mivel az AK-fürt növekszik, így a teljes fürt újraépítése szükséges egy nagyobb alhálózatban. Az Azure CNI új dinamikus IP-kiosztási funkciója megoldja ezt a problémát úgy, hogy a allotting Pod IP-címeket egy, az AK-fürtöt üzemeltető alhálózattól eltérő alhálózatból oldja meg.  A következő előnyöket nyújtja:
+A hagyományos CNI hátránya, hogy az AKS-fürt növekedésével a pod IP-címeinek kimerítése miatt a teljes fürtöt egy nagyobb alhálózatban kell újraépíteni. A fürt új dinamikus IP-Azure CNI úgy oldja meg ezt a problémát, hogy pod IP-címeket biztosít az AKS-fürtöt üzemeltető alhálózattól különálló alhálózatról.  A következő előnyöket kínálja:
 
-* **Jobb IP-használat**: az IP-címek dinamikusan vannak kiosztva a hüvelyi alhálózatból származó fürtökhöz. Ez azt eredményezi, hogy az IP-címek jobb kihasználtsága a fürtben a hagyományos CNI-megoldáshoz képest történik, amely az IP-címek statikus kiosztását teszi ki minden csomóponthoz.  
+* **Jobb IP-kihasználtság:** Az IP-címek dinamikusan vannak lefoglalva a podok számára a pod alhálózatról. Ez a fürt IP-címének jobb kihasználtságát eredményezi a hagyományos CNI-megoldáshoz képest, amely minden csomópont számára statikus IP-kiosztást tesz lehetővé.  
 
-* **Méretezhető és rugalmas**: a Node és a pod alhálózatok egymástól függetlenül méretezhetők. Egyetlen Pod alhálózat egy fürt több csomópont-készletében, vagy ugyanabban a VNet üzembe helyezett több AK-fürtben is megosztható. Egy különálló Pod alhálózatot is beállíthat egy csomópont-készlethez.  
+* **Skálázható és rugalmas:** A csomópont- és pod-alhálózatok egymástól függetlenül skálázhatók. Egyetlen pod-alhálózat megosztható egy fürt több csomópontkészlete között, vagy egy VNeten belül üzembe helyezett több AKS-fürtön. Egy csomópontkészlethez külön pod-alhálózatot is konfigurálhat.  
 
-* **Nagy teljesítmény**: mivel a pod a VNet IP-címekhez van rendelve, közvetlen kapcsolattal rendelkezik a VNet lévő többi fürthöz és erőforrásokhoz. A megoldás a nagy méretű fürtöket a teljesítmény romlása nélkül támogatja.
+* **Nagy teljesítmény:** Mivel a podok virtuális hálózati IP-címekkel vannak kiosztva, közvetlen kapcsolatban állnak a virtuális hálózat más fürtpodjaival és erőforrásaival. A megoldás a nagyon nagy fürtök teljesítményét nem romlása nélkül támogatja.
 
-* **Különálló VNet szabályzatok a hüvelyekhez**: mivel a hüvelyek külön alhálózattal rendelkeznek, külön VNet szabályzatokat konfigurálhat, amelyek eltérnek a csomópont-házirendektől. Ez számos olyan hasznos forgatókönyvet tesz lehetővé, mint például az internetkapcsolat csak a hüvelyek esetében, és nem a csomópontok számára, a VNet hálózati NAT használatával rögzíti a pod forrás IP-címét egy csomópont-készletben, valamint a NSG használatával szűrheti a csomópontok közötti forgalmat.  
+* **Különálló VNet-szabályzatok podok számára:** Mivel a podok külön alhálózattal vannak, külön VNet-szabályzatokat konfigurálhat számukra, amelyek eltérnek a csomópont-házirendektől. Ez számos hasznos forgatókönyvet tesz lehetővé, például csak podok számára engedélyezi az internetkapcsolatot, csomópontok esetében nem, kijavítja a csomópontkészlet podjának forrás IP-címét egy virtuális hálózati NAT használatával, és NSG-kkel szűri a csomópontkészletek közötti forgalmat.  
 
-* **Kubernetes hálózati házirendek**: az Azure hálózati házirendjei és a tarka is együttműködik ezzel az új megoldással.  
+* **Kubernetes hálózati szabályzatok:** Az Azure hálózati szabályzatai és a Calico is működnek ezzel az új megoldással.  
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Az `aks-preview` Azure CLI telepítése
 
-Szüksége lesz az *AK-előnézeti* Azure CLI-bővítményre. Telepítse az *AK – előzetes* verzió Azure CLI-bővítményét az az [Extension Add][az-extension-add] paranccsal. Vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal.
+Szüksége lesz az *aks-preview* Azure CLI-bővítményre. Telepítse *az aks-preview* Azure CLI-bővítményt az [az extension add paranccsal.][az-extension-add] Vagy telepítse az elérhető frissítéseket az [az extension update paranccsal.][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -180,23 +180,23 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-the-podsubnetpreview-preview-feature"></a>Az `PodSubnetPreview` előzetes verzió funkciójának regisztrálása
+### <a name="register-the-podsubnetpreview-preview-feature"></a>Az előzetes `PodSubnetPreview` verziójú funkció regisztrálása
 
-A funkció használatához engedélyeznie kell a `PodSubnetPreview` szolgáltatás jelölőjét is az előfizetésében.
+A funkció használatához engedélyeznie kell a funkciójelölőt `PodSubnetPreview` is az előfizetésen.
 
-Regisztrálja a `PodSubnetPreview` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal, az alábbi példában látható módon:
+Regisztrálja `PodSubnetPreview` a funkciójelölőt az [az feature register paranccsal,][az-feature-register] az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "PodSubnetPreview"
 ```
 
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+Eltarthat néhány percig, hogy az állapot Regisztrált *állapotúra mutasson.* Ellenőrizze a regisztráció állapotát az [az feature list paranccsal:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSubnetPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+Ha készen áll, frissítse a *Microsoft.ContainerService* erőforrás-szolgáltató regisztrációját az [az provider register paranccsal:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -204,38 +204,38 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="additional-prerequisites"></a>További előfeltételek
 
-Az Azure CNI már felsorolt előfeltételek továbbra is érvényben vannak, de van néhány további korlátozás:
+A szolgáltatáshoz már felsorolt Azure CNI továbbra is érvényesek, de van néhány további korlátozás:
 
-* Csak a Linux csomópont-fürtök és a csomópont-készletek támogatottak.
-* Az AK-motor és a DIY-fürtök nem támogatottak.
+* Csak a linuxos csomópontfürtök és csomópontkészletek támogatottak.
+* Az AKS-motor és a DIY-fürtök nem támogatottak.
 
-### <a name="planning-ip-addressing"></a>IP-címzés tervezése
+### <a name="planning-ip-addressing"></a>IP-címzés megtervezése
 
-A szolgáltatás használatakor a tervezés sokkal egyszerűbb. Mivel a csomópontok és a hüvelyek egymástól függetlenül méretezhetők, a Címterület is külön tervezhető. Mivel a pod-alhálózatok konfigurálhatók a csomópontok részletességére, az ügyfelek mindig hozzáadhatnak egy új alhálózatot, amikor egy csomópont-készletet vesznek fel. A fürt/csomópont-készletben található rendszerhüvelyek IP-címeket is kapnak a pod-alhálózatból, ezért ezt a viselkedést kell figyelembe venni.
+A funkció használata esetén a tervezés sokkal egyszerűbb. Mivel a csomópontok és a podok egymástól függetlenül skálázhatók, a címtereik külön tervezhetők. Mivel a pod-alhálózatok a csomópontkészlet részletességével konfigurálhatóak, az ügyfelek mindig hozzáadhatnak új alhálózatokat, amikor csomópontkészletet adnak hozzá. A fürtben/csomópontkészletben található rendszerpodok a pod alhálózatának IP-jét is megkapják, ezért ezt a viselkedést figyelembe kell venni.
 
-A K8S-szolgáltatások és a Docker-híd IP-címeinek tervezése változatlan marad.
+A K8S-szolgáltatások és a Docker-híd IP-ének megtervezése változatlan marad.
 
-### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Az IP-címek és a bővített alhálózat támogatásának dinamikus kiosztásával rendelkező fürtben lévő maximális hüvelyek száma
+### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Podok maximális száma csomópontonként egy fürtben IP-k dinamikus kiosztásával és továbbfejlesztett alhálózati támogatással
 
-Ha az IP-címek dinamikus kiosztásával az Azure CNI-t használja, akkor a csomópontok száma a hagyományos CNI viselkedéstől némileg megváltozott:
+A podok csomópontonkénti értékei a Azure CNI IP-kiosztással való használata kissé eltér a hagyományos CNI-viselkedéstől:
 
-|CNI|Üzembe helyezési módszer|Alapértelmezett|Konfigurálható az üzembe helyezéskor|
+|CNI|Üzembe helyezési módszer|Alapértelmezett|Üzembe helyezéskor konfigurálható|
 |--|--| :--: |--|
-|Hagyományos Azure-CNI|Azure CLI|30|Igen (legfeljebb 250)|
-|Azure CNI az IP-címek dinamikus kiosztásával|Azure CLI|250|Igen (legfeljebb 250)|
+|Hagyományos Azure CNI|Azure CLI|30|Igen (legfeljebb 250)|
+|Azure CNI IP-k dinamikus kiosztásával|Azure CLI|250|Igen (legfeljebb 250)|
 
-Minden egyéb, a csomópontok maximális csomópontjainak konfigurálásához kapcsolódó útmutatás változatlan marad.
+A podonkénti maximális csomópontok konfigurálásával kapcsolatos összes többi útmutató változatlan marad.
 
-### <a name="additional-deployment-parameters"></a>További telepítési paraméterek
+### <a name="additional-deployment-parameters"></a>További üzembe helyezési paraméterek
 
-A fent ismertetett központi telepítési paraméterek továbbra is érvényesek, egyetlen kivétellel:
+A fent leírt üzembe helyezési paraméterek mind érvényesek, egyetlen kivétellel:
 
 * Az **alhálózati** paraméter most a fürt csomópontjaihoz kapcsolódó alhálózatra hivatkozik.
-* Egy további paraméter **Pod alhálózattal** megadható az alhálózat, amelynek IP-címei dinamikusan lesznek kiosztva a hüvelyekhez.
+* Egy további **pod-paraméter alhálózat** használatával adható meg az alhálózat, amelynek IP-címeit a rendszer dinamikusan lefoglalja a podok számára.
 
-### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Hálózatkezelés konfigurálása – parancssori felület dinamikus IP-címekkel és bővített alhálózat-támogatással
+### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>Hálózat konfigurálása – CLI IP-k dinamikus kiosztásával és továbbfejlesztett alhálózati támogatással
 
-Az IP-címek dinamikus kiosztása és az alhálózati támogatás használata a fürtben hasonló a fürt Azure-CNI konfigurálásának alapértelmezett módszeréhez. Az alábbi példa bemutatja, hogyan hozhat létre egy új virtuális hálózatot a csomópontok és a hüvelyek alhálózata számára, és hogyan hozhat létre egy olyan fürtöt, amely az IP-címek és a bővített alhálózat támogatásának dinamikus kiosztását használó Azure CNI használ. Ügyeljen arra, hogy a változókat, például a `$subscription` saját értékeit cserélje le:
+Az IP-k dinamikus kiosztása és a továbbfejlesztett alhálózati támogatás fürtön való használata hasonló az alapértelmezett módszerhez a fürthálózatok Azure CNI. Az alábbi példa végigvezeti egy új virtuális hálózat létrehozásának folyamatán, amely egy alhálózatot használ a csomópontokhoz és egy alhálózatot a podokhoz, valamint egy olyan fürt létrehozását, amely dinamikus IP-kiosztással és továbbfejlesztett alhálózati támogatással használja az Azure CNI-t. Mindenképpen cserélje le az olyan változókat, mint a `$subscription` saját értékei:
 
 Először hozza létre a virtuális hálózatot két alhálózattal:
 
@@ -249,7 +249,7 @@ az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --addre
 az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
 ```
 
-Ezután hozza létre a fürtöt, amely a csomópont alhálózatára hivatkozik a `--vnet-subnet-id` és a pod alhálózat használatával `--pod-subnet-id` :
+Ezután hozza létre a fürtöt, és hivatkozzon a csomópont-alhálózatra a használatával, a `--vnet-subnet-id` pod alhálózatát pedig a `--pod-subnet-id` használatával:
 
 ```azurecli-interactive
 $clusterName="myAKSCluster"
@@ -259,9 +259,9 @@ $subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
 az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
 ```
 
-#### <a name="adding-node-pool"></a>Csomópont-készlet hozzáadása
+#### <a name="adding-node-pool"></a>Csomópontkészlet hozzáadása
 
-Csomópont-készlet hozzáadásakor a `--vnet-subnet-id` és a-t használó Pod alhálózattal hivatkozhat a csomópont-alhálózatra `--pod-subnet-id` . Az alábbi példa két új alhálózatot hoz létre, amelyek ezután egy új csomópont-készlet létrehozásakor hivatkoznak:
+Csomópontkészlet hozzáadásakor hivatkozzon a használatával használt csomópont-alhálózatra, a `--vnet-subnet-id` pod-alhálózatra pedig a `--pod-subnet-id` használatával. Az alábbi példa két új alhálózatot hoz létre, amelyekre egy új csomópontkészlet létrehozásakor hivatkoznak:
 
 ```azurecli-interactive
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
@@ -272,70 +272,70 @@ az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepoo
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Az alábbi kérdések és válaszok az **Azure CNI** hálózati konfigurációra vonatkoznak.
+Az alábbi kérdések és válaszok a hálózati **Azure CNI** vonatkoznak.
 
-* *Telepíthetek virtuális gépeket a fürt alhálózatában?*
+* *Üzembe helyezhetek virtuális gépeket a fürt alhálózatán?*
 
   Igen.
 
-* *Milyen forrás IP-címet látnak a külső rendszerek az Azure CNI-t támogató Pod-alapú forgalomhoz?*
+* *Milyen forrás IP-címet látnak a külső rendszerek a Azure CNI podból származó forgalomhoz?*
 
-  Az egyazon virtuális hálózatban található rendszerek, mint az AK-fürt, tekintse meg a pod IP-címet a pod-ból érkező adatforgalom forrásaként. Az AK-alapú fürt virtuális hálózatán kívüli rendszerek a pod-ból érkező adatforgalom forrásaként a csomópont IP-címét látják.
+  Az AKS-fürthöz azonos virtuális hálózatban lévő rendszerek a pod IP-címét látják forráscímként a podról származó összes forgalom esetében. Az AKS-fürt virtuális hálózatán kívüli rendszerek a csomópont IP-címét látják forráscímként a podról származó összes forgalomhoz.
 
-* *Beállíthat egy Pod hálózati házirendeket?*
+* *Konfigurálható podonkénti hálózati szabályzat?*
 
-  Igen, a Kubernetes hálózati házirendje az AK-ban érhető el. Első lépésként lásd: a [hüvelyek közötti biztonságos forgalom a hálózati szabályzatok használata az AK-ban][network-policy].
+  Igen, a Kubernetes hálózati szabályzat elérhető az AKS-ban. Első lépésekért lásd: Secure traffic between pods by using network policies in AKS (A podok közötti adatforgalom [biztonságossá szolgáltatása hálózati szabályzatokkal az AKS-ban).][network-policy]
 
-* *A kihelyezhető hüvelyek maximális száma a csomóponton konfigurálható?*
+* *Konfigurálható a csomóponton üzembe helyezhető podok maximális száma?*
 
-  Igen, amikor üzembe helyez egy fürtöt az Azure CLI-vel vagy egy Resource Manager-sablonnal. Lásd: a [hüvelyek maximális száma csomópontban](#maximum-pods-per-node).
+  Igen, amikor fürtöt helyez üzembe az Azure CLI-val vagy egy Resource Manager sablonnal. Lásd: [Podok maximális száma csomópontonként.](#maximum-pods-per-node)
 
-  Egy meglévő fürtön nem módosítható a hüvelyek maximális száma egy csomóponton.
+  Meglévő fürtön nem módosíthatja a podok csomópontonkénti maximális számát.
 
-* *Hogyan konfigurálja az AK-fürt létrehozása során létrehozott alhálózat további tulajdonságait? Például a szolgáltatási végpontok.*
+* *Hogyan konfigurálni további tulajdonságokat az AKS-fürt létrehozásakor létrehozott alhálózathoz? Például szolgáltatásvégpontokat.*
 
-  A virtuális hálózat és az AK-fürt létrehozása során létrehozott alhálózatok tulajdonságainak teljes listája a Azure Portal normál virtuális hálózati konfiguráció lapján konfigurálható.
+  Az AKS-fürt létrehozása során létrehozott virtuális hálózat és alhálózatok tulajdonságainak teljes listája a fürt szabványos virtuális hálózati konfigurációs lapján konfigurálható Azure Portal.
 
-* *Használhatok egy másik alhálózatot a fürt virtuális hálózatán a* **Kubernetes szolgáltatási címtartomány** esetében?
+* *Használhatok másik alhálózatot a* fürt virtuális hálózatán belül a **Kubernetes-szolgáltatás címtartományához?**
 
-  Nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatási címtartomány a virtuális IP-címek (VIP) készlete, amelyet a Kubernetes a fürt belső szolgáltatásaihoz rendel hozzá. Az Azure hálózatkezelésének nincs láthatósága a Kubernetes-fürt szolgáltatási IP-címének tartományán. A fürt szolgáltatási címtartomány láthatóságának hiánya miatt később létrehozhat egy új alhálózatot a fürt virtuális hálózatában, amely átfedésben van a szolgáltatási címtartomány használatával. Ha átfedés történik, a Kubernetes hozzárendelhet egy olyan IP-címet, amelyet már egy másik erőforrás használ az alhálózatban, ami kiszámíthatatlan működést vagy hibát okoz. Annak biztosításával, hogy a fürt virtuális hálózatán kívüli címtartományt használjon, elkerülheti ezt az átfedési kockázatot.
+  Ez nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatás címtartománya a Kubernetes által a fürt belső szolgáltatásaihoz hozzárendelt virtuális IP-címek (VIP-k) halmaza. Azure-hálózatkezelés nem látható a Kubernetes-fürt szolgáltatás IP-címtartománya. Mivel nem látható a fürt szolgáltatáscímtartománya, később létrehozható egy új alhálózat a fürt virtuális hálózatában, amely átfedésben van a szolgáltatás címtartományával. Ilyen átfedés esetén a Kubernetes olyan IP-címet rendelhet a szolgáltatáshoz, amelyet az alhálózat egy másik erőforrása már használ, ami kiszámíthatatlan viselkedést vagy hibákat okoz. Ha a fürt virtuális hálózatán kívüli címtartományt használ, elkerülheti ezt az átfedési kockázatot.
 
-### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>Az IP-címek dinamikus kiosztása és a bővített alhálózat támogatása – gyakori kérdések
+### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>Az IP-címek dinamikus kiosztása és a továbbfejlesztett alhálózat támogatása – gyakori kérdések
 
-Az alábbi kérdések és válaszok az **Azure CNI hálózati konfigurációra vonatkoznak az IP-címek dinamikus kiosztásának és az alhálózatok támogatásának használatakor**.
+Az alábbi kérdések és válaszok a hálózati Azure CNI konfigurációra vonatkoznak az IP-címek dinamikus kiosztása és a továbbfejlesztett **alhálózati támogatás használata esetén.**
 
-* *Több Pod alhálózatot is hozzárendelhet egy fürthöz vagy csomópont-készlethez?*
+* *Hozzárendelhetek több pod-alhálózatot egy fürthöz/csomópontkészlethez?*
 
-  Egy fürthöz vagy csomópont-készlethez csak egy alhálózat rendelhető hozzá. Azonban több fürt vagy csomópont-készlet is megoszthat egyetlen alhálózatot.
+  Egy fürthöz vagy csomópontkészlethez csak egy alhálózat rendelhető hozzá. Azonban több fürt vagy csomópontkészlet is osztozhat egyetlen alhálózaton.
 
-* *A pod alhálózatok egy másik VNet is hozzárendelhetők?*
+* *Hozzárendelhetek pod-alhálózatokat egy másik virtuális hálózatról?*
 
-  A pod alhálózatnak a fürttel megegyező VNet kell származnia.  
+  A pod alhálózatának ugyanannak a virtuális hálózatnak kell lennie, mint a fürtnek.  
 
-* *A fürt egyes csomópontjai a hagyományos CNI használják, míg mások használják az új CNI?*
+* *Egy fürt egyes csomópontkészlete használhatja a hagyományos CNI-t, míg mások az új CNI-t?*
 
-  A teljes fürtnek csak egy CNI kell használnia.
+  A teljes fürtnek csak egy CNI-típust kell használnia.
 
 ## <a name="aks-engine"></a>AKS-motor
 
-Az [Azure Kubernetes Service Engine (Kabai motor)][aks-engine] egy nyílt forráskódú projekt, amely Azure Resource Manager sablonokat hoz létre, amelyek segítségével Kubernetes-fürtöket helyezhet üzembe az Azure-ban.
+[Azure Kubernetes Service Motor (AKS Engine)][aks-engine] egy nyílt forráskódú projekt, amely Azure Resource Manager-sablonokat hoz létre, amelyek kubernetes-fürtök Azure-ban való üzembe helyezéséhez használhatók.
 
-Az AK-motorral létrehozott Kubernetes-fürtök támogatják a [kubenet][kubenet] és az [Azure CNI][cni-networking] beépülő modult is. Ennek megfelelően mindkét hálózati forgatókönyvet támogatja az AK-motor.
+Az AKS-motorral létrehozott Kubernetes-fürtök a [Kubenet][kubenet] és a Azure CNI beépülő modulokat [is][cni-networking] támogatják. Ezért az AKS-motor mindkét hálózati forgatókönyvet támogatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a hálózatkezelésről az AK-ban a következő cikkekben található:
+Az AKS-hez való hálózatépítésről a következő cikkekben talál további információt:
 
-* [Statikus IP-cím használata az Azure Kubernetes szolgáltatás (ak) terheléselosztó használatával](static-ip.md)
-* [Belső terheléselosztó használata Azure Container Service (ak) használatával](internal-lb.md)
+* [Statikus IP-cím használata a Azure Kubernetes Service (AKS) terheléselosztási rendszerével](static-ip.md)
+* [Belső terheléselosztás használata Azure Container Service (AKS)](internal-lb.md)
 
-* [Alapszintű bejövő adatvezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
-* [A HTTP-alkalmazás útválasztási bővítményének engedélyezése][aks-http-app-routing]
-* [Belső, privát hálózatot és IP-címet használó bejövő adatforgalom-vezérlő létrehozása][aks-ingress-internal]
-* [Dinamikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása, amely lehetővé teszi a titkosítást a TLS-tanúsítványok automatikus létrehozásához][aks-ingress-tls]
-* [Egy statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása, amely lehetővé teszi a titkosítást a TLS-tanúsítványok automatikus létrehozásához][aks-ingress-static-tls]
+* [Alapszintű bejövő forgalomvezérlő létrehozása külső hálózati kapcsolattal][aks-ingress-basic]
+* [A HTTP-alkalmazás-útválasztási bővítmény engedélyezése][aks-http-app-routing]
+* [Belső, magánhálózatot és IP-címet használó bejövő vezérlő létrehozása][aks-ingress-internal]
+* [Hozzon létre egy bejövő forgalomvezérlőt dinamikus nyilvános IP-címmel, és konfigurálja a Let's Encryptet TLS-tanúsítványok automatikus létrehozására][aks-ingress-tls]
+* [Hozzon létre egy bejövő vezérlőt statikus nyilvános IP-címmel, és konfigurálja a Let's Encryptet TLS-tanúsítványok automatikus létrehozására][aks-ingress-static-tls]
 <!-- IMAGES -->
-[Advanced-Networking-diagram-01]:./Media/Networking-Overview/advanced-networking-diagram-01.png [portál-01-Networking-Advanced]:./Media/Networking-Overview/portal-01-networking-advanced.png
+[advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png [portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

@@ -1,131 +1,131 @@
 ---
-title: Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
-description: SQL Server Management Studio (SSMS) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat.
+title: Csatlakozás Synapse SQL SQL Server Management Studio (SSMS) segítségével
+description: A SQL Server Management Studio (SSMS) használatával csatlakozhat a Synapse SQL- és Azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 222505b03aac5bfc4e8d00b8c8977bece34dee85
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451621"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567515"
 ---
-# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
+# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Csatlakozás Synapse SQL SQL Server Management Studio (SSMS) segítségével
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-A [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-et az Azure szinapszis Analytics szolgáltatásban a kiszolgáló nélküli SQL-készlet vagy a dedikált SQL Pool-erőforrások segítségével. 
+A SQL Server Management Studio [(SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) használatával kiszolgáló nélküli SQL-készleten vagy dedikált SQL-készleterőforrásokon keresztül csatlakozhat a Synapse SQL-hez, Azure Synapse Analytics lekérdezéseket is használhat. 
 
-### <a name="supported-tools-for-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlethez támogatott eszközök
+### <a name="supported-tools-for-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlet támogatott eszközei
 
-A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes mértékben támogatott a 1.18.0 verziótól kezdődően. A SSMS részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) az 1.18.0-s verziótól kezdve teljes mértékben támogatott. Az SSMS a 18.5-ös verziótól kezdve részben támogatott, így csak a csatlakozáshoz és a lekérdezéshez használható.
 
 > [!NOTE]
-> Ha a HRE-bejelentkezés a lekérdezés végrehajtása során több mint 1 órát nyit meg, akkor a HRE-ra támaszkodó összes lekérdezés sikertelen lesz. Ez magában foglalja a tárolás lekérdezését a HRE átmenő és az HRE-t használó utasításokkal (például külső szolgáltató létrehozása). Ez hatással van minden olyan eszközre, amely megtartja a kapcsolatokat, például a SSMS és a HIRDETÉSEKET tartalmazó lekérdezés-szerkesztőben. A lekérdezés végrehajtásához új kapcsolódást megnyitó eszközök nem érintettek, például a szinapszis Studio.
-> A probléma megoldásához újraindíthatja a SSMS, vagy csatlakozhat a HIRDETÉSekhez, és leválaszthatja azokat. .
+> Ha az AAD-bejelentkezés a lekérdezés végrehajtásakor több mint 1 órán keresztül nyitva van, az AAD-re támaszkodó lekérdezések sikertelenek lesznek. Ebbe beletartozik a tároló lekérdezése az AAD átmenő szolgáltatásával és az AAD-val kommunikáló utasítások használatával (például CREATE EXTERNAL PROVIDER). Ez minden olyan eszközre hatással van, amely nyitva tartja a kapcsolatot, például az SSMS és az ADS lekérdezésszerkesztőjével. A lekérdezés végrehajtásához új kapcsolatot megnyévő eszközökre nincs hatással, például a Synapse Studio.
+> A probléma megoldásához újraindíthatja az SSMS-t, vagy csatlakozhat az ADS-hez, és leválaszthatja a kapcsolatot. .
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:  
+Mielőtt hozzákezd, győződjön meg arról, hogy a következő előfeltételeknek kell megfeleltetve:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Dedikált SQL-készlet esetén egy meglévő adattárházra van szükség. A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](../quickstart-create-sql-pool-portal.md)című témakört. A kiszolgáló nélküli SQL-készlethez az egyik a munkaterületen, a létrehozáskor már beépített, beépített néven van kiépítve. 
-* A teljesen minősített SQL Server neve. A név megkereséséhez lásd: [Kapcsolódás a SZINAPSZIS SQL](connect-overview.md)-hez.
+* Dedikált SQL-készlethez egy meglévő adattárházra van szükség. Ennek létrehozásához [lásd: Dedikált SQL-készlet létrehozása.](../quickstart-create-sql-pool-portal.md) Kiszolgáló nélküli SQL-készlet esetén az egyik már ki van építve Beépített névvel a munkaterületen a létrehozáskor. 
+* A teljes SQL Server neve. A név keresését lásd: [Csatlakozás](connect-overview.md)a Synapse SQL.
 
 ## <a name="connect"></a>Csatlakozás
 
 ### <a name="dedicated-sql-pool"></a>Dedikált SQL-készlet
 
-A következő lépésekkel csatlakozhat a szinapszis SQL-hez a dedikált SQL-készlet használatával: 
+Ha dedikált SQL Synapse SQL készlet használatával szeretne csatlakozni a virtuális hálózathoz, kövesse az alábbi lépéseket: 
 
-1. Nyissa meg SQL Server Management Studio (SSMS). 
-1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a mezőket, majd válassza a **Kapcsolódás** lehetőséget: 
+1. Nyissa SQL Server Management Studio (SSMS) gombra. 
+1. A Csatlakozás **kiszolgálóhoz** párbeszédpanelen töltse ki a mezőket, majd válassza a Csatlakozás **lehetőséget:** 
   
-    ![Kapcsolódás az 1. kiszolgálóhoz](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Csatlakozás a Server 1-hez](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**.
-   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve:** Adja meg **a korábban azonosított** kiszolgálónevet.
+   * **Hitelesítés:** Válasszon hitelesítési típust, például SQL Server **hitelesítést** **vagy integrált Active Directory hitelesítést.**
+   * **Felhasználónév és** **jelszó:** Adja meg a felhasználónevét és jelszavát, ha SQL Server a hitelesítést választotta.
 
-1. Bontsa ki az Azure-SQL Server **Object Explorer**. Megtekintheti a kiszolgálóhoz társított adatbázisokat, például a minta AdventureWorksDW-adatbázist. Az adatbázis kibontásával megjelenítheti a táblákat:
+1. Bontsa ki Azure SQL-kiszolgálót **a Object Explorer.** Megtekintheti a kiszolgálóhoz társított adatbázisokat, például az AdventureWorksDW mintaadatbázist. Az adatbázist kibontva láthatja a táblákat:
    
-    ![Ismerkedés a AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![Az AdventureWorksDW 1 megismerés](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet
 
-Ha kiszolgáló nélküli SQL-készlettel szeretne csatlakozni a szinapszis SQL-hez, kövesse az alábbi lépéseket: 
+Ha kiszolgáló nélküli SQL Synapse SQL készlet használatával szeretne csatlakozni a virtuális hálózathoz, kövesse az alábbi lépéseket: 
 
-1. Nyissa meg SQL Server Management Studio (SSMS).
-1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a mezőket, majd válassza a **Kapcsolódás** lehetőséget: 
+1. Nyissa SQL Server Management Studio (SSMS) gombra.
+1. A Kapcsolódás **kiszolgálóhoz** párbeszédpanelen töltse ki a mezőket, majd válassza a Csatlakozás **lehetőséget:** 
    
-    ![Kapcsolódás a 2. kiszolgálóhoz](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Csatlakozás a Server 2-hez](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés**: válasszon hitelesítési típust, például **SQL Server hitelesítést** vagy **Active Directory integrált hitelesítést**:
-   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve:** Adja meg **a korábban azonosított** kiszolgálónevet.
+   * **Hitelesítés:** Válasszon hitelesítési típust, például SQL Server **hitelesítést** **vagy Active Directory integrált hitelesítést:**
+   * **Felhasználónév és** **jelszó:** Adja meg a felhasználónevét és jelszavát, ha SQL Server a hitelesítést választotta.
    * Válassza a **Kapcsolódás** lehetőséget.
 
-4. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki a *bemutatót* a mintaadatbázis tartalmának megtekintéséhez.
+4. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. *Bontsa ki a bemutatót,* és tekintse meg a mintaadatbázis tartalmát.
    
-    ![A 2. AdventureWorksDW megismerése](./media/get-started-ssms/explore-tables.png)
+    ![Az AdventureWorksDW 2 megismerés](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Mintalekérdezés futtatása
 
 ### <a name="dedicated-sql-pool"></a>Dedikált SQL-készlet
 
-Most, hogy létrejött az adatbázis-kapcsolatok, lekérdezheti az adatforrást.
+Most, hogy létrejött az adatbázis-kapcsolat, lekérdezheti az adatokat.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
 2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
-    ![1. új lekérdezés](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+    ![Új lekérdezés – 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Futtassa a lekérdezést a következő parancsikon kiválasztásával `Execute` vagy használatával: `F5` .
+4. Futtassa a lekérdezést a következő `Execute` parancsikon kiválasztásával vagy használatával: `F5` .
    
     ![1. lekérdezés futtatása](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. Tekintse meg a lekérdezés eredményeit. A következő példában a FactInternetSales tábla 60398 sorral rendelkezik.
+5. Tekintse meg a lekérdezés eredményeit. A következő példában a FactInternetSales tábla 60398 sort tartalmaz.
    
-    ![Lekérdezés eredményei 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Lekérdezési eredmények 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet
 
-Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrást.
+Most, hogy létrehozott egy adatbázis-kapcsolatot, lekérdezheti az adatokat.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
 2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
-    ![2. új lekérdezés](./media/get-started-ssms/new-query.png)
+    ![Új lekérdezés – 2](./media/get-started-ssms/new-query.png)
 3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Futtassa a lekérdezést a következő parancsikon kiválasztásával `Execute` vagy használatával: `F5` .
+4. Futtassa a lekérdezést a következő parancsikon `Execute` kiválasztásával vagy használatával: `F5` .
    
     ![A 2. lekérdezés futtatása](./media/get-started-ssms/execute-query.png)
-5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a usPopulationView nézet 3664512 sorral rendelkezik.
+5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a usPopulationView nézet 3664512 sort tartalmaz.
    
-    ![Lekérdezés eredménye 2](./media/get-started-ssms/results.png)
+    ![Lekérdezési eredmények 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
+Most, hogy csatlakozhat és lekérdezhet, próbálja meg [vizualizálni az](get-started-power-bi-professional.md)adatokat az Power BI.
 
-A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-ben.
+A környezet hitelesítésre való konfigurálás Azure Active Directory: [Hitelesítés](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)a Synapse SQL.
 

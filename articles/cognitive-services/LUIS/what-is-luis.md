@@ -1,151 +1,68 @@
 ---
-title: Mi a Language Understanding (LUIS)?
-description: Language Understanding (LUIS) – felhőalapú API-szolgáltatás gépi tanulással, természetes nyelvvel, a jelentés és az adatok kinyerése érdekében.
-keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, természetes nyelvi megértés, NLU, LUIS, társalgási AI, AI Csevegőrobot, NLP AI, Azure Luis
+title: Language Understanding (LUIS) áttekintése
+description: Language Understanding (LUIS) – egy felhőalapú API-szolgáltatás, amely gépi tanulást használ a beszélgetésre, természetes nyelvre a jelentés előrejelzése és az információk kinyere érdekében.
+keywords: Azure, mesterséges intelligencia, mesterséges intelligencia, természetes nyelvi feldolgozás, nlp, természetes nyelvi megértés, nlu, LUIS, beszélgetési AI, ai csevegőrobot, nlp ai, azure luis
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 03/22/2021
+ms.date: 04/13/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f46586b3f120cf191d88b7de9cf8686ca9b16cca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278949"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503769"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding (LUIS) egy felhőalapú társalgási szolgáltatás, amely egyéni gépi tanulási intelligenciát alkalmaz a felhasználó társalgási, természetes nyelvű szövegére az általános jelentés kiszámításához, valamint a releváns és részletes információk lekéréséhez.
+Language Understanding (LUIS) egy felhőalapú beszélgetési AI-szolgáltatás, amely egyéni gépi tanulási intelligenciát alkalmaz a felhasználó beszélgetési, természetes nyelvű szövegére az általános jelentés előrejelzése és a releváns, részletes információk kihozása érdekében. A LUIS az egyéni [portálon,][endpoint-apis] [API-kon](https://www.luis.ai)és [SDK-ügyfélkódtárakon keresztül biztosít hozzáférést.](client-libraries-rest-api.md)
 
-A LUIS ügyfélalkalmazása lehet bármely beszélgetési alkalmazás, amely a felhasználóval természetes nyelven kommunikál egy adott feladat végrehajtásához. Ilyenek például a közösségi multimédia alkalmazások, az AI csevegőrobotok és a beszédfelismerést támogató asztali alkalmazások.
+Első alkalommal a felhasználók az [](sign-in-luis-portal.md "bejelentkezés a LUIS portálra") alábbi lépésekkel jelentkeznek be a LUIS-portálra. Első lépésként kipróbálhatja az előre összeállított [LUIS-tartományi](luis-get-started-create-app.md) alkalmazásokat, vagy felépítheti az [alkalmazást.](get-started-portal-build-app.md)
 
-![A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe](./media/luis-overview/luis-entry-point.png "A Cognitive Services Language Understanding (LUIS)-vel dolgozó 3 ügyfélalkalmazás fogalmi képe")
+Ez a dokumentáció a következő cikktípusokat tartalmazza:  
 
-Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+* [**A rövid útmutatók**](luis-get-started-create-app.md) első lépésekre vonatkozó utasítások, amelyek végigvezetik a szolgáltatásnak indított kérések folyamatán.  
+* [**Az útmutatók a**](luis-how-to-start-new-app.md) szolgáltatás pontosabb vagy testre szabottabb módon való használatával kapcsolatos utasításokat tartalmaznak.  
+* [**A fogalmak**](artificial-intelligence.md) részletes magyarázatot nyújtanak a szolgáltatás funkcióiról és funkcióiról.  
+* [**Az oktatóanyagok**](tutorial-intents-only.md) hosszabb útmutatók, amelyekből megtudhatja, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
 
-* [**A gyors**](luis-get-started-create-app.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
-* A [**útmutatók**](luis-how-to-start-new-app.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
-* A [**fogalmak**](artificial-intelligence.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
-* Az [**oktatóanyagok**](tutorial-intents-only.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
+## <a name="what-does-luis-offer"></a>Mit kínál a LUIS? 
 
-## <a name="use-luis-in-a-chat-bot"></a>A LUIS használata csevegőrobotban
-
-<a name="Accessing-LUIS"></a>
-
-Miután közzétette az Azure LUIS alkalmazást, egy ügyfélalkalmazás hosszúságú kimondott szöveg (Text) küld a LUIS Natural Language Processing Endpoint [API][endpoint-apis] -nak, és JSON-válaszként fogadja az eredményeket. A csevegőrobotok a LUIS gyakori ügyfélalkalmazásai.
+* **Egyszerűség:** A LUIS kiszervezést ad ki a házon található AI-szakértelem vagy bármilyen korábbi gépi tanulási tudás miatt. Mindössze néhány kattintással saját beszélgetési AI-alkalmazást is felépíthet. Egyéni alkalmazását az egyik rövid útmutatónk alapján hozhatja [létre,](get-started-portal-build-app.md)vagy használhatja az egyik előre összeállított [tartományalkalmazásunkat.](luis-get-started-create-app.md)
+* **Biztonság, adatvédelem és megfelelőség:** Az Azure-infrastruktúrán keresztül a LUIS nagyvállalati szintű biztonságot, adatvédelmet és megfelelőséget kínál. Adatai továbbra is az Ön adatai maradnak; az adatokat bármikor törölheti. Az adatok titkosítva vannak, amíg a tárolóban vannak. Erről [itt](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy) olvashat részletesebb tájékoztatást.
+* **Integráció:** a LUIS-alkalmazás egyszerűen integrálható más szolgáltatásokkal Microsoft-szolgáltatások például a [Microsoft Bot Framework,](https://docs.microsoft.com/composer/tutorial/tutorial-luis) [a QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)és a Speech [service szolgáltatással.](../Speech-Service/quickstarts/intent-recognition.md)
 
 
-![A LUIS elméleti ábrázolása a csevegő használatával a természetes nyelvi megértést (NLP) használó felhasználói szöveg előrejelzéséhez](./media/luis-overview/LUIS-chat-bot-request-response.svg "A LUIS-vel kapcsolatos elméleti képek a csevegő használatával a természetes nyelvi megértéssel (NLP")
-
-|Lépés|Művelet|
-|:--|:--|
-|1|Az ügyfélalkalmazás a következő felhasználói _kimondott szöveget_ (saját szavaikkal megfogalmazott szöveg) küldi el HTTP-kérésként a LUIS-végpontnak: „Fel szeretném hívni a HR képviselőmet.”|
-|2|A LUIS lehetővé teszi, hogy egyéni nyelvi modelljeit az alkalmazáshoz való intelligenciával bővítse. A gépi megtanult nyelvi modellek a felhasználó strukturálatlan bemeneti szövegét, és egy JSON-formátumú választ adnak vissza, amely a legfelső szándékot használja `HRContact` . A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerésére is képes, mint például a _Contact Type_ entitás.|
-|3|Az ügyfélalkalmazás a JSON-választ használatával dönti el, hogy hogyan teljesítse a felhasználói kérést. Ezek a döntések magukban foglalhatják a bot Framework kódjának döntési fáját, és más szolgáltatásokhoz is meghívhatják azokat. |
-
-A LUIS alkalmazás biztosítja az intelligenciát, így az ügyfélalkalmazás is intelligens döntéseket hozhat. A döntéseket nem a LUIS biztosítja.
-
-<a name="Key-LUIS-concepts"></a>
-<a name="what-is-a-luis-model"></a>
-
-## <a name="natural-language-understanding-nlu"></a>Természetes nyelvi megértés (NLU)
-
-A [Luis a mesterséges intelligenciát (AI)](artificial-intelligence.md "LUIS mesterséges intelligenciát (AI) biztosít") NLU, a természetes nyelvi feldolgozó mesterséges intelligencia egy részét képezi.
-
-A LUIS-alkalmazás egy tartományszintű természetes nyelvi modellt tartalmaz. A LUIS alkalmazás elindításához használhat előre összeállított tartománymodellt, elkészítheti a saját modelljét vagy kombinálhatja egy előre elkészített tartomány elemeit saját egyéni adataival.
-
-* **Előre összeállított modell** A LUIS számos előre összeállított, szándékokat, kimondott szövegeket és előre létrehozott entitásokat tartalmazó tartománymodellel rendelkezik. Az előre létrehozott entitásokat a szándékok és kimondott szövegek használata nélkül is alkalmazhatja. Az [Előre összeállított tartománymodellek](./howto-add-prebuilt-models.md "Előre elkészített tartományi modellek") tartalmazzák a teljes dizájnt, így nagyszerű módot kínálnak arra, hogy a LUIS használatát gyorsan elkezdhesse.
-
-* **Egyéni modell** LUIS számos lehetőséget kínál a saját egyéni modelljeinek, például a szándékok és az entitások azonosítására. Az entitások például a gépi tanulási entitások, a konkrét vagy literális entitások, valamint a gépi tanulás és a literál kombinációja.
-
-További információ az [NLP AI](artificial-intelligence.md "NLP")-ról és a NLU Luis-specifikus területéről.
-
-## <a name="step-1-design-and-build-your-model"></a>1. lépés: a modell megtervezése és összeállítása
-
-Tervezze meg a modellt a **[felhasználói szándékok nevű](luis-concept-intent.md "leképezések")** kategóriával. Minden egyes szándéknak szüksége van felhasználói **[kimondott szövegek](luis-concept-utterance.md "hosszúságú kimondott szöveg")** példáira. Minden Kimondás lehetővé teszi a [gépi tanulási entitásokkal](luis-concept-entity-types.md#effective-machine-learned-entities "gépi tanulással rendelkező entitások")kinyerni kívánt adatgyűjtést.
-
-|Példa felhasználói kimondott szövegre|Szándék|Kinyert adathalmazok|
-|-----------|-----------|-----------|
-|`Book a flight to Seattle?`|RepülőjegyFoglalás|Seattle|
-|`When does your store open?`|ÜzletNyitvatartásÉsHelyszín|nyitás|
-|`Schedule a meeting at 1pm with Bob in Distribution`|ÉrtekezletÜtemezés|13 óra, Bob|
-
-Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087 "létrehozás") API-kkal vagy a **[Luis-portálral](https://www.luis.ai "LUIS portál")**, vagy mindkettővel. További információ a [portál](get-started-portal-build-app.md "portál") és az [SDK-ügyfél kódtárainak](./client-libraries-rest-api.md?pivots=rest-api "SDK-ügyféloldali kódtárak")létrehozásáról.
-
-## <a name="step-2-get-the-query-prediction"></a>2. lépés: a lekérdezés előrejelzésének beolvasása
-
-Miután az alkalmazás modelljét betanítják és közzétették a végponton, egy ügyfélalkalmazás (például egy chat-bot) elküldi a hosszúságú kimondott szöveg az előrejelzési [végpont](https://go.microsoft.com/fwlink/?linkid=2092356 "endpoint") API-nak. Az API a modellt a teljes elemzésre alkalmazza, és az előrejelzési eredményeket JSON formátumban adja meg.
-
-A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerése is kinyerhető, mint például a következő **kapcsolatfelvételi típus** entitás és az általános hangulat.
-
-```JSON
-{
-    "query": "I want to call my HR rep",
-    "prediction": {
-        "topIntent": "HRContact",
-        "intents": {
-            "HRContact": {
-                "score": 0.8582669
-            }
-        },
-        "entities": {
-            "Contact Type": [
-                "call"
-            ]
-        },
-        "sentiment": {
-            "label": "neutral",
-            "score": 0.5
-        }
-    }
-}
-```
-
-## <a name="step-3-improve-model-prediction"></a>3. lépés: a modell előrejelzésének javítása
-
-Miután közzétette a LUIS-alkalmazást, és valós felhasználói hosszúságú kimondott szöveg kapott, a LUIS a végpontok hosszúságú kimondott szöveg [aktív tanulását](luis-concept-review-endpoint-utterances.md "aktív tanulás") teszi lehetővé az előrejelzés pontosságának javítása érdekében. Tekintse át ezeket a javaslatokat a fejlesztési életciklusának rendszeres karbantartási munkájának részeként.
-
-<a name="using-luis"></a>
-
-## <a name="development-lifecycle-and-tools"></a>Fejlesztési életciklus és eszközök
-LUIS eszközöket, verziószámozást és együttműködést biztosít más LUIS szerzőkkel, hogy integrálni lehessen a teljes [fejlesztési](luis-concept-app-iteration.md "fejlesztési életciklus")életciklusba.
-
-Language Understanding (LUIS) REST APIként bármilyen termékkel, szolgáltatással vagy keretrendszerrel használható HTTP-kéréssel. A LUIS az ügyféloldali kódtárakat (SDK-kat) is biztosítja számos legnépszerűbb programozási nyelvhez. További információ a megadott [fejlesztői erőforrásokról](developer-reference-resource.md "fejlesztői erőforrások") .
-
-Eszközök a LUIS robotokkal való gyors és egyszerű használatához:
-* [Luis CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS "LUIS CLI") A NPM csomag szerzői és előrejelzési lehetőségeket biztosít önálló parancssori eszközként vagy importálásként.
-* A [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen "LUISGen") eszközzel szigorú típusmegadású C#- és TypeScript-forráskód hozható létre exportált LUIS-modellekből.
-* A [Dispatch](https://aka.ms/dispatch-tool "Küldése") többféle LUIS- és QnA Maker-alkalmazás számára is lehetővé teszi, hogy elérhetők legyenek egy Dispatcher-modellt használó szülőalkalmazásból.
-* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown "LUDown") A LUDown egy parancssori eszköz, amely segít a robot nyelvi modelljeinek kezelésében.
-
-## <a name="integrate-with-a-bot"></a>Integrálás robottal
-
-Használja az [Azure bot Service](/azure/bot-service/ "Azure bot Service") -t a [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot-keretrendszer") használatával egy csevegési robot létrehozásához és üzembe helyezéséhez. Megtervezheti és fejlesztheti a grafikus kezelőfelülettel, a [zeneszerzővel](/composer/ "Composer")vagy a leggyakoribb bot-forgatókönyvekhez tervezett [munkabot-mintákkal](https://github.com/microsoft/BotBuilder-Samples "működő bot-minták") .
-
-## <a name="integrate-with-other-cognitive-services"></a>Integrálás más Cognitive Servicesokkal
-
-További, a LUIS szolgáltatással használható Cognitive Services szolgáltatások:
-* A [QnA Maker](../QnAMaker/overview/overview.md "QnA Maker") különböző típusú szövegek kombinálásával teszi lehetővé egy kérdéseken és válaszokon alapuló tudásbázis kialakítását.
-* A [Speech service](../Speech-Service/overview.md "Speech szolgáltatás") szöveggé alakítja a szóbeli kéréseket.
-
-A LUIS a meglévő LUIS-erőforrások részeként Text Analytics funkciókat biztosít. Ez a funkció magában foglalja az [érzelmek elemzését](luis-how-to-publish-app.md#configuring-publish-settings "hangulat elemzése") és a [kulcsfontosságú kifejezés kinyerését](luis-reference-prebuilt-keyphrase.md "fő kifejezés kibontása") az előre elkészített keyPhrase-entitással.
-
-## <a name="learn-with-the-quickstarts"></a>Ismerkedjen meg a gyors útmutatókkal
-
-Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md "portál") és az [SDK ügyféloldali kódtárak](./client-libraries-rest-api.md?pivots=rest-api "SDK-ügyféloldali kódtárak")használatával.
+## <a name="luis-scenarios"></a>LUIS-forgatókönyvek
+* [Nagyvállalati szintű](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/conversational-bot)beszélgetőrobot összeállítása: Ez a referenciaarchitektúra azt ismerteti, hogyan lehet nagyvállalati szintű beszélgetőrobotot (csevegőrobotot) építeni az Azure Bot Framework.
+* [Kereskedelmi csevegőrobot:](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/commerce-chatbot)Együttesen a Azure Bot Service és Language Understanding szolgáltatás lehetővé teszi a fejlesztők számára, hogy beszélgetési felületeket hozzanak létre különböző forgatókönyvekhez, például banki, utazási és szórakoztató szolgáltatásokhoz.
+* [IoT-eszközök](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant)vezérlése hangsegéddel: Zökkenőmentes beszélgetési felületeket hozhat létre az összes internetről elérhető eszközzel , a csatlakoztatott tévékészülékről vagy a csatlakoztatott gyárban lévő eszközökre.
 
 
-## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
+## <a name="application-development-life-cycle"></a>Alkalmazásfejlesztés életciklusa
 
-A [Luis-tárolók használatával](luis-container-howto.md) üzembe helyezhet API-szolgáltatásokat a helyszínen. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
+![LUIS-alkalmazásfejlesztési életciklus](./media/luis-overview/luis-dev-lifecycle.png "LUIS-alkalmazás-develooment életciklus")
+
+-   **Tervezés:** Azonosítsa azokat a forgatókönyveket, amelyekhez a felhasználók az alkalmazást használják. Határozza meg a felismerni szükséges műveleteket és releváns információkat.
+-   **Build**: Használja a szerzői erőforrást az alkalmazás fejlesztéséhez. Először határozza meg a [szándékokat és](luis-concept-intent.md) [entitásokat.](luis-concept-entity-types.md) Ezután adjon hozzá betanító [kimondott szövegeket](luis-concept-utterance.md) minden szándékhoz. 
+-   **Tesztelés és** fejlesztés: Tesztelje a modellt más kimondott szövegekkel, hogy jobban át tudja látni az alkalmazás viselkedését, és eldöntheti, hogy van-e szükség fejlesztésre. Az alkalmazást a következő ajánlott eljárások szerint [fejlesztheti:](luis-concept-best-practices.md). 
+-   **Közzététel:** Üzembe helyezheti az alkalmazást előrejelzésre, és lekérdezheti a végpontot az előrejelzési erőforrás használatával. A szerzői és előrejelzési erőforrásokról itt olvashat [bővebben.](luis-how-to-azure-subscription.md#luis-resources) 
+-   **Csatlakozás:** Kapcsolódhat más szolgáltatásokhoz, például a [Microsoft Bot Frameworkhez,](https://docs.microsoft.com/composer/tutorial/tutorial-luis) [a QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)és a [Speech service-hez.](../Speech-Service/quickstarts/intent-recognition.md) 
+-   **Pontosítás:** [A végponti kimondott szövegeket áttekintve](luis-concept-review-endpoint-utterances.md) valós példákkal fejleszti az alkalmazást
+
+Az alkalmazás megtervezéséről és építésről itt olvashat [bővebben.](luis-how-plan-your-app.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A szolgáltatással és a dokumentációval kapcsolatos [Újdonságok](whats-new.md "Újdonságok")
-* [Tervezze meg alkalmazását](luis-how-plan-your-app.md "Az alkalmazás megtervezése") [szándékokkal](luis-concept-intent.md "leképezések") és [entitásokkal](luis-concept-entity-types.md "szervezetek").
+* [A szolgáltatás és](whats-new.md "Újdonságok") a dokumentáció újdonsága
+* [LUIS-alkalmazások felépítése](tutorial-intents-only.md)
+* [API-leírások][endpoint-apis]
+* [Ajánlott eljárások](luis-concept-best-practices.md)
+* [Fejlesztői erőforrások a](developer-reference-resource.md "Fejlesztői erőforrások") LUIS-hoz.
+* [Tervezze meg az alkalmazást](luis-how-plan-your-app.md "Az alkalmazás megtervezése") [szándékokkal és](luis-concept-intent.md "Cél") [entitásokkal.](luis-concept-entity-types.md "Entitások")
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

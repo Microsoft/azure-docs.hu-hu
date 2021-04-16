@@ -1,46 +1,46 @@
 ---
-title: Kapcsolódás dedikált SQL-készlethez (korábban SQL DW) a VSTS
-description: Dedikált SQL-készlet (korábban SQL DW) lekérdezése az Azure szinapszis Analytics és a Visual Studio használatával.
+title: Csatlakozás dedikált SQL-készlethez (korábban SQL DW) a VSTS használatával
+description: Dedikált SQL-készlet (korábban SQL DW) lekérdezése a Azure Synapse Analytics a Visual Studio.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/15/2019
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0baf2396b7c5af103f0b3aa223d0bccf725babbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 926e95887f8d6aa164908a4107656074142a969e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584142"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566460"
 ---
-# <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben a Visual Studióval és a SSDT
+# <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Csatlakozás dedikált SQL-készlethez (korábban SQL DW) Azure Synapse Analytics Visual Studio SSDT használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-A Visual Studióval mindössze néhány perc alatt lekérdezheti az Azure Szinapszisban található dedikált SQL-készletet (korábban SQL DW). Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
+A Visual Studio használatával néhány perc alatt lekérdezheti a dedikált SQL-készletet (korábban SQL DW Azure Synapse n belül. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja Visual Studio 2019-ben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy meglévő dedikált SQL-készlet (korábban SQL DW). A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet (korábban SQL DW) létrehozását](create-data-warehouse-portal.md)ismertető témakört.
-* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik SSDT a Visual Studióval. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Ezen információk megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez (korábban SQL DW)](sql-data-warehouse-connect-overview.md).
+* Egy meglévő dedikált SQL-készlet (korábban SQL DW). Ennek létrehozásához [lásd: Dedikált SQL-készlet létrehozása (korábban SQL DW).](create-data-warehouse-portal.md)
+* SSDT a Visual Studióhoz. Ha már rendelkezik Visual Studio, valószínűleg már rendelkezik SSDT-vel a Visual Studio. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
+* Az Azure SQL-kiszolgáló teljes neve. Ezen információkért lásd: Csatlakozás dedikált [SQL-készlethez (korábban SQL DW).](sql-data-warehouse-connect-overview.md)
 
-## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. kapcsolódás a dedikált SQL-készlethez (korábban SQL DW)
-1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. SQL Server Object Explorer megnyitásához válassza a **nézet**  >  **SQL Server Object Explorer** lehetőséget.
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. Csatlakozás a dedikált SQL-készlethez (korábban SQL DW)
+1. Nyissa meg Visual Studio 2019-es Visual Studio.
+2. Nyissa SQL Server Object Explorer a Nézet **gombra**  >  **SQL Server Object Explorer.**
    
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -50,15 +50,15 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
    
     ![Csatlakozás kiszolgálóhoz](./media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
-   * A **kiszolgáló neve**. Adja meg a korábban azonosított **kiszolgálónevet**.
-   * **Hitelesítés**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
+   * **Kiszolgálónév.** Adja meg a korábban azonosított **kiszolgálónevet**.
+   * **Hitelesítés:**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
    * **Felhasználónév** és **Jelszó**. Amennyiben az SQL Server-hitelesítést választotta, adja meg felhasználónevét és jelszavát.
    * Kattintson a **Csatlakozás** gombra.
 5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
    
     ![Az AdventureWorksDW áttekintése](./media/sql-data-warehouse-query-visual-studio/explore-sample.png)
 
-## <a name="2-run-a-sample-query"></a>2. minta lekérdezés futtatása
+## <a name="2-run-a-sample-query"></a>2. Mintalekérdezés futtatása
 Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekérdezést.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
@@ -70,7 +70,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. A lekérdezés futtatásához kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL` + `SHIFT` + `E` .
+4. Futtassa a lekérdezést a zöld nyílra kattintva, vagy használja a következő parancsikont: `CTRL` + `SHIFT` + `E` .
    
     ![A lekérdezés futtatása](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
@@ -78,6 +78,6 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ![Lekérdezés eredményei](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect).
+Most, hogy tud csatlakozni és lekérdezni, próbálja meg [vizualizálni az](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)adatokat az Power BI.
 
-A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe (korábban SQL DW)](sql-data-warehouse-authentication.md).
+A környezet hitelesítésre való Azure Active Directory lásd: Hitelesítés dedikált [SQL-készletben (korábban SQL DW).](sql-data-warehouse-authentication.md)
