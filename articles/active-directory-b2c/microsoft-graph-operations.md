@@ -1,7 +1,7 @@
 ---
-title: Erőforrások kezelése a Microsoft Graph
+title: Erőforrások kezelése Microsoft Graph
 titleSuffix: Azure AD B2C
-description: Az Azure AD B2C-bérlő erőforrásainak kezelése a Microsoft Graph API meghívásával és az alkalmazás identitásának használatával a folyamat automatizálása érdekében.
+description: Hogyan kezelheti egy Azure AD B2C-bérlő erőforrásait a Microsoft Graph API hívásával és a folyamat automatizálásához egy alkalmazásidentitás használatával.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884cb0c30bc754366fda79a4b54b977517fbadd3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781313"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530531"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>A Azure AD B2C kezelése Microsoft Graph
 
-Microsoft Graph lehetővé teszi az erőforrások kezelését a Azure AD B2C címtárban. A következő Microsoft Graph API-műveletek támogatottak Azure AD B2C erőforrások, például felhasználók, identitás-szolgáltatók, felhasználói folyamatok, egyéni házirendek és házirend-kulcsok kezeléséhez. A következő részben található hivatkozások a Microsoft Graph API-referencián belüli megfelelő lapot célozzák meg az adott művelethez. 
+Microsoft Graph lehetővé teszi a címtárban található erőforrások Azure AD B2C kezelését. A következő Microsoft Graph API-műveletek támogatottak a Azure AD B2C-erőforrások, például a felhasználók, identitásszolgáltatók, felhasználói folyamatok, egyéni szabályzatok és szabályzatkulcsok kezeléséhez. A következő szakaszokban található hivatkozásokat a művelet API-referenciájának megfelelő Microsoft Graph célozza meg. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha az MS Graph APIt szeretné használni, és a Azure AD B2C-bérlő erőforrásaival szeretne kommunikálni, szüksége lesz egy alkalmazás-regisztrációra, amely erre engedélyt ad. A felügyeleti alkalmazás által használható alkalmazás-regisztráció létrehozásához hajtsa végre a [Azure ad B2C kezelése a Microsoft Graphval](microsoft-graph-get-started.md) című cikkben ismertetett lépéseket. 
+Az MS Graph API- és a Azure AD B2C-bérlő erőforrásaival való interakcióhoz olyan alkalmazásregisztrációra van szükség, amely erre engedélyt ad. Kövesse a Manage [Azure AD B2C with Microsoft Graph](microsoft-graph-get-started.md) (Alkalmazáskezelés a következővel) Microsoft Graph, hogy létrehoz egy alkalmazásregisztrációt, amit a felügyeleti alkalmazás használhat. 
 
 ## <a name="user-management"></a>Felhasználókezelés
 
 - [Felhasználók listázása](/graph/api/user-list)
-- [Fogyasztói felhasználó létrehozása](/graph/api/user-post-users)
-- [Felhasználó beolvasása](/graph/api/user-get)
+- [Felhasználó létrehozása](/graph/api/user-post-users)
+- [Felhasználó lekérte](/graph/api/user-get)
 - [Felhasználó frissítése](/graph/api/user-update)
 - [Felhasználó törlése](/graph/api/user-delete)
 
-## <a name="user-phone-number-management-beta"></a>Felhasználói telefonszámok kezelése (bétaverzió)
+## <a name="user-phone-number-management-beta"></a>Felhasználó telefonszámának kezelése (bétaverzió)
 
-A felhasználó által az [SMS-és hanghívások](identity-provider-local.md#phone-sign-in-preview)vagy a [többtényezős hitelesítés](multi-factor-authentication.md)használatával történő bejelentkezéshez használható telefonszám. További információ: [Azure ad Authentication Methods API](/graph/api/resources/phoneauthenticationmethod).
+A felhasználók által SMS-sel vagy hanghívásokkal, vagy többtényezős hitelesítéssel [való bejelentkezéshez használható telefonszám.](multi-factor-authentication.md) [](identity-provider-local.md#phone-sign-in-preview) További információ: [Azure AD hitelesítési módszerek API.](/graph/api/resources/phoneauthenticationmethod)
 
 - [Hozzáadás](/graph/api/authentication-post-phonemethods)
 - [Lista](/graph/api/authentication-list-phonemethods)
@@ -45,13 +45,13 @@ A felhasználó által az [SMS-és hanghívások](identity-provider-local.md#pho
 - [Frissítés](/graph/api/phoneauthenticationmethod-update)
 - [Törlés](/graph/api/phoneauthenticationmethod-delete)
 
-Megjegyzés: a [lista](/graph/api/authentication-list-phonemethods) művelet csak az engedélyezett telefonszámokat adja vissza. A következő telefonszámot engedélyezni kell a List műveletekkel való használatra. 
+Vegye figyelembe, [hogy a listaművelet](/graph/api/authentication-list-phonemethods) csak engedélyezett telefonszámokat ad vissza. A következő telefonszámot kell engedélyezni a listaműveletekkel való használathoz. 
 
 ![Telefonos bejelentkezés engedélyezése](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
 ## <a name="self-service-password-reset-email-address-beta"></a>Önkiszolgáló jelszó-visszaállítási e-mail-cím (bétaverzió)
 
-E-mail-cím, amelyet a [Felhasználónév bejelentkezési fiókja](identity-provider-local.md#username-sign-in) használhat a jelszó alaphelyzetbe állításához. További információ: [Azure ad Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
+Egy felhasználónévvel bejelentkező fiók [](identity-provider-local.md#username-sign-in) által a jelszó visszaállításához használható e-mail-cím. További információ: [Azure AD hitelesítési módszerek API.](/graph/api/resources/emailauthenticationmethod)
 
 - [Hozzáadás](/graph/api/emailauthenticationmethod-post)
 - [Lista](/graph/api/emailauthenticationmethod-list)
@@ -61,61 +61,61 @@ E-mail-cím, amelyet a [Felhasználónév bejelentkezési fiókja](identity-prov
 
 ## <a name="identity-providers"></a>Identitásszolgáltatók
 
-Kezelheti az Azure AD B2C bérlője felhasználói folyamatai számára elérhető [identitás-szolgáltatókat](add-identity-provider.md) .
+Kezelheti [a felhasználói folyamatok](add-identity-provider.md) számára elérhető identitásszolgáltatókat a Azure AD B2C bérlőben.
 
-- [Az Azure AD B2C bérlőben regisztrált identitás-szolgáltatók listázása](/graph/api/identityprovider-list)
-- [Identitás-szolgáltató létrehozása](/graph/api/identityprovider-post-identityproviders)
-- [Identitás-szolgáltató beszerzése](/graph/api/identityprovider-get)
-- [Identitás-szolgáltató frissítése](/graph/api/identityprovider-update)
-- [Identitás-szolgáltató törlése](/graph/api/identityprovider-delete)
+- [List identity providers registered in the Azure AD B2C tenant](/graph/api/identityprovider-list)
+- [Identitásszolgáltató létrehozása](/graph/api/identityprovider-post-identityproviders)
+- [Identitásszolgáltató lekérte](/graph/api/identityprovider-get)
+- [Identitásszolgáltató frissítése](/graph/api/identityprovider-update)
+- [Identitásszolgáltató törlése](/graph/api/identityprovider-delete)
 
 ## <a name="user-flow"></a>Felhasználói folyamat
 
-A regisztrációhoz, a bejelentkezéshez, a kombinált regisztrációhoz, a bejelentkezéshez, a jelszó-visszaállításhoz és a profil frissítéséhez szükséges előre elkészített szabályzatok konfigurálása.
+Előre felépített szabályzatok konfigurálása regisztrációhoz, bejelentkezéshez, kombinált regisztrációhoz és bejelentkezéshez, jelszó-visszaállításhoz és profilfrissítéshez.
 
-- [Felhasználói folyamatok listázása](/graph/api/identitycontainer-list-b2cuserflows)
+- [Felhasználói folyamatok listába való sorolása](/graph/api/identitycontainer-list-b2cuserflows)
 - [Felhasználói folyamat létrehozása](/graph/api/identitycontainer-post-b2cuserflows)
-- [Felhasználói folyamat beszerzése](/graph/api/b2cidentityuserflow-get)
+- [Felhasználói folyamat lekérte](/graph/api/b2cidentityuserflow-get)
 - [Felhasználói folyamat törlése](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="user-flow-authentication-methods-beta"></a>Felhasználói folyamat hitelesítési módszerei (bétaverzió)
 
-Válassza ki azt a mechanizmust, amellyel a felhasználók helyi fiókokon keresztül regisztrálhatnak. A helyi fiókok azok a fiókok, amelyekben az Azure AD az identitást. További információ: [b2cAuthenticationMethodsPolicy erőforrástípus](/graph/api/resources/b2cauthenticationmethodspolicy).
+Válasszon egy olyan mechanizmust, amely lehetővé teszi a felhasználók számára a helyi fiókokon keresztüli regisztrációt. A helyi fiókok azok a fiókok, amelyekben az Azure AD az identitás helyességi feltételét teszi. További információ: [b2cAuthenticationMethodsPolicy erőforrástípus.](/graph/api/resources/b2cauthenticationmethodspolicy)
 
 - [Lekérés](/graph/api/b2cauthenticationmethodspolicy-get)
 - [Frissítés](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Egyéni szabályzatok
 
-A következő műveletek lehetővé teszik a Azure AD B2C megbízhatósági keretrendszer házirendjeinek, más néven [Egyéni házirendeknek](custom-policy-overview.md)a kezelését.
+A következő műveletekkel kezelheti a Azure AD B2C Trust Framework szabályzatokat, más néven [az egyéni szabályzatokat.](custom-policy-overview.md)
 
-- [A bérlőben konfigurált összes megbízhatósági keretrendszer szabályzatának listázása](/graph/api/trustframework-list-trustframeworkpolicies)
-- [Megbízhatósági keretrendszer házirendjének létrehozása](/graph/api/trustframework-post-trustframeworkpolicy)
-- [Meglévő megbízhatósági keretrendszer házirendjének tulajdonságainak olvasása](/graph/api/trustframeworkpolicy-get)
-- [Frissítse vagy hozza létre a megbízhatósági keretrendszer szabályzatát.](/graph/api/trustframework-put-trustframeworkpolicy)
-- [Meglévő megbízhatósági keretrendszer házirendjének törlése](/graph/api/trustframeworkpolicy-delete)
+- [A bérlőben konfigurált összes megbízhatósági keretrendszer-szabályzat listása](/graph/api/trustframework-list-trustframeworkpolicies)
+- [Megbízhatósági keretrendszer szabályzatának létrehozása](/graph/api/trustframework-post-trustframeworkpolicy)
+- [Meglévő megbízhatósági keretrendszer-szabályzat tulajdonságainak olvasása](/graph/api/trustframeworkpolicy-get)
+- [A megbízhatósági keretrendszer szabályzatának frissítése vagy létrehozása.](/graph/api/trustframework-put-trustframeworkpolicy)
+- [Meglévő megbízhatósági keretrendszer-szabályzat törlése](/graph/api/trustframeworkpolicy-delete)
 
 ## <a name="policy-keys"></a>Szabályzatkulcsok
 
-Az Identity Experience Framework egy egyéni szabályzatban hivatkozott titkokat tárolja az összetevők közötti megbízhatósági kapcsolat létrehozásához. Ezek a titkok lehetnek szimmetrikus vagy aszimmetrikus kulcsok/értékek. A Azure Portalban ezek az entitások **házirend kulcsaként** jelennek meg.
+A Identity Experience Framework tárolja az egyéni szabályzatban hivatkozott titkos adatokat az összetevők közötti megbízhatóság létrehozásához. Ezek a titkos kulcsok szimmetrikus vagy aszimmetrikus kulcsok/értékek is lehetek. A Azure Portal entitások szabályzatkulcsokként **jelennek meg.**
 
-A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendszer kulcskészlet](/graph/api/resources/trustframeworkkeyset). Mindegyik **kulcskészlet** legalább egy **kulcsot** tartalmaz. A kulcs létrehozásához először létre kell hoznia egy üres kulcskészlet-t, majd létre kell hoznia egy kulcsot a kulcskészlet alkalmazásban. Létrehozhat egy manuális titkot, feltölthet egy tanúsítványt vagy egy PKCS12/pfx-profil kulcsot is. A kulcs lehet egy generált titok, egy karakterlánc (például a Facebook-alkalmazás titka) vagy egy feltöltött tanúsítvány. Ha egy kulcskészlet több kulccsal rendelkezik, akkor csak az egyik kulcs aktív.
+Az Microsoft Graph API házirendkulcsok legfelső szintű erőforrása a Megbízható keretrendszer [kulcskészlete.](/graph/api/resources/trustframeworkkeyset) Minden **kulcskészlet legalább** egy kulcsot **tartalmaz.** Kulcs létrehozásához először hozzon létre egy üres kulcskészletet, majd hozzon létre egy kulcsot a kulcskészletben. Létrehozhat manuális titkos kulcsot, feltölthet egy tanúsítványt vagy egy PKCS12-kulcsot. A kulcs lehet egy létrehozott titkos kulcs, egy sztring (például a Facebook-alkalmazás titkos kulcsa) vagy egy feltöltött tanúsítvány. Ha egy kulcskészlet több kulcsból áll, csak az egyik aktív.
 
-### <a name="trust-framework-policy-keyset"></a>Megbízhatósági keretrendszer szabályzata kulcskészlet
+### <a name="trust-framework-policy-keyset"></a>Megbízhatósági keretrendszer szabályzatkulcskészlete
 
-- [A megbízhatósági keretrendszer alapbeállításainak listázása](/graph/api/trustframework-list-keysets)
-- [Megbízhatósági keretrendszer alapbeállításainak létrehozása](/graph/api/trustframework-post-keysets)
-- [Kulcskészlet beszerzése](/graph/api/trustframeworkkeyset-get)
-- [Megbízhatósági keretrendszer alapbeállításainak frissítése](/graph/api/trustframeworkkeyset-update)
-- [Megbízhatósági keretrendszer alapbeállításainak törlése](/graph/api/trustframeworkkeyset-delete)
+- [A megbízhatósági keretrendszer kulcskészletei](/graph/api/trustframework-list-keysets)
+- [Megbízhatósági keretrendszer kulcskészletének létrehozása](/graph/api/trustframework-post-keysets)
+- [Kulcskészlet lekérte](/graph/api/trustframeworkkeyset-get)
+- [Megbízhatósági keretrendszer kulcskészletének frissítése](/graph/api/trustframeworkkeyset-update)
+- [Megbízhatósági keretrendszer kulcskészletének törlése](/graph/api/trustframeworkkeyset-delete)
 
-### <a name="trust-framework-policy-key"></a>Megbízhatósági keretrendszer házirendjének kulcsa
+### <a name="trust-framework-policy-key"></a>Megbízhatósági keretrendszer szabályzatkulcsa
 
-- [Jelenleg aktív kulcs beolvasása a kulcskészlet-ban](/graph/api/trustframeworkkeyset-getactivekey)
-- [Kulcs létrehozása a kulcskészlet-ban](/graph/api/trustframeworkkeyset-generatekey)
-- [Karakterlánc-alapú titkos kód feltöltése](/graph/api/trustframeworkkeyset-uploadsecret)
-- [X. 509 tanúsítvány feltöltése](/graph/api/trustframeworkkeyset-uploadcertificate)
-- [PKCS12/pfx-profil-formátumú tanúsítvány feltöltése](/graph/api/trustframeworkkeyset-uploadpkcs12)
+- [Aktuálisan aktív kulcs lekért kulcs a kulcskészletben](/graph/api/trustframeworkkeyset-getactivekey)
+- [Kulcs létrehozása a kulcskészletben](/graph/api/trustframeworkkeyset-generatekey)
+- [Sztringalapú titkos fájl feltöltése](/graph/api/trustframeworkkeyset-uploadsecret)
+- [X.509-tanúsítvány feltöltése](/graph/api/trustframeworkkeyset-uploadcertificate)
+- [PKCS12 formátumú tanúsítvány feltöltése](/graph/api/trustframeworkkeyset-uploadpkcs12)
 
 ## <a name="applications"></a>Alkalmazások
 
@@ -123,69 +123,69 @@ A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendsz
 - [Alkalmazás létrehozása](/graph/api/resources/application)
 - [Az alkalmazás frissítése](/graph/api/application-update)
 - [ServicePrincipal létrehozása](/graph/api/resources/serviceprincipal)
-- [Oauth2Permission-támogatás létrehozása](/graph/api/resources/oauth2permissiongrant)
+- [Oauth2Permission Grant létrehozása](/graph/api/resources/oauth2permissiongrant)
 - [Alkalmazás törlése](/graph/api/application-delete)
 
-## <a name="application-extension-properties"></a>Alkalmazás-bővítmény tulajdonságai
+## <a name="application-extension-properties"></a>Alkalmazásbővítmény tulajdonságai
 
-- [Bővítmény tulajdonságainak listázása](/graph/api/application-list-extensionproperty)
+- [Bővítmény tulajdonságainak felsorolása](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](user-flow-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot, amikor a házirend első alkalommal ír egy értéket a bővítmény tulajdonságba.
+Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot képes tartalmazni. Felhasználói folyamatok esetén ezeket a bővítménytulajdonságokat [a következő parancs használatával Azure Portal.](user-flow-custom-attributes.md) Egyéni szabályzatok Azure AD B2C létrehozza a tulajdonságot, amikor a szabályzat először ír értéket a bővítménytulajdonságba.
 
 ## <a name="audit-logs"></a>Naplók
 
-- [Naplófájlok listázása](/graph/api/directoryaudit-list)
+- [Auditnaplók list mentése](/graph/api/directoryaudit-list)
 
-További információ a Azure AD B2C naplók eléréséről: Azure AD B2C naplók [elérése](view-audit-logs.md).
+Az auditnaplók elérésével kapcsolatos Azure AD B2C lásd: Hozzáférés Azure AD B2C [auditnaplókhoz.](view-audit-logs.md)
 
 ## <a name="conditional-access"></a>Feltételes hozzáférés
 
-- [Az összes feltételes hozzáférési szabályzat listázása](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
-- [Feltételes hozzáférési szabályzat tulajdonságainak és kapcsolatainak beolvasása](/graph/api/conditionalaccesspolicy-get)
+- [Az összes feltételes hozzáférési szabályzat felsorolása](/graph/api/conditionalaccessroot-list-policies?tabs=http)
+- [Feltételes hozzáférési szabályzat tulajdonságainak és kapcsolatainak olvasása](/graph/api/conditionalaccesspolicy-get)
 - [Új feltételes hozzáférési szabályzat létrehozása](/graph/api/resources/application)
 - [Feltételes hozzáférési szabályzat frissítése](/graph/api/conditionalaccesspolicy-update)
 - [Feltételes hozzáférési szabályzat törlése](/graph/api/conditionalaccesspolicy-delete)
 
-## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Mintakód: felhasználói fiókok programozott felügyelete
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kódminta: Felhasználói fiókok programozott kezelése
 
-Ez a mintakód egy olyan .NET Core Console-alkalmazás, amely a [Microsoft Graph SDK](/graph/sdks/sdks-overview) -val együttműködik a Microsoft Graph API-val. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
-[Letöltheti a minta archívumot](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [böngészheti a tárházat](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) a githubon, vagy megnyithatja az adattárat:
+Ez a kódminta egy .NET Core-konzolalkalmazás, amely az [Microsoft Graph SDK-val](/graph/sdks/sdks-overview) kommunikál az Microsoft Graph API-val. A kód bemutatja, hogyan hívható meg az API a felhasználók programozott módon történő kezeléséhez egy Azure AD B2C bérlőben.
+Letöltheti a [mintaarchívum](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip) [](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) fájlt, böngészhet az adattárban a GitHubon, vagy klónozhatja az adattárat:
 
 ```cmd
 git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
 ```
 
-A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a projektet:
+Miután beszerezta a kódmintát, konfigurálja a környezethez, majd állítsa össze a projektet:
 
-1. Nyissa meg a projektet a [Visual Studióban](https://visualstudio.microsoft.com) vagy a [Visual Studio Code](https://code.visualstudio.com)-ban.
+1. Nyissa meg a projektet a [Visual Studio](https://visualstudio.microsoft.com) vagy [a Visual Studio kódban.](https://code.visualstudio.com)
 1. Nyissa meg a következő fájlt: `src/appsettings.json`.
-1. A `appSettings` szakaszban cserélje le a `your-b2c-tenant` nevet a bérlő nevére, és `Application (client) ID` `Client secret` adja meg a felügyeleti alkalmazás regisztrálásának értékeit. További információ: [Microsoft Graph alkalmazás regisztrálása](microsoft-graph-get-started.md).
-1. Nyisson meg egy konzol ablakot a tárház helyi klónján belül, váltson át a `src` címtárra, majd hozza létre a projektet:
+1. A szakaszban cserélje le a helyére a bérlője nevét, a és a értéket pedig a felügyeleti alkalmazás `appSettings` `your-b2c-tenant` `Application (client) ID` `Client secret` regisztrációja értékeire. További információ: Register a Microsoft Graph Application (Alkalmazás [regisztrálása).](microsoft-graph-get-started.md)
+1. Nyisson meg egy konzolablakot az adatbázis helyi klónján belül, váltson át a `src` könyvtárra, majd buildje a projektet:
 
     ```console
     cd src
     dotnet build
     ```
     
-1. Futtassa az alkalmazást a `dotnet` paranccsal:
+1. Futtassa az alkalmazást az `dotnet` paranccsal:
 
     ```console
     dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
     ```
 
-Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az összes felhasználó beszerzése, egyetlen felhasználó beszerzése, egy felhasználó törlése, a felhasználó jelszavának frissítése és a tömeges importálás.
+Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Lekért például minden felhasználót, egyetlen felhasználót kér le, töröl egy felhasználót, frissíti a felhasználó jelszavát, és tömeges importálást is kap.
 
-### <a name="code-discussion"></a>Kód-vitafórum
+### <a name="code-discussion"></a>Kódbefedő
 
-A mintakód a [Microsoft Graph SDK](/graph/sdks/sdks-overview)-t használja, amelynek célja, hogy leegyszerűsítse a Microsoft Graphhoz hozzáférő, magas színvonalú, hatékony és rugalmas alkalmazások kialakítását.
+A mintakód a [Microsoft Graph SDK-t](/graph/sdks/sdks-overview)használja, amely megkönnyíti az alkalmazásokhoz hozzáférő kiváló minőségű, hatékony és rugalmas Microsoft Graph.
 
-A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. A megoldás a [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomag használatát teszi lehetővé, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja a Microsoft Graph SDK-val való használatra.
+A Microsoft Graph API-hoz Microsoft Graph hozzáférési jogkivonatra van szükség a hitelesítéshez. A megoldás a [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet-csomagot használja, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja az Microsoft Graph SDK-val való használathoz.
 
-A `RunAsync` _program. cs_ fájljának metódusa:
+A `RunAsync` _Program.cs fájl metódusa:_
 
-1. Az Alkalmazásbeállítások beolvasása a _appsettings.js_ fájlból
-1. A [OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamatát használva inicializálja a hitelesítési szolgáltatót. Az ügyfél hitelesítő adatainak megadása esetén az alkalmazás hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
-1. Beállítja a Microsoft Graph szolgáltatási ügyfelet az Auth szolgáltatóval:
+1. Beolvassa az alkalmazásbeállításokat _appsettings.jsfájlban található fájlból_
+1. Az [OAuth 2.0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) ügyfél-hitelesítő adatok megadásának folyamatával inicializálja a hitelesítési szolgáltatót. Az ügyfél-hitelesítő adatok megadásának folyamatával az alkalmazás le tud szerezni egy hozzáférési jogkivonatot a Microsoft Graph API hívásához.
+1. Beállítja a Microsoft Graph-ügyfélt a hitelesítési szolgáltatóval:
 
     ```csharp
     // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
@@ -203,7 +203,7 @@ A `RunAsync` _program. cs_ fájljának metódusa:
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-A rendszer ezt követően a inicializált *GraphServiceClient* használja a _UserService. cs_ -ben a felhasználói felügyeleti műveletek végrehajtásához. Például a bérlőben lévő felhasználói fiókok listájának beolvasása:
+Az inicializált *GraphServiceClient* ezután a _UserService.cs_ fájlban lesz használva a felhasználókezelési műveletek végrehajtásához. Lekért például egy listát a bérlőben található felhasználói fiókokról:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)
@@ -228,7 +228,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Az Microsoft Graph SDK-kat használó API-hívások a](/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
+Az API-hívások a [Microsoft Graph-alapú MICROSOFT GRAPH-k](/graph/sdks/create-requests) használatával való hívásával kapcsolatos információkkal kapcsolatos információkat tartalmaznak az Microsoft Graph-ból való olvasásról és írásról, a visszaadott tulajdonságok szabályozásához, egyéni lekérdezési paraméterek megírásához, valamint a és a lekérdezési paraméterek használatára `$select` vonatkozó `$filter` `$orderBy` információkról.
 
 <!-- LINK -->
 

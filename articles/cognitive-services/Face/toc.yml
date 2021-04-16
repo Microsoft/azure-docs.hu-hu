@@ -3,13 +3,13 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Arc-szolgáltatás áttekintése
+    - name: A Face szolgáltatás áttekintése
       href: Overview.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Újdonságok
       href: releasenotes.md
-- name: Szembenéző rövid útmutató
+- name: A Face rövid útmutatója
   href: Quickstarts/client-libraries.md
 - name: Példák
   href: /samples/browse/?products=azure&term=face
@@ -17,9 +17,9 @@
   items:
     - name: Arcok észlelése és elemzése
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Arcfelismerés modell verziójának meghatározása
+    - name: Arcfelismerési modell verziójának megadása
       href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: Arcfelismerés modell verziójának meghatározása
+    - name: Arcészlelési modell verziójának megadása
       href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Arcok hozzáadása egy csoporthoz
       href: Face-API-How-to-Topics/how-to-add-faces.md
@@ -33,19 +33,18 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: Arcokhoz kapcsolódó adatok migrálása
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: A Face tároló használata
+    - name: A Face-tároló használata
       items:
         - name: Cognitive Services-tárolók – dokumentáció
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: A tárolók áttekintése
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: Tárolók telepítése és futtatása
           href: face-how-to-install-containers.md
         - name: Tárolók konfigurálása
           href: face-resource-container-config.md
         - name: A Container Instances használata
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: Alapelvek
   items:
     - name: Arcfelismerés
@@ -54,17 +53,15 @@
       href: concepts/face-recognition.md
 - name: Oktatóanyagok
   items:
-    - name: Arcfelismerés-alkalmazás létrehozása
-      href: Tutorials/FaceAPIinCSharpTutorial.md
-    - name: Felhasználók hozzáadása egy Arcfelismerés szolgáltatáshoz
+    - name: Felhasználók hozzáadása Face-szolgáltatáshoz
       items:
         - name: Ajánlott eljárások felhasználók hozzáadásához
           href: enrollment-overview.md
-        - name: Reagáló alkalmazás létrehozása felhasználók hozzáadásához
+        - name: React-alkalmazás összeállítása felhasználók hozzáadásához
           href: build-enrollment-app.md
 - name: Referencia
   items:
-    - name: Face REST API
+    - name: Arc REST API
       href: APIReference.md
     - name: .NET
       href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
@@ -80,7 +77,7 @@
   items:
     - name: Régiós támogatás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: A modulok megismerése
+    - name: Learn-modulok
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context

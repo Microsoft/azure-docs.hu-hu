@@ -1,6 +1,6 @@
 ---
-title: azcopy feladatok eltávolítása | Microsoft Docs
-description: Ez a cikk a azcopy feladatok eltávolítására szolgáló paranccsal kapcsolatos tudnivalókat tartalmaz.
+title: azcopy jobs remove | Microsoft Docs
+description: Ez a cikk az azcopy jobs remove parancs referenciainformációit biztosítja.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,30 +8,29 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2744c2a082b5321fb671de08301981fd17396640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6a4745c4059c81384448deba37495030c4bf3a3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879088"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503371"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
-Távolítsa el a megadott AZONOSÍTÓJÚ feladathoz társított összes fájlt.
+Távolítsa el az adott feladatazonosítóhoz társított összes fájlt.
 
 > [!NOTE] 
-> Testreszabhatja azt a helyet, ahol a rendszer menti a napló-és a megtervezési fájlokat. További információért tekintse meg a [azcopy env](storage-ref-azcopy-env.md) parancsot.
+> Testreszabhatja a napló- és tervfájlok mentésének helyét. További információért tekintse meg [az azcopy env](storage-ref-azcopy-env.md) parancsot.
 
 ```
 azcopy jobs remove [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó elméleti cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
+- [Adatok átvitele az AzCopy és a Blob Storage használatával](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -41,15 +40,15 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="options"></a>Beállítások
 
-**– Súgó**                Súgó az eltávolításhoz.
+**--help**                Segítség az eltávolításhoz.
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülőparancsok által örökölt beállítások
 
-**--Cap-Mbps lebegőpontos**      Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--cap-mbps lebegőpontos érték**      Megabit/másodpercben megszabja az átviteli sebességet. A pillanatnyi átviteli sebesség kis mértékben eltérhet a felső felsőértéktől. Ha ez a beállítás nulla vagy nincs megadva, az átviteli sebesség nincs korlátozva.
 
-**--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték `text`. (alapértelmezett `text` )
+**--output-type** string A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték `text`. (alapértelmezett `text` )
 
-**--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
+**--trusted-microsoft-suffixes** sztring További tartomány-utótagokat ad meg, Azure Active Directory bejelentkezési jogkivonatokat lehet küldeni.  Az alapértelmezett érték a '*.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Az itt felsoroltak az alapértelmezett értékhez kerülnek. A biztonság érdekében itt csak a Microsoft Azure helyezzen el. Több bejegyzést pontosvesszővel válassza el egymástól.
 
 ## <a name="see-also"></a>Lásd még
 

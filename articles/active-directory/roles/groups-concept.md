@@ -1,6 +1,6 @@
 ---
-title: Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directoryban | Microsoft Docs
-description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure szerepkör-hozzárendelések kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
+title: Felhőcsoportok használata szerepkör-hozzárendelések kezeléséhez a Azure Active Directory | Microsoft Docs
+description: Az egyéni Azure AD-szerepkörök előzetes verziója az identitáskezelés delegálható. Azure-beli szerepkör-hozzárendelések kezelése a Azure Portal, a PowerShellben vagy a Graph API.
 services: active-directory
 author: rolyon
 manager: daveba
@@ -13,64 +13,65 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e1fea64305d4735c5bf1bf59b86ae5283600e622
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256072"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502198"
 ---
-# <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
+# <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Szerepkör-hozzárendelések kezelése felhőcsoportok használatával a Azure Active Directory (előzetes verzió)
 
-Azure Active Directory (Azure AD) egy nyilvános előzetes verzió bevezetése, amelyben hozzáadhat egy felhőalapú csoportot az Azure AD beépített szerepköreihez. Ezzel a funkcióval a csoportok segítségével rendszergazdai hozzáférést biztosíthat az Azure AD-ben a globális és a Kiemelt szerepkörű rendszergazdák minimális erőfeszítésével.
+Azure Active Directory (Azure AD) bevezet egy nyilvános előzetes verziót, amelyben felhőcsoportokat rendelhet hozzá az Azure AD beépített szerepköreihez. Ezzel a funkcióval a csoportokkal minimális erőfeszítéssel adhat rendszergazdai hozzáférést az Azure AD-hez a globális és kiemelt szerepkörű rendszergazdáktól.
 
-Vegyük például a következő példát: a contoso az Azure AD-szervezetében dolgozó alkalmazottak jelszavainak kezeléséhez és alaphelyzetbe állításához földrajzilag különböző személyeket bérelt fel. Ahelyett, hogy egy kiemelt szerepkörű rendszergazdának vagy globális rendszergazdának kellene kiosztania az ügyfélszolgálati rendszergazda szerepkört mindegyik személy számára, létrehozhat egy Contoso_Helpdesk_Administrators csoportot, és hozzárendelheti azt a szerepkörhöz. Ha valaki csatlakozik a csoporthoz, a szerepkört közvetve rendeli hozzá. A meglévő irányítási munkafolyamat ezután gondoskodik a csoport tagságának jóváhagyási folyamatáról és ellenőrzéséről, hogy csak a megbízható felhasználók legyenek a csoport tagjai, és így az ügyfélszolgálati rendszergazdai szerepkörhöz legyenek rendelve.
+Tekintsük ezt a példát: A Contoso különböző földrajzi területekre alkalmazott személyeket az Azure AD-szervezet alkalmazottainak jelszavának kezeléséhez és visszaállításához. Ahelyett, hogy megkérne egy kiemelt szerepkörű rendszergazdát vagy globális rendszergazdát, hogy minden egyes személyhez külön rendelje hozzá a rendszergazdai szerepkört, létrehozhat egy Contoso_Helpdesk_Administrators-csoportot, és hozzárendelheti a szerepkörhöz. Amikor valaki csatlakozik a csoporthoz, közvetett módon lesz hozzárendelve a szerepkör. A meglévő cégirányítási munkafolyamat ezután gondoskodhat a csoporttagság jóváhagyási folyamatáról és naplózásáról annak érdekében, hogy csak a megbízható felhasználók tagjai a csoportnak, és így az adminisztrátori szerepkörhöz legyen rendelve.
 
-## <a name="how-this-feature-works"></a>A szolgáltatás működése
+## <a name="how-this-feature-works"></a>A funkció működése
 
-Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való** bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 250 szerepkör-hozzárendelhető csoport hozható létre.
+Hozzon létre egy Microsoft 365 vagy biztonsági csoportot, és állítsa az isAssignableToRole tulajdonságot "true" (igaz) értékre. Ezt a tulajdonságot akkor is engedélyezheti, amikor csoportot hoz létre a Azure Portal **az Azure AD-szerepkörök** bekapcsolásával hozzárendelhető a csoporthoz. A csoportot így is hozzárendelheti egy vagy több Azure AD-szerepkörhöz, ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egy Azure AD-szervezetben (bérlőben) legfeljebb 250 szerepkört hozzárendelhető csoport lehet létrehozni.
 
-Ha nem szeretné, hogy a csoport tagjai rendelkezzenek állandó hozzáféréssel a szerepkörhöz, használhatja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután jogosult a hozzárendelés aktiválására ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválják a szerepkör-hozzárendelést egy rögzített időtartamra.
+Ha nem szeretné, hogy a csoport tagjai állandó hozzáféréssel hozzáférjenek a szerepkörhöz, használja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután aktiválhatja a hozzárendelését ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválni tudják a szerepkör-hozzárendelésüket egy meghatározott időtartamra.
 
 > [!Note]
-> A Privileged Identity Management frissített verziójának kell lennie ahhoz, hogy a PIM használatával hozzá lehessen rendelni egy csoportot az Azure AD-szerepkörhöz. Előfordulhat, hogy a PIM régebbi verziójával rendelkezik, mert az Azure AD-szervezet kihasználja a Privileged Identity Management API-t. Lépjen kapcsolatba az aliassal a pim_preview@microsoft.com szervezet áthelyezéséhez és az API frissítéséhez. További információ: [Az Azure ad szerepkörei és funkciói a PIM-ben](../privileged-identity-management/azure-ad-roles-features.md).
+> Az Azure AD-szerepkörhöz a Privileged Identity Management kell lennie, hogy a PIM-en keresztül hozzárendelni tudja a csoportokat az Azure AD-szerepkörhöz. Lehet, hogy a PIM régebbi verzióját használja, mert az Azure AD-szervezet a Privileged Identity Management API-t használja. A szervezet áthelyezéséhez és az API frissítéséhez forduljon pim_preview@microsoft.com az aliashoz. További információ: [Azure AD-szerepkörök és -funkciók a PIM-ban.](../privileged-identity-management/azure-ad-roles-features.md)
 
-## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Miért kell kikényszeríteni egy speciális csoport létrehozását a szerepkörhöz való hozzárendelésre.
+## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Miért kényszerítjük ki egy speciális csoport létrehozását a szerepkörhöz való hozzárendeléshez?
 
-Ha egy csoport hozzá van rendelve egy szerepkörhöz, akkor a csoporttagság kezelésére jogosult rendszergazdák is közvetve kezelhetik a szerepkör tagságát. Tegyük fel például, hogy egy csoport Contoso_User_Administrators a felhasználói fiók rendszergazdai szerepköréhez van rendelve. A csoporttagság módosítására jogosult Exchange-rendszergazdák hozzáadhatják magukat a Contoso_User_Administrators csoporthoz, így a felhasználói fiók rendszergazdája is lehetnek. Amint láthatja, a rendszergazda a jogosultságot a nem kívánt módon emelheti ki.
+Ha egy csoporthoz hozzá van rendelve egy szerepkör, akkor a csoporttagságot kezelni tudó rendszergazdák közvetve is kezelhetik a szerepkör tagságát. Tegyük fel például, hogy egy Contoso_User_Administrators felhasználói fiók rendszergazdai szerepkörhöz van rendelve. A csoporttagságot módosítani képes Exchange-rendszergazda hozzáadhatja magát a Contoso_User_Administrators csoporthoz, és így felhasználói fiókadminisztrátának válhat. Amint látható, egy rendszergazda olyan módon emelheti a jogosultságát, ahogyan Ön nem kívánta.
 
-Az Azure AD lehetővé teszi, hogy egy isAssignableToRole nevű új tulajdonság használatával megvédje a szerepkörökhöz rendelt csoportokat. Szerepkörhöz csak olyan felhőalapú csoportok rendelhetők hozzá, amelyek létrehozáskor a isAssignableToRole tulajdonság értéke "true" (igaz) értékre van állítva. Ez a tulajdonság nem változtatható; Ha egy csoport létrehozása ezzel a tulajdonsággal "true" értékre van állítva, akkor nem módosítható. Meglévő csoporton nem állítható be a tulajdonság.
-Megalakítottuk, hogy a csoportok hogyan vannak hozzárendelve a szerepkörökhöz, hogy meggátolja a lehetséges szabálysértések előfordulását:
+Az Azure AD lehetővé teszi egy szerepkörhöz rendelt csoport védelmét egy új, isAssignableToRole nevű tulajdonság használatával a csoportok számára. Csak azok a felhőbeli csoportok rendelhetők hozzá egy szerepkörhöz, amelyek az isAssignableToRole tulajdonság "true" (igaz) értékre voltak állítva. Ez a tulajdonság nem módosítható; Ha a tulajdonság "true" (igaz) értékre van állítva, a csoport létrehozása után az nem módosítható. Meglévő csoporton nem állíthatja be a tulajdonságot.
+Úgy alakítottuk ki, hogyan történjen a csoportok szerepkörökhöz való hozzárendelése, hogy megakadályozza az ilyen típusú biztonsági incidensek beesésének megelőzését:
 
-- Csak a globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák hozhatnak létre szerepkörhöz hozzárendelhető csoportot (az "isAssignableToRole" tulajdonsággal engedélyezve).
-- Nem lehet Azure AD dinamikus csoport; tehát a "hozzárendelt" tagsági típussal kell rendelkeznie. A dinamikus csoportok automatikus sokasága nem kívánt fiókot eredményezhet a csoporthoz, és így hozzá van rendelve a szerepkörhöz.
-- Alapértelmezés szerint csak a globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák kezelhetik a szerepkörhöz hozzárendelhető csoportok tagságát, de a szerepkörhöz hozzárendelhető csoportok felügyeletét a csoport tulajdonosainak hozzáadásával is delegálhatja.
-- A jogosultság megemelésének megakadályozása érdekében a szerepkörhöz hozzárendelhető csoport tagjainak és tulajdonosainak a hitelesítő adatait csak egy kiemelt hitelesítő rendszergazda vagy egy globális rendszergazda módosíthatja.
-- Nincs beágyazás. Egy csoport nem vehető fel szerepkörhöz rendelt csoport tagjaként.
+- Csak a globális rendszergazdák és a kiemelt szerepkörű rendszergazdák hozhatnak létre szerepkörhöz hozzárendelhető csoportot (engedélyezett "isAssignableToRole" tulajdonsággal).
+- Nem lehet Dinamikus Azure AD-csoport; ez azt jelenti, hogy a tagságának "Hozzárendelt" típusúnak kell lennie. A dinamikus csoportok automatizált populációja egy nemkívánatos fióknak a csoporthoz adódik, és így hozzá lesz rendelve a szerepkörhöz.
+- Alapértelmezés szerint csak a globális rendszergazdák és a kiemelt szerepkörű rendszergazdák kezelhetik egy szerepkörhöz hozzárendelhető csoport tagságát, csoporttulajdonosok hozzáadásával azonban delegálhatja a szerepkörhöz hozzárendelhető csoportok felügyeletét.
+- A jogosultsági szint emelésének megakadályozása érdekében a szerepkörhöz hozzárendelhető csoportok tagjainak és tulajdonosainak hitelesítő adatai csak emelt szintű jogosultságokkal rendelkező hitelesítési rendszergazda vagy globális rendszergazda.
+- Nincs beágyazás. Szerepkör által hozzárendelhető csoport tagjaként nem lehet csoportot hozzáadni.
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő forgatókönyvek jelenleg nem támogatottak:  
+Az alábbi forgatókönyvek jelenleg nem támogatottak:  
 
-- Helyszíni csoportok társítása Azure AD-szerepkörökhöz (beépített vagy egyéni)
+- Helyszíni csoportok hozzárendelése Azure AD-szerepkörökhöz (beépített vagy egyéni)
 
 ## <a name="known-issues"></a>Ismert problémák
 
-- *Azure ad P2 licenccel rendelkező ügyfelek* esetében: ne rendeljen aktívként egy csoportot az Azure ad és a PRIVILEGED Identity Management (PIM) szolgáltatáson keresztüli szerepkörhöz. Konkrétan ne rendeljen hozzá szerepkört a szerepkörhöz hozzárendelhető csoporthoz, amikor a létrehozása folyamatban van, *és* a PIM használatával később hozzárendel egy szerepkört a csoporthoz. Ez olyan problémákhoz vezet, amelyekben a felhasználók nem látják az aktív szerepkör-hozzárendeléseiket a PIM-ben, és nem tudják eltávolítani a PIM-hozzárendelést. Ez a forgatókönyv nem érinti a jogosult hozzárendeléseket. Ha ezt a hozzárendelést próbálja végrehajtani, előfordulhat, hogy a rendszer váratlan viselkedést lát, például:
-  - A szerepkör-hozzárendelés befejezési időpontja helytelenül jelenhet meg.
-  - A PIM-portálon a **saját szerepkörök** csak egy szerepkör-hozzárendelést tudnak megjeleníteni, függetlenül attól, hogy a hozzárendelés hány módszerből áll (egy vagy több csoporton és közvetlenül).
-- *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  
-- A szerepkör-hozzárendelésekhez használja az új [Exchange felügyeleti központot](https://admin.exchange.microsoft.com/) csoporttagság használatával. A régi Exchange felügyeleti központ még nem támogatja ezt a funkciót. Az Exchange PowerShell-parancsmagok a várt módon fognak működni.
-- Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.
-- Az [alkalmazások felügyeleti központja](https://config.office.com/) még nem támogatja ezt a funkciót. Rendeljen felhasználókat közvetlenül az Office-alkalmazások rendszergazdai szerepköréhez.
+- *Csak Az Azure AD P2* licenccel rendelkező ügyfelek esetében: Ne rendeljen aktív csoportokat egy szerepkörhöz az Azure AD-ben és a Privileged Identity Management (PIM-ben) keresztül. Pontosabban, ne rendeljen hozzá szerepkört szerepkör-hozzárendelhető csoporthoz  annak létrehozásakor, és később rendeljen hozzá egy szerepkört a csoporthoz a PIM használatával. Ez olyan problémákhoz vezet, amelyek miatt a felhasználók nem láthatják az aktív szerepkör-hozzárendeléseiket a PIM-ban, és nem lehet eltávolítani a PIM-hozzárendelést. Ebben a forgatókönyvben a jogosult hozzárendelések nem érintettek. Ha megkísérli ezt a hozzárendelést, váratlan viselkedést láthat, például:
+  - Előfordulhat, hogy a szerepkör-hozzárendelés záró ideje helytelenül jelenik meg.
+  - A PIM-portál saját szerepkörei csak egy szerepkör-hozzárendelést mutatnak, függetlenül **attól,** hogy hány módszerrel adható meg a hozzárendelés (egy vagy több csoporton keresztül és közvetlenül).
+- *Csak Azure AD P2 licenccel rendelkező ügyfelek* Még a csoport törlése után is a szerepkör jogosult tagja lesz a PIM felhasználói felületén. Funkcionálisan nincs probléma; ez csak egy gyorsítótárral van probléma a Azure Portal.  
+- [Csoporttagságon keresztüli](https://admin.exchange.microsoft.com/) szerepkör-hozzárendeléshez használja az új Exchange felügyeleti központot. A régi Exchange felügyeleti központ még nem támogatja ezt a funkciót. Az Exchange PowerShell-parancsmagok a várt módon fognak működni.
+- Azure Information Protection portál (a klasszikus portál) még nem ismeri fel a csoporton keresztüli szerepkörtagságot. Az egységes [bizalmasság címkézési](/azure/information-protection/configure-policy-migrate-labels) platformra való áttelepítés után az Office 365 Biztonsági & megfelelőségi központ segítségével csoport-hozzárendeléseket használhat a szerepkörök kezeléséhez.
+- [Az Alkalmazások felügyeleti központ](https://config.office.com/) még nem támogatja ezt a funkciót. Felhasználók hozzárendelése közvetlenül az Office-alkalmazások rendszergazdai szerepköréhez.
+- [Az M365 Megfelelőségi központ](https://compliance.microsoft.com/) még nem támogatja ezt a funkciót. Felhasználók közvetlen hozzárendelése a megfelelő Azure AD-szerepkörökhöz a portál használatára.
 
-Ezeket a problémákat kijavítja.
+Megoldjuk ezeket a problémákat.
 
-## <a name="required-license-plan"></a>Szükséges licencelési csomag
+## <a name="required-license-plan"></a>Szükséges licenc csomag
 
-A szolgáltatás használatához elérhető prémium szintű Azure AD P1-licenccel kell rendelkeznie az Azure AD-szervezetben. Ahhoz, hogy az igény szerinti szerepkör-aktiváláshoz Privileged Identity Management is használhassa, elérhetőnek kell lennie prémium szintű Azure AD P2-licenccel. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és prémium csomagok általánosan elérhető funkcióinak összehasonlítását](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)ismertető témakört.
+A funkció használatához rendelkezésre álló P1 prémium szintű Azure AD kell rendelkezésre álló Azure AD-szervezetben. A megfelelő Privileged Identity Management aktiválásához is szükség van egy P2 licenccel prémium szintű Azure AD használatára. A követelményeknek megfelelő licenc megkeresésért lásd: Az ingyenes és a prémium szintű csomagok általánosan elérhető [funkcióinak összehasonlítása.](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)
-- [Szerepkör társítása szerepkörhöz hozzárendelhető csoporthoz](groups-assign-role.md)
+- [Szerepkör hozzárendelése szerepkörhöz hozzárendelhető csoporthoz](groups-assign-role.md)

@@ -1,23 +1,26 @@
 ---
 title: 'Rövid útmutató: Automation-fiók létrehozása – Azure-sablon'
 titleSuffix: Azure Automation
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Automation-fiókot a Azure Resource Manager sablon használatával.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Automation-fiókot a Azure Resource Manager használatával.
 services: automation
+ms.author: magoedte
+ms.date: 01/07/2021
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 01/07/2021
-ms.author: magoedte
-ms.custom: mvc,subject-armqs
-ms.openlocfilehash: dda2e2e34ab1f0c8facafe62a4fc0b9c5116f9d9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom:
+- mvc
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 50a8c057a6fdf6350a18225cd2dc538942d6686d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063168"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538404"
 ---
-# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablon használatával
+# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablonnal
 
-A Azure Automation felhőalapú automatizálási és konfigurációs szolgáltatást biztosít, amely támogatja az Azure-beli és nem Azure-beli környezetek egységes felügyeletét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Automation-fiókot létrehozó Azure Resource Manager-sablont (ARM-sablont). Az ARM-sablonok használata kevesebb lépést vesz igénybe, mint a többi üzembe helyezési módszer.
+Azure Automation felhőalapú automatizálási és konfigurációs szolgáltatást nyújt, amely támogatja az Azure- és nem Azure-környezetek egységes felügyeletét. Ez a rövid útmutató bemutatja, hogyan helyezhet Azure Resource Manager Automation-fiókot létrehozó sablonsablont (ARM-sablont). Az ARM-sablon használata kevesebb lépést vesz igénybe, mint más üzembe helyezési módszerek.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,17 +34,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Ez a sablon a következőket hajtja végre:
+Ez a mintasablon a következőket végzi el:
 
-* Automatizálja Azure Monitor Log Analytics munkaterület létrehozását.
-* Automatizálja Azure Automation fiók létrehozását.
-* Az Automation-fiók csatolása a Log Analytics munkaterülethez.
-* A fiókhoz hozzáadja a minta Automation-runbookok.
+* Automatizálja egy Azure Monitor Log Analytics-munkaterületen.
+* Automatizálja a Azure Automation létrehozását.
+* Az Automation-fiókot a Log Analytics-munkaterülethez kapcsolódik.
+* Automation-minta runbookokat ad hozzá a fiókhoz.
 
 >[!NOTE]
->ARM-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiók létrehozása](create-run-as-account.md)című témakört.
+>ARM-sablon használata esetén az Automation-run As-fiók létrehozása nem támogatott. Ha manuálisan, a portálról vagy a PowerShell-héjból is létre kell hoznia egy futó fiókot, tekintse meg a következőt: Create Run As account (Futtatás [fiók létrehozása).](create-run-as-account.md)
 
-A lépések elvégzése után be kell állítania az Automation-fiókhoz tartozó [diagnosztikai beállításokat](automation-manage-send-joblogs-log-analytics.md) , hogy a runbook-feladatok állapotát és a feladatok adatfolyamait a csatolt log Analytics munkaterületre küldje.
+A lépések befejezése után konfigurálnia kell az Automation-fiók diagnosztikai beállításait, hogy runbook-feladat állapotát és feladatstreameit a csatolt Log Analytics-munkaterületre küldjék. [](automation-manage-send-joblogs-log-analytics.md)
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-automation/) közül származik.
 
@@ -49,77 +52,77 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 ### <a name="api-versions"></a>API-verziók
 
-A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
+Az alábbi táblázat a példában használt erőforrások API-verzióját sorolja fel.
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| [Munkaterület](/azure/templates/microsoft.operationalinsights/workspaces) | munkaterületek | 2020-03-01 – előzetes verzió |
-| [Automation-fiók](/azure/templates/microsoft.automation/automationaccounts) | automatizálás | 2020-01-13 – előzetes verzió |
-| [Munkaterület-társított szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | munkaterületek | 2020-03-01 – előzetes verzió |
+| [Munkaterület](/azure/templates/microsoft.operationalinsights/workspaces) | munkaterületek | 2020. 03. 01. előzetes verzió |
+| [Automation-fiók](/azure/templates/microsoft.automation/automationaccounts) | automatizálás | 2020. 01. 13. előzetes verzió |
+| [Munkaterülethez kapcsolódó szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | munkaterületek | 2020. 03. 01. előzetes verzió |
 
 ### <a name="before-you-use-the-template"></a>A sablon használata előtt
 
-A JSON-paraméterek sablonját a következő beállítással adhatja meg:
+A JSON-paramétersablon a következő beállítások megadására van konfigurálva:
 
 * A munkaterület neve.
-* Az a régió, amelyben létre kívánja hozni a munkaterületet.
+* A régió, ahol a munkaterületet létre kell hozni.
 * Az Automation-fiók neve.
-* Az a régió, amelybe az Automation-fiókot létre kell hozni.
+* Az a régió, ahol létre kell hoznia az Automation-fiókot.
 
-A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
+A sablonban a következő paraméterek vannak beállítva a Log Analytics-munkaterület alapértelmezett értékével:
 
-* az *SKU* alapértelmezett értéke az április 2018 díjszabási modellben megjelent GB-os díjszabási szinten.
-* a *dataRetention* alapértelmezett értéke 30 nap.
+* *A termékváltozat* alapértelmezés szerint a 2018. áprilisi díjszabási modellben kiadott, GB-bankénti tarifacsomagot használja.
+* *dataRetention (adatretention)* – alapértelmezés szerint 30 nap.
 
 >[!WARNING]
->Ha egy Log Analytics munkaterületet szeretne létrehozni vagy konfigurálni egy olyan előfizetésben, amely az áprilisi 2018 díjszabási modellre van kiválasztva, akkor az egyetlen érvényes Log Analytics díjszabási csomag *PerGB2018*.
+>Ha olyan előfizetésben szeretne Log Analytics-munkaterületet létrehozni vagy konfigurálni, amely a 2018. áprilisi díjszabási modellt választotta, az egyetlen érvényes Log Analytics-tarifacsomag a *PerGB2018.*
 >
 
-A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
+A JSON-sablon alapértelmezett értéket ad meg a többi paraméterhez, amelyek valószínűleg szabványos konfigurációként lesznek használva a környezetben. A sablont egy Azure-tárfiókban tárolhatja a szervezeten belül megosztott hozzáféréshez. A sablonok használatával kapcsolatos további információkért lásd: Erőforrások üzembe helyezése [ARM-sablonokkal és az Azure CLI-val.](../azure-resource-manager/templates/deploy-cli.md)
 
-Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását.
+Ha még csak most Azure Automation és Azure Monitor, fontos, hogy tisztában van az alábbi konfigurációs részletekkel. Segíthetnek elkerülni a hibákat, amikor az új Automation-fiókhoz kapcsolt Log Analytics-munkaterületet próbál létrehozni, konfigurálni és használni.
 
-* [További részletekért](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
+* További [részletek áttekintésével](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) teljes mértékben megértheti a munkaterület konfigurációs beállításait, például a hozzáférés-vezérlési módot, a tarifacsomagot, a megőrzést és a kapacitás foglalási szintjét.
 
-* Tekintse át a [munkaterület-leképezéseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy paraméterérték megadásához. Egy Log Analytics munkaterület és egy Automation-fiók összekapcsolása csak bizonyos régiókban támogatott az előfizetésben.
+* Tekintse [át a munkaterület-leképezéseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy paraméterfájlban való megadásához. Log Analytics-munkaterület és Automation-fiók előfizetésben való összekapcsolása csak bizonyos régiók esetében támogatott.
 
-* Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakítására vonatkozó útmutatást](../azure-monitor/logs/design-logs-deployment.md). Segít megismerni a hozzáférés-vezérlést, és megismerheti a szervezete számára ajánlott kialakítási stratégiákat.
+* Ha még nem Azure Monitor, és még nem helyezett üzembe munkaterületet, tekintse át a munkaterület tervezési [útmutatóját.](../azure-monitor/logs/design-logs-deployment.md) Segítségével megismerheti a hozzáférés-vezérlést, és megismerheti a szervezet számára ajánlott tervezési megvalósítási stratégiákat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Automation fiókot, egy Log Analytics munkaterületet, és összeköti az Automation-fiókot a munkaterülettel.
+1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Automation egy Log Analytics-munkaterületet, és a munkaterülethez összeköti az Automation-fiókot.
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
 
 2. Adja meg az értékeket.
 
-3. Az üzembe helyezés eltarthat néhány percig. Ha elkészült, a kimenet a következőhöz hasonló:
+3. Az üzembe helyezés eltarthat néhány percig. Ha elkészült, a kimenet az alábbihoz hasonló:
 
-    ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/quickstart-create-automation-account-template/template-output.png)
+    ![Példa eredmény az üzembe helyezés befejezésekor](media/quickstart-create-automation-account-template/template-output.png)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Azure Portal nyissa meg az imént létrehozott Automation-fiókot. 
+2. A Azure Portal nyissa meg az előbb létrehozott Automation-fiókot. 
 
-3. A bal oldali panelen válassza a **runbookok** lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
+3. A bal oldali panelen válassza a **Runbooks (Runbookok) lehetőséget.** A **Runbookok lapon három,** az Automation-fiókkal létrehozott oktatóanyag-runbook látható.
 
-    ![Az Automation-fiókkal létrehozott runbookok oktatóanyag](./media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
+    ![Automation-fiókkal létrehozott oktatóanyag-runbookok](./media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. A bal oldali panelen válassza a **csatolt munkaterület** lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
+4. A bal oldali panelen válassza a Csatolt **munkaterület lehetőséget.** A Csatolt **munkaterület oldalon** a korábban megadott Log Analytics-munkaterület jelenik meg, az Automation-fiókhoz csatolva.
 
-    ![Az Log Analytics munkaterülethez csatolt Automation-fiók](./media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
+    ![A Log Analytics-munkaterülethez kapcsolt Automation-fiók](./media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, válassza le az Automation-fiókot a Log Analytics munkaterületről, majd törölje az Automation-fiókot és-munkaterületet.
+Ha már nincs rájuk szüksége, válassza le az Automation-fiókot a Log Analytics-munkaterületről, majd törölje az Automation-fiókot és -munkaterületet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Automation-fiókot, egy Log Analytics munkaterületet, és összekapcsolta őket egymással.
+Ebben a rövid útmutatóban létrehozott egy Automation-fiókot és egy Log Analytics-munkaterületet, és összekapcsolta őket.
 
-További információért folytassa a Azure Automation oktatóanyagokkal.
+További tudnivalókért folytassa az oktatóanyagokkal és Azure Automation.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyagok Azure Automation](learn/automation-tutorial-runbook-graphical.md)
+> [Azure Automation oktatóanyagok](learn/automation-tutorial-runbook-graphical.md)

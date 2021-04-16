@@ -486,6 +486,16 @@
               displayName: 'monitor, server logs'
             - name: Naplók
               href: flexible-server/concepts-audit.md
+            - name: Intelligens teljesítmény
+              items:
+                - name: A lekérdezéstár áttekintése
+                  href: flexible-server/concepts-query-store.md
+                  displayName: 'performance, optimize, query store'
+                - name: Lekérdezéstár – használati forgatókönyvek
+                  href: flexible-server/concepts-query-store-scenarios.md
+                  displayName: 'query store, performance, optimize'
+                - name: Ajánlott eljárások a lekérdezéstár használatához
+                  href: flexible-server/concepts-query-store-best-practices.md
         - name: Replikáció
           href: flexible-server/concepts-logical.md
           displayName: logical decoding

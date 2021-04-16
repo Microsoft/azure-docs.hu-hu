@@ -1,48 +1,50 @@
 ---
-title: Rövid útmutató – Azure Private DNS-zóna létrehozása a Azure Portal használatával
-description: Ebben a rövid útmutatóban egy privát DNS-zónát és-rekordot hoz létre és tesztel a Azure DNSban. Ez egy lépésenkénti útmutató, amellyel létrehozhatja és kezelheti az első saját DNS-zónáját és-rekordját a Azure Portal használatával.
+title: Rövid útmutató – Azure privát DNS-zóna létrehozása a Azure Portal
+description: Ebben a rövid útmutatóban létrehoz és tesztel egy privát DNS-zónát és -rekordot a Azure DNS. Ez egy részletes útmutató az első saját DNS-zóna és -rekord létrehozásához és kezeléséhez a Azure Portal.
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 2115062db8615ca782cb987903e5ebfc83400cd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310053"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535451"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása a Azure Portal használatával
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rövid útmutató: Azure privát DNS-zóna létrehozása a Azure Portal
 
-Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord létrehozásának lépésein a Azure Portal használatával.
+Ez a rövid útmutató végigvezeti az első saját DNS-zóna és -rekord létrehozásához szükséges lépéseken a Azure Portal.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Ha privát DNS-zónát szeretne közzétenni a virtuális hálózaton, meg kell adnia azon virtuális hálózatok listáját, amelyek feloldhatnak rekordokat a zónában.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Ha privát DNS-zónát szeretne közzétenni a virtuális hálózaton, meg kell adnia azon virtuális hálózatok listáját, amelyek feloldhatnak rekordokat a zónában.  Ezeket összekapcsolt *virtuális hálózatoknak* nevezzük. Ha az automatikus regisztráció engedélyezve van, a Azure DNS frissíti a zónarekordokat is, amikor egy virtuális gép létrejön, módosítja annak IP-címét vagy törlődik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) fiókot.
 
-Ha szeretné, a rövid útmutató [Azure PowerShell](private-dns-getstarted-powershell.md) vagy az [Azure CLI](private-dns-getstarted-cli.md)használatával is elvégezhető.
+Ha szeretné, ezt a rövid [](private-dns-getstarted-powershell.md) útmutatót a Azure PowerShell vagy az Azure CLI használatával [is befejezheti.](private-dns-getstarted-cli.md)
 
 ## <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-A következő példa egy **Private.contoso.com** nevű DNS-zónát hoz létre egy **MyAzureResourceGroup** nevű erőforráscsoport-csoportban.
+A következő példában létrehozunk egy private.contoso.com nevű DNS-zónát  egy **MyAzureResourceGroup nevű erőforráscsoportban.**
 
-Egy DNS-zóna tartalmazza a tartomány DNS-bejegyzéseit. A tartomány Azure DNSban való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez.
+A DNS-zóna egy tartomány DNS-bejegyzését tartalmazza. Ahhoz, hogy a tartományt a Azure DNS, hozzon létre egy DNS-zónát a tartománynévhez.
 
 ![saját DNS zónák keresése](media/private-dns-portal/search-private-dns.png)
 
-1. A portálon a keresés szövegmezőbe írja be a **saját DNS-zónák** kifejezést, majd nyomja le az **ENTER** billentyűt.
-1. Válassza ki **saját DNS zónát**.
-2. Válassza a **saját DNS-zóna létrehozása** lehetőséget.
+1. A portál keresősávjában írja be a **privát DNS-zónák** szöveget a keresőmezőbe, majd nyomja le az **Enter billentyűt.**
+1. Válassza **saját DNS zónát.**
+2. Válassza **a Privát DNS-zóna létrehozása lehetőséget.**
 
-1. A **saját DNS zóna létrehozása** lapon írja be vagy válassza ki a következő értékeket:
+1. A **Create saját DNS zone** (Új zóna létrehozása) lapon írja be vagy válassza ki a következő értékeket:
 
-   - **Erőforráscsoport**: válassza az **új létrehozása** elemet, írja be a *MyAzureResourceGroup*, majd kattintson **az OK gombra**. Az erőforráscsoport nevének egyedinek kell lennie az Azure-előfizetésen belül.
-   -  **Név**: írja be a *Private.contoso.com* a példához.
-1. Az **erőforráscsoport helye** területen válassza az **USA nyugati középső** régiója lehetőséget.
+   - **Erőforráscsoport:** Válassza az **Új létrehozása** lehetőséget, írja be a *MyAzureResourceGroup* gombra, majd kattintson az **OK gombra.** Az erőforráscsoport nevének egyedinek kell lennie az Azure-előfizetésen belül.
+   -  **Név:** *Private.contoso.com* a következőt: .
+1. Az **Erőforráscsoport helye mezőben** válassza az **USA nyugati középső régiója lehetőséget.**
 
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
@@ -52,16 +54,16 @@ A zóna létrehozása eltarthat néhány percig.
 
 ## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
 
-Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
+Ebben a szakaszban le kell cserélnie az alábbi paramétereket a lépésekben az alábbi információkra:
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | MyAzureResourceGroup (meglévő erőforráscsoport kiválasztása) |
+| **\<resource-group-name>**  | MyAzureResourceGroup (Meglévő erőforráscsoport kiválasztása) |
 | **\<virtual-network-name>** | MyAzureVNet          |
 | **\<region-name>**          | USA nyugati középső régiója      |
-| **\<IPv4-address-space>**   | 10.2.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 10.2.0.0\16          |
 | **\<subnet-name>**          | MyAzureSubnet        |
-| **\<subnet-address-range>** | 10.2.0.0 \ 24          |
+| **\<subnet-address-range>** | 10.2.0.0\24          |
 
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -72,49 +74,49 @@ Ha a privát DNS-zónát egy virtuális hálózathoz szeretné kapcsolni, hozzon
 
 ![Virtuális hálózati kapcsolat hozzáadása](media/private-dns-portal/dns-add-virtual-network-link.png)
 
-1. Nyissa meg a **MyAzureResourceGroup** erőforráscsoportot, és válassza ki a **Private.contoso.com** saját zónáját.
-2. A bal oldali ablaktáblán válassza a **virtuális hálózati kapcsolatok** elemet.
+1. Nyissa meg **a MyAzureResourceGroup** erőforráscsoportot, és válassza ki **private.contoso.com** saját zónát.
+2. A bal oldali panelen válassza a **Virtuális hálózati kapcsolatok lehetőséget.**
 3. Válassza a **Hozzáadás** lehetőséget.
-4. Írja  be a myLink **nevet a hivatkozás neveként**.
-5. A **Virtual Network** esetében válassza a **myAzureVNet** lehetőséget.
-6. Jelölje be az **automatikus regisztráció engedélyezése** jelölőnégyzetet.
+4. A Hivatkozás neve mezőbe írja be a **myLink** **nevet.**
+5. A **Virtuális hálózat mezőben** válassza a **myAzureVNet lehetőséget.**
+6. Jelölje be **az Automatikus regisztráció engedélyezése** jelölőnégyzetet.
 7. Válassza az **OK** lehetőséget.
 
 ## <a name="create-the-test-virtual-machines"></a>A tesztelési célú virtuális gépek létrehozása
 
 Most hozzon létre két virtuális gépet, amelyekkel tesztelheti saját DNS-zónáját:
 
-1. A portálon kattintson a bal felső sarokban található **erőforrás létrehozása** elemre, majd válassza a **Windows Server 2016 Datacenter** lehetőséget.
-1. Válassza ki az erőforráscsoport **MyAzureResourceGroup** .
-1. Írja be a **myVM01** -nevet a virtuális gép nevére.
-1. Válassza ki az **USA nyugati középső** **régióját**.
-1. Adja meg a rendszergazda Felhasználónév nevét.
-2. Adja meg a jelszót, és erősítse meg a jelszót.
-5. A **nyilvános bejövő portok** esetében válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** lehetőséget a **bejövő portok kiválasztásához**.
-10. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson a **Tovább gombra: lemezek >**.
-11. Fogadja el az alapértelmezett értékeket a **lemezek** lapon, majd kattintson a **Tovább gombra: hálózatkezelés >**.
-1. Győződjön meg arról, hogy a virtuális hálózat **myAzureVNet** van kiválasztva.
-1. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson a **Tovább gombra: felügyeleti >**.
-2. A **rendszerindítási diagnosztika** esetében válassza a **ki** lehetőséget, fogadja el a többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás** elemet.
-1. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
+1. A portál bal felső részén válassza az Erőforrás létrehozása, majd **a** **Windows Server 2016 Datacenter lehetőséget.**
+1. Válassza **a MyAzureResourceGroup** erőforráscsoportot.
+1. A virtuális gép neveként írja be a **myVM01** – nevet.
+1. A **Régió mezőben válassza** az USA nyugati középső **régióját.**
+1. Adja meg a rendszergazda felhasználónevét.
+2. Adjon meg egy jelszót, és erősítse meg a jelszót.
+5. A **Nyilvános bejövő portok beállításhoz** válassza a **Kijelölt** portok engedélyezése lehetőséget, majd a Bejövő portok kiválasztása beállításhoz válassza az **RDP (3389)** **lehetőséget.**
+10. Fogadja el a lap többi alapértelmezett beállítását, majd kattintson a **Tovább: Lemezek**>.
+11. Fogadja el az alapértelmezett értékeket a **Lemezek lapon,** majd kattintson a **Tovább: Hálózatkezelés >.**
+1. Győződjön meg arról, hogy a **myAzureVNet van** kiválasztva a virtuális hálózathoz.
+1. Fogadja el a lap többi alapértelmezett beállítását, majd kattintson a **Tovább: Felügyelet >.**
+2. **Rendszerindítási diagnosztika esetén** válassza a **Ki** lehetőséget, fogadja el a többi alapértelmezett beállítást, majd válassza a Felülvizsgálat + **létrehozás lehetőséget.**
+1. Tekintse át a beállításokat, majd kattintson a **Létrehozás gombra.**
 
-Ismételje meg ezeket a lépéseket, és hozzon létre egy **myVM02** nevű virtuális gépet.
+Ismételje meg ezeket a lépéseket, és hozzon létre egy másik virtuális gépet **myVM02 névvel.**
 
-A virtuális gépek betöltéséhez néhány percet is igénybe vehet.
+A két virtuális gép befejezése eltarthat néhány percig.
 
 ## <a name="create-an-additional-dns-record"></a>További DNS-rekord létrehozása
 
- A következő példa létrehoz egy rekordot a relatív name **db** -vel a DNS-zóna **Private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A **db.Private.contoso.com** teljesen minősített neve. A rekord típusa "A", a **myVM01** IP-címével.
+ Az alábbi példa egy adatbázis  relatív nevű rekordot hoz létre a(z) DNS private.contoso.com zónában a **MyAzureResourceGroup erőforráscsoportban.**  A rekordhalmaz teljes neve **db.private.contoso.com.** A rekord típusa "A", és a **myVM01 IP-címe .**
 
-1. Nyissa meg a **MyAzureResourceGroup** erőforráscsoportot, és válassza ki a **Private.contoso.com** saját zónáját.
+1. Nyissa meg **a MyAzureResourceGroup** erőforráscsoportot, és válassza ki **a private.contoso.com** zónát.
 2. Válassza a **+ Rekordhalmaz** lehetőséget.
-3. A **név** mezőbe írja be a következőt: **adatbázis**.
-4. Az **IP-cím** mezőbe írja be a **myVM01** megjelenő IP-címet. Ezt automatikusan regisztrálni kell a virtuális gép indításakor.
+3. A **Név mezőbe írja** be a következőt: **db.**
+4. Az **IP-cím mezőbe** írja be a **myVM01 géphez látható IP-címet.** Ezt automatikusan regisztrálni kell a virtuális gép miközben elindult.
 5. Válassza az **OK** lehetőséget.
 
 ## <a name="test-the-private-zone"></a>A saját zóna tesztelése
 
-Most tesztelheti a **Private.contoso.com** saját zónájának névfeloldását.
+Most már tesztelheti a saját zónája **névfeloldási private.contoso.com** számára.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Virtuális gépek konfigurálása a befelé irányuló ICMP-forgalom engedélyezésére
 
@@ -181,4 +183,3 @@ Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscso
 
 > [!div class="nextstepaction"]
 > [Az Azure DNS privát zónák forgatókönyvei](private-dns-scenarios.md)
-

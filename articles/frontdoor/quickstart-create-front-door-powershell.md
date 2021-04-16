@@ -1,35 +1,36 @@
 ---
-title: 'Gyors útmutató: magas rendelkezésre állás beállítása az Azure bejárati ajtóval – Azure PowerShell'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre magas rendelkezésre állású és nagy teljesítményű globális webalkalmazást a Azure PowerShell használatával az Azure bejárati ajtó használatával.
+title: 'Rövid útmutató: Magas rendelkezésre állás beállítása Azure Front Door – Azure PowerShell'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Front Door magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokat a Azure PowerShell.
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.assetid: ''
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a3ecb8cacd8fa47709432e26243bd754511658d2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 09/21/2020
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: cd439a5931340f56401e5f6ba7a4e09f35ab7c7d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057915"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107539050"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Gyors útmutató: bevezető ajtó létrehozása egy nagyszámú globális webes alkalmazáshoz Azure PowerShell használatával
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre álló globális webalkalmazáshoz a Azure PowerShell
 
-Az Azure bejáratának első lépései a Azure PowerShell használatával magas rendelkezésre állású és nagy teljesítményű globális webalkalmazások létrehozására használhatók.
+A Azure Front Door használatának első Azure PowerShell egy magas rendelkezésre álló és nagy teljesítményű globális webalkalmazás létrehozásához.
 
-A bejárati ajtó a webes forgalmat egy háttér-készlet adott erőforrásaira irányítja. Meghatározta a felületi tartományt, erőforrásokat adhat hozzá egy háttér-készlethez, és létrehozhat egy útválasztási szabályt. Ez a cikk egy háttér-készlet egyszerű konfigurációját használja két webalkalmazás-erőforrással és egyetlen útválasztási szabállyal, amely az alapértelmezett elérési utat használja a "/*" értékkel.
+A Front Door a webes forgalmat egy háttérkészlet adott erőforrásaihoz irányítja. Meghatározta az előteretartományt, erőforrásokat adott hozzá egy háttérkészlethez, és létrehozott egy útválasztási szabályt. Ez a cikk az egyik háttérkészlet egyszerű konfigurációját használja két webalkalmazás-erőforrással és egyetlen útválasztási s szabálysal, amely az alapértelmezett elérésiút-egyeztetést (/*) használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Helyileg telepített Azure PowerShell vagy Azure Cloud Shell
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell helyileg vagy helyileg telepített Azure Cloud Shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ A bejárati ajtó a webes forgalmat egy háttér-készlet adott erőforrásaira 
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup segítségével:](/powershell/module/az.resources/new-azresourcegroup)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupFD -Location centralus
@@ -47,9 +48,9 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 
 ## <a name="create-two-instances-of-a-web-app"></a>Webalkalmazás két példányának létrehozása
 
-Ez a rövid útmutató egy olyan webalkalmazás két példányát igényli, amely különböző Azure-régiókban fut. Mind a webalkalmazás-példányok aktív/aktív módban futnak, így akár egy forgalom is elvégezhető. Ez a konfiguráció különbözik az aktív/készenléti konfigurációtól, ahol az egyik feladatátvételként működik.
+Ehhez a rövid útmutatóhoz két példányra van szükség egy webalkalmazásból, amelyek különböző Azure-régiókban futnak. Mindkét webalkalmazáspéldány Aktív/Aktív módban fut, így bármelyik képes forgalmat venni. Ez a konfiguráció eltér az aktív/készenléti konfigurációtól, ahol az egyik feladatátvételként működik.
 
-Ha még nem rendelkezik webalkalmazással, a következő parancsfájl használatával állítson be két példa webalkalmazást.
+Ha még nem rendelkezik webalkalmazással, a következő szkript használatával állítson be két példa-webalkalmazást.
 
 ```azurepowershell-interactive
 # Create first web app in Central US region.
@@ -69,15 +70,15 @@ $webapp2 = New-AzWebApp `
 
 ## <a name="create-a-front-door"></a>Bejárati ajtó létrehozása
 
-Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja a bejárati ajtó következő összetevőit:
+Ez a szakasz részletesen bemutatja, hogyan hozhatja létre és konfigurálhatja a Front Door:
     
-* Az előtér-objektum az alapértelmezett tartományt tartalmazza.
-* A háttérbeli készlet egyenértékű háttérrendszer, amelybe a betöltési ajtó terhelése kiegyenlíti az ügyfél kérelmét.
-* Egy útválasztási szabály leképezi az előtér-gazdagépet és a hozzá tartozó URL-elérésiút-mintát egy adott háttér-készletre.
+* Az előtereobjektum tartalmazza a Front Door alapértelmezett tartományt.
+* A háttérkészlet egyenértékű háttérkészletek halmaza, amelyekhez Front Door terheléselosztást az ügyfélkéréshez.
+* Az útválasztási szabályok leképezik az előtere gazdagépet és az egyező URL-elérésiút-mintát egy adott háttérkészletre.
 
-### <a name="create-a-frontend-object"></a>Előtér-objektum létrehozása
+### <a name="create-a-frontend-object"></a>Előtereobjektum létrehozása
 
-Az előtér-objektum konfigurálja az állomásnevet a bejárati ajtóhoz. Alapértelmezés szerint a hostname a **. azurefd.net* utótagot fogja tartalmazni.
+Az előtereobjektum konfigurálja a gazdagépnevet a Front Door. Alapértelmezés szerint az állomásnév utótagja **.azurefd.net.*
 
 ```azurepowershell-interactive
 # Create a unique name
@@ -91,7 +92,7 @@ $FrontendEndObject = New-AzFrontDoorFrontendEndpointObject `
 
 ### <a name="create-the-backend-pool"></a>A háttérkészlet létrehozása
 
-A háttér-készlet a rövid útmutató elején létrehozott két webalkalmazásból áll. Az ebben a lépésben meghatározott állapot-mintavételi és terheléselosztási beállítások az alapértelmezett értékeket használják.
+A háttérkészlet a rövid útmutató elején létrehozott két webalkalmazásból áll. Az ebben a lépésben meghatározott állapot-mintavételi és terheléselosztási beállítások alapértelmezett értékeket használnak.
 
 ```azurepowershell-interactive
 # Create backend objects that points to the hostname of the web apps
@@ -123,7 +124,7 @@ $BackendPoolObject = New-AzFrontDoorBackendPoolObject `
 
 ### <a name="create-a-routing-rule"></a>Útválasztási szabály létrehozása
 
-Az útválasztási szabály leképezi a háttér-készletet a előtér-tartományba, és az alapértelmezett elérési utat állítja be "/*" értékre.
+Az útválasztási szabály leképezi a háttérkészletet az előteretartományra, és az alapértelmezett elérésiút-egyeztetési értéket a "/*" értékre állítja.
 
 ```azurepowershell-interactive
 # Create a routing rule mapping the frontend host to the backend pool
@@ -135,9 +136,9 @@ $RoutingRuleObject = New-AzFrontDoorRoutingRuleObject `
 -BackendPoolName "myBackendPool" `
 -PatternToMatch "/*"
 ```
-### <a name="create-the-front-door"></a>A bejárati ajtó létrehozása
+### <a name="create-the-front-door"></a>A Front Door
 
-Most, hogy létrehozta a szükséges objektumokat, hozza létre a bejárati ajtót:
+Most, hogy létrehozta a szükséges objektumokat, hozza létre a Front Door:
 
 ```azurepowershell-interactive
 # Creates the Front Door
@@ -151,11 +152,11 @@ New-AzFrontDoor `
 -HealthProbeSetting $HealthProbeObject
 ```
 
-Ha az üzembe helyezés sikeres volt, a következő szakaszban ismertetett lépéseket követve tesztelheti azt.
+Ha az üzembe helyezés sikeres volt, a következő szakaszban található lépéseket követve tesztelheti.
 
-## <a name="test-the-front-door"></a>A bejárati ajtó tesztelése
+## <a name="test-the-front-door"></a>A Front Door
 
-Futtassa az alábbi parancsokat az állomásnév beszerzéséhez a bejárati ajtóhoz.
+Futtassa a következő parancsokat a gazdagépnév le Front Door.
 
 ```azurepowershell-interactive
 # Gets Front Door in resource group and output the hostname of the frontend domain.
@@ -163,15 +164,15 @@ $fd = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD
 $fd.FrontendEndpoints[0].Hostname
 ```
 
-Nyisson meg egy webböngészőt, és adja meg az állomásnév beszerzését a parancsokból. A bejárati ajtó irányítja a kérést az egyik háttérbeli erőforráshoz. 
+Nyisson meg egy webböngészőt, és írja be a parancsokból lekért gazdanevet. A Front Door a kérést az egyik háttérerőforráshoz irányítja. 
 
-:::image type="content" source="./media/quickstart-create-front-door-powershell/front-door-test-page.png" alt-text="Elülső ajtó teszt lapja":::
+:::image type="content" source="./media/quickstart-create-front-door-powershell/front-door-test-page.png" alt-text="Front Door tesztoldal":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a bejárati ajtóval létrehozott erőforrásokra, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a bejárati ajtót és az ahhoz kapcsolódó összes erőforrást is törli. 
+Ha már nincs szüksége az erőforráscsoporttal létrehozott Front Door, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor törli az erőforráscsoportot Front Door az összes kapcsolódó erőforrást is. 
 
-Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupFD
@@ -179,11 +180,11 @@ Remove-AzResourceGroup -Name myResourceGroupFD
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a következőket:
+Ebben a rövid útmutatóban a következőt hozta létre:
 * Front Door
 * Két webalkalmazás
 
-Ha szeretné megtudni, hogyan adhat hozzá egyéni tartományt a bejárati ajtóhoz, folytassa az előtérben lévő oktatóanyagokkal.
+Ha meg szeretne ismerkedni az egyéni tartomány hozzáadásának Front Door, folytassa a Front Door oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](front-door-custom-domain.md)

@@ -1,42 +1,47 @@
 ---
-title: Cognitive Services Customer-Managed kulcsai
+title: Customer-Managed kulcsok a Cognitive Services
 titleSuffix: Cognitive Services
-description: Megtudhatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat a Azure Key Vault segítségével a Azure Portal használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
+description: Ismerje meg, hogyan konfigurálhatja az ügyfelek által Azure Portal kulcsokat a Azure Key Vault. Az ügyfél által kezelt kulcsokkal hozzáférés-vezérlést hozhat létre, forgathat, tilthat le és vonhat vissza.
 services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/28/2020
+ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c7476a3ab885e9c127cbd571ad723864bf0d898
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706843"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534567"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault Cognitive Services
+# <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Felhasználó által kezelt kulcsok konfigurálása Azure Key Vault Cognitive Services
 
-A Customer-Managed kulcsoknak a Cognitive Services Azure Key Vault használatával történő engedélyezésének folyamata termékenként változó. A következő hivatkozásokat használhatja a szolgáltatásra vonatkozó utasításokhoz:
+A kulcskulcsok Customer-Managed folyamat termékenként Azure Key Vault Cognitive Services függ. A szolgáltatásspecifikus utasításokhoz használja az alábbi hivatkozásokat:
 
 ## <a name="vision"></a>Látás
 
-* [Custom Vision inaktív adatok titkosítása](../custom-vision-service/encrypt-data-at-rest.md)
-* [Szembenéző szolgáltatások titkosítása inaktív adatok esetén](../face/encrypt-data-at-rest.md)
-* [Űrlap-felismerő titkosítása inaktív adatok esetén](../form-recognizer/encrypt-data-at-rest.md)
+* [Custom Vision adatok titkosítása](../custom-vision-service/encrypt-data-at-rest.md)
+* [Face Services – Az adatok titkosítása az adatáttitkosítás során](../face/encrypt-data-at-rest.md)
+* [Form Recognizer adatok titkosítása](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Nyelv
 
-* [Inaktív adatok Language Understanding szolgáltatás titkosítása](../LUIS/encrypt-data-at-rest.md)
-* [QnA Maker inaktív adatok titkosítása](../QnAMaker/encrypt-data-at-rest.md)
-* [Inaktív adatok Translator-titkosítása](../translator/encrypt-data-at-rest.md)
+* [Language Understanding adatok szolgáltatástitkosításának használata](../LUIS/encrypt-data-at-rest.md)
+* [QnA Maker adatok titkosítása](../QnAMaker/encrypt-data-at-rest.md)
+* [Az adattitkosítás fordítója](../translator/encrypt-data-at-rest.md)
+
+## <a name="speech"></a>Speech
+
+* [Az adatok beszédtitkosítása az adatáttitkosítás során](../speech-service/speech-encryption-of-data-at-rest.md)
 
 ## <a name="decision"></a>Döntés
 
-* [Content Moderator inaktív adatok titkosítása](../Content-Moderator/encrypt-data-at-rest.md)
-* [A REST-adatok személyre szabása](../personalizer/encrypt-data-at-rest.md)
+* [Content Moderator adatok titkosítása](../Content-Moderator/encrypt-data-at-rest.md)
+* [Az adattitkosítás személyre szabása az adatokon](../personalizer/encrypt-data-at-rest.md)
+* [Metrics Advisor adatok titkosítása](../metrics-advisor/encryption.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Mi az Azure Key Vault](../../key-vault/general/overview.md)?
-* [Cognitive Services Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [Mi az a Azure Key Vault?](../../key-vault/general/overview.md)
+* [Cognitive Services Customer-Managed kérelem űrlapja](https://aka.ms/cogsvc-cmk)

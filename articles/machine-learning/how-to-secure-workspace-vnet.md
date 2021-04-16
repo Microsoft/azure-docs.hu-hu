@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
+title: Biztonságossá Azure Machine Learning munkaterület virtuális hálózatokkal
 titleSuffix: Azure Machine Learning
-description: A Azure Machine Learning munkaterület és a kapcsolódó erőforrások védelméhez használjon elkülönített Azure-Virtual Network.
+description: Használjon elkülönített Azure-Virtual Network, hogy biztonságossá Azure Machine Learning munkaterületét és a társított erőforrásokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,121 +11,121 @@ author: peterclu
 ms.date: 03/17/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: a923f65e5c6183d045f4b7455e0a01edda75d499
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 20f75580c425cee9128f9c94123dcf902642eac4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584337"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531023"
 ---
-# <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
+# <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Biztonságossá Azure Machine Learning munkaterület virtuális hálózatokkal
 
-Ebből a cikkből megtudhatja, hogyan védheti meg egy Azure Machine Learning munkaterületet és a hozzá tartozó erőforrásokat egy virtuális hálózatban.
+Ebből a cikkből megtudhatja, hogyan biztosíthatja egy virtuális Azure Machine Learning munkaterület és a társított erőforrások biztonságossá Azure Machine Learning egy virtuális hálózatban.
 
-Ez a cikk egy öt részes sorozat második része, amely végigvezeti egy Azure Machine Learning munkafolyamat biztonságossá tételének lépésein. Javasoljuk, hogy először olvassa el az első [részt: VNet – áttekintés](how-to-network-security-overview.md) az általános architektúra megismeréséhez. 
+Ez a cikk egy ötrészes sorozat második része, amely végigvezeti egy Azure Machine Learning biztosításán. Javasoljuk, hogy először olvassa el az [első rész: VNet](how-to-network-security-overview.md) áttekintése részt, hogy először a teljes architektúrát értse meg. 
 
-Tekintse meg a sorozat egyéb cikkeit:
+Tekintse meg a sorozat többi cikkét:
 
-[1. VNet – áttekintés](how-to-network-security-overview.md)  >  **2. A**  >  [3. munkaterület védelme Gondoskodjon a 4. képzési környezet védelméről](how-to-secure-training-vnet.md)  >  [. Gondoskodjon az 5. következtetési környezet védelméről](how-to-secure-inferencing-vnet.md)  >  [. A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+[1. A VNet áttekintése](how-to-network-security-overview.md)  >  **2. A munkaterület biztonságossáése**  >  [3. A betanító környezet védelme](how-to-secure-training-vnet.md)  >  [4. A következtetési környezet](how-to-secure-inferencing-vnet.md)  >  [5. védelme. Studio-funkciók engedélyezése](how-to-enable-studio-virtual-network.md)
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a következő munkaterület-erőforrásokat egy virtuális hálózaton:
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a következő munkaterület-erőforrásokat egy virtuális hálózatban:
 > [!div class="checklist"]
 > - Azure Machine Learning-munkaterület
 > - Azure Storage-fiókok
-> - Adattárolók és adatkészletek Azure Machine Learning
+> - Azure Machine Learning és adatkészletek
 > - Azure Key Vault
 > - Azure Container Registry
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Olvassa el a [hálózati biztonság áttekintése című](how-to-network-security-overview.md) cikket a gyakori virtuális hálózati forgatókönyvek és az általános virtuális hálózati architektúra megismeréséhez.
++ A gyakori [virtuális hálózati forgatókönyvekkel](how-to-network-security-overview.md) és a teljes virtuális hálózati architektúrával kapcsolatos további információért olvassa el a Hálózati biztonság áttekintése cikket.
 
-+ Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használatra.
++ Meglévő virtuális hálózat és alhálózat, amely a számítási erőforrásokkal használható.
 
-+ Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szolgáltatásban:
++ Az erőforrások virtuális hálózaton vagy alhálózaton való üzembe helyezéséhez a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlésében (Azure RBAC):
 
-    - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
-    - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
+    - "Microsoft.Network/virtualNetworks/join/action" a virtuális hálózati erőforráson.
+    - "Microsoft.Network/virtualNetworks/subnet/join/action" az alhálózati erőforráson.
 
-    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking) .
+    Az Azure RBAC hálózattal való használatával kapcsolatos további információkért lásd a hálózatba épített [szerepköröket.](../role-based-access-control/built-in-roles.md#networking)
 
 
-## <a name="secure-the-workspace-with-private-endpoint"></a>Munkaterület védelme privát végponttal
+## <a name="secure-the-workspace-with-private-endpoint"></a>A munkaterület biztonságossáése privát végponttal
 
-Az Azure Private link segítségével privát végponton keresztül csatlakozhat a munkaterülethez. A magánhálózati végpont a virtuális hálózaton belüli magánhálózati IP-címek készlete. Ezután korlátozhatja a hozzáférést a munkaterülethez, hogy csak a magánhálózati IP-címeken keresztül történjen. A privát hivatkozás segít csökkenteni az adatkiszűrése kockázatát.
+Azure Private Link lehetővé teszi, hogy privát végponttal csatlakozzon a munkaterülethez. A privát végpont magánhálózati IP-címek készlete a virtuális hálózaton belül. Ezután korlátozhatja a munkaterülethez való hozzáférést, hogy csak a magánhálózati IP-címeken keresztül következtetsen. Private Link csökkenti az adatok kiszivárgásának kockázatát.
 
-A privát kapcsolati munkaterület beállításával kapcsolatos további információkért lásd: [privát hivatkozás konfigurálása](how-to-configure-private-link.md).
+A munkaterületek beállításával kapcsolatos további Private Link lásd: A munkaterület [Private Link.](how-to-configure-private-link.md)
 
 > [!Warning]
-> Ha privát végpontokkal rendelkező munkaterületet biztosít, a saját maga nem biztosítja a végpontok közötti biztonságot. A megoldás egyes összetevőinek biztonságossá tételéhez a cikk további részében ismertetett lépéseket és a VNet sorozatot kell követnie.
+> A munkaterület privát végpontokkal való biztonságossá tétele önmagában nem biztosítja a végpontok teljes biztonságát. A megoldás egyes összetevőinek biztonságba helyezése érdekében a cikk további részében és a VNet-sorozatban található lépéseket kell követnie.
 
-## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure Storage-fiókok biztonságossá tétele szolgáltatási végpontokkal
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure-tárfiókok biztosítása szolgáltatásvégpontokkal
 
-Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ebből a szakaszból megtudhatja, hogyan védheti meg az Azure Storage-fiókot a szolgáltatási végpontok használatával. Privát végpontok esetén tekintse meg a következő szakaszt.
+Azure Machine Learning támogatja a szolgáltatásvégpont vagy privát végpontok használatára konfigurált tárfiókokat. Ebben a szakaszban megtudhatja, hogyan biztosíthatja az Azure Storage-fiók biztonságát szolgáltatásvégpontokkal. Privát végpontok esetén lásd a következő szakaszt.
 
-Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot szeretne használni, kövesse az alábbi lépéseket:
+Ha Azure Storage-fiókot használ a munkaterülethez egy virtuális hálózatban, kövesse az alábbi lépéseket:
 
-1. A Azure Portal lépjen a munkaterületen használni kívánt tárolási szolgáltatáshoz.
+1. A Azure Portal a munkaterületen használni kívánt tárolási szolgáltatáshoz.
 
-   [![Az Azure Machine Learning munkaterülethez csatolt tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+   [![A munkaterülethez csatolt Azure Machine Learning tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. A Storage-szolgáltatásfiók lapon válassza a __hálózatkezelés__ lehetőséget.
+1. A társzolgáltatás-fiók oldalán válassza a __Hálózat lehetőséget.__
 
-   ![A Azure Portal Azure Storage lapján található hálózatkezelési felület](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+   ![Az Azure Storage oldalának hálózatterülete a Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. A __tűzfalak és virtuális hálózatok__ lapon végezze el a következő műveleteket:
+1. A __Tűzfalak és virtuális hálózatok lapon__ tegye a következőket:
     1. Válassza a __Kijelölt hálózatok__ lehetőséget.
-    1. A __virtuális hálózatok__ területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
+    1. A __Virtuális hálózatok alatt__ válassza a Meglévő virtuális hálózat hozzáadása __hivatkozást.__ Ez a művelet hozzáadja a virtuális hálózatot, ahol a számítás található (lásd az 1. lépést).
 
         > [!IMPORTANT]
-        > A Storage-fióknak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a képzéshez vagy következtetéshez használt számítási példányok vagy fürtök.
+        > A tárfióknak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a betanításra vagy következtetésre használt számítási példányok vagy fürtök.
 
-    1. Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet. Ez a változás nem biztosít hozzáférést az összes Azure-szolgáltatáshoz a Storage-fiókhoz.
+    1. Jelölje be az Allow trusted Microsoft-szolgáltatások to access this storage account (Megbízható felhasználók hozzáférhetnek ehhez a __tárfiókhoz)__ jelölőnégyzetet. Ez a módosítás nem biztosít hozzáférést minden Azure-szolgáltatás számára a tárfiókhoz.
     
-        * Az **előfizetésében regisztrált** egyes szolgáltatások erőforrásai hozzáférhetnek az **előfizetésben található Storage-** fiókhoz a Select műveletekhez. Például naplókat írhat vagy biztonsági másolatokat készíthet.
-        * Egyes szolgáltatások erőforrásai explicit módon férhetnek hozzá a Storage-fiókhoz, ha __egy Azure-szerepkört rendel__ hozzá a rendszerhez rendelt felügyelt identitáshoz.
+        * Egyes, az előfizetésében **regisztrált** szolgáltatások erőforrásai hozzáférhetnek az ugyanabban az előfizetésben regisztrált tárfiókhoz **bizonyos** műveletekhez. Például naplók írása vagy biztonsági másolatok létrehozása.
+        * Egyes szolgáltatások erőforrásai explicit hozzáférést kaphatnak a tárfiókhoz, ha hozzárendelnek egy Azure-szerepkört __a__ rendszer által hozzárendelt felügyelt identitáshoz.
 
         További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
     > [!IMPORTANT]
-    > Ha a Azure Machine Learning SDK-val dolgozik, a fejlesztési környezetnek képesnek kell lennie csatlakozni az Azure Storage-fiókhoz. Ha a Storage-fiók egy virtuális hálózaton belül van, a tűzfalnak engedélyeznie kell a hozzáférést a fejlesztői környezet IP-címéről.
+    > Az Azure Machine Learning SDK használatakor a fejlesztési környezetnek képesnek kell lennie csatlakozni az Azure Storage-fiókhoz. Ha a tárfiók egy virtuális hálózaton belül van, a tűzfalnak engedélyeznie kell a hozzáférést a fejlesztési környezet IP-címével.
     >
-    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél webböngészőjéből*. Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__ való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
+    > A tárfiókhoz való hozzáférés  engedélyezéséhez keresse fel a tárfiók tűzfalait és virtuális hálózatait a fejlesztői *ügyfél webböngészőjében.* Ezután az __Ügyfél IP-címének hozzáadása__ jelölőnégyzet használatával adja hozzá az ügyfél IP-címét a __CÍMTARTOMÁNYhoz.__ A CÍMTARTOMÁNY __mezőben__ manuálisan is megadhatja a fejlesztési környezet IP-címét. Az ügyfél IP-címének hozzáadása után hozzáférhet a tárfiókhoz az SDK használatával.
 
-   [![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+   [![A "Tűzfalak és virtuális hálózatok" panel a Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
-## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Privát végpontokkal rendelkező Azure Storage-fiókok biztonságossá tétele
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Azure-tárfiókok biztonságossá tevésének biztosítása privát végpontokkal
 
-Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ha a Storage-fiók privát végpontokat használ, két magánhálózati végpontot kell konfigurálnia az alapértelmezett Storage-fiókhoz:
-1. Egy **blob** Target alerőforrással rendelkező privát végpont.
-1. Egy privát végpont egy **fájlmegosztási** alerőforrással (fájlmegosztás).
+Azure Machine Learning támogatja a szolgáltatásvégpont vagy privát végpontok használatára konfigurált tárfiókokat. Ha a tárfiók privát végpontokat használ, két privát végpontot kell konfigurálnia az alapértelmezett tárfiókhoz:
+1. Egy privát végpont egy **blobcél** alforrásával.
+1. Egy privát végpont **egy** fájlcél alforrásával (fájlmegosztás).
 
-![A privát végpontok konfigurációs lapját bemutató képernyőfelvétel a blob és a fájl beállításaival](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+![Képernyőkép a privát végpont konfigurációs lapról blob- és fájlbeállításokkal](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
-Ha olyan Storage-fiókhoz szeretne magánhálózati végpontot beállítani, amely **nem** az alapértelmezett tároló, válassza ki a hozzáadni kívánt Storage-fióknak megfelelő **cél alerőforrás** -típust.
+Ha privát végpontot szeretne konfigurálni  egy olyan tárfiókhoz, amely nem az alapértelmezett tárterület, válassza a hozzáadni kívánt tárfióknak megfelelő Cél alforrástípust. 
 
-További információ: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md) -hoz
+További információ: [Privát végpontok használata az Azure Storage-hoz](../storage/common/storage-private-endpoints.md)
 
-## <a name="secure-datastores-and-datasets"></a>Biztonságos adattárolók és adatkészletek
+## <a name="secure-datastores-and-datasets"></a>Biztonságos adattárak és adatkészletek
 
-Ebből a szakaszból megtudhatja, hogyan használhatók az adattár és az adatkészletek az SDK-ban egy virtuális hálózattal. A Studio-felülettel kapcsolatos további információkért lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md).
+Ebben a szakaszban megtudhatja, hogyan használhatja az adattárat és az adatkészleteket az SDK felhasználói élményében egy virtuális hálózattal. A Studio felhasználói élményével kapcsolatos további információkért lásd a Azure Machine Learning stúdió [virtuális hálózatokban való használatát.](how-to-enable-studio-virtual-network.md)
 
-Az SDK-val való hozzáféréshez az egyes szolgáltatásokhoz szükséges hitelesítési módszert kell használnia, amelyet az adatai tárolnak. Ha például regisztrál egy adattárt Azure Data Lake Store Gen2 eléréséhez, akkor továbbra is az [Azure Storage-szolgáltatásokhoz való kapcsolódáshoz](how-to-access-data.md#azure-data-lake-storage-generation-2)szükséges egyszerű szolgáltatásnevet kell használnia.
+Ahhoz, hogy az SDK-val hozzáférjen az adatokhoz, azt a hitelesítési módszert kell használnia, amelyet az adatok tárolására használt egyedi szolgáltatás megkövetel. Ha például regisztrál egy adattárat az Azure Data Lake Store Gen2 eléréséhez, továbbra is egy egyszerű szolgáltatást kell használnia a Csatlakozás az Azure Storage-szolgáltatásokhoz [dokumentumban dokumentáltak szerint.](how-to-access-data.md#azure-data-lake-storage-generation-2)
 
 ### <a name="disable-data-validation"></a>Adatérvényesítés letiltása
 
-Alapértelmezés szerint a Azure Machine Learning az adatok érvényességét és a hitelesítő adatokat ellenőrzi, amikor az SDK használatával próbál hozzáférni az adatokhoz. Ha az adatközpont egy virtuális hálózat mögött található, Azure Machine Learning nem tudja befejezni ezeket az ellenőrzéseket. Az ellenőrzés megkerüléséhez létre kell hoznia az érvényesítést kihagyó adattárokat és adatkészleteket.
+Alapértelmezés szerint a Azure Machine Learning az adatok érvényességét és a hitelesítő adatok ellenőrzését, amikor az SDK használatával próbál meg hozzáférni az adatokhoz. Ha az adatok egy virtuális hálózat mögött vannak, Azure Machine Learning nem tudja végrehajtani ezeket az ellenőrzéseket. Az ellenőrzés megkerülése érdekében olyan adattárolókat és adatkészleteket kell létrehoznia, amelyek kihagyják az ellenőrzést.
 
 ### <a name="use-datastores"></a>Adattárolók használata
 
- Azure Data Lake Store Gen1 és Azure Data Lake Store a Gen2 alapértelmezés szerint kihagyja az érvényesítést, így nincs szükség további műveletre. A következő szolgáltatások esetében azonban hasonló szintaxist használhat az adattár-érvényesítés kihagyása érdekében:
+ Az Azure Data Lake Store Gen1 és az Azure Data Lake Store Gen2 alapértelmezés szerint kihagyja az ellenőrzést, így nincs szükség további műveletre. A következő szolgáltatások esetén azonban hasonló szintaxissal kihagyhatja az adattár érvényesítését:
 
 - Azure Blob Storage
 - Azure-fájlmegosztás
 - PostgreSQL
 - Azure SQL Database
 
-A következő mintakód egy új Azure Blob-adattárat és-készletet hoz létre `skip_validation=True` .
+Az alábbi kódminta létrehoz egy új Azure Blob-adattárat, és beállítja a `skip_validation=True` következőt: .
 
 ```python
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws,  
@@ -143,14 +143,14 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="use-datasets"></a>Adatkészletek használata
 
-Az adatkészlet-ellenőrzés kihagyásának szintaxisa hasonló a következő adatkészletek típusaihoz:
+Az adatkészlet-érvényesítést kihagyó szintaxis a következő adatkészlettípusokhoz hasonló:
 - Tagolt fájl
 - JSON 
 - Parquet
 - SQL
 - Fájl
 
-A következő kód egy új JSON-adatkészletet és-készletet hoz létre `validate=False` .
+Az alábbi kód létrehoz egy új JSON-adatkészletet, és beállítja a `validate=False` következőt: .
 
 ```python
 json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
@@ -161,67 +161,67 @@ validate=False)
 
 ## <a name="secure-azure-key-vault"></a>Biztonságos Azure Key Vault
 
-Azure Machine Learning egy társított Key Vault-példányt használ a következő hitelesítő adatok tárolásához:
-* A társított Storage-fiókhoz tartozó kapcsolatok karakterlánca
-* Az Azure Container repository példányainak jelszavai
-* Adattárakhoz való kapcsolódási karakterláncok
+Azure Machine Learning társított Key Vault használja a következő hitelesítő adatok tárolására:
+* A társított tárfiók kapcsolati sztring
+* Az Azure Container Repository-példányok jelszavai
+* Adattárak kapcsolati sztringek
 
-Ha Azure Machine Learning kísérletezési képességeket szeretne használni a virtuális hálózat mögötti Azure Key Vault, kövesse az alábbi lépéseket:
+A Azure Machine Learning a virtuális Azure Key Vault mögötti virtuális gépekkel való kísérletezéshez kövesse az alábbi lépéseket:
 
-1. Lépjen a munkaterülethez társított Key Vault.
+1. Ugrás a Key Vault társított munkaterületre.
 
-1. A __Key Vault__ oldalon, a bal oldali ablaktáblán válassza a __hálózatkezelés__ lehetőséget.
+1. A __Key Vault__ bal oldali panelen válassza a __Hálózat lehetőséget.__
 
-1. A __tűzfalak és virtuális hálózatok__ lapon végezze el a következő műveleteket:
-    1. __A hozzáférés engedélyezése lehetőségnél__ válassza a __privát végpont és a kiválasztott hálózatok__ elemet.
-    1. A __virtuális hálózatok__ területen válassza a __meglévő virtuális hálózatok hozzáadása__ lehetőséget annak a virtuális hálózatnak a hozzáadásához, ahol a kísérletezési számítás található.
-    1. A __megbízható Microsoft-szolgáltatások a tűzfal megkerülésének engedélyezése__ területen válassza az __Igen__ lehetőséget.
+1. A __Tűzfalak és virtuális hálózatok lapon__ tegye a következőket:
+    1. A __Hozzáférés engedélyezése innen: alatt__ válassza a Privát végpont és a kiválasztott hálózatok __lehetőséget.__
+    1. A __Virtuális hálózatok alatt__ válassza a Meglévő virtuális hálózatok __hozzáadása__ lehetőséget a kísérletezés számítási helyének megfelelő virtuális hálózat hozzáadásához.
+    1. A Allow trusted Microsoft-szolgáltatások to bypass this firewall (Megbízható felhasználók __megkerülhetik ezt a tűzfalat)__ alatt válassza az __Igen lehetőséget.__
 
-   [![A Key Vault panel "tűzfalak és virtuális hálózatok" szakasza](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
+   [![A Tűzfalak és virtuális hálózatok szakasz a Key Vault panelen](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
-## <a name="enable-azure-container-registry-acr"></a>Azure Container Registry engedélyezése (ACR)
+## <a name="enable-azure-container-registry-acr"></a>Az Azure Container Registry (ACR) engedélyezése
 
-Ha Azure Container Registryt szeretne használni egy virtuális hálózaton belül, meg kell felelnie a következő követelményeknek:
+A virtuális Azure Container Registry való használathoz az alábbi követelményeknek kell megfelelnie:
 
-* A Azure Container Registrynak prémium verziójúnak kell lennie. További információ a frissítésről: a [SKU módosítása](../container-registry/container-registry-skus.md#changing-tiers).
+* A Azure Container Registry prémium verziójúnak kell lennie. A frissítéssel kapcsolatos további információkért lásd: [A SKUs módosítása.](../container-registry/container-registry-skus.md#changing-tiers)
 
-* A Azure Container Registrynak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt Storage-fióknak és számítási céloknak.
+* A Azure Container Registry azonos virtuális hálózatban és alhálózatban kell lennie, mint a betanításra vagy következtetésre használt tárfióknak és számítási céloknak.
 
-* A Azure Machine Learning-munkaterületnek tartalmaznia kell egy [Azure Machine learning számítási fürtöt](how-to-create-attach-compute-cluster.md).
+* A Azure Machine Learning munkaterületnek tartalmaznia kell egy [Azure Machine Learning számítási fürtöt.](how-to-create-attach-compute-cluster.md)
 
-    Ha az ACR egy virtuális hálózat mögött van, Azure Machine Learning nem tud közvetlenül Docker-lemezképeket felépíteni. Ehelyett a rendszer a számítási fürtöt használja a rendszerképek létrehozásához.
+    Ha az ACR egy virtuális hálózat mögött van, Azure Machine Learning nem használhatja közvetlenül Docker-rendszerképek építésre. Ehelyett a számítási fürtöt használja a rendszerképek felépítéséhez.
 
     > [!IMPORTANT]
-    > A Docker-rendszerképek létrehozásához használt számítási fürtnek képesnek kell lennie a modellek betanításához és üzembe helyezéséhez használt csomag-Tárházak elérésére. Előfordulhat, hogy olyan hálózati biztonsági szabályokat kell felvennie, amelyek engedélyezik a nyilvános repók elérését, [privát Python-csomagokat használhatnak](how-to-use-private-python-packages.md), vagy olyan [Egyéni Docker-rendszerképeket](how-to-train-with-custom-image.md) használnak, amelyek már tartalmazzák a csomagokat
+    > A Docker-lemezképek felépítéséhez használt számítási fürtnek hozzá kell tudnia férni a modellek betanítása és üzembe helyezése érdekében használt csomagtárakhoz. Előfordulhat, hogy olyan hálózati biztonsági szabályokat kell hozzáadnia, amelyek engedélyezik a nyilvános adattárakhoz való hozzáférést, privát [Python-csomagokat](how-to-use-private-python-packages.md)használ, vagy olyan egyéni [Docker-rendszerképeket](how-to-train-with-custom-image.md) kell használnia, amelyek már tartalmazzák a csomagokat.
 
 A követelmények teljesítése után a következő lépésekkel engedélyezheti a Azure Container Registry.
 
 > [!TIP]
-> Ha nem használ meglévő Azure Container Registry a munkaterület létrehozásakor, akkor előfordulhat, hogy az egyik nem létezik. Alapértelmezés szerint a munkaterület nem hoz létre ACR-példányt, amíg erre szüksége van. Ha a szakasz lépéseinek használata előtt szeretné kényszeríteni egy adott modell létrehozását, betanítását vagy üzembe helyezését a munkaterületen.
+> Ha nem használt meglévő Azure Container Registry a munkaterület létrehozásakor, előfordulhat, hogy nem létezik ilyen. Alapértelmezés szerint a munkaterület csak akkor hoz létre ACR-példányt, ha szüksége van rá. Ha kényszerítenie kell egy modell létrehozását, az ebben a szakaszban található lépések használata előtt betanítja vagy üzembe helyezheti a modellt a munkaterület használatával.
 
-1. Keresse meg a munkaterülethez tartozó Azure Container Registry nevét az alábbi módszerek egyikének használatával:
+1. Keresse meg a munkaterület Azure Container Registry nevét az alábbi módszerek egyikével:
 
     __Azure Portal__
 
-    A munkaterület Áttekintés szakaszában a __beállításjegyzék__ értéke a Azure Container Registryra hivatkozik.
+    A munkaterület áttekintési szakaszában a __Beállításazonosító__ hivatkozásokat tartalmaz a Azure Container Registry.
 
-    :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry a munkaterülethez" border="true":::
+    :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry munkaterülethez" border="true":::
 
     __Azure CLI__
 
-    Ha [telepítette az Azure CLI Machine learning bővítményét](reference-azure-machine-learning-cli.md), a `az ml workspace show` parancs használatával jelenítheti meg a munkaterület adatait.
+    Ha telepítette [az Azure CLI Machine Learning bővítményét,](reference-azure-machine-learning-cli.md)az paranccsal is meg tudja jelenni a munkaterület `az ml workspace show` adatait.
 
     ```azurecli-interactive
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
     ```
 
-    A parancs a következőhöz hasonló értéket ad vissza: `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` . A karakterlánc utolsó része a munkaterület Azure Container Registry neve.
+    Ez a parancs a következő értékhez hasonló értéket ad `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` vissza: . A sztring utolsó része a munkaterülethez Azure Container Registry neve.
 
-1. Korlátozza a virtuális hálózathoz való hozzáférést a [hálózati hozzáférés konfigurálása a beállításjegyzékben](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)című témakör lépéseit követve. A virtuális hálózat hozzáadásakor válassza ki a virtuális hálózatot és az alhálózatot a Azure Machine Learning erőforrásaihoz.
+1. Korlátozza a virtuális hálózathoz való hozzáférést a Hálózati hozzáférés konfigurálása [beállításjegyzékhez lépéseit követve.](../container-registry/container-registry-vnet.md#configure-network-access-for-registry) A virtuális hálózat hozzáadásakor válassza ki a virtuális hálózatot és az alhálózatot a Azure Machine Learning számára.
 
-1. Konfigurálja az ACR-t a munkaterület számára a [megbízható szolgáltatások általi hozzáférés engedélyezéséhez](../container-registry/allow-access-trusted-services.md).
+1. Konfigurálja a munkaterület ACR-ét a [Megbízható szolgáltatások hozzáférésének engedélyezése beállításra.](../container-registry/allow-access-trusted-services.md)
 
-1. A Azure Machine Learning Python SDK használatával konfigurálhat egy számítási fürtöt a Docker-rendszerképek létrehozásához. A következő kódrészlet bemutatja, hogyan teheti meg ezt:
+1. A Azure Machine Learning Python SDK használatával konfigurálhatja a számítási fürtöt Docker-rendszerképek építéséhez. A következő kódrészlet ezt mutatja be:
 
     ```python
     from azureml.core import Workspace
@@ -230,21 +230,21 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
     # Update the workspace to use an existing compute cluster
     ws.update(image_build_compute = 'mycomputecluster')
     # To switch back to using ACR to build (if ACR is not in the VNet):
-    # ws.update(image_build_compute = None)
+    # ws.update(image_build_compute = '')
     ```
 
     > [!IMPORTANT]
-    > A Storage-fióknak, a számítási fürtnek és a Azure Container Registrynek a virtuális hálózat azonos alhálózatán kell lennie.
+    > A tárfióknak, a számítási Azure Container Registry és a virtuális hálózatnak ugyanabban az alhálózatban kell lennie.
     
-    További információkért tekintse meg a [frissítési ()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) metódus-referenciát.
+    További információért tekintse meg az [update() metódus](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) referenciáját.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk egy öt részből álló virtuális hálózati sorozat második része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
+Ez a cikk egy ötrészes virtuális hálózati sorozat második része. A további cikkekből megtudhatja, hogyan biztosíthatja a virtuális hálózatok biztonságát:
 
-* [1. rész: a Virtual Network áttekintése](how-to-network-security-overview.md)
-* [3. rész: a képzési környezet biztonságossá tétele](how-to-secure-training-vnet.md)
-* [4. rész: a következtetési környezet biztonságossá tétele](how-to-secure-inferencing-vnet.md)
-* [5. rész: a Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+* [1. rész: A virtuális hálózat áttekintése](how-to-network-security-overview.md)
+* [3. rész: A betanító környezet védelme](how-to-secure-training-vnet.md)
+* [4. rész: A következtetési környezet védelme](how-to-secure-inferencing-vnet.md)
+* [5. rész: A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
 
-Tekintse meg az [Egyéni DNS](how-to-custom-dns.md) használata névfeloldáshoz című cikket is.
+Lásd még az egyéni [DNS névfeloldáshoz való](how-to-custom-dns.md) használatával kapcsolatos cikket.

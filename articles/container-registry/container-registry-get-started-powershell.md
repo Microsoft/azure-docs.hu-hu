@@ -1,25 +1,28 @@
 ---
-title: Rövid útmutató – beállításjegyzék létrehozása – PowerShell
-description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beállításjegyzéket Azure Container Registry a PowerShell használatával
-ms.topic: quickstart
+title: Rövid útmutató – Beállításjegyzék létrehozása – PowerShell
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre privát Docker-beállításjegyzéket Azure Container Registry PowerShell használatával
 ms.date: 01/22/2019
-ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.topic: quickstart
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106283818"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537380"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rövid útmutató: privát tároló-beállításjegyzék létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rövid útmutató: Privát tároló-beállításjegyzék létrehozása a Azure PowerShell
 
-Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a Docker-tárolók rendszerképeinek létrehozására, tárolására és kiszolgálására szolgál. Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Azure-tárolóregisztrációs adatbázist a PowerShell használatával. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
+Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a Docker-tárolók rendszerképeinek létrehozására, tárolására és kiszolgálására szolgál. Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Azure-tárolóregisztrációs adatbázist a PowerShell használatával. Ezután Docker-parancsokkal leküld egy tároló rendszerképét a regisztrációs adatbázisba, majd végül leküldi és futtatja a rendszerképet a regisztrációs adatbázisból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ehhez a rövid útmutatóhoz Azure PowerShell modul szükséges. Futtassa a `Get-Module -ListAvailable Az` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz Azure PowerShell modulra. Futtassa a `Get-Module -ListAvailable Az` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
 A Dockert is telepítenie kell helyileg. A Docker [macOS][docker-mac], [Windows][docker-windows] és [Linux][docker-linux] operációs rendszerekhez biztosít csomagokat.
 
@@ -27,7 +30,7 @@ Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összet
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [Connect-AzAccount][Connect-AzAccount] paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
@@ -35,7 +38,7 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Miután hitelesítette az Azure-t, hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][New-AzResourceGroup]. Az erőforráscsoport egy olyan logikai tároló, amelyben üzembe helyezheti és kezelheti az Azure-erőforrásokat.
+Miután hitelesítette magát az Azure-ral, hozzon létre egy erőforráscsoportot a [New-AzResourceGroup használatával.][New-AzResourceGroup] Az erőforráscsoport egy olyan logikai tároló, amelyben üzembe helyezheti és kezelheti az Azure-erőforrásokat.
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
-Ezután hozzon létre egy tároló-beállításjegyzéket az új erőforráscsoporthoz a [New-AzContainerRegistry][New-AzContainerRegistry] paranccsal.
+Ezután hozzon létre egy tároló-beállításjegyzéket az új erőforráscsoportban a [New-AzContainerRegistry paranccsal.][New-AzContainerRegistry]
 
 A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az alábbi példában egy „myContainerRegistry007” nevű adatbázis jön létre. Írja be a *myContainerRegistry007* kifejezést az alábbi parancsba, majd futtassa azt az adatbázis létrehozásához:
 
@@ -51,11 +54,11 @@ A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: a [Container Registry szolgáltatási szintjei][container-registry-skus].
+Ebben a rövid útmutatóban létrehoz egy *Alapszintű* beállításjegyzéket, amely egy költségoptimalált lehetőség a fejlesztők számára a Azure Container Registry. Az elérhető szolgáltatásszintekkel kapcsolatos részletekért lásd: [Container Registry service tiers (Tároló-beállításjegyzék szolgáltatási rétegei).][container-registry-skus]
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. A rövid útmutató megtartásához engedélyezze a rendszergazdai felhasználót a beállításjegyzékben a [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] paranccsal. Éles környezetekben érdemes alternatív [hitelesítési módszert](container-registry-authentication.md) használni a beállításjegyzék-hozzáféréshez, például egy egyszerű szolgáltatásnevet. 
+A tárolórendszerképek mozgatásához először be kell jelentkeznie a beállításjegyzékbe. A rövid útmutató röviden való tartásához engedélyezze a rendszergazdai felhasználót a beállításjegyzékben a [Get-AzContainerRegistryCredential paranccsal.][Get-AzContainerRegistryCredential] Éles forgatókönyvekben alternatív hitelesítési [](container-registry-authentication.md) módszert kell használnia a beállításjegyzék-hozzáféréshez, például egy szolgáltatásnévhez. 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -70,7 +73,7 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 > [!TIP]
-> Az Azure CLI biztosítja a `az acr login` parancsot, amely kényelmes módszert biztosít a tároló-beállításjegyzékbe való bejelentkezésre az [Egyéni identitásával](container-registry-authentication.md#individual-login-with-azure-ad)anélkül, hogy a Docker hitelesítő adatait kellene átadnia.
+> Az Azure CLI biztosítja a parancsot, amely kényelmes módja a tároló-beállításjegyzékbe való bejelentkezésnek az egyéni `az acr login` identitásával, docker hitelesítő adatok átadása [](container-registry-authentication.md#individual-login-with-azure-ad)nélkül.
 
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
@@ -79,7 +82,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, a [Remove-AzResourceGroup][Remove-AzResourceGroup] paranccsal távolítsa el az erőforráscsoportot, a tároló-beállításjegyzéket és az ott tárolt tároló-lemezképeket:
+Miután végzett az ebben a rövid útmutatóban létrehozott erőforrásokkal, a [Remove-AzResourceGroup][Remove-AzResourceGroup] paranccsal távolítsa el az erőforráscsoportot, a tároló-beállításjegyzéket és az ott tárolt tároló rendszerképeket:
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup
@@ -87,13 +90,13 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt Azure PowerShell, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry a Azure PowerShell, leküldte a tároló rendszerképét, majd lekérte és futtatta a rendszerképet a beállításjegyzékből. Folytassa az Azure Container Registry oktatóanyagokkal, hogy mélyebben is megnézzük az ACR-t.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-prepare-registry]
+> [Azure Container Registry oktatóanyagok][container-registry-tutorial-prepare-registry]
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry feladatok – oktatóanyagok][container-registry-tutorial-quick-task]
+> [Azure Container Registry-feladatok oktatóanyagok][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

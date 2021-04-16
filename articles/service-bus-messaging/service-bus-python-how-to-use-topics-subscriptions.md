@@ -1,27 +1,29 @@
 ---
-title: Azure Service Bus témakörök és előfizetések használata a Python Azure-servicebus csomag verziójának 7.0.0
-description: Ez a cikk bemutatja, hogyan küldhet üzeneteket egy témakörbe és fogadhat üzeneteket az előfizetésből a Python használatával.
+title: A Azure Service Bus és előfizetések használata a Python azure-servicebus csomag 7.0.0-s verziójával
+description: Ez a cikk bemutatja, hogyan küldhet üzeneteket egy témakörbe a Python használatával, és hogyan fogadhat üzeneteket az előfizetésből.
 documentationcenter: python
 author: spelluru
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
 ms.author: spelluru
-ms.custom: devx-track-python
-ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630047"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537160"
 ---
-# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (Python)
-Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni egy Service Bus témakörből, és üzeneteket fogadni egy előfizetésből a témakörbe. 
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Üzenetek küldése egy Azure Service Bus témakörbe és üzenetek fogadása az előfizetésekből a témakörbe (Python)
+Ez a cikk bemutatja, hogyan használhatja a Pythont egy Service Bus üzenettémához, és hogyan fogadhat üzeneteket egy előfizetésből a témakörbe. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure-előfizetés. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md). Jegyezze fel a kapcsolatok karakterláncát, a témakör nevét és az előfizetés nevét. Ehhez a rövid útmutatóhoz csak egy előfizetést fog használni. 
-- Python 2,7 vagy újabb verzió, az [Azure Python SDK] [Azure Python Package] csomaggal. További információ: a [Python telepítési útmutatója](/azure/developer/python/azure-sdk-install).
+- Azure-előfizetés. Aktiválhatja a Visual Studio [MSDN-előfizetői](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) előnyeit, vagy regisztrálhat egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Kövesse a rövid útmutató lépéseit: A Azure Portal segítségével hozzon létre egy Service Bus témakört és előfizetéseket [a témakörre.](service-bus-quickstart-topics-subscriptions-portal.md) Jegyezze fel a kapcsolati sztringet, a témakör nevét és az előfizetés nevét. Ebben a rövid útmutatóban csak egy előfizetést fog használni. 
+- Python 2.7 vagy újabb, telepített [Azure Python SDK][Azure Python package] csomaggal. További információkért lásd a Python telepítési [útmutatóját.](/azure/developer/python/azure-sdk-install)
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
 
@@ -39,10 +41,10 @@ Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni 
     ```
     
     > [!IMPORTANT]
-    > - Cserélje le a `<NAMESPACE CONNECTION STRING>` karakterláncot a névtérhez tartozó kapcsolatok karakterlánccá.
-    > - Cserélje le a `<TOPIC NAME>` nevet a témakör nevére.
-    > - A helyére írja `<SUBSCRIPTION NAME>` be az előfizetés nevét a témakörre. 
-3. Adjon hozzá egy metódust egyetlen üzenet küldéséhez.
+    > - Cserélje `<NAMESPACE CONNECTION STRING>` le a helyére a névtér kapcsolati sztringjét.
+    > - Cserélje `<TOPIC NAME>` le a helyére a témakör nevét.
+    > - Cserélje `<SUBSCRIPTION NAME>` le a helyére a témakör előfizetésének nevét. 
+3. Adjon hozzá egy metódust, amely egyetlen üzenetet küld.
 
     ```python
     def send_single_message(sender):
@@ -53,8 +55,8 @@ Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni 
         print("Sent a single message")
     ```
 
-    A küldő egy olyan objektum, amely ügyfélként funkcionál a létrehozott témakörhöz. Később létrehozhatja és elküldheti a függvény argumentumaként. 
-4. Adjon hozzá egy metódust az üzenetek listájának elküldéséhez.
+    A küldő egy objektum, amely a létrehozott témakör ügyfeleként működik. Később létre fogja hozni, és argumentumként el fogja küldeni ennek a függvénynek. 
+4. Adjon hozzá egy metódust, amely egy üzenetlistát küld.
 
     ```python
     def send_a_list_of_messages(sender):
@@ -64,7 +66,7 @@ Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni 
         sender.send_messages(messages)
         print("Sent a list of 5 messages")
     ```
-5. Adjon hozzá egy metódust egy köteg üzenet küldéséhez.
+5. Adjon hozzá egy metódust, amely egy üzenetkötetet küld.
 
     ```python
     def send_batch_message(sender):
@@ -82,7 +84,7 @@ Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni 
         sender.send_messages(batch_message)
         print("Sent a batch of 10 messages")
     ```
-6. Hozzon létre egy Service Bus ügyfelet, majd egy témakör küldő objektumát üzenetek küldéséhez.
+6. Hozzon létre egy Service Bus, majd egy témakör küldőobjektumát az üzenetek küldését.
 
     ```python
     # create a Service Bus client using the connection string
@@ -102,8 +104,8 @@ Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni 
     print("-----------------------")
     ```
  
-## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Adja hozzá a következő kódot a Print utasítás után. Ez a kód folyamatosan fogad új üzeneteket, amíg az új üzenetek nem kapnak 5 ( `max_wait_time` ) másodpercet. 
+## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása előfizetésből
+Adja hozzá a következő kódot a print utasítás után. Ez a kód folyamatosan fogadja az új üzeneteket, amíg nem kap új üzeneteket 5 ( `max_wait_time` ) másodpercig. 
 
 ```python
 with servicebus_client:
@@ -168,7 +170,7 @@ with servicebus_client:
 ```
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
-Az alkalmazás futtatásakor a következő kimenetnek kell megjelennie: 
+Az alkalmazás futtatásakor a következő kimenetnek kell lennie: 
 
 ```console
 Sent a single message
@@ -194,27 +196,27 @@ Received: Message inside a ServiceBusMessageBatch
 Received: Message inside a ServiceBusMessageBatch
 ```
 
-A Azure Portal navigáljon a Service Bus-névtérhez. Az **Áttekintés** oldalon ellenőrizze, hogy a **bejövő** és a **kimenő** üzenetek száma 16. Ha nem látja a számlálást, frissítse az oldalt néhány perc várakozás után. 
+A Azure Portal navigáljon a Service Bus névterhez. Az Áttekintés **lapon** ellenőrizze, hogy a **bejövő** és kimenő **üzenetek** száma 16-e. Ha nem látja a darabszámokat, néhány perc várakozás után frissítse az oldalt. 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Bejövő és kimenő üzenetek száma":::
 
-Válassza ki a témakört az alsó ablaktáblán, és tekintse meg a témakör **Service Bus témakör** lapját. Ezen az oldalon három bejövő és három kimenő üzenetet kell látnia az **üzenetek** diagramon. 
+Az alsó panelen válassza ki a témakört, hogy Service Bus **témakört** tartalmazó lapját. Ezen az oldalon három bejövő és három kimenő üzenetet kell látnia az **Üzenetek diagramon.** 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="Bejövő és kimenő üzenetek":::
 
-Ezen az oldalon, ha kijelöl egy előfizetést, a **Service Bus előfizetés** oldalra kerül. Ezen az oldalon megtekintheti az aktív üzenetek darabszámát, a kézbesítetlen üzenetek darabszámát és további információt. Ebben a példában az összes üzenet érkezett, így az aktív üzenetek száma nulla. 
+Ezen a lapon, ha kiválaszt egy előfizetést, a Service Bus **lapjára** jut. Ezen az oldalon láthatja az aktív üzenetek számát, a holtbetűs üzenetek számát és sok más stb. Ebben a példában minden üzenet beérkezett, így az aktív üzenetek száma nulla. 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/active-message-count.png" alt-text="Aktív üzenetek száma":::
 
-Ha kiírja a fogadási kódot, az aktív üzenetek száma 16. 
+Ha megjegyzésbe fűzi a fogadási kódot, az aktív üzenetek száma 16 lesz. 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/active-message-count-2.png" alt-text="Aktív üzenetek száma – nincs fogadás":::
 
 ## <a name="next-steps"></a>Következő lépések
-Tekintse meg a következő dokumentációt és mintákat: 
+Tekintse meg az alábbi dokumentációt és mintákat: 
 
-- [Azure Service Bus a Pythonhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
-- [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
-    - A **sync_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan kezelhető a Service Bus szinkron módon. Ebben a rövid útmutatóban ezt a módszert használta. 
-    - A **async_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan lehet aszinkron módon kommunikálni a Service Busokkal. 
-- [Az Azure-servicebus dokumentációja](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)
+- [Azure Service Bus Pythonhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [Példák:](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
+    - A **sync_samples** mappában olyan minták találhatók, amelyek megmutatják, hogyan Service Bus szinkron módon a Service Bus műveleteket. Ebben a rövid útmutatóban ezt a metódust használta. 
+    - A **async_samples** mappában minták találhatók, amelyekből aszinkron módon Service Bus műveleteket. 
+- [az azure-servicebus referenciadokumentációja](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

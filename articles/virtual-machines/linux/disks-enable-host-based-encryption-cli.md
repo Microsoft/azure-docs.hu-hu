@@ -1,6 +1,6 @@
 ---
-title: Végpontok közötti titkosítás engedélyezése a gazdagép-Azure CLI által felügyelt lemezek titkosításával
-description: Használjon titkosítást a gazdagépen az Azure Managed Disks szolgáltatásban a végpontok közötti titkosítás engedélyezéséhez.
+title: Végpontok között titkosítás engedélyezése titkosítással a gazdagépen – Azure CLI – felügyelt lemezek
+description: A gazdagép titkosításának használatával engedélyezheti a végpontok között titkosítást az Azure-beli felügyelt lemezeken.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,16 +8,16 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45cdb9217eebf6e3129718a96d9f7b72a3ab62b3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601771"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533604"
 ---
-# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A végpontok közötti titkosítás engedélyezése az Azure CLI használatával a gazdagépen való titkosítással
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Az Azure CLI használata a gazdagépen titkosítást használó végpontok között titkosítás engedélyezéséhez
 
-Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. A gazdagépen található titkosítással, valamint az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos elméleti információkat lásd: [titkosítás a gazdagép-végpontok közötti titkosítással a virtuális gép adataihoz](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Ha engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva vannak, az adatok pedig titkosítva vannak a Storage szolgáltatás felé. Elméleti információk a gazdagépen való titkosításról, valamint egyéb felügyelt lemeztitkosítási típusokról: Titkosítás gazdagépen – Végpontok között titkosítás a virtuális [gép adataihoz.](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -27,36 +27,37 @@ Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen 
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-A virtuális gépek méreteit programozott módon is megtalálhatja. Ha szeretné megtudni, hogyan kérheti le őket programozott módon, tekintse meg a [támogatott VM-méretek keresése](#finding-supported-vm-sizes) szakaszt.
+A támogatott virtuálisgép-méretek teljes listája programozott módon lekért lista. A programozott lekérésükről a Támogatott virtuálisgép-méretek keresése című szakaszban [olvashat.](#finding-supported-vm-sizes)
+A virtuális gép méretének frissítése ellenőrzéssel ellenőrzi, hogy az új virtuálisgép-méret támogatja-e az EncryptionAtHost funkciót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A virtuális gép/VMSS EncryptionAtHost tulajdonságának használata előtt engedélyeznie kell az előfizetés szolgáltatását. Az előfizetés funkciójának engedélyezéséhez kövesse az alábbi lépéseket:
+A virtuális gép/VMSS EncryptionAtHost tulajdonságának használata előtt engedélyeznie kell a funkciót az előfizetésben. A funkció előfizetéshez való engedélyezéséhez kövesse az alábbi lépéseket:
 
-1.  Futtassa a következő parancsot az előfizetés funkciójának regisztrálásához
+1.  A funkció előfizetéshez való regisztrálásához hajtsa végre a következő parancsot
 
     ```azurecli
     az feature register --namespace Microsoft.Compute --name EncryptionAtHost
     ```
  
-2.  Győződjön meg arról, hogy a regisztrációs állapot regisztrálva van (néhány percet vesz igénybe) az alábbi parancs használatával, mielőtt kipróbálja a funkciót.
+2.  A szolgáltatás kipróbálása előtt ellenőrizze, hogy a regisztrációs állapot Regisztrálva (eltarthat néhány percig) az alábbi paranccsal.
 
     ```azurecli
     az feature show --namespace Microsoft.Compute --name EncryptionAtHost
     ```
 
 
-### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault és DiskEncryptionSet létrehozása
+### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Hozzon létre egy Azure Key Vault És DiskEncryptionSet adatokat
 
-Ha a szolgáltatás engedélyezve van, be kell állítania egy Azure Key Vault és egy DiskEncryptionSet, ha még nem tette meg.
+A funkció engedélyezése után be kell állítania egy Azure Key Vault és egy DiskEncryptionSet készletet, ha még nem tette meg.
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
 ## <a name="examples"></a>Példák
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Hozzon létre egy titkosítást használó virtuális gépet az ügyfél által felügyelt kulcsokkal rendelkező gazdagépen. 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Virtuális gép létrehozása ügyfél által kezelt kulcsokkal engedélyezett titkosítással a gazdagépen. 
 
-Hozzon létre egy felügyelt lemezekkel rendelkező virtuális gépet a korábban létrehozott DiskEncryptionSet erőforrás-URI-ja használatával, hogy titkosítsa az operációs rendszer és az adatlemezek gyorsítótárát az ügyfél által kezelt kulcsokkal. A rendszer a platform által felügyelt kulcsokkal titkosítja a temp lemezeket. 
+Hozzon létre egy virtuális gépet felügyelt lemezekkel a korábban az operációs rendszer és az adatlemezek gyorsítótárának ügyfél által kezelt kulcsokkal való titkosításához létrehozott DiskEncryptionSet erőforrás-URI-ját használva. Az ideiglenes lemezek platform által felügyelt kulcsokkal vannak titkosítva. 
 
 ```azurecli
 rgName=yourRGName
@@ -80,9 +81,9 @@ az vm create -g $rgName \
 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Platform által felügyelt kulcsokkal rendelkező virtuális gép létrehozása titkosítással a gazdagépen. 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Hozzon létre egy virtuális gépet titkosítással a platform által felügyelt kulcsokkal engedélyezett gazdagépen. 
 
-Hozzon létre egy titkosítással rendelkező virtuális gépet, amelyen engedélyezve van az operációs rendszer/adatlemezek és az ideiglenes lemezek gyorsítótárának titkosítása a platform által felügyelt kulcsokkal. 
+Virtuális gép létrehozása engedélyezett titkosítással a gazdagépen az operációsrendszer-/adatlemezek és az ideiglenes lemezek gyorsítótárának titkosításához platform által felügyelt kulcsokkal. 
 
 ```azurecli
 rgName=yourRGName
@@ -101,7 +102,7 @@ az vm create -g $rgName \
 --data-disk-sizes-gb 128 128 \
 ```
 
-### <a name="update-a-vm-to-enable-encryption-at-host"></a>Frissítsen egy virtuális gépet, hogy engedélyezze a titkosítást a gazdagépen. 
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Virtuális gép frissítése a gazdagép titkosításának engedélyezéséhez. 
 
 ```azurecli
 rgName=yourRGName
@@ -112,7 +113,7 @@ az vm update -n $vmName \
 --set securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>A virtuális gép gazdagépén lévő titkosítás állapotának megtekintése
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>Virtuális gép gazdagépen való titkosításának ellenőrzése
 
 ```azurecli
 rgName=yourRGName
@@ -123,9 +124,9 @@ az vm show -n $vmName \
 --query [securityProfile.encryptionAtHost] -o tsv
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Hozzon létre egy virtuálisgép-méretezési csoport titkosítással a gazdagépen az ügyfél által felügyelt kulcsokkal. 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Virtuálisgép-méretezési csoport létrehozása ügyfél által kezelt kulcsokkal engedélyezett titkosítással a gazdagépen. 
 
-Hozzon létre egy virtuálisgép-méretezési készletet felügyelt lemezekkel a korábban létrehozott DiskEncryptionSet erőforrás-URI-ja segítségével, hogy titkosítsa az operációs rendszer és az adatlemezek gyorsítótárát az ügyfél által kezelt kulcsokkal. A rendszer a platform által felügyelt kulcsokkal titkosítja a temp lemezeket. 
+Hozzon létre egy virtuálisgép-méretezési csoport felügyelt lemezekkel a korábban az operációs rendszer és az adatlemezek gyorsítótárának ügyfél által kezelt kulcsokkal való titkosításához létrehozott DiskEncryptionSet erőforrás-URI-ját használva. Az ideiglenes lemezek platform által felügyelt kulcsokkal vannak titkosítva. 
 
 ```azurecli
 rgName=yourRGName
@@ -149,9 +150,9 @@ az vmss create -g $rgName \
 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>A platform által felügyelt kulcsokkal rendelkező virtuálisgép-méretezési csoport létrehozása titkosítással a gazdagépen. 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Hozzon létre egy virtuálisgép-méretezési csoport titkosítást a platform által felügyelt kulcsokkal engedélyezett gazdagépen. 
 
-Hozzon létre egy virtuálisgép-méretezési csoport titkosítással a gazdagépen, amelyen engedélyezve van a platform által felügyelt kulcsokkal rendelkező operációs rendszer/adatlemezek és ideiglenes lemezek gyorsítótárának titkosítása. 
+Virtuálisgép-méretezési csoport létrehozása engedélyezett titkosítással a gazdagépen az operációsrendszer-/adatlemezek és az ideiglenes lemezek gyorsítótárának titkosításához platform által felügyelt kulcsokkal. 
 
 ```azurecli
 rgName=yourRGName
@@ -170,7 +171,7 @@ az vmss create -g $rgName \
 --data-disk-sizes-gb 64 128 \
 ```
 
-### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>A virtuális gépek méretezési csoportjának frissítése a titkosítás engedélyezéséhez a gazdagépen. 
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>Frissítsen egy virtuálisgép-méretezési készletet, hogy engedélyezze a titkosítást a gazdagépen. 
 
 ```azurecli
 rgName=yourRGName
@@ -181,7 +182,7 @@ az vmss update -n $vmssName \
 --set virtualMachineProfile.securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoportnál a gazdagépen lévő titkosítás állapotának megtekintése
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési készlet gazdagépen való titkosításának ellenőrzése
 
 ```azurecli
 rgName=yourRGName
@@ -192,11 +193,11 @@ az vmss show -n $vmssName \
 --query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
-## <a name="finding-supported-vm-sizes"></a>Támogatott virtuális gépek méretének keresése
+## <a name="finding-supported-vm-sizes"></a>Támogatott virtuálisgép-méretek keresése
 
-A régi virtuálisgép-méretek nem támogatottak. A támogatott virtuálisgép-méretek listáját a következők valamelyikével érheti el:
+Az örökölt virtuálisgép-méretek nem támogatottak. A támogatott virtuálisgép-méretek listáját a következő két listában találja:
 
-Az [erőforrás-SKU API](/rest/api/compute/resourceskus/list) meghívása és annak ellenőrzése, hogy a képesség igaz értékre van-e `EncryptionAtHostSupported` állítva .
+Az [erőforrás-Skus API hívása és](/rest/api/compute/resourceskus/list) annak ellenőrzése, hogy `EncryptionAtHostSupported` a képesség True (Igaz) **értékre van-e állítva.**
 
 ```json
     {
@@ -217,7 +218,7 @@ Az [erőforrás-SKU API](/rest/api/compute/resourceskus/list) meghívása és an
     }
 ```
 
-Vagy hívja meg a [Get-AzComputeResourceSku PowerShell-](/powershell/module/az.compute/get-azcomputeresourcesku) parancsmagot.
+Vagy hívja meg a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) PowerShell-parancsmagot.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
@@ -238,6 +239,6 @@ foreach($vmSize in $vmSizes)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. A következő hivatkozás olyan parancsfájlokat tartalmaz, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
+Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, használhatja őket a felügyelt lemezek biztonságossá való használatára. Az alábbi hivatkozás példaszkprogramokat tartalmaz, amelyek mindegyikének van egy-egy forgatókönyve, és amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
 
-[Azure Resource Manager sablon mintái](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/EncryptionAtHost)
+[Azure Resource Manager mintasablonok](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/EncryptionAtHost)

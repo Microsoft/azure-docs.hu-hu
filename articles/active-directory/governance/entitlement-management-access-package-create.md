@@ -1,6 +1,6 @@
 ---
-title: Új hozzáférési csomag létrehozása a jogosultságok kezelésében – Azure AD
-description: Megtudhatja, hogyan hozhat létre olyan új erőforrás-hozzáférési csomagot, amelyet meg szeretne osztani a Azure Active Directory jogosultságok kezelésében.
+title: Új hozzáférési csomag létrehozása a jogosultságkezelésben – Azure AD
+description: Megtudhatja, hogyan hozhat létre új hozzáférési csomagot a jogosultságkezelésben megosztani Azure Active Directory erőforrásokból.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,107 +16,107 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011085"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532200"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságkezelésben
 
-Egy hozzáférési csomag lehetővé teszi az erőforrások és házirendek egyszeri beállítását, amely automatikusan felügyeli a hozzáférést a hozzáférési csomag élettartamához. Ez a cikk azt ismerteti, hogyan hozható létre új hozzáférési csomag.
+A hozzáférési csomagok lehetővé teszik az erőforrások és szabályzatok egy alkalommal való beállítását, amely automatikusan felügyeli a hozzáférést a hozzáférési csomag teljes életciklusa alatt. Ez a cikk bemutatja, hogyan hozhat létre új hozzáférési csomagot.
 
 ## <a name="overview"></a>Áttekintés
 
-Minden hozzáférési csomagot egy katalógus nevű tárolóba kell helyezni. A katalógus meghatározza, hogy milyen erőforrásokat adhat hozzá a hozzáférési csomaghoz. Ha nem ad meg katalógust, a rendszer a hozzáférési csomagot az általános katalógusba helyezi. Jelenleg nem helyezhető át egy meglévő hozzáférési csomag egy másik katalógusba.
+Minden hozzáférési csomagot katalógusnak nevezett tárolóba kell helyezni. A katalógus határozza meg, hogy milyen erőforrásokat adhat hozzá a hozzáférési csomaghoz. Ha nem ad meg katalógust, a hozzáférési csomag az Általános katalógusba kerül. A meglévő hozzáférési csomagokat jelenleg nem lehet másik katalógusba áthelyezni.
 
-Ha Ön egy Access Package Manager, nem adhat hozzá saját erőforrásokat a katalógushoz. A katalógusban elérhető erőforrások használatára korlátozódik. Ha erőforrásokat kell hozzáadnia egy katalógushoz, megkérheti a katalógus tulajdonosát.
+Ha Ön hozzáférésicsomag-kezelő, nem adhat hozzá saját erőforrásait a katalógushoz. A katalógusban elérhető erőforrások használata korlátozott. Ha erőforrásokat kell hozzáadnia egy katalógushoz, kérdezze meg a katalógus tulajdonosát.
 
-Minden hozzáférési csomagnak rendelkeznie kell legalább egy házirenddel. A szabályzatok határozzák meg, hogy kik igényelhetik a hozzáférési csomagot, valamint a jóváhagyási és életciklus-beállításokat is. Új hozzáférési csomag létrehozásakor létrehozhat egy kezdeti szabályzatot a címtárban lévő felhasználók számára, a címtárban nem szereplő felhasználók számára, csak a rendszergazdai közvetlen hozzárendelésekhez, vagy később is létrehozhatja a szabályzatot.
+Minden hozzáférési csomagnak legalább egy szabályzatot kell tartalmaznie. A szabályzatok határozzák meg, hogy ki kérheti a hozzáférési csomagot, valamint a jóváhagyási és életciklus-beállításokat. Új hozzáférési csomag létrehozásakor létrehozhat egy kezdeti szabályzatot a címtárban található felhasználók, a címtárban nem található felhasználók, csak a rendszergazdai közvetlen hozzárendelések számára, vagy dönthet úgy, hogy később létrehozza a szabályzatot.
 
 ![Hozzáférési csomag létrehozása](./media/entitlement-management-access-package-create/access-package-create.png)
 
-Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
+Az új hozzáférési csomag létrehozásához szükséges magas szintű lépések a következőek.
 
-1. Az identitás irányítása területen indítsa el a folyamatot egy új hozzáférési csomag létrehozásához.
+1. Az Identity Governanceban indítsa el az új hozzáférési csomag létrehozási folyamatát.
 
-1. Válassza ki azt a katalógust, amelyben a hozzáférési csomagot létre szeretné hozni.
+1. Válassza ki azt a katalógust, amelyben létre szeretné hozni a hozzáférési csomagot.
 
-1. Erőforrások hozzáadása a katalógusból a hozzáférési csomagba.
+1. Erőforrások hozzáadása a katalógusból a hozzáférési csomaghoz.
 
 1. Rendeljen erőforrás-szerepköröket az egyes erőforrásokhoz.
 
-1. Itt adhatja meg, hogy mely felhasználók igényelhetnek hozzáférést.
+1. Adja meg azokat a felhasználókat, akik hozzáférést kérhetnek.
 
-1. Határozza meg a jóváhagyási beállításokat.
+1. Adja meg a jóváhagyási beállításokat.
 
-1. Az életciklus beállításainak megadása.
+1. Adja meg az életciklus beállításait.
 
-## <a name="start-new-access-package"></a>Új hozzáférési csomag elindítása
+## <a name="start-new-access-package"></a>Új hozzáférési csomag létrehozása
 
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+**Előfeltételként szükséges szerepkör:** globális rendszergazda, felhasználói rendszergazda, katalógustulajdonos vagy hozzáférési csomagkezelő
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás** elemre.
+1. Kattintson **a Azure Active Directory,** majd az **Identity Governance elemre.**
 
-1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre.
+1. A bal oldali menüben kattintson a **Hozzáférési csomagok elemre.**
 
-1. Kattintson az **új hozzáférési csomag** elemre.
+1. Kattintson **az Új hozzáférési csomag elemre.**
    
-    ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
+    ![Jogosultságkezelés a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Alapvető beállítások
 
-Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
+Az Alapvető **beállítások lapon** adjon nevet a hozzáférési csomagnak, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot.
 
-1. Adja meg a hozzáférési csomag megjelenítendő nevét és leírását. A felhasználók ezeket az adatokat fogják látni, amikor kérelmet küldenek a hozzáférési csomaghoz.
+1. Adja meg a hozzáférési csomag megjelenítendő nevét és leírását. A felhasználók ezt az információt a hozzáférési csomagra vonatkozó kérés elküldésekor látják.
 
-1. A **katalógus** legördülő listában válassza ki azt a katalógust, amelyben a hozzáférési csomagot létre szeretné hozni. Előfordulhat például, hogy rendelkezik egy katalógus tulajdonosával, amely az összes igényelhető marketing-erőforrást kezeli. Ebben az esetben kiválaszthatja a marketing katalógust.
+1. A Katalógus **legördülő** listában válassza ki azt a katalógust, amelybe létre szeretné hozni a hozzáférési csomagot. Előfordulhat például, hogy rendelkezik egy katalógustulajdonossal, aki az összes lekért marketingerőforrást kezeli. Ebben az esetben kiválaszthatja a marketingkatalógust.
 
-    Csak azok a katalógusok jelennek meg, amelyekkel hozzáférési csomagokat hozhat létre a alkalmazásban. Ahhoz, hogy egy meglévő katalógusban hozzon létre egy hozzáférési csomagot, globális rendszergazdának vagy felhasználói rendszergazdának kell lennie, vagy a katalógus tulajdonosának vagy a Package Managernek kell lennie.
+    Csak olyan katalógusokat fog látni, amelyekben hozzáférési csomagok létrehozására van engedélye. Egy meglévő katalógusban lévő hozzáférési csomag létrehozásához rendszergazdai vagy felhasználói globális rendszergazda kell lennie, vagy katalógustulajdonosnak vagy hozzáférésicsomag-kezelőnek kell lennie a katalógusban.
 
-    ![Hozzáférési csomag – alapismeretek](./media/entitlement-management-access-package-create/basics.png)
+    ![Hozzáférési csomag – Alapok](./media/entitlement-management-access-package-create/basics.png)
 
-    Ha Ön globális rendszergazda, felhasználói rendszergazda vagy katalógus létrehozója, és egy új katalógusban szeretné létrehozni a hozzáférési csomagot, akkor kattintson az **új katalógus létrehozása** lehetőségre. Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás** gombra.
+    Ha Ön egy globális rendszergazda, egy felhasználói rendszergazda vagy katalógus létrehozója, és a hozzáférési csomagot egy új katalógusban szeretné létrehozni, amely nem szerepel a listában, kattintson az Új katalógus **létrehozása elemre.** Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás gombra.**
 
-    A létrehozott hozzáférési csomag és a benne található összes erőforrás hozzá lesz adva az új katalógushoz. Később további katalógus-tulajdonosokat is hozzáadhat.
+    A létrehozott hozzáférési csomag és a benne foglalt erőforrások hozzá lesznek adva az új katalógushoz. Később további katalógustulajdonosokat is hozzáadhat.
 
 1. Kattintson a **Tovább** gombra.
 
 ## <a name="resource-roles"></a>Erőforrás-szerepkörök
 
-Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat. A hozzáférési csomagot kérő és fogadó felhasználók megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
+Az **Erőforrás-szerepkörök** lapon kiválaszthatja a hozzáférési csomagba foglalni kívánt erőforrásokat. Azok a felhasználók, akik lekérték és megkapják a hozzáférési csomagot, megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
 
-1. Kattintson a hozzáadni kívánt erőforrástípus (**csoportok**, munkacsoportok, **alkalmazások** vagy SharePoint- **webhelyek**) elemre.
+1. Kattintson a hozzáadni kívánt erőforrástípusra (Csoportok és **csapatok,** **Alkalmazások** vagy **SharePoint-webhelyek**).
 
-1. A megjelenő Select (kiválasztás) ablaktáblán válasszon ki egy vagy több erőforrást a listából.
+1. A megjelenő Kijelölés panelen válasszon ki egy vagy több erőforrást a listából.
 
-    ![Hozzáférési csomag – erőforrás-szerepkörök](./media/entitlement-management-access-package-create/resource-roles.png)
+    ![Hozzáférési csomag – Erőforrás-szerepkörök](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Ha a hozzáférési csomagot az általános katalógusban vagy egy új katalógusban hozza létre, a saját címtárból is kiválaszthatja az összes erőforrást. Legalább egy globális rendszergazdának, egy felhasználói rendszergazdának vagy egy katalógus létrehozójának kell lennie.
+    Ha az általános katalógusban vagy egy új katalógusban létrehozza a hozzáférési csomagot, bármely erőforrást választhat a saját címtárából. Legalább egy felhasználónak, globális rendszergazda rendszergazdának vagy katalóguskészítőnek kell lennie.
 
-    Ha egy meglévő katalógusban hozza létre a hozzáférési csomagot, kiválaszthatja, hogy a katalógusban lévő összes erőforrás tulajdonos nélkül legyen.
+    Ha egy meglévő katalógusban hoz létre hozzáférési csomagot, akkor a katalógusban már meglévő erőforrásokat is kiválaszthatja anélkül, hogy annak a tulajdonában lenne.
 
-    Ha Ön globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa, lehetősége van arra, hogy olyan erőforrásokat válasszon ki, amelyek még nem szerepelnek a katalógusban. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem szerepelnek a kiválasztott katalógusban, akkor ezek az erőforrások is hozzáadódnak a katalógushoz más katalógus-rendszergazdák számára, hogy hozzáférési csomagokat hozzanak létre a használatával. Ha meg szeretné tekinteni a katalógusba felvehető összes erőforrást, jelölje be az **összes megtekintése** jelölőnégyzetet a kiválasztás ablaktábla tetején. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg a kiválasztott katalógusban vannak, hagyja bejelölve az **összes** jelölőnégyzetet (alapértelmezett állapot) jelölőnégyzetet.
+    Ha Ön egy globális rendszergazda, egy felhasználói rendszergazda vagy egy katalógus tulajdonosa, akkor olyan erőforrásokat is kiválaszthatja, amelyek még nem találhatóak meg a katalógusban. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem a kijelölt katalógusban vannak, akkor ezek az erőforrások a katalógushoz lesznek hozzáadva, hogy más katalógus-rendszergazdák hozzáférési csomagokat hoznak létre a segítségével. A katalógushoz hozzáadható összes erőforrást a  Kijelölés panel tetején található Összes megjelenítése jelölőnégyzet bejelével láthatja. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg  a kiválasztott katalógusban vannak, hagyja bejelölve az Összes kijelölése (alapértelmezett állapot) jelölőnégyzetet.
 
-1. Miután kiválasztotta az erőforrásokat, a **szerepkör** listából válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni a felhasználókat az erőforráshoz.
+1. Miután kiválasztotta az erőforrásokat, a Szerepkör **listában** válassza ki azt a szerepkört, amely szerint a felhasználókat hozzá szeretné rendelni az erőforráshoz.
 
-    ![Hozzáférési csomag – erőforrás-szerepkör kiválasztása](./media/entitlement-management-access-package-create/resource-roles-role.png)
+    ![Hozzáférési csomag – Erőforrás-szerepkör kiválasztása](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Kattintson a **Tovább** gombra.
 
 >[!NOTE]
->Dinamikus csoportokat adhat hozzá egy katalógushoz és egy hozzáférési csomaghoz. Azonban csak a tulajdonosi szerepkört lehet kijelölni egy dinamikus csoport erőforrásának egy hozzáférési csomagban való kezelésekor.
+>Dinamikus csoportokat hozzáadhat egy katalógushoz és egy hozzáférési csomaghoz. A dinamikus csoporterőforrás hozzáférési csomagban való kezelésekor azonban csak a Tulajdonos szerepkört választhatja ki.
 
 ## <a name="requests"></a>Kérelmek
 
-A **kérelmek** lapon létrehozhatja az első szabályzatot annak megadásához, hogy kik igényelhetik a hozzáférési csomagot és a jóváhagyási beállításokat. Később további kérési házirendeket is létrehozhat, amelyek lehetővé teszik további felhasználói csoportok számára, hogy a hozzáférési csomagot saját jóváhagyási beállításokkal kérjenek.
+A **Kérelmek lapon hozza létre** az első szabályzatot, amely meghatározza, hogy ki kérheti a hozzáférési csomagot és a jóváhagyási beállításokat. Később további kérelem-szabályzatokat hozhat létre, amelyek lehetővé teszik, hogy a felhasználók további csoportjai saját jóváhagyási beállításokkal kérelmezik a hozzáférési csomagot.
 
-![Hozzáférési csomag – kérelmek lap](./media/entitlement-management-access-package-create/requests.png)
+![Hozzáférési csomag – Kérelmek lap](./media/entitlement-management-access-package-create/requests.png)
 
-Attól függően, hogy ki szeretné használni ezt a hozzáférési csomagot, hajtsa végre az alábbi részekben ismertetett lépéseket.
+Attól függően, hogy kitől szeretné kérni ezt a hozzáférési csomagot, hajtsa végre a következő szakaszokban található lépéseket.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
@@ -124,29 +124,29 @@ Attól függően, hogy ki szeretné használni ezt a hozzáférési csomagot, ha
 
 ## <a name="review--create"></a>Ellenőrzés és létrehozás
 
-A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és ellenőrizheti az érvényesítési hibákat.
+Az Áttekintés **+ létrehozás lapon** áttekintheti a beállításokat, és ellenőrizheti az érvényesítési hibákat.
 
 1. A hozzáférési csomag beállításainak áttekintése
 
-    ![Hozzáférési csomag – házirend-beállítás engedélyezése](./media/entitlement-management-access-package-create/review-create.png)
+    ![Hozzáférési csomag – Szabályzatbeállítás engedélyezése](./media/entitlement-management-access-package-create/review-create.png)
 
-1. A hozzáférési csomag létrehozásához kattintson a **Létrehozás** gombra.
+1. A **hozzáférési csomag létrehozásához** kattintson a Létrehozás gombra.
 
     Az új hozzáférési csomag megjelenik a hozzáférési csomagok listájában.
 
 ## <a name="creating-an-access-package-programmatically"></a>Hozzáférési csomag programozott módon történő létrehozása
 
-Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a következőre:
+Hozzáférési csomagot a használatával is Microsoft Graph.  Egy megfelelő szerepkörben, delegált engedéllyel rendelkező alkalmazással rendelkező felhasználó a következőhöz `EntitlementManagement.ReadWrite.All` hívhatja az API-t:
 
-1. [Sorolja fel a katalógusban szereplő accessPackageResources](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
-1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
-1. [Hozzon létre egy accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Hozzon létre egy accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
-1. [Hozzon létre egy accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
+1. [Listizálja az accessPackageResources](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true) erőforrást a katalógusban, és hozzon létre [egy accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true) elérést a katalógusban még nem található erőforrásokhoz.
+1. [Listaz accessPackageResourceRoles minden](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) egyes accessPackageResource egy accessPackageCatalogban. Ezt a szerepkörlistát használjuk majd egy szerepkör kiválasztásához az accessPackageResourceRoleScope későbbi létrehozásakor.
+1. [Hozzon létre egy accessPackage et.](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true)
+1. [Hozzon létre egy accessPackageAssignmentPolicy létrehozására.](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true)
+1. [Hozzon létre egy accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) hatókört a hozzáférési csomagban szükséges összes erőforrás-szerepkörhöz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hozzáférési csomag igénylésére szolgáló hivatkozás megosztása](entitlement-management-access-package-settings.md)
-- [Hozzáférési csomag erőforrás-szerepköreinek módosítása](entitlement-management-access-package-resources.md)
-- [Felhasználó közvetlen kiosztása a hozzáférési csomaghoz](entitlement-management-access-package-assignments.md)
-- [Hozzáférés-felülvizsgálat létrehozása hozzáférési csomaghoz](entitlement-management-access-reviews-create.md)
+- [Hivatkozás megosztása hozzáférési csomag kérése érdekében](entitlement-management-access-package-settings.md)
+- [Hozzáférési csomag erőforrás-szerepkörének módosítása](entitlement-management-access-package-resources.md)
+- [Felhasználó közvetlen hozzárendelése a hozzáférési csomaghoz](entitlement-management-access-package-assignments.md)
+- [Hozzáférési csomag hozzáférési felülvizsgálatának létrehozása](entitlement-management-access-reviews-create.md)

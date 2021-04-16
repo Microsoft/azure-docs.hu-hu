@@ -1,0 +1,14 @@
+- name: Mi az Az Oracle BareMetal-infrastruktúrája?
+  href: oracle-baremetal-overview.md
+- name: BareMetal SKUs
+  href: oracle-baremetal-skus.md
+- name: Tárolás
+  href: oracle-baremetal-storage.md
+- name: Javítási szempontok
+  href: oracle-baremetal-patching.md
+- name: Ethernet-konfiguráció
+  href: oracle-baremetal-ethernet.md
+- name: Architektúra
+  href: oracle-baremetal-architecture.md
+- name: Üzembe helyezés
+  href: oracle-baremetal-provision.md

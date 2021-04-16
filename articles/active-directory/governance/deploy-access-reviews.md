@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory hozzáférési felülvizsgálatok üzembe helyezésének megtervezése
-description: Tervezési útmutató a sikeres hozzáférési felülvizsgálatok üzembe helyezéséhez
+title: Hozzáférési felülvizsgálatok Azure Active Directory megtervezése
+description: Tervezési útmutató a hozzáférési felülvizsgálatok sikeres üzembe helyezéséhez
 services: active-directory
 documentationCenter: ''
 author: BarbaraSelden
@@ -16,505 +16,505 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97932435"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532588"
 ---
-# <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
+# <a name="planning-azure-active-directory-access-reviews-deployment"></a>A Azure Active Directory áttekintések üzembe helyezésének megtervezése
 
-[Azure Active Directory (Azure ad) hozzáférési felülvizsgálatok](access-reviews-overview.md) segítségével a szervezet biztonságosabban megtarthatja a hálózatot az [erőforrás-hozzáférési életciklusának](identity-governance-overview.md)kezelésével. A hozzáférési felülvizsgálatok segítségével a következőket teheti:
+[Azure Active Directory (Azure AD) hozzáférési](access-reviews-overview.md) felülvizsgálatok segítségével a szervezet az erőforrás-hozzáférési életciklus kezelésével biztosíthatja a hálózat [biztonságát.](identity-governance-overview.md) A hozzáférési felülvizsgálatokkal a következőre van képes:
 
-* Rendszeres értékeléseket ütemezhet, vagy ad-hoc felülvizsgálatokat hajthat végre, hogy megismerje, ki férhet hozzá bizonyos erőforrásokhoz, például alkalmazásokhoz és csoportokhoz.
+* Rendszeres felülvizsgálatok ütemezése vagy alkalmi felülvizsgálatok végrehajtása annak ellenőrzéséhez, hogy ki férhet hozzá bizonyos erőforrásokhoz, például alkalmazásokhoz és csoportokhoz
 
-* Értékelések követése az adatvizsgálatok, a megfelelőség és a szabályzatok miatt
+* Elemzések, megfelelőség vagy szabályzati okok felülvizsgálatának nyomon követése
 
-* Felülvizsgálatok delegálása adott rendszergazdák, üzleti tulajdonosok vagy végfelhasználók számára, akik önmagukban tudják igazolni a folyamatos hozzáférés szükségességét
+* Felülvizsgálatokat delegálhat adott rendszergazdáknak, üzleti tulajdonosoknak vagy végfelhasználóknak, akik igazolhatják, hogy folyamatos hozzáférésre van szükség
 
-* Az megállapítások segítségével hatékonyan meghatározhatja, hogy a felhasználók továbbra is rendelkeznek-e hozzáféréssel
+* Az elemzések segítségével hatékonyan meghatározhatja, hogy a felhasználóknak továbbra is hozzáférésre van-e szükség
 
-* Automatizálja a felülvizsgálatok eredményeit, például a felhasználók erőforrásokhoz való hozzáférésének eltávolítását
+* Az eredmények áttekintésének automatizálása, például a felhasználók erőforrásokhoz való hozzáférésének eltávolítása
 
-  ![A hozzáférési felülvizsgálatok folyamatát ábrázoló diagram.](./media/deploy-access-review/1-planning-review.png)
+  ![A hozzáférési felülvizsgálatok folyamatát bemutató diagram.](./media/deploy-access-review/1-planning-review.png)
 
-A hozzáférési felülvizsgálatok egy [Azure ad Identity Governance](identity-governance-overview.md) képesség. A többi lehetőség a [jogosultságok kezelése](entitlement-management-overview.md), a [Privileged Identity Management](../privileged-identity-management/pim-configure.md) és a [használati feltételek](../conditional-access/terms-of-use.md). Együttesen segítenek a szervezeteknek a következő négy kérdés megválaszolásában:
+A hozzáférési felülvizsgálatok [Azure AD Identity Governance](identity-governance-overview.md) képesség. A többi képesség a [jogosultságkezelés,](entitlement-management-overview.md) [a Privileged Identity Management](../privileged-identity-management/pim-configure.md) és a [használati feltételek.](../conditional-access/terms-of-use.md) Együttesen segítenek a szervezeteknek megválaszolni ezt a négy kérdést:
 
-* Mely felhasználók férhetnek hozzá az erőforrásokhoz?
+* Mely felhasználóknak kell hozzáférniük az erőforrásokhoz?
 
-* Mik azok a felhasználók, akik ezt a hozzáférést használják?
+* Mit csinálnak ezek a felhasználók ezzel a hozzáféréssel?
 
-* Van-e hatékony szervezeti vezérlés a hozzáférések kezeléséhez?
+* Van hatékony szervezeti vezérlés a hozzáférés-kezeléshez?
 
-* Ellenőrizhető, hogy a vezérlők működnek-e?
+* Ellenőrizhetik az auditorok, hogy működnek-e a vezérlők?
 
-A hozzáférési felülvizsgálatok üzembe helyezésének megtervezése elengedhetetlen ahhoz, hogy biztosan elérje a kívánt irányítási stratégiát a szervezet felhasználói számára.
+A hozzáférési felülvizsgálatok üzembe helyezésének megtervezése elengedhetetlen ahhoz, hogy el tudja érni a kívánt cégirányítási stratégiát a szervezet felhasználói számára.
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
-A hozzáférési felülvizsgálatok használatának legfontosabb előnyei a következők:
+A hozzáférési felülvizsgálatok engedélyezésének fő előnyei:
 
-* **Együttműködés vezérlése**. A hozzáférési felülvizsgálatok lehetővé teszik a szervezetek számára, hogy a felhasználók által igényelt összes erőforráshoz hozzáférjenek. Ha a felhasználók megosztják és együttműködnek, a szervezetek biztosak lehetnek abban, hogy az információ csak a csak a felhatalmazott felhasználók között van.
+* **Az együttműködés szabályozása.** A hozzáférési felülvizsgálatok lehetővé teszik a szervezetek számára a felhasználók által szükséges összes erőforráshoz való hozzáférés kezelését. Amikor a felhasználók osztoznak és együttműködnek, a szervezetek biztosak lehetnek abban, hogy az információk csak a jogosult felhasználók között oszlnak meg.
 
-* **Kockázatkezelés**. A hozzáférési felülvizsgálatok lehetővé teszik a szervezetek számára, hogy az adatszivárgás és az adatvesztés kockázatának csökkentése érdekében vizsgálják át az adatkezelés és az alkalmazások hozzáférését. Ez olyan képességeket is tartalmaz, amelyekkel rendszeresen ellenőrizheti a külső partner vállalati erőforrásokhoz való hozzáférését. 
+* **Kockázatkezelés.** A hozzáférési felülvizsgálatok lehetőséget biztosítanak a szervezetek számára az adatokhoz és alkalmazásokhoz való hozzáférés áttekintésére, ami csökkenti az adatszivárgás és az adatszivárgás kockázatát. Ide tartoznak a külső partnerek vállalati erőforrásokhoz való hozzáférésének rendszeres áttekintésére rendelkezésre álló képességek. 
 
-* **Foglalkozzon a megfelelőséggel és a szabályozással**. A hozzáférési felülvizsgálatok segítségével a csoportok, alkalmazások és webhelyek hozzáférési életciklusát szabályozhatja és újra hitelesítheti. A szervezete számára meghatározott megfelelőségi vagy kockázati szempontból kényes alkalmazások nyomon követését is szabályozhatja. 
+* **A megfelelőség és az irányítás kezelése.** A hozzáférési felülvizsgálatokkal csoportok, alkalmazások és webhelyek hozzáférési életciklusát irányíthatja és újrakattathatja. Szabályozhatja a megfelelőség vagy a szervezetre jellemző, kockázatérzékeny alkalmazások nyomon követését. 
 
-* **Csökkentse a költségeket**. A hozzáférési felülvizsgálatok a felhőben vannak felépítve, és natív módon működnek a Felhőbeli erőforrásokkal, például a csoportokkal, alkalmazásokkal és hozzáférési csomagokkal. A hozzáférési felülvizsgálatok használata kevésbé költséges, mint a saját eszközeinek kiépítése vagy más módon a helyszíni eszközkészlet frissítése.
+* **Költségcsökkentés.** A hozzáférési felülvizsgálatok a felhőben vannak felépítve, és natív módon működnek a felhőbeli erőforrásokkal, például csoportokkal, alkalmazásokkal és hozzáférési csomagokkal. A hozzáférési felülvizsgálatok használata kevesebb költséggel jár, mint saját eszközök kiépítése vagy a helyszíni eszközkészlet más módon történő frissítése.
 
-### <a name="training-resources"></a>Erőforrások betanítása
+### <a name="training-resources"></a>Képzési források
 
-A következő videók hasznosak lehetnek a hozzáférési felülvizsgálatok megismeréséhez:
+Az alábbi videók hasznosak lehetnek, ha a hozzáférési felülvizsgálatokkal ismerkedik meg:
 
-* [Mik azok a hozzáférési felülvizsgálatok az Azure AD-ben?](https://youtu.be/kDRjQQ22Wkk)
+* [Mik azok a hozzáférési felülvizsgálatok az Azure AD-ban?](https://youtu.be/kDRjQQ22Wkk)
 
-* [Hozzáférési felülvizsgálatok létrehozása az Azure AD-ben](https://youtu.be/6KB3TZ8Wi40)
+* [Hozzáférési felülvizsgálatok létrehozása az Azure AD-ban](https://youtu.be/6KB3TZ8Wi40)
 
-* [Hozzáférési felülvizsgálatok engedélyezése az Azure AD-ben](https://youtu.be/X1SL2uubx9M)
+* [Hozzáférési felülvizsgálatok engedélyezése az Azure AD-ban](https://youtu.be/X1SL2uubx9M)
 
-* [Hozzáférés ellenőrzése a saját hozzáférés használatával](https://youtu.be/tIKdQhdHLXU)
+* [Hozzáférés áttekintése a Saját hozzáférés](https://youtu.be/tIKdQhdHLXU)
 
 ### <a name="licenses"></a>Licencek
 
-Érvényes prémium szintű Azure AD (P2) licencre van szükség minden olyan személyhez, amely a globális rendszergazdák vagy a felhasználói rendszergazdák számára is szükséges, akik hozzáférési felülvizsgálatokat hoznak létre vagy hajtanak végre. További információ: hozzáférés-felülvizsgálati [licencekre vonatkozó követelmények](access-reviews-overview.md).
+Érvényes hozzáférési prémium szintű Azure AD (P2) licencre van szüksége minden olyan személyhez, kivéve a globális rendszergazdákat vagy a felhasználói rendszergazdákat, akik hozzáférési felülvizsgálatokat hoznak létre vagy hajt végre. További információ: [Hozzáférési felülvizsgálatok licenckövetelményei.](access-reviews-overview.md)
 
-Szükség lehet más identitás-irányítási funkciókra is, például a [jogosultságok életciklusának felügyeletére](entitlement-management-overview.md) vagy a privilegizált identitások kezelésére. Ebben az esetben szükség lehet a kapcsolódó licencekre is. További információ: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
+Az identitáskezelés egyéb funkcióira is szüksége lehet, például a Jogosultságok életciklusának kezelése [vagy](entitlement-management-overview.md) a Privileged Identity Managements. Ebben az esetben kapcsolódó licencekre is szüksége lehet. További információ: díjszabás [Azure Active Directory.](https://azure.microsoft.com/pricing/details/active-directory/)
 
-## <a name="plan-the-access-reviews-deployment-project"></a>A hozzáférési felülvizsgálatok telepítési Projektének megtervezése
+## <a name="plan-the-access-reviews-deployment-project"></a>A Hozzáférési felülvizsgálatok üzembe helyezési projekt megtervezése
 
-Gondolja át, hogy a szervezetnek meg kell határoznia a hozzáférési felülvizsgálatok környezetében való üzembe helyezésére vonatkozó stratégiát.
+Vegye figyelembe, hogy a szervezetének meg kell határoznia a hozzáférési felülvizsgálatok üzembe helyezésének stratégiáját a környezetében.
 
-### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
+### <a name="engage-the-right-stakeholders"></a>A megfelelő érdekelt felek bevonására
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és a projekt szerepkörei egyértelműek.
+Ha a technológiai projektek meghiúsulnak, ezt általában a hatásra, az eredményekre és a felelősségi körökre vonatkozó, nem egyező elvárások miatt érik el. A buktatók elkerülése érdekében győződjön meg [arról,](../fundamentals/active-directory-deployment-plans.md) hogy a megfelelő érdekelt feleket is be fogja vonni, és hogy a projektszerepk szerepkörök egyértelműek.
 
-A hozzáférési felülvizsgálatok esetében valószínű, hogy a szervezeten belül a következő csapatok képviselői szerepelnek:
+A hozzáférési felülvizsgálatok során valószínűleg a szervezet alábbi csapatának képviselőit fogja tartalmazni:
 
-* Az **it-adminisztráció** kezeli az informatikai infrastruktúrát, és felügyeli a Felhőbeli és a szolgáltatott szoftverek (SaaS) alkalmazásait. A csapat a következőket teszi:
+* **Az it-felügyelet** felügyeli az it-infrastruktúrát, és felügyeli a felhővel kapcsolatos befektetéseket és saaS-alkalmazásokat. Ez a csapat a következőt fogja:
 
-   * Tekintse át az infrastruktúrához és alkalmazásokhoz való emelt szintű hozzáférést, beleértve a Microsoft 365 és az Azure AD-t.
+   * Tekintse át az infrastruktúrához és alkalmazásokhoz való emelt szintű hozzáférést, beleértve a Microsoft 365 Azure AD-t is.
 
-   * Az aktuális hozzáférési listák fenntartása érdekében ütemezzen és futtasson hozzáférési felülvizsgálatokat azokon a csoportokon, amelyek a kivételi listák vagy az informatikai kísérleti projektek fenntartására szolgálnak.
+   * Hozzáférési felülvizsgálatok ütemezése és futtatása olyan csoportokon, amelyek a kivételek listái vagy az it-próbaprojektek karbantartására használhatók a naprakész hozzáférési listák fenntartása érdekében.
 
-   * Győződjön meg arról, hogy a szolgáltatás-rendszerbiztonsági tag által az erőforrásokhoz való programozott (megírt) hozzáférés szabályozása és felülvizsgálata megtörténik.
+   * Győződjön meg arról, hogy az erőforrások szolgáltatásnévn keresztüli programozott (szkriptekkel futtatott) hozzáférése szabályozott és felülvizsgálva van.
 
-* A **fejlesztői csapatok** alkalmazásokat hozhatnak létre és kezelhetnek a szervezet számára. A csapat a következőket teszi:
+* **A fejlesztői csapatok** alkalmazásokat építenek és tartnak karban a szervezet számára. Ez a csapat a következőt fogja:
 
-   * Szabályozhatja, hogy ki férhet hozzá az összetevőkhöz, és hogyan kezelheti azokat az SaaS-, a Pásti-és a IaaS-erőforrásokban, amelyek a kifejlesztett
+   * Szabályozhatja, hogy ki férhet hozzá és kezelhet összetevőket a kifejlesztett megoldásokból álló SaaS-, PaaS- és IaaS-erőforrásokban.
 
-   * A belső alkalmazások fejlesztéséhez alkalmazásokat és eszközöket elérő csoportok kezelése.
+   * Olyan csoportokat kezelhet, amelyek hozzáférhetnek a belső alkalmazásfejlesztéshez szükséges alkalmazásokhoz és eszközökhöz.
 
-   * Olyan privilegizált identitások megkövetelése, amelyek hozzáférnek az ügyfelek számára üzemeltetett éles szoftverekhez vagy megoldásokhoz
+   * Az ügyfelek számára üzemeltetett éles szoftverekhez vagy megoldásokhoz hozzáféréssel rendelkező emelt szintű identitások megkövetelása
 
-* Az **üzleti egységek** a projekteket és a saját alkalmazásokat kezelik. A csapat a következőket teszi: 
+* **Az üzleti egységek projekteket** és saját alkalmazásokat kezelnek. Ez a csapat a következőt fogja: 
 
-   * A belső és külső felhasználókhoz tartozó csoportokhoz és alkalmazásokhoz való hozzáférés ellenőrzése és jóváhagyása vagy elutasítása.
+   * Tekintse át, hagyja jóvá vagy tiltsa le a csoportokhoz és alkalmazásokhoz való hozzáférést a belső és külső felhasználók számára.
 
-   * Az alkalmazottak és a külső identitások, például az üzleti partnerek folyamatos hozzáférését tanúsító értékeléseket ütemezhet és hajt végre.
+   * Felülvizsgálatok ütemezése és végrehajtása az alkalmazottak és külső identitások, például üzleti partnerek folyamatos hozzáférésének ellenőrzésére.
 
-* A **vállalat irányítása** biztosítja, hogy a szervezet a belső szabályzatot követi, és megfelel a szabályozásoknak. A csapat a következőket teszi:
+* **A vállalati szabályozás** biztosítja, hogy a szervezet betartsa a belső szabályzatot, és megfeleljen a szabályozásnak. Ez a csapat a következőt fogja:
 
-   * Új hozzáférési felülvizsgálatok kérése vagy beütemezett időpontja.
+   * Új hozzáférési felülvizsgálatok kérése vagy ütemezése.
 
-   * A hozzáférés áttekintésére szolgáló folyamatokat és eljárásokat, beleértve a dokumentációt és a megfelelőségi nyilvántartást is.
+   * A hozzáférés áttekintésének folyamatai és eljárásai, beleértve a dokumentációt és a megfelelőség nyilvántartását.
 
-   * Tekintse át a kritikus fontosságú erőforrások múltbeli felülvizsgálatának eredményeit.
+   * Tekintse át a kritikus fontosságú erőforrásokra vonatkozó korábbi felülvizsgálatok eredményeit.
 
 > [!NOTE]
-> A manuális értékelést igénylő felülvizsgálatok esetében ügyeljen arra, hogy megtervezze a megfelelő felülvizsgálók és a szabályzatoknak és a megfelelőségi igényeknek megfelelő felülvizsgálati ciklusokat. Ha a felülvizsgálati ciklusok túl gyakoriak, vagy túl kevés a véleményező, akkor a minőség elvész, és túl sok vagy túl kevés személy férhet hozzá. 
+> A manuális értékelést igénylő felülvizsgálatok esetén mindenképpen tervezze meg a megfelelő felülvizsgálókat és felülvizsgálati ciklusokat, amelyek megfelelnek a szabályzat- és megfelelőségi igényeknek. Ha a felülvizsgálati ciklusok túl gyakoriak, vagy túl kevés felülvizsgáló van, a minőség elveszhet, és túl sok vagy túl kevés felhasználó férhet hozzá. 
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 
-A kommunikáció minden új üzleti folyamat sikere szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal, hogyan és Mikor változnak, és hogyan szerezhetnek támogatást, ha problémákat tapasztalnak. 
+A kommunikáció kritikus fontosságú az új üzleti folyamatok sikerességéhez. Proaktív módon közölheti a felhasználókkal, hogy hogyan és mikor változnak a felhasználói élményük, és hogyan nyerhetnek támogatást, ha problémákat tapasztalnak. 
 
-#### <a name="communicate-changes-in-accountability"></a>A változások elszámoltathatóságának közlése
+#### <a name="communicate-changes-in-accountability"></a>Az elszámoltathatóság változásainak kommunikálás
 
-A hozzáférési felülvizsgálatok támogatják a felülvizsgáló és az üzleti tulajdonosok folyamatos hozzáférésének átváltási feladatait. A hozzáférési döntések leválasztása az IT-meghajtókon pontosabb hozzáférési döntéseket hoz. Ez az erőforrás-tulajdonos elszámoltathatóságának és felelősségének kulturális változása. Proaktív módon értesítheti ezt a változást, és gondoskodhat az erőforrás-tulajdonosok betanításáról és az elemzések használatáról a jó döntések elvégzéséhez.
+A hozzáférési felülvizsgálatok támogatják az üzleti tulajdonosok folyamatos hozzáférésének áttekintésére és a folyamatos hozzáférésre való cselekvésre való felelősség áttűnését. A hozzáférési döntéseknek az IT-ről való leválasztása pontosabb döntéseket hoz a hozzáféréssel kapcsolatos döntésekhez. Ez kulturális változás az erőforrás-tulajdonos elszámoltathatóságában és felelősségében. Proaktívan kommunikálja ezt a változást, és győződjön meg arról, hogy az erőforrás-tulajdonosok betanítása és a betekintő adatok alapján jó döntéseket hozhat.
 
-Egyértelmű, hogy az infrastruktúrával kapcsolatos összes hozzáférési döntés és a Kiemelt szerepkör-hozzárendelések esetében is érdemes maradnia. 
+Egyértelmű, hogy az it-rendszergazda az infrastruktúrával kapcsolatos hozzáférési döntések és a kiemelt szerepkör-hozzárendelések teljes felügyeletében szeretne maradni. 
 
 #### <a name="customize-email-communication"></a>E-mail-kommunikáció testreszabása
 
-A felülvizsgálatok beütemezhetik azokat a felhasználókat, akik elvégzik a felülvizsgálatot. Ezek a felülvizsgálók ezután e-mailben értesítik a hozzájuk rendelt új felülvizsgálatokról, valamint a hozzájuk rendelt felülvizsgálati időszak lejárta előtt emlékeztetőket kapnak.
+A felülvizsgálat ütemezésekor felhasználókat kell kijelölni, akik végrehajtják ezt a felülvizsgálatot. Ezek a felülvizsgálók ezután e-mailes értesítést kapnak a hozzájuk rendelt új értékelésekről, valamint emlékeztetőket a hozzájuk rendelt felülvizsgálat lejárta előtt.
 
-A rendszergazdák dönthetnek úgy, hogy a felülvizsgálati időszak lejárta előtt vagy egy nappal a lejárat előtt elküldik ezt az értesítést. 
+A rendszergazdák félúton vagy a felülvizsgálat lejárta előtt vagy egy nappal a lejárata előtt küldhetik el ezt az értesítést. 
 
-A felülvizsgálók számára elküldött e-mailek testreszabhatók úgy, hogy egy egyéni rövid üzenetet is felhasználhatnak, amely arra ösztönzi őket, hogy a felülvizsgálat során fellépjenek. Javasoljuk, hogy a további szöveget a következő szövegre használja:
+A felülvizsgálóknak küldött e-mail testre szabható egy egyéni rövid üzenettel, amely arra bátorítja őket, hogy járják el a felülvizsgálatot. Javasoljuk, hogy a további szöveget a következőre használja:
 
-* Vegyen fel egy személyes üzenetet a felülvizsgálók számára, hogy azok megértsék a megfelelőség vagy az IT-részleg által küldött üzeneteket.
+* Személyes üzenetet is küld a felülvizsgálóknak, hogy megértsék, az Ön megfelelőségi vagy it-részlege küldi el.
 
-* Adjon meg egy hivatkozást, vagy hivatkozzon a belső információkra a felülvizsgálat elvárásainak, valamint a további referenciák vagy tananyagok alapján.
+* Hivatkozás vagy hivatkozás beszúrása a felülvizsgálat elvárásainak és további referencia- vagy képzési anyagoknak a belső információira.
 
-* Adjon meg egy hivatkozást, amely útmutatást nyújt a [hozzáférés önellenőrzésének végrehajtásához.](review-your-access.md) 
+* Tartalmaz egy hivatkozást, amely a hozzáférés önértékelésének elvégzésére [vonatkozó utasításokra mutató hivatkozást tartalmaz.](review-your-access.md) 
 
-  ![Felülvizsgáló e-mail címe](./media/deploy-access-review/2-plan-reviewer-email.png)
+  ![Felülvizsgáló e-mail](./media/deploy-access-review/2-plan-reviewer-email.png)
 
-A Start Review utasítás kiválasztása után a felülvizsgálók a csoport-és alkalmazás-hozzáférési felülvizsgálatok [myAccess-portálra](https://myapplications.microsoft.com/) lesznek irányítva. A portál áttekintést nyújt azokról a felhasználókról, akik hozzáférnek a megtekintett erőforráshoz, valamint a legutóbbi bejelentkezési és hozzáférési információk alapján történő rendszer-ajánlásokhoz.
+Az Áttekintés kezdete lehetőség kiválasztásakor a felülvizsgálók a [myAccess](https://myapplications.microsoft.com/) portálra lesznek irányítva csoport- és alkalmazás-hozzáférési felülvizsgálatokért. A portál áttekintést nyújt az összes olyan felhasználóról, aki hozzáféréssel rendelkezik az áttekintő erőforráshoz, valamint rendszerjavaslatokat tesz az utolsó bejelentkezés és a hozzáférési információk alapján.
 
-### <a name="plan-a-pilot"></a>Pilóta megtervezése
+### <a name="plan-a-pilot"></a>Próbaterv
 
-Javasoljuk ügyfeleinknek, hogy kezdetben egy kis csoporttal és a nem kritikus fontosságú erőforrásokkal való kezdeti hozzáférési felülvizsgálatokat. A tesztelés segítségével szükség szerint állíthatja be a folyamatokat és a kommunikációt, és növelheti a felhasználók és a felülvizsgálók képességét a biztonsági és megfelelőségi követelmények kielégítése érdekében.
+Javasoljuk ügyfeleinknek, hogy először próba-hozzáférési felülvizsgálatokat egy kis csoporttal, és a nem kritikus fontosságú erőforrásokat célozzanak meg. A próbafolyamatok segítségével szükség szerint módosíthatja a folyamatokat és a kommunikációt, és növelheti a felhasználók és felülvizsgálók biztonsági és megfelelőségi követelményeinek való megfelelését.
 
-A pilóta azt ajánljuk, hogy:
+A próbaúton a következőket javasoljuk:
 
-* Kezdje olyan értékelésekkel, amelyekben az eredmények nem lesznek automatikusan alkalmazva, és szabályozhatja a következményeket.
+* Kezdje olyan felülvizsgálatokkal, ahol a rendszer nem alkalmazza automatikusan az eredményeket, és szabályozhatja azok következményeit.
 
-* Győződjön meg arról, hogy minden felhasználó rendelkezik az Azure AD-ben felsorolt érvényes e-mail-címekkel, és e-mailben értesítést kap a megfelelő művelet elvégzéséhez. 
+* Győződjön meg arról, hogy minden felhasználónak érvényes e-mail-címe van az Azure AD-ben, és e-mail-értesítést kap a megfelelő művelet érdekében. 
 
-* Ha gyorsan vissza szeretné állítani, dokumentálja a teszt részeként eltávolított összes hozzáférést.
+* Dokumentálja a próba részeként eltávolított hozzáféréseket arra az esetre, ha gyorsan vissza kellene állítania.
 
-* Figyelje a naplókat, hogy minden esemény megfelelően legyen naplózva.
+* Az auditnaplók figyelése annak biztosításához, hogy minden esemény naplózása megfelelő legyen.
 
-További információ: [ajánlott eljárások a pilóta](../fundamentals/active-directory-deployment-plans.md)számára.
+További információkért tekintse meg [a teszthez ajánlott eljárásokat.](../fundamentals/active-directory-deployment-plans.md)
 
-## <a name="introduction-to-access-reviews"></a>A hozzáférési felülvizsgálatok bemutatása
+## <a name="introduction-to-access-reviews"></a>Bevezetés a hozzáférési felülvizsgálatokbe
 
-Ez a szakasz bemutatja a hozzáférés-felülvizsgálati fogalmakat, amelyeket érdemes tudni a felülvizsgálatok tervezése előtt.
+Ez a szakasz bemutatja a hozzáférés-felülvizsgálati fogalmakat, amelyekről a felülvizsgálatok megtervezése előtt tudnia kell.
 
-### <a name="what-resource-types-can-be-reviewed"></a>Milyen típusú erőforrásokat lehet áttekinteni?
+### <a name="what-resource-types-can-be-reviewed"></a>Milyen erőforrástípusok felülvizsgálata létezik?
 
-Miután integrálta a szervezet erőforrásait az Azure AD-vel (például felhasználók, alkalmazások és csoportok), felügyelheti és áttekintheti őket. 
+Miután integrálta a szervezet erőforrásait az Azure AD-val (például felhasználókkal, alkalmazásokkal és csoportokkal), azok kezelhetők és áttekinthetőek. 
 
-Az ellenőrzéshez használt tipikus célok a következők:
+A felülvizsgálatok tipikus céljai a következők:
 
-* Az [Azure ad-vel integrált alkalmazások egyszeri bejelentkezéshez](../manage-apps/what-is-application-management.md) (például SaaS, üzletági).
+* [Az Egyszeri bejelentkezéshez az Azure AD-val](../manage-apps/what-is-application-management.md) integrált alkalmazások (például SaaS, üzletági).
 
-* Csoporttagság [(](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Microsoft 365ban, beleértve a Microsoft Teams-t).
+* [Csoporttagság](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (szinkronizálva az Azure AD-be, vagy az Azure AD-ban vagy Microsoft 365, beleértve a Microsoft Teamst).
 
-* Olyan [hozzáférési csomag](./entitlement-management-overview.md) , amely az erőforrásokat (csoportokat, alkalmazásokat és helyeket) egyetlen csomagba csoportosítja a hozzáférés kezeléséhez.
+* [Hozzáférési csomag,](./entitlement-management-overview.md) amely egyetlen csomagba csoportosítja az erőforrásokat (csoportokat, alkalmazásokat és helyeket) a hozzáférés kezeléséhez.
 
-* [Azure ad-szerepkörök és Azure-erőforrás-szerepkörök](../privileged-identity-management/pim-resource-roles-assign-roles.md) Privileged Identity Managementban definiált módon.
+* [Az Azure AD-szerepkörök és az Azure-erőforrások szerepkörei](../privileged-identity-management/pim-resource-roles-assign-roles.md) a Privileged Identity Management.
 
 ### <a name="who-will-create-and-manage-access-reviews"></a>Ki hozza létre és kezeli a hozzáférési felülvizsgálatokat?
 
-A hozzáférési felülvizsgálat létrehozásához, kezeléséhez vagy olvasásához szükséges rendszergazdai szerepkör az áttekintett erőforrás típusától függ. Az alábbi táblázat az egyes erőforrástípusok számára szükséges szerepköröket jelöli:
+A hozzáférési felülvizsgálatok létrehozásához, kezeléséhez vagy olvasásához szükséges rendszergazdai szerepkör az áttekintett erőforrás típusától függ. Az alábbi táblázat az egyes erőforrástípushoz szükséges szerepköröket jelöli:
 
-| Erőforrás típusa| Hozzáférési felülvizsgálatok létrehozása és kezelése (Creators)| Olvasási hozzáférési felülvizsgálati eredmények |
+| Erőforrás típusa| Hozzáférési felülvizsgálatok létrehozása és kezelése (létrehozók)| Hozzáférési felülvizsgálat eredményeinek olvasása |
 | - | - | -|
-| Csoport vagy alkalmazás| Globális rendszergazda <p>Felhasználói rendszergazda| Alkotók és biztonsági rendszergazda |
-| Kiemelt szerepkörök az Azure AD-ben| Globális rendszergazda <p>Kiemelt szerepkörű rendszergazda| Alkotói <p>Biztonsági olvasó<p>Biztonsági rendszergazda |
-| Kiemelt szerepkörök az Azure-ban (erőforrások)| Globális rendszergazda<p>Felhasználói rendszergazda<p>Erőforrás tulajdonosa| Alkotói |
-| Hozzáférési csomag| Globális rendszergazda<p>A hozzáférési csomag létrehozója| Csak globális rendszergazda |
+| Csoport vagy alkalmazás| Globális rendszergazda <p>Felhasználói rendszergazda| Létrehozók és biztonsági rendszergazda |
+| Kiemelt szerepkörök az Azure AD-ban| Globális rendszergazda <p>Kiemelt szerepkör rendszergazdája| Alkotók <p>Biztonsági olvasó<p>Biztonsági rendszergazda |
+| Kiemelt szerepkörök az Azure-ban (erőforrások)| Globális rendszergazda<p>Felhasználói rendszergazda<p>Erőforrás tulajdonosa| Alkotók |
+| Hozzáférési csomag| Globális rendszergazda<p>Hozzáférési csomag létrehozója| Csak globális rendszergazda |
 
 
-További információ: [rendszergazdai szerepkör engedélyei Azure Active Directory](../roles/permissions-reference.md).
+További információ: Rendszergazdai [szerepkör engedélyei](../roles/permissions-reference.md)a Azure Active Directory.
 
-### <a name="who-will-review-the-access-to-the-resource"></a>Ki fogja áttekinteni az erőforráshoz való hozzáférést?
+### <a name="who-will-review-the-access-to-the-resource"></a>Ki fogja felülvizsgálni az erőforráshoz való hozzáférést?
 
-A hozzáférési felülvizsgálat létrehozója a létrehozás időpontjában dönti el, hogy ki fogja elvégezni a felülvizsgálatot. Ez a beállítás a felülvizsgálat elindítása után nem módosítható. A felülvizsgálók három személy által reprezentáltak:
+A hozzáférési felülvizsgálat létrehozója a létrehozáskor dönti el, hogy ki fogja elvégezni a felülvizsgálatot. Ez a beállítás a felülvizsgálat elkezdődött után nem módosítható. A felülvizsgálókat három személy képviseli:
 
 * Erőforrás-tulajdonosok, akik az erőforrás üzleti tulajdonosai.
 
-* A hozzáférési felülvizsgálatok rendszergazdája által kiválasztott, egyenként kiválasztott meghatalmazottak összessége.
+* A Hozzáférési felülvizsgálatok rendszergazdája által kiválasztott, egyenként kiválasztott delegáltak halmaza.
 
-* A végfelhasználók, akik önmagukban tanúsítják, hogy továbbra is hozzáférést igényelnek.
+* Azok a végfelhasználók, akik mind igazolják, hogy folyamatos hozzáférésre van szükségük.
 
-Hozzáférési felülvizsgálat létrehozásakor a rendszergazdák egy vagy több felülvizsgáló közül választhatnak. Az összes felülvizsgáló elindíthatja és elvégezheti a felülvizsgálatot, és a felhasználók számára kiválaszthatja az erőforrásokhoz való folyamatos hozzáférést, vagy eltávolíthatja őket. 
+Hozzáférési felülvizsgálat létrehozásakor a rendszergazdák egy vagy több felülvizsgáló közül választhatnak. Az összes felülvizsgáló elkezdhet és végrehajthat egy felülvizsgálatot, és kiválaszthat felhasználókat az erőforrásokhoz való folyamatos hozzáféréshez vagy azok eltávolításához. 
 
 ### <a name="components-of-an-access-review"></a>Hozzáférési felülvizsgálat összetevői
 
-A hozzáférési felülvizsgálatok megvalósítása előtt tervezze meg a szervezete számára releváns felülvizsgálati típusokat. Ehhez üzleti döntéseket kell hoznia arról, hogy mit szeretne áttekinteni, és milyen műveleteket kell végrehajtania a felülvizsgálatok alapján.
+A hozzáférési felülvizsgálatok megvalósítása előtt meg kell tervezni a szervezet számára releváns felülvizsgálatok típusait. Ennek érdekében üzleti döntéseket kell hoznia arról, hogy mit szeretne felülvizsgálni, és milyen műveleteket kell meghoznia az értékelések alapján.
 
-Hozzáférési felülvizsgálati szabályzat létrehozásához a következő információk szükségesek.
+Hozzáférési felülvizsgálati szabályzat létrehozásához az alábbi információkra van szükség.
 
-* Milyen erőforrás (oka) t szeretne áttekinteni?
+* Milyen erőforrásokat kell áttekintenünk?
 
-* A hozzáférés felülvizsgálata folyamatban van.
+* Akinek a hozzáférése felülvizsgálat alatt áll.
 
-* Milyen gyakran történjen a felülvizsgálat?
+* Milyen gyakran kell lekövetkeztetni a felülvizsgálatot?
 
 * Ki fogja elvégezni a felülvizsgálatot?
 
-   * Hogyan értesülnek a rendszer a felülvizsgálatról?
+   * Hogyan kapják meg az értesítést a felülvizsgálatról?
 
-   * Milyen határidőkkel kell érvényesíteni a felülvizsgálatot?
+   * Milyen ütemterveket kell kikényszeríteni a felülvizsgálathoz?
 
 * Milyen automatikus műveleteket kell kikényszeríteni a felülvizsgálat alapján?
 
    * Mi történik, ha a felülvizsgáló nem válaszol időben?
 
-* Milyen manuális műveletekre kerül sor a felülvizsgálat alapján?
+* Milyen manuális műveletek lesznek ennek eredményeképpen a felülvizsgálat alapján?
 
-* Milyen kommunikációt kell elküldeni a végrehajtott műveletek alapján?
+* Milyen kommunikációt kell elküldeni a műveletek alapján?
 
 
 **Példa hozzáférési felülvizsgálati tervre**
 
 | Összetevő| Érték |
 | - | - |
-| **Áttekinthető erőforrások**| Hozzáférés a Microsoft Dynamicshoz |
-| **Felülvizsgálati gyakoriság**| Havonta |
-| **A felülvizsgálatot végző személy**| Dynamics Business Group program-kezelők |
-| **Értesítés**| E-mailt 24 órával az alias áttekintése előtt Dynamics-Pms<p>Bemutatjuk, hogy a megvásárolt egyéni üzenetet a felülvizsgálók számára is ösztönözzék |
-| **Idővonal**| 48 óra az értesítésből |
-|**Automatikus műveletek**| Távolítsa el a hozzáférést bármely olyan fiókból, amely 90 napon belül nem rendelkezik interaktív bejelentkezéssel, ha eltávolítja a felhasználót a biztonsági csoport Dynamics-Access szolgáltatásból. <p>*Műveleteket hajthat végre, ha nem tekinti át az időkeretet.* |
-| **Manuális műveletek**| A felülvizsgálók elvégezhetik az Eltávolítás jóváhagyását az automatizált művelet előtt, ha szükséges. |
-| **Tájékoztatások**| Olyan belső (tag) felhasználók elküldése, akik el lettek távolítva az e-mailek eltávolításáról és a hozzáférés visszaszerzéséről. |
+| **Áttekintő források**| Hozzáférés a Microsoft Dynamics szolgáltatáshoz |
+| **Áttekintés gyakorisága**| Havonta |
+| **Ki hajt végre felülvizsgálatot?**| Dynamics business group Program Managers |
+| **Értesítés**| E-mailben 24 órával az aliasnevek Dynamics-Pms<p>Egyéni üzenet küldése a felülvizsgálóknak a részvétel biztonságossá |
+| **Idővonal**| 48 óra az értesítéstől |
+|**Automatikus műveletek**| Távolítsa el a hozzáférést minden olyan fiókból, amely 90 napon belül nem rendelkezik interaktív bejelentkezéssel, ha eltávolítja a felhasználót a biztonsági csoport dynamics-access szolgáltatásból. <p>*Műveletek végrehajtása, ha nem felülvizsgálatát az idővonalon belül végzi el.* |
+| **Manuális műveletek**| A felülvizsgálók szükség esetén elvégezhetnek eltávolítási jóváhagyást az automatizált művelet előtt. |
+| **Tájékoztatások**| Küldjön belső (tag) felhasználókat, akik el vannak távolítva egy e-mailben, amely elmagyarázza, hogyan távolíthatók el, és hogyan lehet ismét hozzáférést szerezni. |
 
 
  
 
 ### <a name="automate-actions-based-on-access-reviews"></a>Műveletek automatizálása hozzáférési felülvizsgálatok alapján
 
-Kiválaszthatja, hogy a hozzáférés-eltávolítás automatizált legyen. ehhez az eredmények automatikus alkalmazása az erőforrásra beállítást kell beállítani az engedélyezéshez.
+A hozzáférés-eltávolítást automatizálhatja az Eredmények automatikus alkalmazása az erőforrásra beállítás Engedélyezésével.
 
   ![Hozzáférési felülvizsgálatok tervezése](./media/deploy-access-review/3-automate-actions-settings.png)
 
-A felülvizsgálat befejezése után a felülvizsgáló által nem jóváhagyott felhasználók automatikusan el lesznek távolítva az erőforrásból – vagy folyamatos hozzáférés mellett maradnak. Ez azt jelentheti, hogy a csoporttagság, az alkalmazás-hozzárendelésük, vagy a jogosultságuk visszavonása egy emelt szintű szerepkörre.
+A felülvizsgálat befejezése és befejezése után a felülvizsgáló által nem jóváhagyott felhasználókat a rendszer automatikusan eltávolítja az erőforrásból, vagy folyamatos hozzáférést biztosít. Ez jelentheti a csoporttagságuk eltávolítását, az alkalmazás-hozzárendelésüket, vagy a jogosultságuk megemelése emelt szintű szerepkörre.
 
-Javaslatok készítése
+Javaslatok meghozás
 
-A javaslatok a felülvizsgáló felületének részeként jelennek meg a felülvizsgálók számára, és jelzik a személy utolsó bejelentkezését a bérlőnek, vagy egy alkalmazás utolsó hozzáférését. Ez az információ segíti a felülvizsgálók számára a megfelelő hozzáférési döntés elvégzését. A javaslatok elvégzése lehetőség kiválasztásakor a hozzáférés-felülvizsgálati javaslatok is megjelennek. A hozzáférési felülvizsgálat végén a rendszer automatikusan alkalmazza ezeket az ajánlásokat azokra a felhasználókra, akik számára a véleményezők nem válaszolt.
+A javaslatok a felülvizsgálók számára a felülvizsgáló élmény részeként jelennek meg, és jelzik, hogy valaki utoljára jelentkezik be a bérlőbe, vagy hogy utoljára fért hozzá egy alkalmazáshoz. Ezek az információk segítenek a felülvizsgálóknak a megfelelő hozzáférési döntések meghozásában. A Javaslatok ajánlásokat választva a hozzáférési felülvizsgálat javaslatait fogja követni. A hozzáférési felülvizsgálat végén a rendszer automatikusan alkalmazza ezeket a javaslatokat azokra a felhasználókra, akikre a felülvizsgálók nem válaszoltak.
 
-A javaslatok a hozzáférési felülvizsgálat feltételein alapulnak. Ha például úgy konfigurálja a felülvizsgálatot, hogy a 90 napos interaktív bejelentkezés nélkül is eltávolítsa a hozzáférést, akkor azt javasoljuk, hogy az összes olyan felhasználót, aki megfelel a feltételnek, el kell távolítania. A Microsoft folyamatosan dolgozik a javaslatok tökéletesítésén. 
+A javaslatok a hozzáférési felülvizsgálatban megadott feltételeken alapulnak. Ha például úgy konfigurálja a felülvizsgálatot, hogy 90 napig ne legyen hozzáférése interaktív bejelentkezés nélkül, a rendszer azt javasolja, hogy a feltételeknek megfelelő összes felhasználót távolítsa el. A Microsoft folyamatosan dolgozik a javaslatok továbbfejlesztésen. 
 
-### <a name="review-guest-user-access"></a>Vendég felhasználói hozzáférés áttekintése
+### <a name="review-guest-user-access"></a>Vendégfelhasználói hozzáférés áttekintése
 
-A hozzáférési felülvizsgálatok segítségével áttekintheti és törölheti az együttműködési partnerek identitásait a külső szervezeteknél. A partneri felülvizsgálatok beállítása megfelel a megfelelőségi követelményeknek.
+A Hozzáférési felülvizsgálatok használatával áttekinti és megtisztítja az együttműködési partnerek identitását a külső szervezetektől. A partnerenkénti felülvizsgálatok konfigurálása megfelelhet a megfelelőségi követelményeknek.
 
-A külső identitások a következő műveletek egyikével kaphatnak hozzáférést a vállalati erőforrásokhoz:
+A külső identitások az alábbi műveletek egyikével kaphatnak hozzáférést a vállalati erőforrásokhoz:
 
 * Hozzáadva egy csoporthoz 
 
-* Csapatok meghívása 
+* Meghívva a Teamsbe 
 
-* Vállalati alkalmazásokhoz vagy hozzáférési csomagokhoz társítva
+* Vállalati alkalmazáshoz vagy hozzáférési csomaghoz rendelve
 
-* Kiemelt szerepkör hozzárendelése az Azure AD-ben vagy egy Azure-előfizetésben
+* Kiemelt szerepkör hozzárendelése az Azure AD-ban vagy egy Azure-előfizetésben
 
-Lásd: [minta parancsfájl](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). A szkript megmutatja, hogy a bérlőn meghívott külső identitások hol vannak használatban. Megtekintheti a külső felhasználó csoporttagság, szerepkör-hozzárendelések és az alkalmazás-hozzárendelések az Azure AD szolgáltatásban című témakört. A parancsfájl nem jeleníti meg az Azure AD-n kívüli hozzárendeléseket, például a közvetlen jogosultság-hozzárendelést a SharePoint-erőforrásokhoz, csoportok használata nélkül.
+Lásd: [példaszk szkript.](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse) A szkript megmutatja, hol vannak használva a bérlőbe meghívott külső identitások. A külső felhasználók csoporttagságát, szerepkör-hozzárendelését és alkalmazás-hozzárendelését az Azure AD-ban láthatja. A szkript nem fog az Azure AD-n kívüli hozzárendeléseket látni, például a SharePoint-erőforrások közvetlen jogosultság-hozzárendelését csoportok használata nélkül.
 
-A csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozásakor dönthet úgy, hogy a felülvizsgáló mindenki számára elérhető, vagy csak vendég felhasználóra koncentrál. A csak vendég felhasználók lehetőség kiválasztásával a felülvizsgálók az Azure AD B2B-ből származó külső identitások célzott listáját kapják meg, amelyek hozzáférnek az erőforráshoz.
+Amikor hozzáférési felülvizsgálatot hoz létre csoportokhoz vagy alkalmazásokhoz, dönthet úgy, hogy a felülvizsgáló a Mindenki hozzáféréssel vagy a Csak vendégfelhasználókra összpontosít. A Csak vendégfelhasználók lehetőség kiválasztásával a felülvizsgálók az Azure AD B2B azon külső identitásának célzott listáját kapják meg, amelyek hozzáféréssel rendelkezik az erőforráshoz.
 
- ![Vendég felhasználók áttekintése](./media/deploy-access-review/4-review-guest-users-admin-ui.png)
+ ![Vendégfelhasználók áttekintése](./media/deploy-access-review/4-review-guest-users-admin-ui.png)
 
 > [!IMPORTANT]
-> Ez nem fogja tartalmazni a userType rendelkező külső tagokat. Ez nem tartalmazza az Azure AD B2B együttműködésen kívül meghívó felhasználókat is, például azokat, akik közvetlenül a SharePointon keresztül férnek hozzá a megosztott tartalomhoz.
+> Ez NEM fog olyan külső tagokat tartalmazni, akik a userType taggal vannak megszabadva. Ez nem tartalmazza az Azure AD B2B-együttműködésen kívül meghívott felhasználókat, például azokat, akik közvetlenül a SharePointon keresztül férnek hozzá a megosztott tartalmakhoz.
 
 ## <a name="plan-access-reviews-for-access-packages"></a>Hozzáférési csomagok hozzáférési felülvizsgálatának megtervezése
 
-A [hozzáférési csomagok](entitlement-management-overview.md) jelentősen leegyszerűsítik az irányítási és hozzáférési felülvizsgálati stratégiát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelynek hozzáférését a felhasználónak egy projekten kell dolgoznia, vagy a feladat elvégzéséhez. Előfordulhat például, hogy olyan hozzáférési csomagot szeretne létrehozni, amely tartalmazza az összes olyan alkalmazást, amely a szervezet fejlesztői számára szükséges, vagy minden olyan alkalmazáshoz, amelyhez a külső felhasználóknak hozzáférésre van szükségük. A rendszergazda vagy a meghatalmazott hozzáférés-kezelő csomagkezelő ezután csoportosítja az erőforrásokat (csoportokat vagy alkalmazásokat), valamint azokat a szerepköröket, amelyekre a felhasználóknak szüksége van az adott erőforrásokhoz.
+[A hozzáférési csomagok](entitlement-management-overview.md) jelentősen leegyszerűsítik a szabályozási és hozzáférési felülvizsgálati stratégiát. A hozzáférési csomag az összes olyan erőforrás csomagja, amely tartalmazza azt a hozzáférést, amely a felhasználónak a projekten való munkához vagy a feladat elvégzéséhez szükséges. Létrehozhat például egy hozzáférési csomagot, amely tartalmazza az összes olyan alkalmazást, amelyre a szervezet fejlesztőinek szükségük van, vagy az összes olyan alkalmazást, amelyhez külső felhasználóknak hozzáférésre van szükségük. A rendszergazda vagy a delegált hozzáférésicsomag-kezelő ezután csoportokba csomagolja az erőforrásokat (csoportokat vagy alkalmazásokat), valamint azokat a szerepköröket, amelyekre a felhasználóknak szükségük van az erőforrásokhoz.
 
-[Hozzáférési csomag létrehozásakor](entitlement-management-access-package-create.md)létrehozhat egy vagy több olyan hozzáférési szabályzatot, amely olyan feltételeket határoz meg, amelyekkel a felhasználók hozzáférési csomagokat igényelhetnek, a jóváhagyási folyamat pedig azt, hogy egy személy milyen gyakran kér újra hozzáférést. A hozzáférési felülvizsgálatok a hozzáférési csomag házirendjének létrehozásakor vagy szerkesztésekor konfigurálhatók.
+Hozzáférési [csomag létrehozásakor](entitlement-management-access-package-create.md)létrehozhat egy vagy több hozzáférési szabályzatot, amelyek olyan feltételeket állíthatnak be, amelyekhez a felhasználók hozzáférési csomagot kérhetnek, milyen a jóváhagyási folyamat, és milyen gyakran kell egy személynek újra kérelmezni a hozzáférést. A hozzáférési felülvizsgálatok a hozzáférési csomag szabályzatának létrehozásakor vagy szerkesztésekor vannak konfigurálva.
 
-A hozzáférési felülvizsgálatok megtekintéséhez nyissa meg az életciklus lapot.
+Nyissa meg az Életciklus lapot, és görgessen le a Hozzáférési felülvizsgálatok lapra.
 
- ![Képernyőkép, amely az "életciklus" lapon megjeleníti a "szabályzat szerkesztése" lehetőséget.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Az "Életciklus" lapon található "Szabályzat szerkesztése" képernyőképe.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
-## <a name="plan-access-reviews-for-groups"></a>Csoportok hozzáférési felülvizsgálatának megtervezése
+## <a name="plan-access-reviews-for-groups"></a>Hozzáférési felülvizsgálatok megtervezése csoportokhoz
 
-A hozzáférési csomagok mellett a csoporttagság áttekintésének leghatékonyabb módja a hozzáférés szabályozása. Azt javasoljuk, hogy az erőforrásokhoz való hozzáférést [biztonsági csoportokon vagy Microsoft 365 csoportokon](../fundamentals/active-directory-manage-groups.md)keresztül rendelje hozzá, és hogy a felhasználók hozzáférjenek a csoporthoz.
+A hozzáférési csomagok mellett a hozzáférés szabályozásának leghatékonyabb módja a csoporttagság felülvizsgálata. Javasoljuk, hogy az erőforrásokhoz való hozzáférést biztonsági csoportokon vagy Microsoft 365 keresztül rendeli hozzá, és hogy a hozzáférést a rendszer hozzáadja ezekhez a csoportokhoz. [](../fundamentals/active-directory-manage-groups.md)
 
-Egyetlen csoport is jogosult az összes megfelelő erőforráshoz való hozzáférésre. Hozzárendelheti a csoporthoz az egyes erőforrásokhoz való hozzáférést, illetve az alkalmazásokat és egyéb erőforrásokat csoportosító hozzáférési csomagokat. Ezzel a módszerrel áttekintheti a csoport hozzáférését, nem pedig az egyes alkalmazásokhoz való hozzáférést. 
+Egyetlen csoport minden megfelelő erőforráshoz hozzáférést kaphat. A csoport hozzáférését hozzárendelheti egyes erőforrásokhoz, vagy egy hozzáférési csomaghoz, amely alkalmazásokat és más erőforrásokat csoportosít. Ezzel a módszerrel áttekintheti a csoporthoz való hozzáférést ahelyett, hogy az egyes alkalmazásokhoz hozzáférést ad egy személynek. 
 
-A csoporttagság a következőket tekintheti át: 
+A csoporttagságot a következővel lehet felülvizsgálni: 
 
 * Rendszergazdák
 
-* Csoport tulajdonosainak
+* Csoporttulajdonosok
 
 * Kiválasztott felhasználók, delegált felülvizsgálati képesség a felülvizsgálat létrehozásakor
 
-* A csoport tagjai, akik tanúsítják magukat
+* A csoport tagjai, akik igazolják saját magukat
 
 ### <a name="group-ownership"></a>Csoport tulajdonjoga
 
-Javasoljuk, hogy a csoport tulajdonosai tekintsék meg a tagságot, mivel azok a legjobbak, akiknek a hozzáférésre van szükségük. A csoportok tulajdonjoga különbözik a csoport típusától:
+Javasoljuk, hogy a csoporttulajdonosok felülvizsgálják a tagságot, mivel a legjobb, ha tudják, kinek van szüksége hozzáférésre. A csoportok tulajdonjoga a csoport típusától függ:
 
-A Microsoft 365 és az Azure AD-ben létrehozott csoportok egy vagy több jól definiált tulajdonossal rendelkeznek. A legtöbb esetben ezek a tulajdonosok tökéletes véleményezőket végeznek a saját csoportjaikban, és tudják, hogy kinek van hozzáférésük. 
+A Microsoft 365 és az Azure AD-ban létrehozott csoportok egy vagy több jól meghatározott tulajdonosokkal is vannak. A legtöbb esetben ezek a tulajdonosok tökéletes felülvizsgálókat hoznak létre a saját csoportjaik számára, mivel tudják, kinek kell hozzáférniük. 
 
-A Microsoft Teams például Microsoft 365 csoportokat használ a mögöttes engedélyezési modellként, hogy hozzáférést biztosítson a felhasználóknak a SharePoint, az Exchange, a OneNote vagy más Microsoft 365-szolgáltatásokban található erőforrásokhoz. A csapat létrehozója automatikusan tulajdonosa lesz, és felelős a csoport tagságának igazolásához. 
+A Microsoft Teams például Microsoft 365-csoportok alapul szolgáló engedélyezési modellel biztosít hozzáférést a felhasználóknak a SharePointban, az Exchange-ban, a OneNote-ban vagy más Microsoft 365 erőforrásokhoz. A csapat létrehozója automatikusan tulajdonossá válik, és ő lesz a felelős a csoport tagságának tanúsításáért. 
 
-Az Azure AD-portálon vagy a Microsoft Graph parancsfájlokon keresztül manuálisan létrehozott csoportok nem feltétlenül rendelkeznek a tulajdonosok által definiált csoportokkal. Azt javasoljuk, hogy az Azure AD-portálon keresztül definiálja őket a csoport "tulajdonosok" szakaszában vagy a gráfon keresztül.
+Előfordulhat, hogy az Azure AD-portálon manuálisan létrehozott csoportok vagy a felhasználókon keresztüli szkriptek Microsoft Graph nem feltétlenül vannak meghatározott tulajdonosok. Javasoljuk, hogy ezeket az Azure AD-portálon, a csoport "Tulajdonosok" szakaszában vagy a Graph-on keresztül határozza meg.
 
-A helyszíni Active Directoryról szinkronizált csoportok nem rendelkezhetnek tulajdonossal az Azure AD-ben. Amikor hozzáférési felülvizsgálatot hoz létre számukra, ki kell választania azokat a személyeket, akik a legjobban megfelelnek a tagságuk eldöntéséhez.
+A csoportból szinkronizált helyi Active Directory nem lehet tulajdonos az Azure AD-ban. Amikor hozzáférési felülvizsgálatot hoz létre számukra, ki kell választania azokat a személyeket, akik a legmegfelelőbbek a tagságuk kiválasztására.
 
 > [!NOTE]
-> Javasoljuk, hogy definiáljon olyan üzleti házirendeket, amelyek meghatározzák a csoportok létrehozását, így biztosítva a csoport tulajdonjogának és elszámoltathatóságának egyértelművé tételét a tagság rendszeres áttekintéséhez. 
+> Javasoljuk, hogy határozzon meg olyan üzleti szabályzatokat, amelyek meghatározzák a csoportok létrehozási mikéntét, hogy a csoport tulajdonjoga és elszámoltathatóságát a tagság rendszeres ellenőrzése érdekében biztosítsa. 
 
-### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Kizárási csoportok tagságának áttekintése a feltételes hozzáférési házirendekben 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Kizárási csoportok tagságának áttekintése a feltételes hozzáférési szabályzatok között 
 
-Időnként előfordulhat, hogy a hálózat biztonságának megőrzésére tervezett feltételes hozzáférési szabályzatok nem vonatkoznak az összes felhasználóra. Például egy feltételes hozzáférési szabályzat, amely csak a vállalati hálózaton belüli bejelentkezést engedélyezi a felhasználók számára, előfordulhat, hogy nem vonatkozik az értékesítési csapatra, amely nagy mértékben utazik. Ebben az esetben az értékesítési csapat tagjai egy csoportba kerülnek, és ezt a csoportot kizárják a feltételes hozzáférési szabályzatból. 
+Vannak olyan idők, amikor a hálózat biztonságának biztosítása érdekében kialakított feltételes hozzáférési szabályzatok nem vonatkoznak minden felhasználóra. Előfordulhat például, hogy egy feltételes hozzáférési szabályzat, amely csak a vállalati hálózaton való bejelentkezést teszi lehetővé, nem vonatkozik az értékesítési csapatra, amely sokat utazik. Ebben az esetben az értékesítési csapat tagjai egy csoportba kerülnek, és ez a csoport ki lesz zárva a feltételes hozzáférési szabályzatból. 
 
-Rendszeresen tekintse át az ilyen csoporttagság-tagságot, mivel a kizárás potenciális kockázatot jelent, ha a nem megfelelő tagokat kizárják a követelményből.
+Rendszeresen tekintsen át egy ilyen csoporttagságot, mivel a kizárás potenciális kockázatot jelent, ha nem megfelelő tagok vannak kizárva a követelményből.
 
-Az [Azure ad hozzáférési felülvizsgálatok segítségével a feltételes hozzáférési szabályzatokból kizárt felhasználókat kezelheti](conditional-access-exclusion.md).
+Az [Azure AD hozzáférési felülvizsgálatok segítségével](conditional-access-exclusion.md)kezelheti a feltételes hozzáférési szabályzatok hatálya alól kizárt felhasználókat.
 
-### <a name="review-external-users-group-memberships"></a>Külső felhasználó csoporttagságok áttekintése
+### <a name="review-external-users-group-memberships"></a>Külső felhasználó csoporttagságának áttekintése
 
-A manuális munka és a kapcsolódó lehetséges hibák minimálisra csökkentése érdekében érdemes [dinamikus csoportokat](../enterprise-users/groups-create-rule.md) használni a csoporttagság hozzárendeléséhez a felhasználó attribútumai alapján. Érdemes lehet egy vagy több dinamikus csoportot létrehozni a külső felhasználók számára. A belső szponzor a csoport tagságának felülvizsgáló tagja lehet. 
+A manuális munka és a kapcsolódó [](../enterprise-users/groups-create-rule.md) hibák minimalizálása érdekében fontolja meg dinamikus csoportok használatával a csoporttagság hozzárendelését a felhasználó attribútumai alapján. Előfordulhat, hogy egy vagy több dinamikus csoportot szeretne létrehozni külső felhasználók számára. A belső szponzor felülvizsgálóként is viselkedhet a csoporttagságnál. 
 
-Megjegyzés: a csoportból eltávolított külső felhasználók a hozzáférési felülvizsgálat eredményeként nem törlődnek a bérlőből. 
+Megjegyzés: A csoportból hozzáférési felülvizsgálat miatt eltávolított külső felhasználók nem törlődnek a bérlőből. 
 
-A bérlők törölhető manuálisan, vagy egy parancsfájl használatával is.
+Törölhetők egy bérlőből manuálisan vagy egy szkript használatával.
 
-### <a name="review-access-to-on-premises-groups"></a>Helyszíni csoportok elérésének áttekintése
+### <a name="review-access-to-on-premises-groups"></a>A helyszíni csoportokhoz való hozzáférés áttekintése
 
-A hozzáférési felülvizsgálatok nem változtathatják meg a csoportokban szinkronizált csoportok tagságát [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md). Ennek az az oka, hogy a hatóság forrása a helyszínen van.
+A hozzáférési felülvizsgálatok nem módosíthatják a helyszínről szinkronizált csoportok csoporttagságát a [Azure AD Connect.](../hybrid/whatis-azure-ad-connect.md) Ennek az az oka, hogy a hitelesítés forrása a helyszíni.
 
-A hozzáférési felülvizsgálatok továbbra is használhatók a helyszíni csoportok rendszeres felülvizsgálatának megkezdéséhez és karbantartásához. A felülvizsgálók ezután végrehajtanak egy műveletet a helyszíni csoportban. Ez a stratégia az összes felülvizsgálat eszközeként tartja a hozzáférési felülvizsgálatokat.
+Továbbra is használhatja a hozzáférési felülvizsgálatokat a helyszíni csoportok rendszeres felülvizsgálatának ütemezése és fenntartása érdekében. A felülvizsgálók ezután a helyszíni csoportban is el fognak indulni. Ez a stratégia minden felülvizsgálat eszközeként megőrzi a hozzáférési felülvizsgálatokat.
 
-Az eredményeket a helyszíni csoportok hozzáférési felülvizsgálatának eredményei alapján is felhasználhatja, a következők szerint:
+A hozzáférési felülvizsgálatok eredményeit a helyszíni csoportokban használhatja, és a következővel tovább feldolgozhatja őket:
 
-* Töltse le a CSV-jelentést a hozzáférési felülvizsgálatból, és manuálisan végezze el a műveletet.
+* Töltse le a CSV-jelentést a Hozzáférési felülvizsgálatból, és manuálisan kell elvégeznie a műveletet.
 
-* A Microsoft Graph használatával programozott módon érheti el az eredményeket és a döntéseket a befejezett hozzáférési felülvizsgálatokban.
+* A Microsoft Graph a befejezett hozzáférési felülvizsgálatok eredményeinek és döntéseinek programozott elérésére.
 
-Ha például egy Windows AD által felügyelt csoport eredményeit szeretné elérni, használja ezt a [PowerShell-minta parancsfájlt](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises). A parancsfájl ismerteti a szükséges gráf-hívásokat, és exportálja a Windows AD-PowerShell parancsokat a módosítások végrehajtásához.
+Egy Windows AD által felügyelt csoport eredményeinek eléréséhez például használja ezt a [PowerShell-példaszkent.](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises) A szkript felvázolja a szükséges Graph-hívásokat, és exportálja a Windows AD-PowerShell parancsokat a módosítások elvégzéséhez.
 
-## <a name="plan-access-reviews-for-applications"></a>Alkalmazások hozzáférési felülvizsgálatának megtervezése 
+## <a name="plan-access-reviews-for-applications"></a>Hozzáférési felülvizsgálatok megtervezése alkalmazásokhoz 
 
-Amikor áttekinti az alkalmazáshoz való hozzáférést, az alkalmazottak és a külső identitások hozzáférését az alkalmazásban található információkhoz és adatokhoz tekinti át. Válassza az alkalmazás áttekintését, ha tudnia kell, hogy ki férhet hozzá egy adott alkalmazáshoz egy hozzáférési csomag vagy egy csoport helyett. 
+Egy alkalmazáshoz való hozzáférés áttekintésekor áttekinti az alkalmazottak és a külső identitások hozzáférését az alkalmazáson belüli információkhoz és adatokhoz. Ha egy hozzáférési csomag vagy csoport helyett egy adott alkalmazáshoz való hozzáférésre van szüksége, válassza az alkalmazás áttekintését. 
 
-Javasoljuk, hogy a következő esetekben tervezze meg az alkalmazások értékelését:
+Javasoljuk, hogy a következő esetekben tervezze meg az alkalmazások áttekintését:
 
-* A felhasználók közvetlen hozzáférést kapnak az alkalmazáshoz (egy csoport-vagy hozzáférési csomagon kívül).
+* A felhasználók közvetlen hozzáférést kapnak az alkalmazáshoz (csoporton vagy hozzáférési csomagon kívül).
 
-* Az alkalmazás kritikus vagy bizalmas adatokat tesz elérhetővé.
+* Az alkalmazás kritikus vagy bizalmas információkat is elérhetővé teszi.
 
-* Az alkalmazásnak konkrét megfelelőségi követelményekkel kell rendelkeznie, amelyeknek igazolnia kell.
+* Az alkalmazás olyan megfelelőségi követelményekkel rendelkezik, amelyeket igazolnia kell.
 
-* A nem megfelelő hozzáférés gyanúja merül fel.
+* Azt gyanítja, hogy nem megfelelő hozzáféréssel rendelkezik.
 
-Egy alkalmazás hozzáférési felülvizsgálatának létrehozásához meg kell adni a felhasználó-hozzárendelést? tulajdonságot Igen értékre. Ha a nem értékre van állítva, a címtárban lévő összes felhasználó, beleértve a külső identitásokat, hozzáférhet az alkalmazáshoz, és nem tekintheti át az alkalmazáshoz való hozzáférést. 
+Ha hozzáférési felülvizsgálatokat hoz létre egy alkalmazáshoz, állítsa be a Felhasználó-hozzárendelés szükséges beállítását? a tulajdonságot igenre. Ha a Nem beállításra van állítva, a címtárban található összes felhasználó, beleértve a külső identitásokat is, hozzáférhet az alkalmazáshoz, és nem tudja felülvizsgálni az alkalmazáshoz való hozzáférést. 
 
- ![Alkalmazás-hozzárendelések megtervezése](./media/deploy-access-review/6-plan-applications-assignment-required.png)
+ ![alkalmazás-hozzárendelések megtervezése](./media/deploy-access-review/6-plan-applications-assignment-required.png)
 
-Ezután hozzá kell [rendelnie azokat a felhasználókat és csoportokat](../manage-apps/assign-user-or-group-access-portal.md) , amelyekhez hozzáférést szeretne biztosítani. 
+Ezután hozzá kell [rendelnie a hozzáférést](../manage-apps/assign-user-or-group-access-portal.md) kívánó felhasználókat és csoportokat. 
 
-### <a name="reviewers-for-an-application"></a>Felülvizsgálók egy alkalmazáshoz
+### <a name="reviewers-for-an-application"></a>Alkalmazás felülvizsgálói
 
-A hozzáférési felülvizsgálatok lehetnek egy csoport tagjai vagy egy alkalmazáshoz hozzárendelt felhasználók számára. Az Azure ad-ben lévő alkalmazások nem feltétlenül rendelkeznek tulajdonossal, ezért nem lehetséges, hogy az alkalmazás tulajdonosát felülvizsgáló válassza ki. További hatókört tekinthet meg, hogy csak az alkalmazáshoz rendelt vendég felhasználókat vizsgálja felül, és ne tekintse át az összes hozzáférést.
+A hozzáférési felülvizsgálatok a csoport tagjaira vagy az alkalmazásokhoz rendelt felhasználókra is kihatnak. Az Azure AD-beli alkalmazásoknak nem feltétlenül van tulajdonosi engedélyük, ezért nem lehetséges felülvizsgálóként kiválasztani az alkalmazás tulajdonosát. Az áttekintés további hatókörrel is megszabadható, hogy csak az alkalmazáshoz rendelt vendégfelhasználókat tekintse át az összes hozzáférés áttekintése helyett.
 
-## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Az Azure AD-és Azure-erőforrás-szerepkörök felülvizsgálatának megtervezése
+## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Az Azure AD és az Azure-erőforrások szerepkörei áttekintésének megtervezése
 
-A [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure ad-beli erőforrásokhoz való jogosultságú hozzáférést. Így az [Azure ad](../roles/permissions-reference.md) -ben és az [Azure-erőforrásokban](../../role-based-access-control/built-in-roles.md) egyaránt sokkal kisebb a Kiemelt szerepkörök listája, és növeli a címtár általános biztonságát.
+[Privileged Identity Management (PIM) egyszerűbbé](../privileged-identity-management/pim-configure.md) teszi a vállalatok számára az Azure AD-erőforrásokhoz való emelt szintű hozzáférés kezelését. Így az [Azure AD-ban](../roles/permissions-reference.md) és az [Azure-erőforrásokban](../../role-based-access-control/built-in-roles.md) található kiemelt szerepkörök listája sokkal kisebb lesz, és növeli a címtár általános biztonságát.
 
-A hozzáférési felülvizsgálatok lehetővé teszik a felülvizsgálók számára annak igazolását, hogy a felhasználóknak továbbra is szükségük van-e a szerepkörre. A hozzáférési csomagok hozzáférési felülvizsgálatához hasonlóan az Azure AD-szerepkörökkel és az Azure-erőforrásokkal kapcsolatos felülvizsgálatok is integrálva vannak a PIM rendszergazdai felhasználói felületéhez. Javasoljuk, hogy rendszeresen tekintse át a következő szerepkör-hozzárendeléseket:
+A hozzáférési felülvizsgálatok lehetővé teszik a felülvizsgálók számára, hogy igazolják, hogy a felhasználóknak továbbra is szerepkörhöz kell-e szükségük. A hozzáférési csomagok hozzáférési felülvizsgálatjaihoz hasonló módon az Azure AD-szerepkörök és az Azure-erőforrások áttekintései is integrálva vannak a PIM rendszergazdai felhasználói felületbe. Javasoljuk, hogy rendszeresen tekintse át a következő szerepkör-hozzárendeléseket:
 
 * Globális rendszergazda
 
 * Felhasználói rendszergazda
 
-* Kiemelt jogosultságú hitelesítés rendszergazdája
+* Privileged Authentication Administrator
 
-* Feltételes hozzáférésű rendszergazda
+* Feltételes hozzáférés rendszergazdája
 
 * Biztonsági rendszergazda
 
-* Az összes Microsoft 365-és Dynamics Service-felügyeleti szerepkör
+* Minden Microsoft 365 dynamics service administration szerepkör
 
-Az itt kiválasztott szerepkörök állandó és jogosult szerepkört tartalmaznak. 
+Az itt kiválasztott szerepkörök közé tartoznak a állandó és a jogosult szerepkörök. 
 
-A felülvizsgálók szakaszban válasszon ki egy vagy több személyt az összes felhasználó áttekintéséhez. Azt is megteheti, hogy a tagok a saját hozzáférését vizsgálják felül.
+A Felülvizsgálók szakaszban válasszon ki egy vagy több felhasználót az összes felhasználó áttekintésére. Azt is választhatja, hogy a tagok felülvizsgálják a saját hozzáférésüket.
 
  ![A szabályzat szerkesztése](./media/deploy-access-review/7-plan-azure-resources-reviewers-selection.png)
 
-## <a name="deploy-access-reviews"></a>Hozzáférési felülvizsgálatok telepítése
+## <a name="deploy-access-reviews"></a>Hozzáférési felülvizsgálatok üzembe helyezése
 
-Miután előkészített egy stratégiát és egy tervet az Azure AD-vel integrált erőforrások hozzáférésének áttekintéséhez, az alábbi erőforrásokkal végezheti el a felülvizsgálatok üzembe helyezését és kezelését.
+Miután előkészített egy stratégiát és egy tervet az Azure AD-val integrált erőforrásokhoz való hozzáférés áttekintéséhez, az alábbi erőforrások használatával üzembe helyezheti és kezelheti az értékeléseket.
 
 ### <a name="review-access-packages"></a>Hozzáférési csomagok áttekintése
 
-Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák a hozzáférési csomag aktív hozzárendeléseivel rendelkező felhasználók rendszeres felülvizsgálatát is lehetővé teszik. Kövesse az alábbi hivatkozás utasításait:
+Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák rendszeres időközönként felülvizsgálhatják a hozzáférési csomaghoz aktív hozzárendeléssel lévő felhasználókat. Kövesse az alábbi hivatkozás utasításait:
 
 | Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
-| [Hozzáférési felülvizsgálatok végrehajtása](entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
-| [Hozzárendelt hozzáférési csomag (ok) önértékelése](entitlement-management-access-reviews-self-review.md)| Hozzárendelt hozzáférési csomag (ok) önálló felülvizsgálata |
+| [Hozzáférési felülvizsgálatok végrehajtása](entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása hozzáférési csomaghoz hozzárendelt más felhasználók számára. |
+| [Saját maga által hozzárendelt hozzáférési csomag(ak)](entitlement-management-access-reviews-self-review.md)| Hozzárendelt hozzáférési csomag(k) önértékelése |
 
 
 > [!NOTE]
-> Azok a végfelhasználók, akik önmagukban értékelik és azt mondják, hogy a továbbiakban nincs szükségük a hozzáférésre, nem törlődnek azonnal a hozzáférési csomagból. A rendszer eltávolítja azokat a hozzáférési csomagból, amikor a felülvizsgálat lejár, vagy ha a rendszergazda leállítja a felülvizsgálatot.
+> A rendszer nem távolítja el azonnal az olyan végfelhasználókat a hozzáférési csomagból, akik önértékelést követően azt mondani, hogy már nincs szükségük hozzáférésre. Ha a felülvizsgálat véget ér, vagy ha egy rendszergazda leállítja a felülvizsgálatot, a rendszer eltávolítja őket a hozzáférési csomagból.
 
 ### <a name="review-groups-and-apps"></a>Csoportok és alkalmazások áttekintése
 
-Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg változnak a csoportok és az alkalmazások hozzáférése. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások eléréséhez. Kövesse az alábbi hivatkozás utasításait:
+A hozzáféréshez szükség van az alkalmazottak és vendégek csoportjaira és alkalmazására, amelyek idővel valószínűleg változnak. Az elavult hozzáférés-hozzárendelésekkel járó kockázat csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások hozzáférése számára. Kövesse az alábbi hivatkozás utasításait:
 
 | Útmutatók| Leírás |
 | - | - |
-| [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez. |
-| [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálat végrehajtása egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára. |
-| [Saját hozzáférés ellenőrzése](review-your-access.md)| A tagok egy csoporthoz vagy alkalmazáshoz való saját hozzáférést tekinthetnek meg |
+| [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások hozzáférése számára. |
+| [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálatot végezhet egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkezik felhasználók számára. |
+| [A hozzáférés önértékelése](review-your-access.md)| A tagok felülvizsgálják a saját hozzáférését egy csoporthoz vagy alkalmazáshoz |
 | [Teljes hozzáférési felülvizsgálat](complete-access-review.md)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
-| [Beavatkozás a helyszíni csoportok számára](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)| PowerShell-parancsfájl a helyszíni csoportok hozzáférési felülvizsgálatához. |
+| [Művelet helyszíni csoportok esetében](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)| PowerShell-példaszk szkript a helyszíni csoportok hozzáférési felülvizsgálataival való eléréshez. |
 
 
-### <a name="review-azure-ad-roles"></a>Azure AD-szerepkörök áttekintése
+### <a name="review-azure-ad-roles"></a>Az Azure AD-szerepkörök áttekintése
 
-Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a Kiemelt Azure AD-szerepkörök elérését.
+Az elavult szerepkör-hozzárendelésekkel járó kockázatok csökkentése érdekében rendszeresen tekintse át a kiemelt Azure AD-szerepkörökhöz való hozzáférést.
 
-![Képernyőkép, amely az Azure A D-szerepkörök "tagság áttekintése" listáját jeleníti meg.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Képernyőkép az Azure AD-szerepkörök "Tagság áttekintése" listájáról.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Kövesse az alábbi hivatkozásokon keresztül elérhető utasításokat:
 
 | Útmutatók | Leírás |
 | - | - |
- [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
-| [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
-| [Hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
+ [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása kiemelt Azure AD-szerepkörökhöz a PIM-ban |
+| [A hozzáférés önértékelése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tiltsa le a szerepkörhöz való hozzáférést |
+| [Hozzáférési felülvizsgálat befejezése](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
 
 
-### <a name="review-azure-resource-roles"></a>Azure-erőforrás szerepköreinek áttekintése
+### <a name="review-azure-resource-roles"></a>Azure-erőforrásszerepk szerepkörök áttekintése
 
-Az elavult szerepkör-hozzárendelések kockázatának csökkentése érdekében rendszeresen tekintse át az emelt szintű Azure-erőforrások szerepköreinek elérését. 
+Az elavult szerepkör-hozzárendelésekkel járó kockázatok csökkentése érdekében rendszeresen tekintse át a kiemelt Azure-erőforrás-szerepkörök hozzáférését. 
 
-![Azure ad-szerepkörök áttekintése](./media/deploy-access-review/9-review-azure-roles-picker.png)
+![azure ad-szerepkörök áttekintése](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
 Kövesse az alábbi hivatkozásokon keresztül elérhető utasításokat:
 
 | Útmutatók| Leírás |
 | - | -|
-| [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
-| [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
-| [Hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
+| [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása kiemelt Azure-erőforrás-szerepkörökhöz a PIM-ban |
+| [A hozzáférés önértékelése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tiltsa le a szerepkörhöz való hozzáférést |
+| [Hozzáférési felülvizsgálat befejezése](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
 
 
-## <a name="use-the-access-reviews-api"></a>A hozzáférési felülvizsgálatok API használata
+## <a name="use-the-access-reviews-api"></a>A Hozzáférési felülvizsgálatok API használata
 
-Tekintse meg a [Graph API-metódusok](/graph/api/resources/accessreviews-root?view=graph-rest-beta) és a [szerepkör-és alkalmazás-engedély engedélyezési ellenőrzéseit](/graph/api/resources/accessreviews-root?view=graph-rest-beta) , és kezelje a felülvizsgálható erőforrásokat. A Microsoft Graph API hozzáférési felülvizsgálati módszerei az alkalmazás-és a felhasználói környezetekben egyaránt elérhetők. Ha parancsfájlokat futtat az alkalmazási környezetben, az API futtatásához használt fióknak (a szolgáltatási elv) meg kell adni az "AccessReview. Read. all" engedélyt a hozzáférési felülvizsgálatok adatainak lekérdezéséhez.
+Tekintse meg a [Graph API metódusokat,](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) [valamint a szerepkör-](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) és alkalmazásengedély-engedélyezési ellenőrzéseket a felülvizsgálható erőforrások kezeléséhez és kezeléséhez. A hozzáférési felülvizsgálatok metódusai az Microsoft Graph API-ban alkalmazás- és felhasználói környezetben is elérhetők. Ha szkripteket futtat az alkalmazáskörnyezetben, az API futtatásához használt fióknak (a szolgáltatás alapelve) az "AccessReview.Read.All" engedélyt kell biztosítani a Hozzáférési felülvizsgálatok információinak lekérdezéséhez.
 
-A népszerű hozzáférés-felülvizsgálati feladatok automatizálják az Graph API a hozzáférési felülvizsgálatok használatával:
+A népszerű hozzáférési felülvizsgálati feladatok a következő Graph API automatizálhatóak:
 
-* Hozzáférési felülvizsgálat létrehozása és elindítása
+* Hozzáférési felülvizsgálat létrehozása és kezdete
 
-* Hozzáférési felülvizsgálat manuális befejezése az ütemezett befejezés előtt
+* Hozzáférési felülvizsgálat manuálisan, az ütemezett vége előtt
 
-* Az összes futó hozzáférési felülvizsgálat és azok állapotának listázása
+* List all running Access Reviews and their status
 
-* Tekintse meg a felülvizsgálati sorozat előzményeit, valamint az egyes felülvizsgálatokban végrehajtott döntéseket és műveleteket.
+* Tekintse meg a felülvizsgálati sorozatok előzményeit, valamint az egyes felülvizsgálatok során meghozott döntéseket és műveleteket.
 
-* Döntések begyűjtése hozzáférési felülvizsgálatból
+* Döntések gyűjtése hozzáférési felülvizsgálatból
 
-* A befejezett felülvizsgálatokból származó döntések összegyűjtése, amelyekben a felülvizsgáló más döntést hozott, mint amit a rendszer javasolt.
+* Döntéseket gyűjt a befejezett felülvizsgálatok alapján, ahol a felülvizsgáló más döntést hozott, mint amit a rendszer javasolt.
 
-Amikor új Graph API-lekérdezéseket hoz létre az automatizáláshoz, javasoljuk, hogy használja a [Graph Explorert](https://developer.microsoft.com/en-us/graph/graph-explorer). A Graph-lekérdezéseket felépítheti és feltárhatja, mielőtt parancsfájlokat és kódokat hozna létre. Ez segíthet gyorsan megismételni a lekérdezést, hogy pontosan a keresett eredményeket kapja meg, a parancsfájl kódjának módosítása nélkül.
+Az automatizáláshoz Graph API új lekérdezések létrehozásakor javasoljuk a [Graph Explorer használatát.](https://developer.microsoft.com/en-us/graph/graph-explorer) A Graph-lekérdezéseket még azelőtt felépítheti és feltárhatja, mielőtt szkriptekbe és kódokba íratja őket. Így gyorsan iterálhatja a lekérdezést, így pontosan a keresett eredményeket kaphatja meg a szkript kódjának módosítása nélkül.
 
 ## <a name="monitor-access-reviews"></a>Hozzáférési felülvizsgálatok figyelése
 
-A hozzáférési felülvizsgálatok tevékenységeit a rendszer rögzíti, és elérhetővé válik az [Azure ad](../reports-monitoring/concept-audit-logs.md)naplófájljaiban. A naplózási adatok a kategória, a tevékenység típusa és a Dátumtartomány alapján szűrhetők. Íme egy példa lekérdezés:
+A hozzáférési felülvizsgálati tevékenységek rögzítve vannak, és az Azure AD auditnaplóiban [érhetők el.](../reports-monitoring/concept-audit-logs.md) A naplózási adatokat szűrheti a kategóriára, a tevékenységtípusra és a dátumtartományra. Példa a lekérdezésre:
 
 | Kategória| Szabályzat |
 | - | - |
 | Tevékenység típusa| Hozzáférési felülvizsgálat létrehozása |
 | | Hozzáférési felülvizsgálat frissítése |
-| | A hozzáférési felülvizsgálat befejeződött |
+| | Hozzáférési felülvizsgálat véget ért |
 | | Hozzáférési felülvizsgálat törlése |
 | | Döntés jóváhagyása |
-| | Döntés megtagadása |
-| | Döntés alaphelyzetbe állítása |
+| | Elutasítási döntés |
+| | Döntés az alaphelyzetbe állításról |
 | | Döntés alkalmazása |
 | Dátumtartomány| hét nap |
 
 
-A hozzáférési felülvizsgálatok részletesebb lekérdezése és elemzése, valamint a módosítások és a felülvizsgálatok befejezésének nyomon követése érdekében javasoljuk, hogy az Azure AD-naplókat az [azure log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) vagy az Azure Event hub szolgáltatásba exportálja. Az Azure Log Analytics-ban való tárolás során használhatja a [hatékony elemzési nyelvet](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) , és saját irányítópultokat építhet ki.
+A hozzáférési felülvizsgálatok fejlettebb lekérdezéséhez és elemzéséhez, valamint a változások és a felülvizsgálatok befejezésének nyomon követéséhez javasoljuk, hogy exportálja az Azure AD-auditnaplókat az [Azure Log Analyticsbe](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) vagy az Azure Event Hubba. Az Azure Log Analyticsben tárolva használhatja a hatékony [elemzési](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) nyelvet, és saját irányítópultokat hozhat létre.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az alábbi kapcsolódó technológiákat.
 
-* [Mi az Azure AD-jogosultságok kezelése?](entitlement-management-overview.md)
+* [Mi az az Azure AD-jogosultságkezelés?](entitlement-management-overview.md)
 
 * [Mi az az Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – az X. 509 nyilvános kulcsú tanúsítványok ismertetése az Azure IoT Hubhoz | Microsoft Docs
-description: Oktatóanyag – az X. 509 nyilvános kulcsú tanúsítványok ismertetése az Azure IoT Hub
+title: Oktatóanyag – Az X.509 nyilvános kulcsú tanúsítványok Azure IoT Hub| Microsoft Docs
+description: Oktatóanyag – Az X.509 nyilvános kulcsú tanúsítványok Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,114 +12,113 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: fada68ba395b959e557542eb8c230561aad84214
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5503f9ad57180146c25a01c133a27b34e643496c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384323"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378346"
 ---
-# <a name="tutorial-understanding-x509-public-key-certificates"></a>Oktatóanyag: az X. 509 nyilvános kulcsú tanúsítványok ismertetése
+# <a name="tutorial-understanding-x509-public-key-certificates"></a>Oktatóanyag: Az X.509 nyilvános kulcsú tanúsítványok ismertetése
 
-Az X. 509 tanúsítványok olyan digitális dokumentumok, amelyek egy felhasználót, számítógépet, szolgáltatást vagy eszközt képviselnek. Ezeket hitelesítésszolgáltató (CA), alárendelt HITELESÍTÉSSZOLGÁLTATÓ vagy regisztrációs szolgáltató állítja ki, és tartalmazzák a tanúsítvány tulajdonosának nyilvános kulcsát. Nem tartalmazzák a tulajdonos titkos kulcsát, amelyet biztonságosan kell tárolni. A nyilvános kulcsú tanúsítványokat az [RFC 5280](https://tools.ietf.org/html/rfc5280)dokumentálja. Ezek digitális aláírással rendelkeznek, és általánosságban a következő információkat tartalmazzák:
+Az X.509-tanúsítványok felhasználók, számítógépek, szolgáltatások vagy eszközök digitális dokumentumai. A tanúsítványokat egy hitelesítésszolgáltató (CA), alárendelt CA vagy regisztrációs szervezet bocsátotta ki, és tartalmazzák a tanúsítvány tulajdonosának nyilvános kulcsát. Nem tartalmazzák a tulajdonos titkos kulcsát, amelyet biztonságosan kell tárolni. A nyilvános kulcsú tanúsítványokat az [RFC 5280 dokumentálja.](https://tools.ietf.org/html/rfc5280) Digitális aláírással vannak aláírva, és általában a következő információkat tartalmazzák:
 
-* A tanúsítvány tárgyával kapcsolatos információk
+* A tanúsítvány tulajdonosának adatai
 * A tulajdonos titkos kulcsának megfelelő nyilvános kulcs
-* A kiállító HITELESÍTÉSSZOLGÁLTATÓra vonatkozó információk
+* A kiállító hitelesítésszolgáltatóval kapcsolatos információk
 * A támogatott titkosítási és/vagy digitális aláírási algoritmusok
-* A tanúsítvány visszavonási és érvényességi állapotának meghatározására szolgáló információk
+* A tanúsítvány visszavonási és érvényességi állapotának megállapításához szükséges információk
 
-## <a name="certificate-fields"></a>Tanúsítvány mezői
+## <a name="certificate-fields"></a>Tanúsítványmezők
 
-Az idő múlásával három tanúsítvány létezik. Az egyes verziók mezőket tesznek hozzá. A 3-as verzió a jelenlegi, és a 3. verziójú mezők mellett tartalmazza az 1. és a 2. verziójú mezőket is. Az 1. verzió a következő mezőket definiálta:
+Az idő alatt három tanúsítványverzió volt elérhető. Mindegyik verzió mezőket ad hozzá az előzőhöz. A 3.verzió aktuális, és a 3. verzió mezői mellett az 1. és a 2. verzió mezőit is tartalmazza. Az 1. verzió a következő mezőket definiálta:
 
-* **Verzió**: egy érték (1, 2 vagy 3), amely a tanúsítvány verziószámát azonosítja.
-* **Sorozatszám**: egyedi szám a hitelesítésszolgáltató által kiállított minden egyes tanúsítványhoz
-* **Hitelesítésszolgáltatói aláírási algoritmus**: a hitelesítésszolgáltató által a tanúsítvány tartalmának aláírásához használt algoritmus neve
-* **Kiállító neve**: a tanúsítvány kiállító hitelesítésszolgáltatójának megkülönböztető neve (DN)
-* **Érvényességi időszak**: az az időtartam, ameddig a tanúsítvány érvényesnek minősül
-* **Tulajdonos neve**: a tanúsítvány által jelölt entitás neve
-* **Tulajdonos nyilvános kulcsának adatai**: a tanúsítvány tárgyát képező nyilvános kulcs
+* **Verzió:** A tanúsítvány verziószámát azonosító érték (1, 2 vagy 3)
+* **Sorozatszám:** A CA által kiadott összes tanúsítvány egyedi száma
+* **CA aláírási algoritmus:** Annak az algoritmusnak a neve, amely alapján a CA aláírja a tanúsítvány tartalmát
+* **Kiállító neve:** A tanúsítvány kiállító hitelesítésszolgáltatójának megkülönböztető neve (DN).
+* **Érvényességi időtartam:** Az az időtartam, amely alatt a tanúsítvány érvényesnek minősül
+* **Tulajdonos neve:** A tanúsítvány által képviselt entitás neve
+* **Tulajdonos nyilvános kulcsának adatai:** A tanúsítvány tulajdonosának tulajdonában lévő nyilvános kulcs
 
-A 2. verzió a tanúsítvány kiállítójának adatait tartalmazó következő mezőket adta hozzá. Ezeket a mezőket azonban ritkán használják.
+A 2. verzió a következő mezőket adott hozzá, amelyek a tanúsítványkiállítóval kapcsolatos információkat tartalmaznak. Ezeket a mezőket azonban ritkán használják.
 
-* **Kiállító egyedi azonosítója**: a kiállító hitelesítésszolgáltató egyedi azonosítója a hitelesítésszolgáltató által meghatározott módon
-* **Tulajdonos egyedi azonosítója**: a tanúsítvány tulajdonosának a kiállító hitelesítésszolgáltató által meghatározott egyedi azonosítója
+* **Kiállító egyedi azonosítója:** A kiállító hitelesítésszolgáltató egyedi azonosítója a hitelesítésszolgáltató által meghatározott módon
+* **Tulajdonos egyedi azonosítója:** A kiállító hitelesítésszolgáltató által meghatározott tanúsítvány tulajdonosának egyedi azonosítója
 
-A 3. verziójú tanúsítvány a következő bővítményeket adta hozzá:
+A 3-as verziójú tanúsítványok a következő bővítményeket adtak hozzá:
 
-* **Hitelesítésszolgáltató kulcsának azonosítója**: Ez a következő két érték egyike lehet:
-  * A tanúsítványt kiállító hitelesítésszolgáltatói tanúsítvány tárgya és sorozatszáma
-  * A tanúsítványt kiállító HITELESÍTÉSSZOLGÁLTATÓ nyilvános kulcsának kivonata
-* **Tulajdonosi kulcs azonosítója**: az aktuális tanúsítvány nyilvános kulcsának kivonata
-* **Kulcshasználat** Meghatározza azt a szolgáltatást, amelyhez tanúsítvány használható. Ez a következő értékek közül egy vagy több lehet:
+* **Hitelesítésszolgáltatói** kulcs azonosítója: Ez két érték egyike lehet:
+  * A tanúsítványt kibocsátó hitelesítésszolgáltatói tanúsítvány tulajdonosának és sorozatszámának száma
+  * A tanúsítványt kibocsátó hitelesítésszolgáltató nyilvános kulcsának kivonata
+* **Tulajdonoskulcs azonosítója:** Az aktuális tanúsítvány nyilvános kulcsának kivonata
+* **Kulcshasználat** Meghatározza a szolgáltatást, amelyhez tanúsítvány használható. Ez a következő értékek közül egy vagy több lehet:
   * **Digitális aláírás**
-  * **Nem megtagadási**
+  * **Nem megtagadás**
   * **Kulcstitkosítás**
-  * **Az adattitkosítási**
-  * **Kulcsfontosságú szerződés**
-  * **Kulcs tanúsítványának aláírása**
+  * **Adattűnés**
+  * **Kulcsszerződés**
+  * **Kulcs tanúsítványának előjele**
   * **CRL-aláírás**
-  * **Csak jellemzően**
-  * **Csak visszafejtés**
-* **Titkos kulcs használati időtartama**: kulcspár titkos kulcsának érvényességi ideje
-* **Tanúsítvány-házirendek**: a tanúsítvány tulajdonosának ellenőrzéséhez használt házirendek
-* **Szabályzat-hozzárendelések**: az egyik szervezet szabályzatának leképezése egy másikra
-* **Tulajdonos alternatív neve**: a tárgy alternatív neveinek listája
-* **Kiállító alternatív neve**: a kiállító hitelesítésszolgáltató alternatív neveinek listája
-* **Tulajdonos dir attribútum**: X. 500 vagy LDAP könyvtár attribútumai
-* **Alapszintű megkötések**: lehetővé teszi a tanúsítvány számára, hogy kiadja azt a hitelesítésszolgáltatónak, illetve egy felhasználó, számítógép, eszköz vagy szolgáltatás számára. Ez a bővítmény egy elérésiút-hossz korlátozást is tartalmaz, amely korlátozza a létezhető alárendelt hitelesítésszolgáltatók számát.
-* **Nevek megkötései**: kijelöli, hogy mely névterek ENGEDÉLYEZETTEK a hitelesítésszolgáltató által kiállított tanúsítványokban
-* **Házirend-korlátozások**: a hitelesítésszolgáltatók közötti szabályzat-hozzárendelések tiltására használható.
-* **Kibővített kulcshasználat**: azt jelzi, hogyan használható a tanúsítvány nyilvános kulcsa a **kulcshasználati** bővítményben azonosított célokon túl
-* **CRL-terjesztési pontok**: egy vagy több olyan URL-címet tartalmaz, ahol a rendszer közzéteszi az Alaptanúsítvány-visszavonási listát (CRL).
-* **AnyPolicy gátlása**: az **összes kiállítási szabályzat** OID (2.5.29.32.0) használatának gátlása alárendelt hitelesítésszolgáltatói tanúsítványokban
-* **Legfrissebb CRL**: egy vagy több olyan URL-címet tartalmaz, ahol a kiállító hitelesítésszolgáltató különbözeti CRL-je közzé van téve
-* **Szolgáltatói adatokhoz való hozzáférés**: egy vagy több olyan URL-címet tartalmaz, ahol a kiállító hitelesítésszolgáltatói tanúsítvány közzé van téve
-* **Tulajdonosi információhoz való hozzáférés**: a tanúsítvány tárgya további részleteinek beolvasásával kapcsolatos információkat tartalmaz.
+  * **Csak titkosítás**
+  * **Csak titkosítás**
+* **Titkos kulcs használati időtartama:** A kulcspár titkos kulcsrészének érvényességi időtartama
+* **Tanúsítvány-házirendek:** A tanúsítvány tulajdonosának érvényesítéséhez használt házirendek
+* **Szabályzatleképezések:** Leképezi egy szervezet szabályzatát egy másik szervezet szabályzataira
+* **Tulajdonos alternatív neve:** A tulajdonos alternatív neveinek listája
+* **Kiállító alternatív neve:** A kiállító hitelesítésszolgáltató alternatív neveinek listája
+* **Tulajdonos Dir attribútuma:** X.500- vagy LDAP-címtár attribútumai
+* **Alapszintű korlátozások:** Lehetővé teszi a tanúsítvány számára annak jelölését, hogy egy hitelesítésszolgáltatónak, illetve felhasználónak, számítógépnek, eszköznek vagy szolgáltatásnak van-e kibocsátva. Ez a bővítmény elérésiút-hosszkorlátozást is tartalmaz, amely korlátozza a létezhet alárendelt HITELESÍTÉS-k számát.
+* **Névkorlátozások:** Azt jelöli, hogy mely névterek engedélyezettek a hitelesítésszolgáltató által kiállított tanúsítványokban
+* **Házirendkorlátozások:** A CA-k közötti szabályzatleképezések tiltása érdekében használható
+* **Kibővített kulcshasználat:** Azt jelzi, hogy a tanúsítvány nyilvános kulcsa hogyan használható a kulcshasználati bővítményben meghatározott **célokon** túl
+* **CRL terjesztési pontok:** Egy vagy több OLYAN URL-t tartalmaz, ahol a visszavont tanúsítványok alaplistát (CRL) közzétették
+* **AnyPolicy akadályozása:** Meggátolja  az összes kiállítási házirend OID (2.5.29.32.0) használatát az alárendelt CA-tanúsítványokban
+* **Legfrissebb CRL:** Egy vagy több olyan URL-t tartalmaz, ahol a kiállító hitelesítésszolgáltató különbözeti CRL-fájlja közzé van téve
+* **Hitelesítésszolgáltatói információkhoz** való hozzáférés: Egy vagy több olyan URL-cím, ahol a kiállító hitelesítésszolgáltatói tanúsítvány közzé van téve
+* **Tulajdonosi információkhoz való** hozzáférés: A tanúsítvány tulajdonosának további részleteinek lekérését tartalmazza
 
-## <a name="certificate-formats"></a>Tanúsítványok formátuma
+## <a name="certificate-formats"></a>Tanúsítványformátumok
 
-A tanúsítványok különböző formátumokban menthetők. Az Azure IoT Hub-hitelesítés általában a PEM-és PFX-formátumot használja.
+A tanúsítványok többféle formátumban menthetők. Azure IoT Hub hitelesítés általában PEM- és PFX-formátumokat használ.
 
 ### <a name="binary-certificate"></a>Bináris tanúsítvány
 
-Ez egy nyers formátumú bináris tanúsítványt tartalmaz a DER ASN. 1 kódolás használatával.
+Ez egy der ASN.1 kódolást használó nyers bináris tanúsítványt tartalmaz.
 
-### <a name="ascii-pem-format"></a>ASCII PEM-formátum
+### <a name="ascii-pem-format"></a>ASCII PEM formátum
 
-A PEM-tanúsítvány (. PEM kiterjesztésű) egy Base64 kódolású tanúsítványt tartalmaz, amely a-----BEGIN CERTIFICATe-----és a-----END-tanúsítvánnyal végződik-----. A PEM formátuma nagyon gyakori, és a IoT Hub bizonyos tanúsítványok feltöltésekor szükséges.
+A PEM-tanúsítvány (.pem kiterjesztés) tartalmaz egy base64 kódolású tanúsítványt, amely -----BEGIN TANÚSÍTVÁNYsal kezdődik----- és -----END CERTIFICATE végződésű-----. A PEM formátum nagyon gyakori, és a IoT Hub szükséges bizonyos tanúsítványok feltöltésekor.
 
-### <a name="ascii-pem-key"></a>ASCII-(PEM-) kulcs
+### <a name="ascii-pem-key"></a>ASCII- (PEM-) kulcs
 
-Base64-kódolású DER-kulcsot tartalmaz, amely esetleg további metaadatokkal rendelkezik a jelszavas védelemhez használt algoritmussal kapcsolatban.
+Egy base64 kódolású DER kulcsot tartalmaz, amely valószínűleg további metaadatokat tartalmaz a jelszóvédelemhez használt algoritmusról.
 
-### <a name="pkcs7-certificate"></a>PKCS # 7 tanúsítvány
+### <a name="pkcs7-certificate"></a>PKCS #7 tanúsítvány
 
-Az aláírt vagy titkosított adatátvitelre szolgáló formátum. Ezt az [RFC 2315](https://tools.ietf.org/html/rfc2315)határozza meg. Ez magában foglalhatja a teljes tanúsítványláncot is.
+Aláírt vagy titkosított adatok szállításához tervezett formátum. Ezt az [RFC 2315 határozza meg.](https://tools.ietf.org/html/rfc2315) A teljes tanúsítványláncot tartalmazhatja.
 
-### <a name="pkcs8-key"></a>PKCS # 8 kulcs
+### <a name="pkcs8-key"></a>PKCS#8 kulcs
 
-Az [RFC 5208](https://tools.ietf.org/html/rfc5208)által definiált titkos kulcs tárolójának formátuma.
+Az [RFC 5208](https://tools.ietf.org/html/rfc5208)által meghatározott titkos kulcstároló formátuma.
 
-### <a name="pkcs12-key-and-certificate"></a>PKCS # 12 kulcs és tanúsítvány
+### <a name="pkcs12-key-and-certificate"></a>PKCS #12 kulcs és tanúsítvány
 
-Egy összetett formátum, amely képes tárolni és védelemmel ellátni a kulcsot és a teljes tanúsítványláncot. Általában. pfx kiterjesztéssel használják. A PKCS # 12 a PFX formátum szinonimája.
+Egy összetett formátum, amely tárolhatja és megvédheti a kulcsokat és a teljes tanúsítványláncot. Gyakran használják .pfx kiterjesztéssel. PKCS #12 a PFX formátum szinonimája.
 
 ## <a name="for-more-information"></a>További tudnivalók
 
 További információkért tekintse át a következők témaköröket:
 
-* [A laikusok útmutatója az X. 509 tanúsítvány szakzsargonhoz](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
-* [Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
+* [A layman útmutatója az X.509-tanúsítvány szakzsargonhoz](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
+* [Az X.509-es hitelesítésszolgáltatói tanúsítványok fogalmi ismerete az IoT-iparágban](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha olyan tesztelési tanúsítványokat szeretne előállítani, amelyeket az eszközök a IoT Hub való hitelesítéséhez használhat, tekintse meg a következő témaköröket:
+Ha olyan teszttanúsítványokat szeretne létrehozni, amelyek segítségével eszközöket hitelesíthet a IoT Hub, tekintse meg a következő témaköröket:
 
-* [Microsoft-Supplied szkriptek használata tesztelési tanúsítványok létrehozásához](tutorial-x509-scripts.md)
-* [Az OpenSSL használata tesztelési tanúsítványok létrehozásához](tutorial-x509-openssl.md)
-* [Az OpenSSL használata Self-Signed tesztelési tanúsítványok létrehozásához](tutorial-x509-self-sign.md)
+* [Teszttanúsítványok Microsoft-Supplied szkriptek használatával](tutorial-x509-scripts.md)
+* [Teszttanúsítványok létrehozása openSSL használatával](tutorial-x509-openssl.md)
+* [OpenSSL használata teszttanúsítványok Self-Signed létrehozásához](tutorial-x509-self-sign.md)
 
-Ha hitelesítésszolgáltató (CA) tanúsítványa vagy alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa van, és fel szeretné tölteni a IoT hub-ba, és bizonyítania kell, hogy rendelkezik a [hitelesítésszolgáltató tanúsítványának](tutorial-x509-prove-possession.md)igazolásával.
+Ha hitelesítésszolgáltatói (CA) tanúsítvánnyal vagy alárendelt CA-tanúsítvánnyal rendelkezik, és fel szeretné tölteni azt az IoT Hubra, és igazolni szeretné, hogy Ön a hitelesítésszolgáltatói tanúsítvány a birtokában van, lásd: Hitelesítésszolgáltatói tanúsítvány [birtoklásának igazolása.](tutorial-x509-prove-possession.md)

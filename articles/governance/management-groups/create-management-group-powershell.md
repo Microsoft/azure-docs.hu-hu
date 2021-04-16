@@ -1,49 +1,51 @@
 ---
-title: 'Gyors útmutató: felügyeleti csoport létrehozása Azure PowerShell'
-description: Ebben a rövid útmutatóban a Azure PowerShell használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
+title: 'Rövid útmutató: Felügyeleti csoport létrehozása Azure PowerShell'
+description: Ebben a rövid útmutatóban a Azure PowerShell egy felügyeleti csoportot hoz létre az erőforrások erőforrás-hierarchiába való rendszerezéséhez.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 216cfeb6e1389793afcfd27d8785a5f912db2c97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 0291bb2bfb439ad09531066f6bad4e20a3f4c6bd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592534"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535969"
 ---
-# <a name="quickstart-create-a-management-group-with-azure-powershell"></a>Gyors útmutató: felügyeleti csoport létrehozása Azure PowerShell
+# <a name="quickstart-create-a-management-group-with-azure-powershell"></a>Rövid útmutató: Felügyeleti csoport létrehozása Azure PowerShell
 
-A felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférést, a szabályzatot és a megfelelőséget több előfizetés között. Hozza létre ezeket a tárolókat egy olyan hatékony és hatékony hierarchia létrehozásához, amely a [Azure Policy](../policy/overview.md) és az [Azure szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md)használható. A felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](overview.md).
+A felügyeleti csoportok olyan tárolók, amelyek segítségével több előfizetés hozzáférését, szabályzatát és megfelelőségét kezelheti. Hozza létre ezeket a tárolókat egy hatékony és [](../policy/overview.md) hatékony hierarchia létrehozásához, amely a Azure Policy [azure szerepköralapú hozzáférés-vezérléssel együtt használható.](../../role-based-access-control/overview.md) További információ a felügyeleti csoportokról: [Erőforrások rendszerezése Azure-beli felügyeleti csoportokkal.](overview.md)
 
-A címtárban létrehozott első felügyeleti csoport akár 15 percet is igénybe vehet. Az Azure-ban a címtárhoz a felügyeleti csoportok szolgáltatás beállításához első alkalommal futó folyamatok futnak. A folyamat befejezésekor értesítést kap. További információ: [a felügyeleti csoportok kezdeti beállítása](./overview.md#initial-setup-of-management-groups).
+A címtárban létrehozott első felügyeleti csoport létrehozása akár 15 percet is igénybe vehet. Vannak olyan folyamatok, amelyek az első alkalommal futnak, amikor beállítják a felügyeleticsoport-szolgáltatást az Azure-ban a címtárhoz. A folyamat befejezésekor értesítést kap. További információkért lásd a felügyeleti [csoportok kezdeti beállítását.](./overview.md#initial-setup-of-management-groups)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- Mielőtt elkezdené, győződjön meg arról, hogy a Azure PowerShell legújabb verziója van telepítve. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) .
+- Mielőtt elkezdené, győződjön meg arról, hogy a Azure PowerShell legújabb verziója van telepítve. Részletes [információkért Azure PowerShell Modul](/powershell/azure/install-az-ps) telepítése.
 
-- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye nincs hozzárendelve ehhez a felhasználóhoz, ha nincs engedélyezve a [hierarchia védelme](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Ez az új felügyeleti csoport a gyökérszintű felügyeleti csoport vagy az [alapértelmezett felügyeleti](./how-to/protect-resource-hierarchy.md#setting---default-management-group) csoport gyermeke lesz, a létrehozó pedig "tulajdonos" szerepkör-hozzárendelést kap. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoporthoz. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok legfelső szintű létrehozását.
+- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoporthoz írási engedély lenne hozzárendelve a felhasználóhoz, ha a [hierarchiavédelem](./how-to/protect-resource-hierarchy.md#setting---require-authorization) nincs engedélyezve. Ez az új felügyeleti csoport a gyökér [](./how-to/protect-resource-hierarchy.md#setting---default-management-group) felügyeleti csoport vagy az alapértelmezett felügyeleti csoport gyermeke lesz, és a létrehozó "Tulajdonos" szerepkör-hozzárendelést kap. A felügyeleticsoport-szolgáltatás lehetővé teszi ezt a képességet, így a szerepkör-hozzárendelésre nincs szükség a gyökérszinten. Létrehozáskor egyetlen felhasználó sem fér hozzá a gyökér felügyeleti csoporthoz. Annak érdekében, hogy ne kelljen megtalálni az Azure AD globális rendszergazdáit a felügyeleti csoportok használatának elkezdésénél, engedélyezhetjük a kezdeti felügyeleti csoportok létrehozását a gyökérszinten.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-### <a name="create-in-azure-powershell"></a>Létrehozás Azure PowerShell
+### <a name="create-in-azure-powershell"></a>Létrehozás a Azure PowerShell
 
-A PowerShell esetében a [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) parancsmag használatával hozzon létre egy új felügyeleti csoportot. Ebben a példában a következő felügyeleti csoport: **Csoportnév** a _contoso_.
+A PowerShellhez használja a [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) parancsmagot egy új felügyeleti csoport létrehozásához. Ebben a példában a **GroupName felügyeleti csoport** _Contoso._
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
 ```
 
-A **Csoportnév** egy egyedi azonosítót hoz létre. Ezt az azonosítót más parancsok használják a csoportra való hivatkozáshoz, és később nem módosíthatók.
+A **GroupName** egy egyedi azonosító létrehozása. Ezt az azonosítót más parancsok is használják a csoportra való hivatkozáshoz, és később nem módosítható.
 
-Ha azt szeretné, hogy a felügyeleti csoport más nevet jelenítsen meg a Azure Portalon belül, adja hozzá a **DisplayName** paramétert. Ha például egy olyan felügyeleti csoportot szeretne létrehozni a contoso csoportnév-vel és a "contoso-csoport" megjelenített nevével, amely a következő parancsmagot használja:
+Ha azt szeretné, hogy a felügyeleti csoport más nevet jelenítsen meg a Azure Portal, adja hozzá a **DisplayName paramétert.** Ha például a Contoso GroupName (Contoso) csoportnévvel és a "Contoso Group" megjelenített névvel (GroupName) hoz létre felügyeleti csoportot, használja a következő parancsmagot:
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-Az előző példákban az új felügyeleti csoport a gyökérszintű felügyeleti csoport alatt jön létre. Másik felügyeleti csoport szülőként való megadásához használja a **ParentID** paramétert.
+Az előző példákban az új felügyeleti csoport a gyökér szintű felügyeleti csoport alatt jön létre. Ha másik felügyeleti csoportot ad meg szülőként, használja a **ParentId paramétert.**
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName Contoso
@@ -60,9 +62,9 @@ Remove-AzManagementGroup -GroupName 'Contoso'
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
+Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport előfizetéseket vagy más felügyeleti csoportokat is képes tartani.
 
-Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezeléséről, folytassa a következővel:
+Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezelésével kapcsolatban, folytassa a következővel:
 
 > [!div class="nextstepaction"]
 > [Erőforrások kezelése felügyeleti csoportokkal](./manage.md)

@@ -1,24 +1,26 @@
 ---
-title: 'Gyors útmutató: Data Science VM – Resource Manager-sablon létrehozása'
+title: 'Rövid útmutató: Data Science VM létrehozása – Resource Manager sablon'
 titleSuffix: Azure Data Science Virtual Machine
-description: Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal végezheti el a Data Science Virtual Machine gyors üzembe helyezését
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal fog gyorsan üzembe helyezni egy Data Science Virtual Machine
 services: machine-learning
 author: lobrien
 ms.author: laobri
-ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.service: data-science-vm
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 0683634223a63281ce2b42ebb02f87f9211a589e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518215"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530651"
 ---
-# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása ARM-sablonnal
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Rövid útmutató: Ubuntu-Data Science Virtual Machine ARM-sablon használatával
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablonnal (ARM-sablon használatával). Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18.04-es Data Science Virtual Machine egy Azure Resource Manager sablonnal (ARM-sablonnal). Az adattudományi Virtual Machines olyan felhőalapú virtuális gépek, amelyek adattudományi és gépi tanulási keretrendszerekkel és eszközökkel előre meg vannak töltve. GPU-alapú számítási erőforrásokon való üzembe helyezéskor minden eszköz és kódtár a GPU használatára van konfigurálva.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -30,7 +32,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/services/machine-learning/).
 
-* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli)-re.
+* A dokumentum cli-parancsainak a helyi környezetből való használatával az [Azure CLI-nek kell használnia.](/cli/azure/install-azure-cli)
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -38,18 +40,18 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
-A következő erőforrások vannak definiálva a sablonban:
+A sablon a következő erőforrásokat definiálja:
 
-* [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-* [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft. számítási/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): felhőalapú virtuális gép létrehozása. Ebben a sablonban a virtuális gép az Ubuntu 18,04-as verzióját futtató Data Science Virtual Machine van konfigurálva.
+* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Compute/virtualMachines:](/azure/templates/microsoft.compute/virtualmachines)Felhőalapú virtuális gép létrehozása. Ebben a sablonban a virtuális gép Ubuntu 18.04 Data Science Virtual Machine futó virtuális gépként van konfigurálva.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Ha az Azure CLI-vel szeretné használni a sablont, jelentkezzen be, és válassza ki az előfizetését (lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli)). Majd futtassa ezt:
+Az Azure CLI-sablont úgy használhatja, ha bejelentkezik, és kiválasztja az előfizetését (lásd: [Bejelentkezés az Azure CLI-val).](/cli/azure/authenticate-azure-cli) Majd futtassa ezt:
 
 ```azurecli-interactive
 read -p "Enter the name of the resource group to create:" resourceGroupName &&
@@ -64,31 +66,31 @@ echo "Press [ENTER] to continue ..." &&
 read
 ```
 
-A fenti parancs futtatásakor írja be a következőket:
+A fenti parancs futtatásakor írja be a következőt:
 
-1. Azon erőforráscsoport neve, amelyet létre szeretne hozni a DSVM és a kapcsolódó erőforrások tárolásához.
-1. Az Azure-beli hely, ahol az üzembe helyezést el szeretné végezni.
-1. A használni kívánt hitelesítési típus (adja meg a karakterláncot `password` vagy `sshPublicKey` ).
+1. Annak az erőforráscsoportnak a neve, amely a DSVM-et és a társított erőforrásokat tartalmazza.
+1. Az azure-beli hely, ahol az üzembe helyezést el szeretné készítse.
+1. A használni szeretné a hitelesítési típust (adja meg a sztringet vagy `password` `sshPublicKey` a sztringet).
 1. A rendszergazdai fiók bejelentkezési neve (ez az érték nem lehet `admin` ).
-1. A fiók jelszavának vagy nyilvános SSH-kulcsának értéke.
+1. A fiókhoz megadott jelszó vagy nyilvános SSH-kulcs értéke.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-A Data Science Virtual Machine megtekintéséhez:
+A saját Data Science Virtual Machine:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 1. Jelentkezzen be.
-1. Válassza ki az imént létrehozott erőforráscsoportot.
+1. Válassza ki az újonnan létrehozott erőforráscsoportot.
 
-Ekkor megjelenik az erőforráscsoport adatai:
+Itt láthatja az erőforráscsoport adatait:
 
-:::image type="content" source="media/dsvm-tutorial-resource-manager/resource-group-home.png" alt-text="Képernyőkép egy DSVM tartalmazó alapszintű erőforráscsoporthoz":::
+:::image type="content" source="media/dsvm-tutorial-resource-manager/resource-group-home.png" alt-text="Képernyőkép egy DSVM-et tartalmazó alapszintű erőforráscsoportról":::
 
-Kattintson a virtuális gép erőforrására, hogy megnyissa az információ lapját. Itt információkat találhat a virtuális gépen, beleértve a kapcsolat részleteit is.
+Kattintson a Virtuális gép erőforrásra az információs lapjára való ugráshoz. Itt találhat információkat a virtuális gépről, beleértve a kapcsolati adatokat is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem szeretné használni ezt a virtuális gépet, törölje azt. Mivel a DSVM más erőforrásokhoz, például egy Storage-fiókhoz van társítva, valószínűleg törölni szeretné a teljes létrehozott erőforráscsoportot. A portálon törölheti az erőforráscsoportot, ha a **Törlés** gombra kattint, és megerősíti a szolgáltatást. Vagy törölheti is az erőforráscsoportot a parancssori felületről a következővel:
+Ha nem szeretné használni ezt a virtuális gépet, törölje. Mivel a DSVM más erőforrásokhoz, például tárfiókhoz van társítva, valószínűleg a teljes létrehozott erőforráscsoportot törölni szeretné. Az erőforráscsoportot a portálon törölheti, ha a **Törlés** gombra kattint, és megerősíti azt. Vagy törölheti az erőforráscsoportot a cli-ről a következővel:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -99,7 +101,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Data Science Virtual Machine egy ARM-sablonból.
+Ebben a rövid útmutatóban létrehozott egy Data Science Virtual Machine arm-sablonból.
 
 > [!div class="nextstepaction"]
-> [Minta programok & ML-útmutató](dsvm-samples-and-walkthroughs.md)
+> [Az ML& bemutatókat bemutató mintaprogramok](dsvm-samples-and-walkthroughs.md)

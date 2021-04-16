@@ -3,7 +3,7 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: A LUIS áttekintése
+    - name: Mi a Language Understanding (LUIS)?
       href: what-is-luis.md
     - name: Nyelvi támogatás
       href: luis-language-support.md
@@ -14,7 +14,7 @@
     - name: LUIS FAQ
       href: troubleshooting.md
       displayName: 'Troubleshooting, import'
-- name: LUIS gyors útmutató
+- name: LUIS – rövid útmutatók
   items:
     - name: Előre összeállított tartományalkalmazás létrehozása
       href: luis-get-started-create-app.md
@@ -39,7 +39,7 @@
     - name: Új alkalmazás indítása
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'
-    - name: Modell létrehozása
+    - name: Modell összeállítása
       items:
         - name: Szándék hozzáadása
           href: luis-how-to-add-intents.md
@@ -53,9 +53,9 @@
         - name: Szolgáltatások hozzáadása
           displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
-        - name: Szándék beszerzése a REST API használatával
+        - name: Szándék lekérte az REST API
           href: luis-get-started-get-intent-from-rest.md
-        - name: A modell módosítása a REST API használatával
+        - name: A modell módosítása a REST API
           href: get-started-get-model-rest-apis.md
     - name: Az alkalmazás integrálása
       items:
@@ -74,7 +74,7 @@
         - name: Minták hozzáadása
           displayName: 'syntax, template, roles'
           href: luis-how-to-model-intent-pattern.md
-    - name: Az alkalmazás betanítása és tesztelése
+    - name: Az alkalmazás betanítás és tesztelése
       items:
         - name: Az alkalmazás betanítása
           href: luis-how-to-train.md
@@ -119,22 +119,26 @@
           diplayName: 'import, export, container'
         - name: A Traffic Managerrel
           href: luis-traffic-manager.md
-    - name: LUIS üzembe helyezése
+    - name: Tárolók használata
       items:
-        - name: Tárolók használata
-          items:
-            - name: Tárolók telepítése és futtatása
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-              href: luis-container-howto.md
-            - name: Tárolók konfigurálása
-              href: luis-container-configuration.md
-            - name: A Container Instances használata
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Tárolókorlátozások
-              href: luis-container-limitations.md
-              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-            - name: Cognitive Services-tárolók – dokumentáció
-              href: ../containers/index.yml
+        - name: Tárolók telepítése és futtatása
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+          href: luis-container-howto.md
+        - name: Tárolók konfigurálása
+          href: luis-container-configuration.md
+        - name: A Container Instances használata
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Tárolókorlátozások
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: ../containers/index.yml
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/luis/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
 - name: Alapelvek
   items:
     - name: Mesterséges intelligencia
@@ -194,7 +198,7 @@
     - name: A LUIS és a QnA Maker használata
       href: choose-natural-language-processing-service.md
       displayName: 'nlp, qna maker'
-    - name: Vállalati tervezési stratégiák
+    - name: Nagyvállalati tervezési stratégiák
       href: luis-concept-enterprise.md
       displayName: import
     - name: DevOps-eljárások alkalmazása a LUIS használatával
@@ -315,7 +319,7 @@
       href: luis-reference-application-settings.md
     - name: Entitások bemutatása
       items:
-        - name: Prebuilt
+        - name: Előre elkészített
           items:
             - name: Előre összeállított tartományhivatkozás
               href: luis-reference-prebuilt-domains.md
@@ -375,24 +379,21 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: További források
   items:
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Megfelelőség és minősítés
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: LUIS portál
       href: 'https://www.luis.ai'
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure-ütemterv
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Szószedet
       href: luis-glossary.md
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
-    - name: Virtuális hálózatok konfigurálása
-      maintainContext: true
-      href: ../cognitive-services-virtual-networks.md
     - name: Keresés
       href: /search/index?search=LUIS
     - name: Blog

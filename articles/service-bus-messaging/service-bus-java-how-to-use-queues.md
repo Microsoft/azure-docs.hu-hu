@@ -1,40 +1,45 @@
 ---
-title: Azure Service Bus Queues használata Javával (Azure-Messaging-servicebus)
-description: Ebből az oktatóanyagból megtudhatja, hogyan használható a Java egy Azure Service Bus üzenetsor üzeneteinek üzenetküldésére és fogadására. Használja az új Azure-Messaging-servicebus csomagot.
-ms.devlang: Java
-ms.topic: quickstart
+title: Üzenetsorok Azure Service Bus használata Javával (azure-messaging-servicebus)
+description: Ez az oktatóanyag bemutatja, hogyan küldhet üzeneteket egy üzenetsorba, és fogadhat üzeneteket a Java Azure Service Bus üzenetsorból. Az új azure-messaging-servicebus csomagot használja.
 ms.date: 02/13/2021
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1fab8d3f603b3c2c7e3c307d3d2ce53590d7511c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: e3998e812bb921ff8bea5e83199bc4e142ed2e83
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739763"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533432"
 ---
-# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (Java)
-Ebben a rövid útmutatóban egy Java-alkalmazást fog létrehozni, amely üzeneteket küld egy Azure Service Bus üzenetsor üzeneteit, és fogadja az üzeneteket. 
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Üzenetek küldése és fogadása Azure Service Bus üzenetsorok között (Java)
+Ebben a rövid útmutatóban egy Java-alkalmazást fog létrehozni, amely üzeneteket küld egy üzenetsorba, és üzeneteket fogad Azure Service Bus üzenetsorból. 
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az új Azure-Messaging-servicebus csomagot használja. A régi Azure-servicebus csomagot használó gyors útmutatóért lásd: [üzenetek küldése és fogadása az Azure-servicebus használatával](service-bus-java-how-to-use-queues-legacy.md).
+> Ez a rövid útmutató az új azure-messaging-servicebus csomagot használja. A régi azure-servicebus csomagot használó rövid útmutatóért lásd: Üzenetek küldése és fogadása [az azure-servicebus használatával.](service-bus-java-how-to-use-queues-legacy.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket. Jegyezze **fel a Service Bus névtér és a létrehozott** **várólista** nevét.
-- Telepítse [a Javához készült Azure SDK][Azure SDK for Java]-t. Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **Javához készült Microsoft Azure kódtárakat** a projekthez. Ha a IntelliJ-t használja, tekintse meg [a Azure Toolkit for IntelliJ telepítését](/azure/developer/java/toolkit-for-intellij/installation)ismertető témakört. 
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [MSDN-előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Ha nincs használható üzenetsora, kövesse a Use [Azure Portal to create a Service Bus queue](service-bus-quickstart-portal.md) (Üzenetsor létrehozása üzenetsor létrehozásához) cikk lépéseit az üzenetsor létrehozásához. Jegyezze fel **a** Service Bus névterének kapcsolati sztringjét és a **létrehozott** üzenetsor nevét.
+- Telepítse a [Javához készült Azure SDK-t.][Azure SDK for Java] Ha eclipse-et használ, telepítheti a javához készült Azure [SDK Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] tartalmazó alkalmazást. Ezután hozzáadhatja a **Microsoft Azure Java-kódtárakat** a projekthez. IntelliJ használata esetén lásd: [Install the Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
 
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Ebben a szakaszban létre fog hozni egy Java-konzol projektet, és hozzá kell adnia egy kódot, amely üzeneteket küld a korábban létrehozott várólistába. 
+Ebben a szakaszban létre fog hozni egy Java-konzolprojektet, és hozzáad egy kódot, amely üzeneteket küld a korábban létrehozott üzenetsorba. 
 
-### <a name="create-a-java-console-project"></a>Java-konzol projekt létrehozása
-Hozzon létre egy Java-projektet az Eclipse vagy egy tetszőleges eszköz használatával. 
+### <a name="create-a-java-console-project"></a>Java-konzolprojekt létrehozása
+Hozzon létre egy Java-projektet az Eclipse vagy egy ön által választott eszköz használatával. 
 
-### <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
-Hivatkozások hozzáadása az Azure Core-hoz és a Azure Service Bus könyvtárakhoz. 
+### <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása a Service Bus
+Adjon hozzá Azure Core-referenciákat és Azure Service Bus kódtárakat. 
 
-Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa át a Java-projektet a mavenbe: kattintson a jobb gombbal a projektre a **Package Explorer** ablakban, **majd válassza a**  ->  **Konvertálás a Maven projektbe** lehetőséget. Ezután vegyen fel függőségeket a két kódtárara az alábbi példában látható módon.
+Ha az Eclipse-et használja, és létrehozott egy Java-konzolalkalmazást, alakítsa át a Java-projektet Mavenre: kattintson a jobb gombbal a projektre a Package **Explorer** (Csomagkezelő) ablakban, és válassza a **Configure** Convert to Maven project (Átalakítás  ->  **Maven-projektre konfigurálása) lehetőséget.** Ezután adja hozzá a függőségeket ehhez a két kódtárhoz az alábbi példában látható módon.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -69,8 +74,8 @@ Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa
 </project>
 ```
 
-### <a name="add-code-to-send-messages-to-the-queue"></a>Kód hozzáadása az üzenetek várólistába küldéséhez
-1. Adja hozzá a következő `import` utasításokat a Java-fájl témaköréhez. 
+### <a name="add-code-to-send-messages-to-the-queue"></a>Kód hozzáadása az üzenetek üzenetsorba való küldése számára
+1. Adja hozzá a következő `import` utasításokat a Java-fájl témakörében. 
 
     ```java
     import com.azure.messaging.servicebus.*;
@@ -80,15 +85,15 @@ Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa
     import java.util.Arrays;
     import java.util.List;
     ```    
-5. A osztályban adja meg a kapcsolatok karakterláncának és a várólista nevének a megtartásához szükséges változókat az alább látható módon: 
+5. A osztályban definiálja a kapcsolati sztringet és az üzenetsor nevét tetsző változókat az alábbiak szerint: 
 
     ```java
     static String connectionString = "<NAMESPACE CONNECTION STRING>";
     static String queueName = "<QUEUE NAME>";    
     ```
 
-    Cserélje le a `<NAMESPACE CONNECTION STRING>` karakterláncot a Service Bus névtérhez tartozó kapcsolódási sztringre. És cserélje le a `<QUEUE NAME>` nevet a várólista nevére.
-3. Adjon hozzá egy nevű metódust `sendMessage` a osztályhoz, hogy egy üzenetet küldjön a várólistára. 
+    Cserélje le a helyére a saját Service Bus `<NAMESPACE CONNECTION STRING>` sztringet. És cserélje `<QUEUE NAME>` le a helyére az üzenetsor nevét.
+3. Adjon hozzá egy nevű metódust a `sendMessage` osztályban, hogy egy üzenetet küldjön az üzenetsorba. 
 
     ```java
     static void sendMessage()
@@ -105,7 +110,7 @@ Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa
         System.out.println("Sent a single message to the queue: " + queueName);        
     }
     ```
-1. Az üzenetek listájának létrehozásához vegyen fel egy nevű metódust `createMessages` a osztályban. Ezeket az üzeneteket általában az alkalmazás különböző részeiről szerezheti be. Itt a mintaadatok listáját fogjuk létrehozni.
+1. Adjon hozzá egy nevű `createMessages` metódust a osztályban az üzenetek listájának létrehozásához. Ezeket az üzeneteket általában az alkalmazás különböző részeiből kapják meg. Itt mintaüzeneteket hozunk létre.
 
     ```java
     static List<ServiceBusMessage> createMessages()
@@ -119,7 +124,7 @@ Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa
         return Arrays.asList(messages);
     }
     ```
-1. Adjon hozzá egy metódus nevű metódust `sendMessageBatch` az üzenetek küldéséhez a létrehozott várólistára. Ez a metódus létrehoz egy- `ServiceBusSenderClient` t a várólistához, meghívja a `createMessages` metódust az üzenetek listájának lekéréséhez, előkészíti egy vagy több köteget, és elküldi a kötegeket a várólistába. 
+1. Adjon hozzá egy metódus nevű `sendMessageBatch` metódust, amely üzeneteket küld a létrehozott üzenetsorba. Ez a metódus létrehoz egy et az üzenetsorhoz, meghívja a metódust az üzenetek listájának le kérése, előkészít egy vagy több köteget, és elküldi a kötegeket az `ServiceBusSenderClient` `createMessages` üzenetsorba. 
 
     ```java
     static void sendMessageBatch()
@@ -168,13 +173,13 @@ Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa
     }
     ```
 
-## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
-Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lekéréséhez. 
+## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása üzenetsorból
+Ebben a szakaszban kódot fog hozzáadni, amely üzeneteket fog lekérni az üzenetsorból. 
 
-1. Adjon hozzá egy nevű metódust `receiveMessages` az üzenetek fogadásához a várólistából. Ez a metódus létrehoz egy `ServiceBusProcessorClient` -t az üzenetsor számára egy kezelő megadásával az üzenetek feldolgozásához, és egy másikat a hibák kezeléséhez. Ezután elindítja a processzort, megvárja a pár másodpercig, kinyomtatja a fogadott üzeneteket, majd leállítja és bezárja a processzort.
+1. Adjon hozzá egy nevű `receiveMessages` metódust, amely üzeneteket fogad az üzenetsorból. Ez a metódus létrehoz egy et az üzenetsorhoz azáltal, hogy megad egy kezelőt az üzenetek feldolgozásához, és egy másikat a `ServiceBusProcessorClient` hibák kezeléshez. Ezután elindítja a processzort, néhány másodpercet vár, kinyomtatja a fogadott üzeneteket, majd leállítja és bezárja a processzort.
 
     > [!IMPORTANT]
-    > A kód helyére írja be az `QueueTest` `QueueTest::processMessage` osztály nevét. 
+    > A `QueueTest` `QueueTest::processMessage` kódban cserélje le a helyére az osztály nevét. 
 
     ```java
     // handles received messages
@@ -199,7 +204,7 @@ Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lek
         processorClient.close();        
     }   
     ```
-2. Adja hozzá a `processMessage` metódust a Service Bus-előfizetésből fogadott üzenet feldolgozásához. 
+2. Adja hozzá a metódust a fiók `processMessage` előfizetéséből fogadott Service Bus feldolgozásához. 
 
     ```java
     private static void processMessage(ServiceBusReceivedMessageContext context) {
@@ -208,7 +213,7 @@ Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lek
             message.getSequenceNumber(), message.getBody());
     }    
     ```
-3. Adja hozzá a `processError` metódust a hibaüzenetek kezeléséhez.
+3. Adja hozzá `processError` a hibaüzeneteket kezelő metódust.
 
     ```java
     private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
@@ -245,7 +250,7 @@ Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lek
         }
     }  
     ```
-2. Frissítse a `main` metódust, hogy meghívja `sendMessage` , `sendMessageBatch` , és `receiveMessages` metódusokat, és dobja `InterruptedException` .     
+2. Frissítse a `main` metódust úgy, hogy `sendMessage` meghívja `sendMessageBatch` a , és `receiveMessages` metódusokat, és a következőt használja: `InterruptedException` .     
 
     ```java
     public static void main(String[] args) throws InterruptedException {        
@@ -256,7 +261,7 @@ Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lek
     ```
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
-Az alkalmazás futtatásakor a konzol ablakban a következő üzenetek jelennek meg. 
+Az alkalmazás futtatásakor a következő üzenetek megjelenik a konzolablakban. 
 
 ```console
 Sent a single message to the queue: myqueue
@@ -269,20 +274,20 @@ Processing message. Session: f9a871be07414baf9505f2c3d466c4ab, Sequence #: 4. Co
 Stopping and closing the processor
 ```
 
-A Azure Portal Service Bus névterének **Áttekintés** lapján láthatók a **bejövő** és a **kimenő** üzenetek száma. Előfordulhat, hogy várnia kell egy percet, majd frissítenie kell a lapot a legfrissebb értékek megtekintéséhez. 
+A  Service Bus-névtér Áttekintés Azure Portal láthatja a bejövő és kimenő  **üzenetek** számát. Előfordulhat, hogy várnia kell egy percet, majd frissítenie kell az oldalt a legújabb értékekhez. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Bejövő és kimenő üzenetek száma" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
 
-Válassza ki a várólistát ezen az **áttekintő** lapon, és navigáljon a **Service Bus üzenetsor** lapra. Ezen a lapon a **bejövő** és a **kimenő** üzenetek száma is látható. Más információk is megjelennek, például a várólista **jelenlegi mérete** , a **maximális méret**, az **aktív üzenetek száma** és így tovább. 
+Az Áttekintés oldalon válassza ki az **üzenetsort,** és lépjen a Service Bus **lapra.** Ezen az oldalon **a bejövő** és **kimenő** üzenetek száma is megjelenik. Egyéb információkat is láthat,  például az üzenetsor aktuális **méretét,** a maximális méretet, az aktív **üzenetek számát** stb. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="Üzenetsor részletei" lightbox="./media/service-bus-java-how-to-use-queues/queue-details.png":::
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Tekintse meg a következő dokumentációt és mintákat:
+Tekintse meg az alábbi dokumentációt és mintákat:
 
-- [A Javához készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [Azure Service Bus Java-ügyféloldali kódtár – Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Minták a GitHubon](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java API-referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
