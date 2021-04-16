@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Form.com-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Form.com között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Form.com | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és Form.com.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,103 +9,77 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d1a203824eabaf9e3be73a68350f58c0e20a1449
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 011f854c7c6885029468c1e93ce60af9a1c06b80
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92451924"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Azure Active Directory integráció a Form.com
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Form.com a Azure Active Directory (Azure AD) szolgáltatással.
-A Form.com és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Form.com az Azure Active Directory (Azure AD) használatával. Az Azure AD Form.com integrálása után a következő funkciókat használhatja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Form.com.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Form.com (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* Vezérlés az Azure AD-ban, aki hozzáféréssel rendelkezik a Form.com.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve Form.com Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Form.com való konfigurálásához a következő elemek szükségesek:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Form.com egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Form.com egyszeri bejelentkezést (SSO) engedélyező előfizetést.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja és teszteli tesztkörnyezetben.
 
-* A Form.com támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Form.com támogatja az **sp által kezdeményezett** SSO-t.
 
-## <a name="adding-formcom-from-the-gallery"></a>Form.com hozzáadása a gyűjteményből
+## <a name="add-formcom-from-the-gallery"></a>Alkalmazás Form.com a katalógusból
 
-A Form.com Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Form.com a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Ha konfigurálni Form.com azure aD-be, hozzá kell Form.com a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha Form.com szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a **Vállalati alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a **Form.com** a keresőmezőbe.
+1. Válassza **Form.com** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-formcom"></a>Azure AD SSO konfigurálása és tesztelése Form.com
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t Form.com egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Form.com.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Ha az Azure AD SSO-t a Form.com konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy lehetővé tegye a felhasználók számára a funkció használatát.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[Az Form.com SSO konfigurálása](#configure-formcom-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon Form.com tesztfelhasználót](#create-formcom-test-user)** , hogy a B.Simon megfelelője legyen a Form.com, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[Az SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-4. A keresőmezőbe írja be a **Form.com** kifejezést, válassza a **Form.com** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portal az Form.com **lapon** keresse meg a Kezelés **szakaszt,** és válassza az egyszeri **bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer** kiválasztása lapon válassza az **SAML lehetőséget.**
+1. Az Egyszeri **bejelentkezés beállítása SAML-sel** lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-     ![Form.com az eredmények listájában](common/search-new-app.png)
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+4. Az **SAML-alapkonfiguráció szakaszban** hajtsa végre a következő lépéseket:
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Form.com-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Form.com kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+    a. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<subdomain>.wa-form.com`
 
-Az Azure AD egyszeri bejelentkezés Form.com való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+    b. Az Azonosító **mezőbe** írjon be egy URL-címet a következő mintával: `https://<subdomain>.form.com`
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Form.com egyszeri bejelentkezés konfigurálása](#configure-formcom-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Form.com-teszt felhasználót](#create-formcom-test-user)** – hogy a Form.com Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés Form.com való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **Form.com** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Form.com tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.wa-form.com`
-
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<subdomain>.form.com`
-
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    c. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
     
     ```http
     https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
@@ -113,91 +87,58 @@ Az Azure AD egyszeri bejelentkezés Form.com való konfigurálásához hajtsa v�
     ```
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Form.com ügyfélszolgálati [csapatához](https://form.com/about/company/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges urlSign-On url-címével, azonosítóval és válasz-URL-címével. Ezeket [az Form.com az ügyféltámogatási](https://form.com/about/company/contact-us/) csapattól. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a tanúsítvány letöltéséhez **(Base64)** , majd kattintson a másolás **ikonra** az **alkalmazás-összevonási metaadatok URL-címének** a megadott beállítások alapján történő másolásához, és mentse a számítógépre.
+5. Az Egyszeres  Sign-On beállítása **SAML-lel** lapon, az **SAML** aláíró tanúsítvány szakaszban kattintson a Letöltés elemre a  tanúsítvány **letöltéséhez (Base64),** majd kattintson a másolás ikonra az alkalmazás összevonási metaadatainak **URL-címének** másolása a megadott beállításokból igény szerint, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](./media/formcom-tutorial/certificatebase64-url.png)
+    ![A Tanúsítvány letöltése hivatkozás](./media/formcom-tutorial/certificatebase64-url.png)
 
-6. A **Form.com beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Beállítási Form.com** másolja ki a megfelelő URL-cím(eke)t a követelménynek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-    c. Kijelentkezési URL-cím
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-formcom-single-sign-on"></a>Form.com egyetlen Sign-On konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Form.com** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)**, az **alkalmazás-összevonási metaadatok URL-címét** és a megfelelő másolt url-címeket a Azure Portal a [Form.com támogatási csapatához](https://form.com/about/company/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Form.com.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza **a** Form.com.
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör van kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+## <a name="configure-formcom-sso"></a>Az Form.com SSO konfigurálása
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+Az egyszeri bejelentkezés Form.com oldalon való konfigurálásához el kell küldenie **a** letöltött **tanúsítványt (Base64),** az alkalmazás összevonási metaadatainak **URL-címét** és a megfelelő másolt URL-címeket a Azure Portal-ről egy Form.com [támogatási csapatnak.](https://form.com/about/company/contact-us/) Ezt a beállítást úgy állítják be, hogy az SAML SSO-kapcsolat megfelelően legyen beállítva mindkét oldalon.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+### <a name="create-formcom-test-user"></a>Tesztfelhasználó Form.com létrehozása
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Form.com. Működjön együtt [Form.com támogatási csapattal](https://form.com/about/company/contact-us/) a felhasználók hozzáadásához a Form.com platformon. Az egyszeri bejelentkezés használata előtt a felhasználókat létre kell hoznunk és aktiválnunk kell.
 
-    ![Új felhasználó gomb](common/new-user.png)
+## <a name="test-sso"></a>SSO tesztelése
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja Form.com bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
+* Lépjen a Form.com URL-címére, és onnan indítsa el a bejelentkezési folyamatot.
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+* Használhatja a Microsoft Saját alkalmazások. Amikor a Form.com csempére Saját alkalmazások, a rendszer átirányítja a Form.com URL-címre. További információ a [Saját alkalmazások: Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Form.com hozzáférésének biztosításával.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Form.com** lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **Form.com** lehetőséget.
-
-    ![Az Form.com hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-formcom-test-user"></a>Form.com-tesztelési felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Form.com-ben. Együttműködik a [Form.com támogatási csapatával](https://form.com/about/company/contact-us/) , hogy hozzáadja a felhasználókat a Form.com platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a Form.com csempére kattint, automatikusan be kell jelentkeznie arra a Form.com, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>További források
-
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+Miután konfigurálta a Form.com kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

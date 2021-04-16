@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – az OpenSSL használata X. 509 tesztelési tanúsítványok létrehozásához az Azure IoT Hubhoz | Microsoft Docs
-description: Oktatóanyag – HITELESÍTÉSSZOLGÁLTATÓI és eszköz-tanúsítványok létrehozása az OpenSSL használatával az Azure IoT hub-hoz
+title: Oktatóanyag – X.509 teszttanúsítványok létrehozása az OpenSSL használatával Azure IoT Hub| Microsoft Docs
+description: Oktatóanyag – Hitelesítésszolgáltatói és eszköztanúsítványok létrehozása az Azure IoT Hubhoz OpenSSL használatával
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,25 +12,24 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 4379c8f43bbfa539179b821bf6b18a01518afad6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 0843e5d3a5e91cb4acdf18ad6bdf6f4f0c214f72
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384306"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378295"
 ---
-# <a name="tutorial-using-openssl-to-create-test-certificates"></a>Oktatóanyag: az OpenSSL használata tesztelési tanúsítványok létrehozásához
+# <a name="tutorial-using-openssl-to-create-test-certificates"></a>Oktatóanyag: Teszttanúsítványok létrehozása az OpenSSL használatával
 
-Bár az X. 509 tanúsítványokat megbízható hitelesítésszolgáltatótól is megvásárolhatja, a saját teszt-hierarchia létrehozása vagy az önaláírt tanúsítványok használata megfelelő az IoT hub-eszközök hitelesítésének teszteléséhez. Az alábbi példa az [OpenSSL](https://www.openssl.org/) -t és az [OpenSSL-szakácskönyvet](https://www.feistyduck.com/library/openssl-cookbook/online/ch-openssl.html) használja a hitelesítésszolgáltató (CA), egy alárendelt hitelesítésszolgáltató és egy eszköz tanúsítványának létrehozásához. A példa ezután aláírja az alárendelt HITELESÍTÉSSZOLGÁLTATÓT és az eszköz tanúsítványát egy tanúsítvány-hierarchiába. Ez csak példaként jelenik meg.
+Bár X.509-tanúsítványokat megbízható hitelesítésszolgáltatótól vásárolhat, saját teszttanúsítvány-hierarchiát kell létrehoznia, vagy önaírt tanúsítványokat kell használnia az IoT Hub-eszközhitelesítés teszteléséhez. Az alábbi példa [OpenSSL](https://www.openssl.org/) és [OpenSSL-kézikönyv](https://www.feistyduck.com/library/openssl-cookbook/online/ch-openssl.html) segítségével hoz létre hitelesítésszolgáltatót (CA), alárendelt CA-t és eszköztanúsítványt. A példa ezután aláírja az alárendelt CA-t és az eszköz tanúsítványát egy tanúsítványhierarchiába. Ez csak példaként szolgál.
 
-## <a name="step-1---create-the-root-ca-directory-structure"></a>1. lépés – a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ címtár-struktúrájának létrehozása
+## <a name="step-1---create-the-root-ca-directory-structure"></a>1. lépés – A legfelső szintű hitelesítésszolgáltató címtárstruktúrája létrehozása
 
-Hozzon létre egy címtár-struktúrát a hitelesítésszolgáltató számára.
+Hozzon létre egy címtárstruktúrát a hitelesítésszolgáltató számára.
 
-* A **tanúsítványok** könyvtára új tanúsítványokat tárol.
-* A rendszer a tanúsítvány-adatbázishoz használja az **db** könyvtárat.
-* A **privát** könyvtár TÁROLJA a hitelesítésszolgáltató titkos kulcsát.
+* A **tanúsítványkönyvtár új** tanúsítványokat tárol.
+* A **rendszer a db** könyvtárat használja a tanúsítvány-adatbázishoz.
+* A **privát** címtár tárolja a CA titkos kulcsát.
 
 ```bash
   mkdir rootca
@@ -41,9 +40,9 @@ Hozzon létre egy címtár-struktúrát a hitelesítésszolgáltató számára.
   echo 1001 > db/crlnumber
 ```
 
-## <a name="step-2---create-a-root-ca-configuration-file"></a>2. lépés – a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljának létrehozása
+## <a name="step-2---create-a-root-ca-configuration-file"></a>2. lépés – Legfelső szintű hitelesítésszolgáltató konfigurációs fájljának létrehozása
 
-A HITELESÍTÉSSZOLGÁLTATÓ létrehozása előtt hozzon létre egy konfigurációs fájlt, és mentse azt `rootca.conf` a rootca könyvtárba.
+Hitelesítésszolgáltató létrehozása előtt hozzon létre egy konfigurációs fájlt, és mentse a `rootca.conf` rootca könyvtárba.
 
 ```xml
 [default]
@@ -112,23 +111,23 @@ subjectKeyIdentifier     = hash
 
 ```
 
-## <a name="step-3---create-a-root-ca"></a>3. lépés – legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ létrehozása
+## <a name="step-3---create-a-root-ca"></a>3. lépés – Legfelső szintű hitelesítésszolgáltató létrehozása
 
-Először a kulcs és a tanúsítvány-aláírási kérelem (CSR) előállítása a rootca könyvtárban.
+Először hozza létre a kulcsot és a tanúsítvány-aláírási kérelmet (CSR) a rootca könyvtárban.
 
 ```bash
   openssl req -new -config rootca.conf -out rootca.csr -keyout private/rootca.key
 ```
 
-Ezután hozzon létre egy önaláírt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Az önaláírás megfelelő tesztelési célokra. A parancssorban határozza meg a ca_ext konfigurációs fájl bővítményeit. Ezek azt jelzik, hogy a tanúsítvány egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓhoz kapcsolódik, és használható a tanúsítványok és a visszavont tanúsítványok listáinak (CRL-ek) aláírására. Írja alá a tanúsítványt, és véglegesítse azt az adatbázisba.
+Ezután hozzon létre egy önaírt hitelesítésszolgáltatói tanúsítványt. Az önalá aláírás tesztelési célokra alkalmas. Adja ca_ext konfigurációs fájlkiterjesztéseket a parancssorban. Ezek azt jelzik, hogy a tanúsítvány egy legfelső szintű hitelesítésszolgáltatóhoz szükséges, és tanúsítványok és visszavont tanúsítványok listái (CRL-ek) aláírására használható. Írja alá a tanúsítványt, és véglegesítse az adatbázisban.
 
 ```bash
   openssl ca -selfsign -config rootca.conf -in rootca.csr -out rootca.crt -extensions ca_ext
 ```
 
-## <a name="step-4---create-the-subordinate-ca-directory-structure"></a>4. lépés – az alárendelt HITELESÍTÉSSZOLGÁLTATÓ címtár-struktúrájának létrehozása
+## <a name="step-4---create-the-subordinate-ca-directory-structure"></a>4. lépés – Az alárendelt CA könyvtárszerkezetének létrehozása
 
-Hozzon létre egy címtár-struktúrát az alárendelt HITELESÍTÉSSZOLGÁLTATÓ számára.
+Hozzon létre egy könyvtárstruktúrát az alárendelt CA számára.
 
 ```bash
   mkdir subca
@@ -139,9 +138,9 @@ Hozzon létre egy címtár-struktúrát az alárendelt HITELESÍTÉSSZOLGÁLTAT�
   echo 1001 > db/crlnumber
 ```
 
-## <a name="step-5---create-a-subordinate-ca-configuration-file"></a>5. lépés – alárendelt HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljának létrehozása
+## <a name="step-5---create-a-subordinate-ca-configuration-file"></a>5. lépés – Alárendelt CA konfigurációs fájl létrehozása
 
-Hozzon létre egy konfigurációs fájlt, és mentse subca. conf néven a `subca` könyvtárba.
+Hozzon létre egy konfigurációs fájlt, és mentse subca.conf fájlként a `subca` könyvtárba.
 
 ```bash
 [default]
@@ -209,57 +208,57 @@ keyUsage                 = critical,digitalSignature
 subjectKeyIdentifier     = hash
 ```
 
-## <a name="step-6---create-a-subordinate-ca"></a>6. lépés – alárendelt HITELESÍTÉSSZOLGÁLTATÓ létrehozása
+## <a name="step-6---create-a-subordinate-ca"></a>6. lépés – Alárendelt CA létrehozása
 
-Hozzon létre egy új sorozatszámot a `rootca/db/serial` fájlban az ALÁRENDELT hitelesítésszolgáltatói tanúsítványhoz.
+Hozzon létre egy új sorozatszámot az alárendelt `rootca/db/serial` CA-tanúsítvány fájljában.
 
 ```bash
   openssl rand -hex 16 > db/serial
 ```
 
 >[!IMPORTANT]
->Létre kell hoznia egy új sorozatszámot minden alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz és minden létrehozott eszköz tanúsítványhoz. A különböző tanúsítványok nem rendelkezhetnek ugyanazzal a sorozatszámmal.
+>Létre kell hoznia egy új sorozatszámot minden alárendelt CA-tanúsítványhoz és minden ön által létrehozott eszköz tanúsítványhoz. A különböző tanúsítványok sorozatszáma nem lehet azonos.
 
-Ebből a példából megtudhatja, hogyan hozhat létre alárendelt vagy regisztrációs HITELESÍTÉSSZOLGÁLTATÓT. Mivel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT a tanúsítványok aláírására használhatja, az alárendelt HITELESÍTÉSSZOLGÁLTATÓ létrehozása nem feltétlenül szükséges. Az alárendelt HITELESÍTÉSSZOLGÁLTATÓkkal azonban olyan valós tanúsítvány-hierarchiákat is utánozhat, amelyekben a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ offline állapotban van, és az alárendelt hitelesítésszolgáltatók kiállítják az Ügyféltanúsítványok tanúsítványait.
+Ez a példa bemutatja, hogyan hozhat létre alárendelt vagy regisztrációs hitelesítésszolgáltatót. Mivel a legfelső szintű hitelesítésszolgáltatóval aláírhatja a tanúsítványokat, nem feltétlenül szükséges alárendelt CA-t létrehozni. Az alárendelt CA azonban a valós tanúsítványhierarchiákat utánozza, amelyekben a legfelső szintű hitelesítésszolgáltató offline állapotban van, az alárendelt CA pedig ügyféltanúsítványokat ad ki.
 
-A konfigurációs fájl használatával kulcs és tanúsítvány-aláírási kérelem (CSR) hozható elő.
+A konfigurációs fájl használatával hozzon létre egy kulcsot és egy tanúsítvány-aláírási kérelmet (CSR).
 
 ```bash
   openssl req -new -config subca.conf -out subca.csr -keyout private/subca.key
 ```
 
-Küldje el a CSR-t a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓNAK, és használja a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT az alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiállításához és aláírásához. A bővítmények kapcsolójának sub_ca_ext megadása a parancssorban. A bővítmények azt jelzik, hogy a tanúsítvány a tanúsítványok és a visszavont tanúsítványok listáinak (CRL-ek) aláírására képes HITELESÍTÉSSZOLGÁLTATÓ. Amikor a rendszer kéri, írja alá a tanúsítványt, és véglegesítse azt az adatbázisba.
+Küldje el a CSR-t a legfelső szintű hitelesítésszolgáltatónak, és használja a legfelső szintű hitelesítésszolgáltatót az alárendelt CA-tanúsítvány kiállításához és aláírásához. Adja sub_ca_ext a parancssorban a bővítmények kapcsolóját. A bővítmények azt jelzik, hogy a tanúsítvány olyan hitelesítésszolgáltatóhoz való, amely képes tanúsítványokat és visszavont tanúsítványok listáit (CRL-eket) aláírni. Amikor a rendszer kéri, írja alá a tanúsítványt, és véglegesítse azt az adatbázisban.
 
 ```bash
   openssl ca -config ../rootca/rootca.conf -in subca.csr -out subca.crt -extensions sub_ca_ext
 ```
 
-## <a name="step-7---demonstrate-proof-of-possession"></a>7. lépés – a birtoklás igazolásának bemutatása
+## <a name="step-7---demonstrate-proof-of-possession"></a>7. lépés – A birtoklási igazolás szemléltető lépése
 
-Most már rendelkezik egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és egy alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal is. Az eszköz tanúsítványait bármelyik használatával is aláírhatja. A kiválasztott elemet fel kell tölteni a IoT Hubba. A következő lépések azt feltételezik, hogy az alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja. Az alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feltöltése és regisztrálása a IoT Hubba:
+Most már rendelkezik egy legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal és egy alárendelt CA-tanúsítvánnyal is. Az eszköztanúsítványok aláírására bármelyiket használhatja. A választott fájlt fel kell tölteni a IoT Hub. A következő lépések feltételezik, hogy az alárendelt CA-tanúsítványt használja. Az alárendelt CA-tanúsítvány feltöltése és regisztrálása a IoT Hub:
 
-1. A Azure Portal navigáljon a IoTHub, és válassza a **beállítások > tanúsítványok** lehetőséget.
+1. A Azure Portal lépjen az IoTHubra, és válassza **a Beállítások és tanúsítványok > lehetőséget.**
 
-1. Válassza a **Hozzáadás** lehetőséget az új alárendelt hitelesítésszolgáltatói tanúsítvány hozzáadásához.
+1. Az **új alárendelt CA-tanúsítvány** hozzáadásához válassza a Hozzáadás lehetőséget.
 
-1. Adja meg a megjelenítendő nevet a **tanúsítvány neve** mezőben, és válassza ki a korábban létrehozott PEM-tanúsítványfájl.
+1. Adjon meg egy megjelenítendő nevet a **Tanúsítvány neve mezőben,** és válassza ki a korábban létrehozott PEM-tanúsítványfájlt.
 
-1. Kattintson a **Mentés** gombra. A tanúsítvány a tanúsítványok listájában nem **ellenőrzött** állapottal jelenik meg. Az ellenőrzési folyamat igazolni fogja, hogy Ön a tanúsítvány tulajdonosa.
+1. Kattintson a **Mentés** gombra. A tanúsítvány nem ellenőrzött állapotúként jelenik meg a **tanúsítványlistában.** Az ellenőrzési folyamat igazolja, hogy Ön a tanúsítvány ön tulajdona.
 
    
-1. Válassza ki a tanúsítványt a **tanúsítvány részletei** párbeszédpanel megtekintéséhez.
+1. Válassza ki a tanúsítványt a Tanúsítvány **részletei párbeszédpanel megtekintéséhez.**
 
-1. Válassza az **ellenőrző kód előállítása** lehetőséget. További információ: CA- [tanúsítvány birtoklásának bizonyítása](tutorial-x509-prove-possession.md).
+1. Válassza **az Ellenőrző kód létrehozása lehetőséget.** További információ: [Hitelesítésszolgáltatói tanúsítvány birtoklásának bizonyítása.](tutorial-x509-prove-possession.md)
 
-1. Másolja az ellenőrzőkódot a vágólapra. A tanúsítvány tulajdonosának kell megadnia az ellenőrző kódot. Ha például az ellenőrző kód BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, adja hozzá a tanúsítványt tulajdonosként a 9. lépésben látható módon.
+1. Másolja az ellenőrzőkódot a vágólapra. Az ellenőrző kódot a tanúsítvány tulajdonosának kell beállítania. Ha például az ellenőrző kód AZ ÖNA656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A, adja hozzá a tanúsítványhoz a 9. lépésben látható módon.
 
-1. Titkos kulcs létrehozása.
+1. Hozzon létre egy titkos kulcsot.
 
   ```bash
     $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
   ```
 
-9. Tanúsítvány-aláírási kérelem (CSR) létrehozása a titkos kulcsból. Adja hozzá az ellenőrző kódot a tanúsítvány tárgyához.
+9. Hozzon létre egy tanúsítvány-aláírási kérelmet (CSR) a titkos kulcsból. Adja hozzá az ellenőrző kódot a tanúsítvány tárgyaként.
 
   ```bash
   openssl req -new -key pop.key -out pop.csr
@@ -280,36 +279,36 @@ Most már rendelkezik egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsí
  
   ```
 
-10. Hozzon létre egy tanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljának és a CSR-nek a birtokában lévő tanúsítvány igazolása alapján.
+10. Hozzon létre egy tanúsítványt a legfelső szintű hitelesítésszolgáltató konfigurációs fájljának és a birtoklási igazoláshoz használt CSR-nek a használatával.
 
   ```bash
     openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
-11. Válassza ki az új tanúsítványt a **tanúsítvány részletei** nézetben. A PEM-fájl megkereséséhez navigáljon a tanúsítványok mappára.
+11. Válassza ki az új tanúsítványt a **Tanúsítvány részletei nézetben.** A PEM-fájl megkeresése a certs mappában található.
 
-12. A tanúsítvány feltöltése után válassza az **ellenőrzés** lehetőséget. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány állapotának **ellenőrzött** értékre kell váltania.
+12. A tanúsítvány feltöltése után válassza az Ellenőrzés **lehetőséget.** A hitelesítésszolgáltatói tanúsítvány állapotának Ellenőrzött **állapotra kell változnia.**
 
-## <a name="step-8---create-a-device-in-your-iot-hub"></a>8. lépés – eszköz létrehozása a IoT Hubban
+## <a name="step-8---create-a-device-in-your-iot-hub"></a>8. lépés – Eszköz létrehozása a IoT Hub
 
-Navigáljon a IoT Hub a Azure Portalban, és hozzon létre egy új IoT-azonosítót a következő értékekkel:
+Lépjen a IoT Hub a Azure Portal, és hozzon létre egy új IoT-eszközidentitást a következő értékekkel:
 
-1. Adja meg az eszköz tanúsítványának tulajdonos nevével megegyező **azonosítóját** .
+1. Adja meg **az eszköztanúsítványok** tulajdonosnevének megfelelő eszközazonosítót.
 
-1. Válassza ki az **X. 509 hitelesítésszolgáltatói aláírt** hitelesítési típust.
+1. Válassza ki az **X.509 hitelesítésszolgáltató aláírt hitelesítési** típusát.
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="step-9---create-a-client-device-certificate"></a>9. lépés – ügyfél-eszköz tanúsítványának létrehozása
+## <a name="step-9---create-a-client-device-certificate"></a>9. lépés – Ügyféleszköz-tanúsítvány létrehozása
 
-Ügyféltanúsítvány létrehozásához először egy titkos kulcsot kell előállítania. A következő parancs bemutatja, hogyan használható az OpenSSL egy titkos kulcs létrehozásához. Hozza létre a kulcsot a subca könyvtárban.
+Ügyfél-tanúsítvány létrehozásához először létre kell hoznia egy titkos kulcsot. A következő parancs bemutatja, hogyan hozhat létre titkos kulcsot az OpenSSL használatával. Hozza létre a kulcsot az alca könyvtárban.
 
 ```bash
 openssl genpkey -out device.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 ```
 
-Hozzon létre egy tanúsítvány-aláírási kérelmet (CSR) a kulcshoz. Nem kell megadnia a jelszó vagy a választható cég nevét. Az eszköz AZONOSÍTÓját azonban a köznapi név mezőben kell megadnia.
+Hozzon létre egy tanúsítvány-aláírási kérelmet (CSR) a kulcshoz. Nem kell megadnia a kérdéshez szükséges jelszót vagy a vállalat nevét ( nem kötelező). A köznév mezőben azonban meg kell adnia az eszközazonosítót.
 
 ```bash
 openssl req -new -key device.key -out device.csr
@@ -330,13 +329,13 @@ An optional company name []:
 
 ```
 
-Győződjön meg arról, hogy a CSR a vártnak megfelelően van-e.
+Ellenőrizze, hogy a CSR-t a vártnak megfelelő-e.
 
 ```bash
 openssl req -text -in device.csr -noout
 ```
 
-Küldje el a CSR-t az alárendelt HITELESÍTÉSSZOLGÁLTATÓNAK a tanúsítvány-hierarchiába való bejelentkezéshez. Itt adhatja meg `client_ext` a `-extensions` kapcsolót. Figyelje meg, hogy a `Basic Constraints` kiállított tanúsítványban a tanúsítvány nem hitelesítésszolgáltató. Ha több tanúsítványt is aláír, ne felejtse el frissíteni a sorozatszámot, mielőtt az OpenSSL parancs használatával létrehozza az egyes tanúsítványokat `rand -hex 16 > db/serial` .
+Küldje el a CSR-t az alárendelt CA-nak a tanúsítványhierarchiába való bejelentkezéshez. A `client_ext` kapcsolóban adja `-extensions` meg a következőt: . Figyelje meg, hogy a kiállított tanúsítványban a azt jelzi, hogy ez a tanúsítvány `Basic Constraints` nem hitelesítésszolgáltatóhoz való. Ha több tanúsítványt ír alá, az openssl paranccsal frissítse a sorozatszámot az egyes tanúsítványok létrehozása `rand -hex 16 > db/serial` előtt.
 
 ```bash
 openssl ca -config subca.conf -in device.csr -out device.crt -extensions client_ext
@@ -344,4 +343,4 @@ openssl ca -config subca.conf -in device.csr -out device.crt -extensions client_
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [tanúsítvány hitelesítésének tesztelése](tutorial-x509-test-certificate.md) lehetőségre kattintva megállapíthatja, hogy a tanúsítvány hitelesítheti-e az eszközt a IoT hub.
+A [Tanúsítványhitelesítés tesztelése alatt](tutorial-x509-test-certificate.md) állapítsa meg, hogy a tanúsítvány hitelesítheti-e az eszközt a IoT Hub.

@@ -1,6 +1,6 @@
 ---
-title: azcopy pad | Microsoft Docs
-description: Ez a cikk a azcopy pad parancsra vonatkozó tudnivalókat tartalmaz.
+title: azcopycopycopy | Microsoft Docs
+description: Ez a cikk az azcopycopy parancs referenciainformációit biztosítja.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,36 +8,42 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282007"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502028"
 ---
-# <a name="azcopy-benchmark"></a>azcopy-teljesítményteszt
+# <a name="azcopy-benchmark"></a>azcopy benchmark
 
-Teljesítmény-teljesítménytesztet futtat, ha a megadott célhelyről vagy a tesztelési adatok letöltését végzi. A feltöltések esetében automatikusan létrejönnek a tesztelési adatok.
+Teljesítménytesztet futtat tesztadatok feltöltésével vagy letöltésével egy adott célhelyre vagy célról. Feltöltésekkor a tesztadatok automatikusan létrejönnek.
 
-A teljesítményteszt-parancs ugyanazzal a folyamattal fut, mint a másolás, kivéve a következőket: 
+A teljesítményteszt parancsa ugyanazt a folyamatot futtatja, mint a "copy" (másolás) parancs, azzal a kivételt leszámítva: 
 
-  - Ahelyett, hogy a forrás-és a célként megadott paramétereket is megkövetelje, a teljesítményteszt csupán egyet vesz igénybe. Ez a blob-tároló, Azure Files megosztás vagy Azure Data Lake Storage Gen2 fájlrendszer, amelyet fel szeretne tölteni vagy le kíván tölteni.
+  - A forrás- és célparaméterek igénylése helyett a teljesítményteszt csak egyet vesz igénybe. Ez az a blobtároló, Azure Files Megosztás vagy Azure Data Lake Storage Gen2, amelybe fel szeretne tölteni vagy letölteni szeretne.
 
-  - A "Mode" paraméter azt ismerteti, hogy a AzCopy kell-e tesztelni az adott célhelyre való feltöltést vagy letöltést. Az érvényes értékek: "upload" és "Download". Az alapértelmezett érték a "feltöltés".
+  - A "mode" paraméter azt írja le, hogy az AzCopy tesztelje-e az adott célra való feltöltést vagy letöltést. Az érvényes értékek az "Upload" (Feltöltés) és a "Download" (Letöltés). Az alapértelmezett érték az "Upload".
 
-  - A feltöltési referenciaértékek esetében a hasznos adatokat a parancssori paraméterek írják le, amelyek azt szabályozzák, hogy hány fájl legyen automatikusan létrehozva, és milyen jelentős a fájlok. A létrehozási folyamat teljes mértékben a memóriában zajlik. A lemez nincs használatban.
+  - A feltöltési teljesítménytesztek hasznos adatát parancssori paraméterek írják le, amelyek azt írják le, hogy hány fájl lesz automatikusan generálva, és milyen jelentősek a fájlok. A generálási folyamat teljes egészében a memóriában történik. A lemez nincs használva.
 
-  - A letöltések esetében a hasznos adatok a forráson már létező fájlokból állnak. (Lásd az alábbi példát a tesztelési fájlok létrehozásához, ha szükséges).
+  - Letöltésekkor a hasznos adatok a forrásban már létező fájlokból állnak. (Ha szükséges, tekintse meg az alábbi példát a tesztfájlok létrehozásáról).
   
-  - A másolási parancs számára elérhető választható paraméterek közül csak néhány támogatott.
+  - A másolási parancshoz elérhető választható paraméterek csak néhány használata támogatott.
   
-  - A további diagnosztika mérése és jelentése.
+  - A rendszer további diagnosztikát is mér és jelent.
   
-  - A feltöltések esetében az alapértelmezett viselkedés az átvitt adatok törlése a teszt futtatása végén.  A letöltések esetében az adatgyűjtés soha nem történik meg helyileg.
+  - Feltöltések esetén az alapértelmezett viselkedés az átvitt adatok törlése a tesztfutat végén.  Letöltések esetén a rendszer soha nem menti helyileg az adatokat.
 
-A teljesítményteszt mód automatikusan beállíthatja a maximális átviteli sebességet biztosító párhuzamos TCP-kapcsolatok számát. Ez a szám a végén jelenik meg. Az automatikus hangolás megakadályozásához állítsa a AZCOPY_CONCURRENCY_VALUE környezeti változót egy adott számú kapcsolatra. 
+A teljesítményteszt mód automatikusan a maximális átviteli sebességet lehetővé tő párhuzamos TCP-kapcsolatok számára hangolja magát. Ez a szám jelenik meg a végén. Az automatikus csatlakozás megakadályozása érdekében állítsa a AZCOPY_CONCURRENCY_VALUE környezeti változót adott számú kapcsolatra. 
 
-A szokásos hitelesítési típusok mindegyike támogatott. Ugyanakkor a feltöltési teljesítmény legalkalmasabb megközelítése általában egy üres tároló létrehozása SAS-jogkivonattal és SAS-hitelesítés használata. (A letöltési mód megköveteli, hogy a célként megadott tárolóban legyen jelen a tesztelési érték.)
+Az összes szokásos hitelesítési típus támogatott. A feltöltés teljesítményértékelésének legkényelmesebb módja azonban általában egy üres tároló létrehozása SAS-jogkivonattal és SAS-hitelesítés használata. (A letöltési módhoz tesztadatok egy készletének kell lennie a céltárolóban.)
+
+## <a name="related-conceptual-articles"></a>Kapcsolódó elméleti cikkek
+
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Az AzCopy 10-es és Azure Storage-beli teljesítményének optimalizálása](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>Példák
 
@@ -45,29 +51,29 @@ A szokásos hitelesítési típusok mindegyike támogatott. Ugyanakkor a feltöl
 azcopy benchmark [destination] [flags]
 ```
 
-Teljesítményteszt-teszt futtatása alapértelmezett paraméterekkel (legfeljebb 1 GB/s sebességű hálózatok esetében alkalmas): "
+Teljesítményteszt futtatása alapértelmezett paraméterekkel (legfeljebb 1 Gb/s-os hálózatok teljesítményértékelésére alkalmas):
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"
 ```
-Futtasson egy teljesítményteszt-tesztet, amely 100 fájlt tölt fel, amelyek mindegyike 2 GiB méretű: (gyors hálózaton, például 10 GB/s):
+Futtatassa a teljesítménytesztet, amely 100 fájlt tölt fel, amelyek mérete 2 GiB: (alkalmas gyors hálózaton, például 10 Gb/s-on való teljesítményteszthez):
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 ```
-Futtasson teljesítményteszt-tesztet, de használjon 50 000-es fájlokat, amelyek mindegyike 8 MiB méretű, és az MD5-kivonatokat számítja ki (ugyanúgy, ahogyan a `--put-md5` jelző ezt a másolási paranccsal végzi el). A teljesítményértékelés célja `--put-md5` annak tesztelése, hogy az MD5 számítás befolyásolja-e a kiválasztott fájlok számát és méretét:
+Futtatassa a teljesítménytesztet, de használjon 50 000 fájlt, mindegyik 8 MiB méretű fájlt, és számítsa ki az MD5-hasheket (ugyanúgy, ahogyan a jelölő ezt a másolási parancsban `--put-md5` teszi). A teljesítményteszt célja annak tesztelése, hogy az MD5-számítás befolyásolja-e a kiválasztott fájlszám és `--put-md5` -méret átviteli sebességét:
 
 ```azcopy
 azcopy bench --mode='Upload' "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 ```
 
-A meglévő fájlokat a célhelyről letöltő teljesítményteszt-teszt futtatása
+Teljesítményteszt futtatása, amely meglévő fájlokat tölt le egy célból
 
 ```azcopy
 azcopy bench --mode='Download' "https://[account].blob.core.windows.net/[container]?<SAS?"
 ```
 
-Olyan feltöltést futtasson, amely nem törli az átvitt fájlokat. (Ezek a fájlok ezután a letöltési teszt hasznos adataiként szolgálhatnak)
+Olyan feltöltést futtat, amely nem törli az átvitt fájlokat. (Ezek a fájlok hasznos adatként szolgálhatnak egy letöltési teszthez)
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 100 --delete-test-data=false
@@ -75,35 +81,35 @@ azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-
 
 ## <a name="options"></a>Beállítások
 
-**--a blob-Type** karakterlánc határozza meg a blob típusát a célhelyen. A különböző blob-típusok teljesítményértékelésének engedélyezésére szolgál. Megegyezik a másolási parancs azonos nevű paraméterével (az alapértelmezett "észlelés").
+**--blob-type** string A célhelyen lévő blob típusát határozza meg. A különböző blobtípusok teljesítménymérésének lehetővé teszi. Ugyanaz, mint a másolási parancs azonos nevű paramétere (alapértelmezett "Észlelés").
 
-**--Block-Size-MB** lebegőpontos használata ez a blokk mérete (a MIB-ben van megadva). A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. Tizedes törtek engedélyezettek – például 0,25. Azonos a másolási parancs azonos nevű paraméterével.
+**--block-size-mb** float Használja ezt a blokkméretet (a MiB-ban megadva). A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. Tizedes törtek engedélyezettek – például 0,25. Ugyanaz, mint a másolási parancs azonos nevű paramétere.
 
-**--ellenőrzési hossz**  Az átvitel után a célhelyen lévő fájl hosszának ellenőrzését. Ha eltérés van a forrás és a cél között, az átvitel sikertelenként van megjelölve. (alapértelmezett true)
+**--check-length**  Ellenőrizze a fájl hosszát a célhelyen az átvitel után. Ha eltérés van a forrás és a cél között, az átvitel sikertelenként lesz megjelölve. (alapértelmezett igaz)
 
-**--delete-test--adatelemzés**  Ha az értéke igaz, a rendszer a teljesítményteszt-futtatás végén törli a teljesítményteszt-adatmennyiséget.  Állítsa be hamis értékre, ha a célhelyen szeretné megőrizni az adattárolást, például a teljesítményteszt üzemmódján kívüli manuális teszteléshez (alapértelmezett érték: true).
+**--delete-test-data**  Ha igaz, a teljesítményteszt adatai a teljesítményteszt futásának végén törlődnek.  Állítsa false (hamis) értékre, ha az adatokat a célhelyen szeretné tartani – például ha manuális tesztekhez szeretné használni a teljesítményteszt módon kívül (alapértelmezés szerint igaz).
 
-**--file-Count** uint.  A használandó automatikusan létrehozott adatfájlok száma (alapértelmezett 100).
+**--file-count** uint.  A használni szükséges automatikusan létrehozott adatfájlok száma (alapértelmezés szerint 100).
 
-**– Súgó**  A pad súgója
+**--help**  Segítség a temékhez
 
-**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett "információ")
+**--log-level** string Adja meg a naplófájl részletes naplóját, az elérhető szinteket: INFO(minden kérés/válasz), WARNING(lassú válaszok), ERROR(csak sikertelen kérések) és NONE(nincs kimeneti napló). (alapértelmezett "INFO")
 
-a **--Mode** karakterlánc határozza meg, hogy a Azcopy kell-e tesztelni a feltöltéseket vagy a letöltéseket a célhelyről. Az érvényes értékek: "upload" és "Download". Az alapértelmezett beállítás a "feltöltés". (alapértelmezett feltöltési érték)
+**--mode string** Meghatározza, hogy az Azcopy tesztelje-e a célról való feltöltést vagy letöltést. Az érvényes értékek a "feltöltés" és a "letöltés". Az alapértelmezett beállítás a "feltöltés". (alapértelmezett feltöltés)
 
-**--mappák száma** uint ha 0-nál nagyobb, hozzon létre mappákat az adatmegosztáshoz.
+**--number-of-folders** uint Ha nagyobb, mint 0, hozzon létre mappákat az adatok felosztására.
 
-**--put-MD5**  Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob/fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Azonos a másolási parancs azonos nevű paraméterével.
+**--put-md5**  Hozzon létre egy MD5-kivonatot az egyes fájlokból, és mentse a kivonatot a célblob/fájl Content-MD5 tulajdonságaként. (Alapértelmezés szerint a kivonat NEM jön létre.) Ugyanaz, mint a másolási parancs azonos nevű paramétere.
 
-– az egyes automatikusan létrehozott adatfájlok **mérete/fájl** mérete. A számnak közvetlenül a K, M vagy G érték után kell szerepelnie, például: 12k vagy 200G (alapértelmezett "250M").
+**--size-per-file string** Az automatikusan létrehozott adatfájl mérete. Egy olyan számnak kell lennie, amelyet közvetlenül követ a K, az M vagy a G. 12k vagy 200G (alapértelmezett "250 M").
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülőparancsok által örökölt beállítások
 
-**--Cap-Mbps lebegőpontos**  Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--cap-mbps lebegőpontos érték**  Megabit/másodpercben megszabja az átviteli sebességet. A pillanatnyi átviteli sebesség kis mértékben eltérhet a felső teljesítménytől. Ha ez a beállítás nulla vagy nincs megadva, az átviteli sebesség nincs korlátozva.
 
-**--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text").
+**--output-type string** A parancs kimenetének formátuma. A lehetőségek a következők: text, json. Az alapértelmezett érték a "text". (alapértelmezett "text").
 
-**--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
+**--trusted-microsoft-suffixes** sztring További tartomány-utótagokat ad meg, Azure Active Directory bejelentkezési jogkivonatokat lehet küldeni.  Az alapértelmezett érték a '*.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Az itt felsoroltak hozzáadva az alapértelmezetthez. A biztonság érdekében itt csak a Microsoft Azure helyezzen el. Több bejegyzést pontosvesszővel válassza el egymástól.
 
 
 ## <a name="see-also"></a>Lásd még

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció az Azure AD-vel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az Azure AD rendszerbe.
+title: 'Oktatóanyag: Azure Active Directory OutSystems Azure AD-| Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és az OutSystems Azure AD között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,137 +9,139 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/18/2019
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 97d74a1a2e309b85ebad529b797dd4af9c1554ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a4a2f4edb3fcc56bafb3847280958a7803ba3bd
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92513704"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519867"
 ---
-# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Oktatóanyag: a rendszerszintű Azure AD integrálása Azure Active Directory
+# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Oktatóanyag: Az OutSystems Azure AD integrálása Azure Active Directory
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure AD-t a Azure Active Directory (Azure AD) használatával. Ha integrálja az Azure ad-t az Azure ad-vel, a következőket teheti:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja az OutSystems Azure AD-t az Azure Active Directory (Azure AD) használatával. Ha integrálja az OutSystems Azure AD-t az Azure AD-val, a következő funkciókat használhatja:
 
-* Az Azure AD-ben az Azure AD-vel való hozzáféréssel rendelkező Azure ad-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-ba az Azure ad-fiókjával.
+* Az Azure AD vezérlése, aki hozzáféréssel rendelkezik az OutSystems Azure AD-hez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be az OutSystems Azure AD-be az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Az Azure AD egyszeri bejelentkezés (SSO) engedélyezett előfizetését kiépíti.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* OutSystems Azure AD egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. Az Azure AD rendszerindítási szolgáltatásait az **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja, és a felhasználói üzembe helyezést **is** támogatja.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD SSO-t.
 
-## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>Rendszerképek hozzáadása az Azure AD-hez a katalógusból
+* Az OutSystems Azure AD támogatja az SP és az **IDP** által kezdeményezett SSO-t, valamint az **időben való** felhasználóátépítést.
 
-Az Azure ad-ben az Azure ad-ben való integráció konfigurálásához hozzá kell adnia az Azure AD-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+## <a name="add-outsystems-azure-ad-from-the-gallery"></a>OutSystems Azure AD hozzáadása a katalógusból
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: rendszerképek **Azure ad** a keresőmezőbe.
-1. Válassza ki a **kiépítés az Azure ad** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+Az OutSystems Azure AD-nek az Azure AD-be való integrálásának konfigurálához hozzá kell adni az OutSystems Azure AD-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a Vállalati **alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be az **OutSystems Azure AD** kifejezéseket a keresőmezőbe.
+1. Válassza **az OutSystems Azure AD** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Azure AD-vel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Azure AD-ben.
+## <a name="configure-and-test-azure-ad-sso-for-outsystems-azure-ad"></a>Az Azure AD SSO konfigurálása és tesztelése outSystems Azure AD-hez
 
-Az Azure AD egyszeri bejelentkezés az Azure AD-vel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Konfigurálja és tesztelje az Azure AD SSO-t az OutSystems Azure AD-val egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között az OutSystems Azure AD-ban.
 
-1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-2. **[Konfigurálja az Azure ad](#configure-outsystems-azure-ad)** -t az egyszeri bejelentkezés beállításainak konfigurálására az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre olyan rendszerszintű Azure ad-beli tesztelési felhasználót](#create-outsystems-azure-ad-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó "B. Simon", az Azure ad-t használó alrendszerek
-6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+Ha az Azure AD SSO-t az OutSystems Azure AD-val konfigurálja és teszteli, hajtsa végre a következő lépéseket:
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használják ezt a funkciót.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[Az OutSystems Azure AD SSO konfigurálása](#configure-outsystems-azure-ad-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazásoldalon.
+    1. **[Hozzon létre OutSystems Azure AD-tesztfelhasználót,](#create-outsystems-azure-ad-test-user)** hogy a B.Simon megfelelője legyen az OutSystems Azure AD-ben, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-1. A [Azure Portal](https://portal.azure.com/)az **Azure ad** -alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+1. A Azure Portal **OutSystems Azure** AD-alkalmazásintegráció lapján keresse meg a **Kezelés** szakaszt, és válassza az **Egyszeri bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer kiválasztása lapon** válassza az **SAML lehetőséget.**
+1. A **Set up Single Sign-On with SAML** (Egyetlen alkalmazás beállítása SAML-sel) lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `http://<YOURBASEURL>/IdP`
+1. Az **SAML-alapkonfiguráció** szakaszban, ha az alkalmazást **idP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YOURBASEURL>/IdP/SSO.aspx`
+    a. Az Azonosító **szövegmezőbe** írjon be egy URL-címet a következő mintával: `http://<YOURBASEURL>/IdP`
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+    b. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<YOURBASEURL>/IdP/SSO.aspx`
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<YOURBASEURL>`
+1. Kattintson **a További URL-címek beállítása lehetőségre,** és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
+
+    A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával:  `https://<YOURBASEURL>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez vegye fel a kapcsolatot a [rendszerszintű ügyfél-támogatási csapattal](mailto:support@outsystems.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címével. Ezeket [az értékeket az OutSystems-ügyfél](mailto:support@outsystems.com) támogatási csapatával vegye fel a kapcsolatot. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. A **Set up Single Sign-On with SAML** (Egyetlen tanúsítvány beállítása SAML-tanúsítványsal)  lapon, az **SAML Signing Certificate (SAML** aláíró tanúsítvány) szakaszban keresse meg az Federation Metadata XML (Összevonási metaadatok XML-fájlja) adatokat, és válassza a Download (Letöltés) lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez. 
 
-   ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+   ![A Tanúsítvány letöltése hivatkozás](common/metadataxml.png)
 
-1. A **rendszerszintű rendszerek beállítása Azure ad** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
+1. Az **OutSystems Azure AD** beállítása szakaszban másolja ki a követelménynek megfelelő URL-címet/URL-címeket.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-outsystems-azure-ad"></a>Rendszerállapot-beállítások konfigurálása az Azure AD-ben
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Az egyszeri bejelentkezés a rendszerállapotok oldalán való konfigurálásához le kell töltenie a [identitásszolgáltató Forge](https://www.outsystems.com/forge/component-overview/599/idp) összetevőt, és konfigurálnia kell azt az [utasításokban](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector)említettek szerint. Az összetevő telepítése és a szükséges kód módosítása után konfigurálja az Azure AD-t úgy, hogy letölti az összevonási metaadatok XML-fájlját a Azure Portalból, és feltölti a identitásszolgáltató összetevőt az alábbi [utasítások](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS)szerint.
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
-
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
-
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban az Azure AD-hez való hozzáférés biztosításával engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít az OutSystems Azure AD-hez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza az **Azure ad**-t.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a Vállalati **alkalmazások,** majd a Minden **alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza az **OutSystems Azure AD lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza** a Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja azt **a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör lesz kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+## <a name="configure-outsystems-azure-ad-sso"></a>OutSystems Azure AD SSO konfigurálása
 
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+Az egyszeri bejelentkezés OutSystems oldalon való konfiguráláshoz le kell töltenie az [idP forge](https://www.outsystems.com/forge/component-overview/599/idp) összetevőt, és konfigurálnia kell az [utasításokban említettek szerint.](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector) Miután telepítette az összetevőt, és végrehajtotta a szükséges kódváltozásokat, konfigurálja az Azure AD-t úgy, hogy letölti az összevonási metaadatok XML-fájlját az Azure Portal-ből, és feltölti az OutSystems idP összetevőre az alábbi utasítások [szerint.](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS)
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+### <a name="create-outsystems-azure-ad-test-user"></a>OutSystems Azure AD-tesztfelhasználó létrehozása
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+Ebben a szakaszban egy B.Simon nevű felhasználót hozunk létre az OutSystemsben. Az OutSystems támogatja az alapértelmezés szerint engedélyezett, időponthoz időben való felhasználóátépítést. Ebben a szakaszban nem található műveletelem. Ha egy felhasználó még nem létezik az OutSystemsben, a hitelesítés után létrejön egy új.
 
-### <a name="create-outsystems-azure-ad-test-user"></a>Rendszerszintű Azure AD-tesztkörnyezet létrehozása
+## <a name="test-sso"></a>Az SSO tesztelése
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre az alrendszerekben. Az alrendszerek az igény szerinti felhasználói üzembe helyezést támogatják, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az alrendszerekben, akkor a hitelesítés után létrejön egy újat.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+#### <a name="sp-initiated"></a>Sp kezdeményezve:
 
-Ha a hozzáférési panelen kiválasztja a rendszerindítási Azure AD csempét, automatikusan be kell jelentkeznie az Azure AD-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **Alkalmazás tesztelése elemre** a Azure Portal. Ez átirányítja az OutSystems Azure AD bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot.  
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül az OutSystems Azure AD bejelentkezési URL-címére, és onnan indítsa el a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+#### <a name="idp-initiated"></a>Az internetszolgáltató által kezdeményezett:
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* Kattintson az **Alkalmazás tesztelése a** Azure Portal lehetőségre, és automatikusan be kell jelentkezve lennie az OutSystems Azure AD-be, amelyhez beállította az SSO-t. 
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A Microsoft Saját alkalmazások bármilyen módban tesztelheti az alkalmazást. Ha az outSystems Azure AD csempére kattint az Saját alkalmazások-ban, és SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési oldalára a bejelentkezési folyamat kezdeményezésére, és ha idP módban van konfigurálva, automatikusan be kell jelentkeznie arra az OutSystems Azure AD-be, amelyhez beállította az SSO-t. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
+
+## <a name="next-steps"></a>Következő lépések
+
+Az OutSystems Azure AD konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

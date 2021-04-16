@@ -1,40 +1,39 @@
 ---
 title: Azure Attestation – Hibaelhárítási útmutató
-description: Hibaelhárítási útmutató a gyakran megfigyelt problémákhoz
+description: Útmutató a gyakorian előforduló problémákhoz
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eefcb55bb5447d557f097af872847576aa86eed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97704316"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519306"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure igazolás hibaelhárítási útmutatója
 
-Az Azure-igazolásban történt hibakezelés a [Microsoft REST API irányelvek](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses)követésével valósul meg. Az Azure igazolási API-k által visszaadott hibaüzenet a HTTP-állapotkódot, valamint a "code" és az "Message" névvel rendelkező név/érték párokat tartalmazza. A "code" érték az ember által olvasható, és a hiba típusának jelzése. Az "üzenet" érték a felhasználót kívánja támogatni, és a hiba részleteit jeleníti meg.
+A hibakezelés a Azure Attestation microsoftos irányelvek [REST API van megvalósítva.](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) A Azure Attestation API-k által visszaadott hibaválasz HTTP-állapotkódot és név/érték párokat tartalmaz a "code" és "message" névvel. A "kód" értéke olvasható, és a hiba típusát jelzi. Az "üzenet" értéke segítséget nyújt a felhasználónak, és tartalmazza a hiba részleteit.
 
-Ha a probléma nem szerepel ebben a cikkben, Azure-támogatási kérelmet is beküldhet az [Azure támogatási oldalára](https://azure.microsoft.com/support/options/).
+Ha a probléma nem található ebben a cikkben, elküldhet egy Azure-támogatás kérelmet a következő [Azure-támogatás oldalon:](https://azure.microsoft.com/support/options/).
 
-Az alábbiakban néhány példát láthat az Azure-igazolás által visszaadott hibákra:
+Az alábbiakban néhány példát talál a Azure Attestation:
 
-## <a name="1-http401--unauthorized-exception"></a>1. HTTP – 401: jogosulatlan kivétel
+## <a name="1-http401--unauthorized-exception"></a>1. HTTP–401: Jogosulatlan kivétel
 
 ### <a name="http-status-code"></a>HTTP-állapotkód
 401
 
 **Hibakód** Jogosulatlan
 
-**Példák a forgatókönyvekre**
-  - Igazolási hiba, ha a felhasználó nincs hozzárendelve igazolási olvasó szerepkörrel
-  - Nem sikerült kezelni az igazolási házirendeket, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökhöz
-  - Nem lehet felügyelni a tanúsítvány-előállítók felügyeletét, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökhöz
+**Példaforgatókönyvek**
+  - Az igazolási szabályzatok nem kezelhetők, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökkel
+  - Nem lehet kezelni az igazolási szabályzat aláíróit, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökkel
 
-Az a felhasználó, aki olvasói szerepkörrel próbálta módosítani az igazolási szabályzatot a PowerShellben 
+Olvasó szerepkörrel felfelhasználó, aki egy igazolási szabályzatot próbál szerkeszteni a PowerShellben 
 
   ```powershell
   Set-AzAttestationPolicy : Operation returned HTTP Status Code 401
@@ -47,70 +46,40 @@ At line:1 char:1
 
 **Hibaelhárítási lépések**
 
-Az igazolási házirendek/szabályzat-aláírók megtekintéséhez az Azure AD-felhasználónak a "műveletek" engedélyre van szüksége:
-- Microsoft. igazolás/attestationProviders/igazolás/olvasás
+A szabályzatok kezeléséhez egy Azure AD-felhasználónak a következő engedélyekre van szüksége a "Műveletekhez":
+- Microsoft.Attestation/attestationProviders/attestation/read
+- Microsoft.Attestation/attestationProviders/attestation/write
+- Microsoft.Attestation/attestationProviders/attestation/delete
 
-  Ez az engedély hozzárendelhető egy AD-felhasználóhoz egy szerepkör, például a "tulajdonos" (helyettesítő engedélyek) vagy az "olvasó" (helyettesítő engedélyek) vagy az "igazolási olvasó" (csak az Azure-igazolásra vonatkozó egyedi engedélyek) használatával.
+  Ezen műveletek végrehajtásához az Azure AD-felhasználónak "Igazolási közreműködő" szerepkörben kell lennie az igazolásszolgáltatón. Ezek az engedélyek olyan szerepkörökkel is öröklhetőek, mint a "Tulajdonos" (helyettesítő karakteres engedélyek), a "Közreműködő" (helyettesítő karakterek engedélyei) az előfizetésen/erőforráscsoporton.  
 
-A szabályzat-aláírók hozzáadásához vagy törléséhez, illetve a házirendek konfigurálásához az Azure AD-felhasználónak a következő engedélyekkel kell rendelkeznie a műveletekhez:
-- Microsoft. igazolás/attestationProviders/igazolás/írás
-- Microsoft. igazolás/attestationProviders/igazolás/törlés
+A szabályzatok olvasásához egy Azure AD-felhasználónak a következő engedélyre van szüksége a "Műveletek" művelethez:
+- Microsoft.Attestation/attestationProviders/attestation/read
 
-  Ezek az engedélyek egy AD-felhasználóhoz társíthatók, például a "tulajdonos" (helyettesítő engedélyek), a "közreműködő" (helyettesítő engedélyek) vagy az "igazolás közreműködője" (csak az Azure-hitelesítésre vonatkozó egyedi engedélyek).
+  A művelet végrehajtásához az Azure AD-felhasználónak "Igazolásolvasó" szerepkörre van szükség az igazolásszolgáltatón. Az olvasási engedély olyan szerepkörökkel is örökölhető, mint például az "Olvasó" (helyettesítő karakteres engedélyek) az előfizetésen/erőforráscsoporton.  
 
-Az ügyfelek dönthetnek úgy, hogy az alapértelmezett szolgáltatót használják az igazoláshoz, vagy egyéni szabályzatokkal hoznak létre saját szolgáltatókat. Ha igazolási kéréseket szeretne küldeni az egyéni igazolási szolgáltatók számára, "tulajdonos" (helyettesítő jogosultságok) vagy "olvasó" (helyettesítő engedélyek) vagy "igazolási olvasó" szerepkörre van szükség a felhasználó számára. Az alapértelmezett szolgáltatók bármely Azure AD-felhasználó számára elérhetők.
+A szerepkörök PowerShellben való ellenőrzéséhez futtassa az alábbi lépéseket:
 
-A szerepkörök a PowerShellben való ellenőrzéséhez futtassa az alábbi parancsot:
+a. Indítsa el a PowerShellt, és jelentkezzen be az Azure-ba a Connect-AzAccount parancsmaggal
 
-a. Indítsa el a PowerShellt, és jelentkezzen be az Azure-ba a "kapcsolat-AzAccount" parancsmag használatával
+b. Az [azure-beli](../role-based-access-control/role-assignments-list-powershell.md) szerepkör-hozzárendelés az igazolási szolgáltatón való ellenőrzéséhez tekintse meg az itt
 
-b. Az Azure-szerepkör-hozzárendelés beállításainak ellenőrzése
+c. Ha nem talál megfelelő szerepkör-hozzárendelést, kövesse az itt található [utasításokat](../role-based-access-control/role-assignments-powershell.md)
 
-
-  ```powershell
-  $c = Get-AzContext
-  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
-  ```
-
-  Ennek nagyjából a következőképpen kell kinéznie:
-
-  ```
-  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
-  
-  Scope              : /subscriptions/subscriptionId
-  
-  DisplayName        : displayName
-  
-  SignInName         : signInName
-  
-  RoleDefinitionName : Reader
-  
-  RoleDefinitionId   : roleDefinitionId
-  
-  ObjectId           : objectid
-  
-  ObjectType         : User
-  
-  CanDelegate        : False
- 
-  ```
-
-c. Ha nem találja a megfelelő szerepkör-hozzárendelést a listában, kövesse az [itt](../role-based-access-control/role-assignments-powershell.md) található utasításokat.
-
-## <a name="2-http--400-errors"></a>2. HTTP – 400 hibák
+## <a name="2-http--400-errors"></a>2. HTTP – 400-as hibák
 
 ### <a name="http-status-code"></a>HTTP-állapotkód
 400
 
-A kérések a 400-as visszaküldésének különböző okai lehetnek. Az alábbiakban néhány példát láthat az Azure igazolási API-k által visszaadott hibákra:
+A kérések több okból is visszaadhatnak 400-as igénylést. Az alábbiakban néhány példát talál az API-k által Azure Attestation hibákra:
 
-### <a name="21-attestation-failure-due-to-policy-evaluation-errors"></a>2.1. Igazolási hiba a házirend-kiértékelési hibák miatt
+### <a name="21-attestation-failure-due-to-policy-evaluation-errors"></a>2.1. Igazolási hiba a szabályzatértékelési hibák miatt
 
-Az igazolási házirend engedélyezési szabályokat és kiállítási szabályokat tartalmaz. Az enklávék bizonyítékait a rendszer az engedélyezési szabályok alapján értékeli ki. A kiállítási szabályok határozzák meg az igazolási jogkivonat részét képező jogcímeket. Ha az enklávéban lévő jogcímek nem felelnek meg az engedélyezési szabályoknak, a rendszer igazolja a szabályzatok kiértékelésének hibáját. 
+Az igazolási szabályzat engedélyezési szabályokat és kiállítási szabályokat tartalmaz. Az enklávé-bizonyítékok kiértékelése az engedélyezési szabályok alapján történik. A kiállítási szabályok határozzák meg az igazolási jogkivonatban szerepeltetni kell a jogcímeket. Ha az enklávéban talált jogcímek nem felelnek meg az engedélyezési szabályoknak, az attest hívások szabályzatértékelési hibát fognak visszaadni. 
 
 **Hibakód** PolicyEvaluationError
 
-**Példák a forgatókönyvekre** Ha az enklávé-idézőjelben lévő jogcímek nem egyeznek az igazolási házirend engedélyezési szabályaival
+**Példaforgatókönyvek** Ha az enklávéban a jogcímek nem egyeznek az igazolási szabályzat engedélyezési szabályaival
 
 ```
 Native operation failed with 65518: G:\Az\security\Attestation\src\AttestationServices\Instance\NativePolicyWrapper\NativePolicyEngine.cpp(168)\(null)!00007FF801762308: (caller: 00007FF80143DCC8) Exception(0) 83FFFFEE Policy Evaluation Error has occurred Msg:[Policy Engine Exception: A Deny claim was issued, authorization failed.]
@@ -119,32 +88,32 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 ```
 
-**Hibaelhárítási lépések** A felhasználók a SGX ENKLÁVÉHOZ-igazolási házirend alapján kiértékelik az enklávé-tanúsítványt, mielőtt ugyanezt konfigurálja.
+**Hibaelhárítási lépések** A felhasználók az SGX-igazolási szabályzatok alapján értékelhetik az enklávé-bizonyítékokat, mielőtt ugyanezt konfigurálják.
 
-Küldési kérelem küldése az API-nak a "draftPolicyForAttestation" paraméterben található házirend szövegének megadásával. A AttestSgxEnclave API ezt a házirend-dokumentumot fogja használni a tanúsító hívás során, így a használat előtt tesztelheti az igazolási házirendeket. A mező jelenléte esetén generált igazolási jogkivonat nem lesz biztonságos.
+Küldjön kérést az attest API-nak úgy, hogy a szabályzat szövegét a "draftPolicyForAttestation" paraméterben megadva. Az AttestSgxEnclave API ezt a szabályzatdokumentumot fogja használni az igazolási hívás során, és ezzel tesztelheti az igazolási szabályzatokat azok használata előtt. A mezőben létrehozott igazolási jogkivonat nem biztonságos.
 
-Lásd a [tanúsítványokra vonatkozó példákat](./policy-examples.md)
+Példák [az igazolási szabályzatra](./policy-examples.md)
 
-### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Érvénytelen bevitel miatti igazolási hiba
+### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Igazolási hiba érvénytelen bemenet miatt
 
-**Hibakód** InvalidParameter
+**Hibakód** InvalidParameter (Érvénytelen paraméter)
 
-**Példák a forgatókönyvekre** Érvénytelen bevitel miatti SGX ENKLÁVÉHOZ-igazolási hiba. Néhány példa a hibaüzenetekre:
-- A megadott idézőjel érvénytelen az árajánlat-biztosítékban található hiba miatt. 
-- A megadott idézőjel érvénytelen, mert az az eszköz, amelyen az árajánlat létrejött, nem felel meg az Azure-beli alapkövetelményeknek
-- A megadott idézőjel érvénytelen, mert a Cache Service PCK által megadott TCBInfo vagy QEID érvénytelen volt.
+**Példaforgatókönyvek** Az SGX-igazolás érvénytelen bemenet miatt nem sikerült. Íme néhány példa a hibaüzenetek használatára:
+- A megadott ajánlat érvénytelen volt egy, az árajánlatot felhozó üzenetben található hiba miatt 
+- A megadott ajánlat érvénytelen volt, mert az az eszköz, amelyen az ajánlat létre lett hozva, nem felel meg az Azure alapkonfiguráció követelményeinek
+- A megadott ajánlat érvénytelen volt, mert a PCK Cache Szolgáltatás által biztosított TCBInfo vagy QEID érvénytelen volt
 
 **Hibaelhárítási lépések**
 
-Microsoft Azure igazolás támogatja az Intel SDK és az Open enklávé SDK által generált SGX ENKLÁVÉHOZ idézetek igazolását.
+Microsoft Azure-igazolás támogatja az Intel SDK és az Open Enclave SDK által generált SGX-ajánlatok igazolását.
 
-Tekintse [meg az igazolást az Open](/samples/browse/?expanded=azure&terms=attestation) enklávé SDK/Intel SDK használatával
+Tekintse meg [az](/samples/browse/?expanded=azure&terms=attestation) Open Enclave SDK/Intel SDK használatával való igazolás végrehajtásához szükséges kódmintákat
 
-### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Érvénytelen tanúsítványlánc-hiba történt a házirend/házirend-aláíró feltöltése során
+### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Érvénytelen tanúsítványlánchiba a szabályzat/szabályzat-aláíró feltöltésekor
 
-**Hibakód** InvalidParameter
+**Hibakód** InvalidParameter (Érvénytelen paraméter)
 
-**Példák a forgatókönyvekre** Az aláírt házirend konfigurálása vagy a házirend-aláíró hozzáadása/törlése, amely érvénytelen tanúsítványlánc alá van írva (például ha a főtanúsítvány alapszintű megkötések bővítménye nem a tulajdonos típusára van beállítva = CA)
+**Példaforgatókönyvek** Konfigurálja az aláírt házirendet vagy a házirend-aláíró hozzáadását/törlését, amely érvénytelen tanúsítványlánccal van aláírva (például ha a főtanúsítvány Alapszintű korlátozások bővítménye nem a Tulajdonos típusa = HITELESÍTÉSSZOLGÁLTATÓ) van beállítva.
 
 ```
 Native operation failed with 65529: C:\source\src\AttestationServices\Instance\SgxPal\sgxcert.cpp(1074)\(null)!00007FFA285CDAED: (caller: 00007FFA285C36E8) Exception(0) 83FFFFF9 The requested item is not found    Msg:[Unable to find issuer certificate CN=attestationsigningcert]
@@ -157,21 +126,21 @@ At line:1 char:1
 
 ```
 
-**Hibaelhárítási lépések** A főtanúsítványt CA által kiállítottként kell megjelölni (az X. 509 alapszintű megkötések), máskülönben a rendszer nem számít érvényes tanúsítványnak. 
+**Hibaelhárítási lépések** A főtanúsítványt egy hitelesítésszolgáltató által kiállítottként kell megjelölve (az X.509 alapszintű megkötései), különben nem tekinthető érvényes tanúsítványnak. 
 
-Győződjön meg arról, hogy a főtanúsítvány alapszintű megkötések bővítménye úgy van beállítva, hogy jelezze, hogy a tulajdonos típusa = CA
+Győződjön meg arról, hogy a főtanúsítvány Alapszintű korlátozások bővítménye úgy van beállítva, hogy a Tulajdonos típusa = CA legyen
 
-Máskülönben a tanúsítványlánc érvénytelennek tekintendő.
+Ha nem, akkor a tanúsítványlánc érvénytelennek minősül.
 
-Lásd: [házirend-aláíró](./policy-signer-examples.md) és [házirend](./policy-examples.md) -példák 
+Lásd: [szabályzat-aláíró és](./policy-signer-examples.md) [-szabályzatpépéék](./policy-examples.md) 
 
-### <a name="24-adddelete-policy-signer-failure"></a>2.4. Házirend-aláíró hibájának hozzáadása/törlése
+### <a name="24-adddelete-policy-signer-failure"></a>2.4. Szabályzat-aláíró hozzáadása/törlése – hiba
 
-**Hibakód** InvalidOperation
+**Hibakód** InvalidOperation (Érvénytelen működés)
 
-**Példák a forgatókönyvekre**
+**Példaforgatókönyvek**
 
-Ha a felhasználó a "Maa-policyCertificate" jogcím nélkül tölt fel JWS
+Amikor a felhasználó "maa-policyCertificate" jogcím nélkül tölt fel JWS-t
 
 ```
 Add-AzAttestationPolicySigner : Operation returned HTTP Status Code 400
@@ -209,13 +178,13 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Hibaelhárítási lépések** Új házirend-aláíró tanúsítvány hozzáadásához/törléséhez használja az RFC7519 JSON Web Token (JWT) kifejezést az "x-MS-policyCertificate" nevű jogcím használatával. A jogcím értéke egy RFC7517 JSON-webkulcs, amely tartalmazza a hozzáadni kívánt tanúsítványt. A JWT a szolgáltatóhoz tartozó érvényes házirend-aláíró tanúsítványok titkos kulcsával kell aláírni. Lásd: [házirend-aláíró példák](./policy-signer-examples.md).
+**Hibaelhárítási lépések** Új szabályzat-aláíró tanúsítvány hozzáadásához/törléséhez használja az RFC7519 JSON-webtoken (JWT) parancsot egy "x-ms-policyCertificate" nevű jogcímhez. A jogcím értéke egy RFC7517 JSON-webkulcs, amely tartalmazza a hozzáadni kívánt tanúsítványt. A JWT-t a szolgáltatóhoz társított érvényes házirend-aláíró tanúsítványok titkos kulcsával kell aláírni. Lásd [a szabályzat-aláíró példákat.](./policy-signer-examples.md)
 
-### <a name="25-attestation-policy-configuration-failure"></a>2.5. Igazolási házirend konfigurációs hibája
+### <a name="25-attestation-policy-configuration-failure"></a>2.5. Igazolási szabályzat konfigurációs hibája
 
 **Hibakód** PolicyParsingError
 
-**Példák a forgatókönyvekre** Helytelen szintaxissal megadott házirend (például hiányzó pontosvessző)/valid JWT-szabályzat)
+**Példaforgatókönyvek** Helytelen szintaxissal megadott szabályzat (például hiányzó pontosvessző)/érvényes JWT-szabályzat)
 
 ```
 Native operation failed with 65526: ..\NativePolicyWrapper\NativePolicyEngine.cpp(31)\(null)!: (caller: ) Exception(0) 83FFFFF6 Invalid policy was specified    Msg:[Policy Parser Exception Thrown: Offending
@@ -231,9 +200,9 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
 ```
 
-**Hibakód** InvalidOperation
+**Hibakód** InvalidOperation (Érvénytelen működés)
 
-**Példák a forgatókönyvekre** Érvénytelen tartalom van megadva (például feltöltési házirend/aláíratlan szabályzat, ha házirend-aláírás szükséges)
+**Példaforgatókönyvek** Érvénytelen tartalom (például feltöltési szabályzat/aláíratlan szabályzat, ha a szabályzat aláírása szükséges)
 
 ```
 Native operation failed with 74: ..\Shared\base64url.h(226)\(null)!: (caller: ) Exception(0) 83FF004A Bad message    Msg:[Unknown base64 character: 41 (')')]
@@ -245,59 +214,59 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
 ```
 
-**Hibaelhárítási lépések** Győződjön meg arról, hogy a házirend szöveges formátumban UTF-8 kódolású.
+**Hibaelhárítási lépések** Győződjön meg arról, hogy a szövegformátumú szabályzat UTF-8 kódolású.
 
-Ha házirend-aláírásra van szükség, a hitelesítő házirendet csak RFC7519 JSON Web Token (JWT) formátumban kell konfigurálni. Ha a szabályzat aláírása nem szükséges, a házirend szöveg-vagy JWT formátumban is konfigurálható.
+Ha házirend-aláírásra van szükség, az igazolási házirendet csak RFC7519 JSON-webtoken (JWT) formátumban kell konfigurálni. Ha a szabályzat aláírása nem kötelező, a házirend szöveg- vagy JWT-formátumban is konfigurálható.
 
-A szabályzatok JWT formátumban való konfigurálásához használja a JWT kifejezést a "AttestationPolicy" nevű jogcím használatával. A jogcím értéke a Base64URL kódolt verziója. Ha az igazolási szolgáltató házirend-aláíró tanúsítványokkal van konfigurálva, a JWT a szolgáltatóhoz társított érvényes házirend-aláíró tanúsítványok titkos kulcsával kell aláírnia. 
+A szabályzat JWT-formátumban való konfiguráláshoz használja a JWT-t egy "AttestationPolicy" nevű jogcímhez. A jogcím értéke a szabályzat szövegének Base64URL kódolású verziója. Ha az igazolási szolgáltató házirend-aláíró tanúsítványokkal van konfigurálva, a JWT-t a szolgáltatóhoz társított bármely érvényes házirend-aláíró tanúsítvány titkos kulcsával alá kell írni. 
 
-Ha egy házirendet szöveges formátumban szeretne konfigurálni, akkor közvetlenül adja meg a házirend szövegét.
+Ha szövegformátumban konfigurál egy szabályzatot, adja meg közvetlenül a szabályzat szövegét.
 
-A PowerShellben adja meg a PolicyFormat as JWT, hogy JWT formátumban konfigurálja a szabályzatot. Az alapértelmezett házirend-formátum a Text (szöveg).
+A PowerShellben adja meg a PolicyFormatet JWT-ként a szabályzat JWT-formátumban való konfiguráláshoz. Az alapértelmezett szabályzatformátum a Szöveg.
 
-Lásd a tanúsítványokra [vonatkozó példákat](./policy-examples.md) és az [igazolási szabályzatok létrehozási módját](./author-sign-policy.md) . 
+Lásd az igazolási szabályzat [példái és](./policy-examples.md) az [igazolási szabályzatok írásának mikéntje című cikkeket.](./author-sign-policy.md) 
 
-## <a name="3-azattestation-installation-issues-in-powershell"></a>3. az az igazolás telepítési problémái a PowerShellben
+## <a name="3-azattestation-installation-issues-in-powershell"></a>3. Az Az.Attestation telepítési problémái a PowerShellben
 
-Nem lehet telepíteni az az vagy az az. igazolási modulokat a PowerShellben
+Nem lehet telepíteni az Az vagy az Az.Attestation modulokat a PowerShellben
 
 ### <a name="error"></a>Hiba
 
-Figyelmeztetés: nem sikerült feloldani a (z) " https://www.powershellgallery.com/api/v2 " PackageManagement\Install-Package: nem található egyezés a megadott keresési feltételekhez és a modul nevéhez.
+FIGYELMEZTETÉS: Nem sikerült feloldani a PackageManagement\Install-Package csomagforrást: Nem található egyezés a megadott keresési feltételhez és https://www.powershellgallery.com/api/v2 a modul nevéhez
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-PowerShell-galéria elavult Transport Layer Security (TLS) 1,0-es és 1,1-es verziójú. 
+PowerShell-galéria (TLS) Transport Layer Security 1.0-s és 1.1-es verziói elavultak. 
 
-A TLS 1,2 vagy újabb verzió használata javasolt. 
+A TLS 1.2-es vagy újabb verziója ajánlott. 
 
-A PowerShell-galéria folytatásához futtassa a következő parancsot a Install-Module parancsok előtt.
+Ha továbbra is használni PowerShell-galéria, futtassa a következő parancsot a Install-Module parancsai előtt
 
-**[Net. ServicePointManager]:: SecurityProtocol = [net. SecurityProtocolType]:: Tls12**
+**[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12**
 
-## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. házirend-hozzáférési/konfigurációs problémák a PowerShellben
+## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. Szabályzat-hozzáférési/konfigurációs problémák a PowerShellben
 
-A felhasználó hozzárendelve a megfelelő szerepkörökhöz. Azonban a hitelesítési házirendek a PowerShellen keresztüli kezelése során az engedélyezési problémákkal szembesülnek.
+A megfelelő szerepkörökkel rendelkező felhasználó. De hitelesítési problémákba kell szembesülni az igazolási szabályzatok PowerShell-en keresztüli kezelése során.
 
 ### <a name="error"></a>Hiba
-Az objektumazonosító-azonosítójú ügyfél &lt; &gt;  nem rendelkezik a művelet végrehajtásához szükséges engedéllyel a Microsoft. Authorization/RoleAssignments/write (hatókör: "subcriptions/ &lt; subscriptionId &gt; resourcegroups/secure_enclave_poc/Providers/Microsoft.Authorization/RoleAssignments/ &lt; role assignmentId") &gt; vagy a hatókör érvénytelen. Ha a hozzáférés a közelmúltban lett megadva, frissítse a hitelesítő adatait
+Az objektumazonosító objektumazonosítóval (Id) nem rendelkezik engedéllyel a &lt; &gt;  Microsoft.Authorization/roleassignments/write művelet végrehajtásához a subcriptions/ &lt; subscriptionId &gt; resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/ &lt; role assignmentId hatókörben, vagy a hatókör &gt; érvénytelen. Ha nemrég kapott hozzáférést, frissítse hitelesítő adatait
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-Az igazolási műveletek támogatásához szükséges minimális verzió az az alábbi: 
+Az igazolási műveletek támogatásához szükséges Az modulok minimális verziója a következő: 
 
- **Az 4.5.0** 
+ **Az Az 4.5.0** 
  
- **Az. accounts 1.9.2**
+ **Az.Accounts 1.9.2**
  
- **Az. igazolási 0.1.8** 
+ **Az.Attestation 0.1.8** 
 
-Futtassa az alábbi parancsot az összes modul telepített verziójának ellenőrzéséhez 
+Futtassa az alábbi parancsot az összes Az modul telepített verziójának ellenőrzéséhez 
 
 ```powershell
 Get-InstalledModule 
 ```
 
-Ha a verziók nem felelnek meg a minimális követelménynek, futtassa Update-Module parancsokat
+Ha a verziók nem egyeznek meg a minimális követelménnyel, futtassa a Update-Module parancsokat
 
-például:-Update-Module-Name az. igazolás
+például: - Update-Module -Name Az.Attestation

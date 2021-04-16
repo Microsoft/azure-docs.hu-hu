@@ -1,32 +1,32 @@
 ---
-title: 'Oktatóanyag: régiók közötti terheléselosztó létrehozása a Azure Portal használatával'
+title: 'Oktatóanyag: Régiók közötti terheléselosztás létrehozása a Azure Portal'
 titleSuffix: Azure Load Balancer
-description: Ismerkedjen meg az Oktatóanyaggal, és telepítsen egy régiók közötti Azure Load Balancer a Azure Portal.
+description: Az oktatóanyag első lépésekben régiók közötti virtuális gépeket Azure Load Balancer üzembe a Azure Portal.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221126"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529527"
 ---
-# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
+# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Régiók közötti Azure Load Balancer létrehozása a Azure Portal
 
-A régiók közötti terheléselosztó biztosítja, hogy a szolgáltatások globálisan elérhetők legyenek több Azure-régió között. Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legközelebbi, legközelebb egészséges regionális Load balancerbe.  
+A régiók közötti terheléselosztás biztosítja, hogy a szolgáltatás globálisan több Azure-régióban is elérhető. Ha az egyik régió meghibásodik, a forgalom a legközelebbi megfelelő állapotú regionális terheléselosztáshoz lesz irányítva.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozza létre a régiók közötti Load balancert.
-> * Hozzon létre két regionális terheléselosztó-t tartalmazó háttér-készletet.
+> * Régiók közötti terheléselosztás létrehozása.
+> * Hozzon létre egy két regionális terheléselosztást tartalmazó háttérkészletet.
 > * Hozzon létre egy terheléselosztó-szabályt.
-> * A terheléselosztó tesztelése.
+> * A terheléselosztás tesztelése.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) fiókot.
 
 > [!IMPORTANT]
 > A régiók közötti Azure Load Balancer jelenleg nyilvános előzetes verzióban érhető el.
@@ -35,143 +35,142 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés.
-- Két különböző Azure-régióban üzembe helyezett backend-készletekkel rendelkező **standard** SKU Azure Load Balancer.
-    - A regionális standard Load Balancer és a backend-készletek virtuális gépei létrehozásával kapcsolatos információkért lásd [: rövid útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával](quickstart-load-balancer-standard-public-portal.md).
-        - Fűzze hozzá az egyes régiókban található terheléselosztó, virtuális gépek és egyéb erőforrások nevét az **-R1** és **-R2** értékkel. 
+- Két **standard** termékváltozat az Azure Load Balancer két különböző Azure-régióban üzembe helyezett háttérkészletekkel.
+    - További információ regionális standard terheléselosztás létrehozásáról és virtuális gépek háttérkészletek számára való létrehozásáról: Rövid [útmutató:](quickstart-load-balancer-standard-public-portal.md)Nyilvános terheléselosztás létrehozása a virtuális gépek terheléselosztása az Azure Portal.
+        - Minden régióban fűzheti hozzá a terheléselosztások, virtuális gépek és egyéb erőforrások nevét az **-R1 és** **-R2 névvel.** 
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-## <a name="create-cross-region-load-balancer"></a>Régiók közötti Load Balancer létrehozása
+## <a name="create-cross-region-load-balancer"></a>Régiók közötti terheléselosztás létrehozása
 
-Ebben a szakaszban egy régiók közötti terheléselosztó és egy nyilvános IP-cím jön létre.
+Ebben a szakaszban egy régiók közötti terheléselosztást és nyilvános IP-címet fog létrehozni.
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
-2. A keresőmezőbe írja be a **Load Balancer** kifejezést. Válassza a **Load Balancer** elemet a keresési eredmények között.
-3. A **terheléselosztó** lapon válassza a **Létrehozás** lehetőséget.
-4. A **Load Balancer létrehozása** lap **alapok** lapján adja meg a következő információkat, vagy válassza ki az alábbi adatokat: 
+2. A keresőmezőbe írja be a **Következőt: Load Balancer.** A **keresési eredmények között válassza a** Terheléselosztás lehetőséget.
+3. A **Terheléselosztás lapon** válassza a Létrehozás **lehetőséget.**
+4. A **Terheléselosztás létrehozása** lap Alapvető beállítások lapján **adja** meg vagy válassza ki a következő adatokat: 
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreateCRLBTutorial-RG** karakterláncot a szövegmezőbe.|
-    | Name                   | Adja meg a **myLoadBalancer-CR** értéket                                   |
-    | Region         | Válassza ki az USA **nyugati** régióját.                                        |
+    | Erőforráscsoport         | Válassza **az Új létrehozása lehetőséget,** és írja be a **CreateCRLBTutorial-rg** szöveget a szövegmezőbe.|
+    | Name                   | Adja meg **a myLoadBalancer-CR adhatja meg**                                   |
+    | Region         | Válassza **az (USA) USA nyugati régiója lehetőséget.**                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | Hagyja meg az alapértelmezett **standard** értéket. |
-    | Szint           | **Globális** kiválasztása |
+    | Termékváltozat           | Hagyja meg az alapértelmezett **Standard értéket.** |
+    | Szint           | Válassza a **Globális lehetőséget** |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget.|
-    | Nyilvános IP-cím | Írja be a **myPublicIP-CR** karakterláncot a szövegmezőbe.|
-    | Útválasztási beállítás| Válassza a **Microsoft Network** lehetőséget. </br> Az útválasztási beállításokkal kapcsolatos további információkért lásd: [Mi az útválasztási preferencia (előzetes verzió)?](../virtual-network/routing-preference-overview.md). |
+    | Nyilvános IP-cím | Írja **be a myPublicIP-CR** szöveget a szövegmezőbe.|
+    | Útválasztási beállítás| Válassza **a Microsoft Network lehetőséget.** </br> Az útválasztási beállításokkal kapcsolatos további információkért lásd: [Mi az útválasztási beállítás (előzetes verzió)?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
-    > A régiók közötti Load-Balancer csak a következő otthoni régiókban telepíthető: USA 2. keleti régiója, USA nyugati régiója, **Nyugat-Európa, Délkelet-Ázsia, USA középső régiója, Észak-Európa, Kelet-Ázsia**. További információ: **https://aka.ms/homeregionforglb**.
+    > A régiók közötti terheléselosztás csak a következő otthoni régiókban helyezhető üzembe: **USA 2. keleti régiója, USA nyugati régiója, Nyugat-Európa, Délkelet-Ázsia, USA középső régiója, Észak-Európa, Kelet-Ázsia.** További információ: **https://aka.ms/homeregionforglb**.
 
 
-3. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás** elemet.
+3. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza az **Áttekintés + létrehozás lehetőséget.**
 
-4. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.   
+4. Az Áttekintés **+ létrehozás lapon** válassza a Létrehozás **lehetőséget.**   
 
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="Régiók közötti Load Balancer létrehozása" border="true":::
+    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="Régiók közötti terheléselosztás létrehozása" border="true":::
 
 ## <a name="create-backend-pool"></a>Háttérkészlet létrehozása
 
-Ebben a szakaszban két regionális standard Load balancert fog hozzáadni a régiók közötti terheléselosztó háttér-készletéhez.
+Ebben a szakaszban két regionális standard terheléselosztást fog hozzáadni a régiók közötti terheléselosztás háttérkészletében.
 
 > [!IMPORTANT]
-> A lépések elvégzéséhez győződjön meg arról, hogy az előfizetésében két regionális terheléselosztó van telepítve a háttér-készletek használatával.  További információ: gyors üzembe helyezés – **[nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával](quickstart-load-balancer-standard-public-portal.md)**.
+> A lépések befejezéséhez győződjön meg arról, hogy két, háttérkészletekkel bíró regionális terheléselosztást helyezett üzembe az előfizetésében.  További információkért lásd: Rövid **[útmutató:](quickstart-load-balancer-standard-public-portal.md)** Nyilvános terheléselosztás létrehozása a virtuális gépek terhelésének az Azure Portal.
 
-Hozza létre a **myBackendPool-CR háttér-** címkészlet, hogy tartalmazza a regionális standard Load balancert.
+Hozza létre a **myBackendPool-CR háttércímkészletet,** hogy tartalmazza a regionális standard terheléselosztásokat.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer-CR** lehetőséget.
+1. A **bal oldali menüben** válassza a Minden szolgáltatás, majd a Minden erőforrás **lehetőséget,** végül pedig a **myLoadBalancer-CR** elemet az erőforrások listájából.
 
-2. A **Beállítások** területen válassza a **háttér-készletek**, majd a **Hozzáadás** lehetőséget.
+2. A **Beállítások alatt** válassza a **Háttérkészletek** lehetőséget, majd a Hozzáadás **lehetőséget.**
 
-3. A **háttérbeli készlet hozzáadása** lapon a név mezőbe írja be a következőt: **myBackendPool-CR**.
+3. A **Háttérkészlet hozzáadása** lapon a név mezőbe írja be a **myBackendPool-CR nevet.**
 
 4. Válassza a **Hozzáadás** lehetőséget.
 
-4. Válassza a **myBackendPool-CR** elemet.
+4. Válassza **a myBackendPool-CR lehetőséget.**
 
-5. A **terheléselosztó területen válassza** a legördülő listát a **Load Balancer** alatt.
+5. A **Terheléselosztások alatt** válassza a Load Balancer (Terheléselosztás) alatt **található letöltőmezőt.**
 
-5. Válassza a **myLoadBalancer-R1** vagy a terheléselosztó nevét az 1. régióban.
+5. Válassza **a myLoadBalancer-R1** lehetőséget, vagy a terheléselosztás nevét az 1. régióban.
 
-6. Válassza a legördülő listát az előtér **-IP-konfiguráció** területen. Válassza a **LoadBalancerFrontEnd** lehetőséget.
+6. Válassza az Előtere IP-konfigurációja alatti **lekért mezőt.** Válassza **a LoadBalancerFrontEnd lehetőséget.**
 
-7. Ismételje meg a 4-6 lépést a **myLoadBalancer-R2** hozzáadásához.
+7. Ismételje meg a 4–6. lépést a **myLoadBalancer-R2 hozzáadásához.**
 
 8. Válassza a **Hozzáadás** lehetőséget.
 
-    :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Regionális terheléselosztó hozzáadása a háttérkészletek-hez" border="true":::
+    :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Regionális terheléselosztások hozzáadása a háttérkészlethez" border="true":::
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
+Ebben a szakaszban egy terheléselosztási szabályt fog létrehozni:
 
-* Elnevezett **: myhttprule**.
-* A **LoadBalancerFrontEnd** nevű előtérben.
-* Figyelés a **80-es porton**.
-* Az elosztott terhelésű forgalmat a 80-es **porton** **myBackendPool-CR** nevű háttérre irányítja.
+* A **neve myHTTPRule.**
+* A **LoadBalancerFrontEnd nevű előtérben.**
+* A **80-as porton figyel.**
+* Az elosztott terhelésű forgalmat a **myBackendPool-CR** nevű háttérhez irányítja a **80-as porton.**
 
     > [!NOTE]
-    > A frontend-portnak meg kell egyeznie a háttér-porttal és a háttér-készletben lévő regionális terheléselosztó előtérbeli portjával.
+    > Az előtereportnak egyeznie kell a háttérporttal és a háttérkészlet regionális terheléselosztási portjának előterével.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer-CR** lehetőséget.
+1. A **bal oldali menüben** válassza a Minden szolgáltatás, majd a Minden erőforrás **lehetőséget,** végül pedig a **myLoadBalancer-CR** elemet az erőforrások listájából.
 
-2. A **Beállítások** területen válassza a **terheléselosztási szabályok** elemet, majd kattintson a **Hozzáadás** gombra.
+2. A **Beállítások alatt** válassza a **Terheléselosztási szabályok lehetőséget,** majd a Hozzáadás **lehetőséget.**
 
-3. Használja ezeket az értékeket a terheléselosztási szabály konfigurálásához:
+3. Az alábbi értékekkel konfigurálhatja a terheléselosztási szabályt:
     
     | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a **: myhttprule**. |
-    | IP-verzió | **IPv4** kiválasztása |
-    | Előtérbeli IP-cím | **LoadBalancerFrontEnd** kiválasztása |
+    | Név | Írja be **a myHTTPRule adatokat.** |
+    | IP-verzió | Válassza az **IPv4 lehetőséget** |
+    | Előtere IP-címe | Válassza **a LoadBalancerFrontEnd lehetőséget** |
     | Protokoll | Válassza a **TCP** lehetőséget. |
-    | Port | Adja meg a **80** értéket.|
-    | Háttérport | Adja meg a **80** értéket. |
-    | A háttérkészlet | Válassza a **myBackendPool** lehetőséget.|
-    | Állapotadat-mintavétel | Válassza a **myHealthProbe** lehetőséget. |
-    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15**-re. |
+    | Port | Adja meg **a 80-ast.**|
+    | Háttérport | Adja meg **a 80-ast.** |
+    | A háttérkészlet | Válassza **a myBackendPool lehetőséget.**|
+    | Üresjárati időkorlát (perc) | Húzza a csúszkát **15-re.** |
     | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget. |
 
-4. Hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
+4. Hagyja meg a többi alapértelmezett értéket, majd kattintson az **OK gombra.**
 
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-lb-rule.png" alt-text="Terheléselosztó szabály létrehozása" border="true":::
+    :::image type="content" source="./media/tutorial-cross-region-portal/create-lb-rule.png" alt-text="Terheléselosztási szabály létrehozása" border="true":::
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-Ebben a szakaszban tesztelni fogja a régiók közötti Load balancert. A nyilvános IP-címhez egy böngészőben fog csatlakozni.  A virtuális gépeket a regionális terheléselosztó backend-készletek egyikében állíthatja le, és megfigyelheti a feladatátvételt.
+Ebben a szakaszban a régiók közötti terheléselosztást fogja tesztelni. Egy webböngészőben fog csatlakozni a nyilvános IP-címhez.  Leállítja az egyik regionális terheléselosztási háttérkészlet virtuális gépeit, és megfigyeli a feladatátvételt.
 
-1. A terheléselosztó nyilvános IP-címének megkeresése az **Áttekintés** képernyőn. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd a **myPublicIP-CR** elemet.
+1. Keresse meg a terheléselosztás nyilvános IP-címét az **Áttekintés képernyőn.** A **bal oldali menüben** válassza a Minden szolgáltatás, majd a **Minden** erőforrás lehetőséget, végül pedig a **myPublicIP-CR elemet.**
 
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/test-cr-lb-1.png" alt-text="Terheléselosztó tesztelése" border="true":::
 
-3. Állítsa le a virtuális gépeket az egyik regionális terheléselosztó háttér-készletében.
+3. Állítsa le az egyik regionális terheléselosztás háttérkészletében található virtuális gépeket.
 
-4. Frissítse a webböngészőt, és figyelje meg a másik regionális terheléselosztó kapcsolatának feladatátvételét.
+4. Frissítse a webböngészőt, és figyelje meg a kapcsolat feladatátvételét a másik regionális terheléseltöltővel.
 
-    :::image type="content" source="./media/tutorial-cross-region-portal/test-cr-lb-2.png" alt-text="Terheléselosztó tesztelése a feladatátvétel után" border="true":::
+    :::image type="content" source="./media/tutorial-cross-region-portal/test-cr-lb-2.png" alt-text="Terheléselosztás tesztelése feladatátvétel után" border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. 
 
-Ehhez válassza ki az erőforrásokat tartalmazó **CreateCRLBTutorial-RG** erőforráscsoportot, majd válassza a **Törlés** lehetőséget.
+Válassza ki az erőforrásokat tartalmazó **CreateCRLBTutorial-rg** erőforráscsoportot, majd válassza a **Törlés lehetőséget.**
 
 ## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
-* Létrehozta a régiók közötti Load balancert.
-* Regionális terheléselosztó hozzáadása a régiók közötti terheléselosztó háttér-készletéhez.
+* Létrehozott egy régiók közötti terheléselosztást.
+* Regionális terheléselosztások hozzáadva a régiók közötti terheléselosztás háttérkészletében.
 * Létrehozott egy terheléselosztási szabályt.
-* Tesztelte a terheléselosztó.
+* Tesztelte a terheléseltöltőt.
 
-A régiók közötti terheléselosztó további információit a következő témakörben talál:
+További információ a régiók közötti terheléselosztásról:
 > [!div class="nextstepaction"]
-> [Régiók közötti Load Balancer (előzetes verzió)](cross-region-overview.md)
+> [Régiók közötti terheléselelosztás (előzetes verzió)](cross-region-overview.md)

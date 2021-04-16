@@ -1,6 +1,6 @@
 ---
 title: Az Azure Managed HSM áttekintése – Azure Managed HSM | Microsoft Docs
-description: Az Azure Managed HSM egy felhőalapú szolgáltatás, amely védi a titkosítási kulcsokat a felhőalapú alkalmazásokhoz.
+description: Az Azure Managed HSM egy felhőszolgáltatás, amely a felhőalkalmazások titkosítási kulcsait védi.
 services: key-vault
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,47 +10,47 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 605e3f0451cc2029ecc98e42741f30a2d3ef190b
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167957"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484183"
 ---
-# <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Mi az Azure Key Vault Managed HSM (előzetes verzió)?
+# <a name="what-is-azure-key-vault-managed-hsm"></a>Az Azure Key Vault Managed HSM bemutatása
 
-Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az **FIPS 140-2 3. szintű** hitelesített HSM használatával.  
+Azure Key Vault Managed HSM egy teljes körűen felügyelt, magas rendelkezésre álló, egybérlős, szabványnak megfelelő felhőszolgáltatás, amely lehetővé teszi a felhőalkalmazások titkosítási kulcsának védelmét a **FIPS 140-2 3.** szintje szerint ellenőrzött HSM-ekkel.  
 
-## <a name="why-use-managed-hsm"></a>Miért érdemes felügyelt HSM-et használni?
+## <a name="why-use-managed-hsm"></a>Miért érdemes a Managed HSM-et használni?
 
-### <a name="fully-managed-highly-available-single-tenant-hsm-as-a-service"></a>Teljes körűen felügyelt, magasan elérhető, egyetlen bérlős HSM szolgáltatásként
+### <a name="fully-managed-highly-available-single-tenant-hsm-as-a-service"></a>Teljes körűen felügyelt, magas rendelkezésre áll, egybérlős HSM szolgáltatásként
 
-- **Teljes körűen felügyelt**: a HSM-kiépítés, a konfiguráció, a javítás és a karbantartás a szolgáltatással történik. 
-- **Magasan elérhető és rugalmas zónák** (ahol a rendelkezésre állási zónák támogatottak): az egyes HSM-FÜRTÖK több HSM-partícióból állnak, amelyek legalább két rendelkezésre állási zónára terjednek ki. Ha a hardver meghibásodik, a HSM-fürthöz tartozó partíciók automatikusan át lesznek telepítve a kifogástalan állapotú csomópontokra.
-- **Egybérlős**: minden felügyelt HSM-példány egyetlen ügyfélhez van hozzárendelve, és több HSM-partícióból álló fürtből áll. Mindegyik HSM-fürt egy külön ügyfél-specifikus biztonsági tartományt használ, amely kriptográfiailag elkülöníti az egyes ügyfelek HSM-fürtjét.
+- **Teljes körűen felügyelt:** A HSM-kiépítést, konfigurálást, javítást és karbantartást a szolgáltatás kezeli. 
+- **Magas rendelkezésre állású és** zónaredigens (ahol a rendelkezésre állási zónák támogatottak): Minden HSM-fürt több HSM-partícióból áll, amelyek legalább két rendelkezésre állási zónára is ki vannak ásva. Ha a hardver meghibásodik, a HSM-fürt tagpartíciói automatikusan át lesznek telepítve a kifogástalan állapotú csomópontokra.
+- **Egy-bérlős:** Minden felügyelt HSM-példány egyetlen ügyfél számára van kiosztva, és több HSM-partícióból áll. Minden HSM-fürt külön ügyfélspecifikus biztonsági tartományt használ, amely titkosítás segítségével elkülöníti az egyes ügyfelek HSM-fürtöt.
 
 
-### <a name="access-control-enhanced-data-protection--compliance"></a>Hozzáférés-vezérlés, fokozott adatvédelem & megfelelőség
+### <a name="access-control-enhanced-data-protection--compliance"></a>Hozzáférés-vezérlés, továbbfejlesztett adatvédelmi & megfelelőség
 
-- **Központosított kulcskezelő**: egy helyen kezelheti a cégen belüli kritikus és nagy értékű kulcsokat. A minimális jogosultságokkal rendelkező hozzáférés elve alapján minden egyes kulcshoz meg kell határozni a hozzáférést.
-- **Elkülönített hozzáférés-vezérlés**: a felügyelt HSM "helyi RBAC" hozzáférés-vezérlési modell lehetővé teszi, hogy a kijelölt HSM-fürt rendszergazdái teljes körűen szabályozzák a HSM, hogy még a felügyeleti csoport, az előfizetés vagy az erőforráscsoport-rendszergazda nem bírálhatja felül
-- **Fips 140-2 3. szint ellenőrzött HSM**: az adatvédelmet és a megfelelőségi követelmények teljesítését a FIPS ((Federal Information Protection Standard) 140-2 3. szint ellenőrzött HSM. A felügyelt HSM a Marvell LiquidSecurity HSM-adaptereket használják.
-- **Monitorozás és naplózás**: teljes mértékben integrált az Azure monitorral. Az összes tevékenység teljes naplóinak beolvasása Azure Monitoron keresztül. Az Azure Log Analytics használata az elemzésekhez és a riasztásokhoz.
-- **Adattárolás**: a felügyelt HSM nem tárolja/dolgozza fel az ügyféladatokat azon a régión kívül, amelyen az ügyfél üzembe helyezi a HSM-példányt.
+- **Központosított kulcskezelés:** Egy helyen kezelheti a kritikus fontosságú, nagy értékű kulcsokat a szervezetben. A kulcsonkénti részletes engedélyekkel szabályozhatja az egyes kulcsokhoz való hozzáférést a "legkisebb jogosultsági szintű hozzáférés" elve alapján.
+- **Izolált** hozzáférés-vezérlés: A felügyelt HSM "helyi RBAC" hozzáférés-vezérlési modellje lehetővé teszi a kijelölt HSM-fürt rendszergazdái számára, hogy teljes körű vezérléssel tudjanak kezelni azokat a HSM-eket, amelyek még a felügyeleti csoport, az előfizetés vagy az erőforráscsoport rendszergazdája számára sem bírálhatóak felül.
+- **FIPS 140-2 3.** szintű ellenőrzött HSM-ek: Az adatok védelme és a megfelelőségi követelmények teljesítéséhez a FIPS ((Federal Information Protection Standard)) 140-2 3. szintje szerint ellenőrzött HSM-ekkel. A felügyelt HSM-ek a Fogl LiquidSecurity HSM-adaptereket használják.
+- **Monitor és naplózás:** teljes mértékben integrálva van az Azure Monitorral. Az összes tevékenység teljes naplóit a Azure Monitor. Az Azure Log Analytics használata elemzéshez és riasztáshoz.
+- **Adattároló hely:** A Managed HSM nem tárol/feldolgoz ügyféladatokat azon a régión kívül, ahol az ügyfél üzembe helyezheti a HSM-példányt.
 
-### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Az Azure és a Microsoft Pásti/SaaS szolgáltatásokkal integrálva 
+### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Integrálva van az Azure-ral és a Microsoft PaaS-/SaaS-szolgáltatásokkal 
 
-- Az Azure-szolgáltatásokban, például az Azure [Storage](../../storage/common/customer-managed-keys-overview.md)-ban, az [Azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md)-ben és a [Azure Information Protection](/azure/information-protection/byok-price-restrictions)-ben a [BYOK](hsm-protected-keys-byok.md)-kulcsok használatával (vagy importálással) titkosíthatja adatait.
+- Hozzon létre (vagy importáljon [BYOK-](hsm-protected-keys-byok.md)) kulcsokat, és használja őket az olyan Azure-szolgáltatásokban [tárolt](../../azure-sql/database/transparent-data-encryption-byok-overview.md)adatok titkosítására, mint az [Azure Storage,](../../storage/common/customer-managed-keys-overview.md)Azure SQL , [Azure Information Protection.](/azure/information-protection/byok-price-restrictions)
 
-### <a name="uses-same-api-and-management-interfaces-as-key-vault"></a>Ugyanazokat az API-és felügyeleti felületeket használja, mint a Key Vault
+### <a name="uses-same-api-and-management-interfaces-as-key-vault"></a>Ugyanazt az API-t és felügyeleti felületet használja, mint Key Vault
 
-- Egyszerűen migrálhatja meglévő alkalmazásait, amelyek tárolót használnak (több-bérlős) a felügyelt HSM használatához.
-- Ugyanazokat az alkalmazás-fejlesztési és üzembe helyezési mintákat használhatja az összes alkalmazáshoz, a használatban lévő kulcskezelő megoldástól függetlenül: több-bérlős tárolók vagy egyetlen bérlő által felügyelt HSM
+- Könnyedén átveheti a tárolót (több-bérlős) tárolót használó meglévő alkalmazásokat a felügyelt HSM-ek használatára.
+- Használja ugyanazt az alkalmazásfejlesztési és üzembe helyezési mintákat az összes alkalmazáshoz, függetlenül a használt kulcskezelési megoldástól: több-bérlős tárolók vagy egybérlős felügyelt HSM-ek
 
-### <a name="import-keys-from-your-on-premise-hsms"></a>Kulcsok importálása a helyszíni HSM
+### <a name="import-keys-from-your-on-premise-hsms"></a>Kulcsok importálása a saját HSM-ről
 
-- HSM-védelemmel ellátott kulcsok generálása a helyszíni HSM-ben és biztonságos importálása a felügyelt HSM-be
+- HSM által védett kulcsok létrehozása a saját hsm-környezetben, majd azok biztonságos importálása a Managed HSM-be
 
 ## <a name="next-steps"></a>Következő lépések
-- Útmutató [: felügyelt HSM kiépítése és aktiválása az Azure CLI használatával](quick-create-cli.md) a felügyelt HSM létrehozásához és aktiválásához
-- [Ajánlott eljárások a Azure Key Vault Managed HSM használatával](best-practices.md)
+- Lásd: [Rövid útmutató: Felügyelt HSM](quick-create-cli.md) kiépítése és aktiválása az Azure CLI használatával felügyelt HSM létrehozásához és aktiválásához
+- Lásd: [Ajánlott eljárások a Azure Key Vault HSM-hez](best-practices.md)

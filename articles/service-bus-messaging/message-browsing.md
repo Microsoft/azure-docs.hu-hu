@@ -1,51 +1,55 @@
 ---
 title: Azure Service Bus – üzenetek tallózása
-description: Service Bus üzenetek tallózása és betekintés funkció lehetővé teszi, hogy egy Azure Service Bus-ügyfél enumerálja egy üzenetsor vagy előfizetés összes üzenetét.
+description: Az üzenetek tallózása Service Bus és betekintése lehetővé teszi, Azure Service Bus ügyfél enumeráljon egy üzenetsorban vagy előfizetésben lévő összes üzenetet.
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: f4943685f03eccb1c3b8da079973cf083bdcc416
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090307"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520122"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
+Az üzenetböngészés vagy betekintés lehetővé teszi, hogy a Service Bus-ügyfél diagnosztikai és hibakeresési célból enumeráljon egy üzenetsorban vagy előfizetésben lévő összes üzenetet.
 
-Az üzenetek böngészése vagy betekintése lehetővé teszi, hogy egy Service Bus-ügyfél egy üzenetsor vagy egy előfizetés összes üzenetének enumerálását diagnosztikai és hibakeresési célból.
+Az üzenetsorra vagy előfizetésre vonatkozó Betekintés művelet a kért számú üzenetet adja vissza. Az alábbi táblázat a Betekintés művelet által visszaadott üzenettípusokat mutatja be. 
 
-A **várólistán** lévő betekintés művelet visszaadja az üzenetsor összes üzenetét, nem csak az azonnali beszerzéshez elérhetőket. Az **előfizetések** betekintés művelete az előfizetési üzenet naplójában lévő ütemezett üzenetek kivételével minden üzenetet visszaadja. 
+| Üzenetek típusa | Tartalmazza? | 
+| ---------------- | ----- | 
+| Aktív üzenetek | Igen |
+| Nem küldött üzenetek | Nem | 
+| Zárolt üzenetek | Igen |
+| Lejárt üzenetek |  Lehet (mielőtt a rendszer elhalt leveleket ad vissza) |
+| Ütemezett üzenetek | Igen az üzenetsorok számára. Nem az előfizetések esetén |
 
-A rendszer a felhasznált és a lejárt üzeneteket egy aszinkron "Garbage Collection" futtatással takarítja meg. Előfordulhat, hogy ez a lépés nem feltétlenül lép fel azonnal az üzenetek lejárta után. Ezért a betekintés művelet a már lejárt üzeneteket is visszaküldheti. Ezek az üzenetek el lesznek távolítva vagy kézbesítve lesznek, amikor a következő alkalommal fogad egy fogadási műveletet a várólistán vagy az előfizetésen. Tartsa szem előtt ezt a viselkedést, amikor megkísérli visszaállítani a késleltetett üzeneteket a várólistából. Egy lejárt üzenet már nem jogosult a rendszeres lekérésre bármilyen más módon, még akkor is, ha azt a betekintés visszaadja. Az üzenetek visszaküldése a következőképpen történik: betekintés a napló aktuális állapotát tükröző diagnosztikai eszköz.
+## <a name="dead-lettered-messages"></a>Nem küldött üzenetek
+Az üzenetsor  vagy előfizetés nem küldött üzeneteibe való betekintéshez a betekintés műveletet az üzenetsorhoz vagy előfizetéshez társított üzenetsoron kell futtatni. További információkért lásd: A nem elérhető [üzenetsorok elérése.](service-bus-dead-letter-queues.md#path-to-the-dead-letter-queue)
 
-A betekintés a zárolt és jelenleg más fogadók által feldolgozott üzeneteket is visszaadja. Mivel azonban a betekintés egy leválasztott pillanatképet ad vissza, egy üzenet zárolási állapota nem figyelhető meg a beérkező üzenetekben.
+## <a name="expired-messages"></a>Lejárt üzenetek
+A lejárt üzenetek a Betekintés művelet által visszaadott eredményekben is lehetnek. A felhasznált és lejárt üzeneteket egy aszinkron "szemétgyűjtési" futtatás tisztítja meg. Ez a lépés nem feltétlenül történik meg közvetlenül az üzenetek lejárata után. Ezért előfordulhat, hogy egy betekintés művelet már lejárt üzeneteket ad vissza. Ezek az üzenetek el lesznek távolítva, vagy a nem küldött üzenetek el lesznek távolítva, amikor legközelebb meghívnak egy fogadási műveletet az üzenetsoron vagy az előfizetésen. Ezt a viselkedést tartsa szem előtt, amikor késleltetett üzeneteket próbál helyreállítani az üzenetsorból. 
 
-## <a name="peek-apis"></a>Betekintési API-k
-## <a name="azuremessagingservicebus"></a>[Azure. Messaging. ServiceBus](#tab/dotnet)
-A [PeekMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessageasync) és a [PeekMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessagesasync) metódus létezik a fogadó objektumokon: `ServiceBusReceiver` , `ServiceBusSessionReceiver` . A betekintés a várólistákon, előfizetéseken és a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
+A lejárt üzenetek már nem jogosultak más módon normál lekérésre, még akkor sem, ha a Peek visszaadja őket. Ezeket az üzeneteket a tervezés szerint adja vissza, mivel a Betekintés egy diagnosztikai eszköz, amely a napló aktuális állapotát tükrözi.
 
-Ha többször is meghívják, a `PeekMessageAsync` rendszer az üzenetsor vagy az előfizetési napló összes üzenetét a legalacsonyabb rendelkezésre álló sorozatszámból a legmagasabb értékre sorolja. Ez az a sorrend, amelyben az üzenetek várólistán lévő voltak, nem pedig az, hogy az üzenetek végül milyen sorrendben lesznek lekérdezve.
-A PeekMessagesAsync több üzenetet kér le, és visszaadja őket enumerálásként. Ha nem áll rendelkezésre üzenet, a számbavételi objektum üres, nem null értékű.
+## <a name="locked-messages"></a>Zárolt üzenetek
+A Betekintés azokat az üzeneteket is visszaadja, amelyek **zárolva** vannak, és más fogadók dolgoznak fel. Mivel azonban a Betekintés leválasztott pillanatképet ad vissza, az üzenetek zárolási állapota nem figyelhető meg a bepillantott üzeneteknél.
 
-A [fromSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.eventposition.fromsequencenumber) paramétert egy olyan sorszám is feltöltheti, amelynél el szeretné indítani a metódust, majd meghívja a metódust anélkül, hogy a paramétert meg kellene adni a további enumeráláshoz. `PeekMessagesAsync` a függvények egymással egyenértékűek, de az üzenetek egy készlete egyszerre is lekérdezhető.
+## <a name="peek-apis"></a>Betekintés AZ API-kba
+A betekintés az üzenetsorokkal, az előfizetésekkel és a levélküldetésekkel kapcsolatos üzenetsorokkal is működik. 
 
+Ha többször is meg van hívva, a betekintés művelet sorrendben számba veszi az üzenetsorban vagy előfizetésben lévő összes üzenetet, a legalacsonyabb elérhető sorszámtól a legmagasabbig. Az üzenetek sorrendje a sorrend, nem pedig az üzenetek lekérésének sorrendje.
 
-## <a name="microsoftazureservicebus"></a>[Microsoft. Azure. ServiceBus](#tab/dotnetold)
-A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódus létezik a fogadó objektumokon: `MessageReceiver` , `MessageSession` . A betekintés a várólistákon, előfizetéseken és a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
-
-Ha többször is meghívják, a `Peek` rendszer az üzenetsor vagy az előfizetési napló összes üzenetét a legalacsonyabb rendelkezésre álló sorozatszámból a legmagasabb értékre sorolja. Ez az a sorrend, amelyben az üzenetek várólistán lévő voltak, nem pedig az, hogy az üzenetek végül milyen sorrendben lesznek lekérdezve.
-
-A [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) több üzenetet kér le, és visszaadja őket enumerálásként. Ha nem áll rendelkezésre üzenet, a számbavételi objektum üres, nem null értékű.
-
-A metódus túlterhelését is használhatja egy olyan [sorszám](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , amelyen el szeretné indítani a metódust, majd a paraméter nélküli metódus túlterhelésének meghívásával további enumerálást készíthet. A **PeekBatch** függvények egyenértékűek, de egyszerre lekérik az üzenetek készletét.
-
-
----
+A SequenceNumber egy betekintő műveletbe is átadhat egy műveletet. A segítségével határozható meg, hogy honnan kezdjen betekinteni. A betekintés művelet további hívásait a további számbavételhez szükséges paraméter megadása nélkül is kezdeményezheti.
 
 ## <a name="next-steps"></a>Következő lépések
+Próbálja ki a mintákat a választott nyelven a betekintés vagy az üzenetböngészés funkció felfedezéséhez:
 
-Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
+- [Azure Service Bus java-ügyféloldali kódtárminták](/samples/azure/azure-sdk-for-java/servicebus-samples/)  -  **Betekintés az üzenetmintába**
+- [Azure Service Bus Pythonhoz készült ügyféloldali kódtárminták](/samples/azure/azure-sdk-for-python/servicebus-samples/)  -  **receive_peek.py minta**
+- [Azure Service Bus Kódtárminták JavaScripthez](/samples/azure/azure-sdk-for-js/service-bus-javascript/)  -  **browseMessages.js** minta
+- [Azure Service Bus TypeScript ügyféloldali kódtárminái](/samples/azure/azure-sdk-for-js/service-bus-typescript/)  -  **browseMessages.ts** minta
+- [Azure.Messaging.ServiceBus-minták a .NET-hez](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) – A referenciadokumentációban tekintse meg a metódusok betekintés a fogadóosztályok [esetében részt.](/dotnet/api/azure.messaging.servicebus)
 
-* [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
-* [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Az alábbiakban példákat talál a régebbi .NET- és Java-ügyfélkódtárakhoz:
+- [Microsoft.Azure.ServiceBus-minták a .NET-hez](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)  -  **Üzenetböngészés (betekintés) –** minta 
+- [azure-servicebus-minták Javához](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)  -  **Üzenet tallózása** – minta. 

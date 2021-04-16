@@ -1,6 +1,6 @@
 ---
-title: Külső hozzáférés kezelése Azure Active Directory jogosultságok kezelésével
-description: Azure Active Directory jogosultság-kezelés használata a teljes külső hozzáférési biztonsági csomag részeként.
+title: Külső hozzáférés kezelése a Azure Active Directory jogosultságkezelésével
+description: A Azure Active Directory jogosultságkezelés használata a teljes külső hozzáférés biztonsági tervének részeként.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,163 +13,163 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89744b63a555cc02d35815b4066ce572b7f77e38
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725178"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531896"
 ---
-# <a name="manage-external-access-with-entitlement-management"></a>A külső hozzáférés kezelése a jogosultságok kezelésével 
+# <a name="manage-external-access-with-entitlement-management"></a>Külső hozzáférés kezelése jogosultságkezeléssel 
 
 
-A [jogosultságok kezelése](../governance/entitlement-management-overview.md) egy olyan identitás-irányítási képesség, amely lehetővé teszi a szervezetek számára, hogy a hozzáférési kérelmek munkafolyamatainak automatizálásával, a hozzáférési hozzárendelésekkel, a felülvizsgálatokkal és a lejárattal együtt kezeljék az identitást A jogosultságok kezelése lehetővé teszi, hogy a delegált nem rendszergazdák olyan [hozzáférési csomagokat](../governance/entitlement-management-overview.md) hozzanak létre, amelyeket más szervezetek külső felhasználói igényelhetnek. Az egy-és többfázisú jóváhagyási munkafolyamatok konfigurálhatók a kérelmek kiértékeléséhez [, valamint a felhasználók számára](../governance/what-is-provisioning.md) az ismétlődő ellenőrzésekkel való korlátozott hozzáféréshez. A jogosultságok kezelése lehetővé teszi a házirend-alapú üzembe helyezést és a külső fiókok megszüntetését.
+[A jogosultságkezelés](../governance/entitlement-management-overview.md) egy olyan identitáskezelési képesség, amely lehetővé teszi a szervezetek számára az identitás- és hozzáférési életciklus nagy léptékű kezelését a hozzáférési kérelmek munkafolyamatának, hozzáférés-hozzárendeléseinek, felülvizsgálatának és lejáratának automatizálásával. A jogosultságkezelés lehetővé teszi, hogy a meghatalmazott nem rendszergazda felhasználók hozzáférési csomagokat hozzanak [létre,](../governance/entitlement-management-overview.md) amelyekhez más szervezetek külső felhasználói hozzáférést kérhetnek. Egy és többszakaszos jóváhagyási munkafolyamatok konfigurálhatóak a [](../governance/what-is-provisioning.md) kérések kiértékeléséhez, valamint a felhasználók időkorrekulált hozzáféréshez való, ismétlődő felülvizsgálatokkal való ellátásához. A jogosultságkezelés lehetővé teszi a külső fiókok szabályzatalapú kiépítését és megszüntetését.
 
-## <a name="key-concepts-for-enabling-entitlement-management"></a>A jogosultságok kezelésének engedélyezésével kapcsolatos főbb fogalmak
+## <a name="key-concepts-for-enabling-entitlement-management"></a>A jogosultságkezelés engedélyezésének fő fogalmai
 
-A jogosultságok kezelésének megismeréséhez a következő fontos fogalmakat kell figyelembe venni.
+A jogosultságok kezelésével kapcsolatos fontos fogalmak a következők.
 
 ### <a name="access-packages"></a>Hozzáférési csomagok
 
-A jogosultsági felügyelet alapja a [hozzáférési csomag](../governance/entitlement-management-overview.md) . A hozzáférési csomagok olyan házirend által szabályozott erőforrások csoportjai, amelyeknek a felhasználónak egy projektben kell együttműködni, vagy más feladatokat kell elvégeznie. A hozzáférési csomagok például a következők lehetnek:
+A [hozzáférési csomag](../governance/entitlement-management-overview.md) a jogosultságkezelés alapja. A hozzáférési csomagok olyan szabályzat által szabályozott erőforrások csoportjai, amelyekre a felhasználónak a projekten való együttműködéshez vagy más feladatok elvégzéséhez van szüksége. Egy hozzáférési csomag például a következőket tartalmazhatja:
 
 * hozzáférés adott SharePoint-webhelyekhez.
 
-* vállalati alkalmazások, például az egyéni házon belüli és SaaS-alkalmazások, például a Salesforce.
+* vállalati alkalmazások, beleértve az egyéni, házon belül készült és SaaS-alkalmazásokat, például a Salesforce-t.
 
 * Microsoft Teams-csatornák.
 
-* Microsoft 365 csoportok. 
+* Microsoft 365-csoportok. 
 
 ### <a name="catalogs"></a>Katalógusok
 
-A hozzáférési csomagok a [katalógusokban](../governance/entitlement-management-catalog-create.md)találhatók. Létre kell hoznia egy katalógust, ha a kapcsolódó erőforrásokat és a hozzáférési csomagokat szeretné csoportosítani, és delegálni a felügyeletének képességét. Először vegyen fel erőforrásokat egy katalógusba, majd adja hozzá ezeket az erőforrásokat a csomagok eléréséhez. Előfordulhat például, hogy létre szeretne hozni egy "Pénzügy" katalógust, és [delegálja a felügyeletét](../governance/entitlement-management-delegate.md) a pénzügyi csapat egyik tagjának. Az adott személy ezután [erőforrásokat vehet fel](../governance/entitlement-management-catalog-create.md), hozzáférési csomagokat hozhat létre, és kezelheti a hozzáférési jóváhagyásokat ezekhez a csomagokhoz.
+A hozzáférési csomagok a [katalógusban találhatók.](../governance/entitlement-management-catalog-create.md) Katalógust akkor hoz létre, ha csoportosítja a kapcsolódó erőforrásokat és szeretné elérni a csomagokat, és delegálni szeretné a kezelésük képességét. Először erőforrásokat ad hozzá egy katalógushoz, majd hozzáadhatja ezeket az erőforrásokat a csomagok eléréséhez. Előfordulhat például, hogy létre szeretne hozni egy [](../governance/entitlement-management-delegate.md) "Pénzügyi" katalógust, és delegálni szeretné a felügyeletét a pénzügyi csapat egyik tagnak. Ez a személy ezután [erőforrásokat adhat hozzá,](../governance/entitlement-management-catalog-create.md)hozzáférési csomagokat hozhat létre, és kezelheti a csomagok hozzáférési jóváhagyását.
 
-Az alábbi ábrán egy általános irányítási életciklus látható, amely szerint egy külső felhasználó hozzáférést szerez egy lejárati hozzáférési csomaghoz.
+Az alábbi ábra egy tipikus cégirányítási életciklust mutat be, amikor egy külső felhasználó hozzáfér egy lejárati idővel rendelkező hozzáférési csomaghoz.
 
-![A külső felhasználói irányítási ciklus diagramja.](media/secure-external-access/6-governance-lifecycle.png)
+![A külső felhasználóirányítási ciklus diagramja.](media/secure-external-access/6-governance-lifecycle.png)
 
 ### <a name="self-service-external-access"></a>Önkiszolgáló külső hozzáférés
 
-Az [Azure ad saját hozzáférési portálján](../governance/entitlement-management-request-access.md) keresztül felhasználhatja az Access-csomagokat, hogy a külső felhasználók hozzáférjenek a hozzáféréshez. A szabályzatok határozzák meg, hogy kik igényelhetnek hozzáférési csomagokat. Megadhatja, hogy ki jogosult a hozzáférési csomag igénylésére:
+A hozzáférési csomagokat az [Azure AD Saját hozzáférés portálon](../governance/entitlement-management-request-access.md) keresztül teheti elérhetőre, így külső felhasználók is kérhetnek hozzáférést. A szabályzatok határozzák meg, hogy ki kérhet hozzáférési csomagot. Megadhatja, hogy ki kérheti a hozzáférési csomagot:
 
 * Adott [csatlakoztatott szervezetek](../governance/entitlement-management-organization.md)
 
-* Minden konfigurált csatlakoztatott szervezet
+* Az összes konfigurált csatlakoztatott szervezet
 
 * Bármely szervezet összes felhasználója
 
-* A bérlőn már meglévő tagok vagy vendég felhasználók
+* A bérlőben már tag- vagy vendégfelhasználók
 
 ### <a name="approvals"></a>Approvals   
-A hozzáférési csomagok magukban foglalhatják a hozzáférés kötelező jóváhagyását. **A külső felhasználók számára mindig hajtson végre jóváhagyási folyamatokat**. A jóváhagyások lehetnek egyetlen vagy többfázisú jóváhagyások. A jóváhagyásokat szabályzatok határozzák meg. Ha a belső és külső felhasználóknak ugyanahhoz a csomaghoz is hozzá kell férniük, valószínűleg különböző hozzáférési házirendeket állítanak be a csatlakoztatott szervezetek különböző kategóriáira, illetve a belső felhasználók számára.
+A hozzáférési csomagok tartalmazhatják a hozzáférés kötelező jóváhagyását. **Mindig alkalmaznak jóváhagyási folyamatokat a külső felhasználók számára.** A jóváhagyások egy vagy több szakaszból álló jóváhagyások is lehetek. A jóváhagyásokat szabályzatok határozzák meg. Ha a belső és a külső felhasználóknak is ugyanannak a csomagnak kell hozzáférniük, valószínűleg különböző hozzáférési szabályzatokat fog beállítani a csatlakoztatott szervezetek különböző kategóriáihoz és a belső felhasználókhoz.
 
 ### <a name="expiration"></a>Lejárat  
-A hozzáférési csomagok tartalmazhatnak lejárati dátumot. A lejárati idő beállítható egy adott napra, vagy a felhasználó számára megadott számú napokat adhat meg a hozzáféréshez. Ha a hozzáférési csomag lejár, és a felhasználónak nincs más hozzáférése, akkor a felhasználót jelképező B2B vendég felhasználói objektum törölhető vagy letiltható a bejelentkezésből. Javasoljuk, hogy a külső felhasználók hozzáférési csomagjainak érvényességét kényszerítse ki. Nem minden hozzáférési csomag lejár. Ha nem, akkor győződjön meg arról, hogy a hozzáférési felülvizsgálatokat hajtja végre.
+A hozzáférési csomagok lejárati dátumot is tartalmazhatnak. A lejárat beállítható egy adott napra, vagy adhat a felhasználónak megadott számú napot a hozzáféréshez. Ha a hozzáférési csomag lejár, és a felhasználónak nincs más hozzáférése, a felhasználót képviselő B2B vendégfelhasználói objektum törölhető vagy letiltható a bejelentkezésben. Javasoljuk, hogy a hozzáférési csomagok lejáratát kényszerítsen ki külső felhasználók számára. Nem minden hozzáférési csomag rendelkezik lejárati idővel. Azok számára, akik nem, győződjön meg arról, hogy hozzáférési felülvizsgálatokat végez.
 
 ### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
-A hozzáférési csomagok időszakos [hozzáférési felülvizsgálatokat](../governance/manage-guest-access-with-access-reviews.md)igényelhetnek, amelyekre szükség van a csomag tulajdonosának vagy a megbízottjának, hogy tanúsítsa a felhasználók hozzáférésének folyamatos igényét. 
+A hozzáférési csomagok rendszeres hozzáférési [felülvizsgálatokat](../governance/manage-guest-access-with-access-reviews.md)követelnek meg, amelyekhez a csomag tulajdonosának vagy egy tervezőnek igazolnia kell, hogy továbbra is szükség van a felhasználók hozzáférésére. 
 
 A felülvizsgálat beállítása előtt határozza meg a következőket.
 
 * ki
 
-   * Mik a további hozzáférés feltételei?
+   * Milyen feltételek teljesülnek a folyamatos hozzáféréshez?
 
-   * Kik a megadott véleményezők?
+   * Kik a megadott felülvizsgálók?
 
-* Milyen gyakran történjenek az ütemezett felülvizsgálatok?
+* Milyen gyakran kell ütemezett felülvizsgálatokat ütemezni?
 
-   * A beépített lehetőségek közé tartozik a havi, negyedéves, bi-évenkénti vagy évenkénti. 
+   * A beépített lehetőségek közé tartozik a havi, negyedéves, bi-éves vagy éves. 
 
    * A külső hozzáférést támogató csomagok esetében negyedévente vagy gyakrabban ajánlott. 
 
  
 
 > [!IMPORTANT]
-> A hozzáférési csomagok hozzáférési felülvizsgálatai csak a jogosultsági felügyelet által biztosított hozzáférést vizsgálják felül. Ezért más folyamatokat kell beállítania a jogosultsági felügyeleten kívüli külső felhasználók számára biztosított hozzáférés áttekintéséhez.
+> A hozzáférési csomagok hozzáférési felülvizsgálata csak a jogosultságkezelésen keresztül biztosított hozzáférést vizsgálja meg. Ezért más folyamatokat is be kell állítania a jogosultságkezelésen kívüli külső felhasználók számára biztosított hozzáférések áttekintéséhez.
 
-A hozzáférési felülvizsgálatokkal kapcsolatos további információkért tekintse meg [Az Azure ad hozzáférési felülvizsgálatok üzembe helyezésének megtervezése](../governance/deploy-access-reviews.md)című témakört.
+További információ a hozzáférési felülvizsgálatokkal kapcsolatban: [Planning an Azure AD Access Reviews deployment (Az Azure AD hozzáférési felülvizsgálatok üzembe helyezésének megtervezése).](../governance/deploy-access-reviews.md)
 
-## <a name="using-automation-in-entitlement-management"></a>Automatizálás használata a jogosultságok kezelésében
+## <a name="using-automation-in-entitlement-management"></a>Automatizálás használata a jogosultságkezelésben
 
-A [jogosultsági felügyeleti funkciókat Microsoft Graph használatával](/graph/tutorial-access-package-api)is végrehajthatja, beleértve a következőket:
+A jogosultságkezelési funkciókat a [következő Microsoft Graph](/graph/tutorial-access-package-api)végezheti el:
 
-* [Hozzáférési csomagok kezelése](/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Hozzáférési csomagok kezelése](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
 
-* [Hozzáférési felülvizsgálatok kezelése](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Hozzáférési felülvizsgálatok kezelése](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
 
-* [Csatlakoztatott szervezetek kezelése](/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Csatlakoztatott szervezetek kezelése](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
 
-* [Jogosultság-kezelési beállítások kezelése](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Jogosultságkezelési beállítások kezelése](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="recommendations"></a>Javaslatok 
 
-Javasoljuk, hogy a külső hozzáférés a jogosultság-kezeléssel való szabályozásának eljárásait javasolja.
+Javasoljuk a külső hozzáférés jogosultságkezeléssel történő szabályozásának gyakorlatát.
 
-**Egy vagy több üzleti partnerrel rendelkező projektek esetén [hozzáférési csomagokat hozhat létre és használhat](../governance/entitlement-management-access-package-create.md) a felhasználók számára az erőforrásokhoz való hozzáférés biztosításához**. 
+**Ha egy vagy több üzleti [](../governance/entitlement-management-access-package-create.md) partnerrel rendelkezik,** hozzon létre és használjon hozzáférési csomagokat a partnerfelhasználók erőforrásokhoz való hozzáférésének létrehozásához és létrehozásához. 
 
-* Ha a címtárban már van B2B-felhasználó, akkor közvetlenül is hozzárendelheti azokat a megfelelő hozzáférési csomagokhoz.
+* Ha már rendelkezik B2B-felhasználókkal a címtárban, közvetlenül is hozzárendelheti őket a megfelelő hozzáférési csomagokhoz.
 
-* A hozzáférést a [Azure Portal](../governance/entitlement-management-access-package-assignments.md)vagy a [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta)használatával rendelheti hozzá.
+* A hozzáférést a következő Azure Portal rendelheti hozzá: [,](../governance/entitlement-management-access-package-assignments.md)vagy [Microsoft Graph.](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true)
 
-**Az identitás-irányítási beállítások használatával távolíthatja el a felhasználókat a címtárból, ha a hozzáférési csomagok lejárnak**.
+Az Identity Governance beállításaival eltávolíthat felhasználókat a **címtárból, amikor a hozzáférési csomagjaik lejárnak.**
 
-![Képernyőkép a külső felhasználók életciklusának kezeléséről.](media/secure-external-access/6-manage-external-lifecycle.png)
+![Képernyőkép a külső felhasználók életciklusának konfigurálásról.](media/secure-external-access/6-manage-external-lifecycle.png)
 
-Ezek a beállítások csak azokra a felhasználókra vonatkoznak, akik a jogosultsági felügyeleten keresztül lettek bevezetve.
+Ezek a beállítások csak a jogosultságkezelésen keresztül regisztrált felhasználókra vonatkoznak.
 
-A **[katalógusok és hozzáférési csomagok felügyeletének delegálása](../governance/entitlement-management-delegate.md) az üzleti tulajdonosok számára, akiknek további információval kell rendelkezniük arról, hogy kinek van hozzáférése**.
+**[Delegálhatja a katalógusok és](../governance/entitlement-management-delegate.md)** hozzáférési csomagok kezelését az üzleti tulajdonosoknak, akik több információt tartalmaznak arról, hogy kinek kell hozzáférniük a szolgáltatáshoz.
 
-![A katalógus konfigurálásának képernyőképe.](media/secure-external-access/6-catalog-management.png)
+![Képernyőkép a katalógus konfigurálásról.](media/secure-external-access/6-catalog-management.png)
 
-**A külső felhasználók számára elérhető [hozzáférési csomagok elévülésének megkövetelése](../governance/entitlement-management-access-package-lifecycle-policy.md) .**
+**[Kikényszeríteni a hozzáférési csomagok lejáratát,](../governance/entitlement-management-access-package-lifecycle-policy.md) amelyekhez külső felhasználók is hozzáférhetnek.**
 
 
-![Képernyőkép a hozzáférési csomag lejáratának konfigurálásáról.](media/secure-external-access/6-access-package-expiration.png)
+![Képernyőkép a hozzáférési csomag lejáratának konfigurálásról.](media/secure-external-access/6-access-package-expiration.png)
 
-* Ha ismeri a Project-alapú hozzáférési csomag befejezési dátumát, a dátum beállításával állíthatja be a megadott dátumot. 
+* Ha ismeri egy projektalapú hozzáférési csomag záró dátumát, a Dátum beállításnál adja meg az adott dátumot. 
 
-* Ellenkező esetben javasoljuk, hogy a lejárati idő ne legyen 365 nap, hacsak nem ismert, hogy a több évre kiterjedő szerepvállalás.
+* Ellenkező esetben javasoljuk, hogy a lejárati idő ne legyen 365 nap, kivéve, ha ismert, hogy több éves kötelezettségvállalásról van szó.
 
 * A hozzáférés kiterjesztésének engedélyezése a felhasználók számára.
 
-* Jóváhagyás megkövetelése a bővítmény engedélyezéséhez.
+* Jóváhagyás szükséges a bővítmény megadásához.
 
-**A [csomagok hozzáférési felülvizsgálatának érvénybe léptetése](../governance/manage-guest-access-with-access-reviews.md) , hogy elkerülje a vendégek nem megfelelő hozzáférését.**
+**[Kényszerítheti a csomagok hozzáférési felülvizsgálatának kényszerítését](../governance/manage-guest-access-with-access-reviews.md) a vendégek nem megfelelő hozzáférésének elkerülése érdekében.**
 
-![Képernyőkép új hozzáférési csomag létrehozásáról.](media/secure-external-access/6-new-access-package.png)
+![Képernyőkép egy új hozzáférési csomag létrehozásáról.](media/secure-external-access/6-new-access-package.png)
 
-* A felülvizsgálatokat negyedévente kell kikényszeríteni.
+* Felülvizsgálatok kikényszerezése negyedévente.
 
-* A megfelelőséggel kapcsolatos bizalmas projektek esetében a felülvizsgálók a külső felhasználókra vonatkozó önellenőrzés helyett külön véleményezők állíthatók be. Azok a felhasználók, akik hozzáférnek a Package managerekhez, jó kiindulópontot biztosítanak a felülvizsgálók számára. 
+* A megfelelőségi szempontból érzékeny projektek esetében a felülvizsgálókat állítsa adott felülvizsgálókra, és ne külső felhasználókra vonatkozó önértékelést. A hozzáférésicsomag-kezelő felhasználók jó kezdők a felülvizsgálók számára. 
 
-* A kevésbé érzékeny projektek esetében a felhasználók önellenőrzése csökkenti a szervezet azon terheit, amelyekkel megszűnik a felhasználók hozzáférésének megszüntetése a saját szervezete számára.
+* A kevésbé bizalmas projektek esetében a felhasználók önértékelése csökkenti a szervezetre háruló terheket, hogy megszűküljön a hozzáférés a már nem a saját szervezettel rendelkező felhasználóktól.
 
-További információ: [hozzáférés szabályozása külső felhasználók számára az Azure ad-jogosultságok kezelésében](../governance/entitlement-management-external-users.md) 
+További információ: Külső felhasználók [hozzáférésének szabályozása az Azure AD-jogosultságkezelésben](../governance/entitlement-management-external-users.md) 
 
 ### <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
+Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tétele érdekében. Javasoljuk, hogy a műveleteket a listában szereplő sorrendben vegye fel.
 
-1. [A külső hozzáférés biztonsági helyzetének meghatározása](1-secure-access-posture.md)
+1. [A külső hozzáférés biztonsági útjára vonatkozó biztonsági környezet meghatározása](1-secure-access-posture.md)
 
-2. [Aktuális állapot felderítése](2-secure-access-current-state.md)
+2. [Az aktuális állapot felderítése](2-secure-access-current-state.md)
 
 3. [Irányítási terv létrehozása](3-secure-access-plan.md)
 
-4. [Biztonsági csoportok használata](4-secure-access-groups.md)
+4. [Csoportok használata a biztonság érdekében](4-secure-access-groups.md)
 
 5. [Áttérés az Azure AD B2B-re](5-secure-access-b2b.md)
 
-6. [Biztonságos hozzáférés a jogosultsági felügyelettel](6-secure-access-entitlement-managment.md) (itt van.)
+6. [Biztonságos hozzáférés jogosultságkezeléssel](6-secure-access-entitlement-managment.md) (itt van).)
 
 7. [Biztonságos hozzáférés feltételes hozzáférési szabályzatokkal](7-secure-access-conditional-access.md)
 
-8. [Biztonságos hozzáférés érzékenységi címkékkel](8-secure-access-sensitivity-labels.md)
+8. [Biztonságos hozzáférés bizalmasság címkékkel](8-secure-access-sensitivity-labels.md)
 
-9. [Biztonságos hozzáférés a Microsoft Teams, a OneDrive és a SharePoint rendszerhez](9-secure-access-teams-sharepoint.md)
+9. [Biztonságos hozzáférés a Microsoft Teamshez, a OneDrive-hoz és a SharePointhoz](9-secure-access-teams-sharepoint.md)
 
  
 

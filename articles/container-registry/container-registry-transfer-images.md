@@ -56,7 +56,7 @@ Ez a szolgáltatás a **Prémium** tároló-beállításjegyzék szolgáltatási
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
-A következő három folyamaterőforrást hozza létre a regisztrációs jegyzékek közötti képátvitelhez. Mindegyik PUT műveletekkel jön létre. Ezek az erőforrások a  forrás- *és* célregisztrálókat és a tárfiókokat is működtetik. 
+A következő három folyamaterőforrást hozza létre a regisztrációs jegyzékek közötti képátvitelhez. Mindegyik PUT-műveletekkel jön létre. Ezek az erőforrások a  forrás- *és* célregisztrálókat és a tárfiókokat is működtetik. 
 
 A tárolóhitelesítés SAS-jogkivonatokat használ, amelyek titkos kulcsként vannak kezeltek a kulcstartókban. A folyamatok felügyelt identitások használatával olvassák a tárolókban tárolt titkos kulcsokat.
 
@@ -106,7 +106,7 @@ az keyvault secret set \
 
 ### <a name="generate-sas-token-for-import"></a>SAS-jogkivonat létrehozása importáláshoz
 
-Futtassa [az az storage container generate-sas][az-storage-container-generate-sas] parancsot egy SAS-jogkivonat létrehozásához a cél tárfiókban található tárolóhoz, amely az összetevők importálására használható.
+Futtassa [az az storage container generate-sas parancsot,][az-storage-container-generate-sas] hogy létrehoz egy SAS-jogkivonatot a cél tárfiókban található tárolóhoz, amely az összetevő importálására használható.
 
 *Ajánlott jogkivonat-engedélyek:* Olvasás, Törlés, Lista
 
@@ -161,7 +161,7 @@ Az `options` exportálási folyamatok tulajdonsága támogatja a választható l
 
 Futtassa [az az deployment group create parancsokat][az-deployment-group-create] egy *exportPipeline* nevű erőforrás létrehozásához az alábbi példákban látható módon. Alapértelmezés szerint a példasablon az első lehetőséggel engedélyezi a rendszer által hozzárendelt identitást az ExportPipeline erőforrásban. 
 
-A második lehetőséggel meg lehet adni az erőforrásnak egy felhasználó által hozzárendelt identitást. (A felhasználó által hozzárendelt identitás létrehozása nem látható.)
+A második lehetőséggel meg lehet adni az erőforrásnak egy felhasználó által hozzárendelt identitást. (A felhasználó által hozzárendelt identitás létrehozása nem jelenik meg.)
 
 Bármelyik lehetőséget is választja, a sablon úgy konfigurálja az identitást, hogy hozzáférjen az SAS-jogkivonathoz az exportálási kulcstartóban. 
 
@@ -265,7 +265,7 @@ IMPORT_RES_ID=$(az deployment group show \
 
 ## <a name="create-pipelinerun-for-export-with-resource-manager"></a>Create PipelineRun for export with Resource Manager 
 
-Hozzon létre egy PipelineRun erőforrást a forrásként szolgáló tároló-beállításjegyzékhez Azure Resource Manager sablon üzembe helyezési folyamatával. Ez az erőforrás futtatja a korábban létrehozott ExportPipeline erőforrást, és blobként exportálja a megadott munkatermékeket a tároló-beállításjegyzékből a forrás tárfiókba.
+Hozzon létre egy PipelineRun erőforrást a forrásként szolgáló tárolójegyzékhez a Azure Resource Manager üzembe helyezési folyamatával. Ez az erőforrás futtatja a korábban létrehozott ExportPipeline erőforrást, és blobként exportálja a megadott munkatermékeket a tároló-beállításjegyzékből a forrás tárfiókba.
 
 Másolja a PipelineRun Resource Manager [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) egy helyi mappába.
 
@@ -346,7 +346,7 @@ Adja meg a következő paraméterértékeket a `azuredeploy.parameters.json` fá
 |registryName (beállításjegyzék neve)     | A céltároló regisztrációs adatbázisának neve      |
 |pipelineRunName     |  A futtatáshoz választott név       |
 |pipelineResourceId     |  Az importálási folyamat erőforrás-azonosítója.<br/>Például: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
-|sourceName (forrásnév)     |  A tárfiókban exportált összetevők (például *myblob)* meglévő blobneve
+|sourceName (forrásnév)     |  A tárfiókban lévő exportált összetevők (például *myblob)* meglévő blobneve
 
 Ha a PipelineRun erőforrást azonos tulajdonságokkal újraalkotja, a [forceUpdateTag](#redeploy-pipelinerun-resource) tulajdonságot is használnia kell.
 
@@ -376,7 +376,7 @@ Ha az üzembe helyezés sikeresen befejeződött, ellenőrizze az összetevők i
 az acr repository list --name <target-registry-name>
 ```
 
-## <a name="redeploy-pipelinerun-resource"></a>Folyamat ismételt üzembeásaErőforrás újratelepítése
+## <a name="redeploy-pipelinerun-resource"></a>Folyamat ismételt üzembeásaErőforrás újrafuttatása
 
 Ha a PipelineRun erőforrást azonos tulajdonságokkal újraalkotja, akkor a **forceUpdateTag tulajdonságot kell** használnia. Ez a tulajdonság azt jelzi, hogy a PipelineRun erőforrást akkor is újra létre kell hozni, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal eltérő, amikor újra üzembe lép a PipelineRun erőforrás. Az alábbi példa újra létrehoz egy PipelineRun for export adatokat. Az aktuális dátum/idő érték a forceUpdateTag beállítására használható, ezzel biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
 
@@ -395,7 +395,7 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>Folyamaterőforrások törlése
 
-Az alábbi példaparancsok az [az resource delete][az-resource-delete] paranccsal törlik a cikkben létrehozott folyamaterőforrásokat. Az erőforrás-adatok korábban környezeti változókban voltak tárolva.
+Az alábbi példaparancsok az [az resource delete][az-resource-delete] parancsot használják a cikkben létrehozott folyamaterőforrások törléséhez. Az erőforrás-adatok korábban környezeti változókban voltak tárolva.
 
 ```
 # Delete export resources
@@ -428,11 +428,11 @@ az resource delete \
   * Előfordulhat, hogy a folyamat futtatása nem fejeződött be. Az exportálási vagy importálási futtatás némi időt is el fog venni. 
   * Egyéb folyamatokkal kapcsolatos problémák [](../azure-resource-manager/templates/deployment-history.md) esetén adja meg az exportálási futtatás vagy az importálási futtatás üzembe helyezési korrelációs azonosítóját a Azure Container Registry csapat számára.
 * **Problémák a kép fizikai elkülönített környezetben való lekért lehúzása esetén**
-  * Ha külső rétegekkel kapcsolatos hibákat lát, vagy megkísérli feloldani a mcr.microsoft.com amikor fizikailag elkülönített környezetben kísérel meg le egy képet, a rendszerkép jegyzékfájlja valószínűleg nem terjeszthető rétegekkel rendelkezik. A fizikailag elkülönített környezet természetéből adódóan ezek a lemezképek gyakran nem lesznek leküldve. Erről meggyőződhet, ha ellenőrzi a rendszerkép jegyzékfájlját, hogy vannak-e külső regisztrációs adatokra mutató hivatkozások. Ebben az esetben le kell helyeznie a nem terjeszthető rétegeket a nyilvános felhőbeli ACR-be, mielőtt üzembe helyez egy exportálási folyamatfuttatást a rendszerképhez. Ehhez a nem terjeszthető rétegek beállításjegyzékbe való leküldését Hogyan tekintse [meg.](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+  * Ha külső rétegekkel kapcsolatos hibákat lát, vagy megkísérli feloldani a mcr.microsoft.com amikor fizikailag elkülönített környezetben kísérel meg le egy képet, a rendszerkép jegyzékfájlja valószínűleg nem terjeszthető rétegekkel rendelkezik. A fizikailag elkülönített környezet természetéből adódóan ezek a lemezképek gyakran nem lesznek leküldve. Erről meggyőződhet, ha ellenőrzi a rendszerkép jegyzékfájlját, hogy vannak-e külső regisztrációs adatokra mutató hivatkozások. Ebben az esetben le kell helyeznie a nem terjeszthető rétegeket a nyilvános felhőbeli ACR-be, mielőtt üzembe helyez egy exportálási folyamatfuttatást a rendszerképhez. Ehhez a nem terjeszthető rétegek beállításjegyzékbe való [leküldését Hogyan útmutatót.](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha egy tárolólemezképet egy nyilvános regisztrációs adatbázisból vagy egy másik privát regisztrációs adatbázisból importál egy Azure Container Registrybe, tekintse meg az [az acr import][az-acr-import] parancsreferenciát.
+Ha egy tárolólemezképet egy nyilvános regisztrációs adatbázisból vagy egy másik privát beállításjegyzékből importál egy Azure Container Registrybe, tekintse meg az [az acr import][az-acr-import] parancsreferenciát.
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

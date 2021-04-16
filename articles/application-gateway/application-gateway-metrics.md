@@ -1,108 +1,108 @@
 ---
-title: A Application Gateway metrikáinak Azure Monitor
-description: Tudnivalók a metrikák használatáról az Application Gateway teljesítményének figyeléséhez
+title: Azure Monitor metrikák a Application Gateway
+description: Ismerje meg, hogyan használhatja a metrikákat az Application Gateway teljesítményének figyelése érdekében
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: azhussai
+ms.openlocfilehash: 3baaf49cb3d1c8c5502d96974f9729d05996c75b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576108"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519885"
 ---
-# <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
+# <a name="metrics-for-application-gateway"></a>Metrikák Application Gateway
 
-A Application Gateway a metrikák nevű adatpontokat teszi közzé a Application Gateway és a háttérbeli példányok teljesítményének [Azure Monitoréhez](../azure-monitor/overview.md) . Ezek a mérőszámok az idősorozat-adatok rendezett készletében lévő numerikus értékek, amelyek egy adott időpontban írják le az Application Gateway bizonyos aspektusait. Ha a Application Gatewayon átáramló kérések, a rendszer a 60 másodperces intervallumban méri és továbbítja a metrikákat. Ha nincsenek átáramló kérelmek a Application Gatewayon, vagy egy metrika nem rendelkezik adatokkal, a rendszer nem jelenti a metrikát. További információ: [Azure monitor mérőszámok](../azure-monitor/essentials/data-platform-metrics.md).
+Application Gateway közzétesz metrikáknak nevezett [](../azure-monitor/overview.md) adatpontokat a Azure Monitor és háttérpéldányok teljesítményének Application Gateway érdekében. Ezek a metrikák idősorozat-adatok rendezett készletében numerikus értékek, amelyek egy adott időpontban írják le az Alkalmazásátjáró valamilyen aspektusát. Ha a kérelmek áthaladnak a Application Gateway, 60 másodperces időközönként méri és küldi el a metrikákat. Ha nincsenek a metrikákon áthaladó kérések Application Gateway vagy nincsenek metrikák adatai, a rendszer nem jelenti a metrikát. További információ: Azure Monitor [metrikák.](../azure-monitor/essentials/data-platform-metrics.md)
 
-## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Application Gateway v2 SKU által támogatott metrikák
+## <a name="metrics-supported-by-application-gateway-v2-sku"></a>A 2-es Application Gateway termékváltozat által támogatott metrikák
 
-### <a name="timing-metrics"></a>Időzítési mérőszámok
+### <a name="timing-metrics"></a>Időzítési metrikák
 
-Application Gateway számos beépített időzítési metrikát biztosít a kérelemhez és a válaszhoz, amelyek mindegyike ezredmásodpercben van kifejezve. 
+Application Gateway a kéréshez és a válaszhoz kapcsolódó számos beépített időzítési metrikát biztosít, amelyek mindegyikét ezredmásodpercben mérjük. 
 
-![A Application Gateway időzítési metrikáinak ábrája.](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Az ütemezési metrikák diagramja a Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.jpg)
 
 > [!NOTE]
 >
-> Ha a Application Gateway több figyelő is van, akkor a rendszer mindig a *figyelő* dimenzió alapján szűri a különböző késési metrikákat, hogy az értelmes következtetést kapjon.
+> Ha egynél több listener van a Application Gateway, akkor mindig szűrje a *Listener* dimenzió alapján, és hasonlítsa össze a különböző késési metrikákat, hogy értelmes dedokenciát kap.
 
-- **Háttérbeli kapcsolat ideje**
+- **Háttér-csatlakozás ideje**
 
-  A háttér-alkalmazással létesített kapcsolatok létrehozásának ideje. 
+  A háttéralkalmazással való kapcsolat kialakításával töltött idő. 
 
-  Ez magában foglalja a hálózati késést, valamint a háttér-kiszolgáló TCP-veremének az új kapcsolatok létrehozásához szükséges időt. A TLS esetében magában foglalja a kézfogással töltött időt is. 
+  Ez magában foglalja a hálózati késést, valamint a háttérkiszolgáló TCP-vermének az új kapcsolatok létesítése érdekében szükséges idejét. A TLS esetében magában foglalja a kézfogással töltött időt is. 
 
-- **Háttérbeli első bájt válaszideje**
+- **Háttér– első bájt válaszideja**
 
-  A háttér-kiszolgálóval létesített kapcsolat létrehozásának és a válasz fejlécének első bájtjának fogadása közötti időtartam. 
+  A háttérkiszolgálóval való kapcsolat létesítését és a válaszfejléc első bájtjának fogadását eltelő időintervallum. 
 
-  Ez megközelíti a háttérbeli *kapcsolódási idő* összegét, a kérés által a háttér eléréséhez szükséges időt a Application Gatewaytól, a háttérbeli alkalmazás által a válaszadáshoz szükséges időt (a kiszolgáló által a tartalom előállítására irányuló, esetleg beolvasott adatbázis-lekérdezéseket), valamint a válasz első bájtja által a háttérből való Application Gateway eléréséhez szükséges időt.
+  Ez a háttéralkalmazás kapcsolódási ideje, a háttéralkalmazás válaszideje (a tartalom létrehozásához szükséges idő, az adatbázis-lekérdezések beolvasása) és a válasz első bájtja által a háttéralkalmazástól a Application Gateway eléréséhez szükséges idő összege, a háttéralkalmazás által a válasz első bájtja által a háttérből való elolvasáshoz szükséges idő összege. Application Gateway
 
-- **Háttérbeli utolsó bájt válaszideje**
+- **Háttér–utolsó bájt válaszideja**
 
-  A háttér-kiszolgálóval létesített kapcsolat létesítése és a válasz törzse utolsó bájtjának fogadása között eltelt idő. 
+  A háttérkiszolgálóval létesített kapcsolat létrehozásának kezdete és a válasz törzsének utolsó bájtjának fogadása között eltelt idő. 
 
   Ez nagyjából a *háttérrendszer első bájtjának válaszideje* és az adatátviteli idő összegét teszi ki (ez a szám nagy mértékben változhat a kért objektumok mérete és a kiszolgálói hálózat késésének függvényében).
 
 - **Application Gateway – teljes idő**
 
-  A kérelem fogadásához, feldolgozásához és az elküldött válaszhoz szükséges átlagos idő. 
+  A kérések bekérésének és feldolgozásának átlagos ideje, valamint a válasz elküldését. 
 
-  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje*, a Application Gateway által az összes válasz és az *ügyfél RTT* elküldéséhez szükséges idő.
+  Ez az az időköz, amely Application Gateway http-kérés első bájtja és az utolsó válasz bájt az ügyfélnek való elküldését között eltelt idő között. Ez magában foglalja a Application Gateway által lekért feldolgozási időt, a háttéralkalmazás utolsó bájtja válaszidet, a Application Gateway által az összes válasz elküldését és a Client *RTT-t*.
 
-- **Ügyfél-RTT**
+- **Ügyfél RTT**
 
-  Az ügyfelek és a Application Gateway közötti átlagos menetidő.
+  Az ügyfelek és az ügyfelek közötti átlagos Application Gateway.
 
 
 
-Ezek a metrikák határozzák meg, hogy a megfigyelt lassulás az ügyfél hálózata, a Application Gateway teljesítmény, a háttérrendszer és a háttérrendszer-kiszolgáló TCP stack-telítettsége, a háttérbeli alkalmazás teljesítménye vagy nagyméretű fájlméret miatt történjen-e.
+Ezek a metrikák annak meghatározására használhatók, hogy a megfigyelt lassulást az ügyfélhálózat, az Application Gateway-teljesítmény, a háttérhálózat és a háttérkiszolgáló TCP-veremtelítettség, a háttéralkalmazás teljesítménye vagy a nagy fájlméret határozza meg.
 
-Ha például van egy tüske a *háttérbeli első bájtban* , de a *háttérbeli kapcsolódási idő* trend stabil, akkor arra utalhat, hogy az Application Gateway a háttérbeli késést és a kapcsolat létesítéséhez szükséges időt eredményezi, és a csúcsot a háttérbeli alkalmazás válaszideje miatt megnövekszik. Másfelől, ha a *háttérbeli első bájtban* megadott tüske a *háttérbeli csatlakozási idő* egy megfelelő csúcsához van társítva, akkor azt is lekövetkeztetheti, hogy a Application Gateway és a háttérrendszer-kiszolgáló, illetve a háttérrendszer-kiszolgáló TCP-vereme közötti hálózat telített. 
+Ha például kiugróan magas  a háttérkiszolgáló első bájtja  válaszideje, de a háttérkapcsolati idő trendje stabil, akkor kikövetkeztetheti, hogy az Application Gateway és a háttér közötti késés, valamint a kapcsolat létesítésének ideje stabil, és a kiugrás a háttéralkalmazás válaszideje növekedésének köszönhető. Ha azonban a háttérkiszolgáló  első bájtjának válaszidejéhez tartozó kiugró érték a háttér-kapcsolódási idő megfelelő csúcsával van társítva, akkor az a következő lehet: a hálózat az Application Gateway és a háttérkiszolgáló között, vagy a háttérkiszolgáló TCP-vermének telített.  
 
-Ha egy tüske látható a *háttérbeli utolsó bájtban* , de a *háttérbeli első bájt válaszideje* stabil, akkor azt is lekövetkeztetheti, hogy a nyárs egy nagyobb fájl kérése miatt van.
+Ha a háttér  utolsó bájtja válaszideje  kiugróan magas, de a háttér háttér-rendszer első bájtja válaszideje stabil, akkor a kiugrás oka egy nagyobb fájl kérése lehet.
 
-Hasonlóképpen, ha az *Application Gateway teljes ideje* elérte a nyársat, de a *háttérbeli utolsó bájt válaszideje* stabil, akkor a teljesítmény szűk keresztmetszetének jele lehet a Application Gateway vagy a hálózatban az ügyfél és a Application Gateway közötti szűk keresztmetszet. Továbbá, ha az *ügyfél RTT* is rendelkezik, akkor azt jelzi, hogy a romlás az ügyfél és a Application Gateway közötti hálózat miatt van.
+Hasonlóképpen, ha az *Application Gateway* teljes  ideje kiugróan magas, de a háttérbeli utolsó bájt válaszideje stabil Application Gateway, akkor az a teljesítmény szűk keresztmetszetét vagy a hálózat szűk keresztmetszetét mutathatja az ügyfél és a Application Gateway. Emellett, ha az ügyfél *RTT-jének* is van egy megfelelő kiugró csúcsa, akkor azt jelzi, hogy a teljesítménycsökkenést az ügyfél és a kiszolgáló közötti hálózat Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrikák
 
-Application Gateway esetén a következő metrikák érhetők el:
+A Application Gateway következő metrikák érhetők el:
 
 - **Fogadott bájtok**
 
-   Az ügyfelektől érkező Application Gateway által fogadott bájtok száma
+   Az ügyfelektől fogadott Application Gateway bájtok száma
 
 - **Küldött bájtok**
 
-   A Application Gateway által az ügyfeleknek eljuttatott bájtok száma
+   A Application Gateway által az ügyfeleknek küldött bájtok száma
 
-- **Ügyfél TLS protokoll**
+- **Ügyfél TLS protokollja**
 
-   Azoknak a TLS-és nem TLS-kérelmeknek a száma, amelyek az ügyfél által kezdeményezett Application Gatewaykal létesített kapcsolatban állnak. A TLS protokoll terjesztésének megtekintéséhez szűrje a Dimension TLS protokollt.
+   Az ügyfél által kezdeményezett TLS- és nem TLS-kérelmek száma, amely kapcsolatot létesítet a Application Gateway. A TLS-protokoll terjesztésének megtekintéséhez szűrje a TLS-protokoll dimenziót.
 
 - **Aktuális kapacitásegységek**
 
-   A forgalom terheléselosztásához felhasznált kapacitásegységek száma. A kapacitás mértékegysége – számítási egység, állandó kapcsolatok és átviteli sebesség – három tényező. Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
+   A forgalom terheléselosztásához felhasznált kapacitásegységek száma. A kapacitásegységnek három tényezőt kell meghatároznia: a számítási egységet, az állandó kapcsolatokat és az átviteli sebességet. Minden kapacitásegység legalább 1 számítási egységből vagy 2500 állandó kapcsolatból vagy 2,22 Mbps átviteli sebességből áll.
 
 - **Aktuális számítási egységek**
 
-   A felhasznált processzor kapacitásának száma. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-újraírási számítások és a WAF-szabályok feldolgozása. 
+   A felhasznált processzorkapacitások száma. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-újraírási számítások és a WAF-szabályok feldolgozása. 
 
 - **Aktuális kapcsolatok**
 
-   Az ügyfelektől a Application Gatewayig aktív egyidejű kapcsolatok teljes száma
+   Az ügyfelek és a Application Gateway
    
 - **Becsült számlázott kapacitásegységek**
 
-  A v2 termékváltozat esetében az árképzési modell alapjául a felhasználás szolgál. A kapacitásegységek a fix költség mellett felszámított felhasználáson alapuló költségeket mérik. A *becsült számlázott kapacitási egységek* azt a kapacitási egységeket jelzik, amelyek használatával a számlázás becsült. Ennek kiszámítása az *aktuális kapacitásegységek* (a forgalom terheléselosztásához szükséges kapacitásegységek) és a *fix számlázandó kapacitásegységek* (a minimálisan biztosított kapacitásegységek) közül a nagyobb érték alapján történik.
+  A v2 termékváltozat esetében az árképzési modell alapjául a felhasználás szolgál. A kapacitásegységek a fix költség mellett felszámított felhasználáson alapuló költségeket mérik. *A becsült számlázható kapacitásegységek* azt jelzik, hogy hány kapacitásegységet használ a számlázás. Ennek kiszámítása az *aktuális kapacitásegységek* (a forgalom terheléselosztásához szükséges kapacitásegységek) és a *fix számlázandó kapacitásegységek* (a minimálisan biztosított kapacitásegységek) közül a nagyobb érték alapján történik.
 
 - **Sikertelen kérelmek**
 
-  A Application Gateway által a 5xx kiszolgálói hibakódokkal kiszolgált kérelmek száma. Ebbe beletartozik a Application Gateway generált 5xx-kódok, valamint a háttérből létrehozott 5xx-kódok is. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+  Azon kérések száma, Application Gateway 5xx kiszolgálói hibakódokat tartalmaztak. Ez magában foglalja az alkalmazásból létrehozott 5xx Application Gateway a háttérből generált 5xx kódokat is. A kérések száma tovább szűrhető úgy, hogy az egyes/adott háttérkészlet-http beállításkombinációk számát mutassa.
    
 - **Fix számlázandó kapacitásegységek**
 
@@ -110,47 +110,47 @@ Application Gateway esetén a következő metrikák érhetők el:
    
  - **Új kapcsolatok másodpercenként**
 
-   Az ügyfelek és a Application Gateway közötti új TCP-kapcsolatok átlagos száma másodpercenként, a háttérbeli tagoktól a Application Gateway.
+   Az ügyfelek és a Application Gateway és a Application Gateway közötti új TCP-kapcsolatok másodpercenkénti átlagos száma.
 
 
 - **Válasz állapota**
 
-   Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
+   A http-válasz állapota, amelyet a Application Gateway. A válasz állapotkód-eloszlása tovább kategorizálható úgy, hogy a 2xx, 3xx, 4xx és 5xx kategóriákba tartozó válaszokat mutassa.
 
 - **Átviteli sebesség**
 
-   A Application Gateway által kiszolgált bájtok másodpercenkénti száma
+   A másodpercenként kiszolgált Application Gateway bájtok száma
 
-- **Kérelmek összesen**
+- **Összes kérelem**
 
-   A Application Gateway által kiszolgált sikeres kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+   A sikeresen kiszolgált Application Gateway száma. A kérések száma tovább szűrhető úgy, hogy az egyes/adott háttérkészlet-http beállításkombinációk számát mutassa.
 
-### <a name="backend-metrics"></a>Háttérbeli metrikák
+### <a name="backend-metrics"></a>Háttérmetrikák
 
-Application Gateway esetén a következő metrikák érhetők el:
+A Application Gateway következő metrikák érhetők el:
 
-- **Háttérbeli válasz állapota**
+- **Háttér-válasz állapota**
 
-  A háttérrendszer által visszaadott HTTP-válasz állapot-kódok száma. Ez nem tartalmazza a Application Gateway által létrehozott válasz-kódokat. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
+  A háttérbeliek által visszaadott HTTP-válasz állapotkódok száma. Ez nem tartalmazza az alkalmazás által létrehozott Application Gateway. A válasz állapotkód-eloszlása tovább kategorizálható úgy, hogy a 2xx, 3xx, 4xx és 5xx kategóriákba tartozó válaszokat mutassa.
 
 - **Kifogástalan állapotú gazdagépek száma**
 
-  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készletben lévő kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
+  Az állapot-mintavétel által kifogástalan állapotúként meghatározott háttér-háttérítők száma. A megfelelő állapotú gazdagépek számának megjelenítése egy adott háttérkészletben háttérkészletenként szűrhető.
 
 - **Nem kifogástalan állapotú gazdagépek száma**
 
-  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy adott háttérbeli készletben lévő nem kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
+  Az állapotfigyelő által nem megfelelőnek meghatározott háttér-háttérítők száma. A nem megfelelő gazdagépek számát egy adott háttérkészletben háttérkészletenként szűrheti.
   
-- **Percenkénti kérelmek száma kifogástalan állapotú gazdagépen**
+- **Kérések percenként kifogástalan állapotú gazdagépenként**
 
-  Egy percen belül a háttérbeli készletben lévő minden kifogástalan tag által fogadott kérelmek átlagos száma. A háttér-készletet a *Háttérkészletek háttérkészletek* -dimenzió használatával kell megadnia.  
+  A megfelelő állapotú tag által egy háttérkészletben fogadott kérelmek átlagos száma egy percen belül. A háttérkészletet a *BackendPool HttpSettings* dimenzió használatával kell megadnia.  
   
 
-## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU által támogatott metrikák
+## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Az 1-es Application Gateway termékváltozat által támogatott metrikák
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrikák
 
-Application Gateway esetén a következő metrikák érhetők el:
+A Application Gateway következő metrikák érhetők el:
 
 - **Processzor kihasználtsága**
 
@@ -158,87 +158,87 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 - **Aktuális kapcsolatok**
 
-  Application Gatewaysal létesített aktuális kapcsolatok száma
+  A meglévő kapcsolatokkal létrehozott Application Gateway
 
 - **Sikertelen kérelmek**
 
-  A kapcsolódási problémák miatt sikertelen kérelmek száma. Ez a szám olyan kérelmeket tartalmaz, amelyek sikertelenek voltak, mert túllépte a "kérés időkorlátja" HTTP-beállítást, és az Application Gateway és a háttér közötti kapcsolódási problémák miatt sikertelen kérelmeket. Ez a szám nem tartalmaz olyan hibát, amely miatt nem érhető el kifogástalan állapotú háttér. a 4xx és a 5xx érkező válaszok nem tekintendők ennek a mérőszámnak a részeként.
+  A csatlakozási problémák miatt meghiúsult kérelmek száma. Ez a szám magában foglalja azokat a kérelmeket, amelyek meghiúsultak a "Kérés időkorrelációja" HTTP-beállítás túllépése miatt, valamint az Application Gateway és a háttérkiszolgáló közötti csatlakozási problémák miatt meghiúsult kérések. Ez a szám nem tartalmazza az olyan hibákat, amelyek nem állnak rendelkezésre kifogástalan állapotú háttérből. A háttérből származó 4xx és 5xx típusú válaszok szintén nem számítanak ennek a metrikának a részeként.
 
 - **Válasz állapota**
 
-  Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
+  A http-válasz állapotát a Application Gateway. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok 2xx, 3xx, 4xx és 5xx kategóriákban való megjelenítése érdekében.
 
 - **Átviteli sebesség**
 
-  A Application Gateway által kiszolgált bájtok másodpercenkénti száma
+  A másodpercenként kiszolgált Application Gateway bájtok száma
 
-- **Kérelmek összesen**
+- **Összes kérelem**
 
-  A Application Gateway által kiszolgált sikeres kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+  A sikeresen kiszolgált Application Gateway száma. A kérések száma tovább szűrhető úgy, hogy az egyes/adott háttérkészlet-http beállításkombinációk számát mutassa.
 
-- **Webalkalmazási tűzfal letiltott kérelmek száma**
-- **Webalkalmazási tűzfal letiltott kérelmek eloszlása**
-- **Webalkalmazási tűzfal teljes szabályának eloszlása**
+- **Web Application Firewall kérelmek száma**
+- **Web Application Firewall kérelmek eloszlása**
+- **Web Application Firewall szabályeloszlás teljes száma**
 
-### <a name="backend-metrics"></a>Háttérbeli metrikák
+### <a name="backend-metrics"></a>Háttérmetrikák
 
-Application Gateway esetén a következő metrikák érhetők el:
+A Application Gateway következő metrikák érhetők el:
 
 - **Kifogástalan állapotú gazdagépek száma**
 
-  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készletben lévő kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
+  Az állapot-mintavétel által kifogástalan állapotúként meghatározott háttér-háttérítők száma. A megfelelő állapotú gazdagépek számának megjelenítése egy adott háttérkészletben háttérkészletenként szűrhető.
 
 - **Nem kifogástalan állapotú gazdagépek száma**
 
-  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy adott háttérbeli készletben lévő nem kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
+  Az állapotfigyelő által nem megfelelőnek meghatározott háttér-háttérítők száma. A nem megfelelő gazdagépek számát egy adott háttérkészletben háttérkészletenként szűrheti.
 
 ## <a name="metrics-visualization"></a>Metrikák vizualizációja
 
-Tallózással keresse meg az Application Gatewayt a **figyelés** kiválasztása **mérőszámok** területen. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
+Tallózással keresse meg az Alkalmazásátjárót, és **a Figyelés alatt válassza** a **Metrikák lehetőséget.** Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
-Az alábbi képen egy példa látható három mérőszámmal az elmúlt 30 percben:
+Az alábbi képen egy példa látható, amely három metrikát mutat be az elmúlt 30 percre:
 
-:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Metrika nézet." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
+:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Metrikanézet." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-A metrikák aktuális listájának megjelenítéséhez tekintse meg a [támogatott metrikák a Azure Monitorkal](../azure-monitor/essentials/metrics-supported.md)című témakört.
+A metrikák aktuális listáját a Támogatott metrikák a [Azure Monitor.](../azure-monitor/essentials/metrics-supported.md)
 
-### <a name="alert-rules-on-metrics"></a>Riasztási szabályok a metrikák esetében
+### <a name="alert-rules-on-metrics"></a>Metrikák riasztási szabályai
 
-A riasztási szabályokat az erőforrás metrikái alapján indíthatja el. A riasztások például meghívhatnak egy webhookot vagy e-mailt a rendszergazdának, ha az Application Gateway átviteli sebessége meghaladja a következőt, vagy a küszöbértéket egy adott időszakra vonatkozóan.
+Az erőforrások metrika alapján riasztási szabályokat is elindíthat. A riasztások például hívhatnak egy webhookot, vagy e-mailben értesítheti a rendszergazdát, ha az Application Gateway átviteli sebességének átviteli sebessége egy adott időtartam alatt vagy felett van.
 
-Az alábbi példa végigvezeti egy olyan riasztási szabály létrehozásán, amely e-mailt küld egy rendszergazdának az átviteli sebesség megsértése után:
+Az alábbi példa végigvezeti egy riasztási szabály létrehozásának folyamatán, amely e-mailt küld egy rendszergazdának, miután az átviteli sebesség túllépte a küszöbértéket:
 
-1. a **szabály hozzáadása** lap megnyitásához válassza a **metrika hozzáadása riasztás** elemet. Ezt a lapot a metrikák lapról is elérheti.
+1. válassza **a Metrikariasztás** hozzáadása lehetőséget a **Szabály hozzáadása lap megnyitásához.** Ezt az oldalt a metrikák oldalról is elérheti.
 
-   !["Metrikai riasztás hozzáadása" gomb][6]
+   !["Metrikariasztás hozzáadása" gomb][6]
 
-2. A **szabály hozzáadása** lapon töltse ki a nevet, a feltételt és az értesítési szakaszt, majd kattintson **az OK gombra**.
+2. A Szabály **hozzáadása lapon** adja meg a nevet, a feltételt és az értesítési szakaszt, majd kattintson az **OK gombra.**
 
-   * A **feltétel** -választóban válasszon ki egyet a következő négy érték közül: **nagyobb**, mint, **nagyobb vagy egyenlő**, **kisebb**, mint, vagy **kisebb vagy egyenlő**.
+   * A **Feltételválasztóban** válasszon egyet a következő négy érték közül: **Nagyobb,** mint **,** Nagyobb vagy egyenlő, **Kisebb,** mint , Vagy Kisebb **vagy egyenlő,** mint .
 
-   * Az **időszak** -választóban válasszon ki egy pontot öt perc és hat óra között.
+   * Az **Időszakválasztóban** válasszon ki egy időszakot öt perctől 6 óráig.
 
-   * Ha az **e-mail-tulajdonosok, a közreműködők és az olvasók** lehetőséget választja, az e-mailek az adott erőforráshoz hozzáférő felhasználók alapján dinamikusak lehetnek. Ellenkező esetben a **további rendszergazdai e-mailek (ek)** mezőben megadhatja a felhasználók vesszővel elválasztott listáját.
+   * Ha a **Tulajdonos, közreműködők** és olvasók e-mail küldése lehetőséget választja, az e-mail dinamikusan használhatja az adott erőforráshoz hozzáféréssel felfelhasználókat. Ellenkező esetben meg lehet adni a felhasználók vesszővel elválasztott listáját a További rendszergazdai **e-mail-címek mezőben.**
 
-   ![Szabály hozzáadása lap][7]
+   ![Szabály hozzáadása oldal][7]
 
-Ha a küszöbértéket megszegik, az alábbi képen láthatóhoz hasonló e-mail érkezik:
+Ha megsértik a küszöbértéket, a következő képen láthatóhoz hasonló e-mail érkezik:
 
-![Sérült küszöbértékre vonatkozó e-mail][8]
+![E-mail a küszöbérték túllépése esetén][8]
 
-A riasztások listája a metrikai riasztás létrehozása után jelenik meg. Áttekintést nyújt az összes riasztási szabályról.
+A metrikákra vonatkozó riasztások létrehozása után megjelenik a riasztások listája. Áttekintést nyújt az összes riasztási szabályról.
 
 ![Riasztások és szabályok listája][9]
 
-A riasztási értesítésekről további információt a [Riasztási értesítések fogadása](../azure-monitor/alerts/alerts-overview.md)című témakörben talál.
+További információ a riasztási értesítésekről: [Riasztási értesítések fogadása.](../azure-monitor/alerts/alerts-overview.md)
 
-Ha többet szeretne megtudni a webhookokról, és arról, hogyan használhatja őket riasztásokkal, látogasson el [a webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/alerts/alerts-webhooks.md)című témakörben.
+A webhookokkal és a riasztásokkal való használatukról további információért látogasson el a Configure [a webhook on an Azure metric alert (Webhook konfigurálása Azure-metrikák riasztásán) weblapra.](../azure-monitor/alerts/alerts-webhooks.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Számlálók és Eseménynaplók megjelenítése [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md)használatával.
-* [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blogbejegyzésben.
-* [Megtekintheti és elemezheti az Azure-beli tevékenységek naplóit Power bi és további](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzésekben.
+* Számláló- és eseménynaplók vizualizációja az [Azure Monitor használatával.](../azure-monitor/insights/azure-networking-analytics.md)
+* [Az Azure-tevékenységnapló vizualizációja egy Power BI](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blogbejegyzésben.
+* [Megtekintheti és elemezheti az Azure-tevékenységnaplókat Power BI blogbejegyzésben.](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png

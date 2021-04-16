@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a webMethods Integration Suite szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és webmetódusok integrációs csomagja között.
+title: 'Oktatóanyag: Azure Active Directory webMethods-integráció Integration Suite | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a webMethods Integration Suite.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,238 +9,196 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 04/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 52ad0d0356f4d309db89db6527d7fd2d7dec253d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3eaac19ffbf3fd93311073ff69e28532b1c15e6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92636816"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520054"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Oktatóanyag: Azure Active Directory integráció a webMethods Integration Suite szolgáltatással
+# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Oktatóanyag: Azure Active Directory webMethods-integráció Integration Suite
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálható a webMethods Integration Suite Azure Active Directory (Azure AD) szolgáltatással.
-A webMethods Integration Suite és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a webMethods-Integration Suite a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-Integration Suite webMethods-et, a következő funkciókat használhatja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a webMethods Integration Suite-hoz.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a webMethods Integration Suite-ba (egyszeri bejelentkezés) az Azure AD-fiókkal.
+* Az Azure AD vezérlése, aki hozzáfér a webMethods Integration Suite.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a webMethods szolgáltatásba Integration Suite Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció webMethods Integration Suite-nal való konfigurálásához a következő elemek szükségesek:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
-* webMethods Integration Suite egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* A webMethods Integration Suite egyszeri bejelentkezést (SSO) engedélyező előfizetést.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja és teszteli tesztkörnyezetben.
 
-* a webMethods Integration Suite az **SP** és a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja
+* A webMethods Integration Suite **támogatja** az sp és az **idP által** kezdeményezett SSO-t.
 
-* a webMethods Integration Suite támogatja **az igény** szerinti felhasználói üzembe helyezést
+* A webMethods Integration Suite **a felhasználóátépítést** is támogatja.
 
-## <a name="adding-webmethods-integration-suite-from-the-gallery"></a>WebMethods Integration Suite hozzáadása a katalógusból
+## <a name="add-webmethods-integration-suite-from-the-gallery"></a>WebMethods-Integration Suite hozzáadása a katalógusból
 
-A webMethods Integration Suite Azure AD-integrációjának konfigurálásához hozzá kell adnia a webMethods Integration Suite-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A webMethods Integration Suite Azure AD-be való integrálásának konfigurálához hozzá kell adni a webMethods Integration Suite-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A webmetódusok integrációs csomagja a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a Vállalati **alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a **webMethods Integration Suite** a keresőmezőbe.
+1. Válassza **a webMethods Integration Suite** az eredmények panelén, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-webmethods-integration-suite"></a>Az Azure AD SSO konfigurálása és tesztelése webMethods Integration Suite
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a webMethods Integration Suite egy **B.Simon** nevű tesztfelhasználóval. Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a webMethods szolgáltatásban található kapcsolódó Integration Suite.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Ha az Azure AD SSO-t webMethods Integration Suite konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használják ezt a funkciót.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[Konfigurálja a webMethods Integration Suite SSO-t](#configure-webmethods-integration-suite-sso)** – az egyszeri bejelentkezési beállítások alkalmazásoldali konfigurálásához.
+    1. **[WebMethods](#create-webmethods-integration-suite-test-user)** Integration Suite tesztfelhasználó számára – hogy a B.Simon megfelelője legyen a webMethods Integration Suite, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-4. A keresőmezőbe írja be a következőt: **webMethods Integration Suite**, válassza a **webMethods Integration Suite** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portal **webMethods** Integration Suite alkalmazásintegráció oldalán keresse meg  a Kezelés szakaszt, és válassza az egyszeri **bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer kiválasztása lapon** válassza az **SAML lehetőséget.**
+1. A Set **up single sign-on with SAML** (Egyszeri bejelentkezés beállítása SAML-sel) oldalon kattintson az **SamL-konfiguráció** alapszintű konfigurációja ceruza ikonjára a beállítások szerkesztéséhez.
 
-     ![webMethods Integration Suite az eredmények listájában](common/search-new-app.png)
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+4. Ha a **webMethods integrációs** felhőt () az SamL-alapkonfiguráció szakaszban szeretné konfigurálni, akkor ha az alkalmazást **idP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket: 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a webMethods Integration Suite-nal a **Britta Simon** nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a webMethods Integration Suite-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+    a. Az Azonosító **szövegmezőbe** írjon be egy URL-címet az alábbi minták egyikével:
 
-Az Azure AD egyszeri bejelentkezés webMethods Integration Suite-nal történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+    | Azonosító URL-címe |
+    |----------------------------------------------|
+    | `<SUBDOMAIN>.webmethodscloud.com`|
+    | `<SUBDOMAIN>.webmethodscloud.eu` |
+    | `<SUBDOMAIN>.webmethodscloud.de` |
+    |
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Webmetódusok integrációs csomagjának egyszeri bejelentkezésének beállítása](#configure-webmethods-integration-suite-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[WebMethods Integration Suite-tesztkörnyezet létrehozása](#create-webmethods-integration-suite-test-user)** – ha a Britta Simon-t a webMethods Integration Suite-ban szeretné létrehozni, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+    b. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    | Válasz URL-cím |
+    |----------------------------------------------|
+    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse`|
+    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse`|
+    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse`|
+    |
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+    c. Kattintson **a További URL-címek beállítása lehetőségre,** és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
 
-Ha az Azure AD egyszeri bejelentkezést a webMethods Integration Suite szolgáltatással szeretné konfigurálni, hajtsa végre a következő lépéseket:
+    d. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
 
-1. A [Azure Portal](https://portal.azure.com/) **Webmódszerek integrációs csomagjának** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. A **Webmetódusok integrációs felhő** konfigurálásához az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
-
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
-
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    - `<SUBDOMAIN>.webmethodscloud.com`
-    - `<SUBDOMAIN>.webmethodscloud.eu`
-    - `<SUBDOMAIN>.webmethodscloud.de`
-
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-
-    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse`
-    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse`
-    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse`
-
-    c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
-
-    d. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest`
-    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest`
-    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest`
+    | Bejelentkezési URL-cím |
+    |--------------------------------|
+    |`https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest`|
+    |`https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest`|
+    |`https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest`|
+    |
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [webMethods Integration Suite ügyfél-támogatási csapatával](https://empower.softwareag.com/) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címével. Ezeket az értékeket a [webMethods Integration Suite az](https://empower.softwareag.com/) ügyféltámogatási csapattól. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-5. A **Webmetódusok API-felhő** konfigurálásához az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+5. Ha a **webMethods API Cloudot** szeretné konfigurálni az **SamL-konfiguráció** alapszintű szakaszában, akkor ha az alkalmazást **idP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
+    a. Az Azonosító **szövegmezőbe** írjon be egy URL-címet az alábbi minták egyikével:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    | Azonosító URL-címe |
+    |----------------------------------------------|
+    | `<SUBDOMAIN>.webmethodscloud.com`|
+    |`<SUBDOMAIN>.webmethodscloud.eu`|
+    | `<SUBDOMAIN>.webmethodscloud.de`|
+    |
 
-    - `<SUBDOMAIN>.webmethodscloud.com`
-    - `<SUBDOMAIN>.webmethodscloud.eu`
-    - `<SUBDOMAIN>.webmethodscloud.de`
+    b. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    | Válasz URL-cím |
+    |----------------------------------------------|
+    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso`|
+    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso`|
+    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso`|
+    |
 
-    - `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso`
-    - `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso`
-    - `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso`
+    c. Kattintson **a További URL-címek beállítása lehetőségre,** és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
 
-    c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
-
-    d. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    - `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>`
-    - `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>`
-    - `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    d. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
+    
+    | Bejelentkezési URL-cím |
+    |--------------------------------|
+    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>`|
+    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>`|
+    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>`|
+    |
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [webMethods Integration Suite ügyfél-támogatási csapatával](https://empower.softwareag.com/) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címével. Ezeket az értékeket a [webMethods Integration Suite az](https://empower.softwareag.com/) ügyféltámogatási csapattól. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. A **Set up Single Sign-On with SAML** (Egyszeri bejelentkezés beállítása SAML-tanúsítványsal) lapon, az **SAML signing Certificate (SAML-aláíró** tanúsítvány) szakaszban kattintson a **Download** (Letöltés) elemre az összevonási metaadatok **XML-fájljának** letöltéséhez a megadott beállításokból igény szerint, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/metadataxml.png)
 
-7. A **Webmetódusok integrációs csomagjának beállítása** szakaszban adja meg a megfelelő URL (eke) t a követelménynek megfelelően.
+7. A **WebMethods beállítása Integration Suite** igény szerint másolja a megfelelő URL-címet/URL-címeket.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-    c. Kijelentkezési URL-cím
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-webmethods-integration-suite-single-sign-on"></a>WebMethods Integration Suite – egyetlen Sign-On konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **webMethods Integration Suite** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal [webMethods Integration Suite támogatási csapatának](https://empower.softwareag.com/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a webMethods Integration Suite.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza a **webMethods Integration Suite.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör van kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+## <a name="configure-webmethods-integration-suite-sso"></a>WebMethods konfigurálása Integration Suite SSO-val
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+Az egyszeri bejelentkezés **webMethods** Integration Suite oldalán való konfigurálához el kell küldenie a letöltött összevonási metaadatok XML-ét és a megfelelő másolt **URL-címeket** a Azure Portal-ből a [webMethods Integration Suite támogatási csapatának.](https://empower.softwareag.com/) Ezt a beállítást úgy állítják be, hogy az SAML SSO-kapcsolat megfelelően legyen beállítva mindkét oldalon.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+### <a name="create-webmethods-integration-suite-test-user"></a>WebMethods létrehozása Integration Suite tesztfelhasználóhoz
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hozunk létre a webMethods Integration Suite. A webMethods Integration Suite támogatja az alapértelmezés szerint engedélyezett, felhasználóhoz való, időben való kiépítést. Ebben a szakaszban nem található műveletelem. Ha a felhasználó még nem létezik a webMethods Integration Suite, a hitelesítés után létrejön egy új.
 
-    ![Új felhasználó gomb](common/new-user.png)
+## <a name="test-sso"></a>SSO tesztelése 
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+#### <a name="sp-initiated"></a>Sp kezdeményezve:
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension nevet.**  
-    Például: BrittaSimon@contoso.com
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja a webMethods webhelyre, Integration Suite bejelentkezési URL-címet, ahol elindíthatja a bejelentkezési folyamatot.  
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+* Lépjen a webMethods Integration Suite a bejelentkezési URL-cím közvetlen útjára, és onnan indítsa el a bejelentkezési folyamatot.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+#### <a name="idp-initiated"></a>Az internetszolgáltató által kezdeményezett:
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+* Kattintson az **Alkalmazás tesztelése a** Azure Portal lehetőségre, és automatikusan be kell jelentkezve lennie a webMethods Integration Suite, amelyhez beállította az SSO-t. 
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a webMethods Integration Suite elérésének biztosításával.
+A Microsoft Saját alkalmazások bármilyen módban tesztelheti az alkalmazást. Ha a Saját alkalmazások-ban a webMethods Integration Suite csempére kattint, akkor ha SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési oldalára a bejelentkezési folyamat kezdeményezésére, és ha idP módban van konfigurálva, automatikusan be kell jelentkeznie a webMethods Integration Suite-be, amelyhez beállította az SSO-t. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **webmetódusok integrációs csomag** elemet.
+## <a name="next-steps"></a>Következő lépések
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **Webmetódusok integrációs csomag** elemet.
-
-    ![A webmetódusok integrációs csomagja hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-webmethods-integration-suite-test-user"></a>WebMethods Integration Suite-tesztkörnyezet létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a webMethods Integration Suite-ban. a webMethods Integration Suite támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a webMethods Integration Suite-ban, akkor a hitelesítés után létrejön egy újat.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a webmetódusok integrációs csomag csempére kattint, automatikusan be kell jelentkeznie a webMethods Integration Suite-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>További források
-
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A webMethods Integration Suite kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

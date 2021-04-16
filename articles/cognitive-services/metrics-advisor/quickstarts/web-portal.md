@@ -1,159 +1,161 @@
 ---
-title: 'Rövid útmutató: mérőszámok Advisor webes portál'
+title: 'Rövid útmutató: Metrics Advisor portál használata'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kezdheti el a metrikai tanácsadó webes portál használatát.
+description: Ismerje meg, hogyan kezdheti el használni Metrics Advisor webes portált.
 services: cognitive-services
 author: mrbullwinkle
+ms.author: mbullwin
 manager: nitinme
+ms.date: 09/30/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
-ms.topic: quickstart
-ms.date: 09/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- mode-portal
+ms.openlocfilehash: aaeaf92df140019db32c326199c9614fd8f5ae37
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432298"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531810"
 ---
-# <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rövid útmutató: az első metrika monitorozása a webes portál használatával
+# <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rövid útmutató: Az első metrika figyelése a webportál használatával
 
-Metrikai Advisor-példány kiépítésekor az API-k és a webalapú munkaterület használatával dolgozhat a szolgáltatással. A webalapú munkaterület egyszerűen használható a szolgáltatás használatának gyors megkezdéséhez. Emellett vizualizációs módszert is biztosít a beállítások konfigurálásához, a modell testreszabásához és a kiváltó okok elemzéséhez. 
+Egy új Metrics Advisor kiépítésekor az API-k és a webalapú munkaterület használatával dolgozhat a szolgáltatással. A webalapú munkaterület egyszerűen használható a szolgáltatás gyors elkezdése érdekében. Vizuálisan is lehetővé teszi a beállítások konfigurálását, a modell testreszabását és a kiváltó ok elemzését. 
 
-* A metrikus adatok előkészítése
-* A metrikák és a vizualizációk megtekintése
+* A metrikaadatokboard
+* Metrikák és vizualizációk megtekintése
 * Észlelési konfigurációk finomhangolása
-* A diagnosztikai ismeretek megismerése
-* Anomália-riasztások létrehozása és előfizetése
+* Ismerkedés a diagnosztikai elemzésekkel
+* Anomáliariasztás létrehozása és feliratkozás a riasztásra
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" hozzon létre egy mérőszámok Advisor "  target="_blank"> -erőforrást </a> a Azure Portal a metrikai tanácsadó példány üzembe helyezéséhez.  
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Metrics Advisor-erőforrást, és hozzon létre egy Metrics Advisor-erőforrást a Azure Portal a <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" "  target="_blank"> Metrics Advisor üzembe </a> helyezéséhez.  
 
     
 > [!TIP]
-> * A metrikai tanácsadói erőforrás üzembe helyezése 10 – 30 percet is igénybe vehet. A sikeres üzembe helyezése után kattintson **az erőforrás keresése** gombra.
-> * Ha a REST APIt szeretné használni a szolgáltatással való kommunikációhoz, szüksége lesz a létrehozott erőforrás kulcsára és végpontra. Ezeket a létrehozott erőforrás  **kulcsok és végpontok** lapján tekintheti meg.
+> * Az erőforrás üzembe helyezése 10–30 Metrics Advisor is eltarthat. A **sikeres üzembe helyezés után kattintson** az Erőforrás ugrás gombra.
+> * Ha a szolgáltatáshoz a REST API szeretné használni, szüksége lesz a létrehozott erőforrás kulcsára és végpontjára. Ezeket a létrehozott erőforrás Kulcsok  **és végpontok** lapján találhatja meg.
 
-Ez a dokumentum egy SQL Database példát használ az első figyelő létrehozásához.
+Ez a dokumentum SQL Database az első figyelő létrehozásához.
 
 ## <a name="sign-in-to-your-workspace"></a>Bejelentkezés a munkaterületre
 
-Miután létrehozta az erőforrást, jelentkezzen be a [metrika Advisor portálra](https://go.microsoft.com/fwlink/?linkid=2143774). Válassza ki a munkaterületet a metrikák figyelésének megkezdéséhez. 
+Az erőforrás létrehozása után jelentkezzen be a Metrics Advisor [portálra.](https://go.microsoft.com/fwlink/?linkid=2143774) Válassza ki a munkaterületet a metrikák monitorozásának elkezdése érdekében. 
  
-Jelenleg egy metrikai Advisor-erőforrást is létrehozhat az egyes elérhető régiókban. A metrikák tanácsadó portálon bármikor válthat munkaterületeket.
+Jelenleg minden elérhető régióban Metrics Advisor egy erőforrást. A portálon bármikor válthat Metrics Advisor munkaterületek között.
 
 
-## <a name="onboard-time-series-data"></a>Előkészítési idősoros adatsorok
+## <a name="onboard-time-series-data"></a>Idősorozat-adatok be- és berekesze
 
-A metrikák tanácsadója különböző adatforrások, például a SQL Database, az Azure Adatkezelő és az Azure Table Storage számára biztosít összekötőket. Az adatok összekapcsolásának lépései hasonlóak a különböző összekötők esetében, bár egyes konfigurációs paraméterek eltérőek lehetnek. Az egyes adatforrásokhoz szükséges paraméterekhez a [különböző forrásokból származó adatok összekapcsolását](../data-feeds-from-different-sources.md) ismertető témakörben talál további információt.
+Metrics Advisor összekötőket biztosít a különböző adatforrások, például a SQL Database, Azure Data Explorer és az Azure Table Storage. Az adatok csatlakoztatásának lépései hasonlóak a különböző összekötőkhöz, bár egyes konfigurációs paraméterek eltérőek lehetnek. Az [adatok különböző forrásokból való csatlakoztatását](../data-feeds-from-different-sources.md) és az egyes adatforrások kötelező paramétereit lásd: Csatlakozás különböző forrásokból.
 
-Ez a rövid útmutató egy SQL Database példát használ. Saját adatait is betöltheti, ugyanezeket a lépéseket követve.
+Ez a rövid útmutató SQL Database egy példát. Saját adatokat is be is tudni, ugyanezeket a lépéseket kell követnie.
 
-Első lépésként jelentkezzen be a metrikák tanácsadó munkaterületére a Active Directory-fiókjával. A kezdőlapon válassza ki az imént létrehozott **címtárat**, **előfizetést** és **munkaterületet** , majd kattintson az első **lépések** elemre. A munkaterhelés betöltésének főoldalát követően válassza az **adatcsatorna hozzáadása** lehetőséget a bal oldali menüben.
+Első lépésekként jelentkezzen be Metrics Advisor munkaterületére a Active Directory fiókjával. A kezdőlapon válassza ki az  előbb létrehozott **címtárat,**  előfizetést és munkaterületet, majd kattintson az Első lépések **elemre.** A számítási feladat főoldalának betöltése után válassza a bal oldali menü **Adatcsatorna** hozzáadása parancsát.
 
-### <a name="data-schema-requirements-and-configuration"></a>Az Adatséma követelményei és konfigurációja
+### <a name="data-schema-requirements-and-configuration"></a>Adatsémára vonatkozó követelmények és konfiguráció
 
 [!INCLUDE [data schema requirements](../includes/data-schema-requirements.md)]
 
-### <a name="configure-connection-settings"></a>Kapcsolatbeállítások konfigurálása
+### <a name="configure-connection-settings"></a>Kapcsolati beállítások konfigurálása
 
 > [!TIP]
-> A rendelkezésre álló paraméterek részleteiért lásd: [adatcsatornák hozzáadása](../how-tos/onboard-your-data.md) .
+> Az [elérhető paraméterekkel kapcsolatos](../how-tos/onboard-your-data.md) részletekért tekintse meg, hogyan adhat hozzá adatcsatornákat.
 
-Az adatcsatorna hozzáadásához csatlakozzon az idősoros adatforráshoz. Először válassza ki a következő paramétereket:
+Adja hozzá az adatcsatornát az idősorozat-adatforráshoz való csatlakozással. Először válassza ki a következő paramétereket:
 
-* **Forrás típusa**: az adatforrások típusa, ahol az idősorozat-adatait tárolják.
-* **Részletesség**: az idősoros adatokat követő adatpontok közötti intervallum, például évente, havonta, naponta. A legalacsonyabb intervallum testreszabása 60 másodperc.
-* Az **adatgyűjtés óta (UTC)**: az első időbélyeg betöltésének kezdési időpontja. 
+* **Forrás típusa:** Az idősorozat-adatokat tároló adatforrás típusa.
+* **Részletesség:** Az idősorozat-adatok egymást követő adatpontok közötti intervallum, például Éves, Havi, Napi. A legalacsonyabb támogatott időköz 60 másodperc.
+* **Adatok beszámítása (UTC) óta:** Az első időbélyeg beszámításának kezdési ideje. 
 
 
-Ezután adja **meg az adatforrás** hitelesítő adatait, valamint egy egyéni **lekérdezést**. A lekérdezés segítségével megadhatja a betöltendő és a szükséges sémába konvertált adatot.
+Ezután adja meg a **Kapcsolati sztringet** az adatforrás hitelesítő adataival, valamint egy egyéni **lekérdezést.** A lekérdezés a betöltött adatok megadására, majd a szükséges sémává konvertálására használható.
 
 [!INCLUDE [query requirements](../includes/query-requirements.md)]
 
 :::image type="content" source="../media/connection-settings.png" alt-text="Kapcsolati beállítások" lightbox="../media/connection-settings.png":::
 
 
-### <a name="verify-the-connection-and-load-the-data-schema"></a>A kapcsolatok ellenőrzése és az Adatséma betöltése
+### <a name="verify-the-connection-and-load-the-data-schema"></a>A kapcsolat ellenőrzése és az adatséma betöltése
 
-A kapcsolódási karakterlánc és a lekérdezési karakterlánc létrehozása után válassza a **hitelesítés és a séma lekérése** lehetőséget a kapcsolódás ellenőrzéséhez és a lekérdezés futtatásához, hogy az adatforrásból beolvassa az adatsémát. Általában eltarthat néhány másodpercig az adatforrás-kapcsolatoktól függően. Ha hiba lép fel ebben a lépésben, győződjön meg arról, hogy:
+A kapcsolati sztring és a  lekérdezési sztring létrehozása után válassza az Ellenőrzés és séma lekérdezve lehetőséget a kapcsolat ellenőrzéséhez, majd futtassa a lekérdezést az adatsémát az adatforrásból való lekért lekérdezéshez. Általában néhány másodpercet vesz igénybe az adatforrás-kapcsolattól függően. Ha ebben a lépésben hiba lép fel, ellenőrizze a következőt:
 
-1. A kapcsolatok karakterlánca és a lekérdezés helyes.
-2. A metrikai tanácsadó példánya képes csatlakozni az adatforráshoz, ha vannak tűzfalbeállítások.
+1. A kapcsolati sztring és a lekérdezés helyes.
+2. A Metrics Advisor-példány képes csatlakozni az adatforráshoz, ha vannak tűzfalbeállítások.
 
-### <a name="schema-configuration"></a>Séma konfigurációja
+### <a name="schema-configuration"></a>Sémakonfiguráció
 
-Ha az Adatséma betöltődik, és az alábbi módon jelenik meg, válassza ki a megfelelő mezőket.
+Miután az adatsémát betöltötte és az alábbihoz hasonló módon jelenik meg, válassza ki a megfelelő mezőket.
 
 
 |Kiválasztás  |Leírás  |Jegyzetek  |
 |---------|---------|---------|
-|**Időbélyeg**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia.       |
-|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
-|**dimenzió**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. A none vagy tetszőleges számú oszlopot kiválaszthatja dimenzióként. Megjegyzés: Ha nem karakterlánc típusú oszlopot választ dimenzióként, a dimenzió alábontása legyen óvatos. | Választható.        |
-|**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        |         |
+|**Időbélyeg**     | Az adatpont időbélyege. Ha nincs megadva, Metrics Advisor a rendszer az időbélyeget használja, amikor az adatpont be van adva. Minden adatcsatornához megadhat legalább egy oszlopot időbélyegként.        | Választható. A értéknek legalább egy oszlopot kell megadnia.       |
+|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatornához több mértéket is megadhat, de legalább egy oszlopot ki kell választani mértékként.        | Legalább egy oszlopot meg kell adni.        |
+|**dimenzió**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősort azonosít, például: ország, nyelv, bérlő. Dimenziókként egyetlen oszlopot vagy tetszőleges számú oszlopot is kiválaszthat. Megjegyzés: ha nem sztringoszlopot választ dimenzióként, legyen óvatos a dimenziórobbanással. | Választható.        |
+|**Figyelmen kívül hagyja**     | Hagyja figyelmen kívül a kijelölt oszlopot.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Séma konfigurációja" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Sémakonfiguráció" lightbox="../media/schema-configuration.png":::
 
-### <a name="automatic-roll-up-settings"></a>Automatikus összesítő beállítások
+### <a name="automatic-roll-up-settings"></a>Automatikus összesítési beállítások
 
 > [!IMPORTANT]
-> Ha engedélyezni szeretné a **kiváltó okok elemzését** és az egyéb diagnosztikai képességeket, konfigurálnia kell az "automatikus összesítő beállítás" beállítást. Ha engedélyezve van, az automatikus összesítő beállítások nem módosíthatók.
+> Ha engedélyezni szeretné a  kiváltó okokat elemző és egyéb diagnosztikai képességeket, konfigurálnia kell az automatikus összesítési beállítást. Ha engedélyezve van, az automatikus összesítési beállítások nem módosíthatók.
 
-A metrikai tanácsadó automatikusan végrehajtja az összesítést (SUM/MAX/MIN...) az egyes dimenziókban a betöltés során, majd létrehoz egy hierarchiát, amelyet a rendszer a legfelső szintű elemzéshez és más diagnosztikai funkciókhoz fog használni. További részletekért tekintse meg az [automatikus összesítő beállítások](../how-tos/onboard-your-data.md#automatic-roll-up-settings) című témakört.
+Metrics Advisor a betekintés során automatikusan összesítést (SUM/MAX/MIN...) hajthat végre az egyes dimenziókon, majd felépíthet egy hierarchiát, amelyet a rendszer a gyökéreset-elemzésekben és más diagnosztikai funkciókban fog használni. További [részletekért lásd:](../how-tos/onboard-your-data.md#automatic-roll-up-settings) Automatikus összesítési beállítások.
 
-Adja meg az adatcsatorna egyéni nevét, amely a munkaterületen fog megjelenni. Kattintson a **Submit (elküldés**) gombra. 
+Adjon egy egyéni nevet az adatcsatorna számára, amely megjelenik a munkaterületen. Kattintson a **Submit (Küldés) gombra.** 
 
 ## <a name="tune-detection-configuration"></a>Észlelési konfiguráció hangolása
 
-Az adatcsatorna hozzáadása után a metrikai tanácsadó megkísérli bevenni a megadott kezdő dátumból származó metrikai adatokat. Időbe telik az adatmennyiség teljes betöltése, és megtekintheti a betöltési állapotot az adatcsatorna oldal tetején lévő betöltési **folyamat** elemre kattintva. Az adatok betöltését követően a metrikák Advisor észleli az észlelést, és folytatja az új adatok forrásának figyelését.
+Az adatcsatorna hozzáadása után a Metrics Advisor megkíséreli a megadott kezdő dátumból származó metrikaadatokat. Az adatok teljes betáplált állapotának megtekintéséhez némi időt kell el kell végeznie, és az adatcsatorna oldalának tetején található **Ingestion progress** (Adatbesorolási folyamat) gombra kattintva tekintheti meg a betáplált adatok állapotát. Ha az adatok be lesznek edzve, Metrics Advisor észlelést alkalmaznak, és továbbra is figyelik az új adatok forrását.
 
-Az észlelés alkalmazása esetén kattintson az adatcsatorna listájában felsorolt mérőszámok egyikére, hogy megkeresse a **metrika részletes oldalát** : 
-- A jelen metrika alatt lévő összes idősorozat-szelet vizualizációinak megtekintése
-- A konfiguráció észlelésének frissítése a várt eredmények kielégítése érdekében
-- Értesítés beállítása az észlelt rendellenességekről
+Az észlelés alkalmazásakor kattintson az adatcsatornában felsorolt metrikák egyikére a Metrika **részletei lap megkeresése érdekében, hogy:** 
+- A metrika alatt található összes idősorozat-szelet vizualizációinak megtekintése
+- Frissítés észlelése a konfigurációban a várt eredményeknek megfelelően
+- Értesítés beállítása az észlelt anomáliákhoz
 
 :::image type="content" source="../media/metric-details.png" alt-text="Metrika részletei" lightbox="../media/metric-details.png":::
 
-## <a name="view-the-diagnostic-insights"></a>A diagnosztikai ismeretek megtekintése
+## <a name="view-the-diagnostic-insights"></a>A diagnosztikai elemzések megtekintése
 
-Az észlelési konfiguráció finomhangolása után az észlelt rendellenességeknek tükröznie kell az adatok tényleges rendellenességeit. A metrikai tanácsadó a többdimenziós metrikák elemzését végzi el, például a anomália-fürtözést, az incidensek korrelációját és a kiváltó okok elemzését. Ezekkel a szolgáltatásokkal elemezheti és diagnosztizálhatja az adatincidenseket az adataiban.
+Az észlelési konfiguráció finomhangolása után a talált anomáliáknak tükrözniük kell az adatok tényleges anomáliákat. Metrics Advisor többdimenziós metrikákon, például anomáliafürtözésen, incidenskorreláción és a kiváltó ok elemzésen végez elemzést. Ezekkel a funkciókkal elemezheti és diagnosztizálhatja az adatokban található incidenseket.
 
-A diagnosztikai megállapítások megtekintéséhez kattintson az idősorozat-vizualizációk piros pontokra, amelyek az észlelt rendellenességeket jelölik. Ekkor megjelenik egy ablak az incidensek elemzése oldalra mutató hivatkozással. 
+A diagnosztikai elemzések megtekintéséhez kattintson az észlelt anomáliákat ábrázoló idősorozat-vizualizációk piros pontjaira. Megjelenik egy ablak, amely egy incidenselemzési oldalra mutató hivatkozást is ad. 
 
 :::image type="content" source="../media/incident-link.png" alt-text="Incidens hivatkozása" lightbox="../media/incident-link.png":::
 
-Miután rákattintott a hivatkozásra, a rendszer az incidensek elemzése oldalra mutat, amely a megfelelő anomálián alapul, és a diagnosztikai elemzések egy rakásával foglalkozik. A fentiekben az incidensre vonatkozó statisztikai adatok, például a **Súlyosság**, a rendellenességek és az **érintett** **kezdési** és **befejezési idő** szerepel. 
+Miután a hivatkozásra kattintott, a rendszer az incidenselemzési oldalra fordítja, amely a megfelelő anomáliákat elemzi, és diagnosztikai elemzéseket is biztosít. Felül lesznek az incidensre vonatkozó statisztikák, például a súlyosság, az  érintett anomáliák, az érintett kezdési idő és **a záró időpont.**   
 
-Ezután látni fogja az incidens őse anomáliát, és automatizálja a kiváltó okokat. Ez az automatizált kiváltó okok az összes kapcsolódó rendellenesség esetében az incidensek fájának elemzésével jönnek létre, többek között a következőkkel: szórás, eloszlás és a szülő anomáliák való hozzájárulás. 
+Ezután látni fogja az incidens anomáliákat és az automatizált kiváltó okokat kiváltó tanácsokat. Ez az automatizált kiváltó okra vonatkozó tanács az összes kapcsolódó rendellenesség, például az eltérések, az eloszlás és a szülőanomáliákhoz való hozzájárulás elemzésével jön létre. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidens-diagnosztika" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidensdiagnosztika" lightbox="../media/incident-diagnostic.png":::
 
-Ezek alapján már könnyedén megtekintheti, hogy mi történik, és milyen hatással van az incidensre, valamint a legvalószínűbb kiváltó ok. Annak érdekében, hogy a lehető legrövidebb időn belül azonnali művelettel lehessen megoldani az incidenst. 
+Ezek alapján már most is egyszerűen megtekintheti, hogy mi történik, milyen hatása van az incidensnek, valamint hogy mi a lehetséges kiváltó ok. Így azonnal meg lehet tenni a szükséges lépéseket az incidens minél hamarabbi megoldása érdekében. 
 
-Emellett a további funkciókat kihasználó diagnosztikai elemzések is felhasználhatók a dimenziók által észlelt rendellenességek részletezésére, a hasonló anomáliák megtekintésére és a metrikák összehasonlítására. További információ [: incidensek diagnosztizálása](../how-tos/diagnose-incident.md). 
+De további diagnosztikai elemzéseket is eloszthat, amelyek további funkciókat nyújtanak a rendellenességek dimenziónkénti részletezéséhez, a hasonló anomáliák megtekintéséhez és a metrikák összehasonlításához. További információ: How to: diagnose an incident ( Incidens [diagnosztizálása).](../how-tos/diagnose-incident.md) 
 
-## <a name="get-notified-when-new-anomalies-are-found"></a>Értesítést kaphat, ha új anomáliák találhatók
+## <a name="get-notified-when-new-anomalies-are-found"></a>Értesítést kap, ha új anomáliákat talál
 
-Ha riasztást szeretne kapni, ha az adatokban anomáliát észlel, létrehozhat egy előfizetést egy vagy több mérőszámhoz. A metrikai tanácsadó horgokat használ a riasztások küldéséhez. A hookok háromféle típusa támogatott: e-mail Hook, webhook és Azure DevOps. A web hookot példaként fogjuk használni. 
+Ha riasztást szeretne kapni, amikor rendellenességet észlel az adatokban, létrehozhat egy előfizetést egy vagy több metrikához. Metrics Advisor a riasztások küldését hookokkal. Háromféle hook támogatott: e-mail hook, web hook Azure DevOps. Példaként a web hook használjuk. 
 
-### <a name="create-a-web-hook"></a>Webes Hook létrehozása
+### <a name="create-a-web-hook"></a>Új web hook
 
-A web Hook az a belépési pont, amellyel a rendszer a metrikai tanácsadó szolgáltatástól egy programozott módon észlelte a anomáliát, amely egy felhasználó által megadott API-t hív meg riasztás indításakor. A hookok létrehozásával kapcsolatos részletekért tekintse meg a **hookok létrehozása** című szakaszt a következő [útmutatóban: riasztások konfigurálása és értesítések beszerzése Hook használatával](../how-tos/alerts.md#create-a-hook). 
+A web hook az anomália belépési pontja, amelyet programozott módon észlel a Metrics Advisor szolgáltatás, amely egy felhasználó által megadott API-t hív meg riasztás esetén. A hookok létrehozásáról az [How-to: Configure alerts and get notifications using a](../how-tos/alerts.md#create-a-hook) **hook** (Hogyan lehet: Riasztások konfigurálása és értesítések leküldése egy hook használatával) című szakaszban talál további információt. 
 
 ### <a name="configure-alert-settings"></a>Riasztási beállítások konfigurálása
 
-A Hook létrehozása után a riasztási beállítások határozzák meg, hogy a rendszer milyen riasztási értesítéseket küldjön. Az egyes mérőszámokhoz több riasztási beállítást is beállíthat. két fontos beállítás a **riasztás** , amely meghatározza a befoglalni kívánt rendellenességeket, és **szűri az anomáliák beállításait** , amelyek meghatározzák, hogy mely rendellenességek szerepeljenek a riasztásban. További részletekért tekintse meg a **riasztási beállítások hozzáadása vagy szerkesztése** című szakaszt a következő témakörben [: útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](../how-tos/alerts.md#add-or-edit-alert-settings) .
+A hook létrehozása után egy riasztási beállítás határozza meg, hogyan és milyen riasztási értesítéseket kell küldeni. Az egyes metrikákhoz több riasztási beállítást is meg lehet állítani. Két fontos beállítás a **Riasztás,** amely meghatározza a  rendellenességeket, és a Szűrési anomáliabeállítások, amelyek meghatározzák, hogy mely anomáliákat kell a riasztásba foglalni. További **részleteket a** [How-to: Configure alerts and get notifications using a hook (How-to: Configure alerts and get notifications using a hook](../how-tos/alerts.md#add-or-edit-alert-settings) using a hook ) (Hogyan lehet konfigurálni a riasztásokat és értesítéseket egy hook használatával) című szakaszban talál.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Adatcsatornák előkészítése](../how-tos/onboard-your-data.md)
+- [Adatcsatornákba való be- és berekesz](../how-tos/onboard-your-data.md)
     - [Adatcsatornák kezelése](../how-tos/manage-data-feeds.md)
-    - [Különböző adatforrások beállításai](../data-feeds-from-different-sources.md)
-- [A REST API vagy az ügyféloldali kódtárak használata](./rest-api-and-client-library.md)
+    - [Konfigurációk különböző adatforrások számára](../data-feeds-from-different-sources.md)
+- [A REST API vagy ügyfélkódtárak használata](./rest-api-and-client-library.md)
 - [Metrikák konfigurálása és a konfiguráció észlelésének finomhangolása](../how-tos/configure-metrics.md)

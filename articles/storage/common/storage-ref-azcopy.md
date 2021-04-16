@@ -1,6 +1,6 @@
 ---
 title: azcopy | Microsoft Docs
-description: Ez a cikk a azcopy parancsra vonatkozó tudnivalókat tartalmazza.
+description: Ez a cikk az azcopy parancsra vonatkozó referenciainformációt tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,39 +8,39 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878986"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502997"
 ---
 # <a name="azcopy"></a>azcopy
 
-A AzCopy olyan parancssori eszköz, amely az Azure Storage-ba és az-ba helyezi át az adatátvitelt.
+Az AzCopy egy parancssori eszköz, amely adatokat mozgat az Azure Storage-ba és onnan másba. Az [AzCopy letöltését](storage-use-azcopy-v10.md) az Első lépések az AzCopyval cikkben olvashatja el, és megtudhatja, hogyan biztosítanak hitelesítési hitelesítő adatokat a tárolási szolgáltatásnak.
 
 ## <a name="synopsis"></a>Áttekintés
 
-A parancsok általános formátuma: `azcopy [command] [arguments] --[flag-name]=[flag-value]` .
+A parancsok általános formátuma a következő: `azcopy [command] [arguments] --[flag-name]=[flag-value]` .
 
-Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközről, tekintse meg a következő témakört: [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) .
+A problémák jelentéséhez vagy az eszközzel kapcsolatos további információkért lásd: [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) .
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó elméleti cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
+- [Oktatóanyag: Helyszíni adatok áttelepítése felhőalapú tárolóba az AzCopy használatával](storage-use-azcopy-migrate-on-premises-data.md)
+- [Adatok átvitele az AzCopy és a Blob Storage használatával](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
-**--Cap-Mbps** (float) – az átviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--cap-mbps** (lebegőpontos) Megabit/másodpercben megszabja az átviteli sebességet. A pillanatnyi átviteli sebesség kis mértékben eltérhet a felső felsőértéktől. Ha ez a beállítás nulla vagy nincs megadva, az átviteli sebesség nincs korlátozva.
 
-**– Súgó** Súgó a azcopy
+**--help** Az azcopy súgója
       
---a parancs kimenetének **kimeneti-Type** (string) formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték `text`. (alapértelmezett `text` )
+**--output-type**  (sztring) A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték `text`. (alapértelmezett `text` )
 
-**--megbízható-Microsoft-utótagok** (string) további tartományi utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
+**--trusted-microsoft-suffixes** (sztring) További tartomány-utótagokat ad meg, Azure Active Directory bejelentkezési jogkivonatokat lehet küldeni.  Az alapértelmezett érték a '*.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Az itt felsoroltak az alapértelmezett értékhez kerülnek. A biztonság érdekében itt csak a Microsoft Azure helyezzen el. Több bejegyzést pontosvesszővel válassza el egymástól.
 
 ## <a name="see-also"></a>Lásd még
 

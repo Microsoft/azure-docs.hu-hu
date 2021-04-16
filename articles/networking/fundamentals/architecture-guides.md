@@ -1,69 +1,70 @@
 ---
-title: Az Azure hálózatkezelési architektúrájának dokumentációja
-description: Ismerje meg az Azure hálózati szolgáltatásaihoz elérhető hivatkozási architektúra dokumentációját.
+title: Azure-hálózatkezelés architektúra dokumentációja
+description: Ismerje meg az Azure hálózati szolgáltatásaihoz elérhető referenciaarchitektúra dokumentációját.
 services: networking
 author: KumudD
 ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080240"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484795"
 ---
-# <a name="azure-networking-architecture-documentation"></a>Az Azure hálózatkezelési architektúrájának dokumentációja
+# <a name="azure-networking-architecture-documentation"></a>Azure-hálózatkezelés architektúra dokumentációja
 
-Ez a cikk olyan architektúrás útmutatókról nyújt tájékoztatást, amelyek segítségével megismerheti az Azure-ban elérhető különböző hálózati szolgáltatásokat az alkalmazások létrehozásához.
+Ez a cikk az architektúra-útmutatókról nyújt információkat, amelyek segítségével megismerheti az Azure különböző, az alkalmazások felépítéséhez elérhető hálózati szolgáltatásait.
 
 ## <a name="networking-overview"></a>Hálózatok – áttekintés
 
-Az alábbi táblázat a virtuális adatközpontok és az Azure-beli sugaras topológiák hálózatkezelési áttekintését tartalmazza.
+Az alábbi táblázat olyan cikkeket tartalmaz, amelyek a virtuális adatközpontok és az Azure-beli küllős topológiák hálózatának áttekintését tartalmazzák.
 
 |Cím |Leírás  |
 |---------|---------|
-|[Virtuális adatközpontok](/azure/architecture/vdc/networking-virtual-datacenter)   | Hálózati perspektívát biztosít a virtuális adatközpontok számára az Azure-ban.       |
-|[Küllős topológia](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)  |Áttekintést nyújt az Azure-beli központról és küllős hálózati topológiáról, valamint az előfizetési korlátokkal és a több hubhoz vonatkozó információkkal.          |
+|[Virtuális adatközpontok](/azure/architecture/vdc/networking-virtual-datacenter)   | Hálózati perspektívát biztosít az Azure-beli virtuális adatközpontok számára.       |
+|[Küllős topológia](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)  |Áttekintést nyújt az Azure-beli küllős hálózati topológiáról, valamint az előfizetési korlátokkal és több központtal kapcsolatos információkkal.          |
 
-## <a name="connect-to-azure-resources"></a>Kapcsolódás Azure-erőforrásokhoz
+## <a name="connect-to-azure-resources"></a>Csatlakozás Azure-erőforrásokhoz
 
-Az alábbi táblázat az Azure hálózati szolgáltatásaival kapcsolatos cikkeket tartalmaz, amelyek kapcsolatot biztosítanak az Azure-erőforrások, a helyszíni hálózat és az Azure-erőforrások közötti kapcsolat, valamint az Azure-beli fiókirodák közötti kapcsolat.
-
-|Cím |Leírás  |
-|---------|---------|
-|[IP-címtartomány hozzáadása a virtuális hálózatokhoz](/azure/architecture/networking/prefixes/add-ip-space-peered-vnet)     | Olyan parancsfájlokat biztosít, amelyek segítenek az IP-címtartomány hozzáadásában a társ virtuális hálózatokhoz.        |
-|[Különálló kiszolgálók csatlakoztatása az Azure Network Adapterrel](/azure/architecture/hybrid/azure-network-adapter)   | Azt mutatja be, hogyan csatlakoztatható egy helyszíni önálló kiszolgáló Microsoft Azure virtuális hálózatokhoz a Windows felügyeleti központon keresztül üzembe helyezett Azure hálózati adapter használatával.        |
-|[Választás a virtuális hálózatok közötti társviszony-létesítés és a VPN-átjárók között](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering)   | Összehasonlítja a virtuális hálózatok az Azure-ban való összekapcsolásának két módját: virtuális hálózati társítási és VPN-átjárók.        |
-|[Helyszíni hálózat csatlakoztatása az Azure-hoz](/azure/architecture/reference-architectures/hybrid-networking/)  | Összehasonlítja a helyszíni hálózat Azure Virtual Networkhoz (VNet) való csatlakoztatásának beállításait. Mindegyik lehetőséghez elérhető egy referenciaarchitektúra.        |
-|[SD-WAN kapcsolati architektúra az Azure Virtual WAN-ral](../../virtual-wan/sd-wan-connectivity-architecture.md)|Ismerteti a privát szoftveres WAN (SD-WAN) Azure Virtual WAN-vel való összekapcsolásának különböző csatlakozási lehetőségeit.|
-
-## <a name="deploy-highly-available-applications"></a>Magasan elérhető alkalmazások telepítése
-
-Az alábbi táblázat azokat a cikkeket ismerteti, amelyekből megtudhatja, hogyan helyezheti üzembe az alkalmazásait magas rendelkezésre álláshoz az Azure hálózati szolgáltatások kombinációjának használatával.
+Az alábbi táblázatban olyan cikkek Azure-hálózatkezelés, amelyek kapcsolatot biztosítanak az Azure-erőforrások, a helyszíni hálózat és az Azure-erőforrások közötti kapcsolatról, valamint az ágak és ágak közötti kapcsolatról az Azure-ban.
 
 |Cím |Leírás  |
 |---------|---------|
-|[Többrégiós N szintű alkalmazás](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server))  | Egy többrégiós N szintű alkalmazást ismertet, amely a Traffic Manager használatával irányítja át a beérkező kéréseket egy elsődleges régióba, és ha az adott régió elérhetetlenné válik, Traffic Manager feladatátvételt hajt végre a másodlagos régióba.      |
-| [Több-bérlős SaaS az Azure-ban](https://docs.microsoft.com/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   A egy több-bérlős megoldást használ, amely magában foglalja a bejárati ajtó és a Application Gateway kombinációját.  A bevezető ajtó segíti a régiók közötti adatforgalom terheléselosztását, és Application Gateway útvonalakat és terheléselosztási forgalmat az alkalmazáson belül az ügyfél üzleti igényeinek megfelelő különböző szolgáltatásokhoz.  |
-| [Magas rendelkezésre állású és vész-helyreállítási többrétegű webes alkalmazás ](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      A magas rendelkezésre álláshoz és a vész-helyreállításhoz készült rugalmas többrétegű alkalmazásokat helyez üzembe. Ha az elsődleges régió elérhetetlenné válik, Traffic Manager feladatátvételt hajt végre a másodlagos régióba.  |
-|[IaaS: webalkalmazás a kapcsolati adatbázissal](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   Ismerteti, hogyan használhatók több zónába tartozó erőforrások, hogy magas rendelkezésre állású architektúrát biztosítson a szolgáltatásként nyújtott infrastruktúra (IaaS) webalkalmazás és SQL Server-adatbázis üzemeltetéséhez.     |
-|[Hely valós idejű megosztása alacsony költségekkel járó, kiszolgáló nélküli Azure-szolgáltatások használatával](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   Az Azure bejárati ajtót használva magasabb rendelkezésre állást biztosít az alkalmazásokhoz, mint az egyetlen régióban történő üzembe helyezés. Ha egy régió üzemkimaradása hatással van az elsődleges régióra, a Front Door szolgáltatással feladatátvételt hajthat végre a másodlagos régióba.      |
-|[Magas rendelkezésre állású virtuális hálózati készülékek](/azure/architecture/reference-architectures/dmz/nva-ha)     | Bemutatja, hogyan helyezhet üzembe egy hálózati virtuális berendezést (NVA) a magas rendelkezésre állás érdekében az Azure-ban.        |
+|[IP-címterek hozzáadása társviszonyban lévő virtuális hálózatokhoz](/azure/architecture/networking/prefixes/add-ip-space-peered-vnet)     | Olyan szkripteket biztosít, amelyek segítségével IP-címtereket adhat hozzá a virtuális társhálózathoz.        |
+|[Különálló kiszolgálók csatlakoztatása az Azure Network Adapterrel](/azure/architecture/hybrid/azure-network-adapter)   | Bemutatja, hogyan csatlakoztathat helyszíni önálló kiszolgálót Microsoft Azure virtuális hálózatokhoz a virtuális hálózaton keresztül üzembe helyezett Azure hálózati adapter Windows Admin Center.        |
+|[Választás a virtuális hálózatok közötti társviszony-létesítés és a VPN-átjárók között](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering)   | Két módszert hasonlít össze az Azure-beli virtuális hálózatok csatlakoztatásához: virtuális hálózatok közötti társviszony-létesítés és VPN-átjárók.        |
+|[Helyszíni hálózat csatlakoztatása az Azure-hoz](/azure/architecture/reference-architectures/hybrid-networking/)  | Összehasonlítja a helyszíni hálózat Azure-Virtual Network (VNet) csatlakoztatásának lehetőségeit. Mindegyik lehetőséghez elérhető egy referenciaarchitektúra.        |
+|[SD-WAN kapcsolati architektúra Azure Virtual WAN](../../virtual-wan/sd-wan-connectivity-architecture.md)|A privát szoftverrel definiált WAN (SD-WAN) és a hálózati Azure Virtual WAN.|
 
-## <a name="secure-your-network-resources"></a>A hálózati erőforrások biztonságossá tétele
+## <a name="deploy-highly-available-applications"></a>Magas rendelkezésre álló alkalmazások üzembe helyezése
 
-Az alábbi táblázat azokat a cikkeket ismerteti, amelyek leírják, hogyan védik a hálózati erőforrásokat az Azure Networking Services használatával.
+Az alábbi táblázat olyan cikkeket tartalmaz, amelyek ismertetik, hogyan helyezheti üzembe az alkalmazásait magas rendelkezésre állásra különböző Azure-hálózatkezelés használatával.
 
 |Cím |Leírás  |
 |---------|---------|
-|[Ajánlott hálózati biztonsági eljárások](../../security/fundamentals/network-best-practices.md) |Az Azure-beli ajánlott eljárások gyűjteményét tárgyalja a hálózati biztonság növelése érdekében.         |
-[Útmutató az Azure Firewall architektúrájához](/azure/architecture/example-scenario/firewalls/) | Strukturált megközelítést biztosít az Azure-ban található, külső gyártótól származó virtuális készülékek használatával történő, magasan elérhető tűzfalak tervezéséhez.        |
-|[Biztonságos hibrid hálózat implementálása](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)     | Leírja azt az architektúrát, amely a helyszíni hálózat és egy Azure-beli virtuális hálózat közötti DMZ-t, más néven peremhálózati hálózatot implementál. Az összes bejövő és kimenő forgalom a Azure Firewallon halad át.        |
-|[A számítási feladatok biztonságossá tétele és szabályozása hálózati szintű szegmentálással](/azure/architecture/reference-architectures/hybrid-networking/network-level-segmentation) | Ismerteti az Azure-beli számítási feladatok hálózati perspektívában való rendszerezésének három gyakori mintáját.   Ezek a minták különböző típusú elkülönítést és kapcsolatot biztosítanak.      |
-|[Tűzfal és Application Gateway virtuális hálózatokhoz](/azure/architecture/example-scenario/gateway/firewall-application-gateway) | Leírja az Azure Virtual Network biztonsági szolgáltatásait, például a Azure Firewallt és az Azure Application Gateway, hogy mikor kell használni az egyes szolgáltatásokat és a mindkettőt ötvöző hálózati kialakítási lehetőségeket.      |
+|[Többrépontos N szintű alkalmazás](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server))  | Egy többrégió N szintű alkalmazást ismertet, amely Traffic Manager-t használ a bejövő kérések elsődleges régióba való útválasztásához, és ha ez a régió elérhetetlenné válik, a Traffic Manager a másodlagos régióba.      |
+| [Több-bérlős SaaS az Azure-ban](https://docs.microsoft.com/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   Több-bérlős megoldást használ, amely magában foglalja a Front Door és Application Gateway.  Front Door a régiók és útvonalak közötti forgalom terheléselosztását, Application Gateway az alkalmazáson belüli forgalom terheléselosztását pedig az ügyfél üzleti igényeinek megfelelő különböző szolgáltatások között.  |
+| [Magas rendelkezésre állásra és vészhelyreállításra készült többrétegű webalkalmazás ](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      Magas rendelkezésre állásra és vészhelyreállításra készült rugalmas többrétegű alkalmazásokat helyez üzembe. Ha az elsődleges régió elérhetetlenné válik, Traffic Manager másodlagos régió veszi át a feladat-vissza.  |
+|[IaaS: Webalkalmazás relációs adatbázissal](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   Ismerteti, hogyan használhatók a több zónában lévő erőforrások egy magas rendelkezésre állású architektúra biztosítanak egy IaaS-webalkalmazás és egy SQL Server számára.     |
+|[Hely valós idejű megosztása alacsony költségekkel járó, kiszolgáló nélküli Azure-szolgáltatások használatával](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   A Azure Front Door magasabb rendelkezésre állást biztosít az alkalmazások számára, mint az egyetlen régióban való üzembe helyezés. Ha egy régió üzemkimaradása hatással van az elsődleges régióra, a Front Door szolgáltatással feladatátvételt hajthat végre a másodlagos régióba.      |
+|[Magas rendelkezésre állású virtuális hálózati készülékek](/azure/architecture/reference-architectures/dmz/nva-ha)     | Bemutatja, hogyan helyezhet üzembe hálózati virtuális berendezéseket (NVA-k) magas rendelkezésre álláshoz az Azure-ban.        |
+|[Többrépontos terheléselosztás Traffic Manager és Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | Ismerteti, hogyan helyezhetők üzembe rugalmas többrétegű alkalmazások több Azure-régióban a rendelkezésre állás és a robusztus vészhelyreállítási infrastruktúra elérése érdekében.        |
+
+## <a name="secure-your-network-resources"></a>A hálózati erőforrások biztonságossá teve
+
+Az alábbi táblázat olyan cikkeket tartalmaz, amelyek ismertetik, hogyan védheti meg a hálózati erőforrásokat Azure-hálózatkezelés szolgáltatásokkal.
+
+|Cím |Leírás  |
+|---------|---------|
+|[Ajánlott hálózati biztonsági eljárások](../../security/fundamentals/network-best-practices.md) |A hálózati biztonság növelése érdekében ajánlott Azure-eljárások gyűjteményét ismerteti.         |
+[Útmutató az Azure Firewall architektúrájához](/azure/architecture/example-scenario/firewalls/) | Strukturált megközelítést biztosít a magas rendelkezésre álló tűzfalak tervezésére az Azure-ban külső virtuális berendezések használatával.        |
+|[Biztonságos hibrid hálózat implementálása](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)     | Egy DMZ-t ( más néven szegélyhálózatot) megvalósító architektúrát ismertet a helyszíni hálózat és egy Azure-beli virtuális hálózat között. Minden bejövő és kimenő forgalom áthalad a Azure Firewall.        |
+|[A számítási feladatok biztonságossá tétele és szabályozása hálózati szintű szegmentálással](/azure/architecture/reference-architectures/hybrid-networking/network-level-segmentation) | A számítási feladatok Azure-ban való hálózatépítési szempontból való rendszerezéséhez használt három gyakori mintát ismerteti.   Mindegyik minta más típusú elkülönítést és kapcsolatot biztosít.      |
+|[Tűzfal és Application Gateway virtuális hálózatokhoz](/azure/architecture/example-scenario/gateway/firewall-application-gateway) | Ismerteti az Azure Virtual Network biztonsági szolgáltatásokat Azure Firewall Azure Application Gateway, az egyes szolgáltatások használatát, valamint a mindkettőt kombináló hálózattervezési lehetőségeket.      |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)megismerése.
+További tudnivalók az [Azure Virtual Network.](../../virtual-network/virtual-networks-overview.md)

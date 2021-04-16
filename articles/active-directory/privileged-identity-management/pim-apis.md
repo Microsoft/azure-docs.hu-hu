@@ -1,6 +1,6 @@
 ---
-title: A PIM-hez Microsoft Graph API-k (előzetes verzió) – Azure AD | Microsoft Docs
-description: Információt nyújt a Microsoft Graph API-k használatáról Azure AD Privileged Identity Management (PIM) (előzetes verzió).
+title: Microsoft Graph API-k a PIM-hez (előzetes verzió) – Azure AD | Microsoft Docs
+description: Információkat nyújt a Microsoft Graph API-k pim Azure AD Privileged Identity Management (előzetes verzió) használatával kapcsolatban.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,25 +14,25 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce1900ca1ca04923f98642f0783925f2dd06619b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91529694"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533582"
 ---
-# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph API-k Privileged Identity Management (előzetes verzió)
 
-A Azure Active Directory [Microsoft Graph API](/graph/overview) -k használatával Privileged Identity Management feladatokat hajthat végre. Ez a cikk a Privileged Identity Management Microsoft Graph API-k használatára vonatkozó fontos fogalmakat ismerteti.
+A feladatok Privileged Identity Management a Microsoft Graph [API-ját használva](/graph/overview) Azure Active Directory. Ez a cikk a Microsoft Graph API-k Privileged Identity Management.
 
-A Microsoft Graph API-kkal kapcsolatos részletekért tekintse meg a [Azure ad PRIVILEGED Identity Management API-referenciát](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta).
+A Microsoft Graph API-k részleteiért tekintse meg a [Azure AD Privileged Identity Management API-referenciát.](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta&preserve-view=true)
 
 > [!IMPORTANT]
-> A Microsoft Graph/Beta verziója alatti API-k előzetes verzióban érhetők el, és változhatnak. Az API-k üzemi alkalmazásokban való használata nem támogatott.
+> A /beta verzióban elérhető API Microsoft Graph előzetes verziójúak, és változhatnak. Ezeknek az API-knak az éles alkalmazásokban való használata nem támogatott.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A Privileged Identity Management Microsoft Graph API-k meghívásához a következő engedélyek **közül egyet vagy többet** kell megadnia:
+A Microsoft Graph API-k Privileged Identity Management rendelkeznie kell az alábbi  engedélyek közül egy vagy többel:
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -41,24 +41,24 @@ A Privileged Identity Management Microsoft Graph API-k meghívásához a követk
 
 ### <a name="set-permissions"></a>Engedélyek beállítása
 
-Ahhoz, hogy az alkalmazások meg tudják hívni a Privileged Identity Management Microsoft Graph API-jait, rendelkeznie kell a szükséges engedélyekkel. A szükséges engedélyek megadásának legegyszerűbb módja az [Azure ad-beli engedélyezési keretrendszer](../develop/consent-framework.md)használata.
+Ahhoz, hogy az alkalmazások Microsoft Graph API-kat hívjanak Privileged Identity Management számára, rendelkezniük kell a szükséges engedélyekkel. A szükséges engedélyek megadásának legegyszerűbb módja az Azure AD hozzájárulási [keretrendszerének használata.](../develop/consent-framework.md)
 
 ### <a name="set-permissions-in-graph-explorer"></a>Engedélyek beállítása a Graph Explorerben
 
-Ha a Graph Explorer segítségével teszteli a hívásokat, megadhatja az engedélyeket az eszközben.
+Ha a Gráfkezelőt használja a hívások tesztelésére, megadhatja az engedélyeket az eszközben.
 
-1. Jelentkezzen be a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer) globális rendszergazdaként.
+1. Jelentkezzen be globális rendszergazdaként a [Graph Explorerbe.](https://developer.microsoft.com/graph/graph-explorer)
 
-1. Kattintson az **engedélyek módosítása** elemre.
+1. Kattintson **a Modify permissions (Engedélyek módosítása) elemre.**
 
-    ![Képernyőkép: a "Graph Explorer" oldal, amelyen az "engedélyek módosítása" művelet van kiválasztva.](./media/pim-apis/graph-explorer.png)
+    ![Képernyőkép a "Gráfkezelő" lapról a kiválasztott "engedélyek módosítása" művelet használatával.](./media/pim-apis/graph-explorer.png)
 
-1. Jelölje be a jelölőnégyzeteket a felvenni kívánt engedélyek mellett. `PrivilegedAccess.ReadWrite.AzureAD` még nem érhető el a Graph Explorerben.
+1. Jelölje be a jelölőnégyzeteket a kívánt engedélyek mellett. `PrivilegedAccess.ReadWrite.AzureAD` A még nem érhető el a Graph Explorerben.
 
     ![Graph Explorer – engedélyek módosítása](./media/pim-apis/graph-explorer-modify-permissions.png)
 
-1. Kattintson az **engedélyek módosítása** elemre az engedély módosításának alkalmazásához.
+1. Kattintson **az Engedélyek módosítása elemre** az engedélyváltozások alkalmazáshoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure AD Privileged Identity Management API-hivatkozás](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta)
+- [Azure AD Privileged Identity Management API-referencia](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta&preserve-view=true)

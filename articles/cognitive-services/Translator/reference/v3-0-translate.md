@@ -1,7 +1,7 @@
 ---
-title: Fordítói fordítási módszer
+title: Translator Translate metódus
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Translator fordítási metódusának paramétereinek, fejlécének és szövegtörzsének megismerése szöveg fordításához.
+description: A Translator Translate metódusának paraméterek, fejlécek és törzsüzenetek Azure Cognitive Services a szöveg lefordítása érdekében.
 services: cognitive-services
 author: laujan
 manager: nitinme
@@ -10,41 +10,41 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
-ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148aa722515d9364ce5af85b3f7c3b39958c9c91
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895441"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388380"
 ---
-# <a name="translator-30-translate"></a>Translator 3,0: fordítás
+# <a name="translator-30-translate"></a>Translator 3.0: Translate
 
-Lefordítja a szöveget.
+Szöveget fordít le.
 
 ## <a name="request-url"></a>URL-cím kérése
 
-Kérelem küldése `POST` a következőnek:
+Kérés küldése a `POST` következőre:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
+## <a name="request-parameters"></a>Kérelemparaméterek
 
-A lekérdezési karakterláncon átadott kérési paraméterek a következők:
+A lekérdezési sztringen átadott kérelemparaméterek a következőek:
 
-### <a name="required-parameters"></a>Szükséges paraméterek
+### <a name="required-parameters"></a>Kötelező paraméterek
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
     <td>api-verzió</td>
-    <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie <code>3.0</code> .</td>
+    <td><em>Kötelező paraméter:</em>.<br/>Az ügyfél által kért API verziója. Az értéknek értékűnek kell <code>3.0</code> lennie.</td>
   </tr>
   <tr>
     <td>felhasználóként a(z)</td>
-    <td><em>Kötelező paraméter</em>.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a hatókörben szereplő <a href="./v3-0-languages.md">támogatott nyelvek</a> egyikének kell lennie <code>translation</code> . Például a paranccsal <code>to=de</code> németre fordítható.<br/>Egyszerre több nyelvre is lefordítható, ha megismétli a paramétert a lekérdezési karakterláncban. Például a paranccsal <code>to=de&to=it</code> németre és olaszra fordítható le.</td>
+    <td><em>Kötelező paraméter:</em>.<br/>A kimeneti szöveg nyelvét adja meg. A célnyelvnek a <a href="./v3-0-languages.md"></a> hatókörben szereplő támogatott nyelvek egyikének kell <code>translation</code> lennie. A német nyelvre <code>to=de</code> való fordításhoz például használja a következőt: .<br/>Egyszerre több nyelvre is fordíthat, ha a lekérdezési sztringben megismétli a paramétert. A használatával például <code>to=de&to=it</code> németre és olaszra fordíthat.</td>
   </tr>
 </table>
 
@@ -54,78 +54,78 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>a</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
+    <td> értékről</td>
+    <td><em>Nem kötelező paraméter.</em><br/>A bemeneti szöveg nyelvét adja meg. A támogatott nyelvek hatókörrel való keresésének segítségével keresse meg, hogy mely nyelvekről <a href="./v3-0-languages.md">fordíthat</a> <code>translation</code> le. Ha a paraméter nincs megadva, a rendszer automatikus nyelvfelismerést alkalmaz <code>from</code> a forrásnyelv meghatározásához. <br/><br/>A dinamikus szótár funkció használatához nem automatikus, hanem paramétert <code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">kell</a> használnia.</td>
   </tr>  
   <tr>
-    <td>textType</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Meghatározza, hogy a lefordított szöveg egyszerű szöveges vagy HTML-szöveg-e. Minden HTML-fájlnak megfelelően formázott, teljes elemnek kell lennie. A lehetséges értékek a következők: <code>plain</code> (alapértelmezett) vagy <code>html</code>.</td>
+    <td>textType (szövegtípus)</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Meghatározza, hogy a lefordított szöveg egyszerű vagy HTML-szöveg-e. Minden HTML-nek megfelelően formázott, teljes elemnek kell lennie. HTML-szöveg lefordításakor a kimeneti szöveg a következő speciális karaktereket tartalmazza escape-karakterként: "&", "<" és ">". Ez független attól, hogy a bemeneti HTML-szövegben escape-karakter található-e. Lehetséges értékek: <code>plain</code> (alapértelmezett) vagy <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>A fordítás kategóriáját (tartományát) megadó karakterlánc. Ezzel a paraméterrel az <a href="../customization.md">Egyéni fordítóval</a>létrehozott testreszabott rendszerből származó fordítások olvashatók be. Adja hozzá a kategória AZONOSÍTÓját az egyéni fordítói <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projekt részleteiből</a> ehhez a paraméterhez az üzembe helyezett testreszabott rendszer használatához. Az alapértelmezett érték: <code>general</code> .</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Egy sztring, amely a fordítás kategóriáját (tartományát) határozza meg. Ezzel a paraméterrel lekért fordításokat a használatával készült <a href="../customization.md">Custom Translator.</a> Adja hozzá a kategóriaazonosítót a Custom Translator <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projekt részleteiből</a> ehhez a paraméterhez az üzembe helyezett testreszabott rendszer használata érdekében. Az alapértelmezett érték a következő: <code>general</code> .</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Meghatározza, hogy a rendszer hogyan kezelje a káromkodásokat a fordításokban. A lehetséges értékek a következők: <code>NoAction</code> (alapértelmezett) <code>Marked</code> vagy <code>Deleted</code> . A káromkodás kezelésére szolgáló módszerek megismeréséhez lásd: <a href="#handle-profanity">trágárság kezelése</a>.</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja, hogyan kell kezelni a profanitásokat a fordításokban. Lehetséges értékek: <code>NoAction</code> (alapértelmezett) <code>Marked</code> vagy <code>Deleted</code> . A trágárság kezelésének módjaiért lásd: <a href="#handle-profanity">Profanitáskezelés.</a></td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Meghatározza, hogy a káromkodások hogyan legyenek megjelölve a fordításokban. A lehetséges értékek a következők: <code>Asterisk</code> (alapértelmezett) vagy <code>Tag</code> . A káromkodás kezelésére szolgáló módszerek megismeréséhez lásd: <a href="#handle-profanity">trágárság kezelése</a>.</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja, hogyan kell megjelölni a profanitásokat a fordításokban. Lehetséges értékek: <code>Asterisk</code> (alapértelmezett) vagy <code>Tag</code> . A trágárság kezelésének módjaiért lásd: <a href="#handle-profanity">Profanitáskezelés.</a></td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Azt adja meg, hogy a forrás szövegből a lefordított szöveggé való igazítási leképezést kíván-e megadni. A lehetséges értékek a következők: <code>true</code> vagy <code>false</code> (alapértelmezett). </td>
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja, hogy a forrásszövegből a lefordított szövegbe illesztés legyen-e bevetve. Lehetséges értékek: <code>true</code> vagy <code>false</code> (alapértelmezett). </td>
   </tr>
   <tr>
-    <td>includeSentenceLength</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Meghatározza, hogy szerepeljenek-e mondatok a bemeneti szöveghez és a lefordított szöveghez. A lehetséges értékek a következők: <code>true</code> vagy <code>false</code> (alapértelmezett).</td>
+    <td>includeSentenceLength (includeSentenceLength)</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Meghatározza, hogy a bemeneti szöveg és a lefordított szöveg mondathatárait is tartalmazza-e. Lehetséges értékek: <code>true</code> vagy <code>false</code> (alapértelmezett).</td>
   </tr>
   <tr>
-    <td>suggestedFrom</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Egy tartalék nyelvet ad meg, ha a bemeneti szöveg nyelve nem azonosítható. A nyelv automatikus észlelése a <code>from</code> paraméter kihagyása esetén lesz alkalmazva. Ha az észlelés sikertelen, a <code>suggestedFrom</code> rendszer feltételezi a nyelvet.</td>
+    <td>suggestedFrom (javasolttól)</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Egy tartalék nyelvet ad meg, ha a bemeneti szöveg nyelve nem azonosítható. A nyelv automatikus észlelése a paraméter <code>from</code> kihagyása esetén lesz alkalmazva. Ha az észlelés sikertelen, <code>suggestedFrom</code> a rendszer feltételezi a nyelvet.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg parancsfájlját.</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja a bemeneti szöveg parancsfájlját.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a lefordított szöveg parancsfájlját.</td>
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja a lefordított szöveg parancsfájlját.</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer. A lehetséges értékek a következők: <code>true</code> (alapértelmezett) vagy <code>false</code> .<br/><br/><code>allowFallback=false</code> azt adja meg, hogy a fordítás csak a kérelemben meghatározott rendszerek használatára legyen kiképezve <code>category</code> . Ha az X nyelvhez való fordítás az Y nyelvhez szükséges, akkor a láncban lévő összes rendszernek (X->E és E->Y) egyéninek kell lennie, és ugyanazzal a kategóriával kell rendelkeznie. Ha nem található a megadott kategóriába tartozó rendszer, a kérelem egy 400 állapotkódot ad vissza. <code>allowFallback=true</code> azt adja meg, hogy a szolgáltatás egy általános rendszer számára engedélyezett, ha nem létezik egyéni rendszer.
+    <td><em>Nem kötelező paraméter.</em><br/>Megadja, hogy a szolgáltatás visszavethet-e egy általános rendszert, ha nem létezik egyéni rendszer. Lehetséges értékek: <code>true</code> (alapértelmezett) vagy <code>false</code> .<br/><br/><code>allowFallback=false</code> A azt adja meg, hogy a fordítás csak a kérés által megadottak szerint <code>category</code> betanított rendszereket használja. Ha az X nyelv Y nyelvre való fordításához az E nyelvvel való összefűzás szükséges, akkor a láncban (X->E és E->Y) minden rendszernek egyéninek kell lennie, és azonos kategóriába kell sorolni. Ha nem található rendszer az adott kategóriával, a kérés 400-as állapotkódot ad vissza. <code>allowFallback=true</code> A azt adja meg, hogy a szolgáltatás visszavehet egy általános rendszert, ha nem létezik egyéni rendszer.
 </td>
   </tr>
 </table> 
 
-A kérelem fejlécei a következők:
+A kérelemfejlécek a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
+    <td>Hitelesítési fejléc(ék)</td>
+    <td><em>Szükséges kérelemfejléc.</em><br/>Lásd <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">az elérhető hitelesítési lehetőségeket.</a></td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Megadja az adattartalom tartalomtípusát.<br/> Az elfogadott érték: <code>application/json; charset=UTF-8</code> .</td>
+    <td><em>Szükséges kérelemfejléc.</em><br/>Megadja a hasznos adat tartalomtípusát.<br/> Az elfogadott érték <code>application/json; charset=UTF-8</code> .</td>
   </tr>
   <tr>
-    <td>Content-Length</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>A kérelem törzsének hossza</td>
+    <td>Tartalom hossza</td>
+    <td><em>Szükséges kérelemfejléc.</em><br/>A kérelem törzsének hossza.</td>
   </tr>
   <tr>
-    <td>X – ClientTraceId</td>
-    <td>Nem <em>kötelező</em>.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a nevű lekérdezési paraméter használatával <code>ClientTraceId</code> .</td>
+    <td>X-ClientTraceId</td>
+    <td><em>Nem kötelező.</em><br/>Ügyfél által létrehozott GUID a kérés egyedi azonosításához. Ezt a fejlécet kihagyhatja, ha a nyomkövetési azonosítót a lekérdezési sztringben egy nevű lekérdezési paraméterrel <code>ClientTraceId</code> használja.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON `Text` -objektum, amely a fordításhoz használt karakterláncot jelöli.
+A kérelem törzse egy JSON-tömb. Minden tömbelem egy JSON-objektum, amelynek a nevű sztringtulajdonság a lefordítandó `Text` sztringet jelöli.
 
 ```json
 [
@@ -135,48 +135,48 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON `Text` -obje
 
 Az alábbi korlátozások érvényesek:
 
-* A tömb legfeljebb 100 elemet tartalmazhat.
+* A tömbnek legalább 100 eleme lehet.
 * A kérelemben szereplő teljes szöveg nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
 
 ## <a name="response-body"></a>Választörzs
 
-A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden karakterláncához. Az eredmény objektum a következő tulajdonságokat tartalmazza:
+A sikeres válasz egy JSON-tömb, amely a bemeneti tömb minden sztringjéhez egy eredményt ad. Az eredményobjektum a következő tulajdonságokat tartalmazza:
 
-  * `detectedLanguage`: Az észlelt nyelvet leíró objektum a következő tulajdonságokkal:
+  * `detectedLanguage`: Az észlelt nyelvet a következő tulajdonságokkal leíró objektum:
 
-      * `language`: Az észlelt nyelv kódját jelképező karakterlánc.
+      * `language`: Az észlelt nyelv kódját képviselő sztring.
 
-      * `score`: Egy lebegőpontos érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és egy, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
+      * `score`: Lebegő érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és 1 között van, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
 
-    A `detectedLanguage` tulajdonság csak akkor jelenik meg az eredmény objektumban, ha a rendszer automatikus észlelést kér.
+    A `detectedLanguage` tulajdonság csak akkor található meg az eredményobjektumban, ha a nyelv automatikus észlelését kéri.
 
-  * `translations`: A fordítási eredmények tömbje. A tömb mérete megegyezik a lekérdezési paraméterben megadott cél nyelvek számával `to` . A tömb minden eleme a következőket tartalmazza:
+  * `translations`: Fordítási eredmények tömbje. A tömb mérete megegyezik a lekérdezési paraméterben megadott `to` célnyelvek számával. A tömb minden eleme a következőket tartalmazza:
 
-    * `to`: A célként megadott nyelv nyelvi kódját jelölő sztring.
+    * `to`: A célnyelv nyelvi kódját képviselő sztring.
 
-    * `text`: Egy karakterlánc, amely a lefordított szöveget adja meg.
+    * `text`: Egy sztring, amely a lefordított szöveget adja meg.
 
-    * `transliteration`: Egy objektum, amely a paraméterben megadott parancsfájlban megadja a lefordított szöveget `toScript` .
+    * `transliteration`: Egy objektum, amely a paraméter által megadott szkript lefordított szövegét `toScript` adja meg.
 
-      * `script`: A célként megadott parancsfájlt megadó karakterlánc.   
+      * `script`: A célszk szkriptet megíró sztring.   
 
-      * `text`: Egy karakterlánc, amely a lefordított szöveget adja meg a cél parancsfájlban.
+      * `text`: Egy sztring, amely a lefordított szöveget adja meg a cél szkriptben.
 
-    Az `transliteration` objektum nem jelenik meg, ha az írás nem történik meg.
+    Az `transliteration` objektum nem lesz beleértve, ha az átlitálás nem történik meg.
 
-    * `alignment`: Egy nevű, egyetlen karakterlánc-tulajdonsággal rendelkező objektum `proj` , amely leképezi a bemeneti szöveget a lefordított szövegre. Az igazítási adatok csak akkor jelennek meg, ha a kérelem paraméter `includeAlignment` értéke `true` . Az igazítás a következő formátumú karakterlánc-értékként lesz visszaadva: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` .  A kettőspont elválasztja a kezdő és a záró indexet, a kötőjel elválasztja a nyelveket, és a szóköz elválasztja a szavakat. Előfordulhat, hogy egy szó nulla, egy vagy több Szóval van igazítva a másik nyelven, és az illesztett szavak nem folytonos. Ha nincs elérhető igazítási információ, az igazítási elem üres lesz. Lásd: [igazítási információk beszerzése](#obtain-alignment-information) egy példához és korlátozásokhoz.
+    * `alignment`: Egy nevű egyetlen sztringtulajdonságú objektum, amely a bemeneti szöveget `proj` lefordított szövegre leképezi. Az igazítási információ csak akkor van megadva, ha a kérelem `includeAlignment` paramétere `true` . Az igazítás a következő formátum sztringértékeként lesz visszaadva: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` .  A kettőspont elválasztja a kezdő és záró indexet, a kötőjel választja el a nyelveket, a szóköz pedig elválasztja a szavakat. Az egyik szó nulla, egy vagy több szóhoz igazodhat a másik nyelven, az igazított szavak pedig nem összefüggőek lehetnek. Ha nem áll rendelkezésre igazítási információ, az igazítási elem üres lesz. Példa [és korlátozások: Igazítási](#obtain-alignment-information) információk beszerzése.
 
-    * `sentLen`: Egy objektum, amely a bemeneti és a kimeneti szövegben adja vissza a mondatok határait.
+    * `sentLen`: Egy olyan objektum, amely mondathatárokat ad vissza a bemeneti és kimeneti szövegekben.
 
-      * `srcSentLen`: Egy egész tömb, amely a mondatok hosszát jelképezi a bemeneti szövegben. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza.
+      * `srcSentLen`: Egész szám, amely a bemeneti szövegben megadott mondatok hosszát adja meg. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza.
 
-      * `transSentLen`: Egy egész tömb, amely a mondatok hosszát jelképezi a lefordított szövegben. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza.
+      * `transSentLen`: Egész szám, amely a lefordított szövegben a mondatok hosszát jelenti. A tömb hossza a mondatok száma, az értékek pedig az egyes mondatok hossza.
 
-    A mondatok határai csak abban az esetekben szerepelnek, ha a kérelem paraméter `includeSentenceLength` értéke `true` .
+    A mondathatárok csak akkor érvénybe, ha a kérés `includeSentenceLength` paramétere `true` .
 
-  * `sourceText`: Egy nevű, egyetlen karakterlánc-tulajdonsággal rendelkező objektum `text` , amely a forrás nyelvének alapértelmezett parancsfájljában megadja a bemeneti szöveget. `sourceText` a tulajdonság csak akkor jelenik meg, ha a bemenet olyan parancsfájlban van kifejezve, amely nem a nyelv szokásos parancsfájlja. Ha például a bemenet arab nyelven íródott, akkor az arab nyelvű `sourceText.text` szöveg lesz az Arab-parancsfájlba konvertálva.
+  * `sourceText`: Egy nevű egyetlen sztringtulajdonságú objektum, amely a forrásnyelv alapértelmezett szkriptében adja meg a `text` bemeneti szöveget. `sourceText` A tulajdonság csak akkor van jelen, ha a bemenet egy olyan szkriptben van kifejezve, amely nem a szokásos szkript a nyelvhez. Ha például a bemenet arab, latin betűs írású, akkor ez ugyanaz az arab szöveg lesz, amely arab `sourceText.text` parancsfájlná lesz konvertálva.
 
-Példa a JSON-válaszokra a [példák](#examples) szakaszban.
+A JSON-válaszokra a példák szakaszban [talál](#examples) példát.
 
 ## <a name="response-headers"></a>Válaszfejlécek
 
@@ -184,18 +184,18 @@ Példa a JSON-válaszokra a [példák](#examples) szakaszban.
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
     <tr>
-    <td>X – kérelemazonosító</td>
-    <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
+    <td>X-RequestId</td>
+    <td>A szolgáltatás által a kérés azonosítására létrehozott érték. Hibaelhárítási célokra szolgál.</td>
   </tr>
   <tr>
-    <td>X-MT – System</td>
-    <td>Meghatározza azt a rendszertípust, amelyet a fordításhoz szükséges minden egyes "to" nyelv fordításához használt. Az érték a karakterláncok vesszővel tagolt listája. Minden karakterlánc egy típust jelöl:<br/><ul><li>Az egyéni kérés magában foglal egy egyéni rendszer és legalább egy egyéni rendszer használatát a fordítás során.</li><li>Csapat – minden egyéb kérelem</li></td>
+    <td>X-MT-System</td>
+    <td>Megadja a fordításhoz kért "to" nyelvek fordításhoz használt rendszertípusát. Az érték sztringek vesszővel elválasztott listája. Minden sztring típust jelez:<br/><ul><li>Egyéni – A kérés tartalmaz egy egyéni rendszert, és legalább egy egyéni rendszert használt a fordítás során.</li><li>Csapat – Minden más kérés</li></td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Válasz-állapotkódok
+## <a name="response-status-codes"></a>Válasz állapotkódok
 
-A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők: 
+A kérések által visszaadott lehetséges HTTP-állapotkódok a következők. 
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
@@ -206,19 +206,19 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>400</td>
-    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa a kérelmek paramétereit.</td>
+    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa ki a kérelemparamétereket.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>A kérést nem lehetett hitelesíteni. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
+    <td>A kérést nem lehetett hitelesíteni. Ellenőrizze, hogy a hitelesítő adatok meg vannak-e adva és érvényesek-e.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>A kérés nincs engedélyezve. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
+    <td>A kérelem nincs engedélyezve. Ellenőrizze a részleteket tartalmazó hibaüzenetet. Ez gyakran azt jelzi, hogy a próba-előfizetéshez biztosított összes ingyenes fordítást felhasználták.</td>
   </tr>
   <tr>
     <td>408</td>
-    <td>A kérés nem teljesíthető, mert hiányzik egy erőforrás. Olvassa el a részletek hibaüzenetét. Egyéni használata esetén <code>category</code> Ez gyakran azt jelzi, hogy az egyéni fordítási rendszer még nem érhető el a kérelmek kiszolgálásához. A kérést a várakozási idő (pl. 1 perc) után újra meg kell próbálni.</td>
+    <td>A kérést nem lehetett teljesíteni, mert hiányzik egy erőforrás. Tekintse meg a részleteket tartalmazó hibaüzenetet. Egyéni használata esetén ez gyakran azt jelzi, hogy az egyéni fordítási rendszer még nem érhető el a <code>category</code> kérések kiszolgálására. A kérést egy várakozási idő (például 1 perc) után újra kell kérni.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -226,27 +226,27 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécből <code>X-RequestId</code> és az ügyfél azonosítója a kérelem fejlécében <code>X-ClientTraceId</code> .</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következővel: a hiba dátuma és időpontja, kérésazonosító a válaszfejlécből, és <code>X-RequestId</code> ügyfél-azonosító a kérelemfejlécből. <code>X-ClientTraceId</code></td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécből <code>X-RequestId</code> és az ügyfél azonosítója a kérelem fejlécében <code>X-ClientTraceId</code> .</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja újra a kérést. Ha a hiba továbbra is fennáll, jelentse a következővel: a hiba dátuma és időpontja, kérésazonosító a válaszfejlécből, és <code>X-RequestId</code> ügyfél-azonosító a kérelemfejlécből. <code>X-ClientTraceId</code></td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](./v3-0-reference.md#errors)találhatók. 
+Hiba esetén a kérés JSON-hibaüzenetet is visszaad. A hibakód egy 6 jegyű szám, amely a háromjegyű HTTP-állapotkódot, majd egy 3 számjegyből álló számot kombinál a hiba további kategorizálásához. A gyakori hibakódok a [v3 Translator referenciaoldalán találhatók.](./v3-0-reference.md#errors) 
 
 ## <a name="examples"></a>Példák
 
 ### <a name="translate-a-single-input"></a>Egyetlen bemenet fordítása
 
-Ebből a példából megtudhatja, hogyan fordítható le egy angolról egyszerűsített kínaira egy adott mondat.
+Ez a példa bemutatja, hogyan fordíthat le egyetlen mondatot angolról egyszerűsített kínaira.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-A válasz törzse:
+A válasz törzse a következő:
 
 ```
 [
@@ -258,17 +258,17 @@ A válasz törzse:
 ]
 ```
 
-A `translations` tömb egyetlen elemet tartalmaz, amely a bemenetben lévő egyetlen szövegrész fordítását biztosítja.
+A tömb egy elemet tartalmaz, amely a bemenetben található egyetlen `translations` szöveg fordítását biztosítja.
 
-### <a name="translate-a-single-input-with-language-auto-detection"></a>Egyetlen bemenet fordítása a nyelv automatikus észlelésével
+### <a name="translate-a-single-input-with-language-auto-detection"></a>Egyetlen bemenet fordítása automatikus nyelvfelismeréssel
 
-Ebből a példából megtudhatja, hogyan fordítható le egy angolról egyszerűsített kínaira egy adott mondat. A kérelem nem adja meg a szövegbeviteli nyelvet. Ehelyett a rendszer automatikusan észleli a forrás nyelvét.
+Ez a példa bemutatja, hogyan fordíthat le egyetlen mondatot angolról egyszerűsített kínaira. A kérelem nem adja meg a bemeneti nyelvet. Ehelyett a forrásnyelv automatikus észlelését használjuk.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-A válasz törzse:
+A válasz törzse a következő:
 
 ```
 [
@@ -280,17 +280,17 @@ A válasz törzse:
     }
 ]
 ```
-A válasz hasonló az előző példában szereplő válaszhoz. Mivel a rendszer a nyelv automatikus észlelését kérte, a válasz a bemeneti szöveghez észlelt nyelvről is tartalmaz információkat. A nyelv automatikus észlelése hatékonyabban működik a hosszú bemeneti szöveggel.
+A válasz hasonló az előző példában adott válaszhoz. Mivel a rendszer automatikus nyelvfelismerést kért, a válasz a bemeneti szöveghez észlelt nyelvre vonatkozó információkat is tartalmaz. A nyelv automatikus észlelése jobban működik a hosszabb bemeneti szövegekkel.
 
-### <a name="translate-with-transliteration"></a>Fordítás az angol nyelvvel
+### <a name="translate-with-transliteration"></a>Fordítás átiratálással
 
-Az előző példát kiterjesztjük az írás hozzáadásával. A következő kérelem egy latin írásrendszerben írt kínai nyelvű fordítást kér.
+Bővítjük ki az előző példát átliterálás hozzáadásával. A következő kérés egy latin betűvel írt kínai fordítást kér.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-A válasz törzse:
+A válasz törzse a következő:
 
 ```
 [
@@ -307,18 +307,18 @@ A válasz törzse:
 ]
 ```
 
-A fordítási eredmény mostantól tartalmaz egy `transliteration` tulajdonságot, amely latin karakterek használatával adja meg a lefordított szöveget.
+A fordítás eredménye most már tartalmaz egy tulajdonságot, amely a lefordított szöveget latin `transliteration` karakterek használatával adja meg.
 
-### <a name="translate-multiple-pieces-of-text"></a>Több darab szöveg fordítása
+### <a name="translate-multiple-pieces-of-text"></a>Több szöveg lefordítása
 
-Ha egyszerre több karakterláncot fordít le, egyszerűen csak a karakterláncok tömbjét kell megadnia a kérelem törzsében.
+Több sztring egyszerre történő lefordítása csupán egy sztringtömböt kell megadni a kérelem törzsében.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
-A válasz az összes szövegrész fordítását tartalmazza pontosan ugyanolyan sorrendben, mint a kérelemben.
-A válasz törzse:
+A válasz tartalmazza az összes szöveg lefordított szövegét pontosan ugyanabban a sorrendben, mint a kérésben.
+A válasz törzse a következő:
 
 ```
 [
@@ -337,13 +337,13 @@ A válasz törzse:
 
 ### <a name="translate-to-multiple-languages"></a>Fordítás több nyelvre
 
-Ebből a példából megtudhatja, hogyan fordíthatja le ugyanazt a bemenetet több nyelvre egy kérelemben.
+Ez a példa bemutatja, hogyan fordíthatja le ugyanazt a bemenetet több nyelvre egyetlen kérésben.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-A válasz törzse:
+A válasz törzse a következő:
 
 ```
 [
@@ -356,38 +356,38 @@ A válasz törzse:
 ]
 ```
 
-### <a name="handle-profanity"></a>Káromkodás kezelése
+### <a name="handle-profanity"></a>Profanitások kezelésével
 
-A fordítói szolgáltatás általában megőrzi a fordításban található forrásban lévő káromkodást. A trágárság foka és az olyan kontextus, amely a szavak különböző kulturális környezetekben való megkülönböztetését teszi lehetővé, és ennek eredményeképpen a megcélzott nyelven megjelenő káromkodás mértéke felerősíthető vagy csökkenthető.
+A Translator szolgáltatás általában megőrzi a forrásban a fordításban jelen van trágárságokat. A trágárság foka és a trágár szavakat a különböző kulturális környezetek közötti különbségeknek megfelelően fel lehet erősni vagy csökkenteni a célnyelv trágársága miatt.
 
-Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, hogy a szövegben szerepel-e a káromkodás, használhatja a káromkodás szűrése lehetőséget. A beállítással megadhatja, hogy szeretné-e megtekinteni a káromkodást, hogy meg szeretné-e jelölni a káromkodásokat a megfelelő címkékkel (amely lehetővé teszi a saját feldolgozás hozzáadását), vagy ha nem szeretne műveletet végrehajtani. A `ProfanityAction` `Deleted` `Marked` `NoAction` () és az (alapértelmezett) értékek elfogadva.
+Ha el szeretné kerülni, hogy trágár szóhasználatot kap a fordításban, függetlenül attól, hogy a forrásszövegben trágár szó van-e, használhatja a profanitásszűrés lehetőséget. A beállítással eldöntheti, hogy szeretné-e törölni a trágárságokat, meg szeretné-e jelölni a profanitásokat a megfelelő címkékkel (így hozzáadhatja a saját utófeldolgozását), vagy nem szeretne semmilyen műveletet. A elfogadott `ProfanityAction` értékei: `Deleted` , `Marked` és `NoAction` (alapértelmezett).
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
   <th>Művelet</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Ez az alapértelmezett viselkedés. A káromkodás a forrás és a cél között lesz továbbítva.<br/><br/>
-    <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: ez egy seggfej.
+    <td>Ez az alapértelmezett viselkedés. A trágárság a forrástól a célig fog haladni.<br/><br/>
+    <strong>Példaforrás (japán):</strong>彼は következőです:<br/>
+    <strong>Példafordítás (angol):</strong>Ő egy barom.
     </td>
   </tr>
   <tr>
     <td><code>Deleted</code></td>
-    <td>A profán szavakat a rendszer a pótlás nélkül eltávolítja a kimenetből.<br/><br/>
-    <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: ő a.
+    <td>A trágár szavakat a rendszer csere nélkül eltávolítja a kimenetből.<br/><br/>
+    <strong>Példaforrás (japán):</strong>彼は következőです:<br/>
+    <strong>Példafordítás (angol):</strong>ő egy.
     </td>
   </tr>
   <tr>
     <td><code>Marked</code></td>
-    <td>A profán szavakat a kimenet jelölője váltja fel. A jelölő a <code>ProfanityMarker</code> paramétertől függ.<br/><br/>
-A (z) esetében a profán szavakat a következőre <code>ProfanityMarker=Asterisk</code> cseréli a rendszer <code>***</code> :<br/>
-    <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: ő a \* \* \* .<br/><br/>
-A (z) esetében a <code>ProfanityMarker=Tag</code> profán szavakat az XML-címkék &lt; profán &gt; és &lt; /profanity veszi körül &gt; :<br/>
-    <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: ez egy &lt; profán &gt; seggfej &lt; /profanity &gt; .
+    <td>A trágár szavakat a kimenetben egy jelölő váltja fel. A jelölő a paramétertől <code>ProfanityMarker</code> függ.<br/><br/>
+A <code>ProfanityMarker=Asterisk</code> alatt a trágár szavak a következőre vannak <code>***</code> lecserélve:<br/>
+    <strong>Példaforrás (japán):</strong>彼は következőです:<br/>
+    <strong>Példafordítás (angol):</strong>Ő egy \* \* \* .<br/><br/>
+A <code>ProfanityMarker=Tag</code> alatt trágár szavakat az XML-címkék &lt; profanitása és &gt; &lt; /profanitás vesz &gt; körül:<br/>
+    <strong>Példaforrás (japán):</strong>彼は következőです:<br/>
+    <strong>Példafordítás (angol):</strong>ő egy &lt; trágár &gt; jackass &lt; /profanity &gt; .
   </tr>
 </table> 
 
@@ -408,13 +408,13 @@ Ez a következőt adja vissza:
 ]
 ```
 
-Összehasonlítás a rel:
+Összehasonlítás a következővel:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
-A legutóbbi kérelem visszatérési értéke:
+Az utolsó kérés a következőt adja vissza:
 
 ```
 [
@@ -426,22 +426,22 @@ A legutóbbi kérelem visszatérési értéke:
 ]
 ```
 
-### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Tartalom lefordítása a Markup szolgáltatással és a fordítás eldöntése
+### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Tartalom fordítása jelölővel és annak eldöntésében, hogy mi lesz lefordítva
 
-Gyakori, hogy olyan tartalmat fordítson le, amely tartalmaz egy HTML-lapról származó tartalmat vagy egy XML-dokumentum tartalmát. Lekérdezési paraméter belefoglalása `textType=html` a tartalom címkékkel való lefordításakor. Emellett időnként hasznos lehet bizonyos tartalom kizárása a fordításból. Az attribútum használatával `class=notranslate` megadhatja a tartalmat, amely az eredeti nyelven marad. Az alábbi példában az első `div` elemen belüli tartalom nem lesz lefordítva, míg a második elem tartalma le lesz `div` fordítva.
+Gyakran fordítják le azokat a tartalmakat, amelyek kódot tartalmaznak, például egy HTML-oldal tartalmát vagy egy XML-dokumentum tartalmát. A tartalom `textType=html` címkékkel való lefordításakor lekérdezési paramétert is be kell foglalni. Emellett néha hasznos lehet kizárni bizonyos tartalmakat a fordításból. A attribútummal megadhatja `class=notranslate` azokat a tartalmakat, amelyek az eredeti nyelven maradnak. A következő példában az első elemen belüli tartalom nem lesz lefordítva, a második elem tartalma `div` `div` pedig le lesz fordítva.
 
 ```
 <div class="notranslate">This will not be translated.</div>
 <div>This will be translated. </div>
 ```
 
-Itt látható egy példa a bemutatóra.
+Itt látható egy szemléltető mintakérés.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
-A válasz:
+A válasz a következő:
 
 ```
 [
@@ -453,23 +453,23 @@ A válasz:
 ]
 ```
 
-### <a name="obtain-alignment-information"></a>Igazítási adatok beszerzése
+### <a name="obtain-alignment-information"></a>Igazítási információk beszerzése
 
-Az igazítás a forrás minden szavához a következő formátumú karakterlánc-értékként lesz visszaadva. Az egyes szavak adatait szóközzel elválasztva, beleértve a nem szóközzel elválasztott nyelveket (parancsfájlokat), például a következőt:
+Az igazítás az alábbi formátum sztringértékeként lesz visszaadva a forrás minden szavára. Az egyes szavak információit szóköz választja el egymástól, beleértve a nem szóközt elválasztott nyelveket (parancsfájlokat), például a kínait:
 
 [[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Példa az igazítási karakterláncra: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+Példa igazítási sztring: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
-Más szóval a kettőspont elkülöníti a kezdő és a záró indexet, a kötőjel elválasztja a nyelveket, és a szóköz elválasztja a szavakat. Előfordulhat, hogy egy szó nulla, egy vagy több Szóval van igazítva a másik nyelven, és az illesztett szavak nem folytonos. Ha nincs elérhető igazítási információ, az igazítási elem üres lesz. A metódus nem ad vissza hibát ebben az esetben.
+Más szóval a kettőspont választja el a kezdő és záró indexet, a kötőjel választja el a nyelveket, a szóköz pedig elválasztja a szavakat. Az egyik szó nulla, egy vagy több szóhoz igazodhat a másik nyelven, az igazított szavak pedig nem összefüggőek lehetnek. Ha nem áll rendelkezésre igazítási információ, az Igazítás elem üres lesz. Ebben az esetben a metódus nem ad vissza hibát.
 
-Az igazítási adatok fogadásához `includeAlignment=true` a lekérdezési karakterláncban meg kell adni a következőt:.
+Az igazítási információk fogadáshoz adja meg `includeAlignment=true` a értéket a lekérdezési sztringen.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true&quot; -H &quot;Ocp-Apim-Subscription-Key: <client-secret>&quot; -H &quot;Content-Type: application/json; charset=UTF-8&quot; -d &quot;[{'Text':'The answer lies in machine translation.'}]"
 ```
 
-A válasz:
+A válasz a következő:
 
 ```
 [
@@ -485,29 +485,29 @@ A válasz:
 ]
 ```
 
-Az igazítási adatok a következővel kezdődnek `0:2-0:1` , ami azt jelenti, hogy a forrás szövegének első három karaktere () a `The` lefordított szöveg () első két karakterére van leképezve `La` .
+Az igazítási információ a karakterrel kezdődik, ami azt jelenti, hogy a forrásszöveg ( ) első három karaktere a lefordított szöveg első két karakterére `0:2-0:1` `The` ( ) van `La` leképezve.
 
 #### <a name="limitations"></a>Korlátozások
-Az igazítási adatok beszerzése olyan kísérleti funkció, amelyet a lehetséges kifejezés-hozzárendelésekkel kapcsolatos kutatás és tapasztalatok prototípusához engedélyezünk. Dönthet úgy, hogy a későbbiekben nem támogatja ezt a támogatást. Íme néhány olyan jelentős korlátozás, amelyben az igazítások nem támogatottak:
+Az igazítási információk beszerzése egy kísérleti funkció, amely lehetővé teszi a lehetséges kifejezésleképezésekkel kapcsolatos kutatások és tapasztalatok prototípus-készítését. Dönthetünk úgy, hogy ezt a jövőben nem támogatjuk. Íme néhány olyan korlátozás, amely miatt az igazítások nem támogatottak:
 
-* Az igazítás nem érhető el HTML formátumú szöveghez, azaz textType = HTML
-* Az igazítást csak a nyelvi párok egy részhalmaza adja vissza:
-  - Angolról/más nyelvre, kivéve a hagyományos kínai, a kantoni (hagyományos) vagy a szerb (cirill) nyelvet.
-  - Japánról koreaira vagy Koreairól Japánra.
-  - Japánról kínaira egyszerűsített és kínaira egyszerűsített kínaira. 
-  - Egyszerűsített kínairól kínaira, hagyományos kínairól kínaira és egyszerűsített kínaira. 
-* Nem kap igazítást, ha a mondat egy konzerv fordítás. A konzerv fordítás például "Ez egy teszt", "szeretlek" és más nagy gyakoriságú mondatok.
-* Az igazítás nem érhető el, ha az itt leírt módszerek valamelyikét alkalmazza a fordítás megakadályozására az [itt](../prevent-translation.md) leírtak szerint.
+* Az igazítás NEM érhető el HTML formátumú szövegekhez, például textType=html formátumhoz
+* A nyelvi párok csak egy részkészlete esetén ad vissza igazítást:
+  - Angol nyelven vagy más nyelvről, kivéve a hagyományos kínai, a kantoni (hagyományos) vagy a szerb (cirill betűs) nyelvet.
+  - japánról koreaira vagy koreairól japánra.
+  - japánról egyszerűsített kínaira, a kínairól pedig egyszerűsítettről japánra. 
+  - kínairól egyszerűsítettről hagyományos kínaira, hagyományos kínairól egyszerűsített kínaira. 
+* Ha a mondat konzerv fordítás, nem fog igazítást kapni. Konzervfordítás például a "This is a test", a "I love you" és más nagy gyakoriságú mondatok.
+* Az igazítás nem érhető el, ha a fordítást megakadályozó megközelítéseket alkalmaz az itt leírt [módon](../prevent-translation.md)
 
-### <a name="obtain-sentence-boundaries"></a>Mondatok beszerzése
+### <a name="obtain-sentence-boundaries"></a>Mondathatárok beszerzése
 
-Ha meg szeretné kapni a mondat hosszára vonatkozó információkat a forrás szövegében és a lefordított szövegben, a `includeSentenceLength=true` lekérdezési karakterláncban kell megadni.
+A forrásszövegben és a lefordított szövegben található mondathosszról a lekérdezési sztringben adja meg a `includeSentenceLength=true` értéket.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
-A válasz:
+A válasz a következő:
 
 ```
 [
@@ -523,23 +523,23 @@ A válasz:
 ]
 ```
 
-### <a name="translate-with-dynamic-dictionary"></a>Fordítás dinamikus szótárral
+### <a name="translate-with-dynamic-dictionary"></a>Fordítás dinamikus szótár segítségével
 
-Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kifejezésre, a kérelemben megjelölheti azt. A dinamikus szótár csak a megfelelő nevekkel, például a személyes nevekkel és a termékek nevével biztonságos.
+Ha már ismeri a szóra vagy kifejezésre alkalmazni kívánt fordítást, a kérésben meg is használhatja azt jelölőként. A dinamikus szótár csak a megfelelő főnevek, például a személyes nevek és a terméknevek esetén biztonságos.
 
-Az ellátási kód a következő szintaxist használja.
+A megszabadához használt kód a következő szintaxist használja.
 
 ``` 
 <mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
-Tegyük fel például, hogy a "The Word wordomatic egy szótár bejegyzés" angol mondatot. Ha meg szeretné őrizni a fordítás _wordomatic_ a szót, küldje el a kérelmet:
+Vegyük például a "The wordomatic is a dictionary entry" (A szó egy szótárbejegyzés) angol nyelvű mondatot. A fordításban _a szó_ megőrzéséhez küldje el a kérést:
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
-Az eredmény a következőket eredményezi:
+Az eredmény a következő:
 
 ```
 [
@@ -551,4 +551,4 @@ Az eredmény a következőket eredményezi:
 ]
 ```
 
-Ez a funkció ugyanúgy működik, mint a vagy a szolgáltatással `textType=text` `textType=html` . A szolgáltatást takarékosan kell használni. A fordítás testreszabásának megfelelő és sokkal jobb módja az egyéni fordító használata. Az egyéni fordító a kontextus és statisztikai valószínűségek teljes körű kihasználását teszi lehetővé. Ha rendelkezik olyan képzési adataival, amelyek kontextusban mutatják be a munkát vagy kifejezést, sokkal jobb eredményeket érhet el. [További információ az egyéni fordítóról](../customization.md).
+Ez a funkció ugyanúgy működik a vagy a `textType=text` `textType=html` használatával. A funkciót ritkán kell használni. A fordítás testreszabásának megfelelő és sokkal jobb módja a Custom Translator. Custom Translator teljes mértékben kihasználhatja a kontextust és a statisztikai valószínűségeket. Ha van vagy megengedheti magának, hogy olyan betanító adatokat hozzon létre, amelyek kontextusban jelenítik meg a munkáját vagy kifejezését, sokkal jobb eredményeket fog kapni. [További információ a Custom Translator.](../customization.md)

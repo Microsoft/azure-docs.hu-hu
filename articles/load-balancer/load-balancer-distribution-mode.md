@@ -1,33 +1,33 @@
 ---
-title: Azure Load Balancer terjesztési mód konfigurálása
+title: A Azure Load Balancer mód konfigurálása
 titleSuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Load Balancer terjesztési módját a forrás IP-affinitás támogatásához.
+description: Ebben a cikkben elkezdi konfigurálni az elosztási módot a Azure Load Balancer a forrás IP-affinitás támogatásához.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 2d8d5d84d32cdb8cc813d033f3f3fbb453b538fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c6b845a8176054dc5ec6cfc239e609f568c925d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739916"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483618"
 ---
-# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Az elosztási mód konfigurálása Azure Load Balancer
 
-A Azure Load Balancer két terjesztési módot támogat az alkalmazások forgalmának elosztásához:
+Azure Load Balancer két elosztási módot támogat a forgalom az alkalmazások közötti elosztásához:
 
-* Kivonatoló alapú
+* Kivonatalapú
 * Forrás-IP-affinitás
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Load Balancer terjesztési módját.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a terjesztési módot a Azure Load Balancer.
 
 
 ## <a name="configure-distribution-mode"></a>Terjesztési mód konfigurálása
@@ -36,20 +36,20 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Load Balancer ter
 
 # <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal)
 
-A terjesztési mód konfigurációját módosíthatja a portál terheléselosztási szabályának módosításával.
+Az elosztási mód konfigurációját a terheléselosztási szabály módosításával módosíthatja a portálon.
 
-1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok** lehetőségre kattintva.
-2. A terheléselosztó áttekintése képernyőn válassza a **Beállítások** területen a **terheléselosztási szabályok** elemet.
-3. A terheléselosztási szabályok képernyőn válassza ki azt a terheléselosztási szabályt, amelynél módosítani szeretné a terjesztési módot.
-4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával. 
+1. Jelentkezzen be a Azure Portal, és az Erőforráscsoportok elemre kattintva keresse meg a módosítani kívánt **terheléselosztást tartalmazó erőforráscsoportot.**
+2. A terheléselosztás áttekintő képernyőjén válassza a **Terheléselosztási szabályok lehetőséget a** Beállítások **alatt.**
+3. A terheléselosztási szabályok képernyőn válassza ki azt a terheléselosztási szabályt, amelynél módosítani szeretné az elosztási módot.
+4. A szabály alatt a terjesztési mód  a Munkamenet-megőrzés legördülő lista módosításával módosítható. 
 
 A következő lehetőségek érhetők el: 
 
-* **Nincs (kivonat-alapú)** – azt határozza meg, hogy egy adott ügyfél egymást követő kérelmeit bármely virtuális gép kezelheti.
-* **Ügyfél IP-címe (forrás IP-affinitása kétrekordos)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
-* **Ügyfél IP-címe és protokollja (forrás IP-kapcsolat három rekordos)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
+* **Nincs (kivonatalapú)** – Azt adja meg, hogy az ugyanazon ügyféltől származó egymást követő kéréseket bármely virtuális gép kezelheti.
+* **Ügyfél IP-címe (két** rekordos forrás IP-affinitás) – Meghatározza, hogy az azonos ügyfél IP-címről származó egymást követő kéréseket ugyanaz a virtuális gép fogja kezelni.
+* Ügyfél IP-címe és protokollja (három rekordos forrás **IP-affinitás)** – Megadja, hogy az azonos ügyfél IP-címről és protokollkombinációból származó egymást követő kéréseket ugyanaz a virtuális gép fogja kezelni.
 
-5. Válassza ki a terjesztési módot, majd kattintson a **Mentés** gombra.
+5. Válassza ki a terjesztési módot, majd válassza a **Mentés lehetőséget.**
 
 :::image type="content" source="./media/load-balancer-distribution-mode/session-persistence.png" alt-text="A terheléselosztási szabály munkamenet-megőrzésének módosítása." border="true":::
 
@@ -58,7 +58,7 @@ A következő lehetőségek érhetők el:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A PowerShell használatával módosítsa a terheléselosztó terjesztési beállításait egy meglévő terheléselosztási szabályon. A következő parancs frissíti a terjesztési módot: 
+A PowerShell használatával módosíthatja a terheléselosztó elosztási beállításait egy meglévő terheléselosztási szabályon. A következő parancs frissíti a terjesztési módot: 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroupLB
@@ -66,19 +66,19 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'default'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Adja meg az elem értékét `LoadDistribution` a szükséges terheléselosztási típushoz. 
+Állítsa be az `LoadDistribution` elem értékét a szükséges terheléselosztási típushoz. 
 
-* **SourceIP** megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
+* Adja **meg a SourceIP** értéket a két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
 
-* Adja meg a **SourceIPProtocol** a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. 
+* Adja **meg a SourceIPProtocol** értéket három rekordos (forrás IP-cím, cél IP-cím és protokolltípus) terheléselosztáshoz. 
 
-* Az öt rekordos terheléselosztás alapértelmezett működésének **alapértelmezett értékének megadása.**
+* Adja **meg az** Alapértelmezett értéket az öt rekordos terheléselosztás alapértelmezett viselkedéseként.
 
-# <a name="cli"></a>[**Parancssori felület**](#tab/azure-cli)
+# <a name="cli"></a>[**parancssori felület**](#tab/azure-cli)
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Az Azure CLI használatával módosíthatja a terheléselosztási terjesztési beállításokat egy meglévő terheléselosztási szabályon.  A következő parancs frissíti a terjesztési módot:
+Az Azure CLI használatával módosíthatja egy meglévő terheléselosztási szabály terheléselosztási beállításait.  A következő parancs frissíti az elosztási módot:
 
 ```azurecli-interactive
 az network lb rule update \
@@ -87,20 +87,20 @@ az network lb rule update \
     --name myHTTPRule \
     --resource-group myResourceGroupLB 
 ```
-Állítsa be a értéket `--load-distribution` a szükséges terheléselosztási típushoz.
+Állítsa be a értékét a szükséges `--load-distribution` terheléselosztási típushoz.
 
-* **SourceIP** megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
+* Adja **meg a SourceIP** értéket a két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
 
-* Adja meg a **SourceIPProtocol** a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. 
+* Adja **meg a SourceIPProtocol** értéket három rekordos (forrás IP-cím, cél IP-cím és protokolltípus) terheléselosztáshoz. 
 
-* Az öt rekordos terheléselosztás alapértelmezett működésének **alapértelmezett értékének megadása.**
+* Adja **meg az** Alapértelmezett értéket az öt rekordos terheléselosztás alapértelmezett viselkedéseként.
 
-További információ a cikkben használt parancsról: az [Network LB Rule Update](/cli/azure/network/lb/rule#az_network_lb_rule_update)
+A cikkben használt paranccsal kapcsolatos további információkért lásd: [az network lb rule update](/cli/azure/network/lb/rule#az_network_lb_rule_update)
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Load Balancer áttekintése](load-balancer-overview.md)
-* [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](quickstart-load-balancer-standard-public-powershell.md)
+* [Az internetkapcsolattal kapcsolatos terheléseltöltők konfigurálásával kapcsolatos első lépések](quickstart-load-balancer-standard-public-powershell.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

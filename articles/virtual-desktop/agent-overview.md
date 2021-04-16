@@ -1,51 +1,52 @@
 ---
-title: Ismerkedés a Windows rendszerű virtuális asztali ügynökkel
-description: A Windows rendszerű virtuális asztali ügynök és a frissítési folyamatok áttekintése.
+title: A Windows Virtual Desktop-ügynök – első lépések
+description: Az ügynök Windows Virtual Desktop és frissítési folyamatok áttekintése.
 author: Sefriend
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 371cc78f3ebad638008f4195f164b66a64948c65
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 529a86712994aae91a554589d383cc748f79d07f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504549"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520105"
 ---
-# <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Ismerkedés a Windows rendszerű virtuális asztali ügynökkel
+# <a name="get-started-with-the-windows-virtual-desktop-agent"></a>A Windows Virtual Desktop-ügynök – első lépések
 
-A Windows rendszerű virtuális asztali szolgáltatások keretrendszere három fő összetevőből áll: a Távoli asztal-ügyfélre, a szolgáltatásra és a virtuális gépekre. Ezek a virtuális gépek az ügyfél-előfizetésben jelennek meg, ahol telepítve van a Windows rendszerű virtuális asztali ügynök és az ügynök rendszerbetöltő. Az ügynök közbenső kommunikátorként működik a szolgáltatás és a virtuális gépek között, ami lehetővé teszi a kapcsolódást. Ezért ha az ügynök telepítésével, frissítésével vagy konfigurálásával kapcsolatos problémákat tapasztal, a virtuális gépek nem fognak tudni csatlakozni a szolgáltatáshoz. Az ügynök rendszerbetöltője az ügynököt betöltő végrehajtható fájl. 
+A Windows Virtual Desktop Service framework három fő összetevőből áll: a Távoli asztal, a szolgáltatásból és a virtuális gépekből. Ezek a virtuális gépek abban az ügyfél-előfizetésben vannak, ahol a Windows Virtual Desktop ügynök és az ügynök rendszertöltője telepítve van. Az ügynök köztes kommunikálóként működik a szolgáltatás és a virtuális gépek között, ami lehetővé teszi a csatlakozást. Ezért ha problémákat tapasztal az ügynök telepítésével, frissítésével vagy konfigurálásával kapcsolatban, a virtuális gépek nem fognak tudni csatlakozni a szolgáltatáshoz. Az ügynök rendszertöltője az a végrehajtható fájl, amely betölti az ügynököt. 
 
-Ez a cikk az ügynök telepítési és frissítési folyamatainak rövid áttekintését nyújtja.
+Ez a cikk rövid áttekintést nyújt az ügynöktelepítési és -frissítési folyamatokról.
 
 >[!NOTE]
->Ez a dokumentáció nem a FSLogix-ügynökhöz vagy a Távoli asztal ügyfél-ügynökhöz készült.
+>Ez a dokumentáció nem az FSLogix-ügynökhöz vagy a Távoli asztal ügynökhöz való.
 
 
 ## <a name="initial-installation-process"></a>Kezdeti telepítési folyamat
 
-A Windows rendszerű virtuális asztali ügynök kezdetben kétféleképpen telepíthető. Ha virtuális gépeket (VM-ket) hoz létre a Azure Portal és az Azure Marketplace-en, a rendszer automatikusan telepíti az ügynököt és az ügynök rendszerbetöltőjét. Ha a virtuális gépeket a PowerShell használatával hozza létre, akkor manuálisan kell letöltenie az ügynököt és az ügynököt betöltő. msi fájlokat, amikor [a PowerShell-lel létrehoz egy Windows rendszerű virtuális asztali címkészletet](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool). Miután telepítette az ügynököt, telepíti a Windows rendszerű virtuális asztal egymás melletti veremét és a Genfi figyelési ügynököt. Az egymás melletti stack összetevő szükséges ahhoz, hogy a felhasználók biztonságosan hozzanak létre fordított kiszolgáló – ügyfél kapcsolatokat. A Genfi figyelő ügynök figyeli az ügynök állapotát. Mindhárom összetevő elengedhetetlen a végpontok közötti felhasználói kapcsolatok megfelelő működéséhez.
+A Windows Virtual Desktop ügynök először kétféleképpen telepíthető. Ha virtuális gépeket (VM-eket) telepít a Azure Portal és Azure Marketplace, az ügynök és az ügynök rendszertöltője automatikusan telepítve lesz. Ha a PowerShell használatával hoz létre virtuális gépeket, manuálisan kell letöltenie az ügynököt és az ügynök rendszertöltő .msi fájljait, amikor a [PowerShell-Windows Virtual Desktop](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)gazdagépkészletet hoz létre. Az ügynök telepítése után telepíti a Windows Virtual Desktop és a Geno Monitoring-ügynököt. Az egymás mellett található verem összetevőre azért van szükség, hogy a felhasználók biztonságosan hozzanak létre fordított kiszolgálók és ügyfelek közötti kapcsolatokat. A Geneva Monitoring-ügynök figyeli az ügynök állapotát. Mindhárom összetevő elengedhetetlen a végpontok között működő felhasználói kapcsolatok megfelelő működéséhez.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali ügynök, egymás melletti verem és a Genfi figyelő ügynök sikeres telepítéséhez fel kell oldania a [szükséges URL-címek listájában](safe-url-list.md#virtual-machines)felsorolt összes URL-cím blokkolását. Az URL-címek blokkolásának feloldása szükséges a Windows virtuális asztali szolgáltatás használatához.
+>Az Windows Virtual Desktop ügynök, a egymás mellett található verem és a Geno Monitoring-ügynök sikeres telepítéséhez fel kell oldani a Szükséges URL-címek listájában felsorolt összes [URL-cím blokkolását.](safe-url-list.md#virtual-machines) Ezeknek az URL-címeknek a feloldására a Windows Virtual Desktop szüksége.
 
 ## <a name="agent-update-process"></a>Ügynök frissítési folyamata
 
-A Windows rendszerű virtuális asztali szolgáltatás frissíti az ügynököt, amikor egy frissítés elérhetővé válik. Az ügynökök frissítései a korábbi problémák új funkcióit vagy javításait is tartalmazhatják. Miután telepítette a Windows rendszerű virtuális asztali ügynök kezdeti verzióját, az ügynök rendszeresen lekérdezi a Windows Virtual Desktop szolgáltatást annak megállapítására, hogy elérhető-e az ügynök, a verem vagy a figyelési összetevő újabb verziója. Ha az összetevők valamelyikének újabb verziója már telepítve van, a rendszer automatikusan telepíti a frissített összetevőt.
+A Windows Virtual Desktop szolgáltatás frissíti az ügynököt, amikor egy frissítés elérhetővé válik. Az ügynökfrissítések tartalmazhatnak új funkciókat vagy a korábbi problémák megoldását. Az ügynök legújabb stabil verziójának mindig telepítve kell lennie, hogy a virtuális gépek ne veszítsenek el kapcsolatot vagy biztonságot. A Windows Virtual Desktop-ügynök kezdeti verziójának telepítése után az ügynök rendszeresen lekérdezi az Windows Virtual Desktop szolgáltatást annak megállapításához, hogy elérhető-e az ügynök, a verem vagy a figyelési összetevő újabb verziója. Ha az összetevők újabb verziója már telepítve van, a frissített összetevőt automatikusan telepíti a repülési rendszer.
 
-Az ügynök új verziói az Azure-előfizetések egyhetes időszakokban rendszeres időközönként üzembe helyezhetők. A frissítési időszakok neve "Flights". Ha egy repülés történik, előfordulhat, hogy a gazdagépen található virtuális gépek különböző időpontokban kapják meg az ügynök frissítését. Az összes előfizetésben szereplő összes virtuálisgép-ügynököt a központi telepítési időszak végéig frissíti a rendszer. A Windows rendszerű virtuális asztali repülési rendszer fokozza a szolgáltatás megbízhatóságát az ügynök frissítésének stabilitásának és minőségének biztosításával.
+Az ügynök új verziói rendszeres időközönként, hetente minden Azure-előfizetésben telepítve vannak. Ezeket a frissítési időszakokat "járatoknak" nevezzük. Repülőjáratkor előfordulhat, hogy a gazdagépkészletben található virtuális gépek különböző időpontokban kapják meg az ügynök frissítését. Az összes előfizetésben található összes virtuálisgép-ügynök frissül az üzembe helyezési időszak végéig. A Windows Virtual Desktop rendszer az ügynökfrissítés stabilitásának és minőségének biztosításával növeli a szolgáltatás megbízhatóságát.
 
 
->[!NOTE]
->Mivel előfordulhat, hogy a gazdagépen lévő virtuális gépek különböző időpontokban kapják meg az ügynökök frissítéseit, meg kell tudnia állapítani a hibák és a sikertelen ügynökök frissítései közötti különbséget. Ha a virtuális gép eseménynaplóit **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazásban** tekinti meg, és az "id 3277" címkével ellátott eseményt látja, akkor az ügynök frissítése nem működött. Ha nem látja ezt az eseményt, akkor a virtuális gép egy másik útvonalon található, és később frissülni fog.
->- Ha a Genfi figyelő ügynök a legújabb verzióra frissül, a régi GenevaTask feladat az új figyelési ügynökhöz tartozó új feladat létrehozása előtt található és le van tiltva. A figyelési ügynök korábbi verziója nem törlődik abban az esetben, ha a figyelési ügynök legújabb verziója olyan problémával rendelkezik, amely megköveteli a korábbi verzióra való visszaállást a javításhoz. Ha a legújabb verzióban probléma van, a régi figyelési ügynök ismét engedélyezve lesz a figyelési adattovábbítás folytatásához. A figyelő minden olyan verziója, amely korábban a frissítés előtt lett telepítve, a rendszer törli a virtuális gépről.
->- A virtuális gép egyszerre három verziót tart fenn egymás melletti veremben. Ez lehetővé teszi a gyors helyreállítást, ha valami probléma merül fel a frissítéssel. A verem legkorábbi verzióját a rendszer eltávolítja a virtuális gépről, valahányszor a verem frissül.
+Egyéb fontos dolgok, amit érdemes szem előtt tartani:
 
-A frissítés telepítése általában 2-3 percet vesz igénybe egy új virtuális gépen, és nem okozhatja, hogy a virtuális gép kapcsolata megszakadjon vagy leáll. Ez a frissítési folyamat a Windows rendszerű virtuális asztali (klasszikus) és a Windows rendszerű virtuális asztal legújabb verziójára vonatkozik Azure Resource Manager.
+- Mivel a gazdagépkészlet virtuális gépei különböző időpontokban kaphatják meg az ügynök frissítéseit, meg kell tudni mondania a különbséget a repülési problémák és a sikertelen ügynökfrissítések között. Ha a windowsos naplók alkalmazásában a **virtuális** gép eseménynaplóiba  >    >   Eseménynapló"3277-es azonosítójú" eseményt lát, az azt jelenti, hogy az ügynök frissítése nem működött. Ha nem látja ezt az eseményt, akkor a virtuális gép egy másik járaton van, és később frissülni fog.
+- Amikor a Geneva Monitoring-ügynök a legújabb verzióra frissül, a régi GenevaTask-feladat megtalálható és le van tiltva, mielőtt új feladatot hoz létre az új monitorozási ügynökhöz. A figyelőügynök korábbi verziója nem törlődik abban az esetben, ha a figyelőügynök legújabb verziója olyan problémát okoz, amely miatt vissza kell állni a korábbi verzióra a javításhoz. Ha a legújabb verzióval probléma van, a régi monitorozási ügynök újra engedélyezve lesz a figyelési adatok további kézbesítéséhez. A figyelő összes olyan verziója törlődik a virtuális gépről, amely a frissítés előtti utolsó telepítésnél korábbi.
+- A virtuális gép egyszerre három verzióban tartja meg a egymás mellett található veremeket. Ez gyors helyreállítást tesz lehetővé, ha a frissítéssel valami baj van. A verem legkorábbi verziója el lesz távolítva a virtuális gépről, amikor a verem frissül.
+
+Az ügynök frissítése általában 2–3 percig tart egy új virtuális gépen, és nem okozhatja, hogy a virtuális gép kapcsolata megszakadjon vagy leálljon. Ez a frissítési folyamat a Windows Virtual Desktop (klasszikus) és a Windows Virtual Desktop legújabb verziójára is Azure Resource Manager.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy jobban megértette a Windows rendszerű virtuális asztali ügynököt, íme néhány olyan erőforrás, amely segíthet:
+Most, hogy már jobban érti a Windows Virtual Desktop ügynökét, íme néhány forrásanyag, amelyek segíthetnek Önnek:
 
-- Ha ügynökkel vagy kapcsolattal kapcsolatos problémákat tapasztal, tekintse meg a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos hibaelhárítási útmutatót](troubleshoot-agent.md).
+- Ha ügynökkel vagy kapcsolattal kapcsolatos problémákat tapasztal, tekintse meg a Windows Virtual Desktop problémák hibaelhárítási [útmutatóját.](troubleshoot-agent.md)

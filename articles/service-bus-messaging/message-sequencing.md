@@ -1,44 +1,48 @@
 ---
-title: Azure Service Bus üzenet-előkészítés és időbélyegek | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet megőrizni a Azure Service Bus üzenetek sorrendjét és megrendelését (időbélyeg használatával).
+title: Azure Service Bus üzenet-szekvenálás és időbélyegek | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan őrizze meg az üzenetek sorrendbe Azure Service Bus sorrendjét (időbélyegekkel).
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3d5300568232afae1238445113d60eda8cdb2f1b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341166"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497097"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Üzenetek előkészítése és időbélyegek
 
-Az előkészítés és az időbélyegző két olyan szolgáltatás, amely mindig engedélyezve van az összes Service Bus entitáson és felületen a fogadott vagy a tallózással ellátott üzenetek [sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) és [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) tulajdonságain keresztül.
+Az alkalmazás-alkalmazás és az időbélyegző két olyan funkció, amely mindig engedélyezve van az összes Service Bus entitáson, és végigveszi a felületet a fogadott vagy a tallózott üzenetek és tulajdonságai `SequenceNumber` `EnqueuedTimeUtc` között.
 
-Azokban az esetekben, amelyekben az üzenetek abszolút sorrendje jelentős, és/vagy amelyekben a fogyasztónak megbízható egyedi azonosítóval kell rendelkeznie az üzenetekhez Particionált entitások esetén a sorozatszám a partícióhoz viszonyítva jelenik meg.
+Olyan esetekben, amikor az üzenetek abszolút sorrendje jelentős, és/vagy amikor a fogyasztónak megbízható egyedi azonosítóra van szüksége az üzenetekhez, a közvetítő hézagmentesként, az üzenetsorhoz vagy témakörhez képest növekvő sorszámmal bélyegezi az üzeneteket. Particionált entitások esetében a sorszám a partícióhoz viszonyítva lesz kibocsátva.
 
-A **sorszám** érték egy egyedi, 64 bites egész szám, amelyet elfogad, és a közvetítő és a függvény belső azonosítójaként tárol az üzenethez. Particionált entitások esetén a legfelső 16 bit a partíció azonosítóját tükrözi. A sorozatszámok átadása nulla értékre történik, ha a 48/64 bites tartomány kimerült.
+A **SequenceNumber** érték egy üzenethez rendelt egyedi, 64 bites egész szám, amelyet a közvetítő elfogad, és belső azonosítóként tárol. Particionált entitások esetében a legfelső 16 bit a partícióazonosítót tükrözi. Ha a 48/64 bites tartomány kimerül, a szekvenciaszámok nullára esnek.
 
-A sorozatszám lehet megbízhatóként szolgálni, mivel azt egy központi és semleges szolgáltató rendeli hozzá, és nem az ügyfelek. Emellett az érkezés igaz sorrendjét is jelenti, és az időbélyegzőnél pontosabb, mint a sorrendi feltétel, mert az időbélyegek nem rendelkeznek elég nagy felbontással a szélsőséges üzenetek díjainál, és előfordulhat, hogy a közvetítők a csomópontok közötti átmenetet okozó eltéréseket (ugyanakkor minimális) az órákat is elferdítik.
+A sorozatszám egyedi azonosítóként is megbízható, mivel azt egy központi és semleges hatóság rendeli hozzá, nem az ügyfelek. Emellett a pontos érkezési sorrendet is jelzi, és pontosabb, mint az időbélyeg mint rendelési feltétel, mivel az időbélyegek nem biztos, hogy elég magas felbontással vannak feltéve a szélsőséges üzenetváltások esetén, és óraelrendeződéseket okozhatnak olyan helyzetekben, amikor a közvetítő tulajdonjoga átvált a csomópontok között.
 
-Az abszolút megérkezési sorrend számít, például olyan üzleti forgatókönyvekben, amelyekben korlátozott számú felkínált termék érkezik a szolgáltatásba, és a szolgáltatás az utolsót is teljesíti. Példa a koncert jegyek értékesítésére.
+Az abszolút érkezési sorrend fontos, például olyan üzleti forgatókönyvekben, amelyekben korlátozott számú felajánlott terméket szolgálnak ki érkezési sorrendben, amíg a készletek utolsók; A "concert ticket"-értékesítés jó példa erre.
 
-Az időbélyegzési képesség semleges és megbízható szolgáltatóként működik, amely pontosan rögzíti az üzenet érkezésének UTC-időpontját, amely a **EnqueuedTimeUtc** tulajdonságban szerepel. Az érték akkor hasznos, ha egy üzleti forgatókönyv a határidőktől függ, például azt, hogy a munkaelemet éjfél előtt adta-e meg egy adott dátumon, de a feldolgozás messze van-e a várólista-várakozó fájloktól.
+Az időbélyegző képesség semleges és megbízható hatóságként működik, amely pontosan rögzíti egy üzenet UTC-érkezési idejét, amit az **EnqueuedTimeUtc** tulajdonság tükröz. Ez az érték akkor hasznos, ha egy üzleti forgatókönyv a határidőktől függ, például attól, hogy egy munkaelem egy bizonyos napon éjfél előtt lett-e elküldve, de a feldolgozás jóval az üzenetsor hátraléka mögött van.
 
 ## <a name="scheduled-messages"></a>Ütemezett üzenetek
 
-Az üzeneteket késleltetett feldolgozásra is beadhatja az üzenetsorba vagy témakörbe például azért, hogy egy ütemezett feladattal az üzenetek elérhetővé váljanak egy másik rendszer általi feldolgozásra egy bizonyos időpontban. Ez a funkció megbízható, elosztott időalapú ütemező szolgáltatást valósít meg.
+Az üzeneteket késleltetett feldolgozásra is beadhatja az üzenetsorba vagy témakörbe például azért, hogy egy ütemezett feladattal az üzenetek elérhetővé váljanak egy másik rendszer általi feldolgozásra egy bizonyos időpontban. Ez a képesség egy megbízható elosztott, időalapú ütemezőt képes megvalósítani.
 
-Az ütemezett üzenetek a megadott sorba helyezni időpontig nem jelennek meg a várólistán. Ez idő előtt az ütemezett üzenetek megvonhatók. A törlés törli az üzenetet.
+Az ütemezett üzenetek nem materializálódnak az üzenetsorban, amíg a megadott sorba nem kerül. Ezt megelőzően az ütemezett üzenetek megszakíthatóak. A megszakítás törli az üzenetet.
 
-Az üzeneteket a [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) tulajdonság beállításával is elvégezheti, ha az üzenetet a normál küldési útvonalon keresztül küldi el, vagy explicit módon a [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API-val. Az utóbbi azonnal visszaadja az ütemezett üzenet **sorszám**, amelyet később az ütemezett üzenet megszakítására is használhat, ha szükséges. Az ütemezett üzenetek és sorozatszámuk is felderíthető az [üzenetek tallózása](message-browsing.md)során.
+Az üzeneteket kétféleképpen ütemezheti bármelyik ügyféllel:
+- Használja a normál küldési API-t, de küldés előtt állítsa be az üzenet `ScheduledEnqueueTimeUtc` tulajdonságát.
+- Használja a schedule message API-t, és adja át a normál üzenetet és az ütemezett időt is. Ez visszaadja az ütemezett üzenet **SequenceNumber** számát, amellyel később szükség esetén megszakíthatja az ütemezett üzenetet. 
 
-Az ütemezett üzenet **sorszám** csak akkor érvényes, ha az üzenet ebben az állapotban van. Ahogy az üzenet aktív állapotba vált, az üzenetet a rendszer hozzáfűzi a várólistához, mintha a jelenlegi pillanatban várólistán lévő volna, ami magában foglalja az új **sorszám** hozzárendelését is.
+Az ütemezett üzenetek és a sorszámaik az üzenetböngészővel [is felderítve vannak.](message-browsing.md)
 
-Mivel a szolgáltatás egyedi üzenetekre van rögzítve, és az üzenetek csak egyszer várólistán lévő, Service Bus nem támogatja az üzenetek ismétlődő ütemezését.
+Az ütemezett üzenetek **SequenceNumber** száma csak akkor érvényes, ha az üzenet ebben az állapotban van. Ahogy az üzenet aktív állapotba kerül, a rendszer úgy fűzi hozzá az üzenetet az üzenetsorhoz, mintha az aktuális pillanatban sorba lett volna küldődve, beleértve egy új **SequenceNumber hozzárendelését.**
+
+Mivel a funkció az egyes üzenetekhez van horgonyozva, és az üzenetek csak egyszer Service Bus nem támogatja az üzenetek ismétlődő ütemezését.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
+Az üzenetkezelésről Service Bus alábbi témakörökben olvashat bővebben:
 
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
