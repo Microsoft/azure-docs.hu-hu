@@ -1,34 +1,36 @@
 ---
-title: 'Gyors útmutató: webes forgalom közvetlen használata a portálon'
+title: 'Rövid útmutató: Webes forgalom közvetlen használata a portál használatával'
 titleSuffix: Azure Application Gateway
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a Azure Portal egy olyan Azure-Application Gateway létrehozásához, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre a Azure Portal használatával olyan Azure Application Gateway, amely a háttérkészletben lévő virtuális gépekre irányítja a webes forgalmat.
 services: application-gateway
 author: vhorne
-ms.service: application-gateway
-ms.topic: quickstart
-ms.date: 01/19/2021
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/19/2021
+ms.topic: quickstart
+ms.service: application-gateway
+ms.custom:
+- mvc
+- mode-portal
+ms.openlocfilehash: 92e966f5a9c4a21a6a55862ad582f0238802720f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572969"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538568"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
 
-Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre Application Gateway-t. Ezt követően ellenőrizze, hogy megfelelően működik-e. 
+Ebben a rövid útmutatóban a Azure Portal egy Alkalmazásátjárót hoz létre. Ezután tesztelje, hogy megfelelően működik-e. 
 
-Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet adott erőforrásaira irányítja. A figyelőket hozzárendelheti a portokhoz, szabályokat hozhat létre, és erőforrásokat adhat hozzá egy háttér-készlethez. Az egyszerűség kedvéért ez a cikk egy egyszerű telepítőt használ egy nyilvános előtér-IP-címmel, egy alapszintű figyelővel, amely egyetlen helyet üzemeltet az Application gatewayben, egy alapszintű kérelem-útválasztási szabályt és két virtuális gépet a háttér-készletben.
+Az Application Gateway a háttérkészlet adott erőforrásaihoz irányítja az alkalmazás webes forgalmát. Figyelőket rendelhet a portokhoz, szabályokat hozhat létre, és erőforrásokat adhat a háttérkészlethez. Az egyszerűség kedvéért ez a cikk egy egyszerű beállítást használ nyilvános előtere IP-címmel, egy alapszintű listenerrel, amely egyetlen helyet kezel az alkalmazásátjárón, egy egyszerű kérés-útválasztási szabályt és két virtuális gépet a háttérkészletben.
 
-Ezt a rövid útmutatót [Azure PowerShell](quick-create-powershell.md) vagy az [Azure CLI](quick-create-cli.md)használatával is elvégezheti.
+A rövid útmutatót az Azure CLI vagy a [Azure PowerShell](quick-create-powershell.md) [használatával is befejezheti.](quick-create-cli.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -36,144 +38,144 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az Application Gateway-t az **Application Gateway létrehozása** lap lapfülei segítségével hozhatja létre.
+Az Alkalmazásátjáró létrehozása lapfülek használatával fogja létrehozni **az Alkalmazásátjárót.**
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. **Megjelenik** az Új ablak.
 
-2. Válassza a **hálózatkezelés** lehetőséget, majd a **Kiemelt** listában válassza a **Application Gateway** lehetőséget.
+2. Válassza **a Hálózat lehetőséget,** majd **Application Gateway** a Kiemelt **listában.**
 
-### <a name="basics-tab"></a>Alapbeállítások lap
+### <a name="basics-tab"></a>Alapvető beállítások lap
 
-1. Az **alapok** lapon adja meg a következő Application Gateway-beállításokhoz tartozó értékeket:
+1. Az Alapvető **beállítások** lapon adja meg ezeket az értékeket az Application Gateway következő beállításaihoz:
 
-   - **Erőforráscsoport**: válassza ki az erőforráscsoport **myResourceGroupAG** . Ha nem létezik, válassza az **új létrehozása** elemet a létrehozásához.
-   - **Application Gateway neve**: írja be a *myAppGateway* nevet az Application Gateway neveként.
+   - **Erőforráscsoport:** Válassza ki **a myResourceGroupAG** erőforráscsoportot. Ha még nem létezik, válassza az **Új létrehozása** lehetőséget a létrehozásához.
+   - **Application Gateway neve:** Az Alkalmazásátjáró neveként adja meg a *myAppGateway* nevet.
 
-     ![Új Application Gateway létrehozása: alapismeretek](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     ![Új Application Gateway létrehozása: Alapvető ismeretek](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-2. Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában egy új virtuális hálózatot fog létrehozni az Application Gateway létrehozásakor. Application Gateway példányok külön alhálózatokban jönnek létre. Ebben a példában két alhálózatot hoz létre: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára.
+2. Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra. Létrehozhat egy új virtuális hálózatot, vagy használhat egy meglévőt. Ebben a példában egy új virtuális hálózatot fog létrehozni az Application Gateway létrehozásakor. Application Gateway példányok külön alhálózatban vannak létrehozva. Ebben a példában két alhálózatot hoz létre: egyet az alkalmazásátjáróhoz, egyet pedig a háttérkiszolgálókhoz.
 
     > [!NOTE]
-    > A [virtuális hálózati szolgáltatás végponti házirendjei](../virtual-network/virtual-network-service-endpoint-policies-overview.md) jelenleg nem támogatottak Application Gateway alhálózatban.
+    > [A virtuális hálózati szolgáltatásvégpont-szabályzatok](../virtual-network/virtual-network-service-endpoint-policies-overview.md) jelenleg nem támogatottak Application Gateway alhálózaton.
 
-    A **virtuális hálózat konfigurálása** területen hozzon létre egy új virtuális hálózatot az **új létrehozása** lehetőség kiválasztásával. A megnyíló **virtuális hálózat létrehozása** ablakban adja meg a következő értékeket a virtuális hálózat és két alhálózat létrehozásához:
+    A **Virtuális hálózat konfigurálása alatt** hozzon létre egy új virtuális hálózatot az Új létrehozása lehetőség **kiválasztásával.** A **megnyíló Virtuális hálózat** létrehozása ablakban adja meg a következő értékeket a virtuális hálózat és két alhálózat létrehozásához:
 
-    - **Név**: írja be a *myVNet* nevet a virtuális hálózat nevéhez.
+    - **Név:** A virtuális hálózat neveként adja meg a *myVNet* nevet.
 
-    - **Alhálózat neve** (Application Gateway alhálózat): az **alhálózatok** rácsa egy *alapértelmezett* nevű alhálózatot fog megjeleníteni. Módosítsa az alhálózat nevét a *myAGSubnet* értékre.<br>Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
+    - **Alhálózat neve** (Application Gateway alhálózat): **Az** Alhálózatok rács egy Default nevű alhálózatot fog *mutatni.* Módosítsa az alhálózat nevét a *következőre: myAGSubnet.*<br>Az Application Gateway alhálózata csak alkalmazásátjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
 
-    - **Alhálózat neve** (háttérbeli kiszolgáló alhálózata): az **alhálózatok** rácsának második sorában adja meg az *myBackendSubnet* értéket az **alhálózat neve** oszlopban.
+    - **Alhálózat neve** (háttérkiszolgáló alhálózata): Az Alhálózatok rács második sorában adja meg a *myBackendSubnet* nevet az **Alhálózat neve oszlopban.** 
 
-    - **Címtartomány** (háttér-kiszolgáló alhálózata): az **alhálózatok** rácsának második sorában olyan címtartományt adjon meg, amely nem fedi át a *myAGSubnet* címtartomány-tartományát. Ha például a *myAGSubnet* 10.0.0.0/24, a *10.0.1.0/24* értéket adja meg a *myBackendSubnet*-tartományhoz.
+    - **Címtartomány** (háttérkiszolgáló alhálózata): Az Alhálózatok rács második sorában adjon meg egy olyan címtartományt, amely nincs átfedésben a *myAGSubnet címtartományával.*  Ha például a *myAGSubnet* címtartománya 10.0.0.0/24, adja meg a *10.0.1.0/24* címet a *myBackendSubnet címtartományában.*
 
-    A **virtuális hálózat létrehozása** ablak bezárásához és a virtuális hálózat beállításainak mentéséhez kattintson **az OK gombra** .
+    Kattintson **az OK** gombra a Virtuális hálózat létrehozása ablak **bezárásához** és a virtuális hálózat beállításainak mentéséhez.
 
      ![Új Application Gateway létrehozása: virtuális hálózat](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. Az **alapvető** beállítások lapon fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Next (tovább): frontends** elemet.
+3. Az Alapvető **beállítások lapon** fogadja el a többi beállítás alapértelmezett értékeit, majd válassza a **Tovább: Előterek lehetőséget.**
 
-### <a name="frontends-tab"></a>Frontendek lap
+### <a name="frontends-tab"></a>Előtereik lap
 
-1. A **frontendek** lapon ellenőrizze, hogy a előtérbeli **IP-cím típusa** **nyilvános** értékre van-e állítva. <br>Az előtérbeli IP-címet úgy állíthatja be, hogy a használati esetnek megfelelően nyilvános vagy privát legyen. Ebben a példában egy nyilvános előtérbeli IP-címet választ.
+1. Az **Előterek lapon** ellenőrizze, hogy az **Előtere IP-címtípusa** Nyilvános **beállításra van-e állítva.** <br>Az előtere IP-címét konfigurálhatja nyilvánosra vagy privátra a saját használatának megfelelően. Ebben a példában egy nyilvános előtere IP-címet fog választani.
    > [!NOTE]
-   > A Application Gateway v2 SKU esetében **nyilvános** ELŐTÉRBELI IP-konfigurációnak kell lennie. Továbbra is rendelkezhet nyilvános és privát előtéri IP-konfigurációval is, de a csak privát előtér-IP-konfiguráció (csak ILB mód) jelenleg nincs engedélyezve a v2 SKU-hoz. 
+   > A Application Gateway v2 termékváltozathoz nyilvános előtere IP-konfigurációnak kell lennie.  Továbbra is lehet nyilvános és privát előtere IP-konfiguráció is, de a csak magánhálózati IP-konfiguráció (csak ILB mód) jelenleg nincs engedélyezve a v2 termékváltozathoz. 
 
-2. Válassza a **nyilvános IP-cím** **új hozzáadása** lehetőséget, és adja meg a *myAGPublicIPAddress* a nyilvános IP-cím neveként, majd kattintson **az OK gombra**. 
+2. A **Nyilvános IP-cím mezőben** válassza az Új hozzáadása lehetőséget, a nyilvános IP-cím neveként adja meg a *myAGPublicIPAddress* nevet, majd kattintson az **OK gombra.**  
 
-     ![Új Application Gateway létrehozása: frontendek](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     ![Új Application Gateway létrehozása: előterek](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. Válassza a Next (tovább) lehetőséget **: háttérrendszer**.
+3. Válassza **a Tovább: Háttér háttér lehetőséget.**
 
-### <a name="backends-tab"></a>Háttérrendszer lap
+### <a name="backends-tab"></a>Háttéreszközök lap
 
-A háttér-készlet arra szolgál, hogy a kérelmeket a kérést kiszolgáló háttér-kiszolgálókra irányítsa. A háttér-készletek a hálózati adapterek, a virtuálisgép-méretezési csoportok, a nyilvános IP-címek, a belső IP-címek, a teljes tartománynevek (FQDN) és a több-bérlős háttér-végpontok, például a Azure App Service tagjai lehetnek. Ebben a példában egy üres háttér-készletet hozunk létre az Application Gateway használatával, majd a háttérbeli célokat hozzá kell adni a háttér-készlethez.
+A háttérkészlet arra szolgál, hogy a kéréseket a kérést kiszolgáló háttérkiszolgálókhoz irányítsa. A háttérkészletek tagjai hálózati számítógépek, virtuálisgép-méretezési készletek, nyilvános IP-címek, belső IP-címek, teljes tartománynevek (FQDN) és több-bérlős háttérkiszolgálók, például a Azure App Service. Ebben a példában létre fog hozni egy üres háttérkészletet az alkalmazásátjáróval, majd háttércélokat ad a háttérkészlethez.
 
-1. A **backends (háttérrendszer** ) lapon válassza a **háttérbeli készlet hozzáadása** elemet.
+1. A **Háttérkészletek lapon válassza** **a Háttérkészlet hozzáadása lehetőséget.**
 
-2. A megnyíló **háttérbeli készlet hozzáadása** ablakban adja meg a következő értékeket egy üres háttérbeli készlet létrehozásához:
+2. A **megnyíló Háttérkészlet** hozzáadása ablakban adja meg a következő értékeket egy üres háttérkészlet létrehozásához:
 
-    - **Név**: adja meg a *myBackendPool* nevét a háttér-készlet neveként.
-    - **Háttérbeli készlet hozzáadása célok nélkül**: válassza az **Igen** lehetőséget, ha célokat nem tartalmazó háttér-készletet szeretne létrehozni. Az Application Gateway létrehozása után hozzá kell adni a háttérbeli célokat.
+    - **Név:** Adja meg *a myBackendPool* nevet a háttérkészlet neveként.
+    - **Háttérkészlet hozzáadása célok** nélkül: Válassza az **Igen** lehetőséget egy cél nélküli háttérkészlet létrehozásához. Az Alkalmazásátjáró létrehozása után háttércélokat fog hozzáadni.
 
-3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen vissza a **háttérrendszer** lapra.
+3. A **Háttérkészlet hozzáadása** ablakban válassza  a Hozzáadás lehetőséget a háttérkészlet konfigurációjának mentésére és a Háttérkészletek **lapra való visszatéréshez.**
 
-     ![Új Application Gateway létrehozása: háttérrendszer](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
+     ![Új Application Gateway létrehozása: háttéralkalmazások](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
-4. A **háttérrendszer** lapon válassza a **Tovább: konfigurálás** lehetőséget.
+4. A **Háttéreszközök lapon** válassza a **Tovább: Konfiguráció lehetőséget.**
 
 ### <a name="configuration-tab"></a>Konfiguráció lap
 
-A **konfiguráció** lapon összekapcsolja az útválasztási szabály használatával létrehozott előtér-és háttér-készletet.
+A Konfiguráció **lapon** egy útválasztási szabály használatával fogja csatlakoztatni a létrehozott elő- és háttérkészletet.
 
-1. Válassza az útválasztási **szabály hozzáadása** lehetőséget az **útválasztási szabályok** oszlopban.
+1. Az **Útválasztási szabályok oszlopban válassza** az **Útválasztási szabály hozzáadása** lehetőséget.
 
-2. A megnyíló **útválasztási szabály hozzáadása** ablakban írja be a *MyRoutingRule* nevet a **szabály neveként**.
+2. A **megnyíló Útválasztási szabály hozzáadása** ablakban adja meg a *myRoutingRule* nevet **a Szabály neveként.**
 
-3. Egy útválasztási szabályhoz egy figyelő szükséges. Az **útválasztási szabály hozzáadása** ablak **figyelő** lapján adja meg az alábbi értékeket a figyelőhöz:
+3. Az útválasztási szabályokhoz listener szükséges. Az **Útválasztási szabály hozzáadása** ablak Figyelő lapján adja meg **a** következő értékeket a listener számára:
 
-    - **Figyelő neve**: írja be a *myListener* nevet a figyelőnek.
-    - Előtér **-IP**: válassza a **nyilvános** lehetőséget, hogy kiválassza a előtérhez létrehozott nyilvános IP-címet.
+    - **Figyelő neve:** A listener neveként adja meg a *myListener* nevet.
+    - **Előtere IP-címe:** Válassza a **Nyilvános** lehetőséget az előtere számára létrehozott nyilvános IP-cím kiválasztásához.
   
-      Fogadja el az alapértelmezett értékeket a **figyelő** lapon a többi beállításnál, majd válassza a **háttérbeli célok** fület a többi útválasztási szabály konfigurálásához.
+      Fogadja el a Figyelés  lapon található többi  beállítás alapértelmezett értékeit, majd válassza a Háttércélok lapot az útválasztási szabály további beállításainak konfigurálhoz.
 
-   ![Új Application Gateway létrehozása: figyelő](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-listener.png)
+   ![Új Application Gateway létrehozása: listener](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-listener.png)
 
-4. A **háttérbeli célok** lapon válassza a **MyBackendPool** lehetőséget a **háttérbeli célként**.
+4. A **Háttércélok lapon** válassza a **myBackendPool** háttércélt. 
 
-5. A **http-beállításnál** válassza az **új hozzáadása** lehetőséget az új http-beállítás hozzáadásához. A HTTP-beállítás határozza meg az útválasztási szabály viselkedését. A megnyíló **http-beállítás hozzáadása** ablakban írja be a *MyHTTPSetting* nevet a **http-beállítás neveként** és a *80* értéket a **háttér-porthoz**. Fogadja el az alapértelmezett értékeket a további beállításokhoz a **http-beállítás hozzáadása** ablakban, majd válassza a **Hozzáadás** lehetőséget az **útválasztási szabály hozzáadása** ablakhoz való visszatéréshez. 
+5. A **HTTP-beállításnál válassza** az **Új hozzáadása lehetőséget** egy új HTTP-beállítás hozzáadásához. A HTTP-beállítás határozza meg az útválasztási szabály viselkedését. A **megnyíló HTTP-beállítás** hozzáadása ablakban adja meg a *myHTTPSetting* nevet a **HTTP-beállítás** neveként, a háttérportnál pedig a *80-at.*  Fogadja el az alapértelmezett értékeket a **HTTP-beállítás** hozzáadása  ablakban található többi beállításhoz, majd válassza a Hozzáadás lehetőséget az Útválasztási szabály **hozzáadása ablakba való visszatéréshez.** 
 
      ![Új Application Gateway létrehozása: HTTP-beállítás](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
-6. Az útválasztási szabály **hozzáadása** ablakban válassza a **Hozzáadás** lehetőséget az útválasztási szabály mentéséhez és a **konfiguráció** laphoz való visszatéréshez.
+6. Az **Útválasztási szabály hozzáadása** ablakban válassza a **Hozzáadás** lehetőséget az útválasztási szabály mentéshez és a **Konfiguráció lapra való visszatéréshez.**
 
      ![Új Application Gateway létrehozása: útválasztási szabály](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
-7. Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
+7. Válassza **a Tovább: Címkék,** majd **a Tovább: Áttekintés + létrehozás lehetőséget.**
 
-### <a name="review--create-tab"></a>Felülvizsgálat + Létrehozás lap
+### <a name="review--create-tab"></a>Áttekintés és létrehozás lap
 
-Tekintse át a **felülvizsgálat + létrehozás** lapon található beállításokat, majd válassza a **Létrehozás** lehetőséget a virtuális hálózat, a nyilvános IP-cím és az Application Gateway létrehozásához. Az Azure az Application Gateway létrehozásához több percet is igénybe vehet. Várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő szakaszra.
+Tekintse át a beállításokat a Felülvizsgálat  **+ létrehozás** lapon, majd válassza a Létrehozás lehetőséget a virtuális hálózat, a nyilvános IP-cím és az alkalmazásátjáró létrehozásához. Az Alkalmazásátjáró létrehozása eltarthat néhány percig. Várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszra.
 
-## <a name="add-backend-targets"></a>Háttérbeli célok hozzáadása
+## <a name="add-backend-targets"></a>Háttércélok hozzáadása
 
-Ebben a példában a virtuális gépeket célként használt háttérként fogja használni. Használhat meglévő virtuális gépeket, vagy újakat is létrehozhat. Hozzon létre két virtuális gépet háttér-kiszolgálóként az Application Gateway számára.
+Ebben a példában virtuális gépeket fog használni cél háttérrendszerként. Használhat meglévő virtuális gépeket, vagy létrehozhat újakat. Két virtuális gépet fog háttérkiszolgálóként létrehozni az Alkalmazásátjáróhoz.
 
-Ehhez a következőket kell tennie:
+Ehhez a következőt kell megtennie:
 
-1. Hozzon létre két új virtuális gépet, *myVM* és *myVM2* a háttér-kiszolgálóként való használathoz.
+1. Hozzon létre két új virtuális gép, *a myVM* és a *myVM2* virtuális gépeket, amelyek háttérkiszolgálóként szolgálnak.
 2. Telepítse az IIS-t a virtuális gépeken annak ellenőrzéséhez, hogy az Application Gateway sikeresen létrejött-e.
-3. Adja hozzá a háttér-kiszolgálókat a háttér-készlethez.
+3. Adja hozzá a háttérkiszolgálókat a háttérkészlethez.
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
-2. Válassza a **Windows Server 2016 Datacenter** elemet a **népszerű** listában. Megjelenik a **virtuális gép létrehozása** lap.<br>Application Gateway átirányíthatja a forgalmat a háttér-készletben használt bármilyen típusú virtuális gépre. Ebben a példában egy Windows Server 2016 Datacenter rendszerű virtuális gépet használ.
-3. Adja meg ezeket az értékeket az **alapok** lapon a következő virtuálisgép-beállításokhoz:
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. **Megjelenik** az Új ablak.
+2. A Népszerű listában válassza a **Windows Server 2016 Datacenter** **lehetőséget.** Megjelenik **a Virtuális gép létrehozása** lap.<br>Application Gateway forgalom bármilyen, a háttérkészletben használt virtuális géphez irányítható. Ebben a példában egy Windows Server 2016 Datacenter virtuális gépet használ.
+3. Adja meg ezeket az értékeket az **Alapvető beállítások** lapon a következő virtuálisgép-beállításokhoz:
 
-    - **Erőforráscsoport**: válassza ki a **myResourceGroupAG** az erőforráscsoport neveként.
-    - **Virtuális gép neve**: írja be a *myVM* nevet a virtuális gép nevéhez.
-    - **Régió**: válassza ki ugyanazt a régiót, ahol az Application Gatewayt létrehozta.
-    - **Felhasználónév**: írja be a rendszergazda felhasználóneve nevét.
-    - **Password (jelszó**): írjon be egy jelszót.
-    - **Nyilvános bejövő portok**: nincs.
-4. Fogadja el a többi alapértelmezett értéket, majd válassza a **Next: Disks** elemet.  
-5. Fogadja el a **lemezek** lap alapértelmezett értékeit, majd kattintson a **Tovább gombra: hálózatkezelés** elemre.
-6. A **hálózatkezelés** lapon ellenőrizze, hogy a **virtuális hálózat** **myVNet** van-e kiválasztva, és az **alhálózat** **myBackendSubnet** értékre van-e állítva. Fogadja el a többi alapértelmezett értéket, majd válassza a **Tovább: kezelés** lehetőséget.<br>A Application Gateway képes kommunikálni a virtuális hálózaton kívüli példányokkal, de gondoskodnia kell az IP-kapcsolatról.
-7. A **felügyelet** lapon **Tiltsa le** a **rendszerindítási diagnosztika** beállítást. Fogadja el a többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
-8. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, javítsa ki az érvényesítési hibákat, majd válassza a **Létrehozás** lehetőséget.
+    - **Erőforráscsoport:** Az erőforráscsoport neveként válassza a **myResourceGroupAG** lehetőséget.
+    - **Virtuális gép neve:** A virtuális gép neveként adja meg a *myVM* nevet.
+    - **Régió:** Válassza ki ugyanazt a régiót, amelyben az Alkalmazásátjárót létrehozta.
+    - **Felhasználónév:** Adja meg a rendszergazda felhasználónevét.
+    - **Jelszó:** Adjon meg egy jelszót.
+    - **Nyilvános bejövő portok:** Nincs.
+4. Fogadja el a többi alapértelmezett értéket, majd válassza **a Tovább: Lemezek lehetőséget.**  
+5. Fogadja el **a Lemezek lap alapértelmezett** beállítását, majd válassza a **Tovább: Hálózatkezelés lehetőséget.**
+6. A **Hálózat lapon** ellenőrizze, hogy a **myVNet** van-e kiválasztva a **Virtuális** hálózat mezőben, és hogy az **Alhálózat** beállítása **myBackendSubnet.** Fogadja el a többi alapértelmezett értéket, majd válassza **a Tovább: Felügyelet lehetőséget.**<br>Application Gateway virtuális hálózaton kívüli példányokkal is tud kommunikálni, de gondoskodnia kell az IP-kapcsolatról.
+7. A Felügyelet **lapon** állítsa a **Rendszerindítási diagnosztika adatokat** **Letiltás beállításra.** Fogadja el a többi alapértelmezett értéket, majd válassza a **Felülvizsgálat + létrehozás lehetőséget.**
+8. Az Áttekintés **+ létrehozás lapon** tekintse át a beállításokat, javítsa ki az érvényesítési hibákat, majd válassza a Létrehozás **lehetőséget.**
 9. A folytatás előtt várja meg, amíg a virtuális gép létrehozása befejeződik.
 
 ### <a name="install-iis-for-testing"></a>Az IIS telepítése teszteléshez
 
-Ebben a példában az IIS-t telepíti a virtuális gépekre annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta az Application Gatewayt.
+Ebben a példában telepíti az IIS-t a virtuális gépekre annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Alkalmazásátjárót.
 
 1. Nyissa meg Azure PowerShell.
 
-   Válassza ki a **Cloud Shell** elemet a Azure Portal felső navigációs sávján, majd válassza a **PowerShell** elemet a legördülő listából. 
+   A **Cloud Shell** navigációs sávján válassza a Azure Portal, majd a legördülő listából válassza a **PowerShell** lehetőséget. 
 
     ![Egyéni bővítmény telepítése](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. A következő parancs futtatásával telepítse az IIS-t a virtuális gépre. Szükség esetén módosítsa a *Location* paramétert: 
+2. Futtassa a következő parancsot az IIS virtuális gépre való telepítéséhez. Ha *szükséges,* módosítsa a Location paramétert: 
 
     ```azurepowershell
     Set-AzVMExtension `
@@ -187,53 +189,53 @@ Ebben a példában az IIS-t telepíti a virtuális gépekre annak ellenőrzésé
       -Location EastUS
     ```
 
-3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t a korábban befejezett lépések segítségével. Használja a *myVM2* a virtuális gép nevéhez és a **set-AzVMExtension** parancsmag **VMName** beállításához.
+3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t a korábban befejezett lépésekkel. A virtuális gép neveként használja a *myVM2* virtuális gépet, a **Set-AzVMExtension** parancsmag **VMName** beállítását pedig.
 
-### <a name="add-backend-servers-to-backend-pool"></a>Háttér-kiszolgálók hozzáadása a háttérbeli készlethez
+### <a name="add-backend-servers-to-backend-pool"></a>Háttérkiszolgálók hozzáadása a háttérkészlethez
 
-1. A Azure Portal menüben válassza a **minden erőforrás** lehetőséget, vagy keresse meg és válassza ki az *összes erőforrás* elemet. Ezután válassza a **myAppGateway** lehetőséget.
+1. A Azure Portal válassza a **Minden erőforrás** lehetőséget, vagy keresse meg és válassza a Minden erőforrás *lehetőséget.* Ezután válassza **a myAppGateway lehetőséget.**
 
-2. Válassza ki a **háttér-készletek** elemet a bal oldali menüben.
+2. A **bal oldali menüben válassza** a Háttérkészletek lehetőséget.
 
-3. Válassza a **myBackendPool** lehetőséget.
+3. Válassza **a myBackendPool lehetőséget.**
 
-4. A **háttérbeli célok**, **cél típusa** területen válassza a **virtuális gép** lehetőséget a legördülő listából.
+4. A **Háttércélok alatt a** Cél **típusa** mezőben válassza a **Virtuális** gép lehetőséget a legördülő listából.
 
-5. A **cél** területen válassza ki a **myVM** és **myVM2** virtuális gépeket, valamint a hozzájuk társított hálózati adaptereket a legördülő listából.
+5. A **Cél mezőben** válassza ki a **myVM** és **myVM2** virtuális gépeket és a hozzájuk tartozó hálózati adaptereket a legördülő listákból.
 
    > [!div class="mx-imgBorder"]
    > ![Háttérkiszolgálók hozzáadása](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
 6. Kattintson a **Mentés** gombra.
 
-7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
+7. Várja meg, amíg az üzembe helyezés befejeződik, mielőtt továbblépne a következő lépésre.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. 
+Bár az IIS nem szükséges az Alkalmazásátjáró létrehozásához, ebben a rövid útmutatóban telepítette azt annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az alkalmazásátjárót. 
 
-Az IIS használata az Application Gateway teszteléséhez:
+Használja az IIS-t az Application Gateway tesztelésére:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás** lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
-3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.
+1. Keresse meg az Alkalmazásátjáró nyilvános IP-címét az Áttekintés **lapon.** ![ Rögzítse az Application Gateway nyilvános IP-címét Vagy válassza a Minden erőforrás lehetőséget, írja be a ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) *myAGPublicIPAddress* címet a keresőmezőbe, majd válassza ki a keresési eredmények között.  Az Azure az Áttekintés oldalon jeleníti meg a nyilvános **IP-címet.**
+2. Másolja ki a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím tallózáshoz.
+3. Ellenőrizze a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e csatlakozni a háttérkiszolgálóhoz.
 
    ![Az alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-   Többször is frissítse a böngészőt, és látnia kell a myVM és a myVM2 kapcsolatait.
+   Frissítse többször a böngészőt, és látnia kell a myVM és a myVM2 kapcsolatát is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor az Application Gateway és az összes kapcsolódó erőforrás is törlődik.
+Ha már nincs szüksége az Alkalmazásátjáróval létrehozott erőforrásokra, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor az Application Gatewayt és az összes kapcsolódó erőforrást is eltávolítja.
 
 Az erőforráscsoport törlése:
 
-1. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza az *erőforráscsoportok* lehetőséget.
-2. Az **erőforráscsoportok** lapon keresse meg a **myResourceGroupAG** a listában, majd válassza ki azt.
-3. Az **erőforráscsoport lapon** válassza az **erőforráscsoport törlése** elemet.
-4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neve mezőbe** , majd válassza a **Törlés** lehetőséget.
+1. A Azure Portal válassza az **Erőforráscsoportok** lehetőséget, vagy keresse meg és válassza az *Erőforráscsoportok elemet.*
+2. Az **Erőforráscsoportok lapon** keresse meg a **myResourceGroupAG** listában, majd jelölje ki.
+3. Az **Erőforráscsoport lapon válassza az** **Erőforráscsoport törlése lehetőséget.**
+4. Írja be *a myResourceGroupAG nevet* az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT** mezőbe, majd válassza a Törlés **lehetőséget**
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Application Gateway konfigurálása TLS-megszakítással a Azure Portal használatával](create-ssl-portal.md)
+> [Oktatóanyag: Application Gateway konfigurálása TLS-leállítva a Azure Portal](create-ssl-portal.md)

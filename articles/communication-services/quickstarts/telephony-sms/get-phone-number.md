@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – telefonszámok kezelése az Azure kommunikációs szolgáltatásokkal
-description: Ismerje meg, hogyan kezelheti a telefonszámokat az Azure kommunikációs szolgáltatásokkal
+title: Rövid útmutató – Telefonszámok kezelése a Azure Communication Services
+description: Megtudhatja, hogyan kezelheti a telefonszámokat a Azure Communication Services
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,16 +10,18 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: 0f4a461ac5d459c6e3311400785e34bc22f40a00
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 19bb79f9a4deaebfacc75918c46a5516d2d398be
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728453"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498193"
 ---
-# <a name="quickstart-manage-phone-numbers"></a>Gyors útmutató: telefonszámok kezelése
+# <a name="quickstart-manage-phone-numbers"></a>Rövid útmutató: Telefonszámok kezelése
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
+[!INCLUDE [Bulk Acquisition Instructions](../../includes/phone-number-special-order.md)]
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/phone-numbers-portal.md)]
@@ -45,23 +47,23 @@ ms.locfileid: "105728453"
 
 Gyakori kérdések és problémák:
 
-- Az USA-beli vásárlás csak az Egyesült Államokban támogatott. A telefonszámok megvásárlásához a következőket kell tennie:
-  - A társított Azure-előfizetés számlázási címe a Egyesült Államok található. Jelenleg nem helyezhető át egy erőforrás egy másik előfizetésre.
-  - A kommunikációs szolgáltatások erőforrása a Egyesült Államok adatterületen van kiépítve. Az erőforrások jelenleg nem helyezhetők át másik adathelyre.
+- A telefonos vásárlás csak az Egyesült Államokon támogatott. Telefonszámok vásárlása esetén győződjön meg a következőről:
+  - A társított Azure-előfizetés számlázási címe a következő helyen Egyesült Államok. Jelenleg nem lehet áthelyezni egy erőforrást egy másik előfizetésbe.
+  - A Communication Services erőforrás az adatadatok Egyesült Államok van kiépítve. Jelenleg nem lehet áthelyezni az erőforrásokat egy másik adathelyre.
 
-- Ha telefonszámot szabadít fel, a telefonszámot a rendszer nem szabadítja fel, illetve nem tudja újra megvásárolni a számlázási időszak végéig.
+- A telefonszámok felszabadítása után a telefonszám a számlázási ciklus végéig nem lesz felszabadítható vagy újravásárlásra képes.
 
-- A kommunikációs szolgáltatások erőforrásának törlésekor a rendszer automatikusan felszabadítja az adott erőforráshoz tartozó telefonszámokat.
+- Egy Communication Services erőforrás törlésekor az erőforráshoz társított telefonszámok egyszerre automatikusan ki lesznek adva.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta a következőket:
+Ebben a rövid útmutatóban a következőt tanulta meg:
 
 > [!div class="checklist"]
 > * Telefonszám vásárlása
-> * Telefon számának kezelése
-> * Telefonszám felszabadítása
+> * Telefonszám kezelése
+> * Telefonszám kiadása
 
 > [!div class="nextstepaction"]
 > [SMS küldése](../telephony-sms/send.md) 
->  [Ismerkedés a hívással](../voice-video-calling/getting-started-with-calling.md)
+>  [A hívásának első lépések](../voice-video-calling/getting-started-with-calling.md)

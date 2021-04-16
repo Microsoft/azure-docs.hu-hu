@@ -1,6 +1,6 @@
 ---
-title: Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával | Microsoft Docs
-description: A lekérdezési gyorsítás használatával kérheti le az adatok egy részhalmazát a Storage-fiókból.
+title: Adatok szűrése lekérdezésgyorsítási Azure Data Lake Storage használatával | Microsoft Docs
+description: Lekérdezésgyorsítással lekérheti az adatok egy részkészletét a tárfiókból.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,27 +8,27 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 58b8cdef604861342a6489ef4e57ff1d057cd3f4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213674"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377734"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Adatok szűrése a lekérdezésgyorsítás Azure Data Lake Storage használatával
 
-Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezési gyorsítást az adatok egy részhalmazának beolvasásához a Storage-fiókból. 
+Ez a cikk bemutatja, hogyan használhatja a lekérdezésgyorsítást az adatok egy részkészletének a tárfiókból való lekéréséhez. 
 
-A lekérdezési gyorsítás lehetővé teszi, hogy az alkalmazások és az elemzési keretrendszerek jelentősen optimalizálják az adatfeldolgozást azáltal, hogy csak az adott művelet végrehajtásához szükséges adatok beolvasását végzik. További információ: [Azure Data Lake Storage lekérdezési gyorsítás](data-lake-storage-query-acceleration.md).
+A lekérdezésgyorsítás lehetővé teszi, hogy az alkalmazások és az elemzési keretrendszerek jelentősen optimalizálják az adatfeldolgozást azáltal, hogy csak az adott művelet végrehajtásához szükséges adatokat kérik le. További információ: Azure Data Lake Storage [lekérdezésgyorsítás.](data-lake-storage-query-acceleration.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Storage eléréséhez Azure-előfizetésre lesz szüksége. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
+- Az Azure Storage eléréséhez Szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik előfizetéssel, [](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) kezdés előtt hozzon létre egy ingyenes fiókot.
 
-- **Általános célú v2-** es Storage-fiók. Lásd: [Storage-fiók létrehozása](../common/storage-account-create.md).
+- Általános **célú v2-tárfiók.** lásd: [Tárfiók létrehozása.](../common/storage-account-create.md)
 
-- Válassza ki a fület az SDK-specifikus előfeltételek megtekintéséhez.
+- Válasszon egy lapot az SDK-ra vonatkozó előfeltételek megtekintéséhez.
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -36,38 +36,38 @@ A lekérdezési gyorsítás lehetővé teszi, hogy az alkalmazások és az elemz
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
-  A [.net SDK](https://dotnet.microsoft.com/download) 
+  A [.NET SDK](https://dotnet.microsoft.com/download) 
 
   ### <a name="java"></a>[Java](#tab/java)
 
-  - A [Java Development Kit (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
+  - [Java fejlesztői készlet (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
 
   - [Apache Maven](https://maven.apache.org/download.cgi) 
 
     > [!NOTE] 
-    > Ez a cikk azt feltételezi, hogy az Apache Maven használatával létrehozott egy Java-projektet. Az Apache Maven használatával történő projekt létrehozásával kapcsolatos példát itt talál: [beállítás](storage-quickstart-blobs-java.md#setting-up).
+    > Ez a cikk feltételezi, hogy létrehozott egy Java-projektet az Apache Maven használatával. A projektek Apache Maven használatával való létrehozására vonatkozó példáért lásd: [Setting up (Beállítás).](storage-quickstart-blobs-java.md#setting-up)
   
   ### <a name="python"></a>[Python](#tab/python)
 
-  [Python](https://www.python.org/downloads/) 3,8 vagy újabb.
+  [Python](https://www.python.org/downloads/) 3.8 vagy nagyobb.
 
   ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-  Az Node.js SDK használatához nincs szükség további előfeltételekre.
+  A Node.js SDK használatának nincs további előfeltétele.
 
 ---
 
-## <a name="enable-query-acceleration"></a>Lekérdezés gyorsításának engedélyezése
+## <a name="enable-query-acceleration"></a>Lekérdezésgyorsítás engedélyezése
 
-A lekérdezési gyorsítás használatához regisztrálnia kell a lekérdezés gyorsítására szolgáló funkciót az előfizetésében. Miután meggyőződött arról, hogy a szolgáltatás regisztrálva van, regisztrálnia kell az Azure Storage erőforrás-szolgáltatót. 
+A lekérdezésgyorsítás használatához regisztrálnia kell a lekérdezésgyorsítási funkciót az előfizetésében. Miután ellenőrizte, hogy a funkció regisztrálva van-e, regisztrálnia kell az Azure Storage erőforrás-szolgáltatót. 
 
-### <a name="step-1-register-the-query-acceleration-feature"></a>1. lépés: a lekérdezési gyorsítási funkció regisztrálása
+### <a name="step-1-register-the-query-acceleration-feature"></a>1. lépés: A lekérdezésgyorsítási funkció regisztrálása
 
-A lekérdezési gyorsítás használatához először regisztrálnia kell a lekérdezés gyorsítására szolgáló funkciót az előfizetésében. 
+A lekérdezésgyorsítás használatához először regisztrálnia kell a lekérdezésgyorsítási funkciót az előfizetésében. 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Nyisson meg egy Windows PowerShell-parancssori ablakot.
+1. Nyisson meg Windows PowerShell parancsablakot.
 
 1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
@@ -75,16 +75,16 @@ A lekérdezési gyorsítás használatához először regisztrálnia kell a lek�
    Connect-AzAccount
    ```
 
-2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetését.
+2. Ha az identitása több előfizetéshez is társítva van, állítsa be az aktív előfizetést.
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
+   Cserélje le `<subscription-id>` a helyőrző értékét az előfizetése azonosítójára.
 
-3. Regisztrálja a lekérdezési gyorsítási funkciót a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancs használatával.
+3. Regisztrálja a lekérdezésgyorsítási funkciót a [Register-AzProviderFeature paranccsal.](/powershell/module/az.resources/register-azproviderfeature)
 
    ```powershell
    Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -92,17 +92,17 @@ A lekérdezési gyorsítás használatához először regisztrálnia kell a lek�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md), vagy ha helyileg [telepítette](/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Nyissa meg [a Azure Cloud Shell,](../../cloud-shell/overview.md)vagy ha [](/cli/azure/install-azure-cli) helyileg telepítette az Azure CLI-t, nyisson meg egy parancskonzol-alkalmazást, például a Windows PowerShell.
 
-2. Ha az identitása egynél több előfizetéshez van társítva, akkor a Storage-fiók előfizetéséhez állítsa be az aktív előfizetést.
+2. Ha az identitása több előfizetéshez is társítva van, állítsa be az aktív előfizetést a tárfiók előfizetéséhez.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
    ```
 
-   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
+   Cserélje le `<subscription-id>` a helyőrző értékét az előfizetése azonosítójára.
 
-3. Regisztrálja a lekérdezési gyorsítási funkciót az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal.
+3. Regisztrálja a lekérdezésgyorsítási funkciót az [az feature register paranccsal.](/cli/azure/feature#az-feature-register)
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -110,11 +110,11 @@ A lekérdezési gyorsítás használatához először regisztrálnia kell a lek�
 
 ---
 
-### <a name="step-2-verify-that-the-feature-is-registered"></a>2. lépés: annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e
+### <a name="step-2-verify-that-the-feature-is-registered"></a>2. lépés: A funkció regisztrációja ellenőrzése
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A regisztráció befejezésének ellenőrzéséhez használja a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
+A regisztráció befejezésének ellenőrzéséhez használja a [Get-AzProviderFeature parancsot.](/powershell/module/az.resources/get-azproviderfeature)
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A regisztráció befejezésének ellenőrzéséhez használja az az [Feature](/cli/azure/feature#az-feature-show) parancsot.
+A regisztráció befejezésének ellenőrzéséhez használja [az az feature](/cli/azure/feature#az-feature-show) parancsot.
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -130,13 +130,13 @@ az feature show --namespace Microsoft.Storage --name BlobQuery
 
 ---
 
-### <a name="step-3-register-the-azure-storage-resource-provider"></a>3. lépés: az Azure Storage erőforrás-szolgáltató regisztrálása
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>3. lépés: Az Azure Storage erőforrás-szolgáltató regisztrálása
 
 A regisztráció jóváhagyása után újra regisztrálnia kell az Azure Storage erőforrás-szolgáltatót. 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Az erőforrás-szolgáltató regisztrálásához használja a [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) parancsot.
+Az erőforrás-szolgáltató regisztráláshoz használja a [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) parancsot.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az erőforrás-szolgáltató regisztrálásához használja az az [Provider Register](/cli/azure/provider#az-provider-register) parancsot.
+Az erőforrás-szolgáltató regisztráláshoz használja [az az provider register](/cli/azure/provider#az-provider-register) parancsot.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -154,17 +154,17 @@ az provider register --namespace 'Microsoft.Storage'
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-### <a name="step-1-install-packages"></a>1. lépés: csomagok telepítése 
+### <a name="step-1-install-packages"></a>1. lépés: Csomagok telepítése 
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Telepítse az az modul Version 4.6.0 vagy újabb verzióját.
+Telepítse az Az modul 4.6.0-s vagy újabb verzióját.
 
 ```powershell
 Install-Module -Name Az -Repository PSGallery -Force
 ```
 
-Az az alkalmazás régebbi verziójáról történő frissítéshez futtassa a következő parancsot:
+Az Az egy régebbi verziójáról való frissítéshez futtassa a következő parancsot:
 
 ```powershell
 Update-Module -Name Az
@@ -172,19 +172,19 @@ Update-Module -Name Az
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Nyisson meg egy parancssort, és módosítsa `cd` a könyvtárat () a projekt mappájába, például:
+1. Nyisson meg egy parancssort, és módosítsa a könyvtárat ( `cd` ) a projektmappába, például:
 
    ```console
    cd myProject
    ```
 
-2. Telepítse az `12.5.0-preview.6` Azure Blob Storage ügyféloldali kódtára vagy újabb verzióját a .net-csomaghoz a parancs használatával `dotnet add package` . 
+2. Telepítse az Azure Blob Storage .NET-csomaghoz való ügyféloldali kódtárának vagy újabb verzióját `12.5.0-preview.6` az `dotnet add package` paranccsal. 
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0
    ```
 
-3. A cikkben megjelenő példák egy CSV-fájlt elemeznek a [CsvHelper](https://www.nuget.org/packages/CsvHelper/) könyvtár használatával. A könyvtár használatához használja a következő parancsot.
+3. Az ebben a cikkben található példák egy CSV-fájlt elemeznek a [CsvHelper kódtár](https://www.nuget.org/packages/CsvHelper/) használatával. A kódtár a következő paranccsal használható.
 
    ```console
    dotnet add package CsvHelper
@@ -192,7 +192,7 @@ Update-Module -Name Az
 
 #### <a name="java"></a>[Java](#tab/java)
 
-1. Nyissa meg a projekt *pom.xml* fájlját egy szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához. 
+1. Nyissa meg *pom.xml* projekt fájlját egy szövegszerkesztőben. Adja hozzá a következő függőségi elemeket a függőségek csoportjához. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -215,7 +215,7 @@ Update-Module -Name Az
 
 #### <a name="python"></a>[Python](#tab/python)
 
-Telepítse a Pythonhoz készült Azure Data Lake Storage ügyféloldali kódtárat a [pip](https://pypi.org/project/pip/)használatával.
+Telepítse a Azure Data Lake Storage Pythonhoz készült ügyféloldali kódtárat a [pip használatával.](https://pypi.org/project/pip/)
 
 ```
 pip install azure-storage-blob==12.4.0
@@ -223,7 +223,7 @@ pip install azure-storage-blob==12.4.0
 
 #### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Telepítse Data Lake ügyféloldali kódtárat a JavaScripthez egy terminál ablak megnyitásával, majd írja be a következő parancsot.
+Telepítse a JavaScripthez használt Data Lake ügyféloldali kódtárat egy terminálablak megnyitásával, majd írja be a következő parancsot.
 
 ```javascript
     npm install @azure/storage-blob
@@ -232,7 +232,7 @@ Telepítse Data Lake ügyféloldali kódtárat a JavaScripthez egy terminál abl
 
 ---
 
-### <a name="step-2-add-statements"></a>2. lépés: utasítások hozzáadása
+### <a name="step-2-add-statements"></a>2. lépés: Utasítások hozzáadása
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -240,7 +240,7 @@ Nem alkalmazható
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
-Adja hozzá ezeket `using` az utasításokat a fájl elejéhez.
+Adja hozzá `using` ezeket az utasításokat a kódfájl tetejéhez.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -248,14 +248,14 @@ using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 ```
 
-A lekérdezési gyorsítás lekéri a CSV-és a JSON-formátumú adatait. Ezért ügyeljen arra, hogy a használni kívánt CSV-vagy JSON-elemzési kódtárak használatával adjon hozzá utasításokat. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGet-on elérhető [CsvHelper](https://www.nuget.org/packages/CsvHelper/) könyvtár használatával. Ezért ezeket az `using` utasításokat a fájl elejéhez adja.
+A lekérdezésgyorsítás CSV- és Json-formátumú adatokat ad vissza. Ezért mindenképpen adjon hozzá using utasításokat a használni választott CSV- vagy Json-elemző kódtárakhoz. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGeten elérhető [CsvHelper](https://www.nuget.org/packages/CsvHelper/) kódtár használatával. Ezért ezeket az utasításokat a kódfájl tetejéhez `using` adjuk.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-A cikkben bemutatott példák fordításához is hozzá kell adnia ezeket az `using` utasításokat is.
+A cikkben bemutatott példák fordítására ezeket az utasításokat is hozzá `using` kell adni.
 
 ```csharp
 using System.Threading.Tasks;
@@ -265,7 +265,7 @@ using System.Globalization;
 
 #### <a name="java"></a>[Java](#tab/java)
 
-Adja hozzá ezeket `import` az utasításokat a fájl elejéhez.
+Adja hozzá `import` ezeket az utasításokat a kódfájl tetejéhez.
 
 ```java
 import com.azure.storage.blob.*;
@@ -279,7 +279,7 @@ import org.apache.commons.csv.*;
 
 #### <a name="python"></a>[Python](#tab/python)
 
-Adja hozzá ezeket az importálási utasításokat a fájl elejéhez.
+Adja hozzá ezeket az importálási utasításokat a kódfájl tetejéhez.
 
 ```python
 import sys, csv
@@ -288,13 +288,13 @@ from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, D
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Vegye `storage-blob` fel a modult úgy, hogy az utasítást a programkód elejére helyezi. 
+A modult úgy foglalhatja bele, hogy elhelyezi ezt az utasítást `storage-blob` a kódfájl tetején. 
 
 ```javascript
 const { BlobServiceClient } = require("@azure/storage-blob");
 ```
 
-A lekérdezési gyorsítás lekéri a CSV-és a JSON-formátumú adatait. Ezért ügyeljen arra, hogy a használni kívánt CSV-vagy JSON-elemzési modulok utasításait adja hozzá. A cikkben megjelenő példák egy CSV-fájlt elemeznek a [gyors CSV-](https://www.npmjs.com/package/fast-csv) modul használatával. Ezért ezt az utasítást a fájl elejéhez adja.
+A lekérdezésgyorsítás CSV- és Json-formátumú adatokat ad vissza. Ezért ügyeljen arra, hogy utasításokat adjon hozzá a használni választott CSV- vagy Json-elemző modulokhoz. A cikkben megjelenő példák egy CSV-fájlt elemeznek a [fast-csv modullal.](https://www.npmjs.com/package/fast-csv) Ezért ezt az utasítást a kódfájl tetejéhez adjuk.
 
 ```javascript
 const csv = require('@fast-csv/parse');
@@ -302,13 +302,13 @@ const csv = require('@fast-csv/parse');
 
 ---
 
-## <a name="retrieve-data-by-using-a-filter"></a>Adatlekérdezés szűrő használatával
+## <a name="retrieve-data-by-using-a-filter"></a>Adatok lekérése szűrővel
 
-Az SQL segítségével megadhatja a sorcsoport-predikátumokat és az oszlopok kivetítéseit egy lekérdezési gyorsítási kérelemben. Az alábbi kód egy CSV-fájlt kérdez le a Storage szolgáltatásban, és visszaadja az összes olyan adatsort, amelyben a harmadik oszlop megfelel az értéknek `Hemingway, Ernest` . 
+Az SQL használatával megadhatja a sorszűrő predikátumokat és oszloplevetítéseket egy lekérdezésgyorsítási kérelemben. A következő kód lekérdez egy CSV-fájlt a tárolóban, és visszaadja az összes olyan adatsort, ahol a harmadik oszlop megegyezik a `Hemingway, Ernest` értékkel. 
 
-- Az SQL-lekérdezésben a kulcsszó a `BlobStorage` lekérdezni kívánt fájl jelölésére szolgál.
+- Az SQL-lekérdezésben a kulcsszó jelöli a lekérdezett `BlobStorage` fájlt.
 
-- Az oszlopok hivatkozásai az `_N` első oszlop helyeként vannak megadva `_1` . Ha a forrásfájl tartalmaz egy fejlécet, akkor az oszlopokat a fejlécsorban megadott név alapján lehet megtekinteni. 
+- Az oszlophivatkozások a következőként vannak `_N` megadva: , ahol az első oszlop a `_1` . Ha a forrásfájl fejlécsort tartalmaz, akkor a fejléc sorában megadott név alapján hivatkozhat az oszlopokra. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az aszinkron metódus `BlobQuickQueryClient.QueryAsync` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd [stream](/dotnet/api/system.io.stream) -objektumként továbbítja az eredményeket az alkalmazásnak.
+Az aszinkron metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd streameli az eredményeket az alkalmazásnak `BlobQuickQueryClient.QueryAsync` [Stream-objektumként.](/dotnet/api/system.io.stream)
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -375,7 +375,7 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-A metódus `BlobQuickQueryClient.openInputStream()` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd az eredményeket visszaküldi az alkalmazásnak olyan `InputStream` objektumként, amely más InputStream-objektumhoz hasonlóan olvasható.
+A metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd az eredményeket egy objektumként továbbítja az alkalmazásnak, amely úgy olvasható, mint bármely `BlobQuickQueryClient.openInputStream()` `InputStream` más InputStream-objektum.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Ez a példa elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd visszaküldi az eredményeket vissza. A `blob` `queryHemingway` Helper függvénynek átadott objektum [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)típusú. Ha többet szeretne megtudni a [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) -objektumok beszerzéséről, olvassa el a következőt: gyors útmutató [: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md).
+Ez a példa elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd streameli az eredményeket. A `blob` segítő függvénynek átadott `queryHemingway` objektum típusa [BlockBlobClient.](/javascript/api/@azure/storage-blob/blockblobclient) A [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) objektumok lekért használatával kapcsolatos további információkért lásd: Rövid útmutató: Blobok kezelése a [JavaScript v12 SDK-val ](storage-quickstart-blobs-nodejs.md)a Node.js.
 
 ```javascript
 async function queryHemingway(blob)
@@ -476,11 +476,11 @@ async function dumpQueryCsv(blob, query, headers)
 
 ---
 
-## <a name="retrieve-specific-columns"></a>Adott oszlopok beolvasása
+## <a name="retrieve-specific-columns"></a>Adott oszlopok lekérése
 
-Az eredményeket az oszlopok egy részhalmazára is szűkítheti. Így csak az adott számítás végrehajtásához szükséges oszlopokat kéri le. Ez javítja az alkalmazások teljesítményét, és csökkenti a költségeket, mivel kevesebb adat kerül át a hálózaton keresztül. 
+Az eredményeket az oszlopok egy részkészletének hatóköreként is megszűrheti. Így csak az adott számítás végrehajtásához szükséges oszlopokat kell lekérni. Ez javítja az alkalmazások teljesítményét és csökkenti a költségeket, mivel kevesebb adatot továbbít a rendszer a hálózaton. 
 
-Ez a kód csak az `BibNum` adatkészletben lévő összes könyv oszlopát kérdezi le. Emellett a forrásfájl fejléc sorában található információkat is használja a lekérdezésben lévő oszlopokra.
+Ez a kód csak az adatkészlet összes könyvének oszlopát `BibNum` olvassa be. A forrásfájl fejlécsorának információit is felhasználja a lekérdezés oszlopaira való hivatkozáshoz.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -538,7 +538,7 @@ async function queryBibNum(blob)
 
 ---
 
-A következő kód kombinálja a sorok szűrését és az oszlopok kivetítését ugyanabba a lekérdezésbe. 
+Az alábbi kód a sorszűrés és az oszloplevetítések egy lekérdezésben való kombinálása. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -614,5 +614,5 @@ async function queryDvds(blob)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Data Lake Storage lekérdezés gyorsulása](data-lake-storage-query-acceleration.md)
-- [A lekérdezés gyorsításának SQL nyelvi referenciája](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage gyorsítása](data-lake-storage-query-acceleration.md)
+- [Lekérdezésgyorsítás SQL nyelvi referenciája](query-acceleration-sql-reference.md)

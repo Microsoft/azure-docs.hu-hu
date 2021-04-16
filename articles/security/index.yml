@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Az Azure biztonsági dokumentációja
-summary: A biztonság minden szempontból az Azure integrált része. Az Azure a globális biztonsági intelligenciából, az ügyfelek által használható kifinomult vezérlőkből és a biztonság szempontjából megerősített infrastruktúrákból származó egyedi biztonsági előnyöket kínál. Ez a hatékony kombináció védelmet biztosít az alkalmazások és az adatok számára, támogatja a megfelelőség felé tett lépéseket, és költséghatékony biztonsági megoldást biztosít a különböző méretű vállalatok számára.
+summary: 'A biztonság minden szempontból az Azure integrált része. Az Azure a globális biztonsági intelligenciából, az ügyfelek által használható kifinomult vezérlőkből és a biztonság szempontjából megerősített infrastruktúrákból származó egyedi biztonsági előnyöket kínál. Ez a hatékony kombináció védelmet biztosít az alkalmazások és az adatok számára, támogatja a megfelelőség felé tett lépéseket, és költséghatékony biztonsági megoldást biztosít a különböző méretű vállalatok számára.'
 brand: azure
 metadata:
   title: Az Azure biztonsági dokumentációja
-  description: Megismerheti az Azure biztonsági megoldásait. Információkat talál a biztonság alapjairól, ajánlott eljárásokról és mintákról, valamint az Azure Security Centerről.
+  description: 'Megismerheti az Azure biztonsági megoldásait. Információkat talál a biztonság alapjairól, ajánlott eljárásokról és mintákról, valamint az Azure Security Centerről.'
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,228 +14,225 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/05/2021
-  ms.openlocfilehash: 368cd62109d1d5d74d26b22d9384cb4bf56a7944
-  ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "105044685"
 highlightedContent:
   items:
-  - title: Bevezetés az Azure biztonsági megoldásaiba
-    itemType: overview
-    url: ./fundamentals/overview.md
-  - title: Bevált biztonsági gyakorlatok és minták
-    itemType: concept
-    url: ./fundamentals/best-practices-and-patterns.md
-  - title: Mi az az Azure Security Center?
-    itemType: overview
-    url: ../security-center/security-center-introduction.md
+    - title: A biztonsági út megkezdése
+      itemType: get-started
+      url: ./journey/index.yml
+    - title: Az üzleti igényeknek megfelelő biztonsági szolgáltatások megkeresése
+      itemType: overview
+      url: ./fundamentals/end-to-end.md
+    - title: Ajánlott eljárások és javaslatok használata a felhőbeli üzemelő példányok biztonságossá helyezéséhez
+      itemType: concept
+      url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-  - title: Alapok
-    links:
-    - url: ./fundamentals/technical-capabilities.md
-      itemType: overview
-      text: Az Azure biztonságtechnikai képességei
-    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
-      itemType: concept
-      text: Közös feladatkörök a felhőalapú számítástechnikai rendszerben
-    - url: ./benchmarks/index.yml
-      itemType: concept
-      text: Biztonsági vezérlők Azure-szolgáltatásokhoz
-    footerLink:
-      url: ./fundamentals/index.yml
-      text: Részletek
-  - title: Fejlesztők
-    links:
-    - url: ./develop/secure-dev-overview.md
-      itemType: overview
-      text: A biztonságos fejlesztés ajánlott eljárásai
-    - url: ./develop/secure-develop.md
-      itemType: tutorial
-      text: Biztonságos alkalmazások fejlesztése
-    - url: ./develop/threat-modeling-tool.md
-      itemType: concept
-      text: Microsoft Threat Modeling Tool
-    footerLink:
-      url: ./develop/index.yml
-      text: Részletek
-  - title: Teljesítménytesztek és javaslatok
-    links:
-    - url: ./benchmarks/introduction.md
-      itemType: download
-      text: Azure felhőbiztonsági teljesítményteszt
-    - url: ../security-center/security-center-remediate-recommendations.md
-      itemType: overview
-      text: Az Azure Security Centerre vonatkozó javaslatok
-    footerLink:
-      url: ./benchmarks/index.yml
-      text: Részletek
-  - title: Titkos kódok és kulcsok
-    links:
-    - url: ../key-vault/general/overview.md
-      itemType: overview
-      text: Mi az Azure Key Vault?
-    - url: ../key-vault/secrets/quick-create-cli.md
-      itemType: quickstart
-      text: Titkos kód beállítása és lekérése
-    - url: ../dedicated-hsm/overview.md
-      itemType: overview
-      text: Mi az az Azure Dedicated HSM?
-    footerLink:
-      url: ../key-vault/index.yml
-      text: Részletek
-  - title: Adatvédelem
-    links:
-    - url: ./fundamentals/encryption-atrest.md
-      itemType: concept
-      text: Inaktív adatok titkosítása
-    - url: ./fundamentals/data-encryption-best-practices.md
-      itemType: concept
-      text: Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások
-    - url: ../storage/blobs/security-recommendations.md
-      itemType: concept
-      text: Tárbiztonság
-    footerLink:
-      url: ./fundamentals/encryption-overview.md
-      text: Részletek
-  - title: Identitáskezelés
-    links:
-    - url: ../active-directory/hybrid/choose-ad-authn.md
-      itemType: concept
-      text: A megfelelő hitelesítési módszer kiválasztása
-    - url: ./fundamentals/steps-secure-identity.md
-      itemType: concept
-      text: Az identitás-infrastruktúra védelme
-    - url: ./fundamentals/identity-management-best-practices.md
-      itemType: concept
-      text: Ajánlott biztonsági eljárások
-    footerLink:
-      url: ./fundamentals/identity-management-overview.md
-      text: Részletek
-  - title: A biztonság monitorozása
-    links:
-    - url: ../security-center/security-center-get-started.md
-      itemType: quickstart
-      text: Előfizetés felvétele a Security Centerbe
-    - url: ../security-center/security-center-just-in-time.md
-      itemType: how-to-guide
-      text: Virtuális gépek igény szerinti hozzáférése
-    - url: ../security-center/tutorial-security-policy.md
-      itemType: how-to-guide
-      text: Biztonsági szabályzatok használata
-    footerLink:
-      url: ../security-center/index.yml
-      text: Részletek
-  - title: IoT-biztonság monitorozása
-    links:
-    - url: ../defender-for-iot/overview.md
-      itemType: overview
-      text: Az Azure Security Center for IoT bemutatása
-    - url: ../defender-for-iot/architecture.md
-      itemType: how-to-guide
-      text: Az Azure Security Center for IoT architektúrája
-    - url: ../defender-for-iot/getting-started.md
-      itemType: how-to-guide
-      text: Az Azure Security Center for IoT használatának első lépései
-    footerLink:
-      url: /azure/asc-for-iot/
-      text: Részletek
-  - title: Biztonsági elemzés
-    links:
-    - url: ../sentinel/overview.md
-      itemType: overview
-      text: Mi az az Azure Sentinel előzetes verzió?
-    - url: ../sentinel/quickstart-onboard.md
-      itemType: quickstart
-      text: Az Azure Sentinel előzetes verzió előkészítése
-    - url: ../sentinel/quickstart-get-visibility.md
-      itemType: quickstart
-      text: Az Azure Sentinel előzetes verzió használatának első lépései
-    footerLink:
-      url: ../sentinel/index.yml
-      text: Részletek
-  - title: Fenyegetések elleni védelem
-    links:
-    - url: ../security-center/security-center-alerts-overview.md
-      itemType: concept
-      text: Biztonsági riasztások az Azure Security Centerben
-    - url: ../storage/common/azure-defender-storage-configure.md
-      itemType: concept
-      text: Azure Defender tároláshoz
-    - url: ../azure-sql/database/threat-detection-overview.md
-      itemType: concept
-      text: Azure Defender SQL-hez
-    footerLink:
-      url: ./fundamentals/threat-detection.md
-      text: Részletek
-  - title: Naplózás
-    links:
-    - url: ./fundamentals/log-audit.md
-      itemType: concept
-      text: Azure-naplózás
-    - url: ./fundamentals/management-monitoring-overview.md
-      itemType: overview
-      text: Kezelés és monitorozás áttekintése
-    footerLink:
-      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
-      text: Továbbiak keresése
-  - title: Hálózati biztonság
-    links:
-    - url: ./fundamentals/network-overview.md
-      itemType: overview
-      text: Biztonsági áttekintés
-    - url: ./fundamentals/network-best-practices.md
-      itemType: concept
-      text: Ajánlott biztonsági eljárások
-    - url: ../ddos-protection/fundamental-best-practices.md
-      itemType: concept
-      text: DDoS Protection
-  - title: Infrastruktúra biztonsága
-    links:
-    - url: ./fundamentals/physical-security.md
-      itemType: concept
-      text: Azure-létesítmények, -helyszínek és fizikai biztonság
-    - url: ./fundamentals/infrastructure-network.md
-      itemType: concept
-      text: Hálózati architektúra
-    - url: ./fundamentals/protection-customer-data.md
-      itemType: concept
-      text: Ügyféladatok védelme
-    footerLink:
-      url: ./fundamentals/infrastructure.md
-      text: Részletek
-  - title: Virtuális gépek biztonsága
-    links:
-    - url: ./fundamentals/virtual-machines-overview.md
-      itemType: overview
-      text: Biztonsági áttekintés
-    - url: ./fundamentals/iaas.md
-      itemType: concept
-      text: Ajánlott eljárások IaaS számítási feladatokhoz
-    - url: ./fundamentals/azure-marketplace-images.md
-      itemType: concept
-      text: Javaslatok a biztonság konfigurálásához
-  - title: Adatbázis-biztonság
-    links:
-    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
-      itemType: overview
-      text: Adatbiztonság
-    - url: ./fundamentals/paas-applications-using-sql.md
-      itemType: concept
-      text: Ajánlott eljárások PaaS-adatbázisokhoz
-    - url: ./fundamentals/database-security-checklist.md
-      itemType: concept
-      text: Biztonsági ellenőrzőlista
-  - title: Cégirányítás és megfelelőség
-    links:
-    - url: ../governance/policy/overview.md
-      itemType: overview
-      text: Azure Policy szolgáltatás
-    - url: ../governance/blueprints/overview.md
-      itemType: overview
-      text: Azure Blueprints szolgáltatás
-    footerLink:
-      url: ../governance/index.yml
-      text: Részletek
+    - title: Alapismeretek
+      links:
+        - url: ./fundamentals/overview.md
+          itemType: overview
+          text: Bevezetés az Azure biztonsági megoldásaiba
+        - url: 'https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91'
+          itemType: concept
+          text: Közös feladatkörök a felhőalapú számítástechnikai rendszerben
+        - url: ./benchmarks/index.yml
+          itemType: concept
+          text: Biztonsági vezérlők Azure-szolgáltatásokhoz
+      footerLink:
+        url: ./fundamentals/index.yml
+        text: Részletek
+    - title: Fejlesztők
+      links:
+        - url: ./develop/secure-dev-overview.md
+          itemType: overview
+          text: A biztonságos fejlesztés ajánlott eljárásai
+        - url: ./develop/secure-develop.md
+          itemType: tutorial
+          text: Biztonságos alkalmazások fejlesztése
+        - url: ./develop/threat-modeling-tool.md
+          itemType: concept
+          text: Microsoft Threat Modeling Tool
+      footerLink:
+        url: ./develop/index.yml
+        text: Részletek
+    - title: Bevált biztonsági gyakorlatok és minták
+      links:
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: Identitáskezelés
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: Hálózati biztonság
+        - url: ./fundamentals/paas-deployments.md
+          itemType: concept
+          text: PaaS-környezetek védelme
+      footerLink:
+        url: ./fundamentals/best-practices-and-patterns.md
+        text: Részletek
+    - title: Titkos kódok és kulcsok
+      links:
+        - url: ../key-vault/general/overview.md
+          itemType: overview
+          text: Mi az Azure Key Vault?
+        - url: ../key-vault/secrets/quick-create-cli.md
+          itemType: quickstart
+          text: Titkos kód beállítása és lekérése
+        - url: ../dedicated-hsm/overview.md
+          itemType: overview
+          text: Mi az az Azure Dedicated HSM?
+      footerLink:
+        url: ../key-vault/index.yml
+        text: Részletek
+    - title: Adatvédelem
+      links:
+        - url: ./fundamentals/encryption-atrest.md
+          itemType: concept
+          text: Inaktív adatok titkosítása
+        - url: ./fundamentals/data-encryption-best-practices.md
+          itemType: concept
+          text: Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások
+        - url: ../storage/blobs/security-recommendations.md
+          itemType: concept
+          text: Tárbiztonság
+      footerLink:
+        url: ./fundamentals/encryption-overview.md
+        text: Részletek
+    - title: Identitáskezelés
+      links:
+        - url: ../active-directory/hybrid/choose-ad-authn.md
+          itemType: concept
+          text: A megfelelő hitelesítési módszer kiválasztása
+        - url: ./fundamentals/steps-secure-identity.md
+          itemType: concept
+          text: Az identitás-infrastruktúra védelme
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: Ajánlott biztonsági eljárások
+      footerLink:
+        url: ./fundamentals/identity-management-overview.md
+        text: Részletek
+    - title: A biztonság monitorozása
+      links:
+        - url: ../security-center/security-center-get-started.md
+          itemType: quickstart
+          text: Előfizetés felvétele a Security Centerbe
+        - url: ../security-center/security-center-just-in-time.md
+          itemType: how-to-guide
+          text: Virtuális gépek igény szerinti hozzáférése
+        - url: ../security-center/tutorial-security-policy.md
+          itemType: how-to-guide
+          text: Biztonsági szabályzatok használata
+      footerLink:
+        url: ../security-center/index.yml
+        text: Részletek
+    - title: IoT-biztonság monitorozása
+      links:
+        - url: ../defender-for-iot/overview.md
+          itemType: overview
+          text: Az Azure Security Center for IoT bemutatása
+        - url: ../defender-for-iot/architecture.md
+          itemType: how-to-guide
+          text: Az Azure Security Center for IoT architektúrája
+        - url: ../defender-for-iot/getting-started.md
+          itemType: how-to-guide
+          text: Az Azure Security Center for IoT használatának első lépései
+      footerLink:
+        url: /azure/asc-for-iot/
+        text: Részletek
+    - title: Biztonsági elemzés
+      links:
+        - url: ../sentinel/overview.md
+          itemType: overview
+          text: Mi az az Azure Sentinel előzetes verzió?
+        - url: ../sentinel/quickstart-onboard.md
+          itemType: quickstart
+          text: Az Azure Sentinel előzetes verzió előkészítése
+        - url: ../sentinel/quickstart-get-visibility.md
+          itemType: quickstart
+          text: Az Azure Sentinel előzetes verzió használatának első lépései
+      footerLink:
+        url: ../sentinel/index.yml
+        text: Részletek
+    - title: Fenyegetések elleni védelem
+      links:
+        - url: ../security-center/security-center-alerts-overview.md
+          itemType: concept
+          text: Biztonsági riasztások az Azure Security Centerben
+        - url: ../storage/common/azure-defender-storage-configure.md
+          itemType: concept
+          text: Azure Defender tároláshoz
+        - url: ../azure-sql/database/threat-detection-overview.md
+          itemType: concept
+          text: Azure Defender SQL-hez
+      footerLink:
+        url: ./fundamentals/threat-detection.md
+        text: Részletek
+    - title: Naplózás
+      links:
+        - url: ./fundamentals/log-audit.md
+          itemType: concept
+          text: Azure-naplózás
+        - url: ./fundamentals/management-monitoring-overview.md
+          itemType: overview
+          text: Kezelés és monitorozás áttekintése
+      footerLink:
+        url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
+        text: Továbbiak keresése
+    - title: Hálózati biztonság
+      links:
+        - url: ./fundamentals/network-overview.md
+          itemType: overview
+          text: Biztonsági áttekintés
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: Ajánlott biztonsági eljárások
+        - url: ../ddos-protection/fundamental-best-practices.md
+          itemType: concept
+          text: DDoS Protection
+    - title: Infrastruktúra biztonsága
+      links:
+        - url: ./fundamentals/physical-security.md
+          itemType: concept
+          text: 'Azure-létesítmények, -helyszínek és fizikai biztonság'
+        - url: ./fundamentals/infrastructure-network.md
+          itemType: concept
+          text: Hálózati architektúra
+        - url: ./fundamentals/protection-customer-data.md
+          itemType: concept
+          text: Ügyféladatok védelme
+      footerLink:
+        url: ./fundamentals/infrastructure.md
+        text: Részletek
+    - title: Virtuális gépek biztonsága
+      links:
+        - url: ./fundamentals/virtual-machines-overview.md
+          itemType: overview
+          text: Biztonsági áttekintés
+        - url: ./fundamentals/iaas.md
+          itemType: concept
+          text: Ajánlott eljárások IaaS számítási feladatokhoz
+        - url: ./fundamentals/azure-marketplace-images.md
+          itemType: concept
+          text: Javaslatok a biztonság konfigurálásához
+    - title: Adatbázis-biztonság
+      links:
+        - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
+          itemType: overview
+          text: Adatbiztonság
+        - url: ./fundamentals/paas-applications-using-sql.md
+          itemType: concept
+          text: Ajánlott eljárások PaaS-adatbázisokhoz
+        - url: ./fundamentals/database-security-checklist.md
+          itemType: concept
+          text: Biztonsági ellenőrzőlista
+    - title: Cégirányítás és megfelelőség
+      links:
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Azure Policy szolgáltatás
+        - url: ../governance/blueprints/overview.md
+          itemType: overview
+          text: Azure Blueprints szolgáltatás
+      footerLink:
+        url: ../governance/index.yml
+        text: Részletek

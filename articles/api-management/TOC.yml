@@ -112,7 +112,7 @@
           href: import-logic-app-as-api.md
         - name: API szerkesztése
           href: edit-api.md
-        - name: Service Fabric háttérrendszer konfigurálása
+        - name: A Service Fabric konfigurálása
           href: how-to-configure-service-fabric-backend.md
     - name: Kiépítés és skálázás
       items:
@@ -128,6 +128,9 @@
           href: configure-custom-domain.md
         - name: Üzembe helyezés több Azure-régióban
           href: api-management-howto-deploy-multi-region.md
+        - name: Zónaredundancia engedélyezése
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: Saját üzemeltetésű átjáró üzembe helyezése
           href: api-management-howto-provision-self-hosted-gateway.md
         - name: Saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes Service-ben
@@ -245,7 +248,7 @@
           href: api-management-transformation-policies.md
         - name: A Distributed Application Runtime (Dapr) integrálási szabályzatai
           href: api-management-dapr-policies.md
-        - name: Ellenőrzési házirendek
+        - name: Érvényesítési szabályzatok
           href: validation-policies.md
     - name: Kezelés éles környezetben
       items:
@@ -283,7 +286,7 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: Oktatóanyag
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
-        - name: Az éles környezetben felmerülő problémák diagnosztizálása
+        - name: Éles környezet problémáinak diagnosztizálása
           href: diagnose-solve-problems.md
 - name: Referencia
   items:

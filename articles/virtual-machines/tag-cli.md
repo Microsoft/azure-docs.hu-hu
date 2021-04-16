@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuális gép címkézése a parancssori felület használatával
-description: Ismerje meg, hogyan címkézheti a virtuális gépeket az Azure CLI használatával.
+title: Azure-beli virtuális gép címkézése az Azure CLI használatával
+description: Ismerje meg, hogyan címkézett meg egy virtuális gépet az Azure CLI használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,25 +8,25 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20bb4ab622a01646bcc61d0f691c514a25a06edc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897442"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502606"
 ---
-# <a name="how-to-tag-a-vm-using-the-cli"></a>Virtuális gép címkézése a parancssori felület használatával
+# <a name="how-to-tag-a-vm-using-the-azure-cli"></a>Virtuális gép címkézése az Azure CLI használatával
 
-Ez a cikk bemutatja, hogyan címkézheti a virtuális gépet az Azure CLI használatával. A címkék felhasználó által definiált kulcs/érték párok, amelyek közvetlenül egy erőforráson vagy erőforráscsoporton helyezhetők el. Az Azure jelenleg legfeljebb 50 címkét támogat erőforrás és erőforráscsoport szerint. A címkéket a létrehozáskor vagy egy meglévő erőforráshoz való hozzáadáskor lehet elhelyezni egy erőforráson. A virtuális gépeket az Azure [PowerShell](tag-powershell.md)használatával is címkézheti.
+Ez a cikk bemutatja, hogyan címkéz egy virtuális gépet az Azure CLI használatával. A címkék felhasználó által definiált kulcs/érték párok, amelyek közvetlenül elhelyezhetőek egy erőforráson vagy erőforráscsoporton. Az Azure jelenleg erőforrásonként és erőforráscsoportonként legfeljebb 50 címkét támogat. A címkék elhelyezhetőek az erőforráson a létrehozáskor, vagy hozzáadhatóak egy meglévő erőforráshoz. A virtuális gépeket az Azure PowerShell használatával is [felcímkézheti.](tag-powershell.md)
 
 
-Megtekintheti egy adott virtuális gép összes tulajdonságát, beleértve a címkéket is, a használatával `az vm show` .
+Egy adott virtuális gép összes tulajdonságát megtekintheti, beleértve a címkéket is a `az vm show` használatával.
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM --query tags
 ```
 
-Ha új virtuálisgép-címkét szeretne hozzáadni az Azure CLI-n keresztül, a `azure vm update` parancsot a címke paraméterrel együtt használhatja `--set` :
+Ha új virtuálisgép-címkét szeretne hozzáadni az Azure CLI-en keresztül, használhatja a parancsot és a `azure vm update` címkeparamétert: `--set`
 
 ```azurecli-interactive
 az vm update \
@@ -44,9 +44,9 @@ az vm update \
    --remove tags.myNewTagName1
 ```
 
-Most, hogy címkéket alkalmazottunk az erőforrásokhoz az Azure CLI-ben és a portálon, vessünk egy pillantást a használati adatokra, hogy megtekintsék a címkéket a számlázási portálon.
+Most, hogy címkéket alkalmazottunk az erőforrásokra az Azure CLI-hez és a Portálhoz, vessünk egy pillantást a használati adatokra, és lássuk a címkéket a számlázási portálon.
 
 ### <a name="next-steps"></a>Következő lépések
 
-- Az Azure-erőforrások címkézésével kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md) és [címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
-- Ha szeretné megtekinteni, hogyan segíthet az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla ismertetése](../cost-management-billing/understand/review-individual-bill.md)című témakört.
+- További információ az Azure-erőforrások címkézésről: Azure Resource Manager [Áttekintés](../azure-resource-manager/management/overview.md) és Címkék használata [az Azure-erőforrások rendszerezéséhez.](../azure-resource-manager/management/tag-resources.md)
+- Ha megmutatja, hogyan segíthetnek a címkék az Azure-erőforrások használatának kezelésében, tekintse meg [az Azure-számla megértését.](../cost-management-billing/understand/review-individual-bill.md)

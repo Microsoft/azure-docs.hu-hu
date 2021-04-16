@@ -1,37 +1,40 @@
 ---
-title: Gyors útmutató – Java-tárolók lemezképének létrehozása és leküldése Azure Container Registry a Maven és a gém használatával
-description: Hozzon létre egy tárolóban lévő Java-alkalmazást, és küldje el Azure Container Registry a Maven gém beépülő modullal.
+title: Rövid útmutató – Java-tárolók rendszerképének összeállítása és leküldése Azure Container Registry Maven és Jib használatával
+description: Tárolóba írt Java-alkalmazás összeállítása és leküldése Azure Container Registry Maven Jib beépülő modullal.
 author: KarlErickson
-ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
-ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- devx-track-java
+- devx-track-azurecli
+- mode-api
+ms.openlocfilehash: 4d805458d90c73de879a9b87d5b08c98a8f1a250
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92018338"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537306"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Gyors útmutató: Java-tárolók rendszerképének létrehozása és leküldése Azure Container Registry
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rövid útmutató: Java-tároló rendszerképének összeállítása és leküldése Azure Container Registry
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Java-alkalmazást, és hogyan küldheti el Azure Container Registry a Maven gém beépülő modullal. A Maven és a gém használatának egyik példája a fejlesztői eszközök használata az Azure Container registrytel való interakcióhoz.
+Ez a rövid útmutató bemutatja, hogyan építhet ki egy tárolóba írt Java-alkalmazást, és hogyan Azure Container Registry a Maven Jib beépülő modullal. A Maven és a Jib használata egy példa arra, hogy fejlesztői eszközök használatával kommunikálunk az Azure Container Registryvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial).
-* Az [Azure Command-Line felülete (CLI)](/cli/azure/overview).
+* Az [Azure Command-Line Interface (CLI)](/cli/azure/overview).
 * Egy támogatott Java fejlesztői készlet (JDK). További információ az Azure-beli fejlesztéshez rendelkezésre álló JDK-król: <https://aka.ms/azure-jdks>.
-* Apache [Maven](http://maven.apache.org) Build eszköz (3. vagy újabb verzió).
+* Az Apache [Maven buildeszköze](http://maven.apache.org) (3-as vagy újabb verzió).
 * Egy [Git](https://git-scm.com)-ügyfél.
 * Egy [Docker](https://www.docker.com)-ügyfél.
-* Az [ACR Docker hitelesítő adatainak segítője](https://github.com/Azure/acr-docker-credential-helper).
+* Az [ACR Docker hitelesítőadat-segítője.](https://github.com/Azure/acr-docker-credential-helper)
 
 ## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>A Spring Boot on Docker – Első lépések webalkalmazás létrehozása
 
 A következő lépések végigvezetik egy Spring Boot-webalkalmazás összeállításán és helyszíni tesztelésén.
 
-1. A parancssorban a következő parancs használatával klónozott a [Spring boot a docker első lépések](https://github.com/spring-guides/gs-spring-boot-docker) Sample projektben.
+1. A parancssorból használja a következő parancsot a [Docker Spring Boot mintaprojektben](https://github.com/spring-guides/gs-spring-boot-docker) használt alkalmazás klónozásához.
 
    ```bash
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
@@ -55,25 +58,25 @@ A következő lépések végigvezetik egy Spring Boot-webalkalmazás összeáll�
    curl http://localhost:8080
    ```
 
-A következő üzenetnek kell megjelennie: **Hello Docker World**
+A következő üzenetnek kell jelen lennie: **Hello Docker World**
 
 ## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry létrehozása az Azure CLI-vel
 
-Ezután létre kell hoznia egy Azure-erőforráscsoportot és az ACR-t az alábbi lépések végrehajtásával:
+A következő lépésben létre fog hozni egy Azure-erőforráscsoportot és az ACR-t a következő lépésekkel:
 
-1. Jelentkezzen be az Azure-fiókjába a következő parancs használatával:
+1. Jelentkezzen be az Azure-fiókjába a következő paranccsal:
 
    ```azurecli
    az login
    ```
 
-1. Válassza ki a használni kívánt Azure-előfizetést:
+1. Adja meg a használni kívánt Azure-előfizetést:
 
    ```azurecli
    az account set -s <subscription ID>
    ```
 
-1. Hozzon létre egy erőforráscsoportot az oktatóanyagban használt Azure-erőforrások számára. A következő parancsban mindenképp cserélje le a helyőrzőket a saját erőforrás nevére és egy olyan helyre, mint például a (z `eastus` ).
+1. Hozzon létre egy erőforráscsoportot az oktatóanyagban használt Azure-erőforrások számára. A következő parancsban cserélje le a helyőrzőket a saját erőforrásnevére és egy olyan helyre, mint a `eastus` .
 
    ```azurecli
    az group create \
@@ -81,7 +84,7 @@ Ezután létre kell hoznia egy Azure-erőforráscsoportot és az ACR-t az alább
        --location=<location>
    ```
 
-1. Hozzon létre egy privát Azure Container registryt az erőforráscsoporthoz az alábbi parancs használatával. Ügyeljen arra, hogy a helyőrzőket a tényleges értékekkel cserélje le. Az oktatóanyag a mintaalkalmazást Docker-lemezképként küldi le ennek a regisztrációs adatbázisnak a későbbi lépésekben.
+1. Hozzon létre egy privát Azure Container Registryt az erőforráscsoportban az alábbi paranccsal. A helyőrzőket cserélje le tényleges értékekre. Az oktatóanyag a mintaalkalmazást Docker-lemezképként küldi le ennek a regisztrációs adatbázisnak a későbbi lépésekben.
 
    ```azurecli
    az acr create \
@@ -93,23 +96,23 @@ Ezután létre kell hoznia egy Azure-erőforráscsoportot és az ACR-t az alább
 
 ## <a name="push-your-app-to-the-container-registry-via-jib"></a>Az alkalmazás leküldése a regisztrációs adatbázisnak a Jibbel
 
-Végezetül frissítse a projekt konfigurációját, és a parancssor használatával hozza létre és telepítse a lemezképet.
+Végül frissíti a projektkonfigurációt, és a parancssor használatával buildalja és üzembe helyezheti a rendszerképet.
 
 > [!NOTE]
-> Az imént létrehozott Azure Container registrybe való bejelentkezéshez szüksége lesz a Docker-démon futtatására. A Docker a gépen való telepítéséhez [itt látható a hivatalos Docker-dokumentáció](https://docs.docker.com/install/).
+> Az újonnan létrehozott Azure Container Registrybe való bejelentkezéshez futnia kell a Docker-démonnak. A Docker gépre való telepítéséhez [itt található a Hivatalos Docker-dokumentáció.](https://docs.docker.com/install/)
 
-1. Jelentkezzen be a Azure Container Registryba az Azure CLI-vel az alábbi parancs használatával. A helyőrzőt cserélje le a saját beállításjegyzék-nevére.
+1. Jelentkezzen be a Azure Container Registry az Azure CLI-ről a következő paranccsal. A helyőrzőt cserélje le a saját regisztrációs adatbázisának nevére.
 
    ```azurecli
    az configure --defaults acr=<your registry name>
    az acr login
    ```
 
-   A `az configure` parancs az alapértelmezett beállításjegyzék-nevet állítja be a `az acr` parancsokkal való használatra.
+   A `az configure` parancs beállítja a beállításjegyzék alapértelmezett nevét a `az acr` parancsokkal való használatra.
 
 1. Lépjen a Spring Boot-alkalmazás befejezett projektkönyvtárába (például „*C:\SpringBoot\gs-spring-boot-docker\complete*” vagy „*/users/robert/SpringBoot/gs-spring-boot-docker/complete*”), és nyissa meg a *pom.xml* fájlt egy szövegszerkesztővel.
 
-1. Frissítse a `<properties>` gyűjteményt a *pom.xml* fájlban a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon hozzá egy `<jib-maven-plugin.version>` tulajdonságot értékkel `2.2.0` , vagy a [gém-Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)újabb verzióját.
+1. Frissítse a `<properties>` gyűjteményt a *pom.xml* a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon hozzá egy tulajdonságot a értékkel, vagy `<jib-maven-plugin.version>` `2.2.0` a [jib-maven-plugin újabb verziójával.](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
 
    ```xml
    <properties>
@@ -119,7 +122,7 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
    </properties>
    ```
 
-1. Frissítse a `<plugins>` gyűjteményt a *pom.xml* fájlban, hogy a `<plugin>` elem tartalmazza és a bejegyzést a `jib-maven-plugin` következő példában látható módon. Vegye figyelembe, hogy a Microsoft Container Registryból (MCR) származó alaprendszerképet használunk: `mcr.microsoft.com/java/jdk:8-zulu-alpine` , amely az Azure-hoz hivatalosan támogatott JDK-t tartalmaz. A hivatalosan támogatott JDK rendelkező más MCR-alaplemezképek esetében lásd: [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE fej nélküli JRE](https://hub.docker.com/_/microsoft-java-jre-headless)és [Java SE JDK és Maven](https://hub.docker.com/_/microsoft-java-maven).
+1. Frissítse a gyűjteményt apom.xml, hogy a elem tartalmazza a és a `<plugins>`  `<plugin>` `jib-maven-plugin` bejegyzést, ahogy az alábbi példában látható. Vegye figyelembe, hogy a Microsoft Container Registry (MCR) alapként használt rendszerképét használjuk, amely egy hivatalosan támogatott `mcr.microsoft.com/java/jdk:8-zulu-alpine` JDK-t tartalmaz az Azure-hoz. A hivatalosan támogatott JDK-kat használó egyéb MCR-alapként használt rendszerképekért lásd: [Java SE JDK,](https://hub.docker.com/_/microsoft-java-jdk) [Java SE JRE,](https://hub.docker.com/_/microsoft-java-jre) [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)és [Java SE JDK és Maven.](https://hub.docker.com/_/microsoft-java-maven)
 
    ```xml
    <plugin>
@@ -145,11 +148,11 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
 
 > [!NOTE]
 >
-> Biztonsági okokból a által létrehozott hitelesítő adatok `az acr login` csak 1 órára érvényesek. Ha *401 jogosulatlan* hibaüzenetet kap, akkor `az acr login -n <your registry name>` újbóli hitelesítéshez futtathatja a parancsot.
+> Biztonsági okokból a által létrehozott hitelesítő `az acr login` adatok csak 1 óráig érvényesek. Ha a *401 Unauthorized (Jogosulatlan)* hibaüzenetet kapja, újra futtathatja a parancsot az `az acr login -n <your registry name>` újbóli hitelesítéshez.
 
 ## <a name="verify-your-container-image"></a>A tároló rendszerképének ellenőrzése
 
-Gratulálunk! Most már telepítette az ACR-be az Azure által támogatott JDK-t. Most tesztelheti a rendszerképet úgy, hogy üzembe helyezi a Azure App Service, vagy meghúzza a parancsot a helyi parancsra (a helyőrző helyére):
+Gratulálunk! Most már leküldte a tárolóba írt Java-alkalmazást az ACR-be az Azure által támogatott JDK-on. Most már tesztelheti a rendszerképet úgy, hogy üzembe Azure App Service, vagy a paranccsal lekért helyi helyre (a helyőrzőt lecserélve):
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
@@ -157,11 +160,11 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Microsoft által támogatott Java alaplemezképek egyéb verzióihoz lásd:
+A Hivatalos Microsoft által támogatott Java-alapként használt rendszerképek egyéb verzióiért lásd:
 
 * [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk)
 * [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre)
-* [Java SE fej nélküli JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
+* [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
 * [Java SE JDK és Maven](https://hub.docker.com/_/microsoft-java-maven)
 
 Ha szeretne többet megtudni a Spring és az Azure szolgáltatásról, lépjen tovább a Spring on Azure dokumentációs központra.

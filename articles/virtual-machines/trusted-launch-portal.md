@@ -1,5 +1,5 @@
 ---
-title: 'Előzetes verzió: megbízható indítású virtuális gép üzembe helyezése'
+title: 'Előzetes verzió: Megbízható indítási virtuális gép üzembe helyezése'
 description: Megbízható indítást használó virtuális gép üzembe helyezése.
 author: khyewei
 ms.author: khwei
@@ -9,16 +9,16 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581190"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565916"
 ---
-# <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
+# <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Virtuális gép üzembe helyezése engedélyezett megbízható indítással (előzetes verzió)
 
-A [megbízható indítás](trusted-launch.md) egy módszer a [2. generációs](generation-2.md) virtuális gépek biztonságának javítására. A megbízható indítás a fejlett és állandó támadásokkal szemben az infrastruktúra-technológiák, például a vTPM és a biztonságos rendszerindítás kombinálásával nyújt védelmet.
+[A megbízható indítás](trusted-launch.md) egy módszer a [2.](generation-2.md) generációs virtuális gépek biztonságának javítására. A megbízható indítás a fejlett és állandó támadási technikákkal szemben a vTPM és a biztonságos rendszerindításhoz hasonló infrastruktúra-technológiák kombinálásával nyújt védelmet.
 
 > [!IMPORTANT]
 > A megbízható indítás jelenleg nyilvános előzetes verzióban érhető el.
@@ -29,45 +29,43 @@ A [megbízható indítás](trusted-launch.md) egy módszer a [2. generációs](g
 
 ## <a name="deploy-using-the-portal"></a>Üzembe helyezés a portál használatával
 
-Hozzon létre egy virtuális gépet, amelyen engedélyezve van a megbízható indítás.
+Virtuális gép létrehozása engedélyezett megbízható indítással.
 
-1. Jelentkezzen be az Azure [Portalra](https://aka.ms/TL_preview).
+1. Jelentkezzen be az Azure [Portalra.](https://aka.ms/TL_preview)
    > [!NOTE] 
-   > A portál hivatkozása egyedi a megbízható indítás előzetes verziójára.
+   > A portál hivatkozása egyedi a megbízható indítási előzetes verzióban.
    >  
-2. **Virtual Machines** keresése.
-3. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
-4. A **virtuális gépek** lapon válassza a **Hozzáadás**, majd a **virtuális gép** lehetőséget.
-5. A **projekt részletei** területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
-6. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
-7. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a [megbízható indítást](trusted-launch.md#public-preview-limitations).
-8. A **rendszerkép** területen válasszon ki egy 2. generációs [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). 
+2. Keressen rá a **Virtual Machines.**
+3. A **Szolgáltatások alatt** válassza a Virtuális gépek **lehetőséget.**
+4. A Virtuális **gépek lapon** válassza a **Hozzáadás,** majd a **Virtuális gép lehetőséget.**
+5. A **Projekt részletei alatt** ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
+6. Az **Erőforráscsoport alatt** válassza az **Új létrehozása** lehetőséget, és adjon nevet az erőforráscsoportnak, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő menüből.
+7. A **Példány részletei területen** adja meg a virtuális gép nevét, és válasszon ki egy olyan régiót, amely támogatja a megbízható [indítást.](trusted-launch.md#public-preview-limitations)
+8. A **Rendszerkép alatt** válasszon ki egy 2. generációs [rendszerképet,](trusted-launch.md#public-preview-limitations)amely támogatja a megbízható indítást. Győződjön meg arról, hogy a következő üzenet jelenik meg: **Ez a rendszerkép támogatja a megbízható indítási előnézetet. Konfigurálja a következőt a Speciális lapon:**.
    > [!TIP]
-   > Ha nem látja a kívánt rendszerkép 2. generációs verzióját, válassza az **összes rendszerkép** megjelenítése lehetőséget, majd a **virtuális gép generálási** szűrőjét csak a Gen 2 rendszerképek megjelenítéséhez. Keresse meg a képet a listában, **majd a legördülő menüből válassza** ki a 2. generációs verziót.
- 
-1. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
-1. Görgessen le a **VM Generation** szakaszhoz. Győződjön meg arról, hogy a **2. gen** van kijelölve.
-1. Miközben továbbra is a **speciális** lapon, görgessen le a **megbízható indítás** elemig, majd jelölje be a **megbízható indítás** jelölőnégyzetet. Ekkor két további lehetőség jelenik meg – biztonságos rendszerindítás és vTPM. Válassza ki a megfelelő beállításokat a központi telepítéshez.
+   > Ha nem látja a kívánt rendszerkép Gen 2-es verzióját a  legördülő menüben,  válassza az Összes rendszerkép megjelenítése lehetőséget, majd módosítsa a virtuálisgép-generáció szűrőt úgy, hogy csak a Gen 2 rendszerképeket mutassa. Keresse meg a rendszerképet  a listában, majd a 2. generációs verzió kiválasztásához használja a Select (Kijelölés) legördülő listát.
+
+    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Képernyőkép a megbízható indítást támogató gen2-rendszerkép megerősítéséről.":::
+
+13. Válassza ki a megbízható indítást támogató virtuálisgép-méretet. Tekintse meg a támogatott [méretek listáját.](trusted-launch.md#public-preview-limitations)
+14. Adja meg a **rendszergazdai fiók adatait,** majd a **Bejövő portszabályokat.** 
+1. Váltson át **a Speciális lapra** az oldal tetején található kiválasztásával.
+1. Görgessen le a **Virtuális gép létrehozása szakaszhoz.** Győződjön meg arról, **hogy a Gen 2 van** kiválasztva.
+1. A Speciális **lapon** görgessen le a Megbízható indítás beállításhoz, majd jelölje be a Megbízható **indítás jelölőnégyzetet.** Így két további lehetőség jelenik meg: Biztonságos rendszerindítás és vTPM. Válassza ki az üzembe helyezéshez megfelelő beállításokat.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="A megbízható indítás beállításait bemutató képernyőkép.":::
 
-12. Lépjen vissza az **alapok** lapra, a **kép** területen, és győződjön meg arról, hogy a következő üzenet jelenik meg: **Ez a kép támogatja a megbízható indítási előnézetet. Konfigurálás a Speciális lapon**. A 2. generációs képet most ki kell jelölni.
+15. A lap alján válassza az Áttekintés **+ létrehozás lehetőséget.**
+16. A **Virtuális gép létrehozása oldalon** láthatja az üzembe helyezni fog virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Képernyőfelvétel: az üzenet, amely megerősíti, hogy ez egy Gen2-rendszerkép, amely támogatja a megbízható indítást.":::
-
-13. Válasszon olyan virtuálisgép-méretet, amely támogatja a megbízható indítást. Tekintse meg a [támogatott méretek](trusted-launch.md#public-preview-limitations)listáját.
-14. Adja meg a **rendszergazdai fiók** adatait, majd a **bejövő portok szabályait**.
-15. A lap alján válassza a **felülvizsgálat + létrehozás** elemet.
-16. A **virtuális gép létrehozása** lapon megtekintheti a telepíteni kívánt virtuális gép adatait. Ha készen áll, kattintson a **Létrehozás** gombra.
-
-    :::image type="content" source="media/trusted-launch/validation.png" alt-text="Az érvényesítés lap Sceenshot, amely a megbízható indítási beállításokat tartalmazza.":::
+    :::image type="content" source="media/trusted-launch/validation.png" alt-text="Az érvényesítési lapról a megbízható indítási lehetőségeket megjelenítő Sceenshot() látható.":::
 
 
 A virtuális gép üzembe helyezése eltarthat néhány percig. 
 
 ## <a name="deploy-using-a-template"></a>Üzembe helyezés sablon használatával
 
-A megbízható indítási virtuális gépek üzembe helyezése egy rövid útmutató sablon használatával végezhető el:
+A megbízható indítású virtuális gépeket gyorsindítási sablonnal helyezheti üzembe:
 
 **Linux**:    
 [![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
@@ -77,92 +75,92 @@ A megbízható indítási virtuális gépek üzembe helyezése egy rövid útmut
 
 ## <a name="view-and-update"></a>Megtekintés és frissítés
 
-Egy meglévő virtuális gép megbízható indítási konfigurációját úgy tekintheti meg, ha a portálon meglátogatja a virtuális gép **Áttekintés** lapját.
+Egy meglévő virtuális gép megbízható indítási konfigurációját a virtuális gép Áttekintés lapján, a portálon megtekintheti. 
 
-A megbízható indítási konfiguráció módosításához a bal oldali menüben válassza a **Konfigurálás** lehetőséget a **Beállítások** szakaszban. Engedélyezheti vagy letilthatja a biztonságos rendszerindítást és a vTPM a **megbízható indítás** szakaszban. Ha elkészült, válassza a **Mentés** lehetőséget az oldal tetején. 
+A megbízható indítás konfigurációjának módosításához a  bal oldali menü beállítások szakaszában válassza a Konfiguráció **lehetőséget.** A biztonságos rendszerindítást és a vTPM-et a Megbízható indítás **szakaszban engedélyezheti vagy tilthatja** le. Ha **végzett,** kattintson a lap tetején található Mentés gombra. 
 
-:::image type="content" source="media/trusted-launch/configuration.png" alt-text="Képernyőkép a megbízható indítási konfiguráció módosításáról.":::
+:::image type="content" source="media/trusted-launch/configuration.png" alt-text="Képernyőkép a megbízható indítási konfigurációkról.":::
 
-Ha a virtuális gép fut, üzenet jelenik meg arról, hogy a virtuális gép újraindul, hogy alkalmazza a módosított megbízható indítási konfigurációt. Válassza az **Igen** lehetőséget, majd várjon, amíg a virtuális gép újraindul a módosítások érvénybe léptetéséhez.
+Ha a virtuális gép fut, egy üzenet jelenik meg, amely szerint a virtuális gép újraindul a módosított megbízható indítási konfiguráció alkalmazásához. Válassza **az Igen** lehetőséget, majd várja meg, amíg a virtuális gép újraindul, amíg a módosítások érvénybe lépnek.
 
 
-## <a name="verify-secure-boot-and-vtpm"></a>Biztonságos rendszerindítási és vTPM ellenőrzése
+## <a name="verify-secure-boot-and-vtpm"></a>A biztonságos rendszerindítás és a vTPM ellenőrzése
 
-Ellenőrizheti, hogy a biztonságos rendszerindítási és vTPM engedélyezve vannak-e a virtuális gépen.
+Ellenőrizheti, hogy a biztonságos rendszerindítás és a vTPM engedélyezve van-e a virtuális gépen.
     
-### <a name="linux-validate-if-secure-boot-is-running"></a>Linux: Ellenőrizze, hogy fut-e a biztonságos rendszerindítás
+### <a name="linux-validate-if-secure-boot-is-running"></a>Linux: ellenőrizze, hogy fut-e a biztonságos rendszerindítás
 
-SSH-t a virtuális géphez, majd futtassa a következő parancsot: 
+SSH-ból a virtuális géphez, majd futtassa a következő parancsot: 
 
 ```bash
 mokutil --sb-state
 ```
 
-Ha a biztonságos rendszerindítás engedélyezve van, a parancs a következőket fogja visszaadni:
+Ha a biztonságos rendszerindítást engedélyezi, a parancs a következőt adja vissza:
  
 ```bash
 SecureBoot enabled 
 ```
 
-### <a name="linux-validate-if-vtpm-is-enabled"></a>Linux: annak ellenőrzése, hogy engedélyezve van-e a vTPM
+### <a name="linux-validate-if-vtpm-is-enabled"></a>Linux: annak ellenőrzése, hogy a vTPM engedélyezve van-e
 
-Jelentkezzen be a virtuális gépre SSH-val. Ellenőrizze, hogy van-e tpm0 eszköz: 
+Jelentkezzen be a virtuális gépre SSH-val. Ellenőrizze, hogy a tpm0 eszköz jelen van-e: 
 
 ```bash
 ls /dev/tpm0
 ```
 
-Ha a vTPM engedélyezve van, a parancs a következőket fogja visszaadni:
+Ha a vTPM engedélyezve van, a parancs a következőt adja vissza:
 
 ```output
 /dev/tpm0
 ```
 
-Ha a vTPM le van tiltva, a parancs a következőket fogja visszaadni:
+Ha a vTPM le van tiltva, a parancs a következőt adja vissza:
 
 ```output
 ls: cannot access '/dev/tpm0': No such file or directory
 ```
 
-### <a name="windows-validate-that-secure-boot-is-running"></a>Windows: ellenőrzi, hogy a biztonságos rendszerindítás fut-e
+### <a name="windows-validate-that-secure-boot-is-running"></a>Windows: ellenőrizze, hogy fut-e a biztonságos rendszerindítás
 
-Kapcsolódjon a virtuális géphez a távoli asztal használatával, majd futtassa a parancsot `msinfo32.exe` .
+Csatlakozzon a virtuális géphez távoli asztal használatával, majd futtassa a következőt: `msinfo32.exe` .
 
-A jobb oldali ablaktáblán győződjön meg arról, hogy a biztonságos rendszerindítási állapot **be van kapcsolva**.
+A jobb oldali panelen ellenőrizze, hogy a Biztonságos rendszerindítási állapot **BE van-e va.**
 
-## <a name="enable-the-azure-security-center-experience"></a>A Azure Security Center felületének engedélyezése
+## <a name="enable-the-azure-security-center-experience"></a>A Azure Security Center engedélyezése
 
-Ha engedélyezni szeretné a Azure Security Center a megbízható indítási virtuális gépek adatainak megjelenítését, több szabályzatot is engedélyeznie kell. A házirendek engedélyezésének legegyszerűbb módja a [Resource Manager-sablon](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies) üzembe helyezése az előfizetésben. 
+Ahhoz, Azure Security Center rendszer megjelenítse a megbízható indítású virtuális gépek adatait, több szabályzatot is engedélyeznie kell. A szabályzatok engedélyezésének legegyszerűbb módja, ha üzembe Resource Manager [ezt](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies) a sablont az előfizetésben. 
 
-Az alábbi gombra kattintva helyezheti üzembe a szabályzatokat az előfizetésében:
+Kattintson az alábbi gombra a szabályzatok előfizetésben való üzembe helyezéséhez:
 
 [![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-asc-trustedlaunch-policies%2Fazuredeploy.json)
 
-A sablont csak egyszer kell központilag telepíteni. A rendszer automatikusan telepíti és bővíti `GuestAttestation` `AzureSecurity` az összes támogatott virtuális gépre. Ha hibákat kap, próbálkozzon újra a sablon ismételt üzembe helyezésével.
+A sablont előfizetésenként csak egyszer kell üzembe helyezni. Automatikusan telepíti és `GuestAttestation` `AzureSecurity` bővítményeket telepít az összes támogatott virtuális gépre. Ha hibaüzenetet kap, próbálkozzon újra a sablon ismételt üzembe ásával.
 
-A megbízható indítási virtuális gépek vTPM és biztonságos rendszerindítási javaslatainak beszerzéséhez tekintse [meg az egyéni kezdeményezés hozzáadása az előfizetéshez](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)című témakört.
+A vTPM-et és a megbízható indítású virtuális gépek biztonságos rendszerindítási javaslatait lásd: Egyéni kezdeményezés hozzáadása [az előfizetéshez.](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)
  
-## <a name="sign-things-for-secure-boot-on-linux"></a>A biztonságos rendszerindításhoz szükséges dolgok aláírása Linux rendszeren
+## <a name="sign-things-for-secure-boot-on-linux"></a>Aláírás a biztonságos rendszerindításhoz Linuxon
 
-Bizonyos esetekben előfordulhat, hogy alá kell írnia az UEFI biztonságos rendszerindításhoz szükséges dolgokat.  Előfordulhat például, hogy át kell lépnie [az Ubuntu biztonságos rendszerindításához szükséges dolgokkal](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) . Ezekben az esetekben meg kell adnia a virtuális géphez tartozó MOK-regisztráció kulcsait. Ehhez az Azure soros konzolt kell használnia az MOK segédprogram eléréséhez.
+Bizonyos esetekben szükség lehet az UEFI biztonságos rendszerindításhoz szükséges aláírásra.  Előfordulhat például, hogy végig kell mennie a How to sign things for Secure Boot for Ubuntu (Az Ubuntuhoz való [biztonságos rendszerindítás aláíratásának mikéntjéhez)](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) részben. Ezekben az esetekben meg kell adnia a virtuális gép MOK segédprogramregisztrációs kulcsait. Ehhez az Azure Serial Console-t kell használnia az MOK segédprogram eléréséhez.
 
-1. A Linux rendszerhez készült Azure soros konzol engedélyezése. További információ: [soros konzol Linux rendszerhez](/troubleshoot/azure/virtual-machines/serial-console-linux).
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
-1. Keressen rá a **virtuális gépekre** , és válassza ki a virtuális gépet a listából.
-1. A bal oldali menüben a **támogatás + hibaelhárítás** területen válassza a **Serial Console** lehetőséget. Egy oldal jobbra, a soros konzollal fog megnyílni.
-1. Jelentkezzen be a virtuális gépre az Azure soros konzol használatával. A **bejelentkezéshez** adja meg a virtuális gép létrehozásakor használt felhasználónevet. Például: *azureuser*. Ha a rendszer kéri, adja meg a felhasználónévhez tartozó jelszót.
-1. Miután bejelentkezett, `mokutil` a használatával importálhatja a nyilvános kulcs `.der` fájlját.
+1. Engedélyezze a Linuxhoz való Azure soros konzolt. További információ: [Soros konzol Linuxhoz.](/troubleshoot/azure/virtual-machines/serial-console-linux)
+1. Jelentkezzen be az [Azure Portal.](https://portal.azure.com)
+1. Keressen rá a **Virtuális gépek kifejezésre,** és válassza ki a virtuális gépet a listából.
+1. A bal oldali menü Támogatás **+ hibaelhárítás menüpont alatt** válassza a Serial console.  A jobb oldalon megnyílik egy oldal a soros konzollal.
+1. Jelentkezzen be a virtuális gépre az Azure soros konzol használatával. A **bejelentkezéshez** adja meg a virtuális gép létrehozásakor használt felhasználónevet. Például: *azureuser*. Amikor a rendszer kéri, adja meg a felhasználónévhez tartozó jelszót.
+1. Miután bejelentkezett, a használatával `mokutil` importálja a nyilvános kulcsfájlt. `.der`
 
     ```bash
     sudo mokutil –import <path to public key.der> 
     ```
-1. A beírásával indítsa újra a gépet az Azure soros konzolról `sudo reboot` . A rendszer 10 másodperces visszaszámlálást kezd.
-1. Nyomja le a fel vagy le billentyűt a visszaszámlálás megszakításához, és várjon az UEFI konzol üzemmódba. Ha az időzítő nem szakad meg, a rendszerindítási folyamat folytatódik, és az összes MOK-módosítás elvész.
-1. Válassza ki a megfelelő műveletet az MOK segédprogram menüjéből.
+1. Indítsa újra a gépet az Azure soros konzolról a következő beírásával: `sudo reboot` . 10 másodperces visszaszámlálás kezdődik.
+1. Nyomja le vagy fel a billentyűt a visszaszámlálás megszakítása és az UEFI-konzol módban való várakozáshoz. Ha az időzítő nem szakad meg, a rendszerindítási folyamat folytatódik, és az összes MOK-módosítás elveszik.
+1. Válassza ki a megfelelő műveletet az MOK segédprogram menüjében.
 
-    :::image type="content" source="media/trusted-launch/mok-mangement.png" alt-text="Képernyőfelvétel: a soros konzolon található MOK felügyeleti menüjében elérhető beállítások.":::
+    :::image type="content" source="media/trusted-launch/mok-mangement.png" alt-text="Képernyőkép a soros konzol MOK felügyeleti menüjében elérhető lehetőségekről.":::
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [megbízható indításról](trusted-launch.md) és a [2. generációs](generation-2.md) virtuális gépekről.
+További információ a megbízható [indításról és](trusted-launch.md) [a 2. generációs](generation-2.md) virtuális gépekről.

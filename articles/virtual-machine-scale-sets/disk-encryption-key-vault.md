@@ -1,6 +1,6 @@
 ---
 title: Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz
-description: Ez a cikk a Key Vault létrehozásával és konfigurálásával kapcsolatos lépéseket ismerteti Azure Disk Encryption
+description: Ez a cikk a kulcstartók létrehozásához és konfigurálásához szükséges lépéseket Azure Disk Encryption
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -8,35 +8,35 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: e05940cecd8ebdc4e61281406aafd5edc266cabc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501012"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483129"
 ---
-# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryption
 
-A Azure Disk Encryption a Azure Key Vault használatával vezérli és kezeli a lemezes titkosítási kulcsokat és titkokat.  További információ a kulcstartókkal kapcsolatban: [Bevezetés a Azure Key Vault használatába](../key-vault/general/overview.md) és [a kulcstartó biztonságossá tétele](../key-vault/general/secure-your-key-vault.md).
+Azure Disk Encryption a Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  További információ a kulcstartókról: [A kulcstartók](../key-vault/general/overview.md) Azure Key Vault [a Kulcstartó biztonságossá biztosítása.](../key-vault/general/secure-your-key-vault.md)
 
-A Key Vault létrehozásához és konfigurálásához Azure Disk Encryption a következő három lépésből áll:
+A kulcstartók létrehozása és konfigurálása a Azure Disk Encryption három lépésből áll:
 
-1. Ha szükséges, hozzon létre egy erőforráscsoportot.
+1. Szükség esetén hozzon létre egy erőforráscsoportot.
 2. Kulcstartó létrehozása. 
-3. A Key Vault speciális hozzáférési házirendjeinek beállítása.
+3. Kulcstartó speciális hozzáférési házirendek beállítása.
 
-Ezeket a lépéseket az alábbi rövid útmutatók szemléltetik:
+Ezeket a lépéseket az alábbi rövid útmutatók mutatják be:
 
-Ha szeretné, létrehozhat vagy importálhat egy kulcs-titkosítási kulcsot (KEK) is.
+Szükség esetén létrehozhat vagy importálhat egy kulcstitkosítási kulcsot (KEK).
 
-## <a name="install-tools-and-connect-to-azure"></a>Eszközök telepítése és az Azure-hoz való kapcsolódás
+## <a name="install-tools-and-connect-to-azure"></a>Eszközök telepítése és csatlakozás az Azure-hoz
 
-A cikkben ismertetett lépések az [Azure CLI](/cli/azure/)-vel, az Azure PowerShell az [module](/powershell/azure/)vagy a [Azure Portal](https://portal.azure.com)használatával végezhetők el.
+A cikkben található lépések az [Azure CLI,](/cli/azure/)a [Azure PowerShell Az](/powershell/azure/)modul vagy a [Azure Portal.](https://portal.azure.com)
 
 ### <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
 
-Az Azure CLI vagy a Azure PowerShell használata előtt először csatlakoznia kell az Azure-előfizetéséhez. Ehhez [Jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli), [jelentkezzen be Azure PowerShellkal](/powershell/azure/authenticate-azureps), vagy adja meg a hitelesítő adatait a Azure Portalhoz, amikor a rendszer kéri.
+Az Azure CLI vagy a Azure PowerShell előtt csatlakoznia kell az Azure-előfizetéséhez. Ezt az [Azure CLI-val](/cli/azure/authenticate-azure-cli)való bejelentkezéssel, a [Azure PowerShell-val](/powershell/azure/authenticate-azureps)való bejelentkezéssel, vagy a hitelesítő adatoknak a Azure Portal meg kell adnia.
 
 ```azurecli-interactive
 az login
@@ -50,6 +50,6 @@ Connect-AzAccount
  
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
-- [Virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md)
-- [Virtuálisgép-méretezési csoportok titkosítása a Azure PowerShell használatával](disk-encryption-powershell.md)
+- [Azure Disk Encryption áttekintés](disk-encryption-overview.md)
+- [Virtuálisgép-méretezési készletek titkosítása az Azure CLI használatával](disk-encryption-cli.md)
+- [Virtuálisgép-méretezési készletek titkosítása a Azure PowerShell](disk-encryption-powershell.md)

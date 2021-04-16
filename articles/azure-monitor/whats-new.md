@@ -57,11 +57,11 @@ ms.locfileid: "107498237"
 - [Java kód nélküli alkalmazásfigyelési Azure Monitor Application Insights](app/java-in-process-agent.md)
 - [A Snapshot Debugger .NET-alkalmazásokhoz való Azure App Service](app/snapshot-debugger-appservice.md)
 - [A Snapshot Debugger .NET- és .NET Core-alkalmazásokhoz való Azure Functions](app/snapshot-debugger-function-app.md)
-- [<a id=troubleshooting></a> Hibaelhárítás a pillanatképek Application Insights Snapshot Debugger megtekintésével vagy megtekintésével kapcsolatban](app/snapshot-debugger-troubleshoot.md)
+- [<a id=troubleshooting></a> A pillanatképek engedélyezésével Application Insights Snapshot Debugger problémák elhárítása](app/snapshot-debugger-troubleshoot.md)
 - [Az Azure Web App bővítmény kibocsátási megjegyzései Application Insights](app/web-app-extension-release-notes.md)
 - [Az Azure Monitor beállítása a Python-alkalmazáshoz](app/opencensus-python.md)
-- [Frissítés Application Insights Java 2.x SDK-ból](app/java-standalone-upgrade-from-2x.md)
-- [A Stream Analytics adatok feldolgozásához használja a Application Insights](app/export-stream-analytics.md)
+- [Frissítés Application Insights Java 2.x SDK-val](app/java-standalone-upgrade-from-2x.md)
+- [A Stream Analytics az exportált adatok feldolgozásához Application Insights](app/export-stream-analytics.md)
 - [Hibaelhárítási útmutató: Azure Monitor Application Insights Java-hoz](app/java-standalone-troubleshoot.md)
 
 ## <a name="containers"></a>Tárolók
@@ -122,13 +122,13 @@ ms.locfileid: "107498237"
 - [Integráció System Center Operations Manager VM Insights Térkép funkcióval](vm/service-map-scom.md)
 - [Riasztások létrehozása virtuálisgép-elemzésekből](vm/vminsights-alerts.md)
 - [Log Analytics-munkaterület konfigurálása virtuálisgép-elemzésekhez](vm/vminsights-configure-workspace.md)
-- [Virtuálisgép-elemzések engedélyezése Azure Policy](vm/vminsights-enable-policy.md)
+- [Virtuálisgép-elemzések engedélyezése a Azure Policy](vm/vminsights-enable-policy.md)
 - [Virtuálisgép-elemzések engedélyezése Resource Manager sablonokkal](vm/vminsights-enable-resource-manager.md)
 - [Általánosan elérhető (GA) virtuálisgép-elemzések – gyakori kérdések](vm/vminsights-ga-release-faq.md)
 - [A VM Insights vendég állapotának engedélyezése (előzetes verzió)](vm/vminsights-health-enable.md)
 - [Virtuális gépek monitorozásának letiltása a virtuálisgép-elemzésekben](vm/vminsights-optout.md)
 - [A virtuálisgép-elemzések áttekintése](vm/vminsights-overview.md)
-- [Teljesítmény diagramos ábrázolása virtuálisgép-elemzésekkel](vm/vminsights-performance.md)
+- [Teljesítmény diagramba való beszúrása virtuálisgép-elemzésekkel](vm/vminsights-performance.md)
 
 ## <a name="visualizations"></a>Vizualizációk
 

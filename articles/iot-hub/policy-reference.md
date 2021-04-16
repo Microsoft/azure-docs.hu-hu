@@ -1,26 +1,26 @@
 ---
-title: Az Azure IoT Hub beépített szabályzat-definíciói
-description: Az Azure IoT Hub beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure IoT Hub
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure IoT Hub. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5b59516f938ca6467e57a7b70050b9ef7c2a08d5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 254cbe5b5f3cff78138d230defb3123ba50a6934
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093256"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501288"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Az Azure IoT Hub beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure Policy beépített definíciók a Azure IoT Hub
 
-Az általános IoT forgatókönyvek megvalósítását bemutató IoT Hub mintakód a [IoT hub](./quickstart-send-telemetry-cli.md)rövid útmutatókban található. Több programozási nyelv is elérhető, például C, Node.js és Python.
+A IoT Hub IoT-forgatókönyvek implementát bemutató mintakódért tekintse meg a rövid [IoT Hub útmutatót.](./quickstart-send-telemetry-cli.md) Több programozási nyelvhez is elérhető rövid útmutató, például a C, a Node.js és a Python.
 
-Ez az oldal az Azure IoT Hub beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure IoT Hub. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 

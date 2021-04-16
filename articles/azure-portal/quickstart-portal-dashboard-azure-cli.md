@@ -1,32 +1,32 @@
 ---
-title: Azure Portal irányítópult létrehozása az Azure CLI-vel
-description: 'Gyors útmutató: útmutató az irányítópultok létrehozásához a Azure Portal az Azure CLI használatával. Az irányítópult a Felhőbeli erőforrások célzott és rendezett nézete.'
+title: Irányítópult létrehozása Azure Portal Azure CLI használatával
+description: 'Rövid útmutató: Útmutató irányítópult létrehozásához a Azure Portal Azure CLI használatával. Az irányítópultok a felhőbeli erőforrások célzott és rendezett nézete.'
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104613211"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481021"
 ---
-# <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rövid útmutató: Azure Portal irányítópult létrehozása az Azure CLI-vel
+# <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rövid útmutató: Irányítópult Azure Portal Azure CLI használatával
 
-A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és rendezett nézete. Ebből a cikkből megtudhatja, hogyan hozhat létre irányítópultot az Azure CLI használatával.
-Az irányítópulton egy virtuális gép (VM) teljesítménye, valamint néhány statikus információ és hivatkozás látható.
+A felhőalapú Azure Portal irányítópult a felhőerőforrások célzott és rendezett nézete. Ez a cikk az Azure CLI irányítópultok létrehozására való használatával foglalkozik.
+Az irányítópult megjeleníti a virtuális gép teljesítményét, valamint néhány statikus információt és hivatkozást.
 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben számlázni kívánja az erőforrásokat.
-Válasszon egy előfizetést az az [Account set](/cli/azure/account#az_account_set) parancs használatával:
+- Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben számlázni tudja az erőforrásokat.
+Válasszon ki egy előfizetést az [az account set paranccsal:](/cli/azure/account#az_account_set)
 
   ```azurecli
   az account set --subscription 00000000-0000-0000-0000-000000000000
   ```
 
-- Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group#az_group_create) paranccsal, vagy használjon egy meglévő erőforráscsoportot:
+- Hozzon létre [egy Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) [az az group create paranccsal,](/cli/azure/group#az_group_create) vagy használjon egy meglévő erőforráscsoportot:
 
   ```azurecli
   az group create --name myResourceGroup --location centralus
@@ -36,7 +36,7 @@ Válasszon egy előfizetést az az [Account set](/cli/azure/account#az_account_s
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm#az_vm_create) paranccsal:
+Hozzon létre egy virtuális gépet [az az vm create paranccsal:](/cli/azure/vm#az_vm_create)
 
 ```azurecli
 az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016datacenter \
@@ -44,61 +44,61 @@ az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016
 ```
 
 > [!Note]
-> A jelszónak összetettnak kell lennie.
-> Ez egy új Felhasználónév és jelszó.
-> Nem például az Azure-ba való bejelentkezéshez használt fiók.
-> További információ: a [felhasználónévre vonatkozó követelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) és a [jelszóra vonatkozó követelmények](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+> A jelszónak összetettnek kell lennie.
+> Ez egy új felhasználónév és jelszó.
+> Ez például nem az a fiók, amely az Azure-ba való bejelentkezéshez használható.
+> További információ: [felhasználónév-követelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) és [jelszókövetelmények.](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)
 
 Az üzembe helyezés elindul, és általában néhány percet vesz igénybe.
 Az üzembe helyezés befejezése után lépjen tovább a következő szakaszra.
 
-## <a name="download-the-dashboard-template"></a>Az irányítópult-sablon letöltése
+## <a name="download-the-dashboard-template"></a>Az irányítópult sablonjának letöltése
 
-Mivel az Azure-irányítópultok erőforrások, JSON-ként is képviseltetik magukat.
-További információ: [Az Azure-irányítópultok szerkezete](./azure-portal-dashboards-structure.md).
+Mivel az Azure-irányítópultok erőforrások, JSON-ként is ábrázolhatóak.
+További információ: [Az Azure-irányítópultok szerkezete.](./azure-portal-dashboards-structure.md)
 
-Töltse le a következő fájlt: [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json).
+Töltse le a következő fájlt: [portal-dashboard-template-testvm.jsoldalon.](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json)
 
-A letöltött sablon testreszabásához módosítsa a következő értékeket az értékekre:
+Szabja testre a letöltött sablont a következő értékek saját értékekre való módosításával:
 
 * `<subscriptionID>`: Az Ön előfizetése
 * `<rgName>`: Erőforráscsoport, például `myResourceGroup`
 * `<vmName>`: Virtuális gép neve, például `SimpleWinVM`
 * `<dashboardTitle>`: Irányítópult címe, például `Simple VM Dashboard`
-* `<location>`: Az Azure-régiója, például `centralus`
+* `<location>`: Az Ön Azure-régiója, például: `centralus`
 
-További információ: a [Microsoft Portal irányítópultok sablonjának referenciája](/azure/templates/microsoft.portal/dashboards).
+További információ: Referencia a [Microsoft Portal irányítópult-sablonjához.](/azure/templates/microsoft.portal/dashboards)
 
 ## <a name="deploy-the-dashboard-template"></a>Az irányítópult-sablon üzembe helyezése
 
-Mostantól üzembe helyezheti a sablont az Azure CLI-n belül.
+Most már üzembe helyezheti a sablont az Azure CLI-ről.
 
-1. Futtassa az az [Portal irányítópult Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) parancsot a sablon üzembe helyezéséhez:
+1. Futtassa [az az portal dashboard create parancsot](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) a sablon üzembe helyezéséhez:
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. Az az [Portal irányítópult show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) parancs futtatásával győződjön meg arról, hogy az irányítópult sikeresen létrejött.
+1. Az az portal [dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) parancs futtatásával ellenőrizze, hogy az irányítópult sikeresen létrejött-e:
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-Az aktuális előfizetés összes irányítópultjának megjelenítéséhez használja az [az Portal Dashboard List](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+Az aktuális előfizetéshez az az portal dashboard list használatával használhatja az [összes irányítópultot:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)
 
 ```azurecli
 az portal dashboard list
 ```
 
-Az erőforráscsoport összes irányítópultját is megtekintheti:
+Egy erőforráscsoport összes irányítópultját is láthatja:
 
 ```azurecli
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-Az irányítópultot az az [Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) paranccsal frissítheti:
+Az irányítópultot az [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) paranccsal frissítheti:
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -109,17 +109,17 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A virtuális gép és a hozzá tartozó irányítópult eltávolításához törölje az azokat tartalmazó erőforráscsoportot.
+A virtuális gép és a társított irányítópult eltávolításához törölje az azokat tartalmazó erőforráscsoportot.
 
 > [!CAUTION]
-> A következő példa törli a megadott erőforráscsoportot és a benne található összes erőforrást.
-> Ha a cikk hatókörén kívüli erőforrások szerepelnek a megadott erőforráscsoporthoz, akkor azokat is törli a rendszer.
+> Az alábbi példa törli a megadott erőforráscsoportot és a benne lévő összes erőforrást.
+> Ha a cikk hatóköre kívül esik a megadott erőforráscsoportban, akkor azok is törlődnek.
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-Csak az irányítópult eltávolításához használja az az [Portal irányítópult delete](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete) parancsot:
+Ha csak az irányítópultot szeretné eltávolítani, használja [az az portal dashboard delete parancsot:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete)
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az irányítópultok Azure CLI-támogatásáról: [az portál irányítópultja](/cli/azure/ext/portal/portal/dashboard).
+Az irányítópultok Azure CLI-támogatásával kapcsolatos további információkért lásd: [az portal dashboard](/cli/azure/ext/portal/portal/dashboard).

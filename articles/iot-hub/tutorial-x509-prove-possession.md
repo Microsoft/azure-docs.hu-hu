@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok tulajdonjogának igazolása az Azure IoT Hubban | Microsoft Docs
-description: Oktatóanyag – igazolja, hogy rendelkezik egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal az Azure IoT Hub
+title: Oktatóanyag – A hitelesítésszolgáltatói tanúsítványok tulajdonjogának bizonyítása a Azure IoT Hub | Microsoft Docs
+description: Oktatóanyag – Annak bizonyítása, hogy rendelkezik hitelesítésszolgáltatói tanúsítvánnyal a Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,41 +12,40 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 5e2827a4f87398f0a37ef04f797d2c7276d1a66d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b7740fa1f6a54dcfcc1181dddedcdd5fdb50402c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384170"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378227"
 ---
-# <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Oktatóanyag: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány birtoklásának igazolása
+# <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Oktatóanyag: Hitelesítésszolgáltatói tanúsítvány birtoklásának igazolása
 
-Miután feltöltötte a legfelső szintű hitelesítésszolgáltató (CA) tanúsítványát vagy alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát az IoT hubhoz, igazolnia kell, hogy a tanúsítvány tulajdonosa:
+Miután feltöltötte a legfelső szintű hitelesítésszolgáltatói (CA) tanúsítványt vagy az alárendelt CA-tanúsítványt az IoT Hubra, igazolnia kell, hogy Ön a tanúsítvány a következő:
 
-1. A Azure Portal navigáljon a IoTHub, és válassza a **beállítások > tanúsítványok** lehetőséget.
+1. A Azure Portal lépjen az IoTHubra, és válassza **a Beállítások és tanúsítványok > lehetőséget.**
 
-2. Új HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány hozzáadásához válassza a **Hozzáadás** lehetőséget.
+2. Új **hitelesítésszolgáltatói** tanúsítvány hozzáadásához válassza a Hozzáadás lehetőséget.
 
-3. Adja meg a megjelenítendő nevet a **tanúsítvány neve** mezőben, majd válassza ki a hozzáadni kívánt PEM-tanúsítványt.
+3. Adjon meg egy megjelenítendő nevet a **Tanúsítvány neve mezőben,** majd válassza ki a hozzáadni kívánt PEM-tanúsítványt.
 
-4. Kattintson a **Mentés** gombra. A tanúsítvány a tanúsítványok listájában nem **ellenőrzött** állapottal jelenik meg. Ez az ellenőrzési folyamat igazolni fogja, hogy rendelkezik a tanúsítvány birtokában.
+4. Kattintson a **Mentés** gombra. A tanúsítvány nem ellenőrzött állapotúként jelenik meg a **tanúsítványlistában.** Ez az ellenőrzési folyamat igazolja, hogy Ön rendelkezik a tanúsítvánnyal.
 
-5. Válassza ki a tanúsítványt a **tanúsítvány részletei** párbeszédpanel megtekintéséhez.
+5. Válassza ki a tanúsítványt a Tanúsítvány **részletei párbeszédpanel megtekintéséhez.**
 
-6. Válassza az **ellenőrző kód előállítása** lehetőséget a párbeszédpanelen.
+6. A **párbeszédpanelen válassza** az Ellenőrző kód létrehozása lehetőséget.
 
   :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="{Tanúsítvány részletei párbeszédpanel}":::
 
-7. Másolja az ellenőrzőkódot a vágólapra. A tanúsítvány tulajdonosának kell megadnia az ellenőrző kódot. Ha például az ellenőrző kód 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3, adja hozzá a tanúsítványt tulajdonosként a következő lépésben látható módon.
+7. Másolja az ellenőrzőkódot a vágólapra. Az ellenőrző kódot a tanúsítvány tulajdonosának kell beállítania. Ha például az ellenőrző kód 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3, adja hozzá a tanúsítványhoz a következő lépésben látható módon.
 
-8. Az ellenőrző tanúsítvány három módon hozható elő:
+8. Ellenőrzési tanúsítványt háromféleképpen hozhat létre:
 
-    * Ha a Microsoft által biztosított PowerShell-parancsfájlt használja, futtassa a parancsot a `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` nevű tanúsítvány létrehozásához `VerifyCert4.cer` . További információ: [a Microsoft által biztosított parancsfájlok használata](tutorial-x509-scripts.md).
+    * Ha a Microsoft által biztosított PowerShell-szkriptet használja, futtassa a parancsot `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` egy nevű tanúsítvány `VerifyCert4.cer` létrehozásához. További információ: [Using Microsoft-supplied Scripts (A Microsoft által biztosított parancsfájlok használata).](tutorial-x509-scripts.md)
 
-    * Ha a Microsoft által megadott bash-parancsfájlt használja, futtassa a parancsot a `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` nevű tanúsítvány létrehozásához `verification-code.cert.pem` . További információ: [a Microsoft által biztosított parancsfájlok használata](tutorial-x509-scripts.md).
+    * Ha a Microsoft által biztosított Bash-szkriptet használja, a futtatásával `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` hozzon létre egy nevű tanúsítványt. `verification-code.cert.pem` További információ: [Using Microsoft-supplied Scripts (A Microsoft által biztosított parancsfájlok használata).](tutorial-x509-scripts.md)
 
-    * Ha OpenSSL-t használ a tanúsítványok létrehozásához, először egy titkos kulcsot kell kiállítania, majd egy tanúsítvány-aláírási kérelmet (CSR):
+    * Ha OpenSSL-t használ a tanúsítványok létrehozásához, először létre kell hoznia egy titkos kulcsot, majd egy tanúsítvány-aláírási kérelmet (CSR):
 
       ```bash
       $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
@@ -69,15 +68,15 @@ Miután feltöltötte a legfelső szintű hitelesítésszolgáltató (CA) tanús
  
       ```
 
-      Ezután hozzon létre egy tanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájljával (lásd alább) vagy az alárendelt HITELESÍTÉSSZOLGÁLTATÓ konfigurációs fájlját és a CSR-t.
+      Ezután hozzon létre egy tanúsítványt a legfelső szintű hitelesítésszolgáltató konfigurációs fájljának (lásd alább) vagy az alárendelt CA konfigurációs fájljának és a CSR-nek a használatával.
 
       ```bash
       openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
       ```
 
-    További információ: az [OpenSSL használata tesztelési tanúsítványok létrehozásához](tutorial-x509-openssl.md).
+    További információ: [Using OpenSSL to Create Test Certificates (Az OpenSSL használata teszttanúsítványok létrehozásához).](tutorial-x509-openssl.md)
 
-10. Válassza ki az új tanúsítványt a **tanúsítvány részletei** nézetben.
+10. Válassza ki az új tanúsítványt a **Tanúsítvány részletei nézetben.**
 
-11. A tanúsítvány feltöltése után válassza az **ellenőrzés** lehetőséget. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány állapotának **ellenőrzött** értékre kell váltania.
+11. A tanúsítvány feltöltése után válassza a **Verify (Ellenőrzés) lehetőséget.** A hitelesítésszolgáltatói tanúsítvány állapotának Ellenőrzött **állapotra kell változnia.**

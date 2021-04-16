@@ -1,6 +1,6 @@
 ---
 title: Hozzáférés az Azure Cosmos DB adataihoz egy rendszer által hozzárendelt felügyelt identitással
-description: Megtudhatja, hogyan konfigurálhat egy Azure Active Directory (Azure AD) rendszerhez rendelt felügyelt identitást (felügyelt szolgáltatás identitása) a kulcsok Azure Cosmos DBból való eléréséhez.
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directory (Azure AD) rendszer által hozzárendelt felügyelt identitást (felügyeltszolgáltatás-identitást) a Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,77 +8,77 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e4a41d508d15c3d8f41cc727776f233cc56c0817
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927405"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480936"
 ---
-# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Rendszer által hozzárendelt felügyelt identitások használata a Azure Cosmos DB eléréséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Ebben a cikkben egy *robusztus, kulcsfontosságú rotációs agnosztikus* megoldást állít be, amely a [felügyelt identitások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)használatával fér hozzá Azure Cosmos db kulcsokhoz. A cikkben szereplő példa Azure Functionst használ, de használhat bármely olyan szolgáltatást, amely támogatja a felügyelt identitásokat. 
+Ebben a cikkben egy *robusztus,* kulcsrotációtól független megoldást fog beállítani a kulcskulcsok felügyelt identitások Azure Cosmos DB [való eléréséhez.](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) A cikkben használt példa a Azure Functions, de bármilyen szolgáltatást használhat, amely támogatja a felügyelt identitásokat. 
 
-Megtudhatja, hogyan hozhat létre olyan Function-alkalmazást, amely a Azure Cosmos DB kulcsok másolása nélkül fér hozzá Azure Cosmos DB az adathoz. A Function alkalmazás percenként felébred, és rögzíti egy akvárium Fish Tank aktuális hőmérsékletét. Ha meg szeretné tudni, hogyan állíthat be időzítő által aktivált Function alkalmazást, tekintse meg az [időzítő által aktivált függvény létrehozása az Azure-ban](../azure-functions/functions-create-scheduled-function.md) című cikket.
+Megtudhatja, hogyan hozhat létre olyan függvényalkalmazást, amely anélkül Azure Cosmos DB adatokat, hogy bármilyen Azure Cosmos DB lenne. A függvényalkalmazás percenként fel fog ébreszteni, és feljegyz egy tengerhalhal-tároló aktuális hőmérsékletét. Az időzítő által aktivált függvényalkalmazás beállítását az Időzítő által aktivált függvény létrehozása az Azure-ban cikkben [olvashatja](../azure-functions/functions-create-scheduled-function.md) el.
 
-A forgatókönyv leegyszerűsítése érdekében az [élő beállítások élettartama](./time-to-live.md) már konfigurálva van a régebbi hőmérsékletű dokumentumok tisztítására. 
+A forgatókönyv leegyszerűsítése érdekében már konfigurálva van egy [Time To Live](./time-to-live.md) beállítás a régebbi hőmérsékleti dokumentumok tisztítására. 
 
-## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Rendszerhez rendelt felügyelt identitás hozzárendelése egy Function-alkalmazáshoz
+## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Rendszer által hozzárendelt felügyelt identitás hozzárendelése függvényalkalmazáshoz
 
-Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a Function alkalmazáshoz.
+Ebben a lépésben hozzárendel egy rendszer által hozzárendelt felügyelt identitást a függvényalkalmazáshoz.
 
-1. A [Azure Portal](https://portal.azure.com/)nyissa meg az **Azure-függvény** ablaktáblát, és lépjen a Function alkalmazáshoz. 
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg az **Azure-függvény panelt,** és nyissa meg a függvényalkalmazást. 
 
-1. Nyissa meg a **platform szolgáltatások**  >  **identitás** fület: 
+1. Nyissa meg **a Platform funkciói** Identitás  >  **lapját:** 
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Képernyőkép a függvényalkalmazás platformfunkcióiról és identitási beállításairól.":::
 
-1. Az **identitás** **lapon kapcsolja be** a rendszeridentitás **állapotát** , majd válassza a **Mentés** lehetőséget. Az **identitás** ablaktáblájának a következőképpen kell kinéznie:  
+1. Az **Identitás lapon** kapcsolja be a **rendszeridentitás** **állapotát, és** válassza a **Mentés lehetőséget.** Az **Identitás panelnek** a következőképpen kell kinéznie:  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Képernyőfelvétel: a rendszeridentitás állapotának beállítása a következőre:.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Képernyőkép a rendszeridentitás Állapotáról Be állapotra állítva.":::
 
-## <a name="grant-access-to-your-azure-cosmos-account"></a>Hozzáférés biztosítása az Azure Cosmos-fiókhoz
+## <a name="grant-access-to-your-azure-cosmos-account"></a>Hozzáférés megadása az Azure Cosmos-fiókhoz
 
-Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerhez rendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felügyelt identitáshoz. Ebben a megoldásban a következő két szerepkört fogja használni:
+Ebben a lépésben hozzárendel egy szerepkört a függvényalkalmazás rendszer által hozzárendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepköre is van, amelyek hozzárendelhetőek a felügyelt identitáshoz. Ehhez a megoldáshoz a következő két szerepkört fogja használni:
 
 |Beépített szerepkör  |Leírás  |
 |---------|---------|
-|[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
-|[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
+|[DocumentDB-fiók közreműködője](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kezelheti a Azure Cosmos DB fiókokat. Lehetővé teszi az olvasási/írási kulcsok lekérését. |
+|[Cosmos DB fiókolvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Olvashatja a Azure Cosmos DB adatait. Engedélyezi az olvasási kulcsok lekérését. |
 
 > [!IMPORTANT]
-> A Azure Cosmos DB szerepköralapú hozzáférés-vezérlésének támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei az elsődleges kulcsok vagy az erőforrás-tokenek révén biztonságosak. További információ: [biztonságos hozzáférés az adatkezeléshez](secure-access-to-data.md) cikk.
+> A szerepköralapú hozzáférés-vezérlés támogatása a Azure Cosmos DB a vezérlősík műveleteire vonatkozik. Az adatsíkműveleteket elsődleges kulcsok vagy erőforrás-jogkivonatok biztosítják. További tudnivalókért lásd az [adatokhoz való biztonságos hozzáférést.](secure-access-to-data.md)
 
 > [!TIP] 
-> Szerepkörök hozzárendeléséhez csak a szükséges hozzáférést rendelje hozzá. Ha a szolgáltatás csak az adatok olvasását igényli, akkor rendelje hozzá a **Cosmos db fiók-olvasó** szerepkört a felügyelt identitáshoz. A minimális jogosultsági szintű hozzáférés fontosságával kapcsolatos további információkért tekintse meg a [privilegizált fiókok alacsonyabb kitettségét](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) ismertető cikket.
+> Szerepkörök hozzárendelésekor csak a szükséges hozzáférést rendelje hozzá. Ha a szolgáltatás csak az adatok olvasását igényli, rendelje hozzá Cosmos DB fiókolvasó **szerepkört** a felügyelt identitáshoz. A legkevesebb jogosultsággal rendelkező hozzáférés fontosságáról a Kiemelt jogosultságú fiókok kisebb kitettsége cikkben [talál további információt.](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)
 
-Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét, majd visszaírja azokat Azure Cosmos DB tárolóba. Mivel a Function alkalmazásnak meg kell írnia az adatfájlokat, hozzá kell rendelnie a **DocumentDB-fiók közreműködői** szerepkört. 
+Ebben a forgatókönyvben a függvényalkalmazás beolvassa azárium hőmérsékletét, majd visszaírja az adatokat egy másik Azure Cosmos DB. Mivel a függvényalkalmazásnak meg kell írnia az adatokat, hozzá kell rendelnie a **DocumentDB-fiók közreműködője szerepkört.** 
 
-### <a name="assign-the-role-using-azure-portal"></a>Szerepkör kiosztása Azure Portal használatával
+### <a name="assign-the-role-using-azure-portal"></a>Szerepkör hozzárendelése a Azure Portal
 
-1. Jelentkezzen be a Azure Portalba, és lépjen a Azure Cosmos DB-fiókjához. Nyissa meg a **hozzáférés-vezérlés (iam)** ablaktáblát, majd a **szerepkör-hozzárendelések** lapot:
+1. Jelentkezzen be a Azure Portal, és Azure Cosmos DB fiókjához. Nyissa meg **a Hozzáférés-vezérlés (IAM)** panelt, majd a **Szerepkör-hozzárendelések** lapot:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Képernyőfelvétel: a hozzáférés-vezérlés ablaktábla és a szerepkör-hozzárendelések lap.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Képernyőkép a Hozzáférés-vezérlés panelről és a Szerepkör-hozzárendelések lapról.":::
 
 1. Válassza a **+ Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-1. Megnyílik a **szerepkör-hozzárendelés hozzáadása** panel a jobb oldalon:
+1. A **Szerepkör-hozzárendelés hozzáadása** panel jobb oldalon nyílik meg:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="A szerepkör-hozzárendelés hozzáadása panelt ábrázoló képernyőfelvétel.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Képernyőkép a Szerepkör-hozzárendelés hozzáadása panelről.":::
 
-   * **Szerepkör**: válassza ki a **DocumentDB fiók közreműködőjét**
-   * **Hozzáférés hozzárendelése**: a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás** lehetőséget.
-   * **Select (kiválasztás**): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással** rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
+   * **Szerepkör:** Válassza a **DocumentDB-fiók közreműködője lehetőséget**
+   * **Hozzáférés hozzárendelése a következőhöz:** A Rendszer által hozzárendelt felügyelt identitás kiválasztása **alszakaszban** válassza a **Függvényalkalmazás lehetőséget.**
+   * **Válassza** a lehetőséget: A panel az előfizetés összes olyan függvényalkalmazásával ki lesz töltve, amely felügyeltrendszer-identitással **rendelkezik.** Ebben az esetben válassza **aTankTemperatureService** függvényalkalmazást: 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A szerepkör-hozzárendelés hozzáadása ablaktábla példákkal való feltöltését bemutató képernyőkép.":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Képernyőkép a példákkal kitöltve a Szerepkör-hozzárendelés hozzáadása panelről.":::
 
-1. Miután kiválasztotta a Function alkalmazást, válassza a **Mentés** lehetőséget.
+1. A függvényalkalmazás kiválasztása után válassza a **Mentés lehetőséget.**
 
-### <a name="assign-the-role-using-azure-cli"></a>Szerepkör kiosztása az Azure CLI használatával
+### <a name="assign-the-role-using-azure-cli"></a>Szerepkör hozzárendelése az Azure CLI használatával
 
-Ha az Azure CLI használatával szeretné hozzárendelni a szerepkört, nyissa meg a Azure Cloud Shell, és futtassa a következő parancsokat:
+A szerepkör Azure CLI használatával való hozzárendeléshez nyissa meg a Azure Cloud Shell és futtassa a következő parancsokat:
 
 ```azurecli-interactive
 
@@ -89,16 +89,16 @@ principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure
 az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
 ```
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programozottan férhet hozzá a Azure Cosmos DB kulcsaihoz
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programozott hozzáférés a Azure Cosmos DB kulcsokhoz
 
-Most már van egy olyan Function-alkalmazás, amely rendelkezik egy rendszerhez rendelt felügyelt identitással a **DocumentDB fiók közreműködői** szerepkörével a Azure Cosmos db engedélyekben. A következő Function app Code beolvassa a Azure Cosmos DB kulcsokat, létrehoz egy CosmosClient objektumot, beolvassa az akvárium hőmérsékletét, majd elmenti ezt a Azure Cosmos DBba.
+Most már van egy függvényalkalmazásunk, amely a **DocumentDB-fiók** közreműködője szerepkörrel rendelkező, rendszer által hozzárendelt felügyelt identitással rendelkezik a Azure Cosmos DB engedélyekben. A következő függvényalkalmazás-kód le fogja szerezni a Azure Cosmos DB kulcsokat, létrehoz egy CosmosClient objektumot, le fogja kapni azárium hőmérsékletét, majd menti ezt a Azure Cosmos DB.
 
-Ez a példa a [Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) -t használja a Azure Cosmos db-fiók kulcsainak eléréséhez.
+Ez a példa a [Kulcsok listája API-t használja](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) a fiókkulcsok Azure Cosmos DB eléréséhez.
 
 > [!IMPORTANT] 
-> Ha [a Cosmos db fiók-olvasó](#grant-access-to-your-azure-cosmos-account) szerepkört szeretné hozzárendelni, akkor a [csak olvasási KULCSokat tartalmazó API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)-t kell használnia. Ez csak a csak olvasható kulcsokat fogja feltölteni.
+> Ha hozzá szeretné rendelni a [Cosmos DB-olvasó](#grant-access-to-your-azure-cosmos-account) szerepkört, a Csak olvasható kulcsok listása [API-t kell használnia.](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys) Ez csak a csak olvasható kulcsokat tölti fel.
 
-A List Keys API az objektumot adja vissza `DatabaseAccountListKeysResult` . Ez a típus nincs definiálva a C#-tárakban. A következő kód az osztály implementációját mutatja be:  
+A Kulcsok listása API visszaadja a `DatabaseAccountListKeysResult` objektumot. Ez a típus nincs definiálva a C#-kódtárakban. Az alábbi kód ennek az osztálynak az implementációját mutatja be:  
 
 ```csharp 
 namespace Monitor 
@@ -113,7 +113,7 @@ namespace Monitor
 }
 ```
 
-A példa egy "TemperatureRecord" nevű egyszerű dokumentumot is használ, amely a következőképpen van meghatározva:
+A példa egy "TemperatureRecord" nevű egyszerű dokumentumot is használ, amely a következőképpen van definiálva:
 
 ```csharp
 using System;
@@ -130,7 +130,7 @@ namespace Monitor
 }
 ```
 
-A rendszer által hozzárendelt felügyelt identitási token beszerzéséhez a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) függvénytárat fogja használni. A jogkivonat lekérésének és a könyvtár további információinak megismeréséhez `Microsoft.Azure.Service.AppAuthentication` tekintse meg a [szolgáltatások közötti hitelesítéssel](/dotnet/api/overview/azure/service-to-service-authentication) foglalkozó cikket.
+A [Microsoft.Azure.Services.AppAuthentication kódtár](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) használatával fogja lekért rendszer által hozzárendelt felügyelt identitás jogkivonatát. A jogkivonat lekért további módjaiért és a kódtár további információiért tekintse meg a szolgáltatások között való `Microsoft.Azure.Service.AppAuthentication` [hitelesítéssel kapcsolatos cikket.](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 ```csharp
@@ -214,10 +214,10 @@ namespace Monitor
 }
 ```
 
-Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/create-first-function-vs-code-csharp.md).
+Most már készen áll a [függvényalkalmazás üzembe helyezésére.](../azure-functions/create-first-function-vs-code-csharp.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Tanúsítványalapú hitelesítés Azure Cosmos DB és Azure Active Directory](certificate-based-authentication.md)
-* [Azure Cosmos DB kulcsok védelme Azure Key Vault használatával](access-secrets-from-keyvault.md)
-* [Azure Cosmos DB biztonsági alapterve](security-baseline.md)
+* [Az Azure Cosmos DB kulcsok biztonságossá Azure Key Vault](access-secrets-from-keyvault.md)
+* [Biztonsági alapkonfiguráció a Azure Cosmos DB](security-baseline.md)

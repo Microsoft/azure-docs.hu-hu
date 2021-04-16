@@ -1,63 +1,63 @@
 ---
-title: Csoport tulajdonosi engedélyének konfigurálása a csoportok adataihoz való hozzáféréshez az Azure AD használatával
-description: Ismerje meg, hogy a csoport-és csapattagok hogyan adhatnak hozzá olyan alkalmazásokat, amelyeknek hozzáférésük lesz a csoporthoz vagy a csapathoz.
+title: Csoporttulajdonosi jóváhagyás konfigurálása arra, hogy az alkalmazások hozzáférjenek a csoportadatokhoz az Azure AD használatával
+description: Megtudhatja, hogyan kezelheti, hogy a csoport- és csoporttulajdonosok engedélyt kaphatnak-e olyan alkalmazásokhoz, amelyek hozzáférhetnek a csoport vagy a csapat adataihoz.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d8604a1dd54ed819bb9e27c46d61a46466bf3da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be28148aacf270f2f3cfabad4cbd5f03afa05d3b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548801"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374420"
 ---
-# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása
+# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Csoporttulajdonosi hozzájárulás konfigurálása a csoportadatokhoz hozzáférő alkalmazásokhoz
 
-A csoport-és csapat tulajdonosai engedélyezhetik az alkalmazások, például a külső gyártók által közzétett alkalmazások számára, hogy hozzáférjenek a szervezet adataihoz a csoporthoz társítva. A Microsoft Teams csapatának tulajdonosa például lehetővé teheti az alkalmazások számára, hogy beolvassák a csapat összes csapatának üzenetét, vagy felsorolják a csoport tagjainak alapszintű profilját. További információ: [erőforrás-specifikus beleegyezett a Microsoft Teams-ben](/microsoftteams/resource-specific-consent) .
+A csoport- és csoporttulajdonosok engedélyezhetik az alkalmazások , például a külső szállítók által közzétett alkalmazások számára a szervezet egy csoporthoz társított adatainak hozzáférését. Egy Microsoft Teams-csoport tulajdonosa például engedélyezheti egy alkalmazásnak a csapat összes Teams-üzenetének olvasását, vagy a csoport tagjainak alapvető profilját. További [információ: Erőforrás-specifikus jóváhagyás a Microsoft Teamsben.](/microsoftteams/resource-specific-consent)
 
-## <a name="manage-group-owner-consent-to-apps"></a>Csoport tulajdonosi engedélyének kezelése az alkalmazásokhoz
+## <a name="manage-group-owner-consent-to-apps"></a>Csoporttulajdonos alkalmazásokhoz való hozzájárulásának kezelése
 
-Beállíthatja, hogy mely felhasználók férjenek hozzá a csoportjaihoz vagy a csapatához tartozó adatokhoz, vagy letilthatja ezt az összes felhasználó számára.
+Beállíthatja, hogy mely felhasználók járulhatnak hozzá a csoportok vagy csapatok adataihoz hozzáférő alkalmazásokhoz, vagy letilthatja ezt az összes felhasználó számára.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Az alábbi lépéseket követve kezelheti a csoport tulajdonosának a csoportra vonatkozó adatokhoz való hozzáférését:
+Kövesse az alábbi lépéseket a csoporttulajdonosi jóváhagyás kezeléséhez a csoportadatokhoz hozzáférő alkalmazások számára:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator).
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **beleegyezett és engedélyek**  >  **felhasználói beleegyező beállításait**.
-3. Az **adatokhoz hozzáférő alkalmazások csoport tulajdonosi engedélye** területen válassza ki az engedélyezni kívánt beállítást.
-4. A beállítások mentéséhez kattintson a **Mentés** gombra.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális [rendszergazdaként.](../roles/permissions-reference.md#global-administrator)
+2. Válassza **Azure Active Directory** Vállalati alkalmazások Hozzájárulás és engedélyek  >    >    >  **Felhasználói hozzájárulási beállítások lehetőséget.**
+3. A **Csoporttulajdonosi hozzájárulás az adatokhoz hozzáférő alkalmazásokhoz** alatt válassza az engedélyezni kívánt lehetőséget.
+4. A **beállítások mentéséhez** válassza a Mentés lehetőséget.
 
-Ebben a példában minden csoport tulajdonosa jogosult a csoportok adatokhoz hozzáférő alkalmazásokhoz való hozzáférésre:
+Ebben a példában minden csoporttulajdonos engedélyt ad arra, hogy az alkalmazások hozzáférjenek a csoportok adataihoz:
 
-:::image type="content" source="media/configure-user-consent-groups/group-owner-consent.png" alt-text="Csoport tulajdonosának engedélyezési beállításai":::
+:::image type="content" source="media/configure-user-consent-groups/group-owner-consent.png" alt-text="Csoporttulajdonosi hozzájárulási beállítások":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)Azure ad PowerShell-előnézeti moduljának használatával engedélyezheti vagy letilthatja a csoport tulajdonosai számára, hogy a szervezet adataihoz hozzáférjenek a saját csoportok számára.
+Az Azure AD PowerShell előzetes verziójú modulját [(AzureADPreview)](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)használva engedélyezheti vagy letilthatja, hogy a csoporttulajdonosok engedélyt adjanak a céges adatokhoz hozzáférő alkalmazásoknak a saját csoportjaikra.
 
-1. Győződjön meg arról, hogy a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult használja. Ez a lépés akkor fontos, ha a [AzureAD](/powershell/module/azuread/) modult és a [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is telepítette.
+1. Győződjön meg arról, hogy az [AzureADPreview modult](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) használja. Ez a lépés akkor fontos, ha az [AzureAD](/powershell/module/azuread/) modult és az [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modult is telepítette.
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-1. Kapcsolódjon az Azure AD PowerShell-hez.
+1. Csatlakozzon az Azure AD PowerShellhez.
 
    ```powershell
    Connect-AzureAD
    ```
 
-1. Az aktuális érték beolvasása a bérlőben a **beleegyező házirend-beállítások** címtár-beállításainál. Ehhez ellenőrizni kell, hogy a szolgáltatáshoz tartozó címtár-beállítások létre lettek-e hozva, és ha nem, akkor a megfelelő címtár-beállítási sablon értékeit használja.
+1. Lekéri a consent **policy settings (Hozzájárulási szabályzat beállításai)** címtárbeállítások aktuális értékét a bérlőben. Ehhez ellenőriznie kell, hogy létrejöttek-e a szolgáltatás címtárbeállítási, és ha nem, használja a megfelelő címtárbeállítási sablon értékeit.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -72,14 +72,14 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
+1. A beállításértékek. Két beállításérték határozza meg, hogy mely felhasználók engedélyeznék, hogy egy alkalmazás hozzáférjen a csoport adataihoz:
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
+    | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely jelzi, hogy a csoportok tulajdonosai adhatnak-e csoportspecifikus engedélyeket. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha _az EnableGroupSpecificConsent_ értéke "True", és ez az érték egy csoport objektumazonosítója, az azonosított csoport tagjai csoportspecifikus engedélyeket adhatnak a saját csoportjaiknak. |
 
-1. Módosítsa a kívánt konfiguráció beállításait:
+1. Frissítse a kívánt konfiguráció beállításértékét:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -117,11 +117,11 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 További tudnivalók:
 
-* [Felhasználói beleegyező beállítások konfigurálása](configure-user-consent.md)
-* [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
-* [Megtudhatja, hogyan kezelheti az alkalmazásokra vonatkozó beleegyezett, és hogyan értékelheti a hozzájárulásukat](manage-consent-requests.md)
+* [Felhasználói hozzájárulási beállítások konfigurálása](configure-user-consent.md)
+* [A rendszergazdai jóváhagyás munkafolyamatának konfigurálása](configure-admin-consent-workflow.md)
+* [Útmutató az alkalmazásokhoz való hozzájárulás kezeléséhez és a hozzájárulási kérelmek kiértékeléséhez](manage-consent-requests.md)
 * [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
-* [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
+* [Engedélyek és jóváhagyás a Microsoft identitásplatformján](../develop/v2-permissions-and-consent.md)
 
-Segítség kérése vagy válaszok keresése a kérdéseire:
-* [Azure AD a Microsoft Q&A ](/answers/topics/azure-active-directory.html)
+Segítségért vagy a kérdéseire adott válaszokért:
+* [Azure AD a Microsoft Q&A-n ](/answers/topics/azure-active-directory.html)

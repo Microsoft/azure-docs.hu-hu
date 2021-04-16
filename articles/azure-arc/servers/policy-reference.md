@@ -1,21 +1,21 @@
 ---
-title: Beépített szabályzat-definíciók az Azure arc-kompatibilis kiszolgálókhoz
-description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure arc használatára képes kiszolgálókon (előzetes verzió). Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az engedélyezett Azure Arc számára
+description: A Azure Policy (előzetes verzió) kiszolgálók beépített Azure Arc szabályzatdefinícióit sorolja fel. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 890981e8d1b0d6f8eb09df87b095f60035a1682f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 58a5d95db27973352db5cba99a3a869cc5b0e972
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095669"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499655"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálók beépített definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Policy engedélyezett kiszolgálók beépített Azure Arc definíciói
 
-Ez az oldal az Azure arc-kompatibilis kiszolgálók beépített szabályzat-definícióinak [Azure Policy](../../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../../governance/policy/samples/built-in-policies.md).
+Ez az oldal az engedélyezett [Azure Policy](../../governance/policy/overview.md) beépített szabályzatdefiníciók Azure Arc indexe. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-arc-enabled-servers"></a>Azure Arc-kompatibilis kiszolgálók
 
