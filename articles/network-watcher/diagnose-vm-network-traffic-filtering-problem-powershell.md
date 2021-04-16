@@ -1,27 +1,31 @@
 ---
-title: 'Gyors útmutató: a virtuálisgép-hálózati forgalom szűrési problémáinak diagnosztizálása – Azure PowerShell'
+title: 'Rövid útmutató: Virtuális gép hálózati forgalmi szűrővel való problémájának diagnosztizálása – Azure PowerShell'
 titleSuffix: Azure Network Watcher
-description: Megtudhatja, hogyan használhatja a Azure PowerShellt a virtuális gépek hálózati forgalmának szűrésére, ha az IP-flow ellenőrzi az Azure Network Watcher funkcióját.
+description: Megtudhatja, hogyan diagnosztizálhatja a virtuális gépek Azure PowerShell forgalomszűrési problémáját az Azure-beli virtuális gépek IP-forgalom-ellenőrző funkcióját Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: network-watcher
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: network-watcher
-ms.workload: infrastructure
-ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 9cccd6d17cb741a616d428db5b318fab2334f73b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+editor: ''
+ms.date: 01/07/2021
+ms.assetid: ''
+ms.topic: quickstart
+ms.service: network-watcher
+ms.workload: infrastructure
+ms.tgt_pltfrm: network-watcher
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: fafe090d72d53b33ddb3e9863b7e62deba1055c5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065565"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535764"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása – Azure PowerShell
 
@@ -33,19 +37,19 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz a Azure PowerShell `Az` modulra van szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata között dönt, ehhez a rövid útmutatóhoz szükség lesz a Azure PowerShell `Az` modulra. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup segítségével.](/powershell/module/az.Resources/New-azResourceGroup) A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszót.
+Hozza létre a virtuális gépet a [New-AzVM segítségével.](/powershell/module/az.compute/new-azvm) Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszót.
 
 ```azurepowershell-interactive
 $vM = New-AzVm `
@@ -62,7 +66,7 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha az USA keleti régiójában már engedélyezve van egy hálózati figyelő, a [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) használatával kérheti le a Network watchert. A következő példa egy meglévő, *NetworkWatcher_eastus* nevű hálózati figyelőt kér le, amely a *NetworkWatcherRG* erőforráscsoportban található:
+Ha már engedélyezve van egy Network Watcher az USA keleti régiójában, a [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) használatával lekéri a network watchert. A következő példa egy meglévő, *NetworkWatcher_eastus* nevű hálózati figyelőt kér le, amely a *NetworkWatcherRG* erőforráscsoportban található:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -70,7 +74,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Ha még nincs engedélyezve hálózati figyelő az USA keleti régiójában, a [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) használatával hozzon létre egy Network watchert az USA keleti régiójában:
+Ha még nincs hálózati figyelő engedélyezve az USA keleti régiójában, a [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) használatával hozzon létre egy hálózati figyelőt az USA keleti régiójában:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -81,7 +85,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>IP-folyamat ellenőrzésének használata
 
-Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le. A [test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) paranccsal ellenőrizheti, hogy a forgalom engedélyezett vagy megtagadott-e a különböző célhelyekre és forrás IP-címről.
+Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le. A [Test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) paranccsal tesztelje, hogy engedélyezve van-e vagy megtagadva a forgalom a különböző célhelyre és egy forrás IP-címről.
 
 Tesztelje a virtuális gép kimenő kommunikációját a www.bing.com IP-címeinek egyikén:
 
@@ -133,7 +137,7 @@ A visszaadott eredmény tájékoztatja, hogy a hozzáférés egy **DefaultInboun
 
 ## <a name="view-details-of-a-security-rule"></a>Biztonsági szabály részleteinek megtekintése
 
-Annak megállapításához, hogy a [hálózati kommunikációban](#test-network-communication) használt szabályok miért engedélyezik vagy gátolják a kommunikációt, tekintse át a hálózati adapter érvényes biztonsági szabályait a [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)használatával:
+Annak megállapításához, [](#test-network-communication) hogy a Hálózati kommunikáció tesztelése szabálya miért engedélyezi vagy akadályozza meg a kommunikációt, tekintse át a hálózati adapterre vonatkozó hatályos biztonsági szabályokat a [Get-AzEffectiveNetworkSecurityGroup használatával:](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -176,7 +180,7 @@ A visszaadott kimenet tartalmazza a következő szöveget az **AllowInternetOutb
   },
 ```
 
-A kimenetben látható, hogy a **DestinationAddressPrefix** értéke **Internet**. Nem egyértelmű azonban, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify), lépésen tesztelt 13.107.21.200 cím hogyan viszonyul az **Internet** eredményhez. A **ExpandedDestinationAddressPrefix** alatt több címzési előtag jelenik meg. A listában lévő előtagok egyike a **12.0.0.0/6**, amely magában foglalja a 12.0.0.1–15.255.255.254 tartományba tartozó IP-címeket. Mivel a 13.107.21.200 ebbe a címtartományba esik, az **AllowInternetOutBound** szabály engedélyezi a kimenő forgalmat. Emellett nincsenek magasabb **prioritású** (alacsonyabb számú) szabályok listázva a `Get-AzEffectiveNetworkSecurityGroup` által visszaadott kimenetben, amelyek felülbírálnák ezt a szabályt. Ha szeretné letiltani a 13.107.21.200 címre kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely letiltja az IP-címre kimenő forgalmat a 80-as porton.
+A kimenetben látható, hogy a **DestinationAddressPrefix** értéke **Internet**. Nem egyértelmű azonban, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify), lépésen tesztelt 13.107.21.200 cím hogyan viszonyul az **Internet** eredményhez. Több címelőtagot is láthat az **ExpandedDestinationAddressPrefix alatt.** A listában lévő előtagok egyike a **12.0.0.0/6**, amely magában foglalja a 12.0.0.1–15.255.255.254 tartományba tartozó IP-címeket. Mivel a 13.107.21.200 ebbe a címtartományba esik, az **AllowInternetOutBound** szabály engedélyezi a kimenő forgalmat. Emellett nincsenek magasabb **prioritású** (alacsonyabb számú) szabályok listázva a `Get-AzEffectiveNetworkSecurityGroup` által visszaadott kimenetben, amelyek felülbírálnák ezt a szabályt. Ha szeretné letiltani a 13.107.21.200 címre kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely letiltja az IP-címre kimenő forgalmat a 80-as porton.
 
 Amikor futtatta az `Test-AzNetworkWatcherIPFlow` parancsot, hogy tesztelje a 172.131.0.100 címre kimenő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultOutboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllOutBound** szabálynak, amely az `Get-AzEffectiveNetworkSecurityGroup` parancs következő kimenetében szerepel:
 
@@ -204,7 +208,7 @@ Amikor futtatta az `Test-AzNetworkWatcherIPFlow` parancsot, hogy tesztelje a 172
 }
 ```
 
-A szabály a **0.0.0.0/0** listát listázza a **DestinationAddressPrefix**. A szabály megtagadja a kimenő kommunikációt a 172.131.0.100, mert a címe nem a parancs kimenetében lévő többi Kimenő szabály **DestinationAddressPrefix** belül van `Get-AzEffectiveNetworkSecurityGroup` . Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
+A szabály a **0.0.0.0/0** előtagot listázza **DestinationAddressPrefix értékként.** A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nem található a parancs kimenetében található többi kimenő szabály **DestinationAddressPrefix** előtagja `Get-AzEffectiveNetworkSecurityGroup` között. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
 
 Amikor futtatta a `Test-AzNetworkWatcherIPFlow` parancsot, hogy tesztelje a 172.131.0.100 címről bejövő kommunikációt az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépésben, a kimenetből megtudta, hogy a **DefaultInboundDenyAll** szabály megtagadta a kommunikációt. A **DefaultOutboundDenyAll** szabály megfelel a **DenyAllInBound** szabálynak, amely az `Get-AzEffectiveNetworkSecurityGroup` parancs következő kimenetében szerepel:
 
@@ -238,7 +242,7 @@ Az ebben a rövid útmutatóban található ellenőrzések az Azure-konfiguráci
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és az összes benne található erőforrást:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

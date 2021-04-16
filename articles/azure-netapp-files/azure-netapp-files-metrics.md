@@ -1,6 +1,6 @@
 ---
-title: A Azure NetApp Files metrikái | Microsoft Docs
-description: A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat, a mennyiségi IOPS és a késés mérőszámait biztosítja. Használja ezeket a mérőszámokat a használat és a teljesítmény megismeréséhez.
+title: Metrikák Azure NetApp Files | Microsoft Docs
+description: Azure NetApp Files a lefoglalt tárterületre, a tényleges tárterület-használatra, a kötet IOPS-értékre és a késésre vonatkozó metrikákat biztosít. Ezekkel a metrikákkal megértheti a használatot és a teljesítményt.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,58 +12,62 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 04/12/2021
 ms.author: b-juche
-ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b581470a886ff73739edfee7f45c64295eeeb1f0
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745944"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388608"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
-A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat, a mennyiségi IOPS és a késés mérőszámait biztosítja. A metrikák elemzésével jobban megismerheti a NetApp-fiókok használati mintáját és a kötet teljesítményét.  
+Azure NetApp Files a lefoglalt tárterületre, a tényleges tárterület-használatra, a kötet IOPS-értékre és a késésre vonatkozó metrikákat biztosít. A metrikák elemzésével jobban megértheti a NetApp-fiókok használati mintáját és kötetteljesítményét.  
 
-## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>A kapacitási készletek használati metrikái
+Kapacitáskészlethez vagy kötethez a kapacitáskészlet vagy kötet kiválasztásával **találhat** **metrikákat.**  Ezután kattintson a **Metrika** elemre az elérhető metrikák megtekintéséhez: 
 
-- *Készlet lefoglalt mérete*   
+[![A Metrika lekért lista lépését bemutató pillanatkép. ](../media/azure-netapp-files/metrics-navigate-volume.png)](../media/azure-netapp-files/metrics-navigate-volume.png#lightbox)
+
+## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Kapacitáskészletek használati metrikai
+
+- *Lefoglalt készlet mérete*   
     A készlet kiépített mérete.
 
-- *A kötet méretéhez lefoglalt készlet*  
-    Az adott kapacitási készletben lévő mennyiségi kvóta (GiB) teljes mennyisége (azaz a kötetek kiosztott méretei összesen).  
-    Ez a méret a kötetek létrehozásakor kiválasztott méret.  
+- *Kötetmérethez lefoglalt készlet*  
+    Az adott kapacitáskészletben található kötetkvóta (GiB) teljes mennyisége (a kapacitáskészletben kiépített kötetek teljes mérete).  
+    Ez a méret a kötet létrehozása során kiválasztott méret.  
 
 - *Készlet felhasznált mérete*  
-    A kapacitási készlet kötetei között felhasznált logikai terület összesen (GiB).  
+    A kapacitáskészletben lévő kötetek között felhasznált logikai terület (GiB) teljes száma.  
 
-- *A készlethez tartozó pillanatképek teljes mérete*    
-    A készletben lévő összes kötetről származó Pillanatképek méretének összege.
+- *A készlet teljes pillanatképmérete*    
+    A készletben található összes kötet pillanatképméretének összege.
 
-## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>A kötetek használati metrikái
+## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Használati metrikák kötetek esetén
 
-- *Százalékos mennyiség felhasznált mérete*    
+- *Százalékos felhasznált kötetméret*    
     A felhasznált kötet százalékos aránya, beleértve a pillanatképeket is.  
-- *Kötet lefoglalt mérete*   
+- *Lefoglalt kötet mérete*   
     Kötet kiépített mérete
-- *Kötet kvótájának mérete*    
-    A kötet kiépített kvótájának mérete (GiB).   
-- *Kötet felhasznált mérete*   
-    A kötet logikai mérete (felhasznált bájtok).  
-    Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
+- *Kötetkvóta mérete*    
+    A kvóta mérete (GiB), amely alapján a kötet ki van építve.   
+- *Felhasznált kötet mérete*   
+    A kötet logikai mérete (bájtban).  
+    Ez a méret magában foglalja az aktív fájlrendszerek és pillanatképek által használt logikai területet.  
 - *Kötet pillanatképének mérete*   
    Egy kötet összes pillanatképének mérete.  
 
-## <a name="performance-metrics-for-volumes"></a>A kötetek teljesítmény-mérőszámai
+## <a name="performance-metrics-for-volumes"></a>Kötetek teljesítménymetrikák
 
-- *Olvasási késleltetés átlagos késése*   
-    A kötet olvasási idejének átlagos ideje ezredmásodpercben.
-- *Írási késleltetés átlagos késése*   
-    A köteten történő írások átlagos ideje ezredmásodpercben.
+- *Átlagos olvasási késés*   
+    A kötetből való olvasások átlagos ideje ezredmásodpercben.
+- *Átlagos írási késés*   
+    A kötetről való írás átlagos ideje ezredmásodpercben.
 - *IOPS olvasása*   
-    A kötetre irányuló olvasási műveletek száma másodpercenként.
+    A köteten másodpercenkénti olvasások száma.
 - *IOPS írása*   
-    A kötetre írások száma másodpercenként.
+    A köteten másodpercenkénti írások száma.
 <!-- These two metrics are not yet available, until ~ 2020.09
 - *Read MiB/s*   
     Read throughput in bytes per second.
@@ -83,32 +87,32 @@ A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat,
 -->
 
 
-## <a name="volume-replication-metrics"></a><a name="replication"></a>Kötet replikációs metrikái
+## <a name="volume-replication-metrics"></a><a name="replication"></a>Kötetreplikációs metrikák
 
 > [!NOTE] 
-> * A hálózati átvitel mérete (például a *kötet replikálása teljes átvitel* mérőszámai) eltérhetnek a régiók közötti replikálás forrás-vagy cél köteteitől. Ennek a viselkedésnek a hatására a rendszer hatékony replikációs motort használ, hogy csökkentse a hálózati átvitel költségeit.
-> * A kötet replikációs metrikái jelenleg a replikálási cél köteteihez vannak feltöltve, nem pedig a replikációs kapcsolat forrásaként.
+> * A hálózati átvitel mérete  (például a kötetreplikáció teljes átviteli metrika) eltérhet a régiók közötti replikáció forrás- vagy célköteteitől. Ennek a viselkedésnek az az eredménye, hogy hatékony replikációs motort használnak a hálózatátviteli költségek minimalizálásához.
+> * A kötetreplikációs metrikák jelenleg nem a replikációs kapcsolat forrásaként, csak a replikáció célköteteiként vannak feltöltve.
 
-- *A kötet replikálási állapota Kifogástalan*   
-    A replikációs kapcsolat feltétele. A megfelelő állapotot a jelzi `1` . A nem kifogástalan állapotot a jelzi `0` .
+- *Kifogástalan állapotú-e a kötetreplikáció*   
+    A replikációs kapcsolat feltétele. A kifogástalan állapotot a `1` jelöli. A nem megfelelő állapotot a `0` jelzi.
 
-- *A kötet-replikálás átadása*    
-    Azt jelzi, hogy a kötet replikálásának állapota "átvitel". 
+- *Kötetreplikáció átvitele*    
+    Azt határozza meg, hogy a kötetreplikáció állapota "átvitel"-e. 
  
-- *Kötet replikációs késési ideje*   
-    Az az időtartam másodpercben, ameddig a tükrözött adatmennyiség a forrás mögött marad. 
+- *Kötetreplikáció késése*   
+    Az az idő másodpercben, amely alatt a tükrözött adatok a forrás mögött maradnak. 
 
-- *Kötet replikálásának utolsó átvitelének időtartama*   
+- *Kötetreplikáció utolsó átvitelének időtartama*   
     Az utolsó átvitel befejezéséhez szükséges idő másodpercben. 
 
-- *Kötet replikálásának utolsó átvitelének mérete*    
+- *Kötetreplikáció utolsó átvitelének mérete*    
     Az utolsó átvitel részeként átvitt bájtok teljes száma. 
 
-- *Kötet replikálásának folyamata*    
-    Az aktuális adatátviteli művelethez továbbított adatok teljes mennyisége. 
+- *Kötetreplikáció állapota*    
+    Az aktuális átviteli művelethez átvitt adatok teljes mennyisége. 
 
-- *Kötet replikálásának teljes átvitele*   
-    A kapcsolathoz továbbított összesített bájtok száma. 
+- *Kötetreplikáció teljes átvitele*   
+    A kapcsolathoz átvitt halmozott bájtok. 
 
 ## <a name="next-steps"></a>Következő lépések
 

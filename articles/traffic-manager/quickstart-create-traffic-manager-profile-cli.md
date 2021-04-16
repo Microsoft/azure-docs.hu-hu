@@ -1,9 +1,9 @@
 ---
-title: 'Gyors útmutató: profil létrehozása az alkalmazások számára – Azure CLI – Azure Traffic Manager'
-description: Ez a rövid útmutató azt ismerteti, hogyan hozható létre egy Traffic Manager-profil, amely egy magasan elérhető webalkalmazást épít ki az Azure CLI használatával.
+title: 'Rövid útmutató: Profil létrehozása az alkalmazások hatékonyának létrehozásához – Azure CLI – Azure Traffic Manager'
+description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy Traffic Manager-profilt magas rendelkezésre álló webalkalmazás létrehozásához az Azure CLI használatával.
 services: traffic-manager
 author: duongau
-mnager: kumud
+manager: kumud
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
@@ -12,29 +12,29 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8871392bca12078364c2be9b7104bf2a1dc20cb3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 42870c1a539916cde018667921d913b164fb6b20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066592"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537693"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Gyors útmutató: Traffic Manager profil létrehozása egy magasan elérhető webalkalmazáshoz az Azure CLI használatával
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Rövid útmutató: Traffic Manager profil létrehozása magas rendelkezésre áll rendelkezésre álló webalkalmazáshoz az Azure CLI használatával
 
-Ez a rövid útmutató azt ismerteti, hogyan hozhat létre olyan Traffic Manager-profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Traffic Manager profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
 
-Ebben a rövid útmutatóban egy webalkalmazás két példányát fogja létrehozni. Mindegyik egy másik Azure-régióban fut. A Traffic Manager-profilt a [végpont prioritása](traffic-manager-routing-methods.md#priority-traffic-routing-method)alapján hozza létre. A profil a webes alkalmazást futtató elsődleges helyre irányítja a felhasználói forgalmat. Traffic Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, automatikus feladatátvételt biztosít a biztonsági mentési helyhez.
+Ebben a rövid útmutatóban egy webalkalmazás két példányát fogja létrehozni. Mindegyik másik Azure-régióban fut. A végpont prioritása Traffic Manager [létre.](traffic-manager-routing-methods.md#priority-traffic-routing-method) A profil a felhasználói forgalmat a webalkalmazást futtató elsődleges webhelyre irányítja. Traffic Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, automatikus feladatátvételt biztosít a biztonsági mentési helynek.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.28-as vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 
@@ -46,9 +46,9 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Hozzon létre egy Traffic Manager profilt [az az Network Traffic-Manager Profile Create](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) paranccsal, amely a felhasználói forgalmat a végponti prioritás alapján irányítja.
+Hozzon létre Traffic Manager [profilt az az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) parancs használatával, amely a felhasználói forgalmat a végpont prioritása alapján irányítja.
 
-A következő példában cserélje le a **<profile_name>** egy egyedi Traffic Manager-profil nevére.
+A következő példában cserélje le a **<profile_name>** egy egyedi Traffic Manager profilnévre.
 
 ```azurecli-interactive
 
@@ -66,12 +66,12 @@ az network traffic-manager profile create \
 
 ## <a name="create-web-apps"></a>Webalkalmazások létrehozása
 
-Ebben a rövid útmutatóban két különböző Azure-régióban (az *USA keleti* régiójában és *Nyugat-Európában*) üzembe helyezett webalkalmazás két példánya szükséges. Mindegyik a Traffic Manager elsődleges és feladatátvételi végpontjának fogja szolgálni.
+Ebben a rövid útmutatóban egy webalkalmazás két példányára lesz szüksége, amelyek két különböző Azure-régióban (az *USA* keleti régiójában és *Nyugat-Európában) üzembe helyezhetők.* Mindegyik elsődleges és feladatátvételi végpontként szolgál a Traffic Manager.
 
 ### <a name="create-web-app-service-plans"></a>Web App Service-csomagok létrehozása
-Hozzon létre Web App Service-csomagokat az az [appservice Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal a webalkalmazás két különböző Azure-régióban üzembe helyezett példányaihoz.
+Web App Service-csomagok létrehozása [az az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) használatával a két különböző Azure-régióban üzembe helyező webalkalmazás két példányához.
 
-A következő példában cserélje le a **<appspname_eastus>** és **<appspname_westeurope>** egyedi app Service csomagjának nevére
+A következő példában cserélje le a **<appspname_eastus>** és **<appspname_westeurope>** egy egyedi App Service tervnévre
 
 ```azurecli-interactive
 
@@ -90,9 +90,9 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Webalkalmazás létrehozása az App Service-csomagban
-Hozzon létre két példányt a webalkalmazás az [az WebApp Create](/cli/azure/webapp#az-webapp-create) PARANCCSAL az *USA keleti* régiójában és a *Nyugat-európai* Azure-régióban található app Service-csomagokban.
+Hozzon létre két példányt a webalkalmazáshoz [az az webapp create](/cli/azure/webapp#az-webapp-create) App Service az *USA* keleti és nyugat-európai *Azure-régiójában.*
 
-Az alábbi példában cserélje le a **<app1name_eastus>** és **<App2name_westeurope**>egyedi névvel, és cserélje le **<appspname_eastus**>és **<** appspname_westeurope>az előző szakaszban app Service csomagok létrehozásához használt névvel.
+A következő példában cserélje le a **<app1name_eastus>** és a **<app2name_westeurope>** nevet egy egyedi alkalmazásnévre, az **<appspname_eastus>** és az **<appspname_westeurope>** helyére pedig az előző szakaszban a App Service-csomagok létrehozásához használt nevet.
 
 ```azurecli-interactive
 
@@ -109,16 +109,16 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
-Adja hozzá a két Web Apps Traffic Manager végpontként az [az Network Traffic-Manager Endpoint Create](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) paranccsal a Traffic Manager profilhoz az alábbiak szerint:
+Adja hozzá a két Web Apps végpontként Traffic Manager [az az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) használatával a Traffic Manager profilhoz az alábbiak szerint:
 
-- Határozza meg a webalkalmazás AZONOSÍTÓját, és adja hozzá az *USA keleti* régiója Azure-régióban található webalkalmazást elsődleges végpontként az összes felhasználói forgalom átirányításához. 
-- Határozza meg a webalkalmazás AZONOSÍTÓját, és adja hozzá a *Nyugat-európai* Azure-régióban található webalkalmazást feladatátvételi végpontként. 
+- Határozza meg a webalkalmazás azonosítóját, és adja hozzá az USA keleti *régiójában* található webalkalmazást elsődleges végpontként az összes felhasználói forgalom útválasztásához. 
+- Határozza meg a webalkalmazás azonosítóját,  és adja hozzá a nyugat-európai Azure-régióban található webalkalmazást feladatátvételi végpontként. 
 
-Ha az elsődleges végpont nem érhető el, a forgalom automatikusan átirányítja a feladatátvételi végpontot.
+Ha az elsődleges végpont nem érhető el, a forgalom automatikusan a feladatátvételi végpontra kerül.
 
-Az alábbi példában cserélje le a **<app1name_eastus>** és **<app2name_westeurope>** az előző szakaszban az egyes régiókhoz létrehozott alkalmazás-nevekre. Ezután cserélje le a **<profile_name>** az előző szakaszban használt profil nevére. 
+A következő példában cserélje le a **<app1name_eastus>** és **<app2name_westeurope>** az előző szakaszban az egyes régiókhoz létrehozott alkalmazásnevekre. Ezután cserélje **<profile_name>** az előző szakaszban használt profilnévre. 
 
-**USA keleti végpontja**
+**USA keleti régiója végpont**
 
 ```azurecli-interactive
 
@@ -129,7 +129,7 @@ az webapp show \
 
 ```
 
-Jegyezze fel a kimenetben megjelenített azonosítót, és használja a következő parancsot a végpont hozzáadásához:
+Jegyezze fel a kimenetben megjelenő azonosítót, és adja hozzá a végpontot a következő parancsban:
 
 ```azurecli-interactive
 
@@ -143,7 +143,7 @@ az network traffic-manager endpoint create \
     --endpoint-status Enabled
 ```
 
-**Nyugat-európai végpont**
+**Nyugat-Európa végpont**
 
 ```azurecli-interactive
 
@@ -154,7 +154,7 @@ az webapp show \
 
 ```
 
-Jegyezze fel a kimenetben megjelenített azonosítót, és használja a következő parancsot a végpont hozzáadásához:
+Jegyezze fel a kimenetben megjelenő azonosítót, és adja hozzá a végpontot a következő parancsban:
 
 ```azurecli-interactive
 
@@ -169,15 +169,15 @@ az network traffic-manager endpoint create \
 
 ```
 
-## <a name="test-your-traffic-manager-profile"></a>Traffic Manager-profil tesztelése
+## <a name="test-your-traffic-manager-profile"></a>A Traffic Manager tesztelése
 
-Ebben a szakaszban a Traffic Manager profil tartománynevét fogja megtekinteni. Azt is beállíthatja, hogy az elsődleges végpont ne legyen elérhető. Végezetül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek oka, hogy Traffic Manager továbbítja a forgalmat a feladatátvételi végpontnak.
+Ebben a szakaszban a saját profilja tartománynevét Traffic Manager ellenőrizni. Az elsődleges végpontot is úgy fogja konfigurálni, hogy az ne legyen elérhető. Végül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek az az oka, Traffic Manager a rendszer elküldi a forgalmat a feladatátvételi végpontra.
 
-Az alábbi példában cserélje le a **<app1name_eastus>** és **<app2name_westeurope>** az előző szakaszban az egyes régiókhoz létrehozott alkalmazás-nevekre. Ezután cserélje le a **<profile_name>** az előző szakaszban használt profil nevére.
+A következő példában cserélje le **a<app1name_eastus>** és **<app2name_westeurope>** az előző szakaszban az egyes régiókhoz létrehozott alkalmazásnevekre. Ezután cserélje **<profile_name>** helyére az előző szakaszban használt profilnevet.
 
 ### <a name="determine-the-dns-name"></a>A DNS-név meghatározása
 
-Határozza meg az Traffic Manager profil DNS-nevét az [az Network Traffic-Manager Profile show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show)paranccsal.
+Állapítsa meg a Traffic Manager [dns-nevét az az network traffic-manager profile show használatával.](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show)
 
 ```azurecli-interactive
 
@@ -188,14 +188,14 @@ az network traffic-manager profile show \
 
 ```
 
-Másolja a **RelativeDnsName** értéket. Traffic Manager profiljának DNS-neve *http://<* relativednsname *>. trafficmanager.net*. 
+Másolja ki **a RelativeDnsName értéket.** A profil DNS-Traffic Manager *http://<* relativednsname *>.trafficmanager.net.* 
 
 ### <a name="view-traffic-manager-in-action"></a>A Traffic Manager megtekintése működés közben
-1. A webböngészőben adja meg a Traffic Manager profil (*http://<* relativednsname *>. trafficmanager.net*) DNS-nevét a webalkalmazás alapértelmezett webhelyének megtekintéséhez.
+1. Egy webböngészőben adja meg a Traffic Manager-profil DNS-nevét *(http://<* relativednsname *>.trafficmanager.net*) a webalkalmazás alapértelmezett webhelyének megtekintéséhez.
 
     > [!NOTE]
-    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányítja át. Az **1-es prioritásra** van beállítva.
-2. Ha Traffic Manager feladatátvételt szeretné megtekinteni a működés közben, tiltsa le az elsődleges helyet az [az Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update)paranccsal.
+    > Ebben a rövid útmutatóban minden kérés az elsődleges végpontra lesz irányítva. A prioritása **1.**
+2. A feladatátvételi Traffic Manager megtekintéséhez tiltsa le az elsődleges helyet [az az network traffic-manager endpoint update használatával.](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update)
 
    ```azurecli-interactive
 
@@ -208,12 +208,12 @@ Másolja a **RelativeDnsName** értéket. Traffic Manager profiljának DNS-neve 
     
    ```
 
-3. Másolja a Traffic Manager profiljának DNS-nevét (*http://<* relativednsname *>. trafficmanager.net*) a webhely új webböngésző-munkamenetben való megtekintéséhez.
+3. Másolja a saját Traffic Manager *(http://<* relativednsname *>.trafficmanager.net*) DNS-nevét a webhely új webböngésző-munkamenetben való megtekintéséhez.
 4. Ellenőrizze, hogy a webalkalmazás továbbra is elérhető-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást az [az Group delete](/cli/azure/group#az-group-delete)paranccsal.
+Ha végzett, törölje az erőforráscsoportokat, a webalkalmazásokat és az összes kapcsolódó erőforrást [az az group delete parancs használatával.](/cli/azure/group#az-group-delete)
 
 ```azurecli-interactive
 
@@ -224,7 +224,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
+Ebben a rövid útmutatóban létrehozott egy Traffic Manager, amely magas rendelkezésre állást biztosít a webalkalmazás számára. Ha többet szeretne megtudni a forgalom útválasztásról, folytassa a Traffic Manager oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager-oktatóanyagok](tutorial-traffic-manager-improve-website-response.md)

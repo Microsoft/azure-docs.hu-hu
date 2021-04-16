@@ -1,116 +1,150 @@
 ---
-title: Szinkronizálás az Azure Blob Storage-nal a AzCopy v10 használatával | Microsoft Docs
-description: Ez a cikk az Azure Blob Storage szolgáltatással való szinkronizálást segítő AzCopy-példákat tartalmaz.
+title: Szinkronizálás azure blobtárolóval az AzCopy 10-es | Microsoft Docs
+description: Ez a cikk az AzCopy példaparancsok gyűjteményét tartalmazza, amelyek segítségével szinkronizálhat az Azure Blob Storage-ral.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ec341243811eaa271511baba04ea1c48a4fefdab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728895"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502929"
 ---
-# <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>Szinkronizálás az Azure Blob Storage-nal a AzCopy v10 használatával
+# <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>Szinkronizálás az Azure Blob Storage-ral az AzCopy használatával
 
-A AzCopy v10 parancssori segédprogrammal szinkronizálhatja a helyi tárolót az Azure Blob Storage szolgáltatással. 
+A helyi tárolót az Azure Blob Storage-ral szinkronizálhatja az AzCopy 10-es parancssori segédprogrammal. 
 
-A helyi fájlrendszer tartalmát egy blob-tárolóval szinkronizálhatja. A tárolókat és a virtuális könyvtárakat is szinkronizálhatja egymással. A szinkronizálás egy módszer. Más szóval kiválaszthatja, hogy a két végpont melyik a forrás, és melyik a cél. A szinkronizálás a kiszolgálót kiszolgáló API-kra is használja. Az ebben a szakaszban bemutatott példák a hierarchikus névtérrel rendelkező fiókokkal is működnek. 
+A helyi fájlrendszer tartalmát szinkronizálhatja egy blobtárolóval. A tárolókat és a virtuális könyvtárakat szinkronizálhatja is egymással. A szinkronizálás egy módszer. Más szóval ön dönti el, hogy a két végpont közül melyik a forrás, és melyik a cél. A szinkronizálás kiszolgáló és kiszolgáló API-kat is használ. Az ebben a szakaszban bemutatott példák hierarchikus névtéren lévő fiókokkal is működnek. 
 
 > [!NOTE]
-> A AzCopy jelenlegi kiadása nem szinkronizál más források és célhelyek között (például: file Storage vagy Amazon Web Services (AWS) S3 gyűjtők).
+> Az AzCopy jelenlegi kiadása nem szinkronizál más források és célok között (például File Storage vagy Amazon Web Services (AWS) S3-gyűjtők között).
 
-Ha más típusú feladatokra, például fájlok feltöltésére, blobok letöltésére vagy Blobok a fiókok közötti másolására szeretne példákat látni, tekintse meg a jelen cikk [következő lépések](#next-steps) című szakaszának hivatkozásait.
+Ha más típusú feladatokra, például fájlok feltöltésére, blobok letöltésére vagy fiókok közötti blobok másolására vonatkozó példákat keres, tekintse meg a cikk Következő lépések [szakaszában](#next-steps) található hivatkozásokat.
 
 ## <a name="get-started"></a>Bevezetés
 
-Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
+Az [AzCopy letöltését](storage-use-azcopy-v10.md) az Első lépések az AzCopyval cikkben olvashatja el, és megtudhatja, hogyan biztosítanak hitelesítési hitelesítő adatokat a tárolási szolgáltatásnak.
 
 > [!NOTE] 
-> A cikkben szereplő példák azt feltételezik, hogy Azure Active Directory (Azure AD) használatával adta meg az engedélyezési hitelesítő adatokat.
+> A cikkben található példák feltételezik, hogy hitelesítő adatokat adott meg a Azure Active Directory (Azure AD) használatával.
 >
-> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Ha inkább SAS-jogkivonatot használna a blobadatokhoz való hozzáféréshez, akkor minden AzCopy-parancsban hozzáfűzheti a jogkivonatot az erőforrás URL-címéhez. Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="guidelines"></a>Irányelvek
 
-- A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és az utolsó módosítás időbélyegét. Állítsa a `--delete-destination` választható jelzőt értékre, `true` vagy `prompt` törölje a fájlokat a célhely könyvtárában, ha ezek a fájlok már nem léteznek a forrás-címtárban.
+- A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és a legutóbb módosított időbélyegeket. Állítsa a választható jelzőt a vagy értékre a célkönyvtárban lévő fájlok törléséhez, ha ezek a fájlok már nem léteznek a `--delete-destination` `true` `prompt` forráskönyvtárban.
 
-- Ha a `--delete-destination` jelölőt a értékre állítja `true` , a AzCopy a fájlokat a parancssor megadása nélkül törli. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a jelölőt a következőre: `--delete-destination` `prompt` .
+- Ha a jelzőt a következőre adja meg: , az AzCopy kérés nélkül `--delete-destination` `true` töröl fájlokat. Ha azt szeretné, hogy egy üzenet jelenjen meg, mielőtt az AzCopy töröl egy fájlt, állítsa a `--delete-destination` jelzőt a következőre: `prompt` .
 
-- A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a jelző használata előtt engedélyezze a [Soft delete](../blobs/soft-delete-blob-overview.md) funkciót `--delete-destination=prompt|true` .
+- Ha a jelzőt vagy -ként tervezi beállítani, fontolja meg a másolási parancs a szinkronizálási parancs helyett való használatát, és állítsa a paramétert a `--delete-destination` `prompt` `false` [](storage-ref-azcopy-copy.md) [](storage-ref-azcopy-sync.md) `--overwrite` következőre: `ifSourceNewer` . A [másolási](storage-ref-azcopy-copy.md) parancs kevesebb memóriát használ fel, és kevesebb számlázási költséget jelent, mert a másolási műveletnek nem kell indexelnie a forrást vagy a célt a fájlok mozgatása előtt. 
 
-## <a name="update-a-container-with-changes-to-a-local-file-system"></a>Tároló frissítése egy helyi fájlrendszer módosításaival
+- A véletlen törlések elkerülése érdekében [](../blobs/soft-delete-blob-overview.md) a jelző használata előtt engedélyezze a törlési `--delete-destination=prompt|true` funkciót.
+
+- A gépnek, amelyen a szinkronizálási parancsot futtatja, pontos rendszerórával kell lennie, mert az utolsó módosítás időpontja kritikus fontosságú annak meghatározásában, hogy át kell-e helyezni egy fájlt. Ha a rendszer jelentős órajel-eltolást tartalmaz, ne módosítsa a fájlokat a célhelyen ahhoz az időponthoz túl közel, amikor szinkronizálási parancsot tervez futtatni.
+
+## <a name="update-a-container-with-changes-to-a-local-file-system"></a>Tároló frissítése a helyi fájlrendszer módosításaival
 
 Ebben az esetben a cél a tároló, a forrás pedig a helyi fájlrendszer. 
 
 > [!TIP]
-> Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
+> Ez a példa az elérésiút-argumentumokat ad meg egyszeres idézőjelek ('') közé. Használjon egyszeres idézőjeleket az összes parancshéjban, kivéve a Windows parancshéjat (cmd.exe). Ha Windows parancshéjat (cmd.exe) használ, az elérésiút-argumentumokat idézőjelek ("") közé kell tenni a single quotes ('' helyett).
 
-| Szintaxis/példa  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Példa** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+**Syntax**
+
+`azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**Példa**
+
+```azcopy
+azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-local-file-system-with-changes-to-a-container"></a>Helyi fájlrendszer frissítése egy tároló módosításaival
 
-Ebben az esetben a helyi fájlrendszer a cél, és a tároló a forrás.
+Ebben az esetben a cél a helyi fájlrendszer, a tároló pedig a forrás.
 
 > [!TIP]
-> Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
+> Ez a példa az elérésiút-argumentumokat ad meg egyszeres idézőjelek ('') közé. Használjon egyszeres idézőjeleket az összes parancshéjban, kivéve a Windows parancshéjat (cmd.exe). Ha Windows parancshéjat (cmd.exe) használ, az elérésiút-argumentumokat idézőjelek ("") közé kell tenni a single quotes ('' helyett).
 
-| Szintaxis/példa  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
-| **Példa** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+**Syntax**
 
-## <a name="update-a-container-with-changes-in-another-container"></a>Tároló frissítése egy másik tároló módosításaival
+`azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive`
 
-A parancsban megjelenő első tároló a forrás. A második a cél.
+**Példa**
 
-> [!TIP]
-> Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
+```azcopy
+azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive
+```
 
-| Szintaxis/példa  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+## <a name="update-a-container-with-changes-in-another-container"></a>Tároló frissítése egy másik tárolóban történt módosításokkal
 
-## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>Könyvtár frissítése egy másik tárolóban lévő könyvtár módosításaival
-
-A parancsban megjelenő első könyvtár a forrás. A második a cél.
+A parancsban elsőként megjelenő tároló a forrás. A második a célhely.
 
 > [!TIP]
-> Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
+> Ez a példa az elérésiút-argumentumokat ad meg egyszeres idézőjelek ('') közé. Használjon egyszeres idézőjeleket az összes parancshéjban, kivéve a Windows parancshéjat (cmd.exe). Ha Windows parancshéjat (cmd.exe) használ, az elérésiút-argumentumokat idézőjelek ("") közé kell tenni a single quotes ('' helyett).
 
-| Szintaxis/példa  |  Code |
-|--------|-----------|
-| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+**Syntax**
 
-## <a name="synchronize-with-optional-flags"></a>Szinkronizálás opcionális jelzővel
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
 
-A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
+**Példa**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
+
+## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>Címtár frissítése egy másik tárolóban található címtár módosításaival
+
+A parancsban elsőként megjelenő könyvtár a forrás. A második a célhely.
+
+> [!TIP]
+> Ez a példa az elérésiút-argumentumokat ad meg egyszeres idézőjelek ('') közé. Használjon egyszeres idézőjeleket az összes parancshéjban, kivéve a Windows parancshéjat (cmd.exe). Ha Windows parancshéjat (cmd.exe) használ, az elérésiút-argumentumokat idézőjelek ("") közé kell tenni a single quotes ('' helyett).
+
+**Syntax**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+
+**Példa**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+```
+
+## <a name="synchronize-with-optional-flags"></a>Szinkronizálás választható jelzőkvel
+
+A szinkronizálási műveletet nem kötelező jelzők használatával finomhangolni tudja. Látható néhány példa.
 
 |Eset|Jelölő|
 |---|---|
-|Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
-|Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
-|Adja meg, hogy a szinkronizálással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|
+|Adja meg, hogy a letöltéskor szigorúan az MD5-hashek érvényesítése milyen legyen.|**--check-md5** = \[ NoCheck \| LogOnly \| FailIfDifferent \| FailIfDifferentOrMissing\]|
+|Fájlok kizárása minta alapján.|**--exclude-path**|
+|Adja meg, hogy milyen részletes legyen a szinkronizálással kapcsolatos naplóbejegyzés.|**--log-level** = \[ FIGYELMEZTETÉSI \| HIBA \| – \| INFORMÁCIÓ: NINCS\]|
 
-A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-sync.md#options).
+A jelzők teljes listájáért tekintse meg a [beállításokat.](storage-ref-azcopy-sync.md#options)
+
+> [!NOTE]
+> A `--recursive` jelző alapértelmezés szerint a `true` következőre van beállítva: . A és a jelző csak a fájlnevekre vonatkozik, a fájl elérési útjának más `--exclude-pattern` `--include-pattern` részeire nem. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További példákat a következő cikkekben talál:
+További példákat ezekben a cikkekben talál:
 
 - [Példák: Feltöltés](storage-use-azcopy-blobs-upload.md)
 - [Példák: Letöltés](storage-use-azcopy-blobs-download.md)
 - [Példák: Másolás tárfiókok között](storage-use-azcopy-blobs-copy.md)
 - [Példák: Amazon S3-gyűjtők](storage-use-azcopy-s3.md)
+- [Példák: Google Cloud Storage](storage-use-azcopy-google-cloud.md)
 - [Példák: Azure Files](storage-use-azcopy-files.md)
 - [Oktatóanyag: Helyszíni adatok migrálása felhőtárhelybe az AzCopyval](storage-use-azcopy-migrate-on-premises-data.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
+A következő cikkekben konfigurálhatja a beállításokat, optimalizálhatja a teljesítményt és elháríthatja a problémákat:
+
+- [AzCopy konfigurációs beállításai](storage-ref-azcopy-configuration-settings.md)
+- [Az AzCopy teljesítményének optimalizálása](storage-use-azcopy-optimize.md)
+- [Az AzCopy 10-es hibák elhárítása az Azure Storage-ban naplófájlok használatával](storage-use-azcopy-configure.md)
+

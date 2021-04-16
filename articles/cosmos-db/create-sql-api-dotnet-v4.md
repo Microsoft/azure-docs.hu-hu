@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 495191dfcdfd7a4d318bef508878e951d88b3ae6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365161"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483877"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Rövid útmutató: Konzolalkalmazás létrehozása a .NET V4 SDK (előzetes verzió) használatával Azure Cosmos DB SQL API-fiók erőforrásainak kezeléséhez.
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Rövid útmutató: Konzolalkalmazás létrehozása a .NET V4 SDK (előzetes verzió) használatával az SQL API Azure Cosmos DB fiók erőforrásainak kezeléséhez.
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ A .NET-hez Azure Cosmos DB SQL API ügyféloldali kódtárának első lépések.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen mérethez nyílt API-kat igényel. A Azure Cosmos DB kulcs/érték, dokumentum és gráfadatbázisok gyors létrehozásához és lekérdezéséhez használhatja. Használja a Azure Cosmos DB SQL API .NET-hez ügyféloldali kódtárát a következőre:
+Azure Cosmos DB a Microsofté™ gyors NoSQL-adatbázisa, amely bármilyen mérethez nyílt API-kat igényel. A Azure Cosmos DB kulcs/érték, dokumentum és gráfadatbázisok gyors létrehozásához és lekérdezéséhez használhatja. Használja a Azure Cosmos DB SQL API .NET-hez ügyféloldali kódtárát a következőre:
 
 * Azure Cosmos-adatbázis és -tároló létrehozása
 * Mintaadatok hozzáadása a tárolóhoz
@@ -60,9 +60,9 @@ Ha az Ingyenes [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lehe
 
 Ha saját Azure-előfizetéssel rendelkezik, vagy ingyenes előfizetést hozott létre, explicit módon hozzon létre egy Azure Cosmos-fiókot. A következő kód létrehoz egy munkamenet-konzisztenciájú Azure Cosmos-fiókot. A rendszer replikálja a fiókot a és `South Central US` a `North Central US` rendszer.  
 
-Az Azure Cosmos Azure Cloud Shell fiók létrehozásához használhatja a következőt: . Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével. Ehhez a rövid útmutatóhoz válassza a **Bash módot.** Azure Cloud Shell tárfiókra is szüksége van, akkor létrehozhat egyet, amikor a rendszer erre kéri.
+Az Azure Cosmos-Azure Cloud Shell használhatja a fiók létrehozásához. Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével. Ebben a rövid útmutatóban válassza a **Bash módot.** Azure Cloud Shell tárfiókra is szüksége van, akkor létrehozhat egyet, amikor a rendszer erre kéri.
 
-Kattintson a **Következő kód melletti** Kipróbálom gombra, válassza a **Bash** mód lehetőséget, válassza **a Tárfiók** létrehozása lehetőséget, és jelentkezzen be az Cloud Shell. Ezután másolja és illessze be a következő kódot Azure Cloud Shell és futtassa. Az Azure Cosmos-fiók nevének globálisan egyedinek kell lennie, ezért a parancs futtatása előtt frissítse `mysqlapicosmosdb` az értéket.
+Válassza a **következő kód melletti** Próbálja ki gombot, válassza a **Bash** mód lehetőséget, válassza **a Tárfiók** létrehozása lehetőséget, és jelentkezzen be az Cloud Shell. Ezután másolja és illessze be a következő kódot Azure Cloud Shell és futtassa. Az Azure Cosmos-fiók nevének globálisan egyedinek kell lennie, ezért a parancs futtatása előtt frissítse `mysqlapicosmosdb` az értéket.
 
 ```azurecli-interactive
 
@@ -96,7 +96,7 @@ Az Azure Cosmos-fiók létrehozása egy kis időt vesz igénybe. Ha a művelet s
 Hozzon létre egy új .NET-alkalmazást a kívánt szerkesztőben vagy IDE-ban. Nyissa meg a Windows-parancssort vagy a Terminál ablakot a helyi számítógépről. A következő szakaszokban található összes parancsot a parancssorból vagy terminálból fogja futtatni.  Futtassa a következő dotnet new parancsot egy nevű új alkalmazás `todo` létrehozásához. A --langVersion paraméter beállítja a LangVersion tulajdonságot a létrehozott projektfájlban.
 
    ```bash
-   dotnet new console –langVersion:8 -n todo
+   dotnet new console â€“langVersion:8 -n todo
    ```
 
 Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappába. Az alkalmazást a következővel építheti fel:
@@ -129,7 +129,7 @@ Az alkalmazáskönyvtárban maradva telepítse a Azure Cosmos DB .NET Core-ügyf
 
 ### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Másolja az Azure Cosmos-fiók hitelesítő adatait a Azure Portal
 
-A mintaalkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókjában. A hitelesítéshez át kell adni az Azure Cosmos-fiók hitelesítő adatait az alkalmazásnak. Az Azure Cosmos-fiók hitelesítő adatait az alábbi lépésekkel lehet lehozni:
+A mintaalkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókjában. A hitelesítéshez át kell adni az Azure Cosmos-fiók hitelesítő adatait az alkalmazásnak. Az Azure Cosmos-fiók hitelesítő adatait az alábbi lépésekkel lehet lekérte:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -191,7 +191,7 @@ Definiálja `CreateContainerAsync` a metódust a `Program` osztályon belül. Ez
 
 ### <a name="create-an-item"></a>Elem létrehozása
 
-Hozzon létre egy családelemet a `AddItemsToContainerAsync` metódus hozzáadásával az alábbi kóddal. Elemet a `CreateItemAsync` vagy a metódus használatával hozhat `UpsertItemAsync` létre:
+Hozzon létre egy családelemet a `AddItemsToContainerAsync` metódus hozzáadásával az alábbi kóddal. A vagy a `CreateItemAsync` metódus használatával hozhat létre `UpsertItemAsync` elemet:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=AddItemsToContainerAsync)]
 
@@ -209,13 +209,13 @@ Olvassa el a családelemet, majd frissítse a metódus hozzáadásával `Replace
 
 ### <a name="delete-an-item"></a>Elem törlése 
 
-Töröljön egy családelemet a `DeleteFamilyItemAsync` metódus hozzáadásával az alábbi kóddal.
+Egy családelem törléséhez adja hozzá a `DeleteFamilyItemAsync` metódust az alábbi kóddal.
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteFamilyItemAsync)]
 
 ### <a name="delete-the-database"></a>Az adatbázis törlése 
 
-Végül törölheti az adatbázist a metódus hozzáadásával `DeleteDatabaseAndCleanupAsync` a következő kóddal:
+Végül törölheti az adatbázist a `DeleteDatabaseAndCleanupAsync` metódus hozzáadásával a következő kóddal:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 

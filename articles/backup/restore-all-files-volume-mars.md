@@ -1,133 +1,133 @@
 ---
-title: Kötet összes fájljának visszaállítása a MARStal
-description: Megtudhatja, hogyan állíthatja vissza a kötetek összes fájlját a MARS-ügynök használatával.
+title: Egy köteten lévő összes fájl visszaállítása a MARS-sal
+description: Megtudhatja, hogyan állítható vissza egy kötet összes fájlja a MARS-ügynökkel.
 ms.topic: conceptual
 ms.date: 01/17/2021
-ms.openlocfilehash: 44c12809fc94f78721ab1788cb352076dfebabe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d04e9f77b9f92594def9381f973c999e96b2cb2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98613971"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516501"
 ---
-# <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>Kötet összes fájljának visszaállítása a MARS-ügynök használatával
+# <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>Egy köteten lévő összes fájl visszaállítása a MARS-ügynökkel
 
-Ez a cikk azt ismerteti, hogyan állíthatja vissza a teljes kötet összes biztonsági másolatát a Microsoft Azure Recovery Services-(MARS-) ügynök adatok helyreállítása varázslójának használatával. A következőket teheti:
+Ez a cikk azt ismerteti, hogyan állíthatók vissza az összes biztonsági másolatból készült fájl egy teljes köteten az Microsoft Azure Recovery Services- (MARS-) ügynök Adatok helyreállítása varázslójával. A következőket teheti:
 
-- Egy köteten lévő összes biztonságimásolat-fájl visszaállítása ugyanarra a gépre, amelyről a biztonsági másolatok készültek.
-- Egy köteten lévő összes biztonsági mentési fájl visszaállítása egy másik gépre.
+- A köteten lévő összes biztonsági másolatból származó fájlt állítsa vissza arra a gépre, amelyről a biztonsági másolatok készültek.
+- Egy kötet összes biztonsági másolata egy másik gépre való visszaállítása.
 
 >[!TIP]
->A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet (akár 40 MBps-t) biztosít, és a nagy méretű adatok vagy a teljes kötetek helyreállításához ajánlott.
+>A **Kötet** beállítás a megadott köteten található összes biztonságimentett adatot helyreállítja. Ez a beállítás gyorsabb átviteli sebességet biztosít (legfeljebb 40 MBps), és nagy méretű adatok vagy teljes kötetek helyreállításához ajánlott.
 >
->Az **egyes fájlok és mappák lehetőséggel** gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, és az 80 GB-nál kisebb teljes mérethez ajánlott. A helyreállítás során akár 6 MBps sebességű átvitelt és másolást is biztosít.
+>Az **Egyes fájlok és mappák lehetőséggel** gyorsan hozzáférhet a helyreállítási pont adataihoz. Alkalmas az egyes fájlok helyreállítására, és 80 GB-nál kisebb teljes mérethez ajánlott. A helyreállítás során átviteli vagy másolási sebességet biztosít akár 6 MB/s sebességre is.
 
-## <a name="volume-level-restore-to-the-same-machine"></a>Kötet szintjének visszaállítása ugyanarra a gépre
+## <a name="volume-level-restore-to-the-same-machine"></a>Kötetszintű visszaállítás ugyanazon a gépen
 
-A következő lépések segítséget nyújtanak a köteten található összes biztonsági mentési fájl helyreállításához:
+A következő lépések segítségével helyreállítható egy kötet összes biztonsági mentése:
 
-1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Microsoft Azure Backup** a számítógépet vagy a kiszolgálót. Az asztali alkalmazásnak meg kell jelennie a keresési eredmények között.
+1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol lett telepítve a beépülő modul, keressen rá a számítógépre vagy a kiszolgálóra a **Microsoft Azure Backup.** Az asztali alkalmazásnak meg kell jelenni a keresési eredmények között.
 
-1. A varázsló elindításához kattintson az **adatok helyreállítása** elemre.
+1. Válassza **az Adatok helyreállítása lehetőséget** a varázsló elindítani.
 
     ![Adatok helyreállítása menü](./media/restore-all-files-volume-mars/recover.png)
 
-1. A **első lépések** lapon a következőt válassza ki ezt a kiszolgálót **(kiszolgálónév)**, ha az adott kiszolgálóra vagy számítógépre szeretné visszaállítani az adatfájlokat  >  .
+1. Az Első **lépések lapon** az adatok ugyanazon kiszolgálóra vagy számítógépre való visszaállításához válassza az Ez a **kiszolgáló (kiszolgálónév) Tovább**  >  **lehetőséget.**
 
     ![Első lépések oldal](./media/restore-all-files-volume-mars/same-machine-instant-restore.png)
 
-1. A **helyreállítási mód kiválasztása** lapon válassza a **kötet**  >  **tovább** lehetőséget.
+1. A Helyreállítási **mód kiválasztása lapon** válassza a Kötet **Tovább**  >  **lehetőséget.**
 
     ![Helyreállítási mód kiválasztása](./media/restore-all-files-volume-mars/select-recovery-mode.png)
 
-1. A **kötet és dátum kiválasztása** lapon válassza ki a visszaállítani kívánt kötetet.
+1. A Kötet **és dátum kiválasztása lapon** válassza ki a visszaállítani kívánt kötetet.
 
-    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok azt jelzik, hogy legalább egy helyreállítási pont rendelkezésre áll. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **idő** legördülő menüből.
+    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel** szedett dátumok legalább egy helyreállítási pont rendelkezésre állását jelzik. Ha egy dátumon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az Idő legördülő menüből. 
 
      ![Kötet és dátum kiválasztása](./media/restore-all-files-volume-mars/select-volume-and-date.png)
 
-1. A **helyreállítási beállítások megadása** lapon konfigurálja a visszaállítási viselkedést.
-    1. Válassza ki a helyreállítási célhelyet:
-        - **Eredeti hely**: az adatbázis visszaállítása az eredeti elérési útra.
-        - **Egy másik hely**: adja meg azt az alternatív helyet, amelyre vissza kívánja állítani az adatgyűjtést.
-    1. Válassza ki a viselkedést, **Ha a biztonsági mentésben szereplő elemek már a helyreállítási célhelyen vannak**:
-        - **Hozzon létre másolatokat, hogy mindkét verzióban** legyenek: Ha már létezik ilyen nevű fájl, a helyreállítási pontban lévő összes érték másolatként lesz visszaállítva. A másolás honosított fájlnév-előtaggal fog rendelkezni a helyi visszaállítási feladatok időpontjával a következő formátumok egyikében:
+1. A Helyreállítási **beállítások megadása lapon** konfigurálja a visszaállítási viselkedést.
+    1. Válassza ki a helyreállítási célt:
+        - **Eredeti hely:** Adatok visszaállítása az eredeti elérési útra.
+        - **Másik hely:** Adjon meg egy másik helyet az adatok visszaállításához.
+    1. Válassza a Ha a biztonsági másolat elemei már a helyreállítási **célhelyen vannak viselkedést:**
+        - **Másolatok létrehozása, hogy** mindkét verzióval rendelkezik: Ha már létezik ilyen nevű fájl, a helyreállítási pont adatai másolatként lesznek visszaállva. A másolat egy honosított fájlnév-előtaggal fog dolgozni, amely a helyi visszaállítási feladat idejét használja az alábbi formátumok egyikében:
             - `YYYY-MM-DD HH-mm Copy of <original file name>`
             - `YYYY-MM-DD HH-mm Copy (n) of <original file name>`
-        - **Meglévő verziók felülírása a helyreállított verziókkal**: Ha már létezik ilyen nevű fájl, a rendszer a tartalmat a helyreállítási pontban található értékre cseréli.
-        - Ne **állítsa helyre a helyreállítási célhelyen már létező elemeket**: Ha már létezik ilyen nevű fájl, a rendszer kihagyja.
-    1. **Engedélyezze a hozzáférés-vezérlési lista (ACL) engedélyeit a helyreállított fájlhoz vagy mappához** , ha a fájlt vissza kell állítani a helyreállítási pont eredeti engedélyeivel.
+        - **Meglévő verziók** felülírása helyreállított verziókra: Ha már létezik ilyen nevű fájl, a rendszer a tartalmat a helyreállítási pont adataira cseréli.
+        - **Ne helyreállítsa a** helyreállítási célhelyen már létező elemeket: Ha már létezik ilyen nevű fájl, a rendszer kihagyja azt.
+    1. Engedélyezze a Helyreállítható hozzáférés-vezérlési lista **(ACL)** engedélyeket a helyreállított fájlra vagy mappára, ha a fájlt a helyreállítási pont eredeti engedélyekkel szeretné visszaállítani.
         ![Helyreállítási beállítások megadása](./media/restore-all-files-volume-mars/specify-recovery-options.png)
 
-1. Ellenőrizze a helyreállítás részleteit a **megerősítő** ablaktáblán, és válassza a **helyreállítás** lehetőséget.
+1. A Megerősítés panelen ellenőrizze  a helyreállítás részleteit, majd válassza a Helyreállítás **lehetőséget.**
 
     ![Megerősítés részletei](./media/restore-all-files-volume-mars/confirmation-details.png)
 
-1. A **helyreállítási folyamat** lapon figyelje a helyreállítási feladatok állapotát. A varázsló is biztonságosan lezárható, és a háttérben folytatódik a helyreállítási művelet. Az előrehaladást úgy tekintheti meg, ha duplán kattint a helyreállítási feladatokra az irányítópulton.
+1. A Helyreállítási **folyamat lapon** figyelje a helyreállítási feladat előrehaladását. A varázsló biztonságosan bezárható, és a helyreállítási művelet a háttérben folytatódik. A folyamat előrehaladásának megtekintéséhez kattintson duplán a Helyreállítási feladatra az irányítópulton.
 
-## <a name="volume-level-restore-to-an-alternate-machine"></a>Kötet szintjének visszaállítása egy másik gépre
+## <a name="volume-level-restore-to-an-alternate-machine"></a>Kötetszintű visszaállítás másik gépre
 
-A következő lépések segítségével helyreállíthatja a köteten található összes biztonsági másolattal rendelkező fájlt egy másik gépre. Ezekkel a lépésekkel helyreállíthatja Azure Backup adatait, ha a teljes kiszolgáló elvész.
+A következő lépések segítségével helyreállítható egy kötet összes biztonsági mentése egy másik gépre. Ezekkel a lépésekkel helyreállíthatja az adatokat a Azure Backup ha a teljes kiszolgáló elveszett.
 
-Ezek a lépések a következő terminológiát tartalmazzák:
+Ezek a lépések a következő terminológiát foglalják magukban:
 
-- *Forrásoldali gép* – az eredeti gép, amelyről a biztonsági mentés készült, és amely jelenleg nem érhető el.
-- *Célszámítógép* – az a gép, amelyre az Adathelyreállítás történik.
-- *Minta* -tár – az a Recovery Services tároló, amelybe a forrásszámítógép és a célszámítógép regisztrálva van.
+- *Forrásgép* – Az az eredeti gép, amelyről a biztonsági mentés készült, és amely jelenleg nem érhető el.
+- *Célgép* – Az a gép, amelyre az adatok helyreállítása folyamatban van.
+- *Mintatartó* – Az a Recovery Services-tároló, amelyben a forrásgép és a célgép regisztrálva van.
 
 > [!NOTE]
-> A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági másolat visszaállítható Windows 7 (vagy újabb) rendszerű számítógépen. Egy Windows 10 rendszerű számítógépről készített biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
+> A biztonsági másolatok nem állíthatók vissza olyan célgépre, amely az operációs rendszer egy korábbi verzióját futtatja. Egy Windows 7 rendszerű számítógépről készült biztonsági másolat például visszaállítható Egy Windows 7 -es (vagy újabb) számítógépen. A számítógépről Windows 10 biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
 
-1. Nyissa meg a **Microsoft Azure Backup** beépülő modult a célszámítógépen.
+1. Nyissa meg **Microsoft Azure Backup** beépülő modult a célgépen.
 
-1. Győződjön meg arról, hogy a célszámítógép és a forrásszámítógép ugyanahhoz a Recovery Services-tárolóhoz van regisztrálva.
+1. Győződjön meg arról, hogy a célgép és a forrásgép ugyanabban a Recovery Services-tárolóban van regisztrálva.
 
-1. Válassza az **adatok helyreállítása** lehetőséget az **adatok helyreállítása varázsló** megnyitásához.
+1. Az **Adatok helyreállítása varázsló** megnyitásához válassza az Adatok helyreállítása **lehetőséget.**
 
-    ![Képernyőkép a Azure Backupről, az adatok kiemelésével (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/recover.png)
+    ![Képernyőkép az Azure Backup, kiemelt Adatok helyreállítása (visszaállítás másik gépre)](./media/backup-azure-restore-windows-server/recover.png)
 
-1. A **első lépések** lapon válasszon **egy másik kiszolgálót**.
+1. Az Első **lépések lapon** válassza a Másik **kiszolgáló lehetőséget.**
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló Első lépések oldaláról (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
+    ![Képernyőkép az Adatok helyreállítása varázsló Első lépések lapról (visszaállítás másik gépre)](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-1. Adja meg a tár hitelesítő adatait tartalmazó fájlt, amely megfelel a mintatartó tárolónak, majd kattintson a **Tovább gombra**.
+1. Adja meg a tároló mintatartónak megfelelő hitelesítőadat-fájlját, majd válassza a **Tovább lehetőséget.**
 
-    Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), [töltse le a tárolóban lévő új hitelesítőadat-fájlt](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) a Azure Portal. A tár érvényes hitelesítő adatainak megadását követően megjelenik a megfelelő biztonságimásolat-tároló neve.
+    Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), töltsön le egy új tároló hitelesítőadat-fájlt [a](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-) tároló Azure Portal. Miután megadott egy érvényes hitelesítő adatokat a tárolóhoz, megjelenik a megfelelő backup-tároló neve.
 
-1. A **biztonsági mentési kiszolgáló kiválasztása** lapon válassza ki a forrásszámítógép listáját a megjelenített gépek listájából, és adja meg a jelszót. Ezután kattintson a **Tovább** gombra.
+1. A Biztonsági **mentési kiszolgáló kiválasztása lapon** válassza ki a forrásgépet a megjelenített gépek listájából, és adja meg a jelszót. Ezután kattintson a **Tovább** gombra.
 
-    ![Képernyőkép az adatok helyreállítása varázsló biztonsági mentési kiszolgáló kiválasztása lapján (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
+    ![Képernyőkép az Adatok helyreállítása varázsló Biztonsági mentési kiszolgáló kiválasztása lapról (visszaállítás másik gépre)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-1. A **helyreállítási mód kiválasztása** lapon válassza a **kötet**  >  **tovább** lehetőséget.
+1. A Helyreállítási **mód kiválasztása lapon** válassza a Kötet **Tovább**  >  **lehetőséget.**
 
     ![Helyreállítási mód kiválasztása](./media/restore-all-files-volume-mars/select-recovery-mode.png)
 
-1. A **kötet és dátum kiválasztása** lapon válassza ki a visszaállítani kívánt kötetet.
+1. A Kötet **és dátum kiválasztása lapon** válassza ki a visszaállítani kívánt kötetet.
 
-    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel szedett** dátumok azt jelzik, hogy legalább egy helyreállítási pont rendelkezésre áll. Ha egy adott napon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az **idő** legördülő menüből.
+    A naptárban válasszon ki egy helyreállítási pontot. A **félkövérrel** szedett dátumok legalább egy helyreállítási pont rendelkezésre állását jelzik. Ha egy dátumon belül több helyreállítási pont is elérhető, válassza ki az adott helyreállítási pontot az Idő legördülő menüből. 
 
      ![Kötet és dátum kiválasztása](./media/restore-all-files-volume-mars/select-volume-and-date.png)
 
-1. A **helyreállítási beállítások megadása** lapon konfigurálja a visszaállítási viselkedést.
-    1. Válassza ki a helyreállítási célhelyet:
-        - **Eredeti hely**: az adatbázis visszaállítása az eredeti elérési útra.
-        - **Egy másik hely**: adja meg azt az alternatív helyet, amelyre vissza kívánja állítani az adatgyűjtést.
-    1. Válassza ki a viselkedést, **Ha a biztonsági mentésben szereplő elemek már a helyreállítási célhelyen vannak**:
-        - **Hozzon létre másolatokat, hogy mindkét verzióban** legyenek: Ha már létezik ilyen nevű fájl, a helyreállítási pontban lévő összes érték másolatként lesz visszaállítva. A másolás honosított fájlnév-előtaggal fog rendelkezni a helyi visszaállítási feladatok időpontjával a következő formátumok egyikében:
+1. A Helyreállítási **beállítások megadása lapon** konfigurálja a visszaállítási viselkedést.
+    1. Válassza ki a helyreállítási célt:
+        - **Eredeti hely:** Adatok visszaállítása az eredeti elérési útra.
+        - **Másik hely:** Adjon meg egy másik helyet az adatok visszaállításához.
+    1. Válassza a Ha a biztonsági másolat elemei már a helyreállítási **célhelyen vannak viselkedést:**
+        - **Másolatok létrehozása, hogy** mindkét verzióval rendelkezik: Ha már létezik ilyen nevű fájl, a helyreállítási pont adatai másolatként lesznek visszaállva. A másolat egy honosított fájlnév-előtaggal fog dolgozni, amely a helyi visszaállítási feladat idejét használja az alábbi formátumok egyikében:
             - `YYYY-MM-DD HH-mm Copy of <original file name>`
             - `YYYY-MM-DD HH-mm Copy (n) of <original file name>`
-        - **Meglévő verziók felülírása a helyreállított verziókkal**: Ha már létezik ilyen nevű fájl, a rendszer a tartalmat a helyreállítási pontban található értékre cseréli.
-        - Ne **állítsa helyre a helyreállítási célhelyen már létező elemeket**: Ha már létezik ilyen nevű fájl, a rendszer kihagyja.
-    1. **Engedélyezze a hozzáférés-vezérlési lista (ACL) engedélyeit a helyreállított fájlhoz vagy mappához** , ha a fájlt vissza kell állítani a helyreállítási pont eredeti engedélyeivel.
+        - **Meglévő verziók** felülírása helyreállított verziókra: Ha már létezik ilyen nevű fájl, a rendszer a tartalmat a helyreállítási pont adataira cseréli.
+        - **Ne helyreállítsa a** helyreállítási célhelyen már létező elemeket: Ha már létezik ilyen nevű fájl, a rendszer kihagyja azt.
+    1. Engedélyezze a Helyreállítható hozzáférés-vezérlési lista **(ACL)** engedélyeket a helyreállított fájlra vagy mappára, ha a fájlt a helyreállítási pont eredeti engedélyekkel szeretné visszaállítani.
         ![Helyreállítási beállítások megadása](./media/restore-all-files-volume-mars/specify-recovery-options.png)
 
-1. Ellenőrizze a helyreállítás részleteit a **megerősítő** ablaktáblán, és válassza a **helyreállítás** lehetőséget.
+1. A Megerősítés panelen ellenőrizze  a helyreállítás részleteit, majd válassza a Helyreállítás **lehetőséget.**
 
     ![Megerősítés részletei](./media/restore-all-files-volume-mars/confirmation-details.png)
 
-1. A **helyreállítási folyamat** lapon figyelje a helyreállítási feladatok állapotát. A varázsló is biztonságosan lezárható, és a háttérben folytatódik a helyreállítási művelet. Az előrehaladást úgy tekintheti meg, ha duplán kattint a helyreállítási feladatokra az irányítópulton.
+1. A Helyreállítási **folyamat lapon** figyelje a helyreállítási feladat előrehaladását. A varázsló biztonságosan bezárható, és a helyreállítási művelet a háttérben folytatódik. A folyamat előrehaladásának megtekintéséhez kattintson duplán a Helyreállítási feladatra az irányítópulton.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).
-- [Gyakori kérdések a fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md).
+- Most, hogy helyreállította a fájlokat és mappákat, kezelheti [a biztonsági másolatokat.](backup-azure-manage-windows-server.md)
+- Gyakori kérdések a fájlok és mappák [biztonsági mentése ről.](backup-azure-file-folder-backup-faq.yml)

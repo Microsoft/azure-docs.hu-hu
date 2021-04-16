@@ -1,77 +1,77 @@
 ---
-title: Feladatok futtatása a felhasználói fiókokban
-description: Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
+title: Feladatok futtatása felhasználói fiókok alatt
+description: Megismeri a felhasználói fiókok típusait és konfigurálásuk mikéntját.
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02cad0bff9e76ec5db82c417f2439b12ef088045
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606606"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389281"
 ---
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása felhasználói fiókok alatt a Batchben
 
 > [!NOTE]
-> A cikkben tárgyalt felhasználói fiókok nem egyeznek meg a biztonsági okokból a RDP protokoll (RDP) vagy a Secure Shell (SSH) esetében használt felhasználói fiókokkal.
+> A cikkben tárgyalt felhasználói fiókok biztonsági okokból különböznek a RDP protokoll (RDP) vagy a Secure Shell (SSH) felhasználói fiókjaitól.
 >
-> Ha SSH-n keresztül szeretne csatlakozni a linuxos virtuális gép konfigurációját futtató csomóponthoz, tekintse meg a [Xrdp telepítése és konfigurálása az Ubuntu használatával távoli asztal használatához](../virtual-machines/linux/use-remote-desktop.md)című témakört. Ha RDP-kapcsolaton keresztül szeretne csatlakozni a Windows rendszerű csomópontokhoz, tekintse meg a következő témakört: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](../virtual-machines/windows/connect-logon.md).
+> A Linux rendszerű virtuális gépek konfigurációját SSH-n keresztül futtató csomóponthoz való csatlakozáshoz lásd: [Install and configure xrdp to use Távoli asztal with Ubuntu](../virtual-machines/linux/use-remote-desktop.md)(Az xrdp telepítése és konfigurálása az Ubuntu Távoli asztal használatával). Ha RDP-n keresztül szeretne csatlakozni a Windowst futtató csomópontokhoz, tekintse meg a Windows rendszerű Azure-beli virtuális gépekhez való csatlakozást és [bejelentkezést.](../virtual-machines/windows/connect-logon.md)
 >
-> Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-beli szerepkörökhöz](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)című témakört.
+> A felhőszolgáltatás konfigurációját RDP-n keresztül futtató csomóponthoz való csatlakozáshoz lásd: [Enable Távoli asztali kapcsolat for a Role in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
-Egy feladat Azure Batch mindig egy felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok a normál felhasználói fiókok alatt, rendszergazdai jogosultságok nélkül futnak. Bizonyos esetekben előfordulhat, hogy konfigurálni szeretné azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ez a cikk a felhasználói fiókok típusait és a forgatókönyvhöz való konfigurálását ismerteti.
+A feladat Azure Batch mindig felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok normál felhasználói fiókokban, rendszergazdai engedélyek nélkül futnak. Bizonyos esetekben előfordulhat, hogy azt a felhasználói fiókot szeretné konfigurálni, amelyben futtatni szeretné a feladatot. Ez a cikk a felhasználói fiókok típusait és azok forgatókönyvhöz való konfigurálását ismerteti.
 
 ## <a name="types-of-user-accounts"></a>Felhasználói fiókok típusai
 
-A Azure Batch két típusú felhasználói fiókot biztosít a feladatok futtatásához:
+Azure Batch kétféle felhasználói fiókot biztosít a feladatok futtatásához:
 
-- **Automatikus felhasználói fiókok.** Az automatikus felhasználói fiókok beépített felhasználói fiókok, amelyeket a Batch szolgáltatás automatikusan hoz létre. Alapértelmezés szerint a tevékenységek egy automatikus felhasználói fiók alatt futnak. Megadhatja az automatikus felhasználó specifikációját, amely azt jelzi, hogy mely automatikus felhasználói fiókkal kell futtatni a feladatot. Az automatikus felhasználó specifikációja lehetővé teszi a feladat futtatására szolgáló automatikus felhasználói fiók jogosultságszint-emelési szintjének és hatókörének megadását.
+- **Automatikus felhasználói fiókok.** Az automatikus felhasználói fiókok beépített felhasználói fiókok, amelyek automatikusan létrejönnek a Batch szolgáltatásban. Alapértelmezés szerint a tevékenységek automatikusan felhasználói fiókkal futnak. Egy feladat automatikus felhasználóspecifikációját konfigurálhatja úgy, hogy jelezze, melyik automatikus felhasználói fiók alatt fusson a feladat. Az automatikus felhasználóspecifikációval megadhatja a tevékenységet futtatni kívánt automatikus felhasználói fiók jogosultságszint-emelési szintjét és hatókörét.
 
-- **Névvel ellátott felhasználói fiók.** A készlet létrehozásakor megadhat egy vagy több elnevezett felhasználói fiókot a készlethez. Minden felhasználói fiók létrejön a készlet minden egyes csomópontján. A fiók neve mellett adja meg a felhasználói fiók jelszavát, a jogosultságszint-emelési szintet, valamint a Linux-készletek esetében az SSH titkos kulcsot. Feladat hozzáadásakor megadhatja azt a elnevezett felhasználói fiókot, amely alatt a feladat futni fog.
+- **Egy elnevezett felhasználói fiók.** A készlet létrehozásakor megadhat egy vagy több elnevezett felhasználói fiókot a készlethez. Minden felhasználói fiók a készlet minden csomópontján létrejön. A fiók neve mellett meg kell adnia a felhasználói fiók jelszavát, a jogosultságszintet, linuxos készleteknél pedig a titkos SSH-kulcsot. Feladat hozzáadásakor megadhatja azt a megnevezett felhasználói fiókot, amely alatt a feladat futni fog.
 
 > [!IMPORTANT]
-> A Batch szolgáltatás 2017-es -01-01.4.0 egy olyan megszakítási változást vezetett be, amely megköveteli a kód frissítését, hogy az adott verziót vagy újabbat hívjon fel. A Batch-kód régebbi verzióról történő frissítésével kapcsolatos gyors útmutatásért lásd: [a kód frissítése a legújabb batch ügyféloldali kódtár](#update-your-code-to-the-latest-batch-client-library) .
+> A Batch szolgáltatás 2017-01-01.4.0-s verziója egy olyan friss változást vezetett be, amely miatt frissítenie kell a kódot a verzió vagy újabb hívásához. A [Batch-kód](#update-your-code-to-the-latest-batch-client-library) régebbi verzióról való frissítésével kapcsolatos gyors útmutatásért lásd: A kód frissítése a legújabb Batch ügyféloldali kódtárra.
 
-## <a name="user-account-access-to-files-and-directories"></a>Felhasználói fiókhoz való hozzáférés a fájlokhoz és könyvtárakhoz
+## <a name="user-account-access-to-files-and-directories"></a>Felhasználói fiók hozzáférése fájlokhoz és könyvtárakhoz
 
-Az automatikus felhasználói fiók és a nevesített felhasználói fiók egyaránt rendelkezik írási/olvasási hozzáféréssel a tevékenység munkakönyvtárához, a megosztott könyvtárhoz és a többpéldányos feladatok könyvtárához. Mindkét típusú fiók olvasási hozzáféréssel rendelkezik az indítási és a feladatok előkészítési könyvtáraihoz.
+Mind az automatikus felhasználói fiók, mind a megnevezett felhasználói fiók olvasási/írási hozzáféréssel rendelkezik a tevékenység munkakönyvtárához, megosztott könyvtárához és többpéldányos feladatok könyvtárához. Mindkét fióktípus olvasási hozzáféréssel rendelkezik az indítási és a feladat-előkészítési könyvtárhoz.
 
-Ha egy feladat ugyanabban a fiókban fut, amelyet az indítási tevékenység futtatásához használt, a feladat írási és olvasási hozzáféréssel rendelkezik a Start Task könyvtárhoz. Hasonlóképpen, ha egy feladat ugyanabban a fiókban fut, amelyet a feladat-előkészítési feladat futtatásához használt, a feladat írási és olvasási hozzáféréssel rendelkezik a feladat-előkészítési tevékenység könyvtárához. Ha egy feladat egy másik fiók alatt fut, mint a Start tevékenység vagy a feladat-előkészítési feladat, akkor a feladat csak olvasási hozzáféréssel rendelkezik a megfelelő címtárhoz.
+Ha egy tevékenység ugyanabban a fiókban fut, mint az indítási tevékenység futtatása, a tevékenység olvasási és írási hozzáféréssel rendelkezik az indítási tevékenység könyvtárához. Hasonlóképpen, ha egy tevékenység ugyanabban a fiókban fut, mint a feladat-előkészítési tevékenység futtatása, a tevékenység olvasási és írási hozzáféréssel rendelkezik a feladat-előkészítési tevékenység könyvtárához. Ha egy tevékenység az indítási tevékenységtől vagy a feladat-előkészítési tevékenységtől eltérő fiókban fut, akkor a tevékenység csak olvasási hozzáféréssel rendelkezik a megfelelő címtárhoz.
 
-A fájlok és könyvtárak egy feladatból való elérésével kapcsolatos további információkért tekintse meg a [fájlok és könyvtárak](files-and-directories.md)című témakört.
+A fájlok és könyvtárak feladatból való elérésével kapcsolatos további információkért lásd: [Fájlok és könyvtárak.](files-and-directories.md)
 
 ## <a name="elevated-access-for-tasks"></a>Emelt szintű hozzáférés a feladatokhoz
 
-A felhasználói fiók jogosultságszint-emelési szintje azt jelzi, hogy egy feladat emelt szintű hozzáféréssel fut-e. Egy automatikus felhasználói fiók és egy nevesített felhasználói fiók is futtatható emelt szintű hozzáféréssel. A jogosultságszint-emelési szint két lehetősége a következő:
+A felhasználói fiók jogosultságszintje jelzi, hogy egy tevékenység emelt szintű hozzáféréssel fut-e. Az automatikus és a megnevezett felhasználói fiók emelt szintű hozzáféréssel is futtatható. A jogosultságszint-emelés két lehetőség közül választhat:
 
-- Nem **rendszergazda:** A feladat emelt szintű hozzáférés nélküli általános jogú felhasználóként fut. Egy batch felhasználói fiók alapértelmezett jogosultságszint-emelési szintje mindig nem **rendszergazda**.
+- **NonAdmin ::** A feladat normál felhasználóként, emelt szintű hozzáférés nélkül fut. A Batch felhasználói fiókok alapértelmezett jogosultságszintje mindig **NonAdmin.**
 - **Rendszergazda:** A feladat emelt szintű hozzáféréssel rendelkező felhasználóként fut, és teljes körű rendszergazdai engedélyekkel működik.
 
 ## <a name="auto-user-accounts"></a>Automatikus felhasználói fiókok
 
-Alapértelmezés szerint a tevékenységek a Batch szolgáltatásban egy automatikus felhasználói fiók alatt futnak, a normál felhasználó emelt szintű hozzáférés nélkül, a készlet hatókörével együtt. A készlet hatóköre azt jelenti, hogy a feladat egy automatikus felhasználói fiók alatt fut, amely a készlet bármely tevékenysége számára elérhető. A készlet hatókörével kapcsolatos további információkért lásd: [feladat futtatása automatikus felhasználóként készlet hatókörével](#run-a-task-as-an-auto-user-with-pool-scope).
+Alapértelmezés szerint a tevékenységek automatikus felhasználói fiókkal, emelt szintű hozzáférés nélküli általános jogú felhasználóként és készlethatókörrel futnak a Batchben. A készlet hatóköre azt jelenti, hogy a feladat egy automatikus felhasználói fiók alatt fut, amely a készlet bármely tevékenysége számára elérhető. A készlet hatókörével kapcsolatos további információkért lásd: Feladat futtatása automatikus [felhasználóként készlethatókörrel.](#run-a-task-as-an-auto-user-with-pool-scope)
 
-A készlet hatókörének alternatívája a feladat hatóköre. Ha az automatikus felhasználó specifikációja feladat hatókörre van konfigurálva, a Batch szolgáltatás csak automatikusan felhasználói fiókot hoz létre ehhez a feladathoz.
+A készlet hatókörének alternatívája a tevékenységhatókör. Ha az automatikus felhasználóspecifikáció konfigurálva van a tevékenység hatókörében, a Batch szolgáltatás csak az adott feladathoz hoz létre automatikus felhasználói fiókot.
 
-Az automatikus felhasználó specifikációnak négy lehetséges konfigurációja van, amelyek mindegyike egy egyedi automatikus felhasználói fióknak felel meg:
+Az automatikus felhasználó specifikációjának négy lehetséges konfigurációja van, amelyek mind egy egyedi automatikus felhasználói fióknak felelnek meg:
 
-- Nem rendszergazdai hozzáférés a feladat hatókörével
-- Rendszergazdai (emelt szintű) hozzáférés a feladat hatókörével
-- Nem rendszergazdai hozzáférés a készlet hatókörével
-- Rendszergazdai hozzáférés a készlet hatókörével
+- Nem rendszergazdai hozzáférés feladathatókörrel
+- Rendszergazdai (emelt szintű) hozzáférés feladathatókörrel
+- Nem rendszergazdai hozzáférés készlethatókörrel
+- Rendszergazdai hozzáférés készlethatókörrel
 
 > [!IMPORTANT]
-> A feladat hatókörében futó feladatok nem rendelkeznek tényleges hozzáféréssel a csomóponton lévő egyéb feladatokhoz. Azonban egy olyan rosszindulatú felhasználó, aki hozzáféréssel rendelkezik a fiókhoz, megkerülheti ezt a korlátozást egy rendszergazdai jogosultságokkal rendelkező feladat elküldésével, és hozzáfér más feladatok könyvtáraihoz. Egy rosszindulatú felhasználó RDP vagy SSH használatával is csatlakozhat egy csomóponthoz. Fontos, hogy megvédje a Batch-fiók kulcsaihoz való hozzáférést egy ilyen forgatókönyv megelőzése érdekében. Ha azt gyanítja, hogy a fiókja sérült, akkor ne felejtse el újragenerálni a kulcsokat.
+> A tevékenységhatókörben futó tevékenységek valójában nem férnek hozzá a csomópont más feladataihoz. A fiókhoz hozzáféréssel rendelkező rosszindulatú felhasználók azonban a korlátozást úgy is elérhetik, hogy beküldik a rendszergazdai jogosultságokkal futó feladatokat, és más feladat-könyvtárakhoz férnek hozzá. Egy rosszindulatú felhasználó RDP vagy SSH használatával is csatlakozhat egy csomóponthoz. Az ilyen helyzetek megelőzése érdekében fontos a Batch-fiókkulcsok hozzáférésének védelme. Ha azt gyanítja, hogy a fiókját feltörték, mindenképpen újragenerálja a kulcsokat.
 
-### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Feladat futtatása automatikus felhasználóként emelt szintű hozzáféréssel
+### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Feladat futtatása emelt szintű hozzáféréssel automatikusan felhasználóként
 
-Ha emelt szintű hozzáféréssel rendelkező feladatot szeretne futtatni, konfigurálhatja a rendszergazdai jogosultságok automatikus felhasználói specifikációját. Előfordulhat például, hogy egy indítási tevékenységhez emelt szintű hozzáférésre van szükség a szoftver telepítéséhez a csomóponton.
+A rendszergazdai jogosultságok automatikus felhasználói specifikációját akkor konfigurálhatja, ha emelt szintű hozzáféréssel rendelkező feladatot kell futtatnia. Előfordulhat például, hogy egy indítási tevékenységnek emelt szintű hozzáférésre van szüksége a szoftverek telepítéséhez a csomóponton.
 
 > [!NOTE]
-> Emelt szintű hozzáférés használata csak akkor, ha szükséges. Az ajánlott eljárások a kívánt eredmény eléréséhez szükséges minimális jogosultság megadását ajánlják. Ha például egy indítási tevékenység az aktuális felhasználóhoz tartozó szoftvereket telepít, az összes felhasználó helyett előfordulhat, hogy el tudja kerülni az emelt szintű hozzáférés megadását a feladatokhoz. Konfigurálhatja a készlet hatókörének és a nem rendszergazdai hozzáférésnek az automatikus felhasználó-specifikációt minden olyan feladathoz, amelynek ugyanazon a fiókon kell futnia, beleértve az indítási tevékenységet is.
+> Csak szükség esetén használjon emelt szintű hozzáférést. Az ajánlott eljárások azt javasolják, hogy adja meg a kívánt eredmény eléréséhez szükséges minimális jogosultságot. Ha például egy indítási tevékenység szoftvert telepít az aktuális felhasználó számára az összes felhasználó helyett, előfordulhat, hogy nem kell emelt szintű hozzáférést ad a feladatokhoz. Konfigurálhatja a készlet hatókörének automatikus felhasználóspecifikációját és a nem rendszergazdai hozzáférést minden olyan feladathoz, amely ugyanazon a fiókon kell futnia, beleértve az indítási feladatot is.
 
-Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint-emelési szintet `Admin` és a hatókört határozzák meg `Task` .
+Az alábbi kódrészletek mutatják be, hogyan konfigurálható az automatikus felhasználó specifikációja. A példák a jogosultságszint-emelési szintet, a `Admin` hatókört pedig a következőre állítják: `Task` .
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -104,22 +104,22 @@ task = batchmodels.TaskAddParameter(
 batch_client.task.add(job_id=jobid, task=task)
 ```
 
-### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Feladat futtatása automatikus felhasználóként a készlet hatókörével
+### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Feladat futtatása automatikus felhasználóként készlethatókörrel
 
-Csomópontok kiosztásakor a készlet minden egyes csomópontján két teljes készletre kiterjedő automatikus felhasználói fiók jön létre, egyet pedig emelt szintű hozzáféréssel, egyet pedig emelt szintű hozzáférés nélkül. Ha az automatikus felhasználó hatókörét egy adott feladathoz tartozó készlet hatókörére állítja be, akkor a feladat az alábbi két alkalmazáskészletre kiterjedő automatikus felhasználói fiókok valamelyikét futtatja.
+Egy csomópont kiépítésekor két készletre kiterjedő automatikus felhasználói fiók jön létre a készlet minden csomópontján, egy emelt szintű hozzáféréssel, egy pedig emelt szintű hozzáférés nélkül. Ha az automatikus felhasználó hatókörét egy adott tevékenység készlethatóköreként be van adva, a rendszer a két készletre kiterjedő automatikus felhasználói fiók egyikében futtatja a feladatot.
 
-Ha a készlet hatókörét adja meg az automatikus felhasználó számára, akkor a rendszergazdai hozzáféréssel futtatott összes feladat ugyanazon a teljes alkalmazáskészletre kiterjedő automatikus felhasználói fiók alatt fut. Hasonlóképpen, a rendszergazdai jogosultságok nélküli futtatású feladatok egyetlen, készletre kiterjedő automatikus felhasználói fiókkal is futnak.
+Ha megadja az automatikus felhasználó készlethatókörét, a rendszergazdai hozzáféréssel futó összes feladat ugyanazon készletre kiterjedő automatikus felhasználói fiók alatt fut. Hasonlóképpen, a rendszergazdai engedélyek nélkül futó feladatok is egy készletre kiterjedő automatikus felhasználói fiókban futnak.
 
 > [!NOTE]
-> A két teljes készletre kiterjedő automatikus felhasználói fiókok külön fiókok. A készletre kiterjedő rendszergazdai fiókban futó feladatok nem oszthatják meg az adatmegosztást a standard fiókban futó feladatokkal, és fordítva.
+> A két készletre kiterjedő automatikus felhasználói fiók külön fiók. A készletre kiterjedő rendszergazdai fiók alatt futó feladatok nem oszthatnak meg adatokat a standard fiókban futó feladatokkal, és fordítva.
 
-Az azonos automatikus felhasználói fiókkal való futtatás előnye, hogy a feladatok képesek megosztani az adatokkal az ugyanazon a csomóponton futó egyéb feladatokkal.
+Az azonos automatikus felhasználói fiókkal való futtatás előnye, hogy a tevékenységek képesek adatokat megosztani az ugyanazon a csomóponton futó más feladatokkal.
 
-A feladatok közötti titkok megosztása egy olyan forgatókönyv, amelyben a két teljes készletre kiterjedő automatikus felhasználói fiókok valamelyike alatt a feladatok futtatása hasznos. Tegyük fel például, hogy egy indítási tevékenységnek egy titkos kulcsot kell kiépítenie a csomópontra, amelyet más feladatok használhatnak. Használhatja a Windows adatvédelmi API-t (DPAPI), de rendszergazdai jogosultságokat igényel. Ehelyett a titkos kulcsot a felhasználói szinten is védetté teheti. Az azonos felhasználói fiók alatt futó feladatok emelt szintű hozzáférés nélkül is hozzáférhetnek a titkos kulcshoz.
+A titkos kulcsok feladatok közötti megosztása az egyik olyan forgatókönyv, amelyben hasznos, ha a tevékenységeket a két készletre kiterjedő automatikus felhasználói fiók egyikében futtatja. Tegyük fel például, hogy egy indítási tevékenységnek ki kell kiépítenie egy titkos secret-et a csomóponton, amit más tevékenységek használhatnak. Használhatja a Windows Data Protection API-t (DPAPI), de ehhez rendszergazdai jogosultság szükséges. Ehelyett felhasználói szinten is megvédheti a titkos titkos 80 000 000 000 000 000 00 Az azonos felhasználói fiókkal futó feladatok emelt szintű hozzáférés nélkül férhetnek hozzá a titkos eléréshez.
 
-Egy másik forgatókönyv, ahol előfordulhat, hogy a készlet hatókörével rendelkező automatikus felhasználói fiókkal szeretne feladatokat futtatni, egy Message Passing Interface (MPI) fájlmegosztás. Az MPI-fájlmegosztás akkor hasznos, ha az MPI-feladat csomópontjainak ugyanazon a fájlban kell dolgozniuk. A fő csomópont olyan fájlmegosztást hoz létre, amelyet a gyermek csomópontok elérnek, ha ugyanazon az automatikus felhasználói fiókon futnak.
+Egy másik forgatókönyv, amikor egy készlethatókörű automatikus felhasználói fiókban szeretne feladatokat futtatni, egy Message Passing Interface (MPI) fájlmegosztás. Az MPI-fájlmegosztás akkor hasznos, ha az MPI-feladat csomópontjainak ugyanazon fájladatokon kell dolgozniuk. Az főcsomópont létrehoz egy fájlmegosztást, amelyhez a gyermekcsomópontok hozzáférhetnek, ha ugyanazon automatikus felhasználói fiókkal futnak.
 
-A következő kódrészlet az automatikus felhasználó hatókörét állítja be egy feladathoz a Batch .NET-ben. A jogosultságszint-emelési szint kimarad, így a feladat a szabványos, teljes készletre kiterjedő automatikus felhasználói fiók alatt fut.
+Az alábbi kódrészlet az automatikus felhasználó hatókörét a Batch .NET-hez tartozó tevékenységek készlethatóköreként állítja be. A szintszint nincs megadva, így a feladat a standard készletszintű automatikus felhasználói fiók alatt fut.
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserScope.Pool));
@@ -127,19 +127,19 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 ## <a name="named-user-accounts"></a>Elnevezett felhasználói fiókok
 
-Készlet létrehozásakor megadhatja az elnevezett felhasználói fiókokat. Egy névvel ellátott felhasználói fiók rendelkezik a megadott névvel és jelszóval. Megadhatja egy elnevezett felhasználói fiók jogosultságszint-emelési szintjét. Linux-csomópontok esetén a titkos SSH-kulcsot is megadhatja.
+A készlet létrehozásakor elnevezett felhasználói fiókokat is definiálhat. Egy elnevezett felhasználói fiók rendelkezik egy Ön által megadott névvel és jelszóval. Megadhatja egy elnevezett felhasználói fiók jogosultságszint-emelési szintjét. Linux-csomópontok számára SSH titkos kulcsot is meg lehet adni.
 
-A készlet minden csomópontján létezik egy névvel ellátott felhasználói fiók, amely a csomópontokon futó összes tevékenység számára elérhető. Egy készlethez tetszőleges számú megnevezett felhasználót adhat meg. Ha felvesz egy feladatot vagy feladatsort, megadhatja, hogy a feladat a készletben meghatározott elnevezett felhasználói fiókok valamelyikében fusson.
+A készlet összes csomópontja rendelkezik elnevezett felhasználói fiókkal, amely az adott csomópontokon futó összes tevékenység számára elérhető. A készlethez bármilyen számú elnevezett felhasználót definiálhat. Feladat- vagy feladatgyűjtemény hozzáadásakor megadhatja, hogy a feladat a készletben meghatározott elnevezett felhasználói fiókok egyikével fut.
 
-Az elnevezett felhasználói fiókok akkor hasznosak, ha egy adott feladat összes feladatát ugyanazon felhasználói fiók alatt szeretné futtatni, de a többi feladatban futó feladatokból is elkülöníti azokat. Létrehozhat például egy névvel ellátott felhasználót az egyes feladatokhoz, és futtathatja az egyes feladatok feladatait az elnevezett felhasználói fiók alatt. Minden feladat ezután megoszthat egy titkos kulcsot a saját feladataival, de nem a más feladatokban futó tevékenységekkel.
+Egy elnevezett felhasználói fiók akkor hasznos, ha egy feladat összes tevékenységét ugyanazon a felhasználói fiókon szeretné futtatni, de el szeretné különíteni azokat a más feladatokban egyidejűleg futó tevékenységektől. Létrehozhat például egy elnevezett felhasználót minden feladathoz, és futtathatja az egyes feladatok feladatait a megnevezett felhasználói fiók alatt. Ezután minden feladat megoszthatja a titkos okat a saját tevékenységével, de más feladatokban futó tevékenységekkel nem.
 
-Elnevezett felhasználói fiókot is használhat egy olyan feladat futtatásához, amely a külső erőforrásokra, például a fájlmegosztás engedélyeit állítja be. Egy névvel ellátott felhasználói fiókkal szabályozhatja a felhasználói identitást, és az adott felhasználói identitást használhatja az engedélyek beállításához.  
+Elnevezett felhasználói fiók használatával olyan feladatokat is futtathat, amelyek külső erőforrásokra, például fájlmegosztásra vonatkozó engedélyeket állít be. Elnevezett felhasználói fiókkal Ön szabályozhatja a felhasználói identitást, és használhatja ezt a felhasználói identitást az engedélyek beállításához.  
 
-A nevesített felhasználói fiókok lehetővé teszik a jelszó nélküli SSH-t a Linux-csomópontok között. A többpéldányos feladatokat futtató Linux-csomópontokkal ellátott felhasználói fiókokat is használhat. A készlet minden csomópontja a teljes készletben definiált felhasználói fiókkal futtathat feladatokat. A többpéldányos feladatokkal kapcsolatos további információkért lásd: [ \- többpéldányos feladatok használata MPI-alkalmazások futtatásához](batch-mpi.md).
+A megnevezett felhasználói fiókok jelszóval nem rendelkező SSH-t engedélyeznek a Linux-csomópontok között. Elnevezett felhasználói fiókot használhat olyan Linux-csomópontokkal, amelyek többpéldányos feladatokat kell futtatnia. A készlet minden csomópontja a teljes készletben meghatározott felhasználói fiók alatt futtathat feladatokat. További információ a többpéldányos feladatokról: [Többpéldányos feladatok \- használata MPI-alkalmazások futtatásához.](batch-mpi.md)
 
 ### <a name="create-named-user-accounts"></a>Elnevezett felhasználói fiókok létrehozása
 
-Elnevezett felhasználói fiókok létrehozásához a kötegben vegyen fel egy felhasználói fiókokat tartalmazó gyűjteményt a készletbe. A következő kódrészletek bemutatják, hogyan hozhat létre nevesített felhasználói fiókokat a .NET, a Java és a Python használatával. Ezek a kódrészletek bemutatják, hogyan hozhatók létre a rendszergazdák és a nem rendszergazda nevű fiókok a készleteken. A példák a Cloud Service-konfiguráció használatával hoznak létre készleteket, de a Windows-vagy Linux-készletek a virtuális gép konfigurációjával való létrehozásakor ugyanazt a megközelítést használják.
+Ha elnevezett felhasználói fiókokat szeretne létrehozni a Batchben, adjon hozzá felhasználói fiókok gyűjteményét a készlethez. Az alábbi kódrészletek azt mutatják be, hogyan hozhatók létre elnevezett felhasználói fiókok a .NET-, Java- és Python-környezetben. Ezek a kódrészletek azt mutatják be, hogyan hozhatók létre rendszergazdai és nem rendszergazdai nevű fiókok egy készleten. A példák a felhőszolgáltatás konfigurációjának használatával hoznak létre készleteket, de ugyanez a módszer használható Windows- vagy Linux-készlet virtuálisgép-konfigurációval történő létrehozásakor is.
 
 #### <a name="batch-net-example-windows"></a>Batch .NET-példa (Windows)
 
@@ -152,7 +152,13 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,
     virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+    imageReference: new ImageReference(
+                        publisher: "MicrosoftWindowsServer",
+                        offer: "WindowsServer",
+                        sku: "2019-datacenter-core",
+                        version: "latest"),
+    nodeAgentSkuId: "batch.node.windows amd64");
 
 // Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
@@ -238,12 +244,12 @@ PoolAddParameter addParameter = new PoolAddParameter()
         .withId(poolId)
         .withTargetDedicatedNodes(POOL_VM_COUNT)
         .withVmSize(POOL_VM_SIZE)
-        .withCloudServiceConfiguration(configuration)
+        .withVirtualMachineConfiguration(configuration)
         .withUserAccounts(userList);
 batchClient.poolOperations().createPool(addParameter);
 ```
 
-#### <a name="batch-python-example"></a>Példa a Batch Pythonra
+#### <a name="batch-python-example"></a>Batch – Python-példa
 
 ```python
 users = [
@@ -267,24 +273,24 @@ pool = batchmodels.PoolAddParameter(
 batch_client.pool.add(pool)
 ```
 
-### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Feladat futtatása elnevezett felhasználói fiókkal emelt szintű hozzáféréssel
+### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Feladat futtatása emelt szintű hozzáféréssel elnevezett felhasználói fiók alatt
 
-Ha emelt szintű felhasználóként szeretne futtatni egy feladatot, állítsa a feladat **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amelyet a **ElevationLevel** tulajdonsággal hoztak létre `Admin` .
+Egy feladat emelt szintű felhasználóként való futtatásához állítsa a tevékenység **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amely az **ElevationLevel** tulajdonságának beállításával lett létrehozva. `Admin`
 
-Ez a kódrészlet azt adja meg, hogy a feladatnak egy elnevezett felhasználói fiók alatt kell futnia. Ez az elnevezett felhasználói fiók definiálva lett a készletben a készlet létrehozásakor. Ebben az esetben az elnevezett felhasználói fiók rendszergazdai engedélyekkel lett létrehozva:
+Ez a kódrészlet azt határozza meg, hogy a feladatnak egy elnevezett felhasználói fiók alatt kell futnia. Ez a megnevezett felhasználói fiók a készlet létrehozásakor lett definiálva a készletben. Ebben az esetben a megnevezett felhasználói fiók rendszergazdai engedélyekkel lett létrehozva:
 
 ```csharp
 CloudTask task = new CloudTask("1", "cmd.exe /c echo 1");
 task.UserIdentity = new UserIdentity(AdminUserAccountName);
 ```
 
-## <a name="update-your-code-to-the-latest-batch-client-library"></a>A kód frissítése a Batch-ügyfél legújabb könyvtárába
+## <a name="update-your-code-to-the-latest-batch-client-library"></a>A kód frissítése a legújabb Batch-ügyfélkódtárra
 
-A Batch szolgáltatás 2017-es -01-01.4.0 bevezette a megszakítási változást, és lecseréli a korábbi verziókban elérhető **runElevated** tulajdonságot a **userIdentity** tulajdonsággal. Az alábbi táblázatok egy egyszerű leképezést biztosítanak, amely segítségével frissítheti a kódot az ügyféloldali kódtárak korábbi verzióiból.
+A Batch szolgáltatás 2017-01-01.4.0-s verziója feltörést vezetett be, amely a korábbi verziókban elérhető **runElevated** tulajdonságot a **userIdentity** tulajdonságra cserélte. Az alábbi táblázatok egyszerű leképezést biztosítanak, amely segítségével frissítheti a kódot az ügyfélkódtárak korábbi verzióiból.
 
 ### <a name="batch-net"></a>Batch .NET
 
-| Ha a kód használja...                  | Frissítés a következőre:....                                                                                                 |
+| Ha a kód...                  | Frissítse a...                                                                                                 |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
@@ -292,7 +298,7 @@ A Batch szolgáltatás 2017-es -01-01.4.0 bevezette a megszakítási változást
 
 ### <a name="batch-java"></a>Batch Java
 
-| Ha a kód használja...                      | Frissítés a következőre:....                                                                                                                       |
+| Ha a kód...                      | Frissítse a...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
@@ -300,13 +306,13 @@ A Batch szolgáltatás 2017-es -01-01.4.0 bevezette a megszakítási változást
 
 ### <a name="batch-python"></a>Batch Python
 
-| Ha a kód használja...                      | Frissítés a következőre:....                                                                                                                       |
+| Ha a kód...                      | Frissítse a...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `run_elevated=True`                       | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| `run_elevated=True`                       | `user_identity=user`Ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
+| `run_elevated=False`                      | `user_identity=user`Ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
 | `run_elevated` nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
-- Tudnivalók a Azure Batch található [fájlokról és könyvtárakról](files-and-directories.md) .
+- Ismerje meg a Batch szolgáltatás munkafolyamatát és [az olyan elsődleges erőforrásokat,](batch-service-workflow-features.md) mint a készletek, csomópontok, feladatok és tevékenységek.
+- További információ [a fájlokról](files-and-directories.md) és könyvtárakról a Azure Batch.

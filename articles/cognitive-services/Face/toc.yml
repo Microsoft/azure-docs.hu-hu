@@ -3,13 +3,13 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: A Face szolgáltatás áttekintése
+    - name: Mi az a Face szolgáltatás?
       href: Overview.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Újdonságok
       href: releasenotes.md
-- name: A Face rövid útmutatója
+- name: Gyorsútmutató
   href: Quickstarts/client-libraries.md
 - name: Példák
   href: /samples/browse/?products=azure&term=face
@@ -45,6 +45,14 @@
           href: face-resource-container-config.md
         - name: A Container Instances használata
           href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/face/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
+        - name: Azure AD-hitelesítés használata
+          href: ../authentication.md?context=/azure/cognitive-services/face/context/context
 - name: Alapelvek
   items:
     - name: Arcfelismerés
@@ -75,15 +83,15 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: Források
   items:
-    - name: Régiós támogatás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és tanúsítvány
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Learn-modulok
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

@@ -1,6 +1,6 @@
 ---
-title: Konfigurációs beállítások – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Nagy kapacitású-(Citus-) kiszolgálócsoport beállításai, beleértve a csomópontok számítását, tárolását és régióit.
+title: Konfigurációs beállítások – rugalmas skálázás (Citus) – Azure Database for PostgreSQL
+description: A csomópont-rugalmas skálázás (Citus), beleértve a csomópontok számítási, tárolási és régióira vonatkozó lehetőségeket.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,32 +8,32 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/07/2021
-ms.openlocfilehash: ae416c9acd03b3ee239a858aae550fb87293465a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012785"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388703"
 ---
-# <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) konfigurációs beállítások
+# <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – rugalmas skálázás (Citus) beállításai
 
 ## <a name="compute-and-storage"></a>Számítás és tárolás
  
-A számítási és tárolási beállításokat a munkavégző csomópontok és a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátor csomópontja egymástól függetlenül is kiválaszthatja.  A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. A kiépítés tárolási mérete a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátora és munkavégző csomópontjai számára elérhető kapacitásra utal. A tároló tartalmazza az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a postgres-kiszolgáló naplóit.
+A számítási és tárolási beállítások egymástól függetlenül választhatók ki a feldolgozó csomópontokhoz és a koordinátor-csomóponthoz egy rugalmas skálázás (Citus)kiszolgálócsoportban.  A számítási erőforrások virtuális magokként biztosítanak, amelyek a mögöttes hardver logikai PROCESSZORát képviselik. Az üzembehelyezés tárolási mérete az adott kiszolgálócsoport koordinátora és munkavégző csomópontjai számára elérhető rugalmas skálázás (Citus) jelenti. A tároló tartalmazza az adatbázisfájlokat, az ideiglenes fájlokat, a tranzakciónaplókat és a Postgres-kiszolgáló naplóit.
 
 ### <a name="standard-tier"></a>Standard csomag
  
-| Erőforrás              | Munkavégző csomópont           | Koordinátor csomópont      |
+| Erőforrás              | Feldolgozó csomópont           | Koordinátor-csomópont      |
 |-----------------------|-----------------------|-----------------------|
-| Számítás, virtuális mag       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
-| Memória/virtuális mag, GiB | 8                     | 4                     |
-| Tároló mérete, TiB     | 0,5, 1, 2             | 0,5, 1, 2             |
+| Számítás, virtuális magok       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
+| Memória virtuális magonként, GiB | 8                     | 4                     |
+| Tárterület mérete, TiB     | 0.5, 1, 2             | 0.5, 1, 2             |
 | Tárolási típus          | Általános célú (SSD) | Általános célú (SSD) |
 | IOPS                  | Legfeljebb 3 IOPS/GiB      | Legfeljebb 3 IOPS/GiB      |
 
-Az egyetlen nagy kapacitású (Citus) csomópontban található RAM teljes mennyisége a kiválasztott számú virtuális mag alapul.
+Az egy csomóponton rugalmas skálázás (Citus) RAM teljes mennyisége a kiválasztott számú virtuális magon alapul.
 
-| Virtuális mag | Egy feldolgozói csomópont, GiB RAM | Koordinátori csomópont, GiB RAM |
+| Virtuális magok | Egy feldolgozó csomópont, GiB RAM | Koordinátor-csomópont, GiB RAM |
 |--------|--------------------------|---------------------------|
 | 4      | 32                       | 16                        |
 | 8      | 64                       | 32                        |
@@ -41,64 +41,64 @@ Az egyetlen nagy kapacitású (Citus) csomópontban található RAM teljes menny
 | 32     | 256                      | 128                       |
 | 64     | 432                      | 256                       |
 
-A kiépített tárterület teljes mennyisége határozza meg az egyes feldolgozók és a koordinátorok csomópontja számára elérhető I/O-kapacitást is.
+A kiépíthető tárterület teljes mennyisége az egyes feldolgozói és koordinátor-csomópontok számára elérhető I/O-kapacitást is meghatározza.
 
-| Tároló mérete, TiB | Maximális IOPS |
+| Tárterület mérete, TiB | Maximális IOPS |
 |-------------------|--------------|
 | 0,5               | 1,536        |
 | 1                 | 3,072        |
-| 2                 | 6 148        |
+| 2                 | 6,148        |
 
-A teljes nagy kapacitású (Citus) fürt esetében az összesített IOPS a következő értékekre működik:
+A teljes rugalmas skálázás (Citus) összesített IOPS-érték a következő értékeket követi:
 
-| Munkavégző csomópontok | 0,5 TiB, összes IOPS | 1 TiB, összes IOPS | 2 TiB, összes IOPS |
+| Munkavégző csomópontok | 0,5 TiB, teljes IOPS | 1 TiB, teljes IOPS | 2 TiB, teljes IOPS |
 |--------------|---------------------|-------------------|-------------------|
-| 2            | 3,072               | 6,144             | 12 296            |
-| 3            | 4 608               | 9 216             | 18 444            |
-| 4            | 6,144               | 12 288            | 24 592            |
-| 5            | 7 680               | 15 360            | 30 740            |
-| 6            | 9 216               | 18 432            | 36 888            |
-| 7            | 10 752              | 21 504            | 43 036            |
-| 8            | 12 288              | 24 576            | 49 184            |
-| 9            | 13 824              | 27 648            | 55 332            |
-| 10           | 15 360              | 30 720            | 61 480            |
-| 11           | 16 896              | 33 792            | 67 628            |
-| 12           | 18 432              | 36 864            | 73 776            |
-| 13           | 19 968              | 39 936            | 79 924            |
-| 14           | 21 504              | 43 008            | 86 072            |
-| 15           | 23 040              | 46 080            | 92 220            |
-| 16           | 24 576              | 49 152            | 98 368            |
-| 17           | 26 112              | 52 224            | 104 516           |
-| 18           | 27 648              | 55 296            | 110 664           |
-| 19           | 29 184              | 58 368            | 116 812           |
-| 20           | 30 720              | 61 440            | 122 960           |
+| 2            | 3,072               | 6,144             | 12,296            |
+| 3            | 4,608               | 9,216             | 18,444            |
+| 4            | 6,144               | 12,288            | 24,592            |
+| 5            | 7,680               | 15,360            | 30,740            |
+| 6            | 9,216               | 18,432            | 36,888            |
+| 7            | 10,752              | 21,504            | 43,036            |
+| 8            | 12,288              | 24,576            | 49,184            |
+| 9            | 13,824              | 27,648            | 55,332            |
+| 10           | 15,360              | 30,720            | 61,480            |
+| 11           | 16,896              | 33,792            | 67,628            |
+| 12           | 18,432              | 36,864            | 73,776            |
+| 13           | 19,968              | 39,936            | 79,924            |
+| 14           | 21,504              | 43,008            | 86,072            |
+| 15           | 23,040              | 46,080            | 92,220            |
+| 16           | 24,576              | 49,152            | 98,368            |
+| 17           | 26,112              | 52,224            | 104,516           |
+| 18           | 27,648              | 55,296            | 110,664           |
+| 19           | 29,184              | 58,368            | 116,812           |
+| 20           | 30,720              | 61,440            | 122,960           |
 
 ### <a name="basic-tier-preview"></a>Alapszintű csomag (előzetes verzió)
 
 > [!IMPORTANT]
-> A nagy kapacitású (Citus) alapszintű csomag jelenleg előzetes verzióban érhető el.  Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> Az rugalmas skálázás (Citus) alapszintű csomag jelenleg előzetes verzióban érhető el.  Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 >
-> Megtekintheti a [nagy kapacitású (Citus) előzetes](hyperscale-preview-features.md)verziójának új funkcióinak teljes listáját.
+> Az előzetes verziójú funkciók további új funkcióinak teljes listáját [a](hyperscale-preview-features.md)rugalmas skálázás (Citus).
 
-A nagy kapacitású (Citus) [alapszintű](concepts-hyperscale-tiers.md) egy olyan kiszolgálócsoport, amely csak egy csomóponttal rendelkezik.  Mivel nincs különbség a koordinátor és a feldolgozó csomópontok között, kevésbé bonyolult a számítási és tárolási erőforrások kiválasztása.
+Az rugalmas skálázás (Citus) [alapszintű csomag](concepts-hyperscale-tiers.md) egy kiszolgálócsoport egyetlen csomóponttal.  Mivel nincs különbség a koordinátor és a feldolgozó csomópont között, kevésbé bonyolult a számítási és tárolási erőforrások kiválasztása.
 
-| Erőforrás              | Elérhető beállítások     |
+| Erőforrás              | Elérhető lehetőségek     |
 |-----------------------|-----------------------|
-| Számítás, virtuális mag       | 2, 4, 8               |
-| Memória/virtuális mag, GiB | 4                     |
+| Számítás, virtuális magok       | 2, 4, 8               |
+| Memória virtuális magonként, GiB | 4                     |
 | Tárterület mérete, GiB     | 128, 256, 512         |
 | Tárolási típus          | Általános célú (SSD) |
 | IOPS                  | Legfeljebb 3 IOPS/GiB      |
 
-Az egyetlen nagy kapacitású (Citus) csomópontban található RAM teljes mennyisége a kiválasztott számú virtuális mag alapul.
+Az egy csomóponton rugalmas skálázás (Citus) RAM teljes mennyisége a kiválasztott számú virtuális magon alapul.
 
-| Virtuális mag | GiB RAM |
+| Virtuális magok | GiB RAM |
 |--------|---------|
 | 2      | 8       |
 | 4      | 16      |
 | 8      | 32      |
 
-A kiépített tárterület teljes mennyisége meghatározza az alapszintű csomópont számára elérhető I/O-kapacitást is.
+A kiépíthető tárterület teljes mennyisége az alapszintű csomópont számára elérhető I/O-kapacitást is meghatározza.
 
 | Tárterület mérete, GiB | Maximális IOPS |
 |-------------------|--------------|
@@ -107,9 +107,10 @@ A kiépített tárterület teljes mennyisége meghatározza az alapszintű csom�
 | 512               | 1,536        |
 
 ## <a name="regions"></a>Régiók
-A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
+rugalmas skálázás (Citus) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
 
-* Amerika
+* Amerika: 
+    * Dél-Brazília
     * Közép-Kanada
     * Az USA középső régiója
     * USA keleti régiója *
@@ -121,18 +122,19 @@ A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókb
     * Kelet-Japán
     * Dél-Korea középső régiója
     * Délkelet-Ázsia
-* Európa
+* Európa:
+    * Közép-Franciaország
     * Észak-Európa
     * Az Egyesült Királyság déli régiója
     * Nyugat-Európa
 
-( \* = támogatja az [előzetes verzió funkcióit](hyperscale-preview-features.md))
+( \* = támogatja az előzetes [verziójú funkciókat](hyperscale-preview-features.md))
 
-Előfordulhat, hogy a régiók némelyike nem aktiválódik minden Azure-előfizetésen. Ha a fenti listából szeretne egy régiót használni, és nem látja az előfizetésben, vagy ha a listán nem szereplő régiót szeretne használni, nyisson meg egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Előfordulhat, hogy ezen régiók némelyike kezdetben nem lesz aktiválva az összes Azure-előfizetésben. Ha a fenti lista egyik régióját szeretné használni, és nem szeretné látni az előfizetésében, vagy ha olyan régiót szeretne használni, amely nem szerepel a listán, nyisson meg egy [támogatási kérést.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="pricing"></a>Díjszabás
-A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/).
-A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a kiválasztott beállítások alapján a **configure (Konfigurálás** ) lapon szereplő havi költséget jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és válassza a **Azure Database for PostgreSQL – nagy kapacitású (Citus)** lehetőséget a beállítások testreszabásához.
+A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását.](https://azure.microsoft.com/pricing/details/postgresql/)
+A kívánt konfiguráció költségeinek megtekintése [](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a Azure Portal lapon jeleníti meg  a havi költségeket a kiválasztott beállítások alapján. Ha nem rendelkezik Azure-előfizetéssel, az Azure díjkalkulátor használatával megbecsülheti a becsült árat. Az [Azure-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **Elemek** hozzáadása lehetőséget, **bontsa** ki az Adatbázisok kategóriát, majd válassza Azure Database for PostgreSQL **–** rugalmas skálázás (Citus) beállítások testreszabásához.
  
 ## <a name="next-steps"></a>Következő lépések
-Ismerje meg, hogyan [hozhat létre nagy kapacitású-(Citus-) kiszolgálócsoport a portálon](quickstart-create-hyperscale-portal.md).
+Megtudhatja, [hogyan hozhat létre rugalmas skálázás (Citus)-kiszolgálócsoportot a portálon.](quickstart-create-hyperscale-portal.md)

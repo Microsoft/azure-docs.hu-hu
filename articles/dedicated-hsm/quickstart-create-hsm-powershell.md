@@ -1,24 +1,26 @@
 ---
-title: 'Rövid útmutató: Azure dedikált HSM létrehozása Azure PowerShell'
+title: 'Rövid útmutató: Azure Dedicated HSM létrehozása Azure PowerShell'
 description: Azure Dedicated HSM létrehozása az Azure PowerShell használatával
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
+ms.date: 11/13/2020
 ms.topic: quickstart
 ms.service: key-vault
 ms.devlang: azurepowershell
-ms.date: 11/13/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: d5b6d0399ceb98caf9bdd7bbd725e6d92af0eaa3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94905621"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537790"
 ---
-# <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Rövid útmutató: Azure dedikált HSM létrehozása Azure PowerShell
+# <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Rövid útmutató: Azure Dedicated HSM létrehozása Azure PowerShell
 
-Ez a cikk bemutatja, hogyan hozhat létre Azure dedikált HSM-t az az [. dedikált HSM](/powershell/module/az.dedicatedhsm) PowerShell-modul használatával.
+Ez a cikk bemutatja, hogyan hozhat létre Azure Dedicated HSM [az Az.DedicatedHsm](/powershell/module/az.dedicatedhsm) PowerShell-modullal.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -27,13 +29,13 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure dedikált HSM-t az az [. dediká
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Míg az az **. dedikált HSM** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
+  > Bár az **Az.DedicatedHsm** PowerShell-modul előzetes verzióban érhető el, külön kell telepítenie a `Install-Module` parancsmag használatával. Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm
   ```
 
-* Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
+* Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat ki kell számlázni. Válasszon ki egy adott előfizetést a [Set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
 
   ```azurepowershell-interactive
   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -41,9 +43,9 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure dedikált HSM-t az az [. dediká
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
+Hozzon létre [egy Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
-A következő példa egy erőforráscsoportot hoz létre a megadott névvel és a megadott helyen.
+Az alábbi példa egy erőforráscsoportot hoz létre a megadott névvel és a megadott helyen.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myRG -Location westus
@@ -51,7 +53,7 @@ New-AzResourceGroup -Name myRG -Location westus
 
 ## <a name="create-a-dedicated-hsm"></a>Dedikált HSM létrehozása
 
-Dedikált HSM létrehozásához használja a [New-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/new-azdedicatedhsm) parancsmagot. A következő példa egy dedikált HSM-t hoz létre a megadott előfizetésben.
+Dedikált HSM létrehozásához használja a [New-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/new-azdedicatedhsm) parancsmagot. Az alábbi példa egy dedikált HSM-et hoz létre a megadott előfizetésben.
 
 ```azurepowershell-interactive
 $Params = @{
@@ -72,9 +74,9 @@ Name       Provisioning State SKU                           Location
 myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 ```
 
-## <a name="get-a-dedicated-hsm"></a>Dedikált HSM beszerzése
+## <a name="get-a-dedicated-hsm"></a>Dedikált HSM lekért
 
-Egy meglévő dedikált HSM információinak lekéréséhez használja a [Get-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/get-azdedicatedhsm) parancsmagot. A következő példa lekéri a megadott dedikált HSM-et.
+Egy meglévő dedikált HSM-ről a [Get-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/get-azdedicatedhsm) parancsmag használatával lehet információkat lekérni. Az alábbi példa lekérte a megadott dedikált HSM-et.
 
 ```azurepowershell-interactive
 Get-AzDedicatedHsm -Name MyHSM -ResourceGroupName myRG
@@ -88,7 +90,7 @@ myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 
 ## <a name="update-a-dedicated-hsm"></a>Dedikált HSM frissítése
 
-Dedikált HSM frissítéséhez használja az [Update-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/update-azdedicatedhsm) parancsmagot. Az alábbi példa egy dedikált HSM-et frissít a megadott előfizetésben.
+Dedikált HSM frissítéséhez használja az [Update-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/update-azdedicatedhsm) parancsmagot. Az alábbi példa egy dedikált HSM-et frissíti a megadott előfizetésben.
 
 ```azurepowershell-interactive
 Update-AzDedicatedHsm -Name MyHSM -ResourceGroupName myRG -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
@@ -105,11 +107,11 @@ myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a cikkben létrehozott erőforrások nem szükségesek, az alábbi példák futtatásával törölheti őket.
+Ha a cikkben létrehozott erőforrásokra nincs szükség, az alábbi példák futtatásával törölheti őket.
 
 ### <a name="remove-a-dedicated-hsm"></a>Dedikált HSM eltávolítása
 
-A dedikált HSM eltávolításához használja a [Remove-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm) parancsmagot. A következő példa törli a megadott dedikált HSM-et.
+Dedikált HSM eltávolításához használja a [Remove-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm) parancsmagot. Az alábbi példa törli a megadott dedikált HSM-et.
 
 ```azurepowershell-interactive
 Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
@@ -118,8 +120,8 @@ Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
 ### <a name="delete-the-resource-group"></a>Az erőforráscsoport törlése
 
 > [!CAUTION]
-> A következő példa törli a megadott erőforráscsoportot és a benne található összes erőforrást.
-> Ha a cikk hatókörén kívüli erőforrások szerepelnek a megadott erőforráscsoporthoz, akkor azokat is törli a rendszer.
+> Az alábbi példa törli a megadott erőforráscsoportot és a benne lévő összes erőforrást.
+> Ha a cikk hatóköre kívül esik a megadott erőforráscsoportban, akkor azok is törlődnek.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myRG
@@ -127,4 +129,4 @@ Remove-AzResourceGroup -Name myRG
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure DEDIKÁLT HSM](overview.md)-ről.
+További információ a [Azure Dedicated HSM.](overview.md)

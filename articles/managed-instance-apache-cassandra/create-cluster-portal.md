@@ -1,97 +1,106 @@
 ---
-title: Rövid útmutató – Azure felügyelt példány létrehozása Apache Cassandra-fürthöz a Azure Portal
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure-beli felügyelt példányt az Apache Cassandra-fürthöz a Azure Portal használatával.
+title: Rövid útmutató – Felügyelt Azure-példány létrehozása Apache Cassandra-fürthöz a Azure Portal
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre felügyelt Azure-példányt az Apache Cassandra-fürthöz a Azure Portal.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.custom: references_regions
-ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: e42f85bb79dcb1bfe14cacbbfda3576888b841c9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588613"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481328"
 ---
-# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Gyors útmutató: Azure felügyelt példány létrehozása az Apache Cassandra-fürthöz a Azure Portal (előzetes verzió)
+# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Rövid útmutató: Felügyelt Azure-példány létrehozása Apache Cassandra-fürthöz a Azure Portal (előzetes verzió)
  
-Az Apache Cassandra Azure felügyelt példánya automatizált üzembe helyezési és skálázási műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontok számára, felgyorsítja a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
+Az Apache Cassandrára használható Felügyelt Azure-példány automatizált üzembe helyezési és méretezési műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontokhoz, felgyorsítja a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
 
 > [!IMPORTANT]
-> Az Apache Cassandra Azure felügyelt példánya jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Managed Instance for Apache Cassandra jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Azure felügyelt példány létrehozásához az Apache Cassandra-fürthöz.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre felügyelt Azure Azure Portal példányt az Apache Cassandra-fürthöz a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-managed-instance-cluster"></a><a id="create-account"></a>Felügyelt példány fürt létrehozása
+## <a name="create-a-managed-instance-cluster"></a><a id="create-account"></a>Felügyeltpéldány-fürt létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. A keresősáv alatt keresse meg az **Apache Cassandra felügyelt példányát** , és válassza ki az eredményt.
+1. A keresősávban keressen rá az **Apache Cassandra felügyelt** példánya kifejezésre, és válassza ki az eredményt.
 
-   :::image type="content" source="./media/create-cluster-portal/search-portal.png" alt-text="Felügyelt példány keresése az Apache Cassandra-hoz." lightbox="./media/create-cluster-portal/search-portal.png" border="true":::
+   :::image type="content" source="./media/create-cluster-portal/search-portal.png" alt-text="Keresse meg a felügyelt példányt az Apache Cassandrára." lightbox="./media/create-cluster-portal/search-portal.png" border="true":::
 
-1. Válassza **a felügyelt példány létrehozása az Apache Cassandra-fürthöz** gombot.
+1. Válassza **a Felügyelt példány létrehozása az Apache Cassandra-fürthöz gombot.**
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster.png" alt-text="A fürt létrehozása." lightbox="./media/create-cluster-portal/create-cluster.png" border="true":::
 
-1. A **felügyelt példány létrehozása az Apache Cassandra** panelhez lapon adja meg a következő adatokat:
+1. A **Felügyelt példány létrehozása az Apache Cassandrában panelen** adja meg a következő adatokat:
 
-   * **Előfizetés** – a legördülő listából válassza ki az Azure-előfizetését.
-   * **Erőforráscsoport**– megadhatja, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információ: az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) áttekintése című cikk.
-   * **Fürt neve** – adja meg a fürt nevét.
-   * **Hely** – hely, ahol a fürt üzembe lesz helyezve.
-   * **SKU** – a fürthöz tartozó SKU típusa.
-   * **Nem. csomópontok**– fürt csomópontjainak száma. Ezek a csomópontok az adatai replikái.
-   * **Kezdeti Cassandra admin password** – a fürt létrehozásához használt jelszó.
-   * Adja meg a **Cassandra admin password jelszót** – írja be újra a jelszót.
+   * **Előfizetés** – Válassza ki Azure-előfizetését a legördülő menüből.
+   * **Erőforráscsoport**– Adja meg, hogy új erőforráscsoportot szeretne létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információt az [Azure-erőforráscsoport áttekintését ismertető](../azure-resource-manager/management/overview.md) cikkben talál.
+   * **Fürt neve** – Adja meg a fürt nevét.
+   * **Hely** – A fürt üzembe helyezésének helye.
+   * **Termékváltozat** – A fürt termékváltozatának típusa.
+   * **Nem. csomópontok száma**– A fürtben lévő csomópontok száma. Ezek a csomópontok az adatok replikáiként viselkednek.
+   * **Kezdeti Cassandra-rendszergazdai jelszó** – A fürt létrehozásához használt jelszó.
+   * **Erősítse meg a Cassandra rendszergazdai jelszavát** – A jelszó újra megadása.
 
     > [!NOTE]
-    > A nyilvános előzetes verzióban létrehozhatja a felügyelt példány fürtöt az USA keleti régiójában, az USA nyugati régiójában, az USA keleti régiójában, az USA 2. nyugati régiójában, az USA középső régiójában *, az USA déli középső régiójában, Észak-Európa, Nyugat-Európa, déli Kelet-Ázsia és Kelet-Ausztrália*
+    > A nyilvános előzetes verzióban létrehozhatja a felügyeltpéldány-fürtöt az USA keleti régiójában, az USA nyugati régiójában, az USA 2. keleti régiójában, az *USA 2.* nyugati régiójában, az USA középső régiójában, az USA déli középső régiójában, Észak-Európában Kelet-Ázsia, Nyugat-Európában, az USA déli régiójában és Kelet-Ausztráliában.
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="Töltse ki a fürt létrehozása űrlapot." lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 
-1. Ezután válassza a **hálózatkezelés** lapot.
+1. Ezután válassza **a Hálózat lapot.**
 
-1. A **hálózat** ablaktáblán válassza ki a **Virtual Network** nevét és **alhálózatát**. Választhat meglévő Virtual Network, vagy létrehozhat egy újat.
+1. A Hálózat **panelen** válassza  ki a Virtual Network **alhálózatot.** Kiválaszthat egy meglévő Virtual Network, vagy létrehozhat egy újat.
 
-   :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="Konfigurálja a hálózatkezelés részleteit." lightbox="./media/create-cluster-portal/networking.png" border="true":::
+   :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="Konfigurálja a hálózat részleteit." lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-1. Ha az utolsó lépésben létrehozott egy új VNet, ugorjon a 8. lépésre. Ha a fürt létrehozása előtt kiválasztott egy meglévő VNet, néhány speciális engedélyt kell alkalmaznia a Virtual Network és az alhálózatra. Ehhez használja a `az role assignment create` parancsot, cserélje le a, `<subscription ID>` , `<resource group name>` `<VNet name>` és `<subnet name>` értéket a megfelelő értékekre:
+    > [!NOTE]
+    > Az Apache Cassandrához használható felügyelt Azure-példány üzembe helyezéséhez internet-hozzáférés szükséges. Az üzembe helyezés meghiúsul olyan környezetekben, ahol az internet-hozzáférés korlátozott. Győződjön meg arról, hogy nem blokkolja a virtuális hálózatban a következő alapvető Fontosságú Azure-szolgáltatásokhoz való hozzáférést, amelyek a felügyelt Cassandra megfelelő működését biztosítják:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Azure Monitoring
+    > - Azure Active Directory
+    > - Azure Security
+
+1. Ha az előző lépésben létrehozott egy új VNetet, ugorjon a 8. lépésre. Ha egy meglévő VNetet választott ki, a fürt létrehozása előtt speciális engedélyeket kell alkalmaznia az Virtual Network alhálózatra. Ezt az paranccsal, a , és a megfelelő `az role assignment create` `<subscription ID>` `<resource group name>` `<VNet name>` értékekre cserélve használhatja:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]
-   > Az `assignee` `role` előző parancs és értékei rögzített értékek, pontosan a parancsban említett értékeket adja meg. Ha ezt nem teszi meg, a rendszer hibákat fog eredményezni a fürt létrehozásakor. Ha hibát tapasztal a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatásához szükséges engedélyekkel, forduljon a rendszergazdához.
+   > Az előző parancs és értékei rögzített értékek, ezeket az értékeket pontosan a `assignee` `role` parancsban említettek szerint adja meg. Ha ezt nem teszi meg, az hibákhoz vezet a fürt létrehozásakor. Ha hibába ütközik a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatáshoz szükséges engedélyekkel, forduljon a rendszergazdához az engedélyekért.
 
-1. Most, hogy elvégezte a hálózatkezelést, kattintson a **felülvizsgálat +**  >  **Létrehozás** létrehozása lehetőségre.
+1. Most, hogy végzett a hálózattal, kattintson az **Áttekintés + létrehozás**  >  **gombra.**
 
     > [!NOTE]
     > A fürt létrehozása akár 15 percet is igénybe vehet.
 
-   :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="A fürt létrehozásához tekintse át az összegzést." lightbox="./media/create-cluster-portal/review-create.png" border="true":::
+   :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="Tekintse át az összefoglalást a fürt létrehozásához." lightbox="./media/create-cluster-portal/review-create.png" border="true":::
 
 
-1. Az üzembe helyezés befejeződése után ellenőrizze az erőforráscsoportot, hogy az újonnan létrehozott felügyelt példány-fürtöt szeretné-e látni:
+1. Az üzembe helyezés befejezése után ellenőrizze az erőforráscsoportban az újonnan létrehozott felügyeltpéldány-fürtöt:
 
-   :::image type="content" source="./media/create-cluster-portal/managed-instance.png" alt-text="A fürt létrehozása után áttekintő oldal." lightbox="./media/create-cluster-portal/managed-instance.png" border="true":::
+   :::image type="content" source="./media/create-cluster-portal/managed-instance.png" alt-text="A fürt létrehozása után az Áttekintés lap." lightbox="./media/create-cluster-portal/managed-instance.png" border="true":::
 
-1. A fürtcsomópontok közötti tallózáshoz navigáljon a fürt létrehozásához használt Virtual Network ablaktáblára, és nyissa meg az **Áttekintés** panelt, ahol megtekintheti őket:
+1. A fürtcsomópontok tallózáshoz lépjen a fürt létrehozásához használt Virtual Network panelre, és nyissa meg az **Áttekintés** panelt a megtekintésükhöz:
 
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="Tekintse meg a fürt erőforrásait." lightbox="./media/create-cluster-portal/resources.png" border="true":::
 
 
 ## <a name="connecting-to-your-cluster"></a>Csatlakozás a fürthöz
 
-Az Apache Cassandra Azure felügyelt példánya nem hoz létre nyilvános IP-címekkel rendelkező csomópontokat, így az újonnan létrehozott Cassandra-fürthöz való kapcsolódáshoz létre kell hoznia egy másik erőforrást a VNet belül. Ez lehet egy alkalmazás, vagy egy olyan virtuális gép, amelyen az Apache nyílt forráskódú lekérdezési eszköze [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) van telepítve. Az Ubuntu rendszerű virtuális gépeket [sablon](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) használatával is üzembe helyezheti. Üzembe helyezéskor az SSH használatával csatlakozzon a géphez, és telepítse a CQLSH az alábbi parancsokkal:
+Az Apache Cassandrára készült Felügyelt Azure-példány nem hoz létre nyilvános IP-címekkel csomópontokat, ezért az újonnan létrehozott Cassandra-fürthöz való csatlakozáshoz létre kell hoznia egy másik erőforrást a virtuális hálózaton belül. Ez lehet egy alkalmazás, vagy egy virtuális gép, amely az Apache nyílt forráskódú [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) lekérdezési eszközével van telepítve. Ubuntu-alapú [virtuális gép üzembe](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) helyezéséhez használhat sablont. Az üzembe helyezéskor SSH-val csatlakozzon a géphez, és telepítse a CQLSH-t az alábbi parancsokkal:
 
 ```bash
 # Install default-jre and default-jdk
@@ -115,25 +124,25 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a Virtual Networkre vonatkozó engedélyek alkalmazása során hibát tapasztal, például *nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban a "e5007d2c-4b13-4a74-9b6a-605d99f03501"* értékre, akkor ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek a portálról való alkalmazásához lépjen a meglévő virtuális hálózat **hozzáférés-vezérlés (iam)** paneljére, és adjon hozzá egy szerepkör-hozzárendelést a "Azure Cosmos db" szerepkörhöz a "hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg, amikor a "Azure Cosmos DB" kifejezésre keres rá, adja hozzá a bejegyzéseket a következő képen látható módon: 
+Ha hibába ütközik az Virtual Network-engedélyek alkalmazásakor, például Nem található felhasználó vagy szolgáltatásnév a gráfadatbázisban az *"e5007d2c-4b13-4a74-9b6a-605d99f03501"* gráfadatbázisban, ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek portálról való alkalmazásához válassza a meglévő virtuális hálózat Hozzáférés-vezérlés **(IAM)** panelét, és adjon hozzá egy "Azure Cosmos DB" szerepkör-hozzárendelést a "Hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg a "Azure Cosmos DB" keresésekor, adja hozzá mindkét bejegyzést az alábbi képen látható módon: 
 
    :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Engedélyek alkalmazása" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
 
 > [!NOTE] 
-> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandra által felügyelt Azure-példányok nem rendelkeznek háttérbeli függőségekkel Azure Cosmos DB.   
+> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandrára felügyelt Azure Managed Instanced nem rendelkezik háttérbeli függőségekkel a Azure Cosmos DB.   
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem kívánja tovább használni ezt a felügyelt példány-fürtöt, törölje a következő lépésekkel:
+Ha nem folytatja a felügyeltpéldány-fürt használatát, törölje a következő lépésekkel:
 
-1. Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget.
-1. A listából válassza ki az ehhez a rövid útmutatóhoz létrehozott erőforráscsoportot.
-1. Az erőforráscsoport **Áttekintés** paneljén válassza az **erőforráscsoport törlése** elemet.
-1. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+1. A bal oldali menüben válassza Azure Portal **Erőforráscsoportok lehetőséget.**
+1. A listából válassza ki a rövid útmutatóhoz létrehozott erőforráscsoportot.
+1. Az erőforráscsoport Áttekintés **panelen** válassza az **Erőforráscsoport törlése lehetőséget.**
+1. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure felügyelt példányt az Apache Cassandra-fürtökhöz Azure Portal használatával. Most már megkezdheti a fürttel való munkát:
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre felügyelt Azure-példányt az Apache Cassandra-fürthöz a Azure Portal. Most már elkezdhet dolgozni a fürtön:
 
 > [!div class="nextstepaction"]
-> [Felügyelt Apache Spark-fürt üzembe helyezése Azure Databricks](deploy-cluster-databricks.md)
+> [Felügyelt fürt Apache Spark üzembe helyezése Azure Databricks](deploy-cluster-databricks.md)

@@ -1,6 +1,6 @@
 ---
-title: A feltételes hozzáférési szabályzatokból kizárt felhasználók kezelése – Azure AD
-description: Ismerje meg, hogyan használhatja a Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokat a feltételes hozzáférési házirendből kizárt felhasználók kezeléséhez
+title: A feltételes hozzáférési szabályzatból kizárt felhasználók kezelése – Azure AD
+description: Megtudhatja, hogyan használhatja Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokat a feltételes hozzáférési szabályzatok hatálya alól kizárt felhasználók kezelésére
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -16,155 +16,155 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4b2ac36ad1140968fd17db0bed0b60a8aca6a02
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746252"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532675"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési szabályzatok hatálya alól kizárt felhasználók kezelésére
 
-Az ideális világban minden felhasználó a hozzáférési szabályzatokat követve gondoskodik a szervezet erőforrásaihoz való hozzáférésről. Bizonyos esetekben azonban előfordulhat, hogy kivételeket kell elvégeznie. Ez a cikk néhány példát mutat be olyan helyzetekben, amikor szükség lehet a kizárásra. Ön, mint rendszergazda, kezelheti ezt a feladatot, elkerülheti a házirend-kivételek felügyeletét, és igazolhatja, hogy ezek a kivételek rendszeresen áttekinthetők Azure Active Directory (Azure AD) hozzáférési felülvizsgálatok használatával.
-
->[!NOTE]
-> Az Azure AD hozzáférési felülvizsgálatok használatához érvényes prémium szintű Azure AD P2, Enterprise Mobility + Security E5 fizetett vagy próbaverziós licenc szükséges. További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
-
-## <a name="why-would-you-exclude-users-from-policies"></a>Miért zárja ki a felhasználókat a szabályzatokból?
-
-Tegyük fel, hogy rendszergazdaként úgy dönt, hogy az [Azure ad feltételes hozzáférését](../conditional-access/concept-conditional-access-policy-common.md) használja a többtényezős hitelesítés (MFA) megköveteléséhez, és korlátozza a hitelesítési kérelmeket bizonyos hálózatokra vagy eszközökre. Az üzembe helyezés megtervezése során kiderül, hogy nem minden felhasználó tud megfelelni ezekkel a követelményeknek. Előfordulhat például, hogy a távoli irodákból dolgozó felhasználók nem a belső hálózat részét képezik. Előfordulhat, hogy a nem támogatott eszközök használatával csatlakozó felhasználókat is el kell fogadnia, miközben az eszközök cseréjére várnak. Röviden, az üzleti igényeknek megfelelően a felhasználóknak be kell jelentkezniük, és el kell végezniük a munkájukat, hogy a feltételes hozzáférési szabályzatokból kizárják őket.
-
-Egy másik példa, hogy a feltételes hozzáférés [nevesített helyeinek](../conditional-access/location-condition.md) használatával megadhatja azokat az országokat és régiókat, amelyekről nem kívánja engedélyezni a felhasználók számára a bérlőhöz való hozzáférést.
-
-![Nevesített helyszínek a feltételes hozzáférésben](./media/conditional-access-exclusion/named-locations.png)
-
-Sajnos előfordulhat, hogy egyes felhasználók továbbra is érvényes okból jelentkezhetnek be ezekből a letiltott országokból/régiókból. Előfordulhat például, hogy a felhasználók munkavégzésre és a vállalati erőforrásokhoz való hozzáférésre van szükségük. Ebben az esetben az ezen országokat/régiókat blokkoló feltételes hozzáférési szabályzat egy Felhőbeli biztonsági csoportot használhat a kizárt felhasználók számára a szabályzatból. Azok a felhasználók, akiknek utazás közben kell hozzáférni, hozzáadhatják magukat a csoporthoz az [Azure ad önkiszolgáló csoport kezelése](../enterprise-users/groups-self-service-management.md)használatával.
-
-Egy másik példa lehet arra, hogy egy feltételes hozzáférési szabályzat [blokkolja az örökölt hitelesítést a felhasználók túlnyomó többsége számára](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Ha azonban vannak olyan felhasználók, akik örökölt hitelesítési módszereket használnak az erőforrások Office 2010 vagy IMAP/SMTP/POP-alapú ügyfeleken keresztüli eléréséhez, akkor kizárhatja ezeket a felhasználókat a régi hitelesítési módszereket blokkoló szabályzatból.
+Egy ideális világban minden felhasználó követi a hozzáférési szabályzatokat a szervezet erőforrásaihoz való biztonságos hozzáférés érdekében. Előfordulhatnak azonban olyan üzleti esetek, amelyekhez kivételeket kell tenni. Ez a cikk néhány olyan helyzetet mutat be, amelyben kizárásra lehet szükség. Rendszergazdaként Kezelheti ezt a feladatot, elkerülheti a szabályzati kivételek felügyeletét, és igazolhatja az auditorok számára, hogy ezeket a kivételeket rendszeresen felülvizsgálják az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatok használatával.
 
 >[!NOTE]
->A Microsoft nyomatékosan javasolja, hogy az örökölt protokollok használatát letiltsa a bérlőben a biztonsági helyzet javítása érdekében.
+> Az Azure AD prémium szintű Azure AD-hozzáférési felülvizsgálatok Enterprise Mobility + Security P2, Enterprise Mobility + Security E5 vagy próbaverziós licencre van szükség. További információ: Azure Active Directory [kiadása.](../fundamentals/active-directory-whatis.md)
 
-## <a name="why-are-exclusions-challenging"></a>Miért vitatják meg a kizárásokat?
+## <a name="why-would-you-exclude-users-from-policies"></a>Miért zárna ki felhasználókat a szabályzatokból?
 
-Az Azure AD-ben egy feltételes hozzáférési szabályzatot is beállíthat a felhasználók körére. A kizárásokat az Azure AD-szerepkörök, egyéni felhasználók vagy vendégek lehetőség kiválasztásával is konfigurálhatja. Ne feledje, hogy ha a kizárások konfigurálva vannak, a szabályzat célja nem kényszeríthető ki a kizárt felhasználókra. Ha a kizárások a felhasználók listájával vagy az örökölt helyszíni biztonsági csoportok használatával vannak konfigurálva, a kizárások korlátozottan láthatók lesznek. Ennek eredményeképpen:
+Tegyük fel, hogy rendszergazdaként úgy dönt, hogy az [Azure AD](../conditional-access/concept-conditional-access-policy-common.md) feltételes hozzáférés használatával követeli meg a többtényezős hitelesítést (MFA), és a hitelesítési kérelmeket adott hálózatokra vagy eszközökre korlátozza. Az üzembe helyezés tervezése során felismeri, hogy nem minden felhasználó felel meg ezeknek a követelményeknek. Előfordulhat például, hogy olyan felhasználókkal rendelkezik, akik távoli irodákból dolgoznak, nem pedig a belső hálózat részei. Előfordulhat, hogy a nem támogatott eszközökkel csatlakozó felhasználóknak is el kell fogadniuk az eszközök cseréjét. Röviden, a vállalatnak szüksége van ezekre a felhasználókra a bejelentkezéshez és a munkájukhoz, hogy kizárja őket a feltételes hozzáférési szabályzatból.
 
-- Előfordulhat, hogy a felhasználók nem tudják, hogy kizárják őket.
+Egy másik példa, hogy [](../conditional-access/location-condition.md) a feltételes hozzáférésben elnevezett helyeket használ azon országok és régiók megadásához, amelyektől nem szeretné engedélyezni a felhasználók számára a bérlőjükhöz való hozzáférést.
 
-- A felhasználók csatlakozhatnak a biztonsági csoporthoz, hogy megkerüljék a szabályzatot.
+![Elnevezett helyek a feltételes hozzáférésben](./media/conditional-access-exclusion/named-locations.png)
 
-- A kizárt felhasználók jogosultak lehetnek a kizárásra, de előfordulhat, hogy a továbbiakban nem jogosultak rá.
+Sajnos egyes felhasználók továbbra is érvényes okkal jelentkeznek be ezekben a blokkolt országokban/régiókban. Előfordulhat például, hogy a felhasználók a munkahelyükre utaznak, és vállalati erőforrásokat kell elérniük. Ebben az esetben az ezen országok/régiók blokkolását biztosító feltételes hozzáférési szabályzat használhat felhőbiztonsági csoportot a szabályzatból kizárt felhasználók számára. Azok a felhasználók, akiknek utazás közben van szükségük hozzáférésre, hozzáadhatják magukat a csoporthoz az [Azure AD önkiszolgáló csoportkezelésének használatával.](../enterprise-users/groups-self-service-management.md)
 
-Gyakran előfordul, hogy amikor először konfigurálja a kizárást, a szabályzat megkerülését végző felhasználók listáját láthatja. Az idő múlásával egyre több felhasználó kerül be a kizárásba, és a lista növekszik. Egy ponton át kell tekintenie a listát, és meg kell győződnie arról, hogy ezek a felhasználók továbbra is jogosultak a kizárásra. A kizárási lista a technikai szempontból viszonylag egyszerű, de az üzleti döntések meghozatalát is lehetővé teszi, és hogyan gondoskodik arról, hogy az összes naplózható legyen? Ha azonban egy Azure AD-csoport használatával konfigurálja a kizárást, a hozzáférési felülvizsgálatokat kompenzáló vezérlőként, a láthatóság eléréséhez és a kizárt felhasználók számának csökkentéséhez használhatja.
+Egy másik példa lehet az, hogy egy feltételes hozzáférési szabályzat blokkolja az örökölt hitelesítést a felhasználók [túlnyomó többsége számára.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/) Ha azonban vannak olyan felhasználói, akik örökölt hitelesítési módszereket kell használniuk az erőforrások Office 2010- vagy IMAP-/SMTP-/POP-alapú ügyfeleken keresztüli eléréséhez, kizárhatja ezeket a felhasználókat a régi hitelesítési módszereket letiltó házirendből.
 
-## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Kizárási csoport létrehozása feltételes hozzáférési házirendben
+>[!NOTE]
+>A Microsoft határozottan javasolja, hogy a biztonsági helyzet javítása érdekében tiltsa le az örökölt protokollok használatát a bérlőben.
 
-Az alábbi lépéseket követve hozzon létre egy új Azure AD-csoportot és egy feltételes hozzáférési szabályzatot, amely nem vonatkozik erre a csoportra.
+## <a name="why-are-exclusions-challenging"></a>Miért nehéz a kirekesztés?
+
+Az Azure AD-ban a feltételes hozzáférési szabályzatok felhasználók egy halmazának hatókörét is beállíthatja. Kizárásokat az Azure AD-szerepkörök, egyéni felhasználók vagy vendégek kiválasztásával is konfigurálhat. Ne feledje, hogy kizárások konfigurálásakor a szabályzat szándéka nem kényszeríthető ki kizárt felhasználókra. Ha a kizárások felhasználók listájával vagy örökölt helyszíni biztonsági csoportokkal vannak konfigurálva, a kizárások korlátozottan lesznek láthatóak. Ennek eredményeképpen:
+
+- Előfordulhat, hogy a felhasználók nem tudják, hogy ki vannak zárva.
+
+- A felhasználók a szabályzat megkerülése érdekében csatlakozhatnak a biztonsági csoporthoz.
+
+- Előfordulhat, hogy a kizárt felhasználók korábban jogosultak a kizárásra, de előfordulhat, hogy már nem jogosultak rá.
+
+A kizárás első konfigurálásakor gyakran előfordul, hogy a szabályzatot megkerülő felhasználók listája rövid listára kerül. Idővel egyre több felhasználó lesz hozzáadva a kizáráshoz, és nő a lista. Egy bizonyos ponton át kell vizsgálnia a listát, és meg kell erősítenie, hogy ezek a felhasználók továbbra is jogosultak a kizárásra. Technikai szempontból viszonylag egyszerű lehet a kizárási lista kezelése, de ki hozza meg az üzleti döntéseket, és hogyan győződhet meg arról, hogy mind naplózható? Ha azonban a kizárást egy Azure AD-csoporttal konfigurálja, a hozzáférési felülvizsgálatokat kompenzáló vezérlőként használhatja a láthatóság érdekében, és csökkentheti a kizárt felhasználók számát.
+
+## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Kizárási csoport létrehozása feltételes hozzáférési szabályzatban
+
+Kövesse az alábbi lépéseket egy új Azure AD-csoport és egy feltételes hozzáférési szabályzat létrehozásához, amely nem vonatkozik az adott csoportra.
 
 ### <a name="create-an-exclusion-group"></a>Kizárási csoport létrehozása
 
 1. Jelentkezzen be az Azure Portalra.
 
-2. A bal oldali navigációs sávon kattintson a **Azure Active Directory** , majd a **csoportok** elemre.
+2. A bal oldali navigációs sávon **kattintson** a Azure Active Directory majd a **Csoportok elemre.**
 
-3. A felső menüben kattintson az **új csoport** elemre a csoport ablaktábla megnyitásához.
+3. A felső menüben kattintson az Új **csoport elemre a** csoport panel megnyitásához.
 
-4. A **csoport típusa** listában válassza a **Biztonság** elemet. Adja meg a nevet és a leírást.
+4. A Csoport **típusa listában** válassza a Biztonság **lehetőséget.** Adjon meg egy nevet és egy leírást.
 
-5. Ügyeljen arra, hogy a **tagság** típusa legyen **hozzárendelve**.
+5. Ügyeljen arra, hogy a Tagság **típusa legyen** **Hozzárendelt.**
 
-6. Válassza ki a kizárási csoport részét képező felhasználókat, majd kattintson a **Létrehozás** gombra.
+6. Válassza ki azokat a felhasználókat, akik a kizárási csoport tagjai lesznek, majd kattintson a **Létrehozás gombra.**
 
-![Új csoport ablaktábla Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
+![Új csoport panel a Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
 ### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Hozzon létre egy feltételes hozzáférési szabályzatot, amely kizárja a csoportot
 
-Mostantól létrehozhat egy olyan feltételes hozzáférési szabályzatot, amely ezt a kizárási csoportot használja.
+Most létrehozhat egy feltételes hozzáférési szabályzatot, amely ezt a kizárási csoportot használja.
 
-1. A bal oldali navigációs sávon kattintson a **Azure Active Directory** elemre, majd kattintson a **feltételes hozzáférés** elemre a **házirendek** panel megnyitásához.
+1. A bal oldali navigációs sávon kattintson **a** Azure Active Directory majd a **Feltételes** hozzáférés elemre a Szabályzatok **panel megnyitásához.**
 
-2. Az **új** ablaktábla megnyitásához kattintson az **új házirend** elemre.
+2. Kattintson **az Új szabályzat elemre** az Új panel **megnyitásához.**
 
 3. Adjon meg egy nevet.
 
-4. A hozzárendelések területen kattintson a **felhasználók és csoportok** elemre.
+4. A Hozzárendelések alatt kattintson **a Felhasználók és csoportok elemre.**
 
-5. A **beágyazás** lapon válassza a **minden felhasználó** lehetőséget.
+5. A **Beszúrás lapon** válassza a **Minden felhasználó lehetőséget.**
 
-6. A **kizárás** lapon jelölje be a **felhasználók és csoportok** jelölőnégyzetet, majd kattintson a **kizárt felhasználók kiválasztása** lehetőségre.
+6. A Kizárás **lapon jelölje** be a Felhasználók és csoportok jelölőnégyzetet, majd **kattintson** a Kizárt felhasználók **kiválasztása elemre.**
 
 7. Válassza ki a létrehozott kizárási csoportot.
 
    > [!NOTE] 
-   > Ajánlott eljárásként célszerű kizárni legalább egy rendszergazdai fiókot a szabályzatból, ha tesztelni szeretné, hogy ne zárja ki a bérlőből.
+   > Ajánlott eljárásként ajánlott kizárni legalább egy rendszergazdai fiókot a szabályzatból a tesztelés során, hogy biztosan ne legyen kizárva a bérlőből.
 
-8. Folytassa a feltételes hozzáférési házirend beállításával a szervezeti követelmények alapján.
+8. Folytassa a feltételes hozzáférési szabályzat szervezeti követelmények alapján való beállításával.
 
-![A feltételes hozzáférés területen válassza a kizárt felhasználók ablaktáblát](./media/conditional-access-exclusion/select-excluded-users.png)
+![A Kizárt felhasználók panel kiválasztása a Feltételes hozzáférés panelen](./media/conditional-access-exclusion/select-excluded-users.png)
   
-Ismerkedjen meg két példával, amelyekkel a hozzáférési felülvizsgálatok segítségével kezelheti a feltételes hozzáférési szabályzatok kizárásait.
+Két példát mutatunk be, amelyekben hozzáférési felülvizsgálatokkal kezelheti a kizárásokat a feltételes hozzáférési szabályzatok használatával.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1. példa: a letiltott országokból/régiókból hozzáférő felhasználók hozzáférési felülvizsgálata
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1. példa: Hozzáférési felülvizsgálat a letiltott országból/régiókból hozzáférő felhasználók számára
 
-Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkolja bizonyos országok/régiók hozzáférését. Tartalmaz egy csoportot, amely ki van zárva a szabályzatból. Az alábbiakban egy ajánlott hozzáférési felülvizsgálatot talál, ahol a csoport tagjait vizsgálják felül.
+Tegyük fel, hogy rendelkezik egy feltételes hozzáférési szabályzatot, amely letiltja bizonyos országok/régiók hozzáférését. Tartalmaz egy csoportot, amely ki van zárva a szabályzatból. Íme egy javasolt hozzáférési felülvizsgálat, ahol a csoport tagjait felülvizsgálják.
 
 > [!NOTE] 
-> Hozzáférési felülvizsgálatok létrehozásához globális rendszergazdai vagy felhasználói rendszergazdai szerepkörre van szükség.
+> A globális rendszergazda vagy felhasználói rendszergazdai szerepkör szükséges a hozzáférési felülvizsgálatok létrehozásához.
 
 1. A felülvizsgálat minden héten megtörténik.
 
-2. Soha nem fejeződik be, hogy a legnaprakészebb legyen a kizárási csoport.
+2. Soha nem ér véget annak érdekében, hogy a kizárási csoport mindig a legfrissebb maradjon.
 
 3. A csoport minden tagja a felülvizsgálat hatókörében lesz.
 
-4. Minden felhasználónak meg kell határoznia, hogy továbbra is szüksége van a blokkolt országokból/régiókból való hozzáférésre, ezért a csoport tagjának is kell lennie.
+4. Minden felhasználónak igazolnia kell, hogy továbbra is szüksége van hozzáférésre ezekről a blokkolt országokról/régiókról, ezért továbbra is a csoport tagjainak kell lennie.
 
-5. Ha a felhasználó nem válaszol a felülvizsgálati kérelemre, a rendszer automatikusan eltávolítja őket a csoportból, és nem fog tudni hozzáférni a bérlőhöz, miközben ezen országokba/régiókba utaznak.
+5. Ha a felhasználó nem válaszol a felülvizsgálati kérésre, a rendszer automatikusan eltávolítja a csoportból, és a továbbiakban nem lesz hozzáférése a bérlőhöz, miközben az adott országokra/régiókra utazik.
 
-6. Engedélyezheti az e-mailes értesítéseket, hogy a felhasználók tisztában legyenek a hozzáférési felülvizsgálat kezdetével és befejezésével.
+6. Engedélyezze az e-mail-értesítéseket, hogy a felhasználók értesítést küldenek a hozzáférési felülvizsgálat kezdetével és befejezésével kapcsolatban.
 
-    ![Hozzáférés-felülvizsgálati ablaktábla létrehozása az 1. példában](./media/conditional-access-exclusion/create-access-review-1.png)
+    ![Hozzáférési felülvizsgálati panel létrehozása ( 1. példa)](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2. példa: a korábbi hitelesítéssel hozzáférő felhasználók hozzáférési felülvizsgálata
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2. példa: Hozzáférési felülvizsgálat az örökölt hitelesítéssel hozzáférő felhasználók számára
 
-Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkolja a felhasználók hozzáférését a régi hitelesítéssel és a régebbi verziójú ügyfélprogramokkal, és olyan csoportot tartalmaz, amely ki van zárva a szabályzatból. Az alábbiakban egy ajánlott hozzáférési felülvizsgálatot talál, ahol a csoport tagjait vizsgálják felül.
+Tegyük fel, hogy rendelkezik egy feltételes hozzáférési szabályzattal, amely letiltja az örökölt hitelesítést és régebbi ügyfélverziókat használó felhasználók hozzáférését, és tartalmaz egy, a szabályzatból kizárt csoportot. Íme egy javasolt hozzáférési felülvizsgálat, ahol a csoport tagjait felülvizsgálják.
 
-1. A felülvizsgálatnak ismétlődő felülvizsgálatra van szüksége.
+1. Ennek a felülvizsgálatnak ismétlődő felülvizsgálatnak kell lennie.
 
-2. A csoport összes tagját felül kell vizsgálni.
+2. A csoport minden tagja felülvizsgálatra lenne szükség.
 
-3. Konfigurálható úgy, hogy az üzleti egység tulajdonosait kilistázza a kiválasztott felülvizsgálók számára.
+3. Konfigurálható úgy, hogy a kiválasztott felülvizsgálóként sorolja fel az üzleti egységek tulajdonosait.
 
-4. Automatikusan alkalmazza az eredményeket, és távolítsa el azokat a felhasználókat, akik nem hagyták jóvá a korábbi hitelesítési módszerek használatát.
+4. Alkalmazza automatikusan az eredményeket, és távolítsa el a nem jóváhagyott felhasználókat, hogy továbbra is használják az örökölt hitelesítési módszereket.
 
-5. Hasznos lehet a javaslatok lehetővé tétele, hogy a nagyméretű csoportok áttekintő tagjai könnyedén megtudják a döntéseiket.
+5. Hasznos lehet, ha javaslatokat tesz, hogy a nagy csoportok felülvizsgálói könnyen meghozhatják a döntéseiket.
 
-6. E-mail-értesítések engedélyezése, hogy a felhasználók értesítést kapjanak a hozzáférési felülvizsgálat megkezdéséről és befejezéséről.
+6. Engedélyezze az e-mail-értesítéseket, hogy a felhasználók értesítést kapnak a hozzáférési felülvizsgálat kezdetével és befejezésével kapcsolatban.
 
-    ![Hozzáférési felülvizsgálati ablaktábla létrehozása a 2. példához](./media/conditional-access-exclusion/create-access-review-2.png)
+    ![Hozzáférési felülvizsgálati panel létrehozása a 2. példához](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->Ha sok kizárási csoporttal rendelkezik, és ezért több hozzáférési felülvizsgálatra van szükség, most már van egy API a Microsoft Graph Beta-végponton, amely lehetővé teszi a programozott módon történő létrehozását és kezelését. Első lépésként tekintse meg az [Azure ad hozzáférési felülvizsgálatok API-referenciáját](/graph/api/resources/accessreviews-root?view=graph-rest-beta) , és [példát az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő lekérésére](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+>Ha számos kizárási csoporttal rendelkezik, és ezért több hozzáférési felülvizsgálatot kell létrehoznia, most már rendelkezik egy API-val a Microsoft Graph beta végpontban, amely lehetővé teszi azok programozott módon történő létrehozását és kezelését. Első lépésekért tekintse meg az [Azure AD](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) hozzáférési felülvizsgálatok API-referenciáját és az Azure AD hozzáférési felülvizsgálatok lekért példáját az [Microsoft Graph.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)
 
-## <a name="access-review-results-and-audit-logs"></a>Hozzáférési felülvizsgálati eredmények és naplók
+## <a name="access-review-results-and-audit-logs"></a>Hozzáférés-ellenőrzési eredmények és auditnaplók
 
-Most, hogy mindent megtesz a hely, a csoport, a feltételes hozzáférési szabályzat és a hozzáférési felülvizsgálatok terén, itt az idő, hogy figyelje és nyomon kövesse a felülvizsgálatok eredményeit.
+Most, hogy mindene megvan, a csoport, a feltételes hozzáférési szabályzat és a hozzáférési felülvizsgálatok, ideje figyelni és nyomon követni az értékelés eredményeit.
 
-1. A Azure Portal nyissa meg a **hozzáférési felülvizsgálatok** panelt.
+1. A Azure Portal nyissa meg **a Hozzáférési felülvizsgálatok panelt.**
 
 2. Nyissa meg a kizárási csoport kezeléséhez létrehozott vezérlőt és programot.
 
-3. Az **eredmények** lehetőségre kattintva megtekintheti, hogy ki hagyta jóvá a listát, és ki lett távolítva.
+3. Az **Eredmények elemre** kattintva láthatja, hogy ki maradjon a listában, és ki lett eltávolítva.
 
-    ![A hozzáférési felülvizsgálatok eredményeinek megjelenítése, akit jóváhagytak](./media/conditional-access-exclusion/access-reviews-results.png)
+    ![A hozzáférési felülvizsgálatok eredményei azt mutatják, hogy ki lett jóváhagyva](./media/conditional-access-exclusion/access-reviews-results.png)
 
-4. Ezután kattintson a **naplók** elemre a felülvizsgálat során végrehajtott műveletek megtekintéséhez.
+4. Ezután kattintson az **Auditnaplók** elemre a felülvizsgálat során végzett műveletek megtekintéséhez.
 
-    ![Hozzáférési felülvizsgálatok naplófájljainak listázása műveletek](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![Hozzáférési felülvizsgálatok auditnapló-listázási műveletek](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
-Rendszergazdaként biztos lehet abban, hogy a kizárási csoportok a szabályzatokhoz való kezelése időnként elkerülhetetlen. A csoportok karbantartásával azonban rendszeresen, a vállalat tulajdonosa vagy a felhasználók is megtekinthetik őket, és az Azure AD hozzáférési felülvizsgálatokkal könnyebben ellenőrizhetők a változások.
+Rendszergazdaként tudja, hogy a kizárási csoportok szabályzatokkal való kezelése néha elkerülhetetlen. Az Azure AD hozzáférési felülvizsgálatokkal azonban egyszerűbbé válik ezeknek a csoportoknak a karbantartása és rendszeres áttekintése a vállalat tulajdonosa vagy maguk a felhasználók számára, valamint a változások naplózása.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+- [Mi az a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

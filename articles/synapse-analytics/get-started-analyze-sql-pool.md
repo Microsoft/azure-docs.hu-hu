@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az adatelemzés első lépései dedikált SQL-készletekkel'
-description: Ebben az oktatóanyagban a New York-i taxi-mintaadatok segítségével megismerheti az SQL-készlet analitikus funkcióit.
+title: 'Oktatóanyag: Adatok elemzése dedikált SQL-készletekkel – első lépések'
+description: Ebben az oktatóanyagban a NYC Taxi mintaadatokkal fogja feltárni az SQL-készlet analytikus képességeit.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,37 +10,37 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 267dc7c7d89bbecfbed127f4a46adb7cd9044bc4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309373"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536328"
 ---
-# <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
+# <a name="analyze-data-with-dedicated-sql-pools"></a>Adatok elemzése dedikált SQL-készletekkel
 
-Ebben az oktatóanyagban a New York-i taxi-adataival felhasználhatja a dedikált SQL-készlet képességeit.
+Ebben az oktatóanyagban a NYC Taxi adatait fogja használni egy dedikált SQL-készlet képességeinek feltárására.
 
 ## <a name="create-a-dedicated-sql-pool"></a>Dedikált SQL-készlet létrehozása
 
-1. A szinapszis Studióban a bal oldali ablaktáblán válassza az   >  **SQL-készletek** kezelése lehetőséget.
-1. **Új** kiválasztása
-1. Az **SQL-készlet neve** területen válassza a **SQLPOOL1** lehetőséget.
-1. A **teljesítmény szintjén** válassza a **DW100C** lehetőséget.
+1. A Synapse Studio bal oldali panelen válassza az  >  **SQL-készletek kezelése lehetőséget.**
+1. Válassza az **Új lehetőséget**
+1. Az **SQL-készlet neve mezőben válassza** az **SQLPOOL1 lehetőséget.**
+1. A **Teljesítményszintnél válassza** a **DW100C lehetőséget**
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A dedikált SQL-készlet néhány percen belül elkészül. 
 
-A dedikált SQL-készlet egy **SQLPOOL1** néven is ismert SQL-adatbázishoz van társítva.
-1. Navigáljon az  >  **adatmunkaterület** elemre.
-1. Ekkor meg kell jelennie egy **SQLPOOL1** nevű adatbázisnak. Ha nem látja, kattintson a **frissítés** gombra.
+A dedikált SQL-készlet egy SQLPOOL1 nevű SQL-adatbázishoz **van társítva.**
+1. Lépjen az **Adat-munkaterületre.**  >  
+1. Egy **SQLPOOL1 nevű adatbázisnak kell lennie.** Ha nem látja, kattintson a **Frissítés gombra.**
 
-A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg aktívak. A készletet később is szüneteltetheti a költségek csökkentése érdekében.
+A dedikált SQL-készlet számlázható erőforrásokat használ fel, ha az aktív. A költségek csökkentése érdekében később szüneteltetheti a készletet.
 
 > [!NOTE] 
-> Amikor új dedikált SQL-készletet (korábban SQL DW-t) hoz létre a munkaterületen, megnyílik a dedikált SQL Pool kiépítési oldal. A kiépítés a logikai SQL-kiszolgálón történik.
-## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
+> Amikor új dedikált SQL-készletet (korábban SQL DW-t) hoz létre a munkaterületen, megnyílik a dedikált SQL-készlet üzembehelyezése lap. A kiépítés a logikai SQL-kiszolgálón történik.
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A NYC taxi adatainak betöltése az SQLPOOL1-be
 
-1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, kattintson a **+** gombra új erőforrás hozzáadásához, majd hozzon létre új SQL-parancsfájlt.
-1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](./get-started-create-workspace.md) létrehozott készletet) a parancsfájl feletti "kapcsolódás" legördülő listához.
+1. A Synapse Studio keresse meg a **Develop** (Fejlesztés) központot, kattintson a gombra az új erőforrás hozzáadásához, majd hozzon **+** létre egy új SQL-szkriptet.
+1. Válassza ki az "SQLPOOL1" készletet (amely az oktatóanyag [1.](./get-started-create-workspace.md) lépésében jött létre) a szkript felett található "Csatlakozás a következőhöz" legördülő listában.
 1. Írja be a következő kódot:
     ```
     IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')
@@ -78,12 +78,13 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
         )
     GO
 
-    --Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration
-    --CREATE PROC bulk_load_NYCTaxiTripSmall
-    --AS
-    --BEGIN
     COPY INTO dbo.NYCTaxiTripSmall
-    (DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5, PickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, PickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, PassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, FareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, TotalAmount 23)
+    (DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5,
+    PickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, 
+    PickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, 
+    PassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, 
+    FareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, 
+    TotalAmount 23)
     FROM 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet'
     WITH
     (
@@ -93,16 +94,16 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
     )
     ```
 1. A szkript végrehajtásához kattintson a Futtatás gombra.
-1. Ez a szkript 60 másodpercnél rövidebb ideig tart. Egy dbo nevű táblába tölti be a New York-i, 2 000 000-as sorokat **. Utazás**.
+1. A szkript kevesebb mint 60 másodperc alatt befejeződik. 2 millió sorNYI NYC Taxi-adatot tölt be egy dbo nevű **táblába. Trip (Utazás)**.
 
-## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A NYC Taxi adatainak feltárása a dedikált SQL-készletben
 
-1. A szinapszis Studióban nyissa meg **az** adatközpontot.
-1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. 
-3. Kattintson a jobb gombbal a **dbo. NYCTaxiTripSmall** tábla és válassza az **új SQL-parancsfájl** lehetőséget, majd válassza a  >  **Top 100 sort**.
-4. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
-5. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
-6. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
+1. A Synapse Studio az **Adatközpontba.**
+1. Ugrás az **SQLPOOL1**  >  **táblákra.** 
+3. Kattintson a jobb gombbal a **dbo-n. NYCTaxiTripSmall tábla,** majd az **Új SQL-szkript** kiválasztása  >  **Válassza a TOP 100 Rows lehetőséget.**
+4. Várjon, amíg létrejön és fut egy új SQL-szkript.
+5. Figyelje meg, hogy a **Connect to** SQL-szkript tetején automatikusan az **SQLPOOL1 nevű SQL-készlet van beállítva.**
+6. Cserélje le az SQL-szkript szövegét erre a kódra, és futtassa.
 
     ```sql
     SELECT PassengerCount,
@@ -114,10 +115,10 @@ A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg akt
     ORDER BY PassengerCount;
     ```
 
-    Ez a lekérdezés azt mutatja be, hogy a teljes utazási távolság és az átlagos utazási távolság az utasok számával függ.
-1. Az SQL-parancsfájl eredményének ablakában módosítsa  a nézetet **diagramra** , hogy megjelenítse az eredmények vonal diagramként való megjelenítését.
+    Ez a lekérdezés bemutatja, hogy a teljes út és az átlagos út távolsága hogyan viszonyul az utasok számhoz.
+1. Az SQL-szkript eredményablakában  módosítsa  a Nézetet Diagramra, hogy az eredményeket vonaldiagramként ábrázoló vizualizációt lássa.
     
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure Storage-fiókban tárolt adatelemzés](get-started-analyze-storage.md)
+> [Adatok elemzése egy Azure Storage-fiókban](get-started-analyze-storage.md)

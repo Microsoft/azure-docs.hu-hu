@@ -21,7 +21,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [definícióhoz Azure Policy](../overview.md) társítva.
-> Ezek a szabályzatok segíthetnek felmérni [a](../how-to/get-compliance-data.md) vezérlőnek való megfelelőséget; A vezérlők és egy vagy több szabályzat között azonban gyakran nincs egy-az-egyhez vagy egy teljes egyezés. Ezért a **szabályzatban megfelelő** Azure Policy csak magukra a szabályzatdefiníciókra vonatkoznak; Ez nem biztosítja, hogy teljes mértékben megfelel egy vezérlő összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyekre jelenleg egyetlen Azure Policy sem vonatkoznak. Ezért a megfelelőségi Azure Policy a teljes megfelelőségi állapot részleges nézete. A megfelelőségi tartományok, vezérlők és Azure Policy megfelelőségi szabvány definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json)
+> Ezek a szabályzatok segíthetnek felmérni [a](../how-to/get-compliance-data.md) vezérlőnek való megfelelőséget; A vezérlők és egy vagy több szabályzat között azonban gyakran nincs egy-az-egyhez vagy egy teljes egyezés. Ezért a **szabályzatban megfelelő** Azure Policy csak magukra a szabályzatdefiníciókra vonatkoznak; Ez nem biztosítja, hogy teljes mértékben megfelel egy vezérlő összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyekre jelenleg egyetlen Azure Policy sem vonatkoznak. Ezért a megfelelőségi Azure Policy csak részlegesen látható a teljes megfelelőségi állapotról. A megfelelőségi tartományok, vezérlők és Azure Policy megfelelőségi szabvány definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json)
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
@@ -36,7 +36,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>Győződjön meg arról, hogy a többtényezős hitelesítés engedélyezve van az összes nem kiemelt jogosultságú felhasználó számára
 
-**Azonosító:** CIS Azure 1.2 **Tulajdonjog:** Ügyfél
+**Azonosító:** CIS Azure 1.2-tulajdonjog: Ügyfél 
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -44,17 +44,17 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-guest-users-are-reviewed-on-a-monthly-basis"></a>Vendégfelhasználók havi áttekintésének biztosítása
 
-**Azonosító:** CIS Azure 1.3 **Tulajdonjog:** Ügyfél
+**AZONOSÍTÓ:** CIS Azure 1.3 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8456c1c-aa66-4dfb-861a-25d127b775c9) |A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nem szükséges hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsWithOwnerPermissions_Audit.json) |
-|[Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f76cf89-fbf2-47fd-a3f4-b891fa780b60) |Az olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nemtorlott hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsReadPermissions_Audit.json) |
-|[Az írási engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c607a2e-c700-4744-8254-d77e7c9eb5e4) |Az írási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nem szükséges hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsWritePermissions_Audit.json) |
+|[A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8456c1c-aa66-4dfb-861a-25d127b775c9) |A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nemmonitorált hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsWithOwnerPermissions_Audit.json) |
+|[Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f76cf89-fbf2-47fd-a3f4-b891fa780b60) |Az olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nemmonitorált hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsReadPermissions_Audit.json) |
+|[Az írási engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c607a2e-c700-4744-8254-d77e7c9eb5e4) |Az írási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nemmonitorált hozzáférés. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsWritePermissions_Audit.json) |
 
 ### <a name="ensure-that-no-custom-subscription-owner-roles-are-created"></a>Győződjön meg arról, hogy nem jött létre egyéni előfizetés-tulajdonosi szerepkör
 
-**Azonosító:** CIS Azure 1.21 **Tulajdonjog:** Ügyfél
+**AZONOSÍTÓ:** CIS Azure 1.21 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -62,7 +62,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ## <a name="security-center"></a>Security Center
 
-### <a name="ensure-that-azure-defender-is-set-to-on-for-servers"></a>Győződjön meg Azure Defender, hogy a kiszolgálókhoz a Be van állítva
+### <a name="ensure-that-azure-defender-is-set-to-on-for-servers"></a>Győződjön meg arról Azure Defender hogy a Kiszolgálók beállítás be van állítva
 
 **Azonosító:** CIS Azure 2.1-tulajdonjog: Ügyfél 
 
@@ -94,13 +94,13 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 |---|---|---|---|
 |[Azure Defender gépeken található SQL-kiszolgálókhoz engedélyezni kell az sql-kiszolgálókra vonatkozó adatokat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6581d072-105e-4418-827f-bd446d56421b) |Azure Defender SQL-hez elérhető funkciókkal felderítheti és enyhítheti az adatbázisok lehetséges biztonsági réseit, észlelheti az SQL-adatbázisokat fenyegető fenyegetéseket jelző rendellenes tevékenységeket, valamint felderítheti és osztályozhatja a bizalmas adatokat. |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServerVirtualMachines_Audit.json) |
 
-### <a name="ensure-that-azure-defender-is-set-to-on-for-storage"></a>Győződjön meg arról Azure Defender hogy a storage (Tárolás) beállítás be van állítva
+### <a name="ensure-that-azure-defender-is-set-to-on-for-storage"></a>Győződjön meg Azure Defender, hogy a Storage beállítása Be van állítva
 
-**AZONOSÍTÓ:** CIS Azure 2.5 **tulajdonjoga:** Ügyfél
+**Azonosító:** CIS Azure 2.5-tulajdonjog: Ügyfél 
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Defender storage-hez engedélyezni kell a tárfiókot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F308fbb08-4ab8-4e67-9b29-592e93fb94fa) |Azure Defender Storage szolgáltatáshoz való hozzáféréssel észlelni lehet a tárfiókok hozzáférésére vagy kihasználására tett szokatlan és potenciálisan rosszindulatú kísérleteket. |AuditIfNotExists, Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnStorageAccounts_Audit.json) |
+|[Azure Defender storage-tárfiókot engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F308fbb08-4ab8-4e67-9b29-592e93fb94fa) |Azure Defender Storage szolgáltatáshoz való hozzáféréssel észlelni lehet a tárfiókok hozzáférésére vagy kihasználására tett szokatlan és potenciálisan rosszindulatú kísérleteket. |AuditIfNotExists, Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAdvancedThreatProtectionOnStorageAccounts_Audit.json) |
 
 ### <a name="ensure-that-azure-defender-is-set-to-on-for-kubernetes"></a>Győződjön meg arról Azure Defender hogy a Kuberneteshez a Be van állítva
 
@@ -132,15 +132,15 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[A Log Analytics-ügynök automatikus építésének engedélyezve kell lennie az előfizetésben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |A biztonsági rések és fenyegetések figyelése érdekében a Azure Security Center gyűjt adatokat az Azure-beli virtuális gépekről. Az adatokat a Korábban Microsoft Monitoring Agent (MMA) néven ismert Log Analytics-ügynök gyűjti, amely beolvassa a gépről a biztonsággal kapcsolatos különböző konfigurációkat és eseménynaplókat, és elemzés céljából átmásolja az adatokat a Log Analytics-munkaterületre. Javasoljuk, hogy az automatikus kiépítés engedélyezésével automatikusan üzembe helyeződjon az ügynök az összes támogatott Azure-beli és újonnan létrehozott virtuális gépre. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
+|[A Log Analytics-ügynök automatikus építésének engedélyezve kell lennie az előfizetésben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |A biztonsági rések és fenyegetések figyelése érdekében a Azure Security Center gyűjt adatokat az Azure-beli virtuális gépekről. Az adatokat a Korábban Microsoft Monitoring Agent (MMA) néven ismert Log Analytics-ügynök gyűjti, amely beolvassa a biztonsággal kapcsolatos különböző konfigurációkat és eseménynaplókat a gépről, és elemzés céljából átmásolja az adatokat a Log Analytics-munkaterületre. Javasoljuk, hogy az automatikus kiépítés engedélyezésével automatikusan üzembe helyeződjon az ügynök az összes támogatott Azure-beli és újonnan létrehozott virtuális gépre. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
 
-### <a name="ensure-additional-email-addresses-is-configured-with-a-security-contact-email"></a>Győződjön meg arról, hogy a "További e-mail-címek" biztonsági kapcsolattartói e-mail-címmel van konfigurálva
+### <a name="ensure-additional-email-addresses-is-configured-with-a-security-contact-email"></a>Győződjön meg arról, hogy a "További e-mail-címek" beállítás biztonsági kapcsolattartói e-mail-címmel van konfigurálva
 
 **Azonosító:** CIS Azure 2.13 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Az előfizetések biztonsági problémák esetén egy kapcsolattartási e-mail-címmel kell, hogy rendelkezik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7) |Annak érdekében, hogy a szervezet érintett tagjai értesítést kapják, ha az egyik előfizetésében biztonsági incidens történt, állítson be egy biztonsági kapcsolattartót, aki e-mailes értesítéseket kap a Security Center. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_email.json) |
+|[Az előfizetések biztonsági problémák esetén egy kapcsolattartási e-mail-címmel is rendelkezik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7) |Annak érdekében, hogy a szervezet érintett tagjai értesítést kapják, ha az egyik előfizetésében biztonsági incidens történt, állítson be egy biztonsági kapcsolattartót, aki e-mailes értesítéseket kap a Security Center. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_email.json) |
 
 ### <a name="ensure-that-notify-about-alerts-with-the-following-severity-is-set-to-high"></a>Győződjön meg arról, hogy a "Riasztások értesítése a következő súlyosságú riasztásokkal kapcsolatban" beállítás "High" (Magas)
 
@@ -174,7 +174,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[A tárfiókok korlátozzák a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |A tárfiókok hálózati hozzáférését korlátozni kell. Konfigurálja úgy a hálózati szabályokat, hogy csak az engedélyezett hálózatokról származó alkalmazások férnek hozzá a tárfiókhoz. Az adott internetről vagy helyszíni ügyfelekről származó kapcsolatok lehetővé teszik a hozzáférést adott Azure-beli virtuális hálózatokról származó forgalomhoz vagy a nyilvános internetes IP-címtartományok felé |Naplózás, Megtagadás, Letiltva |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|[A tárfiókok korlátozzák a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Korlátozni kell a tárfiókok hálózati hozzáférését. Konfigurálja úgy a hálózati szabályokat, hogy csak az engedélyezett hálózatokról származó alkalmazások férnek hozzá a tárfiókhoz. Az adott internetről vagy helyszíni ügyfelekről származó kapcsolatok lehetővé teszik a hozzáférést adott Azure-beli virtuális hálózatokról származó forgalomhoz vagy a nyilvános internetes IP-címtartományok felé |Naplózás, Megtagadás, Letiltva |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 |[A tárfiókok virtuális hálózati szabályokkal korlátozzák a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a1a9cdf-e04d-429a-8416-3bfb72a1b26f) |A tárfiókokat az IP-alapú szűrés helyett előnyben részesített módszerként használva védheti meg a tárfiókokat a potenciális fenyegetésektől. Az IP-alapú szűrés letiltása megakadályozza, hogy a nyilvános IP-címek hozzáférjenek a tárfiókhoz. |Naplózás, Megtagadás, Letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountOnlyVnetRulesEnabled_Audit.json) |
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>Győződjön meg arról, hogy a "Megbízható Microsoft-szolgáltatások" engedélyezve van a tárfiókhoz való hozzáféréshez
@@ -183,7 +183,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[A tárfióknak engedélyeznie kell a megbízható Microsoft-szolgáltatások](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Egyes Microsoft-szolgáltatások tárfiókokkal kommunikáló felhasználók olyan hálózatokról működnek, amelyek nem kaphatnak hozzáférést hálózati szabályokkal. Annak érdekében, hogy az ilyen típusú szolgáltatás a kívántnak megfelelően működjön, engedélyezze, hogy a megbízható Microsoft-szolgáltatások megkerüljék a hálózati szabályokat. Ezek a szolgáltatások erős hitelesítést fognak használni a tárfiók eléréséhez. |Naplózás, Megtagadás, Letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
+|[A tárfióknak engedélyeznie kell a hozzáférést a megbízható Microsoft-szolgáltatások](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Egyes Microsoft-szolgáltatások tárfiókokkal kommunikáló felhasználók olyan hálózatokról működnek, amelyek nem kaphatnak hozzáférést hálózati szabályokkal. Annak érdekében, hogy az ilyen típusú szolgáltatás a kívántnak megfelelően működjön, engedélyezze, hogy a megbízható Microsoft-szolgáltatások megkerüljék a hálózati szabályokat. Ezek a szolgáltatások erős hitelesítést fognak használni a tárfiók eléréséhez. |Naplózás, Megtagadás, Letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
 
 ### <a name="ensure-storage-for-critical-data-are-encrypted-with-customer-managed-key"></a>Győződjön meg arról, hogy a kritikus fontosságú adatok tárolása ügyfél által kezelt kulccsal van titkosítva
 
@@ -209,7 +209,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[transzparens adattitkosítás SQL-adatbázisokon engedélyezni kell az adatbázis-adatokat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |A transzparens adattitkosítást engedélyezni kell az aktív adatok védelme és a megfelelőségi követelmények betartása érdekében |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|[transzparens adattitkosítás SQL-adatbázisokon engedélyezni kell a biztonsági adatokat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |A transzparens adattitkosítást engedélyezni kell az aktív adatok védelme és a megfelelőségi követelmények betartása érdekében |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 
 ### <a name="ensure-that-auditing-retention-is-greater-than-90-days"></a>Győződjön meg arról, hogy a "Naplózás" megőrzése "több mint 90 nap"
 
@@ -217,7 +217,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[A tárfiók célhelyének naplózásával konfigurált SQL-kiszolgálókat 90 napos vagy annál nagyobb megőrzéssel kell konfigurálni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |Incidensvizsgálati célokból javasoljuk, hogy legalább 90 napra SQL Server adatmegőrzést a tárfiók célhelyéhez. Győződjön meg arról, hogy a megfelelő adatmegőrzési szabályokkal találkozik az üzemeltetési régióhoz. Ez olykor kötelező a szabályozási szabványoknak való megfeleléshez. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|[A tárfiók célhelyének naplózásával konfigurált SQL-kiszolgálókat 90 napos vagy annál nagyobb megőrzéssel kell konfigurálni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |Incidensvizsgálati célokból javasoljuk, hogy legalább 90 napra SQL Server adatmegőrzést a tárfiók célhelyéhez. Győződjön meg arról, hogy a szükséges adatmegőrzési szabályoknak megfelelőek az üzemeltetési régiói. Ez olykor kötelező a szabályozási szabványoknak való megfeleléshez. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
 
 ### <a name="ensure-that-advanced-threat-protection-atp-on-a-sql-server-is-set-to-enabled"></a>Győződjön meg arról, hogy az Advanced Threat Protection (ATP) az SQL Serveren "Enabled" (Engedélyezve) állapotú
 
@@ -239,13 +239,13 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-that-va-setting-send-scan-reports-to-is-configured-for-a-sql-server"></a>Győződjön meg arról, hogy a Vizsgálati jelentések küldése a számára VA-beállítás be van állítva egy SQL Serverhez
 
-**Azonosító:** CIS Azure 4.2.4 **Tulajdonos: Ügyfél**
+**Azonosító:** CIS Azure 4.2.4 **Tulajdonjog: Ügyfél**
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Az SQL Server sebezhetőségi felmérési beállításainak tartalmaznia kell egy e-mail-címet a vizsgálati jelentések fogadására](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057d6cfe-9c4f-4a6d-bc60-14420ea1f1a9) |Győződjön meg arról, hogy a Biztonsági rések felmérése beállítások "Vizsgálati jelentések küldése" mezője tartalmaz egy e-mail-címet. Ez az e-mail-cím megkapja a vizsgálati eredmények összegzését, miután rendszeres időközönként lefutott egy vizsgálat az SQL-kiszolgálókon. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_VulnerabilityAssessmentEmails_Audit.json) |
+|[Az SQL Server sebezhetőségi felmérési beállításainak tartalmaznia kell egy e-mail-címet a vizsgálati jelentések fogadására](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057d6cfe-9c4f-4a6d-bc60-14420ea1f1a9) |Győződjön meg arról, hogy a Biztonsági rések felmérése beállítások "Vizsgálati jelentések küldése" mezőjéhez meg van biztosítva egy e-mail-cím. Ez az e-mail-cím fogadja a vizsgálati eredmények összegzését, miután rendszeres időközönként vizsgálatot futtat az SQL-kiszolgálókon. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_VulnerabilityAssessmentEmails_Audit.json) |
 
-### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>Győződjön meg arról, hogy az SSL-kapcsolat kényszerítés beállítása "ENABLED" a PostgreSQL-adatbáziskiszolgálóhoz
+### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>Győződjön meg arról, hogy az SSL-kapcsolat kényszerítés beállítása "ENABLED" a PostgreSQL-adatbáziskiszolgálón
 
 **Azonosító:** CIS Azure 4.3.1 **Tulajdonjog: Ügyfél**
 
@@ -269,7 +269,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 |---|---|---|---|
 |[A PostgreSQL-adatbáziskiszolgálókhoz engedélyezni kell a napló ellenőrzőpontjait](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e43d) |Ez a szabályzat segít a környezetében az esetleges PostgreSQL-adatbázisok naplózásában anélkül, hogy log_checkpoints engedélyezné. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogCheckpoint_Audit.json) |
 
-### <a name="ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>Ellenőrizze, hogy az "log_connections" kiszolgálóparaméter "ON" van-e beállítva a PostgreSQL-adatbáziskiszolgálóhoz
+### <a name="ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>Ellenőrizze, hogy a "log_connections" kiszolgálóparaméter "ON" van-e beállítva a PostgreSQL-adatbáziskiszolgálóhoz
 
 **Azonosító:** CIS Azure 4.3.4 **Tulajdonjog: Ügyfél**
 
@@ -279,7 +279,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>Ellenőrizze, hogy a "log_disconnections" kiszolgálóparaméter "ON" van-e beállítva a PostgreSQL-adatbáziskiszolgálóhoz
 
-**Azonosító:** CIS Azure 4.3.5 **Tulajdonjog: Ügyfél**
+**AZONOSÍTÓ:** CIS Azure 4.3.5 **Tulajdonjog: Ügyfél**
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -394,7 +394,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>Győződjön meg arról, hogy a Biztonsági megoldás törlése tevékenységnapló-riasztás létezik
 
-**ID:** CIS Azure 5.2.8 Ownership : **Customer**
+**Azonosító:** CIS Azure 5.2.8 **Tulajdonos: Ügyfél**
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -431,7 +431,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-that-rdp-access-is-restricted-from-the-internet"></a>Győződjön meg arról, hogy az RDP-hozzáférés korlátozva van az internetről
 
-**AZONOSÍTÓ:** CIS Azure 6.1 **Tulajdonjog:** Ügyfél
+**Azonosító:** CIS Azure 6.1 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -457,15 +457,15 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-virtual-machines-are-utilizing-managed-disks"></a>Győződjön meg Virtual Machines, hogy az alkalmazás Managed Disks
 
-**AZONOSÍTÓ:** CIS Azure 7.1 **Tulajdonjog:** Ügyfél
+**Azonosító:** CIS Azure 7.1 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Felügyelt lemezeket nem használ virtuális gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Ez a szabályzat a felügyelt lemezeket nem használt virtuális gépeket naplóz |Ellenőrzési |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json) |
 
-### <a name="ensure-that-os-and-data-disks-are-encrypted-with-cmk"></a>Győződjön meg arról, hogy az "operációsrendszer- és adatlemezek" cmk-titkosítással vannak titkosítva
+### <a name="ensure-that-os-and-data-disks-are-encrypted-with-cmk"></a>Győződjön meg arról, hogy az "operációsrendszer- és adatlemezek" CMK-titkosítással vannak titkosítva
 
-**Azonosító:** CIS Azure 7.2-tulajdonjog: Ügyfél 
+**Azonosító:** CIS Azure 7.2 **Tulajdonjog:** Ügyfél
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -507,7 +507,7 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 ### <a name="ensure-that-the-expiration-date-is-set-on-all-keys"></a>Győződjön meg arról, hogy a lejárati dátum minden kulcshoz be van állítva
 
-**Azonosító:** CIS Azure 8.1-tulajdonjog: Ügyfél 
+**Azonosító:** CIS Azure 8.1 **Tulajdonjog: Ügyfél**
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -593,8 +593,8 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha az API-alkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |A PHP-szoftverekhez rendszeres időközönként újabb verziók adták ki biztonsági hibák miatt vagy további funkciók miatt. Az API-alkalmazásokhoz a legújabb PHP-verzió használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a WEBalkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |A PHP-szoftverekhez rendszeres időközönként újabb verziók adták ki biztonsági hibák miatt vagy további funkciók miatt. A webalkalmazások legújabb PHP-verziójának használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha az API-alkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |A PHP-szoftverekhez rendszeres időközönként újabb verziók adták ki biztonsági hibák vagy további funkciók miatt. Az API-alkalmazásokhoz a legújabb PHP-verzió használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Győződjön meg arról, hogy a "PHP-verzió" a legújabb, ha a WEBalkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |A PHP-szoftverekhez rendszeres időközönként újabb verziók adták ki biztonsági hibák miatt vagy további funkciók miatt. A legújabb PHP-verzió webalkalmazáshoz való használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>Győződjön meg arról, hogy a "Python-verzió" a legújabb, ha a webalkalmazás futtatásához használja
 
@@ -613,12 +613,12 @@ Ezután keresse meg és válassza ki a **CIS Microsoft Azure Foundations Benchma
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha az API-alkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Rendszeres időközönként újabb verziók adták ki a Javához biztonsági hibák miatt vagy további funkciók miatt. Az API-alkalmazásokhoz a legújabb Python-verzió használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a függvényalkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |A Java-szoftverek újabb verzióit rendszeres időközönként biztonsági hibák vagy további funkciók miatt adták ki. A legújabb Java-verzió függvényalkalmazáshoz való használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a függvényalkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Rendszeres időközönként újabb verziók adták ki a Java-szoftvereket biztonsági hibák miatt vagy további funkciók miatt. A legújabb Java-verzió függvényalkalmazáshoz való használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
 |[Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a webalkalmazás részeként használják](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |A Java-szoftverek újabb verzióit rendszeres időközönként biztonsági hibák vagy további funkciók miatt adták ki. A legújabb Java-verzió webalkalmazáshoz való használata ajánlott, hogy kihasználja a biztonsági javításokat (ha vannak) és/vagy a legújabb verzió új funkcióit. Ez a szabályzat jelenleg csak a Linux-webalkalmazások esetében érvényes. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
 
 ### <a name="ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>Ha a webalkalmazás futtatásához használja, győződjön meg arról, hogy a "HTTP-verzió" a legújabb
 
-**Azonosító:** CIS Azure 9.9-tulajdonjog: **Ügyfél**
+**Azonosító:** CIS Azure 9.9-tulajdonjog: Ügyfél 
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -645,6 +645,6 @@ További cikkek a Azure Policy:
 
 - [Szabályozási megfelelőség](../concepts/regulatory-compliance.md) áttekintése.
 - Lásd a [kezdeményezésdefiníció szerkezetét.](../concepts/initiative-definition-structure.md)
-- Tekintsen át további példákat [a Azure Policy példák között.](./index.md)
+- Tekintsen át további példákat a [Azure Policy példák között.](./index.md)
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
 - Ismerje meg, [hogyan szervizelődnek a nem megfelelő erőforrások.](../how-to/remediate-resources.md)

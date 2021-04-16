@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazás visszaállítása biztonsági másolatból'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta azt mutatja be, hogyan lehet visszaállítani egy alkalmazást egy biztonsági másolatból.
+title: 'CLI: Alkalmazás visszaállítása biztonsági másolatból'
+description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan állítható vissza egy alkalmazás egy biztonsági másolatból.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -8,15 +8,15 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
-ms.custom: mvc, seodec18
-ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: b30530956b6e8a4b7f10393cf90caf341bcc82a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006415"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483401"
 ---
-# <a name="restore-a-web-app-from-a-backup-using-cli"></a>Webalkalmazás visszaállítása egy biztonsági másolatból a CLI használatával
+# <a name="restore-a-web-app-from-a-backup-using-cli"></a>Webalkalmazás visszaállítása biztonsági másolatból a CLI használatával
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd egyszeri biztonsági mentést hajt végre. 
 

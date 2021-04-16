@@ -1,6 +1,6 @@
 ---
-title: IoT Edge eszköz helyi tárterületének használata modulból – Azure IoT Edge | Microsoft Docs
-description: Használjon környezeti változókat, és hozzon létre beállításokat a modul IoT Edge eszköz helyi tárolóhoz való hozzáférésének engedélyezéséhez.
+title: Helyi IoT Edge tároló használata modulból – Azure IoT Edge | Microsoft Docs
+description: Környezeti változók használatával és beállításokkal engedélyezheti a modul IoT Edge helyi tárolóhoz.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,31 +8,31 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78752d4da42fe07461ae0e82b10343dc7219ad91
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200477"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482058"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Az adatok Azure Storage-szolgáltatásokkal vagy az eszköz tároló-tárolóban való tárolása mellett a tárolót is kioszthatja a gazdagépen IoT Edge eszközön is, így a megbízhatóságot, különösen a kapcsolat nélküli üzemmódban.
+Amellett, hogy az adatokat Azure Storage-szolgáltatásokkal vagy az eszköz tárolótárolóján tárolja, a jobb megbízhatóság érdekében magának a gazdagépnek a tárolóját is dedikálhatja IoT Edge-eszközön, különösen offline működés esetén.
 
-## <a name="link-module-storage-to-device-storage"></a>Modul tárterületének csatolása az eszköz tárterületéhez
+## <a name="link-module-storage-to-device-storage"></a>Modultároló csatolása eszköztárolóhoz
 
-Ha a modul Storage-ból a gazdagépen lévő tárolóra mutató hivatkozást szeretne engedélyezni, hozzon létre egy környezeti változót a modulhoz, amely a tároló egyik tárolási mappájára mutat. Ezt követően a létrehozási beállításokkal társítsa a Storage mappát a gazdaszámítógép egyik mappájához.
+Ha engedélyezni szeretné a modultárolóból a gazdarendszer tárolójába mutató hivatkozást, hozzon létre egy környezeti változót a modulhoz, amely a tároló egyik tárolómappjére mutat. Ezután a létrehozási beállítások használatával kösse a tárolómappát a gazdagép egyik mappájába.
 
-Ha például engedélyezni szeretné az IoT Edge hub számára az üzenetek tárolását az eszköz helyi tárolójában, és később lekéri őket, a környezeti változókat és a létrehozási beállításokat a Azure Portal a **futtatókörnyezet beállításai** szakaszban állíthatja be.
+Ha például engedélyezni szeretné a IoT Edge Hub számára az üzenetek tárolását az eszköz helyi tárolójában, majd később lekérni azokat, konfigurálhatja a környezeti változókat és a létrehozási beállításokat a Azure Portal-ban a Futtatás beállításai **szakaszban.**
 
-1. A IoT Edge hub és a IoT Edge Agent esetében is adjon hozzá egy **storageFolder** nevű környezeti változót, amely a modul egyik könyvtárára mutat.
-1. A IoT Edge hub és a IoT Edge ügynök esetében adja hozzá a kötéseket, hogy a gazdagépen lévő helyi könyvtárat összekapcsolja a modul egyik könyvtárába. Például:
+1. A IoT Edge és a IoT Edge-ügynökhöz adjon hozzá egy **storageFolder** nevű környezeti változót, amely a modul egy könyvtárára mutat.
+1. A IoT Edge és a IoT Edge ügynökhöz is adjon hozzá kötéseket a gazdagép helyi könyvtárának a modul egyik könyvtárához való csatlakoztatásához. Például:
 
-   ![Létrehozási beállítások és környezeti változók hozzáadása a helyi tárolóhoz](./media/how-to-access-host-storage-from-module/offline-storage.png)
+   ![Létrehozási beállítások és környezeti változók hozzáadása helyi tárolóhoz](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. Például:
+A helyi tárolót közvetlenül az üzembe helyezési jegyzékben is konfigurálhatja. Például:
 
 ```json
 "systemModules": {
@@ -72,25 +72,25 @@ A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. 
 }
 ```
 
-Cserélje `<HostStoragePath>` le `<ModuleStoragePath>` a és a értéket a gazdagép és a modul tárolási útjára; mindkét értéknek abszolút elérési útnak kell lennie.
+Cserélje le a és a helyére a gazdagép és a modul tárolási `<HostStoragePath>` `<ModuleStoragePath>` útvonalát; mindkét értéknek abszolút elérési útnak kell lennie.
 
-A Linux rendszeren például `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` a gazdagép **/etc/iotedge/Storage** lévő könyvtárat a rendszer a tároló **/iotedge/Storage/** képezi le. Egy Windows rendszerű rendszeren, mint egy másik példa, `"Binds":["C:\\temp:C:\\contemp"]` azt jelenti, hogy a gazdagépen a **c: \\ temp** könyvtárat a rendszer a tárolóban lévő **c: \\** a következő könyvtárba rendeli.
+Linux rendszeren például az azt jelenti, hogy a `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` **gazdarendszeren az /etc/iotedge/storage** könyvtár az **/iotedge/storage/** könyvtárra van leképezve a tárolóban. Windows rendszeren egy másik példa azt jelenti, hogy a C: temp a gazdarendszeren a `"Binds":["C:\\temp:C:\\contemp"]` **\\ C:** **\\ contemp** könyvtárra van leképezve a tárolóban.
 
-Emellett a Linux-eszközökön ellenőrizze, hogy a modul felhasználói profilja rendelkezik-e a gazdagép rendszerkönyvtárához szükséges olvasási, írási és végrehajtási engedélyekkel. Visszatérve a korábbi példához, amely lehetővé teszi, hogy IoT Edge hub üzeneteket tároljon az eszköz helyi tárolójában, engedélyeket kell adnia a felhasználói profiljához, az UID 1000-hez. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelhetők a címtár-engedélyek, beleértve a használatával a `chown` címtár tulajdonosának módosítását, majd `chmod` az engedélyek módosítását, például:
+Emellett Linux-eszközökön győződjön meg arról, hogy a modul felhasználói profilja rendelkezik a szükséges olvasási, írási és végrehajtási engedélyekkel a gazdarendszer könyvtárához. Visszatérve a korábbi példához, amely azt IoT Edge, hogy a IoT Edge Hub engedélyezi az üzenetek tárolását az eszköz helyi tárolójában, engedélyeket kell adnunk a felhasználói profiljának(UID 1000). (A IoT Edge ügynök gyökérként működik, így nincs szükség további engedélyekre.) Linux rendszereken többféleképpen is kezelheti a címtárengedélyeket, például a használatával módosíthatja a címtár tulajdonosát, majd módosíthatja az `chown` `chmod` engedélyeket, például:
 
 ```bash
 sudo chown 1000 <HostStoragePath>
 sudo chmod 700 <HostStoragePath>
 ```
 
-További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)szolgáltatásbeli létrehozási lehetőségekről talál.
+A létrehozási lehetőségekről a [Docker-dokumentumokban talál további részleteket.](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)
 
-## <a name="encrypted-data-in-module-storage"></a>A modul Storage szolgáltatásban tárolt titkosított adatforgalom
+## <a name="encrypted-data-in-module-storage"></a>Titkosított adatok a modultárolóban
 
-Amikor a modulok meghívja a IoT Edge démon számítási feladatok API-ját az adatok titkosítására, a titkosítási kulcs a modul azonosítója és a modul generálási azonosítója alapján történik. A rendszer egy létrehozási azonosítót használ a titkok védeleméhez, ha eltávolítanak egy modult a központi telepítésből, majd egy másik modult is telepítenek ugyanahhoz az eszközhöz. A modul generálási azonosítóját az Azure CLI parancs az [IOT hub Module-Identity show](/cli/azure/ext/azure-iot/iot/hub/module-identity)paranccsal tekintheti meg.
+Amikor a modulok meghívják a IoT Edge számítási feladat API-ját az adatok titkosításához, a titkosítási kulcs a modul azonosítójával és a modul generációazonosítójával lesz származtatva. A generációazonosítók a titkos kulcsok védelmére használhatók, ha egy modult eltávolítunk az üzemelő példányból, majd később egy másik modult helyezünk üzembe ugyanennek az eszköznek ugyanazokkal a modulazonosítóval. A modulok generációazonosítóját az [az iot hub module-identity show Azure CLI-paranccsal tudja megtekinteni.](/cli/azure/iot/hub/module-identity)
 
-Ha a több generáción belüli modulok között szeretné megosztani a fájlokat, azok nem tartalmazhatnak titkot, vagy nem lesznek visszafejtve.
+Ha generációk között szeretne fájlokat megosztani a modulok között, azok nem tartalmazhatnak titkos kódokat, vagy a visszafejtése sikertelen lesz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További példa a gazdagépek egy modulból való elérésére: [adatok tárolása az Azure Blob Storage on IoT Edge](how-to-store-data-blob.md).
+A gazdatároló modulból való elérésére vonatkozó további példáért lásd: Adatok tárolása a peremhálózaton Azure Blob Storage [a IoT Edge.](how-to-store-data-blob.md)

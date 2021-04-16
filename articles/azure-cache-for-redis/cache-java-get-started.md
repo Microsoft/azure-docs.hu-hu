@@ -1,31 +1,36 @@
 ---
-title: 'Gyors útmutató: az Azure cache használata a Redis javában'
-description: Ebben a rövid útmutatóban egy új Java-alkalmazást fog létrehozni, amely az Azure cache-t használja a Redis
+title: 'Rövid útmutató: A Azure Cache for Redis használata Javában'
+description: Ebben a rövid útmutatóban egy új Java-alkalmazást fog létrehozni, amely a Azure Cache for Redis
 author: yegu-ms
+ms.author: yegu
+ms.date: 05/22/2020
+ms.topic: quickstart
 ms.service: cache
 ms.devlang: java
-ms.topic: quickstart
-ms.date: 05/22/2020
-ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- mvc
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121269"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538614"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Gyors útmutató: az Azure cache használata a Redis javában
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Rövid útmutató: A Azure Cache for Redis használata Javában
 
-Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis egy Java-alkalmazásba a [jedis](https://github.com/xetorthio/jedis) Redis-ügyféllel, hogy hozzáférjen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+Ebben a rövid útmutatóban a Azure Cache for Redis egy Java-alkalmazásba építi be a [Jedis](https://github.com/xetorthio/jedis) Redis-ügyfelet használva, hogy hozzáférjen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-ban bármely alkalmazásból elérhető.
 
 ## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
 
-Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [Java](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) rövid útmutatóját a githubon.
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [GitHubon](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) elérhető Java rövid útmutatót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure-előfizetés [– hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/)
 - [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Az Azure Cache for Redis létrehozása
@@ -34,9 +39,9 @@ Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [Java](https://github.
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-## <a name="setting-up-the-working-environment"></a>A munkahelyi környezet beállítása 
+## <a name="setting-up-the-working-environment"></a>A munkakörnyezet beállítása 
 
-Az operációs rendszertől függően adja hozzá a környezeti változókat az **állomásnévhez** és az **elsődleges elérési kulcshoz**. Nyisson meg egy parancssort vagy egy terminál-ablakot, és állítsa be a következő értékeket:
+Az operációs rendszertől függően adjon hozzá környezeti változókat a **gazdagépnévhez** és az **elsődleges hozzáférési kulcshoz.** Nyisson meg egy parancssort vagy egy terminálablakot, és állítsa be a következő értékeket:
 
 ```CMD 
 set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
@@ -50,8 +55,8 @@ export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 
 Cserélje le a helyőrzőket a következő értékekre:
 
-- `<YOUR_HOST_NAME>`: A DNS-állomásnév, amely az Azure cache *Tulajdonságok* szakaszának a Azure Portal Redis-erőforráshoz való beszerzését ismerteti.
-- `<YOUR_PRIMARY_ACCESS_KEY>`: Az Azure cache *elérési kulcsok* szakaszának elsődleges hozzáférési kulcsa, amely a Azure Portal Redis-erőforráshoz készült.
+- `<YOUR_HOST_NAME>`: A DNS-állomásnév,  amely a fürt erőforrásának Tulajdonságok Azure Cache for Redis a Azure Portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Az elsődleges hozzáférési kulcs, amely a Azure Cache for Redis erőforrásÁnak Hozzáférési kulcsok szakaszában Azure Portal. 
 
 ## <a name="create-a-new-java-app"></a>Új Java-alkalmazás létrehozása
 
@@ -129,7 +134,7 @@ public class App
 }
 ```
 
-Ez a kód azt mutatja be, hogyan csatlakozhat egy Azure cache-hez a Redis-példányhoz a gyorsítótár állomásneve és a legfontosabb környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. 
+Ez a kód bemutatja, hogyan csatlakozhat egy Azure Cache for Redis-példányhoz a gyorsítótár gazdagépnevével és a fő környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. 
 
 Mentse az *App.java* fájlt.
 
@@ -144,7 +149,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyorsítótárazott értéke volt, amely az Azure Portalon, a Redis Console használatával lett beállítva. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
-![Befejeződött az Azure cache a Redis alkalmazáshoz](./media/cache-java-get-started/azure-cache-redis-complete.png)
+![Azure Cache for Redis alkalmazás befejeződött](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -158,17 +163,17 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-1. A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése** elemet.
+1. A Szűrés **név alapján szövegmezőbe** írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az eredménylistában az erőforráscsoportban válassza a **...** lehetőséget, majd **az Erőforráscsoport törlése lehetőséget.**
 
    ![Azure-erőforráscsoport törölve](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-1. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+1. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Írja be az erőforráscsoport nevét a megerősítéshez, majd válassza a **Törlés lehetőséget.**
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy Java-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja Azure Cache for Redis Java-alkalmazásokból származó alkalmazásból származó alkalmazásokat. Folytassa a következő rövid útmutatóval, és használja Azure Cache for Redis egy ASP.NET webalkalmazással.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
+> [Hozzon létre ASP.NET webalkalmazást, amely egy Azure Cache for Redis.](./cache-web-app-howto.md)

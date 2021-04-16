@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: 424e70f4f3656be2196f4dbdfbddb852846b6897
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
-ms.translationtype: MT
+ms.openlocfilehash: a055cc1b715f93830647c9b13793a59d09db605c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307482"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511719"
 ---
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `ManagedIdentitiesQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl használatával: `Program.cs` .
+Egy konzolablakban (például cmd, PowerShell vagy Bash) az paranccsal hozzon létre egy új konzolalkalmazást `dotnet new` `ManagedIdentitiesQuickstart` néven. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájllal: `Program.cs` .
 
 ```console
 dotnet new console -o ManagedIdentitiesQuickstartQuickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába, és használja az `dotnet build` parancsot az alkalmazás fordításához.
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappára, és az `dotnet build` paranccsal fordítsa le az alkalmazást.
 
 ```console
 cd ManagedIdentitiesQuickstart
@@ -33,7 +33,7 @@ dotnet add package Azure.Identity
 
 ### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `using` irányelveket az `Program.cs` Azure Identity és az Azure Storage SDK-k használatához.
+Adja hozzá a következő irányelveket a alkalmazáshoz az Azure Identity és az `using` `Program.cs` Azure Storage SDK-k használata érdekében.
 
 ```csharp
 using Azure.Identity;
@@ -45,15 +45,15 @@ using Azure;
 
 ## <a name="create-a-defaultazurecredential"></a>DefaultAzureCredential létrehozása
 
-Ennek a rövid útmutatónak a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) fogjuk használni. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez. Ahogy az egyes műveletekhez szükséges, hozzuk létre az `Program.cs` osztályban. Adja hozzá a következőt a fájl elejéhez.
+Ebben a rövid útmutatóban a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) értéket fogjuk használni. Ez a hitelesítő adat éles és fejlesztési környezetekhez megfelelő. Mivel minden művelethez szükség van rá, hozza létre a `Program.cs` osztályon belül. Adja hozzá a következőt a fájl tetejéhez.
 
 ```csharp
      private DefaultAzureCredential credential = new DefaultAzureCredential();
 ```
 
-## <a name="issue-a-token-with-managed-identities"></a>Jogkivonat kiadása felügyelt identitásokkal
+## <a name="issue-a-token-with-managed-identities"></a>Jogkivonat kiállítása felügyelt identitásokkal
 
-Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiküldéséhez. Ezt a kódot később meghívjuk.
+Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiállításához. Ezt a kódot később fogjuk hívni.
 
 ```csharp
      public Response<AccessToken> CreateIdentityAndGetTokenAsync(Uri resourceEndpoint)
@@ -70,7 +70,7 @@ Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használ
 
 ## <a name="send-an-sms-with-managed-identities"></a>SMS küldése felügyelt identitásokkal
 
-A felügyelt identitások használatának egy másik példája, hogy ezt a kódot adja hozzá, amely ugyanazt a hitelesítő adatot használja SMS-küldéshez:
+A felügyelt identitások használatának egy másik példájaként hozzáadjuk ezt a kódot, amely ugyanazt a hitelesítő adatokat használja AZ SMS-ek elküldését:
 
 ```csharp
      public SmsSendResult SendSms(Uri resourceEndpoint, string from, string to, string message)
@@ -87,9 +87,9 @@ A felügyelt identitások használatának egy másik példája, hogy ezt a kódo
      }
 ```
 
-## <a name="write-the-main-method"></a>A Main metódus írása
+## <a name="write-the-main-method"></a>A Main metódus megírása
 
-`Program.cs`Ha már van egy fő metódusa, adjunk hozzá egy kódot, amely a korábban létrehozott kódot hívja fel a felügyelt identitások használatának bemutatására:
+A már rendelkezik Egy Main metódussal. Adjunk hozzá néhány kódot, amely a korábban létrehozott kódot fogja hívni a felügyelt `Program.cs` identitások használatának szemlélteti:
 
 ```csharp
      static void Main(string[] args)
@@ -167,7 +167,7 @@ class Program
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Ezután az alkalmazás mappájából használhatja az alkalmazást `dotnet run` . A kimenetnek az alábbihoz hasonlónak kell lennie:
+Most már képesnek kell lennie az alkalmazás futtatására a használatával `dotnet run` az alkalmazás mappájában. A kimenetnek az alábbihoz hasonlónak kell lennie:
 ```
 Retrieving new Access Token, using Managed Identities
 Retrieved Access Token: ey....

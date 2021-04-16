@@ -1,102 +1,103 @@
 ---
-title: Nyelvi csomagok telepítése Windows 10 rendszerű virtuális gépekre a Windows Virtual Desktopban – Azure
-description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi csomagjainak telepítése a Windows Virtual Desktopban.
+title: Nyelvi csomagok telepítése Windows 10 virtuális gépeken a Windows Virtual Desktop – Azure
+description: Nyelvi csomagok telepítése több Windows 10 virtuális gépekhez a Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: eaf6fc789020553b80967341cc9219a30ffce749
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: db1ac3f5de507a5cfdbfec7216afea9a0f4ac541
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446111"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515039"
 ---
-# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Nyelvi csomagok hozzáadása Windows 10 több munkamenetes rendszerképhez
+# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Nyelvi csomagok hozzáadása Windows 10 több munkamenetből álló rendszerképhez
 
-A Windows virtuális asztal egy olyan szolgáltatás, amelyet a felhasználók bármikor, bárhol üzembe helyezhetnek. Ezért fontos, hogy a felhasználók testre tudják szabni, hogy a Windows 10 Enterprise multi-session rendszerkép milyen nyelven jelenjen meg.
+Windows Virtual Desktop egy olyan szolgáltatás, amely a felhasználók számára bármikor, bárhonnan üzembe helyezhető. Ezért fontos, hogy a felhasználók testre szabják a több munkamenetes rendszerkép Windows 10 Enterprise nyelvét.
 
-Kétféleképpen lehet alkalmazkodni a felhasználók nyelvi igényeihez:
+A felhasználók nyelvi igényeinek két módon tud igazodni:
 
-- Dedikált gazdagép-készleteket hozhat létre az egyes nyelvekhez testreszabott képpel.
-- Ugyanazon a gazdagépen eltérő nyelvi és honosítási követelményeknek kell megfelelniük a felhasználóknak, de a képek testreszabásával biztosítható, hogy a kívánt nyelv közül melyikre van szükségük.
+- Dedikált gazdagépkészletek összeállítása egyéni rendszerképekkel minden nyelvhez.
+- A különböző nyelvi és honosítási követelményekkel rendelkezik ugyanannak a gazdagépkészletnek a felhasználói, de a lemezképek testreszabásával biztosíthatja, hogy a kívánt nyelvet választják ki.
 
-Az utóbbi módszer sokkal hatékonyabb és költséghatékony. Azonban Ön dönti el, hogy melyik módszer felel meg legjobban az igényeinek. Ez a cikk bemutatja, hogyan szabhatja testre a képek nyelveit.
+Az utóbbi módszer sokkal hatékonyabb és költséghatékonyabb. Ön döntheti el azonban, hogy melyik módszer a legmegfelelőbb az igényeinek. Ez a cikk bemutatja, hogyan szabhatja testre a képek nyelvét.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-es nagyvállalati multi-session lemezképek testreszabásához:
+A több munkamenetből álló rendszerképek testreszabásához a következőkre Windows 10 Enterprise több nyelv hozzáadásához:
 
-- Azure-beli virtuális gép (VM) a Windows 10 Enterprise multi-session, 1903-es vagy újabb verziójával
+- Azure-beli virtuális gép (VM) Windows 10 Enterprise több munkamenetes, 1903-as vagy újabb verzióval
 
-- Az ISO, az igény szerinti szolgáltatás (Franciaország tengerentúli) 1. lemeze és a beérkezett fájlok mappa ISO-je a lemezkép által használt operációsrendszer-verzióhoz. Innen töltheti le őket:
+- A lemezkép által használt operációsrendszer-verzió nyelvi ISO-fájlja, igény szerinti szolgáltatás (FOD) 1. lemeze és Beérkezett alkalmazások ISO-verziója. Ezeket innen töltheti le:
      
-     - Nyelv ISO:
-        - [Windows 10, 1903-es vagy 1909-es nyelvi csomag ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10, 2004 verzió vagy 20H2 Language Pack ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+     - Nyelvi ISO:
+        - [Windows 10 1903-as vagy 1909-es nyelvi csomag ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10 2004-es vagy 20H2-es nyelvi csomag ISO-verziója](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
-     - Franciaország tengerentúli lemeze 1 ISO:
-        - [Windows 10, 1903-es vagy 1909-es verziójú, 1. lemez ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10, 2004-es vagy 20H2-es verzió, 1. lemez ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+     - FOD Disk 1 ISO:
+        - [Windows 10 1903-as vagy 1909-es FOD Disk 1 ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10 2004-es vagy 20H2-es FOD Disk 1 ISO-verziója](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
-     - Beérkezett alkalmazások ISO:
-        - [Windows 10, 1903-es vagy 1909-es bejövő alkalmazások ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
-        - [Windows 10, 2004-es verziójú beérkezett alkalmazások ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
-        - [Windows 10, 20H2 beérkezett fájlok alkalmazásának ISO-verziója](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     - Inbox Apps ISO:
+        - [Windows 10, 1903-as vagy 1909-es beérkezett üzenetekhez való alkalmazások ISO-verziója](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10, 2004-es verzióJú Beérkezett alkalmazások ISO-fájlja](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10, 20H2-es verzióJú Beérkezett üzenetek alkalmazásai ISO-fájl](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
-     - Ha a lemezképek honosításához a helyi Experience Pack (LXP) ISO-fájlokat használja, akkor a legjobb nyelvi élmény érdekében le kell töltenie a megfelelő LXP ISO-t is.
-        - Ha a Windows 10 1903-es vagy 1909-es verzióját használja:
-          - [Windows 10, 1903-es vagy 1909-es verziójú LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
-        - Ha a Windows 10 2004-es vagy 20H2-es verzióját használja, használja a [nyelvek hozzáadása a Windows 10 rendszerben: ismert problémák](/windows-hardware/manufacture/desktop/language-packs-known-issue) , amelyek alapján megállapíthatja, hogy a következő LXP ISO-verziók közül melyik a legmegfelelőbb:
-          - [Windows 10, 2004 verzió vagy 20H2 **9b** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-          - [Windows 10, 2004 verzió vagy 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
-          - [Windows 10, 2004 verzió vagy 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
-          - [Windows 10, 2004 verzió vagy 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
-          - [Windows 10, 2004-es verzió vagy 20H2 **1c** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
-          - [Windows 10, 2004-es verzió vagy 20H2 **2c** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+     - Ha a Felhasználói felület nyelvi csomagja (LXP) ISO-fájljaival honosítja a képeket, a legjobb nyelvi élmény érdekében le kell töltenie a megfelelő LXP ISO-fájlt is
+        - Ha 1903-as Windows 10 1909-es verziót használ:
+          - [Windows 10 1903-as vagy 1909-es LXP ISO-verzió](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
+        - Ha a Windows 10 2004-es vagy 20H2-es verzióját használja [Windows 10,](/windows-hardware/manufacture/desktop/language-packs-known-issue) használja a Nyelvek hozzáadása a következőben: ismert problémák az alábbi LXP ISO-k közül melyik a megfelelő az Ön számára:
+          - [Windows 10 2004-es vagy 20H2 **9B-es** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [Windows 10 2004-es vagy 20H2 **9C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [Windows 10 2004-es vagy 20H2 **10C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [Windows 10 2004-es vagy 20H2 **11C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10 2004-es vagy 20H2 **1C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
+          - [Windows 10 2004-es vagy 20H2 **2C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [Windows 10 2004-es vagy 20H2 **3C** LXP ISO-verzió](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2103C.iso)
 
-- Egy Azure Files megosztás vagy fájlmegosztás egy Windows fájlkiszolgáló virtuális gépen
+- Egy Azure Files vagy fájlmegosztás egy Windows fájlkiszolgáló virtuális gépen
 
 >[!NOTE]
->A fájlmegosztás (adattár) számára elérhetőnek kell lennie az egyéni rendszerkép létrehozásához használni kívánt Azure-beli virtuális gépről.
+>A fájlmegosztásnak (adattárnak) elérhetőnek kell lennie az egyéni rendszerkép létrehozásához használni kívánt Azure-beli virtuális gépről.
 
-## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>A nyelvi csomagok és szolgáltatások igény szerinti tárházának létrehozása
+## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Tartalomtár létrehozása igény szerinti nyelvi csomagokhoz és szolgáltatásokhoz
 
-A nyelvi csomagok és FODs, valamint a beérkezett fájlok mappáinak tárházának létrehozása a következő helyen:
+Tartalomtár létrehozása nyelvi csomagokhoz és FOD-khoz, valamint egy adattár a Beérkezett üzenetek alkalmazáscsomagjaihoz:
 
-1. Egy Azure-beli virtuális gépen töltse le a Windows 10-es multi-Language ISO, a FODs és a beérkezett fájlok alkalmazásait a Windows 10 Enterprise multi-session, a 1903/1909-es és a 2004-es verzióra az [Előfeltételek](#prerequisites)hivatkozásaiban.
+1. Azure-beli virtuális gépen töltse le Windows 10 Enterprise Windows 10 több munkamenetes, 1903/1909-es és 2004-es verziójú Windows 10 Enterprise-es verziójú és 2004-es rendszerképeket az Előfeltételek hivatkozásai [közül.](#prerequisites)
 
 2. Nyissa meg és csatlakoztassa az ISO-fájlokat a virtuális gépen.
 
-3. Nyissa meg a Language Pack ISO-t, és másolja a tartalmat a **LocalExperiencePacks** és az **x64 \\ Langpacks** mappából, majd illessze be a tartalmat a fájlmegosztásba.
+3. A nyelvi csomag ISO-fájljában másolja ki a **LocalExperiencePacks** és **az x64 \\ langpacks** mappában található tartalmat, majd illessze be a tartalmat a fájlmegosztásba.
 
-4. Nyissa meg az Franciaország-beli **ISO-fájlt**, másolja ki az összes tartalmát, majd illessze be a fájlmegosztást.
-5. Nyissa meg a beérkezett fájlok **amd64fre** mappáját, és másolja a tárházban lévő tartalmat az előkészített Beérkezett üzenetek mappájába.
+4. A **FOD** ISO-fájlba másolja az összes tartalmát, majd illessze be a fájlmegosztásba.
+5. Az Inbox Apps ISO-fájlban található **amd64fre** mappában másolja ki az előkészített beérkezett üzenetek alkalmazásait tartalmazó tárház tartalmát.
 
      >[!NOTE]
-     > Ha korlátozott tárterülettel dolgozik, csak azokat a nyelveket másolja, amelyekről a felhasználók számára szüksége van. A fájlokat egymástól eldöntheti, ha a fájlneveit a nyelvi kódokat keresi. A francia fájlban például a "fr-FR" kód szerepel a névben. Az összes elérhető nyelvhez tartozó nyelvi kódok teljes listájáért lásd: [elérhető nyelvi csomagok a Windowshoz](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
+     > Ha korlátozott tárterületen dolgozik, csak a felhasználók által használt nyelvekhez másolja a fájlokat. A fájlokat a fájlnevükön lévő nyelvkódok alapján lehet szétszedni. A francia fájl neve például az "fr-FR" kódot tartalmazza. Az összes elérhető nyelv nyelvkódja teljes listájáért lásd: Elérhető nyelvi [csomagok Windowshoz.](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)
 
      >[!IMPORTANT]
-     > Bizonyos nyelvekhez további betűkészletek szükségesek a különböző elnevezési konvenciókat követő szatellit csomagokban. A japán betűkészletek nevei például a következők: "Jpan".
+     > Egyes nyelvekhez további betűtípusok is szükségesek, amelyek a műholdas csomagokban különböző elnevezési konvenciókat követnek. A japán betűkészletek neve például a "Jpan".
      >
      > [!div class="mx-imgBorder"]
-     > ![A japán nyelvi csomagok példája a "Jpan" nyelvi címkével a fájlnevekben.](media/language-pack-example.png)
+     > ![Példa a japán nyelvi csomagokra, amelyek fájlnevében a "Jpan" nyelvi címke található.](media/language-pack-example.png)
 
-6. Állítsa be az engedélyeket a nyelvi tartalom tárházának megosztására, hogy rendelkezzen olvasási hozzáféréssel az egyéni rendszerkép létrehozásához használni kívánt virtuális gépről.
+6. Állítsa be az engedélyeket a nyelvi tartalomtár-megosztáson, hogy olvasási hozzáféréssel rendelkezik az egyéni rendszerkép létrehozásához használt virtuális gépről.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép manuális létrehozása
 
-Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép manuális létrehozása:
+Egyéni több munkamenetes rendszerkép Windows 10 Enterprise létrehozása:
 
-1. Helyezzen üzembe egy Azure-beli virtuális gépet, majd nyissa meg az Azure-katalógust, és válassza ki a Windows 10 Enterprise-munkamenet aktuális verzióját, amelyet használ.
-2. A virtuális gép üzembe helyezése után helyi rendszergazdaként az RDP használatával csatlakozhat hozzá.
-3. Győződjön meg arról, hogy a virtuális gép rendelkezik a legújabb Windows-frissítésekkel. Töltse le a frissítéseket, és szükség esetén indítsa újra a virtuális gépet.
-4. Kapcsolódjon a nyelvi csomaghoz, Franciaország tengerentúli megyéihez és a beérkezett alkalmazások fájlmegosztás-tárházához, és csatlakoztassa egy betűjelű meghajtóhoz (például az E meghajtóra).
+1. Telepítsen egy Azure-beli virtuális gépet, majd az Azure Galleryben válassza ki Windows 10 Enterprise használt több munkamenet aktuális verzióját.
+2. A virtuális gép üzembe helyezése után csatlakozzon hozzá RDP-kapcsolaton keresztül helyi rendszergazdaként.
+3. Ellenőrizze, hogy a virtuális gép rendelkezik-e a legújabb Windows-frissítésekkel. Töltse le a frissítéseket, és szükség esetén indítsa újra a virtuális gépet.
+4. Csatlakozzon a nyelvi csomag, a FOD és az Inbox Apps fájlmegosztási adattárhoz, és csatlakoztassa egy betűjeles meghajtóhoz (például az E meghajtóhoz).
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Egyéni Windows 10 Enterprise több munkamenetből álló rendszerkép automatikus létrehozása
 
-Ha inkább egy automatizált folyamaton keresztül szeretné telepíteni a nyelveket, beállíthat egy parancsfájlt a PowerShellben. A következő parancsfájl-minta használatával telepítheti a spanyol (spanyolországi), francia (franciaországi) és kínai (PRC) nyelvi csomagokat és a Satellite csomagokat a Windows 10 Enterprise multi-session, 2004-es verzióra. A parancsfájl integrálja a nyelvi kezelőfelületi csomagot és az összes szükséges műhold-csomagot a rendszerképbe. Ezt a szkriptet azonban módosíthatja más nyelvek telepítéséhez is. Csak futtassa a parancsfájlt egy emelt szintű PowerShell-munkamenetből, vagy más nem fog működni.
+Ha inkább automatizált folyamattal telepít nyelveket, beállíthat egy szkriptet a PowerShellben. A következő szkriptminta segítségével telepítheti Windows 10 Enterprise 2004-es, spanyol (Spanyolország), francia (Franciaország) és kínai (SATELLITE) nyelvi csomagokat és műholdas csomagokat. A szkript integrálja a nyelvi felületi csomagot és az összes szükséges műholdas csomagot a képbe. A parancsfájlt azonban módosíthatja úgy is, hogy más nyelveket telepítsen. Csak futtassa a szkriptet egy emelt szintű PowerShell-munkamenetből, különben nem fog működni.
 
 ```powershell
 ########################################################
@@ -171,11 +172,11 @@ $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
 
-A parancsfájl eltarthat egy ideig a telepítendő nyelvek számától függően.
+A szkript telepítése a telepítenünk szükséges nyelvek számától függ.
 
-Ha a parancsfájl futása befejeződött, ellenőrizze, hogy a nyelvi csomagok megfelelően vannak-e telepítve, **majd a**  >  **Beállítások**  >  **időpontja & a nyelv**  >  **nyelve**. Ha a nyelvi fájlok vannak, akkor minden be van állítva.
+Ha a szkript futtatása befejeződött, ellenőrizze, hogy a nyelvi csomagok megfelelően vannak-e telepítve a **Start** Settings Time (Beállítások kezdési ideje) & Language Language (Nyelv nyelv)  >    >  **lapon.**  >   Ha a nyelvi fájlok vannak, akkor készen is van.
 
-Miután további nyelveket adott hozzá a Windows-rendszerképhez, a beérkezett fájlok alkalmazásait is frissíteni kell a hozzáadott nyelvek támogatásához. Ezt úgy teheti meg, hogy az előre telepített alkalmazásokat a beérkezett fájlok ISO-ból származó tartalommal együtt frissít. A frissítés leválasztott környezetben való végrehajtásához (nem lehetséges a virtuális gép internet-hozzáférése) az alábbi PowerShell-parancsfájl segítségével automatizálhatja a folyamatot.
+Miután további nyelveket adott hozzá a Windows-rendszerképhez, a beérkezett üzenetek alkalmazásait is frissíteni kell a hozzáadott nyelvek támogatásához. Ehhez frissíteni kell az előre telepített alkalmazásokat a beérkező alkalmazások ISO-fájljából származó tartalommal. A frissítés leválasztott környezetben (a virtuális gépről való internet-hozzáférés nélkül) végrehajtásához használhatja a következő PowerShell-példaszkvprogramot a folyamat automatizálásához.
 
 ```powershell
 #########################################
@@ -223,33 +224,33 @@ foreach ($Appx in $AllAppxBundles) {
 ```
 
 >[!IMPORTANT]
->Az ISO-ben található beérkezett fájlok alkalmazás nem az előre telepített Windows-alkalmazások legújabb verziói. Az összes alkalmazás legújabb verziójának lekéréséhez frissítenie kell az alkalmazásokat a Windows áruházbeli alkalmazással, és a további nyelvek telepítése után manuálisan kell keresnie a frissítéseket.
+>Az ISO-fájlban található beérkezett alkalmazások nem az előre telepített Windows-alkalmazások legújabb verziói. Az összes alkalmazás legújabb verziójának végrehajtásához frissítenie kell az alkalmazásokat a Windows Áruházbeli alkalmazással, és manuálisan kell keresnie a frissítéseket, miután telepítette a további nyelveket.
 
-Ha elkészült, győződjön meg róla, hogy leválasztja a megosztást.
+Ha végzett, mindenképpen válassza le a megosztást.
 
-## <a name="finish-customizing-your-image"></a>A rendszerkép testre szabásának befejezése
+## <a name="finish-customizing-your-image"></a>A rendszerkép testreszabásának befejezése
 
-A nyelvi csomagok telepítése után telepítheti a testreszabott rendszerképbe felvenni kívánt egyéb szoftvereket is.
+A nyelvi csomagok telepítése után telepítheti a testreszabott lemezképhez hozzáadni kívánt egyéb szoftvereket.
 
-Miután végzett a rendszerkép testreszabásával, futtatnia kell a rendszer-előkészítő eszközt (Sysprep).
+Miután befejezte a rendszerkép testreszabását, futtatnia kell a rendszer-előkészítő eszközt (sysprep).
 
-A Sysprep futtatása:
+A sysprep futtatása:
 
-1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot a rendszerkép általánosítása érdekében:  
+1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot a lemezkép általánosítására:  
    
      ```cmd
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. Állítsa le a virtuális gépet, majd rögzítse azt egy felügyelt lemezképben az [általánosított virtuális gép felügyelt lemezképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md)című témakör utasításait követve.
+2. Állítsa le a virtuális gépet, majd rögzítse egy felügyelt rendszerképben a Felügyelt rendszerkép létrehozása általánosított virtuális gépről az [Azure-ban útmutatását követve.](../virtual-machines/windows/capture-image-resource.md)
 
-3. Mostantól a testreszabott lemezkép használatával üzembe helyezhet egy Windows rendszerű virtuális asztali címkészletet. A gazdagépek központi telepítésének megismeréséhez tekintse meg [a következő oktatóanyagot: állomáslista létrehozása a Azure Portal](create-host-pools-azure-marketplace.md).
+3. Most már használhatja a testreszabott rendszerképet egy gazdagépkészlet Windows Virtual Desktop telepítéséhez. A gazdagépkészletek üzembe helyezésének elsajátításért lásd: [Oktatóanyag:](create-host-pools-azure-marketplace.md)Gazdagépkészlet létrehozása a Azure Portal.
 
-## <a name="enable-languages-in-windows-settings-app"></a>Nyelvek engedélyezése a Windows beállításai alkalmazásban
+## <a name="enable-languages-in-windows-settings-app"></a>Nyelvek engedélyezése a Windows beállítási alkalmazásban
 
-Végül, miután telepítette a gazdagépet, hozzá kell adnia a nyelvet az egyes felhasználók nyelvi listájához, hogy a beállítások menüben ki tudják választani a kívánt nyelvet.
+Végül a gazdagépkészlet üzembe helyezése után hozzá kell adni a nyelvet az egyes felhasználók nyelvi listájához, hogy kiválasztják az előnyben részesített nyelvet a Beállítások menüben.
 
-Annak biztosítása érdekében, hogy a felhasználók kiválaszthatják a telepített nyelveket, jelentkezzen be felhasználóként, majd futtassa a következő PowerShell-parancsmagot a telepített nyelvi csomagok hozzáadásához a nyelvek menühöz. A parancsfájlt beállíthatja automatikus feladat vagy bejelentkezési parancsfájlként is, amely akkor aktiválódik, amikor a felhasználó bejelentkezik a munkamenetbe.
+Annak biztosításához, hogy a felhasználók kiválasztják a telepített nyelveket, jelentkezzen be felhasználóként, majd futtassa a következő PowerShell-parancsmagot, hogy hozzáadja a telepített nyelvi csomagokat a Nyelvek menühöz. Ezt a szkriptet automatikus feladatként vagy bejelentkezési szkriptként is beállíthatja, amely akkor aktiválódik, amikor a felhasználó bejelentkezik a munkamenetbe.
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList
@@ -259,10 +260,10 @@ $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
 
-Miután a felhasználó módosítja a nyelvi beállításokat, ki kell jelentkeznie a Windows rendszerű virtuális asztali munkamenetből, és újra be kell jelentkeznie a módosítások érvénybe léptetéséhez. 
+Miután a felhasználó módosítja a nyelvi beállításokat, ki kell jelentkeznie a Windows Virtual Desktop munkamenetből, és újra be kell jelentkeznie, hogy a módosítások életbe lépnek. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha kíváncsi a nyelvi csomagok ismert problémáira, tekintse meg [a nyelvi csomagok hozzáadása a Windows 10 1803-es és újabb verzióiban: ismert problémák](/windows-hardware/manufacture/desktop/language-packs-known-issue)című témakört.
+Ha kíváncsi a nyelvi csomagok ismert problémáira, tekintse meg a nyelvi csomagok hozzáadását a [Windows 10 1803-as](/windows-hardware/manufacture/desktop/language-packs-known-issue)és újabb verzióiban: Ismert problémák.
 
-Ha bármilyen egyéb kérdése van a Windows 10-es nagyvállalati multi-Sessions szolgáltatással kapcsolatban, tekintse meg a [gyakori](windows-10-multisession-faq.yml)kérdéseket.
+Ha további kérdései vannak a Windows 10 Enterprise munkamenetről, tekintse meg a gyakori [kérdéseket.](windows-10-multisession-faq.yml)

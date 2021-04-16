@@ -1,45 +1,50 @@
 ---
-title: Azure Service Bus Queues használata Javával
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Java-alkalmazásokat egy Azure Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához.
-ms.devlang: Java
-ms.topic: quickstart
+title: Üzenetsorok Azure Service Bus Használata Javával
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre Java-alkalmazásokat, amelyek üzeneteket küldenek egy üzenetsorba, és üzeneteket Azure Service Bus az üzenetsorból.
 ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1f7c5f71e75a1b683433531a9d95905e9a7d81cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 38657f333fea4ca18fb76eb5832649067bfd01b4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729725"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538250"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Gyors útmutató: Azure Service Bus-várólisták használata a Javával üzenetek küldéséhez és fogadásához
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rövid útmutató: Üzenetsorok Azure Service Bus használata Javával üzenetek küldése és fogadása
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Java-alkalmazásokat egy Azure Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához. 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Java-alkalmazásokat, amelyek üzeneteket küldenek egy üzenetsorba, és üzeneteket Azure Service Bus az üzenetsorból. 
 
 > [!WARNING]
->  Ez a rövid útmutató a régi `azure-servicebus` csomagokat használja. A legújabb csomagot használó gyors `azure-messaging-servicebus` útmutató: [üzenetek küldése és fogadása a használatával `azure-messaging-servicebus` ](service-bus-java-how-to-use-queues.md). 
+>  Ez a rövid útmutató a régi `azure-servicebus` csomagokat használja. A legújabb csomagot használó rövid útmutatóért `azure-messaging-servicebus` lásd: [Üzenetek küldése és fogadása a `azure-messaging-servicebus` használatával. ](service-bus-java-how-to-use-queues.md) 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
-    1. Olvassa el Service Bus **várólisták** gyors **áttekintését** . 
-    2. Hozzon létre egy Service Bus **névteret**. 
-    3. A **kapcsolatok karakterláncának** beolvasása.
-    4. Hozzon létre egy Service Bus **üzenetsor**.
-3. Telepítse [a Javához készült Azure SDK][Azure SDK for Java]-t. 
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [MSDN-előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+2. Ha nincs használható üzenetsora, kövesse a Use [Azure Portal to create a Service Bus queue](service-bus-quickstart-portal.md) (Üzenetsor létrehozása üzenetsor létrehozásához) cikk lépéseit az üzenetsor létrehozásához.
+    1. Olvassa el a következő **üzenetsorok** Service Bus **áttekintését:**. 
+    2. Hozzon létre egy Service Bus **névteret.** 
+    3. Szerezze be **a kapcsolati sztringet.**
+    4. Hozzon létre egy Service Bus **üzenetsort.**
+3. Telepítse a [Javához készült Azure SDK-t.][Azure SDK for Java] 
 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
-A minta létrehozása előtt győződjön meg arról, hogy telepítette a [Javához készült Azure SDK][Azure SDK for Java] -t. 
+## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása a Service Bus
+A minta kiépítése előtt győződjön meg arról, hogy telepítette a [Javához][Azure SDK for Java] készült Azure SDK-t. 
 
-Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **Javához készült Microsoft Azure kódtárakat** a projekthez. Ha a IntelliJ-t használja, tekintse meg [a Azure Toolkit for IntelliJ telepítését](/azure/developer/java/toolkit-for-intellij/installation)ismertető témakört. 
+Ha Eclipse-et használ, telepítheti a javához készült Azure [SDK Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] tartalmazó alkalmazást. Ezután hozzáadhatja a **Microsoft Azure Kódtárakat a** projekthez. IntelliJ használata esetén lásd: [Install the Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
 
-![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+![Java Microsoft Azure kódtárak hozzáadása az Eclipse-projekthez](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 
-Adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
+Adja hozzá a következő `import` utasításokat a Java-fájl tetejéhez:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -59,7 +64,7 @@ import org.apache.commons.cli.*;
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Ha üzeneteket szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás egy **QueueClient** objektumot hoz létre, és aszinkron módon küldi az üzeneteket. A következő kód bemutatja, hogyan küldhet üzenetet a portálon keresztül létrehozott üzenetsor számára.
+Ha üzeneteket küld egy Service Bus-üzenetsorba, az alkalmazás példányosítani fog egy **QueueClient** objektumot, és aszinkron módon küld üzeneteket. Az alábbi kód bemutatja, hogyan küldhet üzenetet a portálon keresztül létrehozott üzenetsorhoz.
 
 ```java
 public void run() throws Exception {
@@ -107,20 +112,20 @@ public void run() throws Exception {
 
 ```
 
-Service Bus várólistákból küldött és fogadott üzenetek az [üzenet](/java/api/com.microsoft.azure.servicebus.message) osztály példányai. Az üzenet objektumai szabványos tulajdonságokkal rendelkeznek (például felirat és TimeToLive), az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgáló szótár, valamint egy tetszőleges alkalmazásadatok törzse. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy bármilyen szerializálható objektumot továbbít az üzenet konstruktorának, és a megfelelő szerializáló lesz használva az objektum szerializálásához. Azt is megteheti, hogy Java-t is biztosít **. IO. InputStream** objektum.
+Az üzenetsorba küldött és onnan fogadott Service Bus üzenetsorok az [Üzenet osztály példányai.](/java/api/com.microsoft.azure.servicebus.message) Az üzenetobjektumok szabványos tulajdonságokkal (például Label és TimeToLive) rendelkeznek, egy egyéni alkalmazásspecifikus tulajdonságokat és tetszőleges alkalmazásadatok törzsét tárak. Az alkalmazás úgy állíthatja be az üzenet törzsét, hogy bármilyen szerializálható objektumot ad át az üzenet konstruktorának, majd a megfelelő szerializálóval szerializálja az objektumot. Másik lehetőségként java-t is **meg lehet adni. Io. InputStream** objektum.
 
 
 A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
-## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
-Az üzenetek várólistából való fogadásának elsődleges módja egy **ServiceBusContract** objektum használata. A fogadott üzenetek két különböző módban működhetnek: **ReceiveAndDelete** és **PeekLock**.
+## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása üzenetsorból
+Az üzenetek üzenetsorból való fogadásának elsődleges módja egy **ServiceBusContract objektum** használata. A fogadott üzenetek két különböző módban működnek: **ReceiveAndDelete** és **PeekLock**.
 
-A **ReceiveAndDelete** mód használatakor a fogadás egy egylépéses művelet – vagyis amikor a Service Bus olvasási kérést kap egy várólistában lévő üzenethez, az üzenetet felhasználja, és visszaadja az alkalmazásnak. A **ReceiveAndDelete** mód (amely az alapértelmezett mód) a legegyszerűbb modell, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt.
-Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
+A **ReceiveAndDelete** módban a fogadás egy egyszeri művelet – azaz amikor a Service Bus olvasási kérést kap egy üzenetsorban lévő üzenetre, az üzenetet felhasználtként jelöli meg, és visszaadja az alkalmazásnak. **A ReceiveAndDelete** mód (ez az alapértelmezett mód) a legegyszerűbb modell, és az olyan forgatókönyvekhez működik a legjobban, amelyekben az alkalmazás hiba esetén nem képes feldolgozni az üzeneteket. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt.
+Mivel Service Bus az üzenetet felhasználtként jelölte meg, akkor amikor az alkalmazás újraindul, és ismét elkezdi az üzenetek fogadását, kihagyta az összeomlás előtt felhasznált üzenetet.
 
-**PeekLock** módban a fogadás kétlépéses művelet lesz, ami lehetővé teszi olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a beérkezett üzenetben meghívja a **Complete ()** függvényt a fogadási folyamat második szakaszával. Ha Service Bus látja a **Complete ()** hívást, a rendszer felhasználja az üzenetet, és eltávolítja azt a várólistából. 
+**PeekLock módban** a fogadás kétszakaszos művelet lesz, ami lehetővé teszi a hiányzó üzeneteket nem tűrő alkalmazások támogatását. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja a jövőbeli feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a **complete()** hívásával a fogadott üzeneten. Amikor Service Bus **complete()** hívást lát, az felhasználtként jelöli meg az üzenetet, és eltávolítja az üzenetsorból. 
 
-Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a **PeekLock** mód használatával (nem az alapértelmezett mód). Az alábbi példa a visszahívási modellt használja egy regisztrált üzenetkezelővel, és feldolgozza az üzeneteket, ahogy azok beérkeznek `TestQueue` . Ez a mód automatikusan meghívja a **Complete ()** metódust, mivel a visszahívás a szokásos módon tér vissza, és a **lemondás ()** hívásával a visszahívás kivételt jelez 
+Az alábbi példa bemutatja, hogyan lehet üzeneteket fogadni és feldolgozni **PeekLock** módban (nem az alapértelmezett módban). Az alábbi példa a visszahívási modellt használja egy regisztrált üzenetkezelővel, és feldolgozza az üzeneteket, amint megérkeznek `TestQueue` a-be. Ez a mód automatikusan hívja meg **a complete()** függvényt, amikor a visszahívás a szokásos módon tér vissza, és az **abandon()** függvényt hívja meg, ha a visszahívás kivételt ad vissza. 
 
 ```java
     public void run() throws Exception {
@@ -173,17 +178,17 @@ Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenete
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor az az **getLockToken ()** metódussal kapott üzenet zárolási jogkivonatát hívhatja **meg az ügyfél** -objektumon. Ennek hatására a Service Bus feloldja az üzenet zárolását az üzenetsoron belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadóalkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor meg tudja hívni az **abandon()** metódust az ügyfélobjektumon a kapott üzenet **getLockToken()** használatával kapott zárolási jogkivonatával. Ennek hatására a Service Bus feloldja az üzenet zárolását az üzenetsoron belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
 
-A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását, és lehetővé teszi az újbóli fogadását.
+Emellett az üzenetsorban zárolt üzenethez időtúllépés is tartozik, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor az Service Bus automatikusan feloldja az üzenet zárolását, és elérhetővé teszi azt, hogy ismét megkapható legyen.
 
-Abban az esetben, ha az alkalmazás az üzenet feldolgozása után összeomlik, de a **Complete ()** kérelem kiadása előtt, akkor az üzenet az újraindításkor újra megjelenik az alkalmazásban. Ezt gyakran nevezik *legalább egyszer feldolgozásra*; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet **getMessageId** metódusával érhető el, amely állandó marad a kézbesítési kísérletek között.
+Ha az alkalmazás összeomlik az üzenet feldolgozása után, de még a **complete()** kérés kibocsátása előtt, az üzenet újra kézbesítve lesz az alkalmazásnak az újraindításkor. Ezt gyakran legalább *egyszeres feldolgozásnak nevezik;* ez azt jelenti, hogy a rendszer minden üzenetet legalább egyszer feldolgoz, de bizonyos esetekben előfordulhat, hogy ugyanazt az üzenetet újraküldi a rendszer. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet **getMessageId** metódusával érhető el, amely a kézbesítési kísérletek során állandó marad.
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+> Az erőforrás-Service Bus a [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez csatlakozzon, és könnyen felügyelik az üzenetküldési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkciók, vagy a témakör, az üzenetsorok, az előfizetések, a továbbítási szolgáltatások, az értesítési központok és az eseményközpontok tesztelési képessége. 
 
 ## <a name="next-steps"></a>Következő lépések
-Java-mintákat a GitHubon talál a [ `azure-service-bus` tárházban](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
+A Java-mintákat a GitHubon, a [ `azure-service-bus` adattárban találja.](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)
 
 [Azure SDK for Java]: /azure/developer/java/sdk/get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

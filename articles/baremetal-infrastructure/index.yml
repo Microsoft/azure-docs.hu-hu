@@ -7,15 +7,15 @@ metadata:
   services: baremetal-infrastructure
   ms.service: baremetal-infrastructure
   ms.topic: landing-page
-  author: shortpatti
-  ms.author: v-patsho
-  ms.date: 03/19/2021
-  ms.openlocfilehash: 89bd62f1462f4b3a20b1fdb9469ccb75de93ce78
-  ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+  author: Ajayan1008
+  ms.author: v-hborys
+  ms.date: 04/14/2021
+  ms.openlocfilehash: 52e70d842f8e8237f1eee3446a8b70f867224be1
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "104951606"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107536838"
 landingContent:
 - title: A BareMetal Infrastructure névjegye
   linkLists:
@@ -25,10 +25,26 @@ landingContent:
       url: concepts-baremetal-infrastructure-overview.md
     - text: A feltételek megismerése
       url: know-baremetal-terms.md
-    - text: BareMetal-számításifeladatok típusai
-      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
-    - text: BareMetal-példány-egységek összekötése az Azure-ban
+    - text: BareMetal-példányok csatlakoztatása az Azure-ban
       url: connect-baremetal-infrastructure.md
+- title: BareMetal-infrastruktúra Oracle-hez
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Az Oracle BareMetal-infrastruktúrája?
+      url: workloads/oracle/oracle-baremetal-overview.md
+    - text: BareMetal SKUs Oracle számítási feladatokhoz
+      url: workloads/oracle/oracle-baremetal-skus.md
+    - text: Storage az Oracle-hez az BareMetalon
+      url: workloads/oracle/oracle-baremetal-storage.md
+    - text: Javítási szempontok
+      url: workloads/oracle/oracle-baremetal-patching.md
+    - text: Ethernet-konfiguráció
+      url: workloads/oracle/oracle-baremetal-ethernet.md
+    - text: Az Oracle-hez való BareMetal architektúrája
+      url: workloads/oracle/oracle-baremetal-architecture.md
+    - text: BareMetal kiépítése Oracle-hez
+      url: workloads/oracle/oracle-baremetal-provision.md
 - title: SAP HANA az Azure-ban (nagyméretű példányok)
   linkLists:
   - linkListType: overview

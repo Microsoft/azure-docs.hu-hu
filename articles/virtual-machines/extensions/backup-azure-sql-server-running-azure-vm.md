@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli virtuális gépen futó SQL Server Azure Backup
-description: Ebből a cikkből megtudhatja, hogyan regisztrálhat Azure Backup az Azure-beli virtuális gépeken futó SQL Serverokban.
+title: Azure Backup Azure-beli SQL Server futó virtuális gépekhez
+description: Ebből a cikkből megtudhatja, hogyan regisztrálhat Azure Backup azure SQL Server virtuális gépen futó virtuális gépeken.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
@@ -8,29 +8,29 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293753"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517249"
 ---
-# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server Azure Backup
+# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup Azure-beli SQL Server futó virtuális gépekhez
 
-A Azure Backup a többi ajánlat között támogatást nyújt a munkaterhelések, például az Azure-beli virtuális gépeken futó SQL Server biztonsági mentéséhez. Mivel az SQL-alkalmazás egy Azure-beli virtuális gépen fut, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához.
-Ehhez Azure Backup telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépre, amelyben a SQL Server fut, a felhasználó által aktivált regisztrációs folyamat során.
+Azure Backup ajánlatok között a támogatja az Azure-beli virtuális gépeken futó SQL Server számítási feladatok biztonságimentését. Mivel az SQL-alkalmazás egy Azure-beli virtuális gépen fut, a biztonsági mentési szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok lekéréséhez.
+Ennek érdekében a Azure Backup telepíti az **AzureBackupWindowsWorkload** bővítményt arra a virtuális gépre, amelyen az SQL Server fut, a felhasználó által indított regisztrációs folyamat során.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A támogatott forgatókönyvek listáját a Azure Backup által támogatott [támogatási mátrixban](../../backup/sql-support-matrix.md#scenario-support) találja.
+A támogatott forgatókönyvek listájáért tekintse [](../../backup/sql-support-matrix.md#scenario-support) meg a támogatott forgatókönyvek által támogatott támogatási Azure Backup.
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
-Azure Backup támogatja a NSG-címkéket, a proxykiszolgáló vagy a felsorolt IP-címtartományok telepítését; az egyes módszerekkel kapcsolatos részletekért tekintse meg ezt a [cikket](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity).
+Azure Backup támogatja az NSG-címkéket, a proxykiszolgálók vagy a felsorolt IP-tartományok üzembe helyezését; Az egyes metódusokkal kapcsolatos részletekért tekintse meg ezt a [cikket.](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A bővítmény sémája és a tulajdonság értéke a szolgáltatás által a CRP API-nak áthaladó konfigurációs értékek (futásidejű beállítások). Ezek a konfigurációs értékek a regisztráció és a frissítés során használatosak. A **AzureBackupWindowsWorkload** -bővítmény ezt a sémát is használja. A séma előre be van állítva; a objectStr mezőben új paraméter adható hozzá
+A bővítménysémák és a tulajdonságértékek a szolgáltatás által a CRP API-nak megadott konfigurációs értékek (futásidejű beállítások). Ezeket a konfigurációs értékeket a rendszer a regisztráció és a frissítés során használja. **Az AzureBackupWindowsWorkload** bővítmény is ezt a sémát használja. A séma előre be van állítva; az objectStr mezőben új paraméter is hozzáadható
 
   ```json
       "runtimeSettings": [{
@@ -53,7 +53,7 @@ A bővítmény sémája és a tulajdonság értéke a szolgáltatás által a CR
       }
   ```
 
-A következő JSON a WorkloadBackup-bővítmény sémáját jeleníti meg.  
+Az alábbi JSON a WorkloadBackup bővítmény sémáját mutatja be.  
 
   ```json
   {
@@ -88,30 +88,30 @@ A következő JSON a WorkloadBackup-bővítmény sémáját jeleníti meg.
 Name | Érték/példa | Adattípus
  --- | --- | ---
 területi beállítás | hu-hu  |  sztring
-taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | sztring
-objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | sztring
+taskId (feladatazonosító) | "1c0ae461-9d3b-418c-a505-1dfe2095d"  | sztring
+objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdYTJNDZlM2ZkiwiSWRNZ210Q29udGFpbmMySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIwiU3Vic2AcXB0aW9uSWQiOiJkNGEzOTliNy1iYJAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTLCJVbmlxdWVBmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhhYjg3OTcyIn0sInN0YW1w1wTGlzdCI6W3siU2MicdmzimZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVulbCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==" | sztring
 commandStartTimeUTCTicks | "636967192566036845"  | sztring
-vmType  | "Microsoft. számítás/virtualmachines"  | sztring
-objectStr <br/> Protectedsettingsfromkeyvault | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | sztring
+vmType (virtuális gép típusa)  | "microsoft.compute/virtualmachines"  | sztring
+objectStr <br/> (protectedSettings) | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdYTJNDZlM2ZkiwiSWRNZ210Q29udGFpbmMySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIwiU3Vic2AcXB0aW9uSWQiOiJkNGEzOTliNy1iYJAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTLCJVbmlxdWVBmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhhYjg3OTcyIn0sInN0YW1w1wTGlzdCI6W3siU2MicdmzimZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVulbCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==" | sztring
 logsBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | sztring
 statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | sztring
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Azt javasoljuk, hogy a AzureBackupWindowsWorkload bővítményt a virtuális géphez adja hozzá, ha engedélyezi SQL Server biztonsági mentést a virtuális gépen. Ez a SQL Server VMon történő biztonsági mentés automatizálására szolgáló [Resource Manager-sablonon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) keresztül érhető el.
+Javasoljuk, hogy az AzureBackupWindowsWorkload bővítményt úgy adja hozzá egy virtuális géphez, hogy engedélyezi SQL Server biztonsági mentést a virtuális gépen. Ez a biztonsági mentés automatizálására [tervezett](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) Resource Manager érhető el a SQL Server VM.
 
 ## <a name="powershell-deployment"></a>A PowerShell telepítése
 
-Regisztrálnia kell az Azure-beli virtuális gépet, amely tartalmazza az SQL-alkalmazást a Recovery Services-tárolóval. A regisztráció során a rendszer telepíti a AzureBackupWindowsWorkload bővítményt a virtuális gépre. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) parancsmagot.
+Regisztrálnia kell az SQL-alkalmazást tartalmazó Azure-beli virtuális gépet egy Recovery Services-tárolóval. A regisztráció során az AzureBackupWindowsWorkload bővítmény telepítve lesz a virtuális gépen. A virtuális gép regisztráláshoz használja a [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) parancsmagot.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-A parancs visszaküldi az erőforrás **biztonsági mentési tárolóját** , és a rendszer **regisztrálja** az állapotot.
+A parancs egy **biztonsági mentési tárolót ad** vissza erről az erőforrásról, és az állapot **regisztrálva lesz.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [További](../../backup/backup-sql-server-azure-troubleshoot.md) információ az Azure SQL Server VM Backup hibaelhárítási irányelveiről
-- [Gyakori kérdések](../../backup/faq-backup-sql-server.md) az Azure Virtual Machines szolgáltatásban (VM) futó SQL Server adatbázisok biztonsági mentéséről és azokról, amelyek az Azure Backup szolgáltatást használják.
+- [További információ a](../../backup/backup-sql-server-azure-troubleshoot.md) Azure SQL virtuális gépek biztonsági mentésének hibaelhárítási útmutatóiról
+- [Gyakori kérdések](../../backup/faq-backup-sql-server.yml) az Azure-SQL Server virtuális gépeken futó és az Azure Backup szolgáltatást Azure Backup adatbázisok biztonsági mentése ről.

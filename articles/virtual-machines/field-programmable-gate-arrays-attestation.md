@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: ab9c9c6b9d908e86912565ba43cec665432aeda5
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: a3408d30a9caa24355cf3976235c3a9b8061b95f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389621"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531232"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-igazolás Azure-beli NP-Series virtuális gépekhez (előzetes verzió)
 
@@ -46,21 +46,21 @@ Ahhoz, hogy egy bitstream helyett netlistát tartalmazó xclbin-fájlt hoz létr
 
 Mielőtt bármilyen műveletet hajt végre az Azure-ral, be kell jelentkeznie az Azure-ba, és be kell állítania azt az előfizetést, amely jogosult a szolgáltatás hívására. Erre a célra ```az login``` használja a és a ```az account set –s <Sub ID or Name>``` parancsot. A folyamattal kapcsolatos további információkat itt dokumentáljuk:  
 
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. Használja a "bejelentkezés interaktívan" vagy a "bejelentkezés hitelesítő adatokkal" lehetőséget a parancssorban.  
+https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. A parancssorban használja a "bejelentkezés interaktívan" vagy a "bejelentkezés hitelesítő adatokkal" lehetőséget.  
 
 ## <a name="creating-a-storage-account-and-blob-container"></a>Tárfiók és blobtároló létrehozása  
 
-A netlist-fájlt fel kell tölteni egy Azure Storage-blobtárolóba, hogy hozzáférjen az igazolási szolgáltatáshoz.  
+A netlist-fájlt fel kell tölteni egy Azure Storage-blobtárolóba, hogy az igazolási szolgáltatás hozzáférjen.  
 
-A fiók és a tároló létrehozásával és a netlist blobként való feltöltésével kapcsolatos további információkért tekintse meg ezt az oldalt: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli) .  
+A fiók és a tároló létrehozásával, valamint a netlist blobként való feltöltésével kapcsolatos további információkért tekintse meg ezt az oldalt: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli) .  
 
 Ehhez a Azure Portal is használhatja.  
 
 ## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>A netlist fájl feltöltése az Azure Blob Storage-ba  
 
-A fájl másolásának több módja is van; Alább látható egy példa az az storage upload parancsmag használatával. Az az parancsok Linux és Windows rendszeren is futnak. A "blob" névhez bármilyen nevet választhat, de ügyeljen arra, hogy megtartsa az xclbin bővítményt. 
+A fájl másolásának több módja is van; Alább látható egy példa az az storage upload parancsmag használatával. Az az parancsok Linux és Windows rendszeren is futnak. A "blob" névhez bármilyen nevet kiválaszthat, de ügyeljen arra, hogy megtartsa az xclbin bővítményt. 
 
-```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
 ## <a name="download-the-attestation-scripts"></a>Az igazolási szkriptek letöltése  
 
@@ -68,33 +68,33 @@ Az érvényesítési szkriptek a következő Azure Storage-blobtárolóból töl
 
 https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
 
-A zip-fájl két PowerShell-szkriptet tartalmaz: az egyiket el kell küldenünk, a másikat monitorba kell küldenünk, míg a harmadik egy bash-szkript, amely mindkét funkciót végrehajtja.  
+A zip-fájl két PowerShell-szkriptet tartalmaz: az egyiket el kell küldenünk, a másikat monitorba kell küldenünk, míg a harmadik egy Bash-szkript, amely mindkét funkciót végrehajtja.  
 
 ## <a name="running-the-attestation-scripts"></a>Az igazolási szkriptek futtatása  
 
-A szkriptek futtatásához meg kell adnia a tárfiók nevét, a netlist fájlt tároló blobtároló nevét és a netlist fájl nevét. Létre kell hoznia egy szolgáltatás közös hozzáférésű jogosultságát (SAS), amely olvasási/írási hozzáférést biztosít a tárolóhoz (nem a netlistához). Ezt az SAS-t az igazolási szolgáltatás arra használja, hogy helyi másolatot készítsen a netlist fájlról, és visszaírja az ellenőrzési folyamat eredményül kapott kimeneti fájljait a tárolóba.  
+A szkriptek futtatásához meg kell adnia a tárfiók nevét, a netlist fájlt tároló blobtároló nevét és a netlist fájl nevét. Létre kell hoznia egy szolgáltatás közös hozzáférésű jogosultságát (SAS), amely olvasási/írási hozzáférést biztosít a tárolóhoz (nem a netlistához). Ezt az SAS-t az igazolási szolgáltatás arra használja, hogy helyi másolatot készítsen a netlist fájlról, és visszaírja az érvényesítési folyamat eredményül kapott kimeneti fájljait a tárolóba.  
 
-A közös hozzáférésű jogosultságok aláírásának áttekintése itt érhető el, a szolgáltatási SAS-ről itt talál további információt. A Szolgáltatás SAS-oldala fontos figyelmeztetést tartalmaz a létrehozott SAS védelméről.  Olvassa el a figyelmeztetést, hogy megértse, miért kell megvédeni az SAS-t a kártékony vagy nem szándékos használattól.  
+A közös hozzáférésű jogosultságok áttekintését itt, a szolgáltatási SAS-sel kapcsolatos konkrét információkkal együtt itt olvashatja el. A Szolgáltatás SAS-oldala fontos figyelmeztetést tartalmaz a létrehozott SAS védelméről.  Olvassa el a figyelmeztetést, hogy tisztában legyen vele, hogy az SAS-t meg kell védeni a kártékony vagy nem szándékos használattól.  
 
 A tárolóhoz az az storage container generate-sas parancsmag használatával hozhat létre SAS-t. Adjon meg egy UTC formátumú lejárati időt, amely legalább néhány órával a beküldés előtt van; körülbelül 6 óra elegendőnek kell lennie.  
 
-Ha virtuális könyvtárakat szeretne használni, a könyvtárhierarchiát is bele kell foglalnia a tároló argumentumába. Ha például van egy "netlists" nevű tárolója, és egy "image1" nevű virtuális könyvtára tartalmazza a netlist blobot, akkor a tároló neve "netlists/image1". Ha mélyebb hierarchiát ad meg, fűzheti hozzá a további könyvtárneveket. 
+Ha virtuális könyvtárakat szeretne használni, a könyvtárhierarchiát is bele kell foglalnia a tároló argumentumába. Ha például van egy "netlists" nevű tárolója, és van egy "image1" nevű virtuális könyvtára, amely a netlist blobot tartalmazza, akkor a tároló neve "netlists/image1". A további címtárnevek hozzáfűzése mélyebb hierarchia megadásához. 
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
 
 ```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+``` sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
 
 ```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
 
 ## <a name="checking-on-the-status-of-your-submission"></a>A beküldés állapotának ellenőrzése  
 
-Az igazolási szolgáltatás visszaadja a beküldés vezénylési azonosítóját. A beküldési szkriptek automatikusan elkezdik a beküldés monitorozását a lekérdezve a befejezésig. A vezénylési azonosító az elsődleges módszer arra, hogy áttekintsük, mi történt a beküldéskor, ezért kérjük, tartsa meg, ha problémája van. Referenciapontokként az igazolás egy kis netlist fájlnál körülbelül 30 percet vesz igénybe (300 MB méretű); egy 1,6 GB-os fájl egy óráig tartott. 
+Az igazolási szolgáltatás visszaadja a beküldés vezénylési azonosítóját. A beküldési szkriptek automatikusan elkezdik a beküldés monitorozását a lekérdezett lekérdezésekkel. A vezénylési azonosító az elsődleges módja annak, hogy áttekintsük, mi történt a beküldése során, ezért kérjük, tartsa meg, ha problémája van. Referenciapontokként az igazolás körülbelül 30 percet vesz igénybe egy kis netlistás fájlhoz (300 MB méretű); egy 1,6 GB-os fájl egy óráig tartott. 
 
 A vezénylési Monitor-Validation.ps1 bármikor hívhatja az állapot és az igazolási eredmények lehívására, argumentumként megtéve a vezénylési azonosítót:  
 
@@ -120,9 +120,9 @@ A kérelem törzsének tartalmaznia kell az előfizetés-azonosítót, a bérlő
 
 ## <a name="post-validation-steps"></a>Az ellenőrzés utáni lépések
 
-A szolgáltatás visszaírja a kimenetét a tárolóba. Ha az érvényesítés sikeres, a tároló tartalmazni fogja az eredeti netlist fájlt (abc.xclbin), egy bitstreamet tartalmazó fájlt (abc.bit.xclbin), egy fájlt, amely azonosítja a tárolt bitstream privát helyét (abc.azure.xclbin) és négy naplófájlt: egyet az indítási folyamathoz (abc-log.txt), egyet pedig az ellenőrzést végző három párhuzamos fázishoz. Ezek neve *logPhaseX.txt ahol az X a fázis sorszáma. Az azure.xclbin a virtuális gépen az ellenőrzött rendszerkép U250-re való feltöltésének jelzésére szolgál. 
+A szolgáltatás visszaírja a kimenetét a tárolóba. Ha az érvényesítés sikeres, a tárolóban lesz az eredeti netlist fájl (abc.xclbin), egy bitstreamet tartalmazó fájl (abc.bit.xclbin), egy fájl, amely azonosítja a tárolt bitstream privát helyét (abc.azure.xclbin), valamint négy naplófájlt: egyet az indítási folyamathoz (abc-log.txt), egyet pedig az ellenőrzést végző három párhuzamos fázishoz. Ezek neve *logPhaseX.txt ahol az X a fázis sorszáma. A virtuális gépen az azure.xclbin jelzi az ellenőrzött rendszerkép feltöltését az U250-re. 
 
-Ha az érvényesítés sikertelen volt, a rendszer egy error-*.txt fájlt ír, amely jelzi, hogy melyik lépés volt sikertelen. Ellenőrizze a naplófájlokat is, ha a hibanapló azt jelzi, hogy az igazolás sikertelen volt. Ha támogatásért kapcsolatba lép velünk, mindenképpen adja meg ezeket a fájlokat a támogatási kérés részeként, valamint a vezénylési azonosítót.  
+Ha az érvényesítés sikertelen, a rendszer egy error-*.txt fájlt ír, amely jelzi, hogy melyik lépés volt sikertelen. Ellenőrizze a naplófájlokat is, ha a hibanapló azt jelzi, hogy az igazolás sikertelen volt. Ha támogatási kérést kér tőlünk, mindenképpen adja meg ezeket a fájlokat a támogatási kérés részeként, valamint a vezénylési azonosítót.  
 
-A tárolót a Azure Portal használhatja, valamint feltöltheti a netlistát, valamint letöltheti a bitstream- és naplófájlokat. Az igazolási kérések elküldése és a folyamat előrehaladásának a portálon keresztüli monitorozása jelenleg nem támogatott, és a fent leírt szkriptekkel kell őket elérni. 
+A tárolót a Azure Portal használhatja, valamint feltöltheti a netlistát, valamint letöltheti a bitstream- és a naplófájlokat. Az igazolási kérések elküldése és a folyamat előrehaladásának a portálon keresztüli monitorozása jelenleg nem támogatott, és a fent leírt szkriptekkel kell őket elérni. 
 

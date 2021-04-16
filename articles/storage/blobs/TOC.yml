@@ -169,11 +169,11 @@
               href: storage-blob-change-feed.md
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
-        - name: Redundancia és vész-helyreállítás
+        - name: Redundancia és vészhelyreállítás
           items:
             - name: Adatredundancia
               href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Ügyfél által felügyelt feladatátvétel a vész-helyreállításhoz
+            - name: Felhasználó által felügyelt feladatátvétel vészhelyreállításhoz
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Objektumreplikáció
           href: object-replication-overview.md
@@ -221,7 +221,7 @@
               href: blob-inventory.md
         - name: Adatok migrálása
           items:
-            - name: A tárterület áttelepítése – áttekintés
+            - name: Tárolóáttelepítés áttekintése
               href: ../common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatátviteli megoldások összehasonlítása
               href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -289,7 +289,7 @@
               href: storage-blob-container-properties-metadata.md
         - name: Blobok létrehozása és kezelése
           items:
-            - name: Blobok listázása (SDK)
+            - name: Blobok listái (SDK)
               href: storage-blobs-list.md
             - name: Blobtulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-properties-metadata.md
@@ -299,7 +299,7 @@
               href: storage-blob-copy.md
             - name: Blobindex-címkék használata
               href: storage-blob-index-how-to.md
-            - name: Blobok számának és teljes méretének kiszámítása
+            - name: Blobok darabszámának és teljes méretének kiszámítása
               href: calculate-blob-count-size.md
         - name: Blobadatok hozzáférésének engedélyezése
           items:
@@ -405,19 +405,19 @@
                   href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Az Azure Defender konfigurálása veszélyforrások elleni védelem céljából
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Blobok adatainak védelme
+        - name: Blobadatok védelme
           items:
-            - name: Storage-fiók zárolása
+            - name: Tárfiók zárolása
               href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Tárolók helyreállítható törlésének engedélyezése
               href: soft-delete-container-enable.md
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
-            - name: A Blobok Soft delete engedélyezése és kezelése
+            - name: Blobok soft delete parancsának engedélyezése és kezelése
               items:
-                - name: BLOB törlésének engedélyezése
+                - name: Blobok végleges törlésének engedélyezése
                   href: soft-delete-blob-enable.md
-                - name: A nem törölt Blobok kezelése és visszaállítása
+                - name: Helyreállíthatóan törölt blobok kezelése és visszaállítása
                   href: soft-delete-blob-manage.md
             - name: Időponthoz kötött visszaállítás engedélyezése
               href: point-in-time-restore-manage.md
@@ -427,7 +427,7 @@
               href: storage-blob-change-feed-how-to.md
             - name: Módosíthatatlansági szabályzatok beállítása és kezelése
               href: storage-blob-immutability-policies-manage.md
-        - name: A redundancia és a feladatátvétel kezelése
+        - name: Redundancia és feladatátvétel kezelése
           items:
             - name: Redundancia konfigurációjának módosítása
               href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -445,7 +445,7 @@
           items:
             - name: A nyílt forráskódú Azurite emulátor használata
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Automatizált tesztek futtatása a Azurite használatával
+            - name: Automatizált tesztek futtatása az Azurite használatával
               href: use-azurite-to-run-automated-tests.md
             - name: Az Azure Storage Emulator használata
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -469,20 +469,22 @@
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Engedélyezés az Azure AD-vel
                   href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Teljesítmény optimalizálása
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Hibák megkeresása és feladatok folytatása naplók használatával
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Feltöltés'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Letöltés'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Példák: Szinkronizálás'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Másolás tárfiókok között'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Példák: Szinkronizálás'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Amazon S3-gyűjtők'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Google Cloud Storage-gyűjtők'
                   href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Tárterület csatlakoztatása az NFS használatával
@@ -519,6 +521,8 @@
           href: ../blobs/reference.md
         - name: AzCopy (10-es verzió)
           items:
+            - name: Konfigurációs beállítások
+              href: ../common/storage-ref-azcopy-configuration-settings.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy
               href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy bench
@@ -579,9 +583,9 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Parancssori kapcsolók Storage Explorer
+            - name: Storage Explorer parancssori beállítások
               href: ../common/storage-explorer-command-line-options.md
-            - name: Storage Explorer közvetlen hivatkozás
+            - name: Storage Explorer hivatkozás létrehozása
               href: ../common/storage-explorer-direct-link.md
             - name: A Storage Explorer biztonsági beállításai
               href: ../common/storage-explorer-security.md
@@ -665,9 +669,9 @@
       items:
         - name: Használat a Databricks és a Spark használatával
           href: data-lake-storage-use-databricks-spark.md
-        - name: Használat Apache Hive és HDInsight
+        - name: Használat a Apache Hive HDInsightban
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Használat a Databricks-különbözettel és a Event Grid
+        - name: Használat a Databricks Deltával és Event Grid
           href: data-lake-storage-events.md
         - name: Használat más Azure-szolgáltatásokkal
           href: data-lake-storage-integrate-with-services-tutorials.md
@@ -727,7 +731,7 @@
       items:
         - name: Tárfiók létrehozása
           href: create-data-lake-storage-account.md
-        - name: Fiókok és adattárak migrálása
+        - name: Fiókok és adattárak áttelepítése
           items:
             - name: Migrálás a Data Lake Storage Gen1-ből
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -741,18 +745,24 @@
               items:
                 - name: Bevezetés
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Engedélyezés az Azure AD-vel
+                  href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Teljesítmény optimalizálása
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Hibák megkeresása és feladatok folytatása naplók használatával
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Feltöltés'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Letöltés'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Példák: Szinkronizálás'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Másolás tárfiókok között'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Példák: Szinkronizálás'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Példák: Amazon S3-gyűjtők'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Példák: Google Cloud Storage-gyűjtők'
+                  href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatok átvitele a DistCp eszközzel
@@ -799,7 +809,7 @@
           href: data-lake-storage-integrate-with-services-tutorials.md
         - name: Teljesítmény optimalizálása
           items:
-            - name: A teljesítmény optimalizálása – áttekintés
+            - name: Teljesítményoptimalizálás áttekintése
               href: data-lake-storage-performance-tuning-guidance.md
             - name: A HDInsight-alapú Spark optimalizálása
               href: data-lake-storage-performance-tuning-spark.md

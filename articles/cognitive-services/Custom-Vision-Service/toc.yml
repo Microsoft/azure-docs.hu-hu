@@ -57,6 +57,12 @@
       href: ./export-delete-data.md
     - name: Az alkalmazás frissítése a 3.0-s API-ra
       href: ./update-application-to-3.0-sdk.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/custom-vision-service/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
 - name: Referencia
   items:
     - name: Egyéni vizuális képzési API
@@ -81,7 +87,13 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: További források
   items:
-    - name: Támogatási lehetőségek
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és minősítés
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: Példák
       href: /samples/browse/?products=azure&term=vision
@@ -89,11 +101,5 @@
       href: limits-and-quotas.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md

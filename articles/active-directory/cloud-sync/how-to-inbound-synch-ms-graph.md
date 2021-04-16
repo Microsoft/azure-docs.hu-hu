@@ -1,6 +1,6 @@
 ---
-title: A Cloud Sync programozott konfigurálása MS Graph API használatával
-description: Ez a témakör azt ismerteti, hogyan engedélyezheti a bejövő szinkronizálást csak a Graph API használatával
+title: Felhőszinkronizálás programozott konfigurálása MS Graph API
+description: Ez a témakör azt ismerteti, hogyan engedélyezheti a bejövő szinkronizálást csak a Graph API
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,43 +11,48 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe220cf7b5cb8b67e5ab7ded221494e89a28aa5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593160"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530270"
 ---
-# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>A Cloud Sync programozott konfigurálása MS Graph API használatával
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Felhőszinkronizálás programozott konfigurálása MS Graph API
 
-Az alábbi dokumentum azt ismerteti, hogyan replikálhat egy szinkronizációs profilt a semmiből kizárólag MSGraph API-k használatával.  
-Ennek a folyamatnak a szerkezete a következő lépésekből áll.  Ezek a következők:
+A következő dokumentum bemutatja, hogyan replikálhatja a szinkronizálási profilokat az nulláról, csak MSGraph API-k használatával.  
+Ennek struktúrája az alábbi lépésekből áll.  Ezek a következők:
 
-- [Alapszintű beállítás](#basic-setup)
-- [Egyszerű szolgáltatás létrehozása](#create-service-principals)
-- [Szinkronizálási feladatok létrehozása](#create-sync-job)
-- [Célként megadott tartomány frissítése](#update-targeted-domain)
-- [Szinkronizálási jelszó kivonatának engedélyezése](#enable-sync-password-hashes-on-configuration-blade)
-- [Véletlen törlések](#accidental-deletes)
-- [Szinkronizálási feladatok indítása](#start-sync-job)
-- [Felülvizsgálat állapota](#review-status)
+- [Felhőszinkronizálás programozott konfigurálása MS Graph API](#how-to-programmatically-configure-cloud-sync-using-ms-graph-api)
+  - [Alapszintű beállítás](#basic-setup)
+    - [Bérlőjelölők engedélyezése](#enable-tenant-flags)
+  - [Szolgáltatásnevek létrehozása](#create-service-principals)
+  - [Szinkronizálási feladat létrehozása](#create-sync-job)
+  - [Céltartomány frissítése](#update-targeted-domain)
+  - [Jelszó-hashek szinkronizálásának engedélyezése a konfigurációs panelen](#enable-sync-password-hashes-on-configuration-blade)
+  - [Véletlen törlések](#accidental-deletes)
+    - [A küszöbérték engedélyezése és beállítása](#enabling-and-setting-the-threshold)
+    - [Törlések engedélyezésével](#allowing-deletes)
+  - [Szinkronizálási feladat elindítani](#start-sync-job)
+  - [Állapot áttekintése](#review-status)
+  - [Következő lépések](#next-steps)
 
-Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](/powershell/module/msonline/) -parancsokkal engedélyezheti a szinkronizálást egy éles bérlő számára, amely az adott bérlő adminisztrációs webszolgáltatásának meghívásához szükséges előfeltételek egyike.
+Használja ezeket [Microsoft Azure Active Directory](/powershell/module/msonline/) modult Windows PowerShell-parancsokhoz az éles bérlők szinkronizálásának engedélyezéséhez, ami előfeltétele annak, hogy meg tudja hívni az adminisztrációs webszolgáltatást a bérlő számára.
 
 ## <a name="basic-setup"></a>Alapszintű beállítás
 
-### <a name="enable-tenant-flags"></a>Bérlői jelzők engedélyezése
+### <a name="enable-tenant-flags"></a>Bérlőjelölők engedélyezése
 
  ```PowerShell
  Connect-MsolService ('-AzureEnvironment <AzureEnvironmnet>')
  Set-MsolDirSyncEnabled -EnableDirSync $true
  ```
-A két parancs első részében Azure Active Directory hitelesítő adatokat kell megadnia. Ezek a parancsmagok implicit módon azonosítják a bérlőt, és lehetővé teszik a szinkronizálást.
+A két parancs közül az elsőhez hitelesítő Azure Active Directory van szükség. Ezek a parancsmagok implicit módon azonosítják a bérlőt, és engedélyezik a szinkronizálást.
 
 ## <a name="create-service-principals"></a>Szolgáltatásnevek létrehozása
-Ezután létre kell hoznia a [AD2AAD alkalmazást/szolgáltatásnevet](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+Ezután létre kell hoznunk az [AD2AAD-alkalmazást/-szolgáltatásnévt](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true)
 
-Ezt az azonosítót kell használnia a 1a4721b3-e57f-4451-ae87-ef078703ec94. A displayName az AD-tartomány URL-címe, ha a portálon van használatban (például contoso.com), de lehet, hogy más nevet kapott.
+Az alkalmazásazonosító: 1a4721b3-e57f-4451-ae87-ef078703ec94. A displayName a portálon használt AD-tartomány URL-címe (például contoso.com), de lehet, hogy valami más nevet ad.
 
  ```
  POST https://graph.microsoft.com/beta/applicationTemplates/1a4721b3-e57f-4451-ae87-ef078703ec94/instantiate
@@ -58,21 +63,21 @@ Ezt az azonosítót kell használnia a 1a4721b3-e57f-4451-ae87-ef078703ec94. A d
  ```
 
 
-## <a name="create-sync-job"></a>Szinkronizálási feladatok létrehozása
-A fenti parancs kimenete a létrehozott egyszerű szolgáltatásnév objectId adja vissza. Ebben a példában a objectId a 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  A Microsoft Graph használatával adjon hozzá egy synchronizationJob az adott egyszerű szolgáltatáshoz.  
+## <a name="create-sync-job"></a>Szinkronizálási feladat létrehozása
+A fenti parancs kimenete visszaadja a létrehozott szolgáltatásnév objectId-ját. Ebben a példában az objectId a következő: 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  A Microsoft Graph a synchronizationJob a szolgáltatásnévhez való hozzáadásához.  
 
-A szinkronizálási feladatok létrehozásával kapcsolatos dokumentáció [itt](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)található.
+A szinkronizálási feladat létrehozásának dokumentációját itt [találhatja.](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true)
 
-Ha a fenti azonosítót nem rögzíti, az egyszerű szolgáltatásnév a következő MS Graph-hívás futtatásával található. Szüksége lesz a könyvtár. Read. All engedélyekre, hogy a hívást tegye:
+Ha nem jegyezta fel a fenti azonosítót, a szolgáltatásnév az alábbi MS Graph-hívás futtatásával található meg. A híváshoz Directory.Read.All engedélyre lesz szüksége:
  
  `GET https://graph.microsoft.com/beta/servicePrincipals `
 
 Ezután keresse meg az alkalmazás nevét a kimenetben.
 
-Futtassa a következő két parancsot két feladat létrehozásához: egyet a felhasználó/csoport kiépítés számára, egyet pedig a jelszó-kivonatolás szinkronizálásához. Ugyanez a kérés kétszer, de különböző sablon-azonosítókkal van ellátva.
+Futtassa az alábbi két parancsot két feladat létrehozásához: egyet a felhasználók/csoportok üzembe állásához, egyet pedig a jelszó kivonatának szinkronizálásához. Ez kétszer ugyanaz a kérés, de különböző sablon-ekkel.
 
 
-Hívja meg a következő két kérelmet:
+Hívja meg a következő két kérést:
 
  ```
  POST https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs
@@ -92,7 +97,7 @@ Hívja meg a következő két kérelmet:
 
 Ha mindkettőt létre szeretné hozni, két hívásra lesz szüksége.
 
-Példa visszatérési értékre (kiépítés esetén):
+Példa visszaadott érték (kiépítéshez):
 
  ```
 HTTP 201/Created
@@ -122,22 +127,22 @@ HTTP 201/Created
 }
 ```
 
-## <a name="update-targeted-domain"></a>Célként megadott tartomány frissítése
-Ehhez a bérlőhöz az objektumazonosító és az egyszerű szolgáltatásnév alkalmazásának azonosítója a következő:
+## <a name="update-targeted-domain"></a>Céltartomány frissítése
+Ebben a bérlőben a szolgáltatásnév objektum- és alkalmazásazonosítója a következő:
 
-ObjectId: 8895955e-2e6c-4d79-8943-4d72ca36878f AppId: 00000014-0000-0000-C000-000000000000 DisplayName: testApp
+ObjectId: 8895955e-2e6c-4d79-8943-4d72ca36878f AppId: 00000014-0000-0000-c000-00000000000 DisplayName: testApp
 
-Frissíteni kell azt a tartományt, amelyet ez a konfiguráció céloz, ezért frissítse a tartományhoz tartozó titkokat.
+Frissíteni kell a tartományt, amelyre ez a konfiguráció van megcélzott, ezért frissítse a tartomány titkos beállításait.
 
-Győződjön meg arról, hogy a használt tartománynév megegyezik-e a helyszíni tartományvezérlőhöz beállított URL-címmel
+Győződjön meg arról, hogy a használt tartománynév ugyanaz az URL-cím, mint a saját tartományvezérlője számára.
 
  ```
  PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
  ```
- Adja hozzá a következő kulcs/érték párokat az alábbi érték tömbben a végrehajtani kívánt művelet alapján:
- - PHS-és szinkronizálási bérlői jelzők engedélyezése {Key: "AppKey", érték: "{" appKeyScenario ":" AD2AADPasswordHash "}"}
+ Adja hozzá a következő kulcs/érték párt az alábbi értéktömbhöz a tenni próbált lépések alapján:
+ - Engedélyezze a PHS és a szinkronizálás bérlői jelzőit { kulcs: "AppKey", érték: "{"appKeyScenario":"AD2AADPasswordHash"}" }
  
- - Csak szinkronizálási bérlői jelző engedélyezése (ne kapcsolja be a PHS) {Key: "AppKey", érték: "{" appKeyScenario ":" AD2AADProvisioning "}"}
+ - Csak a bérlő jelzője szinkronizálásának engedélyezése (a PHS nem kapcsolható be) { kulcs: "AppKey", érték: "{"appKeyScenario":"AD2AADProvisioning"}" }
  ```
  Request body –
  {
@@ -150,19 +155,19 @@ Győződjön meg arról, hogy a használt tartománynév megegyezik-e a helyszí
   }
 ```
 
-A várt válasz:... HTTP 204/nincs tartalom
+A várt válasz... HTTP 204/Nincs tartalom
 
-Itt a Kiemelt "tartomány" érték annak a helyszíni Active Directory tartománynak a neve, amelyből a bejegyzéseket Azure Active Directory kell kiépíteni.
+Itt a kiemelt "Tartomány" érték annak a helyi Active Directory tartománynak a neve, amelyből a bejegyzéseket ki kell Azure Active Directory.
 
-## <a name="enable-sync-password-hashes-on-configuration-blade"></a>Jelszó-kivonatok szinkronizálásának engedélyezése a konfiguráció panelen
+## <a name="enable-sync-password-hashes-on-configuration-blade"></a>Jelszó-hasheek szinkronizálásának engedélyezése a konfigurációs panelen
 
- Ez a szakasz a jelszó-kivonatok adott konfigurációhoz való szinkronizálásának engedélyezését fedi le. Ez eltér a bérlői szintű szolgáltatás jelölőjét engedélyező titkos AppKey, ez csak egyetlen tartományhoz/konfigurációhoz tartozik. Az alkalmazás kulcsát az PHS kell beállítania, hogy a folyamat véget fejezzen.
+ Ez a szakasz az adott konfigurációhoz szükséges jelszó-hashek szinkronizálásának engedélyezését fedi le. Ez eltér az AppKey titkos kulcstól, amely lehetővé teszi a bérlői szintű funkció jelzőt – ez csak egyetlen tartományra/konfigurációra van. Az alkalmazáskulcsot a PHS-hez kell beállítania, hogy ez a munka végához működjön.
 
-1. A séma megragadása (Figyelmeztetés ez elég nagy) 
+1. Fogja meg a sémát (figyelmeztetés, hogy ez elég nagy) 
  ```
  GET –https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ [AD2AADProvisioningJobId]/schema
  ```
-2. Ezt a CredentialData-attribútum leképezése:
+2. Használja a következő CredentialData attribútumleképezést:
  ``` 
  {
  "defaultValue": null,
@@ -178,15 +183,15 @@ Itt a Kiemelt "tartomány" érték annak a helyszíni Active Directory tartomán
  "parameters": []
  }
  ```
-3. Keresse meg a következő objektum-hozzárendeléseket a sémában a következő nevekkel:
- - Active Directory felhasználók kiépítése
- - Active Directory inetOrgPerson rendszer kiépítése
+3. Keresse meg a következő objektumleképezéseket a sémában az alábbi nevekkel
+ - Felhasználók Active Directory kiépítése
+ - Üzembe Active Directory inetOrgPersons
 
- Az objektum-hozzárendelések a Schema. synchronizationRules [0]. objectMappings (egyelőre feltételezhető, hogy csak 1 szinkronizálási szabály található)
+ Az objektumleképezések a schema.synchronizationRules[0].objectMappings fájlban találhatóak (jelenleg feltételezheti, hogy csak 1 szinkronizálási szabály van)
 
-4. Végezze el a CredentialData-leképezést a (2) lépésből, majd szúrja be az objektum-hozzárendelésbe a lépésben (3)
+4. A 2. lépésben szereplő CredentialData-leképezés beszúrása a 3. lépésben szereplő objektumleképezésekbe
 
- Az objektum-hozzárendelés a következőképpen néz ki:
+ Az objektumleképezés a következőre hasonlít:
  ```
  {
  "enabled": true,
@@ -198,11 +203,11 @@ Itt a Kiemelt "tartomány" érték annak a helyszíni Active Directory tartomán
  ...
  } 
  ```
- Másolja/illessze be a leképezést a fenti **AD2AADProvisioning és AD2AADPasswordHash feladatok létrehozása** lépésből a attributeMappings tömbbe. 
+ Másolja/illessze be a fenti **AD2AADProvisioning és AD2AADPasswordHash** feladatok létrehozása lépésből származó leképezést az attributeMappings tömbbe. 
 
- A tömb elemeinek sorrendje nem számít (a háttér rendezi az Ön számára). Ügyeljen arra, hogy hozzáadja ezt az attribútumot, ha a név már szerepel a tömbben (például ha már van olyan elem a attributeMappings, amelyben a targetAttributeName CredentialData van) – ütközési hibák merülhetnek fel, vagy a már meglévő és az új leképezések kombinálhatók egymással (általában nem kívánt eredmény). A háttérrendszer nem rendelkezik az Ön számára. 
+ A tömb elemeinek sorrendje nem számít (a háttérrendszer rendezi az elemet). Ügyeljen arra, hogy ezt az attribútumleképezést adja hozzá, ha a név már létezik a tömbben (például ha már létezik egy elem a targetAttributeName CredentialData attribútummal az attribútumtérképen) – ütközési hibákat okozhat, vagy a meglévő és az új leképezések kombinálhatók (általában nem kívánt eredmény). A háttér nem deduppetálja az Ön számára. 
 
- Ne felejtse el, hogy a felhasználók és az inetOrgperson
+ Ezt ne felejtse el a Users (Felhasználók) és az inetOrgpersons (inetOrgpersons) esetén is megtenni
 
 5. A létrehozott séma mentése 
  ```
@@ -213,24 +218,24 @@ Itt a Kiemelt "tartomány" érték annak a helyszíni Active Directory tartomán
  Adja hozzá a sémát a kérelem törzsében. 
 
 ## <a name="accidental-deletes"></a>Véletlen törlések
-Ez a szakasz bemutatja, hogyan lehet programozott módon engedélyezni vagy letiltani a [véletlen törléseket](how-to-accidental-deletes.md) .
+Ez a szakasz bemutatja, hogyan engedélyezheti/tilthatja le és használhatja programozott módon a véletlen [törléseket.](how-to-accidental-deletes.md)
 
 
 ### <a name="enabling-and-setting-the-threshold"></a>A küszöbérték engedélyezése és beállítása
-Kétféle feladatot használhat, ezek a következők:
+Feladatonként két beállítást használhat:
 
- - DeleteThresholdEnabled – lehetővé teszi a művelet véletlen törlésének megelőzését, ha az értéke "true" (igaz). Alapértelmezés szerint a "true" értékre van állítva.
- - DeleteThresholdValue – meghatározza, hogy a rendszer milyen számú törlést engedélyezzen a feladatok egyes végrehajtásakor, ha a véletlen törlések megakadályozása engedélyezve van. Alapértelmezés szerint a 500 érték van beállítva.  Tehát ha az érték 500, akkor a törlés engedélyezett maximális száma az egyes végrehajtásokban 499 lesz.
+ - DeleteThresholdEnabled – Engedélyezi a feladat véletlen törlésének megelőzését, ha "true" (igaz) érték van beállítva. Az alapértelmezett érték "true" (igaz).
+ - DeleteThresholdValue – Meghatározza a feladat egyes végrehajtásai során engedélyezett törlések maximális számát, ha a véletlen törlés-megelőzés engedélyezve van. Az alapértelmezett érték 500.  Tehát ha az érték 500, akkor az engedélyezett törlések maximális száma 499 lesz az egyes végrehajtások során.
 
-A küszöbértékek törlési beállításai a és a `SyncNotificationSettings` Graph használatával módosíthatók. 
+A törlési küszöbérték beállításai a részét képezi, `SyncNotificationSettings` és gráfon keresztül módosíthatók. 
 
-Frissíteni kell a konfiguráció SyncNotificationSettings, ezért frissítse a titkokat.
+Frissíteni kell a SyncNotificationSettings beállítást, mert ez a konfiguráció a cél, ezért frissítse a titkos okat.
 
  ```
  PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
  ```
 
- Adja hozzá a következő kulcs/érték párokat az alábbi érték tömbben a végrehajtani kívánt művelet alapján:
+ Adja hozzá a következő kulcs/érték párt az alábbi értéktömbhöz a tenni próbált lépések alapján:
 
 ```
  Request body -
@@ -246,19 +251,19 @@ Frissíteni kell a konfiguráció SyncNotificationSettings, ezért frissítse a 
 
 ```
 
-A fenti példában szereplő "enabled" beállítás az értesítő e-mailek engedélyezésére/letiltására szolgál a feladatoknak a karanténba helyezésekor.
+A fenti példában az "Engedélyezve" beállítás az értesítő e-mailek engedélyezésére/letiltására használható, amikor a feladat karanténba kerül.
 
 
-Jelenleg nem támogatottak a titkokra vonatkozó javítási kérések, így a többi érték megőrzése érdekében hozzá kell adnia a PUT kérelem törzsében szereplő összes értéket (például a fenti példában).
+Jelenleg nem támogatjuk a PATCH-kéréseket a titkos kulcsokhoz, ezért a többi érték megőrzése érdekében hozzá kell adni a PUT-kérelem törzsében lévő összes értéket (a fenti példához hasonló).
 
-Az összes titok meglévő értékeit a következő paranccsal kérheti le: 
+Az összes titkos adat meglévő értékei a következővel szerezhetők be: 
 
 ```
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
 ```
 
-### <a name="allowing-deletes"></a>Törlés engedélyezése
-Annak engedélyezéséhez, hogy a törlés a feladatoknak a karanténba helyezése után is folytatódjon, ki kell állítania a hatókörnek megfelelő "ForceDeletes" nevű újraindítást. 
+### <a name="allowing-deletes"></a>Törlések engedélyezésével
+Ahhoz, hogy a feladat karanténba kerülés utáni törlések végig tudjanak haladni, újraindítást kell végeznie, és csak a "ForceDeletes" hatókört kell alkalmaznia. 
 
 ```
 Request:
@@ -277,26 +282,26 @@ Request Body:
 
 
 
-## <a name="start-sync-job"></a>Szinkronizálási feladatok indítása
-A feladatot újra lekérheti a következő parancs használatával:
+## <a name="start-sync-job"></a>Szinkronizálási feladat elindítani
+A feladat a következő paranccsal olvasható be újra:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-A feladatok beolvasására vonatkozó dokumentáció [itt](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta)található. 
+A feladatok leolvasásának dokumentációját itt [találhatja meg.](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta&preserve-view=true) 
  
-A művelet elindításához adja ki ezt a kérelmet az első lépésben létrehozott egyszerű szolgáltatásnév objectId, és a feladatot létrehozó kérelemből visszaadott feladathoz tartozó azonosító.
+A feladat elindítani ezt a kérést az első lépésben létrehozott szolgáltatásnév objectId azonosítójának, valamint a feladatot létrehozó kérelem által visszaadott feladatazonosítónak a használatával kell kiküldeni.
 
-A feladatok elindításához szükséges dokumentáció [itt](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)található. 
+A feladat indítási dokumentációját itt [találhatja.](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true) 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
  ```
 
-A várt válasz:... HTTP 204/nincs tartalom.
+A várt válasz... HTTP 204/Nincs tartalom.
 
-A feladatok szabályozására szolgáló többi parancsot [itt](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)dokumentáljuk.
+A feladat vezérlésére vonatkozó egyéb parancsokat itt [dokumentáljuk.](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta&preserve-view=true)
  
-A feladatok újraindításához az egyik a következő lesz:...
+A feladat újraindításához használja a ...
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/restart
@@ -307,17 +312,17 @@ A feladatok újraindításához az egyik a következő lesz:...
  }
  ```
 
-## <a name="review-status"></a>Felülvizsgálat állapota
-A feladatok állapotának lekérése a-on keresztül...
+## <a name="review-status"></a>Állapot áttekintése
+A feladat állapotának lekérése...
 
  ```
  GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ 
  ```
 
-A megfelelő részletekért tekintse meg a Return objektum "status" szakaszát.
+A releváns részleteket a visszatérési objektum "status" szakasza alatt keresse meg
 
 ## <a name="next-steps"></a>Következő lépések 
 
-- [Mi az Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
+- [Mit jelent a Azure AD Connect szinkronizálása?](what-is-cloud-sync.md)
 - [Átalakítások](how-to-transformation.md)
-- [Azure AD szinkronizációs API](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Azure AD Synchronization API](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)
