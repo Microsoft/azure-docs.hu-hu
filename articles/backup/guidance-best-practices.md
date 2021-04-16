@@ -1,28 +1,28 @@
 ---
 title: Útmutatás és ajánlott eljárások
-description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
+description: Megismerheti a felhőbeli és helyszíni számítási feladatok felhőbe való biztonságimentéséhez ajánlott eljárásokat és útmutatókat
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593336"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519063"
 ---
-# <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
+# <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok felhőbe való biztonsági mentése
 
 ## <a name="introduction"></a>Bevezetés
 
-A Azure Backup az Azure-beli adategységeket egy egyszerű, biztonságos és költséghatékony megoldással biztosítja, amely nulla infrastruktúrát igényel. Ez a Azure's beépített adatvédelmi megoldás a számítási feladatok széles köréhez. Segít a felhőben futó, kritikus fontosságú számítási feladatok elleni védelemben, és gondoskodik arról, hogy a biztonsági mentések mindig elérhetők legyenek, és a teljes biztonsági mentési hagyatékon is kezelhetők legyenek.
+Azure Backup azure-beli adateszközöket egy egyszerű, biztonságos és költséghatékony megoldással védi, amely infrastruktúrát nem igényel. Ez az Azure beépített adatvédelmi megoldása a számítási feladatok széles köréhez. Segít megvédeni a felhőben futó kritikus fontosságú számítási feladatokat, és biztosítja, hogy a biztonsági másolatok mindig elérhetők és nagy méretekben kezelhetők a teljes biztonsági mentési környezetben.
 
 ### <a name="intended-audience"></a>Célközönség
 
-Ennek a cikknek az elsődleges célközönsége az informatikai és az alkalmazás-rendszergazdák, valamint a nagyméretű és közepes méretű szervezetek alkalmazásai, akik megismerhetik az Azure beépített adatvédelmi technológiájának képességeit, Azure Backup, valamint azt, hogy miként lehet hatékonyan megvalósítani az üzemelő példányok jobb védelmét biztosító megoldásokat. A cikk feltételezi, hogy már ismeri az alapvető Azure-technológiákat, az adatvédelmi fogalmakat és a biztonsági mentési megoldással való munkát. Az ebben a cikkben ismertetett útmutató megkönnyíti a biztonsági mentési megoldás megtervezését az Azure-ban a meghatározott minták használatával, és az ismert buktatók elkerülését.
+A cikk elsődleges célcsoportja az informatikai és alkalmazás-rendszergazdák, valamint a nagy és közepes méretű szervezetek végrehajtói, akik meg szeretnék tudni az Azure beépített adatvédelmi technológiája, az Azure Backup képességeit, valamint az üzemelő példányok védelmét hatékonyabban megvalósító megoldások implementációját. A cikk feltételezi, hogy ismeri az alapvető Azure-technológiákat és az adatvédelmi fogalmakat, és rendelkezik tapasztalattal a biztonsági mentési megoldások használatában. A cikkben szereplő útmutatás megkönnyíti a biztonsági mentési megoldás tervezését az Azure-ban a már ismert minták használatával, és elkerülheti az ismert buktatókat.
 
 ### <a name="how-this-article-is-organized"></a>A cikk rendszerezése
 
-Habár könnyen megkezdheti az infrastruktúra és az alkalmazások védelmét az Azure-ban, amikor gondoskodik arról, hogy az alapul szolgáló Azure-erőforrások megfelelően legyenek beállítva, és optimálisan használatba kerüljenek az idő értékét. Ez a cikk rövid áttekintést nyújt a Azure Backup központi telepítésének optimális konfigurálásához szükséges tervezési szempontokról és útmutatásokról. Megvizsgálja az alapvető összetevőket (például a Recovery Services tárolót, a biztonsági mentési szabályzatot) és a fogalmakat (például irányítás), valamint azt, hogy miként képzelheti el őket és képességeiket a részletes termékdokumentációra mutató hivatkozásokkal.
+Bár az Azure-beli infrastruktúra és alkalmazások védelme egyszerű, ha gondoskodik arról, hogy az alapul szolgáló Azure-erőforrások megfelelően vannak beállítva és optimálisan vannak használva, felgyorsíthatja az érték-érték arányt. Ez a cikk rövid áttekintést nyújt a tervezési szempontokról, és útmutatást nyújt az üzemelő példány optimális Azure Backup konfigurálásához. Megvizsgálja az alapvető összetevőket (például a Recovery Services-tárolót, a biztonsági mentési szabályzatot) és az alapfogalmakat (például a szabályozást), valamint azt, hogyan gondolhat rájuk és képességeikre részletes termékdokumentációra mutató hivatkozásokkal.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -30,235 +30,235 @@ Habár könnyen megkezdheti az infrastruktúra és az alkalmazások védelmét a
 
 ### <a name="workloads"></a>Számítási feladatok
 
-Azure Backup lehetővé teszi az adatvédelem különböző számítási feladatokhoz (a helyszíni és a felhőben). Biztonságos és megbízható, beépített adatvédelmi mechanizmus az Azure-ban. Zökkenőmentesen méretezheti a védelmet több számítási feladattal, anélkül, hogy felügyeleti terheléssel kellene foglalkoznia. A PowerShell, a CLI, a Azure Resource Manager sablonok és a REST API-k segítségével több Automation-csatornát is engedélyezhet.
+Azure Backup (helyszíni és felhőbeli) számítási feladatok adatvédelmét teszi lehetővé. Ez egy biztonságos és megbízható beépített adatvédelmi mechanizmus az Azure-ban. Zökkenőmentesen skálázhatja a védelmét több számítási feladatra anélkül, hogy bármilyen felügyeleti többletterhelést okoz. Ennek engedélyezéséhez több automatizálási csatorna is elérhető (a PowerShell, a parancssori felület, Azure Resource Manager sablonok és REST API-k használatával).
 
-* **Méretezhető, tartós és biztonságos tárolás –** A Azure Backup megbízható blob Storage-t használ beépített biztonsági és magas rendelkezésre állási funkciókkal. A biztonsági mentési adataihoz LRS, GRS vagy RA-GRS tárolókat is választhat.  
+* **Skálázható, tartós és biztonságos tárolás –** Azure Backup beépített biztonsági és magas rendelkezésre állású megbízható Blob Storage-tárolót használ. A biztonsági mentési adatokhoz LRS-, GRS- vagy RA-GRS-tárolókat is választhat.  
 
-* **Natív munkaterhelés-integráció –** A Azure Backup natív integrációt biztosít az Azure-beli számítási feladatokkal (virtuális gépekkel, SAP HANAekkel, az SQL Azure-beli virtuális gépekkel és akár Azure Filesekkel), anélkül, hogy az automatizálást vagy az infrastruktúrát az ügynökök üzembe helyezéséhez kellene kezelnie,
+* **Natív számítási feladatok integrációja –** az Azure Backup natív integrációt biztosít az Azure-beli számítási feladatokkal (virtuális gépek, SAP HANA, SQL az Azure-beli virtuális gépeken vagy akár az Azure Files-ban) anélkül, hogy az ügynökök üzembe helyezéséhez, új szkriptek írásához vagy tároló üzembe helyezéséhez automatizálást vagy infrastruktúrát kellene kezelnie.
 
 ### <a name="data-plane"></a>Adatsík
 
-* **Automatizált tárolók kezelése** – Azure Backup automatizálja a Storage-fiókok kihelyezését és kezelését a biztonsági mentési adatmennyiség érdekében, így biztosítva, hogy a biztonsági mentési adatmennyiség növekszik.
+* **Automatizált tárolókezelés** – Azure Backup automatizálja a biztonsági mentési adatok tárfiókok üzembehelyezését és kezelését, hogy a biztonsági mentési adatok növekedésével együtt skálázható legyen.
 
-* **Rosszindulatú Törlés elleni védelem –** A biztonsági mentések törlésével megakadályozható a véletlen és rosszindulatú kísérletek elleni védelem. A törölt biztonsági mentési adatok tárolása 14 napig díjmentes, és lehetővé teszi, hogy ezt az állapotból lehessen helyreállítani.
+* **Rosszindulatú törlés elleni védelem –** Védelmet nyújt a biztonsági másolatok véletlen és rosszindulatú törlési kísérletei ellen a biztonsági másolatok törlésével. A törölt biztonsági mentési adatokat a rendszer 14 napig ingyenesen tárolja, és lehetővé teszi azok helyreállítását ebből az állapotból.
 
-* **Biztonságos titkosított biztonsági másolatok –** Azure Backup biztosítja, hogy a biztonsági mentési adatait biztonságos módon tárolják, az Azure platform, például az Azure RBAC és a titkosítás beépített biztonsági képességeinek kihasználásával.
+* **Biztonságos titkosított biztonsági mentések –** Azure Backup az Azure platform beépített biztonsági funkcióinak, például az Azure RBAC-nek és a titkosításnak a segítségével gondoskodik a biztonsági másolatok biztonságos tárolására.
 
-* **Biztonsági másolatok életciklusának kezelése –** Azure Backup automatikusan törli a régebbi biztonsági mentési adatokból az adatmegőrzési szabályzatoknak való megfelelést. Az adatok az operatív tárolóból a tár tárterületére is felhasználhatók.
+* **Biztonsági mentési adatok életciklusának kezelése –** Azure Backup automatikusan megtisztítja a régebbi biztonsági mentési adatokat, hogy megfeleljenek a megőrzési szabályzatnak. Az adatokat réteg is rétegozhatja az operatív tárolótól a tárolótárolóig.
 
 ### <a name="management-plane"></a>Felügyeleti sík
 
-* **Hozzáférés-vezérlés** – a tárolók (Recovery Services és Backup-tárolók) biztosítják a felügyeleti képességeket, és elérhetők a Azure Portal, a Backup Center, a tároló irányítópultok, az SDK, a CLI és a REST API-k segítségével. Ez egy Azure RBAC-határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
+* **Hozzáférés-vezérlés** – A tárolók (Recovery Services- és Backup-tárolók) biztosítják a felügyeleti képességeket, és a Azure Portal, a Backup Center, a tároló irányítópultja, az SDK, a CLI és még a REST API-kon keresztül is elérhetők. Ez egyben egy Azure RBAC-határ is, amely lehetőséget nyújt arra, hogy a biztonsági másolatok hozzáférését csak a jogosult biztonsági mentési rendszergazdákra korlátozza.
 
-* **Házirend-kezelés** – az egyes tárakon belül Azure Backup szabályzatok határozzák meg, hogy a biztonsági mentések Mikor legyenek aktiválva, és mennyi ideig kell megőrizni őket. Ezeket a szabályzatokat kezelheti, és több elem között is alkalmazhatja őket.
+* **Szabályzatkezelés** – Azure Backup tárolókban található szabályzatok határozzák meg, hogy mikor kell aktiválni a biztonsági másolatokat, és mennyi ideig kell azokat megőrizni. Ezeket a szabályzatokat több elemre is alkalmazhatja.
 
-* **Monitorozás és jelentéskészítés** – a Azure Backup együttműködik a log Analyticsekkel, és lehetővé teszi a jelentések munkafüzeteken keresztüli megtekintését is.
+* **Monitorozás és jelentéskészítés** – Azure Backup Log Analytics szolgáltatással integrálható, és lehetővé teszi a jelentések munkafüzetek segítségével történő áttekintését is.
 
-* **Pillanatkép-kezelés** – Azure Backup pillanatképeket készít bizonyos Azure-beli natív munkaterhelésekhez (virtuális gépekhez és Azure Files), kezeli ezeket a pillanatképeket, és lehetővé teszi a gyors visszaállítást. Ez a beállítás drasztikusan csökkenti az adatok eredeti tárolóba való helyreállításának idejét.
+* **Pillanatkép-kezelés** – Azure Backup azure-beli natív számítási feladatokról (virtuális gépekről és Azure Files) készít pillanatképeket, kezeli ezeket a pillanatképeket, és gyors visszaállítást tesz lehetővé ezekből. Ez a beállítás jelentősen csökkenti az adatok eredeti tárolóba való helyreállításának idejét.
 
-## <a name="vault-considerations"></a>Tár szempontjai
+## <a name="vault-considerations"></a>Tárolóval kapcsolatos szempontok
 
-A Azure Backup a tárolókat (Recovery Services és Backup-tárolókat) használja a biztonsági másolatok előkészítéséhez és kezeléséhez. A tárolókat is használ a biztonsági másolatok tárolásához. A hatékony tár kialakításával a szervezetek létrehozhatnak egy struktúrát az Azure-beli biztonsági mentési eszközök rendszerezéséhez és kezeléséhez az üzleti prioritások támogatásához. Tár létrehozásakor vegye figyelembe a következő irányelveket:  
+Azure Backup tárolókat (Recovery Services és Backup-tárolók) használ a biztonsági mentések vezénylése és kezelése érdekében. Tárolókat is használ a biztonságimentett adatok tárolására. A tároló hatékony kialakítása segít a szervezeteknek kialakítani egy struktúrát a biztonsági mentési eszközök rendszerezéséhez és kezeléséhez az Azure-ban az üzleti prioritások támogatása érdekében. A tárolók létrehozásakor vegye figyelembe az alábbi irányelveket:  
 
-### <a name="align-to-subscription-design-strategy"></a>Igazítás az előfizetési terv stratégiájához
+### <a name="align-to-subscription-design-strategy"></a>Igazodás az előfizetés-tervezési stratégiához
 
-Mivel a tár hatóköre egy előfizetésre van korlátozva, a tár kialakításával teljesítheti az előfizetési tervezési stratégiát, például az alkalmazások *kategóriájának stratégiáját* , ahol az előfizetéseket meghatározott alkalmazások vagy szolgáltatások alapján, vagy az alkalmazási archetípusok soraiban választják el. További információkért tekintse meg ezt a [cikket](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+Mivel a tároló hatóköre egy előfizetésre terjed ki, a tároló  kialakítása megfelel az előfizetés-tervezési stratégiának, például az alkalmazáskategória-stratégiának, ahol az előfizetések adott alkalmazások vagy szolgáltatások alapján vagy az alkalmazásarchetípusok szerint vannak elkülönítve. További információkért tekintse meg [ezt a cikket](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
 
 ### <a name="single-or-multiple-vault"></a>Egy vagy több tároló
 
-A biztonsági másolatok rendszerezéséhez és kezeléséhez egyetlen tárat vagy több tárolót használhat. Tekintse meg a következő útmutatót:
+A biztonsági másolatok rendszerezéséhez és kezeléséhez egyetlen tárolót vagy több tárolót is használhat. Tekintse meg a következő útmutatót:
 
-* Ha a számítási feladatokat egyetlen előfizetéssel és egyetlen erőforrással felügyeli, akkor egyetlen tároló használatával figyelheti és kezelheti a biztonsági mentési hagyatékot.
+* Ha a számítási feladatokat egyetlen előfizetés és egyetlen erőforrás kezeli, akkor egyetlen tárolóval monitorozhatja és kezelheti a biztonsági mentési tulajdont.
 
-* Ha a számítási feladatok az előfizetések között oszlanak el, több tárolót is létrehozhat, egy vagy több előfizetéssel.
-  * A Backup Center lehetővé teszi, hogy egyetlen üvegtábla legyen a biztonsági mentéssel kapcsolatos összes feladat kezeléséhez. [További információt itt talál]().
-  * A nézeteket a munkafüzet sablonjaival is testreszabhatja. A Backup Explorer egy ilyen sablon az Azure-beli virtuális gépekhez. [További információt itt talál](monitor-azure-backup-with-backup-explorer.md).
-  * Ha konzisztens szabályzatra van szüksége a tárakban, akkor az Azure Policy segítségével több tárolón is propagálhatja a biztonsági mentési szabályzatot. Írhat olyan egyéni Azure Policy- [definíciót](../governance/policy/concepts/definition-structure.md) , amely a ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) effektus használatával propagálja a biztonsági mentési szabályzatot több tárolón keresztül. Ezt a Azure Policy definíciót [hozzárendelheti](../governance/policy/assign-policy-portal.md) egy adott hatókörhöz (előfizetés vagy RG) is, így egy "biztonsági mentési szabályzat" erőforrást helyez üzembe az Azure Policy hozzárendelés hatókörében lévő összes Recovery Services-tárolóra. A biztonsági mentési szabályzat beállításait (például a biztonsági mentés gyakoriságát, a megőrzést stb.) a felhasználónak kell megadnia paraméterként a Azure Policy-hozzárendelésben.
+* Ha a számítási feladatok előfizetések között vannak elszava, akkor előfizetésenként több tárolót is létrehozhat.
+  * A Backup Center lehetővé teszi, hogy egyetlen ablaktáblával kezelje a Biztonsági mentéssel kapcsolatos összes feladatot. [További információt itt talál]().
+  * A nézeteket munkafüzetsablonokkal szabhatja testre. Backup-kezelő egy ilyen sablon az Azure-beli virtuális gépekhez. [További információt itt talál](monitor-azure-backup-with-backup-explorer.md).
+  * Ha konzisztens szabályzatra volt szüksége több tárolóra, akkor az Azure Policy használatával több tárolóra is propagálhatja a biztonsági mentési szabályzatot. Írhat olyan egyéni [Azure Policy,](../governance/policy/concepts/definition-structure.md) amely a ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) hatás segítségével propagál egy biztonsági mentési szabályzatot több tárolóra. Ezt az [](../governance/policy/assign-policy-portal.md) Azure Policy-definíciót hozzárendelheti egy adott hatókör (előfizetés vagy erőforráscsoport) számára is, így az üzembe helyez egy "biztonsági mentési szabályzat" erőforrást az összes Recovery Services-tárolóban a Azure Policy-hozzárendelés hatókörében. A biztonsági mentési házirend beállításait (például a biztonsági mentés gyakoriságát, a megőrzést stb.) a felhasználónak paraméterként kell megadnia a Azure Policy hozzárendelésében.
 
-* Ahogy a szervezeti lábnyoma nő, érdemes lehet áthelyezni a munkaterheléseket az előfizetések között a következő okok miatt: a biztonsági mentési szabályzattal való összehangolás, a tárolók összevonása, az alacsonyabb redundancia elleni kereskedelmi forgalom csökkentése a GRS és a LRS között.  Azure Backup támogatja egy Recovery Services-tároló áthelyezését az Azure-előfizetések között, vagy egy másik erőforráscsoporthoz ugyanazon az előfizetésen belül. [További információt itt talál](backup-azure-move-recovery-services-vault.md).
+* A szervezeti terhelés növekedésével a következő okokból érdemes lehet áthelyezni a számítási feladatokat az előfizetések között: biztonsági mentési szabályzat szerinti igazítás, tárolók konszolidálása, alacsonyabb redundancia csökkentés a költségek csökkentése érdekében (áthelyezés GRS-ről LRS-re).  Azure Backup recovery services-tárolók Azure-előfizetések közötti vagy ugyanazon előfizetésen belüli másik erőforráscsoportba való áthelyezését támogatja. [További információt itt talál](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="review-default-settings"></a>Alapértelmezett beállítások áttekintése
 
-A biztonsági mentések konfigurálása előtt tekintse át a tárolási replikálási típus és a biztonsági beállítások alapértelmezett beállításait az igényeinek megfelelően.
+Mielőtt biztonsági mentéseket konfigurál a tárolóban, tekintse át a Tárreplikáció típusa és a Biztonsági beállítások alapértelmezett beállításait, hogy megfeleljen a követelményeknek.
 
-* Alapértelmezés szerint a *tárolási replikálás típusa* geo-REDUNDÁNS (GRS) értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva. A beállítások áttekintéséhez és módosításához kövesse az [alábbi](backup-create-rs-vault.md#set-storage-redundancy) lépéseket.
+* *A Tárreplikáció típusa* alapértelmezés szerint Georedundáns (GRS) lesz. A biztonsági mentés konfigurálása után a módosítás lehetősége le van tiltva. Kövesse [az alábbi](backup-create-rs-vault.md#set-storage-redundancy) lépéseket a beállítások áttekintéséhez és módosításához.
 
-* Az újonnan létrehozott tárolók alapértelmezés szerint a *Soft delete* lehetőséggel védik a biztonsági mentési adatok véletlen vagy kártékony törlési funkcióit. A beállítások áttekintéséhez és módosításához kövesse az [alábbi](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) lépéseket.
+* *A soft delete* alapértelmezés szerint Engedélyezve van az újonnan létrehozott tárolókban, hogy megvédje a biztonsági mentési adatokat a véletlen vagy rosszindulatú törlésektól. Kövesse [az alábbi](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) lépéseket a beállítások áttekintéséhez és módosításához.
 
-* A *régiók közötti visszaállítás* lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy Azure-beli párosított régió. Ez a beállítás lehetővé teszi a naplózási és megfelelőségi követelmények teljesítését, valamint a virtuális gép vagy annak lemezének visszaállítását, ha az elsődleges régióban katasztrófa következik be. A CRR bármely GRS-tár egyik funkciója. [További információt itt talál](backup-create-rs-vault.md#set-cross-region-restore).
+* *A régiók közötti visszaállítás* lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy azure-beli párosított régió. Ez a beállítás lehetővé teszi a naplózási vagy megfelelőségi követelmények teljesítését, valamint a virtuális gép vagy annak lemezének visszaállítását, ha katasztrófa történik az elsődleges régióban. A CRR bármely GRS-tárolóhoz használható. [További információt itt talál](backup-create-rs-vault.md#set-cross-region-restore).
 
-* A tár kialakításának véglegesítése előtt tekintse át a tároló [támogatási mátrixait](backup-support-matrix.md#vault-support) , hogy megismerje a tervezési lehetőségeket befolyásoló vagy korlátozó tényezőket.
+* A tároló kialakításának véglegesítője előtt tekintse át a tárolótámogatási mátrixokat, hogy átláthassa, milyen tényezők befolyásolhatják vagy korlátozhatják a kialakítási lehetőségeket. [](backup-support-matrix.md#vault-support)
 
-## <a name="backup-policy-considerations"></a>Biztonsági mentési szabályzattal kapcsolatos megfontolások
+## <a name="backup-policy-considerations"></a>Biztonsági mentési szabályzatokkal kapcsolatos szempontok
 
-Azure Backup házirendnek két összetevője van: az *ütemterv* (a biztonsági mentés ideje) és a *megőrzés* (a biztonsági mentés időtartamának megőrzése). A szabályzatot a biztonsági mentés alatt álló adatok típusa alapján határozhatja meg, RTO/RPO követelmények, működési vagy szabályozási megfelelőségi igények és számítási feladatok típusa (például virtuális gép, adatbázis, fájlok). [További információt itt talál](backup-architecture.md#backup-policy-essentials).
+Azure Backup szabályzat két összetevőből áll: *Ütemezés* (mikor kell biztonsági másolatot készíteni) és *Megőrzés* (mennyi ideig őrizze meg a biztonsági másolatot). A szabályzatot a biztonsági mentése alatt lévő adatok típusa, az RTO/RPO követelményei, a működési vagy jogszabályi megfelelési igények és a számítási feladatok típusa (például virtuális gép, adatbázis, fájlok) alapján határozhatja meg. [További információt itt talál](backup-architecture.md#backup-policy-essentials).
 
-Biztonsági mentési szabályzat létrehozásakor vegye figyelembe a következő irányelveket:
+A biztonsági mentési szabályzat létrehozásakor vegye figyelembe a következő irányelveket:
 
-### <a name="schedule-considerations"></a>Az ütemterv szempontjai
+### <a name="schedule-considerations"></a>Ütemezési szempontok
 
-* Érdemes lehet olyan virtuális gépeket csoportosítani, amelyekben ugyanaz az ütemterv kezdési időpontja, gyakorisága és adatmegőrzési beállításai szükségesek egyetlen házirendben.
+* Érdemes lehet olyan virtuális gépeket csoportosíteni, amelyekhez azonos ütemezési kezdési idő, gyakoriság és megőrzési beállításokra van szükség egyetlen szabályzaton belül.
 
-* Győződjön meg arról, hogy a biztonsági mentés ütemezett kezdési időpontja az éles üzemen kívüli alkalmazás időtartama alatt van.
+* Győződjön meg arról, hogy a biztonsági mentés ütemezett kezdési ideje nem csúcsidőszakban van az éles környezetben.
 
-* A biztonsági mentési forgalom elosztása érdekében érdemes a különböző virtuális gépek biztonsági mentését a nap különböző pontjain, és ügyeljen arra, hogy az időpontok ne legyenek átfedésben.
+* A biztonsági másolatok forgalmának elosztásához fontolja meg a különböző virtuális gépek biztonsági mentését a nap különböző időpontokban, és győződjön meg arról, hogy az időpontok nem fedik át egymást.
 
-### <a name="retention-considerations"></a>Megőrzési megfontolások
+### <a name="retention-considerations"></a>Megőrzési szempontok
 
-* A rövid távú adatmegőrzés a következő lehet: "Minutes" vagy "Daily". A "hetente", "havonta" vagy "éves" biztonsági mentési pontok megőrzését hosszú távú megőrzésnek nevezzük.
+* A rövid távú megőrzés lehet "perc" vagy "naponta". A "Heti", "havi" vagy "éves" biztonsági mentési pontok megőrzését hosszú távú megőrzésnek nevezzük.
 
 * Hosszú távú megőrzés:
-  * Tervezett (megfelelőségi követelmények) – Ha előre tudja, hogy az adatok a jelenlegi időponttól kezdve szükségesek, akkor használja a hosszú távú adatmegőrzést.
-  * Nem tervezett (igény szerinti követelmény) – Ha nem tudja előre, használja az igény szerinti egyéni adatmegőrzési beállításokat (ezeket az egyéni adatmegőrzési beállításokat nem érinti a házirend-beállítások).
+  * Tervezett (megfelelőségi követelmények) – ha előre tudja, hogy az adatokra az aktuális időponttól való évekre van szükség, használja a Hosszú távú megőrzést.
+  * Nem tervezett (igény szerinti követelmény) – ha nem tudja előre, a használatával igény szerint használhatja az adott egyéni adatmegőrzési beállításokat (ezeket az egyéni adatmegőrzési beállításokat a szabályzatbeállítások nem befolyásolják).
 
-* Igény szerinti biztonsági mentés egyéni megőrzéssel – ha a biztonsági mentési szabályzattal nem ütemezett biztonsági mentésre van szüksége, igény szerinti biztonsági mentést is használhat. Ez olyan biztonsági másolatok készítéséhez lehet hasznos, amelyek nem felelnek meg az ütemezett biztonsági mentésnek vagy a részletes biztonsági mentésnek (például naponta több IaaS virtuális gép biztonsági mentése, mivel az ütemezett biztonsági mentés naponta csak egy biztonsági mentést engedélyez). Fontos megjegyezni, hogy az ütemezett házirendben definiált adatmegőrzési szabályzat nem vonatkozik az igény szerinti biztonsági másolatokra.
+* Igény szerinti biztonsági mentés egyéni megőrzéssel – ha olyan biztonsági mentést kell készítenie, amely nincs ütemezve a biztonsági mentési szabályzaton keresztül, akkor igény szerinti biztonsági mentést is használhat. Ez hasznos lehet az ütemezett biztonsági mentéshez nem megfelelő biztonsági mentések készítéséhez vagy részletes biztonsági mentéshez (például naponta több IaaS virtuális gép biztonsági mentéséhez, mivel az ütemezett biztonsági mentés naponta csak egy biztonsági mentést engedélyez). Fontos megjegyezni, hogy az ütemezett szabályzatban meghatározott adatmegőrzési szabályzat nem vonatkozik az igény szerinti biztonsági mentésre.
 
 ### <a name="optimize-backup-policy"></a>Biztonsági mentési szabályzat optimalizálása
 
-* Az üzleti követelmények változása esetén előfordulhat, hogy ki kell terjesztenie vagy csökkentenie kell a megőrzés időtartamát. Ha így tesz, a következőket várhatja el:  
-  * Ha a megőrzés kibővül, a meglévő helyreállítási pontok az új szabályzatnak megfelelően vannak megjelölve és tárolva.
-  * Ha a megőrzés csökken, a helyreállítási pontok a következő tisztítási feladatokban törlésre vannak megjelölve, és ezt követően törlődnek.
-  * A legújabb adatmegőrzési szabályok az összes megőrzési pontra érvényesek (kivéve az igény szerinti megőrzési pontokat). Tehát ha a megőrzési időtartam kibővül (például 100 napig), akkor a biztonsági mentést követően (például 100 nap és hét nap között), az összes biztonsági mentési adat megmarad az utolsó megadott megőrzési időtartam (azaz 7 nap) alapján.
+* Az üzleti követelmények változásával szükség lehet a megőrzés időtartamának meghosszabbítására vagy csökkentésére. Ha így van, a következőkre számíthat:  
+  * Ha meghosszabbítja a megőrzési megőrzést, a meglévő helyreállítási pontok meg vannak jelölve, és az új szabályzatnak megfelelően maradnak.
+  * Ha csökkenti a megőrzési megőrzést, a helyreállítási pontok a következő tisztítási feladat során törlésre vannak megjelölve, majd törlődnek.
+  * A legújabb megőrzési szabályok minden adatmegőrzési pontra érvényesek (kivéve az igény szerinti adatmegőrzési pontokat). Így ha a megőrzési időtartam meg van hosszabbva (például 100 napra), akkor a biztonsági mentés, majd a megőrzés csökkentése (például 100 nap és hét nap) között az összes biztonsági mentési adat az utolsó megadott megőrzési időszak (tehát 7 nap) szerint lesz megőrizve.
 
-* Azure Backup rugalmasságot biztosít a *biztonsági másolatok védelmének és kezelésének leállításához*:
-  * *A védelem leállítása és a biztonsági mentési adat megőrzése*. Ha kihasználja vagy leszereli az adatforrást (VM, Application), de az adatok megőrzését vagy megfelelőségét kell megtartania, akkor ezzel a lehetőséggel leállíthatja az összes jövőbeli biztonsági mentési feladatot az adatforrás védelméről, és megtarthatja a biztonsági mentés alatt álló helyreállítási pontokat. Ezután visszaállíthatja vagy folytathatja a virtuális gépek védelmét.
-  * *Állítsa le a védelmet, és törölje a biztonsági másolati fájlokat*. Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatot a virtuális gép védelmére, és törli az összes helyreállítási pontot. Nem fogja tudni visszaállítani a virtuális gépet, és nem használhatja a biztonsági mentés folytatása lehetőséget.
+* Azure Backup biztosítja a biztonsági másolatok védelmét és kezelését:
+  * *Állítsa le a védelmet, és őrizze meg a biztonsági mentési adatokat.* Ha kiveszi vagy leszereli az adatforrást (virtuális gép, alkalmazás), de naplózási vagy megfelelőségi célokból meg kell őriznie az adatokat, akkor ezzel a beállítással leállíthatja, hogy a jövőbeli biztonsági mentési feladatok megvédjék az adatforrást, és megőrizze azokat a helyreállítási pontokat, amelyekről biztonsági másolat lett készítve. Ezután visszaállíthatja vagy folytathatja a virtuális gépek védelmét.
+  * *Állítsa le a védelmet, és törölje a biztonsági mentési adatokat.* Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladat védelmét a virtuális gép számára, és törli az összes helyreállítási pontot. A virtuális gépet nem tudja visszaállítani, és nem használhatja a Biztonsági mentés folytatása lehetőséget sem.
 
-  * Ha folytatja a védelmet (egy adatforrást, amely az adatok megőrzése miatt leállt), akkor a megőrzési szabályok érvényesek lesznek. Minden lejárt helyreállítási pont el lesz távolítva (az ütemezett időpontban).
+  * Ha folytatja a védelmet (olyan adatforrás esetén, amely le lett állítva az adatok megőrzésével), akkor a megőrzési szabályok érvényesek lesznek. A lejárt helyreállítási pontok el lesznek távolítva (az ütemezett időpontban).
 
-* A szabályzat kialakításának elvégzése előtt fontos tisztában lennie azzal, hogy milyen tényezők befolyásolhatják a kialakítási döntéseket.
-  * A biztonsági mentési szabályzat egy tárolóra terjed ki.
-  * Korlátozva van az elemek száma (például 100 virtuális gép). A skálázáshoz ismétlődő szabályzatokat hozhat létre, amelyek azonos vagy eltérő ütemtervekkel rendelkeznek.
-  * Meghatározott helyreállítási pontokat nem lehet szelektíven törölni.
-  * Az ütemezett biztonsági mentést nem lehet teljesen letiltani, és az adatforrás védett állapotban marad. A szabályzattal konfigurálható legritkább biztonsági mentés egy hetente ütemezett biztonsági mentést tartalmaz. Egy másik lehetőség, hogy leállítja a védelmet az adatmegőrzés és a védelem engedélyezése minden egyes alkalommal, amikor biztonsági mentést szeretne készíteni, igény szerinti biztonsági mentést készít, majd kikapcsolja a védelmet, de megőrzi a biztonsági mentési adatait. [További információt itt talál](backup-azure-manage-vms.md#stop-protecting-a-vm).
+* A szabályzattervezés befejezése előtt fontos tisztában lenni az alábbi tényezőkkel, amelyek befolyásolhatják a tervezési döntéseket.
+  * A biztonsági mentési szabályzat hatóköre egy tárolóra terjed ki.
+  * A szabályzatonkénti elemek száma korlátozva van (például 100 virtuális gép). A méretezéshez duplikált szabályzatokat hozhat létre azonos vagy eltérő ütemezéssel.
+  * Adott helyreállítási pontok nem törölhetők szelektíven.
+  * Nem tilthatja le teljesen az ütemezett biztonsági mentést, és nem tarthatja védett állapotban az adatforrást. A szabályzat segítségével konfigurálható legkisebb gyakori biztonsági mentés egy heti ütemezett biztonsági mentés. Alternatív megoldásként leállíthatja a védelmet az adatok megőrzésével, és minden alkalommal engedélyezheti a védelmet, amikor biztonsági másolatot szeretne készíteni, igény szerinti biztonsági mentést készít, majd kikapcsolja a védelmet, de megőrzi a biztonsági mentési adatokat. [További információt itt talál](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A biztonsági mentési adatok védelme és a vállalata biztonsági igényeinek kielégítése érdekében Azure Backup titkosságot, integritást és rendelkezésre állási garanciákat biztosít a szándékos támadásokkal szemben, valamint az értékes adatokkal és rendszerekkel való visszaéléssel. Vegye figyelembe a Azure Backup megoldásának következő biztonsági irányelveit:
+A biztonsági másolatok adatainak védelme és a vállalat biztonsági igényeinek kielégítése érdekében a Azure Backup titkosságot, integritást és rendelkezésre állást biztosít a szándékos támadások és az értékes adatokkal és rendszerekkel való visszaélés ellen. Vegye figyelembe a következő biztonsági irányelveket a Azure Backup megoldáshoz:
 
 ### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
-* Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést, a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést. [További információt itt talál](backup-rbac-rs-vault.md).
+* Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a hozzáférések finomhangolását, a feladatok elkülönítését a csapaton belül, és csak a munkájuk elvégzéséhez szükséges felhasználói hozzáférést. [További információt itt talál](backup-rbac-rs-vault.md).
 
-* A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-kezelési műveletek vezérléséhez: a biztonsági mentési közreműködők, a kezelők és az olvasók. [További információt itt talál](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
+* Azure Backup három beépített szerepkört biztosít a biztonsági mentési felügyeleti műveletek vezérléséhez: Biztonsági mentési közreműködők, operátorok és olvasók. [További információt itt talál](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 
-* Azure Backup számos, a szolgáltatásba beépített biztonsági vezérlőt tartalmaz a biztonsági rések megelőzésére, észlelésére és reagálására (További információ)
+* Azure Backup számos biztonsági vezérlő van beépítve a szolgáltatásba a biztonsági rések megelőzésére, észlelésére és az ezekre való válaszadásra (További információ)
 
-* A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett.
+* A Recovery Services-tárolók által használt tárfiókok el vannak különítve, és a felhasználók semmilyen rosszindulatú céllal nem érhetik el őket. A hozzáférés csak olyan felügyeleti Azure Backup keresztül engedélyezett, mint például a visszaállítás.
 
-### <a name="encryption-of-data-in-transit-and-at-rest"></a>Az átvitel és a nyugalmi állapotban lévő adatok titkosítása
+### <a name="encryption-of-data-in-transit-and-at-rest"></a>Átvitel közbeni és nem használt adatok titkosítása
 
-A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
+A titkosítás védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében.
 
-* Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure-hálózaton belül maradnak.
+* Az Azure-ban az Azure-tároló és a tároló közötti átvitel során áteső adatokat HTTPS védi. Ezek az adatok az Azure-hálózaton belül maradnak.
 
-* A biztonsági mentési adatai automatikusan titkosítva vannak a Microsoft által felügyelt kulcsokkal. Másik lehetőségként használhatja a saját kulcsait, más néven az [ügyfél által felügyelt kulcsokat](encryption-at-rest-with-cmk.md).
+* Az adatok biztonsági mentése automatikusan titkosítva lesz a Microsoft által kezelt kulcsokkal. Másik lehetőségként használhatja a saját kulcsait is, más néven a felhasználó által kezelt [kulcsokat.](encryption-at-rest-with-cmk.md)
 
-* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei Azure Disk Encryption (ADE) titkosítással rendelkeznek. [További információt itt talál](backup-azure-vms-encryption.md).
+* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek operációsrendszer-/adatlemezei titkosítva vannak Azure Disk Encryption (ADE). [További információt itt talál](backup-azure-vms-encryption.md).
 
-### <a name="protection-of-backup-data-from-unintentional-deletes"></a>A véletlen törlésből származó biztonsági mentési adatok védelme
+### <a name="protection-of-backup-data-from-unintentional-deletes"></a>Biztonsági másolatok adatainak védelme a véletlen törlésekkel ellen
 
-A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a biztonsági mentést (virtuális gép, SQL Server-adatbázis, Azure-fájlmegosztás, SAP HANA-adatbázis), a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár semmilyen költséggel. [További információt itt talál](backup-azure-security-feature-cloud.md).
+Azure Backup biztonsági funkciókat biztosít, amelyek a törlést követően is segítenek megvédeni a biztonsági mentési adatokat. Helyreállító törlés esetén, ha a felhasználó törli a biztonsági mentést (egy virtuális gép, egy SQL Server-adatbázis, egy Azure-fájlmegosztás vagy egy SAP HANA-adatbázis biztonsági másolatát), a rendszer további 14 napig megőrzi a biztonsági mentési adatokat, így adatvesztés nélkül helyreállíthatja a biztonsági mentési elemet. A "soft delete" állapotban a biztonsági másolatok adatainak további 14 napos megőrzése nem jár költséggel. [További információt itt talál](backup-azure-security-feature-cloud.md).
 
-### <a name="monitoring-and-alerts-of-suspicious-activity"></a>Gyanús tevékenység figyelése és riasztásai
+### <a name="monitoring-and-alerts-of-suspicious-activity"></a>Gyanús tevékenységek monitorozása és riasztásai
 
-A Azure Backup beépített figyelési és riasztási képességeket biztosít a Azure Backuphoz kapcsolódó események műveleteinek megtekintésére és konfigurálására. [További információt itt talál](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
+Azure Backup beépített monitorozási és riasztási képességeket biztosít az eseményekhez kapcsolódó műveletek megtekintéséhez és Azure Backup. [További információt itt talál](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
 
-### <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági másolatok védelme érdekében
+### <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági mentések védelméhez
 
-A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít: egy jelszó, amelyet a feltöltés és a visszafejtés előtt titkosítani kell a Azure Backupből való letöltés után, a törölt biztonsági mentési adatok a törlés időpontjától számítva további 14 napig, a kritikus művelet (például a jelszó módosítása csak olyan felhasználók által végezhető el, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal. [További információt itt talál](backup-azure-security-feature.md).
+Azure Backup szolgáltatás a Microsoft Azure Recovery Services- (MARS-) ügynököt használja a fájlok, mappák és kötetek vagy rendszerállapotok biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS már rendelkezik biztonsági funkciókkal: egy jelszó, amely a Azure Backup-ból való letöltést követően titkosítja a titkosítást, majd visszafejti a Azure Backup-ból való letöltést követően, a törölt biztonsági másolatok adatait a törlés dátumát követően további 14 napig őrzi meg a rendszer, valamint a kritikus műveletet (például: jelszó módosítása) csak olyan felhasználók hajthatnak végre, akik érvényes Azure-beli hitelesítő adatokkal vannak. [További információt itt talál](backup-azure-security-feature.md).
 
 ## <a name="network-considerations"></a>Hálózati szempontok
 
-Azure Backup a számítási feladatból származó adatok áthelyezését igényli a Recovery Services-tárolóba. A Azure Backup számos képességet biztosít a biztonsági mentési adatok véletlen megjelenítésének biztosításához (például a hálózatban található, ember általi támadás esetén). Tekintse meg a következő útmutatót:
+Azure Backup adatoknak a számítási feladatból a Recovery Services-tárolóba való mozgása szükséges. Azure Backup a biztonsági másolatok adatainak véletlen felfedés elleni védelmére (például a hálózatra támadás). Tekintse meg a következő útmutatót:
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-* *Azure-beli virtuális gép biztonsági mentése* – a Storage és a Azure Backup szolgáltatás közötti összes szükséges kommunikáció és adatforgalom az Azure-hálózaton belül történik anélkül, hogy a virtuális hálózathoz kellene férnie. A biztonságos hálózatokon belül elhelyezett Azure-beli virtuális gépek biztonsági mentése nem igényli az IP-címek és a teljes tartománynevek elérésének engedélyezését.
+* *Azure-beli* virtuális gépek biztonsági mentése – a tárterület és az Azure Backup közötti összes szükséges kommunikáció és adatátvitel anélkül történik meg az Azure-hálózaton belül, hogy hozzá kellene férni a virtuális hálózathoz. Így a biztonságos hálózatokon elhelyezett Azure-beli virtuális gépek biztonsági mentéséhez nem szükséges IP-címhez vagy teljes tartományhoz hozzáférést biztosítani.
 
-* *SAP HANA-adatbázisok Azure-beli virtuális gépen, SQL Server Azure-beli virtuális gépen található adatbázisok* – a Azure Backup szolgáltatáshoz, az Azure Storage-hoz és a Azure Active Directoryhoz kell kapcsolódniuk. Ezt privát végpontok használatával vagy a szükséges nyilvános IP-címekhez vagy teljes tartománynevek elérésének engedélyezésével lehet elérni. A szükséges Azure-szolgáltatásokhoz való megfelelő kapcsolódás nem teszi lehetővé az adatbázis-felderítést, a biztonsági mentés konfigurálását, a biztonsági másolatok készítését és az adatok visszaállítását. A NSG-címkék, az Azure tűzfal és a HTTP-proxy használatakor a teljes hálózati útmutatásért tekintse meg ezeket az [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) -és [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) -cikkeket.
+* *SAP HANA* Azure-beli virtuális gépen található SQL Server azure-beli virtuális gépen található adatbázisokhoz – az Azure Backup-szolgáltatáshoz, az Azure Storage-hoz és az Azure Active Directory. Ez privát végpontok használatával vagy a szükséges nyilvános IP-címek vagy teljes tartomány nevek elérésének engedélyezésével érhető el. Ha nem engedélyezi a megfelelő kapcsolódást a szükséges Azure-szolgáltatásokhoz, az az olyan műveletek sikertelenségéhez vezethet, mint az adatbázis-felderítés, a biztonsági mentés konfigurálása, a biztonsági mentések végrehajtása és az adatok visszaállítása. Az NSG-címkék, az Azure Firewall és a HTTP-proxy használata közbeni teljes körű hálózati útmutatásért tekintse meg ezeket az [SQL-](backup-sql-server-database-azure-vms.md#establish-network-connectivity) és [SAP HANA cikkeket.](./backup-azure-sap-hana-database.md#establish-network-connectivity)
 
-* *Hibrid* – a MARS (Microsoft Azure Recovery Services) ügynök minden kritikus művelethez hálózati hozzáférést igényel – telepítés, konfigurálás, biztonsági mentés és visszaállítás. A MARS-ügynök az [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) keresztül tud csatlakozni a Azure Backup szolgáltatáshoz a nyilvános közvetítés (a régi áramkörök számára elérhető) és a Microsoft-társ, [privát végpontok](install-mars-agent.md#private-endpoints) vagy [a megfelelő hozzáférés-vezérléssel rendelkező proxy/tűzfal](install-mars-agent.md#verify-internet-access)használatával.
+* *Hibrid* – a MARS (Microsoft Azure Recovery Services-ügynöknek hálózati hozzáférésre van szüksége minden kritikus művelethez – telepítéshez, konfiguráláshoz, biztonsági mentéshez és visszaállításhoz. A MARS-ügynök a Azure Backup-szolgáltatáshoz [Azure ExpressRoute-en](install-mars-agent.md#use-azure-expressroute) keresztül csatlakozhat nyilvános társviszony-létesítés és Microsoft-társviszony-létesítés használatával, privát végpontok használatával vagy [proxyn/tűzfalon](install-mars-agent.md#verify-internet-access)keresztül, megfelelő hozzáférés-vezérléssel. [](install-mars-agent.md#private-endpoints)
 
-### <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
+### <a name="private-endpoints-for-azure-backup"></a>Privát végpontok Azure Backup
 
-Az Azure [Private Endpoint](../private-link/private-endpoint-overview.md) egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül az Ön számára biztosít privát és biztonságos szolgáltatásokat. Azure Backup lehetővé teszi az adatok biztonságos biztonsági mentését és visszaállítását a Recovery Services-tárolóból privát végpontok használatával.
+Az Azure [privát végpont](../private-link/private-endpoint-overview.md) egy olyan hálózati adapter, amely privát módon és biztonságosan csatlakoztatja a Azure Private Link. Azure Backup lehetővé teszi az adatok biztonságos biztonsági mentését és visszaállítását a Recovery Services-tárolókból privát végpontok használatával.
 
-* Ha engedélyezi a privát végpontokat a tárolóhoz, azok csak az SQL-és SAP HANA-munkaterhelések biztonsági mentéséhez és visszaállításához használatosak az Azure-beli virtuális gépen és a MARS-ügynök biztonsági mentésekor.  A tárolót használhatja más számítási feladatok biztonsági mentésére is (a saját végpontokat azonban nem szükséges). Az SQL és a SAP HANA számítási feladatainak és a MARS-ügynök használatával történő biztonsági mentésének kiegészítéseként az Azure-beli virtuális gépek biztonsági mentése esetén is a rendszer privát végpontokat használ a fájlok helyreállításához. [További információt itt talál](private-endpoints.md#recommended-and-supported-scenarios).
+* Ha engedélyezi a privát végpontokat a tárolóhoz, azok csak az SQL és SAP HANA számítási feladatok biztonsági mentésére és visszaállítására szolgálnak egy Azure-beli virtuális gép és MARS-ügynök biztonsági mentésében.  A tárolót más számítási feladatok biztonsági mentéséhez is használhatja (ezek azonban nem igényelnek privát végpontokat). Az SQL- és SAP HANA számítási feladatok biztonsági mentése, valamint a MARS-ügynökkel való biztonsági mentés mellett privát végpontok is használhatók fájl-helyreállítás végrehajtásához az Azure-beli virtuális gépek biztonsági mentésekor. [További információt itt talál](private-endpoints.md#recommended-and-supported-scenarios).
 
-* Azure Active Directory jelenleg nem támogatja a privát végpontokat. Így a Azure Active Directory számára szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez. További információ az [előfeltételekről](./private-endpoints.md#before-you-start).
+* Azure Active Directory jelenleg nem támogatja a privát végpontokat. Ezért a Azure Active Directory-hoz szükséges IP-címeket és FQDN-eket kimenő hozzáféréssel kell biztosítani a biztonságos hálózatról, amikor Azure-beli virtuális gépeken és MARS-ügynökkel biztonsági másolatot készít az adatbázisokról. Az Azure AD-hez való hozzáférés engedélyezéséhez NSG- és Azure Firewall címkéket is használhat. Az előfeltételekről itt [olvashat bővebben.](./private-endpoints.md#before-you-start)
 
 ## <a name="governance-considerations"></a>Szabályozási szempontok
 
-Az Azure-ban az irányítás elsődlegesen [Azure Policy](../governance/policy/overview.md) és [Azure Cost Managementekkel](../cost-management-billing/cost-management-billing-overview.md)valósul meg. [Azure Policy](../governance/policy/overview.md) lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését az erőforrások szabályainak érvényesítéséhez. Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat. A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait. Emellett a következő eszközök, mint például az [Azure Price Calculator](https://azure.microsoft.com/pricing/calculator/) és a [Azure Advisor](../advisor/advisor-overview.md)  fontos szerepet játszanak a Cost Management folyamatában.
+Az Azure-ban a szabályozást elsősorban a Azure Policy és [a](../governance/policy/overview.md) [Azure Cost Management.](../cost-management-billing/cost-management-billing-overview.md) [Azure Policy](../governance/policy/overview.md) segítségével szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az erőforrásokra vonatkozó szabályok érvényesítéséhez. Ez a funkció a vállalati szabványoknak megfelelően tartja be ezeket az erőforrásokat. [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) lehetővé teszi az Azure-erőforrások és más felhőszolgáltatók felhőhasználatának és költségeinek nyomon követését. Emellett az alábbi eszközök, például az Azure-díjkalkulátor és a [Azure Advisor](../advisor/advisor-overview.md) is fontos szerepet játszanak a költségkezelési folyamatban. [](https://azure.microsoft.com/pricing/calculator/)
 
-### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup két fő forgatókönyvet támogat a beépített Azure Policy használatával
+### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup két kulcsfontosságú forgatókönyvet támogat a beépített Azure Policy
 
-* Győződjön meg arról, hogy az újonnan létrehozott üzleti szempontból kritikus gépek automatikusan biztonsági mentést végeznek a megfelelő adatmegőrzési beállításokkal. A Azure Backup beépített szabályzatot biztosít (Azure Policy használatával), amely az előfizetésben vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba ugyanazon a helyen és előfizetésben. A felhasználó megadhatja azt a tárolót és adatmegőrzési házirendet, amelyhez a biztonsági másolattal rendelkező virtuális gépeket társítani kell. [További információt itt talál](backup-azure-auto-enable-backup.md).
+* Győződjön meg arról, hogy az újonnan létrehozott, üzleti fontosságú gépekről a megfelelő megőrzési beállításokkal automatikusan biztonságimentés készült. Azure Backup egy beépített szabályzatot biztosít (Azure Policy használatával), amely egy előfizetésen vagy erőforráscsoporton belül egy adott helyen található összes Azure-beli virtuális géphez hozzárendelhető. Ha ezt a szabályzatot egy adott hatókörhöz rendeli, a hatókörben létrehozott összes új virtuális gép automatikusan konfigurálva lesz egy ugyanazon a helyen és előfizetésben lévő meglévő tárolóba való biztonsági mentésre. A felhasználó megadhatja azt a tárolót és adatmegőrzési szabályzatot, amelyhez a biztonságimentett virtuális gépeket társítja. [További információt itt talál](backup-azure-auto-enable-backup.md).
 
-* Győződjön meg arról, hogy az újonnan létrehozott tárolók rendelkeznek a jelentések támogatásához szükséges diagnosztikai lehetőségekkel. Gyakran előfordulhat, hogy egy tárolóban manuálisan ad hozzá egy diagnosztikai beállítást, amely nehézkes feladat lehet. Emellett minden új tárolóhoz engedélyezve kell lennie a diagnosztikai beállításoknak, így megtekintheti a tár jelentéseit. A diagnosztikai beállítások méretezésének egyszerűsítése érdekében (Log Analytics a célként megadott módon) a Azure Backup beépített Azure Policy biztosít. Ez a házirend egy LA diagnosztikai beállítást hoz létre az egyes előfizetésekben vagy erőforráscsoportok összes tárolójában. A következő szakasz útmutatást nyújt ennek a szabályzatnak a használatáról. [További információt itt talál](azure-policy-configure-diagnostics.md).
+* Győződjön meg arról, hogy az újonnan létrehozott tárolókhoz engedélyezve van a diagnosztika a jelentések támogatásához. A diagnosztikai beállítások tárolónkénti manuális hozzáadása gyakran nehézkes feladat lehet. Emellett minden újonnan létrehozott tárolón engedélyezni kell a diagnosztikai beállításokat, hogy megtekintsen jelentéseket a tárolóhoz. A diagnosztikai beállítások nagy léptékű létrehozásának egyszerűsítése érdekében (a Log Analytics a célhely), Azure Backup beépített Azure Policy. Ez a szabályzat egy LA diagnosztikai beállítást ad hozzá az egyes előfizetések vagy erőforráscsoportok összes tárolójához. A következő szakaszok a szabályzat használatára vonatkozó utasításokat tartalmaznak. [További információt itt talál](azure-policy-configure-diagnostics.md).
 
-### <a name="azure-backup-cost-considerations"></a>Azure Backup a költséghatékonysággal kapcsolatos megfontolások
+### <a name="azure-backup-cost-considerations"></a>Azure Backup költséggel kapcsolatos szempontok
 
-A Azure Backup szolgáltatás képességei rugalmasan kezelhetik a költségeket, és továbbra is megfelelnek a BCDR (üzletmenet-folytonossági és vész-helyreállítási) üzleti követelményeknek. Tekintse meg a következő útmutatót:
+A Azure Backup szolgáltatás képességei rugalmasságot biztosítanak a költségek hatékony kezeléséhez, és továbbra is megfelelnek a BCDR (üzletmenet-folytonossági és vészhelyreállítási) üzleti követelményeinek. Tekintse meg a következő útmutatót:
 
-* A díjszabási számológép használatával kiértékelheti és optimalizálhatja a költségeket a különböző karok módosításával. [További információ](azure-backup-pricing.md)
+* A díjkalkulátor segítségével kiértékelheti és optimalizálhatja a költségeket a különböző szintek módosításával. [További információt itt olvashat](azure-backup-pricing.md)
 
-* Backup Explorer: a Backup Explorer vagy a biztonsági mentési jelentések segítségével megismerheti és optimalizálhatja a biztonsági mentési tár növekedését, és nem kritikus fontosságú számítási feladatokhoz vagy törölt virtuális gépekhez is leállíthatja a biztonsági mentés A teljes hagyaték összesített nézetét egy biztonsági mentési perspektívából érheti el. Ez nem csak a biztonsági másolati elemekre vonatkozó információkat tartalmazza, hanem olyan erőforrásokat is, amelyek nincsenek biztonsági mentésre konfigurálva. Ez biztosítja, hogy soha ne maradjon le a növekvő adatközpontban található kritikus adatok védelme, és a biztonsági mentések a nem kritikus fontosságú számítási feladatokhoz vagy a törölt munkaterhelésekhez vannak optimalizálva.
+* Backup-kezelő: A Backup-kezelő vagy Backup-jelentések segítségével megértheti és optimalizálhatja a biztonsági másolatok tárterületének növekedését, valamint leállíthatja a nem kritikus számítási feladatok vagy a törölt virtuális gépek biztonsági mentését. Biztonsági mentésből a teljes tulajdon összesített nézetét is megtekintheti. Ez nem csupán a biztonsági mentési elemekre vonatkozó információkat, hanem azokat az erőforrásokat is tartalmazza, amelyek nincsenek konfigurálva a biztonsági mentéshez. Ez biztosítja, hogy soha ne hagyja ki a növekvő tulajdon kritikus fontosságú adatainak védelmét, és a biztonsági másolatok nem kritikus számítási feladatokra vagy törölt számítási feladatokra vannak optimalizálva.
 
 * Biztonsági mentési szabályzat optimalizálása
-  * Az ütemterv és a megőrzési beállítások optimalizálása a számítási feladatok archetípusa alapján (például kritikus fontosságú, nem kritikus fontosságú)
+  * Optimalizálja az ütemezési és megőrzési beállításokat a számítási feladatok archetípusai alapján (például kritikus fontosságú, nem kritikus fontosságú)
   * Az azonnali visszaállítás megőrzési beállításainak optimalizálása
-  * Válassza ki a megfelelő biztonsági mentési típust a követelmények teljesítéséhez, miközben a biztonsági mentési típusok (teljes, növekményes, napló, differenciális) a számítási feladatok által Azure Backup figyelembe vételével.
+  * Válassza ki a követelményeknek megfelelő biztonsági mentési típust, miközben a támogatott biztonsági mentési típusokat (teljes, növekményes, napló, különbségi) a számítási feladat Azure Backup figyelembe véve.
 
-* Szelektív biztonsági mentési lemezek: a lemez kihagyása (előzetes verzió) funkció hatékony és költséghatékony megoldást kínál a kritikus fontosságú adat szelektív biztonsági mentéséhez. Például csak egy lemezről készíthet biztonsági mentést, ha nem kíván biztonsági másolatot készíteni a virtuális géphez csatolt többi lemezről. Ez akkor is hasznos, ha több biztonsági mentési megoldással rendelkezik. Ha például biztonsági mentést készít az adatbázisokról vagy az adatokról egy munkaterhelés biztonsági mentési megoldással (SQL Server adatbázis az Azure VM Backup szolgáltatásban), és az Azure-beli virtuális gép biztonsági mentését szeretné használni a kiválasztott lemezekhez.
+* Lemezek szelektív biztonsági mentése: A lemezek kizárása (előzetes verziójú funkció) hatékony és költséghatékony választás a kritikus adatok szelektív biztonsági mentéséhez. Például csak egy lemezről szeretne biztonságimentet, ha nem szeretne biztonságimentet kapni a virtuális géphez csatolt többi lemezről. Ez több biztonsági mentési megoldás esetén is hasznos. Ha például biztonsági mentést készít az adatbázisokról vagy az adatokról egy számítási feladat biztonsági mentési megoldásával (SQL Server-adatbázis az Azure-beli virtuális gép biztonsági mentésében), és azure-beli virtuálisgép-szintű biztonsági mentést szeretne használni a kiválasztott lemezekhez.
 
-* Azure Backup pillanatképeket küld az Azure-beli virtuális gépekről, és azokat a lemezekkel együtt tárolja a helyreállítási pont létrehozása és a visszaállítási műveletek felgyorsításához. Ezt az azonnali visszaállításnak nevezzük. Alapértelmezés szerint az azonnali visszaállítási Pillanatképek két napig tartanak. Ez a funkció lehetővé teszi a visszaállítási műveletek elvégzését ezekről a pillanatképekről a visszaállítási idő csökkentésével. Ez csökkenti az adatok tárolóból való visszaalakításához és másolásához szükséges időt. Ennek eredményeképpen megjelennek a tárolási költségek, amelyek megfelelnek az adott időszakban készített pillanatképeknek. [További információt itt talál](backup-instant-restore-capability.md#configure-snapshot-retention).
+* Azure Backup pillanatképeket készít az Azure-beli virtuális gépekről, és lemezekkel együtt tárolja azokat a helyreállítási pont létrehozásának felgyorsítása és a visszaállítási műveletek felgyorsítása érdekében. Ezt azonnali visszaállításnak nevezzük. Alapértelmezés szerint az azonnali visszaállítási pillanatképek két napig vannak megőrizve. Ez a funkció lehetővé teszi a visszaállítási műveleteket ezekről a pillanatképekről a visszaállítási idők csökkentésével. Csökkenti az adatok átalakításához és a tárolóból való visszamásolódáshoz szükséges időt. Ennek eredményeképpen olyan tárolási költségeket fog látni, amelyek az adott időszakban készített pillanatképekkel kapcsolatosak. [További információt itt talál](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Azure Backup tár tárolási replikálási típusa alapértelmezés szerint a Geo-redundáns (GRS) értékre van állítva. Ez a beállítás az elemek védelme után nem módosítható. A Geo-redundáns tárolás (GRS) magasabb szintű adattartósságot biztosít, mint a helyileg redundáns tárolás (LRS), lehetővé teszi a több régióra kiterjedő visszaállítás használatát és a költségek csökkentését. Tekintse át az alacsonyabb költségek és a magasabb adattartósság közötti kompromisszumokat, és döntse el, hogy mi a legmegfelelőbb a forgatókönyvhöz. [További információ](backup-create-rs-vault.md#set-storage-redundancy)
+* Azure Backup tároló Tárreplikáció típusa alapértelmezés szerint Georedundáns (GRS) lesz. Ez a beállítás az elemek védelme után nem módosítható. A georedundáns tárolás (GRS) magasabb szintű adatmegőrzést biztosít, mint a helyileg redundáns tárolás (LRS), lehetővé teszi a régiók közötti visszaállítás használatát, és többe kerül. Tekintse át az alacsonyabb költségek és a magasabb adatmegőrzés közötti különbségeket, és döntse el, mi a legmegfelelőbb az Ön forgatókönyvéhez. [További információ itt](backup-create-rs-vault.md#set-storage-redundancy)
 
-* Ha a virtuális gépen belül futó munkaterhelést is védi, és maga a virtuális gép is van, ellenőrizze, hogy van-e szükség a kettős védelemre.
+* Ha a virtuális gépen belül futó számítási feladatot és magát a virtuális gépet is védi, ellenőrizze, hogy szükség van-e erre a kettős védelemre.
 
-## <a name="monitoring-and-alerting-considerations"></a>Figyelési és riasztási megfontolások
+## <a name="monitoring-and-alerting-considerations"></a>Monitorozási és riasztási szempontok
 
-Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell lennie az összes biztonsági mentési megoldás figyelésére, és értesítést kapni a fontos forgatókönyvekről. Ez a szakasz a Azure Backup szolgáltatás által biztosított figyelési és értesítési képességeket részletezi.
+Biztonságimásolat-készítő felhasználóként vagy rendszergazdaként képesnek kell lennie az összes biztonsági mentési megoldás figyelése és a fontos forgatókönyvekről való értesítésre. Ez a szakasz a Azure Backup figyelési és értesítési képességeit részletezi.
 
 ### <a name="monitoring"></a>Figyelés
 
-* A Azure Backup **beépített feladatokat** biztosít a műveletekhez, például a biztonsági mentés konfigurálásához, a biztonsági mentéshez, a visszaállításhoz, a biztonsági mentés törléséhez stb. Ez a tárolóra vonatkozik, és ideális megoldás egyetlen tároló figyelésére. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
+* Azure Backup beépített **feladatfigyelési** adatokat biztosít az olyan műveletekhez, mint például a biztonsági mentés konfigurálása, a biztonsági mentés, a visszaállítás, a biztonsági mentés törlése stb. Ennek hatóköre a tárolóra terjed ki, és ideális egyetlen tároló monitorozása során. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
 
-* Ha skálán kell figyelnie az operatív tevékenységeket, a **Backup Explorer** a teljes biztonsági mentési hagyaték összesített nézetét jeleníti meg, amely részletes elemzést és hibaelhárítást tesz lehetővé. Ez egy beépített Azure Monitor-munkafüzet, amely egyetlen, központi helyet biztosít az Azure-beli teljes biztonsági mentési környezet működési tevékenységeinek figyelésére, a bérlők, a helyek, az előfizetések, az erőforráscsoportok és a tárolók átfedésére. [További információt itt talál](monitor-azure-backup-with-backup-explorer.md).
-  * Ezzel azonosíthatja a biztonsági mentéshez nem konfigurált erőforrásokat, és gondoskodhat arról, hogy soha ne maradjon le a növekvő területen a kritikus adatok védelme.
-  * Az irányítópult operatív tevékenységeket biztosít az elmúlt hét napban (maximum). Ha meg kell őriznie ezeket az adatfájlokat, exportálhatja Excel-fájlként, és megtarthatja őket.
-  * Ha Ön Azure Lighthouse-felhasználó, több bérlőn is megtekintheti az információkat, ami lehetővé teszi a határ nélküli figyelést.
+* Ha nagy léptékben kell figyelnie az üzemeltetési tevékenységeket, a Backup-kezelő összesített nézetet biztosít a teljes biztonsági mentési tulajdonról, lehetővé téve a részletes lehatolási elemzést és a hibaelhárítást.  Ez egy beépített Azure Monitor-munkafüzet, amely egyetlen központi helyet biztosít a teljes Azure-beli biztonsági mentési tulajdon üzemeltetési tevékenységeinek figyelése során, a bérlőkre, helyekre, előfizetésekre, erőforráscsoportokra és tárolókra kiterjedően. [További információt itt talál](monitor-azure-backup-with-backup-explorer.md).
+  * Segítségével azonosíthatja azokat az erőforrásokat, amelyek nincsenek konfigurálva a biztonsági mentéshez, és biztosíthatja, hogy soha ne hagyja ki a növekvő tulajdonban álló kritikus fontosságú adatok védelmét.
+  * Az irányítópult az elmúlt hét napra (maximum) vonatkozó működési tevékenységeket tartalmaz. Ha meg kell őriznie ezeket az adatokat, akkor Excel-fájlként exportálhatja és megtarthatja őket.
+  * Ha Ön egy Azure Lighthouse felhasználó, több bérlő adatait is megtekintheti, így lehetővé teszi a határvonal-figyelőt.
 
-* Ha hosszú távon meg kell őriznie és meg kell tekintenie az operatív tevékenységeket, használja a **jelentéseket**. A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy a biztonsági másolatok alapján bepillantást nyerjen az olyan adatokat, amelyek hosszú időn keresztül terjednek ki. Ilyen megoldás esetén a következő esetekben használhatók:
-  * A Felhőbeli tárhely kiosztása és előrejelzése.
-  * Biztonsági mentések és visszaállítások naplózása.
-  * A legfontosabb trendek azonosítása különböző részletességi szinteken.
+* Ha hosszú távon meg kell őriznie és meg kell tekintenie az operatív tevékenységeket, használja a Jelentések **jelentéseket.** A biztonsági mentések rendszergazdái számára gyakori követelmény, hogy hosszabb időtartamra vonatkozó adatokon alapuló elemzéseket szerezzenek a biztonsági másolatok alapján. Az ilyen megoldások a következő esetekben használhatók:
+  * A felhasznált felhőalapú tárolók allokálása és előrejelzése.
+  * A biztonsági mentések és a visszaállítások naplózása.
+  * A fő trendek azonosítása különböző részletességi szinteken.
 
 * ráadásul
-  * Az adatok (például feladatok, házirendek stb.) a **log Analytics** munkaterületre is elküldhetők. Ez lehetővé teszi Azure Monitor naplók funkcióit, hogy lehetővé tegyék az adatok korrelációját a Azure Monitor által gyűjtött más monitorozási adatokkal, összevonja a naplóbejegyzéseket több Azure-előfizetésből és-bérlőből egyetlen helyre az elemzéshez [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
-  * Adatokat küldhet az Event hub-nak az Azure-on kívüli bejegyzések küldéséhez, például egy harmadik féltől származó SIEM (biztonsági információk és rendezvényszervezés) vagy más log Analytics megoldáshoz. [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
-  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információk](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
+  * Adatokat (például feladatokat, szabályzatokat stb.) küldhet a **Log Analytics-munkaterületre.** Ez lehetővé teszi a Azure Monitor-naplók funkcióinak használatát az adatok és az Azure Monitor által gyűjtött egyéb monitorozási adatok korrelációja, több Azure-előfizetésből és -bérlőből származó naplóbejegyzések egyetlen helyre történő konszolidálása az együttes elemzéshez, naplólekérdezések használata összetett elemzések elvégzéséhez és a naplóbejegyzések mélyebb elemzéséhez. [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
+  * Adatokat küldhet az Eseményközpontba, hogy az Azure-n kívüli bejegyzéseket küldjön, például egy külső SIEM-nek (biztonsági információk és események kezelése) vagy más naplóelemzési megoldásnak. [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
+  * Ha 90 napnál hosszabb ideig szeretné megőrizni a naplóadatokat naplózás, statikus elemzés vagy biztonsági mentés céljából, elküldheti az adatokat egy Azure Storage-fiókba. Ha csak legfeljebb 90 napig kell megőriznie az eseményeket, nem kell archívumokat beállítania a tárfiókban, mivel a tevékenységnapló eseményei 90 napig maradnak az Azure platformon. [További információ](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Riasztások kezelése
 
-* A riasztások elsősorban arra szolgálnak, hogy értesítést kapjanak a vonatkozó teendők meghozataláról. A biztonsági mentési riasztások szakasz a Azure Backup szolgáltatás által generált riasztásokat jeleníti meg.
+* A riasztások elsődlegesen a megfelelő műveletekkel kapcsolatos értesítéseket küldik. A Biztonsági mentési riasztások szakasz a biztonsági mentési szolgáltatás által Azure Backup riasztásokat jeleníti meg.
 
-* Azure Backup egy **beépített riasztási** értesítési mechanizmust biztosít a hibák, figyelmeztetések és kritikus műveletek e-mailben történő elküldéséhez. Megadhat egyedi e-mail-címeket vagy terjesztési listát, amelyekről értesítést kaphat, ha riasztás jön létre. Azt is megadhatja, hogy az egyes riasztások értesítést kapjanak-e, vagy egy óránkénti kivonatban csoportosítsa őket, majd értesítést kap.
-  * Ezeket a riasztásokat a szolgáltatás definiálja, és támogatást nyújt a korlátozott forgatókönyvek számára – biztonsági mentési/visszaállítási hibák, az adatok megőrzésének megakadályozása/a védelem leállítása az adatok törlésével és így tovább. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Ha olyan roncsolásos műveletet végez, mint például a védelem leállítása a törlési művelettel, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések **nincsenek konfigurálva az** Recovery Services-tárolóhoz.
-  * Bizonyos munkaterhelések nagy gyakoriságú hibákat okozhatnak (például SQL Server 15 percenként). Ha meg szeretné akadályozni, hogy az egyes hibák előfordulásakor kiváltott riasztások eljusson, a riasztások konszolidálva lesznek. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
-  * A beépített riasztások nem szabhatók testre, és a Azure Portal meghatározott e-mailekre vannak korlátozva.
+* Azure Backup beépített riasztási értesítési mechanizmust biztosít **e-mailben** a hibák, figyelmeztetések és kritikus műveletek esetén. Megadhat egyéni e-mail-címeket vagy terjesztési listákat, amelyek értesítést kaphatnak a riasztások generálásakor. Azt is eldöntheti, hogy minden egyes riasztásról értesítést kap, vagy óránkénti kivonatba csoportosítja őket, majd értesítést kap.
+  * Ezeket a riasztásokat a szolgáltatás határozza meg, és korlátozott forgatókönyvekhez nyújtanak támogatást – biztonsági mentési/visszaállítási hibák, védelem leállítása az adatok megőrzésével/Védelem leállítása törlési adatokkal stb. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
+  * Ha kipusztító művelet, például a védelem törlési adatokkal való leállítása történik, a rendszer riasztást küld,  és e-mailt küld az előfizetés tulajdonosainak, rendszergazdáinak és társadminisztr rendszergazdáinak, még akkor is, ha az értesítések nincsenek konfigurálva a Recovery Services-tárolóhoz.
+  * Bizonyos számítási feladatok nagy gyakori hibákat okozhatnak (például 15 percenként SQL Server hibákat). Annak érdekében, hogy ne terhelődjön túl az egyes hibák előfordulásakor felhozott riasztások, a rendszer összesítenie kell a riasztásokat. [További információt itt talál](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
+  * A beépített riasztások nem szabhatók testre, és csak az ebben a Azure Portal.
 
-* Ha **Egyéni riasztásokat kell létrehoznia** (például a sikeres feladatok riasztásait), használja a log Analytics. Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja létre. A hibrid munkaterhelések (DPM/MABS) is küldhetnek az adatoknak az LA-be, és a LA használatával a Azure Backup által támogatott munkaterhelések közötti gyakori riasztásokat.
+* Ha egyéni riasztásokat kell **létrehoznia** (például sikeres feladatok riasztásai), használja a Log Analyticset. A Azure Monitor létrehozhat saját riasztásokat egy Log Analytics-munkaterületen. A hibrid számítási feladatok (DPM/MABS) is küldhetnek adatokat LA-nak, és lazán keresztül is küldhetnek gyakori riasztásokat a felhőben támogatott Azure Backup.
 
-* Értesítéseket a beépített Recovery Services tár **tevékenység-naplókban** is kaphat. Azonban támogatja a korlátozott forgatókönyveket, és nem alkalmas olyan műveletekhez, mint az ütemezett biztonsági mentés, amely jobban igazodik az erőforrás-naplókhoz, mint a tevékenységek naplói. Ha többet szeretne megtudni ezekről a korlátozásokról, valamint arról, hogy miként használhatja a Log Analytics munkaterületet az Azure Backup által védett munkaterhelések figyelésére és riasztására, tekintse meg ezt a [cikket](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
+* Az értesítéseket a beépített Recovery Services-tároló tevékenységnaplóiban **is lekértheti.** Azonban korlátozott forgatókönyveket támogat, és nem alkalmas olyan műveletekhez, mint az ütemezett biztonsági mentés, amely jobban igazodik az erőforrásnaplókhoz, mint a tevékenységnaplókhoz. Ha többet szeretne megtudni ezekről a korlátozásokról, illetve arról, hogyan használhatja a Log Analytics-munkaterületet a monitorozáshoz és a riasztáshoz nagy méretekben a Azure Backup által védett összes számítási feladathoz, tekintse meg ezt a [cikket.](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Javasoljuk, hogy olvassa el a következő cikkeket a Azure Backup használatának kiindulási pontjaiként:
+Javasoljuk, hogy a következő cikkeket kiindulási pontként olvassa el a Azure Backup:
 
 * [Azure Backup áttekintése](backup-overview.md)
-* [Gyakori kérdések](backup-azure-backup-faq.md)
+* [Gyakori kérdések](backup-azure-backup-faq.yml)

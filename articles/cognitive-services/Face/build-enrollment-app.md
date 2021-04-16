@@ -1,7 +1,7 @@
 ---
-title: Beléptetési alkalmazás készítése az Androidhoz a reakcióval
+title: React-alkalmazás összeállítása felhasználók Face-szolgáltatáshoz való hozzáadásához
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan állíthatja be a fejlesztési környezetet, és hogyan helyezhet üzembe egy Face beléptetési alkalmazást az ügyfelek beleegyezett.
+description: Megtudhatja, hogyan állíthatja be a fejlesztési környezetet, és hogyan helyezhet üzembe egy Face-alkalmazást az ügyfelek beleegyezésének lekért támogatáshoz.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,79 +9,79 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39a74c7f3d5fb8f8b60a66947fcce9837ed6ee13
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102428269"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505105"
 ---
-# <a name="build-an-enrollment-app-for-android-with-react"></a>Beléptetési alkalmazás készítése az Androidhoz a reakcióval
+# <a name="build-a-react-app-to-add-users-to-a-face-service"></a>React-alkalmazás összeállítása felhasználók Face-szolgáltatáshoz való hozzáadásához
 
-Ez az útmutató bemutatja, hogyan kezdheti meg a minta Face beléptetési alkalmazást. Az alkalmazás bemutatja az ajánlott eljárásokat a felhasználók Arcfelismerés szolgáltatásba való beléptetéséhez és a nagy pontosságú adatok beszerzéséhez. Az integrált rendszerek olyan beléptetési alkalmazást használhatnak, mint például az érintés nélküli hozzáférés-vezérlés, az identitás-ellenőrzés, a látogatottság nyomon követése, a személyre szabási kioszk vagy a személyazonosság-ellenőrzés, az adatok alapján.
+Ez az útmutató bemutatja a minta Face regisztrációs alkalmazás első lépésekre vonatkozó útmutatóját. Az alkalmazás ajánlott eljárásokat mutat be arra, hogyan lehet értelmes beleegyezést szerezni a felhasználók arcfelismerési szolgáltatásba való felvételéhez és a nagy pontosságú arcadatok beszerzéséhez. Egy integrált rendszer egy ilyen alkalmazással érintés nélküli hozzáférés-vezérlést, személyazonosság-ellenőrzést, követési követést, személyre szabási kioszkot vagy személyazonosság-ellenőrzést nyújthat az arcadatok alapján.
 
-Indításakor az alkalmazás részletes beleegyezési képernyőt jelenít meg a felhasználók számára. Ha a felhasználó beleegyezik, az alkalmazás kérni fogja a felhasználónevet és a jelszót, majd az eszköz kamerájának használatával rögzíti a kiváló minőségű arcképet.
+Az alkalmazás indításakor megjelenik a felhasználók részletes hozzájárulási képernyője. Ha a felhasználó beleegyezést ad, az alkalmazás felhasználónevet és jelszót kér, majd egy kiváló minőségű arcképet rögzít az eszköz kamerájával.
 
-A minta-beléptetési alkalmazást a JavaScript és a reakciós natív keretrendszer használatával kell megírni. Jelenleg Android-eszközökön helyezhető üzembe. További üzembe helyezési lehetőségek jönnek a jövőben.
+A mintaalkalmazás a JavaScript és a React Native keretrendszer használatával íródott. Jelenleg Android-eszközökön telepíthető; A jövőben további üzembe helyezési lehetőségek is elérhetőek.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/).  
-* Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy arc-erőforrást](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz** lehetőséget.  
-  * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához.  
-  * Helyi fejlesztéshez és teszteléshez illessze be az API-kulcsot és a végpontot a konfigurációs fájlba. A végső telepítéshez tárolja az API-kulcsot biztonságos helyen, és soha ne a kódban.  
+* Azure-előfizetés – [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/cognitive-services/)  
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Face-erőforrást [a](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Azure Portal a kulcs és a végpont lekért létrehozásához. Az üzembe helyezés után válassza az **Erőforráshoz ugrás lehetőséget.**  
+  * Az alkalmazás Face API-hoz való csatlakoztatásához szüksége lesz a létrehozott erőforrás kulcsára és végpontjára.  
+  * Helyi fejlesztéshez és teszteléshez beillesztheti az API-kulcsot és a végpontot a konfigurációs fájlba. A végső üzembe helyezéshez tárolja az API-kulcsot biztonságos helyen, és soha ne a kódban.  
 
 > [!IMPORTANT]
-> Ezek az előfizetési kulcsok hozzáférnek a kognitív szolgáltatás API-hoz. Ne ossza meg a kulcsokat. Biztonságos tárolás, például Azure Key Vault használata. Javasoljuk továbbá, hogy rendszeresen újragenerálja ezeket a kulcsokat. API-hívások létrehozásához csak egy kulcs szükséges. Az első kulcs újragenerálásakor a második kulcsot használhatja a szolgáltatás folyamatos eléréséhez.
+> Ezek az előfizetői kulcsok a Cognitive Service API eléréséhez használhatók. Ne ossza meg a kulcsokat. Biztonságosan tárolhatja őket, például a Azure Key Vault. Javasoljuk továbbá, hogy rendszeresen újragenerálja ezeket a kulcsokat. Az API-hívásokhoz csak egy kulcs szükséges. Az első kulcs újragenerálásakor használhatja a második kulcsot a szolgáltatáshoz való folyamatos hozzáféréshez.
 
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
-1. A [minta beléptetési alkalmazás](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)git-tárházának klónozása.
-1. A fejlesztési környezet beállításához kövesse a natív dokumentáció megválaszolása <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> natív dokumentációt </a> . Válassza a **NATÍV CLI** -gyors reagálás a fejlesztési operációs rendszerként lehetőséget, és válassza az **Android** lehetőséget célként szolgáló operációs rendszerként. Fejezze be a **függőségek** és az **androidos fejlesztői környezet** telepítését ismertető szakaszt.
-1. Nyissa meg a env.jsfájlt a kívánt szövegszerkesztőben, például a [Visual Studio Code](https://code.visualstudio.com/)-ban, és adja hozzá a végpontot és a kulcsot. A végpontot és a kulcsot a Azure Portal az erőforrás **Áttekintés** lapján érheti el. Ez a lépés csak helyi tesztelési célokra szolgál, a &mdash; távoli tárházban nem kell bejelentkeznie a Face API-kulcsba.
-1. Futtassa az alkalmazást az Android rendszerű virtuális eszköz emulátorával Android Studio vagy a saját Android-eszközéről. Ha egy fizikai eszközön szeretné tesztelni az alkalmazást, kövesse a kapcsolódó <a href="https://reactnative.dev/docs/running-on-device"  title=" reagáló natív dokumentációt a "  target="_blank"> natív dokumentációban </a> .  
+1. Klónozza a mintaalkalmazás [git-adattárát.](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)
+1. A fejlesztési környezet beállítását a <a href="https://reactnative.dev/docs/environment-setup"  title=" React Native react native dokumentációjában "  target="_blank"> találhatja </a> meg. Fejlesztői operációs rendszerként válassza a **React Native CLI Quickstart (React Natív CLI** rövid útmutató) lehetőséget, cél operációs rendszerként pedig az **Android** lehetőséget. Töltse ki a **Függőségek és az** **Android fejlesztési környezet telepítése szakaszt.**
+1. Nyissa meg env.jsfájlt a kívánt szövegszerkesztőben, például a [Visual Studio Code](https://code.visualstudio.com/)-ban, és adja hozzá a végpontot és a kulcsot. A végpontot és a kulcsot a Azure Portal az erőforrás **Áttekintés** lapján. Ez a lépés csak helyi tesztelési célokra szolgál, és ne ellenőrizze a Face API-kulcsot a &mdash; távoli adattárban.
+1. Futtassa az alkalmazást az androidos virtuáliseszköz-emulátorsal Android Studio vagy a saját Android-eszközével. Az alkalmazás fizikai eszközön való teszteléséhez kövesse a React Native react <a href="https://reactnative.dev/docs/running-on-device"  title=" "  target="_blank"> native </a> dokumentációját.  
 
 
-## <a name="create-an-enrollment-experience"></a>Regisztrálási élmény létrehozása  
+## <a name="create-a-user-add-experience"></a>Felhasználói élmény létrehozása  
 
-Most, hogy beállította a minta-beléptetési alkalmazást, testreszabhatja a saját regisztrációs élményének igényeihez.
+Most, hogy beállította a mintaalkalmazást, testre szabhatja a saját igényeinek megfelelően.
 
-Előfordulhat például, hogy az Ön beleegyező oldalára szeretné felvenni a helyzet-specifikus adatokat:
-
-> [!div class="mx-imgBorder"]
-> ![alkalmazás-engedélyezési oldal](./media/enrollment-app/1-consent-1.jpg)
-
-A szolgáltatás képminőség-ellenőrzéseket biztosít, amelyek segítségével megadhatja, hogy a rendszerkép megfelelő minőségű-e az ügyfél regisztrálásához, vagy kísérletet tesz a felismerésre. Ez az alkalmazás bemutatja, hogyan érheti el a kereteket az eszköz kamerájában, kiválaszthatja a legmagasabb minőségi kereteket, és regisztrálhatja az észlelt arcot a Face API szolgáltatásban. 
-
-Az Arcfelismerés számos problémáját az alacsony minőségű hivatkozási képek okozzák. A modell teljesítményének romlását befolyásoló tényezők:
-* Oldalméret (arcok, amelyek távol vannak a kamerától)
-* Szembenéző tájolás (a kamera felől megfordult vagy megdöntött arcok)
-* Gyenge megvilágítási feltételek (akár kis fény, akár háttérvilágítás), ahol a rendszerkép valószínűleg nem megfelelő, vagy túl sok zajt tartalmaz
-* Elzáródás (részlegesen rejtett vagy akadályozatlan arcok), beleértve a kalapokat vagy a vastag peremű szemüvegeket is.
-* Életlenítés (például a fénykép készítésekor a gyors Face mozgással). 
+Előfordulhat például, hogy helyzetspecifikus információkat szeretne hozzáadni a hozzájárulási oldalon:
 
 > [!div class="mx-imgBorder"]
-> ![az alkalmazás lemezkép-rögzítési utasításának lapja](./media/enrollment-app/4-instruction.jpg)
+> ![alkalmazás-hozzájárulási oldal](./media/enrollment-app/1-consent-1.jpg)
 
-Figyelje meg, hogy az alkalmazás a felhasználó regisztrációjának törlését és az újbóli regisztrálás lehetőségét is biztosítja.
+A szolgáltatás képminőség-ellenőrzéseket biztosít, hogy eldöntse, a kép megfelelő minőségű-e az ügyfél hozzáadásához vagy arcfelismerési kísérlethez. Ez az alkalmazás bemutatja, hogyan férhet hozzá a képkockákhoz az eszköz kamerájával, hogyan választhatja ki a legjobb minőségű képkockákat, és hogyan adjuk hozzá az észlelt arcot a Face API szolgáltatáshoz. 
+
+Számos arcfelismerési problémát az alacsony minőségű referenciaképek okának okoz. Néhány tényező, amely ronthatja a modell teljesítményét:
+* Arcméret (a kamerától távoli arcok)
+* Arc tájolása (a kamerától elforgatott vagy dőlt arcok)
+* Gyenge megvilágítási körülmények (alacsony fényviszony vagy háttérvilágítás), ahol előfordulhat, hogy a kép nem megfelelően van kitéve, vagy túl nagy a zaj
+* Eltömöredés (részlegesen rejtett vagy ömlött arcok), beleértve az olyan kiegészítőket, mint a szemüveg vagy a vastag szemüveg)
+* Elmosódás (például a fénykép gyors mozgása). 
 
 > [!div class="mx-imgBorder"]
-> ![profil kezelése lap](./media/enrollment-app/10-manage-2.jpg)
+> ![alkalmazáskép-rögzítési utasítás oldala](./media/enrollment-app/4-instruction.jpg)
 
-Ha ki szeretné terjeszteni az alkalmazás funkcióit a teljes regisztrációs élményre, olvassa el az [áttekintést](enrollment-overview.md) további funkciók megvalósításához és az ajánlott eljárásokhoz.
+Figyelje meg, hogy az alkalmazás a felhasználói adatok törlésére és az újra hozzáadásra vonatkozó lehetőséget is kínál.
 
-## <a name="deploy-the-enrollment-app"></a>A beléptetési alkalmazás üzembe helyezése
+> [!div class="mx-imgBorder"]
+> ![profilkezelési oldal](./media/enrollment-app/10-manage-2.jpg)
+
+Az alkalmazás funkcióinak a teljes körű funkcionalitásra [](enrollment-overview.md) való kiterjesztéséhez olvassa el a megvalósítható további funkciók áttekintését és az ajánlott eljárásokat.
+
+## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
 ### <a name="android"></a>Android
 
-Először győződjön meg arról, hogy az alkalmazás készen áll az éles környezetben való üzembe helyezésre: távolítsa el az összes kulcsot vagy titkot az alkalmazás kódjából, és győződjön meg arról, hogy követte az [ajánlott biztonsági eljárásokat](../cognitive-services-security.md?tabs=command-line%2ccsharp).
+Először győződjön meg arról, hogy az alkalmazás készen áll az éles környezetben való üzembe helyezésre: távolítsa el a kulcsokat és titkos kódokat az alkalmazás kódból, és győződjön meg arról, hogy követte az ajánlott [biztonsági eljárásokat.](../cognitive-services-security.md?tabs=command-line%2ccsharp)
 
-Ha készen áll az alkalmazás éles környezetben való kiadására, létrehoz egy kiadásra kész APK-fájlt, amely az Android-alkalmazások csomag fájlformátuma. Ezt az APK-fájlt titkos kulccsal kell aláírni. Ezzel a kiadással megkezdheti az alkalmazás közvetlen terjesztését az eszközökön. 
+Amikor készen áll az alkalmazás éles környezetben való kiadására, létre fog hozni egy kiadásra kész APK-fájlt, amely az Android-alkalmazások csomagfájlformátuma. Az APK-fájlt titkos kulccsal kell aláírni. Ebben a kiadási buildben közvetlenül megkezdheti az alkalmazás terjesztését az eszközökre. 
 
-A kiadási <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" dokumentáció előkészítésének előkészítése "  target="_blank"> </a> című témakörben megtudhatja, hogyan hozhatja ki a titkos kulcsot, hogyan aláírhatja az alkalmazást, és hogyan hozhatja ki a kiadási apk-t.  
+Kövesse a Prepare for release Prepare for release documentation (Felkészülés a kiadásra) dokumentációt a titkos kulcs létrehozásához, az alkalmazás aláírásához és a kiadási <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> </a> APK létrehozásához.  
 
-Miután létrehozott egy aláírt APK-t, tekintse meg az alkalmazás közzététele az alkalmazás közzététele című <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> </a> dokumentációt, amelyből többet tudhat meg az alkalmazás kiadásáról.
+Az aláírt APK létrehozása után az Alkalmazás közzététele Az alkalmazás közzététele dokumentációban talál további információt az alkalmazás <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> </a> kiadásának mikéntjéhez.
 
 ## <a name="next-steps"></a>Következő lépések  
 
-Ebből az útmutatóból megtudhatta, hogyan állíthatja be a fejlesztési környezetet, és megkezdheti a minta-beléptetési alkalmazás megkezdését. Ha most ismerkedik a natív reagálással, olvassa el az [első lépéseket ismertető dokumentációt](https://reactnative.dev/docs/getting-started) , ahol további háttér-információkat tudhat meg. Hasznos lehet a [Face API](Overview.md)megismerése is. A fejlesztés megkezdése előtt olvassa el a beléptetési alkalmazás dokumentációjának egyéb fejezeteit.
+Ebben az útmutatóban megtanulta, hogyan állíthatja be a fejlesztési környezetet, és hogyan kezdte el a mintaalkalmazást. Ha most ismerkedik a React Native [](https://reactnative.dev/docs/getting-started) alkalmazásokkal, olvassa el az első lépésekhez szükséges dokumentumokban további háttérinformációkat. Hasznos lehet megismerkedni a [Face API-val is.](Overview.md) A fejlesztés megkezdése előtt olvassa el a felhasználók hozzáadásának további szakaszait.

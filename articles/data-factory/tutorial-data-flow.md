@@ -1,19 +1,19 @@
 ---
-title: Az adatátalakítás leképezési adatfolyam használatával
-description: Ez az oktatóanyag részletes útmutatást nyújt a Azure Data Factory használatával történő adatátalakításhoz a leképezési adatfolyammal
+title: Adatok átalakítása leképezési adatfolyam használatával
+description: Ez az oktatóanyag részletes útmutatást nyújt a Azure Data Factory adatok leképezési adatfolyammal való átalakításához
 author: dcstwh
 ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2021
-ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/14/2021
+ms.openlocfilehash: 0842dad0e0ea6f9987727e8abf3d0eaf8a59e821
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563293"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517518"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatok átalakítása adatfolyamok leképezésével
 
@@ -21,191 +21,191 @@ ms.locfileid: "105563293"
 
 Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
 
-Ebben az oktatóanyagban a Azure Data Factory felhasználói felületét (UX) fogja használni egy olyan folyamat létrehozásához, amely egy Azure Data Lake Storage-(ADLS-) Gen2-forrásból származó adatok másolását és átalakítását végzi egy ADLS Gen2 fogadóba a leképezési adatfolyam használatával. Az oktatóanyagban szereplő konfigurációs minta kiterjeszthető, ha az adatátalakítást a leképezési folyamat használatával végezi el
+Ebben az oktatóanyagban az Azure Data Factory felhasználói felület (UX) használatával fog létrehozni egy folyamatot, amely adatokat másol és alakít át egy Azure Data Lake Storage-forrásból (ADLS) Gen2-forrásból egy ADLS Gen2-fogadóba leképezési adatfolyam használatával. Az oktatóanyagban használt konfigurációs minta kibővíthető az adatok leképezési adatfolyam használatával való átalakításakor
 
  >[!NOTE]
-   >Ez az oktatóanyag általában az adatfolyamatok hozzárendelését jelenti. Az adatfolyamatok Azure Data Factory és szinapszis folyamatokban egyaránt elérhetők. Ha még nem ismeri az Azure szinapszis-folyamatokban lévő adatfolyamatokat, kövesse az [Azure szinapszis-folyamatokat használó Adatfolyamatokat](../synapse-analytics/concepts-data-flow-overview.md) . 
+   >Ez az oktatóanyag általában adatfolyamok leképezésére való. Az adatfolyamok a Azure Data Factory Synapse Pipelinesban is elérhetők. Ha még nem használja az adatfolyamokat a Azure Synapse Pipelinesban, kövesse az Adatfolyam [a Azure Synapse folyamatok használatával](../synapse-analytics/concepts-data-flow-overview.md) 
    
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Folyamat létrehozása adatfolyam-tevékenységgel.
-> * Hozzon létre egy leképezési adatfolyamot négy átalakítással.
+> * Hozzon létre egy folyamatot egy Adatfolyam tevékenységgel.
+> * Leképezési adatfolyam összeállítása négy átalakítással.
 > * A folyamat próbafuttatása
-> * Adatfolyam-tevékenység figyelése
+> * Tevékenység Adatfolyam figyelése
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* **Azure Storage-fiók**. A ADLS-tárolók *forrásaként* és fogadó *adattárakként* használhatók. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
+* **Azure-előfizetés.** Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* **Azure Storage-fiók.** Az ADLS-tárolót *forrás- és* *fogadóadattárként* használhatja. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
 
-Az oktatóanyagban átalakított fájl MoviesDB.csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez lásd: [Blobok feltöltése a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
+Az oktatóanyagban átalakított fájl MoviesDB.csv, amely itt [található.](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv) A fájl GitHubról való lekéréséhez másolja a tartalmát egy ön által választott szövegszerkesztőbe a helyi .csv-fájlként való mentéshez. A fájl tárfiókba való feltöltésével lásd: [Blobok feltöltése a Azure Portal.](../storage/blobs/storage-quickstart-blobs-portal.md) A példák a "sample-data" nevű tárolóra hivatkoznak.
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factory UX-t egy folyamat létrehozásához az adatelőállítóban.
+Ebben a lépésben létrehoz egy adat-előállítót, és megnyitja a Data Factory felhasználói felületét egy folyamat létrehozásához az adat-előállítóban.
 
-1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. Jelenleg Data Factory felhasználói felület csak a Microsoft Edge és a Google Chrome böngészőben támogatott.
-2. A bal oldali menüben válassza az **erőforrás**-  >  **integráció** létrehozása  >  **Data Factory**:
+1. Nyissa **meg Microsoft Edge** vagy a Google Chrome **böngészőt.** A felhasználói Data Factory jelenleg csak a böngészők és a Google Chrome böngészőkben Microsoft Edge támogatottak.
+2. A bal oldali menüben válassza az **Erőforrás-integráció** létrehozása  >  **lehetőséget**  >  **Data Factory:**
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
-   Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének globálisan *egyedinek kell lennie.* Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például sajátneveADFTutorialDataFactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
-    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Új adatelőállító-hibaüzenet az ismétlődő névhez.":::
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Új data factory hibaüzenet duplikált név esetén.":::
 4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-    a. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+    a. Válassza **a Meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-    b. Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. 
+    b. Válassza **az Új létrehozása** lehetőséget, és adja meg egy erőforráscsoport nevét. 
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
 6. A **Verzió** résznél válassza a **V2** értéket.
-7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattárak (például az Azure Storage és a SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is használhatók.
+7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más régiókban is előfordulhatnak.
 8. Válassza a **Létrehozás** lehetőséget.
-9. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa az adatfeldolgozó lapot.
+9. A létrehozás befejezése után az értesítés megjelenik az Értesítési központban. Az **Adat-előállító lapra** való navigáláshoz válassza az Ugrás az erőforráshoz lehetőséget.
 10. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Létrehozás és figyelés** csempét.
 
-## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Folyamat létrehozása adatfolyam-tevékenységgel
+## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Folyamat létrehozása egy Adatfolyam tevékenységgel
 
-Ebben a lépésben olyan folyamatot hoz létre, amely egy adatfolyam-tevékenységet tartalmaz.
+Ebben a lépésben egy folyamatot fog létrehozni, amely egy Adatfolyam tartalmaz.
 
 1. Az **Első lépések** lapon válassza a **Folyamat létrehozása** lehetőséget.
 
    ![Folyamat létrehozása](./media/doc-common-process/get-started-page.png)
 
-1. A folyamat **általános** lapján adja meg a **TransformMovies** nevet a folyamat **neveként** .
-1. A gyári felső sávban csúsztassa az **adatfolyam hibakeresési** csúszkáját. A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Az adatfolyam-fürtök 5-7 percet vesznek igénybe, és a felhasználóknak javasoljuk, hogy először bekapcsolják a hibakeresést, ha az adatforgalom fejlesztését tervezik. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
+1. A folyamat **Általános** lapján adja meg a **TransformMovies** nevet **a folyamat** neveként.
+1. A Tevékenységek **panelen** bontsa ki a **Move and Transform (Áthelyezés és átalakítás)** et. Húzza át a **Adatfolyam** tevékenységet a panelről a folyamatvászonra.
 
-    ![Adatfolyam-tevékenység](media/tutorial-data-flow/dataflow1.png)
-1. A **tevékenységek** ablaktáblán bontsa ki az **áthelyezés és átalakítás** egyezést. Húzza az **adatfolyam** tevékenységet a panelről a folyamat vászonra.
+    ![Képernyőkép a folyamatvászonról, ahol eldobhatja a Adatfolyam tevékenységet.](media/tutorial-data-flow/activity1.png)
+1. Az Új **Adatfolyam** előugró ablakban válassza az Új alkalmazás **létrehozása lehetőséget Adatfolyam** az adatfolyamnak adja a **TransformMovies nevet.** Ha végzett, kattintson a Befejezés gombra.
 
-    ![Képernyőkép, amely megjeleníti a folyamat vászonját, ahol elhúzhatja az adatfolyam tevékenységeit.](media/tutorial-data-flow/activity1.png)
-1. Az **adatfolyam hozzáadása** felugró ablakban válassza az **új adatfolyam létrehozása** lehetőséget, majd nevezze el az adatfolyam- **TransformMovies**. Ha elkészült, kattintson a Befejezés gombra.
+    ![Új adatfolyam létrehozásakor az adatfolyam elnevezési helyét bemutató képernyőkép.](media/tutorial-data-flow/activity2.png)
+1. A folyamatvászon felső sávjában húzza be a Adatfolyam **hibakeresési csúszkát.** A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Adatfolyam 5–7 percet is igénybe vegyen a bemelegítés, és a felhasználóknak ajánlott először bekapcsolni a hibakeresést, ha Adatfolyam terveznek. További információ: [Hibakeresési mód.](concepts-data-flow-debug-mode.md)
 
-    ![Képernyőfelvétel: az új adatfolyam létrehozásakor az adatfolyamatok nevének megjelenítése.](media/tutorial-data-flow/activity2.png)
+    ![Adatfolyam tevékenység](media/tutorial-data-flow/dataflow1.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Átalakítási logika létrehozása az adatfolyam-vásznon
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Átalakítási logika összeállítása az adatfolyam-vásznon
 
-Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adatfolyam-vásznon. Ebben a lépésben egy olyan adatfolyamatot fog létrehozni, amely a ADLS-tárolóban lévő moviesDB.csv viszi, és összesíti a vígjátékok 1910 és 2000 közötti átlagos minősítését. Ezt a fájlt ezután vissza kell írnia a ADLS-tárolóba.
+Miután létrehozott egy Adatfolyam, a rendszer automatikusan az adatfolyamvászonra küldi. Ebben a lépésben egy olyan adatfolyamot fog felépíteni, amely az ADLS-tárolóban moviesDB.csv és összesíti a comedies átlagos minősítését 1910 és 2000 között. Ezután ezt a fájlt visszaírja az ADLS-tárolóba.
 
-1. Az adatfolyam-vásznon adja hozzá a forrást a **forrás hozzáadása** mezőre kattintva.
+1. Az adatfolyam vásznán adjon hozzá egy forrást a **Forrás hozzáadása mezőre** kattintva.
 
-    ![Képernyőkép, amely a forrás hozzáadása mezőt jeleníti meg.](media/tutorial-data-flow/dataflow2.png)
-1. Nevezze el a forrás **MoviesDB**. Új forrás adatkészlet létrehozásához kattintson az **új** elemre.
+    ![A Forrás hozzáadása mezőt bemutató képernyőkép.](media/tutorial-data-flow/dataflow2.png)
+1. A forrásnak a **MoviesDB nevet kell ad.** Új **forrásadatkészlet** létrehozásához kattintson az Új elemre.
 
-    ![Képernyőkép, amely azt mutatja, hogy hol válassza az új lehetőséget a forrás nevének megadása után.](media/tutorial-data-flow/dataflow3.png)
+    ![A forrás elnevezése után az Új kiválasztásának helyét bemutató képernyőkép.](media/tutorial-data-flow/dataflow3.png)
 1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Képernyőkép, amely megjeleníti a Azure Data Lake Storage Gen2 csempét.](media/tutorial-data-flow/dataset1.png)
-1. Válassza a **DelimitedText** lehetőséget. Kattintson a Folytatás gombra.
+    ![Képernyőkép a Azure Data Lake Storage Gen2 csempéről.](media/tutorial-data-flow/dataset1.png)
+1. Válassza **a Tagolt Szöveg lehetőséget.** Kattintson a Folytatás gombra.
 
-    ![Képernyőkép, amely a DelimitedText csempét jeleníti meg.](media/tutorial-data-flow/dataset2.png)
-1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új** lehetőséget.
+    ![A Tagolt Szöveg csempét bemutató képernyőkép.](media/tutorial-data-flow/dataset2.png)
+1. Nevezze el az adatkészletet **MoviesDB néven.** A csatolt szolgáltatás legördülő menüben válassza az Új **lehetőséget.**
 
-    ![A társított szolgáltatás legördülő listáját megjelenítő képernyőkép.](media/tutorial-data-flow/dataset3.png)
-1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
+    ![Képernyőkép a Csatolt szolgáltatás legördülő listáról.](media/tutorial-data-flow/dataset3.png)
+1. A csatolt szolgáltatás létrehozási képernyőjén nevezze el az ADLS gen2 csatolt szolgáltatást **ADLSGen2** néven, és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolat hitelesítő adatait. Ebben az oktatóanyagban a fiókkulcsot használjuk a tárfiókhoz való csatlakozáshoz. A Kapcsolat tesztelése **gombra kattintva** ellenőrizheti, hogy helyesen adta-e meg a hitelesítő adatait. Ha elkészült, kattintson a Létrehozás gombra.
 
-    ![Társított szolgáltatás](media/tutorial-data-flow/ls1.png)
-1. Miután visszatért az adatkészlet-létrehozási képernyőre, adja meg, hogy hol található a fájl **elérési útja** mezőben. Ebben az oktatóanyagban a fájl moviesDB.csv található a tároló mintája – adathalmazban. Ahogy a fájl fejléceket tartalmaz, tekintse meg az **első sort fejlécként**. Válassza a **Kapcsolódás/áruház** lehetőséget, hogy a fejléc-sémát közvetlenül a tárolóban lévő fájlból importálja. Ha elkészült, kattintson az OK gombra.
+    ![Csatolt szolgáltatás](media/tutorial-data-flow/ls1.png)
+1. Miután visszatért az adatkészlet létrehozására vonatkozó képernyőre, adja meg, hol található a fájl a Fájl elérési útja **mezőben.** Ebben az oktatóanyagban a moviesDB.csv tároló mintaadatok között található. Mivel a fájl fejlécekkel rendelkezik, jelölje be az **Első sor fejlécként jelölőnégyzetet.** Válassza **a Kapcsolat/tárolóból** lehetőséget a fejlécséma importáláshoz közvetlenül a tárolóban található fájlból. Ha végzett, kattintson az OK gombra.
 
     ![Adathalmazok](media/tutorial-data-flow/dataset4.png)
-1. Ha a hibakeresési fürt elindult, lépjen a forrás-átalakítás **adatelőnézet** lapjára, és kattintson a **frissítés** gombra az adatok pillanatképének beolvasásához. Az adatelőnézet használatával ellenőrizheti, hogy az átalakítás megfelelően van-e konfigurálva.
+1. Ha a hibakeresési fürt elindult, a forrásátalakítás Adatelőnézet lapján kattintson a Frissítés gombra az adatok pillanatképének megtekintéséhez.   Az adatelőnézettel ellenőrizheti, hogy az átalakítás megfelelően van-e konfigurálva.
 
-    ![Képernyőkép, amely bemutatja, hogy a rendszer hol tekintheti meg az adatait, és ellenőrizze, hogy az átalakítás megfelelően van-e konfigurálva.](media/tutorial-data-flow/dataflow4.png)
-1. Az adatfolyam-vászonon a forrás csomópont mellett kattintson a plusz ikonra egy új átalakítás hozzáadásához. A hozzáadott első átalakítás egy **szűrő**.
+    ![Képernyőkép az adatok előnézetének megtekintéséről az átalakítás megfelelő konfigurálásának ellenőrzéséhez.](media/tutorial-data-flow/dataflow4.png)
+1. Új átalakítás hozzáadásához kattintson a plusz ikonra a forráscsomópont mellett az adatfolyam vásznán. Az első hozzáadott átalakítás egy **szűrő.**
 
-    ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow5.png)
-1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt.
+    ![Adatfolyam vászon](media/tutorial-data-flow/dataflow5.png)
+1. Nevezze el a szűrőátalakítást **FilterYears néven.** A Kifejezésszerkesztő megnyitásához kattintson a **Szűrés a következőn melletti** kifejezésmezőre. Itt megadhatja a szűrési feltételt.
 
-    ![A szűrést a kifejezés mezőben megjelenítő képernyőkép.](media/tutorial-data-flow/filter1.png)
-1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](concepts-data-flow-expression-builder.md).
+    ![A Kifejezés szűrése mezőt bemutató képernyőkép.](media/tutorial-data-flow/filter1.png)
+1. Az adatfolyam-kifejezésszerkesztővel interaktív módon építhet ki különböző átalakítások során használható kifejezéseket. A kifejezések beépített függvényeket, a bemeneti séma oszlopait és a felhasználó által megadott paramétereket tartalmazhatnak. A kifejezések felépítésével kapcsolatos további információkért lásd: Adatfolyam [kifejezésszerkesztő.](concepts-data-flow-expression-builder.md)
 
-    Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a függvény használatával át kell alakítani egész számra ```toInteger()``` . Használja a nagyobb vagy egyenlő értéket (>=), és kisebb vagy egyenlő, mint a (<=) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és a (&&) operátorral együtt. A kifejezés a következőképpen érkezik:
+    Ebben az oktatóanyagban az 1910 és 2000 közötti műfaji műfajok filmjeit szeretné szűrni. Mivel az év jelenleg egy sztring, egész számra kell konvertálni a függvény ```toInteger()``` használatával. A nagyobb vagy egyenlő (>=) és kisebb vagy egyenlő (<=) operátorok használatával hasonlíthatja össze az 1910-es és 200-as konstansértékeket. Ezeket a kifejezéseket a és a (&&) operátorral összesiti. A kifejezés a következőként jön ki:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Ha szeretné megkeresni, hogy mely filmek a vígjátékok, a ```rlike()``` függvény használatával megtalálhatja a "komédia" mintát az oszlopok műfajában. Union The rlike kifejezés az év összehasonlításával a Get:
+    Annak kiderítésében, hogy mely filmek a vétesek, a függvény használatával megkeresheti a ```rlike()``` "Which" mintát az oszlop műfajai között. Az rlike kifejezés és az év összehasonlításának uniója a következőképpen:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
-    Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
+    Ha aktív a hibakeresési fürt, a Frissítés  gombra kattintva ellenőrizheti a logikát, így láthatja a kifejezés kimenetét a használt bemenetekkel összehasonlítva. Több helyes válasz is van arra, hogyan valósítható meg ez a logika az adatfolyam-kifejezés nyelv használatával.
 
     ![Szűrő](media/tutorial-data-flow/filter2.png)
 
-    Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
+    Ha **végzett** a kifejezéssel, kattintson a Mentés és befejezés gombra.
 
-1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
+1. A szűrő **megfelelő működését a Data Preview lekérése** után ellenőrizheti.
 
-    ![Képernyőkép, amely a beolvasott adatelőnézetet jeleníti meg.](media/tutorial-data-flow/filter3.png)
-1. A hozzáadni kívánt következő átalakítás a **séma-módosító** alatt létrehozott **összesített** transzformáció.
+    ![A lekért Adatelőnézet képernyőképe.](media/tutorial-data-flow/filter3.png)
+1. A következő hozzáadni fog egy Összesítés átalakítást **a** **Sémamódosító alatt.**
 
-    ![Az összesített séma-módosítót megjelenítő képernyőkép.](media/tutorial-data-flow/agg1.png)
-1. Nevezze el az összesített átalakítási **AggregateComedyRatings**. A **Csoportosítás** lapon válassza az **év** lehetőséget a legördülő listából, hogy csoportosítsa az összesítéseket a film által kiváltott év alapján.
+    ![Képernyőkép az Aggregate schema módosítóról.](media/tutorial-data-flow/agg1.png)
+1. Az összesített átalakításnak nevezze el **az AggregateComedyRatings nevet.** A Csoportosítás **lapon** a legördülő **menüből** válassza az év lehetőséget, hogy az összesítéseket a film kiugró évének szerint csoportosítsa.
 
-    ![Képernyőfelvétel: az év lehetőséget a Group By (összesítési beállítások) lapon.](media/tutorial-data-flow/agg2.png)
-1. Nyissa meg az **összesítések** lapot. A bal oldali szövegmezőben nevezze el az összesítő oszlop **AverageComedyRating**. Kattintson a jobb oldali kifejezés mezőre az összesítő kifejezés megadásához a Expression Builder használatával.
+    ![Képernyőkép az Év lehetőségről a Csoportosítási beállítások lapon.](media/tutorial-data-flow/agg2.png)
+1. Ugrás az **Összesítések lapra.** A bal oldali szövegmezőben adja az **AverageComedyRating** nevet az összesített oszlopnak. A jobb kifejezésmezőre kattintva adja meg az összesítő kifejezést a kifejezésszerkesztőben.
 
-    ![Képernyőkép, amely az összesítési beállítások lapon az év lehetőséget jeleníti meg.](media/tutorial-data-flow/agg3.png)
-1. Az oszlop- **minősítés** átlagának lekéréséhez használja az ```avg()``` összesítő függvényt. Mivel a **minősítés** egy karakterlánc ```avg()``` , és egy numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvényen keresztül. A kifejezés a következőképpen néz ki:
+    ![Képernyőkép az Összesítések lap Beállítások összesítése lapján található Év lehetőségről.](media/tutorial-data-flow/agg3.png)
+1. A Minősítés oszlop átlagának **lekért értékhez** használja az ```avg()``` aggregátum függvényt. Mivel **az Értékelés** egy sztring, és numerikus bemenetet vesz fel, az értéket számra kell konvertálnunk a ```avg()``` ```toInteger()``` függvényen keresztül. Ez a kifejezés a következő:
 
     ```avg(toInteger(Rating))```
 
-    Ha elkészült **, kattintson a Mentés és Befejezés** gombra.
+    Ha **végzett, kattintson** a Mentés és befejezés gombra.
 
-    ![A mentett kifejezést megjelenítő képernyőkép.](media/tutorial-data-flow/agg4.png)
-1. Az átalakítás kimenetének megtekintéséhez nyissa meg az **adatelőnézet** lapot. Figyelje meg, hogy csak két oszlop van, az **év** és a **AverageComedyRating**.
+    ![Képernyőkép a mentett kifejezésről.](media/tutorial-data-flow/agg4.png)
+1. A **transzformáció kimenetének megtekintéséhez** válassza az Adatelőnézet lapot. Figyelje meg, hogy csak két oszlop van: **year** és **AverageComedyRating.**
 
     ![Összesítés](media/tutorial-data-flow/agg3.png)
-1. Ezután hozzá kíván **adni egy** fogadó átalakítást a **célhely** területen.
+1. Ezután hozzá kell adni egy **fogadó-átalakítást** a Cél **alatt.**
 
-    ![Képernyőkép, amely bemutatja, hová kell hozzáadni a fogadó átalakítást a célhelyen.](media/tutorial-data-flow/sink1.png)
-1. Nevezze el a fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
+    ![Képernyőkép a fogadó-átalakítás célhelyhez való hozzáadásáról a Cél alatt.](media/tutorial-data-flow/sink1.png)
+1. A fogadónak nevezze el a **fogadót.** Kattintson **az Új** gombra a fogadó adatkészlet létrehozásához.
 
-    ![Képernyőkép, amely megjeleníti a fogadó nevét, és létrehoz egy új fogadó adatkészletet.](media/tutorial-data-flow/sink2.png)
+    ![Képernyőkép a fogadó elnevezési helyének és új fogadó adatkészletének létrehozásáról.](media/tutorial-data-flow/sink2.png)
 1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
 
-    ![A kiválasztható Azure Data Lake Storage Gen2 csempét bemutató képernyőkép.](media/tutorial-data-flow/dataset1.png)
-1. Válassza a **DelimitedText** lehetőséget. Kattintson a Folytatás gombra.
+    ![Képernyőkép a Azure Data Lake Storage Gen2 csempéről.](media/tutorial-data-flow/dataset1.png)
+1. Válassza **a Tagolt Szöveg lehetőséget.** Kattintson a Folytatás gombra.
 
     ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
-1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása** lehetőségnél. Kattintson a Finish (Befejezés) gombra.
+1. Nevezze el a fogadó adatkészletet **MoviesSink néven.** A csatolt szolgáltatáshoz válassza ki a 6. lépésben létrehozott ADLS gen2-et. Adjon meg egy kimeneti mappát az adatok írásához. Ebben az oktatóanyagban a "sample-data" tároló output mappájába írunk. A mappának nem kell előre léteznie, és dinamikusan is létre lehet őket létrehozni. Állítsa **az Első sor fejlécet** igazra, és válassza a Nincs **lehetőséget** a **Séma importálása beállításhoz.** Kattintson a Finish (Befejezés) gombra.
 
     ![Sink (Fogadó)](media/tutorial-data-flow/sink3.png)
 
-Most, hogy befejezte az adatfolyam felépítése. Készen áll arra, hogy a folyamaton fusson.
+Az adatfolyam elkészült. Készen áll arra, hogy futtassa a folyamatban.
 
-## <a name="running-and-monitoring-the-data-flow"></a>Az adatfolyam futtatása és figyelése
+## <a name="running-and-monitoring-the-data-flow"></a>Az alkalmazás futtatása és Adatfolyam
 
-A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az adatfolyam-folyamat hibakeresési futtatását fogja elindítani. Míg az adatelőnézet nem ír adatírást, a hibakeresési kísérlet az adatait a fogadó célhelyére fogja írni.
+Közzététel előtt hibakeresést is futtathat a folyamatokon. Ebben a lépésben elindítja az adatfolyamat hibakeresési futtatását. Bár az adatelőnézet nem ír adatokat, a hibakeresési futtatás adatokat ír a fogadó célhelyre.
 
-1. Nyissa meg a folyamat vászonját. Hibakeresési Futtatás indításához kattintson a **hibakeresés** gombra.
+1. Ugrás a folyamatvászonra. Kattintson **a Hibakeresés** gombra a hibakeresési futtatás aktiválásához.
 
-    ![Képernyőkép, amely megjeleníti a folyamat vászonját a hibakeresés kiemelésével.](media/tutorial-data-flow/pipeline1.png)
-1. Az adatfolyam-tevékenységek feldolgozási folyamata az aktív hibakeresési fürtöt használja, de még legalább egy percet is igénybe kell vennie az inicializáláshoz. Az előrehaladást a **kimenet** lapon követheti nyomon. Ha a Futtatás sikeres, kattintson a szemüvegek ikonra a figyelés ablaktábla megnyitásához.
+    ![Képernyőkép a folyamatvászonról a debug kiemeléssel.](media/tutorial-data-flow/pipeline1.png)
+1. Az összes Adatfolyam folyamat hibakeresése az aktív hibakeresési fürtöt használja, de az inicializálása még legalább egy percet igénybe veszi. A folyamat előrehaladását a Kimenet lapon **követheti** nyomon. Ha a futtatás sikeres volt, kattintson a szemüveg ikonra a figyelési panel megnyitásához.
 
     ![Folyamat](media/tutorial-data-flow/pipeline2.png)
-1. A figyelés ablaktáblán láthatja az egyes átalakítási lépésekben eltöltött sorok és idő számát.
+1. A figyelési panelen láthatja az egyes átalakítási lépés során töltött sorok számát és idejét.
 
-    ![A figyelés ablaktáblát megjelenítő képernyőkép, amelyen megtekintheti az egyes átalakítási lépésekben eltöltött sorok és idő számát.](media/tutorial-data-flow/pipeline3.png)
-1. A transzformációra kattintva részletes információkat kaphat az oszlopokról és az adatok particionálásáról.
+    ![Képernyőkép a figyelési panelről, ahol az egyes átalakítási lépésekkel töltött sorok és idő látható.](media/tutorial-data-flow/pipeline3.png)
+1. Az átalakításra kattintva részletes információkat kap az oszlopokról és az adatok particionálásáról.
 
     ![Figyelés](media/tutorial-data-flow/pipeline4.png)
 
-Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
+Ha megfelelően követte ezt az oktatóanyagot, 83 sort és 2 oszlopot kellett írnia a fogadómappába. A blobtároló ellenőrzésével ellenőrizheti, hogy az adatok helyesek-e.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyagban szereplő folyamat egy olyan adatfolyamot futtat, amely összegzi a 1910 és 2000 közötti vígjátékok átlagos minősítését, és az adatokat a ADLS írja. Megtanulta végrehajtani az alábbi műveleteket:
+Az oktatóanyagban a folyamat egy adatfolyamot futtat, amely összesíti a comedies átlagos minősítését 1910-től 2000-ig, és az adatokat az ADLS-be írja. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Folyamat létrehozása adatfolyam-tevékenységgel.
-> * Hozzon létre egy leképezési adatfolyamot négy átalakítással.
+> * Hozzon létre egy folyamatot egy Adatfolyam tevékenységgel.
+> * Leképezési adatfolyam összeállítása négy átalakítással.
 > * A folyamat próbafuttatása
-> * Adatfolyam-tevékenység figyelése
+> * Tevékenység Adatfolyam figyelése
 
-További információ az [adatfolyam kifejezésének nyelvéről](data-flow-expression-functions.md).
+További információ az [adatfolyam-kifejezés nyelvről.](data-flow-expression-functions.md)

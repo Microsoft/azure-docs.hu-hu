@@ -1,25 +1,25 @@
 ---
-title: Beépített szabályzat-definíciók az Azure egyéni erőforrás-szolgáltatói számára
-description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure egyéni erőforrás-szolgáltatói számára. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure egyéni erőforrás-szolgáltatóihoz
+description: Az Azure Policy Azure egyéni erőforrás-szolgáltatók beépített szabályzatdefinícióit sorolja fel. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d83332a8ec0f0f56a402cb331a03bf3153f321a5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 65ff3e2477770f14a25a3ad6bdffd94645549807
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094200"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501875"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Az Azure egyéni erőforrás-szolgáltatóinak beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure Policy azure-beli egyéni erőforrás-szolgáltatók beépített definíciói
 
-Ez az oldal az Azure egyéni erőforrás-szolgáltatói [Azure Policy](../../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../../governance/policy/samples/built-in-policies.md).
+Ez az oldal az Egyéni [Azure Azure Policy szolgáltatók](../../governance/policy/overview.md) beépített szabályzatdefiníciói indexe. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
-## <a name="azure-custom-resource-providers"></a>Azure egyéni erőforrás-szolgáltatók
+## <a name="azure-custom-resource-providers"></a>Egyéni Azure-erőforrás-szolgáltatók
 
 [!INCLUDE [azure-policy-reference-category-customrp](../../../includes/policy/reference/bycat/policies-custom-provider.md)]
 

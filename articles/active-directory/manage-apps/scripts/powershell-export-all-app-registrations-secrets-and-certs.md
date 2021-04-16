@@ -1,30 +1,30 @@
 ---
-title: PowerShell-minta – titkok és tanúsítványok exportálása az alkalmazások regisztrálásához Azure Active Directory bérlőben.
-description: PowerShell-példa, amely a Azure Active Directory-bérlőben a megadott alkalmazás-regisztrációhoz tartozó összes titkot és tanúsítványt exportálja.
+title: PowerShell-minta – Titkos kulcsok és tanúsítványok exportálása alkalmazásregisztrációkhoz Azure Active Directory bérlőben.
+description: PowerShell-példa, amely exportálja a bérlőben a megadott alkalmazásregisztrációk összes titkos Azure Active Directory tanúsítványát.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5cbb6b3843e81d9265405dcea24a092e57bf65e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556553"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377042"
 ---
-# <a name="export-secrets-and-certificates-for-app-registrations"></a>Az alkalmazások regisztrálásához szükséges titkok és tanúsítványok exportálása
+# <a name="export-secrets-and-certificates-for-app-registrations"></a>Titkos kulcsok és tanúsítványok exportálása alkalmazásregisztrációkhoz
 
-Ez a PowerShell-parancsfájl például a megadott alkalmazás-regisztrációk összes titkát és tanúsítványát exportálja a címtárból egy CSV-fájlba.
+Ez a PowerShell-példaszkvóta a megadott alkalmazásregisztrációk összes titkos adatát és tanúsítványát exportálja egy CSV-fájlba a címtárból.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph](/powershell/azure/active-directory/install-adv2) modulra (AzureAD) vagy az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) előzetes verziójára (AzureADPreview) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -32,16 +32,16 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
-A "$Path" változót közvetlenül a PowerShellben, a CSV-fájl elérési útjával módosíthatja, ha azt szeretné, hogy az exportálás nem interaktív.
+Az "Add-Member" parancs felelős a CSV-fájlban lévő oszlopok létrehozásáért.
+A "$Path" változót közvetlenül a PowerShellben módosíthatja CSV-fájl elérési út használatával arra az esetre, ha az exportálás nem interaktív lenne.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Beolvas egy alkalmazást a címtárból. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner) | Egy alkalmazás tulajdonosait kérdezi le a címtárból. |
+| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Lekér egy alkalmazást a címtárból. |
+| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner) | Lekéri egy alkalmazás tulajdonosait a címtárból. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+Az Azure AD PowerShell-modullal kapcsolatos további információkért lásd: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazások kezeléséhez: [Azure ad PowerShell-példák az alkalmazások kezeléséhez](../app-management-powershell-samples.md).
+Az alkalmazáskezelésre vonatkozó egyéb PowerShell-példákért lásd: [Azure AD PowerShell-példák az alkalmazáskezeléshez.](../app-management-powershell-samples.md)

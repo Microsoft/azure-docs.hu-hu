@@ -62,6 +62,8 @@
           href: hana-concept-preparation.md
         - name: Vészhelyreállítási feladatátvételi eljárás
           href: hana-failover-procedure.md
+        - name: Nagy példányok ha vannak nagy számban az SAP-hez RHEL-hez
+          href: large-instance-high-availability-rhel.md
     - name: Hibaelhárítás és monitorozás
       items:
         - name: A HLI monitorozása
@@ -112,7 +114,7 @@
           href: sap-hana-high-availability-rhel.md
         - name: Az SAP HANA RHEL-en ANF-fel végzett rendszerreplikálásának beállítása
           href: sap-hana-high-availability-netapp-files-red-hat.md
-        - name: Kibővíthető HSR SAP HANA pacemakerrel a SLES
+        - name: SAP HANA HSR és a Pacemaker on SLES
           href: sap-hana-high-availability-scale-out-hsr-suse.md
         - name: Az SAP HANA-felskálázás és a Pacemaker on SLES hibaelhárítása
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
@@ -122,23 +124,23 @@
           href: sap-hana-scale-out-standby-netapp-files-suse.md
         - name: 'SAP HANA-felskálázás készenlétben lévő csomóponttal, az Azure NetApp Files on RHEL használatával'
           href: sap-hana-scale-out-standby-netapp-files-rhel.md
-    - name: SAP HANA adatbázis biztonsági mentése Azure Backup
+    - name: SAP HANA biztonsági mentésének létrehozása Azure Backup
       items:
-        - name: Adatbázis biztonsági mentése Azure-beli virtuális gépeken SAP HANA
+        - name: SAP HANA biztonsági mentése Azure-beli virtuális gépeken
           href: ../../../backup/sap-hana-db-about.md
         - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
           href: ../../../backup/backup-azure-sap-hana-database.md
-        - name: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
+        - name: Adatbázis SAP HANA visszaállítása Azure-beli virtuális gépeken
           href: ../../../backup/sap-hana-db-restore.md
         - name: Kezelés és monitorozás
           href: ../../../backup/sap-hana-db-manage.md
-        - name: SAP HANA adatbázisok biztonsági mentésének támogatási mátrixa
+        - name: Támogatási mátrix a SAP HANA biztonsági mentéséhez
           href: ../../../backup/sap-hana-backup-support-matrix.md
-        - name: Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
-          href: ../../../backup/sap-hana-faq-backup-azure-vm.md
-        - name: SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
+        - name: Gyakori kérdések – Biztonsági SAP HANA Azure-beli virtuális gépeken
+          href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
+        - name: Azure-beli SAP HANA biztonsági mentésének hibaelhárítása
           href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
-        - name: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
+        - name: Oktatóanyag – Biztonsági SAP HANA biztonsági mentése Azure-beli virtuális gépen
           href: ../../../backup/tutorial-backup-sap-hana-db.md
 - name: 'SAP NetWeaver, S/4HANA és Business One az Azure Virtual Machines'
   items:
@@ -213,8 +215,6 @@
               href: high-availability-guide-rhel.md
             - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz az Azure NetApp Filesszal
               href: high-availability-guide-rhel-netapp-files.md
-            - name: Nagyméretű példányok HA az SAP on RHEL
-              href: large-instance-high-availability-rhel.md
         - name: Az Azure infrastruktúra előkészítése
           items:
             - name: Windows közös lemezzel (A)SCS példányhoz

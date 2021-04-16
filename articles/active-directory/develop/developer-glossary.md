@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Identity platform fejlesztői szószedete | Azure
-description: A gyakran használt Microsoft Identity platform-fejlesztői fogalmak és szolgáltatások használati feltételeinek listája.
+title: A Microsoft identitásplatform fejlesztői szószedete | Azure
+description: A Microsoft identitásplatformján gyakran használt fejlesztői fogalmak és funkciók kifejezései.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,219 +12,219 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 10df22b46d37336d0ed506e4ee30c203e904cd3f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 930341b60f785c2c618be4ee235225519a08aaa6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305888"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530065"
 ---
-# <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
+# <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identitásplatform fejlesztői szószedete
 
-Ez a cikk a fejlesztői alapfogalmakkal és terminológiával kapcsolatos néhány definíciót tartalmaz, amelyek hasznosak lehetnek a Microsoft Identity platform használatával történő alkalmazásfejlesztés megismerése során.
+Ez a cikk néhány alapvető fejlesztői fogalom és terminológia definícióit tartalmazza, amelyek hasznosak lehetnek a Microsoft identitásplatformot használó alkalmazásfejlesztés elsajátításában.
 
 ## <a name="access-token"></a>hozzáférési jogkivonat
 
-Egy [engedélyezési kiszolgáló](#authorization-server)által kiállított [biztonsági jogkivonat](#security-token) típusa, amelyet egy [ügyfélalkalmazás](#client-application) használ egy [védett erőforrás-kiszolgáló](#resource-server)eléréséhez. Általában egy [JSON web token (JWT)][JWT]formájában a token az [erőforrás tulajdonosa](#resource-owner)által az ügyfélnek megadott engedélyeket testesíti meg a kért hozzáférési szint alapján. A jogkivonat tartalmazza a tulajdonossal kapcsolatos összes vonatkozó [jogcímet](#claim) , lehetővé téve az ügyfélalkalmazás számára, hogy hitelesítő adatként használja az adott erőforráshoz való hozzáféréskor. Emellett nincs szükség arra, hogy az erőforrás tulajdonosa hitelesítő adatokat tegyen elérhetővé az ügyfélnek.
+Egy engedélyezési kiszolgáló által [](#authorization-server) [kiadott](#security-token) és egy ügyfélalkalmazás [által](#client-application) a védett erőforrás-kiszolgáló eléréséhez használt biztonsági [jogkivonat típusa.](#resource-server) A jogkivonat általában [JSON-webtoken (JWT)][JWT]formájában testesíti meg az erőforrás tulajdonosa [](#resource-owner)által az ügyfélnek adott engedélyt a kért hozzáférési szinthez. A jogkivonat [](#claim) tartalmazza a tárgyra vonatkozó összes vonatkozó jogcímet, így az ügyfélalkalmazás hitelesítő adatként használhatja azt egy adott erőforrás elérésekor. Ez azt is szükségtelenné teszi, hogy az erőforrás tulajdonosa tegye elérhetővé a hitelesítő adatokat az ügyfél számára.
 
-A hozzáférési jogkivonatok csak rövid ideig érvényesek, és nem vonhatók vissza. Egy engedélyezési kiszolgáló is kiállíthat egy [frissítési jogkivonatot](#refresh-token) a hozzáférési jogkivonat kiállításakor. A frissítési tokenek általában csak a bizalmas ügyfélalkalmazások számára érhetők el.
+A hozzáférési jogkivonatok csak rövid ideig érvényesek, és nem vonhatók vissza. Az engedélyezési kiszolgáló frissítési jogkivonatot is [kibocsáthat](#refresh-token) a hozzáférési jogkivonat kiállításakor. A frissítési jogkivonatok általában csak bizalmas ügyfélalkalmazások számára biztosítanak.
 
-A hozzáférési jogkivonatokat más néven "felhasználó + alkalmazás" vagy "csak alkalmazás" néven kell megjeleníteni, a képviselt hitelesítő adatoktól függően. Ha például egy ügyfélalkalmazás a következőt használja:
+A hozzáférési jogkivonatokat néha "Felhasználó+Alkalmazás" vagy "Csak alkalmazás" néven is nevezik, a hitelesítő adatoktól függően. Ha például egy ügyfélalkalmazás a következőt használja:
 
-* Az ["engedélyezési kód" engedélyezési jogosultsága](#authorization-grant), a végfelhasználó először az erőforrás tulajdonosaként hitelesíti az ügyfelet az erőforrás eléréséhez. Az ügyfél a hozzáférési jogkivonat beszerzése után hitelesíti magát. A tokent időnként a "felhasználó + alkalmazás" tokennek is nevezik, mivel a felhasználó az ügyfélalkalmazás engedélyezését és az alkalmazást is képviseli.
-* ["Ügyfél-hitelesítő adatok" engedélyezési engedély](#authorization-grant), az ügyfél biztosítja az egyetlen hitelesítést, amely az erőforrás-tulajdonos hitelesítése/engedélyezése nélkül működik, így a jogkivonat esetenként "csak alkalmazás" tokennek is nevezhető.
+* ["Engedélyezési kód" engedélyezési engedély,](#authorization-grant)a végfelhasználó először az erőforrás tulajdonosaként hitelesíti magát, delegálva az engedélyezést az ügyfélnek az erőforrás eléréséhez. Az ügyfél ezt követően hitelesíti magát a hozzáférési jogkivonat beszerzésekor. A jogkivonatra néha pontosabban "User+App" tokenként hivatkozunk, mivel az ügyfélalkalmazást engedélyező felhasználót és az alkalmazást is képviseli.
+* [Az "Ügyfél](#authorization-grant)hitelesítő adatai" engedélyezési engedély, az ügyfél biztosítja az egyetlen hitelesítést, amely az erőforrás-tulajdonos hitelesítése/engedélyezése nélkül működik, így a jogkivonatot néha "Csak alkalmazás" jogkivonatnak is nevezik.
 
-További részletekért tekintse meg a [Microsoft Identity platform jogkivonat-referenciáját][AAD-Tokens-Claims] .
+További részletekért tekintse meg a [Microsoft identitásplatformján a jogkivonatok][AAD-Tokens-Claims] referenciáját.
 
-## <a name="application-id-client-id"></a>alkalmazás azonosítója (ügyfél-azonosító)
+## <a name="application-id-client-id"></a>alkalmazásazonosító (ügyfél-azonosító)
 
-Az egyedi azonosító az Azure AD-vel egy adott alkalmazást és a hozzá tartozó konfigurációkat azonosító alkalmazás-regisztrálási hibát okoz. Ez az alkalmazás-azonosító ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) a hitelesítési kérések végrehajtásakor használatos, és a hitelesítési kódtárak számára a fejlesztési időszakban van megadva. Az alkalmazás azonosítója (ügyfél-azonosító) nem titok.
+Az Azure AD egyedi azonosító egy adott alkalmazást és a társított konfigurációkat azonosító alkalmazásregisztrációval kapcsolatos problémákat tartalmaz. Ez az alkalmazásazonosító[(ügyfél-azonosító)](https://tools.ietf.org/html/rfc6749#page-15)a hitelesítési kérések végrehajtásakor használatos, és a hitelesítési kódtárakhoz ad meg a fejlesztés során. Az alkalmazásazonosító (ügyfél-azonosító) nem titkos.
 
-## <a name="application-manifest"></a>alkalmazás jegyzékfájlja
+## <a name="application-manifest"></a>alkalmazásjegyzék
 
-A [Azure Portal][AZURE-portal]által biztosított szolgáltatás, amely az alkalmazás identitás-konfigurációjának JSON-ábrázolását állítja elő, amely a hozzá tartozó [alkalmazás][Graph-App-Resource] -és [ServicePrincipal][Graph-Sp-Resource] -entitások frissítésére szolgáló mechanizmusként használható. További részletekért tekintse meg [a Azure Active Directory Application manifest ismertetése][AAD-App-Manifest] című témakört.
+A Azure Portal által [][AZURE-portal]biztosított szolgáltatás, amely az alkalmazás identitáskonfigurációjának JSON-ábrázolást hoz létre, amely a társított [Application][Graph-App-Resource] és [ServicePrincipal][Graph-Sp-Resource] entitások frissítésének mechanizmusa. További [részletekért Azure Active Directory az alkalmazásjegyzék][AAD-App-Manifest] ismertetése.
 
-## <a name="application-object"></a>Application objektum
+## <a name="application-object"></a>alkalmazásobjektum
 
-Ha a [Azure Portalban][AZURE-portal]regisztrál/frissít egy alkalmazást, a portál egy Application objektumot és egy hozzá tartozó [egyszerű szolgáltatásnevet](#service-principal-object) is létrehoz/frissít a bérlő számára. Az Application objektum globálisan *definiálja* az alkalmazás identitásának konfigurációját (az összes bérlőn, ahol hozzáféréssel rendelkezik), így biztosítva azt a sablont, amelyből a kapcsolódó szolgáltatásnév-objektum (ok) a helyi használatra van *származtatva* (egy adott bérlő esetében).
+Amikor regisztrál/frissít egy alkalmazást a Azure Portal [portál][AZURE-portal]létrehoz/frissít egy alkalmazásobjektumot [](#service-principal-object) és egy megfelelő szolgáltatásnév-objektumot is az adott bérlőhöz. Az alkalmazásobjektum globálisan határozza meg az alkalmazás identitáskonfigurációját (az összes olyan bérlőn, amelyhez hozzáféréssel  rendelkezik), és egy olyan sablont biztosít, amelyből a megfelelő szolgáltatásnév-objektum(oka)t származtatják helyi használatra futásidőben (egy adott bérlőben). 
 
-További információ: [alkalmazás-és egyszerű szolgáltatások objektumai][AAD-App-SP-Objects].
+További információ: [Alkalmazás- és szolgáltatásnév-objektumok.][AAD-App-SP-Objects]
 
 ## <a name="application-registration"></a>alkalmazásregisztráció
 
-Ahhoz, hogy az alkalmazások integrálva legyenek az identitás-és hozzáférés-kezelési funkciókkal az Azure AD-be, regisztrálni kell egy Azure AD- [bérlőben](#tenant). Ha az Azure AD-vel regisztrálja az alkalmazást, az alkalmazáshoz meg kell adnia egy identitás-konfigurációt, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel és olyan funkciókkal, mint a következők:
+Ahhoz, hogy egy alkalmazás integrálható legyen az Identitás- és hozzáférés-kezelési funkciókkal, és [](#tenant)delegálható legyen az Azure AD-nek, regisztrálni kell egy Azure AD-bérlővel. Amikor regisztrálja az alkalmazást az Azure AD-ban, identitáskonfigurációt biztosít az alkalmazáshoz, így integrálható az Azure AD-val, és a következő funkciókat használhatja:
 
-* Egy Sign-On robusztus kezelése az Azure AD Identity Management és az [OpenID Connect][OpenIDConnect] protokoll implementációjának használatával
-* A [védett erőforrásokhoz](#resource-server) való felügyelt hozzáférés az [ügyfélalkalmazások](#client-application)által, a OAuth 2,0 [engedélyezési kiszolgálón](#authorization-server) keresztül
-* Engedélyezési [keretrendszer](#consent) a védett erőforrásokhoz való ügyfél-hozzáférés kezeléséhez az erőforrás-tulajdonosi hitelesítés alapján.
+* Az egyetlen Sign-On kezelése az Azure AD Identity Management és a [OpenID Connect][OpenIDConnect] protokoll implementációja használatával
+* Közvetített hozzáférés a védett [erőforrásokhoz](#resource-server) [ügyfélalkalmazások által,](#client-application)OAuth 2.0 engedélyezési [kiszolgálón keresztül](#authorization-server)
+* [Hozzájárulási keretrendszer](#consent) a védett erőforrásokhoz való ügyfél-hozzáférés erőforrás-tulajdonosi engedélyezés alapján való kezeléséhez.
 
-További részletekért lásd: [alkalmazások integrálása a Azure Active Directorysal][AAD-Integrating-Apps] .
+További [részletekért lásd: Alkalmazások integrálása Azure Active Directory][AAD-Integrating-Apps] alkalmazásokkal.
 
 ## <a name="authentication"></a>hitelesítés
 
-A feleknek a jogos hitelesítő adatokkal szembeni kihívása, amely az identitás-és hozzáférés-vezérléshez használt rendszerbiztonsági tag létrehozásának alapja. A [OAuth2 engedélyezési megadásakor](#authorization-grant) például a hitelesítésre szolgáló fél az [erőforrás-tulajdonos](#resource-owner) vagy [ügyfélalkalmazás](#client-application)szerepkörét tölti ki a megadott támogatástól függően.
+Egy fél szabályos hitelesítő adatainak behívója, amely alapul biztosít egy identitás- és hozzáférés-vezérlésre használható rendszerbiztonsági tag létrehozását. Az [OAuth2](#authorization-grant) engedélyezési engedély megadása során például a hitelesítést [](#resource-owner) töltő [](#client-application)fél tölti ki az erőforrás-tulajdonos vagy az ügyfélalkalmazás szerepkörét a felhasznált engedélytől függően.
 
 ## <a name="authorization"></a>engedélyezés
 
-Egy hitelesített rendszerbiztonsági tag engedélyének megadására irányuló művelet. Az Azure AD programozási modellben két alapvető használati eset létezik:
+Hitelesített rendszerbiztonsági tag engedélyének megadása egy dologra. Az Azure AD programozási modellben két alapvető használati eset létezik:
 
-* A [OAuth2 engedélyezési megadási](#authorization-grant) folyamata során: Ha az [erőforrás tulajdonosa](#resource-owner) engedélyt ad az [ügyfélalkalmazás](#client-application)számára, lehetővé teszi az ügyfél számára az erőforrás-tulajdonos erőforrásainak elérését.
-* Az ügyfél erőforrás-hozzáférése során: az erőforrás- [kiszolgáló](#resource-server)által megvalósított módon, a [hozzáférési jogkivonatban](#access-token) található [jogcím](#claim) -értékekkel, hogy a hozzáférés-vezérlési döntéseket az alapján hozza létre.
+* [OAuth2](#authorization-grant) engedélyezési folyamat során: [](#resource-owner) amikor az erőforrás tulajdonosa engedélyt ad az ügyfélalkalmazásnak, [](#client-application)lehetővé teszi, hogy az ügyfél hozzáférjen az erőforrás-tulajdonos erőforrásaihoz.
+* Az ügyfél erőforrás-hozzáférése során: az erőforrás-kiszolgáló [](#claim) által megvalósított [](#access-token) módon, a hozzáférési jogkivonatban található jogcímértékek használatával, amelyek alapján a hozzáférés-vezérléssel kapcsolatos döntéseket hozhat. [](#resource-server)
 
 ## <a name="authorization-code"></a>engedélyezési kód
 
-Egy rövid élettartamú "token", amelyet az [engedélyezési végpont](#authorization-endpoint)biztosít egy [ügyfélalkalmazás](#client-application) számára az "engedélyezési kód" folyamatának részeként, amely a négy OAuth2- [engedélyezési támogatás](#authorization-grant)egyike. A rendszer visszaküldi a kódot az ügyfélalkalmazás számára az [erőforrás tulajdonosának](#resource-owner)hitelesítésére válaszul, jelezve, hogy az erőforrás tulajdonosa delegált engedéllyel rendelkezik a kért erőforrások eléréséhez. A folyamat részeként a rendszer később beváltja a kódot egy [hozzáférési jogkivonatra](#access-token).
+Az engedélyezési végpont által az [](#client-application) ügyfélalkalmazás [](#authorization-endpoint)számára biztosított rövid életű "jogkivonat" az engedélyezési kód folyamatának részeként a négy OAuth2 engedélyezési folyamat [egyikének ad engedélyt.](#authorization-grant) A rendszer visszaadja [a](#resource-owner)kódot az ügyfélalkalmazásnak az erőforrás-tulajdonos hitelesítésére válaszul, ami azt jelzi, hogy az erőforrás tulajdonosa delegálta a hozzáférést a kért erőforrásokhoz. A folyamat részeként a kódot később beváltjuk egy [hozzáférési jogkivonatért.](#access-token)
 
 ## <a name="authorization-endpoint"></a>engedélyezési végpont
 
-Az [engedélyezési kiszolgáló](#authorization-server)által megvalósított egyik végpont, amely az [erőforrás-tulajdonossal](#resource-owner) való interakcióra szolgál, hogy a OAuth2-engedélyezési folyamat során [engedélyezési](#authorization-grant) engedélyt lehessen biztosítani. A használt engedélyezési folyamattól függően a ténylegesen megadott támogatás változhat, beleértve az [engedélyezési kódot](#authorization-code) vagy a [biztonsági jogkivonatot](#security-token)is.
+Az engedélyezési kiszolgáló által megvalósított egyik [végpont,](#authorization-server)amely [](#resource-owner) az erőforrás tulajdonosával [](#authorization-grant) való kommunikációra szolgál az OAuth2 engedélyezési folyamat során engedélyezési engedély megadásához. A ténylegesen megadott engedély a használt engedélyezési folyamattól [](#authorization-code) függően változhat, beleértve az engedélyezési kódot vagy a [biztonsági jogkivonatot](#security-token)is.
 
-További részletekért tekintse meg a OAuth2 specifikációjának [engedélyezési][OAuth2-AuthZ-Grant-Types] és [engedélyezési végponti][OAuth2-AuthZ-Endpoint] részeit, valamint a [OpenIDConnect-specifikációt][OpenIDConnect-AuthZ-Endpoint] .
+További részletekért tekintse meg [][OAuth2-AuthZ-Grant-Types] az OAuth2 specifikáció engedélyezési engedélyezési típusait és az engedélyezési végpont szakaszait, valamint az [OpenIDConnect][OpenIDConnect-AuthZ-Endpoint] specifikációt. [][OAuth2-AuthZ-Endpoint]
 
-## <a name="authorization-grant"></a>engedélyezés engedélyezése
+## <a name="authorization-grant"></a>engedélyezés megadása
 
-Az [ügyfél-alkalmazás](#client-application)számára biztosított védett erőforrások eléréséhez szükséges erőforrás- [tulajdonosi](#resource-owner) [](#authorization) jogosultságot képviselő hitelesítő adat. Az ügyfélalkalmazások a [OAuth2 engedélyezési keretrendszere által meghatározott négy engedélyezési típus][OAuth2-AuthZ-Grant-Types] egyikét használhatják az ügyfél típusától/követelményeitől függően: "engedélyezési kód engedélyezése", "ügyfél hitelesítő adatai", "implicit támogatás" és "erőforrás-tulajdonosi jelszó hitelesítő adatai". Az ügyfélnek visszaadott hitelesítő adat vagy egy hozzáférési [jogkivonat](#access-token), vagy egy, a hozzáférési tokenhez később kicserélt hitelesítési [kód](#authorization-code) , a használt engedélyezési típustól függően.
+Egy hitelesítő adat, amely az erőforrás [tulajdonosának](#resource-owner) [](#authorization) a védett erőforrások elérésére vonatkozó engedélyét képviseli, amely az [ügyfélalkalmazásnak van meg adni.](#client-application) Az ügyfélalkalmazások az [OAuth2][OAuth2-AuthZ-Grant-Types] engedélyezési keretrendszer által meghatározott négy engedélytípus egyikének használatával kaphatják meg a hozzáférést az ügyfél típusától/követelményeitől függően: "engedélyezési kód megadása", "ügyfél-hitelesítő adatok megadása", "implicit engedélyezés" és "erőforrás-tulajdonosi jelszóhitelesítmény-engedély". Az ügyfélnek visszaadott hitelesítő adat egy hozzáférési jogkivonat [,](#access-token)vagy egy engedélyezési kód [(ezt](#authorization-code) később cserélik le hozzáférési jogkivonatra), a használt engedélyezési engedély típusától függően.
 
 ## <a name="authorization-server"></a>engedélyezési kiszolgáló
 
-A [OAuth2-engedélyezési keretrendszer][OAuth2-Role-Def]által meghatározottak szerint a hozzáférési jogkivonatok az [ügyfélnek](#client-application) való kiküldéséhez felelős kiszolgáló az [erőforrás-tulajdonos](#resource-owner) sikeres hitelesítése és az engedély beszerzése után. Az [ügyfélalkalmazás](#client-application) az engedélyezési és [jogkivonat](#token-endpoint) -végpontokon keresztül kommunikál [az engedélyezési](#authorization-endpoint) kiszolgálóval, a OAuth2 által meghatározott [engedélyezési támogatásoknak](#authorization-grant)megfelelően.
+Az [OAuth2][OAuth2-Role-Def]engedélyezési keretrendszerében meghatározottak szerint a kiszolgáló felelős [](#client-application) a hozzáférési jogkivonatok [](#resource-owner) az ügyfélnek való kiadásáért az erőforrás tulajdonosának sikeres hitelesítése és az engedélyezés beszerzése után. Az [ügyfélalkalmazások](#client-application) futásidőben lépnek kapcsolatba [](#authorization-endpoint) az [](#token-endpoint) engedélyezési kiszolgálóval annak engedélyezési és jogkivonatvégpontjaival, az OAuth2 által meghatározott engedélyezési [engedélyekkel összhangban.](#authorization-grant)
 
-A Microsoft Identity platform Application Integration esetében a Microsoft Identity platform implementálja az Azure AD-alkalmazások és a Microsoft-szolgáltatások API-k engedélyezési kiszolgálói szerepkörét, például [Microsoft Graph API-kat][Microsoft-Graph].
+A Microsoft identitásplatformjának alkalmazásintegrációja esetén a Microsoft identitásplatformja implementálja az engedélyezési kiszolgálói szerepkört az Azure AD-alkalmazásokhoz és a Microsoft szolgáltatási API-khoz, például a Microsoft Graph [API-khoz.][Microsoft-Graph]
 
-## <a name="claim"></a>követelés
+## <a name="claim"></a>Azt állítják
 
-A [biztonsági jogkivonat](#security-token) olyan jogcímeket tartalmaz, amelyek az egyik entitásra (például az [ügyfélalkalmazás](#client-application) vagy az [erőforrás tulajdonosára](#resource-owner)) vonatkozó kijelentéseket biztosítanak egy másik entitáshoz (például az [erőforrás-kiszolgálóhoz](#resource-server)). A jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyával kapcsolatos adatokat továbbítanak (például az [engedélyezési kiszolgáló](#authorization-server)által hitelesített rendszerbiztonsági tag). Az adott jogkivonatban található jogcímek több változótól függenek, beleértve a jogkivonat típusát, a tulajdonos hitelesítéséhez használt hitelesítő adatokat, az alkalmazás konfigurációját stb.
+A [biztonsági jogkivonat jogcímeket](#security-token) tartalmaz, amelyek helyességi [](#client-application) adatokat biztosítanak egy entitásról (például egy ügyfélalkalmazásról vagy erőforrás-tulajdonosról) egy másik entitásnak (például az [](#resource-owner) [erőforrás-kiszolgálónak).](#resource-server) A jogcímek olyan név/érték párok, amelyek a jogkivonat tulajdonosával (például az engedélyezési kiszolgáló által hitelesített rendszerbiztonsági taggal) kapcsolatos tényeket [továbbítják.](#authorization-server) Az adott jogkivonatban jelen van jogcímek számos változótól függenek, beleértve a jogkivonat típusát, a tulajdonos hitelesítéséhez használt hitelesítő adatok típusát, az alkalmazás konfigurációját stb.
 
-További részletekért tekintse meg a [Microsoft Identity platform jogkivonat-referenciáját][AAD-Tokens-Claims] .
+További részletekért tekintse meg a [Microsoft identitásplatform jogkivonatának][AAD-Tokens-Claims] referenciáját.
 
 ## <a name="client-application"></a>ügyfélalkalmazás
 
-A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározottak szerint egy olyan alkalmazás, amely az [erőforrás tulajdonosának](#resource-owner)nevében teszi elérhetővé a védett erőforrás-kérelmeket. Az "ügyfél" kifejezés nem jelent semmilyen speciális hardver-megvalósítási jellemzőt (például azt, hogy az alkalmazás egy kiszolgálón, asztali gépen vagy más eszközön fut-e).
+Az [OAuth2][OAuth2-Role-Def]engedélyezési keretrendszere által meghatározottak szerint egy alkalmazás, amely a erőforrás tulajdonosa nevében védett [erőforrás-kérelmeket tesz lehetővé.](#resource-owner) Az "ügyfél" kifejezés nem utal konkrét hardver-megvalósítási jellemzőkre (például arra, hogy az alkalmazás egy kiszolgálón, asztali számítógépen vagy más eszközökön fut-e).
 
-Az ügyfélalkalmazás [engedélyt](#authorization) kér egy erőforrás-tulajdonostól, hogy részt vegyen egy [OAuth2-engedélyezési](#authorization-grant) adatforgalomban, és hozzáférhet az API-khoz/adatokhoz az erőforrás tulajdonosának nevében. A OAuth2 engedélyezési keretrendszere [két típusú ügyfelet határoz][OAuth2-Client-Types]meg, "bizalmas" és "nyilvános", az ügyfél azon képessége alapján, hogy megőrizze a hitelesítő adatai titkosságát. Az alkalmazások olyan [webes ügyfélprogramot (bizalmas)](#web-client) implementálnak, amely webkiszolgálón, [natív ügyfélen (nyilvános)](#native-client) , vagy egy eszköz böngészőjében futó, [felhasználói ügynökön alapuló ügyfélen (nyilvános)](#user-agent-based-client) fut.
+Az ügyfélalkalmazás [](#authorization) engedélyt kér egy erőforrás-tulajdonostól az [OAuth2](#authorization-grant) engedélyezési folyamatában való részvételhez, és hozzáférhet az erőforrás tulajdonosának nevében az API-khoz/adatokhoz. Az OAuth2 engedélyezési keretrendszer két ügyféltípust határoz meg [,][OAuth2-Client-Types]a "bizalmas" és a "nyilvános" típust, az alapján, hogy az ügyfél fenn tudja tartani a hitelesítő adatainak bizalmas kezelését. Az alkalmazások megvalósíthatnak egy webes [ügyfelet (bizalmas),](#web-client) amely egy webkiszolgálón, egy eszközön telepített [natív ügyfélen (nyilvános)](#native-client) vagy egy felhasználóügynök-alapú [(nyilvános)](#user-agent-based-client) ügyfélen fut, amely egy eszköz böngészőjében fut.
 
-## <a name="consent"></a>hozzájárulása
+## <a name="consent"></a>Beleegyezés
 
-Az [erőforrás tulajdonosának](#resource-owner) az a folyamata, amely engedélyezi egy [ügyfélalkalmazás](#client-application)számára a védett erőforrások elérését az erőforrás tulajdonosának nevében, adott [engedélyekkel](#permissions). Az ügyfél által kért engedélyektől függően a rendszergazda vagy a felhasználó beleegyezik, hogy engedélyezze a hozzáférést a szervezethez vagy az egyes adatbázisokhoz. Vegye figyelembe, hogy a [több-bérlős](#multi-tenant-application) forgatókönyvekben az alkalmazás [egyszerű szolgáltatását](#service-principal-object) is rögzíti a rendszer a beleegyezést küldő felhasználó bérlője számára.
+Az a folyamat, [amely](#resource-owner) során egy erőforrás-tulajdonos engedélyt ad [](#permissions)egy ügyfélalkalmazásnak [a](#client-application)védett erőforrások adott engedélyekkel való elérésére az erőforrás-tulajdonos nevében. Az ügyfél által kért engedélyektől függően egy rendszergazdától vagy felhasználótól jóváhagyást kell kérni a szervezeti/egyéni adatokhoz való hozzáféréshez. Vegye figyelembe, hogy [több-bérlős](#multi-tenant-application) forgatókönyvekben az alkalmazás egyszerű szolgáltatása is rögzítve van a hozzájáruló felhasználó bérlője számára. [](#service-principal-object)
 
-További információért lásd: a [beleegyezikés keretrendszere](consent-framework.md) .
+További [információért tekintse meg](consent-framework.md) a hozzájárulási keretrendszert.
 
-## <a name="id-token"></a>AZONOSÍTÓ token
+## <a name="id-token"></a>Azonosító jogkivonat
 
-Egy, az [engedélyezési kiszolgáló](#authorization-server) [engedélyezési végpontja](#authorization-endpoint)által biztosított [OpenID Connect][OpenIDConnect-ID-Token] [biztonsági jogkivonat](#security-token) , amely a végfelhasználói [erőforrás tulajdonosának](#resource-owner)hitelesítésére vonatkozó [jogcímeket](#claim) tartalmaz. A hozzáférési tokenekhez hasonlóan az azonosító tokenek is digitális aláírású [JSON web tokenként (JWT)][JWT]jelennek meg. A hozzáférési jogkivonattal ellentétben azonban az azonosító jogkivonat jogcímeit nem használja az erőforrás-hozzáféréshez és a speciális hozzáférés-vezérléshez kapcsolódó célokra.
+Egy [OpenID Connect][OpenIDConnect-ID-Token] [kiszolgáló](#security-token) engedélyezési végpontja által biztosított biztonsági jogkivonatot, amely a végfelhasználói erőforrás tulajdonosának [hitelesítésére vonatkozó jogcímeket tartalmaz.](#resource-owner) [](#authorization-server) [](#authorization-endpoint) [](#claim) A hozzáférési jogkivonathoz hasonló az azonosító jogkivonatok digitálisan aláírt JSON-webtoken [(JWT) is.][JWT] A hozzáférési jogkivonatokkal ellentétben azonban az azonosító jogkivonat jogcímeit a rendszer nem használja az erőforrás-hozzáféréssel és különösen a hozzáférés-vezérléssel kapcsolatos célokra.
 
-További részletekért tekintse meg a [Microsoft Identity platform jogkivonat-referenciáját][AAD-Tokens-Claims] .
+További részletekért tekintse meg a [Microsoft identitásplatform jogkivonatának][AAD-Tokens-Claims] referenciáját.
 
 ## <a name="microsoft-identity-platform"></a>Microsoft-identitásplatform
 
-A Microsoft Identity platform a Azure Active Directory (Azure AD) Identity Service és a fejlesztői platform fejlődése. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, a könyvtárakból, az alkalmazás-regisztrációból és-konfigurációból, a teljes fejlesztői dokumentációból, a kódokból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
+A Microsoft identitásplatformja a Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődése. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes funkcionalitású platform, amely egy hitelesítési szolgáltatásból, kódtárakból, alkalmazásregisztrációból és -konfigurációból, teljes fejlesztői dokumentációból, kódmintákból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 
 ## <a name="multi-tenant-application"></a>több-bérlős alkalmazás
 
-Olyan alkalmazási osztály, amely lehetővé teszi az [](#consent) Azure ad- [bérlőben](#tenant)kiépített felhasználók bejelentkezését és belefoglalását, beleértve az ügyfél regisztrálásának helyétől eltérő bérlőket is. A [natív ügyfélalkalmazások](#native-client) a több-bérlős alapértelmezés szerint, míg a [webes ügyfél](#web-client) -és [weberőforrás/API-](#resource-server) Alkalmazások kiválaszthatnak egy vagy több-bérlőt. Ezzel szemben egy egybérlős szolgáltatásként regisztrált webalkalmazás csak olyan felhasználói fiókokból engedélyezheti a bejelentkezéseket, amelyek ugyanabban a bérlőben lettek kiépítve, mint ahol az alkalmazás regisztrálva van.
+Olyan alkalmazásosztály, amely lehetővé [](#consent) teszi a bármely Azure AD-bérlőben üzembe adott felhasználók bejelentkezését és beleegyezését, beleértve az ügyfél regisztrációját nem használó bérlőket is. [](#tenant) [A natív](#native-client) ügyfélalkalmazások alapértelmezés szerint [](#web-client) több-bérlősek, míg a webes ügyfél- és webes [erőforrás-/API-alkalmazások](#resource-server) képesek egy- vagy több-bérlős alkalmazások közül választani. Ezzel szemben az egybérlősként regisztrált webalkalmazások csak olyan felhasználói fiókokból engedélyezik a bejelentkezéseket, amelyek ugyanabban a bérlőben vannak kiépítve, mint az alkalmazás regisztrálva van.
 
-További részletekért lásd: [bármely Azure ad-felhasználó bejelentkezni a több-bérlős alkalmazás mintájának használatával][AAD-Multi-Tenant-Overview] .
+További részletekért lásd: [Azure AD-felhasználók bejelentkezése a több-bérlős][AAD-Multi-Tenant-Overview] alkalmazásminta használatával.
 
 ## <a name="native-client"></a>natív ügyfél
 
-Az eszközön natív módon telepített [ügyfélalkalmazás](#client-application) . Mivel az összes kód végrehajtása egy eszközön történik, "nyilvános" ügyfélnek számít, mivel a hitelesítő adatok magánjellegű és bizalmas tárolása nem lehetséges. További részletekért tekintse meg a [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types] című témakört.
+Az [eszközre natív](#client-application) módon telepített ügyfélalkalmazás-típus. Mivel minden kód egy eszközön van végrehajtva, "nyilvános" ügyfélnek számít, mert nem tárol bizalmasan/privát módon hitelesítő adatokat. További részletekért [lásd: OAuth2-ügyféltípusok][OAuth2-Client-Types] és -profilok.
 
 ## <a name="permissions"></a>engedélyek
 
-Az [ügyfélalkalmazás](#client-application) az engedélyek megadásával éri el az [erőforrás-kiszolgálót](#resource-server) . Két típus érhető el:
+Az [ügyfélalkalmazások](#client-application) az [](#resource-server) engedélykérések deklarálása által hozzáférést nyernek egy erőforrás-kiszolgálóhoz. Két típus érhető el:
 
-* A "delegált" engedélyek, amelyek a bejelentkezett [erőforrás tulajdonosától](#resource-owner)származó, [hatókörön alapuló](#scopes) hozzáférést határoznak meg, a rendszer az erőforrást futásidőben " [SCP" jogcímként](#claim) mutatja be az ügyfél [hozzáférési jogkivonatában](#access-token).
-* Az ügyfélalkalmazás hitelesítő adataival/identitásával [szerepköralapú](#roles) hozzáférést megadó "alkalmazás" engedélyek az erőforráshoz futásidőben ["szerepkörök" jogcímként](#claim) jelennek meg az ügyfél hozzáférési jogkivonatában.
+* A "Delegált" engedélyek, amelyek hatóköralapú hozzáférést határoznak meg [](#resource-owner)a bejelentkezett erőforrás tulajdonosától származó delegált engedélyezéssel, futásidőben ["scp"](#claim) jogcímként jelennek meg az ügyfél hozzáférési [](#scopes) jogkivonatában. [](#access-token)
+* Az "Alkalmazás" engedélyek, [](#roles) amelyek az ügyfélalkalmazás hitelesítő adataival/identitásával határozzák meg a szerepköralapú hozzáférést, futásidőben [szerepkörökként](#claim) jelennek meg az erőforrás számára az ügyfél hozzáférési jogkivonatában.
 
-Emellett felszínre kerülnek az [engedélyezési](#consent) folyamat során, így a rendszergazda vagy az erőforrás tulajdonosa a bérlő erőforrásaihoz való hozzáférés engedélyezése/tiltása.
+A hozzájárulási [](#consent) folyamat során a rendszergazdák vagy az erőforrás-tulajdonos számára is lehetőséget adva arra, hogy hozzáférést adjanak vagy megtagadják az ügyfél számára a bérlőben található erőforrásokhoz.
 
-Az engedélyezési kérelmeket az alkalmazás **API-engedélyei** lapon kell konfigurálni a [Azure Portalban][AZURE-portal], a kívánt "delegált engedélyek" és az "alkalmazás engedélyei" lehetőség kiválasztásával (az utóbbi megköveteli a globális rendszergazdai szerepkör tagságát). Mivel a [nyilvános ügyfél](#client-application) nem tudja biztonságosan karbantartani a hitelesítő adatokat, csak delegált engedélyeket igényelhet, míg a [bizalmas ügyfél](#client-application) jogosult a delegált és az alkalmazásra vonatkozó engedélyek igénylésére is. Az ügyfél [Application objektuma](#application-object) a deklarált engedélyeket a [requiredResourceAccess tulajdonságában][Graph-App-Resource]tárolja.
+Az engedélykérések a [Azure Portal][AZURE-portal]alkalmazásban az **API-engedélyek** oldalán konfigurálhatóak a kívánt "Delegált engedélyek" és "Alkalmazásengedélyek" kiválasztásával (az utóbbihoz a globális rendszergazdai szerepkör tagsága szükséges). Mivel a [nyilvános ügyfelek](#client-application) nem képesek biztonságosan karbantartani a hitelesítő adatokat, csak delegált engedélyeket kérhetnek, [míg](#client-application) a bizalmas ügyfelek delegált és alkalmazásengedélyeket is kérhetnek. Az ügyfél [alkalmazásobjektuma](#application-object) a [requiredResourceAccess][Graph-App-Resource]tulajdonságában tárolja a deklarált engedélyeket.
 
-## <a name="refresh-token"></a>jogkivonat frissítése
+## <a name="refresh-token"></a>frissítési jogkivonat
 
-Egy [engedélyezési kiszolgáló](#authorization-server)által kiadott [biztonsági jogkivonat](#security-token) típusa, amelyet egy [ügyfélalkalmazás](#client-application) használ ahhoz, hogy új [hozzáférési tokent](#access-token) igényeljen a hozzáférési jogkivonat lejárta előtt. Jellemzően [JSON web token (JWT)][JWT]formájában.
+Egy engedélyezési kiszolgáló által [](#authorization-server)kiadott biztonsági [jogkivonattípus,](#security-token) amelyet egy ügyfélalkalmazás [](#access-token) használ egy új hozzáférési jogkivonat lekéréséhez a hozzáférési jogkivonat lejárta előtt. [](#client-application) Általában egy új [(JWT JSON-webtoken formájában.][JWT]
 
-A hozzáférési jogkivonatokkal ellentétben a frissítési tokenek visszavonhatók. Ha egy ügyfélalkalmazás egy visszavont frissítési jogkivonat használatával próbál új hozzáférési jogkivonatot kérni, az engedélyezési kiszolgáló megtagadja a kérést, és az ügyfélalkalmazás többé nem jogosult az erőforrás- [tulajdonos](#resource-owner)nevében hozzáférni az [erőforrás-kiszolgálóhoz](#resource-server) .
+A hozzáférési jogkivonatokkal ellentétben a frissítési jogkivonatok visszavonhatóak. Ha egy ügyfélalkalmazás visszavont frissítési jogkivonattal próbál új hozzáférési jogkivonatot igényelni, az engedélyezési kiszolgáló megtagadja a [](#resource-server) kérést, és az ügyfélalkalmazás többé nem fog engedéllyel hozzáférni az erőforrás-kiszolgálóhoz az erőforrás-tulajdonos [nevében.](#resource-owner)
 
-## <a name="resource-owner"></a>erőforrás tulajdonosa
+## <a name="resource-owner"></a>erőforrás-tulajdonos
 
-A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározottak szerint egy olyan entitás, amely képes a védett erőforrásokhoz való hozzáférés megadására. Ha az erőforrás tulajdonosa személy, akkor azt végfelhasználónak nevezzük. Ha például egy [ügyfélalkalmazás](#client-application) a [Microsoft Graph API][Microsoft-Graph]-n keresztül szeretne hozzáférni egy felhasználó postaládájához, akkor a postaláda erőforrás-tulajdonosának engedélyre van szüksége.
+Az [OAuth2][OAuth2-Role-Def]engedélyezési keretrendszere által meghatározottak szerint egy olyan entitás, amely hozzáférést adhat egy védett erőforráshoz. Ha az erőforrás tulajdonosa egy személy, végfelhasználónak nevezzük. Ha például egy [](#client-application) ügyfélalkalmazás hozzá szeretne férni egy felhasználó postaládájához a [Microsoft Graph API-n][Microsoft-Graph]keresztül, akkor engedélyre van szüksége a postaláda erőforrás-tulajdonosától.
 
 ## <a name="resource-server"></a>erőforrás-kiszolgáló
 
-A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározottak szerint a védett erőforrásokat üzemeltető kiszolgáló, amely képes a [hozzáférési jogkivonatot](#access-token)futtató [ügyfélalkalmazások](#client-application) által a védett erőforrásokra vonatkozó kérések fogadására és megválaszolására. Más néven védett erőforrás-kiszolgáló vagy erőforrás-alkalmazás.
+Az [OAuth2][OAuth2-Role-Def]engedélyezési keretrendszere által meghatározottak szerint egy olyan kiszolgáló, amely védett erőforrásokat biztosít, és amely képes a hozzáférési jogkivonatot bemutató ügyfélalkalmazások által védett erőforráskérések elfogadására és az ezekre való [válaszadásra.](#access-token) [](#client-application) Más néven védett erőforrás-kiszolgáló vagy erőforrás-alkalmazás.
 
-Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti a védett erőforrások elérését [hatókörökön](#scopes) és [szerepkörökön](#roles)keresztül a OAuth 2,0 engedélyezési keretrendszer használatával. Ilyenek például a [Microsoft Graph API][Microsoft-Graph] , amely hozzáférést biztosít az Azure ad-bérlői információhoz, valamint a Microsoft 365 API-kat, amelyek hozzáférést biztosítanak az olyan adatszolgáltatásokhoz, mint a levelezés és a naptár
+Az erőforrás-kiszolgáló API-kat biztosít, és az [](#scopes) OAuth [](#roles)2.0 engedélyezési keretrendszer használatával kényszeríti a hozzáférést a védett erőforrásaihoz hatókörök és szerepkörök használatával. Ilyen például a [Microsoft Graph API,][Microsoft-Graph] amely hozzáférést biztosít az Azure AD-bérlő adataihoz, valamint a Microsoft 365 API-k, amelyek hozzáférést biztosítanak az adatokhoz, például a levelezéshez és a naptárhoz.
 
-Akárcsak egy ügyfélalkalmazás esetében, az erőforrás-alkalmazás identitásának konfigurációja az Azure AD-bérlőben való [regisztrációval](#application-registration) történik, amely az alkalmazás és a szolgáltatás egyszerű objektumát is megadja. Egyes Microsoft által biztosított API-k (például a Microsoft Graph API) a kiépítés során minden bérlőn elérhetők előre regisztrált egyszerű szolgáltatások.
+Az ügyfélalkalmazáshoz hasonló esetben az erőforrás-alkalmazás [](#application-registration) identitáskonfigurációja is egy Azure AD-bérlőben való regisztrációval van megsziva, biztosítva az alkalmazás és a szolgáltatásnév objektumát is. Egyes Microsoft által biztosított API-k, például a Microsoft Graph API, előre regisztrált szolgáltatásnévvel rendelkezik, amelyek minden bérlőben elérhetővé vannak téve a kiépítés során.
 
 ## <a name="roles"></a>szerepkörök
 
-A [hatókörökhöz](#scopes)hasonlóan a szerepkörök lehetővé teszik az [erőforrás-kiszolgáló](#resource-server) számára a védett erőforrásokhoz való hozzáférés szabályozását. Kétféle típus létezik: a "felhasználói" szerepkör implementálja a szerepköralapú hozzáférés-vezérlést olyan felhasználók/csoportok számára, amelyek hozzáférést igényelnek az erőforráshoz, míg az "alkalmazás" szerepkör ugyanazokat valósít meg a hozzáférést igénylő [ügyfélalkalmazások](#client-application) számára.
+A [hatókörökhöz](#scopes)hasonló módon a szerepkörök is lehetőséget biztosítanak az [erőforrás-kiszolgálók számára](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozására. Két típus létezik: a "felhasználói" szerepkör szerepköralapú hozzáférés-vezérlést valósít meg az erőforráshoz hozzáférést igénylő felhasználók/csoportok számára, míg az "alkalmazás" szerepkör ugyanezt a hozzáférést igénylő ügyfélalkalmazások esetében valósítja meg. [](#client-application)
 
-A szerepkörök erőforrás-definiált karakterláncok (például "költségek jóváhagyója", "csak olvasható", "könyvtár. ReadWrite. all"), a [Azure Portal][AZURE-portal] az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül kezelhetők, és az erőforrás [appRoles tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal a felhasználók "felhasználói" szerepkörökhöz való hozzárendelésére, valamint az "alkalmazás" szerepkör elérésére vonatkozó ügyfélalkalmazás- [engedélyek](#permissions) konfigurálására is használható.
+A szerepkörök erőforrás által definiált sztringek (például "Költség jóváhagyó", "Csak olvasható", "Directory.ReadWrite.All"), amelyek az [Azure Portal-ben][AZURE-portal] az erőforrás alkalmazásjegyzékén keresztül vannak tárolva, [](#application-manifest)és az erőforrás [appRoles][Graph-Sp-Resource]tulajdonságában vannak tárolva. A Azure Portal a felhasználók "felhasználói" szerepkörökhöz való hozzárendelésére, [](#permissions) valamint az ügyfélalkalmazások "alkalmazás" szerepkör elérésére vonatkozó engedélyeinek konfigurálásához is használható.
 
-A Microsoft Graph API által elérhetővé tett alkalmazási szerepkörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Lépésenkénti megvalósítási példa: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával][AAD-RBAC].
+A Microsoft Graph API által elérhetővé Graph API részletes [leírásért][Graph-Perm-Scopes]lásd: . Részletes megvalósítási példa: Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása [a Azure Portal.][AAD-RBAC]
 
 ## <a name="scopes"></a>hatókörök
 
-A [szerepkörökhöz](#roles)hasonlóan a hatókörök lehetővé teszik az [erőforrás-kiszolgáló](#resource-server) számára a védett erőforrásokhoz való hozzáférés szabályozását. A hatókörök a [hatókörön alapuló hozzáférés-][OAuth2-Access-Token-Scopes] vezérlés megvalósítására szolgálnak olyan [ügyfélalkalmazás](#client-application) esetében, amely a tulajdonosával delegált hozzáférést kapott az erőforráshoz.
+A [szerepkörökhöz](#roles)hasonló hatókörök lehetőséget biztosítanak az [erőforrás-kiszolgálók számára](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozására. A hatókörök hatóköralapú [hozzáférés-vezérlés][OAuth2-Access-Token-Scopes] megvalósításához [](#client-application) használhatók olyan ügyfélalkalmazások, amelyekhez a tulajdonosa delegált hozzáférést adott az erőforráshoz.
 
-A hatókörök erőforrás-definiált karakterláncok (például "mail. Read", "Directory. ReadWrite. all"), a [Azure Portal][AZURE-portal] felügyelve az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül, és az erőforrás [oauth2Permissions tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal az ügyfélalkalmazások [delegált engedélyeinek](#permissions) konfigurálására is használható a hatókör eléréséhez.
+A hatókörök erőforrás által meghatározott sztringek (például "Mail.Read", "Directory.ReadWrite.All"), amelyek az [](#application-manifest) [Azure Portal-ban][AZURE-portal] vannak az erőforrás alkalmazásjegyzékén keresztül, és az erőforrás [oauth2Permissions][Graph-Sp-Resource]tulajdonságában vannak tárolva. A Azure Portal az ügyfélalkalmazás delegált [](#permissions) engedélyeinek konfigurálásához is használható a hatókörök eléréséhez.
 
-Az ajánlott eljárás elnevezési konvenció az "erőforrás. Operation. megkötés" formátum használata. Az Microsoft Graph API által elérhető hatókörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Microsoft 365 szolgáltatások által közzétett hatókörökkel kapcsolatban lásd: [Microsoft 365 API-engedélyek referenciája][O365-Perm-Ref].
+Az ajánlott elnevezési konvenció a "resource.operation.constraint" formátum használata. A Microsoft Graph API által elérhetővé Graph API [részletes leírásért][Graph-Perm-Scopes]lásd: . A Microsoft 365 által elérhetővé Microsoft 365 [API-engedélyekkel kapcsolatos referencia.][O365-Perm-Ref]
 
 ## <a name="security-token"></a>biztonsági jogkivonat
 
-Jogcímeket tartalmazó aláírt dokumentum, például egy OAuth2-jogkivonat vagy SAML 2,0-állítás. A OAuth2 [engedélyezéséhez](#authorization-grant)a [hozzáférési token](#access-token) (OAuth2), a [frissítési jogkivonat](#refresh-token)és az [azonosító token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) olyan biztonsági jogkivonatok típusai, amelyek mindegyike [JSON web tokenként (JWT)][JWT]van implementálva.
+Jogcímeket, például OAuth2-jogkivonatot vagy SAML 2.0 helyességi feltételt tartalmazó aláírt dokumentum. OAuth2 engedélyezési [](#authorization-grant)engedély, hozzáférési jogkivonat (OAuth2), [](#refresh-token)frissítési [](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) jogkivonat és azonosító jogkivonat a biztonsági jogkivonatok típusai, amelyek mind JSON-webtoken -ként [(JWT)][JWT]vannak megvalósítva. [](#access-token)
 
-## <a name="service-principal-object"></a>egyszerű szolgáltatásnév objektum
+## <a name="service-principal-object"></a>szolgáltatásnév-objektum
 
-Ha a [Azure Portalban][AZURE-portal]regisztrál/frissít egy alkalmazást, a portál egy [Application objektumot](#application-object) és egy hozzá tartozó egyszerű szolgáltatásnevet is létrehoz/frissít a bérlő számára. Az Application objektum globálisan *definiálja* az alkalmazás identitásának konfigurációját (az összes bérlőn, ahol a társított alkalmazás hozzáférése van), és az a sablon, amelyből a kapcsolódó szolgáltatásnév-objektum (ok) a helyi használatra van *származtatva* (egy adott bérlő esetében).
+Amikor regisztrál/frissít egy alkalmazást a Azure Portal [portál][AZURE-portal]létrehoz/frissít [](#application-object) egy alkalmazásobjektumot és egy megfelelő szolgáltatásnév-objektumot is az adott bérlőhöz. Az alkalmazásobjektum globálisan meghatározza az alkalmazás identitáskonfigurációját (minden olyan bérlőn, amelyhez a társított alkalmazás hozzáférést kapott),  és az a sablon, amelyből a megfelelő szolgáltatásnév-objektum(oka)t a rendszer helyileg, futásidőben (egy adott bérlőben) való helyi használatra származtatja. 
 
-További információ: [alkalmazás-és egyszerű szolgáltatások objektumai][AAD-App-SP-Objects].
+További információ: [Alkalmazás- és szolgáltatásnév-objektumok.][AAD-App-SP-Objects]
 
 ## <a name="sign-in"></a>sign-in
 
-Egy [ügyfélalkalmazás](#client-application) folyamata, amely a végfelhasználói hitelesítést és a kapcsolódó állapot rögzítését kezdeményezi a [biztonsági jogkivonat](#security-token) beszerzésének, valamint az alkalmazás munkamenetének az adott állapotra való hatókörének megkezdése érdekében. Az állapot tartalmazhat olyan összetevőket, mint például a felhasználói profil adatai, valamint a jogkivonat jogcímeiből származtatott információk.
+A végfelhasználói hitelesítés kezdeményezésének és [a](#client-application) kapcsolódó állapot rögzítésének folyamata egy [](#security-token) biztonsági jogkivonat beszerzése és az alkalmazás-munkamenet adott állapotra való hatókörének meghatározása céljából. Az állapot tartalmazhat olyan összetevőket, mint a felhasználói profil adatai és a jogkivonat jogcímeiből származó információk.
 
-Az alkalmazások bejelentkezési funkciója általában egyszeri bejelentkezés (SSO) megvalósítására szolgál. Azt is megteheti, hogy egy "regisztrációs" függvény előzi meg, mivel a végfelhasználók belépési pontként férhetnek hozzá az alkalmazásokhoz (az első bejelentkezéskor). A regisztrációs függvény a felhasználóra vonatkozó további állapot összegyűjtésére és megtartására szolgál, és [felhasználói hozzájárulásukat](#consent)is igényelhet.
+Az alkalmazások bejelentkezési funkcióját általában egyszeri bejelentkezés (SSO) implementálja. Egy "regisztráció" függvény is megelőzheti, amely belépési pontként lehetővé teszi a végfelhasználó számára, hogy hozzáférést szerezzen egy alkalmazáshoz (az első bejelentkezéskor). A sign-up függvény a felhasználóra jellemző további állapotok gyűjtésére és megőrzésére használható, és felhasználói [hozzájárulásra lehet szükség.](#consent)
 
 ## <a name="sign-out"></a>kijelentkezés
 
-A végfelhasználók hitelesítésének visszaigazolása, a [Bejelentkezés](#sign-in) során az [ügyfélalkalmazás](#client-application) -munkamenethez társított felhasználói állapot leválasztása
+A végfelhasználó hitelesítésének megszaválása, az ügyfélalkalmazás-munkamenethez [](#client-application) társított felhasználói állapot leválasztása a [bejelentkezés során](#sign-in)
 
 ## <a name="tenant"></a>Bérlő
 
-Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos funkciót kínál, többek között:
+Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos funkciót biztosít, többek között a következőket:
 
-* beállításjegyzék-szolgáltatás integrált alkalmazásokhoz
+* egy beállításjegyzék-szolgáltatás integrált alkalmazásokhoz
 * felhasználói fiókok és regisztrált alkalmazások hitelesítése
-* A különböző protokollok támogatásához szükséges REST-végpontok, például a OAuth2 és az SAML, beleértve az [engedélyezési végpontot](#authorization-endpoint), a [jogkivonat-végpontot](#token-endpoint) és a [több-bérlős alkalmazások](#multi-tenant-application)által használt "Common" végpontot.
+* A különböző protokollok (például az OAuth2 és az SAML) támogatásához szükséges REST-végpontok, beleértve az engedélyezési végpontot, a jogkivonatvégpontot és a több-bérlős alkalmazások által használt "közös" [végpontot.](#multi-tenant-application) [](#authorization-endpoint) [](#token-endpoint)
 
-Az Azure AD-bérlők létrehozása/társítása az Azure-hoz, és Microsoft 365 előfizetéseket a regisztráció során, az identitás & az előfizetés hozzáférés-kezelési funkcióit biztosítva. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiről, valamint az előfizetés Azure AD-bérlőhöz való hozzárendelésével és hozzáadásával kapcsolatos információkért lásd: az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz][AAD-How-Subscriptions-Assoc] .
+Az Azure AD-bérlők a regisztráció során létrejönnek/társítva vannak az Azure-ral és Microsoft 365-előfizetésekkel, és identity & Access Management-funkciókat szolgáltatásokat szolgáltatásokat biztosítva az előfizetéshez. Az Azure-előfizetések rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal. A [bérlőhöz való hozzáférés különböző módjairól Azure Active Directory][AAD-How-To-Tenant] bérlők lekért adataiért lásd: How to get an Azure Active Directory tenant (Bérlői bérlők lekérte). Az előfizetések és az Azure AD-bérlők közötti kapcsolat részleteiért és az előfizetésEk [Azure AD-bérlőhöz][AAD-How-Subscriptions-Assoc] való társításával vagy az előfizetések Azure AD-bérlőhöz való hozzáadásával kapcsolatos útmutatásért lásd: Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz.
 
-## <a name="token-endpoint"></a>jogkivonat-végpont
+## <a name="token-endpoint"></a>jogkivonat végpontja
 
-Az [engedélyezési kiszolgáló](#authorization-server) által megvalósított egyik végpont, amely támogatja a OAuth2- [engedélyezési](#authorization-grant)támogatást. A támogatástól függően felhasználható egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token) beszerzése egy [ügyfélhez](#client-application), vagy [azonosító token](#id-token) az [OpenID Connect][OpenIDConnect] protokollal való használatkor.
+Az OAuth2-hitelesítés [](#authorization-server) támogatásához az engedélyezési kiszolgáló által megvalósított [végpontok egyike ad engedélyt.](#authorization-grant) A támogatástól függően használható hozzáférési jogkivonat [(és](#access-token) a kapcsolódó "frissítési" jogkivonat) lekért ügyfélhez, vagy azonosító jogkivonathoz, ha az OpenID Connect [protokollal][OpenIDConnect] használja. [](#client-application) [](#id-token)
 
-## <a name="user-agent-based-client"></a>Felhasználó-ügynök alapú ügyfél
+## <a name="user-agent-based-client"></a>Felhasználóügynök-alapú ügyfél
 
-Olyan [ügyfélalkalmazás](#client-application) , amely egy webkiszolgálóról tölt le kódot, és egy felhasználói ügynökön belül (például egy webböngészőben) hajtja végre, például egy egyoldalas alkalmazás (Spa) számára. Mivel az összes kód végrehajtása egy eszközön történik, "nyilvános" ügyfélnek számít, mivel a hitelesítő adatok magánjellegű és bizalmas tárolása nem lehetséges. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
+Olyan [ügyfélalkalmazás-típus,](#client-application) amely kódot tölt le egy webkiszolgálóról, és egy felhasználói ügynökön (például egy webböngészőn) belül fut, például egy egyoldalas alkalmazáson (SPA). Mivel minden kód egy eszközön van végrehajtva, az "nyilvános" ügyfélnek számít, mivel nem tárol bizalmasan/privát módon hitelesítő adatokat. További információ: [OAuth2-ügyféltípusok és -profilok.][OAuth2-Client-Types]
 
-## <a name="user-principal"></a>egyszerű Felhasználónév
+## <a name="user-principal"></a>egyszerű felhasználó
 
-Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ egy alkalmazás példányának ábrázolására, a felhasználói tag objektum egy másik rendszerbiztonsági tag, amely egy felhasználót jelöl. A Microsoft Graph [felhasználói erőforrástípus][Graph-User-Resource] definiálja egy felhasználói objektum sémáját, beleértve a felhasználóval kapcsolatos tulajdonságokat, például az utónév és a vezetéknév, az egyszerű felhasználónév, a címtárbeli szerepkör tagsága stb. Ez biztosítja az Azure AD felhasználói identitásának konfigurációját, hogy futásidőben hozzon létre egy felhasználói rendszerbiztonsági tag. Az egyszerű felhasználónév az egyszeri bejelentkezéshez, a belefoglalási [felhatalmazáshoz](#consent) , a hozzáférés-vezérlési döntések meghozatalához stb.
+Ahhoz hasonlóan, ahogyan egy szolgáltatásnév-objektum egy alkalmazáspéldányt képvisel, a rendszerbiztonsági tag egy másik típusa, amely egy felhasználót képvisel. A Microsoft Graph [][Graph-User-Resource] felhasználó erőforrástípus határozza meg a felhasználói objektum sémáját, beleértve a felhasználóhoz kapcsolódó tulajdonságokat, például a vezeték- és vezetéknevet, az egyszerű felhasználónevet, a címtár-szerepkörtagságot stb. Ez biztosítja az Azure AD felhasználói identitáskonfigurációját a felhasználói rendszerbiztonsági tag futásidőben való létrehozására. A rendszerbiztonsági tag egy hitelesített felhasználót képvisel az egyszeri [](#consent) bejelentkezéshez, a hozzájárulás delegálásának rögzítéséhez, hozzáférés-vezérlési döntések meghozatalához stb.
 
 ## <a name="web-client"></a>webes ügyfél
 
-Egy olyan [ügyfélalkalmazás](#client-application) , amely a webkiszolgálón lévő összes kódot végrehajtja, és a hitelesítő adatai biztonságos tárolásával a kiszolgálón a "bizalmas" ügyfélként működhet. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
+Egyfajta [ügyfélalkalmazás,](#client-application) amely minden kódot végrehajt egy webkiszolgálón, és képes "bizalmas" ügyfélként működni azáltal, hogy a hitelesítő adatait biztonságosan tárolja a kiszolgálón. További információ: [OAuth2-ügyféltípusok és -profilok.][OAuth2-Client-Types]
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témában elérhető Kezdőlap, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését, valamint a [Microsoft Identity platform hitelesítésének és a támogatott hitelesítési forgatókönyveknek][AAD-Auth-Scenarios]az alapjait. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
+A [Microsoft identitásplatform][AAD-Dev-Guide] fejlesztői útmutatója a Microsoft identitásplatform fejlesztésével kapcsolatos összes [][AAD-How-To-Integrate] témakör kezdőlapja, beleértve az alkalmazásintegráció áttekintését, valamint a Microsoft identitásplatform-hitelesítésének alapjait és a támogatott hitelesítési [forgatókönyveket.][AAD-Auth-Scenarios] A [GitHubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)& oktatóanyagokban kódmintákat is talál.
 
-A következő Megjegyzések szakaszban visszajelzést és segítséget nyújthat a tartalom pontosításához és formálásához, beleértve az új definíciók kéréseit vagy a meglévők frissítését is.
+A következő megjegyzések szakaszban visszajelzést adhat, és segíthet finomítani és formázni ezt a tartalmat, beleértve az új definíciókra vagy a meglévők frissítésére vonatkozó kéréseket is.
 
 <!--Image references-->
 
@@ -235,7 +235,7 @@ A következő Megjegyzések szakaszban visszajelzést és segítséget nyújthat
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

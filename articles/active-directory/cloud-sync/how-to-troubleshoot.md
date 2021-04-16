@@ -1,6 +1,6 @@
 ---
-title: A Cloud Sync Azure AD Connect hibaelhárítása
-description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a felhőalapú kiépítési ügynökkel kapcsolatban felmerülő problémákat.
+title: Azure AD Connect cloud sync hibaelhárítása
+description: Ez a cikk a felhőalapú kiépítési ügynökkel kapcsolatos esetleges problémák elhárítását ismerteti.
 author: billmath
 ms.author: billmath
 manager: daveba
@@ -8,99 +8,99 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517871"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530317"
 ---
-# <a name="cloud-sync-troubleshooting"></a>Felhőalapú szinkronizálás – hibaelhárítás
+# <a name="cloud-sync-troubleshooting"></a>Felhőszinkronizálás hibaelhárítása
 
-A felhőalapú szinkronizálás számos különböző területet érint, és számos különböző függőséggel rendelkezik. Ez az átfogó hatókör számos problémát eredményezhet. Ez a cikk segítséget nyújt a problémák elhárításában. Bemutatja a területeket, amelyekre általában figyelmet kell fordítania, a további információk beszerzésének módját, és a különböző módszereket, amelyekkel megkeresheti a hibák forrását.
+A felhőalapú szinkronizálás számos különböző területet érint, és számos különböző függőséggel rendelkezik. Ez az átfogó hatókör számos problémát eredményezhet. Ez a cikk segít elhárítani ezeket a problémákat. Bemutatja a területeket, amelyekre általában figyelmet kell fordítania, a további információk beszerzésének módját, és a különböző módszereket, amelyekkel megkeresheti a hibák forrását.
 
 
 ## <a name="common-troubleshooting-areas"></a>Gyakori hibaelhárítási területek
 
 |Név|Leírás|
 |-----|-----|
-|[Ügynökkel kapcsolatos problémák](#agent-problems)|Ellenőrizze, hogy az ügynök megfelelően lett-e telepítve, és hogy a Azure Active Directory (Azure AD) szolgáltatással kommunikál-e.|
-|[Objektum-szinkronizálási problémák](#object-synchronization-problems)|Az objektumok szinkronizálásával kapcsolatos problémák elhárításához használjon kiépítési naplókat.|
-|[Karanténba helyezett problémák kiépítés](#provisioning-quarantined-problems)|Megtudhatja, hogyan lehet kiépíteni a karanténba helyezési problémákat, és hogyan javíthatja őket.|
+|[Ügynökproblémák](#agent-problems)|Ellenőrizze, hogy az ügynök megfelelően lett-e telepítve, és hogy kommunikál-e Azure Active Directory (Azure AD) használatával.|
+|[Objektumszinkronizálási problémák](#object-synchronization-problems)|Az objektumszinkronizálási problémák elhárításához használjon kiépítési naplókat.|
+|[Karanténba helyezett problémák kiépítése](#provisioning-quarantined-problems)|A karanténba helyezett problémák és a megoldásuk.|
 
 
 ## <a name="agent-problems"></a>Ügynökkel kapcsolatos problémák
-Az ügynökkel ellenőrizni kívánt első lépések:
+Az ügynökkel elsőként a következő dolgokat szeretné ellenőrizni:
 
 -  Telepítve van?
 -  Az ügynök helyileg fut?
--  Az ügynök a portálon?
--  Az ügynök kifogástalanként van megjelölve?
+-  Az ügynök a portálon van?
+-  Az ügynök kifogástalan állapotúként van megjelölve?
 
-Ezek az elemek ellenőrizhetők a Azure Portal és az ügynököt futtató helyi kiszolgálón.
+Ezek az elemek ellenőrizhetők a Azure Portal az ügynököt futtató helyi kiszolgálón.
 
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 
-Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban és kifogástalan állapotban van-e.
+Az alábbi lépésekkel ellenőrizheti, hogy az ügynök látható-e az Azure-ban, és hogy kifogástalan állapotú-e.
 
 1. Jelentkezzen be az Azure Portalra.
-1. A bal oldalon válassza a **Azure Active Directory**  >  **Azure ad Connect** lehetőséget. A központban válassza a **szinkronizálás kezelése** lehetőséget.
-1. A **Azure ad Connect Cloud Sync** képernyőn válassza az **összes ügynök áttekintése** lehetőséget.
+1. A bal oldalon válassza a **Azure Active Directory**  >  **Azure AD Connect** lehetőséget. A középső központban válassza a **Szinkronizálás kezelése lehetőséget.**
+1. A **felhőalapú Azure AD Connect képernyőn** válassza az **Összes ügynök áttekintése lehetőséget.**
 
    ![Az összes ügynök áttekintése](media/how-to-install/install-7.png)</br>
  
-1. A helyszíni **kiépítési ügynökök** képernyőjén láthatja a telepített ügynököket. Ellenőrizze, hogy a szóban forgó ügynök van-e kijelölve, és hogy *kifogástalan* állapotú-e.
+1. A **Helyszíni kiépítési ügynökök** képernyőn láthatja a telepített ügynököket. Ellenőrizze, hogy a szóban forgó ügynök ott van-e, és kifogástalan állapotúként *van-e megjelölve.*
 
    ![Helyszíni kiépítési ügynökök képernyő](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>A port ellenőrzése
 
-Ellenőrizze, hogy az Azure figyel-e a 443-es porton, és hogy az ügynök tud-e kommunikálni vele. 
+Ellenőrizze, hogy az Azure figyel-e a 443-as porton, és hogy az ügynök tud-e kommunikálni vele. 
 
-Ez a teszt ellenőrzi, hogy az ügynökök az 443-as porton keresztül kommunikálnak-e az Azure-ban. Nyisson meg egy böngészőt, és keresse meg az előző URL-címet arról a kiszolgálóról, amelyen az ügynököt telepítették.
+Ez a teszt ellenőrzi, hogy az ügynökök képesek-e kommunikálni az Azure-ral a 443-as porton keresztül. Nyisson meg egy böngészőt, és nyissa meg az előző URL-címet a kiszolgálóról, ahol az ügynök telepítve van.
 
-![A port elérhetőségének ellenőrzése](media/how-to-install/verify-2.png)
+![A portok elérhetőságának ellenőrzése](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>A helyi kiszolgálón
 
-Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
+Az ügynök futásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
-1. A kiszolgálón, amelyen telepítve van az ügynök, nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatáshoz, vagy **indítsa el** a  >    >  **Services. msc** parancsot.
-1. Győződjön meg arról, hogy a **szolgáltatások** területen **Microsoft Azure ad a összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van, és az állapota *fut*.
+1. Nyissa meg a Szolgáltatások szolgáltatásokat a kiszolgálón az ügynök telepítéséhez vagy a **Run**   >    >  **Services.msc futtatásának indításával.**
+1. A **Szolgáltatások alatt** győződjön meg arról, Microsoft Azure AD Connect Agent **Updater** és **Microsoft Azure AD Connect Provisioning Agent** van, és az állapotuk *Fut.*
 
    ![Szolgáltatások képernyő](media/how-to-troubleshoot/troubleshoot-1.png)
 
-### <a name="common-agent-installation-problems"></a>Gyakori ügynök-telepítési problémák
+### <a name="common-agent-installation-problems"></a>Gyakori ügynöktelepítési problémák
 
-A következő szakaszok ismertetik az ügynök gyakori telepítési problémáit és a tipikus megoldásokat.
+A következő szakaszok az ügynökök telepítésével kapcsolatos gyakori problémákat és tipikus megoldásokat ismertetik.
 
-#### <a name="agent-failed-to-start"></a>Az ügynök elindítása nem sikerült
+#### <a name="agent-failed-to-start"></a>Az ügynök nem tudott elindulni
 
 Előfordulhat, hogy a következő hibaüzenet jelenik meg:
 
-**Nem sikerült elindítani a (z) "Microsoft Azure AD kapcsolódási kiépítési ügynök" szolgáltatást. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultsággal a rendszerszolgáltatások elindításához.** 
+**A "Microsoft Azure AD Connect provisioning Agent" szolgáltatás nem tudott elindulni. Ellenőrizze, hogy rendelkezik-e a rendszerszolgáltatások indításhoz szükséges jogosultságokkal.** 
 
-Ezt a problémát általában egy olyan csoportházirend okozta, amely megakadályozta, hogy az engedélyek a telepítő (NT SERVICE\AADConnectProvisioningAgent) által létrehozott helyi NT szolgáltatásbeli bejelentkezési fiókra legyenek alkalmazva. Ezek az engedélyek szükségesek a szolgáltatás elindításához.
+Ezt a problémát általában egy olyan csoportházirend okozza, amely megakadályozta, hogy engedélyeket alkalmazzanak a telepítő által létrehozott helyi NT-szolgáltatás bejelentkezési fiókjára (NT SERVICE\AADConnectProvisioningAgent). Ezek az engedélyek szükségesek a szolgáltatás elindításához.
 
 A probléma megoldásához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal.
-1. Nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatásba, vagy **indítsa el** a  >    >  **Services. msc** parancsot.
-1. A **szolgáltatások** területen kattintson duplán **Microsoft Azure ad a kiépítési ügynök összekapcsolására**.
-1. A **Bejelentkezés** lapon módosítsa a **fiókot** egy tartományi rendszergazdára. Ezután indítsa újra a szolgáltatást. 
+1. Nyissa **meg** a szolgáltatásokat: navigálhat hozzá, vagy elindíthatja **a**  >  **Run**  >  **Services.msc futtatását.**
+1. A **Szolgáltatások alatt** kattintson duplán a Microsoft Azure AD Connect **Provisioning Agent (Kiépítési ügynök csatlakoztatása) elemre.**
+1. A **Bejelentkezés lapon** módosítsa **ezt** a fiókot egy tartományi rendszergazdai fiókra. Ezután indítsa újra a szolgáltatást. 
 
    ![Bejelentkezés lap](media/how-to-troubleshoot/troubleshoot-3.png)
 
-#### <a name="agent-times-out-or-certificate-is-invalid"></a>Az ügynök időtúllépése vagy a tanúsítvány érvénytelen
+#### <a name="agent-times-out-or-certificate-is-invalid"></a>Az ügynök időkorrekta vagy a tanúsítvány érvénytelen
 
-Előfordulhat, hogy az alábbi hibaüzenet jelenik meg, amikor megkísérli regisztrálni az ügynököt.
+Az ügynök regisztrálása során a következő hibaüzenet jelenhet meg.
 
-![Időtúllépési hibaüzenet](media/how-to-troubleshoot/troubleshoot-4.png)
+![Időkorrekta hibaüzenet](media/how-to-troubleshoot/troubleshoot-4.png)
 
 Ezt a problémát általában az okozza, hogy az ügynök nem tud csatlakozni a hibrid identitásszolgáltatáshoz, és konfigurálnia kell egy HTTP-proxyt. A probléma megoldásához konfiguráljon egy kimenő proxyt. 
 
-A kiépítési ügynök támogatja a kimenő proxy használatát. A konfigurálásához módosítsa az ügynök konfigurációs fájljának *C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config*. Adja hozzá a következő sorokat a fájl végéhez közvetlenül a záró `</configuration>` címke előtt.
-Cserélje le a változókat `[proxy-server]` és a `[proxy-port]` proxykiszolgáló nevét és portszámát.
+A kiépítési ügynök támogatja a kimenő proxy használatát. Konfigurálhatja a *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config.* Adja hozzá a következő sorokat a fájl vége felé, a záró címke `</configuration>` előtt.
+Cserélje le a és `[proxy-server]` `[proxy-port]` változókat a proxykiszolgáló nevére és portértékére.
 
 ```xml
     <system.net>
@@ -114,113 +114,113 @@ Cserélje le a változókat `[proxy-server]` és a `[proxy-port]` proxykiszolgá
     </system.net>
 ```
 
-#### <a name="agent-registration-fails-with-security-error"></a>Biztonsági hiba miatt sikertelen volt az ügynök regisztrálása.
+#### <a name="agent-registration-fails-with-security-error"></a>Az ügynök regisztrációja biztonsági hibával meghiúsul
 
-A felhőalapú kiépítési ügynök telepítésekor hibaüzenet jelenhet meg.
+Előfordulhat, hogy hibaüzenet jelenik meg a felhőalapú kiépítési ügynök telepítésekor.
 
-Ezt a problémát általában az okozza, hogy az ügynök nem tudja végrehajtani a PowerShell regisztrációs parancsfájlokat a helyi PowerShell-végrehajtási házirendek miatt.
+Ezt a problémát általában az okozza, hogy az ügynök nem tudja végrehajtani a PowerShell regisztrációs szkripteket a helyi PowerShell végrehajtási szabályzatok miatt.
 
-A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatait a kiszolgálón. A számítógép-és felhasználói házirendeket nem *definiált* vagy *RemoteSigned* kell beállítani. Ha nem *korlátozottként* vannak beállítva, akkor ez a hibaüzenet jelenik meg. További információ: [PowerShell végrehajtási szabályzatok](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
+A probléma megoldásához módosítsa a PowerShell végrehajtási házirendeket a kiszolgálón. A számítógép- és felhasználói házirendeket *Nem* meghatározott vagy *RemoteSigned* beállításúra kell beállítani. Ha ezek *korlátlanként vannak beállítva,* ez a hiba jelenik meg. További információ: [PowerShell végrehajtási szabályzatok.](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 
 
 ### <a name="log-files"></a>Naplófájlok
 
-Alapértelmezés szerint az ügynök minimális hibaüzeneteket és hívásláncadatokat bocsát ki. Ezeket a nyomkövetési naplókat az AD- **kapcsolat létesítési Agent\Trace** mappájában találja meg C:\ProgramData\Microsoft\Azure.
+Alapértelmezés szerint az ügynök minimális hibaüzeneteket és hívásláncadatokat bocsát ki. Ezek a nyomkövetési naplók a **C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace** mappában találhatók.
 
-Az ügynökkel kapcsolatos problémák elhárításához kövesse az alábbi lépéseket.
+Az ügynökkel kapcsolatos problémák elhárításával kapcsolatos további részletekért kövesse az alábbi lépéseket.
 
-1.  Telepítse a AADCloudSyncTools PowerShell-modult az [itt](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)leírtak szerint.
-2. Az `Export-AADCloudSyncToolsLogs` adatok rögzítéséhez használja a PowerShell-parancsmagot.  Az adatgyűjtés finomhangolásához a következő kapcsolók használhatók.
-      - A SkipVerboseTrace csak az aktuális naplókat exportálja a részletes naplók rögzítése nélkül (alapértelmezett = hamis)
+1.  Telepítse az AADCloudSyncTools PowerShell-modult az itt [leírtak szerint.](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)
+2. Az információk `Export-AADCloudSyncToolsLogs` rögzítéséhez használja a PowerShell-parancsmagot.  Az alábbi kapcsolók segítségével finomhangolhatja az adatgyűjtést.
+      - SkipVerboseTrace : csak az aktuális naplókat exportálja részletes naplók rögzítése nélkül (alapértelmezett = hamis)
       - TracingDurationMins eltérő rögzítési időtartam megadásához (alapértelmezett = 3 perc)
-      - OutputPath másik kimeneti elérési út megadásához (alapértelmezett = felhasználó dokumentumai)
+      - OutputPath eltérő kimeneti elérési út megadásához (alapértelmezett = Felhasználói dokumentumok)
 
 
-## <a name="object-synchronization-problems"></a>Objektum-szinkronizálási problémák
+## <a name="object-synchronization-problems"></a>Objektumszinkronizálási problémák
 
-A következő szakasz az objektumok szinkronizálásával kapcsolatos hibaelhárítással kapcsolatos információkat tartalmaz.
+A következő szakasz az objektumszinkronizálás hibaelhárításával kapcsolatos információkat tartalmaz.
 
 ### <a name="provisioning-logs"></a>Üzembehelyezési naplók
 
-A Azure Portalban az üzembe helyezési naplók segítséget nyújtanak az objektumok szinkronizációs problémáinak nyomon követéséhez és hibaelhárításához. A naplók megtekintéséhez válassza a **naplók** lehetőséget.
+A Azure Portal a kiépítési naplók segítségével nyomon követhetők és elháríthatóak az objektumszinkronizálási problémák. A naplók megtekintéséhez válassza a Naplók **lehetőséget.**
 
 ![Naplók gomb](media/how-to-troubleshoot/log-1.png)
 
-A kiépítési naplók rengeteg információt biztosítanak a helyszíni Active Directory környezet és az Azure között szinkronizált objektumok állapotáról.
+A kiépítési naplók rengeteg információt nyújtanak a saját környezete és az Azure helyi Active Directory szinkronizált objektumok állapotáról.
 
-![Naplók kiépítés képernyője](media/how-to-troubleshoot/log-2.png)
+![Kiépítési naplók képernyő](media/how-to-troubleshoot/log-2.png)
 
-A lap tetején található legördülő lista használatával szűrheti a nézetet nulla értékre az adott problémákon, például a dátumokon. További információk megjelenítéséhez kattintson duplán egy adott eseményre.
+Az oldal tetején található legördülő mezők használatával a nézetet adott problémák, például dátumok alapján nullára szűrheti. További információkért kattintson duplán egy adott eseményre.
 
-![Kiépítési naplók legördülő lista adatai](media/how-to-troubleshoot/log-3.png)
+![A kiépítési naplók legördülő listában található információk](media/how-to-troubleshoot/log-3.png)
 
-Ez az információ részletesen ismerteti a szinkronizálási problémát. Így pontosan megadhatja a probléma pontos helyét.
+Ezek az információk részletes lépéseket tartalmaznak, valamint a szinkronizálási probléma előfordulási helyeit. Így pontosan kitűzheti a probléma pontos helyét.
 
 
-## <a name="provisioning-quarantined-problems"></a>Karanténba helyezett problémák kiépítés
+## <a name="provisioning-quarantined-problems"></a>Karanténba helyezett problémák kiépítése
 
-A Felhőbeli szinkronizálás figyeli a konfiguráció állapotát, és nem kifogástalan állapotú objektumokat helyez el karantén állapotban. Ha egy hiba miatt a megcélzott rendszerre irányuló hívások többsége vagy mindegyike (például érvénytelen rendszergazdai hitelesítő adatok) nem sikerül, a szinkronizálási feladat karanténként van megjelölve.
+A felhőalapú szinkronizálás figyeli a konfiguráció állapotát, és karanténba helyezi a nem megfelelő objektumokat. Ha a célrendszerre vonatkozó hívások nagy része vagy egésze egy hiba miatt (például érvénytelen rendszergazdai hitelesítő adatok miatt) folyamatosan meghiúsul, a szinkronizálási feladat karanténban lesz megjelölve.
 
 ![Karantén állapota](media/how-to-troubleshoot/quarantine-1.png)
 
-Az állapot kiválasztásával további információkat tekinthet meg a karanténba. Megszerezheti a hibakódot és az üzenetet is.
+Az állapot kiválasztásával további információkat láthat a karanténról. A hibakódot és az üzenetet is beszerezheti.
 
-![Képernyőkép, amely további információkat jelenít meg a karanténba helyezésről.](media/how-to-troubleshoot/quarantine-2.png)
+![A karanténra vonatkozó további információkat bemutató képernyőkép.](media/how-to-troubleshoot/quarantine-2.png)
 
-A jobb gombbal kattintva további beállítások jelennek meg:
+Ha a jobb gombbal az állapotra kattint, további lehetőségek gombra is kattint:
     
    - kiépítési naplók megtekintése
    - ügynök megtekintése
-   - karantén törlése
+   - karantén törlődik
 
-![Képernyőkép, amely a helyi menü beállításait jeleníti meg.](media/how-to-troubleshoot/quarantine-4.png)
+![A helyi menü beállításait bemutató képernyőkép.](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>Karantén feloldása
 A karantén feloldásának két különböző módja van.  Ezek a következők:
 
-  - karantén törlése – a vízjel törlése és a különbözeti szinkronizálás futtatása
-  - a kiépítési feladatok újraindítása – a vízjel törlése és a kezdeti szinkronizálás futtatása
+  - karantén jelölése – törli a vízjelet, és változásszinkronizálást futtat
+  - a kiépítési feladat újraindítása – törli a vízjelet, és futtat egy kezdeti szinkronizálást
 
-#### <a name="clear-quarantine"></a>Karantén törlése
-A vízjel törléséhez és a kiépítési feladatokhoz tartozó különbözeti szinkronizálás futtatásához az ellenőrzése után egyszerűen kattintson a jobb gombbal az állapotra, és válassza a **karanténba helyezés törlése** lehetőséget.
+#### <a name="clear-quarantine"></a>Karantén törlődik
+A vízjel törléshez és a kiépítési feladat változásszinkronizálásának futtatásához, miután ellenőrizte, egyszerűen kattintson a jobb gombbal az állapotra, és válassza a **karantén jelölését.**
 
-Meg kell jelennie a karantén törlésének.
+Egy értesítésnek kell látnia, hogy a karantén törlése meg fog zárulni.
 
-![Képernyőfelvétel: a karantén törlését bemutató értesítés.](media/how-to-troubleshoot/quarantine-5.png)
+![Képernyőkép a karantén törlésével foglalkozó értesítésről.](media/how-to-troubleshoot/quarantine-5.png)
 
-Ezután az ügynök állapotaként kifogástalan állapotot kell látnia.
+Ezután kifogástalan állapotúnak kell lennie az ügynöknél.
 
-![Karantén állapotával kapcsolatos információk](media/how-to-troubleshoot/quarantine-6.png)
+![Karantén állapotinformációi](media/how-to-troubleshoot/quarantine-6.png)
 
-#### <a name="restart-the-provisioning-job"></a>A kiépítési feladatok újraindítása
-A kiépítési feladatok újraindításához használja a Azure Portal. Az ügynök konfigurációja lapon válassza a **kiépítés újraindítása** lehetőséget.
+#### <a name="restart-the-provisioning-job"></a>Az üzembe állási feladat újraindítása
+A Azure Portal indítsa újra a kiépítési feladatot. Az ügynök konfigurációs oldalán válassza a **Kiépítés újraindítása lehetőséget.**
 
   ![Kiépítés újraindítása](media/how-to-troubleshoot/quarantine-3.png)
 
-- [A kiépítési feladatok újraindításához használja a](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. A következőket törölheti:
-  - A rendszer a karanténba helyezési állapot felé felmerülő letéti számláló újraindítására.
-  - Karanténba helyezheti az alkalmazást a karanténba.
+- A Microsoft Graph indítsa [újra a kiépítési feladatot.](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true) Az újraindítást teljes mértékben Ön szabályozhatja. Dönthet úgy, hogy törli a következőt:
+  - A escrows parancsokkal újraindíthatja a karanténállapot felé felhalmozott escrow számlálót.
+  - Karanténba gombra az alkalmazás karanténból való eltávolításához.
   - Vízjelek. 
   
   Használja az alábbi kérelmet:
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
-## <a name="repairing-the-the-cloud-sync-service-account"></a>A Cloud Sync Service-fiók javítása
-Ha a Cloud Sync Service-fiókot kell kijavítania, használhatja a t `Repair-AADCloudSyncToolsAccount` .  
+## <a name="repairing-the-the-cloud-sync-service-account"></a>A Cloud Sync szolgáltatásfiók javítása
+Ha javítania kell a felhőszinkronizálási szolgáltatás fiókját, használhatja a következőt: `Repair-AADCloudSyncToolsAccount` .  
 
 
-   1.  Az [itt](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) ismertetett telepítési lépéseket követve kezdje el, majd folytassa a többi lépéssel.
-   2.  Egy rendszergazdai jogosultságokkal rendelkező Windows PowerShell-munkamenetből írja be vagy másolja be a következőt: 
+   1.  Az itt ismertetett telepítési [lépésekkel](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) elkezdheti a munkát, majd folytathatja a további lépésekkel.
+   2.  Egy rendszergazdai Windows PowerShell rendelkező munkamenetből írja vagy másolja be a következőt: 
     ```
     Connect-AADCloudSyncTools
     ```  
    3. Adja meg az Azure AD globális rendszergazdai hitelesítő adatait
-   4. Írja be vagy másolja be a következőt: 
+   4. Írja vagy másolja be a következőt: 
     ```
     Repair-AADCloudSyncToolsAccount
     ```  
-   5. Ha ez befejeződik, azt kell mondanunk, hogy a fiók javítása sikeres volt.
+   5. Ha ezzel elkészült, a fiók javításának sikeresnek kell lennie.
 
 ## <a name="next-steps"></a>Következő lépések 
 

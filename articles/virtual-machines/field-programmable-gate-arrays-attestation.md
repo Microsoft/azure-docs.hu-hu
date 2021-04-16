@@ -1,84 +1,84 @@
 ---
-title: Azure FPGFA igazolási szolgáltatás
-description: Igazolási szolgáltatás az NP-sorozatú virtuális gépekhez.
+title: Azure FPGFA-igazolási szolgáltatás
+description: Az NP sorozatú virtuális gépek igazolási szolgáltatása.
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 563155bb6559f8443f1453a65fa0b1574af106f7
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ab9c9c6b9d908e86912565ba43cec665432aeda5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556172"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389621"
 ---
-# <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-igazolás Azure NP-Series virtuális gépekhez (előzetes verzió)
+# <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-igazolás Azure-beli NP-Series virtuális gépekhez (előzetes verzió)
 
-A FPGA igazolási szolgáltatás a xilinx eszközkészlet által generált tervezési ellenőrzőpont-fájl ("netlist") sorozatát hajtja végre, és egy olyan fájlt hoz létre, amely tartalmazza az érvényesített képet (úgynevezett "Bitstream"), amely egy NP sorozatú virtuális gép xilinx U250 FPGA kártyára tölthető be.  
+Az FPGA igazolási szolgáltatás ellenőrzést végez az Xilinx eszközkészlet által létrehozott tervezési ellenőrzőpont-fájlon (más néven "netlist"), és létrehoz egy fájlt, amely tartalmazza az ellenőrzött rendszerképet (úgynevezett "bitstreamet"), amely betölthető az Np-sorozat virtuális gépének Xilinx U250 FPGA-kártyájára.  
 
 ## <a name="prerequisites"></a>Előfeltételek  
 
-Szüksége lesz egy Azure-előfizetésre és egy Azure Storage-fiókra. Az előfizetés hozzáférést biztosít az Azure-hoz, és a Storage-fiók az igazolási szolgáltatás netlist és kimeneti fájljainak tárolására szolgál.  
+Szüksége lesz egy Azure-előfizetésre és egy Azure Storage-fiókra. Az előfizetés hozzáférést biztosít az Azure-hoz, a tárfiók pedig az igazolási szolgáltatás netlist- és kimeneti fájljainak tárolására szolgál.  
 
-Az igazolási kérelmek elküldéséhez PowerShell-és bash-szkripteket biztosítunk.   A szkriptek az Azure CLI-t használják, amely Windows és Linux rendszeren is futtatható. A PowerShell Windows, Linux és macOS rendszeren is futtatható.  
+Az igazolási kérések elküldését PowerShell- és Bash-szkriptekkel biztosítjuk.   A szkriptek az Azure CLI-t használják, amely Windows és Linux rendszeren is futtatható. A PowerShell Windows, Linux és macOS rendszeren is futtatható.  
 
-Azure CLI letöltése (kötelező):  
+Azure CLI-letöltés (kötelező):  
 
 https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest  
 
-Windows, Linux és macOS rendszerhez készült PowerShell Letöltés (csak PowerShell-parancsfájlok esetén):  
+Windows, Linux és macOS rendszeren a PowerShell letöltése (csak PowerShell-parancsfájlok esetén):  
 
 https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7  
 
-Rendelkeznie kell a Bérlővel és az előfizetés-AZONOSÍTÓval, amely jogosult az igazolási szolgáltatásba való küldésre. Látogasson el https://aka.ms/AzureFPGAAttestationPreview a hozzáférés kéréséhez. 
+Az igazolási szolgáltatásba való küldéshez jogosult bérlő- és előfizetés-azonosítóval kell rendelkezik. Hozzáférés https://aka.ms/AzureFPGAAttestationPreview kérése a webhelyről. 
 
-## <a name="building-your-design-for-attestation"></a>Az igazolás kialakításának kialakítása  
+## <a name="building-your-design-for-attestation"></a>Az igazolási terv kialakítása  
 
-A Designs xilinx eszközkészlet a Vitis 2020,2. Az eszközkészlet korábbi verziójával létrehozott Netlist-fájlok, amelyek továbbra is kompatibilisek az 2020,2-mel, használhatók. Győződjön meg arról, hogy betöltötte a megfelelő rendszerhéjt a létrehozáshoz. A jelenleg támogatott verzió xilinx_u250_gen3x16_xdma_2_1_202010_1. A támogatási fájlok a xilinx Alveo Lounge-ból tölthetők le. 
+A tervezéshez az előnyben részesített Xilinx eszközkészlet a Vxin 2020.2. Az eszközkészlet korábbi verziójával létrehozott és a 2020.2-es verzióval továbbra is kompatibilis netlist fájlok használhatók. Győződjön meg arról, hogy a megfelelő rendszerhéjat telepítette a buildhez. A jelenleg támogatott verzió a xilinx_u250_gen3x16_xdma_2_1_202010_1. A támogatási fájlok az Xilinx Alveo-ból tölthetők le. 
 
-A következő argumentumot kell tartalmaznia a Vitis (v + + cmd vonal) számára egy olyan xclbin-fájl létrehozásához, amely netlist tartalmaz egy Bitstream helyett.   
+Ahhoz, hogy egy bitstream helyett netlistát tartalmazó xclbin-fájlt hoz létre, bele kell foglalnia a Vemet (v++ cmd line) argumentumát a következő argumentumba.   
 
 ```--advanced.param compiler.acceleratorBinaryContent=dcp  ```
 
 ## <a name="logging-into-azure"></a>Bejelentkezés az Azure-ba  
 
-Mielőtt bármilyen műveletet végezne az Azure-ban, be kell jelentkeznie az Azure-ba, és be kell állítania azt az előfizetést, amely a szolgáltatás meghívására van engedélyezve. Használja a ```az login``` és a ```az account set –s <Sub ID or Name>``` parancsokat erre a célra. A folyamatról további információt itt talál:  
+Mielőtt bármilyen műveletet hajt végre az Azure-ral, be kell jelentkeznie az Azure-ba, és be kell állítania azt az előfizetést, amely jogosult a szolgáltatás hívására. Erre a célra ```az login``` használja a és a ```az account set –s <Sub ID or Name>``` parancsot. A folyamattal kapcsolatos további információkat itt dokumentáljuk:  
 
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. A parancssorban használja a "Bejelentkezés interaktív módon" vagy a "bejelentkezés hitelesítő adatokkal" lehetőséget.  
+https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. Használja a "bejelentkezés interaktívan" vagy a "bejelentkezés hitelesítő adatokkal" lehetőséget a parancssorban.  
 
-## <a name="creating-a-storage-account-and-blob-container"></a>Storage-fiók és blob-tároló létrehozása  
+## <a name="creating-a-storage-account-and-blob-container"></a>Tárfiók és blobtároló létrehozása  
 
-A netlist-fájlt fel kell tölteni egy Azure Storage blob-tárolóba az igazolási szolgáltatáshoz való hozzáféréshez.  
+A netlist-fájlt fel kell tölteni egy Azure Storage-blobtárolóba, hogy hozzáférjen az igazolási szolgáltatáshoz.  
 
-A fiók létrehozásával, a tárolóval és a netlist a tárolóba való feltöltésével kapcsolatos további információkért tekintse meg a következő oldalt: https://docs.microsoft.com/azure/storage/blobs/storage-quickstartblobs-cli .  
+A fiók és a tároló létrehozásával és a netlist blobként való feltöltésével kapcsolatos további információkért tekintse meg ezt az oldalt: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli) .  
 
-Ehhez is használhatja a Azure Portal.  
+Ehhez a Azure Portal is használhatja.  
 
-## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>Töltse fel a netlist-fájlt az Azure Blob Storage-ba  
+## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>A netlist fájl feltöltése az Azure Blob Storage-ba  
 
-A fájl másolásának számos módja van; alább látható egy példa az az Storage upload parancsmag használatával. Az az parancsok Linux és Windows rendszeren is futnak. Kiválaszthatja a "blob" nevét, de ügyeljen rá, hogy megőrizze a xclbin-bővítményt. 
+A fájl másolásának több módja is van; Alább látható egy példa az az storage upload parancsmag használatával. Az az parancsok Linux és Windows rendszeren is futnak. A "blob" névhez bármilyen nevet választhat, de ügyeljen arra, hogy megtartsa az xclbin bővítményt. 
 
 ```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
-## <a name="download-the-attestation-scripts"></a>Az igazolási parancsfájlok letöltése  
+## <a name="download-the-attestation-scripts"></a>Az igazolási szkriptek letöltése  
 
-Az érvényesítési parancsfájlok a következő Azure Storage blob-tárolóból tölthetők le:  
+Az érvényesítési szkriptek a következő Azure Storage-blobtárolóból tölthetők le:  
 
 https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
 
-A zip-fájl két PowerShell-szkripttel rendelkezik, az egyiket be kell küldeni, a másikat pedig figyelni, míg a harmadik fájl egy bash-szkript, amely mindkét funkciót végrehajtja.  
+A zip-fájl két PowerShell-szkriptet tartalmaz: az egyiket el kell küldenünk, a másikat monitorba kell küldenünk, míg a harmadik egy bash-szkript, amely mindkét funkciót végrehajtja.  
 
-## <a name="running-the-attestation-scripts"></a>Az igazolási parancsfájlok futtatása  
+## <a name="running-the-attestation-scripts"></a>Az igazolási szkriptek futtatása  
 
-A parancsfájlok futtatásához meg kell adnia a Storage-fiók nevét, annak a blob-tárolónak a nevét, amelyben a netlist-fájlt tárolja, valamint a netlist fájl nevét. Emellett létre kell hoznia egy szolgáltatás-közös hozzáférési aláírást (SAS), amely írási/olvasási hozzáférést biztosít a tárolóhoz (nem a netlist). Az igazolási szolgáltatás ezt az SAS-t használja a netlist-fájl helyi másolatának elvégzéséhez, és az érvényesítési folyamat eredményül kapott kimeneti fájljainak a tárolóba való visszaírásához.  
+A szkriptek futtatásához meg kell adnia a tárfiók nevét, a netlist fájlt tároló blobtároló nevét és a netlist fájl nevét. Létre kell hoznia egy szolgáltatás közös hozzáférésű jogosultságát (SAS), amely olvasási/írási hozzáférést biztosít a tárolóhoz (nem a netlistához). Ezt az SAS-t az igazolási szolgáltatás arra használja, hogy helyi másolatot készítsen a netlist fájlról, és visszaírja az ellenőrzési folyamat eredményül kapott kimeneti fájljait a tárolóba.  
 
-A közös hozzáférésű aláírások áttekintését itt találja az itt elérhető Service SAS-vel kapcsolatos konkrét információkkal. A szolgáltatás SAS-lapja fontos figyelmeztetést tartalmaz a generált SAS védelméről.  Olvassa el figyelmesen, hogy tisztában kell lennie azzal, hogy meg kell őriznie az SAS által védett kártékony vagy nem rendeltetésszerű használatot.  
+A közös hozzáférésű jogosultságok aláírásának áttekintése itt érhető el, a szolgáltatási SAS-ről itt talál további információt. A Szolgáltatás SAS-oldala fontos figyelmeztetést tartalmaz a létrehozott SAS védelméről.  Olvassa el a figyelmeztetést, hogy megértse, miért kell megvédeni az SAS-t a kártékony vagy nem szándékos használattól.  
 
-Létrehozhat egy SAS-t a tárolóhoz az az Storage Container generált-sas parancsmag használatával. Olyan lejárati időt UTC formátumban kell megadni, amely legalább néhány órával korábbi a beküldési időpontnál. a körülbelül 6 óra értékének a megfelelőnél nagyobbnak kell lennie.  
+A tárolóhoz az az storage container generate-sas parancsmag használatával hozhat létre SAS-t. Adjon meg egy UTC formátumú lejárati időt, amely legalább néhány órával a beküldés előtt van; körülbelül 6 óra elegendőnek kell lennie.  
 
-Ha virtuális könyvtárakat szeretne használni, a tároló argumentumának részeként fel kell vennie a címtár-hierarchiát. Ha például rendelkezik egy "netlists" nevű tárolóval, és rendelkezik egy "image1" nevű virtuális könyvtárral, amely a netlist blobot tartalmazza, akkor a "netlists/image1" nevet kell megadnia a tároló neveként. Fűzze hozzá a további könyvtárak nevét a mélyebb hierarchia megadásához. 
+Ha virtuális könyvtárakat szeretne használni, a könyvtárhierarchiát is bele kell foglalnia a tároló argumentumába. Ha például van egy "netlists" nevű tárolója, és egy "image1" nevű virtuális könyvtára tartalmazza a netlist blobot, akkor a tároló neve "netlists/image1". Ha mélyebb hierarchiát ad meg, fűzheti hozzá a további könyvtárneveket. 
 
 ### <a name="powershell"></a>PowerShell   
 
@@ -92,19 +92,19 @@ Ha virtuális könyvtárakat szeretne használni, a tároló argumentumának ré
 
 ```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
 
-## <a name="checking-on-the-status-of-your-submission"></a>A beküldési állapot ellenőrzése  
+## <a name="checking-on-the-status-of-your-submission"></a>A beküldés állapotának ellenőrzése  
 
-Az igazolási szolgáltatás visszaadja a beküldésének előkészítési AZONOSÍTÓját. A beküldési parancsfájlok automatikusan megkezdik a Küldés figyelését a befejezéshez való lekérdezéssel. A bejelentési azonosító az elsődleges módszer, amellyel áttekintheti, hogy mi történt a beküldéssel, ezért kérjük, hogy ha probléma merül fel. A hivatkozási pontként az igazolás körülbelül 30 percet vesz igénybe egy kis netlist-fájl (300MB méretekben) teljesítése érdekében. egy 1,6 GB-os fájl egy órát vett igénybe. 
+Az igazolási szolgáltatás visszaadja a beküldés vezénylési azonosítóját. A beküldési szkriptek automatikusan elkezdik a beküldés monitorozását a lekérdezve a befejezésig. A vezénylési azonosító az elsődleges módszer arra, hogy áttekintsük, mi történt a beküldéskor, ezért kérjük, tartsa meg, ha problémája van. Referenciapontokként az igazolás egy kis netlist fájlnál körülbelül 30 percet vesz igénybe (300 MB méretű); egy 1,6 GB-os fájl egy óráig tartott. 
 
-A Monitor-Validation.ps1-szkriptet bármikor meghívhatja az igazolás állapotának és eredményének lekéréséhez, amely argumentumként megadja a koordinálási azonosítót:  
+A vezénylési Monitor-Validation.ps1 bármikor hívhatja az állapot és az igazolási eredmények lehívására, argumentumként megtéve a vezénylési azonosítót:  
 
 ```.\Monitor-Validation.ps1 -OrchestrationId < Orchestration ID>  ```
 
-Azt is megteheti, hogy HTTP POST-kérést küld az igazolási szolgáltatás végpontjának:  
+Másik lehetőségként http post kérést is küldhet az igazolási szolgáltatásvégpontnak:  
 
 https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus  
 
-A kérelem törzsének tartalmaznia kell az igazolási kérelemhez tartozó előfizetés-azonosítót, a bérlő AZONOSÍTÓját és az előkészítési AZONOSÍTÓját:  
+A kérelem törzsének tartalmaznia kell az előfizetés-azonosítót, a bérlőazonosítót és az igazolási kérelem vezénylési azonosítóját:  
 
 ```
 {  
@@ -118,11 +118,11 @@ A kérelem törzsének tartalmaznia kell az igazolási kérelemhez tartozó elő
 }
 ```
 
-## <a name="post-validation-steps"></a>Ellenőrzés utáni lépések
+## <a name="post-validation-steps"></a>Az ellenőrzés utáni lépések
 
-A szolgáltatás a kimenetét vissza fogja írni a tárolóba. Ha az érvényesítés sikeres, a tárolóban az eredeti netlist-fájl (ABC. xclbin), a Bitstream (ABC. bit. xclbin) fájl található, amely a tárolt Bitstream (ABC. Azure. xclbin) saját helyét azonosítja, valamint négy naplófájlt: egyet az indítási folyamathoz (abc-log.txt), egyet pedig az ellenőrzést végrehajtó három párhuzamos fázishoz. Ezek neve * logPhaseX.txt, ahol az X a fázishoz tartozó szám. Az Azure. xclbin a virtuális gépen van használatban, hogy jelezze az érvényesített rendszerkép feltöltését a U250. 
+A szolgáltatás visszaírja a kimenetét a tárolóba. Ha az érvényesítés sikeres, a tároló tartalmazni fogja az eredeti netlist fájlt (abc.xclbin), egy bitstreamet tartalmazó fájlt (abc.bit.xclbin), egy fájlt, amely azonosítja a tárolt bitstream privát helyét (abc.azure.xclbin) és négy naplófájlt: egyet az indítási folyamathoz (abc-log.txt), egyet pedig az ellenőrzést végző három párhuzamos fázishoz. Ezek neve *logPhaseX.txt ahol az X a fázis sorszáma. Az azure.xclbin a virtuális gépen az ellenőrzött rendszerkép U250-re való feltöltésének jelzésére szolgál. 
 
-Ha az érvényesítés nem sikerült, a rendszer egy error-*. txt fájlt ír, amely azt jelzi, hogy melyik lépés nem sikerült. A naplófájlokat is ellenőrizze, ha a hibanapló azt jelzi, hogy az igazolás sikertelen volt. Ha segítségre van szüksége a kapcsolatfelvételhez, ügyeljen arra, hogy a támogatási kérelem részeként tartalmazza az összes fájlt, valamint a koordinálási azonosítót.  
+Ha az érvényesítés sikertelen volt, a rendszer egy error-*.txt fájlt ír, amely jelzi, hogy melyik lépés volt sikertelen. Ellenőrizze a naplófájlokat is, ha a hibanapló azt jelzi, hogy az igazolás sikertelen volt. Ha támogatásért kapcsolatba lép velünk, mindenképpen adja meg ezeket a fájlokat a támogatási kérés részeként, valamint a vezénylési azonosítót.  
 
-A Azure Portal használatával létrehozhatja a tárolót, valamint feltöltheti a netlist, és letöltheti a Bitstream és a naplófájlokat. Az igazolási kérelem elküldése és a portálon keresztüli előrehaladás monitorozása jelenleg nem támogatott, és a fent leírtak szerint szkripteken keresztül kell végrehajtani. 
+A tárolót a Azure Portal használhatja, valamint feltöltheti a netlistát, valamint letöltheti a bitstream- és naplófájlokat. Az igazolási kérések elküldése és a folyamat előrehaladásának a portálon keresztüli monitorozása jelenleg nem támogatott, és a fent leírt szkriptekkel kell őket elérni. 
 

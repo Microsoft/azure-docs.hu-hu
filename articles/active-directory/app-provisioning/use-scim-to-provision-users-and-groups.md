@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – SCIM-végpont fejlesztése az Azure AD-ből származó alkalmazások felhasználói kiépítéséhez
-description: A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosítja a felhasználók automatikus kiépítési folyamatát. Ebből az oktatóanyagból megtudhatja, hogyan fejleszthet egy SCIM-végpontot, hogyan integrálhatja a SCIM API-t a Azure Active Directoryval, és megkezdheti a felhasználók és csoportok üzembe helyezését a felhőalapú alkalmazásokba.
+title: Oktatóanyag – SCIM-végpont fejlesztése felhasználókiépítéshez az Azure AD-ból származó alkalmazásokhoz
+description: System for Cross-domain Identity Management (SCIM) szabványosítja az automatikus felhasználóátépítést. Ebből az oktatóanyagból megtudhatja, hogyan fejleszthet SCIM-végpontot, hogyan integrálhatja az SCIM API-t az Azure Active Directory-val, és hogyan automatizálhatja a felhasználók és csoportok felhőalkalmazásba való kiépítését.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,82 +12,82 @@ ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305599"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498152"
 ---
-# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont kiépítésének fejlesztése és megtervezése
 
-Alkalmazás-fejlesztőként használhatja a tartományok közötti Identitáskezelés (SCIM) felhasználó-felügyeleti API-t, hogy lehetővé váljon a felhasználók és csoportok automatikus kiépítés az alkalmazás és az Azure AD (HRE) között. Ez a cikk bemutatja, hogyan hozhat létre egy SCIM-végpontot, és hogyan integrálható a HRE kiépítési szolgáltatásával. A SCIM-specifikáció általános felhasználói sémát biztosít az üzembe helyezéshez. Az olyan összevonási szabványokkal együtt, mint az SAML vagy az OpenID Connect, a SCIM teljes körű, szabványokon alapuló megoldást biztosít a rendszergazdáknak a hozzáférés-kezeléshez.
+Alkalmazásfejlesztőként a System for Cross-Domain Identity Management (SCIM) felhasználókezelési API-val engedélyezheti a felhasználók és csoportok automatikus építését az alkalmazás és az Azure AD (AAD) között. Ez a cikk az SCIM-végpontok felépítését és az AAD kiépítési szolgáltatásba való integrálását ismerteti. Az SCIM-specifikáció egy közös felhasználói sémát biztosít a kiépítéshez. Az OLYAN összevonási szabványokkal együtt használva, mint az SAML vagy OpenID Connect, az SCIM végpontok között szabványalapú megoldást biztosít a rendszergazdáknak a hozzáférés-kezeléshez.
 
-![Kiépítés az Azure AD-ből egy SCIM-val rendelkező alkalmazásba](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+![Kiépítés Az Azure AD-ból egy alkalmazásba SCIM használatával](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
-A SCIM a két végpont szabványosított definíciója: egy `/Users` végpont és egy `/Groups` végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az általános attribútumok, például a csoportnév, a Felhasználónév, az utónév, a vezetéknév és az e-mailek számára. A SCIM 2,0 REST API-t kínáló alkalmazások csökkenthetik vagy megszüntethetik a saját felhasználói felügyeleti API-k használatával végzett munkát. A megfelelő SCIM-ügyfelek például megtudhatják, hogyan hozhat létre egy JSON-objektum HTTP-BEJEGYZÉSét a `/Users` végpontra új felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-ra lenne szüksége ugyanahhoz az alapszintű műveletekhez, a SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a meglévő ügyfeleket, eszközöket és kódokat. 
+Az SCIM két végpont szabványosított definíciója: egy `/Users` végpont és egy `/Groups` végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az olyan általános attribútumok számára, mint a csoport neve, a felhasználónév, a vezetéknév, a vezetéknév és az e-mail-cím. Az SCIM 2.0-t REST API alkalmazások csökkenthetik vagy kiküszöbölik a saját fejlesztésű felhasználókezelési API-val való munka nehezét. Például bármely megfelelő SCIM-ügyfél tudja, hogyan hozhat létre egy JSON-objektum HTTP POST-üzenetét a végponton egy új `/Users` felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-t kellene használni ugyanazon alapszintű műveletekhez, az SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a már meglévő ügyfelek, eszközök és kódok előnyeit. 
 
-A SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) által meghatározott általános felhasználói objektum sémája és REST API-k lehetővé teszik az identitás-szolgáltatók és az alkalmazások könnyebb integrálását. Az SCIM-végpontot felépítő alkalmazás-fejlesztők az egyéni munka nélkül is integrálhatók bármely SCIM-kompatibilis ügyféllel.
+Az SCIM 2.0-ban (RFC [7642, 7643](https://tools.ietf.org/html/rfc7642), [7644)](https://tools.ietf.org/html/rfc7644)meghatározott felügyelethez használt szabványos felhasználói objektumsémák és REST API-k lehetővé teszik az identitásszolgáltatók és az alkalmazások közötti integrációt. [](https://tools.ietf.org/html/rfc7643) Az SCIM-végpontot buildelő alkalmazásfejlesztők egyéni munka nélkül integrálhatók bármilyen SCIM-kompatibilis ügyféllel.
 
-Az alkalmazások kiépítésének automatizálásához az Azure AD SCIM-ügyféllel kell létrehoznia és integrálnia egy SCIM-végpontot. A következő lépésekkel kezdheti meg a felhasználók és csoportok üzembe helyezését az alkalmazásba. 
+Az alkalmazáshoz való kiépítés automatizálásához SCIM-végpontot kell kiépítenünk és integrálni az Azure AD SCIM-ügyféllel. A következő lépésekkel kezdheti meg a felhasználók és csoportok üzembe lépéseit az alkalmazásban. 
     
-1. A felhasználói és a csoport sémájának megtervezése
+1. A felhasználói és csoportséma megtervezése
 
-   Azonosítsa az alkalmazás objektumait és attribútumait, amelyekkel meghatározhatja, hogy a HRE SCIM implementációja milyen módon támogatja a felhasználó és a csoport sémájának hozzárendelését.
+   Az alkalmazás objektumainak és attribútumainak azonosítása annak meghatározásához, hogy azok hogyan vannak leképezve az AAD SCIM-implementáció által támogatott felhasználói és csoportsémára.
 
-1. A HRE-SCIM implementációjának ismertetése
+1. Az AAD SCIM implementációja
 
-   Ismerje meg, hogyan valósítja meg a HRE SCIM-ügyfél a SCIM-protokoll kérelmének kezelését és válaszait.
+   Az SCIM-protokollkérések kezelésének és válaszait modellező AAD SCIM-ügyfél megvalósítása.
 
-1. SCIM-végpont létrehozása
+1. SCIM-végpont összeállítása
 
-   A HRE-létesítési szolgáltatással való integrációhoz a végpontnak SCIM 2,0-kompatibilisnek kell lennie. Lehetőség van arra, hogy a végpont létrehozásához használja a Microsoft Common Language Infrastructure (CLI) kódtárait és a kód mintáit. Ezek a minták kizárólag referenciára és tesztelésre szolgálnak; Javasoljuk, hogy az éles alkalmazásban függőségként használja őket.
+   A végpontnak SCIM 2.0-kompatibilisnek kell lennie az AAD kiépítési szolgáltatással való integrációhoz. A végpontot a Microsoft Közös nyelvi infrastruktúra (CLI) kódtárai és kódminái segítségével is létrehozhatja. Ezek a minták csak referenciaként és tesztelésre szolgálnak; Javasoljuk, hogy ne használja őket függőségként az éles alkalmazásban.
 
-1. A SCIM-végpont integrálása a HRE SCIM-ügyféllel 
+1. Az SCIM-végpont integrálása az AAD SCIM-ügyféllel 
 
-   Ha a szervezet harmadik féltől származó alkalmazást használ a HRE által támogatott SCIM-2,0-profil megvalósításához, gyorsan automatizálhatja a felhasználók és csoportok kiépítését és megszüntetését is.
+   Ha a szervezet egy külső alkalmazással valósítja meg az AAD által támogatott SCIM 2.0-profilt, gyorsan automatizálhatja a felhasználók és csoportok kiépítését és megszüntetést.
 
-1. Az alkalmazás közzététele a HRE alkalmazás-galériájában 
+1. Az alkalmazás közzététele az AAD-alkalmazásgyűjteményben 
 
-   Megkönnyíti az ügyfelek számára az alkalmazás felderítését és a kiépítés egyszerű konfigurálását. 
+   Az ügyfelek könnyedén felfedezhetik az alkalmazást, és könnyedén konfigurálják a kiépítést. 
 
-![A SCIM-végpont Azure AD-vel való integrálásának lépései](media/use-scim-to-provision-users-and-groups/process.png)
+![SCIM-végpont Azure AD-val való integrálásának lépései](media/use-scim-to-provision-users-and-groups/process.png)
 
-## <a name="design-your-user-and-group-schema"></a>A felhasználói és a csoport sémájának megtervezése
+## <a name="design-your-user-and-group-schema"></a>A felhasználói és csoportséma megtervezése
 
-Mindegyik alkalmazáshoz különböző attribútumok szükségesek egy felhasználó vagy csoport létrehozásához. Az alkalmazáshoz szükséges objektumok (felhasználók, csoportok) és attribútumok (név, felettes, beosztás stb.) azonosításával megkezdheti az integrációt. 
+Minden alkalmazás különböző attribútumokat igényel egy felhasználó vagy csoport létrehozásához. Kezdje az integrációt az alkalmazás számára szükséges objektumok (felhasználók, csoportok) és attribútumok (név, vezető, beosztás stb.) azonosításával. 
 
-A SCIM standard definiál egy sémát a felhasználók és csoportok kezeléséhez. 
+Az SCIM-szabvány meghatároz egy sémát a felhasználók és csoportok kezeléséhez. 
 
-Az **alapvető** felhasználói sémának csak három attribútumra van szüksége (az összes többi attribútum nem kötelező):
+Az **alapvető felhasználói** séma csak három attribútumot igényel (az összes többi attribútum megadása nem kötelező):
 
 - `id`, szolgáltató által definiált azonosító
-- `userName`, a felhasználó egyedi azonosítója (általában az Azure AD egyszerű felhasználónevéhez van leképezve)
-- `meta`, a szolgáltató által karbantartott *csak olvasható* metaadatok
+- `userName`, a felhasználó egyedi azonosítója (általában az Azure AD egyszerű felhasználónevére van leképezve)
+- `meta`, *a szolgáltató által* karbantartott írási metaadatok
 
-Az **alapszintű** felhasználói sémán kívül a scim standard a **vállalati** felhasználói bővítményt is definiálja egy olyan modellel, amely a felhasználói séma kiterjesztésére szolgál az alkalmazás igényeinek kielégítése érdekében. 
+Az alapvető felhasználói **séma** mellett az SCIM-szabvány egy vállalati felhasználói bővítményt is definiál, amely modellt tartalmaz a felhasználói séma az alkalmazás igényeinek megfelelő kibővítésére.  
 
-Ha például az alkalmazásnak a felhasználó e-mail-címét és a felhasználó felettesét is igényli, az **alapszintű** séma használatával Gyűjtse össze a felhasználó e-mail-címét és a **vállalati** felhasználói sémát a felhasználó felettesének összegyűjtéséhez.
+Ha például az alkalmazás egy felhasználó e-mail-címét és a  felhasználó felettesét is igényli,  az alapsémával gyűjtse össze a felhasználó e-mail-címét és a vállalati felhasználói sémát a felhasználó felettesének összegyűjtéséhez.
 
 A séma kialakításához kövesse az alábbi lépéseket:
 
-1. Sorolja fel az alkalmazás által igényelt attribútumokat, majd kategorizálja a hitelesítéshez szükséges attribútumokat (pl. loginName és e-mailek), a felhasználói életciklus kezeléséhez szükséges attribútumokat (pl. állapot/aktív), valamint az alkalmazás működéséhez szükséges összes egyéb attribútumot (például a kezelőt, a címkét).
+1. Sorolja fel az alkalmazás által megkövetelt attribútumokat, majd kategorizálja a hitelesítéshez szükséges attribútumokat (például loginName és e-mail), a felhasználói életciklus kezeléséhez szükséges attribútumokat (például állapot/aktív), és az alkalmazáshoz szükséges összes egyéb attribútumot (például kezelő, címke).
 
-1. Ellenőrizze, hogy az attribútumok már definiálva vannak-e az **alapszintű** felhasználói sémában vagy a **vállalati** felhasználói sémában. Ha nem, meg kell adnia egy bővítményt a felhasználói sémához, amely a hiányzó attribútumokat fedi le. A felhasználó üzembe helyezésének engedélyezéséhez lásd az alábbi példát `tag` .
+1. Ellenőrizze, hogy az attribútumok már meg vannak-e határozva az **alapvető** felhasználói sémában vagy a **vállalati** felhasználói sémában. Ha nem, meg kell határoznia egy bővítményt a felhasználói sémához, amely lefedi a hiányzó attribútumokat. Az alábbi példában láthat egy bővítményt a felhasználó számára, amely lehetővé teszi a felhasználó üzembe való `tag` építését.
 
-1. SCIM-attribútumok leképezése az Azure AD felhasználói attribútumaira. Ha a SCIM-végpontban definiált attribútumok egyike nem rendelkezik egyértelmű jogosultsággal az Azure AD felhasználói sémájában, akkor a bérlői rendszergazda a séma kibővítéséhez vagy egy kiterjesztés attribútumának megadásával adja meg a tulajdonságot az alább látható módon `tags` .
+1. Az SCIM-attribútumokat leképezi az Azure AD felhasználói attribútumaira. Ha az SCIM-végpontban meghatározott egyik attribútumnak nincs egyértelmű megfelelője az Azure AD felhasználói sémában, akkor a bérlői rendszergazdának az alább látható módon kell kiterjesztenie a sémáját, vagy bővítményattribútumot kell használnia a `tags` tulajdonsághoz.
 
-|Szükséges alkalmazás-attribútum|Leképezett SCIM attribútum|Leképezett Azure AD-attribútum|
+|Kötelező alkalmazásattribútum|Leképezett SCIM-attribútum|Leképezett Azure AD-attribútum|
 |--|--|--|
-|loginName|userName (Felhasználónév)|userPrincipalName|
+|loginName (bejelentkezési név)|userName (Felhasználónév)|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|name.familyName|Vezetéknév|
-|workMail|e-mailek [type EQ "work"]. Value|Mail|
+|munkahelyi e-mail-cím|emails[type eq "work"].value|Mail|
 |manager|manager|manager|
-|címke|urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtension: címke|extensionAttribute1|
-|status|active|isSoftDeleted (nem a felhasználó által tárolt számított érték)|
+|címke|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
+|status|active|isSoftDeleted (a számított érték nem a felhasználón van tárolva)|
 
-**A kötelező attribútumok listája**
+**Példa a szükséges attribútumok listájára**
 
 ```json
 {
@@ -117,160 +117,161 @@ A séma kialakításához kövesse az alábbi lépéseket:
    }
 }   
 ```
-**JSON-adattartalom által definiált példa séma**
+**JSON-adatforgalom által definiált példaséma**
 
 > [!NOTE]
 > Az alkalmazáshoz szükséges attribútumok mellett a JSON-ábrázolás a szükséges `id` , `externalId` és `meta` attribútumokat is tartalmazza.
 
-Segít kategorizálni az `/User` `/Group` Azure ad-ben található összes alapértelmezett felhasználói attribútumot az scim RFC-ben, és megtekintheti az [attribútumok az Azure ad és az scim-végpont között történő leképezésének módját](customize-application-attributes.md).
+Segít az Azure AD-ben található alapértelmezett felhasználói attribútumok SCIM RFC-hez való leképezésében és kategorizálásában. Tekintse meg, hogyan vannak leképezve az attribútumok az Azure AD és az `/User` `/Group` [SCIM-végpont között.](customize-application-attributes.md)
 
 
-| Azure Active Directory felhasználó | "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user" |
+| Azure Active Directory felhasználó | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
-| IsSoftDeleted |active |
-|Részleg|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|
+| IsSoftDeleted (Törölve) |active |
+|Részleg|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|
 | displayName |displayName |
-|Alkalmazottkód|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|
-| Facsimile-TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
+|employeeId (alkalmazottazonosító)|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|
+| Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |cím |
 | Levelezés |emails[type eq "work"].value |
-| mailNickname |externalId |
-| manager |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager |
+| mailNickname (mailNickname) |externalId |
+| manager |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager |
 | mobil |phoneNumbers[type eq "mobile"].value |
-| postalCode |címek [type EQ "work"]. irányítószám |
-| proxy – címek |e-mailek [type EQ "other"]. Érték |
-| fizikai kézbesítés – OfficeName |címek [type EQ "other"]. Formázott |
-| streetAddress |címek [type EQ "work"]. streetAddress |
+| postalCode |addresses[type eq "work"].postalCode |
+| proxycímek |emails[type eq "other"]. Érték |
+| physical-Delivery-OfficeName |addresses[type eq "other"]. Formázott |
+| streetAddress |addresses[type eq "work"].streetAddress |
 | surname |name.familyName |
 | telefonszám |phoneNumbers[type eq "work"].value |
-| felhasználó – egyszerű név |userName (Felhasználónév) |
+| user-PrincipalName |userName (Felhasználónév) |
 
-**A felhasználók és a csoportok attribútumainak listája**
+**Példa a felhasználói és csoportattribútumok listájára**
 
-| Azure Active Directory csoport | urn: IETF: params: scim: sémák: Core: 2.0: Group |
+| Azure Active Directory csoport | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
 | Levelezés |emails[type eq "work"].value |
 | mailNickname |displayName |
 | tagok |tagok |
 | objectId |externalId |
-| proxyAddresses |e-mailek [type EQ "other"]. Érték |
+| proxyAddresses |emails[type eq "other"]. Érték |
 
-**Példa a csoportok attribútumainak listájára**
+**Példa csoportattribútumok listájára**
 
 > [!NOTE]
-> A felhasználóknak és a csoportoknak, illetve az itt látható összes attribútumnak nem kell támogatnia, csak arra utal, hogy az Azure AD-beli attribútumok gyakran a SCIM protokoll tulajdonságaira vannak leképezve. 
+> Nem kell támogatnia a felhasználókat és a csoportokat, illetve az itt látható összes attribútumot sem. Ez csupán hivatkozás arra, hogy az Azure AD attribútumai gyakran hogyan vannak leképezve az SCIM protokoll tulajdonságaira. 
 
-A SCIM RFC-ben több végpont is definiálva van. Elkezdheti a `/User` végpontot, majd kibonthatja onnan. 
+Az SCIM RFC több végpontot is meghatároz. Kezdje a `/User` végponttal, majd bontsa ki onnan. 
 
 |Végpont|Leírás|
 |--|--|
-|/User|SZIFILISZ-műveletek végrehajtása felhasználói objektumon.|
-|/Group|SZIFILISZ-műveletek végrehajtása egy csoport objektumon.|
-|/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok különbözőek lehetnek. Az egyik szolgáltató például, `name` `title` , és `emails` , míg egy másik szolgáltató a, a és a szolgáltatást használja `name` `title` `phoneNumbers` . A sémák végpont lehetővé teszi a támogatott attribútumok felderítését.|
-|/Bulk|A tömeges műveletek lehetővé teszik, hogy az erőforrás-objektumok nagy gyűjteményében műveleteket hajtson végre egyetlen műveletben (például egy nagy csoport frissítési tagsága).|
-|/ServiceProviderConfig|A SCIM szabvány által támogatott funkciók részleteit tartalmazza, például a támogatott erőforrásokat és a hitelesítési módszert.|
-|/ResourceTypes|Az egyes erőforrásokra vonatkozó metaadatokat határozza meg.|
+|/User|CRUD-műveletek végrehajtása egy felhasználói objektumon.|
+|/Group (Csoport)|CRUD-műveletek végrehajtása csoportobjektumon.|
+|/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok eltérőek lehetnek. Az egyik szolgáltató a , a és a , míg egy másik `name` `title` szolgáltató , és `emails` `name` `title` `phoneNumbers` . A sémavégpont lehetővé teszi a támogatott attribútumok felderítését.|
+|/Bulk|A tömeges műveletek lehetővé teszik, hogy egyetlen műveletben hajtsa végre az erőforrás-objektumok nagy gyűjteményének műveleteit (például egy nagy csoport frissítési tagságát).|
+|/ServiceProviderConfig|Részletes információkat nyújt az SCIM-szabvány támogatott szolgáltatásairól, például a támogatott erőforrásokról és a hitelesítési módszerről.|
+|/ResourceTypes|Az egyes erőforrások metaadatait határozza meg.|
 
-**A végpontok példáinak listája**
+**Példa végpontok listájára**
 
 > [!NOTE]
-> Az `/Schemas` Egyéni attribútumok támogatásához használja a végpontot, vagy ha a séma gyakran változik, mivel lehetővé teszi, hogy az ügyfél automatikusan lekérje a legfrissebb sémát. `/Bulk`Csoportok támogatásához használja a végpontot.
+> Használja a végpontot az egyéni attribútumok támogatásához, vagy ha a séma gyakran változik, mivel lehetővé teszi az ügyfél számára a legfrissebb séma automatikus `/Schemas` lekérését. Csoportok `/Bulk` támogatásához használja a végpontot.
 
-## <a name="understand-the-aad-scim-implementation"></a>A HRE-SCIM implementációjának ismertetése
+## <a name="understand-the-aad-scim-implementation"></a>Az AAD SCIM implementációja
 
-A SCIM 2,0 felhasználói Management API támogatásához ez a szakasz ismerteti a HRE SCIM-ügyfél megvalósításának módját, és bemutatja, hogyan modellezheti a SCIM protokoll kérelmek kezelését és válaszait.
+Az SCIM 2.0 felhasználókezelési API-k támogatásához ez a szakasz az AAD SCIM-ügyfél használatát ismerteti, és bemutatja, hogyan modellzhető az SCIM protokoll által nyújtott kérések kezelése és válaszai.
 
 > [!IMPORTANT]
-> Az Azure AD-SCIM implementációjának viselkedését legutóbb 2018. december 18-án frissítették. További információ a változásokról: [SCIM 2,0 protokoll megfelelősége az Azure ad felhasználói kiépítési szolgáltatáshoz](application-provisioning-config-problem-scim-compatibility.md).
+> Az Azure AD SCIM-implementáció viselkedése utoljára 2018. december 18-án frissült. A változásokkal kapcsolatos információkért lásd: Az Azure AD User [Provisioning Service SCIM 2.0](application-provisioning-config-problem-scim-compatibility.md)protokollnak való megfelelősége.
 
-Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specification)keretében az alkalmazásnak támogatnia kell a következő követelményeket:
+Az [SCIM 2.0 protokoll specifikáción](http://www.simplecloud.info/#Specification)belül az alkalmazásnak támogatnia kell a következő követelményeket:
 
-|Követelmény|Hivatkozási megjegyzések (SCIM protokoll)|
+|Követelmény|Referencia megjegyzések (SCIM protokoll)|
 |-|-|
-|Felhasználók létrehozása és opcionálisan csoportok is|[3,3. szakasz](https://tools.ietf.org/html/rfc7644#section-3.3)|
-|Felhasználók vagy csoportok módosítása a javítási kérelmekkel|[3.5.2. szakasz](https://tools.ietf.org/html/rfc7644#section-3.5.2). A támogatása biztosítja, hogy a csoportok és a felhasználók a megfelelő módon legyenek kiépítve.|
-|Korábban létrehozott felhasználó vagy csoport ismert erőforrásának beolvasása|[3.4.1. szakasz](https://tools.ietf.org/html/rfc7644#section-3.4.1)|
-|Felhasználók vagy csoportok lekérdezése|[3.4.2. szakasz](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Alapértelmezés szerint a felhasználók lekérik a és a által `id` lekérdezett `username` felhasználókat `externalId` , és a csoportokat a által kérdezik le `displayName` .|
-|Felhasználó lekérdezése azonosító alapján és kezelő szerint|3.4.2. szakasz|
-|Lekérdezési csoportok azonosító és tag szerint|3.4.2. szakasz|
-|A Filter [excludedAttributes = tag](#get-group) a csoport erőforrásának lekérdezésekor|szakasz 3.4.2.5|
-|Fogadjon el egyetlen tulajdonosi jogkivonatot a hitelesítéshez és a HRE engedélyezéséhez az alkalmazáshoz.||
-|Felhasználó törlése `active=false` és a felhasználó visszaállítása `active=true`|A felhasználói objektumot egy kérelemben kell visszaadnia, függetlenül attól, hogy a felhasználó aktív-e. Az egyetlen alkalommal, amikor a felhasználót nem lehet visszaadni, ha az alkalmazásból nehezen törlődik.|
-|A/schemas-végpont támogatása|[7. szakasz](https://tools.ietf.org/html/rfc7643#page-30) A rendszer a séma-felderítési végpontot használja a további attribútumok felderítésére.|
+|Felhasználók és opcionális csoportok létrehozása|[3.3-as szakasz](https://tools.ietf.org/html/rfc7644#section-3.3)|
+|Felhasználók vagy csoportok módosítása PATCH-kérésekkel|[3.5.2. szakasz.](https://tools.ietf.org/html/rfc7644#section-3.5.2) A támogatás biztosítja, hogy a csoportok és a felhasználók megfelelő módon legyen kiépítve.|
+|Korábban létrehozott felhasználó vagy csoport ismert erőforrásának lekérése|[3.4.1 szakasz](https://tools.ietf.org/html/rfc7644#section-3.4.1)|
+|Felhasználók vagy csoportok lekérdezése|[3.4.2. szakasz.](https://tools.ietf.org/html/rfc7644#section-3.4.2)  Alapértelmezés szerint a és a lekéri a felhasználókat, és lekérdezi őket, a csoportokat pedig `id` `username` a `externalId` `displayName` lekérdezése.|
+|Felhasználó lekérdezése azonosító és felettes szerint|3.4.2-es szakasz|
+|Csoportok lekérdezése azonosító és tag szerint|3.4.2-es szakasz|
+|A [excludedAttributes=members szűrő](#get-group) a csoporterőforrás lekérdezésekor|3.4.2.5 szakasz|
+|Az AAD hitelesítéséhez és az alkalmazáshoz való hitelesítéséhez fogadja el a megfelelő jogkivonatot.||
+|Felhasználó helyreállított törlése és `active=false` a felhasználó visszaállítása `active=true`|A felhasználói objektumot egy kérésben kell visszaadni, függetlenül attól, hogy a felhasználó aktív-e. A felhasználót csak akkor ne szabad visszaadni, ha az alkalmazásból nehéz törölni.|
+|A /Schemas végpont támogatása|[7. szakasz](https://tools.ietf.org/html/rfc7643#page-30) A rendszer a sémafelderítési végpont használatával további attribútumokat derít fel.|
 
-Az általános irányelvek használatával SCIM-végpontok implementálása biztosítja a HRE való kompatibilitást:
+SciM-végpontok megvalósításakor használja az általános irányelveket az AAD-kompatibilitás biztosításához:
 
-* `id` az összes erőforráshoz kötelező tulajdonság. Minden erőforrást visszaadó válasznak biztosítania kell, hogy minden erőforrás rendelkezik ezzel a tulajdonsággal, kivéve a `ListResponse` nulla taggal.
-* A lekérdezési/szűrési kérelemre adott válasznak mindig a következőnek kell lennie: `ListResponse` .
-* A csoportok nem kötelezőek, de csak akkor támogatottak, ha a SCIM implementációja támogatja a **javítási** kérelmeket.
-* A **javítás** válaszában nem szükséges a teljes erőforrás belefoglalása.
-* A Microsoft HRE csak a következő operátorokat használja: `eq` , `and`
-* Nincs szükség a kis-és nagybetűk megkülönböztetésére a SCIM szerkezeti elemein, különösen a **javítás** `op` műveleti értékein a [3.5.2. szakaszban](https://tools.ietf.org/html/rfc7644#section-3.5.2)meghatározottak szerint. A HRE a `op` **Hozzáadás**, a **Csere** és az **Eltávolítás** értékeit bocsátja ki.
-* A Microsoft HRE egy véletlenszerűen kiválasztott felhasználó és csoport beolvasását kéri a végpont és a hitelesítő adatok érvényességének biztosításához. Emellett a [Azure Portal](https://portal.azure.com) **tesztelési kapcsolati** folyamatának részeként is megtörténik. 
-* Azt az attribútumot, amely alapján az erőforrásokat le lehet kérdezni, a [Azure Portalban](https://portal.azure.com)található alkalmazásban egyező attribútumként kell beállítani, lásd: a [felhasználó kiépítési attribútum-hozzárendelésének testreszabása](customize-application-attributes.md).
-* HTTPS-támogatás a SCIM-végponton
-* [Séma felderítése](#schema-discovery)
-  * A séma-felderítés jelenleg nem támogatott az egyéni alkalmazáson, de bizonyos katalógus-alkalmazásokban van használatban. A későbbiekben a rendszer a séma felderítését fogja használni elsődleges módszerként, hogy további attribútumokat adjon hozzá egy összekötőhöz. 
-  * Ha nincs megadva érték, ne küldjön null értékeket.
-  * A tulajdonság értékének a Camel tokozásának kell lennie (pl. readWrite).
-  * Egy lista választ kell visszaadnia.
+* `id` A minden erőforráshoz kötelező tulajdonság. Minden erőforrást visszaküldő válasznak biztosítania kell, hogy minden erőforrás rendelkezik ezzel a tulajdonsággal, kivéve `ListResponse` a nulla taggal.
+* A lekérdezési/szűrőkérésre adott válasznak mindig egynek kell `ListResponse` lennie.
+* A csoportok nem kötelezőek, de csak  akkor támogatottak, ha az SCIM-implementáció támogatja a PATCH-kéréseket.
+* A PATCH-válaszban nem szükséges a teljes **erőforrást is** szerepeltetni.
+* A Microsoft AAD csak a következő operátorokat használja: `eq` , `and`
+* Ne igényelj megkülönbözteti a kis- és nagybetűket az SCIM szerkezeti elemein, különösen a **PATCH** műveleti értékeken `op` a [3.5.2 szakaszban meghatározottak szerint.](https://tools.ietf.org/html/rfc7644#section-3.5.2) Az AAD a következő értékeket bocsátja `op` ki: Add ( **Hozzáadás)**, **Replace (Csere)** és **Remove (Eltávolítás).**
+* A Microsoft AAD egy véletlenszerű felhasználó és csoport lekérését kéri le, hogy a végpont és a hitelesítő adatok érvényesek-e. Ez a Kapcsolat tesztelése folyamat  részeként is meg [Azure Portal.](https://portal.azure.com) 
+* Az erőforrások lekérdezhető attribútumát megfelelő attribútumként kell beállítani a Azure Portal alkalmazásban, lásd: A felhasználóátépítési [attribútumleképezések](https://portal.azure.com) [testreszabása.](customize-application-attributes.md)
+* A jogosultságok attribútum nem támogatott.
+* HTTPS támogatása az SCIM-végponton.
+* [Sémafelderítés](#schema-discovery)
+  * Az egyéni alkalmazás jelenleg nem támogatja a sémafelderítést, de bizonyos katalógusalkalmazások használják. A 2012-hez kapcsolódó további attribútumok összekötőkhöz való hozzáadásának elsődleges módszere a sémafelderítés lesz. 
+  * Ha nincs érték, ne küldjön null értékeket.
+  * A tulajdonságértékeket kis- és kis-, illetve kis- és nagy karakterekkel kell összeírni (például readWrite).
+  * Listaválaszt kell visszaadni.
   
-### <a name="user-provisioning-and-deprovisioning"></a>Felhasználók kiépítése és megszüntetése
+### <a name="user-provisioning-and-deprovisioning"></a>Felhasználóátépítés és -megszüntetés
 
-A következő ábra azokat az üzeneteket mutatja be, amelyeket a HRE küld egy SCIM szolgáltatásnak az alkalmazás identitás-tárolójában lévő felhasználó életciklusának kezeléséhez.  
+Az alábbi ábra azokat az üzeneteket mutatja be, amelyek az AAD-nek az SCIM-szolgáltatásnak küldve kezelik a felhasználók életciklusát az alkalmazás identitástárolójában.  
 
-![A felhasználó kiépítési és megszüntetési sorrendjének megjelenítése](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
-*A felhasználó kiépítése és megszüntetése*
+![Megjeleníti a felhasználóátépítési és -megszüntetés sorrendjét](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+*Felhasználóátépítési és -megszüntetés sorrendje*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>Csoport kiépítése és megszüntetése
 
-A csoport kiépítése és megszüntetése nem kötelező. A implementált és a engedélyezést követően a következő ábra azokat az üzeneteket mutatja be, amelyeket a HRE küld egy SCIM szolgáltatásnak egy csoport életciklusának kezeléséhez az alkalmazás identitás-tárolójában. Ezek az üzenetek két módon különböznek a felhasználók üzeneteitől:
+A csoport kiépítése és megszüntetése nem kötelező. Az alábbi ábrán az AAD által az SCIM-szolgáltatásnak küldött üzenetek láthatóak az alkalmazás identitástárolójában lévő csoportok életciklusának kezeléséhez. Ezek az üzenetek kétféleképpen különböznek a felhasználókkal kapcsolatos üzenetektől:
 
-* A csoportok beolvasására irányuló kérések azt határozzák meg, hogy a tagok attribútumot ki kell zárni a kérelemre válaszként megadott összes erőforrásból.  
-* Azon kérések, amelyek alapján megállapítható, hogy egy hivatkozási attribútumnak van-e bizonyos értéke a Members attribútummal kapcsolatos kérelmek.  
+* A csoportok lekérésének kérése határozza meg, hogy a members attribútumot ki kell zárni a kérésre adott bármely erőforrásból.  
+* A tagok attribútummal kapcsolatos kérések, amelyek azt határozzák meg, hogy egy referenciaattribútum rendelkezik-e bizonyos értékkel.  
 
-![Megjeleníti a csoport kiépítésének és megszüntetésének folyamatát.](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
-*Csoport kiépítése és megszüntetési folyamata*
+![A csoportátépítési és -megszüntetés sorrendjének mutatása](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+*Csoport kiépítési és megszüntetés sorozata*
 
-### <a name="scim-protocol-requests-and-responses"></a>SCIM és válaszok
-Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-kérelmekre, és példaként szolgál a várt válaszokra. A legjobb eredmény érdekében az alkalmazásnak az ilyen formátumú kérelmek kezelésére és a várt válaszokat kell kibocsátania.
+### <a name="scim-protocol-requests-and-responses"></a>SCIM-protokollkérések és -válaszok
+Ez a szakasz példa az AAD SCIM-ügyfél által kibocsátott SCIM-kérésekre, valamint a várt válaszokra. A legjobb eredmény érdekében úgy kódolja az alkalmazást, hogy ilyen formátumban kezelje ezeket a kéréseket, és a várt válaszokat bocsátja ki.
 
 > [!IMPORTANT]
-> Ha szeretné megtudni, hogyan és mikor bocsátja ki a HRE-felhasználó kiépítési szolgáltatásának az alább ismertetett műveleteket, tekintse meg a kiépítési [ciklusok: kezdeti és növekményes](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) műveletek a [kiépítés](how-provisioning-works.md)című szakaszt.
+> Annak végrehajtásához, hogy az AAD-felhasználóátépítési szolgáltatás hogyan és mikor bocsátja ki az alább leírt műveleteket, tekintse meg a Kiépítési [ciklusok:](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) Kezdeti és növekményes szakaszt a [Kiépítés működése](how-provisioning-works.md)című szakaszban.
 
 [Felhasználói műveletek](#user-operations)
-  - [Felhasználó létrehozása](#create-user) ([kérelemre](#request)  /  [adott válasz](#response))
-  - [Felhasználó beolvasása](#get-user) ([kérelem](#request-1)  /  [válasza](#response-1))
-  - [Felhasználó lekérdezésének beolvasása](#get-user-by-query) (válasz[kérése](#request-2)  /  [](#response-2))
-  - [Felhasználó lekérése lekérdezéssel – nulla eredmények](#get-user-by-query---zero-results) ([kérelem](#request-3)  /  [válasza](#response-3))
-  - [Felhasználó frissítése [többértékű tulajdonságok]](#update-user-multi-valued-properties) ([kérelem](#request-4)  /  [válasza](#response-4))
-  - [Felhasználó frissítése [egyértékű tulajdonságok]](#update-user-single-valued-properties) ([kérelem](#request-5)  /  [válasza](#response-5)) 
-  - [Felhasználó letiltása](#disable-user) ([Válasz kérése](#request-14)  /  [](#response-14))
-  - [Felhasználó törlése](#delete-user) ([kérelem](#request-6)  /  [válasza](#response-6))
+  - [Felhasználó létrehozása](#create-user) ([Kérésre adott](#request)  /  [válasz](#response))
+  - [Felhasználó lekérése](#get-user) ([](#request-1)  /  [Kérésre adott válasz](#response-1))
+  - [Felhasználó lekérése lekérdezés alapján](#get-user-by-query) ([Kérésre adott](#request-2)  /  [válasz](#response-2))
+  - [Felhasználó lekérése lekérdezés alapján – Nulla eredmény](#get-user-by-query---zero-results) ([Kérésre adott](#request-3)  /  [válasz](#response-3))
+  - [Felhasználó frissítése [Többértékű tulajdonságok]](#update-user-multi-valued-properties) ([Kérésre adott](#request-4)  /  [válasz](#response-4))
+  - [Felhasználó frissítése [Egyértékes tulajdonságok]](#update-user-single-valued-properties) ([Kérésre adott](#request-5)  /  [válasz](#response-5)) 
+  - [Felhasználó letiltása](#disable-user) ([](#request-14)  /  [Kérésre adott válasz](#response-14))
+  - [Felhasználó törlése](#delete-user) ([](#request-6)  /  [Kérésre adott válasz](#response-6))
 
-[Csoportosítási műveletek](#group-operations)
-  - [Csoport létrehozása](#create-group) ([Válasz kérése](#request-7)  /  [](#response-7))
-  - [Csoport beolvasása](#get-group) (válasz[kérése](#request-8)  /  [](#response-8))
-  - [Csoport beolvasása DisplayName alapján](#get-group-by-displayname) ([kérelem](#request-9)  /  [válasza](#response-9))
-  - [Csoport frissítése [nem tag attribútumok]](#update-group-non-member-attributes) (válasz[kérése](#request-10)  /  [](#response-10))
-  - [Frissítési csoport [Tagok hozzáadása]](#update-group-add-members) ([kérelem](#request-11)  /  [válasza](#response-11))
-  - [Csoport frissítése [tagok eltávolítása]](#update-group-remove-members) ([kérelem](#request-12)  /  [válasza](#response-12))
-  - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /  [](#response-13))
+[Csoportműveletek](#group-operations)
+  - [Csoport létrehozása](#create-group) ([Kérésre adott](#request-7)  /  [válasz](#response-7))
+  - [Csoport lekérése](#get-group) ([](#request-8)  /  [Kérésre adott válasz](#response-8))
+  - [Csoport lekérése displayName](#get-group-by-displayname) [(kérésre adott](#request-9)  /  [válasz)](#response-9)alapján
+  - [Csoport frissítése [Nem tag attribútumok]](#update-group-non-member-attributes) ([Kérésre adott](#request-10)  /  [válasz](#response-10))
+  - [Csoport frissítése [Tagok hozzáadása]](#update-group-add-members) ([Kérésre adott](#request-11)  /  [válasz](#response-11))
+  - [Csoport frissítése [Tagok eltávolítása]](#update-group-remove-members) ([Kérésre adott](#request-12)  /  [válasz](#response-12))
+  - [Csoport törlése](#delete-group) ([Kérésre adott](#request-13)  /  [válasz](#response-13))
 
-[Séma felderítése](#schema-discovery)
-  - [Séma felderítése](#discover-schema) (válasz[kérése](#request-15)  /  [](#response-15))
+[Sémafelderítés](#schema-discovery)
+  - [Séma felderítése](#discover-schema) ([](#request-15)  /  [Kérésre adott válasz](#response-15))
 
 ### <a name="user-operations"></a>Felhasználói műveletek
 
-* A felhasználókat lekérdezéssel `userName` vagy attribútumokkal lehet lekérdezni `email[type eq "work"]` .  
+* A felhasználók lekérdezhetőek vagy `userName` `email[type eq "work"]` attribútumokkal.  
 
 #### <a name="create-user"></a>Felhasználó létrehozása
 
 ##### <a name="request"></a>Kérés
 
-*/Users közzététele*
+*POST /Users*
 ```json
 {
     "schemas": [
@@ -327,9 +328,9 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 #### <a name="get-user"></a>Felhasználó beolvasása
 
 ###### <a name="request"></a><a name="request-1"></a>Kérés
-*/Users/5d48a0a8e9f04aa38008 beolvasása* 
+*GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response-user-found"></a><a name="response-1"></a>Válasz (felhasználó található)
+###### <a name="response-user-found"></a><a name="response-1"></a>Válasz (a felhasználó megtalálta)
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -357,9 +358,9 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 ```
 
 ###### <a name="request"></a>Kérés
-*/Users/5171a35d82074e068ce2 beolvasása* 
+*GET /Users/5171a35d82074e068ce2* 
 
-###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Válasz (a felhasználó nem található. Vegye figyelembe, hogy a részletek nem szükségesek, csak az állapot.)
+###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Válasz (a felhasználó nem található. Vegye figyelembe, hogy a részletekre nincs szükség, csak az állapotra.)
 
 ```json
 {
@@ -371,11 +372,11 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="get-user-by-query"></a>Felhasználó lekérése lekérdezés alapján
+#### <a name="get-user-by-query"></a>Felhasználó lekérdezve lekérdezés alapján
 
 ##### <a name="request"></a><a name="request-2"></a>Kérés
 
-*/Users beolvasása? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
+*GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response"></a><a name="response-2"></a>Reagálás
 
@@ -411,11 +412,11 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="get-user-by-query---zero-results"></a>Felhasználó lekérése lekérdezéssel – nulla eredmények
+#### <a name="get-user-by-query---zero-results"></a>Felhasználó lekérdezése lekérdezés alapján – Nulla eredmény
 
 ##### <a name="request"></a><a name="request-3"></a>Kérés
 
-*/Users beolvasása? Filter = userName EQ "nem létező felhasználó"*
+*GET /Users?filter=userName eq "non-existent user"*
 
 ##### <a name="response"></a><a name="response-3"></a>Reagálás
 
@@ -430,11 +431,11 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="update-user-multi-valued-properties"></a>Felhasználó frissítése [többszörös értékű tulajdonságok]
+#### <a name="update-user-multi-valued-properties"></a>Felhasználó frissítése [Többértékű tulajdonságok]
 
 ##### <a name="request"></a><a name="request-4"></a>Kérés
 
-*PATCH/Users/6764549bef60420686bc HTTP/1.1*
+*PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -481,11 +482,11 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="update-user-single-valued-properties"></a>Felhasználó frissítése [egyértékű tulajdonságok]
+#### <a name="update-user-single-valued-properties"></a>Felhasználó frissítése [Egyértékes tulajdonságok]
 
 ##### <a name="request"></a><a name="request-5"></a>Kérés
 
-*PATCH/Users/5171a35d82074e068ce2 HTTP/1.1*
+*PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -530,7 +531,7 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="request"></a><a name="request-14"></a>Kérés
 
-*PATCH/Users/5171a35d82074e068ce2 HTTP/1.1*
+*PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
     "Operations": [
@@ -584,24 +585,24 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="request"></a><a name="request-6"></a>Kérés
 
-*/Users/5171a35d82074e068ce2 törlése HTTP/1.1*
+*DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-6"></a>Reagálás
 
-*HTTP/1.1 204 nincs tartalom*
+*HTTP/1.1 204 Nincs tartalom*
 
-### <a name="group-operations"></a>Csoportosítási műveletek
+### <a name="group-operations"></a>Csoportműveletek
 
 * A csoportokat mindig üres tagok listájával kell létrehozni.
-* A csoportokat az attribútum kérdezheti le `displayName` .
-* Ha frissíteni szeretne a csoport-javítási kérelemre, egy *HTTP 204* -es verzióra van szükség a válaszban. Ha egy törzset ad vissza, az összes tag listája nem ajánlott.
-* Nem szükséges a csoport összes tagjának visszaküldését támogatni.
+* A csoportok a attribútum alapján `displayName` kérdezhetőek le.
+* A csoportos PATCH-kérés frissítése http *204 No Content (HTTP 204 Nincs tartalom)* választ eredményez. A törzs visszaadása az összes tag listájával nem ajánlott.
+* Nem szükséges támogatni a csoport összes tagjának visszaküldését.
 
 #### <a name="create-group"></a>Csoport létrehozása
 
 ##### <a name="request"></a><a name="request-7"></a>Kérés
 
-*/Groups közzététele HTTP/1.1*
+*POST /Groups HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
@@ -636,7 +637,7 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="request"></a><a name="request-8"></a>Kérés
 
-*/Groups/40734ae655284ad3abcc beolvasása? excludedAttributes = tagok HTTP/1.1*
+*GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-8"></a>Reagálás
 *HTTP/1.1 200 OK*
@@ -654,10 +655,10 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="get-group-by-displayname"></a>Csoport beolvasása displayName alapján
+#### <a name="get-group-by-displayname"></a>Csoport lekérte a displayName alapján
 
 ##### <a name="request"></a><a name="request-9"></a>Kérés
-*/Groups beolvasása? excludedAttributes = tagok&Filter = displayName EQ "displayName" HTTP/1.1*
+*GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Reagálás
 
@@ -683,11 +684,11 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 }
 ```
 
-#### <a name="update-group-non-member-attributes"></a>Csoport frissítése [nem tag attribútumok]
+#### <a name="update-group-non-member-attributes"></a>Csoport frissítése [Nem tag attribútumok]
 
 ##### <a name="request"></a><a name="request-10"></a>Kérés
 
-*PATCH/groups/fa2ce26709934589afc5 HTTP/1.1*
+*PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -701,13 +702,13 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="response"></a><a name="response-10"></a>Reagálás
 
-*HTTP/1.1 204 nincs tartalom*
+*HTTP/1.1 204 Nincs tartalom*
 
 ### <a name="update-group-add-members"></a>Csoport frissítése [Tagok hozzáadása]
 
 ##### <a name="request"></a><a name="request-11"></a>Kérés
 
-*PATCH/groups/a99962b9f99d4c4fac67 HTTP/1.1*
+*PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -724,13 +725,13 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="response"></a><a name="response-11"></a>Reagálás
 
-*HTTP/1.1 204 nincs tartalom*
+*HTTP/1.1 204 Nincs tartalom*
 
-#### <a name="update-group-remove-members"></a>Csoport frissítése [tagok eltávolítása]
+#### <a name="update-group-remove-members"></a>Csoport frissítése [Tagok eltávolítása]
 
 ##### <a name="request"></a><a name="request-12"></a>Kérés
 
-*PATCH/groups/a99962b9f99d4c4fac67 HTTP/1.1*
+*PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -747,23 +748,23 @@ Ez a szakasz példákat tartalmaz a HRE SCIM-ügyfél által kibocsátott SCIM-k
 
 ##### <a name="response"></a><a name="response-12"></a>Reagálás
 
-*HTTP/1.1 204 nincs tartalom*
+*HTTP/1.1 204 Nincs tartalom*
 
 #### <a name="delete-group"></a>Csoport törlése
 
 ##### <a name="request"></a><a name="request-13"></a>Kérés
 
-*/Groups/cdb1ce18f65944079d37 törlése HTTP/1.1*
+*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-13"></a>Reagálás
 
-*HTTP/1.1 204 nincs tartalom*
+*HTTP/1.1 204 Nincs tartalom*
 
-### <a name="schema-discovery"></a>Séma felderítése
+### <a name="schema-discovery"></a>Sémafelderítés
 #### <a name="discover-schema"></a>Séma felderítése
 
 ##### <a name="request"></a><a name="request-15"></a>Kérés
-*/Schemas beolvasása* 
+*GET /Schemas* 
 ##### <a name="response"></a><a name="response-15"></a>Reagálás
 *HTTP/1.1 200 OK*
 ```json
@@ -859,21 +860,21 @@ organization.",
 ```
 
 ### <a name="security-requirements"></a>Biztonsági követelmények
-**TLS protokoll verziói**
+**TLS protokollverziók**
 
-Az egyetlen elfogadható TLS protokoll-verzió a TLS 1,2 és a TLS 1,3. A TLS más verziói nem engedélyezettek. Nem engedélyezett az SSL verziója. 
-- Az RSA-kulcsoknak legalább 2 048 bitenek kell lenniük.
-- Az ECC-kulcsoknak legalább 256 bitenek kell lenniük, jóváhagyott elliptikus görbe használatával létrehozva
+Az egyetlen elfogadható TLS-protokollverzió a TLS 1.2 és a TLS 1.3. A TLS más verziói nem engedélyezettek. Az SSL egyik verziója sem engedélyezett. 
+- Az RSA-kulcsoknak legalább 2048 bitesnek kell lennie.
+- Az ECC-kulcsoknak legalább 256 bitesnek kell lennie, és egy jóváhagyott három ponttal kell generálni
 
-**Kulcs hossza**
+**Kulcshosszok**
 
-Az összes szolgáltatásnak a megfelelő hosszúságú titkosítási kulcsok használatával generált X. 509 tanúsítványokat kell használnia, ami azt jelenti, hogy:
+Minden szolgáltatásnak megfelelő hosszúságú titkosítási kulcsokkal létrehozott X.509-tanúsítványokat kell használnia, ami a következőt jelenti:
 
 **Titkosítási csomagok**
 
-Minden szolgáltatást úgy kell konfigurálni, hogy a következő titkosítási csomagokat használja az alább megadott sorrendben. Vegye figyelembe, hogy ha csak RSA-tanúsítvánnyal rendelkezik, akkor a ECDSA titkosítási csomagok nem lépnek érvénybe. </br>
+Minden szolgáltatást úgy kell konfigurálni, hogy az alábbi titkosítási csomagokat használja az alább megadott sorrendben. Vegye figyelembe, hogy ha csak RSA-tanúsítvánnyal rendelkezik, a telepített ECDSA-titkosítási csomagoknak nincs hatása. </br>
 
-TLS 1,2 titkosítási csomagok minimális sávja:
+TLS 1.2 titkosítási csomagok minimális sávja:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -884,27 +885,27 @@ TLS 1,2 titkosítási csomagok minimális sávja:
 - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
-### <a name="ip-ranges"></a>IP-címtartományok
-Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)felsorolt AzureActiveDirectory IP-címtartományok alatt működik. A AzureActiveDirectory címke alatt felsorolt IP-címtartományok hozzáadásával engedélyezheti az Azure AD kiépítési szolgáltatásból érkező adatforgalmat az alkalmazásba. Vegye figyelembe, hogy a számított címek esetében alaposan át kell tekintenie az IP-címtartomány listáját. A "40.126.25.32" címet az IP-címtartomány listában "40.126.0.0/18"-ként lehet megjeleníteni. Az IP-címtartomány listáját programozott módon is lekérheti az alábbi [API](/rest/api/virtualnetwork/servicetags/list)használatával.
+### <a name="ip-ranges"></a>IP-tartományok
+Az Azure AD kiépítési szolgáltatás jelenleg az AzureActiveDirectory IP-tartományai alatt működik az itt [felsoroltak szerint.](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) Az AzureActiveDirectory címke alatt felsorolt IP-címtartományok felvételével engedélyezheti az Azure AD kiépítési szolgáltatásból származó forgalmat az alkalmazásba. Vegye figyelembe, hogy a kiszámított címekhez gondosan át kell vizsgálnia az IP-címtartományok listáját. A "40.126.25.32" cím az IP-címtartományok listájában a "40.126.0.0/18" értékként ábrázolható. Az IP-címtartományok listáját programozott módon is lekérheti a következő [API-val.](/rest/api/virtualnetwork/servicetags/list)
 
-## <a name="build-a-scim-endpoint"></a>SCIM-végpont létrehozása
+## <a name="build-a-scim-endpoint"></a>SCIM-végpont összeállítása
 
-Most, hogy megtervezte a sémát, és megértette az Azure AD SCIM megvalósítását, megkezdheti az SCIM-végpont fejlesztését. Ahelyett, hogy teljesen elkezdené, és a megvalósítást teljes mértékben saját maga is kiépítheti, a SCIM-Közösség által közzétett nyílt forráskódú SCIM-könyvtárakra támaszkodhat.
+Most, hogy megtervelte a sémát, és megértette az Azure AD SCIM implementációját, elkezdheti az SCIM-végpont fejlesztését. Ahelyett, hogy teljesen újat kezd, és teljesen egyedül építi fel a megvalósítást, az SCIM-közösség által közzétett számos nyílt forráskódú SCIM-kódtárra támaszkodhat.
 
-A példákat tartalmazó SCIM-végpontok létrehozásával kapcsolatos útmutatásért lásd: [Sample scim-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md).
+Példákat tartalmazó SCIM-végpontok fejlesztésére vonatkozó útmutatásért [lásd: SciM-mintavégpont fejlesztése.](use-scim-to-build-users-and-groups-endpoints.md)
 
-Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Core [hivatkozási kód példa](https://aka.ms/SCIMReferenceCode) egy ilyen erőforrás, amely elkezdheti a fejlesztést. Miután létrehozta a SCIM-végpontot, tesztelni kell. Használhatja a hivatkozási kód részeként megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a [fentebb](#user-operations)ismertetett minta kérelmeket/válaszokat.  
+Az Azure AD kiépítési csapata által közzétett nyílt forráskódú .NET [Core](https://aka.ms/SCIMReferenceCode) referenciakód-példa egy olyan erőforrás, amely segíthet a fejlesztésben. Miután felépítette az SCIM-végpontot, tesztelni kell. Használhatja a referenciakód részeként megadott [postman-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a fent megadott mintakéréseket/válaszokat. [](#user-operations)  
 
    > [!Note]
-   > A hivatkozási kód célja, hogy segítséget nyújtson a SCIM-végpont létrehozásában, és "ahogy van". A közösségi hozzájárulások szívesen segítenek felépíteni és karbantartani a kódot.
+   > A referenciakód célja, hogy segítséget nyújtson az SCIM-végpontok építésének elkezdésében, és az "AS IS" (ADOTT KÉNT) rendelkezésre áll. A közösség közreműködése segíthet a kód felépítésében és karbantartásában.
 
-A megoldás két projektből áll: a _Microsoft. scim_ és a _Microsoft. scim. WebHostSample_.
+A megoldás két projektből áll: _Microsoft.SCIM_ és _Microsoft.SCIM.WebHostSample._
 
-A _Microsoft. scim_ projekt az a könyvtár, amely meghatározza a webszolgáltatás azon összetevőit, amelyek megfelelnek a scim specifikációjának. Deklarálja a _Microsoft. scim. IProvider_ felületet, a kérelmeket a szolgáltató módszereire fordítja le, amelyek az Identity Store-ban való működésre lesznek programozva.
+A _Microsoft.SCIM-projekt_ az a kódtár, amely meghatározza a webszolgáltatás az SCIM-specifikációnak megfelelő összetevőit. Deklarálja a _Microsoft.SCIM.IProvider_ felületet, a kérelmeket a rendszer a szolgáltató metódusaira való hívásokra fordítja le, amelyek az identitástáron való működésre lesznek programozva.
 
-![Részletezés: A szolgáltató módszereire irányuló kérések lefordítása](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
+![Lebontás: A szolgáltató metódusaira vonatkozó hívásokra lefordított kérés](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
-A _Microsoft. scim. WebHostSample_ projekt egy Visual Studio ASP.net Core webalkalmazás, amely az _üres_ sablon alapján történik. Ez lehetővé teszi, hogy a mintakód önálló, tárolókban vagy Internet Information Services belül legyen üzembe helyezhető. Emellett a _Microsoft. scim. IProvider_ felületet is alkalmazza a memóriában lévő osztályok tárolására a minta identitás-tárolóként.
+A _Microsoft.SCIM.WebHostSample_ projekt egy Visual Studio ASP.NET Core-webalkalmazás, amely az _Üres sablonon_ alapul. Ez lehetővé teszi, hogy a mintakód önálló, tárolókban vagy tárolókon belül üzemelő Internet Information Services. Emellett megvalósítja a _Microsoft.SCIM.IProvider_ felületet is, amely mintaidentitás-tárolóként tartja meg az osztályokat a memóriában.
 
 ```csharp
     public class Startup
@@ -924,35 +925,35 @@ A _Microsoft. scim. WebHostSample_ projekt egy Visual Studio ASP.net Core webalk
 
 ### <a name="building-a-custom-scim-endpoint"></a>Egyéni SCIM-végpont létrehozása
 
-A SCIM szolgáltatásnak rendelkeznie kell egy HTTP-címen és egy kiszolgálói hitelesítési tanúsítvánnyal, amelynek a legfelső szintű hitelesítésszolgáltatója a következő nevek egyike:
+Az SCIM-szolgáltatásnak olyan HTTP-címmel és kiszolgálóhitelesítési tanúsítvánnyal kell lennie, amelynek legfelső szintű hitelesítésszolgáltatója a következő nevek egyike:
 
-* CNNIC
+* Cnnic
 * Comodo
 * CyberTrust
 * DigiCert
 * GeoTrust
-* GlobalSign
-* Go Daddy
-* VeriSign
-* WoSign
-* DST legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ X3
+* Globalsign
+* Go Foga
+* Verisign
+* WoSign (Aláírás)
+* DST legfelső szintű hitelesítésszolgáltató X3
 
-A .NET Core SDK tartalmaz egy HTTPS-fejlesztési tanúsítványt, amelyet a fejlesztés során használhat, a tanúsítványt a rendszer az első futtatási élmény részeként telepíti. Attól függően, hogy hogyan futtatja a ASP.NET Core webalkalmazást, egy másik portot fog hallgatni:
+A .NET Core SDK tartalmaz egy HTTPS fejlesztési tanúsítványt, amely a fejlesztés során használható, és a tanúsítvány az első futtatás részeként van telepítve. Attól függően, hogy hogyan futtatja ASP.NET Core-webalkalmazást, az egy másik portot fog figyelni:
 
-* Microsoft. SCIM. WebHostSample: https://localhost:5001
+* Microsoft.SCIM.WebHostSample: https://localhost:5001
 * IIS Express: https://localhost:44359/
 
-A HTTPS-vel kapcsolatos további információkért ASP.NET Core használja a következő hivatkozást: [https betartatása ASP.net Core](/aspnet/core/security/enforcing-ssl)
+A HTTPS-ről a ASP.NET a következő hivatkozáson keresztül érhető el: HTTPS kényszerítés [a ASP.NET Core-ban](/aspnet/core/security/enforcing-ssl)
 
-### <a name="handling-endpoint-authentication"></a>Végpont hitelesítésének feldolgozása
+### <a name="handling-endpoint-authentication"></a>Végponthitelesítés kezelése
 
-A Azure Active Directorytól érkező kérések közé tartozik egy OAuth 2,0 tulajdonosi jogkivonat. A kérelmet fogadó bármely szolgáltatásnak hitelesítenie kell a kiállítót úgy, hogy Azure Active Directory a várt Azure Active Directory bérlőnek.
+A Azure Active Directory OAuth 2.0-ás bearer jogkivonatot tartalmaznak. A kérést fogadó összes szolgáltatásnak hitelesítenie kell a kiállítót Azure Active Directory a várt Azure Active Directory bérlőhöz.
 
-A jogkivonatban a kibocsátót egy ISS jogcím azonosítja, például: `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcím értékének alapszintű címe, `https://sts.windows.net` amely a kiállítóként azonosítja Azure Active Directory, míg a relatív cím szegmens, a _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_, annak a Azure Active Directory bérlőnek az egyedi azonosítója, amelyhez a tokent kiállították.
+A jogkivonatban a kiállítót egy iss jogcím azonosítja, például `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . Ebben a példában a jogcímérték alapcíme kiállítóként azonosítja az Azure Active Directory-t, míg a relatív címszegmens, a `https://sts.windows.net` _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ a jogkivonatot kibocsátó Azure Active Directory-bérlő egyedi azonosítója.
 
-A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban, és az egyetlen bérlőben regisztrált összes alkalmazás ugyanazt a `iss` jogcímet fogadhatja a scim-kérelmekkel. Az összes egyéni alkalmazáshoz tartozó _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_-azonosító. Az Azure AD-létesítési szolgáltatás által generált jogkivonat csak tesztelésre használható. Éles környezetben nem használható.
+A jogkivonat célközönsége a katalógusban lévő alkalmazás alkalmazássablon-azonosítója lesz, az egyetlen bérlőben regisztrált alkalmazások pedig SCIM-kérésekkel kaphatják meg ugyanazt a `iss` jogcímet. Az összes egyéni alkalmazás alkalmazássablon-azonosítója: _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_. Az Azure AD kiépítési szolgáltatás által létrehozott jogkivonatot csak tesztelésre szabad használni. Éles környezetben nem használható.
 
-A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer csomag használatával hitelesíti. A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontjának küldött kérések hitelesítése egy adott bérlő Azure Active Directory által kiállított tulajdonosi jogkivonatának használatával történik:
+A mintakódban a kérelmek hitelesítése a Microsoft.AspNetCore.Authentication.JwtBearer csomaggal történik. A következő kód kényszeríti, hogy a szolgáltatás végpontjaira vonatkozó kérések hitelesítése a Azure Active Directory által a megadott bérlőhöz kiadott bearer token használatával történik:
 
 ```csharp
         public void ConfigureServices(IServiceCollection services)
@@ -988,11 +989,11 @@ A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer cso
        }
 ```
 
-Tulajdonosi jogkivonatra is szükség van a megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) használatához, és helyi hibakeresést végezni a localhost használatával. A mintakód ASP.NET Core környezetekkel módosítja a hitelesítési beállításokat a fejlesztési fázisban, és engedélyezi a saját aláírású jogkivonat használatát.
+A megadott [postman-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) végrehajtásához és a localhost használatával végzett helyi hibakereséshez egy bearer tokenre is szükség van. A mintakód ASP.NET alapkörnyezetek használatával módosítja a hitelesítési beállításokat a fejlesztési fázisban, és engedélyezi az önaírt jogkivonat használatát.
 
-További információ a ASP.NET Core több környezetéről: [több környezet használata a ASP.net Coreban](/aspnet/core/fundamentals/environments).
+A Core több környezetének további ASP.NET lásd: Több környezet használata a [ASP.NET Core-ban.](/aspnet/core/fundamentals/environments)
 
-A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontján érkező kérések hitelesítése egy egyéni kulccsal aláírt tulajdonosi jogkivonat használatával történik:
+A következő kód kikényszerítenie kell, hogy a szolgáltatás bármely végpontjára vonatkozó kérések hitelesítése egy egyéni kulccsal aláírt, bearer token használatával történik:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -1023,7 +1024,7 @@ public void ConfigureServices(IServiceCollection services)
 ...
 ```
 
-Küldjön egy GET kérelmet a jogkivonat-vezérlőnek, hogy érvényes tulajdonosi jogkivonatot kapjon, a _GenerateJSONWebToken_ metódus feladata a fejlesztéshez konfigurált paramétereknek megfelelő jogkivonat létrehozása:
+Küldjön GET kérést a Jogkivonat-vezérlőnek egy érvényes jogkivonat lekéréséhez. A _GenerateJSONWebToken_ metódus felelős a fejlesztéshez konfigurált paramétereknek megfelelő jogkivonat létrehozásáért:
 
 ```csharp
 private string GenerateJSONWebToken()
@@ -1053,21 +1054,21 @@ private string GenerateJSONWebToken()
 }
 ```
 
-### <a name="handling-provisioning-and-deprovisioning-of-users"></a>A felhasználók kiépítésének és megszüntetésének kezelési felépítése
+### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Felhasználók kiépítésének és megszüntetésének kezelése
 
-***1. példa. A szolgáltatás lekérdezése egy megfelelő felhasználó számára***
+***1. példa. Egyező felhasználó lekérdezése a szolgáltatásban***
 
-Azure Active Directory (HRE) egy olyan felhasználó számára kérdezi le a szolgáltatást, aki egy olyan attribútum értékkel rendelkezik, amely megfelel `externalId` a HRE felhasználó mailNickname attribútumának. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
+Azure Active Directory (AAD) lekérdezi a szolgáltatást egy olyan felhasználótól, aki attribútumértéke megegyezik az AAD-hez tartozó felhasználó `externalId` mailNickname attribútumértékével. A lekérdezés egy Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, például ebben a példában, amelyben a jyoung egy felhasználó mailNickname nevű mintája a Azure Active Directory.
 
 >[!NOTE]
-> Ez csak példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és a felhasználó értéke nem lehet egyedi a címtárban. Emellett a megfeleltetéshez használt attribútum (amely ebben az esetben a `externalId` ) a [HRE attribútum-hozzárendelésekben](customize-application-attributes.md)konfigurálható.
+> Ez csak egy példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és előfordulhat, hogy a felhasználó értéke nem egyedi a címtárban. Emellett az egyeztetéshez használt attribútum (ebben az esetben ) konfigurálható az `externalId` [AAD attribútumleképezésében.](customize-application-attributes.md)
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
  Authorization: Bearer ...
 ```
 
-A mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódusára hívja le. Itt látható a metódus aláírása: 
+A mintakódban a kérés le lesz fordítva a szolgáltatás szolgáltatójának QueryAsync metódusának hívására. A metódus aláírása: 
 
 ```csharp
 // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -1081,16 +1082,16 @@ A mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódus�
 Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-A mintául szolgáló lekérdezésben az attribútumhoz megadott értékkel rendelkező felhasználó számára a `externalId` QueryAsync metódusnak átadott argumentumok értékei a következők:
+A mintalekérdezésben a queryAsync metódusnak átadott argumentumok értéke egy adott attribútummal megadott felhasználó esetében `externalId` a következő:
 
-* paraméterek. AlternateFilters. Count: 1
-* paraméterek. AlternateFilters. ElementAt (0). AttributePath: "externalId"
-* paraméterek. AlternateFilters. ElementAt (0). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
-* paraméterek. AlternateFilter. ElementAt (0). ComparisonValue: "jyoung"
+* Paraméterek. AlternateFilters.Count: 1
+* Paraméterek. AlternateFilters.ElementAt(0). AttributePath: "externalId"
+* Paraméterek. AlternateFilters.ElementAt(0). ComparisonOperator: ComparisonOperator.Equals
+* Paraméterek. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
 
 ***2. példa. Felhasználó kiépítése***
 
-Ha a webszolgáltatásnak adott, a `externalId` mailNickname attribútum értékével megegyező attribútummal rendelkező felhasználó számára nem ad vissza felhasználókat, a HRE kéri, hogy a szolgáltatás kiépítse a HRE-ben a felhasználónak megfelelő felhasználót.  Íme egy példa erre a kérelemre: 
+Ha a felhasználó mailNickname attribútumértékével egy olyan felhasználó webszolgáltatásra vonatkozó lekérdezésére adott válasz, amely megegyezik a felhasználó mailNickname attribútumértékével, akkor az AAD azt kéri, hogy a szolgáltatás biztosítsa az AAD-hez tartozó `externalId` felhasználót.  Példa egy ilyen kérésre: 
 
 ```
 POST https://.../scim/Users HTTP/1.1
@@ -1123,7 +1124,7 @@ Content-type: application/scim+json
    "manager":null}
 ```
 
-A mintakód a kérést a szolgáltatás szolgáltatójának CreateAsync metódusára hívja le. Itt látható a metódus aláírása: 
+A mintakódban a kérés le lesz fordítva a szolgáltatás szolgáltatójának CreateAsync metódusának hívására. A metódus aláírása a következő: 
 
 ```csharp
 // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -1135,18 +1136,18 @@ A mintakód a kérést a szolgáltatás szolgáltatójának CreateAsync metódus
 Task<Resource> CreateAsync(IRequest<Resource> request);
 ```
 
-A felhasználó kiépítésére vonatkozó kérelemben az erőforrás argumentum értéke a Microsoft. SCIM. Core2EnterpriseUser osztály egy példánya, amely a Microsoft. SCIM. schemas könyvtárban van definiálva.  Ha a felhasználó kiépítésére vonatkozó kérelem sikeres, akkor a metódus megvalósításának várhatóan a Microsoft. SCIM. Core2EnterpriseUser osztály egy példányát kell visszaadnia, az azonosító tulajdonság értéke pedig az újonnan kiosztott felhasználó egyedi azonosítójára van beállítva.  
+Felhasználó igénylése esetén az erőforrás-argumentum értéke a Microsoft.SCIM.Schemas kódtárban definiált Microsoft.SCIM.Core2EnterpriseUser osztály egy példánya.  Ha a felhasználó igénylése sikeres, akkor a metódus implementációja várhatóan a Microsoft.SCIM.Core2EnterpriseUser osztály egy példányát adja vissza, és az Identifier tulajdonság értéke az újonnan kiépített felhasználó egyedi azonosítója lesz.  
 
 ***3. példa. Felhasználó aktuális állapotának lekérdezése*** 
 
-Egy olyan felhasználó frissítéséhez, amely egy SCIM által ellátott identitás-tárolóban létezik, Azure Active Directory folytatja, ha a felhasználó aktuális állapotát kéri a szolgáltatástól a következő kéréssel: 
+Ha frissítenie kell egy sciM által előzhető identitástárban ismert felhasználót, a Azure Active Directory a felhasználó aktuális állapotát kéri le a szolgáltatástól a következő kéréssel: 
 
 ```
 GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
 Authorization: Bearer ...
 ```
 
-A mintakód a kérést a szolgáltatás szolgáltatójának RetrieveAsync metódusára hívja le. Itt látható a metódus aláírása: 
+A mintakódban a kérés a szolgáltatás szolgáltatójának RetrieveAsync metódusának hívására lesz lefordítva. A metódus aláírása a következő: 
 
 ```csharp
 // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -1159,30 +1160,30 @@ A mintakód a kérést a szolgáltatás szolgáltatójának RetrieveAsync metód
 Task<Resource> RetrieveAsync(IRequest<IResourceRetrievalParameters> request);
 ```
 
-A felhasználó aktuális állapotának lekérésére irányuló kérelem példájában a paraméterek argumentum értékeként megadott objektum tulajdonságainak értékei a következők: 
+A felhasználó aktuális állapotának lekérésére vonatkozó kérés példában a paraméter argumentum értékeként megadott objektum tulajdonságainak értékei a következők: 
   
 * Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
-* SchemaIdentifier: "urn: IETF: paraméterek: scim: sémák: bővítmény: Enterprise: 2.0: user"
+* SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***4. példa. A frissítendő Reference attribútum értékének lekérdezése*** 
+***4. példa. Egy frissíthető referenciaattribútum értékének lekérdezése*** 
 
-Ha frissíteni kell egy hivatkozási attribútumot, akkor Azure Active Directory lekérdezi a szolgáltatást annak meghatározására, hogy a szolgáltatás által elindított, az identitás-tárolóban lévő Reference attribútum aktuális értéke már megegyezik-e az adott attribútum értékével Azure Active Directoryban. A felhasználók számára az egyetlen olyan attribútum, amelynek az aktuális értéke a felettes attribútum, így a jelenlegi érték lekérdezhető. Íme egy példa arra a kérelemre, amely meghatározza, hogy egy felhasználói objektum Manager-attribútuma jelenleg egy bizonyos értékkel rendelkezik-e: a mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódusára hívja le. A paraméterek argumentum értékeként megadott objektum tulajdonságainak értéke a következő: 
+Ha frissíteni kell egy referenciaattribútumot, a Azure Active Directory lekérdezi a szolgáltatást annak meghatározására, hogy a szolgáltatás által előtereként megadott identitástárban lévő referenciaattribútum aktuális értéke megegyezik-e az adott attribútum Azure Active Directory. Felhasználók esetén az egyetlen attribútum, amelynek az aktuális értéke így lekérdezve van, a manager attribútum. Az alábbi példa egy olyan kérésre mutat példát, amely meghatározza, hogy egy felhasználói objektum kezelői attribútuma jelenleg rendelkezik-e egy bizonyos értékkel: A mintakódban a kérés a szolgáltató QueryAsync metódusának hívására lesz lefordítva. A parameters argumentum értékeként megadott objektum tulajdonságainak értéke a következő: 
   
-* paraméterek. AlternateFilters. Count: 2
-* paraméterek. AlternateFilters. ElementAt (x). AttributePath: "azonosító"
-* paraméterek. AlternateFilters. ElementAt (x). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
-* paraméterek. AlternateFilter. ElementAt (x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
-* paraméterek. AlternateFilters. ElementAt (y). AttributePath: "Manager"
-* paraméterek. AlternateFilters. ElementAt (y). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
-* paraméterek. AlternateFilter. ElementAt (y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-* paraméterek. RequestedAttributePaths. ElementAt (0): "azonosító"
-* paraméterek. SchemaIdentifier: "urn: IETF: paraméterek: scim: sémák: bővítmény: Enterprise: 2.0: user"
+* Paraméterek. AlternateFilters.Count: 2
+* Paraméterek. AlternateFilters.ElementAt(x). AttributePath: "ID"
+* Paraméterek. AlternateFilters.ElementAt(x). ComparisonOperator: ComparisonOperator.Equals
+* Paraméterek. AlternateFilter.ElementAt(x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* Paraméterek. AlternateFilters.ElementAt(y). AttributePath: "manager"
+* Paraméterek. AlternateFilters.ElementAt(y). ComparisonOperator: ComparisonOperator.Equals
+* Paraméterek. AlternateFilter.ElementAt(y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+* Paraméterek. RequestedAttributePaths.ElementAt(0): "ID"
+* Paraméterek. SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-Itt az x index értéke 0 is lehet, az y index értéke pedig 1, vagy az x értéke 1, az y értéke pedig 0, a Filter lekérdezési paraméter kifejezésének sorrendjétől függően.   
+Itt az x index értéke lehet 0, az y index értéke pedig 1, az x értéke pedig 1, az y értéke pedig 0, a szűrőlekérdezés paraméter kifejezésének sorrendjétől függően.   
 
-***5. példa. A felhasználó frissítése az Azure AD-ből egy SCIM-szolgáltatásba*** 
+***5. példa. Kérés az Azure AD-től egy SCIM-szolgáltatáshoz egy felhasználó frissítésére*** 
 
-Íme egy példa arra, hogy Azure Active Directory egy SCIM szolgáltatásra irányuló kérést egy felhasználó frissítéséhez: 
+Az alábbi példa egy felhasználó frissítésére Azure Active Directory scim-szolgáltatásnak adott kérésre: 
 
 ```
 PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
@@ -1204,7 +1205,7 @@ Content-type: application/scim+json
               "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
 ```
 
-A mintakód a kérést a szolgáltatás szolgáltatójának UpdateAsync metódusára hívja le. Itt látható a metódus aláírása: 
+A mintakódban a kérés le lesz fordítva a szolgáltatás szolgáltatójának UpdateAsync metódusának hívására. A metódus aláírása: 
 
 ```csharp
 // System.Threading.Tasks.Tasks and 
@@ -1217,29 +1218,29 @@ A mintakód a kérést a szolgáltatás szolgáltatójának UpdateAsync metódus
 Task UpdateAsync(IRequest<IPatch> request);
 ```
 
-A felhasználó frissítésére irányuló kérelem példájában a patch argumentum értékeként megadott objektum a következő tulajdonságértékeket tartalmazhatja: 
+A felhasználó frissítésére vonatkozó kérés példában a patch argumentum értékeként megadott objektum a következő tulajdonságértékekkel rendelkezik: 
 
 |Argumentum|Érték|
 |-|-|
-|ResourceIdentifier. Identifier|"54D382A4-2050-4C03-94D1-E769F1D15682"|
-|ResourceIdentifier.SchemaIdentifier|"urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user"|
-|(PatchRequest as PatchRequest2). Operations. Count|1|
-|(PatchRequest as PatchRequest2). Operations. ElementAt (0). OperationName|OperationName. Add|
-|(PatchRequest as PatchRequest2). Operations. ElementAt (0). Elérési út. AttributePath|Manager|
-|(PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. Count|1|
-|(PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Referencia|http://.../scim/Users/2819c223-7f76-453a-919d-413861904646|
-|(PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Érték| 2819c223-7f76-453a-919d-413861904646|
+|ResourceIdentifier.Identifier|"54D382A4-2050-4C03-94D1-E769F1D15682"|
+|ResourceIdentifier.SchemaIdentifier|"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"|
+|(PatchRequest mint PatchRequest2). Operations.Count|1|
+|(PatchRequest mint PatchRequest2). Operations.ElementAt(0). OperationName (Művelet neve)|OperationName.Add|
+|(PatchRequest mint PatchRequest2). Operations.ElementAt(0). Path.AttributePath|"vezető"|
+|(PatchRequest mint PatchRequest2). Operations.ElementAt(0). Value.Count|1|
+|(PatchRequest mint PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Hivatkozás|http://.../scim/Users/2819c223-7f76-453a-919d-413861904646|
+|(PatchRequest mint PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Érték| 2819c223-7f76-453a-919d-413861904646|
 
-***6. példa. Felhasználó kiépítése***
+***6. példa. Felhasználó megszüntetése***
 
-Ha egy SCIM-szolgáltatás által elküldött Identity Store-ból szeretne kiépíteni egy felhasználót, a HRE a következőt küldi el:
+Ha egy felhasználót meg kell megszüntetni egy SCIM-szolgáltatás előtt található identitástárolóból, az AAD a következő kéréseket küldi el:
 
 ```
 DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
 Authorization: Bearer ...
 ```
 
-A mintakód a kérést a szolgáltatás szolgáltatójának DeleteAsync metódusára hívja le. Itt látható a metódus aláírása: 
+A mintakódban a kérést a szolgáltató DeleteAsync metódusának hívására fordítja le a program. A metódus aláírása a következő: 
 
 ```csharp
 // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -1251,163 +1252,163 @@ A mintakód a kérést a szolgáltatás szolgáltatójának DeleteAsync metódus
 Task DeleteAsync(IRequest<IResourceIdentifier> request);
 ```
 
-A resourceIdentifier argumentum értékeként megadott objektum a következő tulajdonság értékeit írja be a felhasználó megszüntetésére irányuló kérelem példájában: 
+A resourceIdentifier argumentum értékeként megadott objektum a következő tulajdonságértékekkel rendelkezik a felhasználó megszüntetésére vonatkozó kérés példáján: 
 
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-* ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user"
+* ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-## <a name="integrate-your-scim-endpoint-with-the-aad-scim-client"></a>A SCIM-végpont integrálása a HRE SCIM-ügyféllel
+## <a name="integrate-your-scim-endpoint-with-the-aad-scim-client"></a>Az SCIM-végpont integrálása az AAD SCIM-ügyféllel
 
-Az Azure AD beállítható úgy, hogy automatikusan kiépítse a hozzárendelt felhasználókat és csoportokat olyan alkalmazásokhoz, amelyek a [SCIM 2,0 protokoll](https://tools.ietf.org/html/rfc7644)egy adott profilját implementálják. A profil sajátosságait az [Azure ad-scim implementációjának megismerése](#understand-the-aad-scim-implementation)című dokumentumban ismertetjük.
+Az Azure AD konfigurálható úgy, hogy automatikusan kiépítsen hozzárendelt felhasználókat és csoportokat olyan alkalmazások számára, amelyek az [SCIM 2.0](https://tools.ietf.org/html/rfc7644)protokoll egy adott profilját valósítják meg. A profil részletes dokumentációja az Azure AD SCIM-implementációval foglalkozó [dokumentumban van.](#understand-the-aad-scim-implementation)
 
-Forduljon az alkalmazás-szolgáltatóhoz, vagy az alkalmazás szolgáltatójának dokumentációjában, hogy kompatibilisek legyenek ezekkel a követelményekkel.
+Az ezekkel a követelményekkel való kompatibilitásra vonatkozó nyilatkozatokat az alkalmazásszolgáltatójánál vagy az alkalmazásszolgáltató dokumentációjában ellenőrizheti.
 
 > [!IMPORTANT]
-> Az Azure AD SCIM implementációja az Azure AD-beli felhasználói kiépítési szolgáltatásra épül, amelynek célja, hogy folyamatosan szinkronizálja a felhasználókat az Azure AD és a célalkalmazás között, és a szabványos műveletek nagyon specifikus készletét implementálja. Fontos megérteni ezeket a viselkedéseket az Azure AD SCIM-ügyfél működésének megismerése érdekében. További információ: a [kiépítés működésének](how-provisioning-works.md) [kezdeti és növekményes](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) szakasza.
+> Az Azure AD SCIM-implementációja az Azure AD felhasználóátépítési szolgáltatására épül, amely úgy lett kialakítva, hogy folyamatosan szinkronizálja a felhasználókat az Azure AD és a célalkalmazás között, és a szabványos műveletek nagyon meghatározott készletét valósítja meg. Fontos megérteni ezeket a viselkedésmódokat az Azure AD SCIM-ügyfél viselkedésének a jobb működése miatt. További információkért lásd a Kiépítési [ciklusok: Kezdeti](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) és növekményes [szakaszt a Kiépítés működése című részben.](how-provisioning-works.md)
 
 ### <a name="getting-started"></a>Első lépések
 
-Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD Application Gallery "nem katalógus alkalmazás" funkciójával csatlakozhatnak Azure Active Directoryhoz. A csatlakozást követően az Azure AD 40 percenként futtat szinkronizálási folyamatot, ahol lekérdezi az alkalmazás SCIM-végpontját a hozzárendelt felhasználókhoz és csoportokhoz, és a hozzárendelés részletei szerint létrehozza vagy módosítja azokat.
+Az ebben a cikkben leírt SCIM-profilt támogató alkalmazások az Azure AD-alkalmazásgyűjtemény "katalóguson kívüli alkalmazás" funkciójának használatával Azure Active Directory csatlakoztathatóak az alkalmazáshoz. A csatlakozás után az Azure AD 40 percenként futtat egy szinkronizálási folyamatot, amelyben lekérdezi az alkalmazás SCIM-végpontját a hozzárendelt felhasználók és csoportok számára, és a hozzárendelés részleteinek megfelelően hozza létre vagy módosítja azokat.
 
-**SCIM támogató alkalmazás csatlakoztatása:**
+**SciM-et támogató alkalmazás csatlakoztatása:**
 
-1. Jelentkezzen be a [HRE-portálra](https://aad.portal.azure.com). Vegye figyelembe, hogy a [fejlesztői programra](https://developer.microsoft.com/office/dev-program) való feliratkozással a P2-licenccel rendelkező Azure Active Directory ingyenes próbaverzióját érheti el
-1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
-1. Válassza az **+ új alkalmazás**  >  **+ saját alkalmazás létrehozása** lehetőséget.
-1. Adja meg az alkalmazás nevét, válassza a "*bármely más alkalmazás integrálása a* katalógusban" lehetőséget, majd válassza a **Hozzáadás** elemet az alkalmazás-objektum létrehozásához. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyílik az alkalmazás-felügyeleti képernyőjén.
+1. Jelentkezzen be az [AAD portálra.](https://aad.portal.azure.com) Vegye figyelembe, hogy a P2 licenccel rendelkező felhasználók ingyenes Azure Active Directory a fejlesztői programra való [feliratkozáskor](https://developer.microsoft.com/office/dev-program)
+1. A **bal oldali panelen** válassza a Vállalati alkalmazások lehetőséget. Megjelenik az összes konfigurált alkalmazás listája, beleértve a katalógusból hozzáadott alkalmazásokat is.
+1. Válassza **az + Új alkalmazás**+ Saját alkalmazás létrehozása  >  **lehetőséget.**
+1. Adja meg az alkalmazás nevét, válassza az "*integrálja* a katalógusban nem  található más alkalmazást" lehetőséget, majd válassza a Hozzáadás lehetőséget egy alkalmazásobjektum létrehozásához. Az új alkalmazás megjelenik a vállalati alkalmazások listájában, és megnyílik az alkalmazáskezelési képernyője.
 
-   ![A képernyőképen az Azure AD Application Gallery ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
-    *Azure ad-alkalmazás* katalógusa látható
+   ![Képernyőkép az Azure AD ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    *alkalmazásgyűjteményről Az Azure AD alkalmazásgyűjteménye*
 
    > [!NOTE]
-   > Ha a régi alkalmazás-katalógust használja, kövesse az alábbi képernyőn látható útmutatót.
+   > Ha a régi alkalmazás-katalógust használja, kövesse az alábbi képernyő-útmutatót.
    
-   ![A képernyőképen az Azure AD Old App Gallery az ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
-    *Azure ad régi alkalmazás* -katalógusának élményét jeleníti meg
+   ![Képernyőkép az Azure AD régi alkalmazás-katalógusbeli élményről ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    *az Azure AD régi alkalmazás-katalógusában*
 
-1. Az App Management képernyőn válassza a **kiépítés** lehetőséget a bal oldali panelen.
-1. A **létesítési mód** menüben válassza az **automatikus** lehetőséget.
+1. Az alkalmazáskezelési képernyőn válassza a kiépítés **lehetőséget** a bal oldali panelen.
+1. A **Kiépítési mód menüben** válassza az Automatikus **lehetőséget.**
 
-   ![Példa: az alkalmazás kiépítési lapja a Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
-   *A kiépítés konfigurálása a Azure Portalban*
+   ![Példa: Az alkalmazás Provisioning (Kiépítés) lapja a Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   *A kiépítés konfigurálása a Azure Portal*
 
-1. A **bérlői URL-cím** mezőben adja meg az alkalmazás scim-végpontjának URL-címét. Például: `https://api.contoso.com/scim/`
-1. Ha az SCIM-végpont OAuth-tulajdonosi jogkivonatot igényel az Azure AD-től eltérő kibocsátótól, akkor másolja a szükséges OAuth-tulajdonosi tokent a nem kötelező **titkos jogkivonat** mezőbe. Ha ez a mező üresen marad, az Azure AD az Azure AD-ből kiállított OAuth-tulajdonosi jogkivonatot tartalmaz minden kéréssel. Az Azure AD-t identitás-szolgáltatóként használó alkalmazások ellenőrizhetik ezt az Azure AD-kiállított jogkivonatot. 
+1. A **Bérlői URL-cím** mezőbe írja be az alkalmazás SCIM-végpontjának URL-címét. Például: `https://api.contoso.com/scim/`
+1. Ha az SCIM-végponthoz az Azure AD-től nem származó kiállító OAuth-jogkivonata szükséges, másolja a kötelező OAuth-alapú bearer tokent a választható **Titkos** jogkivonat mezőbe. Ha ezt a mezőt üresen hagyja, az Azure AD minden kéréshez tartalmaz egy OAuth-jogkivonatot, amely az Azure AD-ból van kibocsátva. Az Azure AD-t identitásszolgáltatóként felhasználó alkalmazások ellenőrizhetik ezt az Azure AD által kiadott jogkivonatot. 
    > [!NOTE]
-   > Ezt a mezőt ***nem*** ajánlott üresen hagyni, és az Azure ad által generált jogkivonatra támaszkodni. Ez a lehetőség elsősorban tesztelési célokra használható.
-1. Válassza a **kapcsolat tesztelése** lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
+   > Nem ajánlott ***üresen*** hagyni ezt a mezőt, és az Azure AD által létrehozott jogkivonatra támaszkodni. Ez a lehetőség elsősorban tesztelési célokra érhető el.
+1. Válassza **a Kapcsolat tesztelése lehetőséget,** Azure Active Directory megpróbál csatlakozni az SCIM-végponthoz. Ha a kísérlet sikertelen, hibaüzenet jelenik meg.  
 
     > [!NOTE]
-    > A SCIM a nem létező felhasználóhoz tartozó végpontot **kérdezi** le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK, amely üres SCIM ListResponse-üzenettel rendelkezik.
+    > **A Kapcsolat tesztelése** szolgáltatás lekérdezi az SCIM-végpontot egy nem létező felhasználótól, és véletlenszerű GUID-azonosítót használ az Azure AD-konfigurációban kiválasztott egyező tulajdonságként. A várt helyes válasz HTTP 200 OK, üres SCIM ListResponse üzenettel.
 
-1. Ha az alkalmazáshoz való kapcsolódási kísérlet sikeres, kattintson a **Save (Mentés** ) gombra a rendszergazdai hitelesítő adatok mentéséhez.
-1. A **leképezések** szakaszban két választható [attribútum-hozzárendelés](customize-application-attributes.md)közül választhat: egyet a felhasználói objektumokhoz és egyet a csoport objektumaihoz. Jelölje ki mindegyiket, hogy áttekintse a Azure Active Directoryról az alkalmazásba szinkronizált attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az alkalmazás felhasználóinak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+1. Ha az alkalmazáshoz való csatlakozásra tett kísérlet sikeres, válassza a **Mentés lehetőséget** a rendszergazdai hitelesítő adatok mentéséhez.
+1. A **Leképezések szakaszban** két választható attribútumleképezés-készlet [található:](customize-application-attributes.md)egy a felhasználói objektumokhoz, egy pedig a csoportobjektumok számára. Válassza ki mindegyiket az alkalmazásból szinkronizált Azure Active Directory áttekintéséhez. Az Egyező tulajdonságokként **kiválasztott** attribútumok az alkalmazás felhasználóinak és csoportjainak megfeleltetésére használhatók a frissítési műveletekhez. A **módosítások véglegesítéshez** válassza a Mentés lehetőséget.
 
     > [!NOTE]
-    > A csoportok leképezésének letiltásával letilthatja a csoport objektumainak szinkronizálását.
+    > Ha szeretné, letilthatja a csoportobjektumok szinkronizálását a "csoportok" leképezés letiltásával.
 
-1. A **Beállítások** területen a **hatókör** mező határozza meg, hogy mely felhasználók és csoportok legyenek szinkronizálva. Jelölje be a **csak a hozzárendelt felhasználók** és csoportok szinkronizálása (javasolt) lehetőséget, hogy csak a **felhasználók és csoportok** lapon hozzárendelt felhasználókat és csoportokat szinkronizálja.
-1. A konfiguráció befejezése után állítsa be a **kiépítési állapotot** **a** következőre:.
-1. Válassza a **Mentés** lehetőséget az Azure ad-kiépítési szolgáltatás elindításához.
-1. Ha csak a hozzárendelt felhasználókat és csoportokat szinkronizálja (ajánlott), akkor ügyeljen arra, hogy a **felhasználók és csoportok** lapot jelölje ki, és rendelje hozzá a szinkronizálni kívánt felhasználókat vagy csoportokat.
+1. A **Beállítások területen** a Hatókör **mező** határozza meg, hogy mely felhasználók és csoportok lesznek szinkronizálva. Válassza **a Csak a hozzárendelt felhasználók** és csoportok szinkronizálása (ajánlott) lehetőséget, ha csak a Felhasználók és csoportok lapon hozzárendelt felhasználókat és **csoportokat szinkronizálja.**
+1. A konfigurálás befejezése után állítsa a **Kiépítési állapot beállítását** Be **állapotúra.**
+1. Az  Azure AD kiépítési szolgáltatásának indításhoz válassza a Mentés lehetőséget.
+1. Ha csak a hozzárendelt felhasználókat és csoportokat  szinkronizálja (ajánlott), válassza a Felhasználók és csoportok lapot, és rendelje hozzá a szinkronizálni kívánt felhasználókat vagy csoportokat.
 
-A kezdeti ciklus elindítása után a bal oldali panelen kiválaszthatja a **kiépítési naplókat** a folyamat figyeléséhez, amely megjeleníti az alkalmazáson belüli kiépítési szolgáltatás által végrehajtott összes műveletet. Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](check-status-user-account-provisioning.md)helyezéséhez.
+A kezdeti ciklus elindulása után  a bal oldali panelen a Kiépítési naplók lehetőséget választva figyelheti a folyamat előrehaladását, amely az alkalmazáson a kiépítési szolgáltatás által végzett összes műveletet megjeleníti. Az Azure AD kiépítési naplók olvasására vonatkozó további információkért lásd: Reporting on automatic user account provisioning (Jelentéskészítés a felhasználói fiókok automatikus [építésével kapcsolatban).](check-status-user-account-provisioning.md)
 
 > [!NOTE]
-> A kezdeti ciklus hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, ami körülbelül 40 percenként történik, amíg a szolgáltatás fut.
+> A kezdeti ciklus végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, ami körülbelül 40 percenként történik, amíg a szolgáltatás fut.
 
-## <a name="publish-your-application-to-the-aad-application-gallery"></a>Az alkalmazás közzététele a HRE alkalmazás-galériájában
+## <a name="publish-your-application-to-the-aad-application-gallery"></a>Az alkalmazás közzététele az AAD-alkalmazásgyűjteményben
 
-Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD Application Galleryben teheti elérhetővé. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a mások számára elérhető kiépítés egyszerűvé tétele. Tekintse meg a lépéseket [itt](../develop/v2-howto-app-gallery-listing.md). A Microsoft együttműködik Önnel, hogy integrálja az alkalmazást a katalógusba, tesztelje a végpontot, és bocsásson ki a használati [dokumentációt](../saas-apps/tutorial-list.md) az ügyfelek számára.
+Ha egynél több bérlő által használt alkalmazást hozunk majd üzembe, azt az Azure AD alkalmazásgyűjteményében is elérhetővé teheti. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a kiépítés mások számára való elérhetővé tevése egyszerű. A lépéseket itt [ellenőrizheti.](../develop/v2-howto-app-gallery-listing.md) A Microsoft segít Önnek az alkalmazás katalógusba integrálásában, a végpont [](../saas-apps/tutorial-list.md) tesztelésében és az ügyfelek által használható dokumentáció kiadásában.
 
-### <a name="gallery-onboarding-checklist"></a>Katalógus-előkészítési ellenőrzőlista
-Az ellenőrzőlista használatával gyorsan és az ügyfelek zökkenőmentes üzembe helyezési élményben vehetik igénybe az alkalmazást. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
+### <a name="gallery-onboarding-checklist"></a>Katalógus-beirehozás ellenőrzőlistája
+Használja az ellenőrzőlistát az alkalmazás gyors üzembe helyezéséhez, és az ügyfelek zökkenőmentes üzembe helyezést tapasztalnak. A katalógusba való berakozáskor a rendszer az információkat öntől gyűjti össze. 
 > [!div class="checklist"]
-> * [SCIM 2,0](#understand-the-aad-scim-implementation) felhasználói és csoportos végpont támogatása (csak egy szükséges, de mindkettő ajánlott)
-> * A bérlők által másodpercenként legalább 25 kérelem támogatása, hogy a felhasználók és csoportok kiosztása és megszüntetése késedelem nélkül történjen (kötelező)
-> * Mérnöki és támogatási kapcsolattartók létrehozása útmutató az ügyfeleknek a katalógus bevezetéséhez (kötelező)
-> * 3 nem lejáró teszt hitelesítő adatai az alkalmazáshoz (kötelező)
-> * Támogassa a OAuth engedélyezési kód támogatását vagy az alább leírtak szerint a hosszú élettartamú tokent (kötelező)
-> * Hozzon létre egy mérnöki és támogatási pontot az ügyfelek támogatásához a katalógus bevezetése után (kötelező)
-> * [Támogatási séma felderítése (kötelező)](https://tools.ietf.org/html/rfc7643#section-6)
-> * Több csoporttagság frissítésének támogatása egyetlen JAVÍTÁSsal
-> * Nyilvánosan dokumentálja a SCIM-végpontot
+> * SCIM [2.0](#understand-the-aad-scim-implementation) felhasználói és csoportvégpont támogatása (Csak egy szükséges, de mindkettő ajánlott)
+> * Bérlőnként legalább 25 kérés támogatása annak érdekében, hogy a felhasználók és csoportok igénylése és megszüntetése késve legyen (kötelező)
+> * Mérnöki és támogatási kapcsolattartók létrehozása az ügyfelek katalógusba való bevezető utáni támogatásához (kötelező)
+> * 3 Az alkalmazás nem lejáró teszt hitelesítő adatai (kötelező)
+> * Támogatja az OAuth engedélyezési kód megadását vagy egy hosszú életű tokent az alábbiakban leírtak szerint (kötelező)
+> * Mérnöki és támogatási pont létrehozása az ügyfelek támogatásához katalógus-beépítés után (kötelező)
+> * [Sémafelderítés támogatása (kötelező)](https://tools.ietf.org/html/rfc7643#section-6)
+> * Több csoporttagság frissítésének támogatása egyetlen PATCH-sel
+> * Az SCIM-végpont nyilvános dokumentálása
 
-### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Az összekötők üzembe helyezésének engedélyezése az alkalmazás-katalógusban
-A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az engedélyezéshez, és a meglévő iparági szabványok használatára támaszkodik.
+### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Összekötők építésének engedélyezése az alkalmazáskatatárban
+Az SCIM specifikációja nem határoz meg SCIM-specifikus hitelesítési és engedélyezési sémát, és a meglévő iparági szabványok használatára támaszkodik.
 
 |Engedélyezési módszer|Előnyök|Hátrányok|Támogatás|
 |--|--|--|--|
-|Felhasználónév és jelszó (az Azure AD nem javasolja vagy támogatja)|Könnyen megvalósítható|Nem biztonságos – [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|A Gallery-alkalmazások eseti alapon támogatottak. Nem Gallery-alkalmazások esetében nem támogatott.|
-|Hosszú élettartamú tulajdonosi jogkivonat|A hosszú élettartamú tokenek nem igénylik a felhasználó jelenlétét. A rendszergazdák egyszerűen használhatók a kiépítés beállításakor.|A hosszú élettartamú tokenek nehezen oszthatók meg rendszergazdaként anélkül, hogy nem biztonságos módszereket, például e-maileket kellene használnia. |A katalógus és a nem Gallery-alkalmazások esetében támogatott. |
-|OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|A Gallery-alkalmazások esetében támogatott, de nem Gallery-alkalmazások. A felhasználói felületen azonban egy hozzáférési tokent is megadhat titkos jogkivonatként rövid távú tesztelési célokra. A nem katalógusban lévő OAuth-kód támogatásának támogatása a várakozó hitelesítési/jogkivonat-URL-címek támogatásán felül a Gallery alkalmazásban.|
-|OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
+|Felhasználónév és jelszó (az Azure AD nem ajánlott vagy támogatott)|Könnyen megvalósítható|Nem biztonságos – [A Pa$$word nem számít](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|A katalógusbeli alkalmazások esetében eseti alapon támogatott. A nem katalógusbeli alkalmazások esetében nem támogatott.|
+|Hosszú életű bearer token|A hosszú ideig tartó jogkivonatok nem követelik meg, hogy a felhasználó jelen legyen. A rendszergazdák könnyen használhatók a kiépítés beállításakor.|A hosszú életű jogkivonatokat nehéz lehet megosztani egy rendszergazdával nem biztonságos módszerek, például e-mail használata nélkül. |Katalógusbeli és nem katalógusbeli alkalmazások esetén támogatott. |
+|OAuth engedélyezési kód megadása|A hozzáférési jogkivonatok sokkal rövidebb életűek, mint a jelszavak, és automatikus frissítési mechanizmussal is bírnak, amely a hosszú ideig tartó jogkivonatokkal nem rendelkezik.  A valódi felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnunk egy elszámoltathatósági szintet. |Egy felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végrehajtani.|Katalógusbeli alkalmazásokhoz támogatott, nem katalógusbeli alkalmazásokhoz. Rövid távú tesztelési célokra azonban meg lehet adni egy hozzáférési jogkivonatot a felhasználói felületen titkos jogkivonatként. A nem katalógusbeli OAuth-kódok megadásának támogatása a hátralékban található, valamint a konfigurálható hitelesítési/jogkivonat-URL-címek támogatása a katalógusalkalmazásban.|
+|OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési jogkivonatok sokkal rövidebb életűek, mint a jelszavak, és automatikus frissítési mechanizmussal is bírnak, amely a hosszú ideig tartó jogkivonatokkal nem rendelkezik. Az engedélyezési kód megadása és az ügyfél-hitelesítő adatok is azonos típusú hozzáférési jogkivonatot hoznak létre, ezért a metódusok közötti áthelyezés átlátható az API számára.  A kiépítés teljesen automatizált is lehet, és az új jogkivonatok felhasználói beavatkozás nélkül, csendesen kérhetőek. ||Katalógusbeli és nem katalógusbeli alkalmazások esetén nem támogatott. A támogatás a hátralékunkban van.|
 
 > [!NOTE]
-> Nem ajánlott üresen hagyni a jogkivonat mezőt a HRE-létesítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
+> Nem ajánlott üresen hagyni a jogkivonat mezőt az AAD-kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A létrehozott jogkivonat elsősorban tesztelési célokra érhető el.
 
-### <a name="oauth-code-grant-flow"></a>OAuth-kód engedélyezési folyamata
+### <a name="oauth-code-grant-flow"></a>OAuth-kód megadó folyamat
 
-A kiépítési szolgáltatás támogatja az [engedélyezési kód](https://tools.ietf.org/html/rfc6749#page-24) engedélyezését, és az alkalmazásnak a katalógusban való közzétételére vonatkozó kérés elküldése után a csapat együttműködik Önnel a következő információk összegyűjtésével:
+A kiépítési [](https://tools.ietf.org/html/rfc6749#page-24) szolgáltatás támogatja az engedélyezési kód megadását, és miután beküldi az alkalmazás katalógusban való közzétételére vonatkozó kérelmét, csapatunk az alábbi információk gyűjtésével fog dolgozni:
 
-- **Engedélyezési URL**-cím, az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. 
+- **Engedélyezési** URL-cím, egy URL-cím, amelyet az ügyfél a felhasználó-ügynök átirányításával szerez be az erőforrás tulajdonosától. A rendszer erre az URL-címre irányítja át a felhasználót a hozzáféréshez. 
 
-- **Jogkivonat-Exchange URL**-cím, az ügyfél URL-címe, amely egy hozzáférési jogkivonat engedélyezési engedélyének kiváltására használható, jellemzően az ügyfél-hitelesítéssel.
+- **Jogkivonat-csere URL-címe,** egy URL-cím, amelyet az ügyfél egy hozzáférési jogkivonat engedélyezési engedélyének cseréjére használ, általában ügyfél-hitelesítéssel.
 
-- Az **ügyfél-azonosító**, az engedélyezési kiszolgáló kiadja a regisztrált ügyfelet egy ügyfél-azonosítóval, amely az ügyfél által megadott regisztrációs adatokat jelképező egyedi karakterlánc.  Az ügyfél-azonosító nem titok; az erőforrás tulajdonosának van kitéve, és **nem** használható egyedül az ügyfél-hitelesítéshez.  
+- **Az ügyfél-azonosító**, az engedélyezési kiszolgáló egy ügyfélazonosítót ad ki a regisztrált ügyfélnek, amely egy egyedi sztring, amely az ügyfél által megadott regisztrációs adatokat képviseli.  Az ügyfél-azonosító nem titkos. az erőforrás tulajdonosa számára elérhető, és **nem** használható önmagában az ügyfél-hitelesítéshez.  
 
-- Az **ügyfél titka**, az engedélyezési kiszolgáló által létrehozott titkos kulcs, amely csak az engedélyezési kiszolgáló által ismert egyedi érték lehet. 
-
-> [!NOTE]
-> Az **engedélyezési URL-cím** és a **jogkivonat-Exchange URL-cím** jelenleg nem konfigurálható bérlőn.
+- **Titkos ügyféloldali**, az engedélyezési kiszolgáló által létrehozott titkos adatokat, amelyek csak az engedélyezési kiszolgáló által ismert egyedi értékek. 
 
 > [!NOTE]
-> Az OAuth v1 nem támogatott az ügyfél titkos kulcsa miatt. A OAuth v2 támogatott.  
-
-Ajánlott eljárások (javasolt, de nem kötelező):
-* Több átirányítási URL-cím támogatása. A rendszergazdák a "portal.azure.com" és a "aad.portal.azure.com" típusból is konfigurálhatják az üzembe helyezést. Több átirányítási URL-cím támogatása biztosítja, hogy a felhasználók bármelyik portálról engedélyezzék a hozzáférést.
-* Az egyszerű megújítás érdekében több titkot is támogat, állásidő nélkül. 
-
-#### <a name="how-to-setup-oauth-code-grant-flow"></a>A OAuth kód engedélyezési folyamatának beállítása
-
-1. Jelentkezzen be a Azure Portalba, lépjen a **vállalati alkalmazások** alkalmazás üzembe helyezése elemre,  >    >   és válassza az **Engedélyezés** lehetőséget.
-
-   1. Azure Portal átirányítja a felhasználót az engedélyezési URL-címre (bejelentkezési oldal a harmadik féltől származó alkalmazáshoz).
-
-   1. A rendszergazda hitelesítő adatokat biztosít a harmadik féltől származó alkalmazás számára. 
-
-   1. A harmadik féltől származó alkalmazás visszairányítja a felhasználót a Azure Portalre, és megadja a kódot 
-
-   1. Az Azure AD-kiépítési szolgáltatások meghívja a jogkivonat URL-címét, és megadja a kód megadását. A harmadik féltől származó alkalmazás a hozzáférési jogkivonattal, a frissítési jogkivonattal és a lejárati dátummal válaszol.
-
-1. A kiépítési ciklus megkezdésekor a szolgáltatás ellenőrzi, hogy az aktuális hozzáférési jogkivonat érvényes-e, és szükség esetén egy új jogkivonatra cseréli-e. A hozzáférési jogkivonatot az alkalmazásra vonatkozó minden kérelemben meg kell adni, és a kérelem érvényessége minden kérelem előtt be van jelölve.
+> Az **engedélyezési URL-cím** és a **jogkivonatcsere URL-címe** jelenleg nem konfigurálható bérlőnként.
 
 > [!NOTE]
-> Habár nem lehet beállítani a OAuth a katalóguson kívüli alkalmazásokhoz, manuálisan is létrehozhat egy hozzáférési jogkivonatot az engedélyezési kiszolgálóról, és titkos jogkivonatként beírhatja azt egy nem katalógusbeli alkalmazáshoz. Ez lehetővé teszi a SCIM-kiszolgáló és a HRE SCIM-ügyfél kompatibilitásának ellenőrzését az alkalmazás-katalógusba való beléptetés előtt, amely támogatja a OAuth-kód engedélyezését.  
+> Az OAuth v1 nem támogatott az ügyfél titkos kódának miatt. Az OAuth v2 támogatott.  
 
-**Hosszú élettartamú OAuth tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, akkor egy hosszú élettartamú OAuth tulajdonosi jogkivonatot hoz létre, amelyet a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer.
+Ajánlott eljárások (ajánlott, de nem kötelező):
+* Több átirányítási URL-cím támogatása. A rendszergazdák a kiépítést a "portal.azure.com" és a "aad.portal.azure.com" aad.portal.azure.com konfigurálhatják. Ha több átirányítási URL-címet támogat, a felhasználók mindkét portálról engedélyezhetik a hozzáférést.
+* Több titkos adat támogatása az egyszerű megújítás érdekében, leállás nélkül. 
 
-További hitelesítési és engedélyezési módszerek esetén tudassa velünk a [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
+#### <a name="how-to-setup-oauth-code-grant-flow"></a>OAuth-kód megadó folyamatának beállítása
 
-### <a name="gallery-go-to-market-launch-check-list"></a>A katalógus piacról indított indítási ellenőrzési listája
-Ha segítségre van szüksége a közös integrációval kapcsolatos ismeretek és igények kielégítéséhez, javasoljuk, hogy frissítse a meglévő dokumentációját, és bővítse az integrációt a marketing-csatornákon.  Az alábbi ellenőrzőlista-tevékenységeket ajánljuk az indítás támogatásához.
+1. Jelentkezzen be a Azure Portal, válassza a **Vállalati** alkalmazások Alkalmazás kiépítése, majd az Authorize  >    >   **(Engedély) lehetőséget.**
+
+   1. Azure Portal átirányítja a felhasználót az engedélyezési URL-címre (a harmadik féltől származó alkalmazás bejelentkezési oldalára).
+
+   1. A rendszergazda hitelesítő adatokat ad meg a harmadik féltől származó alkalmazásnak. 
+
+   1. A harmadik féltől származó alkalmazás visszairányítsa a felhasználót Azure Portal, és megadja a megadókódot 
+
+   1. Az Azure AD kiépítési szolgáltatások a jogkivonat URL-címét hívja meg, és megadja a hozzáférési kódot. A harmadik féltől származó alkalmazás a hozzáférési jogkivonattal, a frissítési jogkivonattal és a lejárati dátummal válaszol
+
+1. A kiépítési ciklus kezdetekor a szolgáltatás ellenőrzi, hogy az aktuális hozzáférési jogkivonat érvényes-e, és szükség esetén új jogkivonatot hoz létre. A hozzáférési jogkivonat az alkalmazáshoz minden kérésben meg van jelölve, és a kérés érvényességét az egyes kérések előtt ellenőrzi a rendszer.
+
+> [!NOTE]
+> Bár az OAuth nem állítható be a katalóguson kívüli alkalmazásokon, manuálisan létrehozhat egy hozzáférési jogkivonatot az engedélyezési kiszolgálóról, és meg is használhatja azt titkos jogkivonatként egy nem katalógusban található alkalmazáshoz. Ez lehetővé teszi, hogy ellenőrizze az SCIM-kiszolgáló és az AAD SCIM-ügyfél kompatibilitását, mielőtt az OAuth-kód megadását támogató alkalmazás-katalógusba való be- vagy felveszné.  
+
+**Hosszú ideig tartó OAuth-jogkivonatok:** Ha az alkalmazás nem támogatja az OAuth engedélyezési kódengedélyezési folyamatot, hozzon létre egy hosszú ideig tartó, OAuth-jogkivonatot, amely segítségével a rendszergazda beállíthatja a kiépítési integrációt. A jogkivonatnak állandónak kell lennie, különben [](application-provisioning-quarantine-status.md) a kiépítési feladat karanténba kerül a jogkivonat lejártakor.
+
+További hitelesítési és engedélyezési módszerekért tudassa velünk a [UserVoice-on.](https://aka.ms/appprovisioningfeaturerequest)
+
+### <a name="gallery-go-to-market-launch-check-list"></a>Katalógus piacra dobáskor – ellenőrzőlista
+A közös integráció tudatosságának és igényének felkeltése érdekében javasoljuk, hogy frissítse meglévő dokumentációját, és erősíti az integrációt a marketingcsatornákban.  Az alábbi ellenőrzőlista-tevékenységeket javasoljuk, hogy teljes körűen támogassa az indítást
 
 > [!div class="checklist"]
-> * Győződjön meg arról, hogy az értékesítési és az ügyfélszolgálati csapat tisztában van, készen áll, és tud beszélni az integrációs képességekről. A csapatait röviden összefoglalhatja, és megadhatja az értékesítési anyagok integrálását. 
-> * Készítsen egy blogbejegyzést, vagy nyomja meg a kiadást, amely leírja a közös integrációt, az előnyöket és az első lépéseket. [Példa: inprivata és Azure Active Directory Press sajtóközlemény](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
-> * A közösségi média, például a Twitter, a Facebook vagy a LinkedIn segítségével népszerűsítheti ügyfelei integrációját. Ügyeljen arra, hogy @AzureAD a közzététel után is meg lehessen adni a bejegyzést. [Példa: inprivata Twitter post](https://twitter.com/azuread/status/1123964502909779968)
-> * Létrehozhatja vagy frissítheti a marketing oldalait vagy webhelyét (például integrációs oldal, partner oldal, díjszabási oldal stb.), hogy tartalmazza a közös integráció rendelkezésre állását. [Példa: Pingboard Integration Page](https://pingboard.com/org-chart-for), [Smartsheet Integration Page](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Monday.com díjszabása oldal](https://monday.com/pricing/) 
-> * Hozzon létre egy Help Center-cikket vagy technikai dokumentációt arról, hogy az ügyfelek hogyan kezdhetik meg az első lépéseket. [Példa: megbízottat + Microsoft Azure Active Directory Integration.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+> * Győződjön meg arról, hogy az értékesítési és ügyfélszolgálati csapatok tisztában vannak az integrációs képességekkel, készen állnak és tudnak beszélni az integrációs képességekkel. Tájékoztassa a csapatokat, adja meg nekik a gyakori kérdésekre vonatkozó információkat, és foglalja bele az értékesítési anyagokba való integrációt. 
+> * Blogbejegyzés vagy kiadás létrehozása, amely leírja a közös integrációt, az előnyöket és az első lépések útmutatóját. [Példa: Imprivata és Azure Active Directory Press Release](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+> * A közösségi médiával, például a Twitter, a Facebook vagy a LinkedIn segítségével népszerűsítheti az integrációt az ügyfelek felé. Mindenképpen foglalja bele @AzureAD a bejegyzést, hogy újratweetkedjünk a bejegyzésben. [Példa: Imprivata Twitter-bejegyzés](https://twitter.com/azuread/status/1123964502909779968)
+> * Hozza létre vagy frissítse a marketingoldalakat/webhelyeket (például az integrációs oldalt, a partneroldalt, a díjszabási oldalt stb.), hogy tartalmazza a közös integráció elérhetőségét. [Példa: Pingboard integrációs oldal,](https://pingboard.com/org-chart-for) [Smartsheet integrációs oldal,](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad) [Monday.com díjszabási oldal](https://monday.com/pricing/) 
+> * Hozzon létre egy súgóközpont-cikket vagy műszaki dokumentációt arról, hogyan kezdik meg az ügyfelek az első lépésekben. [Például: Envoy + Microsoft Azure Active Directory integráció.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
-> * Az ügyfél-kommunikáció (havi hírlevél, e-mail-kampányok, termék-kibocsátási megjegyzések) révén riasztást készíthet az ügyfelektől az új integrációról. 
+> * Értesítse az ügyfeleket az új integrációról az ügyfelek kommunikációján keresztül (havi hírlevelek, e-mail-kampányok, termék kibocsátási megjegyzései). 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Minta scim-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md) 
->  [A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások](user-provisioning.md) 
->  megszüntetése [Attribútum-hozzárendelések testreszabása a felhasználók üzembe](customize-application-attributes.md) 
->  helyezéséhez [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md) 
->  [Felhasználói kiépítési](define-conditional-rules-for-provisioning-user-accounts.md) 
->  szűrők hatóköre [Fiók kiépítési értesítései](user-provisioning.md) 
+> [SCIM-mintavégpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md) 
+>  Felhasználókiépítés és -megszüntetés [automatizálása SaaS-alkalmazásokban](user-provisioning.md) 
+>  [Attribútumleképezések testreszabása felhasználókiépítéshez](customize-application-attributes.md) 
+>  [Kifejezések írása attribútumleképezéshez](functions-for-customizing-application-data.md) 
+>  [Felhasználóátépítés hatókörszűrői](define-conditional-rules-for-provisioning-user-accounts.md) 
+>  [Fiók létesítésével kapcsolatos értesítések](user-provisioning.md) 
 >  [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)

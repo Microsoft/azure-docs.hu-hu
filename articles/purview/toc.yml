@@ -12,9 +12,9 @@ items:
         href: create-catalog-portal.md
       - name: Purview-fiók létrehozása – Azure PowerShell
         href: create-catalog-powershell.md
-      - name: Hatáskörébe tartozó fiók létrehozása – .NET SDK
+      - name: Purview-fiók létrehozása – .NET SDK
         href: create-purview-dotnet.md
-      - name: Hatáskörébe tartozó fiók létrehozása – Python
+      - name: Purview-fiók létrehozása – Python
         href: create-purview-python.md
   - name: Oktatóanyagok
     items:
@@ -81,9 +81,9 @@ items:
                 href: manage-data-sources.md
               - name: A Purview-összekötők áttekintése
                 href: purview-connector-overview.md
-              - name: Azure-beli több forrás
+              - name: Azure Multiple Source
                 href: register-scan-azure-multiple-sources.md
-              - name: Azure szinapszis Analytics (munkaterület)
+              - name: Azure Synapse Analytics (Munkaterület)
                 href: register-scan-synapse-workspace.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
@@ -106,7 +106,7 @@ items:
               - name: Felügyelt Azure SQL Database-példány
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure dedikált SQL-készlet (korábban SQL DW)
+              - name: Azure Dedicated SQL-készlet (korábban SQL DW)
                 href: register-scan-azure-synapse-analytics.md
               - name: Helyszíni SQL Server
                 href: register-scan-on-premises-sql-server.md
@@ -130,7 +130,7 @@ items:
             href: how-to-manage-term-templates.md
       - name: Tömeges szerkesztés
         items:
-          - name: Eszközök tömeges szerkesztése a jegyzetek és a névjegyek címkézéséhez
+          - name: Eszközök tömeges szerkesztése jegyzetek és névjegyek címkézéséhez
             href: how-to-bulk-edit-assets.md
       - name: Besorolás
         items:
@@ -172,7 +172,7 @@ items:
             href: sensitivity-insights.md
           - name: Fájlkiterjesztéssel kapcsolatos megállapítások megtekintése
             href: file-extension-insights.md
-      - name: Biztonság & hálózatkezelés
+      - name: Security & Networking
         items:
           - name: Privát végpontok kezelése
             href: catalog-private-link.md
@@ -180,5 +180,13 @@ items:
     items:
       - name: Támogatott besorolások
         href: supported-classifications.md
-      - name: ABAP függvények telepítési útmutatója
+      - name: ABAP-függvény üzembe helyezési útmutatója
         href: abap-functions-deployment-guide.md
+  - name: Források
+    items:
+      - name: Funkcióval kapcsolatos visszajelzés (felhasználói visszajelzés)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: Díjkalkulátor
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Microsoft Q&A fórum
+        href: 'https://docs.microsoft.com/answers/topics/azure-purview.html'

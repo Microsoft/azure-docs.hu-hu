@@ -1,109 +1,155 @@
 ---
-title: Windows rendszerű virtuális asztali kötelező URL-címek listája – Azure
-description: A feloldani kívánt URL-címek listája, amely biztosítja, hogy a Windows rendszerű virtuális asztali környezet a kívánt módon működjön.
+title: Windows Virtual Desktop URL-címek listája – Azure
+description: Azon URL-címek listája, amelyeket fel kell oldani annak érdekében, hogy a Windows Virtual Desktop megfelelően működik-e.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c937f9d75613b6550a2f05dd63a8b31dd83fe0b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 00ae761af44b9e6537149c96607c0ba00e6439c8
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445721"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514985"
 ---
 # <a name="required-url-list"></a>Szükséges URL-címek listája
 
-A Windows rendszerű virtuális asztalok üzembe helyezéséhez és használatához fel kell oldania bizonyos URL-címek blokkolását, hogy a virtuális gépek (VM-EK) bármikor hozzáférhessenek hozzájuk. Ez a cikk felsorolja azokat a szükséges URL-címeket, amelyeknek meg kell szüntetnie a tiltást ahhoz, hogy a Windows virtuális asztal megfelelően működjön. 
+A virtuális gépek üzembe helyezéséhez és Windows Virtual Desktop kell feloldani bizonyos URL-címek blokkolását, hogy a virtuális gépek (VM-ek) bármikor hozzáférjenek hozzájuk. Ez a cikk felsorolja a tiltás feloldásához szükséges URL-címeket, Windows Virtual Desktop megfelelően működjön. 
 
 >[!IMPORTANT]
->A Windows virtuális asztal nem támogatja az ebben a cikkben felsorolt URL-címeket blokkoló központi telepítéseket.
+>Windows Virtual Desktop nem támogatja az ebben a cikkben felsorolt URL-címeket blokkoló üzemelő példányokat.
+
+## <a name="required-url-check-tool"></a>Szükséges URL-ellenőrző eszköz
+
+A Szükséges URL-cím-ellenőrző eszköz ellenőrzi az URL-címeket, és megjeleníti, hogy elérhetők-e azok az URL-címek, amelyekhez a virtuális gépnek működnie kell. Ha nem, akkor az eszköz felsorolja a nem elérhető URL-címeket, így szükség esetén feloldhatja a tiltásokat.
+
+Fontos szem előtt tartani a következőket:
+
+- A kötelező URL-ellenőrző eszközt csak kereskedelmi felhőkben üzemelő példányok esetén használhatja.
+- A Szükséges URL-címellenőrzés eszköz nem tudja helyettesítő karakterekkel ellenőrizni az URL-címeket, ezért először oldja fel az URL-címek blokkolását.
+
+### <a name="requirements"></a>Követelmények
+
+A Szükséges URL-cím-ellenőrző eszköz az alábbiakhoz szükséges:
+
+- A virtuális gépnek .NET 4.6.2 keretrendszerre van szükség
+- RDAgent 1.0.2944.400-as vagy újabb verzió
+- A WVDAgentUrlTool.exe fájlnak ugyanabban a mappában kell lennie, mint a WVDAgentUrlTool.config fájlnak
+
+### <a name="how-to-use-the-required-url-check-tool"></a>A szükséges URL-ellenőrző eszköz használata
+
+A Szükséges URL-cím-ellenőrző eszköz használata:
+
+1. Nyisson meg egy parancssort rendszergazdaként a virtuális gépen.
+2. A következő parancs futtatásával módosítsa a könyvtárat a buildügynökkel azonos mappára:
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. Futtassa az alábbi parancsot:
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. A fájl futtatása után megjelenik az elérhető és nem elérhető URL-címek listája.
+
+    Az alábbi képernyőképen például az látható, hogy két kötelező nem helyettesítő URL-cím blokkolását kell feloldani:
+
+    > [!div class="mx-imgBorder"]
+    > ![Nem elérhető URL-címek kimenetének képernyőképe.](media/noaccess.png)
+    
+    Az összes szükséges nem helyettesítő URL-cím blokkolásának feloldása után a következő kimenetnek kell kinéznie:
+
+    > [!div class="mx-imgBorder"]
+    > ![Az akadálymentes URL-címek kimenetének képernyőképe.](media/access.png)
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez az Azure kereskedelmi felhőben:
+A virtuális gépekhez létrehozott Azure-Windows Virtual Desktop hozzáféréssel kell, hogy rendelkezik a következő URL-címekhez az Azure kereskedelmi felhőben:
 
-|Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
+|Cím|Kimenő TCP-port|Cél|Szolgáltatáscímke|
 |---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|WindowsVirtualDesktop|
-|gcs.prod.monitoring.core.windows.net|443|Ügynök forgalma|AzureCloud|
-|production.diagnostics.monitoring.core.windows.net|443|Ügynök forgalma|AzureCloud|
-|* xt.blob.core.windows.net|443|Ügynök forgalma|AzureCloud|
-|* eh.servicebus.windows.net|443|Ügynök forgalma|AzureCloud|
-|* xt.table.core.windows.net|443|Ügynök forgalma|AzureCloud|
-|* xt.queue.core.windows.net|443|Ügynök forgalma|AzureCloud|
+|*.wvd.microsoft.com|443|Szolgáltatásforgalom|WindowsVirtualDesktop|
+|gcs.prod.monitoring.core.windows.net|443|Ügynökforgalom|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|Ügynökforgalom|AzureCloud|
+|*xt.blob.core.windows.net|443|Ügynökforgalom|AzureCloud|
+|*eh.servicebus.windows.net|443|Ügynökforgalom|AzureCloud|
+|*xt.table.core.windows.net|443|Ügynökforgalom|AzureCloud|
+|*xt.queue.core.windows.net|443|Ügynökforgalom|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
 |kms.core.windows.net|1688|A Windows aktiválása|Internet|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök- és SXS-veremfrissítések|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
-| 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N/A |
-| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
+| 169.254.169.254 | 80 | [Azure Instance Metadata szolgáltatásvégpont](../virtual-machines/windows/instance-metadata-service.md) | N/A |
+| 168.63.129.16 | 80 | [Munkamenetgazda állapotfigyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
 
 >[!IMPORTANT]
->A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
+>Windows Virtual Desktop már támogatja az FQDN címkét. További információ: [Use Azure Firewall to protect Window Virtual Desktop deployments](../firewall/protect-windows-virtual-desktop.md)(A Windows Virtual Desktop üzemelő példányai Azure Firewall használatával).
 >
->Javasoljuk, hogy az URL-címek helyett a teljes tartománynevet vagy a szolgáltatás címkéit használja a szolgáltatási problémák megelőzése érdekében. A felsorolt URL-címek és címkék csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak. Nem tartalmaznak URL-címeket más szolgáltatásokhoz, például a Azure Active Directoryhoz.
+>Javasoljuk, hogy URL-címek helyett FQDN-címkéket vagy szolgáltatáscímkéket használjon a szolgáltatás problémáinak elkerülése érdekében. A felsorolt URL-címek és címkék csak a Windows Virtual Desktop és erőforrásoknak felelnek meg. Nem tartalmaznak URL-címeket más szolgáltatásokhoz, például a Azure Active Directory.
 
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez a Azure Government-felhőben:
+A felhőben a Windows Virtual Desktop létrehozott Azure-beli virtuális gépeknek a következő URL-címekhez kell Azure Government hozzáféréssel:
 
-|Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
+|Cím|Kimenő TCP-port|Cél|Szolgáltatáscímke|
 |---|---|---|---|
-|*. wvd.microsoft.us|443|Szolgáltatás forgalma|WindowsVirtualDesktop|
+|*.wvd.microsoft.us|443|Szolgáltatásforgalom|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
-|* xt.blob.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
-|*. servicebus.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
-|* xt.table.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
+|*xt.blob.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
+|*.servicebus.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
+|*xt.table.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|A Windows aktiválása|Internet|
-|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Ügynök- és SXS-veremfrissítések|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure Portal támogatás|AzureCloud|
-| 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N/A |
-| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
+| 169.254.169.254 | 80 | [Azure Instance Metadata szolgáltatásvégpont](../virtual-machines/windows/instance-metadata-service.md) | N/A |
+| 168.63.129.16 | 80 | [Munkamenetgazda állapotfigyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N/A |
 
-A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
+A következő táblázat felsorolja azokat a választható URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
 
-|Cím|Kimenő TCP-port|Cél|Azure gov|
+|Cím|Kimenő TCP-port|Cél|Azure Gov|
 |---|---|---|---|
 |*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|login.microsoftonline.us|
-|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincsenek|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
-|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|login.microsoftonline.us|
-|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|oneclient.sfx.ms|
-|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincsenek|
-|*. azure-dns.com|443|Azure DNS felbontás|Nincsenek|
-|*. azure-dns.net|443|Azure DNS felbontás|Nincsenek|
+|*.events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincsenek|
+|www.msftconnecttest.com|443|Észleli, hogy az operációs rendszer csatlakozik-e az internethez|Nincsenek|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
+|login.windows.net|443|Jelentkezzen be a Microsoft Online Servicesbe, majd Microsoft 365|login.microsoftonline.us|
+|*.sfx.ms|443|A OneDrive-ügyfélszoftver frissítései|oneclient.sfx.ms|
+|*.digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincsenek|
+|*.azure-dns.com|443|Azure DNS feloldás|Nincsenek|
+|*.azure-dns.net|443|Azure DNS feloldás|Nincsenek|
 
 >[!NOTE]
->A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
+>Windows Virtual Desktop jelenleg nem tartalmazza azon IP-címtartományok listáját, amelyek letiltásának feloldásával engedélyezheti a hálózati forgalmat. Jelenleg csak bizonyos URL-címek tiltásának feloldását támogatjuk.
 >
->Ha a következő generációs tűzfalat (NGFW) használja, az Azure-beli IP-címekre vonatkozó dinamikus listát kell használnia, hogy biztosan csatlakozhasson.
+>Ha új generációs tűzfalat (NGFW) használ, a csatlakozáshoz egy kifejezetten az Azure IP-hez készült dinamikus listát kell használnia.
 >
->A biztonságos Office-hoz kapcsolódó URL-címek listáját, beleértve a szükséges Azure Active Directory kapcsolódó URL-címeket, lásd: [Office 365 URL-címek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges).
+>A biztonságos Office-hez kapcsolódó URL-címek listáját, beleértve a szükséges Azure Active Directory URL-címeket is, lásd: [Office 365 URL-címek és IP-címtartományok.](/office365/enterprise/urls-and-ip-address-ranges)
 >
->A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
+>A szolgáltatásforgalmat tartalmazó URL-címekhez a (*) helyettesítő karaktert kell használnia. Ha nem szeretné használni a * karaktereket az ügynökkel kapcsolatos forgalomhoz, az url-címeket helyettesítő karakterek nélkül a következőben találhatja meg:
 >
->1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
->2. Nyissa meg az **eseménynaplót**, majd lépjen a **Windows logs**  >  **Application**  >  **WVD-Agent** elemre, és keresse meg a 3701-es azonosítójú eseményt.
->3. Oldja fel a 3701-es AZONOSÍTÓJÚ esemény alatt megtalált URL-címeket. Az 3701-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az összes olyan régióhoz tartozó URL-címmel meg kell ismételnie a blokkolási folyamatot, amelyre telepíteni szeretné a virtuális gépeket a alkalmazásban.
+>1. Regisztrálja a virtuális gépeket a Windows Virtual Desktop gazdagépkészletben.
+>2. Nyissa **meg az Eseménynaplót,** majd nyissa meg a **Windows-naplók** WVD-Agent alkalmazást, és keresse meg a  >    >   3701-es eseményazonosítót.
+>3. Oldja fel a 3701-es eseményazonosító alatt található URL-címek blokkolását. A 3701-es eseményazonosító alatti URL-címek régióspecifikusak. Meg kell ismételnie a tiltási folyamatot a megfelelő URL-címekkel minden olyan régióban, ahol üzembe szeretné helyezni a virtuális gépeket.
 
 ## <a name="remote-desktop-clients"></a>Távoli asztali ügyfelek
 
-A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
+Minden Távoli asztal ügyfélnek hozzá kell férnie a következő URL-címekhez:
 
-|Cím|Kimenő TCP-port|Cél|Ügyfél (ek)|Azure gov|
+|Cím|Kimenő TCP-port|Cél|Ügyfél(k)|Azure Gov|
 |---|---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|*. wvd.microsoft.us|
-|*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|*. servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincsenek|
-|aka.ms|443|Microsoft URL-rövidített|Mind|Nincsenek|
+|*.wvd.microsoft.com|443|Szolgáltatásforgalom|Mind|*.wvd.microsoft.us|
+|*.servicebus.windows.net|443|Adatok hibaelhárítása|Mind|*.servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLinkek|Mind|Nincsenek|
+|aka.ms|443|A Microsoft URL-címe rövidebb|Mind|Nincsenek|
 |docs.microsoft.com|443|Dokumentáció|Mind|Nincsenek|
 |privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|Nincsenek|
-|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincsenek|
+|query.prod.cms.rt.microsoft.com|443|Ügyfélfrissítések|Windows asztali rendszer|Nincsenek|
 
 >[!IMPORTANT]
->Az URL-címek megnyitása elengedhetetlen a megbízható ügyfél-élményhez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja.
+>Ezeknek az URL-címeknek a megnyitása elengedhetetlen a megbízható ügyfélélményhez. Az URL-címekhez való hozzáférés letiltása nem támogatott, és hatással van a szolgáltatás funkcióira.
 >
->Ezek az URL-címek csak az ügyfél helyei és erőforrásainak felelnek meg. A lista nem tartalmaz URL-címeket más olyan szolgáltatásokhoz, mint például a Azure Active Directory. Azure Active Directory URL-címek az [Office 365 URL-címek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)alatt találhatók az 56 azonosító alatt.
+>Ezek az URL-címek csak az ügyfélhelyeknek és -erőforrásoknak felelnek meg. Ez a lista nem tartalmazza az olyan más szolgáltatások URL-címeit, mint Azure Active Directory. Azure Active Directory URL-címek az [Office 365](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)URL-címeinek és IP-címtartományának 56-os azonosítója alatt találhatók.

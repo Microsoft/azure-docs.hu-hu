@@ -1,6 +1,6 @@
 ---
-title: Ugrás a lekérdezéshez
-description: A go használatával hozzon létre egy programot, amely a Azure SQL Database vagy az Azure SQL felügyelt példányában található adatbázishoz csatlakozik, és lekérdezéseket futtat.
+title: Az Ugrás a lekérdezéshez használata
+description: A Go használatával létrehozhat egy programot, amely egy adatbázishoz csatlakozik a Azure SQL Database vagy Azure SQL Managed Instance, és lekérdezéseket futtat.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -11,59 +11,59 @@ ms.topic: quickstart
 author: David-Engel
 ms.author: sstein
 ms.reviewer: MightyPen
-ms.date: 02/12/2019
-ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 1a479572ba8dbd68ccc072fce32446abcc9b873c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327544"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517780"
 ---
-# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: adatbázis lekérdezése Azure SQL Database vagy Azure SQL felügyelt példányban
+# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: Adatbázis lekérdezése a Golang használatával Azure SQL Database vagy Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelvet fogja használni Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz. Ezután a Transact-SQL-utasítások futtatásával lekérdezheti és módosíthatja az adatokat. A [Golang](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti egyszerű, megbízható és hatékony szoftverek készítését.  
+Ebben a rövid útmutatóban a [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelvvel fog csatlakozni egy adatbázishoz egy Azure SQL Database vagy Azure SQL Managed Instance. Ezután Transact-SQL-utasításokat fog futtatni az adatok lekérdezéséhez és módosításához. [A Golang](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti az egyszerű, megbízható és hatékony szoftverek felépítését.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége:
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre adatbázist:
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Egy adatbázis a Azure SQL Database vagy Azure SQL Managed Instance. Az alábbi rövid útmutatók segítségével hozhat létre adatbázist:
 
   || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | **Létrehozás**| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   | **Létrehozás** | [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   | **Létrehozás** | [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | **Konfigurálás** | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
-  | **Konfigurálás** ||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |**Adatok betöltése**|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) | [Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) |
-  | **Adatok betöltése** ||Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | **Konfigurálás** | [Kiszolgálószintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Csatlakozás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
+  | **Konfigurálás** ||[Helyszíni kapcsolatok](../managed-instance/point-to-site-p2s-configure.md) | [Csatlakozás egy SQL Server példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  |**Adatok betöltése**|Az Adventure Works gyorsútmutatónként töltődik be|[Wide World Importers visszaállítása](../managed-instance/restore-sample-database-quickstart.md) | [Wide World Importers visszaállítása](../managed-instance/restore-sample-database-quickstart.md) |
+  | **Adatok betöltése** ||Adventure Works visszaállítása vagy importálása [BACPAC-fájlból](database-import.md) a [GitHubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása [BACPAC-fájlból](database-import.md) a [GitHubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. A felügyelt SQL-példányok esetében importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World importőr-adatbázis használatára.
+  > A cikkben leírt szkriptek az Adventure Works-adatbázis használatára vannak megírva. A SQL Managed Instance importálni kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a cikkben használt szkripteket a Wide World Importers-adatbázis használatára.
 
-- A Golang és a kapcsolódó szoftverek a telepített operációs rendszerhez:
+- A telepített operációs rendszerhez tartozó Golang és kapcsolódó szoftverek:
 
-  - **MacOS**: telepítse a Homebrew-t és a Golang-t. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**: telepítse a Golang. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows**: telepítse a Golang. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **macOS:** Telepítse a Homebrew-t és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu:** Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows:** Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
+## <a name="get-server-connection-information"></a>Kiszolgáló kapcsolati információinak lekért adatai
 
-Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+Szerezze be az adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A következő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy állomásnévre, adatbázisnévre és bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
+2. Lépjen az **SQL Database-adatbázisok vagy** felügyelt **SQL-példányok lapra.**
 
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
+3. Az Áttekintés **lapon** tekintse át az adatbázis  kiszolgálóneve melletti teljes kiszolgálónevet az Azure SQL Database-ban, vagy a Gazdagép mellett található teljes kiszolgálónevet (vagy IP-címet) egy Azure-beli virtuális gépen Azure SQL Managed Instance vagy SQL Server mellett.  A kiszolgálónév vagy az állomásnév másoláshoz vigye fölé a kurzort, és válassza a **Másolás ikont.**
 
 > [!NOTE]
-> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+> Az Azure-beli virtuális SQL Server kapcsolati információiért lásd: Csatlakozás SQL Server [példányhoz.](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
 
-## <a name="create-golang-project-and-dependencies"></a>Golang-projekt és-függőségek létrehozása
+## <a name="create-golang-project-and-dependencies"></a>Golang-projekt és függőségek létrehozása
 
 1. A terminálból hozza létre az **SqlServerSample** nevű új projektmappát. 
 
@@ -71,17 +71,16 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
    mkdir SqlServerSample
    ```
 
-2. Lépjen a **SqlServerSample** elemre, és telepítse a SQL Server-illesztőprogramot a Go-hoz.
+2. Lépjen az **SqlServerSample lapra,** és telepítse SQL Server Go-illesztőt.
 
    ```bash
    cd SqlServerSample
    go get github.com/denisenkom/go-mssqldb
-   go install github.com/denisenkom/go-mssqldb
    ```
 
 ## <a name="create-sample-data"></a>Mintaadatok létrehozása
 
-1. Egy szövegszerkesztőben hozzon létre egy **CreateTestData. SQL** nevű fájlt a **SqlServerSample** mappában. A fájlban illessze be ezt a T-SQL-kódot, amely létrehoz egy sémát, egy táblázatot, és beszúr néhány sort.
+1. Egy szövegszerkesztőben hozzon létre egy **CreateTestData.sql** nevű fájlt az **SqlServerSample mappában.** A fájlba illessze be ezt a T-SQL-kódot, amely létrehoz egy sémát, egy táblát, és beszúr néhány sort.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -104,7 +103,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
    GO
    ```
 
-2. A használatával `sqlcmd` csatlakozhat az adatbázishoz, és futtathatja az újonnan létrehozott Azure SQL-szkriptet. Helyettesítse be a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót.
+2. A `sqlcmd` használatával csatlakozzon az adatbázishoz, és futtassa az újonnan létrehozott Azure SQL szkriptet. Helyettesítse be a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználónevet és a jelszót.
 
    ```bash
    sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
@@ -114,7 +113,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 1. Hozzon létre egy **sample.go** nevű fájlt az **SqlServerSample** mappában.
 
-2. A fájlban illessze be ezt a kódot. Adja hozzá a kiszolgáló, az adatbázis, a Felhasználónév és a jelszó értékét. Ez a példa a Golang [környezeti módszereit](https://golang.org/pkg/context/) használja annak biztosítására, hogy aktív a kapcsolódás.
+2. Illessze be ezt a kódot a fájlba. Adja meg a kiszolgáló, az adatbázis, a felhasználónév és a jelszó értékeit. Ez a példa a Golang környezeti [metódusok segítségével](https://golang.org/pkg/context/) győződik meg arról, hogy van aktív kapcsolat.
 
    ```go
    package main
@@ -313,7 +312,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. A parancssorban futtassa a következő parancsot.
+1. Futtassa a következő parancsot a parancssorban.
 
    ```bash
    go run sample.go
@@ -335,7 +334,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
-- [A SQL Server Golang-illesztőprogramja](https://github.com/denisenkom/go-mssqldb)
+- [Az első adatbázis megtervezése a Azure SQL Database](design-first-database-tutorial.md)
+- [Golang-illesztő SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Problémák jelentése és kérdezés](https://github.com/denisenkom/go-mssqldb/issues)
 

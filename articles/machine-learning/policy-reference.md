@@ -1,26 +1,26 @@
 ---
-title: A Azure Machine Learning beépített szabályzat-definíciói
-description: A Azure Machine Learning Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure Machine Learning
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Machine Learning. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 01537083de38a019301d1c61e0e0b229f19720e5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: f8c9ed14bbea3d0a74bbdf1712242d19d21e14f8
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094421"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505989"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy beépített szabályzat-definíciók a Azure Machine Learning
+# <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy beépített szabályzatdefiníciók a Azure Machine Learning
 
-Ez az oldal a Azure Machine Learning [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. A Azure Policy gyakori használati esetei közé tartozik az erőforrás-konzisztencia megvalósítása, a szabályozások megfelelősége, a biztonság, a költséghatékonyság és a felügyelet. Ezeknek a gyakori használati eseteknek a szabályzat-definíciói már elérhetők az Azure-környezetben olyan beépített modulként, amely segítséget nyújt az első lépésekhez. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal a Azure Policy [beépített](../governance/policy/overview.md) szabályzatdefiníciók indexe Azure Machine Learning. Az erőforrások használatának gyakori Azure Policy például az erőforrás-konzisztencia, a jogszabályi megfelelőség, a biztonság, a költségek és a felügyelet szabályozása. Ezeknek a gyakori eseteknek a szabályzatdefiníciói már elérhetők az Azure-környezetben beépítettként, hogy segítsenek az első lépésekben. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A GitHub-oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
-## <a name="built-in-policy-definitions"></a>Beépített szabályzat-definíciók
+## <a name="built-in-policy-definitions"></a>Beépített szabályzatdefiníciók
 
 [!INCLUDE [azure-policy-reference-cat-machinelearning](../../includes/policy/reference/bycat/policies-machine-learning.md)]
 

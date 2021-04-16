@@ -62,6 +62,8 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Alkalmazások fejlesztése és futtatása
       items:
+        - name: Alkalmazás üzembe helyezése Azure Red Hat OpenShift OpenShift kiszolgáló nélküli használatával
+          href: howto-deploy-with-serverless.md
         - name: Open Liberty-/WebSphere Liberty-alkalmazás üzembe helyezése
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11

@@ -1,19 +1,21 @@
 ---
 title: Rövid útmutató – Azure Storage-tábla létrehozása a Azure Portal
-description: Ebben a rövid útmutatóban egy Azure Storage-tábla létrehozásához használja a Azure Portal Table service. Azt is megtudhatja, hogyan hozhat létre Azure Storage-fiókot.
+description: Ebben a rövid útmutatóban egy Azure Storage-tábla létrehozásához használja a Azure Portal Table service-t. Azt is láthatja, hogyan hozhat létre Azure-tárfiókot.
 services: storage
-ms.service: storage
 author: tamram
 ms.author: tamram
-ms.topic: quickstart
 ms.date: 12/02/2019
+ms.topic: quickstart
+ms.service: storage
 ms.subservice: tables
-ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: fabfd0031ddd8ff58af346274c454b107c00779b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96326760"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529483"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rövid útmutató: Azure Storage-tábla létrehozása az Azure Portalon 
 
@@ -31,15 +33,15 @@ Az Azure Portal Table Service már táblák létrehozására is használható.
 
 1. Kattintson az Áttekintés > Táblák elemre.
 
-   ![A vmamcgestorage egy Storage-fiók, az Áttekintés lap van kiemelve. Az Áttekintés ablaktábla szolgáltatások területén a táblázatok elem ki van emelve.](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![A vmamcgestorage tárfiókon az Áttekintés lap van kiemelve. Az Áttekintés panel Szolgáltatások alatt a Táblák ki van emelve.](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. Kattintson a **+ Tábla** elemre.
 
-   ![A vmamcgestorage Table service a + Table beállítás ki van emelve.](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![A vmamcgestorage Table service szolgáltatásában a + Tábla lehetőség ki van emelve.](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. Adjon nevet a táblának a **Tábla neve** mezőben, majd kattintson az **OK** gombra. 
 
-   ![A Table service táblázat hozzáadása lapján a saját tábla szerepel a tábla neve mezőben, és ki van emelve. Az OK gomb ki van választva és ki van jelölve.](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![A Table Service Tábla hozzáadása lapján a Saját tábla a Tábla neve alatt van megadva, és ki van emelve. Az OK gomb ki van jelölve és ki van emelve.](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

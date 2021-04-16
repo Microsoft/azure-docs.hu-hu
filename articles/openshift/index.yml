@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: fad34c10d02d4a9daa8795cf77ab76903d8360f4
-  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.openlocfilehash: d6c9d2ae5a2f91cd0c9c5b0b902b254ffcd8c8f8
+  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107501195"
+  ms.lasthandoff: 04/15/2021
+  ms.locfileid: "107517878"
 landingContent:
 - title: AZ Azure Red Hat OpenShift bemutatása
   linkLists:
@@ -42,7 +42,9 @@ landingContent:
       url: dns-forwarding.md
     - text: Beépített tároló-beállításjegyzék konfigurálása a Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Open Azure Red Hat OpenShift-/WebSphere Fog-alkalmazás üzembe helyezése Azure Red Hat OpenShift fürtön
+    - text: Alkalmazás üzembe helyezése Azure Red Hat OpenShift OpenShift kiszolgáló nélküli használatával
+      url: howto-deploy-with-serverless.md
+    - text: Open Liberty-/WebSphere Liberty-alkalmazások üzembe helyezése Azure Red Hat OpenShift 4-fürtökön
       url: howto-deploy-java-liberty-app.md
 - title: Referencia
   linkLists:

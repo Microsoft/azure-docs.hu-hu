@@ -1,24 +1,26 @@
 ---
-title: 'Gyors útmutató: ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával (ARM-sablon)'
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy ExpressRoute-áramkört Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: ExpressRoute-kapcsolatkör létrehozása egy Azure Resource Manager sablon (ARM-sablon) használatával'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Egy ExpressRoute-kapcsolatkört egy Azure Resource Manager (ARM-sablon) használatával.
 services: expressroute
 author: duongau
-mnager: kumud
-ms.service: expressroute
-ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: kumud
+ms.date: 10/12/2020
+ms.topic: quickstart
+ms.service: expressroute
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 3dc1d5f5ec3dfb004468deb2bec80927c7ec189d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789726"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529884"
 ---
-# <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Gyors útmutató: ExpressRoute-áramkör létrehozása egy ARM-sablon használatával
+# <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rövid útmutató: ExpressRoute-kapcsolathálózat létrehozása privát társviszony-létesítés használatával ARM-sablon használatával
 
-Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager-sablon (ARM-sablon) egy ExpressRoute-áramkör létrehozásához privát társsal.
+Ez a rövid útmutató azt ismerteti, hogyan használható Azure Resource Manager sablon (ARM-sablon) privát társviszony-létesítésű ExpressRoute-kapcsolathálózat létrehozására.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,24 +36,24 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet) közül származik.
 
-Ebben a rövid útmutatóban egy ExpressRoute-áramkört fog létrehozni a *Equinix* -ben a szolgáltatóként. Az áramkör *prémium SKU*-t, *50 Mbps* sávszélességet és a *Washington DC* egyenrangú helyét fogja használni. A privát társítás a *192.168.10.16/30* és a *192.168.10.20/30* elsődleges és másodlagos alhálózattal lesz engedélyezve. A virtuális hálózatok a *HighPerformance ExpressRoute-átjáróval* együtt is létrejönnek.
+Ebben a rövid útmutatóban egy ExpressRoute-kapcsolatkört fog létrehozni szolgáltatóként *az Equinix* szolgáltatással. A kapcsolati kapcsolat egy *prémium szintű termékváltozatot* *használ, 50 Mbps* sávszélességgel, és *Washington D.C. társviszony-létesítési helyével.* A privát társviszony-létesítés a *192.168.10.16/30* és *a 192.168.10.20/30* elsődleges és másodlagos alhálózaton lesz engedélyezve. Egy virtuális hálózat is létrejön egy *HighPerformance ExpressRoute-átjáróval együtt.*
 
 :::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
-Több Azure-erőforrás van definiálva a sablonban:
+A sablonban több Azure-erőforrás is definiálva van:
 
-* [**Microsoft. Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
-* [**Microsoft. Network/expressRouteCircuits/társaik**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (az áramkörön a privát társak engedélyezésére használják)
-* [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (hálózati biztonsági csoport a virtuális hálózat alhálózatai esetében)
-* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
-* [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicIPAddresses) (a nyilvános IP-címet a ExpressRoute-átjáró használja)
-* [**Microsoft. Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (a ExpressRoute-átjáró a VNet kapcsolására használatos az áramkörhöz)
+* [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
+* [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (a privát társviszony-létesítés a kapcsolaton való engedélyezése érdekében)
+* [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (a hálózati biztonsági csoport a virtuális hálózat alhálózataira vonatkozik)
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
+* [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (az ExpressRoute-átjáró nyilvános IP-címet használ)
+* [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (Az ExpressRoute-átjáró a virtuális hálózat és a kapcsolati kapcsolat kapcsolatának összekötését használja)
 
-A ExpressRoute kapcsolatos további sablonokért tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Az ExpressRoute-hoz kapcsolódó további sablonokért lásd: [Azure gyorsindítási sablonok.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
+1. Válassza **a Try it** (Próbálja ki) lehetőséget az alábbi kódblokkban a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,46 +68,46 @@ A ExpressRoute kapcsolatos további sablonokért tekintse meg az [Azure Gyorsind
     Read-Host -Prompt "Press [ENTER] to continue ..."
     ```
 
-    Várjon, amíg megjelenik a-konzolon megjelenő kérdés.
+    Várjon, amíg meg nem látja a parancssort a konzolon.
 
-1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
+1. A  PowerShell-szkript másolásához válassza a Másolás lehetőséget az előző kódblokkból.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj konzolpanelére, majd válassza a Beillesztés **lehetőséget.**
 
 1. Adja meg az értékeket.
 
-    Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
+    Az erőforráscsoport neve a projekt neve, **rg hozzáfűzve.**
 
-    A sablon üzembe helyezése körülbelül 20 percet vesz igénybe. Ha elkészült, a kimenet a következőhöz hasonló:
+    A sablon üzembe helyezése körülbelül 20 percet vesz igénybe. Ha elkészült, a kimenet a következőre hasonlít:
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Resource Manager PowerShell-sablon üzembe helyezési kimenete":::
 
-A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon kívül használhatja a Azure Portal, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-portal.md).
+Azure PowerShell a sablon üzembe helyezéséhez használható. A Azure PowerShell mellett használhatja a Azure Portal, az Azure CLI és a REST API. További információ az egyéb üzembe helyezési módszerekről: [Sablonok üzembe helyezése.](../azure-resource-manager/templates/deploy-portal.md)
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
+1. A **bal oldali panelen** válassza az Erőforráscsoportok lehetőséget.
 
-1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve a projekt neve **RG** hozzáfűzéssel.
+1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az alapértelmezett erőforráscsoport-név a projekt neve, az **rg hozzáfűzése** után.
 
-1. Az erőforráscsoport az alábbi, itt látható erőforrásokat tartalmazza:
+1. Az erőforráscsoportnak az alábbi itt látható erőforrásokat kell tartalmaznia:
 
      :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute üzembe helyezési erőforráscsoport":::
 
-1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve** van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve**.
+1. Válassza ki az **er-ck01** ExpressRoute-kapcsolatkört annak ellenőrzéséhez, hogy a kapcsolatkör állapota **Engedélyezve,** a szolgáltató állapota **Nincs** kiépítve, a privát társviszony-létesítés állapota Pedig **Kiépítve.**
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute üzembe helyezési áramkör":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute-üzembehelyhelyi kapcsolati kör":::
 
 > [!NOTE]
-> A virtuális hálózat áramkörhöz való összekapcsolásához meg kell hívnia a szolgáltatót a létesítési folyamat befejezéséhez.
+> A kiépítési folyamat befejezéséhez meg kell hívnia a szolgáltatót, mielőtt a virtuális hálózatot a kapcsolati kapcsolathoz kapcsolhatja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a ExpressRoute áramkörrel létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a ExpressRoute áramkört és az összes kapcsolódó erőforrást.
+Ha már nincs szüksége az ExpressRoute-kapcsolatcsoporttal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja az ExpressRoute-kapcsolatkört és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>
@@ -113,7 +115,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a következőket:
+Ebben a rövid útmutatóban a következőt hozta létre:
 
 * ExpressRoute-kapcsolatcsoport
 * Virtual Network
@@ -121,7 +123,7 @@ Ebben a rövid útmutatóban létrehozta a következőket:
 * Nyilvános IP-cím
 * hálózati biztonsági csoportok
 
-Ha szeretné megtudni, hogyan kapcsolhat egy virtuális hálózatot egy áramkörhöz, folytassa a ExpressRoute oktatóanyagokkal.
+Ha meg szeretne ismerkedni a virtuális hálózatok kapcsolati kapcsolatokkal való csatolásának mikéntjével, folytassa az ExpressRoute oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [ExpressRoute oktatóanyagok](expressroute-howto-linkvnet-portal-resource-manager.md)
+> [ExpressRoute-oktatóanyagok](expressroute-howto-linkvnet-portal-resource-manager.md)

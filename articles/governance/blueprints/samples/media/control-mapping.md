@@ -1,243 +1,243 @@
 ---
-title: A Media Blueprint Sample-vezérlők
-description: A Media Blueprint-minták leképezésének vezérlése. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 04/02/2021
+title: Média tervminta vezérlői
+description: A Média tervminták leképezésének szabályozása. Minden vezérlő egy vagy több olyan definícióra van Azure Policy, amelyek az értékelést segítik.
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386403"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376698"
 ---
-# <a name="control-mapping-of-the-media-blueprint-sample"></a>A Media Blueprint minta vezérlőelem-hozzárendelésének vezérlése
+# <a name="control-mapping-of-the-media-blueprint-sample"></a>A Média tervminta vezérlőelem-leképezése
 
-A következő cikk részletesen ismerteti, hogyan történik az Azure-tervrajzok adathordozó-tervezetének leképezése az adathordozó-vezérlőkre. További információ a vezérlőkről: [adathordozó](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+A következő cikk részletesen bemutatja, Azure Blueprints Media-tervminta hogyan lesz leképezve a Média vezérlőkre. További információ a vezérlőkről: [Média.](https://www.motionpictures.org/best-practices)
 
-A következő leképezések az **adathordozó** -vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az **\[ előnézetet \] : a Media Controls** beépített házirend-kezdeményezésének naplózása.
+Az alábbi leképezések a Média **vezérlőkre vannak leképezve.** A jobb oldalon a navigációval közvetlenül egy adott vezérlőelem-leképezéshez ugorhat. Számos leképezett vezérlő egy Azure Policy [van](../../../policy/overview.md) megvalósítva. A teljes kezdeményezés áttekintéshez nyissa meg a **szabályzatot** a Azure Portal, és válassza a **Definíciók** lapot. Ezután keresse meg és válassza ki az **\[ Előzetes \] verzió: Média naplózása** beépített szabályzati kezdeményezést.
 
 > [!IMPORTANT]
-> Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
+> Az alábbi vezérlők egy vagy több [definícióhoz Azure Policy](../../../policy/overview.md) társítva. Ezek a szabályzatok segíthetnek [felmérni a](../../../policy/how-to/get-compliance-data.md) vezérlőnek való megfelelőséget; A vezérlők és egy vagy több szabályzat között azonban gyakran nincs egy-az-egyhez vagy egy teljes egyezés. Ezért a **szabályzatok Azure Policy** csak magukra a szabályzatra vonatkoznak; Ez nem biztosítja, hogy teljes mértékben megfelel egy vezérlő összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyekre jelenleg egyetlen Azure Policy sem vonatkoznak. Ezért a megfelelőségi Azure Policy csak részlegesen látható a teljes megfelelőségi állapotról. A megfelelőségi tervminta vezérlői és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md)
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1,1 – Győződjön meg arról, hogy nem létezik gyökérszintű hozzáférési kulcs
+### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1.1 – Győződjön meg arról, hogy nem létezik gyökérelérési kulcs
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a megadott tanúsítványokat nem tartalmazó Windows-alapú virtuális gépek naplózásához a megbízható gyökérben
+- \[Előzetes verzió: Előfeltételek központi telepítése az olyan Windows rendszerű virtuális gépek naplózására, amelyek nem tartalmazzák a megadott tanúsítványokat \] a Megbízható gyökérkönyvtárban
 
-### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1,2 – a jelszavakat, a PIN-ket és a tokeneket védeni kell
+### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1.2 – A jelszavakat, PIN-eket és jogkivonatokat védeni kell
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
+- \[Előzetes verzió: Előfeltételek telepítése olyan Windows rendszerű virtuális gépek naplózásához, amelyek nem korlátozzák a jelszó minimális hosszát \] 14 karakterre
 
-### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1,8 – a megosztott fiókhoz való hozzáférés tiltott
+### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1.8 – A megosztott fiókhoz való hozzáférés tiltott
 
 - A RootManageSharedAccessKey kivételével minden engedélyezési szabályt el kell távolítani Service Bus névtérből
 
-### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1,9 – a rendszeren korlátozni kell a jogosult felhasználók hozzáférését.
+### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1.9 – A rendszernek a jogosult felhasználókra kell korlátoznia a hozzáférést.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
+- Tárfiókok korlátlan hálózati hozzáférésének naplózása
 
-### <a name="ac--114--system-must-enforce-access-rights"></a>AC-1,14 – a rendszeren ki kell kényszeríteni a hozzáférési jogokat.
+### <a name="ac--114--system-must-enforce-access-rights"></a>AC– 1.14 – A rendszernek hozzáférési jogosultságokat kell kikényszerítenie.
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "felhasználói jogok kiosztása" alkalmazásban
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásához szükséges előfeltételek üzembe helyezése \] a Felhasználói jogok kiosztása funkcióban
 
-### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC-1,15 – a biztonsággal kapcsolatos információkhoz vagy funkciókhoz való jogosulatlan hozzáférés megakadályozása.
+### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC- 1.15 – A biztonsággal kapcsolatos információkhoz vagy funkciókhoz való jogosulatlan hozzáférés megakadályozása.
 
-- \[Előzetes verzió \] : a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a biztonsági beállítások – rendszerbeállítások menüpontban
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a Biztonsági beállítások – Rendszerbeállítások között
 
-### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – a feladatok elkülönítését a szerepkör megfelelő hozzárendelésével kell kikényszeríteni.
+### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – A feladatok elkülönítését a szerepkör megfelelő hozzárendelése révén kell kikényszeríteni.
 
-- [Előzetes verzió \] : Role-Based Access Control (RBAC) használata a Kubernetes-szolgáltatásokban
+- [Előzetes \] verzió: Role-Based Access Control (RBAC) a Kubernetes Servicesben kell használni
 
-### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – győződjön meg arról, hogy a rendszerek nem kapcsolódnak egyszerre a megbízható hálózatokhoz és a nem megbízható hálózatokhoz.
+### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1.40 – Győződjön meg arról, hogy a rendszerek nem csatlakoznak egyszerre megbízható és nem megbízható hálózatokhoz.
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "biztonsági beállítások – hálózati hozzáférés" szakaszban
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásához szükséges előfeltételek üzembe helyezése \] a "Biztonsági beállítások – Hálózati hozzáférés" alatt
 
-### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1,42 & AC-1,43 – a nem alkalmazottak számára elérhető távelérést csak a kifejezetten jóváhagyott információs rendszerekhez való hozzáférés engedélyezésére kell korlátozni.
+### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1.42 & AC- 1.43 – A nem alkalmazottak távelérését úgy kell korlátozni, hogy csak kifejezetten jóváhagyott információs rendszerekhez engedélyezze a hozzáférést
 
-- \[Előzetes verzió \] : a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
+- \[Előzetes verzió: Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a jelszavak nélküli \] fiókok távoli kapcsolatait
 
-### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1,50 – a biztonsággal kapcsolatos események naplózása az összes információs rendszer összetevőire vonatkozóan.
+### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1.50 – Biztonsági események naplózása minden információsrendszer-összetevőhöz.
 
-- A Logic Apps lévő diagnosztikai naplókat engedélyezni kell
+- A diagnosztikai naplókat Logic Apps engedélyezni kell
 
-### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – győződjön meg arról, hogy a többtényezős hitelesítés (MFA) engedélyezve van a felhőalapú konzol összes felhasználója számára.
+### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1.54 – Győződjön meg arról, hogy a többtényezős hitelesítés (MFA) engedélyezve van a felhőkonzol összes felhasználója számára.
 
 - Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
-- A fiókok vagy erőforrások megszegésének megelőzése érdekében minden írási jogosultsággal rendelkező előfizetési fiók esetében engedélyezni kell a Multi-Factor Authentication (MFA) használatát.
+- A többtényezős hitelesítést (MFA) engedélyezni kell az összes írási jogosultsággal rendelkező előfizetési fiókhoz, hogy megelőzhető legyen a fiókok vagy erőforrások megsértése.
 
 ## <a name="auditing--logging"></a>Naplózási & naplózása
 
-### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2,1 – a sikeres és sikertelen eseményeket naplózni kell.
+### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2.1 – A sikeres és sikertelen eseményeket naplózza.
 
-- A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.
+- Engedélyezni kell a diagnosztikai naplókat a Keresési szolgáltatásokban
 
-### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL-2,16 – a hálózati eszközöknek/példányoknak a hálózati eszköz/példány (ELBs, webalkalmazási tűzfalak stb.) által kritikus biztonsági eseményként besorolt összes eseményt be kell jelentkezniük.
+### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL -2.16 – A hálózati eszközöknek/példányoknak naplózva kell lennie az adott hálózati eszköz/példány által kritikus fontosságúként besorolt eseményeket (PLB-k, webalkalmazási tűzfalak stb.)
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – fiókok"
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a "Biztonsági beállítások – Fiókok" menüben
 
-### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2,17 – a kiszolgálóknak/példányoknak minden olyan eseményt be kell jelentkezniük, amely kritikus biztonsági eseménynek minősül az adott kiszolgálón/példányon
+### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2.17 – A kiszolgálóknak/példányoknak naplózva kell lennie az adott kiszolgáló/példány által kritikus fontosságúként besorolt eseményeket
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – fiókok"
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a "Biztonsági beállítások – Fiókok" menüben
 
-### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2,19 – a tartományi eseményeknek be kell jelentkezniük a tartományi felügyeleti szoftver által kritikus vagy magas biztonsági eseményként besorolt eseményekbe
+### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2.19 – A tartományi eseményeknek naplózva kell lennie a tartományi felügyeleti szoftver által kritikus vagy magas biztonsági eseményként besorolt eseményeknek
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – fiókok"
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a biztonsági beállítások – Microsoft hálózati ügyfél
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a "Biztonsági beállítások – Fiókok" alatt
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásához szükséges előfeltételek üzembe helyezése \] a "Biztonsági beállítások – Microsoft hálózati ügyfél" alatt
 
-### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2,20 – a tartomány eseményeinek minden olyan eseményt be kell jelentkezniük, amely kritikus biztonsági eseménynek minősül a tartományi biztonsági ellenőrzésekben
+### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2.20 – A tartományi eseményeknek a tartományi biztonsági vezérlők által kritikus fontosságúként besorolt eseményeket naplózva kell lennie
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – fiókok"
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a "Biztonsági beállítások – Fiókok" menüben
 
-### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2,21 – a tartomány eseményeinek be kell jelentkezniük a tartományi napló összes hozzáférésére vagy módosítására.
+### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2.21 – A tartományi eseményeknek naplózva kell lennie a tartományi napló hozzáférésének vagy módosításainak
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – helyreállítási konzol"
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációiból származó naplózási eredmények \] megjelenítése a Biztonsági beállítások – Helyreállítási konzolban
 
-## <a name="cryptographic-controls"></a>Titkosítási vezérlők
+## <a name="cryptographic-controls"></a>Titkosítási funkciók
 
-### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4,2 – az alkalmazásoknak és a rendszereknek a jelenlegi titkosítási megoldásokat kell használniuk az adatok védelméhez.
+### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4.2 – Az alkalmazásoknak és rendszereknek a jelenlegi titkosítási megoldásokat kell használniuk az adatok védelméhez.
 
-- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- Az átlátható adattitkosítást engedélyezni kell a REST-alapú adatok védelme és a megfelelőségi követelmények teljesítése érdekében
+- transzparens adattitkosítás SQL-adatbázisokon engedélyezni kell az adatbázis-adatokat
+- Engedélyezni kell a transzparens adattitkosítást az aktív adatok védelme és a megfelelőségi követelmények teljesítéséhez
 
-### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4,5 – a digitális tanúsítványokat jóváhagyott hitelesítésszolgáltatótól kell aláírni.
+### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4.5 – A digitális tanúsítványokat jóváhagyott hitelesítésszolgáltatónak kell aláírni.
 
-- \[Előzetes \] verzió: a megadott számú napon belül lejáró tanúsítványokat tartalmazó Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése
+- \[Előzetes verzió: A megadott számú napon belül lejáró tanúsítványokat tartalmazó Windows rendszerű virtuális gépek \] naplózási eredményeinek megjelenítése
 
-### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4,6 – a digitális tanúsítványokat egyedileg kell hozzárendelni egy felhasználóhoz vagy eszközhöz.
+### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4.6 – A digitális tanúsítványokat egyedileg kell hozzárendelni egy felhasználóhoz vagy eszközhöz.
 
-- \[Előzetes \] verzió: a megadott számú napon belül lejáró tanúsítványokat tartalmazó Windows-alapú virtuális gépek naplózásához szükséges előfeltételek központi telepítése
+- \[Előzetes verzió: A megadott számú napon belül lejáró tanúsítványokat tartalmazó Windows rendszerű virtuális gépek naplózására vonatkozó \] előfeltételek telepítése
 
-### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4,7 – a titkosítási anyagokat úgy kell tárolni, hogy lehetővé tegyék a rekordok visszafejtését a rekordok megtartásának időtartamára.
+### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4.7 – A titkosítási anyagokat tárolni kell a rekordok visszafejtéséhez a rekordok megőrzésének időtartamához.
 
-- A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Az engedélyezett lemezes titkosítás nélküli virtuális gépeket a Azure Security Center a javaslatok szerint figyeli
+- Lemeztitkosítást kell alkalmazni a virtuális gépeken
+- Az engedélyezett lemeztitkosítással nem rendelkező virtuális gépeket a Azure Security Center figyelik javaslatként
 
-### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4,8 – a titkos kulcsot és a titkos kulcsokat biztonságosan kell tárolni.
+### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4.8 – A titkos és titkos kulcsokat biztonságosan kell tárolni.
 
-- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
-- Az átlátható adattitkosítást engedélyezni kell a REST-alapú adatok védelme és a megfelelőségi követelmények teljesítése érdekében
+- transzparens adattitkosítás SQL-adatbázisokon engedélyezni kell az adatbázis-adatokat
+- A transzparens adattitkosítást engedélyezni kell az aktív adatok védelme és a megfelelőségi követelmények betartása érdekében
 
-## <a name="change--config-management"></a>& konfiguráció kezelésének módosítása
+## <a name="change--config-management"></a>Konfigurációkezelés & módosítása
 
-### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM-5,2 – csak a jogosult felhasználók alkalmazhatnak jóváhagyott módosításokat a rendszeren.
-
-- A rendszerfrissítéseket telepíteni kell a gépeken
-- A kiszolgálókon hiányzó biztonsági rendszerfrissítéseket a Azure Security Center a javaslatok szerint figyeli
-
-### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5,12 – naprakész, teljes, pontos és könnyen elérhető alapkonfigurációt tart fenn az információs rendszer számára.
+### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM-5.2 – Csak a jogosult felhasználók hajthatnak végre jóváhagyott módosításokat a rendszeren.
 
 - A rendszerfrissítéseket telepíteni kell a gépeken
-- A kiszolgálókon hiányzó biztonsági rendszerfrissítéseket a Azure Security Center a javaslatok szerint figyeli
+- A kiszolgálók hiányzó biztonságirendszer-frissítéseit a Azure Security Center fogja figyelni
 
-### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM-5,13 – automatizált eszközöket alkalmaz az információs rendszer alapkonfigurációjának fenntartásához.
+### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5.12 – Naprakész, teljes, pontos és könnyen elérhető alapkonfiguráció fenntartása az információs rendszer számára.
 
 - A rendszerfrissítéseket telepíteni kell a gépeken
-- A kiszolgálókon hiányzó biztonsági rendszerfrissítéseket a Azure Security Center a javaslatok szerint figyeli
+- A kiszolgálók hiányzó biztonságirendszer-frissítéseit a Azure Security Center fogja figyelni
 
-### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5,14 – a szükségtelen és/vagy nem biztonságos függvények, portok, protokollok és szolgáltatások azonosítása és letiltása.
+### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM-5.13 – Automatizált eszközök használata az információs rendszer alapkonfigurációjának fenntartásához.
 
-- A hálózati adaptereknek le kell tiltaniuk az IP-továbbítást
-- \[Előzetes verzió \] : a virtuális gépen lévő IP-továbbítást le kell tiltani
+- A rendszerfrissítéseket telepíteni kell a gépeken
+- A kiszolgálók hiányzó biztonságirendszer-frissítéseit a Azure Security Center fogja figyelni
 
-### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5,19 – a biztonsági konfigurációs beállítások változásainak figyelése.
+### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5.14 – A szükségtelen és/vagy nem biztonságos függvények, portok, protokollok és szolgáltatások azonosítása és letiltása.
+
+- A hálózati adapterek letiltják az IP-továbbítást
+- \[Előzetes verzió: A virtuális gépen az \] IP-továbbítást le kell tiltani
+
+### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5.19 – A biztonsági konfigurációs beállítások módosításainak figyelése.
 
 - Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése
 
-### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM-5,22 – gondoskodjon arról, hogy csak a jogosult szoftverek és frissítések legyenek telepítve a vállalati rendszerekre.
+### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM-5.22 – Győződjön meg arról, hogy csak a jogosult szoftverek és frissítések vannak telepítve a vállalati rendszereken.
 
 - A rendszerfrissítéseket telepíteni kell a gépeken
-- A kiszolgálókon hiányzó biztonsági rendszerfrissítéseket a Azure Security Center a javaslatok szerint figyeli
+- A kiszolgálókon hiányzó biztonságirendszer-frissítéseket a Azure Security Center figyelheti javaslatként
 
-## <a name="identity--authentication"></a>Identitás-& hitelesítés
+## <a name="identity--authentication"></a>Identitás & hitelesítés
 
-### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7,1 – a felhasználói fiókokat egyedileg kell hozzárendelni az egyéni felhasználókhoz a nem nyilvánosként besorolt információhoz való hozzáféréshez. A fiók-azonosítókat szabványosított logikai formátum használatával kell létrehozni.
+### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7.1 – A felhasználói fiókokat egyedileg kell hozzárendelni egyénekhez, hogy hozzáférjenek a nem nyilvánosként besorolt információkhoz. A fiókokat szabványosított logikai formátumban kell összeépíteni.
 
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- A nem figyelt hozzáférés megakadályozása érdekében el kell távolítani a tulajdonosi engedélyekkel rendelkező külső fiókokat az előfizetésből.
+- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből, hogy megelőzhető legyen a nemmonitorált hozzáférés.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9,2 – a hálózati eszközök felügyeletéhez való hozzáférés csak a jogosult felhasználókra korlátozódik.
+### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9.2 – A hálózati eszközkezelési funkciókhoz való hozzáférés a jogosult felhasználókra korlátozódik.
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "biztonsági beállítások – hálózati hozzáférés" szakaszban
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásához szükséges előfeltételek üzembe helyezése \] a "Biztonsági beállítások – Hálózati hozzáférés" alatt
 
-### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9,3 – az összes hálózati eszközt a legbiztonságosabb konfigurációk alapján kell konfigurálni.
+### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9.3 – Minden hálózati eszközt a legbiztonságosabb konfigurációval kell konfigurálni.
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "biztonsági beállítások – hálózati hozzáférés" szakaszban
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásához szükséges előfeltételek üzembe helyezése \] a "Biztonsági beállítások – Hálózati hozzáférés" alatt
 
-### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9,5 – a rendszernek a tűzfalon keresztül történő összes hálózati kapcsolatát rendszeresen jóvá kell hagynia és naplózni kell.
+### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9.5 – A tűzfalon keresztül a rendszerhez való összes hálózati kapcsolatot rendszeresen jóvá kell hagyni és naplóba kell hagyni.
 
-- \[Előzetes verzió: a Windows rendszerű \] virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a Windows tűzfal tulajdonságainál
+- \[Előzetes verzió: A Windows tűzfal tulajdonságai között windowsos virtuális gépek konfigurációiból \] származó naplózási eredmények megjelenítése
 
-### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9,7 – a megfelelő vezérlőknek a megbízható hálózat és a nem megbízható vagy nyilvános hálózat közötti határokat kell tartalmazniuk.
+### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9.7 – Megfelelő vezérlőknek kell jelen lennie a megbízható hálózatok és a nem megbízható vagy nyilvános hálózatok közötti határvonalakon.
 
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a Windows tűzfal tulajdonságainál
+- \[Előzetes verzió: A Windows rendszerű virtuális gépek konfigurációjának naplózásával kapcsolatos előfeltételek üzembe helyezése \] a Windows tűzfal tulajdonságaiban
 
 ## <a name="security-planning"></a>A biztonság tervezése
 
-### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11,3 – a fenyegetéseket azonosítani kell, amely negatív hatással lehet a vállalati információk és tartalmak titkosságára, integritására vagy rendelkezésre állására, valamint az előfordulásuk valószínűségére.
+### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 – Olyan fenyegetéseket kell azonosítani, amelyek negatív hatással lehetnek a céges információk és tartalmak bizalmasságára, integritására vagy rendelkezésre állására, valamint előfordulásuk valószínűségére.
 
-- Az összetett veszélyforrások elleni védelem típusait "all" értékre kell beállítani az SQL felügyelt példány speciális adatbiztonsági beállításainál
+- Az Advanced Threat Protection-típusokat "Mind" állapotúra kell állítani a felügyelt SQL-példányok Advanced Data Security beállításaiban
 
-### <a name="security-continuity"></a>Biztonság folytonossága
+### <a name="security-continuity"></a>Biztonsági folytonosság
 
-## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12,5 – a hosszú távú tárolásban lévő adatoknak elérhetőnek kell lenniük a megőrzési időszak alatt, és védeni kell a média romlását és a technológiai változásokat.
+## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12.5 – A hosszú távú tárolás során az adatoknak a megőrzési időtartam alatt elérhetőnek kell lenniük, és védeni kell őket a média romlása és a technológia változásai ellen.
 
-- Az SQL-kiszolgálókat az 90 napnál hosszabb naplózási megőrzési napokon kell konfigurálni.
-- A naplózási megőrzési időtartammal konfigurált SQL serverek naplózása 90 napnál rövidebb.
+- Az SQL-kiszolgálókat 90 napnál több napnál több naplózási megőrzési idővel kell konfigurálni.
+- Naplózási 90 napnál rövidebb megőrzési időtartammal konfigurált SQL-kiszolgálók naplózása.
 
 ## <a name="system-integrity"></a>Rendszerintegritás
 
-### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>SI-14,3 – csak a felhatalmazott munkatársak figyelhetők meg a hálózati és a felhasználói tevékenységek.
+### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>SI-14.3 – Csak a jogosult személyek figyelhetnek hálózati és felhasználói tevékenységeket.
 
-- Az SQL-adatbázisok biztonsági réseit szervizelni kell
-- A sebezhetőségi felmérés eredményeinek figyelése, valamint az adatbázis-biztonsági rések szervizelésével kapcsolatos javaslatok.
+- Az SQL-adatbázisok biztonsági réseit helyre kell ásni
+- Figyelje a sebezhetőségi felmérés vizsgálatának eredményeit és az adatbázis biztonsági réseit javító javaslatokat.
 
-### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>SI-14,4 – az internet felé irányuló rendszereknek behatolás-észleléssel kell rendelkezniük.
+### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>SI-14.4 – Az internetre néző rendszereknek behatolásészlelést kell észlelnie.
 
-- Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
+- Fenyegetésészlelés üzembe helyezése SQL-kiszolgálókon
 
-### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>SI-14,13 – a szabványos központilag felügyelt kártevő szoftvereket a vállalaton belül kell megvalósítani.
+### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>SI-14.13 – A szabványosított központilag felügyelt kártevőirtó szoftvert a teljes vállalatnál meg kell valósítanunk.
 
-- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
+- Alapértelmezett Microsoft IaaSAntimalware bővítmény telepítése Windows Serverhez
 
-### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>Az SI-14,14-anti-malware szoftvereknek legalább a számítógépeket és a médiafájlokat kell beolvasniuk.
+### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>SI-14.14 – A kártevőirtó szoftvernek hetente legalább a számítógépeken és az adathordozón kell átvizsgálni.
 
-- A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
+- Alapértelmezett Microsoft IaaSAntimalware bővítmény telepítése Windows Serverhez
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15,4 – gondoskodjon arról, hogy az alkalmazások havonta legyenek megvizsgálva.
+### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15.4 – Győződjön meg arról, hogy az alkalmazásokban havonta ellenőrzik a biztonsági réseket.
 
-- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A támadások elleni védelem érdekében ellenőrizze az operációs rendszer biztonsági réseit a virtuálisgép-méretezési csoportokban.
+- A virtuálisgép-méretezési készletek biztonsági konfigurációjának biztonsági réseit helyre kell ásni
+- A virtuálisgép-méretezési készletek operációsrendszer-biztonsági réseit naplózva megvédheti őket a támadásokkal szemben.
 
-### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15,5 – győződjön meg arról, hogy a biztonsági rések azonosíthatók, a fenyegetések párosítása és a kockázat kiértékelése.
+### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15.5 – Győződjön meg arról, hogy a biztonsági rések azonosítva vannak, veszélyforrásokhoz vannak párosítva, és ki vannak értékelve a kockázatok.
 
-- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A támadások elleni védelem érdekében ellenőrizze az operációs rendszer biztonsági réseit a virtuálisgép-méretezési csoportokban.
+- A virtuálisgép-méretezési készletek biztonsági konfigurációjának biztonsági réseit helyre kell ásni
+- A virtuálisgép-méretezési készletek operációsrendszer-biztonsági réseit naplózva megvédheti őket a támadásokkal szemben.
 
-### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15,6 – győződjön meg arról, hogy az azonosított biztonsági rések szervizelése az idősoron kölcsönösen egyeztetett időkereten belül megtörtént.
+### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15.6 – Győződjön meg arról, hogy az azonosított biztonsági réseket egy kölcsönösen elfogadott idővonalon belül orvosolták.
 
-- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A támadások elleni védelem érdekében ellenőrizze az operációs rendszer biztonsági réseit a virtuálisgép-méretezési csoportokban.
+- A virtuálisgép-méretezési készletek biztonsági konfigurációjának biztonsági réseit helyre kell ásni
+- A virtuálisgép-méretezési készletek operációsrendszer-biztonsági réseit naplózva megvédheti őket a támadásokkal szemben.
 
-### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15,7 – a sebezhetőségi felügyeleti rendszerek elérését és használatát csak a jogosult személyek használhatják.
+### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15.7 – A biztonsági réseket kezelő rendszerekhez való hozzáférést és annak használatát a jogosult személyzetre kell korlátozni.
 
-- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
-- A támadások elleni védelem érdekében ellenőrizze az operációs rendszer biztonsági réseit a virtuálisgép-méretezési csoportokban.
+- A virtuálisgép-méretezési készletek biztonsági konfigurációjának biztonsági réseit helyre kell ásni
+- A virtuálisgép-méretezési készletek operációsrendszer-biztonsági réseit naplózva megvédheti őket a támadásokkal szemben.
 
 > [!NOTE]
-> Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
+> Az egyes Azure Policy rendelkezésre állása eltérő lehet a Azure Government és más országos felhőkben. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Áttekintette a Media Blueprint-minta vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
+Áttekintte a Média tervminta vezérlőelem-leképezését. Ezután a következő cikkekben megismerheti a minta áttekintését és üzembe helyezését:
 
 > [!div class="next step action"]
-> [Media Blueprint – áttekintés](./control-mapping.md) 
->  [Media Blueprint – lépések üzembe helyezése](./deploy.md)
+> [Média terv – Áttekintés](./control-mapping.md) 
+>  [Média terv – Üzembe helyezési lépések](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 

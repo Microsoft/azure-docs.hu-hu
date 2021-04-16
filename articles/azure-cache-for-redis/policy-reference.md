@@ -1,24 +1,24 @@
 ---
-title: Beépített szabályzat-definíciók a Redis készült Azure cache-hez
-description: Az Azure cache Redis-hez készült beépített szabályzat-definícióit listázza Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure Cache for Redis
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Cache for Redis. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 296d870614c0ce47af299236d4316d30076835e9
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: b587f1775fba844acf10444cc532f0761b0402ac
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095296"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503922"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>A Redis Azure cache beépített definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Policy beépített definíciók a Azure Cache for Redis
 
-Ez az oldal [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definíciók indexe a Redis készült Azure cache-hez. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Cache for Redis e. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform Scopes, permissions, & jóváhagyva
-description: Tudnivalók a Microsoft Identity platform végpontjának engedélyezéséről, beleértve a hatóköröket, az engedélyeket és a jóváhagyást.
+title: A Microsoft identitásplatform-hatókörei, engedélyei és & hozzájárulás
+description: Ismerje meg az engedélyezést a Microsoft identitásplatformjának végpontján, beleértve a hatókörök, engedélyek és jóváhagyások használatát.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,111 +8,107 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 04/14/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: bdcfb0adf2c92fa6e084c2efbc2e5c066a3e3ede
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305854"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515583"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Engedélyek és beleegyezett a Microsoft Identity platform
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Engedélyek és jóváhagyás a Microsoft identitásplatformján
 
-A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Az engedélyezési modell megvalósítása frissítve lett a Microsoft Identity platformon. Megváltoztatja, hogy az alkalmazásnak hogyan kell kommunikálnia a Microsoft Identity platformmal. Ez a cikk az engedélyezési modell alapvető fogalmait ismerteti, beleértve a hatóköröket, az engedélyeket és a hozzájárulást is.
+A Microsoft identitásplatformmal integrált alkalmazások engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatokhoz való hozzáférés szabályozását. Az engedélyezési modell implementációja frissült a Microsoft identitásplatformján. Megváltoztatja, hogy az alkalmazások hogyan kommunikálhatnak a Microsoft identitásplatformmal. Ez a cikk az engedélyezési modell alapvető fogalmait, beleértve a hatókörök, az engedélyek és a hozzájárulás fogalmát is.
 
 ## <a name="scopes-and-permissions"></a>Hatókörök és engedélyek
 
-A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-protocols.md) hitelesítési protokollt. A OAuth 2,0 egy olyan módszer, amellyel a harmadik féltől származó alkalmazások a felhasználók nevében férhetnek hozzá a webkiszolgálók erőforrásaihoz. Bármely, a Microsoft Identity platformmal integrált webszolgáltatáshoz erőforrás-azonosító vagy *alkalmazás-azonosító URI* tartozik. 
+A Microsoft identitásplatformja az [OAuth 2.0 engedélyezési protokollt](active-directory-v2-protocols.md) valósítja meg. Az OAuth 2.0 egy olyan módszer, amellyel egy külső alkalmazás hozzáférhet a webes erőforrásokhoz egy felhasználó nevében. Minden, a Microsoft identitásplatformjával integrálható, webes erőforrás rendelkezik erőforrás-azonosítóval vagy alkalmazásazonosító *URI-val.* 
 
-Íme néhány példa a Microsoft által üzemeltetett erőforrásokra:
+Íme néhány példa a Microsoft által üzemeltetett webes erőforrásokra:
 
 * Microsoft Graph: `https://graph.microsoft.com`
-* Microsoft 365 mail API: `https://outlook.office.com`
+* Microsoft 365 Mail API: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
-Ugyanez érvényes a Microsoft Identity platformmal integrált, harmadik féltől származó erőforrások esetében is. Ezen erőforrások bármelyike meghatározhat olyan engedélyeket is, amelyek az adott erőforrás funkcióinak kisebb adattömbökbe való felosztására használhatók. A [Microsoft Graph](https://graph.microsoft.com) például a következő feladatok elvégzésére vonatkozó engedélyekkel rendelkezik, egyebek között:
+Ugyanez vonatkozik a Microsoft identitásplatformmal integrált, harmadik féltől származó erőforrásokra is. Ezen erőforrások bármelyike meghatározhat engedélyeket, amelyek segítségével az erőforrás funkciói kisebb adattömbökre oszthatóak. Például a [Microsoft Graph](https://graph.microsoft.com) többek között a következő feladatok elvégzésére vonatkozó engedélyekkel rendelkezik:
 
-* Felhasználó naptárának beolvasása
-* Írás a felhasználó naptárába
+* Felhasználó naptárának olvasása
+* Írás egy felhasználó naptárába
 * E-mail küldése felhasználóként
 
-Az ilyen típusú engedélyezési definíciók miatt az erőforrás részletesen szabályozhatja az adatmennyiségét, és az API-funkciók elérhetővé válnak. Egy harmadik féltől származó alkalmazás kérheti ezeket az engedélyeket a felhasználóktól és a rendszergazdáktól, akiknek jóvá kell hagynia a kérést, mielőtt az alkalmazás hozzáférhessen az adatokhoz, vagy a felhasználó nevében cselekszik. 
+Az ilyen típusú engedélydefiníciók miatt az erőforrás az adatok és az API-funkciók elérhetővé tevésének finomhangolt szabályozásával rendelkezik. Egy külső alkalmazás kérheti ezeket az engedélyeket a felhasználóktól és a rendszergazdáktól, akiknek jóvá kell hagyniuk a kérést, mielőtt az alkalmazás hozzáférhetne az adatokhoz, vagy a felhasználó nevében cselekedhet. 
 
-Ha egy erőforrás funkcióit kis engedélyekre darabolják, a harmadik féltől származó alkalmazások csak a működésük elvégzéséhez szükséges engedélyek igénylésére használhatók. A felhasználók és a rendszergazdák megtudhatják, hogy az alkalmazás milyen információhoz férhet hozzá. És biztos lehet abban, hogy az alkalmazás nem működik a kártékony szándékkal. A fejlesztőknek mindig meg kell felelniük a legalacsonyabb jogosultsági szintnek, és csak azokat az engedélyeket kérik, amelyekre az alkalmazásoknak szükségük van a működéséhez.
+Ha egy erőforrás funkcióit kis engedélycsoportokra darablik, külső alkalmazások építhetőek ki úgy, hogy csak a funkciójuk elvégzéséhez szükséges engedélyeket kérjenek. A felhasználók és a rendszergazdák tudják, hogy milyen adatokhoz férhetnek hozzá az alkalmazás. Emellett biztosabb lehet abban, hogy az alkalmazás nem rosszindulatú szándékkal viselkedik. A fejlesztőknek mindig meg kell felelniük a legkisebb jogosultság elvének, és csak az alkalmazások működéséhez szükséges engedélyeket kell kérniük.
 
-A OAuth 2,0-es verziójában az ilyen típusú engedélyezési készletek *hatókörnek* nevezzük. Ezeket gyakran *engedélyeknek* is nevezik. A Microsoft Identity platformon az engedélyek karakterlánc-értékként jelennek meg. A Microsoft Graph például az egyes engedélyekhez tartozó karakterlánc értékét:
+Az OAuth 2.0-ban ezeket az engedélykészleteket *hatóköröknek nevezzük.* Ezeket gyakran engedélyeknek *is nevezik.* A Microsoft identitásplatformján az engedélyek sztringértékként vannak ábrázolva. Az alkalmazás a lekérdezési paraméterben megadott engedélyekkel kéri le a `scope` szükséges engedélyeket. Az identitásplatform [](#openid-connect-scopes) számos jól meghatározott OpenID Connect hatókört és erőforrás-alapú engedélyt támogat (az egyes engedélyeket az engedély értékének az erőforrás azonosítójának vagy alkalmazásazonosító URI-jának hozzáfűzése jelzi). Az engedélysring például arra használható, hogy engedélyt kérjen a felhasználói naptárak `https://graph.microsoft.com/Calendars.Read` olvasásához a Microsoft Graph.
 
-* A felhasználó naptárának beolvasása a következő használatával: `Calendars.Read`
-* Írás a felhasználó naptárába a következő használatával: `Calendars.ReadWrite`
-* E-mail küldése felhasználóként a általi használatával `Mail.Send`
+Az alkalmazások leggyakrabban úgy kérik ezeket az engedélyeket, hogy meghatározzák a hatókörök körét a Microsoft identitásplatformjának jogosultsági végpontjára vonatkozó kérelmekben. Bizonyos magas jogosultsági szintű engedélyek azonban csak rendszergazdai jóváhagyással adhatók meg. Ezek a rendszergazdai jóváhagyás végpontjával [kérhetőek vagy adhatók meg.](#admin-restricted-permissions) További információért olvass tovább.
 
-Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak rendszergazdai jogosultsággal adhatók meg. A [rendszergazdák a rendszergazdai jogosultságok végpontjának](#admin-restricted-permissions)használatával kérhetik vagy adhatják meg őket. További információért olvassa el az olvasót.
+## <a name="permission-types"></a>Engedélytípusok
 
-## <a name="permission-types"></a>Engedélyezési típusok
+A Microsoft identitásplatformja kétféle engedélyt támogat: *delegált* engedélyeket és *alkalmazásengedélyeket.*
 
-A Microsoft Identity platform két típusú engedélyt támogat: a *delegált engedélyeket* és az *alkalmazás engedélyeit*.
+* **A delegált engedélyeket** olyan alkalmazások használják, amelyek bejelentkezett felhasználóval vannak jelen. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket. Az alkalmazás delegált engedély arra, hogy bejelentkezett felhasználóként viselkedjen, amikor hívásokat kezdeményez a célerőforráshoz. 
 
-* A **delegált engedélyeket** a bejelentkezett felhasználóval rendelkező alkalmazások használják. Ezekhez az alkalmazásokhoz a felhasználó vagy a rendszergazda beleegyezett az alkalmazás által kért engedélyekkel. Az alkalmazás delegált engedéllyel rendelkezik a bejelentkezett felhasználóként való részvételre, amikor hívásokat kezdeményez a célként megadott erőforráshoz. 
+    Egyes delegált engedélyeket nem rendszergazdák is hagyhatnak. Néhány magas jogosultsági szintű engedélyhez azonban rendszergazdai [jóváhagyás szükséges.](#admin-restricted-permissions) Ha meg szeretne tudni, hogy mely rendszergazdai szerepkörök járulnak hozzá a delegált engedélyekhez, tekintse meg a rendszergazdai szerepkör engedélyeit a Azure Active Directory [(Azure AD) szolgáltatásban.](../roles/permissions-reference.md)
 
-    Egyes delegált engedélyeket a nem rendszergazdai jogosultságokkal is el lehet juttatni. Bizonyos magas jogosultsági szintű engedélyek azonban [rendszergazdai](#admin-restricted-permissions)jogosultságot igényelnek. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyek megadására, tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory (Azure ad)](../roles/permissions-reference.md).
+* **Az alkalmazásengedélyeket** olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásként vagy démonként futó alkalmazások. Csak [rendszergazda járulhat hozzá az](#requesting-consent-for-an-entire-tenant) alkalmazásengedélyekhoz.
 
-* Az **alkalmazás engedélyeit** olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például a háttér-szolgáltatásként vagy démonként futó alkalmazások. Csak [egy rendszergazda csatlakozhat az](#requesting-consent-for-an-entire-tenant) alkalmazás engedélyeihez.
+_A hatályos engedélyek_ azok az engedélyek, amelyekre az alkalmazásnak akkor van engedélye, amikor kéréseket ad a célerőforrásnak. Fontos megérteni, hogy mi a különbség a delegált engedélyek és az alkalmazásengedélyek között, amelyek meg vannak adni az alkalmazásnak, valamint hogy az alkalmazás milyen hatályos engedélyeket kap, amikor hívásokat kezdeményez a célerőforráshoz.
 
-A _hatályos engedélyek_ azok az engedélyek, amelyeket az alkalmazás akkor használ, amikor kéréseket tesz a célként megadott erőforrásnak. Fontos megérteni az alkalmazás által biztosított delegált engedélyek és az alkalmazás engedélyei közötti különbséget, valamint azokat az érvényes engedélyeket, amelyeket az alkalmazás akkor kap, amikor hívásokat kezdeményez a célként megadott erőforráshoz.
+- Delegált engedélyeknél  az alkalmazás hatályos engedélyei az alkalmazás által (hozzájárulással) megadott delegált engedélyek és az aktuálisan bejelentkezett felhasználó jogosultságai legkevesebb jogosultsággal rendelkező metszetét metszete. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. 
 
-- A delegált engedélyek esetében az alkalmazás _hatályos engedélyei_ az alkalmazás által biztosított delegált engedélyek legkevesebb jogosultsággal rendelkező szakasza, valamint a jelenleg bejelentkezett felhasználó jogosultságai. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. 
+   A szervezeteken belül a bejelentkezett felhasználó jogosultságait szabályzat vagy egy vagy több rendszergazdai szerepkör tagja határozza meg. Ha meg szeretne tudni, hogy mely rendszergazdai szerepkörök járulnak hozzá a delegált engedélyekhez, tekintse meg az Azure AD rendszergazdai szerepköreinek [engedélyeit.](../roles/permissions-reference.md)
 
-   A szervezeteken belül a bejelentkezett felhasználó jogosultságait házirend szerint vagy egy vagy több rendszergazdai szerepkör tagsága alapján lehet meghatározni. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../roles/permissions-reference.md).
+   Tegyük fel például, hogy az alkalmazás _User.ReadWrite.All_ delegált engedélyt kapott. Ez az engedély névlegesen ad engedélyt az alkalmazás számára egy cégben lévő összes felhasználó profiljának olvasásához és frissítéséhez. Ha a bejelentkezett felhasználó globális rendszergazda, az alkalmazás a szervezet minden felhasználójának profilját frissítheti. Ha azonban a bejelentkezett felhasználó nem rendszergazdai szerepkört tölt be, az alkalmazás csak a bejelentkezett felhasználó profilját tudja frissíteni. Nem tudja frissíteni a szervezet más felhasználóinak profiljait, mert az a felhasználó, aki nevében jár el, nem rendelkezik ilyen jogosultságokkal.
 
-   Tegyük fel például, hogy az alkalmazás megkapta a _User. ReadWrite. All_ delegált engedélyt. Ez az engedély névlegesen ad engedélyt az alkalmazás számára egy cégben lévő összes felhasználó profiljának olvasásához és frissítéséhez. Ha a bejelentkezett felhasználó globális rendszergazda, akkor az alkalmazás frissítheti a szervezet összes felhasználójának profilját. Ha azonban a bejelentkezett felhasználó nem rendelkezik rendszergazdai szerepkörrel, az alkalmazás csak a bejelentkezett felhasználó profilját tudja frissíteni. Nem tudja frissíteni a szervezet többi felhasználójának profilját, mert a felhasználónak nincs jogosultsága a nevében.
+- Alkalmazásengedélyek használata  során az alkalmazás hatályos engedélyei az engedély által hallgatólagos jogosultságok teljes szintjei. Például egy Olyan alkalmazás, amely _User.ReadWrite.All_ alkalmazásengedélysel rendelkezik, frissítheti a szervezet minden felhasználója profilját.
 
-- Az alkalmazások engedélyei esetében az alkalmazás _hatályos engedélyei_ a jogosultságok teljes szintje. Például egy olyan alkalmazás, amely rendelkezik a _User. ReadWrite. All_ Application engedélyekkel, frissítheti a szervezet minden felhasználójának profilját.
+## <a name="openid-connect-scopes"></a>OpenID Connect hatókörök
 
-## <a name="openid-connect-scopes"></a>OpenID Connect-hatókörök
+A Microsoft identitásplatform-OpenID Connect néhány jól meghatározott hatókörrel rendelkezik, amelyek szintén a következő Microsoft Graph: `openid` , `email` , és `profile` `offline_access` . A `address` `phone` és OpenID Connect hatókörök nem támogatottak.
 
-Az OpenID Connect Microsoft Identity platform megvalósítása néhány jól definiált hatókörrel rendelkezik, amelyek a Microsoft Graph:,, és rendszeren is futnak `openid` `email` `profile` `offline_access` . Az `address` és az `phone` OpenID Connect hatókörök nem támogatottak.
+Ha a OpenID Connect és egy jogkivonatot kér, egy jogkivonatot fog kapni a [UserInfo végpont híváshoz.](userinfo.md)
 
-Ha az OpenID Connect-hatóköröket és egy tokent kér le, a rendszer egy tokent kap az [UserInfo végpont](userinfo.md)meghívásához.
+### <a name="openid"></a>Openid
 
-### <a name="openid"></a>OpenID
+Ha egy alkalmazás a következővel [jelentkezik OpenID Connect,](active-directory-v2-protocols.md)akkor le kell kérnie a `openid` hatókört. A hatókör bejelentkezési engedélyként jelenik meg a munkahelyi fiók `openid` **hozzájárulási oldalán.** A személyes Microsoft-fiók jóváhagyás lapján megjelenik a Profil megtekintése, és csatlakozás alkalmazásokhoz és **szolgáltatásokhoz** a saját Microsoft-fiók használatával. 
 
-Ha egy alkalmazás az [OpenID Connect](active-directory-v2-protocols.md)használatával jelentkezik be, akkor a hatókört kell kérnie `openid` . A `openid` hatókör a munkahelyi fiók beleegyezése lapon jelenik meg, mint a **Bejelentkezés** engedéllyel. A személyes Microsoft-fiók beleegyezése lapon megjelenik a **Profil megtekintése és az alkalmazásokhoz és szolgáltatásokhoz való kapcsolódás a Microsoft-fiók engedély használatával** . 
-
-Ezen engedély használatával egy alkalmazás a jogcím formájában egyedi azonosítót kaphat a felhasználó számára `sub` . Az engedély lehetővé teszi az alkalmazás számára az UserInfo-végpont elérését is. A `openid` hatókört a Microsoft Identity platform token végpontján lehet használni azonosító jogkivonatok beszerzéséhez. Az alkalmazás használhatja ezeket a jogkivonatokat a hitelesítéshez.
+Ezzel az engedéllyel az alkalmazás egyedi azonosítót kaphat a felhasználóhoz a jogcím `sub` formájában. Az engedély a UserInfo végponthoz is hozzáférést biztosít az alkalmazásnak. A `openid` hatókör a Microsoft identitásplatformjának jogkivonatvégpontján használható azonosító jogkivonatok lekért szerzéshez. Az alkalmazás használhatja ezeket a jogkivonatokat a hitelesítéshez.
 
 ### <a name="email"></a>e-mail
 
-A `email` hatókör a `openid` hatókörrel és az egyéb hatókörökkel is használható. Az alkalmazás a kérelem formájában hozzáférést biztosít a felhasználó elsődleges e-mail-címéhez `email` . 
+A `email` hatókör használható a hatókörrel és bármely más `openid` hatókörrel is. Hozzáférést biztosít az alkalmazásnak a felhasználó elsődleges e-mail-címéhez a jogcím `email` formájában. 
 
-A `email` jogcímek csak akkor szerepelnek a jogkivonatban, ha az e-mail-cím a felhasználói fiókhoz van társítva, amely nem mindig az eset. Ha az alkalmazás a `email` hatókört használja, az alkalmazásnak képesnek kell lennie olyan eset kezelésére, amelyben nincs `email` jogcím a jogkivonatban.
+A `email` jogcím csak akkor szerepel a jogkivonatban, ha egy e-mail-cím van társítva a felhasználói fiókkal, ami nem mindig történik meg. Ha az alkalmazás a hatókört használja, az alkalmazásnak képesnek kell lennie kezelni egy olyan esetet, amelyben nincs jogcím a `email` `email` jogkivonatban.
 
 ### <a name="profile"></a>profil
 
-A `profile` hatókör a `openid` hatókörrel és az egyéb hatókörrel is használható. Hozzáférést biztosít az alkalmazásnak a felhasználóval kapcsolatos nagy mennyiségű információhoz. Az általa elérhető információ magában foglalja a következőket:, de nem kizárólagosan, a felhasználó vezetéknevét, vezetéknevét, előnyben részesített felhasználónevét és objektum-AZONOSÍTÓját. 
+A `profile` hatókör használható a hatókörrel és bármely más `openid` hatókörrel is. Hozzáférést biztosít az alkalmazás számára a felhasználóval kapcsolatos nagy mennyiségű információhoz. Az adatok, amelyekhez hozzáférhetnek, többek között a felhasználó utónevét, vezetéknevét, előnyben részesített felhasználónevét és objektumazonosítóját is tartalmazzák. 
 
-Az `profile` adott felhasználó paraméterében elérhető jogcímek teljes listájáért `id_tokens` tekintse meg a [ `id_tokens` hivatkozást](id-tokens.md).
+Az adott felhasználó paraméterében elérhető jogcímek teljes listájáért tekintse meg `profile` `id_tokens` a hivatkozást. [ `id_tokens` ](id-tokens.md)
 
 ### <a name="offline_access"></a>offline_access
 
-A [ `offline_access` hatókör](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) lehetővé teszi az alkalmazás számára, hogy a felhasználó nevében egy hosszabb ideig hozzáférjen az erőforrásokhoz. A hozzájárulás lapon ez a hatókör jelenik meg, mivel a **hozzáférés megtartása az engedélyhez megadott adathoz** . 
+A [ `offline_access` hatókör](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) hosszabb ideig biztosít hozzáférést az alkalmazás számára az erőforrásokhoz a felhasználó nevében. A hozzájárulási lapon ez a hatókör a Hozzáférés fenntartása olyan adatokhoz, amelyekhez hozzáférést adott **neki.** 
 
-Amikor a felhasználó jóváhagyja a `offline_access` hatókört, az alkalmazás a Microsoft Identity platform jogkivonat-végpontján fogadhatja a frissítési jogkivonatokat. A frissítési tokenek hosszú életűek. Az alkalmazás új hozzáférési jogkivonatokat kaphat, mint a régebbiek lejárnak.
+Amikor egy felhasználó jóváhagyja a hatókört, az alkalmazás frissítési jogkivonatokat fogadhat a `offline_access` Microsoft identitásplatformjának jogkivonatvégponttól. A frissítési jogkivonatok hosszú életűek. Az alkalmazás új hozzáférési jogkivonatokat kap, amint a régebbiek lejárnak.
 
 > [!NOTE]
-> Ez az engedély jelenleg az összes beleegyezési oldalon jelenik meg, még olyan folyamatok esetében is, amelyek nem biztosítanak frissítési jogkivonatot (például az [implicit folyamatot](v2-oauth2-implicit-grant-flow.md)). Ez a beállítás azokat a forgatókönyveket ismerteti, amelyekben az ügyfél megkezdődhet az implicit folyamaton belül, majd áthelyezhető arra a kódra, amelyben frissítési jogkivonat várható.
+> Ez az engedély jelenleg minden hozzájárulási oldalon megjelenik, még olyan folyamatoknál is, amelyek nem biztosítanak frissítési jogkivonatot (például [az implicit folyamatot).](v2-oauth2-implicit-grant-flow.md) Ez a beállítás olyan helyzetekkel foglalkozik, ahol az ügyfél az implicit folyamaton belül kezdődhet, majd továbbléphet arra a kódfolyamra, ahol frissítési jogkivonat várható.
 
-A Microsoft Identity platformon (a v 2.0-végpontra irányuló kérelmek esetében) az alkalmazásnak explicit módon kell megkérnie a `offline_access` hatókört a frissítési tokenek fogadásához. Tehát amikor bevált egy engedélyezési kódot a [OAuth 2,0 engedélyezési kód folyamatában](active-directory-v2-protocols.md), csak a végponttól kap hozzáférési jogkivonatot `/token` . 
+A Microsoft identitásplatformján (a 2.0-s végpontra vonatkozó kérések) az alkalmazásnak explicit módon le kell kérnie a hatókört a frissítési `offline_access` jogkivonatok fogadásához. Így amikor az [OAuth 2.0](active-directory-v2-protocols.md)hitelesítési kódfolyamában bevált egy engedélyezési kódot, csak egy hozzáférési jogkivonatot kap a `/token` végponttól. 
 
-A hozzáférési jogkivonat rövid ideig érvényes. Általában egy órán belül lejár. Ezen a ponton az alkalmazásnak újra kell irányítani a felhasználót a `/authorize` végpontra egy új engedélyezési kód beszerzéséhez. Az átirányítás során az alkalmazás típusától függően előfordulhat, hogy a felhasználónak újra be kell írnia a hitelesítő adatait, vagy újra meg kell adnia az engedélyeket.
+A hozzáférési jogkivonat rövid ideig érvényes. Általában egy óra múlva lejár. Ezen a ponton az alkalmazásnak vissza kell irányítania a felhasználót a végpontra egy új engedélyezési `/authorize` kód le kéréséhez. Az átirányítás során az alkalmazás típusától függően előfordulhat, hogy a felhasználónak újra meg kell adnia a hitelesítő adatait, vagy ismét meg kell adnia az engedélyeket.
 
-További információ a frissítési tokenek beszerzéséről és használatáról: a [Microsoft Identity platform protokolljának referenciája](active-directory-v2-protocols.md).
+A frissítési jogkivonatok lekért és használatával kapcsolatos további információkért tekintse meg a [Microsoft identitásplatform-protokoll referenciáját.](active-directory-v2-protocols.md)
 
-## <a name="requesting-individual-user-consent"></a>Egyéni felhasználói engedély kérése
+## <a name="requesting-individual-user-consent"></a>Egyéni felhasználói hozzájárulás kérése
 
-Egy [OpenID Connect vagy OAuth 2,0](active-directory-v2-protocols.md) engedélyezési kérelemben az alkalmazás a lekérdezési paraméter használatával kérheti le a szükséges engedélyeket `scope` . Ha például egy felhasználó bejelentkezik egy alkalmazásba, az alkalmazás a következő példához hasonló kérelmet küld. (Sortöréseket adnak hozzá az olvashatósághoz.)
+Egy OpenID Connect [OAuth 2.0](active-directory-v2-protocols.md) hitelesítési kérelemben az alkalmazás a lekérdezési paraméter használatával kérheti a számára `scope` szükséges engedélyeket. Amikor például egy felhasználó bejelentkezik egy alkalmazásba, az alkalmazás az alábbi példához hasonló kérést küld. (Az olvashatóság érdekében sortörések vannak hozzáadva.)
 
 ```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -126,84 +122,84 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközzel tagolt listája. Az engedélyek az erőforrás azonosítójának (az alkalmazás-azonosító URI-ja) hozzáfűzésével vannak jelezve. A kérelem példájában az alkalmazásnak engedéllyel kell rendelkeznie a felhasználó naptárának olvasásához és a levelezés felhasználóként való elküldéséhez.
+A paraméter az alkalmazás által kért delegált engedélyek szóközrel `scope` elválasztott listája. Az egyes engedélyeket az erőforrás azonosítójának (az alkalmazásazonosító URI-jának) az engedélyértékhez való hozzáfűzése jelzi. A kérés példájában az alkalmazásnak engedéllyel kell rendelkeznie a felhasználó naptárának olvasására és e-mailek felhasználóként való elküldére.
 
-Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform ellenőrzi a *felhasználói beleegyezési* rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és ha a rendszergazda nem járult hozzá ezekhez az engedélyekhez a teljes szervezet nevében, a Microsoft Identity platform arra kéri a felhasználót, hogy adja meg a kért engedélyeket.
+Miután a felhasználó megadotta a hitelesítő adatait, a Microsoft identitásplatformja ellenőrzi a felhasználói hozzájárulás egyező *rekordját.* Ha a felhasználó korábban nem hagyta jóvá a kért engedélyeket, és a rendszergazda nem hagyta jóvá ezeket az engedélyeket a teljes szervezet nevében, a Microsoft identitásplatformja megkéri a felhasználót, hogy adja meg a kért engedélyeket.
 
-Ebben az esetben a ("az Ön számára hozzáférést biztosít az `offline_access` Ön számára biztosított adathozzáféréshez") engedélyt és a `user.read` ("bejelentkezés és olvasás a profilban") engedélyt automatikusan belefoglalja az alkalmazás kezdeti beleegyezéséhez.  Ezek az engedélyek általában az alkalmazások megfelelő működéséhez szükségesek. Az `offline_access` engedély lehetővé teszi az alkalmazás számára a natív alkalmazások és webalkalmazások szempontjából kritikus fontosságú frissítési tokenek frissítését. Az `user.read` engedély hozzáférést biztosít a `sub` jogcímek számára. Lehetővé teszi, hogy az ügyfél vagy az alkalmazás helyesen azonosítsa a felhasználót az idő múlásával, és a felhasználói adatokhoz hozzáférjen.
+Jelenleg a ("Hozzáférés fenntartása az adatokhoz, amelyekhez hozzáférést adott neki") engedély és a ("Bejelentkezés és a profil olvasása") engedély automatikusan szerepel az alkalmazás kezdeti `offline_access` `user.read` hozzájárulásában.  Ezek az engedélyek általában szükségesek a megfelelő alkalmazásfunkciókhoz. Az engedély hozzáférést biztosít az alkalmazásnak a natív alkalmazások és webalkalmazások számára kritikus jogkivonatok `offline_access` frissítéséhez. Az `user.read` engedély hozzáférést biztosít a `sub` jogcímhez. Lehetővé teszi az ügyfél vagy alkalmazás számára, hogy idővel helyesen azonosítsa a felhasználót, és hozzáfér a felhasználói adatokhoz.
 
-![Példa a munkahelyi fiók beleegyezikét megjelenítő képernyőképre.](./media/v2-permissions-and-consent/work_account_consent.png)
+![Példa képernyőkép a munkahelyi fiók hozzájárulásával.](./media/v2-permissions-and-consent/work_account_consent.png)
 
-Ha a felhasználó jóváhagyja az engedély kérését, a rendszer rögzíti a beleegyezést. A felhasználónak nem kell újból megadnia, amikor később bejelentkeznek az alkalmazásba.
+Amikor a felhasználó jóváhagyja az engedélykérést, a hozzájárulás rögzítve lesz. A felhasználónak nem kell újra hozzájárulni, amikor később bejelentkezik az alkalmazásba.
 
-## <a name="requesting-consent-for-an-entire-tenant"></a>A teljes bérlőre vonatkozó belefoglalási kérelem
+## <a name="requesting-consent-for-an-entire-tenant"></a>Hozzájárulás kérése egy teljes bérlőhöz
 
-Ha egy szervezet egy alkalmazás licencét vagy előfizetését vásárolja meg, a szervezet gyakran szeretné proaktív módon beállítani az alkalmazást a szervezet összes tagja számára. Ennek a folyamatnak a részeként a rendszergazda beleegyezik abba, hogy az alkalmazás a bérlő bármely felhasználója nevében működjön. Ha a rendszergazda hozzájárulást ad a teljes bérlőhöz, a szervezet felhasználóinak nem jelennek meg az alkalmazás hozzájárulási lapja.
+Amikor egy szervezet licencet vagy előfizetést vásárol egy alkalmazáshoz, a szervezet gyakran proaktív módon szeretné beállítani az alkalmazást a szervezet összes tagja számára. A folyamat részeként a rendszergazda engedélyt adhat arra, hogy az alkalmazás a bérlő bármely felhasználója nevében jár el. Ha a rendszergazda jóváhagyást ad a teljes bérlőhöz, a szervezet felhasználói nem látják az alkalmazáshoz a hozzájárulási oldalt.
 
-Ha a bérlő összes felhasználója számára szeretne beleegyezni a delegált engedélyekkel, az alkalmazás használhatja a rendszergazdai engedélyezési végpontot.
+Ha a bérlő összes felhasználója számára delegált engedélyekre vonatkozó jóváhagyást kér, az alkalmazás használhatja a rendszergazdai hozzájárulási végpontot.
 
-Emellett az alkalmazásoknak a rendszergazdai engedélyezési végpontot kell használniuk az alkalmazások engedélyeinek igényléséhez.
+Emellett az alkalmazásoknak a rendszergazdai hozzájárulási végpontot kell használniuk az alkalmazásengedélyek igényléséhez.
 
-## <a name="admin-restricted-permissions"></a>Rendszergazdai hozzáférésre korlátozott engedélyek
+## <a name="admin-restricted-permissions"></a>Rendszergazda által korlátozott engedélyek
 
-Bizonyos magas jogosultsági szintű engedélyek a Microsoft erőforrásaiban csak *rendszergazdai* jogosultsággal állíthatók be. Íme néhány példa az ilyen típusú engedélyekre:
+A Microsoft-erőforrások egyes magas szintű jogosultsági engedélyei beállíthatók rendszergazda *által korlátozottra.* Íme néhány példa az ilyen típusú engedélyekre:
 
-* Az összes felhasználó teljes profiljának olvasása a következő használatával: `User.Read.All`
-* Adatírás a szervezet könyvtárába a következő használatával: `Directory.ReadWrite.All`
-* A szervezet címtárában lévő összes csoport olvasása a következő használatával: `Groups.Read.All`
+* Az összes felhasználó teljes profiljának olvasása a használatával `User.Read.All`
+* Adatok írása egy szervezet címtárába a használatával `Directory.ReadWrite.All`
+* Egy szervezet címtárában található összes csoport olvasása a használatával `Groups.Read.All`
 
-Bár a felhasználói felhasználók hozzáférést biztosíthatnak az ilyen típusú adatokhoz, a szervezeti felhasználók nem adhatnak hozzáférést ugyanahhoz a bizalmas vállalati adatokhoz. Ha az alkalmazás egy szervezeti felhasználótól kéri a fenti engedélyek egyikének elérését, a felhasználó hibaüzenetet kap, amely szerint nem jogosult beleegyezni az alkalmazás engedélyeivel.
+Bár a fogyasztói felhasználók hozzáférést adhatnak egy alkalmazásnak az ilyen típusú adatokhoz, a szervezeti felhasználók nem adhatnak hozzáférést ugyanannak a bizalmas vállalati adathalmaznak. Ha az alkalmazás hozzáférést kér ezen engedélyek egyikéhez egy szervezeti felhasználótól, a felhasználó egy hibaüzenetet kap, amely szerint nem jogosult az alkalmazás engedélyeinek igénylésére.
 
-Ha az alkalmazáshoz hatókörök szükségesek a rendszergazdai jogosultságok korlátozásához, a szervezet rendszergazdájának a szervezet felhasználói nevében hozzá kell járulnia a hatókörökhöz. Annak érdekében, hogy ne jelenjen meg olyan felhasználói kérések, akik beleegyeznek a nem engedélyezett engedélyekre, az alkalmazás használhatja a rendszergazdai hozzájárulási végpontot. A rendszergazdai engedélyezési végpontot a következő szakaszban találja.
+Ha az alkalmazásnak korlátozott rendszergazdai engedélyek hatókörére van szüksége, a szervezet rendszergazdájának jóvá kell azt mondania a szervezet felhasználói nevében. Annak érdekében, hogy az alkalmazás ne jelenítsen meg olyan engedélyekre vonatkozó kéréseket a felhasználók számára, akik nem adhatnak meg jóváhagyást, az alkalmazás használhatja a rendszergazdai hozzájárulási végpontot. A rendszergazdai jóváhagyás végpontját a következő szakasz tartalmazza.
 
-Ha az alkalmazás magas jogosultságú delegált engedélyeket kér, és a rendszergazda a rendszergazdai hozzájárulási végponton keresztül engedélyezi ezeket az engedélyeket, akkor a bérlő összes felhasználója számára meg kell adni a hozzájárulást.
+Ha az alkalmazás magas jogosultságú delegált engedélyeket kér, és egy rendszergazda a rendszergazdai hozzájárulási végponton keresztül adja meg ezeket az engedélyeket, a rendszer a bérlő összes felhasználója számára jóváhagyást ad.
 
-Ha az alkalmazás az alkalmazásra vonatkozó engedélyeket kér, és a rendszergazda a rendszergazdai hozzájárulási végponton keresztül adja meg ezeket az engedélyeket, akkor az adott felhasználó nevében nem végezhető el. Ehelyett az ügyfélalkalmazás *közvetlenül* kap engedélyeket. Az ilyen típusú engedélyeket csak a Daemon Services és a háttérben futó egyéb nem interaktív alkalmazások használják.
+Ha az alkalmazás alkalmazásengedélyeket kér, és egy rendszergazda a rendszergazdai hozzájárulási végponton keresztül adja meg ezeket az engedélyeket, ez a jogosultság nem egy adott felhasználó nevében történik. Ehelyett az ügyfélalkalmazás közvetlenül kap *engedélyeket.* Az ilyen típusú engedélyeket csak démonszolgáltatások és más, a háttérben futó nem interaktív alkalmazások használják.
 
-## <a name="using-the-admin-consent-endpoint"></a>A rendszergazdai engedélyezési végpont használata
+## <a name="using-the-admin-consent-endpoint"></a>A rendszergazdai hozzájárulási végpont használata
 
-Miután a rendszergazdai jogosultsággal rendelkező végpontot használja a rendszergazdai engedély megadásához, elkészült. A felhasználóknak semmilyen további műveletet nem kell elvégezniük. A rendszergazdai jogosultság megadását követően a felhasználók egy tipikus hitelesítési folyamaton keresztül kaphatnak hozzáférési jogkivonatot. Az eredményül kapott hozzáférési jogkivonat rendelkezik a beleegyezési engedélyekkel.
+Miután a rendszergazdai hozzájárulási végpont használatával adta meg a rendszergazdai jóváhagyást, már készen is van. A felhasználóknak nincs szükségük további beavatkozásra. A rendszergazdai jóváhagyást követően a felhasználók egy tipikus hitelesítési folyamaton keresztül kaphatnak hozzáférési jogkivonatot. Az eredményül kapott hozzáférési jogkivonat rendelkezik a szükséges engedélyekkel.
 
-Ha egy globális rendszergazda az alkalmazást használja, és az engedélyezés végpontra irányítja, a Microsoft Identity platform észleli a felhasználó szerepkörét. Megkérdezi, hogy a globális rendszergazda szeretne-e hozzájárulni a teljes bérlő nevében a kért engedélyekhez. Ehelyett egy dedikált rendszergazdai engedélyezési végpont használatával proaktív módon kérheti a rendszergazdát, hogy engedélyezze a teljes bérlő nevében engedélyt. Ez a végpont az alkalmazás engedélyeinek kérelmezéséhez is szükséges. Az alkalmazás engedélyei nem kérhetők az engedélyezés végpontjának használatával.
+Ha egy globális rendszergazda használja az alkalmazást, és a rendszer a jogosultsági végpontra irányítja, a Microsoft identitásplatformja észleli a felhasználó szerepkörét. Megkérdezi, hogy a globális rendszergazda a teljes bérlő nevében szeretne-e jóváhagyást adni a kért engedélyekhez. Ehelyett egy dedikált rendszergazdai hozzájárulási végponttal proaktív módon kérheti a rendszergazdát, hogy adja meg az engedélyt a teljes bérlő nevében. Ez a végpont az alkalmazásengedélyek igénylése során is szükséges. Az alkalmazásengedélyek nem kérhetőek az engedélyvégpont használatával.
 
-Ha követi ezeket a lépéseket, az alkalmazás engedélyt kérhet a bérlő összes felhasználója számára, beleértve a rendszergazdai korlátozás alá eső hatóköröket is. Ez a művelet magas jogosultsággal rendelkezik. A műveletet csak akkor használja, ha a forgatókönyvhöz szükséges.
+Ha követi ezeket a lépéseket, az alkalmazás a bérlő összes felhasználója számára engedélyeket kérhet, beleértve a rendszergazda által korlátozott hatókörökét is. Ez a művelet magas szintű jogosultsággal rendelkezik. A műveletet csak akkor használja, ha szükséges a forgatókönyvhöz.
 
-Ha meg szeretné tekinteni a lépéseket megvalósító kódrészletet, tekintse meg a [rendszergazda által korlátozott hatókörű mintát](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2) a githubon.
+A lépéseket megvalósító kódminta a GitHub rendszergazda által korlátozott [hatókörök](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2) mintáját tartalmazza.
 
-### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
+### <a name="request-the-permissions-in-the-app-registration-portal"></a>Engedélyek kérése az alkalmazásregisztrációs portálon
 
-Az alkalmazás regisztrációs portálján az alkalmazások felsorolják a szükséges engedélyeket, beleértve a delegált engedélyeket és az alkalmazás engedélyeit is. Ezzel a beállítással engedélyezheti a `/.default` hatókör használatát és a Azure Portal **engedélyezési rendszergazdai engedélyezési** beállítását.  
+Az alkalmazásregisztrációs portálon az alkalmazások listába sorolják a szükséges engedélyeket, beleértve a delegált és az alkalmazásengedélyeket is. Ez a beállítás lehetővé teszi a hatókör és a Azure Portal rendszergazdai hozzájárulás `/.default` **megadása beállítását.**  
 
-Általában az engedélyeket statikusan kell definiálni egy adott alkalmazáshoz. Az alkalmazásnak olyan engedélyekkel kell rendelkeznie, amelyeket az alkalmazás dinamikusan vagy fokozatosan kér le.
+Az engedélyeket általában statikusan kell meghatározni egy adott alkalmazáshoz. Az alkalmazás által dinamikusan vagy növekményesen lekért engedélyeket kell átfedni.
 
 > [!NOTE]
->Az alkalmazás engedélyei csak a használatával kérhetők le [`/.default`](#the-default-scope) . Tehát ha az alkalmazásnak szüksége van az alkalmazások engedélyeire, győződjön meg róla, hogy szerepelnek az alkalmazás regisztrációs portálján.
+>Az alkalmazásengedélyek csak a használatával [`/.default`](#the-default-scope) kérhetőek. Ha tehát az alkalmazásnak alkalmazásengedélyre van szüksége, ellenőrizze, hogy szerepel-e az alkalmazásregisztrációs portálon.
 
-A statikusan kért engedélyek listájának konfigurálása egy alkalmazáshoz:
+Egy alkalmazás statikusan kért engedélyeinek listájának konfigurálása:
 
-1. Nyissa meg az alkalmazást az <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal-Alkalmazásregisztrációk</a> gyors üzembe helyezési élményben.
-1. Válasszon ki egy alkalmazást, vagy [hozzon létre egy alkalmazást](quickstart-register-app.md) , ha még nem tette meg.
-1. Az alkalmazás **Áttekintés** lapjának **kezelés** területén válassza az API- **engedélyek**  >  **Hozzáadás engedélyt**.
-1. Az elérhető API-k listájából válassza a **Microsoft Graph** lehetőséget. Ezután adja hozzá az alkalmazás által igényelt engedélyeket.
-1. Válassza az **engedélyek hozzáadása** lehetőséget.
+1. Az alkalmazáshoz a Azure Portal <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">– Alkalmazásregisztrációk</a> útmutatóban.
+1. Válasszon ki egy alkalmazást, vagy [hozzon létre egy alkalmazást,](quickstart-register-app.md) ha még nem.
+1. Az alkalmazás Áttekintés **lapján,** a **Kezelés alatt** válassza az **API-engedélyek**  >  **Engedély hozzáadása lehetőséget.**
+1. Az **Microsoft Graph** API-k listájából válassza az Alkalmazásokat. Ezután adja hozzá az alkalmazáshoz szükséges engedélyeket.
+1. Válassza **az Engedélyek hozzáadása lehetőséget.**
 
-### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
+### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: A felhasználó bejelentkeztetése az alkalmazásba
 
-Ha olyan alkalmazást hoz létre, amely a rendszergazdai jogosultságok végpontját használja, akkor az alkalmazásnak szüksége van egy olyan oldalra vagy nézetre, amelyben a rendszergazda jóváhagyhatja az alkalmazás engedélyeit. A lap a következő lehet:
+Amikor olyan alkalmazást hoz létre, amely a rendszergazdai hozzájárulási végpontot használja, az alkalmazásnak általában szüksége van egy lapra vagy nézetre, amelyen a rendszergazda jóváhagyhatja az alkalmazás engedélyét. Ez az oldal a következő lehet:
 
-* Az alkalmazás regisztrációs folyamatának része.
-* Az alkalmazás beállításainak része.
-* Egy dedikált "kapcsolat" folyamat. 
+* Az alkalmazás bejelentkezési folyamatának része.
+* Az alkalmazás beállításainak egy része.
+* Egy dedikált "csatlakozás" folyamat. 
 
-Sok esetben érdemes megmutatni, hogy az alkalmazás csak akkor jelenjen meg ez a "kapcsolódás" nézet, ha egy felhasználó munkahelyi Microsoft-fiók vagy iskolai Microsoft-fiókval jelentkezett be.
+Sok esetben logikus, hogy az alkalmazás ezt a "kapcsolódási" nézetet csak akkor mutassa, ha egy felhasználó munkahelyi vagy iskolai Microsoft-fiók bejelentkezett Microsoft-fiók.
 
-Amikor beírja a felhasználót az alkalmazásba, azonosíthatja azt a szervezetet, amelyhez a rendszergazda tartozik, mielőtt a szükséges engedélyek jóváhagyását kéri. Bár ez a lépés nem feltétlenül szükséges, a segítségével könnyebben hozhat létre egy intuitív felhasználói élményt a szervezeti felhasználók számára. 
+Amikor bejelentkezik a felhasználóval az alkalmazásba, azonosíthatja a szervezetet, amelyhez a rendszergazda tartozik, mielőtt megkéri, hogy hagyja jóvá a szükséges engedélyeket. Bár ez a lépés nem feltétlenül szükséges, segít intuitívabb felhasználói élményt létrehozni a szervezeti felhasználók számára. 
 
-A felhasználó a alkalmazásban való aláírásához kövesse a [Microsoft Identity platform protokoll oktatóanyagokat](active-directory-v2-protocols.md).
+A felhasználó bejelentkezéshez kövesse a [Microsoft identitásplatform-protokoll oktatóanyagát.](active-directory-v2-protocols.md)
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>Engedélyek kérése egy címtár-rendszergazdától
 
-Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától, átirányíthatja a felhasználót a Microsoft Identity platform rendszergazdai engedélyezési végpontján.
+Ha készen áll arra, hogy engedélyeket kérjen a szervezet rendszergazdájatól, átirányíthatja a felhasználót a Microsoft identitásplatformjának rendszergazdai hozzájárulási végpontjára.
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -219,18 +215,18 @@ https://graph.microsoft.com/mail.send
 
 | Paraméter        | Feltétel        | Leírás                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. Egy GUID-vagy felhasználóbarát név formátumban is megadható. Vagy általános módon hivatkozhat a szervezetekkel, ahogy az a példában is látható. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlő AZONOSÍTÓját, ha lehetséges. |
-| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület (ügyfél) azonosítója. |
-| `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
-| `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-|`scope`        | Kötelező        | Meghatározza az alkalmazás által igényelt engedélyek készletét. A hatókörök lehet statikus (using [`/.default`](#the-default-scope) ) vagy dinamikus.  Ez a készlet tartalmazhat az OpenID Connect-hatóköröket ( `openid` , `profile` , `email` ). Ha az alkalmazásra vonatkozó engedélyekre van szüksége, a használatával kell `/.default` kérnie a statikusan konfigurált engedélyek listáját.  |
+| `tenant` | Kötelező | Az a címtárbérlő, amelytől engedélyeket szeretne kérni. Guid vagy rövid név formátumban is meg lehet adni. Vagy általánosan hivatkozhat a szervezetekre, ahogy az a példában is látható. Ne használja a "common" (gyakori) lehetőséget, mert a személyes fiókok csak a bérlők kontextusában tudnak rendszergazdai jóváhagyást adni. A bérlőket kezelő személyes fiókokkal való lehető legjobb kompatibilitás érdekében használja a bérlőazonosítót, ha lehetséges. |
+| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, Azure Portal [– Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazáshoz rendelt felhasználói élményt. |
+| `redirect_uri` | Kötelező |Az átirányítási URI, ahová el szeretné küldeni a választ, hogy az alkalmazás kezelni tudja. Pontosan meg kell egyeznie az alkalmazásregisztrációs portálon regisztrált átirányítási URI-k egyikének. |
+| `state` | Ajánlott | A kérésben szereplő érték, amely szintén a jogkivonat válaszában lesz visszaadva. Ez bármilyen tartalom sztringe lehet. Az állapot használatával kódoljuk a felhasználó alkalmazásbeli állapotára vonatkozó információkat a hitelesítési kérelem előtt, például azt az oldalt vagy nézetet, ahol a felhasználó jelen volt. |
+|`scope`        | Kötelező        | Meghatározza az alkalmazás által kért engedélyeket. A hatókörök statikusak (a használatával) vagy [`/.default`](#the-default-scope) dinamikusak is lehetnek.  Ez a készlet tartalmazhatja a OpenID Connect ( `openid` , `profile` , `email` ). Ha alkalmazásengedélyre van szüksége, a használatával kell lekérte a statikusan konfigurált engedélyek `/.default` listáját.  |
 
 
-Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszer felkéri a rendszergazdát, hogy hagyja jóvá a paraméterben kért összes engedélyt `scope` .  Ha statikus ( `/.default` ) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezését kéri.
+Az Azure AD-nek ezen a ponton be kell jelentkeznie egy bérlői rendszergazdára a kérés befejezéséhez. A rendszer megkéri a rendszergazdát, hogy hagyja jóvá a paraméterben kért összes `scope` engedélyt.  Ha statikus ( ) értéket használt, az az 1.0-s verziójának rendszergazdai hozzájárulási végpontjaként fog működni, és jóváhagyást kér az alkalmazáshoz szükséges engedélyekben található összes `/.default` hatókörre.
 
 #### <a name="successful-response"></a>Sikeres válasz
 
-Ha a rendszergazda jóváhagyja az alkalmazás engedélyeit, a sikeres válasz a következőképpen néz ki:
+Ha a rendszergazda jóváhagyja az alkalmazás engedélyét, a sikeres válasz a következő lesz:
 
 ```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
@@ -238,13 +234,13 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Paraméter | Leírás |
 | --- | --- |
-| `tenant` | A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva. |
-| `state` | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését. |
-| `admin_consent` | A következőre lesz beállítva: `True` . |
+| `tenant` | Az a címtárbérlő, amely GUID formátumban megadta az alkalmazásnak a kért engedélyeket. |
+| `state` | A kérésben szereplő érték, amely szintén a jogkivonat válaszában lesz visszaadva. Ez bármilyen tartalom sztringe lehet. A rendszer az állapot használatával kódolja a felhasználó alkalmazásbeli állapotára vonatkozó információkat a hitelesítési kérelem beeste előtt, például az oldalt vagy a megtekintést, ahol voltak. |
+| `admin_consent` | A beállítás a `True` lesz. |
 
-#### <a name="error-response"></a>Hiba válasza
+#### <a name="error-response"></a>Hibaválasz
 
-Ha a rendszergazda nem hagyja jóvá az alkalmazás engedélyeit, a sikertelen válasz a következőre hasonlít:
+Ha a rendszergazda nem hagyja jóvá az alkalmazás engedélyét, a sikertelen válasz a következő lesz:
 
 ```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
@@ -252,14 +248,14 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Paraméter | Leírás |
 | --- | --- |
-| `error` | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható. Felhasználható a hibákra való reagálásra is. |
-| `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hibák kiváltó okának azonosításában. |
+| `error` | Hibakód-sztring, amely a előforduló hibák típusainak besorolására használható. Arra is használható, hogy reagáljon a hibákra. |
+| `error_description` | Egy adott hibaüzenet, amely segíthet a fejlesztőnek azonosítani a hiba kiváltó okát. |
 
-Miután sikeres választ kapott a rendszergazdai jogosultsági végponttól, az alkalmazás megszerezte a kért engedélyeket. Ezután kérheti a kívánt erőforráshoz tartozó jogkivonatot.
+Miután sikeresen kapott választ a rendszergazdai hozzájárulási végponttól, az alkalmazás megkapta a kért engedélyeket. Ezután kérhet egy jogkivonatot a kívánt erőforráshoz.
 
 ## <a name="using-permissions"></a>Engedélyek használata
 
-Miután a felhasználó beleegyezett az alkalmazás engedélyeibe, az alkalmazás olyan hozzáférési jogkivonatokat tud beszerezni, amelyek az adott erőforráshoz való hozzáféréshez szükséges engedélyeket képviselik bizonyos kapacitásban. Hozzáférési jogkivonat csak egyetlen erőforráshoz használható. A hozzáférési jogkivonaton belül azonban minden olyan engedély, amelyet az alkalmazás az adott erőforráshoz adott meg. Hozzáférési jogkivonat beszerzéséhez az alkalmazás kérheti a Microsoft Identity platform jogkivonat-végpontját, amely a következőképpen néz ki:
+Miután a felhasználó hozzájárul az alkalmazás engedélyeinek megszerzéséhez, az alkalmazás hozzáférési jogkivonatokat szerezhet be, amelyek az alkalmazásnak egy adott kapacitásban az erőforrások elérésére vonatkozó engedélyét képviselik. A hozzáférési jogkivonatok csak egyetlen erőforráshoz használhatók. A hozzáférési jogkivonatban kódolt minden olyan engedély, amely az alkalmazás számára az adott erőforráshoz hozzá lett adták. Hozzáférési jogkivonat lekéréséhez az alkalmazás az alábbihoz hasonló kérést tud tenni a Microsoft identitásplatform jogkivonatának végpontjára:
 
 ```HTTP
 POST common/oauth2/v2.0/token HTTP/1.1
@@ -276,51 +272,51 @@ Content-Type: application/json
 }
 ```
 
-Az eredményül kapott hozzáférési jogkivonatot a HTTP-kérelmekben az erőforráshoz is használhatja. Ez megbízhatóan jelzi az erőforrásnak, hogy az alkalmazás megfelelő engedéllyel rendelkezik egy adott feladat végrehajtásához.
+Az eredményül kapott hozzáférési jogkivonatot használhatja az erőforrásnak adott HTTP-kérésben. Megbízhatóan jelzi az erőforrásnak, hogy az alkalmazás megfelelő engedéllyel rendelkezik egy adott feladat elvégzéséhez.
 
-A OAuth 2,0 protokollról és a hozzáférési jogkivonatok beszerzéséről a [Microsoft Identity platform Endpoint Protocol-referenciájában](active-directory-v2-protocols.md)talál további információt.
+Az OAuth 2.0 protokollról és a hozzáférési jogkivonatok lekért verziójáról további információt a [Microsoft identitásplatformjának végponti protokolljának referenciája tartalmaz.](active-directory-v2-protocols.md)
 
-## <a name="the-default-scope"></a>A/.default hatóköre
+## <a name="the-default-scope"></a>A /.default hatókör
 
-A `/.default` hatókör segítségével áttelepítheti az alkalmazásokat a 1.0-s végpontról a Microsoft Identity platform-végpontra. A `/.default` hatókör minden olyan alkalmazáshoz be van építve, amely az alkalmazás regisztrációján konfigurált engedélyek statikus listájára hivatkozik. 
+A hatókör használatával alkalmazásait az 1.0-s verziójának végpontról a `/.default` Microsoft identitásplatform-végpontjára miggálhatja. A hatókör minden olyan alkalmazáshoz be van építve, amely az alkalmazásregisztrációban konfigurált engedélyek statikus `/.default` listájára hivatkozik. 
 
-A (z `scope` ) értéke a `https://graph.microsoft.com/.default` `resource=https://graph.microsoft.com` v 1.0 végponton megegyező módon működik. A `https://graph.microsoft.com/.default` hatókörnek a kérelemben való megadásával az alkalmazás olyan hozzáférési jogkivonatot kér, amely az alkalmazás regisztrációs portálon az alkalmazáshoz kiválasztott minden Microsoft Graph engedély hatókörét tartalmazza. A hatókört az erőforrás URI-ja és a alapján kell kiépíteni `/.default` . Tehát ha az erőforrás URI `https://contosoApp.com` -ja, a kért hatókör `https://contosoApp.com/.default` .  Azokban az esetekben, amikor a token megfelelő kéréséhez egy második perjelre van szükség, tekintse meg a [záró perjelet ismertető szakaszt](#trailing-slash-and-default).
+A `scope` értéke `https://graph.microsoft.com/.default` funkcionálisan megegyezik az `resource=https://graph.microsoft.com` 1.0-s végpont értékével. A hatókör kérésben való megadásával az alkalmazás olyan hozzáférési jogkivonatot kér, amely az alkalmazáshoz az alkalmazásregisztrációs portálon kiválasztott Microsoft Graph-engedélyek hatókörét `https://graph.microsoft.com/.default` tartalmazza. A hatókör az erőforrás URI-ját és a használatával áll `/.default` össze. Tehát ha az erőforrás URI-ja `https://contosoApp.com` , akkor a kért hatókör a `https://contosoApp.com/.default` következő: .  Ha a jogkivonat helyes lekérése érdekében egy második perjelet is be kell foglalnia, tekintse meg a záró perjelekkel kapcsolatos [szakaszt.](#trailing-slash-and-default)
 
-A `/.default` hatókör bármely OAuth 2,0-flow-ban használható. Azonban szükség van a folyamaton belüli és ügyfél [-](v2-oauth2-on-behalf-of-flow.md) [hitelesítő adatok folyamatára](v2-oauth2-client-creds-grant-flow.md). Akkor is szüksége lesz rá, ha a v2 rendszergazdai engedélyezési végpontot használja az alkalmazás engedélyeinek igényléséhez.
+A `/.default` hatókör bármely OAuth 2.0-folyamatban használható. Erre azonban szükség van [](v2-oauth2-on-behalf-of-flow.md) a Meghatalmazásos folyamat és az ügyfél-hitelesítő [adatok folyamatában.](v2-oauth2-client-creds-grant-flow.md) Akkor is szüksége lesz rá, ha a v2 rendszergazdai hozzájárulási végpontot használja az alkalmazásengedélyek igénylésére.
 
-Az ügyfelek egyetlen kérelemben nem kombinálhatók a statikus ( `/.default` ) és a dinamikus beleegyező engedélyekkel. Ezért `scope=https://graph.microsoft.com/.default+mail.read` hibát eredményez, mert egyesíti a hatókör-típusokat.
+Az ügyfelek nem kombinálják a statikus ( ) hozzájárulásokat és `/.default` a dinamikus hozzájárulásokat egyetlen kérésben. Ezért ez hibát jelez, mert a `scope=https://graph.microsoft.com/.default+mail.read` hatókörtípusokat kombinálja.
 
-### <a name="default-and-consent"></a>/.default és beleegyezett
+### <a name="default-and-consent"></a>/.default és hozzájárulás
 
-A `/.default` hatókör a v 1.0 végpont viselkedését `prompt=consent` is elindítja. Az adott erőforrástól függetlenül minden, az alkalmazás által regisztrált engedélyhez beleegyezik. Ha a kérelem részeként szerepel, a `/.default` hatókör olyan tokent ad vissza, amely tartalmazza a kért erőforrás hatóköreit.
+A `/.default` hatókör aktiválja az 1.0-s végpont viselkedését `prompt=consent` is. Az alkalmazás által regisztrált összes engedélyhez jóváhagyást kér, az erőforrástól függetlenül. Ha a kérelem része, a hatókör egy jogkivonatot ad vissza, amely tartalmazza a kért erőforrás `/.default` hatókörét.
 
-### <a name="default-when-the-user-has-already-given-consent"></a>/.default, ha a felhasználó már megadott egy engedélyt
+### <a name="default-when-the-user-has-already-given-consent"></a>/.default, ha a felhasználó már hozzájárulását adta
 
-A `/.default` hatókör a `resource` -centrikus v 1.0 végpont működésével egyenértékű. A v 1.0 végpont engedélyezési viselkedését is magában hordozza. Ez a művelet `/.default` csak akkor indítja el a jóváhagyást, ha a felhasználó nem kapott engedélyt az ügyfél és az erőforrás között. 
+A `/.default` hatókör funkcionálisan megegyezik a `resource` -központú v1.0-végpont viselkedésével. A v1.0-végpont hozzájárulási viselkedését is tartalmazza. Ez azt jelenti, hogy csak akkor aktivál egy hozzájárulási kérést, ha a felhasználó nem adott engedélyt az ügyfél és az `/.default` erőforrás között. 
 
-Ha ilyen beleegyezik, a visszaadott jogkivonat az adott erőforráshoz megadott felhasználó összes hatókörét tartalmazza. Ha azonban nem adta meg az engedélyt, vagy ha a paraméter meg van adva `prompt=consent` , a rendszer egy beleegyezési kérést jelenít meg az ügyfélalkalmazás által regisztrált összes hatókörhöz.
+Ha létezik ilyen jóváhagyás, a visszaadott jogkivonat tartalmazza az adott erőforráshoz a felhasználó által megadott összes hatókört. Ha azonban nem kapott engedélyt, vagy ha a paraméter meg lett adva, az ügyfélalkalmazás által regisztrált összes hatókörre jóváhagyást kér `prompt=consent` a rendszer.
 
-#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>1. példa: a felhasználó vagy a bérlő rendszergazdája engedélyt kapott
+#### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>1. példa: A felhasználó vagy bérlői rendszergazda engedélyeket adott
 
-Ebben a példában a felhasználó vagy egy bérlői rendszergazda engedélyezte a `mail.read` és a `user.read` Microsoft Graph engedélyt az ügyfélnek. 
+Ebben a példában a felhasználó vagy egy bérlői rendszergazda megadta a és Microsoft Graph `mail.read` `user.read` engedélyeket az ügyfélnek. 
 
-Ha az ügyfél kéri `scope=https://graph.microsoft.com/.default` , a rendszer nem jelenít meg beleegyező kérést, függetlenül az ügyfélalkalmazás regisztrált engedélyeinek Microsoft Graph. A visszaadott jogkivonat tartalmazza a hatóköröket `mail.read` és a-t `user.read` .
+Ha az ügyfél a kérést kéri, a rendszer nem kér jóváhagyást, függetlenül attól, hogy az ügyfélalkalmazás milyen tartalmakkal rendelkezik a `scope=https://graph.microsoft.com/.default` Microsoft Graph. A visszaadott jogkivonat tartalmazza a és a `mail.read` `user.read` hatókört.
 
-#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2. példa: a felhasználó nem adott meg engedélyeket az ügyfél és az erőforrás között
+#### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2. példa: A felhasználó nem adott engedélyeket az ügyfél és az erőforrás között
 
-Ebben a példában a felhasználó nem kapott beleegyezést az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van az engedélyekhez `user.read` és a `contacts.read` . A Azure Key Vault hatókörében is regisztrálva van `https://vault.azure.net/user_impersonation` . 
+Ebben a példában a felhasználó nem adott jóváhagyást az ügyfél és a Microsoft Graph. Az ügyfél regisztrált a és a `user.read` `contacts.read` engedélyre. Emellett regisztrálva van a Azure Key Vault `https://vault.azure.net/user_impersonation` hatókörben. 
 
-Amikor az ügyfél jogkivonatot kér a `scope=https://graph.microsoft.com/.default` alkalmazáshoz, a felhasználó a `user.read` hatókör, a `contacts.read` hatókör és a Key Vault `user_impersonation` hatókörökhöz tartozó beleegyező lapot láthat. A visszaadott jogkivonat csak a `user.read` és a `contacts.read` hatóköröket tartalmazza. Csak Microsoft Graph esetén használható.
+Amikor az ügyfél jogkivonatot kér a számára, a felhasználó egy hozzájárulási oldalt lát a hatókörre, a hatókörre és a Key Vault `scope=https://graph.microsoft.com/.default` `user.read` `contacts.read` `user_impersonation` hatókörre. A visszaadott jogkivonat csak a és a `user.read` `contacts.read` hatókört tartalmazza. Csak a Microsoft Graph.
 
-#### <a name="example-3-the-user-has-consented-and-the-client-requests-more-scopes"></a>3. példa: a felhasználó beleegyezett, és az ügyfél több hatókört kér
+#### <a name="example-3-the-user-has-consented-and-the-client-requests-more-scopes"></a>3. példa: A felhasználó hozzájárult, és az ügyfél több hatókört kér
 
-Ebben a példában a felhasználó már beleegyezett az `mail.read` ügyfélhez. Az ügyfél regisztrálva van a `contacts.read` hatókörben. 
+Ebben a példában a felhasználó már hozzájárult az `mail.read` ügyfélhez. Az ügyfél regisztrált a `contacts.read` hatókörre. 
 
-Ha az ügyfél egy jogkivonatot kér a használatával `scope=https://graph.microsoft.com/.default` , és a kérést kéri `prompt=consent` , a felhasználó az alkalmazás által regisztrált engedélyekhez (és csak) egy beleegyező lapot lát. A `contacts.read` hatókör a beleegyező oldalon található, de `mail.read` nem. A visszaadott jogkivonat Microsoft Graph. Tartalmaz `mail.read` és `contacts.read` .
+Amikor az ügyfél jogkivonatot kér a használatával, és a használatával kér jóváhagyást, a felhasználó az alkalmazás által regisztrált összes (és csak) engedélyhez egy hozzájárulási `scope=https://graph.microsoft.com/.default` `prompt=consent` oldalt lát. A `contacts.read` hatókör a hozzájárulási oldalon található, `mail.read` de nem az. A visszaadott jogkivonat a Microsoft Graph. A és a `mail.read` adatokat `contacts.read` tartalmazza.
 
-### <a name="using-the-default-scope-with-the-client"></a>A/.default hatókör használata az ügyféllel
+### <a name="using-the-default-scope-with-the-client"></a>A /.default hatókör használata az ügyféllel
 
-Bizonyos esetekben előfordulhat, hogy az ügyfél kérheti a saját `/.default` hatókörét. A következő példa bemutatja ezt a forgatókönyvet.
+Bizonyos esetekben az ügyfelek saját hatókört `/.default` kérhetnek. Az alábbi példa ezt a forgatókönyvet mutatja be.
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -333,29 +329,29 @@ response_type=token            //Code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Ez a kódrészlet egy beleegyező oldalt hoz létre az összes regisztrált engedélyhez, ha az előzőekben ismertetett beleegyezikés és `/.default` a forgatókönyvre vonatkozik. Ezt követően a kód egy `id_token` hozzáférési jogkivonat helyett egy értéket ad vissza.  
+Ez a példakód létrehoz egy jóváhagyási oldalt az összes regisztrált engedélyhez, ha a hozzájárulás fenti leírásai és `/.default` a forgatókönyvre vonatkoznak. Ezután a kód egy `id_token` , és nem egy hozzáférési jogkivonatot ad vissza.  
 
-Ez a viselkedés az Azure AD Authentication Library (ADAL) és a Microsoft Authentication Library (MSAL) között áthelyezett örökölt ügyfeleket is tartalmazza. Ezt a *beállítást nem szabad olyan* új ügyfelek használni, amelyek a Microsoft Identity platformot célozzák meg.
+Ez a viselkedés az Azure AD Authentication Libraryről (ADAL) a Microsoft Authentication Libraryre (MSAL) való áthelyezésre használt régebbi ügyfeleket is befogadja. Ezt *a beállítást nem szabad* használni a Microsoft identitásplatformját megcélzott új ügyfelek számára.
 
-### <a name="client-credentials-grant-flow-and-default"></a>Az ügyfél hitelesítő adatai biztosítják a folyamatot és a/.default  
+### <a name="client-credentials-grant-flow-and-default"></a>Ügyfél-hitelesítő adatok megadása folyamat és /.default  
 
-A egy másik használata az `/.default` alkalmazás engedélyeinek (vagy *szerepköreinek*) kérése egy nem interaktív alkalmazásban, például egy olyan Daemon-alkalmazás, amely az [ügyfél hitelesítő adatait](v2-oauth2-client-creds-grant-flow.md) használja, és meghívja a webes API-t.
+Egy másik felhasználási lehetőség az alkalmazásengedélyek (vagy szerepkörök) kérése egy nem interaktív alkalmazásban, például egy démonalkalmazásban, amely az ügyfél hitelesítő adatait használó folyamat segítségével hív meg egy `/.default` webes API-t.  [](v2-oauth2-client-creds-grant-flow.md)
 
-Ha alkalmazás-engedélyeket (szerepköröket) szeretne létrehozni egy webes API-hoz, tekintse [meg az alkalmazás szerepköreinek hozzáadása az alkalmazásban](howto-add-app-roles-in-azure-ad-apps.md)című témakört.
+A webes API-k alkalmazásengedélyeinek (szerepköreinek) létrehozásához lásd: [Alkalmazásszerepk szerepkörök](howto-add-app-roles-in-azure-ad-apps.md)hozzáadása az alkalmazásban.
 
-Az ügyfélhez tartozó hitelesítő adatokra vonatkozó kérelmeknek szerepelniük *kell* a alkalmazásban `scope={resource}/.default` . Itt `{resource}` látható az alkalmazás által hívni kívánt webes API. Az ügyfél-hitelesítő adatokra vonatkozó kérelem egyedi alkalmazás-engedélyek (szerepkörök) használatával történő kiállítása *nem* támogatott. Az adott webes API-hoz megadott összes alkalmazás-engedély (szerepkör) a visszaadott hozzáférési jogkivonat részét képezi.
+Az ügyfél-hitelesítő adatokra vonatkozó kérések az ügyfélalkalmazásban tartalmazzák *a* következőt: `scope={resource}/.default` . Itt az a webes API, amit az alkalmazás `{resource}` meg kíván hívni. Az ügyfél-hitelesítő adatok kérésének egyéni alkalmazásengedélyekkel (szerepkörökkel) történő kiadása *nem* támogatott. A visszaadott hozzáférési jogkivonat tartalmazza az adott webes API-hoz megadott összes alkalmazásengedélyt (szerepkört).
 
-Ha hozzáférést szeretne adni a megadott alkalmazás-engedélyekhez, beleértve az alkalmazáshoz való rendszergazdai jóváhagyást is, tekintse meg az [ügyfélalkalmazás konfigurálása webes API eléréséhez](quickstart-configure-app-access-web-apis.md)című témakört.
+Ha hozzáférést ad a megadott alkalmazásengedélyek számára, beleértve a rendszergazdai hozzájárulás megadását az alkalmazáshoz, lásd: Ügyfélalkalmazás konfigurálása webes [API-k elérésére.](quickstart-configure-app-access-web-apis.md)
 
-### <a name="trailing-slash-and-default"></a>Záró perjel és/.default
+### <a name="trailing-slash-and-default"></a>Záró perjel és /.default
 
-Egyes erőforrás-URI-k záró perjeltel rendelkeznek, például a `https://contoso.com/` helyett `https://contoso.com` . A záró perjel problémákhoz vezethet a jogkivonat-ellenőrzés során. A probléma elsősorban akkor fordul elő, ha Azure Resource Manager () jogkivonatot kér `https://management.azure.com/` . Ebben az esetben az erőforrás URI azonosítójának záró perjele azt jelenti, hogy a perjelnek jelen kell lennie a jogkivonat kérése esetén.  Tehát amikor jogkivonatot kér `https://management.azure.com/` és használ `/.default` , meg kell kérnie `https://management.azure.com//.default` (figyelje meg a dupla perjelet!). Általánosságban elmondható, hogy ha ellenőrzi, hogy a jogkivonat ki van-e állítva, és ha a jogkivonatot el szeretné utasítani az API-nak, hogy el kellene fogadnia, vegye fontolóra egy második perjel hozzáadását, és próbálkozzon újra. 
+Egyes erőforrás-URI-k záró perjellel( ) vannak, nem pedig `https://contoso.com/` a `https://contoso.com` következővel: . A záró perjel problémákat okozhat a jogkivonat érvényesítésével kapcsolatban. A problémák elsősorban akkor fordulnak elő, ha jogkivonatot Azure Resource Manager ( `https://management.azure.com/` ). Ebben az esetben az erőforrás URI-ján záró perjel azt jelenti, hogy a perjelnek jelen kell lennie a jogkivonat lekérésekor.  Így amikor jogkivonatot kér a számára, és a használatát használja, le kell kérnie `https://management.azure.com/` `/.default` (figyelje meg a kettős `https://management.azure.com//.default` perjelet!). Ha általában ellenőrzi, hogy a jogkivonat ki van-e bocsátva, és az API elutasítja a jogkivonatot, amely elfogadja azt, érdemes lehet hozzáadni egy újabb perjelet, és újra próbálkozni. 
 
-## <a name="troubleshooting-permissions-and-consent"></a>Hibaelhárítási engedélyek és beleegyezett
+## <a name="troubleshooting-permissions-and-consent"></a>Engedélyek és hozzájárulás hibaelhárítása
 
-Hibaelhárítási lépések: [váratlan hiba történt az alkalmazáshoz való belelépéskor](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+Hibaelhárítási lépésekért lásd: Váratlan hiba egy alkalmazás [hozzájárulásának végrehajtásakor.](../manage-apps/application-sign-in-unexpected-user-consent-error.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [AZONOSÍTÓ tokenek a Microsoft Identity platformon](id-tokens.md)
-* [Hozzáférési tokenek a Microsoft Identity platformon](access-tokens.md)
+* [Azonosító jogkivonatok a Microsoft identitásplatformján](id-tokens.md)
+* [Hozzáférési jogkivonatok a Microsoft identitásplatformján](access-tokens.md)

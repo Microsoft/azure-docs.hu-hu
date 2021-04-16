@@ -1,6 +1,6 @@
 ---
-title: A Windows rendszerű virtuális asztal újdonságai – Azure
-description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
+title: Újdonságok a Windows Virtual Desktop? – Azure
+description: Új funkciók és termékfrissítések a Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
 ms.date: 04/08/2021
@@ -8,27 +8,27 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107057"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516552"
 ---
-# <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
+# <a name="whats-new-in-windows-virtual-desktop"></a>Újdonságok a Windows Virtual Desktop?
 
-A Windows rendszerű virtuális asztali frissítések rendszeresen frissülnek. Ebből a cikkből megismerheti a következőket:
+Windows Virtual Desktop frissítéseket. Ebben a cikkben a következővel fog többet megtudni:
 
 - A legújabb frissítések
 - Új funkciók
-- A meglévő funkciók fejlesztése
+- A meglévő funkciók fejlesztései
 - Hibajavítások
 
-Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+Ezt a cikket havonta frissítjük. Mindenképpen gyakran ellenőrizze itt, hogy lépést tart-e az új frissítésekkel.
 
-## <a name="client-updates"></a>Ügyfelek frissítései
+## <a name="client-updates"></a>Ügyfélfrissítések
 
-Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távoli asztali szolgáltatások-ügyfelek frissítéseinek megismeréséhez:
+Az alábbi cikkekből megtudhatja, hogyan frissülnek az ügyfelek a Windows Virtual Desktop és Távoli asztali szolgáltatások:
 
 - [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
 - [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
@@ -36,362 +36,370 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
-## <a name="windows-virtual-desktop-agent-updates"></a>Windows rendszerű virtuális asztali ügynök frissítései
+## <a name="windows-virtual-desktop-agent-updates"></a>Windows Virtual Desktop ügynök frissítései
 
-A Windows rendszerű virtuális asztali ügynök havonta legalább egyszer frissül.
+A Windows Virtual Desktop ügynök havonta legalább egyszer frissül.
 
-A következő módosult a Windows rendszerű virtuális asztali ügynökben:
+A következő módosult a Windows Virtual Desktop Agentben:
 
-- Verzió 1.0.2866.1500: ezt a frissítést 2021. március 26-án adták ki, és kijavított egy problémát a verem állapot-ellenőrzését illetően.
-- 1.0.2800.2802 verzió: Ez a frissítés a 2021. március 10-én lett közzétéve, és általános javításokat és hibajavításokat tartalmaz.
-- Verzió 1.0.2800.2800: Ez a frissítés a 2021. március 2. és egy fordított hálózati probléma kijavítása után jelent meg.
-- Verzió 1.0.2800.2700: Ez a frissítés 2021. február 10-én jelent meg, és általános javításokat és hibajavításokat tartalmaz.
-- Verzió 1.0.2800.2700: Ez a frissítés a 2021. február 4. és a hozzáférés-megtagadási probléma kijavítása után jelent meg.
+- 1.0.2990.800-as verzió: Ez a frissítés 2021. április 13-án jelent meg, és a következő módosításokat tartalmazza:
+    - Ügynök hibaüzenetei frissítve.
+    - Kivételt ad hozzá, amely megakadályozza, hogy nem Windows 7 rendszerű ügynököket telepítsen Windows 7 rendszerű virtuális gépekre.
+    - Frissítette a szívverési szolgáltatás logikáját.
+- 1.0.2944.1400-as verzió: Ez a frissítés 2021. április 7-én jelent meg, és a következő változásokat tartalmazza:
+    - Az ügynökhibákra vonatkozó Windows Virtual Desktop ügynök hibaelhárítási útmutatójára mutató hivatkozásokat helyezett el az eseménynaplóban.
+    - Egy további kivétel hozzáadva a jobb hibakezelés érdekében.
+    - Hozzáadta a WVDAgentUrlTool.exe, amely lehetővé teszi az ügyfelek számára, hogy ellenőrizzék, mely szükséges URL-címeket tudják elérni.
+- 1.0.2866.1500-as verzió: Ez a frissítés 2021. március 26-án jelent meg, és kijavítja a verem állapot-ellenőrzésével kapcsolatos problémát.
+- 1.0.2800.2802-es verzió: Ez a frissítés 2021. március 10-én jelent meg, és általános fejlesztésekkel és hibajavításokkal rendelkezik.
+- 1.0.2800.2800-as verzió: Ez a frissítés 2021. március 2-án jelent meg, és kijavított egy fordított kapcsolati problémát.
+- 1.0.2800.2700-as verzió: Ez a frissítés 2021. február 10-én jelent meg, és általános fejlesztéseket és hibajavításokat tartalmaz.
+- 1.0.2800.2700-as verzió: Ez a frissítés 2021. február 4-én jelent meg, és kijavított egy hozzáférés-megtagadási vezénylési problémát.
 
 ## <a name="fslogix-updates"></a>FSLogix-frissítések
 
-Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new).
+Kíváncsi az FSLogix legújabb frissítésére? Tekintse meg [az FSLogix újdonságai részt.](/fslogix/whats-new)
 
-## <a name="march-2021"></a>Március 2021
+## <a name="march-2021"></a>2021. március
 
-A következő változás a 2021 márciusában változott.
+2021 márciusában a következő változás történt:
 
-### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztali számítógép Azure Portal felhasználói felületének frissítései
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>A Azure Portal felhasználói felületének frissítései Windows Virtual Desktop
 
-A következő frissítéseket készítettük a Windows rendszerű virtuális asztalhoz a Azure Portal:
+A következő frissítéseket Windows Virtual Desktop a Azure Portal:
 
-- Engedélyezte a munkafolyamatok új rendelkezésre állási lehetőségeit (rendelkezésre állási csoport és zónák) a gazdagépek létrehozásához és a virtuális gépek hozzáadásához.
-- Kijavítunk egy problémát, amelyben a "segítségre szorul" állapotú gazdagép nem érhető el. Most a gazdagépen egy figyelmeztető ikon jelenik meg.
-- Aktív munkamenetek rendezését engedélyezte.
-- Most már küldhet üzeneteket az adott felhasználók számára, vagy kijelentkezhet a gazdagép adatai lapon.
-- Módosítottuk a maximális munkamenet-korlát mezőt.
-- A munkafolyamathoz hozzáadta a szervezeti egység érvényesítési elérési útját a gazdagép létrehozásához.
-- Most már használhatja a Windows 10-es lemezkép legújabb verzióját is, ha létrehoz egy személyes gazdagépet.
+- Engedélyeztünk új rendelkezésre állási lehetőségeket (rendelkezésre állási csoport és zónák) a munkafolyamatokhoz gazdagépkészletek létrehozásához és virtuális gépek hozzáadásához.
+- Kijavítottunk egy hibát, amely miatt a "Segítségre van szüksége" állapotú gazdagép nem elérhetőként jelent meg. Most a gazdagép mellett megjelenik egy figyelmeztető ikon.
+- Engedélyezett az aktív munkamenetek rendezése.
+- Mostantól üzeneteket küldhet vagy kijelentkeztethet adott felhasználóknak a gazdagép részletei lapon.
+- Módosította a munkamenetek maximális korlátja mezőt.
+- Hozzáadtunk egy szervezeti egység ellenőrzési útvonalát a munkafolyamathoz egy gazdagépkészlet létrehozásához.
+- Most már használhatja a rendszerkép Windows 10 a személyes gazdagépkészlet létrehozásakor.
 
 ### <a name="generation-2-images-and-trusted-launch"></a>2. generációs rendszerképek és megbízható indítás
 
-Az Azure Marketplace-en már 2. generációs lemezképek érhetők el a Windows 10 Enterprise és a Windows 10 Enterprise multi-session szolgáltatáshoz. Ezek a lemezképek lehetővé teszik a megbízható indítási virtuális gépek használatát. További információ a 2. generációs virtuális gépekről: [1. vagy 2. generációs virtuális gép létrehozása](../virtual-machines/generation-2.md). A Windows rendszerű virtuális asztali megbízható indítási virtuális gépek kiépítésének megismeréséhez tekintse meg [a TechCommunity post](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170)című témakört.
+A Azure Marketplace már rendelkezik 2. generációs rendszerképekkel Windows 10 Enterprise és Windows 10 Enterprise munkamenethez. Ezekkel a rendszerképekkel megbízható indítású virtuális gépeket használhat. További információ a 2. generációs virtuális gépekről: [Érdemes 1. vagy 2.](../virtual-machines/generation-2.md)generációs virtuális gépet létrehozni. A Megbízható indítású virtuális gépek Windows Virtual Desktop a [TechCo új bejegyzésében olvashat.](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170)
 
-### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>A FSLogix mostantól előre telepítve van a Windows 10-es nagyvállalati multi-session images-lemezképeken
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>Az FSLogix most már előre Windows 10 Enterprise több munkamenetből álló rendszerképeken
 
-Az ügyfelek visszajelzései alapján a Windows 10-es nagyvállalati multi-session rendszerkép új verzióját állítottuk be, amely már telepítve van a FSLogix nem konfigurált verziójával. Reméljük, hogy a Windows rendszerű virtuális asztal üzembe helyezése egyszerűbbé válik.
+Az ügyfelek visszajelzései alapján beállítottuk az Windows 10 Enterprise több munkamenetes rendszerkép új verzióját, amely már telepítve van az FSLogix nem konfigurált verziójával. Reméljük, hogy ez megkönnyíti a Windows Virtual Desktop üzembe helyezését.
 
-### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>A Windows rendszerű virtuális asztali Azure Monitor már általánosan elérhető
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor a Windows Virtual Desktop mostantól általánosan elérhető
 
-A Windows rendszerű virtuális asztali Azure Monitor mostantól általánosan elérhető a nyilvánosság számára. Ez a szolgáltatás egy automatizált szolgáltatás, amely figyeli az üzemelő példányokat, és lehetővé teszi az események, az állapot és a hibaelhárítási javaslatok megtekintését egyetlen helyen. További információkért tekintse meg a [dokumentációt](azure-monitor.md) , vagy tekintse meg [a TechCommunity bejegyzést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
+Azure Monitor a Windows Virtual Desktop mostantól általánosan elérhető a nyilvánosan. Ez a szolgáltatás egy automatizált szolgáltatás, amely figyeli az üzemelő példányokat, és lehetővé teszi, hogy egyetlen helyen tekintse meg az eseményeket, az állapotokat és a hibaelhárítási javaslatokat. További információért tekintse meg [dokumentációnkat,](azure-monitor.md) vagy tekintse meg [TechCo blogbejegyzésünket.](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861)
 
-### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Március 2021 – frissítések a Windows rendszerű virtuális asztali csapatokhoz
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>A Teams 2021. márciusi Windows Virtual Desktop
 
-A következő frissítéseket készítettük a csapatokhoz a Windows rendszerű virtuális asztalon:
+A következő frissítéseket készítettünk a Teamshez a Windows Virtual Desktop:
 
-- A videó minőségi teljesítményének javítása hívásokon és 2x2-módban.
-- Csökkentettük a CPU-kihasználtságot 5-10%-kal (a CPU-termeléstől függően) a XVP hardveres kiszervezésének használatával.
-- A régebbi gépek mostantól a XVP és a hardveres dekódolást is használhatják, így a bejövő videók zökkenőmentesen jeleníthetők meg az 2x2-es módban.
-- Frissítettük a WebRTC-veremet a M74-ről a M88-ra a jobb AV-szinkronizálási teljesítmény és kevesebb átmeneti probléma miatt.
-- A szoftveres H264-kódolót váltotta fel a OpenH264 (OSS a webes csapatokban), ami megnövelte a kimenő kamera Videójának minőségét.
-- Március 30-án engedélyezzük az általános nyilvános csapatokhoz tartozó 2x2 üzemmódot. az 2x2 mód egyszerre legfeljebb négy bejövő videó streamet mutat be.
+- Továbbfejlesztettük a hívások videóminőségét és a 2x2 módot.
+- A cpu-kihasználtságot 5–10%-kal csökkentettük (a cpu-generációtól függően) a videófeldolgozás (XVP) hardveres kiszervezésével.
+- A régebbi gépek mostantól az XVP és a hardver dekódolása segítségével zökkenőmentesen, 2x2 módban jelenítik meg a bejövő videóstreameket.
+- Frissítettük a WebRTC vermet M74-ről M88-ra a jobb AV-szinkronizálási teljesítmény és kevesebb átmeneti probléma érdekében.
+- A H264 kódolót OpenH264-re cseréljük (a Weben a Teamsben használt OSS-re), ami megnövelte a kimenő kamera videóminőségét.
+- Március 30-án engedélyeztünk egy 2x2-es üzemmódot a Teams Server általános nyilvános számára. A 2x2 mód egyszerre legfeljebb négy bejövő videóstreamet mutat.
 
-### <a name="start-vm-on-connect-public-preview"></a>Virtuális gép elindítása a csatlakozási nyilvános előzetes verzióban
+### <a name="start-vm-on-connect-public-preview"></a>Indítsa el a virtuális gépet a Connect public preview (Csatlakozás nyilvános előzetes verzió) funkcióval
 
-Az új gazdagép-készlet beállítása, a virtuális gép elindítása a csatlakozáson lehetőség már nyilvános előzetes verzióban érhető el. Ez a beállítás lehetővé teszi a virtuális gépek bekapcsolását, amikor csak szüksége van rájuk. Ha szeretné megtakarítani a költségeket, az Azure számítási beállításainak konfigurálásával felszabadíthatja a virtuális gépeket. További információkért tekintse meg [a blogbejegyzésben](https://aka.ms/wvdstartvmonconnect) és [a dokumentációban](start-virtual-machine-connect.md).
+Az új gazdagépkészlet-beállítás, a Virtuális gép létrehozása csatlakozáskor, mostantól nyilvános előzetes verzióban érhető el. Ezzel a beállítással bármikor bekapcsolhatja a virtuális gépeket, amikor szüksége van rájuk. Ha meg szeretné menteni a költségeket, fel kell szabadította a virtuális gépeket a virtuális gép Azure Compute konfigurálásával. További információért tekintse meg [blogbejegyzésünket](https://aka.ms/wvdstartvmonconnect) és [dokumentációunkat.](start-virtual-machine-connect.md)
 
-### <a name="windows-virtual-desktop-specialty-certification"></a>Windows rendszerű virtuális asztali speciális minősítés
+### <a name="windows-virtual-desktop-specialty-certification"></a>Windows Virtual Desktop különleges tanúsítvány
 
-Megjelent az az-140 vizsga bétaverziója, amely lehetővé teszi az Azure-beli Windowsos virtuális asztali környezettel kapcsolatos szakértelmének bizonyítását. További információért tekintse meg [a TechCommunity bejegyzést](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
+Kiadtunk egy bétaverziót az AZ-140 vizsga számára, amelyből bizonyíthatja az Azure-beli Windows Virtual Desktop szakértelmét. További tudnivalókért tekintse meg [TechCo új bejegyzésünket.](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107)
 
 ## <a name="february-2021"></a>2021. február
 
-A következőképpen módosult a február 2021.
+A következő változott 2021 februárjában.
 
 ### <a name="portal-experience"></a>Portal-felület
 
-Az alábbi módokon javítottuk a Azure Portal élményt:
+A következő módokon javítottuk Azure Portal felhasználói élményt:
 
-- Tömeges kiürítési mód a gazdagépeken a munkamenet-gazdagép rács lapján. 
-- A MSIX-alkalmazás csatolása mostantól elérhető nyilvános előzetes verzióként.
-- Rögzített gazdagép-készlet – áttekintési információ sötét üzemmódhoz.
+- Tömeges kiürítési mód gazdagépen a munkamenetgazda rács lapján. 
+- Az MSIX-alkalmazás csatolása mostantól elérhető a nyilvános előzetes verzióban.
+- Ki lett javítva a gazdagépkészlet áttekintési információja a sötét módhoz.
 
-### <a name="eu-metadata-storage-now-in-public-preview"></a>Nyilvános előzetes verzióban elérhető az EU metaadat-tárolója
+### <a name="eu-metadata-storage-now-in-public-preview"></a>Az EU metaadatainak tárolása mostantól nyilvános előzetes verzióban érhető el
 
-Most az Európa (EU) Földrajzának nyilvános előzetesét üzemeltetjük tárolási lehetőségként a Windows rendszerű virtuális asztali szolgáltatás metaadatainak számára. Az ügyfelek a szolgáltatásbeli objektumaik létrehozásakor választhatnak Nyugat-vagy Észak-Európában. A gazdagépekhez tartozó szolgáltatási objektumokat és metaadatokat az egyes régiókkal társított Azure-földrajz fogja tárolni. További információért olvassa el [a nyilvános előzetes verziót bejelentő blogbejegyzést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+Az európai (EU-) földrajzi hely nyilvános előzetes verziója mostantól a szolgáltatási metaadatok tárolási lehetőségeként érhető el a Windows Virtual Desktop. Az ügyfelek a szolgáltatásobjektumaik létrehozásakor választhatnak Nyugat- vagy Észak-Európa között. A gazdagépkészletek szolgáltatásobjektumai és metaadatai az egyes régiókhoz társított Azure földrajzi helyen lesznek tárolva. További információért olvassa el a nyilvános előzetes kiadást [bejelentő blogbejegyzésünket.](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939)
 
-### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Csapatok a Windows rendszerű virtuális asztali beépülő modul frissítésein
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>A Teams a Windows Virtual Desktop beépülő modul frissítéseit
 
-Továbbfejlesztettük a videohívás minőségét a Windows rendszerű virtuális asztali beépülő modulban a leggyakrabban jelentett problémák megoldásával, például ha a képernyő hirtelen sötét vagy a videó és hang deszinkronizálva lesz. Ezek a tökéletesítések az egyvideós nézet teljesítményét növelhetik az aktív hangszórók váltásával. Olyan problémát is kijavítunk, amelyben a speciális karaktereket tartalmazó hardvereszközök nem voltak elérhetők a csapatokban.
+Továbbfejlesztettük a videóhívások minőségét a Windows Virtual Desktop beépülő modulon a leggyakrabban jelentett problémák kezelésével, például hogy mikor sötétedik a képernyő, vagy mikor lesz hirtelen sötét a videó és a hangszinkronizálva. Ezeknek a fejlesztéseknek növelniük kell az egy videós nézet teljesítményét az aktív beszélőváltással. Kijavítottunk egy problémát is, amely miatt a speciális karakterekkel nem elérhető hardvereszközök nem voltak elérhetők a Teamsben.
 
 ## <a name="january-2021"></a>2021. január
 
-A következők módosultak a januári 2021-ben:
+A 2021. januári változás a következő:
 
-### <a name="new-windows-virtual-desktop-offer"></a>Új Windowsos virtuális asztali ajánlat
+### <a name="new-windows-virtual-desktop-offer"></a>Új Windows Virtual Desktop ajánlat
 
-Az új ügyfelek 30 százalékot takarítanak meg a Windows rendszerű virtuális asztali számítási költségeknél a D sorozat és a BS sorozatú virtuális gépek számára, akár 90 napig, a natív Microsoft-megoldás használatakor. Ezt az ajánlatot a Azure Portal 2021. március 31. előtt is beválthatja. További információt a [Windows rendszerű virtuális asztali ajánlatról szóló oldalon](https://azure.microsoft.com/services/virtual-desktop/offer/)olvashat.
+Az új ügyfelek akár 90 napig 30%-kal is megtakarítják Windows Virtual Desktop D- és Bs-sorozatú virtuális gépek számítási költségeit a natív Microsoft-megoldás használata esetén. Ezt az ajánlatot 2021. március 31. előtt Azure Portal beválthatja a következőben: . További információt a Windows Virtual Desktop [oldalon olvashat.](https://azure.microsoft.com/services/virtual-desktop/offer/)
 
-### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules értékének változása 
+### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules értékváltozás 
 
-A Azure Resource Manager beágyazott sablonban a networkSecurityGroupRules alapértelmezett értékét módosították egy objektumból egy tömbre. Ez megakadályozza az esetleges hibákat, ha a managedDisks-customimagevm.js-t használja a networkSecurityGroupRules értékének megadása nélkül. Ez nem módosult, és visszamenőlegesen kompatibilis.
+A Azure Resource Manager sablonban módosította a networkSecurityGroupRules alapértelmezett értékét objektumról tömbre. Ez megakadályozza a hibákat, ha a managedDisks-customimagevm.jsa networkSecurityGroupRules értékének megadása nélkül használja. Ez nem volt kompatibilitást hozó változás, és visszamenőlegesen kompatibilis.
 
 ### <a name="fslogix-hotfix-update"></a>FSLogix gyorsjavítás frissítése
 
-Megjelent a FSLogix, a 2009-es verzió HF_01 (2.9.7654.46150) az előző kiadásban felmerülő problémák megoldásához (2.9.7621.30127). Javasoljuk, hogy a lehető leghamarabb állítsa le az előző verziót, és frissítse a FSLogix.
+Megjelent az FSLogix 2009-es HF_01-es verziója (2.9.7654.46150) az előző kiadásban (2.9.7621.30127) problémák megoldása érdekében. Javasoljuk, hogy a lehető leghamarabb állítsa le az előző verzió használatát, és frissítse az FSLogixot.
 
-További információkért tekintse [meg a FSLogix újdonságai](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)című cikk kibocsátási megjegyzéseit.
+További információkért tekintse meg az Újdonságok az [FSLogixban részt](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)a kibocsátási megjegyzésekben.
 
-### <a name="azure-portal-experience-improvements"></a>Azure Portal a tapasztalatok fejlesztése
+### <a name="azure-portal-experience-improvements"></a>Azure Portal felhasználói élmény fejlesztései
 
-A Azure Portal élményét a következő továbbfejlesztettük:
+A következő fejlesztéseket javítottuk a Azure Portal felhasználói élményben:
 
-- Mostantól közvetlenül is hozzáadhat helyi virtuálisgép-rendszergazdai hitelesítő adatokat ahelyett, hogy hozzá kellene adnia egy helyi fiókot, amely a Active Directory tartományhoz való csatlakozás fiókjának hitelesítő adataival lett létrehozva.
-- A felhasználók mostantól külön lapokon is felsorolják az egyéni és a csoportos hozzárendeléseket az egyes felhasználók és csoportok számára.
-- A Windows rendszerű virtuális asztali ügynök verziószáma már látható a gazdagép-készletek virtuális gépek áttekintésében.
-- Tömeges törlés lett hozzáadva a gazdagép-készletekhez és az alkalmazás-csoportokhoz.
-- Mostantól engedélyezheti vagy letilthatja a kiürítési módot több munkamenet-gazdagép számára a gazdagép-készletekben.
-- Eltávolította a nyilvános IP-címet a virtuális gép részletei lapon.
+- Most már közvetlenül hozzáadhatja a helyi virtuális gép rendszergazdai hitelesítő adatait ahelyett, hogy egy, a tartományhoz való csatlakozáshoz szükséges hitelesítő Active Directory létrehozott helyi fiókot adna hozzá.
+- A felhasználók mostantól egyéni és csoport-hozzárendeléseket is listába sorolnak külön lapokon az egyes felhasználók és csoportok számára.
+- Az Windows Virtual Desktop Agent verziószáma mostantól látható a gazdagépkészletek virtuális gépek áttekintésében.
+- Tömeges törlés hozzáadva a gazdagépkészletek és alkalmazáscsoportok számára.
+- Mostantól engedélyezheti vagy letilthatja a kiürítési módot több munkamenetgazda számára egy gazdagépkészletben.
+- A nyilvános IP-cím mező el lett távolítva a virtuális gép részleteit tartalmazó lapról.
 
-### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows rendszerű virtuális asztali ügynök hibaelhárítása
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows Virtual Desktop ügynök hibaelhárítása
 
-Nemrég állítottuk be a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatóját](troubleshoot-agent.md) , amely segítséget nyújt az olyan ügyfelek számára, akik gyakori problémákat észleltek.
+Nemrég beállítottuk a [Windows Virtual Desktop Agent hibaelhárítási](troubleshoot-agent.md) útmutatóját, amely segítséget ad a gyakori problémákkal szembesülő ügyfeleknek.
 
-### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender az Endpoint Integration szolgáltatáshoz
+### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender végpontintegrációhoz
 
-Mostantól általánosan elérhető a Microsoft Defender az Endpoint Integration szolgáltatáshoz. Ez a funkció lehetővé teszi, hogy a Windows rendszerű virtuális asztali gépek ugyanazzal a vizsgálattal szolgálják a helyi Windows 10-es gépeket. Ha a Windows 10 Enterprise több munkamenetet használja, a Microsoft Defender for Endpoint akár 50 egyidejű felhasználói kapcsolatot is támogat, így megtakaríthatja a Windows 10 Enterprise többmunkamenetes és a Microsoft Defender for Endpoint megbízhatóságát. További információkért tekintse meg a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+Általánosan elérhető a Microsoft Defender végpontintegrációja. Ez a funkció ugyanazt a Windows Virtual Desktop teszi lehetővé a virtuális gépek vizsgálatát, mint a helyi Windows 10 gépeken. Ha több munkamenetet használ, Windows 10 Enterprise Microsoft Defender for Endpoint akár 50 egyidejű felhasználói kapcsolatot is támogat, így Windows 10 Enterprise több munkamenetes munkamenet költségmegtakarítása és Windows 10 Enterprise Microsoft Defender végponttal kapcsolatos megbízhatósága is elérhető. További információt a [blogbejegyzésben talál.](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712)
 
-### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure biztonsági alapkonfiguráció a Windows rendszerű virtuális asztali gépekhez
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Az Azure biztonsági alapkonfigurációja Windows Virtual Desktop
 
-Nemrég közzétettünk egy cikket a Windows rendszerű virtuális asztali környezethez készült [Azure biztonsági alaptervről](security-baseline.md) , amelyről fel szeretné hívni a figyelmét. Ezek az irányelvek az Azure biztonsági teljesítményteszt 2,0-es verzióról a Windows rendszerű virtuális asztalra való alkalmazásával kapcsolatos információkat tartalmaznak. Az Azure biztonsági teljesítményteszt ismerteti azokat a beállításokat és gyakorlatokat, amelyeket az Azure-beli felhőalapú megoldások biztonságossá tételéhez használ.
+Nemrég közzétettünk egy cikket [az Azure](security-baseline.md) biztonsági alapkonfigurációról Windows Virtual Desktop, amelyre fel szeretnénk hívni a figyelmet. Ezek az irányelvek az Azure biztonsági teljesítményteszt 2.0-s verziójának alkalmazásával kapcsolatos információkat tartalmaznak Windows Virtual Desktop. Az Azure biztonsági teljesítményteszt ismerteti azokat a beállításokat és eljárásokat, amelyek használatát javasoljuk az Azure-beli felhőalapú megoldások biztonságossá való beállítása érdekében.
 
 ## <a name="december-2020"></a>2020. december
 
-A következőképpen módosult a 2020 decemberében: 
+2020 decemberében a következő változott: 
 
-### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor a Windows rendszerű virtuális asztalhoz
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor a Windows Virtual Desktop
 
-A Windows rendszerű virtuális asztali Azure Monitor nyilvános előzetes verziója már elérhető. Ez az új szolgáltatás olyan robusztus irányítópultot tartalmaz, amely Azure Monitor munkafüzetekre épül, így az informatikai szakemberek megismerhetik a Windows rendszerű virtuális asztali környezeteket. További részletekért tekintse [meg a blogon bejelentést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) . 
+A nyilvános előzetes verzió Azure Monitor a Windows Virtual Desktop elérhető. Ez az új funkció egy nagy teljesítményű irányítópultot tartalmaz, amely Azure Monitor-munkafüzetek alapján segít az informatikai szakembereknek megérteni a Windows Virtual Desktop környezetüket. További [részletekért tekintse](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) meg blogunkban a bejelentést. 
 
-### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager sablon módosítása 
+### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager módosítása 
 
-A legújabb frissítés során a rendszer eltávolította az összes nyilvános IP-cím paramétert a Azure Resource Manager sablonból a gazdagépek létrehozásához és üzembe helyezéséhez. Javasoljuk, hogy ne használjon nyilvános IP-címeket a Windows rendszerű virtuális asztali környezet számára a központi telepítés biztonságának megőrzése érdekében. Ha a központi telepítés nyilvános IP-címekre támaszkodik, akkor újra kell konfigurálnia a magánhálózati IP-címek használatára, ellenkező esetben a telepítés nem fog megfelelően működni.
+A legújabb frissítésben eltávolítottuk az összes nyilvános IP-cím paramétert a Azure Resource Manager gazdagépkészletek létrehozásához és üzembe Azure Resource Manager sablonból. Javasoljuk, hogy az üzemelő példány biztonságossá Windows Virtual Desktop nyilvános IP-Windows Virtual Desktop használatát. Ha az üzemelő példány nyilvános IP-kre támaszkodott, újra kell konfigurálnia, hogy privát IP-eket használjon, különben az üzembe helyezés nem fog megfelelően működni.
 
-### <a name="msix-app-attach-public-preview"></a>Nyilvános előzetes MSIX alkalmazás 
+### <a name="msix-app-attach-public-preview"></a>MSIX-alkalmazás csatolása nyilvános előzetes verzióhoz 
 
-A MSIX-alkalmazás csatolása egy másik szolgáltatás, amely ebben a hónapban megkezdte a nyilvános előzetes verziót. A MSIX-alkalmazás csatolása egy olyan szolgáltatás, amely dinamikusan mutatja be a MSIX-alkalmazásokat a Windows rendszerű virtuális asztali munkamenetgazda-alapú virtuális gépek számára. További részletekért tekintse [meg a blogon bejelentést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) . 
+Az MSIX-alkalmazás csatolása egy másik szolgáltatás, amely ebben a hónapban kezdte meg a nyilvános előzetes verzió kiadását. Az MSIX app attach egy olyan szolgáltatás, amely dinamikusan mutatja be az MSIX-alkalmazásokat a Windows Virtual Desktop Munkamenetgazda virtuális gépei számára. További [részletekért tekintse](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) meg blogunkban a bejelentést. 
 
-### <a name="screen-capture-protection"></a>Képernyőfelvételek védelme 
+### <a name="screen-capture-protection"></a>Képernyőfelvétel-védelem 
 
-Ebben a hónapban a képernyőfelvételek védelméhez a nyilvános előzetes verzió elején is meg lett jelölve. Ezzel a szolgáltatással megakadályozhatja a bizalmas adatok rögzítését az ügyfél-végpontokon. A képernyőfelvételek védelmének megadásához nyissa meg [ezt a lapot](https://aka.ms/WVDScreenCaptureProtection).  
+Ebben a hónapban a képernyőfelvétel-védelem nyilvános előzetes kiadásának kezdetét is jelölte. Ezzel a funkcióval megakadályozhatja, hogy bizalmas adatokat rögzítettek az ügyfélvégponton. Képernyőfelvétel-védelemmel próbálja ki ezt az [oldalt:](https://aka.ms/WVDScreenCaptureProtection).  
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Új beépített szerepköröket adtunk hozzá a Windows virtuális asztal rendszergazdai engedélyeihez. További információ: [beépített szerepkörök a Windows rendszerű virtuális asztali gépekhez](rbac.md). 
+Új beépített szerepköröket adtunk hozzá a rendszergazdai Windows Virtual Desktop számára. További információ: [Beépített](rbac.md)szerepkörök a Windows Virtual Desktop. 
 
-### <a name="application-group-limit-increase"></a>Application Group-korlát növekedése
+### <a name="application-group-limit-increase"></a>Alkalmazáscsoport korlátnövekedése
 
-Megnövelte az alapértelmezett alkalmazáscsoport-korlátot Azure Active Directory bérlőről 200 csoportra.
+A bérlőnkénti alapértelmezett alkalmazáscsoport-korlátot Azure Active Directory 200 csoportra.
 
-### <a name="client-updates-for-december-2020"></a>Ügyfelek frissítései december 2020
+### <a name="client-updates-for-december-2020"></a>2020. decemberi ügyfélfrissítések
 
-A következő ügyfelek új verzióit adtuk ki: 
+A következő ügyfelek új verzióit adták ki: 
 
 - Android
 - macOS
 - Windows
 
-Az ügyfelek frissítéseivel kapcsolatos további információkért lásd: [ügyfelek frissítései](whats-new.md#client-updates).
+További információ az ügyfélfrissítésekkel kapcsolatban: [Ügyfélfrissítések.](whats-new.md#client-updates)
 
 ## <a name="november-2020"></a>2020. november
 
-### <a name="azure-portal-experience"></a>Azure Portali élmény
+### <a name="azure-portal-experience"></a>Azure Portal felhasználói élmény
 
-Két hibát javítottunk a Azure Portal felhasználói élményben:
+Két hibát kijavítottunk a felhasználói Azure Portal felhasználói élményben:
 
-- Az asztali alkalmazás rövid neve már nem íródik felül a "virtuális gép hozzáadása" munkafolyamatban.
-- A munkamenet-gazdagép lap ekkor betöltődik, ha a munkamenet-gazdagépek a méretezési csoportok részét képezik.
+- Az asztali alkalmazás rövid nevét már nem írja felül a "Virtuális gép hozzáadása" munkafolyamat.
+- A munkamenetgazda lap betöltődik, ha a munkamenetgazda-gazdagépek méretezési készletek részei.
 
 ### <a name="fslogix-client-version-2009"></a>FSLogix-ügyfél, 2009-es verzió 
 
-Megjelent a FSLogix-ügyfél új verziója számos javítással és javítással. További információt a [blogbejegyzésben](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)talál.
+Az FSLogix-ügyfél új verzióját számos javítással és fejlesztéssel adták ki. További információt a [blogbejegyzésünkben talál.](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)
 
-### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath nyilvános előzetes verziója
+### <a name="rdp-shortpath-public-preview"></a>RDP – Rövid távú nyilvános előzetes verzió
 
-Az RDP-Shortpath pont – hely és helyek közötti VPN-EK és ExpressRoute segítségével közvetlen kapcsolatot vezet be a Windows rendszerű virtuális asztali munkamenetgazda-munkamenethez. Emellett bemutatja a URCP átviteli protokollt is. Az RDP-Shortpath célja, hogy csökkentse a késést és a hálózati ugrásokat a felhasználói élmény javítása érdekében. További információ: [Windows Virtual Desktop RDP Shortpath](shortpath.md).
+Az RDP shortpath közvetlen kapcsolatot biztosít a Windows Virtual Desktop munkamenetgazda számára pont–hely és hely–hely VPN-ek és ExpressRoute használatával. Emellett bevezeti az URCP átviteli protokollt is. Az RDP Shortpath úgy lett kialakítva, hogy csökkentse a késést és a hálózati ugrásokat a felhasználói élmény javítása érdekében. További információ: [RDP Windows Virtual Desktop.](shortpath.md)
 
-### <a name="azdesktopvirtualization-version-201"></a>Az az. DesktopVirtualization, 2.0.1-es verzió
+### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization, 2.0.1-es verzió
 
-Megjelent a Windows rendszerű virtuális asztali parancsmagok 2.0.1-es verziója. Ez a frissítés olyan parancsmagokat tartalmaz, amelyek lehetővé teszik a MSIX-alkalmazás csatolásának kezelését. Az új verziót [a PowerShell-galériában](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)töltheti le.
+A parancsmagok 2.0.1-es verzióját Windows Virtual Desktop ki. Ez a frissítés olyan parancsmagokat tartalmaz, amelyek segítségével kezelheti az MSIX-alkalmazás csatolását. Az új verziót a [PowerShell-galériából töltheti le.](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)
 
-### <a name="azure-advisor-updates"></a>Azure Advisor frissítések
+### <a name="azure-advisor-updates"></a>Azure Advisor frissítései
 
-Azure Advisor most már rendelkezik egy új javaslattal a Windows virtuális asztal közelségi útmutatójában, valamint egy új ajánlást a teljesítmény optimalizálásához az első terheléselosztású gazdagép-készletekben. További információ [Az Azure-webhelyről](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
+Azure Advisor új javaslat áll a Windows Virtual Desktop közelségi útmutatására, valamint egy új javaslat a teljesítmény mélyreható, elosztott terhelésű gazdagépkészletek optimalizálására. További információt az [Azure webhelyén talál.](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)
 
 ## <a name="october-2020"></a>2020. október
 
-A következők módosultak a 2020 októberében:
+2020 októberében a következő változott:
 
 ### <a name="improved-performance"></a>Jobb teljesítmény
 
-- A következő Azure-földrajzi területeken a kapcsolatok késésének csökkentésével optimalizáltuk a teljesítményt:
+- A következő Azure-beli földrajzi területek csatlakozási késésének csökkentésével optimalizáltuk a teljesítményt:
     - Svájc
     - Kanada
 
-Most már használhatja a [Experience kalkulátort](https://azure.microsoft.com/services/virtual-desktop/assessment/) a felhasználói élmény minőségének becsléséhez ezekben a területeken.
+Most már a [Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) használatával megbecsülheti a felhasználói élmény minőségét ezeken a területeken.
 
-### <a name="azure-government-cloud-availability"></a>A felhő rendelkezésre állásának Azure Government
+### <a name="azure-government-cloud-availability"></a>Azure Government felhő rendelkezésre állása
 
-A Azure Government-felhő már általánosan elérhető. További információt a [blogbejegyzésben](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)talál.
+A Azure Government Cloud általánosan elérhető. További információt a [blogbejegyzésben talál.](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)
 
-### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows rendszerű virtuális asztali Azure Portal frissítései
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows Virtual Desktop Azure Portal frissítések
 
-Készítettünk néhány frissítést a Windows rendszerű virtuális asztali Azure Portal:
+Néhány frissítést készítettünk a Windows Virtual Desktop Azure Portal:
 
-- Kijavítva egy resourceID hiba, amely megakadályozta, hogy a felhasználók megnyissák a "munkamenetek" lapot.
-- Egyszerűsítheti a felhasználói felületet a "munkamenet-gazdagépek" lapon.
-- Az RDP-tulajdonságok területen az "Alapértelmezések", a "használhatóság" és az "alapértékek visszaállítása" beállítások lettek kijavítva.
-- A "Remove" és a "Delete" függvények az összes lapon konzisztensek.
-- A portál mostantól érvényesíti az alkalmazások nevét az "alkalmazás hozzáadása" munkafolyamatban.
-- Kijavítva a probléma, hogy a munkamenet-gazdagép exportálási adatértékei nem voltak igazítva az oszlopokban.
-- Kijavított egy hibát, amelyben a portál nem tudta beolvasni a felhasználói munkameneteket.
-- Kijavítottuk a munkamenet-gazdagép lekérésének hibáját, amely akkor történt, amikor a virtuális gép egy másik erőforráscsoporthoz lett létrehozva.
-- Frissítette a "munkamenet-gazdagép" fület az aktív és a Leválasztott munkamenetek listázásához.
-- Az "alkalmazások" lapon már vannak lapok.
-- Kijavított egy hibát, amelyben a "parancssor szükséges" szöveg nem jelenik meg megfelelően az "alkalmazások listája" lapon.
-- Javítva a problémát, ha a portál nem tudta üzembe helyezni a gazdagép-készleteket vagy virtuális gépeket, miközben a megosztott képgyűjtemény német nyelvű verzióját használja.
+- Kijavítottunk egy resourceID-hibát, amely megakadályozta, hogy a felhasználók megnyitják a "Munkamenetek" lapot.
+- Egyszerűsítette a felhasználói felületet a "Munkamenet-gazdagépek" lapon.
+- Ki van javítva az "Alapértelmezések", "Használhatóság" és "Alapértelmezett beállítások visszaállítása" beállítás az RDP-tulajdonságok alatt.
+- Az "Eltávolítás" és a "Törlés" függvények konzisztensek az összes lapon.
+- A portál mostantól ellenőrzi az alkalmazásneveket az "Alkalmazás hozzáadása" munkafolyamatban.
+- Kijavítottunk egy hibát, amely miatt a munkamenetgazda exportálási adatai nem igazodtak az oszlopokhoz.
+- Kijavítottunk egy hibát, amely miatt a portál nem tudta lekérni a felhasználói munkameneteket.
+- Kijavítottunk egy hibát a munkamenetgazda lekérésében, amely akkor történt, amikor a virtuális gépet egy másik erőforráscsoportban hozták létre.
+- Frissült a "Munkamenetgazda" lap az aktív és a leválasztott munkamenetek listához.
+- Az "Alkalmazások" lap már oldalakat is tartalmaz.
+- Kijavítottunk egy hibát, amely miatt a "parancssor szükséges" szöveg nem megfelelően jelent meg az "Alkalmazáslista" lapon.
+- Kijavítottunk egy hibát, amely akkor jelent meg, amikor a portál nem tudott gazdagépkészleteket vagy virtuális gépeket üzembe helyezni a Shared Image Gallery.
 
-### <a name="client-updates-for-october-2020"></a>Ügyfelek frissítései október 2020
+### <a name="client-updates-for-october-2020"></a>2020. októberi ügyfélfrissítések
 
-Megjelent az ügyfelek új verziói. További információt a következő cikkekben talál:
+Az ügyfelek új verzióit adták ki. További információért tekintse meg ezeket a cikkeket:
 
 - [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 
-További információ a többi ügyfélről: [ügyfelek frissítései](#client-updates).
+További információ a többi ügyfélről: [Ügyfélfrissítések.](#client-updates)
 
 ## <a name="september-2020"></a>2020. szeptember
 
-A következőképpen módosult a 2020 szeptemberében:
+2020 szeptemberében a következő változott:
 
-- A következő Azure-földrajzi területeken a kapcsolatok késésének csökkentésével optimalizáltuk a teljesítményt:
+- A következő Azure-beli földrajzi területek csatlakozási késésének csökkentésével optimalizáltuk a teljesítményt:
     - Németország
     - Dél-Afrika (csak ellenőrzési környezetek esetén)
 
-Most már használhatja a [Experience kalkulátort](https://azure.microsoft.com/services/virtual-desktop/assessment/) a felhasználói élmény minőségének becsléséhez ezekben a területeken.
+Most már a [Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) használatával megbecsülheti a felhasználói élmény minőségét ezeken a területeken.
 
-- Megjelent a Windows rendszerű virtuális asztali Windows asztali ügyfél 1.2.1364 verziója. Ebben a frissítésben a következő módosításokat hajtottuk végre:
-    - Kijavított egy problémát, amelyben az egyszeri bejelentkezés (SSO) nem működött a Windows 7 rendszeren.
-    - Kijavított egy problémát, amely miatt az ügyfél leválasztott egy olyan felhasználót, aki engedélyezte a csapatok számára a média optimalizálását, vagy csatlakozhat egy Teams-értekezlethez, míg egy másik alkalmazás kizárólagos módban nyitott meg egy hangadatfolyamot.
-    - Kijavított egy problémát, amelyben a csapatok nem észleltek hang-és video-eszközöket, amikor engedélyezve lett a csapatok multimédia-optimalizálása.
-    - "Segítségre van szüksége a beállításokhoz?" az asztali beállítások lapra mutató hivatkozás.
-    - A nagy kontrasztú sötét témák használatakor megjelenő "subscribe" (előfizetés) gombra vonatkozó probléma kijavítva.
+- A Windows asztali ügyfél 1.2.1364-es verzióját adták ki a Windows Virtual Desktop. Ebben a frissítésben a következő módosításokat végrehajtotta:
+    - Kijavítottunk egy hibát, amely miatt az egyszeri bejelentkezés (SSO) nem működött Windows 7 rendszeren.
+    - Kijavítottunk egy problémát, amely miatt az ügyfél megszakadt, amikor egy Teams médiaoptimalizálást engedélyező felhasználó megpróbált Teams-értekezletet hívni vagy csatlakozni, miközben egy másik alkalmazás kizárólagos módban nyitott egy hangstreamet.
+    - Kijavítottunk egy hibát, amely miatt a Teams nem enumerálta a hang- vagy videoeszközöket, amikor engedélyezve volt a Teams médiaoptimalizálása.
+    - Hozzá van adva egy "Segítségre van szükségem a beállításokkal?" az asztali beállítások oldalára mutató hivatkozás.
+    - Ki lett javítva az "Előfizetés" gomb kontrasztos sötét témák használata esetén történt problémája.
     
-- A felhasználók óriási segítségének köszönhetően javítottunk két kritikus problémát a Microsoft Store Távoli asztal-ügyfél számára. Folytatjuk a visszajelzések áttekintését és a problémák megoldását, mivel az ügyfél szakaszos kiadását bővítjük világszerte több felhasználó számára.
+- A felhasználóink hatalmas segítségének köszönhetően kijavítottunk két kritikus problémát a Microsoft Store Távoli asztal ügyfélhez. Továbbra is áttekintjük a visszajelzéseket, és kijavítjuk a problémákat, mivel az ügyfél szakaszos kiadását világszerte több felhasználóra bővítjük.
     
-- Új funkciót adtunk hozzá, amely lehetővé teszi a virtuális gép helyének, rendszerképének, erőforráscsoportának, előtagjának és hálózati konfigurációjának módosítását a munkafolyamatok részeként, hogy a virtuális gépet hozzáadja a központi telepítéshez a Azure Portal.
+- Hozzáadtunk egy új funkciót, amellyel módosíthatja a virtuális gép helyét, rendszerképét, erőforráscsoportját, előtagnevét és hálózati konfigurációját a virtuális gépek üzembe helyezéshez való hozzáadásának munkafolyamatának részeként a Azure Portal.
 
-- Az informatikai szakemberek mostantól a Microsoft Endpoint Manager használatával kezelhetik a hibrid Azure Active Directory csatlakoztatott Windows 10 Enterprise rendszerű virtuális gépeket. További információt [a blogbejegyzésben](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)talál.
+- Az it-szakemberek mostantól a Microsoft Azure Active Directory használatával Windows 10 Enterprise virtuális gépeket is Endpoint Manager. További információt a [blogbejegyzésben talál.](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)
 
 ## <a name="august-2020"></a>2020. augusztus
 
-A következőképpen módosult a 2020 augusztusában:
+2020 augusztusában a következő változott:
 
-- Továbbfejlesztettük a teljesítményt a kapcsolódási késés csökkentése érdekében a következő Azure-régiókban: 
+- Javítottunk a teljesítményen, hogy csökkentsük a kapcsolat késését a következő Azure-régiókban: 
 
     - Egyesült Királyság
     - Franciaország
     - Norvégia
     - Dél-Korea
 
-   Az [Experience kalkulátor](https://azure.microsoft.com/services/virtual-desktop/assessment/) használatával általános képet kaphat arról, hogy ezek a változások milyen hatással lesznek a felhasználókra.
+   A Experience [Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) segítségével általánosan átveheti, hogy ezek a módosítások milyen hatással lesznek a felhasználókra.
 
-- A Microsoft Store Távoli asztal ügyfél (v 10.2.1522 +) mostantól általánosan elérhető! A Microsoft Store Távoli asztal ügyfél ezen verziója kompatibilis a Windows Virtual Desktop szolgáltatással. A felhasználói élmény fokozása céljából a frissített felhasználói FELÜLETi folyamatokat is bevezetjük. Ez a frissítés magában foglalja a folyékony kialakítást, a világos és a sötét üzemmódot, valamint számos más izgalmas változást. A-ügyfelet az iOS-, macOS-és Android-ügyfelekhez is ugyanezen alapul szolgáló Remote Desktop Protocol (RDP) motor használatára is átírta. Ez lehetővé teszi, hogy az összes platformon gyorsabban elérhetővé tegyük az új funkciókat. [Töltse le az ügyfelet](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) , és próbálja ki!
+- A Microsoft Store Távoli asztal Client (v10.2.1522+) mostantól általánosan elérhető! A Microsoft Store Távoli asztal Client ezen verziója kompatibilis a Windows Virtual Desktop. Frissített felhasználói felületi folyamatokat is bevezettünk a jobb felhasználói élmény érdekében. Ez a frissítés a fluent tervezést, a világos és a sötét módot, valamint számos egyéb izgalmas változást tartalmaz. Át is írtuk az ügyfelet, hogy ugyanazt a mögöttes RDP-motort használja, mint az iOS-, macOS- és Android-ügyfelek. Ez lehetővé teszi, hogy minden platformon gyorsabban biztosítsunk új funkciókat. [Töltse le az ügyfelet,](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) és próbálja ki!
 
-- Kijavítottunk egy problémát a csapatok asztali ügyfelének (1.3.00.21759-verzió), ahol az ügyfél csak az UTC időzónát mutatta a csevegésben, a csatornákban és a naptárban. A frissített ügyfél most már megjeleníti a távoli munkamenet időzónáját.
+- Kijavítottunk egy hibát a Teams Asztali ügyfélben (1.3.00.21759-es verzió), amelyben az ügyfél csak az UTC időzónát mutatta be a csevegésben, a csatornákon és a naptárban. A frissített ügyfél most már a távoli munkamenet időzónát jeleníti meg.
 
-- Azure Advisor mostantól a Windows rendszerű virtuális asztal része. Ha a Azure Portalon keresztül fér hozzá a Windows rendszerű virtuális asztalhoz, a Windows rendszerű virtuális asztali környezet optimalizálására vonatkozó javaslatok láthatók. További információ: [Azure Advisor](azure-advisor.md).
+- Azure Advisor már a Windows Virtual Desktop. Ha a Windows Virtual Desktop keresztül fér hozzá a Azure Portal, javaslatokat láthat a saját Windows Virtual Desktop optimalizálására. További információ: [Azure Advisor.](azure-advisor.md)
 
-- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/) listáját a kiterjesztési parancsok listájához.
+- Az Azure CLI mostantól támogatja Windows Virtual Desktop ( ) szolgáltatásokat, amelyek segítségével automatizálhatja a `az desktopvirtualization` Windows Virtual Desktop üzembe helyezését. A [bővítményparancsok listájáért tekintse](/cli/azure/ext/desktopvirtualization/) meg az asztalvirtualizálást.
 
-- Frissítettük a központi telepítési sablonokat, hogy teljes mértékben kompatibilisek legyenek a Windows rendszerű virtuális asztali Azure Resource Manager felületekkel. A sablonok a [githubon](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)találhatók.
+- Frissítettük az üzembe helyezési sablonokat, hogy teljes mértékben kompatibilisek a Windows Virtual Desktop Azure Resource Manager felületekkel. A sablonokat a [GitHubon találja.](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)
 
-- A Windows rendszerű virtuális asztali US Gov portál már nyilvános előzetes verzióban érhető el. További információkért tekintse meg [a bejelentést](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
+- A Windows Virtual Desktop US Gov portál nyilvános előzetes verzióban érhető el. További információért tekintse meg a [bejelentést.](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/)
 
 ## <a name="july-2020"></a>2020. július  
 
-Július volt, amikor általánosan elérhetővé vált a Windows virtuális asztal az Azure Resource Management-integrációval.
+Júliusban vált általános Windows Virtual Desktop az Azure Resource Management-integrációval való integrációra.
 
-Az új kiadás változása: 
+Az új kiadás a következőt módosította: 
 
-- A "Fall 2019 Release" néven ismert "Windows virtuális asztal (klasszikus)", míg a "Spring 2020 kiadás" most csak "Windows virtuális asztal". További információkért tekintse meg [ezt a blogbejegyzést](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/). 
+- A "2019. őszi kiadás" mostantól "Windows Virtual Desktop (klasszikus), míg a "2020. tavaszi kiadás" már csak "Windows Virtual Desktop" További információt ebben a [blogbejegyzésben talál.](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/) 
 
-Ha többet szeretne megtudni az új funkciókról, tekintse meg [ezt a blogbejegyzést](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245). 
+Az új funkciókkal kapcsolatos további információkért tekintse meg ezt [a blogbejegyzést.](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245) 
 
-### <a name="autoscaling-tool-update"></a>Automatikus skálázási eszköz frissítése
+### <a name="autoscaling-tool-update"></a>Automatikus skálázás eszköz frissítése
 
-Az előzetes verzióban már általánosan elérhető az automatikus skálázási eszköz legújabb verziója. Ez az eszköz egy Azure Automation-fiók és az Azure Logic App használatával automatikusan leállítja és újraindítja a munkamenetgazda virtuális gépeket a gazdagépen belül, így csökkentve az infrastrukturális költségeket. További információ: [Azure Automation használatával méretezhető munkamenet-gazdagépek](set-up-scaling-script.md).
+Általánosan elérhető az automatikus skálázás eszköz előzetes verziójának legújabb verziója. Ez az eszköz egy Azure Automation-fiók és az Azure Logic App használatával automatikusan leállít és újraindítja a munkamenetgazda virtuális gépeit (VM-eket) a gazdagépkészleten belül, csökkentve az infrastruktúra költségeit. További információ: [Munkamenetgazda-gazdagépek méretezése a Azure Automation.](set-up-scaling-script.md)
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Mostantól a következő műveleteket végezheti el a Windows rendszerű virtuális asztali Azure Portalban: 
+Most már a következő lépéseket használhatja a Azure Portal a Windows Virtual Desktop: 
 
-- Felhasználók közvetlen kiosztása a személyes asztali munkamenet-gazdagépekhez  
-- Alkalmazáskészletek érvényesítési környezete beállításának módosítása 
+- Felhasználók közvetlen hozzárendelése személyes asztali munkamenetgazdékhoz  
+- A gazdagépkészletek érvényesítési környezetének módosítása 
 
 ### <a name="diagnostics"></a>Diagnosztika
 
-Megjelent néhány új előre elkészített lekérdezés a Log Analytics munkaterülethez. A lekérdezések eléréséhez nyissa meg a **naplók** elemet, és a **Kategória** területen válassza a **Windows virtuális asztal** lehetőséget. További információ [a diagnosztikai szolgáltatás log Analytics használatáról](diagnostics-log-analytics.md).
+Új előre összeállított lekérdezéseket adtunk ki a Log Analytics-munkaterülethez. A lekérdezések eléréséhez válassza a Naplók **lehetőséget,** majd a **Kategória alatt** válassza **a** Windows Virtual Desktop. További információ: [A Log Analytics használata a diagnosztikai funkcióhoz.](diagnostics-log-analytics.md)
 
-### <a name="update-for-remote-desktop-client-for-android"></a>Az Android rendszerhez készült Távoli asztal-ügyfél frissítése
+### <a name="update-for-remote-desktop-client-for-android"></a>Frissítés Távoli asztal Androidhoz készült ügyfélhez
 
-Az [Androidhoz készült Távoli asztal-ügyfél](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) mostantól támogatja a Windows rendszerű virtuális asztali kapcsolatokat. A 10.0.7 verziótól kezdődően az Android-ügyfél egy új felhasználói FELÜLETET kínál a jobb felhasználói élmény érdekében. Az ügyfél a Windows rendszerű virtuális asztali munkaterületekre való feliratkozáskor az Android-eszközökön Microsoft Authenticator is integrálva van.  
+Az [Távoli asztal Androidhoz készült ügyfél mostantól](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) támogatja a Windows Virtual Desktop kapcsolatokat. A 10.0.7-es verziótól kezdve az Android-ügyfél új felhasználói felületet biztosít a jobb felhasználói élmény érdekében. Az ügyfél az Android-eszközök Microsoft Authenticator is integrálható a feltételes hozzáférés engedélyezéséhez, amikor Windows Virtual Desktop munkaterületre.  
 
-A Távoli asztal-ügyfél előző verziója már "Távoli asztal 8" néven is ismert. Az ügyfél korábbi verziójában meglévő kapcsolatok zökkenőmentesen lesznek továbbítva az új ügyfélhez. Az új ügyfél ugyanarra a mögöttes RDP alapmotorra lett írva, mint az iOS-és macOS-ügyfelek, az új funkciók gyorsabb kiadása minden platformon. 
+Az ügyfél korábbi Távoli asztal neve mostantól "Távoli asztal 8". Az ügyfél korábbi verziójában meglévő kapcsolatok zökkenőmentesen át lesznek adva az új ügyfélnek. Az új ügyfelet ugyanazra a mögöttes RDP-alapmotorra írják át, mint az iOS- és macOS-ügyfelek, így minden platformon gyorsabban oszlhatók meg az új funkciók. 
 
-### <a name="teams-update"></a>Csapatok frissítése
+### <a name="teams-update"></a>Teams-frissítés
 
-Javítottuk a Microsoft Teams for Windows virtuális asztali verzióját. Ami a legfontosabb, hogy a Windows rendszerű virtuális asztal mostantól támogatja a Windows asztali ügyfél hang-és video-optimalizálását. Az átirányítás javítja a késést azáltal, hogy közvetlen elérési utakat hoz létre a felhasználók között, ha hang-vagy videohívásokat használ a hívások és értekezletek A kisebb távolság kevesebb ugrást jelent, így a hívások megjelenése és a hang gördülékenyebb. További információt a [Windows rendszerű virtuális asztal használatáról szóló csapatokban](teams-on-wvd.md)olvashat.
+Továbbfejlesztjük a Microsoft Teams for Windows Virtual Desktop. Ami a legfontosabb, Windows Virtual Desktop mostantól támogatja a hang- és videóoptimalizálást a Windows asztali ügyfélhez. Az átirányítás azáltal javítja a késést, hogy közvetlen útvonalakat hoz létre a felhasználók között, amikor hang- vagy videóhívásokat és -értekezleteket használnak. A kisebb távolság kevesebb ugrást jelent, ami a hívások megjelenését és zökkenőmentesebb hangját teszi lehetővé. További információ: [A Teams használata a Windows Virtual Desktop.](teams-on-wvd.md)
 
 ## <a name="june-2020"></a>2020. június
 
-A múlt hónapban bevezetjük a Windows rendszerű virtuális asztalt az előzetes verzióban Azure Resource Manager integrációval. Ez a frissítés számos izgalmas új funkciót kínál, melyekről szívesen tájékoztatjuk Önt. A Windows rendszerű virtuális asztal ezen verziójának újdonságai.
+A múlt hónapban bemutattunk egy Windows Virtual Desktop előzetes Azure Resource Manager integrációval. Ez a frissítés rengeteg izgalmas új funkciót tartalmaz, amelyekről szívesen szívesen segítünk. A jelenlegi verzió újdonsága a Windows Virtual Desktop.
 
-### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>A Windows rendszerű virtuális asztal már integrálva van Azure Resource Manager
+### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Windows Virtual Desktop már integrálva van a Azure Resource Manager
 
-A Windows rendszerű virtuális asztal már integrálva van Azure Resource Managerba. A legújabb frissítés során a Windows rendszerű virtuális asztali objektumok mostantól Azure Resource Manager erőforrásai. Ez a frissítés az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) is integrálva van. További információ: [What is Azure Resource Manager?](../azure-resource-manager/management/overview.md) .
+Windows Virtual Desktop már integrálva van a Azure Resource Manager. A legújabb frissítésben az összes Windows Virtual Desktop erőforrás Azure Resource Manager meg. Ez a frissítés az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) is integrálva van. További [információ: Mi Azure Resource Manager?](../azure-resource-manager/management/overview.md)
 
-Ezt a változást a következőképpen teheti meg:
+A változás a következőt teszi önért:
 
-- A Windows rendszerű virtuális asztal már integrálva van a Azure Portal. Ez azt jelenti, hogy közvetlenül a portálon, a PowerShell, a webalkalmazások és a harmadik féltől származó eszközök nélkül is kezelhet mindent. Az első lépésekhez tekintse meg a [Host Pool létrehozása a Azure Portal](create-host-pools-azure-marketplace.md)használatával című oktatóanyagot.
+- Windows Virtual Desktop már integrálva van a Azure Portal. Ez azt jelenti, hogy mindent közvetlenül a portálon kezelhet, nincs szükség PowerShellre, webalkalmazásra vagy harmadik féltől származó eszközökre. Első lépésekért tekintse meg a Gazdagépkészlet létrehozása [a](create-host-pools-azure-marketplace.md)következővel: Azure Portal.
 
-- A frissítés előtt csak a RemoteApp-és asztali számítógépeket teheti közzé az egyes felhasználók számára. A Azure Resource Manager segítségével mostantól Azure Active Directory csoportokba teheti közzé az erőforrásokat.
+- A frissítés előtt csak az egyes felhasználók számára lehetett RemoteApps- és Asztali alkalmazásokat közzétenni. A Azure Resource Manager most már közzéteheti az erőforrásokat a Azure Active Directory számára.
 
-- A Windows rendszerű virtuális asztal korábbi verziója négy beépített rendszergazdai szerepkörrel rendelkezik, amelyeket hozzárendelhet egy bérlőhöz vagy egy gazdagéphez. Ezek a szerepkörök már [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/overview.md)rendelkeznek. Ezeket a szerepköröket minden Windows rendszerű virtuális asztali Azure Resource Manager objektumra alkalmazhatja, amely lehetővé teszi, hogy teljes körű, sokoldalú delegálási modellel rendelkezzen.
+- Az alkalmazás korábbi Windows Virtual Desktop négy beépített rendszergazdai szerepköre volt, amelyek hozzárendelhetőek egy bérlőhöz vagy gazdagépkészlethez. Ezek a szerepkörök mostantól az [Azure szerepköralapú hozzáférés-vezérlésében (Azure RBAC) vannak.](../role-based-access-control/overview.md) Ezeket a szerepköröket minden Windows Virtual Desktop Azure Resource Manager objektumra alkalmazhatja, így teljes, gazdag delegálás modellel rendelkezik.
 
-- Ebben a frissítésben már nincs szükség az Azure Marketplace vagy a GitHub-sablon ismételt futtatására a gazdagépek kibővítéséhez. A gazdagépek kibővítéséhez mindössze a Azure Portalban kell megnyitnia a gazdagépet, majd a **+ Hozzáadás** lehetőségre kattintva további munkamenet-gazdagépeket telepíthet.
+- Ebben a frissítésben már nem kell ismételten futtatnia a Azure Marketplace vagy a GitHub-sablont egy gazdagépkészlet kibontásához. A gazdagépkészlet kibontásához elég a gazdagépkészletet a Azure Portal és a **+** Hozzáadás lehetőséget választani további munkamenetgazdék üzembe helyezéséhez.
 
-- A gazdagép-készlet üzembe helyezése mostantól teljes mértékben integrálva van az [Azure megosztott rendszerkép](../virtual-machines/shared-image-galleries.md)-katalógusával. A megosztott képkatalógus egy különálló Azure-szolgáltatás, amely a virtuális gép (VM) képdefinícióit tárolja, beleértve a rendszerkép verziószámozását is. A globális replikálás használatával a rendszerképeket más Azure-régiókba is másolhatja és elküldheti a helyi telepítéshez.
+- A gazdagépkészlet üzembe helyezése mostantól teljesen integrálva van az [Azure Shared Image Gallery.](../virtual-machines/shared-image-galleries.md) Shared Image Gallery egy különálló Azure-szolgáltatás, amely a virtuális gép (VM) rendszerkép-definícióit tárolja, beleértve a rendszerkép verziószámozását is. A globális replikációval átmásolhatja és elküldheti a rendszerképeket más Azure-régiókba helyi üzembe helyezésre.
 
-- A PowerShellen vagy a diagnosztikai szolgáltatás webalkalmazásán keresztül elvégzendő figyelési függvények mostantól a Azure Portal Log Analyticsba kerültek. Mostantól két lehetőség közül választhat a jelentések megjelenítéséhez. Kusto-lekérdezéseket futtathat, és a munkafüzetek használatával vizuális jelentéseket hozhat létre.
+- A korábban a PowerShellen vagy a Diagnostics Service-webalkalmazáson keresztül végzett figyelési függvények mostantól átkerültek a Log Analyticsbe a Azure Portal. Most már két lehetőség is van a jelentések megjelenítésére. Kusto-lekérdezéseket futtathat, és a Munkafüzetek használatával vizualizációs jelentéseket hozhat létre.
 
-- A Windows virtuális asztal használatához már nem szükséges Azure Active Directory (Azure AD) beleegyeznie. Ebben a frissítésben az Azure AD-bérlő az Azure-előfizetésében hitelesíti a felhasználókat, és biztosítja az Azure RBAC-vezérlőket a rendszergazdák számára.
+- A továbbiakban nem kell megadnia a Azure Active Directory (Azure AD) beleegyezését a Windows Virtual Desktop. Ebben a frissítésben az Azure-előfizetés Azure AD-bérlője hitelesíti a felhasználókat, és Azure RBAC-vezérlőket biztosít a rendszergazdák számára.
 
 ### <a name="powershell-support"></a>PowerShell-támogatás
 
-Új AzWvd-parancsmagokat adtunk hozzá a Azure PowerShell az modulhoz ezzel a frissítéssel. Ez az új modul támogatott a PowerShell Core-ban, amely a .NET Core-on fut.
+Ezzel a frissítéssel új AzWvd-parancsmagokat adtunk hozzá Azure PowerShell Az modulhoz. Ezt az új modult támogatja a PowerShell Core, amely .NET Core-on fut.
 
-A modul telepítéséhez kövesse a [PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz](powershell-module.md)című témakör utasításait.
+A modul telepítéséhez kövesse A [PowerShell-modul](powershell-module.md)beállítása az Windows Virtual Desktop.
 
-Az elérhető parancsok listáját a [AzWvd PowerShell-referenciában](/powershell/module/az.desktopvirtualization/#desktopvirtualization)is megtekintheti.
+Az elérhető parancsok listáját az [AzWvd PowerShell-referenciában is láthatja.](/powershell/module/az.desktopvirtualization/#desktopvirtualization)
 
-Az új funkciókkal kapcsolatos további információkért tekintse meg a [blogbejegyzését](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
+Az új funkciókkal kapcsolatos további információkért tekintse meg [a blogbejegyzésünket.](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)
 
 ### <a name="additional-gateways"></a>További átjárók
 
-Új átjáró-fürtöt adtunk hozzá Dél-Afrikában a kapcsolatok késésének csökkentése érdekében.
+Új átjárófürtöt adtunk hozzá Dél-Afrikai Köztársaságban a kapcsolat késésének csökkentése érdekében.
 
-### <a name="microsoft-teams-on-windows-virtual-desktop-preview"></a>Microsoft Teams a Windows Virtual Desktopban (előzetes verzió)
+### <a name="microsoft-teams-on-windows-virtual-desktop-preview"></a>Microsoft Teams a Windows Virtual Desktop (előzetes verzió)
 
-Javítottunk a Microsoft Teams for Windows Virtual Desktop szolgáltatásban. Ami a legfontosabb, hogy a Windows virtuális asztal mostantól támogatja a hívások hang-és vizualizációs átirányítását. Az átirányítás úgy javítja a késést, hogy a felhasználók között közvetlen elérési utakat hoz létre a hang vagy a videó használatával. A kisebb távolság kevesebb ugrást jelent, így a hívások megjelenése és a hang gördülékenyebb.
+A Microsoft Teams for Windows Virtual Desktop. Ami a legfontosabb, Windows Virtual Desktop már támogatja a hívások hang- és vizuális átirányítását. Az átirányítás azáltal javítja a késést, hogy közvetlen útvonalakat hoz létre a felhasználók között, amikor hang- vagy videó használatával hívják meg őket. A kisebb távolság kevesebb ugrást jelent, ami a hívások megjelenését és zökkenőmentesebb hangját teszi lehetővé.
 
-További információt [a blogbejegyzésben](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)talál.
+További információt a [blogbejegyzésben talál.](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+A jövőbeli tervekről a következő [ütemtervben Microsoft 365 Windows Virtual Desktop olvashat.](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)

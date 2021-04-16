@@ -5,30 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601950"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515481"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
-Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. Megadhatja az azonos típusú foglalások foglalását. Például több számítási foglalást is visszaadhat, beleértve az Azure dedikált gazdagépet, az Azure VMware-megoldást és az Azure Virtual Machines egyszerre. Más szóval a foglalási termékek egymással megváltoztathatók, ha ugyanaz a foglalási típus. Egy másik példában több SQL Database-foglalási típust is cserélhet, beleértve a felügyelt példányokat és rugalmas készlet egymással.
+Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat kicserélheti egy ugyanolyan típusú másik foglalásra. Például egyszerre több számítási foglalást is visszaadhat, Azure Dedicated Host, Azure VMware Solution azure-Virtual Machines és azure-beli foglalásokat. Más szóval a foglalási termékek felcserélhetők egymással, ha azonos típusú foglalásról van szó. Egy másik példában több SQL Database-foglalástípust is kicserélhet, beleértve a felügyelt példányokat és rugalmas készlet egymással.
 
-Nem válthat azonban eltérő foglalásokat. Nem cserélhet például SQL Databasehoz Cosmos DB foglalást.
+Az eltérő foglalásokat azonban nem cserélheti le. Például nem cserélhet le foglalást Cosmos DB a SQL Database.
 
-A foglalások cseréjével egy másik régióban is megvásárolhatja a hasonló típusú más foglalásokat. Például megadhat egy, az USA nyugati régiójában található foglalást, amely Nyugat-Európában található.
+Foglalás cseréjével másik hasonló típusú foglalást is vásárolhat egy másik régióban. Kicserélhet például egy, az USA 2. nyugati régiója régión belül található foglalást egy Nyugat-Európában található foglalásra.
 
-Ha kicserél egy foglalást, az adott időszakot egy évig, három évre módosíthatja.
+Foglalás cseréjekor az időszak egy évről három évre változhat.
 
 A foglalásokért visszatérítést is kérhet, de a visszamondott foglalási kötelezettségvállalások teljes összege a számlázási hatókörben (például Nagyvállalati Szerződés, Microsoft-ügyfélszerződés és Microsoft-partnerszerződés) nem haladhatja meg az 50 000 USD összeget az elmúlt 12 hónapra vonatkozóan.
 
 Az Azure Databricks fenntartott kapacitás, az Azure VMware Solution by CloudSimple-foglalás, az Azure Red Hat Open Shift-foglalás, a Red Hat-csomagok és a SUSE Linux-csomagok nem jogosultak visszatérítésre.
-
-Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
 > [!NOTE]
 > - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
@@ -49,20 +47,20 @@ Egy foglalás visszatérítéséhez lépjen a **Foglalás részleteire**, és v�
 
 ## <a name="exchange-multiple-reservations"></a>Több foglalás cseréje
 
-Egy műveletben hasonló típusú foglalásokat adhat vissza.
+Egy műveletben hasonló foglalástípusokat is visszaadhat.
 
-A foglalások cseréjekor az új beszerzési pénznem összegének nagyobbnak kell lennie a visszatérítési összegnél. Ha az új vásárlási összeg kisebb a visszatérítési összegnél, hibaüzenet jelenik meg. Ha a hiba jelenik meg, csökkentse a visszaadni kívánt mennyiségét, vagy növelje a megvásárolni kívánt mennyiséget.
+Foglalások cseréjekor az új vásárlási pénznem összegének nagyobbnak kell lennie, mint a visszatérítés összege. Ha az új vásárlás összege kisebb, mint a visszatérítés összege, hibaüzenetet kap. Ha a hiba jelenik meg, csökkentse a visszaadni kívánt mennyiséget, vagy növelje a megvásárolni kívánt mennyiséget.
 
 1. Jelentkezzen be az Azure Portalra, és lépjen a **Foglalások** területre.
-1. A foglalások listájában jelölje be az Exchange-hez használni kívánt foglalások jelölőnégyzetét.
-1. Az oldal tetején válassza az **Exchange** lehetőséget.
-1. Ha szükséges, módosítsa az egyes foglalások visszaadott mennyiségét.
-1. Ha kijelöli az automatikus kitöltés visszaküldési mennyiségét, az **összes** megadásával kitöltheti a listát az egyes foglalásokhoz tartozó teljes mennyiséggel, vagy **optimalizálhatja a kihasználtságot (7 napos)** a lista egy olyan mennyiséggel való kitöltéséhez, amely a használat utolsó hét napja alapján optimalizálja a kihasználtságot. **Válassza az alkalmaz lehetőséget**.
-1. A lap alján válassza a **Tovább: vásárlás** lehetőséget.
-1. A vásárlás lapon válassza ki azokat az elérhető termékeket, amelyeket szeretne cserélni. Több különböző típusú terméket is kijelölhet.
-1. A megvásárolni kívánt termék kiválasztása ablaktáblán válassza ki a kívánt termékeket, majd válassza a **Hozzáadás a kosárhoz** lehetőséget, majd válassza a **Bezárás** lehetőséget.
-1. Ha elkészült, kattintson a **Tovább gombra: felülvizsgálat**.
-1. Tekintse át a foglalások visszaadását és a megvásárolni kívánt új foglalásokat, majd válassza az **Exchange megerősítése** lehetőséget.
+1. A foglalások listájában jelölje be a kicserélni kívánt foglalások jelölőnégyzetét.
+1. A lap tetején válassza az **Exchange lehetőséget.**
+1. Ha szükséges, módosítsa a mennyiséget, hogy az egyes foglalások esetén visszatérjen.
+1. Ha az automatikus kitöltési visszatérítési mennyiséget  választja, választhatja az Összes visszatérítése lehetőséget, hogy a listát az egyes foglalások összes tulajdonában álló teljes mennyiséggel töltse ki, vagy optimalizálja a kihasználtságot **(7 napos),** hogy a listát az elmúlt hét napi használatra optimalizált mennyiséggel töltse ki. **Válassza az Alkalmaz lehetőséget.**
+1. A lap alján válassza a **Tovább: Vásárlás lehetőséget.**
+1. A vásárlás lapon válassza ki azokat az elérhető termékeket, amelyekre cserélni szeretne. Több különböző típusú terméket is kiválaszthat.
+1. A Megvásárolni kívánt termék kiválasztása panelen válassza ki a kívánt termékeket, majd válassza a Bevásárlókocsiba, **majd** a Bezárás **lehetőséget.**
+1. Ha végzett, válassza a **Tovább: Áttekintés lehetőséget.**
+1. Tekintse át a foglalásokat, hogy visszatérjen, és vásároljon új foglalásokat, majd válassza a **Csere megerősítése lehetőséget.**
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Nem prémium szintű tároló cseréje prémium tárolóra
 
@@ -105,7 +103,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 - Jelenleg nem számítunk fel korai felmondási díjat, de lehetséges, hogy a jövőbeli lemondásokért 12%-os korai felmondási díj lesz felszámítva.
 - Egy számlázási profil vagy egy regisztráció esetében a lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Például egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. A számlázási profilhoz vagy az EA-regisztrációhoz tartozó minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
 - Az Azure nem dolgozza fel azokat a visszatérítéseket, amelyek egy számlázási profil vagy EA-regisztráció esetében meghaladják az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan.
-    - Az Exchange-ből eredő visszatérítések nem számítanak bele a visszatérítési korlátba.
+    - A cserét eredményező visszatérítések nem számítanak bele a visszatérítési korlátba.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
 - A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
