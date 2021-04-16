@@ -1,27 +1,27 @@
 ---
-title: Alkalmazás hozzáadása az Azure Marketplace-ről
-description: Ez a cikk kezdőlapként működik az Azure Marketplace-en, a Letöltés most gombra kattintva.
+title: Alkalmazás hozzáadása a Azure Marketplace
+description: Ez a cikk kezdőlapként működik a webhely Get It Now Azure Marketplace.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2020
-ms.author: kenwith
+ms.author: iangithinji
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7bff0ca3dfa561f836f94e362ee84d025de020ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2c15ba1f059466240264565d5ff5276b70ddd63
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258337"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374148"
 ---
-# <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>Letöltés most – alkalmazás hozzáadása az Azure Marketplace-ről
+# <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>Szerezze be most – alkalmazás hozzáadása a Azure Marketplace
 
-Majdnem készen vagyunk! 
+Már majdnem kész! 
 
-Ha az Azure AD-t az alkalmazáshoz tartozó identitás-szolgáltatóként próbálja használni, akkor Ön a megfelelő helyen található. Csak hozzá kell adnia az Azure AD-bérlőhöz. Ennek elsajátításához kövesse a rövid útmutató sorozatot: [alkalmazások megtekintése az Azure ad-bérlőben](view-applications-portal.md).
+Ha az Azure AD-t próbálja identitásszolgáltatóként használni egy alkalmazáshoz, akkor a megfelelő helyen van. Csak hozzá kell adni az Azure AD-bérlőhöz. Ennek menetét a következő rövid útmutatósorozatban sajátítja el: Alkalmazások megtekintése [az Azure AD-bérlőben.](view-applications-portal.md)
 
-Ha olyan alkalmazást próbál telepíteni a helyi számítógépen vagy mobileszközön, akkor nem megfelelő helyen van. Az Azure Marketplace az alkalmazásokat az Azure-bérlők használatával használó szervezeteknek készült. A személyes számítógépeken és eszközökön tekintse meg a [Microsoft apps áruházat](https://www.microsoft.com/store/apps).
+Ha helyi számítógépre vagy mobileszközre próbál alkalmazást telepíteni, akkor rossz helyen van. A Azure Marketplace olyan szervezetek számára készült, amelyek azure-bérlőivel együtt használják az alkalmazásokat. Személyi számítógépek és eszközök esetén tekintse meg a Microsoft Apps [áruházat.](https://www.microsoft.com/store/apps)

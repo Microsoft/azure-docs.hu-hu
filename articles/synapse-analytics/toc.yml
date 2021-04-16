@@ -1,7 +1,7 @@
 items:
   - name: Azure Synapse Analytics
     href: index.yml
-  - name: Váltás dedikált SQL-készletre (korábbi nevén SQL DW) >
+  - name: Váltás dedikált SQL-készletre (korábban SQL DW) >
     href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
   - name: Áttekintés
     items:
@@ -21,13 +21,13 @@ items:
       - name: 1. Synapse-munkaterület létrehozása
         href: get-started-create-workspace.md
         displayName: 'get, started'
-      - name: 2 elemzés kiszolgáló nélküli SQL-készlet használatával
+      - name: 2. Elemzés kiszolgáló nélküli SQL-készlet használatával
         href: get-started-analyze-sql-on-demand.md
         displayName: 'get, started'
-      - name: 3 elemzés a kiszolgálatlan Spark-készlet használatával
+      - name: 3. Elemzés kiszolgáló nélküli Spark-készlet használatával
         href: get-started-analyze-spark.md
         displayName: 'get, started'
-      - name: 4 a dedikált SQL-készlet használatának elemzése
+      - name: 4. Elemzés dedikált SQL-készlet használatával
         href: get-started-analyze-sql-pool.md
         displayName: 'get, started'
       - name: 5. Tárfiók adatainak elemzése
@@ -45,7 +45,7 @@ items:
       - name: 9. Ismerkedés a tudásbázissal
         href: get-started-knowledge-center.md
         displayName: 'get, started'
-      - name: 10 rendszergazda hozzáadása
+      - name: 10 Rendszergazda hozzáadása
         href: get-started-add-admin.md
         displayName: 'get, started'
   - name: Munkaterület
@@ -69,7 +69,7 @@ items:
           - name: Power BI-munkaterület csatolása
             href: quickstart-power-bi.md
             displayName: quickstart
-          - name: ADLS Gen2 beolvasása a pandák dataframe
+          - name: Adatok ADLS Gen2 Pandas-adatkeretbe
             href: quickstart-read-from-gen2-to-pandas-dataframe.md
             displayName: quickstart
           - name: Csatlakozás az Azure Data Explorerhez
@@ -124,7 +124,7 @@ items:
                     href: ./security/workspace-data-exfiltration-protection.md
                   - name: Synapse-munkaterület Private Link-központokkal
                     href: ./security/synapse-private-link-hubs.md
-                  - name: Kapcsolódás biztonságos Storage-fiókhoz
+                  - name: Csatlakozás biztonságos tárfiókhoz
                     href: ./security/connect-to-a-secure-storage-account.md
               - name: Hitelesítés és átmenő hitelesítés
                 items:
@@ -177,7 +177,7 @@ items:
                   - name: Csatlakozás az Azure Synapse-munkaterülethez privát végpontokkal
                     href: security/how-to-connect-to-workspace-with-private-links.md
                     displayname: links
-                  - name: Társított szolgáltatás kiépítése és védelme felügyelt virtuális hálózattal
+                  - name: Csatolt szolgáltatás kiépítése és biztonságossá kezelése felügyelt virtuális hálózatokkal
                     href: ./data-integration/linked-service.md
                   - name: Csatlakozás Synapse-munkaterülethez korlátozott hálózatból
                     href: security/how-to-connect-to-workspace-from-restricted-network.md
@@ -196,7 +196,7 @@ items:
                 href: troubleshoot/reading-utf8-text.md
   - name: Migrálási útmutatók
     items:
-      - name: Migrálás dedikált SQL-készletbe
+      - name: Áttelepítés dedikált SQL-készletbe
         href: migration-guides/migrate-to-synapse-analytics-guide.md
   - name: Synapse SQL
     items:
@@ -354,9 +354,9 @@ items:
                     href: sql/develop-stored-procedures.md
                   - name: Tranzakciók
                     items:
-                      - name: Dedikált SQL Pool-tranzakciók
+                      - name: Dedikált SQL-készlettranzakciók
                         href: sql/develop-transactions.md
-                      - name: Dedikált SQL Pool – ajánlott eljárások tranzakciói
+                      - name: Dedikált SQL-készlet – ajánlott eljárások tranzakciói
                         displayname: 'Transaction, best, practices'
                         href: sql/develop-transaction-best-practices.md
                   - name: Felhasználó által definiált sémák
@@ -564,17 +564,17 @@ items:
             href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           - name: Spark-feladatdefiníciók küldése
             href: ./spark/apache-spark-job-definitions.md
-          - name: Azure szinapszis Spark alkalmazási szintű metrikáinak összekötése és figyelése
+          - name: Csatlakozás és monitor Azure Synapse Spark-alkalmazásszintű metrikákhoz
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-          - name: Az alkalmazás szintű metrikák figyelése a Prometheus és a Grafana Apache Spark
+          - name: Alkalmazásszintű Apache Spark figyelése a Prometheus és a Grafana segítségével
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-          - name: A metrikák és naplók összegyűjtése és megjelenítése az Azure Log Analytics használatával (előzetes verzió)
+          - name: Metrikák és naplók gyűjtése és vizualizációja az Azure Log Analytics használatával (előzetes verzió)
             href: ./spark/apache-spark-azure-log-analytics.md
       - name: Alapelvek
         items:
           - name: Apache Spark
             href: ./spark/apache-spark-concepts.md
-          - name: Apache Spark készlet konfigurációi
+          - name: Apache Spark készletkonfigurációk
             href: ./spark/apache-spark-pool-configurations.md
           - name: Delta Lake
             href: ./spark/apache-spark-what-is-delta-lake.md
@@ -602,7 +602,7 @@ items:
                 href: ./spark/apache-spark-manage-scala-packages.md
               - name: Python-csomag telepítési hibáinak elhárítása
                 href: ./spark/apache-spark-troubleshoot-library-errors.md
-              - name: Conda privát csatornájának létrehozása
+              - name: Privát Conda-csatorna létrehozása
                 href: ./spark/apache-spark-custom-conda-channel.md
           - name: Jegyzetfüzetek és IDE-eszközök használata
             items:
@@ -1148,7 +1148,7 @@ items:
             href: ./machine-learning/tutorial-cognitive-services-sentiment.md
           - name: Rendellenességek észlelése a Cognitive Services használatával
             href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-          - name: Gépi tanulási alkalmazások készítése a Microsoft Machine Learning for Apache Spark (előzetes verzió) szolgáltatással
+          - name: Gépi tanulási alkalmazások összeállítása a Microsoft Machine Learning for Apache Spark (előzetes verzió) használatával
             href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: Adatkatalógus és adatgazdálkodás
     items:

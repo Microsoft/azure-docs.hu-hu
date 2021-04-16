@@ -1,5 +1,5 @@
 ---
-title: Programozott Azure-előfizetések létrehozása
+title: Azure-előfizetések létrehozása programozott módon
 description: Ennek a cikknek a segítségével megismerheti, milyen lehetőségei vannak Azure-előfizetések programozott módon való létrehozására.
 author: bandersmsft
 ms.service: cost-management-billing
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9ec0ffeb930fd9285f34ad9ba9e6aa606b15b5a2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce08ebf473b11eecae327c7de050c791f5bc1b1a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593888"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379009"
 ---
-# <a name="create-azure-subscriptions-programmatically"></a>Programozott Azure-előfizetések létrehozása
+# <a name="create-azure-subscriptions-programmatically"></a>Azure-előfizetések létrehozása programozott módon
 
 Ennek a cikknek a segítségével megismerheti, milyen lehetőségei vannak Azure-előfizetések programozott módon való létrehozására.
 
@@ -26,7 +26,7 @@ Különböző REST API-k használatával az alábbi Azure-szerződéstípusokhoz
 - Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA)
 - Microsoft-partnerszerződés (MPA)
 
-A REST API-kkal nem lehet programozott módon további előfizetéseket létrehozni más szerződési típusokhoz.
+REST API-okkal nem hozhat létre további előfizetéseket más szerződéstípusokhoz programozott módon.
 
 Az előfizetések létrehozásához szükséges követelmények és részletek eltérnek a különféle szerződések és API-verziók esetében. Lásd az alábbi, adott helyzetre vonatkozó cikkeket:
 
@@ -36,9 +36,9 @@ Legutóbbi API-k:
 - [MCA-előfizetések létrehozása](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [MPA-előfizetések létrehozása](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Ezek a cikkek azt is mutatják be, hogyan lehet előfizetéseket létrehozni egy Azure Resource Manager sablonnal (ARM-sablon). Egy ARM-sablon segíti az előfizetés-létrehozási folyamat automatizálását.
+Ezek a cikkek azt is bemutatja, hogyan hozhat létre előfizetéseket Azure Resource Manager sablonnal (ARM-sablonnal). Az ARM-sablonokkal automatizálható az előfizetés létrehozásának folyamata.
 
-Ha továbbra is az [előzetes verziójú API-kat](programmatically-create-subscription-preview.md)használja, továbbra is létrehozhat előfizetéseket. 
+Ha továbbra is előzetes verziójú [API-kat használ,](programmatically-create-subscription-preview.md)továbbra is létrehozhat velük előfizetéseket. 
 
 ## <a name="next-steps"></a>Következő lépések
 

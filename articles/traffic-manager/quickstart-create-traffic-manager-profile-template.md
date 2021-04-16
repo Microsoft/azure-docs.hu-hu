@@ -1,23 +1,25 @@
 ---
-title: 'Rövid útmutató: Traffic Manager létrehozása Azure Resource Manager sablon használatával (ARM-sablon)'
-description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Azure Traffic Manager-profilt Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: Traffic Manager létrehozása Azure Resource Manager sablon (ARM-sablon) használatával'
+description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Azure Traffic Manager profilt egy Azure Resource Manager (ARM-sablon) használatával.
 services: traffic-manager
 author: duongau
-ms.service: traffic-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 03342d33731ed29b60908044cd29d529aaa5677b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675999"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531244"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Rövid útmutató: Traffic Manager profil létrehozása ARM-sablonnal
 
-Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager-sablon (ARM-sablon) egy Traffic Manager-profil létrehozásához külső végpontokkal a teljesítmény-útválasztási módszer használatával.
+Ez a rövid útmutató azt ismerteti, hogyan használható Azure Resource Manager-sablon (ARM-sablon) külső végpontokkal Traffic Manager-profil létrehozására a teljesítmény-útválasztási módszerrel.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +39,13 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
-* [**Microsoft. Network/trafficManagerProfiles**](/azure/templates/microsoft.network/trafficmanagerprofiles)
+* [**Microsoft.Network/trafficManagerProfiles**](/azure/templates/microsoft.network/trafficmanagerprofiles)
 
-Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+A sablonokkal kapcsolatos további sablonok Azure Traffic Manager [Azure gyorsindítási sablonok.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
+1. Válassza **a Try it** (Próbálja ki) lehetőséget az alábbi kódblokkban a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -58,58 +60,58 @@ Az Azure Traffic Manager-hoz kapcsolódó további sablonokért tekintse meg az 
     Read-Host -Prompt "Press [ENTER] to continue ..."
     ```
 
-    Várjon, amíg megjelenik a-konzolon megjelenő kérdés.
+    Várjon, amíg meg nem látja a parancssort a konzolon.
 
-1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
+1. A  PowerShell-szkript másolásához válassza a Másolás lehetőséget az előző kódblokkból.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj konzolpanelére, majd válassza a Beillesztés **lehetőséget.**
 
 1. Adja meg az értékeket.
 
-    A sablon üzembe helyezése két külső végponttal rendelkező profilt hoz létre. A **Endpoint1** `www.microsoft.com` az **észak-európai** hellyel rendelkező cél végpontot használja. A **Endpoint2** `docs.microsoft.com` az **USA déli középső** régiójában található célállomás végpontját használja.
+    A sablon üzembe helyezése létrehoz egy profilt két külső végponttal. **Az 1.** végpont a célvégpontját `www.microsoft.com` használja észak-európai **helyről.** **A 2.** végpont a célvégpontját `docs.microsoft.com` használja az USA déli középső részén található **helyére.**
 
-    Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
+    Az erőforráscsoport neve a projekt neve, **rg hozzáfűzve.**
 
     > [!NOTE]
-    > a **uniqueDNSname** globálisan egyedi névnek kell lennie ahhoz, hogy a sablon sikeresen üzembe helyezhető. Ha a telepítés sikertelen, kezdje az 1. lépéssel.
+    > Ahhoz, hogy a sablon sikeresen üzembe helyezhető legyen, a **uniqueDNSname** névnek globálisan egyedi névnek kell lennie. Ha az üzembe helyezés sikertelen, kezdje elölről az 1. lépéssel.
 
-    A sablon üzembe helyezése néhány percet vesz igénybe. Ha elkészült, a kimenet a következőhöz hasonló:
+    A sablon üzembe helyezése néhány percet vesz igénybe. Ha elkészült, a kimenet a következőre hasonlít:
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-arm-powershell-output.png" alt-text="Azure Traffic Manager Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-arm-powershell-output.png" alt-text="Azure Traffic Manager Resource Manager PowerShell-sablon üzembe helyezési kimenete":::
 
-A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon kívül használhatja a Azure Portal, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-portal.md).
+Azure PowerShell a sablon üzembe helyezéséhez használható. A Azure PowerShell mellett használhatja a Azure Portal, az Azure CLI és a REST API. További információ az egyéb üzembe helyezési módszerekről: [Sablonok üzembe helyezése.](../azure-resource-manager/templates/deploy-portal.md)
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Határozza meg a Traffic Manager profil DNS-nevét a [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile)használatával.
+1. Határozza meg a profil DNS Traffic Manager a [Get-AzTrafficManagerProfile használatával.](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile)
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    Másolja a **RelativeDnsName** értéket. A Traffic Manager-profil DNS-neve: `<relativednsname>.trafficmanager.net` .
+    Másolja ki **a RelativeDnsName értéket.** A profil DNS-Traffic Manager a `<relativednsname>.trafficmanager.net` következő: .
 
-1. Egy helyi PowerShellben futtassa a következő parancsot a **{relativeDNSname}** változónak a paranccsal való lecserélésével `<relativednsname>.trafficmanager.net` .
+1. Egy helyi PowerShellben futtassa a következő parancsot úgy, hogy lecseréli a **{relativeDNSname}** változót a `<relativednsname>.trafficmanager.net` következőre: .
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
 
-    Egy NameHost kell beszereznie, `www.microsoft.com` vagy `docs.microsoft.com` attól függően, hogy melyik régió közelebb van az Ön számára.
+    A NameHost a vagy a et kell kapnia attól függően, `www.microsoft.com` hogy melyik régió közelebb van az `docs.microsoft.com` Önhez.
 
-1. Annak ellenőrzéséhez, hogy fel tudja-e oldani a másik végpontot, tiltsa le az utolsó lépésben kapott cél végpontját. Cserélje le a **{végpontneve}** parancsot a **endpoint1** vagy a **endpoint2** értékre a vagy a cél letiltásához `www.microsoft.com` `docs.microsoft.com` .
+1. Annak ellenőrzéshez, hogy tud-e feloldani egy másik végpontot, tiltsa le az előző lépésben kapott cél végpontját. Cserélje le **az {endpointName}** helyére az **endpoint1** vagy **az endpoint2** végpontot, hogy letiltsa a célt a `www.microsoft.com` vagy a `docs.microsoft.com` számára.
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
 
-1. Futtassa a parancsot a 2. lépésből a helyi PowerShellben. Ezúttal a másik végpont NameHost kell beszereznie.
+1. Futtassa ismét a parancsot a 2. lépésben egy helyi PowerShellben. Ezúttal a másik végponthoz a másik NameHost nevet kell kapnia.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a Traffic Manager profilra, törölje az erőforráscsoportot. Ezzel eltávolítja a Traffic Manager profilt és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>
@@ -119,7 +121,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt.
 
-Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
+Ha többet szeretne megtudni a forgalom útválasztásról, folytassa a Traffic Manager oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager-oktatóanyagok](tutorial-traffic-manager-improve-website-response.md)

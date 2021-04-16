@@ -1,257 +1,261 @@
 ---
-title: A riasztás típusai és leírása
-description: Tekintse át a Defender IoT-riasztások leírását.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
+title: Riasztástípusok és leírások
+description: Tekintse át a Defender ioT-riasztások leírását.
 ms.date: 4/8/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 483563b53a5849b0354986269568bc42b9124cc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210465"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477995"
 ---
-# <a name="alert-types-and-descriptions"></a>A riasztás típusai és leírása
+# <a name="alert-types-and-descriptions"></a>Riasztástípusok és leírások
 
-Ez a cikk az összes olyan riasztási típust ismerteti, amelyek a Defender for IoT Engines szolgáltatásban hozhatók létre. A riasztások a riasztások ablakában jelennek meg, amely lehetővé teszi a riasztási esemény kezelését. 
+Ez a cikk az összes olyan riasztástípust ismerteti, amely a Defender for IoT-motorból generálható. A riasztások a Riasztások ablakban jelennek meg, amely lehetővé teszi a riasztási esemény kezelését. 
 
-## <a name="policy-engine-alerts"></a>Házirend-végrehajtó riasztások
+## <a name="policy-engine-alerts"></a>Szabályzatmotor-riasztások
 
-A házirend-végrehajtó riasztások a megismert alaphálózati viselkedéstől való eltéréseket írják le.
+A szabályzatmotor riasztásai a megtanult alapkonfigurációtól való eltéréseket írják le.
 
 | Cím  | Leírás | Súlyosság |
 |--|--|--|
-| MAC-címek rendellenes használata | A rendszer új forrásoldali eszközt észlelt a hálózaton, de nem engedélyezte. | Kismérvű |
-| Beckhoff szoftver módosítva | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Az adatbázis-bejelentkezés sikertelen | A rendszer sikertelen bejelentkezési kísérletet észlelt egy forrásoldali eszközről a célkiszolgálóra. Ez az emberi hiba eredménye lehet, de arra is utalhat, hogy rosszindulatú kísérletet tett a kiszolgáló vagy az adatai sérülésére. | Jelentős |
-| Emerson ROC belső vezérlőprogram verziója módosítva | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Az internettel kommunikáló hálózaton belüli külső címe | A hálózat részeként definiált forrásoldali eszközök internetes címekkel kommunikálnak. A forrás nem rendelkezik jogosultsággal az internetes címekkel való kommunikációhoz. | Kritikus |
-| A mező eszköz váratlanul fel lett derítve | A rendszer új forrásoldali eszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
-| A belső vezérlőprogram módosítása észlelhető | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| A belső vezérlőprogram verziója megváltozott | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Foxboro I/A jogosulatlan művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Az FTP-bejelentkezés sikertelen | A rendszer sikertelen bejelentkezési kísérletet észlelt egy forrásoldali eszközről a célkiszolgálóra. Ez az emberi hiba eredménye lehet, de arra is utalhat, hogy rosszindulatú kísérletet tett a kiszolgáló vagy az adatai sérülésére. | Jelentős |
-| A függvény kódja jogosulatlan kivételt okozott. | Egy forrásoldali eszköz (slave) kivételt adott vissza egy céleszköz (Master) számára. | Jelentős |
-| LIBA-üzenet típusának beállításai | Egy forrásoldali eszközön módosult az üzenet (a protokoll azonosítója alapján azonosítva). | Figyelmeztetés |
-| A Honeywell belső vezérlőprogram-verziója megváltozott | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Szabálytalan HTTP-kommunikáció | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Az Internet-hozzáférés észlelve | A hálózat részeként definiált forrásoldali eszközök internetes címekkel kommunikálnak. A forrás nem rendelkezik jogosultsággal az internetes címekkel való kommunikációhoz. | Jelentős |
-| A Mitsubishi belső vezérlőprogram verziója megváltozott | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Modbus-címtartomány megsértése | A Főeszköz hozzáférést kért egy új alárendelt memória-címnek. | Jelentős |
-| A Modbus belső vezérlőprogram-verziója megváltozott | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Új tevékenység észlelhető – CIP-osztály | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – CIP-osztály szolgáltatás | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – CIP PCCC parancs | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – CIP-szimbólum | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – EtherNet/IP I/O-kapcsolatok | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – EtherNet/IP protokoll parancs | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – GSM-üzenet kódja | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – LonTalk parancs kódja | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új port felderítése | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Figyelmeztetés |
-| Új tevékenység észlelhető – LonTalk hálózati változó | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – Ovation-adatkérés | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – olvasás/írás parancs (AMS-index csoport) | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – olvasási/írási parancs (AMS-index eltolása) | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – jogosulatlan DeltaV-üzenet típusa | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – jogosulatlan DeltaV ROC-művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelve – jogosulatlan RPC-üzenet típusa | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – jogosulatlan RPC-eljárás meghívása | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – AMS protokoll parancs használatával | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – a Siemens SICAM parancs használatával | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – Suitelink protokoll parancs használatával | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – Suitelink protokoll-munkamenetek használata | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új tevékenység észlelhető – a Yokogawa VNetIP parancs használatával | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Új eszköz észlelhető | A rendszer új forrásoldali eszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
-| Új LLDP-eszköz konfigurációja | A rendszer új forrásoldali eszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
-| Új port felderítése | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Figyelmeztetés |
-| Omron-USZONYok jogosulatlan parancsa | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| S7 plusz PLC belső vezérlőprogram megváltoztatva | A belső vezérlőprogram frissítése egy forrásoldali eszközön történt. Ez engedélyezhető tevékenység lehet, például egy tervezett karbantartási eljárás. | Jelentős |
-| Mintául szolgáló értékek üzenet típusának beállításai | Egy forrásoldali eszközön módosult az üzenet (a protokoll azonosítója alapján azonosítva). | Figyelmeztetés |
-| Szabálytalan integritás-ellenőrzés gyanúja | A rendszer vizsgálatot észlelt egy DNP3-forrás eszközön (az állomáson). Ez a vizsgálat nem volt engedélyezve a hálózatban megtanult forgalomnak. | Jelentős |
-| Toshiba számítógép nem engedélyezett parancsának csatolása | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Kismérvű |
-| Nem engedélyezett ABB Totalflow-fájl művelete | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Nem engedélyezett ABB Totalflow-regisztrálási művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan hozzáférés a Siemens S7 adatblokkhoz | Egy forrásoldali eszköz megkísérelt hozzáférni egy erőforráshoz egy másik eszközön. Ez a két eszköz nem engedélyezte az erőforráshoz való hozzáférési kísérletet a hálózaton. | Figyelmeztetés |
-| Jogosulatlan hozzáférés a Siemens S7 Plus objektumhoz | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan hozzáférés a Wonderware címkéhez | Egy forrásoldali eszköz megkísérelt hozzáférni egy erőforráshoz egy másik eszközön. Ez a két eszköz nem engedélyezte az erőforráshoz való hozzáférési kísérletet a hálózaton. | Jelentős |
-| Jogosulatlan BACNet objektum-hozzáférés | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan BACNet útvonal | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan adatbázis-bejelentkezés | A rendszer bejelentkezési kísérletet észlelt a forrás-ügyfél és a célkiszolgáló között. Az eszközök közötti kommunikációt nem engedélyezték a hálózatán észlelt forgalomnak. | Jelentős |
-| Jogosulatlan adatbázis-művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan Emerson ROC-művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan GE-SRTP fájlokhoz való hozzáférése | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan GE SRTP protokoll parancsa | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Nem engedélyezett a GE SRTP rendszermemória-művelete | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan HTTP-tevékenység | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan HTTP-kiszolgáló | A rendszer jogosulatlan alkalmazást észlelt egy forrásoldali eszközön. Az alkalmazás nem lett engedélyezve a hálózatban megtanult alkalmazásként. | Jelentős |
-| Nem engedélyezett HTTP SOAP-művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan HTTP-felhasználói ügynök | A rendszer jogosulatlan alkalmazást észlelt egy forrásoldali eszközön. Az alkalmazás nem lett engedélyezve a hálózatban megtanult alkalmazásként. | Jelentős |
-| Jogosulatlan internetkapcsolat észlelhető | A hálózat részeként definiált forrásoldali eszközök internetes címekkel kommunikálnak. A forrás nem rendelkezik jogosultsággal az internetes címekkel való kommunikációhoz. | Kritikus |
-| Nem engedélyezett Mitsubishi MELSEC parancs | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan MMS-programhoz való hozzáférés | Egy forrásoldali eszköz megkísérelt hozzáférni egy erőforráshoz egy másik eszközön. Ez a két eszköz nem engedélyezte az erőforráshoz való hozzáférési kísérletet a hálózaton. | Jelentős |
-| Jogosulatlan MMS-szolgáltatás | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan csoportos küldés/szórásos kapcsolatok | A rendszer csoportos/szórásos kapcsolatot észlelt egy forrás-eszköz és más eszközök között. A csoportos küldés/szórásos kommunikáció nincs engedélyezve. | Kritikus |
-| Jogosulatlan név lekérdezése | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan OPC UA-tevékenység | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan OPC UA-kérelem/-válasz | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Egy felhasználó által megadott szabály nem engedélyezett műveletet észlelt | A rendszer forgalmat észlelt két eszköz között. Ez a tevékenység nem engedélyezett a felhasználó által definiált egyéni riasztási szabályok alapján. | Jelentős |
-| Nem engedélyezett PLC-konfiguráció olvasása | A forrásoldali eszköz nem programozási eszközként van definiálva, de olvasási/írási műveletet hajtott végre egy célként megadott vezérlőn. A programozási módosításokat csak a programozási eszközök hajtják végre. Lehetséges, hogy már telepítve van egy programozási alkalmazás az eszközön. | Figyelmeztetés |
-| Nem engedélyezett PLC-konfiguráció írása | A forrásoldali eszköz eljuttatott egy parancsot a cél-vezérlő programjának olvasásához/írásához. Ez a tevékenység korábban nem volt látható. | Jelentős |
-| Jogosulatlan PLC-program feltöltése | A forrásoldali eszköz eljuttatott egy parancsot a cél-vezérlő programjának olvasásához/írásához. Ez a tevékenység korábban nem volt látható. | Jelentős |
-| Jogosulatlan PLC-programozás | A forrásoldali eszköz nem programozási eszközként van definiálva, de olvasási/írási műveletet hajtott végre egy célként megadott vezérlőn. A programozási módosításokat csak a programozási eszközök hajtják végre. Lehetséges, hogy már telepítve van egy programozási alkalmazás az eszközön. | Kritikus |
-| Jogosulatlan Profinet-keret típusa | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan SAIA S-Bus parancs | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Az ellenőrző funkció nem engedélyezett a Siemens S7-ben való végrehajtásakor | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Felhasználó által definiált függvény nem engedélyezett a Siemens S7-ben való végrehajtásakor | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan Siemens S7 és blokkolási hozzáférés | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan Siemens S7 plusz művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan SMB-bejelentkezés | A rendszer bejelentkezési kísérletet észlelt a forrás-ügyfél és a célkiszolgáló között. Az eszközök közötti kommunikációt nem engedélyezték a hálózatán észlelt forgalomnak. | Jelentős |
-| Nem engedélyezett SNMP-művelet | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Jogosulatlan SSH-hozzáférés | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| Nem engedélyezett Windows-folyamat | A rendszer jogosulatlan alkalmazást észlelt egy forrásoldali eszközön. Az alkalmazás nem lett engedélyezve a hálózatban megtanult alkalmazásként. | Jelentős |
-| Nem engedélyezett Windows-szolgáltatás | A rendszer jogosulatlan alkalmazást észlelt egy forrásoldali eszközön. Az alkalmazás nem lett engedélyezve a hálózatban megtanult alkalmazásként. | Jelentős |
-| Egy felhasználó által megadott szabály nem engedélyezett műveletet észlelt | A rendszer új forgalmi paramétereket észlelt. Ez a paraméter-kombináció sérti a felhasználó által megadott szabályt. | Jelentős |
-| Nem engedélyezett a Modbus Schneider elektromos bővítmény | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| ASDU-típusok nem engedélyezett használata | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| A DNP3 függvény kódjának nem engedélyezett használata | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
-| A belső jelzés nem engedélyezett használata (AA) | A DNP3 forrásoldali eszköz (külső) olyan belső jelzést jelentett (AA), amely nem volt engedélyezve a hálózatán észlelt forgalomnak. | Jelentős |
-| A Modbus függvény kódjának nem engedélyezett használata | A rendszer új forgalmi paramétereket észlelt. Ezt a paraméter-kombinációt nem engedélyezték a hálózatban megtanult forgalomnak. A következő kombináció nem engedélyezett. | Jelentős |
+| MAC-címek rendellenes használata | A rendszer egy új forráseszközt észlelt a hálózaton, de nem engedélyezte. | Kismérvű |
+| A szoftver megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Az adatbázisba való bejelentkezés sikertelen | A rendszer sikertelen bejelentkezési kísérletet észlelt egy forráseszközről egy célkiszolgálóra. Ez lehet emberi hiba eredménye, de arra is utalhat, hogy rosszindulatú kísérlet történt a kiszolgáló vagy a rajta található adatok feltörére. | Jelentős |
+| Az Emerson ROC belső vezérlőprogramjának verziója megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| A hálózaton belüli külső cím, az internettel kommunikálva | A hálózat részeként definiált forráseszköz internetes címekkel kommunikál. A forrás nem jogosult az internetcímekkel való kommunikációra. | Kritikus |
+| Váratlanul felderített mezőeszköz | A rendszer új forráseszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
+| Belső vezérlőprogram-módosítás észlelhető | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet engedélyezett tevékenység, például tervezett karbantartási eljárás. | Jelentős |
+| A belső vezérlőprogram verziója megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Foxboro I/A Unauthorized Operation | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Az FTP-bejelentkezés sikertelen | A rendszer sikertelen bejelentkezési kísérletet észlelt egy forráseszközről egy célkiszolgálóra. Ez lehet emberi hiba eredménye, de arra is utalhat, hogy rosszindulatú kísérlet történt a kiszolgáló vagy a rajta található adatok feltörére. | Jelentős |
+| A függvénykód jogosulatlan kivételt okozott | A forráseszköz (a főkiszolgáló) kivételt adott vissza a céleszköznek. | Jelentős |
+| AZ ANNAK üzenettípusának beállításai | A protokollazonosító által azonosított üzenetbeállítások módosultak a forráseszközön. | Figyelmeztetés |
+| A Honeywell belső vezérlőprogramjának verziója megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Érvénytelen HTTP-kommunikáció | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Internet-hozzáférés észlelhető | A hálózat részeként definiált forráseszköz internetes címekkel kommunikál. A forrás nem jogosult az internetcímekkel való kommunikációra. | Jelentős |
+| A Belső vezérlőprogram verziója megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Modbus-címtartomány megsértése | A főeszköz hozzáférést kért egy új memória-főkiszolgálói memóriacímhez. | Jelentős |
+| A Modbus belső vezérlőprogramjának verziója megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Új tevékenység észlelhető – CIP-osztály | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – CIP-osztályszolgáltatás | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – CIP PCCC-parancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – CIP-szimbólum | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – EtherNet/IP I/O-kapcsolat | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – EtherNet/IP Protokoll parancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – A RENDSZER EGY ÚJ üzenetkódot észlelt | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – LonTalk-parancskódok | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új portfelderítés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Figyelmeztetés |
+| Új tevékenység észlelhető – LonTalk Hálózati változó | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Ovation Data Request | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Olvasási/írási parancs (AMS-indexcsoport) | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Olvasási/írási parancs (AMS-indexeltolás) | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Jogosulatlan DeltaV üzenettípus | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Jogosulatlan DeltaV ROC-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Jogosulatlan RPC-üzenettípus | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Jogosulatlan RPC-eljáráshívás | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – AZ AMS protokoll parancsának használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – a Következő SICAM-parancs használatával: | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – A Suitelink Protocol parancs használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Suitelink Protocol-munkamenetek használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új tevékenység észlelhető – Yokogawa VNetIP parancs használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Új eszköz észlelhető | A rendszer új forráseszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
+| Új LLDP-eszközkonfiguráció | A rendszer új forráseszközt észlelt a hálózaton, de nem engedélyezte. | Jelentős |
+| Új portfelderítés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Figyelmeztetés |
+| Omron FINS – Jogosulatlan parancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Az S7 Plus PLC belső vezérlőprogramja megváltozott | A belső vezérlőprogram frissítve lett egy forráseszközön. Ez lehet egy engedélyezett tevékenység, például egy tervezett karbantartási eljárás. | Jelentős |
+| Mintaértékek Üzenettípus-beállítások | A protokollazonosító által azonosított üzenetbeállítások módosultak a forráseszközön. | Figyelmeztetés |
+| Érvénytelen integritásvizsgálat gyanúja | A rendszer vizsgálatot észlelt egy DNP3-forráseszközön (outstation). Ez a vizsgálat nem lett engedélyezve a hálózata megtanult forgalmaként. | Jelentős |
+| A Computer Link nem engedélyezett parancsa | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Kismérvű |
+| Jogosulatlan ABB Totalflow-fájlművelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan ABB Totalflow-regisztrálási művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan hozzáférés a Access S7 Data Blockhoz | Egy forráseszköz megkísérelt hozzáférni egy másik eszközön található erőforráshoz. A két eszköz közötti, az erőforráshoz való hozzáférési kísérlet nem lett engedélyezve a hálózati megtanult forgalomként. | Figyelmeztetés |
+| Jogosulatlan hozzáférés a Access S7 Plus objektumhoz | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan hozzáférés a Wonderware-címkéhez | Egy forráseszköz megkísérelt hozzáférni egy másik eszközön található erőforráshoz. A két eszköz közötti, az erőforráshoz való hozzáférési kísérlet nem lett engedélyezve a hálózati megtanult forgalomként. | Jelentős |
+| Jogosulatlan BACNet-objektum-hozzáférés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan BACNet-útvonal | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan adatbázis-bejelentkezés | A rendszer bejelentkezési kísérletet észlelt egy forrásoldali ügyfél és a célkiszolgáló között. Az ezen eszközök közötti kommunikáció nem lett engedélyezve a hálózati adatforgalomként. | Jelentős |
+| Jogosulatlan adatbázis-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan emerson ROC-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett GE SRTP-fájlelérés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett GE SRTP protokollparancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett GE SRTP rendszermemória-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett HTTP-tevékenység | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan HTTP-kiszolgáló | A rendszer jogosulatlan alkalmazást észlelt egy forráseszközön. Az alkalmazást nem engedélyezték tanult alkalmazásként a hálózaton. | Jelentős |
+| Jogosulatlan HTTP SOAP-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan HTTP-felhasználói ügynök | A rendszer jogosulatlan alkalmazást észlelt egy forráseszközön. Az alkalmazást nem engedélyezték tanult alkalmazásként a hálózaton. | Jelentős |
+| Jogosulatlan internetkapcsolat észlelhető | A hálózat részeként definiált forráseszköz internetes címekkel kommunikál. A forrás nem jogosult az internetcímekkel való kommunikációra. | Kritikus |
+| JogosulatlanUl engedélyezett Melsec-parancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan MMS-program-hozzáférés | Egy forráseszköz megkísérelt hozzáférni egy másik eszközön található erőforráshoz. A két eszköz közötti, az erőforráshoz való hozzáférési kísérlet nem lett engedélyezett a hálózati megtanult forgalomként. | Jelentős |
+| Jogosulatlan MMS-szolgáltatás | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett csoportos/szórásos kapcsolat | A rendszer csoportos küldési/szórási kapcsolatot észlelt egy forráseszköz és más eszközök között. A csoportos/szórásos kommunikáció nem engedélyezett. | Kritikus |
+| Jogosulatlan névlekérdezés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan OPC UA-tevékenység | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan OPC UA-kérés/-válasz | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Felhasználó által megadott szabály jogosulatlan műveletet észlelt | A rendszer forgalmat észlelt két eszköz között. Ez a tevékenység nem engedélyezett egy felhasználó által meghatározott egyéni riasztási szabály alapján. | Jelentős |
+| Jogosulatlan PLC-konfiguráció olvasása | A forráseszköz nincs programozási eszközként definiálva, de olvasási/írási műveletet végzett a célvezérlőn. A programozási módosításokat csak a programozási eszközöknek kell végrehajtaniuk. Előfordulhat, hogy egy programozási alkalmazás van telepítve az eszközön. | Figyelmeztetés |
+| Jogosulatlan PLC-konfiguráció írása | A forráseszköz egy parancsot küldött a célvezérlő programjának olvasására/írására. Ez a tevékenység korábban nem volt látható. | Jelentős |
+| Jogosulatlan PLC-programfeltöltés | A forráseszköz egy parancsot küldött a célvezérlő programjának olvasására/írására. Ez a tevékenység korábban nem volt látható. | Jelentős |
+| Jogosulatlan PLC-programozás | A forráseszköz nincs programozási eszközként definiálva, de olvasási/írási műveletet hajtott végre a célvezérlőn. A programozási módosításokat csak a programozási eszközöknek kell végrehajtaniuk. Előfordulhat, hogy egy programozási alkalmazás van telepítve az eszközön. | Kritikus |
+| Jogosulatlan Profinet kerettípus | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Nem engedélyezett SAIA S-Bus parancs | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| A Control Function jogosulatlan végrehajtása az S7-es szoftverben | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Felhasználó által meghatározott függvény jogosulatlan végrehajtása a Következőben: S7 | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| JogosulatlanUl engedélyezett Access Az S7 Plus blokk-hozzáférése | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| JogosulatlanÜl engedélyezett a Plus üzemeltetése a 7.-es S7-es szoftverhez | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan SMB-bejelentkezés | A rendszer bejelentkezési kísérletet észlelt egy forrás ügyfél és a célkiszolgáló között. Az ezen eszközök közötti kommunikáció nem lett engedélyezve a hálózati adatforgalomként. | Jelentős |
+| Jogosulatlan SNMP-művelet | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan SSH-hozzáférés | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Jogosulatlan Windows-folyamat | A rendszer jogosulatlan alkalmazást észlelt egy forráseszközön. Az alkalmazást nem engedélyezték tanult alkalmazásként a hálózaton. | Jelentős |
+| Jogosulatlan Windows-szolgáltatás | A rendszer jogosulatlan alkalmazást észlelt egy forráseszközön. Az alkalmazást nem engedélyezték tanult alkalmazásként a hálózaton. | Jelentős |
+| A felhasználó által megadott szabály jogosulatlan műveletet észlelt | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció megsérti a felhasználó által megadott szabályt | Jelentős |
+| Ki nem bocsátott ModbusRel elektromos bővítmény | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| ASDU-típusok nem véglegesített használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| A DNP3 függvénykód nem véglegesített használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
+| Belső jelzés (IIN) nem véglegesített használata | A DNP3-forráseszköz (outstation) belső jelzést (IIN) jelentett, amely nem hitelesítette a hálózati megtanult forgalmat. | Jelentős |
+| Modbus-függvénykód nem véglegesített használata | A rendszer új forgalmi paramétereket észlelt. Ez a paraméterkombináció nem lett engedélyezve a hálózat megtanult forgalmaként. Az alábbi kombináció nem engedélyezett. | Jelentős |
 
-## <a name="anomaly-engine-alerts"></a>Anomália-motor riasztásai
+## <a name="anomaly-engine-alerts"></a>Anomáliamotor-riasztások
 
-| Cím | Leírás | Súlyosság |
-|--|--|--|
-| Rendellenes kivételi minta a Slave-ben | Egy forrásoldali eszközön túl sok hibát észlelt a rendszer. Ez egy működési probléma eredménye lehet. | Kismérvű |
-| Rendellenes HTTP-fejléc hossza | A forrásoldali eszköz rendellenes üzenetet küldött. Ez a cél eszköz támadására tett kísérletre utalhat. | Kritikus |
-| A HTTP-fejlécben szereplő paraméterek rendellenes száma | A forrásoldali eszköz rendellenes üzenetet küldött. Ez a cél eszköz támadására tett kísérletre utalhat. | Kritikus |
-| Rendellenes rendszeres viselkedés a kommunikációs csatornában | A rendszer a forrás és a cél eszközök közötti kommunikáció gyakoriságának változását észlelte. | Kismérvű |
-| Alkalmazások rendellenes leállítása | Egy forrásoldali eszközön túl sok leállítási parancs észlelhető. Ennek oka lehet egy működési probléma, vagy az eszköz módosítására tett kísérlet. | Jelentős |
-| Rendellenes forgalmi sávszélesség | A rendszer rendellenes sávszélességet észlelt egy csatornán. Úgy tűnik, hogy a sávszélesség jóval alacsonyabb vagy magasabb, mint a korábban észlelt. A részletekért a teljes sávszélesség widgettel dolgozhat. | Figyelmeztetés |
-| Rendellenes forgalmi sávszélesség az eszközök között | A rendszer rendellenes sávszélességet észlelt egy csatornán. Úgy tűnik, hogy a sávszélesség jóval alacsonyabb vagy magasabb, mint a korábban észlelt. A részletekért a teljes sávszélesség widgettel dolgozhat. | Figyelmeztetés |
-| A címek vizsgálata észlelhető | A rendszer egy forrásoldali eszközt észlelt A hálózati eszközök vizsgálatakor. Ez az eszköz nem lett engedélyezve hálózati ellenőrzési eszközként. | Kritikus |
-| Az ARP-címek vizsgálata észlelhető | A rendszer egy forrásoldali eszközt észlelt a hálózati eszközök vizsgálatára az ARP protokoll használatával. Ez az eszköz címe nincs engedélyezve érvényes ARP-ellenőrzési címként. | Kritikus |
-| Az ARP-címek vizsgálata észlelhető | A rendszer egy forrásoldali eszközt észlelt a hálózati eszközök vizsgálatára az ARP protokoll használatával. Ez az eszköz címe nincs engedélyezve érvényes ARP-ellenőrzési címként. | Kritikus |
-| ARP-hamisítás | A hálózatban rendellenes mennyiségű csomagot észlelt a rendszer. Ez egy támadásra utalhat, például egy ARP-hamisítás vagy egy ICMP-árvíz elleni támadás. | Figyelmeztetés |
-| Túlzott bejelentkezési kísérletek | Egy forrásoldali eszköz túlzott bejelentkezési kísérleteket hajtott végre a célkiszolgálón. Ez egy találgatásos támadás lehet. A kiszolgálót rosszindulatú színész is veszélyeztetheti. | Kritikus |
-| Sok munkamenet | Egy forrásoldali eszköz túlzott bejelentkezési kísérleteket hajtott végre a célkiszolgálón. Ez egy találgatásos támadás lehet. A kiszolgálót rosszindulatú színész is veszélyeztetheti. | Kritikus |
-| Egy állomás túlzott újraindítási sebessége | Egy forrásoldali eszközön túl sok újraindítási parancs észlelhető. Ennek oka lehet egy működési probléma, vagy az eszköz módosítására tett kísérlet. | Jelentős |
-| Túlzott SMB bejelentkezési kísérletek | Egy forrásoldali eszköz túlzott bejelentkezési kísérleteket hajtott végre a célkiszolgálón. Ez egy találgatásos támadás lehet. A kiszolgálót rosszindulatú színész is veszélyeztetheti. | Kritikus |
-| ICMP-elárasztás | A hálózatban rendellenes mennyiségű csomagot észlelt a rendszer. Ez egy támadásra utalhat, például egy ARP-hamisítás vagy egy ICMP-árvíz elleni támadás. | Figyelmeztetés |
-| Szabálytalan HTTP-fejléc tartalma | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Kritikus |
-| Inaktív kommunikációs csatorna | A két eszköz közötti kommunikációs csatorna inaktív volt egy olyan időszakban, amelyben a tevékenység általában látható. Ez arra utalhat, hogy a forgalmat generáló program módosult, vagy a program nem érhető el. Javasoljuk, hogy tekintse át a telepített program konfigurációját, és ellenőrizze, hogy megfelelően van-e konfigurálva. | Figyelmeztetés |
-| Hosszú időtartamú címek vizsgálata észlelhető | A rendszer egy forrásoldali eszközt észlelt A hálózati eszközök vizsgálatakor. Ez az eszköz nem lett engedélyezve hálózati ellenőrzési eszközként. | Kritikus |
-| Jelszó-találgatásos kísérlet észlelve | Egy forrásoldali eszköz túlzott bejelentkezési kísérleteket hajtott végre a célkiszolgálón. Ez egy találgatásos támadás lehet. A kiszolgálót rosszindulatú színész is veszélyeztetheti. | Kritikus |
-| PLC-vizsgálat észlelhető | A rendszer egy forrásoldali eszközt észlelt A hálózati eszközök vizsgálatakor. Ez az eszköz nem lett engedélyezve hálózati ellenőrzési eszközként. | Kritikus |
-| A port vizsgálata észlelve | A rendszer egy forrásoldali eszközt észlelt A hálózati eszközök vizsgálatakor. Ez az eszköz nem lett engedélyezve hálózati ellenőrzési eszközként. | Kritikus |
-| Nem várt üzenet hossza | A forrásoldali eszköz rendellenes üzenetet küldött. Ez a cél eszköz támadására tett kísérletre utalhat. | Kritikus |
-| Váratlan forgalom a standard porthoz | A rendszer forgalmat észlelt egy eszközön egy másik protokoll számára fenntartott port használatával. | Jelentős |
-
-## <a name="protocol-violation-engine-alerts"></a>Protokoll-megsértési motor riasztásai
+Az anomáliamotor-riasztások a hálózati tevékenységben észlelt anomáliákat írják le.
 
 | Cím | Leírás | Súlyosság |
 |--|--|--|
-| Túlzottan helytelenül formázott csomagok egyetlen munkamenetben | Rendellenes számú helytelenül formázott csomag érkezik a forrásoldali eszközről a céleszköz. Ez hibás kommunikációt, vagy a megcélzó eszköz kezelésének kísérletét jelezheti. | Jelentős |
-| Belsővezérlőprogram-frissítés | Egy forrásoldali eszköz eljuttatott egy parancsot a belső vezérlőprogram frissítéséhez egy céleszköz. Győződjön meg arról, hogy a célként megadott eszközön végzett legutóbbi programozási, konfigurációs és belső vezérlőprogram-frissítések érvényesek. | Figyelmeztetés |
-| Az állomás nem támogatja a függvény kódját | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| Érvénytelen BACNet-üzenet | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Érvénytelen csatlakozási kísérlet a 0. porton | A forrásoldali eszköz a nulla (0) portszámon próbált meg csatlakozni a célként megadott eszközhöz. A TCP esetében a 0. port foglalt, ezért nem használható. Az UDP esetében a port nem kötelező, és a 0 érték azt jelenti, hogy nincs port. Általában nincs olyan rendszer, amely a 0. porton figyeli a szolgáltatást. Ez az esemény arra utalhat, hogy kísérletet tesz a céleszköz támadására, vagy azt jelzi, hogy egy alkalmazás helytelenül lett beprogramozva. | Kismérvű |
-| Szabálytalan DNP3 művelet | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Szabálytalan MODBUS művelet (a főkiszolgáló által kiváltott kivétel) | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Szabálytalan MODBUS művelet (hibakód nulla) | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Érvénytelen protokoll-verzió | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Helytelen paraméter lett elküldve a kiállomásnak | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| Elavult kód kezdeményezése (az adatinicializálási művelet) | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Kismérvű |
-| Elavult kód kezdeményezése (konfiguráció mentése) | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Kismérvű |
-| A főkiszolgáló kérelmezte az alkalmazás rétegének megerősítését | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Figyelmeztetés |
-| Modbus kivétel | Egy forrásoldali eszköz (slave) kivételt adott vissza egy céleszköz (Master) számára. | Jelentős |
-| A Slave eszköz nem engedélyezett ASDU-típust kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave eszköz az átvitelhez nem engedélyezett parancsot kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave-eszköz szabálytalan közös címeket kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave eszköz érvénytelen adatcímes paramétert kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave eszköz érvénytelen adatérték-paramétert kapott. | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave eszköz szabálytalan kódot kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| A Slave eszköz érvénytelen információ-objektum-címeket kapott | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| Ismeretlen objektum küldve a kifelé | A céleszköz érvénytelen kérést kapott. | Jelentős |
-| Fenntartott függvény kódjának használata | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
-| Helytelen formázás használata az állomáson | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Figyelmeztetés |
-| Fenntartott állapot jelzői (AA) használata | Egy DNP3 forrásoldali eszköz (külső) a fenntartott belső 2,6-as kijelzőt használta. Javasoljuk, hogy vizsgálja meg az eszköz konfigurációját. | Figyelmeztetés |
+| Rendellenes kivételminta a következőben: Slave | A rendszer túl sok hibát észlelt egy forráseszközön. Ez egy működési probléma eredménye lehet. | Kismérvű |
+| RENDELLENES HTTP-fejléchossz | A forráseszköz rendellenes üzenetet küldött. Ez a céleszköz elleni támadásra utalhat. | Kritikus |
+| Paraméterek rendellenes száma a HTTP-fejlécben | A forráseszköz rendellenes üzenetet küldött. Ez a céleszköz elleni támadásra utalhat. | Kritikus |
+| Rendellenes rendszeres viselkedés a kommunikációs csatornán | A rendszer változást észlelt a forrás- és céleszközök közötti kommunikáció gyakoriságában. | Kismérvű |
+| Alkalmazások rendellenes megszakítása | A rendszer túl sok leállítási parancsot észlelt a forráseszközön. Ez egy működési probléma vagy az eszköz manipulálására tett kísérlet eredménye lehet. | Jelentős |
+| Rendellenes forgalom sávszélessége | Rendellenes sávszélesség észlelhető egy csatornán. A sávszélesség a korábban észleltnél jelentősen alacsonyabbnak/magasabbnak tűnik. Részletekért használja a Teljes sávszélesség widgetet. | Figyelmeztetés |
+| Rendellenes forgalom sávszélessége az eszközök között | Rendellenes sávszélesség észlelhető egy csatornán. A sávszélesség a korábban észleltnél jelentősen alacsonyabbnak/magasabbnak tűnik. Részletekért használja a Teljes sávszélesség widgetet. | Figyelmeztetés |
+| Címvizsgálat észlelhető | A rendszer egy forráseszközt észlelt a hálózati eszközök vizsgálatához. Ez az eszköz nincs engedélyezve hálózatvizsgálati eszközként. | Kritikus |
+| ARP-címvizsgálat észlelhető | A rendszer egy forráseszközt észlelt, amely a hálózati eszközöket az Address Resolution Protocol (ARP) protokoll használatával átvizsgálja. Ez az eszközcím nem lett érvényes ARP-ellenőrzési címként engedélyezve. | Kritikus |
+| ARP-címvizsgálat észlelhető | A rendszer egy forráseszközt észlelt, amely a hálózati eszközöket az Address Resolution Protocol (ARP) protokoll használatával átvizsgálja. Ez az eszközcím nem lett érvényes ARP-ellenőrzési címként engedélyezve. | Kritikus |
+| ARP-hamisítás | A rendszer rendellenes mennyiségű csomagot észlelt a hálózatban. Ez egy támadásra utalhat, például ARP-hamisításra vagy ICMP-elárasztásos támadásra. | Figyelmeztetés |
+| Túlzott bejelentkezési kísérletek | A rendszer azt látta, hogy egy forráseszköz túl sok bejelentkezési kísérletet tett a célkiszolgálóra. Ez találgatásos támadás lehet. Előfordulhat, hogy egy rosszindulatú szereplő feltöri a kiszolgálót. | Kritikus |
+| A munkamenetek túlzott száma | A rendszer egy forráseszközt látott, amely túl sok bejelentkezési kísérletet tett a célkiszolgálóra. Ez találgatásos támadás lehet. Előfordulhat, hogy egy rosszindulatú szereplő feltöri a kiszolgálót. | Kritikus |
+| Túlzott újraindítási arány egy indításakor | A rendszer túl sok újraindítási parancsot észlelt a forráseszközön. Ez egy működési probléma vagy az eszköz manipulálására tett kísérlet eredménye lehet. | Jelentős |
+| Túlzott SMB-bejelentkezési kísérletek | A rendszer egy forráseszközt látott, amely túl sok bejelentkezési kísérletet tett a célkiszolgálóra. Ez találgatásos támadás lehet. Előfordulhat, hogy egy rosszindulatú szereplő feltöri a kiszolgálót. | Kritikus |
+| ICMP-elárasztás | A rendszer rendellenes mennyiségű csomagot észlelt a hálózatban. Ez egy támadásra utalhat, például egy ARP-hamisításra vagy ICMP-elárasztásos támadásra. | Figyelmeztetés |
+| Érvénytelen HTTP-fejléc tartalma | A forráseszköz érvénytelen kérést kezdeményezett. | Kritikus |
+| Inaktív kommunikációs csatorna | A két eszköz közötti kommunikációs csatorna inaktív volt egy olyan időszakban, amelyben általában látható a tevékenység. Ez azt jelezheti, hogy a forgalmat előállító program módosult, vagy a program nem érhető el. Javasoljuk, hogy tekintse át a telepített program konfigurációját, és ellenőrizze, hogy megfelelően van-e konfigurálva. | Figyelmeztetés |
+| Hosszú időtartamú címvizsgálatot észleltünk | A rendszer egy forráseszközt észlelt a hálózati eszközök vizsgálatához. Ez az eszköz nincs engedélyezve hálózatvizsgálati eszközként. | Kritikus |
+| Jelszó-találgatási kísérlet észlelhető | A rendszer azt látta, hogy egy forráseszköz túl sok bejelentkezési kísérletet tett a célkiszolgálóra. Ez találgatásos támadás lehet. Előfordulhat, hogy egy rosszindulatú szereplő feltöri a kiszolgálót. | Kritikus |
+| PLC-vizsgálat észlelhető | A rendszer egy forráseszközt észlelt a hálózati eszközök vizsgálatához. Ez az eszköz nincs engedélyezve hálózatvizsgálati eszközként. | Kritikus |
+| Portvizsgálat észlelhető | A rendszer egy forráseszközt észlelt a hálózati eszközök vizsgálatához. Ez az eszköz nincs engedélyezve hálózatvizsgálati eszközként. | Kritikus |
+| Váratlan üzenethossz | A forráseszköz rendellenes üzenetet küldött. Ez a céleszköz elleni támadásra utalhat. | Kritikus |
+| Váratlan forgalom a standard porthoz | A rendszer egy másik protokoll számára fenntartott portot használó eszközön észlelte a forgalmat. | Jelentős |
 
-## <a name="malware-engine-alerts"></a>Kártevő-végrehajtó riasztások
+## <a name="protocol-violation-engine-alerts"></a>Protokollsértési motor riasztásai
+
+A protokollmotor-riasztások a csomagstruktúra vagy a mezőértékek észlelt eltérését írják le a protokollsokajátságokkal összehasonlítva.
+
+| Cím | Leírás | Súlyosság |
+|--|--|--|
+| Túlzottan helytelenül formázott csomagok egyetlen munkamenetben | A forráseszközről a céleszközre küldött helytelenül formázott csomagok rendellenes száma. Ez téves kommunikációra vagy a megcélzott eszköz manipulálására tett kísérletre utalhat. | Jelentős |
+| Belsővezérlőprogram-frissítés | A forráseszköz egy parancsot küldött a céleszköz belső vezérlőprogramjának frissítésére. Ellenőrizze, hogy a céleszközön végzett legutóbbi programozás, konfiguráció és belsővezérlőprogram-frissítések érvényesek-e. | Figyelmeztetés |
+| Az outstation által nem támogatott függvénykód | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelen BACNet-üzenet | A forráseszköz érvénytelen kérést kezdeményezett. | Jelentős |
+| Érvénytelen csatlakozási kísérlet a 0-s porton | Egy forráseszköz a nulla számú (0) porton próbált csatlakozni a céleszközhöz. A TCP esetében a 0 port le van foglalva, és nem használható. UDP esetén a port nem kötelező, a 0 érték pedig azt jelenti, hogy nincs port. Általában nincs szolgáltatás olyan rendszeren, amely a 0-s portot figyeli. Ez az esemény a céleszköz támadási kísérletére utalhat, vagy jelezheti, hogy egy alkalmazás helytelenül lett programozva. | Kismérvű |
+| Érvénytelen DNP3-művelet | A forráseszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
+| Érvénytelen MODBUS-művelet (a főkiszolgáló által okozott kivétel) | A forráseszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
+| Érvénytelen MODBUS-művelet (nulla függvénykód) | A forráseszköz érvénytelen kérést kezdeményezett. | Jelentős |
+| Érvénytelen protokollverzió | A forráseszköz érvénytelen kérést kezdeményezett. | Jelentős |
+| Helytelen paraméter elküldve a következőnek: Outstation | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Elavult függvénykód kezdeményezése (adatok inicializálása) | A forráseszköz érvénytelen kérést kezdeményezett. | Kismérvű |
+| Elavult függvénykód kezdeményezése (Konfiguráció mentése) | A forráseszköz érvénytelen kérést kezdeményezett. | Kismérvű |
+| Főkiszolgáló alkalmazásréteg-megerősítést kért | A forráseszköz érvénytelen kérést kezdeményezett. | Figyelmeztetés |
+| Modbus-kivétel | A forráseszköz (a főkiszolgáló) kivételt adott vissza a céleszköznek. | Jelentős |
+| Érvénytelen ASDU-típust kapott a következő típusú visszacsatotos eszköz: | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| A slave device nem megengedett parancs miatt kapott átvitelt | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelenül kapott visszacsatott eszköz – gyakori cím | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelen adatcímparamétert kapott a leszolgátott eszköz | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelen adatérték paramétert kapott a leszolgátott eszköz | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelen függvénykódot kapott a leszolgaolt eszköz | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Érvénytelen információs objektumcímet kapott az eszközhöz | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Ismeretlen objektum elküldve az Outstationnek | A céleszköz érvénytelen kérelmet kapott. | Jelentős |
+| Fenntartott függvénykód használata | A forráseszköz érvénytelen kérelmet kezdeményezett. | Jelentős |
+| Nem megfelelő formázás használata az outstation használatával | A forráseszköz érvénytelen kérelmet kezdeményezett. | Figyelmeztetés |
+| Fenntartott állapotjelzők (IIN) használata | A DNP3-forráseszköz (outstation) a fenntartott Belső jelző 2.6-ot használta. Javasoljuk, hogy ellenőrizze az eszköz konfigurációját. | Figyelmeztetés |
+
+## <a name="malware-engine-alerts"></a>Kártevőmotor-riasztások
+
+A kártevőmotor-riasztások az észlelt kártékony hálózati tevékenységeket írják le.
 
 | Cím | Leírás| Súlyosság |
 |--|--|--|
-| Az ismert kártékony IP-címhez való kapcsolódási kísérlet | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Érvénytelen SMB-üzenet (DoublePulsar Backdoor implantátum) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tartománynév kérése | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Kártevő-tesztelési fájl észlelhető – EICAR AV-sikeres | A rendszer EICAR AV-teszt fájlt észlelt két eszköz közötti forgalomban. A fájl nem kártevő szoftver. Annak ellenőrzésére szolgál, hogy a víruskereső szoftver megfelelően van-e telepítve; bemutatjuk, hogy mi történik vírus keresésekor, valamint a belső eljárások és a reakciók ellenőrzése a vírus megtalálása esetén. A víruskereső szoftvernek úgy kell felderíteni a EICAR, mintha valódi vírus lenne. | Jelentős |
-| A Conficker kártevő gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Szolgáltatásmegtagadási támadás gyanúja | Egy forrásoldali eszköz túl sok új kapcsolatot próbált kezdeményezni egy céleszköz használatával. Ez szolgáltatásmegtagadást okozhat a céleszköz ellen, és megszakíthatja az eszközök működését, hatással lehet a teljesítményre és a szolgáltatás rendelkezésre állására, vagy helyreállíthatatlan hibákat okozhat. | Kritikus |
-| Rosszindulatú tevékenység gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Rosszindulatú tevékenység gyanúja (BlackEnergy) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (DarkComet) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (Duqu) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (láng) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (Havex) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (Karagany) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (LightsOut) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (nevek lekérdezése) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Rosszindulatú tevékenység gyanúja (Poison Ivy) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (Stuxnet) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| Rosszindulatú tevékenység gyanúja (WannaCry) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| NotPetya kártevők gyanúja – a rendszer szabálytalan SMB-paramétereket észlelt | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| NotPetya kártevők gyanúja – a rendszer szabálytalan SMB-tranzakciót észlelt | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
-| A PsExec-mel történő távoli kódfuttatást gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| A távoli Windows-szolgáltatások felügyeletének gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| A rendszer gyanús végrehajtható fájlt észlelt a végponton | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Jelentős |
-| Gyanús forgalom észlelhető | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység olyan támadással társítható, amely egy ismert kártevő által használt metódust használ fel. | Kritikus |
+| Kapcsolódási kísérlet ismert kártékony IP-címekhez | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Érvénytelen SMB-üzenet (DoublePulsar Backdoor Fog) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tartománynév-kérés | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Kártevőtesztfájl észlelhető – EICAR AV sikeres | A rendszer egy EICAR AV tesztfájlt észlelt a két eszköz közötti forgalomban. A fájl nem kártevő. Ezzel lehet megerősíteni, hogy a víruskereső szoftver megfelelően van-e telepítve; bemutatja, mi történik, ha vírust talál, és ellenőrzi a belső eljárásokat és a víruskeresési reakciót. A víruskereső szoftvernek úgy kell észlelnie az EICAR-t, mintha valódi vírus lenne. | Jelentős |
+| Conficker kártevők gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Szolgáltatásmegtagadási támadás gyanúja | Egy forráseszköz túl sok új kapcsolatot próbált meg kezdeményezni a céleszközhöz. Ez lehet egy szolgáltatásmegtagadási (DOS) támadás a céleszköz ellen, amely megszakíthatja az eszköz működését, befolyásolhatja a teljesítményt és a szolgáltatás rendelkezésre állását, vagy kijavíthatatlan hibákat okozhat. | Kritikus |
+| Rosszindulatú tevékenység gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Rosszindulatú tevékenység gyanúja (BlackEnergy) | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (DarkComet) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (Duqu) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (Microsoft) | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (Havex) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (Foggany) | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (LightsOut) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (névlekérdezések) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Rosszindulatú tevékenység gyanúja (kártevő ikalom) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (újragondolás) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (Stuxnet) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| Rosszindulatú tevékenység gyanúja (WannaCry) | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| NotPetya kártevő gyanúja – A rendszer érvénytelen SMB-paramétereket észlelt | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| NotPetya kártevő gyanúja – A rendszer érvénytelen SMB-tranzakciót észlelt | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
+| A psexec távoli kódvégrehajtás gyanúja | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| A Távoli Windows-szolgáltatásfelügyelet gyanúja | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Gyanús végrehajtható fájl észlelhető a végponton | A rendszer gyanús hálózati tevékenységet észlelt. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Jelentős |
+| Gyanús forgalom észlelhető | Gyanús hálózati tevékenységet észleltünk. Ez a tevékenység az ismert kártevők által használt módszert kihasználó támadással társítható. | Kritikus |
 
-## <a name="operational-engine-alerts"></a>Operatív motorral kapcsolatos riasztások
+## <a name="operational-engine-alerts"></a>Működési motor riasztásai
+
+Az operatív motor riasztásai az észlelt működési incidenseket vagy hibás entitásokat írják le.
 
 | Cím | Leírás | Súlyosság |
 |--|--|--|
-| Az S7 stop PLC-parancs küldése megtörtént | A forrásoldali eszköz leállítási parancsot küldtünk egy célhely vezérlőnek. A vezérlő nem fog működni, amíg el nem küld egy indítási parancsot. | Figyelmeztetés |
-| Sikertelen volt a BACNet művelet | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Helytelen MMS-eszköz állapota | Egy MMS-beli virtuális gyártó eszköz (VMD) elküldött egy állapotjelző üzenetet. Az üzenet azt jelzi, hogy előfordulhat, hogy a kiszolgáló nem megfelelően van konfigurálva, részben vagy egyáltalán nem működik. | Jelentős |
-| Az eszköz konfigurációjának módosítása | A rendszer konfigurációs változást észlelt egy forrásoldali eszközön. | Kismérvű |
-| Folyamatos esemény pufferének túlcsordulása az állomáson | A rendszer puffer túlcsordulási eseményt észlelt egy forrásoldali eszközön. Az esemény okozhatja az adatsérülést, a program összeomlását vagy a kártékony kódok végrehajtását. | Jelentős |
-| Vezérlő alaphelyzetbe állítása | A forrásoldali eszköz alaphelyzetbe állítási parancsot adott vissza a célhely vezérlője számára. A vezérlő átmenetileg leállt, és automatikusan elindult. | Figyelmeztetés |
-| Vezérlő leállítása | A forrásoldali eszköz leállítási parancsot küldtünk egy célhely vezérlőnek. A vezérlő nem fog működni, amíg el nem küld egy indítási parancsot. | Figyelmeztetés |
-| Az eszköz nem tudott dinamikus IP-címet fogadni | A forrásoldali eszköz úgy van konfigurálva, hogy dinamikus IP-címet kapjon egy DHCP-kiszolgálóról, de nem kapott címet. Ez az eszköz konfigurációs hibáját vagy működési hibát jelez a DHCP-kiszolgálón. Javasoljuk, hogy értesítse az incidens hálózati rendszergazdáját | Jelentős |
-| Az eszköz le van választva (nem válaszol) | Egy forrásoldali eszköz nem válaszolt a neki küldött parancsra. Előfordulhat, hogy a parancs elküldésekor megszakadt a kapcsolat. | Jelentős |
-| Az EtherNet/IP CIP szolgáltatás kérése sikertelen volt. | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Nem sikerült az EtherNet/IP-beágyazási protokoll parancsa | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Az esemény pufferének túlcsordulása az állomáson | A rendszer puffer túlcsordulási eseményt észlelt egy forrásoldali eszközön. Az esemény okozhatja az adatsérülést, a program összeomlását vagy a kártékony kódok végrehajtását. | Jelentős |
-| A várt biztonsági mentési művelet nem történt meg | A várt biztonsági mentési/fájlátviteli tevékenység két eszköz között nem történt meg. Ez hibákat jelezhet a biztonsági mentési/fájlátviteli folyamat során. | Jelentős |
-| A GE SRTP parancsának hibája | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| A GE SRTP stop PLC-parancs küldése megérkezett | A forrásoldali eszköz leállítási parancsot küldtünk egy célhely vezérlőnek. A vezérlő nem fog működni, amíg el nem küld egy indítási parancsot. | Figyelmeztetés |
-| A liba-vezérlési blokk további konfigurálást igényel | A forrásoldali eszköz egy liba-üzenetet küldött, amely azt jelzi, hogy az eszköznek szüksége van az üzembe helyezésre. Ez azt jelenti, hogy a liba-ellenőrző blokk további konfigurálást igényel, és a liba üzenetei részben vagy teljesen nem működnek. | Jelentős |
-| A liba-adatkészlet konfigurációja módosult | Egy forrásoldali eszközön módosult egy üzenet (a protokoll azonosítója alapján azonosítva) adatkészlet. Ez azt jelenti, hogy az eszköz egy másik adatkészletet fog jelenteni ehhez az üzenethez. | Figyelmeztetés |
-| Honeywell-vezérlő – nem várt állapot | Egy Honeywell-vezérlő váratlan diagnosztikai üzenetet küldött az állapot változásának jelzésére. | Figyelmeztetés |
-| HTTP-ügyfél hibája | A forrásoldali eszköz érvénytelen kérelmet kezdeményezett. | Figyelmeztetés |
-| Érvénytelen IP-cím | A rendszer észlelte a forgalmat egy forrásoldali eszköz és az IP-cím között, amely érvénytelen cím. Ez helytelen konfigurációt vagy a tiltott forgalom előállítására irányuló kísérletet jelezhet. | Kismérvű |
-| Hitelesítési hiba Master-Slave | A DNP3 forrásoldali eszköz (főkiszolgáló) és a célként megadott eszköz (állomás) közötti hitelesítési folyamat sikertelen volt. | Kismérvű |
-| Nem sikerült az MMS-szolgáltatás kérése | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Nem észlelhető forgalom az érzékelő felületen | Egy érzékelő leállított egy hálózati adapter hálózati forgalmának észlelését. | Kritikus |
-| Az OPC UA-kiszolgáló olyan eseményt váltott ki, amely felhasználói beavatkozást igényel | Az OPC UA-kiszolgáló eseményt küldött az ügyfélnek. Az ilyen típusú eseményekhez felhasználói beavatkozás szükséges | Jelentős |
-| Az OPC UA szolgáltatási kérelem sikertelen | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Az állomás újraindítása megkezdődött | A rendszer hideg újraindítást észlelt egy forrásoldali eszközön. Ez azt jelenti, hogy az eszköz fizikailag ki van kapcsolva, és újra visszatért. | Figyelmeztetés |
-| Az állomások újraindítása gyakran | Egy forrásoldali eszközön túl sok hideg újraindítást észlelt a rendszer. Ez azt jelenti, hogy az eszköz fizikailag ki van kapcsolva, és újra visszakerül a túlzott számú alkalommal. | Kismérvű |
-| Az állomás konfigurációjának változása | A rendszer konfigurációs változást észlelt egy forrásoldali eszközön. | Jelentős |
-| Az állomás sérült konfigurációját észlelte a rendszer | Ez a DNP3-forrás eszköz (adó) sérült konfigurációt jelentett. | Jelentős |
-| Nem sikerült a Profinet DCP parancs végrehajtása | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| Profinet-eszköz gyári alaphelyzetbe állítása | A forrásoldali eszköz gyári beállítások visszaállítása parancsot adott vissza egy Profinet. Az Alaphelyzetbe állítás parancs törli a Profinet-eszköz konfigurációit, és leállítja a műveletet. | Figyelmeztetés |
-| Sikertelen RPC-művelet | A kiszolgáló hibakódot adott vissza. Ez egy kiszolgálóhiba vagy egy ügyfél érvénytelen kérelmét jelzi. | Jelentős |
-| A mintavételi értékek üzenetének adatkészlet-konfigurációja módosult | Egy forrásoldali eszközön módosult egy üzenet (a protokoll azonosítója alapján azonosítva) adatkészlet. Ez azt jelenti, hogy az eszköz egy másik adatkészletet fog jelenteni ehhez az üzenethez. | Figyelmeztetés |
-| Helyreállíthatatlan hiba történt a Slave eszközön | Helyreállíthatatlan feltételi hiba észlelhető egy forrásoldali eszközön. Az ilyen típusú hibák általában hardverhiba miatt vagy egy adott parancs végrehajtásának sikertelenségét jelzik. | Jelentős |
-| A hardverrel kapcsolatos problémák gyanúja az állomáson | Helyreállíthatatlan feltételi hiba észlelhető egy forrásoldali eszközön. Az ilyen típusú hibák általában hardverhiba miatt vagy egy adott parancs végrehajtásának sikertelenségét jelzik. | Jelentős |
-| Nem válaszoló MODBUS-eszköz gyanúja | Egy forrásoldali eszköz nem válaszolt a neki küldött parancsra. Előfordulhat, hogy a parancs elküldésekor megszakadt a kapcsolat. | Kismérvű |
-| Az érzékelő felületen észlelt forgalom | Egy érzékelő folytatja a hálózati forgalom észlelését egy hálózati adapteren. | Figyelmeztetés |
+| S7 Stop PLC parancs lett elküldve | A forráseszköz leállítási parancsot küldött a célvezérlőnek. A vezérlő mindaddig nem működik tovább, amíg el nem küld egy start parancsot. | Figyelmeztetés |
+| A BACNet-művelet nem sikerült | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Rossz MMS-eszközállapot | Egy MMS virtuális gyártóeszköz (VMD) állapotüzenetet küldött. Az üzenet azt jelzi, hogy előfordulhat, hogy a kiszolgáló nincs megfelelően konfigurálva, részben működőképes, vagy egyáltalán nem működik. | Jelentős |
+| Eszközkonfiguráció módosítása | A rendszer konfigurációs változást észlelt egy forráseszközön. | Kismérvű |
+| Folyamatos eseménypuffer túlcsordulása üzemen | A rendszer puffertúlcsordulási eseményt észlelt egy forráseszközön. Az esemény adatsérülést, program-összeomlást vagy rosszindulatú kód végrehajtását okozhatja. | Jelentős |
+| Vezérlő alaphelyzetbe állítása | A forráseszköz egy visszaállítási parancsot küldött a célvezérlőnek. A vezérlő ideiglenesen leállt, és automatikusan újraindult. | Figyelmeztetés |
+| Vezérlő leállítása | A forráseszköz leállítási parancsot küldött a célvezérlőnek. A vezérlő mindaddig nem működik tovább, amíg el nem küld egy start parancsot. | Figyelmeztetés |
+| Az eszköz nem tudott dinamikus IP-címet kapni | A forráseszköz úgy van konfigurálva, hogy dinamikus IP-címet fogad egy DHCP-kiszolgálótól, de nem kapott címet. Ez konfigurációs hibát vagy a DHCP-kiszolgálón észlelt működési hibát jelez. Javasoljuk, hogy értesítse a hálózati rendszergazdát az incidensről | Jelentős |
+| Az eszköz leválasztottnak gyanítható (nem válaszol) | A forráseszköz nem válaszolt a neki küldött parancsra. Lehet, hogy a parancs el lett küldve. | Jelentős |
+| Az EtherNet/IP CIP-szolgáltatáskérés meghiúsult | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Az EtherNet/IP Encapsulation Protocol parancs meghiúsult | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Eseménypuffer túlcsordulása az outstationben | Puffertúlcsordulási eseményt észleltünk egy forráseszközön. Az esemény adatsérülést, program-összeomlást vagy rosszindulatú kód végrehajtását okozhatja. | Jelentős |
+| A várt biztonsági mentési művelet nem történt meg | A várt biztonsági mentési/fájlátviteli tevékenység nem történt meg két eszköz között. Ez a biztonsági mentési/fájlátviteli folyamat hibáit jelezheti. | Jelentős |
+| GE SRTP-parancshiba | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| A GE SRTP Stop PLC parancs el lett küldve | A forráseszköz leállítási parancsot küldött a célvezérlőnek. A vezérlő mindaddig nem működik tovább, amíg el nem küld egy start parancsot. | Figyelmeztetés |
+| A VEZÉRLŐELEM-blokk további konfigurálást igényel | A forráseszköz EGY OLYAN ÜZENETET küldött, amely jelzi, hogy az eszközt be kell fogni. Ez azt jelenti, hogy a JELENT vezérlőblokk további konfigurálást igényel, a PEDIG RÉSZBEN vagy teljesen nem működőképes. | Jelentős |
+| A RENDSZER módosította az adatkészlet konfigurációját | A protokollazonosító által azonosított üzenet adatkészlete módosult egy forráseszközön. Ez azt jelenti, hogy az eszköz egy másik adatkészletet fog jelenteni ehhez az üzenethez. | Figyelmeztetés |
+| Honeywell Controller Unexpected Status | Egy Honeywell-vezérlő váratlan diagnosztikai üzenetet küldött, amely állapotváltozást jelez. | Figyelmeztetés |
+| HTTP-ügyfélhiba | A forráseszköz érvénytelen kérést kezdeményezett. | Figyelmeztetés |
+| Érvénytelen IP-cím | A rendszer forgalmat észlelt a forráseszköz és az IP-cím között, amely érvénytelen cím. Ez helytelen konfigurációra vagy érvénytelen forgalom generálási kísérletére utalhat. | Kismérvű |
+| Master-Slave hitelesítési hiba | A DNP3-forráseszköz (főeszköz) és a céleszköz (állomás) közötti hitelesítési folyamat sikertelen volt. | Kismérvű |
+| Az MMS-szolgáltatáskérés meghiúsult | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Nem észlelhető forgalom az érzékelő felületén | Egy érzékelő már nem észleli a hálózati forgalmat a hálózati adapteren. | Kritikus |
+| Az OPC UA-kiszolgáló olyan eseményt adott ki, amely felhasználói beavatkozást igényel | Egy OPC UA-kiszolgáló eseményértesítést küldött az ügyfélnek. Az ilyen típusú esemény felhasználói beavatkozást igényel | Jelentős |
+| Az OPC UA-szolgáltatáskérés meghiúsult | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Outstation Restarted | A rendszer hideg újraindítást észlelt egy forráseszközön. Ez azt jelenti, hogy az eszköz fizikailag ki volt kapcsolva, majd újra be volt kapcsolva. | Figyelmeztetés |
+| Az állomás-újraindítások gyakoriak | A rendszer túl sok hideg újraindítást észlelt a forráseszközön. Ez azt jelenti, hogy az eszköz fizikailag ki volt kapcsolva, majd túl sokszor volt újra bekapcsolva. | Kismérvű |
+| Az outstation konfigurációja megváltozott | A rendszer konfigurációs változást észlelt egy forráseszközön. | Jelentős |
+| Az outstation sérült konfigurációja észlelhető | Ez a DNP3-forráseszköz (outstation) sérült konfigurációt jelentett. | Jelentős |
+| A Profinet DCP-parancs nem sikerült | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Profinet Device Factory Reset | A forráseszköz gyári beállítások visszaállítása parancsot küldött egy Profinet céleszközre. Az alaphelyzetbe állítási parancs törli a Profinet eszközkonfigurációit, és leállítja annak működését. | Figyelmeztetés |
+| Az RPC-művelet nem sikerült | A kiszolgáló hibakódot adott vissza. Ez kiszolgálói hibát vagy az ügyfél érvénytelen kérését jelzi. | Jelentős |
+| Mintaértékek Üzenet adatkészlet-konfigurációja módosult | A protokollazonosító által azonosított üzenet adatkészlete módosult egy forráseszközön. Ez azt jelenti, hogy az eszköz egy másik adatkészletet fog jelenteni ehhez az üzenethez. | Figyelmeztetés |
+| A nem állítható vissza vissza nem állítható eszköz hibája | A rendszer egy nem állítható vissza állapotú hibát észlelt egy forráseszközön. Ez a hiba általában hardverhiba vagy egy adott parancs végrehajtása sikertelenségére utal. | Jelentős |
+| Hardverhibák gyanúja az outstationben | A rendszer egy nem állítható vissza állapotú hibát észlelt egy forráseszközön. Ez a hiba általában hardverhiba vagy egy adott parancs végrehajtása sikertelenségére utal. | Jelentős |
+| Nem válaszoló MODBUS-eszköz gyanúja | A forráseszköz nem válaszolt a neki küldött parancsra. Lehet, hogy a parancs el lett küldve. | Kismérvű |
+| Forgalom észlelhető az érzékelő felületén | Az érzékelő folytatja a hálózati forgalom észlelését egy hálózati adapteren. | Figyelmeztetés |
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [riasztási eseményeket kezelheti](how-to-manage-the-alert-event.md).
-Tudnivalók a [riasztási információk továbbításáról](how-to-forward-alert-information-to-partners.md).
+A [riasztási eseményeket kezelheti.](how-to-manage-the-alert-event.md)
+Ismerje meg, hogyan [továbbíthatóak a riasztási információk.](how-to-forward-alert-information-to-partners.md)

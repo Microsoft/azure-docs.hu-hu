@@ -3,7 +3,7 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Személyre szabás – áttekintés
+    - name: Mi a Personalizer?
       href: what-is-personalizer.md
     - name: Díjszabás
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: Újdonságok
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Személyre szabott rövid útmutató
+- name: Gyorsútmutató
   href: ./quickstart-personalizer-sdk.md
 - name: Példák
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: Elemzés offline értékeléssel
       href: how-to-offline-evaluation.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
 - name: Alapelvek
   items:
     - name: A Personalizer működése
@@ -43,7 +49,7 @@
     - name: Terminológia
       href: terminology.md
       displayName: 'best practice, design'
-    - name: Személyre szabás alapjai
+    - name: A Personalizer alapjai
       items:
         - name: Funkciók – Művelet és környezet
           href: concepts-features.md
@@ -81,7 +87,7 @@
       displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
 - name: Referencia
   items:
-    - name: Személyre szabás REST API
+    - name: Personalizer REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: .NET
       items:
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: További források
   items:
-    - name: Támogatási lehetőségek
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és tanúsítvány
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn modulok
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Hibaelhárítás
       href: troubleshooting.md
-    - name: A modulok megismerése
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: Régiós támogatás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
     - name: Azure-frissítések
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

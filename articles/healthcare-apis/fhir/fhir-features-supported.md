@@ -1,68 +1,68 @@
 ---
-title: Támogatott FHIR-funkciók az Azure-ban – Azure API a FHIR-hez
-description: Ez a cikk ismerteti a FHIR-specifikáció azon funkcióit, amelyek a FHIR készült Azure API-ban lettek implementálva
+title: Támogatott FHIR-funkciók az Azure-ban – Azure API for FHIR
+description: Ez a cikk ismerteti, hogy az FHIR-specifikáció mely funkciói vannak megvalósítva a Azure API for FHIR
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/30/2021
+ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048419"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530631"
 ---
 # <a name="features"></a>Funkciók
 
-A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
+Azure API for FHIR a Microsoft FHIR Server for Azure teljes körűen felügyelt üzembe helyezését biztosítja. A kiszolgáló az [FHIR-szabvány implementációja.](https://hl7.org/fhir) Ez a dokumentum az FHIR-kiszolgáló fő funkcióit sorolja fel.
 
-## <a name="fhir-version"></a>FHIR verziója
+## <a name="fhir-version"></a>FHIR-verzió
 
-A legújabb verzió támogatott: `4.0.1`
+A legújabb támogatott verzió: `4.0.1`
 
-A korábbi verziók jelenleg is támogatottak: `3.0.2`
+A korábbi verziók jelenleg a következőket is támogatják: `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
-| API                            | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés                                             |
+| API                            | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
 | olvasás                           | Igen       | Igen       | Igen       |                                                     |
-| vread                          | Igen       | Igen       | Igen       |                                                     |
+| vread (vread)                          | Igen       | Igen       | Igen       |                                                     |
 | update                         | Igen       | Igen       | Igen       |                                                     |
 | frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
 | frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
-| javítás                          | Nem        | Nem        | Nem        |                                                     |
-| delete                         | Igen       | Igen       | Igen       |  Lásd az alábbi megjegyzést.                                   |
-| Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
+| Javítás                          | Nem        | Nem        | Nem        |                                                     |
+| delete                         | Igen       | Igen       | Igen       |  Lásd alább a Megjegyzés gombra.                                   |
+| törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
-| létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
+| létrehozás                         | Igen       | Igen       | Igen       | Post/PUT-támogatás                               |
 | létrehozás (feltételes)           | Igen       | Igen       | Igen       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| keresés                         | Részleges   | Részleges   | Részleges   | Lásd az alábbi keresési szakaszt.                           |
-| láncolt keresés                 | Igen       | Igen       | Részleges   | Lásd az alábbi 2. megjegyzést.                                   |
-| fordított láncolt keresés         | Igen       | Igen       | Részleges   | Lásd az alábbi 2. megjegyzést.                                   |
+| keresés                         | Részleges   | Részleges   | Részleges   | Lásd alább a Keresés szakaszt.                           |
+| láncolt keresés                 | Részleges       | Igen       | Részleges   | Lásd alább a 2. megjegyzést.                                   |
+| fordított láncban összefűzve keresés         | Részleges       | Igen       | Részleges   | Lásd alább a 2. megjegyzést.                                   |
 | képességek                   | Igen       | Igen       | Igen       |                                                     |
 | kötegelt                          | Igen       | Igen       | Igen       |                                                     |
-| tranzakció                    | Nem        | Igen       | Nem        |                                                     |
-| lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
-| közvetítők                 | Nem        | Nem        | Nem        |                                                     |
+| Tranzakció                    | Nem        | Igen       | Nem        |                                                     |
+| Személyhívó                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
+| Közvetítők                 | Nem        | Nem        | Nem        |                                                     |
 
 > [!Note]
-> A FHIR specifikáció által definiált törléshez a törlés után az erőforrás későbbi, nem adott olvasási művelete egy 410 HTTP-állapotkódot ad vissza, és az erőforrás már nem található meg a keresésen keresztül. A FHIR készült Azure API lehetővé teszi az erőforrás teljes törlését (az összes előzményt is beleértve). Az erőforrás teljes törléséhez átadhatja a paraméter beállításait `hardDelete` true () értékre `DELETE {server}/{resource}/{id}?hardDelete=true` . Ha nem adja át ezt a paramétert, vagy hamis értékre állítja, akkor az `hardDelete` erőforrás korábbi verziói továbbra is elérhetők lesznek.
+> Az FHIR-specifikáció által meghatározott törléshez az szükséges, hogy a törlés után az erőforrás későbbi, nem verzióra vonatkozó olvasásai egy 410-es HTTP-állapotkódot adjanak vissza, és az erőforrás már nem található a keresés során. A Azure API for FHIR lehetővé teszi az erőforrás teljes törlését (az összes előzményt is beleértve). Az erőforrás teljes törléséhez a paraméterbeállításokat át kell adni a `hardDelete` true ( ) `DELETE {server}/{resource}/{id}?hardDelete=true` értéknek. Ha nem adja meg ezt a paramétert, vagy false (hamis) értéket ad meg, az erőforrás korábbi verziói továbbra is `hardDelete` elérhetők lesznek.
 
 
- **2. Megjegyzés**
-* MVP-támogatást biztosít a láncolt és fordított láncú FHIR kereséshez a CosmosDB-ben. 
+ **2. megjegyzés**
+* MVP-támogatás hozzáadva a láncolt és fordított láncú FHIR-kereséshez a CosmosDB-ben. 
 
-  A FHIR-hez készült Azure API-ban és a Cosmos által támogatott nyílt forráskódú FHIR-kiszolgálón a láncolt keresés és a fordított láncú keresés egy MVP-implementáció. A láncolt keresés a Cosmos DBon való elvégzéséhez a megvalósítás végigvezeti a keresési kifejezésen, és allekérdezéseket bocsát ki a megfeleltetett erőforrások feloldásához. Ez a kifejezés minden szintjén megtörténik. Ha bármelyik lekérdezés több mint 100 eredményt ad vissza, a rendszer hibát jelez. Alapértelmezés szerint a láncolt keresés a szolgáltatás jelölője mögött van. A Cosmos DB láncolt keresésének használatához használja a fejlécet `x-ms-enable-chained-search: true` . További részletekért lásd: [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+  A Azure API for FHIR és a Cosmos által háttérként szolgáló nyílt forráskódú FHIR-kiszolgálón a láncolt keresés és a fordított láncolt keresés egy MVP-implementáció. A lekérdezésláncolt keresés Cosmos DB implementációja végigvezeti a keresési kifejezésen, és részlekérdezések segítségével oldja meg az egyező erőforrásokat. Ezt a kifejezés minden szintjén meg kell tenni. Ha bármely lekérdezés több mint 100 eredményt ad vissza, a rendszer hibát jelez. Alapértelmezés szerint a láncolt keresés funkciójelölő mögött van. A láncolt keresés a Cosmos DB használja a `x-ms-enable-chained-search: true` fejlécet. További részletekért lásd: [PR 1695.](https://github.com/microsoft/fhir-server/pull/1695)
 
 ## <a name="search"></a>Keresés
 
-Az összes keresési paraméter típusa támogatott. 
+Minden keresési paramétertípus támogatott. 
 
-| Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+| Keresési paraméter típusa | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés |
 |-----------------------|-----------|-----------|-----------|---------|
 | Szám                | Igen       | Igen       | Igen       |         |
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
@@ -72,25 +72,25 @@ Az összes keresési paraméter típusa támogatott.
 | Kompozit             | Igen       | Igen       | Igen       |         |
 | Mennyiség              | Igen       | Igen       | Igen       |         |
 | URI                   | Igen       | Igen       | Igen       |         |
-| Speciális               | Nem        | Nem        | Nem        |         |
+| Különleges               | Nem        | Nem        | Nem        |         |
 
 
-| Módosítók             | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+| Módosítók             | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés |
 |-----------------------|-----------|-----------|-----------|---------|
 |`:missing`             | Igen       | Igen       | Igen       |         |
 |`:exact`               | Igen       | Igen       | Igen       |         |
 |`:contains`            | Igen       | Igen       | Igen       |         |
 |`:text`                | Igen       | Igen       | Igen       |         |
-|`:[type]` referencia  | Igen       | Igen       | Igen       |         |
+|`:[type]` (referencia)  | Igen       | Igen       | Igen       |         |
 |`:not`                 | Igen       | Igen       | Igen       |         |
-|`:below` URI         | Igen       | Igen       | Igen       |         |
-|`:above` URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
-|`:in` jogkivonat          | Nem        | Nem        | Nem        |         |
-|`:below` jogkivonat       | Nem        | Nem        | Nem        |         |
-|`:above` jogkivonat       | Nem        | Nem        | Nem        |         |
-|`:not-in` jogkivonat      | Nem        | Nem        | Nem        |         |
+|`:below` (URI)         | Igen       | Igen       | Igen       |         |
+|`:above` (URI)         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:in` (token)          | Nem        | Nem        | Nem        |         |
+|`:below` (token)       | Nem        | Nem        | Nem        |         |
+|`:above` (token)       | Nem        | Nem        | Nem        |         |
+|`:not-in` (token)      | Nem        | Nem        | Nem        |         |
 
-| Gyakori keresési paraméter | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+| Gyakori keresési paraméter | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Igen       | Igen       | Igen       |         |
 | `_lastUpdated`          | Igen       | Igen       | Igen       |         |
@@ -98,19 +98,19 @@ Az összes keresési paraméter típusa támogatott.
 | `_list`                 | Igen       | Igen       | Igen       |         |
 | `_type`                 | Igen       | Igen       | Igen       | Probléma [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Igen       | Igen       | Igen       |         |
-| `_profile`              | Részleges   | Részleges   | Részleges   | A STU3 támogatja. Ha az adatbázist 2021 február 20. **után** hozta létre, akkor az R4-t is támogatja. Azon dolgozunk, hogy engedélyezzük a _profile a 2021. február 20. előtt létrehozott adatbázisokon. |
+| `_profile`              | Részleges   | Részleges   | Részleges   | A STU3 támogatja. Ha 2021. február 20. után hozta létre az adatbázist, az R4-ben is támogatni fogja.  Dolgozunk azon, hogy _profile 2021. február 20. előtt létrehozott adatbázisokon. |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
 | `_has`                  | Nem        | Nem        | Nem        |         |
 | `_query`                | Nem        | Nem        | Nem        |         |
 | `_filter`               | Nem        | Nem        | Nem        |         |
 
-| Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+| Keresési eredmények paraméterei | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | Igen       | Igen       | Igen       | Probléma [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 1000 karakter hosszú lehet. Ha 1000-nél magasabbra van állítva, akkor a rendszer csak 1000 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
-| `_include`              | Igen       | Igen       | Igen       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
-| `_revinclude`           | Igen       | Igen       | Igen       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn [: iteráció támogatása](https://github.com/microsoft/fhir-server/issues/1313). Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
+| `_count`                | Igen       | Igen       | Igen       | `_count` A legfeljebb 1000 karakter hosszúságú lehet. Ha az 1000-esnél nagyobbra van állítva, a rendszer csak 1000-et ad vissza, és figyelmeztetést ad vissza a csomagban. |
+| `_include`              | Igen       | Igen       | Igen       |A benne foglalt elemek száma legfeljebb 100 lehet. A PaaS- és OSS-Cosmos DB nem tartalmazza az :iterate támogatást.|
+| `_revinclude`           | Igen       | Igen       | Igen       | A benne foglalt elemek száma legfeljebb 100 lehet. A PaaS- és OSS-Cosmos DB nem [tartalmazza az :iterate támogatást.](https://github.com/microsoft/fhir-server/issues/1313) Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
 | `_total`                | Részleges   | Részleges   | Részleges   | `_total=none` és `_total=accurate`      |
 | `_sort`                 | Részleges   | Részleges   | Részleges   |   `_sort=_lastUpdated` támogatott       |
@@ -120,56 +120,56 @@ Az összes keresési paraméter típusa támogatott.
 
 ## <a name="extended-operations"></a>Kiterjesztett műveletek
 
-A REST API-t kiterjesztő összes támogatott művelet.
+A RESTful API kibővítését támogató összes művelet.
 
-| Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
+| Keresési paraméter típusa | Támogatott – PaaS | Támogatott – OSS (SQL) | Támogatott – OSS (Cosmos DB) | Megjegyzés |
 |------------------------|-----------|-----------|-----------|---------|
-| $export (teljes rendszeren) | Igen       | Igen       | Igen       |         |
+| $export (teljes rendszer) | Igen       | Igen       | Igen       |         |
 | Beteg/$export        | Igen       | Igen       | Igen       |         |
 | Csoport/$export          | Igen       | Igen       | Igen       |         |
-| $convert – adatkezelés          | Igen       | Igen       | Igen       |         |
+| $convert-data          | Igen       | Igen       | Igen       |         |
 
 
 ## <a name="persistence"></a>Kitartás
 
-A Microsoft FHIR-kiszolgáló rendelkezik egy csatlakoztatható adatmegőrzési modullal (lásd: [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence) ).
+A Microsoft FHIR-kiszolgáló rendelkezik egy moduláris adatmegőrzési modullal (lásd: [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence) ).
 
-Jelenleg a FHIR-kiszolgáló nyílt forráskódú programkódja [Azure Cosmos db](../../cosmos-db/index-overview.md) és [SQL Database](https://azure.microsoft.com/services/sql-database/)megvalósítását is tartalmazza.
+Az FHIR-kiszolgáló nyílt forráskódja jelenleg tartalmaz egy implementációt a Azure Cosmos DB [és](../../cosmos-db/index-overview.md) [SQL Database.](https://azure.microsoft.com/services/sql-database/)
 
-A Cosmos DB egy globálisan elosztott, többmodelles (SQL API-, MongoDB API-stb.-) adatbázis. Különböző konzisztencia- [szinteket](../../cosmos-db/consistency-levels.md)támogat. Az alapértelmezett központi telepítési sablon konzisztens FHIR-kiszolgálót konfigurál `Strong` , de a konzisztencia-házirend a kérelem fejlécének használatával a kérelem alapján módosítható (általában nyugodt) `x-ms-consistency-level` .
+Cosmos DB egy globálisan elosztott többmodelles (SQL API, MongoDB API stb.) adatbázis. Különböző konzisztenciaszinteket [támogat.](../../cosmos-db/consistency-levels.md) Az alapértelmezett üzembe helyezési sablon konzisztenciával konfigurálja az FHIR-kiszolgálót, de a konzisztencia-szabályzat kérés alapján módosítható (általában enyhül) a kérés `Strong` `x-ms-consistency-level` fejlécének használatával.
 
 ## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
-A FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) használ a hozzáférés-vezérléshez. A szerepköralapú hozzáférés-vezérlés (RBAC) kényszerítve van, ha a `FhirServer:Security:Enabled` konfigurációs paraméter értéke `true` , és a FHIR-kiszolgálónak küldött összes kérelemnek (kivéve `/metadata` ) a `Authorization` kérelem fejlécét kell beállítani `Bearer <TOKEN>` . A tokennek tartalmaznia kell egy vagy több, a jogcímben definiált szerepkört `roles` . A rendszer akkor fogadja a kérést, ha a jogkivonat olyan szerepkört tartalmaz, amely engedélyezi a megadott műveletet a megadott erőforráson.
+Az FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) használ a hozzáférés-vezérléshez. Pontosabban a szerepköralapú hozzáférés-vezérlés (RBAC) kényszerítve van, ha a konfigurációs paraméter értéke , és az FHIR-kiszolgálóra vonatkozó összes kérésnek (a kivételével) a kérelemfejlécnek a következőre kell `FhirServer:Security:Enabled` `true` `/metadata` `Authorization` beállítania: `Bearer <TOKEN>` . A jogkivonatnak egy vagy több, a jogcímben meghatározott szerepkört kell `roles` tartalmaznia. A rendszer akkor engedélyezi a kérést, ha a jogkivonat olyan szerepkört tartalmaz, amely engedélyezi a megadott műveletet a megadott erőforráson.
 
-Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan* lesznek alkalmazva az API-ra.
+Egy adott szerepkör engedélyezett műveletei jelenleg globálisan vannak *alkalmazva az* API-n.
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 
-* [**Kérelmek egységei (RUS)**](../../cosmos-db/concepts-limits.md) – a FHIR-hez készült Azure API-portálon akár 10 000 RUs is konfigurálható. Legalább 400 RUs vagy 10 RUs/GB szükséges, attól függően, hogy melyik a nagyobb. Ha 10 000 RUs-nál többre van szüksége, a megnövelt támogatási jegybe helyezhető. Az elérhető maximális érték 1 000 000.
+* [**Kérelemegységek (RU-k)**](../../cosmos-db/concepts-limits.md) – A portálon legfeljebb 10 000 kérelemegységet konfigurálhat a Azure API for FHIR. Legalább 400 ru-ra vagy 40 RU/GB-ra lesz szüksége, amelyik nagyobb. Ha több mint 10 000 ru-ra van szüksége, támogatási jegyet is be lehet tenni a növekedéshez. A maximálisan elérhető érték 1 000 000.
 
-* **Egyidejű kapcsolatok** és **példányok** – alapértelmezés szerint öt egyidejű kapcsolat van a fürt két példányán (összesen 10 egyidejű kérelem esetén). Ha úgy gondolja, hogy több egyidejű kérésre van szüksége, nyisson meg egy támogatási jegyet az igényeinek megfelelő részletekkel.
+* **Egyidejű** kapcsolatok **és** példányok – Alapértelmezés szerint öt egyidejű kapcsolattal rendelkezik a fürt két példányán (összesen 10 egyidejű kéréshez). Ha úgy véli, hogy több egyidejű kérésre van szüksége, nyisson egy támogatási jegyet, amely tartalmazza az igényeinek részleteit.
 
-* **Köteg mérete** – minden köteg 500 elemre van korlátozva.
+* **Csomagméret** – Minden csomag legfeljebb 500 elemet tartalmaz.
 
-* **Adatméret** – az adatmennyiségnek és a dokumentumoknak egyenként 2 MB-nál kisebbnek kell lenniük.
+* **Adatok mérete** – Az adatoknak/dokumentumoknak valamivel kisebbnek kell lennie 2 MB-nál.
 
-## <a name="performance-expectations"></a>Teljesítményre vonatkozó elvárások
+## <a name="performance-expectations"></a>Teljesítménnyel kapcsolatos elvárások
 
-A rendszer teljesítménye az RUs, az egyidejű kapcsolatok és a végrehajtott műveletek (Put, post stb.) számától függ. Az alábbiakban a konfigurált RUs alapján várhatóan megjelenő általános tartományok láthatók. Általánosságban elmondható, hogy a teljesítmény lineárisan növekszik az RUs növekedésével:
+A rendszer teljesítménye a ru-k számától, az egyidejű kapcsolatok számától és a végrehajtani (Put, Post stb.) végrehajtani szükséges műveletek típusától függ. Az alábbiakban a konfigurált ru-k alapján várható általános tartományokat olvashatja. Általánosságban elmondható, hogy a teljesítmény lineárisan skálázható a ru-k számának növekedésével:
 
-| RUs száma | Erőforrások/mp |    Maximális tárterület (GB) *    |
+| A ru-k (RU-k) | Erőforrások másodpercenként |    Maximális tárterület (GB)*    |
 |----------|---------------|--------|                 
-| 400      | 5-10          |     40   |
-| 1,000    | 100-150       |      100  |
-| 10,000   | 225-400       |      1,000  |
-| 100.000  | 2500 – 4000   |      10,000  |
+| 400      | 5-10          |     10   |
+| 1,000    | 100-150       |      25  |
+| 10,000   | 225-400       |      250  |
+| 100.000  | 2,500-4,000   |      2500  |
 
-Megjegyzés: Cosmos DB követelmény szerint GB-nál kevesebb tárterületre van szükség a legalább 10 RU/s teljesítményre. További információkért tekintse meg [Cosmos db szolgáltatási kvótákat](../../cosmos-db/concepts-limits.md).
+Megjegyzés: Cosmos DB követelmény, hogy legalább 40 RU/s átviteli sebességet kell kibocsátani GB-ban. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a FHIR készült Azure API támogatott FHIR szolgáltatásairól olvashat. Ezután telepítse az Azure API-t a FHIR-hez.
+Ebben a cikkben az FHIR támogatott funkcióiról olvashatott a Azure API for FHIR. Ezután telepítse a Azure API for FHIR.
  
 >[!div class="nextstepaction"]
 >[Az Azure API for FHIR üzembe helyezése](fhir-paas-portal-quickstart.md)

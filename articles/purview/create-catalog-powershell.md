@@ -1,35 +1,37 @@
 ---
-title: 'Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása Azure PowerShell/Azure CLI használatával (előzetes verzió)'
-description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Azure-beli hatáskörébe tartozó fiókot Azure PowerShell/Azure CLI használatával.
+title: 'Rövid útmutató: Azure Purview-fiók létrehozása a Azure PowerShell/Azure CLI (előzetes verzió) használatával'
+description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Azure Purview-fiókot a Azure PowerShell/Azure CLI használatával.
 author: hophanms
 ms.author: hophan
+ms.date: 11/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 11/23/2020
-ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-api
+ms.openlocfilehash: 6266aedaec8f171a1a6ff3e0d15abdad0263767a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879999"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530875"
 ---
-# <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása Azure PowerShell/Azure CLI használatával
+# <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Rövid útmutató: Azure Purview-fiók létrehozása a Azure PowerShell/Azure CLI használatával
 
 > [!IMPORTANT]
-> Az Azure-beli hatáskörébe jelenleg előzetes verzió érhető el. A [Microsoft Azure előzetes verzióinak kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak azok a további jogi feltételek, amelyek az Azure olyan szolgáltatásaira vonatkoznak, amelyek béta-, előzetes verziójú vagy egyéb módon még nem lettek nyilvánosan elérhetők.
+> Az Azure Purview jelenleg előzetes verzióban érhető el. A [Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziók kiegészítő használati feltételei további jogi feltételeket tartalmaznak, amelyek a bétaverzióban, előzetes verzióban vagy egyéb módon még nem elérhető Azure-funkciókra vonatkoznak.
 
-Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fiókot Azure PowerShell/Azure CLI használatával.
+Ebben a rövid útmutatóban egy Azure Purview-fiókot hoz létre a Azure PowerShell/Azure CLI használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-* Az Azure-ba való bejelentkezéshez használt felhasználói fióknak a közreműködő vagy tulajdonos szerepkör tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
+* Az Azure-ba való bejelentkezéshez használt felhasználói fióknak a közreműködői vagy tulajdonosi szerepkör vagy az Azure-előfizetés rendszergazdájának kell lennie.
 
 * Saját [Azure Active Directory-bérlő](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* Telepítse a Azure PowerShell vagy az Azure CLI-t az ügyfélszámítógépen a következő sablon üzembe helyezéséhez: [parancssori telepítés](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
+* Telepítse az Azure PowerShell vagy az Azure CLI-t az ügyfélszámítógépen a sablon üzembe [helyezéséhez: Parancssori üzembe helyezés](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -37,26 +39,26 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
-Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásához, hogy az Azure-beli hatáskörébe az előfizetésében fusson:
+Ha szükséges, az alábbi lépésekkel konfigurálhatja előfizetését úgy, hogy engedélyezze az Azure Purview futtatását az előfizetésében:
 
-   1. A Azure Portal keresse meg és válassza ki az **előfizetések** elemet.
+   1. A Azure Portal keresse meg és válassza az **Előfizetések lehetőséget.**
 
-   1. Az előfizetések listájából válassza ki a használni kívánt előfizetést. Az előfizetéshez rendszergazdai hozzáférési engedély szükséges.
+   1. Az előfizetések listájából válassza ki a használni kívánt előfizetést. Rendszergazdai hozzáférési engedély szükséges az előfizetéshez.
 
-      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="A Azure Portal-előfizetés kiválasztását bemutató képernyőkép.":::
+      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Képernyőkép az előfizetés kiválasztásáról a Azure Portal.":::
 
-   1. Az előfizetéséhez válassza az **erőforrás-szolgáltatók** lehetőséget. Az **erőforrás-szolgáltatók** ablaktáblán keresse meg és regisztrálja mind a három erőforrás-szolgáltatót: 
-       1. **Microsoft. hatáskörébe**
+   1. Az előfizetéséhez válassza az **Erőforrás-szolgáltatók lehetőséget.** Az **Erőforrás-szolgáltatók panelen** keresse meg és regisztrálja mindhárom erőforrás-szolgáltatót: 
+       1. **Microsoft.Purview**
        1. **Microsoft.Storage**
-       1. **Microsoft. EventHub** 
+       1. **Microsoft.EventHub** 
       
-      Ha nincsenek regisztrálva, regisztrálja azt a **regisztráció** lehetőség kiválasztásával.
+      Ha nincsenek regisztrálva, regisztrálja a Regisztráció **lehetőség kiválasztásával.**
 
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Képernyőfelvétel: a Microsoft dot Azure-beli hatáskörébe tartozó erőforrás-szolgáltató regisztrálása a Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="A Microsoft Dot Azure Purview erőforrás-szolgáltató regisztrálását bemutató képernyőkép a Azure Portal.":::
 
-## <a name="create-an-azure-purview-account-instance"></a>Azure-beli hatáskörébe tartozó fiók példányának létrehozása
+## <a name="create-an-azure-purview-account-instance"></a>Azure Purview-fiókpéldány létrehozása
 
-1. Jelentkezzen be az Azure-beli hitelesítő adataival
+1. Bejelentkezés Azure-beli hitelesítő adataival
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
     
@@ -88,7 +90,7 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
     
     ---
 
-1. Hozzon létre egy erőforráscsoportot a hatáskörébe tartozó fiókhoz. Ha már rendelkezik ilyennel, kihagyhatja ezt a lépést:
+1. Hozzon létre egy erőforráscsoportot a Purview-fiókjához. Ha már rendelkezik ilyen lépéssel, kihagyhatja ezt a lépést:
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
     
@@ -108,7 +110,7 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
     
     ---
 
-1. Hozzon létre egy hatáskörébe tartozó sablonfájlt, például: `purviewtemplate.json` . Frissítheti `name` , `location` és `capacity` ( `4` vagy `16` ):
+1. Hozzon létre egy Purview sablonfájlt, `purviewtemplate.json` például: . Frissítheti a `name` , , és ( vagy ) `location` `capacity` `4` `16` et:
 
     ```json
     {
@@ -140,7 +142,7 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
     }
     ```
 
-1. A hatáskörébe tartozó sablon üzembe helyezése
+1. A Purview sablon üzembe helyezése
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
     
@@ -158,13 +160,13 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
     
     ---
 
-1. Az üzembehelyezési parancs az eredményeket adja vissza. Ellenőrizze, `ProvisioningState` hogy az üzembe helyezés sikeres volt-e.
+1. Az üzembe helyezési parancs visszaadja az eredményeket. Nézze meg, `ProvisioningState` hogy sikeres volt-e az üzembe helyezés.
     
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Purview-fiókot.
 
-A következő cikkből megtudhatja, hogyan engedélyezheti a felhasználók számára az Azure hatáskörébe tartozó fiók elérését. 
+A következő cikk azt is bemutatja, hogyan engedélyezheti a felhasználóknak az Azure Purview-fiókhoz való hozzáférést. 
 
 > [!div class="nextstepaction"]
-> [Felhasználók hozzáadása az Azure-beli hatáskörébe-fiókhoz](catalog-permissions.md)
+> [Felhasználók hozzáadása az Azure Purview-fiókhoz](catalog-permissions.md)

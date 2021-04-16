@@ -1,50 +1,56 @@
 ---
-title: Ütemezett karbantartás – Azure Database for MySQL – rugalmas kiszolgáló
-description: Ez a cikk a Azure Database for MySQL rugalmas kiszolgáló ütemezett karbantartási funkcióját ismerteti.
+title: Ütemezett karbantartás – Azure Database for MySQL – Rugalmas kiszolgáló
+description: Ez a cikk a rugalmas Azure Database for MySQL ütemezett karbantartási funkcióját ismerteti.
 author: niklarin
 ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 424402db1933c0a20ddd25a6e5af11d84d0775a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91331760"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481157"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Ütemezett karbantartás rugalmas Azure Database for MySQL-kiszolgálón
 
-Azure Database for MySQL – a rugalmas kiszolgáló rendszeres karbantartást végez, hogy a felügyelt adatbázis biztonságos, stabil és naprakész legyen. A karbantartás során a kiszolgáló új funkciókat, frissítéseket és javításokat kap.
+Azure Database for MySQL – A rugalmas kiszolgáló rendszeres karbantartást végez a felügyelt adatbázis biztonságának, stabilának és naprakészen tartása érdekében. A karbantartás során a kiszolgáló új szolgáltatásokat, frissítéseket és javításokat kap.
 
 > [!IMPORTANT]
-> Azure Database for MySQL – a rugalmas kiszolgáló előzetes verzióban érhető el.
+> Azure Database for MySQL – A rugalmas kiszolgáló előzetes verzióban érhető el.
 
 ## <a name="select-a-maintenance-window"></a>Karbantartási időszak kiválasztása
 
-A karbantartást a hét egy adott napján és az adott napon belül egy időablakban is ütemezhet. Vagy megadhatja, hogy a rendszer válasszon egy napot és egy időablakot az automatikus indításhoz. Mindkét esetben a rendszer öt nappal a karbantartás futtatása előtt riasztást küld. A rendszer azt is lehetővé teszi, hogy a karbantartás elindításakor és sikeres befejezésekor is jelezze.
+A karbantartást a hét egy adott napján és egy adott napon belüli időszakra ütemezheti. Azt is választhatja, hogy a rendszer automatikusan kiválaszt egy napot és egy időablakot. A rendszer mindkét esetben öt nappal a karbantartás előtt riasztja. A rendszer azt is tudatja, hogy mikor indult el a karbantartás, és mikor fejeződött be sikeresen.
 
-Az ütemezett karbantartásra vonatkozó értesítések a következőket tehetik:
+A közelgő ütemezett karbantartásról a következő értesítéseket kaphatja:
 
-* Adott címre e-mailben
+* E-mailben egy adott címre
 * E-mailben egy Azure Resource Manager szerepkörbe
-* SMS-ben elküldve a mobileszközök számára
+* Sms-ben elküldve mobileszközökre
 * Leküldéses értesítésként Azure-alkalmazásba
 * Hangüzenetként
 
-A karbantartási ütemezés beállításainak megadásakor kiválaszthatja a hét valamelyik napját és egy időszakot. Ha nem határoz meg időpontot, a rendszer a kiszolgáló régiójának időzónája szerint 23:00 és 7:00 közötti időpontot választ. Az Azure-előfizetésében minden egyes rugalmas kiszolgálóhoz különböző ütemterveket adhat meg.
+A karbantartási ütemezés beállításainak megadásakor kiválaszthatja a hét valamelyik napját és egy időszakot. Ha nem határoz meg időpontot, a rendszer a kiszolgáló régiójának időzónája szerint 23:00 és 7:00 közötti időpontot választ. Az Azure-előfizetésében különböző ütemezéseket határozhat meg az egyes rugalmas kiszolgálókhoz.
 
 > [!IMPORTANT]
 > Általában legalább 30 nap telik el a kiszolgáló sikeres ütemezett karbantartási eseményei között.
 >
 > A kritikus fontosságú vészhelyzeti frissítések, például súlyos biztonsági rések esetén azonban előfordulhat, hogy kevesebb mint 5 nappal korábban kap értesítést a frissítésről. A kritikus fontosságú frissítés akkor is telepíthető a kiszolgálón, ha az elmúlt 30 napban sikeres ütemezett karbantartást hajtottak végre azon.
 
-Bármikor frissítheti az ütemezési beállításokat. Ha a rugalmas kiszolgáló karbantartásra van ütemezve, és frissíti az ütemezési beállításokat, az aktuális esemény az ütemezett módon folytatódik, és az ütemezési beállítások módosítása a sikeres befejezést követően érvénybe lép.
+Az ütemezési beállításokat bármikor frissítheti. Ha a rugalmas kiszolgálóhoz karbantartás van ütemezve, és Ön frissíti az ütemezési beállításokat, az aktuális bevezetés az ütemezett állapot szerint folytatódik, és az ütemezési beállítások módosítása a következő ütemezett karbantartás sikeres befejezését követően hatóvá válik.
 
-Ritka esetekben előfordulhat, hogy a karbantartási eseményt a rendszeren megszakítják, vagy nem sikerül befejezni. Ebben az esetben a rendszer egy értesítést fog létrehozni a megszakított vagy sikertelen karbantartási eseményről. A rendszer a következő karbantartási kísérletet ütemezi az aktuális ütemezési beállításoknak megfelelően, és öt nappal korábban értesítést kap.
+Az Azure-előfizetésben található összes rugalmas kiszolgálóhoz definiálhat rendszer által felügyelt ütemezést vagy egyéni ütemezést.  
+* Egyéni ütemezéssel megadhatja a kiszolgáló karbantartási időszakát a hét napjának és egy egyórás időszakának kiválasztásával.  
+* A rendszer által felügyelt ütemezéssel a rendszer 11:00 és 19:00 óra közötti időszakokat választ ki a kiszolgáló régiójában.  
+
+A módosítások részeként a frissítéseket először a rendszer által felügyelt ütemezéssel konfigurált kiszolgálókra, majd az egyéni ütemezésű kiszolgálókra alkalmazjuk, miután legalább 7 nap van egy adott régióban. Ha korai frissítéseket kíván kapni a fejlesztési és tesztelési környezet kiszolgálóflottairól, javasoljuk, hogy konfigurálja a rendszer által felügyelt ütemezést a fejlesztési és tesztelési környezetben használt kiszolgálókhoz. Ez lehetővé teszi, hogy először a legújabb frissítést kapja meg a fejlesztési/tesztelési környezetben az ellenőrzés teszteléséhez és értékeléséhez. Ha bármilyen viselkedést vagy a nem megfelelő változásokat kell kezelnie, még azelőtt, hogy ugyanezt a frissítést egyénileg felügyelt ütemezéssel ű éles kiszolgálókra a rendszer kiveszi. A frissítés 7 nap után megkezdi a bevezetést a rugalmas egyéni ütemezésű kiszolgálókon, és a megadott karbantartási időszakban lesz alkalmazva a kiszolgálóra. Jelenleg nincs lehetőség a frissítés halasztásra az értesítés elküldését követően. Az egyéni ütemezés használata csak éles környezetekben ajánlott. 
+
+Ritka esetekben a karbantartási eseményt megszakíthatja a rendszer, vagy sikertelen lehet a befejezése. Ha a frissítés sikertelen, a rendszer visszaállítja a frissítést, és visszaállítja a bináris fájlok előző verzióját. Az ilyen sikertelen frissítési forgatókönyvekben a kiszolgáló újraindítása a karbantartási időszak alatt is előfordulhat. Ha a frissítést megszakítják vagy sikertelenek, a rendszer értesítést küld Önnek a megszakított vagy sikertelen karbantartási eseményekről. A következő karbantartási kísérlet az aktuális ütemezési beállítások szerint lesz ütemezve, és erről öt nappal előre értesítést kap. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Útmutató [a karbantartási ütemterv módosításához](how-to-maintenance-portal.md)
-* Ismerje meg, hogyan [kaphat értesítéseket a közelgő karbantartásról](../../service-health/service-notifications.md) a Azure Service Health használatával
-* Megtudhatja, hogyan [állíthat be riasztásokat a közelgő ütemezett karbantartási eseményekről](../../service-health/resource-health-alert-monitor-guide.md)
+* Ismerje meg, [hogyan módosíthatja a karbantartási ütemezést](how-to-maintenance-portal.md)
+* Ismerje meg, [hogyan kaphat értesítéseket a közelgő karbantartásról](../../service-health/service-notifications.md) a Azure Service Health
+* Ismerje meg, hogyan [állíthat be riasztásokat a közelgő ütemezett karbantartási eseményekkel kapcsolatban](../../service-health/resource-health-alert-monitor-guide.md)

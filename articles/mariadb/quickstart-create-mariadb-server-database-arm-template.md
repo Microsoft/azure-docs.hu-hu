@@ -1,22 +1,24 @@
 ---
-title: 'Rövid útmutató: Azure-adatbázis létrehozása MariaDB-ARM-sablonhoz'
+title: 'Rövid útmutató: Azure DB for MariaDB létrehozása – ARM-sablon'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Database for MariaDB-kiszolgálót egy Azure Resource Manager sablon használatával.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: mariadb
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 6bf7f4d30f2ad4f9e0181aed332e3f6cb9265ca0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662073"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531335"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Rövid útmutató: ARM-sablon használata új Azure Database for MariaDB létrehozásához
 
-A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MariaDB-adatbázisokat. Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy Azure Database for MariaDB-kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI-ben.
+Azure Database for MariaDB egy felügyelt szolgáltatás, amely segítségével magas rendelkezésre álló MariaDB-adatbázisokat futtathat, kezelhet és skálázhat a felhőben. Ebben a rövid útmutatóban egy Azure Resource Manager-sablont (ARM-sablont) fog használni egy Azure Database for MariaDB-kiszolgáló létrehozásához a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -28,23 +30,23 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
+Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
-* Ha a kódot helyileg szeretné futtatni, [Azure PowerShell](/powershell/azure/).
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/)
+* Ha helyileg szeretné futtatni [](/powershell/azure/)a kódot, Azure PowerShell.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
-* Ha a kódot helyileg szeretné futtatni, az [Azure CLI](/cli/azure/)-t.
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/)
+* Ha helyileg szeretné futtatni a kódot, használja [az Azure CLI-t.](/cli/azure/)
 
 ---
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az Azure Database for MariaDB-kiszolgálót számítási és tárolási erőforrások egy meghatározott készletével együtt fogja létrehozni. További információ: [Azure Database for MariaDB díjszabási szintek](concepts-pricing-tiers.md). A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
+Az Azure Database for MariaDB-kiszolgálót számítási és tárolási erőforrások egy meghatározott készletével együtt fogja létrehozni. További információ: Azure Database for MariaDB [tarifacsomagok.](concepts-pricing-tiers.md) A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/) közül származik.
 
@@ -52,58 +54,58 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 A sablon öt Azure-erőforrást határoz meg:
 
-* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-* [**Microsoft. Network/virtualNetworks/alhálózatok**](/azure/templates/microsoft.network/virtualnetworks/subnets)
-* [**Microsoft. DBforMariaDB/kiszolgálók**](/azure/templates/microsoft.dbformariadb/servers)
-* [**Microsoft. DBforMariaDB/kiszolgálók/virtualNetworkRules**](/azure/templates/microsoft.dbformariadb/servers/virtualnetworkrules)
-* [**Microsoft. DBforMariaDB/kiszolgálók/firewallRules**](/azure/templates/microsoft.dbformariadb/servers/firewallrules)
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+* [**Microsoft.Network/virtualNetworks/alhálózatok**](/azure/templates/microsoft.network/virtualnetworks/subnets)
+* [**Microsoft.DBforMariaDB/servers**](/azure/templates/microsoft.dbformariadb/servers)
+* [**Microsoft.DBforMariaDB/servers/virtualNetworkRules**](/azure/templates/microsoft.dbformariadb/servers/virtualnetworkrules)
+* [**Microsoft.DBforMariaDB/servers/firewallRules**](/azure/templates/microsoft.dbformariadb/servers/firewallrules)
 
-További Azure Database for MariaDB-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
+További Azure Database for MariaDB mintákat az Azure gyorsindítási [sablonok között talál.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A következő hivatkozásra kattintva telepítheti a Azure Database for MariaDB-kiszolgáló sablonját a Azure Portalban:
+A következő hivatkozásra kattintva telepítse a Azure Database for MariaDB-kiszolgálósablont a Azure Portal:
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
-A **Azure Database for MariaDB üzembe helyezése a VNet** oldalon:
+A Deploy Azure Database for MariaDB with VNet (Virtuális hálózat üzembe helyezése **virtuális hálózatokkal) lapon:**
 
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
+1. Az **Erőforráscsoport mezőben** válassza az **Új létrehozása** lehetőséget, adjon nevet az új erőforráscsoportnak, majd kattintson az OK **gombra.**
 
-2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
+2. Ha új erőforráscsoportot hozott létre, válassza **ki** az erőforráscsoport és az új kiszolgáló helyét.
 
-3. Adja meg a **kiszolgáló nevét**, a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
+3. Adjon meg egy **kiszolgálónevet,** **egy rendszergazdai bejelentkezési nevet** és egy **rendszergazdai bejelentkezési jelszót.**
 
-    ![Azure Database for MariaDB üzembe helyezése a VNet ablakban, Azure-beli Gyorsindítás sablon, Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
+    ![Üzembe Azure Database for MariaDB virtuális hálózat ablakával, Azure gyorsindítási sablonnal és Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
-    * **Előfizetés**: a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás**: a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4*, *8*, *16*, *32* vagy *64*.
-    * **SKU neve**: az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1*, *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
-    * **SKU mérete MB**: a Azure Database for MariaDB kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200*).
-    * **SKU-szint**: az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
-    * **SKU-család**: *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
-    * **MariaDB-verzió**: a telepítendő MariaDB-kiszolgáló verziója, például *10,2* vagy *10,3* (alapértelmezett).
-    * **Biztonsági másolatok megőrzési napjai**: a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7*).
-    * **Geo redundáns biztonsági mentés**: *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
-    * **Virtual Network neve**: a virtuális hálózat neve (alapértelmezett *azure_mariadb_vnet*).
-    * **Alhálózat neve**: az alhálózat neve (alapértelmezett *azure_mariadb_subnet*).
-    * **Virtual Network szabály neve**: az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet*).
-    * **Vnet-címek előtagja**: a virtuális hálózat címe (alapértelmezett *10.0.0.0/16*).
-    * **Alhálózat-előtag**: az alhálózat 10.0.0.0 (alapértelmezett érték */16*).
+    * **Előfizetés:** a kiszolgálóhoz használni kívánt Azure-előfizetés.
+    * **Termékváltozat-kapacitás:** a virtuális mag kapacitása, amely *2* (alapértelmezett), *4,* *8,* *16,* *32* vagy *64 lehet.*
+    * **Termékváltozat neve:** a termékváltozat-szint előtagja, a termékváltozat-család és a termékváltozat-kapacitás, aláhúzásjelekkel (például *B_Gen5_1,* *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32.*
+    * **Sku Size MB (Termékváltozat** mérete MB) : a tárterület mérete megabájtban a Azure Database for MariaDB (alapértelmezett *érték: 51200).*
+    * **Termékváltozat rétege:** az üzembe helyezési szint, például *Alapszintű,* *ÁltalánosCélú* (alapértelmezett) vagy *MemoryOptimized.*
+    * **Termékváltozat-család:** *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgálótelepítés hardvergenerációját jelzi.
+    * **Mariadb-verzió:** az üzembe helyezendő MariaDB-kiszolgáló verziója, például *10.2* vagy *10.3* (alapértelmezés).
+    * **Biztonsági másolatok megőrzése (nap):** a georedundáns biztonsági másolatok megőrzésének kívánt időtartama napokban *(alapértelmezés: 7).*
+    * **Georedundáns biztonsági mentés:** *Engedélyezve* vagy *Letiltva* (ez az alapértelmezett beállítás) a georedundáns helyreállítás (Geo-DR) követelményeitől függően.
+    * **Virtual Network Name**: a virtuális hálózat neve (alapértelmezett *azure_mariadb_vnet*).
+    * **Alhálózat neve:** az alhálózat neve (alapértelmezett *azure_mariadb_subnet*).
+    * **Virtual Network szabály neve:** az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet).*
+    * **Virtuális hálózat címelőtagja:** a virtuális hálózat címelőtagja *(alapértelmezett: 10.0.0.0/16).*
+    * **Alhálózati előtag:** az alhálózat címelőtagja *(alapértelmezett: 10.0.0.0/16).*
 
-5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és** kikötéseket lehetőséget.
+5. Olvassa el a használati feltételeket, majd válassza az **Elfogadom a** fenti feltételeket lehetőséget.
 
 6. Válassza a **Beszerzés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-A sablon használatával hozzon létre egy új Azure Database for MariaDB-kiszolgálót a következő interaktív kóddal. A kód az új kiszolgálónév, egy új erőforráscsoport nevének és helyének, valamint egy rendszergazdai fiók nevének és jelszavának megadását kéri.
+Az alábbi interaktív kóddal hozzon létre egy új Azure Database for MariaDB a sablon használatával. A kód kérni fogja az új kiszolgáló nevét, az új erőforráscsoport nevét és helyét, valamint a rendszergazdai fiók nevét és jelszavát.
 
-A kód Azure Cloud Shellban való futtatásához válassza a **kipróbálás** a kód felső sarkában lehetőséget.
+A kód futtatásához Azure Cloud Shell bármelyik  kódblokk felső sarkában válassza a Kipróbálom lehetőséget.
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MariaDB server"
@@ -124,9 +126,9 @@ Read-Host -Prompt "Press [ENTER] to continue: "
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
-A sablon használatával hozzon létre egy új Azure Database for MariaDB-kiszolgálót a következő interaktív kóddal. A kód az új kiszolgálónév, egy új erőforráscsoport nevének és helyének, valamint egy rendszergazdai fiók nevének és jelszavának megadását kéri.
+Az alábbi interaktív kóddal hozzon létre egy új Azure Database for MariaDB a sablon használatával. A kód kérni fogja az új kiszolgáló nevét, az új erőforráscsoport nevét és helyét, valamint a rendszergazdai fiók nevét és jelszavát.
 
-A kód Azure Cloud Shellban való futtatásához válassza a **kipróbálás** a kód felső sarkában lehetőséget.
+A kód futtatásához Azure Cloud Shell bármelyik  kódblokk felső sarkában válassza a Kipróbálom lehetőséget.
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure Database for MariaDB server:" serverName &&
@@ -146,15 +148,15 @@ read -p "Press [ENTER] to continue: "
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Az alábbi lépéseket követve tekintheti meg az új Azure Database for MariaDB-kiszolgáló áttekintését:
+Kövesse az alábbi lépéseket az új Azure Database for MariaDB áttekintéséhez:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for MariaDB kiszolgálókat**.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **a Azure Database for MariaDB kiszolgálókat.**
 
-2. Az adatbázis listában válassza ki az új kiszolgálót. Megjelenik az új Azure Database for MariaDB-kiszolgáló **Áttekintés** lapja.
+2. Az adatbázislistában válassza ki az új kiszolgálót. **Megjelenik** az új Azure Database for MariaDB Áttekintés lapja.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-Futtassa a következő interaktív kódot a Azure Database for MariaDB-kiszolgáló részleteinek megtekintéséhez. Meg kell adnia az új kiszolgáló nevét.
+Futtassa a következő interaktív kódot a Azure Database for MariaDB megtekintéséhez. Meg kell adnia az új kiszolgáló nevét.
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter the name of your Azure Database for MariaDB server"
@@ -164,7 +166,7 @@ Read-Host -Prompt "Press [ENTER] to continue: "
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
-Futtassa a következő interaktív kódot a Azure Database for MariaDB-kiszolgáló részleteinek megtekintéséhez. Meg kell adnia az új kiszolgáló nevét és erőforrás-csoportját.
+Futtassa a következő interaktív kódot a Azure Database for MariaDB megtekintéséhez. Meg kell adnia az új kiszolgáló nevét és erőforráscsoportját.
 
 ```azurecli-interactive
 read -p "Enter your Azure Database for MariaDB server name: " serverName &&
@@ -181,13 +183,13 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza az **Erőforráscsoportok lehetőséget.**
 
-2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
+2. Az erőforráscsoport listában válassza ki az erőforráscsoport nevét.
 
-3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
+3. Az **erőforráscsoport Áttekintés** lapján válassza az **Erőforráscsoport törlése lehetőséget.**
 
-4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés lehetőséget.**
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -209,7 +211,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
+Az ARM-sablonok létrehozásának folyamatát bemutató részletes oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [ Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [ Oktatóanyag: Az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

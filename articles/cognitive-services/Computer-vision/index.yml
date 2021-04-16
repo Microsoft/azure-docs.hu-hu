@@ -16,7 +16,7 @@ highlightedContent:
     - title: Tudnivalók a Computer Visionről
       itemType: overview
       url: overview.md
-    - title: A Computer Vision újdonságai
+    - title: A Computer Vision újdonsága
       itemType: whats-new
       url: whats-new.md
     - title: Nyelvi támogatás
@@ -27,30 +27,30 @@ conceptualContent:
     - title: Optikai karakterfelismerés
       links:
         - itemType: overview
-          text: Az OCR ismertetése
+          text: Az OCR
           url: overview-ocr.md
         - itemType: quickstart
-          text: Ismerkedés az OCR-sel
+          text: Az OCR első lépések
           url: quickstarts-sdk/client-library.md
         - itemType: how-to-guide
-          text: Az olvasási API meghívása
+          text: A Read API hívása
           url: Vision-API-How-to-Topics/call-read-api.md
         - itemType: deploy
           text: Az OCR-tároló olvasása
           url: computer-vision-how-to-install-containers.md
         - itemType: reference
-          text: OCR API-hivatkozás
-          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+          text: OCR API-referencia
+          url: 'https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
       footerLink:
         text: Kibontás
         url: index-ocr.yml
     - title: Képelemzés
       links:
         - itemType: overview
-          text: Tudnivalók a képek elemzéséről
+          text: Információk a képelemzésről
           url: overview-image-analysis.md
         - itemType: quickstart
-          text: Ismerkedés a képek elemzésével
+          text: A Képelemzés első lépések
           url: quickstarts-sdk/image-analysis-client-library.md
         - itemType: concept
           text: Tartalomcímkék
@@ -65,7 +65,7 @@ conceptualContent:
           text: Képek metaadatainak előállítása
           url: Tutorials/storage-lab-tutorial.md
         - itemType: reference
-          text: Rendszerkép-elemzési API-referenciák
+          text: Képelemzési API-referencia
           url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
       footerLink:
         text: Kibontás
@@ -73,10 +73,10 @@ conceptualContent:
     - title: Térbeli elemzés
       links:
         - itemType: overview
-          text: A térbeli elemzés ismertetése
+          text: A térbeli elemzés
           url: intro-to-spatial-analysis-public-preview.md
         - itemType: quickstart
-          text: Ismerkedés a térbeli elemzéssel
+          text: A térbeli elemzés első lépések
           url: spatial-analysis-container.md
         - itemType: how-to-guide
           text: Térbeli elemzési műveletek konfigurálása
@@ -95,7 +95,7 @@ conceptualContent:
         url: index-spatial-analysis.yml
 tools:
   title: Szoftverfejlesztői készletek (SDK-k)
-  summary: Ismerkedjen meg a Computer Vision SDK-val kedvenc programozási nyelvén.
+  summary: Első lépések a Computer Vision SDK-val kedvenc programozási nyelvén.
   items:
     - title: C#
       imageSrc: media/index/logo_Csharp.svg

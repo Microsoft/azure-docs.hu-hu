@@ -1,20 +1,22 @@
 ---
-title: 'Gyors útmutató: kiszolgáló létrehozása – Azure Portal – Azure Database for MariaDB'
+title: 'Rövid útmutató: Kiszolgáló létrehozása – Azure Portal – Azure Database for MariaDB'
 description: Ez a cikk azt mutatja be, hogyan hozhat létre egy mintául szolgáló Azure Database for MariaDB-kiszolgálót az Azure Portalon, nagyjából öt perc leforgása alatt.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
-ms.custom: mvc
-ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: 7b27bff50b4e2cfa57e41919552086ba1d31f217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: mariadb
+ms.custom:
+- mvc
+- mode-portal
+ms.openlocfilehash: bcb8091bad6190648f35d8acdcb457f8b153ed63
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662109"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531356"
 ---
-# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása a Azure Portal használatával
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database for MariaDB-kiszolgáló létrehozása a Azure Portal
 
 Az Azure Database for MariaDB egy felügyelt szolgáltatás, amellyel a magas rendelkezésre állású MariaDB-adatbázisokat futtathatja, kezelheti és skálázhatja a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre nagyjából öt perc alatt egy Azure Database for MariaDB-kiszolgálót az Azure Portalon.  
 
@@ -32,7 +34,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-2. Válassza az **adatbázisok**  >  **Azure Database for MariaDB** elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
+2. Válassza **az Adatbázisok**  >  **Azure Database for MariaDB** lehetőséget. A keresőmezőbe be is írhatja a **MariaDB-t,** hogy megtalálja a szolgáltatást.
 
    ![Azure Database for MariaDB opció](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
@@ -42,7 +44,7 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
 
     Beállítás | Ajánlott érték | Leírás
     ---|---|---
-    Kiszolgálónév | *egyedi kiszolgálónév* | Válasszon egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. Például: **mydemoserver**. A rendszer hozzáfűzi a *.mariadb.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
+    Kiszolgálónév | *egyedi kiszolgálónév* | Válasszon egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. Például: **mydemoserver.** A rendszer hozzáfűzi a *.mariadb.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
     Előfizetés | *Az Ön előfizetése* | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel is rendelkezik, válassza ki azt az előfizetést, amelynek a keretében az erőforrásért fizet.
     Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot. 
     Forrás kiválasztása | **Üres** | Válassza az **Üres** lehetőséget egy teljesen új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MariaDB-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a **Biztonsági mentés** lehetőséget).
@@ -51,14 +53,14 @@ Azure Database for MariaDB-kiszolgáló létrehozása:
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *a legújabb verzió*| A legújabb verzió (ha nincsenek olyan egyedi igényei, amelyek miatt egy másikat kell kiválasztania).
-    Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki az **árképzési szintet**  >  **általános célú**. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 virtuális mag)</li><li>**Tárterület** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza **a Tarifacsomag**  >  **általános célú** lehetőséget. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**Virtuális mag** (4 virtuális mag)</li><li>**Tárterület** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
   
    > [!NOTE]
-   > Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. További információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/mariadb/) .
+   > Akkor érdemes az Alapszintű tarifacsomagot használni, ha a kis számítási és I/O-kapacitás megfelelő a számítási feladathoz. Vegye figyelembe, hogy az Alapszintű tarifacsomagban létrehozott kiszolgálók később nem skálázhatóak általános célú memóriaoptimalált kiszolgálókra. További [információért tekintse meg a](https://azure.microsoft.com/pricing/details/mariadb/) díjszabási oldalt.
 
    ![Kiszolgáló létrehozása – Tarifacsomag ablak](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. Válassza a **felülvizsgálat + létrehozás** lehetőséget a kiszolgáló kiépítéséhez. Az üzembe helyezés akár 20 percet is igénybe vehet.
+4. A **kiszolgáló üzembehelyezéséhez válassza** az Áttekintés + létrehozás lehetőséget. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
 5. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez.
 
@@ -91,7 +93,7 @@ Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kisz
 
 2. Az értékek másolásához vigye az egérmutatót a másolni kívánt mező fölé. Ekkor a szövegtől jobbra megjelenik a másolási ikon. Az értékek másolásához kattintson a másolási ikonra.
 
-A példánkban a kiszolgáló neve **mydemoserver.MariaDB.database.Azure.com** , a kiszolgáló-rendszergazdai bejelentkezési név pedig az **myadmin \@ mydemoserver**.
+A példánkban a kiszolgálónév **mydemoserver.mariadb.database.azure.com** a kiszolgáló-rendszergazdai bejelentkezési név **myadmin \@ mydemoserver.**
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>Csatlakozás az Azure Database for MariaDB-hez a mysql parancssorral
 
@@ -122,9 +124,9 @@ Először a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancss
 
     mysql-paraméter |Ajánlott érték|Leírás
     ---|---|---
-    --host | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (**\* . MariaDB.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.
-    --user | *kiszolgáló-rendszergazdai bejelentkezési név* |Az a kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. Ha nem emlékszik a felhasználó nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum a *username \@ servername*.
-    -p | *a jelszó*<br>(várja meg, amíg a rendszer felszólítja a megadására) |Amikor a rendszer kéri, adja meg a kiszolgáló létrehozásához használt jelszót. A beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó megadása után nyomja le az Enter billentyűt.
+    --host | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (**\* .mariadb.database.azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.
+    --user | *kiszolgáló-rendszergazdai bejelentkezési név* |Az a kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. Ha nem emlékszik a felhasználó nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum a *következő: felhasználónév \@ kiszolgálónév.*
+    -p | *az Ön jelszava*<br>(várja meg, amíg a rendszer felszólítja a megadására) |Amikor a rendszer kéri, adja meg a kiszolgáló létrehozásához használt jelszót. A beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó megadása után nyomja le az Enter billentyűt.
 
    Miután a mysql segédprogram csatlakozott, megjelenít egy `mysql>` parancssort. A parancsokat ebbe a parancssorba írhatja.
 
@@ -187,7 +189,7 @@ Ahhoz, hogy csatlakozzon a kiszolgálóhoz a MySQL Workbench használatával:
 
 1. Indítsa el a MySQL Workbench eszközt az ügyfélszámítógépen. A MySQL Workbench eszközt [a MySQL Workbench letöltési](https://dev.mysql.com/downloads/workbench/) oldaláról töltheti le és telepítheti.
 
-2. Új kapcsolat létrehozásához válassza a **+** **MySQL-kapcsolatok** fejléc melletti plusz ikont ().
+2. Új kapcsolat létrehozásához kattintson a **+** **MySQL-kapcsolatok** fejléc melletti plusz ikonra ( ).
 
 3. A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a kiszolgáló kapcsolatadatait a **Parameters** (Paraméterek) lapon. A helyőrző értékek példaként szerepelnek. A **Hostname** (Gazdagépnév), **Username** (Felhasználónév) és **Password** (Jelszó) értékei helyére írja a saját értékeit.
 
@@ -195,12 +197,12 @@ Ahhoz, hogy csatlakozzon a kiszolgálóhoz a MySQL Workbench használatával:
 
     |Beállítás |Ajánlott érték|Mező leírása|
     |---|---|---|
-     Kapcsolat neve | **Bemutató-kapcsolatok** | A kapcsolat címkéje. |
+     Kapcsolat neve | **Bemutató kapcsolat** | A kapcsolat címkéje. |
     Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
-    Hostname (Gazdanév) | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (**\* . MariaDB.database.Azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket.|
+    Hostname (Gazdanév) | *kiszolgáló neve* | Az a kiszolgálónév, amelyet korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (**\* .mariadb.database.azure.com**) a példában látható módon. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket.|
      Port | 3306 | Az Azure Database for MariaDB-kiszolgálóhoz való csatlakozáskor használandó port. |
-    Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Azok a kiszolgáló-rendszergazdai bejelentkezési adatok, amelyeket korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példában szereplő Felhasználónév a **myadmin \@ mydemoserver**. Ha nem emlékszik a felhasználónevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket. A formátum a *username \@ servername*.
-    Jelszó | *a jelszó* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
+    Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Azok a kiszolgáló-rendszergazdai bejelentkezési adatok, amelyeket korábban az Azure Database for MariaDB-kiszolgáló létrehozásakor használt. A példában a felhasználónév **myadmin \@ mydemoserver.** Ha nem emlékszik a felhasználónevére, a kapcsolati adatok lekéréséhez kövesse a cikk korábbi szakaszában ismertetett lépéseket. A formátum a *következő: felhasználónév \@ kiszolgálónév.*
+    Jelszó | *az Ön jelszava* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
 
 4. Válassza a **Test Connection** (Kapcsolat tesztelése) lehetőséget annak teszteléséhez, hogy minden paraméter helyesen lett-e konfigurálva. Ezután a kapcsolat mentéséhez kattintson az **OK** gombra. 
 

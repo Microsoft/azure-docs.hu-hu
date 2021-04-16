@@ -1,32 +1,35 @@
 ---
-title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
-description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
+title: Biztonságos webhook-teljesítés az Azure AD-val Azure Event Grid
+description: Ismerteti, hogyan kézbesítheti az eseményeket a Azure Active Directory által védett HTTPS-Azure Event Grid
 ms.topic: how-to
-ms.date: 03/20/2021
-ms.openlocfilehash: 1298910db78ba468dd9744e84ee4629161e0a776
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/13/2021
+ms.openlocfilehash: 4238087d977fa1102d1dd31d0cc9080d6308c175
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076036"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389689"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele az Azure Active Directory által védett végpontokon
-Ez a cikk azt ismerteti, hogyan használható a Azure Active Directory (Azure AD) az esemény- **előfizetés** és a **webhook-végpont** közötti kapcsolat biztonságossá tételéhez. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../active-directory/develop/v2-overview.md).
+Ez a cikk azt ismerteti, hogyan használhatja Azure Active Directory (Azure AD) az esemény-előfizetés és a **webhook-végpont** közötti kapcsolat biztonságossá való útjára.  Az Azure AD-alkalmazások és -szolgáltatásnévk áttekintését lásd: [A Microsoft identitásplatformjának (v2.0) áttekintése.](../active-directory/develop/v2-overview.md)
 
-Ez a cikk a bemutató Azure Portal használja, de a funkció a CLI, a PowerShell vagy az SDK-k használatával is engedélyezhető.
+Ez a cikk a Azure Portal a bemutatóhoz, de a funkció a parancssori felület, a PowerShell vagy az SDK-k használatával is engedélyezhető.
+
+> [!IMPORTANT]
+> A biztonsági rések kezelése érdekében 2021. március 30-án az esemény-előfizetések létrehozása vagy frissítése részeként további hozzáférés-ellenőrzést vezettünk be. Az előfizető ügyfél szolgáltatásának tulajdonosnak kell lennie, vagy hozzá kell rendelnie egy szerepkört a célalkalmazás szolgáltatásnévhez. Konfigurálja újra az AAD-alkalmazást az alábbi új utasítások szerint.
 
 
 ## <a name="create-an-azure-ad-application"></a>Azure AD-alkalmazás létrehozása
-Regisztrálja webhookját az Azure AD-ben egy Azure AD-alkalmazás létrehozásával a védett végpont számára. Lásd [: forgatókönyv: védett webes API](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview). Beállíthatja, hogy a védett API-t egy Daemon-alkalmazás hívja meg.
+Regisztrálja a webhookot az Azure AD-ban egy Azure AD-alkalmazás létrehozásával a védett végponthoz. Lásd: [Forgatókönyv: Védett webes API.](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview) Konfigurálja a védett API-t úgy, hogy egy démonalkalmazás hívja meg.
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Azure AD-alkalmazás használatának engedélyezése Event Grid
-Ez a szakasz bemutatja, hogyan engedélyezheti Event Grid az Azure AD-alkalmazás használatát. 
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Event Grid engedélyezése az Azure AD-alkalmazás használatára
+Ez a szakasz bemutatja, hogyan engedélyezheti Event Grid számára az Azure AD-alkalmazás használatát. 
 
 > [!NOTE]
-> A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/roles/permissions-reference.md#all-roles) tagjának kell lennie.
+> A szkript végrehajtásához [az Azure AD alkalmazás-rendszergazdai](../active-directory/roles/permissions-reference.md#all-roles) szerepkörének kell lennie.
 
-### <a name="connect-to-your-azure-tenant"></a>Kapcsolódás az Azure-bérlőhöz
-Először kapcsolódjon az Azure-bérlőhöz a `Connect-AzureAD` parancs használatával. 
+### <a name="connect-to-your-azure-tenant"></a>Csatlakozás az Azure-bérlőhöz
+Először csatlakozzon az Azure-bérlőhöz az `Connect-AzureAD` paranccsal. 
 
 ```PowerShell
 $myWebhookAadTenantId = "<Your Webhook's Azure AD tenant id>"
@@ -34,8 +37,8 @@ $myWebhookAadTenantId = "<Your Webhook's Azure AD tenant id>"
 Connect-AzureAD -TenantId $myWebhookAadTenantId
 ```
 
-### <a name="create-microsofteventgrid-service-principal"></a>A Microsoft. EventGrid egyszerű szolgáltatásnév létrehozása
-A következő parancsfájl futtatásával hozza létre a **Microsoft. EventGrid** szolgáltatáshoz tartozó egyszerű szolgáltatást, ha még nem létezik. 
+### <a name="create-microsofteventgrid-service-principal"></a>Microsoft.EventGrid-szolgáltatásnév létrehozása
+Futtassa a következő szkriptet a **Microsoft.EventGrid** szolgáltatásnévének létrehozásához, ha az még nem létezik. 
 
 ```PowerShell
 # This is the "Azure Event Grid" Azure Active Directory (AAD) AppId
@@ -56,7 +59,7 @@ else
 ```
 
 ### <a name="create-a-role-for-your-application"></a>Szerepkör létrehozása az alkalmazáshoz   
-Futtassa az alábbi szkriptet az Azure AD-alkalmazáshoz tartozó szerepkör létrehozásához. Ebben a példában a szerepkör neve: **AzureEventGridSecureWebhookSubscriber**. Módosítsa a PowerShell-parancsfájlt az `$myTenantId` Azure ad-bérlői azonosító használatára, valamint az `$myAzureADApplicationObjectId` Azure ad-alkalmazás Object ID azonosítójával
+A következő szkript futtatásával hozzon létre egy szerepkört az Azure AD-alkalmazáshoz. Ebben a példában a szerepkör neve: **AzureEventGridSecureWebhookSubscriber**. Módosítsa a PowerShell-szkripteket az Azure AD-bérlőazonosító és az `$myTenantId` `$myAzureADApplicationObjectId` Azure AD-alkalmazás objektumazonosítójának használatára
 
 ```PowerShell
 # This is your Webhook's Azure AD Application's ObjectId. 
@@ -107,10 +110,13 @@ Write-Host $myAppRoles
 
 ```
 
-### <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
-A szerepkör-hozzárendelést létre kell hozni a webhook Azure AD alkalmazás a HRE alkalmazáshoz vagy a HRE-felhasználóhoz az esemény-előfizetés létrehozásához. Használja az alábbi parancsfájlok egyikét attól függően, hogy egy HRE-alkalmazás vagy egy HRE-felhasználó létrehozza-e az esemény-előfizetést.
+### <a name="create-role-assignment-for-the-client-creating-event-subscription"></a>Szerepkör-hozzárendelés létrehozása az esemény-előfizetést létrehozására használt ügyfélhez
+A szerepkör-hozzárendelést az AAD-alkalmazás webhook-Azure AD alkalmazás kell létrehoznia, vagy az esemény-előfizetést létrehozó AAD-felhasználónak. Használja az alábbi szkriptek valamelyikét attól függően, hogy egy AAD-alkalmazás vagy AAD-felhasználó létrehozza-e az esemény-előfizetést.
 
-#### <a name="option-a-create-a-role-assignment-for-event-subscription-aad-app"></a>A. lehetőség. hozzon létre egy szerepkör-hozzárendelést az esemény-előfizetés HRE alkalmazásához 
+> [!IMPORTANT]
+> 2021. március 30-án az esemény-előfizetések létrehozása vagy frissítése részeként további hozzáférés-ellenőrzést vezettünk be a biztonsági rések kezelése érdekében. Az előfizető ügyfél szolgáltatásnévnek tulajdonosnak kell lennie, vagy hozzá kell rendelnie egy szerepkört a célalkalmazás szolgáltatásnévhez. Konfigurálja újra az AAD-alkalmazást az alábbi új utasítások szerint.
+
+#### <a name="create-role-assignment-for-an-event-subscription-aad-app"></a>Szerepkör-hozzárendelés létrehozása esemény-előfizetési AAD-alkalmazáshoz 
 
 ```powershell
 # This is the app id of the application which will create event subscription. Set to $null if you are not assigning the role to app.
@@ -125,10 +131,11 @@ if ($eventSubscriptionWriterSP -eq $null)
 }
 
 Write-Host "Creating the Azure Ad App Role assignment for application: " $eventSubscriptionWriterAppId
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
 ```
 
-#### <a name="option-b-create-a-role-assignment-for-event-subscription-aad-user"></a>B. lehetőség: szerepkör-hozzárendelés létrehozása az esemény-előfizetés HRE felhasználója számára 
+#### <a name="create-role-assignment-for-an-event-subscription-aad-user"></a>Szerepkör-hozzárendelés létrehozása egy esemény-előfizetésI AAD-felhasználóhoz 
 
 ```powershell
 # This is the user principal name of the user who will create event subscription. Set to $null if you are not assigning the role to user.
@@ -138,17 +145,19 @@ $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp
     
 Write-Host "Creating the Azure Ad App Role assignment for user: " $eventSubscriptionWriterUserPrincipalName
 $eventSubscriptionWriterUser = Get-AzureAdUser -ObjectId $eventSubscriptionWriterUserPrincipalName
-New-AzureADUserAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADUserAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
 ```
 
-### <a name="add-event-grid-service-principal-to-the-role"></a>Event Grid egyszerű szolgáltatásnév hozzáadása a szerepkörhöz
-Futtassa az New-AzureADServiceAppRoleAssignment parancsot Event Grid egyszerű szolgáltatásnév hozzárendeléséhez az előző lépésben létrehozott szerepkörhöz.
+### <a name="create-role-assignment-for-event-grid-service-principal"></a>Szerepkör-hozzárendelés létrehozása Event Grid szolgáltatásnévhez
+Az New-AzureADServiceAppRoleAssignment parancs futtatásával rendeljen Event Grid szolgáltatásnévhez az előző lépésben létrehozott szerepkörhöz.
 
 ```powershell
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId -PrincipalId $eventGridSP.ObjectId
 ```
 
-Futtassa az alábbi parancsokat a később használt információk kiírásához.
+Futtassa a következő parancsokat a későbbiekben használni fog információk ki- és kimenetbe való be- és kimenete érdekében.
 
 ```powershell
 Write-Host "My Webhook's Azure AD Tenant Id:  $myWebhookAadTenantId"
@@ -160,15 +169,15 @@ Write-Host "My Webhook's Azure AD Application ObjectId Id$($myApp.ObjectId)"
 ## <a name="configure-the-event-subscription"></a>Az esemény-előfizetés konfigurálása
 Esemény-előfizetés létrehozásakor kövesse az alábbi lépéseket:
 
-1. Válassza ki a végpont típusát **Webhookként**. 
-1. A végpont **URI azonosítójának** megadása.
+1. Válassza ki a végpont típusát Web **hook (Web hook) beállítással.** 
+1. Adja meg a végpont **URI-ját.**
 
-    ![Válassza ki a végpont típusát webhook](./media/secure-webhook-delivery/select-webhook.png)
-1. Válassza az **esemény-előfizetések létrehozása** lap tetején található **További szolgáltatások** fület.
-1. A **További szolgáltatások** lapon hajtsa végre a következő lépéseket:
-    1. Válassza a **HRE-hitelesítés használata** lehetőséget, és konfigurálja a bérlői azonosítót és az alkalmazás azonosítóját:
-    1. Másolja az Azure AD-bérlő AZONOSÍTÓját a parancsfájl kimenetéről, és adja meg a **HRE-bérlő azonosítója** mezőben.
-    1. Másolja az Azure AD-alkalmazás AZONOSÍTÓját a parancsfájl kimenetéről, majd adja meg a **HRE alkalmazás-azonosító** mezőjében.
+    ![Végponttípus kiválasztása webhook](./media/secure-webhook-delivery/select-webhook.png)
+1. Válassza a **További szolgáltatások** lapot az Esemény-előfizetések létrehozása **lap tetején.**
+1. A További **szolgáltatások lapon** tegye a következőket:
+    1. Válassza **az AAD-hitelesítés használata lehetőséget,** és konfigurálja a bérlőazonosítót és az alkalmazásazonosítót:
+    1. Másolja ki az Azure AD-bérlőazonosítót a szkript kimenetből, és adja meg az **AAD-bérlő azonosítója mezőben.**
+    1. Másolja ki az Azure AD-alkalmazásazonosítót a szkript kimenetből, és adja meg az **AAD-alkalmazásazonosító mezőben.** Másik lehetőségként használhatja az AAD-alkalmazásazonosító URI-ját is. Az alkalmazásazonosító URI-jával kapcsolatos további információkért tekintse meg [ezt a cikket.](../app-service/configure-authentication-provider-aad.md)
 
         ![Biztonságos webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
 
@@ -176,6 +185,6 @@ Esemény-előfizetés létrehozásakor kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
-* További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).
-* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
+* További információ az események kézbesítésének figyelésével kapcsolatban: [Monitorozás Event Grid üzenetek kézbesítése.](monitor-event-delivery.md)
+* A hitelesítési kulccsal kapcsolatos további információkért lásd: Event Grid [biztonság és hitelesítés.](security-authentication.md)
+* További információ a Azure Event Grid létrehozásáról: Event Grid [előfizetési séma.](subscription-creation-schema.md)
