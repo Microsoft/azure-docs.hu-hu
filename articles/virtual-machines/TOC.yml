@@ -172,7 +172,7 @@
               href: ev4-esv4-series.md
             - name: M sorozat
               href: m-series.md
-            - name: Msv2 és Mdsv2 közepes memória sorozat
+            - name: Msv2 és Mdsv2 Közepes memória sorozat
               href: msv2-mdsv2-series.md
             - name: Mv2 sorozat
               href: mv2-series.md
@@ -360,7 +360,7 @@
                   href: ./linux/tutorial-devops-azure-pipelines-classic.md
                 - name: A Canary üzembe helyezési stratégiájának konfigurálása
                   href: ./linux/tutorial-azure-devops-canary-strategy.md
-                - name: Az Blue-Green-telepítési stratégia konfigurálása
+                - name: A Blue-Green stratégia konfigurálása
                   href: ./linux/tutorial-azure-devops-blue-green-strategy.md
                 - name: CI/CD az Azure Pipelines (YAML) használatával
                   href: ./linux/tutorial-build-deploy-azure-pipelines.md
@@ -606,7 +606,7 @@
         - name: PowerShell
           displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
           href: ./windows/cli-ps-findimage.md
-        - name: Windows-ügyfél lemezképek
+        - name: Windows-ügyfél rendszerképe
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
         - name: Több-bérlős üzemeltetési jogosultságok Windows 10
@@ -946,7 +946,7 @@
         - name: Vezénylési módok
           displayName: 'VMSS, flex, scale set, scale, virtual machine sacle set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
-    - name: 'A virtuális gépek újraindításának azokkal a műveletekkel, amelyek'
+    - name: A virtuális gépek újraindításának érte
       href: understand-vm-reboots.md
     - name: Azure-régiók
       href: regions.md
@@ -1141,7 +1141,7 @@
           href: ./linux/snapshot-copy-managed-disk.md
         - name: Lemez pillanatképének készítése – PowerShell
           href: ./windows/snapshot-copy-managed-disk.md
-        - name: Nemmanaged disks biztonsági mentése
+        - name: Nem nem nem lévő lemezek biztonsági mentése
           href: ./linux/incremental-snapshots.md
     - name: Rövid élettartamú operációsrendszer-lemezek
       href: ephemeral-os-disks.md
@@ -1155,7 +1155,7 @@
             - name: PowerShell
               displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
-        - name: Mirate to premium SSDs with Azure Site Recovery
+        - name: Áttelepítés prémium szintű SSD-kre Azure Site Recovery
           items:
             - name: Linux
               displayName: Migrate to premium SSDs with Azure Site Recovery
@@ -1216,7 +1216,7 @@
           href: using-managed-disks-template-deployments.md
         - name: Lemez biztonságos importálása/exportálása
           items:
-            - name: Magánhálózati hivatkozások konfigurálása lemezekhez – CLI
+            - name: Privát hivatkozások konfigurálása lemezekhez – CLI
               href: ./linux/disks-export-import-private-links-cli.md
             - name: Magánhálózati hivatkozások konfigurálása lemezekhez – Portál
               href: disks-enable-private-links-for-import-export-portal.md
@@ -1234,7 +1234,7 @@
                   href: ./windows/download-vhd.md
         - name: A Storage Explorer használata lemezek kezelésére
           href: disks-use-storage-explorer-managed-disks.md
-        - name: Az operációsrendszer-lemez felcserélve – cli
+        - name: Az operációsrendszer-lemez felcserélve – CLI
           href: ./linux/os-disk-swap.md
         - name: Az operációsrendszer-lemez felcserélve – PowerShell
           href: ./windows/os-disk-swap.md
@@ -1269,7 +1269,7 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Felügyelt lemez másolása előfizetésen vagy előfizetésen
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
-            - name: Pillanatkép másolása ugyanoda vagy egy másik előfizetésbe
+            - name: Pillanatkép másolása előfizetésen vagy előfizetésen
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
@@ -1281,7 +1281,7 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Felügyelt lemez létrehozása pillanatképből
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
-            - name: Pillanatkép másolása ugyanoda vagy egy másik előfizetésbe
+            - name: Pillanatkép másolása előfizetésen vagy előfizetésen
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
@@ -1407,7 +1407,7 @@
               href: ./windows/key-vault-setup.md
     - name: Spekulatív végrehajtás kockázatának csökkentése
       href: mitigate-se.md
-    - name: Linux rendszerű virtuális gép csatlakozása Azure Active Directory
+    - name: Linux rendszerű virtuális gép Azure Active Directory
       displayName: Azure AD
       items:
         - name: Red Hat Enterprise Linux
@@ -1451,7 +1451,7 @@
         - name: Áttekintés
           displayName: 'Automatic OS image upgrade, image, upgrade, OS'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-        - name: Az operációs rendszer rendszerképének frissítésére vonatkozó karbantartás-vezérlés
+        - name: Az operációsrendszer-lemezkép frissítésének karbantartásvezérlése
           items:
             - name: Áttekintés (Előzetes verzió)
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
@@ -1464,7 +1464,7 @@
         - name: Áttekintés
           displayName: 'Automatic VM guest patching, guest, OS, patching'
           href: automatic-vm-guest-patching.md
-        - name: Gyorsjavítás
+        - name: Hotpatch (Gyorsjavítás)
           displayName: 'patching, patch, update'
           href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
     - name: Automatikus bővítményfrissítés (előzetes verzió)
@@ -1786,6 +1786,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Architektúra-központ
       href: /azure/architecture/
+    - name: Migrálási eszközök
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools'
     - name: Microsoft Q&A
       href: /answers/topics/azure-virtual-machines.html
     - name: Azure-gyorssablonok

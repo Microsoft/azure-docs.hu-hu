@@ -1,60 +1,62 @@
 ---
 author: baanders
-description: fájl belefoglalása az Azure-függvények Visual studióból való közzétételének folyamatához
+description: fájlba foglalja bele az Azure-függvények közzétételi folyamatához a Visual Studio
 ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc56ab05a087c9e86d67a13aebcfb8e65fbd78f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630285"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480754"
 ---
-Ha közzé szeretné tenni a projektet egy Azure-beli Function alkalmazásban, kattintson a jobb gombbal *megoldáskezelő* a projektre, és válassza a **Közzététel** lehetőséget.
+A projekt Azure-beli függvényalkalmazásban való közzétételéhez kezdje a Megoldáskezelő. Kattintson a jobb gombbal a projektre, majd válassza a **Publish (Közzététel) lehetőséget.**
 
 > [!IMPORTANT] 
-> Az Azure-beli Function-alkalmazásokban az előfizetése további díjakat is felszámít az Azure Digital ikrektől függetlenül.
+> Az Azure-beli függvényalkalmazásban való közzététel további díjakkal kapcsolatos, az előfizetéstől Azure Digital Twins.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="A Visual Studio képernyőképe, amely a jobb gombbal válassza a megoldás menüt. A közzététel ki van emelve a menüben.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Képernyőkép a Visual Studio jobb gombbal a megoldás menüjéről. A menüben a Közzététel ki van emelve.":::
 
-Az alábbi *közzétételi* oldalon hagyja meg az **Azure** alapértelmezett céljának kijelölését, és válassza a *tovább* lehetőséget. 
+A **megnyíló Közzététel** oldalon hagyja meg az Azure alapértelmezett célkijelölését.  Ezután kattintson a **Tovább** gombra. 
 
-Egy adott célpont esetében válassza az **Azure függvényalkalmazás (Windows)** lehetőséget, és kattintson a *Tovább gombra*.
+Egy adott célhoz válassza az **Azure-függvényalkalmazás (Windows),** majd a Tovább **lehetőséget.**
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="A Visual Studio képernyőképe az Azure-függvény közzététele párbeszédpanelen. Az Azure függvényalkalmazás (Windows) az adott cél oldalon van kiválasztva.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Képernyőkép a Visual Studio, amely az Azure-függvény közzététele párbeszédpanelt mutatja. Az Adott cél lapon a kijelölés az Azure-függvényalkalmazás (Windows) lesz.":::
 
-A *functions példány* lapon válassza ki az előfizetését. Ezután válassza ki az *+* ikont egy új Azure-függvény létrehozásához.
+A **Functions-példány lapon** válassza ki az előfizetését. Ezután válassza a plusz (+) ikont egy új függvény létrehozásához.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="A Visual Studio képernyőképe az Azure-függvény közzététele párbeszédpanelen. Új függvény létrehozásához a + gomb jelenik meg a functions példány lapon.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Képernyőkép a Visual Studio, amely az Azure-függvény közzététele párbeszédpanelt mutatja. A plusz ikon ki van emelve.":::
 
-A *függvényalkalmazás (Windows) – új ablak létrehozása* ablakban töltse ki a mezőket a következő módon:
-* A **Name (név** ) annak a használati tervnek a neve, amelyet az Azure a Azure functions alkalmazás üzemeltetéséhez fog használni. Ez lesz a függvény alkalmazásának neve is, amely a tényleges függvényt tárolja. Megadhatja a saját egyedi értékét, vagy meghagyhatja az alapértelmezett javaslatot.
-* Győződjön meg arról, hogy az **előfizetés** megfelel a használni kívánt előfizetésnek 
-* Győződjön meg arról, hogy az **erőforráscsoport** a használni kívánt erőforráscsoporthoz van
-* A **csomag típusának** elhagyása *felhasználásként*
-* Válassza ki azt a **helyet** , amely megfelel az erőforráscsoport helyének.
-* Hozzon létre egy új **Azure Storage** -erőforrást az *új.* .. hivatkozás használatával. Állítsa be úgy a helyet, hogy egyezzen az erőforráscsoporthoz, használja a többi alapértelmezett értéket, majd válassza az OK gombot.
+A **Függvényalkalmazás (Windows) – Új** létrehozása ablakban töltse ki a következő mezőket:
+* **A** név annak a használat alapú csomagnak a neve, amely az Azure-ban a Azure Functions lesz. Ez a név a tényleges függvényt is tartalmazza a függvényalkalmazásra. Kiválaszthat egy egyedi értéket, vagy meghagyhatja az alapértelmezett javaslatot.
+* Győződjön meg **arról, hogy az Előfizetés** megfelel a használni kívánt előfizetésnek. 
+* Győződjön meg **arról, hogy** az Erőforráscsoportot szeretné használni.
+* A Csomag **típusa beállításnál hagyja** meg a **Felhasználás beállítását.**
+* Válassza ki **az** erőforráscsoport helyét.
+* Hozzon létre egy **új Azure Storage-erőforrást** az Új **hivatkozásra kattintva.** Állítsa be a helyet az erőforráscsoportnak megfelelőre, használja a többi alapértelmezett értéket, majd kattintson az **OK gombra.**
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="A Visual Studio képernyőképe az Azure-függvény közzététele párbeszédpanelen. Az új Function-alkalmazás részletei kitöltése folyamatban van, beleértve a nevet, az előfizetést, az erőforráscsoportot, a csomag típusát, a helyet és az Azure Storage-t.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Képernyőkép a Visual Studio, amely az Azure-függvény közzététele párbeszédpanelt mutatja. Egy új függvényalkalmazás részletei vannak kitöltve, beleértve a nevet, az előfizetést, az erőforráscsoportot, a csomag típusát, a helyet és az Azure Storage-et.":::
 
 Ezután kattintson a **Létrehozás** elemre.
 
-Rövid várakozás után, amíg az App Service létrejött, a párbeszédpanelnek vissza kell térnie a functions *instance* lapra, és az új Function alkalmazás jelenik meg az erőforráscsoport alá ágyazott **Function apps** területen. Válassza a *Befejezés* gombot.
+Az App Service létrehozása után megnyílik a **Functions-példány** lap. Az új függvényalkalmazás megjelenik a **Függvényalkalmazások területen** az erőforráscsoport alatt. Válassza a **Befejezés** gombot.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Azure-függvény közzététele a Visual Studióban: functions instance (a Function app után)":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Képernyőkép a Visual Studio, amely az Azure-függvény közzététele párbeszédpanelt mutatja. A Függvénypéldány lap van kiválasztva. Az új függvényalkalmazás megjelenik az erőforráscsoport alatt.":::
 
-A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződjön meg arról, hogy az összes információ helyesnek tűnik, majd válassza a **Közzététel** lehetőséget.
+A **fő** ablakban megnyíló Közzététel Visual Studio ellenőrizze, hogy minden információ helyesnek tűnik-e. Ezután válassza a **Publish** (Közzététel) lehetőséget.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="A Visual Studio képernyőképe az Azure-függvény közzététele párbeszédpanelen. Megjelenik az új Function alkalmazás a Function apps listájában, és van egy Befejezés gomb.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Képernyőkép a Visual Studio a Közzététel panelről. A Közzététel gomb ki van emelve.":::
 
 > [!NOTE]
-> Ha a következőhöz hasonló előugró ablak jelenik meg: :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="képernyőkép a Visual Studio előugró ablakban a közzétételi hitelesítő adatok nevű ablakban. Tartalmaz egy felhasználónevet és egy jelszót, valamint egy gombot, amely megkísérli beolvasni a hitelesítő adatokat az Azure-ból." border="false":::
-> Válassza a **kísérlet a hitelesítő adatok lekérése az Azure-ból és a** **Mentés** lehetőséget.
+> Ha az alábbi példához hasonló előugró ablak jelenik meg, válassza a Hitelesítő adatok lekérése az **Azure-ból** lehetőséget, majd válassza a **Mentés lehetőséget.**
+> :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Képernyőkép Visual Studio a Hitelesítő adatok közzététele előugró ablakkal. A Felhasználónév és a Jelszó mezőket tartalmazza. Egy gombot is tartalmaz, amely megpróbálja lekérni a hitelesítő adatokat az Azure-ból." border="false":::
 >
-> Ha a *functions verziójának frissítése az Azure* -ban vagy a *functions Runtime verziója nem egyezik az Azure-ban futó verzióval*:
+> Ha a következő figyelmeztetések valamelyikét látja, kövesse az utasításokat a Azure Functions verziójára való frissítéshez:
+> * "A Functions verziójának frissítése az Azure-ban."
+> * "A függvény futtatókörnyezetének verziója nem egyezik az Azure-ban futó verzióval."
 >
-> Az utasításokat követve frissítsen a legújabb Azure Functions futtatókörnyezet-verzióra. Ez a probléma akkor fordulhat elő, ha a Visual Studio egy régebbi verzióját használja.
+> Ezek a figyelmeztetések akkor jelennek meg, ha az alkalmazás egy régebbi verzióját Visual Studio.
 
-A Function alkalmazás most már közzé van téve az Azure-ban.
+A függvényalkalmazás most már közzé vantéve az Azure-ban.

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Egnyte-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Egnyte között.
+title: 'Oktatóanyag: Azure Active Directory Integráció az Egnyte-| Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és az Egnyte között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,216 +9,194 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/27/2020
+ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d102b492326971ef186ba50a557ad8d1df5b6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2662b686102a1a4f6aa6db0f7a4052de329def60
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454196"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519793"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Egnyte
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása az Egnyte-el
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Egnyte a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Egnyte-t az Azure AD-vel, a következőket teheti:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja az Egnyte-et a Azure Active Directory (Azure AD) használatával. Ha az Egnyte-et integrálja az Azure AD-val, a következő funkciókat használhatja:
 
-* A Egnyte-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Egnyte az Azure AD-fiókjával.
+* Az Azure AD vezérlése, aki hozzáféréssel rendelkezik az Egnyte-hoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be az Egnyte-ba az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Egnyte egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Az egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja és teszteli tesztkörnyezetben.
 
-* A Egnyte támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A Egnyte konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Az Egnyte támogatja **az sp által** kezdeményezett SSO-t.
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója rögzített sztringérték, így csak egy példány konfigurálható egy bérlőben.
 
-## <a name="adding-egnyte-from-the-gallery"></a>Egnyte hozzáadása a gyűjteményből
+## <a name="add-egnyte-from-the-gallery"></a>Az Egnyte hozzáadása a katalógusból
 
-A Egnyte Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Egnyte a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az Egnyte Azure AD-be való integrálásának konfigurálához hozzá kell adni az Egnyte-et a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Egnyte** kifejezést a keresőmezőbe.
-1. Válassza ki a **Egnyte** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a Vállalati **alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a keresőmezőbe az **Egnyte** parancsot.
+1. Válassza **az Egnyte lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-egnyte"></a>Az Azure AD SSO konfigurálása és tesztelése Az Egnyte-hez
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Egnyte-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Egnyte kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Konfigurálja és tesztelje az Azure AD SSO-t Form.com egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Form.com.
 
-Az Azure AD egyszeri bejelentkezés Egnyte való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Ha az Azure AD SSO-t a Form.com konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
-Az Azure AD SSO és a Egnyte konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy lehetővé tegye a felhasználók számára a funkció használatát.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[Konfigurálja az Egnyte SSO-t](#configure-egnyte-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazásoldalon.
+    1. **[Egnyte-tesztfelhasználó létrehozása](#create-egnyte-test-user)** – ha az Egnyte-ben a B.Simon megfelelője a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[Az SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[EGNYTE SSO konfigurálása](#configure-egnyte-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre Egnyte-teszt felhasználót](#create-egnyte-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Egnyte rendelkezik.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+1. A Azure Portal az **Egnyte** alkalmazásintegráció oldalán  keresse meg a Kezelés szakaszt, és válassza az **egyszeri bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer** kiválasztása lapon válassza az **SAML lehetőséget.**
+1. Az Egyszeri **bejelentkezés beállítása SAML-sel** lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-1. A [Azure Portal](https://portal.azure.com/) **Egnyte** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+4. Az **SAML-alapkonfiguráció szakaszban** hajtsa végre a következő lépéseket:
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+    a. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<companyname>.egnyte.com`
 
-    ![Egnyte tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.egnyte.com`
-
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.egnyte.com/samlconsumer/AzureAD`
+    b. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<companyname>.egnyte.com/samlconsumer/AzureAD`
     
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges Sign-On URL-címmel és a válasz URL-címével. Az érték beszerzéséhez forduljon a Egnyte ügyfélszolgálati [csapatához](https://www.egnyte.com/corp/contact_egnyte.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges urlSign-On a válasz URL-címével. Az értékért forduljon az [Egnyte-ügyfél](https://www.egnyte.com/corp/contact_egnyte.html) támogatási csapatához. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
+4. A **Set up Single Sign-On with SAML** (Egyetlen tanúsítvány beállítása SAML-sel) lap **SAML** aláíró tanúsítvány szakaszában kattintson a **Download** (Letöltés) gombra a tanúsítvány **(Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/certificatebase64.png)
 
-5. A **Egnyte beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+5. A **Set up Egnyte (Egnyte** beállítása) szakaszban másolja ki a megfelelő URL-cím(eke)t a követelménynek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD-tesztfelhasználó létrehozása 
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-    c. Kijelentkezési URL-cím
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
-
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
-
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Egnyte.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát. Ehhez hozzáférést biztosít az Egnyte-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza a **Egnyte** lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza az **Egnyte lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza** a Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja azt **a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az &quot;Alapértelmezett hozzáférés&quot; szerepkör lesz kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+## <a name=&quot;configure-egnyte-sso&quot;></a>Az Egnyte SSO konfigurálása
 
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-## <a name="configure-egnyte-sso"></a>Egnyte SSO konfigurálása
-
-1. Egy másik böngészőablakban jelentkezzen be a Egnyte vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az Egnyte vállalati webhelyre.
 
 2. Kattintson a **Beállítások** elemre.
    
-    ![1. beállítások](./media/egnyte-tutorial/ic787819.png "Beállítások")
+    ![1. beállítások](./media/egnyte-tutorial/settings-tab.png &quot;Beállítások")
 
-3. A menüben kattintson a **Beállítások** elemre.
+3. A menüben kattintson a **Beállítások elemre.**
 
-    ![Beállítások](./media/egnyte-tutorial/ic787820.png "Beállítások")
+    ![1. menü](./media/egnyte-tutorial/menu-tab.png "Menü")
 
-4. Kattintson a **konfiguráció** lapra, majd a **Biztonság** elemre.
+4. Kattintson a **Konfiguráció fülre,** majd a Biztonság **elemre.**
 
-    ![Biztonság](./media/egnyte-tutorial/ic787821.png "Biztonság")
+    ![Biztonság](./media/egnyte-tutorial/configuration.png "Biztonság")
 
-5. Az **egyszeres Sign-On hitelesítés** szakaszban hajtsa végre a következő lépéseket:
+5. Az Egyetlen **Sign-On hitelesítés szakaszban** hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezéses hitelesítés](./media/egnyte-tutorial/ic787822.png "Egyszeri bejelentkezéses hitelesítés")   
+    ![Egyszeri bejelentkezéses hitelesítés](./media/egnyte-tutorial/authentication.png "Egyszeri bejelentkezéses hitelesítés")   
     
-    a. **Egyszeri bejelentkezéses hitelesítésként** válassza az **SAML 2,0** lehetőséget.
+    a. Egyszeri **bejelentkezéses hitelesítésként válassza** az **SAML 2.0 lehetőséget.**
    
-    b. **Identitás-szolgáltatóként** válassza a **AzureAD** lehetőséget.
+    b. **Identitásszolgáltatóként válassza az** **AzureAD lehetőséget.**
    
-    c. Illessze be Azure Portalba másolt **bejelentkezési URL-címet** az **Identity Provider bejelentkezési URL-címe** szövegmezőbe.
+    c. **Illessze be** a bejelentkezési URL Azure Portal az Identitásszolgáltató bejelentkezési **URL-címe szövegmezőbe.**
    
-    d. Illessze be a Azure Portalból másolt **Azure ad-azonosítót** az **Identity Provider entitás-azonosító** szövegmezőbe.
+    d. Illessze be az **Azure AD-azonosítót,** amelyet a Azure Portal identitásszolgáltató entitásazonosítója **szövegmezőbe** másolt.
       
-    e. Nyissa meg az alap-64 kódolású tanúsítványt a Jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **Identity Provider tanúsítvány** szövegmezőbe.
+    e. Nyissa meg a base-64 kódolású tanúsítványt a Azure Portal-ból letöltött jegyzettömbben, másolja a tartalmát  a vágólapra, majd illessze be az Identitásszolgáltató tanúsítványa szövegmezőbe.
    
-    f. **Alapértelmezett felhasználó-hozzárendelésként** válassza az **e-mail-cím** elemet.
+    f. Alapértelmezett **felhasználóleképezésként válassza** az E-mail-cím **lehetőséget.**
    
-    : A **tartományhoz tartozó kibocsátó értékének használatakor** válassza a **Letiltva** lehetőséget.
+    : A **Use domain-specific issuer value (Tartományspecifikus kiállító értékének használata) beállításban** válassza a **disabled (letiltva) lehetőséget.**
    
     h. Kattintson a **Mentés** gombra.
 
-### <a name="create-egnyte-test-user"></a>Egnyte-tesztelési felhasználó létrehozása
+### <a name="create-egnyte-test-user"></a>Egnyte-tesztfelhasználó létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Egnyte, a Egnyte kell kiépíteni őket. Egnyte esetén a kiépítés manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók be tudják jelentkezni az Egnyte-ba, az Egnyte-ban kell kiépítenünk őket. Az Egnyte esetében a kiépítés manuális feladat.
 
-**Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:**
+**Felhasználói fiókok végrehajtásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **Egnyte** vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be **az Egnyte vállalati** webhelyére rendszergazdaként.
 
-2. Lépjen a **Beállítások \> felhasználók & csoportok menüpontra**.
+2. Kattintson a **Beállítások – Felhasználók és & \> elemre.**
 
-3. Kattintson az **új felhasználó hozzáadása** elemre, majd válassza ki a hozzáadni kívánt felhasználó típusát.
+3. Kattintson **az Új felhasználó hozzáadása elemre,** majd válassza ki a hozzáadni kívánt felhasználó típusát.
    
-    ![Felhasználók](./media/egnyte-tutorial/ic787824.png "Felhasználók")
+    ![Felhasználók](./media/egnyte-tutorial/add-user.png "Felhasználók")
 
-4. Az **új Kiemelt felhasználó** szakaszban hajtsa végre a következő lépéseket:
+4. Az Új **energiafelhasználó szakaszban** hajtsa végre a következő lépéseket:
     
-    ![Új általános jogú felhasználó](./media/egnyte-tutorial/ic787825.png "Új általános jogú felhasználó")   
+    ![Új általános felhasználó](./media/egnyte-tutorial/new-user.png "Új általános felhasználó")   
 
-    a. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **Brittasimon \@ contoso.com**-e-mail-címét.
+    a. Az **E-mail** szövegmezőbe írja be annak a felhasználónak az e-mail-címét, mint **Brittasimon \@ contoso.com.**
 
-    b. A **Felhasználónév** szövegmezőbe írja be a **Brittasimon**, például a következőt: Felhasználónév.
+    b. A **Felhasználónév** szövegmezőbe írja be annak a felhasználónak a felhasználónevét, mint **Brittasimon.**
 
-    c. Válassza az **egyszeri bejelentkezés** **hitelesítési típusként** lehetőséget.
+    c. Válassza **az Egyszeri bejelentkezés hitelesítési** **típust.**
    
     d. Kattintson a **Mentés** gombra.
     
     >[!NOTE]
-    >A Azure Active Directory fiók tulajdonosának értesítési e-mailt fog kapni.
+    >Az Azure Active Directory fióktulajdonos egy értesítő e-mailt kap.
     >
 
 >[!NOTE]
->Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Egnyte által biztosított Egnyte felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
+>Az Azure AD felhasználói fiókok létrehozására az Egnyte által biztosított bármely más Egnyte-felhasználói fiók létrehozására használható eszköz vagy API.
 >
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-Ha a hozzáférési panelen a Egnyte csempére kattint, automatikusan be kell jelentkeznie arra a Egnyte, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja az Egnyte bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül az Egnyte bejelentkezési URL-címére, és onnan indítsa el a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft Saját alkalmazások. Ha a böngészőben az Egnyte csempére Saját alkalmazások, a rendszer átirányítja az Egnyte bejelentkezési URL-címére. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+Az Egnyte konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

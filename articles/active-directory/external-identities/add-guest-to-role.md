@@ -1,6 +1,6 @@
 ---
-title: B2B csoportmunka-felhasználó hozzáadása szerepkörhöz – Azure Active Directory
-description: Vendég felhasználó hozzáadása egy szerepkörhöz Azure Active Directory
+title: B2B együttműködési felhasználó hozzáadása egy szerepkörhöz – Azure Active Directory
+description: Vendégfelhasználó hozzáadása egy szerepkörhöz a Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,28 +12,30 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e9983c265fcc032908424f747066f8f348771f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a931fe43b6be406f0b2a4b8193c1631261f7e5
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87909830"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575666"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Engedélyek megadása a Azure Active Directory-bérlőben lévő partnerszervezetek felhasználói számára
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Engedélyek megadása a bérlőben a partnerszervezetek Azure Active Directory számára
 
-Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködéssel rendelkező felhasználók vendégként lesznek hozzáadva a címtárhoz, és a címtárban lévő vendég engedélyek alapértelmezés szerint korlátozottak. Előfordulhat, hogy a vállalatának szüksége van néhány vendégre, hogy magasabb szintű jogosultsági szerepköröket töltsön ki a szervezetében. A magasabb jogosultsági szintű szerepkörök meghatározásának támogatásához a vendég felhasználói hozzáadhatók a kívánt szerepkörökhöz a szervezet igényeinek megfelelően.
+Azure Active Directory (Azure AD) B2B együttműködési felhasználók vendégfelhasználóként vannak hozzáadva a címtárhoz, és a címtár vendégengedélyei alapértelmezés szerint korlátozva vannak. Előfordulhat, hogy vállalatának néhány vendégfelhasználóra van szüksége, hogy magasabb jogosultsági szintű szerepköröket töltsenek ki a szervezetben. A magasabb jogosultságú szerepkörök definiálása érdekében a vendégfelhasználók bármilyen szerepkörhöz hozzáadhatóak a szervezet igényei alapján.
+
+Ha egy címtár-szerepkört rendel egy vendégfelhasználóhoz, a vendégfelhasználó további, a szerepkörhöz kapott engedélyekkel fog rendelkezni, beleértve az alapszintű olvasási engedélyeket is. Lásd: [Az Azure AD beépített szerepkörei.](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
 
 ## <a name="default-role"></a>Alapértelmezett szerepkör
 
-![Az alapértelmezett címtári szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/default-role.png)
+![Képernyőkép az alapértelmezett címtárszerepkről](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Globális rendszergazdai szerepkör
 
-![A globális rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/global-admin-role.png)
+![Képernyőkép a globális rendszergazdai szerepkörről](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>Korlátozott rendszergazdai szerepkör
 
-![A korlátozott rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/limited-admin-role.png)
+![Képernyőkép a korlátozott rendszergazdai szerepkörről](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

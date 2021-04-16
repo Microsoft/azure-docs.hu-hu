@@ -1,74 +1,79 @@
 ---
-title: Folyamaton kívüli igazolás támogatása az Intel SGX ENKLÁVÉHOZ quote Helper Daemonset elemet az Azure-ban (előzetes verzió)
-description: Daemonset elemet a SGX ENKLÁVÉHOZ alkalmazás folyamatán kívüli ajánlat létrehozásához. Ez a cikk azt mutatja be, hogy a rendszer a rovided kívüli, a tárolón belül futó bizalmas számítási feladatokhoz a folyamaton kívüli igazolási létesítményt ismerteti.
+title: Igazolás támogatása az Intel SGX ajánlati segítő DaemonSettel az Azure-ban (előzetes verzió)
+description: Egy DaemonSet, amely az ajánlatot az Intel SGX-alkalmazásfolyamaton kívül generálja. Ez a cikk azt ismerteti, hogyan biztosítja a folyamaton kívülre vonatkozó igazolási létesítményt a tárolóban futó bizalmas számítási feladatokhoz.
 ms.service: container-service
 ms.subservice: confidential-computing
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 0ebeb96557b7e20d123577c0ab9c8fc392abbfba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 849fd7afa3f9365f31ee8e03d9f9cc2174d64304
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932628"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484404"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Platform Software Management a SGX ENKLÁVÉHOZ quote Helper Daemon set (előzetes verzió)
+# <a name="platform-software-management-with-intel-sgx-quote-helper-daemonset-preview"></a>Platformszoftverek kezelése az Intel SGX ajánlatkezelő daemonSet (előzetes verzió) használatával
 
-A távoli igazolást végző [enklávé-alkalmazásokhoz](confidential-computing-enclaves.md) generált idézőjel szükséges. Ez az ajánlat kriptográfiai igazolást nyújt az alkalmazás identitásáról és állapotáról, valamint az enklávét futtató környezetről. Az árajánlat létrehozásához az Intel platform Software Components (PSW) részét képező megbízható szoftver-összetevők szükségesek.
+[A távoli igazolást](confidential-computing-enclaves.md) végző enklávéalkalmazások generált ajánlatot igényelnek. Ez az ajánlat kriptográfiai igazolást biztosít az identitásról és az alkalmazás állapotáról, valamint az enklávét futtató környezetről. Az ajánlat generálása olyan megbízható szoftverösszetevőt igényel, amely az Intel Platform Software Components (PSW) részét képezi.
 
 ## <a name="overview"></a>Áttekintés
  
-Az Intel két igazolási módot támogat az idézőjelek létrehozásához:
-- **in-proc**: az enklávé alkalmazás folyamatán belül tárolja a megbízható szoftver összetevőit.
+Az Intel két igazolási módot támogat az ajánlat generálása futtatásához:
 
-- **folyamaton** kívüli: az enklávé alkalmazáson kívül tárolja a megbízható szoftverek összetevőit.
+- *A folyamaton belül az* enklávé alkalmazásfolyamatában található megbízható szoftverösszetevők vannak telepítve.
+
+- *A folyamaton kívüli gazdagépen* az enklávéalkalmazáson kívül található megbízható szoftverösszetevők is találhatóak.
  
-Az Open enklávé SDK-val létrehozott SGX ENKLÁVÉHOZ-alkalmazások alapértelmezés szerint a-proc igazolási módot használják. A SGX ENKLÁVÉHOZ-alapú alkalmazások lehetővé teszik a folyamaton kívüli működést, és a szükséges összetevők (például az építészeti enklávé Service Manager (AESM), az alkalmazáson kívüli) további üzemeltetését igénylik.
+Az Open Enclave SDK-val készült Intel Software Guard Extension- (Intel SGX-) alkalmazások alapértelmezés szerint a folyamaton keresztüli igazolási módot használják. Az Intel SGX-alapú alkalmazások lehetővé teszik a folyamaton túli igazolási módot. Ha ezt a módot szeretné használni, további üzemeltetésre van szüksége, és az alkalmazáson kívül kell elérhetővé teszi a szükséges összetevőket, például az Architectural Enclave Service Manager (AESM) összetevőt.
 
-A funkció használata **erősen ajánlott**, mivel az az időpontot fokozza az enklávé alkalmazásai számára az Intel platform frissítései vagy a DCAP-illesztőprogram frissítései során.
+Ez a funkció növeli az enklávé-alkalmazások üzemidejét az Intel platform frissítései vagy a DCAP-illesztőprogramok frissítései során. Ezért javasoljuk a használatát.
 
-A szolgáltatás az AK-fürtön való engedélyezéséhez módosítsa az Add--Enable-sgxquotehelper parancsot a CLI-be a bizalmas számítástechnikai bővítmény engedélyezésekor. Részletes CLI-utasítások [itt](confidential-nodes-aks-get-started.md)találhatók: 
+Ha engedélyezni szeretné ezt a funkciót egy Azure Kubernetes Services- (AKS-) fürtön, adja hozzá a parancsot az Azure CLI-hez a bizalmas számítási bővítmény `--enable-sgxquotehelper` engedélyezésekor. 
 
 ```azurecli-interactive
 # Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
 az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
 ```
 
-## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Miért és milyen előnyökkel jár az out-of-proc?
+További információ: [Rövid útmutató: AKS-fürt](confidential-nodes-aks-get-started.md)üzembe helyezése bizalmas számítási csomópontokkal az Azure CLI használatával.
 
--   Nem szükséges frissítés a PSW-hoz készült idézőjelek létrehozásához az egyes tároló alkalmazások esetében: a folyamaton kívüli tárolók tulajdonosainak nem kell a tárolóban lévő frissítéseket kezelnie. A tároló tulajdonosai Ehelyett a szolgáltató által megadott felületet használják, amely a központi szolgáltatást a tárolón kívül hívja meg, amelyet a szolgáltató fog frissíteni és felügyelni.
+## <a name="benefits-of-the-out-of-process-mode"></a>A folyamaton nem használható mód előnyei
 
--   Az elavult PSW-összetevők miatt nem kell aggódnia az igazolási hibákkal kapcsolatban: az idézőjelek létrehozása magában foglalja a megbízható számítástechnikai alap (TCB) részét képező, megbízható SW Components-Quoting enklávé (QE) & kiépítési tanúsítvány enklávéját (PCE). Ezeknek az SW-összetevőknek naprakésznek kell lenniük az igazolási követelmények fenntartása érdekében. Mivel a szolgáltató kezeli ezeknek az összetevőknek a frissítéseit, az ügyfeleknek soha nem kell az igazolási hibákkal foglalkoznia a tárolón belüli elavult megbízható SW-összetevők miatt.
+Az alábbi lista az igazolási mód néhány fő előnyét ismerteti:
 
--   Az EPC-memória jobb kihasználtsága a folyamaton belüli igazolási módban, minden egyes enklávé-alkalmazásnak a QE és a PCE másolatát kell létrehoznia a távoli igazoláshoz. A folyamaton kívül nem szükséges, hogy a tároló tárolja ezeket az enklávékat, így nem használja az enklávé memóriáját a tároló kvótából.
+-   A PSW ajánlat-generáló összetevőihez nem szükséges frissítés az egyes tárolóba helyezni kívánt alkalmazásokhoz. A tárolótulajdonosoknak nem kell kezelniük a frissítéseket a tárolójukban. A tárolótulajdonosok ehelyett arra a szolgáltatói felületre támaszkodnak, amely meghívja a központosított szolgáltatást a tárolón kívül. A szolgáltató frissíti és kezeli a tárolót.
 
--   Védelmet biztosít a kernel-kényszerítés ellen, ha a SGX ENKLÁVÉHOZ-illesztőprogram a Linux kernelbe áramlik, és az enklávé magasabb szintű jogosultságokkal fog rendelkezni. Ez a jogosultság lehetővé teszi az enklávé számára a PCE meghívását, amely a folyamaton kívüli módban futó enklávé-alkalmazást fogja megszüntetni. Alapértelmezés szerint az enklávék nem kapják meg ezt az engedélyt. Ha ezt a jogosultságot egy enklávé-alkalmazáshoz kívánja megadni, az alkalmazás telepítési folyamatának módosítására van szükség. Ezt egyszerűen kezelheti az olyan folyamaton kívüli modellekhez, mint a folyamaton kívüli kérelmeket kezelő szolgáltatás szolgáltatója, gondoskodni fog arról, hogy a szolgáltatás telepítve legyen ezzel a jogosultsággal.
+-   Nem kell aggódnia az igazolási hibák miatt az elavult PSW-összetevők miatt. Az összetevők frissítéseit a szolgáltató kezeli.
 
--   A PSW & DCAP való visszamenőleges kompatibilitás ellenőrzése nem szükséges. A rendszer a frissítés előtt ellenőrzi, hogy a PSW az idézőjel generációs összetevőinek frissítéseit a szolgáltató visszafelé kompatibilis-e. Ez segítséget nyújt a kompatibilitási problémák előzetes kezelésében és a bizalmas számítási feladatokhoz tartozó frissítések telepítése előtt.
+-   A folyamaton kívül mód jobban kihasználja az EPC-memóriát, mint a folyamat közbeni mód. Folyamat közben minden enklávéalkalmazásnak példányosoznia kell a QE és a PCE másolatát a távoli igazoláshoz. Folyamaton túli módban nincs szükség arra, hogy a tároló tárolja ezeket az enklávékat, ezért nem használ fel enklávémot a tárolók kvótájaból.
 
-## <a name="how-does-the-out-of-proc-attestation-mode-work-for-confidential-workloads-scenario"></a>Hogyan működik a folyamaton kívüli igazolási mód a bizalmas számítási feladatok esetén?
+-   Amikor az Intel SGX-illesztőt egy Linux-kernelen keresztül vezeti be, kényszerítve van arra, hogy egy enklávé magasabb szintű jogosultsággal rendelkezik. Ez a jogosultság lehetővé teszi, hogy az enklávé meghívja a PCE-t, ami megszakítja a folyamat közben futó enklávéalkalmazást. Alapértelmezés szerint az enklávaok nem kapják meg ezt az engedélyt. Ha ezt a jogosultságot enklávéalkalmazásnak adja, az alkalmazás telepítési folyamatának módosításaira van szükség. Ezzel szemben a folyamaton túli módban a folyamaton túli kérelmeket kezelő szolgáltatás szolgáltatója biztosítja, hogy a szolgáltatás ezzel a jogosultsággal telepíthető.
 
-A magas szintű kialakítás azt a modellt követi, amelyben az árajánlat-kérelmező és az idézőjelek létrehozása külön történik, de ugyanazon a fizikai gépen. Az idézőjelek létrehozása központosított módon történik, és az összes entitásra vonatkozó kérelmeket szolgál ki. Az illesztőfelületet megfelelően meg kell határozni, és minden entitás számára meg kell állapítani az idézőjelek kérését.
+-   A PSW-hez és a DCAP-hez nem kell visszamenőleges kompatibilitást ellenőriznie. A PSW ajánlat-generáló összetevőinek frissítéseit a szolgáltató a frissítés előtt ellenőrzi a visszamenőleges kompatibilitás érdekében. Ez segít kezelni a kompatibilitási problémákat a bizalmas számítási feladatok frissítésének üzembe helyezése előtt.
 
-![SGX enklávéhoz-ajánlat segítő AESM](./media/confidential-nodes-out-of-proc-attestation/aesmmanager.png)
+## <a name="confidential-workloads"></a>Bizalmas számítási feladatok
 
-A fenti absztrakt modell a bizalmas munkaterhelési forgatókönyvre vonatkozik, a már elérhető AESM szolgáltatás kihasználása révén. A AESM tárolóban van, és Daemonset elemet a Kubernetes-fürtön. A Kubernetes az egyes ügynökök csomópontjain üzembe helyezhető AESM-tárolók egyetlen példányát garantálja. Az új SGX ENKLÁVÉHOZ-daemonset elemet az SGX enklávéhoz-Device-plugin daemonset elemet függ, mivel a AESM-szolgáltatás tárolója az SGX enklávéhoz-Device-beépülő modulból kér EPC memóriát a QE és a PCE enklávék elindításához.
+Az ajánlatkérés és az ajánlat létrehozása külön fut, de ugyanazon a fizikai gépen. Az ajánlat generálása központosított, és az összes entitás ajánlatkérését szolgálja ki. Ahhoz, hogy bármely entitás lekérte az idézőjeleket, a felületet megfelelően definiálni kell, és felderíthetőnek kell lennie.
 
-Minden tárolónak a folyamaton kívüli idézőjelek létrehozásához kell bejelentkeznie a **SGX_AESM_ADDR = 1** környezeti változó beállításával a létrehozás során. A tárolónak tartalmaznia kell a libsgx-quota-ex csomagot is, amely felelős az alapértelmezett Unix-tartományhoz tartozó kérelem irányításához
+![Az árajánlat-kérelmező, az ajánlat létrehozása és a felület közötti kapcsolatokat bemutató diagram.](./media/confidential-nodes-out-of-proc-attestation/aesmmanager.png)
 
-Egy alkalmazás továbbra is használhatja a folyamaton belüli igazolást, de az alkalmazásban nem használható egyszerre a-proc és az out-of-proc. A folyamaton kívüli infrastruktúra alapértelmezés szerint elérhető, és erőforrásokat használ.
+Ez az absztrakt modell a bizalmas számítási feladatok forgatókönyvére vonatkozik a már elérhető AESM-szolgáltatás előnyeinek kihasználása által. Az AESM tárolóba van tárolódva, és DaemonSetként van üzembe helyezni a Kubernetes-fürtön. A Kubernetes garantálja az AESM-szolgáltatástároló podba csomagolt egyetlen példányát az egyes ügynökcsomóponton való üzembe helyezéshez. Az új Intel SGX idézet DaemonSet függőséget fog tartalmazni az sgx-device-plugin DaemonSettől, mert az AESM-szolgáltatás tárolója EPC memóriát kér az sgx-device-beépülő modulból a QE és a PCE-enklávek indításához.
 
-## <a name="sample-implementation"></a>Példa implementáció
+Minden tárolónak le kell választania a folyamaton kívüli ajánlatkészítést a környezeti változó beállításával a `SGX_AESM_ADDR=1` létrehozás során. A tárolónak tartalmaznia kell a libsgx-quote-ex csomagot is, amely felelős azért, hogy a kérést az alapértelmezett Unix-tartomány szoftvercsatornájára irányja.
 
-Az alábbi Docker-fájl egy Open enklávé-alapú alkalmazás mintája. Állítsa be a SGX_AESM_ADDR = 1 környezeti változót a Docker-fájlban, vagy állítsa azt a telepítési fájlra. Kövesse az alábbi mintát a Docker-fájl és az üzembe helyezési YAML részleteihez. 
+Egy alkalmazás továbbra is használhatja a folyamaton belüli igazolást, mint korábban, de az alkalmazáson belül nem használható egyszerre feldolgozás alatt és használaton belül. A folyamaton túli infrastruktúra alapértelmezés szerint elérhető, és erőforrásokat használ fel.
+
+## <a name="sample-implementation"></a>Példa implementációra
+
+Az alábbi Docker-fájl az Open Enclave-en alapuló alkalmazások mintája. Állítsa be a környezeti változót a Docker-fájlban, vagy állítsa be az üzembe `SGX_AESM_ADDR=1` helyezési fájlban. Az alábbi minta a Docker-fájl és az üzembe helyezés részleteit tartalmazza. 
 
   > [!Note] 
-  > Az Intel által az **libsgx** -ből származó, a folyamaton kívüli igazoláshoz az alkalmazás-tárolóban kell becsomagolni, hogy megfelelően működjön.
+  > Ahhoz, hogy a folyamaton belülről származó igazolás megfelelően működjön, az Intel libsgx-quote-ex könyvtárát az alkalmazástárolóba kell csomagolni.
     
 ```yaml
-# Refer to Intel_SGX_Installation_Guide_Linux for detail
+# Refer to Intel_SGX_Installation_Guide_Linux for details
 FROM ubuntu:18.04 as sgx_base
 RUN apt-get update && apt-get install -y \
     wget \
@@ -95,12 +100,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt/openenclave/share/openenclave/samples/remote_attestation
 RUN . /opt/openenclave/share/openenclave/openenclaverc \
     && make build
-# this sets the flag for out of proc attestation mode. alternatively you can set this flag on the deployment files
+# This sets the flag for out-of-process attestation mode. Alternatively you can set this flag on the deployment files.
 ENV SGX_AESM_ADDR=1 
 
 CMD make run
 ```
-Azt is megteheti, hogy az üzembe helyezési YAML fájlban az alább látható módon beállíthatja a folyamaton kívüli igazolási módot
+Másik lehetőségként beállíthatja a folyamaton belüli igazolási módot az üzembe helyezési .yaml-fájlban. Ezt a következőképpen teheti meg:
 
 ```yaml
 apiVersion: batch/v1
@@ -130,15 +135,9 @@ spec:
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-[Bizalmas csomópontok (DCsv2-sorozat) kiépítése az AK-on](./confidential-nodes-aks-get-started.md)
 
-[Gyors kezdő minták – bizalmas tárolók](https://github.com/Azure-Samples/confidential-container-samples)
+[Rövid útmutató: AKS-fürt üzembe helyezése bizalmas számítási csomópontokkal az Azure CLI használatával](./confidential-nodes-aks-get-started.md)
 
-[DCsv2 SKU-lista](../virtual-machines/dcv2-series.md)
+[Gyors kezdőminták – bizalmas tárolók](https://github.com/Azure-Samples/confidential-container-samples)
 
-<!-- LINKS - external -->
-[Azure Attestation]: ../attestation/index.yml
-
-
-<!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
+[DCsv2 SKUs](../virtual-machines/dcv2-series.md)

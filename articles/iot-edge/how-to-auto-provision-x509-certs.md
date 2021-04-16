@@ -1,6 +1,6 @@
 ---
-title: Eszközök automatikus kiépítése a DPS használatával X. 509 tanúsítványokkal – Azure IoT Edge | Microsoft Docs
-description: Az X. 509 tanúsítványokkal tesztelheti a Azure IoT Edge automatikus eszköz-üzembe helyezését az eszközök kiépítési szolgáltatásával
+title: Eszközök automatikus kiépítése DPS-sel X.509-tanúsítványokkal – Azure IoT Edge | Microsoft Docs
+description: X.509-tanúsítványok használata az automatikus eszközátépítés teszteléséhez Azure IoT Edge Device Provisioning Service-szel
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,62 +10,62 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3c783c57b49b45943882703aec6d735d12bf830
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199830"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481956"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
+# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Eszköz létrehozása és kiépítése IoT Edge X.509-tanúsítványokkal
 
 [!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
-Az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)segítségével az X. 509 tanúsítvánnyal automatikusan kiépítheti IoT Edge eszközeit. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
+A [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml)segítségével automatikusan kiépíthet IoT Edge X.509-tanúsítványokkal. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy eszköz-kiépítési szolgáltatást az X. 509 tanúsítványokkal egy IoT Edge eszközön a következő lépésekkel:
+Ez a cikk bemutatja, hogyan hozhat létre device Provisioning Service-regisztrációt X.509-tanúsítványokkal egy IoT Edge eszközön a következő lépésekkel:
 
-* Tanúsítványok és kulcsok generálása.
-* Hozzon létre egy eszköz egyéni regisztrációját, vagy egy csoportos regisztrációt az eszközök készletén.
-* Telepítse a IoT Edge futtatókörnyezetet, és regisztrálja az eszközt a IoT Hub.
+* Tanúsítványok és kulcsok létrehozása.
+* Egyéni regisztrációt hozhat létre egy eszközhöz, vagy csoportos regisztrációt egy eszközkészlethez.
+* Telepítse a IoT Edge, és regisztrálja az eszközt a IoT Hub.
 
-Az X. 509 tanúsítványok az igazolási mechanizmusként való használata kiváló módszer a termelés méretezésére és az eszközök üzembe helyezésének egyszerűsítésére. Az X. 509 tanúsítványok általában megbízhatósági tanúsítványlánc szerint vannak rendezve. Egy önaláírt vagy megbízható főtanúsítványtól kezdve a lánc minden tanúsítványa aláírja a következő alacsonyabb tanúsítványt. Ez a minta létrehoz egy delegált megbízhatósági láncot a főtanúsítványból az egyes közbenső tanúsítványokon keresztül az eszközre telepített utolsó "levél" tanúsítványon.
+Az X.509-tanúsítványok igazolási mechanizmusként való használata kiváló módszer az éles környezet méretezésére és az eszközátépítés egyszerűsítésére. Az X.509-tanúsítványok általában egy megbízhatósági láncba vannak rendezve. Egy önaírt vagy megbízható főtanúsítványtól kezdve a láncban minden tanúsítvány aláírja a következő alacsonyabb szintű tanúsítványt. Ez a minta egy delegált megbízhatósági láncot hoz létre a főtanúsítványtól az egyes köztes tanúsítványokon keresztül az eszközön telepített végső levéltanúsítványig.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív IoT Hub.
-* A IoT Edge eszköz fizikai vagy virtuális eszköze.
-* A [git](https://git-scm.com/download/) legújabb verziója telepítve van.
-* Az Azure-beli IoT Hub Device Provisioning Service egy példánya, amely az IoT hubhoz van csatolva.
-  * Ha nincs eszköz kiépítési szolgáltatási példánya, kövesse az [IOT hub DPS beállítása](../iot-dps/quick-setup-auto-provision.md)című témakör utasításait.
-  * Miután futtatta az eszköz kiépítési szolgáltatását, másolja az **azonosító hatókör** értékét az Áttekintés lapról. Ezt az értéket használja a IoT Edge futtatókörnyezet konfigurálásakor.
+* Fizikai vagy virtuális eszköz, amely IoT Edge eszköz.
+* A Git legújabb [telepített](https://git-scm.com/download/) verziója.
+* Az Azure-ban IoT Hub Device Provisioning Service példánya, amely az IoT Hubhoz kapcsolódik.
+  * Ha nem rendelkezik Device Provisioning Service-példánysal, kövesse a Következő útmutató [utasításait: Set up the IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+  * Miután futtatta a Device Provisioning Service-t, másolja az Azonosító hatóköre **értéket** az áttekintő lapról. Ezt az értéket akkor használja, amikor a IoT Edge konfigurálja.
 
-## <a name="generate-device-identity-certificates"></a>Eszköz-azonosító tanúsítványok előállítása
+## <a name="generate-device-identity-certificates"></a>Eszközidentitás-tanúsítványok létrehozása
 
-Az eszköz-identitás tanúsítványa egy levélbeli tanúsítvány, amely egy megbízható tanúsítványlánc használatával csatlakozik az első X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz. Az eszköz identitási tanúsítványának köznapi névvel (CN) kell rendelkeznie ahhoz az eszköz-AZONOSÍTÓhoz, amelyhez az eszköznek az IoT hub-ban szüksége van.
+Az eszközidentitás-tanúsítvány egy levél-tanúsítvány, amely egy tanúsítványláncon keresztül kapcsolódik az első X.509 hitelesítésszolgáltatói (CA) tanúsítványhoz. Az eszközidentitási tanúsítványban a köznévnek (CN) arra az eszközazonosítóra kell beállítania, hogy az eszköz az IoT Hubon legyen.
 
-Az eszköz-azonosító tanúsítványokat csak az IoT Edge eszköz kiépítési és az Azure-IoT Hub hitelesítő eszköz használatával lehet használni. A tanúsítványokat nem aláírják, ellentétben a IoT Edge eszköz által a moduloknak vagy a Leaf eszközöknek az ellenőrzés céljából megjelenített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokkal. További információ: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
+Az eszközidentitási tanúsítványok csak az eszköz IoT Edge és az eszköz hitelesítéséhez használhatók Azure IoT Hub. Ezek nem aláíró tanúsítványok, ellentétben azokkal a hitelesítésszolgáltatói tanúsítványokkal, IoT Edge az eszköz modulokat vagy levéleszközöket biztosít az ellenőrzéshez. További információkért lásd a [Azure IoT Edge részleteit.](iot-edge-certs.md)
 
-Az eszköz azonosító tanúsítványának létrehozása után két fájlt kell tartalmaznia: egy. cer vagy. PEM fájlt, amely tartalmazza a tanúsítvány nyilvános részét, valamint egy. cer vagy. PEM fájlt a tanúsítvány titkos kulcsával. Ha azt tervezi, hogy csoportos regisztrációt használ a DPS-ben, akkor a közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nyilvános részét is meg kell adni ugyanabban a tanúsítványlánc-megbízhatósági láncban.
+Az eszközidentitás-tanúsítvány létrehozása után két fájlnak kell lennie: egy .cer vagy .pem fájllal, amely a tanúsítvány nyilvános részét tartalmazza, valamint egy .cer vagy .pem fájllal, amely tartalmazza a tanúsítvány titkos kulcsát. Ha csoportos regisztrációt tervez használni a DPS-ben, szüksége lesz egy köztes vagy fő hitelesítésszolgáltatói tanúsítvány nyilvános részére is ugyanabban a megbízhatósági láncban.
 
-A következő fájlokra van szükség az automatikus kiépítés beállításához az X. 509 használatával:
+Az automatikus kiépítés X.509-ben való beállításhoz a következő fájlokra lesz szüksége:
 
-* Az eszköz identitásának tanúsítványa és a titkos kulcs tanúsítványa. Ha egyéni regisztrációt hoz létre, a rendszer feltölti az eszköz Identity tanúsítványát a DPS-be. A titkos kulcsot a IoT Edge futtatókörnyezet adja át.
-* Egy teljes láncú tanúsítvány, amelynek tartalmaznia kell legalább az eszköz identitását és a köztes tanúsítványokat. A rendszer átadja a teljes lánc tanúsítványát a IoT Edge futtatókörnyezetnek.
-* Egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány a megbízhatósági tanúsítványlánc alapján. A tanúsítványt a rendszer feltölti a DPS-be, ha létrehoz egy csoportos regisztrációt.
+* Az eszközidentitás-tanúsítvány és annak titkoskulcs-tanúsítványa. Ha egyéni regisztrációt hoz létre, a rendszer feltölti az eszközidentitási tanúsítványt a DPS-be. A titkos kulcsot a IoT Edge számára.
+* Teljes láncú tanúsítvány, amelynek legalább az eszközidentitást és a köztes tanúsítványokat kell benne lennie. A teljes láncú tanúsítványt a IoT Edge futtatja.
+* Egy köztes vagy fő hitelesítésszolgáltatói tanúsítvány a megbízhatósági láncból. Ez a tanúsítvány akkor lesz feltöltve a DPS-be, ha csoportos regisztrációt hoz létre.
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
 > [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+> A libiisesm korlátozása jelenleg megakadályozza a tanúsítványok használatát, amelyek 2038. január 1-jén vagy azt követően lejárnak.
 
 :::moniker-end
 
-### <a name="use-test-certificates-optional"></a>Tesztelési tanúsítványok használata (nem kötelező)
+### <a name="use-test-certificates-optional"></a>Teszttanúsítványok használata (nem kötelező)
 
-Ha nincs elérhető hitelesítésszolgáltató az új identitási tanúsítványok létrehozásához, és szeretné kipróbálni ezt a forgatókönyvet, a Azure IoT Edge git-tárház olyan parancsfájlokat tartalmaz, amelyek segítségével tesztelési tanúsítványokat hozhat létre. Ezek a tanúsítványok csak fejlesztési tesztelésre vannak kialakítva, és nem használhatók éles környezetben.
+Ha nem rendelkezik hitelesítésszolgáltatóval új identitástanúsítványok létrehozásához, és ki szeretné próbálni ezt a forgatókönyvet, a Azure IoT Edge git-adattár olyan szkripteket tartalmaz, amelyek használatával teszttanúsítványokat hozhat létre. Ezek a tanúsítványok csak fejlesztési teszteléshez vannak kialakítva, és nem használhatók éles környezetben.
 
-A tesztelési tanúsítványok létrehozásához kövesse a [bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md)című témakör lépéseit. A tanúsítvány-létrehozási parancsfájlok beállításához és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához hajtsa végre a két szükséges szakaszt. Ezután kövesse az eszköz-identitás tanúsítványának létrehozásához szükséges lépéseket. Ha elkészült, a következő tanúsítványláncot és kulcspárt kell használnia:
+A teszttanúsítványok létrehozásához kövesse a Bemutató tanúsítványok létrehozása [az eszköz funkcióinak teszteléséhez IoT Edge lépéseit.](how-to-create-test-certificates.md) A tanúsítvány-létrehozási parancsfájlok beállításához és a legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozásához töltse ki a két szükséges szakaszt. Ezután kövesse az eszközidentitás-tanúsítvány létrehozásához szükséges lépéseket. Ha elkészült, a következő tanúsítványlánc- és kulcspárnak kell lennie:
 
 Linux:
 
@@ -77,40 +77,40 @@ Windows:
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-Mindkét tanúsítványra szükség van a IoT Edge eszközön. Ha egyéni regisztrációt fog használni a DPS-ben, akkor fel kell töltenie a. CERT. PEM fájlt. Ha a DPS szolgáltatásban csoportos regisztrációt fog használni, akkor a feltöltéshez ugyanahhoz a tanúsítványlánchez is szüksége lesz egy közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Ha bemutató tanúsítványokat használ, használja a tanúsítványt a `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` csoportos regisztrációhoz.
+Mindkét tanúsítványra szüksége lesz a IoT Edge eszközön. Ha egyéni regisztrációt használ a DPS-ben, akkor feltölti a .cert.pem fájlt. Ha csoportos regisztrációt fog használni a DPS-ben, akkor a feltöltéshez egy köztes vagy fő hitelesítésszolgáltatói tanúsítványra is szüksége lesz ugyanabban a megbízhatósági láncban. Ha bemutató tanúsítványokat használ, használja a tanúsítványt `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` a csoportregisztráláshoz.
 
-## <a name="create-a-dps-individual-enrollment"></a>Egyéni DPS-regisztráció létrehozása
+## <a name="create-a-dps-individual-enrollment"></a>DPS egyéni regisztráció létrehozása
 
-A generált tanúsítványok és kulcsok használatával egyéni regisztrációt hozhat létre a DPS-ben egyetlen IoT Edge eszközhöz. Az egyéni regisztrációk az eszköz személyazonossági tanúsítványának nyilvános részét képezik, és megfelelnek az eszköz tanúsítványának.
+A létrehozott tanúsítványokkal és kulcsokkal egyéni regisztrációt hozhat létre a DPS-ben egyetlen IoT Edge eszközhöz. Az egyéni regisztrációk az eszköz identitási tanúsítványának nyilvános részét az eszközön található tanúsítvánnyal egyeznek meg.
 
-Ha több IoT Edge eszközt szeretne kiépíteni, kövesse a következő szakaszban leírt lépéseket, és [hozzon létre egy DPS csoportos regisztrációt](#create-a-dps-group-enrollment).
+Ha több regisztrációs eszközt is ki IoT Edge, kövesse [a KÖVETKEZŐ, DPS-csoportos](#create-a-dps-group-enrollment)regisztráció létrehozása című szakaszban található lépéseket.
 
-Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszköz Twin-ben címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges mérőszámok, például a régió, a környezet, a hely vagy az eszköz típusa alapján. Ezek a címkék [automatikus központi telepítések](how-to-deploy-at-scale.md)létrehozásához használhatók.
+Amikor DPS-regisztrációt hoz létre, lehetősége van kezdeti ikerállapot **deklarálni a kezdeti ikereszköz-állapotot.** Az ikereszközön címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges metrika (például régió, környezet, hely vagy eszköztípus) alapján. Ezek a címkék automatikus központi [telepítések létrehozására használhatók.](how-to-deploy-at-scale.md)
 
-További információ az eszközök kiépítési szolgáltatásának regisztrálásáról: az [eszközök regisztrálásának kezelése](../iot-dps/how-to-manage-enrollments.md).
+A Device Provisioning Service-regisztrációval kapcsolatos további információkért lásd: [Az eszközregisztrációs szolgáltatás kezelése.](../iot-dps/how-to-manage-enrollments.md)
 
    > [!TIP]
-   > Az Azure CLI-ben létrehozhat egy [beléptetést](/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
+   > Az Azure CLI-ben létrehozhat [](/cli/azure/iot/dps/enrollment) egy regisztrációt vagy egy  regisztrációs csoportot, és a peremhálózati jelölővel megadhatja, hogy egy eszköz vagy eszközcsoport egy IoT Edge eszköz. [](/cli/azure/iot/dps/enrollment-group)
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a IoT Hub Device Provisioning Service.
 
-1. A **Beállítások** területen válassza a **regisztrációk kezelése** lehetőséget.
+1. A **Beállítások alatt** válassza a **Regisztrációk kezelése lehetőséget.**
 
-1. Válassza az **Egyéni regisztráció hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:  
+1. Válassza **az Egyéni regisztráció hozzáadása lehetőséget,** majd a regisztráció konfiguráláshoz kövesse az alábbi lépéseket:  
 
-   * **Mechanizmus**: válassza az **X. 509** elemet.
+   * **Mechanizmus:** Válassza **az X.509 lehetőséget.**
 
-   * **Elsődleges tanúsítvány. PEM vagy. cer fájl**: töltse fel a nyilvános fájlt az eszköz identitása tanúsítványból. Ha a parancsfájlokat a tesztelési tanúsítvány létrehozásához használta, válassza a következő fájlt:
+   * **Elsődleges tanúsítvány .pem- vagy .cer-fájl:** Töltse fel a nyilvános fájlt az eszközidentitás-tanúsítványból. Ha a szkriptek használatával generált teszt tanúsítványt, válassza a következő fájlt:
 
       `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
-   * **IoT hub eszköz azonosítója**: adja meg az eszköz azonosítóját, ha szeretné. Az eszközök azonosítói segítségével megcélozhat egy különálló eszközt a modulok telepítéséhez. Ha nem adja meg az eszköz AZONOSÍTÓját, a rendszer az X. 509 tanúsítvány köznapi nevét (CN) használja.
+   * **IoT Hub Eszközazonosító:** Ha szeretné, adja meg az eszköz azonosítóját. Az eszköz-adatokat arra használhatja, hogy egy adott eszközt célozza meg a modulok üzembe helyezéséhez. Ha nem ad meg eszközazonosítót, a rendszer az X.509-tanúsítvány köznevét (CN) használja.
 
-   * **IoT Edge eszköz**: a **true (igaz** ) érték kiválasztásával deklarálhatja, hogy a beléptetés egy IoT Edge eszközre vonatkozik.
+   * **IoT Edge eszköz:** Válassza az **Igaz** lehetőséget annak deklarálhoz, hogy a regisztráció egy IoT Edge eszközhöz.
 
-   * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
+   * Válassza ki azokat az **IoT Hubokat,** amelyekhez az eszköz hozzárendelhető: Válassza ki azt a társított IoT Hubot, amelyekhez csatlakoztatni szeretné az eszközt. Több központot is kiválaszthat, és az eszköz a kiválasztott kiosztási szabályzatnak megfelelően hozzá lesz rendelve ezek egyikéhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
+   * **Kezdeti ikereszköz-állapot:** Ha szeretné, adjon hozzá egy címkeértéket az ikereszközhöz. Címkék használatával megcélzott eszközcsoportokat az automatikus üzembe helyezéshez. Például:
 
       ```json
       {
@@ -125,37 +125,37 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
 1. Kattintson a **Mentés** gombra.
 
-Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. A IoT Edge eszköz beállításához folytassa a [IoT Edge futtatókörnyezet telepítése](#install-the-iot-edge-runtime) című szakaszát.
+Most, hogy létezik regisztráció ehhez az eszközhöz, a IoT Edge a telepítés során automatikusan kiépítheti az eszközt. Folytassa az [Install the IoT Edge runtime (A IoT Edge-futtatás](#install-the-iot-edge-runtime) telepítése) című szakaszra a IoT Edge beállítását.
 
-## <a name="create-a-dps-group-enrollment"></a>DPS csoportos regisztráció létrehozása
+## <a name="create-a-dps-group-enrollment"></a>DPS-csoportregisztrálás létrehozása
 
-A generált tanúsítványok és kulcsok használatával csoportos regisztrációt hozhat létre a DPS-ben több IoT Edge eszközhöz. A csoportos regisztrációk egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használnak az egyes eszköz-azonosító tanúsítványok létrehozásához használt megbízhatósági tanúsítványlánc alapján.
+A létrehozott tanúsítványokkal és kulcsokkal csoportos regisztrációt hozhat létre a DPS-ben több IoT Edge eszköz számára. A csoportos regisztrációk egy köztes vagy fő hitelesítésszolgáltatói tanúsítványt használnak az egyéni eszközidentitás-tanúsítványok létrehozásához használt megbízhatósági láncból.
 
-Ha ehelyett egyetlen IoT Edge eszközt szeretne kiépíteni, kövesse az előző szakaszban ismertetett lépéseket, [hozzon létre egy DPS egyéni regisztrációt](#create-a-dps-individual-enrollment).
+Ha ehelyett egyetlen önálló regisztrációs eszközt IoT Edge, kövesse az előző, DPS egyéni regisztráció létrehozása [című szakaszban található lépéseket.](#create-a-dps-individual-enrollment)
 
-Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszköz Twin-ben címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges mérőszámok, például a régió, a környezet, a hely vagy az eszköz típusa alapján. Ezek a címkék [automatikus központi telepítések](how-to-deploy-at-scale.md)létrehozásához használhatók.
+Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van kezdeti ikerállapot **deklarálására.** Az ikereszközön címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges metrika (például régió, környezet, hely vagy eszköztípus) alapján. Ezek a címkék automatikus központi [telepítések létrehozására használhatók.](how-to-deploy-at-scale.md)
 
 ### <a name="verify-your-root-certificate"></a>A főtanúsítvány ellenőrzése
 
-Beléptetési csoport létrehozásakor lehetősége van ellenőrzött tanúsítvány használatára. A DPS-tanúsítvánnyal ellenőrizheti, hogy rendelkezik-e a főtanúsítvány tulajdonjogával. További információ: [How to do proof of-of-of-of-the-of-for X. 509 hitelesítésszolgáltatói tanúsítványok](../iot-dps/how-to-verify-certificates.md).
+Regisztrációs csoport létrehozásakor lehetősége van ellenőrzött tanúsítványt használni. A DPS-sel úgy ellenőrizheti a tanúsítványt, hogy igazolja, hogy Ön a főtanúsítvány tulajdonosa. További információ: [Tulajdonlástanúsítványok használata X.509 hitelesítésszolgáltatói tanúsítványokhoz.](../iot-dps/how-to-verify-certificates.md)
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a IoT Hub Device Provisioning Service.
 
-1. Válassza ki a **tanúsítványok** elemet a bal oldali menüben.
+1. A **bal oldali** menüben válassza a Tanúsítványok lehetőséget.
 
-1. Új tanúsítvány hozzáadásához válassza a **Hozzáadás** lehetőséget.
+1. Új **tanúsítvány hozzáadásához** válassza a Hozzáadás lehetőséget.
 
-1. Adjon egy rövid nevet a tanúsítványnak, majd keresse meg az X. 509 tanúsítvány nyilvános részét jelképező. cer vagy. PEM fájlt.
+1. Adjon egy rövid nevet a tanúsítványnak, majd keresse meg az X.509-tanúsítvány nyilvános részét képviselő .cer vagy .pem fájlt.
 
-   Ha a bemutató tanúsítványait használja, töltse fel a `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` tanúsítványt.
+   Ha bemutatótanúsítványokat használ, töltse fel a `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` tanúsítványt.
 
 1. Kattintson a **Mentés** gombra.
 
-1. A tanúsítványnak mostantól szerepelnie kell a **tanúsítványok** lapon. Válassza ki a tanúsítvány adatainak megnyitásához.
+1. A tanúsítványnak most már fel kell sorolva lennie a Tanúsítványok **lapon.** Válassza ki a tanúsítvány részleteinek megnyitásához.
 
-1. Válassza az **ellenőrző kód előállítása** lehetőséget, majd másolja a generált kódot.
+1. Válassza **az Ellenőrző kód létrehozása lehetőséget,** majd másolja a létrehozott kódot.
 
-1. Akár a saját HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát, akár a bemutató tanúsítványait használja, a IoT Edge adattárában található ellenőrzési eszközzel ellenőrizheti a birtoklás igazolását. Az ellenőrző eszköz a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja egy olyan új tanúsítvány aláírására, amely a megadott ellenőrző kóddal rendelkezik tulajdonos neveként.
+1. Akár saját hitelesítésszolgáltatói tanúsítványt hozott, akár bemutatótanúsítványokat használ, az IoT Edge tárházban biztosított ellenőrző eszközzel ellenőrizheti a birtoklási igazolást. Az ellenőrző eszköz a hitelesítésszolgáltatói tanúsítvány használatával ír alá egy új tanúsítványt, amely tulajdonosnévként a megadott ellenőrző kódot tartalmazza.
 
    * Windows:
 
@@ -169,33 +169,33 @@ Beléptetési csoport létrehozásakor lehetősége van ellenőrzött tanúsítv
      ./certGen.sh create_verification_certificate <verification code>
      ```
 
-1. A Azure Portal azonos tanúsítvány részletei lapján töltse fel az újonnan létrehozott ellenőrző tanúsítványt.
+1. A tanúsítványadatok ugyanazon lapján töltse fel Azure Portal újonnan létrehozott ellenőrző tanúsítványt.
 
 1. Válassza az **Ellenőrzés** lehetőséget.
 
-### <a name="create-enrollment-group"></a>Beléptetési csoport létrehozása
+### <a name="create-enrollment-group"></a>Regisztrációs csoport létrehozása
 
-További információ az eszközök kiépítési szolgáltatásának regisztrálásáról: az [eszközök regisztrálásának kezelése](../iot-dps/how-to-manage-enrollments.md).
+A Device Provisioning Service-regisztrációval kapcsolatos további információkért lásd: [Az eszközregisztrációs szolgáltatás kezelése.](../iot-dps/how-to-manage-enrollments.md)
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a IoT Hub Device Provisioning Service.
 
-1. A **Beállítások** területen válassza a **regisztrációk kezelése** lehetőséget.
+1. A **Beállítások alatt** válassza a **Regisztrációk kezelése lehetőséget.**
 
-1. Válassza a **regisztrációs csoport hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:
+1. Válassza **a Regisztrációs csoport hozzáadása lehetőséget,** majd a regisztráció konfiguráláshoz kövesse az alábbi lépéseket:
 
-   * **Csoport neve**: adjon meg egy emlékezetes nevet a csoport beléptetéséhez.
+   * **Csoport neve:** Adjon meg egy könnyen megjegyezhető nevet a csoportregisztráláshoz.
 
-   * **Igazolás típusa**: válassza a **tanúsítvány** elemet.
+   * **Igazolás típusa:** Válassza a Tanúsítvány **lehetőséget.**
 
-   * **IoT Edge eszköz**: válassza az **igaz** lehetőséget. Csoportos regisztráció esetén minden eszköznek IoT Edge eszköznek kell lennie, vagy egyikük sem lehet.
+   * **IoT Edge:** Válassza az Igaz **lehetőséget.** Csoportregisztrálás esetén minden eszközt külön IoT Edge eszközöknek kell lennie, vagy egyik sem lehet.
 
-   * **Tanúsítvány típusa**: válassza ki a **hitelesítésszolgáltatói tanúsítvány** elemet, ha olyan hitelesített hitelesítésszolgáltatói tanúsítvánnyal rendelkezik, amely DPS vagy **köztes tanúsítvánnyal** rendelkezik, ha új fájlt szeretne feltölteni ehhez a regisztrációhoz.
+   * **Tanúsítvány típusa:** Válassza a **hitelesítésszolgáltatói** tanúsítvány lehetőséget, ha rendelkezik  DPS-sel tárolt ellenőrzött hitelesítésszolgáltatói tanúsítvánnyal, vagy köztes tanúsítvánnyal, ha csak ehhez a regisztrációhoz szeretne feltölteni egy új fájlt.
 
-   * **Elsődleges tanúsítvány**: Ha az utolsó szakaszban a hitelesítésszolgáltatói tanúsítvány lehetőséget választotta, válassza ki a tanúsítványt a legördülő listából. Ha a köztes tanúsítványt választotta, töltse fel a nyilvános fájlt egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból az eszköz identitási tanúsítványainak létrehozásához használt megbízhatósági láncban.
+   * **Elsődleges tanúsítvány:** Ha az előző szakaszban a hitelesítésszolgáltatói tanúsítványt választotta, válassza ki a tanúsítványt a legördülő listából. Ha köztes tanúsítványt választ, töltse fel a nyilvános fájlt egy hitelesítésszolgáltatói tanúsítványból az eszközidentitás-tanúsítványok létrehozásához használt tanúsítványláncba.
 
-   * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
+   * Válassza ki azokat az **IoT Hubokat,** amelyekhez az eszköz hozzárendelhető: Válassza ki azt a társított IoT Hubot, amelyekhez csatlakoztatni szeretné az eszközt. Több központot is kiválaszthat, és az eszköz a kiválasztott kiosztási szabályzatnak megfelelően hozzá lesz rendelve ezek egyikéhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
+   * **Kezdeti ikereszköz-állapot:** Ha szeretné, adjon hozzá egy címkeértéket az ikereszközhöz. Címkék használatával megcélzott eszközcsoportokat az automatikus üzembe helyezéshez. Például:
 
       ```json
       {
@@ -210,28 +210,28 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
 1. Kattintson a **Mentés** gombra.
 
-Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Folytassa a következő szakasszal a IoT Edge eszköz beállításához.
+Most, hogy létezik regisztráció ehhez az eszközhöz, a IoT Edge a telepítés során automatikusan kiépítheti az eszközt. Folytassa a következő szakasz lépésével, és állítsa be IoT Edge eszközét.
 
 ## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, hogy kódot futtathat a peremhálózaton.
 
-Az eszköz kiépítéséhez kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit, majd térjen vissza ehhez a cikkhez.
+Kövesse az [Install the Azure IoT Edge runtime](how-to-install-iot-edge.md)(Az eszköz telepítése) Azure IoT Edge, majd térjen vissza ehhez a cikkhez az eszköz üzembe lépéséhez.
 
-Az X. 509 kiépítés a DPS-vel csak IoT Edge 1.0.9 vagy újabb verzióban támogatott.
+Az X.509 DPS-sel való kiépítése csak az 1.0.9-es vagy újabb IoT Edge támogatott.
 
-## <a name="configure-the-device-with-provisioning-information"></a>Az eszköz konfigurálása az üzembe helyezési adatokkal
+## <a name="configure-the-device-with-provisioning-information"></a>Az eszköz konfigurálása kiépítési információkkal
 
-Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszközt az általa használt információval az eszköz kiépítési szolgáltatásához való kapcsolódáshoz és a IoT Hubához.
+Miután telepítette a futásidőt az eszközön, konfigurálja az eszközt a Device Provisioning Service-hez való csatlakozáshoz használt információkkal, és IoT Hub.
 
-A következő információk állnak készen:
+Készítse elő a következő információkat:
 
-* A DPS- **azonosító hatókörének** értéke. Ezt az értéket az Azure Portal DPS-példányának áttekintés lapjáról kérheti le.
-* Az eszköz Identity Certificate Chain fájlja az eszközön.
-* Az eszköz Identity Key fájlja az eszközön.
-* Egy opcionális regisztrációs azonosító. Ha nincs megadva, az azonosító a köznapi név alapján van leképezve az eszköz identitásának tanúsítványában.
+* A **DPS-azonosító hatóköre** érték. Ezt az értéket a DPS-példány áttekintő oldalának a Azure Portal.
+* Az eszközidentitás tanúsítványláncfájlja az eszközön.
+* Az eszköz identitáskulcsfájlja az eszközön.
+* Nem kötelező regisztrációs azonosító. Ha nincs megadva, a rendszer az eszközidentitás-tanúsítványban található köznévből lekéri az azonosítót.
 
-### <a name="linux-device"></a>Linuxos eszköz
+### <a name="linux-device"></a>Linux-eszköz
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -242,9 +242,9 @@ A következő információk állnak készen:
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a DPS X. 509 tanúsítvány kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
+1. Keresse meg a fájl kiépítési konfigurációk szakaszát. Tegye megjegyzésbe a DPS X.509-tanúsítvány létesítés sorait, és ügyeljen arra, hogy a többi kiépítési sor megjegyzésbe legyen véve.
 
-   A `provisioning:` sornak nem lehetnek korábbi szóközök, és a beágyazott elemeket két szóközzel kell behúzni.
+   A sornak nem szabad megelőző szóközt tartalmazni, a beágyazott elemeket pedig két `provisioning:` szóközt kell behúzásra behúzásra.
 
    ```yml
    # DPS X.509 provisioning configuration
@@ -261,20 +261,20 @@ A következő információk állnak készen:
    #  dynamic_reprovisioning: false
    ```
 
-1. A, a és a értékének frissítése a `scope_id` `identity_cert` `identity_pk` DPS és az eszköz adataival.
+1. Frissítse a `scope_id` , és értékét a DPS és az `identity_cert` eszköz `identity_pk` adataival.
 
-   Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Például:
+   Amikor hozzáadja az X.509-tanúsítványt és a kulcsadatokat a config.yaml fájlhoz, az elérési utakat fájl URI-ként kell biztosítani. Például:
 
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. Szükség esetén adjon meg egy `registration_id` eszközt az eszközhöz. Ellenkező esetben hagyja meg ezt a sort, hogy regisztrálja az eszközt az azonosító tanúsítvány CN-nevével.
+1. Ha szükséges, adjon meg egy `registration_id` et az eszközhöz. Ellenkező esetben hagyja megjegyzésben ezt a sort, hogy az eszközt az identitás tanúsítványának CN-nevével regisztrálja.
 
-1. Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
+1. Ha szükséges, a vagy a sorokkal konfigurálhatja az eszköz újra `always_reprovision_on_startup` `dynamic_reprovisioning` kiépítő viselkedését. Ha egy indításkor az eszköz újra kiépítésre van beállítva, először mindig megpróbálja kiépítni a DPS-t, majd ha ez sikertelen, akkor vissza fog állítani a kiépítési biztonsági mentésre. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépíti magát, a rendszer újraindítja IoT Edge és újból kiépíti, ha a rendszer újra kiépíti az eseményt. További információkért [lásd: IoT Hub eszköz-újraosztás fogalmai.](../iot-dps/concepts-device-reprovision.md)
 
-1. Mentse és zárjuk be a config. YAML fájlt.
+1. Mentse és zárja be a config.yaml fájlt.
 
-1. Indítsa újra a IoT Edge futtatókörnyezetet, hogy az az eszközön végrehajtott összes konfigurációs módosítást felveszi.
+1. Indítsa újra IoT Edge futásidejű rendszert, hogy az az eszközön végrehajtott összes konfigurációs módosítást átvegye.
 
    ```bash
    sudo systemctl restart iotedge
@@ -286,7 +286,7 @@ A következő információk állnak készen:
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-1. Hozzon létre egy konfigurációs fájlt az eszközhöz a IoT Edge telepítésének részeként megadott sablonfájl alapján.
+1. Hozzon létre egy konfigurációs fájlt az eszközhöz egy sablonfájl alapján, amely a IoT Edge része.
 
    ```bash
    sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
@@ -298,7 +298,7 @@ A következő információk állnak készen:
    sudo nano /etc/aziot/config.toml
    ```
 
-1. A fájl **kiépítési** szakaszának megkeresése. Jegyezze fel az X. 509 tanúsítvánnyal rendelkező DPS-kiépítés sorait, és győződjön meg arról, hogy minden más kiépítési sor megjegyzésbe kerül.
+1. Keresse meg **a fájl Kiépítés** szakaszát. Az X.509-tanúsítvánnyal való DPS-kiépítés sorait tegye megjegyzésbe, és ügyeljen arra, hogy a többi kiépítési sor megjegyzésként legyen véve.
 
    ```toml
    # DPS provisioning with X.509 certificate
@@ -316,19 +316,19 @@ A következő információk állnak készen:
    identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
    ```
 
-1. A, a és a értékének frissítése a `id_scope` `identity_cert` `identity_pk` DPS és az eszköz adataival.
+1. Frissítse a `id_scope` , `identity_cert` és `identity_pk` értékeit a DPS és az eszköz adataival.
 
-   Az azonosító tanúsítvány értéke fájl URI-ként is megadható, vagy az EST vagy egy helyi hitelesítésszolgáltató használatával dinamikusan kiállítható. A használandó formátum alapján csak egy sort adjon meg megjegyzésként.
+   Az identitás tanúsítványának értéke meg lehet adni fájl URI-ként, vagy dinamikusan kibocsátható az EST vagy egy helyi hitelesítésszolgáltató használatával. A használni kívánt formátumtól függően csak egy sort használjon.
 
-   Az identitás titkos kulcsának értéke fájl URI-ként vagy PKCS # 11 URI-ként is megadható. A használandó formátum alapján csak egy sort adjon meg megjegyzésként.
+   Az identitás titkos kulcsának értéke fájl URI-ként vagy PKCS#11 URI-ként is meg lehet adni. A használni kívánt formátumtól függően csak egy sort használjon.
 
-   Ha PKCS # 11 URI-t használ, keresse meg a **PKCS # 11** szakaszt a konfigurációs fájlban, és adja meg a PKCS # 11 konfigurációjának adatait.
+   Ha PKCS#11 URI-t használ, keresse meg a konfigurációs fájl **PKCS#11** szakaszát, és adja meg a PKCS#11 konfigurációval kapcsolatos információkat.
 
-1. Szükség esetén adjon meg egy `registration_id` eszközt az eszközhöz. Ellenkező esetben hagyja meg a sort, hogy regisztrálja az eszközt az azonosító tanúsítvány köznapi nevével.
+1. Ha szükséges, adjon meg egy `registration_id` et az eszköz számára. Ellenkező esetben ezt a sort megjegyzésként hagyja megjegyzésként, hogy az eszközt az identitás tanúsítványának közkeletű nevével regisztrálja.
 
 1. Mentse és zárja be a fájlt.
 
-1. Alkalmazza a IoT Edge végrehajtott konfigurációs módosításokat.
+1. Alkalmazza a konfigurációs módosításokat, amelyek a IoT Edge.
 
    ```bash
    sudo iotedge config apply
@@ -339,15 +339,15 @@ A következő információk állnak készen:
 
 ### <a name="windows-device"></a>Windows-eszköz
 
-1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Ügyeljen arra, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, nem a PowerShell (x86) rendszerre.
+1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. A PowerShell telepítésekor mindenképpen AMD64-munkamenetet használjon a PowerShell IoT Edge (x86) telepítésekor.
 
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés, ezért a `-DpsX509` jelzővel az X. 509 Tanúsítványos hitelesítéssel használhatja az automatikus kiépítés használatát.
+1. Az **Initialize-IoTEdge** parancs konfigurálja a IoT Edge futtatáskor a gépen. A parancs alapértelmezett beállítása a Windows-tárolók manuális kiépítése, ezért használja a jelzőt az automatikus kiépítés `-DpsX509` X.509-tanúsítványhitelesítéssel való használatára.
 
-   Cserélje le a, a és a érték helyőrzőjét a `{scope_id}` `{identity cert chain path}` DPS- `{identity key path}` példány megfelelő értékeire, valamint az eszköz fájlelérési útjaira.
+   Cserélje le a , és helyőrzőértékeket a DPS-példány megfelelő értékeire és az eszközön található `{scope_id}` `{identity cert chain path}` `{identity key path}` fájlútvonalakra.
 
-   Adja hozzá a (z) lehetőséget, `-RegistrationId {registration_id}` Ha az eszköz azonosítóját nem az Identity tanúsítvány CN-neveként szeretné beállítani.
+   Adja hozzá a et, ha az eszközazonosítót nem az identitás `-RegistrationId {registration_id}` tanúsítványának CN-neveként szeretné beállítani.
 
-   `-ContainerOs Linux`Ha Linux-tárolókat használ Windows rendszeren, adja hozzá a paramétert.
+   Ha `-ContainerOs Linux` Windows rendszeren használ Linux-tárolókat, adja hozzá a paramétert.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -355,17 +355,17 @@ A következő információk állnak készen:
    ```
 
    >[!TIP]
-   >A konfigurációs fájl a tanúsítvány és a kulcs adatait fájl URI-ként tárolja. Azonban a Initialize-IoTEdge parancs kezeli ezt a formázási lépést, így megadhatja a tanúsítvány és a kulcs fájljainak abszolút elérési útját az eszközön.
+   >A konfigurációs fájl fájl URI-ként tárolja a tanúsítványt és a kulcsadatokat. Azonban a Initialize-IoTEdge parancs kezeli ezt a formázási lépést, így meg lehet adni az eszközön található tanúsítvány és kulcsfájlok abszolút elérési útját.
 
-## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
+## <a name="verify-successful-installation"></a>A sikeres telepítés ellenőrzése
 
-Ha a futtatókörnyezet sikeresen elindult, beléphet a IoT Hubba, és megkezdheti a IoT Edge modulok üzembe helyezését az eszközön.
+Ha a futásidejű modul sikeresen elindult, a saját IoT Hub üzembe helyezheti IoT Edge modulokat az eszközén.
 
-Ellenőrizheti, hogy a rendszer használta-e a Device kiépítési szolgáltatásban létrehozott egyéni regisztrációt. Navigáljon az eszköz kiépítési szolgáltatási példányához a Azure Portal. Nyissa meg a regisztráció részleteit a létrehozott egyéni regisztrációhoz. Figyelje meg, hogy a regisztráció állapota **hozzá van rendelve** , és az eszköz azonosítója megjelenik.
+Ellenőrizheti, hogy a Device Provisioning Service-ban létrehozott egyéni regisztrációt használták-e. Lépjen a Device Provisioning Service-példányra a Azure Portal. Nyissa meg a létrehozott egyéni regisztráció regisztrációs adatait. Figyelje meg, hogy a regisztráció állapota hozzá van **rendelve,** és az eszközazonosító megjelenik a listában.
 
-Az eszközön az alábbi parancsokkal ellenőrizheti, hogy a futtatókörnyezet telepítése és elindítása sikeresen megtörtént-e.
+Az alábbi parancsokkal ellenőrizze az eszközön, hogy a futásidő sikeresen telepítve és elindítva lett-e.
 
-### <a name="linux-device"></a>Linuxos eszköz
+### <a name="linux-device"></a>Linux-eszköz
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -376,13 +376,13 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 systemctl status iotedge
 ```
 
-A szolgáltatási naplók vizsgálata.
+Vizsgálja meg a szolgáltatásnaplókat.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Futó modulok listázása.
+List running modules.
 
 ```cmd/sh
 iotedge list
@@ -398,13 +398,13 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 sudo iotedge system status
 ```
 
-A szolgáltatási naplók vizsgálata.
+Vizsgálja meg a szolgáltatásnaplókat.
 
 ```cmd/sh
 sudo iotedge system logs
 ```
 
-Futó modulok listázása.
+List running modules.
 
 ```cmd/sh
 sudo iotedge list
@@ -419,13 +419,13 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 Get-Service iotedge
 ```
 
-A szolgáltatási naplók vizsgálata.
+Vizsgálja meg a szolgáltatásnaplókat.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Futó modulok listázása.
+List running modules.
 
 ```powershell
 iotedge list
@@ -433,4 +433,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md).
+A Device Provisioning Service regisztrációs folyamata lehetővé teszi az eszközazonosító és az ikereszköz-címkék beállítását az új eszköz kiépítésekor. Ezeket az értékeket használhatja az egyes eszközök vagy eszközcsoportok automatikus eszközkezelés használatával való megcélzott kezelésére. Ismerje meg, hogyan [helyezhet üzembe és IoT Edge modulokat](how-to-deploy-at-scale.md) nagy méretekben a Azure Portal vagy az Azure CLI [használatával.](how-to-deploy-cli-at-scale.md)

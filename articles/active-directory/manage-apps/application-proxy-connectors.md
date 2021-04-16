@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Application Proxy-összekötők ismertetése | Microsoft Docs
-description: Ismerje meg az Azure AD Application Proxy-összekötőket.
+title: Az Azure AD alkalmazásproxy összekötőinek | Microsoft Docs
+description: Ismerje meg az Azure AD alkalmazásproxy összekötőit.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,29 +12,29 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d390ed71cb4e0e76972e02170afde7b13e4ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b54e3cb3b4ce7eb8f541755df75e8d6a22eb7c2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253459"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575309"
 ---
-# <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
+# <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötőinek ismertetése
 
-Az összekötők teszik elérhetővé az Azure AD Application Proxy. Egyszerűen, egyszerűen üzembe helyezhetők és karbantarthatók, és rendkívül hatékonyak. Ez a cikk ismerteti, hogy milyen összekötők, hogyan működnek, és néhány javaslat a telepítés optimalizálására.
+Az Azure AD-t összekötők teszik alkalmazásproxy teszi lehetővé. Egyszerűek, könnyen üzembe helyezhetők és karbantarthatóak, és rendkívül hatékonyak. Ez a cikk ismerteti, mik azok az összekötők, hogyan működnek, és javaslatokat ad az üzemelő példány optimalizálására.
 
-## <a name="what-is-an-application-proxy-connector"></a>Mi az alkalmazásproxy-összekötő?
+## <a name="what-is-an-application-proxy-connector"></a>Mi az alkalmazásproxy összekötő?
 
-Az összekötők olyan könnyű ügynökök, amelyek a helyszínen üzemelnek, és elősegítik a kimenő kapcsolódást az alkalmazásproxy szolgáltatáshoz. Az összekötőket olyan Windows-kiszolgálóra kell telepíteni, amely hozzáfér a háttérbeli alkalmazáshoz. Összekötő csoportokba rendezheti az összekötőket, és az egyes csoportokkal az egyes alkalmazások forgalmát is kezelheti. További információk az alkalmazásproxy és az alkalmazásproxy-architektúra teherbírást jelölő táblával megjelenítéséről: [Azure ad Application proxy használata helyszíni alkalmazások közzétételéhez távoli felhasználók](what-is-application-proxy.md#application-proxy-connectors) számára
+Az összekötők a helyszínen található egyszerűsített ügynökök, amelyek megkönnyítik a kimenő kapcsolatot a alkalmazásproxy szolgáltatással. Az összekötőket olyan Windows Serverre kell telepíteni, amely hozzáféréssel rendelkezik a háttéralkalmazáshoz. Az összekötőket összekötőcsoportokba rendezheti úgy, hogy minden csoport adott alkalmazások forgalmát kezeli. További információ az alkalmazásproxyról és az alkalmazásproxy architektúrája diagramos ábrázolásról: [Using Azure AD alkalmazásproxy to publish on-premises apps for remote users](what-is-application-proxy.md#application-proxy-connectors) (Az Azure AD alkalmazásproxy használata helyszíni alkalmazások közzétételére távoli felhasználók számára)
 
-## <a name="requirements-and-deployment"></a>Követelmények és központi telepítés
+## <a name="requirements-and-deployment"></a>Követelmények és üzembe helyezés
 
-Az alkalmazásproxy sikeres telepítéséhez legalább egy összekötőre van szükség, de javasoljuk, hogy nagyobb rugalmasságot biztosítson. Telepítse az összekötőt egy Windows Server 2012 R2 vagy újabb rendszerű gépre. Az összekötőnek kommunikálnia kell az alkalmazásproxy szolgáltatással és a közzétenni kívánt helyszíni alkalmazásokkal.
+A alkalmazásproxy üzembe helyezéséhez legalább egy összekötőre van szükség, de a nagyobb rugalmasság érdekében kettő vagy több ajánlott. Telepítse az összekötőt egy Windows Server 2012 R2 vagy újabb rendszert futtató gépre. Az összekötőnek kommunikálnia kell a alkalmazásproxy szolgáltatással és a közzétett helyszíni alkalmazásokkal.
 
 ### <a name="windows-server"></a>Windows Server
-Szükség van egy Windows Server 2012 R2 vagy újabb rendszert futtató kiszolgálóra, amelyen telepítheti az alkalmazásproxy-összekötőt. A kiszolgálónak csatlakoznia kell az alkalmazásproxy-szolgáltatásokhoz az Azure-ban és a közzétenni kívánt helyszíni alkalmazásokhoz.
+Szüksége lesz egy Windows Server 2012 R2 vagy újabb rendszert futtató kiszolgálóra, amelyre telepítheti az alkalmazásproxy összekötőt. A kiszolgálónak csatlakoznia kell az Azure alkalmazásproxy szolgáltatásokhoz és a közzétevő helyszíni alkalmazásokhoz.
 
-A Windows Servernek az alkalmazásproxy-összekötő telepítése előtt engedélyeznie kell a TLS 1,2-et. A TLS 1,2 engedélyezése a kiszolgálón:
+A windowsos kiszolgálónak engedélyeznie kell a TLS 1.2-t az alkalmazásproxy telepítése előtt. A TLS 1.2 engedélyezése a kiszolgálón:
 
 1. Állítsa be a következő beállításkulcsokat:
 
@@ -47,148 +47,148 @@ A Windows Servernek az alkalmazásproxy-összekötő telepítése előtt engedé
 
 1. Kiszolgáló újraindítása
 
-Az összekötő-kiszolgáló hálózati követelményeivel kapcsolatos további információkért lásd: az [alkalmazásproxy első lépései és az összekötő telepítése](application-proxy-add-on-premises-application.md).
+További információ az összekötő-kiszolgáló hálózati követelményeiről: Első lépések a alkalmazásproxy [és összekötő telepítése.](application-proxy-add-on-premises-application.md)
 
 ## <a name="maintenance"></a>Karbantartás
 
-Az összekötők és a szolgáltatás gondoskodik a magas rendelkezésre állási feladatokról. A felhasználók dinamikusan hozzáadhatók vagy eltávolíthatók. Minden alkalommal, amikor egy új kérelem érkezik, a rendszer átirányítja az egyik jelenleg elérhető összekötőre. Ha egy összekötő átmenetileg nem érhető el, nem válaszol erre a forgalomra.
+Az összekötők és a szolgáltatás gondoskodnak az összes magas rendelkezésre állású feladatról. Dinamikusan hozzáadhatók vagy eltávolíthatók. Minden új kérés érkezésekor a rendszer az aktuálisan elérhető összekötők egyikéhez irányít át. Ha egy összekötő átmenetileg nem érhető el, nem válaszol erre a forgalomra.
 
-Az összekötők állapot nélküliek, és nem rendelkeznek konfigurációs adattal a gépen. Az egyetlen tárolt adattároló a szolgáltatás és a hitelesítési tanúsítvány csatlakoztatásának beállításai. Amikor csatlakoznak a szolgáltatáshoz, lekérik az összes szükséges konfigurációs adatmennyiséget, és néhány percenként frissítik.
+Az összekötők állapot nélküliek, és nincsenek konfigurációs adataik a gépen. Az egyetlen tárolt adat a szolgáltatás és a hitelesítési tanúsítvány csatlakoztatásának beállításai. Amikor csatlakoznak a szolgáltatáshoz, leküldik az összes szükséges konfigurációs adatot, és néhány percenként frissítik őket.
 
-Az összekötők azt is lekérdezik a kiszolgálót, hogy az összekötő újabb verziója van-e. Ha talál ilyet, az összekötők maguk frissítik magukat.
+Az összekötők a kiszolgálótól is lekérdezik, hogy elérhető-e az összekötő újabb verziója. Ha talál egyet, az összekötők frissülnek.
 
-Az összekötőket az Eseménynapló és a teljesítményszámlálók segítségével figyelheti a gépen futó gépekről. Vagy megtekintheti az állapotukat a Azure Portal alkalmazásproxy lapján:
+Az eseménynapló és a teljesítményszámlálók segítségével az összekötőket a gépen is figyelheti. Vagy megtekintheti azok állapotát a alkalmazásproxy lap Azure Portal:
 
-![Példa: Azure AD Application Proxy-összekötők](./media/application-proxy-connectors/app-proxy-connectors.png)
+![Példa: Azure AD alkalmazásproxy összekötők](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-Nem kell manuálisan törölni a nem használt összekötőket. Amikor egy összekötő fut, aktív marad, ahogy csatlakozik a szolgáltatáshoz. A fel nem használt összekötők _inaktívként_ vannak megjelölve, és 10 napos inaktivitás után törlődnek. Ha el kívánja távolítani az összekötőt, akkor az összekötő szolgáltatást és a frissítési szolgáltatást is távolítsa el a kiszolgálóról. Indítsa újra a számítógépet a szolgáltatás teljes eltávolításához.
+A nem használt összekötőket nem kell manuálisan törölnie. Ha egy összekötő fut, aktív marad a szolgáltatáshoz való csatlakozáskor. A nem használt összekötők inaktívként vannak _megjelölve,_ és 10 nap inaktivitás után törlődnek. Ha azonban el szeretne távolítani egy összekötőt, távolítsa el az Összekötő szolgáltatást és az Updater szolgáltatást is a kiszolgálóról. Indítsa újra a számítógépet a szolgáltatás teljes eltávolításához.
 
 ## <a name="automatic-updates"></a>Automatikus frissítések
 
-Az Azure AD automatikus frissítéseket biztosít az összes telepített összekötőhöz. Amíg az alkalmazásproxy Connector Updater szolgáltatás fut, az összekötők automatikusan frissülnek. Ha nem látja a Connector Updater szolgáltatást a kiszolgálón, [újra kell telepítenie az összekötőt](application-proxy-add-on-premises-application.md) a frissítések beszerzéséhez.
+Az Azure AD automatikus frissítéseket biztosít az összes üzembe helyezett összekötőhöz. Amíg a alkalmazásproxy Connector Updater szolgáltatás fut, az összekötők automatikusan frissülnek a legújabb fő [összekötő-kiadással.](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-) Ha nem látja a Connector Updater szolgáltatást a kiszolgálón, újra [](application-proxy-add-on-premises-application.md) kell telepítenie az összekötőt a frissítésekhez.
 
-Ha nem szeretné, hogy az automatikus frissítés megvárja az összekötőt, manuális frissítést végezhet. Nyissa meg az [összekötő letöltési lapját](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) azon a kiszolgálón, amelyen az összekötő található, és válassza a **Letöltés** lehetőséget. Ez a folyamat elindít egy frissítést a helyi összekötőhöz.
+Ha nem szeretne megvárni, amíg egy automatikus frissítés jöjjön az összekötőhöz, manuális frissítést is lehet használni. Kattintson az [összekötő letöltési oldalára](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) a kiszolgálón, ahol az összekötő található, és válassza a **Letöltés lehetőséget.** Ez a folyamat egy frissítést kezd a helyi összekötőhöz.
 
-Több összekötővel rendelkező bérlők esetében az automatikus frissítés az egyes csoportokban egyszerre egy összekötőt céloz meg, hogy megakadályozza az állásidőt a környezetben.
+A több összekötővel rendelkező bérlők esetén az automatikus frissítések minden csoportban egyszerre egy-egy összekötőt céloznak meg a környezet állásideje elkerülése érdekében.
 
-A leállás akkor fordulhat elő, ha az összekötő a következőket frissíti:
+A következő esetben tapasztalhat állásidőt, amikor az összekötő frissül:
   
-- Csak egy összekötővel rendelkezik, javasoljuk, hogy telepítsen egy második összekötőt, és [hozzon létre egy összekötő csoportot](application-proxy-connector-groups.md). Ezzel elkerülhető az állásidő, és magasabb rendelkezésre állást biztosít.  
-- A frissítés megkezdése után egy összekötő volt a tranzakció közepén. Bár a kezdeti tranzakció elvész, a böngészőnek automatikusan újra kell próbálkoznia a művelettel, vagy frissítheti a lapot. A kérés újraküldése után a rendszer átirányítja a forgalmat egy biztonsági mentési összekötőhöz.
+- Javasoljuk, hogy csak egy összekötővel rendelkezik, és hozzon létre egy [összekötőcsoportot.](application-proxy-connector-groups.md) Ez elkerüli az állásidőt, és magasabb rendelkezésre állást biztosít.  
+- Az összekötő egy tranzakció közepén volt a frissítés elkezdődött. Bár a kezdeti tranzakció elveszett, a böngészőnek automatikusan újra kell próbálkoznia a művelettel, vagy frissítheti az oldalt. Ha a kérést a rendszer visszakérte, a forgalom egy biztonsági mentési összekötőre lesz irányítva.
 
-A korábban kiadott verziókról és a benne foglalt változásokról további információt az [alkalmazásproxy verziójának kiadási előzményei](application-proxy-release-version-history.md)című témakörben talál.
+A korábban kiadott verziókról és azok módosításairól további információt a [alkalmazásproxy- verziók kiadási előzményeiben található.](application-proxy-release-version-history.md)
 
-## <a name="creating-connector-groups"></a>Összekötő-csoportok létrehozása
+## <a name="creating-connector-groups"></a>Összekötőcsoportok létrehozása
 
-Az összekötő csoportok lehetővé teszik, hogy meghatározott összekötőket rendeljen hozzá bizonyos alkalmazásokhoz. Egyszerre több összekötőt is csoportosíthat, majd hozzárendelheti az egyes alkalmazásokat egy csoporthoz.
+Az összekötőcsoportok lehetővé teszik adott összekötők hozzárendelését adott alkalmazások kiszolgálására. Több összekötőt csoportosíthat, majd az egyes alkalmazásokat hozzárendelheti egy csoporthoz.
 
-Az összekötő-csoportok megkönnyítik a nagyméretű telepítések kezelését. Emellett a különböző régiókban üzemeltetett alkalmazásokkal rendelkező bérlők számára is javítják a késést, mivel a csak helyi alkalmazások kiszolgálásához létrehozhat hely-alapú összekötő csoportokat.
+Az összekötőcsoportok megkönnyítik a nagy méretű üzemelő példányok kezelését. Emellett javítják a késést azon bérlők esetében, amelyek különböző régiókban üzemeltetett alkalmazásokat üzemeltetnek, mivel helyalapú összekötőcsoportokat hozhat létre, amelyek csak helyi alkalmazásokat szolgálnak ki.
 
-További információ az összekötő-csoportokról: [alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md).
+További információ az összekötőcsoportokról: Alkalmazások közzététele külön hálózatokon és helyeken [összekötőcsoportokkal.](application-proxy-connector-groups.md)
 
 ## <a name="capacity-planning"></a>Kapacitástervezés
 
-Fontos, hogy gondoskodjon arról, hogy elegendő kapacitást tervezzen az összekötők között a várt forgalmi mennyiség kezeléséhez. Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni.
+Fontos, hogy az összekötők között elegendő kapacitást tervezve legyen a várt forgalom mennyiségének kezeléséhez. Javasoljuk, hogy minden összekötőcsoport legalább két összekötővel rendelkezik a magas rendelkezésre állás és a méretezés érdekében. A három összekötő optimális arra az esetre, ha bármikor szervizelnünk kell egy gépet.
 
-Általánosságban elmondható, hogy minél több felhasználó van, annál nagyobb a gép, amelyre szüksége lesz. Alább látható egy táblázat, amely felvázolja a kötetet, és a várható késést különböző gépek képesek kezelni. Vegye figyelembe, hogy a másodpercenkénti várt tranzakciók (TPS) alapján, mivel a használati minták eltérnek, és nem használhatók a betöltés előrejelzésére. A válaszok méretétől és a háttérbeli alkalmazások válaszideje – nagyobb válaszokra és lassabb válaszidő-ra is – a rendszer alacsonyabb TPS eredményez. Azt javasoljuk továbbá, hogy további gépek legyenek, hogy az elosztott terhelés a gépek között mindig bőséges puffert biztosítson. A további kapacitás garantálja, hogy magas rendelkezésre állást és rugalmasságot biztosítson.
+Általában minél több felhasználója van, annál nagyobb gépre lesz szüksége. Az alábbi táblázat ismerteti a különböző gépek által kezelhető kötetet és várható késést. Vegye figyelembe, hogy nem a felhasználó, hanem a várt másodpercenkénti tranzakciók (TPS) alapján működik, mivel a használati minták eltérőek, és nem használhatók a terhelés előrejelzésére. A válaszok mérete és a háttéralkalmazás válaszidejétől függően is lesz néhány különbség. A nagyobb válaszméret és a lassabb válaszidők alacsonyabb Max TPS-t eredményeznek. Javasoljuk továbbá, hogy további gépeket is biztosítsunk, hogy a gépek közötti elosztott terhelés mindig elegendő puffert biztosít. A további kapacitás biztosítja a magas rendelkezésre állást és rugalmasságot.
 
-|Cores|RAM|Várt késés (MS) – P99|Maximális TPS|
+|Cores|RAM|Várt késés (MS)-P99|Maximális TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
 |8|32|270|1190|
-|16|64|245|1200 *|
+|16|64|245|1200*|
 
-\* Ez a gép egyéni beállítást használt, hogy a .NET által ajánlott beállításokon felül néhány alapértelmezett kapcsolódási korlátot felemeljen. Javasoljuk, hogy futtasson egy tesztet az alapértelmezett beállításokkal, mielőtt felvette a kapcsolatot a támogatási szolgálattal, hogy megváltozzon a bérlőn a korlát.
+\* Ez a gép egy egyéni beállítással megemelt néhány alapértelmezett kapcsolati korlátot a .NET által javasolt beállításokon túl. Javasoljuk, hogy futtason egy tesztet az alapértelmezett beállításokkal, mielőtt kapcsolatba lép az ügyfélszolgálattal, hogy megváltozta a bérlőre vonatkozó korlátot.
 
 > [!NOTE]
-> A 4, 8 és 16 Magos gép közötti maximális TPS nem sok a különbség. A fő különbség a várt késés.
+> A maximális TPS-ben nincs sok különbség a 4, 8 és 16 magos gépek között. Ezek között a fő különbség a várt késés.
 >
-> Ez a táblázat egy összekötő várt teljesítményére koncentrál, amely a telepített számítógép típusától függ. Ez eltér az alkalmazásproxy szolgáltatás szabályozási korlátaitól, lásd: [szolgáltatás korlátai és korlátozásai](../enterprise-users/directory-service-limits-restrictions.md).
+> Ez a táblázat az összekötők várt teljesítményére is összpontosít az alapján, hogy milyen típusú gépre van telepítve. Ez elkülönül a alkalmazásproxy szolgáltatás szabályozási korlátaitól, lásd: [Szolgáltatáskorlátok és -korlátozások.](../enterprise-users/directory-service-limits-restrictions.md)
 
-## <a name="security-and-networking"></a>Biztonság és hálózatkezelés
+## <a name="security-and-networking"></a>Biztonság és hálózat
 
-Az összekötők bárhonnan telepíthetők a hálózaton, amely lehetővé teszi a kérelmek küldését az alkalmazásproxy szolgáltatásba. Fontos, hogy az összekötőt futtató számítógép is hozzáférjen az alkalmazásaihoz. Az összekötők a vállalati hálózaton belül vagy a felhőben futó virtuális gépeken is telepíthetők. Az összekötők egy peremhálózati hálózaton, más néven vagy demilitarizált-zónában (DMZ) is futtathatók, de nem szükségesek, mert az összes forgalom kimenő, így a hálózat biztonságban marad.
+Az összekötők bárhol telepíthetők a hálózaton, ami lehetővé teszi számukra, hogy kéréseket küldjenek a alkalmazásproxy szolgáltatásnak. Ami fontos, hogy az összekötőt futtató számítógép is hozzáfér az alkalmazásokhoz. Az összekötőket a vállalati hálózaton belül vagy egy felhőben futó virtuális gépre is telepítheti. Az összekötők egy szegélyhálózaton, más néven demilitarizált zónában (DMZ) futnak, de ez nem szükséges, mivel minden forgalom kimenő, így a hálózat biztonságos marad.
 
-Az összekötők csak kimenő kérelmeket küldenek. A rendszer elküldi a kimenő forgalmat az alkalmazásproxy szolgáltatásnak és a közzétett alkalmazásoknak. Nem kell megnyitnia a bejövő portokat, mert a forgalom mindkét módon a munkamenet létrehozása után áramlik. Emellett a tűzfalakon keresztül nem kell konfigurálnia a bejövő hozzáférést.
+Az összekötők csak kimenő kérelmeket küldenek. A kimenő forgalom a alkalmazásproxy szolgáltatásnak és a közzétett alkalmazásoknak lesz elküldve. Nem kell megnyitnia a bejövő portokat, mert a forgalom mindkét módon áramlik a munkamenet létrejötte után. Emellett nem kell konfigurálnia a bejövő hozzáférést a tűzfalakon keresztül.
 
-A kimenő tűzfalszabályok konfigurálásával kapcsolatos további információkért lásd: a [meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md).
+A kimenő tűzfalszabályok konfigurálásával kapcsolatos további információkért lásd: Meglévő helyszíni [proxykiszolgálók használata.](application-proxy-configure-connectors-with-proxy-servers.md)
 
 ## <a name="performance-and-scalability"></a>Teljesítmény és méretezhetőség
 
-Az alkalmazásproxy szolgáltatás méretezése transzparens, de a méretezés az összekötők egyik tényezője. A maximális adatforgalom kezeléséhez elegendő összekötőre van szükség. Mivel az összekötők állapot nélküliek, nem befolyásolják a felhasználók vagy a munkamenetek számát. Ehelyett a kérelmek számának és a hasznos adatok méretének megfelelően reagálnak. A normál webes forgalom esetében egy átlagos gép másodpercenként több ezer kérést képes kezelni. A megadott kapacitás a gép pontos jellemzőitől függ.
+Az alkalmazásproxy skálázható, de a méretezés az összekötők egyik tényezője. A csúcsforgalom kezeléséhez elegendő összekötőre van szükség. Mivel az összekötők állapot nélküliek, a felhasználók vagy munkamenetek száma nem befolyásolja őket. Ehelyett válaszolnak a kérések számára és a hasznos tartalom méretére. Standard webes forgalom esetén egy átlagos gép másodpercenként néhány ezer kérést képes kezelni. Az adott kapacitás a gép pontos jellemzőitől függ.
 
-Az összekötő teljesítményét a processzor és a hálózat köti. CPU-teljesítményre van szükség a TLS-titkosításhoz és-visszafejtéshez, míg a hálózatkezelés fontos az alkalmazások és az Azure online szolgáltatásának gyors eléréséhez.
+Az összekötő teljesítményét a processzor és a hálózat. A TLS-titkosításhoz és -visszafejtéshez processzorteljesítményre van szükség, míg a hálózat fontos az alkalmazásokhoz és az Azure online szolgáltatásához való gyors kapcsolódáshoz.
 
-Ezzel szemben a memória kisebb az összekötők hibája miatt. Az online szolgáltatás a feldolgozás és az összes nem hitelesített forgalom nagy részét gondoskodik. Minden, ami a felhőben végezhető, a felhőben végezhető el.
+Ezzel szemben a memória kevésbé jelent problémát az összekötők számára. Az online szolgáltatás gondoskodik a feldolgozás nagy áról és az összes nem hitelesített forgalomról. A felhőben minden, amit el lehet tenni, a felhőben történik.
 
-Ha bármilyen okból kifolyólag az összekötő vagy a gép elérhetetlenné válik, a forgalom egy másik összekötőhöz fog indulni a csoportban. Ez a rugalmasság azt is indokolja, hogy több összekötőt is ajánlunk.
+Ha az összekötő vagy gép valamilyen okból elérhetetlenné válik, a forgalom a csoport egy másik összekötőjához fog átsziváni. Ez a rugalmasság az oka annak is, hogy több összekötő használatát javasoljuk.
 
-Egy másik tényező, amely hatással van a teljesítményre, az összekötők közötti hálózatkezelés minősége, beleértve a következőket:
+Egy másik tényező, amely hatással van a teljesítményre, az összekötők közötti hálózat minősége, beleértve a következőket:
 
-- **Online szolgáltatás**: az Azure-ban az alkalmazásproxy szolgáltatás lassú vagy nagy késleltetésű kapcsolatai befolyásolják az összekötő teljesítményét. A legjobb teljesítmény érdekében a szervezetet az Azure-hoz az expressz Route használatával kapcsolja össze. Ellenkező esetben a hálózati csapatnak biztosítania kell, hogy az Azure-kapcsolatok a lehető leghatékonyabban kezelhetők legyenek.
-- **A háttérbeli alkalmazások**: bizonyos esetekben további proxyk vannak az összekötő és a háttérbeli alkalmazások között, amelyek lassú vagy meggátolják a kapcsolatokat. A forgatókönyv hibakereséséhez nyisson meg egy böngészőt az összekötő-kiszolgálóról, és próbálja meg elérni az alkalmazást. Ha az összekötőket az Azure-ban futtatja, de az alkalmazások a helyszínen vannak, előfordulhat, hogy a felhasználói élmény nem az, amit a felhasználók elvárnak.
-- **Tartományvezérlők**: Ha az összekötők egyszeri bejelentkezést (SSO) hajtanak végre a Kerberos által korlátozott delegálás használatával, a kérésnek a háttérbe való küldése előtt kapcsolatba léphetnek a tartományvezérlőkkel. Az összekötők rendelkeznek a Kerberos-jegyek gyorsítótárával, de egy forgalmas környezetben a tartományvezérlők reagálása hatással lehet a teljesítményre. Ez a probléma gyakoribb az Azure-ban futó összekötők esetében, de a helyszíni tartományvezérlőkön kommunikál.
+- **Online szolgáltatás:** Az Azure-beli alkalmazásproxy szolgáltatás lassú vagy nagy késésű kapcsolatai befolyásolják az összekötő teljesítményét. A legjobb teljesítmény érdekében az Express Route használatával csatlakoztassa a szervezetet az Azure-hoz. Ellenkező esetben gondoskodjon róla, hogy a hálózati csapat a lehető leghatékonyabban kezelje az Azure-hoz való csatlakozásokat.
+- **Háttéralkalmazások:** Bizonyos esetekben további proxyk is vannak az összekötő és a háttéralkalmazások között, amelyek lelassítják vagy megakadályozzák a kapcsolatokat. A forgatókönyv elhárításához nyisson meg egy böngészőt az összekötő-kiszolgálóról, és próbálja meg elérni az alkalmazást. Ha az Azure-ban futtatja az összekötőket, de az alkalmazások helyszíniek, előfordulhat, hogy a felhasználói élmény nem az, amit a felhasználók elvárnak.
+- **A tartományvezérlők:** Ha az összekötők egyszeri bejelentkezést (SSO) végeznek a Kerberos által korlátozott delegálással, akkor a kérés háttérnek való elküldése előtt kapcsolatba lépnek a tartományvezérlővel. Az összekötők Kerberos-jegyeket gyorsítótáraznak, de foglalt környezetben a tartományvezérlők válaszképessége hatással lehet a teljesítményre. Ez a probléma gyakoribb az Azure-ban futó, de helyszíni tartományvezérlővel kommunikáló összekötők esetén.
 
-A hálózat optimalizálásával kapcsolatos további információkért tekintse meg a [hálózati topológia szempontjait a Azure Active Directory Application proxy használatakor](application-proxy-network-topology.md).
+A hálózat optimalizálásával kapcsolatos további információkért lásd: Hálózati [topológiával](application-proxy-network-topology.md)kapcsolatos szempontok a Azure Active Directory alkalmazásproxy.
 
-## <a name="domain-joining"></a>Csatlakozás tartományhoz
+## <a name="domain-joining"></a>Tartományhoz való csatlakozás
 
-Az összekötők olyan gépen is futtathatók, amely nincs tartományhoz csatlakoztatva. Ha azonban egyszeri bejelentkezésre (SSO) van szüksége az integrált Windows-hitelesítést (IWA) használó alkalmazásokhoz, a tartományhoz csatlakoztatott számítógépekre van szükség. Ebben az esetben az összekötő gépeket olyan tartományhoz kell csatlakoztatni, amely képes a felhasználók nevében [Kerberos](https://web.mit.edu/kerberos) által korlátozott delegálás végrehajtására a közzétett alkalmazásokhoz.
+Az összekötők olyan gépeken futnak, amelyek nem csatlakoznak tartományhoz. Ha azonban egyszeri bejelentkezést (SSO) szeretne használni az integrált Windows-hitelesítés (IWA) alkalmazást használják, tartományhoz csatlakozott gépre van szüksége. Ebben az esetben az összekötő gépeket olyan tartományhoz kell csatlakoztatni, amely képes [Kerberos](https://web.mit.edu/kerberos) által korlátozott delegálást végrehajtani a közzétett alkalmazások felhasználóinak nevében.
 
-Az összekötők olyan erdők tartományához is csatlakozhatnak, amelyek részleges megbízhatósággal rendelkeznek, vagy írásvédett tartományvezérlők.
+Az összekötők részleges megbízhatóságú erdők tartományaihoz vagy csak olvasható tartományvezérlőkhöz is csatlakoztathatóak.
 
-## <a name="connector-deployments-on-hardened-environments"></a>Összekötő üzembe helyezése megerősített környezetekben
+## <a name="connector-deployments-on-hardened-environments"></a>Összekötők üzembe helyezése a megkétesedő környezetekben
 
-Az összekötő üzembe helyezése általában egyszerű, és nem igényel speciális konfigurációt. Vannak azonban olyan egyedi feltételek, amelyeket figyelembe kell venni:
+Az összekötők üzembe helyezése általában egyszerű, és nem igényel különleges konfigurációt. Van azonban néhány egyedi feltétel, amit figyelembe kell venni:
 
-- A kimenő forgalmat korlátozó szervezeteknek [meg kell nyitniuk a szükséges portokat](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
-- Előfordulhat, hogy az FIPS-kompatibilis gépeknek módosítaniuk kell a konfigurációt, hogy az összekötő folyamatai tanúsítványokat állítanak elő és tárolnak.
-- Azok a szervezetek, amelyek a hálózati kérelmeket kiállító folyamatok alapján zárolják a környezetet, gondoskodni kell arról, hogy mindkét összekötő-szolgáltatás engedélyezze a szükséges portok és IP-címek elérését.
-- Bizonyos esetekben a kimenő továbbítási proxyk megszakítják a kétirányú Tanúsítványos hitelesítést, ami miatt a kommunikáció sikertelen lehet.
+- A kimenő forgalmat korlátozó szervezeteknek meg kell [nyitniuk a szükséges portokat.](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)
+- Előfordulhat, hogy a FIPS-kompatibilis gépeknek módosítaniuk kell a konfigurációjukat, hogy az összekötő folyamatai tanúsítványt hozzanak létre és tároljanak.
+- Azok a szervezetek, amelyek a hálózati kéréseket kitató folyamatok alapján zárolják a környezetüket, meg kell győződni arról, hogy mindkét összekötő-szolgáltatás számára engedélyezve van az összes szükséges port és IP-port elérése.
+- Bizonyos esetekben a kimenő továbbítási proxyk megszakítják a két irányú tanúsítványhitelesítést, és a kommunikáció meghiúsulhat.
 
-## <a name="connector-authentication"></a>Összekötő-hitelesítés
+## <a name="connector-authentication"></a>Összekötő hitelesítése
 
-Biztonságos szolgáltatás biztosításához az összekötőknek hitelesíteniük kell magukat a szolgáltatás felé, és a szolgáltatásnak hitelesítenie kell magát az összekötő felé. Ez a hitelesítés ügyfél-és kiszolgálói tanúsítványokkal történik, ha az összekötők kezdeményezik a kapcsolódást. Így a rendszergazda felhasználónevét és jelszavát a rendszer nem tárolja az összekötő számítógépen.
+A biztonságos szolgáltatás biztosítása érdekében az összekötőknek hitelesítést kell végezniük a szolgáltatás felé, a szolgáltatásnak pedig hitelesítenie kell magát az összekötő felé. Ez a hitelesítés ügyfél- és kiszolgálótanúsítványok használatával történik, amikor az összekötők kezdeményezik a kapcsolatot. Így a rendszergazda felhasználónevét és jelszavát a rendszer nem tárolja az összekötőt kezelő számítógépen.
 
-A használt tanúsítványok az alkalmazásproxy szolgáltatásra vonatkoznak. A kezdeti regisztráció során jönnek létre, és az összekötők minden hónapban automatikusan megújítják őket.
+A használt tanúsítványok a szolgáltatáshoz alkalmazásproxy vonatkoznak. Ezeket a rendszer a kezdeti regisztráció során hozta létre, és az összekötők néhány hónaponként automatikusan megújítják őket.
 
-Az első sikeres tanúsítvány megújítása után az Azure AD Application Proxy Connector Service (hálózati szolgáltatás) nem rendelkezik engedéllyel a régi tanúsítvány eltávolításához a helyi számítógép tárolójából. Ha a tanúsítvány lejárt, vagy a szolgáltatás nem használja többé, akkor azt biztonságosan törölheti.
+A tanúsítvány első sikeres megújítása után az Azure AD alkalmazásproxy Connector szolgáltatás (hálózati szolgáltatás) nem rendelkezik engedéllyel a régi tanúsítvány eltávolításához a helyi gép tárolójában. Ha a tanúsítvány lejárt, vagy a szolgáltatás már nem használja, biztonságosan törölheti.
 
-A tanúsítvány megújításával kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az összekötőtől a [dokumentált célhelyek](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) felé irányuló hálózati kommunikáció engedélyezve van.
+A tanúsítvány megújításával kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az összekötő és a dokumentált cél közötti hálózati kommunikáció [engedélyezve](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) van.
 
-Ha egy összekötő több hónapig nem csatlakozik a szolgáltatáshoz, előfordulhat, hogy a tanúsítványa elavult. Ebben az esetben távolítsa el, majd telepítse újra az összekötőt a regisztráció elindításához. A következő PowerShell-parancsokat futtathatja:
+Ha egy összekötő több hónapja nem csatlakozik a szolgáltatáshoz, előfordulhat, hogy a tanúsítványai elavultak. Ebben az esetben távolítsa el és telepítse újra az összekötőt a regisztráció aktiválása miatt. A következő PowerShell-parancsokat futtathatja:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ```
 
-A Government esetében használja a következőt: `-EnvironmentName "AzureUSGovernment"` . További részletekért lásd: [ügynök telepítése a Azure Government felhőhöz](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
+A kormányzati felhasználáshoz használja a `-EnvironmentName "AzureUSGovernment"` et. További részletekért lásd: Install Agent for the Azure Government Cloud (Ügynök telepítése a [Azure Government Cloudhoz).](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)
 
-Ha többet szeretne megtudni a tanúsítvány ellenőrzéséről és a hibák elhárításáról, tekintse meg a [számítógép-és háttér-összetevők támogatása az alkalmazásproxy megbízhatósági tanúsítványának ellenőrzése](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)című témakört.
+A tanúsítvány ellenőrzésével és a problémák elhárításával kapcsolatos további információkért lásd: Verify Machine and backend components support for alkalmazásproxy trust certificate (A megbízható tanúsítványok számítógép- és [háttérösszetevőinek](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)támogatása).
 
 ## <a name="under-the-hood"></a>technikai részletek
 
-Az összekötők a Windows Server webalkalmazás-proxyn alapulnak, így többek között ugyanazok a felügyeleti eszközök, mint a Windows-eseménynaplók
+Az összekötők a Windows Server Web alkalmazásproxy alapulnak, így a legtöbb ugyanazokkal a felügyeleti eszközökkel, köztük a Windows-eseménynaplókkal is rendelkezik
 
 ![Eseménynaplók kezelése a Eseménynapló](./media/application-proxy-connectors/event-view-window.png)
 
 és Windows-teljesítményszámlálók.
 
-![Teljesítményszámlálók hozzáadása az összekötőhöz a Teljesítményfigyelővel](./media/application-proxy-connectors/performance-monitor.png)
+![Számlálók hozzáadása az összekötőhöz a Teljesítményfigyelővel](./media/application-proxy-connectors/performance-monitor.png)
 
-Az összekötők **rendszergazdai** és **munkamenet** -naplókkal is rendelkeznek. A **rendszergazdai** napló a legfontosabb eseményeket és azok hibáit tartalmazza. A **munkamenet** -napló tartalmazza az összes tranzakciót és a feldolgozás részleteit.
+Az összekötők rendszergazdai **és munkamenet-naplókkal** **is** rendelkezik. A **rendszergazdai** napló tartalmazza a fő eseményeket és azok hibáit. A **munkamenet-napló** tartalmazza az összes tranzakciót és azok feldolgozási részleteit.
 
-A naplók megjelenítéséhez nyissa meg **Eseménynapló** és lépjen az **alkalmazások és szolgáltatások naplóba** a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötő**. A **munkamenet** naplójának láthatóvá tételéhez válassza a **nézet** menü **elemzési és hibakeresési naplók megjelenítése** parancsát. A **munkamenet** -napló általában hibaelhárításhoz használatos, és alapértelmezés szerint le van tiltva. Lehetővé teszi, hogy megkezdse az események gyűjtését, és letiltja azt, ha már nincs rá szükség.
+A naplók megtekintéséhez nyissa meg a **Eseménynapló,** és nyissa meg az **Alkalmazás-** és szolgáltatásnaplók  >  **Microsoft**  >  **AadApplicationProxy-összekötőt.**  >   A **munkamenetnapló láthatóvá** tenni a View (Nézet) **menü** **Show Analytic and Debug Logs**(Naplók megjelenítése és hibakeresése) parancsát. A **munkamenetnaplót** általában hibaelhárításra használják, és alapértelmezés szerint le van tiltva. Engedélyezze az események gyűjtését és letiltását, ha már nincs rá szükség.
 
-A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az összekötő két Windows-szolgáltatásból áll: a tényleges összekötőből és a updaterből. Mindkettőnek minden alkalommal futnia kell.
+A szolgáltatás állapotát a Szolgáltatások ablakban vizsgálhatja meg. Az összekötő két Windows-szolgáltatásból áll: a tényleges összekötőből és az updaterből. Mindkettőnek mindig futnia kell.
 
- ![Példa: szolgáltatások ablak, amelyen az Azure AD Services helyi](./media/application-proxy-connectors/aad-connector-services.png)
+ ![Példa: Szolgáltatások ablak az Azure AD-szolgáltatások helyi megjelenítésével](./media/application-proxy-connectors/aad-connector-services.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
+- [Alkalmazások közzététele külön hálózatokon és helyeken összekötőcsoportok használatával](application-proxy-connector-groups.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
-- [Alkalmazásproxy-és összekötő-hibák elhárítása](application-proxy-troubleshoot.md)
-- [Az Azure AD Application Proxy-összekötő csendes telepítése](application-proxy-register-connector-powershell.md)
+- [A alkalmazásproxy és összekötő hibáinak elhárítása](application-proxy-troubleshoot.md)
+- [Az Azure AD alkalmazásproxy-összekötő csendes telepítése](application-proxy-register-connector-powershell.md)

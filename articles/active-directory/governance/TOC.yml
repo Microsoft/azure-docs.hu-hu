@@ -144,6 +144,6 @@
   expanded: true
   items:
     - name: Hozzáférési felülvizsgálatok – Graph API
-      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta
+      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true
     - name: Jogosultságkezelés – Graph API
-      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta
+      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true

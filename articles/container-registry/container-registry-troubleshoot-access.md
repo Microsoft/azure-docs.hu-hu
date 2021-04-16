@@ -1,145 +1,147 @@
 ---
 title: A beállításjegyzék hálózati problémáinak elhárítása
-description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
+description: Az Azure Container Registry virtuális hálózatban vagy tűzfal mögötti elérésével kapcsolatos gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0fdedf109703eb443904989d2c0b2d75a6ba5bb1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220113"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481225"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
-Ebből a cikkből megtudhatja, milyen problémák merülhetnek fel az Azure Container Registry virtuális hálózatban való elérésekor vagy egy tűzfal vagy proxykiszolgáló mögött. 
+Ez a cikk segítséget nyújt az Azure Container Registry virtuális hálózaton vagy tűzfal vagy proxykiszolgáló mögötti elérésekor felmerülő problémák elhárításában. 
 
 ## <a name="symptoms"></a>Hibajelenségek
 
-A következők közül egyet vagy többet is tartalmazhat:
+A következők közül egyet vagy többet tartalmazhat:
 
-* Nem lehet leküldeni vagy lekérni a képeket, és hibaüzenetet kap `dial tcp: lookup myregistry.azurecr.io`
-* Nem lehet leküldeni vagy lekérni a képeket, és hibaüzenetet kap `Client.Timeout exceeded while awaiting headers`
-* Nem lehet leküldeni vagy lekérni a képeket, és Azure CLI-hibát kap `Could not connect to the registry login server`
-* Nem sikerült lekérni a lemezképeket a beállításjegyzékből az Azure Kubernetes Service-be vagy egy másik Azure-szolgáltatásba
-* Nem érhető el egy, a HTTPS-proxy mögötti beállításjegyzék, és hibaüzenetet kap, `Error response from daemon: login attempt failed with status: 403 Forbidden` vagy `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
-* Nem lehet konfigurálni a virtuális hálózati beállításokat, és hibaüzenetet kap `Failed to save firewall and virtual network settings for container registry`
-* Nem lehet hozzáférni vagy megtekinteni a beállításjegyzék beállításait Azure Portal vagy a beállításjegyzéket az Azure CLI használatával felügyelni
-* Nem lehet virtuális hálózati beállításokat vagy nyilvános hozzáférési szabályokat felvenni vagy módosítani
-* Az ACR-feladatok nem képesek leküldeni vagy lekérni a képeket
-* Azure Security Center nem tud képeket beolvasni a beállításjegyzékben, vagy a vizsgálati eredmények nem jelennek meg a Azure Security Center
+* A rendszerképek leküldése vagy leküldése nem sikerült, és hibaüzenetet kap `dial tcp: lookup myregistry.azurecr.io`
+* A rendszerképek leküldése vagy leküldése nem sikerült, és hibaüzenetet kap `Client.Timeout exceeded while awaiting headers`
+* A rendszerképek leküldése vagy leküldése nem sikerült, és Azure CLI-hibaüzenetet kap `Could not connect to the registry login server`
+* Nem sikerült lekért rendszerképek a regisztrációs adatbázisból Azure Kubernetes Service másik Azure-szolgáltatásba
+* Nem lehet hozzáférni egy HTTPS-proxy mögötti beállításjegyzékhez, és hibaüzenetet `Error response from daemon: login attempt failed with status: 403 Forbidden` kap, vagy `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
+* Nem lehet konfigurálni a virtuális hálózat beállításait, és hibaüzenetet kap `Failed to save firewall and virtual network settings for container registry`
+* Nem lehet elérni vagy megtekinteni a beállításjegyzék-beállításokat Azure Portal a regisztrációs adatbázist az Azure CLI használatával
+* Nem lehet hozzáadni vagy módosítani a virtuális hálózat beállításait vagy a nyilvános hozzáférési szabályokat
+* ACR-feladatok nem tud rendszerképeket leküldéses vagy leküldéses
+* Azure Security Center a regisztrációs adatbázisban nem lehet képeket beolvasni, vagy a vizsgálati eredmények nem jelennek meg a Azure Security Center
+* Amikor privát végponttal konfigurált beállításjegyzékhez próbál hozzáférni, `host is not reachable` hibaüzenet jelenik meg.
 
 ## <a name="causes"></a>Okok
 
-* Az ügyfél tűzfala vagy proxyja megakadályozza A hozzáférést – [megoldás](#configure-client-firewall-access)
-* A beállításjegyzék nyilvános hálózati hozzáférési szabályai akadályozzák a hozzáférést – [megoldás](#configure-public-access-to-registry)
+* Az ügyfél tűzfala vagy proxyja megakadályozza a hozzáférést – [megoldás](#configure-client-firewall-access)
+* A beállításjegyzék nyilvános hálózati hozzáférési szabályai megakadályozzák a hozzáférést – [megoldás](#configure-public-access-to-registry)
 * A virtuális hálózati konfiguráció megakadályozza a hozzáférést – [megoldás](#configure-vnet-access)
-* A Azure Security Center vagy bizonyos egyéb Azure-szolgáltatásokat olyan beállításjegyzékkel próbálja meg integrálni, amely rendelkezik saját végponttal, szolgáltatási végponttal vagy nyilvános IP-hozzáférési szabályokkal – [megoldás](#configure-service-access)
+* Megpróbál integrálni Azure Security Center azure-szolgáltatásokat egy olyan beállításjegyzékbe, amely privát végponttal, szolgáltatásvégponttal vagy nyilvános IP-hozzáférési szabályokkal rendelkezik – [megoldás](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>További diagnosztika 
 
-Futtassa az az [ACR renézz-Health](/cli/azure/acr#az-acr-check-health) parancsot, hogy további információkat kapjon a beállításjegyzék-környezet állapotáról, és igény szerint hozzáférhessen a cél beállításjegyzékhez. Például bizonyos hálózati kapcsolatok vagy konfigurációs problémák diagnosztizálása. 
+Futtassa [az az acr check-health](/cli/azure/acr#az-acr-check-health) parancsot a beállításjegyzék-környezet állapotáról és opcionálisan a céljegyzékhez való hozzáféréshez. Diagnosztizálhat például bizonyos hálózati kapcsolati vagy konfigurációs problémákat. 
 
-A példákat az [Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md) ismertető szakaszban találja. Ha a rendszer hibákat jelez, tekintse át a hibákra vonatkozó [referenciát](container-registry-health-error-reference.md) és a javasolt megoldásokat a következő fejezetekben.
+A [parancsokkal kapcsolatos példákért](container-registry-check-health.md) tekintse meg az Azure Container Registry állapotának ellenőrzése. Ha a rendszer hibákat jelent, tekintse át a [hibareferenciát](container-registry-health-error-reference.md) és az alábbi szakaszokat az ajánlott megoldásokért.
 
-Ha az Azure Kubernetes szolgáltatás integrált beállításjegyzékkel való használatával kapcsolatos problémákat tapasztal, futtassa az az [AK-ellenőrzés-ACR](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy az AK-fürt elérheti-e a beállításjegyzéket.
+Ha problémákat tapasztal egy integrált beállításjegyzék Azure Kubernetes Service-kiszolgálóval való használata során, futtassa [az az aks check-acr](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy az AKS-fürt el tudja-e érni a beállításjegyzéket.
 
 > [!NOTE]
-> Bizonyos hálózati kapcsolati tünetek akkor is előfordulhatnak, ha a beállításjegyzék-hitelesítéssel vagy-engedélyezéssel kapcsolatos probléma merül fel. Lásd: a [beállításjegyzék bejelentkezési hibáinak megoldása](container-registry-troubleshoot-login.md).
+> Bizonyos hálózati kapcsolati problémák akkor is jelentkezhetnek, ha problémák merülnek fel a beállításjegyzék hitelesítésével vagy engedélyezésével kapcsolatban. Lásd: [Beállításjegyzékbeli bejelentkezés hibaelhárítása.](container-registry-troubleshoot-login.md)
 
 ## <a name="potential-solutions"></a>Lehetséges megoldások
 
-### <a name="configure-client-firewall-access"></a>Az ügyfél tűzfal-hozzáférésének konfigurálása
+### <a name="configure-client-firewall-access"></a>Ügyfél tűzfal-hozzáférésének konfigurálása
 
-Ha egy beállításjegyzéket szeretne elérni egy ügyfél-tűzfal vagy proxykiszolgáló mögött, konfigurálja a tűzfalszabályokat a beállításjegyzék nyilvános REST és adatvégpontok eléréséhez. Ha a [dedikált adatvégpontok](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) engedélyezve vannak, az eléréséhez szabályokra van szükség:
+A beállításjegyzék ügyfél tűzfal vagy proxykiszolgáló mögötti eléréséhez konfigurálja a tűzfalszabályokat a beállításjegyzék nyilvános REST- és adatvégpontjainak eléréséhez. Ha engedélyezve vannak a dedikált [adatvégpontok,](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a hozzáféréshez szabályokra van szükség:
 
 * REST-végpont: `<registryname>.azurecr.io`
-* Adatvégpont (ok): `<registry-name>.<region>.data.azurecr.io`
+* Adatvégpont(k): `<registry-name>.<region>.data.azurecr.io`
 
-Földrajzilag replikált beállításjegyzék esetében konfigurálja az adatvégponthoz való hozzáférést az egyes regionális replikák esetében.
+Georeplikált beállításjegyzék esetén konfigurálja a hozzáférést az egyes regionális replikák adatvégpontjaihoz.
 
-HTTPS-proxy mögött ellenőrizze, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van-e a proxy működéséhez. Ha módosítja a Docker-démon proxybeállításait, ne felejtse el újraindítani a démont. 
+HTTPS-proxy mögött győződjön meg arról, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van a proxyviselkedéshez. Ha módosítja a Docker-démon proxybeállítását, mindenképpen indítsa újra a démont. 
 
-A ContainerRegistryLoginEvents tábla beállításjegyzék-erőforrás-naplófájljai segíthetnek a blokkolt megkísérelt kapcsolatok diagnosztizálásában.
+A ContainerRegistryLoginEvents táblában található beállításjegyzék-erőforrásnaplók segíthetnek diagnosztizálni a blokkolt csatlakozási kísérletet.
 
 Kapcsolódó hivatkozások:
 
-* [Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)
+* [Szabályok konfigurálása tűzfal mögötti Azure Container Registry eléréséhez](container-registry-firewall-access-rules.md)
 * [HTTP/HTTPS-proxy konfigurálása](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [Geo-replicationin Azure Container Registry](container-registry-geo-replication.md)
-* [Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz](container-registry-diagnostics-audit-logs.md)
+* [Georeplikáció Azure Container Registry](container-registry-geo-replication.md)
+* [Azure Container Registry diagnosztikai kiértékelési és naplózási naplókhoz](container-registry-diagnostics-audit-logs.md)
 
-### <a name="configure-public-access-to-registry"></a>Nyilvános hozzáférés konfigurálása a beállításjegyzékhez
+### <a name="configure-public-access-to-registry"></a>A beállításjegyzék nyilvános hozzáférésének konfigurálása
 
-Ha az interneten keresztül éri el a beállításjegyzéket, ellenőrizze, hogy a beállításjegyzék lehetővé teszi-e az ügyfél nyilvános hálózati hozzáférését. Alapértelmezés szerint az Azure Container Registry lehetővé teszi, hogy az összes hálózatról hozzáférjen a nyilvános beállításjegyzékbeli végpontokhoz. A beállításjegyzék a kiválasztott hálózatokhoz vagy a kiválasztott IP-címekhez is korlátozhatja a hozzáférést. 
+Ha a beállításjegyzékhez az interneten keresztül fér hozzá, ellenőrizze, hogy a beállításjegyzék engedélyezi-e a nyilvános hálózati hozzáférést az ügyfélről. Alapértelmezés szerint az Azure Container Registry minden hálózatról engedélyezi a hozzáférést a nyilvános beállításjegyzék végpontjaihoz. A beállításjegyzék korlátozhatja a hozzáférést a kiválasztott hálózatokra vagy kiválasztott IP-címekre. 
 
-Ha a beállításjegyzék egy szolgáltatás-végponttal rendelkező virtuális hálózathoz van konfigurálva, a nyilvános hálózati hozzáférés letiltása szintén letiltja a hozzáférést a szolgáltatási végponton keresztül. Ha a beállításjegyzék egy privát kapcsolattal rendelkező virtuális hálózatra van konfigurálva, az IP-hálózati szabályok nem vonatkoznak a beállításjegyzék saját végpontokra. 
+Ha a beállításjegyzék szolgáltatásvégponttal konfigurált virtuális hálózathoz van konfigurálva, a nyilvános hálózati hozzáférés letiltása a szolgáltatásvégponton keresztüli hozzáférést is letiltja. Ha a beállításjegyzék konfigurálva van egy virtuális hálózathoz Private Link, az IP-hálózati szabályok nem vonatkoznak a beállításjegyzék privát végpontjaira. 
 
 Kapcsolódó hivatkozások:
 
 * [Nyilvános IP-hálózati szabályok konfigurálása](container-registry-access-selected-networks.md)
-* [Privát csatlakozás Azure Container registryhez az Azure Private link használatával](container-registry-private-link.md)
-* [Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával](container-registry-vnet.md)
+* [Privát csatlakozás Azure Container Registryhez a Azure Private Link](container-registry-private-link.md)
+* [Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatásvégpontjának használatával](container-registry-vnet.md)
 
 
-### <a name="configure-vnet-access"></a>VNet-hozzáférés konfigurálása
+### <a name="configure-vnet-access"></a>Virtuális hálózati hozzáférés konfigurálása
 
-Győződjön meg arról, hogy a virtuális hálózat magánhálózati vagy szolgáltatási végpontként (előzetes verzió) konfigurált privát végponttal van konfigurálva. Jelenleg egy Azure Bastion-végpont nem támogatott.
+Győződjön meg arról, hogy a virtuális hálózat privát végponttal van konfigurálva Private Link szolgáltatásvégponthoz (előzetes verzió). A Azure Bastion végpont jelenleg nem támogatott.
 
-Tekintse át a hálózat más erőforrásairól a beállításjegyzékbe irányuló forgalom korlátozásához használt NSG-szabályokat és-szolgáltatási címkéket. 
+Ha privát végpont van konfigurálva, győződjön meg arról, hogy a DNS feloldja a beállításjegyzék nyilvános teljes tartománynevét *(például* myregistry.azurecr.io a beállításjegyzék magánhálózati IP-címére. A DNS-kereséshez használjon hálózati segédprogramot, például a `dig` vagy `nslookup` a segédprogramot. Győződjön meg [arról, hogy a DNS-rekordok](container-registry-private-link.md#dns-configuration-options) konfigurálva vannak a beállításjegyzék teljes tartománynevéhez és az egyes adatvégpont teljes tartománynevéhez.
 
-Ha konfigurálva van egy szolgáltatási végpont a beállításjegyzékhez, győződjön meg arról, hogy egy hálózati szabály van hozzáadva a beállításjegyzékhez, amely engedélyezi az adott hálózati alhálózat elérését. A szolgáltatási végpont csak a hálózatban lévő virtuális gépek és AK-fürtök elérését támogatja.
+Tekintse át az NSG-szabályokat és szolgáltatáscímkéket, amelyek a hálózat más erőforrásairól a regisztrációs adatbázisra korlátozzák a forgalmat. 
 
-Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a beállításjegyzék-hozzáférést, ügyeljen arra, hogy regisztrálja az `Microsoft.ContainerRegistry` erőforrás-szolgáltatót az előfizetésben. [Regisztrálja Azure Container Registry erőforrás-szolgáltatóját](../azure-resource-manager/management/resource-providers-and-types.md) a Azure Portal, az Azure CLI vagy más Azure-eszközök használatával.
+Ha a beállításjegyzék szolgáltatásvégpontja konfigurálva van, ellenőrizze, hogy hozzá van-e adva egy hálózati szabály a beállításjegyzékhez, amely engedélyezi a hozzáférést az adott hálózati alhálózatról. A szolgáltatásvégpont csak a hálózaton lévő virtuális gépekről és AKS-fürtökről való hozzáférést támogatja.
 
-Ha Azure Firewall vagy hasonló megoldás van konfigurálva a hálózaton, ellenőrizze, hogy a kimenő forgalom más erőforrásokból, például egy AK-fürtből van-e engedélyezve a beállításjegyzékbeli végpontok eléréséhez.
+Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a regisztrációs adatbázishoz való hozzáférést, regisztrálja az `Microsoft.ContainerRegistry` erőforrás-szolgáltatót az előfizetésben. [Regisztrálja az](../azure-resource-manager/management/resource-providers-and-types.md) erőforrás-szolgáltatót a Azure Container Registry a Azure Portal, az Azure CLI vagy más Azure-eszközök használatával.
 
-Ha egy privát végpont konfigurálva van, ellenőrizze, hogy a DNS feloldja-e a beállításjegyzék nyilvános FQDN-jét, például a *myregistry.azurecr.IO* a beállításjegyzék magánhálózati IP-címére. Használjon olyan hálózati segédprogramot, mint a `dig` vagy `nslookup` a DNS-keresés.
+Ha Azure Firewall vagy hasonló megoldás van konfigurálva a hálózaton, ellenőrizze, hogy a más erőforrások, például az AKS-fürtökről származó bejövő forgalom számára engedélyezve van-e a beállításjegyzék végpontjainak elérése.
 
 Kapcsolódó hivatkozások:
 
-* [Privát csatlakozás Azure Container registryhez az Azure Private link használatával](container-registry-private-link.md)
-* [Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával](container-registry-vnet.md)
-* [Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+* [Privát csatlakozás Azure Container Registryhez a Azure Private Link](container-registry-private-link.md)
+* [Az Azure privát végpont kapcsolati problémáinak hibaelhárítása](../private-link/troubleshoot-private-endpoint-connectivity.md)
+* [Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatásvégpontjának használatával](container-registry-vnet.md)
+* [Az AKS-fürtökhöz szükséges kimenő hálózati szabályok és teljes tartománycsoportok](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: DNS-feloldás hibakeresése](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
-* [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
+* [Virtuális hálózati szolgáltatáscímkék](../virtual-network/service-tags-overview.md)
 
 ### <a name="configure-service-access"></a>Szolgáltatás-hozzáférés konfigurálása
 
-Jelenleg egy hálózati korlátozásokkal rendelkező tároló-beállításjegyzékhez való hozzáférés nem engedélyezett több Azure-szolgáltatásból:
+A tároló-beállításjegyzékek hálózati korlátozásokkal való elérése jelenleg nem engedélyezett számos Azure-szolgáltatásban:
 
-* Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. 
-* Bizonyos Azure-szolgáltatások erőforrásai nem férnek hozzá hálózati korlátozásokkal rendelkező tároló-beállításjegyzékhez, beleértve a Azure App Service és a Azure Container Instances.
+* Azure Security Center rendszerkép biztonsági réseinek vizsgálata nem végrehajtásához olyan beállításjegyzékben, amely korlátozza a hozzáférést a privát végpontok, a kiválasztott alhálózatok vagy IP-címek számára. [](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) 
+* Bizonyos Azure-szolgáltatások erőforrásai nem tudnak hálózati korlátozásokkal hozzáférni a tároló-beállításjegyzékhez, beleértve a Azure App Service és Azure Container Instances.
 
-Ha az Azure-szolgáltatások hozzáférése vagy integrálása szükséges a tároló beállításjegyzékével, távolítsa el a hálózati korlátozást. Távolítsa el például a beállításjegyzék saját végpontját, vagy távolítsa el vagy módosítsa a beállításjegyzék nyilvános hozzáférési szabályait.
+Ha ezeknek az Azure-szolgáltatásoknak a tároló-beállításjegyzékével való elérésére vagy integrálására van szükség, távolítsa el a hálózati korlátozást. Eltávolíthatja például a beállításjegyzék privát végpontját, vagy eltávolíthatja vagy módosíthatja a beállításjegyzék nyilvános hozzáférési szabályait.
 
-Január 2021-től kezdődően a hálózatra korlátozott beállításjegyzék konfigurálható úgy, hogy [engedélyezze a hozzáférést](allow-access-trusted-services.md) a megbízható szolgáltatások közül.
+2021 januártól kezdve konfigurálhat egy hálózatra korlátozott beállításjegyzéket, hogy engedélyezze a hozzáférést [bizonyos](allow-access-trusted-services.md) megbízható szolgáltatásokból.
 
 Kapcsolódó hivatkozások:
 
-* [Security Center Azure Container Registry képvizsgálat](../security-center/defender-for-container-registries-introduction.md)
-* [Visszajelzés küldése](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
-* [A megbízható szolgáltatások biztonságos elérésének engedélyezése a korlátozott hálózati tárolók beállításjegyzékében](allow-access-trusted-services.md)
+* [Azure Container Registry képkeresés a Security Center](../security-center/defender-for-container-registries-introduction.md)
+* Visszajelzés [küldése](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [A megbízható szolgáltatások biztonságos hozzáférésének engedélyezése a hálózatra korlátozott tárolójegyzékhez](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Speciális hibaelhárítás
 
-Ha a beállításjegyzékben engedélyezve van az [erőforrás-naplók gyűjtése](container-registry-diagnostics-audit-logs.md) , tekintse át a ContainterRegistryLoginEvents-naplót. Ez a napló a hitelesítési eseményeket és az állapotot tárolja, beleértve a bejövő identitást és az IP-címet is. A [beállításjegyzék-hitelesítési hibák](container-registry-diagnostics-audit-logs.md#registry-authentication-failures)naplójának lekérdezése. 
+Ha [az erőforrásnaplók gyűjteménye](container-registry-diagnostics-audit-logs.md) engedélyezve van a beállításjegyzékben, tekintse át a ContainterRegistryLoginEvents naplót. Ez a napló tárolja a hitelesítési eseményeket és állapotokat, beleértve a bejövő identitást és IP-címet. A beállításjegyzék-hitelesítési [hibákat a naplóban kell lekérdezni.](container-registry-diagnostics-audit-logs.md#registry-authentication-failures) 
 
 Kapcsolódó hivatkozások:
 
-* [Naplók a diagnosztika kiértékeléséhez és a naplózáshoz](container-registry-diagnostics-audit-logs.md)
+* [Diagnosztikai kiértékelési és naplózási naplók](container-registry-diagnostics-audit-logs.md)
 * [Container Registry – gyakori kérdések](container-registry-faq.md)
-* [Azure Container Registry Azure biztonsági alapterve](security-baseline.md)
+* [Az Azure biztonsági alapkonfigurációja Azure Container Registry](security-baseline.md)
 * [Az Azure Container Registry ajánlott eljárásai](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
+Ha itt nem oldja meg a problémát, tekintse meg az alábbi lehetőségeket.
 
 * A beállításjegyzék egyéb hibaelhárítási témakörei a következők:
-  * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
-  * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
+  * [A beállításjegyzékbe való bejelentkezés hibaelhárítása](container-registry-troubleshoot-login.md) 
+  * [A beállításjegyzék teljesítményével kapcsolatos problémák elhárítása](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
 * [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)

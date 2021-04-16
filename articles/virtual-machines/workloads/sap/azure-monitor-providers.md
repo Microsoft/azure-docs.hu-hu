@@ -6,61 +6,61 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 54ce9ca0ddffe074f5a343d192b4599b3449a855
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fe8ac81a8b04aa88ce91a978c2bc9b979a065370
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538740"
+ms.locfileid: "107576159"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor SAP-megoldásszolgáltatókhoz (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés  
 
-A szolgáltatótípus a Azure Monitor for SAP Solutions *adott* szolgáltatóra *vonatkozik.* Például a *SAP HANA,* amely egy adott összetevőre van konfigurálva az SAP-környezetben, például egy SAP HANA adatbázishoz. A szolgáltató tartalmazza a megfelelő összetevő kapcsolati adatait, és segít az adott összetevőből származó telemetriai adatok gyűjtésében. Egy Azure Monitor for SAP Solutions erőforrás (más néven SAP Monitor-erőforrás) több azonos szolgáltatótípusú szolgáltatóval vagy több szolgáltatótípussal is konfigurálható.
+A szolgáltatótípus a Azure Monitor for SAP Solutions egy  adott szolgáltatóra *vonatkozik.* Például a *SAP HANA,* amely az SAP-környezet egy adott összetevőjét, például egy adatbázishoz SAP HANA konfigurálja. A szolgáltató tartalmazza a megfelelő összetevő kapcsolati adatait, és segít az adott összetevőből származó telemetriai adatok gyűjtésében. Egy Azure Monitor for SAP Solutions (más néven SAP Monitor-erőforrás) több azonos szolgáltatótípusú szolgáltatóval vagy több szolgáltatótípussal is konfigurálható.
    
-Az ügyfelek dönthetnek úgy, hogy különböző szolgáltatótípusokat konfigurálnak az SAP-környezet megfelelő összetevőiből való adatgyűjtés engedélyezéséhez. Az ügyfelek például konfigurálhatnak egy szolgáltatót SAP HANA szolgáltatótípushoz, egy másikat a magas rendelkezésre állású fürtszolgáltató típushoz stb.  
+Az ügyfelek dönthetnek úgy, hogy különböző szolgáltatótípusokat konfigurálnak a megfelelő összetevőkből való adatgyűjtés engedélyezéséhez az SAP környezetben. Az ügyfelek például konfigurálhatnak egy szolgáltatót SAP HANA szolgáltatótípushoz, egy másikat a Magas rendelkezésre állású fürtszolgáltató típushoz stb.  
 
-Az ügyfelek úgy is dönthetnek, hogy több szolgáltatót is konfigurálnak egy adott szolgáltatótípushoz, hogy ugyanazt az SAP Monitor-erőforrást és a társított felügyelt csoportot újra felhasználják. További információ a felügyelt erőforráscsoportról. A nyilvános előzetes verzió a következő szolgáltatótípusokat támogatja:   
+Az ügyfelek dönthetnek úgy is, hogy több szolgáltatót konfigurálnak egy adott szolgáltatótípushoz, hogy ugyanazt az SAP Monitor-erőforrást és a társított felügyelt csoportot újra felhasználják. További információ a felügyelt erőforráscsoportról. Nyilvános előzetes verzió esetén a következő szolgáltatótípusok támogatottak:   
 - SAP NetWeaver
 - SAP HANA
 - Microsoft SQL Server
 - Magas rendelkezésre állású fürt
 - Operációs rendszer
 
-![Azure Monitor SAP-megoldásszolgáltatókhoz](./media/azure-monitor-sap/azure-monitor-providers.png)
+![Azure Monitor SAP-megoldásszolgáltatókhoz](https://user-images.githubusercontent.com/75772258/115047655-5a5b2c00-9ef6-11eb-9e0c-073e5e1fcd0e.png)
 
 Az SAP Monitor-erőforrás üzembe helyezésekor ajánlott legalább egy szolgáltatót konfigurálni az elérhető szolgáltatótípusokból. Egy szolgáltató konfigurálásával az ügyfelek az adatgyűjtést annak a megfelelő összetevőnek a segítségével kezdeményezik, amelyhez a szolgáltató konfigurálva van.   
 
-Ha az ügyfelek nem konfigurálnak szolgáltatókat az SAP Monitor-erőforrás üzembe helyezésekor, bár az SAP Monitor-erőforrás üzembe helyezése sikeres lesz, a rendszer nem gyűjt telemetriai adatokat. Az ügyfelek az SAP Monitor-erőforráson keresztüli üzembe helyezés után hozzáadhatnak szolgáltatókat a Azure Portal. Az ügyfelek bármikor hozzáadhatnak vagy törölhet szolgáltatókat az SAP Monitor-erőforrásból.
+Ha az ügyfelek nem konfigurálnak szolgáltatókat az SAP Monitor-erőforrás üzembe helyezésekor, bár az SAP Monitor-erőforrás üzembe helyezése sikeres lesz, nem gyűjt telemetriai adatokat. Az ügyfelek az SAP Monitor-erőforráson keresztüli üzembe helyezés után is hozzáadhatnak szolgáltatókat a Azure Portal. Az ügyfelek bármikor hozzáadhatnak vagy törölhet szolgáltatókat az SAP Monitor-erőforrásból.
 
 ## <a name="provider-type-sap-netweaver"></a>Szolgáltató típusa: SAP NetWeaver
 
-Az ügyfelek egy vagy több SZOLGÁLTATÓ típusú SAP NetWeaver szolgáltatót konfigurálnak az SAP NetWeaver rétegből való adatgyűjtés engedélyezéséhez. Az AMS NetWeaver szolgáltató a meglévő [SAPControl webszolgáltatási](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) felületet használja a megfelelő telemetriai adatok lekérésére.
+Az ügyfelek egy vagy több szolgáltatótípust is konfigurálhatnak az SAP NetWeaver szolgáltatói típushoz, hogy engedélyezhétessék az adatok gyűjtését az SAP NetWeaver rétegből. Az AMS NetWeaver szolgáltató a meglévő [SAPControl webes](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) felületet használja a megfelelő telemetriai adatok lekérésére.
 
-A jelenlegi kiadásban az alábbiakban az AMS által meghívott szabványos, alapértelmezés szerint használt SOAP-alapú webes metódusokat olvashatja.
+A jelenlegi kiadásban az alábbiakban az AMS által meghívott szabványos, alapesetben használt SOAP-metódusokat olvashatja.
 
 ![image1](https://user-images.githubusercontent.com/75772258/114600036-820d8280-9cb1-11eb-9f25-d886ab1d5414.png)
 
-A nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják az SAP NetWeaver szolgáltatónál: 
+Nyilvános előzetes verzióban az ügyfelek számíthatnak a következő adatokra az SAP NetWeaver szolgáltatónál: 
 - A rendszer és a példány rendelkezésre állása
 - A munkafolyamat kihasználtsága
 - Üzenetsor kihasználtsága
-- Sorra hozási zárolási statisztikák.
+- Zárolási statisztikák sorba való besorolása.
 
 ![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="provider-type-sap-hana"></a>Szolgáltató típusa: SAP HANA
 
-Az ügyfelek egy vagy több szolgáltatótípus-szolgáltatót *konfigurálnak, SAP HANA* lehetővé teszik az adatok gyűjtését SAP HANA adatbázisból. A SAP HANA-szolgáltató SQL-porton keresztül csatlakozik az SAP HANA-adatbázishoz, lekért telemetriai adatokat az adatbázisból, majd lekullja őket az ügyfél-előfizetés Log Analytics-munkaterületére. A SAP HANA szolgáltató 1 percenként gyűjt adatokat a SAP HANA adatbázisból.  
+Az ügyfelek konfigurálhat egy vagy több szolgáltatótípus-szolgáltatót, *SAP HANA* lehetővé teszik az adatok gyűjtését SAP HANA adatbázisból. Az SAP HANA-szolgáltató SQL-porton keresztül csatlakozik az SAP HANA-adatbázishoz, lekért telemetriai adatokat az adatbázisból, majd lekullja őket az ügyfél-előfizetés Log Analytics-munkaterületére. A SAP HANA 1 percenként gyűjt adatokat a SAP HANA adatbázisból.  
 
-A nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják a SAP HANA-szolgáltatóval: Mögöttes infrastruktúra-kihasználtság, SAP HANA Gazdagép állapota, SAP HANA rendszerreplikáció és SAP HANA Backup telemetriai adatok. A szolgáltató SAP HANA, gazdagép IP-címe, HANA SQL-portszám és SYSTEMDB-felhasználónév és -jelszó megadása szükséges. Javasoljuk az ügyfeleknek, hogy konfigurálják SAP HANA szolgáltatót a SYSTEMDB-hez, de több szolgáltató konfigurálható más adatbázis-bérlőkhöz is.
+Nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják a SAP HANA-szolgáltatóval: Mögöttes infrastruktúra-kihasználtság, SAP HANA Gazdagép állapota, SAP HANA rendszerreplikáció és SAP HANA Backup telemetriai adatok. A szolgáltató SAP HANA, a gazdagép IP-címe, a HANA SQL-portszám és a SYSTEMDB-felhasználónév és -jelszó megadása szükséges. Javasoljuk az ügyfeleknek, hogy konfigurálják SAP HANA szolgáltatót a SYSTEMDB-hez, de több szolgáltató is konfigurálható más adatbázis-bérlőkhöz.
 
-![Azure Monitor SAP-megoldások szolgáltatói számára – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
+![Azure Monitor SAP-megoldásszolgáltatókhoz – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
 ## <a name="provider-type-microsoft-sql-server"></a>Szolgáltató típusa: Microsoft SQL Server
 
-Az ügyfelek konfigurálhat egy vagy több szolgáltatótípus-szolgáltatót, *Microsoft SQL Server* az adatgyűjtést a [SQL Server on Virtual Machines.](https://azure.microsoft.com/services/virtual-machines/sql-server/) SQL Server szolgáltató az SQL Microsoft SQL Server porton keresztül csatlakozik az Microsoft SQL Server-hez, lekért telemetriai adatokat az adatbázisból, és lekullja őket az ügyfél-előfizetés Log Analytics-munkaterületére. A SQL Server konfigurálni kell az SQL-hitelesítéshez, és létre kell SQL Server egy bejelentkezési azonosítót, a szolgáltató alapértelmezett adatbázisaként pedig az SAP-adatbázist kell létrehozni. SQL Server szolgáltató 60 másodpercenként és óránként gyűjt adatokat az SQL Serverről.  
+Az ügyfelek konfigurálhat egy vagy több szolgáltatótípus-szolgáltatót, *hogy* Microsoft SQL Server az adatgyűjtést a [SQL Server on Virtual Machines.](https://azure.microsoft.com/services/virtual-machines/sql-server/) SQL Server szolgáltató csatlakozik a Microsoft SQL Server-hoz az SQL-porton keresztül, lekért telemetriai adatokat az adatbázisból, és lekullja őket az ügyfél-előfizetés Log Analytics-munkaterületére. A SQL Server konfigurálva kell lennie az SQL-hitelesítéshez, és SQL Server-bejelentkezést, és létre kell hozva az SAP-adatbázist a szolgáltató alapértelmezett adatbázisaként. SQL Server szolgáltató 60 másodpercenként és óránként gyűjt adatokat az SQL Serverről.  
 
 A nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják az SQL Server-szolgáltatóval: mögöttes infrastruktúra-kihasználtság, legfelső szintű SQL-utasítások, legnagyobb tábla, az SQL Server-hibanaplókban rögzített problémák, blokkolási folyamatok és egyebek.  
 
@@ -75,13 +75,13 @@ A nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatjá
  - A fürt állapota a csomópont és az erőforrás állapotának összesítéseként ábrázolva 
  - [Mások](https://github.com/ClusterLabs/ha_cluster_exporter/blob/master/doc/metrics.md) 
 
-![Azure Monitor SAP-megoldásszolgáltatók számára – Magas rendelkezésre állású fürt](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
+![Azure Monitor SAP-megoldások szolgáltatói számára – Magas rendelkezésre állású fürt](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-Magas rendelkezésre állású fürtszolgáltató konfigurálásán két elsődleges lépés vesz részt:
+Magas rendelkezésre állású fürtszolgáltató konfigurálásán két fő lépés vesz részt:
 
-1. Telepítse [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) a *Pacemaker-fürt* minden csomópontjára.
+1. Telepítse [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) a *Pacemaker-fürt* minden csomópontján.
 
-   A két lehetőség a következő két ha_cluster_exporter:
+   A két lehetőség közül választhat a ha_cluster_exporter:
    
    - Magas Azure Automation fürt üzembe helyezéséhez használjon Azure Automation szkripteket. A szkriptek [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) fürtcsomópontra telepítik a fürtöt.  
    - Manuális [telepítést kell.](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build) 
@@ -92,26 +92,26 @@ Magas rendelkezésre állású fürtszolgáltató konfigurálásán két elsődl
    
    - **Név**. A szolgáltató neve. Ennek egyedinek kell lennie ehhez a Azure Monitor SAP-megoldáspéldányhoz.
    - **Prometheus-végpont.** http \: // \<servername or ip address\> :9664/metrics.
-   - **SID (Biztonsági azonosító)**. SAP-rendszerekhez használja az SAP SID-t. Más rendszerek (például NFS-fürtök) esetében használjon egy három karakterbőlből következő nevet a fürtnek. A biztonsági azonosítónak különbözik a többi figyelt fürttől.   
+   - **SID (Biztonsági azonosító)**. SAP-rendszerekhez használja az SAP SID-t. Más rendszerek (például NFS-fürtök) esetén a fürtnek használjon három karakterből következő nevet. A biztonsági azonosítónak különbözik a többi figyelt fürttől.   
    - **Fürt neve.** A fürt létrehozásakor használt fürtnév. A fürt neve a fürttulajdonságban `cluster-name` található.
    - **Gazdagépnév.** A virtuális gép Linux-gazdaneve.  
 
 ## <a name="provider-type-os-linux"></a>Szolgáltató típusa: Operációs rendszer (Linux)
 Az ügyfelek konfigurálhat egy vagy több szolgáltatótípusú operációs rendszert (Linux) az BareMetal vagy a VM-csomópontról való adatgyűjtés engedélyezéséhez. Az operációs rendszer (Linux) szolgáltatója az Node_Exporter-végpont használatával csatlakozik az BareMetal- vagy [virtuálisgép-csomópontokhoz,](https://github.com/prometheus/node_exporter)lekért telemetriai adatokat a csomópontról, és lekultálja az ügyfél-előfizetés   Log Analytics-munkaterületére. Az operációs rendszer (Linux) szolgáltatója 60 másodpercenként gyűjt adatokat a csomópontok legtöbb metrikára. 
 
-A nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják az operációs rendszer (Linux) szolgáltatójával: 
-   - CPU-használat, cpu-használat folyamat szerint 
-   - Lemezkihasználtság, írási I/O-& írás 
-   - Memóriaelosztás, memóriahasználat, felcserélési memóriahasználat 
+A Nyilvános előzetes verzióban az ügyfelek a következő adatokat láthatják az operációs rendszer (Linux) szolgáltatójával: 
+   - CPU-használat, processzorhasználat folyamat szerint 
+   - Lemezkihasználtság, írási I/O& írás 
+   - Memóriaelosztás, memóriahasználat, felcserélés memóriahasználata 
    - Hálózathasználat, bejövő hálózati forgalom & kimenő forgalom részletei. 
 
-Az operációs rendszer (Linux) szolgáltatójának konfigurálásán két fő lépés vesz részt:
-1. Telepítse [Node_Exporter](https://github.com/prometheus/node_exporter)   operációs rendszer nélküli vagy virtuálisgép-csomópontokra.
-   A következő két lehetőség közül választhat a [Node_exporter:](https://github.com/prometheus/node_exporter) 
-      - Az Ansible-alapú [](https://github.com/prometheus/node_exporter) Automation-telepítéshez minden BareMetal Node_Exporter virtuálisgép-csomóponton külön kell telepíteni az operációsrendszer-szolgáltatót (Linux).  
+Az operációsrendszer-szolgáltató (Linux) konfigurálás két fő lépésből áll:
+1. Telepítse [Node_Exporter](https://github.com/prometheus/node_exporter)operációs rendszer nélküli vagy   virtuálisgép-csomópontokra.
+   A két lehetőség közül választhat a [Node_exporter:](https://github.com/prometheus/node_exporter) 
+      - Az Ansible-sel [](https://github.com/prometheus/node_exporter) való Automation-telepítéshez minden BareMetal Node_Exporter virtuálisgép-csomóponton külön-külön telepítse az operációsrendszer-szolgáltatót (Linux).  
       - Manuális [telepítést kell.](https://prometheus.io/docs/guides/node-exporter/)
 
-2. Konfigurálja az operációs rendszer (Linux) szolgáltatóját a környezetben található összes BareMetal- vagy VM-csomópontpéldányhoz. 
+2. Állítson be egy operációsrendszer-szolgáltatót a környezetben található összes BareMetal- vagy VM-csomópontpéldányhoz. 
    Az operációs rendszer (Linux) szolgáltatójának konfigurálásához a következő információkra van szükség: 
       - név. A szolgáltató neve. Ennek egyedinek kell lennie ehhez a Azure Monitor SAP-megoldáspéldányhoz. 
       - Csomópont-végpont. Általában http:// <servername or ip address> :9100/metrics 
@@ -120,9 +120,9 @@ Az operációs rendszer (Linux) szolgáltatójának konfigurálásán két fő l
 > A 9100 egy végpont számára elérhetővé Node_Exporter port.
 
 > [!Warning]
-> A csomópont újraindítása után győződjön meg arról, hogy a Csomópont-csomópont-kiszolgáló továbbra is fut. 
+> Győződjön meg arról, hogy a csomópont-újraindítás után is fut a Csomópont-újraindítás. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse [meg az sap-megoldások](./azure-monitor-sap-quickstart.md) Azure Monitor első lépéseit.
-- Kérdése van a Azure Monitor for SAP Solutions? Tekintse meg a [GYAKORI KÉRDÉSEK](./azure-monitor-faq.md) szakaszt
+- Kérdése van a Azure Monitor for SAP Solutions? Tekintse meg a [GYAKORI KÉRDÉSEK szakaszt](./azure-monitor-faq.md)

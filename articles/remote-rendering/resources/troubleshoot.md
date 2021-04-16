@@ -1,121 +1,121 @@
 ---
 title: Hibaelhárítás
-description: Az Azure távoli rendereléssel kapcsolatos hibaelhárítási információk
+description: Hibaelhárítási információk a Azure Remote Rendering
 author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593333"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575343"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
-Ezen a lapon az Azure távoli renderelést akadályozó gyakori problémák és a megoldási módszerek találhatók.
+Ez az oldal felsorolja az adatbázissal kapcsolatos gyakori Azure Remote Rendering és a megoldásuk módjait.
 
 ## <a name="cant-link-storage-account-to-arr-account"></a>A tárfiókot nem lehet csatlakoztatni az ARR-fiókhoz
 
-Néha a [Storage-fiók összekapcsolása](../how-tos/create-an-account.md#link-storage-accounts) során a távoli renderelési fiók nem szerepel a listáján. A probléma megoldásához nyissa meg a Azure Portal ARR-fiókját, és válassza az **identitás** elemet a bal oldali **Beállítások** csoportban. Győződjön **meg** arról, hogy az **állapot** beállítása be értékre van állítva.
-![Unity frame Debugger](./media/troubleshoot-portal-identity.png)
+Előfordulhat, [hogy a tárfiókok összekapcsolása](../how-tos/create-an-account.md#link-storage-accounts) Remote Rendering a fiók nem szerepel a listán. A probléma megoldásához a bal oldalon, a Beállítások  csoportban  Azure Portal ARR-fiókot. Ellenőrizze, **hogy az Állapot** be van-e **állítva.**
+![Unity-képkocka hibakereső](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Az ügyfél nem tud csatlakozni a kiszolgálóhoz
 
-Győződjön meg arról, hogy a tűzfalak (az eszközön belül, az útválasztók stb.) nem blokkolja a [rendszerkövetelményekben](../overview/system-requirements.md#network-firewall)említett portokat.
+Győződjön meg arról, hogy a tűzfalak (az eszközön, útválasztón belül stb.) nem blokkolják a [rendszerkövetelmények között említett portokat.](../overview/system-requirements.md#network-firewall)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: " `Disconnected: VideoFormatNotAvailable` "
+## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: `Disconnected: VideoFormatNotAvailable` '
 
-Győződjön meg arról, hogy a GPU támogatja a hardveres videó-dekódolást. Lásd: [fejlesztői számítógép](../overview/system-requirements.md#development-pc).
+Ellenőrizze, hogy a GPU támogatja-e a hardveres videó dekódolást. Lásd: [Fejlesztői számítógép.](../overview/system-requirements.md#development-pc)
 
-Ha két GPU-val rendelkező laptopon dolgozik, akkor előfordulhat, hogy az alapértelmezés szerint futó GPU nem biztosít hardveres videó-dekódolási funkciót. Ha igen, próbálja meg kényszeríteni az alkalmazást, hogy használja a többi GPU-t. Ez gyakran lehetséges a GPU illesztőprogram-beállításaiban.
+Ha két GPU-val működő laptopon dolgozik, akkor lehetséges, hogy az alapértelmezés szerint futtatott GPU nem biztosít hardveres videokódolási funkciót. Ha igen, próbálja meg kényszeríteni az alkalmazást a másik GPU használatára. Ez gyakran lehetséges a GPU-illesztőprogram beállításaiban.
 
-## <a name="retrieve-sessionconversion-status-fails"></a>A munkamenet/átalakítás állapotának lekérése sikertelen
+## <a name="retrieve-sessionconversion-status-fails"></a>A munkamenet/átalakítási állapot lekérése sikertelen
 
-Ha túl gyakran küld REST API parancsokat, a kiszolgáló leszabályozását és a hibák visszaadását fogja eredményezni. A szabályozási esetben a http-állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces** késleltetésnek kell lennie.
+Ha REST API parancsokat túl gyakran küld, akkor a kiszolgáló végül el fogja tudni fogja tudni tudni kordani a kiszolgálót, és hibát fog visszaadni. A szabályozási esetben a HTTP-állapotkód 429 ("túl sok kérelem"). Általános szabályként a következő hívások között **5–10 másodperces késleltetésnek kell lennie.**
 
-Vegye figyelembe, hogy ez a korlát nem csupán a REST API hívásokra van hatással, amikor a hívás közvetlenül, de C#/C + +, például,, `Session.GetPropertiesAsync` `Session.RenewAsync` vagy `Frontend.GetAssetConversionStatusAsync` .
+Vegye figyelembe, hogy ez a korlátozás nem csak a közvetlen hívásokat REST API, hanem a C#/C++ megfelelőiket is, például a `Session.GetPropertiesAsync` , `Session.RenewAsync` vagy a hívását `Frontend.GetAssetConversionStatusAsync` is.
 
-Ha kiszolgálóoldali szabályozást tapasztal, módosítsa a kódot úgy, hogy ritkábban hajtsa végre a hívásokat. A kiszolgáló percenként alaphelyzetbe állítja a szabályozási állapotot, így biztonságos a kód egy perc elteltével újra lefutni.
+Ha kiszolgálóoldali szabályozást tapasztal, módosítsa a kódot úgy, hogy ritkábban használja a hívásokat. A kiszolgáló percenként alaphelyzetbe állítja a szabályozási állapotot, így egy perc után biztonságosan újrafuttathatja a kódot.
 
-## <a name="h265-codec-not-available"></a>A H265-kodek nem érhető el
+## <a name="h265-codec-not-available"></a>A H265 codec nem érhető el
 
-Két oka lehet annak, hogy a kiszolgáló elutasítja a hibával való kapcsolódást `codec not available` .
+Két oka lehet annak, hogy a kiszolgáló megtagadja a kapcsolódást egy `codec not available` hibával.
 
-**Nincs telepítve a H265-kodek:**
+**A H265 kodek nincs telepítve:**
 
-Először győződjön meg arról, hogy a rendszerkövetelmények között a [szoftver](../overview/system-requirements.md#software) szakaszban említettek szerint telepíti a **HEVC video Extensions** szolgáltatást.
+Először telepítse a  HEVC-videobővítmények a rendszerkövetelmények [](../overview/system-requirements.md#software) Szoftver szakaszában említettek szerint.
 
-Ha továbbra is problémákba ütközik, győződjön meg arról, hogy a videokártya támogatja a H265, és hogy telepítve van a legújabb grafikus illesztőprogram. Tekintse meg a gyártó által megadott információk rendszerkövetelményeit a [fejlesztői számítógépekről](../overview/system-requirements.md#development-pc) szóló szakaszban.
+Ha továbbra is problémákba ütközik, ellenőrizze, hogy a grafikus kártya támogatja-e a H265-öt, és hogy telepítve van-e a legújabb grafikus illesztőprogram. A [gyártóspecifikus információkért tekintse](../overview/system-requirements.md#development-pc) meg a rendszerkövetelmények Fejlesztői számítógép című szakaszát.
 
 **A kodek telepítve van, de nem használható:**
 
-A probléma oka a DLL-ek helytelen biztonsági beállítása. Ez a probléma nem jelenik meg a H265-mel kódolt videók megtekintésére tett kísérlet során. A kodek újratelepítése nem oldja meg a problémát. Ehelyett hajtsa végre a következő lépéseket:
+A probléma oka a DLL-ek helytelen biztonsági beállítása. Ez a probléma nem jelentkezik a H265 kódolású videók megtekintésekor. A kodek újratelepítése sem oldja meg a problémát. Ehelyett hajtsa végre a következő lépéseket:
 
-1. Nyisson meg egy **rendszergazdai jogosultságokkal rendelkező PowerShellt** , és futtassa a parancsot
+1. Nyisson meg egy **PowerShellt rendszergazdai jogosultságokkal,** és futtassa a parancsot
 
     ```PowerShell
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    A parancsnak a következőhöz hasonló módon kell kiadnia a `InstallLocation` kodeket:
+    Ennek a parancsnak a következő `InstallLocation` képhez hasonló kimenetet kell kihozni a kodekből:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
     ```
 
-1. A mappa megnyitása a Windows Intézőben
-1. Egy **x86** -os és egy **x64** -es almappanek kell lennie. Kattintson a jobb gombbal az egyik mappára, és válassza a **Tulajdonságok** lehetőséget.
-    1. Válassza a **Biztonság** fület, és kattintson a **speciális** beállítások gombra.
-    1. Kattintson a **tulajdonos** **módosítása** elemre.
-    1. Írja be a **rendszergazdákat** a szövegmezőbe
-    1. Kattintson **a Névellenőrzés** elemre, majd **az OK gombra** .
-1. Ismételje meg a fenti lépéseket a másik mappára vonatkozóan
-1. Ismételje meg a fenti lépéseket is az egyes DLL-fájlokon mindkét mappában. Összesen négy dll-fájlnak kell lennie.
+1. Nyissa meg ezt a mappát a Windows Explorer
+1. Egy **x86 és** egy **x64 almappának** kell lennie. Kattintson a jobb gombbal az egyik mappára, és válassza a Tulajdonságok **lehetőséget**
+    1. Válassza a **Biztonság lapot,** majd kattintson a **Speciális beállítások** gombra
+    1. Kattintson **a Tulajdonos** módosítása **lehetőségre**
+    1. Írja be **a Rendszergazdák** szöveget a szövegmezőbe
+    1. Kattintson **a Névellenőrzés és** az OK **gombra.**
+1. Ismételje meg a fenti lépéseket a másik mappával is
+1. Ismételje meg a fenti lépéseket mindkét mappában található DLL-fájlokon is. Összesen négy DLL-nek kell lennie.
 
-Annak ellenőrzéséhez, hogy a beállítások helyesek-e, tegye a következőket a négy dll-fájlhoz:
+Annak ellenőrzéséhez, hogy a beállítások helyesek-e, tegye ezt a következő négy DLL mindegyikéhez:
 
-1. Válassza a **tulajdonságok > biztonsági > szerkesztés** lehetőséget
-1. Lépjen végig az összes **csoport/felhasználó** listáján, és ellenőrizze, hogy mindegyik rendelkezik-e az **olvasási & végrehajtásának** megfelelő készlettel (az **Engedélyezés** oszlopban jelölje be a jelölőnégyzetet)
+1. A **Biztonság > és > kiválasztása**
+1. Tekintse át az összes **csoport/felhasználó** listáját, és győződjön meg arról, hogy mindegyik rendelkezik  a Read **& Execute** (Végrehajtás) jobb oldali beállításokkal (az engedélyező oszlopban lévő pipának pipának kell lennie)
 
-## <a name="low-video-quality"></a>Alacsony minőségű videó
+## <a name="low-video-quality"></a>Alacsony videóminőség
 
-A videó minősége a hálózati minőség vagy a hiányzó H265-videó kodekkel is feltörhető.
+A videóminőséget a hálózati minőség vagy a hiányzó H265 videokodekek veszélyeztethetik.
 
-* Tekintse meg a [hálózati problémák azonosításához](#unstable-holograms)szükséges lépéseket.
-* Tekintse meg a legújabb grafikus illesztőprogram telepítéséhez [szükséges rendszerkövetelményeket](../overview/system-requirements.md#development-pc) .
+* Lásd a hálózati problémák [azonosításának lépéseit.](#unstable-holograms)
+* Tekintse meg [a legújabb](../overview/system-requirements.md#development-pc) grafikus illesztőprogram telepítésére vonatkozó rendszerkövetelményeket.
 
-## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>A MRC-mel rögzített videó nem tükrözi az élő élmény minőségét
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Az MRC-val rögzített videó nem tükrözi az élő élmény minőségét
 
-A HoloLens [vegyes valóság-rögzítéssel (MRC)](/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
-* A videó frameráta 30 Hz-re van korlátozva, szemben a 60 Hz-es értékkel.
-* A videó-lemezképek nem haladnak át a [késői szakasz újravetítésének](../overview/features/late-stage-reprojection.md) feldolgozásának lépésén, így a videó choppier válik.
+A HoloLensen a videó a Vegyes valóság rögzítése [(MRC) segítségével rögzítható.](/windows/mixed-reality/mixed-reality-capture-for-developers) Az eredményül kapott videó minősége azonban két okból rosszabb, mint az élő élmény:
+* A videó képkocka-rátának felső határa 30 Hz, nem pedig 60 Hz.
+* A videóképek nem jelennek meg a reprodukálás utolsó fázisának feldolgozási lépésén, ezért a videó elégedettnek tűnik. [](../overview/features/late-stage-reprojection.md)
 
-Mindkettő a rögzítési technikában rejlő korlátozásokat is magában foglalhat.
+Mindkettő a rögzítési technika eredendő korlátozásai.
 
-## <a name="black-screen-after-successful-model-loading"></a>A sikeres modell betöltését követő fekete képernyő
+## <a name="black-screen-after-successful-model-loading"></a>Fekete képernyő a sikeres modellbetöltés után
 
-Ha a renderelési futtatókörnyezethez csatlakozik, és sikeresen betöltötte a modellt, de ezt követően csak fekete képernyő jelenik meg, akkor ez néhány különböző okot is tartalmazhat.
+Ha csatlakozik a renderelési futtatáshoz, és sikeresen betöltött egy modellt, de utána csak fekete képernyő jelenik meg, akkor ennek több különböző oka lehet.
 
-Javasoljuk, hogy a részletes elemzés előtt tesztelje a következő dolgokat:
+Javasoljuk, hogy a részletes elemzés előtt tesztelni kell a következőket:
 
-* Telepítve van a H265-kodek? Bár a H264 kodeknek tartaléknak kell lennie, láttuk azokat az eseteket, amelyekben ez a tartalék nem működött megfelelően. Tekintse meg a legújabb grafikus illesztőprogram telepítéséhez [szükséges rendszerkövetelményeket](../overview/system-requirements.md#development-pc) .
-* Ha Unity-projektet használ, zárjuk be az egységet, törölje az ideiglenes *könyvtárat* és az *obj* -mappákat a projekt könyvtárában, majd töltse be/hozza létre újra a projektet. Bizonyos esetekben a gyorsítótárazott adat miatt a minta nem működik megfelelően a nyilvánvaló ok nélkül.
+* Telepítve van a H265-kodek? Bár a H264-kodek tartalékként is működik, olyan eseteket is láttunk, amelyekben ez a tartalék nem működött megfelelően. Tekintse meg [a legújabb](../overview/system-requirements.md#development-pc) grafikus illesztőprogram telepítésére vonatkozó rendszerkövetelményeket.
+* Unity-projekt használata esetén zárja be  a Unityt, törölje az ideiglenes kódtárat és *az obj* mappát a projektkönyvtárból, és töltse be/buildje újra a projektet. Bizonyos esetekben a gyorsítótárazott adatok miatt a minta nyilvánvaló ok nélkül nem működik megfelelően.
 
-Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél fogad-e képkockákat. Ez programozott módon kérdezhető le a [kiszolgálóoldali teljesítmény-lekérdezések](../overview/features/performance-queries.md) című fejezetben leírtak szerint. A `FrameStatistics struct` tartalmaz egy tagot, amely azt jelzi, hogy hány képkockát fogadtak. Ha ez a szám nagyobb, mint 0, és az idő múlásával növekszik, az ügyfél megkapja a tényleges képkockákat a kiszolgálóról. Ennek következtében az ügyfél oldalán problémának kell lennie.
+Ha ez a két lépés nem segített, meg kell tudni, hogy az ügyfél megkapta-e a képkockákat. Ez programozott módon lekérdezhető a kiszolgálóoldali [teljesítménylekérdezésekkel kapcsolatos fejezetben leírtak](../overview/features/performance-queries.md) szerint. A `FrameStatistics struct` rendelkezik egy tagokkal, amely jelzi, hogy hány képkockát kapott a videó. Ha ez a szám nagyobb, mint 0, és idővel növekszik, az ügyfél tényleges videókereteket kap a kiszolgálótól. Ennek következtében problémát kell jelentenünk az ügyféloldalon.
 
 ### <a name="common-client-side-issues"></a>Gyakori ügyféloldali problémák
 
-**A modell meghaladja a kiválasztott virtuális gép korlátait, pontosabban a sokszögek maximális számát:**
+**A modell túllépi a kiválasztott virtuális gép korlátait, pontosabban a sokszögek maximális számát:**
 
-Megtekintheti az adott [kiszolgáló méretének korlátozásait](../reference/limits.md#overall-number-of-polygons).
+Tekintse meg a [kiszolgálók méretére vonatkozó korlátozásokat.](../reference/limits.md#overall-number-of-polygons)
 
-**A modell nem a kamera csonkakúpot belül található:**
+**A modell nincs a kamera frustumában:**
 
-Sok esetben a modell helyesen jelenik meg, de a kamera csonkakúpot kívül található. Ennek gyakori oka az, hogy a modellt egy távoli középpontú kimutatással exportálták, így azt a kamera távoli nyírási síkja vágja le. Segít lekérdezni a modell határoló mezőjét programozott módon, és megjelenítheti a négyzetet az egységgel, vagy kinyomtathatja az értékeket a hibakeresési naplóba.
+Sok esetben a modell helyesen jelenik meg, de a kamera frustumja kívül helyezkedik el. Ennek gyakori oka, hogy a modellt egy középen túli eltolással exportálták, így a kamera távoli vágósíkja levágja. Segít programozott módon lekérdezni a modell határolókeretét, és a Unityt vonalmezőként ábrázolni, vagy kinyomtatni az értékeit a hibakeresési naplóba.
 
-Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos/conversion/get-information.md) a konvertált modellel együtt. A modell pozicionálási problémáinak hibakereséséhez érdemes megtekinteni a `boundingBox` [outputStatistics szakaszban](../how-tos/conversion/get-information.md#the-outputstatistics-section)található bejegyzést:
+Emellett az átalakítási folyamat létrehoz egy kimeneti [JSON-fájlt](../how-tos/conversion/get-information.md) a konvertált modellel együtt. A modellpozícióval kapcsolatos problémák hibakeresése érdekében érdemes megnézni az `boundingBox` [outputStatistics szakasz bejegyzését:](../how-tos/conversion/get-information.md#the-outputstatistics-section)
 
 ```JSON
 {
@@ -138,117 +138,150 @@ Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos
 }
 ```
 
-A határolókeret a következőként van leírva: a `min` és a `max` pozíciója 3D térben, méterben. Így a 1000,0-es koordináta azt jelenti, hogy a forrás 1 kilométer távolságra van.
+A határolókeretet a és a pozíciót `min` `max` 3D térben, méterben írva írják le. Tehát a 1000,0 koordináta azt jelenti, hogy 1 km-re van a forrástól.
 
-Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometriát eredményez:
-* **A mező távolról is elvégezhető**, így az objektum teljes kivágása a sík kivágása miatt történik. Ebben az esetben a következőhöz `boundingBox` hasonló értékek jelennek meg: az `min = [-2000, -5,-5], max = [-1990, 5,5]` x tengely nagy eltolásának használata példaként. Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` [modell átalakítási konfigurációjában](../how-tos/conversion/configure-model-conversion.md)a beállítást.
-* **A Box lehet középre igazított, de a nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén indul el, a geometriája minden irányban kikerül. Ebben az esetben a tipikus `boundingBox` értékek a következőképpen néznek ki: `min = [-1000,-1000,-1000], max = [1000,1000,1000]` . Az ilyen típusú probléma oka általában az egység méretezési eltérése. A kiegyenlítéshez az átalakítás során meg kell adnia egy [skálázási értéket](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) , vagy a megfelelő egységekkel kell megadnia a forrás modellt. A skálázás a legfelső szintű csomópontra is alkalmazható a modell futásidőben történő betöltésekor.
+Ez a határolókeret két olyan problémát okozhat, amelyek láthatatlan geometriához vezetnek:
+* **A mező lehet távol a** középponttól, így az objektum teljesen ki van levágva a távolról kivágás miatt. Az értékek ebben az esetben a következőek: , amely egy nagy eltolást használ az `boundingBox` `min = [-2000, -5,-5], max = [-1990, 5,5]` x tengelyen példaként. Az ilyen típusú probléma megoldásához engedélyezze a beállítást `recenterToOrigin` a modellkonverzió [konfigurációjában.](../how-tos/conversion/configure-model-conversion.md)
+* **A mező középre lehet ható, de túl nagy nagyságrendű.** Ez azt jelenti, hogy bár a kamera a modell közepén kezdődik, a geometriájának minden irányban ciklikusnak kell lenni. A `boundingBox` tipikus értékek ebben az esetben így néznek ki: `min = [-1000,-1000,-1000], max = [1000,1000,1000]` . Az ilyen típusú probléma oka általában az egységskála eltérése. A kompenzálás érdekében adjon meg egy [méretezési](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) értéket az átalakítás során, vagy jelölje meg a forrásmodellt a megfelelő egységekkel. A skálázás a modell futásidőben való betöltésekor is alkalmazható a gyökércsomópontra.
 
-**Az Unity Render folyamat nem tartalmazza a renderelési horgokat:**
+**A Unity renderelési folyamat nem tartalmazza a renderelési hookokat:**
 
-Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menüt *:::no-loc text="Window > Analysis > Frame debugger":::* . Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
+Azure Remote Rendering a Unity renderelési folyamathoz, hogy a képkocka-összeállítást a videóval és a reprodukálás során el tudja látni. A hookok létezésének ellenőrzéséhez nyissa meg a *:::no-loc text="Window > Analysis > Frame debugger":::* menüt. Engedélyezze, és győződjön meg arról, hogy a folyamatban két bejegyzés `HolographicRemotingCallbackPass` van:
 
-![Egység renderelési folyamata](./media/troubleshoot-unity-pipeline.png)
+![Unity renderelési folyamat](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>A Pepita minta a modell betöltését követően jelenik meg
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Az ellenőrzőtábla minta a modell betöltése után jelenik meg
 
-Ha a megjelenített rendszerkép így néz ki: a ![ képernyőképen a fekete-fehér négyzetek rácsa látható az eszközök menüvel.](../reference/media/checkerboard.png)
-Ezután a megjelenítő [megkeresi a szabványos konfiguráció méretére vonatkozó sokszög-korlátokat](../reference/vm-sizes.md). A mérsékléshez váltson a **prémium** szintű konfiguráció méretére, vagy csökkentse a látható sokszögek számát.
+Ha a megjelenített kép így néz ki: Képernyőkép a fekete-fehér négyzetek rácsával és ![ egy Eszközök menüvel.](../reference/media/checkerboard.png)
+ezután a renderelő eléri a standard konfigurációs méret [sokszögkorlátját.](../reference/vm-sizes.md) A probléma enyhítése  érdekében váltson prémium szintű konfigurációra, vagy csökkentse a látható sokszögek számát.
 
-## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>A Unityben renderelt kép lefelé lefelé van fordítva
 
-Ügyeljen arra, hogy kövesse az [Unity oktatóanyagot: a távoli modellek pontosan megtekinthetők](../tutorials/unity/view-remote-models/view-remote-models.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
+Ügyeljen arra, hogy pontosan kövesse a [Unity oktatóanyagát: Távoli modellek megtekintése.](../tutorials/unity/view-remote-models/view-remote-models.md) Egy lefelé lefelé irányuló, lefelé irányuló kép azt jelzi, hogy a Unity egy képernyőn belüli renderelési cél létrehozásához szükséges. Ez a viselkedés jelenleg nem támogatott, és jelentős hatással van a HoloLens 2 teljesítményére.
 
-A probléma oka a MSAA, a HDR vagy a post Processing engedélyezése lehet. Győződjön meg arról, hogy az alacsony színvonalú profil van kiválasztva, és alapértelmezettként van beállítva az egységben. Ehhez lépjen a *> projekt beállításainak szerkesztése... > minőség* gombra.
+Ennek a problémának az okai lehetnek az MSAA, a FOG vagy a utófeldolgozás engedélyezése. Győződjön meg arról, hogy az alacsony minőségű profil van kiválasztva, és alapértelmezettként van beállítva a Unityben. Ezt a Projektbeállítások *szerkesztése >... > gombra.*
 
-## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Unity kód nem fordítható le
+## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A Remote Rendering API-t használó Unity-kód nem fordítja le
 
-### <a name="use-debug-when-compiling-for-unity-editor"></a>Az Unity Editor fordításakor használja a hibakeresést
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Hibakeresés használata a Unity Editorhoz való fordításkor
 
-Állítsa át az Unity megoldás *Build típusát* a **hibakereséshez**. A Unity Editorban az ARR tesztelésekor a define parancs `UNITY_EDITOR` csak a "debug" buildek esetében érhető el. Vegye figyelembe, hogy ez nem kapcsolódik a [központilag telepített alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt Build típushoz, ahol a "Release" buildeket érdemes előnyben részesíteni.
+*Váltsa a Unity-megoldás* buildtípusát **Hibakeresésre.** Amikor az ARR-t teszteli a Unity-szerkesztőben, a define csak hibakeresési buildek esetén `UNITY_EDITOR` érhető el. Vegye figyelembe, hogy ez nem kapcsolódik [](../quickstarts/deploy-to-hololens.md)az üzembe helyezett alkalmazásokhoz használt buildtípushoz, ahol a "Kiadás" buildeket érdemes előnyben részesíteni.
 
-### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Hibák fordítása a 2. HoloLens Unity-minták fordításakor
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Unity-minták Fordítási hibák a HoloLens 2-hez való fordítása során
 
-Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyezési útmutató, ShowCaseApp,..) próbálta lefordítani a 2. HoloLens. A Visual Studio arra panaszkodik, hogy nem tud fájlokat másolni, noha ott vannak. Ha a probléma a következő:
-* Távolítsa el az összes ideiglenes Unity-fájlt a projektből, és próbálkozzon újra. Az egység bezárásához törölje az ideiglenes *könyvtárat* és az *obj* -mappákat a projekt könyvtárában, majd töltse be vagy hozza létre újra a projektet.
-* Győződjön meg arról, hogy a projektek a lemez egy olyan könyvtárában találhatók, amely ésszerűen rövid elérési úttal rendelkezik, mert a másolási lépés néha úgy tűnik, hogy hosszú fájlnevekkel problémákba ütköznek.
-* Ha ez nem segít, előfordulhat, hogy az MS Sense ütközik a másolási lépéssel. Kivétel beállításához futtassa ezt a beállításjegyzék-parancsot a parancssorból (rendszergazdai jogosultságok szükségesek):
+A HoloLens 2 Unity-mintái (rövid útmutató, ShowCaseApp, ..) fordítása során helytelen hibákat láthattunk. Visual Studio arra panaszkodik, hogy egyes fájlokat nem tud másolni, bár ott vannak. Ha ezzel a problémával ütközik:
+* Távolítsa el az összes ideiglenes Unity-fájlt a projektből, és próbálkozzon újra. Ez azt jelenti, hogy zárja be a Unityt, törölje az *ideiglenes* kódtárat és *az obj* mappát a projektkönyvtárból, és töltse be/buildje újra a projektet.
+* Győződjön meg arról, hogy a projektek egy viszonylag rövid útvonalú lemezen található könyvtárban találhatók, mivel a másolási lépés olykor problémákba fog belefutni a hosszú fájlnevekkel kapcsolatban.
+* Ha ez nem segít, akkor lehet, hogy az MS Sense akadályozza a másolási lépést. Kivétel beállításához futtassa ezt a beállításjegyzék-parancsot a parancssorból (rendszergazdai jogosultság szükséges):
     ```cmd
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
-### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Az Unity-projektek Arm64-buildei sikertelenek, mert AudioPluginMsHRTF.dll hiányzik
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>A Unity-projektek arm64-buildei meghiúsulnak, mert AudioPluginMsHRTF.dll hiányzik
 
-A `AudioPluginMsHRTF.dll` for Arm64 hozzá lett adva a *Windows vegyes valósághoz* készült csomagjához *(com. Unity. XR. windowsmr. Metro)* a 3.0.1-es verzióban. Győződjön meg arról, hogy a Unity csomagkezelő segítségével telepítette az 3.0.1-es vagy újabb verziót. A Unity menüsávban navigáljon az *ablak > csomagkezelő* elemre, és keresse meg a *Windows vegyes valóság* csomagot.
+Az `AudioPluginMsHRTF.dll` Arm64-hez elérhető a *Windows Mixed Reality-csomaghoz* *(com.unity.xr.windowsmr.miami)* a 3.0.1-es verzióban. Győződjön meg arról, hogy a Unity-alkalmazáson keresztül telepítette a 3.0.1-es vagy újabb Csomagkezelő. A Unity menüsávjában lépjen a *Window > Csomagkezelő,* és keresse meg a *Windows Mixed Reality* csomagot.
 
-## <a name="native-c-based-application-does-not-compile"></a>A natív C++-alapú alkalmazás nem fordítható le
+## <a name="native-c-based-application-does-not-compile"></a>A natív C++ alapú alkalmazás nem fordítja le
 
-### <a name="library-not-found-error-for-uwp-application-or-dll"></a>"A könyvtár nem található" hiba a UWP-alkalmazás vagy-DLL esetében
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>"A kódtár nem található" hiba UWP-alkalmazáshoz vagy DLL-hez
 
-A C++ NuGet csomagon belül van egy fájl, amely `microsoft.azure.remoterendering.Cpp.targets` meghatározza, hogy a bináris íz milyen típusú legyen. Az azonosításához a `UWP` fájlban található feltételeket kell megkeresni `ApplicationType == 'Windows Store'` . Ezért biztosítani kell, hogy ez a típus be legyen állítva a projektben. Ennek a helyzetnek kell lennie, amikor UWP-alkalmazást vagy DLL-t hoz létre a Visual Studio Project varázslójával.
+A C++ NuGet-csomagban található egy fájl, amely meghatározza a használni kívánt `microsoft.azure.remoterendering.Cpp.targets` bináris ízt. A `UWP` azonosításához a fájlban található feltételek a következőt ellenőrzik: `ApplicationType == 'Windows Store'` . Ezért gondoskodni kell arról, hogy ez a típus be legyen állítva a projektben. Ez történik egy UWP-alkalmazás vagy dll létrehozásakor az Visual Studio projektvarázslójával.
 
-## <a name="unstable-holograms"></a>Instabil Hologramok
+## <a name="unstable-holograms"></a>Instabil hologramok
 
-Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.
+Ha úgy tűnik, hogy a renderelt objektumok a fejmozgással együtt mozognak, problémákba ütközhet a késői szakasz-reprodukálás (Late *Stage Reprojection,* LSR) során. Az ilyen helyzet megközelítésére vonatkozó útmutatásért tekintse meg a [késői](../overview/features/late-stage-reprojection.md) szakasz reprodukálás című szakaszát.
 
-Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ServiceStatistics.VideoFramesReused` . Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha a `ServiceStatistics.VideoFramesReused` értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
+Az instabil hologramok (búsbolás, elkeserítés, jitter vagy ugró hologramok) másik oka lehet a gyenge hálózati kapcsolat, különösen az elégtelen hálózati sávszélesség vagy a túl nagy késés. A hálózati kapcsolat minőségének jó jelzője a [teljesítménystatisztika](../overview/features/performance-queries.md) `ServiceStatistics.VideoFramesReused` értéke. Az újrafelhasznált képkockák olyan helyzeteket jeleznek, amikor egy régi videókeretet újra kellett használni az ügyféloldalon, mert nem volt elérhető új videokeret – például csomagvesztés vagy a hálózati késés változása miatt. Ha `ServiceStatistics.VideoFramesReused` a gyakran nagyobb nullánál, az hálózati problémára utal.
 
-Egy másik érték a következő: `ServiceStatistics.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. A nagyobb értékek megjelenítésével jelezheti, hogy egy túl távol lévő adatközponthoz csatlakozik.
+Egy másik fontos érték a `ServiceStatistics.LatencyPoseToReceiveAvg` . Konzisztensen 100 ms alatt kell lennie. Ha magasabb értékeket lát, az azt jelezheti, hogy egy túl távoli adatközponthoz csatlakozik.
 
-A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
+A lehetséges megoldások listájáért tekintse meg a hálózati [kapcsolatokra vonatkozó irányelveket.](../reference/network-requirements.md#guidelines-for-network-connectivity)
 
-## <a name="z-fighting"></a>Z – küzdelem
+## <a name="z-fighting"></a>Z-éneklök
 
-Míg az ARR a [z-elleni küzdelemre szolgáló funkciók enyhítését](../overview/features/z-fighting-mitigation.md)kínálja, a z-harcok továbbra is megjelennek a jelenetben. Ez az útmutató a fennmaradó problémák elhárítását célozza meg.
+Bár az ARR [z-megoldási](../overview/features/z-fighting-mitigation.md)megoldási funkciót is kínál, a z-mitigation továbbra is használhatja a jelenetben. Ez az útmutató a fennmaradó problémák elhárítását tűzi ki célul.
 
 ### <a name="recommended-steps"></a>Javasolt lépések
 
-A következő munkafolyamat használatával csökkentheti a z-elleni küzdelmet:
+Használja a következő munkafolyamatot a z-hiba elhárításához:
 
-1. Tesztelje a jelenetet az alapértelmezett beállításokkal az ARR (z-Fighting mérséklés)
+1. A jelenet tesztelése az ARR alapértelmezett beállításával (z-mitigation mitigation on)
 
-1. A z-harcok enyhítésének letiltása az [API](../overview/features/z-fighting-mitigation.md) -n keresztül 
+1. A z-mitigation megoldás letiltása az [API-val](../overview/features/z-fighting-mitigation.md) 
 
-1. A kamera közelében és távolabbi sík közötti váltás egy szorosabb tartományba
+1. A kamera közeli és távoli sík módosítása közelebbi tartományra
 
-1. A jelenet hibáinak megoldása a következő szakasz használatával
+1. A jelenet hibaelhárítása a következő szakaszban
 
-### <a name="investigating-remaining-z-fighting"></a>A fennmaradó z-harcok kivizsgálása
+### <a name="investigating-remaining-z-fighting"></a>A z-fel való további vizsgálat vizsgálata
 
-Ha a fenti lépések kimerültek, és a fennmaradó z-harcok elfogadhatatlanok, a z-harcok mögöttes okot meg kell vizsgálni. Ahogy az a [z-Fighting enyhítő funkció oldalán](../overview/features/z-fighting-mitigation.md)is látható, két fő oka van a z-harcok esetében: mélységi pontosság a mélységi tartomány végén, valamint az egymást keresztező felületek. A mélységi pontosság elvesztése matematikai eshetőségre, és csak a fenti 3. lépéssel enyhíthető. Az egyhelyes felületek a forrás-eszköz hibáját jelzik, és a forrásadatok jobb rögzítését mutatják.
+Ha a fenti lépések kimerültek, és a fennmaradó z-ökonomáliák nem fogadhatóak el, meg kell vizsgálni a z-feleset kiváltó okokat. Ahogy a [z-mitigation](../overview/features/z-fighting-mitigation.md)mitigation funkcióoldalán is említettük, a z-megoldásnak két fő oka van: a mélységi pontosság elvesztése a mélységi tartomány túlsó végén, és a felületei, amelyek koplaniárisan metszik egymást. A mélységi pontosságú veszteség matematikai esemény, és csak a fenti 3. lépéssel enyhíthető. Az egyenlútú felületek a forráseszköz hibájára utalnak, és jobban ki vannak javítva a forrásadatokban.
 
-Az ARR tartalmaz egy funkciót, amely meghatározza, hogy a felületek megadhatják-e a z-Fight: [Pepita kiemelés](../overview/features/z-fighting-mitigation.md). Azt is megteheti, hogy vizuálisan mi okozza a z-harcok megjelenését. A következő első animáció egy példát mutat be a távolság pontosságára, a második pedig egy példát mutat be a közel álló felületek közül:
+Az ARR rendelkezik egy olyan funkcióval, amely meghatározza, hogy a felületek elesnek-e: [Checkerboard highlighting](../overview/features/z-fighting-mitigation.md). Vizuálisan is meghatározhatja, hogy mi okozza a z-egyezést. Az alábbi első animáció egy példát mutat be a távolság mélységi pontosságú veszteségére, a második pedig szinte egysokos felületekre:
 
-![Az animáció egy példát mutat be a távolság pontosságának csökkenésére.](./media/depth-precision-z-fighting.gif)  ![Az animáció egy példát mutat be közel álló felületek számára.](./media/coplanar-z-fighting.gif)
+![Animáció a távolság mélységi pontosságú veszteségére.](./media/depth-precision-z-fighting.gif)  ![Az animáció egy közel egyenlikus felületre mutat példát.](./media/coplanar-z-fighting.gif)
 
-Hasonlítsa össze ezeket a példákat a z-küzdelemmel az ok megállapításához, vagy opcionálisan kövesse ezt a lépésenkénti munkafolyamatot:
+Hasonlítsa össze ezeket a példákat a z-parancsokkal az ok meghatározásához, vagy ha szükséges, kövesse ezt a részletes munkafolyamatot:
 
-1. Helyezze a kamerát a z-harci felületek fölé úgy, hogy közvetlenül a felületre nézzen.
-1. Lassan helyezze át a kamerát visszafelé, a felületektől távolabb.
-1. Ha a z-harcok egész idő alatt láthatók, a felületek tökéletesen összetartoznak. 
-1. Ha a z-harcok az idő nagy részében láthatók, a felületek közel vannak egymáshoz.
-1. Ha a z-harcok csak messze láthatók, az ok a mélységi pontosság hiánya.
+1. Helyezze a kamerát a z-tengelyfelszín fölé, hogy közvetlenül a felszínre nézzen.
+1. Lassan mozgatja a kamerát visszafelé, a felszíntől távolodva.
+1. Ha a z-eloterdő mindig látható, a felületek tökéletesen egyenlök. 
+1. Ha a z-anyag az idő nagy része látható, a felületek szinte teljesen el vannak különülve.
+1. Ha a mélységi vizsgálat csak távolról látható, a mélységi pontosság hiánya az oka.
 
-Az egymáshoz tartozó felületek számos különböző oka lehet:
+A koplani felületeknek számos különböző oka lehet:
 
-* Egy objektumot duplikált egy hiba vagy eltérő munkafolyamat-megközelítés miatt az exportálási alkalmazás.
+* Egy objektumot az exportálási alkalmazás egy hiba vagy más munkafolyamat-megközelítés miatt duplikált.
 
-    Ezeket a problémákat a megfelelő alkalmazás-és alkalmazás-támogatással vizsgálja meg.
+    Ellenőrizze ezeket a problémákat a megfelelő alkalmazás- és alkalmazástámogatással.
 
-* A felületek duplikálva vannak, és úgy lettek tükrözve, hogy kétoldalas megjelenítéssel jelenjenek meg.
+* A felületek duplikálva vannak, és tükrözve jelennek meg az előlapi vagy a fordított arcot cullingot használó renderelőkben.
 
-    Az Importálás a modell [átalakításán](../how-tos/conversion/model-conversion.md) keresztül meghatározza a modell fő oldalát. A kettős oldalú érték alapértelmezettként lesz feltételezve. A felületet vékony falként jeleníti meg a rendszer, és mindkét oldalról fizikailag helyes megvilágítás is van. Az egyoldalas kifejezéseket a forrásként szolgáló jelzők, vagy kifejezetten a [modell konvertálása](../how-tos/conversion/model-conversion.md)során lehet kényszeríteni. Emellett, de opcionálisan az [egyoldalas mód](../overview/features/single-sided-rendering.md) is beállítható a "NORMAL" értékre.
+    A modell [átalakítással](../how-tos/conversion/model-conversion.md) történő importálása határozza meg a modell elsődleges oldalságát. A rendszer a kétoldalasságot használja alapértelmezettként. A felület vékony falként jelenik meg, mindkét oldalról fizikailag megfelelő megvilágítással. Az egyoldalasság utalhat a forráseszközben található jelzőkre, vagy explicit módon kényszerítheti a [modellátalakítás során.](../how-tos/conversion/model-conversion.md) Emellett, de opcionálisan az [egyoldalas](../overview/features/single-sided-rendering.md) mód beállítható "normál" üzemmódra.
 
-* Az objektumok a forrás eszközein metszik egymást.
+* Az objektumok a forráseszközökben metszik egymást.
 
-     Az átalakított objektumok a felületek egy részének átfedésben vannak. A jelenet faszerkezetének az ARR-ben importált jelenetében lévő részeinek átalakításával is létrehozhatja ezt a problémát.
+     Azok az objektumok, amelyek úgy vannak átalakítva, hogy egyes felületek átfedésben legyenek egymással, szintén z-elkedő objektumokat hoznak létre. Az ARR-be importált jelenet jelenetfája részeinek átalakítása is létrehozhatja ezt a problémát.
 
-* A felületek célirányosan megtalálhatók, például matricák vagy szövegek a falakon.
+* A felületeket szándékosan úgy ékesítik, hogy érintéssel érje el őket, például a faliakon található szövegekkel vagy más szövegekkel.
 
-## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Multi-pass sztereó renderelést használó grafikus összetevők natív C++-alkalmazásokban
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Grafikus összetevők több pass-pass sztereotikus renderelés használatával natív C++ alkalmazásokban
 
-Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) meghívása után olyan egyéni natív C++-alkalmazások, amelyek többcsatornás sztereó renderelési módot használnak a helyi tartalomhoz (a bal és a jobb oldali megjelenítésre külön-külön haladnak), az illesztőprogram hibájának meghívása után. A hiba a nem determinisztikus raszterizálási-hibákat eredményezi, ami a helyi tartalom egyes háromszögeit vagy háromszögeit véletlenszerűen eltűnnek. A teljesítménnyel kapcsolatos okokból ajánlott a helyi tartalom megjelenítése egy modern, Egylépéses sztereó renderelési technikával, például **SV_RenderTargetArrayIndex** használatával.
+Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) hívása után egyéni natív C++ alkalmazások aktiválhatnak illesztőprogramhibát, ha a helyi tartalmakhoz több passzos sztereotikus renderelési módot használ (a renderelést a bal és jobb szem részére külön-külön haladva). A hiba nem determinisztikus raszterizálási hibákat okoz, így a helyi tartalom egyes háromszögei vagy háromszögrészei véletlenszerűen eltűnnek. A teljesítmény javítása érdekében javasoljuk, hogy a helyi tartalmat modernebb, egy pass-beli sztereotikus renderelési technikával renderelheti, **például** a SV_RenderTargetArrayIndex.
 
+## <a name="conversion-file-download-errors"></a>Átalakítási fájlletöltési hibák
+
+Az átalakítási szolgáltatás hibákba ütközhet, amikor fájlokat tölt le a Blob Storage-ból a Windows és a szolgáltatás által előírt elérésiút-hosszkorlátok miatt. A blobtárolóban lévő fájl elérési útjai és fájlnevei nem haladhatják meg a 178 karaktert. Például egy `blobPrefix` `models/Assets` 13 karakterből áll:
+
+`models/Assets/<any file or folder path greater than 164 characters will fail the conversion>`
+
+Az átalakítási szolgáltatás a alatt megadott összes fájlt letölti, nem csak az `blobPrefix` átalakításhoz használt fájlokat. Ezekben az esetekben a problémákat okozó fájlok/mappák kevésbé nyilvánvalóak, ezért fontos ellenőrizni a tárfiókban található összes adatokat a `blobPrefix` alatt. A letöltött fájlokat az alábbi példabemenetek között láthatja.
+``` json
+{
+  "settings": {
+    "inputLocation": {
+      "storageContainerUri": "https://contosostorage01.blob.core.windows.net/arrInput",
+      "blobPrefix": "models/Assets",
+      "relativeInputAssetPath": "myAsset.fbx"
+    ...
+  }
+}
+```
+
+```
+models
+├───Assets
+│   │   myAsset.fbx                 <- Asset
+│   │
+│   └───Textures
+│   |       myTexture.png           <- Used in conversion
+│   |
+|   └───MyFiles
+|          myOtherFile.txt          <- File also downloaded under blobPrefix      
+|           
+└───OtherFiles
+        myReallyLongFileName.txt    <- Ignores files not under blobPrefix             
+```
 ## <a name="next-steps"></a>Következő lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)

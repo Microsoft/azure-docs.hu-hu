@@ -1,29 +1,29 @@
 ---
-title: Gyors útmutató – csapatokhoz való csatlakozás egy iOS-alkalmazásból
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy Teams Meeting szolgáltatáshoz az iOS-hez készült Azure Communication Services SDK-val
+title: Rövid útmutató – Csatlakozás Teams-értekezlethez iOS-alkalmazásból
+description: Ez az oktatóanyag bemutatja, hogyan csatlakozhat Teams-értekezlethez az iOS-Azure Communication Services hívó SDK-val
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 363799cee5d66b718bb8ba06f4afd442add15148
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108184"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564715"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy Teams Meeting szolgáltatáshoz az iOS-hez készült Azure Communication Services SDK-val.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat Teams-értekezlethez az iOS-hez készült Azure Communication Services hívó SDK-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy működő [kommunikációs szolgáltatás iOS-alkalmazást hív](../getting-started-with-calling.md)meg.
-- [Csapatok üzembe helyezése](/deployoffice/teams-install).
+- Egy működő [Communication Services, amely iOS-alkalmazást hív meg.](../getting-started-with-calling.md)
+- Egy [Teams-üzemelő példány.](/deployoffice/teams-install)
 
 
-## <a name="add-the-teams-ui-controls-and-enable-the-teams-ui-controls"></a>A csapatok felhasználói FELÜLETének vezérlése és a csapatok felhasználói felületének engedélyezése
+## <a name="add-the-teams-ui-controls-and-enable-the-teams-ui-controls"></a>A Teams felhasználói felület vezérlőinek hozzáadása és a Teams felhasználói felület vezérlőinek engedélyezése
 
-Cserélje le a ContentView. Swift kódot a következő kódrészletre. A rendszer a Teams Meeting-környezet megadására fogja használni a szövegmezőt, és a gomb a megadott értekezlethez való csatlakozáshoz használható:
+Cserélje le a ContentView.swift kódját a következő kódrészletre. A szövegmezőben megadjuk a Teams-értekezlet környezetét, és a gomb használatával csatlakozunk a megadott értekezlethez:
 
 ```swift
 
@@ -175,15 +175,15 @@ struct ContentView_Previews: PreviewProvider {
 
 ```
 
-## <a name="get-the-teams-meeting-link"></a>A Teams Meeting-hivatkozás beszerzése
+## <a name="get-the-teams-meeting-link"></a>A Teams-értekezlet hivatkozásának lehívása
 
-A Teams Meeting hivatkozás a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ezt a hivatkozást a `onlineMeeting` [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta)alatt elérhető erőforrás részeként adja vissza a rendszer. A szükséges értekezlet-információkat a **JOIN Meeting** URL-címében is lekérheti a csapatok Értekezletének meghívásához.
+A Teams-értekezlet hivatkozása Graph API-k használatával olvasható be. Ennek részletes leírását a [Graph dokumentációjában találhatja](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)meg.
+A Communication Services hívó SDK egy teljes Teams-értekezlethivatkozást fogad el. A hivatkozás az erőforrás részeként lesz `onlineMeeting` visszaadva, amely a tulajdonság alatt [ `joinWebUrl` érhető el.](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) A szükséges értekezletadatokat a Teams-értekezlet meghívásában található **Join Meeting** URL (Csatlakozás az értekezlet URL-címéhez) url-címből is le tudja szerezni.
 
-## <a name="launch-the-app-and-join-teams-meeting"></a>Indítsa el az alkalmazást, és csatlakozzon a csapatok Értekezletéhez
+## <a name="launch-the-app-and-join-teams-meeting"></a>Indítsa el az alkalmazást, és csatlakozzon a Teams-értekezlethez
 
-Az alkalmazást az iOS-szimulátorban a **termék**  >  **futtatása** vagy a (&#8984;-R) billentyűparancs használatával hozhatja létre és futtathatja.
+Alkalmazását iOS-szimulátoron a Product Run (Termékfuttassa) vagy a  >   (&#8984;-R) billentyűparancs használatával is felépítheti és futtathatja.
 
-:::image type="content" source="../media/ios/acs-join-teams-meeting-quickstart.png" alt-text="A befejezett alkalmazást bemutató képernyőkép.":::
+:::image type="content" source="../media/ios/acs-join-teams-meeting-quickstart.png" alt-text="Képernyőkép a kész alkalmazásról.":::
 
-Szúrja be a csapatok kontextusát a szövegmezőbe, majd nyomja meg a *Csatlakozás* a csapatok között lehetőséget a Teams Meeting szolgáltatáshoz való csatlakozáshoz a kommunikációs szolgáltatások alkalmazásából.
+Szúrja be a Teams-környezetet a szövegmezőbe, majd nyomja le a *Join Teams Meeting* (Teams-értekezlethez való csatlakozás) gombot, hogy csatlakozzon a Teams-értekezlethez a Communication Services alkalmazásból.

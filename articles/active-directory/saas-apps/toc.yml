@@ -323,7 +323,7 @@
           href: chatwork-tutorial.md
         - name: Chargebee
           href: chargebee-tutorial.md
-        - name: Check Point Identity Awareness
+        - name: Check Point identitástudatosság
           href: check-point-identity-awareness-tutorial.md
         - name: Cherwell
           href: cherwell-tutorial.md
@@ -339,6 +339,8 @@
           href: ciscocloud-tutorial.md
         - name: A Cloud Security Fabric
           href: ciscocloudlock-tutorial.md
+        - name: Cisco Intersight
+          href: cisco-intersight-tutorial.md
         - name: Cisco Webex
           href: cisco-spark-tutorial.md
         - name: Cisco Umbrella
@@ -489,6 +491,8 @@
           href: degreed-tutorial.md
         - name: Deputy
           href: deputy-tutorial.md
+        - name: desknet's NEO
+          href: desknets-neo-tutorial.md
         - name: Deskradar
           href: deskradar-tutorial.md
         - name: DigiCert
@@ -579,7 +583,7 @@
           href: empactis-tutorial.md
         - name: EmpCenter
           href: empcenter-tutorial.md
-        - name: Enablon
+        - name: Enablon (Enablon)
           href: enablon-tutorial.md
         - name: Encompass
           href: encompass-tutorial.md
@@ -1625,7 +1629,7 @@
           href: screensteps-tutorial.md
         - name: SD Elements
           href: sd-elements-tutorial.md
-        - name: SDS & Vegyi információkezelés
+        - name: SDS & Chemical Information Management
           href: sds-chemical-information-management-tutorial.md
         - name: Secret Server (On-Premises)
           href: secretserver-on-premises-tutorial.md
@@ -2310,7 +2314,7 @@
           href: pingboard-provisioning-tutorial.md
         - name: Playvox
           href: playvox-provisioning-tutorial.md
-        - name: Előzetes kieső érték
+        - name: Előzetes érték
           href: preciate-provisioning-tutorial.md
         - name: PrinterLogic SaaS
           href: printer-logic-saas-provisioning-tutorial.md

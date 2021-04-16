@@ -1,48 +1,50 @@
 ---
-title: 'Gyors útmutató: felügyeleti csoport létrehozása a Pythonban'
-description: Ebben a rövid útmutatóban a Python használatával hozzon létre egy felügyeleti csoportot az erőforrások erőforrás-hierarchiába rendezéséhez.
+title: 'Rövid útmutató: Felügyeleti csoport létrehozása a Python használatával'
+description: Ebben a rövid útmutatóban a Python használatával hoz létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
 ms.date: 01/29/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: e3c55cc14a8ac980318fd0de9485a3e0ca31b582
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 9aec47e067ca62f4902df2dafb6a5d6d50a26d0e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101758"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533176"
 ---
-# <a name="quickstart-create-a-management-group-with-python"></a>Gyors útmutató: felügyeleti csoport létrehozása a Pythonban
+# <a name="quickstart-create-a-management-group-with-python"></a>Rövid útmutató: Felügyeleti csoport létrehozása a Python használatával
 
-A felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférést, a szabályzatot és a megfelelőséget több előfizetés között. Hozza létre ezeket a tárolókat egy olyan hatékony és hatékony hierarchia létrehozásához, amely a [Azure Policy](../policy/overview.md) és az [Azure szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md)használható. A felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](overview.md).
+A felügyeleti csoportok olyan tárolók, amelyek segítségével több előfizetés hozzáférését, szabályzatát és megfelelőségét kezelheti. Hozza létre ezeket a tárolókat egy hatékony és [](../policy/overview.md) hatékony hierarchia létrehozásához, amely a Azure Policy azure-beli szerepköralapú [hozzáférés-vezérléssel együtt használható.](../../role-based-access-control/overview.md) További információ a felügyeleti csoportokról: [Erőforrások rendszerezése Azure-beli felügyeleti csoportokkal.](overview.md)
 
-A címtárban létrehozott első felügyeleti csoport akár 15 percet is igénybe vehet. Az Azure-ban a címtárhoz a felügyeleti csoportok szolgáltatás beállításához első alkalommal futó folyamatok futnak. A folyamat befejezésekor értesítést kap. További információ: [a felügyeleti csoportok kezdeti beállítása](./overview.md#initial-setup-of-management-groups).
+A címtárban létrehozott első felügyeleti csoport létrehozása akár 15 percet is igénybe vehet. Vannak olyan folyamatok, amelyek az első alkalommal futnak, amikor beállítják a felügyeleticsoport-szolgáltatást az Azure-ban a címtárhoz. A folyamat befejezésekor értesítést kap. További információkért lásd a [felügyeleti csoportok kezdeti beállítását.](./overview.md#initial-setup-of-management-groups)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye nincs hozzárendelve ehhez a felhasználóhoz, ha nincs engedélyezve a [hierarchia védelme](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Ez az új felügyeleti csoport a gyökérszintű felügyeleti csoport vagy az [alapértelmezett felügyeleti](./how-to/protect-resource-hierarchy.md#setting---default-management-group) csoport gyermeke lesz, a létrehozó pedig "tulajdonos" szerepkör-hozzárendelést kap. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoporthoz. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok legfelső szintű létrehozását.
+- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoporthoz írási engedély lenne hozzárendelve, ha a [hierarchiavédelem](./how-to/protect-resource-hierarchy.md#setting---require-authorization) nincs engedélyezve. Ez az új felügyeleti csoport a gyökér [](./how-to/protect-resource-hierarchy.md#setting---default-management-group) felügyeleti csoport vagy az alapértelmezett felügyeleti csoport gyermeke lesz, és a létrehozó "Tulajdonos" szerepkör-hozzárendelést kap. A felügyeleticsoport-szolgáltatás lehetővé teszi ezt a képességet, így a gyökérszinten nincs szükség szerepkör-hozzárendelésre. Létrehozáskor egyetlen felhasználó sem fér hozzá a gyökér felügyeleti csoporthoz. Annak érdekében, hogy ne kelljen megtalálni az Azure AD globális rendszergazdáit a felügyeleti csoportok használatának elkezdésében, engedélyezhetjük a kezdeti felügyeleti csoportok gyökérszinten való létrehozását.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-the-resource-graph-library"></a>Az erőforrás-gráf könyvtárának hozzáadása
+## <a name="add-the-resource-graph-library"></a>A Resource Graph hozzáadása
 
-Ahhoz, hogy a Python felügyelje a felügyeleti csoportokat, hozzá kell adni a könyvtárat. Ez a könyvtár működik, ahol a Python használható, beleértve [a Windows 10 vagy a](/windows/wsl/install-win10) helyileg telepített bash-t is.
+Ahhoz, hogy a Python kezelni tudja a felügyeleti csoportokat, a kódtárat hozzá kell adni. Ez a kódtár mindenhol működik, ahol a Python használható, beleértve a [Bash on Windows 10](/windows/wsl/install-win10) helyileg telepítettet.
 
-1. Győződjön meg arról, hogy a legújabb Python telepítve van (legalább **3,8**). Ha még nincs telepítve, töltse le a következő címen: [Python.org](https://www.python.org/downloads/).
+1. Ellenőrizze, hogy telepítve van-e a legújabb Python **(legalább 3.8).** Ha még nincs telepítve, töltse le a [Python.org.](https://www.python.org/downloads/)
 
-1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább **2.5.1**). Ha még nincs telepítve, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+1. Ellenőrizze, hogy telepítve van-e a legújabb Azure CLI **(legalább 2.5.1).** Ha még nincs telepítve, tekintse meg [az Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
    > [!NOTE]
-   > Az Azure CLI-vel engedélyezni kell a Python használatát a **CLI-alapú hitelesítés** használatához az alábbi példákban. További információ az egyéb lehetőségekről: [hitelesítés a Pythonhoz készült Azure Management librarys használatával](/azure/developer/python/azure-sdk-authenticate).
+   > Az alábbi példákban az Azure CLI-nek kell engedélyeznie, hogy a Python **a CLI-alapú** hitelesítést használja. További információ az egyéb lehetőségekről: [Hitelesítés a Pythonhoz készült Azure felügyeleti kódtárakkal.](/azure/developer/python/azure-sdk-authenticate)
 
-1. Hitelesítés az Azure CLI-n keresztül.
+1. Hitelesítés az Azure CLI használatával.
 
    ```azurecli
    az login
    ```
 
-1. A kiválasztott Python-környezetben telepítse a szükséges kódtárakat a felügyeleti csoportokhoz:
+1. A választott Python-környezetben telepítse a felügyeleti csoportokhoz szükséges kódtárakat:
 
    ```bash
    # Add the management groups library for Python
@@ -56,9 +58,9 @@ Ahhoz, hogy a Python felügyelje a felügyeleti csoportokat, hozzá kell adni a 
    ```
 
    > [!NOTE]
-   > Ha a Python telepítve van az összes felhasználó számára, akkor ezeket a parancsokat emelt szintű konzolról kell futtatni.
+   > Ha a Python minden felhasználó számára telepítve van, ezeket a parancsokat emelt szintű konzolról kell futtatni.
 
-1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-managementgroups`**0.2.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és  `azure-cli-core` legalább **2.5.0** -nek kell lennie.
+1. Ellenőrizze, hogy a kódtárak telepítve vannak-e. `azure-mgmt-managementgroups`**0.2.0-s** vagy újabb, `azure-mgmt-resource` **9.0.0-s** vagy újabb, `azure-cli-core` és **2.5.0-s** vagy újabb verziónak kell lennie.
 
    ```bash
    # Check each installed library
@@ -67,7 +69,7 @@ Ahhoz, hogy a Python felügyelje a felügyeleti csoportokat, hozzá kell adni a 
 
 ## <a name="create-the-management-group"></a>A felügyeleti csoport létrehozása
 
-1. Hozza létre a Python-parancsfájlt, és mentse a következő forrást `mgCreate.py` :
+1. Hozza létre a Python-szkriptet, és mentse a következő forrást a `mgCreate.py` következőként:
 
    ```python
    # Import management group classes
@@ -102,19 +104,19 @@ Ahhoz, hogy a Python felügyelje a felügyeleti csoportokat, hozzá kell adni a 
    createmanagementgroup("MyNewMG")
    ```
 
-1. Hitelesítés az Azure CLI-vel a használatával `az login` .
+1. Hitelesítés az Azure CLI-val `az login` a használatával.
 
-1. Adja meg a következő parancsot a terminálon:
+1. Írja be a következő parancsot a terminálba:
 
    ```bash
    py mgCreate.py
    ```
 
-A felügyeleti csoport létrehozásának eredménye objektumként kimenet a konzolon `LROPoller` .
+A felügyeleti csoport létrehozásának eredménye objektumként lesz a `LROPoller` konzolon.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből, ezt a következő paranccsal teheti meg:
+Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből, ezt a következő paranccsal használhatja:
 
 ```bash
 # Remove the installed libraries from the Python environment
@@ -123,9 +125,9 @@ pip uninstall azure-mgmt-managementgroups azure-mgmt-resource azure-cli-core
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
+Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport előfizetéseket vagy más felügyeleti csoportokat is képes tartani.
 
-Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezeléséről, folytassa a következővel:
+Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezelésével kapcsolatban, folytassa a következővel:
 
 > [!div class="nextstepaction"]
 > [Erőforrások kezelése felügyeleti csoportokkal](./manage.md)

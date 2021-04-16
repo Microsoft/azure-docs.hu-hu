@@ -1,30 +1,31 @@
 ---
-title: Ismerje meg az Azure BareMetal-infrastruktúra feltételeit
-description: Ismerje meg az Azure BareMetal-infrastruktúra feltételeit.
+title: Az Azure BareMetal-infrastruktúra használatának fogalma
+description: Az Azure BareMetal-infrastruktúra használatának fogalma.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 53a601cc4556198479d8ca5d7495942d4dc2762c
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580137"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536768"
 ---
-# <a name="know-the-terms-for-baremetal-infrastructure"></a>A BareMetal-infrastruktúra feltételeinek megismerése
+# <a name="know-the-terms-for-baremetal-infrastructure"></a>Az BareMetal-infrastruktúra használati szerződésének
 
-Ebben a cikkben a BareMetal-infrastruktúrával kapcsolatos fontos fogalmakat mutatjuk be.
+Ebben a cikkben az BareMetal-infrastruktúrával kapcsolatos néhány fontos kifejezéssel fogunk beszélni.
 
-- **Változat**: van egy eredeti Stamp változat, amely a 3. változat (3. Rev.) néven ismert, és két további Stamp változatot is a BareMetal-példányok esetében. Az egyes bélyegzők az Azure-beli virtuális gépek gazdagépének architektúrájában és közelségében különböznek:
-    - **4. változat** (Rev 4): egy újabb kialakítás, amely az Azure-beli virtuális gép (VM) gazdagépekhez való közelségét teszi lehetővé, és csökkenti az Azure-beli virtuális gépek és a SAP HANA példányok közötti késést. 
-    - **4,2** -es változat (Rev 4,2): a legújabb BareMetal-infrastruktúra a meglévő Rev 4 architektúra használatával. A Rev 4 Az Azure-beli virtuális gépek (VM) gazdagépei számára biztosít szorosabb közelséget. Az Azure-beli virtuális gépek és a BareMetal-példányok közötti hálózati késés jelentős javulása a Rev 4 Stamps vagy sorokban. A BareMetal-példányok a Azure Portalon keresztül érhetők el és kezelhetők.    
+- **Változat:** 3. változat (Rev 3) néven ismert eredeti bélyeg-változat és két további bélyeg-változat az BareMetal-példánybélyegek számára. Az architektúrában és az Azure-beli virtuális gépek gazdagépeihez való közelségben minden bélyeg eltérő:
+    - **4.** változat (4. változat): Egy újabb kialakítás, amely közelebb nyújt az Azure-beli virtuális gépek gazdagépeihez, és csökkenti az Azure-beli virtuális gépek és a virtuálisgép-példányok közötti SAP HANA késést. 
+    - **4.2-es** változat (4.2-es változat): A legújabb, a meglévő Rev 4 architektúrát használó BareMetal-infrastruktúra. A 4. rev. közelebbi közelséget biztosít az Azure-beli virtuálisgép-gazdagépek számára. Jelentős mértékben javult a hálózati késés az Azure-beli virtuális gépek és a 4. javítású bélyegek vagy sorokban üzembe helyezett BareMetal-példányok között. Az BareMetal-példányokat a következő Azure Portal.    
 
-- **Stamp**: a Microsoft belső telepítési méretének meghatározása a BareMetal-példányok számára. A példányok üzembe helyezése előtt a számítási, hálózati és tárolási állványokból álló BareMetal-példányt egy adatközpont-helyen kell telepíteni. Egy ilyen üzembe helyezés neve BareMetal-példány bélyegzője.
+- **Bélyeg:** Az BareMetal-példányok Microsoft belső telepítési méretét határozza meg. A példányok üzembe helyezése előtt üzembe kell helyezni egy számítási, hálózati és tárolóállványokból álló BareMetal-példánybélyeget egy adatközpont-helyen. Az ilyen üzembe helyezést BareMetal-példánybélyegnek nevezzük.
 
-- **Bérlő**: a BareMetal-példányokat telepítő ügyfél *bérlőként* lesz elkülönítve. A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a BareMetal-példány Stamp szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. Még akkor sem, ha a bérlők között nincs kommunikáció a BareMetal-példány Stamp szintjén.
+- **Bérlő:** Az BareMetal-példánybélyeget üzembe helyező ügyfél bérlőként el lesz *különítve.* A bérlők a hálózati, tárolási és számítási rétegben elkülönülnek a többi bérlőtől. A különböző bérlőkhöz rendelt tárolási és számítási egységek nem láthatják egymást, és nem kommunikálhatnak egymással az BareMetal-példány bélyegszinten. Az ügyfelek dönthetnek úgy, hogy különböző bérlőkben üzemelő példányokat hoznak be. A bérlők között ekkor sincs kommunikáció az BareMetal-példány bélyegszintén.
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy bevezette a BareMetal-infrastruktúra fontos terminológiáját, érdemes megismernie az alábbiakat:
-- További információ a [BareMetal-infrastruktúráról](concepts-baremetal-infrastructure-overview.md).
-- [BareMetal infrastruktúra-példányok összekapcsolása az Azure-ban](connect-baremetal-infrastructure.md).
+
+Most, hogy megismerte az BareMetal-infrastruktúra fontos terminológiáját, a következővel ismerkedhet meg:
+- További részletek az [BareMetal infrastruktúráról.](concepts-baremetal-infrastructure-overview.md)
+- [BareMetal Infrastructure-példányok csatlakoztatása az Azure-ban.](connect-baremetal-infrastructure.md)
 

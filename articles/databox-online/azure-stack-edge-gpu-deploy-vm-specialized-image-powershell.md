@@ -1,98 +1,88 @@
 ---
-title: Virtuálisgép-rendszerképek létrehozása a Windows VHD speciális rendszerképéről az Azure Stack Edge Pro GPU-eszközhöz
-description: Ismerteti, hogyan lehet virtuálisgép-lemezképeket létrehozni a speciális rendszerképekből a Windows VHD-ről vagy egy VHDX kezdve. Ezzel a speciális képpel olyan virtuálisgép-lemezképeket hozhat létre, amelyeket az Azure Stack Edge Pro GPU-eszközön üzembe helyezett virtuális gépekhez használhat.
+title: Virtuálisgép-rendszerképek létrehozása Windows VHD specializált rendszerképből az Azure Stack Edge Pro GPU-eszközhöz
+description: Leírja, hogyan hozhat létre virtuálisgép-rendszerképeket specializált rendszerképekből Windows VHD-ről vagy VHDX-ről kiindulva. Ezzel a specializált rendszerképpel olyan virtuálisgép-rendszerképeket hozhat létre, amelyek a GPU-eszközön üzembe helyezett Azure Stack Edge Pro használhatók.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556130"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575946"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Virtuális gép üzembe helyezése egy speciális rendszerképből az Azure Stack Edge Pro-eszközön a Azure PowerShell használatával 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Virtuális gép üzembe helyezése specializált rendszerképből az Azure Stack Edge Pro GPU-eszközön a Azure PowerShell 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek egy virtuális gép (VM) üzembe helyezéséhez a Azure Stack Edge Pro-eszközön egy speciális rendszerképből. 
+Ez a cikk azokat a lépéseket ismerteti, amelyek egy virtuális gép (VM) egy speciális rendszerképből Azure Stack Edge Pro GPU-eszközön való üzembe helyezéséhez szükségesek. 
 
-## <a name="about-specialized-images"></a>A speciális rendszerképek ismertetése
+Ha egy általános rendszerképet kell előkészítenie a virtuális gépek Azure Stack Edge Pro GPU-ban való üzembe helyezéséhez, tekintse meg az Általános rendszerkép előkészítése [Windows VHD-ről](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) vagy Általános rendszerkép előkészítése [ISO-lemezképből fejezetet.](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)
 
-A Windows rendszerű virtuális merevlemezek vagy VHDX egy *speciális* rendszerkép vagy *általánosított* rendszerkép létrehozására használhatók. A következő táblázat összefoglalja a *speciális* és az *általánosított* lemezképek közötti főbb különbségeket.
+## <a name="about-vm-images"></a>A virtuálisgép-rendszerképekről
 
+A Windows VHD vagy VHDX segítségével  specializált rendszerképet vagy általános *rendszerképet hozhat* létre. Az alábbi táblázat összefoglalja  a speciális és az általánosított rendszerképek *közötti fő különbségeket.*
 
-|Lemezkép típusa  |Általánosított  |Specializált  |
-|---------|---------|---------|
-|Cél     |Bármely rendszeren üzembe helyezhető         | Adott rendszerre irányul        |
-|Telepítés a rendszerindítás után     | A telepítő szükséges a virtuális gép első indításakor.          | A telepítés nem szükséges. <br> A platform bekapcsolja a virtuális gépet.        |
-|Konfiguráció     |Állomásnév, rendszergazda-felhasználó és más virtuálisgép-specifikus beállítások szükségesek.         |Előre konfigurálva.         |
-|A következőhöz használatos     |Hozzon létre több új virtuális gépet ugyanabból a rendszerképből.         |Egy adott gép migrálása vagy egy virtuális gép visszaállítása a korábbi biztonsági mentésből.         |
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
+## <a name="workflow"></a>Munkafolyamat
 
-Ez a cikk a speciális lemezképből történő üzembe helyezéshez szükséges lépéseket ismerteti. Általánosított lemezképből történő üzembe helyezéssel kapcsolatban lásd: az [általánosított Windows VHD használata](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) az eszközhöz.
+A virtuális gépek specializált rendszerképből való üzembe helyezésének magas szintű munkafolyamata a következő:
 
-
-## <a name="vm-image-workflow"></a>VM-rendszerkép munkafolyamata
-
-A virtuális gépek speciális lemezképből történő üzembe helyezésének magas szintű munkafolyamata a következő:
-
-1. Másolja a VHD-t egy helyi Storage-fiókba az Azure Stack Edge Pro GPU-eszközön.
-1. Hozzon létre egy új felügyelt lemezt a VHD-ből.
+1. Másolja a VHD-t egy helyi tárfiókba a Azure Stack Edge Pro GPU-eszközén.
+1. Hozzon létre egy új felügyelt lemezt a virtuális merevlemezből.
 1. Hozzon létre egy új virtuális gépet a felügyelt lemezről, és csatolja a felügyelt lemezt.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt üzembe helyezhet egy virtuális gépet az eszközön a PowerShell használatával, győződjön meg a következőket:
+Mielőtt üzembe helyez egy virtuális gépet az eszközén a PowerShell használatával, győződjön meg a következő szolgáltatásokról:
 
-- Hozzáférése van egy olyan ügyfélhez, amelyet az eszközhöz való kapcsolódáshoz fog használni.
-    - Az ügyfél egy [támogatott operációs rendszert](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)futtat.
-    - Az ügyfél az eszköz helyi Azure Resource Manager való kapcsolódásra van konfigurálva, mint a [Kapcsolódás a Azure Resource Managerhez eszközhöz](azure-stack-edge-gpu-connect-resource-manager.md)című részben leírtak szerint.
+- Rendelkezik hozzáféréssel az eszközhöz való csatlakozáshoz használt ügyfélhez.
+    - Az ügyfél egy támogatott [operációs rendszert futtat.](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)
+    - Az ügyfél úgy van konfigurálva, hogy csatlakozzon az eszköz Azure Resource Manager helyi számítógépéhez a Csatlakozás Azure Resource Manager [eszközhöz útmutatása alapján.](azure-stack-edge-gpu-connect-resource-manager.md)
 
-## <a name="verify-the-local-azure-resource-manager-connection"></a>A helyi Azure Resource Manager-kapcsolatok ellenőrzése
+## <a name="verify-the-local-azure-resource-manager-connection"></a>A helyi hálózati kapcsolat Azure Resource Manager ellenőrzése
 
-Ellenőrizze, hogy az ügyfél tud-e csatlakozni a helyi Azure Resource Managerhoz. 
+Ellenőrizze, hogy az ügyfél tud-e csatlakozni a helyi Azure Resource Manager. 
 
-1. Helyi eszköz API-k hívása a hitelesítéshez:
+1. Helyi eszköz API-k meghívása a hitelesítéshez:
 
     ```powershell
     Login-AzureRMAccount -EnvironmentName <Environment Name>
     ```
 
-2. Adja meg a felhasználónevet `EdgeArmUser` és a jelszót Azure Resource Manager használatával történő kapcsolódáshoz. Ha nem emlékszik a jelszóra, [állítsa Alaphelyzetbe Azure Resource Manager jelszavát](azure-stack-edge-gpu-set-azure-resource-manager-password.md) , és ezt a jelszót használja a bejelentkezéshez.
- 
+2. Adja meg a `EdgeArmUser` felhasználónevet és a jelszót a Azure Resource Manager. Ha nem emlékszik a jelszóra, állítsa [alaphelyzetbe](azure-stack-edge-gpu-set-azure-resource-manager-password.md) a jelszót a Azure Resource Manager, és használja ezt a jelszót a bejelentkezéshez.
 
-## <a name="deploy-vm-from-specialized-image"></a>Virtuális gép üzembe helyezése speciális lemezképből
+## <a name="deploy-vm-from-specialized-image"></a>Virtuális gép üzembe helyezése specializált rendszerképből
 
-A következő szakaszokban részletes útmutatást talál a virtuális gép speciális lemezképből történő üzembe helyezéséhez.
+A következő szakaszok lépésenként ismertetik a virtuális gépek specializált rendszerképből való üzembe helyezését.
 
-## <a name="copy-vhd-to-local-storage-account-on-device"></a>Virtuális merevlemez másolása helyi Storage-fiókba az eszközön
+## <a name="copy-vhd-to-local-storage-account-on-device"></a>VHD másolása helyi tárfiókba az eszközön
 
-A virtuális merevlemez helyi Storage-fiókba való másolásához kövesse az alábbi lépéseket:
+A VHD helyi tárfiókba való másoláshoz kövesse az alábbi lépéseket:
 
-1. Másolja a forrás VHD-t egy helyi blob Storage-fiókba az Azure Stack Edge-ben. 
+1. Másolja a forrás VHD-t egy helyi Blob Storage-fiókba a Azure Stack Edge.
 
 1. Jegyezze fel az eredményül kapott URI-t. Ezt az URI-t egy későbbi lépésben fogja használni.
-    
-    Helyi Storage-fiók létrehozásához és eléréséhez tekintse meg a [Storage-fiók létrehozása](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) a [VHD feltöltésével](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) című cikket: virtuális [gépek telepítése a Azure stack peremhálózati eszközön Azure PowerShell használatával](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
 
-## <a name="create-a-managed-disk-from-vhd"></a>Felügyelt lemez létrehozása VHD-ből
+    Helyi tárfiók létrehozásához és eléréséhez tekintse meg [a](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) virtuális merevlemez feltöltésével történő tárfiók létrehozása szakaszt a következő cikkben: Virtuális gépek üzembe helyezése Azure Stack Edge eszközön a [Azure PowerShell.](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md) [](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) 
 
-Az alábbi lépéseket követve hozzon létre egy felügyelt lemezt egy virtuális merevlemezről, amelyet korábban feltöltött a Storage-fiókba:
+## <a name="create-a-managed-disk-from-vhd"></a>Felügyelt lemez létrehozása VHD-ről
 
-1. Állítsa be a paramétereket.
+Az alábbi lépésekkel hozhat létre felügyelt lemezt egy vhD-ről, amit korábban töltött fel a tárfiókba:
+
+1. Állítson be néhány paramétert.
 
     ```powershell
     $VhdURI = <URI of VHD in local storage account>
     $DiskRG = <managed disk resource group>
     $DiskName = <managed disk name>    
     ```
-    Íme egy példa a kimenetre.
+    Példa a kimenetre.
 
     ```powershell
     PS C:\WINDOWS\system32> $VHDURI = "https://myasevmsa.blob.myasegpudev.wdshcsso.com/vhds/WindowsServer2016Datacenter.vhd"
@@ -106,7 +96,7 @@ Az alábbi lépéseket követve hozzon létre egy felügyelt lemezt egy virtuál
     $disk = New-AzureRMDisk -ResourceGroupName $DiskRG -DiskName $DiskName -Disk $DiskConfig
     ```
 
-    Íme egy példa a kimenetre. Az itt megadott hely a helyi Storage-fiók helye, és mindig `DBELocal` az Azure stack Edge Pro GPU-eszközön található összes helyi Storage-fiókra vonatkozik. 
+    Példa a kimenetre. Az itt található hely a helyi tárfiók helyére van beállítva, és mindig a GPU-eszközön található `DBELocal` összes Azure Stack Edge Pro tárfiókhoz. 
 
     ```powershell
     PS C:\WINDOWS\system32> $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri $VHDURI
@@ -115,9 +105,9 @@ Az alábbi lépéseket követve hozzon létre egy felügyelt lemezt egy virtuál
     ```
 ## <a name="create-a-vm-from-managed-disk"></a>Virtuális gép létrehozása felügyelt lemezről
 
-A virtuális gép felügyelt lemezről történő létrehozásához kövesse az alábbi lépéseket:
+Virtuális gép felügyelt lemezről való létrehozásához kövesse az alábbi lépéseket:
 
-1. Állítsa be a paramétereket.
+1. Állítson be néhány paramétert.
 
     ```powershell
     $NicRG = <NIC resource group>
@@ -131,9 +121,9 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
     ```
 
     >[!NOTE]
-    > A `PrivateIP` paraméter megadása nem kötelező. Ezzel a paraméterrel statikus IP-címet rendelhet hozzá, az alapértelmezett érték a DHCP protokollt használó dinamikus IP-cím.
+    > A `PrivateIP` paraméter használata nem kötelező. Ezzel a paraméterrel statikus IP-címet rendelhet hozzá, de az alapértelmezett érték a DHCP protokollt használó dinamikus IP-cím.
 
-    Íme egy példa a kimenetre. Ebben a példában ugyanazt az erőforráscsoportot adja meg az összes virtuálisgép-erőforráshoz, de szükség esetén külön erőforráscsoportokat hozhat létre az erőforrásokhoz.
+    Példa a kimenetre. Ebben a példában ugyanazt az erőforráscsoportot adhatja meg az összes virtuálisgép-erőforráshoz, de szükség esetén külön erőforráscsoportokat is létrehozhat és megadhat az erőforrásokhoz.
 
     ```powershell
     PS C:\WINDOWS\system32> $NicRG = "myasevm1rg"
@@ -147,7 +137,7 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
 
 1. Szerezze be a virtuális hálózat adatait, és hozzon létre egy új hálózati adaptert.
 
-    Ez a példa azt feltételezi, hogy egyetlen hálózati adaptert hoz létre az alapértelmezett `ASEVNET` erőforráscsoporthoz társított alapértelmezett virtuális hálózaton `ASERG` . Ha szükséges, alternatív virtuális hálózatot is megadhat, vagy létrehozhat több hálózati adaptert is. További információ: [hálózati adapter hozzáadása virtuális géphez a Azure Portal használatával](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md).
+    Ez a példa azt feltételezi, hogy egyetlen hálózati adaptert hoz létre az alapértelmezett erőforráscsoporthoz társított alapértelmezett `ASEVNET` virtuális `ASERG` hálózaton. Szükség esetén megadhat egy másik virtuális hálózatot, vagy létrehozhat több hálózati adaptert is. További információ: [Hálózati adapter hozzáadása virtuális](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md)géphez a Azure Portal.
 
     ```powershell
     $armVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG
@@ -155,7 +145,7 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
     $nic = New-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $NicRG -Location DBELocal -IpConfiguration $ipConfig
     ```
 
-    Íme egy példa a kimenetre.
+    Példa a kimenetre.
 
     ```powershell
     PS C:\WINDOWS\system32> $armVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG
@@ -182,7 +172,7 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
     ```powershell
     $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -StorageAccountType StandardLRS -CreateOption Attach –[Windows/Linux]
     ```
-    A parancs utolsó jelzője `-Windows` vagy attól függően változik, hogy `-Linux` melyik operációs rendszert használja a virtuális géphez.
+    A parancs utolsó jelzője vagy lehet attól függően, hogy melyik operációs rendszert használja `-Windows` `-Linux` a virtuális géphez.
 
 1. Hozza létre a virtuális gépet.
 
@@ -190,7 +180,7 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
     New-AzureRmVM -ResourceGroupName $VMRG -Location DBELocal -VM $vm 
     ```
 
-    Íme egy példa a kimenetre. 
+    Példa a kimenetre. 
 
     ```powershell
     PS C:\WINDOWS\system32> $vmConfig = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
@@ -207,14 +197,14 @@ A virtuális gép felügyelt lemezről történő létrehozásához kövesse az 
 
 ## <a name="delete-vm-and-resources"></a>Virtuális gép és erőforrások törlése
 
-Ez a cikk csak egy erőforráscsoportot használt az összes virtuálisgép-erőforrás létrehozásához. Az erőforráscsoport törlésével törlődik a virtuális gép és az összes kapcsolódó erőforrás. 
+Ez a cikk csak egy erőforráscsoportot használt az összes virtuálisgép-erőforrás létrehozásához. Az erőforráscsoport törlésével törli a virtuális gépet és az összes társított erőforrást. 
 
-1. Először tekintse meg az erőforráscsoport alatt létrehozott összes erőforrást.
+1. Először tekintse meg az erőforráscsoportban létrehozott összes erőforrást.
 
     ```powershell
     Get-AzureRmResource -ResourceGroupName <Resource group name>
     ```
-    Íme egy példa a kimenetre.
+    Példa a kimenetre.
     
     ```powershell
     PS C:\WINDOWS\system32> Get-AzureRmResource -ResourceGroupName myasevm1rg
@@ -251,12 +241,12 @@ Ez a cikk csak egy erőforráscsoportot használt az összes virtuálisgép-erő
     PS C:\WINDOWS\system32>
     ```
 
-1. Törölje az erőforráscsoportot és az összes kapcsolódó erőforrást.
+1. Törölje az erőforráscsoportot és az összes társított erőforrást.
 
     ```powershell
     Remove-AzureRmResourceGroup -ResourceGroupName <Resource group name>
     ```
-    Íme egy példa a kimenetre.
+    Példa a kimenetre.
     
     ```powershell
     PS C:\WINDOWS\system32> Remove-AzureRmResourceGroup -ResourceGroupName myasevm1rg
@@ -268,12 +258,12 @@ Ez a cikk csak egy erőforráscsoportot használt az összes virtuálisgép-erő
     PS C:\WINDOWS\system32>
     ```
 
-1. Ellenőrizze, hogy az erőforráscsoport törölve lett-e. Az eszközön található összes erőforráscsoport beolvasása. 
+1. Ellenőrizze, hogy az erőforráscsoport törölve lett-e. Szerezze be az eszközön meglévő összes erőforráscsoportot. 
 
     ```powershell
     Get-AzureRmResourceGroup
     ```
-    Íme egy példa a kimenetre.
+    Példa a kimenetre.
 
     ```powershell
     PS C:\WINDOWS\system32> Get-AzureRmResourceGroup
@@ -301,7 +291,5 @@ Ez a cikk csak egy erőforráscsoportot használt az összes virtuálisgép-erő
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az üzembe helyezés jellegétől függően az alábbi eljárások közül választhat.
-
-- [Virtuális gép üzembe helyezése általánosított lemezképből Azure PowerShell használatával](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Virtuális gép üzembe helyezése Azure Portal használatával](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Általános rendszerkép előkészítése Windows vhD-ről virtuális gépek üzembe helyezéséhez Azure Stack Edge Pro GPU-val](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Általános rendszerkép előkészítése ISO-lemezképből](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md) a virtuális gépek GPU Azure Stack Edge Pro való üzembe helyezéséhez

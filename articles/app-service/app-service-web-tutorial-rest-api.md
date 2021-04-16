@@ -1,17 +1,17 @@
 ---
-title: 'Oktatóanyag: REST API-t futtató CORS'
-description: Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben. A App Service képes az előtér-webalkalmazások és a háttérbeli API-k üzemeltetésére.
+title: 'Oktatóanyag: RESTful API gazdagépe CORS használatával'
+description: Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben. App Service webalkalmazásokat és háttér-API-kat is képes gazdagépként is.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
+ms.openlocfilehash: 098ee1c8aac343be5ffdbe90d18c886ef74ed72f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005749"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480833"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
@@ -33,7 +33,7 @@ Az oktatóanyag lépései macOS, Linux és Windows rendszerre is vonatkoznak.
 Az oktatóanyag elvégzéséhez:
 
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
- * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">A legújabb .NET Core 3,1 SDK telepítése</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">A legújabb .NET Core 3.1 SDK telepítése</a>
 
 ## <a name="create-local-aspnet-core-app"></a>Hozzon létre egy helyi ASP.NET Core-alkalmazást.
 
@@ -124,7 +124,7 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
 </pre>
 
-### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
+### <a name="browse-to-the-azure-app"></a>Keresse meg az Azure-alkalmazást
 
 Egy böngészőben nyissa meg a `http://<app_name>.azurewebsites.net/swagger` címet a Swagger felhasználói felületének kipróbálásához.
 
@@ -142,7 +142,7 @@ A következő lépésben engedélyezi az App Service beépített CORS-támogatá
 
 A helyi adattárban nyissa meg a _wwwroot/index.html_ fájlt.
 
-Az 51. sorban állítsa be az `apiEndpoint` változót az üzembe helyezett API URL-címére (`http://<app_name>.azurewebsites.net`). Cserélje le az _\<appname>_ alkalmazást az alkalmazás nevére app Service.
+Az 51. sorban állítsa be az `apiEndpoint` változót az üzembe helyezett API URL-címére (`http://<app_name>.azurewebsites.net`). Cserélje _\<appname>_ le a helyére az alkalmazás nevét a App Service.
 
 A helyi terminálablakban futtassa ismét a mintaalkalmazást.
 
@@ -150,7 +150,7 @@ A helyi terminálablakban futtassa ismét a mintaalkalmazást.
 dotnet run
 ```
 
-Lépjen a `http://localhost:5000` helyen lévő böngészőalkalmazáshoz. Nyissa meg a fejlesztői eszközök ablakot a böngészőben ( `Ctrl` + `Shift` + `i` a Windows Chrome-ban), és vizsgálja meg a **konzol** lapot. Ekkor a következő hibaüzenet jelenik meg: `No 'Access-Control-Allow-Origin' header is present on the requested resource` .
+Lépjen a `http://localhost:5000` helyen lévő böngészőalkalmazáshoz. Nyissa meg a fejlesztői eszközök ablakát a böngészőben `Ctrl` + `Shift` + `i` (a Windowshoz használt Chrome-ban), és vizsgálja meg a **Konzol** lapot. Megjelenik a következő hibaüzenet: `No 'Access-Control-Allow-Origin' header is present on the requested resource` .
 
 ![CORS-hiba a böngészőügyfélben](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -160,7 +160,7 @@ A böngészőalkalmazás (`http://localhost:5000`) és a távoli erőforrás (`h
 
 ### <a name="enable-cors"></a>CORS engedélyezése 
 
-A Cloud Shellban engedélyezze a CORS az ügyfél URL-címére a [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) parancs használatával. Cserélje le az _&lt; alkalmazás neve>_ helyőrzőt.
+A Cloud Shell engedélyezze a CORS-t az ügyfél URL-címéhez az [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) paranccsal. Cserélje le _&lt; az alkalmazásnevet>_ helyőrzőre.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -169,7 +169,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 Több ügyfél URL-címét is beállíthatja a `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) tulajdonságban. Az összes URL-címet is engedélyezheti a `"['*']"` érték megadásával.
 
 > [!NOTE]
-> Ha az alkalmazáshoz olyan hitelesítő adatok szükségesek, mint például a cookie-k vagy a hitelesítési tokenek, a böngészőnek szüksége lehet a `ACCESS-CONTROL-ALLOW-CREDENTIALS` Válasz fejlécére. Ha App Service szeretné engedélyezni ezt a lehetőséget, a `properties.cors.supportCredentials` `true` CORS-konfigurációban állítsa be a következőt:. Ez nem engedélyezhető, ha `allowedOrigins` tartalmaz `'*'` .
+> Ha az alkalmazás olyan hitelesítő adatokat igényel, mint a cookie-k vagy hitelesítési jogkivonatok, a böngészőnek szüksége lehet a válasz `ACCESS-CONTROL-ALLOW-CREDENTIALS` fejlécére. Ennek engedélyezéséhez a App Service állítsa a következőre `properties.cors.supportCredentials` `true` a CORS-konfigurációban: . Ez nem engedélyezhető, ha tartalmazza a `allowedOrigins` következőt: `'*'` .
 
 ### <a name="test-cors-again"></a>A CORS újbóli tesztelése
 

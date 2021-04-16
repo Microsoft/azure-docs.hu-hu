@@ -1,128 +1,128 @@
 ---
-title: Virtuálisgép-méretezési csoportok méretezése a Azure Portal
-description: A virtuálisgép-méretezési csoportokra vonatkozó autoskálázási szabályok létrehozása a Azure Portalban
+title: Virtuálisgép-méretezési készletek automatikus méretezése a Azure Portal
+description: Automatikus méretezési szabályok létrehozása virtuálisgép-méretezési készletekhez a Azure Portal
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
-ms:service: virtual-machine-scale-sets
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 4bb4084a7ee0d9d719a88c077fa8c63803aa6934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ee2db62cf43dc191da2b92f7d4b67ff775f628f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591363"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537524"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési csoport automatikus méretezése a Azure Portal
+# <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési készlet automatikus méretezése a Azure Portal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre a méretezési csoporton belüli virtuálisgép-példányok teljesítményét figyelő Azure Portalban található autoskálázási szabályokat. Ezek az autoskálázási szabályok fokozzák vagy csökkentik a virtuálisgép-példányok számát, válaszul ezekre a teljesítmény-mérőszámokra. Ezeket a lépéseket [Azure PowerShell](tutorial-autoscale-powershell.md) vagy az [Azure CLI](tutorial-autoscale-cli.md)-vel is elvégezheti.
+Ez a cikk bemutatja, hogyan hozhat létre automatikus méretezési szabályokat a Azure Portal a méretezési csoportban található virtuálisgép-példányok teljesítményét monitorozni. Ezek az automatikus méretezési szabályok növelik vagy csökkentik a virtuálisgép-példányok számát ezekre a teljesítménymetrikákra válaszul. Ezeket a lépéseket az Azure [CLI-Azure PowerShell](tutorial-autoscale-powershell.md) is [végre lehet.](tutorial-autoscale-cli.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az autoskálázási szabályok létrehozásához szükség van egy meglévő virtuálisgép-méretezési csoportra. Létrehozhat egy méretezési csoport [Azure Portal](quick-create-portal.md), [Azure POWERSHELL](quick-create-powershell.md)vagy [Azure CLI](quick-create-cli.md)használatával.
+Automatikus méretezési szabályok létrehozásához egy meglévő virtuálisgép-méretezési csoportra van szükség. Méretezési csoportokat a következőkkel hozhat [létre: , Azure Portal](quick-create-portal.md), [Azure PowerShell](quick-create-powershell.md) [Azure CLI.](quick-create-cli.md)
 
 
-## <a name="create-a-rule-to-automatically-scale-out"></a>Automatikus skálázási szabály létrehozása
+## <a name="create-a-rule-to-automatically-scale-out"></a>Automatikus horizontális felskálás szabályának létrehozása
 Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lévő virtuálisgép-példányok terhelése is nő. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban. Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. Ön határozza meg, hogy milyen metrikákat kíván monitorozni – például a processzort vagy a lemezt, meddig kell az alkalmazás terhelésének elérnie egy megadott küszöbértéket, hány virtuálisgép-példányt kell hozzáadni a méretezési csoporthoz.
 
-1. Nyissa meg a Azure Portal, majd az irányítópult bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget.
+1. Nyissa meg Azure Portal, és válassza az Erőforráscsoportok **lehetőséget** az irányítópult bal oldali menüjében.
 2. Válassza ki a méretezési csoportot tartalmazó erőforráscsoportot, majd válassza ki a méretezési csoportot az erőforrások listájából.
-3. A méretezési csoport ablak bal oldali menüjében válassza a **skálázás** lehetőséget. Kattintson a gombra az **autoscale engedélyezéséhez**:
+3. Válassza **a Méretezés** lehetőséget a méretezési készlet ablakának bal oldalán található menüből. Kattintson a gombra az **Automatikus skálázás engedélyezése lehetőséghez:**
 
-    ![Az autoskálázás engedélyezése a Azure Portalban](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
+    ![Automatikus méretezés engedélyezése a Azure Portal](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. Adja meg a beállítások nevét, például az *autoskálázást*, majd válassza a **szabály hozzáadásának** lehetőségét.
+4. Adjon nevet a beállításoknak, például *automatikus skálázás,* majd válassza **a Szabály hozzáadása lehetőséget.**
 
-5. Hozzon létre egy szabályt, amely növeli a méretezési csoportokban lévő virtuálisgép-példányok számát, ha az átlagos CPU-terhelés meghaladja a 70%-ot egy 10 perces időszak alatt. A szabály indításakor a virtuálisgép-példányok száma 20%-kal nő. Kis mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban beállíthatja, hogy  a művelet *növelje a Count értéket* , majd adja meg az *1* vagy a *2* értéket a *példányszámhoz*. Nagy mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban a 10%-os vagy 20%-os virtuálisgép-példányok nagyobb mértékben megfelelőbbek lehetnek.
+5. Hozzunk létre egy szabályt, amely növeli a méretezési csoportban található virtuálisgép-példányok számát, ha az átlagos processzorterhelés 10 percen keresztül meghaladja a 70%-ot. Ha a szabály aktiválódik, a virtuálisgép-példányok száma 20%-kal növekszik. Kis számú virtuálisgép-példányt számláló méretezési készletekben  beállíthatja a műveletet a Darabszám növelése beállításra, majd 1-et vagy  *2-t* is megadhat a *példányszámhoz.*  A nagy számú virtuálisgép-példányt is képes méretezési készletekben a 10%-os vagy 20%-os virtuálisgép-példányok növelése megfelelőbb lehet.
 
     Adja meg a következő beállításokat a szabályhoz:
     
     | Paraméter              | Magyarázat                                                                                                         | Érték          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Idő összesítése*     | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag        |
+    | *Időösszesítő*     | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag        |
     | *Metrika neve*          | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
-    | *Időfelbontási szint statisztikája* | Azt határozza meg, hogy az összegyűjtött mérőszámok hogyan legyenek összesítve az elemzéshez.                             | Átlag        |
+    | *Időfelbontási szint statisztikája* | Meghatározza, hogyan kell összesíteni az egyes időmetrikákban gyűjtött metrikákat az elemzéshez.                             | Átlag        |
     | *Művelet*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
-    | *Küszöbérték*            | Az az érték, amelynek hatására az autoskálázási szabály elindítja a műveletet.                                                 | 70             |
-    | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam. Nem tartalmazza a lehűtési időszakot.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport fel vagy le legyen-e méretezve a szabály alkalmazása és a növekmény alapján.                        | Százalék növelésének aránya |
+    | *Küszöbérték*            | Az az arány, amely miatt az automatikus skálázási szabály aktivál egy műveletet.                                                 | 70             |
+    | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam. Nem tartalmazza a lehűtő hűtési időszakot.                                   | 10 perc     |
+    | *Művelet*            | Meghatározza, hogy a méretezési készletet felfelé vagy lefelé kell-e skálázni, amikor a szabály érvényben van, és milyen növekményekkel.                        | Százalék növelése a következővel: |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 20             |
     | *Lehűlés (perc)*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
-    Az alábbi példák egy olyan szabályt mutatnak be, amely a Azure Portal a következő beállításoknak felel meg:
+    Az alábbi példákban egy, a Azure Portal létrehozott szabály látható:
 
-    ![Hozzon létre egy autoskálázási szabályt a virtuálisgép-példányok számának növeléséhez](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+    ![Automatikus méretezési szabály létrehozása a virtuálisgép-példányok számának növeléséhez](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
 
-6. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
+6. A szabály létrehozásához válassza a Hozzáadás **lehetőséget.**
 
 
-## <a name="create-a-rule-to-automatically-scale-in"></a>Automatikus skálázási szabály létrehozása
+## <a name="create-a-rule-to-automatically-scale-in"></a>Szabály létrehozása automatikus horizontális leskálazhoz
 Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a csökkent terhelés egy adott időtartam alatt állandó, akkor megadhatja, hogy az automatikus skálázási szabály csökkentse a virtuálisgép-példányok számát a méretezési csoportban. A horizontális leskálázási művelet csökkenti a méretezési csoport futtatásának költségeit, mivel csak az aktuális igényt kielégítő számú példányt futtat.
 
-1. Adja meg ismét **a szabályt** .
-2. Hozzon létre egy szabályt, amely csökkenti a méretezési csoportokban lévő virtuálisgép-példányok számát, ha az átlagos CPU-terhelés, majd a 10 perces időszak alatt 30% alá csökken. A szabály indításakor a virtuálisgép-példányok száma 20%-kal csökken.
+1. Válassza ismét **a Szabály hozzáadása** lehetőséget.
+2. Hozzon létre egy szabályt, amely csökkenti a méretezési csoportban található virtuálisgép-példányok számát, amikor az átlagos processzorterhelés 10 percen keresztül 30% alá csökken. Ha a szabály aktiválódik, a virtuálisgép-példányok száma 20%-kal csökken.
 
-    Ugyanazt a módszert használja, mint az előző szabályhoz. Módosítsa a szabály következő beállításait:
+    Használja ugyanazt a módszert, mint az előző szabályban. Módosítsa a következő beállításokat a szabályhoz:
     
     | Paraméter              | Magyarázat                                                                                                          | Érték          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb, mint   |
-    | *Küszöbérték*            | Az az érték, amelynek hatására az autoskálázási szabály elindítja a műveletet.                                                 | 30             |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport fel-vagy leskálázása legyen, ha a szabály érvényes, és milyen növekmény                         | Százalék csökkentése a következővel: |
+    | *Küszöbérték*            | Az az arány, amely miatt az automatikus skálázási szabály aktivál egy műveletet.                                                 | 30             |
+    | *Művelet*            | Meghatározza, hogy a méretezési készletet felfelé vagy lefelé kell-e skálázni, amikor a szabály érvényben van, és milyen növekményt                         | Százalék csökkentése a következővel: |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                             | 20             |
 
-3. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
+3. A szabály létrehozásához válassza a Hozzáadás **lehetőséget.**
 
 
-## <a name="define-autoscale-instance-limits"></a>Az autoscale-példányokra vonatkozó korlátok meghatározása
-Az autoskálázási profilnak meg kell határoznia a virtuálisgép-példányok minimális, maximális és alapértelmezett számát. Az autoskálázási szabályok alkalmazása esetén ezek a példányok korlátozásai biztosítják, hogy a példányok maximális száma túllépve ne legyen kibővítve, vagy a minimálisan megengedettnél nagyobb méretű.
+## <a name="define-autoscale-instance-limits"></a>Automatikus méretezési példány korlátainak meghatározása
+Az automatikus méretezési profilnak meg kell határoznia a virtuálisgép-példányok minimális, maximális és alapértelmezett számát. Az automatikus méretezési szabályok alkalmazásakor ezek a példánykorlátok mindenképpen ügyeljenek arra, hogy ne skálázjon fel horizontálisan a példányok maximális számán túlra, és ne skálázjon le a minimális példányszámon túlra.
 
-1. Adja meg a következő példányok korlátait:
+1. Állítsa be a következő példánykorlátokat:
 
     | Minimum | Maximum | Alapértelmezett|
     |---------|---------|--------|
     | 2       | 10      | 2      |
 
-2. Az autoskálázási szabályok és a példányok korlátainak alkalmazásához válassza a **Mentés** lehetőséget.
+2. Az automatikus méretezési szabályok és a példánykorlátok alkalmazáshoz válassza a **Mentés lehetőséget.**
 
 
-## <a name="monitor-number-of-instances-in-a-scale-set"></a>A méretezési csoport példányainak számának figyelése
-A virtuálisgép-példányok számának és állapotának megtekintéséhez a méretezési csoport ablak bal oldali menüjében válassza a **példányok** lehetőséget. Az állapot azt jelzi, hogy a virtuálisgép-példány *létrehozása* folyamatban van-e a méretezési csoport automatikus skálázása esetén, vagy ha a méretezés automatikusan méretezi a *-t.*
+## <a name="monitor-number-of-instances-in-a-scale-set"></a>Egy méretezési készlet példányszámának figyelése
+A virtuálisgép-példányok számának és  állapotának a méretezésihalmaz-ablak bal oldali menüjében válassza a Példányok lehetőséget. Az állapot jelzi, hogy a virtuálisgép-példány *Létrehozás,* amikor  a méretezési csoport automatikusan horizontálisan felskálul, vagy Törlés, amikor a skálázás automatikusan leméretezést jelez.
 
-![A méretezési csoport virtuálisgép-példányainak listájának megtekintése](media/virtual-machine-scale-sets-autoscale-portal/view-instances.png)
+![Méretezésikészlet-virtuálisgép-példányok listájának megtekintése](media/virtual-machine-scale-sets-autoscale-portal/view-instances.png)
 
 
-## <a name="autoscale-based-on-a-schedule"></a>Ütemterv alapján történő autoskálázás
-Az előző példákban az alapszintű gazdagép-mérőszámokkal, például a CPU-használattal automatikusan méretezhető egy méretezési csoport. Az ütemterveken alapuló autoskálázási szabályokat is létrehozhat. Ezek az ütemezési szabályok lehetővé teszik a virtuálisgép-példányok számának automatikus méretezését az alkalmazás iránti igény várható növekedésének, például az alapszintű munkaidőnek a növelésével, majd a példányok számának automatikus skálázásával, amikor a kevesebb igényt, például a hétvégét tervezi.
+## <a name="autoscale-based-on-a-schedule"></a>Automatikus skálázás ütemezés alapján
+Az előző példák automatikusan horizontálisan fel- vagy felskáláltak egy méretezési készletet olyan alapvető gazdagép-metrikák segítségével, mint a CPU-használat. Az ütemezések alapján automatikus méretezési szabályokat is létrehozhat. Ezekkel az ütemezésalapú szabályokkal automatikusan felskálálhatja a virtuálisgép-példányok számát az alkalmazásigény várható növekedése , például a központi munkaidő előtt, majd automatikusan skálázhatja a példányok számát egy olyan időpontban, amikor várhatóan kisebb lesz a kereslet, például a hétvégen.
 
-1. A méretezési csoport ablak bal oldali menüjében válassza a **skálázás** lehetőséget. Az előző példákban létrehozott meglévő autoskálázási szabályok törléséhez válassza a Kuka ikont.
+1. Válassza **a Méretezés** lehetőséget a méretezési készlet ablakának bal oldalán található menüből. Az előző példákban létrehozott meglévő automatikus méretezési szabályok törléséhez válassza a kuka ikont.
 
-    ![A meglévő autoskálázási szabályok törlése](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
+    ![A meglévő automatikus méretezési szabályok törlése](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
 
-2. Válassza a **méretezési feltétel hozzáadása** lehetőséget. Válassza a szabály neve melletti ceruza ikont, és adjon meg egy nevet, például a *Felskálázást az egyes munkanapokon*.
+2. Válassza a **Méretezési feltétel hozzáadása lehetőséget.** Kattintson a ceruza ikonra a szabály neve mellett, és adjon meg egy nevet, például: Horizontális felskálás *az egyes munkanapok során.*
 
-    ![Az alapértelmezett autoskálázási szabály átnevezése](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
+    ![Az alapértelmezett automatikus méretezési szabály átnevezése](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
 
-3. Válassza ki a választógombot, hogy **egy adott példányszámot szeretne méretezni**.
-4. A példányok számának vertikális felskálázásához adja meg a *10-es* értéket a példányszám mezőben.
-5. Válassza az **adott napok megismétlése** lehetőséget az **ütemterv** típusához.
-6. Válassza ki az összes munkanap, hétfőtől péntekig.
-7. Válassza ki a megfelelő időzónát, majd adja meg a *09:00* **kezdési időpontját** .
-8. Válassza a **méretezési feltétel ismételt hozzáadását** . Ismételje meg a folyamatot, ha a Scale (méretezés) nevű ütemtervet szeretné létrehozni *az esti időszakban* , amely *3* példányra méretezi, minden hétköznap ismétlődik, és *18:00*-kor kezdődik.
-9. Az ütemterv szerinti autoskálázási szabályok alkalmazásához válassza a **Mentés** lehetőséget.
+3. Jelölje be a választógombot **a Skálázás adott példányszámra beállításhoz.**
+4. A példányok számának felskálol a *10-et* a példányok számaként.
+5. Az **Ütemezés típushoz válassza** a Megadott napok **ismétlése** lehetőséget.
+6. Válassza ki az összes munkanapot, hétfőtől péntekig.
+7. Válassza ki a megfelelő időzónát, majd **adjon** meg egy *09:00 kezdőidőt.*
+8. Válassza ismét **a Méretezési feltétel hozzáadása** lehetőséget. Ismételje meg a folyamatot,  és hozzon létre egy horizontális leskálás nevű ütemezést este, amely *3* példányra skálázható, minden hétköznapon ismétlődik, és *18:00-kor kezdődik.*
+9. Az ütemezésalapú automatikus méretezési szabályok alkalmazáshoz válassza a Mentés **lehetőséget.**
 
-    ![Ütemterv szerinti méretezést biztosító autoskálázási szabályok létrehozása](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
+    ![Ütemezés szerint skálázású automatikus méretezési szabályok létrehozása](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-Az automatikus skálázási szabályok alkalmazásának megtekintéséhez válassza a **futtatási előzmények** lehetőséget a **skálázási** ablak tetején. A Graph és az Events (diagramok és események) lista azt mutatja be, hogy az autoskálázási szabályok triggere és a méretezési csoport virtuálisgép-példányainak száma nő vagy csökken.
+Az automatikus méretezési szabályok alkalmazásának látnia kell, ha a **Méretezés** ablak tetején található Futtatáselőzmények **lehetőséget** választja. A gráfok és események listája azt mutatja, hogy mikor aktiválódnak az automatikus méretezési szabályok, és mikor nő vagy csökken a méretezési készletben található virtuálisgép-példányok száma.
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a cikkben megtanulta, hogyan használhatja az autoskálázási szabályokat horizontális méretezésre, és növelheti vagy csökkentheti a méretezési csoport virtuálisgép-példányainak *számát* . A virtuálisgép-példány *méretének* növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+Ebben a cikkben megtanulta, hogyan használhatja az automatikus méretezési  szabályokat horizontális skálázáshoz, illetve a méretezési készletben található virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez. Vertikálisan is skálázhat a virtuálisgép-példány méretének növeléséhez vagy *csökkentéséhez.* További információ: Vertikális automatikus [skálázás virtuálisgép-méretezési készletekkel.](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 
-A virtuálisgép-példányok kezelésével kapcsolatos információkért lásd: [virtuálisgép-méretezési csoportok kezelése Azure PowerShellokkal](./virtual-machine-scale-sets-manage-powershell.md).
+További információ a virtuálisgép-példányok kezelésével kapcsolatban: Virtuálisgép-méretezési készletek kezelése [a Azure PowerShell.](./virtual-machine-scale-sets-manage-powershell.md)
 
-Ha meg szeretné tudni, hogyan hozhatók riasztások az automatikusan méretezhető szabályok indításakor, tekintse meg az [e-mailek és webhookok riasztási értesítéseinek Azure monitor-ben történő küldését](../azure-monitor/autoscale/autoscale-webhook-email.md)ismertető témakört. A [naplók használatával e-mail-és webhook](../azure-monitor/alerts/alerts-log-webhook.md)-értesítéseket is küldhet a Azure monitor.
+Ha többet szeretne megtudni arról, hogyan hozhat létre riasztásokat az automatikus méretezési szabályok aktiválása során, tekintse meg a következőt: Automatikus méretezési műveletek használata e-mail- és [webhook-riasztási](../azure-monitor/autoscale/autoscale-webhook-email.md)Azure Monitor. Auditnaplók használatával e-mailes és [webhook-riasztási](../azure-monitor/alerts/alerts-log-webhook.md)értesítéseket is küldhet a Azure Monitor.

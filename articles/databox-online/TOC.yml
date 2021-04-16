@@ -146,7 +146,7 @@
               href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
         - name: Wi-Fi kezelése
           href: azure-stack-edge-mini-r-manage-wifi.md
-        - name: Wi-Fi profilok használata
+        - name: Az Wi-Fi használata
           href: azure-stack-edge-mini-r-use-wifi-profiles.md
 - name: 'Közös Pro GPU, Pro R, mini R'
   items:
@@ -182,7 +182,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
             - name: FPGA-eszközök moduljai
               href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
-            - name: Modul Azure Portal használatával
+            - name: Modul Azure Portal
               href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: A Kubernetes számítási feladatainak üzembe helyezése
           items:
@@ -198,13 +198,13 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dinamikusan kiépített állapotalapú alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
-                - name: GPU-val megosztott munkaterhelés
+                - name: GPU-val megosztott számítási feladat
                   href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: IoT Edge használatával
               items:
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-                - name: GPU-val megosztott munkaterhelés
+                - name: GPU-val megosztott számítási feladat
                   href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: C#-modul fejlesztése
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
@@ -214,7 +214,7 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Állapotmentes alkalmazás üzembe helyezése a GitOps használatával
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-                - name: Az Azure arc-adatkezelő üzembe helyezése
+                - name: Az Azure Arc üzembe helyezése
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Az Azure Resource Manager konfigurálása (előzetes verzió)
           items:
@@ -242,25 +242,27 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Virtuálisgép-rendszerkép létrehozása
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
-            - name: Windows általánosított rendszerkép használata
+            - name: Általános Windows-rendszerkép előkészítése VHD-ről
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-            - name: A Windows speciális rendszerképének használata
+            - name: Általános rendszerkép előkészítése ISO használatával
+              href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+            - name: Speciális Windows-rendszerkép használata
               href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: Támogatott virtuálisgép-méretek és -típusok
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: Kapcsolódás a VM-konzolhoz
+            - name: Csatlakozás a virtuálisgép-konzolhoz
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
             - name: Hálózati adapterek kezelése
               href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
             - name: Lemezek kezelése
               href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
-            - name: VIRTUÁLIS gépek méretének kezelése
+            - name: Virtuálisgép-méretek kezelése
               href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
-            - name: VM-címkék kezelése
+            - name: Virtuálisgép-címkék kezelése
               href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
             - name: Virtuális kapcsoló létrehozása
               href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
-            - name: VM-lemezek biztonsági mentése
+            - name: Virtuálisgép-lemezek biztonsági visszaállítása
               href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
         - name: Tanúsítványok kezelése
           items:
@@ -312,7 +314,7 @@
           items:
             - name: Metrikadiagramok használata
               href: azure-stack-edge-monitor.md
-            - name: Eszköz-riasztások kezelése
+            - name: Eszközesemény-riasztások kezelése
               href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes-irányítópult használata
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
@@ -330,7 +332,7 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Megosztott kibocsátási megjegyzések
       items:
-        - name: 2103 – jelenlegi
+        - name: 2103 – Aktuális
           href: azure-stack-edge-gpu-2103-release-notes.md
         - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
@@ -418,11 +420,11 @@
           href: azure-stack-edge-return-device.md
         - name: Eszköz cseréje
           href: azure-stack-edge-replace-device.md
-        - name: Migrálás GPU-eszközre
+        - name: Áttelepítés GPU-eszközre
           href: azure-stack-edge-migrate-fpga-gpu.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 2101 – jelenlegi
+        - name: 2101 – Aktuális
           href: azure-stack-edge-2101-release-notes.md
         - name: 2007
           href: ../databox-gateway/data-box-gateway-2007-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json

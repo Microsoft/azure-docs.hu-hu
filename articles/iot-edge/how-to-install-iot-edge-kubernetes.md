@@ -1,6 +1,6 @@
 ---
-title: A IoT Edge telepítése a Kubernetes-on | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti a IoT Edget a Kubernetes egy helyi fejlesztési fürt-környezet használatával
+title: A IoT Edge telepítése Kubernetes-| Microsoft Docs
+description: Megtudhatja, hogyan telepíthet IoT Edge Kubernetesre helyi fejlesztési fürtkörnyezet használatával
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -8,38 +8,39 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d5fc7b6b480056b56a2776cebd0fa87a5b96f9f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+monikerRange: iotedge-2018-06
+ms.openlocfilehash: 1c7c221a2fea60f3bbbc4f2cde960dcb8638efe2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201672"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576567"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>A IoT Edge telepítése a Kubernetes (előzetes verzió)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Az alkalmazás telepítése IoT Edge Kubernetesen (előzetes verzió)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-IoT Edge integrálható a Kubernetes a rugalmas, magasan elérhető infrastruktúra-rétegként használva. Itt találja a támogatást magas szintű IoT Edge megoldásként:
+IoT Edge kubernetes-sel integrálható, és rugalmas, magas rendelkezésre áll rendelkezésre álló infrastruktúrarétegként használhatja. Ez a támogatás itt illeszkedik egy magas szintű IoT Edge megoldásba:
 
-![k8s bemutatása](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
+![k8s bevezetés](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
 
 >[!TIP]
->Az integráció jó mentális modellje a Kubernetes, mint egy másik működési környezet, IoT Edge alkalmazások a Linux és a Windows rendszereken kívül is futhatnak.
+>Az integrációhoz jó szellemi modell a Kubernetes, mint egy másik üzemeltetési környezet, IoT Edge linuxos és windowsos alkalmazások is futtathatók.
 
 ## <a name="architecture"></a>Architektúra 
-A Kubernetes-on a IoT Edge *egyéni erőforrás-definíciót* (CRD) biztosít az Edge-munkaterhelések telepítéséhez. IoT Edge ügynök feltételezi egy  *CRD-vezérlő* szerepkörét, amely összehangolja a felhőben felügyelt kívánt állapotot a helyi fürt állapotával.
+A Kubernetesben a IoT Edge *biztosít* egyéni erőforrás-definíciót (CRD) a peremhálózati számítási feladatok üzembe helyezéséhez. IoT Edge Ügynök egy  *CRD-vezérlő* szerepét feltételezi, amely egyezteti a felhő által felügyelt célállapotot a helyi fürt állapotával.
 
-A modul élettartamát a Kubernetes Scheduler kezeli, amely fenntartja a modul rendelkezésre állását, és kiválasztja az elhelyezést. IoT Edge felügyeli a fent futó Edge Application platformot, és folyamatosan összehangolja a IoT Hubban megadott kívánt állapotot a peremhálózati fürt állapotával. Az alkalmazás modellje továbbra is ismert modell IoT Edge modulok és útvonalak alapján. A IoT Edge-ügynök vezérlője a Kubernetes natív szerkezetek (például hüvelyek, üzembe helyezések, szolgáltatások stb.) esetében végzi el az *automatikus* fordítási IoT Edge alkalmazási modelljét.
+A modul élettartamát a Kubernetes-ütemező kezeli, amely fenntartja a modulok rendelkezésre állását, és kiválasztja azok elhelyezését. IoT Edge felügyeli a felül futó peremhálózati alkalmazásplatformot, és folyamatosan egyezteti a IoT Hub alatt megadott célállapotot a peremhálózati fürt állapotával. Az alkalmazásmodell továbbra is az ismert modell, amely a IoT Edge és útvonalakon alapul. A IoT Edge Agent vezérlő automatikusan  lefordítja IoT Edge Kubernetes natív szerkezetére, például podra, üzemelő példányra, szolgáltatásra stb.
 
-A magas szintű architektúra diagramja:
+Az alábbi magas szintű architektúradiagram:
 
-![kubernetes Arch](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
+![kubernetes arch](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
 
-Az Edge-telepítés minden összetevője az eszközre jellemző Kubernetes-névtérre van korlátozva, így több peremhálózati eszköz és a hozzájuk tartozó üzemelő példányok között is megosztható.
+A peremhálózati üzemelő példány minden összetevője egy, az eszközre jellemző Kubernetes-névtérre terjed ki, így lehetővé teszi ugyanazon fürterőforrások megosztását több peremeszköz és azok üzemelő példányai között.
 
 >[!NOTE]
->A Kubernetes IoT Edge [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
+>IoT Edge Kubernetesen elérhető előzetes [verzióban érhető el.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="tutorials-and-references"></a>Oktatóanyagok és referenciák 
 
-További információért tekintse [meg a IoT Edge on Kubernetes Preview docs mini-site](https://aka.ms/edgek8sdoc) című témakört, beleértve a részletes oktatóanyagokat és referenciákat.
+További információkért IoT Edge részletes oktatóanyagokat és referenciákat a [Kubernetes](https://aka.ms/edgek8sdoc) előzetes verziójú dokumentum minioldalán található.
