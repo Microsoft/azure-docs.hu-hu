@@ -1,117 +1,117 @@
 ---
-title: Kapcsolódás Azure Database for MySQL a MySQL-hez készült dbForge Studio használatával
-description: A cikk bemutatja, hogyan csatlakozhat Azure Database for MySQL-kiszolgálóhoz a MySQL-hez készült dbForge Studio használatával.
+title: Csatlakozás Azure Database for MySQL dbForge Studio for MySQL használatával
+description: A cikk bemutatja, hogyan csatlakozhat a Azure Database for MySQL Serverhez a dbForge Studio for MySQL segítségével.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 1c85a07a3d61c80f3871f04c399263a8e210254e
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 942651aadf4113c1aca32e4e1d2c558b0d764421
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010791"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377225"
 ---
-# <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Kapcsolódás Azure Database for MySQL a MySQL-hez készült dbForge Studio használatával
+# <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Csatlakozás Azure Database for MySQL dbForge Studio for MySQL használatával
 
-Kapcsolódás Azure Database for MySQL a MySQL- [hez készült DbForge Studio](https://www.devart.com/dbforge/mysql/studio/)használatával:
+Csatlakozás a Azure Database for MySQL [dbForge Studio for MySQL használatával:](https://www.devart.com/dbforge/mysql/studio/)
 
-1. Az adatbázis menüben válassza az új kapcsolatok lehetőséget.
+1. Az Adatbázis menüben válassza az Új kapcsolat lehetőséget.
 
-2. Adja meg a gazdagép nevét és a bejelentkezési hitelesítő adatokat.
+2. Adja meg az állomásnevet és a bejelentkezési hitelesítő adatokat.
 
-3. A konfiguráció ellenőrzéséhez kattintson a kapcsolódás tesztelése gombra.
+3. A konfiguráció ellenőrzéshez válassza a Kapcsolat tesztelése gombot.
 
 :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/azure-connection-1.png" alt-text="Azure-kapcsolat":::
 
-## <a name="migrate-a-database-using-the-backup-and-restore-functionality"></a>Adatbázis migrálása a biztonsági mentési és visszaállítási funkció használatával
+## <a name="migrate-a-database-using-the-backup-and-restore-functionality"></a>Adatbázis áttelepítése a Biztonsági mentés és visszaállítás funkcióval
 
-A Studio számos módon lehetővé teszi az adatbázisok áttelepítését az Azure-ba, amelynek a választása kizárólag az Ön igényeitől függ. Ha a teljes adatbázist át kell helyeznie, a legjobb megoldás a biztonsági mentési és visszaállítási funkció használata. Ebben a példában migráljuk a MySQL-kiszolgálón található *sakila* -adatbázist a Azure Database for MySQLra. Az áttelepítési folyamat mögött a dbForge Studio for MySQL biztonsági mentési és visszaállítási funkciója segítségével hozza létre a MySQL-adatbázis biztonsági másolatát, majd állítsa vissza Azure Database for MySQL.
+A Studio számos módon teszi lehetővé az adatbázisok azure-ba való mibrálását, amelyek közül a választás kizárólag az Ön igényeitől függ. Ha a teljes adatbázist át kell költöztetni, a legjobb, ha a Biztonsági mentés és visszaállítás funkciót használja. Ebben a példában a MySQL-kiszolgálón található *Sakila-adatbázist* telepítjük át az Azure Database for MySQL. A dbForge Studio for MySQL biztonsági mentési és visszaállítási funkcióját használó migrálási folyamat logikája a MySQL-adatbázis biztonsági másolatának létrehozása, majd visszaállítása a Azure Database for MySQL.
 
 ### <a name="back-up-the-database"></a>Az adatbázis biztonsági mentése
 
-1. Az adatbázis menüben mutasson a biztonsági mentés és visszaállítás elemre, majd válassza a biztonsági mentési adatbázis elemet. Megjelenik az adatbázis biztonsági mentése varázsló.
+1. Az Adatbázis menüben mutasson a Biztonsági mentés és visszaállítás pontra, majd válassza az Adatbázis biztonsági mentése lehetőséget. Megjelenik az Adatbázis biztonsági mentése varázsló.
 
-2. Az adatbázis biztonsági mentése varázsló biztonsági mentés tartalma lapján válassza ki azokat az adatbázis-objektumokat, amelyekről biztonsági másolatot szeretne készíteni.
+2. Az Adatbázis biztonsági mentése varázsló Biztonsági másolat tartalmának lapján válassza ki azokat az adatbázis-objektumokat, amelyekről biztonsági másolatot kíván készíteni.
 
-3. A beállítások lapon konfigurálja úgy a biztonsági mentési folyamatot, hogy az megfeleljen a követelményeknek.
+3. A Beállítások lapon konfigurálja a biztonsági mentési folyamatot az igényeinek megfelelően.
 
-    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/back-up-wizard-options.png" alt-text="A varázsló beállításainak biztonsági mentése":::
+    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/back-up-wizard-options.png" alt-text="A varázsló beállításainak biztonsági létrehozása":::
 
-4. Következő lépésként határozza meg a hibák feldolgozási viselkedését és naplózási beállításait.
+4. Ezután adja meg a hibák feldolgozási viselkedését és a naplózási beállításokat.
 
-5. Válassza a biztonsági mentés lehetőséget.
+5. Válassza a Biztonsági mentés lehetőséget.
 
 ### <a name="restore-the-database"></a>Az adatbázis visszaállítása
 
-1. Kapcsolódjon az Azure-hoz a MySQL-hez készült adatbázishoz a fent leírtak szerint.
+1. Csatlakozzon az Azure for Database for MySQL-hez a fent leírtak szerint.
 
-2. Kattintson a jobb gombbal a Adatbázis-böngésző törzsre, mutasson a biztonsági mentés és visszaállítás elemre, majd válassza az adatbázis visszaállítása lehetőséget.
+2. Kattintson a jobb gombbal a Adatbázis-böngésző, mutasson a Biztonsági mentés és visszaállítás elemre, majd válassza az Adatbázis visszaállítása lehetőséget.
 
-3. A megnyíló adatbázis-visszaállítás varázslóban válasszon ki egy, az adatbázis biztonsági másolatát tartalmazó fájlt.
+3. A megnyíló Adatbázis-visszaállítás varázslóban válasszon ki egy adatbázis biztonsági mentését készítő fájlt.
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/restore-step-1.png" alt-text="Visszaállítási lépés":::
 
-4. Válassza a visszaállítás lehetőséget.
+4. Válassza a Visszaállítás lehetőséget.
 
-5. Az eredmény ellenőrzéséhez.
+5. Ellenőrizze az eredményt.
 
-## <a name="migrate-a-database-using-the-copy-databases-functionality"></a>Adatbázis migrálása az adatbázisok másolása funkció használatával
+## <a name="migrate-a-database-using-the-copy-databases-functionality"></a>Adatbázis áttelepítése az Adatbázisok másolása funkcióval
 
-A másolási adatbázisok funkciója hasonló a biztonsági mentéshez és a visszaállításhoz, azzal a kivétellel, hogy nem szükséges két lépés az adatbázisok áttelepíteni. És mi több, a szolgáltatás lehetővé teszi két vagy több adatbázis átvitelét egy menetben. A másolási adatbázisok funkció csak a dbForge Studio for MySQL Enterprise kiadásában érhető el.
-Ebben a példában a *world_x* -adatbázist a MySQL-kiszolgálóról Azure Database for MySQLra migráljuk.
-Adatbázis migrálása az adatbázisok másolása funkció használatával:
+Az Adatbázisok másolása funkció hasonló a biztonsági mentéshez és a visszaállításhoz, azzal a kivételsel, hogy az adatbázis áttelepítéséhez nincs szükség két lépésre. Ráadásul a funkció lehetővé teszi két vagy több adatbázis egy ugrással történő átvitelét. Az Adatbázisok másolása funkció csak a dbForge Studio for MySQL Enterprise kiadásában érhető el.
+Ebben a példában a  world_x mySQL-kiszolgálóról egy Azure Database for MySQL.
+Adatbázis áttelepítése az Adatbázisok másolása funkcióval:
 
-1. Az adatbázis menüben válassza az adatbázisok másolása lehetőséget. 
+1. Az Adatbázis menüben válassza az Adatbázisok másolása lehetőséget. 
 
-2. A megjelenő adatbázis másolása lapon adja meg a forrás és a cél kapcsolatokat, és válassza ki az áttelepítendő adatbázis (oka) t. Beírjuk az Azure MySQL-kapcsolatokat, és kiválasztjuk a *world_x* -adatbázist. A folyamat elindításához kattintson a zöld nyílra.
+2. A megjelenő Adatbázisok másolása lapon adja meg a forrás- és célkapcsolatot, és válassza ki az áttelepíteni kívánt adatbázisokat. Beírjuk az Azure MySQL-kapcsolatot, és kiválasztjuk *a world_x* adatbázist. Válassza a zöld nyilat a folyamat kezdeményezésére.
 
-3. Az eredmény ellenőrzéséhez.
+3. Ellenőrizze az eredményt.
 
-Az adatbázis-áttelepítési erőfeszítések eredményeképpen a *world_x* adatbázis sikeresen megjelent az Azure MySQL-ben.
+Az adatbázis-migrálási folyamataink eredményeként a world_x *sikeresen* megjelent az Azure MySQL-be.
 
-:::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/copy-databases-result.png" alt-text="Adatbázisok másolása eredmény":::
+:::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/copy-databases-result.png" alt-text="Adatbázisok másolásának eredménye":::
 
-## <a name="migrate-a-database-using-schema-and-data-compare-tools"></a>Adatbázis migrálása a séma és az adatösszehasonlítási eszközök használatával
+## <a name="migrate-a-database-using-schema-and-data-compare-tools"></a>Adatbázis áttelepítése Séma- és adat-összehasonlítási eszközökkel
 
-a dbForge Studio for MySQL több eszközt is tartalmaz, amelyek lehetővé teszik a MySQL-adatbázisok áttelepítését, a MySQL-sémák pedig and\or az Azure-ba. A választható funkciók a saját igényeitől és a projekt követelményeitől függenek. Ha szelektíven át kell helyeznie egy adatbázist, azaz bizonyos MySQL-táblákat át kell telepíteni az Azure-ba, érdemes a séma és az adatösszehasonlítás funkciót használni.
-Ebben a példában migráljuk a MySQL-kiszolgálón található *globális* adatbázist a Azure Database for MySQLra. Az áttelepítési folyamat mögötti logikája a dbForge Studio for MySQL sémájának és adatösszehasonlítási funkciójának használatával egy üres adatbázist hoz létre Azure Database for MySQLban, szinkronizálja a szükséges MySQL-adatbázissal először a séma-összehasonlítás eszköz használatával, majd az adatösszehasonlítás eszközzel. Így a MySQL sémák és az adathalmazok pontosan át lesznek helyezve az Azure-ba.
+A dbForge Studio for MySQL tartalmaz néhány olyan eszközt, amelyek lehetővé teszik a MySQL-adatbázisok, MySQL-sémák és\vagy adatok azure-ba való áttelepítését. A funkciók megválasztása az igényektől és a projekt követelményeitől függ. Ha egy adatbázist szelektíven kell áthelyezni, azaz bizonyos MySQL-táblákat az Azure-ba kell milegálni, a legjobb, ha a Schema és az Data Compare funkciót használja.
+Ebben a példában a  MySQL-kiszolgálón található világadatbázist telepítjük át a Azure Database for MySQL. A dbForge Studio for MySQL Schema and Data Compare funkcióját használó migrálási folyamat logikája egy üres adatbázis létrehozása a Azure Database for MySQL-ben, szinkronizálása a szükséges MySQL-adatbázissal először a Schema Compare eszköz, majd a Data Compare eszköz használatával. Így a MySQL-sémák és -adatok pontosan átkerülnek az Azure-ba.
 
-### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>1. lépés Kapcsolódás Azure Database for MySQLhoz és üres adatbázis létrehozása
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>1. lépés Csatlakozás Azure Database for MySQL és üres adatbázis létrehozása
 
-### <a name="step-2-schema-synchronization"></a>2. lépés Séma szinkronizálása
+### <a name="step-2-schema-synchronization"></a>2. lépés Séma-szinkronizálás
 
-1. Az összehasonlítás menüben válassza az új séma-összehasonlítás elemet.
-Megjelenik az új séma-összehasonlítás varázsló.
+1. Az Összehasonlítás menüben válassza az Új séma-összehasonlítás lehetőséget.
+Megjelenik az Új séma-összehasonlító varázsló.
 
-2. Válassza ki a forrást és a célt, majd adja meg a séma-összehasonlítási beállításokat. Válassza az összehasonlítás lehetőséget.
+2. Válassza ki a Forrást és a Célt, majd adja meg a séma-összehasonlítási beállításokat. Válassza az Összehasonlítás lehetőséget.
 
-3. A megjelenő összehasonlító eredmények táblázatban válassza az objektumok szinkronizáláshoz lehetőséget. Kattintson a zöld nyíl gombra a séma-szinkronizálás varázsló megnyitásához.
+3. A megjelenő összehasonlító eredmények rácsában válassza ki a szinkronizáláshoz használható objektumokat. Kattintson a zöld nyíl gombra a Sémaszinkronizálási varázsló megnyitásához.
 
-4. Végigvezeti a varázsló szinkronizálási konfigurálásának lépésein. A módosítások telepítéséhez válassza a szinkronizálás lehetőséget.
+4. Kövesse végig a szinkronizálás konfigurálását konfiguráló varázsló lépéseit. A módosítások üzembe helyezéséhez válassza a Szinkronizálás lehetőséget.
 
-    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="Séma-szinkronizálás varázsló":::
+    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="Sémaszinkronizálási varázsló":::
 
-### <a name="data-comparison"></a>Az adatösszehasonlítás
+### <a name="step-3-data-comparison"></a>3. lépés Adatok összehasonlítása
 
-1. Az összehasonlítás menüben válassza az új adatösszehasonlítás elemet. Megjelenik az új adatösszehasonlítási varázsló.
+1. Az Összehasonlítás menüben válassza az Új adatok összehasonlítása lehetőséget. Megjelenik az Új adatok összehasonlítása varázsló.
 
-2. Válassza ki a forrást és a célt, majd adja meg az adatösszehasonlítási beállításokat, és szükség esetén módosítsa a leképezéseket. Válassza az összehasonlítás lehetőséget.
+2. Válassza ki a Forrás és a Cél adatokat, majd adja meg az adat-összehasonlítási beállításokat, és szükség esetén módosítsa a leképezéseket. Válassza az Összehasonlítás lehetőséget.
 
-3. A megjelenő összehasonlító eredmények táblázatban válassza az objektumok szinkronizáláshoz lehetőséget. Kattintson a zöld nyíl gombra az adatszinkronizálási varázsló megnyitásához.
+3. A megjelenő összehasonlító eredmények rácsában válassza ki a szinkronizáláshoz használható objektumokat. A zöld nyíl gombra kattintva nyissa meg az Adatszinkronizálás varázslót.
 
-    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/data-comp-result.png" alt-text="Adatellenőrzés eredménye":::
+    :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/data-comp-result.png" alt-text="Adatberekedés eredménye":::
 
-4. Végigvezeti a varázsló szinkronizálási konfigurálásának lépésein. A módosítások telepítéséhez válassza a szinkronizálás lehetőséget.
+4. Kövesse a szinkronizálás konfigurálását konfiguráló varázsló lépéseit. A módosítások üzembe helyezéséhez válassza a Szinkronizálás lehetőséget.
 
-5. Az eredmény ellenőrzéséhez.
+5. Ellenőrizze az eredményt.
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/data-sync-result.png" alt-text="Adatszinkronizálás eredménye":::
 
 ## <a name="summary"></a>Összefoglalás
 
-Manapság több vállalat helyezi át az adatbázisait Azure Database for MySQLba, mivel ez az adatbázis-szolgáltatás egyszerűen beállítható, kezelhető és méretezhető. Az áttelepítésnek nem kell fájdalmasnak lennie. a dbForge Studio for MySQL olyan makulátlan áttelepítési eszközökkel büszkélkedhet, amelyek jelentősen megkönnyítik a folyamatot. A Studio lehetővé teszi, hogy az adatbázis-átvitel könnyen konfigurálható, menthető, módosítható, automatizált és ütemezett legyen.
+Napjainkban egyre több vállalkozás költöztet adatbázisokat a Azure Database for MySQL, mivel ez az adatbázis-szolgáltatás könnyen beállítható, kezelhető és skálázható. Ennek a migrálásnak nem kell elkesésnek lennie. A dbForge Studio for MySQL nem jól megfelelő migrálási eszközöket kínál, amelyek jelentősen megkönnyítik a folyamatot. A Studio lehetővé teszi az adatbázis-átvitel egyszerű konfigurálását, mentését, szerkesztését, automatizálását és ütemezését.
 
 ## <a name="next-steps"></a>Következő lépések
 - [A MySQL áttekintése](overview.md)

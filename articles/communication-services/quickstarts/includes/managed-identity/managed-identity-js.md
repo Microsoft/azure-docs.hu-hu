@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307460"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512072"
 ---
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
+Nyissa meg a terminált vagy a parancsablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg.
 
 ```console
 mkdir managed-identity-quickstart && cd managed-identity-quickstart
 ```
 
-A futtatásával `npm init -y` **package.js** hozhat létre az alapértelmezett beállításokkal rendelkező fájlon.
+Futtassa `npm init -y` a parancsot, **package.jsalapértelmezett beállításokkal hozzon** létre egy fájlt.
 
 ```console
 npm init -y
@@ -33,11 +33,11 @@ npm install @azure/identity
 
 ### <a name="create-a-new-file"></a>Új fájl létrehozása
 
-Nyisson meg egy új fájlt egy szövegszerkesztőben, és mentse a `index.js` fájlt a fájlba.
+Nyisson meg egy új fájlt egy szövegszerkesztővel, és mentse a következőként: . Ebben a fájlban fogjuk elhelyezni a `index.js` kódot.
 
 ### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `require` irányelveket a tetejéhez az `index.js` Azure Identity és az Azure Storage SDK-k használatához.
+Adja hozzá a következő irányelveket a lap tetejéhez az Azure Identity és az `require` `index.js` Azure Storage SDK-k használata érdekében.
 
 ```JavaScript
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -46,15 +46,15 @@ const { SmsClient, SmsSendRequest } = require("@azure/communication-sms");
 ```
 ## <a name="create-a-defaultazurecredential"></a>DefaultAzureCredential létrehozása
 
-Ennek a rövid útmutatónak a [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) fogjuk használni. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez. Ahogy az egyes műveletekhez szükség van, hozzuk létre a fájl felső részén `index.js` . 
+Ebben a rövid útmutatóban a [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) értéket fogjuk használni. Ez a hitelesítő adat éles és fejlesztési környezetekhez megfelelő. Mivel minden művelethez szükség van rá, hozzunk létre a fájl `index.js` tetején. 
 
 ```JavaScript
     const credential = new DefaultAzureCredential();
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Identitás létrehozása és a jogkivonat kiadása felügyelt identitásokkal
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Identitás létrehozása és jogkivonat kiállítása felügyelt identitásokkal
 
-Ezután egy olyan függvényt írunk, amely létrehoz egy új identitást, és kiállít egy jogkivonatot ehhez az identitáshoz, ezt később a felügyelt identitás beállításának tesztelésére fogjuk használni.
+A következő lépés egy olyan függvény megírása, amely létrehoz egy új identitást, és kiállít egy jogkivonatot ehhez az identitáshoz. Később ezt fogjuk használni a felügyelt identitás beállításának tesztelésére.
 
 ```JavaScript
 async function createIdentityAndIssueToken(resourceEndpoint) {
@@ -65,7 +65,7 @@ async function createIdentityAndIssueToken(resourceEndpoint) {
 
 ## <a name="send-an-sms-with-managed-identity"></a>SMS küldése felügyelt identitással
 
-Most pedig olyan függvényt írhat, amely felügyelt identitásokat használ SMS-küldéshez:
+Most írjunk egy függvényt, amely felügyelt identitások használatával küld SMS-t:
 
 ```JavaScript
 async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
@@ -82,9 +82,9 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>A Main metódus írása
+## <a name="write-the-main-function"></a>A fő függvény megírása
 
-A függvények létrehozásával most már írhatunk egy fő függvényt, amely meghívja őket, és bemutatjuk a felügyelt identitások használatát:
+A függvények létrehozása után most már megírhat egy fő függvényt, amely meg tudja hívni őket, és bemutatja a felügyelt identitások használatát:
 ```JavaScript
 async function main() {
     // You can find your endpoint and access key from your resource in the Azure portal
@@ -156,7 +156,7 @@ main();
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Minden készen áll, ha a projekt könyvtára alapján futtatja a fájlt `node index.js` . Ha minden jól járt, az alábbihoz hasonlónak kell megjelennie.
+Ha minden elkészült, futtathatja a fájlt a projekt könyvtárában a `node index.js` beírásával. Ha minden jól ment, az alábbihoz hasonlót kell látnia.
 
 ```Bash
     $ node index.js

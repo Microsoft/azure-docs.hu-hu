@@ -1,31 +1,31 @@
 ---
-ms.openlocfilehash: 55876d85e72555f51ce47b9bd77a961a194f4e4a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307457"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510496"
 ---
-## <a name="additional-prerequisites-for-java"></a>További előfeltételek a Javához
-A Javához a következőkre is szüksége lesz:
-- A [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8-as vagy újabb verziója.
+## <a name="additional-prerequisites-for-java"></a>A Javára vonatkozó további előfeltételek
+Javához a következőre is szüksége lesz:
+- [A Java fejlesztői készlet (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8-as vagy újabb verziója.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-java-application"></a>Új Java-alkalmazás létrehozása
 
-Nyissa meg a terminál vagy a parancs ablakát. Navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Java-alkalmazást. Futtassa az alábbi parancsot a Java-projekt létrehozásához a Maven-archetípus-Gyorsindítás sablonból.
+Nyissa meg a terminált vagy a parancsablakot. Lépjen arra a könyvtárra, ahol létre szeretné hozni a Java-alkalmazást. Az alábbi parancs futtatásával hozza létre a Java-projektet a maven-archetype-quickstart sablonból.
 
 ```console
 mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=communication-quickstart -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
-Megfigyelheti, hogy a "létrehozás" feladat létrehozta a könyvtárat ugyanazzal a névvel `artifactId` . Ebben a könyvtárban a src/Main/Java könyvtár tartalmazza a projekt forráskódját, a `src/test/java directory` tartalmazza a teszt forrását, a `pom.xml` fájl pedig a projekt projekt-objektummodell-modellje, vagy Pom.
+Figyelje meg, hogy a "létrehozási" feladat létrehozott egy könyvtárat a `artifactId` névvel. Ebben a könyvtárban az src/main/java könyvtár tartalmazza a projekt forráskódját, a tartalmazza a tesztforrást, a fájl pedig a projekt `src/test/java directory` `pom.xml` projektobjektum-modelljét vagy POM-jét.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Nyissa meg a **pom.xml** fájlt a szövegszerkesztőben. Adja hozzá a függőségek csoportjához a következő függőségi elemet.
+Nyissa meg **pom.xml** fájlt a szövegszerkesztőben. Adja hozzá a következő függőségi elemet a függőségek csoportjához.
 
 ```xml
 <dependency>
@@ -47,7 +47,7 @@ Nyissa meg a **pom.xml** fájlt a szövegszerkesztőben. Adja hozzá a függős�
 
 ### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `import` irányelveket a kódhoz az Azure-identitás és az Azure kommunikációs SDK-k használatához.
+Adja hozzá a következő `import` irányelveket a kódhoz az Azure Identity és az Azure Communication SDK-k használata érdekében.
 
 ```java
 import com.azure.communication.common.*;
@@ -63,15 +63,15 @@ import java.util.*;
 
 ## <a name="create-a-defaultazurecredential"></a>DefaultAzureCredential létrehozása
 
-Ennek a rövid útmutatónak a [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential) fogjuk használni. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez. Ahogy az egyes műveletekhez szükséges, hozzuk létre az `App.java` osztályban. Adja hozzá a következőt az osztály tetejéhez `App.java` .
+Ebben a rövid útmutatóban a [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential) értéket fogjuk használni. Ez a hitelesítő adat éles és fejlesztési környezetekhez megfelelő. Mivel minden művelethez szükség van rá, hozza létre a `App.java` osztályon belül. Adja hozzá a következőt a osztály `App.java` tetejéhez.
 
 ```java
 private TokenCredential credential = new DefaultAzureCredentialBuilder().build();
 ```
 
-## <a name="issue-a-token-with-managed-identities"></a>Jogkivonat kiadása felügyelt identitásokkal
+## <a name="issue-a-token-with-managed-identities"></a>Jogkivonat kiállítása felügyelt identitásokkal
 
-Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiküldéséhez. Ezt a kódot később a következő időpontban fogjuk hívni:
+Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiállításához. Ezt a kódot később fogjuk hívni;
 
 ```java
     public AccessToken createIdentityAndGetTokenAsync(String endpoint) {
@@ -87,7 +87,7 @@ Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használ
 
 ## <a name="send-an-sms-with-managed-identities"></a>SMS küldése felügyelt identitásokkal
 
-A felügyelt identitások használatának egy másik példája, hogy ezt a kódot adja hozzá, amely ugyanazt a hitelesítő adatot használja SMS-küldéshez:
+A felügyelt identitások használatának egy másik példájaként hozzáadjuk ezt a kódot, amely ugyanazt a hitelesítő adatokat használja AZ SMS-ek elküldését:
 
 ```java
      public SmsSendResult sendSms(String endpoint, String from, String to, String message) {
@@ -100,9 +100,9 @@ A felügyelt identitások használatának egy másik példája, hogy ezt a kódo
           return smsClient.send(from, to, message);
      }
 ```
-## <a name="write-the-main-method"></a>A Main metódus írása
+## <a name="write-the-main-method"></a>A Main metódus megírása
 
-`App.java`Ha már van egy fő metódusa, adjunk hozzá egy kódot, amely a korábban létrehozott kódot hívja fel a felügyelt identitások használatának bemutatására:
+A már rendelkezik Egy Main metódussal. Adjunk hozzá néhány kódot, amely a korábban létrehozott kódot hívja meg a felügyelt identitások használatának `App.java` szemlélteti:
 ```java
     public static void main(String[] args) {
           App instance = new App();
@@ -122,7 +122,7 @@ A felügyelt identitások használatának egy másik példája, hogy ezt a kódo
     }
 ```
 
-Az utolsónak `App.java` így kell kinéznie:
+A `App.java` végeredménynek így kell kinéznie:
 
 ```java
 package com.communication.quickstart;
@@ -182,19 +182,19 @@ public class App
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Navigáljon a *pom.xml* fájlt tartalmazó könyvtárra, és fordítsa le a projektet a következő `mvn` parancs használatával.
+Keresse meg apom.xml *fájlt* tartalmazó könyvtárat, és fordítsa le a projektet a következő `mvn` paranccsal.
 
 ```console
 mvn compile
 ```
 
-Ezután hozza létre a csomagot.
+Ezután készítse el a csomagot.
 
 ```console
 mvn package
 ```
 
-Futtassa az alábbi `mvn` parancsot az alkalmazás végrehajtásához.
+Futtassa a `mvn` következő parancsot az alkalmazás végrehajtásához.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.communication.quickstart.App" -Dexec.cleanupDaemonThreads=false

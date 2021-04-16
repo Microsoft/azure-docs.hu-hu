@@ -1,27 +1,27 @@
 ---
-title: SSH-hozzáférés Linux-tárolók számára
-description: Megnyithat egy SSH-munkamenetet egy Linux-tárolóban Azure App Service. Az egyéni Linux-tárolók az egyéni rendszerkép bizonyos módosításaival támogatottak.
-keywords: Azure app Service, Web App, Linux, OSS
+title: SSH-hozzáférés Linux-tárolókhoz
+description: Az SSH-munkamenetet megnyithatja egy Linux-tárolóra a Azure App Service. Az egyéni Linux-tárolók az egyéni rendszerkép néhány módosításával támogatottak.
+keywords: azure app service, webalkalmazás, linux, oss
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8e9dd76b60d05b9fa5e3a4aaf7ccc6663f4a969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 5a4572c1292f691f1883a720d07c3f0130f1c8f3
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709036"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480290"
 ---
-# <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Nyisson meg egy SSH-munkamenetet egy Linux-tárolóban Azure App Service
+# <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Nyisson meg egy SSH-munkamenetet egy Linux-tárolóhoz a Azure App Service
 
-A [Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) általában a felügyeleti parancsok parancssori terminálról történő távoli végrehajtásához használatos. A Linuxon futó App Service SSH-támogatást biztosít az alkalmazás-tárolóban. 
+[A Secure Shellt (SSH)](https://wikipedia.org/wiki/Secure_Shell) gyakran használják rendszergazdai parancsok távoli, parancssori terminálból történő végrehajtására. App Service on Linux SSH-támogatást biztosít az alkalmazástárolóhoz. 
 
 ![Linux App Service SSH](./media/configure-linux-open-ssh-session/app-service-linux-ssh.png)
 
-A tárolóhoz közvetlenül a helyi fejlesztési gépről is csatlakozhat SSH és SFTP használatával.
+A tárolóhoz közvetlenül a helyi fejlesztői gépről is csatlakozhat SSH és SFTP használatával.
 
 ## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
 
@@ -29,35 +29,35 @@ A tárolóhoz közvetlenül a helyi fejlesztési gépről is csatlakozhat SSH é
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>SSH-támogatás használata egyéni Docker-rendszerképekkel
 
-Lásd: [az SSH konfigurálása egyéni tárolóban](configure-custom-container.md#enable-ssh).
+Lásd: [SSH konfigurálása egyéni tárolóban.](configure-custom-container.md#enable-ssh)
 
-## <a name="open-ssh-session-from-remote-shell"></a>SSH-munkamenet megnyitása a távoli rendszerhéjból
+## <a name="open-ssh-session-from-remote-shell"></a>SSH-munkamenet megnyitása távoli rendszerhéjból
 
 > [!NOTE]
 > Ez a funkció jelenleg előzetes verzióban érhető el.
 >
 
-A TCP-bújtatás használatával hálózati kapcsolatot hozhat létre a fejlesztői gép és Web App for Containers között egy hitelesített WebSocket-kapcsolaton keresztül. Lehetővé teszi, hogy egy SSH-munkamenetet az Ön által választott ügyféltől App Service futtatott tárolóval nyisson meg.
+A TCP-alagút használatával létrehozhat egy hálózati kapcsolatot a fejlesztői gép és a Web App for Containers webSocket-kapcsolaton keresztül. Lehetővé teszi egy SSH-munkamenet megnyitását a tárolóval, amely App Service a választott ügyféltől.
 
-Első lépésként telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli)-t. Ha szeretné megtekinteni, hogyan működik az Azure CLI telepítése nélkül, nyissa meg [Azure Cloud Shell](../cloud-shell/overview.md). 
+Első lépésekként telepítenie kell az [Azure CLI-t.](/cli/azure/install-azure-cli) Az Azure CLI telepítése nélkül is láthatja, hogyan működik, ha [megnyitja a Azure Cloud Shell.](../cloud-shell/overview.md) 
 
-Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) paranccsal. Adja _\<subscription-id>_ meg _\<group-name>_ és \_ \<app-name> _ az alkalmazáshoz.
+Nyisson meg egy távoli kapcsolatot az alkalmazással [az az webapp remote-connection create paranccsal.](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) Az _\<subscription-id>_ _\<group-name>_ alkalmazáshoz adja meg a , a és a _ \_ \<app-name> értéket.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&` a parancs végén a Cloud Shell használata esetén csak kényelmi célokat szolgál. A háttérben futtatja a folyamatot, így a következő parancsot ugyanazon a rendszerhéjon futtathatja.
+> `&` A parancs végén csak az egyszerűség kedvéért van szükség, ha a parancsot Cloud Shell. A háttérben futtatja a folyamatot, így a következő parancsot ugyanabban a rendszerhéjban futtathatja.
 
 > [!NOTE]
-> Ha a parancs végrehajtása sikertelen, győződjön meg arról, hogy a [távoli hibakeresés](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0) *le van tiltva* a következő paranccsal:
+> Ha ez a parancs sikertelen, a  [következő](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0) paranccsal győződjön meg arról, hogy a távoli hibakeresés le van tiltva:
 >
 > ```azurecli-interactive
 > az webapp config set --resource-group <resource-group-name> -n <app-name> --remote-debugging-enabled=false
 > ```
 
-A parancs kimenete megadja az SSH-munkamenet megnyitásához szükséges információkat.
+A parancskimenet megadja az SSH-munkamenet megnyitásához szükséges információkat.
 
 ```output
 Port 21382 is open
@@ -65,20 +65,20 @@ SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
 ```
 
-Nyisson meg egy SSH-munkamenetet az Ön által választott ügyféllel a helyi port használatával. Az alábbi példa az alapértelmezett [SSH](https://ss64.com/bash/ssh.html) -parancsot használja:
+Nyisson meg egy SSH-munkamenetet a tárolóval a választott ügyféllel a helyi port használatával. Az alábbi példa az alapértelmezett [ssh-parancsot](https://ss64.com/bash/ssh.html) használja:
 
 ```bash
 ssh root@127.0.0.1 -p <port>
 ```
 
-Ha a rendszer kéri, írja be a következőt: `yes` a csatlakozás folytatásához. Ezt követően a rendszer kéri a jelszót. Használja `Docker!` , amely korábban volt látható.
+Amikor a rendszer kéri, írja be a `yes` parancsot a csatlakozás folytatásához. Ezután a rendszer kérni fogja a jelszót. Használja `Docker!` a korábban bemutatott et.
 
 <pre>
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 </pre>
 
-A hitelesítés után látnia kell a munkamenet-üdvözlőképernyő képernyőt.
+A hitelesítés után megjelenik a munkamenet üdvözlőképernyője.
 
 <pre>
   _____
@@ -92,9 +92,9 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 </pre>
 
-Ezzel csatlakozott az összekötőhöz.  
+Most már csatlakozott az összekötőhöz.  
 
-Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamatát meg kell tudnia tekinteni a folyamat listában. Az alábbi példában szereplő kimenetben ez a következő: `PID 263` .
+Próbálja meg a felső [parancsot](https://ss64.com/bash/top.html) futtatni. A folyamatlistában látnia kell az alkalmazás folyamatát. Az alábbi példakimenetben az látható, amely a következővel `PID 263` rendelkezik: .
 
 <pre>
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -120,11 +120,11 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kérdéseket és problémákat tehet közzé az [Azure fórumán](/answers/topics/azure-webapps.html).
+Kérdéseit és aggodalmait az [Azure fórumán is közzétenheti.](/answers/topics/azure-webapps.html)
 
-További információ a Web App for Containersről:
+További információ a Web App for Containers:
 
-* [Node.js-alkalmazások távoli hibakeresése Azure App Service a VS Code-ból](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
-* [Gyors útmutató: egyéni tároló futtatása App Serviceon](quickstart-custom-container.md?pivots=container-linux)
+* [A VS Code-on Node.js alkalmazások távoli hibakeresésének Azure App Service bevezetése](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Rövid útmutató: Egyéni tároló futtatása a App Service](quickstart-custom-container.md?pivots=container-linux)
 * [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)
 * [Azure App Service Web App for Containers – gyakori kérdések](faq-app-service-linux.md)

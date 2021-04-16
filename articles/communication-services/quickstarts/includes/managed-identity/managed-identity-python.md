@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307479"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512307"
 ---
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
+Nyissa meg a terminált vagy a parancsablakot, hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg.
 
 ```console
 mkdir managed-identity-quickstart && cd managed-identity-quickstart
@@ -25,11 +25,11 @@ pip install azure-communication-sms
 ```
 
 ### <a name="create-a-new-file"></a>Új fájl létrehozása
-Nyisson meg egy új fájlt a létrehozott mappában, és mentse a `managed-identity.py` fájlt a fájlon belül.
+Nyisson meg és mentsen egy nevű új fájlt a létrehozott mappában. Ebben a fájlban fogjuk elhelyezni a `managed-identity.py` kódot.
 
 ### <a name="use-the-sdk-packages"></a>Az SDK-csomagok használata
 
-Adja hozzá a következő `import` utasításokat a fájl elejéhez a telepített SDK-k használatához.
+Adja hozzá a következő utasításokat a fájl tetejéhez a telepített `import` SDK-k használatára.
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -39,15 +39,15 @@ from azure.communication.sms import SmsClient
 
 ### <a name="create-a-defaultazurecredential"></a>DefaultAzureCredential létrehozása
 
-A [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential)fogjuk használni. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez. Ahogy ezt a rövid útmutatóban fogjuk használni, a fájl tetején hozunk létre.
+A [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential)értéket fogjuk használni. Ez a hitelesítő adat éles és fejlesztési környezetekhez megfelelő. Mivel ebben a rövid útmutatóban ezt fogjuk használni, a fájl tetején fogjuk létrehozni.
 
 ```python
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Hozzon létre egy identitást, és adja ki a tokent a felügyelt identitásokkal.
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Identitás létrehozása és jogkivonat kiállítása felügyelt identitásokkal
 
-Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiküldéséhez. Ezt a kódot később a következő időpontban fogjuk hívni:
+Most hozzáadunk egy kódot, amely a létrehozott hitelesítő adatokat használja a VoIP hozzáférési jogkivonat kiállításához. Ezt a kódot később fogjuk hívni:
 
 ```python
 def create_identity_and_get_token(resource_endpoint):
@@ -60,7 +60,7 @@ def create_identity_and_get_token(resource_endpoint):
 ```
 
 ### <a name="send-an-sms-with-managed-identities"></a>SMS küldése felügyelt identitásokkal
-A felügyelt identitások használatának egy másik példája, hogy ezt a kódot adja hozzá, amely ugyanazt a hitelesítő adatot használja SMS-küldéshez:
+A felügyelt identitások használatának egy másik példájaként hozzáadjuk ezt a kódot, amely ugyanazt a hitelesítő adatokat használja AZ SMS-ek elküldését:
 
 ```python
 def send_sms(resource_endpoint, from_phone_number, to_phone_number, message_content):
@@ -74,9 +74,9 @@ def send_sms(resource_endpoint, from_phone_number, to_phone_number, message_cont
      )
 ```
 
-## <a name="write-our-main-code"></a>A fő kód írása
+## <a name="write-our-main-code"></a>A fő kód megírása
 
-A függvények létrehozásával most már megírhatjuk a fő kódot, amely meghívja az előzőekben megírt függvényeket.
+A létrehozott függvények után megírhatja a fő kódot, amely az előzőben megírt függvényeket fogja hívni.
 
 ```python
 # You can find your endpoint and access key from your resource in the Azure portal
@@ -95,7 +95,7 @@ print(f'SMS ID: {sms_result[0].message_id}');
 print(f'Send Result Successful: {sms_result[0].successful}');
 ```
 
-A végső `managed-identity.py` fájlnak a következőhöz hasonlóan kell kinéznie:
+A végső `managed-identity.py` fájlnak a következő képhez hasonlónak kell lennie:
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -140,7 +140,7 @@ print(f'Send Result Successful: {sms_result[0].successful}');
 ```
 ## <a name="run-the-program"></a>A program futtatása
 
-Minden készen áll, ha a projekt könyvtára alapján futtatja a fájlt `python managed-identity.py` . Ha minden jól járt, az alábbihoz hasonlónak kell megjelennie.
+Ha minden elkészült, futtathatja a fájlt a projekt könyvtárában a `python managed-identity.py` beírásával. Ha minden jól ment, az alábbihoz hasonlót kell látnia.
 
 ```Bash
     $ python managed-identity.py

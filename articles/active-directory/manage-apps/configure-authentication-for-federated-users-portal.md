@@ -1,122 +1,119 @@
 ---
-title: Bejelentkezés automatikus gyorsításának beállítása a Kezdőlap tartományának felderítésével
-description: Ismerje meg, hogyan konfigurálhatja a Kezdőlap tartomány-felderítési házirendet az összevont felhasználók Azure Active Directory hitelesítéséhez, beleértve az automatikus gyorsítást és a tartományi tippeket.
+title: Bejelentkezés automatikus gyorsításának konfigurálása a kezdőlap-felderítéssel
+description: Ismerje meg, hogyan konfigurálhatja a kezdőlap-felderítési szabályzatot Azure Active Directory összevont felhasználók hitelesítéséhez, beleértve az automatikus gyorsítást és a tartománymutatókat.
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92dea75855ab1e5486b39d072692e72b26c4da1c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607109"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377768"
 ---
-# <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
+# <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az Azure Active Directory bejelentkezési viselkedésének konfigurálása egy alkalmazáshoz a Home Realm Discovery szabályzat használatával
 
-Ez a cikk bemutatja, hogyan konfigurálhatja Azure Active Directory hitelesítési viselkedését az összevont felhasználók számára a Home Realm Discovery (HRD) házirend használatával.  Az automatikus gyorsítás használatával kihagyja a Felhasználónév-bejegyzés képernyőt, és automatikusan továbbítja a felhasználókat az összevont bejelentkezési végpontokhoz.  A Microsoft nem javasolja többé az automatikus gyorsítás konfigurálását, mivel ez megakadályozhatja az olyan erősebb hitelesítési módszerek használatát, mint például a és az együttműködés meggátolása.
+Ez a cikk bevezető az összevont Azure Active Directory való konfigurálásához a Home Realm Discovery (HRD) szabályzattal.  Az automatikus gyorsítás használatának a lépései kihagyják a felhasználónevek beviteli képernyőjét, és automatikusan továbbítják a felhasználókat az összevont bejelentkezési végpontokra.  A Microsoft már nem javasolja az automatikus gyorsítás konfigurálását, mivel megakadályozhatja erősebb hitelesítési módszerek, például a FIDO használatát, és akadályozhatja az együttműködést.
 
 ## <a name="home-realm-discovery"></a>Kezdőtartomány felderítése
 
-A Home Realm Discovery (HRD) az a folyamat, amely lehetővé teszi, hogy a Azure Active Directory (Azure AD) meghatározza, hogy a felhasználó mely identitás-szolgáltatót ("identitásszolgáltató") kell hitelesítenie a bejelentkezési időpontban.  Amikor egy felhasználó bejelentkezik egy Azure AD-bérlőbe egy erőforrás eléréséhez vagy az Azure AD Common bejelentkezési oldalához, a Felhasználónév (UPN) nevet adja meg. Az Azure AD használatával felderítheti, hogy a felhasználónak hol kell bejelentkeznie.
+A kezdőlapok felderítése (HOME Realm Discovery, HRD) az a folyamat, amely lehetővé teszi az Azure Active Directory (Azure AD) számára annak megállapítását, hogy a felhasználónak melyik identitásszolgáltatóval (IdP) kell hitelesítést végeznie a bejelentkezéskor.  Amikor egy felhasználó bejelentkezik egy Azure AD-bérlőbe egy erőforrás eléréséhez, vagy az Azure AD gyakori bejelentkezési oldalára, begépel egy felhasználónevet (UPN-t). Az Azure AD ezzel deríti fel, hogy a felhasználónak hol kell bejelentkeznie.
 
-A felhasználó az alábbi hitelesítő szolgáltatók egyikére kerül sor a hitelesítéshez:
+A felhasználó a következő identitásszolgáltatók egyikéhez lesz áthozva a hitelesítéshez:
 
-- A felhasználó otthoni bérlője (lehet ugyanaz a bérlő, mint a felhasználó által elérni próbált erőforrás).
+- A felhasználó otthoni bérlője (lehet ugyanaz a bérlő, mint a felhasználó által elérni kívánt erőforrás).
 
-- Microsoft-fiók lehetőséget.  A felhasználó az erőforrás-bérlő egyik vendége, amely egy felhasználói fiókot használ a hitelesítéshez.
+- Microsoft-fiók lehetőséget.  A felhasználó az erőforrás-bérlő egy vendége, amely felhasználói fiókot használ a hitelesítéshez.
 
-- Helyszíni identitás-szolgáltató, például Active Directory összevonási szolgáltatások (AD FS) (AD FS).
+- Helyszíni identitásszolgáltató, például Active Directory összevonási szolgáltatások (AD FS) (AD FS).
 
-- Egy másik, az Azure AD-Bérlővel összevont identitás-szolgáltató.
+- Egy másik, az Azure AD-bérlővel összevont identitásszolgáltató.
 
 ## <a name="auto-acceleration"></a>Automatikus gyorsítás
 
-Egyes szervezetek úgy konfigurálja a Azure Active Directory-bérlő tartományait, hogy összevonása egy másik identitásszolgáltató, például AD FS a felhasználói hitelesítéshez.  
+Egyes szervezetek a saját bérlőjükben Azure Active Directory konfigurálják a tartományokat, hogy más internetszolgáltatóval, például AD FS hitelesítéshez használjanak.  
 
-Amikor egy felhasználó bejelentkezik egy alkalmazásba, először egy Azure AD-bejelentkezési oldal jelenik meg. Miután beírtak az UPN-t, ha egy összevont tartományban vannak, akkor a rendszer a tartományt kiszolgáló identitásszolgáltató bejelentkezési lapjára kerül. Bizonyos esetekben előfordulhat, hogy a rendszergazdák a bejelentkezési oldalra irányítják a felhasználókat, amikor egy adott alkalmazásba jelentkeznek be.
+Amikor egy felhasználó bejelentkezik egy alkalmazásba, először jelennek meg egy Azure AD bejelentkezési oldal. Miután begépelték az UPN-jüket, összevont tartományban vannak, a tartományt kiszolgáló internetszolgáltató bejelentkezési oldalára lépnek. Bizonyos körülmények között előfordulhat, hogy a rendszergazdák a bejelentkezési oldalra szeretnék irányítani a felhasználókat, amikor adott alkalmazásokba jelentkeznek be.
 
-Így a felhasználók kihagyhatják a kezdeti Azure Active Directory lapot. Ezt a folyamatot "bejelentkezési automatikus gyorsításnak" nevezzük.
+Ennek eredményeképpen a felhasználók kihagyhatjak a Azure Active Directory lapot. Ezt a folyamatot "bejelentkezés automatikus gyorsításának" nevezzük.
 
-Azokban az esetekben, amikor a bérlő egy másik identitásszolgáltató összevonása a bejelentkezéshez, az automatikus gyorsítás egyszerűbbé teszi a felhasználói bejelentkezést.  Az automatikus gyorsítást az egyes alkalmazásokhoz is konfigurálhatja.
-
->[!NOTE]
->Ha automatikus gyorsításra konfigurál egy alkalmazást, a felhasználók nem használhatják a felügyelt hitelesítő adatokat (például a-t), és a vendég felhasználó nem tud bejelentkezni. Ha a felhasználó egyenesen egy összevont identitásszolgáltató végez hitelesítésre, nincs lehetőség arra, hogy visszakerüljön a Azure Active Directory bejelentkezési oldalára. A vendég felhasználókat, akiket esetleg más bérlők vagy külső identitásszolgáltató kell átirányítani, például egy Microsoft-fiók, nem tud bejelentkezni az alkalmazásba, mert kihagyják a Kezdőlap tartomány felderítése lépést.  
-
-Az automatikus gyorsítást három módon vezérelheti egy összevont identitásszolgáltató:
-
-- Egy alkalmazáshoz tartozó hitelesítési kérelmekre vonatkozó [tartományi emlékeztető](#domain-hints) használata.
-- Konfiguráljon egy otthoni tartomány-felderítési házirendet az [automatikus gyorsítás kényszerítéséhez](#home-realm-discovery-policy-for-auto-acceleration).
-- Konfiguráljon egy otthoni tartomány-felderítési házirendet, hogy [figyelmen kívül hagyja](prevent-domain-hints-with-home-realm-discovery.md) az adott alkalmazásokból vagy bizonyos tartományokra vonatkozó tartományi javaslatokat.
-
-### <a name="domain-hints"></a>Tartományi útmutatók
-
-A tartományi útmutatók olyan irányelvek, amelyek egy alkalmazás hitelesítési kérelmében szerepelnek. Felhasználhatják a felhasználót az összevont identitásszolgáltató bejelentkezési oldalára. Vagy egy több-bérlős alkalmazás is felhasználhatja, hogy a felhasználó egyenesen a márkás Azure AD bejelentkezési oldalára felgyorsítsa a bérlőt.  
-
-A "largeapp.com" alkalmazás például lehetővé teheti ügyfelei számára, hogy a "contoso.largeapp.com" egyéni URL-címen férjenek hozzá az alkalmazáshoz. Az alkalmazás tartalmazhat olyan tartományi emlékeztetőt is, amely contoso.com a hitelesítési kérelemben.
-
-A tartomány-emlékeztető szintaxisa a használt protokolltól függ, és általában az alkalmazásban van konfigurálva.
-
-**WS-Federation**: whr = contoso. com a lekérdezési karakterláncban.
-
-**SAML**: vagy egy olyan SAML hitelesítési kérelem, amely tartalmaz egy tartományi emlékeztetőt vagy egy whr = contoso. com lekérdezési karakterláncot.
-
-**Open ID-kapcsolat**: A lekérdezési karakterlánc domain_hint = contoso. com.
-
-Alapértelmezés szerint az Azure AD megkísérli átirányítani a bejelentkezést a tartományhoz konfigurált identitásszolgáltató, ha a következők közül **mindkettő** teljesül:
-
-- Az **alkalmazás hitelesítési** kérelme egy tartományi emlékeztetőt tartalmaz.
-- A bérlő összevonta az adott tartománnyal.
-
-Ha a tartományi hivatkozás nem egy ellenőrzött összevont tartományra hivatkozik, a rendszer figyelmen kívül hagyja.
-
-Az Azure Active Directory által támogatott tartományi útmutatók használatával kapcsolatos további információkért tekintse meg a [Enterprise Mobility + Security blogot](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/).
+Olyan esetekben, amikor a bérlő egy másik, bejelentkezéshez való idP-hez van összefésülve, az automatikus gyorsítás egyszerűbbé teszi a felhasználói bejelentkezést.  Az egyes alkalmazásokhoz konfigurálhatja az automatikus gyorsítást.
 
 >[!NOTE]
->Ha egy tartományi emlékeztetőt egy hitelesítési kérelem tartalmaz, és [figyelembe kell venni, a](#home-realm-discovery-policy-to-prevent-auto-acceleration)jelenléte felülbírálja az alkalmazáshoz beállított automatikus gyorsítást a HRD-házirendben.
+>Ha egy alkalmazást automatikus gyorsításra konfigurál, a felhasználók nem használhatnak felügyelt hitelesítő adatokat (például FIDO), és a vendégfelhasználók nem tudnak bejelentkezni. Ha egy felhasználót közvetlenül egy összevont internetszolgáltatóhoz használ a hitelesítéshez, nincs mód arra, hogy visszajöjjön a Azure Active Directory bejelentkezési oldalára. Azok a vendégfelhasználók, akiknek más bérlőkhöz vagy külső, például Microsoft-fiók-hoz kell irányítaniuk, nem tudnak bejelentkezni az alkalmazásba, mert kihagyják a Kezdőlap-felderítés lépést.  
 
-### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Kezdőlap tartomány-felderítési szabályzata automatikus gyorsításhoz
+Az automatikus gyorsítás az összevont idP-be háromféleképpen szabályozható:
 
-Egyes alkalmazások nem biztosítják az általuk kibocsátott hitelesítési kérelem konfigurálásának módját. Ezekben az esetekben nem lehetséges a tartományi útmutatók használata az automatikus gyorsítás szabályozására. Az automatikus gyorsítás a Kezdőlap tartomány-felderítési házirenddel konfigurálható úgy, hogy ugyanazt a viselkedést tudja elérni.  
+- Használjon tartományi [tippet](#domain-hints) az alkalmazások hitelesítési kéréséhez.
+- Konfigurálja a Kezdőlapfelderítési szabályzatot [az automatikus gyorsítás kényszerítésében.](#home-realm-discovery-policy-for-auto-acceleration)
+- Konfigurálja a Kezdőlapfelderítési szabályzatot úgy, hogy figyelmen kívül hagyja az adott alkalmazások vagy bizonyos tartományok tartománymutatóit. [](prevent-domain-hints-with-home-realm-discovery.md)
 
-### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>A Kezdőlap tartományának felderítési házirendje az automatikus gyorsítás elkerüléséhez
+### <a name="domain-hints"></a>Tartománymutatók
 
-Bizonyos Microsoft-és SaaS-alkalmazások automatikusan tartalmazzák a domain_hints (például egy beérkező `https://outlook.com/contoso.com` bejelentkezési kérést, `&domain_hint=contoso.com` amely hozzáfűzést tartalmaz), ami megzavarhatja a felügyelt hitelesítő adatok, például a rendszerbe való bevezetését.  A Kezdőlap tartomány- [felderítési házirend](/graph/api/resources/homeRealmDiscoveryPolicy) használatával figyelmen kívül hagyhatja bizonyos alkalmazások vagy bizonyos tartományok tartományi emlékeztetőit a felügyelt hitelesítő adatok bevezetésének során.  
+A tartománymutatók olyan direktívák, amelyek egy alkalmazástól származó hitelesítési kérelemben szerepelnek. Ezek segítségével felgyorsítható a felhasználó összevont idP bejelentkezési oldala. Vagy egy több-bérlős alkalmazás is használhatja őket, hogy felgyorsítsa a felhasználót közvetlenül a saját bérlője védjegyes Azure AD bejelentkezési oldalára.  
 
-## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Az összevont felhasználók közvetlen ROPC-hitelesítésének engedélyezése örökölt alkalmazásokhoz
+A "largeapp.com" alkalmazás például lehetővé teheti, hogy az ügyfeleik egy egyéni URL-címen férnek hozzá az contoso.largeapp.com. Az alkalmazás tartalmazhat tartománymutatót is, contoso.com a hitelesítési kérelemben.
 
-Az ajánlott eljárás az, ha az alkalmazások HRE-kódtárakat és interaktív bejelentkezést használnak a felhasználók hitelesítéséhez. A kódtárak gondoskodnak az összevont felhasználói folyamatokról.  Néha örökölt alkalmazások, különösen azok, amelyek ROPC-támogatást használnak, közvetlenül az Azure AD-be küldenek felhasználónevet és jelszót, és nem írták az összevonás megismerésére. Nem végeznek otthoni tartományi felderítést, és nem működnek együtt a megfelelő összevont végponttal a felhasználók hitelesítéséhez. Ha úgy dönt, hogy lehetővé teszi, hogy a HRD szabályzattal engedélyezze a Felhasználónév/jelszó hitelesítő adatait a ROPC használatával, hogy a hitelesítés közvetlenül a Azure Active Directory. A jelszó-kivonatolási szinkronizálást engedélyezni kell.
+A tartománymutató szintaxisa a használt protokolltól függően változik, és általában az alkalmazásban van konfigurálva.
+
+**WS-Federation:** whr=contoso.com a lekérdezési sztringben.
+
+**SAML:** Egy tartománymutatót tartalmazó SAML-hitelesítési kérelem vagy egy whr=contoso.com lekérdezési sztring.
+
+**Open ID Connect:** A lekérdezési sztring domain_hint=contoso.com.
+
+Alapértelmezés szerint az Azure AD megkísérli átirányítani a bejelentkezést a tartományhoz konfigurált internetszolgáltatóhoz, ha az alábbiak közül mindkettő igaz: 
+
+- Az alkalmazástól származó hitelesítési kérelem tartománymutatót **tartalmaz,** és
+- A bérlő ezzel a tartománnyal van összecsúsva.
+
+Ha a tartománymutató nem hivatkozik egy ellenőrzött összevont tartományra, a rendszer figyelmen kívül hagyja.
+
+Az automatikus gyorsításnak a Azure Active Directory által támogatott tartománymutatók használatával való automatikus gyorsításával kapcsolatban lásd a [Enterprise Mobility + Security blogot.](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/)
+
+>[!NOTE]
+>Ha egy tartománymutatót tartalmaz egy hitelesítési kérelem, és azt figyelembe kell [venni,](#home-realm-discovery-policy-to-prevent-auto-acceleration)a jelenléte felülírja az alkalmazáshoz a HRD-házirendben beállított automatikus gyorsítást.
+
+### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Kezdőlap-felderítési szabályzat automatikus gyorsításhoz
+
+Egyes alkalmazások nem biztosítanak lehetőséget az általa kibocsátott hitelesítési kérelem konfigurálára. Ezekben az esetekben nem használhatók tartománymutatók az automatikus gyorsítás vezérlésére. Az automatikus gyorsítás az otthoni realm discovery szabályzat segítségével konfigurálható úgy, hogy ugyanezt a viselkedést ér el.  
+
+### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Kezdőlap-felderítési szabályzat az automatikus gyorsítás megakadályozásához
+
+Egyes Microsoft- és SaaS-alkalmazások automatikusan tartalmaznak domain_hints -t (például egy hozzáfűző bejelentkezési kérést ad vissza), ami megzavarhatja a felügyelt hitelesítő adatok, például `https://outlook.com/contoso.com` a `&domain_hint=contoso.com` FIDO használatát.  A [Kezdőlaptartomány-felderítési](/graph/api/resources/homeRealmDiscoveryPolicy) házirend használatával figyelmen kívül hagyhatja bizonyos alkalmazások vagy bizonyos tartományok tartománymutatóit a felügyelt hitelesítő adatok telepítése során.  
+
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Összevont felhasználók közvetlen ROPC-hitelesítésének engedélyezése örökölt alkalmazásokhoz
+
+Az ajánlott eljárás az, hogy az alkalmazások AAD-kódtárakat és interaktív bejelentkezést használjanak a felhasználók hitelesítéséhez. A kódtárak gondoskodnak az összevont felhasználói folyamatokról.  Előfordulhat, hogy az örökölt alkalmazások, különösen azok, amelyek ROPC-t használnak, közvetlenül az Azure AD-be küldik a felhasználónevet és a jelszót, és nem az összevonás érthetőségéhez vannak megírva. Nem végeznek otthoni tartományfelderítést, és nem lépnek kapcsolatba a megfelelő összevont végponttal a felhasználók hitelesítéséhez. Ha úgy dönt, a HRD-szabályzattal engedélyezheti az olyan örökölt alkalmazásokat, amelyek a ROPC-engedély használatával küldik el a felhasználónevet/jelszót hitelesítő adatokat közvetlenül a Azure Active Directory. Engedélyezni kell a jelszó kivonatszinkronizálását.
 
 > [!IMPORTANT]
-> Csak akkor engedélyezze a közvetlen hitelesítést, ha a jelszó-kivonat szinkronizálása be van kapcsolva, és tudja, hogy a helyszíni identitásszolgáltató által megvalósított szabályzatok nélkül hitelesíti az alkalmazást. Ha kikapcsolja a jelszó-kivonatolási szinkronizálást, vagy kikapcsolja a címtár-szinkronizálást az AD-csatlakozással bármilyen okból, távolítsa el ezt a házirendet, hogy megakadályozza a közvetlen hitelesítés használatát elavult jelszó-kivonattal.
+> Csak akkor engedélyezze a közvetlen hitelesítést, ha be van kapcsolva a jelszó kivonatszinkronizálása, és tudja, hogy az alkalmazás hitelesítése nem szükséges a helyszíni identitásszolgáltató által megvalósított szabályzatok nélkül. Ha bármilyen okból kikapcsolja a jelszó-kivonatszinkronizálást, vagy bármilyen okból kikapcsolja a címtár-szinkronizálást az AD Connect használatával, távolítsa el ezt a szabályzatot, hogy megakadályozza az elavult jelszó-kivonatot használó közvetlen hitelesítés lehetőségét.
 
-## <a name="set-hrd-policy"></a>HRD házirend beállítása
+## <a name="set-hrd-policy"></a>HRD-szabályzat beállítása
 
-Az összevont bejelentkezési automatikus gyorsítás vagy a közvetlen felhőalapú alkalmazások esetében három lépés van a HRD szabályzat beállítására:
+A HRD-szabályzatot három lépéssel lehet az összevont bejelentkezések automatikus gyorsításához vagy közvetlen felhőalapú alkalmazásokhoz be- és bejelentetni:
 
-1. Hozzon létre egy HRD szabályzatot.
+1. HRD-szabályzat létrehozása.
 
-2. Keresse meg azt a szolgáltatásnevet, amelyhez csatolni szeretné a szabályzatot.
+2. Keresse meg azt a szolgáltatásnév, amelyhez hozzá kell csatolni a szabályzatot.
 
-3. Csatolja a szabályzatot az egyszerű szolgáltatáshoz.
+3. Csatolja a szabályzatot a szolgáltatásnévhez.
 
-A szabályzatok csak akkor lépnek érvénybe, ha egy adott alkalmazáshoz csatolva vannak egy egyszerű szolgáltatáshoz.
+A szabályzatok csak egy adott alkalmazásra vonatkoznak, ha szolgáltatásnévhez vannak csatolva.
 
-Egyszerre csak egy HRD-házirend lehet aktív egy egyszerű szolgáltatásban.  
+Egy szolgáltatásnéven egyszerre csak egy HRD-szabályzat lehet aktív.  
 
-A HRD szabályzat létrehozásához és kezeléséhez használhatja a Azure Active Directory PowerShell-parancsmagokat.
+A hrd-Azure Active Directory powerShell-parancsmagok használatával hozhatja létre és kezelheti.
 
-A következő példa egy HRD házirend-definíciót mutat be:
+Az alábbiakban egy HRD-szabályzatdefiníciót mutatunk be:
 
  ```JSON
    {  
@@ -129,167 +126,167 @@ A következő példa egy HRD házirend-definíciót mutat be:
    }
 ```
 
-A házirend típusa "[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)".
+A szabályzat típusa "[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)".
 
-A **AccelerateToFederatedDomain** nem kötelező. Ha a **AccelerateToFederatedDomain** hamis, a házirend nem befolyásolja az automatikus gyorsítást. Ha a **AccelerateToFederatedDomain** értéke igaz, és a bérlőn csak egy ellenőrzött és összevont tartomány található, akkor a felhasználók egyenesen az összevont identitásszolgáltató lesznek elküldve a bejelentkezéshez. Ha az értéke igaz, és több ellenőrzött tartomány van a bérlőben, meg kell adni a **PreferredDomain** .
+**Az AccelerateToFederatedDomain nem** kötelező. Ha **az AccelerateToFederatedDomain** értéke hamis, a szabályzat nincs hatással az automatikus gyorsításra. Ha **az AccelerateToFederatedDomain** igaz, és csak egy ellenőrzött és összevont tartomány található a bérlőben, akkor a felhasználók közvetlenül az összevont internetszolgáltatóhoz lesznek rendelve a bejelentkezéshez. Ha igaz, és a bérlőben egynél több ellenőrzött tartomány található, meg kell adni a **PreferredDomain** értéket.
 
-A **PreferredDomain** nem kötelező. A **PreferredDomain** meg kell határoznia azt a tartományt, amelyre fel kell gyorsítani. A kihagyható, ha a bérlő csak egy összevont tartománnyal rendelkezik.  Ha nincs megadva, és több ellenőrzött összevont tartomány van, akkor a házirendnek nincs hatása.
+**A PreferredDomain** paraméter megadása nem kötelező. **A PreferredDomain értéknek** azt a tartományt kell jeleznie, amely felé a gyorsítást el kell látni. Kihagyható, ha a bérlő csak egy összevont tartománnyal rendelkezik.  Ha nincs megadva, és több ellenőrzött összevont tartomány van, a szabályzatnak nincs hatása.
 
- Ha a **PreferredDomain** meg van adva, akkor meg kell egyeznie egy ellenőrzött, összevont tartománnyal a bérlő számára. Az alkalmazás összes felhasználójának képesnek kell lennie arra, hogy bejelentkezzen az adott tartományba. az összevont tartományba nem bejelentkezett felhasználók nem fognak tudni bejelentkezni, és nem tudják befejezni a bejelentkezést.
+ Ha **a PreferredDomain** (Előnyben részesített tartomány) meg van adva, akkor egyeznie kell a bérlő ellenőrzött, összevont tartományának. Az alkalmazás minden felhasználója be tud jelentkezni ebbe a tartományba – azok a felhasználók, akik nem tudnak bejelentkezni az összevont tartományba, nem fognak tudni bejelentkezni, és nem tudnak bejelentkezni.
 
-A **AllowCloudPasswordValidation** nem kötelező. Ha a **AllowCloudPasswordValidation** értéke igaz, akkor az alkalmazásnak hitelesítenie kell egy összevont felhasználót úgy, hogy a Felhasználónév/jelszó hitelesítő adatait közvetlenül az Azure Active Directory jogkivonat-végponthoz mutatja. Ez csak akkor működik, ha a jelszó kivonatának szinkronizálása engedélyezve van.
+**Az AllowCloudPasswordValidation paraméter megadása** nem kötelező. Ha az **AllowCloudPasswordValidation** igaz, akkor az alkalmazás hitelesíthet egy összevont felhasználót azáltal, hogy a felhasználónév/jelszó hitelesítő adatokat közvetlenül a Azure Active Directory jogkivonat végpontjának adja meg. Ez csak akkor működik, ha a jelszó kivonatszinkronizálása engedélyezve van.
 
-Emellett két bérlői szintű HRD lehetőség is létezik, a fentiekben nem látható:
+Emellett két bérlőszintű HRD-beállítás is létezik, amelyek nem láthatók fent:
 
-- A **AlternateIdLogin** nem kötelező.  Ha engedélyezve van, ez [lehetővé teszi, hogy a felhasználók az UPN helyett az e-mail címükkel jelentkezzenek be](../authentication/howto-authentication-use-email-signin.md) az Azure ad bejelentkezési oldalán.  A helyettesítő azonosítók arra támaszkodnak, hogy a felhasználó ne legyen automatikusan felgyorsítva egy összevont IDENTITÁSSZOLGÁLTATÓ.
+- **Az AlternateIdLogin nem** kötelező.  Ha engedélyezve van, a felhasználók az Azure AD bejelentkezési oldalán, az [UPN-jük](../authentication/howto-authentication-use-email-signin.md) helyett az e-mail-címüket használva jelentkeznek be.  A másodlagos azonosítók arra támaszkodnak, hogy a felhasználó nincs automatikusan felgyorsítva egy összevont idP-hez.
 
-- A **DomainHintPolicy** egy opcionális összetett objektum, amely [ *megakadályozza* , hogy a tartományi javaslatok automatikusan felgyorsítsák a felhasználókat az összevont tartományokhoz](prevent-domain-hints-with-home-realm-discovery.md). Ez a bérlői szintű beállítás annak biztosítására szolgál, hogy azok az alkalmazások, amelyek a tartományi tippeket küldik, nem akadályozzák meg, hogy a felhasználók felhőalapú hitelesítő adatokkal jelentkezzenek be.
+- **A DomainHintPolicy** egy nem kötelező, összetett objektum, amely megakadályozza, hogy a tartománymutatók automatikusan felgyorsítsák a felhasználókat [  összevont tartományokra.](prevent-domain-hints-with-home-realm-discovery.md) Ezzel a bérlői szintű beállítással biztosítható, hogy a tartománymutatókat küldeni képes alkalmazások ne akadályozzák meg a felhasználókat a felhőben felügyelt hitelesítő adatokkal való bejelentkezésben.
 
-### <a name="priority-and-evaluation-of-hrd-policies"></a>A HRD házirendek prioritása és kiértékelése
+### <a name="priority-and-evaluation-of-hrd-policies"></a>A HRD-szabályzatok prioritása és értékelése
 
-HRD szabályzatok hozhatók létre, majd hozzárendelhetők adott szervezetekhez és egyszerű szolgáltatásokhoz. Ez azt jelenti, hogy több házirend is alkalmazható egy adott alkalmazásra, így az Azure AD-nek el kell döntenie, melyik elsőbbséget élvez. A szabályok halmaza határozza meg, hogy mely HRD-házirend (sok alkalmazott) lép érvénybe:
+HRD-szabályzatokat lehet létrehozni, majd hozzárendelni adott szervezetekhez és szolgáltatásnévhez. Ez azt jelenti, hogy egy adott alkalmazásra több szabályzat is vonatkozhat, ezért az Azure AD-nek kell eldöntenie, melyik élvez elsőbbséget. A szabályok halmaza dönti el, hogy melyik (több alkalmazott HRD-szabályzat) lép életbe:
 
-- Ha egy tartományi tipp szerepel a hitelesítési kérelemben, akkor a rendszer a bérlőre vonatkozó házirendet (a bérlői alapértelmezettként beállított HRD) ellenőrzi, hogy látható-e a [tartományi útmutatók figyelmen kívül hagyása](prevent-domain-hints-with-home-realm-discovery.md). Ha a tartományi útmutatók engedélyezve vannak, a rendszer a tartomány-emlékeztetőben megadott viselkedést használja.
+- Ha tartománymutató található a hitelesítési kérelemben, a rendszer ellenőrzi a bérlő HRD-szabályzatát (a bérlő alapértelmezett szabályzatát), és ellenőrzi, hogy a tartománymutatókat [figyelmen kívül kell-e hagyni.](prevent-domain-hints-with-home-realm-discovery.md) Ha a tartománymutatók engedélyezettek, a rendszer a tartománymutató által meghatározott viselkedést használja.
 
-- Ellenkező esetben, ha egy házirendet explicit módon rendel hozzá az egyszerű szolgáltatáshoz, a rendszer kényszeríti.
+- Ellenkező esetben, ha egy szabályzat explicit módon hozzá van rendelve a szolgáltatásnévhez, a rendszer kényszeríti azt.
 
-- Ha nincs tartományi javaslat, és nincs kifejezetten hozzárendelve az egyszerű szolgáltatáshoz, a rendszer kikényszeríti az egyszerű szolgáltatás fölérendelt szervezetéhez hozzárendelt szabályzatot.
+- Ha nincs tartománymutató, és nincs explicit módon hozzárendelve szabályzat a szolgáltatásnévhez, a rendszer kényszeríti a szolgáltatásnév szülőszervezetéhez explicit módon hozzárendelt szabályzatot.
 
-- Ha nincs tartományi emlékeztető, és nem rendelt hozzá szabályzatot a szolgáltatásnév vagy a szervezet számára, a rendszer az alapértelmezett HRD-viselkedést használja.
+- Ha nincs tartománymutató, és nincs hozzárendelve szabályzat a szolgáltatásnévhez vagy a szervezethez, a rendszer az alapértelmezett HRD-viselkedést használja.
 
-## <a name="tutorial-for-setting-hrd-policy-on-an-application"></a>Oktatóanyag a HRD szabályzat alkalmazáshoz való beállításához
+## <a name="tutorial-for-setting-hrd-policy-on-an-application"></a>Oktatóanyag a HRD-szabályzat alkalmazáson való beállításához
 
-Az Azure AD PowerShell-parancsmagok használatával néhány forgatókönyvet ismertetünk, többek között:
+Az Azure AD PowerShell-parancsmagok segítségével végigveszünk néhány forgatókönyvet, például a következőket:
 
-- A HRD házirend beállítása egy összevont tartománnyal rendelkező bérlőn lévő alkalmazás automatikus gyorsítására.
+- HRD-szabályzat beállítása egy egyetlen összevont tartománnyal rendelkező bérlőben található alkalmazás automatikus gyorsításához.
 
-- A HRD házirend beállítása úgy, hogy az alkalmazás automatikus gyorsítást végezzen a bérlő számára ellenőrzött több tartomány egyikén.
+- HRD-szabályzat beállítása egy alkalmazás automatikus gyorsításához a bérlő által ellenőrzött tartományok egyikéhez.
 
-- A HRD házirend beállítása, amely lehetővé teszi egy örökölt alkalmazás számára, hogy közvetlen felhasználónevet vagy jelszót engedélyezzen a Azure Active Directory egy összevont felhasználó számára.
+- HRD-szabályzat beállítása, hogy egy örökölt alkalmazás közvetlen felhasználónév-jelszó hitelesítést Azure Active Directory összevont felhasználó számára.
 
-- Azon alkalmazások listázása, amelyekhez házirend van konfigurálva.
+- Felsorolja az alkalmazásokat, amelyekhez szabályzat van konfigurálva.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az alábbi példákban az Azure AD-ben létrehozhatja, frissítheti, összekapcsolhatja és törölheti a házirendeket az Application Service-rendszerbiztonsági tag-ben.
+A következő példákban szabályzatokat hozhat létre, frissíthet, kapcsolhet össze és törölhet az Azure AD-beli alkalmazás-szolgáltatásnévekkel.
 
-1. A kezdéshez töltse le az Azure AD PowerShell-parancsmag legújabb előzetes verzióját.
+1. Először töltse le az Azure AD PowerShell-parancsmagok legújabb előzetes verzióját.
 
-2. Az Azure AD PowerShell-parancsmagok letöltése után futtassa a kapcsolódás parancsot az Azure AD-be a rendszergazdai fiókjával való bejelentkezéshez:
+2. Miután letöltötte az Azure AD PowerShell-parancsmagokat, futtassa a Connect parancsot az Azure AD-be való bejelentkezéshez a rendszergazdai fiókjával:
 
     ``` powershell
     Connect-AzureAD -Confirm
     ```
 
-3. A következő parancs futtatásával tekintheti meg a szervezet összes házirendjét:
+3. Futtassa a következő parancsot a szervezet összes szabályzatának a futtatásával:
 
     ``` powershell
     Get-AzureADPolicy
     ```
 
-Ha a rendszer nem ad vissza semmit, az azt jelenti, hogy nincsenek szabályzatok létrehozva a bérlőben.
+Ha semmit nem ad vissza, az azt jelenti, hogy nem hozott létre szabályzatokat a bérlőben.
 
-### <a name="example-set-an-hrd-policy-for-an-application"></a>Példa: HRD szabályzat beállítása egy alkalmazáshoz
+### <a name="example-set-an-hrd-policy-for-an-application"></a>Példa: HRD-szabályzat beállítása egy alkalmazáshoz
 
-Ebben a példában egy olyan házirendet hoz létre, amely akkor van hozzárendelve egy alkalmazáshoz, ha a következők valamelyike:
+Ebben a példában egy olyan szabályzatot hoz létre, amely akkor lesz hozzárendelve egy alkalmazáshoz, ha:
 
-- Automatikusan felgyorsítja a felhasználókat egy AD FS bejelentkezési képernyőre, amikor bejelentkeznek egy alkalmazásba, ha a bérlő egyetlen tartományba esik.
-- A felhasználók automatikus felgyorsítása a AD FS bejelentkezési képernyőjén a bérlő több összevont tartománya van.
-- A nem interaktív Felhasználónév-/jelszó-bejelentkezés engedélyezése közvetlenül a Azure Active Directory az összevont felhasználók számára azon alkalmazások esetében, amelyekhez a szabályzat hozzá van rendelve.
+- Automatikusan felgyorsítja a felhasználók AD FS bejelentkezési képernyőjére, amikor bejelentkeznek egy alkalmazásba, ha a bérlő egyetlen tartományból áll.
+- Automatikusan felgyorsítja a felhasználókat AD FS bejelentkezési képernyőn a bérlőben több összevont tartomány is található.
+- Engedélyezi a nem interaktív felhasználónév/jelszó közvetlen bejelentkezést Azure Active Directory az összevont felhasználók számára a szabályzathoz rendelt alkalmazásokhoz.
 
-#### <a name="step-1-create-an-hrd-policy"></a>1. lépés: HRD szabályzat létrehozása
+#### <a name="step-1-create-an-hrd-policy"></a>1. lépés: HRD-szabályzat létrehozása
 
-A következő házirend automatikusan felgyorsítja a felhasználókat egy AD FS bejelentkezési képernyőre, amikor bejelentkeznek egy alkalmazásba, ha a bérlő egyetlen tartományba esik.
+Az alábbi szabályzat automatikusan felgyorsítja a AD FS bejelentkezési képernyőjére, amikor bejelentkeznek egy alkalmazásba, amikor a bérlő egyetlen tartományt rendelkezik.
 
 ``` powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
-A következő házirend automatikusan felgyorsítja a felhasználókat a AD FS bejelentkezési képernyőjén, ha több összevont tartomány van a bérlőben. Ha egynél több összevont tartománnyal rendelkezik, amely hitelesíti a felhasználókat az alkalmazásokhoz, a tartományt az automatikus felgyorsításhoz kell megadnia.
+Az alábbi szabályzat automatikusan felgyorsítja a felhasználókat egy AD FS bejelentkezési képernyőjére, amely több összevont tartományt is a bérlőn található. Ha több összevont tartománya van, amely hitelesíti a felhasználókat az alkalmazásokhoz, meg kell adnia a tartományt az automatikus gyorsításhoz.
 
 ``` powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
-Ha olyan házirendet szeretne létrehozni, amely lehetővé teszi a Felhasználónév/jelszó hitelesítését az összevont felhasználók számára közvetlenül Azure Active Directory adott alkalmazásokhoz, futtassa a következő parancsot:
+Ha olyan szabályzatot hoz létre, amely lehetővé teszi a felhasználónév-jelszó alapú hitelesítést az összevont felhasználók számára közvetlenül, Azure Active Directory adott alkalmazásokhoz tartozó hitelesítő adatokkal, futtassa a következő parancsot:
 
 ``` powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
-A következő parancs futtatásával tekintheti meg az új szabályzatot, és kérheti le a **ObjectId**:
+Az új szabályzat és az ObjectID lekért **adatokat** a következő paranccsal láthatja:
 
 ``` powershell
 Get-AzureADPolicy
 ```
 
-Ha az HRD szabályzatot a létrehozása után szeretné alkalmazni, azt hozzárendelheti több egyszerű alkalmazás-szolgáltatáshoz is.
+A HRD-szabályzatot a létrehozása után több alkalmazás-szolgáltatásnévhez is hozzárendelheti.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2. lépés: az egyszerű szolgáltatásnév megkeresése, amelyhez a szabályzatot hozzá kell rendelni
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2. lépés: Keresse meg azt a szolgáltatásnév, amelyhez hozzá kell rendelni a szabályzatot
 
-Szüksége lesz azon **ObjectId** , amelyekhez hozzá szeretné rendelni a szabályzatot. Az egyszerű szolgáltatások **ObjectId** többféleképpen is megtalálhatja.
+Szüksége lesz annak a szolgáltatásnévnek az **ObjectID-ére,** amelyhez hozzá szeretné rendelni a szabályzatot. A szolgáltatásnév **objektumazonosítóját** többféleképpen is megkereshet.
 
-Használhatja a portált, vagy lekérdezheti [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta). Lépjen a [Graph Explorer eszközre](https://developer.microsoft.com/graph/graph-explorer) , és jelentkezzen be az Azure ad-fiókjába, és tekintse meg az összes szervezet egyszerű szolgáltatását.
+Használhatja a portált, vagy lekérdezheti a [Microsoft Graph.](/graph/api/resources/serviceprincipal?view=graph-rest-beta) A Graph [Explorer](https://developer.microsoft.com/graph/graph-explorer) eszközt is használhatja, és bejelentkezhet Azure AD-fiókjába, és láthatja a szervezet összes egyszerű szolgáltatását.
 
-Mivel a PowerShellt használja, az alábbi parancsmaggal listázhatja az egyszerű szolgáltatásokat és azok azonosítóit.
+Mivel a PowerShellt használja, a következő parancsmag használatával listázódhat a szolgáltatásnévvel és azok az adatokat használhatja.
 
 ``` powershell
 Get-AzureADServicePrincipal
 ```
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3. lépés: a szabályzat társítása a szolgáltatáshoz
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3. lépés: A szabályzat hozzárendelése a szolgáltatásnévhez
 
-Miután megtörtént annak az alkalmazásnak a **ObjectId** , amelyre az automatikus gyorsítást konfigurálni kívánja, futtassa a következő parancsot. Ez a parancs az 1. lépésben létrehozott HRD-házirendet társítja a 2. lépésben található egyszerű szolgáltatással.
+Miután megvan annak az **alkalmazásnak** az ObjectID-értéke, amelyhez az automatikus gyorsítást konfigurálni szeretné, futtassa a következő parancsot. Ez a parancs társítja az 1. lépésben létrehozott HRD-szabályzatot a 2. lépésben található szolgáltatásnévvel.
 
 ``` powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 ```
 
-Ezt a parancsot minden olyan egyszerű szolgáltatásnév esetében megismételheti, amelyhez hozzá kívánja adni a szabályzatot.
+Ezt a parancsot megismételheti minden olyan szolgáltatásnévvel, amelyhez hozzá szeretné adni a szabályzatot.
 
-Abban az esetben, ha egy alkalmazáshoz már hozzá van rendelve egy HomeRealmDiscovery szabályzat, nem adhat hozzá egy másodikat.  Ebben az esetben módosítsa az alkalmazáshoz hozzárendelt Kezdőlap tartomány-felderítési szabályzat definícióját további paraméterek hozzáadásához.
+Abban az esetben, ha egy alkalmazáshoz már hozzá van rendelve egy HomeRealmDiscovery szabályzat, nem adhat hozzá újabbat.  Ebben az esetben módosítsa az alkalmazáshoz rendelt Kezdőlap-felderítési szabályzat definícióját további paraméterek hozzáadásához.
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4. lépés: annak meghatározása, hogy az HRD szabályzat melyik egyszerű szolgáltatáshoz van rendelve
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4. lépés: Annak ellenőrzése, hogy a HRD-szabályzat mely alkalmazás-szolgáltatásnévkhöz van hozzárendelve
 
-A **Get-AzureADPolicyAppliedObject** parancsmaggal ellenőrizhető, hogy mely alkalmazások rendelkeznek HRD szabályzattal. Adja át a bejelentkezni kívánt szabályzat **ObjectId** .
+A **Get-AzureADPolicyAppliedObject** parancsmag használatával ellenőrizheti, hogy mely alkalmazásokra van HRD-szabályzat konfigurálva. Adja meg annak a **szabályzatnak** az ObjectID-ját, amelyről ellenőrizni szeretne.
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-#### <a name="step-5-youre-done"></a>5. lépés: elkészült!
+#### <a name="step-5-youre-done"></a>5. lépés: Kész!
 
-Próbálja ki az alkalmazást, és győződjön meg arról, hogy az új házirend működik.
+Próbálja ki az alkalmazást, és ellenőrizze, hogy működik-e az új szabályzat.
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Példa: azoknak az alkalmazásoknak a listája, amelyekhez a HRD házirend konfigurálva van
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Példa: Azon alkalmazások felsorolása, amelyekhez HRD-szabályzat van konfigurálva
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1. lépés: a szervezetben létrehozott összes szabályzat listázása
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1. lépés: A szervezetben létrehozott összes szabályzat felsorolása
 
 ``` powershell
 Get-AzureADPolicy
 ```
 
-Jegyezze fel annak a szabályzatnak a **ObjectId** , amelynek hozzárendeléseit listázni szeretné.
+Jegyezze fel annak a szabályzatnak az **ObjectID-ját,** amely számára a hozzárendeléseket listába szeretné sorolni.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2. lépés: azoknak a szolgáltatásoknak a listája, amelyekre a szabályzat hozzá van rendelve  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2. lépés: Azon szolgáltatásnév felsorolása, amelyekhez a szabályzat hozzá van rendelve  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-from-an-application"></a>Példa: HRD szabályzat eltávolítása egy alkalmazásból
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>Példa: HRD-szabályzat eltávolítása egy alkalmazásból
 
-#### <a name="step-1-get-the-objectid"></a>1. lépés: a ObjectID beolvasása
+#### <a name="step-1-get-the-objectid"></a>1. lépés: Az ObjectID lekért száma
 
-Az előző példával beolvashatja a házirend **ObjectId** , valamint azt, hogy az alkalmazás melyik egyszerű szolgáltatását kívánja eltávolítani.
+Az előző példában  lekérte a szabályzat ObjectID-ját, valamint annak az alkalmazás-szolgáltatásnévnek az objektumazonosítóját, amelyből el szeretné távolítani.
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2. lépés: a szabályzat-hozzárendelés eltávolítása az Application Service-résztvevőből  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2. lépés: A szabályzat-hozzárendelés eltávolítása az alkalmazás szolgáltatásnévből  
 
 ``` powershell
 Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3. lépés: az Eltávolítás ellenőrzéséhez a Szabályzathoz hozzárendelt egyszerű szolgáltatások listázásával
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3. lépés: Az eltávolítás ellenőrzése azokkal a szolgáltatásnévvel, amelyekhez a szabályzat hozzá van rendelve
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
@@ -297,6 +294,6 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a hitelesítés működéséről az Azure AD-ben: [hitelesítési forgatókönyvek az Azure ad-hez](../develop/authentication-vs-authorization.md).
-- A felhasználói egyszeri bejelentkezéssel kapcsolatos további információkért lásd: [egyszeri bejelentkezés a Azure Active Directory alkalmazásaihoz](what-is-single-sign-on.md).
-- Látogasson el a [Microsoft Identity platformra](../develop/v2-overview.md) , és tekintse át az összes fejlesztővel kapcsolatos tartalmat.
+- Az Azure AD-beli hitelesítéssel kapcsolatos további információkért lásd: Hitelesítési [forgatókönyvek az Azure AD-hez.](../develop/authentication-vs-authorization.md)
+- További információ a felhasználói egyszeri bejelentkezésről: Egyszeri bejelentkezés az alkalmazásokba a [Azure Active Directory.](what-is-single-sign-on.md)
+- Keresse fel [a Microsoft identitásplatformját,](../develop/v2-overview.md) és áttekintheti a fejlesztőkre vonatkozó összes tartalmat.

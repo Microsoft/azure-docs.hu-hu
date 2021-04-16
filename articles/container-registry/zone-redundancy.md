@@ -1,54 +1,54 @@
 ---
-title: Zóna – redundáns beállításjegyzék a magas rendelkezésre állás érdekében
-description: További információ a zónák redundanciának engedélyezéséről a Azure Container Registry. Hozzon létre egy tároló-beállításjegyzéket vagy replikációt egy Azure rendelkezésre állási zónában. A Zone redundancia a prémium szintű szolgáltatási szint egyik funkciója.
+title: Zónaredundáns beállításjegyzék a magas rendelkezésre álláshoz
+description: Tudnivalók a zónaredundania engedélyezéséről a Azure Container Registry. Tároló-beállításjegyzéket vagy replikációt hozhat létre egy Azure rendelkezésre állási zónában. A zónaredundania a Prémium szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 02/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 8c1ab42aa505448bd81ff42eba54727b24773c60
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203861"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479015"
 ---
-# <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>A zónák redundanciának engedélyezése Azure Container Registry a rugalmasság és a magas rendelkezésre állás érdekében
+# <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Zónaredundania engedélyezése Azure Container Registry rugalmasság és magas rendelkezésre állás érdekében
 
-A [geo-replikáció](container-registry-geo-replication.md)mellett, amely egy vagy több Azure-régióban replikálja a regisztrációs adatait, így biztosítva a rendelkezésre állást és csökkenti a regionális műveletek késését, Azure Container Registry támogatja a nem kötelező *zóna-redundanciát*. A [zóna-redundancia](../availability-zones/az-overview.md#availability-zones) biztosítja a rugalmasságot és a magas rendelkezésre állást egy adott régióban lévő beállításjegyzék vagy replikációs erőforrás (replika) számára.
+A georeplikáción kívül, amely egy vagy több [Azure-régióban](container-registry-geo-replication.md)replikálja a beállításjegyzék-adatokat a rendelkezésre állás és a regionális műveletek késésének csökkentése érdekében, a Azure Container Registry támogatja a választható zónaredundaniát.  [A zónaredundania](../availability-zones/az-overview.md#availability-zones) rugalmasságot és magas rendelkezésre állást biztosít egy adott régióban található beállításjegyzék vagy replikációs erőforrás (replika) számára.
 
-Ez a cikk bemutatja, hogyan állíthat be egy zóna-redundáns tároló-beállításjegyzéket vagy-replikát az Azure CLI, Azure Portal vagy Azure Resource Manager sablon használatával. 
+Ez a cikk bemutatja, hogyan állíthat be zónaredundáns tárolójegyzéket vagy -replikát az Azure CLI, Azure Portal vagy Azure Resource Manager használatával. 
 
-A Zone redundancia a prémium szintű tároló beállításjegyzék-szolgáltatási szintjének **előzetes** verziójú funkciója. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
+A zónaredundania **a** Prémium tároló-beállításjegyzék szolgáltatásszint előzetes verziója. További információ a beállításjegyzék szolgáltatási rétegeiről és korlátairól: Azure Container Registry [szolgáltatási szintek.](container-registry-skus.md)
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Az előzetes verzió korlátozásai
 
 * Jelenleg a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Kelet-Japán.
-* A régió-átalakítások rendelkezésre állási zónákra jelenleg nem támogatottak. Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy adott régióban, a beállításjegyzéket a kívánt régióban kell létrehoznia, a rendelkezésre állási zóna támogatásával, vagy a rendelkezésre állási zóna támogatását engedélyező replikált régiót kell hozzáadnia.
-* A zóna redundancia nem tiltható le egy régióban.
-* Az [ACR-feladatok](container-registry-tasks-overview.md) még nem támogatják a rendelkezésre állási zónákat.
+* A rendelkezésre állási zónákra való régióátalakítások jelenleg nem támogatottak. Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy régióban, a regisztrációs adatbázist a kívánt régióban kell létrehozni, és engedélyezni kell a rendelkezésre állási zónák támogatását, vagy egy replikált régiót kell hozzáadni, ha engedélyezve van a rendelkezésre állási zóna támogatása.
+* A zónaredundania nem tiltható le egy régióban.
+* [ACR-feladatok](container-registry-tasks-overview.md) még nem támogatja a rendelkezésre állási zónákat.
 
-## <a name="about-zone-redundancy"></a>A zóna redundancia
+## <a name="about-zone-redundancy"></a>A zónaredundania
 
-Az Azure-beli [rendelkezésre állási zónák](../availability-zones/az-overview.md) használatával rugalmas és magas rendelkezésre állású Azure Container Registry hozható létre egy Azure-régión belül. Például a szervezetek beállíthat egy zóna-redundáns Azure Container registryt más [támogatott Azure-erőforrásokkal](../availability-zones/az-region.md) , hogy megfeleljenek az adattárolási vagy egyéb megfelelőségi követelményeknek, miközben magas rendelkezésre állást biztosítanak a régión belül.
+Az Azure [rendelkezésre állási zónák használatával](../availability-zones/az-overview.md) rugalmas és magas rendelkezésre állású Azure Container Registryt hozhat létre egy Azure-régióban. A szervezetek például létrehozhatnak egy zónaredundáns [](../availability-zones/az-region.md) Azure Container Registryt más támogatott Azure-erőforrásokkal, hogy eleget tudjanak az adatoknak a tárolóban való hellyel vagy más megfelelőségi követelményekkel, miközben magas rendelkezésre állást tudnak rendelkezésre bocsátani egy adott régióban.
 
-A Azure Container Registry támogatja a [geo-replikálást](container-registry-geo-replication.md)is, amely több régióban replikálja a szolgáltatást, így a redundancia és a helység kiszámításával más helyekre is kiszámíthatja az erőforrásokat. Egy régión belüli redundancia rendelkezésre állási zónáinak és a több régióban történő földrajzi replikálásnak a kombinációja fokozza a beállításjegyzék megbízhatóságát és teljesítményét.
+Azure Container Registry támogatja a [](container-registry-geo-replication.md)georeplikációt is, amely több régióban replikálja a szolgáltatást, így lehetővé teszi a redundanciát és a más helyeken lévő számítási erőforrások helyi rendelkezésreságát. A régión belüli redundancia rendelkezésre állási zónái és a több régióban történő georeplikáció együttesen növeli a regisztrációs adatbázis megbízhatóságát és teljesítményét.
 
-A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található. Minden zónához egy vagy több független energiaellátással, hűtéssel és hálózatkezeléssel felszerelt adatközpont tartozik. A zóna-redundancia beállításakor a beállításjegyzék (vagy egy másik régió beállításjegyzék-replikája) replikálódik a régió összes rendelkezésre állási zónájában, hogy az adatközpont meghibásodása esetén is elérhető maradjon.
+A rendelkezésre állási zónák egyedi fizikai helyek egy Azure-régión belül. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található. Minden zóna egy vagy több, független áramellátással, hűtéssel és hálózattal ellátott adatközponttal rendelkezik. Ha zónaredundansra van konfigurálva, a rendszer egy beállításjegyzéket (vagy egy másik régióban lévő beállításjegyzék-replikát) replikál a régió összes rendelkezésre állási zónájában, így az adatközpontok meghibásodása esetén is elérhető marad.
 
-## <a name="create-a-zone-redundant-registry---cli"></a>Zóna létrehozása – redundáns beállításjegyzék – parancssori felület
+## <a name="create-a-zone-redundant-registry---cli"></a>Zónaredundáns beállításjegyzék létrehozása – CLI
 
-Ha az Azure CLI-t szeretné használni a zóna redundancia engedélyezéséhez, szüksége lesz az Azure CLI 2.17.0 vagy újabb verziójára, vagy Azure Cloud Shellra. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha az Azure CLI-t szeretné használni a zónaredundania engedélyezéséhez, az Azure CLI 2.17.0-s vagy újabb verziójára, vagy Azure Cloud Shell. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Szükség esetén futtassa az az [Group Create](/cli/azure/group#az_group_create) parancsot a beállításjegyzékhez tartozó erőforráscsoport létrehozásához.
+Szükség esetén az [az group create paranccsal](/cli/azure/group#az_group_create) hozzon létre egy erőforráscsoportot a beállításjegyzékhez.
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
 ```
 
-### <a name="create-zone-enabled-registry"></a>Zóna használatára képes beállításjegyzék létrehozása
+### <a name="create-zone-enabled-registry"></a>Zóna kompatibilis beállításjegyzék létrehozása
 
-Az az [ACR Create](/cli/azure/acr#az_acr_create) paranccsal hozzon létre egy zóna-redundáns beállításjegyzéket a prémium szintű szolgáltatási szinten. Válasszon egy olyan régiót, amely [támogatja a rendelkezésre állási zónákat](../availability-zones/az-region.md) Azure Container Registry számára. A következő példában a zóna redundancia engedélyezve van a *eastus* régióban. `az acr create`További beállításjegyzék-beállításokért tekintse meg a parancs súgóját.
+Futtassa [az az acr create parancsot](/cli/azure/acr#az_acr_create) egy zónaredundáns beállításjegyzék létrehozásához a Prémium szolgáltatási szinten. Válasszon ki egy olyan régiót, amely támogatja a rendelkezésre [állási zónákat](../availability-zones/az-region.md) a Azure Container Registry. A következő példában a zónaredundania engedélyezve van az *eastus* régióban. További `az acr create` beállításjegyzék-beállításokért tekintse meg a parancs súgóját.
 
 ```azurecli
 az acr create \
@@ -59,7 +59,7 @@ az acr create \
   --sku Premium
 ```
 
-A parancs kimenetében jegyezze fel a `zoneRedundancy` beállításjegyzék tulajdonságát. Ha engedélyezve van, a beállításjegyzék a zóna redundáns:
+A parancs kimenetében jegyezze fel `zoneRedundancy` a beállításjegyzék tulajdonságát. Ha engedélyezve van, a beállításjegyzék zónaredundáns:
 
 ```JSON
 {
@@ -68,9 +68,9 @@ A parancs kimenetében jegyezze fel a `zoneRedundancy` beállításjegyzék tula
 }
 ```
 
-### <a name="create-zone-redundant-replication"></a>Zóna – redundáns replikáció létrehozása
+### <a name="create-zone-redundant-replication"></a>Zónaredundáns replikáció létrehozása
 
-Futtassa az az [ACR Replication Create](/cli/azure/acr/replication#az_acr_replication_create) parancsot, és hozzon létre egy zóna-redundáns beállításjegyzék-replikát egy olyan régióban, amely [támogatja a rendelkezésre állási zónákat](../availability-zones/az-region.md) Azure Container Registry, például *westus2*. 
+Futtassa [az az acr replication create](/cli/azure/acr/replication#az_acr_replication_create) parancsot egy zónaredundáns beállításjegyzék-replika létrehozásához egy olyan régióban, amely támogatja a rendelkezésre állási zónákat a Azure Container Registry, például a *westus2 régióban.* [](../availability-zones/az-region.md) 
 
 ```azurecli
 az acr replication create \
@@ -80,7 +80,7 @@ az acr replication create \
   --zone-redundancy enabled
 ```
  
-A parancs kimenetében jegyezze fel a `zoneRedundancy` replika tulajdonságát. Ha engedélyezve van, a replika a zóna redundáns:
+A parancs kimenetében jegyezze fel `zoneRedundancy` a replika tulajdonságát. Ha engedélyezve van, a replika zónaredundáns:
 
 ```JSON
 {
@@ -89,32 +89,32 @@ A parancs kimenetében jegyezze fel a `zoneRedundancy` replika tulajdonságát. 
 }
 ```
 
-## <a name="create-a-zone-redundant-registry---portal"></a>Zóna létrehozása – redundáns beállításjegyzék – portál
+## <a name="create-a-zone-redundant-registry---portal"></a>Zónaredundáns beállításjegyzék létrehozása – portál
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-1. Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry** elemet.
-1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy egyedi beállításjegyzék-nevet. 
-1. A **hely** mezőben válasszon ki egy olyan régiót, amely támogatja a zóna-redundancia Azure Container Registry, például az *USA keleti* régióját.
-1. Az **SKU** területen válassza a **prémium** lehetőséget.
-1. A **rendelkezésre állási zónák** területen válassza az **engedélyezve** lehetőséget.
-1. Szükség esetén konfiguráljon további beállításjegyzék-beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget a beállításjegyzék-példány telepítéséhez.
+1. Válassza **az Erőforrás létrehozása**  >  **Tárolók Container Registry.**  >  
+1. Az Alapvető **beállítások lapon** válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy egyedi regisztrációs adatbázisnevet. 
+1. A **Hely mezőben** válasszon ki egy régiót, amely támogatja a zónaredundaniát a Azure Container Registry számára, például az *USA keleti régiója.*
+1. Az **SKU (Termékváltozat)** mezőben válassza a **Premium lehetőséget.**
+1. A Rendelkezésre **állási zónákban válassza** az Engedélyezve **lehetőséget.**
+1. Ha szükséges, konfigurálja a további beállításjegyzék-beállításokat, majd válassza az **Áttekintés + létrehozás lehetőséget.**
+1. A **beállításjegyzék-példány** üzembe helyezéséhez válassza a Létrehozás lehetőséget.
 
-    :::image type="content" source="media/zone-redundancy/enable-availability-zones-portal.png" alt-text="Zóna-redundancia engedélyezése Azure Portal":::
+    :::image type="content" source="media/zone-redundancy/enable-availability-zones-portal.png" alt-text="Zónaredundania engedélyezése a Azure Portal":::
 
-Zóna redundáns replikációjának létrehozása:
+Zónaredundáns replikáció létrehozása:
 
-1. Navigáljon a prémium szintű tároló beállításjegyzékéhez, és válassza a **replikációk** lehetőséget.
-1. A megjelenő térképen válasszon ki egy zöld hatszöget egy olyan régióban, amely támogatja a zóna-redundancia Azure Container Registry, például az **USA 2. nyugati** régióját. Vagy válassza a **+ Hozzáadás** lehetőséget.
-1. A **replikáció létrehozása** ablakban erősítse meg a **helyet**. A **rendelkezésre állási zónák** területen válassza az **engedélyezve** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
+1. Keresse meg a Prémium szintű tároló-beállításjegyzéket, és válassza a **Replikációk lehetőséget.**
+1. A megjelenő térképen válasszon egy zöld hatszöget egy olyan régióban, amely támogatja a zónaredundaniát a Azure Container Registry például az **USA 2. nyugati régiójában.** Vagy válassza **a + Hozzáadás lehetőséget.**
+1. A Replikáció **létrehozása ablakban** erősítse meg a **Helyet.** A **Rendelkezésre állási zónákban válassza** az **Engedélyezve** lehetőséget, majd a Létrehozás **lehetőséget.**
 
-    :::image type="content" source="media/zone-redundancy/enable-availability-zones-replication-portal.png" alt-text="A zónán belüli redundáns replikálás engedélyezése Azure Portal":::
+    :::image type="content" source="media/zone-redundancy/enable-availability-zones-replication-portal.png" alt-text="Zónaredundáns replikáció engedélyezése a Azure Portal":::
 
-## <a name="create-a-zone-redundant-registry---template"></a>Zóna létrehozása – redundáns beállításjegyzék – sablon
+## <a name="create-a-zone-redundant-registry---template"></a>Zónaredundáns beállításjegyzék létrehozása – sablon
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Szükség esetén az az [Group Create](/cli/azure/group#az_group_create) paranccsal hozzon létre egy erőforráscsoportot a beállításjegyzékhez egy olyan régióban, amely [támogatja a rendelkezésre állási zónákat](../availability-zones/az-region.md) Azure Container Registryhoz, például *eastus*. Ezt a régiót használja a sablon a beállításjegyzék helyének beállításához.
+Szükség esetén az [az group create](/cli/azure/group#az_group_create) paranccsal hozzon létre egy [](../availability-zones/az-region.md) erőforráscsoportot a regisztrációs adatbázishoz egy olyan régióban, amely támogatja a rendelkezésre állási zónákat a Azure Container Registry, például *eastus* régióban. A sablon ezt a régiót használja a beállításjegyzék helyének beállításához.
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -122,9 +122,9 @@ az group create --name <resource-group-name> --location eastus
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése 
 
-A következő Resource Manager-sablonnal létrehozható egy zóna – redundáns, földrajzilag replikált beállításjegyzék. A sablon alapértelmezés szerint lehetővé teszi a zóna redundanciát a beállításjegyzékben és egy regionális replikában. 
+Az alábbi Resource Manager hozhat létre zónaredundáns, georeplikált beállításjegyzéket. A sablon alapértelmezés szerint engedélyezi a zónaredundaniát a beállításjegyzékben és egy regionális replikában. 
 
-Másolja az alábbi tartalmat egy új fájlba, és mentse a fájlt egy olyan fájlnév használatával, mint például `registryZone.json` .
+Másolja az alábbi tartalmat egy új fájlba, és mentse egy fájlnévvel(például: `registryZone.json` ).
 
 ```JSON
 {
@@ -220,10 +220,10 @@ Másolja az alábbi tartalmat egy új fájlba, és mentse a fájlt egy olyan fá
   }
 ```
 
-Az előző sablonfájl használatával hozza létre a beállításjegyzéket a következő az [Deployment Group Create](/cli/azure/group/deployment#az_group_deployment_create) parancs futtatásával. Ha meg van jelölve, adja meg a következőket:
+Futtassa a következő [az deployment group create parancsot](/cli/azure/group/deployment#az_group_deployment_create) a regisztrációs adatbázis létrehozásához az előző sablonfájl használatával. Ahol jelezve van, adja meg a következőt:
 
-* egyedi beállításjegyzék-név, vagy paraméterek nélkül helyezheti üzembe a sablont, és egyedi nevet fog létrehozni
-* a rendelkezésre állási zónákat támogató replika (például *westus2* ) helye
+* egy egyedi beállításjegyzék-nevet, vagy paraméterek nélkül telepítheti a sablont, és az egyedi nevet hoz létre
+* a rendelkezésre állási zónákat támogató replika helye, például *westus2*
 
 ```azurecli
 az deployment group create \
@@ -232,7 +232,7 @@ az deployment group create \
   --parameters acrName=<registry-name> acrReplicaLocation=<replica-location>
 ```
 
-A parancs kimenetében jegyezze fel a `zoneRedundancy` beállításjegyzék és a replika tulajdonságát. Ha engedélyezve van, minden erőforrás a zóna redundáns:
+A parancs kimenetében jegyezze fel `zoneRedundancy` a beállításjegyzék és a replika tulajdonságát. Ha engedélyezve van, minden erőforrás zónaredundáns:
 
 ```JSON
 {
@@ -243,5 +243,5 @@ A parancs kimenetében jegyezze fel a `zoneRedundancy` beállításjegyzék és 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [rendelkezésre állási zónákat támogató régiókról](../availability-zones/az-region.md).
-* További információ a [megbízhatóság](/azure/architecture/framework/resiliency/overview) kiépítése az Azure-ban.
+* További információ a [rendelkezésre állási zónákat támogató régiókról.](../availability-zones/az-region.md)
+* További információ a megbízhatóságra való [felépítésről az](/azure/architecture/framework/resiliency/overview) Azure-ban.

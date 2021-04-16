@@ -1,41 +1,58 @@
 ---
-title: A ITSM-összekötő és a hozzá tartozó művelet törlése
-description: Ez a cikk azt ismerteti, hogyan lehet törölni a ITSM-összekötőt és a hozzá társított műveleti csoportokat.
+title: Nem használt ITSM-összekötők törlése
+description: Ez a cikk az ITSM-összekötők és a hozzá társított műveletcsoportok törlésének magyarázatát biztosítja.
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3dc84ea6def9b762527226dbeb3e2eaab78ec200
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036486"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387938"
 ---
-# <a name="deletion-of-unused-itsm-connectors"></a>Nem használt ITSM-összekötők törlése
+# <a name="delete-unused-itsm-connectors"></a>Nem használt ITSM-összekötők törlése
 
-A nem használt összekötő törlésének folyamata 2 fázist tartalmaz:
+A nem használt összekötők (ITSM IT-szolgáltatásmenedzsment törlésének folyamata két fázisból áll. Az ITSM-összekötőhöz társított összes műveletet törli, majd magát az összekötőt is törli. Először törölje a műveleteket, mert az összekötő nélküli műveletek hibákat okozhatnak az előfizetésben.
 
-1. A társított műveletek törlése: az ITSM-összekötőhöz társított összes műveletet törölni kell. Erre azért van szükség, hogy az összekötő nélkül ne legyenek olyan műveletek, amelyek hibákat okozhatnak az előfizetésében.
+## <a name="delete-associated-actions"></a>Társított műveletek törlése
 
-2. A nem használt ITSM-összekötő törlése.
+1. A Azure Portal válassza a **Monitor lehetőséget.**
+  
+    ![A Figyelés kiválasztásának képernyőképe.](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
 
-## <a name="deletion-of-the-associated-actions"></a>A társított műveletek törlése
+2. Válassza **a Riasztások lehetőséget.**
+   
+    ![A Riasztások kiválasztásának képernyőképe.](media/itsmc-connector-deletion/itsmc-alert-selection.png)
 
-1. A műveleti csoport megkereséséhez lépjen a  ![ figyelő kiválasztása képernyőképre.](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
+3. Válassza **a Műveletek kezelése lehetőséget.**
+   
+    ![Képernyőkép a Műveletek kezelése beállításról.](media/itsmc-connector-deletion/itsmc-actions-selection.png)
 
-2. Válassza a "riasztások"  ![ képernyőképet a riasztások kiválasztásáról.](media/itsmc-connector-deletion/itsmc-alert-selection.png)
-3. Válassza a "műveletek kezelése"  ![ képernyőképet a műveletek kezelése lehetőség kiválasztásához.](media/itsmc-connector-deletion/itsmc-actions-selection.png)
-4. Válassza ki az összes olyan ITSM-összekötőt, amely a  ![ Cherwell-hez kapcsolódó ITSM-összekötők Cherwell képernyőképéhez csatlakozik.](media/itsmc-connector-deletion/itsmc-actions-screen.png)
-5. Törölje a műveleti csoport  ![ törlését a műveleti csoport törlése képernyőről.](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+4. Válassza ki a törölni kívánt ITSM-összekötőhöz társított műveletcsoportot. Ez a cikk egy Cherwell-összekötő példáját használja.
+   
+    ![Képernyőkép a Cherwell-összekötőhöz társított műveletekről.](media/itsmc-connector-deletion/itsmc-actions-screen.png)
 
-## <a name="deletion-of-the-unused-itsm-connector"></a>A nem használt ITSM-összekötő törlése
+5. Tekintse át az adatokat, majd válassza a **Műveletcsoport törlése lehetőséget.**
 
-1. A  ![ Keresés és a "ügyfélszolgálati" La kiválasztása lapon válassza a "ügyfélszolgálati" La elemet a keresési sáv tetején található képernyőképen.](media/itsmc-connector-deletion/itsmc-connector-selection.png)
-2. Válassza a "ITSM kapcsolatok" lehetőséget, és válassza ki a  ![ CHERWELL ITSM-összekötők Cherwell-összekötő képernyőképét.](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
-3. Válassza a "Törlés"  ![ képernyőképet az ITSM-összekötő törléséről.](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
+    ![Képernyőkép a műveletcsoport információiról és a csoport törlésére vonatkozó gombról.](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+
+## <a name="delete-the-connector"></a>Az összekötő törlése
+
+1. A keresősávban keressen rá a **servicedesk kifejezésre.** Ezután válassza **a ServiceDesk** lehetőséget az erőforrások listájában.
+
+    ![A ServiceDesk keresésének és kiválasztásának képernyőképe.](media/itsmc-connector-deletion/itsmc-connector-selection.png)
+
+2. Válassza **az ITSM-kapcsolatok** lehetőséget, majd a Cherwell-összekötőt.
+
+    ![A Cherwell I T S M-összekötő képernyőképe.](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
+
+3. Válassza a **Törlés** elemet.
+
+    ![Képernyőkép az I T S M-összekötő törlés gombjáról.](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)
+* [ITSM-összekötővel kapcsolatos problémák elhárítása](./itsmc-resync-servicenow.md)

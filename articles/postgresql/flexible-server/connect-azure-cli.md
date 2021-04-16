@@ -1,50 +1,50 @@
 ---
-title: 'Gyors útmutató: kapcsolat az Azure CLI használatával – Azure Database for PostgreSQL – rugalmas kiszolgáló'
-description: Ez a rövid útmutató számos lehetőséget kínál az Azure CLI-vel való kapcsolódásra Azure Database for PostgreSQL-rugalmas kiszolgálóval.
+title: 'Rövid útmutató: Csatlakozás az Azure CLI használatával – Azure Database for PostgreSQL – Rugalmas kiszolgáló'
+description: Ez a rövid útmutató számos lehetőséget kínál az Azure CLI-hez való csatlakozásra Azure Database for PostgreSQL – rugalmas kiszolgálóval.
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7526644e02b0ed4d0522ad00a27b691ece98754a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614343"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479236"
 ---
-# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Gyors útmutató: az Azure CLI-vel való kapcsolat és lekérdezés Azure Database for PostgreSQL rugalmas kiszolgálóval
+# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>Rövid útmutató: Csatlakozás és lekérdezés az Azure CLI-Azure Database for PostgreSQL – Rugalmas kiszolgáló
 
 > [!IMPORTANT]
-> Azure Database for PostgreSQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
+> Azure Database for PostgreSQL – A rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure Database for PostgreSQL rugalmas kiszolgálóhoz az Azure CLI és a ```az postgres flexible-server connect``` parancs használatával. Ez a parancs lehetővé teszi az adatbázis-kiszolgálóval való kapcsolat tesztelését és a lekérdezések futtatását. Az interaktív mód használatával több lekérdezést is futtathat. 
+Ez a rövid útmutató bemutatja, hogyan csatlakozhat rugalmas Azure Database for PostgreSQL kiszolgálóhoz az Azure CLI és a parancs ```az postgres flexible-server connect``` használatával. Ez a parancs lehetővé teszi az adatbázis-kiszolgálóval való kapcsolat tesztelését és lekérdezések futtatását. Az interaktív móddal több lekérdezést is futtathat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
-- Az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójának (2.20.0 vagy újabb) telepítése
-- Bejelentkezés az Azure CLI-vel a ```az login``` paranccsal 
-- A paraméterek megőrzésének bekapcsolása a következővel: ```az config param-persist on``` . A paraméter megőrzése a helyi környezet használatát teszi lehetővé anélkül, hogy meg kellene ismételnie a sok argumentumot, például az erőforráscsoportot vagy a helyet.
+- Egy Azure-fiók. Ha még nincs előfizetése, [szerezze be az ingyenes próbaverziót.](https://azure.microsoft.com/free/)
+- Az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójának telepítése (2.20.0-s vagy újabb verzió)
+- Bejelentkezés az Azure CLI használatával a ```az login``` paranccsal 
+- Kapcsolja be a paramétermegőrzést a ```az config param-persist on``` következővel: . A paraméterek megőrzésével anélkül használhatja a helyi környezetet, hogy sok argumentumot, például erőforráscsoportot vagy helyet kell megismételnie.
 
-## <a name="create-an-postgresql-flexible-server"></a>PostgreSQL rugalmas kiszolgáló létrehozása
+## <a name="create-an-postgresql-flexible-server"></a>Rugalmas PostgreSQL-kiszolgáló létrehozása
 
-A létrehozott első dolog egy felügyelt PostgreSQL-kiszolgáló. A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsfájlt, és jegyezze fel a **kiszolgáló nevét**, a **felhasználónevet** és a  **jelszót** a parancsból.
+Először is létrehozunk egy felügyelt PostgreSQL-kiszolgálót. A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő szkriptet, és jegyezze  fel  a parancs által létrehozott kiszolgálónevet, felhasználónevet és jelszót.
 
 ```azurecli
 az postgres flexible-server create --public-access <your-ip-address>
 ```
-További argumentumokat is megadhat ennek a parancsnak a testreszabásához. Tekintse meg az [az postgres flexibilis-Server Create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create)argumentumot.
+A parancs testreszabásához további argumentumokat is meg lehet adni. Tekintse meg az [az postgres flexible-server create összes argumentumát.](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create)
 
-## <a name="view-all-the-arguments"></a>Az összes argumentum megtekintése
-A parancshoz tartozó összes argumentumot megtekintheti ```--help``` argumentummal. 
+## <a name="view-all-the-arguments"></a>Az összes megtekintése az argumentumok
+A parancs összes argumentumát megtekintheti a ```--help``` argumentummal. 
 
 ```azurecli
 az postgresql flexible-server connect --help
 ```
 
-## <a name="test-database-server-connection"></a>Adatbázis-kiszolgáló kapcsolatok tesztelése
-A paranccsal ellenőrizheti és ellenőrizheti az adatbázishoz való kapcsolódást a fejlesztési környezetből.
+## <a name="test-database-server-connection"></a>Adatbázis-kiszolgáló kapcsolatának tesztelése
+A fejlesztési környezetből az paranccsal tesztelheti és ellenőrizheti az adatbázissal létesített kapcsolatot.
 
 ```azurecli
 az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
@@ -53,7 +53,7 @@ az postgres flexible-server connect -n <servername> -u <username> -p "<password>
 ```azurecli
 az postgres flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d postgres
 ```
-Ha a művelet sikeres volt, látni fogja a kimenetet.
+Ha a kapcsolat sikeres volt, a kimenetet fogja látni.
 ```output
 Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Successfully connected to postgresdemoserver.
@@ -61,14 +61,14 @@ Local context is turned on. Its information is saved in working directory C:\myd
 Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
 ```
 
-Ha a kapcsolatok sikertelenek voltak, próbálkozzon a következő megoldásokkal:
-- Ellenőrizze, hogy a 5432-es port nyitva van-e az ügyfélszámítógépen.
-- Ha a kiszolgáló rendszergazdája felhasználóneve és jelszava helyes
-- Ha konfigurálta az ügyfélszámítógép tűzfalszabály-szabályát
-- Ha a kiszolgálót VPN-kapcsolaton keresztül konfigurálta a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
+Ha a kapcsolat sikertelen volt, próbálkozzon az alábbi megoldásokkal:
+- Ellenőrizze, hogy az 5432-es port nyitva van-e az ügyfélszámítógépen.
+- ha a kiszolgáló-rendszergazda felhasználóneve és jelszava helyes
+- ha konfigurált tűzfalszabályt az ügyfélszámítógéphez
+- Ha privát hozzáféréssel konfigurálta a kiszolgálót a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
 
 ## <a name="run-single-query"></a>Egyetlen lekérdezés futtatása
-A paranccsal egyetlen lekérdezést is végrehajthat az argumentum használatával ```--querytext``` ```-q``` .
+Egyetlen lekérdezést a paranccsal hajthat végre a ```--querytext``` argumentummal. ```-q```
 
 ```azurecli
 az postgres flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> -q "<query-text>"
@@ -79,7 +79,7 @@ az postgres flexible-server connect -n <server-name> -u <username> -p "<password
 az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -q "select * from table1;" --output table
 ```
 
-Az alábbi ábrán látható kimenet jelenik meg:
+A kimenet az alábbi módon jelenik meg:
 
 ```output
 Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -100,8 +100,8 @@ test   200
 test   200
 ```
 
-## <a name="run-multiple-queries-using-interactive-mode"></a>Több lekérdezés futtatása interaktív mód használatával
-Az **interaktív** mód használatával több lekérdezést is futtathat. Az interaktív mód engedélyezéséhez futtassa a következő parancsot
+## <a name="run-multiple-queries-using-interactive-mode"></a>Több lekérdezés futtatása interaktív módban
+Az interaktív móddal több **lekérdezést is futtathat.** Az interaktív mód engedélyezéséhez futtassa a következő parancsot
 
 ```azurecli
 az postgres flexible-server connect -n <servername> -u <username> -p "<password>" -d <databasename>
@@ -113,7 +113,7 @@ az postgres flexible-server connect -n <servername> -u <username> -p "<password>
 az postgresql flexible-server connect -n postgresdemoserver -u dbuser -p "dbpassword" -d flexibleserverdb --interactive
 ```
 
-A **psql** rendszerhéj-felületet a lent látható módon fogja látni:
+Az alábbiakban látható módon megjelenik a **psql** rendszerhéj:
 
 ```bash
 Command group 'postgres flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus

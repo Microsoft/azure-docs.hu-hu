@@ -1,49 +1,49 @@
 ---
-title: 'Oktatóanyag: WordPress üzembe helyezése az AK-fürtön a MySQL rugalmas kiszolgálóval az Azure CLI használatával'
-description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe WordPress-t az AK-ban Azure Database for MySQL-rugalmas kiszolgálóval.
+title: 'Oktatóanyag: A WordPress üzembe helyezése AKS-fürtön rugalmas MySQL-kiszolgálóval az Azure CLI használatával'
+description: Megtudhatja, hogyan építhet ki és helyezhet üzembe gyorsan WordPresst az AKS-Azure Database for MySQL rugalmas kiszolgálóval.
 ms.service: mysql
 author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.custom: mvc
-ms.openlocfilehash: 6f2b3d9f38fc04428678a71c9942fc7aa2182dc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b631173ed92905870e73e6c560d90aab08476ce1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217193"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480154"
 ---
-# <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Oktatóanyag: WordPress-alkalmazás üzembe helyezése az AK-ban Azure Database for MySQL-rugalmas kiszolgálóval
+# <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Oktatóanyag: WordPress-alkalmazás üzembe helyezése AKS-Azure Database for MySQL rugalmas kiszolgálóval
 
-Ebben a rövid útmutatóban egy WordPress-alkalmazást helyez üzembe az Azure Kubernetes Service (ak) fürtön Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió) az Azure CLI használatával. 
-Az **[AK](../../aks/intro-kubernetes.md)** egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. **[Azure Database for MySQL – a rugalmas kiszolgáló (előzetes verzió)](overview.md)** egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások használatával. Jelenleg a rugalmas kiszolgáló előzetes verzióban érhető el.
+Ebben a rövid útmutatóban egy WordPress-alkalmazást fog üzembe helyezni egy Azure Kubernetes Service-fürtön egy rugalmas Azure Database for MySQL (előzetes verzió) kiszolgálóval az Azure CLI használatával. 
+**[Az AKS](../../aks/intro-kubernetes.md)** egy felügyelt Kubernetes-szolgáltatás, amely lehetővé teszi a fürtök gyors üzembe helyezését és kezelését. Azure Database for MySQL – A rugalmas kiszolgáló **[(előzetes verzió)](overview.md)** egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb vezérlést és rugalmasságot biztosít az adatbázis-kezelési funkciókhoz és a konfigurációs beállításokhoz. Jelenleg a rugalmas kiszolgáló előzetes verzióban érhető el.
 
 > [!NOTE]
 > - Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
-> - Ez a rövid útmutató feltételezi, hogy a Kubernetes-fogalmak, a WordPress és a MySQL alapszintű ismeretekkel rendelkeznek.
+> - Ez a rövid útmutató feltételezi a Kubernetes alapfogalmai, a WordPress és a MySQL alapszintű ismereteit.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI legújabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI legújabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 > [!NOTE]
-> Ha a rövid útmutatóban helyileg futtatja a parancsokat (Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
+> Ha ebben a rövid útmutatóban helyileg futtatja a parancsokat (nem Azure Cloud Shell), akkor a parancsokat rendszergazdaként kell futtatnia.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot a *WordPress-Project* használatával az [az Group Create] [az-Group-Create] paranccsal a *eastus* helyen.
+Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzunk létre egy *wordpress-project* erőforráscsoportot az *eastus* helyen található [az group create][az-group-create] paranccsal.
 
 ```azurecli-interactive
 az group create --name wordpress-project --location eastus
 ```
 
 > [!NOTE]
-> Az erőforráscsoport helye az erőforráscsoport metaadatait tárolja. Emellett az erőforrások az Azure-ban futnak, ha nem ad meg egy másik régiót az erőforrás létrehozásakor.
+> Az erőforráscsoport metaadatainak tárolása az erőforráscsoport helye. Akkor is itt futnak az erőforrások az Azure-ban, ha nem ad meg másik régiót az erőforrás létrehozása során.
 
-A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:
+Az alábbi példakimeneten a sikeresen létrehozott erőforráscsoport látható:
 
 ```json
 {
@@ -60,33 +60,33 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
+Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Ez eltarthat néhány percig.
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza.
+Néhány perc múlva befejeződik a parancs, és visszaadja a fürttel kapcsolatos JSON-formátumú információkat.
 
 > [!NOTE]
-> AK-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AK-erőforrások tárolásához. Lásd: [miért jön létre két erőforráscsoport az AK-val?](../../aks/faq.md#why-are-two-resource-groups-created-with-aks)
+> AKS-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AKS-erőforrások tárolására. Lásd: [Miért jön létre két erőforráscsoport az AKS-sel?](../../aks/faq.md#why-are-two-resource-groups-created-with-aks)
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks#az-aks-install-cli) parancsot:
+A Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfelét. Ha az alkalmazást Azure Cloud Shell, `kubectl` a már telepítve van. Helyi `kubectl` telepítéshez használja az [az aks install-cli](/cli/azure/aks#az-aks-install-cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
 ```
 
 > [!NOTE]
-> A fenti parancs a [Kubernetes konfigurációs fájljának](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)alapértelmezett helyét használja, amely a következő: `~/.kube/config` . Megadhat egy másik helyet a Kubernetes konfigurációs fájljához a *--file* használatával.
+> A fenti parancs a [Kubernetes](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)konfigurációs fájljának alapértelmezett helyét használja, amely `~/.kube/config` . A --file használatával más helyet is megadhat a Kubernetes *konfigurációs fájlhoz.*
 
 A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get]( https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot a fürtcsomópontok listájának lekéréséhez.
 
@@ -94,52 +94,52 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get]( htt
 kubectl get nodes
 ```
 
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész*:
+A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont Ready (Kész) *állapotú:*
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL rugalmas kiszolgáló létrehozása
-Hozzon létre egy rugalmas kiszolgálót az az [MySQL flexibilis-Server Create](/cli/azure/mysql/flexible-server)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
+## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Rugalmas Azure Database for MySQL létrehozása
+Hozzon létre egy rugalmas kiszolgálót [az az mysql flexible-server create paranccsal.](/cli/azure/mysql/flexible-server) A következő parancs létrehoz egy kiszolgálót a szolgáltatás alapértelmezett értékeinek és értékeinek használatával az Azure CLI helyi környezetében:
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 ```
 
 A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
-- Egy új üres adatbázis ```flexibleserverdb``` jön létre, amikor a kiszolgálót először kiépítik. Ebben a rövid útmutatóban ezt az adatbázist fogjuk használni.
-- Automatikusan létrehozott kiszolgálónév, rendszergazdai Felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs meghatározva helyi környezetben), és az erőforráscsoport megegyező helyén
-- Szolgáltatás alapértelmezett értékei a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (feltört), számítási méret/SKU (B1MS), biztonsági mentési megőrzési időtartam (7 nap) és MySQL-verzió (5,7)
-- A nyilvános hozzáférés argumentum lehetővé teszi, hogy olyan kiszolgálót hozzon létre, amely a tűzfalszabályok által védett nyilvános hozzáféréssel rendelkezik. Azáltal, hogy az IP-címet adja hozzá a tűzfalszabály hozzáadásához az ügyfélszámítógépről való hozzáférés engedélyezéséhez.
-- Mivel a parancs helyi környezetet használ, létrehozza a kiszolgálót az erőforráscsoporthoz ```wordpress-project``` és a régióban ```eastus``` .
+- A kiszolgáló első kiépítésekor létrejön egy új ```flexibleserverdb``` üres adatbázis. Ebben a rövid útmutatóban ezt az adatbázist fogjuk használni.
+- Automatikusan létrehozott kiszolgálónév, rendszergazdai felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs megadva a helyi környezetben), és ugyanazon a helyen, ahol az erőforráscsoport található
+- Szolgáltatás alapértelmezett beállításai a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (burstable), számítási méret/termékváltozat (B1MS), biztonsági másolatok megőrzési időtartama (7 nap) és MySQL-verzió (5.7)
+- A nyilvános hozzáférésű argumentum használatával tűzfalszabályok által védett nyilvános hozzáférésű kiszolgálót hozhat létre. Adja meg az IP-címét a tűzfalszabály hozzáadásához, hogy engedélyezze a hozzáférést az ügyfélszámítógépről.
+- Mivel a parancs helyi környezetet használ, a kiszolgálót az erőforráscsoportban és a ```wordpress-project``` régióban hozza ```eastus``` létre.
 
 
 ### <a name="build-your-wordpress-docker-image"></a>WordPress Docker-rendszerkép összeállítása
 
-Töltse le a [legújabb WordPress](https://wordpress.org/download/) -verziót. Hozzon létre új könyvtárat ```my-wordpress-app``` a projekthez, és használja ezt az egyszerű mappastruktúrát
+Töltse le [a WordPress legújabb](https://wordpress.org/download/) verzióját. Hozzon létre új ```my-wordpress-app``` könyvtárat a projekthez, és használja ezt az egyszerű mappastruktúrát
 
 ```
-└───my-wordpress-app
-    └───public
-        ├───wp-admin
-        │   ├───css
+â””â”€â”€â”€my-wordpress-app
+    â””â”€â”€â”€public
+        â”œâ”€â”€â”€wp-admin
+        â”‚   â”œâ”€â”€â”€css
         . . . . . . .
-        ├───wp-content
-        │   ├───plugins
+        â”œâ”€â”€â”€wp-content
+        â”‚   â”œâ”€â”€â”€plugins
         . . . . . . .
-        └───wp-includes
+        â””â”€â”€â”€wp-includes
         . . . . . . .
-        ├───wp-config-sample.php
-        ├───index.php
+        â”œâ”€â”€â”€wp-config-sample.php
+        â”œâ”€â”€â”€index.php
         . . . . . . .
-    └─── Dockerfile
+    â””â”€â”€â”€ Dockerfile
 
 ```
 
 
-Nevezze át a nevet, ```wp-config-sample.php``` ```wp-config.php``` és cserélje le a 21 – 32. sort a következő kódrészletre. Az alábbi kódrészlet a Kubernetes manifest-fájlból olvassa be az adatbázis-gazdagépet, a felhasználónevet és a jelszót.
+Nevezze ```wp-config-sample.php```  át a 21–32. sort erre a kódrészletre, és cserélje le erre ```wp-config.php``` a kódrészletre. Az alábbi kódrészlet az adatbázisgazdát, a felhasználónevet és a jelszót olvassa be a Kubernetes-jegyzékfájlból.
 
 ```php
 //Using environment variables for DB connection information
@@ -175,7 +175,7 @@ define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
 ### <a name="create-a-dockerfile"></a>Dockerfile létrehozása
-Hozzon létre egy új Docker, és másolja a kódrészletet. Ez a Docker az Apache webkiszolgáló PHP-vel való beállításával és a mysqli-bővítmény engedélyezésével foglalkozik.
+Hozzon létre egy új Docker-fájl, és másolja ki ezt a kódrészletet. Ez a Docker-fájl az Apache-webkiszolgáló PHP-val való beállításában és a mysqli bővítmény engedélyezésében.
 
 ```docker
 FROM php:7.2-apache
@@ -184,8 +184,8 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-### <a name="build-your-docker-image"></a>A Docker-rendszerkép összeállítása
-Győződjön meg arról, hogy a ```my-wordpress-app``` parancs használatával a terminálban van a könyvtárban ```cd``` . A rendszerkép létrehozásához futtassa a következő parancsot:
+### <a name="build-your-docker-image"></a>Docker-rendszerkép összeállítása
+A paranccsal győződjön meg arról, hogy a terminál ```my-wordpress-app``` könyvtárában ```cd``` van. Futtassa a következő parancsot a rendszerkép felépítéséhez:
 
 ``` bash
 
@@ -193,23 +193,23 @@ docker build --tag myblog:latest .
 
 ```
 
-Telepítse a lemezképet a [Docker hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) vagy az [Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md)szolgáltatásba.
+A rendszerkép üzembe helyezése [a Docker Hubon vagy](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) az [Azure Container Registryben.](../../container-registry/container-registry-get-started-azure-cli.md)
 
 > [!IMPORTANT]
->Ha az Azure Container regdistry (ACR) használja, futtassa a parancsot az ```az aks update``` ACR-fiók az AK-fürthöz való csatolásához.
+>Ha Az Azure Container Regdistry (ACR) parancsot használja, futtassa az parancsot az ```az aks update``` ACR-fiók az AKS-fürthöz való csatolására.
 >
 >```azurecli-interactive
 >az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
 > ```
 >
 
-## <a name="create-kubernetes-manifest-file"></a>Kubernetes manifest-fájl létrehozása
+## <a name="create-kubernetes-manifest-file"></a>Kubernetes-jegyzékfájl létrehozása
 
-A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Hozzon létre egy nevű manifest `mywordpress.yaml` -fájlt, és másolja a következő YAML-definícióba.
+A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például hogy milyen tárolólemezképeket kell futtatni. Hozzunk létre egy nevű jegyzékfájlt, és másolja be a következő `mywordpress.yaml` YAML-definíciót.
 
 >[!IMPORTANT]
-> - Cserélje le a helyére a ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` tényleges WordPress Docker-rendszerkép nevét és címkéjét, például: ```docker-hub-user/myblog:latest``` .
-> - Frissítse az ```env``` alábbi szakaszt a ```SERVERNAME``` saját ```YOUR-DATABASE-USERNAME``` MySQL- ```YOUR-DATABASE-PASSWORD``` kiszolgálójának frissítésével.
+> - Cserélje ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` le a helyére a tényleges WordPress Docker-rendszerkép nevét és címkét, ```docker-hub-user/myblog:latest``` például: .
+> - Frissítse az alábbi szakaszt a rugalmas ```env``` ```SERVERNAME``` ```YOUR-DATABASE-USERNAME``` ```YOUR-DATABASE-PASSWORD``` MySQL-kiszolgáló , , rel.
 
 ```yaml
 apiVersion: apps/v1
@@ -263,14 +263,14 @@ spec:
     app: wordpress-blog
 ```
 
-## <a name="deploy-wordpress-to-aks-cluster"></a>A WordPress üzembe helyezése az AK-fürtön
-Telepítse az alkalmazást a [kubectl Apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+## <a name="deploy-wordpress-to-aks-cluster"></a>A WordPress üzembe helyezése AKS-fürtön
+Telepítse az alkalmazást a [kubectl apply paranccsal,](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) és adja meg a YAML-jegyzék nevét:
 
 ```console
 kubectl apply -f mywordpress.yaml
 ```
 
-A következő példa kimenete a sikeresen létrehozott központi telepítéseket és szolgáltatásokat mutatja:
+Az alábbi példakimeneten a sikeresen létrehozott üzemelő példányok és szolgáltatások láthatóak:
 
 ```output
 deployment "wordpress-blog" created
@@ -279,7 +279,7 @@ service "php-svc" created
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Az alkalmazás futtatásakor a Kubernetes szolgáltatás az előtér-alkalmazást az internethez teszi elérhetővé. A folyamat eltarthat pár percig.
+Az alkalmazás futtatásakor a Kubernetes-szolgáltatás elérhetővé teszi az alkalmazás előtere számára az internetet. A folyamat eltarthat pár percig.
 
 A folyamat állapotának monitorozásához használja [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot a `--watch` argumentummal.
 
@@ -287,44 +287,44 @@ A folyamat állapotának monitorozásához használja [kubectl get service](http
 kubectl get service wordpress-blog --watch
 ```
 
-Kezdetben a *WordPress-blog* szolgáltatás *külső IP-címe* *függőben* jelenik meg.
+Kezdetben a *wordpress-blog* szolgáltatás *EXTERNAL-IP-címe* *függőben van.*
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 wordpress-blog   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha *az EXTERNAL-IP*  cím függőben értékről tényleges nyilvános IP-címre változik, a használatával állítsa le a `CTRL-C` `kubectl` figyelés folyamatát. Az alábbi példakimenet egy érvényes, a szolgáltatáshoz rendelt nyilvános IP-címet mutat be:
 
 ```output
 wordpress-blog  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-### <a name="browse-wordpress"></a>A WordPress böngészése
+### <a name="browse-wordpress"></a>WordPress tallózása
 
-Nyisson meg egy webböngészőt a szolgáltatás külső IP-címére a WordPress telepítési oldalának megtekintéséhez.
+Nyisson meg egy webböngészőt a szolgáltatás külső IP-címére a WordPress telepítési oldalának megnyitásához.
 
-   :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="A WordPress telepítése sikeres az AK-ra és a MySQL rugalmas kiszolgálóra":::
+   :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="A Wordpress telepítése sikeres a rugalmas AKS- és MySQL-kiszolgálón":::
 
 >[!NOTE]
-> - A WordPress-webhely jelenleg nem HTTPS protokollt használ. Javasoljuk, hogy [a TLS-t a saját tanúsítványainak használatával engedélyezze](../../aks/ingress-own-tls.md).
-> - A fürthöz [http-útválasztást](../../aks/http-application-routing.md) is engedélyezhet.
+> - A WordPress webhely jelenleg nem használ HTTPS-t. Javasoljuk, hogy engedélyezze a [TLS-t a saját tanúsítványokkal.](../../aks/ingress-own-tls.md)
+> - Engedélyezheti a [HTTP-útválasztást](../../aks/http-application-routing.md) a fürt számára.
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Az Azure-díjak elkerülése érdekében érdemes felesleges erőforrásokat megtisztítani.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name wordpress-project --yes --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését](../../aks/kubernetes-service-principal.md#additional-considerations) ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését](../../aks/kubernetes-service-principal.md#additional-considerations) ismertető cikket. Ha felügyelt identitást használt, az identitást a platform kezeli, és nem igényel eltávolítást.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [érheti el a Kubernetes webes irányítópultját](../../aks/kubernetes-dashboard.md) az AK-fürthöz
-- Ismerje meg, hogyan [méretezheti a fürtöt](../../aks/tutorial-kubernetes-scale.md)
-- Ismerje meg, hogyan kezelheti a [MySQL rugalmas kiszolgálót](./quickstart-create-server-cli.md)
-- Ismerje meg, hogyan konfigurálhatja az adatbázis-kiszolgáló [kiszolgálói paramétereit](./how-to-configure-server-parameters-cli.md) .
+- Megtudhatja, hogyan férhet hozzá az AKS-fürthöz használt [Kubernetes webes](../../aks/kubernetes-dashboard.md) irányítópultjához
+- Ismerje meg, hogyan [skálázható a fürt](../../aks/tutorial-kubernetes-scale.md)
+- Megtudhatja, hogyan kezelheti rugalmas [MySQL-kiszolgálóját](./quickstart-create-server-cli.md)
+- Megtudhatja, [hogyan konfigurálhatja az adatbázis-kiszolgáló](./how-to-configure-server-parameters-cli.md) kiszolgálóparaméterét.
 

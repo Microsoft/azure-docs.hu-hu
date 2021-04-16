@@ -1,45 +1,45 @@
 ---
-title: Spring Cloud Resilience4J Circuit Breaker-metrikák összegyűjtése mikrométersel
-description: A Spring Cloud Resilience4J Circuit Breaker metrikáinak összegyűjtése a mikrométerekkel az Azure Spring Cloudban.
+title: A Spring Cloud Resilience4J áramkör-megszakító metrika gyűjtése a Micrometerrel
+description: Resilience4J megszakító metrikák gyűjtése Spring Cloud Micrometerrel a Azure Spring Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fedebd9182c168b9b7c455d5f6726e66720e0a8b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258180"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479159"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Spring Cloud Resilience4J Circuit Breaker-metrikák összegyűjtése mikrométersel (előzetes verzió)
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>A Spring Cloud Resilience4J áramkör-megszakító metrika gyűjtése a Mikrométerrel (előzetes verzió)
 
-Ebből a dokumentumból megtudhatja, hogyan gyűjthet a Spring Cloud Resilience4j Circuit Breaker mérőszámait Application Insights Java folyamaton belüli ügynökkel. Ezzel a funkcióval nyomon követheti a resilience4j áramkör-megszakító metrikáit a Application Insights és a Mikrométer használatával.
+Ez a dokumentum bemutatja, hogyan gyűjthet Spring Cloud Resilience4j megszakító metrikákat Application Insights Java folyamaton belül ügynökkel. Ezzel a funkcióval a Micrometerrel monitorhatja a resilience4j áramkör-megszakító Application Insights metrikákat.
 
-A [Spring-Cloud-Circuit-Breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) használatával megmutatjuk, hogyan működik.
+A [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) segítségével mutatjuk be a működését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Java-In-Process ügynök engedélyezése a [java In-Process-ügynökből Application Insights útmutatóhoz](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights). 
+* Engedélyezze a Java In-Process-ügynököt a [Java In-Process Agent for Application Insights útmutatóban.](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights) 
 
-* A [Application Insights útmutatóban](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)engedélyezze a resilience4j-metrikák dimenzióinak gyűjtését.
+* Engedélyezze a dimenziógyűjtést a resilience4j metrikákhoz a [Application Insights útmutatóban.](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)
 
-* Ha a fejlesztői számítógép még nem használja, telepítse a git, a Maven és a Java rendszert.
+* Telepítse a gitet, a Mavent és a Javát, ha még nincs használatban a fejlesztői számítógép.
 
 ## <a name="build-and-deploy-apps"></a>Alkalmazások létrehozása és üzembe helyezése
 
-Az alábbi eljárás az alkalmazásokat építi és telepíti.
+Az alábbi eljárás alkalmazásokat épít fel és telepít.
 
-1. A bemutató tárház klónozása és összeállítása.
+1. Klónozza és készítse el a bemutató adattárat.
 
 ```bash
 git clone https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo.git
 cd spring-cloud-circuitbreaker-demo && mvn clean package -DskipTests
 ```
 
-2. Végpontokkal rendelkező alkalmazások létrehozása
+2. Alkalmazások létrehozása végpontokkal
 
 ```azurecli
 az spring-cloud app create --name resilience4j --assign-endpoint \
@@ -48,7 +48,7 @@ az spring-cloud app create --name reactive-resilience4j --assign-endpoint \
     -s ${asc-service-name} -g ${asc-resource-group}
 ```
 
-3. Alkalmazások telepítése.
+3. Alkalmazások üzembe helyezése.
 
 ```azurecli
 az spring-cloud app deploy -n resilience4j \
@@ -61,7 +61,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 > [!Note]
 >
-> * Adja meg a Resilience4j szükséges függőséget:
+> * Tartalmazza a Resilience4j kötelező függőségét:
 >
 >   ```xml
 >   <dependency>
@@ -73,9 +73,9 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >       <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 >   </dependency>
 >   ```
-> * Az ügyfél kódjának a () API-ját kell használnia `CircuitBreakerFactory` , amely `bean` automatikusan létrejön, amikor a rugós Felhőbeli áramkör-megszakítót is tartalmazza. Részletekért lásd: [Spring Cloud Circuit Breaker](https://spring.io/projects/spring-cloud-circuitbreaker#overview).
+> * Az ügyfélkódnak a API-ját kell használnia, amely automatikusan létrehozottként lesz megvalósítva, ha Spring Cloud `CircuitBreakerFactory` `bean` megszakító indítóval. További részletek: [Spring Cloud megszakító.](https://spring.io/projects/spring-cloud-circuitbreaker#overview)
 >
-> * A következő két függőség ütközik a fenti resilient4j-csomagokkal.  Ügyeljen arra, hogy az ügyfél ne tartalmazza azokat.
+> * Az alábbi 2 függőség ütközik a fenti resilient4j csomagokkal.  Győződjön meg arról, hogy az ügyfél nem tartalmazza őket.
 >
 >   ```xml
 >   <dependency>
@@ -89,7 +89,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >   ```
 >
 >
-> Navigáljon az átjáró-alkalmazások által megadott URL-címhez, és nyissa meg a végpontot a [Spring-Cloud-Circuit-megszakító-demóból](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) a következőképpen:
+> Lépjen az átjáróalkalmazások által biztosított URL-címre, és nyissa meg a végpontot a [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) webhelyről a következőképpen:
 >
 >   ```console
 >   /get
@@ -97,34 +97,34 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >   /get/fluxdelay/{seconds}
 >   ```
 
-## <a name="locate-resilence4j-metrics-from-portal"></a>Resilence4j-metrikák megkeresése a portálról
+## <a name="locate-resilence4j-metrics-from-portal"></a>Resilence4j-metrikák keresése a portálon
 
-1. Válassza ki a **Application Insights** panelt az Azure Spring Cloud Portalon, és kattintson az **Application Insights** elemre.
+1. Válassza a **Application Insights** panelt Azure Spring Cloud portálon, majd kattintson a **Application Insights** elemre.
 
    [![resilience4J 0](media/spring-cloud-resilience4j/resilience4J-0.png)](media/spring-cloud-resilience4j/resilience4J-0.PNG)
 
-2. Válassza a **metrikák** lehetőséget a **Application Insights** lapon.  Válassza az **Azure. applicationinsights** elemet a **metrikák névtérből**.  Válassza ki az **átlagos** **resilience4j_circuitbreaker_buffered_calls** metrikákat is.
+2. Válassza **a Metrikák** lehetőséget **Application Insights** lapon.  Válassza **ki az azure.applicationinsights adatokat** a **Metrics namespace (Metrikák névtere) közül.**  A **metrikák resilience4j_circuitbreaker_buffered_calls** az Average (Átlag) **beállítással.**
 
-   [![1. resilience4J](media/spring-cloud-resilience4j/resilience4J-1.png)](media/spring-cloud-resilience4j/resilience4J-1.PNG)
+   [![resilience4J 1](media/spring-cloud-resilience4j/resilience4J-1.png)](media/spring-cloud-resilience4j/resilience4J-1.PNG)
 
-3. Válassza ki **resilience4j_circuitbreaker_calls** mérőszámokat és **átlagot**.
+3. Válassza **resilience4j_circuitbreaker_calls** metrikák és az **Átlag lehetőséget.**
 
-   [![2. resilience4J](media/spring-cloud-resilience4j/resilience4J-2.png)](media/spring-cloud-resilience4j/resilience4J-2.PNG)
+   [![resilience4J 2](media/spring-cloud-resilience4j/resilience4J-2.png)](media/spring-cloud-resilience4j/resilience4J-2.PNG)
 
-4. Válassza ki **resilience4j_circuitbreaker_calls**  mérőszámokat és **átlagot**.  Kattintson a **szűrő hozzáadása** lehetőségre, majd válassza a név **createNewAccount** lehetőséget.
+4. Válassza **resilience4j_circuitbreaker_calls** metrikák és az **Átlag lehetőséget.**  Kattintson **az Add filter (Szűrő hozzáadása)** elemre, majd válassza a name (név) **lehetőséget: createNewAccount**.
 
-   [![3. resilience4J](media/spring-cloud-resilience4j/resilience4J-3.png)](media/spring-cloud-resilience4j/resilience4J-3.PNG)
+   [![resilience4J 3](media/spring-cloud-resilience4j/resilience4J-3.png)](media/spring-cloud-resilience4j/resilience4J-3.PNG)
 
-5. Válassza ki **resilience4j_circuitbreaker_calls**  mérőszámokat és **átlagot**.  Ezután kattintson a **felosztás alkalmazása** lehetőségre, és válassza a **fajta** lehetőséget.
+5. Válassza **resilience4j_circuitbreaker_calls** metrikák és az **Átlag lehetőséget.**  Ezután kattintson a **Felosztás alkalmazása elemre,** és válassza az **kind lehetőséget.**
 
-   [![4. resilience4J](media/spring-cloud-resilience4j/resilience4J-4.png)](media/spring-cloud-resilience4j/resilience4J-4.PNG)
+   [![resilience4J 4](media/spring-cloud-resilience4j/resilience4J-4.png)](media/spring-cloud-resilience4j/resilience4J-4.PNG)
 
-6. Válassza a **resilience4j_circuitbreaker_calls**, "**resilience4j_circuitbreaker_buffered_calls** és **resilience4j_circuitbreaker_slow_calls** mérőszámok **átlagot**.
+6. Válassza **resilience4j_circuitbreaker_calls**, a **' resilience4j_circuitbreaker_buffered_calls**, és **resilience4j_circuitbreaker_slow_calls** a metrikákat az Average (Átlag) **értékekkel.**
 
-   [![5. resilience4J](media/spring-cloud-resilience4j/resilience4j-5.png)](media/spring-cloud-resilience4j/resilience4j-5.PNG)
+   [![resilience4J 5](media/spring-cloud-resilience4j/resilience4j-5.png)](media/spring-cloud-resilience4j/resilience4j-5.PNG)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Application bepillantást](spring-cloud-howto-application-insights.md)
+* [Application Insights](spring-cloud-howto-application-insights.md)
 * [Elosztott nyomkövetés](spring-cloud-howto-distributed-tracing.md)
-* [Áramkör-megszakító irányítópultja](spring-cloud-tutorial-circuit-breaker.md)
+* [Áramkör-megszakító irányítópult](spring-cloud-tutorial-circuit-breaker.md)

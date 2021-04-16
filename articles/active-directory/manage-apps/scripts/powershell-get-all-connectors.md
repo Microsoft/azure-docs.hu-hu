@@ -1,9 +1,9 @@
 ---
-title: PowerShell-minta – az összes alkalmazásproxy-összekötő csoport listázása
-description: PowerShell-példa, amely felsorolja az összes Azure Active Directory-(Azure AD-) alkalmazásproxy-összekötő csoportot és összekötőt a címtárban.
+title: PowerShell-minta – Az összes alkalmazásproxy listája
+description: PowerShell-példa, amely felsorolja az Azure Active Directory (Azure AD) alkalmazásproxy összekötőcsoportokat és összekötőket a címtárban.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9ece8ab2f48981669347ea41badd3e9fbf05dc6c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 032d4930e29126ec9636e710f016d9612dc2cda0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548983"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377564"
 ---
-# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Az összes összekötő-csoport és összekötő beolvasása a címtárban
+# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>A címtárban található összes összekötőcsoport és összekötő lekérte
 
-Ez a PowerShell-parancsfájl például felsorolja az összes Azure Active Directory (Azure AD) alkalmazásproxy-összekötő csoportját és összekötőjét a címtárban.
+Ez a PowerShell-példaszk Azure Active Directory (Azure AD) alkalmazásproxy a címtárban található összes összekötőcsoportot és összekötőt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Ez a PowerShell-parancsfájl például felsorolja az összes Azure Active Direct
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph](/powershell/azure/active-directory/install-adv2) modulra (AzureAD) vagy az [AzureAD V2 PowerShell for Graph-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) előzetes verziójára (AzureADPreview) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,11 +38,11 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADApplicationProxyConnectorGroup](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup) | Lekéri az összes összekötő csoport listáját, vagy ha meg van adva, a megadott összekötő-csoport részleteit. |
-| [Get-AzureADApplicationProxyConnectorGroupMembers](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers) | Az egyes összekötő csoportokhoz társított összes alkalmazásproxy-összekötő beolvasása.|
+| [Get-AzureADApplicationProxyConnectorGroup](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup) | Lekéri az összes összekötőcsoport listáját, vagy ha meg van adva, a megadott összekötőcsoport részleteit. |
+| [Get-AzureADApplicationProxyConnectorGroupMembers](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers) | Le alkalmazásproxy összekötőkhöz társított összes összekötőt.|
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+További információ az Azure AD PowerShell-modulról: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).
+További PowerShell-példák a alkalmazásproxy: [Azure AD PowerShell-példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)

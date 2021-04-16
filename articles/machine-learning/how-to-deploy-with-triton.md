@@ -1,7 +1,7 @@
 ---
-title: A Triton-t (előzetes verzió) kiszolgáló nagy teljesítményű modell
+title: A Tritonnal kiszolgált nagy teljesítményű modell (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezheti üzembe a modellt az NVIDIA Triton Azure Machine Learning-kiszolgálóval.
+description: Megtudhatja, hogyan helyezheti üzembe a modellt az NVIDIA Triton Inference Serverrel a Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,89 +10,89 @@ author: gvashishtha
 ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107839"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479270"
 ---
-# <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
+# <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton következtetési kiszolgálóval (előzetes verzió) 
 
-Ismerje meg, hogyan használhatja az [NVIDIA Triton-alapú kiszolgáló](https://aka.ms/nvidia-triton-docs) szolgáltatást a modell következtetéséhez használt webszolgáltatás teljesítményének növelésére.
+Megtudhatja, hogyan használhatja az [NVIDIA Triton dedukenciakiszolgálót](https://aka.ms/nvidia-triton-docs) a modelldedukenciához használt webszolgáltatás teljesítményének javítására.
 
-A modell üzembe helyezésének egyik módja webszolgáltatásként használható. Például egy üzembe helyezés az Azure Kubernetes Service-ben vagy a Azure Container Instances. Alapértelmezés szerint a Azure Machine Learning egy többszálú, *általános célú* webes keretrendszert használ a webszolgáltatások üzembe helyezéséhez.
+A modellek következtetéshez való üzembe helyezésének egyik módja a webszolgáltatás. Például egy központi telepítést Azure Kubernetes Service vagy Azure Container Instances. Alapértelmezés szerint a Azure Machine Learning egyszálas, általános  célú webes keretrendszert használ a webszolgáltatás üzembe helyezéséhez.
 
-A Triton egy *következtetésre optimalizált* keretrendszer. A GPU-k jobb kihasználtságát és költséghatékonyabb következtetéseket biztosít. A kiszolgálóoldali, a beérkező kéréseket kötegbe állítja, és elküldi ezeket a kötegeket a következtetésekhez. A kötegelt feldolgozás jobban kihasználja a GPU-erőforrásokat, és a Triton teljesítményének kulcsfontosságú része.
+A Triton egy következtetésre optimalizált *keretrendszer.* Jobb GPU-kihasználtságot és költséghatékonyabb következtetést biztosít. A kiszolgálóoldalon kötege a bejövő kéréseket, és dedoklánsan elküldi ezeket a kötegeket. A kötegek jobban kihasználják a GPU-erőforrásokat, és a Triton teljesítményének kulcsfontosságú részét képezi.
 
 > [!IMPORTANT]
-> A Triton használata a Azure Machine Learning szolgáltatásból való üzembe helyezéshez jelenleg __előzetes__ verzióban érhető el. Előfordulhat, hogy az előzetes verzió funkcióit nem fedi le az ügyfélszolgálat. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> A Triton használata a Azure Machine Learning jelenleg előzetes verzióban __érhető el.__ Előfordulhat, hogy az előzetes verziójú funkciókra nem vonatkozik az ügyfélszolgálat. További információ: Kiegészítő használati feltételek a Microsoft Azure [előzetes verziókhoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
-> A dokumentumban szereplő kódrészletek szemléltető célokat szolgálnak, és nem mutatnak teljes megoldást. A következő példában a [Triton végpontok közötti mintáit Azure Machine Learningban](https://aka.ms/triton-aml-sample)tekintheti meg.
+> A dokumentumban a kódrészletek szemléltető célokat szolgálnak, és előfordulhat, hogy nem mutatnak teljes megoldást. Példakódokért tekintse meg a [Triton](https://aka.ms/triton-aml-sample)teljes mintáit a Azure Machine Learning.
 
 > [!NOTE]
-> Az [NVIDIA Triton következtetési kiszolgáló](https://aka.ms/nvidia-triton-docs) egy olyan nyílt forráskódú, külső gyártótól származó szoftver, amely Azure Machine Learningbe van integrálva.
+> [Az NVIDIA Triton Inference Server](https://aka.ms/nvidia-triton-docs) egy nyílt forráskódú, harmadik féltől származó szoftver, amely integrálva van a Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
-* Ismerje meg, [Hogyan és hol helyezheti üzembe a modelleket Azure Machine learning használatával](how-to-deploy-and-where.md) .
-* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/) **vagy** az [Azure CLI](/cli/azure/) és a [Machine learning bővítmény](reference-azure-machine-learning-cli.md).
-* A Docker egy működő telepítése a helyi teszteléshez. A Docker telepítésével és ellenőrzésével kapcsolatos információkért lásd: [Tájolás és beállítás](https://docs.docker.com/get-started/) a Docker dokumentációjában.
+* Egy **Azure-előfizetés**. Ha még nincs ilyen verziója, próbálja ki az ingyenes vagy fizetős [Azure Machine Learning.](https://aka.ms/AMLFree)
+* Jártasság a modell üzembe [helyezésének és helyének Azure Machine Learning.](how-to-deploy-and-where.md)
+* A [Azure Machine Learning SDK for Python vagy](/python/api/overview/azure/ml/) **az** [Azure CLI](/cli/azure/) és a Machine [Learning bővítmény.](reference-azure-machine-learning-cli.md)
+* A Docker működő telepítése helyi teszteléshez. A Docker telepítésével és érvényesítésével kapcsolatos információkért lásd a Docker dokumentációjának [Tájolás](https://docs.docker.com/get-started/) és beállítás lépését.
 
 ## <a name="architectural-overview"></a>Az architektúra áttekintése
 
-Mielőtt a Tritont a saját modelljére próbálja használni, fontos tisztában lennie azzal, hogyan működik együtt a Azure Machine Learning, és hogyan hasonlítja össze az alapértelmezett központi telepítéssel.
+Mielőtt megpróbálja használni a Tritont a saját modelljéhez, fontos megértenie, hogyan működik együtt a Azure Machine Learning és hogyan viszonyul az alapértelmezett üzemelő példányhoz.
 
 **Alapértelmezett üzembe helyezés Triton nélkül**
 
-* Több [Gunicorn](https://gunicorn.org/) -feldolgozó is megkezdi a bejövő kérések egyidejű kezelését.
-* Ezek a dolgozók az előfeldolgozást, a modell meghívását és a feldolgozás utáni folyamatokat kezelik. 
-* Az ügyfelek az __Azure ml pontozási URI-ját__ használják. Például: `https://myservice.azureml.net/score`.
+* Több [Gunicorn-dolgozó](https://gunicorn.org/) is egyidejűleg kezeli a bejövő kéréseket.
+* Ezek a feldolgozók kezelik az előfeldolgozást, a modell hívását és az utófeldolgozást. 
+* Az ügyfelek az __Azure ML pontozási URI-ját használják.__ Például: `https://myservice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normál, nem Triton, üzembe helyezési architektúra diagramja":::
+:::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normál, nem triton, üzembe helyezési architektúra ábrája":::
 
-**Üzembe helyezés közvetlenül a Triton-ban**
+**Üzembe helyezés a Tritonnal közvetlenül**
 
-* A kérések közvetlenül a Triton-kiszolgálóra mennek.
-* A Triton a GPU-kihasználtság maximalizálása érdekében a kötegekben dolgozza fel a kérelmeket.
-* Az ügyfél a __TRITON URI__ -t használja a kérések elvégzéséhez. Például: `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
+* A kérések közvetlenül a Triton-kiszolgálóhoz mennek.
+* A Triton kötegben dolgozza fel a kérelmeket a GPU-kihasználtság maximalizálása érdekében.
+* Az ügyfél a __Triton URI-t használja__ a kérések igényléshez. Például: `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig üzembe helyezés csak a Triton-mel és a Python middleware-vel":::
+:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig üzemelő példány csak Tritonnal, pythonos middleware nélkül":::
 
-**Konfiguráció központi telepítése a Tritontal**
+**Dedúenciakonfiguráció üzembe helyezése a Tritonnal**
 
-* Több [Gunicorn](https://gunicorn.org/) -feldolgozó is megkezdi a bejövő kérések egyidejű kezelését.
-* A rendszer továbbítja a kéréseket a **Triton-kiszolgálónak**. 
-* A Triton a GPU-kihasználtság maximalizálása érdekében a kötegekben dolgozza fel a kérelmeket.
-* Az ügyfél az __Azure ml pontozási URI__ -t használja a kérések elvégzéséhez. Például: `https://myservice.azureml.net/score`.
+* Több [Gunicorn-dolgozó](https://gunicorn.org/) is egyidejűleg kezeli a bejövő kéréseket.
+* A kéréseket a rendszer továbbítja a **Triton-kiszolgálónak.** 
+* A Triton kötegben dolgozza fel a kérelmeket a GPU-kihasználtság maximalizálása érdekében.
+* Az ügyfél az __Azure ML pontozási URI-ját használja__ a kérések igényléshez. Például: `https://myservice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Üzembe helyezés a Triton és a Python middleware-vel":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Üzembe helyezés a Triton és a Python middleware használatával":::
 
-A Triton a modell üzembe helyezéséhez használt munkafolyamat a következő:
+A Triton a következő munkafolyamatot használja a modell üzembe helyezéséhez:
 
-1. A modellt közvetlenül a Tritonból is kiszolgálhatja.
-1. Ellenőrizze, hogy küldhet-e kéréseket a Triton által üzembe helyezett modellbe.
-1. Választható Python middleware-réteg létrehozása a kiszolgálóoldali előzetes és utólagos feldolgozáshoz
+1. A modell közvetlen kiszolgálása a Tritonnal.
+1. Ellenőrizze, hogy küldhet-e kéréseket a Triton által üzembe helyezett modellnek.
+1. (Nem kötelező) Python-középső szoftverréteg létrehozása kiszolgálóoldali elő- és utófeldolgozáshoz
 
-## <a name="deploying-triton-without-python-pre--and-post-processing"></a>A Triton telepítése a Python előtti és utáni feldolgozás nélkül
+## <a name="deploying-triton-without-python-pre--and-post-processing"></a>A Triton üzembe helyezése Python elő- és utófeldolgozás nélkül
 
 Először kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a Triton-következtetési kiszolgáló képes-e a modell kiszolgálására.
 
-### <a name="optional-define-a-model-config-file"></a>Választható Modell konfigurációs fájljának definiálása
+### <a name="optional-define-a-model-config-file"></a>(Nem kötelező) Modell konfigurációs fájlja definiálva
 
-A modell konfigurációs fájlja azt mutatja be, hogy a Triton hány bemenetet vár, és hogy milyen dimenziók lesznek a bemenetek. A konfigurációs fájl létrehozásával kapcsolatos további információkért lásd: [modell konfigurálása](https://aka.ms/nvidia-triton-docs) az NVIDIA dokumentációjában.
+A modellkonfigurációs fájl adja meg a Tritonnak, hogy hány bemenet várható, és hogy ezek milyen dimenziókban lesznek. További információ a konfigurációs fájl létrehozásáról: [Modellkonfiguráció](https://aka.ms/nvidia-triton-docs) az NVIDIA dokumentációjában.
 
 > [!TIP]
-> A `--strict-model-config=false` Triton következtetési kiszolgálójának indításakor a lehetőséget használjuk, ami azt jelenti, hogy nem kell megadnia egy `config.pbtxt` fájlt a ONNX vagy TensorFlow modellekhez.
+> A Triton Inference Server indításakor ezt a lehetőséget használjuk, ami azt jelenti, hogy nem kell fájlt adnia az `--strict-model-config=false` `config.pbtxt` ONNX- vagy TensorFlow-modellekhez.
 > 
-> További információ erről a lehetőségről: [generált modell konfigurálása](https://aka.ms/nvidia-triton-docs) az NVIDIA dokumentációjában.
+> Erről a beállításról az NVIDIA-dokumentáció [Generated model configuration (Létrehozott modellkonfiguráció)](https://aka.ms/nvidia-triton-docs) dokumentumában talál további információt.
 
-### <a name="use-the-correct-directory-structure"></a>A megfelelő címtár-struktúra használata
+### <a name="use-the-correct-directory-structure"></a>A megfelelő könyvtárstruktúra használata
 
-Azure Machine Learning-alapú modell regisztrálása esetén egyéni fájlokat vagy címtár-struktúrát is regisztrálhat. A Triton használatához a modell regisztrációjának olyan címtár-struktúrára kell mutatnia, amely tartalmazza a nevű könyvtárat `triton` . Ennek a könyvtárnak a általános szerkezete a következő:
+Amikor regisztrál egy modellt a Azure Machine Learning, egyéni fájlokat vagy könyvtárstruktúrát regisztrálhat. A Triton használata érdekében a modellregisztrációnak olyan címtárstruktúrához kell lennie, amely tartalmaz egy nevű `triton` könyvtárat. A könyvtár általános szerkezete a következő:
 
 ```bash
 models
@@ -106,7 +106,7 @@ models
 ```
 
 > [!IMPORTANT]
-> Ez a címtár-struktúra a Triton-modell tárháza, és a modell (ek) hoz való együttműködéshez szükséges. További információ: [Triton Model repositorys](https://aka.ms/nvidia-triton-docs) az NVIDIA dokumentációjában.
+> Ez a könyvtárstruktúra egy Triton Model-adattár, és ahhoz szükséges, hogy a modell(ek) együtt dolgozva dolgoz(nak) a Tritonnal. További információt az [NVIDIA-dokumentáció Triton Model Repositories (Triton-modelltárak)](https://aka.ms/nvidia-triton-docs) dokumentumában talál.
 
 ### <a name="register-your-triton-model"></a>A Triton-modell regisztrálása
 
@@ -116,12 +116,12 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-A szolgáltatással kapcsolatos további információkért `az ml model register` olvassa el a [dokumentációt](/cli/azure/ext/azure-cli-ml/ml/model).
+A ről a `az ml model register` referenciadokumentációban [talál további információt.](/cli/azure/ext/azure-cli-ml/ml/model)
 
-A modell Azure Machine Learning-ben való regisztrálása során a paraméter értékének `--model-path  -p` a Triton szülőjének mappájának kell lennie.  
-A fenti példában a  `--model-path` "models".
+Amikor regisztrálja a modellt a Azure Machine Learning, a paraméter értékének a Triton szülőmappa nevének `--model-path  -p` kell lennie.  
+A fenti példában  `--model-path` a "models" (modellek) lesz.
 
-A példában szereplő `--name  -n` "my_triton_model" paraméter értéke a Azure Machine learning-munkaterület ismert modell neve lesz. 
+A példában `--name  -n` a à€ ̃ my_triton_modelâ™ paraméter értéke lesz a modell neve, Azure Machine Learning-munkaterület. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -142,7 +142,7 @@ model = Model.register(
 )
 
 ```
-További információkért tekintse meg a [modell osztály](/python/api/azureml-core/azureml.core.model.model)dokumentációját.
+További információért tekintse meg a [Model osztály dokumentációját.](/python/api/azureml-core/azureml.core.model.model)
 
 ---
 
@@ -150,7 +150,7 @@ További információkért tekintse meg a [modell osztály](/python/api/azureml-
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Ha olyan GPU-kompatibilis Azure Kubernetes Service-fürtöt használ, amelyet az Azure Machine Learning használatával hoztak létre, akkor a következő paranccsal telepítheti a modellt.
+Ha az "aks-gpu" nevű GPU Azure Kubernetes Service-kompatibilis fürtöt Azure Machine Learning, a következő paranccsal helyezheti üzembe a modellt.
 
 ```azurecli
 az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.json --compute-target aks-gpu
@@ -183,11 +183,11 @@ service = Model.deploy(
 ```
 ---
 
-A [modellek üzembe helyezésével kapcsolatos további információkért tekintse meg ezt a dokumentációt](how-to-deploy-and-where.md).
+A [modellek üzembe helyezésével kapcsolatos további részletekért tekintse meg ezt a dokumentációt.](how-to-deploy-and-where.md)
 
-### <a name="call-into-your-deployed-model"></a>Hívás az üzembe helyezett modellbe
+### <a name="call-into-your-deployed-model"></a>Az üzembe helyezett modell hívása
 
-Először szerezze be a pontozási URI-t és a tulajdonosi jogkivonatokat.
+Először szerezze be a pontozási URI-t és a bearer tokeneket.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -207,13 +207,13 @@ print(service.get_keys())
 
 ---
 
-Ezt követően győződjön meg arról, hogy a szolgáltatás fut: 
+Ezután a következővel győződjön meg arról, hogy a szolgáltatás fut: 
 
 ```{bash}
 !curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
 ```
 
-Ez a parancs a következőhöz hasonló adatokat ad vissza. Megjegyzés: a `200 OK` ; Ez az állapot azt jelenti, hogy a webkiszolgáló fut.
+Ez a parancs az alábbihoz hasonló információkat ad vissza. Figyelje meg `200 OK` a ; ez az állapot azt jelenti, hogy a webkiszolgáló fut.
 
 ```{bash}
 *   Trying 127.0.0.1:8000...
@@ -228,22 +228,22 @@ Ez a parancs a következőhöz hasonló adatokat ad vissza. Megjegyzés: a `200 
 HTTP/1.1 200 OK
 ```
 
-Ha elvégezte az állapot-ellenőrzés végrehajtását, létrehozhat egy ügyfelet, amellyel az adatküldés a Triton for következtetésre történik. Az ügyfelek létrehozásával kapcsolatos további információkért tekintse meg az NVIDIA dokumentációjában található [ügyfél-példákat](https://aka.ms/nvidia-client-examples) . [A Triton githubon](https://aka.ms/nvidia-triton-docs)is vannak Python-minták.
+Miután végrehajtott egy állapotellenőrzést, létrehozhat egy ügyfelet, amely adatokat küld a Tritonnak dedüklációra. Az ügyfelek létrehozásával kapcsolatos további [](https://aka.ms/nvidia-client-examples) információkért tekintse meg az NVIDIA dokumentációjában található ügyfélpémentációkat. [Python-minták is elérhetők a Triton GitHubon.](https://aka.ms/nvidia-triton-docs)
 
-Ezen a ponton, ha nem kívánja hozzáadni a Python előtti és utáni feldolgozást a telepített webszolgáltatáshoz, akkor lehet, hogy készen áll. Ha ezt az előkészítő és a feldolgozás utáni logikát szeretné hozzáadni, olvassa el a következőt:.
+Ha ezen a ponton nem szeretne python elő- és utófeldolgozást hozzáadni az üzembe helyezett webszolgáltatáshoz, akkor lehet, hogy már kész is van. Ha hozzá szeretné adni ezt az elő- és utófeldolgozási logikát, olvasson tovább.
 
-## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>Választható Ismételt üzembe helyezés egy Python-bejegyzési parancsfájllal az előzetes és a feldolgozás után
+## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>(Nem kötelező) Újra üzembe helyezés Python-bejegyzési szkript használatával elő- és utófeldolgozáshoz
 
-Miután meggyőződött róla, hogy a Triton képes kiszolgálni a modellt, az előzetes és a feldolgozás utáni kódokat a _bejegyzési parancsfájl_ definiálásával adhatja hozzá. A fájl neve `score.py` . A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [bejegyzési parancsfájl definiálása](how-to-deploy-and-where.md#define-an-entry-script).
+Miután ellenőrizte, hogy a Triton képes-e a modell kiszolgálására, hozzáadhat egy elő- és utófeldolgozási kódot egy bejegyzési _szkript definiálása után._ Ennek a fájlnak a neve `score.py` . A bejegyzési szkriptekkel kapcsolatos további információkért lásd: [Bejegyzési parancsfájl definiálás.](how-to-deploy-and-where.md#define-an-entry-script)
 
-A két fő lépés egy Triton HTTP-ügyfél inicializálása a `init()` metódusban, valamint az ügyfélnek a függvényben való meghívása `run()` .
+A két fő lépés egy Triton HTTP-ügyfél inicializálása a metódusban, valamint az ügyfél hívása a `init()` `run()` függvényben.
 
 ### <a name="initialize-the-triton-client"></a>A Triton-ügyfél inicializálása
 
-Az alábbi példához hasonló kódot adjon meg a `score.py` fájlhoz. A Triton a Azure Machine Learning a localhost, a 8000-es portra vár. Ebben az esetben a localhost az üzemelő példány Docker-rendszerképében található, nem pedig a helyi gépen lévő port:
+A fájlba foglalja bele az alábbi példához hasonló `score.py` kódot. A triton Azure Machine Learning azt várja, hogy a localhoston, a 8000-es porton lesz címzve. Ebben az esetben a localhost az üzemelő példány Docker-rendszerképében található, nem pedig a helyi gépen lévő porton:
 
 > [!TIP]
-> A `tritonhttpclient` pip-csomag a kurátori környezet részét képezi `AzureML-Triton` , így nem kell megadnia pip-függőségként.
+> A pip csomag megtalálható a összecsomagzott környezetben, ezért nem szükséges `tritonhttpclient` `AzureML-Triton` pip-függőségként megadni.
 
 ```python
 import tritonhttpclient
@@ -253,12 +253,12 @@ def init():
     triton_client = tritonhttpclient.InferenceServerClient(url="localhost:8000")
 ```
 
-### <a name="modify-your-scoring-script-to-call-into-triton"></a>Pontozási parancsfájl módosítása a Tritonba való híváshoz
+### <a name="modify-your-scoring-script-to-call-into-triton"></a>A pontozó szkript módosítása a Tritonba való híváshoz
 
-Az alábbi példa bemutatja, hogyan lehet dinamikusan kérelmezni a modell metaadatait:
+Az alábbi példa bemutatja, hogyan kérhet dinamikusan metaadatokat a modellhez:
 
 > [!TIP]
-> A Triton-ügyféllel betöltött modellek metaadatait dinamikusan kérheti le a `.get_model_metadata` Triton-ügyfél metódusának használatával. Tekintse meg a [minta jegyzetfüzetet](https://aka.ms/triton-aml-sample) a használatáról.
+> A Triton-ügyfél metódusával dinamikusan kérheti le a Tritonnal betöltött `.get_model_metadata` modellek metaadatait. A [használatra a mintajegyzetfüzetben](https://aka.ms/triton-aml-sample) láthat példát.
 
 ```python
 input = tritonhttpclient.InferInput(input_name, data.shape, datatype)
@@ -277,19 +277,19 @@ res = triton_client.infer(model_name,
 
 <a id="redeploy"></a>
 
-### <a name="redeploy-with-an-inference-configuration"></a>Újbóli üzembe helyezés a következtetési konfigurációval
+### <a name="redeploy-with-an-inference-configuration"></a>Ismételt üzembe ásás következtetési konfigurációval
 
-A következtetési konfiguráció lehetővé teszi egy belépési parancsfájl használatát, valamint a Azure Machine Learning üzembe helyezési folyamatát a Python SDK vagy az Azure CLI használatával.
+A következtetési konfiguráció lehetővé teszi egy bejegyzési szkript használatát, valamint a Azure Machine Learning üzembe helyezési folyamatot a Python SDK vagy az Azure CLI használatával.
 
 > [!IMPORTANT]
-> Meg kell adnia a `AzureML-Triton` [kurátori környezetet](./resource-curated-environments.md).
+> Meg kell adnia a `AzureML-Triton` [összecsukott környezetet.](./resource-curated-environments.md)
 >
-> A Python-kód például `AzureML-Triton` egy másik, nevű környezetbe klónozott `My-Triton` . Az Azure CLI-kód ezt a környezetet is használja. A környezetek klónozásával kapcsolatos további információkért tekintse meg a [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) hivatkozást.
+> A Python-példakód klónja `AzureML-Triton` egy másik, nevű környezetbe `My-Triton` lesz klónozva. Az Azure CLI-kód is ezt a környezetet használja. A környezetek klónozásának további információiért tekintse meg az [Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) referenciáját.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 > [!TIP]
-> A következtetési beállítások létrehozásával kapcsolatos további információkért lásd: a [következtetések konfigurációs sémája](./reference-azure-machine-learning-cli.md#inference-configuration-schema).
+> A következtetési konfigurációk létrehozásával kapcsolatos további információkért lásd a következtetési konfigurációs [sémát.](./reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ```azurecli
 az ml model deploy -n triton-densenet-onnx \
@@ -339,24 +339,24 @@ print(local_service.scoring_uri)
 
 ---
 
-Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi telepítésben a következő lesz: `http://localhost:6789/score` . Ha a felhőbe telepíti a szolgáltatást, az az [ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI paranccsal kérheti le a pontozási URI-t.
+Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi üzemelő példányban a következő lesz: `http://localhost:6789/score` . Ha a felhőben helyez üzembe, az [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI-paranccsal le tudja szerezni a pontozási URI-t.
 
-További információ arról, hogyan hozhat létre olyan ügyfelet, amely a pontozási URI-ra vonatkozó következtetéseket küld: [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md).
+A következtetési kérelmeket a pontozási URI-nak ügyfélszámítógépek létrehozásáról lásd: Webszolgáltatásként üzembe helyezett [modell igénybe helyezése.](how-to-consume-web-service.md)
 
-### <a name="setting-the-number-of-workers"></a>A feldolgozók számának beállítása
+### <a name="setting-the-number-of-workers"></a>A dolgozók számának beállítása
 
-Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](/python/api/azureml-core/azureml.core.environment.environment) objektum `env` , a következőket teheti:
+Az üzemelő példányban a munkamunkások számának beállítását a környezeti változóval állíthatja `WORKER_COUNT` be. Ha van egy [nevű környezeti](/python/api/azureml-core/azureml.core.environment.environment) objektuma, a `env` következőket teheti:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"
 ```
 
-Ez azt jelzi, hogy az Azure ML felgyorsítja a megadott munkavégzők számát.
+Ez arra fogja szólni az Azure ML-t, hogy adja meg a megadott számú dolgozókat.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy továbbra is használja a Azure Machine Learning munkaterületet, de szeretné megszabadulni a telepített szolgáltatástól, használja az alábbi lehetőségek egyikét:
+Ha azt tervezi, hogy továbbra is az Azure Machine Learning munkaterületet használja, de el szeretné szabadulni az üzembe helyezett szolgáltatástól, használja az alábbi lehetőségek egyikét:
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
@@ -374,15 +374,15 @@ local_service.delete()
 ---
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-* [Sikertelen üzembe helyezés hibáinak elhárítása](how-to-troubleshoot-deployment.md), a modell üzembe helyezése során felmerülő gyakori hibák elhárítása és megoldása.
+* [Sikertelen üzembe helyezés hibaelhárítása,](how-to-troubleshoot-deployment.md)megtudhatja, hogyan háríthatja el és háríthatja el a modellek üzembe helyezése során előforduló gyakori hibákat.
 
-* Ha a telepítési naplók azt mutatják, hogy a **TritonServer nem indult el**, tekintse meg az [NVIDIA nyílt forráskódú dokumentációját.](https://github.com/triton-inference-server/server)
+* Ha az üzembe helyezési naplók azt mutatják, hogy **a TritonServer** nem tudott elindulni, tekintse meg az Nvidia® ™ nyílt forráskódú [dokumentációját.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Lásd: a Triton végpontok közötti mintái Azure Machine Learning](https://aka.ms/aml-triton-sample)
-* Ismerje meg a [Triton-ügyfelek példáit](https://aka.ms/nvidia-client-examples)
-* A Triton-beli [következtetési kiszolgáló dokumentációjának](https://aka.ms/nvidia-triton-docs) beolvasása
+* [A Triton végpontok között mintái a Azure Machine Learning](https://aka.ms/aml-triton-sample)
+* Tekintse meg [a Triton-ügyfelek példái között](https://aka.ms/nvidia-client-examples)
+* Olvassa el [a Triton Inference Server dokumentációját](https://aka.ms/nvidia-triton-docs)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
-* [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
+* [Adatok gyűjtése éles modellekhez](how-to-enable-data-collection.md)

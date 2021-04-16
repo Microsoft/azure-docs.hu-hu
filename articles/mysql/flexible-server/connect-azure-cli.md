@@ -1,59 +1,59 @@
 ---
-title: 'Gyors útmutató: kapcsolat az Azure CLI használatával – Azure Database for MySQL – rugalmas kiszolgáló'
-description: Ez a rövid útmutató számos lehetőséget kínál az Azure CLI-vel való kapcsolódásra Azure Database for MySQL-rugalmas kiszolgálóval.
+title: 'Rövid útmutató: Csatlakozás az Azure CLI-Azure Database for MySQL – Rugalmas kiszolgáló'
+description: Ez a rövid útmutató számos lehetőséget kínál az Azure CLI-hez való csatlakozásra Azure Database for MySQL – rugalmas kiszolgálóval.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: d40dfa9c8a79625910414409ac3a6df7045c31f2
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: e0fd5969a3c4f84b6e8f98e99335bf120179e7af
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490913"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481089"
 ---
-# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Gyors útmutató: az Azure CLI-vel való kapcsolat és lekérdezés Azure Database for MySQL rugalmas kiszolgálóval
+# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Rövid útmutató: Csatlakozás és lekérdezés az Azure CLI-Azure Database for MySQL – Rugalmas kiszolgáló
 
 > [!IMPORTANT]
-> Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
+> Azure Database for MySQL – A rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure Database for MySQL rugalmas kiszolgálóhoz az Azure CLI és a ```az mysql flexible-server connect``` parancs használatával. Ez a parancs lehetővé teszi az adatbázis-kiszolgálóval való kapcsolat tesztelését, és a lekérdezések közvetlen futtatását a kiszolgálón.  A parancs futtatása interaktív módban is végezhető több lekérdezés futtatásához.
+Ez a rövid útmutató azt mutatja be, hogyan csatlakozhat rugalmas Azure Database for MySQL kiszolgálóhoz az Azure CLI és a ```az mysql flexible-server connect``` parancs használatával. Ezzel a paranccsal tesztelheti az adatbázis-kiszolgálóval való kapcsolatot, és lekérdezéseket futtathat közvetlenül a kiszolgálón.  A parancsot interaktív módban is futtathatja több lekérdezés futtatásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
-- Az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójának (2.20.0 vagy újabb) telepítése
-- Bejelentkezés az Azure CLI-vel a ```az login``` paranccsal 
-- A paraméterek megőrzésének bekapcsolása a következővel: ```az config param-persist on``` . A paraméterek megőrzése a helyi környezet használatát teszi lehetővé anélkül, hogy meg kellene ismételnie a sok argumentumot, például az erőforráscsoportot vagy a helyet.
+- Egy Azure-fiók. Ha még nincs előfizetése, [szerezze be az ingyenes próbaverziót.](https://azure.microsoft.com/free/)
+- Az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójának telepítése (2.20.0-s vagy újabb verzió)
+- Bejelentkezés az Azure CLI használatával a ```az login``` paranccsal 
+- Kapcsolja be a paramétermegőrzést a ```az config param-persist on``` következővel: . A paraméterek megőrzésével anélkül használhatja a helyi környezetet, hogy sok argumentumot, például erőforráscsoportot vagy helyet meg kell ismételnie.
 
-## <a name="create-an-mysql-flexible-server"></a>MySQL rugalmas kiszolgáló létrehozása
+## <a name="create-an-mysql-flexible-server"></a>Rugalmas MySQL-kiszolgáló létrehozása
 
-Először a felügyelt MySQL-kiszolgálót hozzuk létre. A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsfájlt, és jegyezze fel a **kiszolgáló nevét**, a **felhasználónevet** és a  **jelszót** a parancsból.
+Először a felügyelt MySQL-kiszolgálót hozzuk létre. A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő szkriptet, és jegyezze  fel  a parancsból létrehozott kiszolgálónevet, felhasználónevet és jelszót.
 
 ```azurecli
 az mysql flexible-server create --public-access <your-ip-address>
 ```
 
-További argumentumokat is megadhat ennek a parancsnak a testreszabásához. Az [az MySQL flexibilis-Server Create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create)összes argumentumának megjelenítése.
+A parancs testreszabásához további argumentumokat is meg lehet adni. Tekintse meg az [az mysql flexible-server create összes argumentumát.](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create)
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
-A következő parancs futtatásával hozzon létre egy adatbázist, **newdatabase** , ha még nem hozott létre egyet.
+Futtassa a következő parancsot egy új **adatbázis** létrehozásához, ha még nem hozott létre adatbázist.
 
 ```azurecli
 az mysql flexible-server db create -d newdatabase
 ```
 
-## <a name="view-all-the-arguments"></a>Az összes argumentum megtekintése
-A parancshoz tartozó összes argumentumot megtekintheti ```--help``` argumentummal. 
+## <a name="view-all-the-arguments"></a>Az összes megtekintése az argumentumok
+A parancs összes argumentumát megtekintheti a ```--help``` argumentummal. 
 
 ```azurecli
 az mysql flexible-server connect --help
 ```
 
-## <a name="test-database-server-connection"></a>Adatbázis-kiszolgáló kapcsolatok tesztelése
-Futtassa a következő szkriptet az adatbázishoz való kapcsolódás teszteléséhez és ellenőrzéséhez a fejlesztői környezetből.
+## <a name="test-database-server-connection"></a>Adatbázis-kiszolgáló kapcsolatának tesztelése
+Futtassa a következő szkriptet a fejlesztési környezetből származó adatbázissal való kapcsolat teszteléséhez és ellenőrzéséhez.
 
 ```azurecli
 az mysql flexible-server connect -n <servername> -u <username> -p <password> -d <databasename>
@@ -64,21 +64,21 @@ az mysql flexible-server connect -n <servername> -u <username> -p <password> -d 
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase
 ```
 
-A sikeres csatlakoztatáshoz a következő kimenetnek kell megjelennie:
+A sikeres csatlakozáshoz a következő kimenetnek kell látsza:
 
 ```output
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Connecting to newdatabase database.
 Successfully connected to mysqldemoserver1.
 ```
-Ha a kapcsolatok sikertelenek voltak, próbálkozzon a következő megoldásokkal:
-- Ellenőrizze, hogy a 3306-es port nyitva van-e az ügyfélszámítógépen.
-- Ha a kiszolgáló rendszergazdája felhasználóneve és jelszava helyes
-- Ha konfigurálta az ügyfélszámítógép tűzfalszabály-szabályát
-- Ha a kiszolgálót VPN-kapcsolaton keresztül konfigurálta a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
+Ha a kapcsolat sikertelen volt, próbálkozzon az alábbi megoldásokkal:
+- Ellenőrizze, hogy a 3306-os port nyitva van-e az ügyfélszámítógépen.
+- ha a kiszolgáló-rendszergazda felhasználóneve és jelszava helyes
+- ha konfigurált tűzfalszabályt az ügyfélszámítógéphez
+- Ha privát hozzáféréssel konfigurálta a kiszolgálót a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
 
 ## <a name="run-single-query"></a>Egyetlen lekérdezés futtatása
-Futtassa az alábbi parancsot egyetlen lekérdezés végrehajtásához argumentum használatával ```--querytext``` ```-q``` .
+Futtassa a következő parancsot egyetlen lekérdezés végrehajtásához a ```--querytext``` argumentum ```-q``` használatával.
 
 ```azurecli
 az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
@@ -89,7 +89,7 @@ az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" 
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
 ```
 
-Az alábbi ábrán látható kimenet jelenik meg:
+A kimenet az alábbi módon jelenik meg:
 
 ```output
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -110,8 +110,8 @@ test   200
 test   200
 ```
 
-## <a name="run-multiple-queries-using-interactive-mode"></a>Több lekérdezés futtatása interaktív mód használatával
-Az **interaktív** mód használatával több lekérdezést is futtathat. Az interaktív mód engedélyezéséhez futtassa a következő parancsot
+## <a name="run-multiple-queries-using-interactive-mode"></a>Több lekérdezés futtatása interaktív módban
+Az interaktív móddal több **lekérdezést is futtathat.** Az interaktív mód engedélyezéséhez futtassa a következő parancsot
 
 ```azurecli
 az mysql flexible-server connect -n <server-name> -u <username> -p <password> --interactive
@@ -122,7 +122,7 @@ az mysql flexible-server connect -n <server-name> -u <username> -p <password> --
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase --interactive
 ```
 
-A **MySQL** rendszerhéj felületét az alábbi ábrán látható módon fogja látni:
+Az alábbiakban látható **módon** megjelenik a MySQL-rendszerhéj:
 
 ```bash
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -157,6 +157,6 @@ Your preference of  are now saved to local context. To learn more, type in `az l
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-* [Csatlakozás Azure Database for MySQL-rugalmas kiszolgálóhoz titkosított kapcsolattal](how-to-connect-tls-ssl.md)
+* [Csatlakozás a Azure Database for MySQL – Titkosított kapcsolatokkal rugalmas kiszolgálóhoz](how-to-connect-tls-ssl.md)
 * [A kiszolgáló kezelése](./how-to-manage-server-cli.md)
 

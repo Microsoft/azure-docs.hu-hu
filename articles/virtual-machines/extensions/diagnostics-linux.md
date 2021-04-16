@@ -1,6 +1,6 @@
 ---
-title: Azure számítás – Linux diagnosztikai bővítmény 4,0
-description: Az Azure Linux diagnosztikai bővítmény (LAD) 4,0 konfigurálása az Azure-ban futó Linux rendszerű virtuális gépek metrikáinak és naplózási eseményeinek összegyűjtéséhez.
+title: Azure Compute – Linux 4.0-s diagnosztikai bővítmény
+description: Az Azure Linux diagnosztikai bővítmény (STB) 4.0 konfigurálása metrikák és naplóesemények gyűjtésére az Azure-ban futó Linux rendszerű virtuális gépekről.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
@@ -8,168 +8,178 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 4c4851ab28e5da74e7f1fa36f087ecfdabb1c638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e862915bcc524db50e7e66c969b713f729c64aa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560123"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479644"
 ---
-# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény 4,0 használata a metrikák és naplók figyeléséhez
+# <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux 4.0-s diagnosztikai bővítményével
 
-Ez a dokumentum a Linux diagnosztikai bővítmény 4,0-es és újabb verzióját ismerteti.
+Ez a dokumentum a Linux diagnosztikai bővítmény (BACKUP) legújabb verzióit ismerteti.
 
 > [!IMPORTANT]
-> A 3. * verzióval kapcsolatos információkért tekintse meg  [ezt a dokumentumot](./diagnostics-linux-v3.md). A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> További információ a 3.x verzióról:  [A 3.0-s Linux](./diagnostics-linux-v3.md)diagnosztikai bővítmény használata metrikák és naplók figyelése. További információ a 2.3-as és korábbi verziókról: Linux rendszerű virtuális gépek teljesítmény- és [diagnosztikai adatainak figyelése.](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)
 
 ## <a name="introduction"></a>Bevezetés
 
-A Linux diagnosztikai bővítmény segítségével a felhasználók figyelheti Microsoft Azure-on futó Linux rendszerű virtuális gépek állapotát. A következő képességekkel rendelkezik:
+A Linux diagnosztikai bővítménye segít a felhasználónak a virtuális gépen futó Linux rendszerű virtuális gépek Microsoft Azure. A következő képességekkel rendelkezik:
 
-* Összegyűjti a rendszerteljesítményi mérőszámokat a virtuális gépről, és egy kijelölt Storage-fiókban tárolja őket egy adott táblában.
-* Beolvassa a naplózási eseményeket a syslog-ből, és a kijelölt Storage-fiók egy adott táblájába tárolja azokat.
-* Lehetővé teszi a felhasználók számára a gyűjtött és feltöltött adatmérőszámok testreszabását.
-* Lehetővé teszi a felhasználók számára a syslog-létesítmények és a gyűjtött és feltöltött események súlyossági szintjeinek testreszabását.
-* Lehetővé teszi a felhasználóknak a megadott naplófájlok feltöltését egy kijelölt Storage-táblába.
-* A lehetővé teszi metrikák és naplózási események küldését tetszőleges EventHub-végpontokra és JSON-formátumú blobokra a kijelölt Storage-fiókban.
+* Gyűjti a virtuális gép rendszerteljesítmény-mérőszámát, és egy meghatározott táblában tárolja őket egy kijelölt tárfiókban.
+* Lekéri a naplóeseményeket a syslogból, és egy adott táblában tárolja őket a kijelölt tárfiókban.
+* Lehetővé teszi a felhasználók számára a gyűjtött és feltöltött adatmetrikák testreszabását.
+* Lehetővé teszi, hogy a felhasználók testre szabják a rendszernapló-létesítményeket és a gyűjtött és feltöltött események súlyossági szintjeit.
+* Lehetővé teszi, hogy a felhasználók megadott naplófájlokat töltsenek fel egy kijelölt tárolótáblába.
+* Támogatja a metrikák és naplóesemények küldését a kijelölt tárfiók tetszőleges EventHub-végpontjaira és JSON-formátumú blobjaira.
 
-Ez a bővítmény az Azure üzembe helyezési modelljeivel is működik.
+Ez a bővítmény mindkét Azure-beli üzembe helyezési modellel működik.
 
-## <a name="installing-the-extension-in-your-vm"></a>A bővítmény telepítése a virtuális gépre
+## <a name="install-the-extension-on-a-vm"></a>A bővítmény telepítése virtuális gépre
 
-Ezt a bővítményt a Azure PowerShell-parancsmagok, az Azure CLI-parancsfájlok, az ARM-sablonok vagy a Azure Portal használatával engedélyezheti. További információ: [bővítmények szolgáltatásai](features-linux.md).
+Ezt a bővítményt az Azure PowerShell parancsmagok, Azure CLI-szkriptek, Azure Resource Manager sablonok (ARM-sablonok) vagy a Azure Portal. További információ: [Bővítmények és funkciók.](features-linux.md)
 
 >[!NOTE]
->A diagnosztikai virtuálisgép-bővítmény egyes összetevőit a [log Analytics VM-bővítmény](./oms-linux.md)is tartalmazza. Az architektúra miatt ütközések merülhetnek fel, ha mindkét bővítmény ugyanabban az ARM-sablonban van létrehozva. A telepítési idejű ütközések elkerülése érdekében használja az [ `dependsOn` irányelvet](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) annak biztosítására, hogy a bővítmények egymás után legyenek telepítve. A bővítmények mindkét sorrendben telepíthetők.
+>A Linux diagnosztikai virtuálisgép-bővítmény egyes összetevőit a Log Analytics virtuálisgép-bővítmény [is tartalmazza.](./oms-linux.md) Az architektúra miatt ütközések merülhetnek fel, ha mindkét bővítmény példányosul ugyanabban az ARM-sablonban. 
+>
+>A telepítéssel kapcsolatos ütközések [ `dependsOn` ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) elkerülése érdekében a bővítmények egymás után való telepítéséhez használja a irányelvet. A bővítmények mindkét sorrendben telepíthetők.
 
-Ezek a telepítési utasítások és egy [letölthető minta konfiguráció](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) , amely a Lad 4,0-et konfigurálja:
+A telepítési utasítások és egy letölthető mintakonfiguráció [használatával](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) konfigurálja a FOGÉK 4.0-t a következőre:
 
-* rögzítse és tárolja ugyanazokat a mérőszámokat, mint a LAD 2,3, 3 *;
-* metrikák küldése Azure Monitor fogadónak az Azure Storage-ba való szokásos fogadóval együtt, új érték: Lad 4,0
-* rögzítse a fájlrendszer metrikáinak hasznos készletét, amelyet a LAD 3,0;
-* a LAD 2,3; által engedélyezett alapértelmezett syslog-gyűjtemény rögzítése
-* a virtuális gépek metrikáinak ábrázolására és riasztására szolgáló Azure Portal használatának engedélyezése.
+* Rögzítse és tárolja a MEGADOTT 2.3-as és 3.x-es VERZIÓk metrikákat.
+* Küldjön metrikákat a Azure Monitor fogadóba a szokásos fogadóval együtt az Azure Storage-ba. Ez a funkció az ÚJ AZ 4.0-s és újabb.
+* A fájlrendszer-metrikák hasznos készletének rögzítése, ahogyan az a KÖVETKEZŐben is található: A<
+* Rögzítse a SYSLOG 2.3 által engedélyezett alapértelmezett syslog-gyűjteményt.
+* A virtuális Azure Portal és riasztások diagramozásának és riasztásának engedélyezése.
 
-A letölthető konfiguráció csupán egy példa; módosítsa a saját igényeinek megfelelően.
+A letölthető konfiguráció csak egy példa. Igény szerint módosíthatja.
 
 ### <a name="supported-linux-distributions"></a>Támogatott Linux-disztribúciók
 
-A Linux diagnosztikai bővítmény a következő disztribúciókat és verziókat támogatja. A disztribúciók és verziók listája csak az Azure által támogatott linuxos gyártói rendszerképekre vonatkozik. A harmadik féltől származó BYOL-és BYOS-lemezképek, például a készülékek, általában nem támogatottak a Linux diagnosztikai bővítményben.
+A Linux diagnosztikai bővítmény számos disztribúciót és verziót támogat. A következő disztribúciók és verziók listája csak az Azure által támogatott Linux-gyártói rendszerképekre vonatkozik. A bővítmény általában nem támogatja a külső gyártótól származó BYOL- és BYOS-rendszerképeket, például a berendezéseket.
 
-A csak a főverziókat (például a Debian 7-et) felsoroló disztribúció minden másodlagos verzió esetében is támogatott. Ha meg van adva egy adott alverzió, akkor csak az adott verziót támogatja a rendszer. Ha a "+" utótaggal rendelkezik, a rendszer támogatja a megadott verziónál nagyobb vagy annál kisebb alverziókat.
+A csak a főverziókat felsoroló disztribúciók, például a Debian 7, szintén támogatottak minden alverzióhoz. Ha egy adott alverzió van megadva, csak ez a verzió támogatott. Pluszjel (+) hozzáfűzése esetén a megadott verzióval egyenlő vagy annál újabb alverziók támogatottak.
 
 Támogatott disztribúciók és verziók:
 
-- Ubuntu 18,04, 16,04, 14,04
-- CentOS 7, 6.5 +
-- Oracle Linux 7, 6.4 +
-- OpenSUSE 13.1 +
+- Ubuntu 18.04, 16.04, 14.04
+- CentOS 7, 6.5+
+- Oracle Linux 7, 6.4+
+- OpenSUSE 13.1+
 - SUSE Linux Enterprise Server 12
 - Debian 9, 8, 7
-- RHEL 7, 6,7 +
+- Red Hat Enterprise Linux (RHEL) 7, 6.7+
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Az **Azure Linux Agent 2.2.0-es vagy újabb verziója**. A legtöbb Azure-beli virtuális gép Linux-katalógusa tartalmaz 2.2.7 vagy újabb verziót. A futtatásával erősítse meg a `/usr/sbin/waagent -version` virtuális gépre telepített verziót. Ha a virtuális gép a vendég ügynök egy régebbi verzióját futtatja, a frissítéshez kövesse az [alábbi utasításokat](./update-linux-agent.md) .
-* **Azure CLI**-vel. [Állítsa be az Azure CLI](/cli/azure/install-azure-cli) -környezetet a gépen.
-* A wget parancs, ha még nem tette meg: Futtatás `sudo apt-get install wget` .
-* Meglévő Azure-előfizetés és meglévő általános célú Storage-fiók az adattároláshoz.  Az általános célú Storage-fiókok támogatják a Table Storage-t, amelyhez szükség van.  A blob Storage-fiók nem fog működni.
-* Python 2
+* **Az Azure Linux-ügynök 2.2.0-s vagy újabb verziója.** A legtöbb Azure-beli virtuális gép Linux-katalógusának rendszerképe tartalmazza a 2.2.7-es vagy újabb verziót. A `/usr/sbin/waagent -version` virtuális gépre telepített verzió megerősítéséhez futtassa a következőt: . Ha a virtuális gép a vendégügynök egy régebbi verzióját futtatja, frissítse [a Linux-ügynököt.](./update-linux-agent.md)
+* **Azure CLI**. [Állítsa be az Azure CLI-környezetet](/cli/azure/install-azure-cli) a gépen.
+* **A `wget` parancs.** Ha még nem rendelkezik vele, futtassa az `sudo apt-get install wget` -t.
+* **Egy Azure-előfizetés és egy általános célú tárfiók** az adatok tárolásához.  Az általános célú tárfiókok támogatják a table storage-et, ami szükséges.  A Blob Storage-fiók nem fog működni.
+* **Python 2**.
 
 ### <a name="python-requirement"></a>Python-követelmény
 
-A Linux diagnosztikai bővítményhez a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.    
+A Linux diagnosztikai bővítményéhez Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-t, telepítse. 
 
- - Red Hat, CentOS, Oracle: `yum install -y python2`
- - Ubuntu, Debian: `apt-get install -y python2`
- - SUSE `zypper install -y python2`
+Az alábbi mintaparancsok különböző disztribúciókra telepítik a Python 2-t:    
 
-A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*. Az alábbi két módszer használható az alias beállításához:
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- Suse: `zypper install -y python2`
 
-1. Futtassa a következő parancsot a meglévő aliasok eltávolításához.
+A `python2` végrehajtható fájlnak a python aliasnevűnek *kell lennie.* Az alias beállításának egyik módja a következő:
+
+1. A meglévő aliasok eltávolításához futtassa a következő parancsot.
  
     ```
     sudo update-alternatives --remove-all python
     ```
 
-2. A következő parancs futtatásával hozza létre az aliast.
+2. Futtassa a következő parancsot az alias létrehozásához.
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
     ```
 
-### <a name="sample-installation"></a>Minta telepítése
+### <a name="sample-installation"></a>Mintatelepítés
 
 > [!NOTE]
-> Bármelyik minta esetében a Futtatás előtt adja meg az első szakaszban szereplő változók helyes értékeit. 
+> Az alábbi minták esetében a kód futtatása előtt töltse ki az első szakaszban található változók megfelelő értékeit. 
 
-A példákban letöltött minta-konfiguráció szabványos adatokat gyűjt, és a táblázatos tárolóba küldi őket. A minta konfigurációjának és tartalmának URL-címe változhat. A legtöbb esetben le kell töltenie a portál beállítások JSON-fájljának másolatát, és testre kell szabnia az igényeinek megfelelően, majd minden olyan sablonnal vagy automatizálással rendelkezik, amely a konfigurációs fájl saját verzióját használja, és nem tölti le az adott URL-címet.
+Ezekben a példákban a mintakonfiguráció standard adatok egy halmazát gyűjti össze, és elküldi őket a Table Storage-nak. A mintakonfiguráció URL-címe és tartalma változhat. 
+
+A legtöbb esetben le kell töltenie a portál beállításI JSON-fájljának másolatát, és testre kell szabni az igényeinek megfelelően. Ezután sablonok vagy saját automatizálás használatával a konfigurációs fájl testreszabott verzióját használhatja ahelyett, hogy minden alkalommal letölti az URL-címről.
 
 > [!NOTE]
-> Az új Azure Monitor-fogadó engedélyezése esetén a virtuális gépeknek az MSI Auth token generálásához engedélyezve kell lennie a rendszerhez rendelt identitásnak. Ezt a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után teheti meg. A rendszerhez rendelt identitás a portálon, a CLI-n, a PowerShellen és a Resource Manageren keresztül történő engedélyezésének lépései.  [itt](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)részletesen láthatók. 
+> Ha engedélyezi az új Azure Monitor fogadót, a virtuális gépeken engedélyezve kell lennie a rendszer által hozzárendelt identitásnak a Felügyeltszolgáltatás-identitás (MSI) hitelesítési jogkivonatok létrehozásához. Ezeket a beállításokat a virtuális gép létrehozása során vagy után használhatja. 
+>
+> A felügyelt identitások, Azure Portal Azure CLI, PowerShell és Azure Resource Manager lásd: [Felügyelt identitások konfigurálása.](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) 
+
+
 
 #### <a name="azure-cli-sample"></a>Azure CLI-minta
 
 ```azurecli
-# Set your Azure VM diagnostic variables correctly below
+# Set your Azure VM diagnostic variables.
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Enable System Assigned Identity to the existing VM
+# Enable system-assigned identity on the existing VM.
 az vm identity assign -g $my_resource_group -n $my_linux_vm
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VM resource ID. Replace storage account name and resource ID in the public settings.
+# Build the VM resource ID. Replace the storage account name and resource ID in the public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>Azure CLI-minta a LAD 4,0-bővítmény telepítéséhez a virtuálisgép-méretezési csoport példányán
+#### <a name="azure-cli-sample-for-installing-lad-40-on-a-virtual-machine-scale-set-instance"></a>Azure CLI-minta a SCALE 4.0 virtuálisgép-méretezésikészlet-példányra való telepítéséhez
 
 ```azurecli
-#Set your Azure VMSS diagnostic variables correctly below
+# Set your Azure virtual machine scale set diagnostic variables. 
 $my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 $my_linux_vmss=<your_azure_linux_vmss_name>
 $my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Enable System Assigned Identity to the existing VMSS
+# Enable system-assigned identity on the existing virtual machine scale set.
 az vmss identity assign -g $my_resource_group -n $my_linux_vmss
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+# Build the virtual machine scale set resource ID. Replace the storage account name and resource ID in the public settings.
 $my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
@@ -184,15 +194,15 @@ $VMresourceGroup = "yourVMResourceGroupName"
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
 
-# Enable System Assigned Identity on an existing VM
+# Enable system-assigned identity on an existing VM
 Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
 
-# Get the public settings template from GitHub and update the templated values for storage account and resource ID
+# Get the public settings template from GitHub and update the templated values for the storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
 $publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
 $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 
-# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
+# If you have your own customized public settings, you can inline those rather than using the preceding template: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
 $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
@@ -200,31 +210,30 @@ $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Servi
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
-# Finally install the extension with the settings built above
+# Finally, install the extension with the settings you built
 Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
-### <a name="updating-the-extension-settings"></a>A bővítmény beállításainak frissítése
+### <a name="update-the-extension-settings"></a>A bővítmény beállításainak frissítése
 
-Miután módosította a védett vagy a nyilvános beállításokat, telepítse őket a virtuális gépre ugyanazon parancs futtatásával. Ha bármilyen változás történt a beállításokban, a rendszer elküldi a frissített beállításokat a bővítménynek. A LAD újra betölti a konfigurációt, és újraindul.
+A védett vagy nyilvános beállítások módosítása után telepítse őket a virtuális gépre ugyanaz a parancs futtatásával. Ha bármely beállítás módosult, a rendszer elküldi a frissítéseket a bővítménynek. A MIND újra betölti a konfigurációt, és újraindítja magát.
 
-### <a name="migration-from-previous-versions-of-the-extension"></a>Áttelepítés a bővítmény korábbi verzióiból
+### <a name="migrate-from-previous-versions-of-the-extension"></a>Áttelepítés a bővítmény korábbi verzióiból
 
-A bővítmény legújabb verziója **4,0, amely jelenleg nyilvános előzetes** verzióban érhető el. A **3. x régebbi verziói továbbra is támogatottak, míg a 2. x verzióit a 2018. július 31-ig elavultak**.
+A bővítmény legújabb verziója *a 4.0-s verzió, amely jelenleg nyilvános előzetes verzióban érhető el.* A 3.x régebbi verziói továbbra is támogatottak. A 2.x verziók azonban 2018. július 31. óta elavultak.
 
 > [!IMPORTANT]
-> Ha 3. x verzióról kíván áttérni a bővítmény erre az új verziójára, el kell távolítania a régi bővítményt, majd telepítenie kell a bővítmény 4-es verzióját (a rendszer által hozzárendelt identitáshoz tartozó frissített konfigurációval, és elsüllyed a metrikák Azure Monitor fogadónak való küldéséhez.)
+> A 3.x verzióról a bővítmény legújabb verziójára való áttelepítéshez távolítsa el a régi bővítményt. Ezután telepítse a 4-es verziót, amely tartalmazza a rendszer által hozzárendelt identitás és fogadó frissített konfigurációját, hogy metrikákat Azure Monitor fogadónak.
 
-Javaslatok
+Az új bővítmény telepítésekor engedélyezze az alverziók automatikus frissítését:
+* A klasszikus üzembe helyezési modellben lévő virtuális gépeken adja meg a verziót, ha a bővítményt az Azure Xplat parancssori felület vagy `4.*` a PowerShell használatával telepíti.
+* Az Azure Resource Manager modell virtuális gépei esetében foglalja bele a következőket `"autoUpgradeMinorVersion": true` a virtuálisgép-üzembehelyhelyező sablonba.
 
-* Telepítse a bővítményt, ha engedélyezve van az alverzió automatikus frissítése.
-  * Ha a bővítményt az Azure XPLAT CLI vagy a PowerShell használatával telepíti, a klasszikus üzembe helyezési modell virtuális gépeken a "4. *" verziót kell megadni.
-  * Azure Resource Manager üzembe helyezési modell virtuális gépeken a virtuális gép központi telepítési sablonjában a "autoUpgradeMinorVersion": true "értéket kell tartalmaznia.
-* Használhatja ugyanazt a Storage-fiókot a LAD 4,0-hez, mint a LAD 3. *. 
+Használhatja ugyanazt a tárfiókot, mint amit a AZS3.x-hez is használt. 
 
 ## <a name="protected-settings"></a>Védett beállítások
 
-A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz, amelyeket védeni kell a nyilvános nézetből, például a tárolási hitelesítő adatokat. Ezeket a beállításokat a kiterjesztés titkosított formában továbbítja és tárolja.
+Ez a konfigurációs információkészlet bizalmas adatokat tartalmaz, amelyek nyilvános nézettől védve lesznek. Tartalmazza például a tárolási hitelesítő adatokat. A beállításokat a bővítmény titkosított formában továbbítja és tárolja.
 
 ```json
 {
@@ -238,24 +247,24 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 
 Name | Érték
 ---- | -----
-storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
-storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő `https://core.windows.net` . Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
-storageAccountSasToken | Egy [fiók sas-jogkivonata](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) a blob és Table Services ( `ss='bt'` ) számára, amely a tárolók és objektumok () számára érvényes `srt='co'` , amely a hozzáadási, létrehozási, listázási, frissítési és írási engedélyeket ( `sp='acluw'` ) biztosítja. Ne *foglalja bele* a kezdő kérdőjelet (?).
-mdsdHttpProxy | választható A HTTP-proxy azon adatai, amelyek lehetővé teszik a bővítménynek a megadott Storage-fiókhoz és végponthoz való csatlakozást.
-sinksConfig | választható Azon alternatív célhelyek részletei, amelyekhez mérőszámokat és eseményeket lehet továbbítani. A bővítmény által támogatott adattárolók konkrét részletei az alábbi szakaszokban találhatók.
+storageAccountName | Annak a tárfióknak a neve, amelybe a bővítmény adatokat ír.
+storageAccountEndPoint | (Nem kötelező) A tárfiókot tároló felhőt azonosító végpont. Ha ez a beállítás nincs meg, alapértelmezés szerint a AZ AZURE nyilvános felhőt () `https://core.windows.net` használja. Ha azure germanyi, Azure Government vagy Azure China 21Vianet azure-beli tárfiókot is használnia kell, állítsa be ezt az értéket.
+storageAccountSasToken (storageAccountSasToken) | Fiók [SAS-jogkivonat a](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) blob- és táblaszolgáltatásokhoz ( `ss='bt'` ). Ez a jogkivonat a tárolókra és objektumokra ( `srt='co'` ) vonatkozik. Hozzáadási, létrehozási, listához, frissítési és írási engedélyeket `sp='acluw'` () biztosít. Ne *tartalmazza* a kezdő kérdőjelet (?).
+mdsdHttpProxy | (Nem kötelező) HTTP-proxyinformációk, amelyekre a bővítménynek a megadott tárfiókhoz és végponthoz kell csatlakoznia.
+sinksConfig | (Nem kötelező) Az alternatív célhelyekkel kapcsolatos részletek, amelyekre a metrikák és események kézbesítve lesznek. A következő szakaszok részletesen ismertetik a bővítmény által támogatott adat fogadók adatait.
 
-Ha SAS-tokent szeretne beolvasni egy Resource Manager-sablonon belül, használja a **listAccountSas** függvényt. Példa a sablonra: [példa a függvények listázására](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
+AZ ARM-sablonon belüli SAS-jogkivonatok lekért használhatja a `listAccountSas` függvényt. Példasablonért lásd a [példalista függvényét.](../../azure-resource-manager/templates/template-functions-resource.md#list-example)
 
-A szükséges SAS-tokent egyszerűen létrehozhatja a Azure Portalon keresztül.
+A szükséges SAS-jogkivonatot a következő módon Azure Portal:
 
-1. Válassza ki azt az általános célú Storage-fiókot, amelyhez a bővítményt írni szeretné
-1. A bal oldali menü beállítások részében válassza a "közös hozzáférésű aláírás" lehetőséget.
-1. Tegye meg a megfelelő szakaszokat az előzőekben leírtak szerint
-1. Kattintson az "SAS előállítása" gombra.
+1. Válassza ki azt az általános célú tárfiókot, amelybe a bővítményt írni szeretné.
+1. A bal oldali menü Beállítások menüjében **válassza** a **Közös hozzáférésű jogosultság aláírása lehetőséget.**
+1. A beállításokat a korábban leírtak szerint kell tenni.
+1. Válassza a **SAS létrehozása lehetőséget.**
 
-:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Képernyőfelvétel: a közös hozzáférésű aláírás oldal, amely az S A S-t tartalmazza.":::
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Képernyőkép a Közös hozzáférésű jogosultság aláírása lapról az S A S létrehozása gombbal.":::
 
-Másolja a generált SAS-t a storageAccountSasToken mezőbe; eltávolítja a kezdő kérdőjelet ("?").
+Másolja a létrehozott SAS-t a `storageAccountSasToken` mezőbe. Távolítsa el a kezdő kérdőjelet (?).
 
 ### <a name="sinksconfig"></a>sinksConfig
 
@@ -272,16 +281,16 @@ Másolja a generált SAS-t a storageAccountSasToken mezőbe; eltávolítja a kez
 },
 ```
 
-Ez a választható szakasz azokat a további célhelyeket határozza meg, amelyekhez a bővítmény elküldi az általa gyűjtött adatokat. A "fogadó" tömb tartalmaz egy objektumot minden további adatfogadóhoz. A "type" attribútum meghatározza az objektum többi attribútumát.
+A `sinksConfig` választható szakasz további célhelyeket határoz meg, amelyekre a bővítmény elküldi az összegyűjtött adatokat. A `"sink"` tömb minden további adat fogadóhoz tartalmaz egy objektumot. Az `"type"` attribútum határozza meg az objektum többi attribútumát.
 
 Elem | Érték
 ------- | -----
-name | A bővítmény konfigurációjában máshol a fogadóhoz való hivatkozáshoz használt karakterlánc.
-típus | A definiált fogadó típusa. Meghatározza az ilyen típusú példányok egyéb értékeit (ha vannak ilyenek).
+name | A fogadóra a bővítménykonfigurációban máshol hivatkozó sztring.
+típus | A definiált fogadó típusa. Az ilyen típusú példányok egyéb értékeit határozza meg (ha vannak).
 
-A Linux diagnosztikai bővítmény 4,0-es verziója két fogadó típust támogat: EventHub és JsonBlob.
+A Linux diagnosztikai bővítmény 4.0 két fogadótípust támogat: `EventHub` és `JsonBlob` .
 
-#### <a name="the-eventhub-sink"></a>A EventHub fogadó
+#### <a name="eventhub-sink"></a>EventHub-fogadó
 
 ```json
 "sink": [
@@ -294,21 +303,21 @@ A Linux diagnosztikai bővítmény 4,0-es verziója két fogadó típust támoga
 ]
 ```
 
-A "sas URL" bejegyzés tartalmazza a teljes URL-címet, beleértve az SAS-tokent is, az Event hub számára, amelyre közzé kell tenni az adott adat. A LAD-nek szüksége van egy olyan házirendre, amely engedélyezi a küldési jogcímet. Példa:
+A bejegyzés tartalmazza annak az eseményközpontnak a teljes URL-címét, beleértve az SAS-jogkivonatot is, amelyen az `"sasURL"` adatokat közzé kell tenni. A RENDSZER-nek SAS-re van szüksége a küldési jogcímet lehetővé tő szabályzat elnevezéséhez. Bemutatunk egy példát:
 
-* Hozzon létre egy nevű Event Hubs névteret `contosohub`
-* Hozzon létre egy Event hubot a nevű névtérben. `syslogmsgs`
-* Hozzon létre egy megosztott hozzáférési szabályzatot az nevű esemény-hubhoz `writer` , amely engedélyezi a jogcím küldését.
+* Hozzon létre Event Hubs nevű `contosohub` névteret.
+* Hozzon létre egy nevű eseményközpontot a `syslogmsgs` névtérben.
+* Hozzon létre egy megosztott hozzáférési szabályzatot a nevű eseményközpontban, amely engedélyezi a `writer` küldési jogcímet.
 
-Ha a SAS-t a 2018-as éjféli UTC szerint hozta létre, akkor a sas URL értéke a következő lehet:
+Ha 2018. január 1-jén éjfélig (UTC) megfelelő SAS-t hozott létre, az érték az alábbi `sasURL` példához hasonló lehet.
 
 ```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-További információ a Event Hubs SAS-jogkivonatokkal kapcsolatos információk létrehozásáról és beolvasásáról: [Ez a weblap](/rest/api/eventhub/generate-sas-token#powershell).
+További információ a sas-jogkivonatokkal kapcsolatos információk létrehozásáról és Event Hubs: [SAS-jogkivonat létrehozása.](/rest/api/eventhub/generate-sas-token#powershell)
 
-#### <a name="the-jsonblob-sink"></a>A JsonBlob fogadó
+#### <a name="jsonblob-sink"></a>JsonBlob-fogadó
 
 ```json
 "sink": [
@@ -320,11 +329,13 @@ További információ a Event Hubs SAS-jogkivonatokkal kapcsolatos információk
 ]
 ```
 
-Az JsonBlob-fogadóba irányított adattárolók tárolása a blobokban történik az Azure Storage-ban. A LAD minden példánya minden órában létrehoz egy blobot minden egyes fogadó nevénél. Az egyes Blobok mindig az objektum szintaktikai érvényes JSON-tömbjét tartalmazzák. Az új bejegyzések a tömbhöz való atomi hozzáadásával lettek hozzáadva. A Blobok tárolása a fogadóval megegyező nevű tárolóban történik. A blob-tárolók neveihez tartozó Azure Storage-szabályok a JsonBlob-mosdók nevére érvényesek: 3 és 63 kisbetűs alfanumerikus ASCII-karakter vagy kötőjel.
+A fogadóhoz irányított adatok blobban vannak tárolva `JsonBlob` az Azure Storage-ban. A BLOB minden példánya óránként létrehoz egy blobot minden fogadónévhez. Minden blob mindig tartalmaz egy szintaktikailag érvényes JSON-objektumtömböt. Az új bejegyzések atomikusan hozzá vannak adva a tömbhöz. 
+
+A blobok tárolása egy tárolóban történt, amely ugyanazokkal a neveivel rendelkezik, mint a fogadó. A blobtárolók nevére vonatkozó Azure Storage-szabályok a fogadók `JsonBlob` nevére vonatkoznak. Ez azt jelenti, hogy a nevek 3–63 kisbetűs alfanumerikus ASCII-karakterből vagy kötőjelből állhatnak.
 
 ## <a name="public-settings"></a>Nyilvános beállítások
 
-Ez a struktúra különböző beállításokat tartalmaz, amelyek a bővítmény által gyűjtött adatokat vezérlik. Minden beállítás (kivéve a ladCfg) nem kötelező. Ha metrikus vagy syslog-gyűjteményt ad meg a-ben `ladCfg` , akkor azt is meg kell adnia `StorageAccount` . a sinksConfig elemet meg kell adni ahhoz, hogy a 4,0-as mérőszámok számára lehetővé váljon Azure Monitor fogadó
+A nyilvános beállítások struktúrája különböző beállításblokkokat tartalmaz, amelyek a bővítmény által gyűjtött információkat szabályják. A beállítás kivételével minden `ladCfg` beállítás megadása nem kötelező. Ha a -ban adja meg a metrika- vagy syslog-gyűjteményt, akkor a értéket `ladCfg` is meg kell `StorageAccount` adnia. Meg kell adnia a `sinksConfig` elemet, amely engedélyezi a Azure Monitor FOGADÓt a METRIK 4.0-tól származó metrikákhoz.
 
 ```json
 {
@@ -338,12 +349,12 @@ Ez a struktúra különböző beállításokat tartalmaz, amelyek a bővítmény
 
 Elem | Érték
 ------- | -----
-StorageAccount | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta. A [védett beállításokban](#protected-settings)megadott névnek meg kell egyeznie.
-mdsdHttpProxy | választható Ugyanaz, mint a [védett beállításokban](#protected-settings). A nyilvános értéket felülbírálja a magánhálózati érték, ha be van állítva. Helyezzen el egy titkos kulcsot (például egy jelszót) tartalmazó proxybeállításokat a [védett beállításokban](#protected-settings).
+StorageAccount | Annak a tárfióknak a neve, amelyben a bővítmény adatokat ír. A védett beállításokban megadott [névnek kell lennie.](#protected-settings)
+mdsdHttpProxy | (Nem kötelező) A védett beállításokban [megadott proxy.](#protected-settings) Ha a privát érték be van állítva, felülírja a nyilvános értéket. A védett beállítások között helyezze el a titkos adatokat tartalmazó proxybeállításokat, például a [jelszót.](#protected-settings)
 
-A többi elemet a következő szakaszokban részletesen ismertetjük.
+A következő szakaszok a többi elem részleteit ismertetik.
 
-### <a name="ladcfg"></a>ladCfg
+### <a name="ladcfg"></a>cfCfg
 
 ```json
 "ladCfg": {
@@ -357,9 +368,9 @@ A többi elemet a következő szakaszokban részletesen ismertetjük.
 }
 ```
 
-Ez a struktúra szabályozza a metrikák és naplók összegyűjtését az Azure metrika szolgáltatásba és más adatnyelők számára történő kézbesítéshez. A `performanceCounters` vagy a vagy a mindkettőt kell megadnia `syslogEvents` . Meg kell adnia a `metrics` struktúrát.
+A struktúra vezérli a metrikák és naplók gyűjtését a Azure Monitor Metrics szolgáltatásba és más `ladCfg` adatgyűjtőkbe való kézbesítéshez. Adja meg vagy `performanceCounters` `syslogEvents` mindkettőt. Adja meg a `metrics` struktúrát is.
 
-Ha nem szeretné engedélyezni a syslog vagy a metrikák gyűjtését, egyszerűen megadhat egy üres struktúrát a ladCfg elemhez az alábbi ábrán látható módon: 
+Ha nem szeretné engedélyezni a rendszernapló- vagy metrikagyűjtést, adjon meg egy üres struktúrát az `ladCfg` elemhez, az alábbi példához hasonlóan: 
 
 ```json
 "ladCfg": {
@@ -369,8 +380,8 @@ Ha nem szeretné engedélyezni a syslog vagy a metrikák gyűjtését, egyszerű
 
 Elem | Érték
 ------- | -----
-eventVolume | választható A Storage-táblán belül létrehozott partíciók számának szabályozása. A (,) vagy a () egyikének kell lennie `"Large"` `"Medium"` `"Small"` . Ha nincs megadva, az alapértelmezett érték: `"Medium"` .
-sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűjteménye közötti alapértelmezett időköz. A legkisebb támogatott mintavételi sebesség 15 másodperc. Ha nincs megadva, az alapértelmezett érték: `15` .
+eventVolume (eseménykötet) | (Nem kötelező) A tárolótáblában létrehozott partíciók számát szabályozza. Az értéknek `"Large"` , `"Medium"` vagy értékűnek kell `"Small"` lennie. Ha az érték nincs megadva, az alapértelmezett érték `"Medium"` .
+sampleRateInSeconds (SampleRateInSeconds) | (Nem kötelező) A nyers (nem aggregált) metrikák gyűjteménye közötti alapértelmezett időköz. A legkisebb támogatott mintaarány 15 másodperc. Ha az érték nincs megadva, az alapértelmezett érték `15` a .
 
 #### <a name="metrics"></a>metrics
 
@@ -386,10 +397,10 @@ sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűj
 
 Elem | Érték
 ------- | -----
-resourceId | A virtuális gép vagy a virtuálisgép-méretezési csoport Azure Resource Manager erőforrás-azonosítója, amelyre a virtuális gép tartozik. Ezt a beállítást akkor is meg kell adni, ha a konfigurációban bármilyen JsonBlob-fogadó használatban van.
-scheduledTransferPeriod | Az összesített metrikák kiszámításának és az Azure-mérőszámokra való átadásának gyakorisága 8601-as Időintervallumként kifejezve. A legkisebb átvitel időtartama 60 másodperc, azaz PT1M. Legalább egy scheduledTransferPeriod meg kell adnia.
+resourceId | A Azure Resource Manager virtuális gép vagy annak a virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyhez a virtuális gép tartozik. Akkor is adja meg ezt a beállítást, ha a konfiguráció bármilyen `JsonBlob` fogadót használ.
+scheduledTransferPeriod | Az összesített metrikák kiszámításának és a metrikákba való Azure Monitor gyakorisága. A gyakoriság az IS 8601 időintervallumban van kifejezve. A legkisebb átviteli időszak 60 másodperc, azaz PT1M. Adjon meg legalább egy `scheduledTransferPeriod` értéket.
 
-A performanceCounters szakaszban megadott mérőszámok mintáit 15 másodpercenként vagy a számlálóhoz explicit módon meghatározott mintavételi sebességgel gyűjti a rendszer. Ha több scheduledTransferPeriod-frekvencia is megjelenik (ahogy a példában is látható), az egyes összesítéseket egymástól függetlenül számítjuk ki.
+A szakaszban megadott metrikák mintáit a rendszer 15 másodpercenként vagy a számlálóhoz explicit módon meghatározott mintavételi sebességgel `performanceCounters` gyűjti. Ha több gyakoriság is megjelenik, ahogyan az a példában is látható, minden összesítés egymástól `scheduledTransferPeriod` függetlenül lesz kiszámítva.
 
 #### <a name="performancecounters"></a>performanceCounters
 
@@ -416,42 +427,50 @@ A performanceCounters szakaszban megadott mérőszámok mintáit 15 másodpercen
 }
 ```
 
-Ez a választható szakasz szabályozza a metrikák gyűjteményét. A nyers mintákat minden [scheduledTransferPeriod](#metrics) összesíti az alábbi értékek előállításához:
+A `performanceCounters` választható szakasz a metrikák gyűjteményét szabályozza. A nyers minták összesítése mindegyikhez a [`scheduledTransferPeriod`](#metrics) következő értékek előállításához szükséges:
 
-* középérték
-* minimum
-* maximum
-* utolsó összegyűjtött érték
-* az Összesítés kiszámításához használt nyers minták száma
+* Középérték
+* Minimum
+* Maximum
+* Legutóbb gyűjtött érték
+* Az összesítés kiszámításához használt nyers minták száma
 
 Elem | Érték
 ------- | -----
-fogadóként | választható Egy vesszővel elválasztott lista azoknak a nyelőknek a neveiről, amelyekhez a LAD összesített metrikai eredményeket küld. Minden összesített metrika közzé lesz téve az egyes felsorolt fogadók számára. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
+Mosogató | (Nem kötelező) Azoknak a fogadóknak a vesszővel elválasztott listája, amelyekhez a SINK összesített metrikaeredményeket küld. Minden összesített metrika közzé vantéve minden felsorolt fogadón. Példa: `"EHsink1, myjsonsink"`. További információ: [`sinksConfig`](#sinksconfig). 
 típus | A metrika tényleges szolgáltatóját azonosítja.
-osztály | A "Counter" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
-számláló | A "class" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
-counterSpecifier | Az Azure-metrikák névterében lévő adott mérőszámot azonosítja.
-feltétel | választható Kiválasztja az objektum egy adott példányát, amelyre a metrika vonatkozik, vagy kiválasztja az összesítést az adott objektum összes példánya között. További információ: `builtin` metrika-definíciók.
-Mintavételi | Az 8601-es intervallum, amely meghatározza, hogy a rendszer milyen mértékben gyűjtsön nyers mintákat a metrikához. Ha nincs beállítva, a gyűjtési időközt a [sampleRateInSeconds](#ladcfg)érték határozza meg. A legrövidebb támogatott mintavételi sebesség 15 másodperc (PT15S).
-egység | A következő karakterláncok egyikének kell lennie: "Count", "Bytes", "Seconds", "százalék", "CountPerSecond", "BytesPerSecond", "ezredmásodperc". Meghatározza a metrika egységét. Az összegyűjtött adatok felhasználói a begyűjtött adatértékeket az egységnek megfelelően elvárják. A mező figyelmen kívül hagyja ezt a mezőt.
-displayName | A címkét (a társított területi beállítás által megadott nyelven) az Azure-Mérőszámokban lévő adatokhoz kell csatolni. A mező figyelmen kívül hagyja ezt a mezőt.
+osztály | A és `"counter"` a együttesen azonosítja az adott metrikát a szolgáltató névterében.
+számláló | A és `"class"` a együttesen azonosítja az adott metrikát a szolgáltató névterében.
+counterSpecifier (számláló-specifikus) | A Metrikák névterében Azure Monitor adott metrikát azonosítja.
+Feltétel | (Nem kötelező) Kiválasztja annak az objektumnak egy példányát, amelyre a metrika vonatkozik. Vagy kiválasztja az adott objektum összes példányának összesítését. 
+sampleRate | Az IS 8601 intervallum, amely beállítja a nyers minták gyűjtésének sebességét ehhez a metrikhoz. Ha az érték nincs beállítva, a gyűjtemény időközét a értéke adja [`sampleRateInSeconds`](#ladcfg) meg. A legrövidebb támogatott mintaarány 15 másodperc (PT15S).
+egység | Meghatározza a metrika egységét. A következő sztringek egyikének kell lennie: `"Count"` , , , , , , `"Bytes"` `"Seconds"` `"Percent"` `"CountPerSecond"` `"BytesPerSecond"` `"Millisecond"` . Az összegyűjtött adatok fogyasztói arra számítanak, hogy az összegyűjtött adatértékek megfelelnek ennek a egységnek. A IGNORE figyelmen kívül hagyja ezt a mezőt.
+displayName | A metrikákban található adatokhoz csatolni Azure Monitor címkét. Ez a címke a társított területi beállítás által megadott nyelven van megadva. A IGNORE figyelmen kívül hagyja ezt a mezőt.
 
-A counterSpecifier tetszőleges azonosító. A metrikák felhasználói, például az Azure Portal ábrázolási és riasztási funkció, a counterSpecifier használja "kulcsként", amely egy metrika vagy egy metrika egy példányát azonosítja. A `builtin` metrikák esetében ajánlott olyan counterSpecifier-értékeket használni, amelyek a következővel kezdődnek: `/builtin/` . Ha egy metrika egy adott példányát gyűjti be, javasoljuk, hogy a példány azonosítóját csatolja a counterSpecifier értékhez. Néhány példa:
+A `counterSpecifier` egy tetszőleges azonosító. A metrikák felhasználói, például a Azure Portal és a riasztási funkció, a "kulcsot" használják, amely egy metrikát vagy egy metrika egy `counterSpecifier` példányát azonosítja. 
 
-* `/builtin/Processor/PercentIdleTime` – Az összes vCPU átlagos üresjárati idő
-* `/builtin/Disk/FreeSpace(/mnt)` – Szabad terület a/mnt fájlrendszer számára
-* `/builtin/Disk/FreeSpace` – Az összes csatlakoztatott fájlrendszer esetében átlagosan szabad terület
+A `builtin` metrikákhoz olyan értékeket `counterSpecifier` javasolunk, amelyek a következővel `/builtin/` kezdődnek: . Ha egy metrika egy adott példányát gyűjti be, csatolja a példány azonosítóját az `counterSpecifier` értékhez. Íme néhány példa:
 
-Sem a LAD, sem a Azure Portal a counterSpecifier értéket várja a mintázatnak megfelelően. Konzisztensnek kell lennie a counterSpecifier értékeinek összeállításában.
+* `/builtin/Processor/PercentIdleTime` – Üresjárati idő átlaga az összes vCPU-ben
+* `/builtin/Disk/FreeSpace(/mnt)` – Szabad terület a `/mnt` fájlrendszer számára
+* `/builtin/Disk/FreeSpace` – Az összes csatlakoztatott fájlrendszerben átlagosan rendelkezésre álló szabad terület
 
-Ha megadja `performanceCounters` , a Lad mindig az Azure Storage-ban lévő táblába ír egy adatot. A JSON-blobokban és/vagy Event Hubsban is megadhatja ugyanazokat az adatfájlokat, de nem tilthatja le az adattárolást egy táblába. A diagnosztikai bővítmény minden olyan példánya, amely ugyanazt a Storage-fióknevet és-végpontot használja, hozzá kell adnia a metrikákat és a naplókat ugyanahhoz a táblához. Ha túl sok virtuális gép ír ugyanarra a táblázatos partícióra, az Azure képes a partíción lévő írások szabályozására. A eventVolume beállítás azt eredményezi, hogy a bejegyzések 1 (kis), 10 (közepes) vagy 100 (nagyméretű) különböző partíciók között oszlanak el. A "közepes" érték általában elegendő ahhoz, hogy a forgalom ne legyen szabályozva. A Azure Portal Azure mérőszámok funkciója a táblázat adatait használja a diagramok létrehozásához vagy riasztások elindításához. A tábla neve a következő sztringek összefűzése:
+Az AZURE PORTAL és a rendszer nem számít arra, hogy `counterSpecifier` az érték bármilyen mintával egyezni fog. Konzisztensnek kell lennie az értékek `counterSpecifier` felépítésében.
+
+A megadásakor a RENDSZER MINDIG adatokat ír `performanceCounters` egy Azure Storage-beli táblába. Ugyanezek az adatok írhatóak JSON-blobokba, Event Hubs vagy mindkettőbe. Az adatok táblában való tárolását azonban nem tilthatja le. 
+
+Az AZONOS tárfióknevet és -végpontot használó MINDEN PÉLDÁNY ugyanoda a táblába adja hozzá a metrikákat és a naplókat. Ha túl sok virtuális gép ír ugyanerre a táblapartícióra, az Azure képes az írási szolgáltatásokat az erre a partícióra lecsökkenteni. 
+
+A beállítás hatására a bejegyzések `eventVolume` 1 (kicsi), 10 (közepes) vagy 100 (nagy) partíció között lesznek elosztva. A közepes partíciók általában elegendőek a forgalom szabályozásának elkerüléséhez. 
+
+A Azure Monitor Metrika szolgáltatása Azure Portal a táblázatban található adatokat használja a gráfok előállításához vagy riasztások aktiválásához. A tábla neve a következő sztringek össze van ásva:
 
 * `WADMetrics`
-* A táblázatban tárolt összesített értékek "scheduledTransferPeriod"
+* A `"scheduledTransferPeriod"` táblában tárolt összesített értékekhez
 * `P10DV2S`
-* Egy "ÉÉÉÉHHNN" formátumú dátum, amely 10 naponta változik
+* Egy "YYYYMMDD" alakban megált dátum, amely 10 naponta változik
 
-Ilyenek például `WADMetricsPT1HP10DV2S20170410` a és a `WADMetricsPT1MP10DV2S20170609` .
+Ilyen például a `WADMetricsPT1HP10DV2S20170410` és `WADMetricsPT1MP10DV2S20170609` a .
 
 #### <a name="syslogevents"></a>syslogEvents
 
@@ -466,29 +485,31 @@ Ilyenek például `WADMetricsPT1HP10DV2S20170410` a és a `WADMetricsPT1MP10DV2S
 }
 ```
 
-Ez a választható szakasz a naplózási események a syslog-ből történő gyűjtését vezérli. Ha a szakasz nincs megadva, a rendszer egyáltalán nem rögzíti a syslog-eseményeket.
+A `syslogEvents` választható szakasz a naplóesemények gyűjtését szabályozza a syslogból. Ha kihagyja a szakaszt, a rendszer egyáltalán nem rögzíti a syslog-eseményeket.
 
-A syslogEventConfiguration-gyűjtemény egyetlen bejegyzést tartalmaz minden olyan syslog-létesítményhez, amely az összes fontos eszközt felvette. Ha a minSeverity "nincs" egy adott létesítmény esetében, vagy ha a létesítmény egyáltalán nem jelenik meg az elemben, akkor a rendszer nem rögzíti az adott létesítményből származó eseményeket.
+A `syslogEventConfiguration` gyűjtemény minden rendszernapló-létesítményhez egy-egy bejegyzést tartalmaz. Ha a egy adott létesítményhez készült, vagy ha az adott létesítmény egyáltalán nem jelenik meg a elemben, akkor az adott létesítményből származó `minSeverity` `"NONE"` eseményeket nem rögzíti a szolgáltatás.
 
 Elem | Érték
 ------- | -----
-fogadóként | Vesszővel tagolt lista azoknak a fogadóknak a neveiről, amelyeken az egyes naplózási események közzé vannak téve. A syslogEventConfiguration korlátozásait egyeztető összes naplózási eseményt közzéteszi az egyes felsorolt fogadók. Példa: "EHforsyslog"
-kódban | A syslog-létesítmény neve (például "LOG \_ User" vagy "log \_ LOCAL0"). A teljes listához tekintse meg a [syslog man oldalának](http://man7.org/linux/man-pages/man3/syslog.3.html) "létesítmény" szakaszát.
-minSeverity | Syslog súlyossági szintje (például "LOG \_ err" vagy "log \_ info"). Tekintse meg a [syslog man oldalának](http://man7.org/linux/man-pages/man3/syslog.3.html) "szint" szakaszát a teljes listához. A bővítmény rögzíti a létesítménynek a megadott szinten vagy felett eljuttatott eseményeket.
+Mosogató | Azoknak a fogadóknak a vesszővel elválasztott listája, amelyeken az egyes naplóesemények közzé vannak téve. A korlátozásainak megfelelő naplóesemények mindegyik felsorolt fogadón `syslogEventConfiguration` közzé vannak téve. Például: `"EHforsyslog"`
+facilityName (létesítmény neve) | A rendszernapló-létesítmény neve, például `"LOG\_USER"` vagy `"LOG\_LOCAL0"` . További információkért lásd a syslog man oldalának "létesítmény" [szakaszát.](http://man7.org/linux/man-pages/man3/syslog.3.html)
+minSeverity (minimális kitartás) | A rendszernapló súlyossági szintje, például `"LOG\_ERR"` vagy `"LOG\_INFO"` . További információért tekintse meg a syslog man oldalának ["level" (szint) szakaszát.](http://man7.org/linux/man-pages/man3/syslog.3.html) A bővítmény rögzíti a létesítménybe a megadott szinten vagy felett küldött eseményeket.
 
-Ha megadja `syslogEvents` , a Lad mindig az Azure Storage-ban lévő táblába ír egy adatot. A JSON-blobokban és/vagy Event Hubsban is megadhatja ugyanazokat az adatfájlokat, de nem tilthatja le az adattárolást egy táblába. Az ehhez a táblához tartozó particionálási viselkedés megegyezik a című témakörben leírtak szerint `performanceCounters` . A tábla neve a következő sztringek összefűzése:
+A megadásakor a RENDSZER MINDIG adatokat ír `syslogEvents` egy Azure Storage-beli táblába. Ugyanezek az adatok írhatóak JSON-blobokba, Event Hubs vagy mindkettőbe. Az adatok táblában való tárolását azonban nem tilthatja le. 
+
+A tábla particionálási viselkedése megegyezik a következővel: `performanceCounters` . A tábla neve ezeknek a sztringeknak az össze concatenációja:
 
 * `LinuxSyslog`
-* Egy "ÉÉÉÉHHNN" formátumú dátum, amely 10 naponta változik
+* Egy "YYYYMMDD" (YYYYMMDD) formában megált dátum, amely 10 naponta változik
 
-Ilyenek például `LinuxSyslog20170410` a és a `LinuxSyslog20170609` .
+Ilyen például a `LinuxSyslog20170410` és `LinuxSyslog20170609` a .
 
 ### <a name="sinksconfig"></a>sinksConfig
 
-Ez a választható szakasz szabályozza a metrikák küldését a Azure Monitor fogadóba a Storage-fiók és az alapértelmezett vendég metrikák panel mellett.
+A választható szakasz lehetővé teszi metrikák küldését a Azure Monitor fogadónak a Storage-fiók és az alapértelmezett Vendégmetrikák `sinksConfig` panel mellett.
 
 > [!NOTE]
-> Ehhez engedélyezni kell a rendszerhez rendelt identitást a virtuális gépeken/VMSS. Ez a portál, a CLI, a PowerShell és a Resource Manager használatával végezhető el. A lépéseket [itt](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)találja részletesen. Az engedélyezésének lépései az az CLI, a PowerShell stb. című telepítési mintákban is szerepelnek. 
+> A szakaszhoz engedélyezni kell a rendszer által hozzárendelt identitást a virtuális gépeken vagy `sinksConfig` a virtuálisgép-méretezési csoporton. A rendszer által hozzárendelt identitást az Azure Portal, a parancssori felület, a PowerShell vagy a Azure Resource Manager. Kövesse a [részletes utasításokat,](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) vagy tekintse meg a cikkben található korábbi telepítési mintákat. 
 
 ```json
   "sinksConfig": {
@@ -503,12 +524,12 @@ Ez a választható szakasz szabályozza a metrikák küldését a Azure Monitor 
 ```
 
 
-### <a name="filelogs"></a>fileLogs
+### <a name="filelogs"></a>fileLogs (fájlnaplók)
 
-A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok írását a fájlba, és a táblázat soraiba és/vagy bármely megadott mosogatóba (JsonBlob vagy EventHub) írja azokat.
+A `fileLogs` szakasz a naplófájlok rögzítését szabályozza. A RENDSZER rögzíti az új szövegsorokat, amikor azok a fájlba vannak írva. A tábla soraiba és/vagy bármely megadott fogadóba írja őket, például és `JsonBlob` `EventHub` .
 
 > [!NOTE]
-> a fileLogs a LAD nevű alösszetevő rögzíti `omsagent` . A fileLogs összegyűjtéséhez győződjön meg arról, hogy a `omsagent` felhasználó rendelkezik olvasási engedéllyel a megadott fájlokhoz, valamint a fájl elérési útjának összes könyvtárára vonatkozó engedélyek végrehajtásához. Ezt úgy is megtekintheti, hogy a `sudo su omsagent -c 'cat /path/to/file'` Lad telepítése után fut.
+> `fileLogs`A-t a VAGY AD alkomponense rögzíti. `omsagent` A gyűjtéséhez győződjön meg arról, hogy a felhasználó olvasási engedélyekkel rendelkezik `fileLogs` `omsagent` a megadott fájlokhoz. Emellett végrehajtási engedélyekkel kell rendelkeznie a fájl elérési útjának összes könyvtárán. A LETT telepítése után a futtatásával ellenőrizheti az `sudo su omsagent -c 'cat /path/to/file'` engedélyeket.
 
 ```json
 "fileLogs": [
@@ -522,18 +543,18 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 
 Elem | Érték
 ------- | -----
-file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket. A "omsagent" felhasználói fióknak olvasási hozzáféréssel kell rendelkeznie a fájl elérési útjához.
-tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
-fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
+file | A figyelni és rögzített naplófájl teljes elérési útja. Az elérési út neve egyetlen fájlhoz való. Nem nevezhet el könyvtárat, és nem tartalmazhat helyettesítő karaktereket. A `omsagent` felhasználói fióknak olvasási hozzáféréssel kell lennie a fájl elérési úthoz.
+tábla | (Nem kötelező) Az Azure Storage-tábla, amelybe a fájl "faroka" új sorait írja a rendszer. A táblának a kijelölt tárfiókban kell lennie a védett konfigurációban megadottak szerint. 
+Mosogató | (Nem kötelező) Azon fogadók vesszővel elválasztott listája, amelyekre a rendszer naplósorokat küld.
 
-Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
+Vagy `"table"` `"sinks"` mindkettőt meg kell adni.
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>A beépített szolgáltató által támogatott metrikák
 
 > [!NOTE]
-> A LAD által támogatott alapértelmezett mérőszámok az összes File-Systems/Disks/Name érték szerint vannak összesítve. A nem aggregált mérőszámok esetében kérjük, olvassa el az újabb Azure Monitor fogadó metrikák támogatását.
+> A RENDSZER által támogatott alapértelmezett metrikák összesítve vannak az összes fájlrendszerben, lemezen vagy névben. Nem aggregált metrikák esetén tekintse meg a fogadómetrikák Azure Monitor új metrikákat.
 
-A beépített metrikai szolgáltató a felhasználók széles köréhez legérdekesebb mérőszámok forrása. Ezek a metrikák öt átfogó osztályba sorolhatók:
+A metrikaszolgáltató olyan metrikák forrása, amelyek a legtöbb felhasználó számára `builtin` érdekesek. Ezek a metrikák öt széles osztályba tartoznak:
 
 * Processzor
 * Memória
@@ -541,127 +562,140 @@ A beépített metrikai szolgáltató a felhasználók széles köréhez legérde
 * Fájlrendszer
 * Lemez
 
-### <a name="builtin-metrics-for-the-processor-class"></a>a processzor osztályának beépített metrikái
+### <a name="builtin-metrics-for-the-processor-class"></a>beépített metrikák a Processor osztályhoz
 
-A metrikák processzor-osztálya információt nyújt a virtuális gép processzor-használatáról. A százalékok összesítése során az eredmény az összes processzor átlaga. Két vCPU virtuális gépen, ha egy vCPU 100%-ban foglalt, míg a másik a 100%-os üresjáratban volt, a jelentett PercentIdleTime a következő lesz: 50. Ha az egyes vCPU ugyanazon időszakra vonatkozóan 50%-ban foglalt, akkor a jelentett eredmény a következő lesz: 50. Egy négy vCPU virtuális gépen egy vCPU 100%-os foglalt és a többi tétlen, a jelentett PercentIdleTime a következő lesz: 75.
+A metrikák processzorosztálya a virtuális gép processzorhasználati információit biztosítja. A százalékos arányok összesítése esetén az eredmény az összes CPU átlaga. 
+
+Két virtuális gép esetén, ha az egyik vCPU 100%-ban foglalt, a másik 100%-ban tétlen, a jelentett teljesítmény `PercentIdleTime` 50. Ha minden vCPU 50%-ban foglalt ugyanabban az időszakban, a jelentett eredmény is 50. Ha egy négy vCPU-s virtuális gépen az egyik vCPU 100%-ban foglalt, a többi pedig tétlen, a jelentett teljesítmény `PercentIdleTime` 75.
+
+Számláló | Értelmezés
+------- | -------
+PercentIdleTime (PercentIdleTime) | Az aggregáció ablakában a processzorok által futtatott üresjárati kernelhurok idejének százalékos aránya
+PercentProcessorTime | Nem üresjárati szál futtatásának százalékos aránya
+PercentIOWaitTime | Az I/O-műveletek befejezésére való várakozás százalékos aránya
+PercentInterruptTime | Hardver- vagy szoftveres megszakítások és DPC-k futtatásának százalékos aránya (késleltetett eljáráshívások)
+PercentUserTime (Százalékhasználóidő) | A nem üresjárati idő az aggregáció időszakában, a felhasználói módban töltött idő százalékos aránya normál prioritással
+PercentNiceTime (Százalék és idő) | Nem üresjárati idő esetén az alacsonyabb (szép) prioritással töltött százalékos arány
+PercentPrivilegedTime (Százalékprivilegizált idő) | A nem üresjárati idő százalékos aránya emelt szintű (kernel) módban
+
+Az első négy számlálónak 100%-nak kell lennie. Az utolsó három számláló összege szintén 100 százalék. Ez a három számláló felosztja a `PercentProcessorTime` , `PercentIOWaitTime` és `PercentInterruptTime` összegét.
+
+### <a name="builtin-metrics-for-the-memory-class"></a>beépített metrikák a Memória osztályhoz
+
+A metrikák Memória osztálya információt nyújt a memóriahasználatról, a lapozásról és a felcserélésről.
 
 számláló | Értelmezés
 ------- | -------
-PercentIdleTime | Az összesítési időszakban a kernel üresjárati ciklusát végrehajtó munkafolyamatok százalékos aránya
-PercentProcessorTime | Nem tétlen szálat végrehajtó idő százalékos aránya
-PercentIOWaitTime | Az i/o-műveletek befejezésére várakozási idő százalékos aránya
-PercentInterruptTime | Hardver-/szoftver-megszakítások és-DPC végrehajtási idejének százalékos aránya (késleltetett eljárási hívások)
-PercentUserTime | A nem tétlen idő az összesítési időszakban, a felhasználó által a normál prioritásban eltöltött idő százalékos aránya
-PercentNiceTime | A nem tétlen időpontig a lecsökkentett (Nizza) prioritásban eltöltött százalékarány
-PercentPrivilegedTime | A nem üresjárati idő, a rendszerjogosultságú (kernel) módban eltöltött százalék
+AvailableMemory (Rendelkezésre álló jegy) | Rendelkezésre álló fizikai memória a MiB-ban
+PercentAvailableMemory (PercentAvailableMemory) | Rendelkezésre álló fizikai memória a teljes memória százalékában
+UsedMemory | Használatban álló fizikai memória (MiB)
+PercentUsedMemory (PercentUsedMemory) | Használatban álló fizikai memória a teljes memória százalékában
+PagesPerSec | Teljes lapozás (olvasás/írás)
+PagesReadPerSec | A háttértárból beolvasott oldalak, például a felcserélési fájl, a programfájl és a leképezett fájl
+PagesWrittenPerSec | A háttértárba írt lapok, például a felcserélési fájl és a leképezett fájl
+AvailableSwap (Rendelkezésre álló adatok) | Nem használt felcserélési terület (MiB)
+PercentAvailableSwap | Nem használt felcserélési terület a teljes felcserélés százalékában
+UsedSwap (Felhasználtwap) | Használatban van a felcserélési terület (MiB)
+PercentUsedSwap | Használatban van a felcserélési terület a teljes felcserélés százalékában
 
-Az első négy számláló összege 100%. Az utolsó három számláló a 100%-ot is összegzi; a PercentProcessorTime, a PercentIOWaitTime és a PercentInterruptTime összegét osztják meg.
+A metrikák ezen osztályának csak egy példánya van. Az `"condition"` attribútum nem rendelkezik hasznos beállításokkal, ezért ki kell hagyni.
 
-### <a name="builtin-metrics-for-the-memory-class"></a>beépített metrikák a memória osztályhoz
+### <a name="builtin-metrics-for-the-network-class"></a>beépített metrikák a Network osztályhoz
 
-A metrikák memória osztálya információt nyújt a memória kihasználtságáról, a lapozásról és a cseréről.
+A metrikák Hálózati osztálya az indítás óta az egyes hálózati adapterek hálózati tevékenységéről nyújt információkat. 
 
-számláló | Értelmezés
+A RENDSZER NEM teszi elérhetővé a sávszélesség-mérőszámokat. Ezeket a metrikákat a gazdagép metrikákból is le tudja szerezni.
+
+Számláló | Értelmezés
 ------- | -------
-AvailableMemory | Rendelkezésre álló fizikai memória a MiB-ben
-PercentAvailableMemory | Rendelkezésre álló fizikai memória a teljes memória százalékában
-UsedMemory | Használatban lévő fizikai memória (MiB)
-PercentUsedMemory | Használatban lévő fizikai memória a teljes memória százalékában
-PagesPerSec | Lapozófájlok összesen (olvasás/írás)
-PagesReadPerSec | Az áruházból beolvasott lapok (fájl, programfájl, leképezett fájl stb.)
-PagesWrittenPerSec | Az áruházba írt lapok (fájl cseréje, leképezett fájl stb.)
-AvailableSwap | Nem használt lapozófájl (MiB)
-PercentAvailableSwap | Fel nem használt swap-terület a teljes swap százalékaként
-UsedSwap | Használatban lévő swap-terület (MiB)
-PercentUsedSwap | Használatban lévő swap-terület a teljes swap százalékaként
+BytesTransmitted (Áttért bájtok) | Indítás óta küldött bájtok összesen
+BájtokReceived | Indítás óta fogadott bájtok összesen
+Bájtösszeg | Indítás óta küldött vagy fogadott bájtok összesen
+PacketsTransmitted (Csomagok átküldése) | Indítás óta küldött összes csomag
+PacketsReceived (Csomagokreceived) | Indítás óta fogadott összes csomag
+TotalRxErrors (TotalRxErrors) | Fogadási hibák száma indítás óta
+TotalTxErrors (TotalTxErrors) | Küldési hibák száma indítás óta
+TotalCollisions (Összesoszlop) | A hálózati portok által jelentett ütközések száma indítás óta
 
-A metrikák ezen osztálya csak egyetlen példánnyal rendelkezik. A "Condition" attribútum nem rendelkezik hasznos beállításokkal, és el kell hagyni.
+### <a name="builtin-metrics-for-the-file-system-class"></a>beépített metrikák a fájlrendszerosztályhoz
 
-### <a name="builtin-metrics-for-the-network-class"></a>a hálózati osztály beépített metrikái
+A metrikák fájlrendszerosztálya a fájlrendszer használatáról nyújt információt. Az abszolút és százalékos értékek úgy vannak jelentve, ahogyan egy átlagos felhasználó (nem gyökér) számára jelenne meg.
 
-A metrikák hálózati osztálya a rendszerindítás óta információt nyújt az egyes hálózati adapterek hálózati tevékenységéről. A LAD nem tesz elérhetővé sávszélesség-metrikákat, amelyek a gazdagép metrikái alapján kérhetők le.
-
-számláló | Értelmezés
-------- | -------
-BytesTransmitted | A rendszerindítás óta elindított bájtok száma összesen
-BytesReceived | A rendszerindítás óta fogadott bájtok összesen
-BytesTotal | A rendszerindítás óta küldött vagy fogadott bájtok összesen
-PacketsTransmitted | A rendszerindítás óta küldött csomagok összesen
-PacketsReceived | A rendszerindítás óta fogadott csomagok összesen
-TotalRxErrors | Fogadási hibák száma a rendszerindítás óta
-TotalTxErrors | Küldési hibák száma a rendszerindítás óta
-TotalCollisions | A hálózati portok által a rendszerindítás óta jelentett ütközések száma
-
-### <a name="builtin-metrics-for-the-filesystem-class"></a>a fájlrendszer osztályának beépített metrikái
-
-A metrikák fájlrendszer-osztálya információt nyújt a fájlrendszer használatáról. Az abszolút és a százalékos értékek a jelentések szerint a szokásos felhasználó számára (nem root) jelennek meg.
-
-számláló | Értelmezés
+Számláló | Értelmezés
 ------- | -------
 FreeSpace | Rendelkezésre álló lemezterület bájtban
-UsedSpace | Felhasznált lemezterület bájtban
+UsedSpace (Felhasznált tér) | Felhasznált lemezterület bájtban
 PercentFreeSpace | Szabad terület százalékos aránya
-PercentUsedSpace | Felhasznált terület százalékos aránya
-PercentFreeInodes | A fel nem használt inode százaléka
-PercentUsedInodes | Az összes fájlrendszerben összefoglalt lefoglalt (használatban lévő) inode százalékaránya
-BytesReadPerSecond | Olvasott bájtok másodpercenként
-BytesWrittenPerSecond | Másodpercenként írt bájtok száma
-BytesPerSecond | Olvasott vagy írt bájtok másodpercenként
-ReadsPerSecond | Olvasási műveletek másodpercenként
-WritesPerSecond | Írási műveletek másodpercenként
-TransfersPerSecond | Olvasási vagy írási műveletek másodpercenként
+PercentUsedSpace | A felhasznált terület százalékos aránya
+PercentFreeInodes (PercentFreeInodes) | Nem használt indexcsomópontok (inode-k) százalékos aránya
+PercentUsedInodes (Százalékbanhasznált csomópontok) | A lefoglalt (használatban lévő) inode-k százalékos aránya az összes fájlrendszerben összeadva
+BytesReadPerSecond (bájtolvasási másodperc) | Másodpercenként beolvasott bájtok száma
+BytesWrittenPerSecond (Bájtok felülírt másodperce) | Másodpercenként írt bájtok száma
+BájtperSecond (bájt/másodperc) | Olvasási vagy írási bájtok másodpercenként
+ReadsPerSecond (Olvasási másodperc) | Olvasási műveletek másodpercenként
+WritesPerSecond (Írási másodperc) | Írási műveletek száma másodpercenként
+TransfersPerSecond (Adatátviteli másodperc) | Olvasási vagy írási műveletek másodpercenként
 
-### <a name="builtin-metrics-for-the-disk-class"></a>beépített metrikák a lemez osztályhoz
+### <a name="builtin-metrics-for-the-disk-class"></a>beépített metrikák a Disk osztályhoz
 
-A metrikák lemezes osztálya információt nyújt a lemezes eszközök használatáról. Ezek a statisztikák a teljes meghajtóra vonatkoznak. Ha több fájlrendszer van egy eszközön, az eszköz számlálói hatékonyan, összesítve lesznek az összesre.
+A metrikák Lemez osztálya a lemezeszköz-használattal kapcsolatos információkat biztosít. Ezek a statisztikák a teljes meghajtóra érvényesek. 
 
-számláló | Értelmezés
+Ha egy eszköz több fájlrendszert használ, az eszköz számlálói hatékonyan összesítve vannak az összes fájlrendszerben.
+
+Számláló | Értelmezés
 ------- | -------
-ReadsPerSecond | Olvasási műveletek másodpercenként
-WritesPerSecond | Írási műveletek másodpercenként
-TransfersPerSecond | Műveletek másodpercenkénti száma
-AverageReadTime | Olvasási művelet átlagos másodpercenkénti száma
-AverageWriteTime | Írási művelet átlagos másodpercenkénti száma
-AverageTransferTime | Művelet átlagos másodpercenkénti száma
-AverageDiskQueueLength | A várólistán lévő lemezes műveletek átlagos száma
-ReadBytesPerSecond | Olvasott bájtok másodpercenkénti száma
+ReadsPerSecond (Olvasási másodperc) | Olvasási műveletek másodpercenként
+WritesPerSecond (Írási másodperc) | Írási műveletek száma másodpercenként
+TransfersPerSecond | Műveletek teljes száma másodpercenként
+AverageReadTime | Olvasási műveletenkénti átlagos másodpercek
+AverageWriteTime (Átlagos írásidő) | Írási műveletenkénti átlagos másodpercek
+AverageTransferTime (Átlagos áttűnőidő) | Műveletenkénti átlagos másodpercek
+AverageDiskQueueLength (ÁtlagosdiskQueueLength) | A várólistán lévő lemezműveletek átlagos száma
+ReadBytesPerSecond | Másodpercenként beolvasott bájtok száma
 WriteBytesPerSecond | A másodpercenként írt bájtok száma
-BytesPerSecond | Olvasott vagy írt bájtok másodpercenkénti száma
+BájtokPerSecond | Másodpercenként olvasott vagy írt bájtok száma
 
-## <a name="installing-and-configuring-lad-40"></a>A LAD 4,0 telepítése és konfigurálása
+## <a name="install-and-configure-lad-40"></a>A FOGY 4.0 telepítése és konfigurálása
+
+Az AZURE CLI-ben vagy a PowerShellben telepítheti és konfigurálhatja az ESZKÖZ 4.0-t.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha azt feltételezi, hogy a védett beállítások szerepelnek a ProtectedSettings.jsfájlban, és a nyilvános konfigurációs adatok PublicSettings.jsbe van kapcsolva, futtassa ezt a parancsot:
+Ha a védett beállítások a fájlban *vannak,* ProtectedSettings.jsa nyilvános konfigurációs adatok pedig aPublicSettings.js *a fájlban,* futtassa a következő parancsot:
 
 ```azurecli
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-A parancs feltételezi, hogy az Azure CLI Azure Resource Management üzemmódját használja. A klasszikus üzembe helyezési modell (ASM) virtuális gépei konfigurálásához váltson az "ASM" módra ( `azure config mode asm` ), és hagyja ki az erőforráscsoport nevét a parancsban. További információkért lásd a [többplatformos CLI dokumentációját](/cli/azure/authenticate-azure-cli).
+A parancs feltételezi, hogy az Azure CLI Azure Resource Management módját használja. Ha klasszikus üzembe helyezési modellű virtuális gépekhez is konfigurálni kell a FOGAT-t, váltson "asm" módra ( ), és a parancsban ne adja meg az `azure config mode asm` erőforráscsoport nevét. 
+
+További információt a platformfüggetlen [CLI dokumentációjában talál.](/cli/azure/authenticate-azure-cli)
 
 ### <a name="powershell"></a>PowerShell
 
-Feltételezve, hogy a védett beállítások szerepelnek a `$protectedSettings` változóban, és a nyilvános konfigurációs adatok szerepelnek a `$publicSettings` változóban, futtassa a következő parancsot:
+Ha a védett beállítások a változóban vannak, a nyilvános konfigurációs adatok pedig a `$protectedSettings` `$publicSettings` változóban, futtassa a következő parancsot:
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-40-configuration"></a>Példa LAD 4,0-konfigurációra
+## <a name="example-lad-40-configuration"></a>Példa AZ ARRA 4.0-konfigurációra
 
-Az előző definíciók alapján Íme egy példa a 4,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
+A fenti definíciók alapján ez a szakasz egy SAMPLE 4.0 bővítménykonfigurációt és néhány magyarázatot tartalmaz. A minta saját esetére való alkalmazásához használja a saját tárfióknevét, a fiók SAS-jogkivonatát, és Event Hubs SAS-jogkivonatokat.
 
 > [!NOTE]
-> Attól függően, hogy az Azure CLI vagy a PowerShell használatával telepíti a LAD-t, a nyilvános és védett beállítások biztosításának módszere eltérő lesz. Ha az Azure CLI-t használja, mentse a következő beállításokat ProtectedSettings.jsbe és PublicSettings.jsbe a parancsot a fenti minta paranccsal való használatra. Ha a PowerShellt használja, mentse a beállításokat a és a parancs `$protectedSettings` `$publicSettings` futtatásával `$protectedSettings = '{ ... }'` .
+> Attól függően, hogy az Azure CLI-t vagy a PowerShellt használja-e az ARRA való telepítéshez, a nyilvános és védett beállítások megadása eltérő módszerrel használható: 
+>
+> * Ha az Azure CLI-t használja, mentse  a következő beállításokat,ProtectedSettings.jsbe- és *PublicSettings.js* az előző mintaparancshoz. 
+> * Ha a PowerShellt használja, mentse az alábbi beállításokat a és a `$protectedSettings` `$publicSettings` parancs `$protectedSettings = '{ ... }'` futtatásával.
 
 ### <a name="protected-settings"></a>Védett beállítások
 
-A következő védett beállítások konfigurálása:
+A védett beállítások a következőt konfigurálják:
 
-* egy Storage-fiók
-* egy megfelelő fiók SAS-jogkivonata
-* több mosogató (JsonBlob vagy EventHubs SAS-tokenekkel)
+* Egy tárfiók.
+* Egyező FIÓK SAS-jogkivonata.
+* Több fogadó ( `JsonBlob` vagy `EventHub` SAS-jogkivonatokkal).
 
 ```json
 {
@@ -707,16 +741,16 @@ A következő védett beállítások konfigurálása:
 
 ### <a name="public-settings"></a>Nyilvános beállítások
 
-Ezek a nyilvános beállítások a következőt okozzák:
+A nyilvános beállítások a következőt okják:
 
-* Százalék-processzor-idő és felhasznált lemezterület-metrikák feltöltése a `WADMetrics*` táblába
-* Üzenetek feltöltése a syslog-létesítményből a "user" és a "fontosság" információkkal a `LinuxSyslog*` táblába
-* A fájlban lévő hozzáfűzött sorok feltöltése `/var/log/myladtestlog` a `MyLadTestLog` táblába
+* Töltse fel a processzoridő százalékos mérőszámát és a felhasznált lemezterület metrikákat a `WADMetrics*` táblába.
+* Üzenetek feltöltése a syslog-létesítményből `"user"` és a súlyosság `"info"` a `LinuxSyslog*` táblába.
+* Töltse fel a fájl hozzáfűzött sorait `/var/log/myladtestlog` a `MyLadTestLog` táblába.
 
-A rendszer minden esetben feltölti az adatfájlokat a következőre:
+Az adatok minden esetben a következő adatokra is feltölthetők:
 
-* Azure Blob Storage (a tároló neve a JsonBlob-fogadóban definiált)
-* EventHubs-végpont (a EventHubs-fogadóban megadott módon)
+* Azure Blob Storage. A tároló neve a fogadóban `JsonBlob` meghatározott.
+* Egy Event Hubs végpontot a `EventHubs` fogadóban megadottak szerint.
 
 ```json
 {
@@ -796,35 +830,35 @@ A rendszer minden esetben feltölti az adatfájlokat a következőre:
 }
 ```
 
-A `resourceId` konfigurációnak meg kell egyeznie a virtuális gép vagy a virtuálisgép-méretezési csoport nevével.
+A konfigurációban lévő beállításnak meg kell egyeznie a virtuális gép vagy `resourceId` a virtuálisgép-méretezési készlet beállításaival.
 
-* Az Azure platform metrikái a diagramok és a riasztások megismerik annak a virtuális gépnek a resourceId, amelyen dolgozik. A rendszer a resourceId a keresési kulcs használatával keresi meg a virtuális gép adatait.
-* Ha az Azure automatikus méretezést használja, az automatikus skálázási konfiguráció resourceId meg kell egyeznie a LAD által használt resourceId.
-* A resourceId a LAD által írt JsonBlobs nevére épül.
+* Az Azure platform metrikadiagramozása és riasztásai ismerik a virtuális `resourceId` gépét, amelyről dolgozik. Arra számít, hogy a keresési kulccsal fogja megtalálni a virtuális gép `resourceId` adatait.
+* Azure automatikus skálázás használata esetén az automatikus méretezési konfigurációban a beállításnak meg kell egyeznie az `resourceId` `resourceId` ÁLTAL használtVAL.
+* A `resourceId` be van építve a ÁLTAL írt JSON-blobok nevére.
 
 ## <a name="view-your-data"></a>Adatok megtekintése
 
-A Azure Portal használatával megtekintheti a teljesítményadatokat, vagy beállíthatja a riasztásokat:
+A Azure Portal megtekintheti a teljesítményadatokat, vagy riasztásokat állíthat be:
 
-:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Képernyőfelvétel: az Azure Portal, amely a felhasznált lemezterületet mutatja a metrika kiválasztott és az eredményül kapott diagramon.":::
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Képernyőkép a Azure Portal. A Metrika felhasznált lemezterülete van kiválasztva. Megjelenik az eredményül kapott diagram.":::
 
-Az `performanceCounters` adattárolást mindig egy Azure Storage-táblában tárolja a rendszer. Az Azure Storage API-jai számos nyelven és platformon elérhetők.
+Az `performanceCounters` adatok mindig egy Azure Storage-táblában tárolódnak. Az Azure Storage API-k számos nyelvhez és platformhoz elérhetők.
 
-A JsonBlob elküldhető adattárolók a [védett beállítások](#protected-settings)nevű Storage-fiókban található blobokban vannak tárolva. A Blobok adatai bármely Azure Blob Storage API használatával felhasználhatók.
+A fogadóknak küldött adatok blobban vannak tárolva a nevű tárfiókban a `JsonBlob` [védett beállítások között.](#protected-settings) A blobadatokat bármely api-ban Azure Blob Storage fel.
 
-Emellett használhatja ezeket a felhasználói felületi eszközöket az Azure Storage-ban tárolt adatok eléréséhez:
+Az Azure Storage-ban az alábbi felhasználói felületi eszközökkel is elérheti az adatokat:
 
-* A Visual Studio Server Explorer.
-* [A képernyőképen a Azure Storage Explorer tárolók és táblák láthatók.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer")
+* Visual Studio Server Explorer
+* [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/)
 
-A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0-konfigurációval](#an-example-lad-40-configuration).
+Az alábbi képernyőképen egy Azure Storage Explorer a létrehozott Azure Storage-táblákat és -tárolókat egy teszt virtuális gépen, egy megfelelően konfigurált EGYES 4.0-bővítményből. A rendszerkép nem pontosan egyezik a [MINTAKT 4.0-konfigurációval.](#example-lad-40-configuration)
 
-:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="A képernyőképen a Azure Storage Explorer látható.":::
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Képernyőkép a Azure Storage Explorer.":::
 
-A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-about.md) .
+A végpontokra közzétett üzenetek használatával kapcsolatos további Event Hubs tekintse meg a megfelelő Event Hubs [dokumentációját.](../../event-hubs/event-hubs-about.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/alerts/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
-* [Figyelési diagramok](../../azure-monitor/data-platform.md) létrehozása a mérőszámokhoz.
-* Megtudhatja, hogyan [hozhat létre virtuálisgép-méretezési készletet](../linux/tutorial-create-vmss.md) a metrikák használatával az automatikus skálázás szabályozásához.
+* A [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md)hozzon létre riasztásokat az összegyűjtött metrikákhoz.
+* [Monitorozási diagramokat hozhat](../../azure-monitor/data-platform.md) létre a metrikákhoz.
+* [Hozzon létre egy virtuálisgép-méretezési](../linux/tutorial-create-vmss.md) készletet a metrikák használatával az automatikus skálázás vezérlése érdekében.

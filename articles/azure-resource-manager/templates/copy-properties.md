@@ -1,28 +1,28 @@
 ---
 title: Egy tulajdonság több példányának meghatározása
-description: Egy Azure Resource Manager sablonban (ARM-sablonban) lévő másolási művelettel több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
+description: A másolási művelettel egy Azure Resource Manager sablonban (ARM-sablon) többször is iterálhat, amikor tulajdonságot hoz létre egy erőforráson.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385751"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480001"
 ---
-# <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
+# <a name="property-iteration-in-arm-templates"></a>Tulajdonság iterációja ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). A másolási hurok a sablonban lévő erőforrások tulajdonságok szakaszába való hozzáadásával dinamikusan állíthatja be egy tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhatja létre egy tulajdonság egynél több példányát a Azure Resource Manager sablonban (ARM-sablon). Ha másolási hurkot ad hozzá a sablonban lévő erőforrás tulajdonságok szakaszhoz, dinamikusan beállíthatja egy tulajdonság elemeinek számát az üzembe helyezés során. A sablonszintaxis megismétlését is elkerülheti.
 
-A másolási hurkot csak legfelső szintű erőforrásokkal használhatja, még akkor is, ha a másolási hurkot egy tulajdonságra alkalmazza. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
+A másolási hurok csak legfelső szintű erőforrásokkal használható, még akkor is, ha másolási ciklust alkalmaz egy tulajdonságra. További információ a gyermekerőforrás legfelső szintű erőforrásra való módosításáról: [Iteráció gyermekerőforráshoz.](copy-resources.md#iteration-for-a-child-resource)
 
-A másolási hurok [erőforrásokkal](copy-resources.md), [változókkal](copy-variables.md)és [kimenetekkel](copy-outputs.md)is elvégezhető.
+A másolási ciklust [](copy-resources.md)erőforrásokkal, [változókkal](copy-variables.md)és [kimenetekkel is használhatja.](copy-outputs.md)
 
 ## <a name="syntax"></a>Syntax
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Adja hozzá az `copy` elemet a sablon erőforrások szakaszához egy tulajdonsághoz tartozó elemek számának megadásához. A másolási elem a következő általános formátumú:
+Adja hozzá a elemet a sablon resources (erőforrások) szakaszhoz egy tulajdonság `copy` elemeinek számának beállítására. A másolási elem általános formátuma a következő:
 
 ```json
 "copy": [
@@ -34,58 +34,58 @@ Adja hozzá az `copy` elemet a sablon erőforrások szakaszához egy tulajdonsá
 ]
 ```
 
-A (z) esetében `name` adja meg a létrehozni kívánt erőforrás-tulajdonság nevét.
+A fájlhoz adja meg a létrehozni kívánt `name` erőforrás-tulajdonság nevét.
 
-A `count` tulajdonság megadja a tulajdonsághoz használni kívánt iterációk számát.
+A tulajdonság határozza meg a tulajdonsághoz `count` kívánt iterációk számát.
 
-A `input` tulajdonság a megismételni kívánt tulajdonságokat adja meg. A tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre `input` .
+A `input` tulajdonság határozza meg az ismételni kívánt tulajdonságokat. A tulajdonságban található értékből létrehozott elemek tömbje lesz `input` létrehozva.
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-A hurkok több tulajdonságot is használhatnak:
+A hurkok több tulajdonság deklarálhatóak a következővel:
 
-- Iteráció egy tömbben:
+- Iterating over an array (Iterating egy tömbben):
 
   ```bicep
   <property-name>: [for <item> in <collection>: {
     <properties>
-  }
+  }]
   ```
 
-- Egy tömb elemeinek megismétlése
+- Iterating over the elements of an array
 
   ```bicep
   <property-name>: [for (<item>, <index>) in <collection>: {
     <properties>
-  }
+  }]
   ```
 
-- Hurok-index használata
+- Ciklusindex használata
 
   ```bicep
   <property-name>: [for <index> in range(<start>, <stop>): {
     <properties>
-  }
+  }]
   ```
 
 ---
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
-A szám nem lehet nagyobb, mint 800.
+A szám nem haladhatja meg a 800-at.
 
-A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+A szám nem lehet negatív szám. Nulla is lehet, ha a sablont az Azure CLI, a PowerShell vagy a REST API. Konkrétan a következőt kell használnia:
 
-- Azure PowerShell **2,6** vagy újabb
-- Azure CLI- **2.0.74** vagy újabb
-- REST API **2019-05-10** -es vagy újabb verzió
-- A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+- Azure PowerShell **2.6-os vagy** újabb
+- Azure CLI **2.0.74 vagy** újabb
+- REST API **2019. 05. 10.** vagy újabb verzió
+- [A csatolt üzemelő példányok](linked-templates.md) az API **2019-05-10-es** vagy újabb verzióját kell használniuk az üzembe helyezési erőforrástípushoz
 
-A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+A PowerShell, a parancssori felület és a REST API nem támogatják a nullát a darabszámhoz.
 
 ## <a name="property-iteration"></a>Tulajdonság iterációja
 
-Az alábbi példa bemutatja, hogyan alkalmazhatja a másolási hurkot `dataDisks` egy virtuális gép tulajdonságára:
+Az alábbi példa bemutatja, hogyan alkalmazhat másolási hurkot a tulajdonságra `dataDisks` egy virtuális gépen:
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -132,9 +132,9 @@ Az alábbi példa bemutatja, hogyan alkalmazhatja a másolási hurkot `dataDisks
 }
 ```
 
-Figyelje meg, hogy ha `copyIndex` egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például: `copyIndex('dataDisks', 1)` .
+Figyelje meg, hogy a tulajdonság-iteráción belüli használata esetén meg kell adnia `copyIndex` az iteráció nevét. A tulajdonság-iteráció az eltolási argumentumot is támogatja. Az eltolásnak az iteráció neve után kell lennie, például `copyIndex('dataDisks', 1)` : .
 
-A központilag telepített sablon a következőket válik:
+Az üzembe helyezett sablon a következő lesz:
 
 ```json
 {
@@ -163,9 +163,9 @@ A központilag telepített sablon a következőket válik:
       ...
 ```
 
-A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint a `copyIndex` tömb aktuális indexének lekéréséhez.
+A másolási művelet tömbökhöz való munka során hasznos, mert a tömb minden elemét iterálhatja. A tömb függvényének használatával megadhatja az iterációk számát, és lekéri a tömb `length` `copyIndex` aktuális indexét.
 
-A következő példa sablon létrehoz egy feladatátvételi csoportot a tömbként átadott adatbázisok számára.
+Az alábbi példasablon létrehoz egy feladatátvételi csoportot a tömbként átadott adatbázisokhoz.
 
 ```json
 {
@@ -223,7 +223,7 @@ A következő példa sablon létrehoz egy feladatátvételi csoportot a tömbké
 }
 ```
 
-Az `copy` elem egy tömb, így több tulajdonság is megadható az erőforráshoz.
+Az elem egy tömb, így több tulajdonságot `copy` is megadhat az erőforráshoz.
 
 ```json
 {
@@ -275,7 +275,7 @@ resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
 }
 ```
 
-A központilag telepített sablon a következőket válik:
+Az üzembe helyezett sablon a következő lesz:
 
 ```json
 {
@@ -306,7 +306,7 @@ A központilag telepített sablon a következőket válik:
 
 ---
 
-Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hivatkozzon a tulajdonság iterációra név alapján.
+Az erőforrás- és tulajdonság-iteráció együtt is használható. Hivatkozhat a tulajdonság-iterációra név alapján.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -366,20 +366,20 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
 
 ---
 
-## <a name="example-templates"></a>Példák sablonokra
+## <a name="example-templates"></a>Példasablonok
 
-Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tulajdonság egynél több értékét hozza létre.
+Az alábbi példa egy olyan gyakori forgatókönyvet mutat be, amikor egy tulajdonsághoz egynél több értéket kell létrehozni.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
+|[Virtuális gép üzembe helyezése változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemezt helyez üzembe egy virtuális géppel. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
-- A másolási hurok egyéb felhasználási módjaiért lásd:
-  - [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
+- Az oktatóanyagot lásd: [Oktatóanyag: Több erőforráspéldány létrehozása ARM-sablonokkal.](template-tutorial-create-multiple-instances.md)
+- A másolási ciklus egyéb felhasználási módokhoz lásd:
+  - [Erőforrás-iteráció ARM-sablonokban](copy-resources.md)
   - [Változó iteráció az ARM-sablonokban](copy-variables.md)
-  - [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
-- Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
-- A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.
+  - [Kimeneti iteráció ARM-sablonokban](copy-outputs.md)
+- Ha többet szeretne megtudni a sablonok szakaszairól, tekintse meg az ARM-sablonok szerkezetének és [szintaxisának megismerése szakaszt.](template-syntax.md)
+- A sablon üzembe helyezésének elsajátítása: Erőforrások üzembe helyezése [ARM-sablonokkal](deploy-powershell.md)és Azure PowerShell.
