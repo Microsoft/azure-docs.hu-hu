@@ -1,16 +1,18 @@
 ---
-title: Rövid útmutató – virtuális gép biztonsági mentése a Azure Portal
+title: Rövid útmutató – Virtuális gépek biztonsági Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan engedélyezheti a védelmet egy Azure-beli virtuális gépen, és hogyan készíthet biztonsági másolatot a virtuális gépről a Azure Portal.
-ms.devlang: azurecli
-ms.topic: quickstart
 ms.date: 05/12/2020
-ms.custom: mvc
-ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.devlang: azurecli
+ms.custom:
+- mvc
+- mode-portal
+ms.openlocfilehash: 9779f84e6ddf1958ee234a96267171869a33e4e0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91328775"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535064"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 
@@ -39,7 +41,7 @@ A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőfo
 
     ![Virtuális gép biztonsági mentésének engedélyezése az Azure Portalon](./media/quick-backup-vm-portal/enable-backup.png)
 
-    A tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Az adatok további védelme érdekében ez a tárolási redundancia biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
+    A tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Az adatok további védelme érdekében ez a tárhely-redundanciaszint biztosítja, hogy a biztonsági mentési adatok replikálva vannak egy másodlagos Azure-régióba, amely több száz kilométerre van az elsődleges régiótól.
 
     Házirendek létrehozásával és használatával határozhatja meg, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét.
 
@@ -65,17 +67,17 @@ A virtuális gép **Biztonsági mentés** ablakában a biztonsági mentés álla
 
 Ha többé már nincs szükség rá, a virtuális gép védelmét bármikor leállíthatja, eltávolíthatja a helyreállítási pontokat és a Recovery Services-tárolót, majd törölheti az erőforráscsoportot és a társított virtuális gép erőforrásait.
 
-Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet visszaállítani a virtuális gép adatait, ugorja át a szakasz lépéseit, és folytassa a [következő lépésekkel](#next-steps).
+Ha folytatja a biztonsági mentési oktatóanyagot, amely a virtuális gép adatainak visszaállítását ismerteti, hagyja ki az ebben a szakaszban található lépéseket, és folytassa a Következő [lépések gombra.](#next-steps)
 
 1. Válassza ki a virtuális gép **Biztonsági mentés** beállítását.
 
-2. Válassza a **biztonsági mentés leállítása** lehetőséget.
+2. Válassza a **Biztonsági mentés leállítása lehetőséget.**
 
     ![Virtuális gép biztonsági mentésének leállítása az Azure Portalon](./media/quick-backup-vm-portal/stop-backup.png)
 
 3. Válassza az **Biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből.
 
-4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **biztonsági mentés leállítása** lehetőséget.
+4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **Biztonsági mentés leállítása lehetőséget.**
 
     Miután a virtuális gép biztonsági mentése leállt, és a helyreállítási pontok is ellettek távolítva, törölheti az erőforráscsoportot. Ha egy meglévő virtuális gépet használt, megtarthatja az erőforráscsoportot és a virtuális gépet.
 

@@ -1,26 +1,29 @@
 ---
-title: 'Rövid útmutató: a kiszámítások méretezése a szinapszis SQL-készlethez (Azure Portal)'
-description: A Azure Portal használatával a szinapszis SQL-készlet (adatraktár) számítási felskálázását végezheti el.
+title: 'Rövid útmutató: Számítási erőforrások méretezése Synapse SQL készlethez (Azure Portal)'
+description: Az adatkészlet (adattárház) Synapse SQL számítási kapacitását a Azure Portal.
 services: synapse-analytics
 author: Antvgski
-manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 04/28/2020
 ms.author: anvang
+manager: craigg
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2020
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- mode-portal
+ms.openlocfilehash: aa339274a1ff68764fa5573d9c031e84f290e57c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98117044"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534217"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Gyors útmutató: a szinapszis SQL-készletre vonatkozó számítási méretezés a Azure Portal
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Rövid útmutató: Számítási erőforrások méretezése Synapse SQL készlethez a Azure Portal
 
-A Azure Portal használatával a szinapszis SQL-készlet (adatraktár) számítási felskálázását végezheti el. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők. 
+Az adatkészlet (adattárház) Synapse SQL számítási kapacitását a Azure Portal. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -30,26 +33,26 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A már meglévő SQL-készleteket méretezheti, vagy a gyors üzembe helyezési útmutató [: létrehozás és összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozhat létre egy **mySampleDataWarehouse** nevű SQL-készletet. A jelen gyors útmutató a **mySampleDataWarehouse** nevű adattárház méretezését mutatja be.
+Skálázhat egy már rendelkezik SQL-készletet, vagy használhatja a Létrehozás és csatlakozás – portál gyorsútmutatót egy **mySampleDataWarehouse** nevű SQL-készlet létrehozásához. [](create-data-warehouse-portal.md) A jelen gyors útmutató a **mySampleDataWarehouse** nevű adattárház méretezését mutatja be.
 
 >[!IMPORTANT] 
->Az SQL-készletnek online állapotban kell lennie a skálázáshoz. 
+>A méretezéshez az SQL-készletnek online állapotúnak kell lennie. 
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az SQL-készlet számítási erőforrásai méretezhetők az adatraktár-egységek növelésével vagy csökkentésével. A gyors üzembe helyezési útmutató [: létrehozás és összekapcsolás-portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** , és inicializálása 400 DWU. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
+Az SQL-készlet számítási erőforrásai az adattárházegységek növelésével vagy csökkentésével skálázhatóak. A [rövid útmutató: létrehozás és csatlakozás – a portál](create-data-warehouse-portal.md) létrehozta a **mySampleDataWarehouse** 400 DWUs-t, és inicializálta azt. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
 Az adattárházegységek számának módosításához:
 
-1. Az Azure Portal bal oldalán kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
-2. Válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon. Megnyílik az SQL-készlet.
+1. A **Azure Synapse Analytics bal** oldalán kattintson a Azure Portal.
+2. Válassza **ki a mySampleDataWarehouse** Azure Synapse Analytics **(korábban SQL DW)** oldalon. Megnyílik az SQL-készlet.
 3. Kattintson **Méretezés** lehetőségre.
 
     ![Méretezés lehetőség választása](./media/quickstart-scale-compute-portal/click-scale.png)
 
-2. A Méretezés panelen húzza a csúszkát balra vagy jobbra az adattárházegységek (DWU-k) beállításának módosításához. Ezután válassza a skála lehetőséget.
+2. A Méretezés panelen húzza a csúszkát balra vagy jobbra az adattárházegységek (DWU-k) beállításának módosításához. Ezután válassza a skáláz lehetőséget.
 
     ![Csúszka mozgatása](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Ha többet szeretne megtudni az SQL-készletről, folytassa a [betöltési adatait az SQL-készletbe](./load-data-from-azure-blob-storage-using-copy.md) című oktatóanyagban.
+Az SQL-készletről további információt az Adatok betöltése az SQL-készletbe [oktatóanyagban](./load-data-from-azure-blob-storage-using-copy.md) olvashat.

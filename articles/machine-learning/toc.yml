@@ -258,7 +258,7 @@
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
-        - name: Az Azure szinapszis Analytics-munkaterületre mutató hivatkozás
+        - name: Hivatkozás Azure Synapse Analytics munkaterületre
           href: how-to-link-synapse-ml-workspaces.md
     - name: Számítási erőforrások létrehozása és kezelése
       items:
@@ -285,7 +285,7 @@
         - name: Fejlesztési környezetek beállítása
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Studio-környezet beállítása
+        - name: A Studio-környezet beállítása
           items:
             - name: Fájlok létrehozása és kezelése
               href: how-to-manage-files.md
@@ -326,12 +326,12 @@
             - name: Címkézett adathalmazok létrehozása
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Adat& előkészítésének beolvasása
+        - name: Adatok & előkészítése
           items:
             - name: Adatbetöltés az Azure Data Factoryvel
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
-            - name: Adatelőkészítés az Azure szinapszis szolgáltatással
+            - name: Adat-előkészítés Azure Synapse
               displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
               href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps használata adatfeldolgozáshoz
@@ -345,7 +345,7 @@
             - name: Csatlakozás az Azure Storage-hoz (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Identitás-alapú adatokhoz való hozzáférés a tárolóhoz
+            - name: Identitásalapú adatelérés a tárolóhoz
               displayName: 'blob, access, data lake, datastore, managed identity'
               href: how-to-identity-based-data-access.md
             - name: Adatok lekérése adattárból (Python)
@@ -396,7 +396,7 @@
             - name: Naplók engedélyezése
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Futtatási naplók és metrikák megtekintése
+            - name: Futtatás naplóinak és metrikainak megtekintése
               displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: Futtatások megjelenítése a TensorBoard használatával
@@ -450,7 +450,7 @@
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-cross-validation-data-splits.md
         - name: A jellemzősítés az automatizált gépi tanulásban (Python)
-          displayName: 'automl, feature engineering, feature importance'
+          displayName: 'automl, feature engineering, feature importance, BERT'
           href: how-to-configure-auto-features.md
         - name: Automatizált gépi tanulás használata a gépi tanulási folyamatokban (Python)
           displayName: machine learning automl
@@ -459,7 +459,7 @@
           href: how-to-understand-automated-ml.md
         - name: Az ONNX modell használata a .NET-alkalmazásban
           href: how-to-use-automl-onnx-model-dotnet.md
-        - name: Automatizált ML – hibakeresés
+        - name: Automatizált gépi tanulási hibák elhárítása
           href: how-to-troubleshoot-auto-ml.md
     - name: Modellek üzembe helyezése és kiszolgálása
       items:
@@ -544,7 +544,7 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML-folyamatok üzembe helyezése (Python)
           href: how-to-deploy-pipelines.md
-        - name: Azure szinapszis Apache Spark-készletek használata ML-folyamatokban (Python)
+        - name: Apache Spark Azure Synapse készletek használata gépi tanulási folyamatban (Python)
           href: how-to-use-synapsesparkstep.md
         - name: Folyamat aktiválása
           href: how-to-trigger-published-pipeline.md
@@ -556,7 +556,7 @@
             - name: Adatok átalakítása
               displayName: pipeline
               href: how-to-designer-transform-data.md
-            - name: Folyamat paramétereinek használata
+            - name: Folyamatparaméterek használata
               displayName: 'designer, pipeline parameters'
               href: how-to-use-pipeline-parameter.md
             - name: Újratanítás közzétett folyamatok használatával

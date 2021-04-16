@@ -3,17 +3,17 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a anomália-detektor (többváltozós)?
+    - name: Mi az anomáliadetektor (többvóta)?
       href: overview-multivariate.md
-    - name: Mi az a anomália detektor (univariate)?
+    - name: Mi az anomáliadetektor (egyváltozós)?
       href: overview.md
-    - name: Díjszabás és korlátok
+    - name: Díjszabás
       href: 'https://aka.ms/adpricing'
-- name: Anomáliák detektora
+- name: Rövid útmutatók
   items:
-    - name: Többváltozós ügyféloldali kódtárak
+    - name: Többválozós ügyfélkódtárak
       href: ./quickstarts/client-libraries-multivariate.md
-    - name: Univariate-ügyfél kódtárai
+    - name: Egyedi ügyfélkódtárak
       href: ./quickstarts/client-libraries.md
 - name: Példák
   items:
@@ -27,7 +27,7 @@
   items:
     - name: Adatok rendellenességeinek azonosítása
       href: how-to/identify-anomalies.md
-    - name: Anomália-detektor üzembe helyezése
+    - name: Üzembe anomáliadetektor
       items:
         - name: Üzembe helyezés az IoT Edge-eszközön
           href: how-to/deploy-anomaly-detection-on-iot-edge.md
@@ -43,19 +43,25 @@
               displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
             - name: A Container Instances használata
               href: how-to/deploy-anomaly-detection-on-container-instances.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: Azure AD-hitelesítés használata
+          href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: Alapelvek
   items:
-    - name: Anomália-detektor API – ajánlott eljárások (többváltozós)
+    - name: anomáliadetektor API ajánlott eljárásai (többválékos)
       href: concepts/best-practices-multivariate.md
-    - name: Anomália-detektor API – ajánlott eljárások (univariate)
+    - name: anomáliadetektor API – ajánlott eljárások (egyváltozós)
       href: concepts/anomaly-detection-best-practices.md
-    - name: Prediktív karbantartási architektúra (többváltozós)
+    - name: Prediktív karbantartási architektúra (többválékos)
       href: concepts/multivariate-architecture.md
-    - name: Többváltozós hibaelhárítás
+    - name: Többválékos hibák elhárítása
       href: concepts/troubleshoot.md
-    - name: A spektrális maradék (SR) és a többfunkciós neurális háló (CNN) rendellenességének észlelése
+    - name: Spektrális reziduális (SR) és konvolúciós neurális háló (CNN) anomáliadetektálása
       href: 'https://arxiv.org/abs/1906.03821'
-    - name: Többváltozós idősorozatú anomáliák észlelése gráfon keresztüli hangalapú hálózattal
+    - name: Többváltozós idősorozat-anomáliadetektálás a gráf figyelemhálózatán keresztül
       href: 'https://arxiv.org/abs/2009.02040'
 - name: Oktatóanyagok
   items:
@@ -63,7 +69,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
 - name: Referencia
   items:
-    - name: Anomália detektor REST API
+    - name: anomáliadetektor REST API
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: .NET
       href: 'https://aka.ms/anomaly-detector-dotnet-ref'
@@ -75,20 +81,22 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
 - name: Források
   items:
-    - name: Régiós támogatás
-      href: 'https://aka.ms/adregion'
-    - name: A modulok megismerése
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
-    - name: Támogatási & Súgó
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://aka.ms/adregion'
+        - name: Megfelelőség és minősítés
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: Microsoft Learn modulok
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
     - name: Felhasználó által létrehozott tartalom
       href: user-generated-content.md
     - name: Csatlakozzon az Anomaly Detector Advisors csoporthoz a Microsoft Teamsben
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Referencia megoldásarchitektúra
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: Műszaki blogok

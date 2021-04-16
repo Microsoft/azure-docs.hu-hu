@@ -1,24 +1,24 @@
 ---
-title: Beépített szabályzat-definíciók az Azure szignáló számára
-description: Felsorolja Azure Policy az Azure-jelzőhöz tartozó beépített szabályzat-definíciókat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure SignalR-hez
+description: Az Azure Policy Azure SignalR beépített szabályzatdefinícióit sorolja fel. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e39d5584faec2c29d2dc614b765a41f8ef89ed2d
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 884984ddcafa083ac2420598ef1282e438d8ad3b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089448"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501390"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Az Azure Signaler beépített definíciói Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Azure Policy Azure SignalR beépített definíciói
 
-Ez az oldal a [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe az Azure-jelzőhöz. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal az Azure SignalR [Azure Policy](../governance/policy/overview.md) szabályzatdefiníciók indexe. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-signalr"></a>Azure SignalR
 

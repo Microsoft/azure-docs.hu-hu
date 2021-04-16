@@ -1,37 +1,39 @@
 ---
-title: 'Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel'
-description: Ebben a rövid útmutatóban a JavaScript használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
+title: 'Rövid útmutató: Felügyeleti csoport létrehozása JavaScripttel'
+description: Ebben a rövid útmutatóban JavaScript használatával hoz létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 553133f30bd16543444356e8cda3e70458247b5c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100099149"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536003"
 ---
-# <a name="quickstart-create-a-management-group-with-javascript"></a>Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel
+# <a name="quickstart-create-a-management-group-with-javascript"></a>Rövid útmutató: Felügyeleti csoport létrehozása JavaScripttel
 
-A felügyeleti csoportok olyan tárolók, amelyek segítségével kezelheti a hozzáférést, a szabályzatot és a megfelelőséget több előfizetés között. Hozza létre ezeket a tárolókat egy olyan hatékony és hatékony hierarchia létrehozásához, amely a [Azure Policy](../policy/overview.md) és az [Azure szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md)használható. A felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](overview.md).
+A felügyeleti csoportok olyan tárolók, amelyek segítségével több előfizetés hozzáférését, szabályzatát és megfelelőségét kezelheti. Hozza létre ezeket a tárolókat egy hatékony és [](../policy/overview.md) hatékony hierarchia létrehozásához, amely a Azure Policy azure-beli szerepköralapú [hozzáférés-vezérléssel együtt használható.](../../role-based-access-control/overview.md) További információ a felügyeleti csoportokról: [Erőforrások rendszerezése Azure-beli felügyeleti csoportokkal.](overview.md)
 
-A címtárban létrehozott első felügyeleti csoport akár 15 percet is igénybe vehet. Az Azure-ban a címtárhoz a felügyeleti csoportok szolgáltatás beállításához első alkalommal futó folyamatok futnak. A folyamat befejezésekor értesítést kap. További információ: [a felügyeleti csoportok kezdeti beállítása](./overview.md#initial-setup-of-management-groups).
+A címtárban létrehozott első felügyeleti csoport létrehozása akár 15 percet is igénybe vehet. Vannak olyan folyamatok, amelyek az első alkalommal futnak, amikor beállítják a felügyeleticsoport-szolgáltatást az Azure-ban a címtárhoz. A folyamat befejezésekor értesítést kap. További információkért lásd a [felügyeleti csoportok kezdeti beállítását.](./overview.md#initial-setup-of-management-groups)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- Mielőtt elkezdené, győződjön meg arról, hogy a [Node.js](https://nodejs.org/) legalább 12-ös verziója telepítve van.
+- Mielőtt elkezdené, győződjön meg arról, hogy aNode.jslegalább [ 12-es ](https://nodejs.org/) verziója telepítve van.
 
-- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye nincs hozzárendelve ehhez a felhasználóhoz, ha nincs engedélyezve a [hierarchia védelme](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Ez az új felügyeleti csoport a gyökérszintű felügyeleti csoport vagy az [alapértelmezett felügyeleti](./how-to/protect-resource-hierarchy.md#setting---default-management-group) csoport gyermeke lesz, a létrehozó pedig "tulajdonos" szerepkör-hozzárendelést kap. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoporthoz. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok legfelső szintű létrehozását.
+- A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye hozzá lenne rendelve a felhasználóhoz, ha a [hierarchiavédelem](./how-to/protect-resource-hierarchy.md#setting---require-authorization) nincs engedélyezve. Ez az új felügyeleti csoport a gyökér [](./how-to/protect-resource-hierarchy.md#setting---default-management-group) felügyeleti csoport vagy az alapértelmezett felügyeleti csoport gyermeke lesz, és a létrehozó "Tulajdonos" szerepkör-hozzárendelést kap. A felügyeleticsoport-szolgáltatás lehetővé teszi ezt a képességet, így a gyökérszinten nincs szükség szerepkör-hozzárendelésre. Létrehozáskor egyetlen felhasználó sem fér hozzá a gyökér felügyeleti csoporthoz. Annak érdekében, hogy ne kelljen megtalálni az Azure AD globális rendszergazdáit a felügyeleti csoportok használatának elkezdésében, engedélyezhetjük a kezdeti felügyeleti csoportok létrehozását a gyökérszinten.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="application-setup"></a>Alkalmazásbeállítás
 
-Ahhoz, hogy a JavaScript felügyelje a felügyeleti csoportokat, a környezetet be kell állítani. Ez a beállítás bárhol használható a JavaScript használatával, beleértve [a bash használatát a Windows 10 rendszeren](/windows/wsl/install-win10).
+Ahhoz, hogy a JavaScript kezelni tudja a felügyeleti csoportokat, be kell állítani a környezetet. Ez a beállítás bárhol működik, ahol a JavaScript használható, beleértve a [Bash on Windows 10.](/windows/wsl/install-win10)
 
-1. Hozzon létre egy új Node.js projektet a következő parancs futtatásával.
+1. Állítson be egy új Node.js a következő parancs futtatásával.
 
    ```bash
    npm init -y
@@ -43,24 +45,24 @@ Ahhoz, hogy a JavaScript felügyelje a felügyeleti csoportokat, a környezetet 
    npm install yargs
    ```
 
-1. Adjon hozzá egy hivatkozást az Azure Resource Graph-modulhoz.
+1. Adjon hozzá egy hivatkozást a Azure Resource Graph modulhoz.
 
    ```bash
    npm install @azure/arm-managementgroups
    ```
 
-1. Adjon hozzá egy hivatkozást az Azure Authentication Library-hez.
+1. Adjon hozzá egy, az Azure-beli hitelesítési kódtárra vonatkozó hivatkozást.
 
    ```bash
    npm install @azure/ms-rest-nodeauth
    ```
 
    > [!NOTE]
-   > Ellenőrizze, hogy a (z) _package.js_ -es `@azure/arm-managementgroups` verziója **1.1.0** vagy újabb, és `@azure/ms-rest-nodeauth` a verziója **3.0.5** vagy újabb.
+   > Ellenőrizze, _hogy apackage.js_ `@azure/arm-managementgroups` **1.1.0-s** vagy újabb, és `@azure/ms-rest-nodeauth` **3.0.5-ös** vagy újabb verziójú-e.
 
 ## <a name="create-the-management-group"></a>A felügyeleti csoport létrehozása
 
-1. Hozzon létre egy _index.js_ nevű új fájlt, és adja meg a következő kódot.
+1. Hozzon létre egy új, _index.js_ nevű fájlt, és írja be a következő kódot.
 
    ```javascript
    const argv = require("yargs").argv;
@@ -84,21 +86,21 @@ Ahhoz, hogy a JavaScript felügyelje a felügyeleti csoportokat, a környezetet 
    }
    ```
 
-1. Adja meg a következő parancsot a terminálon:
+1. Írja be a következő parancsot a terminálba:
 
    ```bash
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   Ügyeljen arra, hogy az egyes jogkivonat- `<>` helyőrzőket cserélje le a _felügyeleti csoport azonosítóját_ és a _felügyeleti csoport rövid nevét_.
+   Minden jogkivonat helyőrzőt cserélje le a felügyeleti csoport azonosítójára, illetve a felügyeleti csoport `<>` _rövid_  nevére.
 
-   Ahogy a parancsfájl megkísérli a hitelesítést, az alábbi üzenethez hasonló üzenet jelenik meg a terminálon:
+   Amikor a szkript megkísérli a hitelesítést, a terminálon a következőhöz hasonló üzenet jelenik meg:
 
-   > A bejelentkezéshez egy webböngésző segítségével nyissa meg a lapot, https://microsoft.com/devicelogin és adja meg a hitelesíteni kívánt FGB56WJUGK.
+   > A bejelentkezéshez egy webböngészővel nyissa meg az oldalt, és írja be az https://microsoft.com/devicelogin FGB56WJUGK kódot a hitelesítéshez.
 
-   Miután végzett a hitelesítéssel a böngészőben, a szkript továbbra is futni fog.
+   A böngészőben való hitelesítés után a szkript továbbra is futni fog.
 
-A felügyeleti csoport létrehozásának eredménye kimenet a konzolon.
+A felügyeleti csoport létrehozásának eredménye a konzol kimenete lesz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -110,9 +112,9 @@ npm uninstall @azure/arm-managementgroups @azure/ms-rest-nodeauth yargs
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
+Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport előfizetéseket vagy más felügyeleti csoportokat is képes tartani.
 
-Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezeléséről, folytassa a következővel:
+Ha többet szeretne megtudni a felügyeleti csoportokról és az erőforrás-hierarchia kezelésével kapcsolatban, folytassa a következővel:
 
 > [!div class="nextstepaction"]
 > [Erőforrások kezelése felügyeleti csoportokkal](./manage.md)

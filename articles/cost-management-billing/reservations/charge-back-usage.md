@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 4fb15a7e677d566454d5d487c1cf69767d7f3a30
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4059318e6b8052f3b0221c87e8a357cfc8679e44
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368744"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532753"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure-foglalások költségének költséghelyi elszámolása
 
@@ -20,11 +20,11 @@ A Nagyvállalati Szerződéssel és a Microsoft Ügyfélszerződéssel rendelkez
 
 Az önálló előfizetéssel rendelkező felhasználók a használati fájlból szerezhetik meg az amortizált költségadatokat. Ha egy erőforrás foglalási kedvezményt kap, a használati fájl *AdditionalInfo* szakasza tartalmazza a foglalás adatait. További információért lásd [a használati adatok Azure Portalról való letöltését](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv) bemutató cikket.
 
-## <a name="see-reservation-usage-data-for-show-back-and-charge-back"></a>A foglalási használati adatok megtekintése és a visszatöltés visszahívása
+## <a name="see-reservation-usage-data-for-show-back-and-charge-back"></a>Tekintse meg a foglalás használati adatait a vissza- és költség-visszahasználattal kapcsolatban
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Navigáljon a **Cost Management + számlázáshoz** 
-3. Válassza ki a **Cost Analysis** elemet a bal oldali navigációs sávon 
+2. Lépjen a **Költségkezelés + számlázás** elemre. 
+3. Válassza a **Költségelemzés lehetőséget** a bal oldali navigációs sávon 
 4. A **Tényleges költségek** területen válassza az **Amortizált költség** metrikát.
 5. Ha azt szeretné megtekinteni, hogy egy adott foglalás mely erőforrásokat használta, alkalmazzon szűrőt a **Foglalás** esetében, és válassza ki a kívánt foglalásokat.
 6. A **Részletesség** értéke legyen **Havi** vagy **Napi**.
@@ -33,18 +33,18 @@ Az önálló előfizetéssel rendelkező felhasználók a használati fájlból 
 
 [![Példa foglalási erőforrás költségeire, amelyek költséghelyi elszámoláshoz használhatóak](./media/charge-back-usage/amortized-reservation-costs.png)](./media/charge-back-usage/amortized-reservation-costs.png#lightbox)
 
-A következő videó bemutatja, hogyan tekinthetők meg az Azure Portalon a foglalás kihasználtságának költségei.
+Az alábbi videó bemutatja, hogyan lehet megtekinteni a foglalások használati költségeit az előfizetésben, az erőforráscsoportban és az erőforrásszinten a Azure Portal.
 
  > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4sQOw] 
 
-## <a name="get-the-data-for-show-back-and-charge-back"></a>A vissza-és visszatöltéshez szükséges adatlekérdezés
+## <a name="get-the-data-for-show-back-and-charge-back"></a>A visszamutatja és vissza nem számolt adatok lekért adatait
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Navigáljon a **Cost Management + számlázáshoz** 
-3. **Exportálás** a bal oldali navigációs listából 
-4. Kattintson a **Hozzáadás** gombra
-5. Válassza ki az elszámolt költségeket metrika gombként, és állítsa be az exportálást
+2. Lépjen a **Költségkezelés + számlázás** elemre. 
+3. Válassza **az Exportálás** lehetőséget a bal oldali navigációs sávon 
+4. Kattintson a **Hozzáadás gombra**
+5. Válassza az Amortized cost (Amortizált költség) lehetőséget metrikagombként, és adja meg az exportálás beállítását
 
-a foglalási kedvezményt lefoglaló használati EffectivePrice a foglalás arányosan fizetendő díja (nulla helyett). Ezzel megtudhatja a foglalási fogyasztás előfizetésenkénti, erőforráscsoportonkénti, vagy erőforrásonkénti pénzben kifejezett értékét, és segít abban, hogy a foglalási használatot belsőleg számolja el költséghelyi elszámolással. Az adathalmaz tartalmaz továbbá fel nem használt foglalási órákat. 
+A foglalási kedvezményt kapó használat effectivePrice ára a foglalás arányos költsége (nulla helyett). Ezzel megtudhatja a foglalási fogyasztás előfizetésenkénti, erőforráscsoportonkénti, vagy erőforrásonkénti pénzben kifejezett értékét, és segít abban, hogy a foglalási használatot belsőleg számolja el költséghelyi elszámolással. Az adathalmaz tartalmaz továbbá fel nem használt foglalási órákat. 
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Azure fogyasztási és foglalási használati adatok lekérése API használatával
 
@@ -74,7 +74,7 @@ A mérőket és szűrőket tartalmazó következő táblázat segítséget nyúj
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön egy nagyvállalati rendszergazda, akkor letöltheti az új használati adatokat tartalmazó CSV-fájlt Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
+Ha Ön EA-rendszergazda, letöltheti az új használati adatokat tartalmazó CSV-fájlt a Azure Portal. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
 
 Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 
@@ -82,7 +82,7 @@ Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Mic
 2. Kattintson a **Felhasználás + díjak** lehetőségre.
 3. Kattintson a **Letöltés** gombra.  
 ![Példa a használati adatokat tartalmazó CSV-fájl letöltési helyére az Azure Portalról](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. A **használat részletei** területen válassza az elszámolt **használati adatok** lehetőséget.
+4. A **Usage Details (Használati adatok) alatt** válassza az **Amortized usage data (Amortizált használati adatok) lehetőséget.**
 
 A letölteni kívánt CSV-fájlok a tényleges költségeket és az amortizált költségeket is tartalmazzák.
 
@@ -91,6 +91,6 @@ A letölteni kívánt CSV-fájlok a tényleges költségeket és az amortizált 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
-- Ha többet szeretne megtudni a Azure Reservations használati adatokról, tekintse meg a következő cikkeket:
-  - [A Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés foglalásának költségei és használata](understand-reserved-instance-usage-ea.md)
+- Az Azure Reservations használati adataival kapcsolatos további információkért tekintse meg a következő cikkeket:
+  - [Nagyvállalati Szerződés és Microsoft Ügyfélszerződés költségek és használat](understand-reserved-instance-usage-ea.md)
  

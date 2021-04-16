@@ -1,6 +1,6 @@
 ---
-title: Vendég felhasználói hozzáférési engedélyek korlátozása – Azure Active Directory | Microsoft Docs
-description: A vendég felhasználói hozzáférési engedélyek korlátozása a Azure Portal, a PowerShell vagy a Microsoft Graph használatával Azure Active Directory
+title: Vendégfelhasználók hozzáférési engedélyeinek korlátozása – Azure Active Directory | Microsoft Docs
+description: A vendégfelhasználók hozzáférési engedélyeinek korlátozása a Azure Portal, a PowerShell vagy Microsoft Graph használatával Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -13,45 +13,45 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222521"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501501"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
+# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Vendég-hozzáférési engedélyek korlátozása (előzetes verzió) a Azure Active Directory
 
-Azure Active Directory (Azure AD) segítségével korlátozhatja, hogy a külső vendég felhasználók hogyan láthatják a szervezetében az Azure AD-ben. Az Azure AD alapértelmezés szerint korlátozott jogosultsági szintre állítja a vendég felhasználókat, míg a felhasználók alapértelmezés szerint az alapértelmezett felhasználói engedélyek teljes készletét használják. Ez az Azure AD-szervezet külső együttműködési beállításaiban található új vendég felhasználói jogosultsági szint előzetes verziója, amely még korlátozottabb hozzáférést biztosít, így a vendég hozzáférési lehetőségei mostantól a következők:
+Azure Active Directory (Azure AD) lehetővé teszi annak korlátozását, hogy a külső vendégfelhasználók mit láthatnak a szervezetben az Azure AD-ban. A vendégfelhasználók alapértelmezés szerint korlátozott engedélyszintre vannak beállítva az Azure AD-ban, míg a tagfelhasználók alapértelmezett beállítása az alapértelmezett felhasználói engedélyek teljes készlete. Ez az Azure AD-szervezet külső együttműködési beállításainak új vendégfelhasználói engedélyszintje előzetes verziója, amely még korlátozottabb hozzáférést biztosít, így a vendégelérési lehetőségek mostantól a következőek:
 
-Engedélyszint         | Hozzáférési szint
-----------------         | ------------
-Ugyanaz, mint a tag felhasználói     | A vendégek ugyanolyan hozzáféréssel rendelkeznek az Azure AD-erőforrásokhoz, mint a tag felhasználói
-Korlátozott hozzáférés (alapértelmezett) | A vendégek az összes nem rejtett csoport tagságát láthatják
-**Korlátozott hozzáférés (új)**  | **A vendégek nem láthatják a csoportok tagságát**
+Engedélyszint         | Hozzáférési szint | Érték
+----------------         | ------------ | -----
+Ugyanaz, mint a tagfelhasználók     | A vendégek ugyanolyan hozzáféréssel férnek hozzá az Azure AD-erőforrásokhoz, mint a tagfelhasználók | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Korlátozott hozzáférés (alapértelmezett) | A vendégek láthatják az összes nem rejtett csoport tagságát | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**Korlátozott hozzáférés (új)**  | **A vendégek nem láthatják egyik csoport tagságát sem** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
-Ha a vendég hozzáférése korlátozott, a vendégek csak a saját felhasználói profilt tekinthetik meg. A többi felhasználó megtekintésére vonatkozó engedély nem engedélyezett, még akkor sem, ha a vendég egyszerű felhasználónevet vagy objectId keres. A korlátozott hozzáférés azt is korlátozza, hogy a vendég felhasználók láthassák a csoportok tagságát. További információ az alapértelmezett felhasználói engedélyekről, beleértve a vendég felhasználói engedélyeket is: [Mik az alapértelmezett felhasználói engedélyek a Azure Active Directory-ben?](../fundamentals/users-default-permissions.md).
+Ha a vendég hozzáférése korlátozott, a vendégek csak a saját felhasználói profiljukat megtekinthetik. Más felhasználók megtekintésére vonatkozó engedély akkor sem engedélyezett, ha a vendég egyszerű felhasználónév vagy objectId alapján keres. A korlátozott hozzáférés azt is korlátozza, hogy a vendégfelhasználók ne látják az őket használó csoportok tagságát. További információ az általános alapértelmezett felhasználói engedélyekről, beleértve a vendégfelhasználói engedélyeket: Mik az alapértelmezett felhasználói engedélyek a [Azure Active Directory.](../fundamentals/users-default-permissions.md)
 
 ## <a name="permissions-and-licenses"></a>Engedélyek és licencek
 
-A külső együttműködési beállítások konfigurálásához globális rendszergazdai szerepkörrel kell rendelkeznie. A vendég-hozzáférés korlátozására nincsenek további licencelési követelmények.
+A külső együttműködési beállítások konfiguráláshoz globális rendszergazdai szerepkörben kell lennie. A vendég hozzáférésének korlátozására nincsenek további licencelési követelmények.
 
 ## <a name="update-in-the-azure-portal"></a>Frissítés a Azure Portal
 
-Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal vezérlőit.
+Módosításokat végrehajtottunk a vendégfelhasználói engedélyek Azure Portal vezérlőiben.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai engedélyekkel.
-1. A szervezet **Azure Active Directory** áttekintés lapján válassza a **felhasználói beállítások** lehetőséget.
-1. A **külső felhasználók** területen válassza a **külső együttműködési beállítások kezelése** lehetőséget.
-1. A **külső együttműködési beállítások** lapon válassza a **vendég felhasználói hozzáférés lehetőséget a saját címtár-objektumok tulajdonságai és tagsága** lehetőségre.
+1. Jelentkezzen be az [Azure AD](https://aad.portal.azure.com) felügyeleti központba globális rendszergazda engedélyekkel.
+1. A **Azure Active Directory** áttekintési lapján válassza a Felhasználói **beállítások lehetőséget.**
+1. A **Külső felhasználók alatt** válassza a Külső együttműködési beállítások kezelése **lehetőséget.**
+1. A Külső **együttműködési beállítások lapon** válassza a **Vendégfelhasználói** hozzáférés a saját címtárobjektumaik tulajdonságaira és tagságára van korlátozva lehetőséget.
 
-    ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
+    ![Az Azure AD külső együttműködési beállításainak oldala](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Kattintson a **Mentés** gombra. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
+1. Kattintson a **Mentés** gombra. A módosítások a vendégfelhasználók számára 15 percet is igénybe vehatnak.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 
-Új Microsoft Graph API-t adtunk hozzá a vendég engedélyeinek konfigurálásához az Azure AD-szervezetben. A következő API-hívások bármelyik jogosultsági szint hozzárendelésére használhatók. Az itt használt guestUserRoleId értéke a legtöbb korlátozott vendég felhasználói beállítás szemléltetése. További információ a Microsoft Graph használatáról a vendég engedélyeinek beállításához: [authorizationPolicy erőforrástípus](/graph/api/resources/authorizationpolicy).
+Hozzáadtunk egy új Microsoft Graph API-t, amely konfigurálja a vendégengedélyeket az Azure AD-szervezetben. A következő API-hívások bármilyen engedélyszint hozzárendelésére használhatók. A guestUserRoleId itt használt értéke a legnagyobb korlátozott vendégfelhasználói beállítás szemléltetésére használható. A vendégengedélyek beállítására Microsoft Graph további információért lásd: [authorizationPolicy erőforrástípus.](/graph/api/resources/authorizationpolicy)
 
 ### <a name="configuring-for-the-first-time"></a>Konfigurálás első alkalommal
 
@@ -63,7 +63,7 @@ POST https://graph.microsoft.com/beta/policies/authorizationPolicy/authorization
 }
 ````
 
-A válasznak 204 sikeresnek kell lennie.
+A válasznak 204-es sikernek kell lennie.
 
 ### <a name="updating-the-existing-value"></a>A meglévő érték frissítése
 
@@ -75,7 +75,7 @@ PATCH https://graph.microsoft.com/beta/policies/authorizationPolicy/authorizatio
 }
 ````
 
-A válasznak 204 sikeresnek kell lennie.
+A válasznak 204-es sikernek kell lennie.
 
 ### <a name="view-the-current-value"></a>Az aktuális érték megtekintése
 
@@ -101,9 +101,9 @@ Példaválasz:
 
 ## <a name="update-with-powershell-cmdlets"></a>Frissítés PowerShell-parancsmagokkal
 
-Ezzel a funkcióval lehetőség van a korlátozott engedélyek konfigurálására a PowerShell V2-parancsmagok használatával. A PowerShell-parancsmagok beolvasása és beállítása a 2.0.2.85 verzióban történt.
+Ezzel a funkcióval a korlátozott engedélyek PowerShell v2-parancsmagokkal konfigurálhatóak. A Get és Set PowerShell-parancsmagok a 2.0.2.85-ös verzióban vannak közzétéve.
 
-### <a name="get-command-get-azureadmsauthorizationpolicy"></a>Parancs beolvasása: Get-AzureADMSAuthorizationPolicy
+### <a name="get-command-get-azureadmsauthorizationpolicy"></a>Get parancs: Get-AzureADMSAuthorizationPolicy
 
 Példa:
 
@@ -119,7 +119,7 @@ GuestUserRoleId                                   : 10dae51f-b6af-4016-8d66-8c2a
 PermissionGrantPolicyIdsAssignedToDefaultUserRole : {user-default-legacy}
 ````
 
-### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set parancs: Set-AzureADMSAuthorizationPolicy
+### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Parancs beállítása: Set-AzureADMSAuthorizationPolicy
 
 Példa:
 
@@ -128,26 +128,26 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 ````
 
 > [!NOTE]
-> A authorizationPolicy megadásakor AZONOSÍTÓként kell megadnia a kérést.
+> Ha a rendszer kéri, adja meg az authorizationPolicy azonosítót.
 
 ## <a name="supported-microsoft-365-services"></a>Támogatott Microsoft 365 szolgáltatások
 
 ### <a name="supported-services"></a>Támogatott szolgáltatások
 
-Támogatott módon azt értjük, hogy a tapasztalatok a várt módon működnek. pontosabban, hogy ugyanaz, mint az aktuális vendég élmény.
+A támogatottak alatt azt jelenti, hogy a felhasználói élmény a vártnak megfelelő; pontosabban, hogy ugyanaz, mint a jelenlegi vendégélmény.
 
 - Teams
 - Outlook (OWA)
 - SharePoint
-- Planner a Teams szolgáltatásban
-- Planner webalkalmazás
+- Planner a Teamsben
+- Planner-webalkalmazás
 
 ### <a name="services-currently-not-supported"></a>A szolgáltatások jelenleg nem támogatottak
 
-Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba ütközhet az új vendég korlátozási beállítással.
+A jelenlegi támogatás nélküli szolgáltatás kompatibilitási problémákat okozhat az új vendégkorlátozási beállítással.
 
 - Űrlapok
-- Planner Mobile-alkalmazás
+- Planner mobilalkalmazás
 - Project
 - Yammer
 
@@ -155,17 +155,17 @@ Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba
 
 Kérdés | Válasz
 -------- | ------
-Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedélyek az Azure AD-szolgáltatások és-portálok esetében érvényesek, beleértve a Microsoft Graph, a PowerShell V2, a Azure Portal és a saját alkalmazások portált. Az együttműködési forgatókönyvekhez Microsoft 365 csoportokat kihasználó Microsoft 365-szolgáltatások is érintettek, különösen az Outlook, a Microsoft Teams és a SharePoint.
-Hogyan befolyásolják a korlátozott engedélyek, hogy mely csoportok láthatják a vendégeket? | Az alapértelmezett vagy a korlátozott vendég engedélyeitől függetlenül a vendégek nem tudják enumerálni a csoportok vagy felhasználók listáját. Az engedélyektől függően a vendégek a Azure Portal és a saját alkalmazások portálon is megtekinthetik a csoportok tagjait:<li>**Alapértelmezett engedélyek**: Ha meg szeretné keresni azokat a csoportokat, amelyek tagjai a Azure Portalnak, a vendégnek a **minden felhasználó** listában meg kell KERESNIe az objektum azonosítóját, majd ki kell választania a **csoportokat**. Itt láthatják azoknak a csoportoknak a listáját, amelyeknek tagjai, beleértve az összes csoport részleteit, beleértve a nevet, az e-maileket stb. A saját alkalmazások portálon megtekinthetik azoknak a csoportoknak a listáját, amelyeknek a tulajdonosai és csoportjaik tagjai.</li><li>**Korlátozott vendég engedélyei**: a Azure Portalban továbbra is megtalálják azoknak a csoportoknak a listáját, amelyeknek a tagjai a minden felhasználó listában megkeresik a hozzájuk tartozó objektumazonosítók keresését, majd kiválasztja a csoportok lehetőséget. A csoportnak csak nagyon kevés részlete látható, különösen az objektumazonosító. A tervezés szerint a név és az e-mail-oszlopok üresek, és a csoport típusa nem ismerhető fel. A saját alkalmazások portálon nem férhetnek hozzá azok a csoportok, amelyeknek a tulajdonosai vagy csoportjaik tagjai.</li><br>A Graph APIből származó címtár-engedélyek részletesebb összehasonlítását lásd: [alapértelmezett felhasználói engedélyek](../fundamentals/users-default-permissions.md#member-and-guest-users).
-A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is a Azure Portal meglévő csoportjának beállításai vezérlik.
-Felülbírálják ezeket az engedélyeket a SharePoint vagy a Microsoft Teams vendég beállításainak? | Nem. Ezek a meglévő beállítások továbbra is szabályozzák az alkalmazások élményét és elérését. Ha például problémát tapasztal a SharePointban, ellenőrizze a külső megosztási beállításokat.
-Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha a "korlátozott" értékre van állítva, a Planner Mobile alkalmazásba bejelentkezett vendégek nem fognak tudni hozzáférni a csomagokhoz vagy a feladatokhoz.<li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Yammer-be bejelentkezett vendégek nem hagyhatják el a csoportot.
-Módosulnak a meglévő vendég engedélyei a bérlőn? | Nem történt változás az aktuális beállításokban. A meglévő beállításokkal visszamenőleges kompatibilitást biztosítunk. Ön dönti el, hogy szeretne-e módosításokat végezni.
-A rendszer alapértelmezés szerint beállítja ezeket az engedélyeket? | Nem. A meglévő alapértelmezett engedélyek változatlanok maradnak. Igény szerint beállíthatja, hogy az engedélyek szigorúbbak legyenek.
-Vannak a szolgáltatásra vonatkozó licencfeltételek? | Nem, a szolgáltatáshoz nem tartozik új licencelési követelmény.
+Hol érvényesek ezek az engedélyek? | Ezek a címtárszintű engedélyek minden Azure AD-szolgáltatásban és -portálon érvényesítve vannak, beleértve a Microsoft Graph, a PowerShell v2, a Azure Portal és Saját alkalmazások portálon. Microsoft 365 csoportok együttműködési forgatókönyvekben való használatát Microsoft 365 szolgáltatásokra, különösen az Outlookra, a Microsoft Teamsre és a SharePointra is hatással van.
+Hogyan befolyásolják a korlátozott engedélyek, hogy mely csoportokat láthatják a vendégek? | Az alapértelmezett vagy korlátozott vendégengedélytől függetlenül a vendégek nem számba semeheti a csoportok vagy felhasználók listáját. A vendégek az engedélyektől függően a Azure Portal és a Saját alkalmazások is láthatják a csoportokat, amelyek tagjai:<li>**Alapértelmezett engedélyek:** A vendégnek meg kell keresnie az objektumazonosítóját a Minden felhasználó  listában, majd a Csoportok lehetőséget választva meg kell keresnie azokat a csoportokat, amelyek tagjai a Azure Portal. Itt láthatják azon csoportok listáját, amelyek tagjai, beleértve a csoport összes részletét, beleértve a nevet, az e-mailt és így tovább. A Saját alkalmazások a felhasználók láthatják a tulajdonában és a csoportjukban található csoportokat.</li><li>**Korlátozott vendégengedélyek:** A Azure Portal továbbra is megkeresik a csoportlistát, ha rákeresnek az objektumazonosítójukra a Minden felhasználó listában, majd kiválasztják a Csoportok lehetőséget. Csak nagyon korlátozott részleteket láthatnak a csoportról, különösen az objektumazonosítóról. A Név és az E-mail oszlop alapértelmezés szerint üres, a Csoport típusa pedig Ismeretlen. A Saját alkalmazások portálon nem tudják elérni a tulajdonában vagy a csoportjukban található csoportokat.</li><br>A címtárakból származó címtárengedélyek részletesebb összehasonlításához lásd Graph API alapértelmezett felhasználói [engedélyeket.](../fundamentals/users-default-permissions.md#member-and-guest-users)
+A portál mely részeit Saját alkalmazások ez a funkció? | A csoportfunkciók a Saját alkalmazások az új engedélyeket. Ebbe beletartozik az összes elérési út a csoportlista és a csoporttagság megtekintéséhez a Saját alkalmazások. A csoportcsempe rendelkezésre állása nem módosult. A csoportcsempe elérhetőségét továbbra is a meglévő csoportbeállítás vezérli a Azure Portal.
+Felülbírálják ezek az engedélyek a SharePoint- vagy Microsoft Teams-vendégbeállításokat? | Nem. Ezek a meglévő beállítások továbbra is az alkalmazások felhasználói élményét és hozzáférését irányítják. Ha például problémákat lát a SharePointban, ellenőrizze a külső megosztási beállításokat.
+Melyek a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha az engedélyek beállítása "korlátozott", a Planner mobilalkalmazásba bejelentkezett vendégek nem férhetnek hozzá a csomagjaikhoz vagy a feladataikhoz.<li>Ha az engedélyek beállítása "korlátozott", a Yammerbe bejelentkezett vendégek nem hagyhatják el a csoportot.
+Módosulnak a meglévő vendégengedélyek a bérlőmben? | Az aktuális beállítások nem módosultak. Fenntartjuk a visszamenőleges kompatibilitást a meglévő beállításokkal. Ön dönti el, hogy mikor szeretne módosításokat.
+Alapértelmezés szerint be lesznek állítva ezek az engedélyek? | Nem. A meglévő alapértelmezett engedélyek változatlanok maradnak. Az engedélyeket szigorúbbra is beállíthatja.
+Vonatkoznak licenckövetelmények ehhez a funkcióhoz? | Nem, ezzel a funkcióval nincsenek új licencelési követelmények.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha többet szeretne megtudni az Azure AD-ben meglévő vendég engedélyekről, tekintse meg [a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../fundamentals/users-default-permissions.md)
-- A vendég hozzáférésének korlátozására szolgáló Microsoft Graph API-metódusok megtekintéséhez lásd: [authorizationPolicy-erőforrás típusa](/graph/api/resources/authorizationpolicy)
-- A felhasználók összes hozzáférésének visszavonásáról lásd: [felhasználói hozzáférés visszavonása az Azure ad-ben](users-revoke-access.md)
+- Az Azure AD-beli meglévő vendégengedélyekkel kapcsolatos további információkért lásd: Mik az alapértelmezett felhasználói engedélyek a [Azure Active Directory?](../fundamentals/users-default-permissions.md)
+- A vendégelérés Microsoft Graph API-metódusokkal kapcsolatos további információkért lásd: [authorizationPolicy erőforrástípus](/graph/api/resources/authorizationpolicy)
+- Egy felhasználó összes hozzáférésének visszavonása: Felhasználói hozzáférés visszavonása az [Azure AD-ban](users-revoke-access.md)

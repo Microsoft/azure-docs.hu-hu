@@ -1,20 +1,22 @@
 ---
-title: 'Rövid útmutató: az első portál lekérdezése'
-description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
+title: 'Rövid útmutató: Az első portállekérdezés'
+description: Ebben a rövid útmutatóban az első lekérdezés futtatásához szükséges lépéseket fogja követni a Azure Portal explorer Azure Resource Graph használatával.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 07e336121c6338b27c018acb5b2332653663e1b4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920098"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533084"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: Az első lekérdezés Resource Graph futtatása a Azure Resource Graph Explorerrel
 
-Az Azure Resource Graph hatékonysága közvetlenül az Azure Resource Graph Explorerben Azure Portal érhető el. Az erőforrás-Graph Explorer böngészhető információt nyújt a lekérdezhető Azure Resource Manager erőforrástípusok és tulajdonságok közül. A Resource Graph Explorer egy tiszta felületet is biztosít a több lekérdezéssel való munkához, az eredmények kiértékeléséhez, valamint néhány lekérdezés eredményének konvertálásához egy olyan diagramra, amely rögzíthető egy Azure-irányítópulton.
+A Azure Resource Graph közvetlenül a Azure Portal érhető el Azure Resource Graph Explorerben. Resource Graph Explorer a lekérdezhető Azure Resource Manager erőforrástípusokról és tulajdonságokról ad tájékoztatást. Resource Graph Explorer egy letisztult felületet is biztosít a több lekérdezéshez, az eredmények értékeléséhez, és akár egyes lekérdezések eredményeinek Azure-irányítópulton rögzítható diagramká konvertálásához.
 
-Ennek a rövid útmutatónak a végén a Azure Portal és az Resource Graph Explorer használatával futtatta az első Resource Graph-lekérdezést, és az eredményeket egy irányítópultra rögzítette.
+A rövid útmutató végén az Azure Portal és az Resource Graph Explorer használatával futtatta az első Resource Graph-lekérdezését, és rögzítette az eredményeket egy irányítópulton.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -22,38 +24,38 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="run-your-first-resource-graph-query"></a>Az első Resource Graph-lekérdezés futtatása
 
-Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel keresse meg a [Azure Portal](https://portal.azure.com) , és használja az Resource Graph Explorert:
+Nyissa meg [Azure Portal,](https://portal.azure.com) és használja a Resource Graph Explorert az alábbi lépésekkel az első lekérdezés Resource Graph futtatásához:
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Resource Graph Explorert**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Resource Graph Explorer lehetőséget.**
 
-1. Az ablak **lekérdezés 1** részében adja meg a lekérdezést, `Resources | project name, type | limit 5` és válassza a **lekérdezés futtatása** lehetőséget.
-
-   > [!NOTE]
-   > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót, mint a `order by` , a lekérdezés többszöri futtatása valószínűleg egy másik erőforrás-készletet eredményez.
-
-1. Tekintse át a lekérdezési választ a **Results (eredmények** ) lapon. Válassza az **üzenetek** fület a lekérdezés részleteinek megtekintéséhez, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
-
-1. Frissítse a lekérdezést `order by` a **Name (név** ) tulajdonságra: `Resources | project name, type | limit 5 | order by name asc` . Ezután válassza a **lekérdezés futtatása** lehetőséget.
+1. Az ablak **1.** lekérdezés részében adja meg a lekérdezést, `Resources | project name, type | limit 5` és válassza a Lekérdezés futtatása **lehetőséget.**
 
    > [!NOTE]
-   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Ez a parancs először a lekérdezés eredményeit korlátozza, majd megrendeli azokat.
+   > Mivel ez a lekérdezési példa nem biztosít olyan rendezési módosítót, mint például, a lekérdezés többszöri futtatása valószínűleg kérésenként eltérő `order by` erőforráskészletet fog eredményezni.
 
-1. Frissítse a lekérdezést először `order by` a **Name (név** ) tulajdonságra, majd az első `limit` öt találatra: `Resources | project name, type | order by name asc | limit 5` . Ezután válassza a **lekérdezés futtatása** lehetőséget.
+1. Tekintse át a lekérdezési választ az **Eredmények lapon.** Válassza az **Üzenetek** lapot a lekérdezés részleteinek, köztük az eredményeknek és a lekérdezés időtartamának a számával együtt. A hibák (ha vannak) ezen a lapon jelennek meg.
 
-Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
+1. Frissítse a lekérdezést a `order by` **Name (Név) tulajdonságra:** `Resources | project name, type | limit 5 | order by name asc` . Ezután válassza a **Lekérdezés futtatása lehetőséget.**
 
-### <a name="schema-browser"></a>Séma böngésző
+   > [!NOTE]
+   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Ez a parancsrend először korlátozza a lekérdezési eredményeket, majd megrendeli azokat.
 
-A séma böngészője a Resource Graph Explorer bal oldali ablaktábláján található. Ezen erőforrások listája az Azure Resource Graph által támogatott Azure-erőforrások összes olyan _erőforrás-típusát_ megjeleníti, amelyek az Ön számára elérhető bérlőben találhatók. Az erőforrás-típus vagy az altulajdonságok kibővítésével megjelenítheti az erőforrás-gráf-lekérdezések létrehozásához használható alárendelt tulajdonságokat.
+1. Frissítse a lekérdezést a `order by` Name (Név) **tulajdonságra,** majd az `limit` első öt találatra: `Resources | project name, type | order by name asc | limit 5` . Ezután válassza a **Lekérdezés futtatása lehetőséget.**
 
-Válassza ki az erőforrástípus helyét `where type =="<resource type>"` a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztása `where <propertyName> == "INSERT_VALUE_HERE"` a lekérdezés mezőbe kerül.
-A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy _\_ \_ itt_ a saját értékre cserélje le az INSERT értéket, a feltételekkel, operátorokkal és függvényekkel módosítsa a lekérdezéseket a kívánt eredmények eléréséhez.
+Ha a végső lekérdezés többször is lefut, feltéve, hogy a környezetben semmi sem változik, a visszaadott eredmények konzisztensek, és a **Name** (Név) tulajdonság szerint vannak rendezettek, de továbbra is az első öt eredményre korlátozódnak.
 
-## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
+### <a name="schema-browser"></a>Sémaböngésző
 
-Az előző lekérdezés futtatása után, ha a **diagramok** lapot választja, megjelenik egy üzenet arról, hogy "az eredményhalmaz nem kompatibilis a tortadiagram vizualizációval." A lista eredményeit tartalmazó lekérdezések nem hozhatók létre diagramba, de az erőforrásokat tartalmazó lekérdezések is megadhatók. Hozzon létre egy vizualizációt az erőforrás-gráf lekérdezésből, és használja a [minta lekérdezési számú virtuális gépet az operációs rendszer típusa alapján](./samples/starter.md#count-os).
+A sémaböngésző az Explorer bal oldali Resource Graph található. Az erőforrások ezen listája  az összes olyan Azure-erőforrástípust megjeleníti, amelyet a Azure Resource Graph támogat, és amelyek egy olyan bérlőben léteznek, amelyhez Hozzáféréssel rendelkezik. Az erőforrástípus vagy altulajdonságok kibontása olyan gyermektulajdonságokat mutat, amelyek segítségével létrehozható egy Resource Graph lekérdezés.
 
-1. Az ablak **lekérdezés 1** részében adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása** lehetőséget.
+Válassza ki az erőforrástípus `where type =="<resource type>"` helyeket a lekérdezési mezőben. A gyermektulajdonságok egyikének kiválasztása `where <propertyName> == "INSERT_VALUE_HERE"` hozzáadja a adatokat a lekérdezési mezőben.
+A sémaböngésző nagyszerű módja a lekérdezésekben használható tulajdonságok felderítésének. Az INSERT _\_ VALUE \_ HERE_ értékét cserélje le a saját értékére, módosítsa a lekérdezést feltételekkel, operátorokkal és függvényekkel a kívánt eredmények eléréséhez.
+
+## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása a Resource Graph lekérdezésből
+
+Az előző lekérdezés futtatása után,  ha a Diagramok lapot választja, megjelenik egy üzenet, amely szerint "az eredményhalmaz nem kompatibilis a tortadiagram-vizualizációval". Az eredményeket felsoroló lekérdezéseket nem lehet diagramba tenni, az erőforrások számát megszabadítő lekérdezések viszont igen. A Minta [lekérdezés – Virtuális](./samples/starter.md#count-os)gépek száma operációs rendszertípus szerint használatával hozzunk létre egy vizualizációt a Resource Graph lekérdezésből.
+
+1. Az ablak **1.** lekérdezés részében adja meg a következő lekérdezést, és válassza a **Lekérdezés futtatása lehetőséget.**
 
    ```kusto
    Resources
@@ -61,65 +63,65 @@ Az előző lekérdezés futtatása után, ha a **diagramok** lapot választja, m
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Válassza az **eredmények** fület, és figyelje meg, hogy a lekérdezésre adott válasz a következőt adja meg:.
+1. Válassza az **Eredmények lapot,** és figyelje meg, hogy a lekérdezésre adott válasz a counts (darabszámok) lehetőséget adja meg.
 
-1. Válassza a **diagramok** lapot. A lekérdezés most a vizualizációkat eredményezi. Módosítsa a típust a _diagram típusának kiválasztása..._ lehetőségre a _diagram vagy a_ _fánk diagram_ kiválasztásához, hogy kísérletezzen a rendelkezésre álló vizualizációs beállításokkal.
+1. Válassza a **Diagramok** lapot. A lekérdezés most vizualizációkat ad eredményként. Módosítsa a típust _a Diagram típusának kiválasztása..._ típusról a _Sávdiagram_ vagy a Fánkdiagram típusra, hogy kísérletezzen az elérhető vizualizációs lehetőségekkel. 
 
-## <a name="pin-the-query-visualization-to-a-dashboard"></a>A lekérdezés vizualizációjának rögzítése egy irányítópulton
+## <a name="pin-the-query-visualization-to-a-dashboard"></a>A lekérdezési vizualizáció irányítópulton való kitűzés
 
-Ha egy olyan lekérdezés eredményeiből áll, amely láthatóvá teheti, az adatvizualizáció az egyik irányítópultra rögzíthető. Az előző lekérdezés futtatása után kövesse az alábbi lépéseket:
+Ha egy vizualizációs lekérdezés eredményei vannak, az adatvizualizáció rögzíthető az egyik irányítópulton. Az előző lekérdezés futtatása után kövesse az alábbi lépéseket:
 
-1. Válassza a **Save (Mentés** ) lehetőséget, és adja meg a "virtuális gépek az operációs rendszer típusa szerint" nevet. Ezután kattintson a **Mentés** gombra a jobb oldali ablaktábla alján.
+1. Válassza **a Mentés** lehetőséget, és adja meg a "Virtuális gépek operációs rendszer típusa szerint" nevet. Ezután válassza **a jobb** oldali panel alján található Mentés lehetőséget.
 
-1. A lekérdezés **futtatása** gombra kattintva futtassa újra a lekérdezést, hogy az már mentve legyen.
+1. Válassza **a Lekérdezés futtatása** lehetőséget a lekérdezés mentés után való újrafuttassa.
 
-1. A **diagramok** lapon válasszon ki egy adatvizualizációt. Ezután válassza **a rögzítés az irányítópulton** lehetőséget.
+1. A **Diagramok lapon** válasszon ki egy adatvizualizációt. Ezután válassza **a Rögzítés az irányítópulton lehetőséget.**
 
-1. Válassza ki a portálon megjelenő értesítést, vagy válassza ki az **irányítópultot** a bal oldali ablaktáblán.
+1. Válassza ki a megjelenő portálértesítést, vagy válassza az **Irányítópult** lehetőséget a bal oldali panelen.
 
-A lekérdezés mostantól elérhető az irányítópulton a lekérdezés nevével egyező csempe címével. Ha a lekérdezés nem mentette meg a rögzített értéket, a neve "Query 1".
+A lekérdezés most már elérhető az irányítópulton, és a csempe címe megegyezik a lekérdezés nevével. Ha a lekérdezést a rögzítéskor nem mentik, akkor a neve 1. lekérdezés.
 
-A lekérdezés és az eredményül kapott adatvizualizáció futtatása és frissítése minden alkalommal, amikor az irányítópult betöltődik, valós idejű és dinamikus elemzéseket biztosít az Azure-környezethez közvetlenül a munkafolyamatban.
-
-> [!NOTE]
-> A listákat eredményező lekérdezések az irányítópulton is rögzíthető. A szolgáltatás nem korlátozódik a lekérdezések adatvizualizációra.
-
-## <a name="import-example-resource-graph-explorer-dashboards"></a>Példa Resource Graph Explorer-irányítópultok importálására
-
-A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogyan használható az erőforrás-Graph Explorer a Azure Portal-munkafolyamatok fejlesztéséhez, próbálja ki ezeket a példa-irányítópultokat.
-
-- [Resource Graph Explorer – minta irányítópult #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
-
-  :::image type="content" source="./media/arge-sample1-small.png" alt-text="Példa a minta irányítópultjának képének #1" lightbox="./media/arge-sample1-large.png":::
-
-- [Resource Graph Explorer – minta irányítópult #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
-
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Példa a minta irányítópultjának képének #2" lightbox="./media/arge-sample2-large.png":::
+A lekérdezés és az eredményül kapott adatvizualizáció minden alkalommal fut és frissül, amikor az irányítópult betöltődik, így valós idejű és dinamikus elemzéseket biztosít az Azure-környezethez közvetlenül a munkafolyamatban.
 
 > [!NOTE]
-> A fenti példában látható irányítópultok és diagramok az Azure-környezettől függően eltérőek.
+> A listát eredményező lekérdezések is rögzítheti őket az irányítópulton. A funkció nem korlátozódik a lekérdezések adatvizualizációira.
 
-1. Válassza ki és töltse le a kiértékelni kívánt minta irányítópultot.
+## <a name="import-example-resource-graph-explorer-dashboards"></a>Példa importálása Resource Graph Explorer-irányítópultokra
 
-1. Azure Portal a bal oldali ablaktáblán válassza az **irányítópult** lehetőséget.
+Ha példákat Resource Graph a lekérdezésekre, Resource Graph Explorer hogyan használhatja a Azure Portal munkafolyamatának vábbfejlesztett használhatja, próbálja ki ezeket a példa-irányítópultokat.
 
-1. Válassza a **feltöltés** lehetőséget, majd keresse meg és válassza ki a letöltött minta irányítópult-fájlt. Ezután válassza a **Megnyitás** lehetőséget.
+- [Resource Graph Explorer – Minta irányítópult-#1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-Az importált Irányítópult automatikusan megjelenik. Mivel már létezik a Azure Portalban, szükség szerint feltárhatja és módosíthatja a módosításokat, vagy létrehozhat új irányítópultokat a példából, hogy megossza a csapatával. További információ az irányítópultok használatáról: [irányítópultok létrehozása és megosztása a Azure Portalban](../../azure-portal/azure-portal-dashboards.md).
+  :::image type="content" source="./media/arge-sample1-small.png" alt-text="Példakép minta irányítópult-#1" lightbox="./media/arge-sample1-large.png":::
+
+- [Resource Graph Explorer – Minta irányítópult-#2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
+
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Példakép minta irányítópult-#2" lightbox="./media/arge-sample2-large.png":::
+
+> [!NOTE]
+> A fenti irányítópult-képernyőképek száma és diagramjai az Azure-környezettől függően változnak.
+
+1. Válassza ki és töltse le az értékelni kívánt minta-irányítópultot.
+
+1. A Azure Portal bal **oldali panelen válassza** az Irányítópult lehetőséget.
+
+1. Válassza **a Feltöltés** lehetőséget, majd keresse meg és válassza ki a letöltött irányítópult-mintafájlt. Ezután válassza a **Megnyitás lehetőséget.**
+
+Az importált irányítópult automatikusan megjelenik. Mivel most már létezik a Azure Portal, szükség szerint felfedezheti és módosíthatja őket, vagy új irányítópultokat hozhat létre a példából a csapatokkal való megosztáshoz. További információ az irányítópultok használatával kapcsolatban: Irányítópultok létrehozása és megosztása [a Azure Portal.](../../azure-portal/azure-portal-dashboards.md)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azure Portal-környezetből, ezt a következő lépésekkel végezheti el:
+Ha el szeretné távolítani a minta-Resource Graph irányítópultokat a Azure Portal környezetből, azt a következő lépésekkel használhatja:
 
-1. Válassza ki az **irányítópultot** a bal oldali panelen.
+1. A **bal oldali** panelen válassza az Irányítópult lehetőséget.
 
-1. Az irányítópult legördülő listából válassza ki a törölni kívánt minta erőforrás-gráf irányítópultot.
+1. Az irányítópult legördülő menüben válassza ki a törölni Resource Graph törölni kívánt irányítópult mintáját.
 
-1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
+1. Válassza **a Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson az **OK** gombra a megerősítéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban az Azure Resource Graph Explorer használatával futtatta az első lekérdezést, és megvizsgálta az irányítópulton megjelenő példákat. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+Ebben a rövid útmutatóban az Azure Resource Graph Explorerrel futtatta az első lekérdezését, és a lekérdezések által működtetett irányítópult-példákat Resource Graph. Ha többet szeretne megtudni a Resource Graph nyelvről, folytassa a lekérdezési nyelv részleteit tartalmazó oldalon.
 
 > [!div class="nextstepaction"]
 > [További információ a lekérdezési nyelvről](./concepts/query-language.md)

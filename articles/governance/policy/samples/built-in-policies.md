@@ -1,21 +1,21 @@
 ---
-title: Beépített szabályzat-definíciók listája
-description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók listája
+description: List built-in policy definitions for Azure Policy. A kategóriák közé tartoznak a címkék, a jogszabályi megfelelőség, Key Vault, a Kubernetes, a vendégkonfiguráció stb.
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 13b772a5e80db12ee4be4bec7731f72e46f0898f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8110ee2539165dfd6daa243dca151578726d0d84
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090718"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498641"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
+# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzatdefiníciók
 
-Ez az oldal Azure Policy beépített szabályzat-definíciók indexe.
+Ez az oldal a Azure Policy szabályzatdefiníciók indexe.
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára** való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+Az egyes beépített hivatkozások a szabályzatdefinícióra mutató hivatkozások a Azure Portal. A Forrás oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy) A beépítettek a metaadatok **kategóriatulajdonságai** szerint vannak **csoportosítva.** Egy adott kategóriára való **ugráshoz** használja az oldal jobb oldalán található menüt. Ellenkező esetben használja <kbd>a Ctrl</kbd>F billentyűkombinációt a böngésző keresési - <kbd></kbd> funkcióját használva.
 
 ## <a name="api-for-fhir"></a>API for FHIR
 
@@ -29,7 +29,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-app-configuration](../../../../includes/policy/reference/bycat/policies-app-configuration.md)]
 
-## <a name="app-platform"></a>Alkalmazás-platform
+## <a name="app-platform"></a>Alkalmazásplatform
 
 [!INCLUDE [azure-policy-reference-policies-app-platform](../../../../includes/policy/reference/bycat/policies-app-platform.md)]
 
@@ -41,7 +41,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-attestation](../../../../includes/policy/reference/bycat/policies-attestation.md)]
 
-## <a name="automanage"></a>Autokezelés
+## <a name="automanage"></a>Automatikus automatizálás
 
 [!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)]
 

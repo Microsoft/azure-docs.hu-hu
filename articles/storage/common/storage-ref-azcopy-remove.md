@@ -1,6 +1,6 @@
 ---
-title: azcopy eltávolítása | Microsoft Docs
-description: Ez a cikk a azcopy Remove parancsra vonatkozó tudnivalókat tartalmazza.
+title: azcopy remove | Microsoft Docs
+description: Ez a cikk az azcopy remove parancs referenciainformációit biztosítja.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879003"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503014"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -25,46 +25,45 @@ Blobok vagy fájlok törlése egy Azure Storage-fiókból.
 azcopy remove [resourceURL] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó elméleti cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
+- [Adatok átvitele az AzCopy és a Blob Storage használatával](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
-Egyetlen blob eltávolítása SAS-token használatával:
+Egyetlen blob eltávolítása SAS-jogkivonat használatával:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-Teljes virtuális könyvtár eltávolítása SAS-token használatával:
+Egy teljes virtuális könyvtár eltávolítása SAS-jogkivonat használatával:
  
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-Csak a virtuális könyvtárak belsejében lévő blobokat távolítsa el, de ne távolítsa el az alkönyvtárakban található alkönyvtárakat vagy blobokat:
+Csak a virtuális könyvtáron belüli blobokat távolítsa el, az alkönyvtárakból és blobokból azonban ne távolítson el egyetlen alkönyvtárat sem:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Blobok egy részhalmazának eltávolítása egy virtuális könyvtárban (például: csak jpg-és PDF-fájlok eltávolítása, vagy a blob neve `exactName` ):
+Távolítsa el a blobok egy részkészletét egy virtuális könyvtárból (például csak jpg- és pdf-fájlokat távolítson el, vagy ha a blob neve `exactName` ):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-Távolítson el egy teljes virtuális könyvtárat, de zárja ki bizonyos blobokat a hatókörből (például: minden olyan blob, amely a foo vagy a Bar végződéssel kezdődik):
+Eltávolíthat egy teljes virtuális könyvtárat, de kizárhat bizonyos blobokat a hatókörből (például minden olyan blobot, amely foo-val kezdődik vagy sávgal végződik):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude-pattern="foo*;*bar"
 ```
 
-Távolítsa el a megadott blobokat és virtuális könyvtárakat úgy, hogy a relatív elérési utakat (nem pedig URL-kódolású) egy fájlba helyezi:
+Távolítsa el a konkrét blobokat és virtuális könyvtárakat úgy, hogy a relatív elérési útjukat (NEM URL-kódolású) egy fájlba írja:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
@@ -73,13 +72,13 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-Egyetlen fájl eltávolítása olyan Blob Storage-fiókból, amely hierarchikus névtérrel rendelkezik (belefoglalása/kizárása nem támogatott):
+Egyetlen fájlt távolíthat el egy hierarchikus Blob Storage -fiókból (az include/exclude nem támogatott):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Egyetlen könyvtár eltávolítása olyan Blob Storage-fiókból, amely hierarchikus névtérrel rendelkezik (belefoglalása/kizárása nem támogatott):
+Egyetlen címtár eltávolítása egy hierarchikus Blob Storage (a be- és kizárás nem támogatott) nevű fiókból:
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -87,35 +86,35 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Beállítások
 
-**--delete-Pillanatképek** sztring alapértelmezés szerint a törlési művelet meghiúsul, ha egy blob pillanatképekkel rendelkezik. `include`Ezzel a beállítással távolíthatja el a legfelső szintű blobot és annak összes pillanatképét, vagy megadhatja `only` , hogy csak a pillanatképek legyenek eltávolítva, de ne
+**--delete-snapshots sztring** Alapértelmezés szerint a törlési művelet meghiúsul, ha egy blob pillanatképekkel rendelkezik. Adja meg, hogy eltávolítsa a gyökérblobot és annak összes pillanatképét; vagy adja meg, hogy csak a pillanatképeket távolítsa el, de tartsa `include` `only` meg a gyökérblobot.
 
-**--kizárás – a Path** karakterlánc kizárja ezeket az elérési utakat a eltávolításakor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: `myFolder;myFolder/subDirName/file.pdf`
+**--exclude-path sztring** Eltávolításkor zárja ki ezeket az elérési utakat. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: `myFolder;myFolder/subDirName/file.pdf`
 
-**--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: `*.jpg` ; `*.pdf` ;`exactName`
+**--exclude-pattern sztring** Azon fájlok kizárása, amelyek neve megegyezik a mintalistával. Például: `*.jpg` ; `*.pdf` ;`exactName`
 
-**--Force-if-csak olvasható**   Azure Files fájl vagy mappa törlésekor kényszerítse a törlést a működésre, még akkor is, ha a meglévő objektum írásvédett attribútuma van beállítva.
+**--force-if-read-only**   Ha töröl egy Azure Files fájlt vagy mappát, akkor is kényszerítenie kell a törlést, hogy akkor is működjön, ha a meglévő objektum rendelkezik írási attribútumkészletével.
 
-**– Súgó**   az eltávolításhoz.
+**--help**   help for remove.
 
-a- **-include-Path** sztring csak az eltávolításkor megadott elérési utakat tartalmazza. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: `myFolder;myFolder/subDirName/file.pdf`
+**--include-path sztring** Csak ezeket az elérési utakat foglalja bele az eltávolításkor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: `myFolder;myFolder/subDirName/file.pdf`
 
-**--include-Pattern** sztring csak olyan fájlokat tartalmazhat, amelyekben a név megegyezik a minta listával. Például: *`.jpg` ;* `.pdf` ;`exactName`
+**--include-pattern sztring** Csak azokat a fájlokat foglalja bele, amelyek neve megegyezik a mintalistával. Például: *`.jpg` ;* `.pdf` ;`exactName`
 
-**--a-Files List-of-** Files karakterlánc határozza meg egy fájl helyét, amely a törlendő fájlok és könyvtárak listáját tartalmazza. A relatív elérési utakat sortöréssel kell elválasztani, és az elérési utakat nem szabad URL-kódolással ellátni. 
+**--list-of-files** sztring Egy olyan fájl helyét határozza meg, amely a törölni kívánt fájlok és könyvtárak listáját tartalmazza. A relatív elérési utakat sortörésekkel kell elválasztva, és az elérési utak NEM URL-kódolásúak. 
 
-a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióazonosító külön sorban szerepel. Győződjön meg arról, hogy a forrásnak egyetlen blobra kell mutatnia, és a fájlban megadott összes verzióazonosító csak a forrás blobhoz tartozhat. Az adott blob megadott verzióazonosító-azonosítóit a rendszer az Azure Storage-ból fogja törölni. 
+**--list-of-versions sztring** Egy olyan fájlt ad meg, amelyben az egyes verzióazonosítók külön sorban vannak felsorolva. Győződjön meg arról, hogy a forrásnak egyetlen blobra kell mutasson, és a jelölőt használó fájlban megadott összes verzió-értéknek csak a forrásblobhoz kell tartozni. Az adott blob megadott verziószámai törölve lesznek az Azure Storage-ból. 
 
-**--a log-Level** karakterlánc határozza meg a naplófájl részletességét. A rendelkezésre álló szintek a következők: `INFO` (minden kérés/válasz), `WARNING` (lassú válasz), `ERROR` (csak sikertelen kérelmek) és `NONE` (nincs kimeneti napló). (alapértelmezett `INFO` ) (alapértelmezett `INFO` )
+**--log-level string** Adja meg a naplófájl részletes naplóját. A rendelkezésre álló szintek a következők: `INFO` (minden kérés/válasz), (lassú válaszok), (csak sikertelen kérések) és `WARNING` `ERROR` `NONE` (kimeneti naplók nélkül). (alapértelmezett `INFO` ) (alapértelmezett `INFO` )
 
-**– rekurzív**    A címtárak közötti szinkronizáláskor a program rekurzív módon vizsgálja az alkönyvtárakat.
+**--rekurzív**    A könyvtárak közötti szinkronizáláskor tárja fel a rekurzív alkönyvtárakat.
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülőparancsok által örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--Cap-Mbps lebegőpontos|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
-|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
-|--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
+|--cap-mbps lebegőpontos érték|Megabit/másodpercben megszabja az átviteli sebességet. A pillanatnyi átviteli sebesség kis mértékben eltérhet a felső teljesítménytől. Ha ez a beállítás nulla vagy nincs megadva, az átviteli sebesség nincs korlátozva.|
+|--output-type string|A parancs kimenetének formátuma. A lehetőségek a következők: text, json. Az alapértelmezett érték a "text".|
+|--trusted-microsoft-suffixes sztring   |További tartomány-utótagokat ad meg, Azure Active Directory bejelentkezési jogkivonatokat lehet küldeni.  Az alapértelmezett érték a '*.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Az itt felsoroltak hozzáadva az alapértelmezetthez. A biztonság érdekében itt csak a Microsoft Azure helyezzen el. Több bejegyzést pontosvesszővel válassza el egymástól.|
 
 ## <a name="see-also"></a>Lásd még
 
