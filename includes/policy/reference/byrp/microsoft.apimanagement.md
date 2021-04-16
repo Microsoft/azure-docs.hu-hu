@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ca68c0a770023d0362cb9278b3742a6a136c796b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: f9a714936d0851d31a7b04001bd4fc4cc08c36d7
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095873"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500386"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API Management szolgáltatásnak olyan SKU-t kell használnia, amely támogatja a virtuális hálózatokat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73ef9241-5d81-4cd4-b483-8443d1730fe5) |A API Management támogatott SKU-ban a szolgáltatás üzembe helyezése virtuális hálózatban feloldja a speciális API Management hálózatkezelési és biztonsági funkciókat, ami nagyobb mértékben szabályozza a hálózati biztonsági konfigurációt. További információ: [https://aka.ms/apimvnet](https://aka.ms/apimvnet) . |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20Management/ApiManagement_AllowedVNETSkus_AuditDeny.json) |
-|[API Management szolgáltatásoknak virtuális hálózatot kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef619a2c-cc4d-4d03-b2ba-8c94a834d85b) |Az Azure Virtual Network üzembe helyezése fokozott biztonságot, elkülönítést biztosít, és lehetővé teszi, hogy a API Management szolgáltatást egy nem internetes, útválasztásra jogosult hálózatban helyezze el, amelynek hozzáférését szabályozhatja. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz, ami lehetővé teszi a hálózati és/vagy helyszíni háttér-szolgáltatásokhoz való hozzáférést. A fejlesztői portál és az API-átjáró úgy konfigurálható, hogy az internetről vagy csak a virtuális hálózaton belül legyen elérhető. |Naplózás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20Management/ApiManagement_VNETEnabled_Audit.json) |
+|[API Management szolgáltatásnak olyan termékváltozatot kell használnia, amely támogatja a virtuális hálózatokat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73ef9241-5d81-4cd4-b483-8443d1730fe5) |A szolgáltatás virtuális API Management támogatott SKUS-jának használata fejlett hálózati és biztonsági funkciókat biztosít, így nagyobb irányítást biztosít API Management a hálózati biztonsági konfiguráció felett. További információ: [https://aka.ms/apimvnet](https://aka.ms/apimvnet) . |Naplózás, Megtagadás, Letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20Management/ApiManagement_AllowedVNETSkus_AuditDeny.json) |
+|[API Management szolgáltatásoknak virtuális hálózatot kell használniuk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef619a2c-cc4d-4d03-b2ba-8c94a834d85b) |Az Azure Virtual Network üzemelő példánya fokozott biztonságot és elkülönítést biztosít, és lehetővé teszi, hogy API Management-szolgáltatását egy nem internetre irányítható hálózatba helyezze, amelyhez a hozzáférést Ön vezéreli. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakoztathatóak a helyszíni hálózatokhoz, ami lehetővé teszi a háttérszolgáltatásokhoz való hozzáférést a hálózaton és/vagy a helyszínen. A fejlesztői portál és az API-átjáró úgy konfigurálható, hogy elérhető legyen az internetről vagy csak a virtuális hálózaton belül. |Naplózás, Letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20Management/ApiManagement_VNETEnabled_Audit.json) |

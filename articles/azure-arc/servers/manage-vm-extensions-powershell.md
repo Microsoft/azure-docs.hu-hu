@@ -1,36 +1,39 @@
 ---
-title: Virtuálisgép-bővítmény engedélyezése Azure PowerShell használatával
-description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure PowerShell használatával.
-ms.date: 01/05/2021
+title: Virtuálisgép-bővítmény engedélyezése a Azure PowerShell
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe virtuálisgép-bővítményeket Azure Arc hibridfelhő-környezetekben futó, engedélyezett kiszolgálókon az Azure PowerShell.
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cb854c9745e8bd7eef35c6f6467c284a6327349
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916184"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388584"
 ---
-# <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure virtuálisgép-bővítmények engedélyezése Azure PowerShell használatával
+# <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure-beli virtuálisgép-bővítmények engedélyezése Azure PowerShell
 
-Ez a cikk bemutatja, hogyan telepítheti és távolíthatja el az Azure arc-kompatibilis kiszolgálók által támogatott Azure-beli virtuálisgép-bővítményeket egy Linux vagy Windows rendszerű hibrid gépre Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan helyezhet üzembe és távolíthat el az Azure Arc-kompatibilis kiszolgálók által támogatott Azure-beli virtuálisgép-bővítményeket Linux vagy Windows rendszerű hibrid Azure PowerShell.
+
+> [!NOTE]
+> Azure Arc kompatibilis kiszolgálók nem támogatják a virtuálisgép-bővítmények Azure-beli virtuális gépeken való üzembe helyezését és felügyeletét. Azure-beli virtuális gépekhez tekintse meg a virtuálisgép-bővítmények [áttekintését ismertető cikket.](../../virtual-machines/extensions/overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure PowerShell-t futtató számítógép. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
+- Egy számítógép, Azure PowerShell. Útmutatásért lásd: [Install and configure Azure PowerShell.](/powershell/azure/)
 
-Mielőtt a Azure PowerShell használatával kezelhesse a virtuálisgép-bővítményeket az arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálón, telepítenie kell a `Az.ConnectedMachine` modult. Futtassa a következő parancsot az ív használatára képes kiszolgálón:
+Mielőtt a Azure PowerShell arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálón felügyeli a virtuálisgép-bővítményeket, telepítenie kell a `Az.ConnectedMachine` modult. Futtassa a következő parancsot az Arc-kompatibilis kiszolgálón:
 
 `Install-Module -Name Az.ConnectedMachine`.
 
-A telepítés befejeztével a következő üzenet jelenik meg:
+A telepítés befejezésekor a következő üzenet jelenik meg:
 
-`The installed extension `Az. ConnectedMachine` is experimental and not covered by customer support. Please use with discretion.`
+`The installed extension `Az.ConnectedMachine` is experimental and not covered by customer support. Please use with discretion.`
 
 ## <a name="enable-extension"></a>Bővítmény engedélyezése
 
-Ha engedélyezni szeretné a virtuálisgép-bővítményt az ív használatára képes kiszolgálón, használja a [New-AzConnectedMachineExtension-](/powershell/module/az.connectedmachine/new-azconnectedmachineextension) t a,,,,, `-Name` `-ResourceGroupName` `-MachineName` `-Location` `-Publisher` , `ExtensionType` és `-Settings` paraméterek használatával.
+Ha engedélyezni szeretné a virtuálisgép-bővítményt az Arc-kompatibilis kiszolgálón, használja a [New-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/new-azconnectedmachineextension) parancsokat a `-Name` , , , , - , és `-ResourceGroupName` `-MachineName` `-Location` `-Publisher` `ExtensionType` `-Settings` paraméterekkel.
 
-Az alábbi példa engedélyezi a Log Analytics virtuálisgép-bővítményt egy arc-kompatibilis Linux-kiszolgálón:
+Az alábbi példa engedélyezi a Log Analytics virtuálisgép-bővítményt egy Arc-kompatibilis Linux-kiszolgálón:
 
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
@@ -38,21 +41,21 @@ PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
 PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
 ```
 
-Ha engedélyezni szeretné a Log Analytics virtuálisgép-bővítményt egy arc-kompatibilis Windows Serveren, módosítsa a paraméter értékét az `-ExtensionType` `"MicrosoftMonitoringAgent"` előző példában szereplő értékre.
+Ha engedélyezni szeretné a Log Analytics virtuálisgép-bővítményt egy Arc-kompatibilis Windows-kiszolgálón, módosítsa a paraméter értékét az `-ExtensionType` `"MicrosoftMonitoringAgent"` előző példában értékre.
 
-Az alábbi példa engedélyezi az egyéni szkriptek bővítményét egy arc-kompatibilis kiszolgálón:
+Az alábbi példa engedélyezi az egyéni szkriptbővítményt egy Arc-kompatibilis kiszolgálón:
 
 ```powershell
 PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Setting -ExtensionType CustomScriptExtension
 ```
 
-### <a name="key-vault-vm-extension-preview"></a>Key Vault VM-bővítmény (előzetes verzió)
+### <a name="key-vault-vm-extension-preview"></a>Key Vault bővítmény (előzetes verzió)
 
 > [!WARNING]
-> A PowerShell-ügyfelek gyakran felvesznek `\` `"` a settings.jsba, amelynek hatására a akvvm_service hibát jelez: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
+> A PowerShell-ügyfelek gyakran hozzáadják a hez a settings.js, ami hibát akvvm_service `\` `"` hibát okoz: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
-Az alábbi példa engedélyezi a Key Vault virtuálisgép-bővítményt (előzetes verzió) egy arc-kompatibilis kiszolgálón:
+Az alábbi példa engedélyezi Key Vault virtuálisgép-bővítményt (előzetes verzió) egy Arc-kompatibilis kiszolgálón:
 
 ```powershell
 # Build settings
@@ -80,7 +83,7 @@ Az alábbi példa engedélyezi a Key Vault virtuálisgép-bővítményt (előzet
 
 ## <a name="list-extensions-installed"></a>Telepített bővítmények listája
 
-Az ív használatára képes kiszolgálón található virtuálisgép-bővítmények listájának lekéréséhez használja a [Get-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) a `-MachineName` és a `-ResourceGroupName` paramétereket.
+Az Arc-kompatibilis kiszolgálón található virtuálisgép-bővítmények listáját a [Get-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) és paraméterekkel `-MachineName` `-ResourceGroupName` használhatja.
 
 Példa:
 
@@ -94,9 +97,9 @@ custom  westus2   CustomScriptExtension Succeeded
 
 ## <a name="remove-an-installed-extension"></a>Telepített bővítmény eltávolítása
 
-Ha el szeretné távolítani egy telepített virtuálisgép-bővítményt az ív használatára képes kiszolgálón, használja a [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) a `-Name` és a `-MachineName` `-ResourceGroupName` paramétereket.
+Ha el szeretne távolítani egy telepített virtuálisgép-bővítményt az Arc-kompatibilis kiszolgálón, használja a [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) paramétert a `-Name` és `-MachineName` `-ResourceGroupName` paraméterekkel.
 
-Ha például el szeretné távolítani a linuxos Log Analytics virtuálisgép-bővítményt, futtassa a következő parancsot:
+A Linuxhoz használt Log Analytics virtuálisgép-bővítmény eltávolításához például futtassa a következő parancsot:
 
 ```powershell
 Remove-AzConnectedMachineExtension -MachineName myMachineName -ResourceGroupName myResourceGroup -Name OmsAgentforLinux
@@ -104,6 +107,6 @@ Remove-AzConnectedMachineExtension -MachineName myMachineName -ResourceGroupName
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A virtuálisgép-bővítményeket az [Azure CLI](manage-vm-extensions-cli.md)-vel, a [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonokból](manage-vm-extensions-template.md)is üzembe helyezheti, kezelheti és távolíthatja el.
+- A virtuálisgép-bővítményeket az [Azure CLI](manage-vm-extensions-cli.md)használatával telepítheti, kezelheti és távolíthatja el a(Azure Portal) vagy Azure Resource Manager [](manage-vm-extensions-portal.md) [sablonokból.](manage-vm-extensions-template.md)
 
-- A hibaelhárítási információk a virtuálisgép- [bővítmények hibaelhárítási útmutatójában](troubleshoot-vm-extensions.md)találhatók.
+- A hibaelhárítási információkat a Virtuálisgép-bővítmények [hibaelhárítása útmutatóban talál.](troubleshoot-vm-extensions.md)

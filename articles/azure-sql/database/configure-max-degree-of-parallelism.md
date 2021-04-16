@@ -1,8 +1,8 @@
 ---
-title: A maximális párhuzamossági fok (MAXDOP) beállítása
+title: A maximális párhuzamosság fokának konfigurálása (MAXDOP)
 titleSuffix: Azure SQL Database
-description: Ismerje meg a maximális párhuzamossági fokot (MAXDOP).
-ms.date: 03/29/2021
+description: Ismerje meg a maximális párhuzamosság fokát (MAXDOP).
+ms.date: 04/12/2021
 services: sql-database
 dev_langs:
 - TSQL
@@ -14,88 +14,96 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.openlocfilehash: 31ddf15975abdce70ea02b5de64ea5611e7e72b3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c9b8e916c82a42df7addb3c49b4452c0eb403023
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111815"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536904"
 ---
-# <a name="configure-the-max-degree-of-parallelism-maxdop-in-azure-sql-database"></a>A maximális párhuzamossági fok (MAXDOP) beállítása Azure SQL Database
+# <a name="configure-the-max-degree-of-parallelism-maxdop-in-azure-sql-database"></a>A maximális párhuzamossági fok (MAXDOP) konfigurálása az Azure SQL Database-ben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-  Ez a cikk a **maximális párhuzamossági fokot (MAXDOP)** mutatja Azure SQL Databaseban, és hogy miként lehet konfigurálni. 
+  Ez a cikk a maximális **párhuzamosság (MAXDOP)** konfigurációs beállítást ismerteti a Azure SQL Database. 
 
 > [!NOTE]
-> **Ez a tartalom Azure SQL Databasere összpontosít.** A Azure SQL Database a Microsoft SQL Server adatbázismotor legújabb stabil verziójára épül, így a tartalom nagy része hasonló, bár a hibaelhárítás és a konfigurációs beállítások eltérnek. A SQL Server MAXDOP kapcsolatos további információkért tekintse meg [a maximális párhuzamossági fok kiszolgáló konfigurációjának konfigurálása beállítást](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+> **Ez a tartalom a tartalommal Azure SQL Database.** Azure SQL Database az Microsoft SQL Server adatbázismotor legújabb, stabil verzióján alapul, ezért a tartalom nagy része hasonló annak ellenére, hogy a hibaelhárítási és konfigurációs lehetőségek eltérnek. További információ a MAXDOP-SQL Server: Configure the max degree of parallelism Server Configuration Option (A párhuzamosság maximális fokának konfigurálása [kiszolgáló-konfigurációs beállítás).](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)
 
 ## <a name="overview"></a>Áttekintés
-  A Azure SQL Database az egyes új önálló adatbázisok és a rugalmas készlet-adatbázisok alapértelmezett MAXDOP-beállítása 8. Ez azt jelenti, hogy az adatbázismotor több szál használatával is végrehajthat lekérdezéseket. A SQL Servertól eltérően, ahol az alapértelmezett kiszolgáló szintű MAXDOP 0 (korlátlan), alapértelmezés szerint a Azure SQL Database új adatbázisai a MAXDOP 8 értékre vannak állítva. Ez az alapértelmezett érték megakadályozza a szükségtelen erőforrás-használatot, és biztosítja az egységes felhasználói élményt. Ez általában nem szükséges a MAXDOP további konfigurálásához Azure SQL Database számítási feladatokban, de előnyt biztosíthat az összetett teljesítmény-hangolási gyakorlatnak.
+  A MAXDOP vezérli a lekérdezésen belüli párhuzamosságokat az adatbázismotorban. A magasabb MAXDOP-értékek általában több párhuzamos szálat eredményeznek lekérdezésenként, és gyorsabb lekérdezés-végrehajtást eredményeznek. 
+
+  A Azure SQL Database alapértelmezett MAXDOP-beállítás minden egyes új és rugalmaskészlet-adatbázishoz 8. Ez az alapértelmezett beállítás megakadályozza a felesleges erőforrás-használatot, miközben az adatbázismotor továbbra is lehetővé teszi a lekérdezések gyorsabb végrehajtását párhuzamos szálak használatával. A MAXDOP-t általában nem szükséges további Azure SQL Database számítási feladatokban, bár ez a speciális teljesítmény-finomhangolási gyakorlatként előnyös lehet.
 
 > [!Note]
->   Szeptember 2020-én a Azure SQL Database Service MAXDOP szolgáltatásban a 8. telemetria alapján az új adatbázisok esetében az alapértelmezett értékként [választották](https://techcommunity.microsoft.com/t5/azure-sql/changing-default-maxdop-in-azure-sql-database-and-azure-sql/ba-p/1538528) meg a rendszer a legszélesebb körű felhasználói munkaterheléseket. Ez az alapértelmezett megoldás a túlzott párhuzamosságok miatti teljesítményproblémák megelőzését segítette. Ezt megelőzően az új adatbázisok alapértelmezett beállítása MAXDOP 0 volt. A MAXDOP adatbázis-hatókörű konfigurációs beállítás nem módosult a 2020 szeptember előtt létrehozott meglévő adatbázisok esetében.
+>   2020 szeptemberében a Azure SQL Database szolgáltatás MAXDOP 8-as telemetriai évei [](https://techcommunity.microsoft.com/t5/azure-sql/changing-default-maxdop-in-azure-sql-database-and-azure-sql/ba-p/1538528)alapján az alapértelmezett érték lett az új adatbázisok esetében, amely az ügyfelek számítási feladatainak legszélesebb választékának optimális értéke. Ez az alapértelmezett beállítás segített megelőzni a túlzott párhuzamosság miatti teljesítményproblémákat. Ezt megelőzően az új adatbázisok alapértelmezett beállítása a MAXDOP 0 volt. A MAXDOP nem módosult automatikusan a 2020 szeptembere előtt létrehozott meglévő adatbázisokon.
 
-  Általánosságban elmondható, hogy ha az adatbázismotor a párhuzamosságot használó lekérdezés végrehajtását választja, a végrehajtás ideje gyorsabb. A felesleges párhuzamosság azonban a lekérdezési teljesítmény javítása nélkül is használhat felesleges processzor-erőforrásokat. A felesleges párhuzamosságok nagy mértékben befolyásolhatják a lekérdezési teljesítményt az ugyanazon adatbázismotor-példányon futó összes lekérdezés esetében, így a párhuzamosságok felső határának beállítása a SQL Server munkaterhelések általános teljesítmény-finomhangolási gyakorlata volt.
+  Általánosságban elmondható, hogy ha az adatbázismotor párhuzamosság használatával hajt végre lekérdezést, a végrehajtási idő gyorsabb lesz. A felesleges párhuzamosság azonban további processzor-erőforrásokat is felhasználhatja a lekérdezési teljesítmény javítása nélkül. Nagy méretekben a túlzott párhuzamosság negatívan befolyásolhatja az ugyanazon az adatbázismotor-példányon végrehajtható összes lekérdezés lekérdezési teljesítményét. A párhuzamosság felső határának beállítása hagyományosan gyakori teljesítmény-finomhangolási gyakorlat volt a SQL Server esetében.
 
-  A következő táblázat ismerteti az adatbázismotor viselkedését, amikor különböző MAXDOP-értékekkel rendelkező lekérdezéseket hajt végre:
+  A következő táblázat ismerteti az adatbázismotor viselkedését különböző MAXDOP-értékekkel való lekérdezések végrehajtásakor:
 
 | MAXDOP | Működés | 
 |--|--|
-| = 1 | Az adatbázismotor nem végez lekérdezéseket több párhuzamos szál használatával. | 
-| > 1 | Az adatbázismotor a párhuzamos szálak számának felső határát állítja be. Az adatbázismotor kiválasztja a használni kívánt további feldolgozói szálak számát. A lekérdezés végrehajtásához használt munkaszálak teljes száma magasabb lehet a megadott MAXDOP értéknél. |
-| = 0 | Az adatbázismotor több párhuzamos szálat is használhat, amelyek felső határa a logikai processzorok teljes számától függ. Az adatbázismotor kiválasztja a használandó párhuzamos szálak számát.| 
+| = 1 | Az adatbázismotor egyetlen soros szálat használ a lekérdezések végrehajtásához. A párhuzamos szálak nem használhatók. | 
+| > 1 | Az adatbázismotor a párhuzamos [](https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide#sql-server-task-scheduling) szálak által használt további ütemezők számát a MAXDOP értékre vagy a logikai processzorok teljes számára állítja be ( amelyik kisebb). |
+| = 0 | Az adatbázismotor a párhuzamos [](https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide#sql-server-task-scheduling) szálak által használt további ütemezők számát a logikai processzorok teljes számára vagy 64-re állítja, amelyik kisebb. | 
 | | |
+
+> [!Note]
+> Minden lekérdezés legalább egy ütemezővel és egy feldolgozószálal fut le az ütemezőn.
+>
+> A párhuzamosságsal végrehajtható lekérdezések további ütemezőket és további párhuzamos szálakat használnak. Mivel ugyanazon az ütemezőn több párhuzamos szál is futhat, a lekérdezés végrehajtásához használt szálak teljes száma magasabb lehet a megadott MAXDOP-értéknél vagy a logikai processzorok teljes számában. További információ: Párhuzamos tevékenységek [ütemezése.](/sql/relational-databases/thread-and-task-architecture-guide#scheduling-parallel-tasks)
+
+##  <a name="considerations"></a><a name="Considerations"></a> Megfontolások  
+
+-   A Azure SQL Database a MAXDOP alapértelmezett értékét módosíthatja:
+    -   A lekérdezés szintjén használja a **MAXDOP lekérdezési** [tippet.](/sql/t-sql/queries/hints-transact-sql-query)     
+    -   Az adatbázis szintjén használja a **MAXDOP-adatbázis** [hatókörű konfigurációját.](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)
+
+-   A hosszú SQL Server MAXDOP-szempontok [és](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) -javaslatok a Azure SQL Database. 
+
+-   Az indexet létrehozására vagy újraépítésére, illetve fürtözött indexet elejtő indexműveletek erőforrás-igényesek is lehetnek. Az indexműveletekkel kapcsolatos MAXDOP adatbázis-érték felülírható a MAXDOP index beállítás az `CREATE INDEX` or utasításban való megadásával. `ALTER INDEX` A MAXDOP érték a végrehajtáskor lesz alkalmazva az utasításra, és nem az index metaadataiban van tárolva. További információ: [Párhuzamos indexműveletek konfigurálása.](/sql/relational-databases/indexes/configure-parallel-index-operations)  
   
-##  <a name="considerations"></a><a name="Considerations"></a> Szempontok  
+-   A lekérdezések és indexműveletek mellett a MAXDOP adatbázisra vonatkozó konfigurációs beállítása más, párhuzamos végrehajtást is használható utasítások párhuzamosságát szabályozza, például: DBCC CHECKTABLE, DBCC CHECKDB és DBCC CHECKFILEGROUP. 
 
--   A Azure SQL Databaseban módosíthatja az alapértelmezett MAXDOP értéket:
-    -   A lekérdezési szinten a MAXDOP-  [lekérdezési](/sql/t-sql/queries/hints-transact-sql-query)mutató használatával.     
-    -   Az adatbázis szintjén a **MAXDOP** - [adatbázis hatókörű konfigurációjának](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)használatával.
+##  <a name="recommendations"></a><a name="Recommendations"></a> Ajánlások  
 
--   A hosszú távú SQL Server MAXDOP kapcsolatos megfontolások és [javaslatok](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) Azure SQL Databasere alkalmazhatók. 
+  Az adatbázis MAXDOP-nak módosítása nagy hatással lehet a lekérdezési teljesítményre és az erőforrás-kihasználtságra, pozitív és negatív is lehet. Nincs azonban egyetlen MAXDOP érték, amely minden számítási feladathoz optimális lenne. A [](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) MAXDOP beállításának javaslatai árnyaltak, és számos tényezőtől függnek. 
 
--   MAXDOP kényszerítve [.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql) Nem kényszerített [kérelem](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vagy lekérdezés alapján. Ez azt jelenti, hogy egy párhuzamos lekérdezés-végrehajtás során egyetlen kérelem több feladatot is elindíthat a MAXDOP által meghatározott felső határral. További információ: a *párhuzamos feladatok ütemezése* című rész a [szál és a feladat architektúrájának útmutatójában](/sql/relational-databases/thread-and-task-architecture-guide). 
-  
--   Az indexek létrehozásával vagy újraépítésével, illetve a fürtözött indexek eldobásával kapcsolatos műveletek erőforrás-igényesek lehetnek. Az index műveleteinél a MAXDOP index beállítás megadásával felülbírálhatja az adatbázis maximális párhuzamossági fokát a `CREATE INDEX` vagy `ALTER INDEX` utasításban. A MAXDOP értékét a rendszer végrehajtási időpontban alkalmazza az utasításra, és nem az index metaadataiban tárolja. További információ: [párhuzamos indexelési műveletek konfigurálása](/sql/relational-databases/indexes/configure-parallel-index-operations).  
-  
--   A lekérdezések és az indexelési műveletek mellett a MAXDOP adatbázis-hatókörű konfigurációs beállítása is szabályozza a DBCC CHECKTABLE UTASÍTÁST, a DBCC CHECKDB UTASÍTÁST és a DBCC CHECKFILEGROUP párhuzamosságát. 
-
-##  <a name="recommendations"></a><a name="Security"></a> Javaslatok  
-
-  Az adatbázis MAXDOP módosítása jelentős hatással lehet a lekérdezés teljesítményére és az erőforrás-felhasználásra, mind a pozitív, mind a negatív értékre. Az összes számítási feladathoz azonban egyetlen MAXDOP érték sincs optimális. A MAXDOP beállítására vonatkozó javaslatok árnyalva vannak, és számos tényezőtől függenek. 
-
-  Néhány csúcs egyidejű munkaterhelése jobban működhet egy másik MAXDOP, mint a többi. A megfelelően konfigurált MAXDOP csökkentenie kell a teljesítmény és a rendelkezésre állási incidensek kockázatát, és bizonyos esetekben csökkentenie kell a költségeket azzal, hogy el tudja kerülni a szükségtelen erőforrás-használatot, és így alacsonyabb szolgáltatási célnak kellene méreteznie.
+  Egyes egyidejű számítási feladatok csúcsterhelése jobban működhet más MAXDOP-val, mint a többi. A megfelelően konfigurált MAXDOP-nak csökkentenie kell a teljesítménybeli és rendelkezésre állási incidensek kockázatát, és bizonyos esetekben csökkentheti a költségeket azáltal, hogy elkerüli a szükségtelen erőforrás-használatot, és így alacsonyabb szolgáltatási célkitűzésre szűkül le.
 
 ### <a name="excessive-parallelism"></a>Túlzott párhuzamosság
 
-  A magasabb MAXDOP gyakran csökkenti a CPU-igényes lekérdezések időtartamát. Azonban a túlzott párhuzamosság ronthatja más párhuzamos munkaterhelési teljesítményt, ha a processzor és a feldolgozó szál erőforrásainak más lekérdezéseit is megéhezik. Szélsőséges esetekben a túlzott párhuzamosság felhasználhatja az összes adatbázis vagy rugalmas készlet erőforrását, így lekérdezési időtúllépéseket, hibákat és az alkalmazások kimaradásait. 
+  A nagyobb MAXDOP gyakran csökkenti a processzorigényes lekérdezések időtartamát. A túlzott párhuzamosság azonban ronthatja az egyidejű számítási feladatok teljesítményét, mivel a processzor- és feldolgozószál-erőforrások egyéb lekérdezései kiesnek. Szélsőséges esetben a túlzott párhuzamosság az összes adatbázis- vagy rugalmaskészlet-erőforrást felhasználhatja, ami lekérdezési időtúllépéseket, hibákat és alkalmazáskimaradásokat okoz. 
 
-  Javasoljuk, hogy az ügyfelek ne MAXDOP a 0 értéket akkor is, ha a probléma jelenleg nem okoz problémát. A túlzott párhuzamosság a legtöbb problémát okozhatja, ha a processzor és a munkavégző szálak több egyidejű kérelmet kapnak, mint amennyit a szolgáltatási cél támogatni tud. Kerülje a MAXDOP 0-ra, hogy csökkentse a lehetséges jövőbeli problémák kockázatát, ha egy adatbázis vertikális felskálázása esetén, illetve ha a Azure SQL Database további hardveres generációi több magot is biztosítanak ugyanahhoz az adatbázis-szolgáltatási célhoz.
+> [!Tip]
+> Javasoljuk, hogy az ügyfelek akkor se állják meg a MAXDOP 0-t, ha az jelenleg nem okoz problémát.
 
-### <a name="modifying-maxdop"></a>MAXDOP módosítása 
+  A túlzott párhuzamosság akkor válik a legproblémásabbá, ha több egyidejű kérés van, mint amennyit a szolgáltatási célkitűzés által biztosított CPU- és feldolgozószál-erőforrások támogatnak. Kerülje a MAXDOP 0-t, hogy csökkentse a túlzott párhuzamosság miatti lehetséges jövőbeli problémák kockázatát, ha egy adatbázist felskálák, vagy ha a Azure SQL Database jövőbeli hardvergenerációi több magot biztosítanak ugyanannak az adatbázis-szolgáltatási célkitűzésnek.
 
-  Ha azt állapítja meg, hogy egy másik MAXDOP-beállítás a Azure SQL Database munkaterhelés esetében optimális, használhatja a `ALTER DATABASE SCOPED CONFIGURATION` T-SQL-utasítást. Példaként tekintse meg az alábbi, a [Transact-SQL szakaszt használó példákat](#examples) . Adja hozzá ezt a lépést a telepítési folyamathoz, hogy megváltoztassa a MAXDOP az adatbázis létrehozása után.
+### <a name="modifying-maxdop"></a>A MAXDOP módosítása 
 
-  Ha a nem alapértelmezett MAXDOP csak a munkaterhelésben lévő lekérdezések egy részhalmazát használja, felülbírálhatja a MAXDOP a lekérdezési szinten a OPTION (MAXDOP) mutató hozzáadásával. Példaként tekintse meg az alábbi, a [Transact-SQL szakaszt használó példákat](#examples) . 
+  Ha úgy dönt, hogy az alapértelmezetttől eltérő MAXDOP-beállítás optimális a Azure SQL Database számítási feladathoz, használhatja a `ALTER DATABASE SCOPED CONFIGURATION` T-SQL-utasítást. Példákat az alábbi [Példák a Transact-SQL használatára](#examples) című szakaszban talál. Ha a MAXDOP-t nem alapértelmezett értékre szeretne módosítani minden létrehozott új adatbázishoz, adja hozzá ezt a lépést az adatbázis üzembe helyezési folyamatához.
 
-  Alaposan tesztelje a MAXDOP-konfiguráció módosításait, és töltse ki a reális egyidejű lekérdezési terheléseket. 
+  Ha a nem alapértelmezett MAXDOP csak a lekérdezések egy kis részkészletét használja a számítási feladatban, felülbírálhatja a MAXDOP-t a lekérdezés szintjén az OPTION (MAXDOP) tipp hozzáadásával. Példákat az alábbi [Példák a Transact-SQL használatára](#examples) című szakaszban talál. 
 
-  Az elsődleges és a másodlagos replikák MAXDOP egymástól függetlenül konfigurálható, hogy kihasználhassa a különböző optimális MAXDOP beállításokat az írási és olvasási feladatokhoz. Ez Azure SQL Database az [olvasási felskálázást](read-scale-out.md), a [geo-replikálást](active-geo-replication-overview.md)és a [Azure SQL Database nagy kapacitású másodlagos replikáit](service-tier-hyperscale.md)érinti. Alapértelmezés szerint az összes másodlagos replika örökli az elsődleges replika MAXDOP-konfigurációját.
+  Alaposan tesztelje a MAXDOP-konfiguráció módosításait a valósághű egyidejű lekérdezésterheléseket tartalmazó terheléstesztekkel. 
+
+  Az elsődleges és másodlagos replikák MAXDOP-beállításai egymástól függetlenül konfigurálhatók, ha a MAXDOP különböző beállításai optimálisak az írási és olvasási számítási feladatokhoz. Ez az olvasási [Azure SQL Database,](read-scale-out.md)a [](active-geo-replication-overview.md)georeplikációra és a másodlagos [hiperméretű](service-tier-hyperscale.md) replikákra vonatkozik. Alapértelmezés szerint az összes másodlagos replika örökli az elsődleges replika MAXDOP konfigurációját.
 
 ## <a name="security"></a><a name="Security"></a> Biztonsági  
   
 ###  <a name="permissions"></a><a name="Permissions"></a> Engedélyek  
-  Az `ALTER DATABASE SCOPED CONFIGURATION` utasítást a kiszolgálói rendszergazdaként kell végrehajtani, az adatbázis-szerepkör tagjaként `db_owner` vagy egy olyan felhasználóként, aki `ALTER ANY DATABASE SCOPED CONFIGURATION` engedélyt kapott.
+  Az `ALTER DATABASE SCOPED CONFIGURATION` utasítást kiszolgálói rendszergazdaként, az adatbázis-szerepkör tagjaként vagy olyan felhasználóként kell végrehajtani, aki engedélyt `db_owner` `ALTER ANY DATABASE SCOPED CONFIGURATION` kapott.
  
 ## <a name="examples"></a>Példák   
 
-  Ezek a példák a legújabb **AdventureWorksLT** -mintaadatbázis használatát mutatják be, ha a `SAMPLE` Azure SQL Database új önálló adatbázisát választja.
+  Ezek a példák a legújabb **AdventureWorksLT** mintaadatbázist használják, ha a lehetőséget egy új, adatbázisból `SAMPLE` Azure SQL Database.
 
 ### <a name="powershell"></a>PowerShell
 
-#### <a name="maxdop-database-scoped-configuration"></a>MAXDOP adatbázis-hatókörű konfiguráció   
+#### <a name="maxdop-database-scoped-configuration"></a>A MAXDOP adatbázis hatókörű konfigurációja   
 
-  Ez a példa azt mutatja be, hogyan használható az [Alter Database hatókörű konfigurációs](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) utasítása a `max degree of parallelism` beállításának konfigurálásához `2` . A beállítás azonnal érvénybe lép. A [meghívott PowerShell-parancsmag-SqlCmd](/powershell/module/sqlserver/invoke-sqlcmd) végrehajtja a T-SQL-lekérdezéseket, és visszaadja a MAXDOP-adatbázis hatókörének konfigurációját. 
+  Ez a példa bemutatja, hogyan használható az [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) utasítás a konfiguráció `MAXDOP` `2` beállítására. A beállítás azonnal életbe lép az új lekérdezések esetén. Az [Invoke-SqlCmd PowerShell-parancsmag](/powershell/module/sqlserver/invoke-sqlcmd) végrehajtja a beállított T-SQL-lekérdezéseket, és visszaadja a MAXDOP-adatbázis hatókörű konfigurációját. 
 
 ```powershell
 $dbName = "sample" 
@@ -116,7 +124,7 @@ $params = @{
   Invoke-SqlCmd @params
 ```
 
-Ez a példa az Azure SQL Database-adatbázisokkal való használatra használható az olvasási kibővített [replikákkal](read-scale-out.md), a [geo-replikálással](active-geo-replication-overview.md)és a [Azure SQL Database nagy kapacitású másodlagos replikákkal](service-tier-hyperscale.md). Az elsődleges replika például egy másik alapértelmezett MAXDOP van beállítva másodlagos replikaként, ami azt jelzi, hogy az írási és olvasási feladatok között eltérések lehetnek.
+Ez a példa olyan adatbázisokkal Azure SQL, [](read-scale-out.md)amelyeken engedélyezve vannak az olvasási felskálás replikák, a [georeplikáció](active-geo-replication-overview.md)és a Azure SQL Database másodlagos [replikák.](service-tier-hyperscale.md) Az elsődleges replika például egy másik alapértelmezett MAXDOP-re van beállítva másodlagos replikaként, és arra számít, hogy különbségek lehetnek az írási és olvasási számítási feladatok között.
 
 ```powershell
 $dbName = "sample" 
@@ -141,30 +149,29 @@ $params = @{
 
 ### <a name="transact-sql"></a>Transact-SQL
   
-  A [Azure Portal lekérdezés-szerkesztő](connect-query-portal.md), [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)vagy a [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) használatával T-SQL-lekérdezéseket hajthat végre a Azure SQL Database.
+  A T-SQL Azure Portal lekérdezések a SQL Server Management Studio [(SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)vagy a [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) használatával hajthat végre T-SQL-lekérdezéseket a Azure SQL Database. [](connect-query-portal.md)
 
-1.  Kapcsolódjon a Azure SQL Databasehoz. Az adatbázis-hatókörű konfigurációk nem módosíthatók a Master adatbázisban.
+1.  Nyisson meg egy új lekérdezési ablakot.
+
+2.  Csatlakozzon ahhoz az adatbázishoz, ahol módosítani szeretné a MAXDOP-t. A master adatbázisban nem módosíthatja az adatbázisra vonatkozó hatókörrel kapcsolatos konfigurációkat.
   
-2.  A standard sávban válassza a **New Query (új lekérdezés**) lehetőséget.   
-  
-3.  Másolja és illessze be az alábbi példát a lekérdezési ablakba, és válassza a **végrehajtás** lehetőséget. 
+3.  Másolja és illessze be az alábbi példát a lekérdezési ablakba, majd válassza a **Végrehajtás lehetőséget.** 
 
+#### <a name="maxdop-database-scoped-configuration"></a>A MAXDOP adatbázis hatókörű konfigurációja
 
-#### <a name="maxdop-database-scoped-configuration"></a>MAXDOP adatbázis-hatókörű konfiguráció
-
-  Ebből a példából megtudhatja, hogyan határozhatja meg az adatbázis aktuális MAXDOP adatbázis-hatókörének konfigurációját a [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql) Rendszerkatalógus nézet használatával.
+  Ez a példa bemutatja, hogyan határozható meg az aktuális adatbázis MAXDOP-adatbázishoz hatókörrel sys.database_scoped_configurations konfigurációja a rendszerkatalógus [nézetben.](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql)
 
 ```sql
 SELECT [value] FROM sys.database_scoped_configurations WHERE [name] = 'MAXDOP';
 ```
 
-  Ez a példa azt mutatja be, hogyan használható az [Alter Database hatókörű konfigurációs](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) utasítása a `max degree of parallelism` beállításának konfigurálásához `8` . A beállítás azonnal érvénybe lép.  
+  Ez a példa bemutatja, hogyan használható az [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) utasítás a konfiguráció `MAXDOP` `8` beállítására. A beállítás azonnal életbe lép.  
   
 ```sql  
 ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 8;
 ```  
 
-Ez a példa az Azure SQL Database-adatbázisokkal való használatra használható az olvasási kibővített [replikákkal](read-scale-out.md), a [geo-replikálással](active-geo-replication-overview.md)és a [Azure SQL Database nagy kapacitású másodlagos replikákkal](service-tier-hyperscale.md). Az elsődleges replika például egy másik alapértelmezett MAXDOP van beállítva másodlagos replikaként, ami azt jelzi, hogy az írási és olvasási feladatok között eltérések lehetnek. A `value_for_secondary` `sys.database_scoped_configurations` másodlagos replika beállításait tartalmazó oszlop.
+Ez a példa olyan adatbázisokkal Azure SQL, [](read-scale-out.md)amelyeken engedélyezve vannak az olvasási, a [georeplikációs](active-geo-replication-overview.md)és a [hyperscale](service-tier-hyperscale.md) másodlagos replikák. Az elsődleges replika például egy másik MAXDOP-re van beállítva, mint a másodlagos replika, és arra számít, hogy különbségek lehetnek az írási és olvasási számítási feladatok között. Minden utasítás az elsődleges replikán lesz végrehajtva. A `value_for_secondary` oszlopa `sys.database_scoped_configurations` tartalmazza a másodlagos replika beállításait.
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 8;
@@ -172,9 +179,9 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = 1;
 SELECT [value], value_for_secondary FROM sys.database_scoped_configurations WHERE [name] = 'MAXDOP';
 ```
 
-#### <a name="maxdop-query-hint"></a>MAXDOP-lekérdezési tipp
+#### <a name="maxdop-query-hint"></a>MAXDOP lekérdezési tipp
 
-  Ebből a példából megtudhatja, hogyan futtathat egy lekérdezést a lekérdezési mutató használatával a alkalmazás kényszerítéséhez `max degree of parallelism` `2` .  
+  Ez a példa bemutatja, hogyan hajthat végre egy lekérdezést a lekérdezési tipp használatával, hogy a metódust a következőre `max degree of parallelism` kényszeríti: `2` .  
 
 ```sql 
 SELECT ProductID, OrderQty, SUM(LineTotal) AS Total  
@@ -185,9 +192,9 @@ ORDER BY ProductID, OrderQty
 OPTION (MAXDOP 2);    
 GO
 ```
-#### <a name="maxdop-index-option"></a>MAXDOP index beállítása
+#### <a name="maxdop-index-option"></a>MAXDOP index beállítás
 
-  Ez a példa azt mutatja be, hogyan lehet újraépíteni egy indexet az index kapcsoló használatával, hogy kényszerítse a `max degree of parallelism` -t `12` .  
+  Ez a példa bemutatja, hogyan lehet újraépíteni egy indexet az index beállításával, amely a következőre `max degree of parallelism` kényszeríti: `12` .  
 
 ```sql 
 ALTER INDEX ALL ON SalesLT.SalesOrderDetail 
@@ -198,13 +205,13 @@ REBUILD WITH
 ```
 
 ## <a name="see-also"></a>Lásd még  
-* [Az adatbázis HATÓKÖRén belüli konfiguráció módosítása &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)        
+* [ALTER DATABASE SCOPED CONFIGURATION &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)        
 * [sys.database_scoped_configurations (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql)
-* [Párhuzamos indexelési műveletek konfigurálása](/sql/relational-databases/indexes/configure-parallel-index-operations)    
-* [Lekérdezési útmutatók &#40;Transact-SQL&#41;](/sql/t-sql/queries/hints-transact-sql-query)     
-* [Index beállításainak megadása](/sql/relational-databases/indexes/set-index-options)     
-* [Azure SQL Database blokkolási problémák ismertetése és megoldása](understand-resolve-blocking.md)
+* [Párhuzamos indexműveletek konfigurálása](/sql/relational-databases/indexes/configure-parallel-index-operations)    
+* [Lekérdezési tippek &#40;Transact-SQL-&#41;](/sql/t-sql/queries/hints-transact-sql-query)     
+* [Indexbeállítások megadása](/sql/relational-databases/indexes/set-index-options)     
+* [A problémák Azure SQL Database és megoldása](understand-resolve-blocking.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A teljesítmény figyelése és finomhangolása](/sql/relational-databases/performance/monitor-and-tune-for-performance)
+* [Monitor és hangolás a teljesítményhez](/sql/relational-databases/performance/monitor-and-tune-for-performance)

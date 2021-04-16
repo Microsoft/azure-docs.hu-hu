@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: belső terheléselosztó létrehozása – Azure PowerShell'
+title: 'Rövid útmutató: Belső terheléselosztás létrehozása – Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozható létre belső terheléselosztó a Azure PowerShell használatával
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre belső terheléselosztást a Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,30 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
-ms:custom: seodec18
-ms.openlocfilehash: 8d94a784aba5995fd7e4645c3b56929874da2bcd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 618ca8722cef1959fddc5dcd24e8e8bdbb1f620a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056368"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530045"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
+# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rövid útmutató: Belső terheléselosztás létrehozása a virtuális gépek terhelésének terheléselosztása Azure PowerShell
 
-A Azure Load Balancer használatának első lépései Azure PowerShell használatával belső terheléselosztó és két virtuális gép létrehozása.
+A Azure Load Balancer használatának első Azure PowerShell egy belső terheléselosztási és két virtuális gép létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Helyileg telepített Azure PowerShell vagy Azure Cloud Shell
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell helyileg vagy helyileg telepített Azure Cloud Shell
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
+Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a parancsot is futtatnia kell az `Connect-AzAccount` Azure-ral való kapcsolat létrehozásához.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup segítségével.](/powershell/module/az.resources/new-azresourcegroup)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
@@ -47,33 +46,33 @@ New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
 # <a name="standard-sku"></a>[**Standard termékváltozat**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
->A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
+>A standard termékváltozatú terheléselosztás éles számítási feladatokhoz ajánlott. A SKUS-okkal kapcsolatos további információkért lásd: **[Azure Load Balancer SKUS.](skus.md)**
 
-Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
+Ebben a szakaszban egy terheléselosztást fog létrehozni, amely terheléselosztást hoz létre a virtuális gépek között. 
 
-Belső terheléselosztó létrehozásakor a rendszer a terheléselosztó hálózatként konfigurálja a virtuális hálózatot. 
+Belső terheléselosztás létrehozásakor egy virtuális hálózat lesz konfigurálva a terheléselosztás hálózataként. 
 
-Az alábbi ábrán az ebben a rövid útmutatóban létrehozott erőforrások láthatók:
+Az alábbi ábra az ebben a rövid útmutatóban létrehozott erőforrásokat mutatja be:
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="A gyors üzembe helyezéshez létrehozott Standard Load Balancer-erőforrások." border="false":::
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="A rövid útmutatóhoz létrehozott standard terheléselosztási erőforrások." border="false":::
 
-## <a name="configure-virtual-network---standard"></a>Virtuális hálózat konfigurálása – standard
+## <a name="configure-virtual-network---standard"></a>Virtuális hálózat konfigurálása – Standard
 
-A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
+A virtuális gépek üzembe helyezése és a terheléseltöltő tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-Hozzon létre egy virtuális hálózatot a háttérbeli virtuális gépekhez.
+Hozzon létre egy virtuális hálózatot a háttér virtuális gépek számára.
 
-Hozzon létre egy hálózati biztonsági csoportot a virtuális hálózatra irányuló bejövő kapcsolatok definiálásához.
+Hozzon létre egy hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
 
 ### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Virtuális hálózat, hálózati biztonsági csoport és megerősített gazdagép létrehozása
 
-* Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
+* Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork segítségével.](/powershell/module/az.network/new-azvirtualnetwork)
 
-* Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+* Hozzon létre egy hálózati biztonságicsoport-szabályt a [New-AzNetworkSecurityRuleConfig segítségével.](/powershell/module/az.network/new-aznetworksecurityruleconfig)
 
-* Hozzon létre egy Azure Bastion-gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion).
+* Hozzon létre Azure Bastion gazdagépet a [New-AzBastion segítségével.](/powershell/module/az.network/new-azbastion)
 
-* Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+* Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup segítségével.](/powershell/module/az.network/new-aznetworksecuritygroup)
 
 ```azurepowershell-interactive
 ## Create backend subnet config ##
@@ -144,19 +143,19 @@ $nsg = @{
 New-AzNetworkSecurityGroup @nsg
 
 ```
-## <a name="create-standard-load-balancer"></a>Standard Load Balancer létrehozása
+## <a name="create-standard-load-balancer"></a>Standard terheléselosztás létrehozása
 
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
 
-* Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) for the frontend IP-készlethez. Ez az IP-cím fogadja a terheléselosztó bejövő forgalmát
+* Hozzon létre egy előtérben található IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) segítségével az előtérben található IP-címkészlethez. Ez az IP-cím fogadja a bejövő forgalmat a terheléselosztáson
 
-* Hozzon létre egy háttér-címkészletet [új AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) a terheléselosztó felületéről továbbított forgalomhoz. Ez a készlet a háttérbeli virtuális gépek üzembe helyezésének helyét adja meg.
+* Hozzon létre egy háttércímkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) segítségével a terheléseltöltő előtere által küldött forgalomhoz. Ebben a készletben helyezhetők üzembe a háttér virtuális gépek.
 
-* Hozzon létre egy olyan [AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) , amely meghatározza a háttérbeli virtuálisgép-példányok állapotát.
+* Hozzon létre egy állapot-mintavételt az [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) segítségével, amely meghatározza a háttér virtuálisgép-példányok állapotát.
 
-* Hozzon létre egy terheléselosztó-szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) használatával, amely meghatározza, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között.
+* Hozzon létre egy terheléselosztási szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) segítségével, amely meghatározza, hogyan ossza el a rendszer a forgalmat a virtuális gépek között.
 
-* Hozzon létre egy nyilvános Load balancert a [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
+* Hozzon létre egy nyilvános terheléselosztást a [New-AzLoadBalancer segítségével.](/powershell/module/az.network/new-azloadbalancer)
 
 
 ```azurepowershell-interactive
@@ -212,17 +211,17 @@ New-AzLoadBalancer @loadbalancer
 
 ```
 
-## <a name="create-virtual-machines---standard"></a>Virtuális gépek létrehozása – standard
+## <a name="create-virtual-machines---standard"></a>Virtuális gépek létrehozása – Standard
 
-Ebben a szakaszban a terheléselosztó háttér-készletéhez tartozó három virtuális gépet fogja létrehozni.
+Ebben a szakaszban a terheléselosztás háttérkészletének három virtuális gépét fogja létrehozni.
 
-* Hozzon létre három hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
+* Hozzon létre három hálózati adaptert a [New-AzNetworkInterface használatával.](/powershell/module/az.network/new-aznetworkinterface)
 
-* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential).
+* Állítson be rendszergazdai felhasználónevet és jelszót a virtuális gépekhez a [Get-Credential használatával.](/powershell/module/microsoft.powershell.security/get-credential)
 
-* Hozza létre a virtuális gépeket az alábbiakkal:
+* Hozza létre a virtuális gépeket a következővel:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)
-    * [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
     * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
     * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
     * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
@@ -290,7 +289,7 @@ New-AzVM @vm -AsJob
 
 ```
 
-A virtuális gépek és a megerősített gazdagép központi telepítései PowerShell-feladatokként lesznek elküldve. A feladatok állapotának megtekintéséhez használja a [Get-Job](/powershell/module/microsoft.powershell.core/get-job):
+A virtuális gépek és a megerősített gazdagép üzemelő példányai PowerShell-feladatként vannak elküldve. A feladatok állapotának megtekintéséhez használja a [Get-Job et:](/powershell/module/microsoft.powershell.core/get-job)
 
 ```azurepowershell-interactive
 Get-Job
@@ -303,36 +302,38 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
->A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
+>Az éles számítási feladatokhoz a standard termékváltozatú terheléselosztás ajánlott. A SKUS-okkal kapcsolatos további információkért lásd: **[Azure Load Balancer SKUs](skus.md)**.
 
-Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
+Ebben a szakaszban egy terheléselosztást fog létrehozni, amely terheléselosztást hoz létre a virtuális gépek között. 
 
-Belső terheléselosztó létrehozásakor a rendszer a terheléselosztó hálózatként konfigurálja a virtuális hálózatot. 
+Belső terheléselosztás létrehozásakor egy virtuális hálózat lesz konfigurálva a terheléselosztás hálózataként. 
 
-Az alábbi ábrán az ebben a rövid útmutatóban létrehozott erőforrások láthatók:
+Az alábbi ábrán az ebben a rövid útmutatóban létrehozott erőforrások láthatóak:
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="A rövid útmutatóban létrehozott alapszintű Load Balancer-erőforrások." border="false":::
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="A rövid útmutatóban létrehozott alapszintű terheléselosztási erőforrások." border="false":::
 
-## <a name="configure-virtual-network---basic"></a>Virtuális hálózat konfigurálása – alapszintű
+## <a name="configure-virtual-network---basic"></a>Virtuális hálózat konfigurálása – Alapszintű
 
-A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
+A virtuális gépek üzembe helyezése és a terheléseltöltő tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-Hozzon létre egy virtuális hálózatot a háttérbeli virtuális gépekhez.
+Hozzon létre egy virtuális hálózatot a háttér virtuális gépek számára.
 
-Hozzon létre egy hálózati biztonsági csoportot a virtuális hálózatra irányuló bejövő kapcsolatok definiálásához.
+Hozzon létre egy hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
 
 ### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Virtuális hálózat, hálózati biztonsági csoport és megerősített gazdagép létrehozása
 
-* Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
+* Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork segítségével.](/powershell/module/az.network/new-azvirtualnetwork)
 
-* Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+* Hozzon létre egy hálózati biztonságicsoport-szabályt a [New-AzNetworkSecurityRuleConfig segítségével.](/powershell/module/az.network/new-aznetworksecurityruleconfig)
 
-* Hozzon létre egy Azure Bastion-gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion).
+* Hozzon létre Azure Bastion gazdagépet a [New-AzBastion segítségével.](/powershell/module/az.network/new-azbastion)
 
-* Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+* Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup segítségével.](/powershell/module/az.network/new-aznetworksecuritygroup)
 
 ```azurepowershell-interactive
 ## Create backend subnet config ##
@@ -403,19 +404,19 @@ $nsg = @{
 New-AzNetworkSecurityGroup @nsg
 
 ```
-## <a name="create-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
+## <a name="create-basic-load-balancer"></a>Alapszintű terheléselosztás létrehozása
 
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
 
-* Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) for the frontend IP-készlethez. Ez az IP-cím fogadja a terheléselosztó bejövő forgalmát
+* Hozzon létre egy előtérben található IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) segítségével az előtérben található IP-címkészlethez. Ez az IP-cím fogadja a terheléselosztási kiszolgáló bejövő forgalmát
 
-* Hozzon létre egy háttér-címkészletet [új AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) a terheléselosztó felületéről továbbított forgalomhoz. Ez a készlet a háttérbeli virtuális gépek üzembe helyezésének helyét adja meg.
+* Hozzon létre egy háttércímkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) gombra a terheléseltöltő előtere által küldött forgalomhoz. Ebben a készletben helyezhetők üzembe a háttér virtuális gépek.
 
-* Hozzon létre egy olyan [AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) , amely meghatározza a háttérbeli virtuálisgép-példányok állapotát.
+* Hozzon létre egy állapot-mintavételt az [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) segítségével, amely meghatározza a háttér virtuálisgép-példányok állapotát.
 
-* Hozzon létre egy terheléselosztó-szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) használatával, amely meghatározza, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között.
+* Hozzon létre egy terheléselosztási szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) segítségével, amely meghatározza, hogyan ossza el a rendszer a forgalmat a virtuális gépek között.
 
-* Hozzon létre egy nyilvános Load balancert a [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
+* Hozzon létre egy nyilvános terheléselosztást a [New-AzLoadBalancer segítségével.](/powershell/module/az.network/new-azloadbalancer)
 
 ```azurepowershell-interactive
 ## Place virtual network created in previous step into a variable. ##
@@ -473,19 +474,19 @@ New-AzLoadBalancer @loadbalancer
 
 ```
 
-## <a name="create-virtual-machines---basic"></a>Virtuális gépek létrehozása – alapszintű
+## <a name="create-virtual-machines---basic"></a>Virtuális gépek létrehozása – Alapszintű
 
-Ebben a szakaszban a terheléselosztó háttér-készletéhez tartozó virtuális gépeket fogja létrehozni.
+Ebben a szakaszban a terheléselosztás háttérkészletének virtuális gépeit fogja létrehozni.
 
-* Hozzon létre három hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
+* Hozzon létre három hálózati adaptert a [New-AzNetworkInterface használatával.](/powershell/module/az.network/new-aznetworkinterface)
 
-* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential).
+* Állítson be rendszergazdai felhasználónevet és jelszót a virtuális gépekhez a [Get-Credential használatával.](/powershell/module/microsoft.powershell.security/get-credential)
 
-* A [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) használatával hozzon létre egy rendelkezésre állási készletet a virtuális gépek számára.
+* A [New-AzAvailabilitySet használatával](/powershell/module/az.compute/new-azvm) hozzon létre egy rendelkezésre állási készletet a virtuális gépekhez.
 
-* Hozza létre a virtuális gépeket az alábbiakkal:
+* Hozza létre a virtuális gépeket a következővel:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)
-    * [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
     * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
     * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
     * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
@@ -564,7 +565,7 @@ New-AzVM @vm -AsJob
 
 ```
 
-A virtuális gépek és a megerősített gazdagép központi telepítései PowerShell-feladatokként lesznek elküldve. A feladatok állapotának megtekintéséhez használja a [Get-Job](/powershell/module/microsoft.powershell.core/get-job):
+A virtuális gépek és a megerősített gazdagép üzemelő példányai PowerShell-feladatként vannak elküldve. A feladatok állapotának megtekintéséhez használja a [Get-Job et:](/powershell/module/microsoft.powershell.core/get-job)
 
 ```azurepowershell-interactive
 Get-Job
@@ -577,16 +578,18 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ---
 
 ## <a name="install-iis"></a>Az IIS telepítése
 
-A [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) használatával telepítse az egyéni szkriptek bővítményét. 
+Az egyéni szkriptbővítmény telepítéséhez használja a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsprogramot. 
 
 A bővítmény a `PowerShell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a Default.htm lapot frissítve megjeleníti a virtuális gép eszköznevét:
 
 > [!IMPORTANT]
-> A folytatás előtt győződjön meg arról, hogy a virtuális gépek üzembe helyezése az előző lépésekkel fejeződött be.  A használatával `Get-Job` ellenőrizhető a virtuális gép telepítési feladatai állapota.
+> Mielőtt továbblépne, győződjön meg arról, hogy a virtuális gépek üzembe helyezése az előző lépésekből befejeződött.  A `Get-Job` virtuális gép üzembe helyezési feladatának állapotának ellenőrzéséhez használja a következőt: .
 
 ```azurepowershell-interactive
 ## For loop with variable to install custom script extension on virtual machines. ##
@@ -606,7 +609,7 @@ Set-AzVMExtension @ext -AsJob
 }
 ```
 
-A bővítmények PowerShell-feladatokként vannak telepítve. A telepítési feladatok állapotának megtekintéséhez használja a [Get-Job](/powershell/module/microsoft.powershell.core/get-job):
+A bővítmények PowerShell-feladatként vannak telepítve. A telepítési feladatok állapotának megtekintéséhez használja a [Get-Job feladatot:](/powershell/module/microsoft.powershell.core/get-job)
 
 
 ```azurepowershell-interactive
@@ -624,11 +627,11 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-A virtuális gép létrehozása a rel:
+Hozza létre a virtuális gépet a következővel:
 
-* [Új – AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)
+* [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)
 * [New-AzVM](/powershell/module/az.compute/new-azvm)
-* [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+* [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
 * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
 * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
 * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
@@ -687,27 +690,27 @@ New-AzVM @vm
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A terheléselosztó magánhálózati IP-címének megkeresése az **Áttekintés** képernyőn. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd válassza a **myLoadBalancer** lehetőséget.
+1. Keresse meg a terheléselosztás magánhálózati IP-címét az **Áttekintés képernyőn.** A **bal oldali menüben** válassza a Minden szolgáltatás, majd a **Minden** erőforrás lehetőséget, végül pedig a **myLoadBalancer elemet.**
 
-2. Jegyezze fel, vagy másolja a **magánhálózati IP-cím** melletti címet a **myLoadBalancer** **áttekintésében** .
+2. Jegyezze fel vagy másolja ki a  **myLoadBalancer** áttekintésében a Magánhálózati **IP-cím** melletti címet.
 
-3. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd az erőforrások listából válassza ki a **myTestVM** , amely a **CreateIntLBQS-RG** erőforráscsoporthoz található.
+3. Válassza **a Minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a Minden erőforrás lehetőséget, majd az erőforrások listájából válassza ki a **CreateIntLBQS-rg** erőforráscsoportban található **myTestVM** elemet.
 
-4. Az **Áttekintés** lapon válassza a **kapcsolat**, majd a **Bastion** lehetőséget.
+4. Az Áttekintés **lapon** válassza a **Csatlakozás,** majd a **Bastion lehetőséget.**
 
-6. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+6. Adja meg a virtuális gép létrehozása során megadott felhasználónevet és jelszót.
 
-7. Nyissa meg az **Internet Explorert** a **myTestVM**.
+7. Nyissa **Internet Explorer** a **myTestVM-et.**
 
-8. Az előző lépésben adja meg az IP-címet a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
+8. Írja be az előző lépésben használt IP-címet a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standard belső terheléselosztó létrehozása" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standard belső terheléselosztás létrehozása" border="true":::
    
-Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
+Ahhoz, hogy lássa, hogyan osztja el a terheléselosztó a forgalmat mindhárom virtuális gép között, testre szabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett lapját, majd kényszerítheti a webböngésző frissítését az ügyfélszámítógépről.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és a többi erőforrás.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolíthatja az erőforráscsoportot, a terheléselosztást és a fennmaradó erőforrásokat.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name 'CreateIntLBQS-rg'
@@ -717,11 +720,11 @@ Remove-AzResourceGroup -Name 'CreateIntLBQS-rg'
 
 Ebben a rövid útmutatóban:
 
-* Létrehozott egy standard vagy alapszintű belső terheléselosztó
+* Létrehozott egy standard vagy alapszintű belső terheléselosztást
 * Csatlakoztatott virtuális gépek. 
-* Konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt.
-* Tesztelte a terheléselosztó.
+* Konfigurálta a terheléselosztási forgalmi szabályt és az állapot-mintavételt.
+* Tesztelte a terheléseltöltőt.
 
-Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a következővel:
+Ha többet szeretne megtudni a Azure Load Balancer, folytassa a következővel:
 > [!div class="nextstepaction"]
 > [Mi az Azure Load Balancer?](load-balancer-overview.md)

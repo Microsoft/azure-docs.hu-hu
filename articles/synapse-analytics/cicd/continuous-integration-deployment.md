@@ -1,157 +1,157 @@
 ---
-title: Folyamatos integráció és kézbesítés a szinapszis-munkaterülethez
-description: Megtudhatja, hogyan használhatja a folyamatos integrációt és a kézbesítést a munkaterületen végrehajtott módosítások egy másik környezetből (fejlesztés, tesztelés, éles környezetben) való üzembe helyezéséhez.
-services: synapse-analytics
+title: Folyamatos integráció és teljesítés a Synapse-munkaterülethez
+description: Megtudhatja, hogyan helyezhet üzembe módosításokat a munkaterületen a folyamatos integráció és teljesítés használatával az egyik környezetből (fejlesztés, tesztelés, éles környezet) egy másikba.
 author: liud
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f68e3698f8616b581d319bc19d2a8c636c79c36
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561957"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566086"
 ---
-# <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
+# <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és teljesítés Azure Synapse munkaterülethez
 
 ## <a name="overview"></a>Áttekintés
 
-A folyamatos integráció (CI) a kód kiépítésének és tesztelésének automatizálása minden alkalommal, amikor egy csapattag véglegesíti a verziókövetés változásait. A folyamatos üzembe helyezés (CD) az a folyamat, amellyel több tesztelési vagy átmeneti környezetből lehet éles környezetbe felépíteni, tesztelni, konfigurálni és üzembe helyezni.
+A folyamatos integráció (CI) a kód buildelésének és tesztelésének automatizálása minden alkalommal, amikor egy csapattag módosításokat véglegesíteni fog a verzióvezérlésben. A folyamatos üzembe helyezés (CONTINUOUS Deployment, CD) az a folyamat, amely során több tesztelési vagy átmeneti környezetből hoznak létre, tesztelnek, konfigurálnak és helyeznek üzembe éles környezetben.
 
-Az Azure szinapszis munkaterülete esetében a folyamatos integráció és a szállítás (CI/CD) minden entitást az egyik környezetből (fejlesztés, tesztelés, termelés) helyez át egy másikra. Ha a munkaterületet egy másik munkaterületre szeretné előléptetni, két részből áll: a munkaterület-erőforrások (készletek és munkaterületek) létrehozásához vagy frissítéséhez [Azure Resource Manager-sablonok](../../azure-resource-manager/templates/overview.md) használatával. az összetevők (SQL-parancsfájlok, jegyzetfüzetek, Spark-feladattípusok, folyamatok, adatforgalom stb.) áttelepíthetők a szinapszis CI/CD-eszközökkel az Azure DevOps-ben. 
+A Azure Synapse esetén a folyamatos integráció és teljesítés (CI/CD) az összes entitást áthelyezi az egyik környezetből (fejlesztés, tesztelés, éles környezet) egy másikba. A munkaterület másik munkaterületre való megléptetése két részből áll: Azure Resource Manager a munkaterület erőforrásainak (készleteknek és [munkaterületnek)](../../azure-resource-manager/templates/overview.md) a létrehozásához vagy frissítéséhez; összetevők (SQL-szkriptek, jegyzetfüzetek, Spark-feladatdefiníciók, folyamatok, adatkészletek, adatfolyamok stb.) mignózisa az Azure DevOps Synapse CI-/CD-eszközeivel. 
 
-Ebből a cikkből megtudhatja, hogyan automatizálható a szinapszis-munkaterület telepítése több környezetbe az Azure kiadási folyamat használatával.
+Ez a cikk azt ismerteti, hogyan automatizálható egy Synapse-munkaterület üzembe helyezése több környezetben az Azure kiadási folyamatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--   A fejlesztéshez használt munkaterület a Studio git-tárházával lett konfigurálva, lásd: a [szinapszis Studio verziókövetés](source-control.md).
--   Egy Azure DevOps-projekt készült a kiadási folyamat futtatásához.
+-   A fejlesztéshez használt munkaterület egy Git-adattárakhoz lett konfigurálva a Studióban, lásd: Verziók [Synapse Studio.](source-control.md)
+-   Előkészítettünk egy Azure DevOps-projektet a kiadási folyamat futtatásához.
 
 ## <a name="set-up-a-release-pipelines"></a>Kiadási folyamatok beállítása
 
-1.  Az [Azure DevOps](https://dev.azure.com/)nyissa meg a kiadáshoz létrehozott projektet.
+1.  Az [Azure DevOpsban](https://dev.azure.com/)nyissa meg a kiadáshoz létrehozott projektet.
 
-1.  A lap bal oldalán válassza a **folyamatok**, majd a **kiadások** elemet.
+1.  A lap bal oldalán válassza a **Folyamatok,** majd a **Kiadások lehetőséget.**
 
     ![Folyamatok, kiadások kiválasztása](media/create-release-1.png)
 
-1.  Válassza az **új folyamat** lehetőséget, vagy ha meglévő folyamatokkal rendelkezik, válassza az **új** , majd az **új kiadási folyamat** lehetőséget.
+1.  Válassza **az Új folyamat** lehetőséget, vagy ha  már van meglévő folyamat, válassza az Új, majd az **Új kiadási folyamat lehetőséget.**
 
-1.  Válassza ki az **üres** sablont.
+1.  Válassza az **Üres feladat sablont.**
 
-    ![Üres feladatok kiválasztása](media/create-release-select-empty.png)
+    ![Válassza az Üres feladat lehetőséget](media/create-release-select-empty.png)
 
-1.  A **szakasz neve** mezőben adja meg a környezet nevét.
+1.  A Fázis **neve mezőbe** írja be a környezet nevét.
 
-1.  Válassza az összetevő **hozzáadása** lehetőséget, majd válassza ki a fejlesztési szinapszis Studióval konfigurált git-tárházat. Válassza ki a készletek és munkaterületek ARM-sablonjának kezeléséhez használt git-tárházat. Ha a GitHubot használja forrásként, létre kell hoznia egy szolgáltatási kapcsolódást a GitHub-fiókjához, és le kell kérnie a tárolókat. További információ a [szolgáltatás kapcsolatairól](/azure/devops/pipelines/library/service-endpoints) 
+1.  Válassza **az Összetevő hozzáadása** lehetőséget, majd válassza ki a fejlesztési tárházhoz konfigurált git-Synapse Studio. Válassza ki a készletek és munkaterületEK ARM-sablonjának kezeléséhez használt git-adattárat. Ha a GitHubot használja forrásként, létre kell hoznia egy szolgáltatáskapcsolatot a GitHub-fiókhoz és a lekért adattárakhoz. További információ a [szolgáltatáskapcsolatról](/azure/devops/pipelines/library/service-endpoints) 
 
     ![Közzétételi ág hozzáadása](media/release-creation-github.png)
 
-1.  Válassza ki az ARM-sablon ágat az erőforrások frissítéséhez. Az **alapértelmezett verziónál** válassza a **legutóbbi lehetőséget az alapértelmezett ág** lehetőségnél.
+1.  Válassza ki az ARM-sablon ágát az erőforrások frissítéséhez. Az Alapértelmezett **verzió beállításnál** válassza a **Legutóbbi lehetőséget az alapértelmezett ágban.**
 
     ![ARM-sablon hozzáadása](media/release-creation-arm-branch.png)
 
-1.  Válassza ki az adattár [közzétételi ágát](source-control.md#configure-publishing-settings) az **alapértelmezett ág** számára. Alapértelmezés szerint ez a közzétételi ág `workspace_publish` . Az **alapértelmezett verziónál** válassza a **legutóbbi lehetőséget az alapértelmezett ág** lehetőségnél.
+1.  Válassza ki [az adattár](source-control.md#configure-publishing-settings) közzétételi ágát az **Alapértelmezett ághoz.** Alapértelmezés szerint ez a közzétételi ág `workspace_publish` a következő: . Az Alapértelmezett **verzió beállításnál** válassza a **Legutóbbi lehetőséget az alapértelmezett ágban.**
 
     ![Összetevő hozzáadása](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>Fázis-feladat beállítása az ARM-erőforrások létrehozásához és frissítéséhez 
+## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>Fázisfeladat beállítása ARM-erőforrás létrehozásához és frissítéséhez 
 
-Azure Resource Manager telepítési feladat hozzáadása erőforrások létrehozásához vagy frissítéséhez, beleértve a munkaterületet és a készleteket:
+Adjon hozzá egy Azure Resource Manager üzembe helyezési feladatot erőforrások, például munkaterületek és készletek létrehozásához vagy frissítéséhez:
 
-1. A fázis nézetben válassza a **fázis-feladatok megtekintése** lehetőséget.
+1. A fázisnézetben válassza a **Fázisfeladatok megtekintése lehetőséget.**
 
-    ![Szakasz nézet](media/release-creation-stage-view.png)
+    ![Fázis nézet](media/release-creation-stage-view.png)
 
-1. Hozzon létre egy új feladatot. Keresse meg az **ARM-sablon központi telepítését**, majd válassza a **Hozzáadás** lehetőséget.
+1. Hozzon létre egy új feladatot. Keressen rá az **ARM-sablon üzembe helyezésére,** majd válassza a **Hozzáadás lehetőséget.**
 
-1. A központi telepítési feladat területen válassza ki az előfizetést, az erőforráscsoportot és a célhelyet a cél munkaterülethez. Szükség esetén adja meg a hitelesítő adatokat.
+1. Az Üzembe helyezés feladatban válassza ki a cél munkaterülethez az előfizetést, az erőforráscsoportot és a helyet. Szükség esetén adja meg a hitelesítő adatokat.
 
-1. A **művelet** listában válassza az **erőforráscsoport létrehozása vagy frissítése** lehetőséget.
+1. A Művelet **listában** válassza az Erőforráscsoport létrehozása **vagy frissítése lehetőséget.**
 
-1. Kattintson a három pont gombra (**...**) a **sablon** mező mellett. Tallózással keresse meg a cél munkaterület Azure Resource Manager sablonját
+1. Válassza a Sablon mező melletti három  pont **(...)** gombot. Keresse meg Azure Resource Manager a cél-munkaterület sablonját
 
-1. Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt.
+1. Válassza **a ...** a Sablon paraméterei **mező mellett** a paraméterfájl választáshoz.
 
-1. Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a kívánt paramétereket a cél munkaterülethez. 
+1. Válassza **a ...** a **Sablonparaméterek felülbírálása mező** mellett, és adja meg a kívánt paraméterértékeket a cél munkaterülethez. 
 
-1. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz**.
+1. Az Üzembe **helyezési** mód beállításhoz válassza a **Növekményes lehetőséget.**
     
     ![munkaterület és készletek üzembe helyezése](media/pools-resource-deploy.png)
 
-1. Választható **Azure PowerShell** hozzáadása a munkaterület szerepkör-hozzárendelésének engedélyezéséhez és frissítéséhez. Ha a kiadási folyamattal hoz létre egy szinapszis-munkaterületet, a rendszer a folyamat egyszerű szolgáltatását adja hozzá alapértelmezett munkaterület-rendszergazdaként. A PowerShell futtatásával más fiókokhoz is hozzáférést biztosíthat a munkaterülethez. 
+1. (Nem kötelező) Adjon **Azure PowerShell** munkaterületi szerepkör hozzárendeléséhez és frissítéséhez. Ha kiadási folyamatot használ egy Synapse-munkaterület létrehozásához, a folyamat egyszerű szolgáltatása lesz hozzáadva alapértelmezett munkaterület-rendszergazdaként. A PowerShell futtatásával adhat hozzáférést más fiókoknak a munkaterülethez. 
     
     ![engedély megadása](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> A teljes üzembe helyezési módban az erőforráscsoporthoz tartozó, de az új Resource Manager-sablonban nem megadott erőforrások **törlődni** fognak. További információkért tekintse meg [Azure Resource Manager telepítési módokat](../../azure-resource-manager/templates/deployment-modes.md)
+> A Teljes üzembe helyezés módban az erőforráscsoportban található, de az új erőforráscsoportban nem megadott erőforrások Resource Manager **törlődnek.** További információért tekintse meg az üzembehely [Azure Resource Manager módokat.](../../azure-resource-manager/templates/deployment-modes.md)
 
-## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Fázis-feladat beállítása az összetevők üzembe helyezéséhez 
+## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Fázisfeladat beállítása az összetevők üzembe helyezéséhez 
 
-A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) helyezési bővítményével más elemeket helyezhet üzembe a szinapszis munkaterületen, például ADATKÉSZLET, SQL-parancsfájl, jegyzetfüzet, Spark-feladatdefiníció, adatfolyam, folyamat, társított szolgáltatás, hitelesítő adatok és IR (Integration Runtime).  
+A [Synapse-munkaterület](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) üzembe helyezési bővítményének használatával más elemeket is üzembe helyezhet a Synapse-munkaterületen, például adatkészletet, SQL-szkriptet, jegyzetfüzetet, Spark-feladatdefiníciót, adatfolyamot, folyamatot, csatolt szolgáltatást, hitelesítő adatokat és integrációs Integration Runtime.  
 
-1. A bővítmény keresése és beszerzése az **Azure DevOps piactéren**(https://marketplace.visualstudio.com/azuredevops) 
+1. Keresse meg és szerezze be a bővítményt az **Azure DevOps Marketplace-ről**(https://marketplace.visualstudio.com/azuredevops) 
 
-     ![Bővítmény beolvasása](media/get-extension-from-market.png)
+     ![Bővítmény lekérte](media/get-extension-from-market.png)
 
 1. Válasszon ki egy szervezetet a bővítmény telepítéséhez. 
 
      ![A bővítmény telepítése](media/install-extension.png)
 
-1. Győződjön meg arról, hogy az Azure DevOps-folyamat egyszerű szolgáltatása az előfizetés engedéllyel rendelkezik, és a cél munkaterület munkaterület-rendszergazdája is hozzá van rendelve. 
+1. Győződjön meg arról, hogy az Azure DevOps-folyamat szolgáltatásnév rendelkezik előfizetési engedéllyel, és munkaterület-rendszergazdaként is hozzá van rendelve a cél munkaterülethez. 
 
-1. Hozzon létre egy új feladatot. Keressen rá a **szinapszis munkaterület üzembe helyezésére**, majd válassza a **Hozzáadás** lehetőséget.
+1. Hozzon létre egy új feladatot. Keresse meg a **Synapse-munkaterület üzemelő példányát,** majd válassza a **Hozzáadás lehetőséget.**
 
      ![Bővítmény hozzáadása](media/add-extension-task.png)
 
-1.  A feladatban válassza a **... lehetőséget.** **a sablon mező mellett** válassza ki a sablonfájlt.
+1.  A feladatban válassza a **...** a Sablon **mező mellett** a sablonfájl választáshoz.
 
-1. Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt.
+1. Válassza **a ...** a **Sablonparaméterek mező** mellett a paraméterfájl választáshoz.
 
-1. Válassza ki a kapcsolatokat, az erőforráscsoportot és a cél munkaterület nevét. 
+1. Válassza ki a kapcsolatot, az erőforráscsoportot és a cél munkaterület nevét. 
 
-1. Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a kívánt paramétereket a cél munkaterülethez. 
+1. Válassza **a ...** a Sablon **paramétereinek felülbírálása mező** mellett, és adja meg a kívánt paraméterértékeket a cél munkaterülethez. 
 
-    ![Szinapszis-munkaterület üzembe helyezése](media/create-release-artifacts-deployment.png)
+    ![Synapse-munkaterület üzembe helyezése](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
-> A CI/CD-helyzetekben a különböző környezetekben lévő Integration Runtime (IR) típusnak azonosnak kell lennie. Ha például saját üzemeltetésű integrációs modult használ a fejlesztési környezetben, akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell eltárolni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.
+> CI/CD-forgatókönyvekben az integrációskörnyezet (IR) típusának különböző környezetekben azonosnak kell lennie. Ha például a fejlesztői környezetben saját maga által üzemeltetett integrációs integrációs kiszolgálót üzemeltet, akkor ugyanezen integrációs kiszolgálónak más környezetekben, például tesztelési és éles környezetekben is saját környezetben üzemeltetettnek kell lennie. Hasonlóképpen, ha több fázisban oszt meg integrációskörnyezeteket, akkor az integrációs runtime-okat összekapcsolt, saját futtatottként kell konfigurálnia minden környezetben, például a fejlesztésben, a tesztelésben és az éles környezetben.
 
-## <a name="create-release-for-deployment"></a>Kiadás létrehozása az üzembe helyezéshez 
+## <a name="create-release-for-deployment"></a>Kiadás létrehozása üzembe helyezéshez 
 
-Az összes módosítás mentése után kiválaszthatja, hogy a kiadás **létrehozása** lehetőséggel manuálisan hozzon létre egy kiadást. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](/azure/devops/pipelines/release/triggers) című témakört.
+Az összes módosítás mentése után a Kiadás létrehozása lehetőséget **választva** manuálisan hozhat létre kiadást. A kiadások létrehozásának automatizálásával lásd: [Az Azure DevOps kiadási eseményindítói](/azure/devops/pipelines/release/triggers)
 
-   ![Válassza a kiadás létrehozása lehetőséget](media/release-creation-manually.png)
+   ![Válassza a Kiadás létrehozása lehetőséget](media/release-creation-manually.png)
 
 ## <a name="use-custom-parameters-of-the-workspace-template"></a>A munkaterület-sablon egyéni paramétereinek használata 
 
-Automatikus CI/CD-t használ, és az üzembe helyezés során módosítani kíván néhány tulajdonságot, de a tulajdonságok alapértelmezés szerint nem paraméteresen vannak kiválasztva. Ebben az esetben felülbírálhatja az alapértelmezett paraméter sablonját.
+Automatizált CI/CD-t használ, és néhány tulajdonságot módosítani szeretne az üzembe helyezés során, de a tulajdonságok alapértelmezés szerint nem paraméterezettek. Ebben az esetben felülírhatja az alapértelmezett paramétersablont.
 
-Az alapértelmezett paraméter-sablon felülbírálásához létre kell hoznia egy egyéni paraméter-sablont, egy **template-parameters-definition.js** nevű fájlt a git együttműködési ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia. Az együttműködési ág közzétételét követően a szinapszis munkaterület beolvassa ezt a fájlt, és a konfigurációját használja a paraméterek létrehozásához. Ha nem található fájl, a rendszer az alapértelmezett paraméter-sablont használja.
+Az alapértelmezett paramétersablon felülbírálása érdekében létre kell hoznia egy egyéni paramétersablont, egy **template-parameters-definition.jsnevű** fájlt a Git-együttműködési ág gyökérmappában. Pontosan ezt a fájlnevet kell használnia. Az együttműködési ágból való közzétételkor a Synapse-munkaterület beolvassa ezt a fájlt, és annak konfigurációját használja a paraméterek létrehozásához. Ha nem található fájl, a rendszer az alapértelmezett paramétersablont használja.
 
-### <a name="custom-parameter-syntax"></a>Egyéni paraméter szintaxisa
+### <a name="custom-parameter-syntax"></a>Egyéni paraméterszintaxis
 
-Az alábbi útmutató az egyéni paraméterek fájljának létrehozásához nyújt útmutatást:
+Az alábbiakban néhány irányelv található az egyéni paraméterfájl létrehozásához:
 
-* Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
-* A tulajdonságnév beállítása `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
-* Egy tulajdonság értékének karakterláncként való megadása azt jelzi, hogy meg kívánja parametrizálja a tulajdonságot. Használja a következő formátumot: `<action>:<name>:<stype>`.
-   *  `<action>` a következő karakterek egyike lehet:
-      * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként tárolja.
-      * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
-      * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
-   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString` .
-   * `<stype>` a paraméter típusa. Ha a `<stype>` értéke üres, az alapértelmezett típus: `string` . Támogatott értékek:,,,, `string` `securestring` `int` `bool` `object` `secureobject` és `array` .
-* Egy tömb megadása a fájlban azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. A szinapszis megismétli a tömbben lévő összes objektumot a megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
-* Egy definíció nem lehet egy adott erőforrás-példányra jellemző. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
-* Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok, valamint a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és tokenek paraméterei.
+* Adja meg a tulajdonság elérési útját a megfelelő entitástípus alatt.
+* Ha egy tulajdonságnevet ad meg, az azt jelzi, hogy az alatta található összes tulajdonságot paraméteresíteni szeretné (csak az első szintre, nem `*` rekurzívan). Kivételeket is meg lehet adni ehhez a konfigurációhoz.
+* Ha egy tulajdonság értékét sztringként adja meg, az azt jelzi, hogy paramétert szeretne a tulajdonsághoz. Használja a következő formátumot: `<action>:<name>:<stype>`.
+   *  `<action>` A a következő karakterek egyike lehet:
+      * `=` A azt jelenti, hogy a paraméter alapértelmezett értéke maradjon az aktuális érték.
+      * `-` A azt jelenti, hogy a paraméter alapértelmezett értéke nem marad meg.
+      * `|` A speciális eset a titkos kulcsok esetében, Azure Key Vault kapcsolati sztringek vagy kulcsok esetében.
+   * `<name>` A a paraméter neve. Ha üres, a tulajdonság nevét veszi fel. Ha az érték egy karakterrel kezdődik, a `-` név rövidül lesz. A `AzureStorage1_properties_typeProperties_connectionString` röviden például a következő lenne: `AzureStorage1_connectionString` .
+   * `<stype>` A a paraméter típusa. Ha `<stype>` az üres, az alapértelmezett típus `string` a . Támogatott értékek: `string` , , , , és `securestring` `int` `bool` `object` `secureobject` `array` .
+* Egy tömb fájlban való megadása azt jelzi, hogy a sablon egyező tulajdonsága egy tömb. A Synapse végighaladva végighaladva a tömb összes objektumát a megadott definíció használatával. A második objektum, a sztring lesz a tulajdonság neve, amely az egyes iterációk paraméterének neve lesz.
+* Egy definíció nem lehet erőforráspéldányra jellemző. Minden definíció az adott típusú összes erőforrásra vonatkozik.
+* Alapértelmezés szerint az összes biztonságos sztring, például a titkos Key Vault és a biztonságos sztringek, például a kapcsolati sztringek, a kulcsok és a jogkivonatok paraméteresek.
 
-### <a name="parameter-template-definition-samples"></a>A paraméterérték definíciós mintái 
+### <a name="parameter-template-definition-samples"></a>Paramétersablonok definíciós mintái 
 
-Íme egy példa arra, hogyan néz ki a paraméter-sablon definíciója:
+Az alábbi példa egy paramétersablon-definíciót mutat be:
 
 ```json
 {
@@ -225,56 +225,56 @@ Az alábbi útmutató az egyéni paraméterek fájljának létrehozásához nyú
     }
 }
 ```
-Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
+Az előző sablon felépítésének magyarázata az erőforrástípusra bontva.
 
 #### <a name="notebooks"></a>Notebooks 
 
-* Az elérési út bármely tulajdonsága az `properties/bigDataPool/referenceName` alapértelmezett értékkel van paraméterben. Az egyes jegyzetfüzet-fájlokhoz csatolt Spark-készletet is parametrizálja. 
+* Az útvonal bármely `properties/bigDataPool/referenceName` tulajdonsága paraméteres lesz az alapértelmezett értékkel. Az egyes jegyzetfüzet-fájlokhoz csatolt Spark-készleteket paraméterezheti. 
 
-#### <a name="sql-scripts"></a>SQL-parancsfájlok 
+#### <a name="sql-scripts"></a>SQL-szkriptek 
 
-* Az elérési úthoz tartozó tulajdonságok (poolName és databaseName) `properties/content/currentConnection` karakterláncként vannak paraméterként a sablon alapértelmezett értékei nélkül. 
+* Az elérési út tulajdonságai (poolName és databaseName) sztringekként vannak paraméterzve a sablon alapértelmezett `properties/content/currentConnection` értékei nélkül. 
 
 #### <a name="pipelines"></a>Pipelines
 
-* Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
-* Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (Object) van. Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
+* Az útvonal bármely `activities/typeProperties/waitTimeInSeconds` tulajdonsága paraméteres. A folyamat minden olyan tevékenysége, amely rendelkezik nevű kódszintű tulajdonsággal (például a tevékenység), számként lesz paraméterizálva, `waitTimeInSeconds` `Wait` alapértelmezett névvel. A sablonban azonban nem lesz alapértelmezett Resource Manager. Ez kötelező bemenet lesz a Resource Manager során.
+* Hasonlóképpen, a nevű tulajdonság (például egy tevékenységben) paramétere a `headers` `Web` type `object` (Object) típussal van megadva. Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállító értékével.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
+* Az elérési út alatt található összes `typeProperties` tulajdonság paramétere a megfelelő alapértelmezett értékekkel van megadva. A típustulajdonságok alatt például két tulajdonság `IntegrationRuntimes` van: `computeProperties` és `ssisProperties` . Mindkét tulajdonságtípus a megfelelő alapértelmezett értékekkel és típusokkal (Objektum) jön létre.
 
 #### <a name="triggers"></a>Triggerek
 
-* A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
-* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `int` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
+* A `typeProperties` alatt két tulajdonság paraméteres. Az első a , amely alapértelmezett értékkel van megadva, és `maxConcurrency` `string` típusú. Ez az alapértelmezett `<entityName>_properties_typeProperties_maxConcurrency` paraméternév.
+* A `recurrence` tulajdonság paraméteres. Alatta az adott szinten található összes tulajdonságot sztringként, alapértelmezett értékekkel és paraméternevekkel kell paraméterként megadni. Ez alól kivételt képez `interval` a tulajdonság, amely típusként van paraméterizálva. `int` A paraméter neve a utótaggal van `<entityName>_properties_typeProperties_recurrence_triggerSuffix` megadva. A tulajdonság `freq` hasonlóképpen egy sztring, és sztringként van paraméterizálva. A tulajdonság `freq` paramétere azonban nincs alapértelmezett érték. A név rövid és utótaggal van megszűkülve. Például: `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában az összes típusú társított szolgáltatás esetében `AzureDataLakeStore` egy adott sablon lesz alkalmazva. Minden más (a szolgáltatáson keresztül `*` ) egy másik sablon lesz alkalmazva.
-* A `connectionString` tulajdonság értéke paraméterként fog megjelenni `securestring` . Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a (z) utótaggal van ellátva `connectionString` .
-* A tulajdonság `secretAccessKey` egy `AzureKeyVaultSecret` (például egy Amazon S3-beli társított szolgáltatás) esetében történik. Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
+* A csatolt szolgáltatások egyediek. Mivel a csatolt szolgáltatások és adatkészletek típusok széles skáláját biztosítják, típusspecifikus testreszabást is nyújthat. Ebben a példában a típusú összes csatolt szolgáltatásra `AzureDataLakeStore` egy adott sablon lesz alkalmazva. Az összes többihez (a `*` használatával) egy másik sablon lesz alkalmazva.
+* A `connectionString` tulajdonság paramétere értékként `securestring` lesz megadva. Nem lesz alapértelmezett értéke. Ez egy rövid paraméternévvel fog rendelkezik, amely a utótaggal `connectionString` rendelkezik.
+* A tulajdonság `secretAccessKey` véletlenül egy `AzureKeyVaultSecret` (például egy Amazon S3-hez kapcsolódó szolgáltatásban). A rendszer automatikusan paraméteres titkos kulcsként Azure Key Vault, és lekéri a konfigurált kulcstartóból. Magát a kulcstartót is paraméterezheti.
 
 #### <a name="datasets"></a>Adathalmazok
 
-* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon nem lehet konfigurálni \* . Az előző példában az összes adatkészlet-tulajdonság `typeProperties` paraméterrel van elfoglalva.
+* Bár az adatkészletek típusspecifikus testreszabási lehetőségeket biztosítanak, a konfigurációt külön-külön konfigurálás \* nélkül is meg lehet adni. Az előző példában a alatt az összes `typeProperties` adatkészlet-tulajdonság paraméteres.
 
 
-## <a name="best-practices-for-cicd"></a>Ajánlott eljárások CI/CD-hez
+## <a name="best-practices-for-cicd"></a>Ajánlott eljárások a CI/CD-hez
 
-Ha git-integrációt használ a szinapszis-munkaterülettel, és rendelkezik egy CI/CD-folyamattal, amely a változásokat a fejlesztésből teszteli, majd éles környezetbe helyezi, javasoljuk az alábbi ajánlott eljárásokat:
+Ha Git-integrációt használ a Synapse-munkaterülettel, és olyan CI-/CD-folyamatával dolgozik, amely a módosításokat a fejlesztésből a tesztelésbe, majd az éles környezetbe áthelyezi, az alábbi ajánlott eljárásokat javasoljuk:
 
--   **Git-integráció**. Csak a fejlesztési szinapszis munkaterületet konfigurálja a git-integrációval. A teszt-és éles munkaterületek változásai a CI/CD-n keresztül telepíthetők, és nincs szükség git-integrációra.
--   **Készletek előkészítése az összetevők migrálása előtt**. Ha a fejlesztői munkaterületen a készletekhez csatolt SQL-parancsfájl vagy jegyzetfüzet van, akkor a rendszer a különböző környezetekben lévő készletek azonos nevét is elvárta. 
--   **Infrastruktúra-kód (IaC)**. Az infrastruktúra (hálózatok, virtuális gépek, terheléselosztó és a kapcsolatok topológiája) kezelése egy leíró modellben ugyanazt a verziószámozást használja, mint a DevOps-csapat a forráskódot használja. 
--   **Mások**. Lásd: [ajánlott eljárások az ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) -összetevőkhöz
+-   **Git-integráció.** Csak a fejlesztési Synapse-munkaterület konfigurálása Git-integrációval. A teszt- és éles munkaterületek módosításai a CI/CD-n keresztül vannak telepítve, és nincs szükség Git-integrációra.
+-   **Készítse elő a készleteket az összetevők migrálása előtt.** Ha a fejlesztési munkaterületen lévő készletekhez SQL-szkript vagy -jegyzetfüzet van csatolva, akkor a különböző környezetekben található készletek neve azonos lesz. 
+-   **Infrastruktúra kódként (IaC).** Az infrastruktúra (hálózatok, virtuális gépek, terheléselosztók és kapcsolati topológia) egy leíró modellben való kezelése ugyanazt a verziókezelést használja, mint a DevOps csapata a forráskódhoz. 
+-   **Egyéb :**. Tekintse meg [az ADF-összetevők ajánlott eljárásait](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
 
-## <a name="troubleshooting-artifacts-deployment"></a>Összetevők telepítésének hibaelhárítása 
+## <a name="troubleshooting-artifacts-deployment"></a>Összetevők üzembe helyezésének hibaelhárítása 
 
-### <a name="use-the-synapse-workspace-deployment-task"></a>A szinapszis munkaterület telepítési feladatának használata
+### <a name="use-the-synapse-workspace-deployment-task"></a>A Synapse-munkaterület üzembe helyezési feladatának használata
 
-A Szinapszisban számos olyan összetevő van, amely nem ARM-erőforrás. Ez eltér a Azure Data Factorytól. Az ARM-sablon telepítési feladata nem fog megfelelően működni a szinapszis-összetevők üzembe helyezéséhez
+A Synapse-ban számos olyan összetevő van, amely nem ARM-erőforrás. Ez eltér a Azure Data Factory. Az ARM-sablon üzembe helyezési feladata nem fog megfelelően működni a Synapse-összetevők üzembe helyezéséhez
  
-### <a name="unexpected-token-error-in-release"></a>Váratlan jogkivonat-hiba történt a kiadásban
+### <a name="unexpected-token-error-in-release"></a>Váratlan jogkivonathiba a kiadásban
 
-Ha a paraméter értéke nem kerül megmenekülésre, a kiadási folyamat nem fogja elemezni a fájlt, és a "váratlan token" hibaüzenetet eredményezi. Javasoljuk, hogy felülbírálja a paramétereket, vagy használja az Azure kulcstartót a paraméterek értékeinek lekéréséhez. A kettős Escape-karakterek is megkerülő megoldásként is használhatók.
+Ha a paraméterfájl olyan paraméterértékekkel rendelkezik, amelyek nem oldódtak fel, a kiadási folyamat nem fogja tudni elemezni a fájlt, és a "váratlan jogkivonat" hibát generálja. Javasoljuk, hogy bírálja felül a paramétereket, vagy használja az Azure KeyVaultot a paraméterértékek lekérésére. Áthidaló megoldásként kettős escape-karaktereket is használhat.

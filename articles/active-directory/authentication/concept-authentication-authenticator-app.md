@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator alkalmazás hitelesítési módszere – Azure Active Directory
-description: Tudnivalók a Microsoft Authenticator alkalmazás használatáról Azure Active Directory a bejelentkezési események javításához és biztonságossá tételéhez
+title: Microsoft Authenticator alkalmazáshitelesítési módszer – Azure Active Directory
+description: Ismerje meg, hogyan felhasználásával Microsoft Authenticator alkalmazás Azure Active Directory a bejelentkezési események javítása és biztonságossá tere érdekében
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,56 +10,56 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212909"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530504"
 ---
-# <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Hitelesítési módszerek a Azure Active Directory-Microsoft Authenticator alkalmazásban
+# <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Hitelesítési módszerek a Azure Active Directory – Microsoft Authenticator alkalmazás
 
-A Microsoft Authenticator alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz, és elérhető az [Android](https://go.microsoft.com/fwlink/?linkid=866594) és az [iOS](https://go.microsoft.com/fwlink/?linkid=866594)rendszerhez. A Microsoft Authenticator alkalmazással a felhasználók jelszó nélküli módon hitelesíthetők a bejelentkezés során, vagy további ellenőrzési lehetőségként az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure AD Multi-Factor Authentication eseményei során.
+A Microsoft Authenticator alkalmazás egy további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjának, illetve a Microsoft-fiók, [és Android](https://go.microsoft.com/fwlink/?linkid=866594) és iOS rendszeren [érhető el.](https://go.microsoft.com/fwlink/?linkid=866594) Az Microsoft Authenticator-alkalmazással a felhasználók jelszó nélküli hitelesítést használhatnak a bejelentkezés során, vagy további ellenőrzési lehetőségként az önkiszolgáló jelszóát állítás (SSPR) vagy az Azure AD Multi-Factor Authentication eseményei során.
 
-A felhasználók értesítéseket kaphatnak a mobil alkalmazástól a jóváhagyáshoz vagy elutasításhoz, illetve a hitelesítő alkalmazással olyan OAUTH-ellenőrző kód létrehozásához, amely a bejelentkezési felületen adható meg. Ha az értesítési és ellenőrző kódot is engedélyezi, a hitelesítő alkalmazást regisztráló felhasználók bármelyik módszert használhatják az identitásuk ellenőrzéséhez.
+A felhasználók értesítést kaphatnak a mobilalkalmazáson keresztül a jóváhagyásukról vagy megtagadásukról, vagy az Authenticator alkalmazással létrehozhatnak egy OAUTH-ellenőrzőkódot, amely a bejelentkezési felületen írható be. Ha az értesítési és az ellenőrző kódot is engedélyezi, az Authenticator alkalmazást regisztráló felhasználók bármelyik módszerrel ellenőrizhetik személyazonosságukat.
 
-Ha a hitelesítő alkalmazást a Felhasználónév és jelszó kombináció helyett a bejelentkezési üzenetben szeretné használni, tekintse meg [a jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)című témakört.
+Ha az Authenticator alkalmazást felhasználónév és jelszó kombináció helyett bejelentkezési kérésnél szeretné használni, tekintse meg a Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator [alkalmazással.](howto-authentication-passwordless-phone.md)
 
 > [!NOTE]
-> A felhasználók nem regisztrálhatják a SSPR, amikor engedélyezik a mobileszköz regisztrálását. Ehelyett a felhasználók regisztrálhatják a mobil alkalmazást a (z) szolgáltatásban [https://aka.ms/mfasetup](https://aka.ms/mfasetup) a kombinált biztonsági adatok regisztrációjának részeként [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+> A felhasználók nem regisztrálják a mobilalkalmazásukat az SSPR engedélyezésekor. Ehelyett a felhasználók a kombinált biztonsági információk regisztrációja részeként regisztrálják a mobilalkalmazásukat a [https://aka.ms/mfasetup](https://aka.ms/mfasetup) következőnél: [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 ## <a name="passwordless-sign-in"></a>Jelszó nélküli bejelentkezés
 
-A felhasználónevek beírása után a jelszó kérése helyett egy olyan felhasználó láthat egy üzenetet, amely a Microsoft Authenticator alkalmazásban engedélyezte a telefonos bejelentkezést az alkalmazásban. Ha a megfelelő szám van kiválasztva, a bejelentkezési folyamat befejeződött.
+Ahelyett, hogy a felhasználónevet beírása után jelszót kérne, a Microsoft Authenticator-alkalmazásból telefonos bejelentkezést engedélyező felhasználó egy üzenetet kap, amely arra kéri, hogy koppintson egy számra az alkalmazásban. Ha a megfelelő szám van kiválasztva, a bejelentkezési folyamat befejeződött.
 
-![Böngészőbeli bejelentkezés – példa arra, hogy a felhasználó jóváhagyja a bejelentkezést](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Példa egy böngészőbe való bejelentkezésre, amely a bejelentkezés jóváhagyását kéri a felhasználótól](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Ez a hitelesítési módszer magas szintű biztonságot nyújt, és eltávolítja a felhasználót a bejelentkezéshez szükséges jelszó megadására. 
+Ez a hitelesítési módszer magas szintű biztonságot nyújt, és nincs szükség arra, hogy a felhasználó jelszót adjon meg a jelentkezzen be. 
 
-A jelszó nélküli bejelentkezés használatának megkezdéséhez tekintse meg [a jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)című témakört.
+A jelszó nélküli bejelentkezés első lépésekhez lásd: Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator [alkalmazással.](howto-authentication-passwordless-phone.md)
 
-## <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
+## <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
 
-A hitelesítő alkalmazás segít megakadályozni a fiókok jogosulatlan elérését, és letilthatja a csalárd tranzakciókat, ha értesítéseket küld az okostelefonra vagy a táblaszámítógépre. A felhasználók megtekinthetik az értesítést, és ha ez jogos, válassza az **ellenőrzés** lehetőséget. Ellenkező esetben a **Megtagadás** lehetőséget is kiválaszthatja.
+Az Authenticator alkalmazás az okostelefonra vagy táblagépre leküldve segíthet megelőzni a fiókokhoz való jogosulatlan hozzáférést, és leállítani a csaló tranzakciókat. A felhasználók megtekinthetik az értesítést, és ha szabályosak, válassza az Ellenőrzés **lehetőséget.** Ellenkező esetben választhatják a **Megtagadás lehetőséget.**
 
-![A bejelentkezési folyamat elvégzésére szolgáló, a hitelesítő alkalmazás értesítésére szolgáló webböngészőt kérő példa képernyőképe](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+![Képernyőkép egy webböngészőben megjelenő, Authenticator alkalmazásértesítésre vonatkozó kérésről a bejelentkezési folyamat befejezéséhez](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App Method használatával történő értesítés* nem működik abban az országban vagy régióban, mint a Google Play-szolgáltatások (beleértve a leküldéses értesítéseket) a régióban. Az iOS-értesítés azonban működik. Android-eszközök esetén az adott felhasználók számára elérhetővé kell tenni alternatív hitelesítési módszereket.
+> Ha a szervezet alkalmazottai Kínában dolgoznak  vagy Utaznak Kínába, az Android-eszközökön használt mobilalkalmazásos módszer nem működik az adott országban vagy régióban, mivel a Google Play-szolgáltatások (beleértve a leküldéses értesítéseket is) le vannak tiltva a régióban. Az iOS-értesítések azonban működnek. Android-eszközök esetén alternatív hitelesítési módszereket kell elérhetővé tenni ezekhez a felhasználókhoz.
 
-## <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
+## <a name="verification-code-from-mobile-app"></a>Ellenőrző kód mobilalkalmazásból
 
-A hitelesítő alkalmazás szoftver-tokenként használható az eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg a hitelesítő alkalmazás által a bejelentkezési felületen megadott kódot. Az ellenőrzőkód egy második hitelesítési módként szolgál.
+Az Authenticator alkalmazás szoftveres jogkivonatként használható OATH ellenőrző kód létrehozásához. A felhasználónév és a jelszó megadása után be kell írnia az Authenticator alkalmazás által biztosított kódot a bejelentkezési felületen. Az ellenőrzőkód egy második hitelesítési módként szolgál.
 
-Előfordulhat, hogy a felhasználók legfeljebb öt ESKÜvel rendelkező hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást) kombinálnak, amelyet bármikor használatra konfiguráltak.
+A felhasználók legfeljebb öt OATH hardvertoken vagy hitelesítő alkalmazás, például a Microsoft Authenticator alkalmazás kombinációját konfigurálják bármikor használatra.
 
 > [!WARNING]
-> Az önkiszolgáló jelszó-visszaállítás legmagasabb szintű biztonságának biztosítása érdekében, ha csak egy módszer szükséges az alaphelyzetbe állításhoz, a felhasználók számára csak egy hitelesítési kód adható meg.
+> Az új jelszó önkiszolgáló alaphelyzetbe állításának legmagasabb szintű biztonsága érdekében, ha csak egy módszerre van szükség az alaphelyzetbe állításhoz, a felhasználók csak ellenőrző kódot érhetők el.
 >
-> Ha két módszerre van szükség, a felhasználók visszaállíthatják az értesítési vagy ellenőrző kódokat a más engedélyezett módszerek kiegészítéseként.
+> Ha két módszerre van szükség, a felhasználók a többi engedélyezett módszer mellett értesítési vagy ellenőrző kóddal is alaphelyzetbe állíthatják az új beállításokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A jelszó nélküli bejelentkezés használatának megkezdéséhez tekintse meg [a jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)című témakört.
+A jelszó nélküli bejelentkezés első lépésekhez lásd: Jelszó nélküli bejelentkezés engedélyezése [a Microsoft Authenticator alkalmazással.](howto-authentication-passwordless-phone.md)
 
-További információ a hitelesítési módszerek konfigurálásáról a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használatával.
+További információ a hitelesítési módszerek konfigurálásról a [Microsoft Graph REST API.](/graph/api/resources/authenticationmethods-overview)

@@ -6,21 +6,21 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: aebfeed055fad7c1108620ab494236640285aa1e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495041"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518881"
 ---
-# <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Új kiszolgálócsoport időponthoz rugalmas skálázás (Citus) visszaállítása
+# <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Kiszolgálócsoport időponthoz rugalmas skálázás (Citus) visszaállítása
 
-Ez a cikk lépésenként beható [](concepts-hyperscale-backup.md#point-in-time-restore-pitr) eljárásokat tartalmaz a biztonsági másolatokat használó, rugalmas skálázás (Citus) kiszolgálócsoport időponthoz rugalmas skálázás (Citus) helyreállításához. A visszaállítást a legkorábbi biztonsági mentésre vagy egy egyéni visszaállítási pontra is visszaállíthatja a megőrzési időszakon belül.
+Ez a cikk lépésenként beható [](concepts-hyperscale-backup.md#restore) eljárásokat tartalmaz a biztonsági másolatokat használó, egy rugalmas skálázás (Citus) kiszolgálócsoport időponthoz rugalmas skálázás (Citus) helyreállításához. A visszaállítást a legkorábbi biztonsági mentésre vagy egy egyéni visszaállítási pontra is visszaállíthatja a megőrzési időszakon belül.
 
 ## <a name="restoring-to-the-earliest-restore-point"></a>Visszaállítás a legkorábbi visszaállítási pontra
 
-Az alábbi lépéseket követve visszaállíthatja a rugalmas skálázás (Citus)-kiszolgálócsoportot a legkorábbi meglévő biztonsági másolatra.
+Az alábbi lépéseket követve visszaállíthatja rugalmas skálázás (Citus)-kiszolgálócsoportot a legkorábbi meglévő biztonsági másolatra.
 
 1.  A [Azure Portal](https://portal.azure.com/)válassza ki a visszaállítani kívánt kiszolgálócsoportot.
 
@@ -29,11 +29,11 @@ Az alábbi lépéseket követve visszaállíthatja a rugalmas skálázás (Citus
     > [!IMPORTANT]
     > Ha a **Visszaállítás** gomb még nincs jelen a kiszolgálócsoporthoz, nyisson meg egy Azure-támogatás kérést.
 
-3.  A visszaállítási oldal megkéri,  hogy válasszon **a** Legkorábbi és az Egyéni visszaállítási pont között, és megjeleníti a legkorábbi dátumot.
+3.  A visszaállítási oldal megkéri, hogy válasszon **a** **Legkorábbi** és az Egyéni visszaállítási pont közül, és a legkorábbi dátumot jeleníti meg.
 
 4.  Válassza a **Legkorábbi visszaállítási pont lehetőséget.**
 
-5.  Adjon meg egy új kiszolgálócsoportnevet a **Visszaállítás új kiszolgálóra mezőben.** A többi mező (előfizetés, erőforráscsoport és hely) megjelenik, de nem szerkeszthető.
+5.  Adjon meg egy új kiszolgálócsoport-nevet **a Visszaállítás új kiszolgálóra mezőben.** A többi mező (előfizetés, erőforráscsoport és hely) megjelenik, de nem szerkeszthető.
 
 6.  Kattintson az **OK** gombra.
 
@@ -43,7 +43,7 @@ Végül kövesse a [visszaállítás utáni feladatokat.](#post-restore-tasks)
 
 ## <a name="restoring-to-a-custom-restore-point"></a>Visszaállítás egyéni visszaállítási pontra
 
-Az alábbi lépéseket követve visszaállíthatja a rugalmas skálázás (Citus)-kiszolgálócsoportot egy Ön által választott dátumra és időpontra.
+Az alábbi lépéseket követve visszaállíthatja rugalmas skálázás (Citus)-kiszolgálócsoportot egy Ön által választott dátumra és időpontra.
 
 1.  A [Azure Portal](https://portal.azure.com/)válassza ki a visszaállítani kívánt kiszolgálócsoportot.
 

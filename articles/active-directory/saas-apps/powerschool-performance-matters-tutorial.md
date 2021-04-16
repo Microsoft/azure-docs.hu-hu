@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Powerschool teljesítményével | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Powerschool teljesítményével kapcsolatban.
+title: 'Oktatóanyag: Azure Active Directory Powerschool Performance Matters-| Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory Powerschool Performance Matters között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,99 +9,76 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 1312a995589b0408edc56a0883cc9fd899fc9e6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b75e2cbffaaf05dc0f5ca30497c165b91adf6d1
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515440"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515345"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Oktatóanyag: Azure Active Directory integráció a Powerschool teljesítménnyel kapcsolatos szempontokkal
+# <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Oktatóanyag: Azure Active Directory Powerschool Performance Matters integrációja
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Powerschool teljesítményével kapcsolatos kérdéseket Azure Active Directory (Azure AD) használatával.
-A Powerschool teljesítményének az Azure AD-vel való integrálásával a következő előnyöket nyújtja:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a Powerschool Performance Matterst a Azure Active Directory (Azure AD) használatával. A Powerschool Performance Matters és az Azure AD integrálása során a következő funkciókat használhatja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Powerschool teljesítményével kapcsolatos kérdésekben.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Powerschool teljesítményére (egyszeri bejelentkezés) az Azure AD-fiókjuk használatával.
+* Annak szabályozása az Azure AD-ban, hogy ki férhet hozzá a Powerschool Performance Matters szolgáltatáshoz.
+* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a Powerschool Performance Matters szolgáltatásba az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Powerschool-teljesítménnyel való konfigurálásához a következő elemek szükségesek:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Powerschool teljesítményű egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, egy ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Powerschool Performance Matters egyszeri bejelentkezés (SSO) által engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja és teszteli tesztkörnyezetben.
 
-* A Powerschool teljesítményével kapcsolatos ügyek támogatják az **SP** által KEZDEMÉNYEZett SSO
+* A Powerschool Performance Matters támogatja az **SP által** kezdeményezett SSO-t.
 
-## <a name="adding-powerschool-performance-matters-from-the-gallery"></a>Powerschool teljesítménybeli ügyek hozzáadása a katalógusból
+> [!NOTE]
+> Az alkalmazás azonosítója rögzített sztringérték, így csak egy példány konfigurálható egy bérlőben.
 
-A Powerschool teljesítményével kapcsolatos kérdések Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Powerschool teljesítményével kapcsolatos kérdéseket a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="add-powerschool-performance-matters-from-the-gallery"></a>Powerschool Performance Matters hozzáadása a katalógusból
 
-**Az alábbi lépéseket követve adhat hozzá Powerschool-teljesítménnyel kapcsolatos kérdéseket a katalógusból:**
+Ahhoz, hogy konfigurálni tudja a Powerschool Performance Matters integrálását az Azure AD-be, hozzá kell adni a Powerschool Performance Matterst a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a **Vállalati alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a keresőmezőbe a **Powerschool Performance Matters (Powerschool-teljesítményügyek)** kifejezéseket.
+1. Válassza **a Powerschool Performance Matters lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-powerschool-performance-matters"></a>Az Azure AD SSO konfigurálása és tesztelése a Powerschool Performance Mattershez
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t Form.com egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Form.com.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+Ha az Azure AD SSO-t a Form.com konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy lehetővé tegye a felhasználók számára a funkció használatát.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[A Powerschool Performance Matters SSO konfigurálása](#configure-powerschool-performance-matters-sso)** – az egyszeri bejelentkezési beállítások alkalmazásoldalon való konfigurálása.
+    1. **[A Powerschool Performance Matters](#create-powerschool-performance-matters-test-user)** tesztfelhasználó létrehozása – a B.Simon megfelelője a Powerschool Performance Mattersben, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[Az SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a **Powerschool teljesítményének számítása** elemet, válassza ki a **Powerschool teljesítményének számítása** az eredmény panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-    ![A Powerschool teljesítményével kapcsolatos kérdések az eredmények listájában](common/search-new-app.png)
+1. A Azure Portal **Powerschool Performance Matters** alkalmazásintegrációs oldalán  keresse meg a Kezelés szakaszt, és válassza az egyszeri **bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer** kiválasztása lapon válassza az **SAML lehetőséget.**
+1. Az Egyszeri **bejelentkezés beállítása SAML-sel** lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Powerschool teljesítménnyel kapcsolatos kérdésekben a **Britta Simon** nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti Powerschool-teljesítménnyel kapcsolatos kérdésekben kell létrehozni a kapcsolatot.
+4. Az **SAML-alapkonfiguráció szakaszban** hajtsa végre a következő lépést:
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Powerschool teljesítménnyel kapcsolatos kérdésekben a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[Powerschool teljesítményének konfigurálása az egyszeri bejelentkezéshez](#configure-powerschool-performance-matters-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. A **[Powerschool teljesítményének tesztelése felhasználó](#create-powerschool-performance-matters-test-user)** – a Britta Simon partnere a Powerschool teljesítményével kapcsolatban, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés Powerschool-teljesítménnyel való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/)a **Powerschool Performance ügyekben** az alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépést:
-
-    ![[Alkalmazás neve] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
-
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi minták egyikével:
     
     ```https
         https://ola.performancematters.com/ola/?clientcode=<Client Code>
@@ -109,91 +86,58 @@ Az Azure AD egyszeri bejelentkezés Powerschool-teljesítménnyel való konfigur
     ```
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Powerschool teljesítményével kapcsolatos ügyekkel foglalkozó](mailto:pmsupport@powerschoo.com) ügyfélszolgálattal. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címével. Az értékért lépjen kapcsolatba a [Powerschool Performance Matters](mailto:pmsupport@powerschoo.com) ügyféltámogatási csapatával. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. A **Set up Single Sign-On with SAML** (Egyszeri bejelentkezés beállítása SAML-tanúsítványsal) lapon, az **SAML signing Certificate (SAML-aláíró** tanúsítvány) szakaszban kattintson a **Download** (Letöltés) elemre az összevonási metaadatok **XML-fájljának** letöltéséhez a megadott beállításokból igény szerint, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/metadataxml.png)
 
-6. A **Powerschool teljesítményének beállítása** szakaszban a követelmények szerint másolja a megfelelő URL (eke) t.
+6. A **Powerschool Performance Matters** beállítása szakaszban másolja ki a megfelelő URL-cím(eke)t a saját követelményének megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-    b. Azure AD-azonosító
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-    c. Kijelentkezési URL-cím
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-powerschool-performance-matters-single-sign-on"></a>Powerschool-teljesítményi ügyek konfigurálása egyetlen Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-Ha az egyszeri bejelentkezést a **Powerschool teljesítményére vonatkozó kérdésekben** szeretné beállítani, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal Powerschool a [teljesítménnyel kapcsolatos ügyeket támogató csapatnak](mailto:pmsupport@powerschoo.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát, ha hozzáférést biztosít a Powerschool Performance Matters szolgáltatáshoz.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza a **Powerschool Performance Matters lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör van kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+## <a name="configure-powerschool-performance-matters-sso"></a>A Powerschool Performance Matters SSO konfigurálása
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+Ha egyszeri bejelentkezést konfigurál a **Powerschool Performance Matters** oldalán, el kell küldenie a letöltött összevonási metaadatok XML-fájlját és a megfelelő másolt **URL-címeket** a Azure Portal Powerschool Performance Matters támogatási [csapatának.](mailto:pmsupport@powerschoo.com) Ezt a beállítást úgy állítják be, hogy az SAML SSO-kapcsolat megfelelően legyen beállítva mindkét oldalon.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+### <a name="create-powerschool-performance-matters-test-user"></a>Powerschool Performance Matters tesztfelhasználó létrehozása
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Powerschool Performance Mattersben. A [Powerschool Performance Matters támogatási csapatával](mailto:pmsupport@powerschoo.com) együttműködésben vegye fel a felhasználókat a Powerschool Performance Matters platformra. Az egyszeri bejelentkezés használata előtt a felhasználókat létre kell hoznunk és aktiválnunk kell.
 
-    ![Új felhasználó gomb](common/new-user.png)
+## <a name="test-sso"></a>SSO tesztelése
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja a Powerschool Performance Matters bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+* Lépjen közvetlenül a Bejelentkezési URL-címre, és onnan indítsa el a bejelentkezési folyamatot.
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+* Használhatja a Microsoft Saját alkalmazások. Ha a Powerschool Performance Matters csempére kattint a Saját alkalmazások, a rendszer átirányítja a Powerschool Performance Matters bejelentkezési URL-címére. További információ a [Saját alkalmazások: Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Powerschool teljesítményével kapcsolatos kérdésekben.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Powerschool teljesítménnyel kapcsolatos szempontok** elemet.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza ki a **Powerschool teljesítményének számítása** elemet.
-
-    ![A Powerschool teljesítményével kapcsolatos ügyek hivatkozása az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-powerschool-performance-matters-test-user"></a>Powerschool teljesítményének tesztelése felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre Powerschool teljesítménybeli kérdésekben. A [Powerschool teljesítményével kapcsolatos kérdésekben](mailto:pmsupport@powerschoo.com) a felhasználókat a Powerschool teljesítményével foglalkozó platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a Powerschool teljesítményével kapcsolatos szempontok csempére kattint, akkor automatikusan be kell jelentkeznie azokra a Powerschool-teljesítménnyel kapcsolatos kérdésekre, amelyekhez be van állítva az SSO beállítása. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>További források
-
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A Powerschool Performance Matters konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

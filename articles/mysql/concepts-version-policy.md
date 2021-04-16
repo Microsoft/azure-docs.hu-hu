@@ -1,72 +1,72 @@
 ---
-title: A verzió támogatási szabályzata – Azure Database for MySQL – egyetlen kiszolgáló és egy rugalmas kiszolgáló (előzetes verzió)
-description: A MySQL főbb és alverzióinak házirendjét ismerteti Azure Database for MySQL
+title: Verziótámogatási szabályzat – Azure Database for MySQL – Egykiszolgálós és rugalmas kiszolgáló (előzetes verzió)
+description: A MySQL fő- és alverzióira vonatkozó szabályzatot ismerteti a Azure Database for MySQL
 author: sr-msft
 ms.author: srranga
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 49e59c43e9eaedf770b1a8e052dd73aa331d31ce
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121693"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389570"
 ---
-# <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL verzió támogatási szabályzata
+# <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL verziótámogatási szabályzat
 
-Ez az oldal leírja a Azure Database for MySQL verziószámozási házirendjét, és alkalmazható az Azure Database for MySQL-Single Server és a Azure Database for MySQL-rugalmas kiszolgáló (előzetes verzió) üzembe helyezési módjaira.
+Ez az oldal a Azure Database for MySQL házirendet ismerteti, és az Azure Database for MySQL – Egykiszolgálós és Azure Database for MySQL – Rugalmas kiszolgáló (előzetes verzió) üzembe helyezési módokra vonatkozik.
 
 ## <a name="supported--mysql-versions"></a>Támogatott MySQL-verziók
 
-A Azure Database for MySQL a [MySQL Community Editionből](https://www.mysql.com/products/community/)lett kifejlesztve, a InnoDB Storage Engine használatával. A szolgáltatás a Közösség által támogatott összes jelenlegi főverziót támogatja, azaz a MySQL 5,6, 5,7 és 8,0. A MySQL az X. Y. Z elnevezési sémát használja, ahol az X a főverzió, az Y a másodlagos verzió, a Z pedig a hibajavítási kiadás. A sémával kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
+Azure Database for MySQL a [MySQL Community Edition](https://www.mysql.com/products/community/)kiadásból lett kifejlesztve az InnoDB tárolási motor használatával. A szolgáltatás a közösség által támogatott összes aktuális főverziót támogatja: MySQL 5.6, 5.7 és 8.0. A MySQL az X.Y.Z elnevezési sémát használja, ahol az X a főverzió, az Y az alverzió, a Z pedig a hibajavítási kiadás. A sémával kapcsolatos további információkért tekintse meg a [MySQL dokumentációját.](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)
 
-A Azure Database for MySQL jelenleg a MySQL következő fő és másodlagos verzióit támogatja:
+Azure Database for MySQL a MySQL következő fő- és alverzióit támogatja:
 
-| Verzió | [Önálló kiszolgáló](overview.md) <br/> Aktuális alverzió |[Rugalmas kiszolgáló (előzetes verzió)](/../flexible-server/overview.md) <br/> Aktuális alverzió  |
+| Verzió | [Önálló kiszolgáló](overview.md) <br/> Aktuális alverzió |[Rugalmas kiszolgáló (előzetes verzió)](/azure/mysql/flexible-server/overview) <br/> Aktuális alverzió  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL 5,6-es verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(kivonva) | Nem támogatott|
-|MySQL 5,7-es verzió | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
-|MySQL 8,0-es verzió | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
+|MySQL 5.6-os verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(Kivezetve) | Nem támogatott|
+|MySQL 5.7-es verzió | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL 8.0-s verzió | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 > [!NOTE]
-> Az egyetlen kiszolgálóból álló központi telepítési beállításban az átjáró a kiszolgálói példányokkal való kapcsolat átirányítására szolgál. A kapcsolatok létrejötte után a MySQL-ügyfél az átjárón beállított MySQL-verziót jeleníti meg, nem a MySQL-kiszolgálópéldányon futó tényleges verziót. A MySQL-kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL parancssorában. Ha az alkalmazásnak a v 5.7-es vagy a v 8.0-s verziójához kell csatlakoznia, akkor a kiszolgáló kapcsolati karakterláncában található portot úgy kell módosítani, ahogy azt a dokumentációban is ismertetjük [.](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)
+> Az Egykiszolgálós telepítés lehetőségben egy átjáró irányítja át a kapcsolatokat a kiszolgálópéldányokhoz. A kapcsolatok létrejötte után a MySQL-ügyfél az átjárón beállított MySQL-verziót jeleníti meg, nem a MySQL-kiszolgálópéldányon futó tényleges verziót. A MySQL-kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL parancssorában. Ha az alkalmazásnak egy adott főverzióhoz (például 5.7-es vagy 8.0-s verzió) kell csatlakoznia, ezt a kiszolgáló kapcsolati sztringje portjának módosításával tudja megtenni az itt található dokumentációban leírtak [szerint.](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)
 
 > [!IMPORTANT]
-> A MySQL v 5.6 egyetlen kiszolgálón, a febuary 2021-es verzióval van kivonva. Szeptember 1-től a 2021-es verziótól kezdődően nem hozhat létre új v 5.6-kiszolgálókat Azure Database for MySQL-Egykiszolgálós telepítés esetén. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
+> A MySQL 5.6-osát 2021 febuary óta kivezették egykiszolgálós gépről. 2021. szeptember 1-től kezdve nem hozhat létre új 5.6-os Azure Database for MySQL - Egykiszolgálós üzembe helyezési lehetőséggel. Ugyanakkor képes lesz időponthoz időben helyreállítani és olvasási replikákat létrehozni a meglévő kiszolgálókhoz.
 
-Tekintse meg a verzió támogatási szabályzatát a verziók [támogatásával kapcsolatos szabályzat dokumentációjában.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
+A visszavont verziókra vonatkozó verziótámogatási szabályzatot a [verziótámogatási szabályzat dokumentációjában olvashatja el.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
-## <a name="major-version-support"></a>Főverzió támogatása
-A MySQL minden jelentős verzióját a Azure Database for MySQL fogja támogatni attól az időponttól kezdve, amikor az Azure megkezdi a verzió támogatását, egészen addig, amíg a MySQL-Közösség el nem távolítja a verziót, ahogy azt a [verziószámozási házirend](https://www.mysql.com/support/eol-notice.html)biztosítja.
+## <a name="major-version-support"></a>Főverziók támogatása
+A MySQL minden főverzióját támogatja a Azure Database for MySQL attól a dátumtól, amikor az Azure elkezdi támogatni a verziót, amíg a MySQL-közösség ki nem veszi a verziót a verziószámozási szabályzatban [megadottak szerint.](https://www.mysql.com/support/eol-notice.html)
 
-## <a name="minor-version-support"></a>Másodlagos verzió támogatása
-A Azure Database for MySQL a rendszeres karbantartás részeként automatikusan végrehajtja az Azure-beli elsődleges MySQL-verzióra való frissítést. 
+## <a name="minor-version-support"></a>Alverzió támogatása
+Azure Database for MySQL rendszeres karbantartás részeként a rendszer automatikusan elvégzi az alverziófrissítéseket az Azure előnyben részesített MySQL-verziójára. 
 
-## <a name="major-version-retirement-policy"></a>Főverzió kivezetési szabályzata
-Az alábbi táblázat a MySQL főverzióinak kivonulási részleteit tartalmazza. A dátumok a [MySQL verziószámozási házirendjét](https://www.mysql.com/support/eol-notice.html)követik.
+## <a name="major-version-retirement-policy"></a>Főverzió ki nyugdíjba vonulási szabályzata
+Az alábbi táblázat a MySQL főverzióira vonatkozó kieső adatokra vonatkozó adatokat tartalmazza. A dátumok a [MySQL verziószámozási szabályzatát követik.](https://www.mysql.com/support/eol-notice.html)
 
-| Verzió | Újdonságok | Azure-támogatás kezdő dátuma | Nyugdíjazás dátuma|
+| Verzió | Újdonságok | Azure-támogatás kezdő dátuma | Kieső dátum|
 | ----- | ----- | ------ | ----- |
-| [MySQL 5,6](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/)| [Funkciók](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | Március 20., 2018 | 2021. február
-| [MySQL 5,7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Funkciók](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | Március 20., 2018 | Október 2023
-| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Szolgáltatások](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)) | December 11., 2019 | Április 2026
+| [MySQL 5.6](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/)| [Funkciók](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | 2018. március 20. | 2021. február
+| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Funkciók](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | 2018. március 20. | 2023. október
+| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Szolgáltatások](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)) | 2019. december 11. | 2026. április
 
 
-## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>A kivont MySQL Engine-verziók nem támogatottak Azure Database for MySQL
+## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>A MySQL-motor visszavont verziói nem támogatottak a Azure Database for MySQL
 
-Ha továbbra is a kivont verziót futtatja, az egyes MySQL-adatbázisok lejárati dátuma után vegye figyelembe a következő korlátozásokat:
-- Mivel a Közösség nem szabadít fel semmilyen további hibajavítást vagy biztonsági javítást, Azure Database for MySQL nem fogja feljavítani a kivont adatbázismotor számára az esetleges hibákat vagy biztonsági problémákat, vagy egyéb módon biztonsági intézkedéseket hajt végre a kivont adatbázismotor tekintetében. Az Azure azonban továbbra is rendszeres karbantartást és javítást végez a gazdagép, az operációs rendszer, a tárolók és a szolgáltatásokkal kapcsolatos egyéb összetevők számára.
-- Ha bármilyen támogatási probléma merülhet fel a MySQL-adatbázissal kapcsolatban, előfordulhat, hogy nem tudunk támogatást nyújtani Önnek. Ilyen esetekben frissítenie kell az adatbázist ahhoz, hogy támogatást nyújtson Önnek.
-- Nem fog tudni új adatbázis-kiszolgálókat létrehozni a kivont verzióhoz. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
-- A Azure Database for MySQL által fejlesztett új szolgáltatási képességek csak a támogatott adatbázis-kiszolgáló verziók esetében érhetők el.
-- Az üzemidőre vonatkozó SLA-kat kizárólag Azure Database for MySQL szolgáltatással kapcsolatos problémákra, és nem az adatbázismotor által okozott hibák okozta állásidőre alkalmazza a rendszer.  
-- Ha súlyos fenyegetést észlelt a szolgáltatás a kivont adatbázis-verzióban azonosított MySQL adatbázismotor biztonsági rése miatt, az Azure úgy dönthet, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját, hogy először biztonságossá tegye a szolgáltatást. A rendszer a kiszolgáló online állapotba hozása előtt frissíti a kiszolgálót. A frissítési folyamat során a rendszer mindig a szolgáltatásban végzett automatikus biztonsági mentéssel védi az adatokat, amelyek igény szerint visszaállíthatók a régebbi verzióra. 
+Ha folytatja a kivezetett verzió futtatását, az egyes MySQL-adatbázisverziók kivezetett dátumának lejárati dátuma után vegye figyelembe a következő korlátozásokat:
+- Mivel a közösség nem ad ki további hibajavításokat vagy biztonsági javításokat, a Azure Database for MySQL nem javítja ki a kivezetett adatbázismotort a hibák vagy biztonsági problémák elhárítása érdekében, és nem hoz egyéb biztonsági intézkedéseket a visszavont adatbázismotorral kapcsolatban. Az Azure azonban továbbra is elvégzi a gazdagép, az operációs rendszer, a tárolók és a szolgáltatáshoz kapcsolódó egyéb összetevők rendszeres karbantartását és javításait.
+- Ha bármilyen, a MySQL-adatbázissal kapcsolatos támogatási probléma előfordulhat, előfordulhat, hogy nem tudunk támogatást nyújtani Önnek. Ilyen esetekben frissítenie kell az adatbázist, hogy bármilyen támogatást nyújtsunk Önnek.
+- A visszavont verzióhoz nem hozhat létre új adatbázis-kiszolgálókat. Ugyanakkor képes lesz időponthoz időben helyreállítani és olvasási replikákat létrehozni a meglévő kiszolgálókhoz.
+- Előfordulhat, hogy a Azure Database for MySQL által fejlesztett új szolgáltatási képességek csak a támogatott adatbázis-kiszolgáló verziók számára érhetők el.
+- Az üzemidőre vonatkozó szolgáltatói feltételek kizárólag a Azure Database for MySQL kapcsolatos problémákra vonatkoznak, az adatbázismotorral kapcsolatos hibák által okozott állásidőkre nem.  
+- Abban az esetben, ha a MySQL adatbázismotor kivezetett verziójában azonosított biztonsági rés súlyos fenyegetést jelent a szolgáltatásra nézve, az Azure úgy is dönt, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját, hogy először a szolgáltatás biztonságát biztosítsa. A rendszer megkéri, hogy frissítse a kiszolgálót, mielőtt online állapotba hozné. A frissítési folyamat során az adatok védelme mindig a szolgáltatáson végrehajtott automatikus biztonsági mentésekkel történik, amelyek szükség esetén a régebbi verzióra való visszaállításhoz használhatók. 
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Lásd: Azure Database for MySQL – egy kiszolgáló által [támogatott verziók](./concepts-supported-versions.md)
-- Lásd: Azure Database for MySQL – rugalmas kiszolgáló (előzetes [verzió) támogatott verziók](flexible-server/concepts-supported-versions.md)
-- A frissítések végrehajtásához tekintse meg a MySQL [-memóriaképet és a visszaállítást](./concepts-migrate-dump-restore.md) .
+- Lásd: Azure Database for MySQL – Egykiszolgálós [támogatott verziók](./concepts-supported-versions.md)
+- Lásd: Azure Database for MySQL – Rugalmas kiszolgáló (előzetes verzió) [által támogatott verziók](flexible-server/concepts-supported-versions.md)
+- A frissítések végrehajtásához [lásd:](./concepts-migrate-dump-restore.md) MySQL dump and restore (MySQL-memóriakép és -visszaállítás).

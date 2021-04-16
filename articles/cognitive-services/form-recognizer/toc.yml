@@ -7,7 +7,7 @@
       href: overview.md
     - name: Nyelvi támogatás
       href: language-support.md
-    - name: Díjszabás és korlátok
+    - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Újdonságok
       href: whats-new.md
@@ -19,21 +19,19 @@
       href: quickstarts/label-tool.md
 - name: Példák
   items:
-    - name: 'C#/.NET: Form Recognizer kódtár SDK-ja'
+    - name: 'C#/.NET: Form Recognizer SDK használata'
       href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
-    - name: 'Java: Form Recognizer kódtár SDK-jének használata'
+    - name: 'Java: Form Recognizer kódtár SDK-jének létrehozása'
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
-    - name: 'Python: Form Recognizer kódtár SDK-jének használata'
+    - name: 'Python: Form Recognizer kódtár SDK-jének létrehozása'
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
-    - name: JavaScript Form Recognizer sdk ügyféloldali kódtárhoz
+    - name: JavaScript Form Recognizer ügyféloldali kódtár SDK-ja
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
-    - name: REST API és cURL
-      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása
       href: build-training-data-set.md
-    - name: Táblacímkék használata az egyéni modell betanításához
+    - name: Táblacímkék használata az egyéni modell betanítához
       href: supervised-table-tags.md
     - name: A mintacímkézési eszköz üzembe helyezése
       href: deploy-label-tool.md
@@ -52,6 +50,14 @@
           href: ../containers/index.yml
     - name: Modellek biztonsági mentése és helyreállítása
       href: disaster-recovery.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
+        - name: Azure AD-hitelesítés használata
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Alapelvek
   items:
     - name: Layout API
@@ -77,7 +83,7 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: A Form Recognizer használata AI Builderrel
       href: tutorial-ai-builder.md
-    - name: A Form Recognizer használata Azure Functions
+    - name: Az Form Recognizer használata Azure Functions
       href: tutorial-azure-function.md
 - name: Referencia
   items:
@@ -97,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: További források
   items:
-    - name: Támogatási lehetőségek
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: Megfelelőség és tanúsítvány
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
     - name: Adatvédelem és cookie-k
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

@@ -1,32 +1,32 @@
 ---
 title: Gépi tanulási entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: A gépi tanulási entitás az előnyben részesített entitás a LUIS-alkalmazások létrehozásához.
+description: A machine-learning entitás a LUIS-alkalmazások előnyben részesített entitása.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/30/2020
-ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 12724175ebb9e23efa431169c01a804cd193cdd5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91542240"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502589"
 ---
 # <a name="machine-learning-entity"></a>Gépi tanulási entitás
 
-A gépi tanulási entitás az előnyben részesített entitás a LUIS-alkalmazások létrehozásához.
+A machine-learning entitás a LUIS-alkalmazások előnyben részesített entitása.
 
 
-## <a name="example-json"></a>Példa JSON-ra
+## <a name="example-json"></a>Példa JSON-re
 
-Tegyük fel, hogy az alkalmazás olyan pizzás rendeléseket tart, mint például a [dekomponálható entitások oktatóanyaga](tutorial-machine-learned-entity.md). Minden megrendelés tartalmazhat több különböző pizzát is, beleértve a különböző méreteket is.
+Tegyük fel, hogy az alkalmazás pizzarendeléseket vesz fel, például a [felosztható entitás oktatóanyagát.](tutorial-machine-learned-entity.md) Minden rendelés több különböző pizzát tartalmazhat, beleértve a különböző méreteket is.
 
 Példák kimondott szövegekre:
 
-|Példa a pizza-alkalmazás hosszúságú kimondott szöveg|
+|Példa kimondott szöveg egy pizzaalkalmazáshoz|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,13 +36,13 @@ Példák kimondott szövegekre:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-Mivel a gépi tanulási entitások számos alentitást tartalmazhatnak a szükséges funkciókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
+Mivel a gépi tanulási entitások több alentitást is tartalmaznak a szükséges funkciókkal, ez csak egy példa. Az entitás visszaadott útjára vonatkozó útmutatónak kell tekinteni.
 
-Vegye figyelembe a lekérdezést:
+Tekintse meg a lekérdezést:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=false` be van állítva a lekérdezési sztringben:
 
 ```json
 "entities": {
@@ -100,7 +100,7 @@ Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
 ```
 
-Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=true` be van állítva a lekérdezési sztringben:
 
 ```json
 "entities": {
@@ -341,11 +341,11 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 ```
 #### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Ez az entitás nem érhető el a v2 előrejelzési futtatókörnyezetben.
+Ez az entitás nem érhető el a V2 előrejelzési futtatásban.
 * * *
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a gépi tanulással foglalkozó entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [útmutatókat](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+További információ a gépi tanulási entitásról, beleértve [az](tutorial-machine-learned-entity.md) [oktatóanyagot,](luis-concept-entity-types.md#machine-learned-ml-entity)az alapfogalmakat és az [útmutatót.](luis-how-to-add-entities.md#create-a-machine-learned-entity)
 
-Ismerje meg a [List](reference-entity-list.md) entitást és a [reguláris kifejezés](reference-entity-regular-expression.md) entitást.
+Tudnivalók a [listaentitásról](reference-entity-list.md) [és a reguláriskifejezés-entitásról.](reference-entity-regular-expression.md)

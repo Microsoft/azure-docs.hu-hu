@@ -1,67 +1,71 @@
 ---
-title: Azure rövid útmutató – felügyelt HSM létrehozása Azure Resource Manager sablon használatával
-description: Gyors útmutató, amely bemutatja, hogyan hozhat létre Azure-Azure Key Vault felügyelt HSM Resource Manager-sablon használatával
+title: Azure rövid útmutató – Felügyelt HSM létrehozása Azure Resource Manager sablonnal
+description: Rövid útmutató, amely bemutatja, hogyan hozhat létre felügyelt HSM Azure Key Vault Azure-beli Resource Manager sablon használatával
 services: key-vault
 author: msmbaldwin
-tags: azure-resource-manager
+ms.author: mbaldwin
+ms.date: 09/15/2020
+ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: managed-hsm
-ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 09/15/2020
-ms.author: mbaldwin
-ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 33c262c61d50b45663a627e40ea186f1f0dcde41
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213266"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532972"
 ---
-# <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Gyors útmutató: Key Vault felügyelt HSM létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Rövid útmutató: Felügyelt HSM Key Vault létrehozása Azure Resource Manager sablonnal
 
-A Managed HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét, az **FIPS 140-2 3. szintű** hitelesített HSM használatával.  
+A Managed HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványnak megfelelő felhőszolgáltatás, amellyel a **FIPS 140-2 3.** szintje szerint ellenőrzött HSM-ekkel védheti a felhőalkalmazások titkosítási kulcsait.  
 
-Ez a rövid útmutató a Resource Manager-sablonok felügyelt HSM létrehozásához való üzembe helyezésének folyamatát összpontosítja.  A [Resource Manager-sablon](../../azure-resource-manager/templates/overview.md) egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablonokról további információért tekintse meg a [Resource Manager dokumentációját](../../azure-resource-manager/index.yml) és a [sablonreferenciát](/azure/templates/microsoft.keyvault/allversions).
+Ez a rövid útmutató a felügyelt HSM létrehozásához Resource Manager folyamatra összpontosít.  A [Resource Manager-sablon](../../azure-resource-manager/templates/overview.md) egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablonokról további információért tekintse meg a [Resource Manager dokumentációját](../../azure-resource-manager/index.yml) és a [sablonreferenciát](/azure/templates/microsoft.keyvault/allversions).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések végrehajtásához a következő elemek szükségesek:
+A cikkben található lépések befejezéséhez a következő elemekre lesz szükség:
 
 - Egy Microsoft Azure-előfizetésre. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial).
-- Az Azure CLI verziója 2.12.0 vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg [Az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető témakört.
+- Az Azure CLI 2.12.0-s vagy újabb verziója. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissítenie kell, tekintse meg az [Azure CLI telepítését]( /cli/azure/install-azure-cli)
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a következőt:
+Az Azure-ba a cli használatával való bejelentkezéshez írja be a következőt:
 
 ```azurecli
 az login
 ```
 
-A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli) használatával
+A CLI-n keresztüli bejelentkezési lehetőségekkel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI-val](/cli/azure/authenticate-azure-cli)
 
-## <a name="create-a-manage-hsm"></a>Kezelő HSM létrehozása
+## <a name="create-a-manage-hsm"></a>Manage HSM létrehozása
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-managed-hsm-create/) származik.
 
-A sablonban definiált Azure-erőforrás:
+A sablonban meghatározott Azure-erőforrás:
 
-* **Microsoft. kulcstartó/managedHSMs**: hozzon létre egy Azure Key Vault Managed HSM-et.
+* **Microsoft.KeyVault/managedHSMs:** hozzon létre Azure Key Vault HSM-et.
 
-[Itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)több Azure Key Vault sablon is található.
+További Azure Key Vault itt talál. [](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)
 
-A sablonhoz a fiókhoz társított objektumazonosító szükséges. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/ad/user#az_ad_user_show) parancsot, és adja át az e-mail-címét a `--id` paraméternek. A kimenetet csak a (z) paraméterrel lehet az objektumazonosító alapján korlátozni `--query` .
+A sablonhoz szükség van a fiókjához társított objektumazonosítóra. A kereséshez használja az Azure CLI [az ad user show parancsot,](/cli/azure/ad/user#az_ad_user_show) és továbbadja az e-mail-címét a `--id` paraméternek. A kimenetet csak a paraméterrel korlátozhatja az `--query` objektumazonosítóra.
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/account#az_account_show) parancsot. A kimenetet csak a (z) paraméterrel lehet a bérlői AZONOSÍTÓra korlátozni `--query` .
+Szüksége lehet a bérlőazonosítójára is. A kereséshez használja az Azure CLI [az ad user show](/cli/azure/account#az_account_show) parancsot. A kimenetet csak a paraméterrel korlátozhatja a `--query` bérlőazonosítóra.
 
  ```azurecli-interactive
  az account show --query "tenantId"
@@ -73,23 +77,23 @@ Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure 
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-    Ha meg van adva, az alapértelmezett érték használatával hozza létre a kulcstartót és a titkos kulcsot.
+    Ha nincs megadva, használja az alapértelmezett értéket a kulcstartó és egy titkos kulcs létrehozásához.
 
-    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
-    - **Hely**: válasszon ki egy helyet. Például az **USA déli középső** régiója.
-    - **managedHSMName**: adja meg a felügyelt HSM nevét.
-    - **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlői azonosítót; Ne módosítsa az alapértelmezett értéket.  Ha nincs érték, adja meg az [Előfeltételekben](#prerequisites)lekért bérlői azonosítót.
-    * **initialAdminObjectIds**: adja meg az [előfeltételekben](#prerequisites)lekért objektumazonosító-azonosítót.
+    - **Előfizetés:** Válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport:** Válassza az **Új létrehozása** lehetőséget, adjon egyedi nevet az erőforráscsoportnak, majd kattintson az **OK gombra.**
+    - **Hely:** Válasszon ki egy helyet. Például: USA **déli középső középső országa.**
+    - **managedHSMName:** Adja meg a felügyelt HSM nevét.
+    - **Bérlőazonosító:** A sablonfunkció automatikusan lekéri a bérlőazonosítót; ne módosítsa az alapértelmezett értéket.  Ha nincs érték, adja meg az Előfeltételek mezőben lekért [bérlőazonosítót.](#prerequisites)
+    * **initialAdminObjectIds:** Adja meg az Előfeltételek szakaszban lekért [objektumazonosítót.](#prerequisites)
 
-3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
+3. Válassza a **Beszerzés** lehetőséget. A kulcstartó sikeres üzembe helyezése után értesítést kap:
 
-Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
+Az Azure Portalon helyezhető üzembe a sablon. A Azure Portal mellett az Azure PowerShell, az Azure CLI és a REST API. További információ az egyéb üzembe helyezési módszerekről: [Sablonok üzembe helyezése.](../../azure-resource-manager/templates/deploy-powershell.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy felügyelt HSM-et. Ez a felügyelt HSM nem lesz teljesen működőképes, amíg be nem aktiválja. A HSM aktiválásához a [felügyelt HSM](quick-create-cli.md#activate-your-managed-hsm) aktiválása című témakörben talál további információt.
+Ebben a rövid útmutatóban egy felügyelt HSM-et hozott létre. Ez a felügyelt HSM nem lesz teljesen működőképes, amíg nincs aktiválva. A [HSM aktiválását](quick-create-cli.md#activate-your-managed-hsm) lásd: A felügyelt HSM aktiválása.
 
-- [A Managed HSM áttekintése – áttekintés](overview.md)
-- Útmutató a [kulcsok felügyelt HSM-ben való kezeléséhez](key-management.md)
-- A [felügyelt HSM ajánlott eljárásainak](best-practices.md) áttekintése
+- A Managed [HSM áttekintése](overview.md)
+- Tudnivalók a [kulcsok felügyelt HSM-ben való kezeléséről](key-management.md)
+- Tekintse át [a Managed HSM ajánlott eljárásait](best-practices.md)

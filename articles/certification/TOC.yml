@@ -1,37 +1,37 @@
-- name: Az Azure Certified eszköz dokumentációja
+- name: Az Azure Certified Device dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az Azure Certified eszköz program?
+    - name: Mi az az Azure Certified Device program?
       href: overview.md
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: 1 – a megfelelő minősítés kiválasztása
+    - name: 1 – A megfelelő tanúsítvány kiválasztása
       href: tutorial-00-selecting-your-certification.md
-    - name: 2 – a projekt létrehozása
+    - name: 2 – A projekt létrehozása
       href: tutorial-01-creating-your-project.md
-    - name: 3 – eszköz adatainak hozzáadása
+    - name: 3 – Eszközadatok hozzáadása
       href: tutorial-02-adding-device-details.md
-    - name: 4 – az eszköz tesztelése
+    - name: 4 – Az eszköz tesztelése
       href: tutorial-03-testing-your-device.md
-    - name: 5 – az eszköz közzététele
+    - name: 5 – Az eszköz közzététele
       href: tutorial-04-publishing-your-device.md
 - name: Programkövetelmények
   items:
-    - name: Azure Certified-eszköz
+    - name: Azure-tanúsítvánnyal rendelkező eszköz
       href: program-requirements-azure-certified-device.md
     - name: IoT Plug and Play
       href: program-requirements-pnp.md
-    - name: Edge által felügyelt
+    - name: Edge Managed
       href: program-requirements-edge-managed.md
-    - name: Edge Secured-Core (előzetes verzió)
+    - name: Edge secured-core (előzetes verzió)
       href: program-requirements-edge-secured-core.md
 - name: Alapelvek
   items:
     - name: Örökölt eszközök
       href: concepts-legacy.md
-    - name: Marketing-fogalmak
+    - name: Marketingfogalmak
       href: concepts-marketing.md
 - name: Útmutatók
   items:
@@ -39,9 +39,11 @@
       href: how-to-edit-published-device.md
     - name: Közvetetten csatlakoztatott eszköz tanúsítása
       href: how-to-indirectly-connected-devices.md
+    - name: IoT-eszközök Plug and Play hibaelhárítása
+      href: how-to-troubleshoot-pnp.md
     - name: Az összetevők funkció használata
       href: how-to-using-the-components-feature.md
 - name: Források
   items:
-    - name: Minősítési Szószedet
+    - name: Minősítési szószedet
       href: resources-glossary.md

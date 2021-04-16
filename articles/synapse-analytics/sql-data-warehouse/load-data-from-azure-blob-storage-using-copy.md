@@ -1,32 +1,32 @@
 ---
-title: 'Oktatóanyag: a New York-i taxik-adatbázis betöltése'
-description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy Azure-blobból a szinapszis SQL-hez.
+title: 'Oktatóanyag: New York-i taxicab-adatok betöltése'
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio new york-i taxicab-adatokat tölt be egy Azure-blobból a Synapse SQL.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/23/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1490a0e094c6ce2665e28f7d32540ad58d53cb2a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ede40aba8e2d36e4262b4bc89a35f5d67079e0e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600139"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567505"
 ---
-# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
+# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: A New York-i taxicab adatkészlet betöltése
 
-Ez az oktatóanyag a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával tölti be a New York taxik adatkészletet egy Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) használja a következőkhöz:
+Ez az oktatóanyag a [COPY utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) tölt be New York Taxicab-adatkészletet egy Azure Blob Storage fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 >
 > * Adatok betöltésére kijelölt felhasználó létrehozása
-> * A minta adatkészlethez tartozó táblák létrehozása 
-> * Az adatok betöltése az adattárházba a T-SQL-utasítás MÁSOLÁSával
+> * A mintaadatkészlet tábláinak létrehozása 
+> * Adatok betöltése az adattárházba a COPY T-SQL utasítással
 > * Az adatok állapotának megtekintése betöltés közben
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
@@ -35,17 +35,17 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját.  
 
-Ez az oktatóanyag feltételezi, hogy már létrehozott egy SQL dedikált készletet az alábbi [oktatóanyagból](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
+Ez az oktatóanyag feltételezi, hogy már létrehozott egy dedikált SQL-készletet a következő [oktatóanyagból.](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális száma az [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) és a konfigurált [erőforrás-osztály](resource-classes-for-workload-management.md) szerint van meghatározva.
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximuma az [](what-is-a-data-warehouse-unit-dwu-cdwu.md) adattárházegységek és a konfigurált [erőforrásosztály](resource-classes-for-workload-management.md) alapján van meghatározva.
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
-A kiszolgáló-rendszergazdaként való csatlakozási lehetőséggel bejelentkezési adatokat és felhasználókat hozhat létre. Kövesse ezeket a lépéseket egy **LoaderRC20** nevű fiók és felhasználó létrehozásához. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztályhoz.
+A bejelentkezések és felhasználók létrehozásához csatlakozzon kiszolgálói rendszergazdaként. Kövesse ezeket a lépéseket egy **LoaderRC20** nevű fiók és felhasználó létrehozásához. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztályhoz.
 
-1. A SSMS kattintson a jobb gombbal a **Master** elemre a legördülő menü megjelenítéséhez, majd válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
+1. Az SSMS-ban válassza a jobb gombot a **főkiszolgáló** kiválasztásával egy legördülő menühöz, majd válassza az **Új lekérdezés lehetőséget.** Megnyílik egy új lekérdezési ablak.
 
     ![Új lekérdezés a master adatbázisban](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -76,7 +76,7 @@ A kiszolgáló-rendszergazdaként való csatlakozási lehetőséggel bejelentkez
 
 Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés.  
 
-1. A Object Explorer területen válassza a **kapcsolat** legördülő menüt, és válassza az **adatbázismotor** lehetőséget. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
+1. A Object Explorer válassza a **Csatlakozás legördülő** menüt, majd az **Adatbázismotor elemet.** A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
 
     ![Csatlakozás az új fiókkal](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -88,11 +88,11 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
     ![Sikeres csatlakozás](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-tables-for-the-sample-data"></a>Táblák létrehozása a mintaadatok számára
+## <a name="create-tables-for-the-sample-data"></a>Táblák létrehozása a mintaadatokhoz
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag ezen része bemutatja, hogyan töltheti be a New York-i taxi-adatkészletet egy Azure Storage-blobból a COPY utasítás használatával. Ha szeretné megtudni, hogyan érheti el adatait az Azure Blob Storageban, vagy közvetlenül a forrásból betöltheti azt, tekintse meg a [Betöltés áttekintését](design-elt-data-loading.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag ezen része bemutatja, hogyan használhatja a COPY utasítást a New York-i taxik adatkészletének betöltéséhez egy Azure Storage-blobból. A későbbi információkért tekintse meg a betöltést áttekintő témakört, amelyből megtudhatja, hogyan tudja az adatokat Azure Blob Storage vagy közvetlenül a forrásból [betölteni.](design-elt-data-loading.md)
 
-Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt adatokra vonatkozó információkat. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója.
+Futtassa az alábbi SQL-szkripteket, és adja meg a betölteni kívánt adatokkal kapcsolatos információkat. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója.
 
 1. Az előző szakaszban LoaderRC20-ként jelentkezett be az adattárházba. Az SSMS-ben kattintson jobb gombbal a LoaderRC20-kapcsolatra, és válassza a **New Query** (Új lekérdezés) elemet.  Megnyílik egy új lekérdezési ablak.
 
@@ -100,7 +100,7 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
 
 2. Hasonlítsa össze a lekérdezési ablakot az előző képpel.  Győződjön meg arról, hogy az új lekérdezési ablak LoaderRC20-ként fut, és a MySampleDataWarehouse adatbázison hajt végre lekérdezéseket. A betöltés összes lépését ebben a lekérdezési ablakban végezze el.
 
-7. A következő T-SQL-utasítások futtatásával hozza létre a táblákat:
+7. Futtassa a következő T-SQL-utasításokat a táblák létrehozásához:
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -251,12 +251,12 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ez a szakasz a [másolási utasítás használatával tölti be](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) a mintaadatok Azure Storage Blobból való betöltéséhez.  
+Ebben a szakaszban a [COPY utasítással töltünk](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) be mintaadatokat a Azure Storage Blob.  
 
 > [!NOTE]
-> Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Az éles számítási feladatokhoz általában betöltődik egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. 
+> Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Általában egy előkészítési táblába kell betölteni az éles számítási feladatokhoz. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. 
 
-1. Az alábbi utasítások futtatásával töltse be az adatokat:
+1. Futtassa a következő utasításokat az adatok betöltéséhez:
 
     ```sql
     COPY INTO [dbo].[Date]
@@ -334,7 +334,7 @@ Ez a szakasz a [másolási utasítás használatával tölti be](/sql/t-sql/stat
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
-2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adat betöltése és tömörítése nagy teljesítményű fürtözött oszlopcentrikus indexekre. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát.
+2. A betöltés közben megtekintheti az adatokat. Több GBS-adatot tölt be és tömörít nagy teljesítményű fürtözött oszlopcentrikus indexekbe. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát.
 
     ```sql
     SELECT  r.[request_id]                           
@@ -379,21 +379,21 @@ Az adattárházába betöltött számítási erőforrások és adatok díjkötel
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com)válassza ki az adattárházat.
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start** gombra.
+2. A számítás szüneteltetéshez kattintson a **Szüneteltetés gombra.** Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához válassza az Indítás **lehetőséget.**
 
-3. Ha el szeretné távolítani az adattárházat, így nem számítja fel a számítás vagy a tárolás díját, válassza a **Törlés** lehetőséget.
+3. Ha el szeretné távolítani az adattárházat, hogy ne számítson fel díjat a számítási vagy tárolási erőforrásokért, válassza a **Törlés lehetőséget.**
 
-4. A létrehozott kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés** lehetőséget.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott kiszolgáló eltávolításához válassza az előző **mynewserver-20180430.database.windows.net,** majd a Törlés **lehetőséget.**  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
-5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup** lehetőséget, majd válassza az **erőforráscsoport törlése** lehetőséget.
+5. Az erőforráscsoport eltávolításához válassza ki a **myResourceGroup erőforráscsoportot,** majd válassza az **Erőforráscsoport törlése lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Az egyszerű [másolási utasítást](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples) használta az adatok adattárházba való betöltéséhez.
+Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Az egyszerű [COPY utasítással adatokat](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples) tölt be az adattárházba.
 
 A következőket hajtotta végre:
 > [!div class="checklist"]
@@ -402,17 +402,17 @@ A következőket hajtotta végre:
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 > * Csatlakozás az adattárházhoz az SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
-> * A mintaadatok tábláinak létrehozása
-> * A COPY T-SQL-utasítás használata az adatok adattárházba való betöltéséhez
+> * Táblák létrehozása a mintaadatokhoz
+> * Adatok betöltése az adattárházba a COPY T-SQL utasítással
 > * Az adatok állapotának megtekintése betöltés közben
 
-Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure szinapszis Analytics szolgáltatásba:
+A fejlesztési áttekintést a meglévő adatbázisok áttelepítésének a következő Azure Synapse Analytics:
 
 > [!div class="nextstepaction"]
-> [Megtervezheti a meglévő adatbázisok Azure szinapszis Analytics szolgáltatásba való átépítésének döntéseit](sql-data-warehouse-overview-develop.md)
+> [Meglévő adatbázis áttelepítésének megtervezése Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
 
-További példákat és referenciákat a következő dokumentációban talál:
+További betöltési példákért és hivatkozásokért tekintse meg a következő dokumentációt:
 
-- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
-- [Példák másolása az egyes hitelesítési módszerekhez](./quickstart-bulk-load-copy-tsql-examples.md)
-- [Rövid útmutató másolása egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)
+- [A COPY utasítás referenciadokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+- [PÉLDÁK MÁSOLÁSra az egyes hitelesítési módszerekhez](./quickstart-bulk-load-copy-tsql-examples.md)
+- [COPY rövid útmutató egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)

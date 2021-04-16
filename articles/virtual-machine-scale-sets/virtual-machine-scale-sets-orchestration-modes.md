@@ -1,221 +1,221 @@
 ---
-title: Az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai
-description: Ismerje meg, hogyan használhatók a rugalmas és egységes előkészítési módok a virtuálisgép-méretezési csoportokhoz az Azure-ban.
+title: Vezénylési módok virtuálisgép-méretezési készletekhez az Azure-ban
+description: Megtudhatja, hogyan használhatja a rugalmas és egységes vezénylési módokat a virtuálisgép-méretezési készletekhez az Azure-ban.
 author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 72e36a942eeaea00699f346db99a7ca3503495da
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075406"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481650"
 ---
-# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
+# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: Vezénylési módok virtuálisgép-méretezési készletekhez az Azure-ban 
 
-Virtual Machines méretezési csoportok biztosítják a platform által felügyelt virtuális gépek logikai csoportosítását. A méretezési csoportokkal létrehozhat egy virtuálisgép-konfigurációs modellt, automatikusan hozzáadhat vagy eltávolíthat további példányokat a CPU vagy a memória terhelése alapján, és automatikusan frissítheti a legújabb operációsrendszer-verzióra. A méretezési csoportok hagyományosan lehetővé teszik, hogy virtuális gépeket hozzon létre a méretezési csoport létrehozásakor megadott virtuálisgép-konfigurációs modellel, és a méretezési csoport csak a konfigurációs modell alapján implicit módon létrehozott virtuális gépeket tudja kezelni. 
+Virtual Machines méretezési csoportok a platform által felügyelt virtuális gépek logikai csoportosítását biztosítják. A méretezési csoportokkal létrehozhat egy virtuálisgép-konfigurációs modellt, automatikusan hozzáadhat vagy eltávolíthat további példányokat a processzor- vagy memóriaterhelés alapján, és automatikusan frissít a legújabb operációsrendszer-verzióra. Hagyományosan a méretezési csoportokkal virtuális gépeket hozhat létre a méretezési csoport létrehozásakor megadott virtuálisgép-konfigurációs modellel, és a méretezési csoport csak a konfigurációs modell alapján implicit módon létrehozott virtuális gépeket tudja kezelni. 
 
-A méretezési csoport előkészítési módjai lehetővé teszik, hogy jobban szabályozható legyen a méretezési csoport által kezelt virtuálisgép-példányok kezelése. 
-
-> [!IMPORTANT]
-> A skálázási mód a méretezési csoport létrehozásakor van meghatározva, és később nem módosítható és nem frissíthető.
-
-
-## <a name="scale-sets-with-uniform-orchestration"></a>Méretezési csoportok egységes előkészítéssel
-Nagy mennyiségű állapot nélküli számítási feladatokhoz optimalizált, azonos példányokkal.
-
-Az egységes előkészítést biztosító virtuálisgép-méretezési csoportok virtuálisgép-profil vagy-sablon használatával méretezhetők fel a kívánt kapacitásra. Az egyes virtuálisgép-példányok felügyeletére és testre szabására is van lehetőség, így az egységes virtuálisgép-példányok használata is azonos. A virtuálisgép-méretezési csoport VM API-parancsain keresztül egyedi, egységes VM-példányok érhetők el. Az egyes példányok nem kompatibilisek a standard Azure IaaS VM API-parancsokkal, az Azure felügyeleti szolgáltatásaival, például a Azure Resource Manager erőforrás-címkézés RBAC engedélyeivel, Azure Backup vagy Azure Site Recovery. Az egységes előkészítés biztosítja a tartalék tartomány magas rendelkezésre állású garanciáit, ha az 100-nál kevesebb példánynál van konfigurálva. Az egységes előkészítés általánosan elérhető, és támogatja a méretezési csoport felügyeletének és előkészítésének teljes körét, beleértve a metrikák alapú automatikus skálázást, a példányok védelmét és az automatikus operációs rendszer frissítéseit. 
-
-
-## <a name="scale-sets-with-flexible-orchestration"></a>Rugalmas előkészítést biztosító méretezési készletek 
-Az azonos vagy több virtuálisgép-típussal rendelkező, magas rendelkezésre állást érhet el.
-
-Rugalmas előkészítéssel az Azure egységes felhasználói élményt nyújt az Azure-beli virtuális gépek ökoszisztémáján belül. A rugalmas összehangolás magas rendelkezésre állású garanciákat biztosít (akár 1000 virtuális gép) azáltal, hogy a virtuális gépeket egy adott régióban vagy egy rendelkezésre állási zónán belül terjeszti. Ez lehetővé teszi, hogy kibővítse az alkalmazást, miközben a tartalék tartomány elkülönítésének fenntartása elengedhetetlen a kvórum-vagy állapot-nyilvántartó számítási feladatok futtatásához, beleértve a következőket:
-- Kvórum-alapú számítási feladatok
-- Adatbázisok Open-Source
-- Állapot-nyilvántartó alkalmazások
-- Magas rendelkezésre állást és nagy léptéket igénylő szolgáltatások
-- A virtuálisgép-típusokat összekeverő szolgáltatások, illetve a helyszíni és az igény szerinti virtuális gépek együttes kihasználása
-- Meglévő rendelkezésre állási csoport alkalmazásai  
+A méretezési készlet vezénylési módjai lehetővé teszik a virtuálisgép-példányok méretezési készlet által való felügyeletének nagyobb mértékű szabályozását. 
 
 > [!IMPORTANT]
-> A rugalmas előkészítési módban lévő virtuálisgép-méretezési csoportok jelenleg nyilvános előzetes verzióban érhetők el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához egy opt-in eljárás szükséges.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, ezért éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> A vezénylési mód a méretezési csoport létrehozásakor van definiálva, és később nem módosítható vagy frissíthető.
+
+
+## <a name="scale-sets-with-uniform-orchestration"></a>Méretezési készletek egységes vezényléssel
+Nagy méretű, állapot nélküli számítási feladatokhoz van optimalizálva, azonos példányokkal.
+
+Az egységes vezénylésű virtuálisgép-méretezési készletek virtuálisgép-profillal vagy -sablonnal skálázhatóak fel a kívánt kapacitásra. Bár van lehetőség az egyes virtuálisgép-példányok kezelésére és testreszabásra, a Uniform azonos virtuálisgép-példányokat használ. Az egyes egységes virtuálisgép-példányok a virtuálisgép-méretezési készlet virtuálisgép-API-parancsai révén vannak elérhetővé téve. Az egyes példányok nem kompatibilisek a szabványos Azure IaaS VM API-parancsokkal, az Azure felügyeleti funkcióival, például az Azure Resource Manager erőforrás-címkézés RBAC-engedélyekkel, Azure Backup vagy Azure Site Recovery. Az egységes vezénylés garantálja a tartalék tartományok magas rendelkezésre állását, ha kevesebb mint 100 példányra van konfigurálva. Általánosan elérhető az egységes vezénylés, és támogatja a méretezésikészlet-kezelés és -vezénylés teljes körét, beleértve a metrikaalapú automatikus skálázást, a példányvédelmet és az operációs rendszer automatikus frissítését. 
+
+
+## <a name="scale-sets-with-flexible-orchestration"></a>Méretezési készletek rugalmas vezényléssel 
+Nagy léptékű magas rendelkezésre állást érhet el azonos vagy több virtuálisgép-típussal.
+
+A rugalmas vezénylésnek megfelelően az Azure egységes felhasználói élményt nyújt az Azure-beli virtuális gépek ökoszisztémájában. A rugalmas vezénylés magas rendelkezésre állást garantál (legfeljebb 1000 virtuális géphez) azáltal, hogy a virtuális gépeket egy régió vagy egy rendelkezésre állási zóna tartalék tartományai között elterjed. Ez lehetővé teszi az alkalmazás horizontális felskálálását a tartalék tartományok elkülönítésének fenntartása mellett, ami elengedhetetlen a kvórumalapú vagy állapotalapú számítási feladatok futtatásához, beleértve a következőket:
+- Kvórumalapú számítási feladatok
+- Open-Source adatbázisok
+- Állapot- szerinti alkalmazások
+- Magas rendelkezésre állást és nagy méretű szolgáltatásokat igénylő szolgáltatások
+- Szolgáltatások, amelyek vegyesen szeretnék használni a virtuális gépek típusait, vagy kihasználják a kihasznált és az igény szerinti virtuális gépeket
+- Meglévő rendelkezésre állásikészlet-alkalmazások  
+
+> [!IMPORTANT]
+> A rugalmas vezénylési módban lévő virtuálisgép-méretezési készletek jelenleg nyilvános előzetes verzióban használatban vannak. Az alább ismertetett nyilvános előzetes verziójú funkciók használatához egy lemondási eljárásra van szükség.
+> Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-## <a name="what-has-changed-with-flexible-orchestration-mode"></a>Mi változott a rugalmas előkészítési móddal?
-A rugalmas előkészítés egyik fő előnye, hogy a méretezési csoportba tartozó virtuális gépek helyett a standard szintű Azure IaaS-alapú virtuális gépeken is biztosítanak előkészítési funkciókat. Ez azt jelenti, hogy a szabványos virtuálisgép-API-kat a rugalmas előkészítési példányok kezeléséhez használhatja, a virtuálisgép-méretezési csoportba tartozó VM API-k egységes előkészítéssel való használata helyett. Az előzetes verzió ideje alatt a példányok kezelése a rugalmas előkészítés és az egységes előkészítés között több különbséget is mutat. Általánosságban azt javasoljuk, hogy ha lehetséges, használja a standard Azure IaaS VM API-kat. Ebben a szakaszban a virtuálisgép-példányok rugalmas előkészítéssel történő kezelésével kapcsolatos ajánlott eljárásokat mutatjuk be.  
+## <a name="what-has-changed-with-flexible-orchestration-mode"></a>Mi változott a rugalmas vezénylési módban?
+A rugalmas vezénylés egyik fő előnye, hogy a méretezési készlet gyermek virtuális gépei helyett vezénylési funkciókat biztosít a standard Azure IaaS virtuális gépekhez. Ez azt jelenti, hogy a rugalmas vezénylési példányok kezelésekor használhatja az összes standard VM API-t a virtuálisgép-méretezési készlet virtuálisgép-API-i helyett, ha egységes vezénylést használ. Az előzetes verzió időtartama alatt számos különbség van a példányok rugalmas vezénylésben és az egységes vezénylésben való kezelése között. Általában azt javasoljuk, hogy amikor csak lehetséges, használja a standard Azure IaaS virtuálisgép-API-kat. Ebben a szakaszban példákat mutatunk be a rugalmas vezénylésű virtuálisgép-példányok kezeléséhez ajánlott eljárásokra.  
 
-### <a name="assign-fault-domain-during-vm-creation"></a>Tartalék tartomány kiosztása a virtuális gépek létrehozása során
-Megadhatja a tartalék tartományok számát a rugalmas előkészítési méretezési csoport számára. Alapértelmezés szerint, ha egy virtuális gépet egy rugalmas méretezési csoportba ad hozzá, az Azure egyenletesen osztja el a példányokat a tartalék tartományok között. Habár azt javasoljuk, hogy az Azure-t a tartalék tartományhoz rendelje, speciális vagy hibaelhárítási helyzetekben felülbírálhatja ezt az alapértelmezett viselkedést, és megadhatja azt a tartalék tartományt, ahol a példány el fog szállni.
+### <a name="assign-fault-domain-during-vm-creation"></a>Tartalék tartomány hozzárendelése a virtuális gép létrehozása során
+A rugalmas vezénylési méretezési készlethez kiválaszthatja a tartalék tartományok számát. Alapértelmezés szerint ha virtuális gépet ad hozzá egy rugalmas méretezési készlethez, az Azure egyenletesen eltárja a példányokat a tartalék tartományok között. Bár azt javasoljuk, hogy az Azure rendelje hozzá a tartalék tartományt, speciális vagy hibaelhárítási forgatókönyvek esetén felülbírálhatja ezt az alapértelmezett viselkedést, és megadhatja azt a tartalék tartományt, ahová a példány le fog ni.
 
 ```azurecli-interactive 
-az vm create –vmss "myVMSS"  –-platform_fault_domain 1
+az vm create â€“vmss "myVMSS"  â€“-platform_fault_domain 1
 ```
 
-### <a name="instance-naming"></a>Példányok elnevezése 
-Amikor létrehoz egy virtuális gépet, és hozzáadja azt egy rugalmas méretezési csoporthoz, a példányok neveinek teljes hozzáférése az Azure elnevezési konvenció szabályain belül történik. Ha a rendszer automatikusan hozzáadja a virtuális gépeket a méretezési csoporthoz az automatikus skálázás használatával, egy előtagot ad meg, és az Azure egy egyedi számot fűz hozzá a név végéhez.
+### <a name="instance-naming"></a>Példányelnevezés 
+Amikor létrehoz egy virtuális gépet, és hozzáadja egy rugalmas méretezési csoporthoz, teljes mértékben szabályozhatja a példányok nevét az Azure elnevezési konvenciós szabályaiban. Amikor a rendszer automatikusan hozzáadja a virtuális gépeket a méretezési készlethez az automatikus skálázáson keresztül, meg kell adnia egy előtagot, és az Azure egyedi számot fűz a név végéhez.
 
-### <a name="query-instances-for-power-state"></a>A Power State lekérdezési példányai
-Az előnyben részesített módszer az Azure Resource Graph használata egy virtuálisgép-méretezési csoport összes virtuális gépe lekérdezéséhez. Az Azure Resource Graph hatékony lekérdezési képességeket biztosít az Azure-erőforrások számára a nagy léptékű előfizetések között. 
+### <a name="query-instances-for-power-state"></a>Az energiaállapot lekérdezéspéldányai
+Az előnyben részesített módszer az Azure Resource Graph virtuálisgép-méretezési készlet összes virtuális gépének lekérdezése. Azure Resource Graph hatékony lekérdezési képességeket biztosít az Azure-erőforrásokhoz nagy méretekben, több előfizetésben. 
 
 ``` 
-| where type =~ 'Microsoft.Compute/virtualMachines' 
-| where properties.virtualMachineScaleSet contains "demo" 
-| extend powerState = properties.extended.instanceView.powerState.code 
-| project name, resourceGroup, location, powerState 
-| order by resourceGroup desc, name desc 
+|â€¯whereâ€¯typeâ€¯=~â€¯'Microsoft.Compute/virtualMachines' 
+|â€¯whereâ€¯properties.virtualMachineScaleSetâ€¯containsâ€¯"demo" 
+|â€¯extendâ€¯powerStateâ€¯=â€¯properties.extended.instanceView.powerState.code 
+|â€¯projectâ€¯name,â€¯resourceGroup,â€¯location,â€¯powerState 
+|â€¯orderâ€¯byâ€¯resourceGroupâ€¯desc,â€¯nameâ€¯desc 
 ```
 
-Az erőforrások [Azure Resource Graph](../governance/resource-graph/overview.md) használatával történő lekérdezése kényelmes és hatékony módja az Azure-erőforrások lekérdezésének, valamint az erőforrás-szolgáltatóhoz való API-hívások minimalizálásának. Az Azure Resource Graph egy végül konzisztens gyorsítótár, amelyben az új vagy frissített erőforrások nem jelenhetnek meg legfeljebb 60 másodpercig. A következőket teheti:
-- Egy erőforráscsoport vagy előfizetés virtuális gépei listázása.
-- A Kibontás lehetőséggel lekérheti a példány nézetet (tartalék tartomány-hozzárendelés, energiaellátás és kiépítési állapotok) az előfizetésben lévő összes virtuális géphez.
-- A virtuális gépek beolvasása API-val és parancsokkal egyetlen példány modelljének és példányának nézetét szerezheti be.
+Az erőforrások [lekérdezése](../governance/resource-graph/overview.md) Azure Resource Graph és hatékony módja az Azure-erőforrások lekérdezésének, és minimálisra csökkenti az erőforrás-szolgáltatóhoz való API-hívásokat. Azure Resource Graph egy végül konzisztens gyorsítótár, ahol az új vagy frissített erőforrások akár 60 másodpercig sem jelennek meg. A következőket teheti:
+- Az erőforráscsoportban vagy előfizetésben található virtuális gépek felsorolása.
+- A kibontás lehetőséggel lekérheti az előfizetésében található összes virtuális gép példánynézetét (tartalék tartomány hozzárendelése, energiaellátási és kiépítési államok).
+- A Get VM API és parancsok használatával modell- és példánynézetet is lekért egyetlen példányhoz.
 
-### <a name="scale-sets-vm-batch-operations"></a>Méretezési csoportok VM batch-műveletei
-A virtuálisgép-méretezési csoport VM API-jai helyett a standard VM-parancsok használatával elindíthatja, leállíthatja, újraindíthatja és törölheti a példányokat. A virtuálisgép-méretezési csoport VM batch-műveletei (az összes elindítása, az összes leállítása, az összes alaphelyzetbe állítás stb.) nem használhatók rugalmas előkészítési módban. 
+### <a name="scale-sets-vm-batch-operations"></a>Méretezési készletek virtuálisgép-kötegműveletei
+A virtuálisgép-méretezési csoport virtuálisgép-API-i helyett használja a standard virtuálisgép-parancsokat a példányok indításához, leállításához, újraindításához és törléséhez. A Virtuálisgép-méretezési készlet virtuálisgép-kötegműveletei (az összes újraindítása, az összes visszaállítása, az összes rendszerimizálása stb.) nincsenek rugalmas vezénylési módban használva. 
 
 ### <a name="monitor-application-health"></a>Alkalmazásállapot monitorozása 
-Az alkalmazás állapotának figyelése lehetővé teszi, hogy az alkalmazás egy szívveréssel biztosítsa az Azure-nak, hogy az alkalmazás kifogástalan vagy sérült legyen. Az Azure képes automatikusan helyettesíteni a nem kifogástalan virtuálisgép-példányokat. A rugalmas méretezési csoport példányai esetében telepítenie és konfigurálnia kell az alkalmazás állapota bővítményt a virtuális gépen. Az egységes méretezési csoport példányai esetében használhatja az alkalmazás állapotát vagy az állapot mérését Azure Load Balancer egyéni állapot-mintavételsel. 
+Az alkalmazás állapotfigyelése lehetővé teszi, hogy az alkalmazás szívveréssel megállapítsa, hogy az alkalmazás kifogástalan vagy nem megfelelő állapotú-e. Az Azure képes automatikusan lecserélni a nem megfelelő virtuálisgép-példányokat. Rugalmas méretezésikészlet-példányok esetén telepítenie és konfigurálnia kell az Application Health bővítményt a virtuális gépen. Egységes méretezési csoport példányai esetén használhatja az Application Health bővítményt, vagy mérheti az állapotát egy egyéni állapot Azure Load Balancer használatával. 
 
-### <a name="list-scale-sets-vm-api-changes"></a>Méretezési csoportok VM API-változásainak listázása 
-Virtual Machine Scale Sets lehetővé teszi a méretezési csoporthoz tartozó példányok listázását. A rugalmas összehangolás Virtual Machine Scale Sets a virtuálisgép-parancs lista a méretezési csoportok virtuálisgép-azonosítóinak listáját tartalmazza. Ezután meghívhatja a GET Virtual Machine Scale Sets VM-parancsokat, hogy további részleteket kapjon arról, hogyan működik a méretezési csoport a virtuálisgép-példánnyal. A virtuális gép összes adatának beszerzéséhez használja a standard GET VM-parancsokat vagy az [Azure Resource Graphot](../governance/resource-graph/overview.md). 
+### <a name="list-scale-sets-vm-api-changes"></a>Méretezési készletek virtuálisgép-API-módosításainak felsorolása 
+Virtual Machine Scale Sets lehetővé teszi a méretezési készlethez tartozó példányok felsorolását. Rugalmas vezényléssel a Virtual Machine Scale Sets virtuálisgép-parancs listájában megjelenik a méretezési készletek virtuálisgép-adatbázisának listája. Ezután a GET Virtual Machine Scale Sets virtuálisgép-parancsokat hívva további részleteket kaphat arról, hogyan működik együtt a méretezési készlet a virtuálisgép-példányokkal. A virtuális gép teljes részleteinek lekért információkért használja a standard GET VM-parancsokat, vagy [Azure Resource Graph.](../governance/resource-graph/overview.md) 
 
-### <a name="retrieve-boot-diagnostics-data"></a>Rendszerindítási diagnosztikai adatlekérdezés 
-A standard VM API-k és parancsok használatával lekérheti a példány rendszerindítási diagnosztikai adatait és a képernyőképeket. A virtuálisgép-rendszerindítási diagnosztikai API-k és parancsok Virtual Machine Scale Sets nem használhatók rugalmas előkészítési módú példányokkal.
+### <a name="retrieve-boot-diagnostics-data"></a>Rendszerindítási diagnosztikai adatok lekérése 
+Használja a standard VM API-kat és parancsokat a példány rendszerindítási diagnosztikai adatainak és képernyőképének lekéréséhez. A Virtual Machine Scale Sets virtuális gép rendszerindítási diagnosztikai API-ját és parancsait a rendszer nem használja rugalmas vezénylési módú példányokkal.
 
 ### <a name="vm-extensions"></a>Virtuálisgép-bővítmények 
-A standard szintű virtuális gépekhez célként megadott bővítmények használata az egységes előkészítési üzemmódú példányok helyett.
+Használjon standard virtuális gépekhez célzott bővítményeket az egységes vezénylési módú példányokhoz megcélzott bővítmények helyett.
 
 
-## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>Rugalmas, egységes és rendelkezésre állási készletek összehasonlítása 
-A következő táblázat összehasonlítja a rugalmas előkészítési módot, az egységes előkészítési módot és a rendelkezésre állási csoportokat a funkcióik alapján.
+## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>A rugalmas, egységes és rendelkezésre állási készletek összehasonlítása 
+Az alábbi táblázat a rugalmas vezénylési módot, az egységes vezénylési módot és a rendelkezésre állási készleteket hasonlítja össze azok funkciói alapján.
 
-| Szolgáltatás | Rugalmas előkészítéssel támogatott (előzetes verzió) | Egységes összehangolás (általános rendelkezésre állás) által támogatott | A AvSets által támogatott (általánosan elérhető) |
+| Szolgáltatás | Rugalmas vezénylés által támogatott (előzetes verzió) | Egységes vezénylés által támogatott (általánosan elérhető) | Az AvSets által támogatott (általánosan elérhető) |
 |-|-|-|-|
-|         Virtuális gép típusa  | Standard szintű Azure IaaS VM (Microsoft. számítási/virtualmachines)  | Meghatározott virtuális gépek méretezése (Microsoft. számítási/virtualmachinescalesets/virtualmachines)  | Standard szintű Azure IaaS VM (Microsoft. számítási/virtualmachines)  |
-|         Támogatott SKU-i  |            D sorozat, E sorozat, F sorozat, sorozat, B sorozat, Intel, AMD  |            Összes SKU  |            Összes SKU  |
-|         Rendelkezésre állási zónák  |            Egyetlen rendelkezésre állási zónában lévő összes példány megadása opcionálisan |            Példányok meghatározása 1, 2 vagy 3 rendelkezésre állási zónán belül  |            Nem támogatott  |
-|         Teljes hozzáférés a virtuális gépekhez, hálózati adapterekhez, lemezekhez  |            Yes  |            Korlátozott vezérlés a virtuálisgép-méretezési csoportokkal rendelkező VM API-val  |            Yes  |
+|         Virtuális gép típusa  | Standard Azure IaaS virtuális gép (Microsoft.compute /virtualmachines)  | Méretezésikészlet-specifikus virtuális gépek (Microsoft.compute /virtualmachinescalesets/virtualmachines)  | Standard Azure IaaS virtuális gép (Microsoft.compute /virtualmachines)  |
+|         Támogatott SKUS-k  |            D sorozat, E sorozat, F sorozat, A sorozat, B sorozat, Intel, AMD  |            Minden SKUs  |            Minden SKUs  |
+|         Rendelkezésre állási zónák  |            Megadhatja, hogy az összes példány egyetlen rendelkezésre állási zónába ássa le |            1, 2 vagy 3 rendelkezésre állási zónába leérkedő példányok megadása  |            Nem támogatott  |
+|         A virtuális gépek, a NIC-k és a lemezek teljes körű vezérlése  |            Igen  |            Korlátozott hozzáférés a virtuálisgép-méretezési készletek VM API-jának használatával  |            Igen  |
 |         Automatikus skálázás  |            Nem  |            Igen  |            Nem  |
-|         Virtuális gép kiosztása egy adott tartalék tartományhoz  |            Igen  |             Nem   |            Nem  |
-|         Hálózati adapterek és lemezek eltávolítása virtuálisgép-példányok törlésekor  |            Nem  |            Igen  |            Nem  |
-|         Frissítési szabályzat (VM-méretezési csoportok) |            No  |            Automatikus, működés közbeni manuális  |            N/A  |
-|         Operációs rendszer automatikus frissítései (VM-méretezési csoportok) |            Nem  |            Igen  |            N/A  |
-|         A vendég biztonsági javításában  |            Igen  |            Nem  |            Igen  |
-|         Értesítések leállítása (virtuálisgép-méretezési csoportok) |            Nem  |            Igen  |            N/A  |
-|         Példány javítása (virtuálisgép-méretezési csoportok) |            Nem  |            Igen   |            N/A  |
-|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Yes  |
-|         Helyszíni példányok és díjszabás   |            Igen, mind a helyszíni, mind a Normál prioritású példányok használhatók  |            Igen, a példányoknak mind a helyszínen, mind pedig a szokásosnak kell lenniük  |            Nem, csak normál prioritású példányok  |
-|         Vegyes operációs rendszerek  |            Igen, a Linux és a Windows ugyanazon a rugalmas méretezési csoporton belül lehet |            Nem, a példányok azonos operációs rendszer  |               Igen, a Linux és a Windows ugyanazon a rugalmas méretezési csoporton belül lehet |
-|         Alkalmazás állapotának figyelése  |            Alkalmazás állapota bővítmény  |            Az alkalmazás állapota vagy az Azure Load Balancer mintavétele  |            Alkalmazás állapota bővítmény  |
-|         UltraSSD-lemezek   |            Yes  |            Igen, csak a zónákon üzemelő példányok esetében  |            No  |
-|         InfiniBand   |            No  |            Igen, csak egy elhelyezési csoport  |            Yes  |
-|         írásgyorsító   |            Nem  |            Igen  |            Yes  |
-|         Proximity elhelyezési csoportok   |            Igen  |            Igen  |            Yes  |
-|         Dedikált Azure-gazdagépek   |            Nem  |            Igen  |            Yes  |
-|         Alapszintű SLB   |            Nem  |            Igen  |            Yes  |
-|         Standard SKU Azure Load Balancer |            Igen  |            Igen  |            Yes  |
-|         Application Gateway  |            Nem  |            Igen  |            Yes  |
-|         Karbantartási ellenőrzés   |            Nem  |            Igen  |            Yes  |
-|         Készletben lévő virtuális gépek listázása  |            Igen  |            Yes  |            Igen, virtuális gépek listázása a AvSet-ben  |
-|         Azure-riasztások  |            Nem  |            Igen  |            Yes  |
-|         VM-ismeretek  |            Nem  |            Igen  |            Yes  |
-|         Azure Backup  |            Igen  |            Igen  |            Yes  |
+|         Virtuális gép hozzárendelése egy adott tartalék tartományhoz  |            Igen  |             Nem   |            Nem  |
+|         A virtuálisgép-példányok törlésekor távolítsa el a NIC-ket és a lemezeket  |            Nem  |            Igen  |            Nem  |
+|         Frissítési szabályzat (virtuálisgép-méretezési készletek) |            Nem  |            Automatikus, működés közbeni, manuális  |            N/A  |
+|         Automatikus operációsrendszer-frissítések (virtuálisgép-méretezési készletek) |            Nem  |            Igen  |            N/A  |
+|         Vendég biztonsági javításában  |            Igen  |            Nem  |            Igen  |
+|         Leállítja az értesítéseket (virtuálisgép-méretezési készletek) |            Nem  |            Igen  |            N/A  |
+|         Példányjavítás (virtuálisgép-méretezési készletek) |            Nem  |            Igen   |            N/A  |
+|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Igen  |
+|         Spot® âinstances and pricingà€ â  |            Igen, a Spot és a Regular prioritáspéldány is lehet  |            Igen, a példányok csak spot vagy csak normál példányok  |            Nem, csak a normál prioritású példányok  |
+|         Operációs rendszerek vegyesen  |            Igen, a Linux és a Windows ugyanabban a rugalmas méretezési készletben is lehet |            Nem, a példányok ugyanaz az operációs rendszer  |               Igen, a Linux és a Windows ugyanabban a rugalmas méretezési készletben is lehet |
+|         Alkalmazás állapotának figyelése  |            Alkalmazás állapotbővítménye  |            Alkalmazás állapotkiterjesztése vagy Azure Load Balancer-mintavétel  |            Alkalmazás állapotbővítménye  |
+|         UltraSSDà€ àDisksâ€ à  |            Igen  |            Igen, csak zóna üzemelő példányok esetén  |            Nem  |
+|         Infiniband® à  |            Nem  |            Igen, csak egy elhelyezési csoport  |            Igen  |
+|         Writeâ€ àAccelerator® à  |            Nem  |            Igen  |            Igen  |
+|         Közelségi hely€ àPlacement Groups® à  |            Igen  |            Igen  |            Igen  |
+|         Azure-beli dedikált gazdagépek  |            Nem  |            Igen  |            Igen  |
+|         Alapszintű SLBà€ à  |            Nem  |            Igen  |            Igen  |
+|         Azure Load Balancer standard termékváltozat |            Igen  |            Igen  |            Igen  |
+|         Application Gateway  |            Nem  |            Igen  |            Igen  |
+|         Karbantartás-vezérlés  |            Nem  |            Igen  |            Igen  |
+|         A készletbe sorolt virtuális gépek listája  |            Igen  |            Igen  |            Igen, list virtuális gépek az AvSet-ban  |
+|         Azure-riasztások  |            Nem  |            Igen  |            Igen  |
+|         VM Insights  |            Nem  |            Igen  |            Igen  |
+|         Azure Backup  |            Igen  |            Igen  |            Igen  |
 |         Azure Site Recovery  |     Nem  |            Nem  |            Igen  |
-|         Meglévő virtuális gép hozzáadása vagy eltávolítása a csoportba  |            Nem  |            Nem  |            Nem  | 
+|         Meglévő virtuális gép hozzáadása/eltávolítása a csoporthoz  |            Nem  |            Nem  |            Nem  | 
 
 
-## <a name="register-for-flexible-orchestration-mode"></a>Regisztráció rugalmas előkészítési módra
-A virtuálisgép-méretezési csoportok rugalmas előkészítési módban való üzembe helyezéséhez először regisztrálnia kell az előfizetését az előzetes verzió szolgáltatáshoz. A regisztráció elvégzése több percet is igénybe vehet. A regisztráláshoz a következő Azure PowerShell vagy Azure CLI-parancsok használhatók.
+## <a name="register-for-flexible-orchestration-mode"></a>Regisztrálás rugalmas vezénylési módra
+Ahhoz, hogy rugalmas vezénylési módban helyez üzembe virtuálisgép-méretezési készleteket, először regisztrálnia kell az előfizetését az előzetes verziójú funkcióra. A regisztráció több percig is eltarthat. A regisztrációhoz használhatja Azure PowerShell Azure CLI-parancsokat.
 
 ### <a name="azure-portal"></a>Azure Portal
-Navigáljon a Részletek lapra ahhoz az előfizetéshez, amelyhez létre szeretné hozni a méretezési csoport rugalmas előkészítési módot, majd válassza a menü előnézet funkciók elemét. Válassza ki az engedélyezni kívánt két Orchestrator-funkciót: _VMOrchestratorSingleFD_ és _VMOrchestratorMultiFD_, majd kattintson a regisztráció gombra. A szolgáltatás regisztrálása akár 15 percet is igénybe vehet.
+Lépjen annak az előfizetésnek a részletek oldalára, amelyről rugalmas vezénylési módban szeretne méretezési csoportokat létrehozni, majd válassza az Előzetes verziójú funkciók lehetőséget a menüből. Válassza ki az engedélyezni kívánt két vezénylési funkciót: _VMOrchestratorSingleFD_ és _VMOrchestratorMultiFD,_ majd kattintson a Regisztráció gombra. A szolgáltatásregisztráció akár 15 percet is igénybe vehet.
 
-![Funkció regisztrálása.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+![Szolgáltatásregisztráció.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
 
-Ha a szolgáltatások regisztrálva lettek az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra való váltás propagálásával. Navigáljon az előfizetés erőforrás-szolgáltatók lapjára, válassza a Microsoft. számítás lehetőséget, majd kattintson az újbóli regisztrálás gombra.
+Miután regisztrálta a funkciókat az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással teljes körűen be kell fejeződött a feliratkozási folyamat. Lépjen az előfizetéséhez az Erőforrás-szolgáltatók lapra, válassza a Microsoft.compute lehetőséget, majd kattintson az Újra regisztrálás elemre.
 
 ![Regisztráció újra](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
-Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot. 
+A [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmag használatával engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
 Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute  
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése: 
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute 
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot. 
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-Az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal engedélyezheti az előfizetésének előnézetét. 
+Az [az feature register használatával](/cli/azure/feature#az-feature-register) engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD 
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése: 
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD 
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+Miután regisztrálta a funkciót az előfizetésben, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással teljes körűen be kell fejeződött a feliratkozási folyamat. 
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute 
 ```
 
 
-## <a name="get-started-with-flexible-orchestration-mode"></a>Ismerkedés a rugalmas előkészítési móddal
+## <a name="get-started-with-flexible-orchestration-mode"></a>A rugalmas vezénylési mód első lépések
 
-A méretezési csoportokhoz a Azure Portal, az Azure CLI, a Terraform vagy a REST API segítségével rugalmasan összehangoló üzemmódot érhet el.
+Első lépések a méretezési készletek rugalmas vezénylési módjával a Azure Portal, az Azure CLI, a Terraform vagy a REST API.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Hozzon létre egy virtuálisgép-méretezési készletet rugalmas hangolási módban a Azure Portalon keresztül.
+Hozzon létre egy virtuálisgép-méretezési csoport rugalmas vezénylési módban a Azure Portal.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
-1. A keresési sávban keresse meg és válassza ki a **virtuálisgép-méretezési** csoportok elemet. 
-1. A **virtuálisgép-méretezési** csoportok lapon válassza a **Létrehozás** lehetőséget.
-1. A **virtuálisgép-méretezési csoport létrehozása** lapon tekintse meg az **előkészítési szakaszt.**
-1. A előkészítési **mód** beállításnál válassza a **rugalmas** lehetőséget.
-1. Állítsa be a tartalék **tartományok darabszámát**.
-1. Állítsa be a méretezési csoport létrehozását. A méretezési csoport létrehozásával kapcsolatos további információkért lásd: [méretezési csoport létrehozása a Azure Portalban](quick-create-portal.md#create-virtual-machine-scale-set) .
+1. Jelentkezzen be a [Azure Portal.](https://portal.azure.com)
+1. A keresősávban keresse meg és válassza a **Virtuálisgép-méretezési készletek lehetőséget.** 
+1. A **Virtuálisgép-méretezési** **csoport oldalon válassza a Létrehozás** lehetőséget.
+1. A **Virtuálisgép-méretezési csoport létrehozása oldalon** tekintse meg a **Vezénylés szakaszt.**
+1. A **Vezénylési mód beállításhoz** válassza a **Rugalmas** lehetőséget.
+1. Állítsa be **a Tartalék tartományok számát.**
+1. Fejezze be a méretezési készlet létrehozását. A [méretezési csoport létrehozásáról](quick-create-portal.md#create-virtual-machine-scale-set) a méretezési csoport Azure Portal a méretezési csoport létrehozásáról.
 
-:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/portal-create-orchestration-mode-flexible.png" alt-text="Skálázási mód a portálon méretezési csoport létrehozásakor":::
+:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/portal-create-orchestration-mode-flexible.png" alt-text="Vezénylési mód a Portálon méretezési készlet létrehozásakor":::
 
-Ezután adjon hozzá egy virtuális gépet a méretezési csoporthoz rugalmas előkészítési módban.
+Ezután adjon hozzá egy virtuális gépet a méretezési készlethez rugalmas vezénylési módban.
 
-1. A keresési sávban keresse meg és válassza ki a **virtuális gépek** elemet.
-1. A **virtuális gépek** lapon válassza a **Hozzáadás** lehetőséget.
-1. Az **alapvető beállítások** lapon tekintse meg a **példány részletei** szakaszt.
-1. Adja hozzá a virtuális gépet a méretezési csoporthoz rugalmas előkészítési módban a méretezési csoportnak a **rendelkezésre állási beállításokban** való kiválasztásával. A virtuális gépet egy adott régióban, zónában és erőforráscsoporthoz is hozzáadhatja egy méretezési csoporthoz.
+1. A keresősávban keresse meg és válassza a **Virtuális gépek lehetőséget.**
+1. A **Virtuális** gépek lapon válassza **a Hozzáadás** lehetőséget.
+1. Az Alapvető **beállítások lapon** tekintse meg a Példány **részletei szakaszt.**
+1. Adja hozzá a virtuális gépet a méretezési készlethez rugalmas vezénylési módban a rendelkezésre állási lehetőségek között a méretezési **készlet kiválasztásával.** A virtuális gépet hozzáadhatja egy ugyanabban a régióban, zónában és erőforráscsoportban lévő méretezési csoporthoz.
 1. Fejezze be a virtuális gép létrehozását. 
 
-:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/vm-portal-orchestration-mode-flexible.png" alt-text="Virtuális gép felvétele a rugalmas előkészítési mód méretezési csoportba":::
+:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/vm-portal-orchestration-mode-flexible.png" alt-text="Virtuális gép hozzáadása a rugalmas vezénylési módú méretezési készlethez":::
 
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Rugalmas virtuálisgép-méretezési csoport létrehozása az Azure CLI-vel. Az alábbi példa egy olyan rugalmas méretezési csoport létrehozását mutatja be, amelyben a tartalék tartományok száma 3, a virtuális gép létrejön, majd a rugalmas méretezési csoportba kerül. 
+Rugalmas virtuálisgép-méretezési csoport létrehozása az Azure CLI használatával. Az alábbi példa egy rugalmas méretezési csoport létrehozását mutatja be, amelyben a tartalék tartományok száma 3, a rendszer létrehoz egy virtuális gépet, majd hozzáadja a rugalmas méretezési csoporthoz. 
 
 ```azurecli-interactive
 vmssflexname="my-vmss-vmssflex"  
@@ -228,11 +228,11 @@ az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image Ubu
 ```
 
 ### <a name="terraform"></a>Terraform
-Hozzon létre egy rugalmas virtuálisgép-méretezési készletet a Terraform. Ehhez a folyamathoz a **Terraform Azurerm Provider v 2.15.0** vagy újabb verzió szükséges. Vegye figyelembe a következő paramétereket:
-- Ha nincs megadva zóna, `platform_fault_domain_count` a régiótól függően 1, 2 vagy 3 lehet.
-- Ha meg van adva egy zóna, `the fault domain count` 1 lehet.
-- `single_placement_group` a paraméternek `false` rugalmas virtuálisgép-méretezési csoportokhoz kell tartoznia.
-- Ha regionális telepítést hajt végre, nem kell megadnia a következőt: `zones` .
+Rugalmas virtuálisgép-méretezési csoport létrehozása a Terraformmal. Ehhez a folyamathoz **a Terraform Azurerm-szolgáltató 2.15.0-s vagy** újabb szükséges. Figyelje meg a következő paramétereket:
+- Ha nincs zóna megadva, a régiótól függően `platform_fault_domain_count` 1, 2 vagy 3 lehet.
+- Zóna megszava esetén a `the fault domain count` lehet 1.
+- `single_placement_group` A paraméternek rugalmas `false` virtuálisgép-méretezési készletekhez kell lennie.
+- Regionális üzembe helyezés esetén nem kell megadnia a `zones` értéket.
 
 ```terraform
 resource "azurerm orchestrated_virtual_machine_scale_set" "tf_vmssflex" {
@@ -248,9 +248,9 @@ zones = ["1"]
 
 ### <a name="rest-api"></a>REST API
 
-1. Hozzon létre egy üres méretezési készletet. A következő paraméterek szükségesek:
-    - API-verzió 2019-12-01 (vagy újabb) 
-    - Egy elhelyezési csoportnak `false` rugalmas méretezési csoport létrehozásakor kell lennie
+1. Hozzon létre egy üres méretezési csoport. A következő paraméterek szükségesek:
+    - API-verzió: 2019.12. 01. (vagy újabb) 
+    - Rugalmas méretezési csoport létrehozásakor `false` egyetlen elhelyezési csoportnak kell lennie
 
     ```json
     {
@@ -266,9 +266,9 @@ zones = ["1"]
     }
     ```
 
-2. Adja hozzá a virtuális gépeket a méretezési csoporthoz.
-    1. Rendelje hozzá a `virtualMachineScaleSet` tulajdonságot a korábban létrehozott méretezési készlethez. A `virtualMachineScaleSet` virtuális gép létrehozásakor meg kell adnia a tulajdonságot. 
-    1. Több virtuális gép egyidejű létrehozásához használhatja a **copy ()** Azure Resource Manager template függvényt. Lásd: [erőforrás-iteráció](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) Azure Resource Manager-sablonokban. 
+2. Virtuális gépek hozzáadása a méretezési készlethez.
+    1. Rendelje hozzá `virtualMachineScaleSet` a tulajdonságot a korábban létrehozott méretezési készlethez. A tulajdonságot a virtuális gép létrehozásakor kell `virtualMachineScaleSet` megadnia. 
+    1. A **copy()** Azure Resource Manager több virtuális gép létrehozására is használhatja egyszerre. Lásd: [Erőforrás-iteráció](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) Azure Resource Manager sablonokban. 
 
     ```json
     {
@@ -295,60 +295,60 @@ zones = ["1"]
     }
     ```
 
-Tekintse meg az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-vmss-flexible-orchestration-mode) gyors üzembe helyezésének teljes példáját.
+Teljes [példát az Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-vmss-flexible-orchestration-mode) rövid útmutatóban láthat.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Milyen mértékben támogatja a rugalmas előkészítést?**
+**Mekkora méretet támogat a rugalmas vezénylés?**
 
-A méretezési csoportokhoz akár 1000 virtuális gépet is hozzáadhat rugalmas előkészítési módban.
+Rugalmas vezénylési módban akár 1000 virtuális gép is hozzáadható egy méretezési készlethez.
 
-**Hogyan hasonlítja össze a rendelkezésre állást rugalmas előkészítéssel a rendelkezésre állási csoportokkal vagy az egységes előkészítéssel?**
+**Hogyan viszonyul a rendelkezésre állás a rugalmas vezényléssel a rendelkezésre állási készletekhez vagy az egységes vezényléshez?**
 
-| Rendelkezésre állási attribútum  | Rugalmas előkészítés  | Egységes előkészítés  | Rendelkezésre állási csoportok  |
+| Rendelkezésre állási attribútum  | Rugalmas vezénylés  | Egységes vezénylés  | Rendelkezésre állási csoportok  |
 |-|-|-|-|
 | Üzembe helyezés rendelkezésre állási zónák között  | Nem  | Igen  | Nem  |
-| Tartalék tartomány rendelkezésre állási garanciái a régión belül  | Igen, akár 1000 példány is elosztható akár 3 tartalék tartomány között a régióban. A tartalék tartományok maximális száma régiónként eltérő  | Igen, legfeljebb 100 példány  | Igen, legfeljebb 200 példány  |
-| Elhelyezési csoportok  | A rugalmas mód mindig több elhelyezési csoportot használ (singlePlacementGroup = false)  | Egyetlen elhelyezési csoportot vagy több elhelyezési csoportot is választhat | N/A  |
-| Frissítési tartományok  | Nincs, a karbantartási vagy a gazdagép frissítései a tartalék tartomány szerint vannak végrehajtva.  | Legfeljebb 5 frissítési tartomány  | Legfeljebb 20 frissítési tartomány  |
+| Tartalék tartomány rendelkezésre állási garanciái egy régión belül  | Igen, legfeljebb 1000 példány használhatja a régió legfeljebb 3 tartalék tartományát. A tartalék tartományok maximális száma régiónként változik  | Igen, legfeljebb 100 példány  | Igen, legfeljebb 200 példány  |
+| Elhelyezési csoportok  | A rugalmas mód mindig több elhelyezési csoportot használ (singlePlacementGroup = false)  | Választhat egy elhelyezési csoportot vagy több elhelyezési csoportot is. | N/A  |
+| Frissítési tartományok  | Nincs, a karbantartási vagy gazdagép-frissítések tartalék tartományon vannak el végezve a tartalék tartomány szerint  | Legfeljebb 5 frissítési tartomány  | Legfeljebb 20 frissítési tartomány  |
 
 
-## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>Rugalmas előkészítéssel rendelkező méretezési csoportok – problémamegoldás
-A hibaelhárítási forgatókönyvnek megfelelő megoldás megkeresése. 
+## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>Rugalmas vezénylésű méretezési készletek hibaelhárítása
+Keresse meg a megfelelő megoldást a hibaelhárítási forgatókönyvhöz. 
 
 ```
 InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
 ```
 
-**OK:** Az előfizetés nincs regisztrálva a rugalmas előkészítési mód nyilvános előzetes verziójához. 
+**Ok:** Az előfizetés nincs regisztrálva a rugalmas vezénylési mód nyilvános előzetes kiadásában. 
 
-**Megoldás:** A következő útmutatást követve regisztrálhat a rugalmas előkészítési mód nyilvános előzetes verziójára. 
+**Megoldás:** A fenti utasításokat követve regisztráljon a rugalmas vezénylési mód nyilvános előzetes kiadására. 
 
 ```
 InvalidParameter. The specified fault domain count 2 must fall in the range 1 to 1.
 ```
 
-**OK:** A `platformFaultDomainCount` paraméter érvénytelen a kiválasztott régióhoz vagy zónához. 
+**Ok:** A `platformFaultDomainCount` paraméter érvénytelen a kiválasztott régióhoz vagy zónához. 
 
-**Megoldás:** Érvényes értéket kell választania `platformFaultDomainCount` . A zónákon alapuló központi telepítések esetében a maximális `platformFaultDomainCount` érték 1. Olyan regionális központi telepítések esetén, ahol nincs megadva zóna, a maximális eltérés a `platformFaultDomainCount` régiótól függően változhat. Tekintse meg a [virtuális gépek rendelkezésre állásának kezelése a parancsfájlok](../virtual-machines/availability.md) számára című témakört, amely meghatározza a tartalék tartományok maximális számát régiónként. 
+**Megoldás:** Érvényes értéket kell `platformFaultDomainCount` választania. Zónaális üzemelő példányok esetén a maximális `platformFaultDomainCount` érték 1. Regionális üzemelő példányok esetén, ahol nincs zóna megadva, a maximális érték `platformFaultDomainCount` a régiótól függően változik. A hibatartományok régiónkénti maximális számát a virtuális gépek rendelkezésre állásának kezelése szkriptek esetén lásd: Manage the [availability of VMs](../virtual-machines/availability.md) for scripts (Virtuális gépek rendelkezésre állásának kezelése szkriptek esetén). 
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.
 ```
 
-**OK:** Egy vagy több virtuális géphez társított rugalmas előkészítési módban lévő méretezési csoport törlésére tett kísérlet. 
+**Ok:** Egy vagy több virtuális géphez társított rugalmas vezénylési módban próbálja törölni a méretezési csoportokat. 
 
-**Megoldás:** Törölje a méretezési csoporthoz társított összes virtuális gépet rugalmas előkészítési módban, majd törölje a méretezési készletet.
+**Megoldás:** A méretezési csoporthoz társított összes virtuális gép törlése rugalmas vezénylési módban, majd a méretezési csoport törlése.
 
 ```
 InvalidParameter. The value 'True' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: False.
 ```
-**OK:** Az előfizetés regisztrálva van a rugalmas előkészítési mód előzetes verziójában; a paraméter azonban `singlePlacementGroup` *igaz* értékre van állítva. 
+**Ok:** Az előfizetés regisztrálva van a rugalmas vezénylési mód előzetes kiadására; A paraméter azonban `singlePlacementGroup` True (Igaz) *értékre van állítva.* 
 
-**Megoldás:** A `singlePlacementGroup` *értéket hamis* értékre kell állítani. 
+**Megoldás:** A `singlePlacementGroup` értéknek False (Hamis) értéket *kell beállítania.* 
 
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Megtudhatja, hogyan helyezheti üzembe az alkalmazást a méretezési csoporton.](virtual-machine-scale-sets-deploy-app.md)
+> [Megtudhatja, hogyan helyezheti üzembe az alkalmazást a méretezési készleten.](virtual-machine-scale-sets-deploy-app.md)

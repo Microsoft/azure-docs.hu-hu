@@ -1,121 +1,103 @@
 ---
 title: Fürtök létrehozása Windows Serveren és Linuxon
-description: Service Fabric-fürtök Windows Serveren és Linuxon futnak. A Windows Servert vagy Linux rendszert futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
+description: Service Fabric fürtök Windows Serveren és Linuxon futnak. A windowsos és linuxos Service Fabric bárhol telepíthet és futtathat alkalmazásokat.
 services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aed4ab38db9f8d8b95647b6662245c93778afed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97882211"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520156"
 ---
-# <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
-A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
+# <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure Service Fabric fürtök áttekintése
+A Service Fabric virtuális vagy fizikai gépek hálózatra csatlakoztatott készlete, amelyben mikroszolgáltatások vannak üzembe állítva és kezelve. A fürt részét képezi gépeket vagy virtuális gépeket fürtcsomópontnak nevezzük. A fürtök több ezer csomópontra méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, a Service Fabric újra egyensúlyba hoz a szolgáltatáspartíció replikáit és példányait a csomópontok megnövekedett száma között. Az alkalmazás általános teljesítménye javul, és csökken a memória-hozzáférésért való hozzáférésért való elégedettség. Ha a fürt csomópontjai nincsenek hatékonyan használva, csökkentheti a fürtben lévő csomópontok számát. Service Fabric újra kiegyensúlyozja a partícióreplikák és -példányok számát a csökkentett számú csomóponton, hogy jobban kihasználhatja az egyes csomópontok hardverét.
 
-A csomópont típusa a fürtben lévő csomópontok (virtuális gépek) méretét, számát és tulajdonságait határozza meg. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A csomóponttípusok a fürtcsomópontcsoportok szerepkörének (például „előtér” vagy „háttér”) meghatározására szolgálnak. A fürt több csomóponttípussal is rendelkezhet, de éles fürtök esetében az elsődleges csomóponttípusnak legalább öt (vagy tesztfürtök esetében legalább három) virtuális géppel kell rendelkeznie. [A Service Fabric-rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) elhelyezése az elsődleges csomóponttípusra történik. 
+A csomóponttípus határozza meg a fürtben lévő csomópontok (virtuális gépek) méretét, számát és tulajdonságait. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A csomóponttípusok a fürtcsomópontcsoportok szerepkörének (például „előtér” vagy „háttér”) meghatározására szolgálnak. A fürt több csomóponttípussal is rendelkezhet, de éles fürtök esetében az elsődleges csomóponttípusnak legalább öt (vagy tesztfürtök esetében legalább három) virtuális géppel kell rendelkeznie. [A Service Fabric-rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) elhelyezése az elsődleges csomóponttípusra történik. 
 
-## <a name="cluster-components-and-resources"></a>A fürt összetevői és erőforrásai
-Az Azure-beli Service Fabric-fürtök olyan Azure-erőforrások, amelyek más Azure-erőforrásokkal való interakciót és interakciót használnak:
+## <a name="cluster-components-and-resources"></a>Fürtösszetevők és -erőforrások
+Az Service Fabric Azure-beli fürt egy olyan Azure-erőforrás, amely más Azure-erőforrásokat használ és kommunikál:
 * Virtuális gépek és virtuális hálózati kártyák
 * virtuálisgép-méretezési csoportok
 * virtuális hálózatokkal
 * terheléselosztók
-* Storage-fiókok
+* tárfiókok
 * nyilvános IP-címek
 
 ![Service Fabric fürt][Image]
 
 ### <a name="virtual-machine"></a>Virtuális gép
-A fürt részét képező [virtuális gépeket](../virtual-machines/index.yml) a rendszer egy csomópontnak nevezi, azonban a fürtcsomópont egy Service Fabric futtatókörnyezeti folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például [elhelyezési tulajdonságok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Mindegyik gépen vagy virtuális gépen van egy automatikus indítási szolgáltatás, *FabricHost.exe*, amely indításkor elindul, majd elindítja a csomópontot alkotó két végrehajtható fájl, *Fabric.exe* és *FabricGateway.exe*. Az éles üzembe helyezés fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a *Fabric.exe* és *FabricGateway.exe* több példányának futtatásával.
+A [fürt részét](../virtual-machines/index.yml) képezi virtuális gép neve azonban csomópont, technikailag azonban a fürtcsomópont Service Fabric futásidejű folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok olyan jellemzőkkel rendelkeznek, mint [az elhelyezési tulajdonságok.](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) Minden gép vagy virtuális gép rendelkezik egy automatikus indítási szolgáltatással *(FabricHost.exe,* amely rendszerindításkor indul el, majd elindít két végrehajtható fájlt ( *Fabric.exe* és *FabricGateway.exe*). Az éles környezet fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is futtathat egyetlen gépen vagy virtuális gépen, ha több példányt futtat aFabric.exe *és* *FabricGateway.exe.*
 
-Minden virtuális gép egy virtuális hálózati adapterrel (NIC) van társítva, és minden hálózati adapterhez magánhálózati IP-cím van hozzárendelve.  A virtuális gépeket a hálózati ADAPTERen keresztül egy virtuális hálózathoz és egy helyi Balancerhez rendeli a rendszer.
+Minden virtuális gép egy virtuális hálózati adapterhez (NIC) van társítva, és minden hálózati adapterhez magánhálózati IP-cím van hozzárendelve.  A virtuális gép a hálózati adapteren keresztül van hozzárendelve egy virtuális hálózathoz és egy helyi kiegyensúlyozott hálózathoz.
 
-A fürtben lévő összes virtuális gép egy virtuális hálózatba kerül.  Az azonos csomópont típusú/méretezési csoport összes csomópontja ugyanarra az alhálózatra kerül a virtuális hálózaton.  Ezek a csomópontok csak magánhálózati IP-címekkel rendelkeznek, és nem közvetlenül a virtuális hálózaton kívül vannak címezve.  Az ügyfelek az Azure Load balanceren keresztül érhetik el a csomópontok szolgáltatásait.
+A fürt összes virtuális gépe egy virtuális hálózatban van elhelyezve.  Az azonos csomóponttípus/méretezési csoport összes csomópontja ugyanazon az alhálózaton található a virtuális hálózaton.  Ezek a csomópontok csak magánhálózati IP-címmel és közvetlenül nem címezhetők a virtuális hálózaton kívül.  Az ügyfelek az Azure Load Balanceren keresztül férhetnek hozzá a csomópontokon található szolgáltatásokhoz.
 
-### <a name="scale-setnode-type"></a>Méretezési csoport/csomópont típusa
-Fürt létrehozásakor meg kell adnia egy vagy több csomópont-típust.  A csomópontok típusában lévő csomópontok vagy virtuális gépek azonos méretűek és jellemzőkkel rendelkeznek, mint például a processzorok száma, a memória, a lemezek száma és a lemez I/O.  Előfordulhat például, hogy az egyik csomópont típusa olyan kis, előtér-virtuális gépek, amelyeken a portok nyitva vannak az interneten, miközben egy másik csomópont-típus lehet az olyan nagyméretű, háttérrendszer-alapú virtuális gépek, amelyek adatfeldolgozást végeznek. Az Azure-fürtökben minden egyes csomópont-típus egy [virtuálisgép-méretezési csoportra](../virtual-machine-scale-sets/index.yml)van leképezve.
+### <a name="scale-setnode-type"></a>Méretezésicsoport/csomópont típusa
+Fürt létrehozásakor egy vagy több csomóponttípust kell meghatároznia.  A csomópontok vagy virtuális gépek azonos méretűek és ugyanolyan jellemzőkkel rendelkeznek, mint a processzorok száma, a memória, a lemezek száma és a lemez I/O-i.  Az egyik csomóponttípus lehet például kis méretű, internetre nyitott portokkal, míg egy másik csomóponttípus az adatokat feldolgozó, nagy méretű, háttér virtuális gépekhez. Az Azure-fürtökben minden csomóponttípus egy virtuálisgép-méretezési [csoportra van leképezve.](../virtual-machine-scale-sets/index.yml)
 
-A méretezési csoportok segítségével virtuális gépek gyűjteményét telepítheti és kezelheti készletként. Az Azure Service Fabric-fürtben definiált egyes csomópont-típusok külön méretezési csoportot állítanak be. Az Service Fabric Runtime az Azure virtuálisgép-bővítmények használatával bootstrapped a méretezési csoportba tartozó egyes virtuális gépekre. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t módosíthatja, különböző portokat nyithat meg, és különböző kapacitási metrikákat használhat. A méretezési csoportoknak öt [frissítési tartománya](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) és öt tartalék [tartománya](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) van, és akár 100 virtuális gép is lehet.  Több mint 100 csomópontból álló fürtöket hoz létre több méretezési csoport/csomópont típus létrehozásával.
+Méretezésicsoportokkal virtuálisgép-gyűjteményeket helyezhet üzembe és kezelhet készletként. Az Azure-beli fürtökben meghatározott Service Fabric külön méretezési csoportot állít be. A Service Fabric futtatás a méretezési készlet minden virtuális gépére ki lesz indítva Azure-beli virtuálisgép-bővítmények használatával. Az egyes csomóponttípusokat egymástól függetlenül skálázhatja felfelé vagy lefelé, módosíthatja az egyes fürtcsomópontokon futó operációsrendszer-termékváltozatokat, különböző nyitott portkészletekkel rendelkezik, és különböző kapacitásmetrikákat használhat. A méretezési készlet [öt](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) frissítési és [öt](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) tartalék tartományból áll, és legfeljebb 100 virtuális gépből áll.  Több mint 100 csomópontból több fürtöt hozhat létre több méretezési csoport/csomóponttípus létrehozásával.
 
 > [!IMPORTANT]
-> A fürthöz tartozó csomópontok számának és a csomópontok típusának (méret, elsődleges, internetkapcsolat, virtuális gépek száma stb.) a kiválasztása fontos feladat.  További információért olvassa el a [fürt kapacitásának megtervezésével kapcsolatos szempontokat](service-fabric-cluster-capacity.md).
+> Fontos feladat a fürt csomóponttípusai számának és tulajdonságainak (méret, elsődleges, internetkapcsolat, virtuális gépek száma stb.) kiválasztása.  További információkért olvassa el a fürtkapacitás [tervezésével kapcsolatos szempontokat.](service-fabric-cluster-capacity.md)
 
-További információért olvassa el [Service Fabric csomópont-és virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md)csoportok című témakört.
+További információ: [csomóponttípusok Service Fabric virtuálisgép-méretezési készletek.](service-fabric-cluster-nodetypes.md)
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-A virtuálisgép-példányok egy olyan [Azure Load Balancer](../load-balancer/load-balancer-overview.md)mögött vannak, amely egy [nyilvános IP-címmel](../virtual-network/public-ip-addresses.md) és egy DNS-címkével van társítva.  Amikor kiépít egy fürtöt a *&lt; &gt; clustername*, a DNS-nevet, a *&lt; clustername &gt; . &lt; a Location &gt; . cloudapp.Azure.com* a terheléselosztó a méretezési csoport elején lévő DNS-címkéje.
+A virtuálisgép-példányok egy Azure Load Balancer mögött [vannak összekapcsolva,](../load-balancer/load-balancer-overview.md)amely egy nyilvános [IP-címhez](../virtual-network/public-ip-addresses.md) és DNS-címkéhez van társítva.  Amikor fürtnévvel létesít fürtöt, *&lt; &gt;* a DNS-név, *&lt; a fürtnév &gt; . &lt; A &gt; location .cloudapp.azure.com* a méretezési csoport előtt a terheléselosztáshoz társított DNS-címke.
 
-A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel](../virtual-network/private-ip-addresses.md)rendelkeznek.  A felügyeleti forgalom és a szolgáltatás forgalmának továbbítása a nyilvánosan elérhető terheléselosztó használatával történik.  A hálózati forgalom a NAT-szabályok (adott csomópontokhoz/példányokhoz csatlakozó ügyfelek) vagy terheléselosztási szabályok (a forgalom a virtuális gépek ciklikus időszeletelése) felé irányítja át ezeket a gépeket.  A terheléselosztó egy DNS-névvel rendelkező nyilvános IP-címmel rendelkezik, amely a (z *&lt; ) clustername formátumú &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha egy fürtben több csomópont-típust határoz meg, a rendszer minden egyes csomópont típusú/méretezési csoporthoz létrehoz egy terheléselosztó-t. Vagy beállíthat egyetlen Load balancert több csomópontos típushoz is.  Az elsődleges csomópont típusának DNS-címkéje *&lt; clustername &gt; . &lt; Location &gt; . cloudapp.Azure.com*, más típusú csomópontok esetén a DNS-címke *&lt; clustername &gt; - &lt; NodeType rendelkezik &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
+A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel vannak.](../virtual-network/private-ip-addresses.md)  A felügyeleti forgalom és a szolgáltatásforgalom a nyilvános terheléseltöltőn keresztül van irányítva.  A hálózati forgalom ezekre a gépekre NAT-szabályokon (az ügyfelek adott csomópontokhoz/példányokhoz csatlakoznak) vagy terheléselosztási szabályokon keresztül (a forgalom ciklikus időkorreklikusan halad a virtuális gépekhez).  A terheléselosztáshoz társított nyilvános IP-cím a következő formátumú DNS-névvel *&lt; rendelkezik: &gt; fürtnév. &lt; location &gt; .cloudapp.azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha több csomóponttípust határoz meg egy fürtben, a rendszer minden csomóponttípushoz/méretezési csoporthoz létrehoz egy terheléselelosztást. Vagy több csomóponttípushoz is beállíthat egyetlen terheléselosztást.  Az elsődleges csomópont típusa a fürtnév *&lt; DNS-címkével &gt; rendelkezik. &lt; location &gt; .cloudapp.azure.com*, a többi csomóponttípus DNS-címkéje *&lt; fürtnév &gt; - &lt; &gt; csomóponttípus. &lt; location &gt; .cloudapp.azure.com*.
 
 ### <a name="storage-accounts"></a>Tárfiókok
-Az [Azure Storage-fiók](../storage/common/storage-introduction.md) és a felügyelt lemezek minden egyes fürtcsomópont-típust támogatnak.
+Minden fürtcsomóponttípust támogat egy [Azure Storage-fiók és](../storage/common/storage-introduction.md) egy felügyelt lemez.
 
 ## <a name="cluster-security"></a>Fürtbiztonság
-A Service Fabric-fürt a saját erőforrása.  Az Ön feladata, hogy biztosítsa a fürtök védelmét, hogy megakadályozza a jogosulatlan felhasználók csatlakozását. A biztonságos fürt különösen fontos, ha éles számítási feladatokat futtat a fürtön. 
+A Service Fabric a saját erőforrása.  Az Ön felelőssége, hogy biztosítsa a fürtök biztonságát, hogy megakadályozza a jogosulatlan felhasználók csatlakozását. A biztonságos fürt akkor különösen fontos, ha éles számítási feladatokat futtat a fürtön. 
 
-### <a name="node-to-node-security"></a>Csomópontok közötti biztonság
-A csomópontok közötti biztonság biztosítja a fürtben lévő virtuális gépek vagy számítógépek közötti kommunikációt. Ez a biztonsági forgatókönyv biztosítja, hogy csak a fürthöz való csatlakozásra jogosult számítógépek vehessenek részt a fürtben lévő alkalmazások és szolgáltatások üzemeltetésében. A Service Fabric X. 509 tanúsítványokat használ a fürt biztonságossá tételéhez és az alkalmazás biztonsági funkcióinak biztosításához.  A fürt forgalmának biztonságossá tételéhez, valamint a fürt és a kiszolgáló hitelesítésének biztosításához a fürt tanúsítványa szükséges.  Önaláírt tanúsítványok is használhatók tesztelési fürtökhöz, de megbízható hitelesítésszolgáltatótól származó tanúsítványt kell használni az üzemi fürtök biztonságossá tételéhez.
+### <a name="node-to-node-security"></a>Csomópontok és csomópontok biztonsága
+A csomópontok közötti biztonság biztosítja a fürtben lévő virtuális gépek vagy számítógépek közötti kommunikációt. Ez a biztonsági forgatókönyv biztosítja, hogy csak a fürthöz való csatlakozásra jogosult számítógépek vehessenek részt a fürtben található alkalmazások és szolgáltatások üzemeltetésében. Service Fabric X.509-tanúsítványokat használ a fürtök biztonságossá tere és az alkalmazásbiztonsági funkciók biztosítása érdekében.  A fürt forgalmának biztonságához, valamint a fürt- és kiszolgálóhitelesítéshez fürt tanúsítványra van szükség.  Az önaírt tanúsítványok használhatók tesztfürtökhöz, de az éles fürtök biztonságossá teteméhez egy megbízható hitelesítésszolgáltatótól származó tanúsítványt kell használni.
 
-További információkért olvassa el a [csomópontok közötti biztonsági](service-fabric-cluster-security.md#node-to-node-security) tudnivalókat.
+További információ: [Csomópontok és csomópontok biztonsága](service-fabric-cluster-security.md#node-to-node-security)
 
-### <a name="client-to-node-security"></a>Az ügyfél és a csomópont közötti biztonság
-Az ügyfél és a csomópont közötti biztonság hitelesíti az ügyfeleket, és segít a fürtben lévő ügyfelek és egyes csomópontok közötti kommunikáció biztonságossá tételében. Ez a típusú biztonság biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és a fürtön üzembe helyezett alkalmazásokhoz. Az ügyfeleket egyedileg azonosítják az X. 509 tanúsítvány biztonsági hitelesítő adataival. Tetszőleges számú választható ügyféltanúsítvány használható a rendszergazda vagy a felhasználói ügyfelek hitelesítésére a fürttel.
+### <a name="client-to-node-security"></a>Ügyfél–csomópont biztonság
+Az ügyfél és a csomópont közötti biztonság hitelesíti az ügyfeleket, és biztonságossá teszi az ügyfél és a fürt egyes csomópontjai közötti kommunikációt. Ez a biztonsági típus biztosítja, hogy csak a jogosult felhasználók férnek hozzá a fürthöz és a fürtre telepített alkalmazásokhoz. Az ügyfelek egyedileg azonosíthatók az X.509-tanúsítvány biztonsági hitelesítő adataival. A rendszergazdai vagy felhasználói ügyfelek fürtön való hitelesítéséhez tetszőleges számú választható ügyféltanúsítvány használható.
 
-Az ügyféltanúsítványok mellett Azure Active Directory is konfigurálható úgy, hogy az ügyfeleket a fürttel hitelesítse.
+Az ügyféltanúsítványok mellett a Azure Active Directory is konfigurálható az ügyfelek fürtön való hitelesítésére.
 
-További információért olvassa el az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security)
+További információ: [Ügyfél–csomópont biztonság](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrások részletes hozzáférés-vezérlésének hozzárendelését.  Különböző hozzáférési szabályokat rendelhet hozzá az előfizetésekhez, az erőforráscsoportokhöz és az erőforrásokhoz.  Az Azure RBAC-szabályok öröklik az erőforrás-hierarchiát, kivéve, ha a felülbírálása alacsonyabb szinten történik.  Az Azure RBAC-szabályokkal bármilyen felhasználói vagy felhasználói csoportot hozzárendelhet a HRE, így a kijelölt felhasználók és csoportok módosíthatják a fürtöt.  További információért olvassa el az [Azure RBAC áttekintését](../role-based-access-control/overview.md).
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi, hogy finomhangolt hozzáférés-vezérlést rendeljen az Azure-erőforrásokhoz.  Különböző hozzáférési szabályokat rendelhet előfizetéshez, erőforráscsoportokhoz és erőforrásokhoz.  Az Azure RBAC-szabályok az erőforrás-hierarchiában öröklődik, hacsak felül nem bírálja őket alacsonyabb szinten.  Az Azure RBAC-szabályokkal bármilyen felhasználói vagy felhasználói csoportot hozzárendelhet az AAD-hez, hogy a kijelölt felhasználók és csoportok módosítsák a fürtöt.  További információkért olvassa el az [Azure RBAC áttekintését.](../role-based-access-control/overview.md)
 
-A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.  
+Service Fabric a hozzáférés-vezérlést is támogatja, hogy bizonyos fürtműveleteket a különböző felhasználói csoportokra korlátozza. Ez segít biztonságossá tenni a fürtöt. A fürthöz csatlakozó ügyfelek két hozzáférés-vezérlési típust támogatnak: rendszergazdai szerepkört és felhasználói szerepkört.  
 
-További információért olvassa el [Service Fabric szerepköralapú hozzáférés-vezérlés](service-fabric-cluster-security.md#service-fabric-role-based-access-control)című témakört.
+További információ: Service Fabric [hozzáférés-vezérlése.](service-fabric-cluster-security.md#service-fabric-role-based-access-control)
 
 ### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
-Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
+A hálózati biztonsági csoportok (NSG-k) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát szabályják.  Alapértelmezés szerint ha több virtuális gép van ugyanazon a virtuális hálózaton, akkor bármilyen porton keresztül kommunikálhatnak egymással.  A gépek közötti kommunikáció korlátozásához definiálhat NSG-ket a hálózat szegmentálhatja vagy elkülönítheti egymástól a virtuális gépeket.  Ha egy fürtben több csomóponttípus található, NSG-ket alkalmazhat az alhálózatok esetében, hogy megakadályozza a különböző csomóponttípusokhoz tartozó gépek egymással való kommunikációját.  
 
-További információkért lásd: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md)
+További információ: Biztonsági [csoportok](../virtual-network/network-security-groups-overview.md)
 
 ## <a name="scaling"></a>Méretezés
 
-Az alkalmazás iránti igények időbeli változása. Előfordulhat, hogy növelnie kell a fürt erőforrásait, hogy megfeleljen az alkalmazások megnövekedett munkaterhelésének vagy a hálózati forgalomnak, vagy csökkentenie kell a fürterőforrások mennyiségét. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása). A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön. A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
+Az alkalmazásigények idővel változnak. Előfordulhat, hogy növelnie kell a fürterőforrásokat, hogy megfeleljen az alkalmazások megnövekedett terhelésének vagy a hálózati forgalomnak, vagy csökkentenie kell a fürterőforrásokat, ha csökken az igény. Miután létrehozta Service Fabric fürtöt, horizontálisan skálázhatja a fürtöt (módosíthatja a csomópontok számát) vagy függőlegesen (módosíthatja a csomópontok erőforrásait). A fürt bármikor skálázhatja, még akkor is, ha a fürtön számítási feladatok futnak. A fürt méretezése során az alkalmazások is automatikusan skálázódnak.
 
-További információért olvassa el az [Azure-fürtök méretezését](service-fabric-cluster-scaling.md)ismertető témakört.
+További információ: [Azure-fürtök skálázása.](service-fabric-cluster-scaling.md)
 
 ## <a name="upgrading"></a>Frissítés
-Az Azure Service Fabric-fürt olyan erőforrás, amelyet Ön birtokol, de részben a Microsoft felügyeli. A Microsoft feladata, hogy kijavítja a mögöttes operációs rendszert, és Service Fabric Runtime-frissítéseket végezzen a fürtön. Beállíthatja, hogy a fürt automatikusan megkapja az automatikus futtatókörnyezet-frissítéseket, amikor a Microsoft új verziót szabadít fel, vagy egy támogatott futásidejű verziót szeretne kiválasztani. A futtatókörnyezet frissítésein kívül a fürtkonfiguráció, például a tanúsítványok vagy az alkalmazások portjai is frissíthetők.
+Az Azure Service Fabric-fürt az Ön tulajdonában áll, de részben a Microsoft kezeli. A Microsoft felelős a mögöttes operációs rendszer javításáért és Service Fabric frissítéséért a fürtön. Beállíthatja, hogy a fürt automatikusan megkapja a futásidejű frissítéseket, amikor a Microsoft új verziót ad ki, vagy kiválaszthatja a kívánt támogatott futásidejű verziót. A futásidejű frissítések mellett a fürtkonfigurációkat, például a tanúsítványokat vagy az alkalmazásportokat is frissítheti.
 
-További információért olvassa el a [fürtök frissítését](service-fabric-cluster-upgrade.md)ismertető témakört.
+További információ: [Fürtök frissítése.](service-fabric-cluster-upgrade.md)
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-A következő operációs rendszereket futtató virtuális gépeken hozhat létre fürtöket:
-
-| Operációs rendszer | A legkorábbi támogatott Service Fabric verziója | Az utolsó támogatott Service Fabric verziója |
-| --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | N/A |
-| Windows Server 2016 | Az összes verzió | N/A |
-| Windows Server 20H2 | 7.2.445.9590 | N/A |
-| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
-| Windows Server 1803 | 6.4 | 7.2.445.9590 |
-| Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | Az összes verzió | N/A | 
-| Linux Ubuntu 16,04 | 6.0 | N/A |
-| Linux Ubuntu 18,04 | 7.1 | N/A |
-
-További információ: [támogatott fürtözött verziók az Azure-ban](./service-fabric-versions.md#supported-operating-systems)
-
-> [!NOTE]
-> Ha úgy dönt, hogy Service Fabrict telepít a Windows Server 1709-es verziójára, vegye figyelembe, hogy (1) nem hosszú távú karbantartási ág, ezért előfordulhat, hogy a későbbi verziókat kell áthelyeznie, és (2) Ha tárolókat helyez üzembe, a Windows Server 2016-re épülő tárolók nem működnek a Windows Server 1709 rendszeren
->
+További [információért tekintse meg az Azure-ban támogatott](./service-fabric-versions.md) verziókat
 
 
 ## <a name="next-steps"></a>Következő lépések
-További információ az Azure-fürtök [biztonságossá](service-fabric-cluster-security.md)tételéről, [méretezéséről](service-fabric-cluster-scaling.md)és [frissítéséről](service-fabric-cluster-upgrade.md) .
+További információ az [Azure-fürtök](service-fabric-cluster-security.md)biztonságossá [tétele,](service-fabric-cluster-scaling.md)skálázása és frissítése. [](service-fabric-cluster-upgrade.md)
 
-További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).
+További információ [a Service Fabric lehetőségekről.](service-fabric-support.md)
 
 [Image]: media/service-fabric-azure-clusters-overview/Cluster.PNG

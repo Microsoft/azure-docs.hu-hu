@@ -1,6 +1,6 @@
 ---
-title: Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
-description: Rendszerkép másolása egy másik gyűjteményből Azure PowerShell használatával.
+title: Rendszerkép másolása másik katalógusból a PowerShell használatával
+description: Kép másolása másik katalógusból a Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,37 +9,37 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d9bbe40e35bdad6fac5c5ccb0b15b909e77b938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35346836767bc1da8c498e23fd3b42afe7a9c350
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564016"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531192"
 ---
-# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Rendszerkép másolása másik katalógusból a PowerShell használatával
 
-Ha a szervezet több gyűjteményt is tartalmaz, létrehozhat képeket a más gyűjteményekben tárolt képekből. Előfordulhat például, hogy egy fejlesztési és tesztelési galériával új képeket szeretne létrehozni és tesztelni. Ha készen állnak az éles környezetben való használatra, az alábbi példán keresztül másolhatja őket egy éles katalógusba. Az [Azure CLI](image-version-another-gallery-cli.md)használatával is létrehozhat egy képet egy másik katalógusban található rendszerképből.
+Ha a szervezetben több katalógus is található, más katalógusban tárolt képekből is létrehozhat képeket. Tegyük fel például, hogy fejlesztési és tesztelési katalógusa van az új lemezképek létrehozásához és teszteléséhez. Ha készen állnak az éles környezetben való használatra, az alábbi példával átmásolhatja őket egy éles katalógusba. Lemezképet egy másik katalógusban található rendszerképből is létrehozhat az [Azure CLI használatával.](image-version-another-gallery-cli.md)
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk végrehajtásához rendelkeznie kell egy meglévő forrás-és képdefinícióval, valamint a rendszerkép verziószámával. Emellett a célhelyen is szerepelnie kell. 
+A cikk befejezéséhez egy meglévő forráskatatárra, rendszerkép-definícióra és rendszerképverzióra van lehetőség. Emellett egy célgalériának is kell lennie. 
 
-A forrás-rendszerkép verzióját replikálni kell arra a régióra, ahol a célhely található. 
+A forrás rendszerkép verzióját replikálni kell arra a régióra, ahol a célkatatár található. 
 
-A rendszer létrehoz egy új rendszerkép-definíciót és egy rendszerkép-verziót a célhelyen.
-
-
-A cikkben végzett munka során szükség esetén cserélje le az erőforrások nevét.
+A célkatatárban új rendszerkép-definíciót és rendszerképverziót hozunk létre.
 
 
-## <a name="get-the-source-image"></a>A forrás rendszerképének beolvasása 
+A cikk munka közben szükség esetén cserélje le az erőforrásneveket.
 
-Információra van szüksége a forrás rendszerkép-definíciójában, hogy másolatot készítsen belőle a katalógusból.
 
-A [Get-AzResource](/powershell/module/az.resources/get-azresource) parancsmaggal megjelenítheti a meglévő galériák, képdefiníciók és képverziók adatait.
+## <a name="get-the-source-image"></a>A forrás rendszerképének lekérte 
 
-Az eredmények formátuma `gallery\image definition\image version` .
+A forrásként használt rendszerkép definíciójának információira lesz szüksége, hogy másolatot hoz létre róla a célkatatárban.
+
+A [Get-AzResource](/powershell/module/az.resources/get-azresource) parancsmaggal listába sorolja a meglévő katalógusokkal, rendszerképdefiníciókkal és rendszerképverziókkal kapcsolatos információkat.
+
+Az eredmények formátuma `gallery\image definition\image version` : .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-Ha már rendelkezik az összes szükséges információval, a [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion)használatával lekérheti a forrás rendszerkép VERZIÓjának azonosítóját. Ebben a példában bemutatjuk a `1.0.0` definíció rendszerképének verzióját a forrás-katalógusban az `myImageDefinition` `myGallery` `myResourceGroup` erőforráscsoporthoz.
+Ha minden szükséges információ megvan, a [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion)használatával le tudja szerezni a forrásként használt rendszerképverzió azonosítóját. Ebben a példában a definíció rendszerképverzióját kérjük le a `1.0.0` `myImageDefinition` `myGallery` forráskatatárban, az `myResourceGroup` erőforráscsoportban.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -58,9 +58,9 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 ```
 
 
-## <a name="create-the-image-definition"></a>A rendszerkép definíciójának létrehozása 
+## <a name="create-the-image-definition"></a>A rendszerkép-definíció létrehozása 
 
-Létre kell hoznia egy új rendszerkép-definíciót, amely megfelel a forrás képdefiníciójának. A [Get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition)használatával megtekintheti a rendszerkép definíciójának újbóli létrehozásához szükséges összes információt.
+Létre kell hoznia egy új képdefiníciót, amely megfelel a forrás képdefiníciójának. A [get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition)használatával minden információt láthat, amely a rendszerkép-definíció újbóli létrehozása érdekében szükséges.
 
 ```azurepowershell-interactive
 Get-AzGalleryImageDefinition `
@@ -100,10 +100,10 @@ A kimenet a következőhöz hasonlóan fog kinézni:
 }
 ```
 
-Hozzon létre egy új rendszerkép-definíciót a célhelyen a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) parancsmag és a fenti kimenetből származó információk használatával.
+Hozzon létre egy új rendszerkép-definíciót a célkatatárban a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) parancsmaggal és a fenti kimenetből származó információkkal.
 
 
-Ebben a példában a képdefiníció neve *myDestinationImgDef* a *myDestinationGallery* nevű galériában.
+Ebben a példában a képdefiníció neve *myDestinationImgDef* a *myDestinationGallery nevű katalógusban.*
 
 
 ```azurepowershell-interactive
@@ -123,11 +123,11 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
 
-Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Meg kell adnia a forrás rendszerkép AZONOSÍTÓját a `--managed-image` (z) paraméterben a rendszerkép verziójának a célhelyen való létrehozásához. 
+Rendszerképverzió létrehozása a [New-AzGalleryImageVersion használatával.](/powershell/module/az.compute/new-azgalleryimageversion) A rendszerkép verziójának a célkatatárban való létrehozásához meg kell adni a forrásként megadott rendszerkép azonosítóját a `-Source` paraméterben. 
 
-A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
+A képverzió megengedett karakterei a számok és a időszakok. A számoknak egy 32 bites egész szám tartományán belül kell lennie. Formátum: *Főverzió.* *MinorVersion (Alverzió).* *Javítás.*
 
-Ebben a példában a *myDestinationGallery* neve a *myDestinationRG* erőforráscsoport, az *USA nyugati* régiója. A rendszerkép verziója a *1.0.0* , és 1 replikát fogunk létrehozni az *USA déli középső* régiójában és 2 replikát az *USA nyugati* régiójában. 
+Ebben a példában a célgyűjtemény neve *myDestinationGallery*, a *myDestinationRG* erőforráscsoportban, az *USA nyugati régiója helyen.* A rendszerkép verziója *1.0.0,* és 1 replikát  fogunk létrehozni az USA déli középső régiójában, és 2 replikát az USA nyugati *régiójában.* 
 
 
 ```azurepowershell-interactive
@@ -147,23 +147,23 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt: `$job.State` .
+A rendszerkép replikálása az összes célrégióba kis ideig is tart, ezért létrehoztunk egy feladatot, hogy nyomon követjük a folyamat előrehaladását. A feladat előrehaladásának a következőt kell begépelnie: `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
+> Meg kell várnia, amíg a rendszerkép teljes létrehozása és replikálása befejeződik, mielőtt ugyanezt a felügyelt rendszerképet egy másik rendszerképverzió létrehozására használhatja.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](../storage/common/storage-redundancy.md) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a rendszerképverzió létrehozásakor hozzáadott hozzáadásával vagy zónaredundáns tárolással is tárolhatja az előzetes `-StorageAccountType Premium_LRS` [](../storage/common/storage-redundancy.md) `-StorageAccountType Standard_ZRS` tárolóban.
 >
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-powershell.md) vagy [speciális](vm-specialized-image-version-powershell.md) rendszerkép-verzióból.
+Virtuális gép létrehozása [általános vagy](vm-generalized-image-version-powershell.md) specializált rendszerképverzióból. [](vm-specialized-image-version-powershell.md)
 
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+[Az Azure Image Builder (előzetes verzió)](./image-builder-overview.md) segíthet automatizálni a rendszerképverzió létrehozását, sőt akár egy meglévő rendszerképverzióból is frissíthet és létrehozhat egy új [rendszerképverziót.](./linux/image-builder-gallery-update-image-version.md) 
 
-A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).
+További információ a vásárlási terv információinak megszolgáltatásról: A vásárlási terv Azure Marketplace meg [a rendszerképek létrehozásakor.](marketplace-images.md)

@@ -173,7 +173,7 @@
           items:
             - name: Adatredundancia
               href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Felhasználó által felügyelt feladatátvétel vészhelyreállításhoz
+            - name: Ügyfél által felügyelt feladatátvétel vészhelyreállításhoz
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Objektumreplikáció
           href: object-replication-overview.md
@@ -413,9 +413,9 @@
               href: soft-delete-container-enable.md
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
-            - name: Blobok soft delete parancsának engedélyezése és kezelése
+            - name: Blobok soft delete funkció engedélyezése és kezelése
               items:
-                - name: Blobok végleges törlésének engedélyezése
+                - name: Blobok soft delete funkció engedélyezése
                   href: soft-delete-blob-enable.md
                 - name: Helyreállíthatóan törölt blobok kezelése és visszaállítása
                   href: soft-delete-blob-manage.md
@@ -579,11 +579,13 @@
               href: 'https://azure.microsoft.com/features/storage-explorer/'
             - name: A Storage Explorer használatának első lépései
               href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Jelentkezzen be a Storage Explorer
+              href: ../common/storage-explorer-sign-in.md
             - name: A Storage Explorer kibocsátási megjegyzései
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage Explorer parancssori beállítások
+            - name: Storage Explorer parancssori beállítások használata
               href: ../common/storage-explorer-command-line-options.md
             - name: Storage Explorer hivatkozás létrehozása
               href: ../common/storage-explorer-direct-link.md
@@ -669,9 +671,9 @@
       items:
         - name: Használat a Databricks és a Spark használatával
           href: data-lake-storage-use-databricks-spark.md
-        - name: Használat a Apache Hive HDInsightban
+        - name: Használat a Apache Hive ÉS a HDInsight használatával
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Használat a Databricks Deltával és Event Grid
+        - name: Használat a Databricks Deltával és a Event Grid
           href: data-lake-storage-events.md
         - name: Használat más Azure-szolgáltatásokkal
           href: data-lake-storage-integrate-with-services-tutorials.md
@@ -805,7 +807,7 @@
               href: data-lake-storage-query-acceleration-how-to.md
             - name: A Hadoop fájlrendszer parancssori felülete
               href: data-lake-storage-use-hdfs-data-lake-storage.md
-        - name: Használat az Azure-szolgáltatásokkal
+        - name: Használat Azure-szolgáltatásokkal
           href: data-lake-storage-integrate-with-services-tutorials.md
         - name: Teljesítmény optimalizálása
           items:

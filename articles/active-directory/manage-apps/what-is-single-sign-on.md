@@ -1,73 +1,73 @@
 ---
-title: Mi az Azure egyszeri bejelentkezés (SSO)?
-description: Ismerje meg, hogy az egyszeri bejelentkezés (SSO) hogyan működik a Azure Active Directoryokkal. Egyszeri bejelentkezés használata, hogy a felhasználóknak ne kelljen megemlékezniük minden alkalmazás jelszavait. Használja az SSO-t is a fiókok felügyeletének egyszerűsítése érdekében.
+title: Mi az az Azure-beli egyszeri bejelentkezés (SSO)?
+description: Megtudhatja, hogyan működik az egyszeri bejelentkezés (SSO) a Azure Active Directory. Használjon SSO-t, hogy a felhasználóknak ne kell minden alkalmazáshoz jelszót megjegyeznie. Használja az SSO-t is a fiókkezelés felügyeletének egyszerűsítéséhez.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: overview
 ms.date: 12/03/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, japere
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65e4b32c7c41eea6a885a09dd7ad772980595a9e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260197"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379502"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
-Az egyszeri bejelentkezés azt jelenti, hogy a felhasználóknak nem kell bejelentkezniük minden általuk használt alkalmazásba. A felhasználó egyszer jelentkezik be, és a rendszer a hitelesítő adatokat is használja más alkalmazásokhoz.
+Az egyszeri bejelentkezés azt jelenti, hogy a felhasználónak nem kell minden alkalmazásba bejelentkeznie. A felhasználó egyszer bejelentkezik, és ezt a hitelesítő adatokat más alkalmazások is használják.
 
-Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapps.microsoft.com .
+Ha Ön végfelhasználó, valószínűleg nem igazán érdeklik az SSO részletei. Csak olyan alkalmazásokat szeretne használni, amelyek hatékonyabbá teszik a munkavégzést anélkül, hogy ilyen sok jelszót begépelné. Az alkalmazásokat a következő címen találhatja meg: https://myapps.microsoft.com .
  
-Ha Ön rendszergazda vagy informatikai szakember, olvassa el a következőt: További információ az egyszeri bejelentkezésről és az Azure-beli megvalósításáról.
+Ha Ön rendszergazda vagy it-rendszergazda, olvassa el a következőt, ha többet szeretne megtudni az SSO-val és annak Az Azure-ban való alkalmazásának mikéntjről.
 
-## <a name="single-sign-on-basics"></a>Egyszeri bejelentkezés alapjai
-Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók hogyan jelentkeznek be és használják az alkalmazásokat. Az egyszeri bejelentkezési alapú hitelesítési rendszereket gyakran "modern hitelesítésnek" nevezzük. A modern hitelesítés és az egyszeri bejelentkezés az identitás-és hozzáférés-kezelés (IAM) nevű kategóriába tartozik. Ha szeretné megtudni, hogy mi teszi lehetővé az egyszeri bejelentkezést, tekintse meg ezt a videót.
+## <a name="single-sign-on-basics"></a>Az egyszeri bejelentkezés alapjai
+Az egyszeri bejelentkezés óriási ugrást jelent a felhasználók bejelentkezésében és az alkalmazások használatában. Az egyszeri bejelentkezésen alapuló hitelesítési rendszereket gyakran "modern hitelesítésnek" nevezik. A modern hitelesítés és az egyszeri bejelentkezés az Identitás- és hozzáférés-kezelés (IAM) nevű számítási kategóriába tartozik. Ebből a videóból megértheti, hogy mi teszi lehetővé az egyszeri bejelentkezést.
 
-A hitelesítés alapjai: az alapjai | Azure Active Directory
+A hitelesítés alapjai: A | Azure Active Directory
 
 > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
 
-## <a name="single-sign-on-with-web-applications"></a>Egyszeri bejelentkezés webes alkalmazásokkal
-A webalkalmazások hihetetlenül népszerűek. A webalkalmazásokat különböző vállalatok üzemeltetik, és szolgáltatásként elérhetővé tették. A webalkalmazások népszerű példái közé tartozik a Microsoft 365, a GitHub és a Salesforce, és több ezer más is van. A felhasználók a webalkalmazásokat webböngészővel érik el a számítógépükön. Az egyszeri bejelentkezés lehetővé teszi a felhasználók számára a különböző webalkalmazások közötti váltást anélkül, hogy többször kellene bejelentkeznie.
+## <a name="single-sign-on-with-web-applications"></a>Egyszeri bejelentkezés webalkalmazásokkal
+A webalkalmazások rendkívül népszerűek. A webalkalmazásokat különböző vállalatok üzemeltetik, és szolgáltatásként érhetők el. Néhány népszerű webalkalmazás például a Microsoft 365, a GitHub és a Salesforce, és még több ezer van. A felhasználók egy webböngészővel férnek hozzá a webalkalmazáshoz a számítógépükről. Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók többszöri bejelentkezés nélkül navigálnak a különböző webalkalmazások között.
 
-Ha szeretné megtudni, hogyan működik az egyszeri bejelentkezés a Web Apps szolgáltatással, tekintse meg ezt a két videót.
+Ha többet szeretne megtudni arról, hogyan működik az egyszeri bejelentkezés a webalkalmazásokkal, tekintse meg ezt a két videót.
 
-Hitelesítés alapjai: webalkalmazások | Azure Active Directory
+A hitelesítés alapjai: Webalkalmazások | Azure Active Directory
 
 > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY]
 
-Hitelesítés alapjai: webes egyszeri bejelentkezés | Azure Active Directory
+A hitelesítés alapjai: Webes egyszeri bejelentkezéses | Azure Active Directory
 
 > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U]
 
-## <a name="cloud-versus-on-premises-hosted-apps"></a>Felhő és helyszíni üzemeltetett alkalmazások
-Az egyszeri bejelentkezés megvalósításának módja attól függ, hogy hol futtatja az alkalmazást. Üzemeltetési ügyek, mert a hálózati forgalom át van irányítva az alkalmazás eléréséhez. Ha egy alkalmazás a helyi hálózaton keresztül érhető el, és egy helyszíni alkalmazásnak nevezi el, akkor nincs szükség arra, hogy a felhasználók hozzáférhessenek az internethez az alkalmazás használatához. Ha az alkalmazás a felhőben üzemeltetett alkalmazásban fut, akkor a felhasználóknak az alkalmazás használatához el kell érniük az internetet.
+## <a name="cloud-versus-on-premises-hosted-apps"></a>Felhőbeli és helyszíni üzemeltetett alkalmazások
+Az egyszeri bejelentkezés implementációja az alkalmazás helyétől függ. Az üzemeltetés fontos, mert a hálózati forgalom az alkalmazáshoz való hozzáféréshez van irányítva. Ha egy alkalmazást a helyi hálózaton üzemeltet és ér el, amit helyszíni alkalmazásnak nevezünk, akkor a felhasználóknak nem kell az internethez hozzáférniük az alkalmazáshoz. Ha az alkalmazást máshol üzemeltetik, más néven felhőben üzemeltetett alkalmazásként, akkor a felhasználóknak az alkalmazás használathoz az internethez kell hozzáférniük.
 
 > [!TIP]
-> A felhőben üzemeltetett alkalmazásokat szolgáltatásként szolgáló (SaaS) alkalmazásoknak is nevezik. 
+> A felhőben üzemeltetett alkalmazásokat SaaS-alkalmazásoknak is nevezik. 
 
-A felhőben üzemeltetett alkalmazások egyszeri bejelentkezése egyszerű. Tudatja az identitás-szolgáltatóval, hogy az alkalmazás használatban van. Ezután konfigurálja úgy az alkalmazást, hogy megbízzon az identitás-szolgáltatóban. Ha szeretné megtudni, hogyan használhatja az Azure AD-t az alkalmazások identitás-szolgáltatójának használatára, tekintse [meg](add-application-portal.md)a gyors üzembe helyezési útmutatót
+A felhőben üzemeltetett alkalmazások esetében az egyszeri bejelentkezés egyszerű. Tudatja az identitásszolgáltatóval, hogy az alkalmazás használja. Ezután úgy konfigurálja az alkalmazást, hogy megbízhat az identitásszolgáltatóban. Az Azure AD alkalmazásidentitás-szolgáltatóként való használatával kapcsolatban lásd az alkalmazáskezelés rövid [útmutatóját.](add-application-portal.md)
 
 > [!TIP]
-> A felhő és az Internet kifejezések gyakran használhatók felcserélhetővé. Ennek oka a hálózati diagramok használata. Gyakori, hogy egy diagramon a Felhőbeli alakzattal rendelkező nagyméretű számítógép-hálózatokat jelöli, mert nem lehetséges az összes összetevő rajzolása. Az Internet a legismertebb hálózat, így könnyen használhatók a feltételek. A számítógépek hálózata azonban megalkotható egy felhőben is.
+> A felhő és az internet kifejezéseket gyakran felcserélhetőnek használják. Ennek oka a hálózati diagramok miatt van. A diagramon felhőalakzattal ábrázolt nagy számítógép-hálózatokat gyakran jelölik, mert nem lehet minden összetevőt megrajzolni. Az internet a legismertebb hálózat, így könnyen használhatók felcserélhető kifejezések. Azonban bármilyen számítógépes hálózat megalkotható felhőként.
 
-Használhat egyszeri bejelentkezést is a helyszíni alkalmazások számára. A helyszíni SSO-hoz szükséges technológiákat alkalmazásproxy néven kell megtenni. További információ: [egyszeri bejelentkezéses beállítások](sso-options.md).
+Helyszíni alkalmazásokhoz egyszeri bejelentkezést is használhat. A helyszíni SSO-t a következő technológiának nevezzük: alkalmazásproxy. További információ: Egyszeri [bejelentkezés beállításai.](sso-options.md)
 
-## <a name="multiple-identity-providers"></a>Több identitás-szolgáltató
-Ha úgy állítja be az egyszeri bejelentkezést, hogy több identitású szolgáltató között működjön, azt a rendszer összevonásnak nevezzük. Ha szeretné megtudni, hogyan működik az összevonás, tekintse meg ezt a videót.
+## <a name="multiple-identity-providers"></a>Több identitásszolgáltató
+Ha az egyszeri bejelentkezést több identitásszolgáltató között is beállítja, ezt összevonásnak nevezzük. Ebből a videóból megtudhatja, hogyan működik az összevonás.
 
-Hitelesítés alapjai: összevonás | Azure Active Directory
+A hitelesítés alapjai: Összevonási | Azure Active Directory
 
 > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
 
 ## <a name="next-steps"></a>Következő lépések
-* [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
+* [Gyorsútmutató-sorozat az alkalmazáskezelésről](view-applications-portal.md)
 * [Az egyszeri bejelentkezés beállításai](sso-options.md)

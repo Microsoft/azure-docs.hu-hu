@@ -1,29 +1,32 @@
 ---
-title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager sablon használatával
-description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure Resource Manager sablon használatával.
-ms.date: 03/01/2021
+title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager használatával
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe virtuálisgép-bővítményeket Azure Arc hibrid felhőkörnyezetekben futó, engedélyezett kiszolgálókon egy Azure Resource Manager sablon használatával.
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688263"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389638"
 ---
-# <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure virtuálisgép-bővítmények engedélyezése ARM-sablon használatával
+# <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure-beli virtuálisgép-bővítmények engedélyezése ARM-sablonnal
 
-Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) az Azure-beli virtuálisgép-bővítmények üzembe helyezéséhez az Azure arc-kompatibilis kiszolgálók által támogatott módon.
+Ez a cikk bemutatja, hogyan használhat Azure Resource Manager sablont (ARM-sablont) azure-beli virtuálisgép Azure Arc bővítmények üzembe helyezéséhez.
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Az arc-kompatibilis kiszolgálók által támogatott virtuálisgép-bővítményekkel a Azure PowerShell használatával telepítheti a támogatott virtuálisgép-bővítményt Linux vagy Windows rendszerű gépekre. Az alábbi példákban egy sablonfájl és egy, a sablonhoz adni kívánt minta értékekkel rendelkező Parameters fájl szerepel.
+A virtuálisgép-bővítmények hozzáadhatóak a Azure Resource Manager sablonhoz, és a sablon üzembe helyezéssel hajthatóak végre. Az Arc-kompatibilis kiszolgálók által támogatott virtuálisgép-bővítményekkel linuxos vagy Windows rendszerű gépeken is üzembe helyezheti a támogatott virtuálisgép-Azure PowerShell. Az alábbi minták tartalmaznak egy sablonfájlt és egy paraméterfájlt, amelyek mintaértékeket tartalmaznak a sablonhoz.
 
 >[!NOTE]
->Habár több bővítmény kötegelt feldolgozását és feldolgozását is elvégezheti, a rendszer sorosan telepíti őket. Az első bővítmény telepítésének befejezése után a rendszer a következő bővítmény telepítését kísérli meg.
+>Bár több bővítmény kötegbe is köteg telepíthető és feldolgozható, a rendszer sorosan telepíti őket. Az első bővítmény telepítésének befejezése után a rendszer megkísérli a következő bővítmény telepítését.
+
+> [!NOTE]
+> Azure Arc kompatibilis kiszolgálók nem támogatják a virtuálisgép-bővítmények Azure-beli virtuális gépeken való üzembe helyezését és felügyeletét. Azure-beli virtuális gépekhez tekintse meg a virtuálisgép-bővítmények [áttekintését ismertető cikket.](../../virtual-machines/extensions/overview.md)
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>A Log Analytics virtuálisgép-bővítmény üzembe helyezése
 
-A Log Analytics-ügynök egyszerű üzembe helyezéséhez a következő minta kerül az ügynök telepítésére Windows vagy Linux rendszeren.
+A Log Analytics-ügynök egyszerű üzembe helyezéséhez a következő minta segítségével telepítheti az ügynököt Windows vagy Linux rendszeren.
 
-### <a name="template-file-for-linux"></a>A Linux sablon fájlja
+### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
 ```json
 {
@@ -64,7 +67,7 @@ A Log Analytics-ügynök egyszerű üzembe helyezéséhez a következő minta ke
 }
 ```
 
-### <a name="template-file-for-windows"></a>Sablonfájl a Windowshoz
+### <a name="template-file-for-windows"></a>Sablonfájl Windowshoz
 
 ```json
 {
@@ -106,7 +109,7 @@ A Log Analytics-ügynök egyszerű üzembe helyezéséhez a következő minta ke
 }
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+### <a name="parameter-file"></a>Paraméterfájl
 
 ```json
 {
@@ -129,25 +132,25 @@ A Log Analytics-ügynök egyszerű üzembe helyezéséhez a következő minta ke
 }
 ```
 
-Mentse a sablont és a paraméter fájljait a lemezre, és szerkessze a paramétert a központi telepítés megfelelő értékeivel. Ezután telepítheti a bővítményt az erőforráscsoport összes csatlakoztatott számítógépén a következő paranccsal. A parancs a *TemplateFile* paramétert használja a sablon és a *TemplateParameterFile* paraméter megadásához, amely paraméterek és paraméterek értékét tartalmazó fájlt ad meg.
+Mentse a sablont és a paraméterfájlokat a lemezre, és szerkessze a paraméterfájlt az üzemelő példány megfelelő értékeivel. Ezután az alábbi paranccsal telepítheti a bővítményt az erőforráscsoportban található összes csatlakoztatott gépre. A parancs a *TemplateFile* paraméterrel adja meg a sablont és a *TemplateParameterFile* paramétert egy paraméter- és paraméterértékeket tartalmazó fájl megadásához.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgent.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentParms.json"
 ```
 
-## <a name="deploy-the-custom-script-extension"></a>Az egyéni szkriptek bővítményének üzembe helyezése
+## <a name="deploy-the-custom-script-extension"></a>Az egyéni szkriptbővítmény üzembe helyezése
 
-Az egyéni szkriptek bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri az egyéni szkriptek bővítményét, tekintse meg a [Windowshoz készült egyéni szkriptek bővítményét](../../virtual-machines/extensions/custom-script-windows.md) vagy a [Linuxhoz készült egyéni szkriptek bővítményét](../../virtual-machines/extensions/custom-script-linux.md). A bővítmény hibrid gépekkel való használata során több különböző jellemzővel is tisztában kell lennie:
+Az egyéni szkriptbővítmény használata esetén a következő minta futtatását biztosítjuk Windows és Linux rendszeren. Ha nem ismeri az egyéni szkriptbővítményt, lásd: Egyéni szkriptbővítmény [Windows](../../virtual-machines/extensions/custom-script-windows.md) rendszeren vagy Egyéni [szkriptbővítmény Linux rendszeren.](../../virtual-machines/extensions/custom-script-linux.md) A bővítmény hibrid gépekkel való használata esetén érdemes tisztában lennie néhány különböző tulajdonsággal:
 
-* Az Azure VM Custom script bővítménnyel rendelkező támogatott operációs rendszerek listája nem alkalmazható az Azure arc-kompatibilis kiszolgálókra. Az arc-kompatibilis kiszolgálókhoz támogatott OSs listája [itt](agent-overview.md#supported-operating-systems)található.
+* Az Azure-beli virtuális gépek egyéni szkriptbővítménye által támogatott operációs rendszerek listája nem alkalmazható Azure Arc kiszolgálókra. Az Arc-kompatibilis kiszolgálók támogatott operációs rendszereit itt [talál.](agent-overview.md#supported-operating-systems)
 
-* Az Azure Virtual Machine Scale Sets vagy klasszikus virtuális gépekre vonatkozó konfigurációs adatok nem alkalmazhatók.
+* Az Azure-beli Virtual Machine Scale Sets virtuális gépekkel kapcsolatos konfigurációs adatok nem alkalmazhatók.
 
-* Ha a gépeken kívülről kell letöltenie egy parancsfájlt, és csak proxykiszolgálón keresztül tud kommunikálni, akkor [konfigurálnia kell a csatlakoztatott számítógép ügynököt](manage-agent.md#update-or-remove-proxy-settings) a proxykiszolgáló környezeti változójának beállításához.
+* Ha a gépeknek kívülről kell letöltenie egy szkriptet, és [](manage-agent.md#update-or-remove-proxy-settings) csak proxykiszolgálón keresztül tudnak kommunikálni, a Csatlakoztatott gép ügynököt úgy kell konfigurálnia, hogy beállítsa a proxykiszolgáló környezeti változóját.
 
-Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsfájl helyét és a futtatandó parancsot. Ez a konfiguráció egy Azure Resource Manager sablonban van megadva, amely a Linux és a Windows hibrid gépek esetében is elérhető.
+Az egyéni szkriptbővítmény konfigurációja olyan adatokat ad meg, mint a szkript helye és a futtatni szükséges parancs. Ezt a konfigurációt egy Azure Resource Manager adja meg, amely linuxos és windowsos hibrid gépekhez is elérhető alább.
 
-### <a name="template-file-for-linux"></a>A Linux sablon fájlja
+### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
 ```json
 {
@@ -188,7 +191,7 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 }
 ```
 
-### <a name="template-file-for-windows"></a>Sablonfájl a Windowshoz
+### <a name="template-file-for-windows"></a>Sablonfájl Windowshoz
 
 ```json
 {
@@ -237,7 +240,7 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 }
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+### <a name="parameter-file"></a>Paraméterfájl
 
 ```json
 {
@@ -291,11 +294,11 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 }
 ```
 
-## <a name="deploy-the-dependency-agent-extension"></a>A függőségi ügynök bővítményének üzembe helyezése
+## <a name="deploy-the-dependency-agent-extension"></a>A függőségi ügynök bővítmény üzembe helyezése
 
-A Azure Monitor függőségi ügynök bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri a függőségi ügynököt, tekintse meg [a Azure monitor ügynökök áttekintése](../../azure-monitor/agents/agents-overview.md#dependency-agent)című témakört.
+A függőségi Azure Monitor bővítményének használatával a következő minta futtatható Windows és Linux rendszeren. Ha nem ismeri a függőségi ügynököt, tekintse meg a következőt: Overview of Azure Monitor agents (A függőségi [ügynökök áttekintése).](../../azure-monitor/agents/agents-overview.md#dependency-agent)
 
-### <a name="template-file-for-linux"></a>A Linux sablon fájlja
+### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
 ```json
 {
@@ -333,7 +336,7 @@ A Azure Monitor függőségi ügynök bővítményének használatához a követ
 }
 ```
 
-### <a name="template-file-for-windows"></a>Sablonfájl a Windowshoz
+### <a name="template-file-for-windows"></a>Sablonfájl Windowshoz
 
 ```json
 {
@@ -373,17 +376,17 @@ A Azure Monitor függőségi ügynök bővítményének használatához a követ
 
 ### <a name="template-deployment"></a>Sablonalapú telepítés
 
-Mentse a sablonfájlt a lemezre. Ezután központilag telepítheti a bővítményt a csatlakoztatott gépre a következő parancs használatával.
+Mentse a sablonfájlt lemezre. Ezután a következő paranccsal telepítheti a bővítményt a csatlakoztatott gépen.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\DependencyAgent.json"
 ```
 
-## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM-bővítmény üzembe helyezése (előzetes verzió)
+## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Virtuálisgép Azure Key Vault bővítmény üzembe helyezése (előzetes verzió)
 
-A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) sémáját mutatja be. A bővítmény nem igényel védett beállításokat – az összes beállítás nyilvános információnak minősül. A bővítményhez meg kell adni a figyelt tanúsítványok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek konkrétan a következők:
+Az alábbi JSON a virtuálisgép-bővítmény (előzetes verzió Key Vault sémáját mutatja be. A bővítmény nem igényel védett beállításokat – minden beállítása nyilvános információnak minősül. A bővítményhez szükség van a figyelt tanúsítványok listájára, a lekérdezés gyakoriságára és a céltanúsítvány-tárolóra. Ezek konkrétan a következők:
 
-### <a name="template-file-for-linux"></a>A Linux sablon fájlja
+### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
 ```json
 {
@@ -447,7 +450,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
 }
 ```
 
-### <a name="template-file-for-windows"></a>Sablonfájl a Windowshoz
+### <a name="template-file-for-windows"></a>Sablonfájl Windowshoz
 
 ```json
 {
@@ -520,26 +523,26 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
 ```
 
 > [!NOTE]
-> A megfigyelt tanúsítványok URL-címeinek űrlapnak kell lenniük `https://myVaultName.vault.azure.net/secrets/myCertName` .
+> A megfigyelt tanúsítványok URL-címének a következő formában kell lennie: `https://myVaultName.vault.azure.net/secrets/myCertName` .
 >
-> Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
+> Ennek az az oka, hogy az elérési út visszaadja a teljes tanúsítványt, beleértve a titkos kulcsot is, az `/secrets` elérési út azonban `/certificates` nem. További információt a tanúsítványokról itt talál: Key Vault [tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
 
 ### <a name="template-deployment"></a>Sablonalapú telepítés
 
-Mentse a sablonfájlt a lemezre. Ezután központilag telepítheti a bővítményt a csatlakoztatott gépre a következő parancs használatával.
+Mentse a sablonfájlt lemezre. Ezután a következő paranccsal telepítheti a bővítményt a csatlakoztatott gépen.
 
 > [!NOTE]
-> A virtuálisgép-bővítményhez szükség van egy rendszerhez rendelt identitás hozzárendelésére a Key vaulthoz való hitelesítéshez. Tekintse meg, [Hogyan lehet hitelesíteni a Key Vault felügyelt identitás használatával](managed-identity-authentication.md) Windows-és Linux-alapú arc-kiszolgálókon.
+> A virtuálisgép-bővítményhez rendszer által hozzárendelt identitást kellene hozzárendelni a Key Vaultban való hitelesítéshez. Lásd: How to authenticate to Key Vault using managed identity for Windows and Linux Arc enabled servers (Hitelesítés a felügyelt [identitással](managed-identity-authentication.md) Windows- és Linux Arc-kompatibilis kiszolgálókon).
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
 ```
 
-## <a name="deploy-the-azure-defender-integrated-scanner"></a>Az Azure Defender integrált képolvasó üzembe helyezése
+## <a name="deploy-the-azure-defender-integrated-scanner"></a>Az integrált Azure Defender üzembe helyezése
 
-Az Azure Defender integrált képolvasó bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri az integrált képolvasót, tekintse meg a hibrid gépekhez [készült Azure Defender sebezhetőség-felmérési megoldásának áttekintését](../../security-center/deploy-vulnerability-assessment-vm.md) .
+Az integrált Azure Defender bővítményének használatával a következő minta futtatható Windows és Linux rendszeren. Ha nem ismeri az integrált olvasót, [](../../security-center/deploy-vulnerability-assessment-vm.md) tekintse meg a hibrid gépek Azure Defender biztonságirés-felmérési megoldását ismertető témakört.
 
-### <a name="template-file-for-windows"></a>Sablonfájl a Windowshoz
+### <a name="template-file-for-windows"></a>Sablonfájl Windowshoz
 
 ```json
 {
@@ -576,7 +579,7 @@ Az Azure Defender integrált képolvasó bővítményének használatához a kö
 }
 ```
 
-### <a name="template-file-for-linux"></a>A Linux sablon fájlja
+### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
 ```json
 {
@@ -615,7 +618,7 @@ Az Azure Defender integrált képolvasó bővítményének használatához a kö
 
 ### <a name="template-deployment"></a>Sablonalapú telepítés
 
-Mentse a sablonfájlt a lemezre. Ezután központilag telepítheti a bővítményt a csatlakoztatott gépre a következő parancs használatával.
+Mentse a sablonfájlt lemezre. Ezután a következő paranccsal telepítheti a bővítményt a csatlakoztatott gépen.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"
@@ -623,6 +626,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A virtuálisgép-bővítmények üzembe helyezése, kezelése és eltávolítása a [Azure PowerShell](manage-vm-extensions-powershell.md), a [Azure Portal](manage-vm-extensions-portal.md)vagy az [Azure CLI](manage-vm-extensions-cli.md)használatával végezhető el.
+* A virtuálisgép-bővítményeket a Azure PowerShell [használatával](manage-vm-extensions-powershell.md)helyezheti üzembe, kezelheti és távolíthatja el a [Azure Portal](manage-vm-extensions-portal.md)vagy az [Azure CLI-ről.](manage-vm-extensions-cli.md)
 
-* A hibaelhárítási információk a virtuálisgép- [bővítmények hibaelhárítási útmutatójában](troubleshoot-vm-extensions.md)találhatók.
+* A hibaelhárítási információkat a Virtuálisgép-bővítmények [hibaelhárítása útmutatóban talál.](troubleshoot-vm-extensions.md)

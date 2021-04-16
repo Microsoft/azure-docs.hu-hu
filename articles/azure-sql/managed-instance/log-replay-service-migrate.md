@@ -1,128 +1,128 @@
 ---
-title: Adatbázisok migrálása az SQL felügyelt példányára a log Replay szolgáltatással
-description: Ismerje meg, hogyan telepíthet át adatbázisokat SQL Serverról SQL felügyelt példányra a log Replay szolgáltatás használatával
+title: Adatbázisok áttelepítése SQL Managed Instance Log Replay service használatával
+description: Megtudhatja, hogyan mihet át adatbázisokat a SQL Server-SQL Managed Instance a Log Replay Service használatával
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 522f4ec2f28f9d8975a8a7a7b10e435f602af855
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075900"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484030"
 ---
-# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Adatbázisok migrálása SQL Serverról SQL felügyelt példányra a log Replay szolgáltatás (előzetes verzió) használatával
+# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Adatbázisok áttelepítése a SQL Server-SQL Managed Instance Log Replay service (előzetes verzió) használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ez a cikk azt ismerteti, hogyan lehet manuálisan konfigurálni az adatbázis-áttelepítést SQL Server 2008-2019-ről az Azure SQL felügyelt példányára a log Replay szolgáltatás (LRS) használatával, jelenleg nyilvános előzetes verzióban. A LRS egy felhőalapú szolgáltatás, amely engedélyezve van az SQL felügyelt példányán, és SQL Server naplózási technológián alapul. 
+Ez a cikk azt ismerteti, hogyan konfigurálhatja manuálisan az adatbázis migrálását SQL Server 2008.2019. Azure SQL Managed Instance., a jelenleg nyilvános előzetes verzióban elérhető Log Replay Service (LRS) használatával. Az LRS egy felhőalapú szolgáltatás, amely SQL Managed Instance, és SQL Server technológián alapul. 
 
-A [Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) és a LRS ugyanazt a mögöttes áttelepítési technológiát és ugyanazokat az API-kat használják. A LRS kiadásával továbbra is lehetővé tesszük az összetett egyéni áttelepítéseket és a hibrid architektúrát a helyszíni SQL Server és az SQL felügyelt példánya között.
+[Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) és LRS ugyanazt a mögöttes migrálási technológiát és API-kat használják. Az LRS engedélyezésével tovább engedélyezünk összetett egyéni migrálásokat és hibrid architektúrát a helyszíni környezetek és SQL Server SQL Managed Instance.
 
-## <a name="when-to-use-log-replay-service"></a>Mikor kell használni a log Replay szolgáltatást
+## <a name="when-to-use-log-replay-service"></a>Mikor kell használni a Log Replay szolgáltatást?
 
-Ha nem tudja használni a Azure Database Migration Servicet az áttelepítéshez, a LRS közvetlenül a PowerShell, az Azure CLI-parancsmagok vagy az API-k használatával manuálisan hozhatja létre és hangolhatja össze az SQL felügyelt példányának adatbázis-áttelepítését. 
+Ha nem használhatja az Azure Database Migration Service-t a migráláshoz, az LRS-t közvetlenül a PowerShell-sel, Azure CLI-parancsmagokkal vagy API-kkal használhatja az adatbázis-migrálások manuális felépítéséhez és vezényl SQL Managed Instance. 
 
-A következő esetekben érdemes megfontolni a LRS használatát:
-- Az adatbázis-áttelepítési projektnek további vezérlésre van szüksége.
-- Az áttelepítési átváltás kevés az állásidő.
-- A Database Migration Service végrehajtható fájl nem telepíthető a környezetében.
-- Az Database Migration Service végrehajtható fájlnak nincs fájlhoz való hozzáférése az adatbázis biztonsági mentéséhez.
-- Nem érhető el hozzáférés a gazda operációs rendszerhez, vagy nincsenek rendszergazdai jogosultságok.
-- A hálózati portok nem nyithatók meg a környezetből az Azure-ba.
-- Hálózati sávszélesség-szabályozás vagy proxy-blokkolási probléma a környezetben.
-- A biztonsági mentéseket közvetlenül az Azure Blob Storage tárolja a `TO URL` kapcsolón keresztül.
-- Eltérő biztonsági másolatokat kell használnia.
+A következő esetekben érdemes lehet LRS-t használni:
+- Jobban szabályozni kell az adatbázis-migrálási projektet.
+- Az átállásos migrálásban az állásidő nem túl nagy tűréshatár.
+- A Database Migration Service végrehajtható fájl nem telepíthető a környezetben.
+- A Database Migration Service végrehajtható fájl nem rendelkezik fájleléréssel az adatbázis biztonsági másolataihoz.
+- Nem érhető el a gazda operációs rendszer, vagy nincsenek rendszergazdai jogosultságok.
+- Nem nyithat meg hálózati portokat a környezetből az Azure-ba.
+- Hálózati szabályozás vagy proxyblokkolási problémák a környezetben.
+- A biztonsági másolatok tárolása közvetlenül a Azure Blob Storage a `TO URL` beállításon keresztül.
+- Különbségi biztonsági mentést kell használnia.
 
 > [!NOTE]
-> Javasoljuk, hogy Database Migration Service segítségével automatizálja az adatbázisok áttelepítését SQL Serverról SQL felügyelt példányra. Ez a szolgáltatás ugyanazt a LRS Cloud Service-t használja a háttérben, a log Shipping `NORECOVERY` módban. Ha a Database Migration Service nem támogatja teljes mértékben a forgatókönyveit, érdemes manuálisan a LRS használatával összehangolni az áttelepítést.
+> Javasoljuk, hogy automatizálja az adatbázisok migrálását a SQL Server-SQL Managed Instance-Database Migration Service. Ez a szolgáltatás ugyanazt az LRS felhőszolgáltatást használja a háttérkiszolgálón, és a naplók szállítási módját `NORECOVERY` használja. Fontolja meg manuálisan az LRS-t a migrálások vezényléhez, ha Database Migration Service nem támogatja teljes mértékben az Ön forgatókönyvét.
 
 ## <a name="how-it-works"></a>Működés
 
-Az adatbázisok felhőbe való áttelepítéséhez a LRS használatával egyéni megoldást kell kiépíteni, a szakasz későbbi részében látható ábra és táblázat szerint.
+Az adatbázisok felhőbe való áttelepítése LRS-sel való egyéni megoldás létrehozásához több vezénylési lépés szükséges, ahogy azt a szakasz későbbi részében látható diagram és táblázat is mutatja.
 
-Az áttelepítés a teljes adatbázis biztonsági mentését teszi lehetővé a SQL Servereken `CHECKSUM` , és a biztonságimásolat-fájlok másolása az Azure Blob Storageba. A LRS a Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál. A Blob Storage a SQL Server és az SQL felügyelt példánya között található közbenső tároló.
+Az áttelepítés során teljes adatbázis-biztonsági mentést kell készíteni SQL Server engedélyezett `CHECKSUM` Azure Blob Storage. Az LRS a biztonsági mentési fájlok visszaállítására használható Blob Storage-SQL Managed Instance. Blob Storage egy köztes tároló a SQL Server és SQL Managed Instance.
 
-A LRS figyeli Blob Storage a teljes biztonsági mentés visszaállítása után hozzáadott új különbözeti vagy naplók biztonsági mentéseket. A LRS ezután automatikusan visszaállítja ezeket az új fájlokat. A szolgáltatással figyelheti az SQL felügyelt példányon visszaállított biztonságimásolat-fájlok állapotát, és szükség esetén leállíthatja a folyamatot.
+Az LRS Blob Storage a teljes biztonsági mentés visszaállítása után hozzáadott új különbözeti vagy naplómentéseket. Az LRS ezután automatikusan visszaállítja ezeket az új fájlokat. A szolgáltatással figyelheti a biztonsági mentési fájlok visszaállításának folyamatát a SQL Managed Instance, és szükség esetén leállíthatja a folyamatot.
 
-A LRS nem igényel konkrét elnevezési konvenciót a biztonságimásolat-fájlokhoz. Megvizsgálja a Blob Storage elhelyezett összes fájlt, és létrehozza a biztonsági mentési láncot csak a fájlok fejlécének olvasásával. Az adatbázisok "visszaállítási" állapotban vannak az áttelepítési folyamat során. Az adatbázisok nem [helyreállítási](/sql/t-sql/statements/restore-statements-transact-sql#comparison-of-recovery-and-norecovery) módban vannak visszaállítva, így nem használhatók olvasásra és írásra, amíg az áttelepítési folyamat be nem fejeződik. 
+Az LRS nem igényel meghatározott elnevezési konvenciót a biztonsági mentési fájlokhoz. Megvizsgálja az összes fájlt, amely a Blob Storage, és úgy készíti el a biztonsági mentési láncot, hogy csak a fájlfejléceket olvassa be. Az adatbázisok "visszaállítás" állapotban vannak az áttelepítési folyamat során. Az adatbázisok [NORECOVERY](/sql/t-sql/statements/restore-statements-transact-sql#comparison-of-recovery-and-norecovery) módban állnak vissza, így a migrálási folyamat befejezéséig nem használhatók olvasásra vagy írásra. 
 
-Ha több adatbázist telepít át, a következőket kell tennie:
+Több adatbázis áttelepítése esetén a következőt kell:
  
-- Az egyes adatbázisok biztonsági másolatait a Blob Storage egy külön mappájába helyezheti.
-- A LRS külön kell elindítani az egyes adatbázisokhoz.
-- Különböző elérési utakat válasszon Blob Storage mappák elkülönítéséhez. 
+- Az egyes adatbázisok biztonsági másolatai külön mappába kerülnek a Blob Storage.
+- Minden adatbázis esetében külön indítsa el az LRS-t.
+- Adjon meg különböző elérési utakat a Blob Storage elválasztani. 
 
-A LRS-t *automatikus kiegészítéssel* vagy *folyamatos* módban is elindíthatja. Ha automatikus kiegészítés módban indítja el, az áttelepítés automatikusan megtörténik, amikor a rendszer visszaállította az utolsó megadott biztonságimásolat-fájlt. Ha folyamatos módban indítja el a LRS, a szolgáltatás folyamatosan visszaállítja a hozzáadott új biztonságimásolat-fájlokat, és az áttelepítés csak a manuális átváltás végezhető el. 
+Az LRS-t automatikus kiegészítési vagy folyamatos *módban* *is elindíthatja.* Amikor automatikus kiegészítési módban indítja el, az áttelepítés automatikusan befejeződik, amikor a megadott biztonsági mentési fájlok utolsó visszaállítása megtörténik. Amikor folyamatos módban indítja el az LRS-t, a szolgáltatás folyamatosan visszaállítja a hozzáadott új biztonsági mentési fájlokat, és az áttelepítés csak manuális átálláskor fog befejeződni. 
 
-Azt javasoljuk, hogy a végső biztonsági mentés után manuálisan csökkentse a visszaállítást, és az SQL felügyelt példányon visszaállítottként jelenjen meg. Az utolsó átváltás lépéssel az adatbázis online állapotba kerül, és olvasási és írási használatra elérhető az SQL felügyelt példányain.
+Azt javasoljuk, hogy manuálisan állítsa át az adatokat, miután a napló vége biztonsági mentést készült, és a rendszer visszaállítottként jelenik meg a SQL Managed Instance. Az utolsó átváltási lépés online állapotba teszi az adatbázist, és elérhetővé válik az olvasási és írási SQL Managed Instance.
 
-A LRS leállítása után automatikusan, automatikus kiegészítéssel vagy manuálisan, a átváltás-on keresztül, nem folytathatja a visszaállítási folyamatot olyan adatbázis esetében, amely online állapotú felügyelt példányon. Ha az áttelepítés befejezése után további biztonsági másolatokat szeretne visszaállítani az automatikus kiegészítés vagy a átváltás használatával, törölnie kell az adatbázist. A LRS újraindításával is vissza kell állítania a teljes biztonsági mentési láncot.
+Az LRS automatikus vagy automatikus kiegészítésen keresztüli, vagy az átállításon keresztüli manuális leállítása után nem folytathatja a visszaállítási folyamatot a szolgáltatásban online állapotba SQL Managed Instance. Ha további biztonsági mentési fájlokat szeretne visszaállítani az áttelepítés automatikus kiegészítéssel vagy átállással végzett befejezése után, törölnie kell az adatbázist. Az LRS újraindításával a teljes biztonsági mentési láncot is vissza kell állítania az nulláról.
 
-:::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="Az SQL felügyelt példányának log Replay szolgáltatásához szükséges lépéseket ismertető diagram." border="false":::
+:::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="A Log Replay Service vezénylési lépéseit a SQL Managed Instance." border="false":::
     
 | Művelet | Részletek |
 | :----------------------------- | :------------------------- |
-| **1. másolja az adatbázis biztonsági másolatait SQL Serverról blob Storagera**. | A [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával teljes, különbözeti és naplózott biztonsági másolatokat másolhat SQL Serverről egy blob Storage-tárolóba. <br /><br />Használjon fájlneveket. A LRS nem igényel konkrét fájl-elnevezési konvenciót.<br /><br />Több adatbázis áttelepítése esetén minden adatbázishoz külön mappára van szükség. |
-| **2. Indítsa el a LRS a felhőben**. | A szolgáltatást a következő parancsmagok közül választhatja újra: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_start parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> A LRS külön kell elindítania minden olyan adatbázis esetében, amely Blob Storage biztonsági mentési mappájára mutat. <br /><br /> A szolgáltatás elindítása után a Blob Storage tárolóról készít biztonsági másolatokat, és megkezdi a visszaállítást az SQL felügyelt példányán.<br /><br /> Ha a LRS folyamatos módban indult el, az összes eredetileg feltöltött biztonsági mentés visszaállítása után a szolgáltatás a mappába feltöltött összes új fájlt megtekinti. A szolgáltatás a napló sorszáma (LSN) lánc alapján folyamatosan alkalmazza a naplókat a Leállításig. |
-| **2,1. a művelet előrehaladásának figyelése**. | A visszaállítási művelet előrehaladását a következő parancsmagok közül választhatja: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_show parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
-| **2,2. szükség esetén állítsa le a műveletet**. | Ha le kell állítania az áttelepítési folyamatot, a következő parancsmagok közül választhat: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> A művelet leállítása törli azt az adatbázist, amelyet a felügyelt SQL-példányon kíván visszaállítani. A művelet leállítása után nem folytathatja az adatbázisok LRS. Újra kell indítania az áttelepítési folyamatot. |
-| **3. Kivágás a felhőbe, ha elkészült**. | Állítsa le az alkalmazást és a munkaterhelést. Végezze el az utolsó log-tail biztonsági mentést, és töltse fel az Azure Blob Storageba.<br /><br /> Hajtsa végre a átváltás egy LRS-művelet elindításával a `complete` következő parancsmagokkal: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) vagy Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Ez a művelet leállítja a LRS, és az SQL felügyelt példányon az olvasási és írási használatra az adatbázis online állapotba kerül.<br /><br /> Az alkalmazás kapcsolódási karakterláncának átirányítása SQL Serverról SQL felügyelt példányra. Ezt a lépést saját kezűleg kell összehangolni az alkalmazás manuális kapcsolódási karakterláncának módosításával, vagy automatikusan (például ha az alkalmazás képes például egy tulajdonság vagy egy adatbázis kapcsolódási karakterláncának beolvasására). |
+| **1. Adatbázis biztonsági másolatának másolása a SQL Server-Blob Storage.** | Teljes, különbségi és naplómentés másolása a SQL Server egy Blob Storage-tárolóba az [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy a [Azure Storage Explorer.](https://azure.microsoft.com/features/storage-explorer/) <br /><br />Használjon bármilyen fájlnevet. Az LRS nem igényel konkrét fájlelnevezési konvenciót.<br /><br />Több adatbázis áttelepítésekor minden adatbázishoz külön mappára van szükség. |
+| **2. Indítsa el az LRS-t a felhőben.** | A szolgáltatást a következő parancsmagokkal újraindíthatja: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) vagy Azure CLI ( az_sql_midb_log_replay_start[parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Az LRS-t minden olyan adatbázis esetében külön indítsa el, amely egy biztonsági mentési mappára mutat a Blob Storage. <br /><br /> Miután elindítja a szolgáltatást, biztonsági másolatokat készít a Blob Storage tárolóból, és elkezdi visszaállítani őket a SQL Managed Instance.<br /><br /> Ha az LRS-t folyamatos módban indította el, az összes eredetileg feltöltött biztonsági másolat visszaállítása után a szolgáltatás figyelni fogja a mappába feltöltött új fájlokat. A szolgáltatás folyamatosan alkalmazza a naplókat a naplóütemezési szám (LSN) lánc alapján, amíg le nem áll. |
+| **2.1. Figyelje a művelet előrehaladását.** | A visszaállítási művelet előrehaladását a következő parancsmagokkal figyelheti: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) vagy Azure CLI ( az_sql_midb_log_replay_show[parancsmagok](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
+| **2.2. Szükség esetén állítsa le a műveletet.** | Ha le kell állítania a migrálási folyamatot, több parancsmagot is választhat: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) vagy Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> A művelet leállításával törli a visszaállítás alatt SQL Managed Instance. Miután leállít egy műveletet, nem folytathatja az LRS-t egy adatbázishoz. A migrálási folyamatot az nulláról kell újraindítani. |
+| **3. Ha** elkészült, át kell állnia a felhőbe. | Állítsa le az alkalmazást és a számítási feladatot. Az utolsó naplószéles biztonsági mentést töltse fel a Azure Blob Storage.<br /><br /> Az átváltás befejezéséhez indítson el egy LRS-műveletet a következő parancsmagokkal: `complete` PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) vagy Azure CLI [az_sql_midb_log_replay_complete.](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete) Ez a művelet leállítja az LRS-t, és az adatbázis online állapotba hozása olvasási és írási használatra a SQL Managed Instance.<br /><br /> Az alkalmazás kapcsolati sztringet a SQL Server a SQL Managed Instance. Ezt a lépést önnek kell összehangolnia az alkalmazásban manuális kapcsolati sztring-módosítással vagy automatikusan (például ha az alkalmazás be tudja olvasni a kapcsolati sztringet egy tulajdonságból vagy egy adatbázisból). |
 
-## <a name="requirements-for-getting-started"></a>Az első lépésekhez szükséges követelmények
+## <a name="requirements-for-getting-started"></a>Az első lépések követelményei
 
-### <a name="sql-server-side"></a>SQL Server oldalon
+### <a name="sql-server-side"></a>SQL Server oldal
 - SQL Server 2008-2019
 - Adatbázisok teljes biztonsági mentése (egy vagy több fájl)
-- Különbözeti biztonsági másolat (egy vagy több fájl)
-- Napló biztonsági mentése (nincs felosztva tranzakciós naplófájlra)
-- `CHECKSUM` biztonsági mentések engedélyezve (kötelező)
+- Különbségi biztonsági mentés (egy vagy több fájl)
+- Naplók biztonsági mentése (tranzakciós naplófájlok felosztása nélkül)
+- `CHECKSUM` biztonsági mentések engedélyezése (kötelező)
 
 ### <a name="azure-side"></a>Azure-oldal
-- PowerShell az. SQL modul verziója 2.16.0 vagy újabb ( [Azure Cloud Shell](/azure/cloud-shell/)) keresztül[telepített](https://www.powershellgallery.com/packages/Az.Sql/) vagy elért
-- Azure CLI-verzió 2.19.0 vagy újabb verziója ([telepített](/cli/azure/install-azure-cli))
-- Azure Blob Storage-tároló kiépítve
-- Közös hozzáférésű aláírás (SAS) biztonsági jogkivonat az Blob Storage tárolóhoz generált olvasási és listázási engedélyekkel
+- A PowerShell Az.SQL-modul 2.16.0-s vagy újabb[verziója](https://www.powershellgallery.com/packages/Az.Sql/) (telepítve vagy elérhető a [Azure Cloud Shell](/azure/cloud-shell/))
+- Az Azure CLI 2.19.0-s vagy újabb verziója[(telepített )](/cli/azure/install-azure-cli)
+- Azure Blob Storage kiépítve
+- Közös hozzáférésű jogosultság signature (SAS) biztonsági jogkivonat olvasási és listás engedélyekkel a Blob Storage tárolóhoz
 
-### <a name="migration-of-multiple-databases"></a>Több adatbázis áttelepítése
-A különböző adatbázisokhoz tartozó biztonsági másolati fájlokat külön mappákban kell elhelyezni Blob Storageon.
+### <a name="migration-of-multiple-databases"></a>Több adatbázis migrálása
+A különböző adatbázisok biztonsági mentési fájljait külön mappákba kell Blob Storage.
 
-Az egyes adatbázisokhoz külön LRS kell elindítania, ha a Blob Storage megfelelő mappájára mutat. A LRS legfeljebb 100 egyidejű visszaállítási folyamatot tud támogatni egyetlen felügyelt példányon.
+Minden adatbázis esetében külön indítsa el az LRS-t úgy, hogy a megfelelő mappára mutat a Blob Storage. Az LRS legfeljebb 100 egyidejű visszaállítási folyamatot támogat egyetlen felügyelt példányonként.
 
-### <a name="azure-rbac-permissions"></a>Azure RBAC engedélyek
-A LRS a megadott ügyfeleken keresztül történő futtatása a következő Azure-szerepkörök egyikét igényli:
-- Előfizetés tulajdonosi szerepköre
-- [Felügyelt példány közreműködői](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) szerepköre
-- Egyéni szerepkör a következő engedélyekkel: `Microsoft.Sql/managedInstances/databases/*`
+### <a name="azure-rbac-permissions"></a>Azure RBAC-engedélyek
+Az LRS a megadott ügyfeleken való futtatásához az alábbi Azure-szerepkörök valamelyike szükséges:
+- Előfizetés tulajdonosa szerepkör
+- [Felügyelt példány közreműködője](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) szerepkör
+- Egyéni szerepkör a következő engedéllyel: `Microsoft.Sql/managedInstances/databases/*`
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
 A következő ajánlott eljárásokat javasoljuk:
-- [Data Migration Assistant](/sql/dma/dma-overview) futtatásával ellenőrizheti, hogy az adatbázisok készen állnak-e az SQL felügyelt példányra való áttelepítésre. 
-- A teljes és a különbözeti biztonsági mentéseket több fájlba is eloszthatja egyetlen fájl használata helyett.
-- A biztonsági másolatok tömörítésének engedélyezése.
-- A parancsfájlokat a Cloud Shell használatával futtathatja, mivel a rendszer mindig frissíti a legújabb parancsmagokat.
-- Tervezze meg az áttelepítés befejezését a LRS elindítása után 47 órán belül. Ez egy türelmi időszak, amely megakadályozza a rendszer által felügyelt szoftveres javítások telepítését.
+- Futtassa [Data Migration Assistant,](/sql/dma/dma-overview) hogy ellenőrizze, hogy az adatbázisok készen állnak-e a SQL Managed Instance. 
+- A teljes és különbségi biztonsági mentéseket több fájlra osztja szét egyetlen fájl használata helyett.
+- Engedélyezze a biztonsági mentés tömörítését.
+- A Cloud Shell parancsprogramokat futtathat, mivel az mindig a legújabb kiadott parancsmagok használatára frissül.
+- A migrálás befejezését az LRS elindítani követő 47 órán belül tervezze meg. Ez egy türelmi időszak, amely megakadályozza a rendszer által felügyelt szoftverjavítások telepítését.
 
 > [!IMPORTANT]
-> - A LRS-en keresztül visszaállított adatbázis nem használható, amíg az áttelepítési folyamat be nem fejeződik. 
-> - A LRS nem támogatja az adatbázisok írásvédett elérését az áttelepítés során.
-> - Az áttelepítés befejeződése után az áttelepítési folyamat véglegesítve lett, mert a LRS nem támogatja a visszaállítási folyamat folytatását.
+> - A migrálási folyamat befejezéséig nem használhatja az LRS-sel visszaállított adatbázist. 
+> - Az LRS nem támogatja az adatbázisokhoz való csak olvasási hozzáférést a migrálás során.
+> - A migrálás befejezése után a migrálási folyamat végleges lesz, mert az LRS nem támogatja a visszaállítási folyamat visszaállítását.
 
-## <a name="steps-to-execute"></a>Végrehajtandó lépések
+## <a name="steps-to-execute"></a>A végrehajtás lépései
 
-### <a name="make-backups-of-sql-server"></a>SQL Server biztonsági mentések készítése
+### <a name="make-backups-of-sql-server"></a>Biztonsági másolat készítése SQL Server
 
-SQL Server biztonsági mentését a következő lehetőségek egyikével végezheti el:
+A biztonsági másolatokat SQL Server alábbi lehetőségek egyikével készítse el:
 
-- Készítsen biztonsági mentést a helyi lemezes tárhelyre, majd töltse fel a fájlokat az Azure Blob Storageba, ha a környezet korlátozza a közvetlen biztonsági mentéseket Blob Storagere.
-- `TO URL`Ha a környezet és a biztonsági eljárások lehetővé teszik, biztonsági mentést készíthet közvetlenül blob Storage a T-SQL lehetőséggel. 
+- Biztonsági másolat készítése helyi lemezes tárhelyre, majd fájlok feltöltése a Azure Blob Storage, ha a környezet a közvetlen biztonsági mentéseket Blob Storage.
+- Ha a környezet és a biztonsági eljárások ezt lehetővé teszik Blob Storage T-SQL kapcsolóval közvetlenül a biztonsági Blob Storage `TO URL` is. 
 
-Állítsa be azokat az adatbázisokat, amelyeket át szeretne telepíteni a teljes helyreállítási módba, hogy engedélyezze a naplók biztonsági mentését.
+Állítsa be a teljes helyreállítási módba átemelni kívánt adatbázisokat a naplók biztonsági mentésének engedélyezése érdekében.
 
 ```SQL
 -- To permit log backups, before the full database backup, modify the database to use the full recovery
@@ -132,7 +132,7 @@ SET RECOVERY FULL
 GO
 ```
 
-Az adatbázis helyi tárolón való teljes, differenciált és naplózott biztonsági mentésének manuális elvégzéséhez használja az alábbi T-SQL-parancsfájlokat. Győződjön meg arról `CHECKSUM` , hogy a beállítás engedélyezve van, mert kötelező a LRS.
+Az adatbázis teljes, különbségi és naplóbeli biztonsági mentésének manuális kezű készítéséhez használja a következő T-SQL-példaszk szkripteket. Győződjön meg `CHECKSUM` arról, hogy a beállítás engedélyezve van, mert az LRS-hez kötelező.
 
 ```SQL
 -- Example of how to make a full database backup to the local disk
@@ -156,24 +156,24 @@ GO
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Az Azure Blob Storage a SQL Server és az SQL felügyelt példánya közötti biztonsági mentési fájlok köztes tárolóként használatos. Az alábbi lépéseket követve hozzon létre egy új Storage-fiókot és egy BLOB-tárolót a Storage-fiókon belül:
+Azure Blob Storage a rendszer köztes tárolóként használja a biztonsági mentési fájlokhoz a SQL Server és SQL Managed Instance. Új tárfiók és blobtároló létrehozásához kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy Storage-fiókot](../../storage/common/storage-account-create.md?tabs=azure-portal).
-2. [Crete a blob tároló](../../storage/blobs/storage-quickstart-blobs-portal.md) a Storage-fiókon belül.
+1. [Hozzon létre egy tárfiókot.](../../storage/common/storage-account-create.md?tabs=azure-portal)
+2. [Blobtároló létrehozása a](../../storage/blobs/storage-quickstart-blobs-portal.md) tárfiókban.
 
-### <a name="copy-backups-from-sql-server-to-blob-storage"></a>Biztonsági másolatok másolása SQL Serverról Blob Storage
+### <a name="copy-backups-from-sql-server-to-blob-storage"></a>Biztonsági másolatok másolása SQL Server Blob Storage
 
-Az adatbázisok felügyelt példányra történő áttelepítése a LRS használatával a következő módszerekkel tölthetők fel a biztonsági másolatok Blob Storageba:
-- Natív [biztonsági mentés használata az URL-](/sql/relational-databases/backup-restore/sql-server-backup-to-url) funkciók SQL Server
-- A [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy a [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) használata a biztonsági másolatok blob-tárolóba való feltöltéséhez
-- Storage Explorer használata a Azure Portal
+Az adatbázisok felügyelt példányra LRS használatával való áttelepítésekor a következő megközelítésekkel tölthet fel biztonsági másolatokat a Blob Storage:
+- Natív SQL SERVER [URL-címre funkció](/sql/relational-databases/backup-restore/sql-server-backup-to-url) használata
+- Biztonsági másolatok [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) blobtárolóba való feltöltése az [Azcopy](../../storage/common/storage-use-azcopy-v10.md) vagy a Azure Storage Explorer használatával
+- Az Storage Explorer használata a Azure Portal
 
-### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Biztonsági másolatok SQL Server közvetlenül a Blob Storage
-Ha a vállalati és hálózati házirendek lehetővé teszik, egy másik lehetőség, hogy a biztonsági másolatokat közvetlenül a SQL Server Blob Storage a SQL Server natív [biztonsági mentés URL-címére](/sql/relational-databases/backup-restore/sql-server-backup-to-url) történő másolásával. Ha ezt a lehetőséget választja, nem kell biztonsági mentést készítenie a helyi tárolón, és fel kell töltenie őket a Blob Storageba.
+### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Biztonsági másolatok készítése SQL Server a Blob Storage
+Ha a vállalati és hálózati házirendek ezt lehetővé teszik, alternatív megoldásként a biztonsági mentéseket közvetlenül a SQL Server-ból a Blob Storage-be is biztonsági másolatot készít a SQL Server BIZTONSÁGI MENTÉS [URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url) lehetőség használatával. Ha ezt a lehetőséget választja, nem kell biztonsági másolatot készítenie a helyi tárolón, és feltöltenie azokat a Blob Storage.
 
-Első lépésként a művelethez a Blob Storage SAS-hitelesítési tokent kell előállítania, majd importálnia kell a tokent a SQL Serverba. A második lépés az, hogy a biztonsági mentéseket a `TO URL` T-SQL lehetőséggel hozza. Győződjön meg arról, hogy az összes biztonsági mentés engedélyezve van a `CHEKSUM` beállítással.
+Első lépésként ehhez a művelethez létre kell hoznia egy SAS-hitelesítési jogkivonatot a Blob Storage majd importálni kell a jogkivonatot a SQL Server. A második lépés a biztonsági mentések készítése a `TO URL` T-SQL lehetőséggel. Győződjön meg arról, hogy az összes biztonsági mentés engedélyezve `CHEKSUM` van.
 
-A következő mintakód lehetővé teszi, hogy a biztonsági mentések Blob Storage. Ez a példa nem tartalmazza az SAS-token importálására vonatkozó utasításokat. Az oktatóanyagban részletes útmutatást talál, amely azt is ismerteti, hogyan hozhatja SQL Server az SAS-tokent, és hogyan importálhatja őket az [Azure Blob Storage az SQL Server használatával](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage). 
+Referenciaként a következő mintakód biztonsági másolatokat készít a Blob Storage. Ez a példa nem tartalmazza az SAS-jogkivonat importálásának utasításait. Részletes utasításokat, például az SAS-jogkivonat létrehozásáról és importálását SQL Server a Use Azure Blob Storage with SQL Server (A [sas-token](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)Azure Blob Storage használatával) SQL Server. 
 
 ```SQL
 -- Example of how to make a full database backup to a URL
@@ -193,67 +193,67 @@ TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>
 WITH COMPRESSION, CHECKSUM
 ```
 
-### <a name="generate-a-blob-storage-sas-authentication-token-for-lrs"></a>Blob Storage SAS hitelesítési jogkivonat létrehozása a LRS
+### <a name="generate-a-blob-storage-sas-authentication-token-for-lrs"></a>Sas-Blob Storage létrehozása LRS-hez
 
-Az Azure Blob Storage a SQL Server és az SQL felügyelt példánya közötti biztonsági mentési fájlok köztes tárolóként használatos. A LRS csak a List és a Read engedélyekkel rendelkező SAS-hitelesítési tokent kell létrehoznia. A token lehetővé teszi a LRS számára a Blob Storage elérését, és a biztonságimásolat-fájlok használatával visszaállíthatja őket az SQL felügyelt példányain. 
+Azure Blob Storage a rendszer köztes tárolóként használja a biztonsági mentési fájlokhoz a SQL Server és SQL Managed Instance. Létre kell hoznia egy SAS-hitelesítési jogkivonatot, amely csak lista- és olvasási engedélyekkel rendelkezik az LRS-hez. A jogkivonat lehetővé teszi, hogy az LRS hozzáférjen Blob Storage és a biztonsági mentési fájlok használatával visszaállítsa azokat a SQL Managed Instance. 
 
 A jogkivonat létrehozásához kövesse az alábbi lépéseket:
 
-1. Storage Explorer megnyitása a Azure Portal.
-2. Bontsa ki a **blob-tárolókat**.
-3. Kattintson a jobb gombbal a blob-tárolóra, majd válassza a **közös hozzáférési aláírás beolvasása** elemet.
+1. Nyissa Storage Explorer a Azure Portal.
+2. **Bontsa ki a Blobtárolók bontsa ki a et.**
+3. Kattintson a jobb gombbal a blobtárolóra, és válassza a **Közös hozzáférésű jogosultság aláírása lehetőséget.**
 
-   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Képernyőkép, amely megjeleníti az s A s hitelesítési jogkivonat létrehozásához szükséges beállításokat.":::
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Képernyőkép az S A S hitelesítési jogkivonat létrehozásához szükséges beállításokról.":::
 
-4. Válassza ki a jogkivonat lejárati időkeretét. Győződjön meg arról, hogy a jogkivonat érvényes az áttelepítés időtartamára.
-5. Válassza ki a token időzónáját: UTC vagy a helyi idő.
+4. Válassza ki a jogkivonat lejáratának időkeretét. Győződjön meg arról, hogy a jogkivonat érvényes a migrálás idejére.
+5. Válassza ki a jogkivonat időzónát: UTC vagy helyi idő szerint.
     
    > [!IMPORTANT]
-   > A jogkivonat időzónája és a felügyelt példány eltérő lehet. Győződjön meg arról, hogy az SAS-jogkivonat rendelkezik a megfelelő időponttal, figyelembe véve az időzónákat. Ha lehetséges, állítsa az időzónát a tervezett áttelepítési időszak korábbi és későbbi időpontjára.
-6. Válassza az **olvasási** és **listázási** engedélyek lehetőséget.
+   > Előfordulhat, hogy a jogkivonat és a felügyelt példány időzónája nem egyező. Győződjön meg arról, hogy az SAS-jogkivonat érvényessége megfelelő, figyelembe véve az időzónákat. Ha lehetséges, állítsa az időzónát a tervezett migrálási időszak korábbi és későbbi időpontára.
+6. Válassza **a Csak** olvasási és a Csak **listás** engedélyek lehetőséget.
 
    > [!IMPORTANT]
-   > Ne válasszon más engedélyeket. Ha így tesz, a LRS nem indul el. Ezt a biztonsági követelményt a terv szerint kell megtervezni.
+   > Ne válasszon ki más engedélyeket. Ha így van, az LRS nem indul el. Ez a biztonsági követelmény a tervezésből áll.
 7. Válassza a **Létrehozás** lehetőséget.
 
-   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Képernyőkép, amely megjeleníti az s token lejáratának, időzónájának és engedélyeinek kiválasztásait a létrehozás gombbal együtt.":::
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Képernyőkép az S A S jogkivonat lejáratának, időzónának és engedélyeinek kiválasztásáról, valamint a Létrehozás gombról.":::
 
-A SAS-hitelesítés a megadott időérvényességi idővel jön létre. Szüksége lesz a jogkivonat URI-verziójára, ahogy az alábbi képernyőképen is látható.
+Az SAS-hitelesítés a megadott érvényességgel jön létre. Szüksége lesz a jogkivonat URI-verziójára, ahogyan az alábbi képernyőképen látható.
 
-:::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Képernyőkép, amely az S-S token U R I verziójának egy példáját mutatja be.":::
+:::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Képernyőkép egy S A S jogkivonat U R I-verziójáról.":::
 
-### <a name="copy-parameters-from-the-sas-token"></a>Paraméterek másolása az SAS-tokenből
+### <a name="copy-parameters-from-the-sas-token"></a>Paraméterek másolása az SAS-jogkivonatból
 
-Mielőtt a SAS-tokent használja a LRS elindításához, meg kell ismernie a szerkezetét. A generált SAS-jogkivonat URI-ja két, kérdőjel () karakterrel elválasztott részből áll `?` , ahogy az ebben a példában is látható:
+Mielőtt az SAS-jogkivonattal elindítja az LRS-t, meg kell értenie annak szerkezetét. A generált SAS-jogkivonat URI-ját két, kérdőjellel () elválasztott rész `?` tartalmazza, ahogyan az alábbi példában látható:
 
-:::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Példa: U R I egy generált S token a log Replay szolgáltatáshoz." border="false":::
+:::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Példa U I-re egy generált S A S jogkivonatra a Log Replay Service-hez." border="false":::
 
-Az első, a kérdőjel () értéktől kezdődően a `https://` `?` `StorageContainerURI` LRS bemenetként megjelenő paraméterhez van használatban. Az adatbázis biztonsági mentési fájljait tároló mappával kapcsolatos LRS információkat biztosít.
+Az első rész, amely a kérdőjel () jellel kezdődik, az LRS bemeneteként megadottként megadott `https://` `?` `StorageContainerURI` paraméterhez lesz használva. LRS-információkat biztosít arról a mappáról, ahol az adatbázis biztonsági másolati fájljai tárolva vannak.
 
-A második rész a kérdőjel () után kezdődik, `?` és egészen a karakterlánc végéig haladva a `StorageContainerSasToken` paraméter. Ez a tényleges aláírt hitelesítési jogkivonat, amely a megadott idő időtartamára érvényes. Ennek a résznek nem feltétlenül kell kezdődnie, `sp=` ahogy az a példában látható. Az eset eltérő lehet.
+A második rész, amely a kérdőjel ( ) után kezdődik, és egészen a sztring végéig `?` tart, a `StorageContainerSasToken` paraméter. Ez a tényleges aláírt hitelesítési jogkivonat, amely a megadott időtartamra érvényes. Ennek a résznek nem feltétlenül kell azzal `sp=` kezdenie, ahogyan az a példában látható. Az ön esete eltérhet.
 
 Másolja a paramétereket az alábbiak szerint:
 
-1. Másolja a token első részét, `https://` egészen addig, amíg a kérdőjel () be nem fejeződik `?` . A `StorageContainerUri` LRS megkezdéséhez használja a PowerShellben vagy az Azure CLI-ben paraméterként.
+1. Másolja ki a jogkivonat első részét, kezdve egészen a kérdőjelig `https://` ( `?` ). Ezt használhatja paraméterként `StorageContainerUri` a PowerShellben vagy az Azure CLI-ban az LRS indításhoz.
 
-   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="Képernyőkép, amely a jogkivonat első részének másolását mutatja be.":::
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="A jogkivonat első részének másolását bemutató képernyőkép.":::
 
-2. Másolja a token második részét a kérdőjeltől ( `?` ) kezdve egészen a karakterlánc végéig. A `StorageContainerSasToken` LRS megkezdéséhez használja a PowerShellben vagy az Azure CLI-ben paraméterként.
+2. Másolja a jogkivonat második részét a kérdőjeltől () egészen a sztring `?` végéig. Ezt használhatja paraméterként `StorageContainerSasToken` a PowerShellben vagy az Azure CLI-ban az LRS indításhoz.
 
-   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="Képernyőkép, amely a jogkivonat második részének másolását mutatja be.":::
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="A jogkivonat második részének másolását bemutató képernyőkép.":::
    
 > [!NOTE]
-> Ha a jogkivonat egy részét másolja, ne adja meg a kérdőjelet.
+> Ne jelölje meg a kérdőjelet, ha a jogkivonat bármelyik részét átmásolja.
 
-### <a name="log-in-to-azure-and-select-a-subscription"></a>Jelentkezzen be az Azure-ba, és válasszon egy előfizetést
+### <a name="log-in-to-azure-and-select-a-subscription"></a>Jelentkezzen be az Azure-ba, és válasszon ki egy előfizetést
 
-Az Azure-ba való bejelentkezéshez használja a következő PowerShell-parancsmagot:
+Jelentkezzen be az Azure-ba a következő PowerShell-parancsmag használatával:
 
 ```powershell
 Login-AzAccount
 ```
 
-Válassza ki a megfelelő előfizetést, ahol a felügyelt példány a következő PowerShell-parancsmag használatával található:
+A következő PowerShell-parancsmag használatával válassza ki a megfelelő előfizetést, amelyben a felügyelt példány található:
 
 ```powershell
 Select-AzSubscription -SubscriptionId <subscription ID>
@@ -261,17 +261,17 @@ Select-AzSubscription -SubscriptionId <subscription ID>
 
 ## <a name="start-the-migration"></a>Az áttelepítés elindítása
 
-A LRS megkezdésével elindítja az áttelepítést. A szolgáltatást akár automatikus kiegészítéssel, akár folyamatos módban is elindíthatja. 
+A migrálást az LRS-sel indítja el. A szolgáltatást automatikus kiegészítési vagy folyamatos módban is elindíthatja. 
 
-Ha automatikus kiegészítési módot használ, az áttelepítés automatikusan befejeződik, amikor a rendszer visszaállította az utolsó megadott biztonságimásolat-fájlt. Ehhez a beállításhoz a Start parancsnak kell megadnia az utolsó biztonságimásolat-fájl fájlnevét. 
+Ha automatikus kiegészítési módot használ, az áttelepítés automatikusan befejeződik, amikor a megadott biztonsági mentési fájlok utolsó visszaállítása megtörténik. Ehhez a beállításhoz a start parancsra van szükség az utolsó biztonsági mentési fájl fájlnevének megadásához. 
 
-Folyamatos mód használata esetén a szolgáltatás folyamatosan visszaállítja a hozzáadott új biztonságimásolat-fájlokat. Az áttelepítés csak a manuális átváltás végezhető el. 
+A folyamatos mód használata esetén a szolgáltatás folyamatosan visszaállítja a hozzáadott új biztonsági mentési fájlokat. A migrálás csak manuális átállás esetén fog befejeződni. 
 
-### <a name="start-lrs-in-autocomplete-mode"></a>LRS indítása automatikus kiegészítési módban
+### <a name="start-lrs-in-autocomplete-mode"></a>LRS automatikus kitöltési módban való elindítani
 
-A LRS automatikus kiegészítési módban való elindításához használja a következő PowerShell-vagy Azure CLI-parancsokat. Adja meg az utolsó biztonságimásolat-fájl nevét a `-LastBackupName` paraméter használatával. A megadott biztonságimásolat-fájlok utolsó visszaállítását követően a szolgáltatás automatikusan kezdeményez egy átváltás.
+Az LRS automatikus kiegészítési módban való indításhoz használja a következő PowerShell- vagy Azure CLI-parancsokat. A paraméterrel adja meg az utolsó biztonsági mentési fájl `-LastBackupName` nevét. A megadott biztonsági mentési fájlok utolsó visszaállításakor a szolgáltatás automatikusan kezdeményezi az átváltást.
 
-Az alábbi példa a LRS automatikus kiegészítési módban való elindítását szemlélteti a PowerShell használatával:
+Az alábbi példa az LRS automatikus kiegészítési módban való indítását példázhatja a PowerShell használatával:
 
 ```PowerShell
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -284,7 +284,7 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -LastBackupName "last_backup.bak"
 ```
 
-Az alábbi példa a LRS automatikus kiegészítési módban való elindítását szemlélteti az Azure CLI használatával:
+Az alábbi példában az LRS automatikus kiegészítési módban való indítása az Azure CLI használatával történik:
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb -a --last-bn "backup.bak"
@@ -292,9 +292,9 @@ az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb -a --last
     --storage-sas "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
-### <a name="start-lrs-in-continuous-mode"></a>LRS elindítása folyamatos módban
+### <a name="start-lrs-in-continuous-mode"></a>LRS in continuous mode (LRS elindítani folyamatos módban)
 
-Az alábbi példa a LRS folyamatos módban való elindítását szemlélteti a PowerShell használatával:
+Példa LRS folyamatos módban való indításra a PowerShell használatával:
 
 ```PowerShell
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -304,7 +304,7 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -StorageContainerSasToken "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
-Íme egy példa arra, hogy az Azure CLI használatával hogyan kell a LRS-t folyamatos módban elindítani:
+Az alábbi példában az LRS folyamatos módban való indítása az Azure CLI használatával történik:
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb
@@ -312,28 +312,28 @@ az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb
     --storage-sas "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
-A PowerShell és a CLI-ügyfelek folyamatos módban kezdhetik a LRS, szinkronban vannak. Ez azt jelenti, hogy az ügyfelek megvárhatják, hogy az API-válasz sikeres vagy sikertelen legyen a feladatok elindításához. 
+A PowerShell- és a CLI-ügyfelek szinkron módon indítják el az LRS-t folyamatos módban. Ez azt jelenti, hogy az ügyfelek megvárják, amíg az API válasza jelzi a feladat sikeres vagy sikertelen indítását. 
 
-A várakozás során a parancs nem fogja visszaadni a vezérlést a parancssorba. Ha az áttelepítési élményt futtatja, és szüksége van a LRS Start parancsra, amely azonnal visszaadja a vezérlést a többi parancsfájlnak, a PowerShellt háttérbeli feladatokként futtathatja a `-AsJob` kapcsoló használatával. Például:
+A várakozás során a parancs nem ad vissza vezérlést a parancssorhoz. Ha szkriptet futtat a migrálási folyamathoz, és az LRS start parancsára van szüksége, hogy azonnal vissza tudja adni a vezérlést a szkript többi részének folytatásához, a PowerShellt háttérbeli feladatként futtathatja a `-AsJob` kapcsolóval. Például:
 
 ```PowerShell
 $lrsjob = Start-AzSqlInstanceDatabaseLogReplay <required parameters> -AsJob
 ```
 
-Amikor elindít egy háttérben futó feladatot, a feladatütemezés azonnal visszatér, még akkor is, ha a művelet hosszabb időt vesz igénybe. A munkamenet futtatása megszakítás nélkül folytathatja a munkát. A PowerShell háttérbeli feladatként való futtatásával kapcsolatos részletekért tekintse meg a [PowerShell Start-Job](/powershell/module/microsoft.powershell.core/start-job#description) dokumentációját.
+Amikor elindít egy háttér feladatot, a feladatobjektum azonnal visszatér, még akkor is, ha a feladat hosszabb ideig tart. A feladat futása közben megszakítás nélkül dolgozhat a munkamenetben. A PowerShell háttérként való futtatásával kapcsolatos részletekért tekintse meg a [PowerShell Start-Job dokumentációját.](/powershell/module/microsoft.powershell.core/start-job#description)
 
-Hasonlóképpen, ha a Linuxon háttérbeli folyamatként szeretné elindítani az Azure CLI-parancsot, használja az `&` LRS start parancs végén található jelet ():
+Hasonlóképpen, ha Linuxon is elindítani egy Azure CLI-parancsot háttérfolyamatként, használja az LRS indítási parancsának végén látható és `&` () parancsot:
 
 ```CLI
 az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> A LRS megkezdése után a rendszer által felügyelt szoftverek 47 óráig megállnak. Az ablak után a következő automatizált szoftver-javítás automatikusan leállítja a LRS. Ha ez történik, nem folytathatja a Migrálás folytatását, és újra kell indítania azt a semmiből. 
+> Az LRS elkezdését követően a rendszer által felügyelt szoftverjavítások 47 órán át leállnak. Az ablak után a következő automatizált szoftverjavítás automatikusan leállítja az LRS-t. Ha ez történik, nem folytathatja a migrálást, és újra kell indítania az egészet. 
 
-## <a name="monitor-the-migration-progress"></a>Az áttelepítési folyamat figyelése
+## <a name="monitor-the-migration-progress"></a>A migrálási folyamat figyelése
 
-Az áttelepítés PowerShellen keresztüli előrehaladásának figyeléséhez használja a következő parancsot:
+A PowerShellen keresztüli migrálás előrehaladásának figyelése érdekében használja a következő parancsot:
 
 ```PowerShell
 Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -341,15 +341,15 @@ Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -Name "ManagedDatabaseName"
 ```
 
-Az Azure CLI-n keresztüli áttelepítés előrehaladásának figyeléséhez használja a következő parancsot:
+A migrálás azure cli-s használatával való nyomon követéséhez használja a következő parancsot:
 
 ```CLI
 az sql midb log-replay show -g mygroup --mi myinstance -n mymanageddb
 ```
 
-## <a name="stop-the-migration"></a>Az áttelepítés leállítása
+## <a name="stop-the-migration"></a>A migrálás leállítása
 
-Ha le kell állítania az áttelepítést, használja a következő parancsmagokat. Az áttelepítés leállítása törli az adatbázis visszaállítását az SQL felügyelt példányon, így az áttelepítés folytatása nem lehetséges.
+Ha le kell állítania az áttelepítést, használja a következő parancsmagokat. A migrálás leállítása törli a visszaállítási adatbázist a SQL Managed Instance, így a migrálás nem lehetséges.
 
 Az áttelepítési folyamat PowerShellen keresztüli leállításához használja a következő parancsot:
 
@@ -359,7 +359,7 @@ Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -Name "ManagedDatabaseName"
 ```
 
-Az áttelepítési folyamat Azure CLI-n keresztüli leállításához használja a következő parancsot:
+A migrálási folyamat Az Azure CLI használatával való leállításához használja a következő parancsot:
 
 ```CLI
 az sql midb log-replay stop -g mygroup --mi myinstance -n mymanageddb
@@ -367,9 +367,9 @@ az sql midb log-replay stop -g mygroup --mi myinstance -n mymanageddb
 
 ## <a name="complete-the-migration-continuous-mode"></a>Az áttelepítés befejezése (folyamatos mód)
 
-Ha a LRS folyamatos módban indult el, miután az összes biztonsági mentést visszaállította, a átváltás elindításával befejezi az áttelepítést. A átváltás követően a rendszer áttelepíti az adatbázist, és készen áll az olvasási és írási hozzáférésre.
+Ha az LRS-t folyamatos módban indította el, miután az összes biztonsági másolat vissza lett állítani, az átállás kezdeményezése befejezi a migrálást. Az átváltás után az adatbázis migrálva lesz, és készen áll az olvasási és írási hozzáférésre.
 
-Az áttelepítési folyamat LRS folyamatos módban történő végrehajtásához a PowerShell használatával hajtsa végre a következő parancsot:
+A powershelles LRS folyamatos módban való áttelepítési folyamatának befejezéséhez használja a következő parancsot:
 
 ```PowerShell
 Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -378,7 +378,7 @@ Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
 -LastBackupName "last_backup.bak"
 ```
 
-Ha az áttelepítési folyamatot LRS folyamatos módban szeretné elvégezni az Azure CLI-n keresztül, használja a következő parancsot:
+A migrálási folyamat folyamatos LRS módban, az Azure CLI használatával való befejezéséhez használja a következő parancsot:
 
 ```CLI
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
@@ -386,28 +386,28 @@ az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last
 
 ## <a name="functional-limitations"></a>Funkcionális korlátozások
 
-A LRS működési korlátai a következők:
-- A visszaállítani kívánt adatbázis nem használható írásvédett hozzáférésre az áttelepítési folyamat során.
-- A rendszer által felügyelt szoftveres javítások 47 órával a LRS elindítása után le vannak tiltva. Az időszak lejárta után a következő szoftverfrissítés leállítja a LRS. Ezután újra kell indítania a LRS-t.
-- A LRS-nek szüksége van a SQL Server adatbázisainak biztonsági mentésére, ha `CHECKSUM` engedélyezve van a beállítás.
-- A LRS által használt SAS-jogkivonatot a teljes Azure Blob Storage-tárolóhoz kell létrehozni, és csak olvasási és listázási engedélyekkel kell rendelkeznie.
-- A különböző adatbázisok biztonsági mentési fájljait külön mappákba kell helyezni Blob Storageon.
-- A LRS külön kell elindítani minden olyan adatbázis esetében, amely külön mappákra mutat, és a Blob Storage található biztonsági mentési fájlok.
-- A LRS legfeljebb 100 egyidejű visszaállítási folyamatot tud támogatni egyetlen felügyelt példányon.
+Az LRS funkcionális korlátozásai:
+- A visszaállított adatbázis nem használható csak olvasási hozzáféréshez a migrálási folyamat során.
+- A rendszer által felügyelt szoftverjavítások 47 órán át le vannak tiltva az LRS elindítani. Az időkeret lejárta után a következő szoftverfrissítés leállítja az LRS-t. Ezután újra kell indítania az LRS-t az nulláról.
+- Az LRS megköveteli, hogy SQL Server adatbázisról biztonsági mentése engedélyezve `CHECKSUM` legyen.
+- Az LRS által használt SAS-jogkivonatot a teljes Azure Blob Storage kell generálni, és csak olvasási és listához szükséges engedélyekkel kell rendelkeznie.
+- A különböző adatbázisok biztonsági mentési fájljait külön mappákba kell helyezni a Blob Storage.
+- Az LRS-t minden olyan adatbázis esetében külön kell elindítani, amely külön mappákra mutat a biztonsági mentési Blob Storage.
+- Az LRS legfeljebb 100 egyidejű visszaállítási folyamatot támogat egyetlen felügyelt példányonként.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A LRS megkezdése után a figyelési parancsmag ( `get-azsqlinstancedatabaselogreplay` vagy `az_sql_midb_log_replay_show` ) használatával megtekintheti a művelet állapotát. Ha a LRS egy kis idő elteltével nem indul el, és hibaüzenetet kap, ellenőrizze a leggyakoribb problémákat:
+Az LRS elkezdése után a figyelési parancsmag ( vagy ) használatával tekintse meg `get-azsqlinstancedatabaselogreplay` `az_sql_midb_log_replay_show` a művelet állapotát. Ha az LRS egy idő után nem indul el, és hibaüzenetet kap, ellenőrizze a leggyakoribb problémákat:
 
-- Az SQL felügyelt példányain meglévő adatbázis neve megegyezik azzal, amelyet SQL Server szeretne áttelepíteni? Oldja meg az ütközést az adatbázisok egyikének átnevezésével.
-- Az adatbázis biztonsági másolata SQL Server a `CHECKSUM` kapcsolón keresztül történt?
-- A SAS-jogkivonat engedélyei csak a LRS-re vannak beolvasva és listázva?
-- Másolta a LRS SAS-tokenjét a kérdőjel () után a következőhöz `?` hasonló tartalommal: `sv=2020-02-10...` ? 
-- Az SAS-jogkivonat érvényességi ideje érvényes az áttelepítés elkezdésének és befejezésének időablakára? Előfordulhat, hogy az SQL felügyelt példányhoz és az SAS-tokenhez használt különböző időzónák miatt eltérések vannak. Próbálja meg újragenerálni az SAS-jogkivonatot, és az aktuális dátum előtt és után kiterjeszteni az időablak jogkivonat-érvényességét.
-- Az adatbázis neve, az erőforráscsoport neve és a felügyelt példány neve helyesen van-e írva?
-- Ha a LRS automatikus kiegészítési módban indult, a megadott utolsó biztonságimásolat-fájlhoz érvényes fájlnév volt?
+- A SQL Managed Instance adatbázisnak ugyanaz a neve, mint annak, amelyről az áttelepítést SQL Server? Oldja fel az ütközést az adatbázisok egyikének a másiknak ananétiával.
+- Az adatbázis biztonsági mentése a SQL Server a `CHECKSUM` kapcsolóval történt?
+- Az SAS-jogkivonat engedélyei csak az LRS-hez vannak beolvasva és listába sorolva?
+- A kérdőjel () után kimásolódta az LRS SAS-jogkivonatát a következő `?` tartalommal: `sv=2020-02-10...` ? Â 
+- Érvényes-e az SAS-jogkivonat érvényességi ideje a migrálás elkezdését és befejezését jelző időszakra? A szolgáltatáshoz és az SAS-jogkivonathoz használt különböző időzónák SQL Managed Instance eltérést is előfordulhatnak. Próbálja meg újragenerálni az SAS-jogkivonatot, és kiterjesztve az aktuális dátum előtti és utáni időtartomány jogkivonat-érvényességét.
+- Helyesen írta be az adatbázis nevét, az erőforráscsoport nevét és a felügyelt példány nevét?
+- Ha automatikus kiegészítési módban indította el az LRS-t, az érvényes fájlnév volt az utolsó megadott biztonsági mentési fájlhoz?
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ a [SQL Servernak az SQL felügyelt példányra való áttelepítéséről](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
-- További információ a [SQL Server és az SQL felügyelt példányai közötti különbségekről](transact-sql-tsql-differences-sql-server.md).
-- További információ az [Azure-ba migrált](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)számítási feladatokkal kapcsolatos ajánlott eljárásokról.
+- További információ a felügyelt [SQL SQL Server példányra való áttelepítésről.](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)
+- További információ a [és a SQL Server közötti SQL Managed Instance.](transact-sql-tsql-differences-sql-server.md)
+- További információ az Azure-ba migrált számítási feladatok költségeinek és [méretének ajánlott eljárásait.](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)

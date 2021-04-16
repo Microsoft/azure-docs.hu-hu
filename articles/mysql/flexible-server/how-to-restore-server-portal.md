@@ -1,83 +1,87 @@
 ---
-title: Restore-Azure Portal-Azure Database for MySQL-rugalmas kiszolgáló
-description: Ez a cikk bemutatja, hogyan végezheti el a visszaállítási műveleteket a Azure Database for MySQL a Azure Portalon keresztül.
+title: Rugalmas Azure Database for MySQL visszaállítása a Azure Portal.
+description: Ez a cikk azt ismerteti, hogyan végezhet visszaállítási műveleteket Azure Database for MySQL rugalmas kiszolgálón a Azure Portal
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 962a2cbdbcc238517616c9ade235eed9b8cae6f7
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241956"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502045"
 ---
-# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL rugalmas kiszolgáló időponthoz való visszaállítása (előzetes verzió)
+# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Rugalmas kiszolgáló (előzetes verzió) időponthoz Azure Database for MySQL visszaállítása a Azure Portal
 
 
 > [!IMPORTANT]
-> Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
+> Azure Database for MySQL – A rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Ez a cikk részletesen ismerteti az időponthoz tartozó helyreállításokat a rugalmas kiszolgálókon a biztonsági másolatok használatával.
+Ez a cikk lépésenként beható eljárásokat tartalmaz a rugalmas kiszolgálókon biztonsági másolatok használatával, időponthoz időben való helyreállítások végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+Az útmutató befejezéséhez a következőre lesz szüksége:
 
--   Azure Database for MySQL rugalmas kiszolgálóval kell rendelkeznie.
+-   Rugalmas kiszolgálóval Azure Database for MySQL kell lennie.
 
-## <a name="restore-to-the-latest-restore-point"></a>Visszaállítás a legújabb visszaállítási pontra
+## <a name="restore-to-the-latest-restore-point"></a>Visszaállítás a legutóbbi visszaállítási pontra
 
-Az alábbi lépéseket követve állíthatja vissza a rugalmas kiszolgálót a korábbi meglévő biztonsági mentés használatával.
+Kövesse az alábbi lépéseket a rugalmas kiszolgáló visszaállításához egy legkorábbi meglévő biztonsági másolat használatával.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyen vissza szeretné állítani a biztonsági mentést.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki azt a rugalmas kiszolgálót, amelyről vissza szeretné állítani a biztonsági másolatot.
 
-2.  A bal oldali panelen kattintson az **Áttekintés** elemre.
+2.  Kattintson **az Áttekintés** elemre a bal oldali panelen.
 
-3.  Az Áttekintés lapon kattintson a **visszaállítás** elemre.
+3.  Az áttekintési lapon kattintson a Visszaállítás **elemre.**
 
-    Helyőrző
+4.  Megjelenik a Visszaállítás lap, amely lehetőséget ad a Legutóbbi visszaállítási pont és az **Egyéni** visszaállítási pont közötti választásra.
 
-4.  A Restore (Visszaállítás) lap a **legutóbbi visszaállítási pont** és az egyéni visszaállítási pont közötti választáshoz választható.
+5.  Válassza **a Legutóbbi visszaállítási pont lehetőséget.**
 
-5.  Válassza a **legutóbbi visszaállítási pontot**.
-
-
-6.  Adja meg az új kiszolgáló nevét a **visszaállítás új kiszolgálóként** mezőben.
+6.  Adjon meg egy új kiszolgálónevet a **Visszaállítás új kiszolgálóra mezőben.**
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="Legkorábbi visszaállítási idő":::
 
 8.  Kattintson az **OK** gombra.
 
-9.  Ekkor megjelenik egy értesítés, amely szerint a visszaállítási művelet megkezdődött.
+9.  Megjelenik egy értesítés arról, hogy a visszaállítási művelet el lett indítva.
 
 ## <a name="restoring-to-a-custom-restore-point"></a>Visszaállítás egyéni visszaállítási pontra
 
-Az alábbi lépéseket követve állíthatja vissza a rugalmas kiszolgálót a korábbi meglévő biztonsági mentés használatával.
+Kövesse az alábbi lépéseket a rugalmas kiszolgáló visszaállításához egy legkorábbi meglévő biztonsági másolat használatával.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyen vissza szeretné állítani a biztonsági mentést.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki azt a rugalmas kiszolgálót, amelyről vissza szeretné állítani a biztonsági másolatot.
 
-2.  Az Áttekintés lapon kattintson a **visszaállítás** elemre.
+2.  Az áttekintési lapon kattintson a Visszaállítás **elemre.**
 
-    Helyőrző
+3.  Megjelenik a Visszaállítás oldal, amely a Legkorábbi visszaállítási pont és az Egyéni visszaállítási pont lehetőségek közül választhat.
 
-3.  A Restore (Visszaállítás) lap a legkorábbi visszaállítási pont és az egyéni visszaállítási pont közötti választáshoz választható.
-
-4.  Válassza az **Egyéni visszaállítási pont** lehetőséget.
+4.  Válassza **az Egyéni visszaállítási pont lehetőséget.**
 
 5.  Válassza ki a dátumot és az időt.
 
-6.  Adja meg az új kiszolgáló nevét a **visszaállítás új kiszolgálóként** mezőben.
+6.  Adjon meg egy új kiszolgálónevet a **Visszaállítás új kiszolgálóra mezőben.**
 
-6.  Adja meg az új kiszolgáló nevét a **visszaállítás új kiszolgálóként** mezőben. 
-   
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="megtekintés áttekintése":::
- 
+6.  Adjon meg egy új kiszolgálónevet a **Visszaállítás új kiszolgálóra mezőben.**
+
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="áttekintés megtekintése":::
+
 7.  Kattintson az **OK** gombra.
 
-8.  Ekkor megjelenik egy értesítés, amely szerint a visszaállítási művelet megkezdődött.
+8.  Megjelenik egy értesítés arról, hogy a visszaállítási művelet el lett indítva.
+
+
+## <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
+A visszaállítás befejezése után a következő feladatokat kell végrehajtania, hogy a felhasználók és az alkalmazások ismét el tudjanak indulni:
+
+- Ha az új kiszolgálót az eredeti kiszolgáló cseréjére szánta, irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra.
+- Győződjön meg arról, hogy a megfelelő VNet-szabályok vannak bevetve a felhasználók számára a csatlakozáshoz. Ezeket a szabályokat a rendszer nem másolja át az eredeti kiszolgálóról.
+- Győződjön meg arról, hogy a megfelelő bejelentkezési adatok és adatbázisszintű engedélyek meg vannak biztosítva.
+- Konfigurálja az újonnan visszaállított kiszolgálóhoz megfelelő riasztásokat.
+
 
 ## <a name="next-steps"></a>Következő lépések
-
-Helyőrző
+További információ az [üzletmenet-folytonosságról](concepts-business-continuity.md)

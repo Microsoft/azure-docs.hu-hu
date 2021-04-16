@@ -1,20 +1,20 @@
 ---
-title: Adattípusok a sablonokban
-description: A Azure Resource Manager-sablonokban elérhető adattípusokat ismerteti.
+title: Adattípusok sablonokban
+description: A sablonokban elérhető adattípusokat Azure Resource Manager ismerteti.
 ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
-ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d6c8306b3dbdfe895055dc008d81cc0d85d8d6c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102125140"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538059"
 ---
-# <a name="data-types-in-arm-templates"></a>Adattípusok az ARM-sablonokban
+# <a name="data-types-in-arm-templates"></a>Adattípusok ARM-sablonokban
 
-Ez a cikk Azure Resource Manager-sablonok (ARM-sablonok) által támogatott adattípusokat ismerteti. A JSON-és a bicep-adattípusokat is tartalmazza.
+Ez a cikk a sablonsablonok (ARM-sablonok Azure Resource Manager támogatott adattípusokat ismerteti. A JSON és a Bicep adattípusokat is lefedi.
 
 ## <a name="supported-types"></a>Támogatott típusok
 
@@ -24,17 +24,17 @@ Az ARM-sablonon belül a következő adattípusokat használhatja:
 * logikai
 * int
 * object
-* a secureObject által jelzett módosító a bicep
-* a secureString által jelzett módosító a bicep
+* secureObject – a Bicepben módosító jelzi
+* secureString – módosító jelzi a Bicepben
 * sztring
 
 ## <a name="arrays"></a>Tömbök
 
-A tömbök bal oldali szögletes zárójeltel () kezdődnek, `[` és a jobb oldali szögletes zárójel () végére állnak `]` .
+A tömbök bal oldali szögletes zárójellel () kezdődnek, és `[` jobb oldali szögletes zárójellel ( ) `]` végződnek.
 
-A JSON-ban egy tömb deklarálható egyetlen sorban vagy több sorban is. Minden elemet vesszővel kell elválasztani.
+A JSON-ban egy tömb deklarálható egyetlen sorban vagy több sorban. Minden elemet vessző választ el egymástól.
 
-A bicep-ban a tömbnek több sorban kell deklarálnia. Ne használjon vesszőt az értékek között.
+A Bicepben egy tömböt több sorban kell deklarálni. Ne használjon vesszőket az értékek között.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -63,7 +63,7 @@ param exampleArray array = [
 
 ---
 
-Egy tömb elemei azonos típusúak vagy különböző típusok lehetnek.
+Egy tömb elemei azonos típusúak vagy különböző típusok is lehetnek.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -93,7 +93,7 @@ var mixedArray = [
 
 ## <a name="booleans"></a>Logikai érték
 
-Logikai értékek megadásakor használja a vagy a értéket `true` `false` . Ne az idézőjelekkel rendelkező értéket vegye körül.
+Logikai értékek megadásakor használja a vagy a `true` `false` értéket. Ne vegye idézőjelek közé az értéket.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -116,7 +116,7 @@ param exampleBool bool = true
 
 ## <a name="integers"></a>Egész számok
 
-Egész értékek megadásakor ne használjon idézőjeleket.
+Egész szám értékek megadásakor ne használjon idézőjeleket.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -137,17 +137,15 @@ param exampleInt int = 1
 
 ---
 
-A beágyazott paraméterekként átadott egész számok esetében az értékek tartományát az SDK vagy az üzembe helyezéshez használt parancssori eszköz korlátozza. Ha például a PowerShell használatával telepít egy sablont, az egész szám típusú érték-2147483648 és 2147483647 között lehet. Ha el szeretné kerülni ezt a korlátozást, adjon meg nagyméretű egész értékeket egy [paraméter fájljában](parameter-files.md). Az erőforrástípusok a saját korlátait alkalmazzák az egész tulajdonságok esetében.
+A beágyazott paraméterekként átadott egész számokkal az értékek tartományát az üzembe helyezéshez használt SDK vagy parancssori eszköz is korlátozhatja. Ha például a PowerShell használatával telepít egy sablont, az egész típusok a -2147483648 és a 2147483647 tartományba esnek. A korlátozás elkerüléséhez adjon meg nagy egész számértékeket egy [paraméterfájlban.](parameter-files.md) Az erőforrástípusok saját korlátokat alkalmaznak az egész szám típusú tulajdonságokra.
 
 ## <a name="objects"></a>Objektumokat
 
-Az objektumok bal oldali kapcsos zárójeltel () kezdődnek, `{` és a végén egy jobb oldali kapcsos zárójel ( `}` ) áll. Egy objektum minden tulajdonsága kulcsból és értékből áll. A kulcsot és az értéket kettőspont () választja el egymástól `:` .
-
-A JSON-ban a kulcs idézőjelek közé kerül. Minden tulajdonság vesszővel elválasztva.
-
-A bicep-ban a kulcs nem idézőjelek közé van csatolva. Ne használjon vesszőket a tulajdonságok között.
+Az objektumok egy bal oldali kapcsos zárójelet ( ) tartalmaznak, és egy jobb oldali kapcsos `{` zárójelet ( ) végződnek. `}` Egy objektum minden tulajdonsága kulcsból és értékből áll. A kulcsot és az értéket kettőspont ( ) választja el `:` egymástól.
 
 # <a name="json"></a>[JSON](#tab/json)
+
+A JSON-ban a kulcs idézőjelek között van. Minden tulajdonságot vessző választ el egymástól.
 
 ```json
 "parameters": {
@@ -165,6 +163,8 @@ A bicep-ban a kulcs nem idézőjelek közé van csatolva. Ne használjon vessző
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
+A Bicepben a kulcs nem idézőjelek között van. A tulajdonságok között ne használjon vesszőt.
+
 ```bicep
 param exampleObject object = {
   name: 'test name'
@@ -174,11 +174,27 @@ param exampleObject object = {
 }
 ```
 
+A tulajdonság-hozzáférések egy objektum tulajdonságainak elérésére használhatók. Ezek a operátorral vannak `.` összeépítve. Például:
+
+```bicep
+var x = {
+  y: {
+    z: 'Hello`
+    a: true
+  }
+  q: 42
+}
+```
+
+Az előző deklaráció alapján az x.y.z kifejezés kiértékeli a "Hello" literális sztringet. Hasonlóképpen, az x.q kifejezés a 42-es literál egész számra van kiértékelve.
+
+A tulajdonság-hozzáférési bármilyen objektummal használható. Ide tartoznak az objektumtípusok és az objektum-literálok paraméterei és változói. A tulajdonság-hozzáférés használata nem objektum típusú kifejezésen hiba.
+
 ---
 
 ## <a name="strings"></a>Sztringek
 
-A JSON-ban a karakterláncok idézőjelekkel vannak megjelölve. A bicep-ban a karakterláncok egyféle idézőjelekkel vannak megjelölve.
+A JSON-ban a sztringeket dupla idézőjelek jelölik. A Bicepben a sztringek egyszeres idézőjelekkel vannak megjelölve.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -198,13 +214,13 @@ param exampleString string = 'test value'
 ```
 ---
 
-## <a name="secure-strings-and-objects"></a>Biztonságos karakterláncok és objektumok
+## <a name="secure-strings-and-objects"></a>Biztonságos sztringek és objektumok
 
-A biztonságos karakterlánc ugyanazt a formátumot használja, mint a karakterlánc, és a Secure objektum ugyanazt a formátumot használja, mint az objektum. Ha egy paramétert biztonságos sztringre vagy biztonságos objektumra állít be, a paraméter értéke nem kerül a telepítési előzményekbe, és nincs naplózva. Ha azonban olyan tulajdonságra állítja be a biztonságos értéket, amely nem vár biztonságos értéket, az érték nem védett. Ha például egy biztonságos karakterláncot állít be egy címkére, az értéket egyszerű szövegként tárolja a rendszer. Biztonságos karakterláncok használata jelszavakhoz és titkos kulcsokhoz.
+A biztonságos sztring ugyanazt a formátumot használja, mint a sztring, a biztonságos objektum pedig ugyanazt a formátumot használja, mint az objektum. Ha egy paramétert biztonságos sztringre vagy biztonságos objektumra ad meg, a paraméter értéke nem lesz mentve az üzembe helyezési előzményekbe, és nem lesz naplózva. Ha azonban ezt a biztonságos értéket egy olyan tulajdonságra adja meg, amely nem vár biztonságos értéket, az érték nem lesz védve. Ha például egy biztonságos sztringet címkére ad meg, a rendszer egyszerű szövegként tárolja ezt az értéket. Használjon biztonságos sztringeket jelszavakhoz és titkos kulcsokhoz.
 
-A bicep használatával hozzáadhatja a `@secure()` módosítót egy karakterlánchoz vagy objektumhoz.
+A Bicep-hez hozzáadja `@secure()` a módosítót egy sztringhez vagy objektumhoz.
 
-A következő példa két biztonságos paramétert mutat be:
+Az alábbi példa két biztonságos paramétert mutat be:
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -233,4 +249,4 @@ param configValues object
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sablon szintaxisának megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című témakört.
+A sablon szintaxisával kapcsolatos további információkért lásd: [Az ARM-sablonok struktúrája és szintaxisa.](template-syntax.md)

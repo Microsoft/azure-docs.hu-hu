@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – X. 509 tanúsítványok tesztelési képessége az eszközök Azure-IoT Hub való hitelesítéséhez | Microsoft Docs
-description: Oktatóanyag – az X. 509 tanúsítványok tesztelése az Azure-IoT Hub való hitelesítéshez
+title: Oktatóanyag – Az X.509-tanúsítványok azon képességének tesztelése, amely lehetővé teszi az eszközök hitelesítését egy Azure IoT Hub | Microsoft Docs
+description: Oktatóanyag – X.509-tanúsítványok tesztelése az Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,43 +12,42 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 91eea344914120a396ba9465ec504a37f5844d4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d1900782fce6b84ed79014e985393f3626d171b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630674"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379434"
 ---
-# <a name="tutorial-testing-certificate-authentication"></a>Oktatóanyag: tanúsítvány-hitelesítés tesztelése
+# <a name="tutorial-testing-certificate-authentication"></a>Oktatóanyag: Tanúsítványhitelesítés tesztelése
 
-A következő C#-kóddal ellenőrizheti, hogy a tanúsítvány hitelesítheti-e az eszközt a IoT Hub. Vegye figyelembe, hogy a teszt kód futtatása előtt el kell végeznie a következőket:
+Az alábbi C#-példakód használatával tesztelheti, hogy a tanúsítvány hitelesítheti-e az eszközt a IoT Hub. Vegye figyelembe, hogy a tesztkód futtatása előtt a következőket kell megtennie:
 
-* Hozzon létre egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT vagy alárendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt.
-* Töltse fel a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a IoT Hubba.
-* Igazolja, hogy rendelkezik a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal.
-* Adjon hozzá egy eszközt a IoT Hubhoz.
-* Hozzon létre egy eszköz-tanúsítványt ugyanazzal az eszköz-AZONOSÍTÓval, mint az eszközön.
+* Hozzon létre egy legfelső szintű hitelesítésszolgáltatói vagy alárendelt CA-tanúsítványt.
+* Töltse fel a hitelesítésszolgáltatói tanúsítványt a IoT Hub.
+* Igazolja, hogy rendelkezik a CA-tanúsítvánnyal.
+* Adjon hozzá egy eszközt a IoT Hub.
+* Hozzon létre egy eszköztanúsítványt ugyanazokkal az eszközazonosítóval, mint az eszközét.
 
-## <a name="code-example"></a>Példa programkódra
+## <a name="code-example"></a>Példakód
 
-A következő mintakód bemutatja, hogyan hozhat létre C#-alkalmazást az IoT hub-hoz regisztrált X. 509 eszköz szimulálásához. A példa a szimulált eszköz hőmérséklet-és páratartalom-értékeit a hubhoz küldi. Ebben az oktatóanyagban csak az eszköz alkalmazást fogjuk létrehozni. Az olvasók feladata, hogy létrehozza a IoT Hub szolgáltatásalkalmazás létrehozását, amely válaszokat küld a szimulált eszköz által küldött eseményekre.
+Az alábbi példakód bemutatja, hogyan hozhat létre egy C#-alkalmazást az IoT Hubhoz regisztrált X.509-eszköz szimulálására. A példa hőmérséklet- és páratartalom-értékeket küld a szimulált eszközről a hubnak. Ebben az oktatóanyagban csak az eszközalkalmazást fogjuk létrehozni. Az olvasókra marad a feladat, hogy létrehozták a IoT Hub-szolgáltatásalkalmazást, amely válaszokat küld a szimulált eszköz által küldött eseményekre.
 
-1. Nyissa meg a Visual studiót, válassza az **új projekt létrehozása** lehetőséget, majd válassza a **Console app (.NET-keretrendszer)** projekt sablonját. Kattintson a **Tovább** gombra.
+1. Nyissa Visual Studio, válassza **a Create a new project (Új** projekt létrehozása) lehetőséget, majd a Console App (.NET-keretrendszer) (Konzolalkalmazás **(.NET-keretrendszer)** projektsablont. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása** lapon nevezze el a projekt *SimulateX509Device*, majd válassza a **Létrehozás** lehetőséget.
+1. A **Configure your new project (Új projekt konfigurálása) mezőben** adja a *simulateX509Device nevet* a projektnek, majd válassza a Create **(Létrehozás) lehetőséget.**
 
-   ![X. 509 eszköz projekt létrehozása a Visual Studióban](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
+   ![X.509-eszközprojekt létrehozása a Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. Megoldáskezelő kattintson a jobb gombbal a **SimulateX509Device** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
+1. A Megoldáskezelő kattintson a jobb gombbal a **SimulateX509Device projektre,** majd válassza a **Manage NuGet Packages (NuGet-csomagok kezelése) lehetőséget.**
 
-1. A **NuGet csomagkezelő eszközben** válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client** elemet. Válassza a **Telepítés** gombot.
+1. A **NuGet-Csomagkezelő** válassza a **Tallózás lehetőséget,** keresse meg és válassza a **Microsoft.Azure.Devices.Client lehetőséget.** Válassza a **Telepítés** gombot.
 
-   ![Device SDK NuGet-csomag hozzáadása a Visual Studióban](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
+   ![EszközOLDALI SDK NuGet-csomag hozzáadása a Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-    Ez a lépés letölti, telepíti és hozzáadja az Azure IoT Device SDK NuGet csomagra és annak függőségeire mutató hivatkozást.
+    Ez a lépés letölti és telepíti az Azure IoT eszközoldali SDK NuGet-csomagot és annak függőségeit, valamint hozzáad egy rá vonatkozó hivatkozást is.
 
-    Írja be és futtassa a következő kódot:
+    Adja meg és futtassa a következő kódot:
 
 ```csharp
 using System;

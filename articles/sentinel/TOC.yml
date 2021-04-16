@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: Az Azure Sentinel újdonságai
+- name: A Azure Sentinel újdonsága
   href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
@@ -21,13 +21,13 @@
       href: tutorial-monitor-your-data.md
     - name: Incidensek vizsgálata
       href: tutorial-investigate-cases.md
-    - name: Az Automation használata a fenyegetések megválaszolására
+    - name: Automatizálás használata a fenyegetésekre való válaszadáshoz
       href: tutorial-respond-threats-playbook.md
-    - name: KQL-lekérdezések létrehozása (Learn modul)
+    - name: KQL-lekérdezések létrehozása (Learn-modul)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Alapelvek
   items:
-    - name: Az adatbesorolás entitások használatával
+    - name: Adatok besorolása entitások használatával
       href: entities-in-azure-sentinel.md
     - name: Hozzáférés kezelése
       items:
@@ -35,15 +35,15 @@
           href: roles.md
         - name: Hozzáférés kezelése erőforrás alapján
           href: resource-context-rbac.md
-        - name: A MSSP szellemi tulajdonának védelme
+        - name: Az MSSP szellemi tulajdon védelme
           href: mssp-protect-intellectual-property.md
     - name: Fejlett többfázisú támadásészlelés
       href: fusion.md
-    - name: Automatizálás (SZÁRNYALás)
+    - name: Automatizálás (SOAR)
       items:
-        - name: SZÁRNYALás az Azure Sentinelben
+        - name: SOAR a Azure Sentinel
           href: automation-in-azure-sentinel.md
-        - name: Az incidensek kezelésének automatizálási szabályai
+        - name: Az incidenskezelés automatizálási szabályai
           href: automate-incident-handling-with-automation-rules.md
         - name: Speciális automatizálás forgatókönyvekkel
           href: automate-responses-with-playbooks.md
@@ -53,7 +53,7 @@
       href: import-threat-intelligence.md
     - name: Saját gépi tanulási platform használata
       href: bring-your-own-ml.md
-    - name: Microsoft 365 Defender integrálása az Azure Sentinelrel
+    - name: A Defender Microsoft 365 integrálása a Azure Sentinel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Külső adatok használata figyelőlistákkal
       href: watchlists.md
@@ -96,7 +96,7 @@
               href: connect-azure-sql-logs.md
             - name: Azure-beli webalkalmazási tűzfal (WAF)
               href: connect-azure-waf.md
-            - name: Defender for IoT (korábban ASC a IoT esetében)
+            - name: Defender for IoT (korábban ASC for IoT)
               href: connect-asc-iot.md
             - name: Tartományi névkiszolgáló
               href: connect-dns.md
@@ -120,15 +120,17 @@
               href: connect-windows-firewall.md
             - name: A Windows biztonsági eseményei
               href: connect-windows-security-events.md
+            - name: Windows virtuális asztal
+              href: connect-windows-virtual-desktop.md
         - name: Külső megoldások csatlakoztatása
           items:
-            - name: Agari adathalászat elleni védelem és márka védelme
+            - name: Agari Adathalászat elleni védelem és márkavédelem
               href: connect-agari-phishing-defense.md
             - name: Alcide kAudit
               href: connect-alcide-kaudit.md
-            - name: Active Directory Alsid
+            - name: Alsid a Active Directory
               href: connect-alsid-active-directory.md
-            - name: Apache HTTP-kiszolgáló
+            - name: Apache HTTP Server
               href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
@@ -150,7 +152,7 @@
               href: connect-f5-big-ip.md
             - name: Forcepoint DLP
               href: connect-forcepoint-dlp.md
-            - name: Google munkaterület (G csomag)
+            - name: Google-munkaterület (G Suite)
               href: connect-google-workspace.md
             - name: Infoblox NIOS
               href: connect-infoblox.md
@@ -234,7 +236,7 @@
                       href: connect-fortinet.md
                     - name: Illusive Networks AMS
                       href: connect-illusive-attack-management-system.md
-                    - name: Inperverz WAF-átjáró
+                    - name: Imperva WAF-átjáró
                       href: connect-imperva-waf-gateway.md
                     - name: One Identity Safeguard
                       href: connect-one-identity.md
@@ -260,9 +262,9 @@
           href: connect-azure-stack.md
         - name: Adatösszekötő állapotának monitorozása
           href: monitor-data-connector-health.md
-    - name: A felhasználó és az entitás viselkedésének elemzésének engedélyezése
+    - name: Felhasználói és entitásviselkedés-elemzés engedélyezése
       href: enable-entity-behavior-analytics.md
-    - name: Adatmezők leképezése entitásokra
+    - name: Adatmezők leképezása entitásokhoz
       href: map-data-fields-to-entities.md
     - name: Több bérlő (MSSP) kezelése
       href: multiple-tenants-service-providers.md
@@ -270,13 +272,13 @@
       href: multiple-workspace-view.md
     - name: Az ügyfél által kezelt kulcsok (CMK) beállítása
       href: customer-managed-keys.md
-    - name: A Surface egyéni adatai a riasztásokban
+    - name: Egyéni részletek kijelzése a riasztások között
       href: surface-custom-details-in-alerts.md
     - name: Incidens létrehozása riasztásból
       href: create-incidents-from-alerts.md
     - name: A SOC hatékonyabb kezelése incidensmetrikákkal
       href: manage-soc-with-incident-metrics.md
-    - name: Azure Sentinel-lekérdezések és-tevékenységek naplózása
+    - name: Lekérdezések Azure Sentinel tevékenységek naplózása
       href: audit-sentinel-data.md
     - name: Veszélyforrás-keresés
       href: hunting.md
@@ -291,23 +293,23 @@
       href: offboard.md
 - name: Referencia
   items:
-    - name: Top Azure Sentinel-munkafüzetek
+    - name: Felső Azure Sentinel munkafüzetek
       href: top-workbooks.md
     - name: Azure CLI
       href: /cli/azure/ext/sentinel/sentinel
     - name: Azure RBAC-szerepkörök
       items:
-        - name: Az összes Azure-szerepkör
+        - name: Minden Azure-szerepkör
           href: ../role-based-access-control/built-in-roles.md#all
-        - name: Azure Sentinel-szerepkörök
+        - name: Azure Sentinel szerepkörök
           href: ../role-based-access-control/built-in-roles.md#security
     - name: REST API-k
       items:
-        - name: Azure Sentinel REST – API
+        - name: Azure Sentinel REST-API
           href: /rest/api/securityinsights/
         - name: Veszélyforrás-keresési lekérdezések kezelése REST-API-val
           href: hunting-with-rest-api.md
-        - name: A listák kezelése REST-API-val
+        - name: Megnézőlisták kezelése a REST-API-val
           href: watchlist-with-rest-api.md
     - name: Az Azure Sentinel Logic Apps-összekötője
       href: /connectors/azuresentinel/
@@ -315,19 +317,19 @@
       href: entities-reference.md
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
-    - name: Adatforrás sémájának referenciája
+    - name: Adatforrás-séma referenciája
       href: data-source-schema-reference.md
     - name: Kusto Query Language
       items:
-        - name: Kusto-lekérdezés áttekintése
+        - name: Kusto-lekérdezések áttekintése
           href: /azure/data-explorer/kusto/query/
-        - name: Kusto lekérdezési nyelv rövid leírása
+        - name: Kusto lekérdezési nyelv – rövid útmutató
           href: /azure/data-explorer/kql-quick-reference
-        - name: Azure Monitor log-lekérdezések optimalizálása
+        - name: Azure Monitor naplólekérdezés optimalizálása
           href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-bővítések
       href: ueba-enrichments.md
-    - name: CEF naplózási mező leképezése
+    - name: CEF-naplómező-leképezés
       href: cef-name-mapping.md
 - name: További források
   items:

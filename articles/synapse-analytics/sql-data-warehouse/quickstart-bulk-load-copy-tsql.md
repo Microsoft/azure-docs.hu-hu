@@ -1,40 +1,40 @@
 ---
-title: 'Rövid útmutató: adatok tömeges betöltése egyetlen T-SQL-utasítás használatával'
-description: Adatok tömeges betöltése a COPY utasítás használatával
+title: 'Rövid útmutató: Adatok tömeges betöltése egyetlen T-SQL-utasítással'
+description: Adatok tömeges betöltése a COPY utasítással
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2f97c630189a0f037f1231bb2386fcb7226a9350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b41342ab7d267c37b8e68fdbcaa9d570034ac17
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600037"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568437"
 ---
-# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Gyors útmutató: adatok tömeges betöltése a COPY utasítás használatával
+# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rövid útmutató: Adatok tömeges betöltése a COPY utasítással
 
-Ebben a rövid útmutatóban az adatok tömeges betöltését a dedikált SQL-készletbe az egyszerű és rugalmas [másolási utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) végezheti el a nagy átviteli sebességű adatfeldolgozáshoz. A MÁSOLÁSi utasítás az ajánlott betöltési segédprogram, amely lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését a következő funkciókkal:
+Ebben a rövid útmutatóban tömegesen tölt be adatokat a dedikált SQL-készletbe az egyszerű és rugalmas [COPY](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) utasítással a nagy átviteli sebességű adatbetöltéshez. A COPY utasítás az ajánlott betöltési segédprogram, mivel lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését a következő funkciók biztosításával:
 
-- Az alacsonyabb jogosultságú felhasználók betöltésének engedélyezése anélkül, hogy szigorú VEZÉRLÉSi engedélyekre lenne szükség az adatraktárban
-- Csak egyetlen T-SQL-utasítást használhat fel anélkül, hogy további adatbázis-objektumokat kellene létrehoznia
-- Finomabb engedélyezési modell kihasználása anélkül, hogy a Storage-fiókok kulcsait a megosztási hozzáférési aláírások (SAS) használatával tegye közzé
-- Másik Storage-fiók megadása a ERRORFILE helyéhez (REJECTED_ROW_LOCATION)
-- Az egyes célértékek alapértelmezett értékeinek testreszabása, valamint a forrásadatok mezőinek megadása adott cél oszlopokra való betöltéshez
-- Egyéni sor lezárójának megadása CSV-fájlokhoz
-- A CSV-fájlokhoz tartozó Escape-karakterláncok, mezők és sorok elhatárolói
-- A CSV-fájlok SQL Server formátumának kihasználása
+- Alacsonyabb jogosultságú felhasználók betöltésének engedélyezése szigorú CONTROL engedélyek nélkül az adattárházban
+- Egyetlen T-SQL-utasítás használata további adatbázis-objektumok létrehozása nélkül
+- A tárfiókkulcsok közös hozzáférésű jogosultságok (SAS) használatával való felfedése nélkül kihasználhatja a finomabb engedélymodellt
+- Adjon meg egy másik tárfiókot az ERRORFILE helyhez (REJECTED_ROW_LOCATION)
+- Az egyes céloszlopok alapértelmezett értékeinek testreszabása és forrásadatmezők megadása adott céloszlopba való betöltéshez
+- Egyéni sorterminátor megadása CSV-fájlokhoz
+- A CSV-fájlok escape-sztring-, mező- és sorelválasztói
+- A SQL Server formátumok kihasználása CSV-fájlokhoz
 - Helyettesítő karakterek és több fájl megadása a tárolási hely elérési útján
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy dedikált SQL-készlettel. Ha nem hozott létre dedikált SQL-készletet, használja a [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) rövid útmutatót.
+Ez a rövid útmutató feltételezi, hogy már rendelkezik egy dedikált SQL-készlettal. Ha még nem hozott létre dedikált SQL-készletet, használja a Létrehozás és csatlakozás – portál gyorsútmutatót. [](create-data-warehouse-portal.md)
 
 ## <a name="set-up-the-required-permissions"></a>A szükséges engedélyek beállítása
 
@@ -66,7 +66,7 @@ GRANT INSERT ON <yourtable> TO <yourusername>
 
 ## <a name="create-the-target-table"></a>A céltábla létrehozása
 
-Ebben a példában az adatokat a New York-i taxi adatkészletből fogjuk betölteni. Betöltünk egy "trip" nevű táblázatot, amely egy adott évben elkészített taxis utakat jelöl. A tábla létrehozásához futtassa a következő parancsot:
+Ebben a példában a New York-i taxi adatkészletből töltünk be adatokat. Betöltünk egy Trip (Utazás) nevű táblát, amely az egy év alatt tett taxis utakat jelöli. A tábla létrehozásához futtassa a következőt:
 
 ```sql
 CREATE TABLE [dbo].[Trip]
@@ -104,7 +104,7 @@ WITH
 
 ## <a name="run-the-copy-statement"></a>A COPY utasítás futtatása
 
-Futtassa az alábbi MÁSOLÁSi utasítást, amely az Azure Blob Storage-fiókból származó adatok betöltését az utazási táblába fogja betölteni.
+Futtassa a következő COPY utasítást, amely betölti az adatokat az Azure Blob Storage-fiókból a Trip táblába.
 
 ```sql
 COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
@@ -116,7 +116,7 @@ WITH (
 
 ## <a name="monitor-the-load"></a>A terhelés figyelése
 
-A következő lekérdezés rendszeres futtatásával győződjön meg arról, hogy a terhelés folyamatban van-e:
+A következő lekérdezés rendszeres futtatásával ellenőrizze, hogy a terhelés halad-e:
 
 ```sql
 SELECT  r.[request_id]                           
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az betöltéssel kapcsolatos ajánlott eljárásokért lásd: [ajánlott eljárások az betöltéshez](./guidance-for-loading-data.md).
-- Az adatterhelések erőforrásainak kezelésével kapcsolatos információkért lásd: [munkaterhelés elkülönítése](./quickstart-configure-workload-isolation-tsql.md).
+- Az adatok betöltésével kapcsolatos ajánlott eljárásokért lásd: Ajánlott eljárások [az adatok betöltéséhez.](./guidance-for-loading-data.md)
+- További információ az adatbeterhelések erőforrásainak kezeléséhez: Számítási [feladatok elkülönítése.](./quickstart-configure-workload-isolation-tsql.md)

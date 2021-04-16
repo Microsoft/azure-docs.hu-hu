@@ -1,53 +1,53 @@
 ---
-title: Python-alkalmazások figyelése Azure Monitorokkal | Microsoft Docs
-description: Útmutatást nyújt a OpenCensus Python Azure Monitor
+title: Python-alkalmazások figyelése Azure Monitor | Microsoft Docs
+description: Az OpenCensus Python és a Azure Monitor
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92d954a865a2d4a8c55177b132139dcd7d0444ef
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047422"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515923"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
+# <a name="set-up-azure-monitor-for-your-python-application"></a>Az Azure Monitor beállítása a Python-alkalmazáshoz
 
-Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metrika-gyűjtését és naplózását a [OpenCensus](https://opencensus.io)-vel való integráción keresztül. Ez a cikk végigvezeti a Python-OpenCensus beállításának folyamatán, és a figyelési adatok küldésének Azure Monitor.
+Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metrikagyűjtését és naplózását az [OpenCensus integrációja révén.](https://opencensus.io) Ez a cikk végigvezeti az OpenCensus Pythonhoz való beállításának folyamatán, és a monitorozási adatoknak az Azure Monitor.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-- Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/release/python-370/)használja, bár más verziók valószínűleg kisebb módosításokkal fognak működni. Az SDK csak a 2,7-es és a 3.6-os Python-verziókat támogatja.
-- Hozzon létre egy Application Insights [erőforrást](./create-new-resource.md). Ehhez hozzá kell rendelnie saját Instrumentation-kulcsát (rendszerállapotkulcsot) az erőforráshoz.
+- Python-telepítés. Ez a cikk [a Python 3.7.0-s](https://www.python.org/downloads/release/python-370/)verzióját használja, bár más verziók valószínűleg kisebb módosításokkal is működnek. Az SDK csak a Python 2.7-es és 3.4-v3.7-es verzióját támogatja.
+- Hozzon létre egy Application Insights [erőforrást.](./create-new-resource.md) A rendszer saját eszközkulcsot (ikey) rendel hozzá az erőforráshoz.
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Eszköz a OpenCensus Python SDK-val Azure Monitor
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Az OpenCensus Python SDK for Azure Monitor
 
-Telepítse a OpenCensus Azure Monitor-exportőröket:
+Telepítse az OpenCensus Azure Monitor a következőt:
 
 ```console
 python -m pip install opencensus-ext-azure
 ```
 
 > [!NOTE]
-> A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy rendelkezik a `PATH` Python-telepítéshez beállított környezeti változóval. Ha még nem konfigurálta ezt a változót, meg kell adnia a teljes könyvtár elérési útját, ahol a Python-végrehajtható fájl található. Az eredmény az alábbihoz hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
+> A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy a Python-telepítéshez be van állítva `PATH` egy környezeti változó. Ha még nem konfigurálta ezt a változót, meg kell adni a pythonos végrehajtható fájl helyének teljes könyvtárát. Az eredmény egy ehhez hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Az SDK három Azure Monitor-exportálót használ a különböző típusú telemetria küldéséhez Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](../data-platform.md). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
+Az SDK három különböző Azure Monitor használ, hogy különböző típusú telemetriai adatokat küldjön a Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. Ezekről a telemetriai típusokról az adatplatform áttekintésében [talál további információt.](../data-platform.md) Az alábbi utasításokat követve küldheti el ezeket a telemetriatípusokat a három aknán keresztül.
 
-## <a name="telemetry-type-mappings"></a>Telemetria típusú leképezések
+## <a name="telemetry-type-mappings"></a>Telemetriatípus-leképezések
 
-Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Monitorban megjelenő telemetria-típusokhoz.
+Az OpenCensus által a 2016-ban látható telemetriatípusokra leképezett a Azure Monitor.
 
-| A megfigyelés pillére | Telemetria típusa Azure Monitor    | Magyarázat                                         |
+| A megfigyelhetőség alappillére | Telemetria típusa a Azure Monitor    | Magyarázat                                         |
 |-------------------------|------------------------------------|-----------------------------------------------------|
-| Naplók                    | Nyomkövetések, kivételek, customEvents   | Log telemetria, kivétel telemetria, Event telemetria |
+| Naplók                    | Nyomkövetések, kivételek, customEvents   | Naplótelemetelemetia, kivételtelemetelemetia, esemény-telemetria |
 | Mérőszámok                 | customMetrics, performanceCounters | Egyéni metrikák teljesítményszámlálói                |
-| Nyomkövetés                 | Függőségek kérése             | Bejövő kérelmek, kimenő kérések                |
+| Nyomkövetés                 | Kérelmek függőségei             | Bejövő kérések, kimenő kérések                |
 
 ### <a name="logs"></a>Naplók
 
-1. Először hozzon elő néhány helyi naplózási adatszolgáltatást.
+1. Először is hozzunk létre néhány helyi naplóadatot.
 
     ```python
     import logging
@@ -66,7 +66,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
         main()
     ```
 
-1. A kód folyamatosan kéri egy érték beírását. Minden megadott értékhez naplóbejegyzés van kibocsátva.
+1. A kód folyamatosan kér egy értéket. A rendszer minden bevitt értékhez naplóbejegyzést bocsát ki.
 
     ```output
     Enter a value: 24
@@ -79,7 +79,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     90
     ```
 
-1. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a napló adatait Azure Monitor. Adja át a kapcsolatok sztringjét közvetlenül az exportőrnek. Vagy megadhatja egy környezeti változóban is `APPLICATIONINSIGHTS_CONNECTION_STRING` . Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+1. Bár az értékek megadása bemutató célokra hasznos, végső soron a naplóadatokat a Azure Monitor. Adja át a kapcsolati sztringet közvetlenül a kávénak. Azt is megadhatja egy környezeti változóban( `APPLICATIONINSIGHTS_CONNECTION_STRING` ). Módosítsa az előző lépésben lekért kódot az alábbi kódminta alapján:
 
     ```python
     import logging
@@ -104,17 +104,17 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
         main()
     ```
 
-1. Az exportőr a Azure Monitorba küldi a naplózási adatokat. Az adat a alatt található `traces` . 
+1. A gyártó naplóadatokat küld a Azure Monitor. Az adatokat a alatt `traces` találja. 
 
     > [!NOTE]
-    > Ebben a kontextusban `traces` nem ugyanaz, mint a `tracing` . Itt `traces` a használat során Azure monitorban megjelenő telemetria típusára utal `AzureLogHandler` . A `tracing` OpenCensus azonban egy fogalomra hivatkozik, és az [elosztott nyomkövetésre](./distributed-tracing.md)vonatkozik.
+    > Ebben a környezetben `traces` a nem ugyanaz, mint `tracing` a . Itt a az által használt telemetriatípusra utal, amely a Azure Monitor `traces` fog `AzureLogHandler` látni. Az OpenCensus egyik fogalmára hivatkozik, és az elosztott `tracing` [nyomkövetésre vonatkozik.](./distributed-tracing.md)
 
     > [!NOTE]
-    > A gyökérszintű naplózó a figyelmeztetés szintjével van konfigurálva. Ez azt jelenti, hogy a rendszer figyelmen kívül hagyja az összes olyan naplót, amelyet nem súlyossági szinttel elküldött, de nem küldi el Azure Monitor. További információ: [dokumentáció](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel).
+    > A gyökérszintű naplózó a FIGYELMEZTETÉS szinttel van konfigurálva. Ez azt jelenti, hogy a rendszer figyelmen kívül hagyja a kisebb súlyosságú elküldött naplókat, és nem küldi el azokat a Azure Monitor. További információt a dokumentációban [talál.](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel)
 
-1. Az *extra* kulcsszó argumentumban egyéni tulajdonságokat is hozzáadhat a naplófájlokhoz a custom_dimensions mező használatával. Ezek a tulajdonságok kulcs-érték párokként jelennek meg a `customDimensions` Azure monitorban.
+1. A további kulcsszó argumentumban egyéni tulajdonságokat is hozzáadhat a naplóüzenethez a custom_dimensions használatával.  Ezek a tulajdonságok kulcs-érték párokként jelennek meg a `customDimensions` Azure Monitor.
     > [!NOTE]
-    > Ahhoz, hogy ez a funkció működjön, át kell adnia egy szótárt a custom_dimensions mezőbe. Ha más típusú argumentumokat adnak át, a naplózó figyelmen kívül hagyja őket.
+    > Ahhoz, hogy ez a funkció működjön, át kell adni egy szótárt a custom_dimensions mezőnek. Ha bármilyen más típusú argumentumot ad át, a naplózó figyelmen kívül hagyja azokat.
 
     ```python
     import logging
@@ -133,9 +133,9 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     logger.warning('action', extra=properties)
     ```
 
-#### <a name="configure-logging-for-django-applications"></a>Django-alkalmazások naplózásának konfigurálása
+#### <a name="configure-logging-for-django-applications"></a>Naplózás konfigurálása Django-alkalmazásokhoz
 
-Az alkalmazás kódjában explicit módon konfigurálhatja a naplózást a Django-alkalmazásokhoz, vagy megadhatja azt a Django naplózási konfigurációjában. Ez a kód bármely, a Django-beállítások konfigurálásához használt fájlt beléphet. A Django beállításainak konfigurálásával kapcsolatban lásd: [Django-beállítások](https://docs.djangoproject.com/en/3.0/topics/settings/). A naplózás konfigurálásával kapcsolatos további információkért lásd: [Django naplózása](https://docs.djangoproject.com/en/3.0/topics/logging/).
+Explicit módon konfigurálhatja a naplózást az alkalmazáskódban a fentihez hasonló módon a Django-alkalmazásokhoz, vagy megadhatja a Django naplózási konfigurációjában. Ez a kód a Django-beállítások konfigurációjában használt bármelyik fájlba bemehet. A Django-beállítások konfigurálásért lásd: [Django-beállítások.](https://docs.djangoproject.com/en/3.0/topics/settings/) A naplózás konfigurálásával kapcsolatos további információkért lásd: [Django-naplózás.](https://docs.djangoproject.com/en/3.0/topics/logging/)
 
 ```json
 LOGGING = {
@@ -157,7 +157,7 @@ LOGGING = {
 }
 ```
 
-Ügyeljen arra, hogy a-konfigurációban megadott névvel megegyező nevű adatgyűjtő-t használja.
+Győződjön meg arról, hogy a naplózó neve megegyezik a konfigurációban megadott névvel.
 
 ```python
 import logging
@@ -168,7 +168,7 @@ logger.warning("this will be tracked")
 
 #### <a name="send-exceptions"></a>Kivételek küldése
 
-A OpenCensus Python nem tudja automatikusan követni és elküldeni a `exception` telemetria. `AzureLogHandler`A szolgáltatást a Python-naplózási könyvtár kivételek használatával küldik el. A normál naplózáshoz hasonlóan egyéni tulajdonságokat is hozzáadhat.
+Az OpenCensus Python nem követi és továbbítja automatikusan a `exception` telemetriát. A rendszer kivételekkel küldi el őket a `AzureLogHandler` Python naplózási kódtárán keresztül. A normál naplózáshoz hasonló módon adhat hozzá egyéni tulajdonságokat.
 
 ```python
 import logging
@@ -189,11 +189,11 @@ try:
 except Exception:
     logger.exception('Captured an exception.', extra=properties)
 ```
-Mivel a kivételeket explicit módon kell naplózni, az a felhasználó számára, hogy hogyan szeretnék naplózni a nem kezelt kivételeket. A OpenCensus nem korlátozza azt a korlátozást, hogy a felhasználó hogyan kívánja ezt megtenni, feltéve, hogy a kivételek telemetria explicit módon naplózzák.
+Mivel explicit módon kell naplóznunk a kivételeket, a felhasználónak kell naplóznunk a nem kezelt kivételeket. Az OpenCensus nem korlátozza, hogy a felhasználó hogyan szeretné ezt megtenni, ha explicit módon kivételtelemetelemetiát naplóz.
 
 #### <a name="send-events"></a>Események küldése
 
-A telemetria ugyanúgy küldheti el, mint `customEvent` a telemetria, kivéve, ha `trace` `AzureEventHandler` helyette használja.
+A telemetriát ugyanúgy küldheti el, mint a telemetriát, kivéve `customEvent` `trace` a `AzureEventHandler` használatával.
 
 ```python
 import logging
@@ -208,29 +208,29 @@ logger.info('Hello, World!')
 
 #### <a name="sampling"></a>Mintavételezés
 
-A OpenCensus-mintavételezéssel kapcsolatos információkért tekintse meg a [mintavételezést a OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+Az OpenCensus mintavételezésére vonatkozó információkért nézze meg az [OpenCensus mintavételezését.](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)
 
 #### <a name="log-correlation"></a>Napló-összefüggések
 
-A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](./correlation.md#log-correlation).
+A naplók nyomkövetési környezeti adatokkal való gazdagításával kapcsolatos részletekért lásd: OpenCensus Python-naplók [integrációja.](./correlation.md#log-correlation)
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos részletekért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
+A nyomonott telemetria módosításával kapcsolatos részletekért lásd: OpenCensus Python [telemetriai](./api-filtering-sampling.md#opencensus-python-telemetry-processors)processzorok Azure Monitor.
 
 
 ### <a name="metrics"></a>Mérőszámok
 
-A OpenCensus. stats 4 aggregációs módszert támogat, de részleges támogatást biztosít a Azure Monitor számára:
+Az OpenCensus.stats 4 összesítési módszert támogat, de részleges támogatást nyújt a Azure Monitor:
 
-- **Darabszám:** A mérési pontok számának száma. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. 
-- **Összeg:** A mérési pontok összege. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. 
-- **LastValue:** Megtartja az utolsó rögzített értéket, minden mást elveszít.
-- **Eloszlás:** A mérési pontok hisztogram eloszlása **Az Azure-exportőr nem támogatja** ezt a metódust.
+- **Darabszám:** A mérési pontok számának száma. Az érték kumulatív, csak újraindításkor lehet növelni, és 0-ra áll vissza. 
+- **Összeg:** A mérési pontok összege. Az érték kumulatív, csak újraindításkor lehet növelni, és 0-ra áll vissza. 
+- **LastValue (Utolsó érték):** Megtartja az utolsó rögzített értéket, minden mást eldob.
+- **Terjesztés:** A mérési pontok hisztogram-eloszlása. Ezt a módszert **az Azure-beli aknát nem támogatja.**
 
-### <a name="count-aggregation-example"></a>Számlálási összesítési példa
+### <a name="count-aggregation-example"></a>Példa Count Aggregation (Számösszesítő)
 
-1. Először hozzon elő néhány helyi metrikai adatokat. Egy egyszerű mérőszámot hozunk létre, amely nyomon követheti, hogy a felhasználó hányszor válassza ki az **ENTER** billentyűt.
+1. Először is hozzunk létre néhány helyi metrikaadatot. Létrehozunk egy egyszerű metrikát, amely nyomon követi, hogy a felhasználó hányszor választja ki az **Enter** billentyűt.
 
     ```python
     from datetime import datetime
@@ -270,7 +270,7 @@ A OpenCensus. stats 4 aggregációs módszert támogat, de részleges támogatá
     if __name__ == "__main__":
         main()
     ```
-1. A kód futtatása ismételten kéri, hogy válassza az **ENTER billentyűt**. A rendszer mérőszámot hoz létre a megadott számú **idő nyomon** követéséhez. Az egyes bejegyzéseknél az érték megnő, és a metrika adatai megjelennek a konzolon. Az információ tartalmazza az aktuális értéket és a jelenlegi időbélyeget, amikor a metrika frissült.
+1. A kód ismételt futtatása arra kéri, hogy válassza az **Enter billentyűt.** Létrejön egy metrika, amely nyomon követi, hogy hányszor volt **kiválasztva az Enter.** Minden bejegyzésnél az érték növekszik, és a metrikák adatai megjelennek a konzolon. Az információk között szerepel az aktuális érték és a metrika frissítésének aktuális időbélyege.
 
     ```output
     Press enter.
@@ -281,7 +281,7 @@ A OpenCensus. stats 4 aggregációs módszert támogat, de részleges támogatá
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-1. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a metrikus adatokat Azure Monitor. Adja át a kapcsolatok sztringjét közvetlenül az exportőrnek. Vagy megadhatja egy környezeti változóban is `APPLICATIONINSIGHTS_CONNECTION_STRING` . Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+1. Bár az értékek megadása bemutató célokra hasznos, végső soron a metrikaadatokat az Azure Monitor. Adja át a kapcsolati sztringet közvetlenül a kávénak. Azt is megadhatja egy környezeti változóban( `APPLICATIONINSIGHTS_CONNECTION_STRING` ). Módosítsa az előző lépésben lekért kódot az alábbi mintakód alapján:
 
     ```python
     from datetime import datetime
@@ -329,11 +329,59 @@ A OpenCensus. stats 4 aggregációs módszert támogat, de részleges támogatá
         main()
     ```
 
-1. Az exportőr rögzített időközönként küld metrikai adatokat Azure Monitor. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, így a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel rendelkeznek, minden intervallumban elküldve. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. Az itt található `customMetrics` , de a `customMetrics` Tulajdonságok valueCount, a valueSum, a valueMin, a valueMax és a valueStdDev tulajdonságokat nem használjuk fel hatékonyan.
+1. A gyártó a metrikaadatokat Azure Monitor küldi a rendszernek. Az alapértelmezett érték 15 másodpercenként. Egyetlen metrikát követünk nyomon, ezért a rendszer minden intervallumban elküldi ezt a metrikaadatokat a benne található értékkel és időbélyeggel együtt. Az érték kumulatív, csak újraindításkor lehet növelni, és 0-ra áll vissza. Az adatokat a alatt találja, de a `customMetrics` `customMetrics` valueCount, valueSum, valueMin, valueMax és valueStdDev tulajdonságok nincsenek hatékonyan használva.
+
+### <a name="setting-custom-dimensions-in-metrics"></a>Egyéni dimenziók beállítása metrikákban
+
+Az Opencensus Python SDK lehetővé teszi egyéni dimenziók hozzáadását a metrika-telemetriához a használatával, amelyek lényegében kulcs/érték párok `tags` szótárai. 
+
+1. Szúrja be a használni kívánt címkéket a címketérképbe. A címketérkép az összes használható címke "készleteként" működik.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+...
+```
+
+1. Egy adott nézethez adja meg azokat a címkéket, amelyek a nézetben a címkekulccsal rögzíthető `View` metrikákhoz használhatók.
+
+```python
+...
+prompt_view = view_module.View("prompt view",
+                               "number of prompts",
+                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                               prompt_measure,
+                               aggregation_module.CountAggregation())
+...
+```
+
+1. A mérési térképen rögzített címketérképet mindenképpen használja. A által megadott címkekulcsokat a rekordhoz használt `View` címketérképen kell megadni.
+
+```python
+...
+mmap = stats_recorder.new_measurement_map()
+mmap.measure_int_put(prompt_measure, 1)
+mmap.record(tmap) # <-- pass the tag map in here
+...
+```
+
+1. A tábla alatt a használatával kibocsátott összes metrikarekord `customMetrics` `prompt_view` egyéni dimenziókkal `{"url":"http://example.com"}` rendelkezik.
+
+1. Ha különböző értékeket használó címkéket hoz létre ugyanazokkal a kulcsokkal, hozzon létre hozzájuk új címketérképeket.
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap2 = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+...
+```
 
 #### <a name="performance-counters"></a>Teljesítményszámlálók
 
-Alapértelmezés szerint a metrikák exportőre teljesítményszámlálókat küld Azure Monitornak. Ezt úgy tilthatja le, ha a `enable_standard_metrics` jelölőt a `False` metrika-exportőr konstruktorában állítja be.
+Alapértelmezés szerint a metrikák továbbítják a teljesítményszámlálók készletét a Azure Monitor. Ezt úgy tilthatja le, hogy a jelzőt a következőre kapcsolja `enable_standard_metrics` `False` a metrika-gyártó konstruktorában: .
 
 ```python
 ...
@@ -343,27 +391,27 @@ exporter = metrics_exporter.new_metrics_exporter(
 ...
 ```
 
-Ezek a teljesítményszámlálók jelenleg el vannak küldve:
+A rendszer jelenleg a következő teljesítményszámlálókat küldi el:
 
 - Rendelkezésre álló memória (bájt)
-- CPU-processzoridő (százalék)
-- Bejövő kérelmek aránya (másodpercenként)
-- Bejövő kérelem átlagos végrehajtási ideje (ezredmásodperc)
-- CPU-használat feldolgozása (százalék)
-- Folyamat saját bájtjai (bájt)
+- Processzor processzoridő (százalék)
+- Bejövő kérelmek sebessége (másodpercenként)
+- Bejövő kérés átlagos végrehajtási ideje (ezredmásodperc)
+- Processzorhasználat feldolgozása (százalék)
+- Folyamat saját bájtja (bájt)
 
-Ezeket a mérőszámokat a alkalmazásban tekintheti meg `performanceCounters` . [További információ: teljesítményszámlálók](./performance-counters.md).
+Ezeket a metrikákat a következőben kell `performanceCounters` látnia: . További információ: [Teljesítményszámlálók.](./performance-counters.md)
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos információkért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
+További információ a nyomonott telemetria módosításáról a telemetria Azure Monitor való elküldését megelőzően: OpenCensus Python [telemetriafeldolgozók.](./api-filtering-sampling.md#opencensus-python-telemetry-processors)
 
 ### <a name="tracing"></a>Nyomkövetés
 
 > [!NOTE]
-> A OpenCensus-ben az `tracing` [elosztott nyomkövetésre](./distributed-tracing.md)hivatkozik. A `AzureExporter` Küldés `requests` és a `dependency` telemetria Azure monitor.
+> Az OpenCensus kifejezés `tracing` az elosztott [nyomkövetést jelenti.](./distributed-tracing.md) A `AzureExporter` és `requests` a `dependency` telemetria a Azure Monitor.
 
-1. Először is hozzon egy nyomkövetési adat helyi előállítását. A Python inaktív vagy a választott szerkesztőben adja meg a következő kódot:
+1. Először is hozzunk létre helyileg néhány nyomkövetési adatot. A Python IDLE vagy a választott szerkesztőben adja meg a következő kódot:
 
     ```python
     from opencensus.trace.samplers import ProbabilitySampler
@@ -384,7 +432,7 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
         main()
     ```
 
-1. A kód futtatása ismételten felszólítja, hogy adjon meg egy értéket. Minden egyes bejegyzés esetében a rendszer kinyomtatja az értéket a rendszerhéjba. A OpenCensus Python-modul létrehoz egy megfelelő darabot `SpanData` . A OpenCensus-projekt egy [nyomkövetési struktúrát](https://opencensus.io/core-concepts/tracing/)határoz meg.
+1. A kód ismételt futtatása arra kéri, hogy adjon meg egy értéket. Minden bejegyzésnél a rendszerhéjba nyomtatja az értéket. Az OpenCensus Python-modul a megfelelő elemét hozza `SpanData` létre. Az OpenCensus projekt egy [nyomkövetési struktúrát definiál, amely egy többtartományos faként van definiálva.](https://opencensus.io/core-concepts/tracing/)
     
     ```output
     Enter a value: 4
@@ -398,7 +446,7 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-1. Bár az értékek beírása bemutató célokra hasznos, végső soron a `SpanData` Azure monitor. Adja át a kapcsolatok sztringjét közvetlenül az exportőrnek. Vagy megadhatja egy környezeti változóban is `APPLICATIONINSIGHTS_CONNECTION_STRING` . Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+1. Bár az értékek megadása bemutató célokra hasznos, végső soron a `SpanData` Azure Monitor. Adja át a kapcsolati sztringet közvetlenül a kávénak. Azt is megadhatja egy környezeti változóban( `APPLICATIONINSIGHTS_CONNECTION_STRING` ). Módosítsa az előző lépésben lekért kódot az alábbi mintakód alapján:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -425,68 +473,68 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
         main()
     ```
 
-1. A Python-szkript futtatásakor a rendszer továbbra is kéri az értékek megadását, de csak az érték lesz kinyomtatva a rendszerhéjban. A `SpanData` rendszer elküldi a létrehozott Azure monitor. A kibocsátott span-adatmennyiségek a alatt találhatók `dependencies` . A kimenő kérelmekkel kapcsolatos további információkért lásd: OpenCensus Python- [függőségek](./opencensus-python-dependency.md).
-További információ a bejövő kérésekről: OpenCensus Python- [kérelmek](./opencensus-python-request.md).
+1. A Python-szkript futtatásakor továbbra is meg kell adnia az értékeket, de csak az érték lesz kiírva a rendszerhéjban. A létrehozott `SpanData` okat a Azure Monitor. A kibocsátott span-adatokat a következő alatt találja: `dependencies` . További információ a kimenő kérelmekről: OpenCensus [Python-függőségek.](./opencensus-python-dependency.md)
+A bejövő kérésekkel kapcsolatos további információkért lásd: OpenCensus [Python-kérések.](./opencensus-python-request.md)
 
 #### <a name="sampling"></a>Mintavételezés
 
-A OpenCensus-mintavételezéssel kapcsolatos információkért tekintse meg a [mintavételezést a OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+Az OpenCensus mintavételezésére vonatkozó információkért nézze meg az [OpenCensus mintavételezését.](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)
 
 #### <a name="trace-correlation"></a>Nyomkövetési korreláció
 
-A nyomkövetési adatok korrelációjának telemetria kapcsolatos további információkért tekintse meg a OpenCensus Python [telemetria korrelációját](./correlation.md#telemetry-correlation-in-opencensus-python).
+A nyomkövetési adatok telemetriai korrelációiról az OpenCensus Python [telemetriai korrelációját tartalmazó oldalon található további információ.](./correlation.md#telemetry-correlation-in-opencensus-python)
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria a Azure Monitorba való elküldése előtt történő módosításával kapcsolatos további információkért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
+A nyomonott telemetria módosításával kapcsolatos további információkért lásd: OpenCensus Python [telemetriai](./api-filtering-sampling.md#opencensus-python-telemetry-processors)processzorok Azure Monitor.
 
-## <a name="configure-azure-monitor-exporters"></a>Azure Monitor-exportőrök konfigurálása
+## <a name="configure-azure-monitor-exporters"></a>A Azure Monitor konfigurálása
 
-Ahogy az ábrán látható, három különböző Azure Monitor-exportőr támogatja a OpenCensus-t. Mindegyik különböző típusú telemetria küld Azure Monitor. A következő listában megtekintheti, hogy az egyes exportőrök milyen típusú telemetria küldenek.
+Ahogy látható, három különböző Azure Monitor az OpenCensus-t. Mindegyik különböző típusú telemetriát küld a Azure Monitor. Az egyes gyártók által küldött telemetriai adatok típusait az alábbi listában láthatja.
 
-Mindegyik exportőr elfogadja a konfigurációhoz tartozó argumentumokat, amelyeket a konstruktorok továbbítanak. Itt láthatja a részleteket:
+Minden egyes elfogadás elfogadja a konfiguráció ugyanazon argumentumát, és a konstruktorok között is át van va. Az egyes részleteket itt láthatja:
 
-- `connection_string`: A Azure Monitor erőforráshoz való kapcsolódáshoz használt kapcsolati karakterlánc. Elsőbbséget élvez `instrumentation_key` .
-- `enable_standard_metrics`: Használatban `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](../essentials/app-insights-metrics.md#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
-- `export_interval`: Az Exportálás másodpercben megadott gyakoriságának meghatározására szolgál.
-- `instrumentation_key`: A Azure Monitor erőforráshoz való csatlakozáshoz használt rendszerállapot-kulcs.
-- `logging_sampling_rate`: Használatban `AzureLogHandler` . Mintavételezési sebességet biztosít [1,0] a naplók exportálásához. Az alapértelmezett érték a 1,0.
+- `connection_string`: Az erőforráshoz való csatlakozáshoz használt Azure Monitor sztring. Elsőbbséget élvez a `instrumentation_key` felette.
+- `enable_standard_metrics`: a következő hez `AzureMetricsExporter` használatos: . Jelzi a szállítót, hogy automatikusan küldjön teljesítményszámláló-metrikákat a Azure Monitor. [](../essentials/app-insights-metrics.md#performance-counters) Az alapértelmezett érték `True` a .
+- `export_interval`: Az exportálás gyakoriságának másodpercekben történő megadására használatos.
+- `instrumentation_key`: Az erőforráshoz való csatlakozáshoz használt Azure Monitor kulcs.
+- `logging_sampling_rate`: a következő hez `AzureLogHandler` használatos: . Mintavételi sebességet [0,1,0] biztosít a naplók exportálására. Az alapértelmezett érték 1.0.
 - `max_batch_size`: Az egyszerre exportált telemetria maximális méretét adja meg.
-- `proxies`: Az adatok Azure Monitorba küldéséhez használandó proxyk sorozatot adja meg. További információ: [proxys](https://requests.readthedocs.io/en/master/user/advanced/#proxies).
-- `storage_path`: A helyi tároló mappájának elérési útja (telemetria elküldve). A `opencensus-ext-azure` v 1.0.3 esetében az alapértelmezett elérési út az operációs rendszer TEMP Directory + `opencensus-python`  +  `your-ikey` . A v 1.0.3 előtt az alapértelmezett elérési út $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
+- `proxies`: Egy proxysorozatot ad meg, amely adatokat küld a Azure Monitor. További információ: [proxyk.](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
+- `storage_path`: A helyi tármappa helyének elérési útja (nincs telemetria). Az `opencensus-ext-azure` 1.0.3-as verziótól az alapértelmezett elérési út az operációs rendszer ideiglenes könyvtára + `opencensus-python`  +  `your-ikey` . Az 1.0.3-as előtti alapértelmezett elérési út a $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
 
-## <a name="view-your-data-with-queries"></a>Az adataikat a lekérdezésekkel tekintheti meg
+## <a name="view-your-data-with-queries"></a>Adatok megtekintése lekérdezésekkel
 
-A **naplók (Analytics)** lapon megtekintheti az alkalmazásból elküldett telemetria-adatait.
+Az alkalmazásból küldött telemetriai adatokat a Naplók **(Elemzés)** lapon tudja megtekinteni.
 
-![Képernyőkép az áttekintő panelről, amelyen a "naplók (Analytics)" be van jelölve egy piros mezőben](./media/opencensus-python/0010-logs-query.png)
+![Képernyőkép az áttekintő panelről, pirossal kijelölve a "Naplók (Analytics)" listában](./media/opencensus-python/0010-logs-query.png)
 
-A listában az **aktív**:
+Az Active (Aktív) alatti **listában:**
 
-- A Azure Monitor Trace exportőrrel küldött telemetria esetében a bejövő kérelmek a alatt jelennek meg `requests` . A kimenő vagy folyamaton belüli kérelmek megjelennek a alatt `dependencies` .
-- A Azure Monitor metrikákkal ellátott telemetria esetében az eljuttatott metrikák a alatt jelennek meg `customMetrics` .
-- A Azure Monitor naplók exportőrével eljuttatott telemetria esetében a naplók a alatt jelennek meg `traces` . A kivételek a alatt jelennek meg `exceptions` .
+- A nyomkövetési nyomkövetési Azure Monitor küldött telemetria esetében a bejövő kérések a alatt jelennek `requests` meg. A kimenő vagy a feldolgozás alatt jelennek meg `dependencies` a kérelmek.
+- A metrika-Azure Monitor küldött telemetria esetében az elküldött metrikák a alatt jelennek `customMetrics` meg.
+- A naplónaplók naplói által küldött Azure Monitor naplók a alatt jelennek `traces` meg. A kivételek a alatt jelennek `exceptions` meg.
 
-További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](../logs/data-platform-logs.md).
+A lekérdezések és naplók használatával kapcsolatos további információkért lásd: [Naplók a Azure Monitor.](../logs/data-platform-logs.md)
 
-## <a name="learn-more-about-opencensus-for-python"></a>További információ a Pythonhoz készült OpenCensus
+## <a name="learn-more-about-opencensus-for-python"></a>További információ a Pythonhoz készült OpenCensusról
 
 * [OpenCensus Python a GitHubon](https://github.com/census-instrumentation/opencensus-python)
 * [Testreszabás](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [Azure Monitor-exportőrök a GitHubon](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [Azure Monitor a GitHubon](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 * [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
-* [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
+* [Azure Monitor mintaalkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Bejövő kérelmek nyomon követése](./opencensus-python-dependency.md)
-* [Folyamatban lévő kérelmek nyomon követése](./opencensus-python-request.md)
-* [Alkalmazás-hozzárendelés](./app-map.md)
-* [Végpontok közötti teljesítmény figyelése](../app/tutorial-performance.md)
+* [Bejövő kérések nyomon követése](./opencensus-python-dependency.md)
+* [A kérések nyomon követése](./opencensus-python-request.md)
+* [Alkalmazástérkép](./app-map.md)
+* [Végpontok között monitorozási teljesítmény](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Riasztások
 
 * [Rendelkezésre állási tesztek](./monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](./proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../alerts/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
+* [Metrikák riasztásai:](../alerts/alerts-log.md)Riasztások beállítása, amelyek figyelmeztetik, ha egy metrika átlép egy küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 

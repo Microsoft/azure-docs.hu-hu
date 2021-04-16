@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Gigya-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Gigya között.
+title: 'Oktatóanyag: Azure Active Directory Integráció a Gigya-| Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a Gigya között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,228 +9,169 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 849b54e6d96b8f6f33f2a0925b9a1b9c3eebd56b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6956b8ba2dcad0e67caac797a47e5308e649d042
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92449999"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516077"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Oktatóanyag: Azure Active Directory integráció a Gigya
+# <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Oktatóanyag: Azure Active Directory Integráció a Gigyával
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Gigya a Azure Active Directory (Azure AD) szolgáltatással.
-A Gigya és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a Gigyát a Azure Active Directory (Azure AD) használatával. Ha integrálja a Gigyát az Azure AD-val, a következőt tudja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Gigya.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Gigya (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* Az Azure AD vezérlése, aki hozzáfér a Gigyhoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a Gigyába az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Gigya való konfigurálásához a következő elemek szükségesek:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Gigya egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Gigya egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja és teszteli tesztkörnyezetben.
 
-* A Gigya támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Gigya támogatja **az sp** által kezdeményezett SSO-t.
 
-## <a name="adding-gigya-from-the-gallery"></a>Gigya hozzáadása a gyűjteményből
+## <a name="add-gigya-from-the-gallery"></a>Gigya hozzáadása a katalógusból
 
-A Gigya Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Gigya a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Gigya Azure AD-be való integrálásának konfigurálásához fel kell vennie a Gigyát a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Ha Gigya szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a Vállalati **alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a **Gigya nevet** a keresőmezőbe.
+1. Válassza a **Gigya lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-gigya"></a>Az Azure AD SSO konfigurálása és tesztelése a Gigyhoz
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Gigyával egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a Gigya kapcsolódó felhasználója között.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Ha az Azure AD SSO-t a Gigyával konfigurálja és teszteli, hajtsa végre a következő lépéseket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy lehetővé tegye a felhasználók számára a funkció használatát.
+    1. **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    1. **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[A Gigya SSO konfigurálása](#configure-gigya-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Gigya-tesztfelhasználó létrehozása](#create-gigya-test-user)** – a gigya-i B.Simon megfelelője, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[Az SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-4. A keresőmezőbe írja be a **Gigya** kifejezést, válassza a **Gigya** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portal a **Gigya-alkalmazásintegráció** oldalon  keresse meg a Kezelés szakaszt, és válassza az **egyszeri bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer** kiválasztása lapon válassza az **SAML lehetőséget.**
+1. Az Egyszeri **bejelentkezés beállítása SAML-sel** lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-     ![Gigya az eredmények listájában](common/search-new-app.png)
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+4. Az **SAML-alapkonfiguráció szakaszban** hajtsa végre a következő lépéseket:
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Gigya-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Gigya kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+    a. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `http://<companyname>.gigya.com`
 
-Az Azure AD egyszeri bejelentkezés Gigya való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Gigya egyszeri bejelentkezés konfigurálása](#configure-gigya-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Gigya-teszt felhasználót](#create-gigya-test-user)** – hogy a Gigya Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés Gigya való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **Gigya** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Gigya tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `http://<companyname>.gigya.com`
-
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://fidm.gigya.com/saml/v2.0/<companyname>`
+    b. Az **Azonosító (Entitásazonosító) szövegmezőbe** írjon be egy URL-címet a következő mintával: `https://fidm.gigya.com/saml/v2.0/<companyname>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Gigya ügyfélszolgálati [csapatához](https://developers.gigya.com/display/GD/Opening+A+Support+Incident) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a bejelentkezési URL-cím és az azonosító tényleges értékével. Az értékekért vegye fel a kapcsolatot a [Gigya-ügyfél](https://developers.gigya.com/display/GD/Opening+A+Support+Incident) támogatási csapatával. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
 
-5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
+5. A **Set up Single Sign-On with SAML** (Egyetlen tanúsítvány beállítása SAML-sel) lap **SAML** aláíró tanúsítvány szakaszában kattintson a **Download** (Letöltés) gombra a tanúsítvány **(Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/certificatebase64.png)
 
-6. A **Gigya beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Gigya beállítása szakaszban** másolja ki a követelménynek megfelelő URL-címet/URL-címeket.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD-tesztfelhasználó létrehozása 
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-    c. Kijelentkezési URL-cím
+1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-gigya-single-sign-on"></a>Gigya egyetlen Sign-On konfigurálása
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Az Azure AD tesztfelhasználó hozzárendelése
 
-1. Egy másik böngészőablakban jelentkezzen be a Gigya vállalati webhelyre rendszergazdaként.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Gigyának.
 
-2. Lépjen a **Beállítások \> SAML-bejelentkezés** elemre, majd kattintson a **Hozzáadás** gombra.
+1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza a **Gigya lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza** a Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja azt **a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az &quot;Alapértelmezett hozzáférés&quot; szerepkör lesz kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
+
+## <a name=&quot;configure-gigya-sso&quot;></a>A Gigya SSO konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a Gigya vállalati webhelyére rendszergazdaként.
+
+2. Lépjen a **Beállítások \> SAML-bejelentkezés lapra,** majd kattintson a **Hozzáadás gombra.**
    
-    ![SAML-bejelentkezés](./media/gigya-tutorial/ic789532.png "SAML-bejelentkezés")
+    ![SAML-bejelentkezés](./media/gigya-tutorial/login.png &quot;SAML-bejelentkezés")
 
-3. Az **SAML-bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
+3. Az **SAML-bejelentkezés szakaszban** hajtsa végre a következő lépéseket:
    
-    ![SAML-konfiguráció](./media/gigya-tutorial/ic789533.png "SAML-konfiguráció")
+    ![SAML-konfiguráció](./media/gigya-tutorial/configuration.png "SAML-konfiguráció")
    
-    a. A **név** szövegmezőbe írja be a konfiguráció nevét.
+    a. A Név **szövegmezőbe** írja be a konfiguráció nevét.
    
-    b. A **kiállító** szövegmezőbe illessze be az Azure Portalról másolt **Azure ad-azonosító** értékét. 
+    b. A **Kiállító** szövegmezőbe illessze be az **Azure AD-azonosító** értékét, amelyet a Azure Portal. 
    
-    c. Az **egyszeres Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be az Azure Portalról másolt **bejelentkezési URL-cím** értékét.
+    c. A **Single Sign-On Service URL** (Egykiszolgálós szolgáltatás URL-címe) szövegmezőbe illessze be a bejelentkezési **URL-cím** értékét, amelyet a Azure Portal.
    
-    d. A **név azonosítójának formázása** szövegmezőbe illessze be a **név azonosító formátumát** , amelyet az Azure Portalról másolt.
+    d. A  **Névazonosító formátuma szövegmezőbe** illessze be a névazonosító formátumának értékét, amelyet a Azure Portal.
    
-    e. Nyissa meg az alap-64 kódolású tanúsítványt a Jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
+    e. Nyissa meg a base-64 kódolású tanúsítványt az Azure Portal-ból letöltött jegyzettömbben, másolja a tartalmát a vágólapra, majd illessze be az **X.509-tanúsítvány** szövegmezőbe.
    
-    f. Kattintson a **Beállítások mentése** gombra.
+    f. Kattintson **a Beállítások mentése gombra.**
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+## <a name="create-gigya-test-user"></a>Gigya-tesztfelhasználó létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkeznek a Gigyába, ki kell őket kiépítenünk a Gigyában. A Gigya esetében a kiépítés manuális feladat.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Felhasználói fiókok végrehajtásához hajtsa végre a következő lépéseket:
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+1. Jelentkezzen be a **Gigya vállalati** webhelyére rendszergazdaként.
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** lehetőségre.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Gigya hozzáférésének biztosításával.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Gigya** lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **Gigya** lehetőséget.
-
-    ![Az Gigya hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-gigya-test-user"></a>Gigya-tesztelési felhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Gigya, a Gigya-ben kell kiépíteni őket. Gigya esetén a kiépítés manuális feladat.
-
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:
-
-1. Jelentkezzen be a **Gigya** vállalati webhelyre rendszergazdaként.
-
-2. Nyissa meg a **rendszergazda \> felhasználók kezelése** lehetőséget, majd kattintson a **felhasználók meghívása** elemre.
+2. Válassza a **Felhasználók \> rendszergazdai kezelése,** majd a **Felhasználók meghívása gombra.**
    
-    ![Felhasználók kezelése](./media/gigya-tutorial/ic789535.png "Felhasználók kezelése")
+    ![Felhasználók kezelése](./media/gigya-tutorial/users.png "Felhasználók kezelése")
 
-3. A felhasználók meghívása párbeszédpanelen hajtsa végre a következő lépéseket:
+3. A Felhasználók meghívása párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Felhasználók meghívása](./media/gigya-tutorial/ic789536.png "Felhasználók meghívása")
+    ![Felhasználók meghívása](./media/gigya-tutorial/invite-user.png "Felhasználók meghívása")
    
-    a. Az **e-mail** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail aliasát.
+    a. Az **E-mail** szövegmezőbe írja be a kiépítni kívánt érvényes Azure Active Directory e-mail-aliast.
     
-    b. Kattintson a **felhasználó meghívása** elemre.
+    b. Kattintson **a Felhasználó meghívása elemre.**
       
     > [!NOTE]
-    > A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna.
+    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válik.
     > 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-Ha a hozzáférési panelen a Gigya csempére kattint, automatikusan be kell jelentkeznie arra a Gigya, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja a Gigya bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a Gigya bejelentkezési URL-címére, és onnan indítsa el a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft Saját alkalmazások. Amikor a gigya csempére kattint a Saját alkalmazások, a rendszer átirányítja a Gigya bejelentkezési URL-címére. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A Gigya konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

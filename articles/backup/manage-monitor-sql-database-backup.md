@@ -1,165 +1,165 @@
 ---
-title: SQL Server adatbázisok kezelése és figyelése Azure-beli virtuális gépen
-description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
+title: Azure-beli SQL Server adatbázisának kezelése és figyelése
+description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server és monitorozni a virtuális gépeken futó adatbázisokat.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3938e26e134f7d823d8a6f6fac631ebf4442e6ab
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97858736"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519136"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
 
-Ez a cikk az Azure-beli virtuális gépen (VM) futó SQL Server adatbázisok felügyeletének és figyelésének általános feladatait ismerteti, amelyek biztonsági mentése a [Azure Backup](backup-overview.md) szolgáltatás által Azure Backup Recovery Services-tárolóba történik. Megismerheti a feladatok és a riasztások figyelését, az adatbázis-védelem leállítását és folytatását, a biztonsági mentési feladatok futtatását és a virtuális gépek biztonsági másolatokból való regisztrációjának megszüntetését.
+Ez a cikk az Azure-beli virtuális gépen (VM) futó, és az Azure Backup-szolgáltatás által egy Azure Backup Recovery Services-tárolóba biztonsági mentése alatt lévő SQL Server-adatbázisok kezelésével és monitorozásával kapcsolatos általános feladatokat [ismerteti.](backup-overview.md) Megtudhatja, hogyan figyelheti a feladatokat és riasztásokat, állíthatja le és folytathatja az adatbázis-védelmet, futtathatja a biztonsági mentési feladatokat, és hogyan ússhatja meg a virtuális gépek biztonsági mentésből való regisztrációját.
 
-Ha még nem konfigurált biztonsági másolatokat a SQL Server adatbázisokhoz, tekintse [meg a SQL Server adatbázisok biztonsági mentése Azure-beli virtuális gépeken](backup-azure-sql-database.md) című témakört.
+Ha még nem konfigurálta a biztonsági mentéseket a SQL Server adatbázisokhoz, tekintse meg a Biztonsági másolatok SQL Server Azure-beli virtuális gépeken való biztonsági [mentését.](backup-azure-sql-database.md)
 
 ## <a name="monitor-backup-jobs-in-the-portal"></a>Biztonsági mentési feladatok figyelése a portálon
 
-Azure Backup megjeleníti az összes ütemezett és igény szerinti műveletet a portál **biztonsági mentési feladatok** területén, kivéve az ütemezett naplókat, mivel ezek nagyon gyakoriak. A portálon megjelenő feladatok közé tartozik az adatbázis-felderítés és-regisztráció, a biztonsági mentés konfigurálása, valamint a biztonsági mentési és visszaállítási műveletek.
+Azure Backup biztonsági mentési feladatok alatt az összes ütemezett  és igény szerinti műveletet megjeleníti a portálon, kivéve az ütemezett naplók biztonsági mentését, mivel ezek nagyon gyakoriak is. A portálon látható feladatok közé tartozik az adatbázis-felderítés és -regisztráció, a biztonsági mentési és visszaállítási műveletek konfigurálása.
 
-![A biztonsági mentési feladatok portál](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
+![A Biztonsági mentési feladatok portál](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
-A figyelési forgatókönyvekkel kapcsolatos részletekért tekintse meg [a figyelés a Azure Portal és a](backup-azure-monitoring-built-in-monitor.md) [figyelés Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)című részt.  
+A monitorozási forgatókönyvekkel kapcsolatos részletekért kattintson a [Figyelés](backup-azure-monitoring-built-in-monitor.md) a Azure Portal és a [Figyelés a](backup-azure-monitoring-use-azuremonitor.md)Azure Monitor.  
 
 ## <a name="view-backup-alerts"></a>Biztonsági mentési riasztások megtekintése
 
-Mivel a naplók biztonsági mentései 15 percenként történnek, a biztonsági mentési feladatok unalmasak lehetnek. A Azure Backup e-mail-riasztások küldésével megkönnyíti a figyelést. E-mail-riasztások:
+Mivel a naplók biztonsági mentése 15 percenként történik, a biztonsági mentési feladatok monitorozása fárasztó lehet. Azure Backup e-mail-riasztások küldésével megkönnyíti a monitorozást. Az e-mailes riasztások a következőek:
 
-- Az összes biztonsági mentési hiba miatt aktiválódik.
-- Az adatbázis szintjén összesítve hibakód jelenik meg.
-- Csak az adatbázis első biztonsági mentési hibája miatt lett elküldve.
+- Az összes biztonsági mentési hiba esetén aktiválódik.
+- Adatbázisszinten összesíteni hibakód alapján.
+- Csak az adatbázis első sikertelen biztonsági mentésére van elküldve.
 
-Az adatbázis biztonsági mentési értesítéseinek figyelése:
+Az adatbázis biztonsági mentési riasztásának figyelése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A tároló irányítópultján válassza a **biztonsági mentési riasztások** lehetőséget.
+2. A tároló irányítópultján válassza a Biztonsági **mentési riasztások lehetőséget.**
 
    ![Biztonsági mentési riasztások kiválasztása](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
-## <a name="stop-protection-for-a-sql-server-database"></a>SQL Server-adatbázis védelmének leállítása
+## <a name="stop-protection-for-a-sql-server-database"></a>Adatbázis védelmének SQL Server le
 
-Több módon is leállíthatja a SQL Server-adatbázisok biztonsági mentését:
+A biztonsági SQL Server többféleképpen is leállíthatja:
 
-- Állítsa le az összes jövőbeli biztonsági mentési feladatot, és törölje az összes helyreállítási pontot.
-- Állítsa le az összes jövőbeli biztonsági mentési feladatot, és hagyja érintetlenül a helyreállítási pontokat.
+- Állítsa le az összes jövőbeli biztonsági mentési feladat, és törölje az összes helyreállítási pontot.
+- Állítsa le az összes jövőbeli biztonsági mentési feladatokat, és hagyja érintetlenül a helyreállítási pontokat.
 
-Ha úgy dönt, hogy kihagyja a helyreállítási pontokat, tartsa szem előtt az alábbi adatokat:
+Ha úgy dönt, hogy elhagyja a helyreállítási pontokat, tartsa szem előtt az alábbi adatokat:
 
-- Az összes helyreállítási pont érintetlen marad, és az összes törlés leáll a védelem leállításakor az adatmegőrzéssel.
-- A védett példányért és a felhasznált tárterületért díjat számítunk fel. További információ: [Azure Backup díjszabása](https://azure.microsoft.com/pricing/details/backup/).
-- Ha töröl egy adatforrást a biztonsági mentések leállítása nélkül, az új biztonsági mentések sikertelenek lesznek. A régi helyreállítási pontok a szabályzatnak megfelelően lejárnak, de a legutóbbi helyreállítási pont mindig a biztonsági másolatok leállítása és az adat törlése után marad.
+- Az összes helyreállítási pont örökre érintetlen marad, és minden adatmegőrzési folyamat leáll a védelem során.
+- A védett példányért és a felhasznált tárterületért díjat számítunk fel. További információ: díjszabás [Azure Backup.](https://azure.microsoft.com/pricing/details/backup/)
+- Ha a biztonsági mentések leállítása nélkül töröl egy adatforrást, az új biztonsági mentések sikertelenek lesznek. A régi helyreállítási pontok a szabályzatnak megfelelően lejárnak, de a legutóbbi helyreállítási pont mindig meg lesz megőrizve, amíg le nem állítsa a biztonsági másolatokat, és nem törli az adatokat.
 
-Az adatbázis védelmének leállítása:
+Adatbázis védelmének leállítása:
 
-1. A tároló irányítópultján válassza a **biztonsági másolati elemek** lehetőséget.
+1. A tároló irányítópultján válassza a Biztonsági **mentési elemek lehetőséget.**
 
-2. A **biztonsági mentési felügyelet típusa** területen válassza **az SQL lehetőséget az Azure virtuális gépen**.
+2. A **Biztonságimásolat-kezelés típusa területen** válassza az SQL az **Azure-beli virtuális gépen lehetőséget.**
 
-    ![SQL kiválasztása az Azure-beli virtuális gépen](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+    ![Sql kiválasztása Azure-beli virtuális gépen](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-3. Válassza ki azt az adatbázist, amelynek a védelmét le szeretné állítani.
+3. Válassza ki azt az adatbázist, amelyhez le szeretné állítani a védelmet.
 
-    ![Válassza ki az adatbázist a védelem leállításához](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+    ![A védelem leállításához válassza ki az adatbázist](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-4. Az adatbázis menüben válassza a **biztonsági mentés leállítása** lehetőséget.
+4. Az adatbázis menüjében válassza a Biztonsági **mentés leállítása lehetőséget.**
 
-    ![Válassza a biztonsági mentés leállítása lehetőséget.](./media/backup-azure-sql-database/stop-db-button.png)
+    ![Válassza a Biztonsági mentés leállítása lehetőséget](./media/backup-azure-sql-database/stop-db-button.png)
 
-5. A **biztonsági mentés leállítása** menüben válassza ki, hogy szeretné-e megőrizni vagy törölni az adattárolást. Ha szeretné, adjon meg egy okot és egy megjegyzést.
+5. A Biztonsági **mentés leállítása menüben** válassza ki, hogy meg szeretné-e őrizni vagy törölni szeretné az adatokat. Ha szeretné, adjon meg egy okot és megjegyzéseket.
 
-    ![A biztonsági mentés leállítása menüben lévő adat megőrzése vagy törlése](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![Adatok megőrzése vagy törlése a Biztonsági mentés leállítása menüben](./media/backup-azure-sql-database/stop-backup-button.png)
 
-6. Válassza a **biztonsági mentés leállítása** lehetőséget.
+6. Válassza a **Biztonsági mentés leállítása lehetőséget.**
 
 > [!NOTE]
 >
->Az adatok törlése lehetőséggel kapcsolatos további információkért tekintse meg az alábbi gyakori kérdéseket:
+>Az Adatok törlése lehetőséggel kapcsolatos további információkért tekintse meg az alábbi gyakori kérdéseket:
 >
->- [Ha törlök egy adatbázist egy automatikus védelemmel ellátott példányról, mi történik a biztonsági másolatokkal?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->- [Ha leállítom egy automatikusan védett adatbázis biztonsági mentési műveletét, mi lesz a viselkedése?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>- [Ha törlök egy adatbázist egy automatikus védelemmel ellátott példányról, mi történik a biztonsági másolatokkal?](faq-backup-sql-server.yml#if-i-delete-a-database-from-an-autoprotected-instance--what-will-happen-to-the-backups-)
+>- [Ha leállítom egy automatikusan védett adatbázis biztonsági mentési műveletét, mi lesz a viselkedése?](faq-backup-sql-server.yml#if-i-change-the-name-of-the-database-after-it-has-been-protected--what-will-be-the-behavior-)
 >
 >
 
-## <a name="resume-protection-for-a-sql-database"></a>SQL Database-adatbázis védelmének folytatása
+## <a name="resume-protection-for-a-sql-database"></a>SQL-adatbázis védelmének folytatása
 
-Ha leállítja az SQL Database-adatbázis védelmét, ha a **biztonsági mentési adat megőrzése** lehetőséget választja, később folytathatja a védelmet. Ha nem tartja meg a biztonsági mentési adatait, nem folytathatja a védelmet.
+Ha leállítja az SQL-adatbázis védelmét,  és a Biztonsági másolatok adatainak megőrzése lehetőséget választja, később folytathatja a védelmet. Ha nem őrzi meg a biztonsági mentési adatokat, nem folytathatja a védelmet.
 
-Egy SQL Database-adatbázis védelmének folytatása:
+SQL-adatbázis védelmének folytatása:
 
-1. Nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés folytatása** lehetőséget.
+1. Nyissa meg a biztonsági mentési elemet, és válassza a **Biztonsági mentés folytatása lehetőséget.**
 
-    ![Az adatbázis-védelem folytatásához válassza a biztonsági mentés folytatása lehetőséget.](./media/backup-azure-sql-database/resume-backup-button.png)
+    ![Az adatbázis-védelem folytatásához válassza a Biztonsági mentés folytatása lehetőséget](./media/backup-azure-sql-database/resume-backup-button.png)
 
-2. A **biztonsági mentési házirend** menüben válasszon ki egy házirendet, majd kattintson a **Mentés** gombra.
+2. A Biztonsági **mentési szabályzat menüben** válasszon ki egy szabályzatot, majd válassza a **Mentés lehetőséget.**
 
 ## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentések futtatása
 
-Különböző típusú, igény szerinti biztonsági mentést is futtathat:
+Az igény szerinti biztonsági mentések különböző típusait futtathatja:
 
 - Teljes biztonsági mentés
-- Csak másolás – teljes biztonsági mentés
+- Csak másolásos teljes biztonsági mentés
 - Különbségi biztonsági mentés
 - Naplóalapú biztonsági mentés
 
-Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia, az igény szerinti teljes biztonsági mentés megőrzési tartománya automatikusan 45 napra lesz állítva az aktuális időpontnál.
+Bár meg kell adnia a csak másolásos teljes biztonsági mentés megőrzési időtartamát, az igény szerinti teljes biztonsági mentés megőrzési ideje automatikusan a jelenlegi időponttól 45 napra lesz beállítva.
 
-További információ: [SQL Server biztonsági mentési típusok](backup-architecture.md#sql-server-backup-types).
+További információ: biztonsági [SQL Server készítése.](backup-architecture.md#sql-server-backup-types)
 
-## <a name="modify-policy"></a>Házirend módosítása
+## <a name="modify-policy"></a>Szabályzat módosítása
 
-Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy a megőrzési tartománynak a módosításához.
+Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy megőrzési tartományának módosításához.
 
 > [!NOTE]
-> A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
+> A megőrzési időtartam bármely módosítása visszamenőlegesen alkalmazva lesz az összes régebbi helyreállítási pontra az újak mellett.
 
-A tároló irányítópultján lépjen a   >  **biztonsági mentési házirendek** kezelése elemre, és válassza ki a szerkeszteni kívánt szabályzatot.
+A tároló irányítópultján válassza a **Biztonsági** mentési házirendek kezelése lehetőséget, és válassza ki a szerkeszteni kívánt  >   szabályzatot.
 
   ![Biztonsági mentési szabályzat kezelése](./media/backup-azure-sql-database/modify-backup-policy.png)
 
   ![Biztonsági mentési szabályzat módosítása](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-A szabályzat módosítása hatással lesz az összes kapcsolódó biztonsági mentési elemre, és elindítja a megfelelő **Konfigurálás-védelmi** feladatokat.
+A szabályzat módosítása hatással lesz az összes társított biztonsági mentési elemre, és aktiválja a **megfelelő védelmi feladatokat.**
 
-### <a name="inconsistent-policy"></a>Inkonzisztens házirend
+### <a name="inconsistent-policy"></a>Inkonzisztens szabályzat
 
-Előfordulhat, hogy a házirend-módosítási művelet bizonyos biztonsági másolati elemek esetében nem **konzisztens** házirend-verziót eredményezhet. Ez akkor fordulhat elő, ha a biztonsági mentési elemhez tartozó megfelelő **konfigurálási** művelet meghiúsult a házirend-módosítási művelet elindítása után. A biztonsági mentési elem nézetben a következőképpen jelenik meg:
+Egyes biztonsági mentési elemek esetén  a szabályzat módosítása néha inkonzisztens szabályzatverzióhoz vezethet. Ez akkor fordul elő, **ha** a megfelelő védelmi feladat meghiúsul a biztonsági mentési elemen a szabályzat módosítása művelet aktiválása után. Ez a következőképpen jelenik meg a biztonsági mentési elem nézetben:
 
-  ![Inkonzisztens házirend](./media/backup-azure-sql-database/inconsistent-policy.png)
+  ![Inkonzisztens szabályzat](./media/backup-azure-sql-database/inconsistent-policy.png)
 
-Egy kattintással kijavíthatja az összes érintett elem szabályzatának verzióját:
+Az érintett elemek szabályzatverzióját egyetlen kattintással kijavíthatja:
 
-  ![Inkonzisztens házirend javítása](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+  ![Inkonzisztens szabályzat kijavítva](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 
-## <a name="unregister-a-sql-server-instance"></a>SQL Server példány regisztrációjának törlése
+## <a name="unregister-a-sql-server-instance"></a>Új példány regisztrációjának SQL Server meg
 
-A védelem letiltása, de a tár törlése előtt törölje a SQL Server példány regisztrációját:
+A védelem letiltása SQL Server, de a tároló törlése előtt törölje a tárolópéldány regisztrációját:
 
-1. A tároló irányítópultjának **kezelés** területén válassza a **biztonsági mentési infrastruktúra** elemet.  
+1. A tároló irányítópultjának Kezelés **területén válassza** a Biztonsági mentési **infrastruktúra lehetőséget.**  
 
-   ![Biztonsági mentési infrastruktúra kiválasztása](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+   ![Válassza a Biztonsági mentési infrastruktúra lehetőséget](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. A **felügyeleti kiszolgálók** területen válassza a **védett kiszolgálók** elemet.
+2. A **Felügyeleti kiszolgálók alatt** válassza a Védett kiszolgálók **lehetőséget.**
 
    ![Védett kiszolgálók kiválasztása](./media/backup-azure-sql-database/protected-servers.png)
 
-3. A **védett kiszolgálók** lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez törölnie kell az összes kiszolgálót.
+3. A **Protected Servers (Védett kiszolgálók) mezőben** válassza ki a kiszolgálót, amelyről le kell mondania a regisztrációt. A tároló törléséhez törölnie kell az összes kiszolgáló regisztrációját.
 
-4. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése** lehetőséget.
+4. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése lehetőséget.**
 
-   ![Törlés kiválasztása](./media/backup-azure-sql-database/delete-protected-server.jpg)
+   ![Válassza a Törlés lehetőséget](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-## <a name="re-register-extension-on-the-sql-server-vm"></a>A bővítmény újbóli regisztrálása a SQL Server VM
+## <a name="re-register-extension-on-the-sql-server-vm"></a>Bővítmény újra regisztrálása a SQL Server VM
 
-Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény hatással lehet az egyik ok vagy egy másikra. Ilyen esetekben a virtuális gépen aktivált összes művelet sikertelen lesz. Előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. Az **ismételt regisztrálási** művelet újratelepíti a munkaterhelési biztonsági mentési bővítményt a virtuális gépen a folytatáshoz. Ezt a lehetőséget a Recovery Services- **tárolóban található biztonsági mentési infrastruktúra** területen találja.
+Előfordulhat, hogy a virtuális gép számítási feladatainak bővítménye hatással lehet egy vagy több okból kifolyólag. Ilyen esetekben a virtuális gépen aktivált összes művelet meghiúsul. Ezután előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. A **re-register művelet** újratelepíti a számítási feladat biztonsági mentési bővítményét a virtuális gépen a műveletek folytatásához. Ezt a beállítást a Backup Infrastructure (Biztonsági mentési **infrastruktúra) alatt találja** meg a Recovery Services-tárolóban.
 
-![Biztonsági mentési infrastruktúra alatt lévő védett kiszolgálók](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
+![Védett kiszolgálók a Biztonsági mentési infrastruktúra alatt](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 
-Ezt a beállítást körültekintően használhatja. Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
+Ezt a lehetőséget körültekintően használja. Ha egy már kifogástalan állapotú bővítvű virtuális gépen aktiválódik, ez a művelet újraindítja a bővítményt. Ez az összes folyamatban lévő feladat meghiúsulhat. Az újra regisztráló művelet aktiválása [előtt](backup-sql-server-azure-troubleshoot.md#re-registration-failures) ellenőrizze, hogy a tünetek valamelyike jelentkezik-e.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: SQL Server- [adatbázis biztonsági másolatainak hibáinak megoldása](backup-sql-server-azure-troubleshoot.md).
+További információ: [Biztonsági mentések hibaelhárítása SQL Server adatbázison.](backup-sql-server-azure-troubleshoot.md)

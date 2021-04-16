@@ -1,40 +1,40 @@
 ---
 title: Delta Lake ETL adatfolyamokkal
-description: Ez az oktatóanyag részletes útmutatást nyújt az adatfolyamok a Delta Lake-ben található adatok átalakításához és elemzéséhez való használatával
+description: Ez az oktatóanyag részletes útmutatást nyújt a Delta Lake-adatok adatfolyamokkal való átalakításához és elemzéséhez
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/14/2021
-ms.openlocfilehash: a0fb3488aec6761764e30b4cf8556b71e5edda15
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515403"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565372"
 ---
-# <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Adatok átalakítása a Delta Lake-ben adatfolyamok leképezése használatával
+# <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>A Delta Lake adatainak átalakítása adatfolyamok leképezése használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
 
-Ebben az oktatóanyagban az adatfolyamvásznon olyan adatfolyamokat fog létrehozni, amelyek lehetővé teszik az adatok elemzését és átalakítását az Azure Data Lake Storage Gen2-ben (ADLS) és a Delta Lake-ben való tárolást.
+Ebben az oktatóanyagban az adatfolyamvászon használatával fog adatfolyamokat létrehozni, amelyek lehetővé teszik az adatok elemzését és átalakítását a Azure Data Lake Storage Gen2-ben (ADLS) és a Delta Lake-ben való tárolást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés.** Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* **Azure Storage-fiók.** Az ADLS-tárolót *forrás- és* *fogadóadattárként* használhatja. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
+* **Azure Storage-fiók.** Az ADLS-tárolók *forrás- és* *fogadóadattáraként* használhatók. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
 
-Az oktatóanyagban átalakított fájl MoviesDB.csv, amely itt [található.](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/moviesDB2.csv) A fájl GitHubról való lekéréséhez másolja a tartalmát egy ön által választott szövegszerkesztőbe a helyi .csv-fájlként való mentéshez. A fájl tárfiókba való feltöltésével lásd: [Blobok feltöltése a Azure Portal.](../storage/blobs/storage-quickstart-blobs-portal.md) A példák a "sample-data" nevű tárolóra hivatkoznak.
+Az oktatóanyagban átalakított fájl MoviesDB.csv, amely itt [található.](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/moviesDB2.csv) A fájl GitHubról való lekéréséhez másolja a tartalmát egy ön által választott szövegszerkesztőbe, és mentse helyileg .csv-fájlként. A fájl tárfiókba való feltöltésével lásd: [Blobok feltöltése a Azure Portal.](../storage/blobs/storage-quickstart-blobs-portal.md) A példák egy "sample-data" nevű tárolóra hivatkoznak.
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 Ebben a lépésben létrehoz egy adat-előállítót, és megnyitja a Data Factory felhasználói felületét egy folyamat létrehozásához az adat-előállítóban.
 
-1. Nyissa **meg Microsoft Edge** vagy a Google Chrome **böngészőt.** A felhasználói Data Factory jelenleg csak a böngészők és a Google Chrome böngészőkben Microsoft Edge támogatottak.
-1. A bal oldali menüben válassza az **Erőforrás-integrációs csoport**  >  **létrehozása**  >  **Data Factory**
-1. Az Új **data factory lap** Név **részében** adja meg az **ADFTutorialDataFactory nevet.**
+1. Nyissa **meg Microsoft Edge** vagy a Google Chrome **böngészőt.** A felhasználói Data Factory jelenleg csak az Microsoft Edge és a Google Chrome böngészőkben támogatott.
+1. A bal oldali menüben válassza az **Erőforrás-integrációs** csoport  >    >  **létrehozása Data Factory**
+1. Az Új **data factory lap** Név **részében** adja meg az **ADFTutorialDataFactory nevet**
 1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
@@ -57,27 +57,27 @@ Ebben a lépésben egy adatfolyam-tevékenységet tartalmazó folyamatot fog lé
 
    ![Folyamat létrehozása](./media/doc-common-process/get-started-page.png)
 
-1. A **folyamat Általános lapján** adja meg a **DeltaLake** nevet **a** folyamat neveként.
-1. A Tevékenységek **panelen** bontsa ki az **Áthelyezés és átalakítás** ékesetet. Húzza át a **Adatfolyam** tevékenységet a panelről a folyamatvászonra.
+1. A folyamat **Általános** lapján adja meg a **DeltaLake** nevet **a folyamat** neveként.
+1. A Tevékenységek **panelen** bontsa ki a **Move and Transform (Áthelyezés és átalakítás)** et. Húzza át a **Adatfolyam** tevékenységet a panelről a folyamatvászonra.
 
     ![Képernyőkép a folyamatvászonról, ahol eldobhatja a Adatfolyam tevékenységet.](media/tutorial-data-flow/activity1.png)
-1. Az Új **Adatfolyam** előugró ablakban válassza az **Új** adattár létrehozása lehetőséget Adatfolyam az adatfolyamnak adja a **DeltaLake nevet.** Ha végzett, kattintson a Befejezés gombra.
+1. Az **Új Adatfolyam** előugró ablakban válassza az **Új** adattár létrehozása lehetőséget Adatfolyam az adatfolyamnak adja a **DeltaLake nevet.** Ha végzett, kattintson a Befejezés gombra.
 
     ![Új adatfolyam létrehozásakor az adatfolyam elnevezési helyét bemutató képernyőkép.](media/tutorial-data-flow/activity2.png)
-1. A folyamatvászon felső sávjában húzza a Adatfolyam **hibakeresési csúszkát.** A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Adatfolyam a fürtök bemelegítése 5–7 percet is igénybe vegyen, és javasoljuk, hogy a felhasználók először bekapcsolják a hibakeresést, ha Adatfolyam tervezik. További információ: [Hibakeresési mód.](concepts-data-flow-debug-mode.md)
+1. A folyamatvászon felső sávjában húzza be a Adatfolyam **hibakeresési csúszkát.** A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Adatfolyam 5–7 percet is igénybe vegyen a bemelegítés, és a felhasználóknak ajánlott először bekapcsolni a hibakeresést, ha Adatfolyam terveznek. További információ: [Hibakeresési mód.](concepts-data-flow-debug-mode.md)
 
-    ![Adatfolyam tevékenység](media/tutorial-data-flow/dataflow1.png)
+    ![Az Adatfolyam hibakeresési csúszkája helyének képernyőképe.](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Átalakítási logika összeállítása az adatfolyam-vásznon
 
-Ebben az oktatóanyagban két adatfolyamot fog létrehozni. A mozgó adatfolyam egy egyszerű forrás, amely egy új Delta Lake-et hoz létre a fenti filmek CSV-fájljában. Végül létre kell hoznia az alábbi folyamattervet a Delta Lake adatainak frissítéséhez.
+Ebben az oktatóanyagban két adatfolyamot fog létrehozni. A fő adatfolyam egy egyszerű forrás, amely egy új Delta Lake-et hoz létre a fentiekből származó filmek CSV-fájlja alapján. Végül létre fogja hozni az alábbi folyamattervet az adatok a Delta Lake-ben való frissítéséhez.
 
 ![Végső folyamat](media/data-flow/data-flow-tutorial-6.png &quot;Végső folyamat")
 
 ### <a name="tutorial-objectives"></a>Oktatóanyag célkitűzései
 
 1. Vegyük a MoviesCSV-adatkészlet forrását a fentiek közül, és alkotnak egy új Delta Lake-et abból
-1. A logika összeállítása az 1988-as filmek értékelésének "1"-re való frissítéshez
+1. A logika összeállítása az 1988-as filmek értékelésének "1"-re való frissítésében
 1. Az összes film törlése az 1950-es évből
 1. Új filmek beszúrása a 2021-es évhez az 1960-ból származó filmek másolása
 
@@ -97,13 +97,13 @@ Ebben az oktatóanyagban két adatfolyamot fog létrehozni. A mozgó adatfolyam 
    ![Beágyazott adatkészlet](media/data-flow/data-flow-tutorial-5.png "Beágyazott adatkészlet")
 
 1. Válasszon egy mappanevet a storage-tárolóban, amelyben az ADF-et szeretné létrehozni a Delta Lake-hez
-1. Vissza a folyamat tervezőjéhez, és kattintson a Hibakeresés gombra a folyamat hibakeresési módban való végrehajtásához, ha csak ezt az adatfolyam-tevékenységet futtatja a vásznon. Ezzel létrehozza az új Delta Lake-et a ADLS Gen2.
+1. Vissza a folyamat tervezőjéhez, és kattintson a Hibakeresés gombra a folyamat hibakeresési módban való végrehajtásához, amely csak ezt az adatfolyam-tevékenységet futtatja a vásznon. Ezzel létrehozza az új Delta Lake-et a ADLS Gen2.
 1. A Factory Resources (Gyári erőforrások) menüben kattintson az > Data flow (Adatfolyam) elemre. 
 1. Használja ismét a MoviesCSV-t forrásként, és kattintson ismét az "Adattípusok észlelése" gombra
 1. Szűrőátalakítás hozzáadása a forrásátalakításhoz a gráfban
 1. Csak a három évnek megfelelő filmsorok engedélyezése, amelyek 1950, 1988 és 1960 lesznek
 1. Minden 1988-as film minősítését frissítse "1"-re úgy, hogy mostantól egy származtatott oszlopátalakítást ad hozzá a szűrőátalakításhoz
-1. Ugyanabban a származtatott oszlopban hozzon létre 2021-es filmekhez egy meglévő évet, és módosítsa az évet 2021-re. Válassza az 1960-ast.
+1. Ugyanabban a származtatott oszlopban hozzon létre 2021-es filmekből egy meglévő évet, és módosítsa az évet 2021-re. Válassza az 1960-ast.
 1. A három származtatott oszlop így fog kinézni
 
    ![Származtatott oszlop](media/data-flow/data-flow-tutorial-2.png "Származtatott oszlop")
@@ -121,7 +121,7 @@ Ebben az oktatóanyagban két adatfolyamot fog létrehozni. A mozgó adatfolyam 
 1. Vegye figyelembe, hogy a Kulcsoszlopok egy összetett kulcs, amely a Film elsődleges kulcs oszlopát és az év oszlopot tartalmazza. Ennek az az oka, hogy a 2021-es hamis filmek az 1960 sor megkétintéséből vannak létrehozva. Ez az egyediség biztosításával elkerüli az ütközéseket, amikor a meglévő sorokat keresi.
 
 ### <a name="download-completed-sample"></a>Befejezett minta letöltése
-[Itt egy mintamegoldás a Delta-folyamathoz, amely a tóban lévő sorok frissítésére/törlésére vonatkozó adatfolyamot tartalmaz:](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/DeltaPipeline.zip)
+[Itt egy mintamegoldás a Delta-folyamathoz, amely egy adatfolyamot tartalmaz a tóban lévő sorok frissítéséhez/törléséhez:](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/DeltaPipeline.zip)
 
 ## <a name="next-steps"></a>Következő lépések
 

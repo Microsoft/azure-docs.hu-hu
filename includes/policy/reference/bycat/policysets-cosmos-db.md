@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 347825f52aa44bd1fbbab3740afc6ad9a930e465
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0c9f595b9488fb2c76736a9e0977025517c879b3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090081"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504840"
 ---
 |Név |Leírás |Házirendek |Verzió |
 |---|---|---|---|
-|[Azure Cosmos DB átviteli sebességre vonatkozó házirend engedélyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Cosmos%20DB/Cosmos_Throughput.json) |Az adatátviteli vezérlő engedélyezése Azure Cosmos DB erőforrásokhoz a megadott hatókörben (felügyeleti csoport, előfizetés vagy erőforráscsoport). A maximális átviteli sebességet paraméterként veszi igénybe. Ezzel a szabályzattal az erőforrás-szolgáltatón keresztül kikényszerítheti az átviteli sebesség szabályozását. |2 |1.0.0 |
+|[Átviteli Azure Cosmos DB szabályzat engedélyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Cosmos%20DB/Cosmos_Throughput.json) |A megadott hatókör (felügyeleti csoport, előfizetés vagy erőforráscsoport) Azure Cosmos DB erőforrások átviteli sebességének szabályozása. Paraméterként a maximális átviteli sebességet veszi fel. Ezzel a szabályzatokkal kényszeríthető az átviteli sebesség szabályozása az erőforrás-szolgáltatón keresztül. |2 |1.0.0 |

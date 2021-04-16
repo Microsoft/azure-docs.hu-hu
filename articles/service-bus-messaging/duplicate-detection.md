@@ -1,72 +1,82 @@
 ---
-title: Ismétlődő üzenetek észlelésének Azure Service Busa | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő elemek Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható, és eldobása is lehetséges.
+title: Azure Service Bus üzenetészlelés | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan észlelheti az ismétlődéseket a Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható és eldobható.
 ms.topic: article
-ms.date: 01/13/2021
-ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: a9ca9de988f5a3db15da773a870e2d929ab938c8
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711925"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499478"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
-Ha egy alkalmazás az üzenet elküldése után azonnal végzetes hibát jelez, és az újraindított alkalmazás példánya hibásan úgy véli, hogy az előző üzenet kézbesítése nem történt meg, akkor egy későbbi küldés esetén a rendszer kétszer is megjelenik az üzenetben.
+Ha egy alkalmazás egy végzetes hiba miatt meghiúsul közvetlenül az üzenet küldése után, és az újraindított alkalmazáspéldány tévesen úgy véli, hogy az előző üzenet kézbesítése nem történt meg, egy későbbi küldés ugyanazt az üzenetet kétszer is meg fog jelenni a rendszerben.
 
-Az ügyfél vagy a hálózati szint hibája is előfordulhat, hogy korábban egy pillanatra fordul elő, és egy küldött üzenet véglegesítve lesz a várólistában, és a nyugtát nem sikerült visszaadni az ügyfélnek. Ez a forgatókönyv kétségbe hagyja az ügyfelet a küldési művelet eredményével kapcsolatban.
+Előfordulhat, hogy az ügyfél vagy a hálózat szintjén egy pillanattal korábban hiba lép fel, és az elküldött üzenetek az üzenetsorba kerülnek, és a nyugtázás nem lesz sikeresen visszaadva az ügyfélnek. Ebben a forgatókönyvben az ügyfél nem biztos a küldési művelet eredményében.
 
-A duplikált észlelési funkció az ilyen helyzetekben nem teszi lehetővé, hogy a küldő újra elküldi ugyanazt az üzenetet, és a várólista vagy a témakör minden ismétlődő példányt elvet.
+A duplikált üzenetek észlelése úgy vonja ki a kétséget az ilyen helyzetekből, hogy lehetővé teszi, hogy a küldő újra elküldje ugyanazt az üzenetet, és az üzenetsor vagy témakör elveti az ismétlődő másolatokat.
 
 > [!NOTE]
-> A Service Bus alapszintű csomagja nem támogatja a duplikált észlelést. A standard és a prémium szint támogatja a duplikált észlelést. A szintek közötti különbségekért tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
+> A szolgáltatás alapszintű Service Bus nem támogatja a duplikált elemek észlelését. A standard és a prémium szint támogatja a duplikált elemek észlelését. A csomagok közötti különbségeket a [díjszabást Service Bus tekintse meg.](https://azure.microsoft.com/pricing/details/service-bus/)
 
 ## <a name="how-it-works"></a>Hogyan működik? 
-Az ismétlődő észlelés engedélyezése segít nyomon követni a várólistába vagy témakörbe küldött összes üzenet alkalmazás által vezérelt *MessageID* egy adott időszakra vonatkozóan. Ha a rendszer minden új üzenetet küld az időablakban naplózott *MessageID* , az üzenet elfogadva lesz (a küldési művelet sikeres lesz), de az újonnan elküldött üzenet azonnal figyelmen kívül lesz hagyva, és el lesz dobva. Az üzenet más részei nem tekintendők a *MessageID* .
+A duplikált üzenetek észlelésének engedélyezése segít nyomon követni az alkalmazás által vezérelt *MessageId-t* az üzenetsorba vagy témakörbe egy adott időablakban küldött összes üzenetről. Ha az időablakban naplózott *üzenetazonosítóval* bármilyen új üzenetet küld a rendszer, az üzenet elfogadottként lesz jelentve (a küldési művelet sikeres), de az újonnan elküldött üzenetet a rendszer azonnal figyelmen kívül hagyja és eldobja. Az üzenetnek a *MessageId-t* nem kell figyelembe vennie.
 
-Az azonosító alkalmazás-vezérlése alapvető fontosságú, mivel csak az lehet, hogy az alkalmazás összekapcsolja a *MessageID* egy üzleti folyamati környezettel, amelyből a hiba bekövetkezésekor kiszámíthatóan újraépíthető.
+Az azonosító alkalmazásvezérlése alapvető fontosságú, mivel csak ez teszi lehetővé, hogy az alkalmazás az *üzenetazonosítót* egy olyan üzleti folyamat környezethez kösse, amelyből meghibásodás esetén kiszámítható módon rekonstruálható.
 
-Egy olyan üzleti folyamat esetében, amelyben több üzenet érkezik az egyes alkalmazási környezetek kezelésére, a *MessageID* az alkalmazás szintű környezet azonosítójának, például a beszerzési rendelés számának és az üzenet tárgyának (például **12345.2017/fizetés**) összetett része lehet.
+Olyan üzleti folyamatok esetén, amelyekben egy alkalmazáskörnyezet kezelése során több üzenetet küld a rendszer, a *MessageId* lehet az alkalmazásszintű környezeti azonosító, például egy rendelési szám, valamint az üzenet tárgya, például **12345.2017/payment.**
 
-A *MessageID* mindig lehet egy GUID-azonosító, de az azonosító az üzleti folyamathoz való rögzítése a kiszámítható ismételhetőséget eredményezi, amely a duplikált észlelési funkció hatékony használatához szükséges.
-
-> [!IMPORTANT]
->- Ha a **particionálás** **engedélyezve** van, `MessageId+PartitionKey` az egyediség megállapítására szolgál. Ha a munkamenetek engedélyezve vannak, a partíciós kulcsnak és a munkamenet-AZONOSÍTÓnak azonosnak kell lennie. 
->- Ha a **particionálás** **le van tiltva** (alapértelmezett), `MessageId` a rendszer csak az egyediség meghatározására szolgál.
->- A munkamenet-azonosítóval, a PartitionKey és a MessageId kapcsolatos további információkért lásd: [partíciós kulcsok használata](service-bus-partitioning.md#use-of-partition-keys).
->- A [Premier szintű](service-bus-premium-messaging.md) csomag nem támogatja a particionálást, ezért javasoljuk, hogy egyedi üzenet-azonosítókat használjon az alkalmazásokban, és ne támaszkodjon a partíciós kulcsokra a duplikált észleléshez. 
-
-
-## <a name="enable-duplicate-detection"></a>Ismétlődő észlelés engedélyezése
-
-A portálon a funkció be van kapcsolva az entitások létrehozásakor a **duplikált észlelés engedélyezése** jelölőnégyzettel, amely alapértelmezés szerint ki van kapcsolva. Az új témakörök létrehozásának beállítása egyenértékű.
-
-![A várólista létrehozása párbeszédpanel képernyőképe a duplikált észlelés engedélyezése lehetőség kiválasztásával, és piros színnel.][1]
+A *MessageId* mindig lehet némi GUID azonosító, de az azonosító üzleti folyamathoz való rögzítése kiszámítható ismételhetőséget eredményez, amely a duplikált észlelési funkció hatékony használatához szükséges.
 
 > [!IMPORTANT]
-> A várólista létrehozása után nem engedélyezheti vagy tilthatja le az ismétlődő észlelést. Ezt csak a várólista létrehozásakor teheti meg. 
+>- Ha **a particionálás** **engedélyezve van,** a az `MessageId+PartitionKey` egyediség meghatározására használható. Ha a munkamenetek engedélyezve vannak, a partíciókulcsnak és a munkamenet-azonosítónak azonosnak kell lennie. 
+>- Ha **a particionálás** **le van tiltva** (alapértelmezett), csak `MessageId` az egyediség meghatározására használható.
+>- A SessionId, PartitionKey és MessageId adatokkal kapcsolatos információkért lásd: [Partíciókulcsok használata.](service-bus-partitioning.md#use-of-partition-keys)
+>- A [premier szintű csomag](service-bus-premium-messaging.md) nem támogatja a particionálást, ezért javasoljuk, hogy egyedi üzenet-azonosítókat használjon az alkalmazásokban, és ne használjon partíciókulcsokat a duplikált üzenetek észleléséhez. 
 
-Programozott módon beállíthatja a jelzőt a [QueueDescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) tulajdonsággal a teljes keretrendszer .NET API-ban. A Azure Resource Manager API-val az érték a [queueProperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonsággal van beállítva.
 
-A duplikált észlelési időelőzmények alapértelmezés szerint 10 percet vesznek igénybe a várólisták és a témakörök esetében, és a minimális érték 20 másodperc, a maximális érték 7 nap. Ezt a beállítást a Azure Portal üzenetsor és témakör tulajdonságai ablakában módosíthatja.
+## <a name="enable-duplicate-detection"></a>Ismétlődések észlelésének engedélyezése
 
-![Képernyőkép a Service Bus funkcióról a Kiemelt tulajdonságok beállítással, valamint a pirosban megjelenő duplikált észlelési előzmények lehetőséggel.][2]
+A duplikált üzenetek észlelésének engedélyezése mellett a duplikált észlelési előzmények időablakának méretét is beállíthatja, amely alatt a rendszer megőrzi az üzenetazonosítókat.
+Ez az érték alapértelmezés szerint 10 perc az üzenetsorok és témakörök esetén, és a minimális érték 20 másodperc, de legfeljebb 7 nap.
 
-Programozott módon beállíthatja a duplikált észlelési ablak méretét, amely során az üzenetsor-azonosítók megmaradnak, a [QueueDescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) tulajdonságot pedig a teljes .NET-keretrendszer API-val. A Azure Resource Manager API-val az érték a [queueProperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonsággal van beállítva.
+A duplikált üzenetek észlelésének engedélyezése és az ablak mérete közvetlenül befolyásolja az üzenetsor (és a témakör) átviteli sebességét, mivel az összes rögzített üzenetazonosítót az újonnan elküldött üzenetazonosítóval kell egyezni.
 
-A duplikált észlelés engedélyezése és az ablak mérete közvetlenül befolyásolja a várólista (és a témakör) átviteli sebességét, mivel az összes rögzített üzenet azonosítójának meg kell egyeznie az újonnan küldött üzenet azonosítójával.
+Ha az ablakot kicsiben tartja, kevesebb üzenetazonosítót kell megőriznie és egyeznie, és az átviteli sebességet kisebb hatással van. A duplikált észlelést igénylő nagy átviteli sebességű entitások esetén érdemes a lehető legkisebb méretűre tartani az ablakot.
 
-A kis ablak megtartása azt jelenti, hogy kevesebb üzenet-azonosítót kell megőrizni és egyeztetni, és az átviteli sebesség kevesebbre van hatással. Az ismétlődő észlelést igénylő nagy átviteli sebességű entitások esetén a lehető legkisebbre kell tartani az ablakot.
+### <a name="using-the-portal"></a>A portállal
+
+A portálon az entitás létrehozása során a duplikátálásészlelési funkció be van kapcsolva az **Ismétlődések** észlelésének engedélyezése jelölőnégyzet bejelölve, amely alapértelmezés szerint ki van kapcsolva. Az új témakörök létrehozására vonatkozó beállítás egyenértékű.
+
+![Képernyőkép az Üzenetsor létrehozása párbeszédpanelről, az Ismétlődések észlelésének engedélyezése lehetőség kijelölve és piros színre jelölve.][1]
+
+> [!IMPORTANT]
+> Az üzenetsor létrehozása után nem engedélyezheti vagy tilthatja le az ismétlődések észlelését. Ezt csak az üzenetsor létrehozásakor lehet megtenni. 
+
+A duplikált észlelési előzmények időablaka az üzenetsor és témakör tulajdonságai ablakban módosítható a Azure Portal.
+
+![Képernyőkép a Service Bus funkcióról, kiemelt Tulajdonságok beállítással és pirossal kiemelt Ismétlődésészlelési előzmények lehetőséggel.][2]
+
+### <a name="using-sdks"></a>SDK-k használata
+
+Bármelyik .NET-, Java-, JavaScript-, Python- és Go-alapú SZOFTVERDK-unkat használhatja az ismétlődő észlelési funkció engedélyezéséhez üzenetsorok és témakörök létrehozásakor. Módosíthatja a duplikált észlelési előzmények időablakát is.
+Az ehhez szükséges üzenetsorok és témakörök létrehozásakor frissítenünk kell a tulajdonságokat:
+- `RequiresDuplicateDetection`
+- `DuplicateDetectionHistoryTimeWindow`
+
+Vegye figyelembe, hogy bár a tulajdonságnevek itt a casing szövegben vannak megszabadulva, a JavaScript- és Python-ALAPÚ ADK-k a camel casing és a casing tulajdonságot fogják használni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
+Az üzenetkezelésről Service Bus alábbi témakörökben olvashat bővebben:
 
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-Olyan esetekben, amikor az ügyfél kódja nem tud újra elküldeni egy üzenetet ugyanazzal a *MessageID* , mint korábban, fontos, hogy megtervezze a biztonságosan újrafeldolgozható üzeneteket. Ez a [blogbejegyzés a idempotence kapcsolatos](https://particular.net/blog/what-does-idempotent-mean) különféle technikákat ismerteti.
+Olyan forgatókönyvekben, ahol az ügyfélkód nem tud újraküldeni egy üzenetet ugyanazokkal az *üzenetazonosítóval,* mint korábban, fontos a biztonságosan újrafeldolgozható üzenetek tervezése. Ez [az idempotenciával](https://particular.net/blog/what-does-idempotent-mean) kapcsolatos blogbejegyzés ennek különböző módszereit ismerteti.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png
