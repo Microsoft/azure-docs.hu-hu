@@ -1,34 +1,34 @@
 ---
-title: Adatok betöltése a Azure Data Lake Storageból
-description: A MÁSOLÁSi utasítással adatok tölthetők be a Azure Data Lake Storageból a dedikált SQL-készletekbe.
+title: Oktatóanyag adatok betöltése a Azure Data Lake Storage
+description: A COPY utasítással töltse be az adatokat a Azure Data Lake Storage SQL-készletekhez.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ca57c6200cf7006a89be4b1fd621974559e5b514
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16f95a86169be04eba202b311fc4437b204ec8b3
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606123"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566528"
 ---
-# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Adatok betöltése a Azure Data Lake Storageból dedikált SQL-készletekbe az Azure szinapszis Analyticsben
+# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Adatok betöltése Azure Data Lake Storage sql-készletekbe a Azure Synapse Analytics
 
-Ez az útmutató ismerteti, hogyan tölthetők be az adatok a Azure Data Lake Storageból a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával. Ha gyors példákat kíván használni a MÁSOLÁSi utasítás használatával az összes hitelesítési módszer esetében, látogasson el a következő dokumentációba: [adatok biztonságos betöltése DEDIKÁLT SQL-készletek használatával](./quickstart-bulk-load-copy-tsql-examples.md).
+Ez az útmutató azt ismerteti, hogyan használható a [COPY utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) adatok betöltésére a Azure Data Lake Storage. A COPY utasításnak az összes hitelesítési módszerre való használatával kapcsolatos gyors példákért látogasson el a következő dokumentációra: Adatok biztonságos betöltése [dedikált SQL-készletekkel.](./quickstart-bulk-load-copy-tsql-examples.md)
 
 > [!NOTE]  
-> Ha visszajelzést vagy jelentést szeretne küldeni a COPY utasításban, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
+> Ha visszajelzést szeretne küldeni vagy problémákat szeretne jelenteni a COPY utasítással kapcsolatban, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
-> * Hozza létre a cél táblát az adatok Azure Data Lake Storageból való betöltéséhez.
-> * Hozza létre a MÁSOLÁSi utasítást az adatok adattárházba való betöltéséhez.
+> * Hozza létre a céltáblát az adatok betöltéséhez a Azure Data Lake Storage.
+> * Hozza létre a COPY utasítást az adatok adattárházba való betöltéséhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -36,14 +36,14 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját.
 
-Az oktatóanyag futtatásához a következőkre lesz szüksége:
+Az oktatóanyag futtatásához a következőre lesz szüksége:
 
-* Egy dedikált SQL-készlet. Lásd: [DEDIKÁLT SQL-készlet létrehozása és a lekérdezési adat](create-data-warehouse-portal.md).
-* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, a közös hozzáférésű aláírás (SAS) kulcsa, az Azure Directory alkalmazás felhasználója vagy egy olyan HRE-felhasználó, amely rendelkezik a megfelelő Azure-szerepkörrel a Storage-fiókhoz.
+* Dedikált SQL-készlet. Lásd: [Dedikált SQL-készlet létrehozása és adatok lekérdezése.](create-data-warehouse-portal.md)
+* Egy Data Lake Storage fiók. Lásd: [Első lépések a Azure Data Lake Storage.](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Ehhez a tárfiókhoz be kell állítania vagy meg kell adnia a következő hitelesítő adatok egyikét: Egy tárfiókkulcs, közös hozzáférésű jogosultság jogosultsága (SAS-) kulcs, Egy Azure Directory-alkalmazásfelhasználó vagy egy AAD-felhasználó, amely a tárfiókhoz megfelelő Azure-szerepkörsel rendelkezik.
 
 ## <a name="create-the-target-table"></a>A céltábla létrehozása
 
-Kapcsolódjon a dedikált SQL-készlethez, és hozza létre a cél táblát, amelyet be szeretne tölteni. Ebben a példában egy cikkdimenzió-táblázatot hozunk létre.
+Csatlakozzon a dedikált SQL-készlethez, és hozza létre azt a céltáblát, amelybe be fogja tölteni. Ebben a példában egy termékdimenzió-táblát hozunk létre.
 
 ```sql
 -- A: Create the target table
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>A COPY utasítás létrehozása
 
-Kapcsolódjon az SQL dedikált készletéhez, és futtassa a COPY utasítást. A példák teljes listáját a következő dokumentációban tekintheti meg: [biztonságos adattárolás DEDIKÁLT SQL-készletek használatával](./quickstart-bulk-load-copy-tsql-examples.md).
+Csatlakozzon a dedikált SQL-készlethez, és futtassa a COPY utasítást. A példák teljes listáját a következő dokumentációban találhatja meg: Adatok biztonságos betöltése [dedikált SQL-készletekkel.](./quickstart-bulk-load-copy-tsql-examples.md)
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -104,9 +104,9 @@ WITH
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
 
-Alapértelmezés szerint a táblák fürtözött oszlopcentrikus-indexként vannak meghatározva. A betöltés befejeződése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve a oszlopcentrikus.  Ennek számos oka lehet. További információ: [oszlopcentrikus indexek kezelése](sql-data-warehouse-tables-index.md).
+Alapértelmezés szerint a táblák fürtözött oszlopcentrikus indexként vannak definiálva. A betöltés befejezése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve az oszloptárba.  Ennek számos oka lehet. További információ: [Oszlopcentrikus indexek kezelése.](sql-data-warehouse-tables-index.md)
 
-A lekérdezés teljesítményének és a oszlopcentrikus a terhelés utáni tömörítésének optimalizálásához építse újra a táblázatot a oszlopcentrikus index kikényszerítéséhez az összes sor tömörítéséhez.
+A lekérdezési teljesítmény és az oszlopcentrikus tömörítés terhelés utáni optimalizálásához építse újra a táblát, hogy az oszlopcentrikus index az összes sort tömörítse.
 
 ```sql
 
@@ -116,23 +116,23 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ## <a name="optimize-statistics"></a>Statisztikák optimalizálása
 
-A legjobb, ha egy terhelés után azonnal létrehoz egy egyoszlopos statisztikát. Néhány statisztikai lehetőség is rendelkezésre áll. Ha például egyoszlopos statisztikát hoz létre minden egyes oszlophoz, akkor hosszú időt vehet igénybe az összes statisztika újraépítéséhez. Ha tudja, hogy bizonyos oszlopok nem szerepelnek a lekérdezési predikátumokban, kihagyhatja ezeket az oszlopokat a statisztikák létrehozásával.
+A legjobb egyoszlopos statisztikákat közvetlenül a betöltés után létrehozni. A statisztikákhoz több lehetőség is rendelkezésre áll. Ha például minden oszlophoz egyoszlopos statisztikákat hoz létre, az összes statisztika újraépítése hosszú időt is vegyen majd át. Ha tudja, hogy bizonyos oszlopok nem lesznek a lekérdezési predikátumban, kihagyhatja az oszlopok statisztikáinak létrehozását.
 
-Ha úgy dönt, hogy egyoszlopos statisztikát hoz létre minden táblázat minden oszlopához, használhatja a statisztikai cikk tárolt eljárás kódja mintáját `prc_sqldw_create_stats` . [](sql-data-warehouse-tables-statistics.md)
+Ha úgy dönt, hogy minden tábla minden oszlopához egyoszlopos statisztikákat hoz létre, használhatja a tárolt eljárás kódmintáját a `prc_sqldw_create_stats` [statisztikai cikkben.](sql-data-warehouse-tables-statistics.md)
 
-Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyoszlopos statisztikát hoz létre a dimenzió tábla minden egyes oszlopán, valamint a táblák egyes összekapcsolási oszlopaiban. Később is hozzáadhat egy vagy több oszlopos statisztikát más táblák oszlopaihoz.
+Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyoszlopos statisztikákat hoz létre a dimenziótábla minden egyes oszlopához, valamint a ténytáblák minden egyes egymáshoz csatlakozó oszlopához. Később mindig hozzáadhat egy- vagy többoszlopos statisztikákat más ténytábla-oszlopokhoz.
 
-## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
+## <a name="achievement-unlocked"></a>Eredmény feloldva!
 
-Sikeresen betöltötte az adatait az adattárházba. Remek!
+Sikeresen betöltötte az adatokat az adattárházba. Remek!
 
 ## <a name="next-steps"></a>Következő lépések
-Az adatraktár-megoldás az Azure szinapszis Analytics használatával történő fejlesztésének első lépése az adatgyűjtés. Tekintse meg fejlesztési erőforrásait.
+Az adatok betöltése az első lépés az adattárház-megoldások fejlesztéséhez a Azure Synapse Analytics. Tekintse meg a fejlesztési forrásainkat.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan fejleszthet táblázatokat az adattárházak számára](sql-data-warehouse-tables-overview.md)
+> [Megtudhatja, hogyan fejleszthet táblákat az adatraktározáshoz](sql-data-warehouse-tables-overview.md)
 
-További példákat és referenciákat a következő dokumentációban talál:
-- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+További betöltési példákért és hivatkozásokért tekintse meg a következő dokumentációt:
+- [A COPY utasítás referenciadokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Példák másolása az egyes hitelesítési módszerekhez](./quickstart-bulk-load-copy-tsql-examples.md)
-- [Rövid útmutató másolása egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)
+- [COPY rövid útmutató egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)

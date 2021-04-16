@@ -1,23 +1,23 @@
 ---
-title: A FHIR Azure API-ra vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
-description: Felsorolja Azure Policy az Azure API FHIR-hoz elérhető megfelelőségi szabályozásait. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 03/31/2021
+title: Azure Policy megfelelőségi vezérlők a Azure API for FHIR
+description: A Azure Policy megfelelőségi vezérlőinek listáját Azure API for FHIR. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: sample
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bbc3f8f8dc8183d2c1daf57f92d0170f0490c62c
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d580ad091ef13720f15b4a96a285e83701f128fa
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093834"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505452"
 ---
-# <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>A FHIR Azure API-ra vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>Azure Policy megfelelőségi vezérlők a Azure API for FHIR
 
-A [Azure Policy szabályozási megfelelősége](../../governance/policy/concepts/regulatory-compliance.md) biztosítja a Microsoft által létrehozott és felügyelt kezdeményezési definíciókat, amelyek a különböző megfelelőségi szabványokhoz kapcsolódó **megfelelőségi tartományokhoz** és **biztonsági ellenőrzésekhez** _készültek_. Ez a lap felsorolja a **megfelelőségi tartományokat** és az Azure API FHIR-hoz készült **biztonsági vezérlőit** . A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelheti ahhoz, hogy az Azure-erőforrások megfeleljenek az adott szabványnak.
+[A megfelelőségi Azure Policy](../../governance/policy/concepts/regulatory-compliance.md) a Microsoft által létrehozott és felügyelt kezdeményezési definíciókat (más néven  beépítetteket) biztosít a különböző megfelelőségi szabványokhoz kapcsolódó megfelelőségi tartományokhoz és biztonsági vezérlőkhöz.  Ezen a lapon a felhasználók **megfelelőségi tartománya** **és** biztonsági vezérlői Azure API for FHIR. A beépített biztonsági vezérlőket egyenként  is hozzárendelheti, hogy az Azure-erőforrások megfeleljenek az adott szabványnak.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../../includes/policy/standards/intro-warning.md)]
 
@@ -25,5 +25,5 @@ A [Azure Policy szabályozási megfelelősége](../../governance/policy/concepts
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure Policy szabályozási megfelelőségről](../../governance/policy/concepts/regulatory-compliance.md).
+- További információ a jogszabályi [Azure Policy való megfelelésről.](../../governance/policy/concepts/regulatory-compliance.md)
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

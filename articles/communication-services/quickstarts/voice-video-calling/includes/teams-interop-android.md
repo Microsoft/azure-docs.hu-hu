@@ -1,29 +1,29 @@
 ---
-title: Gyors útmutató – csapatoknak szóló értekezlet csatlakoztatása Android-alkalmazásból
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat a Teams Meeting szolgáltatáshoz az Androidhoz készült Azure kommunikációs szolgáltatások Meghívási SDK-val
+title: Rövid útmutató – Csatlakozás Teams-értekezlethez Android-alkalmazásból
+description: Ez az oktatóanyag bemutatja, hogyan csatlakozhat Teams-értekezlethez az Androidhoz készült Azure Communication Services Calling SDK használatával
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e5361b92c2080c724b872be2ad27bc5bd4554e8d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af1794a2f9eeaa1b1de2c62d5131c722dfd152a5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108185"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564446"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat egy Teams Meeting szolgáltatáshoz az Androidhoz készült Azure kommunikációs szolgáltatások Meghívási SDK-val.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat Teams-értekezlethez az Androidhoz készült Azure Communication Services SDK hívásával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy működő [kommunikációs szolgáltatás, amely Android-alkalmazást hív](../getting-started-with-calling.md)meg.
-- [Csapatok üzembe helyezése](/deployoffice/teams-install).
+- Egy működő [Communication Services, amely androidos alkalmazást hív meg.](../getting-started-with-calling.md)
+- Egy [Teams-üzemelő példány.](/deployoffice/teams-install)
 
 
-## <a name="add-the-teams-ui-controls"></a>A csapatok felhasználói felületi vezérlőinek hozzáadása
+## <a name="add-the-teams-ui-controls"></a>A Teams felhasználói felület vezérlőinek hozzáadása
 
-Az alábbi kódrészlettel cserélje le a activity_main.xml kódot. A rendszer a Teams Meeting-környezet megadására fogja használni a szövegmezőt, és a gomb a megadott értekezlethez való csatlakozáshoz használható:
+Cserélje le a kód activity_main.xml a következő kódrészletre. A szövegmezőben megadhatja a Teams-értekezlet környezetét, és a gomb használatával csatlakozhat a megadott értekezlethez:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -91,9 +91,9 @@ Az alábbi kódrészlettel cserélje le a activity_main.xml kódot. A rendszer a
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>A csapatok felhasználói felületének vezérlésének engedélyezése
+## <a name="enable-the-teams-ui-controls"></a>A Teams felhasználói felületi vezérlőinek engedélyezése
 
-Cserélje le a tartalmát a `MainActivity.java` következő kódrészletre:
+Cserélje le a tartalmát `MainActivity.java` a következő kódrészletre:
 
 ```java
 
@@ -251,15 +251,15 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-## <a name="get-the-teams-meeting-link"></a>A Teams Meeting-hivatkozás beszerzése
+## <a name="get-the-teams-meeting-link"></a>A Teams-értekezlet hivatkozásának lehívása
 
-A Teams Meeting hivatkozás a Graph API-k használatával kérhető le. Ez részletesen szerepel a [Graph dokumentációjában](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-A kommunikációs szolgáltatások meghívója SDK egy teljes csapatot tárgyaló hivatkozást fogad el. Ezt a hivatkozást a `onlineMeeting` [ `joinWebUrl` tulajdonság](/graph/api/resources/onlinemeeting?view=graph-rest-beta)alatt elérhető erőforrás részeként adja vissza a rendszer. A szükséges értekezlet-információkat a **JOIN Meeting** URL-címében is lekérheti a csapatok Értekezletének meghívásához.
+A Teams-értekezlet hivatkozása a Graph API-k használatával olvasható be. Ennek részletes leírását a [Graph dokumentációja tartalmazza.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)
+A Communication Services hívó SDK egy teljes Teams-értekezlethivatkozást fogad el. Ez a hivatkozás az erőforrás részeként lesz `onlineMeeting` visszaadva, amely a tulajdonság alatt [ `joinWebUrl` érhető el.](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) A szükséges értekezletadatokat a Teams-értekezlet meghívásának Csatlakozás  URL-címében is lekérte.
 
-## <a name="launch-the-app-and-join-teams-meeting"></a>Indítsa el az alkalmazást, és csatlakozzon a csapatok Értekezletéhez
+## <a name="launch-the-app-and-join-teams-meeting"></a>Indítsa el az alkalmazást, és csatlakozzon a Teams-értekezlethez
 
-Az alkalmazás mostantól az eszköztár Run app (alkalmazás futtatása) gombjával (Shift + F10) indítható el. A következőnek kell megjelennie:
+Az alkalmazás mostantól elindítható az eszköztár "Alkalmazás futtatása" gombjával (Shift+F10). A következőnek kell megjelennie:
 
-:::image type="content" source="../media/android/acs-join-teams-meeting-quickstart.png" alt-text="A befejezett alkalmazást bemutató képernyőkép.":::
+:::image type="content" source="../media/android/acs-join-teams-meeting-quickstart.png" alt-text="Képernyőkép a kész alkalmazásról.":::
 
-Szúrja be a csapatok környezetét a szövegmezőbe, majd nyomja meg a *Csatlakozás értekezlet* lehetőséget, hogy csatlakozzon a Teams Meeting szolgáltatáshoz a kommunikációs szolgáltatások alkalmazásán belülről.
+Szúrja be a Teams-környezetet a szövegmezőbe, majd a Csatlakozás az értekezlethez *gombra* lenyomva csatlakozzon a Teams-értekezlethez a Communication Services alkalmazásból.

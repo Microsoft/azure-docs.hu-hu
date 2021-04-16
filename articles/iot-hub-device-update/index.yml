@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Eszköz frissítése IoT Hub dokumentációhoz
-summary: Az IoT Hub eszköz frissítése olyan szolgáltatás, amely lehetővé teszi, hogy a IoT-eszközökön keresztül telepítsen over-the-Air (OTA) frissítéseket.
+title: Eszközfrissítés IoT Hub dokumentációja
+summary: Az eszközfrissítési IoT Hub egy olyan szolgáltatás, amely lehetővé teszi vezeték nélküli frissítések (OTA) üzembe helyezését az IoT-eszközökön.
 metadata:
-  title: Eszköz frissítése IoT Hub dokumentációhoz
-  description: Az IoT Hub eszköz frissítése olyan szolgáltatás, amely lehetővé teszi, hogy a IoT-eszközökön keresztül telepítsen over-the-Air (OTA) frissítéseket.
+  title: Eszközfrissítés IoT Hub dokumentációja
+  description: Az eszközfrissítési IoT Hub egy olyan szolgáltatás, amely lehetővé teszi vezeték nélküli frissítések (OTA) üzembe helyezését az IoT-eszközökön.
   services: iot-hub
   ms.service: iot-hub
   ms.topic: landing-page
@@ -11,62 +11,62 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 8943e22428d6f510b374ef31938257ec08a0dff6
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 9fd99eeefcae6667dfcc9a11c7d623f5d213ffac
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
   ms.translationtype: MT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/13/2021
-  ms.locfileid: "107312093"
+  ms.locfileid: "107377819"
 landingContent:
-- title: Az eszköz frissítése
+- title: Az eszközfrissítésről
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az IoT Hub eszköz frissítése?
+    - text: Mi az eszközfrissítés a IoT Hub?
       url: understand-device-update.md
 - title: Tudjon meg többet
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Eszköz-frissítési fiók létrehozása
+    - text: Eszközfrissítési fiók létrehozása
       url: create-device-update-account.md
-    - text: Eszköz frissítésének kiépítés az Azure IoT Hub Agenthez
+    - text: Eszközfrissítési ügynök kiépítése
       url: device-update-agent-provisioning.md
     - text: Frissítés importálása
       url: import-update.md
     - text: Frissítési csoport létrehozása
       url: create-update-group.md
-    - text: Frissítés központi telepítése
+    - text: Frissítés üzembe helyezése
       url: deploy-update.md
   - linkListType: concept
     links:
-    - text: Az eszköz frissítésének módja Plug and Play
+    - text: Hogyan használja az eszközfrissítés a Plug and Play
       url: device-update-plug-and-play.md
-    - text: Az eszköz frissítési hitelesítésének és engedélyezésének ismertetése
+    - text: Az eszközfrissítések hitelesítésének és engedélyezésének a használata
       url: device-update-control-access.md
-    - text: Az eszköz frissítési ügynökének ismertetése
+    - text: Az eszközfrissítési ügynök
       url: device-update-agent-overview.md
-    - text: Az eszköz frissítésének értelmezése
+    - text: Az eszközfrissítések importálásának a tudomása
       url: import-concepts.md
-    - text: Az eszköz frissítési csoportjainak ismertetése
+    - text: Az eszközfrissítési csoportok
       url: device-update-groups.md
 - title: Fejlesztői útmutató
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Az eszköz frissítési ügynökének összeállítása és futtatása
+    - text: Eszközfrissítési ügynök létrehozása és futtatása
       url: device-update-agent-provisioning.md#how-to-build-and-run-device-update-agent
 - title: Bevezetés
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Eszköz frissítése szimulátoron
+    - text: Eszközfrissítés szimulátoron
       url: device-update-simulator.md
-    - text: Eszköz frissítése a málna PI-ban
+    - text: Eszközfrissítés a Raspberry Pi-on
       url: device-update-raspberry-pi.md
-    - text: Eszköz frissítése Ubuntu Server 18,04 x64 Package Agent-ügynökön
+    - text: Eszközfrissítés az Ubuntu Server 18.04 x64 csomagügynökön
       url: device-update-ubuntu-agent.md
-- title: API-és SDK-dokumentáció
+- title: API- és SDK-referencia
   linkLists:
   - linkListType: reference
     links:
@@ -74,9 +74,9 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/deviceupdate/
   - linkListType: reference
     links:
-    - text: Vezérlő síkja – .NET
+    - text: Vezérlősík – .NET
       url: https://docs.microsoft.com/dotnet/api/overview/azure/iot/management?view=azure-dotnet
-    - text: Vezérlő síkja – Python
+    - text: Vezérlősík – Python
       url: https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/?view=azure-python
   - linkListType: reference
     links:

@@ -1,28 +1,31 @@
 ---
-title: 'Gyors útmutató: webes forgalom irányítása Resource Manager-sablonnal'
+title: 'Rövid útmutató: Webes forgalom közvetlen használata Resource Manager sablonnal'
 titleSuffix: Azure Application Gateway
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használható egy Resource Manager-sablon egy olyan Azure-Application Gateway létrehozásához, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Resource Manager-sablont olyan Azure Application Gateway, amely a webes forgalmat egy háttérkészletben lévő virtuális gépekre irányítja.
 services: application-gateway
 author: vhorne
-ms.service: application-gateway
-ms.topic: quickstart
-ms.date: 01/20/2021
 ms.author: victorh
-ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 05e7cd8d7018759a3c8670a610b4c98ac0a86a7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/20/2021
+ms.topic: quickstart
+ms.service: application-gateway
+ms.custom:
+- mvc
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: dd100361ba5d4ff175e340ced782999e52c720c4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660055"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538433"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-ARM sablonnal
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Rövid útmutató: Webes forgalom Azure Application Gateway – ARM-sablon
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy Azure-Application Gateway létrehozásához. Ezt követően tesztelje az Application Gatewayt, hogy megfelelően működjön.
+Ebben a rövid útmutatóban egy Azure Resource Manager (ARM-sablon) használatával fog létrehozni egy Azure Application Gateway. Ezután tesztelje az Alkalmazásátjárót, hogy ellenőrizze, megfelelően működik-e.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ezt a rövid útmutatót a [Azure Portal](quick-create-portal.md), a [Azure PowerShell](quick-create-powershell.md)vagy az [Azure CLI](quick-create-cli.md)használatával is elvégezheti.
+Ezt a rövid útmutatót a következő használatával [](quick-create-powershell.md)is Azure Portal: , [Azure PowerShell](quick-create-portal.md)vagy [Azure CLI](quick-create-cli.md)használatával.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,56 +35,56 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az egyszerűség kedvéért ez a sablon egy egyszerű telepítőt hoz létre egy nyilvános előtér-IP-címmel, egy alapszintű figyelőt, amely egyetlen helyet üzemeltet az Application gatewayben, egy alapszintű kérelem-útválasztási szabályt és két virtuális gépet a háttér-készletben.
+Az egyszerűség kedvéért ez a sablon egy egyszerű beállítást hoz létre egy nyilvános előtere IP-címmel, egy alapszintű listenerrel, amely egyetlen helyet kezel az alkalmazásátjárón, egy egyszerű kérés-útválasztási szabályt és két virtuális gépet a háttérkészletben.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/ag-docs-qs/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure gyorsindítási sablonokból származó](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json":::
 
-Több Azure-erőforrás van definiálva a sablonban:
+A sablonban több Azure-erőforrás is definiálva van:
 
-- [**Microsoft. Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
-- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses) : egy az Application Gateway számára, és kettő a virtuális gépek számára.
-- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft. számítási/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : két virtuális gép
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : kettő a virtuális gépekhez
-- [**Microsoft. számítás/virtualMachine/bővítmények**](/azure/templates/microsoft.compute/virtualmachines/extensions) : az IIS és a weblapok konfigurálásához
+- [**Microsoft.Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
+- [**Microsoft.Network/publicIPAddresses: egy**](/azure/templates/microsoft.network/publicipaddresses) az alkalmazásátjáróhoz és kettő a virtuális gépekhez.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines:**](/azure/templates/microsoft.compute/virtualmachines) két virtuális gép
+- [**Microsoft.Network/networkInterfaces:**](/azure/templates/microsoft.network/networkinterfaces) kettő a virtuális gépekhez
+- [**Microsoft.Compute/virtualMachine/extensions:**](/azure/templates/microsoft.compute/virtualmachines/extensions) az IIS és a weblapok konfigurálása
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Az ARM-sablon üzembe helyezése az Azure-ban:
 
-1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Application Gateway-t, a hálózati infrastruktúrát és két virtuális gépet az IIS-t futtató háttér-készletben.
+1. Az **Azure-ba való bejelentkezéshez** és a sablon megnyitásához válassza az Üzembe helyezés az Azure-ban lehetőséget. A sablon létrehoz egy Alkalmazásátjárót, a hálózati infrastruktúrát és két virtuális gépet az IIS-t futtató háttérkészletben.
 
    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
-2. Válassza ki vagy hozza létre az erőforráscsoportot, írja be a virtuális gép rendszergazdájának felhasználónevét és jelszavát.
-3. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget.
+2. Válassza ki vagy hozza létre az erőforráscsoportot, majd írja be a virtuális gép rendszergazdai felhasználónevét és jelszavát.
+3. Válassza **az Áttekintés + létrehozás,** majd a Létrehozás **lehetőséget.**
 
    Az üzembe helyezés akár 20 percet vagy hosszabb időt is igénybe vehet.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozásához, az telepítve van annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
+Bár az IIS nem szükséges az Alkalmazásátjáró létrehozásához, telepítve van annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az alkalmazásátjárót. Használja az IIS-t az Application Gateway tesztelésére:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás** lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
-3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.
+1. Keresse meg az Alkalmazásátjáró nyilvános IP-címét az **Áttekintés lapon.** ![ Rögzítse az Application Gateway nyilvános IP-címét Vagy válassza a Minden erőforrás lehetőséget, írja be a ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) *myAGPublicIPAddress* címet a keresőmezőbe, majd válassza ki a keresési eredmények között.  Az Azure az Áttekintés oldalon jeleníti meg a nyilvános **IP-címet.**
+2. Másolja ki a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím tallózáshoz.
+3. Ellenőrizze a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e csatlakozni a háttérkiszolgálóhoz.
 
    ![Az alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-   Többször is frissítse a böngészőt, és látnia kell a myVM1 és a myVM2 kapcsolatait.
+   Frissítse többször a böngészőt, és látnia kell a myVM1 és a myVM2 kapcsolatát.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja az Application Gatewayt és az összes kapcsolódó erőforrást.
+Ha már nincs szüksége az Alkalmazásátjáróval létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja az Application Gatewayt és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>

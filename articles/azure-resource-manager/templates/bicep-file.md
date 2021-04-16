@@ -1,24 +1,24 @@
 ---
-title: A bicep fájl szerkezete és szintaxisa
-description: Leírja egy bicep-fájl felépítését és tulajdonságait a deklaratív szintaxis használatával.
+title: Bicep-fájlstruktúra és szintaxis
+description: Deklaratív szintaxissal ismerteti a Bicep-fájlok szerkezetét és tulajdonságait.
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168688"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537854"
 ---
-# <a name="understand-the-structure-and-syntax-of-bicep-files"></a>A bicep-fájlok szerkezetének és szintaxisának megismerése
+# <a name="understand-the-structure-and-syntax-of-bicep-files"></a>A Bicep-fájlok struktúrája és szintaxisa
 
-Ez a cikk a bicep-fájlok szerkezetét ismerteti. Bemutatja a fájl különböző részeit és az ezekben a részekben elérhető tulajdonságokat.
+Ez a cikk a Bicep-fájlok struktúráját ismerteti. Bemutatja a fájl különböző szakaszait és a szakaszokban elérhető tulajdonságokat.
 
-Ez a cikk olyan felhasználók számára készült, akik jól ismerik a bicep-fájlokat. Részletes információkat tartalmaz a sablon struktúrájáról. A bicep-fájlok létrehozásának folyamatán alapuló lépésenkénti oktatóanyagért lásd [: oktatóanyag: első Azure Resource Manager bicep-fájl létrehozása és központi telepítése](bicep-tutorial-create-first-bicep.md).
+Ez a cikk olyan felhasználóknak van szánva, akik ismerik a Bicep-fájlokat. Részletes információkat nyújt a sablon struktúrájáról. A Bicep-fájlok létrehozásának folyamatán végigvezető részletes oktatóanyagért lásd: Oktatóanyag: Első [bicep-fájl](bicep-tutorial-create-first-bicep.md)létrehozása Azure Resource Manager telepítése.
 
 ## <a name="template-format"></a>Sablon formátuma
 
-A bicep-fájlok a következő elemeket tartalmazza. Az elemek tetszőleges sorrendben megjelenhetnek.
+A Bicep-fájlok a következő elemekből áll. Az elemek bármilyen sorrendben megjelenhetnek.
 
 ```bicep
 targetScope = '<scope>'
@@ -69,7 +69,7 @@ module <module-symbolic-name> '<path-to-file>' = [for <item> in <collection>: {
 output <output-name> <output-data-type> = <output-value>
 ```
 
-Az alábbi példa ezen elemek megvalósítását mutatja be.
+Az alábbi példa ezeknek az elemeknek az implementációját mutatja be.
 
 ```bicep
 @minLength(3)
@@ -104,35 +104,35 @@ module webModule './webApp.bicep' = {
 output storageEndpoint object = stg.properties.primaryEndpoints
 ```
 
-## <a name="target-scope"></a>Cél hatóköre
+## <a name="target-scope"></a>Célhatókör
 
-Alapértelmezés szerint a célként megadott hatókör a következő: `resourceGroup` . Ha az erőforráscsoport szintjén végzi az üzembe helyezést, nem kell beállítania a cél hatókört a bicep fájlban.
+Alapértelmezés szerint a célhatókör a következőre van `resourceGroup` beállítva: . Ha az üzembe helyezés az erőforráscsoport szintjén történik, nem kell beállítania a célhatókört a Bicep-fájlban.
 
-Az engedélyezett értékek a következők:
+Az engedélyezett értékek a következőek:
 
-* **resourceGroup** – az [erőforráscsoport-telepítésekhez](deploy-to-resource-group.md)használt alapértelmezett érték.
-* **előfizetés** – előfizetés- [telepítésekhez](deploy-to-subscription.md)használatos.
-* **managementGroup** – [felügyeleti csoportok központi telepítéséhez](deploy-to-management-group.md)használatos.
-* **bérlő** – [bérlői telepítésekhez](deploy-to-tenant.md)használatos.
+* **resourceGroup** – alapértelmezett érték, amely [erőforráscsoportok üzembe helyezéséhez használatos.](deploy-to-resource-group.md)
+* **subscription** – előfizetések [üzembe helyezéséhez használatos.](deploy-to-subscription.md)
+* **managementGroup** – felügyeleti [csoportok központi telepítéséhez használatos.](deploy-to-management-group.md)
+* **tenant** – bérlői [üzemelő példányok esetén használatos.](deploy-to-tenant.md)
 
 ## <a name="parameters"></a>Paraméterek
 
-Paraméterek használata a különböző üzemelő példányokon eltérő értékekhez. Megadhat egy alapértelmezett értéket a paraméterhez, amelyet a rendszer akkor használ, ha nem ad meg értéket az üzembe helyezés során.
+Olyan értékekhez használjon paramétereket, amelyek eltérőek lehetnek a különböző üzemelő példányok esetén. Megadhatja az alapértelmezett értéket a paraméterhez, ha az üzembe helyezés során nem ad meg értéket.
 
-Előfordulhat például, hogy hozzáad egy SKU paramétert egy erőforrás különböző méretének megadásához. Az alapértelmezett érték létrehozásához használhatja a Template functions funkciót, például az erőforráscsoport helyének beolvasását.
+Hozzáadhat például egy termékváltozat-paramétert, amely különböző méreteket ad meg egy erőforráshoz. Az alapértelmezett érték létrehozásához sablonfunkciókat használhat, például lekértheti az erőforráscsoport helyét.
 
 ```bicep
 param storageSKU string = 'Standard_LRS'
 param location string = resourceGroup().location
 ```
 
-Az elérhető adattípusok esetében lásd: [adattípusok a sablonokban](data-types.md).
+Az elérhető adattípusokkal kapcsolatos információkért lásd: [Adattípusok sablonokban.](data-types.md)
 
-További információ: [paraméterek a sablonokban](template-parameters.md).
+További információ: [Paraméterek a sablonokban.](template-parameters.md)
 
-## <a name="parameter-decorators"></a>Paraméter-dekorációk
+## <a name="parameter-decorators"></a>Paraméterkorrekátorok
 
-Az egyes paraméterekhez hozzá lehet adni egy vagy több dekoratőr-t. Ezek a dekorációk határozzák meg a paraméter számára engedélyezett értékeket. A következő példa a bicep-fájllal üzembe helyezhető SKU-ket határozza meg.
+Minden paraméterhez hozzáadhat egy vagy több dekorátort. Ezek a dekorátorok határozzák meg a paraméter számára engedélyezett értékeket. Az alábbi példa a Bicep-fájlon keresztül üzembe helyezhető SKUS-okat adja meg.
 
 ```bicep
 @allowed([
@@ -144,36 +144,36 @@ Az egyes paraméterekhez hozzá lehet adni egy vagy több dekoratőr-t. Ezek a d
 param storageSKU string = 'Standard_LRS'
 ```
 
-A következő táblázat ismerteti a rendelkezésre álló dekoratőr-ket és azok használatát.
+Az alábbi táblázat ismerteti az elérhető dekorátorokat és azok használatát.
 
-| Decorator | Alkalmazás | Argumentum | Leírás |
+| Dekoratőr | Alkalmazás | Argumentum | Leírás |
 | --------- | ---- | ----------- | ------- |
-| futhat a háttérben | összes | array | A paraméter megengedett értékei. Ezzel a dekoratőr használatával gondoskodhat arról, hogy a felhasználó helyes értékeket biztosítson. |
-| leírás | összes | sztring | A paraméter használatát elmagyarázó szöveg A leírás a portálon keresztül jelenik meg a felhasználók számára. |
-| maxLength | tömb, karakterlánc | int | A karakterlánc és a tömb paramétereinek maximális hossza Az érték inkluzív. |
-| maxValue | int | int | Az egész szám paraméter maximális értéke. Ez az érték inkluzív. |
-| metaadatok | összes | object | A paraméterre alkalmazandó egyéni tulajdonságok. Tartalmazhat egy Description (Leírás) tulajdonságot, amely egyenértékű a leírási dekoratőr szolgáltatással. |
-| minLength | tömb, karakterlánc | int | A karakterlánc és a tömb paramétereinek minimális hossza. Az érték inkluzív. |
-| minValue | int | int | Az egész szám paraméter minimális értéke. Ez az érték inkluzív. |
-| biztonságos | karakterlánc, objektum | Nincs | A paramétert biztonságosként jelöli meg. A biztonságos paraméterek értékét a rendszer nem menti a telepítési előzményekbe, és nincs naplózva. További információ: [biztonságos karakterláncok és objektumok](data-types.md#secure-strings-and-objects). |
+| futhat a háttérben | összes | array | A paraméter megengedett értékei. Ezzel a dekorátorral biztosíthatja, hogy a felhasználó a megfelelő értékeket ad-e meg. |
+| leírás | összes | sztring | A paraméter használatát magyarázó szöveg. A leírás a portálon keresztül jelenik meg a felhasználók számára. |
+| Maxlength | tömb, sztring | int | A sztring- és tömbparaméterek maximális hossza. Az érték befogadó. |
+| maxValue (maximális érték) | int | int | Az egész szám paraméter maximális értéke. Ez az érték befogadó. |
+| metaadatok | összes | object | A paraméterre alkalmazandó egyéni tulajdonságok. A leírás-dekorátornak megfelelő description tulajdonságot is tartalmazhat. |
+| Minlength | tömb, sztring | int | A sztring- és tömbparaméterek minimális hossza. Az érték befogadó. |
+| minValue (minimális érték) | int | int | Az egész szám paraméter minimális értéke. Ez az érték befogadó. |
+| Biztonságos | sztring, objektum | Nincs | Biztonságosként jelöli meg a paramétert. A biztonságos paraméterek értékét a rendszer nem menti az üzembehelyhely helyezési előzményekbe, és nem naplózza. További információ: [Secure strings and objects (Biztonságos sztringek és objektumok).](data-types.md#secure-strings-and-objects) |
 
 ## <a name="variables"></a>Változók
 
-Használjon változókat a bicep fájlban ismétlődő összetett kifejezésekhez. Például hozzáadhat egy változót egy olyan erőforrás neveként, amely több érték összefűzésével jön létre.
+Használjon változókat a Bicep-fájlokban ismétlődő összetett kifejezésekhez. Hozzáadhat például egy változót egy erőforrásnévhez, amely több érték összeadása alapján áll össze.
 
 ```bicep
 var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 ```
 
-Nem adhat meg [adattípust](data-types.md) egy változóhoz. Ehelyett az adattípus az értékből van kikövetkeztetve.
+A változókhoz [nem kell](data-types.md) adattípust megadni. Ehelyett az adattípus az értékből van kikövetkeztetve.
 
-További információ: [változók a sablonokban](template-variables.md).
+További információ: [Változók a sablonokban.](template-variables.md)
 
 ## <a name="resource"></a>Erőforrás
 
-A `resource` kulcsszó használatával határozza meg az üzembe helyezni kívánt erőforrást. Az erőforrás-deklaráció tartalmazza az erőforrás szimbolikus nevét. Ezt a szimbolikus nevet fogja használni a bicep-fájl más részeiben, ha értéket kell kapnia az erőforrásból.
+Az `resource` kulcsszóval határozzon meg egy üzembe helyezni kívánt erőforrást. Az erőforrás-deklaráció tartalmazza az erőforrás szimbolikus nevét. Ezt a szimbolikus nevet fogja használni a Bicep-fájl más részeiben, ha értéket kell kapnia az erőforrásból.
 
-Az erőforrás-deklaráció az erőforrás típusát és az API verzióját is tartalmazza.
+Az erőforrás-deklaráció az erőforrástípust és az API-verziót is tartalmazza.
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
@@ -189,11 +189,11 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-Az erőforrás-deklarációban az erőforrástípus tulajdonságait kell megadnia. Ezek a tulajdonságok minden erőforrástípus esetében egyediek.
+Az erőforrás-deklarációban meg kell adnia az erőforrástípus tulajdonságait. Ezek a tulajdonságok minden erőforrástípus egyediek.
 
-További információ: [erőforrás-deklaráció a sablonokban](resource-declaration.md).
+További információ: [Erőforrás-deklaráció a sablonokban.](resource-declaration.md)
 
-[Egy erőforrás feltételes üzembe helyezéséhez](conditional-resource-deployment.md)adjon hozzá egy `if` kifejezést.
+Egy [erőforrás feltételes üzembe helyezéséhez adjon](conditional-resource-deployment.md)hozzá egy `if` kifejezést.
 
 ```bicep
 resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
@@ -209,7 +209,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 }
 ```
 
-Egy erőforrástípus egynél [több példányának üzembe helyezéséhez](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md) adjon hozzá egy `for` kifejezést. A kifejezés egy tömb tagjain keresztül is megismételhető.
+Egy [erőforrástípus több példányának](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md) üzembe helyezéséhez adjon hozzá egy `for` kifejezést. A kifejezés iterálhat egy tömb tagjain.
 
 ```bicep
 resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = [for storageName in storageAccounts: {
@@ -227,7 +227,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = [for storageName in
 
 ## <a name="modules"></a>Modulok
 
-Modulok használata a használni kívánt kódokat tartalmazó más bicep-fájlokhoz való hivatkozáshoz. A modul egy vagy több telepítendő erőforrást tartalmaz. Ezek az erőforrások a bicep-fájlban található egyéb erőforrásokkal együtt települnek.
+A modulok használatával hivatkozhatja az újból fel használni kívánt kódot tartalmazó más Bicep-fájlokra. A modul egy vagy több üzembe helyezni kívánt erőforrást tartalmaz. Ezek az erőforrások a Bicep-fájlban található egyéb erőforrásokkal együtt vannak telepítve.
 
 ```bicep
 module webModule './webApp.bicep' = {
@@ -239,17 +239,17 @@ module webModule './webApp.bicep' = {
 }
 ```
 
-A szimbolikus név lehetővé teszi a modul hivatkozását a fájlban lévő valahol máshol. Egy modulból például lekérhet egy kimeneti értéket a szimbolikus név és a kimeneti érték nevének használatával.
+A szimbolikus név lehetővé teszi, hogy a modulra a fájl egy másik elemében hivatkozhat. Például lekért egy kimeneti értéket egy modulból a szimbolikus név és a kimeneti érték nevének használatával.
 
-Az erőforrásokhoz hasonlóan feltételesen vagy iteratív üzembe helyezhet egy modult is. A szintaxis ugyanaz, mint a modulok erőforrásai.
+Az erőforrásokhoz hasonló módon feltételesen vagy iteratív módon is üzembe helyezhet egy modult. A szintaxis megegyezik a modulok és az erőforrások szintaxisával.
 
-További információ: a [bicep modulok használata](bicep-modules.md).
+További információ: [Bicep-modulok használata.](bicep-modules.md)
 
-## <a name="resource-and-module-decorators"></a>Erőforrás-és modul-dekorációk
+## <a name="resource-and-module-decorators"></a>Erőforrás- és modulkorrekulátorok
 
-Felvehet egy dekoratőr-t egy erőforrás-vagy modul-definícióba. Az egyetlen támogatott dekoratőr `batchSize(int)` . Csak olyan erőforrás-vagy modul-definícióra alkalmazhat, amely kifejezést használ `for` .
+Decoratort hozzáadhat egy erőforrás- vagy moduldefinícióhoz. Az egyetlen támogatott dekorátor a `batchSize(int)` . Csak kifejezéseket használó erőforrásra vagy moduldefinícióra `for` alkalmazhatja.
 
-Alapértelmezés szerint a rendszer párhuzamosan telepíti az erőforrásokat. Nem ismeri a befejezésük sorrendjét. A dekoratőr hozzáadásakor a `batchSize` példányok üzembe helyezése Az egész szám argumentum használatával adhatja meg a párhuzamosan telepítendő példányok számát.
+Alapértelmezés szerint az erőforrások párhuzamosan vannak üzembe állítva. Nem tudja, hogy milyen sorrendben érik el a befejezést. A dekorátor `batchSize` hozzáadásakor a példányokat sorosan kell üzembe helyezni. Az egész szám argumentummal adhatja meg a párhuzamosan üzembe helyező példányok számát.
 
 ```bicep
 @batchSize(3)
@@ -258,23 +258,23 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 }]
 ```
 
-További információ: [soros vagy párhuzamos](copy-resources.md#serial-or-parallel).
+További információ: [Serial (Soros) vagy Parallel (Párhuzamos).](copy-resources.md#serial-or-parallel)
 
 ## <a name="outputs"></a>Kimenetek
 
-A kimenetek használatával adja vissza az értéket az üzemelő példányból. Általában egy központilag telepített erőforrás értékét kell visszaadnia, ha egy másik művelethez újra kell használnia ezt az értéket.
+A kimenetek használatával értéket ad vissza az üzemelő példányból. Általában akkor ad vissza értéket egy üzembe helyezett erőforrásból, ha azt egy másik művelethez újra fel kell használnia.
 
 ```bicep
 output storageEndpoint object = stg.properties.primaryEndpoints
 ```
 
-Adja meg a kimeneti érték [adattípusát](data-types.md) .
+Adjon meg [egy adattípust](data-types.md) a kimeneti értékhez.
 
-További információ: [kimenetek a sablonokban](template-outputs.md).
+További információ: [Kimenetek sablonokban.](template-outputs.md)
 
 ## <a name="comments"></a>Megjegyzések
 
-`//`Egysoros megjegyzésekhez vagy `/* ... */` Többsoros megjegyzésekhez használható
+`//`Egysoros megjegyzésekhez vagy `/* ... */` többsoros megjegyzésekhez használható
 
 Az alábbi példa egy egysoros megjegyzést mutat be.
 
@@ -285,7 +285,7 @@ resource nic1 'Microsoft.Network/networkInterfaces@2020-06-01' = {
 }
 ```
 
-A következő példában egy többsoros megjegyzés látható.
+Az alábbi példa egy többsoros megjegyzést mutat be.
 
 ```bicep
 /*
@@ -295,15 +295,15 @@ A következő példában egy többsoros megjegyzés látható.
 param existingKeyVaultName string
 ```
 
-## <a name="multi-line-strings"></a>Többsoros karakterláncok
+## <a name="multi-line-strings"></a>Többsoros sztringek
 
-A sztringeket több sorba is lehet bontani. `'''`A többsoros karakterlánc elindításához és befejezéséhez használjon három szimpla idézőjelet. 
+Egy sztringet több sorra is fel lehet tördörni. Használjon három egyszeres idézőjelet a többsoros sztring kezdő és záró `'''` karaktereként.
 
-A többsoros karakterláncban szereplő karakterek a-as értékkel vannak kezelve. Az Escape-karakterek nem szükségesek. `'''`A többsoros karakterlánc nem vehető fel. A karakterlánc-interpoláció jelenleg nem támogatott.
+A többsoros sztringen belüli karakterek kezelése a ként van kezelve. A escape-karakterek szükségtelenek. A többsoros sztringbe `'''` nem foglalhatja bele a karakterláncot. A sztring-interpoláció jelenleg nem támogatott.
 
-A sztringet közvetlenül a megnyitást követően vagy új sorral is elindíthatja `'''` . Mindkét esetben az eredményül kapott karakterlánc nem tartalmaz új sort. A bicep-fájlban végződő soroktól függően az új vonalakat a vagy a rendszer értelmezi `\r\n` `\n` .
+Elindíthatja a sztringet közvetlenül a megnyitás `'''` után, vagy be is foglalhat egy új sort. Az eredményül kapott sztring mindkét esetben nem tartalmaz új sort. A Bicep-fájl sorvégeitől függően az új sorok a vagy a formátumban vannak `\r\n` `\n` értelmezve.
 
-Az alábbi példa egy többsoros karakterláncot mutat be.
+Az alábbi példa egy többsoros sztringet mutat be.
 
 ```bicep
 var stringVar = '''
@@ -313,7 +313,7 @@ this is multi-line
 '''
 ```
 
-Az előző példa a következő JSON-val egyenértékű.
+Az előző példa az alábbi JSON-nak felel meg.
 
 ```json
 "variables": {
@@ -323,4 +323,4 @@ Az előző példa a következő JSON-val egyenértékű.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A bicep a [Mi az a bicep?](bicep-overview.md)című témakörben talál bevezetést.
+A Bicep bemutatása: Mi az a [Bicep?](bicep-overview.md).

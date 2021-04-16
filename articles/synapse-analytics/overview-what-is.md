@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Synapse Analytics?
-description: Az Azure szinapszis Analytics áttekintése
+description: A Azure Synapse Analytics
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,72 +9,65 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383405"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537949"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
-Az **Azure szinapszis** egy nagyvállalati elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis összefoglalja a nagyvállalati adattárházak, a big data **használt Spark** **-technológiák,** az adatintegrációs és az ETL/elt, valamint az egyéb Azure-szolgáltatásokkal **(például** a **Power bi**, a **CosmosDB** és a **AzureML**) való mélyebb integrációt.
+**Azure Synapse** egy nagyvállalati elemzési szolgáltatás, amely felgyorsítja az adattárház- és big data elemzésekhez. Azure Synapse egyesíti a vállalati  adatraktározásban használt SQL-technológiák, az big data-hoz használt Spark-technológiák,  az adatintegrációs és ETL/ELT-folyamatok, valamint más Azure-szolgáltatásokkal, például az **Power BI,** a **CosmosDB** és az **AzureML** szolgáltatásokkal való mély integrációt. 
 
-![Az Azure szinapszis analitikai architektúrájának ábrája.](./media/overview-what-is/synapse-architecture.png)
+![A Azure Synapse Analytics ábrája.](./media/overview-what-is/synapse-architecture.png)
 
-## <a name="industry-leading-sql"></a>Piacvezető SQL
+## <a name="industry-leading-sql"></a>Iparágvezető SQL
 
-A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer a t-SQL-hez, amely lehetővé teszi az adattárházak és az adatvirtualizációs forgatókönyvek használatát, és kiterjeszti a t-SQL-t a folyamatos átviteli és gépi tanulási helyzet
+**Synapse SQL** egy elosztott lekérdezési rendszer a T-SQL-hez, amely lehetővé teszi az adatraktározást és az adat-virtualizálási forgatókönyveket, és kiterjeszti a T-SQL-t a streamelési és gépi tanulási forgatókönyvekre.
 
-* A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is biztosít. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatok hatékony feldolgozásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
-* A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
-* A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával
+* Synapse SQL kiszolgáló **nélküli** és dedikált **erőforrásmodelleket** is kínál. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatok hatékony feldolgozásához. Nem tervezett vagy adatlökös számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
+* Beépített streamelési **képességek használata** az adatok felhőbeli adatforrásból SQL-táblákba való feltöltéséhez
+* AI integrálása SQL-sel gépi **tanulási modellekkel** adatok pontozására a [T-SQL PREDICT függvény használatával](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="industry-standard-apache-spark"></a>Iparági szabványnak megfelelő Apache Spark
 
-Az **Azure szinapszis Apache Sparke** mélyen és zökkenőmentesen integrálható Apache Spark-a legnépszerűbb nyílt forráskódú Big Data motor, amely adatelőkészítési, adattervezési, ETL-és gépi tanulási szolgáltatásokhoz használatos.
+**Apache Spark** a Azure Synapse és zökkenőmentesen integrálja Apache Spark legnépszerűbb nyílt forráskódú big data-motort, amely az adat-előkészítéshez, az adattervezéshez, az ETL-hez és a gépi tanuláshoz használatos.
 
-* SparkML-algoritmusokat és AzureML-integrációt biztosító ML-modellek a Linux Foundation Delta Lake beépített támogatásával Apache Spark 2,4.
-* Egyszerűsített erőforrás-modell, amely felszabadul, hogy aggódnia kell a fürtök kezelésével kapcsolatban.
-* Gyors Spark indítási és agresszív automatikus skálázás.
-* A .NET for Spark beépített támogatása lehetővé teszi, hogy egy Spark-alkalmazásban újra felhasználhassa a C#-szaktudást és a meglévő .NET-kódot.
+* Ml-modellek SparkML-algoritmusokkal és AzureML-integrációval a Apache Spark 2.4-es és a Linux Foundation Delta Lake beépített támogatásával.
+* Egyszerűsített erőforrásmodell, amely nem kell a fürtök kezelésével törődni.
+* Gyors Spark-indítás és agresszív automatikus skálázás.
+* A .NET for Spark beépített támogatása lehetővé teszi a C# szakértelmének és a meglévő .NET-kódnak a Spark-alkalmazásokban való újrafelhasználát.
 
-## <a name="working-with-your-data-lake"></a>A Data Lake használata
+## <a name="working-with-your-data-lake"></a>A Data Lake-hez való munka
 
-Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQL és a Spark együttes használata között. Az igények és a szaktudás alapján zökkenőmentesen összekeverheti és összehasonlíthatja azokat.
+Azure Synapse az SQL és a Spark együttes használata közötti hagyományos technológiai akadályokat. Az igényei és szakértelmének megfelelően zökkenőmentesen keverheti a találatokat.
 
-* A (z) a (z) rendszerű fájlokban definiált táblákat a Spark vagy a kaptár zökkenőmentesen használhatja.
-* Az SQL és a Spark közvetlenül képes felderíteni és elemezni az adattóban tárolt Parquet, CSV-, TSV-és JSON-fájlokat.
-* Gyors, skálázható betöltés az SQL és a Spark adatbázisok között
+* A Spark vagy a Hive zökkenőmentesen felhasználja a data lake-ben található fájlokon definiált táblákat.
+* Az SQL és a Spark közvetlenül felderítheti és elemezheti a Data Lake-ben tárolt Parquet-, CSV-, TSV- és JSON-fájlokat.
+* Gyors, skálázható adatbetöltés SQL- és Spark-adatbázisok között
 
-## <a name="built-in-data-integration"></a>Beépített Adatintegráció
+## <a name="built-in-data-integration"></a>Beépített adatintegráció
 
-Az Azure szinapszis ugyanazokat az adatintegrációs motort és tapasztalatokat tartalmazza, mint a Azure Data Factory, ami lehetővé teszi, hogy az Azure szinapszis Analytics elhagyása nélkül hozzon létre gazdag mennyiségű ETL-folyamatot.
+Azure Synapse adatintegrációs motort és a Azure Data Factory-t tartalmazza, így részletes, nagy léptékű ETL-folyamatok hozhatók létre anélkül, hogy elhagyják Azure Synapse Analytics.
 
-* Adatok beolvasása 90 és adatforrásból
-* Code-Free ETL adatáramlási tevékenységekkel
-* A notebookok, a Spark-feladatok, a tárolt eljárások, az SQL-parancsfájlok és egyebek összehangolása
+* Több mint 90 adatforrásból származó adatok bemenő adatai
+* Code-Free ETL és adatfolyam-tevékenységek
+* Jegyzetfüzetek, Spark-feladatok, tárolt eljárások, SQL-szkriptek és egyéb műveletek vezénylelése
 
-## <a name="unified-management-monitoring-and-security"></a>Egységes felügyelet, figyelés és biztonság
+## <a name="unified-experience"></a>Egységes felhasználói élmény 
 
-Az Azure szinapszis egyetlen lehetőséget biztosít a vállalatok számára az elemzési erőforrások kezelésére, a használat és a tevékenységek figyelésére, valamint a biztonság betartatására.
+**Synapse Studio** egyetlen lehetőséget kínál a vállalatok számára megoldások építésére, karbantartására és biztonságossá építésére egyetlen felhasználói élményben
 
-* Felhasználók társítása szerepkörhöz az elemzési erőforrásokhoz való hozzáférés egyszerűbbé tétele érdekében
-* Részletes hozzáférés-vezérlés az adatkapcsolaton és a kódban
-* Egyetlen irányítópult az erőforrások, a használat és a felhasználók figyeléséhez az SQL és a Spark között
+* Fő feladatok végrehajtása: be- és felfedezés, előkészítés, vezénylés, vizualizáció
+* Erőforrások, használat és felhasználók figyelése az SQL és a Spark használatával
+* Szerepköralapú hozzáférés-vezérlés használata az elemzési erőforrásokhoz való hozzáférés egyszerűsítésére
+* SQL- vagy Spark-kód írása és integrálása vállalati CI-/CD-folyamatokkal
 
-## <a name="unified-experience"></a>Egységes felhasználói élmény
+## <a name="engage-with-the-synapse-community"></a>Lépjen kapcsolatba a Synapse-közösséggel
 
-A **szinapszis Studio** a felhasználói élmény, amely az adatmérnökökkel együtt mindent összekapcsol. Lehetővé teszi, hogy a teljes elemzési megoldás létrehozásához szükséges összes feladatot elvégezzék.
-
-* Kulcsfontosságú adatmérnöki feladatok az egyik helyen: betöltés, felfedezés, előkészítés, hangolás, megjelenítés
-* Piacvezető termelékenység az SQL vagy a Spark-kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
-* Integrálás a vállalati CI/CD-folyamattal
-
-## <a name="engage-with-the-synapse-community"></a>A szinapszis közösségének részvétele
-
-- [Microsoft Q&A](/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
-- [Stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse): forduljon a fejlesztési kérdésekhez.
+- [Microsoft Q&A:](/answers/topics/azure-synapse-analytics.html)Technikai kérdések.
+- [Stack Overflow:](https://stackoverflow.com/questions/tagged/azure-synapse)Fejlesztési kérdések.
 
 ## <a name="next-steps"></a>Következő lépések
 

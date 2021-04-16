@@ -1,19 +1,21 @@
 ---
-title: 'Gyors útmutató: megosztott lekérdezés létrehozása Azure PowerShell'
-description: Ebben a rövid útmutatóban egy erőforrás-gráf megosztott lekérdezés létrehozásához szükséges lépéseket követve Azure PowerShell használatával.
+title: 'Rövid útmutató: Megosztott lekérdezés létrehozása Azure PowerShell'
+description: Ebben a rövid útmutatóban a lépéseket követve létrehozhat egy megosztott Resource Graph lekérdezést a Azure PowerShell.
 ms.date: 01/11/2021
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b771253b1dea4bd1d2913bf7c48062112019a19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 9015b6df99bdd6f153194e8f4cbbe7658cf1d6dc
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99981544"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535802"
 ---
-# <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>Gyors útmutató: erőforrás-gráf megosztott lekérdezés létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>Rövid útmutató: Megosztott Resource Graph létrehozása a Azure PowerShell
 
-Ez a cikk azt ismerteti, hogyan hozhat létre Azure Resource Graph-beli megosztott lekérdezést az az [. ResourceGraph](/powershell/module/az.resourcegraph) PowerShell-modul használatával.
+Ez a cikk azt ismerteti, hogyan hozhat létre megosztott Azure Resource Graph az [Az.ResourceGraph](/powershell/module/az.resourcegraph) PowerShell-modullal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -22,23 +24,23 @@ Ez a cikk azt ismerteti, hogyan hozhat létre Azure Resource Graph-beli megoszto
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Míg az az **. ResourceGraph** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` .
+  > Bár az **Az.ResourceGraph** PowerShell-modul előzetes verzióban érhető el, külön kell telepítenie a `Install-Module` parancsmag használatával.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.ResourceGraph
   ```
 
-- Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
+- Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat ki kell számlázni. Válasszon ki egy adott előfizetést a [Set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
 
   ```azurepowershell-interactive
   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
   ```
 
-## <a name="create-a-resource-graph-shared-query"></a>Erőforrás-gráf megosztott lekérdezésének létrehozása
+## <a name="create-a-resource-graph-shared-query"></a>Megosztott Resource Graph létrehozása
 
-Ha az az **. ResourceGraph** PowerShell-modullal bővült a környezete, akkor itt az ideje, hogy létrehozzon egy Resource Graph-beli megosztott lekérdezést. A megosztott lekérdezés egy Azure Resource Manager objektum, amely engedélyt adhat az Azure Resource Graph Explorerben, vagy futtathatja azt. A lekérdezés a _hely_ szerint csoportosított összes erőforrás számát összegzi.
+Most, hogy az **Az.ResourceGraph** PowerShell-modul hozzá van adva a választott környezethez, ideje létrehozni egy Resource Graph lekérdezést. A megosztott lekérdezés egy Azure Resource Manager objektum, amely számára engedélyeket adhat vagy futtathat Azure Resource Graph Explorerben. A lekérdezés összefoglalja az összes erőforrás számát hely _szerint csoportosítva._
 
-1. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) az Azure Resource Graph megosztott lekérdezés tárolásához. Ez az erőforráscsoport neve `resource-graph-queries` , a helye pedig `westus2` .
+1. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup használatával](/powershell/module/az.resources/new-azresourcegroup) a megosztott Azure Resource Graph tárolására. Ennek az erőforráscsoportnak a neve , `resource-graph-queries` a hely pedig `westus2` .
 
    ```azurepowershell-interactive
    # Login first with `Connect-AzAccount` if not using Cloud Shell
@@ -47,7 +49,7 @@ Ha az az **. ResourceGraph** PowerShell-modullal bővült a környezete, akkor i
    New-AzResourceGroup -Name resource-graph-queries -Location westus2
    ```
 
-1. Hozza létre az Azure Resource Graph megosztott lekérdezését az az **. ResourceGraph** PowerShell-modul és a [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) parancsmag használatával:
+1. Hozza létre Azure Resource Graph lekérdezést az **Az.ResourceGraph** PowerShell-modul és a [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) parancsmag használatával:
 
    ```azurepowershell-interactive
    # Create the Azure Resource Graph shared query
@@ -61,14 +63,14 @@ Ha az az **. ResourceGraph** PowerShell-modullal bővült a környezete, akkor i
    New-AzResourceGraphQuery @Params
    ```
 
-1. Az új erőforráscsoport megosztott lekérdezéseit sorolja fel. A [Get-AzResourceGraphQuery](/powershell/module/az.resourcegraph/get-azresourcegraphquery) parancsmag értékek tömbjét adja vissza.
+1. Sorolja fel az új erőforráscsoportban található megosztott lekérdezéseket. A [Get-AzResourceGraphQuery parancsmag](/powershell/module/az.resourcegraph/get-azresourcegraphquery) értéktömböt ad vissza.
 
    ```azurepowershell-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    Get-AzResourceGraphQuery -ResourceGroupName resource-graph-queries
    ```
 
-1. Ha csak egyetlen megosztott lekérdezési eredményt szeretne kapni, használja a `Get-AzResourceGraphQuery` `Name` paramétert.
+1. Ha csak egyetlen megosztott lekérdezési eredményt kap, használja a `Get-AzResourceGraphQuery` `Name` paramétert a paraméterrel.
 
    ```azurepowershell-interactive
    # Show a specific Azure Resource Graph shared query
@@ -77,7 +79,7 @@ Ha az az **. ResourceGraph** PowerShell-modullal bővült a környezete, akkor i
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani az erőforrás-gráf megosztott lekérdezését és az erőforráscsoportot az Azure-környezetből, ezt az alábbi parancsokkal végezheti el:
+Ha el szeretné távolítani a megosztott Resource Graph lekérdezést és erőforráscsoportot az Azure-környezetből, ezt a következő parancsokkal használhatja:
 
 - [Remove-AzResourceGraphQuery](/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
 - [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)
@@ -93,7 +95,7 @@ Remove-AzResourceGroup -Name resource-graph-queries
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Resource Graph megosztott lekérdezést Azure PowerShell használatával. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+Ebben a rövid útmutatóban megosztott lekérdezést hozott létre a Resource Graph Azure PowerShell. Ha többet szeretne megtudni a Resource Graph nyelvről, folytassa a lekérdezési nyelv részleteit tartalmazó oldalon.
 
 > [!div class="nextstepaction"]
 > [További információ a lekérdezési nyelvről](./concepts/query-language.md)

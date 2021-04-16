@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro, openshift, az aro, red hat, cli, RACI, támogatás
-ms.openlocfilehash: 364b0a04e3394efcacba00c538218ecee2355f89
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495037"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537008"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>A feladatkörök áttekintése Azure Red Hat OpenShift
 
@@ -145,7 +145,7 @@ Míg a Microsoft és a Red Hat kezelik Azure Red Hat OpenShift szolgáltatást, 
 
 ### <a name="incident-and-operations-management"></a>Incidens- és üzemeltetéskezelés 
 
-Az ügyfél, a Microsoft és a Red Hat osztozik a felhőfürtök figyelésében és Azure Red Hat OpenShift felelősségében. Az ügyfél felelős az ügyfélalkalmazás [](#customer-data-and-applications) adatainak incidensek és műveletek kezeléséért, valamint az ügyfél által konfigurált egyéni hálózatkezelésért.
+Az ügyfél és a Microsoft és a Red Hat osztoznak a fürtök figyelésében és Azure Red Hat OpenShift felügyeletében. Az ügyfél felelős az ügyfélalkalmazás [](#customer-data-and-applications) adatainak incidensek és műveletek kezeléséért, valamint az ügyfél által konfigurált egyéni hálózatkezelésért.
 
 <table>
   <tr>
@@ -183,7 +183,7 @@ Az ügyfél, a Microsoft és a Red Hat osztozik a felhőfürtök figyelésében 
    <td>
 <ul>
 
-<li>Az alapértelmezett platformhálózathoz szükséges felhőbeli terheléselosztások, alhálózatok és Azure-felhőösszetevők monitorozása és a riasztások megválaszolása.
+<li>Az alapértelmezett platformhálózathoz szükséges felhőbeli terheléselosztások, alhálózatok és Azure-felhőösszetevők monitorozása, valamint a riasztások megválaszolása.
 </li>
 </ul>
    </td>
@@ -272,7 +272,7 @@ A Microsoft és a Red Hat felelős a fürt infrastruktúrájának és az ügyfé
    <td>
 <ul>
 
-<li>Fürtkezelési összetevők, például nyilvános vagy privát szolgáltatásvégpont beállítása és a szükséges integráció a virtuális hálózati összetevőkkel.
+<li>Állítson be fürtkezelési összetevőket, például nyilvános vagy privát szolgáltatásvégpontokat, és a szükséges integrációt a virtuális hálózati összetevőkkel.
 
 <li>A feldolgozó és a fő csomópontok közötti belső fürtkommunikációhoz szükséges belső hálózati összetevők beállítása.
 </li>
@@ -294,7 +294,7 @@ A Microsoft és a Red Hat felelős a fürt infrastruktúrájának és az ügyfé
    <td>
 <ul>
 
-<li>Állítsa be és konfigurálja a fürt építéséhez szükséges virtuális hálózati összetevőket, beleértve a virtuális magánfelhőt, az alhálózatokat, a terheléselosztásokat, az internetes átjárókat, a NAT-átjárókat stb.
+<li>A fürt építéséhez szükséges virtuális hálózati összetevők( például virtuális magánfelhő, alhálózatok, terheléselosztások, internetes átjárók, NAT-átjárók stb.) beállítása és konfigurálása.
 
 <li>Lehetővé teszi az ügyfél számára a VPN-kapcsolatok kezelését a helyszíni erőforrásokkal, a virtuális hálózatok és a virtuális hálózatok Private Link az OpenShift-fürtkezelővel.
 
@@ -344,7 +344,7 @@ A Microsoft és a Red Hat felelős a fürt infrastruktúrájának és az ügyfé
 
 <li>A szolgáltatásminőség fenntartása érdekében skálázhatja és/vagy átméretezheti a vezérlősík csomópontjainak méretét
 
-<li>Az ügyfélerőforrások kihasználtságának figyelése, beleértve a hálózati, tárolási és számítási kapacitást. Ha az automatikus méretezési funkciók nincsenek engedélyezve, a rendszer riasztást küld az ügyfélnek a fürterőforrásokhoz szükséges módosításokról (például: új skálázható számítási csomópontok, további tárterület stb.)
+<li>Az ügyfélerőforrások kihasználtságának figyelése, beleértve a hálózati, tárolási és számítási kapacitást. Ha az automatikus méretezési funkciók nincsenek engedélyezve, a rendszer riasztást küld az ügyfélnek a fürterőforrásokhoz (pl. új skálázható számítási csomópontok, további tárterület stb.)
 </li>
 </ul>
    </td>
@@ -392,7 +392,7 @@ Az identitás- és hozzáférés-kezelés minden felelősségi körre kiterjed a
    <td>
 <ul>
 
-<li>Konfigurálja az OpenShift RBAC-t a projektekhez való hozzáférés szabályozásához és a projekt alkalmazásnaplóinak kiterjesztéssel való vezérléséhez.
+<li>Konfigurálja az OpenShift RBAC-t a projektekhez való hozzáférés és a projekt alkalmazásnaplói vezérléséhez.
 
 <li>Külső vagy egyéni alkalmazásnaplózási megoldások esetén az ügyfél felelős a hozzáférés-kezelésért.
 </li>
@@ -405,14 +405,14 @@ Az identitás- és hozzáférés-kezelés minden felelősségi körre kiterjed a
    <td>
 <ul>
 
-<li>Natív OpenShift RBAC- és dedikált rendszergazdai képességeket biztosít.
+<li>Natív OpenShift RBAC-képességeket biztosít.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Konfigurálja az OpenShift dedikált rendszergazdáit és RBAC-ját az útvonal-konfigurációhoz való hozzáférés szükség szerint való szabályozásához.
+<li>Konfigurálja az OpenShift RBAC-t az útvonal-konfigurációhoz való hozzáférés szükség szerint való szabályozásához.
 </li>
 </ul>
    </td>
@@ -423,18 +423,18 @@ Az identitás- és hozzáférés-kezelés minden felelősségi körre kiterjed a
    <td>
 <ul>
 
-<li>Natív OpenShift RBAC- és dedikált rendszergazdai képességeket biztosít.
+<li>Natív OpenShift RBAC-képességeket biztosít.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Red Hat-fiókok Red Hat-szervezeti tagságának kezelése.
+<li>Red Hat-fiókok Red Hat szervezeti tagságának kezelése.
 
 <li>Red Hat-szervezet szervezeti rendszergazdáinak kezelése az OpenShift-fürtkezelőhöz való hozzáférés megadásához.
 
-<li>Konfigurálja az OpenShift dedikált rendszergazdáit és RBAC-ját az útvonal-konfigurációhoz való hozzáférés szükség szerint való szabályozásához.
+<li>Konfigurálja az OpenShift RBAC-t az útvonal-konfigurációhoz való hozzáférés szükség szerint való szabályozásához.
 </li>
 </ul>
    </td>
@@ -482,14 +482,14 @@ A biztonság és a megfelelőség kiterjed minden olyan felelősségre és vezé
    <td>
 <ul>
 
-<li>Fürtnaplók küldése a Microsoftnak és a Red Hat SIEM-nek biztonsági események elemzéséhez. Az auditnaplókat meghatározott ideig őrizze meg a kriminalisztikai elemzés támogatása érdekében.
+<li>Fürtnaplók küldése a Microsoftnak és a Red Hat SIEM-nek biztonsági események elemzéséhez. A kriminalisztikai elemzés támogatása érdekében meghatározott ideig őrizze meg az auditnaplókat.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Alkalmazásnaplók elemzése biztonsági eseményekhez. Alkalmazásnaplókat küldhet egy külső végpontra a naplózási oldalkocsi tárolókon vagy külső naplózási alkalmazásokon keresztül, ha hosszabb megőrzésre van szükség, mint amit az alapértelmezett naplózási verem kínál.
+<li>Biztonsági eseményeket keresve elemezheti az alkalmazásnaplókat. Alkalmazásnaplókat küldhet egy külső végpontnak naplózási oldalkocsi tárolókon vagy külső naplózási alkalmazásokon keresztül, ha hosszabb megőrzésre van szükség, mint amit az alapértelmezett naplózási verem kínál.
 </li>
 </ul>
    </td>
@@ -502,7 +502,7 @@ A biztonság és a megfelelőség kiterjed minden olyan felelősségre és vezé
 
 <li>A virtuális hálózat összetevőinek figyelése a lehetséges problémák és biztonsági fenyegetések észlelése érdekében.
 
-<li>További nyilvános Microsoft- és Red Hat Azure-eszközök használata további monitorozáshoz és védelemhez.
+<li>További nyilvános Microsoft- és Red Hat Azure-eszközök használata a további monitorozáshoz és védelemhez.
 </li>
 </ul>
    </td>
@@ -519,15 +519,15 @@ A biztonság és a megfelelőség kiterjed minden olyan felelősségre és vezé
 </table>
 
 
-5. táblázat Megosztott feladatkörök a biztonság és a szabályozás megfelelőségében
+5. táblázat Megosztott felelősségi körök a biztonság és a szabályozás megfelelőségében
 
 
-## <a name="customer-responsibilities-when-using-azure-red-hat-openshift"></a>Az ügyfél feladatkörei a Azure Red Hat OpenShift 
+## <a name="customer-responsibilities-when-using-azure-red-hat-openshift"></a>Az ügyfelek feladatkörei a Azure Red Hat OpenShift 
 
 
 ### <a name="customer-data-and-applications"></a>Ügyféladatok és alkalmazások
 
-Az ügyfél felelős az üzembe helyezett alkalmazásokért, számítási feladatokért és adatokért Azure Red Hat OpenShift. A Microsoft és a Red Hat azonban különböző eszközöket biztosít, amelyek segítenek az ügyfélnek a platformon az adatok és alkalmazások kezelésében.
+Az ügyfél felelős az üzembe helyezett alkalmazásokért, számítási feladatokért és adatokért Azure Red Hat OpenShift. A Microsoft és a Red Hat azonban különböző eszközöket biztosít az ügyfélnek az adatok és alkalmazások platformon való kezeléséhez.
 
 
 <table>
@@ -544,7 +544,7 @@ Az ügyfél felelős az üzembe helyezett alkalmazásokért, számítási felada
    <td>
 <ul>
 
-<li>Az iparági biztonsági és megfelelőségi szabványok által meghatározott platformszintű adattitkosítási szabványok fenntartása. 
+<li>Az adattitkosítás platformszintű szabványait az iparági biztonsági és megfelelőségi szabványoknak megfelelően tarthatja fenn. 
 
 <li>OpenShift-összetevőket biztosít az alkalmazásadatok, például titkos kulcsok kezeléséhez.
 
@@ -583,9 +583,9 @@ Az ügyfél felelős az üzembe helyezett alkalmazásokért, számítási felada
 
 <li>Ha egy ügyfél Operátorok vagy külső képek használatával ad hozzá Red Hat-, közösségi, külső, saját vagy egyéb szolgáltatásokat a fürthöz, az ügyfél felelős ezekért a szolgáltatásokért, valamint a megfelelő szolgáltatóval (beleértve a Red Hatot is) a problémák elhárításához.
 
-<li>A megadott eszközökkel és szolgáltatásokkal <a href="https://docs.openshift.com/dedicated/4/architecture/understanding-development.html#application-types">konfigurálhatja és telepítheti</a>a szolgáltatást. <a href="https://docs.openshift.com/dedicated/4/applications/deployments/deployment-strategies.html">naprakészen kell tartani;</a> <a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">erőforrás-kérelmek és -korlátok beállítása;</a> <a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">mérete a fürtöt úgy, hogy elegendő erőforrással rendelkezik az alkalmazások futtatásához;</a> <a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/dedicated-admin-role.html#dedicated-admin-granting-permissions_dedicated-administrator">engedélyek beállítása;</a> integrálás más szolgáltatásokkal; kezelheti az ügyfél által üzembe helyezett rendszerképstreameket <a href="https://docs.openshift.com/dedicated/4/openshift_images/images-understand.html">vagy -sablonokat;</a> <a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-aws-private-cluster.html">külsőleg szolgál;</a> adatok mentése, biztonsági mentése és visszaállítása; és egyéb módon kezelheti a magas rendelkezésre állékonyságú és rugalmas számítási feladatokat.
+<li>A megadott eszközökkel és szolgáltatásokkal <a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">konfigurálhatja és telepítheti</a>a szolgáltatást. <a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">naprakészen kell tartani;</a> <a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">erőforrás-kérelmek és -korlátok beállítása;</a> <a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">mérete a fürtöt úgy, hogy elegendő erőforrással rendelkezik az alkalmazások futtatásához;</a> <a href="https://docs.openshift.com/aro/4/administering_a_cluster/">engedélyek beállítása;</a> integrálás más szolgáltatásokkal; kezelheti az ügyfél által üzembe helyezett rendszerképstreameket <a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">vagy -sablonokat;</a> <a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">külsőleg szolgál;</a> adatok mentése, biztonsági mentése és visszaállítása; és egyéb módon kezelheti a magas rendelkezésre állékonyságú és rugalmas számítási feladatokat.
 
-<li>A Azure Red Hat OpenShift; beleértve a metrikák gyűjtése és a riasztások létrehozásához szükséges szoftverek telepítését és üzemeltetési környezetét.
+<li>Az alkalmazások monitorozásának felelőssége a Azure Red Hat OpenShift; beleértve a metrikák gyűjtése és a riasztások létrehozásához szükséges szoftverek telepítését és üzemeltetési környezetét.
 </li>
 </ul>
    </td>

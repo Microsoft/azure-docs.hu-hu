@@ -1,21 +1,21 @@
 ---
-title: Beépített házirend-kezdeményezések listája
-description: A Azure Policy beépített házirend-kezdeményezéseit sorolja fel. A kategóriák közé tartoznak a jogszabályi megfelelőség, a vendég konfigurációja és még sok más.
-ms.date: 03/31/2021
+title: Beépített szabályzati kezdeményezések listája
+description: List built-in policy initiatives for Azure Policy. A kategóriák közé tartozik többek között a jogszabályi megfelelőség, a vendégkonfiguráció stb.
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ef643e551c2ddab715d67467620fb748fb836eee
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c43886f19d2128b7e1168810a0ac20577ccded15
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090072"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504847"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 
-Ez az oldal Azure Policy beépített kezdeményezési definíciók indexe.
+Ez az oldal a beépített Azure Policy definíciók indexe.
 
-Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárház kezdeményezési definíciós forrására mutat. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára** való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+Az egyes beépített hivatkozások neve a GitHub-adattárban található [kezdeményezésdefiníciós forrásra Azure Policy hivatkozás.](https://github.com/Azure/azure-policy) A beépítettek a metaadatok **kategóriatulajdonságai** szerint vannak **csoportosítva.** Egy adott kategóriára való **ugráshoz** használja az oldal jobb oldalán található menüt. Ellenkező esetben használja <kbd>a Ctrl</kbd>F billentyűkombinációt a böngésző keresési - <kbd></kbd> funkcióját használva.
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

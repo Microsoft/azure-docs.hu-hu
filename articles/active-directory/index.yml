@@ -1,306 +1,300 @@
 ### YamlMime:Hub
 title: Azure Active Directory-dokumentáció
-summary: Az Azure Active Directory (Azure AD) egy több-bérlős, felhőalapú identitás- és hozzáférés-kezelési szolgáltatás.
+summary: 'Az Azure Active Directory (Azure AD) egy több-bérlős, felhőalapú identitás- és hozzáférés-kezelési szolgáltatás.'
 brand: azure
 metadata:
   title: Azure Active Directory-dokumentáció
-  description: Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.
+  description: 'Az Azure Active Directory (Azure AD) a Microsoft több-bérlős felhőalapú könyvtára és identitáskezelési szolgáltatása, amely egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-kezelést és identitásvédelmet.'
   ms.service: active-directory
   ms.topic: hub-page
   ms.collection: M365-identity-device-management
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 12/01/2020
-  ms.openlocfilehash: de96c1ed6828a6933102755d6c020cf01c4c9c7b
-  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/20/2021
-  ms.locfileid: "98611151"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Mi az Azure AD?
-    itemType: overview
-    url: ./fundamentals/active-directory-whatis.md
-  - title: Az Azure AD újdonságai
-    itemType: whats-new
-    url: ./fundamentals/whats-new.md
-  - title: A távoli munkaerő védelme
-    itemType: get-started
-    url: /enterprise-mobility-security/remote-work/
-  - title: Szerepkörök hozzárendelése felhasználókhoz
-    itemType: how-to-guide
-    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
-  - title: Azure AD-üzembehelyezési ellenőrzőlista
-    itemType: concept
-    url: ./fundamentals/active-directory-deployment-checklist-p2.md
-  - title: A rugalmasság beépítése az identitás- és hozzáférés-kezelésbe az Azure AD használatával
-    itemType: overview
-    url: ./fundamentals/resilience-overview.md
+    - title: Mi az Azure AD?
+      itemType: overview
+      url: ./fundamentals/active-directory-whatis.md
+    - title: Az Azure AD újdonságai
+      itemType: whats-new
+      url: ./fundamentals/whats-new.md
+    - title: A távoli munkaerő védelme
+      itemType: get-started
+      url: /enterprise-mobility-security/remote-work/
+    - title: Mik az ellenőrizhető hitelesítő adatok (előzetes verzió)?
+      itemType: overview
+      url: ./verifiable-credentials/decentralized-identifier-overview.md
+    - title: Azure AD-üzembehelyezési ellenőrzőlista
+      itemType: concept
+      url: ./fundamentals/active-directory-deployment-checklist-p2.md
+    - title: A rugalmasság beépítése az identitás- és hozzáférés-kezelésbe az Azure AD használatával
+      itemType: overview
+      url: ./fundamentals/resilience-overview.md
 conceptualContent:
   items:
-  - title: Alkalmazáskezelés
-    links:
-    - url: ./manage-apps/what-is-application-management.md
-      itemType: overview
-      text: Mi az alkalmazáskezelés?
-    - url: ./manage-apps/view-applications-portal.md
-      itemType: quickstart
-      text: A bérlőt az identitáskezelés során használó alkalmazások megtekintése
-    - url: ./manage-apps/add-application-portal-setup-sso.md
-      itemType: quickstart
-      text: SAML-alapú SSO beállítása
-    footerLink:
-      url: ./manage-apps/index.yml
-      text: Részletek
-  - title: Alkalmazás és HR-üzembehelyezés
-    links:
-    - url: ./app-provisioning/user-provisioning.md
-      itemType: overview
-      text: Mit jelent az alkalmazások üzembe helyezése?
-    - url: ./app-provisioning/how-provisioning-works.md
-      itemType: concept
-      text: Az alkalmazások üzembe helyezésének működése
-    - url: ./app-provisioning/plan-cloud-hr-provision.md
-      itemType: how-to-guide
-      text: Felhőalapú HR-üzembehelyezés tervezése
-    footerLink:
-      url: ./app-provisioning/index.yml
-      text: Részletek
-  - title: Hitelesítés
-    links:
-    - url: ./authentication/overview-authentication.md
-      itemType: concept
-      text: Mit takar az Azure AD-hitelesítés?
-    - url: ./authentication/tutorial-enable-sspr.md
-      itemType: tutorial
-      text: Új jelszó önkiszolgáló kérésének engedélyezése
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: tutorial
-      text: Az Azure AD többtényezős hitelesítés engedélyezése
-    footerLink:
-      url: ./authentication/index.yml
-      text: Részletek
-  - title: Felhőbeli szinkronizálás
-    links:
-    - url: ./cloud-sync/what-is-cloud-sync.md
-      itemType: overview
-      text: Mi a Felhőbeli szinkronizálás?
-    - url: ./cloud-sync/tutorial-single-forest.md
-      itemType: tutorial
-      text: Egyetlen erdő integrálása egyetlen Azure AD-bérlővel
-    - url: ./cloud-sync/how-to-install.md
-      itemType: how-to-guide
-      text: Azure AD Connect kiépítési ügynök telepítése
-    footerLink:
-      url: ./cloud-sync/index.yml
-      text: Részletek
-  - title: Feltételes hozzáférés
-    links:
-    - url: ./conditional-access/overview.md
-      itemType: overview
-      text: Mi az a feltételes hozzáférés?
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: quickstart
-      text: MFA megkövetelése adott alkalmazásokhoz
-    - url: ./conditional-access/location-condition.md
-      itemType: concept
-      text: Feltételek hely szerint
-    footerLink:
-      url: ./conditional-access/index.yml
-      text: Részletek
-  - title: Eszközfelügyelet
-    links:
-    - url: ./devices/overview.md
-      itemType: overview
-      text: Mi az az eszközfelügyelet?
-    - url: ./devices/hybrid-azuread-join-plan.md
-      itemType: how-to-guide
-      text: Hibrid Azure AD-csatlakozás megtervezése
-    - url: ./devices/azureadjoin-plan.md
-      itemType: how-to-guide
-      text: Azure AD-csatlakozás megtervezése
-    footerLink:
-      url: ./devices/index.yml
-      text: Részletek
-  - title: Tartományi szolgáltatások
-    links:
-    - url: ../active-directory-domain-services/overview.md
-      itemType: overview
-      text: Mi az Azure AD tartományi szolgáltatások?
-    - url: ../active-directory-domain-services/tutorial-create-instance.md
-      itemType: quickstart
-      text: Az Azure AD tartományi szolgáltatások engedélyezése
-    - url: ../active-directory-domain-services/manage-group-policy.md
-      itemType: how-to-guide
-      text: Csoportszabályzat-felügyelet
-    footerLink:
-      url: ../active-directory-domain-services/index.yml
-      text: Részletek
-  - title: Vállalati felhasználók
-    links:
-    - url: ./enterprise-users/groups-create-rule.md
-      itemType: how-to-guide
-      text: Dinamikus csoport létrehozása
-    - url: ./enterprise-users/groups-settings-v2-cmdlets.md
-      itemType: how-to-guide
-      text: PowerShell Azure AD-csoportokhoz
-    - url: ./enterprise-users/directory-service-limits-restrictions.md
-      itemType: reference
-      text: Azure AD szolgáltatási korlátozások
-    footerLink:
-      url: ./enterprise-users/index.yml
-      text: Részletek
-  - title: External Identities
-    links:
-    - url: ./external-identities/compare-with-b2c.md
-      itemType: overview
-      text: Külső felhasználóknak szánt megoldások összehasonlítása
-    - url: ../active-directory-b2c/overview.md
-      itemType: overview
-      text: Alkalmazások skálázása a fogyasztóknak megfelelően (B2C)
-    - url: ./external-identities/what-is-b2b.md
-      itemType: overview
-      text: Együttműködés cégen kívüli felhasználókkal (B2B)
-    footerLink:
-      url: ./external-identities/index.yml
-      text: Részletek
-  - title: Hibrid identitás
-    links:
-    - url: ./hybrid/whatis-hybrid-identity.md
-      itemType: overview
-      text: Mi az a hibrid identitás?
-    - url: ./hybrid/how-to-connect-sso.md
-      itemType: how-to-guide
-      text: Egyszeri bejelentkezés az Azure AD Connecttel
-    - url: ./hybrid/how-to-connect-install-custom.md
-      itemType: how-to-guide
-      text: Az Azure AD Connect egyéni telepítése
-    footerLink:
-      url: ./hybrid/index.yml
-      text: Részletek
-  - title: Identitáskezelés
-    links:
-    - url: ./governance/entitlement-management-access-package-first.md
-      itemType: how-to-guide
-      text: Hozzáférési csomag létrehozása
-    - url: ./governance/create-access-review.md
-      itemType: how-to-guide
-      text: Csoport vagy alkalmazás hozzáférési felülvizsgálatának létrehozása
-    - url: ./conditional-access/terms-of-use.md
-      itemType: how-to-guide
-      text: Használati feltételek elfogadtatása a felhasználókkal
-    footerLink:
-      url: ./governance/index.yml
-      text: Részletek
-  - title: Identitásvédelem
-    links:
-    - url: ./identity-protection/overview-identity-protection.md
-      itemType: overview
-      text: Mi az az identitásvédelem?
-    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
-      itemType: how-to-guide
-      text: Kockázati szabályzatok beállítása
-    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
-      itemType: how-to-guide
-      text: Felhasználók tiltásának feloldása
-    footerLink:
-      url: ./identity-protection/index.yml
-      text: Részletek
-  - title: Azure-erőforrások felügyelt identitásai
-    links:
-    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
-      itemType: tutorial
-      text: Windows rendszerű virtuális gép használata az Azure SQL eléréséhez
-    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
-      itemType: how-to-guide
-      text: Azure-beli virtuális gép használata jogkivonat beszerzéséhez
-    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
-      itemType: concept
-      text: A felügyelt identitást támogató szolgáltatások
-    footerLink:
-      url: ./managed-identities-azure-resources/index.yml
-      text: Részletek
-  - title: Microsoft-identitásplatform
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: A Microsoft identitásplatformja
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: OAuth 2.0-kódfolyamat engedély
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Alkalmazás regisztrálása a Microsoft identitásplatformján
-    footerLink:
-      url: ./develop/index.yml
-      text: Részletek
-  - title: Privileged Identity Management (PIM)
-    links:
-    - url: ./privileged-identity-management/pim-getting-started.md
-      itemType: how-to-guide
-      text: Ismerkedés a PIM-mel
-    - url: ./privileged-identity-management/pim-how-to-activate-role.md
-      itemType: how-to-guide
-      text: Címtárbeli szerepkörök aktiválása
-    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
-      itemType: how-to-guide
-      text: Címtárbeli szerepkörök hozzárendelése
-    footerLink:
-      url: ./privileged-identity-management/index.yml
-      text: Részletek
-  - title: Jelentések és monitorozás
-    links:
-    - url: ./reports-monitoring/concept-audit-logs.md
-      itemType: concept
-      text: Naplók
-    - url: ./reports-monitoring/concept-sign-ins.md
-      itemType: concept
-      text: Bejelentkezési naplók
-    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
-      itemType: reference
-      text: Bejelentkezési hibakódok – referencia
-    footerLink:
-      url: ./reports-monitoring/index.yml
-      text: Részletek
-  - title: Szerepkörök
-    links:
-    - url: ./roles/groups-assign-role.md
-      itemType: concept
-      text: Az Azure AD-szerepkörök ismertetése
-    - url: ./roles/concept-understand-roles.md
-      itemType: how-to-guide
-      text: Egyéni szerepkör létrehozása
-    - url: ./roles/groups-view-assignments.md
-      itemType: reference
-      text: Csoporthoz hozzárendelt szerepkörök megtekintése
-    footerLink:
-      url: ./roles/index.yml
-      text: Részletek
-  - title: Külső alkalmazások
-    links:
-    - url: ./saas-apps/amazon-web-service-tutorial.md
-      itemType: tutorial
-      text: Az Azure AD egyszeri bejelentkezés integrálása az Amazon Web Servicesszel
-    - url: ./saas-apps/workday-inbound-tutorial.md
-      itemType: tutorial
-      text: Workday konfigurálása a felhasználók automatikus átadásához
-    - url: ./develop/v2-howto-app-gallery-listing.md
-      itemType: get-started
-      text: Kérelem az alkalmazás katalógushoz adására vonatkozóan
-    footerLink:
-      url: ./saas-apps/tutorial-list.md
-      text: Több alkalmazás megjelenítése
+    - title: Alkalmazáskezelés
+      links:
+        - url: ./manage-apps/what-is-application-management.md
+          itemType: overview
+          text: Mi az alkalmazáskezelés?
+        - url: ./manage-apps/view-applications-portal.md
+          itemType: quickstart
+          text: A bérlőt az identitáskezelés során használó alkalmazások megtekintése
+        - url: ./manage-apps/add-application-portal-setup-sso.md
+          itemType: quickstart
+          text: SAML-alapú SSO beállítása
+      footerLink:
+        url: ./manage-apps/index.yml
+        text: Részletek
+    - title: Alkalmazás és HR-üzembehelyezés
+      links:
+        - url: ./app-provisioning/user-provisioning.md
+          itemType: overview
+          text: Mit jelent az alkalmazások üzembe helyezése?
+        - url: ./app-provisioning/how-provisioning-works.md
+          itemType: concept
+          text: Az alkalmazások üzembe helyezésének működése
+        - url: ./app-provisioning/plan-cloud-hr-provision.md
+          itemType: how-to-guide
+          text: Felhőalapú HR-üzembehelyezés tervezése
+      footerLink:
+        url: ./app-provisioning/index.yml
+        text: Részletek
+    - title: Hitelesítés
+      links:
+        - url: ./authentication/overview-authentication.md
+          itemType: concept
+          text: Mit takar az Azure AD-hitelesítés?
+        - url: ./authentication/tutorial-enable-sspr.md
+          itemType: tutorial
+          text: Új jelszó önkiszolgáló kérésének engedélyezése
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: tutorial
+          text: Az Azure AD többtényezős hitelesítés engedélyezése
+      footerLink:
+        url: ./authentication/index.yml
+        text: Részletek
+    - title: Felhőalapú szinkronizálás
+      links:
+        - url: ./cloud-sync/what-is-cloud-sync.md
+          itemType: overview
+          text: Mi az a felhőalapú szinkronizálás?
+        - url: ./cloud-sync/tutorial-single-forest.md
+          itemType: tutorial
+          text: Egyetlen erdő integrálása egyetlen Azure AD-bérlővel
+        - url: ./cloud-sync/how-to-install.md
+          itemType: how-to-guide
+          text: A Azure AD Connect ügynök telepítése
+      footerLink:
+        url: ./cloud-sync/index.yml
+        text: Részletek
+    - title: Feltételes hozzáférés
+      links:
+        - url: ./conditional-access/overview.md
+          itemType: overview
+          text: Mi az a feltételes hozzáférés?
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: quickstart
+          text: MFA megkövetelése adott alkalmazásokhoz
+        - url: ./conditional-access/location-condition.md
+          itemType: concept
+          text: Feltételek hely szerint
+      footerLink:
+        url: ./conditional-access/index.yml
+        text: Részletek
+    - title: Eszközfelügyelet
+      links:
+        - url: ./devices/overview.md
+          itemType: overview
+          text: Mi az az eszközfelügyelet?
+        - url: ./devices/hybrid-azuread-join-plan.md
+          itemType: how-to-guide
+          text: Hibrid Azure AD-csatlakozás megtervezése
+        - url: ./devices/azureadjoin-plan.md
+          itemType: how-to-guide
+          text: Azure AD-csatlakozás megtervezése
+      footerLink:
+        url: ./devices/index.yml
+        text: Részletek
+    - title: Tartományi szolgáltatások
+      links:
+        - url: ../active-directory-domain-services/overview.md
+          itemType: overview
+          text: Mi az Azure AD tartományi szolgáltatások?
+        - url: ../active-directory-domain-services/tutorial-create-instance.md
+          itemType: quickstart
+          text: Az Azure AD tartományi szolgáltatások engedélyezése
+        - url: ../active-directory-domain-services/manage-group-policy.md
+          itemType: how-to-guide
+          text: Csoportszabályzat-felügyelet
+      footerLink:
+        url: ../active-directory-domain-services/index.yml
+        text: Részletek
+    - title: Vállalati felhasználók
+      links:
+        - url: ./enterprise-users/groups-create-rule.md
+          itemType: how-to-guide
+          text: Dinamikus csoport létrehozása
+        - url: ./enterprise-users/groups-settings-v2-cmdlets.md
+          itemType: how-to-guide
+          text: PowerShell Azure AD-csoportokhoz
+        - url: ./enterprise-users/directory-service-limits-restrictions.md
+          itemType: reference
+          text: Azure AD szolgáltatási korlátozások
+      footerLink:
+        url: ./enterprise-users/index.yml
+        text: Részletek
+    - title: External Identities
+      links:
+        - url: ./external-identities/compare-with-b2c.md
+          itemType: overview
+          text: Külső felhasználóknak szánt megoldások összehasonlítása
+        - url: ../active-directory-b2c/overview.md
+          itemType: overview
+          text: Alkalmazások skálázása a fogyasztóknak megfelelően (B2C)
+        - url: ./external-identities/what-is-b2b.md
+          itemType: overview
+          text: Együttműködés cégen kívüli felhasználókkal (B2B)
+      footerLink:
+        url: ./external-identities/index.yml
+        text: Részletek
+    - title: Hibrid identitás
+      links:
+        - url: ./hybrid/whatis-hybrid-identity.md
+          itemType: overview
+          text: Mi az a hibrid identitás?
+        - url: ./hybrid/how-to-connect-sso.md
+          itemType: how-to-guide
+          text: Egyszeri bejelentkezés az Azure AD Connecttel
+        - url: ./hybrid/how-to-connect-install-custom.md
+          itemType: how-to-guide
+          text: Az Azure AD Connect egyéni telepítése
+      footerLink:
+        url: ./hybrid/index.yml
+        text: Részletek
+    - title: Identitáskezelés
+      links:
+        - url: ./governance/entitlement-management-access-package-first.md
+          itemType: how-to-guide
+          text: Hozzáférési csomag létrehozása
+        - url: ./governance/create-access-review.md
+          itemType: how-to-guide
+          text: Csoport vagy alkalmazás hozzáférési felülvizsgálatának létrehozása
+        - url: ./conditional-access/terms-of-use.md
+          itemType: how-to-guide
+          text: Használati feltételek elfogadtatása a felhasználókkal
+      footerLink:
+        url: ./governance/index.yml
+        text: Részletek
+    - title: Identitásvédelem
+      links:
+        - url: ./identity-protection/overview-identity-protection.md
+          itemType: overview
+          text: Mi az az identitásvédelem?
+        - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+          itemType: how-to-guide
+          text: Kockázati szabályzatok beállítása
+        - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
+          itemType: how-to-guide
+          text: Felhasználók tiltásának feloldása
+      footerLink:
+        url: ./identity-protection/index.yml
+        text: Részletek
+    - title: Azure-erőforrások felügyelt identitásai
+      links:
+        - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
+          itemType: tutorial
+          text: Windows rendszerű virtuális gép használata az Azure SQL eléréséhez
+        - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
+          itemType: how-to-guide
+          text: Azure-beli virtuális gép használata jogkivonat beszerzéséhez
+        - url: ./managed-identities-azure-resources/services-support-managed-identities.md
+          itemType: concept
+          text: A felügyelt identitást támogató szolgáltatások
+      footerLink:
+        url: ./managed-identities-azure-resources/index.yml
+        text: Részletek
+    - title: Microsoft-identitásplatform
+      links:
+        - url: ./develop/v2-overview.md
+          itemType: overview
+          text: A Microsoft identitásplatformja
+        - url: ./develop/v2-oauth2-auth-code-flow.md
+          itemType: concept
+          text: OAuth 2.0-kódfolyamat engedély
+        - url: ./develop/quickstart-register-app.md
+          itemType: quickstart
+          text: Alkalmazás regisztrálása a Microsoft identitásplatformján
+      footerLink:
+        url: ./develop/index.yml
+        text: Részletek
+    - title: Privileged Identity Management (PIM)
+      links:
+        - url: ./privileged-identity-management/pim-getting-started.md
+          itemType: how-to-guide
+          text: Ismerkedés a PIM-mel
+        - url: ./privileged-identity-management/pim-how-to-activate-role.md
+          itemType: how-to-guide
+          text: Címtárbeli szerepkörök aktiválása
+        - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
+          itemType: how-to-guide
+          text: Címtárbeli szerepkörök hozzárendelése
+      footerLink:
+        url: ./privileged-identity-management/index.yml
+        text: Részletek
+    - title: Jelentések és monitorozás
+      links:
+        - url: ./reports-monitoring/concept-audit-logs.md
+          itemType: concept
+          text: Naplók
+        - url: ./reports-monitoring/concept-sign-ins.md
+          itemType: concept
+          text: Bejelentkezési naplók
+        - url: ./reports-monitoring/reference-sign-ins-error-codes.md
+          itemType: reference
+          text: Bejelentkezési hibakódok – referencia
+      footerLink:
+        url: ./reports-monitoring/index.yml
+        text: Részletek
+    - title: Szerepkörök
+      links:
+        - url: ./roles/groups-assign-role.md
+          itemType: concept
+          text: Az Azure AD-szerepkörök ismertetése
+        - url: ./roles/concept-understand-roles.md
+          itemType: how-to-guide
+          text: Egyéni szerepkör létrehozása
+        - url: ./roles/groups-view-assignments.md
+          itemType: reference
+          text: Csoporthoz hozzárendelt szerepkörök megtekintése
+      footerLink:
+        url: ./roles/index.yml
+        text: Részletek
+    - title: Külső alkalmazások
+      links:
+        - url: ./saas-apps/amazon-web-service-tutorial.md
+          itemType: tutorial
+          text: Az Azure AD egyszeri bejelentkezés integrálása az Amazon Web Servicesszel
+        - url: ./saas-apps/workday-inbound-tutorial.md
+          itemType: tutorial
+          text: Workday konfigurálása a felhasználók automatikus átadásához
+        - url: ./develop/v2-howto-app-gallery-listing.md
+          itemType: get-started
+          text: Kérelem az alkalmazás katalógushoz adására vonatkozóan
+      footerLink:
+        url: ./saas-apps/tutorial-list.md
+        text: Több alkalmazás megjelenítése
 additionalContent:
   sections:
-  - items:
-    - title: Microsoft 365
-      summary: Ismerkedjen meg a Microsoft 365-tel, egy teljes körű megoldással, amely az Azure AD-t is tartalmazza.
-      url: /microsoft-365/
-    - title: Azure AD PowerShell
-      summary: Itt elsajátíthatja az Azure AD PowerShell modul telepítését és használatát.
-      url: /powershell/module/azuread/
-    - title: Azure CLI-parancsok az Azure AD-hez
-      summary: Keresse meg az Azure AD-parancsokat a parancssori felület referenciájában.
-      url: /cli/azure/ad
+    - items:
+        - title: Microsoft 365
+          summary: 'Ismerkedjen meg a Microsoft 365-tel, egy teljes körű megoldással, amely az Azure AD-t is tartalmazza.'
+          url: /microsoft-365/
+        - title: Azure AD PowerShell
+          summary: Itt elsajátíthatja az Azure AD PowerShell modul telepítését és használatát.
+          url: /powershell/module/azuread/
+        - title: Azure CLI-parancsok az Azure AD-hez
+          summary: Keresse meg az Azure AD-parancsokat a parancssori felület referenciájában.
+          url: /cli/azure/ad

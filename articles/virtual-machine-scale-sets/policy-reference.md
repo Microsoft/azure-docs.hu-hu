@@ -1,24 +1,24 @@
 ---
-title: Beépített szabályzat-definíciók az Azure-beli virtuálisgép-méretezési csoportokhoz
-description: Az Azure virtuálisgép-méretezési csoportok beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók azure-beli virtuálisgép-méretezési készletekhez
+description: Felsorolja Azure Policy Azure-beli virtuálisgép-méretezési készletek beépített szabályzatdefinícióit. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b42d6355a5f3fad3ae88239229cf588e449c1e2b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 638d44f32084aed066690219eddb5f8613f8d1e4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092209"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503711"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Az Azure virtuálisgép-méretezési csoportok beépített definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Azure Policy Azure-beli virtuálisgép-méretezési készletek beépített definíciói
 
-Ez az oldal az Azure virtuálisgép-méretezési csoportok beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
+Ez az oldal az [Azure-beli virtuálisgép-méretezési Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
