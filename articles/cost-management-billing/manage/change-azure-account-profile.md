@@ -1,21 +1,21 @@
 ---
 title: Azure-beli számlázási fiók kapcsolattartási adatainak módosítása
 description: Ez a cikk ismerteti, hogyan módosíthatók az Azure-beli számlázási fiókban megadott kapcsolattartási adatok
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033937"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480902"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure-beli számlázási fiók kapcsolattartási adatainak módosítása
 
@@ -64,6 +64,21 @@ Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adata
     ![Képernyőkép a címfrissítési lehetőség helyéről](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Adja meg az új címet, majd válassza a **Mentés** parancsot.  
     ![Képernyőkép a cím frissítéséről](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>Rendelésszám frissítése
+
+Alapértelmezés szerint a számlázási profilhoz tartozó számlákhoz nincs rendelésszám társítva. Miután hozzáadta a számlázási profil rendelési számát, az megjelenik a számlázási profilhoz tartozó számlákon.
+
+A számlázási profil rendelésszámának hozzáadásához vagy változásához kövesse az alábbi lépéseket.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a **Cost Management + Billing,** majd válassza a **Számlázási hatókörök lehetőséget.**
+1. Válassza ki a számlázási hatókört.
+1. A bal oldali menü Számlázás **menüjében válassza** a **Számlázási profilok lehetőséget.**
+1. Válassza ki a megfelelő számlázási profilt.
+1. A bal oldali menü Beállítások **menüjében válassza** a **Tulajdonságok lehetőséget.**
+1. Válassza **a Rendelésszám frissítése lehetőséget.**
+1. Adjon meg egy rendelésszámot, majd válassza a **Frissítés lehetőséget.**
 
 ## <a name="service-and-marketing-emails"></a>Szolgáltatás és marketing e-mailek
 

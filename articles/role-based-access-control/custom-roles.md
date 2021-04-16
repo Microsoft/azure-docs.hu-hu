@@ -1,6 +1,6 @@
 ---
 title: Egyéni Azure-szerepkörök – Azure RBAC
-description: Ismerje meg, hogyan hozhat létre Azure-beli egyéni szerepköröket az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) az Azure-erőforrások részletes hozzáférés-kezeléséhez.
+description: Megtudhatja, hogyan hozhat létre egyéni Azure-szerepköröket az Azure szerepköralapú hozzáférés-vezérlésével (Azure RBAC) az Azure-erőforrások hozzáférés-felügyeletének finomhangolt kezeléséhez.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9779c2a269902d856d1639ce78028d0e658656bb
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97617323"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479831"
 ---
 # <a name="azure-custom-roles"></a>Egyéni Azure-szerepkörök
 
 > [!IMPORTANT]
-> A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
+> A felügyeleti csoport hozzáadása jelenleg `AssignableScopes` előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz a felügyeleti csoport, az előfizetés és az erőforráscsoport hatókörében.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnie meg a szervezet igényeinek, létrehozhatja saját egyéni szerepköreit. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet felhasználókhoz, csoportokhoz és szolgáltatásnévhez a felügyeleti csoport (csak előzetes verzióban), az előfizetés és az erőforráscsoport hatókörében.
 
-Az egyéni szerepkörök megoszthatók az azonos Azure AD-címtárban megbízható előfizetések között. A címtárban legfeljebb **5 000** egyéni szerepkör lehet. (Az Azure Germany és az Azure China 21Vianet esetében a korlát 2 000 egyéni szerepkör.) Egyéni szerepkörök hozhatók létre a Azure Portal, a Azure PowerShell, az Azure CLI vagy a REST API használatával.
+Az egyéni szerepkörök megoszthatóak olyan előfizetések között, amelyek megbíznak ugyanabban az Azure AD-címtárban. Címtáranként **5000** egyéni szerepkör van korlátozva. (Az Azure Germany és Azure China 21Vianet esetében a korlát 2000 egyéni szerepkör.) Egyéni szerepkörök a következő szolgáltatásokkal Azure Portal, Azure PowerShell Azure CLI-vel vagy a REST API.
 
-## <a name="steps-to-create-a-custom-role"></a>Egyéni szerepkör létrehozásának lépései
+## <a name="steps-to-create-a-custom-role"></a>Egyéni szerepkör létrehozásához szükséges lépések
 
-Az alábbiakban az egyéni szerepkörök létrehozásához szükséges alapvető lépések láthatók.
+Az egyéni szerepkör létrehozásához szükséges alapvető lépések a következőek.
 
 1. Határozza meg a szükséges engedélyeket.
 
-    Egyéni szerepkör létrehozásakor ismernie kell az engedélyek definiálásához elérhető műveleteket. Általában egy meglévő beépített szerepkörrel kell kezdenie, majd módosítania kell az igényeinek megfelelően. Adja hozzá a műveleteket a `Actions` `NotActions` szerepkör- [definíció](role-definitions.md)vagy tulajdonságaihoz. Ha rendelkezik adatműveletekkel, ezeket a vagy tulajdonságokat adja hozzá `DataActions` `NotDataActions` .
+    Egyéni szerepkör létrehozásakor meg kell határoznia az engedélyek meghatározásához rendelkezésre álló műveleteket. Általában egy meglévő beépített szerepkörből indul ki, majd az igényeinek megfelelően módosítja azt. A műveleteket hozzá fogja adni a szerepkör-definíció `Actions` vagy `NotActions` [tulajdonságaihoz.](role-definitions.md) Ha rendelkezik adatműveletekkel, ezeket hozzá kell adni a vagy a `DataActions` `NotDataActions` tulajdonsághoz.
 
-    További információt a következő szakaszban talál [a szükséges engedélyek meghatározásáról](#how-to-determine-the-permissions-you-need).
+    További információért tekintse meg a szükséges engedélyek meghatározásának [következő szakaszát.](#how-to-determine-the-permissions-you-need)
 
 1. Döntse el, hogyan szeretné létrehozni az egyéni szerepkört.
 
-    Egyéni szerepköröket [Azure Portal](custom-roles-portal.md), [Azure POWERSHELL](custom-roles-powershell.md), [Azure CLI](custom-roles-cli.md)vagy a [REST API](custom-roles-rest.md)használatával hozhat létre.
+    Egyéni szerepköröket a következő Azure Portal [hozhat](custom-roles-portal.md) [Azure PowerShell,](custom-roles-powershell.md) [az Azure CLI](custom-roles-cli.md)vagy a [REST API.](custom-roles-rest.md)
 
 1. Hozza létre az egyéni szerepkört.
 
-    A legegyszerűbb módszer a Azure Portal használata. Az egyéni szerepkörök a Azure Portal használatával történő létrehozásával kapcsolatos lépéseiért lásd: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése a Azure Portal használatával](custom-roles-portal.md).
+    A legegyszerűbb módszer a Azure Portal. Az egyéni szerepkörök létrehozásáról a Azure Portal az Egyéni [Azure-szerepkörök](custom-roles-portal.md)létrehozása vagy frissítése a Azure Portal.
 
-1. Tesztelje az egyéni szerepkört.
+1. Az egyéni szerepkör tesztelése.
 
-    Ha már rendelkezik az egyéni szerepkörrel, tesztelje, hogy a várt módon működik-e. Ha később módosítania kell a módosításokat, akkor frissítheti az egyéni szerepkört.
+    Ha már megvan az egyéni szerepköre, tesztelnie kell, hogy a vártnak megfelelő-e. Ha később módosításokat kell végeznie, frissítheti az egyéni szerepkört.
 
-## <a name="how-to-determine-the-permissions-you-need"></a>A szükséges engedélyek megállapítása
+## <a name="how-to-determine-the-permissions-you-need"></a>A szükséges engedélyek meghatározása
 
-Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Íme néhány módszer, amelyek segítségével meghatározhatja az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
+Az Azure több ezer olyan engedéllyel rendelkezik, amelyek az egyéni szerepkörbe foglalhatóak. Az alábbi módszerek segíthetnek meghatározni az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
 
-- Tekintse meg a meglévő [beépített szerepköröket](built-in-roles.md).
+- Nézze meg a [meglévő beépített szerepköröket.](built-in-roles.md)
 
-    Előfordulhat, hogy módosítani kíván egy meglévő szerepkört, vagy a több szerepkörben használt engedélyeket is össze kívánja állítani.
+    Előfordulhat, hogy módosítani szeretne egy meglévő szerepkört, vagy kombinálni szeretné a több szerepkörben használt engedélyeket.
 
-- Sorolja fel azokat az Azure-szolgáltatásokat, amelyekhez hozzáférést szeretne biztosítani.
+- Sorolja fel azokat az Azure-szolgáltatásokat, amelyekhez hozzáférést kíván biztosít.
 
-- Határozza meg az [Azure-szolgáltatásokhoz hozzárendelt erőforrás-szolgáltatókat](../azure-resource-manager/management/azure-services-resource-providers.md).
+- Határozza meg [az Azure-szolgáltatásokhoz leképező erőforrás-szolgáltatókat.](../azure-resource-manager/management/azure-services-resource-providers.md)
 
-    Az Azure-szolgáltatások [erőforrás-szolgáltatókon](../azure-resource-manager/management/overview.md)keresztül teszik elérhetővé szolgáltatásaikat és engedélyeiket. A Microsoft. számítási erőforrás-szolgáltató például szolgáltatja a virtuális gépek erőforrásait és a Microsoft. számlázási erőforrás-szolgáltató az előfizetési és számlázási erőforrásokat. Annak ismerete, hogy az erőforrás-szolgáltatók segíthetnek leszűkíteni és meghatározni az egyéni szerepkörhöz szükséges engedélyeket.
+    Az Azure-szolgáltatások funkciójukat és engedélyeiket az erőforrás-szolgáltatókon [keresztül teszi elérhetővé.](../azure-resource-manager/management/overview.md) A Microsoft.Compute erőforrás-szolgáltató például virtuálisgép-erőforrásokat, a Microsoft.Billing erőforrás-szolgáltató pedig előfizetési és számlázási erőforrásokat biztosít. Az erőforrás-szolgáltatók ismerete segíthet leszűkíteni és meghatározni az egyéni szerepkörhöz szükséges engedélyeket.
 
-    Ha a Azure Portal használatával hoz létre egyéni szerepkört, akkor az erőforrás-szolgáltatókat kulcsszavak keresésével is meghatározhatja. Ez a keresési funkció az [Azure egyéni szerepkörök létrehozása vagy frissítése a Azure Portal használatával](custom-roles-portal.md#step-4-permissions)című témakörben található.
+    Amikor egyéni szerepkört hoz létre a Azure Portal, kulcsszavak kereséssel is meghatározhatja az erőforrás-szolgáltatókat. Ennek a keresési funkciónak a leírását az [Egyéni Azure-szerepkörök](custom-roles-portal.md#step-4-permissions)létrehozása vagy frissítése a Azure Portal.
 
-    ![Engedélyek hozzáadása ablaktábla erőforrás-szolgáltatóval](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Engedélyek hozzáadása panel erőforrás-szolgáltatóval](./media/custom-roles-portal/add-permissions-provider.png)
 
-- Keresse meg az [elérhető engedélyeket](resource-provider-operations.md) a felvenni kívánt engedélyek megkereséséhez.
+- Az elérhető [engedélyek között keresse](resource-provider-operations.md) meg a kívánt engedélyeket.
 
-    Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Az összes engedélyt CSV-fájlként is letöltheti, majd megkeresheti a fájlt. Ez a keresési funkció az [Azure egyéni szerepkörök létrehozása vagy frissítése a Azure Portal használatával](custom-roles-portal.md#step-4-permissions)című témakörben található.
+    Amikor egyéni szerepkört hoz létre a Azure Portal, kulcsszó alapján kereshet rá az engedélyekre. Kereshet például virtuális gépre *vagy* számlázási *engedélyekre.* Az engedélyeket CSV-fájlként is letöltheti, majd ebben a fájlban kereshet. Ennek a keresési funkciónak a leírását az [Egyéni Azure-szerepkörök](custom-roles-portal.md#step-4-permissions)létrehozása vagy frissítése a Azure Portal.
 
-    ![Engedélyek listájának hozzáadása](./media/custom-roles-portal/add-permissions-list.png)
+    ![Engedélylista hozzáadása](./media/custom-roles-portal/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>Példa egyéni szerepkörre
 
-Az alábbi ábrán látható, hogyan néz ki egy egyéni szerepkör a Azure PowerShell JSON formátumban történő megjelenítéséhez. Ezt az egyéni szerepkört a virtuális gépek figyelésére és újraindítására használhatja.
+Az alábbiakban egy egyéni szerepkör látható, ahogyan az Azure PowerShell JSON formátumban jelenik meg. Ez az egyéni szerepkör a virtuális gépek monitorozására és újraindítására használható.
 
 ```json
 {
@@ -107,7 +107,7 @@ Az alábbi ábrán látható, hogyan néz ki egy egyéni szerepkör a Azure Powe
 }
 ```
 
-A következő az Azure CLI használatával megjelenő egyéni szerepkört jeleníti meg.
+Az alábbiakban az Azure CLI használatával megjelenített egyéni szerepkör látható.
 
 ```json
 [
@@ -147,29 +147,29 @@ A következő az Azure CLI használatával megjelenő egyéni szerepkört jelen�
 ]
 ```
 
-Ha egyéni szerepkört hoz létre, az Azure Portal narancssárga erőforrás ikonnal jelenik meg.
+Amikor létrehoz egy egyéni szerepkört, az megjelenik a Azure Portal egy narancssárga erőforrás ikonnal.
 
-![Egyéni szerepkör ikonja](./media/custom-roles/roles-custom-role-icon.png)
+![Egyéni szerepkör ikon](./media/custom-roles/roles-custom-role-icon.png)
 
 ## <a name="custom-role-properties"></a>Egyéni szerepkör tulajdonságai
 
-A következő táblázat leírja, hogy az egyéni szerepkör tulajdonságai mit jelentenek.
+Az alábbi táblázat ismerteti, hogy mit jelentenek az egyéni szerepkör tulajdonságai.
 
 | Tulajdonság | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- |
-| `Name`</br>`roleName` | Igen | Sztring | Az egyéni szerepkör megjelenített neve. Habár a szerepkör-definíció egy felügyeleti csoport vagy előfizetési szintű erőforrás, a szerepkör-definíció több előfizetésben is használható, amelyek ugyanazt az Azure AD-címtárral rendelkeznek. Ennek a megjelenítendő névnek egyedinek kell lennie az Azure AD-címtár hatókörében. Tartalmazhat betűket, számokat, szóközöket és speciális karaktereket is. A karakterek maximális száma 128. |
-| `Id`</br>`name` | Igen | Sztring | Az egyéni szerepkör egyedi azonosítója. A Azure PowerShell és az Azure CLI esetében ez az azonosító automatikusan létrejön, amikor új szerepkört hoz létre. |
-| `IsCustom`</br>`roleType` | Igen | Sztring | Azt jelzi, hogy ez egy egyéni szerepkör-e. `true` `CustomRole` Egyéni szerepkörökhöz vagy értékhez. `false` `BuiltInRole` Beépített szerepkörökhöz vagy értékhez. |
-| `Description`</br>`description` | Igen | Sztring | Az egyéni szerepkör leírása. Tartalmazhat betűket, számokat, szóközöket és speciális karaktereket is. A karakterek maximális száma 1024. |
-| `Actions`</br>`actions` | Yes | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza, hogy a szerepkör milyen kezelési műveleteket hajtson végre. További információ: [műveletek](role-definitions.md#actions). |
-| `NotActions`</br>`notActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az engedélyezetttől kizárt felügyeleti műveleteket `Actions` . További információkért lásd: a nem- [tapintatok](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha egyéni szerepkört hoz létre a `DataActions` alkalmazással, a szerepkör nem rendelhető hozzá a felügyeleti csoport hatóköréhez. További információ: [DataActions](role-definitions.md#dataactions). |
-| `NotDataActions`</br>`notDataActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely az engedélyezetttől kizárt adatműveleteket határozza meg `DataActions` . További információ: [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes`</br>`assignableScopes` | Yes | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az egyéni szerepkör hozzárendeléshez elérhető hatóköreit. Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el. További információ: [AssignableScopes](role-definitions.md#assignablescopes). |
+| `Name`</br>`roleName` | Igen | Sztring | Az egyéni szerepkör megjelenített neve. Bár a szerepkör-definíció egy felügyeleti csoport vagy előfizetés szintű erőforrás, egy szerepkör-definíció több olyan előfizetésben is használható, amelyek ugyanazt az Azure AD-címtárat használják. Ennek a megjelenített névnek egyedinek kell lennie az Azure AD-címtár hatókörében. Betűket, számokat, szóközöket és speciális karaktereket tartalmazhat. A karakterek maximális száma 128. |
+| `Id`</br>`name` | Igen | Sztring | Az egyéni szerepkör egyedi azonosítója. A Azure PowerShell Azure CLI-hez és az Azure CLI-hez a rendszer automatikusan létrehozza ezt az azonosítót, amikor új szerepkört hoz létre. |
+| `IsCustom`</br>`roleType` | Igen | Sztring | Azt jelzi, hogy egyéni szerepkörről van-e szó. Egyéni `true` szerepkörökhöz állítsa a vagy `CustomRole` a beállítását. A beépített szerepkörökhöz állítsa vagy a `false` `BuiltInRole` következőt: . |
+| `Description`</br>`description` | Igen | Sztring | Az egyéni szerepkör leírása. Betűket, számokat, szóközöket és speciális karaktereket tartalmazhat. A karakterek maximális száma 1024. |
+| `Actions`</br>`actions` | Igen | Sztring[] | Sztringek tömbje, amely meghatározza a szerepkör által elvégezhető felügyeleti műveleteket. További információ: [Műveletek.](role-definitions.md#actions) |
+| `NotActions`</br>`notActions` | Nem | Sztring[] | Sztringek tömbje, amely meghatározza az engedélyezettből kizárt felügyeleti `Actions` műveleteket. További információ: [NotActions.](role-definitions.md#notactions) |
+| `DataActions`</br>`dataActions` | Nem | Sztring[] | Sztringek tömbje, amely meghatározza azokat az adatműveleteket, amelyek a szerepkör számára lehetővé teszik az adatokon való végrehajtásához az adott objektumon belül. Ha a segítségével hoz létre egyéni szerepkört, az nem rendelhető hozzá `DataActions` a felügyeleti csoport hatókörében. További információ: [DataActions.](role-definitions.md#dataactions) |
+| `NotDataActions`</br>`notDataActions` | Nem | Sztring[] | Sztringek tömbje, amely meghatározza az engedélyezettből kizárt adatműveleteket. `DataActions` További információ: [NotDataActions.](role-definitions.md#notdataactions) |
+| `AssignableScopes`</br>`assignableScopes` | Igen | Sztring[] | Sztringek tömbje, amely meghatározza azokat a hatóköreket, amelyek hozzárendelése az egyéni szerepkör számára elérhető. Egy egyéni szerepkörben csak egy felügyeleti csoportot `AssignableScopes` definiálhat. A felügyeleti csoport hozzáadása jelenleg `AssignableScopes` előzetes verzióban érhető el. További információ: [AssignableScopes.](role-definitions.md#assignablescopes) |
 
-## <a name="wildcard-permissions"></a>Helyettesítő karakteres engedélyek
+## <a name="wildcard-permissions"></a>Helyettesítő karakterek engedélyei
 
-`Actions`, `NotActions` , `DataActions` és `NotDataActions` támogatja a helyettesítő karaktereket ( `*` ) az engedélyek definiálásához. A helyettesítő karakter ( `*` ) minden olyan engedélyt kiterjeszt, amely megfelel az Ön által megadott műveleti karakterláncnak. Tegyük fel például, hogy hozzá kívánja adni a Azure Cost Management és az exportáláshoz kapcsolódó összes engedélyt. Az összes művelet sztringjét hozzáadhatja:
+`Actions`, `NotActions` , és támogatja a helyettesítő `DataActions` `NotDataActions` karaktereket ( ) az engedélyek `*` meghatározásához. A helyettesítő karakter () minden olyan műveletre kiterjeszti az engedélyt, amely megfelel az Ön `*` által adott műveletsringnek. Tegyük fel például, hogy a hozzáféréshez és az exportáláshoz kapcsolódó összes Azure Cost Management hozzá. Az alábbi műveletsringeket is hozzáadhatja:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -179,49 +179,49 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-A karakterláncok hozzáadása helyett csak helyettesítő sztringet adhat hozzá. A következő helyettesítő karakterlánc például az előző öt sztringnek felel meg. Ez magában foglalja az esetleg hozzáadott jövőbeli exportálási engedélyeket is.
+Az összes sztring hozzáadása helyett hozzáadhat egy helyettesítő karakteres sztringet is. Az alábbi helyettesítő karakteres sztring például az előző öt sztringnek felel meg. Ez a jövőbeli exportálási engedélyekre is kiterjed, amelyek hozzáadhatók.
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Egy karakterláncban több helyettesítő karakter is használható. A következő karakterlánc például a Cost Management összes lekérdezési engedélyét jelöli.
+Egy sztringben több helyettesítő karakter is lehet. Az alábbi sztring például az összes lekérdezési engedélyt Cost Management.
 
 ```
 Microsoft.CostManagement/*/query/*
 ```
 
-## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kik hozhatnak létre, törölhetnek, frissíthetnek vagy tekinthetnek meg egyéni szerepköröket
+## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Ki hozhat létre, törölhet, frissíthet vagy megtekinthet egyéni szerepkört?
 
-A beépített szerepkörökhöz hasonlóan a `AssignableScopes` tulajdonság határozza meg azokat a hatóköröket, amelyekhez a szerepkör elérhető a hozzárendeléshez. Az `AssignableScopes` Egyéni szerepkör tulajdonsága azt is meghatározza, hogy ki hozhatja létre, törölheti, frissítheti vagy megtekintheti az egyéni szerepkört.
+A beépített szerepkörökhöz hasonló tulajdonság határozza meg, hogy a szerepkör milyen hatókörökhöz érhető `AssignableScopes` el hozzárendeléshez. Az egyéni szerepkör tulajdonsága azt is szabályozza, hogy ki hozhat `AssignableScopes` létre, törölhet, frissíthet vagy megtekinthet egyéni szerepkört.
 
 | Feladat | Művelet | Leírás |
 | --- | --- | --- |
-| Egyéni szerepkör létrehozása/törlése | `Microsoft.Authorization/ roleDefinitions/write` | Azok a felhasználók, akik ezt a műveletet az `AssignableScopes` Egyéni szerepkörön keresztül kaptak, létrehozhatnak (vagy törölhetnek) egyéni szerepköröket az adott hatókörökben való használatra. Például a felügyeleti csoportok, előfizetések és erőforráscsoportok [tulajdonosai](built-in-roles.md#owner) és [felhasználói hozzáférési rendszergazdái](built-in-roles.md#user-access-administrator) . |
-| Egyéni szerepkörök frissítése | `Microsoft.Authorization/ roleDefinitions/write` | Azok a felhasználók, akik ezt a műveletet az egyéni szerepkör mindegyikén megkapják, `AssignableScopes` frissíthetik az egyéni szerepköröket a hatókörökben. Például a felügyeleti csoportok, előfizetések és erőforráscsoportok [tulajdonosai](built-in-roles.md#owner) és [felhasználói hozzáférési rendszergazdái](built-in-roles.md#user-access-administrator) . |
-| Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinitions/read` | Azok a felhasználók, akik egy hatókörben engedélyezik ezt a műveletet, megtekinthetik az adott hatókörben való hozzárendeléshez elérhető egyéni szerepköröket. Az összes beépített szerepkör elérhetővé teszi az egyéni szerepköröket a hozzárendeléshez. |
+| Egyéni szerepkör létrehozása/törlése | `Microsoft.Authorization/ roleDefinitions/write` | Azok a felhasználók, akik az összes egyéni szerepkörhöz megadták ezt a műveletet, létrehozhatnak (vagy törölhet) egyéni szerepköröket az adott `AssignableScopes` hatókörökben való használatra. Például a [felügyeleti](built-in-roles.md#owner) csoportok, előfizetések és erőforráscsoportok tulajdonosai és felhasználói hozzáférés-rendszergazdái. [](built-in-roles.md#user-access-administrator) |
+| Egyéni szerepkörök frissítése | `Microsoft.Authorization/ roleDefinitions/write` | Azok a felhasználók, akik az összes egyéni szerepkörhöz megadták ezt a műveletet, frissítheti az egyéni `AssignableScopes` szerepköröket az adott hatókörökben. Például a [felügyeleti](built-in-roles.md#owner) csoportok, előfizetések és erőforráscsoportok tulajdonosai és felhasználói hozzáférés-rendszergazdái. [](built-in-roles.md#user-access-administrator) |
+| Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinitions/read` | Azok a felhasználók, akik egy hatókörben kapják meg ezt a műveletet, megtekinthetik az adott hatókörhöz hozzárendelhető egyéni szerepköröket. Az összes beépített szerepkör elérhetővé teszi az egyéni szerepköröket a hozzárendeléshez. |
 
 ## <a name="custom-role-limits"></a>Egyéni szerepkör korlátai
 
-Az alábbi lista az egyéni szerepkörökre vonatkozó korlátozásokat ismerteti.
+Az alábbi lista az egyéni szerepkörök korlátait ismerteti.
 
-- Minden címtárhoz legfeljebb **5000** egyéni szerepkör tartozhat.
-- Az Azure Germany és az Azure China 21Vianet az egyes könyvtárak esetében akár 2000 egyéni szerepkört is tartalmazhat.
-- `AssignableScopes`A gyökérszintű hatókör () nem állítható be `"/"` .
-- A alkalmazásban nem használhatók helyettesítő karakterek ( `*` ) `AssignableScopes` . Ez a helyettesítő karakteres korlátozás segít biztosítani, hogy a felhasználók nem tudják elérni a hatókört a szerepkör-definíció frissítésével.
-- Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
-- `DataActions`A felügyeleti csoport hatókörében nem lehet hozzárendelni egyéni szerepköröket.
-- Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében.
+- Minden címtár legfeljebb **5000 egyéni szerepkört** kaphat.
+- Az Azure Germany Azure China 21Vianet címtárak legfeljebb 2000 egyéni szerepkört használhatnak.
+- Nem állíthatja `AssignableScopes` be a gyökérhatókört ( `"/"` ).
+- A-ban nem használhat helyettesítő karaktereket ( `*` `AssignableScopes` ). Ez a helyettesítő karakteres korlátozás segít biztosítani, hogy a felhasználó ne fér hozzá egy hatókörhöz a szerepkör-definíció frissítésével.
+- Egy egyéni szerepkörben csak egy felügyeleti csoportot `AssignableScopes` definiálhat. A felügyeleti csoport hozzáadása jelenleg `AssignableScopes` előzetes verzióban érhető el.
+- Az egyéni `DataActions` szerepkörei nem rendelhetők hozzá a felügyeleti csoport hatókörében.
+- Azure Resource Manager nem ellenőrzi a felügyeleti csoport meglétét a szerepkör-definíció hozzárendelhető hatókörében.
 
-Az egyéni szerepkörökkel és felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
+További információ az egyéni szerepkörökről és felügyeleti csoportokról: [Erőforrások rendszerezése Azure-beli felügyeleti csoportokkal.](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)
 
 ## <a name="input-and-output-formats"></a>Bemeneti és kimeneti formátumok
 
-Ha a parancssorból szeretne egyéni szerepkört létrehozni, általában a JSON használatával határozza meg az egyéni szerepkörhöz használni kívánt tulajdonságokat. A használt eszközöktől függően a bemeneti és a kimeneti formátumok némileg eltérőek lesznek. Ez a szakasz az eszköztől függően megadja a bemeneti és kimeneti formátumokat.
+Ha a parancssor használatával szeretne egyéni szerepkört létrehozni, általában JSON használatával adhatja meg az egyéni szerepkör kívánt tulajdonságait. A használt eszközöktől függően a bemeneti és kimeneti formátumok kissé eltérőek lesznek. Ez a szakasz az eszköztől függően felsorolja a bemeneti és kimeneti formátumokat.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Ha Azure PowerShell használatával szeretne egyéni szerepkört létrehozni, a következő adatokat kell megadnia.
+Egyéni szerepkör létrehozásához a Azure PowerShell meg kell adnia a következő bemenetet.
 
 ```json
 {
@@ -235,7 +235,7 @@ Ha Azure PowerShell használatával szeretne egyéni szerepkört létrehozni, a 
 }
 ```
 
-Ha Azure PowerShell használatával szeretne egyéni szerepkört frissíteni, meg kell adnia a következő adatokat. Vegye figyelembe, hogy a `Id` tulajdonság hozzá lett adva. 
+Ha egyéni szerepkört a Azure PowerShell frissíteni, meg kell adnia a következő bemenetet. Figyelje `Id` meg, hogy a tulajdonság hozzá lett adva. 
 
 ```json
 {
@@ -250,7 +250,7 @@ Ha Azure PowerShell használatával szeretne egyéni szerepkört frissíteni, me
 }
 ```
 
-Az alábbi ábrán egy példa látható a kimenetre, amikor Azure PowerShell és a [ConvertTo-JSON](/powershell/module/microsoft.powershell.utility/convertto-json) parancs használatával egyéni szerepkört listáz. 
+Az alábbiakban egy példa látható a kimenetre, amikor egyéni szerepkört listához ad meg a Azure PowerShell és a [ConvertTo-Json paranccsal.](/powershell/module/microsoft.powershell.utility/convertto-json) 
 
 ```json
 {
@@ -268,7 +268,7 @@ Az alábbi ábrán egy példa látható a kimenetre, amikor Azure PowerShell és
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha egyéni szerepkört szeretne létrehozni vagy frissíteni az Azure CLI használatával, meg kell adnia a következő bemenetet. Ez a formátum ugyanaz, amikor egyéni szerepkört hoz létre Azure PowerShell használatával.
+Ha egyéni szerepkört hoz létre vagy frissít az Azure CLI használatával, meg kell adnia a következő bemenetet. Ez a formátum ugyanaz a formátum, mint amikor egyéni szerepkört hoz létre a Azure PowerShell.
 
 ```json
 {
@@ -282,7 +282,7 @@ Ha egyéni szerepkört szeretne létrehozni vagy frissíteni az Azure CLI haszn�
 }
 ```
 
-Az alábbi példa bemutatja a kimenetet, amikor egyéni szerepkört listáz az Azure CLI használatával.
+Az alábbiakban egy példát mutatunk be a kimenetre, amikor egyéni szerepkört sorol fel az Azure CLI használatával.
 
 ```json
 [
@@ -308,7 +308,7 @@ Az alábbi példa bemutatja a kimenetet, amikor egyéni szerepkört listáz az A
 
 ### <a name="rest-api"></a>REST API
 
-Egyéni szerepkör a REST API használatával történő létrehozásához vagy frissítéséhez a következő adatokat kell megadnia. Ez a formátum ugyanaz a formátum, amely akkor jön létre, amikor létrehoz egy egyéni szerepkört a Azure Portal használatával.
+Egyéni szerepkör létrehozásához vagy frissítéséhez a REST API meg kell adnia a következő bemenetet. Ez a formátum megegyezik a formátummal, amely akkor jön létre, amikor egyéni szerepkört hoz létre a Azure Portal.
 
 ```json
 {
@@ -328,7 +328,7 @@ Egyéni szerepkör a REST API használatával történő létrehozásához vagy 
 }
 ```
 
-Az alábbi példa bemutatja a kimenetet, amikor egyéni szerepkört listáz a REST API használatával.
+Az alábbiakban egy példát mutatunk be a kimenetre, amikor egyéni szerepkört sorol fel a REST API.
 
 ```json
 {
@@ -358,7 +358,7 @@ Az alábbi példa bemutatja a kimenetet, amikor egyéni szerepkört listáz a RE
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
-- [Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md)
-- [Az Azure szerepkör-definíciók ismertetése](role-definitions.md)
-- [Az Azure RBAC hibáinak megoldása](troubleshooting.md)
+- [Oktatóanyag: Egyéni Azure-szerepkör létrehozása a Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Oktatóanyag: Egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md)
+- [Az Azure-beli szerepkör-definíciók](role-definitions.md)
+- [Az Azure RBAC hibaelhárítása](troubleshooting.md)

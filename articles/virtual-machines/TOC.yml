@@ -172,7 +172,7 @@
               href: ev4-esv4-series.md
             - name: M sorozat
               href: m-series.md
-            - name: Msv2 és Mdsv2 Közepes memória sorozat
+            - name: Msv2 és Mdsv2 közepes memória sorozat
               href: msv2-mdsv2-series.md
             - name: Mv2 sorozat
               href: mv2-series.md
@@ -358,7 +358,7 @@
                   href: ./linux/tutorial-devops-azure-pipelines-classic.md
                 - name: A Canary üzembe helyezési stratégiájának konfigurálása
                   href: ./linux/tutorial-azure-devops-canary-strategy.md
-                - name: A Blue-Green stratégia konfigurálása
+                - name: Az Blue-Green-telepítési stratégia konfigurálása
                   href: ./linux/tutorial-azure-devops-blue-green-strategy.md
                 - name: CI/CD az Azure Pipelines (YAML) használatával
                   href: ./linux/tutorial-build-deploy-azure-pipelines.md
@@ -604,7 +604,7 @@
         - name: PowerShell
           displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
           href: ./windows/cli-ps-findimage.md
-        - name: Windows-ügyfél rendszerképe
+        - name: Windows-ügyfél lemezképek
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
         - name: Több-bérlős üzemeltetési jogosultságok Windows 10
@@ -615,7 +615,7 @@
         - name: Áttekintés
           displayName: 'Linux custom images, custom, image'
           href: ./linux/imaging.md
-        - name: Linux-alapú kiépítés
+        - name: Linux-kiépítés
           href: ./linux/provisioning.md
         - name: Linux-disztribúcióra vonatkozó követelmények
           items:
@@ -942,7 +942,7 @@
         - name: Vezénylési módok
           displayName: 'VMSS, flex, scale set, scale, virtual machine sacle set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
-    - name: 'A virtuális gépek újraindításának azokkal a műveletekkel, amelyek'
+    - name: A virtuális gépek újraindításának ért
       href: understand-vm-reboots.md
     - name: Állapotok és számlázás
       href: states-billing.md
@@ -955,7 +955,7 @@
       href: managed-disks-overview.md
     - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
       href: disks-types.md
-    - name: Lemezredundania beállításai
+    - name: Lemezredundans-beállítások
       href: disks-redundancy.md
     - name: Megosztott lemezek
       href: disks-shared.md
@@ -1106,7 +1106,7 @@
         - name: Lemezteljesítmény-szintek
           href: disks-change-performance.md
           displayname: 'Performance, cost, perf, disks, disk'
-        - name: Lemezteljesítmény-szint módosítása
+        - name: Lemezteljesítményszint módosítása
           items:
             - name: Parancssori felület és PowerShell
               href: disks-performance-tiers.md
@@ -1153,7 +1153,7 @@
             - name: PowerShell
               displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
-        - name: Áttelepítés prémium szintű SSD-kre Azure Site Recovery
+        - name: Mirate to premium SSDs with Azure Site Recovery
           items:
             - name: Linux
               displayName: Migrate to premium SSDs with Azure Site Recovery
@@ -1199,13 +1199,13 @@
         - name: Windows
           displayName: detach a disk
           href: ./windows/detach-disk.md
-    - name: Operációsrendszer-lemez kibontása
+    - name: Lemez kibontása
       items:
         - name: Linux
-          displayName: Expand OS disk
+          displayName: Expand a disk - Linux
           href: ./linux/expand-disks.md
         - name: Windows
-          displayName: Expand OS disk
+          displayName: Expand a disk - Windows
           href: ./windows/expand-os-disk.md
     - name: Tárhely kezelése
       items:
@@ -1214,7 +1214,7 @@
           href: using-managed-disks-template-deployments.md
         - name: Lemez biztonságos importálása/exportálása
           items:
-            - name: Privát hivatkozások konfigurálása lemezekhez – CLI
+            - name: Magánhálózati hivatkozások konfigurálása lemezekhez – CLI
               href: ./linux/disks-export-import-private-links-cli.md
             - name: Magánhálózati hivatkozások konfigurálása lemezekhez – Portál
               href: disks-enable-private-links-for-import-export-portal.md
@@ -1232,7 +1232,7 @@
                   href: ./windows/download-vhd.md
         - name: A Storage Explorer használata lemezek kezelésére
           href: disks-use-storage-explorer-managed-disks.md
-        - name: Az operációsrendszer-lemez felcserélve – CLI
+        - name: Az operációsrendszer-lemez felcserélte – CLI
           href: ./linux/os-disk-swap.md
         - name: Az operációsrendszer-lemez felcserélve – PowerShell
           href: ./windows/os-disk-swap.md
@@ -1267,7 +1267,7 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Felügyelt lemez másolása előfizetésen vagy előfizetésen
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
-            - name: Pillanatkép másolása ugyanoda vagy egy másik előfizetésbe
+            - name: Pillanatkép másolása előfizetésen vagy előfizetésen
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
@@ -1279,7 +1279,7 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Felügyelt lemez létrehozása pillanatképből
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
-            - name: Pillanatkép másolása ugyanoda vagy egy másik előfizetésbe
+            - name: Pillanatkép másolása előfizetésen vagy előfizetésen
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
@@ -1405,7 +1405,7 @@
               href: ./windows/key-vault-setup.md
     - name: Spekulatív végrehajtás kockázatának csökkentése
       href: mitigate-se.md
-    - name: Linux rendszerű virtuális gép csatlakozása Azure Active Directory
+    - name: Linux rendszerű virtuális gép Azure Active Directory
       displayName: Azure AD
       items:
         - name: Red Hat Enterprise Linux
@@ -1449,7 +1449,7 @@
         - name: Áttekintés
           displayName: 'Automatic OS image upgrade, image, upgrade, OS'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-        - name: Az operációs rendszer rendszerképének frissítésére vonatkozó karbantartás-vezérlés
+        - name: Az operációsrendszer-lemezkép frissítésének karbantartásvezérlése
           items:
             - name: Áttekintés (Előzetes verzió)
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
@@ -1462,7 +1462,7 @@
         - name: Áttekintés
           displayName: 'Automatic VM guest patching, guest, OS, patching'
           href: automatic-vm-guest-patching.md
-        - name: Gyorsjavítás
+        - name: Hotpatch (Gyorsjavítás)
           displayName: 'patching, patch, update'
           href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
     - name: Automatikus bővítményfrissítés (előzetes verzió)

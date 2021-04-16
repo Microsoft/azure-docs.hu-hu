@@ -27,12 +27,12 @@
         - name: Migrálás minimális állásidővel a DMS használatával
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
-        - name: Áttelepítés Oracle-ből
+        - name: Áttelepítés Oracle-ről
           href: howto-migrate-from-oracle.md
     - name: Verziókezelési szabályzat
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
-    - name: Ismert problémák & korlátozásokkal kapcsolatban
+    - name: Ismert problémák & korlátozásai
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
 - name: Önálló kiszolgáló
@@ -215,7 +215,7 @@
             - name: Teljesítménnyel kapcsolatos javaslatok
               href: concepts-performance-recommendations.md
               displayName: 'query store, performance, optimize, recommendations'
-            - name: Javaslatok Azure Advisor
+            - name: Azure Advisor javaslatok
               href: concepts-azure-advisor-recommendations.md
         - name: Alkalmazásfejlesztés
           items:
@@ -684,6 +684,10 @@
             - name: Hozzáférés az adatbázisnaplókhoz
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Kiszolgálócsoport visszaállítása
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-restore-portal.md
         - name: Főverzió-frissítések
           href: howto-hyperscale-upgrade.md
         - name: Hibaelhárítás

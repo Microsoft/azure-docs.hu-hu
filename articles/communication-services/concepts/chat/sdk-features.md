@@ -1,7 +1,7 @@
 ---
-title: A csevegő SDK áttekintése az Azure kommunikációs szolgáltatásokhoz
+title: Csevegési SDK áttekintése Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Ismerje meg az Azure kommunikációs szolgáltatások csevegési SDK-t.
+description: További információ a Azure Communication Services SDK-val kapcsolatban.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,63 +9,63 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168875"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500685"
 ---
-# <a name="chat-sdk-overview"></a>A csevegési SDK áttekintése 
+# <a name="chat-sdk-overview"></a>Csevegési SDK – áttekintés 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
-Az Azure kommunikációs szolgáltatások csevegési SDK-k használatával gazdag, valós idejű csevegést adhat hozzá az alkalmazásaihoz.
+Azure Communication Services csevegési SDK-k segítségével gazdag, valós idejű csevegést adhat az alkalmazásokhoz.
     
 ## <a name="chat-sdk-capabilities"></a>Csevegési SDK-képességek    
 
-A következő lista a kommunikációs szolgáltatások csevegési SDK-ban jelenleg elérhető funkciók készletét mutatja be.  
+Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a Communication Services-SDK-kban.  
 
-| Szolgáltatások csoportja | Képesség | JavaScript  | Java | .NET | Python | iOS | Android |
+| Funkciók csoportja | Képesség | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
 | Alapvető képességek | Csevegési szál létrehozása 2 vagy több felhasználó között                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
 |                   | Csevegési szál témakörének frissítése                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Résztvevők hozzáadása vagy eltávolítása csevegési szálból                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-|                   | Válassza ki, hogy meg szeretné-e osztani a csevegési előzményeket a hozzáadott résztvevővel                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
-|                   | Csevegési szál résztvevőinek listájának beolvasása                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
-|                   | Csevegési szál törlése                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | Adott kommunikációs felhasználó, a csevegési szálak listájának beolvasása, amelyhez a felhasználó tartozik                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Egy adott csevegési szál adatainak beolvasása                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Üzenetek küldése és fogadása csevegési szálban                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Résztvevők hozzáadása vagy eltávolítása egy csevegési szálból                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Annak kiválasztása, hogy megossa-e a csevegési üzenetek előzményeit a hozzáadott résztvevővel                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Egy csevegés résztvevőinek listájának lekért listája                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
+|                   | Csevegés törlése                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Egy kommunikációs felhasználónak meg kell kapnia azon csevegési szálak listáját, amelyekhez a felhasználó a tagja                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Egy adott csevegési szálra vonatkozó információk lekérte                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Üzenetek küldése és fogadása egy csevegésben                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Az elküldött üzenet tartalmának frissítése                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | Korábban elküldött üzenet törlése                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
-|                   | Olvasási visszaigazolás a csevegés más résztvevőinek által olvasott üzenetekhez                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Értesítés küldése, ha a résztvevők aktívan beírják az üzenetet egy csevegési szálba                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Csevegési szál összes üzenetének beolvasása                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
-|                   | Unicode-hangulatjelek küldése az üzenet tartalmának részeként                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Valós idejű értesítések (a tulajdonosi jelzési csomaggal * *)|  A csevegési ügyfelek előfizethetnek a beérkező üzenetek és a csevegési szálban előforduló egyéb műveletek valós idejű frissítéseinek beszerzésére. A valós idejű értesítések támogatott frissítéseinek listáját itt tekintheti meg: [csevegési fogalmak](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
-| Integráció a Azure Event Grid             | Az Azure Event Gridban elérhető csevegési események használatával csatlakoztathatja az egyéni értesítési szolgáltatásokat, vagy közzéteheti az eseményt egy webhookba, hogy olyan üzleti logikát hajtson végre, mint a CRM-rekordok frissítése a csevegés befejeződése után.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-| Jelentéskészítés </br>(Ez az információ a Azure Portal-on lévő kommunikációs szolgáltatások erőforrásának figyelés lapján érhető el)      | A csevegési alkalmazás API-forgalmának megismeréséhez tekintse meg az Azure Metrikaböngésző közzétett mérőszámait, és állítsa be a riasztásokat a rendellenességek észleléséhez     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-|                   | A kommunikációs szolgáltatások megoldásának monitorozása és hibakeresése az erőforrás diagnosztikai naplózásának engedélyezésével    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | A csevegés más résztvevői által olvasott üzenetek nyugtáinak olvasása                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Értesítést kap, ha a résztvevők aktívan begépelnek egy üzenetet egy csevegőszálba                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Az összes üzenet lekérte egy csevegési szálon                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Unicode-hangulatjelek küldése az üzenettartalom részeként                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|Valós idejű értesítések (saját jelcsomag által engedélyezve**)|  A csevegési ügyfelek feliratkozva valós idejű frissítéseket kaphatnak a bejövő üzenetekhez és a csevegési szálon keresztüli egyéb műveletekhez. A valós idejű értesítések támogatott frissítésének listájáért lásd: [Csevegési fogalmak](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
+| Integráció a Azure Event Grid             | A Azure Event Grid elérhető csevegési eseményekkel egyéni értesítési szolgáltatásokat csatlakoztat, vagy az eseményt egy webhookon közzéteve üzleti logikát hajt végre, például a CRM-rekordok frissítését egy csevegés befejezése után   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Jelentéskészítés </br>(Ez az információ a Figyelés lapon érhető el a Communication Services erőforráshoz a Azure Portal)      | A csevegőalkalmazásból származó API-forgalommal kapcsolatos további adatok az Azure Metrikaböngésző közzétett metrikák monitorozása és riasztások beállítása a rendellenességek észleléséhez     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Az erőforrás diagnosztikai naplózásának engedélyezésével figyelheti és Communication Services megoldás hibakeresését    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
-* * A tulajdonosi jelző csomag webes szoftvercsatornák használatával valósítható meg. Ha a webes szoftvercsatornák nem támogatottak, a rendszer visszaküldi a hosszú lekérdezést.  
+**A saját jelátviteli csomag webes szoftvercsatornák használatával van megvalósítva. Ha a webes szoftvercsatornák nem támogatottak, a rendszer visszaveszi a hosszú lekérdezéseket.  
 
-## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>A JavaScript csevegési SDK támogatása az operációs rendszer és a böngésző használatával    
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>JavaScript chat SDK-támogatás operációs rendszer és böngésző szerint    
 
-A következő táblázat a jelenleg elérhető támogatott böngészők és verziók készletét tartalmazza.
+Az alábbi táblázat a jelenleg elérhető támogatott böngészőket és verziókat tartalmazza.
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad operációs rendszer|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Csevegési SDK** | Firefox *, Chrome*, új Edge | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+| **Csevegési SDK** | Firefox,*Chrome,* új Edge | Firefox,*Chrome,* Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
 
-* Vegye figyelembe, hogy az előző két kiadáson felül a legújabb verzió is támogatott.<br/>   
+*Vegye figyelembe, hogy az előző két kiadás mellett a legújabb verzió is támogatott.<br/>   
 
 ## <a name="next-steps"></a>Következő lépések   
 
 > [!div class="nextstepaction"] 
-> [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)    
+> [Csevegés – első lépések](../../quickstarts/chat/get-started.md)    
 
-A következő dokumentumok érdekesek lehetnek:  
+A következő dokumentumok érdekesek lehetnek az Ön számára:  
 - Ismerkedjen meg a [csevegési fogalmakkal](../chat/concepts.md)
-- Ismerje meg, hogyan működik a [díjszabás](../pricing.md#chat) a csevegéshez
+- A csevegés [díjszabásának](../pricing.md#chat) működése

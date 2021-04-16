@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – tanúsítvány beállítása és lekérése Key Vault a Azure Portal használatával | Microsoft Docs
-description: Gyors útmutató, amely bemutatja, hogyan kell beállítani és beolvasni a tanúsítványokat a Azure Key Vault használatával a Azure Portal
+title: Azure rövid útmutató – Tanúsítvány beállítása és lekérése a Key Vault a Azure Portal | Microsoft Docs
+description: Rövid útmutató, amely bemutatja, hogyan állíthat be és Azure Key Vault tanúsítványt a Azure Portal
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a35f83286abe5ae33f6d3c44ee7b05faf692512
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935138"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479219"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: tanúsítvány beállítása és lekérése Azure Key Vault a Azure Portal használatával
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Tanúsítvány beállítása és lekérése a Azure Key Vault a Azure Portal
 
 Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban egy kulcstartót hoz létre, majd egy tanúsítvány tárolására használja. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
 
@@ -30,45 +30,46 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
-2. A keresőmezőbe írja be a **Key Vault** kifejezést.
+1. A Azure Portal menüben vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása lehetőséget.**
+2. A Keresőmezőbe írja be a **következőt: Key Vault.**
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
+    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban az **Example-Vaultot használjuk.** 
     - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - Az **Erőforráscsoport alatt válassza** az Új létrehozása **lehetőséget,** és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve**: a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
+* **Tároló neve:** A példában ez az **Example-Vault.** Ezt a nevet fogja majd más lépésekben is használni.
 * **Tár URI-ja**: A példában ez a `https://example-vault.vault.azure.net/`. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
 ![Kimenet a Key Vault létrehozási parancsának befejeződése után](../media/certificates/quick-create-portal/vault-properties.png)
 
-## <a name="add-a-certificate-to-key-vault"></a>Tanúsítvány hozzáadása a Key Vaulthoz
+## <a name="add-a-certificate-to-key-vault"></a>Tanúsítvány hozzáadása a Key Vault
 
-Ha tanúsítványt szeretne hozzáadni a tárolóhoz, mindössze néhány további lépést kell elvégeznie. Ebben az esetben egy olyan önaláírt tanúsítványt adunk hozzá, amelyet egy alkalmazás használhat. A tanúsítvány neve **ExampleCertificate**.
+Ha tanúsítványt szeretne hozzáadni a tárolóhoz, csak néhány további lépést kell tennie. Ebben az esetben hozzáadunk egy önaírt tanúsítványt, amelyet egy alkalmazás használni tud. A tanúsítvány neve **ExampleCertificate.**
 
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
+1. A tulajdonságokat Key Vault oldalon válassza a Tanúsítványok **lehetőséget.**
 2. Kattintson a **Létrehozás/Importálás** gombra.
-3. A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
-    - **Tanúsítvány létrehozásának metódusa**: létrehozás.
-    - **Tanúsítvány neve**: ExampleCertificate.
-    - **Tárgy**: CN = ExampleDomain
-    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** lehetőségre.
+3. A Tanúsítvány **létrehozása képernyőn** válassza a következő értékeket:
+    - **Tanúsítvány-létrehozási módszer:** Létrehozás.
+    - **Tanúsítvány neve:** ExampleCertificate.
+    - **Tárgy:** CN=ExampleDomain
+    - A többi értéket hagyja az alapértelmezett értéken. (Alapértelmezés szerint, ha nem ad meg semmi különlegeset a Speciális házirendben, az ügyfél-hitelesítési tanúsítványként használható.)
+ 4. Kattintson a **Létrehozás** lehetőségre.
 
-Miután megkapta az üzenetet, hogy a tanúsítvány sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
+Miután megjelenik az üzenet arról, hogy a tanúsítvány sikeresen létrejött, rákattinthat rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 
 ![Tanúsítvány tulajdonságai](../media/certificates/quick-create-portal/current-version-hidden.png)
 
-## <a name="export-certificate-from-key-vault"></a>Tanúsítvány exportálása Key Vault
-A "Letöltés CER formátumban" vagy a "Letöltés PFX/PEM formátumban" gombra kattintva letöltheti a tanúsítványt. 
+## <a name="export-certificate-from-key-vault"></a>Tanúsítvány exportálása a Key Vault
+A "Download in CER format" (Letöltés CER formátumban) vagy a "Download in PFX/PEM format" (Letöltés PFX/PEM formátumban) gombra kattintva letöltheti a tanúsítványt. 
 
 ![Tanúsítvány letöltése](../media/certificates/quick-create-portal/current-version-shown.png)
 
@@ -84,8 +85,8 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
 
-- [A Azure Key Vault áttekintése](../general/overview.md)
-- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
-- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)
+- Olvassa el [a Azure Key Vault](../general/overview.md)
+- Lásd [Azure Key Vault fejlesztői útmutatót](../general/developers-guide.md)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)

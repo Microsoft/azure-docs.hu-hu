@@ -1,49 +1,49 @@
 ---
-title: 'Oktatóanyag: linuxos Java-alkalmazás és MongoDB'
-description: Megtudhatja, hogyan szerezhet be egy Azure App Serviceon működő, adatvezérelt linuxos Java-alkalmazást az Azure-ban (Cosmos DB) futó MongoDB való kapcsolattal.
+title: 'Oktatóanyag: Linux Java-alkalmazás a MongoDB-sel'
+description: Megtudhatja, hogyan használhat adatvezérelt Linux Java-alkalmazást az Azure App Service-ban, és hogyan létesít kapcsolatot egy Azure-ban futó MongoDB-hez (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2cecf2038190adcf12d376715a5fbf261cf758e0
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 7a0dd1198bcad675f7662a2cf4eb369f2a276445
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962628"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479406"
 ---
-# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring Boot webalkalmazás összeállítása Azure App Service on Linux és Azure Cosmos DB
 
-Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létrehozásának, konfigurálásának, üzembe helyezésének és méretezésének folyamatán. Ha elkészült, egy [Spring boot](https://projects.spring.io/spring-boot/) -alkalmazással fog rendelkezni, amely az [Azure app Service Linux](overview.md)rendszeren futó [Azure Cosmos DBban](../cosmos-db/index.yml) tárolja az adattárolást.
+Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való építésén, konfigurálásán, üzembe helyezésén és méretezésén. Ha elkészült, egy olyan alkalmazással fog [Spring Boot,](https://projects.spring.io/spring-boot/) amely a következő helyen [Azure Cosmos DB](../cosmos-db/index.yml) adatokat [Azure App Service on Linux.](overview.md)
 
-![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Spring Boot alkalmazás az adatokat a Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Cosmos DB adatbázist.
-> * Egy minta alkalmazás összekötése az adatbázissal és a helyi tesztelés
-> * A minta alkalmazás üzembe helyezése az Azure-ban
-> * Stream diagnosztikai naplók a App Serviceból
-> * További példányok hozzáadása a minta alkalmazás felskálázásához
+> * Hozzon létre egy Cosmos DB-adatbázist.
+> * Mintaalkalmazás csatlakoztatása az adatbázishoz és annak helyi tesztelése
+> * A mintaalkalmazás üzembe helyezése az Azure-ban
+> * Diagnosztikai naplók streamelése a App Service
+> * További példányok hozzáadása a mintaalkalmazás horizontális felskálához
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Saját számítógépre telepített [Azure CLI](/cli/azure/overview). 
+* A saját számítógépére telepített [Azure CLI.](/cli/azure/overview) 
 * [Git](https://git-scm.com/)
 * [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
-## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>A minta TODO-alkalmazás klónozása és a tárház előkészítése
+## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>A minta TODO alkalmazás klónozása és az alkalmazás előkészítése
 
-Ez az oktatóanyag egy webes felhasználói felülettel rendelkező minta TODO-lista alkalmazást használ, amely a Spring [adatAzure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb)által támogatott Spring Rest APIt hív meg. Az alkalmazás kódja elérhető [a githubon](https://github.com/Microsoft/spring-todo-app). Ha többet szeretne megtudni a Java-alkalmazások Spring és Cosmos DB használatával történő írásához, tekintse meg a [Spring boot Starter és a Azure Cosmos db SQL API oktatóanyag](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) és a [Spring adatai Azure Cosmos db gyors üzembe helyezés](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)című témakört.
+Ez az oktatóanyag egy minta TODO list alkalmazást használ egy webes felhasználói felülettel, amely egy [Spring Data-REST API által](https://github.com/Microsoft/spring-data-cosmosdb)Azure Cosmos DB. Az alkalmazás kódja elérhető a [GitHubon.](https://github.com/Microsoft/spring-todo-app) A Java-alkalmazások Spring és Cosmos DB használatával való írásával kapcsolatos további információkért tekintse meg az [Spring Boot Startert](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) az Azure Cosmos DB SQL API-val című oktatóanyagot és a [Spring Data Azure Cosmos DB gyors útmutatót.](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)
 
 
-Futtassa a következő parancsokat a terminálon a minta-tárház klónozásához és a minta alkalmazás környezetének beállításához.
+Futtassa az alábbi parancsokat a terminálban a mintaadattára klónozásához és a mintaalkalmazás-környezet beállításához.
 
 ```bash
 git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git
@@ -53,23 +53,23 @@ yes | cp -rf .prep/* .
 
 ## <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB létrehozása
 
-Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az előfizetésében. A TODO List alkalmazás csatlakozni fog ehhez az adatbázishoz, és a futtatásakor tárolja az adattárolási állapotot, függetlenül az alkalmazás futtatásának helyétől.
+Kövesse az alábbi lépéseket egy Azure Cosmos DB létrehozásához az előfizetésében. A TODO list alkalmazás ehhez az adatbázishoz csatlakozik, és futtatáskor tárolja az adatait, és az alkalmazás állapotát az alkalmazás futtatás helyének függetlenül tárolja.
 
-1. Jelentkezzen be az Azure CLI-be, és szükség esetén állítsa be az előfizetést, ha több van csatlakoztatva a bejelentkezési hitelesítő adataihoz.
+1. Jelentkezzen be az Azure CLI-be, és igény szerint állítsa be az előfizetését, ha több is csatlakozik a bejelentkezési hitelesítő adataihoz.
 
     ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
-2. Hozzon létre egy Azure-erőforráscsoportot, és adja meg az erőforráscsoport nevét.
+2. Hozzon létre egy Azure-erőforráscsoportot, és nevezze el az erőforráscsoportot.
 
     ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
-3. Hozzon létre Azure Cosmos DB a `GlobalDocumentDB` típussal. Cosmos DB nevének csak kisbetűket kell használnia. Jegyezze fel a `documentEndpoint` parancs válaszában szereplő mezőt.
+3. Hozzon Azure Cosmos DB a `GlobalDocumentDB` következővel: . A név Cosmos DB csak kisbetűket használhat. Jegyezze fel `documentEndpoint` a parancs válaszában a mezőt.
 
     ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
@@ -77,7 +77,7 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Azure Cosmos DB kulcsának beszerzése az alkalmazáshoz való kapcsolódáshoz. A `primaryMasterKey` `documentEndpoint` következő lépésben meg kell őriznie a közeli lépéseket.
+4. Szerezze be Azure Cosmos DB kulcsot az alkalmazáshoz való csatlakozáshoz. Tartsa a `primaryMasterKey` közelében a et, mert a következő lépésben `documentEndpoint` szüksége lesz rájuk.
 
     ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -85,14 +85,14 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
 
 ## <a name="configure-the-todo-app-properties"></a>A TODO alkalmazás tulajdonságainak konfigurálása
 
-Nyisson meg egy terminált a számítógépén. Másolja a minta parancsfájlt a klónozott tárházba, hogy testreszabja az imént létrehozott Cosmos DB-adatbázishoz.
+Nyisson meg egy terminált a számítógépén. Másolja ki a klónozott adattáraban található parancsfájlmintát, hogy testre szabni tudja az Cosmos DB létrehozott adatbázishoz.
 
 ```bash
 cd initial/spring-todo-app
 cp set-env-variables-template.sh .scripts/set-env-variables.sh
 ```
  
-Szerkessze `.scripts/set-env-variables.sh` kedvenc szerkesztőjét, és adja meg Azure Cosmos db a kapcsolatok adatait. A App Service Linux-konfiguráció esetében használja ugyanazt a régiót, mint az előző ( `your-resource-group-region` ) és az erőforráscsoport ( `your-azure-group-name` ), amelyet a rendszer a Cosmos db-adatbázis létrehozásakor használ. Olyan WEBAPP_NAME válasszon, amely egyedi, mert nem tudja duplikálni a webalkalmazások nevét bármely Azure-telepítésben.
+`.scripts/set-env-variables.sh`Szerkessze a adatokat a kedvenc szerkesztőjében, és Azure Cosmos DB adatokat. Az App Service Linux-konfigurációhoz használja ugyanazt a régiót, mint a korábban ( ) és az erőforráscsoportot () az adatbázis `your-resource-group-region` `your-azure-group-name` Cosmos DB használni. Válasszon egy WEBAPP_NAME egyedi nevet, mivel nem duplikálhatja a webalkalmazás nevét egy Azure-beli üzemelő példányban sem.
 
 ```bash
 export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
@@ -105,13 +105,13 @@ export WEBAPP_NAME=<put-your-Webapp-name-here>
 export REGION=<put-your-REGION-here>
 ```
 
-Ezután futtassa a parancsfájlt:
+Ezután futtassa a szkriptet:
 
 ```bash
 source .scripts/set-env-variables.sh
 ```
    
-Ezeket a környezeti változókat a `application.properties` Todo List alkalmazásban lehet használni. A Properties fájlban lévő mezők a Spring-adat alapértelmezett tárház-konfigurációját állítják be:
+Ezeket a környezeti változókat a TODO list alkalmazás `application.properties` használja. A tulajdonságfájl mezői beállítják a Spring Data alapértelmezett adattár-konfigurációját:
 
 ```properties
 azure.cosmosdb.uri=${COSMOSDB_URI}
@@ -125,7 +125,7 @@ public interface TodoItemRepository extends DocumentDbRepository<TodoItem, Strin
 }
 ```
 
-Ezután a minta alkalmazás a `@Document` -ból importált megjegyzéssel `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` állítja be a Cosmos db által tárolt és felügyelt entitás típusát:
+Ezután a mintaalkalmazás a alkalmazásból importált jegyzet használatával beállít egy entitástípust, amelyet a rendszer tárol és `@Document` `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` Cosmos DB:
 
 ```java
 @Document
@@ -138,13 +138,13 @@ public class TodoItem {
 
 ## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
-A minta futtatásához használja a Mavent.
+A maven használatával futtassa a mintát.
 
 ```bash
 mvn package spring-boot:run
 ```
 
-A kimenetnek az alábbihoz hasonlóan kell kinéznie.
+A kimenetnek az alábbihoz hasonlónak kell lennie.
 
 ```output
 bash-3.2$ mvn package spring-boot:run
@@ -165,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Az alkalmazás elindítása után az alábbi hivatkozással érheti el helyileg a Spring TODO alkalmazást: `http://localhost:8080/` .
+A Spring TODO alkalmazást a következő hivatkozással, az alkalmazás indítódása után helyileg is elérheti: `http://localhost:8080/` .
 
- ![A Spring TODO-alkalmazás helyi elérése](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![A Spring TODO alkalmazás helyi elérése](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Ha a "Started TodoApplication" üzenet helyett kivételek jelennek meg, ellenőrizze, hogy az `bash` előző lépésben szereplő parancsfájl megfelelően exportálta-e a környezeti változókat, és hogy helyesek-e a létrehozott Azure Cosmos db adatbázishoz tartozó értékek.
+Ha a "Started TodoApplication" üzenet helyett kivételeket lát, ellenőrizze, hogy az előző lépésben használt szkript megfelelően exportálta-e a környezeti változókat, és hogy az értékek helyesek-e a létrehozott `bash` Azure Cosmos DB-adatbázishoz.
 
 ## <a name="configure-azure-deployment"></a>Az Azure-telepítés konfigurálása
 
-Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` címtárban, és adja hozzá a következő  [Azure Web App beépülő modult a Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) -konfigurációhoz.
+Nyissa meg `pom.xml` a fájlt a könyvtárban, és adja hozzá a következő Azure Web App Plugin for `initial/spring-boot-todo` [Maven-konfigurációt.](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)
 
 ```xml    
 <plugins> 
@@ -236,9 +236,9 @@ Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` címtárban, és adja
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Üzembe helyezés a Linuxon App Service
+## <a name="deploy-to-app-service-on-linux"></a>Üzembe helyezés App Service on Linux
 
-A `mvn azure-webapp:deploy` Maven céljával telepítse a ToDo alkalmazást a linuxon Azure app Service.
+A Maven célja a TODO alkalmazás üzembe `mvn azure-webapp:deploy` helyezése a Azure App Service on Linux.
 
 ```bash
 
@@ -272,24 +272,24 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] ------------------------------------------------------------------------
 ```
 
-A kimenet tartalmazza a telepített alkalmazás URL-címét (ebben a példában `https://spring-todo-app.azurewebsites.net` ). Másolja az URL-címet a webböngészőjébe, vagy futtassa a következő parancsot a terminál ablakban az alkalmazás betöltéséhez.
+A kimenet tartalmazza az üzembe helyezett alkalmazás URL-címét (ebben a példában `https://spring-todo-app.azurewebsites.net` ). Ezt az URL-címet a webböngészőbe másolhatja, vagy futtathatja a terminálablakban a következő parancsot az alkalmazás betöltéséhez.
 
 ```bash
 explorer https://spring-todo-app.azurewebsites.net
 ```
 
-A címsorban a távoli URL-címmel futó alkalmazást kell látnia:
+A címsorban a távoli URL-címmel futó alkalmazásnak kell futnia:
 
- ![Távoli URL-címmel futó Spring boot-alkalmazás](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Spring Boot URL-címet futtató alkalmazás futtatása](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
 
-## <a name="scale-out-the-todo-app"></a>A TODO-alkalmazás felskálázása
+## <a name="scale-out-the-todo-app"></a>A TODO alkalmazás horizontális felskál letöltése
 
-Az alkalmazás felskálázása egy másik feldolgozó hozzáadásával:
+Skálázja fel horizontálisan az alkalmazást egy másik feldolgozó hozzáadásával:
 
 ```azurecli
 az appservice plan update --number-of-workers 2 \
@@ -299,8 +299,7 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
-  
+Ha ezekre az erőforrásokra már nincs szüksége egy másik oktatóanyaghoz (lásd a következő [lépéseket),](#next)akkor a következő parancs futtatásával törölheti őket a Cloud Shell:Â â€ â 
 ```azurecli
 az group delete --name <your-azure-group-name>
 ```
@@ -310,9 +309,9 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>Következő lépések
 
 [Azure Java-fejlesztőknek](/java/azure/) 
- [Spring boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos db](../cosmos-db/introduction.md) és [app Service Linux](overview.md) [Spring-adatvédelme](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db).
+ [Spring Boot](https://spring.io/projects/spring-boot), [Spring Data for Cosmos DB](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db), [Azure Cosmos DB](../cosmos-db/introduction.md) és [App Service Linux](overview.md).
 
-További információ a Java-alkalmazások App Service Linux rendszeren való futtatásáról a Fejlesztői útmutatóban.
+További információ a Java-alkalmazások App Service on Linux fejlesztői útmutatóban.
 
 > [!div class="nextstepaction"] 
 > [Java a Linuxos App Service-ben – fejlesztői útmutató](configure-language-java.md?pivots=platform-linux)

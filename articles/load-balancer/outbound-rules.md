@@ -1,6 +1,6 @@
 ---
 title: Kimenő szabályok Azure Load Balancer
-description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a kimenő szabályokat az internetes forgalom Azure Load Balancer-vel való megadásának szabályozására.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a kimenő szabályokat az internetes forgalom kimenő forgalmának szabályozása Azure Load Balancer.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,248 +8,248 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590211"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375865"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Kimenő szabályok Azure Load Balancer
 
-A kimenő szabályok lehetővé teszik, hogy explicit módon meghatározza a nyilvános standard Load Balancer SNAT (forrásoldali hálózati címfordítás). Ez a konfiguráció lehetővé teszi, hogy a terheléselosztó nyilvános IP-címe (i) használatával kimenő internetkapcsolatot biztosítson a háttérbeli példányok számára.
+A kimenő szabályok lehetővé teszik az SNAT (forráshálózati címfordítás) explicit definiálását egy nyilvános standard terheléselosztáshoz. Ez a konfiguráció lehetővé teszi, hogy a terheléselosztás nyilvános IP-címeinek használatával kimenő internetkapcsolatot biztosítson a háttérpéldányok számára.
 
-Ez a konfiguráció a következőket teszi lehetővé:
+Ez a konfiguráció a következőt teszi lehetővé:
 
-* IP-cím maszkolása
-* Egyszerűsítse az engedélyezési listát.
-* Csökkenti a nyilvános IP-erőforrások számát az üzembe helyezéshez.
+* IP-címlekérdezés
+* Az engedélyezési listák egyszerűsítése.
+* Csökkenti az üzembe helyezéshez szükséges nyilvános IP-erőforrások számát.
 
-A kimenő szabályok teljes mértékben deklaratív vezérléssel rendelkeznek a kimenő internetkapcsolattal szemben. A kimenő szabályok lehetővé teszik az adott igényeknek megfelelő méretezést és finomhangolást. 
+A kimenő szabályokkal teljes deklaratív vezérléssel rendelkezik a kimenő internetkapcsolat felett. A kimenő szabályok lehetővé teszik, hogy ezt a képességet az igényeinek megfelelően skálázhatja és finomhangolhatja. 
 
-A kimenő szabályok csak akkor lesznek követve, ha a háttérbeli virtuális gép nem rendelkezik példány szintű nyilvános IP-címmel (ILPIP).
+A kimenő szabályokat csak akkor követi a rendszer, ha a háttér virtuális gépnek nincs példányszintű nyilvános IP-címe (ILPIP).
 
-![Load Balancer kimenő szabályok](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
+![Load Balancer szabályok](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
-A kimenő szabályok használatával explicit módon definiálhatja a kimenő **SNAT** viselkedését.
+Kimenő szabályokkal explicit módon definiálhatja a kimenő **SNAT viselkedését.**
 
-A kimenő szabályok segítségével a következőket vezérelheti:
+A kimenő szabályok lehetővé teszik a következő szabályozásokat:
 
-* **Mely virtuális gépek fordíthatók le a nyilvános IP-címekre.**
-     * Két szabály volt a háttér-készlet 1. a kék IP-címet 1. és 2. a háttér-készlet 2 a sárga IP-előtagot használja.
-* **A kimenő SNAT portok kiosztása.**
-     * Ha a 2. háttér-készlet az egyetlen, kimenő kapcsolatokat eredményező készlet, az összes SNAT-port a 2. háttér-készletbe, a háttér-készletbe pedig az 1.
-* **A kimenő fordítását biztosító protokollok.**
-     * Ha a 2. háttérrendszer-készletnek UDP-portokra van szüksége a kimenő és a háttér-készlet 1 számára, a TCP-portoknak 1 és UDP portoknak kell lenniük 2-ra.
-* **A kimenő kapcsolat üresjárati időkorlátja (4-120 perc) milyen időtartamra van használatban.**
-     * Ha hosszú ideig futó kapcsolatok vannak a Keepalives-mel, a hosszú ideig futó kapcsolatok esetében foglaljon le üresjárati portokat akár 120 percre. Az elavult kapcsolatok elhagyása és a portok 4 percen belüli felszabadítása friss kapcsolatok esetén 
-* **Azt jelzi, hogy a TCP alaphelyzetbe állítása üresjárati időkorláton történjen.**
-     * Az üresjárati kapcsolatok időtúllépése esetén a rendszer az ügyfél és a kiszolgáló számára is elküld egy TCP-t, hogy tudja, hogy a folyamat el lett hagyva?
+* **Mely virtuális gépek vannak lefordítva arra, hogy mely nyilvános IP-címekre vannak lefordítva.**
+     * Az 1. háttérkészlet két szabálya az 1. és a 2. kék IP-címet, a 2. háttérkészlet a sárga IP-előtagot használja.
+* **A kimenő SNAT-portok lefoglalása.**
+     * Ha a 2. háttérkészlet az egyetlen készlet, amely kimenő kapcsolatokat létesít, minden SNAT-portot a 2. háttérkészletnek adjon, az 1. háttérkészletnek pedig egyet se.
+* **Mely protokollok biztosítják a kimenő fordítást?**
+     * Ha a 2. háttérkészletnek UDP-portokra van szüksége a kimenő forgalomhoz, és az 1. háttérkészletnek TCP-re van szüksége, a TCP-portokat adja 1-nek, az UDP-portokat pedig a 2-nek.
+* **A kimenő kapcsolat üresjárati időtúllépésének időtartama (4–120 perc).**
+     * Ha hosszú ideig futó kapcsolatok vannak a keepalives segítségével, foglalja le a tétlen portokat a hosszú ideig futó kapcsolatokhoz akár 120 percig. Tegyük fel, hogy az elavult kapcsolatok fel vannak hagyva, és a friss kapcsolatokhoz 4 percen belül felszabadítja a portokat 
+* **Azt határozza meg, hogy küldjön-e TCP-visszaállítást üresjárati időtúllépés esetén.**
+     * Amikor időzítjük a tétlen kapcsolatokat, küldünk egy TCP RST-t az ügyfélnek és a kiszolgálónak, hogy tudják, hogy a folyamat fel van hagyva?
 
 ## <a name="outbound-rule-definition"></a>Kimenő szabály definíciója
 
-A kimenő szabályok ugyanazt a megszokott szintaxist követik, mint a terheléselosztás és a bejövő NAT- **szabályok: előtér**-  +  **Paraméterek**  +  **háttér-készlete**. 
+A kimenő szabályok ugyanazt az ismerős szintaxist követik, mint a terheléselosztás és a bejövő NAT-szabályok: előtereparaméterek  +    +  **háttérkészlete.** 
 
-Egy kimenő szabály konfigurálja a kimenő NAT-t a _háttér-készlet által azonosított összes virtuális gép_ számára, hogy a rendszer lefordítsa a _felületet_.  
+A kimenő szabály a háttérkészlet  által azonosított összes virtuális gép kimenő NAT-ját konfigurálja az _előtere fordítására._  
 
-A _Paraméterek_ további részletes szabályozást biztosítanak a kimenő NAT-algoritmushoz képest.
+A _paraméterek_ további részletes vezérlést biztosítanak a kimenő NAT-algoritmus felett.
 
-## <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a> Kimenő NAT méretezése több IP-címmel
+## <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a> Kimenő NAT horizontális felskálálása több IP-címmel
 
-A frontend által biztosított további IP-címek további 64 000 ideiglenes portokat biztosítanak a terheléselosztó számára SNAT-portokként való használathoz. 
+Az előtere által biztosított további IP-címek további 64 000,000, SNAT-portként használható, a terheléselosztáshoz használt portot biztosítanak. 
 
-Több IP-cím használata a nagy léptékű forgatókönyvek megtervezéséhez. A kimenő szabályok használatával csökkentheti a [SNAT-kimerültséget](troubleshoot-outbound-connection.md#snatexhaust). 
+Használjon több IP-címet a nagy léptékű forgatókönyvek tervezéséhez. Kimenő szabályokkal mérsékelheti az [SNAT-kimerítést.](troubleshoot-outbound-connection.md#snatexhaust) 
 
-A [nyilvános IP-előtagot](./load-balancer-outbound-connections.md#outboundrules) közvetlenül is használhatja egy kimenő szabállyal. 
+Nyilvános [IP-előtagot](./load-balancer-outbound-connections.md#outboundrules) közvetlenül is használhat kimenő s szabályokkal. 
 
-A nyilvános IP-előtag növeli az üzemelő példány skálázását. Az előtag hozzáadható az Azure-erőforrásokból származó folyamatok engedélyezési listájához. A Load balancerben konfigurálhatja a előtérbeli IP-konfigurációt a nyilvános IP-cím előtagjaként való hivatkozáshoz.  
+A nyilvános IP-előtag növeli az üzemelő példány skálázását. Az előtag hozzáadható az Azure-erőforrásokból származó folyamatok engedélyező listájához. A terheléselosztáson belül konfigurálhat egy előtere IP-konfigurációt, hogy egy nyilvános IP-címelőtagra hivatkozzon.  
 
-A terheléselosztó felügyeli a nyilvános IP-előtagot. A kimenő kapcsolatok esetében a kimeneti szabály automatikusan a nyilvános IP-előtagban található összes nyilvános IP-címet fogja használni. 
+A terheléselosztás a nyilvános IP-előtag felett rendelkezik vezérléssel. A kimenő szabály automatikusan a nyilvános IP-előtagban található összes nyilvános IP-címet használja a kimenő kapcsolatokhoz. 
 
-A nyilvános IP-előtagon belüli összes IP-cím egy további 64 000 ideiglenes portot biztosít IP-címként a terheléselosztó számára SNAT-portokként való használathoz.
+A nyilvános IP-előtagon belüli IP-címek ip-címenként további 64 000 rövidítóportot kínálnak, hogy a terheléselosztás SNAT-portként használható.
 
-## <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> Kimenő forgalom üresjárati időkorlátja és a TCP-visszaállítás
+## <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> Kimenő forgalom üresjárati időkorlátja és a TCP alaphelyzetbe állítása
 
-A kimenő szabályok egy konfigurációs paramétert biztosítanak a kimenő folyamat üresjárati időkorlátjának szabályozására, és az alkalmazás igényeinek megfelelően illeszkednek. A kimenő üresjárati időtúllépések alapértelmezett értéke 4 perc. További információ: az [üresjárati időtúllépések konfigurálása](load-balancer-tcp-idle-timeout.md). 
+A kimenő szabályok egy konfigurációs paramétert biztosítanak a kimenő forgalom üresjárati időkorlátjának szabályozásához és az alkalmazás igényeihez való egyeztetéshez. A kimenő üresjárati időkorlátok alapértelmezés szerint 4 perc. További információ: [Üresjárati időtúllépések konfigurálása.](load-balancer-tcp-idle-timeout.md) 
 
-A terheléselosztó alapértelmezett viselkedése a folyamat csendes eldobása, ha elérte a kimenő üresjárati időkorlátot. A `enableTCPReset` paraméter lehetővé teszi a kiszámítható alkalmazások viselkedését és vezérlését. A paraméter azt határozza meg, hogy a kimenő Üresjárati időkorlát időtúllépése esetén a kétirányú TCP alaphelyzetbe állítás (TCP első) legyen-e. 
+A terheléselosztás alapértelmezett viselkedése az, hogy a kimenő üresjárati időkorlát elérésekor a folyamat csendesen el lesz dobva. A `enableTCPReset` paraméter kiszámítható alkalmazásviselkedést és -vezérlést tesz lehetővé. A paraméter határozza meg, hogy a rendszer kétirányú TCP-visszaállítást (TCP RST) küldjön-e a kimenő üresjárati időtúllépés időtúllépésekor. 
 
-Tekintse át az [Üresjárat időkorlátjának TCP-visszaállítását](./load-balancer-tcp-reset.md) , beleértve a régió rendelkezésre állását.
+A régió rendelkezésre állását is beleértve tekintse át a [TCP-visszaállítás üresjárati](./load-balancer-tcp-reset.md) időtúllépés esetén való áttekintését.
 
-## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>A kimenő kapcsolatok biztonságossá tétele és szabályozása explicit módon
+## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>A kimenő kapcsolatok explicit biztonságossá tétele és vezérlése
 
-Terheléselosztási szabályok biztosítják a kimenő NAT automatikus programozását. Bizonyos forgatókönyvek esetében a kimenő NAT automatikus programozásának letiltására van szükség a terheléselosztási szabály alapján. A szabály használatával történő letiltás lehetővé teszi a viselkedés szabályozását vagy pontosítását.  
+A terheléselosztási szabályok a kimenő NAT automatikus programozását biztosítják. Egyes forgatókönyvek esetében előnyös vagy kötelező letiltani a kimenő NAT automatikus programozását a terheléselosztási szabály alapján. A szabályon keresztüli letiltás lehetővé teszi a viselkedés szabályozását vagy finomítását.  
 
-Ezt a paramétert kétféleképpen is használhatja:
+Ezt a paramétert kétféleképpen használhatja:
 
-1. A kimenő SNAT bejövő IP-címének megakadályozása. Tiltsa le a kimenő SNAT a terheléselosztási szabályban.
+1. A kimenő SNAT bejövő IP-címének megelőzése. Tiltsa le a kimenő SNAT-t a terheléselosztási szabályban.
   
-2. A bejövő és kimenő IP-címek kimenő **SNAT** paramétereinek hangolása egyidejűleg. Az automatikus kimenő NAT-t le kell tiltani ahhoz, hogy a kimenő szabályok szabályozni tudják a vezérlést. Ha módosítani szeretné egy SNAT-port lefoglalását is, akkor a `disableOutboundSnat` paramétert igaz értékre kell állítani. 
+2. Hangolja egy egyidejűleg bejövő és kimenő IP-cím kimenő **SNAT-paramétereit.** Az automatikus kimenő NAT-t le kell tiltani, hogy egy kimenő szabály átveszi az irányítást. Egy bejövő cím SNAT-portfoglalásának módosítása érdekében a paramétert true (igaz) `disableOutboundSnat` értékre kell állítani. 
 
-A kimenő szabályok konfigurálásának művelete sikertelen lesz, ha megpróbál újradefiniálni egy bejövő IP-címet.  Először tiltsa le a terheléselosztási szabály kimenő NAT-át.
+A kimenő szabály konfiguráló művelete sikertelen lesz, ha megpróbálja újradefiniálni a bejövő forgalomhoz használt IP-címet.  Először tiltsa le a terheléselosztási szabály kimenő NAT-ját.
 
 >[!IMPORTANT]
-> Ha a paraméter értéke TRUE (igaz), a virtuális gép nem rendelkezik kimenő kapcsolattal, és nem rendelkezik kimenő kapcsolattal.  A virtuális gép vagy az alkalmazás néhány művelete attól függ, hogy a kimenő kapcsolat elérhető-e. Győződjön meg arról, hogy tisztában van a forgatókönyv függőségeivel, és befolyásolta ennek a változásnak a hatását.
+> A virtuális gép nem fog kimenő kapcsolattal rendelkezik, ha ezt a paramétert true (igaz) értékre adja meg, és nincs kimenő szabálya a kimenő kapcsolat meghatározásához.  A virtuális gép vagy az alkalmazás egyes műveletei attól függhetnek, hogy elérhetők-e kimenő kapcsolatok. Győződjön meg arról, hogy megértette a forgatókönyv függőségeit, és mérlegeli ennek a módosításnak a hatását.
 
-Esetenként nem kívánatos, hogy egy virtuális gép kimenő folyamatot hozzon létre. Előfordulhat, hogy egy olyan követelményt kell kezelnie, hogy mely célhelyek kapják meg a kimenő folyamatokat, vagy hogy mely célhelyek kezdenek bejövő forgalmat. [Hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával kezelheti a virtuális gép által elnyúló célhelyeket. A NSG használatával felügyelheti, hogy mely nyilvános célhelyek indítják el a bejövő folyamatokat.
+Néha nem kívánatos, hogy egy virtuális gép kimenő folyamatot hozzon létre. Követelmény lehet annak kezelése, hogy mely célhely fogadja a kimenő folyamatokat, vagy mely célhely kezdődik a bejövő forgalomból. Hálózati [biztonsági csoportokkal kezelheti](../virtual-network/network-security-groups-overview.md) a célhelyeket, amelyekhez a virtuális gép csatlakozik. Az NSG-k segítségével kezelheti, hogy mely nyilvános célhely indítsa el a bejövő folyamatokat.
 
-Ha NSG alkalmaz egy elosztott terhelésű virtuális gépre, ügyeljen a [szolgáltatás-címkékre](../virtual-network/network-security-groups-overview.md#service-tags) és az [alapértelmezett biztonsági szabályokra](../virtual-network/network-security-groups-overview.md#default-security-rules). 
+Amikor NSG-t alkalmaz egy elosztott terhelésű virtuális [](../virtual-network/network-security-groups-overview.md#service-tags) gépre, ügyeljen a szolgáltatáscímkékre és az alapértelmezett [biztonsági szabályokra.](../virtual-network/network-security-groups-overview.md#default-security-rules) 
 
-Győződjön meg arról, hogy a virtuális gép Azure Load Balancertól származó állapot-mintavételi kérelmeket tud fogadni.
+Győződjön meg arról, hogy a virtuális gép képes állapot-mintavételi kéréseket fogadni a Azure Load Balancer.
 
-Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER alapértelmezett címkétől, a virtuális gép állapotának mintavétele meghiúsul, és a virtuális gép nem érhető el. A terheléselosztó leállítja az új folyamatok küldését az adott virtuális gépre.
+Ha egy NSG blokkolja az állapot-mintavételi kéréseket AZURE_LOADBALANCER alapértelmezett címkéről, a virtuális gép állapotmintája sikertelen lesz, és a virtuális gép elérhetetlenként lesz megjelölve. A terheléselosztás leállítja az új folyamatok küldését a virtuális gépre.
 
-## <a name="scenarios-with-outbound-rules"></a>Forgatókönyvek kimenő szabályokkal
+## <a name="scenarios-with-outbound-rules"></a>Kimenő szabályokkal való forgatókönyvek
         
 
 ### <a name="outbound-rules-scenarios"></a>Kimenő szabályok forgatókönyvei
 
 
-* Konfigurálja a kimenő kapcsolatokat egy adott nyilvános IP-cím vagy előtag-készletbe.
-* Módosítsa a [SNAT](load-balancer-outbound-connections.md) -portok foglalását.
-* Csak a kimenő engedélyezése.
-* Kimenő NAT csak virtuális gépekhez (nincs bejövő).
-* Kimenő NAT a belső standard Load Balancerhez.
-* Engedélyezze mindkét TCP-& UDP protokollt a kimenő NAT-hoz egy nyilvános standard Load balancerrel.
+* Konfigurálja a kimenő kapcsolatokat egy adott nyilvános IP-hez vagy előtaghoz.
+* Módosítsa [az SNAT-portfoglalást.](load-balancer-outbound-connections.md)
+* Csak kimenő forgalom engedélyezése.
+* Csak virtuális gépek kimenő NAT-ja (nincs bejövő).
+* Kimenő NAT a belső standard terheléselosztáshoz.
+* Engedélyezze mindkét TCP& UDP-protokollt a kimenő NAT-hez egy nyilvános standard terheléselosztással.
 
 
-### <a name="scenario-1-configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>1. forgatókönyv: kimenő kapcsolatok konfigurálása egy adott nyilvános IP-cím vagy előtag-készlethez
+### <a name="scenario-1-configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>1. forgatókönyv: Nyilvános IP-k vagy előtagok adott készletéhez irányuló kimenő kapcsolatok konfigurálása
 
 
 #### <a name="details"></a>Részletek
 
 
-Ezzel a módszerrel a kimenő kapcsolatok a nyilvános IP-címek készletéről származnak. Nyilvános IP-címeket vagy előtagokat adhat hozzá egy engedélyezési vagy megtagadási listához a létrehozásuk alapján.
+Ezzel a forgatókönyvvel úgy szabja testre a kimenő kapcsolatokat, hogy nyilvános IP-címek egy készletéből származnak. Nyilvános IP-k vagy előtagok hozzáadása egy engedélyező vagy megtagadási listához az eredet alapján.
 
 
-Ez a nyilvános IP-cím vagy előtag ugyanaz lehet, mint a terheléselosztási szabályok. 
+Ez a nyilvános IP-cím vagy előtag megegyezik egy terheléselosztási szabály által használt előtaggal. 
 
 
-Eltérő nyilvános IP-cím vagy előtag használata egy terheléselosztási szabály által használtnál: 
+Ha a terheléselosztási szabály által használttól eltérő nyilvános IP-címet vagy előtagot használ: 
 
 
 1. Hozzon létre nyilvános IP-előtagot vagy nyilvános IP-címet.
-2. Nyilvános standard Load Balancer létrehozása 
-3. Hozzon létre egy, a használni kívánt nyilvános IP-előtagra vagy nyilvános IP-címére hivatkozó előtérbeli felületet. 
-4. Háttérbeli készlet újrafelhasználása vagy háttérbeli készlet létrehozása és a virtuális gépek elhelyezése a nyilvános Load Balancer háttér-készletében
-5. Konfiguráljon egy kimenő szabályt a nyilvános terheléselosztó számára, hogy engedélyezze a kimenő NAT-t a virtuális gépek számára a frontend használatával. Nem ajánlott terheléselosztási szabályt használni a kimenő forgalomhoz, letiltani a kimenő SNAT a terheléselosztási szabályban.
+2. Nyilvános standard terheléselosztás létrehozása 
+3. Hozzon létre egy előtagot, amely a használni kívánt nyilvános IP-előtagra vagy nyilvános IP-címre hivatkozik. 
+4. Használja újra a háttérkészletet, vagy hozzon létre egy háttérkészletet, és helyezze a virtuális gépeket a nyilvános terheléselosztási készlet háttérkészletében
+5. Konfigurálnia kell egy kimenő szabályt a nyilvános terheléselosztáson a virtuális gépek kimenő NAT-ának engedélyezéséhez az előtere használatával. Kimenő forgalomhoz nem ajánlott terheléselosztási szabályt használni, tiltsa le a kimenő SNAT-t a terheléselosztási szabályon.
 
 
-### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>2. forgatókönyv: a [SNAT](load-balancer-outbound-connections.md)-portok foglalásának módosítása
-
-
-#### <a name="details"></a>Részletek
-
-
-A kimenő szabályok használatával beállíthatja az [automatikus SNAT-portok kiosztását a háttérbeli készlet méretétől függően](load-balancer-outbound-connections.md#preallocatedports). 
-
-
-Ha SNAT kimerültséget tapasztal, növelje az alapértelmezett 1024-as számú [SNAT](load-balancer-outbound-connections.md)-portot. 
-
-
-A nyilvános IP-címek legfeljebb 64 000 ideiglenes portot vesznek részt. A háttérrendszer-készletben lévő virtuális gépek száma határozza meg az egyes virtuális gépekre terjesztett portok számát. A háttér-készlet egyik virtuális gépe fér hozzá a maximális 64 000-as porthoz. Két virtuális gép esetében legfeljebb 32 000 [SNAT](load-balancer-outbound-connections.md)-portot lehet megadni kimenő szabállyal (2x 32 000 = 64 000). 
-
-
-A kimenő szabályok használatával beállíthatja az alapértelmezés szerint megadott SNAT-portokat. Az alapértelmezett [SNAT](load-balancer-outbound-connections.md)-portok közül több vagy kevesebb is adható meg. A kimenő szabályok egy felületéről érkező összes nyilvános IP-cím akár 64 000 ideiglenes portot is felhasználhat [SNAT](load-balancer-outbound-connections.md)-portokként való használatra. 
-
-
-A Load Balancer 8-nál több [SNAT](load-balancer-outbound-connections.md)-portot ad meg. Ha a 8 értékkel nem osztható értéket ad meg, a rendszer elutasítja a konfigurációs műveletet. Az egyes terheléselosztási szabályok és a bejövő NAT-szabályok 8 portot használnak. Ha a terheléselosztás vagy a bejövő NAT-szabály ugyanazon a tartományon osztozik, mint a 8, akkor további portok nem lesznek felhasználva.
-
-
-Ha a nyilvános IP-címek száma alapján több [SNAT](load-balancer-outbound-connections.md)-portot próbál meg megadni, a rendszer elutasítja a konfigurációs műveletet. Ha például egy virtuális gépen 10 000 portot ad meg, és a háttérrendszer hét virtuális gépe egyetlen nyilvános IP-címmel rendelkezik, akkor a rendszer elutasítja a konfigurációt. A hét megszorozva a 10 000-as mérettel, amely meghaladja a 64 000-es portot. A forgatókönyv engedélyezéséhez adjon hozzá több nyilvános IP-címet a Kimenő szabály előtérbeli felületéhez. 
-
-
-A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak. További információ a SNAT alapértelmezett kiosztásáról: [SNAT-portok foglalási táblázata](./load-balancer-outbound-connections.md#preallocatedports).
-
-
-### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>3. forgatókönyv: csak kimenő engedélyezése
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>2. forgatókönyv: [SNAT-portfoglalás](load-balancer-outbound-connections.md) módosítása
 
 
 #### <a name="details"></a>Részletek
 
 
-Egy nyilvános standard Load Balancer használatával biztosíthatja a kimenő NAT-t a virtuális gépek csoportjai számára. Ebben a forgatókönyvben saját maga is használhat kimenő szabályt a további szabályok konfigurálása nélkül.
+Kimenő szabályokkal finomhangolhatja az [automatikus SNAT-portfoglalást a háttérkészlet mérete alapján.](load-balancer-outbound-connections.md#preallocatedports) 
+
+
+Ha SNAT-kimerítést tapasztal, növelje a [megadott SNAT-portok](load-balancer-outbound-connections.md) számát az alapértelmezett 1024-es értékről. 
+
+
+Minden nyilvános IP-cím legfeljebb 64 000 elameredő porthoz járul hozzá. A háttérkészletben található virtuális gépek száma határozza meg az egyes virtuális gépekre elosztott portok számát. A háttérkészlet egyik virtuális gépe legfeljebb 64 000 porthoz fér hozzá. Két virtuális gép esetén legfeljebb 32 000 [SNAT-port](load-balancer-outbound-connections.md) adható meg kimenő s szabálysal (2x 32 000 = 64 000). 
+
+
+Kimenő szabályok használatával hangolhatja az alapértelmezés szerint megadott SNAT-portokat. Az alapértelmezett [SNAT-portfoglalásnál](load-balancer-outbound-connections.md) többet vagy kevesebbet ad meg. Egy kimenő szabály előtere minden nyilvános IP-címe legfeljebb 64 000, [SNAT-portként](load-balancer-outbound-connections.md) használható, nem nyilvános portot használ. 
+
+
+A Load Balancer [a 8](load-balancer-outbound-connections.md) többszörösében biztosít SNAT-portokat. Ha olyan értéket ad meg, amely nem lesz 8-ban kivetve, a rendszer elutasítja a konfigurációs műveletet. Minden terheléselosztási szabály és bejövő NAT-szabály 8 portból áll. Ha egy terheléselosztási vagy bejövő NAT-szabály a 8-as tartományon osztozik, mint a másik, a rendszer nem használ fel további portokat.
+
+
+Ha a nyilvános IP-címek száma alapján több [SNAT-portot](load-balancer-outbound-connections.md) próbál meg adni, mint amennyit elérhetők, a rendszer elutasítja a konfigurációs műveletet. Ha például virtuális gépenként 10 000 portot ad meg, és a háttérkészlet hét virtuális gépe egyetlen nyilvános IP-címmel rendelkezik, a rendszer elutasítja a konfigurációt. Hét szorozva 10 000-ekkel meghaladja a 64 000 portkorlátot. A forgatókönyv engedélyezéséhez adjon hozzá további nyilvános IP-címeket a kimenő szabály előtere számára. 
+
+
+A portok számának [0 megadásával](load-balancer-outbound-connections.md#preallocatedports) áll vissza az alapértelmezett portfoglaláshoz. Az első 50 virtuálisgép-példány 1024 portot kap, 51–100 virtuálisgép-példány pedig legfeljebb 512 példányt kap. További információ az alapértelmezett SNAT-portfoglalásról: [SNAT portfoglalási táblázat.](./load-balancer-outbound-connections.md#preallocatedports)
+
+
+### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>3. forgatókönyv: Csak kimenő forgalom engedélyezése
+
+
+#### <a name="details"></a>Részletek
+
+
+Nyilvános standard terheléselosztás használatával biztosítson kimenő NAT-t a virtuális gépek egy csoportjának. Ebben a forgatókönyvben önmagában, további szabályok konfigurálása nélkül használjon kimenő szabályt.
 
 
 > [!NOTE]
-> Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára. További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
+> **Azure Virtual Network NAT** a virtuális gépek kimenő kapcsolatát anélkül, hogy terheléselosztásra lenne szükség. További [információ: Mi Azure Virtual Network NAT?](../virtual-network/nat-overview.md)
 
-### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>4. forgatókönyv: kimenő NAT csak virtuális gépek számára (nincs bejövő)
+### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>4. forgatókönyv: Csak virtuális gépek kimenő NAT-ja (nincs bejövő)
 
 
 > [!NOTE]
-> Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára. További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
+> **Azure Virtual Network NAT** a virtuális gépek kimenő kapcsolatát anélkül, hogy terheléselosztásra lenne szükség. További [információ: Mi Azure Virtual Network NAT?](../virtual-network/nat-overview.md)
 
 #### <a name="details"></a>Részletek
 
 
-Ebben a forgatókönyvben: Azure Load Balancer a kimenő szabályok és a Virtual Network NAT a virtuális hálózatból való kilépéshez elérhető lehetőségek.
+Ebben a forgatókönyvben: Azure Load Balancer kimenő szabályok és Virtual Network NAT virtuális hálózatból kimenő forgalomra vonatkozó lehetőségek érhetők el.
 
 
 1. Hozzon létre egy nyilvános IP-címet vagy előtagot.
-2. Hozzon létre egy nyilvános standard Load balancert. 
-3. Hozzon létre egy, a nyilvános IP-címhez vagy a kimenő számára dedikált előtaghoz társított előtérbeli felületet.
-4. Hozzon létre egy háttér-készletet a virtuális gépek számára.
-5. Helyezze a virtuális gépeket a háttér-készletbe.
-6. Konfiguráljon egy kimenő szabályt a kimenő NAT engedélyezéséhez.
+2. Hozzon létre egy nyilvános standard terheléselosztást. 
+3. Hozzon létre egy, a kimenő forgalom számára kijelölt nyilvános IP-címhez vagy előtaghoz társított előtagot.
+4. Hozzon létre egy háttérkészletet a virtuális gépekhez.
+5. Helyezze a virtuális gépeket a háttérkészletbe.
+6. Konfigurálnia kell egy kimenő szabályt a kimenő NAT engedélyezéséhez.
 
 
 
-A [SNAT](load-balancer-outbound-connections.md)-portok méretezéséhez használjon előtagot vagy nyilvános IP-címet. Adja hozzá a kimenő kapcsolatok forrását egy engedélyezési vagy megtagadási listához.
+SNAT-portok méretezéséhez használjon előtagot vagy nyilvános [IP-címet.](load-balancer-outbound-connections.md) Adja hozzá a kimenő kapcsolatok forrását egy engedélyező vagy megtagadási listához.
 
 
 
-### <a name="scenario-5-outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>5. forgatókönyv: kimenő NAT belső standard Load Balancerhez
+### <a name="scenario-5-outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>5. forgatókönyv: Kimenő NAT belső standard terheléselosztáshoz
 
 
 > [!NOTE]
-> Az **Azure Virtual Network NAT** a belső standard Load balancert használó virtuális gépek kimenő kapcsolatait is biztosíthatja. További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
+> **Azure Virtual Network NAT** belső standard terheléselosztást használó virtuális gépek kimenő kapcsolatát is biztosíthatja. További [információ: Mi Azure Virtual Network NAT?](../virtual-network/nat-overview.md)
 
 #### <a name="details"></a>Részletek
 
 
-A kimenő kapcsolat nem érhető el a belső standard Load Balancer számára, amíg explicit módon be nem nyilvánították a példányok nyilvános IP-címein vagy Virtual Network NAT-on keresztül, vagy ha a háttér-készlet tagjait csak kimenő terheléselosztó-konfigurációval társítja. 
+A kimenő kapcsolat csak akkor érhető el a belső standard terheléselosztáshoz, ha példányszintű nyilvános IP-ekkel vagy Virtual Network NAT-vel kifejezetten deklarálták, vagy ha a háttérkészlet tagjait egy csak kimenő terheléselosztási konfigurációhoz társítja. 
 
 
-További információ: [csak kimenő terheléselosztó konfigurálása](./egress-only.md).
+További információ: Csak kimenő terheléselosztás [konfigurálása.](./egress-only.md)
 
 
 
 
-### <a name="scenario-6-enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>6. forgatókönyv: mindkét TCP-& UDP protokoll engedélyezése a kimenő NAT-hoz egy nyilvános standard Load balancerrel
+### <a name="scenario-6-enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>6. forgatókönyv: Mindkét TCP& UDP-protokoll engedélyezése nyilvános standard terheléselosztással használt kimenő NAT-hez
 
 
 #### <a name="details"></a>Részletek
 
 
-Nyilvános standard Load Balancer használata esetén a megadott automatikus kimenő NAT megfelel a terheléselosztási szabály átviteli protokolljának. 
+Nyilvános standard terheléselosztás használata esetén a megadott automatikus kimenő NAT megegyezik a terheléselosztási szabály átviteli protokollal. 
 
 
-1. Tiltsa le a kimenő [SNAT](load-balancer-outbound-connections.md)a terheléselosztási szabályban. 
-2. Konfiguráljon egy kimenő szabályt ugyanazon a terheléselosztóon.
-3. Használja újra a virtuális gépek által már használt háttér-készletet. 
-4. A Kimenő szabály részeként a "protokoll": "all" érték adható meg. 
+1. Tiltsa le a [kimenő SNAT-t](load-balancer-outbound-connections.md) a terheléselosztási szabályon. 
+2. Konfigurálnia kell egy kimenő szabályt ugyanazon a terheléselosztáson.
+3. Használja újra a virtuális gépek által már használt háttérkészletet. 
+4. Adja meg a "protocol" értéket: "Mind" a kimenő szabály részeként. 
 
 
-Ha csak a bejövő NAT-szabályok vannak használatban, a rendszer nem biztosít kimenő NAT-szabályokat. 
+Ha csak bejövő NAT-szabályokat használ, nem biztosít kimenő NAT-t. 
 
 
-1. Helyezze a virtuális gépeket egy háttérbeli készletbe.
-2. Egy vagy több előtér-IP-konfiguráció definiálása nyilvános IP-cím (ek) vagy nyilvános IP-előtag esetén 
-3. Konfiguráljon egy kimenő szabályt ugyanazon a terheléselosztóon. 
-4. A "protokoll": "all" érték meghatározása a Kimenő szabály részeként
+1. Helyezze a virtuális gépeket egy háttérkészletbe.
+2. Egy vagy több előtere IP-konfiguráció megadása nyilvános IP-címmel vagy nyilvános IP-előtaggal 
+3. Konfigurálnia kell egy kimenő szabályt ugyanazon a terheléselosztáson. 
+4. Adja meg a "protocol" (protokoll) értéket: "All" (Mind) a kimenő szabály részeként
 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A felhasználható ideiglenes portok maximális száma előtér-IP-címenként 64 000.
-- A konfigurálható kimenő Üresjárati időkorlát (4 – 120 perc) tartománya (240 – 7200 másodperc).
-- A Load Balancer nem támogatja az ICMP protokollt a kimenő NAT-hoz.
-- A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Nem hozható létre Kimenő szabály a virtuális gép vagy NVA másodlagos IP-címéhez. Több hálózati adapter is támogatott.
-- A kimenő kapcsolatok esetében a **rendelkezésre állási csoporton** belüli összes virtuális gépet hozzá kell adni a háttérbeli készlethez. 
-- A **virtuálisgép-méretezési csoporton** belüli összes virtuális gépet a kimenő kapcsolathoz hozzá kell adni a háttérbeli készlethez.
+- Az előtere IP-címenként legfeljebb 64 000 használható időzítő port lehet.
+- A konfigurálható kimenő üresjárati időkorlát tartománya 4–120 perc (240–7200 másodperc).
+- A load balancer nem támogatja az ICMP-t a kimenő NAT-hez.
+- Kimenő szabályok csak a hálózati adapterek elsődleges IP-konfigurációira alkalmazhatók.  Virtuális gép vagy NVA másodlagos IP-címének kimenő szabálya nem hozható létre. Több NIC is támogatott.
+- A rendelkezésre állási készleten belüli összes virtuális gépet hozzá kell adni a háttérkészlethez a kimenő kapcsolatokhoz.  
+- A virtuálisgép-méretezési készletben lévő összes virtuális gépet hozzá kell adni a háttérkészlethez a kimenő kapcsolatokhoz. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure standard Load Balancer](load-balancer-overview.md)
-- Tekintse meg a [Azure Load Balancerekkel kapcsolatos gyakori kérdéseket](load-balancer-faqs.md)
+- Tekintse meg [a gyakori kérdéseket a Azure Load Balancer](load-balancer-faqs.md)

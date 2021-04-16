@@ -1,28 +1,28 @@
 ---
-title: Több erőforrás-példány üzembe helyezése
-description: A másolási művelet és tömbök használata Azure Resource Manager sablonban (ARM-sablon) az erőforrástípus többszöri üzembe helyezéséhez.
+title: Több erőforráspéldány üzembe helyezése
+description: Másolási művelet és tömbök használata Azure Resource Manager sablonban (ARM-sablon) az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5ddb0cabf0acae1ffe9b9e77e6defa70f9cbd61b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385708"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479967"
 ---
-# <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
+# <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás több példányát a Azure Resource Manager-sablonban (ARM-sablon). A másolási hurok a sablon erőforrások szakaszába való hozzáadásával dinamikusan állíthatja be a telepítendő erőforrások számát. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás egynél több példányát a Azure Resource Manager sablonban (ARM-sablon). Ha másolási hurkot ad hozzá a sablon resources szakaszhoz, dinamikusan beállíthatja az üzembe helyezni kívánt erőforrások számát. A sablonszintaxis megismétlését sem kell megismételnie.
 
-A másolási hurkot használhatja a [Tulajdonságok](copy-properties.md), [változók](copy-variables.md)és [kimenetek](copy-outputs.md)használatával is.
+A másolási ciklust olyan tulajdonságokkal is [használhatja,](copy-properties.md)mint a , [a változók](copy-variables.md)és [a kimenetek.](copy-outputs.md)
 
-Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
+Ha meg kell adnia, hogy egy erőforrás egyáltalán üzembe legyen-e helyezni, tekintse meg a [feltételelemet.](conditional-resource-deployment.md)
 
 ## <a name="syntax"></a>Syntax
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Adja hozzá az `copy` elemet a sablon erőforrások szakaszához az erőforrás több példányának telepítéséhez. Az `copy` elem formátuma a következő:
+Adja hozzá a elemet a sablon resources szakaszhoz az erőforrás `copy` több példányának üzembe helyezéséhez. A `copy` elem általános formátuma a következő:
 
 ```json
 "copy": {
@@ -33,61 +33,61 @@ Adja hozzá az `copy` elemet a sablon erőforrások szakaszához az erőforrás 
 }
 ```
 
-A `name` tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A `count` tulajdonság határozza meg az erőforrástípus kívánt ismétlések számát.
+A `name` tulajdonság bármely érték, amely azonosítja a ciklust. A tulajdonság adja meg az erőforrástípushoz kívánt iterációk `count` számát.
 
-A `mode` és a `batchSize` Tulajdonságok használatával adhatja meg, hogy az erőforrások párhuzamosan vagy sorba vannak-e telepítve. Ezeket a tulajdonságokat a [soros vagy párhuzamosan](#serial-or-parallel)kell ismertetni.
+A és a tulajdonsággal adhatja meg, hogy az erőforrások párhuzamosan vagy egymás után `mode` `batchSize` vannak-e telepítve. Ezeket a tulajdonságokat a Serial (Soros) vagy [a Parallel (Párhuzamos) leírás ismerteti.](#serial-or-parallel)
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-A hurkok több erőforrást is használhatnak:
+A hurkok több erőforrás deklarálhatóak a következővel:
 
-- Iteráció egy tömbben:
+- Iterating over an array (Iterating egy tömbben):
 
   ```bicep
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
-- Egy tömb elemeinek megismétlése
+- Iterating over the elements of an array
 
   ```bicep
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
-- Hurok-index használata
+- Ciklusindex használata
 
   ```bicep
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
     <resource-properties>
-  }
+  }]
   ```
 
 ---
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
-A szám nem lehet nagyobb, mint 800.
+A szám nem haladhatja meg a 800-at.
 
-A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+A szám nem lehet negatív szám. Nulla lehet, ha a sablont az Azure CLI, a PowerShell vagy a REST API. Pontosabban a következőt kell használnia:
 
-- Azure PowerShell **2,6** vagy újabb
-- Azure CLI- **2.0.74** vagy újabb
-- REST API **2019-05-10** -es vagy újabb verzió
-- A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+- Azure PowerShell **2.6-os vagy** újabb
+- Azure CLI **2.0.74 vagy** újabb
+- REST API **2019. 05. 10.** vagy újabb verziója
+- [A csatolt üzemelő példányok](linked-templates.md) az api **2019-05-10-es** vagy újabb verzióját kell használniuk az üzembe helyezési erőforrástípushoz
 
-A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+A PowerShell, a parancssori felület és a REST API korábbi verziói nem támogatják a nullát a darabszámhoz.
 
-A másolási hurok használatával ügyeljen a [teljes módú üzembe helyezésre](deployment-modes.md) . Ha egy erőforráscsoport esetében újratelepíti a teljes módot, a másolási hurok feloldása után a sablonban nem megadott erőforrások törlődnek.
+Körültekintően használja a [teljes módú üzembe helyezést](deployment-modes.md) a másolási hurokkal. Ha teljes módban újra üzembe lép egy erőforráscsoporton, a rendszer törli azokat az erőforrásokat, amelyek a másolási ciklus feloldása után nem vannak megadva a sablonban.
 
 ## <a name="resource-iteration"></a>Erőforrás-iteráció
 
-A következő példa a paraméterben megadott Storage-fiókok számát hozza létre `storageCount` .
+Az alábbi példa a paraméterben megadott tárfiókok számát `storageCount` hozza létre.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -121,7 +121,7 @@ A következő példa a paraméterben megadott Storage-fiókok számát hozza lé
 }
 ```
 
-Figyelje meg, hogy az egyes erőforrások neve tartalmazza a `copyIndex()` függvényt, amely az aktuális iterációt adja vissza a hurokban. A `copyIndex()` nulla alapú. Tehát a következő példa:
+Figyelje meg, hogy az egyes erőforrások neve tartalmazza a függvényt, amely az aktuális `copyIndex()` iterációt adja vissza a hurokban. A `copyIndex()` nulla alapú. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -133,7 +133,7 @@ A következő neveket hozza létre:
 - storage1
 - storage2.
 
-Az index értékének eltolásához átadhat egy értéket a `copyIndex()` függvényben. Az ismétlések száma továbbra is meg van adva a másolási elemben, de a értéke a `copyIndex` megadott értékkel van kiegyenlítve. Tehát a következő példa:
+Az indexérték eltolására értéket is átadhat a `copyIndex()` függvényben. Az iterációk száma továbbra is meg van adva a másolási elemben, de a értékét eltoltuk `copyIndex` a megadott értékkel. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -145,7 +145,7 @@ A következő neveket hozza létre:
 - storage2
 - storage3
 
-A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint a `copyIndex` tömb aktuális indexének lekéréséhez.
+A másolási művelet tömbökhöz való munka során hasznos, mert a tömb minden elemét iterálhatja. A tömb függvényének használatával megadhatja az iterációk számát, és lekéri a tömb `length` `copyIndex` aktuális indexét.
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
@@ -163,11 +163,11 @@ resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in r
 }]
 ```
 
-Figyelje meg, hogy az index a `i` Storage-fiók erőforrás-nevének létrehozásakor használatos.
+Figyelje meg, hogy a rendszer `i` az indexet használja a tárfiók erőforrásnevének létrehozásakor.
 
 ---
 
-A következő példa egy Storage-fiókot hoz létre a paraméterben megadott minden névhez.
+Az alábbi példa egy tárfiókot hoz létre a paraméterben megadott összes névhez.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -228,21 +228,21 @@ resource storageNames_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for n
 
 ---
 
-Ha a központilag telepített erőforrások értékeit szeretné visszaadni, a [kimenetek szakaszban a másolás](copy-outputs.md)lehetőséget használhatja.
+Ha értékeket szeretne visszaadni az üzembe helyezett erőforrásokból, használhatja a copy (másolás) részt a [outputs (kimenetek) szakaszban.](copy-outputs.md)
 
 ## <a name="serial-or-parallel"></a>Soros vagy párhuzamos
 
-Alapértelmezés szerint a Resource Manager párhuzamosan hozza létre az erőforrásokat. Nem korlátozza a párhuzamosan üzembe helyezett erőforrások számát, kivéve a sablonban lévő 800-erőforrások teljes korlátját. A létrehozásuk sorrendje nem garantált.
+Alapértelmezés szerint a Resource Manager párhuzamosan hozza létre az erőforrásokat. A sablonban található 800 erőforrás teljes korlátja kívül nincs korlátozva a párhuzamosan üzembe helyezett erőforrások számára. A létrehozás sorrendje nem garantált.
 
-Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre.
+Előfordulhat azonban, hogy az erőforrások egymás után vannak telepítve. Éles környezet frissítésekor például szükség lehet a frissítések eltömödésére, hogy egyszerre csak egy bizonyos szám legyen frissítve.
 
-Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, használja a következőt:
+Ha például egyszerre kettővel több tárfiókot is üzembe helyez, használja a következőt:
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Egy adott erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `mode` **soros** értéket, és adja meg `batchSize` az egyszerre telepítendő példányok számát. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
+Ha egy erőforrás egynél több példányát kell sorosan üzembe helyeznie, állítsa sorosra, illetve az egyszerre üzembe helyezendő `mode`  `batchSize` példányok számára. Soros módban a Resource Manager a ciklus korábbi példányaitól hoz létre függőséget, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
 
-A nem lehet nagyobb az értéknél a `batchSize` `count` másolási elemben.
+A értéke nem haladhatja meg a értékét `batchSize` a `count` másolási elemben.
 
 ```json
 {
@@ -271,11 +271,11 @@ A nem lehet nagyobb az értéknél a `batchSize` `count` másolási elemben.
 }
 ```
 
-A `mode` tulajdonság szintén **párhuzamosan** fogadja el az alapértelmezett értéket.
+A `mode` tulajdonság a párhuzamos értéket is **elfogadja,** amely az alapértelmezett érték.
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Egy erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `batchSize` [dekoratőr](./bicep-file.md#resource-and-module-decorators) -t az egyszerre telepítendő példányok számára. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
+Egy erőforrás több példányának soros üzembe helyezéséhez állítsa a dekorátort az egyszerre üzembe helyezni szükséges `batchSize` [](./bicep-file.md#resource-and-module-decorators) példányok számára. Soros módban a Resource Manager a ciklus korábbi példányaitól hoz létre függőséget, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
 
 ```bicep
 @batchSize(2)
@@ -292,11 +292,11 @@ resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in r
 
 ---
 
-## <a name="iteration-for-a-child-resource"></a>Gyermek erőforrás iterációja
+## <a name="iteration-for-a-child-resource"></a>Iteráció gyermekerőforráshoz
 
-Alárendelt erőforráshoz nem használhat másolási hurkot. Ha egy erőforrás több példányát szeretné létrehozni, amelyet általában egy másik erőforrásban ágyaznak be, ehelyett legfelső szintű erőforrásként kell létrehoznia az erőforrást. A szülő erőforrással létesített kapcsolatot a típus és a név tulajdonsággal határozhatja meg.
+Gyermekerőforráshoz nem használhat másolási hurkot. Ha egy erőforrás egynél több olyan példányát is létre kell hoznia, amely általában egy másik erőforráson belül beágyazottként van definiálva, akkor azt az erőforrást felső szintű erőforrásként kell létrehoznia. A szülőerőforrással való kapcsolatot a típus és a név tulajdonságaival határozhatja meg.
 
-Tegyük fel például, hogy az adatkészletet általában alárendelt erőforrásként definiálja egy adat-előállítón belül.
+Tegyük fel például, hogy egy adatkészletet általában gyermekerőforrásként definiál egy adat-előállítón belül.
 
 ```json
 "resources": [
@@ -316,11 +316,11 @@ Tegyük fel például, hogy az adatkészletet általában alárendelt erőforrá
   ]
 ```
 
-Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, a teljes típust a következő formátumban kell megadnia: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
+Egynél több adatkészlet létrehozásához helyezze át azt az adat-előállítón kívülre. Az adatkészletnek az adat-előállítóval azonos szinten kell lennie, de továbbra is az adat-előállító gyermekerőforrása. Az adatkészlet és az adat-előállító közötti kapcsolatot a típus és a név tulajdonságaival őrizze meg. Mivel a típust már nem lehet kikövetkeztetni a sablonban való pozíciójából, a teljes típust a következő formátumban kell meg adnia: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
 
-Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. Használja a következő formátumot: `{parent-resource-name}/{child-resource-name}`.
+Ha szülő/gyermek kapcsolatot létesít az adat-előállító egy példányával, adjon meg egy nevet az adatkészletnek, amely tartalmazza a szülőerőforrás nevét. Használja a következő formátumot: `{parent-resource-name}/{child-resource-name}`.
 
-A következő példa a megvalósítást mutatja be:
+Az alábbi példa az implementációt mutatja be:
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -361,23 +361,23 @@ resource dataFactoryName_ArmtemplateTestDatasetIn 'Microsoft.DataFactory/factori
 
 ---
 
-## <a name="example-templates"></a>Példák sablonokra
+## <a name="example-templates"></a>Példasablonok
 
-Az alábbi példák egy erőforrás vagy tulajdonság egynél több példányának létrehozására vonatkozó gyakori forgatókönyveket mutatnak be.
+Az alábbi példák gyakori forgatókönyveket mutatnak be egy erőforrás vagy tulajdonság több példányának létrehozásához.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Tárterület másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Egynél több Storage-fiókot telepít a névben. |
-|[Soros másolási tár](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Egyszerre több Storage-fiókot helyez üzembe. A név tartalmazza az index számát. |
-|[Tároló másolása tömbvel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Több Storage-fiók üzembe helyezése. A név egy tömbből származó értéket tartalmaz. |
+|[Tároló másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Több tárfiókot helyez üzembe, amelyek nevében egy indexszám van megszabadelve. |
+|[Soros másolási tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Egyszerre több tárfiókot is üzembe helyez. A név tartalmazza az indexszámot. |
+|[Tároló másolása tömböt tartalmazó hellyel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Több tárfiókot helyez üzembe. A név egy tömbből származó értéket tartalmaz. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A másolási hurokban létrehozott erőforrásokra vonatkozó függőségek beállításához tekintse meg [az erőforrások ARM-sablonokban való üzembe helyezési sorrendjének meghatározása](define-resource-dependency.md)című témakört.
-- Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
-- Az erőforrás-másolást lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).
-- A másolási hurok egyéb felhasználási módjaiért lásd:
-  - [Tulajdonság-iteráció az ARM-sablonokban](copy-properties.md)
+- A másolási ciklusban létrehozott erőforrások függőségeinek beállítását lásd: Az erőforrások ARM-sablonokban való üzembe helyezésének sorrendjének [definiálása.](define-resource-dependency.md)
+- Az oktatóanyagot lásd: [Oktatóanyag: Több erőforráspéldány létrehozása ARM-sablonokkal.](template-tutorial-create-multiple-instances.md)
+- Az erőforrás-Microsoft Learn egy új modult az Összetett felhőbeli üzemelő példányok kezelése [speciális ARM-sablonszolgáltatásokkal.](/learn/modules/manage-deployments-advanced-arm-template-features/)
+- A másolási ciklus egyéb felhasználási módokhoz lásd:
+  - [Tulajdonság iterációja ARM-sablonokban](copy-properties.md)
   - [Változó iteráció az ARM-sablonokban](copy-variables.md)
-  - [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
-- További információ a másolás beágyazott sablonokkal történő használatáról: [a másolás használata](linked-templates.md#using-copy).
+  - [Kimeneti iteráció ARM-sablonokban](copy-outputs.md)
+- A másolás beágyazott sablonokkal való használatával kapcsolatos információkért lásd: [Másolás használata.](linked-templates.md#using-copy)

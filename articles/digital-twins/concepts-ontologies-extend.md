@@ -1,93 +1,93 @@
 ---
-title: A ontológiákat kiterjesztése
+title: Az ralogik kiterjesztése
 titleSuffix: Azure Digital Twins
-description: Ismerje meg az ontológia kibővítése mögötti okokat és stratégiákat
+description: Az ontológia kibővítését indokokkal és stratégiákkal kapcsolatos tudnivalók
 author: baanders
 ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100561398"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480230"
 ---
-# <a name="extending-ontologies"></a>A ontológiákat kiterjesztése 
+# <a name="extending-ontologies"></a>Az ralogik kiterjesztése 
 
-Az iparági szabványnak megfelelő [ontológia](concepts-ontologies.md), mint például a [DTDL-alapú RealEstateCore ontológia intelligens épületekhez](https://github.com/Azure/opendigitaltwins-building), nagyszerű módszer a IoT-megoldás kialakításának megkezdéséhez. Az iparági ontológiákat az alapszintű felületek gazdag készletét biztosítják, amelyek a tartományhoz lettek tervezve, és az Azure IoT Services, például az Azure Digital Twins szolgáltatásban működő dobozból is dolgozhatnak. 
+Egy iparági szabványnak megfelelő [ontológia,](concepts-ontologies.md)például az intelligens épületek [DTDL-alapú RealEstateCore ontológiája,](https://github.com/Azure/opendigitaltwins-building)remek módja az IoT-megoldás építésének. Az iparági ralogikák számos olyan alapillesztőt biztosítanak, amelyek a tartományhoz vannak kialakítva, és úgy vannak kialakítva, hogy használatra készen is működjön az Azure IoT-szolgáltatásokban, például Azure Digital Twins. 
 
-Előfordulhat azonban, hogy a megoldás olyan konkrét igényekkel is rendelkezhet, amelyeket nem érint az iparági ontológia. Előfordulhat például, hogy össze szeretné kapcsolni a digitális ikreket egy különálló rendszeren tárolt 3D-modellekhez. Ebben az esetben kiterjesztheti az egyik ontológiákat a saját képességeinek hozzáadására, miközben megőrizheti az eredeti ontológia összes előnyét.
+Előfordulhat azonban, hogy a megoldásnak olyan speciális igényei vannak, amelyekre az iparági ontológia nem terjed ki. Előfordulhat például, hogy a digitális ikereket egy külön rendszerben tárolt 3D-modellekkel szeretné összekapcsolni. Ebben az esetben kiterjesztheti az egyik ilyen onlogikát, hogy saját képességeket adjon hozzá, miközben megtartja az eredeti ontológia összes előnyét.
 
-Ez a cikk a DTDL-alapú [RealEstateCore](https://www.realestatecore.io/) ontológia-t használja a ONTOLÓGIÁKAT új DTDL tulajdonságokkal való kiterjesztésére szolgáló példák alapjául. Az itt ismertetett módszerek általánosak, és a DTDL-alapú ontológia bármely részén alkalmazhatók bármilyen DTDL képességgel (telemetria, tulajdonság, kapcsolat, összetevő vagy parancs). 
+Ez a cikk a DTDL-alapú [RealEstateCore-ontológiát](https://www.realestatecore.io/) használja az új DTDL-tulajdonságokkal bővítő ontológiák példáihoz. Az itt ismertetett technikák azonban általánosak, és a DTDL-alapú ontológia bármely részére alkalmazhatók bármilyen DTDL-képességgel (telemetria, tulajdonság, kapcsolat, összetevő vagy parancs). 
 
-## <a name="realestatecore-space-hierarchy"></a>RealEstateCore 
+## <a name="realestatecore-space-hierarchy"></a>RealEstateCore térhierarchia 
 
-A DTDL-alapú RealEstateCore ontológia a Space hierarchia különböző típusú szóközök meghatározására szolgál: szobák, épületek, zóna stb. A hierarchia az egyes modellektől különböző típusú helyiségek, épületek és zónák meghatározására szolgál. 
+A DTDL-alapú RealEstateCore ontológiában a Térhierarchia különböző terek meghatározására szolgál: helyiségek, épületek, zóna stb. A hierarchia ezen modellek mindegyikét kiterjedve különféle helyiségeket, épületeket és zónákat definiál. 
 
-A hierarchia egy része az alábbi diagramhoz hasonlít. 
+A hierarchia egy része az alábbi diagramhoz hasonló. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="A flow diagram a RealEstateCore terület hierarchiájának részét szemlélteti. A legfelső szinten van egy Space nevű elem; egy &quot;kiterjesztő&quot; nyíllal van összekötve egy szintről a helyiségbe; A helyiség két &quot;kiterjesztő&quot; nyíllal van összekötve egy szintről a ConferenceRoom és az Office-ra."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="A RealEstateCore térhierarchia egy részét ábrázoló folyamatábra. A legfelső szinten található egy Space (Tér) nevű elem; a helyiségig egy szinttel lefelé mutató &quot;kiterül&quot; nyíllal van csatlakoztatva; A helyiség két &quot;kiterjesztési&quot; nyíllal van összekapcsolva egy szinttel a ConferenceRoom és az Office között."::: 
 
-További információ a RealEstateCore ontológia-ról: az [*iparági szabványnak megfelelő ontológiákat bevezetése*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
+A RealEstateCore ontológiával kapcsolatos további információkért [*lásd: Alapfogalmak: Iparági szabványnak megfelelő ontológiák elfogadása.*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)
 
-## <a name="extending-the-realestatecore-space-hierarchy"></a>A RealEstateCore terület hierarchiájának kiterjesztése 
+## <a name="extending-the-realestatecore-space-hierarchy"></a>A RealEstateCore térhierarchia kiterjesztése 
 
-Előfordulhat, hogy a megoldásnak konkrét igényei vannak, amelyeket nem érint az iparági ontológia. Ebben az esetben a hierarchia kibővítése lehetővé teszi, hogy továbbra is használhassa az iparági ontológia-t, miközben az igényeinek megfelelően testre szabhatja. 
+Előfordulhat, hogy a megoldásnak olyan speciális igényei vannak, amelyekre az iparági ontológia nem terjed ki. Ebben az esetben a hierarchia kiterjesztése lehetővé teszi, hogy továbbra is használja az iparági ontológiát, miközben testre szabja az igényeinek megfelelően. 
 
-Ebben a cikkben két különböző esetet tárgyalunk, amelyekben az ontológia hierarchiájának kiterjesztése hasznos: 
+Ebben a cikkben két különböző esetet tárgyalunk, amelyekben hasznos az ontológia hierarchiájának kiterjesztése: 
 
-* Új felületek hozzáadása az iparági ontológia-ben nem szereplő fogalmakhoz. 
-* További tulajdonságok (vagy kapcsolatok, összetevők, telemetria vagy parancsok) hozzáadása a meglévő interfészekhez.
+* Új interfészek hozzáadása olyan fogalmakhoz, amelyek nem az iparági ontológiában vannak. 
+* További tulajdonságok (vagy kapcsolatok, összetevők, telemetria vagy parancsok) hozzáadása a meglévő felületekhez.
 
-### <a name="add-new-interfaces-for-new-concepts"></a>Új felületek hozzáadása új fogalmakhoz 
+### <a name="add-new-interfaces-for-new-concepts"></a>Új felületek hozzáadása az új fogalmakhoz 
 
-Ebben az esetben a megoldáshoz szükséges, de az iparági ontológia-ben nem szereplő fogalmakat kell hozzáadnia. Ha például a megoldás más típusú szobákat tartalmaz, amelyek nem szerepelnek a DTDL-alapú RealEstateCore ontológia-ben, akkor a RealEstateCore-felületek közvetlen kibővítésével adhat hozzájuk. 
+Ebben az esetben a megoldáshoz szükséges, de az iparági ontológiában nem jelen bíró fogalmakhoz szeretne interfészeket hozzáadni. Ha például a megoldás más típusú helyiségeket is használ, amelyek nem létezikak a DTDL-alapú RealEstateCore ontológiában, akkor hozzáadhatja őket közvetlenül a RealEstateCore felületekről való kiterjesztésekkel. 
 
-Az alábbi példa olyan megoldást mutat be, amelynek a "Focus Rooms" kifejezésnek kell megfelelnie, amelyek nem szerepelnek a RealEstateCore ontológia-ben. A fókuszban lévő helyiség egy kis méretű terület, amely arra szolgál, hogy a felhasználók egy adott tevékenységre összpontosítsanak egy adott időpontban. 
+Az alábbi példa egy olyan megoldást mutat be, amelynek "fókusztermeket" kell képviselnie, amelyek nincsenek jelen a RealEstateCore ontológiában. A fókuszterem egy kis terület, amelyet arra terveztek, hogy az emberek egyszerre néhány óráig összpontosítsak egy feladatra. 
 
-Az iparági ontológia ezen új koncepcióval való kibővítéséhez hozzon létre egy új felületet, amely az iparági ontológia-ben található felületekből is [kiterjeszthető.](concepts-models.md#model-inheritance) 
+Az iparági ontológia új fogalommal való kiterjesztéséhez hozzon létre egy új felületet, amely az iparági ontológia interfészeiből is kiterjed. [](concepts-models.md#model-inheritance) 
 
-A fókuszos helyiség felületének hozzáadása után a kiterjesztett hierarchia az új szobatípus típusát jeleníti meg. 
+A fókuszterem-felület hozzáadása után a kiterjesztett hierarchia megjeleníti az új helyiség típusát. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="A flow diagram a RealEstateCore tér hierarchiáját mutatja be, új hozzáadással. A ConferenceRoom és az Office alsó szintjén található egy új, FocusRoom nevű elem (amely szintén egy &quot;kibővíthető&quot; nyíllal van összekötve a helyiségből)"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="A fenti RealEstateCore térhierarchiát ábrázoló folyamatábra egy új összeadással. A ConferenceRoom és az Office legalsó szintjén található egy FocusRoom nevű új elem (amely a Roomból egy &quot;extends&quot; nyíllal is csatlakoztatva van)"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>További funkciók hozzáadása meglévő interfészekhez 
+### <a name="add-additional-capabilities-to-existing-interfaces"></a>További képességek hozzáadása meglévő felületekhez 
 
-Ebben az esetben további tulajdonságokat (vagy kapcsolatokat, összetevőket, telemetria vagy parancsokat) szeretne hozzáadni az iparági ontológia-ben található felületekhez.
+Ebben az esetben további tulajdonságokat (vagy kapcsolatokat, összetevőket, telemetriát vagy parancsokat) szeretne hozzáadni az iparági ontológiában.
 
 Ebben a szakaszban két példát láthat: 
-* Ha olyan megoldást hoz létre, amely egy már meglévő rendszerbeli szóközökből álló 3D-rajzokat jelenít meg, érdemes lehet minden digitális Twin-t hozzárendelni a 3D-rajzhoz (azonosító alapján), hogy amikor a megoldás információkat jelenít meg a területről, a meglévő rendszerből is lekérheti a 3D-rajzot. 
-* Ha a megoldásnak követnie kell a konferenciatermek online/offline állapotát, akkor érdemes lehet nyomon követni a konferenciaterem állapotát a megjelenített és a lekérdezésekben való használatra. 
+* Ha olyan megoldást hoz létre, amely egy meglévő rendszerben már meglévő térközök 3D-s rajzait jeleníti meg, érdemes lehet minden digitális ikereszközt a 3D-s rajzhoz társítani (azonosító alapján), hogy amikor a megoldás a térre vonatkozó információkat jelenít meg, a meglévő rendszerből is lekérheti a 3D rajzot. 
+* Ha a megoldásnak nyomon kell követnie a konferenciatermek online/offline állapotát, akkor érdemes lehet nyomon követni a konferenciaterem állapotát a megjelenítéshez vagy a lekérdezésekhez. 
 
-Mindkét példa az új tulajdonságokkal valósítható meg: egy olyan `drawingId` tulajdonság, amely a 3D-rajzot a digitális Twin és egy "online" tulajdonsággal társítja, amely jelzi, hogy a konferenciaterem online állapotban van-e. 
+Mindkét példa új tulajdonságokkal valósítható meg: egy tulajdonsággal, amely a 3D rajzot társítja a digitális ikerhez, és egy "online" tulajdonság, amely jelzi, hogy a konferenciaterem online állapotban `drawingId` van-e vagy sem. 
 
-Általában nem kívánja közvetlenül módosítani az iparági ontológia-t, mert szeretné a jövőben is beépíteni azt a megoldásba (amely felülírja a hozzáadásokat). Ehelyett az ilyen típusú kiegészítések a saját interfész-hierarchiában hozhatók létre, amely kiterjeszthető a DTDL-alapú RealEstateCore ontológia-ból. Minden egyes létrehozott felület több illesztőfelület-öröklést használ a fölérendelt RealEstateCore felületének és a fölérendelt felületének a kiterjesztett felületi hierarchiából való kibővítéséhez. Ez a megközelítés lehetővé teszi az iparági ontológia és a hozzájuk tartozó kiegészítések használatát. 
+Általában nem szeretné közvetlenül módosítani az iparági ontológiát, mert a jövőben szeretné beépíteni a frissítéseket a megoldásba (ami felülírná a kiegészítéseket). Ehelyett az ilyen típusú kiegészítések a DTDL-alapú RealEstateCore ontológiától való kiterjesztésű saját felületi hierarchiában is elérhetőek. Minden létrehozott felület több felületöröklést használ a szülő RealEstateCore interfész és a szülőfelület kiterjesztéséhez a kiterjesztett felületi hierarchiából. Ez a megközelítés lehetővé teszi az iparági ontológia és az összeadások együttes használatát. 
 
-Az iparági ontológia kibővítéséhez létre kell hoznia egy saját felületet, amely az iparági ontológia felületeit bővíti, és hozzáadja az új képességeket a kiterjesztett interfészekhez. Minden egyes kiterjeszteni kívánt csatolóhoz létre kell hoznia egy új felületet. A kiterjesztett felületek a DTDL-ben íródnak (lásd a jelen dokumentum későbbi, a kiterjesztett felületek DTDL című szakaszát). 
+Az iparági ontológia kibővítéséhez saját felületeket kell létrehoznia, amelyek az iparági ontológia felületeitől is kiterjednek, és az új képességeket bővítik a kiterjesztett felületeken. Minden kiterjeszteni kívánt felülethez új felületet kell létrehoznia. A bővített interfészek DTDL-ként vannak megírva (lásd a DTDL for Extended Interfaces című szakaszt a dokumentum későbbi részében). 
 
-A fent bemutatott hierarchia részének kibővítését követően a kiterjesztett hierarchia az alábbi ábrához hasonlóan néz ki. Itt a kiterjesztett terület felülete hozzáadja azt a `drawingId` tulajdonságot, amely tartalmaz egy azonosítót, amely a digitális Twin-et a 3D-rajzzal társítja. Emellett a ConferenceRoom felület egy "online" tulajdonságot is tartalmaz, amely tartalmazza a konferenciaterem online állapotát. Az öröklés révén a ConferenceRoom felület a RealEstateCore ConferenceRoom felület összes funkcióját, valamint a kiterjesztett terület felületének összes funkcióját tartalmazza. 
+A fent látható hierarchia részének kibővítését követően a kiterjesztett hierarchia az alábbi ábrához hasonló lesz. Itt a kiterjesztett térfelület hozzáadja a tulajdonságot, amely tartalmazni fog egy azonosítót, amely a digitális ikereszközt a `drawingId` 3D rajzhoz társítja. Emellett a ConferenceRoom interfész hozzáad egy "online" tulajdonságot, amely a konferenciaterem online állapotát fogja tartalmazni. Az öröklés révén a ConferenceRoom felület a RealEstateCore ConferenceRoom felület összes képességét tartalmazza, valamint a kiterjesztett space felület összes képességét. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="A flow diagram a fentiekből álló kiterjesztett RealEstateCore-hierarchiát mutatja be, és további új kiegészítéseket is nyújt. A Room most megosztja a szintjét egy szóköz elemmel, amely a ConferenceRoom és az Office mellett egy új, &quot;kiterjeszt&quot; nyílra mutat.  Az új elemek a már meglévő ontológia-kapcsolatokhoz kapcsolódnak."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="A fenti kiterjesztett RealEstateCore térhierarchiát ábrázoló folyamatábra további új kiegészítésekkel. A helyiség szintje most egy Szóköz elemmel rendelkezik, amely egy szinttel egy szinttel lefelé mutató &quot;extends&quot; nyíllal csatlakozik egy új Room elemhez a ConferenceRoom és az Office mellett.  Az új elemek a meglévő ontológiához csatlakoznak, és több &quot;bővítő&quot; kapcsolat van közöttünk."::: 
 
-## <a name="using-the-extended-space-hierarchy"></a>A kibővített terület hierarchiájának használata 
+## <a name="using-the-extended-space-hierarchy"></a>A kiterjesztett terület hierarchiájának használata 
 
-Amikor digitális ikreket hoz létre a kibővített lemezterület-hierarchiával, minden egyes digitális Twin modell a kibővített hely hierarchiájának egyike lesz (nem az eredeti iparági ontológia), és az iparági ontológia és a kiterjesztett felületek összes funkcióját tartalmazza, bár az illesztőfelület öröklődése.
+Amikor a kiterjesztett tér-hierarchiával hoz létre digitális ikereket, mindegyik digitális ikermodell egy lesz a kiterjesztett térhierarchiából (nem az eredeti iparági ontológiából), és az iparági ontológia és a kiterjesztett interfészek összes képességét tartalmazza a interfészek öröklése ellenére.
 
-Mindegyik digitális Twin modell a kiterjesztett hierarchia egy felülete lesz, amely az alábbi ábrán látható. 
+Minden digitális ikermodell egy interfész lesz a kiterjesztett hierarchiából, az alábbi ábrán látható módon. 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="Egy részlet a kiterjesztett RealEstateCore, beleértve a terület (legfelső szint), egy helyiség (középső szint) és a ConferenceRoom, az Office és a FocusRoom (alacsonyabb szint). A modellek nevei az egyes elemekhez vannak csatlakoztatva (például a helyiség egy Room101 nevű modellhez csatlakozik)."::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="A kiterjesztett RealEstateCore térhierarchia egyik kivonata, amely tartalmazza a tér (legfelső szint), egy helyiség (középső szint) és a ConferenceRoom, az Office és a FocusRoom (alsó szintű) hierarchiáját. A modellek neve minden elemhez kapcsolódik (például a Room egy Room101 nevű modellhez csatlakozik)."::: 
 
-A digitális ikreknek a modell-AZONOSÍTÓval (a `IS_OF_MODEL` kezelővel) való lekérdezésekor a kibővített hierarchiából származó modell-azonosítókat kell használni. Például: `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
+Amikor a modellazonosító (a operátor) használatával lekérdezi a digitális ikereket, a kiterjesztett hierarchiából származó modellazonosítókat `IS_OF_MODEL` kell használnia. Például: `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
 
-## <a name="contributing-back-to-the-original-ontology"></a>Hozzájárulás az eredeti ontológia-hoz 
+## <a name="contributing-back-to-the-original-ontology"></a>Hozzájárulás az eredeti ontológiához 
 
-Bizonyos esetekben az iparági ontológia-t olyan módon kell kiterjeszteni, amely széles körben hasznos az ontológia legtöbb felhasználója számára. Ebben az esetben érdemes megfontolni a bővítmények visszaadását az eredeti ontológia számára. Minden ontológia más folyamattal járul hozzá, ezért az ontológia GitHub-tárházában tájékozódhat a hozzájárulás részleteiről. 
+Bizonyos esetekben olyan módon bővítheti az iparági ontológiát, amely széles körben hasznos az ontológia legtöbb felhasználója számára. Ebben az esetben érdemes megfontolni a bővítmények eredeti ontológiához való hozzájárulását. Mindegyik ontológia más-más közreműködői folyamattal rendelkezik, ezért a közreműködés részleteiért tekintse meg az ontológia GitHub-adattárát. 
 
-## <a name="dtdl-for-new-interfaces"></a>Új felületek DTDL 
+## <a name="dtdl-for-new-interfaces"></a>DTDL az új felületekhez 
 
-A közvetlenül az iparági ontológia-ből kiterjesztő új felületek DTDL így néz ki. 
+A DTDL az iparági ontológiából közvetlenül kiható új felületekhez így nézne ki. 
 
 ```json
 {
@@ -98,9 +98,9 @@ A közvetlenül az iparági ontológia-ből kiterjesztő új felületek DTDL íg
 } 
 ```
 
-## <a name="dtdl-for-extended-interfaces"></a>DTDL kiterjesztett illesztőfelületekhez 
+## <a name="dtdl-for-extended-interfaces"></a>DTDL bővített felületekhez 
 
-A kibővített felületek DTDL, amely a fent tárgyalt részre korlátozódik, a következőképpen néz ki:. 
+A kiterjesztett felületek DTDL-e a fent tárgyalt részre korlátozva így nézne ki. 
 
 ```json
 [
@@ -162,4 +162,4 @@ A kibővített felületek DTDL, amely a fent tárgyalt részre korlátozódik, a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Folytassa a modellek fejlesztésének elérési útját a ontológiákat alapján: az [*ontológia-stratégiák használatával a modell fejlesztési útvonalán*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).
+Folytassa az ontológián alapuló modellek fejlesztésének útvonalával: [*Ontológiastratégiák használata modellfejlesztési útvonalon.*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)

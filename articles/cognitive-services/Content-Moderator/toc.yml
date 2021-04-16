@@ -16,11 +16,11 @@
   items:
     - name: Az ügyfélkódtár vagy a REST API használata
       href: client-libraries.md
-    - name: A webalapú felhasználói felület használata
+    - name: A webes felhasználói felület használata
       href: quick-start.md
 - name: Példák
   items:
-    - name: Minták böngésző
+    - name: Mintaböngésző
       href: /samples/browse/?terms=content+moderator
     - name: .NET SDK-minták
       href: samples-dotnet.md
@@ -78,10 +78,16 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: Fiókadatok exportálása vagy törlése
       href: ./export-delete-data.md
-    - name: Content Moderator testreszabása
+    - name: Testreszabási Content Moderator
       items:
         - name: 'Felülvizsgálatok, munkafolyamatok és feladatok'
           href: review-api.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/content-moderator/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
 - name: Alapelvek
   items:
     - name: Képmoderálás
@@ -114,19 +120,21 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Források
   items:
-    - name: Azure webinárium-sorozat
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Régiós támogatás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és tanúsítvány
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
     - name: Microsoft Learn modulok
       href: /learn/browse/?terms=content+moderator
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: Azure Government és globális Azure
+    - name: Azure webinárium-sorozat
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
+    - name: Azure Government globális Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encrypt-data-at-rest.md
