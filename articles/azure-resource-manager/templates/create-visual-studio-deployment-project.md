@@ -2,13 +2,13 @@
 title: Visual Studio Resource Group-projektek létrehozása & üzembe helyezése
 description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-projektet, és telepítse az erőforrásokat az Azure-ba.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704414"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306976"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -41,13 +41,13 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
     A webalkalmazás-sablon választása óta a következő fájlok láthatók:
 
-   | Fájlnév | Leírás |
+   | Fájlnév | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |PowerShell-parancsfájl, amely PowerShell-parancsokat futtat az Azure Resource Manager üzembe helyezéséhez. A Visual Studio ezt a PowerShell-parancsfájlt használja a sablon üzembe helyezéséhez. |
    | WebSite.jsbekapcsolva |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
-   | WebSite.parameters.jsbekapcsolva |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. |
+   | WebSite.parameters.jsbekapcsolva |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. Figyelje meg, hogy a **Build művelet** **tartalomra** van beállítva. Ha további paramétereket ad hozzá, győződjön meg arról, hogy a Build művelet **tartalomra** van beállítva. |
 
-    Mindegyik erőforráscsoport-telepítési projekt tartalmazza ezeket az alapvető fájlokat. Más projektek további fájlokat is tartalmazhatnak egyéb funkciók támogatásához.
+    Mindegyik erőforráscsoport-telepítési projekt tartalmazza ezeket az alapvető fájlokat. Más projektek több fájllal is rendelkezhetnek más funkciók támogatásához.
 
 ## <a name="customize-resource-manager-template"></a>Resource Manager-sablon testreszabása
 

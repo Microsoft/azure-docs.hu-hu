@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043461"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482833"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -35,9 +35,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 Az adatexportálás számos Azure-fióktípushoz elérhető, beleértve a [Nagyvállalati Szerződéssel (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) és a [Microsoft Ügyfélszerződéssel](get-started-partners.md) rendelkező ügyfeleket. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md). Az alábbi Azure-engedélyek és -hatókörök előfizetésenként támogatottak felhasználó vagy csoport általi adatexportáláshoz. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
-- Tulajdonos – Ütemezett exportálási feladatokat hozhat létre, módosíthat vagy törölhet az előfizetésben.
-- Közreműködő – Létrehozhatja, módosíthatja vagy törölheti saját ütemezett exportálási feladatait. Módosíthatja a mások által létrehozott ütemezett exportálási feladatok nevét.
-- Olvasó – Ütemezheti azokat az exportálási feladatokat, amelyekhez engedéllyel rendelkezik.
+- Tulajdonos: Ütemezett exportálásokat hozhat létre, módosíthat vagy törölhet egy előfizetéshez.
+- Közreműködő– Létrehozhat, módosíthat vagy törölhet saját ütemezett exportálásokat. Módosíthatja a mások által létrehozott ütemezett exportálási feladatok nevét.
+- Olvasó: Ütemezheti az exportálásokat, amelyekhez engedéllyel rendelkezik.
 
 Azure Storage-fiókok esetén:
 - A konfigurált tárfiók módosításához írási engedélyekre van szükség függetlenül attól, hogy az exportálásra milyen engedélyek vonatkoznak.
@@ -63,10 +63,10 @@ Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyiss
     - **Tényleges költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a standard használatot és költségeket szeretné exportálni
     - **Amortizált költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a vásárlások, például az Azure Reservations amortizált költségeit szeretné exportálni
 1. Az **Exportálás típusa** elemhez válasszon a következő lehetőségek közül:
-    - **Az eddigi tárgyhavi költségek napi exportálása** – Naponta új exportálási fájlt biztosít a tárgyhavi költségekről. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
-    - **Az elmúlt hét nap költségeinek heti exportálása** – Az elmúlt hét nap költségeit hetente exportálja, az exportálás kiválasztott kezdődátumától.
-    - **A múlt havi költségek havi exportálása** – A múlt havi költségeket exportálja, összehasonlítva az aktuális hónappal, amikor az exportálást létrehozza. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.
-    - **Egyszeri exportálás** – Lehetővé teszi az Azure Blob Storage-be exportálandó előzményadatok dátumtartományának kiválasztását. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.
+    - **Az aktuális hónap költségeinek** napi exportálása" Naponta biztosít egy új exportálási fájlt az aktuális havi költségekhez. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
+    - **Az elmúlt hét nap** költségeinek heti exportálása" – A költségek heti exportálását hozza létre az elmúlt hét napra az exportálás kiválasztott kezdő dátumának dátumtól függően.
+    - **A múlt havi költségek** havi exportálása" A múlt havi költségek exportálását biztosítja az előző havi költségekről az exportálás létrehozásához használt hónaphoz képest. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.
+    - **Az egyszeres exportálás** lehetővé teszi egy dátumtartomány választását az előzményadatok Azure Blob Storage-ba való exportálására. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.
         Az exportálás típusától függően kiválaszthat egy kezdődátumot, vagy megadhat **Kezdő** és **Záró** dátumot.
 1. Adja meg az Azure-tárfiókhoz tartozó előfizetést, majd válasszon ki egy erőforráscsoportot, vagy hozzon létre egy újat.
 1. Válassza ki a tárfiók nevét, vagy hozzon létre egy újat.
@@ -81,7 +81,7 @@ Kezdetben 12–24 óra is eltelhet az exportálási feladat lefutásáig. Azonba
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az `Microsoft.CostManagementExports` erőforrás-szolgáltatót azzal az előfizetéssel, amelyben a Storage-fiók található. A regisztráció automatikusan megtörténik az Exportálás Azure Portal használatával történő létrehozásakor. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: az [erőforrás-szolgáltató regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Amikor programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az erőforrás-szolgáltatót abban az előfizetésben, amelyben a `Microsoft.CostManagementExports` tárfiók található. A regisztráció automatikusan megtörténik, amikor az exportálást a Azure Portal. További információ az erőforrás-szolgáltatók regisztrálásról: [Erőforrás-szolgáltató regisztrálása.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Először készítse elő a környezetet az Azure CLI-hez:
 
@@ -151,7 +151,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-Ha programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az `Microsoft.CostManagementExports` erőforrás-szolgáltatót azzal az előfizetéssel, amelyben a Storage-fiók található. A regisztráció automatikusan megtörténik az Exportálás Azure Portal használatával történő létrehozásakor. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: az [erőforrás-szolgáltató regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Amikor programozott módon hoz létre exportálást, manuálisan kell regisztrálnia az erőforrás-szolgáltatót abban az előfizetésben, amelyben a `Microsoft.CostManagementExports` tárfiók található. A regisztráció automatikusan megtörténik, amikor az exportálást a Azure Portal. További információ az erőforrás-szolgáltatók regisztrálásról: [Erőforrás-szolgáltató regisztrálása.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Először készítse elő a környezetet az Azure PowerShellhez:
 

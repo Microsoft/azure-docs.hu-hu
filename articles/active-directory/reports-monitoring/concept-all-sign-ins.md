@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory bejelentkezési tevékenység jelentései – előzetes verzió | Microsoft Docs
-description: A bejelentkezési tevékenység jelentéseinek bemutatása a Azure Active Directory portálon
+title: Azure Active Directory tevékenységjelentések – előzetes verzió | Microsoft Docs
+description: A bejelentkezési tevékenységre vonatkozó jelentések bemutatása a Azure Active Directory portálon
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,43 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552733"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589651"
 ---
-# <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
+# <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory tevékenységjelentések megtekintése – előzetes verzió
 
-A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a következő összetevőkből áll:
+A Azure Active Directory portál három tevékenységnaplóhoz biztosít hozzáférést:
 
-- **Tevékenység** 
-    - **Bejelentkezések** – információ arról, ha a felhasználók, alkalmazások és felügyelt erőforrások bejelentkeznek az Azure ad-be és az erőforrások elérésére.
-    - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
-- **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
-    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+- **Bejelentkezések** – Információk a bejelentkezésekkel és az erőforrások felhasználók által való felhasználását.
+- **[Naplózás](concept-audit-logs.md)** – A bérlőre alkalmazott változásokkal kapcsolatos információk, például felhasználók és csoportkezelés, vagy a bérlői erőforrásokra alkalmazott frissítések.
+- **[Kiépítés](concept-provisioning-logs.md)** – A kiépítési szolgáltatás által végrehajtott tevékenységek, például egy csoport létrehozása a ServiceNow-ban vagy egy Workdayből importált felhasználó.
 
-A Azure Active Directory klasszikus bejelentkezések jelentése az interaktív felhasználói bejelentkezések áttekintését nyújtja. Emellett három további, előzetes verzióban elérhető bejelentkezési jelentéshez férhet hozzá:
+
+A klasszikus bejelentkezési jelentés Azure Active Directory interaktív felhasználói bejelentkezések áttekintését biztosítja. Emellett három további, jelenleg előzetes verzióban elérhető bejelentkezési jelentéshez is hozzáférhet:
 
 - Nem interaktív felhasználói bejelentkezések
 
-- Egyszerű szolgáltatások bejelentkezései
+- Szolgáltatásnév-bejelentkezések
 
-- Az Azure erőforrás-bejelentkezések felügyelt identitásai
+- Az Azure-erőforrások bejelentkezésének felügyelt identitásai
 
-Ez a cikk áttekintést nyújt a bejelentkezési tevékenységről a nem interaktív, alkalmazás-és felügyelt identitások előzetes verziójával az Azure-erőforrásokhoz való bejelentkezéshez. Az előzetes verziójú funkciók nélküli bejelentkezési jelentéssel kapcsolatos információkért tekintse meg a  [Azure Active Directory-portálon a bejelentkezési tevékenységek jelentéseit](concept-sign-ins.md).
+Ez a cikk áttekintést nyújt a bejelentkezési tevékenységről szóló jelentésről, amely az Azure-erőforrások nem interaktív, alkalmazás- és felügyelt identitásai bejelentkezésének előzetesét biztosítja. További információ az előzetes verziójú funkciók nélküli bejelentkezési jelentésről: Bejelentkezési tevékenységre vonatkozó jelentések a [Azure Active Directory portálon.](concept-sign-ins.md)
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A szolgáltatás használatának megkezdése előtt ismernie kell a következő válaszokat:
+Mielőtt elkezdi használni ezt a funkciót, tudnia kell a választ a következőre:
 
 - Ki férhet hozzá az adatokhoz?
 
@@ -57,7 +55,7 @@ A szolgáltatás használatának megkezdése előtt ismernie kell a következő 
 
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
-- A biztonsági rendszergazda, a biztonsági olvasó és a jelentéskészítő-olvasó szerepkörrel rendelkező felhasználók
+- A Biztonsági rendszergazda, a Biztonsági olvasó és a Jelentésolvasó szerepkörben
 
 - Globális rendszergazdák
 
@@ -65,31 +63,31 @@ A szolgáltatás használatának megkezdése előtt ismernie kell a következő 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
 
-A bérlőnek hozzá kell rendelnie prémium szintű Azure AD licenccel a bejelentkezési tevékenységek megtekintéséhez. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. A frissítés előtt néhány napig is eltarthat, hogy az adatai megjelenjenek a jelentésekben, miután a frissítés előtt adattevékenység nélküli prémium szintű licencre frissít.
+A bejelentkezési tevékenységek prémium szintű Azure AD bérlőjéhez társított licenccel kell rendelkezik. A [kiadás frissítését](../fundamentals/active-directory-get-started-premium.md) prémium szintű Azure Active Directory első Azure Active Directory lásd: Getting started with prémium szintű Azure Active Directory (Ismerkedés a Azure Active Directory kiadással. A prémium szintű licencre való frissítés után az adatok csak néhány napig fognak jelenni a jelentésekben, adattevékenységek nélkül.
 
 
 
-## <a name="sign-ins-report"></a>Bejelentkezések jelentés
+## <a name="sign-ins-report"></a>Bejelentkezési jelentés
 
-A bejelentkezések jelentés a következő kérdésekre ad választ:
+A bejelentkezési jelentés a következő kérdésekre ad választ:
 
 - Mi a felhasználó, alkalmazás vagy szolgáltatás bejelentkezési mintája?
-- Hány felhasználó, alkalmazás vagy szolgáltatás jelentkezett be egy hétre?
+- Hány felhasználó, alkalmazás vagy szolgáltatás jelentkezett be egy héten keresztül?
 - Milyen állapotúak ezek a bejelentkezések?
 
 
-A bejelentkezési jelentés panelen válthat a következők közül:
+A bejelentkezések jelentés panelen válthat a következők között:
 
-- **Interaktív felhasználói bejelentkezések** – olyan bejelentkezések, amelyekben a felhasználó hitelesítési tényezőt, például jelszót, egy MFA-alkalmazás, egy biometrikus tényező vagy egy QR-kód válaszát adja meg.
+- **Interaktív felhasználói bejelentkezések** – Bejelentkezések, ahol a felhasználó hitelesítési tényezőt biztosít, például jelszót, MFA-alkalmazáson keresztüli választ, biometriai tényezőt vagy QR-kódot.
 
-- **Nem interaktív felhasználói bejelentkezések** – az ügyfél által a felhasználó nevében végrehajtott bejelentkezések. Ezek a bejelentkezések nem igényelnek semmilyen interakciót vagy hitelesítési tényezőt a felhasználótól. Például a hitelesítés és az engedélyezés olyan frissítési és hozzáférési jogkivonatok használatával, amelyek nem igénylik a felhasználónak a hitelesítő adatok megadását.
+- **Nem interaktív felhasználói bejelentkezések** – Az ügyfél által a felhasználó nevében végzett bejelentkezések. Ezek a bejelentkezések nem igényelnek felhasználói beavatkozást vagy hitelesítési tényezőt. Ilyen például az olyan frissítési és hozzáférési jogkivonatokkal történő hitelesítés és engedélyezés, amelyek nem követelik meg a felhasználótól a hitelesítő adatok megadását.
 
-- **Egyszerű szolgáltatás-bejelentkezések** – olyan alkalmazások és egyszerű szolgáltatások, amelyek nem tartalmaznak felhasználót. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat szolgáltat a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
+- **Szolgáltatásnév-bejelentkezések** – Olyan alkalmazások és szolgáltatásnév-bejelentkezések, amelyek nem foglalnak magukban semmilyen felhasználót. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat ad meg a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
 
-- **Felügyelt identitások az Azure-erőforrások számára** az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások által végzett bejelentkezésekhez. További információ: [Mi az Azure-erőforrások felügyelt identitása?](../managed-identities-azure-resources/overview.md) 
+- **Az Azure-erőforrások felügyelt** identitásai – Bejelentkezések olyan Azure-erőforrások alapján, amelyek titkos okkal vannak az Azure által kezeltek. További információ: Mik azok az [Azure-erőforrások felügyelt identitása?](../managed-identities-azure-resources/overview.md) 
 
 
-![Bejelentkezési jelentések típusai](./media/concept-all-sign-ins/sign-ins-report-types.png)
+![A bejelentkezések jelentéstípusai](./media/concept-all-sign-ins/sign-ins-report-types.png)
 
 
 
@@ -104,7 +102,7 @@ A bejelentkezési jelentés panelen válthat a következők közül:
 
 ## <a name="user-sign-ins&quot;></a>Felhasználói bejelentkezések
 
-A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jeleníti meg. Egyes lapok további oszlopokkal rendelkeznek:
+A Bejelentkezések panel minden lapján az alábbi alapértelmezett oszlopok láthatók. Egyes lapok további oszlopokat tartalmaznak:
 
 - Bejelentkezés dátuma
 
@@ -112,7 +110,7 @@ A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jel
 
 - Felhasználónév vagy felhasználói azonosító
 
-- Alkalmazás neve vagy alkalmazás-azonosítója
+- Alkalmazásnév vagy alkalmazásazonosító
 
 - A bejelentkezés állapota
 
@@ -123,33 +121,34 @@ A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jel
 ### <a name=&quot;interactive-user-sign-ins&quot;></a>Interaktív felhasználói bejelentkezések
 
 
-Az interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyekben a felhasználó hitelesítési tényezőt biztosít az Azure AD-hez, vagy közvetlenül az Azure AD-vel vagy egy segítő alkalmazással, például a Microsoft Authenticator alkalmazással kommunikál. A felhasználók által biztosított tényezők közé tartoznak a jelszavak, az MFA-kihívásokra, a biometrikus tényezőkre, valamint a felhasználók által az Azure AD-be vagy egy segítő alkalmazásba küldött QR-kódokra adott válaszok.
+Az interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyekben a felhasználó hitelesítési tényezőt biztosít az Azure AD-nek, vagy közvetlenül kommunikál az Azure AD-val vagy egy segítő alkalmazással, például a Microsoft Authenticator alkalmazással. A felhasználók által megadott tényezők közé tartoznak a jelszavak, az MFA-problémákra adott válaszok, a biometrikus tényezők vagy a felhasználó által az Azure AD-nek vagy egy segítő alkalmazásnak megadott QR-kódok.
 
 > [!NOTE]
-> Ez a jelentés az Azure AD-ba összevont identitás-szolgáltatók összevont bejelentkezéseit is tartalmazza.  
+> Ez a jelentés az Azure AD-be összevont identitásszolgáltatók összevont bejelentkezését is tartalmazza.  
 
 
 
-Megjegyzés: az interaktív felhasználói bejelentkezések jelentésében a Microsoft Exchange-ügyfelektől nem interaktív bejelentkezések is szerepelnek. Habár ezek a bejelentkezések nem interaktívak voltak, az interaktív felhasználói bejelentkezések jelentésében további láthatóságot is tartalmaz. Ha a nem interaktív felhasználói bejelentkezések jelentésének nyilvános előzetes verziója 2020 novemberében lépett fel, akkor a nem interaktív bejelentkezési eseménynaplók a nem interaktív felhasználói bejelentkezési jelentésbe kerültek a nagyobb pontosság érdekében. 
+> [!NOTE] 
+> Az interaktív felhasználói bejelentkezési jelentés a Microsoft Exchange-ügyfelek néhány nem interaktív bejelentkezését tartalmazta. Bár ezek a bejelentkezések nem voltak interaktívak, az interaktív felhasználói bejelentkezési jelentésben is szerepeltek a további láthatóság érdekében. Miután a nem interaktív felhasználói bejelentkezési jelentés 2020 novemberében nyilvános előzetes verzióba került, a nem interaktív bejelentkezési eseménynaplók a nagyobb pontosság érdekében átkerültek a nem interaktív felhasználói bejelentkezési jelentésbe. 
 
 
 **Jelentés mérete:** kicsi <br> 
-**Példák**
+**Példák:**
 
-- A felhasználók felhasználónevet és jelszót biztosítanak az Azure AD bejelentkezési képernyőjén.
+- A felhasználó felhasználónevet és jelszót ad meg az Azure AD bejelentkezési képernyőjén.
 
-- Egy felhasználó SMS MFA-kihívást ad át.
+- A felhasználó egy SMS MFA-feladatot ad át.
 
-- A felhasználó biometrikus kézmozdulatot biztosít a Windows Hello for Business rendszerű számítógép zárolásának feloldásához.
+- A felhasználó biometrikus kézmozdulattal oldhatja fel a Windows rendszerű számítógépét a Vállalati Windows Hello.
 
-- A felhasználók egy AD FS SAML-kijelentéssel összevonták az Azure AD-t.
+- A felhasználó egy SAML-helyességi feltétel AD FS Azure AD-be van összecsúsva.
 
 
-Az alapértelmezett mezőkön kívül az interaktív bejelentkezési jelentés a következőket is megjeleníti: 
+Az alapértelmezett mezőkön kívül az interaktív bejelentkezési jelentés a következő adatokat is megjeleníti: 
 
 - A bejelentkezési hely
 
-- A feltételes hozzáférés alkalmazása megtörtént-e
+- A feltételes hozzáférés alkalmazása
 
 
 
@@ -161,12 +160,12 @@ A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szab
 
 
 
-A nézet testreszabásával további mezőket jeleníthet meg, vagy eltávolíthat olyan mezőket, amelyek már láthatók.
+A nézet testreszabásával további mezőket jelenít meg, vagy eltávolíthatja a már megjelenített mezőket.
 
 ![Minden interaktív oszlop](./media/concept-all-sign-ins/all-interactive-columns.png)
 
 
-Válassza ki a lista nézet egyik elemét, hogy részletesebb információkat kapjon a kapcsolódó bejelentkezésről.
+Válasszon ki egy elemet a listanézetben, hogy részletesebb információkat kapjon a kapcsolódó bejelentkezésről.
 
 ![Bejelentkezési tevékenység](./media/concept-all-sign-ins/interactive-user-sign-in-details.png "Interaktív felhasználói bejelentkezések")
 
@@ -174,24 +173,24 @@ Válassza ki a lista nézet egyik elemét, hogy részletesebb információkat ka
 
 ### <a name="non-interactive-user-sign-ins"></a>Nem interaktív felhasználói bejelentkezések
 
-A nem interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyeket egy adott ügyfélalkalmazás vagy operációsrendszer-összetevő hajtott végre egy felhasználó nevében. Az interaktív felhasználói bejelentkezésekhez hasonlóan ezek a bejelentkezések a felhasználók nevében hajthatók végre. Az interaktív felhasználói bejelentkezésekkel ellentétben ezek a bejelentkezések nem igénylik, hogy a felhasználó hitelesítési tényezőt adjon meg. Ehelyett az eszköz vagy az ügyfélalkalmazás egy jogkivonat vagy kód használatával hitelesíti vagy fér hozzá egy erőforráshoz egy felhasználó nevében. Általánosságban elmondható, hogy a felhasználó a felhasználó tevékenységének hátterében történik.
+A nem interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyek ügyfélalkalmazás vagy operációsrendszer-összetevők által, egy felhasználó nevében történő bejelentkezések. Az interaktív felhasználói bejelentkezéshez hasonló a bejelentkezések is a felhasználók nevében történik. Az interaktív felhasználói bejelentkezésekkel ellentétben ezek a bejelentkezések nem követelik meg, hogy a felhasználó hitelesítési tényezőt adjon meg. Ehelyett az eszköz vagy az ügyfélalkalmazás jogkivonatot vagy kódot használ az erőforrások hitelesítéséhez vagy eléréséhez egy felhasználó nevében. A felhasználó általában úgy fogja érzékelni, hogy ezek a bejelentkezések a felhasználó tevékenységének hátterében történnek.
 
 
 **Jelentés mérete:** Nagy <br>
 **Példák:** 
 
-- Az ügyfélalkalmazás egy OAuth 2,0 frissítési jogkivonatot használ a hozzáférési jogkivonat beszerzéséhez.
+- Az ügyfélalkalmazások OAuth 2.0 frissítési jogkivonattal szereznek be hozzáférési jogkivonatot.
 
-- Az ügyfél egy OAuth 2,0 hitelesítési kódot használ a hozzáférési jogkivonat és a frissítési jogkivonat lekéréséhez.
+- Az ügyfél egy OAuth 2.0 hitelesítési kódot használ a hozzáférési jogkivonat lekért és a jogkivonat frissítésére.
 
-- A felhasználók egyszeri bejelentkezést (SSO-t) végeznek egy webes vagy Windows-alkalmazásba az Azure AD-hez csatlakoztatott SZÁMÍTÓGÉPeken.
+- A felhasználó egyszeri bejelentkezést (SSO) végez egy web- vagy Windows-alkalmazásba egy Azure AD-hez csatlakozott számítógépen.
 
-- A felhasználó bejelentkezik egy második Microsoft Office alkalmazásba, miközben a FOCI (az ügyfél-azonosítók családja) használó mobileszköz-munkamenettel rendelkezik.
-
-
+- A felhasználó bejelentkezik egy második Microsoft Office, miközben munkamenetet tart egy mobileszközön a FOCI (ügyfél-azonosítók családja) használatával.
 
 
-Az alapértelmezett mezőkön kívül a nem interaktív bejelentkezések jelentés is a következőket jeleníti meg: 
+
+
+Az alapértelmezett mezőkön kívül a nem interaktív bejelentkezések jelentés a következő adatokat is megjeleníti: 
 
 - Erőforrás-azonosító
 
@@ -200,12 +199,12 @@ Az alapértelmezett mezőkön kívül a nem interaktív bejelentkezések jelent�
 
 
 
-A jelentésben látható mezők nem szabhatók testre.
+A jelentésben megjelenő mezők nem szabhatók testre.
 
 
 ![Letiltott oszlopok](./media/concept-all-sign-ins/disabled-columns.png "Letiltott oszlopok")
 
-Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkezési események vannak csoportosítva. Az ügyfelek gyakran sok nem interaktív bejelentkezést hoznak létre ugyanazon felhasználó nevében rövid idő alatt, amely ugyanazokat a tulajdonságokat osztja meg, kivéve a bejelentkezési kísérlet idejét. Előfordulhat például, hogy egy ügyfél óránként egyszer kap hozzáférési jogkivonatot egy felhasználó nevében. Ha a felhasználó vagy az ügyfél nem változtatja meg az állapotot, az IP-cím, az erőforrás és minden egyéb információ megegyezik az egyes hozzáférési jogkivonat-kérelmek esetében. Ha az Azure AD több olyan bejelentkezést naplóz, amely az idő és a dátum kivételével azonos, akkor ezek a bejelentkezések ugyanabból az entitásból lesznek összesítve egyetlen sorba. Több azonos bejelentkezéssel rendelkező sor (kivéve a kiállított dátumot és időt) a # Sign-ins oszlopban 1-nél nagyobb érték lesz. A sor kibontásával megjelenítheti az összes különböző bejelentkezést és a különböző időbélyegeket. A bejelentkezéseket a nem interaktív felhasználók összesítik, ha az alábbi adatokat tartalmazza:
+Az adatok könnyebb kivonatolása érdekében a nem interaktív bejelentkezési események csoportosítva vannak. Az ügyfelek rövid időn belül gyakran hoznak létre számos nem interaktív bejelentkezést ugyanannak a felhasználónak a nevében, amelyek ugyanazokkal a jellemzőkkel rendelkeznek, kivéve a bejelentkezés megkísérlését. Előfordulhat például, hogy egy ügyfél óránként egyszer kap hozzáférési jogkivonatot egy felhasználó nevében. Ha a felhasználó vagy az ügyfél nem módosítja az állapotot, az IP-cím, az erőforrás és minden más információ ugyanaz lesz minden hozzáférési jogkivonat kérése esetén. Ha az Azure AD több olyan bejelentkezést is naplóz, amelyek nem azonosak az időtől és a dátumtól, akkor ezek a bejelentkezések ugyanabba az entitásba lesznek összesítve egyetlen sorban. A több azonos bejelentkezést tartalmazó sorok (a kiadott dátum és idő kivételével) 1-esnél nagyobb értéket fognak képviselni a # sign-ins (# bejelentkezések) oszlopban. A sort kibontva láthatja az összes különböző bejelentkezést és azok időbélyegét. A bejelentkezéseket a rendszer összesíti a nem interaktív felhasználókban, ha az alábbi adatok megegyeznek:
 
 
 - Alkalmazás
@@ -221,36 +220,36 @@ Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkez�
 
 A következőket teheti:
 
-- Csomópont kibontásával megtekintheti a csoportok egyes elemeit.  
+- Bontsa ki a csomópontot a csoport egyes elemeinek a ásához.  
 
-- Az összes adat megjelenítéséhez kattintson egy adott elemre. 
-
-
-![Nem interaktív felhasználói bejelentkezés részletei](./media/concept-all-sign-ins/non-interactive-sign-ins-details.png)
+- Kattintson egy adott elemre az összes részlet megtekintése 
 
 
+![Nem interaktív felhasználói bejelentkezési adatok](./media/concept-all-sign-ins/non-interactive-sign-ins-details.png)
 
 
-## <a name="service-principal-sign-ins"></a>Egyszerű szolgáltatások bejelentkezései
 
-Az interaktív és a nem interaktív felhasználói bejelentkezésekkel ellentétben az egyszerű szolgáltatásnév-bejelentkezések nem tartalmaznak felhasználót. Ehelyett a nem felhasználói fiókok, például az alkalmazások vagy a egyszerű szolgáltatások (a felügyelt identitások bejelentkezését kivéve, amelyek csak a felügyelt identitású bejelentkezések jelentésben szerepelnek) bejelentkeznek. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás a saját hitelesítő adatait (például tanúsítvány vagy alkalmazás titkát) biztosítja az erőforrások hitelesítéséhez vagy eléréséhez.
+
+## <a name="service-principal-sign-ins"></a>Szolgáltatásnév-bejelentkezések
+
+Az interaktív és nem interaktív felhasználói bejelentkezésekkel ellentétben a szolgáltatásnév-bejelentkezések nem járnak felhasználóval. Ehelyett bármely nem felhasználói fiókkal, például alkalmazásokkal vagy szolgáltatásnévvel jelentkeznek be (kivéve a felügyelt identitással való bejelentkezést, amely csak a felügyelt identitás bejelentkezési jelentésében szerepel). Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás saját hitelesítő adatokat, például tanúsítványt vagy titkos alkalmazás titkos adatokat biztosít az erőforrások hitelesítéséhez vagy eléréséhez.
 
 
 **Jelentés mérete:** Nagy <br>
 **Példák:**
 
-- Egy egyszerű szolgáltatásnév tanúsítványt használ a Microsoft Graph hitelesítéséhez és eléréséhez. 
+- A szolgáltatásnév tanúsítvánnyal hitelesíti és fér hozzá a Microsoft Graph. 
 
-- Az alkalmazás egy ügyfél-titkos kulcsot használ a OAuth-ügyfél hitelesítő adatainak folyamatában való hitelesítéshez. 
+- Az alkalmazások titkos ügyfélk titkos adatokat használnak az OAuth-ügyfél hitelesítő adatainak folyamatában való hitelesítéshez. 
 
 
-Ez a jelentés egy alapértelmezett listanézet, amely a következőket jeleníti meg:
+A jelentés alapértelmezett listanézete a következőt jeleníti meg:
 
 - Bejelentkezés dátuma
 
 - Kérés azonosítója
 
-- Egyszerű szolgáltatásnév vagy azonosító
+- Egyszerű szolgáltatásnév vagy -azonosító
 
 - Állapot
 
@@ -262,13 +261,13 @@ Ez a jelentés egy alapértelmezett listanézet, amely a következőket jelenít
 
 - Bejelentkezések száma
 
-A jelentésben látható mezők nem szabhatók testre.
+A jelentésben megjelenő mezők nem szabhatók testre.
 
 ![Letiltott oszlopok](./media/concept-all-sign-ins/disabled-columns.png "Letiltott oszlopok")
 
-Annak érdekében, hogy könnyebb legyen megemészteni az egyszerű szolgáltatásnév bejelentkezési naplóiban lévő adatkivonatokat, a szolgáltatás egyszerű bejelentkezési eseményei vannak csoportosítva. Ugyanazokból az entitásokból származó bejelentkezések egyetlen sorba vannak összesítve. A sor kibontásával megjelenítheti az összes különböző bejelentkezést és a különböző időbélyegeket. A bejelentkezések az egyszerű szolgáltatásnév jelentésében vannak összesítve, ha a következő adatértékek teljesülnek:
+A szolgáltatásnév bejelentkezési naplóiban található adatok könnyebb kivonatolása érdekében a szolgáltatásnév bejelentkezési eseményei csoportosítva vannak. Az ugyanazon entitásból azonos feltételek mellett történő bejelentkezéseket a rendszer egyetlen sorban összesíti. A sort kibontva láthatja az összes különböző bejelentkezést és azok időbélyegét. A rendszer összesíti a bejelentkezéseket a szolgáltatásnév-jelentésben, ha a következő adatok megegyeznek:
 
-- Egyszerű szolgáltatásnév vagy azonosító
+- Egyszerű szolgáltatásnév vagy -azonosító
 
 - Állapot
 
@@ -278,9 +277,9 @@ Annak érdekében, hogy könnyebb legyen megemészteni az egyszerű szolgáltat�
 
 A következőket teheti:
 
-- Csomópont kibontásával megtekintheti a csoportok egyes elemeit.  
+- Bontsa ki a csomópontot a csoport egyes elemeinek a ásához.  
 
-- Kattintson egy egyedi elemre, és tekintse meg az összes adatot 
+- Kattintson egy adott elemre, hogy minden részletet láthassunk 
 
 
 ![Oszlop részletei](./media/concept-all-sign-ins/service-principals-sign-ins-view.png "Oszlop részletei")
@@ -288,17 +287,17 @@ A következőket teheti:
 
 
 
-## <a name="managed-identity-for-azure-resources-sign-ins"></a>Felügyelt identitás az Azure-erőforrások bejelentkezéséhez 
+## <a name="managed-identity-for-azure-resources-sign-ins"></a>Azure-erőforrások felügyelt identitásának bejelentkezései 
 
-Az Azure-erőforrások felügyelt identitása olyan bejelentkezések, amelyeket az Azure által kezelt, a hitelesítő adatok kezelésének egyszerűsítése érdekében a titkos kulcsokkal rendelkező erőforrások hajtottak végre.
+Az Azure-erőforrások felügyelt identitásának bejelentkezései olyan erőforrások által végzett bejelentkezések, amelyek titkos adatait az Azure kezeli a hitelesítő adatok egyszerűbb kezelése érdekében.
 
 **Jelentés mérete:** Kis <br> 
-**Példák**
+**Példák:**
 
-A felügyelt hitelesítő adatokkal rendelkező virtuális gépek az Azure AD használatával kapnak hozzáférési jogkivonatot.   
+A felügyelt hitelesítő adatokkal virtuális gép az Azure AD használatával szerez hozzáférési jogkivonatot.   
 
 
-Ez a jelentés egy alapértelmezett listanézet, amely a következőket jeleníti meg:
+A jelentés alapértelmezett listanézete a következőt jeleníti meg:
 
 
 - Felügyelt identitás azonosítója
@@ -311,9 +310,9 @@ Ez a jelentés egy alapértelmezett listanézet, amely a következőket jelenít
 
 - Csoportosított bejelentkezések száma
 
-A jelentésben látható mezők nem szabhatók testre.
+A jelentésben megjelenő mezők nem szabhatók testre.
 
-Annak érdekében, hogy könnyebb legyen az adatelemzés, az Azure-erőforrásokhoz tartozó felügyelt identitások bejelentkezve, a nem interaktív bejelentkezési események csoportosítva lesznek. Ugyanabból az entitásból származó bejelentkezések egyetlen sorba vannak összesítve. A sor kibontásával megjelenítheti az összes különböző bejelentkezést és a különböző időbélyegeket. A rendszer összesíti a bejelentkezéseket a felügyelt identitások jelentésben, ha a következő adatértékek mindegyike megfelel:
+Az adatok könnyebb kivonatolása érdekében az Azure-erőforrások felügyelt identitása bejelentkezési naplókat használ, a nem interaktív bejelentkezési események csoportosítva vannak. Az ugyanattól az entitástól származó bejelentkezéseket a rendszer egyetlen sorban összesíti. A sort kibontva láthatja az összes különböző bejelentkezést és azok időbélyegét. A rendszer összesíti a bejelentkezéseket a felügyelt identitások jelentésében, ha az alábbi adatok mind egyezést tartalmaznak:
 
 - Felügyelt identitás neve vagy azonosítója
 
@@ -323,23 +322,35 @@ Annak érdekében, hogy könnyebb legyen az adatelemzés, az Azure-erőforrások
 
 - Erőforrás neve vagy azonosítója
 
-Válassza ki a lista nézet egyik elemét, és jelenítse meg az összes olyan bejelentkezést, amelyek egy csomópont alatt vannak csoportosítva.
+Jelöljön ki egy elemet a listanézetben a csomópontok alá csoportosított összes bejelentkezés megjelenítéséhez.
 
-Válasszon egy csoportosított elemet a bejelentkezés összes adatának megtekintéséhez. 
+Jelöljön ki egy csoportosított elemet a bejelentkezés összes részletének a megtekintése előtt. 
+
+
+## <a name="sign-in-error-code"></a>Bejelentkezési hibakód
+
+Ha egy bejelentkezés sikertelen volt, a kapcsolódó naplóelem  Alapvető információk szakaszában további információt kaphat az okról. 
+
+![Részletes információs nézet képernyőképe.](./media/concept-all-sign-ins/error-code.png)
+ 
+Bár a naplóelem a hiba okát is tartalmazza, előfordulhatnak olyan esetek, amikor további információkat kap a bejelentkezési [hibakeresési eszközével.](https://login.microsoftonline.com/error) Ha például elérhető, ez az eszköz biztosítja a szervizelés lépéseit.  
+
+![Hibakód-keresési eszköz](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
 
 
 ## <a name="filter-sign-in-activities"></a>A bejelentkezési tevékenységek szűrése
 
-A szűrő beállításával leszűkítheti a visszaadott bejelentkezési adatmennyiséget. Az Azure AD a további beállítható szűrők széles választékát kínálja. A szűrő beállításakor a beállított **dátumtartomány** -szűrőnek mindig különös figyelmet kell fordítania. A megfelelő dátumtartomány-szűrő biztosítja, hogy az Azure AD csak azokat az információkat adja vissza, amelyekről valóban érdeklik.     
+Szűrő beállításával leszűkítheti a visszaadott bejelentkezési adatok hatókörét. Az Azure AD számos további beállítható szűrőt biztosít. A szűrő beállításakor mindig fordítson különös figyelmet a beállított **Dátumtartomány** szűrőre. A megfelelő dátumtartomány-szűrő biztosítja, hogy az Azure AD csak az Ön számára fontos adatokat adja vissza.     
 
-A **dátumtartomány** -szűrő lehetővé teszi, hogy meghatározza a visszaadott adatok időkeretét.
+A **Dátumtartomány** szűrővel időkeretet határozhat meg a visszaadott adatokhoz.
 Lehetséges értékek:
 
 - Egy hónap
 
 - Hét nap
 
-- Huszonnégy óra
+- 24 óra
 
 - Egyéni
 
@@ -351,33 +362,33 @@ Lehetséges értékek:
 
 ### <a name="filter-user-sign-ins"></a>Felhasználói bejelentkezések szűrése
 
-Az interaktív és nem interaktív bejelentkezések szűrője azonos. Emiatt az interaktív bejelentkezésekhez konfigurált szűrő megmarad a nem interaktív bejelentkezésekhez, és fordítva. 
+Az interaktív és nem interaktív bejelentkezések szűrője ugyanaz. Emiatt az interaktív bejelentkezéshez konfigurált szűrő megmarad nem interaktív bejelentkezések esetén, és fordítva. 
 
 
 
 
 
 
-## <a name="access-the-new-sign-in-activity-reports"></a>Hozzáférés az új bejelentkezési tevékenység jelentéseihez 
+## <a name="access-the-new-sign-in-activity-reports"></a>Az új bejelentkezési tevékenységre vonatkozó jelentések elérése 
 
-A Azure Portal a bejelentkezések tevékenységéről szóló jelentés egyszerű módszert biztosít az előzetes jelentés be-és kikapcsolására. Ha az előzetes verziójú jelentések engedélyezve vannak, egy új menüt kap, amely hozzáférést biztosít az összes bejelentkezési tevékenység jelentés típusához.     
+A jelentés bejelentkezési tevékenységjelentése Azure Portal egyszerű módszert kínál az előzetes verziójú jelentés be- és kikapcsolára. Ha engedélyezve vannak az előzetes verziójú jelentések, egy új menüt kap, amely hozzáférést biztosít a bejelentkezési tevékenységek jelentéstípushoz.     
 
 
-Az új bejelentkezési jelentések nem interaktív és alkalmazás-bejelentkezésekkel való elérése: 
+Az új bejelentkezési jelentések elérése nem interaktív és alkalmazás-bejelentkezésekkel: 
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** lehetőséget.
 
     ![Az Azure AD kiválasztása](./media/concept-all-sign-ins/azure-services.png)
 
-2. A **figyelés** szakaszban kattintson a **bejelentkezések** elemre.
+2. A **Figyelés szakaszban** kattintson a **Bejelentkezések elemre.**
 
     ![Bejelentkezések kiválasztása](./media/concept-all-sign-ins/sign-ins.png)
 
-3. Kattintson az **előnézet** sávra.
+3. Kattintson az Előnézet **sávra.**
 
     ![Új nézet engedélyezése](./media/concept-all-sign-ins/enable-new-preview.png)
 
-4. Ha vissza szeretne térni az alapértelmezett nézetre, kattintson ismét az **előnézeti** sávra. 
+4. Az alapértelmezett nézetre való visszaváltáshoz kattintson ismét az Előnézet **sávra.** 
 
     ![Klasszikus nézet visszaállítása](./media/concept-all-sign-ins/switch-back.png)
 
@@ -387,45 +398,45 @@ Az új bejelentkezési jelentések nem interaktív és alkalmazás-bejelentkezé
 
 
 
-## <a name="download-sign-in-activity-reports"></a>Bejelentkezési tevékenységgel kapcsolatos jelentések letöltése
+## <a name="download-sign-in-activity-reports"></a>Bejelentkezési tevékenységre vonatkozó jelentések letöltése
 
-A bejelentkezési tevékenységek jelentésének letöltésekor a következők teljesülnek:
+Bejelentkezési tevékenységről szóló jelentés letöltésekor a következő igaz:
 
-- A bejelentkezési jelentést CSV-ként vagy JSON-fájlként is letöltheti.
+- A bejelentkezési jelentést LETÖLTHETI CSV- vagy JSON-fájlként.
 
-- Akár 100-K rekordok is letölthetők. Ha több adatfájlt szeretne letölteni, használja a jelentéskészítési API-t.
+- Legfeljebb 100 ezer rekordot tölthet le. Ha további adatokat szeretne letölteni, használja a reporting API-t.
 
-- A letöltés a kiválasztott szűrő alapján történik.
+- A letöltés az Ön által kiválasztott szűrőn alapul.
 
-- A letöltendő rekordok számát a [Azure Active Directory jelentés adatmegőrzési szabályzata](reference-reports-data-retention.md)korlátozza. 
+- A letölthető rekordok számát a jelentésmegőrzési szabályzatok [Azure Active Directory korlátozza.](reference-reports-data-retention.md) 
 
 
 ![Jelentések letöltése](./media/concept-all-sign-ins/download-reports.png "Jelentések letöltése")
 
 
-Minden CSV-Letöltés hat különböző fájlból áll:
+Minden letöltött CSV hat különböző fájlból áll:
 
 - Interaktív bejelentkezések
 
-- Az interaktív bejelentkezések hitelesítési adatai
+- Az interaktív bejelentkezések hitelesítési részletei
 
 - Nem interaktív bejelentkezések
 
-- A nem interaktív bejelentkezések hitelesítési adatai
+- A nem interaktív bejelentkezések hitelesítési részletei
 
-- Egyszerű szolgáltatások bejelentkezései
+- Szolgáltatásnév-bejelentkezések
 
-- Felügyelt identitás az Azure-erőforrások bejelentkezéséhez
+- Azure-erőforrások felügyelt identitásának bejelentkezései
 
-Minden JSON-Letöltés négy különböző fájlból áll:
+Minden JSON-letöltés négy különböző fájlból áll:
 
-- Interaktív bejelentkezések (beleértve az Auth részleteit)
+- Interaktív bejelentkezések (hitelesítési részleteket tartalmaz)
 
-- Nem interaktív bejelentkezések (beleértve az Auth részleteit)
+- Nem interaktív bejelentkezések (hitelesítési részleteket tartalmaz)
 
-- Egyszerű szolgáltatások bejelentkezései
+- Szolgáltatásnév-bejelentkezések
 
-- Felügyelt identitás az Azure-erőforrások bejelentkezéséhez
+- Azure-erőforrások felügyelt identitásának bejelentkezései
 
 ![Fájlok letöltése](./media/concept-all-sign-ins/download-files.png "Fájlok letöltése")
 
@@ -435,5 +446,5 @@ Minden JSON-Letöltés négy különböző fájlból áll:
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
-* [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)
-* [Azure AD-jelentés késései](reference-reports-latencies.md)
+* [Azure AD adatmegőrzési szabályzatok](reference-reports-data-retention.md)
+* [Az Azure AD-jelentések késései](reference-reports-latencies.md)

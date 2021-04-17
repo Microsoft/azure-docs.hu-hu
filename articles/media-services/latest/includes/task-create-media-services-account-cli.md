@@ -4,17 +4,17 @@ ms.service: media-services
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
-ms.custom: CLI
-ms.openlocfilehash: 5c0341087cdd348e973da5faaa1f90081780c9c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: CLI, devx-track-azurecli
+ms.openlocfilehash: 26ae372b6e431247d2038445daafcb3c997a232d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88602369"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512875"
 ---
 <!--Create a media services account -->
 
-Az alábbi Azure CLI-parancs egy új Media Services-fiókot hoz létre. A következő értékeket lehet lecserélni: `amsaccount` `storageaccountforams` (meg kell egyeznie a Storage-fiókhoz megadott értékkel), és `amsResourceGroup` (meg kell egyeznie az erőforráscsoport számára megadott értékkel).  
+Az alábbi Azure CLI-parancs egy új Media Services-fiókot hoz létre. Lecserélheti a következő értékeket: (egyeznie kell a tárfiókhoz megadott értékkel), és (egyeznie kell az erőforráscsoporthoz megadott `amsaccount` `storageaccountforams` `amsResourceGroup` értékkel).  
 
 ```azurecli
 az ams account create --name amsaccount -g amsResourceGroup --storage-account storageaccountforams -l westus2
