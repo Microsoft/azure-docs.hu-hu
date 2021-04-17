@@ -12,7 +12,7 @@
       items:
         - name: QnA Maker portál
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: Ügyféloldali kódtárak vagy REST API
+        - name: Ügyfélkódtárak vagy REST API
           href: Quickstarts/quickstart-sdk.md
 - name: Oktatóanyagok
   items:
@@ -47,16 +47,16 @@
       href: choose-natural-language-processing-service.md
 - name: Útmutatók
   items:
-    - name: QnA Maker erőforrások kezelése
+    - name: Erőforrások QnA Maker kezelése
       items:
-        - name: QnA Maker erőforrások beállítása
+        - name: Erőforrások QnA Maker beállítása
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: QnA Maker erőforrás-hozzáférés kezelése
+        - name: Erőforrás QnA Maker hozzáférés kezelése
           href: How-To/manage-qna-maker-app.md
-        - name: QnA Maker erőforrások konfigurálása
+        - name: Erőforrások QnA Maker konfigurálása
           href: How-To/configure-qna-maker-resources.md
-        - name: Az Azure-erőforrások hálózati elkülönítése
+        - name: Hálózatelszigetelés Azure-erőforrásokhoz
           href: How-To/network-isolation.md
     - name: A tudásbázis kezelése
       items:
@@ -82,18 +82,26 @@
           href: How-To/change-default-answer.md
     - name: Tudásbázis lekérdezése
       items:
-        - name: Lekérdezés REST API-kkal
+        - name: Lekérdezés REST API-okkal
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
         - name: A GenerateAnswer API használata
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: QnAs szűrése metaadatok alapján
+        - name: QnA-k szűrése metaadatok alapján
           href: How-To/query-knowledge-base-with-metadata.md
-    - name: Javasolt alternatív kérdések az aktív tanulás használatával
+    - name: Javasolt alternatív kérdések lekérte az aktív tanuláson keresztül
       href: How-to/improve-knowledge-base.md
       displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Elemzés és telemetria
       href: How-To/get-analytics-knowledge-base.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Virtuális hálózatok beállítása
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/qnamaker/context/context
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encrypt-data-at-rest.md
+        - name: Azure AD-hitelesítés használata
+          href: ../authentication.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Referencia
   items:
     - name: Nyelvi támogatás
@@ -113,7 +121,7 @@
       href: reference-document-format-guidelines.md
     - name: Megjelenítési formátum
       href: reference-markdown-format.md
-    - name: Privát hivatkozások
+    - name: Privát kapcsolatok
       href: reference-private-endpoint.md
     - name: Kötegelt tesztelési formátum
       href: reference-tsv-format-batch-testing.md
@@ -167,12 +175,14 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: További források
   items:
-    - name: Támogatási lehetőségek
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és minősítés
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás és korlátok

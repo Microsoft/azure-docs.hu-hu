@@ -1,76 +1,76 @@
 ---
-title: Dedikált SQL Pool Azure Advisor javaslatok
-description: Tudnivalók a szinapszis SQL-javaslatairól és azok létrehozásáról
+title: Dedikált SQL-készletre vonatkozó Azure Advisor javaslatok
+description: A Synapse SQL és létrehozása
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 06/26/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 698c14d23e8e64c777260410c625129cd87d49b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b418b46199c524ca92d60dece6031073938e159b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585706"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568420"
 ---
-# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Javaslatok Azure Advisor dedikált SQL-készletre az Azure szinapszis Analyticsben
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor javaslatok dedikált SQL-készlethez a Azure Synapse Analytics
 
-Ez a cikk a Azure Advisorban elérhető dedikált SQL Pool-javaslatokat ismerteti.  
+Ez a cikk a dedikált SQL-készletre vonatkozó javaslatokat ismerteti, amelyek a Azure Advisor.  
 
-A dedikált SQL-készlet ajánlásokat biztosít, amelyek biztosítják, hogy az adattárház-számítási feladatok konzisztensen legyenek optimalizálva teljesítményre. A javaslatok szorosan integrálva vannak a [Azure Advisorekkel](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. A dedikált SQL-készlet az aktív számítási feladatok telemetria és felületi javaslatait napi szinten gyűjti. A támogatott javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
+A dedikált SQL-készlet javaslatokat tesz annak biztosítására, hogy az adattárház számítási feladatai folyamatosan teljesítményre legyenek optimalizálva. A javaslatok szorosan integrálva vannak a [Azure Advisor,](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) hogy közvetlenül a [Azure Portal.](https://aka.ms/Azureadvisor) A dedikált SQL-készlet naponta gyűjt telemetriai adatokat, és javaslatokat tesz az aktív számítási feladatokra. A támogatott javaslati forgatókönyveket az alábbiakban ismertetjük a javasolt műveletek alkalmazásával együtt.
 
-[A javaslatait](https://aka.ms/Azureadvisor) még ma is megtekintheti! 
+Javaslatait [még ma ellenőrizheti!](https://aka.ms/Azureadvisor) 
 
-## <a name="data-skew"></a>Az adattorzítás
+## <a name="data-skew"></a>Adatdedúszó
 
-Az adatok eldöntése további adatáthelyezést vagy erőforrás-szűk keresztmetszetet eredményezhet a számítási feladatok futtatásakor. Az alábbi dokumentáció ismerteti, hogyan azonosíthatja az adatok eldöntését, és megakadályozhatja, hogy az optimális terjesztési kulcs kiválasztásával megtörténjen.
+Az adatdeduklódás további adatátmozgatást vagy az erőforrások szűk keresztmetszetét okozhatja a számítási feladatok futtatásakor. A következő dokumentáció azt ismerteti, hogyan lehet azonosítani az adateloszlást, és megelőzni az adateloszlást egy optimális elosztási kulcs kiválasztásával.
 
-- [A döntés azonosítása és eltávolítása](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
+- [Az eltúszódás azonosítása és eltávolítása](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
 
-## <a name="no-or-outdated-statistics"></a>Nem vagy elavult statisztika
+## <a name="no-or-outdated-statistics"></a>Nincs vagy elavult statisztikák
 
-Az optimálisnál rosszabb statisztikai adatok súlyosan befolyásolhatják a lekérdezési teljesítményt, mert az SQL-lekérdezés-optimalizáló az optimálisnál rosszabb lekérdezési terveket hoz elő. Az alábbi dokumentáció a statisztikák létrehozásával és frissítésével kapcsolatos ajánlott eljárásokat ismerteti:
+Az optimálisnál rosszabb statisztikák súlyos hatással lehetnek a lekérdezési teljesítményre, mivel ez azt okozhatja, hogy az SQL-lekérdezésoptimalátor nem optimális lekérdezésterveket hoz létre. A következő dokumentáció a statisztikák létrehozásával és frissítésével kapcsolatos ajánlott eljárásokat ismerteti:
 
-- [Táblázat statisztikáinak létrehozása és frissítése](sql-data-warehouse-tables-statistics.md)
+- [Táblastatisztikák létrehozása és frissítése](sql-data-warehouse-tables-statistics.md)
 
-Ha meg szeretné tekinteni az érintett táblák listáját a javaslatok alapján, futtassa az alábbi  [T-SQL-szkriptet](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futtatja ugyanazt a T-SQL-szkriptet a javaslatok létrehozásához.
+A javaslatok által érintett táblák listájának az alábbi  [T-SQL-szkript](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)futtatásával megjelenik. Az Advisor folyamatosan ugyanazt a T-SQL-szkriptet futtatja a javaslatok létrehozásához.
 
 ## <a name="replicate-tables"></a>Táblák replikálása
 
-A replikált táblákra vonatkozó javaslatok esetében az Advisor a következő fizikai jellemzők alapján észleli a táblázatos pályázókat:
+A replikált táblaajánlott javaslatok esetén az Advisor a következő fizikai jellemzők alapján észleli a tábla jelöltjeit:
 
 - Replikált tábla mérete
 - Oszlopok száma
-- Tábla eloszlásának típusa
+- Táblaelosztási típus
 - Partíciók száma
 
-Az Advisor folyamatosan kihasználja a munkaterhelés-alapú heurisztikus feladatokat, például a táblák elérési gyakoriságát, az átlagban visszaadott sorokat, valamint az adatraktár méretének és tevékenységének küszöbértékeit, hogy magas színvonalú javaslatokat generáljon.
+Az Advisor folyamatosan kihasználja a számítási feladatokon alapuló heurisztikákat, például a táblaelérési gyakoriságot, az átlagban visszaadott sorokat és az adattárház méretére és tevékenységére vonatkozó küszöbértékeket, így jó minőségű javaslatokat hoz létre.
 
-A következő szakasz a munkaterhelésen alapuló heurisztikus információkat ismerteti, amelyek a Azure Portalban találhatók az egyes replikált táblákra vonatkozó javaslatok esetében:
+A következő szakasz a replikált táblaajánlott Azure Portal heurisztikáit ismerteti:
 
-- Scan AVG – a táblázatból visszaadott sorok átlagos százaléka az elmúlt hét napban való hozzáférés során
-- Gyakori olvasás, nincs frissítés – azt jelzi, hogy a tábla nem frissült az elmúlt hét napban a hozzáférési tevékenység megjelenítése közben.
-- Olvasási/frissítési arány – annak a gyakorisága, hogy a táblázat milyen gyakran érhető el, ha az elmúlt hét napban frissül
-- Tevékenység – a használatot a hozzáférési tevékenység alapján méri. Ez a tevékenység a tábla hozzáférési tevékenységét hasonlítja össze az adattárházban az elmúlt hét napban az átlagos tábla-hozzáférési tevékenységhez képest.
+- Vizsgálat átlaga – a táblázatból visszaadott sorok átlagos százalékos aránya az egyes táblaelérések során az elmúlt hét napban
+- Gyakori olvasás, nincs frissítés – azt jelzi, hogy a táblázat nem frissült az elmúlt hét napban a hozzáférési tevékenység megjelenítése közben
+- Olvasási/frissítési arány – a táblázat hozzáférésének aránya ahhoz képest, hogy az elmúlt hét napban mikor frissült
+- Tevékenység – a használatot méri a hozzáférési tevékenység alapján. Ez a tevékenység összehasonlítja a tábla hozzáférési tevékenységét az adattárház átlagos tábla-hozzáférési tevékenységéhez viszonyítva az elmúlt hét napban.
 
-Az Advisor jelenleg legfeljebb négy replikált tábla jelöltjét jeleníti meg egyszerre a fürtözött oszlopcentrikus indexekkel, amelyek rangsorolják a legmagasabb tevékenységet.
+Jelenleg az Advisor egyszerre csak négy replikált táblát mutat be, a fürtözött oszlopcentrikus indexek a legmagasabb tevékenységet rangsorolják.
 
 > [!IMPORTANT]
-> A replikált tábla javaslata nem teljes körűen igazolható, és nem veszi figyelembe az adatáthelyezési műveleteket. Jelenleg is dolgozunk, de a javaslat alkalmazása után mindig ellenőriznie kell a munkaterhelést. A replikált táblákkal kapcsolatos további információkért tekintse meg az alábbi [dokumentációt](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+> A replikált táblára vonatkozó javaslat nem teljes körű, és nem veszi figyelembe az adatátmozgatási műveleteket. Dolgozunk ennek heurisztikusként való hozzáadásán, de addig is mindig ellenőrizze a számítási feladatot a javaslat alkalmazása után. A replikált táblákkal kapcsolatos további információkért olvassa el a következő [dokumentációt.](design-guidance-for-replicated-tables.md#what-is-a-replicated-table)
 
 
-## <a name="adaptive-gen2-cache-utilization"></a>Adaptív (Gen2) gyorsítótár kihasználtsága
-Ha nagy munkakészlettel rendelkezik, az alacsony gyorsítótárbeli találatok százalékos arányát és a nagy gyorsítótár kihasználtságát tapasztalhatja. Ennél a forgatókönyvnél a gyorsítótár kapacitásának növeléséhez és a számítási feladatok újrafuttatásához növelje a méretezést. További információért látogasson el a következő [dokumentációra](./sql-data-warehouse-how-to-monitor-cache.md). 
+## <a name="adaptive-gen2-cache-utilization"></a>Adaptív (Gen2) gyorsítótár-használat
+Ha nagy méretű munkakészlete van, alacsony gyorsítótár-találati arányt és magas gyorsítótár-kihasználtságot tapasztalhat. Ebben a forgatókönyvben érdemes horizontálisan felskálával növelni a gyorsítótár-kapacitást, és újrafuttatni a számítási feladatot. További információt a következő dokumentációban [talál:](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>Tempdb-tartalom
 
-A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempdb-tartalom felhasználó által definiált ideiglenes táblákon vagy nagy mennyiségű adatmozgatáson keresztül fordulhat elő. Ebben a forgatókönyvben több tempdb-kiosztást és az [erőforrás-osztályok és a számítási feladatok kezelését is beállíthatja](./sql-data-warehouse-workload-management.md) , hogy a lekérdezések több memóriát szolgáltassanak. 
+A lekérdezési teljesítmény csökkenhet, ha magas a tempdb-hez valóértés.  A Tempdb-hez való hozzáférés a felhasználó által megadott ideiglenes táblákon keresztül vagy nagy mennyiségű adatátmozgatás esetén fordulhat elő. Ebben a forgatókönyvben több tempdb-lefoglalást is skálázhat, és konfigurálhatja az erőforrásosztályokat és a számítási feladatok kezelését, hogy több memóriát biztosítson a lekérdezésekhez. [](./sql-data-warehouse-workload-management.md) 
 
-## <a name="data-loading-misconfiguration"></a>Az adatbetöltések helytelen konfigurációja
+## <a name="data-loading-misconfiguration"></a>Helytelen adatbetöltési konfiguráció
 
-A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](./guidance-for-loading-data.md)található: további adattöltési útmutató.
+A késés minimalizálása érdekében mindig töltse be az adatokat egy, a dedikált SQL-készletével azonos régióban található tárfiókból. Használja a [COPY utasítást a nagy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) átviteli sebességű adatbeteléshez, és ossza fel az szakaszos fájlokat a tárfiókban az átviteli sebesség maximalizálása érdekében. Ha nem tudja használni a COPY utasítást, használhatja az SqlBulkCopy API-t vagy a bcp-t nagy kötegmérettel a jobb átviteli sebesség érdekében. További adatbetöltési útmutatásért látogasson el a következő [dokumentációba.](./guidance-for-loading-data.md)

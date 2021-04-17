@@ -1,115 +1,116 @@
 ---
 title: Erőforráskészletek megismerése
-description: Ez a cikk ismerteti, hogy milyen erőforrás-készleteket és hogyan hozza létre az Azure hatáskörébe.
+description: Ez a cikk ismerteti, mik azok az erőforráskészletek, és hogyan hozza létre őket az Azure Purview.
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200814"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587901"
 ---
 # <a name="understanding-resource-sets"></a>Erőforráskészletek megismerése
 
-Ebből a cikkből megtudhatja, hogyan használja az Azure hatáskörébe az adategységek logikai erőforrásokhoz való leképezését az erőforrás-készletek használatával.
-## <a name="background-info"></a>Háttér-információk
+Ez a cikk segít megérteni, hogy az Azure Purview hogyan használja az erőforráskészleteket az adateszközök logikai erőforrásokhoz való leképezéséhez.
+## <a name="background-info"></a>Háttérinformációk
 
-A méretezés alatt álló adatfeldolgozási rendszerek általában egyetlen táblát tárolnak egy lemezen több fájlként. Ez a koncepció az Azure hatáskörébe tartozik az erőforrás-készletek használatával. Az erőforrás-készlet a katalógus egyetlen objektuma, amely nagy mennyiségű eszközt képvisel a tárolóban.
+A nagy léptékű adatfeldolgozási rendszerek általában egyetlen táblát tárolnak egy lemezen több fájlként. Ezt a fogalmat az Azure Purview az erőforráskészletek használatával képviseli. Az erőforráskészlet egyetlen objektum a katalógusban, amely nagy számú objektumot képvisel a tárolóban.
 
-Tegyük fel például, hogy a Spark-fürt megőrzött egy DataFrame egy Azure Data Lake Storage (ADLS) Gen2-adatforrásban. Bár a Sparkban a tábla egyetlen logikai erőforráshoz hasonlít, a lemezen valószínűleg több ezer parketta-fájl található, amelyek mindegyike a teljes DataFrame-tartalom partícióját jelöli. A IoT és a webnaplók adatkezelési feladatának ugyanaz a kihívása. Képzelje el, hogy van egy érzékelője, amely másodpercenként többször is kiírja a naplófájlokat. Addig nem fog sokáig tartani, amíg az adott érzékelőből több százezer naplófájl van.
+Tegyük fel például, hogy a Spark-fürt egy DataFrame-et egy 2. generációs Azure Data Lake Storage (ADLS) adatforrásban őrzött meg. Bár a Sparkban a tábla egyetlen logikai erőforrásnak tűnik, a lemezen valószínűleg több ezer Parquet-fájl található, amelyek a teljes DataFrame tartalmának partícióját jelölik. Az IoT-adatok és a webes naplóadatok ugyanazokkal a kihívásokkal néznek szembe. Tegyük fel, hogy van egy érzékelője, amely másodpercenként többször is naplófájlokat ad ki. Nem fog sokáig tartani, amíg több százezer naplófájlt nem fog tartalmazni az érzékelőről.
 
-Ahhoz, hogy a nagy számú adategység egyetlen logikai erőforráshoz való leképezésének kihívásával foglalkozzon, az Azure hatáskörébe erőforrás-készleteket használ.
+A nagy számú adateszköz egyetlen logikai erőforráshoz való leképezésének feladatának kezelése érdekében az Azure Purview erőforráskészleteket használ.
 
-## <a name="how-azure-purview-detects-resource-sets"></a>Hogyan észleli az Azure hatáskörébe az erőforrás-készleteket?
+## <a name="how-azure-purview-detects-resource-sets"></a>Hogyan észleli az Azure Purview az erőforráskészleteket?
 
-Az Azure-beli hatáskörébe az Azure-Blob Storage, a ADLS Gen1 és a ADLS Gen2ben lévő erőforrás-készletek észlelése támogatott.
+Az Azure Purview támogatja az erőforráskészletek észlelését a Azure Blob Storage, ADLS Gen1 és ADLS Gen2.
 
-Az Azure-beli hatáskörébe a vizsgálat során automatikusan észleli az erőforrás-készleteket. Ez a funkció a vizsgálat során betöltött összes adatot megvizsgálja, és összehasonlítja a meghatározott minták egy halmazával.
+Az Azure Purview automatikusan észleli az erőforráskészleteket a vizsgálat során. Ez a funkció a vizsgálaton keresztül betöltött összes adatot összehasonlítja egy meghatározott mintával.
 
-Tegyük fel például, hogy egy olyan adatforrást keres, amelynek URL-címe `https://myaccount.blob.core.windows.net/mycontainer/machinesets/23/foo.parquet` . Az Azure-beli hatáskörébe az elérésiút-szegmensek láthatók, és meghatározza, hogy a beépített mintázatoknak megfelelőek-e. Beépített mintákat tartalmaz a GUID-azonosítók, számok, dátumformátum, honosítási kódok (például en-US) stb. Ebben az esetben a szám minta *23*-ra illeszkedik. Az Azure-beli hatáskörébe feltételezi, hogy ez a fájl egy nevű erőforrás-készlet részét képezi `https://myaccount.blob.core.windows.net/mycontainer/machinesets/{N}/foo.parquet` .
+Tegyük fel például, hogy beolvas egy olyan adatforrást, amelynek URL-címe `https://myaccount.blob.core.windows.net/mycontainer/machinesets/23/foo.parquet` . Az Azure Purview az útvonalszegmenseket nézi, és megállapítja, hogy azok megfelelnek-e a beépített mintáknak. Beépített mintákkal rendelkezik a GUID azonosítókhoz, számokhoz, dátumformátumokhoz, honosítási kódokhoz (például en-us) és így tovább. Ebben az esetben a számminta megfelel a *23-nak.* Az Azure Purview feltételezi, hogy ez a fájl egy nevű erőforráskészlet `https://myaccount.blob.core.windows.net/mycontainer/machinesets/{N}/foo.parquet` része.
 
-Az URL-címekhez hasonlóan az Azure-beli `https://myaccount.blob.core.windows.net/mycontainer/weblogs/en_au/23.json` hatáskörébe is illeszkedik a honosítási minta és a szám minta, amely egy nevű erőforrás-készletet hoz létre `https://myaccount.blob.core.windows.net/mycontainer/weblogs/{LOC}/{N}.json` .
+Vagy egy URL-cím ( például ) számára az Azure Purview a honosítási mintával és a számmintával is egyezik, így egy nevű `https://myaccount.blob.core.windows.net/mycontainer/weblogs/en_au/23.json` erőforráskészletet hoz `https://myaccount.blob.core.windows.net/mycontainer/weblogs/{LOC}/{N}.json` létre.
 
-Ennek a stratégiának a használatával az Azure hatáskörébe a következő erőforrások képezhetők le ugyanahhoz az erőforrás-készlethez `https://myaccount.blob.core.windows.net/mycontainer/weblogs/{LOC}/{N}.json` :
+Ezzel a stratégiával az Azure Purview a következő erőforrásokat leképezi ugyanoda az `https://myaccount.blob.core.windows.net/mycontainer/weblogs/{LOC}/{N}.json` erőforráskészletre:
 
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/1004.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Az Azure hatáskörébe tartozó fájltípusok nem észlelhetők erőforrás-készletként
+## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Az Azure Purview által erőforráskészletként nem észlelt fájltípusok
 
-A hatáskörébe szándékosan nincs lehetőség a legtöbb dokumentum-fájltípus (például Word, Excel vagy PDF) erőforrás-készletként való besorolására. A kivétel CSV-formátum, mivel ez egy közös particionált fájlformátum.
+A nézet szándékosan nem próbálja erőforráskészletként besorolni a legtöbb dokumentumfájltípust, például a Wordet, az Excelt vagy a PDF-et. Ez alól kivétel a CSV formátum, mivel ez egy általános particionált fájlformátum.
 
-## <a name="how-azure-purview-scans-resource-sets"></a>Hogyan vizsgálja az Azure-beli hatáskörébe az erőforrás-készleteket?
+## <a name="how-azure-purview-scans-resource-sets"></a>Hogyan vizsgálja az Azure Purview az erőforráskészleteket?
 
-Ha az Azure hatáskörébe olyan erőforrásokat észlel, amely úgy gondolja, hogy egy erőforrás-készlet részét képezi, a teljes vizsgálatból egy minta-vizsgálatra vált. Egy minta vizsgálatban csak a fájlok egy részhalmazát nyitja meg az erőforrás-készletben. Minden megnyitott fájl esetében a sémáját használja, és futtatja az osztályozó elemeit. Az Azure-beli hatáskörébe ezután megkeresi a legújabb erőforrást a megnyitott erőforrások között, és az adott erőforrás sémáját és besorolásait a katalógusban lévő teljes erőforráshoz tartozó bejegyzésben használja.
+Amikor az Azure Purview észleli azokat az erőforrásokat, amelyekről úgy gondolja, hogy egy erőforráskészlet részei, teljes vizsgálatról mintavizsgálatra vált. Egy mintavizsgálat csak az erőforráskészletben lévőnek csak egy részhalmazát nyitja meg. Minden megnyitott fájlhoz a sémáját használja, és futtatja az osztályozóit. Az Azure Purview ezután megkeresi a megnyitott erőforrások közül a legújabb erőforrást, és az erőforrás sémáját és besorolását használja a katalógusban található teljes erőforráskészlet bejegyzésében.
 
-## <a name="what-azure-purview-stores-about-resource-sets"></a>Milyen Azure-beli feladatok érhetők el az erőforrás-készletekről
+## <a name="what-azure-purview-stores-about-resource-sets"></a>Mit tárol az Azure Purview az erőforráskészletekkel kapcsolatban?
 
-Az egyes sémák és besorolások mellett az Azure hatáskörébe a következő információkat tárolja az erőforrás-készletekről:
+Az egyetlen séma és besorolás mellett az Azure Purview a következő információkat tárolja az erőforráskészletekkel kapcsolatban:
 
-- A legutóbb beolvasott partíciós erőforrásból származó adatok.
-- Az erőforrás-készletet alkotó partíciós erőforrások összesített adatai.
-- Partíciók száma, amely megmutatja, hogy hány partíciós erőforrást talált.
-- Egy séma száma, amely azt mutatja, hogy hány egyedi séma található a mintában. Ez az érték egy 1 – 5 közötti szám, vagy az 5, 5 + értéknél nagyobb értékek esetén.
-- A partíciós típusok listája, ha az erőforrás-készletben egynél több partíció szerepel. Előfordulhat például, hogy egy IoT-érzékelő XML-és JSON-fájlokat is kiállít, bár mindkettő logikailag ugyanahhoz az erőforráshoz tartozik.
+- A legújabb partícióerőforrás adatait olvasott be mélyebben.
+- Összesíti az erőforráskészletet felállító partíció-erőforrásokra vonatkozó információkat.
+- Partíciószám, amely megmutatja, hány partícióerőforrást talált.
+- Sémaszám, amely azt mutatja, hogy a mintakészletben talált egyedi sémák közül hányon vett át mély vizsgálatot. Ez az érték lehet egy 1 és 5 közötti szám, vagy az 5,5+-nál nagyobb értékek.
+- Partíciótípusok listája, ha egynél több partíciótípus szerepel az erőforráskészletben. Előfordulhat például, hogy egy IoT-érzékelő XML- és JSON-fájlokat is kiállít, bár mindkettő logikailag ugyanannak az erőforráskészletnek a része.
 
-## <a name="built-in-resource-set-patterns"></a>Beépített erőforrás-készlet mintázatai
+## <a name="built-in-resource-set-patterns"></a>Beépített erőforráskészlet-minták
 
-Az Azure-beli hatáskörébe a következő erőforrás-set mintázatok támogatottak. Ezek a minták egy könyvtárban vagy egy fájlnév részeként is megjelenhetnek.
+Az Azure Purview a következő erőforráskészlet-mintákat támogatja. Ezek a minták névként is megjelenhetnek egy könyvtárban vagy egy fájlnév részeként.
 ### <a name="regex-based-patterns"></a>Regex-alapú minták
 
 | Minta neve | Megjelenítendő név | Leírás |
 |--------------|--------------|-------------|
-| Guid         | GUID       | Az [RFC 4122](https://tools.ietf.org/html/rfc4122) -ben meghatározott globálisan egyedi azonosító |
-| Szám       | N          | Egy vagy több számjegy |
-| Dátum-és időformátumok | Év Hónap Nap N     | Különböző dátum-/időformátumokat támogatunk, de mindegyiket {Year} [elválasztó] {month} [elválasztó] {Day} vagy {N} s sorozat jelöli. |
-| 4ByteHex     | Hex        | Egy 4 számjegyű HEXADECIMÁLIS szám. |
-| Honosítás | Loc        | A [BCP 47](https://tools.ietf.org/html/bcp47)-ben definiált nyelvi címke (például: en_CA és en-CA) támogatott. |
+| Guid         | {GUID}       | Az [RFC 4122 szabványban meghatározott globálisan egyedi azonosító](https://tools.ietf.org/html/rfc4122) |
+| Szám       | {N}          | Egy vagy több számjegy |
+| Dátum-/időformátumok | {Year} {Month} {Day} {N}     | Különböző dátum-/időformátumokat támogatunk, de mindegyiket {Year}[elválasztó]{Month}[elválasztó]{Day} vagy {N}s sorozat képviseli. |
+| 4ByteHex     | {HEX}        | Egy 4 jegyű HEXX-szám. |
+| Honosítás | {LOC}        | A [BCP 47-ben](https://tools.ietf.org/html/bcp47)meghatározott nyelvcímkék – és _ nevek is támogatottak (például en_ca en-ca) |
 
 ### <a name="complex-patterns"></a>Összetett minták
 
 | Minta neve | Megjelenítendő név | Leírás |
 |--------------|--------------|-------------|
-| SparkPath    | {SparkPartitions} | Spark partíciós fájl azonosítója |
-| Dátum (éééé/hh/nn) – elérési út  | {Year}/{Month}/{Day} | Több mappára kiterjedő év/hónap/nap minta |
+| SparkPath    | {SparkPartitions} | Spark-partíció fájlazonosítója |
+| Date(yyyy/mm/dd)InPath  | {Év}/{Hónap}/{Nap} | Év/hónap/nap minta több mappára kiterjedően |
 
 
-## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Az erőforrás-készletek megjelenítése az Azure hatáskörébe katalógusában
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Az erőforráskészletek megjelenítése az Azure Purview-katalógusban
 
-Ha az Azure-beli hatáskörébe illeszkedik egy erőforrás-csoportba, az megpróbálja kinyerni a leghasznosabb információkat, amelyeket a rendszer a katalógusban megjelenítendő névként használ. Néhány példa az alapértelmezett elnevezési konvencióra: 
+Amikor az Azure Purview egy erőforráskészletbe egy eszközcsoportot illeszkedik, megkísérli kinyerni a katalógusban megjelenített névként használható leghasznosabb információkat. Néhány példa az alkalmazott alapértelmezett elnevezési konvencióra: 
 
 ### <a name="example-1"></a>1\. példa
 
 Minősített név: `https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}`
 
-Megjelenítendő név: "Spark-kimenet neve"
+Megjelenített név: "a spark-kimenet neve"
 
 ### <a name="example-2"></a>2\. példa
 
 Minősített név: `https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}`
 
-Megjelenítendő név: "saját particionált adatai"
+Megjelenített név: "saját particionált adatok"
 
 ### <a name="example-3"></a>3\. példa
 
 Minősített név: `https://myblob.blob.core.windows.net/sample-data/data{N}.csv`
 
-Megjelenítendő név: "érték"
+Megjelenített név: "data"
 
-## <a name="known-issues-with-resource-sets"></a>Erőforrás-készletekkel kapcsolatos ismert problémák
+## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>Erőforráskészlet-csoportosítás testreszabása mintaszabályokkal
 
-Bár az erőforrás-készletek a legtöbb esetben jól működnek, a következő problémák merülhetnek fel, amelyekben az Azure hatáskörébe tartoznak:
+hen vizsgálat egy tárfiókot, az Azure Purview meghatározott minták halmazát használja annak megállapításához, hogy az eszközcsoportok erőforráskészletek-e. Bizonyos esetekben előfordulhat, hogy az Azure Purview erőforráskészlet-csoportosítása nem tükrözi pontosan az adat tulajdonát. Ezek a problémák a következők lehetnek:
 
-- Az eszköz helytelen jelölése erőforrás-készletként
-- Nem megfelelő erőforrás-készletbe helyezi az eszközt.
-- Nem megfelelően jelöl meg egy eszközt, mert nem erőforrás-készlet
+- Eszköz helytelen megjelölése erőforráskészletként
+- Egy eszköz rossz erőforráskészletbe való beállítása
+- Az eszköz helytelen megjelölése nem erőforráskészletként
 
+Ha testre szeretné szabni vagy felülbírálni, hogy az Azure Purview hogyan észleli, hogy mely eszközök vannak erőforráskészletekként csoportosítva, és hogyan jelennek meg a katalógusban, mintaszabályokat határozhat meg a felügyeleti központban. Részletes útmutatásért és szintaxisért tekintse meg az [erőforráskészlet-mintaszabályokat.](how-to-resource-set-pattern-rules.md)
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure-beli hatáskörébe való ismerkedéshez tekintse meg a rövid útmutató [: Azure hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md)című témakört.
+Az Azure Purview használatának első lépésekért lásd: [Rövid útmutató: Azure Purview-fiók létrehozása.](create-catalog-portal.md)

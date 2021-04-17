@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668758"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309560"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúrája
 
@@ -186,7 +186,7 @@ A HANA nagyméretű példány és a virtuális gépek között továbbított ada
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>HANA nagyméretű példány-egységek használata több régióban
 
-A vész-helyreállítási készlet feladatainak kihasználásához több Azure-régióban is meg kell adnia a nagy példányszámú példányok mennyiségét. Még az Azure [globális vnet-társítás] használatával is, a tranzitív útválasztás alapértelmezés szerint nem működik két különböző régióban lévő HANA nagyméretű példány-bérlők között. Global Reach azonban megnyitja a kommunikációs útvonalat a két különböző régióban kiépített HANA nagyméretű példány-egységek között. A ExpressRoute Global Reach ezen használati forgatókönyve a következőket teszi lehetővé:
+A vész-helyreállítási készlet feladatainak kihasználásához több Azure-régióban kell lennie a HANA nagyméretű példányainak. Még az Azure [globális vnet-társítás] használatával is, a tranzitív útválasztás alapértelmezés szerint nem működik két különböző régióban lévő HANA nagyméretű példány-bérlők között. Global Reach azonban megnyitja a kommunikációs útvonalat a két különböző régióban kiépített HANA nagyméretű példány-egységek között. A ExpressRoute Global Reach ezen használati forgatókönyve a következőket teszi lehetővé:
 
  - HANA rendszerreplikáció további proxyk vagy tűzfalak nélkül
  - Biztonsági másolatok másolása két különböző régióban lévő HANA nagyméretű példány-egységek között a rendszermásolatok vagy a rendszerfrissítések elvégzéséhez

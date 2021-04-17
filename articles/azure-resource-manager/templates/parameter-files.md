@@ -1,22 +1,22 @@
 ---
 title: Paraméterfájl létrehozása
-description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
+description: Paraméterfájl létrehozása az értékek átadáshoz a sablon üzembe helyezése Azure Resource Manager során
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/15/2021
+ms.openlocfilehash: ddeaed94396aa662b795ae5701aa367ba13d869b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312042"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531213"
 ---
-# <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
+# <a name="create-resource-manager-parameter-file"></a>Paraméterfájl Resource Manager létrehozása
 
-Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptben, egyszerűbbnek találhatja egy olyan JSON-fájl használatát, amely tartalmazza a paraméterértékeket. Ez a cikk bemutatja, hogyan hozhatja létre a paramétert tartalmazó fájlt.
+Ahelyett, hogy beágyazott értékként ad át paramétereket a szkriptben, használhat egy JSON-fájlt, amely tartalmazza a paraméterértékeket. Ez a cikk bemutatja, hogyan hozhat létre egy JSON-sablonnal vagy Bicep-fájllal használt paraméterfájlt.
 
-## <a name="parameter-file"></a>Paraméter fájlja
+## <a name="parameter-file"></a>Paraméterfájl
 
-A paraméter fájljának formátuma a következő:
+A paraméterfájl a következő formátumot használja:
 
 ```json
 {
@@ -33,9 +33,9 @@ A paraméter fájljának formátuma a következő:
 }
 ```
 
-Figyelje meg, hogy a paraméterek értékei egyszerű szövegként vannak tárolva a paraméter fájlban. Ez a megközelítés olyan értékekhez használható, amelyek nem érzékenyek, például egy erőforrás SKU-jának megadását. A bizalmas értékek, például a jelszavak esetében nem működik. Ha egy bizalmas értéket paraméterként kell átadnia, tárolja az értéket egy kulcstartóban, és hivatkozzon a kulcstárolóra a paraméter fájljában. A rendszer az üzembe helyezés során biztonságos módon kéri le a bizalmas értéket.
+Figyelje meg, hogy a paraméterfájl egyszerű szövegként tárolja a paraméterértékeket. Ez a módszer nem bizalmas értékekhez, például erőforrás-termékváltozathoz működik. Az egyszerű szöveg bizalmas értékek, például jelszavak esetén nem működik. Ha bizalmas értéket tartalmazó paramétert kell átadnia, tárolja az értéket egy kulcstartóban. Ezután hivatkozhat a kulcstartóra a paraméterfájlban. A rendszer az üzembe helyezés során biztonságosan lekéri a bizalmas értéket.
 
-A következő paraméterérték tartalmaz egy egyszerű szöveges értéket és egy Key vaultban tárolt értéket.
+A következő paraméterfájl egy egyszerű szöveges értéket és egy kulcstartóban tárolt bizalmas értéket tartalmaz.
 
 ```json
 {
@@ -57,11 +57,13 @@ A következő paraméterérték tartalmaz egy egyszerű szöveges értéket és 
 }
 ```
 
-További információ a Key Vault értékeinek használatáról: a [Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során.
+A kulcstartók értékeinek használatával kapcsolatos további információkért lásd: Use Azure Key Vault to pass secure parameter value during deployment (Biztonságos Azure Key Vault paraméterértékek megadása [az üzembe helyezés során).](key-vault-parameter.md)
 
-## <a name="define-parameter-values"></a>Paraméter értékeinek meghatározása
+## <a name="define-parameter-values"></a>Paraméterértékek definiálása
 
-Ha szeretné megtudni, hogyan határozhatja meg a paraméterek értékeit, nyissa meg az üzembe helyezni kívánt sablont. Tekintse meg a sablon paraméterek szakaszát. A következő példa egy sablon paramétereit jeleníti meg.
+A paraméterek nevének és értékeinek meghatározásához nyissa meg a JSON- vagy Bicep-sablont. Nézze meg a sablon parameters szakaszát. Az alábbi példák a JSON- és Bicep-sablonok paramétereit mutatják be.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -82,7 +84,24 @@ Ha szeretné megtudni, hogyan határozhatja meg a paraméterek értékeit, nyiss
 }
 ```
 
-A figyelmeztetés első részlete az egyes paraméterek neve. A paraméterben szereplő értékeknek meg kell egyezniük a nevekkel.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@maxLength(11)
+param storagePrefix string
+
+@allowed([
+  'Standard_LRS'
+  'Standard_GRS'
+  'Standard_ZRS'
+  'Premium_LRS'
+])
+param storageAccountType string = 'Standard_LRS'
+```
+
+---
+
+A paraméterfájlban az első részlet, amit fel kell venni, az egyes paraméterek neve. A paraméterfájlban szereplő paraméterneveknek egyezniük kell a sablonban szereplő paraméternevekkel.
 
 ```json
 {
@@ -97,7 +116,7 @@ A figyelmeztetés első részlete az egyes paraméterek neve. A paraméterben sz
 }
 ```
 
-Figyelje meg a paraméter típusát. A paraméterben szereplő értékeknek azonos típusúaknak kell lenniük. Ehhez a sablonhoz karakterláncként is megadhatja a paramétereket.
+Figyelje meg a paraméter típusát. A paraméterfájlban található paramétertípusoknak a sablonnal azonos típusokat kell használniuk. Ebben a példában mindkét paramétertípus sztring.
 
 ```json
 {
@@ -114,7 +133,7 @@ Figyelje meg a paraméter típusát. A paraméterben szereplő értékeknek azon
 }
 ```
 
-Ezután keresse meg az alapértelmezett értéket. Ha egy paraméter alapértelmezett értékkel rendelkezik, megadhat egy értéket, de nem szükséges.
+Ellenőrizze, hogy a sablonban vannak-e alapértelmezett értékkel megadott paraméterek. Ha egy paraméter alapértelmezett értékkel rendelkezik, meg lehet adni egy értéket a paraméterfájlban, de ez nem kötelező. A paraméterfájl értéke felülírja a sablon alapértelmezett értékét.
 
 ```json
 {
@@ -131,7 +150,7 @@ Ezután keresse meg az alapértelmezett értéket. Ha egy paraméter alapértelm
 }
 ```
 
-Végül tekintse meg az engedélyezett értékeket és a korlátozásokat, például a maximális hosszt. Megadják a paraméterhez megadható értékek tartományát.
+Ellenőrizze a sablon megengedett értékeit és korlátozásait, például a maximális hosszt. Ezek az értékek határozzák meg a paraméterhez megadható értéktartományt. Ebben a példában a legfeljebb 11 karakterből állhat, és `storagePrefix` meg kell adnia egy engedélyezett `storageAccountType` értéket.
 
 ```json
 {
@@ -148,11 +167,12 @@ Végül tekintse meg az engedélyezett értékeket és a korlátozásokat, péld
 }
 ```
 
-A paraméter fájlja csak a sablonban definiált paraméterek értékeit tartalmazza. Ha a paraméter-fájl olyan további paramétereket tartalmaz, amelyek nem egyeznek a sablon paraméterei között, hibaüzenetet kap.
+> [!NOTE]
+> A paraméterfájl csak a sablonban definiált paraméterek értékeit tartalmazhatja. Ha a paraméterfájl olyan további paramétereket tartalmaz, amelyek nem egyeznek a sablon paramétereivel, hibaüzenetet kap.
 
 ## <a name="parameter-type-formats"></a>Paramétertípusok formátumai
 
-A következő példában a különböző típusú paraméterek formátuma látható.
+Az alábbi példa a különböző paramétertípusok formátumait mutatja be: sztring, egész szám, logikai érték, tömb és objektum.
 
 ```json
 {
@@ -180,13 +200,13 @@ A következő példában a különböző típusú paraméterek formátuma látha
         "property2": "value2"
       }
     }
-   }
+  }
 }
 ```
 
-## <a name="deploy-template-with-parameter-file"></a>Sablon üzembe helyezése paraméter-fájllal
+## <a name="deploy-template-with-parameter-file"></a>Sablon üzembe helyezése paraméterfájllal
 
-Ha egy helyi paramétert szeretne átadni az Azure CLI-vel, használja a @ nevet és a paraméter fájljának nevét.
+Az Azure CLI-ről átad egy helyi paraméterfájlt a `@` használatával, és a paraméterfájl nevét. Például: `@storage.parameters.json`.
 
 ```azurecli
 az deployment group create \
@@ -196,42 +216,41 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-cli.md#parameters).
+További információ: Erőforrások üzembe [helyezése ARM-sablonokkal és az Azure CLI-val.](./deploy-cli.md#parameters) A _.bicep-fájlok üzembe_ helyezéséhez az Azure CLI 2.20-as vagy újabb verziójára van szükség.
 
-Ha Azure PowerShell használatával szeretne átadni egy helyi paramétert, használja a `TemplateParameterFile` paramétert.
+A Azure PowerShell helyi paraméterfájlt a paraméter használatával `TemplateParameterFile` ad át.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
-  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+  -TemplateFile C:\MyTemplates\storage.json `
+  -TemplateParameterFile C:\MyTemplates\storage.parameters.json
 ```
 
-További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+További információ: Erőforrások üzembe [helyezése ARM-sablonokkal és Azure PowerShell.](./deploy-powershell.md#pass-parameter-values) A _.bicep-fájlok telepítéséhez_ 5.6.0 Azure PowerShell vagy újabb verzió szükséges.
 
 > [!NOTE]
-> A portál egyéni sablon paneljén nem lehet paraméter-fájlt használni.
+> Paraméterfájl nem használható a portál egyéni sablon panelével.
 
-Ha az [Azure erőforráscsoport-projektet használja a Visual Studióban](create-visual-studio-deployment-project.md), győződjön meg arról, hogy a paraméter fájljának **felépítési művelete** **tartalomra** van beállítva.
+> [!TIP]
+> Ha az Azure-erőforráscsoport projektet használja a [Visual Studio,](create-visual-studio-deployment-project.md)győződjön meg arról, hogy a paraméterfájl **Build Action** (Összeállítási művelet) értéke **Content (Tartalom).**
 
 ## <a name="file-name"></a>Fájlnév
 
-A paraméter elnevezésének általános konvenciója a **. Parameters** hozzáadása a sablon nevéhez. Ha például a sablon neve **azuredeploy.json**, a paraméter fájljának neve **azuredeploy.parameters.js**. Ez az elnevezési konvenció a sablon és a paraméterek közötti kapcsolat megtekintését segíti.
+A paraméterfájl általános elnevezési konvenciója, hogy _paramétereket tartalmaz a_ sablonnévben. Ha például a sablon neve _azuredeploy.json_, a paraméterfájl neveazuredeploy.parameters.js _a következőn:_. Ez az elnevezési konvenció segít megérteni a sablon és a paraméterek közötti kapcsolatot.
 
-Ha különböző környezetekben kíván üzembe helyezni, hozzon létre egynél több paramétert. A paraméterérték elnevezése esetén adjon hozzá egy módszert a használat azonosításához. Használja például a **azuredeploy.parameters-dev.json** és a **azuredeploy.parameters-prod.json**
+A különböző környezetekben való üzembe helyezéshez több paraméterfájlt is létre kell hoznia. A paraméterfájlok elnevezésekor azonosítsa a használatukat, például a fejlesztést és az éles üzemet. Erőforrások üzembe _helyezéséhez_ azuredeploy.parameters-dev.jsés _azuredeploy.parameters-prod.jsbe._
 
-## <a name="parameter-precedence"></a>Paraméter prioritása
+## <a name="parameter-precedence"></a>Paraméter precedenciása
 
-A beágyazott paramétereket és a helyi paramétereket is használhatja ugyanabban a telepítési műveletben. Megadhat például néhány értéket a helyi paraméter fájljában, és az üzembe helyezés során további értékeket is hozzáadhat. Ha a paraméter értékét a helyi paraméter fájljában és a beágyazott mezőben is megadja, a beágyazott érték elsőbbséget élvez.
+Ugyanabban az üzembe helyezési műveletben beágyazott paramétereket és helyi paraméterfájlt is használhat. Megadhat például néhány értéket a helyi paraméterfájlban, és további értékeket adhat hozzá beágyazottan az üzembe helyezés során. Ha a helyi paraméterfájlban és a beágyazottban is ad meg értékeket egy paraméterhez, a beágyazott érték élvez elsőbbséget.
 
-Külső paramétert is használhat a fájl URI azonosítójának megadásával. Ha külső paramétert használ, nem adhat át más értékeket beágyazott vagy helyi fájlból. Az összes beágyazott paraméter figyelmen kívül lesz hagyva. Adja meg az összes paraméter értékét a külső fájlban.
+Külső paraméterfájl is használható a fájl URI-ját megadva. Külső paraméterfájl használata esetén más értékeket sem beágyazott, sem helyi fájlból nem lehet átadni. A rendszer minden beágyazott paramétert figyelmen kívül hagy. Adja meg a külső fájl összes paraméterértékét.
 
-## <a name="parameter-name-conflicts"></a>Paraméter neve ütközés
+## <a name="parameter-name-conflicts"></a>Paraméternév-ütközések
 
-Ha a sablon egy, a PowerShell-parancsban szereplő paraméterekkel megegyező nevű paramétert tartalmaz, a PowerShell a sablonban található paramétert a Postfix **FromTemplate** mutatja be. A sablonban található **ResourceGroupName** nevű paraméter például ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. A rendszer megkéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate** számára. Ezt a zavart a telepítési parancsokhoz nem használt paraméterek neveinek használatával lehet elkerülni.
-
+Ha a sablon a PowerShell-parancs egyik paraméterével azonos nevű paramétert tartalmaz, a PowerShell a paramétert a(z) utótaggal mutatja be a `FromTemplate` sablonból. Például egy nevű paraméter ütközik a `ResourceGroupName` `ResourceGroupName` [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag paraméterével. A rendszer kéri, hogy adja meg a `ResourceGroupNameFromTemplate` értékét. A félreértések elkerülése érdekében használjon olyan paraméterneveket, amelyek nem használatosak az üzembe helyezési parancsokhoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg a [Azure Resource Manager sablonokban található paramétereket](template-parameters.md).
-- További információ a Key Vault értékeinek használatáról: a [Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során.
-- További információ a paraméterekről: [Azure Resource Manager sablonokban található paraméterek](template-parameters.md).
+- További információ a paraméterek sablonban való definiálásról: [Paraméterek az ARM-sablonokban.](template-parameters.md)
+- A kulcstartók értékeinek használatával kapcsolatos további információkért lásd: Use Azure Key Vault to pass secure parameter value during deployment (Biztonságos Azure Key Vault paraméterértékek megadása [az üzembe helyezés során).](key-vault-parameter.md)

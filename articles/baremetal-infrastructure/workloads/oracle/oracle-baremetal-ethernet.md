@@ -4,12 +4,12 @@ description: Ismerje meg az Ethernet-interfészek Konfigurálást Az Oracle szá
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: e98af51075d5193cab14d18f1cdb1f431c8fa892
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107559195"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588887"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Az Oracle-hez szükséges BareMetal Ethernet-konfigurációja
 
@@ -35,16 +35,16 @@ Az alapértelmezett konfigurációhoz egy ügyfél-IP-felület (eth1) csatlakozi
 
 | **Hálózati adapter logikai felülete** | **Név RHEL operációs rendszerrel** | **Használati eset** |
 | --- | --- | --- |
-| A | eth1.tenant | Ügyfélről BareMetal-példányra |
-| C | eth2.tenant | Csomópontok és tárolók között; támogatja a tárolókörnyezet felügyeletéhez szükséges tárolóvezérlők koordinációját és hozzáférését. |
-| B | eth3.tenant | Csomópontok közötti (privát összekapcsolás) |
-| C | eth4.tenant | Fenntartott/iSCSI |
-| C | eth5.tenant | Fenntartott/naplók biztonsági mentése |
-| C | eth6.tenant | Csomópontok között storage_Data biztonsági mentés (RMAN, pillanatkép) |
-| C | eth7.tenant | Csomópontok között storage_dNFS-Pri; A kapcsolatot biztosít a NetApp-tárolótömbhöz. |
-| C | eth8.tenant | Csomópontok és csomópontok storage_dNFS másodpercenként; A kapcsolatot biztosít a NetApp-tárolótömbhöz. |
-| T | eth9.tenant | DR-kapcsolat a Global Reach beállításához a BMI másik régióban való eléréséhez. |
-| A | \*eth10.tenant | \* Ügyfélről BareMetal-példányra
+| A | net1.tenant | Ügyfélről BareMetal-példányra |
+| C | net2.tenant | Csomópontok és tárolók között; támogatja a tárolóvezérlők koordinációját és hozzáférését a tárolási környezet felügyeletéhez. |
+| B | net3.tenant | Csomópontok közötti (privát összekapcsolás) |
+| C | net4.tenant | Fenntartott/iSCSI |
+| C | net5.tenant | Fenntartott/naplók biztonsági mentése |
+| C | net6.tenant | Csomópontok között storage_Data biztonsági mentés (RMAN, pillanatkép) |
+| C | net7.tenant | Csomópontok között storage_dNFS-Pri; A kapcsolatot biztosít a NetApp-tárolótömbhöz. |
+| C | net8.tenant | Csomópontok és csomópontok storage_dNFS másodpercenként; A kapcsolatot biztosít a NetApp-tárolótömbhöz. |
+| T | net9.tenant | DR-kapcsolat a Global Reach beállításához a BMI másik régióban való eléréséhez. |
+| A | \*net10.tenant | \* Ügyfélről BareMetal-példányra
  |
 
 Szükség esetén több hálózati adaptert (NIC) is meghatározhat. A meglévő hálózati konfigurációk azonban nem *módosíthatók.*

@@ -16,6 +16,8 @@ items:
         href: create-purview-dotnet.md
       - name: Purview-fiók létrehozása – Python
         href: create-purview-python.md
+      - name: Kafka-értesítések kezelése – .NET
+        href: manage-kafka-dotnet.md
   - name: Oktatóanyagok
     items:
       - name: Kezdőcsomag
@@ -132,7 +134,7 @@ items:
             href: how-to-manage-term-templates.md
       - name: Tömeges szerkesztés
         items:
-          - name: Eszközök tömeges szerkesztése jegyzetek és kapcsolatok címkézéséhez
+          - name: Eszközök tömeges szerkesztése jegyzetek és névjegyek címkézéséhez
             href: how-to-bulk-edit-assets.md
       - name: Besorolás
         items:

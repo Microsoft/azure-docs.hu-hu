@@ -1,7 +1,7 @@
 ---
-title: Az Apache Spark-készletekkel rendelkező huzavona (előzetes verzió)
+title: Adatrendezés Apache Spark készletekkel (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan csatlakoztathat és indíthat el Apache Spark készleteket az Azure szinapszis Analytics és a Azure Machine Learning használatával történő huzavona.
+description: Megtudhatja, hogyan csatolhat és indíthat Apache Spark készleteket az adatrendezéshez a Azure Synapse Analytics és Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,35 +11,39 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 1852bfdb4bf8513aaa5d43993e2b6ff804808dbd
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553804"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575649"
 ---
-# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Az Azure szinapszis Analytics szolgáltatással rendelkező Apache Spark-készletek csatlakoztatása a huzavona (előzetes verzió)
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Csatolja Apache Spark (Azure Synapse Analytics) adatrendezéshez (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan csatolhat és indíthat el egy olyan Apache Spark-készletet, amely az [Azure szinapszis Analytics](../synapse-analytics/overview-what-is.md) segítségével huzavona az adatmennyiséget. 
+Ebből a cikkből megtudhatja, hogyan csatolhat [](../synapse-analytics/overview-what-is.md) Apache Spark Azure Synapse Analytics-alapú virtuálisgép-készletet az Azure Machine Learning-munkaterülethez, hogy elindítsa azt, és nagy méretekben végezzen adatrendezést. 
 
-Ez a cikk útmutatást nyújt az adathuzavona-feladatok interaktív végrehajtásához egy Jupyter-jegyzetfüzetben lévő dedikált szinapszis-munkameneten belül. Ha Azure Machine Learning-folyamatokat szeretne használni, tekintse [meg a Machine learning-folyamat (előzetes verzió) Apache Spark (az Azure szinapszis Analytics által működtetett) használatát](how-to-use-synapsesparkstep.md)ismertető témakört.
+Ez a cikk útmutatást nyújt az adatrendezési feladatok interaktív végrehajtásához egy Jupyter notebook dedikált Synapse-munkamenetében az [Azure Machine Learning Python SDK használatával.](/python/api/overview/azure/ml/) Ha inkább a Azure Machine Learning használatát szeretné használni, tekintse meg a Apache Spark (Azure Synapse Analytics által működtetett) használatának a gépi tanulási folyamatban [(előzetes verzió) való használatát.](how-to-use-synapsesparkstep.md)
+
+Ha útmutatásra van szüksége a Azure Synapse Analytics Synapse-munkaterülettel való használatával, tekintse meg a [Azure Synapse Analytics első lépések sorozatot.](../synapse-analytics/get-started.md)
 
 >[!IMPORTANT]
-> A Azure Machine Learning és az Azure szinapszis Analytics-integráció előzetes verzióban érhető el. A cikkben bemutatott képességek olyan csomagot alkalmaznak `azureml-synapse` , amely a [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
+> A Azure Machine Learning és Azure Synapse Analytics integrációja előzetes verzióban érhető el. A cikkben bemutatott képességek a kísérleti előzetes verziójú funkciókat tartalmazó csomagot alkalmazzák, `azureml-synapse` amely bármikor [](/python/api/overview/azure/ml/#stable-vs-experimental) megváltozhat.
 
-## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning és az Azure szinapszis Analytics-integrációja (előzetes verzió)
+## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning és Azure Synapse Analytics (előzetes verzió)
 
-Az Azure szinapszis Analytics Azure Machine Learning (előzetes verzió) szolgáltatással való integrációja lehetővé teszi, hogy az Azure szinapszis által támogatott Apache Spark-készletet az interaktív adatelemzéshez és-előkészítéshez csatolja. Ebben az integrációban az adatok huzavona dedikált számítási kapacitással rendelkezhet, mindezt a gépi tanulási modellek betanításához használt Python-jegyzetfüzeten belül is.
+Az Azure Synapse Analytics (előzetes verzió) Azure Machine Learning integrációja lehetővé teszi egy Apache Spark-készlet csatolását Azure Synapse adatok interaktív feltárása és előkészítése érdekében. Ezzel az integrációval dedikált számítási kapacitást használhat nagy méretekben való adatrendezéshez, mindezt a gépi tanulási modellek betanítása során használt Python-jegyzetfüzeten belül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md?tabs=python).
+* A [Azure Machine Learning Python SDK telepítve van.](/python/api/overview/azure/ml/install) 
 
-* [Hozzon létre egy Azure szinapszis Analytics-munkaterületet Azure Portal](../synapse-analytics/quickstart-create-workspace.md).
+* [Hozzon létre egy Azure Machine Learning munkaterületet.](how-to-manage-workspace.md?tabs=python)
 
-* [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [Hozzon létre egy Azure Synapse Analytics munkaterületet a Azure Portal.](../synapse-analytics/quickstart-create-workspace.md)
 
-* [Állítsa be a fejlesztési környezetet](how-to-configure-environment.md) a Azure Machine learning SDK telepítéséhez, vagy használjon egy [Azure Machine learning számítási példányt](concept-compute-instance.md#create) az SDK-val, amely már telepítve van. 
+* [Hozzon Apache Spark készletet Azure Portal, webes eszközök vagy Synapse Studio](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+
+* [Konfigurálja a fejlesztési környezetet](how-to-configure-environment.md) a Azure Machine Learning SDK telepítéséhez, vagy használjon egy Azure Machine Learning számítási példányt, amely már telepítve van az SDK-val. [](concept-compute-instance.md#create) 
 
 * Telepítse a `azureml-synapse` csomagot (előzetes verzió) a következő kóddal:
 
@@ -47,107 +51,111 @@ Az Azure szinapszis Analytics Azure Machine Learning (előzetes verzió) szolgá
   pip install azureml-synapse
   ```
 
-* [Azure Machine learning munkaterület és az Azure szinapszis Analytics-munkaterület összekapcsolása](how-to-link-synapse-ml-workspaces.md).
+* [Csatolja Azure Machine Learning munkaterületet a Azure Synapse Analytics munkaterülethez.](how-to-link-synapse-ml-workspaces.md)
 
-## <a name="get-an-existing-linked-service"></a>Meglévő társított szolgáltatás beszerzése
-Ahhoz, hogy dedikált számítást lehessen csatolni az adatok huzavona, rendelkeznie kell egy, az Azure szinapszis Analytics-munkaterülethez csatolt ML-munkaterülettel, amelyet társított szolgáltatásnak nevezünk. 
+## <a name="get-an-existing-linked-service"></a>Meglévő csatolt szolgáltatás lekérte
+Ahhoz, hogy dedikált számítási kapacitást csatoljon az adatszervezéshez, egy Azure Synapse Analytics-munkaterülethez csatolt GÉPI-munkaterülettel kell lennie. Ezt csatolt szolgáltatásnak nevezzük. 
 
-Meglévő társított szolgáltatás lekéréséhez és használatához **felhasználói vagy közreműködői** engedélyek szükségesek az Azure szinapszis Analytics-munkaterülethez.
+Egy meglévő összekapcsolt szolgáltatás  lekéréséhez és használatához Felhasználói vagy Közreműködői engedélyre van szükség a Azure Synapse Analytics munkaterületen.
 
-A Machine learning-munkaterülethez kapcsolódó összes társított szolgáltatás megtekintése. 
+Az összes megtekintése gépi tanulási munkaterülethez társított társított szolgáltatásokat. 
 
 ```python
+from azureml.core import LinkedService
+
 LinkedService.list(ws)
 ```
 
-Ez a példa egy meglévő társított szolgáltatást kér le a `synapselink1` munkaterületről a `ws` [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) metódussal.
+Ez a példa lekér egy meglévő összekapcsolt szolgáltatást () a `synapselink1` munkaterületről `ws` a [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) metódussal.
 ```python
+from azureml.core import LinkedService
+
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
  
-## <a name="attach-synapse-spark-pool-as-a-compute"></a>Szinapszis Spark-készlet csatlakoztatása számítási feladatokhoz
+## <a name="attach-synapse-spark-pool-as-a-compute"></a>Synapse Spark-készlet csatolása számításként
 
-Miután beolvasta a társított szolgáltatást, csatoljon egy szinapszis Apache Spark-készletet dedikált számítási erőforrásként az adatok huzavona feladataihoz. 
+A csatolt szolgáltatás lekérése után csatoljon egy Synapse-Apache Spark-készletet dedikált számítási erőforrásként az adatcsoport-elosztási feladatokhoz. 
 
-Apache Spark-készleteket csatlakoztathat a használatával,
+A készleteket a Apache Spark csatolhatja a(
 * Azure Machine Learning Studio
 * [Azure Resource Manager- (ARM-) sablonok](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
-* A Python SDK 
+* Az Azure Machine Learning Python SDK 
 
-### <a name="attach-a-pool-via-the-studio"></a>Készlet csatolása a Studio használatával
+### <a name="attach-a-pool-via-the-studio"></a>Készlet csatolása a studióban
 Kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be a [Azure Machine learning studióba](https://ml.azure.com/).
-1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **társított szolgáltatások** elemet.
-1. Válassza ki a szinapszis munkaterületet.
-1. Kattintson a bal felső sarokban található **csatolt Spark-készletek** elemre. 
-1. Válassza a **csatolás** lehetőséget. 
-1. Válassza ki a listából a Apache Spark készletet, és adjon meg egy nevet.  
-    1. Ez a lista azonosítja az elérhető szinapszis Spark-készleteket, amelyek a számítási feladatokhoz csatlakoztathatók. 
-    1. Új szinapszis Spark-készlet létrehozásával kapcsolatban lásd: [Apache Spark készlet létrehozása a szinapszis Studióval](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
-1. Válassza a **kijelölt csatolás** lehetőséget. 
+1. Jelentkezzen be a [Azure Machine Learning stúdió.](https://ml.azure.com/)
+1. A **bal oldali panel** Kezelés szakaszában válassza a Linked Services (Csatolt szolgáltatások) lehetőséget. 
+1. Válassza ki a Synapse-munkaterületet.
+1. A **bal felső sarokban válassza** a Csatolt Spark-készletek lehetőséget. 
+1. Válassza a **Csatolás lehetőséget.** 
+1. Válassza ki a Apache Spark a listából, és adjon meg egy nevet.  
+    1. Ez a lista azonosítja a számítási kapacitáshoz csatolható rendelkezésre álló Synapse Spark-készleteket. 
+    1. Új Synapse Spark-készlet létrehozásához lásd: Create [Apache Spark pool with the Synapse Studio](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+1. Válassza a **Kijelölt csatolás lehetőséget.** 
 
 ### <a name="attach-a-pool-with-the-python-sdk"></a>Készlet csatolása a Python SDK-val
 
-A **PYTHON SDK** -t a Apache Spark készlet csatlakoztatására is használhatja. 
+A Python **SDK** használatával is csatolhat egy Apache Spark készletet. 
 
-A kód követése, 
-1. A SynapseCompute konfigurálja a rel,
+A következő kód: 
+1. A konfigurálása a [`SynapseCompute`](/python/api/azureml-core/azureml.core.compute.synapsecompute) következővel:
 
-   1. Az `linked_service` előző lépésben létrehozott vagy beolvasott LinkedService. 
-   1. A csatolni kívánt számítási cél típusa `SynapseSpark`
-   1. Az Apache Spark-készlet neve. Ennek egyeznie kell egy, az Azure szinapszis Analytics-munkaterületen található meglévő Apache Spark-készlettel.
+   1. Az előző lépésben létrehozott vagy [`LinkedService`](/python/api/azureml-core/azureml.core.linkedservice) `linked_service` lekért . 
+   1. A csatolni kívánt számítási cél típusa, `SynapseSpark`
+   1. A Apache Spark neve. Ennek egyeznie kell egy meglévő Apache Spark, amely a saját munkaterületén Azure Synapse Analytics található.
    
-1. Egy gépi tanulási ComputeTarget hoz létre a beadásával, 
-   1. A használni kívánt Machine learning-munkaterület `ws`
-   1. A Azure Machine Learning munkaterületen belüli számításra hivatkozó név. 
-   1. A szinapszis számítási beállításainak konfigurálásakor megadott attach_configuration.
-       1. A ComputeTarget. Attach () hívása aszinkron módon történik, ezért a rendszer a hívás befejeződéséig blokkolja a mintákat.
+1. Gépi tanulást hoz [`ComputeTarget`](/python/api/azureml-core/azureml.core.computetarget) létre a következő átadással: 
+   1. A használni kívánt Machine Learning-munkaterület, `ws`
+   1. Az a név, amely a számítási erőforrás munkaterületén Azure Machine Learning hivatkozni. 
+   1. A attach_configuration Synapse Compute konfigurálásakor megadott érték.
+       1. A ComputeTarget.attach() hívása aszinkron, ezért a mintablokkok addig maradnak, amíg a hívás be nem fejeződik.
 
 ```python
 from azureml.core.compute import SynapseCompute, ComputeTarget
 
 attach_config = SynapseCompute.attach_configuration(linked_service, #Linked synapse workspace alias
                                                     type='SynapseSpark', #Type of assets to attach
-                                                    pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
+                                                    pool_name=synapse_spark_pool_name) #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name="<Synapse Spark pool alias in Azure ML>", 
-                                       attach_configuration=attach_config
+                                       name= synapse_compute_name, 
+                                       attach_configuration= attach_config
                                       )
 
 synapse_compute.wait_for_completion()
 ```
 
-Ellenőrizze, hogy a Apache Spark készlet csatolva van-e.
+Ellenőrizze, hogy a Apache Spark-készlet csatlakoztatva van-e.
 
 ```python
 ws.compute_targets['Synapse Spark pool alias']
 ```
 
-## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>A szinapszis Spark-készlet elindítása adatelőkészítési feladatokhoz
+## <a name="launch-synapse-spark-pool-for-data-wrangling-tasks"></a>Synapse Spark-készlet indítása adatrendezési feladatokhoz
 
-Az Apache Spark készlettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét:
+Az adatok előkészítésének a Apache Spark készletben való megkezdéséhez adja meg Apache Spark készlet nevét:
 
 > [!IMPORTANT]
-> A Apache Spark készlet használatának folytatásához jeleznie kell, hogy melyik számítási erőforrást kell használnia az összes adat huzavona-feladatban, `%synapse` egyetlen sornyi kóddal és `%%synapse` több sorba. 
+> Az adatkészlet használatának folytatásához meg kell Apache Spark, hogy melyik számítási erőforrást kell használnia az adatcsoport-elosztási tevékenységekben az egyetlen sornyi kódhoz és több `%synapse` `%%synapse` sorhoz. 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias
 ```
 
-A munkamenet megkezdése után megtekintheti a munkamenet metaadatait.
+A munkamenet indítása után ellenőrizheti a munkamenet metaadatait.
 
 ```python
 %synapse meta
 ```
 
-Megadhat egy [Azure Machine learning környezetet](concept-environments.md) , amelyet a Apache Spark-munkamenet során használhat. Csak a környezetben megadott Conda-függőségek lépnek életbe. A Docker-rendszerkép nem támogatott.
+Megadhatja a [Azure Machine Learning munkamenet](concept-environments.md) során használni kívánt Apache Spark környezetet. Csak a környezetben megadott Conda-függőségek lépnek életbe. A Docker-rendszerkép nem támogatott.
 
 >[!WARNING]
->  A környezeti Conda-függőségekben megadott Python-függőségek Apache Spark készletekben nem támogatottak. Jelenleg csak a rögzített Python-verziók támogatottak. A Python-verzió ellenőrzéséhez  `sys.version_info` adja meg a szkriptjét is.
+>  A Környezet Conda-függőségei környezetben megadott Python-függőségek nem támogatottak Apache Spark készletekben. Jelenleg csak a rögzített Python-verziók támogatottak. Ellenőrizze a Python-verziót a szkriptbe  `sys.version_info` való beíróval.
 
-A következő kód létrehozza a környezetet, `myenv` amely a munkamenet megkezdése előtt telepíti a `azureml-core` 1.20.0 és `numpy` a Version 1.17.0 verziót. Ezt a környezetet a Apache Spark munkamenet-utasításban is felveheti `start` .
+A következő kód létrehozza a környezetet ( ) , amely a munkamenet kezdete előtt telepíti az `myenv` `azureml-core` 1.20.0-s és `numpy` az 1.17.0-s verziót. Ezt a környezetet aztán felveheti a Apache Spark `start` munkamenet-utasításba.
 
 ```python
 
@@ -161,28 +169,28 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Az Apache Spark készlettel és az egyéni környezettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét, valamint azt, hogy melyik környezetet kívánja használni a Apache Spark munkamenetben. Emellett megadhatja az előfizetés AZONOSÍTÓját, a Machine learning-munkaterület erőforráscsoportot és a Machine learning-munkaterület nevét.
+Az adatok előkészítésének a Apache Spark és az egyéni környezetben való megkezdéséhez adja meg a Apache Spark-készlet nevét és azt a környezetet, amelyet a Apache Spark használni. Emellett meg is használhatja az előfizetés azonosítóját, a Machine Learning-munkaterület erőforráscsoportját, valamint a gépi tanulási munkaterület nevét.
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
 ## <a name="load-data-from-storage"></a>Adatok betöltése a tárolóból
 
-A Apache Spark-munkamenet elindítása után olvassa el az előkészíteni kívánt adatait. Az Azure Blob Storage és a Azure Data Lake Storage Generations 1. és 2. generációja támogatja az betöltést.
+A Apache Spark után olvassa be az előkészíteni kívánt adatokat. Az adatok betöltése az Azure Blob Storage és a Azure Data Lake Storage 1. és 2. generáció esetén támogatott.
 
-A tárolási szolgáltatásokból kétféleképpen tölthetők be adatok: 
+Két módon lehet adatokat betölteni ezekből a tárolási szolgáltatásokból: 
 
-* A Hadoop Distributed Files System (HDFS) útvonal használatával közvetlenül tölthetők be az adatok a tárolóból.
+* Közvetlenül betöltheti az adatokat a tárolóból a Hadoop elosztott fájlrendszer (HDFS) elérési útjának használatával.
 
-* Adatok olvasása meglévő [Azure Machine learning adatkészletből](how-to-create-register-datasets.md).
+* Beolvassa az adatokat egy [meglévő Azure Machine Learning adatkészletből.](how-to-create-register-datasets.md)
 
-A tárolási szolgáltatások eléréséhez **Storage blob-Adatolvasó** engedélyekre van szükség. Ha vissza szeretné írni ezeket a tárolási szolgáltatásokat, szüksége lesz a **Storage blob adatközreműködői** engedélyeire. [További információ a tárolási engedélyekről és a szerepkörökről](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues).
+A tárolási szolgáltatások eléréséhez **Storage-blobadatok** olvasói engedélyekkel kell rendelkeznie. Ha adatokat tervez visszaírni ezekbe a tárolási szolgáltatásokba, **Storage-blobadatok közreműködője engedélyekkel** kell rendelkeznie. [További információ a tárolási engedélyekről és szerepkörökről.](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)
 
-### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>Az Hadoop Distributed Files System (HDFS) elérési úttal rendelkező adatbetöltése
+### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>Adatok betöltése a Hadoop elosztott fájlrendszer (HDFS) útvonalával
 
-Az adatok a tárolóból a megfelelő HDFS elérési úttal való betöltéséhez és beolvasásához azonnal elérhetővé kell tennie az adatokhoz való hozzáférési hitelesítő adatokat. Ezek a hitelesítő adatok a tárolási típusától függően eltérőek.  
+Ahhoz, hogy adatokat töltsön be és olvasson be a tárolóból a megfelelő HDFS-útvonalon, rendelkeznie kell az adatokhoz való hozzáféréshez szükséges hitelesítő adatokkal. Ezek a hitelesítő adatok a tároló típusától függően eltérőek.  
 
-A következő kód azt mutatja be, hogyan lehet az **Azure Blob Storage** -ból származó adatok beolvasását egy Spark-dataframe a közös hozzáférésű aláírás (SAS) token vagy a hozzáférési kulcs használatával. 
+A következő kód bemutatja, hogyan olvashatja be az **adatokat** egy Azure Blob Storage-ból egy Spark-adatkeretbe a közös hozzáférésű jogosultságkód (SAS) jogkivonatával vagy hozzáférési kulcsával. 
 
 ```python
 %%synapse
@@ -195,7 +203,7 @@ sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage accoun
 df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.windows.net/Titanic.csv")
 ```
 
-A következő kód azt mutatja be, hogyan lehet adatokat beolvasni az **1. generációs (1. ADLS) Azure Data Lake Storage** az egyszerű szolgáltatásnév hitelesítő adataival. 
+A következő kód bemutatja, hogyan olvashatja be az **1. generációs Azure Data Lake Storage (ADLS Gen 1)** adatait a szolgáltatásnév hitelesítő adataival. 
 
 ```python
 %%synapse
@@ -214,7 +222,7 @@ df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>"
 
 ```
 
-A következő kód azt mutatja be, hogyan lehet adatokat beolvasni **Azure Data Lake Storage 2. generációból (ADLS Gen 2)** az egyszerű szolgáltatásnév hitelesítő adataival. 
+A következő kód bemutatja, hogyan olvashatja be a 2. generációs Azure Data Lake Storage **(ADLS Gen 2)** adatait a szolgáltatásnév hitelesítő adataival. 
 
 ```python
 %%synapse
@@ -231,15 +239,15 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ```
 
-### <a name="read-in-data-from-registered-datasets"></a>Adatok beolvasása a regisztrált adatkészletekből
+### <a name="read-in-data-from-registered-datasets"></a>Adatok beolvasása regisztrált adatkészletből
 
-Egy meglévő regisztrált adatkészletet is beszerezhet a munkaterületen, és elvégezheti az adatok előkészítését egy Spark-dataframe való átalakítással.
+Le is kaphat egy meglévő regisztrált adatkészletet a munkaterületen, és elvégezheti rajta az adatok előkészítését, ha spark-adatkeretekké konvertálja őket.
 
-A következő példa hitelesíti a munkaterületet, beolvas egy regisztrált TabularDataset, `blob_dset` amely a blob Storage-ban lévő fájlokra hivatkozik, és egy Spark-dataframe alakítja át. Amikor egy Spark-dataframe alakítja át az adatkészleteket, kihasználhatja az `pyspark` adatfeltárási és-előkészítési kódtárakat.  
+Az alábbi példa hitelesíti magát a munkaterületen, lekért egy regisztrált TabularDataset adatkészletet, amely a Blob Storage-ban lévő fájlokra hivatkozik, és `blob_dset` spark-adatkeretké konvertálja azt. Amikor az adatkészleteket Spark-adatkeretekké alakítja, adatfeltárási és -előkészítési `pyspark` kódtárakat is kihasználhat.  
 
 ``` python
-
 %%synapse
+
 from azureml.core import Workspace, Dataset
 
 subscription_id = "<enter your subscription ID>"
@@ -254,14 +262,15 @@ dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
 ```
 
-## <a name="perform-data-wrangling-tasks"></a>Adatok huzavona feladatok végrehajtása
+## <a name="perform-data-wrangling-tasks"></a>Adatrendezési feladatok végrehajtása
 
-Az adatok lekérése és megismerése után huzavona-feladatokat hajthat végre.
+Az adatok lekérése és feltárása után adatrendezési feladatokat hajthat végre.
 
-A következő kód kibontja az előző szakaszban található HDFS-példát, és kiszűri a Spark dataframe-ben lévő, a `df` **túlélő** oszlop és az **életkor** szerint listázó csoportok alapján.
+A következő kód kibontja az előző szakaszban található HDFS-példát, és szűri az adatokat a Spark-adatkeretben () a Oszlop oszlop és az Életkor szerint listolt `df` csoportok **alapján.** 
 
 ```python
 %%synapse
+
 from pyspark.sql.functions import col, desc
 
 df.filter(col('Survived') == 1).groupBy('Age').count().orderBy(desc('count')).show(10)
@@ -270,11 +279,11 @@ df.show()
 
 ```
 
-## <a name="save-data-to-storage-and-stop-spark-session"></a>Adattárolás és a Spark-munkamenet leállítása
+## <a name="save-data-to-storage-and-stop-spark-session"></a>Adatok mentése a tárolóba és a Spark-munkamenet befejezése
 
-Az adatfeltárás és-előkészítés befejezése után az előkészített adatait az Azure Storage-fiókjában tárolhatja későbbi használatra.
+Az adatfeltárás és -előkészítés befejezése után tárolja az előkészített adatokat későbbi használatra az Azure-tárfiókban.
 
-A következő példában az előkészített adatlemez visszakerül az Azure Blob Storage-ba, és felülírja az eredeti `Titanic.csv` fájlt a `training_data` címtárban. A tárterületre való visszaíráshoz **Storage blob-adatközreműködői** engedélyekre van szükség. [További információ a tárolási engedélyekről és a szerepkörökről](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues).
+A következő példában az előkészített adatokat a rendszer visszaírja az Azure Blob Storage-ba, és felülírja az eredeti fájlt a `Titanic.csv` `training_data` könyvtárban. A tárolóba való visszaíráshoz **Storage-blobadatok** közreműködője engedélyekkel kell rendelkeznie. [További információ a tárolási engedélyekről és szerepkörökről.](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)
 
 ```python
 %% synapse
@@ -282,22 +291,22 @@ A következő példában az előkészített adatlemez visszakerül az Azure Blob
 df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.windows.net/training_data/Titanic.csv")
 ```
 
-Amikor befejezte az adatelőkészítést, és mentette az előkészített adatait a Storage-ba, ne használja a Apache Spark készletet a következő paranccsal.
+Ha befejezte az adatok előkészítését, és mentette az előkészített adatokat a tárolóba, az alábbi paranccsal ne használja Apache Spark a tárolókészletet.
 
 ```python
 %synapse stop
 ```
 
-## <a name="create-dataset-to-represent-prepared-data"></a>Adatkészlet létrehozása az előkészített adatokat képviselő adatkészletek létrehozásához
+## <a name="create-dataset-to-represent-prepared-data"></a>Előkészített adatokat képviselő adatkészlet létrehozása
 
-Ha készen áll arra, hogy felhasználhassa az előkészített adatokat a modell betanításához, kapcsolódjon a tárhelyhez egy [Azure Machine learning adattárral](how-to-access-data.md), és adja meg, hogy mely fájl (oka) t szeretné használni [Azure Machine learning adatkészlettel](how-to-create-register-datasets.md).
+Ha készen áll az előkészített adatok használatára a modell betanítása érdekében, csatlakozzon [a](how-to-access-data.md)tárolóhoz egy Azure Machine Learning-adattár használatával, és adja meg, hogy melyik fájl(ak)t szeretné használni egy Azure Machine Learning-adatkészlethez. [](how-to-create-register-datasets.md)
 
-A következő mintakód például
+Az alábbi példakód:
 
-* Feltételezi, hogy már létrehozott egy adattárt, amely kapcsolódik ahhoz a tárolási szolgáltatáshoz, ahová az előkészített adatait mentette.  
-* Lekérdezi a meglévő adattárat a `mydatastore` munkaterületről `ws` a Get () metódussal.
-* Létrehoz egy [FileDataset](how-to-create-register-datasets.md#filedataset), `train_ds` amely hivatkozik a mappában található előkészített adatfájlokra `training_data` `mydatastore` .  
-* Létrehozza a változót `input1` , amely később is felhasználható, hogy az adatkészlet adatfájljai `train_ds` elérhetők legyenek egy számítási cél számára.
+* Azt feltételezi, hogy már létrehozott egy adattárat, amely csatlakozik ahhoz a tárolási szolgáltatáshoz, ahová az előkészített adatokat mentette.  
+* Lekérte a meglévő adattárat () `mydatastore` a `ws` munkaterületről a get() metódussal.
+* Létrehoz egy [FileDataset (Fájladatkészlet)](how-to-create-register-datasets.md#filedataset)adatkészletet, amely a könyvtárában található előkészített `train_ds` `training_data` adatfájlokra `mydatastore` hivatkozik.  
+* Létrehozza a változót, amellyel később elérhetővé teszi az adatcsoport adatfájlját `input1` `train_ds` egy számítási cél számára.
 
 ```python
 from azureml.core import Datastore, Dataset
@@ -309,14 +318,50 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>Kísérlet `ScriptRunConfig` futtatásának elküldése Synapse Spark-készletbe egy használatával
+
+A korábban számítási célként csatolt [Synapse](#attach-a-pool-with-the-python-sdk) Spark-fürtöt is használhatja a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) objektummal végzett kísérletfutatok beküldése érdekében.
+
+```Python
+from azureml.core import RunConfiguration
+from azureml.core import ScriptRunConfig 
+from azureml.core import Experiment
+
+run_config = RunConfiguration(framework="pyspark")
+run_config.target = synapse_compute_name
+
+run_config.spark.configuration["spark.driver.memory"] = "1g" 
+run_config.spark.configuration["spark.driver.cores"] = 2 
+run_config.spark.configuration["spark.executor.memory"] = "1g" 
+run_config.spark.configuration["spark.executor.cores"] = 1 
+run_config.spark.configuration["spark.executor.instances"] = 1 
+
+run_config.environment.python.conda_dependencies = conda_dep
+
+script_run_config = ScriptRunConfig(source_directory = './code',
+                                    script= 'dataprep.py',
+                                    arguments = ["--tabular_input", input1, 
+                                                 "--file_input", input2,
+                                                 "--output_dir", output],
+                                    run_config = run_config)
+```
+
+Miután `ScriptRunConfig` beállította az objektumot, elküldheti a futtatás.
+
+```python
+from azureml.core import Experiment 
+
+exp = Experiment(workspace=ws, name="synapse-spark") 
+run = exp.submit(config=script_run_config) 
+run
+```
+További részletekért, például a példában `dataprep.py` használt szkriptért tekintse meg a [példajegyzetfüzetet.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
-Az adatok előkészítése után megtudhatja, hogyan [használhat Synase Spark-fürtöt számítási célként a modell betanításához](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb).
-
-Ebből a [példából](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) megtudhatja, hogyan láthatja el az Azure szinapszis Analytics és Azure Machine learning integrációs képességek további fogalmait és bemutatóit.
+Ebben a [példajegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) további fogalmakat és bemutatókat láthat a Azure Synapse Analytics és Azure Machine Learning integrációs képességekről.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Modell betanítása](how-to-set-up-training-targets.md).
-* [Betanítás Azure Machine Learning adatkészlettel](how-to-train-with-datasets.md)
+* [Modell betanítás.](how-to-set-up-training-targets.md)
+* [Betanítás Azure Machine Learning adatkészlet alapján](how-to-train-with-datasets.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Traffic Analytics – gyakori kérdések | Microsoft Docs
-description: Választ kaphat a Traffic Analytics szolgáltatással kapcsolatos leggyakrabban feltett kérdésekre.
+description: Választ kaphat a Traffic Analytics szolgáltatással kapcsolatos leggyakoribb kérdésekre.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,138 +11,82 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98c0a6f88da717256e78a748902317a90a369a9c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579247"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533628"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
-Ez a cikk az Azure Network Watcher Traffic Analytics szolgáltatásával kapcsolatos leggyakrabban felmerülő kérdéseket ismerteti.
+Ez a cikk egy helyen gyűjti össze az Azure-beli forgalomelemzéssel kapcsolatos gyakori kérdéseket Network Watcher.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Mik a Traffic Analytics használatának előfeltételei?
 
-Traffic Analytics a következő előfeltételek szükségesek:
+Traffic Analytics előfeltételek a következők:
 
-- Network Watcher engedélyezett előfizetés.
-- Hálózati biztonsági csoport (NSG) folyamatábrája engedélyezve a figyelni kívánt NSG.
-- Egy Azure Storage-fiók a nyers folyamat naplófájljainak tárolására.
-- Egy Azure Log Analytics munkaterület olvasási és írási hozzáféréssel.
+- Egy Network Watcher előfizetés.
+- A figyelni kívánt NSG-k számára engedélyezett hálózati biztonsági csoportok (NSG-k) folyamatnaplói.
+- Egy Azure Storage-fiók a nyers folyamatnaplók tárolásához.
+- Egy Azure Log Analytics-munkaterület olvasási és írási hozzáféréssel.
 
-A Traffic Analytics engedélyezéséhez a fióknak a következők valamelyikét kell teljesítenie:
+A Forgalomelemzés engedélyezéséhez a fiókjának meg kell felelnie a következők egyikének:
 
-- A fiókjának a következő Azure-szerepkörök valamelyikével kell rendelkeznie az előfizetés hatókörében: tulajdonos, közreműködő, olvasó vagy hálózati közreműködő.
-- Ha a fiókja nincs hozzárendelve az egyik korábban felsorolt szerepkörhöz, hozzá kell rendelni egy egyéni szerepkörhöz, amelyhez az előfizetési szinten a következő műveletek vannak hozzárendelve.
+- A fióknak az alábbi Azure-szerepkörök valamelyikével kell lennie az előfizetés hatókörében: tulajdonos, közreműködő, olvasó vagy hálózati közreműködő.
+- Ha a fiókja nincs hozzárendelve a korábban felsorolt szerepkörök egyikéhez sem, akkor olyan egyéni szerepkörhöz kell hozzárendelni, amely az alábbi műveleteket rendeli hozzá az előfizetés szintjén.
             
-    - Microsoft. Network/applicationGateways/READ
-    - Microsoft. Network/Connections/READ
-    - Microsoft. Network/loadBalancers/READ 
-    - Microsoft. Network/localNetworkGateways/READ 
-    - Microsoft. Network/networkInterfaces/READ 
-    - Microsoft. Network/networkSecurityGroups/READ 
-    - Microsoft. Network/nyilvános IP/READ
-    - Microsoft. Network/routeTables/READ
-    - Microsoft. Network/virtualNetworkGateways/READ 
-    - Microsoft. Network/virtualNetworks/READ
+    - Microsoft.Network/applicationGateways/read
+    - Microsoft.Network/connections/read
+    - Microsoft.Network/loadBalancers/read 
+    - Microsoft.Network/localNetworkGateways/read 
+    - Microsoft.Network/networkInterfaces/read 
+    - Microsoft.Network/networkSecurityGroups/read 
+    - Microsoft.Network/publicIPAddresses/read
+    - Microsoft.Network/routeTables/read
+    - Microsoft.Network/virtualNetworkGateways/read 
+    - Microsoft.Network/virtualNetworks/read
         
-Az előfizetéshez felhasználóhoz rendelt szerepkörök ellenőrzését:
+Egy előfizetés felhasználóhoz rendelt szerepkörének ellenőrzése:
 
-1. Jelentkezzen be az Azure-ba a **login-AzAccount** használatával. 
+1. Jelentkezzen be az Azure-ba a **Login-AzAccount használatával.** 
 
-2. Válassza ki a szükséges előfizetést a **Select-AzSubscription** használatával. 
+2. Válassza ki a szükséges előfizetést a **Select-AzSubscription használatával.** 
 
-3. Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a  **Get-AzRoleAssignment-SignInName [felhasználói e-mail]-IncludeClassicAdministrators** lehetőséget. 
+3. Az adott felhasználóhoz rendelt összes szerepkör listázható a **Get-AzRoleAssignment -SignInName [felhasználói e-mail-cím] -IncludeClassicAdministrators használatával.** 
 
-Ha nem lát kimenetet, forduljon a megfelelő előfizetés-rendszergazdához, és kérjen hozzáférést a parancsok futtatásához. További részletek: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
+Ha nem lát kimenetet, lépjen kapcsolatba a megfelelő előfizetés-rendszergazdával, hogy hozzáférést kap a parancsok futtatásához. További részletekért lásd: [Azure-beli](../role-based-access-control/role-assignments-powershell.md)szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure PowerShell.
 
+## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Az NSG-k, amelyekhez engedélyezem a folyamatnaplókat, eltérő régiókban lehet, mint a munkaterületem?
 
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Mely Azure-régiók Traffic Analytics elérhetők?
+Igen, ezek az NSG-k eltérő régiókban is lehetnek, mint a Log Analytics-munkaterület.
 
-A NSG Traffic Analytics a következő támogatott régiókban használható:
-- Közép-Kanada
-- USA nyugati középső régiója
-- USA keleti régiója
-- USA 2. keleti régiója
-- USA északi középső régiója
-- USA déli középső régiója
-- USA középső régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- Közép-Franciaország
-- Nyugat-Európa
-- Észak-Európa
-- Dél-Brazília
-- Az Egyesült Királyság nyugati régiója
-- Az Egyesült Királyság déli régiója
-- Kelet-Ausztrália
-- Délkelet-Ausztrália 
-- Kelet-Ázsia
-- Délkelet-Ázsia
-- Dél-Korea középső régiója
-- Közép-India
-- Dél-India
-- Kelet-Japán
-- Nyugat-Japán
-- USA-beli államigazgatás – Virginia
-- Kelet-Kína 2
-
-A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
-- Közép-Kanada
-- USA nyugati középső régiója
-- USA keleti régiója
-- USA 2. keleti régiója
-- USA északi középső régiója
-- USA déli középső régiója
-- USA középső régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- Közép-Franciaország
-- Nyugat-Európa
-- Észak-Európa
-- Az Egyesült Királyság nyugati régiója
-- Az Egyesült Királyság déli régiója
-- Kelet-Ausztrália
-- Délkelet-Ausztrália
-- Kelet-Ázsia
-- Délkelet-Ázsia 
-- Dél-Korea középső régiója
-- Közép-India
-- Kelet-Japán
-- USA-beli államigazgatás – Virginia
-- Kelet-Kína 2
-
-## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Engedélyezhető a NSG a különböző régiókban, mint a saját munkaterület?
-
-Igen, ezek a NSG különböző régiókban lehetnek, mint a Log Analytics munkaterülete.
-
-## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Több NSG is konfigurálható egyetlen munkaterületen belül?
+## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Egyetlen munkaterületen belül több NSG is konfigurálható?
 
 Igen.
 
-## <a name="can-i-use-an-existing-workspace"></a>Használhatok egy meglévő munkaterületet?
+## <a name="can-i-use-an-existing-workspace"></a>Használhatok meglévő munkaterületet?
 
-Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az új lekérdezési nyelvre lett migrálva. Ha nem szeretné frissíteni a munkaterületet, egy újat kell létrehoznia. További információ az új lekérdezési nyelvről: [Azure monitor naplók frissítése az új naplók keresésére](../azure-monitor/logs/log-query-overview.md).
+Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az át lett telepítve az új lekérdezési nyelvre. Ha nem szeretné frissíteni a munkaterületet, létre kell hoznia egy újat. Az új lekérdezési nyelvvel kapcsolatos további információkért lásd a Azure Monitor [naplók új naplókeresésre való frissítését.](../azure-monitor/logs/log-query-overview.md)
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Használhatom az Azure Storage-fiókomat egy előfizetésben, és az Log Analytics munkaterületem egy másik előfizetésben is szerepelhet?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Az Azure Storage-fiókom lehet egy előfizetésben, a Log Analytics-munkaterületem pedig egy másik előfizetésben?
 
-Igen, az Azure Storage-fiókja lehet egy előfizetésben, és a Log Analytics munkaterület egy másik előfizetésben is lehet.
+Igen, az Azure Storage-fiók lehet egy előfizetésben, a Log Analytics-munkaterület pedig egy másik előfizetésben.
 
-## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Tárolhatok nyers naplókat egy másik előfizetésben?
+## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Tárolok nyers naplókat egy másik előfizetésben?
 
-Igen. Konfigurálhatja a NSG, hogy egy másik előfizetésben található Storage-fiókba lehessen elküldeni, feltéve, hogy rendelkezik a megfelelő jogosultságokkal, és hogy a Storage-fiók ugyanabban a régióban található, mint a NSG. A NSG és a célként megadott Storage-fióknak ugyanazt a Azure Active Directory bérlőt is meg kell osztania.
+Igen. Beállíthatja, hogy az NSG-forgalom naplói egy másik előfizetésben található tárfiókba lesznek elküldve, feltéve, hogy rendelkezik a megfelelő jogosultságokkal, és hogy a tárfiók ugyanabban a régióban található, mint az NSG. Az NSG-nek és a cél tárfióknak is ugyanazt a bérlőt Azure Active Directory meg.
 
-## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Mi a teendő, ha nem találok NSG a Traffic Analytics szolgáltatáshoz egy "nem található" hiba miatt?
+## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Mi történik, ha nem tudok NSG-t konfigurálni a Traffic Analyticshez egy "Nem található" hiba miatt?
 
-Válasszon egy támogatott régiót. Ha nem támogatott régiót választ, "nem található" hibaüzenet jelenik meg. A támogatott régiók a cikk korábbi részében vannak felsorolva.
+Válasszon ki egy támogatott régiót. Ha nem támogatott régiót választ, a "Nem található" hibaüzenet jelenik meg. A támogatott régiók listája a cikk korábbi, listában szerepel.
 
-## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Mi a helyzet, ha a "nem sikerült betölteni" állapotot, a NSG flow-naplók lapon?
+## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Mi a helyzet, ha az NSG-forgalom naplói oldalon a "Sikertelen betöltés" állapotot kapom?
 
-A megfelelő működés érdekében regisztrálni kell a Microsoft. bepillantást nyújtó szolgáltatót a flow naplózásához. Ha nem biztos abban, hogy regisztrálva van-e a Microsoft. betekintő szolgáltató az előfizetéséhez, cserélje le az *xxxxx-xxxxx-xxxxxx-XXXX* parancsot a következő parancsra, és futtassa a következő parancsokat a powershellből:
+Ahhoz, hogy a folyamatnaplózás megfelelően működjön, regisztrálni kell a Microsoft.Insights szolgáltatót. Ha nem biztos abban, hogy a Microsoft.Insights szolgáltató regisztrálva van-e az előfizetéséhez, cserélje le a *xxxxx-xxxxx-xxxxxx-xxxxx* helyére a következő parancsot, és futtassa a következő parancsokat a PowerShellből:
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -151,38 +95,38 @@ A megfelelő működés érdekében regisztrálni kell a Microsoft. bepillantás
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Konfiguráltam a megoldást. Miért nem látok semmit az irányítópulton?
 
-Az irányítópult első alkalommal akár 30 percet is igénybe vehet. A megoldásnak először elegendő adatokat kell összeállítania ahhoz, hogy értelmes elemzéseket lehessen származtatni. Ezután jelentéseket hoz létre. 
+Az irányítópult első megjelenése akár 30 percet is igénybe vehet. A megoldásnak először elegendő adatot kell összesítenie ahhoz, hogy értelmes elemzéseket nyerhető legyen. Ezután jelentéseket generál. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Mi a teendő, ha a következő üzenet jelenik meg: "a munkaterületen nem találhatók a megadott időintervallumra vonatkozó adategységek. Próbálja meg módosítani az időtartamot, vagy válasszon másik munkaterületet. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Mi a következő üzenet jelenik meg: "Nem található adat ezen a munkaterületen a kiválasztott időintervallumban. Próbálja meg megváltoztatni az időintervallumot, vagy válasszon másik munkaterületet."?
 
-Próbálkozzon a következő beállításokkal:
+Próbálja ki a következő lehetőségeket:
 - Módosítsa az időintervallumot a felső sávon.
-- Válasszon egy másik Log Analytics munkaterületet a felső sávon.
-- Ha nemrég engedélyezte, próbálja meg elérni a Traffic Analytics szolgáltatást 30 perc elteltével.
+- Válasszon egy másik Log Analytics-munkaterületet a felső sávon.
+- Próbálja meg 30 perc után elérni a Forgalomelemzést, ha a közelmúltban engedélyezték.
     
-Ha a probléma továbbra is fennáll, aggodalomra ad [hangot a felhasználói hangfórumban](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Ha a problémák továbbra is fennállnak, problémákat vethet fel a [Felhasználói hang fórumon.](https://feedback.azure.com/forums/217313-networking?category_id=195844)
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Mi a teendő, ha a következő üzenet jelenik meg: "a NSG flow-naplók elemzése első alkalommal. A folyamat végrehajtása 20-30 percet is igénybe vehet. Kis idő elteltével térjen vissza. 2.) Ha a fenti lépés nem működik, és a munkaterület az ingyenes SKU alatt van, akkor ellenőrizze, hogy a munkaterület használatban van-e a kvóta feletti ellenőrzéshez. További információért tekintse meg a GYIK című témakört. "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Mi történik, ha ezt az üzenetet kapom: "Az NSG-forgalom naplóinak elemzése első alkalommal. A folyamat 20–30 percet is igénybe vehet. Egy idő után vissza kell néznie. 2) Ha a fenti lépés nem működik, és a munkaterülete az ingyenes termékváltozat alatt van, akkor ellenőrizze a munkaterület használatát itt a kvóta szerinti ellenőrzéshez, egyéb információért tekintse meg a gyakori kérdések között."
 
-Ez az üzenet a következő okból jelenhet meg:
-- Traffic Analytics a közelmúltban engedélyezték, és lehetséges, hogy még nincs elegendő adata ahhoz, hogy értelmes elemzéseket lehessen származtatni.
-- Az Log Analytics munkaterület ingyenes verzióját használja, és túllépte a kvóta korlátait. Előfordulhat, hogy egy nagyobb kapacitású munkaterületet kell használnia.
+Ez az üzenet a következő miatt jelenik meg:
+- Traffic Analytics nemrégiben engedélyezték, és előfordulhat, hogy még nem összesítve lett elegendő adat ahhoz, hogy értelmes elemzéseket nyerhető legyen.
+- A Log Analytics-munkaterület ingyenes verzióját használja, és az túllépte a kvótakorlátokat. Előfordulhat, hogy nagyobb kapacitású munkaterületet kell használnia.
     
-Ha a probléma továbbra is fennáll, aggodalomra ad [hangot a felhasználói hangfórumban](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Ha a problémák továbbra is fennállnak, problémákat vethet fel [a Felhasználói hang fórumon.](https://feedback.azure.com/forums/217313-networking?category_id=195844)
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Mi a teendő, ha a következő üzenet jelenik meg: "úgy tűnik, hogy az erőforrások adatai (topológia) és a folyamatok adatai nincsenek megadva. Eközben ide kattintva megtekintheti az erőforrások adatait, és további információkért tekintse meg a gyakori kérdéseket. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Mi történik, ha ezt az üzenetet kapom: "Úgy tűnik, hogy vannak erőforrás-adatok (topológia), és nincsenek folyamatinformációk. Addig is kattintson ide az erőforrásadatokért, és tekintse meg a gyakori kérdések között a további információkat."
 
-Az erőforrások információit látja az irányítópulton; azonban nem állnak rendelkezésre flow-vel kapcsolatos statisztikák. Előfordulhat, hogy az információk nem jelennek meg az erőforrások közötti kommunikáció során. Várjon 60 percet, majd vizsgálja újra az állapotot. Ha a probléma továbbra is fennáll, és biztos abban, hogy a kommunikáció több erőforrás között is fennáll, aggodalomra ad választ a [felhasználói hangfórumban](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Az erőforrásokra vonatkozó információk adatokat látnak az irányítópulton; folyamatokkal kapcsolatos statisztikák azonban nincsenek. Előfordulhat, hogy az adatok azért nincsenek jelen, mert nincs kommunikációs folyamat az erőforrások között. Várjon 60 percet, és ellenőrizze újra az állapotot. Ha a probléma továbbra is fennáll, és biztos benne, hogy az erőforrások közötti kommunikáció létezik, jelentsen problémát a Felhasználói hang [fórumon.](https://feedback.azure.com/forums/217313-networking?category_id=195844)
 
-## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Konfigurálható a Traffic Analytics a PowerShell vagy egy Azure Resource Manager sablon vagy ügyfél használatával?
+## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Konfigurálható a forgalomelemzés a PowerShell vagy egy Azure Resource Manager sablon vagy ügyfél használatával?
 
-A Traffic Analytics a 6.2.1-es verziótól kezdve a Windows PowerShell használatával konfigurálható. A flow naplózásának és a Traffic Analytics konfigurálásához egy adott NSG a Set parancsmag használatával: [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). A flow naplózásának és a Traffic Analytics állapotának egy adott NSG való lekéréséhez lásd: [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+A 6.2.1-es vagy újabb Windows PowerShell forgalomelemzés konfigurálható. Ha a Set parancsmaggal konfigurálja a folyamatnaplózást és a forgalomelemzést egy adott NSG-hez, tekintse meg a [Set-AzNetworkWatcherConfigFlowLog parancsmagot.](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) Egy adott NSG folyamatnaplózási és forgalomelemzési állapotának lekért lásd: [Get-AzNetworkWatcherFlowLogStatus.](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)
 
-Jelenleg nem használhat Azure Resource Manager sablont a Traffic Analytics konfigurálásához.
+Jelenleg nem használhat forgalomelemzési Azure Resource Manager sablont.
 
-A Traffic Analytics Azure Resource Manager-ügyfél használatával történő konfigurálásához tekintse meg az alábbi példákat.
+A forgalomelemzés ügyfélprogrammal való konfigurálás Azure Resource Manager tekintse meg az alábbi példákat.
 
-**Parancsmag beállítása – példa:**
+**Példa a parancsmagok beállításra:**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>"
@@ -223,7 +167,7 @@ $apiversion = "2016-09-01"
 armclient login
 armclient post "https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/configureFlowlog?api-version=${apiversion}" $requestBody
 ```
-**Példa a parancsmag beszerzésére:**
+**Példa lekért parancsmagra:**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<NSG name>"
@@ -242,29 +186,29 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-## <a name="how-is-traffic-analytics-priced"></a>Hogyan Traffic Analytics díjszabása?
+## <a name="how-is-traffic-analytics-priced"></a>Hogyan lesz Traffic Analytics ára?
 
-A Traffic Analytics mért. A mérés a folyamat naplófájljainak a szolgáltatás általi feldolgozásán alapul, és egy Log Analytics munkaterületen tárolja a létrejövő bővített naplókat. 
+Traffic Analytics forgalmi díjas. A mérés a folyamatnapló-adatok szolgáltatás által történő feldolgozásán és az eredményül kapott bővített naplók Log Analytics-munkaterületen való tárolásán alapul. 
 
-Például ha a flow az USA nyugati középső régióját veszi [figyelembe, és](https://azure.microsoft.com/pricing/details/network-watcher/)egy Traffic Analytics által feldolgozott Storage-fiókban tárolt adatok naplózása történik meg, az log Analytics munkaterületen betöltött adatforgalom pedig 1 GB, akkor a vonatkozó díjak a következők: 10 x $2,3 + 1 x $2,76 = $25,76
+Például a díjszabási [](https://azure.microsoft.com/pricing/details/network-watcher/)csomagnak megfelelően, az USA nyugati középső régióját figyelembe véve, ha a flow-naplók az Traffic Analytics által feldolgozott tárfiókban tárolt adatokat 10 GB- és a Log Analytics-munkaterületen betöltött bővített naplókat tartalmaznak, a vonatkozó díjak a következőek: 10 x 2,3$ + 1 x 2,76$ = 25,76$
 
-## <a name="how-frequently-does-traffic-analytics-process-data"></a>Milyen gyakran Traffic Analytics az adatfeldolgozás?
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Milyen gyakran Traffic Analytics adatokat?
 
-Tekintse át Traffic Analytics séma és az adatösszesítési dokumentum [adatösszesítési szakaszát](./traffic-analytics-schema.md#data-aggregation) .
+Tekintse meg a séma- és [adatösszesítő](./traffic-analytics-schema.md#data-aggregation) dokumentum Traffic Analytics szakaszát
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Hogyan működik Traffic Analytics úgy, hogy az IP-cím rosszindulatú? 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Hogyan dönti Traffic Analytics, hogy egy IP-cím kártékony? 
 
-A Traffic Analytics a Microsoft belső veszélyforrások felderítésére szolgáló rendszerekre támaszkodik, hogy az IP-címet rosszindulatúként tekintsék. Ezek a rendszerek különféle telemetria-forrásokat, például Microsoft-termékeket és-szolgáltatásokat, a Microsoft digitális bűncselekmények egységét (DCU), a Microsoft Security Response centert (MSRC) és a külső hírcsatornákat használják, és rengeteg intelligenciát építenek. Ezek közül néhányat a Microsoft belső. Ha egy ismert IP-cím rosszindulatúként van megjelölve, egy támogatási jegyet is megtudhat a részletekről.
+Traffic Analytics microsoftos belső fenyegetésintelligencia-rendszerekre támaszkodik az IP-címek rosszindulatúként való tekinthetők. Ezek a rendszerek különféle telemetriaforrásokat, például Microsoft-termékeket és -szolgáltatásokat, a Microsoft Digital Crimes Unitot (DCU), az Microsoft Biztonsági reagálási központ-t (MSRC) és külső csatornákat vesznek igénybe, és rengeteg intelligenciát építenek ki. Ezen adatok némelyike a Microsoft belső szolgáltatása. Ha egy ismert IP-címet rosszindulatúként megjelöltek, a részletekért nyújtsa be a támogatási jegyet.
 
-## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Hogyan állíthatom be a riasztásokat a Traffic Analytics-adathalmazon?
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Hogyan állíthatok be riasztásokat a Traffic Analytics adataihoz?
 
-A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz. Mivel azonban Traffic Analytics a rendszer az adattárolást Log Analytics tárolja, egyéni lekérdezéseket írhat, és riasztásokat állíthat be rajtuk. Lépéseket
-- A Traffic Analytics Log Analytics shortlink is használhatja. 
-- A lekérdezések megírásához használja az [itt dokumentált sémát](traffic-analytics-schema.md) 
-- A riasztás létrehozásához kattintson az "új riasztási szabály" elemre.
-- A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](../azure-monitor/alerts/alerts-log.md)
+Traffic Analytics nem támogatja a riasztások beépített támogatását. Mivel azonban Traffic Analytics adatok a Log Analyticsben vannak tárolva, egyéni lekérdezéseket írhat, és riasztásokat állíthat be rájuk. Lépéseket:
+- A Log Analytics rövid hivatkozását használhatja a Traffic Analytics. 
+- Lekérdezések [írása az](traffic-analytics-schema.md) itt dokumentált sémával 
+- Kattintson az "Új riasztási szabály" elemre a riasztás létrehozásához
+- A riasztás [létrehozásához tekintse](../azure-monitor/alerts/alerts-log.md) meg a naplóriasztás dokumentációját
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyszíni forgalmat?
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hogyan ellenőrizni, hogy mely virtuális gépek kapják a legtöbb helyszíni forgalmat?
 
 ```
 AzureNetworkAnalytics_CL
@@ -277,7 +221,7 @@ AzureNetworkAnalytics_CL
 | render timechart
 ```
 
-  IP-címek esetén:
+  IP-k:
 
 ```
 AzureNetworkAnalytics_CL
@@ -290,9 +234,9 @@ AzureNetworkAnalytics_CL
 | render timechart
 ```
 
-Az idő használati formátuma: éééé-hh-nn 00:00:00
+Az időponthoz használja a következő formátumot: yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>Hogyan a virtuális gépek által a helyszíni gépekről fogadott forgalom szórásának ellenőrzését?
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>Hogyan a virtuális gépek által a helyszíni gépektől fogadott forgalom szórását?
 
 ```
 AzureNetworkAnalytics_CL
@@ -304,7 +248,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by vm
 ```
 
-IP-címek esetén:
+IP-k:
 
 ```
 AzureNetworkAnalytics_CL
@@ -316,7 +260,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by IP
 ```
 
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>Hogyan, hogy mely portok érhetők el (vagy le vannak tiltva) az IP-párok között NSG-szabályokkal?
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>Hogyan ellenőrizni, hogy mely portok érjék el (vagy blokkolják) az NSG-szabályokkal párosított IP-párokat?
 
 ```
 AzureNetworkAnalytics_CL
@@ -329,78 +273,78 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 ```
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan lehet navigálni a Geo Térkép nézet billentyűzetének használatával?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan navigálok a billentyűzettel a geotérkép nézetben?
 
-A földrajzi Térkép oldal két fő szakaszt tartalmaz:
+A geotérkép oldal két fő szakaszt tartalmaz:
     
-- **Banner**: a Geo-Térkép tetején található szalagcím a forgalmi terjesztési szűrők (például a központi telepítés, az országok/régiók közötti forgalom és a rosszindulatú) kiválasztására szolgáló gombokat tartalmaz. Egy gomb kiválasztásakor a rendszer a megfelelő szűrőt alkalmazza a térképen. Ha például az aktív gombot választja, a Térkép kiemeli az üzemelő példány aktív adatközpontját.
-- **Térkép**: a szalagcím alatt a Térkép szakasz a forgalom eloszlását mutatja az Azure-adatközpontok és országok/régiók között.
+- **Szalagcím:** A geotérkép tetején található szalagcím gombokat tartalmaz a forgalomelosztási szűrők kiválasztásához (például Üzembe helyezés, Országok/régiókból származó forgalom és Kártékony). Amikor kiválaszt egy gombot, a rendszer a megfelelő szűrőt alkalmazza a térképen. Ha például az Aktív gombot választja, a térkép kiemeli az üzemelő példányban lévő aktív adatközpontokat.
+- **Térkép:** A szalagcím alatt a térkép szakasz az Azure-adatközpontok és országok/régiók közötti forgalomelosztást mutatja.
     
-### <a name="keyboard-navigation-on-the-banner"></a>A szalagcímen lévő billentyűzetes Navigálás
+### <a name="keyboard-navigation-on-the-banner"></a>Billentyűzettel való navigálás a szalagcímen
     
-- Alapértelmezés szerint a szalagcím földrajzi Térkép oldalán a kijelölés az "Azure DCs" szűrő.
-- Másik szűrőre való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot. A visszafelé mozgatáshoz használja a `Shift+Tab` vagy a `Left arrow` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja meg `Enter` vagy a `Down` nyílbillentyűt a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a Térkép szakasz egy vagy több csomópontja ki van emelve.
-- A szalagcím és a Térkép közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
+- Alapértelmezés szerint a szalagcím geotérkép oldalán az "Azure-beli jelölő" szűrő van kijelölve.
+- Egy másik szűrőre való ugráshoz használja a vagy a `Tab` `Right arrow` kulcsot. A visszalépéshez használja a vagy a `Shift+Tab` `Left arrow` kulcsot. Az előre navigáció balról jobbra, majd felülről lefelé halad.
+- A kiválasztott szűrő alkalmazáshoz nyomja le a vagy `Enter` a `Down` nyílbillentyűt. A szűrési kiválasztás és az üzembe helyezés alapján a térkép szakasz alatt egy vagy több csomópont van kiemelve.
+- A szalagcím és a térkép közötti váltáshoz nyomja le a `Ctrl+F6` billentyűt.
         
-### <a name="keyboard-navigation-on-the-map"></a>Navigálás a térképen a billentyűzeten
+### <a name="keyboard-navigation-on-the-map"></a>Billentyűzetnavigációs térkép
     
-- Miután kiválasztott egy szűrőt a szalagcímre, és megnyomta a gombot `Ctrl+F6` , a fókusz az egyik kiemelt csomópontra (**Azure Datacenter** vagy **ország/régió**) kerül át a Térkép nézetben.
-- A térképen található többi kijelölt csomópontra való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot a továbbítási mozgáshoz. Használja `Shift+Tab` a vagy a `Left arrow` billentyűt a visszafelé mozgatáshoz.
-- A Térkép bármelyik Kiemelt csomópontjának kiválasztásához használja a `Enter` vagy a `Down arrow` kulcsot.
-- Az ilyen csomópontok kiválasztásakor a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mezőben** lévő lezárt gombra lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Amikor megnyomja a `Tab` fókuszt a **tájékoztatási eszköz mezőben**, a fókusz a kijelölt csomóponttal megegyező kontinensen lévő végpontokra kerül át. A `Right arrow` és a `Left arrow` kulcsok használatával áthelyezheti ezeket a végpontokat.
-- Ha át szeretne térni más folyamat-végpontokra vagy kontinens-fürtökre, használja `Tab` a továbbítási mozgáshoz és `Shift+Tab` a visszafelé mozgatáshoz.
-- Ha a fókusz a **kontinensen lévő fürtökön** található, a `Enter` vagy a `Down` nyílbillentyűk használatával kiemelheti a kontinensen belüli fürtben található végpontokat. Ha a végpontokon és a Bezárás gombra kattint a kontinens fürtjének információs mezőjében, használja a vagy a `Right arrow` `Left arrow` kulcsot a továbbításhoz és a visszafelé mozgáshoz. Bármelyik végponton használhatja a `Shift+L` kapcsolót a kiválasztott csomópontról a végpontra való váltáshoz. `Shift+L`Az újbóli megnyomásával átléphet a kiválasztott végpontra.
+- Miután kiválasztotta valamelyik szűrőt a szalagcímen, és lenyomta a gombot, a fókusz a térképnézet egyik kiemelt csomópontjára `Ctrl+F6` **(Azure-adatközpont** vagy **Ország/régió)** kerül.
+- A térképen lévő többi kiemelt csomópontra való áthelyezéshez használja a vagy a kulcsot `Tab` `Right arrow` a továbbításhoz. Használja `Shift+Tab` a vagy a kulcsot a `Left arrow` visszamenőleges mozgáshoz.
+- A térképen kiemelt csomópontok kiválasztásához használja a vagy a `Enter` `Down arrow` billentyűt.
+- Az ilyen csomópontok kiválasztása esetén a fókusz a csomópont **információs** eszközkészletében van. Alapértelmezés szerint a fókusz az Information Tool Box zárt **gombjára kerül.** A Box nézetben a és a billentyűvel haladhat előre és  `Right arrow` `Left arrow` hátra. A billentyű lenyomása ugyanazzal a hatással bír, mint `Enter` az Information Tool Box **fókuszban lévő gombjának kiválasztása.**
+- Ha megnyomja a billentyűt, miközben a fókusz az Információs eszközkészleten van, a fókusz a kijelölt csomóponttal azonos kontinensen található `Tab` végpontok felé kerül. A `Right arrow` végpontok között a és `Left arrow` a billentyűvel haladhat végig.
+- Más folyamatvégpontra vagy kontinensfürtre való áthelyezéshez használja a et az előre és a `Tab` `Shift+Tab` visszafelé történő mozgáshoz.
+- Ha a fókusz a kontinensfürtökön van, a vagy a nyílbillentyűkkel emelheti ki a kontinensfürtön `Enter` belüli `Down` végpontokat. A végpontok és a kontinensfürt információs dobozán található bezárás gombbal a vagy a billentyűvel haladhat `Right arrow` `Left arrow` előre és hátra. A használatával bármely végponton átválthat a kapcsolati vonalra a kiválasztott `Shift+L` csomópontról a végpontra. A kiválasztott `Shift+L` végpontra való áthelyezéshez nyomja le újra a billentyűt.
         
-### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzet-navigáció bármely fázisban
+### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzetnavigációs folyamat bármely fázisban
     
-- `Esc` a kibontott kijelölés összecsukása.
-- A `Up-arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Esc` . A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Enter` .
-- A nagyításhoz és a kicsinyítéshez használja a `Shift+Plus` következőt: `Shift+Minus` .
+- `Esc` összecsukja a kibontott kijelölést.
+- A `Up-arrow` kulcs ugyanazt a műveletet végzi el, mint a `Esc` . A `Down arrow` kulcs ugyanazt a műveletet végzi el, mint a `Enter` .
+- A `Shift+Plus` nagyításhoz és `Shift+Minus` kicsinyítéshez használható.
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hogyan lehet navigálni a virtuális hálózati topológia nézetben a billentyűzet használatával?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hogyan navigálok a billentyűzettel a virtuális hálózati topológia nézetben?
 
-A virtuális hálózatok topológiájának lapja két fő szakaszt tartalmaz:
+A virtuális hálózatok topológiája oldal két fő szakaszt tartalmaz:
     
-- **Banner**: a virtuális hálózatok topológiájának tetején található szalagcím a forgalmi terjesztési szűrők (például a csatlakoztatott virtuális hálózatok, a leválasztott virtuális hálózatok és a nyilvános IP-címek) kiválasztására szolgáló gombokat tartalmaz. Egy gomb kiválasztásakor a rendszer a megfelelő szűrőt alkalmazza a topológián. Ha például az aktív gombot választja, a topológia kiemeli az üzemelő példány aktív virtuális hálózatait.
-- **Topológia**: a szalagcím alatt a topológia szakasz a virtuális hálózatok közötti forgalom eloszlását mutatja.
+- **Szalagcím:** A virtuális hálózatok topológiája tetején található szalagcím gombokkal választja ki a forgalomelosztási szűrőket (például csatlakoztatott virtuális hálózatokat, leválasztott virtuális hálózatokat és nyilvános IP-címeket). Amikor kiválaszt egy gombot, a rendszer a megfelelő szűrőt alkalmazza a topológiára. Ha például az Aktív gombot választja, a topológia kiemeli az üzemelő példány aktív virtuális hálózatait.
+- **Topológia:** A szalagcím alatt a topológia szakasz a virtuális hálózatok közötti forgalomelosztást mutatja be.
     
-### <a name="keyboard-navigation-on-the-banner"></a>A szalagcímen lévő billentyűzetes Navigálás
+### <a name="keyboard-navigation-on-the-banner"></a>Billentyűzettel való navigálás a szalagcímen
     
-- Alapértelmezés szerint a szalagcímhez tartozó Virtual Networks topológia lapon a "Connected virtuális hálózatok" szűrő van kiválasztva.
-- Másik szűrőre való áthelyezéshez használja a `Tab` kulcsot a továbbításhoz. A visszalépéshez használja a `Shift+Tab` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja meg a gombot `Enter` a kiválasztott szűrő alkalmazásához. A szűrő kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (virtuális hálózatot) a topológia szakaszban.
-- A szalagcím és a topológia közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
+- Alapértelmezés szerint a szalagcím virtuális hálózati topológia lapján a "Csatlakoztatott virtuális hálózatok" szűrő van kijelölve.
+- Egy másik szűrőre való ugráshoz használja `Tab` a kulcsot a továbblépéshez. A visszalépéshez használja a `Shift+Tab` kulcsot. Az előre navigáció balról jobbra, majd felülről lefelé halad.
+- A kiválasztott `Enter` szűrő alkalmazáshoz nyomja le a billentyűt. A szűrési kijelölés és az üzembe helyezés alapján a topológia szakaszban egy vagy több csomópont (virtuális hálózat) van kiemelve.
+- A szalagcím és a topológia közötti váltáshoz nyomja le a `Ctrl+F6` billentyűt.
         
-### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzetes Navigálás a topológián
+### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzettel való navigálás a topológiában
     
-- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta a gombot `Ctrl+F6` , a fókusz a topológia nézet egyik kiemelt csomópontjára (**VNet**) kerül.
-- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
-- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézetben való további mozgáshoz használja a `Right arrow` és a `Left arrow` kulcsokat a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .
+- Miután kiválasztotta valamelyik szűrőt a szalagcímen, és lenyomta a gombot, a fókusz a topológia nézet egyik kiemelt csomópontjára `Ctrl+F6` **(VNet)** kerül.
+- A topológianézetben lévő többi kiemelt csomópontra való ugráshoz használja a kulcsot `Shift+Right arrow` a továbbításhoz. 
+- A kiemelt csomópontokon a fókusz a csomópont **információs eszközkészletében** jelenik meg. Alapértelmezés szerint a fókusz az Information Tool Box További **részletek** **gombjára kerül.** A Box nézetben **a** és a billentyűvel haladhat előre `Right arrow` és `Left arrow` hátra. A billentyű lenyomása ugyanazzal a hatással bír, mint `Enter` az Information Tool Box **fókuszban lévő gombjának kiválasztása.**
+- Az ilyen csomópontok kiválasztása után a billentyű lenyomásával felkeresheti az összes kapcsolatát, és csak `Shift+Left arrow` egyszer. A Fókusz a kapcsolat **Információs eszközkészletét** használja. A fókuszt bármikor vissza lehet tolni a csomópontra az `Shift+Right arrow` újranyomással.
     
 
-## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Hogyan lehet navigálni a billentyűzettel az alhálózati topológia nézetben?
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Hogyan navigálok a billentyűzettel az alhálózati topológia nézetben?
 
-A virtuális alhálózatok topológiája lap két fő szakaszt tartalmaz:
+A virtuális alhálózatok topológiája oldal két fő szakaszt tartalmaz:
     
-- **Banner**: a virtuális alhálózatok topológiájának tetején található szalagcím a forgalmi terjesztési szűrők (például aktív, közepes és átjáró alhálózatok) kiválasztására szolgáló gombokat tartalmaz. Egy gomb kiválasztásakor a rendszer a megfelelő szűrőt alkalmazza a topológián. Ha például az aktív gombot választja, a topológia kiemeli az aktív virtuális alhálózatot az üzemelő példányban.
-- **Topológia**: a szalagcím alatt a topológia szakasz a virtuális alhálózatok közötti forgalom eloszlását mutatja.
+- **Szalagcím:** A virtuális alhálózatok topológiája tetején található szalagcím gombokat biztosít a forgalomelosztási szűrők (például aktív, közepes és átjáró-alhálózatok) kiválasztásához. Amikor kiválaszt egy gombot, a rendszer a megfelelő szűrőt alkalmazza a topológiára. Ha például az Aktív gombot választja, a topológia kiemeli az üzemelő példány aktív virtuális alhálózatát.
+- **Topológia:** A szalagcím alatt a topológia szakasz a virtuális alhálózatok közötti forgalomelosztást mutatja.
     
-### <a name="keyboard-navigation-on-the-banner"></a>A szalagcímen lévő billentyűzetes Navigálás
+### <a name="keyboard-navigation-on-the-banner"></a>Billentyűzettel való navigálás a szalagcímen
     
-- Alapértelmezés szerint a szalagcímhez tartozó virtuális alhálózatok topológiájának kijelölése az "alhálózat" szűrő.
-- Másik szűrőre való áthelyezéshez használja a `Tab` kulcsot a továbbításhoz. A visszalépéshez használja a `Shift+Tab` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja meg a gombot `Enter` a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (alhálózatot) a topológia szakaszban.
-- A szalagcím és a topológia közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
+- Alapértelmezés szerint a szalagcím virtuális alhálózatok topológiáját jelölő oldalon az "Alhálózatok" szűrő van kijelölve.
+- Egy másik szűrőre való ugráshoz használja `Tab` a kulcsot a továbblépéshez. A visszalépéshez használja a `Shift+Tab` kulcsot. A továbbítási navigáció balról jobbra, majd felülről lefelé halad.
+- A `Enter` kijelölt szűrő alkalmazáshoz nyomja le a billentyűt. A szűrő kiválasztása és üzembe helyezése alapján a topológia szakaszban egy vagy több csomópont (alhálózat) van kiemelve.
+- A szalagcím és a topológia közötti váltáshoz nyomja le az `Ctrl+F6` billentyűt.
         
-### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzetes Navigálás a topológián
+### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzettel való navigálás a topológiában
     
-- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta a gombot `Ctrl+F6` , a fókusz a topológia nézet egyik kijelölt csomópontjára (**alhálózata**) helyezi át.
-- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
-- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .
+- Miután kiválasztotta valamelyik szűrőt a szalagcímen, és lenyomta a gombot, a fókusz a topológia nézet egyik kiemelt csomópontjára `Ctrl+F6` **(Alhálózat)** kerül.
+- A topológianézetben lévő többi kiemelt csomópontra való ugráshoz használja a kulcsot `Shift+Right arrow` a továbbításhoz. 
+- A kiemelt csomópontokon a fókusz a csomópont **Információs eszközkészletében** jelenik meg. Alapértelmezés szerint a fókusz az Information Tool Box További **részletek** **gombjára kerül.** A Box nézetben a és a billentyűvel haladhat előre és  `Right arrow` `Left arrow` hátra. A `Enter` billentyű lenyomása ugyanazzal a hatással bír, mint az Information Tool Box **fókuszban lévő gombjának kiválasztása.**
+- Az ilyen csomópontok kiválasztása után a billentyű lenyomásával az összes kapcsolatot külön-külön is `Shift+Left arrow` felkeresheti. A Fókusz a kapcsolat **Információs eszközkészletét** használja. A fókuszt bármikor vissza lehet tolni a csomópontra az `Shift+Right arrow` újranyomással.
 
-## <a name="are-classic-nsgs-supported"></a>Támogatottak a klasszikus NSG?
-Nem, Traffic Analytics nem támogatja a klasszikus NSG. Azt javasoljuk, hogy a klasszikus erőforrások IaaS telepítse át a Klasszikusból a Azure Resource Managerba [.](../virtual-machines/classic-vm-deprecation.md) A cikkből megtudhatja, [hogyan telepítheti át az áttelepítést](../virtual-machines/migration-classic-resource-manager-overview.md).
+## <a name="are-classic-nsgs-supported"></a>Támogatottak a klasszikus NSG-k?
+Nem, Traffic Analytics nem támogatja a klasszikus NSG-t. Javasoljuk, hogy az IaaS-erőforrásokat klasszikusról Azure Resource Manager, mivel a klasszikus erőforrások [elavultak lesznek.](../virtual-machines/classic-vm-deprecation.md) A áttelepítésének mikéntjért tekintse meg [ezt a cikket.](../virtual-machines/migration-classic-resource-manager-overview.md)

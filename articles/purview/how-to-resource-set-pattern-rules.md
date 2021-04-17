@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/15/2021
-ms.openlocfilehash: b9d6ca88d5e9d49d3973193059197a1aa171e3e8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 61de2cf2e3ad9175d97378234d62f72ab3517b51
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568691"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587833"
 ---
 # <a name="create-resource-set-pattern-rules"></a>Erőforráskészlet-mintaszabályok létrehozása
 
@@ -36,7 +36,7 @@ A mintaszabályok jelenleg a következő forrástípusokban támogatottak:
 
 1. Adja meg az erőforráskészlet-mintaszabály hatókörét. Válassza ki a tárfiók típusát és annak a tárfióknak a nevét, amely számára szabálykészletet kíván létrehozni. A rendszer minden szabálykészletet a Mappa elérési útja mezőben megadott mappaútvonal-hatókörhöz **viszonyítva** alkalmaz.
 
-   :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-scope.png" alt-text="Erőforráskészlet-mintaszabály konfigurációjának létrehozása" border="true":::
+   :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-scope.png" alt-text="Erőforráskészlet-mintaszabály-konfigurációk létrehozása" border="true":::
 
 1. Konfigurációs hatókörre vonatkozó szabály beíratáshoz válassza az **+ Új szabály lehetőséget.**
 
@@ -44,9 +44,9 @@ A mintaszabályok jelenleg a következő forrástípusokban támogatottak:
 
    1. **Szabály neve:** A konfigurációs szabály neve. Ez a mező nincs hatással azokra az eszközökre, amelyekre a szabály vonatkozik.
 
-   1. **Minősített név:** Minősített elérési út, amely szöveg, dinamikus cserélők és statikus cserélők kombinációját használja az eszközök és a konfigurációs szabály egyeztetésére. Ez az elérési út a konfigurációs szabály hatókörének megfelelő. A minősített [nevek megadásának](#syntax) részletes utasításait az alábbi szintaxisszakaszban olvashatja.
+   1. **Minősített név:** Minősített elérési út, amely szöveg, dinamikus cserélők és statikus cserélők kombinációját használja az eszközök és a konfigurációs szabály egyeztetésére. Ez az elérési út a konfigurációs szabály hatókörének megfelelő. A minősített [nevek megadásának](#syntax) részletes utasításait az alábbi szintaxisszakaszban olvashatja el.
 
-   1. **Megjelenített név:** Az eszköz megjelenítendő neve. A mező nem kötelező. Egyszerű szöveg és statikus cserélők használatával szabhatja testre, hogyan jelennek meg az eszközök a katalógusban. Részletesebb útmutatásért tekintse meg az alábbi [szintaxis szakaszt.](#syntax)
+   1. **Megjelenítendő név:** Az eszköz megjelenítendő neve. A mező nem kötelező. Egyszerű szöveg és statikus cserélők használatával szabhatja testre, hogyan jelennek meg az eszközök a katalógusban. Részletesebb utasításokat az alábbi [szintaxisszakaszban](#syntax) olvashat.
 
    1. **Ne csoportosan erőforráskészletként:** Ha engedélyezve van, az egyező erőforrás nem lesz erőforráskészletbe csoportosítva.
 
@@ -54,54 +54,57 @@ A mintaszabályok jelenleg a következő forrástípusokban támogatottak:
 
 1. Mentse a szabályt a Hozzáadás **gombra kattintva.**
 
+> [!NOTE]
+> A mintaszabály létrehozása után az összes új vizsgálat alkalmazza a szabályt a beolvasás során. Az adatkatalógus meglévő eszközei egy háttérfolyamattal frissülnek, amely akár néhány órát is igénybe vehet. 
+
 ## <a name="pattern-rule-syntax"></a><a name="syntax"></a> Mintaszabály szintaxisa
 
-Erőforráskészlet-mintaszabályok létrehozásakor a következő szintaxissal adhatja meg, hogy mely eszközszabályok vonatkoznak rá.
+Erőforráskészlet-mintaszabályok létrehozásakor a következő szintaxissal adhatja meg, hogy mely eszközökre vonatkoznak szabályok.
 
 ### <a name="dynamic-replacers-single-brackets"></a>Dinamikus cserélők (egy zárójel)
 
-Az egy zárójeles zárójelek dinamikus **lecserélőkként használatosak** a mintaszabályokban. Adjon meg egy dinamikus lecserélőt a minősített névben a következő `{<replacerName:<replacerType>}` formátumban: . Egyezés esetén a dinamikus lecserélők csoportosítási feltételként vannak használva, amely azt jelzi, hogy az eszközöket erőforráskészletként kell ábrázolni. Ha az adateszközök egy erőforráskészletbe vannak csoportosítva, az erőforráskészlet minősített elérési útja tartalmazná a `{replacerName}` lecserélő helyének a beállítását.
+Az egy zárójeles zárójelek dinamikus **cserélőkként használhatók** a mintaszabályokban. Adjon meg egy dinamikus lecserélőt a minősített névben a következő `{<replacerName:<replacerType>}` formátumban: . Egyezés esetén a dinamikus lecserélők csoportosítási feltételként vannak használva, amely azt jelzi, hogy az eszközöket erőforráskészletként kell ábrázolni. Ha az adateszközök egy erőforráskészletbe vannak csoportosítva, az erőforráskészlet minősített elérési útja tartalmazza a `{replacerName}` lecserélő helyének a beállítását.
 
-Ha például két és egyező eszköz van a szabálynak, az erőforráskészlet egyetlen `folder1/file-1.csv` `folder2/file-2.csv` entitás `{folder:string}/file-{NUM:int}.csv` `{folder}/file-{NUM}.csv` lenne.
+Ha például két és szabálynak megfeleltethető eszköz, az erőforráskészlet egyetlen `folder1/file-1.csv` `folder2/file-2.csv` entitás `{folder:string}/file-{NUM:int}.csv` `{folder}/file-{NUM}.csv` lesz.
 
 #### <a name="special-case-dynamic-replacers-when-not-grouping-into-resource-set"></a>Speciális eset: Dinamikus lecserélők, ha nem erőforráskészletbe csoportosít
 
-Ha a Do not group as resource set (Csoportosítás *mellőtagja* erőforráskészletként) beállítás engedélyezve van egy mintaszabályhoz, a lecserélő neve nem kötelező mező. `{:<replacerType>}` A érvényes szintaxis. A például sikeresen megfelel a és a értéknek, és két különböző eszközt hoz létre `file-{:int}.csv` `file-1.csv` egy `file-2.csv` erőforráskészlet helyett.
+Ha *a Ne csoportosan erőforráskészletként* beállítás engedélyezve legyen egy mintaszabályhoz, a lecserélő neve nem kötelező mező. `{:<replacerType>}` A érvényes szintaxis. A például sikeresen megfelel a és a értéknek, és két különböző adateszközt hoz létre `file-{:int}.csv` `file-1.csv` az `file-2.csv` erőforráskészlet helyett.
 
 ### <a name="static-replacers-double-brackets"></a>Statikus cserélők (két zárójel)
 
-A kettős zárójelek statikus **cserélőkként használatosak** a mintaszabály minősített nevében. Adjon meg egy statikus lecserélőt a minősített névben a következő `{{<replacerName>:<replacerType>}}` formátumban: . Ha egyezést talál, az egyedi statikus csereértékek minden készlete különböző erőforráskészlet-csoportosításokat hoz létre.
+A kettős zárójelek statikus **cserélőkként használatosak** a mintaszabály minősített nevében. Adjon meg egy statikus lecserélőt a minősített névben a következő `{{<replacerName>:<replacerType>}}` formátumban: . Egyezés esetén az egyedi statikus lecserélő értékek minden készlete különböző erőforráskészlet-csoportosításokat hoz létre.
 
-Ha például két és egyező eszköz van a szabálynak, két erőforráskészlet jön létre és `folder1/file-1.csv` `folder2/file-2.csv` `{{folder:string}}/file-{NUM:int}.csv` `folder1/file-{NUM}.csv` `folder2/file-{NUM}.csv` .
+Ha például két és egyező eszköz felel meg a `folder1/file-1.csv` `folder2/file-2.csv` szabálynak, két `{{folder:string}}/file-{NUM:int}.csv` erőforráskészlet jön `folder1/file-{NUM}.csv` létre és `folder2/file-{NUM}.csv` .
 
-A statikus cserélők segítségével megadható egy mintaszabálynak megfelelő eszköz megjelenítendő neve. Ha egy szabály megjelenítendő nevében a értéket használja, a rendszer az egyező értéket fogja használni `{{<replacerName>}}` az eszköz nevében.
+A statikus lecserélők segítségével megadható egy mintaszabálynak megfelelő eszköz megjelenítendő neve. A szabály megjelenítendő nevében a az egyező értéket fogja használni az `{{<replacerName>}}` eszköz nevében.
 
 ### <a name="available-replacement-types"></a>Rendelkezésre álló helyettesítő típusok
 
-Az alábbiakban a statikus és dinamikus cserélőkben használható típusok olvashatók:
+Az alábbiakban a statikus és dinamikus cserélőkben használható típusok érhetők el:
 
 | Típus | Struktúra |
 | ---- | --------- |
 | sztring | 1 vagy több Unicode-karakterből áll, beleértve az elválasztó karaktereket, például a szóközöket. |
 | int | Egy 1 vagy több 0–9 ASCII karakterből állhat, amely 0 előtaggal (például 0001) is lehet. |
-| guid | Egy UUID 32 vagy 8-4-4-4-12 sztringként való ábrázolása az [RFC 4122](https://tools.ietf.org/html/rfc4122)szabványban meghatározottdefa-ként. |
+| guid | Egy UUID 32 vagy 8-4-4-4-12 sztringként való ábrázolása az [RFC 4122](https://tools.ietf.org/html/rfc4122)szabványban meghatározottdefa alapján. |
 | dátum | 6 vagy 8 0–9 ASCII-karaktersorozat választható elválasztókkal: yyyymmdd, yy-mm-dd, yymmdd, yy-mm-dd, az [RFC 3339-ben](https://tools.ietf.org/html/rfc3339)megadott . |
-| time | 4 vagy 6 0–9 ASCII-karakterből áll, választható elválasztókkal: HHmm, HH:mm, HHmmss, HH:mm:mm, az [RFC 3339-ben](https://tools.ietf.org/html/rfc3339)megadott . |
-| időbélyeg | 12 vagy 14 0–9 ASCII-karakterből áll, választható elválasztókkal: y-mm-ddTHH:mm, yymmddhhmm, yy-mm-ddTHH:mm:mm, yyyymmddHHmmss specified in [RFC 3339](https://tools.ietf.org/html/rfc3339). |
-| boolean | "true" (igaz) vagy "false" (hamis) értékeket tartalmazhat, a kis- és a kis- és a nagy |
-| szám | Egy 0 vagy több 0–9 ASCII karakterből állhat, amely 0 előtaggal (pl. 0001) és opcionálisan egy ponttal (. ) és egy 1–9 ASCII-karakterből áll, és 0 utótaggal (pl. 0,100) állhat. |
-| Hex | A megadott 0–1 és A-F karakterből származó, 1 vagy több ASCII-karakterből állhat, és az érték 0 előtaggal is lehet |
+| time | 4 vagy 6 0–9 ASCII-karakterek sorozata választható elválasztókkal: HHmm, HH:mm, HHmmss, HH:mm:mm, az [RFC 3339-ben](https://tools.ietf.org/html/rfc3339)megadott . |
+| időbélyeg | 12 vagy 14 0–9 ASCII-karakterből áll, választható elválasztókkal: y-mm-ddTHH:mm, yyyymmddhhmm, yy-mm-ddTHH:mm:mm, yyyymmddHHmmss meghatározott [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| boolean | A "true" (igaz) vagy a "false" (hamis) értékeket tartalmazhatja, a kis- és a kis- és a nagy |
+| szám | Egy 0 vagy több 0–9 ASCII karakterből állhat, amely 0 előtaggal (pl. 0001) és opcionálisan egy ponttal (. ) és egy 1–9 ASCII karakterből áll, és 0 utótaggal (például .100) lehet. |
+| Hex | A 0–1 és az A–F értékből származó, 1 vagy több ASCII-karakterből állhat, és az érték 0 előtaggal is lehet |
 | területi beállítás | Az [RFC 5646](https://tools.ietf.org/html/rfc5646)szabványban megadott szintaxisnak megfelelő sztring. |
 
 ## <a name="order-of-resource-set-pattern-rules-getting-applied"></a>Az erőforráskészlet-mintaszabályok alkalmazásának sorrendje
 
-Az alábbiakban látható a mintaszabályok alkalmazásának műveleti sorrendje:
+Az alábbiakban látható a mintaszabályok alkalmazásához szükséges műveletek sorrendje:
 
-1. A konkrétabb hatókörök akkor élveznek elsőbbséget, ha egy eszköz két szabálynak is megfelel. Egy hatókör szabályai például a hatókör szabályai előtt `container/folder` lesznek `container` érvényben.
+1. A pontosabb hatókörök elsőbbséget élveznek, ha egy eszköz két szabálynak is megfelel. Egy hatókör szabályai például a hatókör szabályai előtt `container/folder` lesznek `container` érvényben.
 
 1. Szabályok sorrendje egy adott hatókörben. Ez a felhasználói felületről szerkeszthető.
 
-1. Ha egy eszköz nem felel meg egy megadott szabálynak, az alapértelmezett erőforráskészlet heurisztikája érvényes.
+1. Ha egy eszköz nem felel meg egyik megadott szabálynak sem, az alapértelmezett erőforráskészlet-heurisztikák érvényesek.
 
 ## <a name="examples"></a>Példák
 
@@ -123,7 +126,7 @@ Fájlokat:
 
 **Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
 
-**Megjelenített név:** "Külső ügyfél"
+**Megjelenítendő név:** "Külső ügyfél"
 
 **Minősített név:**`customer/{extract:string}/{year:int}/{month:int}/{day:int}/saptable_customer_{date_from:date}_{date_to:time}_{sequence:int}.txt`
 
@@ -168,7 +171,7 @@ Fájlokat:
 
 **Minősített név:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Erőforráskészlet: true (igaz)*
+**Erőforráskészlet:** true (igaz)
 
 #### <a name="outputs"></a>Kimenetek
 
@@ -203,7 +206,7 @@ Fájlokat:
 
 **Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
 
-**Megjelenítendő név:** "Machine-{{machineid}}"
+**Megjelenítendő név:** 'Machine-{{machineid}}'
 
 **Minősített név:**`raw/machinename-{{machineid:int}}/{date:date}/{time:time}-{id:int}.avro`
 

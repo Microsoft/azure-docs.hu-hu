@@ -12,3 +12,13 @@
   href: oracle-baremetal-architecture.md
 - name: Üzembe helyezés
   href: oracle-baremetal-provision.md
+- name: Magas rendelkezésre állás és vészhelyreállítás
+  items:
+    - name: Áttekintés
+      href: concepts-oracle-high-availability.md
+    - name: Magas rendelkezésre állású funkciók
+      href: high-availability-features.md
+    - name: Lehetőségek és megfontolandó szempontok
+      href: options-considerations-high-availability.md
+    - name: A helyreállítás mikéntének kiválasztása
+      href: oracle-high-availability-recovery.md
