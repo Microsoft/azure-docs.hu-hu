@@ -1,21 +1,23 @@
 ---
-title: 'Rövid útmutató: az első Python-lekérdezés'
-description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Pythonhoz készült Resource Graph-függvénytárat, és futtathatja az első lekérdezést.
+title: 'Rövid útmutató: Az első Python-lekérdezés'
+description: Ebben a rövid útmutatóban a lépéseket követve engedélyezheti Resource Graph Pythonhoz készült kódtárat, és futtatja az első lekérdezését.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: 6fc7b8f6a6fa7cde8d10dec6a4b2b834d41325e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 0bae0639e3f9913bc47b18fbc0b1d3d9ef1ad324
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533021"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Python használatával
+# <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: Az első lekérdezés Resource Graph Python használatával
 
-Az Azure Resource Graph használatának első lépéseként ellenőriznie kell, hogy telepítve vannak-e a Pythonhoz szükséges kódtárak. Ez a rövid útmutató végigvezeti a kódtárak Python-telepítéshez való hozzáadásának folyamatán.
+Az első lépés a Azure Resource Graph, hogy ellenőrizze, telepítve vannak-e a Pythonhoz szükséges kódtárak. Ez a rövid útmutató végigvezeti a kódtárak Python-telepítéshez való hozzáadásának folyamatán.
 
-A folyamat végén hozzáadta a kódtárakat a Python-telepítéshez, és futtatja az első Resource Graph-lekérdezést.
+A folyamat végén hozzáadja a kódtárakat a Python-telepítéshez, és futtatja az első Resource Graph lekérdezését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,24 +25,24 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-the-resource-graph-library"></a>Az erőforrás-gráf könyvtárának hozzáadása
+## <a name="add-the-resource-graph-library"></a>A Resource Graph hozzáadása
 
-Ha engedélyezni szeretné a Python számára az Azure Resource Graph lekérdezését, hozzá kell adnia a könyvtárat. Ez a könyvtár működik, ahol a Python használható, beleértve [a Windows 10 vagy a](/windows/wsl/install-win10) helyileg telepített bash-t is.
+Ahhoz, hogy a Python Azure Resource Graph lekérdezni, a kódtárat hozzá kell adni. Ez a kódtár mindenhol működik, ahol a Python használható, beleértve a [Bash on Windows 10](/windows/wsl/install-win10) helyileg telepítettet.
 
-1. Győződjön meg arról, hogy a legújabb Python telepítve van (legalább **3,8**). Ha még nincs telepítve, töltse le a következő címen: [Python.org](https://www.python.org/downloads/).
+1. Ellenőrizze, hogy telepítve van-e a legújabb Python **(legalább 3.8-as verzió).** Ha még nincs telepítve, töltse le a [Python.org.](https://www.python.org/downloads/)
 
-1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább **2.5.1**). Ha még nincs telepítve, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+1. Ellenőrizze, hogy telepítve van-e a legújabb Azure CLI **(legalább 2.5.1).** Ha még nincs telepítve, tekintse meg [az Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
    > [!NOTE]
-   > Az Azure CLI-vel engedélyezni kell a Python használatát a **CLI-alapú hitelesítés** használatához az alábbi példákban. További információ az egyéb lehetőségekről: [hitelesítés a Pythonhoz készült Azure Management librarys használatával](/azure/developer/python/azure-sdk-authenticate).
+   > Az alábbi példákban az Azure CLI-nek kell engedélyeznie, hogy a Python a **CLI-alapú** hitelesítést használja. További információ az egyéb lehetőségekről: [Hitelesítés a Pythonhoz készült Azure felügyeleti kódtárakkal.](/azure/developer/python/azure-sdk-authenticate)
 
-1. Hitelesítés az Azure CLI-n keresztül.
+1. Hitelesítés az Azure CLI használatával.
 
    ```azurecli
    az login
    ```
 
-1. A kívánt Python-környezetben telepítse a szükséges kódtárakat az Azure Resource Graph számára:
+1. A választott Python-környezetben telepítse a szükséges kódtárakat a Azure Resource Graph:
 
    ```bash
    # Add the Resource Graph library for Python
@@ -54,9 +56,9 @@ Ha engedélyezni szeretné a Python számára az Azure Resource Graph lekérdez�
    ```
 
    > [!NOTE]
-   > Ha a Python telepítve van az összes felhasználó számára, akkor ezeket a parancsokat emelt szintű konzolról kell futtatni.
+   > Ha a Python minden felhasználó számára telepítve van, ezeket a parancsokat emelt szintű konzolról kell futtatni.
 
-1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-resourcegraph`**2.0.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és  `azure-cli-core` legalább **2.5.0** -nek kell lennie.
+1. Ellenőrizze, hogy a kódtárak telepítve vannak-e. `azure-mgmt-resourcegraph`**2.0.0-s** vagy újabb, `azure-mgmt-resource` **9.0.0-s** vagy újabb, `azure-cli-core` illetve **2.5.0-s** vagy újabb verziónak kell lennie.
 
    ```bash
    # Check each installed library
@@ -65,9 +67,9 @@ Ha engedélyezni szeretné a Python számára az Azure Resource Graph lekérdez�
 
 ## <a name="run-your-first-resource-graph-query"></a>Az első Resource Graph-lekérdezés futtatása
 
-Ha a Python-függvénytárak hozzá lettek adva a környezethez, itt az ideje, hogy kipróbáljon egy egyszerű Resource Graph-lekérdezést. A lekérdezés az első öt Azure-erőforrást adja vissza az egyes erőforrások **nevével** és **erőforrás-típusával** .
+Most, hogy a választott környezethez hozzáadta a Python-kódtárakat, ideje kipróbálni egy egyszerű Resource Graph lekérdezést. A lekérdezés visszaadja az első  öt Azure-erőforrást az egyes erőforrások nevével **és** erőforrástípusával.
 
-1. Futtassa az első Azure Resource Graph-lekérdezést a telepített tárak és a `resources` metódus használatával:
+1. Futtassa az első Azure Resource Graph a telepített kódtárak és a metódus `resources` használatával:
 
    ```python
    # Import Azure Resource Graph library
@@ -108,26 +110,26 @@ Ha a Python-függvénytárak hozzá lettek adva a környezethez, itt az ideje, h
    > [!NOTE]
    > Ez a lekérdezési példa nem biztosít olyan rendezési módosítót, mint az `order by`, tehát ha többször is futtatja, valószínűleg minden kéréssel eltérő erőforráslistát fog kapni.
 
-1. Frissítse a hívást, `getresources` és módosítsa a lekérdezést a `order by` **Name (név** ) tulajdonságra:
+1. Frissítse a hívását, `getresources` és módosítsa a lekérdezést a Name `order by` **(Név) tulajdonságra:**
 
    ```python
    getresources("Resources | project name, type | limit 5 | order by name asc")
    ```
 
    > [!NOTE]
-   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Ez a parancs először a lekérdezés eredményeit korlátozza, majd megrendeli azokat.
+   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Ez a parancsrend először korlátozza a lekérdezési eredményeket, majd megrendeli azokat.
 
-1. Frissítse a hívást, `getresources` és módosítsa a lekérdezést a `order by` Name ( **név** ) tulajdonságra, majd `limit` az első öt találatra:
+1. Frissítse a hívását, és módosítsa a lekérdezést a Name (Név) tulajdonságra, majd az `getresources` `order by` első öt  `limit` találatra:
 
    ```python
    getresources("Resources | project name, type | order by name asc | limit 5")
    ```
 
-Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
+Ha az utolsó lekérdezés többször is lefut, feltéve, hogy a környezetben semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** (Név) tulajdonság szerint vannak megrendelve, de továbbra is az első öt találatra korlátozódnak.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből, ezt a következő paranccsal teheti meg:
+Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből, ezt a következő paranccsal használhatja:
 
 ```bash
 # Remove the installed libraries from the Python environment
@@ -136,7 +138,7 @@ pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban hozzáadta az erőforrás-gráf kódtárait a Python-környezethez, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+Ebben a rövid útmutatóban hozzáadta a Resource Graph kódtárakat a Python-környezethez, és futtatta az első lekérdezését. Ha többet szeretne megtudni a Resource Graph nyelvről, folytassa a lekérdezési nyelv részleteit tartalmazó oldalon.
 
 > [!div class="nextstepaction"]
 > [További információ a lekérdezési nyelvről](./concepts/query-language.md)

@@ -1,4 +1,4 @@
-- name: Metrics Advisor
+- name: Metrics Advisor dokumentációja
   href: index.yml
 - name: Áttekintés
   expanded: true
@@ -9,11 +9,11 @@
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: Újdonságok
       href: whats-new.md
-- name: Metrikák Advisor – rövid útmutatók
+- name: Rövid útmutatók
   items:
     - name: Webes portál
       href: quickstarts/web-portal.md
-    - name: REST API és ügyféloldali kódtárak
+    - name: REST API és ügyfélkódtárak
       href: quickstarts/rest-api-and-client-library.md
 - name: Példák
   href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
@@ -35,13 +35,17 @@
       href: how-tos/anomaly-feedback.md
     - name: Metrikadiagram készítése
       href: how-tos/metrics-graph.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Felhasználó által kezelt kulcsok használata
+          href: encryption.md
 - name: Alapelvek
   items:
-    - name: A metrikák Advisor-kulcsának feltételei
+    - name: Metrics Advisor kifejezések
       href: glossary.md
 - name: Referencia
   items:
-    - name: Metrikai tanácsadó REST API
+    - name: Metrics Advisor REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI-referencia
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -49,11 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: További források
   items:
-    - name: Régiós támogatás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Támogatási lehetőségek
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: Régiós támogatás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Megfelelőség és minősítés
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Titkosítás
-      href: encryption.md

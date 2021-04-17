@@ -1,6 +1,6 @@
 ---
-title: Vendég felhasználó visszaváltási állapotának alaphelyzetbe állítása – Azure AD
-description: Megtudhatja, hogyan állíthatja alaphelyzetbe a meghívások beváltási állapotát egy Azure Active Directory B2B vendég felhasználói számára az Azure AD külső Identitásokban.
+title: Vendégfelhasználó érvényesítési állapotának alaphelyzetbe állítása – Azure AD
+description: Megtudhatja, hogyan állíthatja alaphelyzetbe a meghívó érvényesítési állapotát Azure Active Directory B2B vendégfelhasználók számára a Azure AD External Identities.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -10,38 +10,40 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0396698fe63cb62fc1cfaf5d930b8a97a7b1bbc
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f5bfce7ef2621cbe3bbbfdd95bf9a75e427c8cbd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552257"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531872"
 ---
-# <a name="reset-redemption-status-for-a-guest-user-preview"></a>Vendég felhasználó beváltási állapotának alaphelyzetbe állítása (előzetes verzió)
+# <a name="reset-redemption-status-for-a-guest-user-preview"></a>Vendégfelhasználó érvényesítési állapotának alaphelyzetbe állítása (előzetes verzió)
 
-Miután a vendég felhasználó beváltotta a B2B-együttműködésre vonatkozó meghívót, előfordulhat, hogy a bejelentkezési adatai frissítésére van szükség, például a következő esetekben:
+Miután egy vendégfelhasználó beváltotta a B2B-együttműködésre szóló meghívót, előfordulhat, hogy frissítenie kell a bejelentkezési adatait, például:
 
-- A felhasználó egy másik e-mail-cím és egy identitás-szolgáltató használatával szeretne bejelentkezni
-- A rendszer törölte és újra létrehozta a felhasználó fiókját a saját bérlőben
-- A felhasználó át lett helyezve egy másik vállalatba, de továbbra is ugyanazokat az erőforrásokat kell elérnie
-- A felhasználó feladatai egy másik felhasználóhoz lettek továbbítva
+- A felhasználó egy másik e-mail-címmel és identitásszolgáltatóval szeretne bejelentkezni
+- A felhasználó saját bérlőben létrehozott fiókja törölve lett, és újra létre lett hozva
+- A felhasználó egy másik vállalatba helyezték át, de továbbra is ugyanolyan hozzáférésre van szüksége az erőforrásokhoz
+- A felhasználó feladatkörei egy másik felhasználónak is át vannak va.
 
-A fenti forgatókönyvek kezeléséhez manuálisan törölnie kell a vendég felhasználói fiókját a címtárból, és újra kell hívnia a felhasználót. Most már használhatja a PowerShellt vagy a Microsoft Graph meghívó API-t a felhasználó visszaváltási állapotának alaphelyzetbe állításához és újbóli meghívásához a felhasználó objektumazonosító, csoporttagság és alkalmazás-hozzárendelései megőrzése mellett. Amikor a felhasználó beváltja az új meghívót, a felhasználó UPN-je nem változik, de a felhasználó bejelentkezési neve az új e-mailre módosul. A felhasználó később bejelentkezhet az új e-mailben vagy egy, a `otherMails` felhasználói objektum tulajdonságához hozzáadott e-mailben.
+A korábbi forgatókönyvek kezeléséhez manuálisan törölnie kellett a vendégfelhasználó fiókját a címtárból, és újra kellett indítania a felhasználót. Mostantól a PowerShell vagy a Microsoft Graph invitation API használatával visszaállíthatja a felhasználó érvényesítési állapotát, és újra meghívhatja a felhasználót, miközben megtarthatja a felhasználó objektumazonosítóját, csoporttagságát és alkalmazás-hozzárendelését. Amikor a felhasználó beváltja az új meghívót, a felhasználó UPN-jét nem módosítja, de a felhasználó bejelentkezési neve az új e-mailre változik. A felhasználó ezután bejelentkezhet az új e-mail-címmel vagy a felhasználói objektum tulajdonságához hozzáadott `otherMails` e-mail-címmel.
 
 ## <a name="reset-the-email-address-used-for-sign-in"></a>A bejelentkezéshez használt e-mail-cím alaphelyzetbe állítása
 
-Ha egy felhasználó egy másik e-mail-cím használatával szeretne bejelentkezni:
+Ha egy felhasználó egy másik e-mail-címmel szeretne bejelentkezni:
 
-1. Győződjön meg arról, hogy az új e-mail-cím hozzá van adva a `mail` `otherMails` felhasználói objektumhoz vagy tulajdonsághoz. 
-2.  Cserélje le a tulajdonságban szereplő e-mail-címet `InvitedUserEmailAddress` az új e-mail-címre.
-3. A felhasználó beváltási állapotának alaphelyzetbe állításához használja az alábbi módszerek egyikét.
+1. Győződjön meg arról, hogy az új e-mail-cím hozzá van adva a felhasználói objektum `mail` vagy `otherMails` tulajdonságához. 
+2.  Cserélje le a tulajdonságban található `InvitedUserEmailAddress` e-mail-címet az új e-mail-címre.
+3. Az alábbi módszerek egyikével visszaállíthatja a felhasználó érvényesítési állapotát.
 
 > [!NOTE]
->A nyilvános előzetes verzióban a felhasználó e-mail-címének alaphelyzetbe állításakor javasoljuk, `mail` hogy állítsa be a tulajdonságot az új e-mail-címre. Így a felhasználó beválthatja a meghívást úgy, hogy bejelentkezik a címtárba, és a meghívóban található beváltási hivatkozást is használja.
+>A nyilvános előzetes verzióban két javaslatunk van:
+>- Amikor új címre visszaállítja a felhasználó e-mail-címét, javasoljuk a tulajdonság `mail` beállítását. Így a felhasználó beválthatja a meghívót, ha bejelentkezik a címtárba, és a meghívóban az érvényesítési hivatkozást is használja.
+>- Amikor visszaállítja egy B2B-vendégfelhasználó állapotát, ezt a felhasználói környezetben tegye meg. A csak alkalmazáshívások jelenleg nem támogatottak.
 >
-## <a name="use-powershell-to-reset-redemption-status"></a>A beváltási állapot visszaállítása a PowerShell használatával
+## <a name="use-powershell-to-reset-redemption-status"></a>Érvényesítési állapot alaphelyzetbe állítása a PowerShell használatával
 
-Telepítse a legújabb AzureADPreview PowerShell-modult, és hozzon létre egy új meghívást `InvitedUserEmailAddress` az új e-mail-címmel, és állítsa a következőre: `ResetRedemption` `true` .
+Telepítse a legújabb AzureADPreview PowerShell-modult, és hozzon létre egy új meghívót az új e-mail-cím beállítással, és állítsa a `InvitedUserEmailAddress` `ResetRedemption` következőre: `true` .
 
 ```powershell  
 Uninstall-Module AzureADPreview 
@@ -52,9 +54,9 @@ $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGra
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser -ResetRedemption $True 
 ```
 
-## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>A beváltási állapot alaphelyzetbe állítása Microsoft Graph API használatával
+## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Érvényesítési állapot Microsoft Graph a Microsoft Graph API használatával
 
-A [Microsoft Graph meghívó API](/graph/api/resources/invitation?view=graph-rest-1.0)használatával állítsa be a `resetRedemption` tulajdonságot, `true` és adja meg az új e-mail-címet a `invitedUserEmailAddress` tulajdonságban.
+A Microsoft Graph [API használatával](/graph/api/resources/invitation?view=graph-rest-beta&preserve-view=true)állítsa a tulajdonságot a következőre: , és adja meg az új `resetRedemption` `true` e-mail-címet a `invitedUserEmailAddress` tulajdonságban.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  
@@ -85,5 +87,5 @@ ContentType: application/json
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Active Directory B2B csoportmunka-felhasználók hozzáadása a PowerShell használatával](customize-invitation-api.md#powershell)
-- [Az Azure AD B2B vendég felhasználóinak tulajdonságai](user-properties.md)
+- [B2B Azure Active Directory felhasználók hozzáadása a PowerShell használatával](customize-invitation-api.md#powershell)
+- [Az Azure AD B2B vendégfelhasználó tulajdonságai](user-properties.md)

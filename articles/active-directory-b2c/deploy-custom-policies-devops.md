@@ -1,7 +1,7 @@
 ---
-title: Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
+title: Egyéni szabályzatok üzembe helyezése az Azure Pipelines használatával
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan helyezhet üzembe Azure AD B2C egyéni házirendeket CI/CD-folyamatokban az Azure DevOps Services Azure-folyamatainak használatával.
+description: Megtudhatja, hogyan helyezhet Azure AD B2C egyéni szabályzatokat egy CI-/CD-folyamatban az Azure Pipelines használatával az Azure DevOps Servicesben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,56 +11,56 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3ca4464f40c0807e51adffca8e3e68c622314de6
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 913f21b90043209cae1ec9963619389bcb452781
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256888"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529423"
 ---
-# <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
+# <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure Pipelines használatával
 
-Az [Azure-folyamatokban][devops-pipelines]beállított folyamatos integrációs és kézbesítési (CI/CD) folyamat használatával a szoftveres kézbesítés és a kód-vezérlés automatizálása során a Azure ad B2C egyéni szabályzatokat is megadhatja. A különböző Azure AD B2C környezetekben történő üzembe helyezéskor, például a fejlesztési, tesztelési és éles üzemi környezetben javasoljuk, hogy távolítsa el a manuális folyamatokat, és végezzen automatikus tesztelést az Azure-folyamatok használatával.
+Az [Azure Pipelinesban][devops-pipelines]beállított folyamatos integrációs és kézbesítési (CI/CD) folyamat használatával egyéni szabályzatokat Azure AD B2C szoftverszállítási és kódvezérlési automatizálásba. A különböző Azure AD B2C, például fejlesztési, tesztelési és éles környezetekben történő üzembe helyezés során javasoljuk, hogy távolítsa el a manuális folyamatokat, és végezzen automatizált tesztelést az Azure Pipelines használatával.
 
-Három fő lépés szükséges ahhoz, hogy lehetővé tegye az Azure-folyamatok számára az egyéni házirendek felügyeletét Azure AD B2Con belül:
+Három elsődleges lépés szükséges ahhoz, hogy az Azure Pipelines kezelni tudja az egyéni szabályzatokat a Azure AD B2C:
 
-1. Webalkalmazás-regisztráció létrehozása a Azure AD B2C-bérlőben
-1. Azure-tárház konfigurálása
+1. Webalkalmazás-regisztráció létrehozása a Azure AD B2C bérlőben
+1. Azure-beli repo konfigurálása
 1. Azure-folyamat konfigurálása
 
 > [!IMPORTANT]
-> Azure AD B2C egyéni szabályzatok Azure-folyamattal való kezelése jelenleg az Microsoft Graph API-végponton elérhető **előzetes** műveleteket használja `/beta` . Az API-k üzemi alkalmazásokban való használata nem támogatott. További információ: [Microsoft Graph REST API Beta-végpont referenciája](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta).
+> Az Azure AD B2C szabályzatok Azure Pipelinessal  való kezelése jelenleg előzetes verziójú műveleteket használ, amelyek az API-végponton Microsoft Graph `/beta` érhetők el. Ezeknek az API-knak az éles alkalmazásokban való használata nem támogatott. További információért tekintse meg a [bétaverziós Microsoft Graph REST API referenciáját.](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörrel
-* A bérlőre feltöltött [Egyéni szabályzatok](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
-* A bérlőben regisztrált [felügyeleti alkalmazás](microsoft-graph-get-started.md) a Microsoft Graph API Permission *Policy. ReadWrite. TrustFramework*
-* [Azure-folyamat](https://azure.microsoft.com/services/devops/pipelines/)és hozzáférés egy [Azure DevOps Services-projekthez][devops-create-project]
+* [Azure AD B2C bérlőhöz,](tutorial-create-tenant.md)valamint a címtárban A [B2C IEF](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) házirend-rendszergazdai szerepkörű felhasználó hitelesítő adatai
+* [A bérlőbe](tutorial-create-user-flows.md?pivots=b2c-custom-policy) feltöltött egyéni szabályzatok
+* [A bérlőben](microsoft-graph-get-started.md) a *Policy.ReadWrite.TrustFramework* API Microsoft Graph engedéllyel regisztrált felügyeleti alkalmazás
+* [Azure Pipeline](https://azure.microsoft.com/services/devops/pipelines/), és hozzáférés egy [Azure DevOps Services-projekthez][devops-create-project]
 
-## <a name="client-credentials-grant-flow"></a>Ügyfél-hitelesítő adatok megadása folyamat
+## <a name="client-credentials-grant-flow"></a>Ügyfél hitelesítő adatainak megadására vonatkozó folyamat
 
-Az itt leírt forgatókönyv az Azure-folyamatok és a Azure AD B2C közötti, a OAuth 2,0 [ügyfél-hitelesítő adatok engedélyezési folyamatát](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)használó szolgáltatások közötti hívások használatát teszi lehetővé. Ez a engedélyezési folyamat lehetővé teszi a webszolgáltatások, például az Azure-folyamatok (a bizalmas ügyfél) számára, hogy a saját hitelesítő adatait használják, ahelyett, hogy a felhasználó megszemélyesítését egy másik webszolgáltatás (ebben az esetben a Microsoft Graph API) hívásakor hitelesítse. Az Azure-folyamatok nem interaktív módon szereznek be tokent, majd kérelmeket tesznek a Microsoft Graph API-nak.
+Az itt leírt forgatókönyv az Azure Pipelines és a Azure AD B2C közötti szolgáltatások közötti hívásokat használja az OAuth 2.0 ügyfél-hitelesítő adatok [megadásának folyamatával.](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) Ez az engedélyezési folyamat lehetővé teszi, hogy egy webszolgáltatás, például az Azure Pipelines (a bizalmas ügyfél) saját hitelesítő adatait használja ahelyett, hogy megszemélyesít egy felhasználót a hitelesítéshez egy másik webszolgáltatás (ebben az esetben a Microsoft Graph API) hívása során. Az Azure Pipelines nem interaktív módon szerez be egy jogkivonatot, majd kéréseket Microsoft Graph API-nak.
 
 ## <a name="register-an-application-for-management-tasks"></a>Alkalmazás regisztrálása felügyeleti feladatokhoz
 
-Az [Előfeltételek](#prerequisites)között említettek szerint az alkalmazás regisztrálása szükséges az Azure-folyamatok által végrehajtott PowerShell-szkriptek számára – a segítségével hozzáférhet a bérlő erőforrásaihoz.
+Az [Előfeltételekben](#prerequisites)említettek szerint olyan alkalmazásregisztrációra van szüksége, amelyet az Azure Pipelines által végrehajtott PowerShell-szkriptek a bérlő erőforrásainak eléréséhez használhatnak.
 
-Ha már rendelkezik az automatizálási feladatokhoz használt alkalmazás-regisztrációval, győződjön meg róla, hogy a **Microsoft Graph**  >  **Policy**  >  **Policy. ReadWrite. TrustFramework** engedélyt adta meg az alkalmazás regisztrációjának **API-engedélyein** belül.
+Ha már rendelkezik automatizálási feladatokhoz használt alkalmazásregisztrációval, győződjön meg arról, hogy az alkalmazásregisztráció **API-engedélyeinek** megfelelő Microsoft Graph  >    >  **Policy.ReadWrite.TrustFramework** engedéllyel rendelkezik. 
 
-A felügyeleti alkalmazások regisztrálásával kapcsolatos utasításokért lásd: [Azure ad B2C kezelése Microsoft Graphsal](microsoft-graph-get-started.md).
+A felügyeleti alkalmazások regisztrálásával kapcsolatos utasításokért lásd: [Manage Azure AD B2C with Microsoft Graph](microsoft-graph-get-started.md).
 
-## <a name="configure-an-azure-repo"></a>Azure-tárház konfigurálása
+## <a name="configure-an-azure-repo"></a>Azure-beli repo konfigurálása
 
-Ha a felügyeleti alkalmazás regisztrálva van, készen áll a házirend-fájlok tárházának konfigurálására.
+Ha regisztrált egy felügyeleti alkalmazást, készen áll arra, hogy konfigurálja a házirendfájlok adattárát.
 
 1. Jelentkezzen be az Azure DevOps Services-szervezetbe.
-1. [Hozzon létre egy új projektet][devops-create-project] , vagy válasszon ki egy meglévő projektet.
-1. A projektben navigáljon a **repók** lapra, és válassza a **fájlok** lapot. Válasszon ki egy meglévő tárházat, vagy hozzon létre egyet ehhez a gyakorlathoz.
-1. Hozzon létre egy *B2CAssets* nevű mappát. Nevezze el a szükséges helyőrző fájlt *readme.MD* , és **véglegesítse** a fájlt. Ezt a fájlt később is eltávolíthatja, ha szeretné.
-1. Adja hozzá Azure AD B2C házirend-fájljait a *B2CAssets* mappához. Ez magában foglalja a *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml* és minden más létrehozott házirendet. Jegyezze fel az egyes Azure AD B2C házirend-fájlok fájlnevét egy későbbi lépésben való használatra (PowerShell-parancsfájl argumentumaként használják).
-1. Hozzon létre egy *Scripts* nevű mappát az adattár gyökérkönyvtárában, nevezze el a helyőrző fájlt *DeployToB2c.ps1*. Ne véglegesítse a fájlt ezen a ponton, egy későbbi lépésben.
-1. Illessze be a következő PowerShell-szkriptet *DeployToB2c.ps1ba*, majd **véglegesítse** a fájlt. A parancsfájl jogkivonatot kér az Azure AD-től, és meghívja a Microsoft Graph API-t, hogy feltöltse a szabályzatokat a *B2CAssets* mappában a Azure ad B2C bérlőre.
+1. [Hozzon létre egy új projektet,][devops-create-project] vagy válasszon ki egy meglévő projektet.
+1. A projektben lépjen az **Adattárak lapra, és** válassza a **Fájlok** lapot. Válasszon ki egy meglévő adattárat, vagy hozzon létre egyet ehhez a gyakorlathoz.
+1. Hozzon létre egy *B2CAssets nevű mappát.* Nevezze el a szükséges helyőrző *fájlt README.md* **véglegesítéséhez.** Ezt a fájlt később eltávolíthatja, ha szeretné.
+1. Adja hozzá Azure AD B2C szabályzatfájlokat a *B2CAssets mappához.* Ebbe beletartozik a *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*, és minden más létrehozott szabályzat. Jegyezz fel az egyes Azure AD B2C fájlnevét, hogy egy későbbi lépésben használva használjuk őket (PowerShell-szkript argumentumaiként használhatók).
+1. Hozzon létre egy *Scripts* nevű mappát az adattár gyökérkönyvtárában, a helyőrző fájlnak pedig a következő *nevetDeployToB2c.ps1.* A fájlt ne véglegesítéssel, csak egy későbbi lépésben fogja megtenni.
+1. Illessze be a következő PowerShell-szkriptet *aDeployToB2c.ps1,* majd **véglegesítheti a** fájlt. A szkript egy jogkivonatot szerez be az Azure AD-ból, és a Microsoft Graph API-t hívja meg, hogy feltöltse a szabályzatokat a *B2CAssets* mappában a Azure AD B2C bérlőjébe.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -109,72 +109,72 @@ Ha a felügyeleti alkalmazás regisztrálva van, készen áll a házirend-fájlo
 
 ## <a name="configure-your-azure-pipeline"></a>Az Azure-folyamat konfigurálása
 
-A tárház inicializálása és az egyéni házirend-fájlok feltöltése után készen áll a kiadási folyamat beállítására.
+Most, hogy inicializálta és feltölti az adattárat az egyéni szabályzatfájlokkal, készen áll a kiadási folyamat beállításra.
 
 ### <a name="create-pipeline"></a>Folyamat létrehozása
 
-1. Jelentkezzen be az Azure DevOps Services-szervezetbe, és navigáljon a projekthez.
-1. A projektben válassza a **folyamatok**  >    >  **új folyamat** kiadása lehetőséget.
-1. **A sablon kiválasztása** területen válassza az **üres feladatot**.
-1. Adja meg a **fázis nevét**, például *DeployCustomPolicies*, majd a panel bezárásához.
-1. Válassza **az összetevő hozzáadása** lehetőséget, majd a **forrás típusa** területen válassza az **Azure adattár** lehetőséget.
-    1. Válassza ki a PowerShell-parancsfájllal feltöltött *parancsfájlok* mappát tartalmazó forrás tárházat.
-    1. Válasszon ki egy **alapértelmezett ágat**. Ha az előző szakaszban létrehozott egy új tárházat, az alapértelmezett ág a *Master*.
-    1. Hagyja meg a legutóbbi **alapértelmezett verzió** beállítását *az alapértelmezett ág alapján*.
-    1. Adja meg a tárház **forrás-aliasát** . Például: *policyRepo*. Ne tartalmazzon szóközt az alias nevében.
+1. Jelentkezzen be az Azure DevOps Services-szervezetbe, és keresse meg a projektet.
+1. A projektben válassza a **Pipelines Releases** New pipeline (Folyamatok  >  **kiadása új**  >  **folyamat) lehetőséget.**
+1. A **Select a template (Sablon kiválasztása) alatt** válassza az Empty job **(Üres feladat) lehetőséget.**
+1. Adjon meg **egy fázisnevet**(például *DeployCustomPolicies)*, majd zárja be a panelt.
+1. Válassza az Add an artifact (Összetevő **hozzáadása)** lehetőséget, majd a **Source type (Forrás típusa)** alatt válassza az **Azure Repository (Azure-adattár) lehetőséget.**
+    1. Válassza ki azt a forrástárházat, amely a PowerShell-szkriptbe beírt *Scripts* mappát tartalmazza.
+    1. Válasszon egy **Alapértelmezett ágat.** Ha az előző szakaszban létrehozott egy új adattárat, az alapértelmezett ág a *master.*
+    1. Hagyja meg a Legújabb **alapértelmezett** verzió *beállítást az alapértelmezett ágban.*
+    1. Adjon meg **egy Forrás aliast** az adattárhoz. Például: *policyRepo*. Ne foglalhat szóközöket az aliasnévbe.
 1. Válassza a **Hozzáadás** lehetőséget
-1. Nevezze át a folyamatot, hogy tükrözze a szándékát. Például az *egyéni házirend-folyamat telepítése*.
-1. A folyamat konfigurációjának mentéséhez válassza a **Mentés** lehetőséget.
+1. Nevezze át a folyamatot, hogy tükrözze a szándékát. Például: *Egyéni házirend-folyamat üzembe helyezése.*
+1. A **folyamat konfigurációjának** mentéshez válassza a Mentés lehetőséget.
 
-### <a name="configure-pipeline-variables"></a>Folyamat változóinak konfigurálása
+### <a name="configure-pipeline-variables"></a>Folyamatváltozók konfigurálása
 
-1. Válassza a **változók** fület.
-1. Adja hozzá a következő változókat a **folyamat változói** alatt, és állítsa be az értékeket a megadott módon:
+1. Válassza **a Változók** lapot.
+1. Adja hozzá a következő változókat a **Pipeline változók alatt,** és állítsa be az értékeiket a megadottak szerint:
 
     | Name | Érték |
     | ---- | ----- |
-    | `clientId` | A korábban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** . |
-    | `clientSecret` | A korábban létrehozott **ügyfél-titok** értéke. <br /> Módosítsa a változó típusát **titkosra** (válassza a zárolás ikont). |
-    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, ahol *a-B2C-bérlő* a Azure ad B2C bérlő neve. |
+    | `clientId` | A korábban regisztrált alkalmazás alkalmazás- **(ügyfél-)** azonosítója. |
+    | `clientSecret` | A korábban létrehozott **titkos** ügyfélkitok értéke. <br /> Módosítsa a változó típusát **titkosra** (válassza a zárolás ikont). |
+    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, ahol *a your-b2c-tenant* a bérlő Azure AD B2C neve. |
 
-1. A változók mentéséhez válassza a **Mentés** lehetőséget.
+1. A **változók** mentéshez válassza a Mentés lehetőséget.
 
-### <a name="add-pipeline-tasks"></a>Folyamattal kapcsolatos feladatok hozzáadása
+### <a name="add-pipeline-tasks"></a>Folyamatfeladatok hozzáadása
 
-Ezután adjon hozzá egy feladatot a házirendfájl telepítéséhez.
+Ezután adjon hozzá egy feladatot egy házirendfájl telepítéséhez.
 
-1. Válassza a **feladatok** fület.
-1. Válassza az **ügynök feladata** lehetőséget, majd válassza a pluszjelet ( **+** ) egy feladat hozzáadásához az ügynök feladatához.
-1. Keresse meg és válassza ki a **PowerShellt**. Ne válassza a "Azure PowerShell," "PowerShell a célszámítógépen" vagy egy másik PowerShell-bejegyzést.
-1. Válassza ki az újonnan hozzáadott **PowerShell-parancsfájl** feladatot.
-1. Adja meg a következő értékeket a PowerShell-parancsfájl feladatához:
-    * **Feladat verziója**: 2. *
-    * **Megjelenítendő név**: annak a szabályzatnak a neve, amelyet a feladatnak fel kell töltenie. Például *B2C_1A_TrustFrameworkBase*.
-    * **Típus**: fájl elérési útja
-    * **Parancsfájl elérési útja**: válassza a három pontot (**_..._* _), keresse meg a _Scripts * mappát, majd válassza ki a *DeployToB2C.ps1* fájlt.
-    * **Argumentumok**
+1. Válassza a **Feladatok** lapot.
+1. Válassza **az Ügynökfeladat** lehetőséget, majd a pluszjelet ( ) választva adjon hozzá egy tevékenységet **+** az ügynökfeladathoz.
+1. Keresse meg és válassza a **PowerShell lehetőséget.** Ne válassza a "Azure PowerShell" vagy a "PowerShell a célgépeken" vagy más PowerShell-bejegyzést.
+1. Válassza ki az újonnan hozzáadott **PowerShell-szkriptfeladatot.**
+1. Adja meg a következő értékeket a PowerShell-szkript feladathoz:
+    * **Feladat verziója:** 2.*
+    * **Megjelenített név:** Annak a szabályzatnak a neve, amelybe a feladatnak fel kell töltenie. Például: *B2C_1A_TrustFrameworkBase.*
+    * **Típus:** Fájl elérési útja
+    * **Szkript elérési útja:** Válassza a három pont (**_..._* _), keresse meg a _Scripts* mappát, majd válassza ki *DeployToB2C.ps1* fájlt.
+    * **Érvek:**
 
-        Adja meg a következő értékeket az **argumentumokhoz**. Cserélje le az `{alias-name}` értéket az előző szakaszban megadott aliasra.
+        Az Argumentumok mezőben adja **meg a következő értékeket.** Cserélje `{alias-name}` le a helyére az előző szakaszban megadott aliast.
 
         ```PowerShell
         # Before
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
         ```
 
-        Ha például a megadott alias *policyRepo*, az argumentumnak a következőnek kell lennie:
+        Ha például a megadott alias a *policyRepo,* az argumentumsornak a következőnek kell lennie:
 
         ```PowerShell
         # After
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
-1. Válassza a **Mentés** lehetőséget az ügynök feladatainak mentéséhez.
+1. Az **ügynök feladat** mentéshez válassza a Mentés lehetőséget.
 
-Az imént hozzáadott feladat feltölt *egy* házirend-fájlt Azure ad B2Cba. A továbblépés előtt manuálisan aktiválja a feladatot (**kiadás létrehozása**), és győződjön meg arról, hogy a feladat sikeresen befejeződik, mielőtt további feladatokat hozna létre.
+Az előbb hozzáadott feladat feltölt *egy* szabályzatfájlt a Azure AD B2C. A folytatás előtt aktiválja manuálisan a feladatot **(Kiadás** létrehozása) annak érdekében, hogy a feladat sikeresen befejeződjon, mielőtt további tevékenységeket hozna létre.
 
-Ha a feladat sikeresen befejeződik, adja hozzá a telepítési feladatokat az egyes egyéni házirend-fájlok előző lépéseinek végrehajtásával. Módosítsa az `-PolicyId` `-PathToFile` egyes szabályzatok és argumentumok értékeit.
+Ha a feladat sikeresen befejeződik, adja hozzá a telepítési feladatokat az egyes egyéni házirendfájlok előző lépéseit végrehajtva. Módosítsa az `-PolicyId` egyes házirendek és `-PathToFile` argumentumértékeit.
 
-A értéke egy `PolicyId` XML-házirend fájljának elején található a TrustFrameworkPolicy csomóponton belül. Például a `PolicyId` következő házirend XML-fájlja *B2C_1A_TrustFrameworkBase*:
+A értéke egy XML-házirendfájl elején található `PolicyId` a TrustFrameworkPolicy csomópontban. A következő szabályzat `PolicyId` XML-fájlja például a B2C_1A_TrustFrameworkBase:
 
 ```xml
 <TrustFrameworkPolicy
@@ -187,7 +187,7 @@ PolicyId= "B2C_1A_TrustFrameworkBase"
 PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-Az ügynökök futtatásakor és a házirend-fájlok feltöltésekor ügyeljen arra, hogy a következő sorrendben töltse fel őket:
+Az ügynökök futtatásakor és a szabályzatfájlok feltöltésekor győződjön meg arról, hogy az ügynökök a következő sorrendben vannak feltöltve:
 
 1. *TrustFrameworkBase.xml*
 1. *TrustFrameworkExtensions.xml*
@@ -195,23 +195,23 @@ Az ügynökök futtatásakor és a házirend-fájlok feltöltésekor ügyeljen a
 1. *ProfileEdit.xml*
 1. *PasswordReset.xml*
 
-Az Identity Experience Framework ezt a sorrendet kényszeríti, mivel a fájl szerkezete hierarchikus láncra épül.
+A Identity Experience Framework kényszeríti ezt a sorrendet, mivel a fájlstruktúra egy hierarchikus láncra épül.
 
 ## <a name="test-your-pipeline"></a>A folyamat tesztelése
 
 A kiadási folyamat tesztelése:
 
-1. Válassza a **folyamatok** , majd a **kiadások** lehetőséget.
-1. Válassza ki a korábban létrehozott folyamatot, például *DeployCustomPolicies*.
-1. Válassza a **kiadás létrehozása** elemet, majd válassza a **Létrehozás** lehetőséget a kiadás várólistára állításához.
+1. Válassza **a Folyamatok,** majd a **Kiadások lehetőséget.**
+1. Válassza ki a korábban létrehozott folyamatot, például *DeployCustomPolicies.*
+1. Válassza **a Kiadás létrehozása,** majd a **Létrehozás** lehetőséget a kiadás várólistára való várakozásához.
 
-Egy értesítési szalagcím jelenik meg, amely szerint a kiadás várólistára került. Az állapot megtekintéséhez válassza ki a hivatkozást az értesítési szalagcímben, vagy válassza ki a listából a **kiadások** lapon.
+Megjelenik egy értesítési szalagcím, amely szerint egy kiadás várólistára került. Az állapot megtekintéséhez kattintson az értesítési szalagcímen található hivatkozásra, vagy válassza ki azt a **Releases (Kiadások)** lapon található listában.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információk:
 
-* [Ügyfél-hitelesítő adatokat használó szolgáltatások közötti hívások](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [Szolgáltatások között ügyfél-hitelesítő adatokat használó hívások](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 * [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->

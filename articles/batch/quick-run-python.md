@@ -1,34 +1,35 @@
 ---
-title: Rövid útmutató – Azure Batch feladatok futtatása a Python API használatával
-description: Ebben a rövid útmutatóban egy Azure Batch minta feladatot és feladatot futtat a Batch Python ügyféloldali kódtár használatával. Ismerje meg a Batch szolgáltatás legfontosabb fogalmait.
-ms.topic: quickstart
+title: Rövid útmutató – Python API használata Azure Batch feladat futtatásához
+description: Ebben a rövid útmutatóban egy mintafeladatot és Azure Batch fog futtatni a Batch Python ügyféloldali kódtárával. Megismeri a Batch szolgáltatás alapfogalmait.
 ms.date: 08/17/2020
+ms.topic: quickstart
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+- mode-api
+ms.openlocfilehash: 75f83e0ea4823796ace348084bab0915babc8979
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046810"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535572"
 ---
-# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Gyors útmutató: Azure Batch feladatok futtatása a Python API használatával
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rövid útmutató: Python API használata Azure Batch feladat futtatásához
 
-Az Azure Batch használatának első lépései a Python API-val egy Azure Batch-feladatoknak az alkalmazásból való futtatásához. Az alkalmazás feltölti a bemeneti adatfájlokat az Azure Storage szolgáltatásba, és létrehoz egy batch számítási csomópontok (virtuális gépek) készletét. Ezután létrehoz egy feladatot, amely egy alapszintű paranccsal dolgozza fel a készletben lévő összes bemeneti fájlt.
+Az Azure Batch használatának első lépésekéhez a Python API használatával futtathat Azure Batch feladatot egy alkalmazásból. Az alkalmazás feltölti a bemeneti adatfájlokat az Azure Storage-ba, és létrehoz egy Batch számítási csomópontok (virtuális gépek) készletét. Ezután létrehoz egy feladatot, amely tevékenységeket futtat a készletben található összes bemeneti fájl feldolgozásához egy alapszintű paranccsal.
 
-A rövid útmutató elvégzése után megismerheti a Batch szolgáltatás legfontosabb fogalmait, és készen áll arra, hogy a Batch több reális számítási feladattal próbálkozzon nagyobb méretekben.
+A rövid útmutató elvégzése után megértheti a Batch szolgáltatás alapfogalmait, és készen áll arra, hogy realisztikusabb számítási feladatokkal próbálja ki a Batch szolgáltatást nagyobb léptékben.
 
-![A Azure Batch munkafolyamat áttekintése](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
+![A munkafolyamat Azure Batch áttekintése](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 - Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-- [Python](https://python.org/downloads) 2,7-es vagy 3,6-es verzió, beleértve a [pip](https://pip.pypa.io/en/stable/installing/) Package Managert
+- [Python](https://python.org/downloads) 2.7-es vagy 3.6-os verzió, a [pip csomagkezelővel](https://pip.pypa.io/en/stable/installing/) együtt
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -44,7 +45,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Nyissa meg a Python-szkriptet tartalmazó könyvtárat `python_quickstart_client.py` .
+Ugrás a Python-szkriptet tartalmazó `python_quickstart_client.py` könyvtárra.
 
 A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip` segítségével.
 
@@ -105,7 +106,7 @@ A jellemző végrehajtási idő körülbelül 3 perc, ha az alapértelmezett kon
 A jelen rövid útmutatóban található Python-alkalmazás a következőket hajtja végre:
 
 - Feltölt három kisméretű szövegfájlt az Azure Storage-fiókban lévő blobtárolóba. Ezek a fájlok bemenetek a Batch-tevékenységek általi feldolgozáshoz.
-- Két, Ubuntu 18,04 LTS rendszert futtató számítási csomópont készletét hozza létre.
+- Létrehoz egy készletet két, Ubuntu 18.04 LTS-t futtató számítási csomópontból.
 - Létrehoz egy feladatot és három tevékenységet, amelyek a csomópontokon futnak. Minden tevékenység feldolgoz egy bemeneti fájlt egy Bash felületi parancssor használatával.
 * Megjeleníti a tevékenységek által visszaadott fájlokat.
 
@@ -146,7 +147,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-Batch-készlet létrehozásához az alkalmazás a [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) osztály használatával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) objektum az Azure Marketplace-en közzétett Ubuntu Server 18,04 LTS-rendszerképhez [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) ad meg. A Batch az Azure Marketplace Linux- és Windows Server-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
+Batch-készlet létrehozásához az alkalmazás a [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) osztály használatával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) objektum egy [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) objektumot ad meg az Azure Marketplace. A Batch az Azure Marketplace Linux- és Windows Server-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
 A csomópontok száma (`_POOL_NODE_COUNT`) és a virtuális gépek mérete (`_POOL_VM_SIZE`) meghatározott állandókkal van megadva. A példa alapértelmezés szerint egy 2 *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. A javasolt méret jó teljesítmény/költség arányt kínál a jelen rövid példában.
 
@@ -171,7 +172,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Batch-feladat létrehozása
 
-A Batch-feladat egy vagy több tevékenység logikai csoportosítása. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az alkalmazás a [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job. Add](/python/api/azure-batch/azure.batch.operations.joboperations) metódus felvesz egy feladatot a megadott batch-fiókba. A feladat kezdetben nem tartalmaz tevékenységeket.
+A Batch-feladat egy vagy több tevékenység logikai csoportosítása. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az alkalmazás a [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job.add metódus](/python/api/azure-batch/azure.batch.operations.joboperations) hozzáad egy feladatot a megadott Batch-fiókhoz. A feladat kezdetben nem tartalmaz tevékenységeket.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -227,7 +228,7 @@ for task in tasks:
 
 Az alkalmazás automatikusan törli a létrehozott Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
 
-Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez a Azure Portal válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, majd válassza az **erőforráscsoport törlése** lehetőséget.
+Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. A fiók Azure Portal válassza ki a Batch-fiók erőforráscsoportját, és válassza az **Erőforráscsoport törlése lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 

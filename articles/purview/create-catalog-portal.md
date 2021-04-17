@@ -1,41 +1,43 @@
 ---
-title: 'Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portalban (előzetes verzió)'
-description: Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot, és hogyan konfigurálhat engedélyeket a használatának megkezdéséhez.
+title: 'Rövid útmutató: Azure Purview-fiók létrehozása a Azure Portal (előzetes verzió)'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Purview-fiókot, és hogyan konfigurálhatja az engedélyeket a használat megkezdéséhez.
 author: nayenama
 ms.author: nayenama
+ms.date: 10/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 10/23/2020
-ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666461"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535160"
 ---
-# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
+# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rövid útmutató: Azure Purview-fiók létrehozása a Azure Portal
 
 > [!IMPORTANT]
-> Az Azure-beli hatáskörébe jelenleg előzetes verzió érhető el. A [Microsoft Azure előzetes verzióinak kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak azok a további jogi feltételek, amelyek az Azure olyan szolgáltatásaira vonatkoznak, amelyek béta-, előzetes verziójú vagy egyéb módon még nem lettek nyilvánosan elérhetők.
+> Az Azure Purview jelenleg előzetes verzióban érhető el. A [Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziók kiegészítő használati feltételei további jogi feltételeket tartalmaznak, amelyek a bétaverzióban, előzetes verzióban vagy más, általánosan még nem elérhető Azure-funkciókra vonatkoznak.
 
-Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fiókot.
+Ebben a rövid útmutatóban egy Azure Purview-fiókot hoz létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 * Saját [Azure Active Directory-bérlő](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* A fióknak engedéllyel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az előfizetésben
+* A fióknak engedéllyel kell rendelkeznie erőforrások létrehozásához az előfizetésben
 
-* Ha **Azure Policy** blokkolja az összes alkalmazást a Storage- **fiók** és a **EventHub-névtér** létrehozásához, akkor a címkével kell megadnia a szabályzatot, amely a hatáskörébe tartozó fiók létrehozásának folyamata során megadható. Ennek fő oka, hogy minden létrehozott felügyeleti fiókhoz létre kell hoznia egy felügyelt erőforráscsoportot, és ezen az erőforráscsoport, egy Storage-fiók és egy EventHub-névtér között.
+* Ha nem **Azure Policy** az összes alkalmazás számára a **Storage-fiók** és az **EventHub-névtér** létrehozását, szabályzati kivételt kell létrehoznia a címke használatával, amelyet a Purview-fiók létrehozása során lehet megadni. Ennek fő oka az, hogy minden létrehozott Purview-fiókhoz létre kell hoznia egy felügyelt erőforráscsoportot, valamint ezen az erőforráscsoporton belül egy Storage-fiókot és egy EventHub-névteret.
 
     > [!important]
-    > Nem kell követnie ezt a lépést, ha nincs Azure Policy, vagy egy meglévő Azure Policy nem blokkolja a **Storage-fiók** és a **EventHub-névtér** létrehozását.
+    > Nem kell követnie ezt a lépést, ha nem Azure Policy vagy egy meglévő Azure Policy nem blokkolja a **Storage-fiók** és az **EventHub-névtér létrehozását.**
 
-    1. Navigáljon a Azure Portalre, és keressen rá **a szabályzat** kifejezésre.
-    1. Kövesse az [egyéni házirend-definíció létrehozása](../governance/policy/tutorials/create-custom-policy-definition.md) vagy a meglévő szabályzat módosítása lehetőséget két kivétel hozzáadásához az `not` operátorral és a `resourceBypass` címkével:
+    1. Lépjen a Azure Portal, és keressen rá a Szabályzat **kifejezésre**
+    1. Kövesse [az Egyéni szabályzatdefiníció létrehozása vagy a](../governance/policy/tutorials/create-custom-policy-definition.md) meglévő szabályzat módosítása szabályzatot két kivétel operátorral és `not` címkével való `resourceBypass` hozzáadásához:
 
         ```json
         {
@@ -79,13 +81,13 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
         ```
         
         > [!Note]
-        > A címke bármi lehet a mellett, `resourceBypass` és akár Ön is meghatározhatja az értéket, amikor az utóbbi lépésekben létrehozza a hatáskörébe tartozó teendőket, feltéve, hogy a szabályzat képes azonosítani a címkét.
+        > A címke lehet bármi más mellett, és Ön határozhatja meg az értéket a Nézet létrehozása során az utóbbi lépésekben, ha a szabályzat képes `resourceBypass` észlelni a címkét.
 
-        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="A házirend-definíció létrehozását bemutató képernyőkép.":::
+        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Képernyőkép a szabályzatdefiníciók létrehozásáról.":::
 
     1. [Hozzon létre egy szabályzat-hozzárendelést](../governance/policy/assign-policy-portal.md) a létrehozott egyéni szabályzat használatával.
 
-        [![A szabályzat-hozzárendelés létrehozását bemutató képernyőkép](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
+        [![Képernyőkép a szabályzat-hozzárendelés létrehozásáról](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -93,92 +95,92 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
-Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásához, hogy az Azure-beli hatáskörébe az előfizetésében fusson:
+Ha szükséges, az alábbi lépésekkel konfigurálhatja az előfizetését úgy, hogy az Azure Purview fusson az előfizetésében:
 
-   1. A Azure Portal keresse meg és válassza ki az **előfizetések** elemet.
+   1. A Azure Portal keresse meg és válassza az **Előfizetések lehetőséget.**
 
-   1. Az előfizetések listájából válassza ki a használni kívánt előfizetést. Az előfizetéshez rendszergazdai hozzáférési engedély szükséges.
+   1. Az előfizetések listájából válassza ki a használni kívánt előfizetést. Rendszergazdai hozzáférési engedély szükséges az előfizetéshez.
 
-      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="A Azure Portal-előfizetés kiválasztását bemutató képernyőkép.":::
+      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Képernyőkép az előfizetés kiválasztásáról a Azure Portal.":::
 
-   1. Az előfizetéséhez válassza az **erőforrás-szolgáltatók** lehetőséget. Az **erőforrás-szolgáltatók** ablaktáblán keresse meg és regisztrálja mind a három erőforrás-szolgáltatót: 
-       1. **Microsoft. hatáskörébe**
+   1. Az előfizetéséhez válassza az **Erőforrás-szolgáltatók lehetőséget.** Az **Erőforrás-szolgáltatók panelen** keresse meg és regisztrálja mindhárom erőforrás-szolgáltatót: 
+       1. **Microsoft.Purview**
        1. **Microsoft.Storage**
-       1. **Microsoft. EventHub** 
+       1. **Microsoft.EventHub** 
       
-      Ha nincsenek regisztrálva, regisztrálja azt a **regisztráció** lehetőség kiválasztásával.
+      Ha nincsenek regisztrálva, regisztrálja a Regisztráció **lehetőség kiválasztásával.**
 
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Képernyőfelvétel: a Microsoft dot Azure-beli hatáskörébe tartozó erőforrás-szolgáltató regisztrálása a Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="A Microsoft Dot Azure Purview erőforrás-szolgáltató regisztrálását bemutató képernyőkép a Azure Portal.":::
 
-## <a name="create-an-azure-purview-account-instance"></a>Azure-beli hatáskörébe tartozó fiók példányának létrehozása
+## <a name="create-an-azure-purview-account-instance"></a>Azure Purview-fiókpéldány létrehozása
 
-1. Lépjen a Azure Portal **hatáskörébe tartozó fiókok** lapra, majd a **Hozzáadás** gombra kattintva hozzon létre egy új Azure-beli hatáskörébe tartozó fiókot. Azt is megteheti, hogy a piactéren megkeresi a **hatáskörébe tartozó fiókokat** , és kiválasztja a **Létrehozás** lehetőséget. Vegye figyelembe, hogy egyszerre csak egy Azure-beli hatáskörébe tartozó fiókot adhat hozzá.
+1. Az új Azure **Purview-fiók** létrehozásához Azure Portal a  Nézetfiókok lapra, majd válassza a Hozzáadás lehetőséget. Másik lehetőségként a Marketplace-en keresse meg a **Purview Accounts (Purview-fiókok)** et, és válassza a **Create (Létrehozás) lehetőséget.** Vegye figyelembe, hogy egyszerre csak egy Azure Purview-fiókot adhat hozzá.
 
-   :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Képernyőfelvétel: Azure hatáskörébe tartozó fiók példányának létrehozása a Azure Portal.":::
-
-    > [!Note] 
-    > Az Azure-beli hatáskörébe nem támogatott a fiók áthelyezése a régiók között. Erről az [Azure által támogatott szolgáltatások oldalon](../azure-resource-manager/management/region-move-support.md)talál további információt.
-
-1. Az **alapok** lapon tegye a következőket:
-    1. Válasszon ki egy **erőforráscsoportot**.
-    1. Adja meg a katalógushoz a **hatáskörébe tartozó fiók nevét** . Szóközök és szimbólumok használata nem engedélyezett.
-    1. Válasszon egy  **helyet**, majd válassza a **Next (Konfigurálás**) lehetőséget.
-1. A **konfiguráció** lapon válassza ki a kívánt **platform méretét** – az engedélyezett értékek: 4 kapacitási egység (CU) és 16 cu. Kattintson a **Tovább gombra: címkék**.
-1. A **címkék** lapon opcionálisan hozzáadhat egy vagy több címkét is. Ezek a címkék csak a Azure Portal használhatók, nem az Azure hatáskörébe. 
+   :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Képernyőkép az Azure Purview-fiókpéldány létrehozásáról a Azure Portal.":::
 
     > [!Note] 
-    > Ha **Azure Policy** van, és kivételt kell hozzáadnia az **előfeltételekhez**, hozzá kell adnia a megfelelő címkét. Hozzáadhat például egy címkét `resourceBypass` : :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="címke hozzáadása a hatáskörébe fiókhoz.":::
+    > Az Azure Purview nem támogatja a fiók régiók közötti áthelyezését. Erről az Azure által támogatott szolgáltatások [oldalán talál további információt.](../azure-resource-manager/management/region-move-support.md)
 
-1. Válassza a **felülvizsgálat & létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget. A létrehozás elvégzése néhány percet vesz igénybe. Az újonnan létrehozott Azure hatáskörébe tartozó fiók példánya megjelenik a hatáskörébe tartozó **fiókok** lapjának listájában.
-1. Ha az új fiók üzembe helyezése befejeződött, válassza az **erőforrás** megnyitása lehetőséget.
+1. Az Alapvető **beállítások lapon** tegye a következőket:
+    1. Válasszon ki egy **erőforráscsoportot.**
+    1. Adja meg a katalógus Purview-fióknevét.  Szóközök és szimbólumok nem használhatók.
+    1. Válasszon egy **helyet,** majd válassza a **Tovább: Konfiguráció lehetőséget.**
+1. A **Konfiguráció lapon** válassza ki a kívánt **platformméretet** – az engedélyezett értékek 4 kapacitásegység (CU) és 16 CU. Válassza **a Tovább: Címkék lehetőséget.**
+1. A Címkék **lapon** hozzáadhat egy vagy több címkét is. Ezek a címkék csak az azure Azure Portal ban használhatók, az Azure Purview-ban nem. 
+
+    > [!Note] 
+    > Ha már van **Azure Policy,** és kivételt kell hozzáadnia az **Előfeltételek** részen, akkor a megfelelő címkét kell hozzáadnia. Hozzáadhatja például a következő `resourceBypass` címkét: Címke hozzáadása a :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Purview fiókhoz.":::
+
+1. Válassza **a & létrehozása,** majd a Létrehozás **lehetőséget.** A létrehozás befejezése néhány percet vesz igénybe. Az újonnan létrehozott Azure Purview-fiókpéldány megjelenik a **Purview-fiókok oldalán található** listában.
+1. Ha az új fiók kiépítése befejeződött, válassza az **Erőforráshoz való ugrás lehetőséget.**
 
     > [!Note]
-    > Ha a kiépítés állapota nem sikerült `Conflict` , az azt jelenti, hogy egy Azure-házirend blokkolja a szabályzatot a **Storage-fiók** és a EventHub- **névtér** létrehozásához. A kivételek hozzáadásához el kell végeznie az **Előfeltételek** lépéseit.
-    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="A hatáskörébe ütköző hibaüzenet üzenete":::
+    > Ha a kiépítés állapottal meghiúsult, az azt jelenti, hogy egy Azure-szabályzat blokkolja `Conflict` a Purview-t a **Storage-fiók** és a **EventHub-névtér létrehozásában.** A kivételek hozzáadásához  végig kell mennie az Előfeltételek lépésen.
+    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Az ütközések végleges nézetének hibaüzenete":::
 
-1. Válassza a **hatáskörébe tartozó fiók elindítása** lehetőséget.
+1. Válassza **a Launch purview account (Végleges fiók indítása) lehetőséget.**
 
-   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="Képernyőkép a kijelölésről az Azure hatáskörébe tartozó fiók katalógusának elindításához.":::
+   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="Képernyőkép az Azure Purview-fiókkatalógus indításához kiválasztott beállításról.":::
 
 ## <a name="add-a-security-principal-to-a-data-plane-role"></a>Rendszerbiztonsági tag hozzáadása adatsík-szerepkörhöz
 
-Mielőtt Ön vagy csapata megkezdheti az Azure hatáskörébe való csatlakozást, egy vagy több rendszerbiztonsági tag hozzáadása az előre definiált adatközpont-szerepkörök egyikéhez kell, hogy legyen: a **hatáskörébe Adatolvasó**, a **hatáskörébe** tartozó adatkezelő vagy a **hatáskörébe tartozó adatforrások rendszergazdája**. Az Azure hatáskörébe Data Catalog engedélyekkel kapcsolatos további információkért lásd: [katalógus engedélyei](catalog-permissions.md).
+Ahhoz, hogy Ön vagy csapata megkezdje az Azure Purview használatát, hozzá kell adni egy vagy több rendszerbiztonsági szolgáltatásokat az előre meghatározott adatsík-szerepkörök egyikéhez: **Purview Data Reader (Adatolvasó** végleges megtekintése, **Purview Data Curator)** vagy **Purview Data Source Administrator**(Adatforrás-rendszergazda végleges megtekintése). További információ az Azure Purview-Data Catalog [katalógusengedélyekkel kapcsolatban.](catalog-permissions.md)
 
-Rendszerbiztonsági tag hozzáadása egy Azure- **beli hatáskörébe tartozó adatközponti** szerepkörhöz:
+Rendszerbiztonsági tag hozzáadása a **Purview Data Curator** adatsík-szerepkörhöz egy Azure Purview-fiókban:
 
-1. Nyissa meg a Azure Portal a [**hatáskörébe tartozó fiókok**](https://aka.ms/purviewportal) lapot.
+1. A nézet [**Nézetfiókok**](https://aka.ms/purviewportal) lapjára Azure Portal.
 
-1. Válassza ki a módosítani kívánt Azure-beli hatáskörébe tartozó fiókot.
+1. Válassza ki a módosítani kívánt Azure Purview-fiókot.
 
-1. A **hatáskörébe tartozó fiók** lapon válassza a **hozzáférés-vezérlés (iam) lapot.**
+1. A **Fiók végleges megtekintése lapon** válassza a **Hozzáférés-vezérlés (IAM) lapot.**
 
-1. Kattintson a **+ Hozzáadás** gombra
+1. Kattintson **a + Hozzáadás gombra**
 
-Ha a Hozzáadás gombra kattint, két választási lehetőség látható (letiltva), ez azt jelenti, hogy nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy bárkit felvegyen egy adatsík-szerepkörbe az Azure-beli hatáskörébe fiókban. Meg kell keresnie egy tulajdonost, egy felhasználói hozzáférési rendszergazdát vagy valaki másnak a szerepkör-hozzárendelési szolgáltatót az Azure hatáskörébe tartozó fiókjában. A megfelelő embereket megkeresheti a szerepkör- **hozzárendelések** lap kiválasztásával, majd lefelé görgetve megkeresheti a tulajdonosi vagy a felhasználói hozzáférési rendszergazdát, és kapcsolatba léphet ezekkel a személyekkel.
+Ha a Hozzáadás gombra kattintva két választási lehetőséget lát, amelyeken mindkét lehetőség meg van jelölve (letiltva), az azt jelenti, hogy nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy valakit adatsík-szerepkörhöz adjon az Azure Purview-fiókban. Meg kell találnia egy tulajdonost, egy felhasználói hozzáférés-rendszergazdát vagy egy másik szerepkör-hozzárendelési jogosultsággal rendelkező felhasználót az Azure Purview-fiókjában. A megfelelő személyeket a  Szerepkör-hozzárendelések lap kiválasztásával, majd lefelé görgetve megkeresheti a tulajdonost vagy a felhasználói hozzáférés rendszergazdáját, és kapcsolatba léphet velük.
 
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-1. Ahhoz, hogy a rendszerbiztonsági tag mire lesz felhasználva (lásd: [katalógus-engedélyek](catalog-permissions.md) és az [alkalmazás-és szolgáltatásnév-objektumok a Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md) című témakörben olvashat a szerepkörhöz a **hatáskörébe tartozó adatkurátori szerepkör** vagy a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkörben** .
+1. A Purview Data Curator Role (Purview **Data Curator** szerepkör) vagy a **Purview Data** [](catalog-permissions.md) Source Administrator Role (Szerepkör típusa) esetén attól függően, hogy a rendszerbiztonsági tag mire lesz használva (a részletekért tekintse meg a katalógus engedélyekkel és alkalmazás- és [szolgáltatásnév-objektumokkal](../active-directory/develop/app-objects-and-service-principals.md) kapcsolatos Azure Active Directory).
 
-1. Az alapértelmezett, a **felhasználó, a csoport vagy az egyszerű szolgáltatásnév** elhagyása a **hozzáférés kiosztásával** .
+1. A **Hozzáférés hozzárendelése beállításnál** hagyja meg az alapértelmezett **Felhasználó, csoport vagy szolgáltatásnév értéket.**
 
-1. A **válassza ki** a felhasználó nevét, Azure Active Directory csoportot vagy szolgáltatásnevet, amelyet hozzá kíván rendelni, majd kattintson a nevére a találatok ablaktáblán.
+1. A **Kijelölés** mezőben adja meg a hozzárendelni kívánt Azure Active Directory vagy szolgáltatásnevet, majd kattintson a nevére az eredménypanelen.
 
-1. Kattintson a **Save (Mentés**) gombra.
+1. Kattintson a **Mentés gombra.**
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a következő lépésekkel:
+Ha már nincs szüksége erre az Azure Purview-fiókra, törölje a következő lépésekkel:
 
-1. Nyissa meg a Azure Portal a **hatáskörébe tartozó fiókok** lapot.
+1. A nézet **Nézetfiókok** lapjára Azure Portal.
 
-2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
+2. Válassza ki a rövid útmutató elején létrehozott Azure Purview-fiókot. Válassza **a Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a Törlés **lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Purview-fiókot.
 
-A következő cikkből megtudhatja, hogyan engedélyezheti a felhasználók számára az Azure hatáskörébe tartozó fiók elérését. 
+A következő cikk azt is bemutatja, hogyan engedélyezheti a felhasználóknak az Azure Purview-fiókhoz való hozzáférést. 
 
 > [!div class="nextstepaction"]
-> [Felhasználók hozzáadása az Azure-beli hatáskörébe-fiókhoz](catalog-permissions.md)
+> [Felhasználók hozzáadása az Azure Purview-fiókhoz](catalog-permissions.md)
