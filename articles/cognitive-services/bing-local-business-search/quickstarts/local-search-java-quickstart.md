@@ -1,43 +1,45 @@
 ---
-title: Rövid útmutató – lekérdezés küldése az API-nak a Java-Bing helyi üzleti keresés használatával
+title: Rövid útmutató – Lekérdezés küldése az API-nak a Java használatával – Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a Java-kérelmek küldését a Bing helyi üzleti keresési API-ra, amely egy Azure kognitív szolgáltatás.
+description: Ebből a rövid útmutatóból megismerheti, hogyan küldhető kérés Java nyelven a Bing Local Business Search API-nak, amely egy Azure Cognitive Services-szolgáltatás.
 services: cognitive-services
 author: aahill
+ms.author: aahi
 manager: nitinme
+ms.date: 05/12/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.topic: quickstart
-ms.date: 05/12/2020
-ms.custom: devx-track-java
-ms.author: aahi
-ms.openlocfilehash: 09f387eebd48b6e2d72e49a24fc9345817674b35
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 001fc80b30eaa736db27ba76384aaf273bdec903
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536660"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rövid útmutató: Lekérdezés küldése a Bing Local Business Search API-ba a Java használatával
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
-> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing Search API-k az Cognitive Services-Bing Search szolgáltatásokba költöznek. **2020.** október 30-ától a Bing Search új példányait az itt dokumentált folyamat szerint kell [kiépítenünk.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+> Bing Search használatával üzembe Cognitive Services API-kat a következő három évre vagy a Nagyvállalati Szerződés végéig támogatni fogjuk.
+> A migrálásra vonatkozó utasításokért [lásd: Bing Search Services.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 
-Ebből a rövid útmutatóból megtudhatja, hogyan küldhet kéréseket a Bing helyi üzleti keresési API-nak, amely egy Azure kognitív szolgáltatás. Bár ez az egyszerű alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
+Ebből a rövid útmutatóból megtudhatja, hogyan küldhet kéréseket a Bing Local Business Search API-nak, amely egy Azure Cognitive Service. Bár ez az egyszerű alkalmazás Java nyelven lett megírva, az API egy RESTful-webszolgáltatás, amely kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések igénylésére és JSON-adatokat elemezni.
 
-Ez a példában szereplő alkalmazás helyi válaszüzeneteket olvas be az API-ból egy keresési lekérdezéshez.
+Ez a példaalkalmazás helyi válaszadatokat kap az API-tól egy keresési lekérdezéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Azure-előfizetés – [Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Bing Search-erőforrást, és hozzon létre egy Bing Search-erőforrást a Azure Portal a kulcs és a <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás gombra.**
 
-## <a name="create-the-request"></a>A kérelem létrehozása 
+## <a name="create-the-request"></a>A kérés létrehozása 
 
-A következő kód létrehoz egy `WebRequest` , beállítja a hozzáférési kulcs fejlécét, és hozzáadja a lekérdezési karakterláncot a *hotelhez a Bellevue-ben*.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+Az alábbi kód létrehoz egy et, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet `WebRequest` a *bellevue-i szálloda számára.*  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -55,7 +57,7 @@ A következő kód létrehoz egy `WebRequest` , beállítja a hozzáférési kul
 
 ## <a name="run-the-complete-application"></a>A teljes alkalmazás futtatása
 
-A következő kód a Bing local Business Search API-t használja a keresési eredmények a Bing keresőmotorból való visszaküldéséhez. Futtassa ezt a kódot a következő lépések végrehajtásával:
+A következő kód a Bing Local Business Search API használatával adja vissza a Bing keresőmotor keresési eredményeit. Futtassa ezt a kódot az alábbi lépésekkel:
 1. Töltse le vagy telepítse a gson-kódtárat.
 2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
@@ -169,6 +171,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- [Helyi üzleti keresés C# rövid útmutató](local-quickstart.md)
-- [Helyi üzleti keresés Node.js rövid útmutató](local-search-node-quickstart.md)
-- [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)
+- [Local Business Search C# – rövid útmutató](local-quickstart.md)
+- [Local Business Search Node.js rövid útmutató](local-search-node-quickstart.md)
+- [Local Business Search Python – rövid útmutató](local-search-python-quickstart.md)

@@ -1,45 +1,45 @@
 ---
-title: Kapcsolódás a szinapszis SQL-hez a Sqlcmd használatával
-description: Használja a Sqlcmd parancssori segédprogramot a kiszolgáló nélküli SQL-készlet és a dedikált SQL-készlet lekérdezéséhez.
+title: Csatlakozás Synapse SQL sqlcmd használatával
+description: Használja az sqlcmd parancssori segédprogramot a kiszolgáló nélküli SQL-készlethez és a dedikált SQL-készlethez való csatlakozáshoz és lekérdezéséhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7d6675f9584f90b67d8520091dcd4b04dd89e462
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3abdd44f0684282e92da147dff996ff54f0ef23f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667580"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565474"
 ---
-# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Kapcsolódás a szinapszis SQL-hez a Sqlcmd használatával
+# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Csatlakozás Synapse SQL sqlcmd használatával
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-A [Sqlcmd](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true) parancssori segédprogrammal kapcsolódhat és lekérdezheti a kiszolgáló nélküli SQL-készletet és a dedikált SQL-készletet a szinapszis sqlon belül.  
+Az [sqlcmd parancssori](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true) segédprogrammal csatlakozhat kiszolgáló nélküli SQL-készlethez és dedikált SQL-készlethez a Synapse SQL.  
 
-## <a name="1-connect"></a>1. kapcsolat
-A [Sqlcmd](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)megkezdéséhez nyissa meg a parancssort, és írja be a **Sqlcmd** , majd a szinapszis SQL Database-hez tartozó kapcsolódási karakterláncot. A kapcsolati sztringben a következő paraméterekre van szükség:
+## <a name="1-connect"></a>1. Csatlakozás
+Az [sqlcmd](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)első lépésekhez nyissa meg a parancssort, és írja be az **sqlcmd** parancsot, majd a kapcsolati sztringet a Synapse SQL adatbázisához. A kapcsolati sztringben a következő paraméterekre van szükség:
 
 * **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 * **Adatbázis (-d):** Adatbázis neve
-* **Idézett azonosítók engedélyezése (-I):** Az idézőjelek közé tartozó azonosítókat engedélyezni kell a szinapszis SQL-példányhoz való kapcsolódáshoz
+* **Enable Quoted Identifiers (-I):** Az idézett azonosítókat engedélyezni kell a Synapse SQL-példányhoz való csatlakozáshoz
 
-SQL Server hitelesítés használatához hozzá kell adnia a felhasználónevet és a jelszó paramétereit:
+Az SQL Server hitelesítéshez hozzá kell adni a felhasználónév és a jelszó paramétereit:
 
-* **Felhasználó (-U):** A kiszolgáló felhasználója az űrlap `<` felhasználója`>`
-* **Jelszó (-P):** A felhasználóhoz tartozó jelszó
+* **Felhasználó (-U):** Kiszolgálófelhasználó Felhasználó `<` formában`>`
+* **Jelszó (-P):** A felhasználóhoz társított jelszó
 
-A kapcsolatok karakterlánca a következő példához hasonló lehet:
+A kapcsolati sztring az alábbi példához hasonló lehet:
 
 **Kiszolgáló nélküli SQL-készlet**
 
@@ -57,7 +57,7 @@ Az Azure Active Directory beépített hitelesítés használatához meg kell adn
 
 * **Azure Active Directory Authentication (-G):** az Azure Active Directory használata a hitelesítéshez
 
-A kapcsolatok karakterlánca a következő példákhoz hasonlóan jelenhet meg:
+A kapcsolati sztring a következő példákhoz hasonló lehet:
 
 **Kiszolgáló nélküli SQL-készlet**
 
@@ -74,11 +74,11 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > Az Active Directory használatával történő hitelesítéshez [engedélyeznie kell az Azure Active Directory-hitelesítést](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="2-query"></a>2. lekérdezés
+## <a name="2-query"></a>2. Lekérdezés
 
 ### <a name="use-dedicated-sql-pool"></a>Dedikált SQL-készlet használata
 
-A csatlakoztatást követően bármilyen támogatott [Transact-SQL](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL) utasítást ki lehet állítani a példányon. Ebben a példában a lekérdezések interaktív módban lesznek elküldve:
+A csatlakozás után bármilyen támogatott [Transact-SQL-](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL-) utasítás ki van használhatja a példányon. Ebben a példában a lekérdezések interaktív módban vannak elküldve:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -87,7 +87,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-A dedikált SQL-készlet esetén a következő példák bemutatják, hogyan futtathat lekérdezéseket batch módban a-Q kapcsolóval vagy az SQL Sqlcmd:
+Dedikált SQL-készlet esetén a következő példák bemutatják, hogyan futtathat lekérdezéseket kötegelt módban a -Q lehetőséggel, vagy hogyan küldheti át az SQL-t az sqlcmd-be:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -99,7 +99,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet használata
 
-A csatlakozás után bármely támogatott [Transact-SQL](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL) utasítást kiállíthat a példányon.  A következő példában a lekérdezések interaktív módban lesznek elküldve:
+A csatlakozás után bármilyen támogatott [Transact-SQL-](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL-) utasítás ki lesz használhatja a példányon.  A következő példában a lekérdezések interaktív módban vannak elküldve:
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -108,7 +108,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-Kiszolgáló nélküli SQL-készlet esetén az alábbi példák bemutatják, hogyan futtathat lekérdezéseket batch módban a-Q kapcsolóval vagy az SQL Sqlcmd:
+Kiszolgáló nélküli SQL-készlet esetén a következő példák bemutatják, hogyan futtathat lekérdezéseket kötegelt módban a -Q lehetőséggel, vagy hogyan küldheti át az SQL-t az sqlcmd-be:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"
@@ -120,4 +120,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Sqlcmd beállításaival kapcsolatos további információkért tekintse meg a [Sqlcmd dokumentációját](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true).
+Az sqlcmd-beállításokkal kapcsolatos további információkért tekintse meg az [sqlcmd dokumentációját.](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)

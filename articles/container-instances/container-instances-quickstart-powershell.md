@@ -1,24 +1,26 @@
 ---
-title: Gyors útmutató – Docker-tároló üzembe helyezése tároló példányon – PowerShell
-description: Ebben a rövid útmutatóban a Azure PowerShell használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
+title: Rövid útmutató – Docker-tároló üzembe helyezése tárolópéldányon – PowerShell
+description: Ebben a rövid útmutatóban a Azure PowerShell egy elkülönített Azure-tárolópéldányban futó tárolóba helyezett webalkalmazás gyors üzembe helyezéséhez
 services: container-instances
 manager: gwallace
-ms.service: container-instances
-ms.topic: quickstart
 ms.date: 03/21/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: container-instances
+ms.custom:
+- mvc
+- mode-api
+ms.openlocfilehash: f9c6bac45e2e7fe18895a16831f840c3ae5a9f9d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89565582"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536161"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban Azure PowerShell használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rövid útmutató: Tárolópéldány üzembe helyezése az Azure-ban Azure PowerShell
 
-A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
+A Azure Container Instances egyszerűséggel és sebességgel futtathat kiszolgáló nélküli Docker-tárolókat az Azure-ban. Üzembe helyezhet egy alkalmazást igény szerint egy tárolópéldányon, ha nincs szüksége egy teljes tárolóvezénylési platformra, például a Azure Kubernetes Service.
 
-Ebben a rövid útmutatóban a Azure PowerShell használatával telepít egy elkülönített Windows-tárolót, és az alkalmazását teljes tartománynévvel (FQDN) teszi elérhetővé. Néhány másodperccel az egyetlen központi telepítési parancs végrehajtása után megkeresheti a tárolóban futó alkalmazást:
+Ebben a rövid útmutatóban a Azure PowerShell egy elkülönített Windows-tárolót helyez üzembe, és elérhetővé teszi az alkalmazását egy teljes tartománynévvel (FQDN). Néhány másodperccel egyetlen üzembe helyezési parancs végrehajtása után tallózhat a tárolóban futó alkalmazáshoz:
 
 ![Az Azure Container Instances szolgáltatáshoz üzembe helyezett alkalmazás képe a böngészőben][qs-powershell-01]
 
@@ -28,13 +30,13 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modulra van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata között dönt, az oktatóanyaghoz szükség lesz a Azure PowerShell modulra. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
-Először hozzon létre egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen a következő [New-AzResourceGroup][New-AzResourceGroup] paranccsal:
+Először hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen a [következő New-AzResourceGroup paranccsal:][New-AzResourceGroup]
 
  ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -42,17 +44,17 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Azure PowerShell nevű tároló-példány létrehozásához adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét a [New-AzContainerGroup][New-AzContainerGroup] parancsmaghoz. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/windows/servercore/iis:nanoserver` rendszerképet használhatja. Ez a rendszerkép a Microsoft Internet Information Services (IIS) csomagot a nano Serveren való futtatásra.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Ha tárolópéldányt Azure PowerShell, adja meg az erőforráscsoport nevét, a tárolópéldány nevét és a Docker-tároló rendszerképét a [New-AzContainerGroup parancsmag][New-AzContainerGroup] számára. Ebben a rövid útmutatóban a nyilvános rendszerképet `mcr.microsoft.com/windows/servercore/iis:nanoserver` használja. Ez a rendszerképcsomag Microsoft Internet Information Services (IIS) futtatására a Nano Serveren.
 
-Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy az IIS nyilvánosan elérhető legyen.
+Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-névcímke használatával helyez üzembe egy tárolót, hogy az IIS nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan értéket állítson be `-DnsNameLabel` , amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+A tárolópéldányok indításhoz hajtsa végre az alábbihoz hasonló parancsot. Állítson be egy egyedi értéket abban az `-DnsNameLabel` Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-Néhány másodpercen belül meg kell kapnia az Azure válaszát. A tároló `ProvisioningState` beállításának értéke kezdetben **Creating** (Létrehozás), de néhány percen belül **Succeeded** (Sikerült) állapotra kell váltania. Tekintse meg a telepítési állapotot a [Get-AzContainerGroup][Get-AzContainerGroup] parancsmaggal:
+Néhány másodpercen belül meg kell kapnia az Azure válaszát. A tároló `ProvisioningState` beállításának értéke kezdetben **Creating** (Létrehozás), de néhány percen belül **Succeeded** (Sikerült) állapotra kell váltania. Ellenőrizze az üzembe helyezés állapotát a [Get-AzContainerGroup][Get-AzContainerGroup] parancsmaggal:
 
  ```azurepowershell-interactive
 Get-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -90,7 +92,7 @@ Miután a tároló `ProvisioningState` értéke **Succeeded** (Sikerült) állap
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tárolóval, távolítsa el a [Remove-AzContainerGroup][Remove-AzContainerGroup] parancsmaggal:
+Ha végzett a tárolóval, távolítsa el a [Remove-AzContainerGroup][Remove-AzContainerGroup] parancsmaggal:
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer

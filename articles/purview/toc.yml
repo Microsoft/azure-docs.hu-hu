@@ -75,6 +75,8 @@ items:
             href: manage-integration-runtimes.md
           - name: Kapcsolati problémák hibaelhárítása
             href: troubleshoot-connections.md
+          - name: Erőforráskészlet-mintaszabályok
+            href: how-to-resource-set-pattern-rules.md
           - name: Források
             items:
               - name: Adatforrások kezelése
@@ -130,7 +132,7 @@ items:
             href: how-to-manage-term-templates.md
       - name: Tömeges szerkesztés
         items:
-          - name: Eszközök tömeges szerkesztése jegyzetek és névjegyek címkézéséhez
+          - name: Eszközök tömeges szerkesztése jegyzetek és kapcsolatok címkézéséhez
             href: how-to-bulk-edit-assets.md
       - name: Besorolás
         items:
@@ -182,7 +184,7 @@ items:
         href: supported-classifications.md
       - name: ABAP-függvény üzembe helyezési útmutatója
         href: abap-functions-deployment-guide.md
-  - name: Források
+  - name: Erőforrások
     items:
       - name: Funkcióval kapcsolatos visszajelzés (felhasználói visszajelzés)
         href: 'https://feedback.azure.com/forums/932437-azure-purview'

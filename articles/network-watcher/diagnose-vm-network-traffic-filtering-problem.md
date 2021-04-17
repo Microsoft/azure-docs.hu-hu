@@ -1,27 +1,30 @@
 ---
-title: 'Gyors útmutató: a virtuálisgép-hálózati forgalom szűrési problémáinak diagnosztizálása – Azure Portal'
+title: 'Rövid útmutató: Virtuális gép hálózati forgalmi szűrővel való problémájának diagnosztizálása – Azure Portal'
 titleSuffix: Azure Network Watcher
 description: Ebből a rövid útmutatóból megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalmi szűrőproblémáit az Azure Network Watcher IP-folyamat ellenőrzése funkciójával.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: network-watcher
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: network-watcher
-ms.workload: infrastructure
-ms.date: 04/20/2018
 ms.author: damendo
-ms.custom: mvc
-ms.openlocfilehash: 320e660c8bec50f50f0e048fff12cf1ab91e4870
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+editor: ''
+ms.date: 04/20/2018
+ms.assetid: ''
+ms.topic: quickstart
+ms.service: network-watcher
+ms.workload: infrastructure
+ms.tgt_pltfrm: network-watcher
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- mode-portal
+ms.openlocfilehash: e8a9ce38e29f743fd40a6998d8bdc300080b2cee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065446"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537762"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása az Azure Portal használatával
 
@@ -36,8 +39,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
 1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
-2. Válassza a **számítás** lehetőséget, majd válassza a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server** verzióját.
-3. Adja meg vagy válassza ki a következő adatokat, fogadja el a többi beállítás alapértelmezett értékeit, majd kattintson az **OK gombra**:
+2. Válassza **a Számítás** lehetőséget, majd a Windows Server **2016 Datacenter** vagy az **Ubuntu Server egy verzióját.**
+3. Adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK gombra:**
 
     |Beállítás|Érték|
     |---|---|
@@ -46,7 +49,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott összetettségi követelményeknek.|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza ki az **USA keleti** régióját|
+    |Hely| Válassza az **USA keleti régiója lehetőséget**|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -58,9 +61,9 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha legalább egy régióban engedélyezve van egy hálózati figyelő, ugorjon az [IP-forgalom használatának ellenőrzése](#use-ip-flow-verify)elemre.
+Ha legalább egy régióban már engedélyezve van a Network Watcher, ugorjon az [IP-folyamat ellenőrzésének használata részhez.](#use-ip-flow-verify)
 
-1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha **Network Watcher** jelenik meg az eredmények között, válassza ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor **Network Watcher** megjelenik az eredmények között, válassza ki.
 2. Engedélyezze a hálózati figyelőt az USA keleti régiójában, mert az előző lépésben ebben a régióban helyezte üzembe a virtuális gépet. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -71,7 +74,7 @@ Ha legalább egy régióban engedélyezve van egy hálózati figyelő, ugorjon a
 
 Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le.
 
-1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Minden szolgáltatás** *Szűrő* mezőbe írja be a *Network Watcher* kifejezést. Ha **Network Watcher** jelenik meg az eredmények között, válassza ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Minden szolgáltatás** *Szűrő* mezőbe írja be a *Network Watcher* kifejezést. Amikor **Network Watcher** megjelenik az eredmények között, válassza ki.
 2. A **HÁLÓZATI DIAGNOSZTIKAI ESZKÖZÖK** területen válassza az **IP-folyamat ellenőrzése** lehetőséget.
 3. Jelölje ki az előfizetését, adja meg vagy válassza ki a következő értékeket, és válassza az **Ellenőrzés** lehetőséget, az alábbi képen látható módon:
 
@@ -84,7 +87,7 @@ Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelel
     | Irány         | Kimenő                                                                                          |
     | Helyi IP-cím  | 10.0.0.4                                                                                          |
     | Helyi port      | 60000                                                                                                |
-    | Távoli IP-cím | 13.107.21.200 – <www.bing.com> egyik címe.                                             |
+    | Távoli IP-cím | 13.107.21.200 – A <www.bing.com>.                                             |
     | Távoli port       | 80                                                                                                |
 
     ![IP-forgalomellenőrző](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

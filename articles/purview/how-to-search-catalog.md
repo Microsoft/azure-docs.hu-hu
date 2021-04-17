@@ -1,67 +1,67 @@
 ---
-title: 'Útmutató: a Data Catalog keresése'
-description: Ez a cikk áttekintést nyújt a adatkatalógusok kereséséről.
+title: 'How to: search the Data Catalog'
+description: Ez a cikk áttekintést nyújt az adatkatalógusban való keresésről.
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 7799266bf9cece1ed789d6fab64ec970a09fbfcb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588438"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564913"
 ---
-# <a name="search-the-azure-purview-data-catalog"></a>Keresés az Azure-beli hatáskörébe Data Catalog
+# <a name="search-the-azure-purview-data-catalog"></a>Keresés az Azure Purview Data Catalog
 
-Az adatfelderítés az első lépés az adatelemzési és adatkezelési munkaterhelések számára az adatok felhasználói számára. Az adatfelderítés időigényes lehet, mert előfordulhat, hogy nem tudja, hol találja a kívánt adatmennyiséget. Előfordulhat, hogy az adatkeresés után is kétségei vannak attól függően, hogy megbízik-e az adatkezelésben, és függőséget kell-e kihasználnia.
+Az adatfelderítés az adatelemzési vagy adatirányítási számítási feladatok első lépése az adat felhasználók számára. Az adatfelderítés időigényes lehet, mert előfordulhat, hogy nem tudja, hol találja a kívánt adatokat. Még az adatok megkeresése után is lehetnek kétségei, hogy megbízhat-e az adatokban, és függhet-e az adatoktól.
 
-Az Azure-beli keresés célja, hogy felgyorsítsa az adatfelderítési folyamat felgyorsítását, hogy gyorsan megtalálják az érintett adatmennyiséget. Ez a cikk azt ismerteti, hogyan keresheti meg az Azure hatáskörébe tartozó adatkatalógust, hogy gyorsan megtalálja a keresett adatgyűjtést.
+Az Azure Purview-keresés célja, hogy felgyorsítsa az adatfelderítési folyamatot, és gyorsan megtalálja a fontos adatokat. Ez a cikk bemutatja, hogyan kereshet az Azure Purview-adatkatalógusban a keresett adatok gyors megkereséséhez.
 
 ## <a name="search-the-catalog-for-assets"></a>Eszközök keresése a katalógusban
 
-Az Azure-ban a keresősáv a hatáskörébe Studio UX tetején található.
+Az Azure Purview-ban a keresősáv a Purview Studio felhasználói felületének tetején található.
 
-:::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Az Azure-beli helyi keresősáv helyét bemutató képernyőkép" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Képernyőkép az Azure Purview keresősáv helyéről" border="true":::
 
-Ha a keresősáv gombra kattint, megtekintheti a legutóbbi keresési előzményeket és a nemrégiben elért eszközöket. Válassza az összes megtekintése lehetőséget az összes nemrég megtekintett eszköz megjelenítéséhez.
+Ha a keresősávra kattint, láthatja a legutóbbi keresési előzményeket és a nemrégiben elért eszközöket. Az összes Az összes megtekintése eszköz megtekintéséhez válassza a "Az összes megtekintése" lehetőséget.
 
-:::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="Képernyőfelvétel a keresősáv megjelenítéséről a kulcsszavak megadása előtt" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="Képernyőkép a keresősávról a kulcsszavak bevitele előtt" border="true":::
 
-Adja meg azokat a kulcsszavakat, amelyek segítenek azonosítani az adategységet, például a nevét, az adattípusát, a besorolásait és a Szószedet feltételeit. Ahogy a kívánt eszközhöz kapcsolódó kulcsszavakat adja meg, az Azure-beli hatáskörébe a keresésre és a lehetséges eszköz-egyezésekre vonatkozó javaslatokat jelenít meg. A keresés befejezéséhez kattintson a "keresési eredmények megtekintése" gombra, vagy nyomja le az ENTER billentyűt.
+Olyan kulcsszavakat adjon meg, amelyek segítenek azonosítani az eszközt, például a nevét, az adattípust, a besorolásokat és a szószedet kifejezéseket. Amikor a kívánt eszközhöz kapcsolódó kulcsszavakat ad meg, az Azure Purview javaslatokat jelenít meg a kereshető adatokra és a lehetséges eszközmeg egyezésekre. A keresés befejezéséhez kattintson a "Keresési eredmények megtekintése" elemre, vagy nyomja le az Enter billentyűt.
 
-:::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="Képernyőfelvétel: a keresési sáv megjelenítése felhasználóként a kulcsszavakban" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="Képernyőkép a keresősávról, amikor a felhasználó kulcsszavakat ad meg" border="true":::
 
-A találatok oldal megjeleníti azon eszközök listáját, amelyek megfelelnek a relevancia szempontjából megadott kulcsszavaknak. Számos tényező befolyásolhatja az adott eszköz relevanciás pontszámát. A lista további szűréséhez válassza ki az Ön által keresett eszközre vonatkozó konkrét adattárakat, besorolásokat, névjegyeket, címkéket és szószedeti kifejezéseket.
+A keresési eredmények oldalán a relevancia alapján megadott kulcsszavaknak megfelelő eszközök listája látható. Az eszközök relevanciapontszámát különböző tényezők befolyásolhatják. A listát tovább szűrheti, ha kiválasztja a keresett adattárra vonatkozó adott adattárakat, besorolásokat, névjegyeket, címkéket és szószedet kifejezéseket.
 
-:::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="A keresés eredményét bemutató képernyőkép" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="Képernyőkép egy keresés eredményeiről" border="true":::
 
- A kívánt eszközre kattintva megtekintheti az eszköz adatai lapot, ahol megtekintheti a séma, a Lineage és az objektum tulajdonosai tulajdonságokat.
+ Kattintson a kívánt eszközre az eszköz részleteit tartalmazó oldal megtekintéséhez, ahol megtekintheti a sémát, a leszárazást és az eszköztulajdonosokat.
 
-:::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="Az eszköz részletei lapot ábrázoló képernyőfelvétel" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="Képernyőkép az eszközadatok lapról" border="true":::
 
-## <a name="search-query-syntax"></a>Keresési lekérdezés szintaxisa
+## <a name="search-query-syntax"></a>Keresési lekérdezési szintaxis
 
-Minden keresési lekérdezés kulcsszavakat és operátorokat tartalmaz. A kulcsszavak olyanok, amelyek egy adott eszköz tulajdonságainak részét képezik. A lehetséges kulcsszavak a besorolás, a Szószedet kifejezés, az eszköz leírása vagy az eszköz neve lehet. A kulcsszó csak annak a tulajdonságnak a része lehet, amelyet meg szeretne feleltetni. A kulcsszavak és az alább felsorolt operátorok használatával biztosíthatja, hogy az Azure hatáskörébe adja vissza a keresett eszközöket. 
+Minden keresési lekérdezés kulcsszavakból és operátorból áll. A kulcsszó egy olyan dolog, amely az eszköz tulajdonságainak részét képezi. Lehetséges kulcsszavak: besorolás, szószedet, eszközleírás vagy eszköznév. A kulcsszó csak annak a tulajdonságnak a része lehet, amelynek meg kell egyeznie. Kulcsszavak és az alább felsorolt operátorok használatával biztosíthatja, hogy az Azure Purview visszaadja a keresett eszközöket. 
 
-Alább láthatók a keresési lekérdezések összeállítására szolgáló operátorok. A kezelők tetszőleges számú alkalommal kombinálhatók egyetlen lekérdezésben.
+Az alábbiakban azok az operátorok olvashatók, amelyek keresési lekérdezések írására használhatók. Az operátorok egy lekérdezésben annyiszor kombinálhatók, amennyire csak szükségük van.
 
 | Operátor | Definíció | Példa |
 | -------- | ---------- | ------- |
-| OR | Azt határozza meg, hogy egy eszköznek legalább egy kulcsszóval kell rendelkeznie. Minden sapkában kell lennie. Egy üres terület is vagy operátor.  | A lekérdezés `hive OR database` "kaptár" vagy "adatbázis" vagy mindkettőt tartalmazó eszközöket ad vissza. |
-| ÉS | Azt határozza meg, hogy egy eszköznek mindkét kulcsszóval kell rendelkeznie. Minden sapkában kell lennie | A lekérdezés a `hive AND database` "kaptár" és az "adatbázis" értéket tartalmazó eszközöket ad vissza. |
-| NOT | Meghatározza, hogy az eszköz nem tartalmazhatja a NOT záradéktól jobbra található kulcsszót. | A lekérdezés a `hive NOT database` "kaptár" karaktert tartalmazó eszközöket ad vissza, de az "adatbázis" nem. |
-| () | Csoportosítja a kulcsszavakat és a kezelőket. Több operátor kombinálásával a zárójelek határozzák meg a műveletek sorrendjét. | A lekérdezés a `hive AND (database OR warehouse)` "kaptár" és a "Database" vagy a "Warehouse", vagy mindkettőt tartalmazó eszközöket adja vissza. |
-| "" | Megadja a pontos tartalmat egy kifejezésben, amelynek a lekérdezésnek egyeznie kell. | A lekérdezés a `"hive database"` "kaptár-adatbázis" kifejezést tartalmazó eszközöket adja vissza a tulajdonságaiban. |
-| * | Egy vagy több karakterből álló helyettesítő karakter. A kulcsszó első karaktere nem lehet. | A lekérdezés `hiv\` * visszaadja azokat az eszközöket, amelyek olyan tulajdonságokkal rendelkeznek, amelyek "HIV"-vel kezdődnek, például "kaptár" vagy "kaptár-Table". |
-| ? | Egyetlen karakternek megfelelő helyettesítő karakter. A kulcsszó első karaktere nem lehet | A lekérdezés olyan `hiv?` eszközöket ad vissza, amelyek a "HIV" kezdetű tulajdonságokkal rendelkeznek, és négy betűből állnak, például "kaptár" vagy "," |
+| OR | Megadja, hogy az adateszköznek a két kulcsszó közül legalább az egyiknek kell lennie. Minden 0000-nek kell lennie. A térköz egyben OR operátor is.  | A lekérdezés `hive OR database` olyan adateszközöket ad vissza, amelyek "hive" vagy "database" vagy mindkettőt tartalmaznak. |
+| ÉS | Megadja, hogy az adateszköznek mindkét kulcsszóval kell lennie. Minden cap-ban meg kell lennie | A lekérdezés olyan eszközöket ad vissza, amelyek a `hive AND database` "hive" és az "adatbázis" adatokat is tartalmazzák. |
+| NOT | Megadja, hogy egy adateszköz nem tartalmazhatja a NOT záradéktól jobbra található kulcsszót | A lekérdezés olyan eszközöket ad vissza, amelyek tartalmazzák a `hive NOT database` "hive" értéket, de a "database" értéket nem. |
+| () | Kulcsszavak és operátorok egy halmazát csoportosan tartalmazza. Több operátor kombinálása esetén a zárójelek határozzák meg a műveletek sorrendjét. | A lekérdezés `hive AND (database OR warehouse)` olyan eszközöket ad vissza, amelyek "hive" és "database" vagy "warehouse" vagy mindkettőt tartalmaznak. |
+| "" | Pontos tartalmat ad meg egy kifejezésben, amely alapján a lekérdezésnek egyeznie kell. | A lekérdezés olyan eszközöket ad vissza, amelyek tulajdonságaikban a `"hive database"` "hive database" kifejezés található |
+| * | Helyettesítő karakter, amely egy vagy több karakterre illeszkedik. Nem lehet egy kulcsszó első karaktere. | A lekérdezés olyan adateszközöket ad vissza, amelyek olyan tulajdonságokkal rendelkeznek, amelyek "dat" tulajdonságokkal rendelkeznek, például `dat*` "data" vagy "database". |
+| ? | Helyettesítő karakter, amely egyetlen karakterre illeszkedik. Nem lehet egy kulcsszó első karaktere | A lekérdezés olyan adateszközöket ad vissza, amelyek tulajdonságai "dat" betűvel kezdődnek, és négy betűből állnak, például `dat?` "date" vagy "data". |
 
 > [!Note]
-> Minden nagybetű esetében mindig logikai operátorokat (**és**, **vagy** **nem**) kell megadni. Ellenkező esetben az eset nem számít, és nem végez felesleges szóközöket.
+> Mindig adja meg a logikai operátorokat (**AND**, **OR**, **NOT**) minden nagybetűben. Ellenkező esetben a kis- és a kis- és a szóközök nem számítanak.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Szószedet használati feltételeinek létrehozása, importálása és exportálása](how-to-create-import-export-glossary.md)
-- [Az üzleti kifejezések sablonjának kezelése Szószedet](how-to-manage-term-templates.md)
+- [Szószedet kifejezések létrehozása, importálása és exportálása](how-to-create-import-export-glossary.md)
+- [Üzleti szószedet kifejezéssablonjainak kezelése](how-to-manage-term-templates.md)

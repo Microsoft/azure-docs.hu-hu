@@ -1,40 +1,40 @@
 ---
-title: Frissítési kiszolgáló csoport – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Ez a cikk azt ismerteti, hogyan frissítheti a PostgreSQL-t és a Citus-t a Azure Database for PostgreSQL-nagy kapacitású (Citus) szolgáltatásban.
+title: Kiszolgálócsoport frissítése – rugalmas skálázás (Citus) – Azure Database for PostgreSQL
+description: Ez a cikk a PostgreSQL és a Citus frissítését ismerteti a Azure Database for PostgreSQL – rugalmas skálázás (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023979"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518898"
 ---
-# <a name="upgrade-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport frissítése
+# <a name="upgrade-hyperscale-citus-server-group"></a>Kiszolgálócsoport rugalmas skálázás (Citus) frissítése
 
-Ezek az utasítások azt írják le, hogyan lehet a PostgreSQL új főverziójára frissíteni az összes kiszolgálói csoport csomópontjain.
+Ezek az utasítások a PostgreSQL új főverzióra való frissítését ismertetik az összes kiszolgálócsoport-csomóponton.
 
 ## <a name="test-the-upgrade-first"></a>Először a frissítés tesztelése
 
-A PostgreSQL frissítése több változást okoz, mint amennyit valószínűleg elképzel, mert a nagy kapacitású (Citus) frissíti az [adatbázis-bővítményeket](concepts-hyperscale-extensions.md)is, beleértve a Citus-bővítményt is.
-Javasoljuk, hogy az éles környezet frissítése előtt tesztelje az alkalmazást az új PostgreSQL-sel és a Citus-verzióval.
+A PostgreSQL frissítése több változást okoz, mint amilyennek elképzelhető, mert a rugalmas skálázás (Citus) az adatbázis-bővítményeket is [frissíti,](concepts-hyperscale-extensions.md)beleértve a Citus-bővítményt is.
+Az éles környezet frissítése előtt határozottan javasoljuk, hogy tesztelje alkalmazását az új PostgreSQL- és Citus-verzióval.
 
-A tesztelésének kényelmes módja, ha az [időponthoz tartozó visszaállítással](concepts-hyperscale-backup.md#point-in-time-restore-pitr)készíti el a kiszolgálócsoport másolatát. Frissítse a példányt, és tesztelje az alkalmazást. Miután meggyőződött róla, hogy minden megfelelően működik, frissítse az eredeti kiszolgálói csoportot.
+A tesztelés kényelmes módja, ha időponthoz időben visszaállítja a [kiszolgálócsoportot.](concepts-hyperscale-backup.md#restore) Frissítse a másolatot, és tesztelje rajta az alkalmazást. Miután ellenőrizte, hogy minden megfelelően működik-e, frissítse az eredeti kiszolgálócsoportot.
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>Kiszolgálócsoport frissítése a Azure Portal
 
-1. A nagy kapacitású (Citus) kiszolgálócsoport **Áttekintés** szakaszában kattintson a **frissítés** gombra.
-1. Megjelenik egy párbeszédpanel, amely a PostgreSQL és a Citus aktuális verzióját jeleníti meg.
-   Válasszon egy új PostgreSQL-verziót a **frissítés** listán.
-1. A **frissítés után ellenőrizze a Citus verziójának** értékét.
+1. A **kiszolgálócsoport** Áttekintés rugalmas skálázás (Citus) kattintson a Frissítés **gombra.**
+1. Megjelenik egy párbeszédpanel, amely a PostgreSQL és a Citus aktuális verzióját mutatja.
+   Válasszon egy új PostgreSQL-verziót a **Frissítés a következőre** listában.
+1. Ellenőrizze, hogy a **Citus verziószámában a frissítés után a** várt érték van-e megszabadulva.
    Ez az érték a kiválasztott PostgreSQL-verzió alapján változik.
-1. A folytatáshoz kattintson a **frissítés** gombra.
+1. A **folytatáshoz kattintson** a Frissítés gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg a [PostgreSQL támogatott verzióit](concepts-hyperscale-versions.md).
-* Tekintse meg, hogy [mely bővítmények](concepts-hyperscale-extensions.md) vannak becsomagolva a PostgreSQL egyes verzióihoz egy nagy kapacitású (Citus).
+* További információ [a támogatott PostgreSQL-verziókról.](concepts-hyperscale-versions.md)
+* Tekintse [meg, hogy mely bővítmények](concepts-hyperscale-extensions.md) vannak csomagolva az egyes PostgreSQL-verziókhoz egy rugalmas skálázás (Citus)-csoportban.

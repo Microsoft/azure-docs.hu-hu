@@ -1,28 +1,28 @@
 ---
-title: Tesztelési eszközkészlet tesztelése
-description: Az ARM template test Toolkit által futtatott tesztek leírása.
+title: Tesztelési esetek a tesztelési eszközkészlethez
+description: Az ARM-sablonteszt eszközkészlet által futtatott teszteket ismerteti.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064145"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363393"
 ---
-# <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési esetei
+# <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablonteszt eszközkészlet alapértelmezett tesztelési esete
 
-Ez a cikk a Azure Resource Manager sablonok (ARM-sablonok) [sablon test Toolkit használatával](test-toolkit.md) futtatott alapértelmezett teszteket ismerteti. Olyan példákat tartalmaz, amelyek átadják vagy elmulasztják a tesztet. Tartalmazza az egyes tesztek nevét. Egy adott teszt futtatásához lásd: [Paraméterek tesztelése](test-toolkit.md#test-parameters).
+Ez a cikk a sablonteszt eszközkészlettel futtatott alapértelmezett teszteket ismerteti a Azure Resource Manager (ARM-sablonok) számára. [](test-toolkit.md) Olyan példákat tartalmaz, amelyek megesnek vagy sikertelenek a teszten. Ez tartalmazza az egyes tesztek nevét. Egy adott teszt futtatásához lásd: [Tesztparaméterek.](test-toolkit.md#test-parameters)
 
-## <a name="use-correct-schema"></a>Helyes séma használata
+## <a name="use-correct-schema"></a>A megfelelő séma használata
 
-Teszt neve: **a DeploymentTemplate séma helyes**
+Teszt neve: **DeploymentTemplate séma helyes**
 
-A sablonban érvényes séma-értéket kell megadnia.
+A sablonban meg kell adnia egy érvényes sémaértéket.
 
-A következő példa **átadja** ezt a tesztet.
+Az alábbi példa megfelel **ennek a** tesztnek.
 
 ```json
 {
@@ -33,7 +33,7 @@ A következő példa **átadja** ezt a tesztet.
 }
 ```
 
-A sablon Schema tulajdonságát az alábbi sémák egyikére kell beállítani:
+A sablon sématulajdonságát a következő sémák egyikéhez kell beállítani:
 
 * `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`
@@ -41,13 +41,13 @@ A sablon Schema tulajdonságát az alábbi sémák egyikére kell beállítani:
 * `https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`
 
-## <a name="parameters-must-exist"></a>A paramétereknek léteznie kell
+## <a name="parameters-must-exist"></a>Paramétereknek léteznie kell
 
-Teszt neve: a **Parameters tulajdonságnak léteznie kell**
+Teszt neve: **A Parameters tulajdonságnak léteznie kell**
 
-A sablonnak tartalmaznia kell egy Parameters elemet. A paraméterek elengedhetetlenek ahhoz, hogy a sablonok újrafelhasználhatók legyenek a különböző környezetekben. Adjon hozzá paramétereket a sablonhoz olyan értékekhez, amelyek a különböző környezetekben való üzembe helyezéskor változnak.
+A sablonnak paraméterelemmel kell lennie. A paraméterek elengedhetetlenek ahhoz, hogy a sablonok különböző környezetekben is újrahasználhatók. Adjon hozzá paramétereket a sablonhoz a különböző környezetekben való üzembe helyezéskor megváltozó értékekhez.
 
-A következő példa **átadja** ezt a tesztet:
+A következő példa megfelel **ennek a** tesztnek:
 
 ```json
 {
@@ -67,21 +67,21 @@ A következő példa **átadja** ezt a tesztet:
 
 ## <a name="declared-parameters-must-be-used"></a>Deklarált paramétereket kell használni
 
-Teszt neve: **a paramétereket hivatkozni** kell
+Teszt neve: **A paraméterekre hivatkozni kell**
 
-A sablonban felmerülő félreértések csökkentése érdekében törölje a definiált, de nem használt paramétereket. Ez a teszt megkeresi azokat a paramétereket, amelyeket a sablon sehol nem használ. A használaton kívüli paraméterek kiiktatásával megkönnyíti a sablon üzembe helyezését, mert nem kell szükségtelen értékeket megadnia.
+A sablonban a félreértések csökkentése érdekében törölje a definiált, de nem használt paramétereket. Ez a teszt megkeresi a sablonban sehol nem használt paramétereket. A nem használt paraméterek kiiktatása megkönnyíti a sablon üzembe helyezését is, mivel nem kell szükségtelen értékeket adnia.
 
-## <a name="secure-parameters-cant-have-hardcoded-default"></a>A biztonságos paraméterek nem rendelkezhetnek hardcoded alapértelmezett értékkel
+## <a name="secure-parameters-cant-have-hardcoded-default"></a>A biztonságos paraméterek alapértelmezett kódja nem lehet szoftveres
 
-Teszt neve: **a Secure string paraméterek nem rendelkezhetnek alapértelmezett értékkel**
+Teszt neve: **A biztonságos sztring paramétereinek nem lehet alapértelmezett beállítása**
 
-A sablonban ne adjon meg rögzített alapértelmezett értéket a biztonságos paraméterek számára. Az alapértelmezett értékhez egy üres karakterláncot kell megadni.
+Ne adjon meg nem kötelezően kódolt alapértelmezett értéket a sablonban egy biztonságos paraméterhez. Az üres sztring az alapértelmezett értékhez megfelelő.
 
-A **SecureString** vagy a **SecureObject** típust kell használnia a bizalmas értékeket, például jelszavakat tartalmazó paramétereknél. Ha egy paraméter biztonságos típust használ, a paraméter értéke nem kerül naplózásra, illetve nem tárolódik az üzembe helyezési előzmények között. Ez a művelet megakadályozza, hogy a rosszindulatú felhasználók felfedezzék a bizalmas értéket.
+A **SecureString** vagy **SecureObject** típust bizalmas értékeket, például jelszavakat tartalmazó paramétereken használhatja. Ha egy paraméter biztonságos típust használ, a paraméter értéke nincs naplózva vagy tárolva az üzembe helyezési előzményekben. Ez a művelet megakadályozza, hogy egy rosszindulatú felhasználó felfedezze a bizalmas értéket.
 
-Ha azonban alapértelmezett értéket ad meg, ez az érték a sablonhoz vagy az üzembe helyezési előzményekhez hozzáférő bárki számára is felderíthető.
+Ha azonban alapértelmezett értéket ad meg, ezt az értéket bárki felderítheti, aki hozzáfér a sablonhoz vagy az üzembe helyezési előzményekhez.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet:
+Az alábbi példa nem **felel meg a** tesztnek:
 
 ```json
 "parameters": {
@@ -92,7 +92,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet:
 }
 ```
 
-A következő példa **átadja** ezt a tesztet:
+A következő példa megfelel **ennek a** tesztnek:
 
 ```json
 "parameters": {
@@ -102,13 +102,13 @@ A következő példa **átadja** ezt a tesztet:
 }
 ```
 
-## <a name="environment-urls-cant-be-hardcoded"></a>A környezeti URL-címek nem lehetnek hardcoded
+## <a name="environment-urls-cant-be-hardcoded"></a>A környezeti URL-címek nem szoftveres kódolva
 
-Teszt neve: a **DeploymentTemplate nem tartalmazhat hardcoded URI** -t
+Teszt neve: **DeploymentTemplate nem tartalmazhat szoftveres URI-t**
 
-Ne parancsmagba a környezet URL-címeit a sablonban. Ehelyett használja a [környezeti funkciót](template-functions-deployment.md#environment) , hogy dinamikusan beolvassa ezeket az URL-címeket az üzembe helyezés során. A blokkolt URL-gazdagépek listáját a [tesztelési eset](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)című részben tekintheti meg.
+Ne kódolja a környezet URL-címeit a sablonban. Ehelyett az environment függvény [használatával](template-functions-deployment.md#environment) dinamikusan lekérte ezeket az URL-címeket az üzembe helyezés során. A letiltott URL-gazdagépek listájáért tekintse meg a [tesztelési esetet.](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)
 
-Az alábbi példa ezt a tesztet **nem tudja végrehajtani** , mert az URL-cím hardcoded.
+Az alábbi példa **sikertelen,** mert az URL-cím szoftveres.
 
 ```json
 "variables":{
@@ -116,7 +116,7 @@ Az alábbi példa ezt a tesztet **nem tudja végrehajtani** , mert az URL-cím h
 }
 ```
 
-A teszt a [Összefűzés](template-functions-string.md#concat) vagy az [URI](template-functions-string.md#uri)használata esetén is **meghiúsul** .
+A teszt akkor **is sikertelen** lesz, ha [concat vagy](template-functions-string.md#concat) [URI-val használja.](template-functions-string.md#uri)
 
 ```json
 "variables":{
@@ -125,7 +125,7 @@ A teszt a [Összefűzés](template-functions-string.md#concat) vagy az [URI](tem
 }
 ```
 
-A következő példa **átadja** ezt a tesztet.
+Az alábbi példa megfelel **ennek a** tesztnek.
 
 ```json
 "variables": {
@@ -133,17 +133,17 @@ A következő példa **átadja** ezt a tesztet.
 },
 ```
 
-## <a name="location-uses-parameter"></a>A hely paramétert használ
+## <a name="location-uses-parameter"></a>A Hely paramétert használ
 
-Teszt neve: **a hely nem lehet hardcoded**
+Teszt neve: **A hely nem lehet szoftveres kód**
 
-A sablonoknak egy Location nevű paraméterrel kell rendelkezniük. Ezzel a paraméterrel állíthatja be az erőforrások helyét a sablonban. A fősablonban ( _azuredeploy.json_ vagy _mainTemplate.js_) Ez a paraméter alapértelmezés szerint az erőforráscsoport helyére kerül. A csatolt vagy beágyazott sablonokban a Location paraméternek nem lehet alapértelmezett helye.
+A sablonoknak tartalmazni kell egy location nevű paramétert. Ezzel a paraméterrel használhatja az erőforrások helyének beállítását a sablonban. A fő sablonban (a neve _azuredeploy.json_ vagymainTemplate.js _),_ ez a paraméter alapértelmezés szerint az erőforráscsoport helyét használhatja. Csatolt vagy beágyazott sablonokban a location paraméternek nem lehet alapértelmezett helye.
 
-Előfordulhat, hogy a sablon felhasználói korlátozott számú régióval rendelkeznek. Az erőforrás helyének megadását követően előfordulhat, hogy a felhasználók nem tudnak erőforrásokat létrehozni az adott régióban. A felhasználók akkor is blokkolva lehetnek, ha az erőforrás helyét az értékre állítja `"[resourceGroup().location]"` . Előfordulhat, hogy az erőforráscsoport olyan régióban lett létrehozva, amelyhez más felhasználók nem férhetnek hozzá. Ezek a felhasználók le vannak tiltva a sablon használatával.
+Előfordulhat, hogy a sablon felhasználói számára korlátozott régiók érhetők el. Az erőforrás helyének kódba való bekódlása esetén előfordulhat, hogy a felhasználók nem hoznak létre erőforrást az adott régióban. A felhasználók akkor is letilthatóak, ha az erőforrás helyét a következőre van beállítva: `"[resourceGroup().location]"` . Előfordulhat, hogy az erőforráscsoport olyan régióban lett létrehozva, amelyhez más felhasználók nem férnek hozzá. Ezek a felhasználók nem használják a sablont.
 
-Egy olyan Location paraméter megadásával, amely alapértelmezés szerint az erőforráscsoport helyét használja, a felhasználók az alapértelmezett értéket használhatják, ha kényelmesek, de más helyet is megadhatnak.
+Ha megad egy helyparamétert, amely alapértelmezés szerint az erőforráscsoport helyét adja meg, a felhasználók az alapértelmezett értéket használhatjak, ha kényelmesek, de megadhatnak egy másik helyet is.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet, mert az erőforráshoz tartozó hely a értékre van állítva `resourceGroup().location` .
+A következő példában ez a **teszt** sikertelen, mert az erőforrás helye a következőre van beállítva: `resourceGroup().location` .
 
 ```json
 {
@@ -167,7 +167,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet, mert az erőforr
 }
 ```
 
-A következő példa egy Location paramétert használ, de ez a teszt **sikertelen** , mert a Location paraméter alapértelmezett értéke egy hardcoded-hely.
+A következő példa egy  helyparamétert használ, de ez a teszt sikertelen, mert a location paraméter alapértelmezett értéke egy szoftveres hely.
 
 ```json
 {
@@ -197,7 +197,7 @@ A következő példa egy Location paramétert használ, de ez a teszt **sikertel
 }
 ```
 
-Ehelyett hozzon létre egy olyan paramétert, amely Alapértelmezésben az erőforráscsoport helyére kerül, de lehetővé teszi a felhasználók számára, hogy más értéket adjanak meg. A következő példa **átadja** ezt a tesztet, ha a sablon a fő sablonként van használatban.
+Ehelyett hozzon létre egy paramétert, amely alapértelmezés szerint az erőforráscsoport helyét adja meg, de lehetővé teszi, hogy a felhasználók más értéket adjanak meg. Az alábbi példa **akkor ad** át egy tesztet, ha a sablont használja fő sablonként.
 
 ```json
 {
@@ -230,15 +230,15 @@ Ehelyett hozzon létre egy olyan paramétert, amely Alapértelmezésben az erőf
 }
 ```
 
-Ha azonban az előző példában csatolt sablonként van használatban, a teszt **sikertelen lesz**. Csatolt sablonként való használata esetén távolítsa el az alapértelmezett értéket.
+Ha azonban az előző példát csatolt sablonként használja, a teszt sikertelen **lesz.** Csatolt sablonként használva távolítsa el az alapértelmezett értéket.
 
-## <a name="resources-should-have-location"></a>Az erőforrásoknak helyet kell tartalmaznia
+## <a name="resources-should-have-location"></a>Az erőforrásoknak helynek kell lennie
 
-Teszt neve: **az erőforrásoknak helyet kell tartalmaznia**
+Teszt neve: **Az erőforrásoknak helynek kell lennie**
 
-Az erőforrás helyét a [sablon kifejezésére](template-expressions.md) vagy a (z) értékre kell beállítani `global` . A sablon kifejezés általában az előző tesztben leírt Location paramétert fogja használni.
+Az erőforrás helyét egy vagy egy [sablonkifejezésre kell](template-expressions.md) `global` beállítani. A sablonkifejezés általában az előző tesztben leírt location paramétert használja.
 
-A következő példa **nem teljesíti** ezt a tesztet, mert a hely nem kifejezés vagy `global` .
+A következő példa **nem felel** meg a tesztnek, mert a hely nem kifejezés vagy `global` .
 
 ```json
 {
@@ -264,7 +264,7 @@ A következő példa **nem teljesíti** ezt a tesztet, mert a hely nem kifejezé
 }
 ```
 
-A következő példa **átadja** ezt a tesztet.
+Az alábbi példa megfelel **ennek a** tesztnek.
 
 ```json
 {
@@ -289,7 +289,7 @@ A következő példa **átadja** ezt a tesztet.
 }
 ```
 
-A következő példa is **átadja** ezt a tesztet.
+A következő példa is megfelel **ennek a** tesztnek.
 
 ```json
 {
@@ -324,11 +324,11 @@ A következő példa is **átadja** ezt a tesztet.
 
 ## <a name="vm-size-uses-parameter"></a>A virtuális gép mérete paramétert használ
 
-Teszt neve: **a virtuális gép méretének paraméternek kell lennie**
+Teszt neve: **A virtuális gép méretének paraméternek kell lennie**
 
-Ne parancsmagba a virtuális gép méretét. Adjon meg egy paramétert, hogy a sablon felhasználói módosíthassák a telepített virtuális gép méretét.
+Ne kódolvassa a virtuális gép méretét. Adjon meg egy paramétert, hogy a sablon felhasználói módosítsák az üzembe helyezett virtuális gép méretét.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet.
+Az alábbi példa nem **felel meg** a tesztnek.
 
 ```json
 "hardwareProfile": {
@@ -356,13 +356,13 @@ Ezután állítsa a virtuális gép méretét erre a paraméterre.
 },
 ```
 
-## <a name="min-and-max-values-are-numbers"></a>A minimális és a maximális érték számok
+## <a name="min-and-max-values-are-numbers"></a>A minimális és maximális értékek számok
 
 Teszt neve: **a minimális és a maximális érték számok**
 
-Ha a paraméterhez a min és a Max értéket adja meg, akkor adja meg őket számként.
+Ha minimális és maximális értékeket ad meg egy paraméterhez, adja meg őket számokként.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet:
+Az alábbi példa nem **felel meg a** tesztnek:
 
 ```json
 "exampleParameter": {
@@ -372,7 +372,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet:
 },
 ```
 
-Ehelyett számokként adja meg az értékeket. A következő példa **átadja** ezt a tesztet:
+Ehelyett számokként adja meg az értékeket. A következő példa megfelel **ennek a** tesztnek:
 
 ```json
 "exampleParameter": {
@@ -382,36 +382,36 @@ Ehelyett számokként adja meg az értékeket. A következő példa **átadja** 
 },
 ```
 
-Akkor is ezt a figyelmeztetést kapja, ha a min vagy a maximális értéket adja meg, a másikat azonban nem.
+Akkor is ez a figyelmeztetés jelenik meg, ha minimális vagy maximális értéket ad meg, de a másikat nem.
 
-## <a name="artifacts-parameter-defined-correctly"></a>Az összetevők paramétere helyesen van megadva
+## <a name="artifacts-parameter-defined-correctly"></a>Az artifacts paraméter helyesen van definiálva
 
-Teszt neve: összetevők **paraméter**
+Teszt neve: **artifacts paraméter**
 
-Ha `_artifactsLocation` a és a paramétereket is tartalmazza `_artifactsLocationSasToken` , használja a megfelelő alapértelmezett értékeket és típusokat. A teszt továbbításához a következő feltételeknek kell teljesülniük:
+Ha paramétereket ad meg a és a `_artifactsLocation` `_artifactsLocationSasToken` számára, használja a megfelelő alapértelmezett értékeket és típusokat. A tesztnek a következő feltételeknek kell teljesülnie:
 
-* Ha egy paramétert ad meg, meg kell adnia a másikat.
-* `_artifactsLocation`**karakterláncnak** kell lennie
-* `_artifactsLocation` a fő sablonban alapértelmezett értékkel kell rendelkeznie
-* `_artifactsLocation` nem lehet alapértelmezett érték egy beágyazott sablonban.
-* `_artifactsLocation` az `"[deployment().properties.templateLink.uri]"` alapértelmezett értékének vagy a nyers tárház URL-címének kell lennie
-* `_artifactsLocationSasToken`**secureString** kell lennie
-* `_artifactsLocationSasToken` az alapértelmezett értékének csak üres karakterlánca lehet
-* `_artifactsLocationSasToken` nem lehet alapértelmezett érték egy beágyazott sablonban.
+* Ha az egyik paramétert adja meg, meg kell adnia a másikat
+* `_artifactsLocation` sztringnek kell **lennie**
+* `_artifactsLocation` a fő sablonban egy alapértelmezett értéknek kell lennie
+* `_artifactsLocation` beágyazott sablonban nem lehet alapértelmezett érték
+* `_artifactsLocation` vagy a `"[deployment().properties.templateLink.uri]"` nyers kódtárak URL-címének kell lennie az alapértelmezett értékhez
+* `_artifactsLocationSasToken`**secureStringnek kell lennie**
+* `_artifactsLocationSasToken` az alapértelmezett értékhez csak üres sztringet lehet használni
+* `_artifactsLocationSasToken` beágyazott sablonban nem lehet alapértelmezett érték
 
 ## <a name="declared-variables-must-be-used"></a>Deklarált változókat kell használni
 
-Teszt neve: **a változókat hivatkozni** kell
+Teszt neve: **Hivatkozni kell a változókra**
 
-A sablonban felmerülő félreértések csökkentése érdekében törölje a definiált, de nem használt változókat. Ez a teszt megkeresi a sablonban nem használt változókat.
+A sablon félreértésének csökkentése érdekében törölje a definiált, de nem használt változókat. Ez a teszt megkeresi a sablonban sehol nem használt változókat.
 
-## <a name="dynamic-variable-should-not-use-concat"></a>A dinamikus változó nem használhatja a concat
+## <a name="dynamic-variable-should-not-use-concat"></a>A dinamikus változók ne használjanak concatot
 
-Teszt neve: a **dinamikus változók hivatkozásai nem használhatják a concat**
+Teszt neve: **A dinamikus változóhivatkozások nem használhatnak Concatot**
 
-Esetenként dinamikusan kell létrehoznia egy változót egy másik változó vagy paraméter értéke alapján. Az érték beállításakor ne használja a [concat](template-functions-string.md#concat) függvényt. Ehelyett használjon olyan objektumot, amely tartalmazza az elérhető beállításokat, és dinamikusan beolvassa az objektum egyik tulajdonságát az üzembe helyezés során.
+Néha dinamikusan kell változót összeépíteni egy másik változó vagy paraméter értéke alapján. Ne használja a [concat függvényt](template-functions-string.md#concat) az érték beállításakor. Ehelyett használjon olyan objektumot, amely tartalmazza az elérhető beállításokat, és az üzembe helyezés során dinamikusan le kell szereznie az objektum egyik tulajdonságát.
 
-A következő példa **átadja** ezt a tesztet. Az üzembe helyezés során a rendszer dinamikusan beállítja a **currentImage** változót.
+Az alábbi példa megfelel **ennek a** tesztnek. A **currentImage** változó dinamikusan van beállítva az üzembe helyezés során.
 
 ```json
 {
@@ -449,17 +449,17 @@ A következő példa **átadja** ezt a tesztet. Az üzembe helyezés során a re
 
 ## <a name="use-recent-api-version"></a>A legutóbbi API-verzió használata
 
-Teszt neve: **a apiVersions legyen közelmúltbeli**
+Teszt neve: **apiVersions Should Be Recent**
 
-Az egyes erőforrásokhoz tartozó API-verziónak egy közelmúltbeli verziót kell használnia. A teszt kiértékeli az adott erőforrás-típushoz elérhető verziókon használt verziót.
+Az egyes erőforrások API-verziójának egy friss verziót kell használnia. A teszt kiértékeli a használt verziót az adott erőforrástípushoz elérhető verziók alapján.
 
-## <a name="use-hardcoded-api-version"></a>Hardcoded API-verzió használata
+## <a name="use-hardcoded-api-version"></a>Szoftveres API-verzió használata
 
-Teszt neve: **a szolgáltatók ApiVersions nem engedélyezett**
+Teszt neve: **Providers apiVersions Is Not Permitted**
 
-Az erőforrástípus API-verziója határozza meg, hogy mely tulajdonságok érhetők el. A sablonban adjon meg egy nehezen kódolt API-verziót. Ne kérjen le egy, az üzembe helyezés során meghatározott API-verziót. Nem fogja tudni, hogy mely tulajdonságok érhetők el.
+Az erőforrástípus API-verziója határozza meg, hogy mely tulajdonságok érhetők el. Adjon meg egy nem szoftveres API-verziót a sablonban. Ne olvassa be az üzembe helyezés során meghatározott API-verziót. Nem fogja tudni, hogy mely tulajdonságok érhetők el.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet.
+Az alábbi példa nem **felel meg** a tesztnek.
 
 ```json
 "resources": [
@@ -471,7 +471,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet.
 ]
 ```
 
-A következő példa **átadja** ezt a tesztet.
+Az alábbi példa megfelel **ennek a** tesztnek.
 
 ```json
 "resources": [
@@ -483,24 +483,24 @@ A következő példa **átadja** ezt a tesztet.
 ]
 ```
 
-## <a name="properties-cant-be-empty"></a>A tulajdonságok nem lehetnek üresek
+## <a name="properties-cant-be-empty"></a>A tulajdonságok nem lehet üresek
 
-Teszt neve: a **sablon nem tartalmazhat üres értékeket**
+Teszt neve: **A sablon nem tartalmazhat üres értékeket**
 
-Ne parancsmagba a tulajdonságokat üres értékre. Az üres értékek null és üres karakterláncokat, objektumokat vagy tömböket tartalmaznak. Ha egy tulajdonságot üres értékre állított be, távolítsa el a tulajdonságot a sablonból. Az üzembe helyezés során azonban rendben van egy tulajdonság beállítása üres értékre, például egy paraméteren keresztül.
+Ne kódolvassa a tulajdonságokat üres értékre. Az üres értékek közé tartoznak a null és az üres sztringek, objektumok vagy tömbök. Ha egy tulajdonságot üres értékre beállított, távolítsa el a tulajdonságot a sablonból. Az üzembe helyezés során azonban egy tulajdonságot üres értékre is lehet állítani, például egy paraméterrel.
 
 ## <a name="use-resource-id-functions"></a>Erőforrás-azonosító függvények használata
 
-Teszt neve: **az azonosítókat a ResourceId:-ből kell származtatni** .
+Teszt neve: **Az értékeket resourceID-ről kell származtatni**
 
-Erőforrás-azonosító megadásakor használja az erőforrás-azonosító függvények egyikét. Az engedélyezett függvények a következők:
+Erőforrás-azonosító megadásakor használja az egyik erőforrás-azonosító függvényt. Az engedélyezett függvények a következőek:
 
 * [resourceId](template-functions-resource.md#resourceid)
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
 
-Ne használja a concat függvényt erőforrás-azonosító létrehozásához. A következő példa **nem tudja végrehajtani** ezt a tesztet.
+Ne használja a concat függvényt erőforrás-azonosító létrehozásához. Az alábbi példa nem **felel meg a** tesztnek.
 
 ```json
 "networkSecurityGroup": {
@@ -508,7 +508,7 @@ Ne használja a concat függvényt erőforrás-azonosító létrehozásához. A 
 }
 ```
 
-A következő példa **átadja** ezt a tesztet.
+A következő példa megfelel **ennek a** tesztnek.
 
 ```json
 "networkSecurityGroup": {
@@ -516,13 +516,13 @@ A következő példa **átadja** ezt a tesztet.
 }
 ```
 
-## <a name="resourceid-function-has-correct-parameters"></a>A ResourceId függvény megfelelő paramétereket tartalmaz
+## <a name="resourceid-function-has-correct-parameters"></a>A ResourceId függvény megfelelő paraméterekkel rendelkezik
 
-Teszt neve: a **ResourceId: nem tartalmazhatnak**
+Teszt neve: **A ResourceId-nek nem szabad tartalmaznia**
 
-Erőforrás-azonosítók létrehozásakor ne használjon felesleges függvényeket a választható paraméterekhez. Alapértelmezés szerint a [resourceId](template-functions-resource.md#resourceid) függvény az aktuális előfizetést és erőforráscsoportot használja. Ezeket az értékeket nem kell megadnia.
+Az erőforrás-adatok generálásakor ne használjon felesleges függvényeket választható paraméterekhez. Alapértelmezés szerint a [resourceId](template-functions-resource.md#resourceid) függvény az aktuális előfizetést és erőforráscsoportot használja. Ezeket az értékeket nem kell meg adnia.
 
-A következő példa **nem** teszi lehetővé ezt a tesztet, mert nem kell megadnia az aktuális előfizetés-azonosítót és az erőforráscsoport nevét.
+Az alábbi példa **sikertelen,** mert nem kell az aktuális előfizetés-azonosítót és erőforráscsoport-nevet meg adnia.
 
 ```json
 "networkSecurityGroup": {
@@ -530,7 +530,7 @@ A következő példa **nem** teszi lehetővé ezt a tesztet, mert nem kell megad
 }
 ```
 
-A következő példa **átadja** ezt a tesztet.
+A következő példa megfelel **ennek a** tesztnek.
 
 ```json
 "networkSecurityGroup": {
@@ -543,19 +543,19 @@ Ez a teszt a következőkre vonatkozik:
 * [resourceId](template-functions-resource.md#resourceid)
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
-* [extensionResourceId](template-functions-resource.md#extensionresourceid)
-* [referencia](template-functions-resource.md#reference)
-* [listáját](template-functions-resource.md#list)
+* [extensionResourceId (bővítményforrás-azonosító)](template-functions-resource.md#extensionresourceid)
+* [Hivatkozás](template-functions-resource.md#reference)
+* [list*](template-functions-resource.md#list)
 
-A `reference` és a esetében `list*` a teszt **sikertelen lesz** , ha `concat` az erőforrás-azonosító létrehozásához használja.
+és `reference` `list*` esetén a teszt **meghiúsul,** ha az erőforrás-azonosítót a használatával `concat` hoz létre.
 
-## <a name="dependson-best-practices"></a>dependsOn ajánlott eljárások
+## <a name="dependson-best-practices"></a>dependsOn – ajánlott eljárások
 
-Teszt neve: **DependsOn ajánlott eljárások**
+Teszt neve: **DependsOn – ajánlott eljárások**
 
-A központi telepítési függőségek beállításakor ne használja az [IF](template-functions-logical.md#if) függvényt a feltétel teszteléséhez. Ha egy erőforrás a [feltételesen üzembe helyezett](conditional-resource-deployment.md)erőforrástól függ, állítsa be a függőséget úgy, hogy bármilyen erőforrással lenne. Ha egy feltételes erőforrás nincs telepítve, Azure Resource Manager automatikusan eltávolítja a szükséges függőségekről.
+Az üzembe helyezési függőségek beállításakor ne használja az [if](template-functions-logical.md#if) függvényt egy feltétel teszteléséhez. Ha egy erőforrás egy feltételesen üzembe helyezett erőforrástól [függ,](conditional-resource-deployment.md)állítsa be a függőséget úgy, mint bármely erőforrás esetén. Ha egy feltételes erőforrás nincs telepítve, a Azure Resource Manager automatikusan eltávolítja azt a szükséges függőségekből.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet.
+Az alábbi példa nem **felel meg** a tesztnek.
 
 ```json
 "dependsOn": [
@@ -563,7 +563,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet.
 ]
 ```
 
-A következő példa **átadja** ezt a tesztet.
+A következő példa megfelel **ennek a** tesztnek.
 
 ```json
 "dependsOn": [
@@ -571,19 +571,19 @@ A következő példa **átadja** ezt a tesztet.
 ]
 ```
 
-## <a name="nested-or-linked-deployments-cant-use-debug"></a>A beágyazott vagy csatolt központi telepítések nem használhatják a hibakeresést
+## <a name="nested-or-linked-deployments-cant-use-debug"></a>A beágyazott vagy csatolt üzemelő példányok nem használhatnak hibakeresést
 
-Teszt neve: **a telepítési erőforrások nem lehetnek hibakeresési** műveletek
+Teszt neve: **Az üzembe helyezési erőforrásokat nem lehet hibakereséssel végezni**
 
-Ha egy [beágyazott vagy csatolt sablont](linked-templates.md) definiál a **Microsoft. Resources/Deployments** erőforrástípus használatával, engedélyezheti a hibakeresést az adott sablonhoz. A hibakeresés rendben van, ha meg kell vizsgálnia a sablont, de a sablon éles környezetben való használatra kész állapotban kell lennie.
+Ha beágyazott vagy [csatolt](linked-templates.md) sablont határoz meg a **Microsoft.Resources/deployments** erőforrástípussal, engedélyezheti a hibakeresést az adott sablonhoz. A hibakeresés akkor is megfelelő, ha tesztelni kell a sablont, de akkor érdemes bekapcsolni, amikor készen áll a sablon éles környezetben való használatára.
 
-## <a name="admin-user-names-cant-be-literal-value"></a>A rendszergazdai felhasználónevek nem lehetnek literális értékek
+## <a name="admin-user-names-cant-be-literal-value"></a>A rendszergazdai felhasználónevek nem konstansértékek
 
-Teszt neve: **a AdminUsername nem lehet literál**
+Teszt neve: **adminUsername ne legyen konstans**
 
-Rendszergazdai Felhasználónév beállításakor ne használjon literál értéket.
+Rendszergazdai felhasználónév beállításakor ne használjon konstansértéket.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet:
+Az alábbi példa nem **felel meg a** tesztnek:
 
 ```json
 "osProfile":  {
@@ -591,7 +591,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet:
 },
 ```
 
-Ehelyett használjon paramétert. A következő példa **átadja** ezt a tesztet:
+Ehelyett használjon egy paramétert. A következő példa megfelel **ennek a** tesztnek:
 
 ```json
 "osProfile": {
@@ -599,19 +599,19 @@ Ehelyett használjon paramétert. A következő példa **átadja** ezt a tesztet
 }
 ```
 
-## <a name="use-latest-vm-image"></a>A legújabb virtuálisgép-lemezkép használata
+## <a name="use-latest-vm-image"></a>A legújabb virtuálisgép-rendszerkép használata
 
-Teszt neve: a virtuálisgép- **lemezképeknek a legújabb verziót kell használniuk**
+Teszt neve: **A virtuálisgép-rendszerképeknek a legújabb verziót kell használniuk**
 
-Ha a sablon tartalmaz egy rendszerképpel rendelkező virtuális gépet, győződjön meg róla, hogy a lemezkép legújabb verzióját használja.
+Ha a sablon tartalmaz egy rendszerképet tartalmazó virtuális gépet, győződjön meg arról, hogy a rendszerkép legújabb verzióját használja.
 
 ## <a name="use-stable-vm-images"></a>Stabil virtuálisgép-rendszerképek használata
 
-Teszt neve: **Virtual Machines nem lehet előzetes** verzió
+Teszt neve: **Virtual Machines nem lehet előzetes verzió**
 
-A virtuális gépek nem használhatják az előnézeti lemezképeket.
+A virtuális gépek nem használhatnak előzetes verziójú rendszerképeket.
 
-A következő példa **nem tudja végrehajtani** ezt a tesztet.
+Az alábbi példa nem **felel meg** a tesztnek.
 
 ```json
 "imageReference": {
@@ -622,7 +622,7 @@ A következő példa **nem tudja végrehajtani** ezt a tesztet.
 }
 ```
 
-A következő példa **átadja** ezt a tesztet.
+Az alábbi példa megfelel **ennek a** tesztnek.
 
 ```json
 "imageReference": {
@@ -633,19 +633,19 @@ A következő példa **átadja** ezt a tesztet.
 },
 ```
 
-## <a name="dont-use-managedidentity-extension"></a>Ne használja a ManagedIdentity-bővítményt
+## <a name="dont-use-managedidentity-extension"></a>Ne használja a ManagedIdentity bővítményt
 
-Teszt neve: **a ManagedIdentityExtension nem használható**
+Teszt neve: **A ManagedIdentityExtension nem használható**
 
-Ne alkalmazza a ManagedIdentity-bővítményt egy virtuális gépre. További információ: [a virtuális gépek felügyelt identitások bővítmény használatának leállítása és az Azure instance metadata Service használatának megkezdése](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Ne alkalmazza a ManagedIdentity bővítményt egy virtuális gépre. A bővítmény 2019-ben elavult, és már nem használható.
 
-## <a name="outputs-cant-include-secrets"></a>A kimenetek nem tartalmazhatnak titkos kódokat
+## <a name="outputs-cant-include-secrets"></a>A kimenetek nem tartalmazhatnak titkos okat
 
-Teszt neve: a **kimenetek nem tartalmazhatnak titkos** kódokat
+Teszt neve: **A kimenetek nem tartalmazhatnak titkos adatokat**
 
-Ne adjon meg olyan értékeket a kimenetek szakaszban, amelyek esetleg titkos titkokat tesznek elérhetővé. A sablon kimenetét a rendszer az üzembe helyezési előzményekben tárolja, így a rosszindulatú felhasználók megtalálják ezt az információt.
+A kimenetek szakaszban ne szerepeljenek olyan értékek, amelyek esetleg titkos okat fednek fel. A sablon kimenete az üzembe helyezési előzményekben van tárolva, így egy rosszindulatú felhasználó megtalálja ezt az információt.
 
-**A következő példa** leállítja a tesztet, mert egy biztonságos paramétert tartalmaz egy kimeneti értékben.
+Az alábbi példa **meghiúsul a** teszten, mert egy biztonságos paramétert tartalmaz egy kimeneti értékben.
 
 ```json
 {
@@ -668,7 +668,7 @@ Ne adjon meg olyan értékeket a kimenetek szakaszban, amelyek esetleg titkos ti
 }
 ```
 
-A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-functions-resource.md#list) függvényt használ.
+Az alábbi példa **meghiúsul,** mert [list*](template-functions-resource.md#list) függvényt használ a kimenetek között.
 
 ```json
 {
@@ -691,16 +691,16 @@ A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-fu
 }
 ```
 
-## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Protectedsettingsfromkeyvault használata a commandToExecute-titkokhoz
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>A protectedSettings használata a commandToExecute titkos kulcsokhoz
 
-Teszt neve: **a CommandToExecute Protectedsettingsfromkeyvault kell használnia a titkokhoz**
+Teszt neve: **A CommandToExecute parancsnak ProtectedSettings parancsot kell használnia a titkos kulcsokhoz**
 
-Egyéni parancsfájl-kiterjesztés esetén használja a titkosított tulajdonságot, `protectedSettings` Ha `commandToExecute` titkos adatot, például jelszót tartalmaz. Példák a titkos adattípusokra:, `secureString` `secureObject` `list()` függvények vagy parancsfájlok.
+Egyéni szkriptbővítményben használja a titkosított tulajdonságot, ha titkos adatokat, például `protectedSettings` `commandToExecute` jelszót tartalmaz. Titkos adattípusok például a `secureString` , `secureObject` a `list()` függvények vagy a szkriptek.
 
-További információ a virtuális gépek egyéni parancsfájl-bővítménnyel kapcsolatban: [Windows](
-/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)és a [Microsoft. számítási virtualMachines/bővítmények](/azure/templates/microsoft.compute/virtualmachines/extensions).
+További információ a virtuális gépek egyéni szkriptbővítményeiről: [Windows,](
+/azure/virtual-machines/extensions/custom-script-windows) [Linux](/azure/virtual-machines/extensions/custom-script-linux), és [a Microsoft.Compute virtualMachines/extensions séma.](/azure/templates/microsoft.compute/virtualmachines/extensions)
 
-Ebben a példában egy nevű és típusú paraméterrel rendelkező sablon `adminPassword` `secureString` **továbbítja** a tesztet, mert a titkosított tulajdonság `protectedSettings` tartalmaz `commandToExecute` .
+Ebben a példában egy nevű és típusú paraméterrel megadott sablon megfelel a teszten, mert a titkosított tulajdonság tartalmazza `adminPassword` `secureString`  `protectedSettings` a `commandToExecute` et.
 
 ```json
 "properties": [
@@ -712,7 +712,7 @@ Ebben a példában egy nevű és típusú paraméterrel rendelkező sablon `admi
 ]
 ```
 
-A teszt **sikertelen** , ha a titkosítatlan tulajdonság `settings` tartalmaz `commandToExecute` .
+A teszt **meghiúsul,** ha a titkosítatlan tulajdonság tartalmazza `settings` a `commandToExecute` következőt: .
 
 ```json
 "properties": [
@@ -726,5 +726,5 @@ A teszt **sikertelen** , ha a titkosítatlan tulajdonság `settings` tartalmaz `
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
-* A tesztelési eszközkészlettel foglalkozó Microsoft Learn modul esetében tekintse meg az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM template test Toolkit használatával](/learn/modules/arm-template-test/).
+* A tesztelési eszközkészlet futtatásával kapcsolatos további információkért lásd: [ARM-sablonteszt eszközkészlet használata.](test-toolkit.md)
+* A teszteszközkészlet használatát bemutató Microsoft Learn lásd: Preview changes and validate Azure resources by using what-if and the ARM template test toolkit (Az Azure-erőforrások előzetes verziója a what-if és az [ARM-sablontesztelőeszközkészlet használatával).](/learn/modules/arm-template-test/)

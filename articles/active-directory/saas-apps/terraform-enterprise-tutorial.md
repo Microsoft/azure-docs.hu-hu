@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Terraform Enterprise-nal | Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a Terraform Enterprise között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a Terraform Enterprise-| Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Terraform Enterprise között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,142 +9,131 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 04/05/2021
 ms.author: jeedes
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 8b6678644008c7c5ba82f643aeafc61c67604713
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69ce53126a45e74f43514779f391c2df66d8f225
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92518166"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518422"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Terraform Enterprise-nal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a Terraform Enterprise-sal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Terraform Enterprise-t Azure Active Directory (Azure AD-val). Ha integrálja a Terraform Enterprise-t az Azure AD-vel, a következőket teheti:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a Terraform Enterprise-t Azure Active Directory (Azure AD) használatával. Ha integrálja a Terraform Enterprise-t az Azure AD-val, a következő funkciókat használhatja:
 
-* A Terraform Enterprise-hoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Terraform Enterprise szolgáltatásba az Azure AD-fiókjával.
+* Az Azure AD vezérlése, aki hozzáféréssel rendelkezik a Terraform Enterprise-hoz.
+* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a Terraform Enterprise-ba az Azure AD-fiókjukkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+Első lépésekhez a következő elemekre lesz szüksége:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Terraform Enterprise egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Terraform Enterprise egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO-t konfigurálja és teszteli tesztkörnyezetben.
 
-* A Terraform Enterprise támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A Terraform Enterprise **csak időben támogatja a** felhasználók üzembe helyezését
+* A Terraform Enterprise támogatja **az SP** által kezdeményezett SSO-t.
+* A Terraform Enterprise támogatja **az időponthoz időben való** felhasználóátépítést.
 
-## <a name="adding-terraform-enterprise-from-the-gallery"></a>Terraform Enterprise hozzáadása a katalógusból
+## <a name="add-terraform-enterprise-from-the-gallery"></a>A Terraform Enterprise hozzáadása a katalógusból
 
-A Terraform Enterprise Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Terraform Enterprise-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Terraform Enterprise Azure AD-be való integrálásának konfigurálához hozzá kell adni a Terraform Enterprise-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Terraform Enterprise** kifejezést a keresőmezőbe.
-1. Válassza ki a **Terraform Enterprise** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
+1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
+1. Lépjen a **Vállalati alkalmazások lapra,** majd válassza a **Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az Új **alkalmazás lehetőséget.**
+1. A Hozzáadás **a katalógusból szakaszban** írja be a keresőmezőbe a **Terraform Enterprise** kifejezéseket.
+1. Válassza a **Terraform Enterprise** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 
+## <a name="configure-and-test-azure-ad-sso-for-terraform-enterprise"></a>Az Azure AD SSO konfigurálása és tesztelése a Terraform Enterprise-hoz
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-terraform-enterprise"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Terraform Enterprise-hoz
+Konfigurálja és tesztelje az Azure AD SSO-t a Terraform Enterprise-ral egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a Kapcsolódó felhasználó között a Terraform Enterprise-ban.
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Terraform Enterprise használatával egy **B. Simon** nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a Terraform Enterprise kapcsolódó felhasználója között.
+Az Azure AD SSO a Terraform Enterprise-ral való konfiguráláshoz és teszteléshez töltse ki a következő építőelemeket:
 
-Az Azure AD SSO és a Terraform Enterprise konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
-
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Terraform vállalati egyszeri bejelentkezés konfigurálása](#configure-terraform-enterprise-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre egy Terraform Enterprise test User](#create-terraform-enterprise-test-user)** -t, hogy rendelkezzen a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Terraform.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy lehetővé tegye a felhasználók számára a funkció használatát.
+    * **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének tesztelése a B.Simon használatával.
+    * **[Rendelje hozzá az Azure AD-tesztfelhasználót](#assign-the-azure-ad-test-user)** – ezzel engedélyezheti a B.Simon számára az Azure AD egyszeri bejelentkezés használatát.
+1. **[A Terraform Enterprise egyszeri](#configure-terraform-enterprise-sso)** bejelentkezési beállításainak konfigurálása az alkalmazásoldalon.
+    * **[Hozzon létre egy Vállalati](#create-terraform-enterprise-test-user)** Terraform-tesztfelhasználót, hogy a B.Simon megfelelője legyen a Terraform Enterprise-ban, amely a felhasználó Azure AD-reprezentációjával van összekapcsolva.
+1. **[Az SSO tesztelése](#test-sso)** – annak ellenőrzéséhez, hogy működik-e a konfiguráció.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Portal.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Terraform Enterprise** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal **Vállalati alkalmazásintegráció** lapon keresse meg  a Kezelés szakaszt, és válassza az **egyszeri bejelentkezés lehetőséget.**
+1. Az Egyszeri **bejelentkezési módszer** kiválasztása lapon válassza az **SAML lehetőséget.**
+1. Az Egyszeri **bejelentkezés beállítása SAML-sel** lapon kattintson az SamL-alapkonfiguráció ceruza ikonjára a beállítások szerkesztéséhez. 
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![SamL alapszintű konfigurációjának szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **SAML-alapkonfiguráció szakaszban** adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<TFE HOSTNAME>/session`
+    a. A **Bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<TFE HOSTNAME>/session`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<TFE HOSTNAME>/users/saml/metadata`
+    b. Az Azonosító **(Entitásazonosító) szövegmezőbe** írjon be egy URL-címet a következő minta használatával: `https://<TFE HOSTNAME>/users/saml/metadata`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez lépjen kapcsolatba a [Terraform Enterprise ügyfél-támogatási csapatával](https://support.hashicorp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosító használatával. Az értékekért lépjen kapcsolatba a [Terraform vállalati](https://support.hashicorp.com) ügyféltámogatási csapatával. A minta az **SAML-konfiguráció** alapszintű szakaszában látható mintákat is Azure Portal.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az Egyszeri bejelentkezés beállítása **SAML-sel** lap **SAML** aláíró tanúsítvány szakaszában keresse meg a  **Tanúsítvány (Base64)** et, majd válassza a Letöltés lehetőséget a tanúsítvány letöltéséhez és a számítógépére mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A Tanúsítvány letöltése hivatkozás](common/certificatebase64.png)
 
-1. A **Terraform Enterprise beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. A **Terraform Enterprise beállítása szakaszban** másolja ki a követelménynek megfelelő URL-címet/URL-címeket.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. A bal oldali panelen válassza a Azure Portal **lehetőséget,** Azure Active Directory **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **a képernyő tetején** található Új felhasználó lehetőséget.
+1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Terraform Enterprise-hoz.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure egyszeri bejelentkezés használatát a Terraform Enterprise-hoz való hozzáférés engedélyezésével.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza a **Terraform Enterprise** elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a Vállalati **alkalmazások,** majd a Minden **alkalmazás lehetőséget.**
+1. Az alkalmazások listájában válassza a **Terraform Enterprise lehetőséget.**
+1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az "Alapértelmezett hozzáférés" szerepkör van kiválasztva.
+1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+## <a name="configure-terraform-enterprise-sso"></a>A Terraform Enterprise SSO konfigurálása
 
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+Ha egyszeri bejelentkezést konfigurál a **Terraform Enterprise** oldalán, el kell küldenie a letöltött tanúsítványt **(Base64)** és a megfelelő másolt URL-címeket a Azure Portal a Terraform Enterprise támogatási [csapatának.](https://support.hashicorp.com) Ezt a beállítást úgy állítják be, hogy az SAML SSO-kapcsolat megfelelően legyen beállítva mindkét oldalon.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+### <a name="create-terraform-enterprise-test-user"></a>Terraform Enterprise tesztfelhasználó létrehozása
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+Ebben a szakaszban egy B.Simon nevű felhasználót hozunk létre a Terraform Enterprise-ban. A Terraform Enterprise támogatja az alapértelmezés szerint engedélyezett, időben elérhető felhasználókiépítést. Ebben a szakaszban nem található műveletelem. Ha a felhasználó még nem létezik a Terraform Enterprise-ban, a hitelesítés után létrejön egy új.
 
-## <a name="configure-terraform-enterprise-sso"></a>Terraform vállalati egyszeri bejelentkezés konfigurálása
+## <a name="test-sso"></a>SSO tesztelése
 
-Ha az egyszeri bejelentkezést a **Terraform Enterprise** oldalon szeretné konfigurálni, a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket el kell küldenie Azure Portalról a [Terraform Enterprise Support csapatnak](https://support.hashicorp.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-### <a name="create-terraform-enterprise-test-user"></a>Terraform vállalati tesztelési felhasználó létrehozása
+* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja a Terraform vállalati bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Terraform Enterprise-ban. A Terraform Enterprise támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Terraform Enterprise-ban, a hitelesítés után létrejön egy újat.
+* Lépjen közvetlenül a Terraform vállalati bejelentkezési URL-címére, és onnan indítsa el a bejelentkezési folyamatot.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+* Használhatja a Microsoft Saját alkalmazások. Amikor a terraform Enterprise csempére kattint a Saját alkalmazások, a rendszer átirányítja a Terraform vállalati bejelentkezési URL-címére. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+## <a name="next-steps"></a>Következő lépések
 
-Ha a hozzáférési panelen a Terraform Enterprise csempére kattint, akkor automatikusan be kell jelentkeznie a Terraform Enterprise-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>További források
-
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
-
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A Terraform Enterprise kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A Terraform Enterprise konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlés a feltételes hozzáféréstől terjed ki. [Ismerje meg, hogyan kényszeríthető ki a munkamenet-vezérlés a Microsoft Cloud App Security.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

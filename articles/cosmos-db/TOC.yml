@@ -84,11 +84,11 @@
           href: online-backup-and-restore.md
         - name: Folyamatos biztonsági mentés
           items:
-            - name: Folyamatos biztonsági mentés – bevezetés
+            - name: Folyamatos biztonsági mentés – Bevezetés
               href: continuous-backup-restore-introduction.md
             - name: Folyamatos biztonsági mentés – gyakori kérdések
               href: continuous-backup-restore-frequently-asked-questions.md
-            - name: Folyamatos biztonsági mentés – erőforrás-modell
+            - name: Folyamatos biztonsági mentés – Erőforrásmodell
               href: continuous-backup-restore-resource-model.md
     - name: Az Azure Cosmos DB költségeinek optimalizálása
       items:
@@ -152,6 +152,8 @@
               href: create-sql-api-java.md
             - name: Spring Data-alkalmazás
               href: create-sql-api-spring-data.md
+            - name: Spark v3-alkalmazás
+              href: create-sql-api-spark.md
             - name: Node.js-alkalmazás
               href: create-sql-api-nodejs.md
             - name: Python-alkalmazás
@@ -755,9 +757,9 @@
                   href: troubleshoot-not-found.md
                 - name: Hibaelhárítás – Nem engedélyezett
                   href: troubleshoot-unauthorized.md
-                - name: Tiltott hibák
+                - name: Tiltott hibák elhárítása
                   href: troubleshoot-forbidden.md
-                - name: Hibás kérések hibakeresése
+                - name: Hibás kérés hibaelhárítása
                   href: troubleshoot-bad-request.md
                 - name: Rendelkezésreállási hibák többrégiós környezetekben
                   href: troubleshoot-sdk-availability.md
@@ -809,7 +811,7 @@
               href: enable-notebooks.md
             - name: Notebookok importálása a GitHubról
               href: import-github-notebooks.md
-            - name: Jegyzetfüzetek közzététele a katalógusban
+            - name: Jegyzetfüzetek közzététele katalógusban
               href: publish-notebook-gallery.md
             - name: Beépített Python-notebookparancsok használata
               href: use-python-notebook-features-and-commands.md
@@ -835,7 +837,7 @@
               href: visualize-qlik-sense.md
         - name: Beépített elemzések az Apache Sparkkal
           items:
-            - name: Azure Databricks Spark-összekötő
+            - name: Azure Databricks Spark 2 OLTP-összekötő
               href: spark-connector.md
             - name: Streamelés az Apache Kafkával és a Cosmos DB-vel
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -915,7 +917,9 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring Data-összekötő v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: Spark-összekötő
+            - name: Spark 3 OLTP-összekötő (előzetes verzió)
+              href: sql-api-sdk-java-spark-v3.md
+            - name: Spark 2 OLTP-összekötő
               href: sql-api-sdk-java-spark.md
             - name: Java tömeges végrehajtói kódtár v2
               href: sql-api-sdk-bulk-executor-java.md
@@ -1101,11 +1105,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: Alapelvek
       items:
-        - name: 'API-verzió 4,0'
+        - name: API 4.0-s verzió
           href: mongodb-feature-support-40.md
-        - name: 'API-verzió 3,6'
+        - name: API 3.6-os verzió
           href: mongodb-feature-support-36.md
-        - name: 'API-verzió 3,2'
+        - name: API 3.2-es verzió
           href: mongodb-feature-support.md
         - name: GYIK
           href: mongodb-api-faq.md
@@ -1117,7 +1121,7 @@
           items:
             - name: Útmutató a migrálást megelőző folyamatokhoz
               href: mongodb-pre-migration.md
-            - name: MongoDB natív eszközei (offline)
+            - name: Natív MongoDB-eszközök (offline)
               href: tutorial-mongotools-cosmos-db.md
             - name: Database Migration Service (online)
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -1125,7 +1129,7 @@
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Útmutató a migrálást követő folyamatokhoz
               href: mongodb-post-migration.md
-        - name: 'Frissítés a 4,0-es vagy 3,6-os API-verzióra'
+        - name: Frissítés az API 4.0-s vagy 3.6-os verziójára
           href: mongodb-version-upgrade.md
         - name: A kapcsolati sztring lekérése
           href: connect-mongodb-account.md
@@ -1146,7 +1150,7 @@
           href: mongodb-change-streams.md
         - name: Adatindexelés felügyelete
           href: mongodb-indexing.md
-        - name: Több dokumentumból álló tranzakciók használata
+        - name: Többdokumentumos tranzakciók használata
           href: use-multi-document-transactions.md
         - name: Tároló létrehozása – MongoDB API
           href: how-to-create-container-mongodb.md
@@ -1376,7 +1380,7 @@
           href: configure-synapse-link.md
         - name: Csatlakozás az Azure Synapse Linkhez
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Analitikus tároló és privát végpontok
+        - name: Elemzési tároló és privát végpontok
           href: analytical-store-private-endpoints.md
         - name: Lekérdezés az Azure Synapse Sparkkal
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -1388,13 +1392,13 @@
       items:
         - name: Folyamatos biztonsági mentés kezelése
           items:
-            - name: Folyamatos biztonsági mentés – engedélyek és szerepkörök
+            - name: Folyamatos biztonsági mentés – Engedélyek és szerepkörök
               href: continuous-backup-restore-permissions.md
-            - name: Folyamatos biztonsági mentés – portál
+            - name: Folyamatos biztonsági mentés – Portál
               href: continuous-backup-restore-portal.md
             - name: Folyamatos biztonsági mentés – PowerShell
               href: continuous-backup-restore-powershell.md
-            - name: Folyamatos biztonsági mentés – parancssori felület
+            - name: Folyamatos biztonsági mentés – CLI
               href: continuous-backup-restore-command-line.md
             - name: Folyamatos biztonsági mentés – Resource Manager
               href: continuous-backup-restore-template.md
@@ -1429,7 +1433,7 @@
           href: monitor-cosmos-db.md
         - name: Azure Monitor-metrikák használata
           items:
-            - name: Cosmos DB Azure Monitor
+            - name: Azure Monitor a Cosmos DB
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Monitorozandó forgatókönyvek
               href: use-metrics.md

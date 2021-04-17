@@ -1,83 +1,83 @@
 ---
-title: Az Azure statikus Web Apps konfigurálása
-description: Ismerje meg az útvonalak konfigurálását, a biztonsági szabályok betartatását és az Azure statikus Web Apps globális beállításait.
+title: Az Azure Static Web Apps
+description: Megtudhatja, hogyan konfigurálhatja az útvonalakat, kényszeríti a biztonsági szabályokat és a globális beállításokat a Azure Static Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312246"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502283"
 ---
-# <a name="configure-azure-static-web-apps"></a>Az Azure statikus Web Apps konfigurálása
+# <a name="configure-azure-static-web-apps"></a>Az Azure Static Web Apps
 
-Az Azure statikus Web Apps konfigurációja a fájl _staticwebapp.config.js_ van definiálva, amely a következő beállításokat vezérli:
+A Azure Static Web Apps fájlstaticwebapp.config.js _meg,_ amely a következő beállításokat szabályozza:
 
 - Útválasztás
 - Hitelesítés
 - Engedélyezés
 - Tartalék szabályok
 - HTTP-válasz felülbírálásai
-- Globális HTTP-fejléc definíciói
+- Globális HTTP-fejlécdefiníciók
 - Egyéni MIME-típusok
 
 ## <a name="file-location"></a>Fájl helye
 
-A _staticwebapp.config.jsbekapcsolásának_ ajánlott helye a `app_location` [munkafolyamati fájlban](./github-actions-workflow.md)beállított mappában található. Előfordulhat azonban, hogy a fájlt az alkalmazás forráskódjának mappájába tartozó tetszőleges helyre helyezi.
+A fájl ajánlottstaticwebapp.config.js _a_ munkafolyamat-fájlban beállított `app_location` [mappában található.](./github-actions-workflow.md) A fájl azonban az alkalmazás forráskódmappában található bármely helyen elhelyezhető.
 
-A részletekért tekintse meg a [példa konfigurációs](#example-configuration-file) fájlját.
+A [részletekért tekintse](#example-configuration-file) meg a konfigurációs példafájlt.
 
 > [!IMPORTANT]
-> Ha létezik _staticwebapp.config.js_ , a rendszer figyelmen kívül hagyja a [fájl _staticwebapp.config.jsét_](./routes.md) .
+> A [ _routes.jsnem veszi_](./routes.md) figyelembe, ha létezikstaticwebapp.config.jsa _fájlban._
 
 ## <a name="routes"></a>Útvonalak
 
-Az útválasztási szabályok lehetővé teszik az alkalmazáshoz való hozzáférést lehetővé tevő URL-címek mintájának meghatározását a weben. Az útvonalak az útválasztási szabályok tömbje vannak meghatározva. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+Az útvonalszabályok lehetővé teszik az alkalmazás webes hozzáférését engedélyező URL-címek mintáját. Az útvonalak útválasztási szabályok tömbjeként vannak definiálva. Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-- A szabályok a tömbben vannak definiálva `routes` , még akkor is, ha csak egy útvonala van.
-- A szabályok a tömbben megjelenő sorrendben lesznek végrehajtva `routes` .
-- A szabály kiértékelése leáll az első egyezés – az útválasztási szabályok nincsenek összefűzve.
-- Teljes hozzáférése van az egyéni szerepkörök neveihez.
-  - Létezik néhány beépített szerepkör, amely tartalmazza a és a nevet [`anonymous`](./authentication-authorization.md) [`authenticated`](./authentication-authorization.md) .
+- A szabályok akkor is definiálva `routes` vannak a tömbben, ha csak egy útvonala van.
+- A szabályok a sorrendben vannak végrehajtva, ahogy a tömbben `routes` megjelennek.
+- A szabály kiértékelése az első egyezéskor leáll – az útválasztási szabályok nincsenek összefűve.
+- Teljes körűen szabályozhatja az egyéni szerepkörneveket.
+  - Van néhány beépített szerepkörnév, amelyek közé tartozik a [`anonymous`](./authentication-authorization.md) és [`authenticated`](./authentication-authorization.md) a .
 
-Az Útválasztás jelentős mértékben átfedésben van a hitelesítéssel (a felhasználó azonosításával) és az engedélyezéssel (a felhasználói képességek kiosztásával) kapcsolatos fogalmakkal. Ügyeljen rá, hogy olvassa el a [hitelesítési és engedélyezési](authentication-authorization.md) útmutatót a jelen cikk mellett.
+Az útválasztás jelentősen átfedésben van a hitelesítéssel (a felhasználó azonosításával) és az engedélyezéssel (képességek hozzárendelése a felhasználóhoz) kapcsolatos fogalmakkal. Mindenképpen olvassa el a hitelesítési [és engedélyezési](authentication-authorization.md) útmutatót és ezt a cikket.
 
-A statikus tartalom alapértelmezett fájlja a _index.html_ fájl.
+A statikus tartalom alapértelmezett fájlja aindex.htm _l_ fájl.
 
-## <a name="defining-routes"></a>Útvonalak meghatározása
+## <a name="defining-routes"></a>Útvonalak definiálása
 
-Minden szabály egy útvonal mintából áll, valamint egy vagy több választható szabály-tulajdonsággal. Az útválasztási szabályok a tömbben vannak meghatározva `routes` . Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+Minden szabály egy útvonalmintát, valamint egy vagy több választható szabálytulajdonságból áll. Az útválasztási szabályok a tömbben vannak `routes` definiálva. Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-| Szabály tulajdonsága                       | Kötelező | Alapértelmezett érték                        | Megjegyzés                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Szabálytulajdonság                       | Kötelező | Alapértelmezett érték                        | Megjegyzés                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `route`                             | Yes      | n.a.                                  | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `rewrite`                           | No       | n.a.                                  | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `redirect`                          | No       | n.a.                                  | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul>                                                                                                                                                                                                              |
-| `allowedRoles`                      | No       | névtelen                            | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `headers`<a id="route-headers"></a> | No       | n.a.                                  | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul>                                                                                                                                                                                                                                                                                          |
-| `statusCode`                        | No       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `methods`                           | No       | Minden metódus                          | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` .                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `route`                             | Igen      | n.a.                                  | A hívó által kért útvonalminta.<ul><li>[A helyettesítő karakterek](#wildcards) az útvonal végén támogatottak.<ul><li>Az útvonal _rendszergazdája/ \*_ például a rendszergazdai útvonalon található _bármely útvonalra illeszkedik._</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `rewrite`                           | Nem       | n.a.                                  | Meghatározza a kérés által visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizár egy `redirect` szabályt<li>Az átírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez képest relatívnak kell lennie</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `redirect`                          | Nem       | n.a.                                  | Meghatározza a kérés fájl- vagy elérésiút-átirányítási célját.<ul><li>A szabályok kölcsönösen `rewrite` kizárják egymást.<li>Az átirányítási szabályok módosítják a böngésző helyét.<li>Az alapértelmezett válaszkód egy (ideiglenes átirányítás), de felülbírálható [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítással).</ul>                                                                                                                                                                                                              |
+| `allowedRoles`                      | Nem       | Névtelen                            | Meghatározza az útvonal eléréséhez szükséges szerepkörnevek listáját. <ul><li>Érvényes karakterek: `a-z` , `A-Z` , és `0-9` `_` .<li>A beépített szerepkör () az összes nem hitelesített [`anonymous`](./authentication-authorization.md) felhasználóra vonatkozik<li>A beépített szerepkör minden bejelentkezett [`authenticated`](./authentication-authorization.md) felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartozni.<li>A szerepkörök egy VAGY alapján _vannak megfeleltetve._<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók meghívásokkal vannak [szerepkörökhöz társítva.](authentication-authorization.md)</ul> |
+| `headers`<a id="route-headers"></a> | Nem       | n.a.                                  | A [válaszhoz hozzáadott](https://developer.mozilla.org/docs/Web/HTTP/Headers) HTTP-fejlécek készlete. <ul><li>Az útvonalspecifikus fejlécek felülírják, ha az útvonalspecifikus fejléc megegyezik a válaszban szereplő globális [`globalHeaders`](#global-headers) fejléccel.<li>Fejléc eltávolításához állítsa az értéket üres sztringre.</ul>                                                                                                                                                                                                                                                                                          |
+| `statusCode`                        | Nem       | `200`, `301` vagy `302` átirányítások | A [válasz HTTP-állapotkódja.](https://developer.mozilla.org/docs/Web/HTTP/Status)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `methods`                           | Nem       | Minden metódus                          | Az útvonalnak megfelelő kérési metódusok listája. Elérhető metódusok: `GET` , , , , , , , , `HEAD` és `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` `PATCH` .                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
-Minden tulajdonságnak konkrét célja van a kérelem/válasz folyamatban.
+Minden tulajdonság egy adott céllal rendelkezik a kérés/válasz folyamatban.
 
 | Cél                                        | Tulajdonságok                                                                                   |
 | ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Útvonalak egyeztetése                                   | `route`, `methods`                                                                           |
-| Engedélyezés az útvonal egyeztetése után             | `allowedRoles`                                                                               |
-| Folyamat egy szabály egyeztetése és engedélyezése után | `rewrite` (kérelem módosítása) <br><br>`redirect`, `headers` , `statusCode` (válasz módosítása) |
+| Engedély egy útvonal egyeztetése után             | `allowedRoles`                                                                               |
+| Feldolgozás egy szabály egyeztetése és az engedélyezettek után | `rewrite` (módosítja a kérést) <br><br>`redirect`, `headers` , `statusCode` (módosítja a választ) |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
 
-Az útvonalak egy vagy több szerepkörnek a szabály tömbbe való felvételével vannak biztosítva `allowedRoles` , és a felhasználók [meghívón](./authentication-authorization.md)keresztül egyéni szerepkörökhöz vannak társítva. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+Az útvonalakat egy vagy több szerepkörnév szabálytömbjére való felvételével biztosítjuk, és a felhasználók egyéni szerepkörökhöz vannak társítva `allowedRoles` [meghívásokkal.](./authentication-authorization.md) Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-Alapértelmezés szerint minden felhasználó a beépített `anonymous` szerepkörhöz tartozik, és az összes bejelentkezett felhasználó tagja a `authenticated` szerepkörnek.
+Alapértelmezés szerint minden felhasználó a beépített szerepkörhöz tartozik, és minden bejelentkezett felhasználó `anonymous` a szerepkör `authenticated` tagja.
 
-Ha például csak a hitelesített felhasználókra szeretné korlátozni az útvonalat, adja hozzá a beépített `authenticated` szerepkört a `allowedRoles` tömbhöz.
+Ha például csak a hitelesített felhasználókra szeretne korlátozni egy útvonalat, adja hozzá a beépített szerepkört a `authenticated` `allowedRoles` tömbhöz.
 
 ```json
 {
@@ -86,7 +86,7 @@ Ha például csak a hitelesített felhasználókra szeretné korlátozni az útv
 }
 ```
 
-Szükség szerint új szerepköröket hozhat létre a `allowedRoles` tömbben. Ha csak a rendszergazdákra szeretné korlátozni az útvonalat, a tömbben definiálhatja saját szerepkörét `administrator` `allowedRoles` .
+A tömbben szükség szerint hozhat létre új `allowedRoles` szerepköröket. Ha egy útvonalat csak rendszergazdákra korlátoz, definiálhatja a saját, nevű szerepkörét a `administrator` `allowedRoles` tömbben.
 
 ```json
 {
@@ -95,14 +95,14 @@ Szükség szerint új szerepköröket hozhat létre a `allowedRoles` tömbben. H
 }
 ```
 
-- Teljes hozzáférése van a szerepkörök neveihez; nincsenek lista, amelyeknek a szerepköreinek be kell tartaniuk.
-- Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.
+- Teljes körűen szabályozhatja a szerepkörneveket; nincs olyan lista, amelyhez a szerepköröknek meg kell felelniük.
+- Az egyes felhasználók meghívásokkal vannak [szerepkörökhöz társítva.](authentication-authorization.md)
 
 ## <a name="wildcards"></a>Helyettesítő karakterek
 
-A helyettesítő karakterrel megadott szabályok megfelelnek az adott útvonal összes kérelmének, csak az elérési út végén támogatottak, és a fájlkiterjesztés alapján is szűrhetők. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+A helyettesítő karakterekre vonatkozó szabályok egy útvonalmintában található összes kérésre vonatkoznak, csak az elérési út végén támogatottak, és fájlkiterjesztéssel szűrhetők. Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-Ha például egy naptári alkalmazás útvonalait szeretné megvalósítani, akkor a _Naptár_ útvonala alá tartozó összes URL-címet újraírhatja egyetlen fájl kiszolgálásához.
+Egy naptáralkalmazás útvonalának implementálására például átírhatja a naptár útvonala alá eső összes URL-t, hogy egyetlen fájlt szolgáljon ki. 
 
 ```json
 {
@@ -111,9 +111,9 @@ Ha például egy naptári alkalmazás útvonalait szeretné megvalósítani, akk
 }
 ```
 
-A _calendar.html_ fájl ezután az ügyféloldali útválasztás használatával más nézetet is kiszolgálhat az URL-változatok, például, `/calendar/january/1` `/calendar/2020` és `/calendar/overview` .
+A _calendar.html_ fájl ezután ügyféloldali útválasztással más nézetet tud kiszolgálni az URL-változatok számára, például a , a és a `/calendar/january/1` `/calendar/2020` `/calendar/overview` .
 
-A helyettesítő karakteres egyezéseket fájlkiterjesztés alapján is szűrheti. Ha például olyan szabályt szeretne felvenni, amely csak egy adott elérési úton lévő HTML-fájlokra illeszkedik, a következő szabályt hozhatja létre:
+A helyettesítő karakteres egyezéseket fájlkiterjesztés alapján szűrheti. Ha például olyan szabályt szeretne hozzáadni, amely csak egy adott elérési úton található HTML-fájlokra illeszkedik, a következő szabályt hozhatja létre:
 
 ```json
 {
@@ -124,7 +124,7 @@ A helyettesítő karakteres egyezéseket fájlkiterjesztés alapján is szűrhet
 }
 ```
 
-Ha több fájlkiterjesztés alapján szeretne szűrni, a beállításokat kapcsos zárójelek közé helyezi, ahogy az ebben a példában is látható:
+Több fájlkiterjesztés szűréséhez a lehetőségeket kapcsos zárójelek közé kell foglalni, ahogy az alábbi példában látható:
 
 ```json
 {
@@ -135,18 +135,18 @@ Ha több fájlkiterjesztés alapján szeretne szűrni, a beállításokat kapcso
 }
 ```
 
-A helyettesítő karakteres útvonalak gyakori használati esetei a következők:
+A helyettesítő karakteres útvonalak gyakori használatieset-esete a következő:
 
-- Egy adott fájl kiszolgálása egy teljes elérésiút-mintára
+- Adott fájl kiszolgálása egy teljes elérésiút-mintához
 - Különböző HTTP-metódusok leképezése egy teljes elérésiút-mintára
-- Hitelesítési és engedélyezési szabályok érvényesítése
-- Speciális gyorsítótárazási szabályok implementálása
+- Hitelesítési és engedélyezési szabályok kényszerítése
+- Specializált gyorsítótárazás szabályainak megvalósítása
 
 ## <a name="fallback-routes"></a>Tartalék útvonalak
 
-Az egyoldalas alkalmazások gyakran az ügyféloldali útválasztásra támaszkodnak. Ezek az ügyféloldali útválasztási szabályok frissítik a böngésző ablakának helyét anélkül, hogy kéréseket kellene visszaküldeni a kiszolgálónak. Ha frissíti az oldalt, vagy közvetlenül az ügyféloldali útválasztási szabályok által létrehozott URL-címekre navigál, a megfelelő HTML-lap kiszolgálása érdekében kiszolgálóoldali tartalék útvonal szükséges (amely általában a _index.html_ az ügyféloldali alkalmazáshoz).
+Az egyoldalas alkalmazások gyakran ügyféloldali útválasztásra támaszkodnak. Ezek az ügyféloldali útválasztási szabályok anélkül frissítik a böngésző ablakának helyét, hogy kéréseket adnak vissza a kiszolgálónak. Ha frissíti az oldalt, vagy közvetlenül az ügyféloldali útválasztási szabályok által létrehozott URL-címekre navigál, kiszolgálóoldali tartalék útvonalra van szükség a megfelelő HTML-oldal (amely általában az ügyféloldali alkalmazás _index.html-_ útvonala).
 
-Az alkalmazás úgy konfigurálható, hogy olyan szabályokat használjon, amelyek a tartalék útvonalat implementálják, ahogyan az a következő példában látható, amely egy olyan elérési utat használ, amely a fájl szűrőjét használja:
+Az alkalmazást konfigurálhatja úgy, hogy olyan szabályokat használjon, amelyek tartalék útvonalat valósítanak meg az alábbi példában látható módon, amely helyettesítő karaktereket használ fájlszűrővel:
 
 ```json
 {
@@ -157,7 +157,7 @@ Az alkalmazás úgy konfigurálható, hogy olyan szabályokat használjon, amely
 }
 ```
 
-Az alábbi példa a fájl struktúráját mutatja be, a következő eredmények lehetségesek ezzel a szabállyal.
+Az alábbi példa fájlstruktúra a következő eredményeket teszi lehetővé ezzel a s szabálysal.
 
 ```files
 ├── images
@@ -171,44 +171,44 @@ Az alábbi példa a fájl struktúráját mutatja be, a következő eredmények 
 └── index.html
 ```
 
-| Kérelmek...                                         | visszatérési érték...                                                                                                    | az állapottal... |
+| Kérések a...                                         | Visszatér...                                                                                                    | a következő állapottal... |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------ |
-| _körülbelül_                                              | A _/index.html_ fájl                                                                                        | `200`              |
+| _/about/_                                              | A _/index.htmfájl_                                                                                        | `200`              |
 | _/images/logo.png_                                     | A képfájl                                                                                                | `200`              |
-| _/images/icon.svg_                                     | A _/index.html_ fájl – mivel az _SVG_ -fájlkiterjesztés nem szerepel a `/images/*.{png,jpg,gif}` szűrőben | `200`              |
+| _/images/icon.svg_                                     | A _/index.html_ fájl – mivel az _svg_ fájlkiterjesztés nem szerepel a `/images/*.{png,jpg,gif}` szűrőben | `200`              |
 | _/images/unknown.png_                                  | A fájl nem található hiba                                                                                          | `404`              |
 | _/css/unknown.css_                                     | A fájl nem található hiba                                                                                          | `404`              |
-| _/css/global.css_                                      | A stíluslap fájl                                                                                           | `200`              |
-| A _/images_ -vagy _/CSS_ -mappákon kívüli egyéb fájlok | A _/index.html_ fájl                                                                                        | `200`              |
+| _/css/global.css_                                      | A stíluslap fájlja                                                                                           | `200`              |
+| Az _/images_ vagy a _/css_ mappán kívüli egyéb fájlok | A _/index.htmfájl_                                                                                        | `200`              |
 
 ## <a name="global-headers"></a>Globális fejlécek
 
-A `globalHeaders` szakasz az egyes válaszokra alkalmazott [HTTP-fejléceket](https://developer.mozilla.org/docs/Web/HTTP/Headers) tartalmazza, hacsak nem bírálja felül az [útvonal fejlécének](#route-headers) szabályát, ellenkező esetben az útvonal és a globális fejlécek fejléceit is visszaadja a rendszer.
+A szakasz az egyes válaszokra alkalmazott HTTP-fejléceket tartalmaz, kivéve, ha egy útvonalfejléc-szabály felülbírálja őket, ellenkező esetben a rendszer az útvonal mindkét fejlécének unióját adja `globalHeaders` vissza. [](https://developer.mozilla.org/docs/Web/HTTP/Headers) [](#route-headers)
 
-Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-A fejlécek eltávolításához állítsa az értéket üres sztringre ( `""` ).
+Fejléc eltávolításához állítsa be az értéket egy üres sztringre ( `""` ).
 
-A globális fejlécek gyakori használati esetei többek között a következők:
+Néhány gyakori eset a globális fejlécek esetén:
 
 - Egyéni gyorsítótárszabályok
-- Biztonsági házirendek betartatása
+- Biztonsági szabályzatok érvényesítése
 - Kódolási beállítások
 
-## <a name="response-overrides"></a>Válasz felülbírálásai
+## <a name="response-overrides"></a>Válasz-felülbírálások
 
-A `responseOverrides` szakasz lehetőséget biztosít egyéni válasz definiálására, ha a kiszolgáló egyébként hibakódot ad vissza. Példaként tekintse meg a [konfigurációs fájlt](#example-configuration-file) a használati példákhoz.
+A szakasz lehetőséget biztosít egyéni válasz meghatározására, ha a kiszolgáló egyébként `responseOverrides` hibakódot adna vissza. Példákat [a példa konfigurációs fájlban](#example-configuration-file) talál.
 
-A felülbíráláshoz a következő HTTP-kódok érhetők el:
+A következő HTTP-kódok felülbírálhatóak:
 
 | Állapotkód                                                   | Értelmezés      | Lehetséges ok                                                                                                                                                                                                                                                                                     |
 | ------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Hibás kérelem  | Érvénytelen meghívó hivatkozás                                                                                                                                                                                                                                                                            |
-| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nem engedélyezett | Korlátozott lapokra irányuló kérelem hitelesítés nélkül                                                                                                                                                                                                                                                  |
-| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden    | <ul><li>A felhasználó be van jelentkezve, de nem rendelkezik a lap megtekintéséhez szükséges szerepkörökkel.<li>A felhasználó be van jelentkezve, de a futtatókörnyezet nem tudja beolvasni a felhasználói adatokat az identitás jogcímeiből.<li>Túl sok felhasználó jelentkezett be a webhelyre egyéni szerepkörökkel, ezért a futtatókörnyezet nem tud bejelentkezni a felhasználóba.</ul> |
+| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Hibás kérés  | Érvénytelen meghívási hivatkozás                                                                                                                                                                                                                                                                            |
+| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nem engedélyezett | Korlátozott oldalakra vonatkozó kérés hitelesítés nélkül                                                                                                                                                                                                                                                  |
+| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Forbidden    | <ul><li>A felhasználó be van jelentkezve, de nem rendelkezik az oldal megtekintéséhez szükséges szerepkörökkel.<li>A felhasználó be van jelentkezve, de a futásidő nem tudja lehozni a felhasználói adatokat az identitás jogcímeikből.<li>Túl sok felhasználó jelentkezett be a webhelyre egyéni szerepkörökkel, ezért a futásidő nem tud bejelentkezni a felhasználóba.</ul> |
 | [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nem található    | A fájl nem található                                                                                                                                                                                                                                                                                     |
 
-A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
+Az alábbi példakonfiguráció bemutatja, hogyan bírálható felül egy hibakód.
 
 ```json
 {
@@ -233,7 +233,7 @@ A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
 }
 ```
 
-## <a name="example-configuration-file"></a>Példa konfigurációs fájlra
+## <a name="example-configuration-file"></a>Konfigurációs példafájl
 
 ```json
 {
@@ -320,34 +320,34 @@ A következő példa azt mutatja be, hogyan bírálható felül egy hibakód.
 }
 ```
 
-A fenti konfiguráció alapján tekintse át a következő forgatókönyveket.
+A fenti konfiguráció alapján tekintse át az alábbi forgatókönyveket.
 
-| Kérelmek...                                                    | eredmények...                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Kérések a...                                                    | a következőt...                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| _/Profile_                                                        | A hitelesített felhasználók kiszolgálják a _/profile/index.html_ fájlt. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                                                                                                                                                                                                                              |
-| _/admin_                                                         | A _rendszergazdai_ szerepkörben lévő hitelesített felhasználók a _/Admin/index.html_ fájlt szolgálják ki. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                                                                                                          |
-| _/logo.png_                                                       | A rendszerképet egy egyéni gyorsítótárazási szabállyal szolgálja ki, ahol a maximális életkor valamivel több mint 182 nap (15 770 000 másodperc).                                                                                                                                                                                                                                                                                                                                   |
-| _/api/admin_                                                      | `GET` a _registeredusers_ szerepkörben hitelesített felhasználóktól érkező kéréseket a rendszer ELKÜLDI az API-nak. A _registeredusers_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` .<br/><br/>`POST`, `PUT` , `PATCH` és `DELETE` a _rendszergazdai_ szerepkörben lévő hitelesített felhasználóktól érkező kéréseket a rendszer elküldi az API-nak. A _rendszergazdai_ szerepkörben nem szereplő hitelesített felhasználók és a nem hitelesített felhasználók hibát szolgáltatnak `401` . |
-| _/customers/contoso_                                              | A _rendszergazda_ vagy a _customers_contoso_ szerepkörökhöz tartozó hitelesített felhasználók a _/Customers/contoso/index.html_ fájlt szolgálják ki. A _rendszergazda_ vagy a _customers_contoso_ szerepkörökben nem szereplő hitelesített felhasználók az `403` <sup>1</sup>. hibát szolgálják ki. A nem hitelesített felhasználókat a rendszer átirányítja a _belépéshez_.                                                                                                                            |
-| _/Belépés View_                                                          | A nem hitelesített felhasználók a GitHub használatával hitelesíthetők.                                                                                                                                                                                                                                                                                                                                                                             |
-| _/.auth/login/twitter_                                            | Mivel az útválasztási szabály letiltja a Twitter-engedélyezést, a rendszer `404` visszaadja a hibát, amely visszatérhet a Serving _/index.html_ `200` állapot kódjával.                                                                                                                                                                                                                                                                                     |
-| _/logout_                                                         | A felhasználók ki vannak jelentkezve bármely hitelesítési szolgáltatóból.                                                                                                                                                                                                                                                                                                                                                                                          |
-| _/calendar/2021/01_                                               | A böngésző a _/calendar.html_ fájlt kézbesíti.                                                                                                                                                                                                                                                                                                                                                                                              |
-| _/specials_                                                       | A böngésző véglegesen átirányítja a _/Deals_.                                                                                                                                                                                                                                                                                                                                                                                            |
-| _/data.jsbekapcsolva_                                                      | A fájl a MIME- `text/json` típussal szolgált.                                                                                                                                                                                                                                                                                                                                                                                               |
-| _/About_ vagy bármely olyan mappa, amely megfelel az ügyféloldali útválasztási mintáknak | A _/index.html-_ fájl `200` állapotkódot szolgál.                                                                                                                                                                                                                                                                                                                                                                                    |
-| Nem létező fájl a _/images/_ mappában                     | `404`Hiba.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| _/profile_                                                        | A hitelesített felhasználók számára a _/profile/index.html fájl szolgál_ ki. A nem hitelesített felhasználókat a rendszer a _/login webhelyre irányítja át._                                                                                                                                                                                                                                                                                                                              |
+| _/admin/_                                                         | A rendszergazdai szerepkörben a hitelesített _felhasználók_ számára a _/admin/index.html fájl szolgál._ A rendszergazdai szerepkörben nem rendelkező hitelesített _felhasználók_ `403` <sup>1-es hibaüzenetet kapnak.</sup> A nem hitelesített felhasználókat a rendszer a _/login webhelyre irányítja át._                                                                                                                                                                                                          |
+| _/logo.png_                                                       | A rendszerképet egy egyéni gyorsítótárszabály alapján szolgálja ki, ahol a maximális életkor kicsivel több mint 182 nap (15 770 000 másodperc).                                                                                                                                                                                                                                                                                                                                   |
+| _/api/admin_                                                      | `GET`A regisztrált felhasználók szerepkörben  hitelesített felhasználóktól származó kéréseket a rendszer elküldi az API-nak. A nem regisztrált  felhasználók és a nem hitelesített felhasználók hibaüzenetet `401` kapnak.<br/><br/>`POST`A rendszergazdai szerepkörben a hitelesített felhasználók , , és kérései `PUT` `PATCH` az `DELETE` API-nak vannak elküldve.  A rendszergazdai szerepkör  nélküli hitelesített felhasználók és a nem hitelesített felhasználók hibaüzenetet `401` kapnak. |
+| _/customers/contoso_                                              | Azok a hitelesített felhasználók,  akik  rendszergazdai vagy customers_contoso szerepkörhöz tartoznak, a _/customers/contoso/index.html fájlt kapják_ meg. A rendszergazdai szerepkörben vagy szerepkörben _nem customers_contoso_ hitelesített felhasználók  `403` <sup>1-es hibaüzenetet kapnak.</sup> A nem hitelesített felhasználókat a rendszer a _/login webhelyre irányítja át._                                                                                                                            |
+| _/login_                                                          | A nem hitelesített felhasználóknak hitelesítenie kell magukat a GitHubbal.                                                                                                                                                                                                                                                                                                                                                                             |
+| _/.auth/login/twitter_                                            | Mivel az útválasztási szabály letiltja a Twitter-hitelesítést, a rendszer hibát ad vissza, amely a `404` _/index.html_ állapotkóddal való `200` kiszolgálására vonatkozik.                                                                                                                                                                                                                                                                                     |
+| _/logout_                                                         | A felhasználók kijelentkeznek bármely hitelesítésszolgáltatóból.                                                                                                                                                                                                                                                                                                                                                                                          |
+| _/calendar/2021/01_                                               | A böngésző a _/calendar.html fájlt szolgálja_ ki.                                                                                                                                                                                                                                                                                                                                                                                              |
+| _/specials (speciális)_                                                       | A böngésző véglegesen át lesz irányítva a _/deals webhelyre._                                                                                                                                                                                                                                                                                                                                                                                            |
+| _/data.jsbe_                                                      | A MIME típussal `text/json` kiszolgált fájl.                                                                                                                                                                                                                                                                                                                                                                                               |
+| _/about_, vagy bármely olyan mappa, amely megfelel az ügyféloldali útválasztási mintáknak | Az _/index.html_ fájlt egy állapotkód `200` szolgálja ki.                                                                                                                                                                                                                                                                                                                                                                                    |
+| Egy nem létező fájl az _/images/ mappában_                     | Egy `404` hiba.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
-<sup>1</sup> egyéni hibaüzenetet adhat meg egy [Válasz felülbírálási szabály](#response-overrides)használatával.
+<sup>1</sup> Egyéni hibaoldalt is meg lehet adni egy [válasz-felülbírálási s szabály használatával.](#response-overrides)
 
 ## <a name="restrictions"></a>Korlátozások
 
-A fájl _staticwebapps.config.js_ a következő korlátozások vonatkoznak.
+A fájlonstaticwebapps.config.js _korlátozások vonatkoznak._
 
 - A maximális fájlméret 100 KB
 - Legfeljebb 50 különböző szerepkör
 
-Az általános korlátozásokról és korlátozásokról a [kvóták című cikkben](quotas.md) olvashat.
+Az általános [korlátozásokat és](quotas.md) korlátozásokat lásd a Kvóták cikkben.
 
 ## <a name="next-steps"></a>Következő lépések
 

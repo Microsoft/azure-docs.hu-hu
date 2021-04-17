@@ -1,24 +1,24 @@
 ---
-title: Az Azure API Management beépített szabályzat-definíciói
-description: Az Azure API Management beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók az Azure-erőforrások kezelésének megközelítéseit biztosítják.
-ms.date: 03/31/2021
+title: Beépített szabályzatdefiníciók az Azure API Management
+description: Az Azure Policy Azure-erőforrások beépített szabályzatdefinícióit API Management. Ezek a beépített szabályzatdefiníciók az Azure-erőforrások kezelésének megközelítéseit biztosítják.
+ms.date: 04/14/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0956ccd28909b985c86666712330d19bfaa88a43
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0676557deb0acab07190ea3f75bddde3ae722bcf
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095874"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500387"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure Policy beépített szabályzat-definíciók az Azure API Management
+# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure Policy Azure-előfizetés beépített szabályzatdefiníciói API Management
 
-Ez az oldal az Azure API Management beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md). API Management házirend-minták esetében lásd: [API Management-Policy index](./policies/index.md).
+Ez az oldal az [Azure-Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe API Management. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md) A API Management mintákkal kapcsolatban lásd: [API Management - Policy index](./policies/index.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 
 ## <a name="azure-api-management"></a>Azure API Management
 
