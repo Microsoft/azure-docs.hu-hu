@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/11/2021
-ms.openlocfilehash: 26d119fb6880f4c539e0064db424699bc5d22f96
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 826183e09f2aa7f3f22ace8b5ce3e16767d49863
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478675"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515658"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Adatfolyamok leképezése a Azure Data Factory
 
@@ -40,27 +40,27 @@ A leképezési adatfolyam egyedi szerzői vásznon teszi egyszerűvé az átalak
 
 ### <a name="graph"></a>Graph
 
-A gráf megjeleníti az átalakítási streamet. Megjeleníti a forrásadatok leszárazását, amikor egy vagy több fogadóba áramlik. Új forrás hozzáadásához válassza a **Forrás hozzáadása lehetőséget.** Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó részén lévő pluszjelet. További információ az [adatfolyam-diagram kezelésről.](concepts-data-flow-manage-graph.md)
+A gráf megjeleníti az átalakítási streamet. Megjeleníti a forrásadatok leszárazását, amikor egy vagy több fogadóba áramlik. Új forrás hozzáadásához válassza a **Forrás hozzáadása lehetőséget.** Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó részén lévő pluszjelet. További információ az [adatfolyam-diagram kezeléséhez.](concepts-data-flow-manage-graph.md)
 
-![Képernyőkép a vászon gráf részről a Keresés szövegmezővel.](media/data-flow/canvas-2.png)
+![A vászon gráf részének képernyőképe a Keresés szövegmezővel.](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 
-A konfigurációs panel az aktuálisan kiválasztott átalakításra vonatkozó beállításokat jeleníti meg. Ha nincs kiválasztva átalakítás, az adatfolyamot jeleníti meg. Az adatfolyam teljes konfigurációjában paramétereket adhat hozzá a **Paraméterek lapon.** További információ: [Adatfolyam-paraméterek leképezése.](parameters-data-flow.md)
+A konfigurációs panel az aktuálisan kiválasztott átalakításra vonatkozó beállításokat jeleníti meg. Ha nincs kiválasztva átalakítás, az adatfolyamot jeleníti meg. A teljes adatfolyam-konfigurációban paramétereket adhat hozzá a **Paraméterek lapon.** További információ: [Adatfolyam-paraméterek leképezése.](parameters-data-flow.md)
 
 Minden átalakítás legalább négy konfigurációs lapot tartalmaz.
 
 #### <a name="transformation-settings"></a>Átalakítási beállítások
 
-Az egyes átalakítások konfigurációs panelének első lapja az adott átalakításra vonatkozó beállításokat tartalmazza. További információt az átalakítás dokumentációs oldalán talál.
+Az egyes átalakítások konfigurációs panelének első lapja tartalmazza az adott átalakításra vonatkozó beállításokat. További információt az átalakítás dokumentációs oldalán talál.
 
 ![Forrásbeállítások lap](media/data-flow/source1.png "Forrásbeállítások lap")
 
 #### <a name="optimize"></a>Optimalizálás
 
-Az **Optimalizálás** lap a particionálási sémák konfigurálási beállításait tartalmazza. Az adatfolyamok optimalizálásával kapcsolatos további információkért tekintse meg az adatfolyam-leképezési [teljesítményre vonatkozó útmutatót.](concepts-data-flow-performance.md)
+Az **Optimalizálás** lap a particionálási sémák konfigurálási beállításait tartalmazza. Az adatfolyamok optimalizálásával kapcsolatos további információkért tekintse meg az adatfolyam-teljesítményre [vonatkozó leképezési útmutatót.](concepts-data-flow-performance.md)
 
-![Képernyőkép az Optimalizálás lapról, amely a Partíció lehetőséget, a Partíciótípust és a Partíciók számát tartalmazza.](media/data-flow/optimize.png)
+![Képernyőkép az Optimalizálás lapról, amely tartalmazza a Partíció lehetőséget, a Partíció típusát és a Partíciók száma lehetőséget.](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>Ellenőrizni
 
@@ -100,7 +100,68 @@ A leképezési adatfolyam integrálható a meglévő Azure Data Factory monitoro
 
 Az Azure Data Factory csapat létrehozott egy [](concepts-data-flow-performance.md) teljesítményhangolási útmutatót, amely segít optimalizálni az adatfolyamok végrehajtási idejét az üzleti logika létrehozása után.
 
+
+## <a name="available-regions"></a>Elérhető régiók
+
+A leképezési adatfolyamok az ADF következő régióiban érhetők el:
+
+| Azure-régió | Adatfolyamok az ADF-ben |
+| ------------ | ----------------- |
+| Ausztrália középső régiója | |
+| Ausztrália 2. középső régiója | |
+| Kelet-Ausztrália | ✓ |
+| Délkelet-Ausztrália   | ✓ |
+| Dél-Brazília  | ✓ |
+| Közép-Kanada | ✓ |
+| Közép-India | ✓ |
+| Az USA középső régiója    | ✓ |
+| Kelet-Kína |      |
+| Kína 2. keleti régiója  |   |
+| Kína – régiófüggetlen | |
+| Észak-Kína | ✓ |
+| Kína 2. északi régiója | ✓ |
+| Kelet-Ázsia | ✓ |
+| USA keleti régiója   | ✓ |
+| USA 2. keleti régiója | ✓ |
+| Közép-Franciaország | ✓ |
+| Dél-Franciaország  | |
+| Közép-Németország (szuverén) | |
+| Németország – régiófüggetlen (független) | |
+| Észak-Németország (nyilvános) | |
+| Északkelet-Németország (Szuverén) | |
+| Nyugat-Németország – középső régió (nyilvános) |  |
+| Kelet-Japán | ✓ |
+| Nyugat-Japán |  |
+| Dél-Korea középső régiója | ✓ |
+| Dél-Korea déli régiója | |
+| USA északi középső régiója  | ✓ |
+| Észak-Európa  | ✓ |
+| Kelet-Kelet | ✓ |
+| Nyugat-Nyugat-Németország | |
+| Dél-Afrika északi régiója    | ✓ |
+| Dél-Afrika nyugati régiója |  |
+| USA déli középső régiója  | |
+| Dél-India | |
+| Délkelet-Ázsia    | ✓ |
+| Észak-Svájc |   |
+| Nyugat-Svájc | |
+| Egyesült Arab Emírségek középső | |
+| Egyesült Arab Emírségek északi részén | ✓ |
+| Az Egyesült Királyság déli régiója  | ✓ |
+| Az Egyesült Királyság nyugati régiója |     |
+| US DoD – Középső régió | |
+| US DoD – Kelet | |
+| USA-beli államigazgatás – Arizona | ✓ |
+| US Gov – régiófüggetlen | |
+| USA-beli államigazgatás – Texas | |
+| USA-beli államigazgatás – Virginia | ✓ |
+| USA nyugati középső régiója |     |
+| Nyugat-Európa   | ✓ |
+| Nyugat-India | |
+| USA nyugati régiója   | ✓ |
+| USA 2. nyugati régiója | ✓ |
+
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan hozhat létre [forrásátalakítást.](data-flow-source.md)
-* Ismerje meg, hogyan építhet ki adatfolyamokat [hibakeresési módban.](concepts-data-flow-debug-mode.md)
+* Útmutató adatfolyamok [hibakeresési módban való felépítéséhez.](concepts-data-flow-debug-mode.md)

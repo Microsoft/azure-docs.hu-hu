@@ -3,96 +3,96 @@ title: Migrálás a Bridge to Kubernetesre
 services: azure-dev-spaces
 ms.date: 10/21/2020
 ms.topic: conceptual
-description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
-keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
-ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+description: Ismerteti az Azure Dev Spacesből a Bridge to Kubernetesbe irányuló migrálási folyamatot
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók, Bridge to Kubernetes
+ms.openlocfilehash: 8ffb7693ff223a9cb952964ded1e6967ceeb326e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888521"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499291"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
 
 > [!IMPORTANT]
-> Az Azure dev Spaces a 2023. október 31-én megszűnik. Az ügyfeleknek át kell térniük a Bridge használatával a Kubernetes, egy ügyfél-fejlesztői eszközre.
+> Az Azure Dev Spaces 2023. október 31-én lesz kivezetve. Az ügyfeleknek át kell lépniük a Bridge to Kubernetes ügyfélfejlesztői eszközre.
 >
-> Az Azure dev Spaces célja a felhasználók Kubernetes való fejlesztésének megkönnyítése volt. Az Azure dev Spaces megközelítése jelentős kompromisszumot okozott a felhasználók számára a Docker-és Kubernetes-konfigurációk, valamint a Kubernetes üzembe helyezési fogalmak megismerése érdekében. Az idő múlásával egyértelművé vált, hogy az Azure fejlesztői területeinek megközelítése nem csökkentette hatékonyan a belső hurok-fejlesztés sebességét a Kubernetes. A Kubernetes-híd hatékonyan csökkenti a belső hurok-fejlesztés sebességét, és elkerüli a szükségtelen terheket a felhasználók számára.
+> Az Azure Dev Spaces célja az volt, hogy a felhasználókat a Kubernetesen történő fejlesztéshez is megterjesszen. Az Azure Dev Spaces megközelítésének jelentős visszafogalmazása a felhasználókra hárult, hogy megértsék a Docker- és Kubernetes-konfigurációkat, valamint a Kubernetes üzembe helyezési fogalmait. Idővel az is nyilvánvalóvá vált, hogy az Azure Dev Spaces megközelítése nem csökkenti hatékonyan a kubernetes belső ciklusok fejlesztésének sebességét. A Kuberneteshez való híd hatékonyan csökkenti a belső ciklusok fejlesztésének sebességét, és szükségtelenül terheli a felhasználókat.
 >
-> Az alapszintű feladat változatlan marad: hozza létre a legjobb tapasztalatokat, hogy a nagyobb alkalmazás kontextusában fejlesszen, tesztelje és hibakeresési szolgáltatás kódját.
+> Az alapvető küldetés változatlan marad: A mikroszolgáltatás-kód fejlesztéséhez, teszteléséhez és hibakereséséhez szükséges legjobb élmények kiépítése a nagyobb alkalmazás kontextusában.
 
-A Bridge to Kubernetes az Azure dev Spaces szolgáltatással működő számos fejlesztési forgatókönyv esetén is enyhébb súlyozást biztosít. A Bridge to Kubernetes egy ügyféloldali élmény, amely a [Visual Studióban][vs]   és a [Visual Studio Code][vsc]-ban lévő bővítményeket használja.  
+A Bridge to Kubernetes (Kuberneteshez való híd) az Azure Dev Spaces számos fejlesztési forgatókönyvének könnyebb alternatívája. A Bridge to Kubernetes egy csak ügyféloldali élmény, amely bővítményeket használ a Visual Studio [][vs]   és Visual Studio [Code-ban.][vsc]  
 
-A Kubernetes-hez való híd segít a fejlesztési élményben azáltal, hogy lehetővé teszi, hogy egy létesített Kubernetes alkalmazás tartalmazzon egy, a helyi fejlesztési munkaállomáson futó szolgáltatást. A dev Spaces szolgáltatással ellentétben a Kubernetes-híd csökkenti a belső hurok-bonyolultságot a Docker-és Kubernetes-konfigurációk létrehozásához, így a fejlesztők csak a szolgáltatói programkód üzleti logikáját tudják összpontosítani.
+A Bridge to Kubernetes (Híd a Kuberneteshez) szolgáltatás segít a fejlesztési élményben azáltal, hogy lehetővé teszi, hogy egy már létrehozott Kubernetes-alkalmazás tartalmazzon egy, a helyi fejlesztői munkaállomáson futó szolgáltatást. A Dev Spacestől eltérően a Bridge to Kubernetes csökkenti a belső hurkok összetettségeit azáltal, hogy a docker- és Kubernetes-konfigurációk létrehozásának szükségét azáltal csökkenti, hogy a fejlesztők kizárólag a mikroszolgáltatás-kód üzleti logikáját összpontosítják.
 
-A Bridge to Kubernetes segítségével megismételheti a fejlesztői számítógépen futó kódokat, miközben a függőségeket és a Kubernetes-környezet meglévő konfigurációját használja. Ezzel szemben az Azure dev Spaces üzembe helyezi a szolgáltatást a Kubernetes-környezetben, mielőtt távolról felhasználja a szolgáltatását, és megismétli a kódját.
+A Bridge to Kubernetes (Híd a Kuberneteshez) segítségével iterálhatja a fejlesztői számítógépen futó kódot, miközben a Kubernetes-környezet függőségeit és meglévő konfigurációját használja. Ezzel szemben az Azure Dev Spaces üzembe helyezheti a mikroszolgáltatást a Kubernetes-környezetben, mielőtt távolról hibakeresést futtathat a szolgáltatáson, és iterálhatja a kódot.
 
-Ez a cikk az Azure dev Spaces és a Bridge és a Kubernetes közötti összehasonlítást, valamint az Azure dev Spaces-ről a Kubernetes-re történő áttelepítésre vonatkozó utasításokat tartalmazza.
+Ez a cikk összehasonlítja az Azure Dev Spacest és a Bridge to Kubernetes-t, valamint útmutatást nyújt az Azure Dev Spacesből a Bridge to Kubernetesbe való áttelepítéshez.
 
-## <a name="development-approaches"></a>Fejlesztési módszerek
+## <a name="development-approaches"></a>Fejlesztési megközelítések
 
-![Fejlesztési módszerek](media/migrate-to-btk/development-approaches.svg)
+![Fejlesztési megközelítések](media/migrate-to-btk/development-approaches.svg)
 
-Az Azure dev Spaces lehetővé tette, hogy a fejlesztők közvetlenül az AK-fürtön futó kóddal működjenek, így elkerülhető, hogy olyan helyi környezetre van szükség, amely nem hasonlít az üzembe helyezett környezet Kubernetes. Ez a megközelítés javította a fejlesztés bizonyos aspektusait, de bevezette a tanulás és a további fogalmak, például a Docker, a Kubernetes és a Helm megkezdésének előfeltételeit, mielőtt megkezdené az Azure dev Spaces használatát.
+Az Azure Dev Spaces segített a Kubernetes-fejlesztőknek a közvetlenül az AKS-fürtjükben futó kódokkal való munkában, így nem volt szükség olyan helyi környezetre, amely nem hasonlít az üzembe helyezett környezetre. Ez a megközelítés javította a fejlesztés bizonyos aspektusait, de az Azure Dev Spaces használatának elkezdődte előtt bevezette az olyan további fogalmak tanulásának és fenntartásának előfeltételeit is, mint a Docker, a Kubernetes és a Helm.
 
-A Kubernetes híd lehetővé teszi a fejlesztők számára, hogy közvetlenül a fejlesztői számítógépeken működjenek, miközben a fürt többi részével együttműködnek. Ez a megközelítés kihasználja a programkódok futtatásának ismeretét és sebességét közvetlenül a fejlesztői számítógépeken, a fürt által biztosított függőségek és környezetek megosztása mellett. Ez a megközelítés kihasználja a Kubernetes-ben futó hűséget és skálázást is.
+A Bridge to Kubernetes (Kuberneteshez való híd) lehetővé teszi a fejlesztők számára, hogy közvetlenül a fejlesztői számítógépükön dolgozva kommunikálhatnak a fürt többi részével. Ez a megközelítés kihasználja a kód közvetlenül a fejlesztői számítógépeken való futtatásának ismerete és gyorsasága előnyeit, miközben megosztja a fürt által biztosított függőségeket és környezetet. Ez a megközelítés a Kubernetesben való futtatásból származó hűséget és skálázást is kihasználja.
 
 ## <a name="feature-comparison"></a>Funkciók összehasonlítása
 
-Az Azure dev Spaces és a Bridge to Kubernetes hasonló funkciókkal rendelkezik, több területen is különböznek:
+Az Azure Dev Spaces és a Bridge to Kubernetes hasonló funkciókkal rendelkezik, és több területen is eltérnek:
 
 | Követelmény  | Azure Dev Spaces  | Bridge to Kubernetes  |
 |---------------|-------------------|--------------------------------|
-| Azure Kubernetes Service | 15 Azure-régióban | Bármely AK szolgáltatási régió    |
+| Azure Kubernetes Service | 15 Azure-régióban | Bármely AKS-szolgáltatási régió    |
 | **Biztonság** |
-| Biztonsági hozzáférés szükséges a fürtön  | AK-fürt közreműködői  | Kubernetes RBAC – központi telepítés frissítése   |
-| Biztonsági hozzáférés szükséges a fejlesztői számítógépen  | N/A  | Helyi rendszergazda/sudo   |
+| A fürtön szükséges biztonsági hozzáférés  | AKS-fürt közreműködője  | Kubernetes RBAC – Üzembe helyezési frissítés   |
+| A fejlesztési számítógépen szükséges biztonsági hozzáférés  | N/A  | Helyi rendszergazda /sudo   |
 | **Használhatóság** |
-| Független a Kubernetes és a Docker-összetevőktől  | Nem  | Igen   |
-| Módosítások automatikus visszaállítása, hibakeresés utáni  | Nem  | Igen   |
+| Független a Kubernetestől és a Docker-összetevőktől  | Nem  | Igen   |
+| A módosítások automatikus visszaállítás, hibakeresés után  | Nem  | Igen   |
 | **Támogatott ügyfél-eszközök** |
-| Együttműködik a Visual Studio 2019-mel  | Igen  | Yes   |
-| Működik a Visual Studio Code-ban  | Igen  | Yes   |
-| A parancssori felülettel működik  | Igen  | Nem   |
+| A 2019 Visual Studio együtt működik  | Igen  | Igen   |
+| A Visual Studio Code-kóddal működik  | Igen  | Igen   |
+| Működik a CLI-vel  | Igen  | Nem   |
 | **Operációs rendszer kompatibilitása** |
-| Windows 10 rendszeren működik  | Igen  | Yes  |
-| Linux rendszeren működik  | Igen  | Yes  |
-| MacOS rendszeren működik  | Igen  | Yes  |
+| A Windows 10  | Igen  | Igen  |
+| Linux rendszeren működik  | Igen  | Igen  |
+| MacOS rendszeren működik  | Igen  | Igen  |
 | **Képességek** |
-| Fejlesztői elkülönítés vagy csoportmunka  | Igen  | Yes  |
+| Fejlesztői elkülönítés vagy csapatfejlesztés  | Igen  | Igen  |
 | Környezeti változók szelektív felülírása  | Nem  | Igen  |
-| Docker és Helm diagram létrehozása  | Igen  | Nem  |
-| Kód állandó üzembe helyezése a Kubernetes-ben  | Igen  | Nem  |
-| Távoli hibakeresés a Kubernetes Pod-ban  | Igen  | Nem  |
-| Helyi hibakeresés, csatlakozás a Kubernetes-hez  | Nem  | Igen  |
-| Egyszerre több szolgáltatás hibakeresése ugyanazon a munkaállomáson  | Igen  | Yes  |
+| Dockerfile és Helm-diagram létrehozása  | Igen  | Nem  |
+| Kód állandó üzembe helyezése a Kubernetesben  | Igen  | Nem  |
+| Távoli hibakeresés Kubernetes-podban  | Igen  | Nem  |
+| Helyi hibakeresés, csatlakoztatva a Kuberneteshez  | Nem  | Igen  |
+| Egyszerre több szolgáltatás hibakeresése ugyanazon a munkaállomáson  | Igen  | Igen  |
 
-## <a name="kubernetes-inner-loop-development"></a>Kubernetes belső hurok fejlesztése
+## <a name="kubernetes-inner-loop-development"></a>Belső Kubernetes-ciklus fejlesztése
 
-Az Azure dev Spaces és a Bridge közötti legnagyobb különbség a Kubernetes, ahol a kód fut. Az Azure dev Spaces segítségével fejlesztheti és hibakeresést végezhet a webszolgáltatás kódjában, de ehhez a kódot a fürtben kell futtatnia. A Bridge to Kubernetes lehetővé teszi, hogy közvetlenül a fejlesztői számítógépen fejlesszen és végezzen hibakeresést a szolgáltatásban, miközben a Kubernetes-ben futó nagyobb alkalmazások kontextusában is. A Kubernetes-híd kiterjeszti a Kubernetes-fürt kerületét, és lehetővé teszi a helyi folyamatok számára a Kubernetes konfigurációjának öröklését.
+Az Azure Dev Spaces és a Bridge to Kubernetes közötti legnagyobb különbség a kód futtatása. Az Azure Dev Spaces segít a mikroszolgáltatás-kód fejlesztésében és hibakeresésében, de ehhez a kódot a fürtön kell futtatnia. A Bridge to Kubernetes (Kuberneteshez való híd) lehetővé teszi a mikroszolgáltatás-kód fejlesztését és hibakeresését közvetlenül a fejlesztői számítógépen, miközben a Kubernetesben futó nagyobb alkalmazás kontextusában marad. A Kubernetes-híd kibővíti a Kubernetes-fürt szegélyhálózatát, és lehetővé teszi a helyi folyamatok számára, hogy a konfigurációt a Kubernetestől öröklik.
 
 ![Belső hurok fejlesztése](media/migrate-to-btk/btk-graphic-non-isolated.gif)
 
-A híd Kubernetes való használata esetén a rendszer létrehoz egy hálózati kapcsolatot a fejlesztői számítógép és a fürt között.A csatlakozás élettartama érdekében a rendszer egy proxyt ad hozzá a fürthöz a Kubernetes-telepítés helyett, amely átirányítja a kéréseket a szolgáltatásnak a fejlesztői számítógép felé. A kapcsolat bontásakor az alkalmazás központi telepítése a fürtön futó üzemelő példány eredeti verziójának használatára fog visszatérni. Ez a megközelítés különbözik attól, hogy az Azure dev Spaces hogyan működik, mely kód szinkronizálva van a fürttel, létrehozva, majd futtatva. Az Azure dev Spaces nem állítja vissza a kódot.
+A Bridge to Kubernetes használata esetén létrejön egy hálózati kapcsolat a fejlesztői számítógép és a fürt között.A kapcsolat teljes élettartama alatt a rendszer hozzáad egy proxyt a fürthöz a Kubernetes üzemelő példánya helyett, amely átirányítja a kéréseket a szolgáltatáshoz a fejlesztői számítógéphez. A kapcsolat megszakadása esetén az alkalmazástelepítés visszaáll a fürtön futó üzemelő példány eredeti verziójára. Ez a megközelítés eltér attól, ahogy az Azure Dev Spaces működik, amelyben a kód szinkronizálva van a fürthöz, majd felépíti, majd futtatja azt. Az Azure Dev Spaces a kódot sem teljesen újítja meg.
 
-A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben futó alkalmazásokkal, a telepítési módszertől függetlenül. Ha CI/CD-t használ az alkalmazás létrehozásához és futtatásához, függetlenül attól, hogy a létrehozott eszközöket vagy egyéni parancsfájlokat használja-e, továbbra is használhatja a Bridget a Kubernetes a kód fejlesztéséhez és hibakereséséhez.
+A Bridge to Kubernetes rugalmasan használható a Kubernetesben futó alkalmazásokkal, az üzembe helyezési módszertől függetlenül. Ha CI/CD-t használ az alkalmazás létrehozásához és futtatásához, függetlenül attól, hogy már létrehozott eszközöket vagy egyéni szkripteket használ, a Bridge to Kubernetes használatával továbbra is fejlesztheti és hibakeresést futtathat a kódon.
 
 > [!TIP]
-> A [Microsoft Kubernetes bővítmény][kubernetes-extension] lehetővé teszi az Kubernetes-jegyzékek gyors fejlesztését az IntelliSense segítségével, és segít a bevezetési Helm-diagramok létrehozásában.  
+> A [Microsoft Kubernetes-bővítmény segítségével][kubernetes-extension] gyorsan fejleszthet Kubernetes-jegyzékfájlokat az IntelliSense használatával, és segít a Helm-diagramok kialakításában.  
 
-### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Áttérés a Kubernetes az Azure dev Spaces szolgáltatásból
+### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Átállás a Bridge to Kubernetesre az Azure Dev Spacesből
 
-1. Ha a Visual studiót használja, frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace]. Ha Visual Studio Code-ot használ, telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
-1. Tiltsa le az Azure dev Spaces-vezérlőt az Azure Portal vagy az [Azure dev Spaces CLI][azds-delete]használatával.
-1. [Azure Cloud Shell](https://shell.azure.com)használata. Vagy Mac, Linux vagy Windows rendszerű számítógépeken, amelyeken bash van telepítve, nyisson meg egy bash shell parancssort. Győződjön meg arról, hogy a következő eszközök érhetők el a parancssori környezetben: Azure CLI, Docker, kubectl, Curl, Tar és gunzip.
-1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Létrehozhat egy tároló-beállításjegyzéket az Azure-ban [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) vagy a [Docker hub](https://hub.docker.com/)használatával. Azure Cloud Shell használatakor a Docker-rendszerképek üzemeltetése csak Azure Container Registry érhető el.
-1. Futtassa az áttelepítési parancsfájlt az Azure dev Spaces-eszközök Kubernetes-eszközökre való átalakításához. A szkript létrehoz egy új rendszerképet, amely kompatibilis a Bridge Kubernetes, feltölti a kijelölt beállításjegyzékbe, majd a [Helm](https://helm.sh) használatával frissíti a fürtöt a lemezképpel. Meg kell adnia az erőforráscsoportot, az AK-fürt nevét, valamint egy tároló-beállításjegyzéket. Az itt látható egyéb parancssori kapcsolók is elérhetők:
+1. Ha az Visual Studio-t használja, frissítse az Visual Studio IDE-t a 16.7-es vagy újabb verzióra, és telepítse a Bridge to Kubernetes bővítményt a Visual Studio [Marketplace-ről.][vs-marketplace] Ha a Visual Studio Code-et használja, telepítse a [Bridge to Kubernetes bővítményt.][vsc-marketplace]
+1. Tiltsa le az Azure Dev Spaces-vezérlőt a Azure Portal vagy az [Azure Dev Spaces CLI][azds-delete] használatával.
+1. Használja a [Azure Cloud Shell.](https://shell.azure.com) Vagy Mac, Linux vagy Windows rendszeren, telepített Bash-környezetben nyisson meg egy Bash-parancssort. Győződjön meg arról, hogy a következő eszközök elérhetők a parancssori környezetben: Azure CLI, docker, kubectl, curl, tar és gunzip.
+1. Hozzon létre egy tároló-beállításjegyzéket, vagy használjon egy meglévőt. Tároló-beállításjegyzéket az Azure-ban az Azure Container Registry [vagy](https://azure.microsoft.com/services/container-registry/) a használatával [Docker Hub.](https://hub.docker.com/) A docker Azure Cloud Shell csak Azure Container Registry docker-lemezképek üzemeltetése esetén érhető el.
+1. Futtassa a migrálási szkriptet az Azure Dev Spaces-eszközök Kubernetes-hez való hídként való átalakításához. A szkript felépít egy, a Bridge to Kubernetes-sel kompatibilis új rendszerképet, feltölti azt a kijelölt regisztrációs adatbázisba, majd a [Helm](https://helm.sh) használatával frissíti a fürtöt a rendszerképpel. Meg kell adnia az erőforráscsoportot, az AKS-fürt nevét és egy tároló-beállításjegyzéket. Más parancssori lehetőségek is vannak, ahogy az itt látható:
 
    ```azure-cli
    curl -sL https://aka.ms/migrate-tool | bash -s -- -g ResourceGroupName -n AKSName -h ContainerRegistryName -r PathOfTheProject -y
    ```
 
-   A parancsfájl a következő jelzőket támogatja:
+   A szkript a következő jelzőket támogatja:
 
    ```cmd  
     -g Name of resource group of AKS Cluster [required]
@@ -107,45 +107,44 @@ A Kubernetes-hez készült Bridge rugalmasan együttműködik a Kubernetes-ben f
     -d Helm Debug switch
    ```
 
-1. Manuálisan telepítse át a *azds. YAML* fájlban lévő összes testreszabást, például a környezeti változók beállításait a projekt *Values. YML* fájljába.
-1. választható Távolítsa el a `azds.yaml` fájlt a projektből.
-1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes a Visual Studióban][use-btk-vs]. A VS Code esetében lásd: a [Bridge használata a Kubernetes a vs Code-ban][use-btk-vsc].
-1. Indítsa el a hibakeresést az újonnan létrehozott híd használatával a hibakeresési/indítási profil Kubernetes.
-1. A parancsfájlt szükség szerint újra futtathatja a fürtön való újbóli üzembe helyezéshez.
+1. Az *azds.yaml* fájlban található testreszabásokat, például a környezeti változók beállításait manuálisan át kell telepíteni a projekt *values.yml fájlába.*
+1. (nem kötelező) Távolítsa el `azds.yaml` a fájlt a projektből.
+1. Konfigurálja a Bridge to Kubernetes -et az üzembe helyezett alkalmazásban. A Bridge to Kubernetes használatával kapcsolatos további Visual Studio: [A Bridge to Kubernetes][use-btk-vs]használata a Visual Studio. A VS Code-hoz [lásd: Bridge to Kubernetes in VS Code (A Bridge to Kubernetes használata a VS Code-ban).][use-btk-vsc]
+1. Indítsa el a hibakeresést az újonnan létrehozott Bridge to Kubernetes hibakeresési/indítási profillal.
+1. A szkriptet szükség szerint újra futtathatja a fürtön való újratelepítéshez.
 
-## <a name="team-development-in-a-shared-cluster"></a>Csoport fejlesztése megosztott fürtben
+## <a name="team-development-in-a-shared-cluster"></a>Csoportos fejlesztés megosztott fürtben
 
-A Kubernetes-hez a fejlesztői-specifikus útválasztást is használhatja. Az Azure dev Spaces csapatának fejlesztési forgatókönyve több Kubernetes-névteret használ, hogy elkülönítse a szolgáltatást a többi alkalmazástól a szülő és a gyermek névterek fogalma alapján. A Kubernetes híd ugyanazokat a képességeket kínálja, de a teljesítmény jellemzői és az ugyanazon alkalmazási névtéren belül vannak.
+A Bridge to Kubernetes használatával fejlesztői útválasztást is használhat. Az Azure Dev Spaces csapatfejlesztési forgatókönyve több Kubernetes-névteret használ a szolgáltatás elkülönítéséhez az alkalmazás többi részéhez a szülő- és gyermeknévterek fogalmával. A Bridge to Kubernetes ugyanezt a képességet kínálja, de jobb teljesítményjellemzővel és ugyanazon alkalmazásnévtéren belül.
 
-Mind a Kubernetes, mind az Azure dev Spaces esetében a HTTP-fejlécek jelennek meg, és az alkalmazáson keresztül propagálva lesznek. Ha már konfigurálta az alkalmazást, hogy kezelje az Azure dev Spaces-fejlécek propagálását, akkor a fejlécet frissíteni kell. Ha át szeretne térni az Azure dev Spaces-ről a Kubernetes-re, frissítse a konfigurált fejlécet a *azds-Route-as* -től a *Kubernetes-Route-as* értékre.
+A Bridge to Kubernetes és az Azure Dev Spaces esetében is SZÜKSÉG van HTTP-fejlécek jelen és propagálva az alkalmazáson belül. Ha már konfigurálta az alkalmazást az Azure Dev Spaces fejlécpropagálásának kezeléséhez, akkor a fejlécet frissíteni kell. Az Azure Dev Spacesből a Bridge to Kubernetesre való átálláshoz frissítse a konfigurált fejlécet *az azds-route-as* útvonalról a *kubernetes-route-as verzióra.*
 
-## <a name="evaluate-bridge-to-kubernetes"></a>Híd kiértékelése a Kubernetes
+## <a name="evaluate-bridge-to-kubernetes"></a>A Bridge to Kubernetes értékelése
 
-Ha azt szeretné, hogy a Kubernetes az Azure dev Spaces a fürtben való letiltása előtt kísérletezzen a Bridge használatával, a legegyszerűbb módszer egy új fürt használata. Ha az Azure dev Spaces és a Bridge Kubernetes is ugyanazon a fürtön kísérli meg, akkor az útválasztási funkciók mindkét rendszeren való használata során problémákba ütközik.
+Ha a Bridge to Kubernetes használatával szeretne kísérletezni, mielőtt letiltja az Azure Dev Spacest a fürtben, a legegyszerűbb módszer egy új fürt használata. Ha egyidejűleg próbálja használni az Azure Dev Spacest és a Bridge to Kubernetes-t ugyanazon a fürtön, problémákba fog belefutni, amikor mindkettőn útválasztási funkciókat használ.
 
-### <a name="use-visual-studio-to-evaluate-bridge-to-kubernetes"></a>A Visual Studio használata a Kubernetes-híd kiértékeléséhez
+### <a name="use-visual-studio-to-evaluate-bridge-to-kubernetes"></a>A Visual Studio a Bridge to Kubernetes kiértékeléséhez
 
-1. Frissítse a Visual Studio IDE-t a 16,7-es vagy újabb verzióra, és telepítse a hidat a Kubernetes bővítményre a [Visual Studio piactérről][vs-marketplace].
-1. Hozzon létre egy új AK-fürtöt, és telepítse az alkalmazást. Használhat egy [minta alkalmazást][btk-sample-app]is.
-1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes a Visual Studióban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vs].
-1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes hibakeresési profiljához.
+1. Frissítse az Visual Studio IDE-t a 16.7-es vagy újabb verzióra, és telepítse a Bridge to Kubernetes bővítményt a [Visual Studio Marketplace-ről.][vs-marketplace]
+1. Hozzon létre egy új AKS-fürtöt, és telepítse az alkalmazást. Egy mintaalkalmazást [is használhat.][btk-sample-app]
+1. Konfigurálja a Bridge to Kubernetes -t az üzembe helyezett alkalmazásban. A Bridge to Kubernetes használatával kapcsolatos további Visual Studio: [A Bridge to Kubernetes használata.][use-btk-vs]
+1. Indítsa el a hibakeresést a Visual Studio az újonnan létrehozott Bridge to Kubernetes hibakeresési profillal.
 
-### <a name="use-visual-studio-code-to-evaluate-bridge-to-kubernetes"></a>A Kubernetes-híd kiértékelése a Visual Studio Code használatával
+### <a name="use-visual-studio-code-to-evaluate-bridge-to-kubernetes"></a>A Visual Studio Code használata a Bridge to Kubernetes kiértékeléséhez
 
-1. Telepítse a [hidat a Kubernetes bővítményre][vsc-marketplace].
-1. Hozzon létre egy új AK-fürtöt, és telepítse az alkalmazást. Használhat egy [minta alkalmazást][btk-sample-app]is.
-1. Konfigurálja a hidat a telepített alkalmazás Kubernetes. A Kubernetes Visual Studio Code-ban való használatával kapcsolatos további információkért lásd: a [Bridge használata a Kubernetes][use-btk-vsc].
-1. Indítsa el a hibakeresést a Visual Studióban az újonnan létrehozott híd használatával a Kubernetes indítási profilhoz.
+1. Telepítse a [Bridge to Kubernetes bővítményt.][vsc-marketplace]
+1. Hozzon létre egy új AKS-fürtöt, és telepítse az alkalmazást. Egy mintaalkalmazást [is használhat.][btk-sample-app]
+1. Konfigurálja a Bridge to Kubernetes -t az üzembe helyezett alkalmazásban. További információ a Bridge to Kubernetes használatával kapcsolatban a Visual Studio Code-ban: [A Bridge to Kubernetes használata.][use-btk-vsc]
+1. Indítsa el a hibakeresést a Visual Studio az újonnan létrehozott Bridge to Kubernetes indítási profillal.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a híd Kubernetes működéséről.
+További információ a Bridge to Kubernetes (A Kuberneteshez való híd) működése.
 
 > [!div class="nextstepaction"]
-> [Hogyan működik a híd a Kubernetes][how-it-works-bridge-to-kubernetes]
+> [A Bridge to Kubernetes működése][how-it-works-bridge-to-kubernetes]
 
 
-[azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli
 [kubernetes-extension]: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
 [btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes#install-the-sample-application
 [how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes

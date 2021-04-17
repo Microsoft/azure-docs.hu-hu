@@ -1,77 +1,77 @@
 ---
-title: Azure arc-adatkezelő üzembe helyezése az Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan helyezhető üzembe egy Azure-beli ív-adatkezelő és Azure Data Services az Azure Stack Edge Pro GPU-eszközön.
+title: Üzembe helyezhet egy Azure Arc-adatkezelőt a Azure Stack Edge Pro GPU-eszközön| Microsoft Docs
+description: Leírja, hogyan helyezhet üzembe egy Azure Arc-vezérlőt és az Azure-Data Services a Azure Stack Edge Pro GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d56e03cd650032a775c30b02d939cf934f384fae
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567542"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568607"
 ---
-# <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Data Services üzembe helyezése az Azure Stack Edge Pro GPU-eszközön
+# <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Data Services üzembe helyezése Azure Stack Edge Pro GPU-eszközön
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Ez a cikk ismerteti az Azure-beli ív-adatkezelő létrehozásának folyamatát, majd az Azure Data Services üzembe helyezését az Azure Stack Edge Pro GPU-eszközön. 
+Ez a cikk azt ismerteti, hogyan lehet létrehozni egy Azure Arc adatkezelőt, majd üzembe helyezni az Azure Data Services gpu Azure Stack Edge Pro eszközön. 
 
-Az Azure arc-adatkezelő a helyi vezérlési sík, amely lehetővé teszi az Azure Data Services használatát az ügyfél által felügyelt környezetekben. Miután létrehozta az Azure arc-adatkezelőt az Azure Stack Edge Pro-eszközön futó Kubernetes-fürtön, üzembe helyezheti az Azure Data Services, például az SQL felügyelt példányát (előzetes verzió) az adatvezérlőn.
+Azure Arc Adatkezelő az a helyi vezérlősík, amely lehetővé teszi az Azure Data Services az ügyfél által felügyelt környezetekben. Miután létrehozta az Azure Arc Data Controllert a Azure Stack Edge Pro GPU-eszközön futó Kubernetes-fürtön, üzembe helyezheti az Azure Data Services-t ( például SQL Managed Instance (előzetes verzió) az adatkezelőn.
 
-Az adatkezelő létrehozásának eljárása, majd az SQL felügyelt példányok üzembe helyezése a PowerShell és a `kubectl` -egy natív eszköz használatával történik, amely parancssori hozzáférést biztosít a Kubernetes-fürthöz az eszközön.
+Az adatkezelő létrehozására, majd az SQL Managed Instance üzembe helyezésére vonatkozó eljárás magában foglalja a PowerShell és egy olyan natív eszköz használatát, amely parancssori hozzáférést biztosít az eszközön található `kubectl` Kubernetes-fürthöz.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Egy Azure Stack Edge Pro-eszközhöz fér hozzá, és aktiválta az eszközt a [Azure stack Edge Pro aktiválása](azure-stack-edge-gpu-deploy-activate.md)című témakörben leírtak szerint.
+1. Hozzáféréssel rendelkezik egy Azure Stack Edge Pro GPU-eszközhöz, és aktiválta az eszközt az [Activate Azure Stack Edge Pro ( Aktiválása) Azure Stack Edge Pro.](azure-stack-edge-gpu-deploy-activate.md)
 
-1. Engedélyezte a számítási szerepkört az eszközön. Egy Kubernetes-fürt is létrejött az eszközön, amikor az eszközön a számítás [konfigurálása az Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)című témakör útmutatása szerint konfigurálta az eszközt.
+1. Engedélyezte a számítási szerepkört az eszközön. A Kubernetes-fürt akkor is létrejött az eszközön, amikor a számítást konfigurálta az eszközön a Számítás konfigurálása az Azure Stack Edge Pro [GPU-eszközön című útmutatónak megfelelően.](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-1. A Kubernetes API-végpont a helyi webes felhasználói felület **eszköz** lapján található. További információkért tekintse meg az [KUBERNETES API-végpont beolvasása](azure-stack-edge-gpu-deploy-configure-compute.md#get-kubernetes-endpoints)című témakör utasításait.
+1. A Kubernetes API-végpont a **helyi** webes felhasználói felület Eszköz lapján található. További információkért lásd a [Kubernetes API-végpont lekért utasításait.](azure-stack-edge-gpu-deploy-configure-compute.md#get-kubernetes-endpoints)
 
-1. Olyan ügyfélhez fér hozzá, amely csatlakozni fog az eszközhöz. 
-    1. Ez a cikk a PowerShell 5,0-es vagy újabb verzióját futtató Windows rendszerű ügyfélprogramot használ az eszköz eléréséhez. Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)használható. 
-    1. Telepítse `kubectl` az ügyfelet. Az ügyfél verziószáma:
-        1. Azonosítsa az eszközre telepített Kubernetes-kiszolgáló verzióját. Az eszköz helyi felhasználói felületén válassza a **szoftverfrissítések** lapot. Jegyezze fel a **Kubernetes-kiszolgáló verziószámát** ezen a lapon.
-        1. Olyan ügyfelet töltsön le, amely legfeljebb egy alverzióval tér el a főverziótól. Az ügyfél verziója, de a főkiszolgálót akár egy alverzión is elvezethetik. A v 1.3-as főkiszolgáló például a v 1.1, v 1.2 és v 1.3 csomópontokkal működik együtt, és működnie kell a v 1.2, v 1.3 és v 1.4 rendszerű ügyfelekkel. A Kubernetes-ügyfélszoftversel kapcsolatos további információkért lásd: [a Kubernetes verziója és verziója](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew).
+1. Rendelkezik hozzáféréssel egy ügyfélhez, amely csatlakozik az eszközhöz. 
+    1. Ez a cikk egy PowerShell 5.0-s vagy újabb verziójú Windows-ügyfélrendszert használ az eszköz eléréséhez. Bármely más ügyfelet használhat támogatott [operációs rendszerrel.](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 
+    1. Telepítse `kubectl` az ügyfelen. Az ügyfél verziója:
+        1. Azonosítsa az eszközön telepített Kubernetes-kiszolgáló verzióját. Az eszköz helyi felhasználói felületén válassza a **Szoftverfrissítések** lapot. Figyelje meg ezen az oldalon **a Kubernetes-kiszolgáló** verzióját.
+        1. Olyan ügyfelet töltsön le, amely legfeljebb egy alverzióval tér el a főverziótól. Az ügyfél verziója, de akár egy alverzióval is vezetheti a főkiszolgálót. Az 1.3-as főkiszolgálónak például működnie kell az 1.1-es, 1.2-es és 1.3-as vagy 1.3-as csomópontokkal, valamint az 1.2-es, 1.3-as és 1.4-es ügyfelekkel. A Kubernetes-ügyfél verziójával kapcsolatos további információkért lásd a [Kubernetes](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)verzió- és verzió-elágazító támogatási szabályzatát.
     
-1. Opcionálisan [telepítheti az Azure arc-kompatibilis adatszolgáltatások üzembe helyezésére és felügyeletére szolgáló ügyféleszközök eszközeit](../azure-arc/data/install-client-tools.md). Ezek az eszközök nem szükségesek, de ajánlottak.  
-1. Győződjön meg arról, hogy elegendő erőforrás áll rendelkezésre az eszközön egy adatkezelő és egy felügyelt SQL-példány kiépítéséhez. Az adatkezelő és egy felügyelt SQL-példány esetében legalább 16 GB RAM-mal és 4 CPU-maggal kell rendelkeznie. Részletes útmutatásért lépjen az [Azure arc-kompatibilis adatszolgáltatások telepítéséhez szükséges minimális követelményekre](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements).
+1. Ha szükséges, [telepítse az ügyféleszközöket](../azure-arc/data/install-client-tools.md)a központi telepítéséhez és kezeléséhez Azure Arc-kompatibilis adatszolgáltatások. Ezek az eszközök nem szükségesek, de ajánlottak.  
+1. Győződjön meg arról, hogy az eszközön elegendő erőforrás áll rendelkezésre egy adatkezelő és egy SQL Managed Instance. Az adatkezelőhöz és egy SQL Managed Instance legalább 16 GB RAM és 4 processzormag szükséges. Részletes útmutatás: A központi telepítés [minimális Azure Arc-kompatibilis adatszolgáltatások meg.](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements)
 
 
-## <a name="configure-kubernetes-external-service-ips"></a>Kubernetes külső szolgáltatás IP-címeinek konfigurálása
+## <a name="configure-kubernetes-external-service-ips"></a>A Kubernetes külső szolgáltatás IP-i-iinek konfigurálása
 
-1. Nyissa meg az eszköz helyi webes FELÜLETét, és válassza a **számítás** lehetőséget.
+1. Az eszköz helyi webes felhasználói felületén válassza a Számítás **adatokat.**
 1. Válassza ki a számításhoz engedélyezett hálózatot. 
 
-    ![Számítási oldal a helyi felhasználói felületen 2](./media/azure-stack-edge-gpu-deploy-arc-data-controller/compute-network-1.png)
+    ![Számítás lap a helyi felhasználói felületen 2](./media/azure-stack-edge-gpu-deploy-arc-data-controller/compute-network-1.png)
 
-1. Győződjön meg arról, hogy három további Kubernetes külső szolgáltatási IP-címet biztosít (a más külső szolgáltatásokhoz vagy tárolóhoz már konfigurált IP-címeken kívül). Az adatkezelő két szolgáltatási IP-címet használ, és a harmadik IP-címet a felügyelt SQL-példányok létrehozásakor használja a rendszer. Az üzembe helyezni kívánt további adatszolgáltatásokhoz egy IP-címet kell telepítenie. 
+1. Győződjön meg arról, hogy további három további Kubernetes külső szolgáltatási IP-t ad meg (a más külső szolgáltatásokhoz vagy tárolókhoz már konfigurált IP-k mellett). Az adatkezelő két szolgáltatási IP-címet fog használni, a harmadik IP-címet pedig a szolgáltatás SQL Managed Instance. Minden további üzembe helyezett Data Service-hez egy IP-cím szükséges. 
 
-    ![Számítási lap a helyi felhasználói felületen 3](./media/azure-stack-edge-gpu-deploy-arc-data-controller/compute-network-2.png)
+    ![Számítás lap a helyi felhasználói felületen 3](./media/azure-stack-edge-gpu-deploy-arc-data-controller/compute-network-2.png)
 
-1. Alkalmazza a beállításokat, és ezek az új IP-címek azonnal érvénybe lépnek egy már meglévő Kubernetes-fürtön. 
+1. Alkalmazza a beállításokat, és ezek az új IP-k azonnal hatnak egy már meglévő Kubernetes-fürtre. 
 
 
-## <a name="deploy-azure-arc-data-controller"></a>Az Azure arc-adatkezelő üzembe helyezése
+## <a name="deploy-azure-arc-data-controller"></a>Az Azure Arc üzembe helyezése
 
 Az adatkezelő üzembe helyezése előtt létre kell hoznia egy névteret.
 
 ### <a name="create-namespace"></a>Névtér létrehozása 
 
-Hozzon létre egy új, dedikált névteret, amelyben üzembe helyezi az adatkezelőt. Emellett létre kell hoznia egy felhasználót is, majd a felhasználó számára hozzáférést kell adnia a létrehozott névtérhez. 
+Hozzon létre egy új, dedikált névteret, amelyben üzembe fogja helyezni az adatkezelőt. Létrehoz egy felhasználót is, majd hozzáférést biztosít a felhasználónak a létrehozott névtérhez. 
 
 > [!NOTE]
-> A névtér és a felhasználónevek esetében a [DNS-altartományok elnevezési konvenciói](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names) érvényesek.
+> A névtérre és a felhasználónevekre is érvényesek a [DNS-altartományok elnevezési konvenciói.](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names)
 
-1. [Kapcsolódjon a PowerShell felületéhez](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface).
+1. [Csatlakozzon a PowerShell felülethez.](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)
 1. Hozzon létre egy névteret. Típus:
 
     `New-HcsKubernetesNamespace -Namespace <Name of namespace>`
@@ -80,19 +80,19 @@ Hozzon létre egy új, dedikált névteret, amelyben üzembe helyezi az adatkeze
 
     `New-HcsKubernetesUser -UserName <User name>`
 
-1. A konfigurációs fájlok egyszerű szövegben jelennek meg. Másolja ezt a fájlt, és mentse *konfigurációs* fájlként. 
+1. Egy konfigurációs fájl egyszerű szövegként jelenik meg. Másolja ki ezt a fájlt, és mentse konfigurációs *fájlként.* 
 
     > [!IMPORTANT]
-    > Ne mentse a konfigurációs fájlt *. txt* fájlként, mentse a fájlt fájlkiterjesztés nélkül.
+    > Ne mentse a konfigurációs fájlt *.txt* fájlként, és fájlkiterjesztés nélkül mentse a fájlt.
 
-1. A konfigurációs fájlnak a `.kube` helyi számítógépen lévő felhasználói profil mappájában kell lennie. Másolja a fájlt a mappába a felhasználói profilban.
+1. A konfigurációs fájlnak a helyi gép felhasználói profiljának mappájában `.kube` kell lennie. Másolja a fájlt a felhasználói profiljában erre a mappára.
 
-    ![A konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
-1. Adja meg a felhasználó hozzáférését a létrehozott névtérhez. Típus: 
+    ![Konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
+1. Adjon hozzáférést a felhasználónak a létrehozott névtérhez. Típus: 
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <Name of namespace> -UserName <User name>`
 
-    Itt látható az előző parancsok mintájának kimenete. Ebben a példában létrehozunk egy `myadstest` névteret, egy `myadsuser` felhasználót, és hozzáférést biztosítunk a felhasználónak a névtérhez.
+    Példa az előző parancsok kimenetére. Ebben a példában létrehozunk egy névteret, egy felhasználót, és hozzáférést biztosítunk a felhasználónak a `myadstest` `myadsuser` névtérhez.
     
     ```powershell
     [10.100.10.10]: PS>New-HcsKubernetesNamespace -Namespace myadstest
@@ -120,69 +120,69 @@ Hozzon létre egy új, dedikált névteret, amelyben üzembe helyezi az adatkeze
     [10.100.10.10]: PS>Set-HcsKubernetesAzureArcDataController -SubscriptionId db4e2fdb-6d80-4e6e-b7cd-736098270664 -ResourceGroupName myasegpurg -Location "EastUS" -UserName myadsuser -Password "Password1" -DataControllerName "arctestcontroller" -Namespace myadstest
     [10.100.10.10]: PS>
     ```
-1. Adjon hozzá egy DNS-bejegyzést a gazdagépek fájljához a rendszeren. 
+1. Adjon hozzá egy DNS-bejegyzést a gazdagépfájlhoz a rendszeren. 
 
-    1. Futtassa rendszergazdaként a jegyzettömböt, és nyissa meg a `hosts` következő helyen található fájlt: `C:\windows\system32\drivers\etc\hosts` . 
-    2. A helyi felhasználói felület **eszköz** lapján mentett információk alapján hozza létre a bejegyzést a Hosts fájlban. 
+    1. Futtassa rendszergazdaként a Jegyzettömböt, és nyissa meg `hosts` a következő helyen található fájlt: `C:\windows\system32\drivers\etc\hosts` . 
+    2. A gazdagépfájlban a  helyi felhasználói felületen az Eszköz lapról mentett adatokat (előfeltétel) használhatja a bejegyzés létrehozásához. 
 
-        Másolja például ezt a végpontot a `https://compute.myasegpudev.microsoftdatabox.com/[10.100.10.10]` következő bejegyzés létrehozásához az eszköz IP-címe és a DNS-tartomány használatával: 
+        Például másolja ezt a végpontot a következő bejegyzés létrehozásához az eszköz `https://compute.myasegpudev.microsoftdatabox.com/[10.100.10.10]` IP-címével és DNS-tartományával: 
 
         `10.100.10.10 compute.myasegpudev.microsoftdatabox.com`
 
-1. Annak ellenőrzéséhez, hogy tud-e csatlakozni a Kubernetes hüvelyéhez, indítson el egy parancssort vagy egy PowerShell-munkamenetet. Típus:
+1. Annak ellenőrzéséhez, hogy tud-e csatlakozni a Kubernetes-podhoz, indítson el egy parancssort vagy egy PowerShell-munkamenetet. Típus:
     
     ```powershell
     PS C:\WINDOWS\system32> kubectl get pods -n "myadstest"
     No resources found.
     PS C:\WINDOWS\system32>
     ```
-Most már üzembe helyezheti az adatkezelőt és az adatszolgáltatási alkalmazásokat a névtérben, majd megtekintheti az alkalmazásokat és a naplókat.
+Most már üzembe helyezheti az adatkezelő és az adatszolgáltatások alkalmazásait a névtérben, majd megtekintheti az alkalmazásokat és a naplókat.
 
 ### <a name="create-data-controller"></a>Adatkezelő létrehozása
 
-Az adatkezelő a Kubernetes-fürtön üzembe helyezett hüvelyek gyűjteménye, amely API-t, a vezérlő szolgáltatást, a bootstrapper, valamint a figyelési adatbázisokat és irányítópultokat biztosítja. Az alábbi lépéseket követve hozzon létre egy adatvezérlőt a korábban létrehozott névtérben lévő Azure Stack Edge-eszközön található Kubernetes-fürtön.   
+Az adatkezelő a Kubernetes-fürtön üzembe helyezett podok gyűjteménye, amelyek API-t, vezérlőszolgáltatást, bootstrappert, valamint monitorozási adatbázisokat és irányítópultokat biztosítanak. Az alábbi lépéseket követve hozzon létre egy adatkezelőt a kubernetes-fürtön, amely a Azure Stack Edge a korábban létrehozott névtérben található a saját eszközén.   
 
-1. Gyűjtse össze a következő adatokat, amelyeket létre kell hoznia egy adatkezelő létrehozásához:
+1. Gyűjtse össze az alábbi információkat, amelyekre szüksége lesz az adatkezelő létrehozásához:
 
     
     |1\. oszlop  |2\. oszlop  |
     |---------|---------|
-    |Adatkezelő neve     |Az adatvezérlő leíró neve. Például: `arctestdatacontroller`.         |
-    |Adatkezelő felhasználóneve     |Az adatkezelő rendszergazda felhasználójának felhasználóneve. Az adatkezelő felhasználónevét és jelszavát a rendszer az adatkezelő API-hoz történő hitelesítésre használja a rendszergazdai függvények végrehajtásához.          |
-    |Adatvezérlő jelszava     |Az adatkezelő rendszergazda felhasználójának jelszava. Válassza ki a biztonságos jelszót, és ossza meg csak azokkal, akiknek szükségük van a fürt rendszergazdai jogosultságára.         |
-    |A Kubernetes-névtér neve     |Annak a Kubernetes-névtérnek a neve, amelyben létre kívánja hozni az adatvezérlőt.         |
-    |Azure-előfizetés azonosítója     |Az Azure-előfizetéshez tartozó GUID, ahol szeretné létrehozni az adatvezérlő erőforrását az Azure-ban.         |
-    |Azure-erőforráscsoport neve     |Azon erőforráscsoport neve, amelyben létre szeretné hozni az adatvezérlő erőforrását az Azure-ban.         |
-    |Azure-beli hely     |Az Azure-beli hely, ahol az adatkezelő erőforrás-metaadatai az Azure-ban lesznek tárolva. Az elérhető régiók listájáért lásd: Azure globális infrastruktúra/termékek régiónként.|
+    |Adatkezelő neve     |Az adatkezelő leíró neve. Például: `arctestdatacontroller`.         |
+    |Adatkezelő felhasználóneve     |Az adatkezelő rendszergazdai felhasználójának bármely felhasználóneve. Az adatkezelő felhasználónevével és jelszavával hitelesíti magát az adatkezelő API-ban a rendszergazdai feladatok elvégzéséhez.          |
+    |Adatkezelő jelszava     |Az adatkezelő rendszergazdai felhasználójának jelszava. Válasszon egy biztonságos jelszót, és ossza meg csak olyanokkal, akiknek fürt-rendszergazdai jogosultságokkal kell rendelkezik.         |
+    |A Kubernetes-névtér neve     |Annak a Kubernetes-névtérnek a neve, amelybe az adatkezelőt létre szeretné hozni.         |
+    |Azure-előfizetés azonosítója     |Az Azure-előfizetés GUID-ja, ahol létre szeretné hozatni az Adatkezelő erőforrást az Azure-ban.         |
+    |Azure-erőforráscsoport neve     |Annak az erőforráscsoportnak a neve, ahol létre szeretné hozatni az Adatkezelő erőforrást az Azure-ban.         |
+    |Azure-hely     |Az Azure-hely, ahol az adatkezelő erőforrás-metaadatait a rendszer az Azure-ban tárolja. Az elérhető régiók listájáért lásd: Azure globális infrastruktúra /Termékek régiónként.|
 
 
-1. Csatlakozzon a PowerShell-felülethez. Az adatvezérlő létrehozásához írja be a következőt: 
+1. Csatlakozzon a PowerShell-felülethez. Az adatkezelő létrehozásához írja be a következőt: 
 
     ```powershell
     Set-HcsKubernetesAzureArcDataController -SubscriptionId <Subscription ID> -ResourceGroupName <Resource group name> -Location <Location without spaces> -UserName <User you created> -Password <Password to authenticate to Data Controller> -DataControllerName <Data Controller Name> -Namespace <Namespace you created>    
     ```
-    Itt látható az előző parancsok mintájának kimenete.
+    Példa az előző parancsok kimenetére.
 
     ```powershell
     [10.100.10.10]: PS>Set-HcsKubernetesAzureArcDataController -SubscriptionId db4e2fdb-6d80-4e6e-b7cd-736098270664 -ResourceGroupName myasegpurg -Location "EastUS" -UserName myadsuser -Password "Password1" -DataControllerName "arctestcontroller" -Namespace myadstest
     [10.100.10.10]: PS> 
     ```
     
-    Az üzembe helyezés körülbelül 5 percet is igénybe vehet.
+    Az üzembe helyezés körülbelül 5 percet vehet igénybe.
 
     > [!NOTE]
-    > Az Azure Stack Edge Pro-eszközön a Kubernetes-fürtön létrehozott adatkezelő csak az aktuális kiadás leválasztott módjában működik.
+    > A kubernetes-fürtön létrehozott adatkezelő Azure Stack Edge Pro GPU-eszköz csak leválasztott módban működik az aktuális kiadásban. A leválasztott mód az adatkezelőre, és nem az eszközére van be stb.
 
-### <a name="monitor-data-creation-status"></a>Az adatlétrehozási állapot figyelése
+### <a name="monitor-data-creation-status"></a>Adat-létrehozási állapot figyelése
 
 1. Nyisson meg egy másik PowerShell-ablakot.
-1. A következő `kubectl` parancs használatával figyelheti az adatvezérlő létrehozási állapotát. 
+1. A következő `kubectl` paranccsal figyelheti az adatkezelő létrehozási állapotát. 
 
     ```powershell
     kubectl get datacontroller/<Data controller name> --namespace <Name of your namespace>
     ```
-    A vezérlő létrehozásakor az állapotnak kell lennie `Ready` .
-    Az alábbi példa az előző parancs kimenetét jeleníti meg:
+    A vezérlő létrehozásakor az állapotnak a következőnek kell lennie: `Ready` .
+    Példa az előző parancs kimenetére:
 
     ```powershell
     PS C:\WINDOWS\system32> kubectl get datacontroller/arctestcontroller --namespace myadstest
@@ -190,7 +190,7 @@ Az adatkezelő a Kubernetes-fürtön üzembe helyezett hüvelyek gyűjteménye, 
     arctestcontroller   Ready
     PS C:\WINDOWS\system32>
     ```
-1. Az adatvezérlőn futó külső szolgáltatásokhoz hozzárendelt IP-címek azonosításához használja az `kubectl get svc -n <namespace>` parancsot. Itt látható egy mintakimenet:
+1. Az adatkezelőn futó külső szolgáltatásokhoz rendelt IP-k azonosításához használja az `kubectl get svc -n <namespace>` parancsot. Itt látható egy mintakimenet:
 
     ```powershell
     PS C:\WINDOWS\system32> kubectl get svc -n myadstest
@@ -211,11 +211,11 @@ Az adatkezelő a Kubernetes-fürtön üzembe helyezett hüvelyek gyűjteménye, 
 
 ## <a name="deploy-sql-managed-instance"></a>Felügyelt SQL-példány üzembe helyezése
 
-Az adatkezelő sikeres létrehozása után sablon használatával telepítheti az SQL felügyelt példányát az adatkezelőn.
+Miután sikeresen létrehozta az adatkezelőt, egy sablonnal üzembe helyezhet egy SQL Managed Instance az adatkezelőn.
 
 ### <a name="deployment-template"></a>Üzembehelyezési sablon
 
-A következő üzembe helyezési sablonnal telepítheti a felügyelt SQL-példányokat az eszköz adatvezérlőjén.
+Az alábbi üzembe helyezési sablonnal üzembe helyezhet egy SQL Managed Instance az eszköz adatkezelőjére.
 
 ```yml
 apiVersion: v1
@@ -258,21 +258,21 @@ spec:
 
 #### <a name="metadata-name"></a>Metaadatok neve
     
-A metaadatok neve a felügyelt SQL-példány neve. Az előzőben szereplő társított Pod `deployment.yaml` neve a következő lesz: `sqlex-n` (az `n` alkalmazáshoz társított hüvelyek száma). 
+A metaadatok neve a SQL Managed Instance. Az előzőben társított pod neve a következő `deployment.yaml` lesz: `sqlex-n` ( az `n` alkalmazáshoz társított podok száma). 
     
-#### <a name="password-and-username-data"></a>Jelszó-és Felhasználónév-adatértékek
+#### <a name="password-and-username-data"></a>Jelszó- és felhasználónév-adatok
 
-Az adatkezelő felhasználónevét és jelszavát a rendszer az adatkezelő API-hoz történő hitelesítésre használja a rendszergazdai függvények végrehajtásához. A központi telepítési sablonban található adatvezérlő felhasználónevének és jelszavának Kubernetes-titka Base64 kódolású karakterlánc. 
+Az adatkezelő felhasználónevével és jelszavával hitelesítheti magát az adatkezelő API-ban a felügyeleti feladatok elvégzéséhez. Az üzembe helyezési sablonban az adatkezelő felhasználónevéhez és jelszavához tartozó Kubernetes titkos kód base64 kódolású sztring. 
 
-Az online eszközzel Base64-kódolást használhat a kívánt felhasználónévvel és jelszóval, vagy a platformtól függően beépített CLI-eszközöket is használhat. Ha online Base64 kódolású eszközt használ, adja meg a Felhasználónév és a jelszó karakterláncot (amelyet az adatvezérlő létrehozásakor adott meg) az eszközön, és az eszköz létrehozza a megfelelő Base64 kódolású karakterláncokat.
+Egy online eszközzel base64 használatával kódolhatja a kívánt felhasználónevet és jelszót, vagy használhat beépített CLI-eszközöket a platformtól függően. Online Base64-kódoló eszköz használata esetén adja meg az eszközben a felhasználónév és a jelszó sztringeket (amelyek az adatkezelő létrehozásakor vannak megadva), és az eszköz létrehozza a megfelelő Base64 kódolású sztringeket.
     
 #### <a name="service-type"></a>Szolgáltatás típusa
 
-A szolgáltatástípus értékének a következőnek kell lennie: `LoadBalancer` .
+A szolgáltatástípust a következőre kell `LoadBalancer` beállítani: .
     
 #### <a name="storage-class-name"></a>Tárolási osztály neve
 
-Azonosíthatja a tárolási osztályt az Azure Stack Edge-eszközön, amelyet a központi telepítés az adatokat, a biztonsági másolatokat, az adatnaplókat és a naplókat fogja használni. Használja az  `kubectl get storageclass` parancsot az eszközön üzembe helyezett tárolási osztály beszerzéséhez.
+A tárolóeszközön azonosíthatja a tárolóosztályt Azure Stack Edge az üzembe helyezés adatokat, biztonsági másolatokat, adatnaplókat és naplókat fog használni. Az  `kubectl get storageclass` paranccsal leküldheti az eszközön üzembe helyezett tárolási osztályt.
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get storageclass
@@ -280,11 +280,11 @@ NAME             PROVISIONER      RECLAIMPOLICY  VOLUMEBINDINGMODE     ALLOWVOLU
 ase-node-local   rancher.io/local-path   Delete  WaitForFirstConsumer  false                  5d23h
 PS C:\WINDOWS\system32>
 ```
-A fenti kimenetben a `ase-node-local` sablonban meg kell adni az eszköz tárolási osztályát.
+Az előző példakimenetben az eszközön található tárolási osztályt `ase-node-local` meg kell adni a sablonban.
  
 #### <a name="spec"></a>Spec
 
-SQL felügyelt példány létrehozásához a Azure Stack Edge-eszközön megadhatja a memória-és a CPU-követelményeket a specifikáció szakaszában `deployment.yaml` . A felügyelt SQL-példányoknak legalább 2 GB memóriával és 1 CPU-mag kell rendelkezniük az alábbi példában látható módon. 
+Ha új SQL Managed Instance a Azure Stack Edge eszközén, a memória- és CPU-követelményeket a specifikáció szakaszában adhatja `deployment.yaml` meg. Minden felügyelt SQL-példánynak legalább 2 GB memóriát és 1 processzormagot kell igényelnie az alábbi példában látható módon. 
 
 ```yml
 spec:
@@ -296,17 +296,17 @@ spec:
     vcores: "1"
 ```  
 
-Az adatkezelő és az 1 SQL felügyelt példány részletes méretezési útmutatójának áttekintéséhez tekintse át az [SQL felügyelt példányának méretezési részleteit](../azure-arc/data/sizing-guidance.md#sql-managed-instance-sizing-details).
+Az adatkezelő részletes méretezési útmutatóját és az 1 SQL Managed Instance SQL Managed [Instance méretezési részleteit ismertető cikk tartalmazza.](../azure-arc/data/sizing-guidance.md#sql-managed-instance-sizing-details)
 
-### <a name="run-deployment-template"></a>Központi telepítési sablon futtatása
+### <a name="run-deployment-template"></a>Üzembe helyezési sablon futtatása
 
-Futtassa a `deployment.yaml` következő parancsot a használatával:
+Futtassa `deployment.yaml` a parancsot a következő paranccsal:
 
 ```powershell
 kubectl create -n <Name of namespace that you created> -f <Path to the deployment yaml> 
 ```
 
-A következő parancs egy minta kimenetét jeleníti meg:
+Az alábbi parancs egy példakimenete:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -n "myadstest"
@@ -330,11 +330,11 @@ sqlex-0              3/3     Running   0          13m
 PS C:\WINDOWS\system32>
 ```
 
-A `sqlex-0` minta kimenetben található Pod a felügyelt SQL-példány állapotát jelzi.
+A minta kimenetében a pod `sqlex-0` jelzi a SQL Managed Instance.
 
 ## <a name="remove-data-controller"></a>Adatkezelő eltávolítása
 
-Az adatkezelő eltávolításához törölje azt a dedikált névteret, amelyben üzembe helyezte.
+Az adatkezelő eltávolításához törölje azt a dedikált névteret, amelyben üzembe helyezett.
 
 
 ```powershell
@@ -344,4 +344,4 @@ kubectl delete ns <Name of your namespace>
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)-ban.
+- [Állapot nélküli alkalmazás üzembe helyezése a Azure Stack Edge Pro.](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)

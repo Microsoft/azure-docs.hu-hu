@@ -1,6 +1,6 @@
 ---
 title: Windows rendszerű virtuális merevlemez letöltése az Azure-ból
-description: Töltse le a Windows VHD-t a Azure Portal használatával.
+description: Töltsön le egy Windows vhD-t a Azure Portal.
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,62 +9,80 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: a33b248c18bcbf322a1e2d911453a1c4c087e625
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32b9753b79273ce747d00cba077dd8a5ee6d724d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550518"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565287"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Windows rendszerű virtuális merevlemez letöltése az Azure-ból
 
-Ebből a cikkből megtudhatja, hogyan tölthet le egy Windows rendszerű virtuális merevlemezt (VHD-fájlt) az Azure-ból a Azure Portal használatával.
+Ebből a cikkből megtudhatja, hogyan tölthet le Windows rendszerű virtuális merevlemezfájlt (VHD) az Azure-ból a Azure Portal.
 
-## <a name="optional-generalize-the-vm"></a>Nem kötelező: a virtuális gép általánosítása
+## <a name="optional-generalize-the-vm"></a>Nem kötelező: A virtuális gép általánosizálása
 
-Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné létrehozni más virtuális gépek létrehozásához, akkor a [sysprept](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) kell használnia az operációs rendszer általánosítása érdekében. 
+Ha a VHD-t rendszerképként szeretné használni más virtuális gépek létrehozásához, a [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) segítségével általánosíthatja az operációs rendszert. [](tutorial-custom-images.md) Ellenkező esetben minden létrehozni kívánt virtuális gépről másolatot kell készítsen a lemezről.
 
-Ha a virtuális merevlemezt képként szeretné használni más virtuális gépek létrehozásához, általánosítsa a virtuális gépet.
+Ahhoz, hogy a VHD-t rendszerképként használva más virtuális gépeket hoz létre, általánosíthatja a virtuális gépet.
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. [Kapcsolódjon a virtuális géphez](connect-logon.md). 
-3. A virtuális gépen nyissa meg rendszergazdaként a parancssorablakot.
-4. Módosítsa a könyvtárat *%WINDIR%\system32\sysprep* , és futtassa sysprep.exe.
-5. A rendszer-előkészítő eszköz párbeszédpanelen jelölje be a rendszerindítási folyamat **(OOBE) megadása** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** van kiválasztva.
-6. A leállítási beállítások területen válassza a **Leállítás** lehetőséget, majd kattintson **az OK** gombra. 
+2. [Csatlakozzon a virtuális géphez.](connect-logon.md) 
+3. A virtuális gépen nyissa meg a parancssori ablakot rendszergazdaként.
+4. Módosítsa a könyvtárat *a %windir%\system32\sysprep* könyvtárra, és futtassa a sysprep.exe.
+5. A Rendszer-előkészítési eszköz párbeszédpanelen válassza az **Enter System Out-of-Box Experience (OOBE) lehetőséget,** és győződjön meg arról, hogy az **Általánosizálás** elem van kiválasztva.
+6. A Leállítási beállítások között válassza a **Leállítás lehetőséget,** majd kattintson az **OK gombra.** 
 
+Ha nem szeretné általánosítani a jelenlegi virtuális gépet, akkor is létrehozhat [](#alternative-snapshot-the-vm-disk)általános rendszerképet, ha először pillanatképet készít az operációsrendszer-lemezről, létrehoz egy új virtuális gépet a pillanatképből, majd általánosítja a másolatot.
 
 ## <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatlakoztatva. A virtuális merevlemez letöltéséhez le kell állítania a virtuális gépet. 
+A virtuális merevlemezek nem tölthetők le az Azure-ból, ha egy futó virtuális géphez vannak csatolva. Ha továbbra is futni szeretné a virtuális gépet, létrehozhat egy pillanatképet, [majd letöltheti a pillanatképet.](#alternative-snapshot-the-vm-disk)
 
-1. A Azure Portal központi menüjében kattintson az **Virtual Machines** elemre.
+1. A központi menüben kattintson a Azure Portal **elemre, Virtual Machines.**
 1. Válassza ki a virtuális gépet a listából.
-1. A virtuális gép paneljén kattintson a **Leállítás** gombra.
+1. A virtuális gép panelen kattintson a Leállítás **gombra.**
 
+### <a name="alternative-snapshot-the-vm-disk"></a>Alternatív megoldás: A virtuálisgép-lemez pillanatképének készítése
 
-## <a name="generate-download-url"></a>Letöltési URL-cím előállítása
+Pillanatfelvétel készítése a lemezről a letöltéshez.
 
-A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
+1. Válassza ki a virtuális gépet a [portálon.](https://portal.azure.com)
+2. A **bal oldali menüben** válassza a Lemezek lehetőséget, majd válassza ki a pillanatképet készíteni kívánt lemezt. Megjelenik a lemez részletei.  
+3. Az **oldal tetején** található menüben válassza a Pillanatkép létrehozása lehetőséget. Megnyílik **a Pillanatkép** létrehozása lap.
+4. A **Név mezőbe** írja be a pillanatkép nevét. 
+5. A **Pillanatkép típusa beállításhoz** válassza a **Teljes vagy** a **Növekményes lehetőséget.**
+6. Ha végzett, válassza a **Felülvizsgálat + létrehozás lehetőséget.**
 
-1. A virtuális gép lapján kattintson a bal oldali menüben a **lemezek** elemre.
-1. Válassza ki a virtuális gép operációsrendszer-lemezét.
-1. A lemez lapján válassza a bal oldali menü **lemez exportálása** elemét.
-1. Az URL-cím alapértelmezett lejárati ideje *3600* másodperc. Növelje a **36000** -et a Windows operációsrendszer-lemezek esetében.
-1. Kattintson az **URL-cím előállítása** gombra.
+A pillanatkép hamarosan létrejön, és később felhasználható egy másik virtuális gép letöltésére vagy létrehozására.
 
 > [!NOTE]
-> A lejárati idő megnő az alapértelmezetttől, hogy elegendő időt biztosítson a nagyméretű VHD-fájl letöltésére a Windows Server operációs rendszer számára. A Windows Server operációs rendszert tartalmazó VHD-fájl várhatóan több órányi letöltést is igénybe vehet a kapcsolódástól függően. Ha egy adatlemezre letölt egy VHD-t, az alapértelmezett idő elegendő. 
+> Ha nem állítja le először a virtuális gépet, a pillanatkép nem lesz tiszta. A pillanatkép ugyanabban az állapotban lesz, mintha a virtuális gép energiagazdálkodása vagy összeomlása történt volna a pillanatkép készítésekor.  Bár általában biztonságos, problémákat okozhat, ha az idő alatt futó alkalmazások nem voltak összeomlásbiztosak.
+>  
+> Ez a módszer csak olyan virtuális gépekhez ajánlott, amelyeken egyetlen operációsrendszer-lemez található. Az egy vagy több adatlemezzel lévő virtuális gépeket le kell állítani a letöltés előtt, vagy mielőtt pillanatképet hoznak létre az operációsrendszer-lemezről és az egyes adatlemezekről.
+
+## <a name="generate-download-url"></a>Letöltési URL-cím létrehozása
+
+A VHD-fájl letöltéséhez létre kell hoznia egy közös hozzáférésű jogosultság [jogosultsága (SAS) URL-címét.](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) Az URL-cím generálása után lejárati idő lesz hozzárendelve az URL-címhez.
+
+1. A virtuális gép lapján kattintson a **bal oldali menüben** a Lemezek elemre.
+1. Válassza ki a virtuális gép operációsrendszer-lemezét.
+1. A lemez oldalán válassza a bal **oldali menü Lemez** exportálása parancsát.
+1. Az URL-cím alapértelmezett lejárati ideje *3600* másodperc (egy óra). Előfordulhat, hogy ezt növelnie kell a Windows operációsrendszer-lemezek vagy a nagy méretű adatlemezek esetén. **36000** másodperc (10 óra) általában elegendő.
+1. Kattintson az **URL-cím létrehozása elemre.**
+
+> [!NOTE]
+> A lejárati idő az alapértelmezett értékről megnövelve elegendő időt biztosít a nagyméretű VHD-fájl letöltéséhez a Windows Server operációs rendszer számára. A nagyméretű virtuális merevlemezek letöltése a kapcsolattól és a virtuális gép méretétől függően több órát is igénybe vehet. 
 > 
 > 
 
 ## <a name="download-vhd"></a>VHD letöltése
 
 1. A létrehozott URL-cím alatt kattintson a VHD-fájl letöltése elemre.
-1. Előfordulhat, hogy a letöltés indításához a böngészőben a **Mentés** gombra kell kattintania. A VHD-fájl alapértelmezett neve *ABCD*.
+1. Előfordulhat, hogy a **letöltéshez** a böngészőben a Mentés gombra kell kattintenie. A VHD-fájl alapértelmezett neve *abcd.*
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [tölthet fel egy VHD-fájlt az Azure-](upload-generalized-managed.md)ba. 
-- [Felügyelt lemezek létrehozása a nem felügyelt lemezekről egy Storage-fiókban](attach-disk-ps.md).
-- [Azure-lemezek kezelése a PowerShell](tutorial-manage-data-disk.md)-lel.
+- Megtudhatja, hogyan [tölthet fel VHD-fájlt az Azure-ba.](upload-generalized-managed.md) 
+- [Felügyelt lemezek létrehozása nem felügyelt lemezekből egy tárfiókban.](attach-disk-ps.md)
+- [Azure-lemezek kezelése a PowerShell használatával.](tutorial-manage-data-disk.md)

@@ -1,44 +1,44 @@
 ---
-title: 'Oktatóanyag: meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra'
-description: Meglévő egyéni Distributed Name Service-(DNS-) név leképezése az Azure Spring Cloud-ra
+title: 'Oktatóanyag: Meglévő egyéni tartomány leképezés Azure Spring Cloud'
+description: Meglévő egyéni elosztott névszolgáltatás (DNS) nevének leképezése a Azure Spring Cloud
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7aa1982fc880ac5733cc4453808c18956969572f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java
+ms.openlocfilehash: 493752a3857b80b43668b6bf1b20480604442955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627013"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567995"
 ---
-# <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Oktatóanyag: meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
+# <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Oktatóanyag: Meglévő egyéni tartomány leképezés Azure Spring Cloud
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
-A tartománynév-szolgáltatás (DNS) a hálózati csomópontok nevének hálózaton belüli tárolására szolgáló módszer. Ez az oktatóanyag egy tartományt, például a www.contoso.com-t egy CNAME-rekord használatával képezi le. Az egyéni tartományt egy tanúsítvánnyal védi, és bemutatja, hogyan lehet kényszeríteni a Transport Layer Security (TLS), más néven SSL (SSL) használatát. 
+A tartománynév-szolgáltatás (DNS) a hálózati csomópontok nevének a hálózaton való tárolására szolgáló technika. Ez az oktatóanyag leképez egy tartományt, például www.contoso.com CNAME rekord használatával. Tanúsítvánnyal védi az egyéni tartományt, és bemutatja, hogyan kényszeríthető Transport Layer Security (TLS), más néven SSL (SSL). 
 
-A tanúsítványok titkosítják a webes forgalmat. Ezek a TLS/SSL-tanúsítványok a Azure Key Vault tárolhatók. 
+A tanúsítványok titkosítják a webes forgalmat. Ezek a TLS-/SSL-tanúsítványok tárolhatók a Azure Key Vault. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure Spring Cloud üzembe helyezett alkalmazás (lásd: gyors útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md), vagy meglévő alkalmazás használata).
-* Egy tartománynév, amely hozzáféréssel rendelkezik a tartományi szolgáltató DNS-beállításjegyzékéhez, például a GoDaddyhez.
-* Privát tanúsítvány (azaz önaláírt tanúsítvány) egy harmadik féltől származó szolgáltatótól. A tanúsítványnak meg kell egyeznie a tartománnyal.
-* [Azure Key Vault](../key-vault/general/overview.md) üzembe helyezett példánya
+* A Azure Spring Cloud üzembe helyezett alkalmazás (lásd: Rövid [útmutató:](spring-cloud-quickstart.md)Meglévő Azure Spring Cloud indítása a Azure Portal használatával, vagy egy meglévő alkalmazás használata).
+* Egy tartománynév, amely hozzáféréssel rendelkezik a tartományszolgáltató (például a GoDaddy) DNS-beállításjegyzékéhez.
+* Egy külső szolgáltatótól származó privát tanúsítvány (azaz az Ön önaírt tanúsítványa). A tanúsítványnak egyeznie kell a tartománnyal.
+* A virtuális gép üzembe [helyezett Azure Key Vault](../key-vault/general/overview.md)
 
-## <a name="keyvault-private-link-considerations"></a>A kulcstartó privát hivatkozásának szempontjai
+## <a name="keyvault-private-link-considerations"></a>A Keyvault Private Link szempontjai
 
-Az Azure Spring Cloud Management IP-címei nem részei az Azure megbízható Microsoft-szolgáltatásainak. Ezért ahhoz, hogy az Azure Spring Cloud betöltsön tanúsítványokat egy privát végponti kapcsolattal védett Key Vault, a következő IP-címeket kell hozzáadnia Azure Key Vault tűzfalhoz:
+A Azure Spring Cloud felügyeleti IP-k még nem részei az Azure Trusted Microsoft-szolgáltatások. Ezért ha engedélyezni Azure Spring Cloud, hogy a Key Vault privát végponti kapcsolatokkal védett Key Vault, a következő IP-eket kell hozzáadnia a Azure Key Vault tűzfalhoz:
 
 ```
 20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
 ```
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
-### <a name="prepare-your-certificate-file-in-pfx-optional"></a>A tanúsítványfájl előkészítése PFX-formátumban (nem kötelező)
-Azure Key Vault támogatja a privát tanúsítvány importálását PEM és PFX formátumban. Ha a hitelesítésszolgáltatótól beszerzett PEM-fájl nem működik az alábbi szakaszban: a [tanúsítvány mentése a Key Vaultban](#save-certificate-in-key-vault), kövesse az itt leírt lépéseket a pfx létrehozásához Azure Key Vaulthoz.
+### <a name="prepare-your-certificate-file-in-pfx-optional"></a>A tanúsítványfájl előkészítése PFX formátumban (nem kötelező)
+Azure Key Vault a privát tanúsítvány PEM és PFX formátumban történő importálását. Ha a tanúsítványszolgáltatótól kapott PEM-fájl nem működik az [alábbi,](#save-certificate-in-key-vault)Tanúsítvány mentése a Key Vault-ban című szakaszban, kövesse az itt található lépéseket egy PFX létrehozásához a Azure Key Vault.
 
 #### <a name="merge-intermediate-certificates"></a>Köztes tanúsítványok egyesítése
 
@@ -68,28 +68,28 @@ Hozzon létre egy _mergedcertificate.crt_ nevű fájlt az egyesített tanúsítv
 
 #### <a name="export-certificate-to-pfx"></a>Tanúsítvány exportálása PFX-fájlba
 
-Exportálja az egyesített TLS/SSL-tanúsítványt annak a titkos kulcsnak a használatával, amelyhez a tanúsítványkérelem létrejött.
+Exportálja az egyesített TLS-/SSL-tanúsítványt azzal a titkos kulccsal, amelyből a tanúsítványkérelem létre lett hozva.
 
-Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _&lt; titkos kulcs-fájl>_ és az _&lt; egyesített-Certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjaira.
+Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a _&lt; private-key-file>_ és _&lt; merged-certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjára.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 
-Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót fogja használni a TLS/SSL-tanúsítvány későbbi Azure Key Vault való feltöltésekor.
+Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót a TLS-/SSL-tanúsítvány későbbi feltöltése Azure Key Vault használni.
 
 Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkérést, telepítse a tanúsítványt a helyi számítógépre, majd [exportálja a tanúsítványt PFX-fájlba](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
-### <a name="save-certificate-in-key-vault"></a>Tanúsítvány mentése Key Vault
-A tanúsítvány importálására vonatkozó eljáráshoz a PEM-vagy PFX-kódolású fájlnak lemezen kell lennie, és rendelkeznie kell a titkos kulccsal. 
+### <a name="save-certificate-in-key-vault"></a>Tanúsítvány mentése a Key Vault
+A tanúsítvány importálásának eljárásához a PEM- vagy PFX-kódolású fájlnak lemezen kell lennie, és a titkos kulccsal kell rendelkezik. 
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-A tanúsítvány feltöltése a Key vaultba:
-1. Nyissa meg a Key Vault-példányt.
-1. A bal oldali navigációs ablaktáblán kattintson a **tanúsítványok** elemre.
-1. A felső menüben kattintson a **készítés/importálás** elemre.
-1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában** válassza a lehetőséget `Import` .
-1. A **tanúsítványfájl feltöltése** területen navigáljon a tanúsítvány helyére, és jelölje ki.
-1. A **jelszó** területen adja meg a tanúsítvány titkos kulcsát.
+A tanúsítvány feltöltése a Key Vaultba:
+1. Ugrás a Key Vault-példányra.
+1. A bal oldali navigációs panelen kattintson a Tanúsítványok **elemre.**
+1. A felső menüben kattintson a **Generate/import (Generálás/importálás) elemre.**
+1. A Tanúsítvány **létrehozása párbeszédpanelen, a** **Tanúsítvány létrehozásának módszere alatt válassza** a `Import` lehetőséget.
+1. A **Tanúsítványfájl feltöltése alatt** keresse meg és jelölje ki a tanúsítvány helyét.
+1. A **Jelszó alatt** adja meg a tanúsítvány titkos kulcsát.
 1. Kattintson a **Létrehozás** lehetőségre.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
@@ -101,16 +101,16 @@ az keyvault certificate import --file <path to .pfx file> --name <certificate na
 ```
 ---
 
-### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>Azure Spring Cloud-hozzáférés biztosítása a Key vaulthoz
+### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>Hozzáférés Azure Spring Cloud kulcstartóhoz
 
-A tanúsítvány importálása előtt Azure Spring Cloud-hozzáférést kell biztosítania a kulcstartóhoz:
+A tanúsítvány importálása előtt Azure Spring Cloud hozzáférést a kulcstartóhoz:
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-1. Nyissa meg a Key Vault-példányt.
-1. A bal oldali navigációs panelen kattintson a **hozzáférési rendőr** elemre.
-1. A felső menüben kattintson a **hozzáférési szabályzat hozzáadása** elemre.
-1. Töltse ki az adatokat, és kattintson a **Hozzáadás** gombra, majd **mentse** a hozzáférési rendőrséget.
+1. Ugrás a Key Vault-példányra.
+1. A bal oldali navigációs panelen kattintson a **Hozzáférésirend-vezérlő elemre.**
+1. A felső menüben kattintson a **Hozzáférési szabályzat hozzáadása elemre.**
+1. Töltse ki az adatokat, majd kattintson a **Hozzáadás gombra,** majd a **Hozzáférésirend** mentése gombra.
 
-| Titkos engedély | Tanúsítvány engedélye | Rendszerbiztonsági tag kiválasztása |
+| Titkos engedély | Tanúsítványengedély | Rendszerbiztonsági tag kiválasztása |
 |--|--|--|
 | Lekérés, Listázás | Lekérés, Listázás | Azure Spring Cloud Domain-Management |
 
@@ -118,21 +118,21 @@ A tanúsítvány importálása előtt Azure Spring Cloud-hozzáférést kell biz
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 
-Adja meg az Azure Spring Cloud olvasási hozzáférését a Key vaulthoz, és cserélje le a `<key vault resource group>` és a `<key vault name>` parancsot a következő parancsra.
+Adjon olvasási Azure Spring Cloud kulcstartóhoz, és cserélje le a és a helyére `<key vault resource group>` `<key vault name>` a következő parancsban.
 ```
 az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
 ``` 
 ---
 
-### <a name="import-certificate-to-azure-spring-cloud"></a>Tanúsítvány importálása az Azure Spring Cloud-ba
+### <a name="import-certificate-to-azure-spring-cloud"></a>Tanúsítvány importálása a Azure Spring Cloud
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-1. Lépjen a szolgáltatási példányra. 
-1. Az alkalmazás bal oldali navigációs paneljén válassza a **TLS/SSL-beállítások** lehetőséget.
-1. Ezután kattintson **Key Vault tanúsítvány importálása** elemre.
+1. Ugrás a szolgáltatáspéldányra. 
+1. Az alkalmazás bal oldali navigációs panelen válassza a **TLS/SSL-beállítások lehetőséget.**
+1. Ezután kattintson a **Tanúsítvány importálása Key Vault elemre.**
 
     ![Tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate.png)
 
-1. Miután sikeresen importálta a tanúsítványt, megjelenik a **titkos kulcsokra vonatkozó tanúsítványok** listájában.
+1. Miután sikeresen importálta a tanúsítványt, megjelenik a titkoskulcs-tanúsítványok **listájában.**
 
     ![Titkos kulcs tanúsítványa](./media/custom-dns-tutorial/key-certificates.png)
 
@@ -150,39 +150,39 @@ az spring-cloud certificate list --resource-group <resource group name> --servic
 ---
 
 > [!IMPORTANT] 
-> Ha egy egyéni tartományt ezzel a tanúsítvánnyal kíván biztonságossá tenni, akkor továbbra is egy adott tartományhoz kell kötnie a tanúsítványt. Kövesse az ebben a szakaszban található lépéseket: [SSL-kötés hozzáadása](#add-ssl-binding).
+> Ahhoz, hogy ezzel a tanúsítvánnyal egy egyéni tartományt biztosítsunk, a tanúsítványt egy adott tartományhoz kell kötni. Kövesse a következő szakaszban található lépéseket: [SSL-kötés hozzáadása.](#add-ssl-binding)
 
-## <a name="add-custom-domain"></a>Egyéni tartomány hozzáadása
-CNAME rekord használatával képezhető le egyéni DNS-nevet az Azure Spring Cloud-ra. 
+## <a name="add-custom-domain"></a>Új Custom Domain
+Egy CNAME rekord használatával leképezhet egy egyéni DNS-nevet a Azure Spring Cloud. 
 
 > [!NOTE] 
 > Az A rekord nem támogatott. 
 
 ### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
-Nyissa meg a DNS-szolgáltatót, és adjon hozzá egy CNAME-rekordot a tartománynak a <service_name>. azuremicroservices.io való leképezéséhez. Itt <service_name> az Azure Spring Cloud-példány neve. A helyettesítő karakteres tartományt és altartományt is támogatjuk. A CNAME hozzáadása után a DNS-rekordok lap a következő példához hasonló lesz: 
+A DNS-szolgáltatónál adjon hozzá egy CNAME rekordot, amely leképezi a tartományt <service_name>.azuremicroservices.io. Itt <service_name> a saját Azure Spring Cloud neve. A helyettesítő karakterek tartománya és altartománya támogatott. A CNAME hozzáadása után a DNS-rekordok oldala az alábbi példához hasonló lesz: 
 
 ![DNS-rekordok oldala](./media/custom-dns-tutorial/dns-records.png)
 
-## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Egyéni tartomány leképezése az Azure Spring Cloud-alkalmazásra
-Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](./spring-cloud-quickstart.md)című témakör utasításait.
+## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Egyéni tartomány leképezés Azure Spring Cloud alkalmazásra
+Ha nem található alkalmazás a Azure Spring Cloud, kövesse a következő rövid útmutatóban található utasításokat: Meglévő Azure Spring Cloud indítása a [Azure Portal.](./spring-cloud-quickstart.md)
 
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-Ugrás az alkalmazás oldalra.
+Ugrás az alkalmazás oldalára.
 
-1. Válassza az **egyéni tartomány** lehetőséget.
-2. Ezután **adja hozzá az egyéni tartományt**. 
+1. Válassza a **Custom Domain** lehetőséget.
+2. Ezután **adja hozzá a Custom Domain.** 
 
     ![Egyéni tartomány](./media/custom-dns-tutorial/custom-domain.png)
 
-3. Írja be a teljes tartománynevet, amelyhez hozzáadott egy CNAME rekordot (például www.contoso.com). Győződjön meg arról, hogy az állomásnév bejegyzéstípusa CNAME értékre van beállítva (<service_name>. azuremicroservices.io)
-4. Az **Érvényesítés** gombra kattintva engedélyezheti a **Hozzáadás** gombot.
+3. Írja be azt a teljes tartománynevet, amelyhez CNAME rekordot adott hozzá, például www.contoso.com. Győződjön meg arról, hogy a Gazdagépnév rekordtípus beállítása CNAME (<service_name>.azuremicroservices.io)
+4. Kattintson **az Érvényesítés** gombra a **Hozzáadás gomb engedélyezéséhez.**
 5. Kattintson a **Hozzáadás** parancsra.
 
     ![Egyéni tartomány hozzáadása](./media/custom-dns-tutorial/add-custom-domain.png)
 
-Egy alkalmazás több tartománnyal is rendelkezhet, de egy tartomány csak egyetlen alkalmazáshoz képezhető le. Ha sikeresen leképezte az egyéni tartományt az alkalmazáshoz, az egyéni tartomány táblán fog megjelenni.
+Egy alkalmazás több tartománnyal is rendelkezik, de egy tartomány csak egy alkalmazáshoz lehet leképezni. Miután sikeresen leképezte az egyéni tartományt az alkalmazásra, az az egyéni tartománytáblában fog látni.
 
-![Egyéni tartomány tábla](./media/custom-dns-tutorial/custom-domain-table.png)
+![Egyéni tartománytábla](./media/custom-dns-tutorial/custom-domain-table.png)
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 ```
@@ -196,16 +196,16 @@ az spring-cloud app custom-domain list --app <app name> --resource-group <resour
 ---
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve. A böngészőből az egyéni tartományba érkező HTTPS-kérések hibaüzenetet vagy figyelmeztetést kapnak.
+> Az **egyéni tartomány Nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve. A böngészőből az egyéni tartományba való HTTPS-kérések hibaüzenetet vagy figyelmeztetést kapnak.
 
 ## <a name="add-ssl-binding"></a>SSL-kötés hozzáadása
 
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-Az egyéni tartomány táblában válassza az **SSL-kötés hozzáadása** lehetőséget az előző ábrán látható módon.  
-1. Válassza ki a **tanúsítványt** , vagy importálja.
+Az egyéni tartománytáblában válassza az **Ssl-kötés hozzáadása lehetőséget** az előző ábrán látható módon.  
+1. Válassza ki **a tanúsítványt,** vagy importálja.
 1. Kattintson a **Mentés** gombra.
 
-    ![SSL-kötés hozzáadása 1](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![SSL-kötés hozzáadása – 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 ```
@@ -213,25 +213,25 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 ```
 ---
 
-Az SSL-kötés sikeres hozzáadása után a tartomány állapota biztonságos lesz: **kifogástalan**. 
+Az SSL-kötés sikeres hozzáadása után a tartomány állapota biztonságos lesz: **Kifogástalan.** 
 
-![SSL-kötés hozzáadása 2](./media/custom-dns-tutorial/secured-domain-state.png)
+![SSL-kötés hozzáadása – 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>HTTPS kényszerítése
-Alapértelmezés szerint bárki megtekintheti az alkalmazást HTTP-n keresztül, de az összes HTTP-kérelmet átirányíthatja a HTTPS-portra.
+Alapértelmezés szerint az alkalmazáshoz továbbra is bárki hozzáférhet HTTP-protokollon keresztül, de az összes HTTP-kérést átirányíthatja a HTTPS-portra.
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
-Az alkalmazás lapjának bal oldali navigációs sávján válassza az **egyéni tartomány** lehetőséget. Ezt követően **csak a https**-t állítsa *igaz* értékre.
+Az alkalmazás oldalán a bal oldali navigációs sávon válassza **a** Custom Domain. Ezután állítsa a **Csak HTTPS beállítását** True *(Igaz) értékre.*
 
-![3. SSL-kötés hozzáadása](./media/custom-dns-tutorial/enforce-http.png)
+![SSL-kötés hozzáadása – 3](./media/custom-dns-tutorial/enforce-http.png)
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 ```
 az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
 ---
-Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
+Ha a művelet befejeződött, keresse meg az alkalmazásra mutató HTTPS URL-címek bármelyikét. Vegye figyelembe, hogy a HTTP URL-címek nem működnek.
 
 ## <a name="see-also"></a>Lásd még
 * [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 * [Tanúsítvány importálása](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
-* [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](./spring-cloud-quickstart.md)
+* [Saját Spring Cloud indítása az Azure CLI használatával](./spring-cloud-quickstart.md)

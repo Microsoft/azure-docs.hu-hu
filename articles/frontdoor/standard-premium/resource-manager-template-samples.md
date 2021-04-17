@@ -1,43 +1,45 @@
 ---
-title: Resource Manager-sablonok – minták – Azure bejárati ajtó
-description: Információ az Azure-beli bejárati ajtóhoz megadott minta Azure Resource Manager-sablonokról.
+title: Resource Manager mintasablonok – Azure Front Door
+description: A szolgáltatáshoz Azure Resource Manager mintasablonokkal kapcsolatos Azure Front Door.
 services: frontdoor
 author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/24/2021
-ms.openlocfilehash: 929adb0be948339af033d85b0dabd7e1cedf353e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: 3559270710f56d43fe486e2e3d3e41c63e2a619b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561746"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565831"
 ---
-# <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager Azure-beli előtérben lévő sablonok
+# <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager sablonok a Azure Front Door
 
 > [!Note]
-> Ez a dokumentáció az Azure bejárati ajtó standard/Premium (előzetes verzió) verziójához készült. Információt keres az Azure bejárati ajtóról? Megtekintés [itt](../front-door-overview.md).
+> Ez a dokumentáció a Azure Front Door Standard/Prémium (előzetes verzió) verzióhoz érhető el. Információt keres a Azure Front Door? Tekintse [meg itt:](../front-door-overview.md).
 
-Az alábbi táblázat az Azure bejárati ajtókhoz Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz, beleértve az egyéb Azure-szolgáltatásokat is.
+A következő táblázat hivatkozásokat tartalmaz Azure Resource Manager-sablonokhoz, Azure Front Door referenciaarchitektúrákat tartalmaz, beleértve az egyéb Azure-szolgáltatásokat is.
 
 | Sample | Leírás |
 |-|-|
-| [Szabálykészlet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Létrehoz egy előtérben lévő profilt és egy szabálykészlet-készletet.  |
-|**App Service eredete**| **Leírás** |
-| [APP SERVICE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Létrehoz egy App Service alkalmazást egy nyilvános végponttal, és egy bejárati ajtó profilt.  |
-| [App Service privát kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Létrehoz egy App Service alkalmazást egy privát végponttal és egy bejárati ajtót.  |
-| [App Service környezet privát kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-environment-internal-private-link) | Létrehoz egy App Service környezetet, egy privát végponttal rendelkező alkalmazást és egy bejárati profilt.  |
-|**Azure Functions eredete**| **Leírás** |
-| [Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-function-public/) | Létrehoz egy Azure Functions alkalmazást egy nyilvános végponttal, és egy bejárati ajtó profilt.  |
-| [Azure Functions privát kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-function-private-link) | Létrehoz egy Azure Functions alkalmazást egy privát végponttal és egy bejárati ajtót.  |
-|**API Management eredete**| **Leírás** |
-| [API Management (külső)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-api-management-external) | Létrehoz egy API Management példányt külső VNet-integrációval és egy bejárati ajtót.  |
-|**Tárolás eredete**| **Leírás** |
-| [Tárolási statikus webhely](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-storage-static-website) | Létrehoz egy Azure Storage-fiókot és egy statikus webhelyet nyilvános végponttal, valamint egy bejárati profilt.  |
-| [Storage-Blobok privát kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-storage-blobs-private-link) | Létrehoz egy Azure Storage-fiókot és egy BLOB-tárolót egy privát végponttal, valamint egy bejárati ajtót.  |
-|**Application Gateway eredete**| **Leírás** |
-| [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-application-gateway-public) | Létrehoz egy Application Gateway és egy bejárati ajtó profilt. |
-|**Virtuális gépek eredete**| **Leírás** |
-| [Virtuális gép privát kapcsolati szolgáltatással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-vm-private-link) | Létrehoz egy virtuális gépet és egy magánhálózati kapcsolati szolgáltatást, valamint egy bejárati ajtót. |
+| [Front Door (gyors létrehozás)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium/) | Létrehoz egy alapszintű Front Door profilt, beleértve a végpontot, a forráscsoportot, a forrást és az útvonalat.  |
+| [Szabálykészlet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Létrehoz egy Front Door profilt és szabálykészletet.  |
+| [WAF-szabályzat egyéni s szabályokkal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | Létrehoz egy Front Door-profilt és a WAF-et egyéni s szabályokkal.  |
+|**App Service forrás**| **Leírás** |
+| [APP SERVICE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Létrehoz egy App Service egy nyilvános végponttal és egy Front Door profillal.  |
+| [App Service és Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Létrehoz egy App Service egy privát végponttal és egy Front Door profillal.  |
+| [App Service környezet és Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-environment-internal-private-link) | Létrehoz egy App Service környezetet, egy privát végponttal és egy Front Door profillal.  |
+|**Azure Functions forrás**| **Leírás** |
+| [Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-function-public/) | Létrehoz egy Azure Functions egy nyilvános végponttal és egy Front Door profillal.  |
+| [Azure Functions a Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-function-private-link) | Létrehoz egy Azure Functions egy privát végponttal és egy Front Door profillal.  |
+|**API Management forrás**| **Leírás** |
+| [API Management (külső)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-api-management-external) | Létrehoz egy API Management külső VNet-integrációval és egy Front Door profillal.  |
+|**Tárolási forrás**| **Leírás** |
+| [Statikus Storage-webhely](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-storage-static-website) | Létrehoz egy Azure Storage-fiókot és egy statikus webhelyet egy nyilvános végponttal és egy Front Door profillal.  |
+| [Storage-blobok Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-storage-blobs-private-link) | Létrehoz egy Azure Storage-fiókot és egy blobtárolót egy privát végponttal és egy Front Door profillal.  |
+|**Application Gateway forrás**| **Leírás** |
+| [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-application-gateway-public) | Létrehoz egy Application Gateway és egy Front Door profilt. |
+|**Virtuális gépek eredetei**| **Leírás** |
+| [Virtuális gép Private Link szolgáltatással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-vm-private-link) | Létrehoz egy virtuális gépet és Private Link szolgáltatást, valamint egy Front Door profilt. |
 | | |

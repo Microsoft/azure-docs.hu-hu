@@ -1,45 +1,42 @@
 ---
-title: Felhasználói bejelentkezések letiltása egy vállalati alkalmazáshoz az Azure AD-ben
-description: Vállalati alkalmazások letiltása, hogy a felhasználók ne jelentkezzenek be Azure Active Directory
+title: Vállalati alkalmazások felhasználói bejelentkezésének letiltása az Azure AD-ban
+description: Vállalati alkalmazás letiltása, hogy egyetlen felhasználó se jelentkeztethet be a Azure Active Directory
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9af580ef8b3691a5f188ac15069dda00a5f5802
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259236"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374250"
 ---
-# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Vállalati alkalmazásokhoz tartozó felhasználói bejelentkezések letiltása Azure Active Directory
+# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Vállalati alkalmazások felhasználói bejelentkezésének letiltása a Azure Active Directory
 
-A vállalati alkalmazások egyszerűen letilthatók, így egyetlen felhasználó sem tud bejelentkezni Azure Active Directory (Azure AD) szolgáltatásba. A vállalati alkalmazás felügyeletéhez szükséges engedélyek szükségesek. Emellett globális rendszergazdai jogosultsággal kell rendelkeznie a címtárhoz.
+A vállalati alkalmazások egyszerűen letilthatóak, így egyetlen felhasználó sem tud bejelentkezni az Azure Active Directory (Azure AD) szolgáltatásba. A vállalati alkalmazás kezeléséhez megfelelő engedélyekre van szüksége. A címtár globális rendszergazdának kell lennie.
 
-## <a name="how-do-i-disable-user-sign-ins"></a>Hogyan letiltani a felhasználói bejelentkezéseket?
+## <a name="how-do-i-disable-user-sign-ins"></a>Hogyan a felhasználói bejelentkezéseket?
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-1. Válassza a **minden szolgáltatás** lehetőséget, írja be **Azure Active Directory** a szövegmezőbe, majd válassza az **ENTER billentyűt**.
-1. Az **Azure Active Directory**  -   **_könyvtárnév_*_ ablaktáblán (azaz a felügyelt címtárhoz tartozó Azure ad-ablaktáblán) válassza az _ Enterprise-alkalmazások elemet***.
-1. A **vállalati alkalmazások – minden alkalmazás** panelen láthatja a felügyelhető alkalmazások listáját. Jelöljön ki egy alkalmazást.
-1. Az ***AppName** _ panelen (azaz a cím alatt a kiválasztott alkalmazás nevét tartalmazó ablaktáblán) válassza a _ * tulajdonságok * * elemet.
-1. A ***AppName** _-_ *Tulajdonságok** ablaktáblán válassza a **nem** lehetőséget a **felhasználók bejelentkezéshez való engedélyezéséhez?**.
-1. Kattintson a **Save (Mentés** ) parancsra.
+1. Válassza **a Minden szolgáltatás** lehetőséget, Azure Active Directory a szövegmezőbe, majd válassza az Enter **billentyűt.** 
+1. A **Azure Active Directory**  -   **__ panelen_*(azaz*** a felügyeletben található címtár Azure AD panelje) válassza a _ Vállalati alkalmazások lehetőséget.
+1. A Vállalati **alkalmazások – Minden alkalmazás panelen** megjelenik a felügyelheti alkalmazások listája. Jelöljön ki egy alkalmazást.
+1. Az ***alkalmazásnév** _ panelen (azaz a címben a kiválasztott alkalmazás nevével jelölt panelen) válassza a _*Properties** lehetőséget.
+1. Az ***alkalmazásnév** _ - _ *Tulajdonságok** panelen válassza a **Nem** lehetőséget, ha a felhasználók bejelentkeznek? beállításnál válassza a Nem **lehetőséget.**
+1. Válassza a **Mentés** parancsot.
 
-## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Lista nélküli alkalmazás letiltása az Azure AD PowerShell használatával
+## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Nem listázó alkalmazás letiltása az Azure AD PowerShell használatával
 
-Ha ismeri egy olyan alkalmazás AppId, amely nem jelenik meg a vállalati alkalmazások listáján (például azért, mert törölte az alkalmazást vagy a szolgáltatást még nem hozták létre a Microsoft által előre felhatalmazott alkalmazás miatt), manuálisan is létrehozhatja az alkalmazást, majd letilthatja a [AzureAD PowerShell-parancsmag](/powershell/module/azuread/New-AzureADServicePrincipal)használatával.
+Ha ismeri egy olyan alkalmazás AppId-ját, amely nem jelenik meg a Vállalati alkalmazások listájában (például azért, mert törölte az alkalmazást vagy a szolgáltatásnév még nem lett létrehozva, mert az alkalmazást a Microsoft előzetesen engedélyezte), manuálisan létrehozhatja az alkalmazás szolgáltatását, majd letilthatja az [AzureAD PowerShell-parancsmag használatával.](/powershell/module/azuread/New-AzureADServicePrincipal)
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -58,7 +55,7 @@ if ($servicePrincipal) {
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
-* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](./assign-user-or-group-access-portal.md)
+* [Az összes saját csoport](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Felhasználó vagy csoport hozzárendelése vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
+* [Felhasználó- vagy csoport-hozzárendelés eltávolítása vállalati alkalmazásból](./assign-user-or-group-access-portal.md)
 * [Vállalati alkalmazás nevének vagy emblémájának módosítása](./add-application-portal-configure.md)
