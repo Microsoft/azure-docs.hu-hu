@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a LogicGate konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a LogicGate.
+title: 'Oktatóanyag: A LogicGate konfigurálása automatikus felhasználóátépítéshez Azure Active Directory | Microsoft Docs'
+description: Ismerje meg, hogyan lehet automatikusan kiépítni és visszaveszni felhasználói fiókokat az Azure AD-ból a LogicGate-be.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7258aaba738b63db4d37af78389003d36874dcb9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c938ab344a7d861af713fa42e2e39afa1df1b3
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878076"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589465"
 ---
-# <a name="tutorial-configure-logicgate-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LogicGate konfigurálása
+# <a name="tutorial-configure-logicgate-for-automatic-user-provisioning"></a>Oktatóanyag: A LogicGate konfigurálása automatikus felhasználóátépítéshez
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a LogicGate és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [LogicGate](https://www.logicgate.com) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyekre szükség van a LogicGateben és a Azure Active Directory (Azure AD) az automatikus felhasználóátépítés konfigurálásában. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiépíti a felhasználókat és csoportokat a [LogicGate](https://www.logicgate.com) számára az Azure AD provisioning service használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
 > * Felhasználók létrehozása a LogicGate-ben
-> * Felhasználók eltávolítása a LogicGate-ben, ha már nincs szükség hozzáférésre
-> * Felhasználói attribútumok szinkronizálása az Azure AD és a LogicGate között
+> * Felhasználók eltávolítása a LogicGate-ben, ha már nincs szükségük hozzáférésre
+> * A felhasználói attribútumok szinkronizálása az Azure AD és a LogicGate között
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbi előfeltételek valamelyikével:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
-* A nagyvállalati csomaggal rendelkező LogicGate-bérlő, vagy jobb, ha van ilyen.
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a LogicGate-ben.
+* Egy LogicGate-bérlő nagyvállalati csomaggal vagy jobban engedélyezett.
+* Rendszergazdai engedélyekkel rendelkező felhasználói fiók a LogicGate-ben.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és a LogicGate között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+3. Határozza meg, hogy milyen adatokat [kell leképezni az Azure AD és a LogicGate között.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
 
-## <a name="step-2-configure-logicgate-to-support-provisioning-with-azure-ad"></a>2. lépés LogicGate konfigurálása az Azure AD-vel való kiépítés támogatásához
+## <a name="step-2-configure-logicgate-to-support-provisioning-with-azure-ad"></a>2. lépés A LogicGate konfigurálása az Azure AD-beli kiépítés támogatásához
 
-1. Jelentkezzen be a **LogicGate** felügyeleti konzolba. Navigáljon a **Kezdőlap** lapra, és kattintson a jobb felső sarokban található **profil** ikonra.
-2. Nyissa meg a **profil** **>** **elérési kulcsát**.
+1. Jelentkezzen be a **LogicGate felügyeleti** konzolba. Lépjen a **Kezdőlapra,** és kattintson a **jobb felső sarokban található Profil** ikonra.
+2. Lépjen a **Profilelérési** **>** **kulcs lapra.**
 
     ![Profil lap](./media/logicgate-provisioning-tutorial/profile.png)
 
-3. Kattintson a **hozzáférési kulcs előállítása** elemre. 
+3. Kattintson a **Generate Access key (Hozzáférési kulcs létrehozása) elemre.** 
     
     ![Hozzáférés lap](./media/logicgate-provisioning-tutorial/key.png)
 
-4. Másolja ki és mentse el a **hozzáférési kulcsot**. Ez az érték a LogicGate alkalmazás üzembe helyezés lapjának **titkos jogkivonat** * mezőjében jelenik meg a Azure Portal. 
+4. Másolja és mentse a **hozzáférési kulcsot.** Ez az érték a LogicGate-alkalmazás Provisioning (Kiépítés) lapjának **Secret Token** * (Titkos jogkivonat *) mezőjében lesz megadva a Azure Portal. 
     
     ![Kulcs lap](./media/logicgate-provisioning-tutorial/access.png)
 
-## <a name="step-3-add-logicgate-from-the-azure-ad-application-gallery"></a>3. lépés LogicGate hozzáadása az Azure AD Application Galleryből
+## <a name="step-3-add-logicgate-from-the-azure-ad-application-gallery"></a>3. lépés LogicGate hozzáadása az Azure AD-alkalmazásgyűjteményből
 
-Vegyen fel LogicGate az Azure AD-alkalmazás-katalógusból a LogicGate való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a LogicGate az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+Adja hozzá a LogicGate-et az Azure AD alkalmazásgyűjteményből a LogicGate-be való kiépítés kezelésének elkezdéséhez. Ha korábban már telepítette a LogicGate-et az SSO-hez, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok LogicGate való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+* Amikor felhasználókat és csoportokat rendel a LogicGate-hez, az alapértelmezett hozzáféréstől különböző **szerepkört kell választania.** Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-logicgate"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a LogicGate 
+## <a name="step-5-configure-automatic-user-provisioning-to-logicgate"></a>5. lépés Automatikus felhasználóátépítés konfigurálása a LogicGate-hez 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti azon lépéseken, amelyek segítségével konfigurálhatja az Azure AD kiépítési szolgáltatást felhasználók és/vagy csoportok létrehozására, frissítésére és letiltására a TestAppben felhasználói és/vagy csoport-hozzárendelések alapján az Azure AD-ban.
 
-### <a name="to-configure-automatic-user-provisioning-for-logicgate-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a LogicGate az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-logicgate-in-azure-ad"></a>Automatikus felhasználóátépítés konfigurálása a LogicGate-hez az Azure AD-ben:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **LogicGate** lehetőséget.
+2. Az alkalmazások listájában válassza a **LogicGate lehetőséget.**
 
-    ![Az LogicGate hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A LogicGate hivatkozása az Alkalmazások listában](common/all-applications.png)
 
 3. Válassza a **Kiépítés** lapot.
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Automatikus lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a LogicGate bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a LogicGate. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a LogicGate-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő adatok szakaszban** adja meg a LogicGate-bérlő URL-címét és a titkos jogkivonatot. Kattintson **a Kapcsolat tesztelése elemre** annak biztosításához, hogy az Azure AD kapcsolódhat a LogicGate-hez. Ha a kapcsolat meghiúsul, ellenőrizze, hogy a LogicGate-fiók rendelkezik-e rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -107,9 +107,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a LogicGate** lehetőséget.
+8. A **Leképezések szakaszban** válassza a **Felhasználók szinkronizálása Azure Active Directory LogicGate-be lehetőséget.**
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő LogicGate. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LogicGate felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a LogicGate API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ból a LogicGate-be szinkronizált felhasználói attribútumokat az **Attribútumleképezés szakaszban.** Az Egyező tulajdonságokként **kiválasztott** attribútumok a LogicGate felhasználói fiókjaihoz illeszkednek a frissítési műveletekhez. Ha úgy dönt, [](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hogy módosítja az egyező célattribútumot, meg kell győződni arról, hogy a LogicGate API támogatja a felhasználók ezen attribútum alapján való szűrését. A módosítások **véglegesítéshez** kattintson a Mentés gombra.
 
    |Attribútum|Típus|Szűréshez támogatott|
    |---|---|---|
@@ -121,11 +121,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-11. Az Azure AD-kiépítési szolgáltatás LogicGate való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a LogicGate számára, módosítsa a **Kiépítési** állapot beállítást **Be** állapotra a **Beállítások szakaszban.**
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg a LogicGate kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+12. Határozza meg a LogicGate számára kiépítni kívánt felhasználókat és/vagy  csoportokat a Kívánt értékek kiválasztásával a Hatókör területen a **Beállítások szakaszban.**
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
@@ -139,7 +139,7 @@ Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatároz
 Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
 1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+2. A [folyamatjelzőn](/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
 
 ## <a name="additional-resources"></a>További források

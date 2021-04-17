@@ -1,6 +1,6 @@
 ---
-title: Egyéni Conda-csatorna létrehozása a csomagok kezeléséhez
-description: Ismerje meg, hogyan hozhat létre egyéni Conda-csatornát a csomagok kezeléséhez
+title: Egyéni Conda-csatorna létrehozása csomagkezeléshez
+description: Megtudhatja, hogyan hozhat létre egyéni Conda-csatornát csomagkezeléshez
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,31 +9,31 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 528ba4a1be3650a81772d78a438f03611b9bd761
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26b6adefd2d334c9fe570bfa7e63bb06b55b9d20
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107684"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588768"
 ---
-# <a name="create-a-custom-conda-channel-for-package-management"></a>Egyéni Conda-csatorna létrehozása a csomagok kezeléséhez 
-A Python-csomagok telepítésekor a Conda csomagkezelő csatornákat használ a csomagok kereséséhez. Előfordulhat, hogy különféle okokból létre kell hoznia egy egyéni Conda-csatornát. Előfordulhat például, hogy a következőket találja:
+# <a name="create-a-custom-conda-channel-for-package-management"></a>Egyéni Conda-csatorna létrehozása csomagkezeléshez 
+Python-csomagok telepítésekor a Conda csomagkezelő csatornákon keres csomagokat. Előfordulhat, hogy több okból is létre kell hoznia egy egyéni Conda-csatornát. Például a következőt találhatja:
 
-- a munkaterület kiszűrése védett, és a kimenő kapcsolatok le vannak tiltva.  
-- olyan csomagokat tartalmaz, amelyeket nem kíván feltölteni a nyilvános adattárakba.
-- a munkaterületen lévő felhasználók számára szeretné beállítani a másodlagos tárházat.
+- A munkaterület adatkiszivárgással védett, és a kimenő kapcsolatok le vannak tiltva.  
+- olyan csomagjai vannak, amelyek nyilvános adattárakba való feltöltését nem szeretné.
+- A munkaterületen lévő felhasználók számára alternatív adattárat szeretne beállítani.
 
-Ebben a cikkben egy lépésenkénti útmutatót adunk, amely segít az egyéni Conda-csatorna létrehozásában Azure Data Lake Storage-fiókjában.
+Ebben a cikkben egy részletes útmutatót biztosítunk, amely segítséget nyújt az egyéni Conda-csatorna létrehozásához a Azure Data Lake Storage fiókjában.
 
 ## <a name="set-up-your-local-machine"></a>A helyi gép beállítása
 
-1. Telepítse a Conda a helyi gépre. Az [Azure szinapszis Spark futtatókörnyezetét](./apache-spark-version-support.md) az ugyanazon a futtatókörnyezeten használt Conda-verzió azonosításához tekintheti meg.
+1. Telepítse a Condát a helyi gépre. Az ugyanazon a Azure Synapse [használt](./apache-spark-version-support.md) Conda-verzió azonosításához tekintse meg a Spark-Azure Synapse.
    
-2. Egyéni csatorna létrehozásához telepítse a Conda-buildet.
+2. Egyéni csatorna létrehozásához telepítse a conda-buildet.
 ```
 conda install conda-build
 ```
-3. Rendezze az összes csomagot a használni kívánt platformra. Ebben a példában az anaconda-archívumot telepítjük a helyi gépre.
+3. Rendszerezze az összes csomagot a kiszolgálni kívánt platformhoz. Ebben a példában az Anaconda archívumot fogjuk telepíteni a helyi gépre.
 
 ```
 sudo wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh 
@@ -42,12 +42,12 @@ sudo bash Anaconda3-4.4.0-Linux-x86_64.sh -b -p /usr/lib/anaconda3
 export PATH="/usr/lib/anaconda3/bin:$PATH" 
 sudo chmod 777 -R /usr/lib/anaconda3a.  
 ```
-## <a name="mount-the-storage-account-onto-your-machine"></a>A Storage-fiók csatlakoztatása a géphez
-Ezután csatlakoztatni fogjuk a Azure Data Lake Storage Gen2 fiókot a helyi gépre. Ezt a folyamatot WASB-fiókkal is lehet elvégezni; a ADLSg2-fiókhoz azonban egy példa is elérhető. 
+## <a name="mount-the-storage-account-onto-your-machine"></a>A tárfiók csatlakoztatása a géphez
+Ezután csatlakoztatjuk a Azure Data Lake Storage Gen2 fiókot a helyi géphez. Ez a folyamat WASB-fiókkal is használhatja; azonban végigveszünk egy példát az ADLSg2-fiókra 
  
-A Storage-fiók helyi gépen való csatlakoztatásával kapcsolatos további információkért tekintse meg [ezt a lapot](https://github.com/Azure/azure-storage-fuse#blobfuse ). 
+A tárfiók helyi gépen való csatlakoztatásának további információiért látogasson el erre [az oldalra.](https://github.com/Azure/azure-storage-fuse#blobfuse ) 
 
-1. A blobfuse a Microsoft-termékekhez készült Linux-tárházból is telepítheti.
+1. A blobfuse a Microsoft-termékek linuxos szoftvertárházában telepíthető.
 
 ```
 wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb 
@@ -59,7 +59,7 @@ export AZURE_STORAGE_ACCESS_KEY=<<myaccountkey>>
 export AZURE_STORAGE_BLOB_ENDPOINT=*.dfs.core.windows.net 
 ```
 
-2. Hozza létre a csatlakoztatási pont ( ```mkdir /path/to/mount``` ), és csatlakoztassa a BLOB-tárolót a blobfuse. Ebben a példában a **privatechannel** értéket használjuk a **mycontainer** változóhoz.
+2. Hozza létre a csatlakozási pontot ( ```mkdir /path/to/mount``` ), és csatlakoztassa a Blob-tárolót a blobfuse használatával. Ebben a példában a **privatechannel** értéket használjuk a **mycontainer változóhoz.**
    
 ```
 blobfuse /path/to/mount --container-name=mycontainer --tmp-path=/mnt/blobfusetmp --use-adls=true --log-level=LOG_DEBUG 
@@ -67,9 +67,9 @@ sudo mkdir -p /mnt/blobfusetmp
 sudo chown <myuser> /mnt/blobfusetmp
 ```
 ## <a name="create-the-channel"></a>A csatorna létrehozása
-A következő lépésben létrehozunk egy egyéni Conda-csatornát. 
+A következő lépésekben egy egyéni Conda-csatornát hozunk létre. 
 
-1. A helyi gépen hozzon létre egy könyvtárat az egyéni csatorna összes csomagjának rendszerezéséhez.
+1. A helyi gépen hozzon létre egy könyvtárat, amely az egyéni csatorna összes csomagját rendszerezheti.
    
 ```
 mkdir /home/trusted-service-user/privatechannel 
@@ -77,7 +77,7 @@ cd ~/privatechannel/
 mkdir channel1/linux64 
 ```
 
-2. Rendezze az összes ```tar.bz2``` csomagot https://repo.anaconda.com/pkgs/main/linux-64/ az alkönyvtárba. Ügyeljen arra, hogy az összes függő tar. bz2-csomagot is tartalmazza. 
+2. Rendezze az ```tar.bz2``` összes csomagot a https://repo.anaconda.com/pkgs/main/linux-64/ alkönyvtárba. Mindenképpen foglalja bele az összes függő tar.bz2 csomagot is. 
 
 ```
 cd channel1 
@@ -92,15 +92,15 @@ conda index channel1/linux-64
 conda index channel1 
 ```
 
-További információt [a Conda felhasználói útmutatójában találhat az](https://docs.conda.io/projects/conda/latest/user-guide/tasks/create-custom-channels.html) egyéni csatornák létrehozásához. 
+További információért látogasson el a [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/create-custom-channels.html) egyéni csatornák létrehozására vonatkozó felhasználói útmutatóját is. 
 
-## <a name="storage-account-permissions"></a>Storage-fiók engedélyei
-Most a Storage-fiókra vonatkozó engedélyeket is ellenőrizni kell. Az engedélyek beállításához Navigáljon arra az elérési útra, ahová az egyéni csatornát létre szeretné hozni. Ezután hozzon létre egy SAS-jogkivonatot, ```privatechannel``` amely olvasási, listázási és végrehajtási engedélyekkel rendelkezik. 
+## <a name="storage-account-permissions"></a>Tárfiók engedélyei
+Most érvényesítenünk kell a tárfiók engedélyeinek érvényességét. Az engedélyek beállításhoz lépjen arra az elérési útra, ahol az egyéni csatorna létre lesz hozva. Ezután hozzon létre egy SAS-jogkivonatot, ```privatechannel``` amely olvasási, listás és végrehajtási engedélyekkel rendelkezik. 
 
-Ekkor a csatorna neve lesz az ebből a folyamatból generált blob SAS URL-cím.  
+A csatorna neve mostantól a folyamat során létrehozott blob SAS URL-címe lesz.  
 
 ## <a name="create-a-sample-conda-environment-configuration-file"></a>Minta Conda-környezet konfigurációs fájljának létrehozása
-Utolsó lépésként ellenőrizze a telepítési folyamatot egy minta Conda- ```environment.yml``` fájl létrehozásával. Ha a DEP-kompatibilis munkaterületen van, meg kell adnia a ``nodefaults`` csatornát a környezeti fájlban.
+Végül ellenőrizze a telepítési folyamatot egy Minta Conda-fájl ```environment.yml``` létrehozásával. Ha DEP-kompatibilis munkaterülettel dolgozik, meg kell adnia a csatornát a ``nodefaults`` környezeti fájlban.
 
 Példa a Conda konfigurációs fájlra:
 ```
@@ -112,16 +112,16 @@ dependencies:
   - openssl 
   - ncurses 
 ```
-A minta Conda-fájl létrehozása után létrehozhat egy virtuális Conda-környezetet. 
+Miután létrehozta a Conda-mintafájlt, létrehozhat egy virtuális Conda-környezetet. 
 
 ```
 conda env create –file sample.yml  
 source activate env 
 conda list 
 ```
-Most, hogy ellenőrizte az egyéni csatornát, a [Python-készlet felügyeleti](./apache-spark-manage-python-packages.md) folyamatával frissítheti a tárakat a Apache Spark készletén.
+Most, hogy ellenőrizte az egyéni csatornát, a [Python](./apache-spark-manage-python-packages.md) készletkezelési folyamatának használatával frissítheti a kódtárakat a Apache Spark készletben.
 
 ## <a name="next-steps"></a>Következő lépések
-- Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)
-- Python-csomagok kezelése: [Python-csomag kezelése](./apache-spark-manage-python-packages.md)
+- Az alapértelmezett kódtárak megtekintése: [Apache Spark támogatása](apache-spark-version-support.md)
+- Python-csomagok kezelése: [Python-csomagkezelés](./apache-spark-manage-python-packages.md)
 

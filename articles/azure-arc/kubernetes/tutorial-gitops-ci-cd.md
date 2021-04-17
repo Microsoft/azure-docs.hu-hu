@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: CI/CD megvalósítása a GitOps használatával Azure Arc engedélyezett Kubernetes-fürtök használatával'
-description: Ez az oktatóanyag végigvezeti egy CI-/CD-megoldás GitOps és engedélyezett Kubernetes Azure Arc fürtök használatával történő beállításán. A munkafolyamat fogalmi áttekintését a CI/CD-munkafolyamat GitOps használatával – Azure Arc Kubernetes használatával című cikkben olvashatja.
+description: Ez az oktatóanyag végigvezeti egy CI-/CD-megoldás GitOps és engedélyezett Kubernetes Azure Arc fürtök használatával történő beállításán. A munkafolyamat fogalmi áttekintését a CI/CD-munkafolyamat GitOps használatával – Azure Arc Kubernetes használatával című cikkben olvashatja el.
 author: tcare
 ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 6fb8802dd92e6f9bd55a96772abe3cef5150ac30
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9a228ce6f8b18afb77b656765abbad0bb4ae877f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478386"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589142"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Oktatóanyag: CI/CD megvalósítása a GitOps használatával Azure Arc engedélyezett Kubernetes-fürtök használatával
 
@@ -47,18 +47,18 @@ Ez az oktatóanyag feltételezi az Azure DevOps, az Azure Repos és a Pipelines,
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
+  az extension add --name k8sconfiguration
   ```
-  * A bővítmények a legújabb verzióra való frissítéséhez futtassa a következő parancsokat:
+  * Ezeknek a bővítményeknek a legújabb verzióra való frissítéséhez futtassa a következő parancsokat:
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8s-configuration
+    az extension update --name k8sconfiguration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Alkalmazás- és GitOps-adattárak importálása azure-adattárakba
 
-Importálhat [egy alkalmazás-adattárat](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) és egy [GitOps-adattárat](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) az Azure-adattárakba. Ebben az oktatóanyagban használja a következő példa adattárat:
+Importálhat [egy alkalmazás-adattárat](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) és egy [GitOps-adattárat](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) az Azure-adattárakba. Ebben az oktatóanyagban használja a következő példatárházat:
 
 * **arc-cicd-demo-src** alkalmazás-repo
    * Url: https://github.com/Azure/arc-cicd-demo-src
@@ -71,11 +71,11 @@ További információ a [Git-adattárak importálásról.](/azure/devops/repos/g
 
 >[!NOTE]
 > Az alkalmazás- és GitOps-adattárak két külön adattárának importálása és használata javíthatja a biztonságot és az egyszerűséget. Az alkalmazás és a GitOps-adattárak engedélyei és láthatósága egyenként hangolható.
-> Előfordulhat például, hogy a fürt rendszergazdája nem találja a fürt célállapotához kapcsolódó alkalmazáskód-módosításokat. Ezzel szemben az alkalmazásfejlesztőknek nem kell értenünk az egyes környezetek konkrét paramétereit – a paramétereket lefedő tesztértékek készlete elegendő lehet.
+> Előfordulhat például, hogy a fürt rendszergazdája nem találja a fürt célállapotához kapcsolódó alkalmazáskód-módosításokat. Ezzel szemben az alkalmazásfejlesztőnek nem kell tudni az egyes környezetek konkrét paramétereit – a paramétereket lefedő tesztértékek készlete elegendő lehet.
 
 ## <a name="connect-the-gitops-repo"></a>A GitOps-adattár csatlakoztatása
 
-Az alkalmazás folyamatos üzembe helyezéséhez csatlakoztassa az alkalmazás adattárát a fürthöz a GitOps használatával. Az **arc-cicd-demo-gitops** GitOps-adattár tartalmazza az alkalmazás **arc-cicd-cluster** fürtön való futtatásához szükséges alapvető erőforrásokat.
+Az alkalmazás folyamatos üzembe helyezéséhez csatlakoztassa az alkalmazás adattárát a fürthöz a GitOps használatával. Az **arc-cicd-demo-gitops** GitOps-adattár tartalmazza az alkalmazás az **arc-cicd-cluster** fürtön való futtatásához szükséges alapvető erőforrásokat.
 
 A kezdeti GitOps-adattár csak egy  jegyzékfájlt tartalmaz, amely létrehozza [az](https://github.com/Azure/arc-cicd-demo-gitops/blob/master/arc-cicd-cluster/manifests/namespaces.yml) üzembe helyezési környezetnek megfelelő dev és **stage** névtereket.
 
@@ -115,11 +115,11 @@ A CI/CD-munkafolyamat további jegyzékekkel tölti fel a jegyzékkönyvtárat a
 
 ## <a name="import-the-cicd-pipelines"></a>CI-/CD-folyamatok importálása
 
-Most, hogy szinkronizált egy GitOps-kapcsolatot, importálni kell a jegyzékfájlokat tartalmazó CI/CD-folyamatokat.
+Most, hogy szinkronizált egy GitOps-kapcsolatot, importálni kell a jegyzékfájlokat tartalmazó CI/CD-folyamatot.
 
 Az alkalmazás-adattában található egy mappa, amely a lereplikátorokhoz, a CI-hez és a CD-hez `.pipeline` használt folyamatokat tartalmazza. Importálja és nevezze át a mintaadattáraban megadott három folyamatot:
 
-| Folyamatfájl neve | Leírás |
+| Folyamatfájl neve | Description |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Az alkalmazás pr-folyamatának neve **arc-cicd-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Az alkalmazás CI-folyamatának neve **arc-cicd-demo-src CI** |
@@ -134,7 +134,7 @@ A folyamatok és a fürt is az ACR-t fogja használja a Docker-lemezképek táro
 A CI-folyamat során üzembe fogja helyezni az alkalmazástárolókat egy regisztrációs adatbázisban. Először hozzon létre egy Azure-szolgáltatáskapcsolatot:
 
 1. Az Azure DevOpsban nyissa meg a **Szolgáltatáskapcsolatok** lapot a projektbeállítások oldalán. A TFS-ben nyissa meg  a **Szolgáltatások** lapot a felső menüsáv beállítások ikonján.
-2. Válassza **az + Új szolgáltatáskapcsolat lehetőséget,** és válassza ki a szükséges szolgáltatáskapcsolat típusát.
+2. Válassza **az + Új szolgáltatáskapcsolat lehetőséget,** és válassza ki a kívánt szolgáltatáskapcsolat típusát.
 3. Adja meg a szolgáltatáskapcsolat paramétereit. Ebben az oktatóanyagban:
    * A szolgáltatáskapcsolatnak nevezze **el az arc-demo-acr nevet.** 
    * Válassza **ki a myResourceGroup** erőforráscsoportot.
@@ -166,8 +166,7 @@ kubectl create secret docker-registry <secret-name> \
     --docker-password=<service-principal-password>
 ```
 
-> [!TIP]
-> Ha nem kell minden podhoz imagePullSecret-t beállítania, vegye fontolóra az imagePullSecret hozzáadását a szolgáltatásfiókhoz a és a `dev` `stage` névtérben. További [információért tekintse meg a Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) oktatóanyagát.
+Ha nem kell minden podhoz imagePullSecret-t beállítania, vegye fontolóra az imagePullSecret hozzáadását a szolgáltatásfiókhoz a és a `dev` `stage` névtérben. További [információért tekintse meg a Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account) oktatóanyagát.
 
 ## <a name="create-environment-variable-groups"></a>Környezeti változócsoportok létrehozása
 
@@ -188,7 +187,7 @@ kubectl create secret docker-registry <secret-name> \
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> A PAT-t titkos típusként jelölje meg. Az alkalmazásokban fontolja meg titkos kulcsok csatolását egy [Azure KeyVaultból.](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)
+> A PAT-et titkos típusúként jelölje meg. Az alkalmazásokban fontolja meg titkos kulcsok csatolását egy [Azure KeyVaultból.](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)
 >
 ### <a name="stage-environment-variable-group"></a>Környezeti változócsoport szakasza
 
@@ -228,12 +227,12 @@ A ci-folyamat sikeres futtatása elindítja a CD-folyamatot az üzembe helyezés
 >    * A következőnek kellene itt szerepelnie: `arc-cicd-demo-src CI`.
 > 1. Futtassa újra a CI-folyamatot.
 
-Miután a sablon és a jegyzékfájl módosult a GitOps-adattárban, a CD-folyamat létrehoz egy véglegesítést, leküldést és egy leküldéses kérelem létrehozásához jóváhagyásra.
+Miután a sablon és a jegyzékfájl módosult a GitOps-adattárban, a CD-folyamat létrehoz egy véglegesítést, leküldést és jóváhagyásra vonatkozó leküldéses kérelem létrehozásához.
 1. Nyissa meg a feladat kimenetében megadott le `Create PR` pr-hivatkozást.
 1. Ellenőrizze a GitOps-adattár módosításait. A következőnek kell megjelennie:
    * A Helm-sablon nagy szintjének módosítása.
    * Alacsony szintű Kubernetes-jegyzékek, amelyek a célállapot mögöttes változásait mutatják. A Flux telepíti ezeket a jegyzékeket.
-1. Ha minden rendben van, hagyja jóvá és töltse ki a pr-t.
+1. Ha minden rendben van, hagyja jóvá és egészül ki a le pr-t.
 
 1. Néhány perc múlva a Flux felveszi a változást, és elindítja az üzembe helyezést.
 1. A port helyi továbbítása a használatával, és `kubectl` az alkalmazás megfelelő működése a következő használatával:
@@ -242,7 +241,7 @@ Miután a sablon és a jegyzékfájl módosult a GitOps-adattárban, a CD-folyam
 
 1. Tekintse meg az Azure Vote alkalmazást a böngészőben a következő: `http://localhost:8080/` .
 
-1. Szavazzon a kedvencekre, és készüljön fel az alkalmazás módosításaira.
+1. Szavazzon a kedvencekre, és készüljön fel néhány módosításra az alkalmazásban.
 
 ## <a name="set-up-environment-approvals"></a>Környezeti jóváhagyások beállítása
 Az alkalmazás üzembe helyezésekor nem csupán a kódot vagy a sablonokat módosíthatja, de akaratlan módon rossz állapotba is hagyhatja a fürtöt.
@@ -257,7 +256,7 @@ Ha a fejlesztői környezet az üzembe helyezés után felfed egy törést, ne �
 
 További részletekért lásd a Jóváhagyás és [ellenőrzések meghatározása oktatóanyagot.](/azure/devops/pipelines/process/approvals)
 
-A CD-folyamat következő futtatásakor a folyamat szünetel a GitOps PR létrehozása után. Ellenőrizze, hogy a módosítás megfelelően lett-e szinkronizálva, és megfelel-e az alapvető funkcióknak. Hagyja jóvá a folyamat ellenőrzésével, hogy a folyamat a következő környezetbe változott.
+A CD-folyamat következő futtatásakor a folyamat a GitOps pr létrehozása után szünetel. Ellenőrizze, hogy a módosítás megfelelően lett-e szinkronizálva, és megfelel-e az alapvető funkcióknak. Hagyja jóvá a folyamatból való ellenőrzést, hogy a folyamat a következő környezetbe változott.
 
 ## <a name="make-an-application-change"></a>Alkalmazás módosítása
 
@@ -270,14 +269,14 @@ Ezzel az alapkonfigurációval a fürtön az állapotot képviselő sablonok és
 3. Véglegesítés egy új ágban, leküldés, majd lekéréses kérelem létrehozása.
    * Ez a ci-/CD-életciklust el elindítani jellemző fejlesztői folyamat.
 
-## <a name="pr-validation-pipeline"></a>Pr-érvényesítési folyamat
+## <a name="pr-validation-pipeline"></a>Le pr-érvényesítési folyamat
 
-A le pr-folyamat a hibás változás elleni védelem első vonala. Az alkalmazáskódok szokásos minőségellenőrzése magában foglalja a lintinget és a statikus elemzést. A GitOps szempontjából ugyanakkora minőséget kell biztosítani az eredményül kapott infrastruktúra üzembe helyezéséhez.
+A le pr-folyamat a hibás változás elleni védelem első vonala. Az alkalmazáskódok általános minőségellenőrzése magában foglalja a lintinget és a statikus elemzést. A GitOps szempontjából ugyanakkora minőséget kell biztosítani az eredményül kapott infrastruktúra üzembe helyezéséhez.
 
 Az alkalmazás Dockerfile- és Helm-diagramjai az alkalmazáshoz hasonlóan használhatnak lintinget.
 
 A linting során előforduló hibák a következő tartományba esik:
-* Helytelenül formázott YAML-fájlok, a következőre:
+* Helytelenül formázott YAML-fájlok:
 * Ajánlott javaslatok, például az alkalmazás processzor- és memóriakorlátának beállítása.
 
 > [!NOTE]
@@ -298,12 +297,12 @@ A folyamat futásának befejezése után ön biztosította az alkalmazáskód é
 A ci-folyamat sikeres futtatása elindítja a CD-folyamatot az üzembe helyezési folyamat befejezéséhez. A CD-folyamat első üzembe helyezéséhez hasonlóan az egyes környezetekben is növekményesen fog üzembe helyezni. Ezúttal a folyamat megköveteli az egyes üzembe helyezési környezetek jóváhagyását.
 
 1. Hagyja jóvá a környezetben való `dev` üzembe helyezést.
-1. Miután a sablon és a jegyzékfájl módosult a GitOps-adattárban, a CD-folyamat létrehoz egy véglegesítést, lekküldést és egy leküldéses kérelem jóváhagyását.
+1. Miután a sablon és a jegyzékfájl módosult a GitOps-adattárban, a CD-folyamat létrehoz egy véglegesítést, leküldéses adatokat, és létrehoz egy leküldéses kérelem jóváhagyásra.
 1. Nyissa meg a feladatban megadott le pr-hivatkozást.
 1. Ellenőrizze a GitOps-adattár módosításait. A következőnek kell megjelennie:
    * Magas szintű Helm-sablonváltozások.
    * Alacsony szintű Kubernetes-jegyzékek, amelyek a célállapot mögöttes változásait mutatják.
-1. Ha minden rendben van, hagyja jóvá és töltse ki a pr-t.
+1. Ha minden rendben van, hagyja jóvá és egészül ki a le pr-t.
 1. Várjon, amíg az üzembe helyezés befejeződik.
 1. Alapszintű füsttesztként lépjen az alkalmazás oldalára, és ellenőrizze, hogy a szavazóalkalmazás most már megjeleníti-e a Tabulátorok és a Szóközök lapokat.
    * A port helyi továbbítása a használatával, és `kubectl` az alkalmazás megfelelő működése a következő használatával: `kubectl port-forward -n dev svc/azure-vote-front 8080:80`
@@ -333,7 +332,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy teljes CI/CD-munkafolyamatot állíthatott be, amely a DevOpsot az alkalmazásfejlesztéstől az üzembe helyezésig implementálja. Az alkalmazás módosításai automatikusan aktiválják az ellenőrzést és az üzembe helyezést manuális jóváhagyásokkal.
+Ebben az oktatóanyagban egy teljes CI/CD-munkafolyamatot állíthat be, amely a DevOpsot az alkalmazásfejlesztéstől az üzembe helyezésig implementálja. Az alkalmazás módosításai automatikusan aktiválják az ellenőrzést és az üzembe helyezést manuális jóváhagyásokkal.
 
 Ha többet szeretne megtudni a GitOpsról és az engedélyezett Kubernetes-konfigurációkról Azure Arc fogalmi cikkünk.
 

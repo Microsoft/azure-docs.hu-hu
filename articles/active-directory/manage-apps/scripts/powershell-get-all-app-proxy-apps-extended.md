@@ -1,9 +1,9 @@
 ---
-title: PowerShell-minta – alkalmazásproxy-alkalmazások részletes adatainak listázása
-description: PowerShell-példa, amely felsorolja az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást, valamint az alkalmazás AZONOSÍTÓját (AppId), a nevet (DisplayName), a külső URL-t (Alkalmazásazonosítójának), a belső URL-címet (InternalUrl) és a hitelesítési típust (ExternalAuthenticationType).
+title: PowerShell-minta – Bővített információ listázó alkalmazásproxy alkalmazásokról
+description: PowerShell-példa, amely felsorolja az Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazásokat, valamint az alkalmazásazonosítót (AppId), a nevet (DisplayName), a külső URL-címet (ExternalUrl), a belső URL-címet (InternalUrl) és a hitelesítési típust (ExternalAuthenticationType).
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ccd0c7be7fd0dd533028faa0dc2bbdad30d74c79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b3234a13a0e3fac760a899ce66e7faa7e7b642c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258693"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377361"
 ---
-# <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Az összes alkalmazásproxy-alkalmazás beolvasása és a kibővített információk listázása
+# <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Az összes alkalmazásproxy lekért alkalmazás és a kiterjesztett információk listája
 
-Ez a PowerShell-parancsfájl az összes Azure Active Directory (Azure AD) alkalmazásproxy alkalmazásával kapcsolatos információkat listázza, beleértve az alkalmazás AZONOSÍTÓját (AppId), a nevet (DisplayName), a külső URL-t (Alkalmazásazonosítójának), a belső URL-címet (InternalUrl), a hitelesítési típust (ExternalAuthenticationType), az egyszeri bejelentkezés módját és a további beállításokat.
+Ez a PowerShell-példaszkennelés felsorolja az összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazás adatait, beleértve az alkalmazásazonosítót (AppId), a nevet (DisplayName), a külső URL-címet (ExternalUrl), a belső URL-címet (InternalUrl), a hitelesítési típust (ExternalAuthenticationType), az SSO módot és a további beállításokat.
 
-A $ssoMode változó értékének módosítása egyszeri bejelentkezéses módban szűrt kimenetet tesz lehetővé. További részletek a szkriptben olvashatók.
+A kimeneti változó értékének $ssoMode lehetővé teszi a szűrt kimenetet SSO mód szerint. A további részletek a szkriptben vannak dokumentálva.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -30,7 +30,7 @@ A $ssoMode változó értékének módosítása egyszeri bejelentkezéses módba
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ehhez a mintához a [AzureAD v2 PowerShell szükséges a Graph modulhoz](/powershell/azure/active-directory/install-adv2) (AzureAD).
+Ehhez a mintához az [AzureAD V2 PowerShell for Graph modulra](/powershell/azure/active-directory/install-adv2) (AzureAD) van szükség.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,12 +40,12 @@ Ehhez a mintához a [AzureAD v2 PowerShell szükséges a Graph modulhoz](/powers
 
 | Parancs | Jegyzetek |
 |---|---|
-|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Egy egyszerű szolgáltatásnév beolvasása. |
-|[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Beolvas egy Azure AD-alkalmazást. |
-|[Get-AzureADApplicationProxyApplication](/powershell/module/azuread/get-azureadapplicationproxyapplication) | Az Application proxyhoz konfigurált alkalmazást kérdezi le az Azure AD-ben. |
+|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Lekért egy szolgáltatásnév. |
+|[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Lekért egy Azure AD-alkalmazást. |
+|[Get-AzureADApplicationProxyApplication](/powershell/module/azuread/get-azureadapplicationproxyapplication) | Lekér egy Azure AD-alkalmazásproxy konfigurált alkalmazást. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure AD PowerShell-modulról az [Azure ad PowerShell-modul áttekintése](/powershell/azure/active-directory/overview)című témakörben olvashat bővebben.
+Az Azure AD PowerShell-modullal kapcsolatos további információkért lásd: [Az Azure AD PowerShell-modul áttekintése.](/powershell/azure/active-directory/overview)
 
-További PowerShell-példák az alkalmazásproxy esetében: [Azure ad PowerShell-példák az azure ad Application proxy](../application-proxy-powershell-samples.md).
+További PowerShell-példák alkalmazásproxy Azure [AD PowerShell-példák az Azure AD alkalmazásproxy.](../application-proxy-powershell-samples.md)

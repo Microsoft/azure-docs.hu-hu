@@ -14,7 +14,7 @@
   items:
     - name: Saját környezet beállítása
       items:
-        - name: A bérlő AZONOSÍTÓjának megkeresése
+        - name: A bérlőazonosító megkeresi
           href: setup-azure-tenant-how-to.md
         - name: Saját Azure-előfizetés megkeresése
           href: setup-azure-subscription-how-to.md
@@ -26,7 +26,7 @@
           href: ../../cloud-shell/overview.md
         - name: Kapcsolódás a Media Services szolgáltatáshoz
           items:
-            - name: Kapcsolódás a REST és a Poster között
+            - name: Kapcsolódás a REST és a Postman segítségével
               href: setup-postman-rest-how-to.md
             - name: Csatlakozás Javával
               href: configure-connect-java-howto.md
@@ -71,7 +71,7 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
-        - name: Megbízható tár engedélyezése
+        - name: Megbízható tároló engedélyezése
           href: security-trusted-storage-rest-tutorial.md
         - name: Egy távoli fájl kódolása és streamelése REST használatával
           href: stream-files-tutorial-with-rest.md
@@ -120,7 +120,7 @@
         - name: Felügyelt identitások és Media Services
           displayName: content protection
           href: concept-managed-identities.md
-        - name: Megbízható tárterület
+        - name: Megbízható tároló
           href: concept-trusted-storage.md
         - name: Felhasználó által kezelt kulcsok
           href: concept-use-customer-managed-keys-byok.md
@@ -147,12 +147,12 @@
           href: encode-content-aware-concept.md
         - name: Fenntartott médiaegységek
           href: concept-media-reserved-units.md
-    - name: Elemzés és kivonás
+    - name: Elemzés és újrafésítés
       items:
         - name: Áttekintés
           href: analyze-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Arcok észlelése és kivonása (életlenítés)
+        - name: Arcok észlelése és kirekedés (elmosódás)
           href: analyze-face-redaction-concept.md
           displayName: 'analyze, redact, face, detect, presets, jobs, blur, faces, redaction'
     - name: Átalakítások és feladatok
@@ -222,19 +222,19 @@
       items:
         - name: Monitorozás az Azure Monitorral
           items:
-            - name: Figyelő Media Services
+            - name: Monitor Media Services
               href: monitoring/monitor-media-services.md
-            - name: Media Services adathivatkozás figyelése
+            - name: Az Media Services monitorozása – referencia
               href: monitoring/monitor-media-services-data-reference.md
-        - name: Figyelés Event Grid
+        - name: Figyelése Event Grid
           items:
             - name: Események az Event Griddel
               href: monitoring/reacting-to-media-services-events.md
             - name: Event Grid-sémák
               href: monitoring/media-services-event-schemas.md
-    - name: Kompatibilis játékosok
+    - name: Kompatibilis lejátszók
       items:
-        - name: Media Services médialejátszók
+        - name: Médialejátszók Media Services
           href: player-media-players-concept.md
     - name: Fejlesztés v3 API-kkal
       items:
@@ -243,8 +243,6 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Lapozás, szűrés, entitások rendezése'
           href: filter-order-page-entitites-how-to.md
-        - name: Azure RBAC-vel
-          href: security-rbac-concept.md
         - name: Hibakódok
           items:
             - name: Streamvégpont-hibakódok
@@ -263,7 +261,7 @@
       href: architecture-concept.md
     - name: Hibaelhárítás
       items:
-        - name: Kérdés gyűjteménye
+        - name: Kérdésgyűjtemény
           href: questions-collection.md
         - name: Hibakódok
           items:
@@ -278,27 +276,27 @@
     - name: Migrálási útmutató
       displayName: migration
       items:
-        - name: Áttelepítési útmutató – bevezetés
+        - name: A migrálási útmutató bemutatása
           href: migrate-v-2-v-3-migration-introduction.md
           displayName: migration
-        - name: 1. lépés – előnyök
+        - name: 1. lépés – Előnyök
           href: migrate-v-2-v-3-migration-benefits.md
           displayName: 'migration, benefits'
-        - name: 2. lépés – különbségek
+        - name: 2. lépés – Különbségek
           items:
             - name: API-hozzáférés
               href: migrate-v-2-v-3-differences-api-access.md
               displayName: 'migration, api'
-            - name: Szolgáltatások hiányosságainak
+            - name: Funkció hézagok
               href: migrate-v-2-v-3-differences-feature-gaps.md
               displayName: 'migration, features'
-            - name: Terminológia és entitások módosításai
+            - name: Terminológia és entitásváltozások
               href: migrate-v-2-v-3-differences-terminology.md
               displayName: 'migration, entity, api'
-        - name: 3. lépés – SDK-telepítés
+        - name: 3. lépés – AZ SDK beállítása
           href: migrate-v-2-v-3-migration-setup.md
           displayName: 'migration, SDK`'
-        - name: 4. lépés – forgatókönyv-alapú áttelepítési útmutató
+        - name: 4. lépés – Forgatókönyv-alapú migrálási útmutató
           items:
             - name: Encoding
               href: migrate-v-2-v-3-migration-scenario-based-encoding.md
@@ -312,7 +310,7 @@
             - name: Tartalomvédelem
               href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
               displayName: 'migration, content protection, DRM, digital rights management'
-            - name: Media szolgáltatás számára fenntartott egységek (MRU)
+            - name: Fenntartott médiaegységek (MRU-k)
               href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
               displayName: 'migration, media reserved units'
         - name: Minták összehasonlítása
@@ -320,11 +318,11 @@
           displayName: 'migration, samples'
 - name: Útmutatók
   items:
-    - name: Bérlő és előfizetés keresése
+    - name: Keresse meg a bérlőt és az előfizetést
       items:
-        - name: A bérlő AZONOSÍTÓjának megkeresése
+        - name: A bérlőazonosító megkeresi
           href: setup-azure-tenant-how-to.md
-        - name: Előfizetés AZONOSÍTÓjának megkeresése
+        - name: Az előfizetés azonosítójának megkerese
           href: setup-azure-subscription-how-to.md
     - name: Adategységek létrehozása és adathordozók feltöltése
       items:
@@ -332,7 +330,7 @@
           href: asset-create-asset-how-to.md
         - name: Adathordozók feltöltése
           href: asset-upload-media-how-to.md
-        - name: Több Storage-fiók kezelése
+        - name: Több tárfiók kezelése
           href: storage-managing-multiple-storage-accounts-how-to.md
     - name: Átalakítások létrehozása
       items:
@@ -340,30 +338,30 @@
           href: transform-create-transform-how-to.md
         - name: Alapszintű hangátalakítás létrehozása a REST használatával
           href: transform-create-basic-audio-how-to.md
-        - name: Miniatűr sprite létrehozása
+        - name: Miniatűr-sprite-fájlok létrehozása
           href: transform-create-thumbnail-sprites-how-to.md
-        - name: Két vagy több videofájl összefűzése a .NET-tel
+        - name: Két vagy több videofájl összefűzése a .NET-en
           href: transform-stitch-how-to.md
-        - name: Videó .NET-fájljának kivágása
+        - name: Videó alklipre (.NET)
           href: transform-subclip-video-dotnet-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: Videó kivágása – REST
+        - name: Video REST alklipekbe helyezése
           href: transform-subclip-video-rest-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: A kódoló-előállítók testreszabása .NET
+        - name: Kódoló előzetes beállításkészletének testreszabása .NET
           href: transform-custom-presets-how-to.md
-        - name: Átfedéses átalakító .NET létrehozása
+        - name: Átfedő átalakítás létrehozása .NET-hez
           href: transform-create-overlay-how-to.md
-        - name: Miniatűrök .NET-alapú készítése
+        - name: Miniatűrök létrehozása .NET
           href: transform-generate-thumbnails-dotnet-how-to.md
-        - name: Videók körülvágása a .NET-tel
+        - name: Videók körülvágása a .NET-fel
           href: crop-howto.md
-        - name: Kódoló-előállítók testreszabása parancssori felület
+        - name: Kódoló előzetes beállítási felületének testreszabása
           href: transform-custom-preset-cli-how-to.md
-        - name: A kódoló-előállítók testreszabása REST
+        - name: Kódoló előzetes beállításkészletének testreszabása REST
           displayName: 'encode, encoding, custom, transform'
           href: transform-custom-preset-rest-how-to.md
-        - name: Miniatűrök kikészítése – REST
+        - name: Miniatűrök létrehozása REST
           href: transform-generate-thumbnails-rest-how-to.md
         - name: copyAllBitrateNonInterleaved átalakítás létrehozása a REST használatával
           href: transform-create-copyallbitratenoninterleaved-how-to.md
@@ -371,7 +369,7 @@
           href: transform-create-copy-video-audio-how-to.md
     - name: Feladatok létrehozása
       items:
-        - name: Feladatok létrehozása a parancssori felülettel
+        - name: Feladatok létrehozása a CLI-val
           href: job-create-cli-how-to.md
         - name: Feladatbemenet létrehozása helyi fájllal és .NET-tel
           displayName: upload
@@ -380,7 +378,7 @@
           href: job-multiple-transform-outputs-how-to.md
         - name: HTTPS mint feladatbemenet
           href: job-input-from-http-how-to.md
-    - name: A Media szolgáltatás számára fenntartott egységek méretezése parancssori felület
+    - name: Fenntartott médiaegységek méretezése – CLI
       href: media-reserved-units-cli-how-to.md
     - name: Élő stream
       items:
@@ -416,7 +414,7 @@
       items:
         - name: .NET-tel
           items:
-            - name: Azure Functions .NET használata
+            - name: A Azure Functions .NET használata
               href: integrate-azure-functions-dotnet-how-to.md
     - name: Szűrők létrehozása
       items:
@@ -443,8 +441,18 @@
           href: asset-publish-cli-how-to.md
     - name: Biztonság
       items:
-        - name: Roll Storage-hozzáférési kulcsok
+        - name: Azure RBAC-vel
+          href: security-rbac-concept.md
+        - name: Tárelérési kulcsok roll (roll storage access keys) (Tárelérés
           href: security-storage-roll-access-keys-how-to.md
+        - name: Megbízható tároló engedélyezése
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Azure Media PlayerPass hitelesítési jogkivonatok
+          href: security-pass-authentication-tokens-how-to.md
+        - name: Megbízható tároló engedélyezése
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Felhasználó által kezelt kulcsok REST API-val
+          href: security-customer-managed-keys-rest-postman-tutorial.md
     - name: Médialejátszók használata
       items:
         - name: Az Azure Media Player teljes telepítése
@@ -453,7 +461,7 @@
           href: player-how-to-video-js-player.md
         - name: A Shaka videólejátszó használata
           href: player-shaka-player-how-to.md
-        - name: Hitelesítési tokenek továbbítása
+        - name: Hitelesítési jogkivonatok pass-pass
           href: security-pass-authentication-tokens-how-to.md
 - name: Referencia
   items:

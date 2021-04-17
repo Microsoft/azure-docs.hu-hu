@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8942262c2e02670d57b1db324eb154dcc38f00f8
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575394"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589295"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Az Azure Digital Twinsbeli ikermodellek ismertetése
 
@@ -36,36 +36,36 @@ A cikk hátralévő részében összefoglaljuk, hogyan használható a Azure Dig
 
 Nem minden DTDL-t használt szolgáltatás valósítja meg pontosan a DTDL ugyanazon funkcióit. Az IoT-Plug and Play például nem használja a gráfok DTDL-funkcióit, Azure Digital Twins jelenleg nem implementálja a DTDL-parancsokat. 
 
-Ahhoz, hogy egy DTDL-modell kompatibilis legyen a Azure Digital Twins, meg kell felelnie a következő követelményeknek:
+Ahhoz, hogy egy DTDL-modell kompatibilis legyen a Azure Digital Twins, az alábbi követelményeknek kell megfelelnie:
 
-* A modell összes legfelső szintű DTDL-elemének típusúnak kell *lennie.* Ennek az az oka Azure Digital Twins hogy a modell API-k JSON-objektumokat fogadhatnak, amelyek egy felületet vagy egy felülettömböt képviselnek. Ennek eredményeképpen más DTDL-elemtípusok nem engedélyezettek a legfelső szinten.
+* A modell összes legfelső szintű DTDL-elemének típusúnak kell *lennie.* Ennek az az oka Azure Digital Twins hogy a modell API-k JSON-objektumokat fogadhatnak, amelyek egy felületet vagy interfésztömböt képviselnek. Ennek eredményeképpen más DTDL-elemtípusok nem engedélyezettek a legfelső szinten.
 * A DTDL Azure Digital Twins nem definiálhat *parancsokat.*
-* Azure Digital Twins az összetevők beágyazása csak egyetlen szintet tesz lehetővé. Ez azt jelenti, hogy az összetevőként használt interfészek nem tartalmaznak összetevőket. 
+* Azure Digital Twins az összetevők beágyazása csak egyetlen szintet tesz lehetővé. Ez azt jelenti, hogy az összetevőként használt interfészek nem tartalmaznak saját összetevőket. 
 * A felületek nem definiálhatóak beágyazottan más DTDL-felületeken belül; ezeket külön felső szintű entitásokként kell definiálni, saját azonosítójukkal. Ha egy másik felület ezt a felületet összetevőként vagy öröklés útján szeretné tartalmazni, hivatkozhat az azonosítójára.
 
-Azure Digital Twins a tulajdonságok vagy kapcsolatok `writable` attribútumát sem figyeli meg. Bár ez a DTDL-specifikációk szerint is beállítható, a DTDL-specifikációk nem használják ezt az Azure Digital Twins. Ehelyett ezeket a külső ügyfelek mindig írhatóként kezelik, amelyek általános írási engedélyekkel rendelkezik a Azure Digital Twins számára.
+Azure Digital Twins tulajdonságok és kapcsolatok attribútumát sem `writable` figyeli meg. Bár ez a DTDL-specifikációk szerint is beállítható, a DTDL-specifikációk nem használják ezt az Azure Digital Twins. Ehelyett ezeket a külső ügyfelek mindig írhatóként kezelik, amelyek általános írási engedéllyel Azure Digital Twins szolgáltatáshoz.
 
 ## <a name="elements-of-a-model"></a>A modell elemei
 
-A modelldefiníción belül a legfelső szintű kódelem egy **interfész.** Ez magában foglalja a teljes modellt, és a modell többi része az interfészen belül van definiálva. 
+A modelldefiníción belül a legfelső szintű kódelem egy **felület.** Ez magában foglalja a teljes modellt, és a modell többi része az interfészen belül van definiálva. 
 
-A DTDL-modell felülete nulla, egy vagy több mezőt tartalmazhat az alábbi mezők közül:
+A DTDL-modellfelületek az alábbi mezők közül nulla, egy vagy több mezőt tartalmazhatnak:
 * **Tulajdonság** – A tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (sok objektumorientált programozási nyelv tulajdonságaihoz hasonlók). A tulajdonságok rendelkeznek háttértárhellyel, és bármikor olvashatók.
-* **Telemetria** – A telemetriamezők méréseket vagy eseményeket képviselnek, és gyakran használatosak az eszközérzékelők mérései leírására. A tulajdonságokkal ellentétben a telemetria nem digitális ikereszközben van tárolva; időkorrekta adatesemények sorozata, amelyek a bekövetkeztükkor kezelhetők. A tulajdonság és a telemetria közötti különbségekkel kapcsolatos további információkért tekintse meg az alábbi [*Tulajdonságok és telemetria*](#properties-vs-telemetry) szakaszt.
-* **Összetevő** – Az összetevők lehetővé teszik, hogy a modellfelületet más felületek szerelvényeként építse fel, ha szeretné. Ilyen összetevő például a *frontCamera* felület (és egy másik *backCamera* összetevő-interfész), amely egy telefon modelljének *definiálása során használatos.* Először úgy kell definiálni a *frontCamera* felületét, mintha saját modell lenne, majd hivatkozhat rá a *Phone meghatározásakor.*
+* **Telemetria** – A telemetriamezők méréseket vagy eseményeket képviselnek, és gyakran használatosak az eszközérzékelők mérései leírására. A tulajdonságokkal ellentétben a telemetria nem digitális ikereszközben van tárolva; ez időhoz kötött adatesemények sorozata, amelyek a bekövetkeztükkor kezelhetők. A tulajdonság és a telemetria közötti különbségekkel kapcsolatos további információkért lásd az alábbi [*Tulajdonságok és telemetria*](#properties-vs-telemetry) szakaszt.
+* **Összetevő** – Az összetevők lehetővé teszik, hogy a modell felületét más felületek szerelvényeként építse fel, ha szeretné. Ilyen összetevő például a *frontCamera* felület (és egy másik *backCamera* összetevő-interfész), amely a modell telefonhoz való *definiálása során használatos.* Először úgy kell definiálni egy felületet a *frontCamera* számára, mintha saját modell lenne, majd hivatkozhat rá a *Phone meghatározásakor.*
 
-    Egy összetevővel leírható valami, ami a megoldás szerves része, de nincs szükség külön identitásra, és nem kell külön létrehozni, törölni vagy átrendezni az ikergráfban. Ha azt szeretné, hogy az entitások egymástól független létezik-e az ikergráfban, azokat különböző modellek különálló, kapcsolatok által összekapcsolt digitális ikereszközeiként ábrázolja *(lásd* a következő ábrát).
+    Egy összetevővel leírható valami, ami a megoldás szerves részét képezi, de nincs szükség külön identitásra, és nem kell külön létrehozni, törölni vagy átrendezni az ikergráfban. Ha azt szeretné, hogy az entitások független létezik-e az ikergráfban, azokat különböző modellek különálló, kapcsolatok által összekapcsolt digitális ikereszközeiként ábrázolja *(lásd* a következő felsorolást).
     
     >[!TIP] 
-    >Az összetevők a szervezéshez is használhatók, így a modellfelületen belül csoportosíthatóak a kapcsolódó tulajdonságok. Ebben az esetben az egyes összetevők a felületen belüli névtérként vagy "mappáként" gondolnak.
-* **Kapcsolat** – A kapcsolatokkal ábrázolhatja, hogyan lehet egy digitális iker egy másik digitális ikereszközben részt venni. A kapcsolatok különböző szemantikai jelentésekkel is bírnak, például tartalmaznak *("padló* tartalmaz helyiséget"), *cools* ("hvac cools room"), *isBilledTo* ("a szoba a felhasználónak van számlázva") stb. A kapcsolatok lehetővé teszik, hogy a megoldás gráfot adjon a relációban található entitásokhoz.
+    >Az összetevők a szervezéshez is használhatók, így a modellfelületen belül csoportosíthatóak a kapcsolódó tulajdonságok. Ebben az esetben az egyes összetevőkre úgy is gondolhat, mint egy névtérre vagy egy "mappára" a felületen belül.
+* **Kapcsolat** – A kapcsolatokkal ábrázolhatja, hogyan lehet egy digitális iker egy másik digitális ikereszközben részt venni. A kapcsolatok különböző szemantikai jelentéseket képviselnek, például *tartalmaznak* ("padló tartalmaz helyiséget"), *cools* ("hvac cools room"), *isBilledTo* ("a szoba a felhasználónak van számlázva") stb. A kapcsolatok lehetővé teszik, hogy a megoldás gráfot biztosítson a relációban található entitások számára. A kapcsolatok saját [tulajdonságokkal](#properties-of-relationships) is rendelkeznek.
 
 > [!NOTE]
-> A [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) specifikációja a parancsokat is **meghatározza,** amelyek a digitális ikeren végrehajtható metódusok (például egy alaphelyzetbe állítási parancs vagy egy ventilátor be- vagy kikapcsolása). A *parancsok azonban jelenleg nem támogatottak a Azure Digital Twins.*
+> A [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) specifikációja a parancsokat is **meghatározza,** amelyek digitális ikeren végrehajtható metódusok (például egy alaphelyzetbe állítási parancs, vagy egy ventilátor be- vagy kikapcsolása). A *parancsok azonban jelenleg nem támogatottak a Azure Digital Twins.*
 
 ### <a name="properties-vs-telemetry"></a>Tulajdonságok és telemetria
 
-Az alábbi útmutató további útmutatást nyújt a  DTDL-tulajdonság- és **telemetriamezők** megkülönböztetésére a Azure Digital Twins.
+Itt található néhány további útmutató a DTDL  tulajdonság- és **telemetriamezők** megkülönböztetésére a Azure Digital Twins.
 
 A tulajdonságok és a telemetria közötti különbség a Azure Digital Twins modellek esetében a következő:
 * **A tulajdonságoknak** háttértárolóval kell rendelkeznek. Ez azt jelenti, hogy egy tulajdonságot bármikor beolvashat, és lekérheti annak értékét. Ha a tulajdonság írható, akkor a tulajdonságban is tárolhat értéket.  
@@ -81,9 +81,13 @@ A telemetria és a tulajdonságok gyakran együtt kezelik az eszközökről bej�
 
 A telemetriai eseményeket a Azure Digital Twins API-ból is közzéteheti. Mint más telemetriához, ez is egy rövid életű esemény, amelyhez a figyelőnek kell kezelnie.
 
+#### <a name="properties-of-relationships"></a>Kapcsolatok tulajdonságai
+
+A DTDL azt is lehetővé **teszi,** hogy a kapcsolatok saját tulajdonságokkal rendelkeznek. Amikor egy DTDL-modellben definiál egy kapcsolatot, a kapcsolat saját mezővel is rendelkezik, amelyben egyéni tulajdonságokat definiálhat a `properties` kapcsolatspecifikus állapot leírására.
+
 ## <a name="model-inheritance"></a>Modellöröklés
 
-Előfordulhat, hogy tovább szeretne specializálni egy modellt. Hasznos lehet például, ha van egy általános modellterme, és a ConferenceRoom és a *ConferenceRoom* speciális *változatai.* A specializáció kifejezéséhez a DTDL támogatja az öröklést: a felületek egy vagy több más felülettől örökölhetnek. 
+Néha előfordulhat, hogy tovább szeretné specializálni a modellt. Hasznos lehet például, ha van egy általános modellterme, és a ConferenceRoom és a *ConferenceRoom* speciális *változatai.* A specializáció kifejezéséhez a DTDL támogatja az öröklést: a felületek egy vagy több más felülettől örökölhetnek. 
 
 Az alábbi példa a korábbi DTDL-példából származó *Planet* modellt egy nagyobb *CelestialBody* modell altípusának képzeli el. Először a "szülő" modell van definiálva, majd a "gyermek" modell épül rá a mező `extends` használatával.
 
@@ -93,7 +97,7 @@ Ebben a példában a *CelestialBody* egy nevet, egy tömeget és egy hőmérsék
 
 Az öröklés alkalmazása után a kibővítő felület a teljes öröklési lánc összes tulajdonságát elérhetővé teszi.
 
-A kibővíthető felület nem módosíthatja a szülőfelületek definícióit; csak hozzáadhatja őket. A szülőillesztőkben már definiált képességeket sem tudja újradefiniálni (még akkor sem, ha a képességek ugyanazokként vannak definiálva). Ha például a szülőfelület egy tulajdonság tömegét definiálja, a kibővíthető felület nem tartalmazhat tömeges deklarációt, még akkor sem, ha `double` egyben   `double` .
+A kibővíthető felület nem módosíthatja a szülőfelületek definícióit; csak hozzáadhatja őket. A szülőfelületein már definiált képességeket sem tudja újradefiniálni (még akkor sem, ha a képességek ugyanazokként vannak definiálva). Ha például egy szülőfelület definiál egy tulajdonság tömegét, a kibővíthető felület nem tartalmazhatja a tömeges deklarációját, még akkor sem, ha `double` az is   `double` .
 
 ## <a name="model-code"></a>Modellkód
 
@@ -101,9 +105,9 @@ Az ikermodellek bármilyen szövegszerkesztőben megírhatóak. A DTDL nyelv a J
 
 ### <a name="possible-schemas"></a>Lehetséges sémák
 
-A DTDL-nek  megfelelően a Tulajdonság és *Telemetria* attribútumok sémája standard primitív típusokból ( , , és ) és más típusokból is lehet, például és `integer` `double` `string` `Boolean` `DateTime` `Duration` . 
+A DTDL-nek megfelelően a *Tulajdonság* és *a Telemetria* attribútum sémája standard primitív típusba ( , , és ) és egyéb típusokba, például és típusúak is `integer` `double` `string` `Boolean` `DateTime` `Duration` lehet. 
 
-A primitív típusok mellett a *Tulajdonság és* *a Telemetria* mező is a következő összetett típusokkal is lehet:
+A primitív típusok mellett a *Tulajdonság és* a *Telemetria* mező is tartalmazhatja az alábbi összetett típusokat:
 * `Object`
 * `Map`
 * `Enum`
@@ -129,11 +133,11 @@ A modell mezői a következőek:
 | `contents` | Itt az összes többi interfészadatot attribútumdefiníciók tömbjeként helyezzük el. Minden attribútumnak meg kell adnia egy `@type` ( tulajdonságot, *telemetriát,* parancsot,  kapcsolatot vagy összetevőt) az adott interfészinformáció azonosításához, majd a tényleges attribútumot meghatározó tulajdonságokat (például és tulajdonság definiálását). `name` `schema`  |
 
 > [!NOTE]
-> Vegye figyelembe, hogy az összetevő felület ( ebben a példában a *Crater)* ugyanabban a tömbben van definiálva, mint az azt használó felület (*Planet*). Az összetevőket így kell definiálni az API-hívásokban, hogy a felület megtalálható legyen.
+> Vegye figyelembe, hogy az összetevőfelület ( ebben a példában *a Crater)* ugyanabban a tömbben van definiálva, mint az azt használó felület (*Planet*). Az összetevőket így kell definiálni az API-hívásokban, hogy a felület megtalálható legyen.
 
-## <a name="best-practices-for-designing-models"></a>Ajánlott eljárások a modellek tervezéshez
+## <a name="best-practices-for-designing-models"></a>Ajánlott eljárások modellek tervezéshez
 
-A környezetben az entitásokat tükröző modellek tervezése során hasznos lehet [](concepts-query-language.md) előretekolni, és megfontolni a tervezés lekérdezési következményeit. A tulajdonságokat úgy kell tervezni, hogy elkerülhetők a gráfbejárásból származó nagy eredményhalmazok. Emellett olyan kapcsolatokat is modellehet, amelyekre egyetlen lekérdezésben egyszintű kapcsolatként kell választ adni.
+A környezetben az entitásokat tükröző modellek tervezése során hasznos lehet [](concepts-query-language.md) előre látni és megfontolni a tervezés lekérdezésre gyakorolt hatásait. A tulajdonságokat úgy kell tervezni, hogy elkerülhetők a gráfbejárásból származó nagy eredményhalmazok. Emellett olyan kapcsolatokat is modellehet, amelyekre egyetlen lekérdezésben egyszintű kapcsolatként kell választ adni.
 
 ### <a name="validating-models"></a>Modellek validálása
 
@@ -157,7 +161,7 @@ Ha azonban sok modellt kell feltöltenie – vagy ha sok függősége van, amely
 
 _**Modellek vizualizációja**_
 
-Miután feltöltötte a modelleket a Azure Digital Twins-példányba, megtekintheti a modelleket a Azure Digital Twins-példányban, beleértve az öröklési és modellkapcsolatokat is, a [**Azure Digital Twins Model Visualizer használatával.**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) Ez a minta jelenleg piszkozat állapotban van. Arra bátorítjuk a Digital Twins fejlesztői közösségét, hogy bővítsen ki és járuljon hozzá a mintához. 
+Miután feltöltötte a modelleket a Azure Digital Twins-példányba, megtekintheti a modelleket a Azure Digital Twins-példányban, beleértve az öröklési és modellkapcsolatokat is, a [**Azure Digital Twins Model Visualizer használatával.**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) Ez a minta jelenleg vázlat állapotban van. Arra bátorítjuk a Digital Twins fejlesztői közösségét, hogy bővítsen ki és járuljon hozzá a mintához. 
 
 ## <a name="next-steps"></a>Következő lépések
 

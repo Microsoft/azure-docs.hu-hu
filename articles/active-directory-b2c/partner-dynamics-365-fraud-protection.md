@@ -1,7 +1,7 @@
 ---
-title: Oktatóanyag a Azure Active Directory B2C konfigurálásához a Microsoft Dynamics 365 csalások elleni védelemmel
+title: 'Oktatóanyag: Azure Active Directory B2C Microsoft Dynamics 365 Fraud Protection segítségével'
 titleSuffix: Azure AD B2C
-description: Oktatóanyag a Azure Active Directory B2C konfigurálásához a Microsoft Dynamics 365 csalások elleni védelemmel a kockázatos és csalárd fiókok azonosításához
+description: 'Oktatóanyag: a Azure Active Directory B2C a Microsoft Dynamics 365 Fraud Protection segítségével a kockázatos és rosszindulatú fiókok azonosításához'
 services: active-directory-b2c
 author: gargi-sinha
 manager: martinco
@@ -11,177 +11,177 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258077"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587816"
 ---
-# <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: a Microsoft Dynamics 365 csalások elleni védelem konfigurálása Azure Active Directory B2C
+# <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: A Microsoft Dynamics 365 Fraud Protection konfigurálása Azure Active Directory B2C
 
-Ebben a példában útmutatást adunk a [Microsoft Dynamics 365 csalások elleni védelem](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) a Azure Active Directory (ad) B2C-vel való integrálásához.
+Ebben a minta oktatóanyagban útmutatást nyújtunk a [Microsoft Dynamics 365 Fraud Protection](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) és az Azure Active Directory (AD) B2C integrálásához.
 
-A Microsoft DFP lehetővé teszi az ügyfeleknek, hogy felmérjék, hogy az új fiókok létrehozására és az ügyfél ökoszisztémába való bejelentkezésre tett kísérletek kockázata csalárd-e. A Microsoft DFP Assessment segítségével az ügyfél blokkolhatja vagy megkérdőjelezheti a gyanús kísérleteket új hamis fiókok létrehozásához vagy a meglévő fiókok megtámadásához. A fiókok védelme magában foglalja a mesterséges intelligencia által felhatalmazott eszközök ujjlenyomatát, API-kat a valós idejű kockázatértékelés, a szabályok és a lista számára a kockázati stratégia optimalizálásához az ügyfél üzleti igényei szerint, valamint egy scorecardot, amely a csalások elleni védelem hatékonyságát és az ügyfél ökoszisztémájában felmerülő trendeket figyeli.
+A Microsoft DFP lehetővé teszi az ügyfelek számára annak kiértékelését, hogy az új fiókok létrehozására tett kísérletek és az ügyfél ökoszisztémába való bejelentkezési kísérletének kockázata csalárd-e. A Microsoft DFP-értékelés segítségével az ügyfél blokkolhatja vagy megtámadhatja az új hamis fiókok létrehozására vagy a meglévő fiókok feltörésére tett gyanús kísérleteket. A fiókvédelem magában foglalja a mesterséges intelligenciával védett eszköz-ujjlenyomatkezelést, a valós idejű kockázatfelméréshez szükséges API-kat, a szabályokat és a listára vonatkozó felhasználói élményt a kockázatstratégia az ügyfél üzleti igényeinek megfelelően való optimalizálásához, valamint egy mutatószámrendszert a csalás elleni védelem hatékonyságának és trendjeinek figyelése érdekében az ügyfél ökoszisztémájában.
 
-Ebben a példában a Microsoft DFP fiók-védelmi funkcióit egy Azure AD B2C felhasználói folyamattal integráljuk. A szolgáltatás külsőleg ujjlenyomatot küld minden bejelentkezéskor, vagy ha a múltbeli vagy a gyanús viselkedést is figyeli. Azure AD B2C meghívja a Microsoft DFP döntési végpontját, amely az azonosított felhasználó összes múltbeli és aktuális viselkedésén alapuló eredményt ad vissza, valamint a Microsoft DFP szolgáltatásban megadott egyéni szabályokat is. Azure AD B2C az eredmény alapján jóváhagyja a jóváhagyást, és ugyanezt a Microsoft DFP-nek adja vissza.
+Ebben a példában a Microsoft DFP fiókvédelmi funkcióit integráljuk egy Azure AD B2C folyamattal. A szolgáltatás minden bejelentkezési vagy bejelentkezési kísérlet után ujjlenyomattal fog ujjlenyomatot venni, és minden múltbeli vagy gyanús viselkedést figyel. Azure AD B2C egy döntési végpontot hív meg a Microsoft DFP-ről, amely az azonosított felhasználó összes múltbeli és jelenlegi viselkedése, valamint a Microsoft DFP szolgáltatásban megadott egyéni szabályok alapján ad vissza eredményt. Azure AD B2C az eredmény alapján hoz egy jóváhagyási döntést, és ugyanezt továbbítja a Microsoft DFP-nek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következőkre lesz szüksége:
+A első lépésekhez a következőre lesz szüksége:
 
-- Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+- Azure-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
 
-- [Azure ad B2C bérlő](./tutorial-create-tenant.md). A bérlő az Azure-előfizetéshez van csatolva.
+- Egy [Azure AD B2C bérlő.](./tutorial-create-tenant.md) A bérlő az Azure-előfizetéséhez van kapcsolva.
 
-- Microsoft DFP- [előfizetés](https://dynamics.microsoft.com/pricing/#Sales)beszerzése. Egy [próbaverziós ügyfélszoftvert](https://dynamics.microsoft.com/ai/fraud-protection/signin/?RU=https%3A%2F%2Fdfp.microsoft.com%2Fsignin) is beállíthat.
+- Szerezze be a Microsoft [DFP-előfizetést.](https://dynamics.microsoft.com/pricing/#Sales) A próbaverziót [is beállíthatja.](https://dynamics.microsoft.com/ai/fraud-protection/signin/?RU=https%3A%2F%2Fdfp.microsoft.com%2Fsignin)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 A Microsoft DFP-integráció a következő összetevőket tartalmazza:
 
-- **Azure ad B2C bérlő**: hitelesíti a felhasználót, és a Microsoft DFP-ügyfélként működik. Az ujjlenyomat-kezelési parancsfájlt tartalmaz, amely minden olyan felhasználó azonosítási és diagnosztikai adatait gyűjti, amely egy célként megadott házirendet hajt végre. A későbbiekben blokkolja vagy észleli a bejelentkezést vagy a regisztrálási kísérleteket, ha a Microsoft DFP gyanúsnak találja őket.
+- **Azure AD B2C bérlő:** Hitelesíti a felhasználót, és a Microsoft DFP ügyfeleként működik. Ujjlenyomat-parancsfájlt futtat, amely a célként megadott szabályzatot végző összes felhasználó azonosítási és diagnosztikai adatait gyűjti. A későbbiekben letiltja vagy kihívást jelent a bejelentkezési vagy bejelentkezési kísérletek, ha a Microsoft DFP gyanúsnak találja őket.
 
-- **Egyéni app Service**: egy webalkalmazás, amely két célt szolgál.
+- **Egyéni app service:** Egy webalkalmazás, amely két célt szolgál.
 
-  - Az identitási élmény keretrendszere felhasználói felületén használható HTML-lapokat szolgál ki. A Microsoft Dynamics 365 ujjlenyomat-előkészítési parancsfájljának beágyazásához felelős.
+  - A felhasználói felületéhez Identity Experience Framework HTML-oldalakat szolgál ki. A Microsoft Dynamics 365 ujjlenyomat-parancsfájl beágyazásáért felelős.
 
-  - Egy olyan REST-végpontokkal rendelkező API-vezérlő, amely a Microsoft DFP-t csatlakoztatja Azure AD B2Choz. Kezeli az adatfeldolgozást, a struktúrát és a mindkettő biztonsági követelményeit.
+  - EGY RESTful-végpontokat használó API-vezérlő, amely összekapcsolja a Microsoft DFP-t a Azure AD B2C. Kezeli az adatfeldolgozást, a struktúrát, és mindkét biztonsági követelménynek megfelel.
 
-- **Microsoft DFP ujjlenyomat-kezelési szolgáltatás**: dinamikusan beágyazott parancsfájl, amely naplózza az eszköz telemetria és az önérvényesített felhasználói adatokat, hogy egyedi módon azonosítható ujjlenyomatot hozzon létre a felhasználó számára a döntéshozatali folyamat későbbi részében való használatra.
+- **Microsoft DFP** ujjlenyomat-készítés szolgáltatás: Dinamikusan beágyazott parancsfájl, amely az eszköz telemetriai adatait és az önkiszolgáló felhasználói adatokat naplózza egy egyedi azonosításra alkalmas ujjlenyomat létrehozásához, hogy a felhasználó később használva legyen a döntéshozatali folyamatban.
 
-- **Microsoft DFP API-végpontok**: megadja a döntés eredményét, és elfogad egy végső állapotot, amely az ügyfélalkalmazás által végrehajtott műveletet tükrözi. A Azure AD B2C nem kommunikál a végpontokkal közvetlenül a különböző biztonsági és API-adattartalom-követelmények miatt, hanem közbensőként használja az App Service-t.
+- **Microsoft DFP API-végpontok:** A döntés eredményét biztosítja, és az ügyfélalkalmazás által végzett műveletet tükröző végső állapotot fogad el. Azure AD B2C nem kommunikál közvetlenül a végpontokkal a különböző biztonsági és API-hasznos adatokra vonatkozó követelmények miatt, hanem köztesként használja az App Service-t.
 
-A következő architektúra-diagram a megvalósítást mutatja be.
+Az alábbi architektúradiagram az implementációt mutatja be.
 
-![A kép a Microsoft dynamics365 csalások elleni védelmi architektúra diagramját mutatja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
+![A kép a microsoft dynamics365 csalás elleni védelem architektúráját ábrázoló diagramot ábrázolja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
 |Lépés | Description |
 |:-----| :-----------|
-| 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C felhasználói attribútumokat gyűjt.
-| 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
-| 3. | A középső rétegbeli API gyűjti a felhasználói attribútumokat, és átalakítja a Microsoft DFP API által felhasznált formátumba. Ezt követően küldje el a Microsoft DFP API-nak.
-| 4. | Miután a Microsoft DFP API felhasználta az adatokat, és feldolgozza azt, visszaadja az eredményt a középső rétegbeli API-nak.
-| 5. | A középső rétegbeli API feldolgozza az adatokat, és visszaküldi a kapcsolódó információkat a Azure AD B2Cba.
-| 6. | Azure AD B2C adatokat kap vissza a középső rétegbeli API-ból. Ha hibát jelez, hibaüzenet jelenik meg a felhasználó számára. Ha sikeres választ mutat, a rendszer hitelesíti a felhasználót, és beírja a könyvtárba.
+| 1. | A felhasználó egy bejelentkezési oldalra érkezik. A felhasználók a Regisztráció lehetőséget választva létrehoznak egy új fiókot, és adatokat írnak be az oldalra. Azure AD B2C gyűjti a felhasználói attribútumokat.
+| 2. | Azure AD B2C a középső réteg API-ját, és átadja a felhasználói attribútumokat.
+| 3. | A középső réteg API-ja összegyűjti a felhasználói attribútumokat, és a Microsoft DFP API által használható formátumba alakítja át őket. Ezután elküldi a Microsoft DFP API-nak.
+| 4. | Miután a Microsoft DFP API feldolgozza és feldolgozza az információkat, visszaadja az eredményt a középső réteg API-jának.
+| 5. | A középső réteg API feldolgozza az információkat, és visszaküldi a releváns információkat a Azure AD B2C.
+| 6. | Azure AD B2C a középső réteg API-tól kap információt. Ha hibaválaszt jelenít meg, hibaüzenet jelenik meg a felhasználó számára. Ha sikeres választ ad, a rendszer hitelesíti a felhasználót, és beírja a címtárba.
 
 ## <a name="set-up-the-solution"></a>A megoldás beállítása
 
-1. [Hozzon létre egy Facebook-alkalmazást](./identity-provider-facebook.md#create-a-facebook-application) , amely lehetővé teszi, hogy az összevonás Azure ad B2C.
-2. [Adja hozzá a létrehozott Facebook-titkot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) identitási élmény keretrendszerének kulcsaként.
+1. [Hozzon létre egy Olyan](./identity-provider-facebook.md#create-a-facebook-application) Facebook-alkalmazást, amely engedélyezi az összevonást Azure AD B2C.
+2. [Adja hozzá a létrehozott Facebook-titkos](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) kulcsot Identity Experience Framework szabályzatkulcsként.
 
-## <a name="configure-your-application-under-microsoft-dfp"></a>Az alkalmazás konfigurálása a Microsoft DFP-ban
+## <a name="configure-your-application-under-microsoft-dfp"></a>Az alkalmazás konfigurálása a Microsoft DFP-ben
 
-[Állítsa be az Azure ad-bérlőt](/dynamics365/fraud-protection/integrate-real-time-api) a Microsoft DFP használatára.
+[Állítsa be az Azure AD-bérlőt](/dynamics365/fraud-protection/integrate-real-time-api) a Microsoft DFP használatára.
 
 ## <a name="deploy-to-the-web-application"></a>Üzembe helyezés a webalkalmazásban
 
-### <a name="implement-microsoft-dfp-service-fingerprinting"></a>A Microsoft DFP szolgáltatás ujjlenyomatának implementálása
+### <a name="implement-microsoft-dfp-service-fingerprinting"></a>A Microsoft DFP szolgáltatás ujjlenyomat-felismerésének megvalósítása
 
-A Microsoft [DFP-eszközök ujjlenyomata](/dynamics365/fraud-protection/device-fingerprinting) a Microsoft DFP-fiókok védelmének követelménye.
+[A Microsoft DFP-eszközök ujjlenyomatának](/dynamics365/fraud-protection/device-fingerprinting) használata a Microsoft DFP-fiókok védelmének egyik követelménye.
 
 >[!NOTE]
->Azure AD B2C felhasználói felület oldalain kívül az ügyfél is megvalósíthatja az ujjlenyomat-kezelő szolgáltatást az alkalmazás kódjában az átfogóbb eszközök profilkészítése érdekében. Ez a minta nem tartalmaz ujjlenyomat-szolgáltatást az alkalmazás kódjában.
+>A felhasználói Azure AD B2C oldalain kívül az ügyfél az alkalmazáskódban is implementálja az ujjlenyomat-készítés szolgáltatást az átfogóbb eszközprofil-készítés érdekében. Ez a minta nem tartalmazza az ujjlenyomat-olvasó szolgáltatást az alkalmazáskódban.
 
 ### <a name="deploy-the-azure-ad-b2c-api-code"></a>A Azure AD B2C API-kód üzembe helyezése
 
-A [megadott API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) üzembe helyezése egy Azure-szolgáltatásban. A kód [közzétehető a Visual studióból](/visualstudio/deployment/quickstart-deploy-to-azure).
+A megadott [API-kód üzembe helyezése](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) egy Azure-szolgáltatásban. A kód az [Visual Studio.](/visualstudio/deployment/quickstart-deploy-to-azure)
 
-CORS beállítása, **engedélyezett forrás** hozzáadása `https://{your_tenant_name}.b2clogin.com`
+CORS beállítása, Engedélyezett **forrás hozzáadása**`https://{your_tenant_name}.b2clogin.com`
 
 >[!NOTE]
->Később szüksége lesz a telepített szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
+>Később szüksége lesz az üzembe helyezett szolgáltatás URL-címére, hogy konfigurálni tudja az Azure AD-t a szükséges beállításokkal.
 
-További információért lásd az [app Service dokumentációját](../app-service/app-service-web-tutorial-rest-api.md) .
+További [információért tekintse meg az App Service](../app-service/app-service-web-tutorial-rest-api.md) dokumentációját.
 
-### <a name="add-context-dependent-configuration-settings"></a>Környezettől függő konfigurációs beállítások hozzáadása
+### <a name="add-context-dependent-configuration-settings"></a>Környezetfüggő konfigurációs beállítások hozzáadása
 
-Konfigurálja az alkalmazás beállításait az [Azure app Service-](../app-service/configure-common.md#configure-app-settings)ben. Ez lehetővé teszi a beállítások biztonságos konfigurálását anélkül, hogy azokat egy adattárba kellene bejelentkeznie. A REST API-nak a következő beállításokat kell megadnia:
+Konfigurálja az alkalmazásbeállításokat az [Azure App Service-beli szolgáltatásban.](../app-service/configure-common.md#configure-app-settings) Ez lehetővé teszi a beállítások biztonságos konfigurálését anélkül, hogy be kellene őket ellenőrizni egy adattárba. A Rest API-nak a következő beállításokra van szüksége:
 
 | Alkalmazásbeállítások | Forrás | Jegyzetek |
 | :-------- | :------------| :-----------|
-|FraudProtectionSettings: InstanceId | Microsoft DFP-konfiguráció |     |
-|FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft-eszköz ujjlenyomat-ügyfél-azonosítója |     |
-| FraudProtectionSettings:ApiBaseUrl |  A Microsoft DFP portál alap URL-címe   | A "-int" eltávolítása a termelési API meghívásához|
-|  TokenProviderConfig: erőforrás  | Az alap URL-cím – https://api.dfp.dynamics-int.com     | A "-int" eltávolítása a termelési API meghívásához|
-|   TokenProviderConfig: ClientId       |A csalás elleni védelem kereskedelmi Azure AD ügyfélalkalmazás-azonosítója      |       |
-| TokenProviderConfig: szolgáltató | https://login.microsoftonline.com/<directory_ID> | A csalások elleni védelem az Azure AD bérlői szolgáltatója |
-| TokenProviderConfig: CertificateThumbprint * | A kereskedelmi Azure AD-ügyfélalkalmazás hitelesítéséhez használt tanúsítvány ujjlenyomata |
-| TokenProviderConfig:ClientSecret* | A Merchant Azure AD-ügyfélalkalmazás titka | A Secrets Manager használata ajánlott |
+|FraudProtectionSettings:InstanceId | Microsoft DFP-konfiguráció |     |
+|FraudProtectionSettings:DeviceFingerprintingCustomerId | A Microsoft-eszköz ujjlenyomat-azonosítójának használata |     |
+| FraudProtectionSettings:ApiBaseUrl |  Az Ön alap URL-címe a Microsoft DFP portálról   | Az "-int" eltávolítása az éles API hívásához|
+|  TokenProviderConfig: Erőforrás  | Az Ön alap URL-címe – https://api.dfp.dynamics-int.com     | Az "-int" eltávolítása az éles API hívásához|
+|   TokenProviderConfig:ClientId       |A Fraud Protection kereskedelmi Azure AD-ügyfélalkalmazás-azonosítója      |       |
+| TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | A Fraud Protection kereskedelmi Azure AD-bérlői hatósága |
+| TokenProviderConfig:CertificateThumbprint* | A kereskedelmi Azure AD-ügyfélalkalmazással való hitelesítéshez használt tanúsítvány ujjlenyomata |
+| TokenProviderConfig:ClientSecret* | A kereskedő Azure AD-ügyfélalkalmazásának titkos útjára | Ajánlott titkos kulcsok kezelőjeként használni |
 
-* Csak a 2 megjelölt paraméterek 1 értékének beállítása attól függően, hogy a tanúsítványt vagy titkos kulcsot, például jelszót kell-e hitelesíteni.
+*A 2 megjelölt paraméterből csak 1-et állítson be attól függően, hogy tanúsítvánnyal vagy titkos okkal, például jelszóval hitelesíti-e magát.
 
-## <a name="azure-ad-b2c-configuration"></a>Azure AD B2C konfiguráció
+## <a name="azure-ad-b2c-configuration"></a>Azure AD B2C konfigurálása
 
 ### <a name="replace-the-configuration-values"></a>A konfigurációs értékek cseréje
 
-A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)keresse meg a következő helyőrzőket, és cserélje le azokat a példány megfelelő értékeire.
+A megadott egyéni [szabályzatban](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)keresse meg a következő helyőrzőket, és cserélje le őket a példány megfelelő értékeire.
 
 | Helyőrző | Csere erre | Jegyzetek |
 | :-------- | :------------| :-----------|
 |{your_tenant_name} | A bérlő rövid neve |  "yourtenant" a yourtenant.onmicrosoft.com   |
-|{your_tenantId} | A Azure AD B2C bérlő bérlői azonosítója |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_IdentityExperienceFramework_appid}    |   Az Azure AD B2C-bérlőben konfigurált IdentityExperienceFramework-alkalmazás alkalmazás-azonosítója    |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_ ProxyIdentityExperienceFramework _appid}     |  Az Azure AD B2C-bérlőben konfigurált ProxyIdentityExperienceFramework-alkalmazás alkalmazás-azonosítója      |   01234567-89ab-cdef-0123-456789abcdef     |
-|  {your_tenant_extensions_appid}   |  A bérlő tárolási alkalmazásának alkalmazás-azonosítója   |  01234567-89ab-cdef-0123-456789abcdef  |
-|   {your_tenant_extensions_app_objectid}  | A bérlő Storage-alkalmazásának objektum-azonosítója    | 01234567-89ab-cdef-0123-456789abcdef   |
-|   {your_app_insights_instrumentation_key}  |   Az alkalmazás-bepillantási példány kialakítási kulcsa *  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | Végpont az App Service-ben a felhasználói felületi fájlok kiszolgálása    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | Az App Service URL-címe    |  https://yourapp.azurewebsites.net  |
-|   {a-Facebook-App-ID}  |  Az Azure AD B2C-vel való összevonáshoz konfigurált Facebook-alkalmazás alkalmazás-azonosítója   | 000000000000000   |
-|  {a-Facebook-App-Secret}   |  A Facebook alkalmazás titkos kódjának mentett kulcs neve   | B2C_1A_FacebookAppSecret   |
+|{your_tenantId} | A Azure AD B2C bérlőazonosítója |  01234567-89ab-cdef-0123-456789abcdef   |
+|  {your_tenant_IdentityExperienceFramework_appid}    |   A saját bérlőben konfigurált IdentityExperienceFramework alkalmazás Azure AD B2C azonosítója    |  01234567-89ab-cdef-0123-456789abcdef   |
+|  {your_tenant_ ProxyIdentityExperienceFramework _appid}     |  A saját bérlőben konfigurált ProxyIdentityExperienceFramework alkalmazás Azure AD B2C azonosítója      |   01234567-89ab-cdef-0123-456789abcdef     |
+|  {your_tenant_extensions_appid}   |  A bérlő tárolóalkalmazásának alkalmazásazonosítója   |  01234567-89ab-cdef-0123-456789abcdef  |
+|   {your_tenant_extensions_app_objectid}  | A bérlő tárolóalkalmazásának objektumazonosítója    | 01234567-89ab-cdef-0123-456789abcdef   |
+|   {your_app_insights_instrumentation_key}  |   Az App Insights-példány eszközkulcsa*  |   01234567-89ab-cdef-0123-456789abcdef |
+|  {your_ui_base_url}   | Végpont az App Service-ben, ahonnan a felhasználói felület fájljait szolgálja ki    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
+|   {your_app_service_url}  | Az App Service URL-címe    |  `https://yourapp.azurewebsites.net`  |
+|   {your-facebook-app-id}  |  Az összevonáshoz konfigurált Facebook-alkalmazás alkalmazásazonosítója Azure AD B2C   | 000000000000000   |
+|  {your-facebook-app-secret}   |  Annak a szabályzatkulcsnak a neve, amelyként mentette a Facebook alkalmazáskulcsát   | B2C_1A_FacebookAppSecret   |
 
-* Az alkalmazás-felismerések egy másik bérlőn is lehetnek. Ez a lépés nem kötelező. Ha nincs rá szükség, távolítsa el a megfelelő TechnicalProfiles és OrechestrationSteps.
+*Az App Insights egy másik bérlőben is lehet. Ez a lépés nem kötelező. Ha nem szükséges, távolítsa el a megfelelő TechnicalProfiles és OrechestrationSteps értékeket.
 
-### <a name="call-microsoft-dfp-label-api"></a>A Microsoft DFP Label API meghívása
+### <a name="call-microsoft-dfp-label-api"></a>A Microsoft DFP label API hívása
 
-Az ügyfeleknek meg kell [valósítaniuk a Label API](/dynamics365/fraud-protection/integrate-ap-api)-t. További információt a [Microsoft DFP API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) -val foglalkozó témakörben talál.
+Az ügyfeleknek implementálja [a label API-t.](/dynamics365/fraud-protection/integrate-ap-api) További [információ: Microsoft DFP API.](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0)
 
 `URI: < API Endpoint >/v1.0/label/account/create/<userId>`
 
-A userID értékének meg kell egyeznie a megfelelő Azure AD B2C konfigurációs értékben (ObjectID).
+A userID értékének meg kell egy lennie a megfelelő konfigurációs értékben (ObjectID Azure AD B2C értékben megadott értékkel.
 
 >[!NOTE]
->Adja hozzá a beleegyező értesítést az attribútum-gyűjtemény laphoz. Értesítés arról, hogy a felhasználók telemetria és a felhasználói identitásra vonatkozó adatokat a rendszer a fiók védelme érdekében rögzíti.
+>Hozzájárulási értesítés hozzáadása az attribútumgyűjtemény oldalhoz. Értesítse arról, hogy a rendszer rögzíti a felhasználók telemetriai és felhasználói identitási adatait a fiók védelme érdekében.
 
-## <a name="configure-the-azure-ad-b2c-policy"></a>A Azure AD B2C házirend konfigurálása
+## <a name="configure-the-azure-ad-b2c-policy"></a>Az Azure AD B2C konfigurálása
 
-1. Lépjen a házirendek mappában található [Azure ad B2C házirendre](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) .
+1. A Házirendek [Azure AD B2C meg a](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) szabályzatot.
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)
+2. Kövesse ezt a [dokumentumot](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack) a [LocalAccounts kezdőcsomag letöltéséhez](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
-3. Konfigurálja a Azure AD B2C bérlő házirendjét.
+3. Konfigurálja a szabályzatot a Azure AD B2C bérlőhöz.
 
 >[!NOTE]
->Frissítse a megadott bérlőhöz kapcsolódó házirendeket.
+>Frissítse a megadott szabályzatokat, hogy az adott bérlőhöz kapcsolódnak.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere** elemet.
+1. Nyissa meg a Azure AD B2C bérlőt, és a Szabályzatok alatt válassza a **Identity Experience Framework.**
 
-2. Válassza ki a korábban létrehozott **SignUpSignIn**.
+2. Válassza ki a korábban **létrehozott SignUpSignIn jelölőt.**
 
-3. Válassza a **felhasználói folyamat futtatása** lehetőséget, és válassza ki a beállításokat:
+3. Válassza **a Felhasználói folyamat futtatása lehetőséget,** és válassza ki a beállításokat:
 
-   a. **Alkalmazás**: válassza ki a regisztrált alkalmazást (minta a JWT)
+   a. **Alkalmazás:** válassza ki a regisztrált alkalmazást (a minta A JWT)
 
-   b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
+   b. **Válasz URL-cím:** válassza ki az **átirányítási URL-címet**
 
-   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
+   c. Válassza **a Felhasználói folyamat futtatása lehetőséget.**
 
-4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
+4. A regisztráció folyamatának végigmenve hozzon létre egy fiókot
 
-5. A rendszer a folyamat során hívja meg a Microsoft DFP szolgáltatást, miután létrehozta a felhasználói attribútumot. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
+5. A felhasználói attribútum létrehozása után a rendszer a folyamat során a Microsoft DFP szolgáltatást fogja meghívni. Ha a folyamat nem teljes, ellenőrizze, hogy a felhasználó nincs-e mentve a könyvtárban.
 
 >[!NOTE]
->Szabályok frissítése közvetlenül a Microsoft DFP-portálon a [Microsoft DFP-szabály motorjának](/dynamics365/fraud-protection/rules)használata esetén.
+>Ha Microsoft DFP-szabálymotort használ, frissítse a szabályokat közvetlenül a [Microsoft DFP portálon.](/dynamics365/fraud-protection/rules)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Microsoft DFP-minták](https://github.com/Microsoft/Dynamics-365-Fraud-Protection-Samples)
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+- [Az egyéni szabályzatok első lépések a Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

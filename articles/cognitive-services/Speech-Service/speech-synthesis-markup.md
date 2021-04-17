@@ -1,7 +1,7 @@
 ---
-title: Speech szintézis Markup Language (SSML) – beszédfelismerési szolgáltatás
+title: Beszédszintézis-jelölőnyelv (SSML) – Speech szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Speech szintézis Markup Language használatával vezérelheti a kiejtési és a prosody szöveget a beszédben.
+description: A Beszédszintézis-jelölőnyelv használata a kiejtés és a prosody szabályozása a szövegből a beszédbe.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c66a7e3bf9e417b47d08e50e21c08625e9d0549
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210210"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588377"
 ---
-# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis javítása beszédszintézis-jelölőnyelvvel (SSML)
 
-A Speech szintézis Markup Language (SSML) egy XML-alapú Markup Language, amely lehetővé teszi a fejlesztők számára, hogy a szöveg-beszéd szolgáltatás segítségével hogyan konvertálja a bemeneti szöveget a szintetizált beszédbe. Az egyszerű szöveghez képest a SSML lehetővé teszi a fejlesztők számára a hangfelvétel, a kiejtés, a beszéd arány, a kötet és még több szöveg-beszéd típusú kimenet finomhangolását. Normál írásjelek, például egy időszak utáni felfüggesztés vagy a megfelelő hanglejtés használata, ha a mondatot kérdőjeltel végződik, automatikusan kezeli a rendszer.
+A Beszédszintézis-jelölőnyelv (SSML) egy XML-alapú jelölőnyelv, amellyel a fejlesztők megadhatják, hogyan konvertálják a bemeneti szöveget szintetizált beszédgé a text-to-speech szolgáltatással. Az egyszerű szöveghez képest az SSML lehetővé teszi a fejlesztők számára, hogy finomhangolják a hangmagasságot, a kiejtést, a beszédarányt, a hangerőt és a szöveg-beszéd kimenetet. A rendszer automatikusan kezeli a normál írásjeleket, például a szüneteltetést egy pont után, vagy a helyes intonációt, amikor egy mondat kérdőjellel végződik.
 
-A SSML beszédfelismerési szolgáltatásának megvalósítása a World Wide Web Consortium [Speech szintézis Markup Language 1,0-es verzióján](https://www.w3.org/TR/speech-synthesis)alapul.
+Az SSML Beszédszolgáltatás-implementációja a World Wide Web Consortium Speech [Synthesis Markup Language 1.0-s](https://www.w3.org/TR/speech-synthesis)verzióján alapul.
 
 > [!IMPORTANT]
-> A kínai, Japán és koreai karakterek két karakterből állnak a számlázáshoz. További információ: [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A kínai, japán és koreai karakterek két karakternek számítanak a számlázásban. További információ: [Díjszabás.](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 
 ## <a name="neural-and-custom-voices"></a>Neurális és egyéni hangok
 
-Használjon emberi jellegű neurális hangot, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. A támogatott nyelvek, területi beállítások és hangok teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg. Ha többet szeretne megtudni az neurális és az egyéni hangokról, tekintse meg a [szöveg – beszéd áttekintést](text-to-speech.md).
+Használjon emberhez hasonló neurális hangot, vagy hozzon létre saját, a termékére vagy márkájára egyedi hangokat. A támogatott nyelvek, területi beállítások és hangok teljes listájáért tekintse meg a [nyelvtámogatást.](language-support.md) A neurális és az egyéni hangokkal kapcsolatos további információkért lásd: [Szöveg-beszéd – áttekintés.](text-to-speech.md)
 
 
 > [!NOTE]
-> A hangok különböző stílusokban és [a Text to speech oldalról](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)történő olvasásával is hallhatók.
+> A különböző stílusokban és dobómagasságban található hangok a példaszöveget olvasva hallják a [Text to Speech használatával.](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)
 
 
 ## <a name="special-characters"></a>Speciális karakterek
 
-A SSML használata során vegye figyelembe, hogy a speciális karaktereket, például az idézőjeleket, az aposztrófokat és a zárójeleket el kell kerülni. További információ [: Extensible Markup Language (XML) 1,0: D függelék](https://www.w3.org/TR/xml/#sec-entexpand).
+Az SSML használata közben ne feledje, hogy a speciális karaktereket, például az idézőjeleket, az aposztrófokat és a szögletes zárójeleket escape-karakterrel kell megjelölni. További információ: [Extensible Markup Language (XML) 1.0: D függelék.](https://www.w3.org/TR/xml/#sec-entexpand)
 
-## <a name="supported-ssml-elements"></a>Támogatott SSML elemek
+## <a name="supported-ssml-elements"></a>Támogatott SSML-elemek
 
-Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az elemek a Pitch, a prosody, a Volume és más beállítások módosítására szolgálnak. A következő szakaszokban részletesen ismertetjük az egyes elemek használatát, és ha egy elem megadása kötelező vagy nem kötelező.
+Minden SSML-dokumentum SSML-elemekkel (vagy címkékkel) jön létre. Ezek az elemek a hangmagasság, a prosody, a kötet stb. módosítására használhatók. Az alábbi szakaszok részletesen ismertetik az egyes elemek használhatók, és hogy mikor szükséges vagy mikor választható egy elem.
 
 > [!IMPORTANT]
-> Ne feledje, hogy idézőjelek között idézőjeleket kell használni. A jól formázott, érvényes XML-fájlokra vonatkozó szabványokhoz idézőjelek közé kell foglalni az attribútumot. Például `<prosody volume="90">` egy jól formázott, érvényes elem, de `<prosody volume=90>` nem. Előfordulhat, hogy a SSML nem ismeri fel az idézőjelek között lévő attribútum-értékeket.
+> Ne felejtsen el idézőjeleket használni az attribútumértékek körül. A megfelelően formázott, érvényes XML-szabványok megkövetelik, hogy az attribútumértékeket dupla idézőjelek közé kell tenni. A például `<prosody volume="90">` egy jól formázott, érvényes elem, de `<prosody volume=90>` nem az. Előfordulhat, hogy az SSML nem ismeri fel az idézőjelek között nem megadott attribútumértékeket.
 
 ## <a name="create-an-ssml-document"></a>SSML-dokumentum létrehozása
 
-`speak` a gyökérelem, és minden SSML-dokumentum esetében **kötelező** . Az `speak` elem fontos információkat tartalmaz, például a verziót, a nyelvet és a Markup szókincs definícióját.
+`speak` A a gyökérelem, és **minden** SSML-dokumentumhoz szükséges. A elem fontos információkat tartalmaz, például a verziót, a nyelvet és az `speak` jelölőszókészlet definícióját.
 
 **Syntax**
 
@@ -61,13 +61,13 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
-| `version` | Megadja a dokumentum korrektúrájának értelmezéséhez használt SSML-specifikáció verzióját. Az aktuális verzió 1,0. | Kötelező |
-| `xml:lang` | Megadja a legfelső szintű dokumentum nyelvét. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például: `en` ), illetve a nyelvi kódot és a nagybetűs országot/régiót (például: `en-US` ). | Kötelező |
-| `xmlns` | Megadja a dokumentumhoz tartozó URI-t, amely meghatározza a SSML dokumentum Markup szókincsét (az elemek típusát és az attribútum nevét). Az aktuális URI: http://www.w3.org/2001/10/synthesis . | Kötelező |
+| `version` | A dokumentum jelölőkódját értelmező SSML-specifikáció verzióját jelzi. Az aktuális verzió 1.0. | Kötelező |
+| `xml:lang` | A gyökérdokumentum nyelvét adja meg. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például ), vagy a nyelvi kódot és a nagybetűs `en` országot/régiót `en-US` (például: ). | Kötelező |
+| `xmlns` | Megadja az SSML-dokumentum jelölőszókészletét (elemtípusokat és attribútumneveket) meghatározó dokumentum URI-ját. Az aktuális URI a http://www.w3.org/2001/10/synthesis következő: . | Kötelező |
 
-## <a name="choose-a-voice-for-text-to-speech"></a>Hang kiválasztása szöveg és beszéd között
+## <a name="choose-a-voice-for-text-to-speech"></a>Hang kiválasztása szövegfelismeréshez
 
-Az `voice` elem megadása kötelező. A szövegről beszédre használt hang megadására szolgál.
+A `voice` elem kötelező. Ezzel adható meg a szöveg beszédfelismeréshez használt hang.
 
 **Syntax**
 
@@ -79,14 +79,14 @@ Az `voice` elem megadása kötelező. A szövegről beszédre használt hang meg
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező/Nem kötelező |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
+| `name` | A szövegből a beszédbemenethez használt hangot azonosítja. A támogatott hangok teljes listájáért lásd: [Nyelvi támogatás.](language-support.md#text-to-speech) | Kötelező |
 
 **Példa**
 
 > [!NOTE]
-> Ez a példa a `en-US-JennyNeural` hangot használja. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
+> Ez a példa a hangot `en-US-JennyNeural` használja. A támogatott hangok teljes listájáért lásd: [Nyelvi támogatás.](language-support.md#text-to-speech)
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -98,20 +98,20 @@ Az `voice` elem megadása kötelező. A szövegről beszédre használt hang meg
 
 ## <a name="use-multiple-voices"></a>Több hang használata
 
-A `speak` elemen belül több hang is megadható a szöveg – beszéd kimenethez. Ezeket a hangokat különböző nyelveken lehet megtekinteni. Minden hang esetében a szöveget egy elembe kell becsomagolni `voice` .
+A elemen belül több hang is megadható a `speak` szöveg-beszéd kimenethez. Ezek a hangok különböző nyelveken is lehetek. A szöveget minden hanghoz egy elembe kell `voice` csomagolni.
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező /Nem kötelező |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
+| `name` | A szöveg-beszéd kimenethez használt hangot azonosítja. A támogatott hangok teljes listájáért lásd: [Nyelvi támogatás.](language-support.md#text-to-speech) | Kötelező |
 
 > [!IMPORTANT]
-> Több hang nem kompatibilis a szó határával. Több hang használata érdekében le kell tiltani a szó határát.
+> Több hang nem kompatibilis a szóhatár funkcióval. Több hang használatához le kell tiltani a szóhatár funkciót.
 
-### <a name="disable-word-boundary"></a>Szó határának letiltása
+### <a name="disable-word-boundary"></a>Szóhatár letiltása
 
-A Speech SDK nyelvétől függően a `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` tulajdonságot `false` az objektum egy példányán kell beállítania `SpeechConfig` .
+A Speech SDK nyelvétől függően a tulajdonságot a következőre kell beállítania az objektum `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` `false` egy `SpeechConfig` példányán: .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -190,11 +190,11 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
-## <a name="adjust-speaking-styles"></a>Beszéd stílusainak módosítása
+## <a name="adjust-speaking-styles"></a>Beszédstílusok beállítása
 
-Alapértelmezés szerint a szöveg és beszéd közötti szolgáltatás szintetizálja a szöveget, és semleges beszéd stílust használ a neurális hangokhoz. A beszéd stílusát beállíthatja úgy, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az ügyfélszolgálathoz, a bemondáshoz és a hangsegédhez, az `mstts:express-as` elemet használva. Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
+Alapértelmezés szerint a text-to-speech szolgáltatás semleges beszédstílussal szintetizálja a szöveget a neurális hangokhoz. A beszédstílust módosíthatja úgy, hogy különböző érzelmeket fejez ki, például az érzelmeket, az empátiát és a tudatot, vagy optimalizálja a hangot különböző forgatókönyvekhez, például ügyfélszolgálathoz, híradáshoz vagy hangsegédhez a elem `mstts:express-as` használatával. Ez egy nem kötelező elem, amely csak a Speech szolgáltatásra igaz.
 
-A következő neurális hangok esetében jelenleg a beszélő stílusú módosítások támogatottak:
+A beszédstílus-módosítások jelenleg a következő neurális hangokhoz támogatottak:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -202,19 +202,19 @@ A következő neurális hangok esetében jelenleg a beszélő stílusú módosí
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` Előnézet
-* `zh-CN-XiaohanNeural` Előnézet
-* `zh-CN-XiaomoNeural` Előnézet
-* `zh-CN-XiaoxuanNeural` Előnézet
-* `zh-CN-XiaoruiNeural` Előnézet
+* `zh-CN-YunxiNeural` (Előzetes verzió)
+* `zh-CN-XiaohanNeural` (Előzetes verzió)
+* `zh-CN-XiaomoNeural` (Előzetes verzió)
+* `zh-CN-XiaoxuanNeural` (Előzetes verzió)
+* `zh-CN-XiaoruiNeural` (Előzetes verzió)
 
-A beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen. A kínai (mandarin, egyszerűsített) neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer.
+A beszédstílus intenzitása tovább módosítható, hogy jobban illeszkedjen az adott esethez. Erősebb vagy finomabb stílust is megadhat a segítségével, hogy kifejezőbb vagy visszatűrőbb legyen a `styledegree` beszéd. A beszédstílus-módosítások jelenleg kínai (mandarin, egyszerűsített) neurális hangokhoz támogatottak.
 
-A beszélő stílusok és a stílus mértékének módosítása mellett a paramétert úgy is beállíthatja, `role` hogy a hang egy másik kort és nemre is utánozza. Például egy férfi hangja növelheti a pályát, és megváltoztathatja a hanglejtést, hogy utánozza a női hangot, de a hang neve nem változik. Jelenleg a szerepkör-módosítások a következő kínai (mandarin, egyszerűsített) neurális hangok esetében támogatottak:
+A beszédstílusok és a stílus fokának módosításán kívül a paramétert is beállíthatja úgy, hogy a hang más életkort és nemet `role` utánozza. Egy férfi például emelheti a hangmagasságot, és úgy módosíthatja az intonációt, hogy egy nő hangját utánozza, de a hangnév nem változik. A szerepkör-módosítások jelenleg a kínai (mandarin, egyszerűsített) neurális hangokhoz támogatottak:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a szerepkör pedig hangon is változhat. Ha a stílus vagy a szerepkör lejátszása nem támogatott, a szolgáltatás a beszédet az alapértelmezett semleges beszéd módon fogja visszaadni. Megtekintheti, hogy milyen stílusok és szerepkörök támogatottak az egyes hangokon a [hanglista API](rest-text-to-speech.md#get-a-list-of-voices) -n keresztül vagy a kód nélküli [hangtartalom-létrehozási](https://aka.ms/audiocontentcreation) platformon keresztül.
+A fenti módosítások a mondat szintjén vannak alkalmazva, és a stílusok és a szerepjátékok hangonként változnak. Ha egy stílus vagy szerepkör nem támogatott, a szolgáltatás az alapértelmezett semleges beszéd módon fogja visszaadni a beszédet. A hanglista API-ján keresztül vagy [](rest-text-to-speech.md#get-a-list-of-voices) a kódmentes hangalapú platformon keresztül láthatja, hogy az egyes hangokhoz milyen stílusok [és szerepkörök hanganyagkészítés](https://aka.ms/audiocontentcreation) támogatottak.
 
 **Syntax**
 
@@ -228,107 +228,107 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> Jelenleg `styledegree` csak a kínai (mandarin, egyszerűsített) neurális hangokat támogatja. `role` csak a zh-CN-XiaomoNeural és a zh-CN-XiaoxuanNeural használatát támogatja.
+> Jelenleg a csak `styledegree` a kínai (mandarin, egyszerűsített) neurális hangokat támogatja. `role` A csak a zh-CN-XiaomoNeural és a zh-CN-XiaoxuanNeural kódokat támogatja.
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező /Nem kötelező |
 |-----------|-------------|---------------------|
-| `style` | Megadja a beszéd stílusát. A beszélő stílusok jelenleg hangspecifikusak. | Akkor szükséges, ha a beszélő stílust módosítja egy neurális hanghoz. A használatakor `mstts:express-as` meg kell adni a stílust. Ha a megadott érték érvénytelen, akkor a rendszer figyelmen kívül hagyja ezt az elemet. |
-| `styledegree` | Megadja a beszélő stílusának intenzitását. **Elfogadott értékek**: 0,01 – 2. Az alapértelmezett érték 1, ami az előre definiált stílus intenzitását jelenti. A minimális egység 0,01, ami némileg hajlamos a cél stílusára. A 2 érték a stílus alapértelmezett intenzitásának megkettőzését eredményezi.  | Opcionális (jelenleg `styledegree` csak a kínai (mandarin, egyszerűsített) neurális hangokat támogatja.)|
-| `role` | Megadja a beszélő szerepkört – lejátszás. A hang más korban és nemtől is működik, de a hangnév nem változik.  | Opcionális (jelenleg csak a következőt `role` támogatja: zh-CN-XiaomoNeural és zh-CN-XiaoxuanNeural.)|
+| `style` | Megadja a beszédstílust. A beszédstílusok jelenleg hangspecifikusak. | A beszédstílus neurális hanghoz való módosításához szükséges. A használata `mstts:express-as` esetén meg kell adni a stílust. Ha érvénytelen értéket ad meg, a rendszer figyelmen kívül hagyja ezt az elemet. |
+| `styledegree` | Megadja a beszédstílus intenzitását. **Elfogadott értékek:** 0,01 és 2 között. Az alapértelmezett érték 1, ami az előre meghatározott stílus intenzitását jelenti. A minimális egység 0,01, ami kissé a célstílushoz vezet. A 2 érték az alapértelmezett stílusintenzitás kétszeresét ad vissza.  | Választható (jelenleg csak `styledegree` a kínai (mandarin, egyszerűsített) neurális hangokat támogatja.)|
+| `role` | Megadja a beszédszerepkedőt. A hang más életkorként és nemként fog viselkedni, de a hangnév nem változik.  | Nem kötelező (jelenleg csak `role` a zh-CN-XiaomoNeural és a zh-CN-XiaoxuanNeural.)|
 
-Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
+Ezzel a táblázatgal meghatározhatja, hogy mely beszédstílusok támogatottak az egyes neurális hangokhoz.
 
 | Hang                   | Stílus                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
-|                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
-|                         | `style="narration-professional"` | Professzionális, tárgyilagos hangvételi hang a tartalom olvasásához        |
-|                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
-|                         | `style="chat"`            | Egy alkalmi és nyugodt hangvételt ad                         |
-|                         | `style="cheerful"`        | Pozitív és boldog hangjelzést ad                         |
-|                         | `style="empathetic"`      | A gondozás és a megértés értelme               |
-| `en-US-JennyNeural`     | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
-|                         | `style="chat"`            | Egy alkalmi és nyugodt hangvételt ad                         |
-|                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
-|                         | `style="newscast"`        | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez   |
-| `en-US-GuyNeural`       | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
-| `pt-BR-FranciscaNeural` | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.                                |
-| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
-|                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
-|                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
-|                         | `style="chat"`            | Alkalmi és nyugodt hangvételt biztosít a Chit-csevegéshez           |
-|                         | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.                                |
-|                         | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.          |
-|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
-|                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.    |
-|                         | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.          |
-| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
-|                         | `style="depressed"`       | Szomorú és csüggedt hangvételt biztosít az alsó és az energia    |
-|                         | `style="embarrassed"`     | Bizonytalan és tétova hangot ad, ha a beszélő kényelmetlenül érzi magát   |
-| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
-|                         | `style="embarrassed"`     | Bizonytalan és tétova hangot ad, ha a beszélő kényelmetlenül érzi magát   |
-|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
-| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
-|                         | `style="depressed"`       | Szomorú és csüggedt hangvételt biztosít az alsó és az energia    |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
-| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
-|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
-|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
-|                         | `style="depressed"`       | Szomorú és csüggedt hangvételt biztosít az alsó és az energia    |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
-| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
-|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
-|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítésének |
+|                         | `style="newscast-casual"` | Sokoldalú és alkalmi hangvételt kínál az általános hírek kézbesítéshez        |
+|                         | `style="narration-professional"` | Professzionális, objektív hangvétel kifejezve a tartalomolvasáshoz        |
+|                         | `style="customerservice"` | Kifejez egy barátságos és hasznos hangvételt az ügyfélszolgálat számára  |
+|                         | `style="chat"`            | Alkalmi és lazán hangvételt fejez ki                         |
+|                         | `style="cheerful"`        | Pozitív és elégedett hangvételt fejez ki                         |
+|                         | `style="empathetic"`      | A gondoskodás és a megértés érzetét fejezi ki               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Kifejez egy barátságos és hasznos hangvételt az ügyfélszolgálat számára  |
+|                         | `style="chat"`            | Alkalmi és lazán hangvételt fejez ki                         |
+|                         | `style="assistant"`       | A digitális asszisztensek meleg és laza hangvételét fejezi ki    |
+|                         | `style="newscast"`        | Sokoldalú és alkalmi hangvételt kínál az általános hírek kézbesítéshez   |
+| `en-US-GuyNeural`       | `style="newscast"`        | Hivatalos és professzionális hangvételt ad a hírekhez |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | Beszédkor egy menő, összegyűjtött és összeteszelt hozzáállást fejez ki. A hangnem, a hangmagasság és a prosody sokkal egységesebb a többi beszédtípushoz képest.                                |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Hivatalos és professzionális hangvételt ad a hírekhez |
+|                         | `style="customerservice"` | Kifejez egy barátságos és hasznos hangvételt az ügyfélszolgálat számára  |
+|                         | `style="assistant"`       | A digitális asszisztensek meleg és laza hangvételét fejezi ki    |
+|                         | `style="chat"`            | Hétköznapi és laza hangvételt ad a csevegéshez           |
+|                         | `style="calm"`            | Beszédkor egy menő, összegyűjtött és összeteszelt hozzáállást fejez ki. A hangnem, a hangmagasság és a prosody sokkal egységesebb a többi beszédtípushoz képest.                                |
+|                         | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangon                         |
+|                         | `style="sad"`             | Egy tetszetebb hangvételt, magasabb hangmagasságot, kevésbé intenzitást és alacsonyabb hangmagasságot kifejez. Ennek az érzelemnek a gyakori mutatói a beszéd közbeni nápák vagy nápák.            |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate, displeased) és sértett állapotban van.       |
+|                         | `style="fearful"`         | Magasabb hangmagasságot, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt fejez ki. A beszélő állapota nagy és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot fejez ki. A beszélő gyakran hangzú, és sokkal kevésbé lazán, erős ütemben.          |
+|                         | `style="affectionate"`    | Meleg és barátságos hangvételt kifejez, magasabb hangmagassággal és hangmagassággal. A beszélő olyan állapotban van, hogy felkelti a figyelmét. A beszélő "személyisége" gyakran kiterjesszen.          |
+|                         | `style="gentle"`          | Egy kis hangnemet, egy kis hangnemet, egy kis hangvételt és hangmagasságot kifejező,         |
+|                         | `style="lyrical"`         | Hangulati és hangulati módon fejezi ki az érzelmeket         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Barátságos és hasznos hangvételt ad az ügyfélszolgálatnak  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Beszédkor egy menő, összegyűjtött és összetömött hozzáállást fejez ki. A hangvétel, a hangmagasság és a prosody sokkal egységesebb a többi beszédtípushoz képest.    |
+|                         | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangos hangvételsel                         |
+|                         | `style="sad"`             | Kifejezi a fuldoktó hangvételt, magasabb hangmagasságot, kevésbé intenzitású és alacsonyabb energiaszintet. Ennek az érzelemnek a gyakori mutatói a beszéd közbeni nápák vagy nápák.            |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate) vagy displeased (elégedetlen) és sértett állapotban van.       |
+|                         | `style="fearful"`         | Kifejezi a hangos és hangos hangvételt, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt. A beszélő állapota nagy és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot ad. A beszélők gyakran hangznak, és sokkal kevésbé lazán, erős ütemben.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangon                         |
+|                         | `style="sad"`             | Egy tetszetebb hangvételt, magasabb hangmagasságot, kevésbé intenzitást és alacsonyabb hangmagasságot kifejez. Ennek az érzelemnek a gyakori mutatói a beszéd közbeni nápák vagy érzelmek.            |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate) vagy displeased (elégedetlen) és sértett állapotban van.       |
+|                         | `style="fearful"`         | A magasabb hangmagasságot, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt kifejezi. A beszélő állapota elégidős és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot ad. A beszélők gyakran hangznak, és sokkal kevésbé lazán, erős ütemben.    |
+|                         | `style="depressed"`       | Melancholic és deponáns hangvételt fejez ki alacsonyabb hangmagassággal és energiaszintdel    |
+|                         | `style="embarrassed"`     | Egy nem biztos és nem egyértelmű hangvételt fejez ki, amikor a beszélő kényelmetlennek érzi magát   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangos hangvételsel                         |
+|                         | `style="sad"`             | Kifejezi a hangvételt, amely magasabb hangmagasságot, kevésbé intenzitású és alacsonyabb hangmagasságot ad. Ennek az érzelemnek a gyakori mutatói a beszéd közbeni nápák vagy nápák.            |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate, displeased) és sértett állapotban van.       |
+|                         | `style="fearful"`         | Magasabb hangmagasságot, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt fejez ki. A beszélő állapota nagy és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot fejez ki. A beszélő gyakran hangzú, és sokkal kevésbé lazán, erős ütemben.    |
+|                         | `style="embarrassed"`     | Egy nem biztos és nem egyértelmű hangvételt fejez ki, amikor a beszélő kényelmetlennek érzi magát   |
+|                         | `style="affectionate"`    | Meleg és barátságos hangvételt fejez ki, magasabb hangmagassággal és hangmagassággal. A beszélő olyan állapotban van, hogy felkelti a figyelmét. A beszélő "személyisége" gyakran kiterjesszen.          |
+|                         | `style="gentle"`          | Egy kis hangvételű, barátságos és hangvételű, alacsonyabb hangvételű és hangú hangvételt fejez ki         |
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangos hangvételsel                         |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate, displeased) és sértett állapotban van.       |
+|                         | `style="fearful"`         | Kifejezi a hangos és hangos hangvételt, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt. A beszélő állapota elégidős és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot ad. A beszélők gyakran hangznak, és sokkal kevésbé lazán, erős ütemben.    |
+|                         | `style="depressed"`       | Melancholic és deponáns hangvételt fejez ki alacsonyabb hangmagassággal és energiaszintdel    |
+|                         | `style="gentle"`          | Egy barátságos, barátságos és hangnemet kifejez, alacsonyabb hangmagassággal és hangnemkel         |
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Lelkes és lelkes hangvételt kifejez, magasabb hangmagassággal és hangon                         |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő az irate , a displeased és a offend állapotban van.       |
+|                         | `style="fearful"`         | A magasabb hangmagasságot, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt kifejezi. A beszélő állapota elégidős és nem megfelelő.                          |
+|                         | `style="disgruntled"`     | Megvetésnek és panaszkodó hangvételnek ad ki. Ennek az érzelemnek a beszéde elégedetlenségről és megvetésről szól.              |
+|                         | `style="serious"`         | Szigorú és parancshangot ad. A beszélők gyakran hangznak, és sokkal kevésbé lazán, erős ütemben.    |
+|                         | `style="depressed"`       | Melancholic és deponáns hangvételt fejez ki alacsonyabb hangmagassággal és energiaszintdel    |
+|                         | `style="gentle"`          | Egy finom, finom és hangnemet kifejező, alacsonyabb hangmagasságú és hangnemű         |
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Egy tetszetebb hangvételt, magasabb hangmagasságot, kevésbé intenzitást és alacsonyabb hangmagasságot kifejez. Ennek az érzelemnek a gyakori mutatói a beszéd közbeni nápák vagy nápák.            |
+|                         | `style="angry"`           | Hangvételt és hangvételt kifejez, alacsonyabb hangmagassággal, magasabb intenzitással és magasabb hangi energiaszintel. A beszélő irate ( irate, displeased) és sértett állapotban van.       |
+|                         | `style="fearful"`         | Magasabb hangmagasságot, magasabb hangmagasságot, magasabb hangmagasságot és gyorsabb hangvételt fejez ki. A beszélő állapota nagy és nem megfelelő.                          |
 
-A táblázat segítségével ellenőrizhető a támogatott szerepkörök és azok definíciói.
+A táblázat segítségével ellenőrizheti a támogatott szerepköröket és azok definícióit.
 
 |Szerepkör                     | Leírás                |
 |-------------------------|----------------------------|
-|`role="Girl"`            | A hang utánozza a lányt. |
-|`role="Boy"`             | A hang egy fiút utánoz. |
-|`role="YoungAdultFemale"`| A hang egy fiatal felnőtt nő számára utánozza.|
-|`role="YoungAdultMale"`  | A hang a fiatal felnőtt férfit utánozza.|
-|`role="OlderAdultFemale"`| A hang egy régebbi felnőtt nőstényt utánoz.|
-|`role="OlderAdultMale"`  | A hang egy régebbi felnőtt férfit utánoz.|
-|`role="SeniorFemale"`    | A hang egy vezető nő számára utánozza.|
-|`role="SeniorMale"`      | A hang egy vezető férfit utánoz.|
+|`role="Girl"`            | A hang egy lánynak imitál. |
+|`role="Boy"`             | A hang egy gyereknek imitál. |
+|`role="YoungAdultFemale"`| A hang egy fiatal felnőtt nőre imitál.|
+|`role="YoungAdultMale"`  | A hang egy fiatal felnőtt férfinak imitál.|
+|`role="OlderAdultFemale"`| A hang egy régebbi, felnőtt nőre imitál.|
+|`role="OlderAdultMale"`  | A hang egy régebbi felnőtt férfira imitál.|
+|`role="SeniorFemale"`    | A hang egy szenior nő utánzása.|
+|`role="SeniorMale"`      | A hang egy szenior férfinak imitál.|
 
 
 **Példa**
 
-Ez a SSML-kódrészlet azt szemlélteti, hogy az `<mstts:express-as>` elem hogyan változtatja meg a beszéd stílusát a alkalmazásban `cheerful` .
+Ez az SSML-kódrészlet azt mutatja be, hogyan használható a elem a `<mstts:express-as>` beszédstílusra való `cheerful` váltáshoz.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
@@ -341,7 +341,7 @@ Ez a SSML-kódrészlet azt szemlélteti, hogy az `<mstts:express-as>` elem hogya
 </speak>
 ```
 
-Ez a SSML-kódrészlet azt szemlélteti, `styledegree` hogy az attribútum hogyan módosítható a XiaoxiaoNeural beszélő stílusának intenzitása alapján.
+Ez az SSML-kódrészlet azt mutatja be, hogy a attribútummal hogyan változtatható meg a Beszédstílus intenzitása `styledegree` a XiaonézoNeural esetén.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
@@ -353,7 +353,7 @@ Ez a SSML-kódrészlet azt szemlélteti, `styledegree` hogy az attribútum hogya
 </speak>
 ```
 
-Ez a SSML-kódrészlet azt szemlélteti, hogy az `role` attribútum hogyan használható a XiaomoNeural szerepkör-Play módosítására.
+Ez az SSML-kódrészlet azt mutatja be, hogyan változott meg a `role` XiaomoNeural szerepkör-lejátszása az attribútummal.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
@@ -370,12 +370,12 @@ Ez a SSML-kódrészlet azt szemlélteti, hogy az `role` attribútum hogyan haszn
 </speak>
 ```
 
-## <a name="add-or-remove-a-breakpause"></a>Szünet/szünet hozzáadása vagy eltávolítása
+## <a name="add-or-remove-a-breakpause"></a>Szüneteltetés/szüneteltetés hozzáadása vagy eltávolítása
 
-Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltetéseket (vagy megszakításokat), vagy megakadályozhatja, hogy a szöveg-beszéd szolgáltatás automatikusan hozzáadja a szüneteltetéseket.
+A elem használatával szüneteket (vagy töréseket) szúr be a szavak közé, vagy megakadályozhatja, hogy a szövegfelismerési szolgáltatás automatikusan szüneteket `break` ad hozzá.
 
 > [!NOTE]
-> Ezzel az elemmel felülbírálhatja egy szó vagy kifejezés szöveg-beszédre (TTS) vonatkozó alapértelmezett viselkedését, ha az adott szó vagy kifejezés szintetizált beszéde természetellenesen hangzik. Állítsa a értékre `strength` `none` , hogy megakadályozza a prosodic-töréspontot, amelyet a rendszer automatikusan beszúr a szöveg-beszéd szolgáltatásba.
+> Ezzel az elemmel felülbírálhatja egy szó vagy kifejezés szövegfelhangulat (TTS) alapértelmezett viselkedését, ha az ehhez a szóhoz vagy kifejezéshez használt szintetizált beszéd nem természetes. A `strength` `none` beállítással megakadályozhatja a prosodikus törést, amelyet a text-to-speech szolgáltatás automatikusan beszúr.
 
 **Syntax**
 
@@ -386,19 +386,19 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező/Nem kötelező |
 |-----------|-------------|---------------------|
-| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
-| `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
+| `strength` | A szüneteltetés relatív időtartamát adja meg az alábbi értékek egyikével:<ul><li>Nincs</li><li>x-gyenge</li><li>Gyenge</li><li>közepes (alapértelmezett)</li><li>Erős</li><li>x-strong</li></ul> | Választható |
+| `time` | A szünet abszolút időtartamát határozza meg másodpercben vagy ezredmásodpercben,ezt az értéket 5000 ezredmásodpercnél kisebbre kell állítani. Példák az érvényes értékekre: `2s` és `500ms` | Választható |
 
-| Erősségét                      | Description |
+| Erejét                      | Description |
 |-------------------------------|-------------|
-| Nincs, vagy ha nincs megadva érték | 0 MS        |
-| x – gyenge                        | 250 MS      |
-| gyenge                          | 500 ms      |
+| Nincs, vagy ha nincs megtéve érték | 0 ms        |
+| x-gyenge                        | 250 ms      |
+| Gyenge                          | 500 ms      |
 | közepes                        | 750 ms      |
-| erős                        | 1000 MS     |
-| x – erős                      | 1250 MS     |
+| Erős                        | 1000 ms     |
+| x-strong                      | 1250 ms     |
 
 **Példa**
 
@@ -411,10 +411,10 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 ```
 ## <a name="add-silence"></a>Csend hozzáadása
 
-Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket szöveg előtt vagy után, vagy a 2 szomszédos mondat között.
+A elemmel szüneteket szúr be szöveg előtt vagy után, vagy a két szomszédos `mstts:silence` mondat között.
 
 > [!NOTE]
->A és a közötti különbség a `mstts:silence` `break` `break` szöveg bármely helyére felvehető, de a csend csak a bemeneti szöveg elején vagy végén, vagy a két szomszédos mondat határán működik.
+>A és a közötti különbség az, hogy a szöveg bármely helyéhez hozzáadható, de a csend csak a bemeneti szöveg elején vagy végén, vagy 2 szomszédos mondat határán `mstts:silence` `break` `break` működik.
 
 
 **Syntax**
@@ -425,12 +425,12 @@ Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket s
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező /Nem kötelező |
 |-----------|-------------|---------------------|
-| `type` | Itt adható meg a csend helye: <ul><li>`Leading` – a szöveg elején </li><li>`Tailing` – a szöveg végén </li><li>`Sentenceboundary` – a szomszédos mondatok között </li></ul> | Kötelező |
-| `Value` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Kötelező |
+| `type` | Megadja a hozzáadható csend helyét: <ul><li>`Leading` – a szöveg elején </li><li>`Tailing` – a szöveg végén </li><li>`Sentenceboundary` – szomszédos mondatok között </li></ul> | Kötelező |
+| `Value` | A szünet abszolút időtartamát adja meg másodpercben vagy ezredmásodpercben, ezt az értéket 5000 ezredmásodpercnél kisebbre kell állítani. Példák az érvényes értékekre: `2s` és `500ms` | Kötelező |
 
-**Példa** Ebben a példában az `mtts:silence` 200 MS csendet adja hozzá két mondat között.
+**Példa** Ebben a `mtts:silence` példában a 200 ms csendet ad két mondat közé.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
 <voice name="en-US-AriaNeural">
@@ -441,13 +441,13 @@ A good place to start is by trying out the slew of educational apps that are hel
 </speak>
 ```
 
-## <a name="specify-paragraphs-and-sentences"></a>Bekezdések és mondatok meghatározása
+## <a name="specify-paragraphs-and-sentences"></a>Bekezdések és mondatok megadása
 
-`p` és `s` az elemek a bekezdések és a mondatok jelölésére használatosak. Ezen elemek hiányában a szöveg-beszéd szolgáltatás automatikusan meghatározza a SSML-dokumentum szerkezetét.
+`p` A és a elemek a bekezdések és mondatok `s` jegyzésére használhatók. Ezen elemek hiányában a text-to-speech szolgáltatás automatikusan meghatározza az SSML-dokumentum struktúráját.
 
-Az `p` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `phoneme` `prosody` `say-as` `sub` `mstts:express-as` és `s` .
+A elem szöveget és a következő elemeket `p` tartalmazhatja: `audio` , , , , , , , és `break` `phoneme` `prosody` `say-as` `sub` `mstts:express-as` `s` .
 
-Az `s` elem tartalmazhat szöveget és a következő elemeket:,,,,, `audio` `break` `phoneme` `prosody` `say-as` `mstts:express-as` és `sub` .
+A elem szöveget és a következő elemeket `s` tartalmazhatja: `audio` , , , , , , és `break` `phoneme` `prosody` `say-as` `mstts:express-as` `sub` .
 
 **Syntax**
 
@@ -473,14 +473,14 @@ Az `s` elem tartalmazhat szöveget és a következő elemeket:,,,,, `audio` `bre
 </speak>
 ```
 
-## <a name="use-phonemes-to-improve-pronunciation"></a>A fonémák használata a kiejtés javítására
+## <a name="use-phonemes-to-improve-pronunciation"></a>A kiejtés javítása a phonemes használatával
 
-Az `ph` elem a fonetikus KIEJTÉS SSML-dokumentumokban való használata. Az `ph` elem csak szöveget és más elemeket tartalmazhat. Az emberi olvasásra alkalmas beszédet mindig tartalékként adja meg.
+A `ph` elem az SSML-dokumentumokban a phonetic kiejtéshez használatos. Az `ph` elem csak szöveget tartalmazhat, más elemeket nem. Mindig biztosítson emberi olvasásra használható beszédet tartalékként.
 
-A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokból vagy karakterből állnak, esetenként kombinációban. Minden telefon egyedi hangfelismerést ír elő. Ez ellentétben áll a latin ábécével, ahol bármely betű több beszélt hangot is jelenthet. Vegye figyelembe a "c" betű különböző kiejtéseit a "candy" és a "megszüntetés" kifejezésben, vagy a "th" betű kombinációjának különböző kiejtéseit a "Thing" és a "The" kifejezésben.
+A telefonos ábécék telefonokból állnak, amelyek esetenként betűkből, számokból vagy karakterekből állnak. Minden telefon egyedi beszédhangot ír le. Ez ellentétben áll a latin ábécével, ahol minden betű több beszélt hangot is képviselhet. Vegyük például a "c" betű különböző kiejtését a "candy" és a "szünni" szavakban, vagy a "th" betűkombináció különböző kiejtését a "dolog" és a "ezek" szavakban.
 
 > [!NOTE]
-> A fonémák címke nem támogatott ebben az 5 hangban (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural és MT-MT-GarceNeural).
+> A Phonemes címke jelenleg nem támogatott ezen 5 hanghoz (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, lv-LV-EveritaNeural és mt-MT-GarceNeural).
 
 **Syntax**
 
@@ -490,10 +490,10 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező/Nem kötelező |
 |-----------|-------------|---------------------|
-| `alphabet` | Megadja az attribútumban szereplő karakterlánc kiejtésének szintetizálása során használandó fonetikus ábécét `ph` . Az ábécét megadó karakterláncot kisbetűs betűkkel kell megadni. Az alábbiakban megadhatja a lehetséges ábécéket.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Nemzetközi fonetikus ábécé</a></li><li>`sapi`&ndash; [Beszédfelismerési szolgáltatás fonetikus ábécéje](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzális telefon készlet</a></li></ul><br>Az ábécé csak a `phoneme` elemre vonatkozik. | Választható |
-| `ph` | Olyan telefonszámot tartalmazó karakterlánc, amely a szó kiejtését határozza meg a `phoneme` elemben. Ha a megadott karakterlánc nem felismerhető telefonokat tartalmaz, a szöveg-beszéd (TTS) szolgáltatás elutasítja a teljes SSML-dokumentumot, és a dokumentumban megadott egyik beszédfelismerési kimenetet sem hozza létre. | Fonémák használata esetén kötelező. |
+| `alphabet` | Megadja a sztring kiejtésének az attribútumban való szinonimizálásakor használnia kell a phonetic `ph` ábécét. Az ábécét megszabadó sztringet kisbetűkben kell megadni. A következő lehetséges ábécék adhatók meg.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Nemzetközi telefonos ábécé</a></li><li>`sapi`&ndash; [Beszédszolgáltatás telefonos ábécé](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzális telefonkészlet</a></li></ul><br>Az ábécé csak a elem `phoneme` elemére vonatkozik. | Választható |
+| `ph` | Olyan telefonokat tartalmazó sztring, amelyek meghatározzák az elemben található szó `phoneme` kiejtését. Ha a megadott sztring ismeretlen telefonokat tartalmaz, a text-to-speech (TTS) szolgáltatás elutasítja a teljes SSML-dokumentumot, és nem állítja elő a dokumentumban megadott beszédkimenetet. | A phonemes használata esetén kötelező. |
 
 **Példák**
 
@@ -521,15 +521,15 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 </speak>
 ```
 
-## <a name="use-custom-lexicon-to-improve-pronunciation"></a>A kiejtés javítása egyéni lexikon használatával
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Egyéni lexikon használata a kiejtés javításához
 
-Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni a szót. Például egy vállalat neve vagy egy orvosi kifejezés. A fejlesztők meghatározhatják, hogy az egyes entitások hogyan legyenek beolvasva a SSML a `phoneme` és a `sub` címkék használatával. Ha azonban azt is meg kell határoznia, hogy az egyes entitások hogyan legyenek beolvasva, létrehozhat egy egyéni lexikont a `lexicon` címke használatával.
-
-> [!NOTE]
-> Az egyéni lexikon jelenleg támogatja az UTF-8 kódolást.
+Előfordulhat, hogy a szövegfelismerési szolgáltatás nem képes pontosan kiírni egy szót. Ilyen lehet például egy vállalat neve vagy egy orvosi kifejezés. A fejlesztők a és címkék használatával határozhatják meg, hogy az egyes entitások hogyan olvashatók az `phoneme` SSML-ben. `sub` Ha azonban meg kell határoznia több entitás olvasási módszerét, létrehozhat egy egyéni lexikont a `lexicon` címkével.
 
 > [!NOTE]
-> Az egyéni lexikon nem támogatott ebben az 5 hangban (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural és MT-MT-GarceNeural).
+> Az egyéni lexikon jelenleg az UTF-8 kódolást támogatja.
+
+> [!NOTE]
+> Az egyéni lexikon jelenleg nem támogatott az 5 hanghoz (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, lv-LV-EveritaNeural és mt-MT-GarceNeural).
 
 
 **Syntax**
@@ -540,13 +540,13 @@ Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni
 
 **Attribútumok**
 
-| Attribútum | Leírás                               | Kötelező/nem kötelező |
+| Attribútum | Leírás                               | Kötelező / Nem kötelező |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | A külső PLS-dokumentum címe. | Kötelező.           |
 
 **Használat**
 
-Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva, létrehozhat egy egyéni lexikont, amely. XML vagy. pls fájlként van tárolva. A következő egy minta. xml fájl.
+Több entitás olvasásának meghatározásához létrehozhat egy egyéni lexikont, amely .xml- vagy .pls-fájlként van tárolva. Az alábbiakban egy minta .xml-fájl található.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -567,9 +567,9 @@ Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva,
 </lexicon>
 ```
 
-Az `lexicon` elem legalább egy elemet tartalmaz `lexeme` . Minden `lexeme` elem tartalmaz legalább egy `grapheme` elemet, és egy vagy több `grapheme` , `alias` és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró szöveget tartalmaz `lexeme` .
+A `lexicon` elem legalább egy elemet `lexeme` tartalmaz. Minden elem legalább egy elemet és egy vagy több `lexeme` `grapheme` , és `grapheme` `alias` `phoneme` elemet tartalmaz. A `grapheme` elem az <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">ortography </a>szöveget tartalmazza. Az elemek egy betűszó vagy rövidített kifejezés kiejtését `alias` jelzik. A `phoneme` elem a kiejtésének `lexeme` szövegét írja le.
 
-Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy kifejezés kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Például:
+Fontos megjegyezni, hogy egy kifejezés kiejtése nem állíthatja be közvetlenül az egyéni lexikon használatával. Ha be kell állítania a kiejtést egy betűszóhoz vagy rövidített kifejezéshez, először adjon meg egy kifejezést, majd társítsa a következővel: `alias` `phoneme` `alias` . Például:
 
 ```xml
   <lexeme>
@@ -582,7 +582,7 @@ Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be 
   </lexeme>
 ```
 
-Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Például:
+A rövidítéshez vagy rövidítéshez közvetlenül is megírhatja a `alias` várt kifejezést. Például:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme>
@@ -591,16 +591,16 @@ Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített ki
 ```
 
 > [!IMPORTANT]
-> Az `phoneme` elem nem tartalmazhat szóközöket az IPA használatakor.
+> Az `phoneme` elem nem tartalmazhat szóközöket az IPA használata esetén.
 
-További információ az egyéni lexikon-fájlról: a [kiejtési lexikon specifikációjának (pls) 1,0-es verziója](https://www.w3.org/TR/pronunciation-lexicon/).
+További információ az egyéni lexikonfájlról: [Kiejtési lexikon specifikáció (PLS) 1.0-s verziója.](https://www.w3.org/TR/pronunciation-lexicon/)
 
-Ezután tegye közzé az egyéni lexikon-fájlt. Habár nem rendelkezünk korlátozásokkal a fájl tárolásához, az [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md)használatát javasoljuk.
+Ezután tegye közzé az egyéni lexikonfájlt. Bár a fájl tárolására nem vonatkoznak korlátozások, javasoljuk, hogy használja a [Azure Blob Storage.](../../storage/blobs/storage-quickstart-blobs-portal.md)
 
-Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
+Az egyéni lexikon közzététele után hivatkozhat rá az SSML-ben.
 
 > [!NOTE]
-> Az `lexicon` elemnek a elemen belül kell lennie `voice` .
+> A `lexicon` elemnek a elemen belül kell `voice` lennie.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
@@ -614,19 +614,19 @@ Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
 </speak>
 ```
 
-Ha ezt az egyéni lexikont használja, a "BTW" a "by the way" néven lesz beolvasva. A "Benigni" a megadott IPA "bɛ tɛsɨfɒn ni ː nji" lesz beolvasva.
+Az egyéni lexikon használata esetén a "BTW" a következőként lesz beolvasva: "By the way". A "Benigni" a megadott IPA "b< és nji" adatokat fogja olvasni.
 
 **Korlátozások**
-- Fájlméret: az egyéni lexikon fájlméretének maximális korlátja 100 kb, ha ez meghaladja a méretet, a szintézisi kérelem sikertelen lesz.
-- Lexikon gyorsítótárának frissítése: az egyéni lexikont a rendszer az első betöltéskor kulcsként fogja gyorsítótárazni a TTS szolgáltatásban. Az azonos URI-val rendelkező lexikon 15 percen belül nem lesz újratöltve, ezért az egyéni lexikon-módosításnak 15 percnél hosszabb ideig kell megvárnia, hogy érvénybe lépjen.
+- Fájlméret: az egyéni lexikonfájl maximális mérete 100 KB, ha ez a méret meghaladja, a szintéziskérés sikertelen lesz.
+- Lexikon-gyorsítótár frissítése: az egyéni lexikon az első betöltésekor URI-val lesz gyorsítótárazva kulcsként a TTS-szolgáltatásban. Az azonos URI-val használt lexikon nem töltődik be újra 15 percen belül, így az egyéni lexikonváltozásnak a effektus effektusig legalább 15 percet várnia kell.
 
-**Beszédfelismerési szolgáltatás fonetikus készletei**
+**Beszédszolgáltatás-telefonkészletek**
 
-A fenti mintában a nemzetközi fonetikus ábécét használjuk, más néven IPA-telefont. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel ez a nemzetközi szabvány. Egyes IPA-karakterek esetében az "előre összeállított" és a "kibontott" verzió szerepel a Unicode-ban való Ábrázoláskor. Az egyéni lexikon csak a kibontott Unicode-ket támogatja.
+A fenti mintában az IPA-telefonkészlet néven is ismert Nemzetközi telefonos ábécét használjuk. Javasoljuk, hogy a fejlesztők az IPA-t használják, mert ez a nemzetközi szabvány. Egyes IPA-karaktereknél a Unicode-karakterekkel való ábrázoláskor a "precomposed" és a "decomposed" (felosztott) verziót kapják. Az egyéni lexikon csak a felosztott unicode-okat támogatja.
 
-Figyelembe véve, hogy az IPA nem könnyen megjegyezhető, a beszédfelismerési szolgáltatás hét nyelvhez (,,,,, `en-US` `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` és `zh-TW` ) is definiál egy fonetikus készletet.
+Figyelembe véve, hogy az IPA-t nem könnyű megjegyezni, a Speech service egy phonetic készletet határoz meg hét nyelvhez ( `en-US` , , , , , , és `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` `zh-TW` ).
 
-Az `sapi` attribútum értékeként használhatja az `alphabet` Egyéni Lexikonokat az alábbi módon:
+Az attribútum értékeként használhatja az egyéni `sapi` `alphabet` lexikonokat az alább látható módon:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -647,13 +647,13 @@ Az `sapi` attribútum értékeként használhatja az `alphabet` Egyéni Lexikono
 </lexicon>
 ```
 
-További információ a beszédfelismerési szolgáltatás részletes fonetikus ábécével kapcsolatban: [beszédfelismerési szolgáltatás fonetikus készletei](speech-ssml-phonetic-sets.md).
+További információ a Speech service phonetic alphabet (Beszédszolgáltatás telefonos ábécé) részletes betűrendjével kapcsolatban: [Speech service phonetic sets (A Speech szolgáltatás telefonos készlete).](speech-ssml-phonetic-sets.md)
 
-## <a name="adjust-prosody"></a>Prosody módosítása
+## <a name="adjust-prosody"></a>Prosody beállítása
 
-Ezzel a beállítással `prosody` adható meg a szöveg és a beszéd kimenetének változása a szurok, a kontúr, a tartomány, a sebesség, az időtartam és a kötet változásaihoz. Az `prosody` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `p` `phoneme` `prosody` `say-as` `sub` és `s` .
+A elem a hangmagasság, a hossz, a tartomány, a sebesség, az időtartam és a szöveg-beszéd kimenetének `prosody` változásait határozza meg. A elem szöveget és a következő elemeket `prosody` tartalmazhatja: `audio` , , , , , , , és `break` `p` `phoneme` `prosody` `say-as` `sub` `s` .
 
-Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a beszédfelismerő felismeri a hozzárendelt értékeket arra a javaslatra, hogy a kiválasztott hang tényleges prosodic értékei legyenek. A szöveg-beszéd szolgáltatás korlátozza vagy helyettesíti a nem támogatott értékeket. Példa a nem támogatott értékekre: 1 MHz vagy 120-es kötet.
+Mivel a prosodikus attribútumértékek széles tartományon belül változhatnak, a beszédfelismerő a hozzárendelt értékeket a kiválasztott hang tényleges prosodikus értékeinek javaslatként értelmezi. A text-to-speech szolgáltatás korlátozza vagy helyettesíti a nem támogatott értékeket. Nem támogatott értékek például az 1 MHz-es vagy a 120-as kötet.
 
 **Syntax**
 
@@ -663,18 +663,18 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező / Nem kötelező |
 |-----------|-------------|---------------------|
-| `pitch` | Megadja a szöveg alappályáját. A szurok a következőképpen fejezhető ki:<ul><li>Abszolút érték, amelyet a szám a "Hz" (Hertz) kifejezéssel jelez. Például: `<prosody pitch="600Hz">some text</prosody>`.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal, majd a "Hz" vagy "St" előtaggal jelöl, amely a szurok módosításához szükséges összeget határozza meg. Például: `<prosody pitch="+80Hz">some text</prosody>` vagy `<prosody pitch="-2st">some text</prosody>` . A "Szent" érték azt jelzi, hogy a változási egység semitone-e, amely a normál diatonikus-skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x – alacsony</li><li>alacsony</li><li>közepes</li><li>magas</li><li>x – magas</li><li>alapértelmezett</li></ul></li></ul> | Választható |
-| `contour` |A kontúr mostantól támogatja a neurális és a standard hangokat is. A kontúr a szurok változásait jelöli. Ezek a változások a beszédfelismerési kimenetben megadott időpontokban a célok tömbje jelennek meg. Az egyes célkitűzéseket paraméter párok halmaza határozza meg. Például: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterekben az első érték határozza meg a szurok változásának helyét a szöveg időtartamának százalékában. A második érték határozza meg a szurok növelésének vagy csökkentésének mértékét, egy relatív érték vagy a szurok enumerálási értéke alapján (lásd: `pitch` ). | Választható |
-| `range` | Egy érték, amely a szövegben lévő szurok tartományát jelöli. `range`A leíráshoz megadhatja az azonos abszolút értékeket, relatív értékeket vagy enumerálási értékeket `pitch` . | Választható |
-| `rate` | Megadja a szöveg beszédi arányát. `rate`A következőképpen lehet kifejezni:<ul><li>Egy relatív érték, amely az alapértelmezett érték szorzóként funkcionál. Az *1* érték például nem változik a díjszabásban. Az *0,5* -es érték a sebesség felére csökkentéset eredményez. A *3* érték a ráta beutazását eredményezi.</li><li>Állandó érték:<ul><li>x – lassú</li><li>lassú</li><li>közepes</li><li>gyors</li><li>x – gyors</li><li>alapértelmezett</li></ul></li></ul> | Választható |
-| `duration` | Az az időtartam, amelynek el kell telnie, amíg a Speech szintézis (TTS) szolgáltatás beolvassa a szöveget, másodpercben vagy ezredmásodpercben. Például: *2s* vagy *1800ms*. Az időtartam csak a standard hangokat támogatja.| Választható |
-| `volume` | Megadja a beszélő hangjának hangerejét. A kötet a következőképpen fejezhető ki:<ul><li>Abszolút érték 0,0 és 100,0 közötti tartományban, a *legcsendestől* a *leghangosabbig*. Például 75. Az alapértelmezett érték a 100,0.</li><li>Egy relatív érték, amelyet a rendszer a "+" vagy "-" előtaggal jelöl meg, amely a kötet módosításának mértékét határozza meg. Például: + 10 vagy-5,5.</li><li>Állandó érték:<ul><li>csendes</li><li>x – Soft</li><li>puha</li><li>közepes</li><li>hangos</li><li>x – hangos</li><li>alapértelmezett</li></ul></li></ul> | Választható |
+| `pitch` | A szöveg alapértékét jelzi. A hangmagasságot a következő ként fejezheti ki:<ul><li>Abszolút érték, számmal és "Hz" (Hertz) kifejezéssel kifejezve. Például: `<prosody pitch="600Hz">some text</prosody>`.</li><li>Egy relatív érték, amelyet a "+" vagy a "-" karakterrel, majd a "Hz" vagy az "st" karakterrel megadott számmal fejeznek ki, és amely meghatározza a dobás értékét. Például: `<prosody pitch="+80Hz">some text</prosody>` vagy `<prosody pitch="-2st">some text</prosody>` . Az "st" azt jelzi, hogy a változási egység szemiton, ami fél hangvételű (féllépéses) a szabványos diatonikus skálán.</li><li>Állandó érték:<ul><li>x-low</li><li>Alacsony</li><li>közepes</li><li>magas</li><li>x-high</li><li>alapértelmezett</li></ul></li></ul> | Választható |
+| `contour` |A Now mostantól a neurális és a standard hangokat is támogatja. A levezetés az pitch változásait jelöli. Ezeket a módosításokat a beszéd kimenetében megadott időpozíciókban található célok tömbjeként ábrázolja a rendszer. Az egyes célokat paraméterpárok készletei határozzák meg. Például: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterkészletek első értéke a szöveg időtartamának százalékában adja meg a pitch változás helyét. A második érték határozza meg a dobás emelésének vagy csökkentésének mennyiségét relatív érték vagy a pitch enumerálásának értéke használatával `pitch` (lásd: ). | Választható |
+| `range` | Egy érték, amely a szöveg dobástartományát jelöli. A kifejezés kifejezése a leírására használt abszolút értékekkel, relatív értékekkel vagy `range` enumerálásértékekkel is `pitch` lehetséges. | Választható |
+| `rate` | A szöveg beszédarányát jelzi. A kifejezés a következő `rate` lehet:<ul><li>Egy relatív érték számként kifejezve, amely az alapértelmezett érték szorzójaként működik. Az *1* érték például nem módosítja az arányt. A *0,5* érték az arány felére való felére való feléresztezést ad vissza. A *3 érték* megbotlott arányt ad vissza.</li><li>Állandó érték:<ul><li>x-lassú</li><li>Lassú</li><li>közepes</li><li>Gyors</li><li>x-fast</li><li>alapértelmezett</li></ul></li></ul> | Választható |
+| `duration` | Az az időtartam, amely eltelt, amíg a beszédszintézis (TTS) szolgáltatás beolvassa a szöveget másodpercben vagy ezredmásodpercben. Például *2 vagy* *1800ms.* Az Időtartam csak a standard hangokat támogatja.| Választható |
+| `volume` | A beszélő hangkötetének szintjét jelzi. A kötetet a következő ként fejezheti ki:<ul><li>Abszolút érték 0,0 és 100,0 között megadott számként,  a legcsendesebbtől a leghangosabb *érték ig.* Például: 75. Az alapértelmezett érték 100.0.</li><li>Egy relatív érték, amelyet a "+" vagy a "-" karakterrel megadott számmal fejeznek ki, és amely meghatározza a kötetet módosító mennyiséget. Például: +10 vagy -5.5.</li><li>Állandó érték:<ul><li>Csendes</li><li>x-soft</li><li>Puha</li><li>közepes</li><li>Hangos</li><li>x-hang</li><li>alapértelmezett</li></ul></li></ul> | Választható |
 
-### <a name="change-speaking-rate"></a>Beszéd arányának módosítása
+### <a name="change-speaking-rate"></a>Beszédszám módosítása
 
-A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neurális hangokra és standard hangokra.
+A beszédarány neurális hangokra és standard hangokra is alkalmazható szó- vagy mondatszinten.
 
 **Példa**
 
@@ -690,7 +690,7 @@ A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neuráli
 
 ### <a name="change-volume"></a>Kötet módosítása
 
-A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a standard hangokra. Míg a kötetek módosításai csak a mondat szintjén alkalmazhatók a neurális hangokra.
+A kötetváltozások alkalmazhatók a standard hangokra a szavak vagy mondatok szintjén. Míg a kötetváltozások csak mondatszinten alkalmazhatók neurális hangokra.
 
 **Példa**
 
@@ -704,9 +704,9 @@ A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a sta
 </speak>
 ```
 
-### <a name="change-pitch"></a>Szurok módosítása
+### <a name="change-pitch"></a>A pitch módosítása
 
-A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standard hangokra. Míg a szurok módosításait csak a mondat szintjén lehet a neurális hangokra alkalmazni.
+A beszédhangok a szabványos hangokra is alkalmazhatók a szavak vagy mondatok szintjén. Míg a dobás változásai csak mondatszinten alkalmazhatók neurális hangokra.
 
 **Példa**
 
@@ -718,10 +718,10 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 </speak>
 ```
 
-### <a name="change-pitch-contour"></a>Szurok körvonalának módosítása
+### <a name="change-pitch-contour"></a>Az pitch (dobás) módosítása
 
 > [!IMPORTANT]
-> A Pitch Contour változásai mostantól a neurális hangokkal is támogatottak.
+> A hangmagasságok mostantól támogatják a dobás módosításait.
 
 **Példa**
 
@@ -734,9 +734,9 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
     </voice>
 </speak>
 ```
-## <a name="say-as-element"></a>Say-as elem
+## <a name="say-as-element"></a>say-as elem
 
-`say-as` egy opcionális elem, amely megadja az elem szövegének típusát (például szám vagy dátum). Ez útmutatást nyújt a beszédfelismerési motornak a szöveg kiejtéséről.
+`say-as` A nem kötelező elem, amely az elem szövegének tartalomtípusát (például számát vagy dátumát) jelzi. Ez útmutatást nyújt a beszédszintézis-motornak arról, hogyan lehet leindoklani a szöveget.
 
 **Syntax**
 
@@ -746,35 +746,35 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező / Nem kötelező |
 |-----------|-------------|---------------------|
-| `interpret-as` | Megadja az elem szövegének tartalomtípusát. A típusok listáját az alábbi táblázat tartalmazza. | Kötelező |
-| `format` | További információkat nyújt az elem szövegének pontos formázásáról olyan tartalomtípusok esetében, amelyek kétértelmű formátummal rendelkezhetnek. A SSML az azokat használó tartalomtípusok formátumait határozzák meg (lásd az alábbi táblázatot). | Választható |
-| `detail` | Megadja a megbeszélni kívánt részletességi szintet. Ez az attribútum például kérheti, hogy a Speech szintézis motor "központozás" jelölést küldjön. Nincs definiálva szabványos érték a következőhöz: `detail` . | Választható |
+| `interpret-as` | Az elem szövegének tartalomtípusát jelzi. A típusok listáját az alábbi táblázatban láthatja. | Kötelező |
+| `format` | További információt nyújt az elem szövegének pontos formázásával kapcsolatban olyan tartalomtípusok esetében, amelyek nem egyértelmű formátumokkal is rendelkezik. Az SSML definiálja a használatukhoz használt tartalomtípusok formátumát (lásd az alábbi táblázatot). | Választható |
+| `detail` | A beszélt adatok szintjét jelzi. Ez az attribútum például kérheti, hogy a beszédszintézis-motor lekisértsen írásjeleket. A nem határoz meg standard értékeket `detail` a számára. | Választható |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
-A `interpret-as` és attribútumok támogatott tartalomtípusai a következők: `format` `format`Csak akkor adja meg az attribútumot, ha a értéke `interpret-as` dátum és idő.
+A és attribútumok támogatott tartalomtípusai a `interpret-as` `format` következők. Csak akkor `format` foglalja bele az `interpret-as` attribútumot, ha az dátumra és időpontra van beállítva.
 
-| értelmezés – as | formátumban | Értelmezés |
+| interpret-as | Formátum | Értelmezés |
 |--------------|--------|----------------|
-| `address` | | A szöveget címként kell kimondani. A Speech szintézis motorja:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Mint "én vagyok a 150th Court North East Redmond Washington." |
-| `cardinal`, `number` | | A szöveg kardinális számként van kimondva. A Speech szintézis motorja:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Ahogy a "három alternatíva van." |
-| `characters`, `spell-out` | | A szöveg külön betűként van kiírva (helyesírás). A Speech szintézis motorja:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T"-ként. |
-| `date` | DMY, MDY, YMD, énh, ym, My, MD, DM, d, m, y | A szöveget dátumként kell kimondani. Az `format` attribútum a dátum formátumát (*d = nap, m = hónap és y = év*) adja meg. A Speech szintézis motorja:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Ahogy a mai év október tizenkilencedik 2016. |
-| `digits`, `number_digit` | | A szöveget külön számjegyek sorozata beszéljük. A Speech szintézis motorja:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9". |
-| `fraction` | | A szöveg tört számként van kimondva. A Speech szintézis motorja:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Három nyolcadik egy hüvelyk". |
-| `ordinal` | | A szöveg sorszámként van kimondva. A Speech szintézis motorja:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"Válassza a harmadik lehetőséget". |
-| `telephone` | | A szöveg telefonszámként van kimondva. Az `format` attribútum tartalmazhat országkódot jelölő számjegyeket. Például: "1" az Egyesült Államok vagy "39" esetében Olaszország esetében. A beszédfelismerési motor felhasználhatja ezeket az információkat, hogy a kiejtését egy telefonszámra irányítsa. A telefonszámon szerepelhet az országkód is, és ha igen, elsőbbséget élvez az országkód felett `format` . A Speech szintézis motorja:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />A "saját szám a 8 8 8 5 5 5 1 2 1 2-es körzetszám". |
-| `time` | hms12, hms24 | A szöveget a rendszer időpontként beszéli. Az `format` attribútum azt adja meg, hogy az idő 12 órás (hms12) vagy 24 órás (hms24) óra használatával van-e megadva. Használjon kettőspontot az órákat, perceket és másodperceket jelölő számok elválasztásához. Az alábbi példák érvényesek: 12:35, 1:14:32, 08:15 és 02:50:45. A Speech szintézis motorja:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Ahogy "a vonat négyen M." |
+| `address` | | A szöveg egy címként van eléneklve. A beszédszintézis motorja a következő:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />A következőként: "I'm at 150th court north east redmond washington." |
+| `cardinal`, `number` | | A szöveg számos számként van elénekve. A beszédszintézis motorja a következő:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />A következőként: "Három alternatíva van.". |
+| `characters`, `spell-out` | | A szöveg külön betűként van kitűzve (ki van tűzve). A beszédszintézis motorja a következő:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" ként. |
+| `date` | dmy, mdy, ymd, ydm, ym, my, md, dm, d, m, y | A szöveg dátumként van kiszengelve. A `format` attribútum határozza meg a dátum formátumát (*d=day, m=month és y=year*). A beszédszintézis-motor a következőt növeli:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />A "Today is October is T nineteenth two thousand thousand." (Ma október 19., 200 000 bájt) |
+| `digits`, `number_digit` | | A szöveget a rendszer különálló számjegyek sorozataként beszélte el. A beszédszintézis-motor a következőt növeli:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9." |
+| `fraction` | | A szöveg törtszámként van kiszengelve. A beszédszintézis-motor a következőt növeli:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Mint "három hüvelyk nyolcas" |
+| `ordinal` | | A szöveg sorszámként van elénekálva. A beszédszintézis-motor a következőt növeli:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"Válassza ki a harmadik lehetőséget". |
+| `telephone` | | A szöveg telefonszámként van elbeszélve. Az `format` attribútum tartalmazhat számjegyeket, amelyek országkódot képviselnek. Például az "1" az "Egyesült Államok" vagy "39" Olaszország esetében. A beszédszintézis-motor ezzel az információval irányíthatja a telefonszám kiejtését. A telefonszám az országkódot is tartalmazhatja, és ha igen, elsőbbséget élvez az országkódjával. `format` A beszédszintézis-motor a következőt növeli:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />A "My number is area code eight88 five five one two one two" (Az én számom a területkód nyolc nyolc nyolc, öt öt, egy kettő és kettő). |
+| `time` | hms12, hms24 | A szöveg el van éneklve. A attribútum meghatározza, hogy az idő `format` 12 órás (hs12) vagy 24 órás (hs24) óra használatával van-e megadva. Kettősponttal válassza el az órákat, perceket és másodperceket képviselő számokat. Az alábbi érvényes idő példák: 12:35, 1:14:32, 08:15 és 02:50:45. A beszédszintézis motorja a következő:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"A betanítás négy órakor indul." |
 
 **Használat**
 
-Az `say-as` elem csak szöveget tartalmazhat.
+A `say-as` elem csak szöveget tartalmazhat.
 
 **Példa**
 
-A Speech szintézis motor a következő példát szemlélteti: "az első kérés egy, a tizenkilencedik 20 10-es, a korai érkezési idő pedig a 12 35 ÓRAKOR."
+A beszédszintézis-motor a következő példát mondja: "Az első kérés egy teremben volt október 9-én, 20-án, korai érkezéssel 12:5-kor."
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -787,18 +787,18 @@ A Speech szintézis motor a következő példát szemlélteti: "az első kérés
 </speak>
 ```
 
-## <a name="add-recorded-audio"></a>Rögzített hang hozzáadása
+## <a name="add-recorded-audio"></a>Felvett hang hozzáadása
 
-`audio` egy opcionális elem, amely lehetővé teszi, hogy MP3-hangfelvételt helyezzen be egy SSML-dokumentumba. A hangelem törzse tartalmazhat egyszerű szöveges vagy SSML jelölést, amely akkor beszél, ha a hangfájl nem érhető el, vagy nem játszható le. Emellett az `audio` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `p` `s` `phoneme` `prosody` `say-as` és `sub` .
+`audio` A nem kötelező elem, amely lehetővé teszi MP3-hang beszúrása egy SSML-dokumentumba. A hangelem törzse tartalmazhat egyszerű szöveget vagy SSML-jelölőt, amely akkor van elhangzva, ha a hangfájl nem érhető el vagy nem lejátszható. Emellett a elem szöveget és a következő elemeket is `audio` tartalmazhatja: , , , , , , `audio` és `break` `p` `s` `phoneme` `prosody` `say-as` `sub` .
 
-A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő követelményeknek:
+Az SSML-dokumentumban szereplő összes hanganyagnak meg kell felelnie az alábbi követelményeknek:
 
-* Az MP3-t egy internetről elérhető HTTPS-végponton kell üzemeltetni. HTTPS szükséges, és az MP3-fájlt üzemeltető tartománynak érvényes, megbízható TLS/SSL-tanúsítványt kell tartalmaznia.
-* Az MP3-fájlnak érvényes MP3-fájlként (MPEG v2) kell lennie.
-* A bitsűrűségnek 48 kbps-nak kell lennie.
-* A mintavételi sebességnek 16 000 Hz-nek kell lennie.
-* Az egyetlen válaszban lévő összes szöveges és hangfájl együttes teljes ideje nem lehet nagyobb, mint 90 (90) másodperc.
-* Az MP3 nem tartalmazhat ügyfél-specifikus vagy más bizalmas információt.
+* Az MP3-nak egy internetről elérhető HTTPS-végponton kell üzemelnie. HTTPS szükséges, és az MP3-fájlt üzemeltető tartománynak érvényes, megbízható TLS-/SSL-tanúsítványt kell bemutatnia.
+* Az MP3-nak érvényes MP3-fájlnak (MPEG v2) kell lennie.
+* A bitszámnak 48 kbps-nek kell lennie.
+* A minta sebességének 16 000 Hz-nek kell lennie.
+* Az összes szöveges és hangfájl összesített teljes ideje egyetlen válaszban nem haladhatja meg a kilencven (90) másodpercet.
+* Az MP3 nem tartalmazhat semmilyen ügyfélspecifikus vagy egyéb bizalmas információt.
 
 **Syntax**
 
@@ -808,9 +808,9 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 
 **Attribútumok**
 
-| Attribútum | Leírás                                   | Kötelező/nem kötelező                                        |
+| Attribútum | Leírás                                   | Kötelező / Nem kötelező                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `src`     | Megadja a hangfájl helyét/URL-címét. | Kötelező, ha a hangelemet használja a SSML-dokumentumban. |
+| `src`     | Megadja a hangfájl helyét/URL-címét. | Kötelező, ha az SSML-dokumentum hangelemét használja. |
 
 **Példa**
 
@@ -828,13 +828,13 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 </speak>
 ```
 
-## <a name="add-background-audio"></a>Háttérbeli hang hozzáadása
+## <a name="add-background-audio"></a>Háttérhang hozzáadása
 
-Az `mstts:backgroundaudio` elem lehetővé teszi a háttérbeli hang hozzáadását a SSML-dokumentumokhoz (vagy szöveg-beszéd típusú hangfájlt keverve). A `mstts:backgroundaudio` háttérbeli hangfájlok a háttérben, a szöveg és a beszéd elején elhalványulnak, és a szöveg és a beszéd végén elhalványulnak.
+A elem lehetővé teszi, hogy háttérhangot adjon az SSML-dokumentumokhoz (vagy egy hangfájlt `mstts:backgroundaudio` szöveg-beszéddel keverjen). A háttérben egy hangfájlt behűthet, elhalványulhat a szövegtől a beszédig, és elhalványulhat a szövegből `mstts:backgroundaudio` a beszédig.
 
-Ha a megadott háttérbeli hang rövidebb, mint a szöveg-beszéd vagy a Halványítás, a rendszer hurokba kerül. Ha a szöveg-beszédnél hosszabb, akkor leáll, amikor befejeződött a Halványítás.
+Ha a megadott háttérhang rövidebb, mint a szöveg-beszéd vagy az elhalványulás, hurkot fog látni. Ha hosszabb a szöveg-beszédnél, akkor a kihalványulás befejezésekor leáll.
 
-SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`Az elemen belüli címkéket azonban intersperse is `voice` felvehet, ha további hanganyagot szeretne hozzáadni a SSML-dokumentumhoz.
+SSML-dokumentumonként csak egy háttér-hangfájl engedélyezett. A elemen belül azonban több elem címkéi között is el lehet ásni, hogy további hanganyagokat adjon `audio` `voice` hozzá az SSML-dokumentumhoz.
 
 **Syntax**
 
@@ -844,12 +844,12 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező/nem kötelező |
+| Attribútum | Leírás | Kötelező /Nem kötelező |
 |-----------|-------------|---------------------|
-| `src` | Megadja a háttér hangfájljának helyét/URL-címét. | Kötelező, ha a SSML-dokumentumban háttér hang van használatban. |
-| `volume` | Meghatározza a háttér-hangfájl kötetét. **Elfogadott értékek**: `0` a `100` bezárólag. Az alapértelmezett érték `1`. | Választható |
-| `fadein` | Meghatározza a háttérbeli hang "elhalványulás" időtartamát ezredmásodpercben. Az alapértelmezett érték `0` :, amely a nem áttűnéssel egyenértékű. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
-| `fadeout` | Meghatározza, hogy a háttérbeli hang mennyi ideig elhalványul ezredmásodpercben. Az alapértelmezett érték a `0` , ami egyenértékű a kihalványítás nélkül. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
+| `src` | A háttér-hangfájl helyét/URL-címét adja meg. | Szükséges, ha háttérhangot használ az SSML-dokumentumban. |
+| `volume` | A háttér-hangfájl kötetét adja meg. **Elfogadott értékek:** a `0` befogadó `100` értékekkel. Az alapértelmezett érték `1`. | Választható |
+| `fadein` | A háttérhang "behalványításának" időtartamát adja meg ezredmásodpercben. Az alapértelmezett érték , amely egyenértékű `0` azzal, ha nincs elhalványulás. **Elfogadott értékek:** a `0` befogadó `10000` értékekkel.  | Választható |
+| `fadeout` | Megadja a háttérhang elhalványításának időtartamát ezredmásodpercben. Az alapértelmezett érték a , ami azzal `0` egyenértékű, hogy nincs elhalványulás. **Elfogadott értékek:** a `0` befogadó `10000` értékekhez.  | Választható |
 
 **Példa**
 
@@ -864,12 +864,12 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 
 ## <a name="bookmark-element"></a>Könyvjelző elem
 
-A könyvjelző elem lehetővé teszi, hogy egyéni jelölőket helyezzen be a SSML-ben, hogy az egyes jelölők eltolása legyen az audio streamben.
-Nem fogjuk beolvasni a könyvjelző elemeit.
-A Bookmark (könyvjelző) elem használatával egy adott helyre hivatkozhat a szöveg vagy a címke sorrendjében.
+A könyvjelző elem lehetővé teszi, hogy egyéni jelölőket szúrjon be az SSML-be a hangstream egyes jelölőinek eltolására.
+A könyvjelzőelemeket nem fogjuk kiolvasni.
+A könyvjelző elemmel hivatkozhat egy adott helyre a szöveg- vagy címkesorozatban.
 
 > [!NOTE]
-> `bookmark` az elem `en-US-AriaNeural` most már csak hangra működik.
+> `bookmark` A elem jelenleg csak a `en-US-AriaNeural` hanggal működik.
 
 **Syntax**
 
@@ -881,11 +881,11 @@ A Bookmark (könyvjelző) elem használatával egy adott helyre hivatkozhat a sz
 
 | Attribútum | Leírás                                   | Kötelező/nem kötelező                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-|  `mark`   | Megadja az elem hivatkozási szövegét `bookmark` . | Kötelező. |
+|  `mark`   | Megadja a elem hivatkozási `bookmark` szövegét. | Kötelező. |
 
 **Példa**
 
-Előfordulhat például, hogy a következő módon szeretné tudni, hogy az egyes virág-szavak milyen időeltolódást mutatnak
+Érdemes lehet például tudni az egyes virágszavak időeltolását az alábbiak szerint
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -895,17 +895,17 @@ Előfordulhat például, hogy a következő módon szeretné tudni, hogy az egye
 </speak>
 ```
 
-### <a name="get-bookmark-using-speech-sdk"></a>Könyvjelző beolvasása a Speech SDK használatával
+### <a name="get-bookmark-using-speech-sdk"></a>Könyvjelző lekérte a Speech SDK-val
 
-Előfizethet a `BookmarkReached` SPEECH SDK eseményére a könyvjelzők eltolásának lekéréséhez.
+A könyvjelző-eltolások lekért `BookmarkReached` értékéhez feliratkozhat a Speech SDK eseményére.
 
 > [!NOTE]
-> `BookmarkReached` az esemény csak a Speech SDK verzió 1.16.0 óta érhető el.
+> `BookmarkReached` az esemény csak a Speech SDK 1.16.0-s verziója óta érhető el.
 
-`BookmarkReached` az események akkor jönnek létre, amikor a kimeneti hangadatok elérhetővé válnak, ami gyorsabb lesz, mint a lejátszás kimeneti eszközön.
+`BookmarkReached` A események akkor történnek, amikor a kimeneti hangadatok elérhetővé válnak, ami gyorsabb lesz, mint a kimeneti eszközre való visszajátszás.
 
-* `AudioOffset` azt jelenti, hogy a kimeneti hang eltelt ideje a szintézis és a könyvjelző elem kezdete között van. Ez 100 ns egységben (HNS) mérve, 10 000 HNS egyenértéktel, 1 ezredmásodpercnél.
-* `Text` a könyvjelző elem hivatkozási szövege, amely az `mark` attribútumban beállított sztring.
+* `AudioOffset` A a kimeneti hang a szintézis kezdete és a könyvjelző elem közötti eltelt idejét jelenti. Ezt száz nanoszekundumos egységekben (HNS) mérjük, 10 000 HNS-sel egyenértékű 1 ezredmásodpercnek.
+* `Text` A a könyvjelző elem referenciaszövege, amely a attribútumban beállított `mark` sztring.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -920,7 +920,7 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
-A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer lesz aktiválva, és a konzol kimenete a következő `BookmarkReached` lesz:
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -940,7 +940,7 @@ synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 };
 ```
 
-A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer lesz aktiválva, a konzol `BookmarkReached` kimenete pedig
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -958,7 +958,7 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
-A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer aktiválódik, a konzol `BookmarkReached` kimenete pedig
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -974,7 +974,7 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
-A fenti példában SSML az `bookmark_reached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer lesz aktiválva, a konzol `bookmark_reached` kimenete pedig
 ```text
 Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
@@ -990,7 +990,7 @@ synthesizer.bookmarkReached = function (s, e) {
 }
 ```
 
-A fenti példában SSML az `bookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer lesz aktiválva, a konzol `bookmarkReached` kimenete pedig
 ```text
 (Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
 (Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -1007,7 +1007,7 @@ További információ: <a href="https://docs.microsoft.com/objectivec/cognitive-
 }];
 ```
 
-A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+A fenti SSML-példában az esemény kétszer lesz aktiválva, a konzol `BookmarkReached` kimenete pedig
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -1015,7 +1015,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-További információ: <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+További információ: <a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer" target="_blank"> `addBookmarkReachedEventHandler` </a>.
 
 ---
 

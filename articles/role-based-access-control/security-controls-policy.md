@@ -1,23 +1,23 @@
 ---
-title: Az Azure RBAC vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
-description: Felsorolja Azure Policy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 03/31/2021
+title: Azure Policy megfelelőségi vezérlők az Azure RBAC-hez
+description: Felsorolja Azure Policy Azure szerepköralapú hozzáférés-vezérléshez (Azure RBAC) elérhető szabályozási megfelelőségi vezérlőket. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
+ms.date: 04/14/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: da0a86c04548aa5e190919f50e4ea98fabb29961
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4693b2ac495db01c1ef1a5edcf958110370017a1
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094785"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497156"
 ---
-# <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Az Azure RBAC vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure Policy megfelelőségi vezérlők az Azure RBAC-hez
 
-[Azure Policy](../governance/policy/index.yml) kényszerítheti az Azure-erőforrások szabályait, így az infrastruktúra megfelel az üzleti szabványoknak.
-A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/regulatory-compliance.md) biztosítja a Microsoft által létrehozott és felügyelt kezdeményezési definíciókat, amelyek a különböző megfelelőségi szabványokhoz kapcsolódó **megfelelőségi tartományokhoz** és **biztonsági ellenőrzésekhez** _készültek_. Ez az oldal az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) **megfelelőségi tartományait** és **biztonsági vezérlőit** sorolja fel. A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelheti ahhoz, hogy az Azure-erőforrások megfeleljenek az adott szabványnak.
+[Azure Policy](../governance/policy/index.yml) kényszerítheti az Azure-erőforrásokra vonatkozó szabályokat, hogy az infrastruktúra megfeleljenek az üzleti szabványoknak.
+[A megfelelőségi Azure Policy](../governance/policy/concepts/regulatory-compliance.md) a Microsoft által létrehozott és felügyelt kezdeményezési definíciókat (más néven  beépítetteket) biztosít a különböző megfelelőségi szabványokhoz kapcsolódó megfelelőségi tartományokhoz és biztonsági vezérlőkhöz.  Ez az oldal felsorolja **az** Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) megfelelőségi tartományát és biztonsági vezérlőit.  A beépített biztonsági vezérlőket egyenként  is hozzárendelheti, hogy az Azure-erőforrások megfeleljenek az adott szabványnak.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 
@@ -25,5 +25,5 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
+- További információ a [jogszabályi Azure Policy való megfelelésről.](../governance/policy/concepts/regulatory-compliance.md)
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

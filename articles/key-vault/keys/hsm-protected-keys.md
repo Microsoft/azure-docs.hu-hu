@@ -1,6 +1,6 @@
 ---
-title: HSM által védett kulcsok &ának generálása – Azure Key Vault
-description: Megtudhatja, hogyan tervezheti meg, generálhatja és továbbíthatja a saját HSM-védelemmel ellátott kulcsait a Azure Key Vault használatával való használatra. Más néven BYOK vagy saját kulcs használata.
+title: HSM által & kulcsok átvitele – Azure Key Vault
+description: Megtudhatja, hogyan tervezheti meg, hozhatja létre és továbbíthat HSM által védett kulcsokat a Azure Key Vault. MÁS néven BYOK vagy saját kulcs.
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -10,41 +10,41 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489412"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588292"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM által védett kulcsok importálása a Key Vaultba
 
-Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata*, angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
+A nagyobb biztonság érdekében az Azure Key Vault hardveres biztonsági modulokban (HSM-ekben) importálhat vagy hozhat létre kulcsokat, amelyek soha nem hagyják el a HSM határait. Ennek a megoldásnak a neve *saját kulcs használata*, angol betűszóval BYOK. Azure Key Vault nCipher nShield HSM-család (FIPS 140-2 2. szint érvényesítve) használatával védi a kulcsokat.
 
-Ez a funkció az Azure China 21Vianet esetében nem érhető el.
+Ez a funkció nem érhető el a Azure China 21Vianet.
 
 > [!NOTE]
-> További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../general/overview.md)  
-> Az első lépéseket ismertető oktatóanyaghoz, amely magában foglalja a HSM-védelemmel ellátott kulcsok kulcstartójának létrehozását, lásd: [Mi az Azure Key Vault?](../general/overview.md)
+> További információ a Azure Key Vault: [Mi a Azure Key Vault?](../general/overview.md)  
+> A HSM által védett kulcsok kulcstartóját tartalmazó első lépésekre vonatkozó oktatóanyagért lásd: Mi az a [Azure Key Vault?](../general/overview.md).
 
-## <a name="supported-hsms"></a>Támogatott HSM
+## <a name="supported-hsms"></a>Támogatott HSM-ek
 
-A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM függően két különböző módszer használatával támogatott. Az alábbi táblázat segítségével meghatározhatja, hogy melyik módszert kell használni a HSM létrehozásához, majd átvinni a saját HSM-védelemmel ellátott kulcsait, hogy azok a Azure Key Vault használatával legyenek használatban. 
+A HSM által védett kulcsok Key Vault két különböző módszerrel átvitele támogatott a használt HSM-től függően. Az alábbi táblázat segítségével meghatározhatja, hogy melyik módszert kell használnia a HSM-nek a HSM-hez, majd a HSM által védett kulcsok átviteléhez a Azure Key Vault. 
 
-|Szállító neve|Szállító típusa|Támogatott HSM-modellek|Támogatott HSM-Key átvitel módszer|
+|Szállító neve|Szállító típusa|Támogatott HSM-modellek|Támogatott HSM-kulcsátviteli módszer|
 |---|---|---|---|
-|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Gyártó<br/>HSM szolgáltatásként|<ul><li>HSM nShield családja</li><li>nShield szolgáltatásként</ul>|**1. módszer:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (elavult)<br/>**2. módszer:** [új BYOK metódus használata](hsm-protected-keys-byok.md) (ajánlott)|
-|Thales|Gyártó|<ul><li>Luna HSM 7 család belső vezérlőprogram 7,3-es vagy újabb verziójával</li></ul>| [Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>Self-Defending kulcskezelő szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Securosys SA|Gyártó<br/>HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|StorMagic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[Részletekért lásd a StorMagic-webhelyet](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Gyártó<br/>HSM mint szolgáltatás|<ul><li>nShield HSM-család</li><li>nShield mint szolgáltatás</ul>|**1. módszer:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (elavult). Ez a módszer <strong>2021. június 30.</strong> után nem lesz támogatott<br/>**2. módszer:** [Új BYOK metódus használata](hsm-protected-keys-byok.md) (ajánlott)|
+|Thales|Gyártó|<ul><li>Luna HSM 7 család 7.3-as vagy újabb belső vezérlőprogrammal</li></ul>| [Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Fortanix|Gyártó<br/>HSM mint szolgáltatás|<ul><li>Self-Defending szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Marvell|Gyártó|Minden LiquidSecurity HSM a<ul><li>Belső vezérlőprogram 2.0.4-es vagy újabb verziója</li><li>Belső vezérlőprogram 3.2-es vagy újabb verziója</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Titkosítási funkciók|ISV (Vállalati kulcskezelő rendszer)|Több HSM-márka és modell, köztük<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>A [részletekért lásd: Cryptomathic site (Titkosítási webhely)](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Securosys SA|Gyártó<br/>HSM mint szolgáltatás|Primus HSM-család, Securosys Clouds HSM|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|StorMagic|ISV (Vállalati kulcskezelő rendszer)|Több HSM márka és modell, beleértve a következőket:<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>Részletekért lásd: [StorMagic webhely](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |IBM|Gyártó|IBM 476x, CryptoExpress|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Utimaco|Gyártó<br/>HSM szolgáltatásként|u. Trust-horgony, CryptoServer|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Utimaco|Gyártó<br/>HSM mint szolgáltatás|u.trust Anchor, CryptoServer|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A kulcsok biztonságának, tartósságának és figyelésének biztosításához tekintse át a [Key Vault biztonsági áttekintését](../general/security-overview.md) .
-* Az új BYOK metódus teljes leírását a [BYOK-specifikációban](./byok-specification.md) találja.
+* Tekintse át [Key Vault biztonsági áttekintését](../general/security-overview.md) a kulcsok biztonságának, tartósságának és monitorozásának biztosításához.
+* Az új [BYOK-metódus](./byok-specification.md) teljes leírását a BYOK-specifikációban található

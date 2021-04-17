@@ -10,12 +10,12 @@ metadata:
   author: Ajayan1008
   ms.author: v-hborys
   ms.date: 04/14/2021
-  ms.openlocfilehash: 52e70d842f8e8237f1eee3446a8b70f867224be1
-  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+  ms.openlocfilehash: b54050ed75e16ff68594b3fe14b5ac2e52172d24
+  ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2021
-  ms.locfileid: "107536838"
+  ms.lasthandoff: 04/17/2021
+  ms.locfileid: "107587731"
 landingContent:
 - title: A BareMetal Infrastructure névjegye
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
       url: know-baremetal-terms.md
     - text: BareMetal-példányok csatlakoztatása az Azure-ban
       url: connect-baremetal-infrastructure.md
-- title: BareMetal-infrastruktúra Oracle-hez
+- title: BareMetal Infrastructure for Oracle
   linkLists:
   - linkListType: overview
     links:
@@ -35,7 +35,7 @@ landingContent:
       url: workloads/oracle/oracle-baremetal-overview.md
     - text: BareMetal SKUs Oracle számítási feladatokhoz
       url: workloads/oracle/oracle-baremetal-skus.md
-    - text: Storage az Oracle-hez az BareMetalon
+    - text: Storage on BareMetal for Oracle
       url: workloads/oracle/oracle-baremetal-storage.md
     - text: Javítási szempontok
       url: workloads/oracle/oracle-baremetal-patching.md
@@ -45,6 +45,16 @@ landingContent:
       url: workloads/oracle/oracle-baremetal-architecture.md
     - text: BareMetal kiépítése Oracle-hez
       url: workloads/oracle/oracle-baremetal-provision.md
+  - linkListType: reference
+    links:
+    - text: Magas rendelkezésre állás és vészhelyreállítás
+      url: workloads/oracle/concepts-oracle-high-availability.md
+    - text: Magas rendelkezésre állású funkciók
+      url: workloads/oracle/high-availability-features.md
+    - text: Lehetőségek és megfontolandó szempontok
+      url: workloads/oracle/options-considerations-high-availability.md
+    - text: A helyreállítás mikéntének kiválasztása
+      url: workloads/oracle/oracle-high-availability-recovery.md
 - title: SAP HANA az Azure-ban (nagyméretű példányok)
   linkLists:
   - linkListType: overview

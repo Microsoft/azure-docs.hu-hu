@@ -1,90 +1,90 @@
 ---
-title: Azure biztonsági alapkonfiguráció az Azure IoT Hub
-description: Az Azure IoT Hub biztonsági alapterve az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
+title: Az Azure biztonsági alapkonfigurációja Azure IoT Hub
+description: A Azure IoT Hub alapkonfigurációja eljárásokkal kapcsolatos útmutatást és forrásforrásokat biztosít az Azure biztonsági teljesítménytesztben meghatározott biztonsági javaslatok megvalósításához.
 author: msmbaldwin
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a21e0ae235d5b5c514f3d82b76b4d17394035872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99243dbfac7fddb8a4fe9d64ed64ab706245ec3c
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576891"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587629"
 ---
-# <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure biztonsági alapkonfiguráció az Azure IoT Hub
+# <a name="azure-security-baseline-for-azure-iot-hub"></a>Az Azure biztonsági alapkonfigurációja Azure IoT Hub
 
-Ez a biztonsági alapterv az [Azure biztonsági teljesítményteszt 1,0-es verziójának](../security/benchmarks/overview-v1.md) útmutatását alkalmazza Microsoft Azure IoT Hubre. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban.
-A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint az Azure IoT hub-ra vonatkozó kapcsolódó útmutatás. Az Azure IoT Hub nem alkalmazható **vezérlők** ki vannak zárva.
+Ez a biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszt [1.0-s](../security/benchmarks/overview-v1.md) verziójának útmutatását alkalmazza a Microsoft Azure IoT Hub. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban.
+A tartalmat az Azure  biztonsági teljesítményteszt által meghatározott biztonsági vezérlők és a kapcsolódó, az azure-beli biztonsági Azure IoT Hub. **A** Azure IoT Hub nem alkalmazható vezérlők ki vannak zárva.
 
  
-Ha szeretné megtekinteni, hogy az Azure hogyan IoT Hub teljes mértékben az Azure biztonsági teljesítményteszttel, tekintse meg a [teljes azure IoT hub biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Ha meg Azure IoT Hub az Azure-biztonsági teljesítményteszt teljes leképezését, tekintse meg a teljes Azure IoT Hub alapkonfiguráció [leképezési fájlját.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 ## <a name="network-security"></a>Hálózati biztonság
 
 *További információ: [Azure Security Benchmark: Hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Azure-erőforrások védelme virtuális hálózatokon belül
 
-**Útmutató**: IoT hub egy több-bérlős platform-szolgáltatásként (Pásti), a különböző ügyfelek ugyanazt a számítási, hálózati és tárolási hardveres erőforrásokat használják. A IoT Hub állomásneve egy nyilvános végpontra mutat, amely nyilvánosan irányítható IP-címmel rendelkezik az interneten keresztül. A különböző ügyfelek megoszthatják ezt a IoT Hub nyilvános végpontot, és IoT a nagy területű hálózatokon és a helyszíni hálózatokon található eszközöket. A Microsoft úgy tervezte a szolgáltatást, hogy teljes elkülönítést biztosítson az egyes bérlői adategységek között, és folyamatosan működjön az eredmény biztosítása érdekében.
+**Útmutató:** IoT Hub egy több-bérlős szolgáltatásként nyújtott platform (PaaS), a különböző ügyfelek ugyanazt a számítási, hálózati és tárolási hardvererőforrás-készletet osztják meg. IoT Hub gazdagépnevei egy nyilvános végpontra vannak leképezve, amely nyilvánosan átirányítható IP-címmel van meg az interneten. A különböző ügyfelek ezt IoT Hub nyilvános végpontot, és a nagy kiterületű hálózatokon található IoT-eszközök és a helyszíni hálózatok mind hozzáférhetnek. A Microsoft úgy tervezte meg a szolgáltatást, hogy az teljes elkülönítést biztosítson az egyes bérlők adatai között, és folyamatosan dolgozik az eredmény biztosítása érdekében.
 
-IoT Hub funkciók, például az üzenetek útválasztása, a fájlok feltöltése és a tömeges eszközök importálása/exportálása a nyilvános végponton keresztül a IoT Hub kapcsolatát is igényli a felhasználó által birtokolt Azure-erőforráshoz. Ezek a csatlakozási útvonalak együttesen alkotják a kimenő forgalmat IoT Hubról az ügyfelek erőforrásaira.
+IoT Hub szolgáltatások, például az üzenetek útválasztása, a fájlfeltöltés és az eszközök tömeges importálása/exportálása szintén megköveteli a IoT Hub és egy ügyfél tulajdonában lévő Azure-erőforrás közötti kapcsolatot a nyilvános végponton keresztül. Ezek a kapcsolódási útvonalak együttesen teszik ki a bejövő forgalmat a IoT Hub az ügyfélerőforrások felé.
 
-Ajánlott az Azure-erőforrásokhoz (beleértve az Azure IoT Hub-hoz) való kapcsolódás korlátozását egy olyan virtuális hálózaton keresztül, amelyet Ön birtokol, és amely a kapcsolati expozíció csökkentése egy elkülönített hálózatban, és a helyszíni hálózati kapcsolat közvetlen engedélyezése az Azure-beli gerinc hálózat számára. Az Azure Private link és az Azure Private-végpontja, ahol lehetséges, lehetővé teszi a szolgáltatásokhoz való privát hozzáférést más virtuális hálózatokból. 
+Javasolja, hogy korlátozza az Azure-erőforrásokhoz (beleértve a Azure IoT Hub-t) egy saját virtuális hálózaton keresztül, hogy csökkentse a kapcsolati kitettséget egy elkülönített hálózatban, és engedélyezze a helyszíni hálózati kapcsolatot közvetlenül az Azure gerinchálózatához. A Azure Private Link azure-beli privát végpont használatával, ahol ez lehetséges, lehetővé teszi a szolgáltatások privát hozzáférését más virtuális hálózatokról. 
 
-Ha a magánhálózati hozzáférés létrejött, tiltsa le a IoT Hub nyilvános hálózati hozzáférését a további biztonság érdekében. Ezt a hálózati szintű vezérlőt egy adott IoT hub-erőforráson kell kikényszeríteni, amely biztosítja az elkülönítést. Annak érdekében, hogy a szolgáltatás a nyilvános elérési úttal rendelkező más ügyfelek erőforrásai számára is aktív maradjon, a nyilvános végpont feloldható marad, az IP-címek felderíthetők, és a portok nyitva maradnak. Ez nem okoz problémát, mert a Microsoft több biztonsági réteget integrál a bérlők közötti teljes elkülönítés biztosításához.
+A privát hozzáférés létrejötte után tiltsa le a nyilvános hálózati IoT Hub a biztonság érdekében. Ez a hálózati szintű vezérlés kényszerítve van egy adott IoT Hub-erőforráson, ami biztosítja az elkülönítést. Annak érdekében, hogy a szolgáltatás más ügyfélerőforrások számára is aktív maradjon a nyilvános elérési út használatával, a nyilvános végpont feloldható marad, az IP-címek felderíthetők, és a portok nyitva maradnak. Ez nem okoz problémát, mivel a Microsoft több biztonsági réteget integrál a bérlők közötti teljes elkülönítés biztosítása érdekében.
 
-A nemkívánatos hozzáférés elkerülése érdekében tartsa meg az eszközökön a hardveres portokat a lehető legkevesebben. Emellett az eszköz fizikai illetéktelen módosításának megakadályozására vagy észlelésére szolgáló mechanizmusokat is létrehozhat.
+A nemkívánatos hozzáférés elkerülése érdekében minimálisan tartsa meg az eszközein a nyitott hardverportokat. Emellett építsen ki olyan mechanizmusokat, amelyek megakadályozzák vagy észlelik az eszköz fizikai illetéktelen módosítását.
 
 - [IoT virtuális hálózatok támogatása](virtual-network-support.md)
 
-- [A IoT hub nyilvános hálózati hozzáférésének kezelése](iot-hub-public-network-access.md)
+- [Az IoT Hub nyilvános hálózati hozzáférésének kezelése](iot-hub-public-network-access.md)
 
-- [Bérlői elkülönítés az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices#tenant-level-isolation)
+- [Bérlők elkülönítése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices#tenant-level-isolation)
 
-- [a loT hálózatkezelésének ajánlott gyakorlata](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations#networking)
+- [Ajánlott hálózatépítési gyakorlat](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations#networking)
 
-- [Az Azure Private link áttekintése](../private-link/private-link-overview.md)
+- [Azure Private Link áttekintés](../private-link/private-link-overview.md)
 
-- [Azure-beli hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md)
-
-**Felelősség**: Ügyfél
-
-**Azure Security Center figyelés**: nincs
-
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
-
-**Útmutató**: a Azure Security Center használata és a hálózatvédelmi javaslatok követése az Azure-hálózati erőforrások biztonságossá tételéhez. Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje el a naplókat egy Azure Storage-fiókba a naplózáshoz. A flow-naplókat Log Analytics munkaterületre is elküldheti, majd a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalmi mintákba. A Traffic Analytics néhány előnye, hogy képes megjeleníteni a hálózati tevékenységeket, azonosíthatja a gyakori helyeket és a biztonsági fenyegetéseket, megismerheti a forgalmi folyamatok mintáit, és meghatározhatja a hálózati helytelen konfigurációkat.
- 
-- [Hálózati biztonsági csoport folyamatábráinak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
-
-- [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
- 
-- [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
+- [Azure hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Virtuális hálózatok, alhálózatok és hálózati hálózatok konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+**Útmutató:** A Azure Security Center kövesse a hálózatvédelmi javaslatokat az Azure-beli hálózati erőforrások biztonságának biztosítása érdekében. Engedélyezze a hálózati biztonsági csoport forgalomnaplóit, és küldje el a naplókat egy Azure Storage-fióknak naplózásra. A forgalmi naplókat elküldheti egy Log Analytics-munkaterületre is, majd a Traffic Analytics segítségével betekintést nyerhet az Azure-felhő forgalmi mintáiba. Az adatforgalmi Traffic Analytics a hálózati tevékenységek vizualizációja, a gyors helyek és a biztonsági fenyegetések azonosítása, a forgalmi minták azonosítása és a hálózati konfigurációk észlelése.
+ 
+- [Hálózati biztonsági csoport forgalomnaplóinak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-**Felelősség**: nem alkalmazható
+- [A Traffic Analytics](../network-watcher/traffic-analytics.md)
+ 
+- [A hálózati biztonság Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-**Azure Security Center figyelés**: nincs
+**Felelősség**: Ügyfél
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
+**Azure Security Center:** Nincs
 
-**Útmutató**: blokkolja az ismert kártékony IP-címeket IoT hub IP-szűrési szabályokkal. A rosszindulatú kísérleteket a rendszer a IoT Azure Security Center használatával is rögzíti és figyelmezteti.
+### <a name="13-protect-critical-web-applications"></a>1.3: Kritikus fontosságú webalkalmazások védelme
 
-Az alapszintű Azure DDoS Protection már engedélyezve van, és a IoT Hub részeként nem vehető igénybe további díj. A forgalom folyamatos monitorozása és a gyakori hálózati szintű támadások valós idejű enyhítése biztosítja a Microsoft online szolgáltatások által használt védelmi adatokat. Az Azure globális hálózatának teljes skálája felhasználható a különböző régiók közötti támadási forgalom elosztására és enyhítésére.
+**Útmutató:** Nem alkalmazható; Ez a javaslat a számítási erőforrásokon futó webalkalmazások Azure App Service szánt.
+
+**Felelősség:** Nem alkalmazható
+
+**Azure Security Center:** Nincs
+
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert kártékony IP-címekkel való kommunikáció megtagadása
+
+**Útmutató:** Ismert kártékony IP-címek blokkolása IoT Hub IP-szűrési szabályokkal. A rosszindulatú kísérleteket az IoT-Azure Security Center is rögzítik, és riasztást küldenek.
+
+Azure DDoS Protection Alapszintű szolgáltatás már engedélyezve van, és további költségek nélkül elérhető a IoT Hub. A folyamatos forgalomfigyelés és a gyakori hálózati szintű támadások valós idejű mérséklése ugyanazt a védelmet biztosítja, mint amelyet a Microsoft online szolgáltatások. Az Azure globális hálózatának teljes skálája felhasználható a támadások forgalmának régiók közötti elosztására és csökkentésére.
 
 - [IoT Hub IP-szűrő](iot-hub-ip-filtering.md)
 
-- [Azure Security Center IoT gyanús IP-címekkel való kommunikációhoz](/azure/asc-for-iot/concept-security-alerts)
+- [Azure Security Center IoT-gyanús IP-címek kommunikációja](/azure/asc-for-iot/concept-security-alerts)
 
 - [Alapszintű Azure DDoS Protection kezelése](../ddos-protection/ddos-protection-overview.md)
 
@@ -92,266 +92,266 @@ Az alapszintű Azure DDoS Protection már engedélyezve van, és a IoT Hub rész
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
+### <a name="15-record-network-packets"></a>1.5: Hálózati csomagok rekordja
 
-**Útmutató**: nem alkalmazható; Ez a javaslat olyan ajánlatok számára készült, amelyek olyan hálózati csomagokat hoznak létre, amelyeket az ügyfelek rögzíthetnek és megtekinthetnek. A IoT Hub nem hoz létre az ügyfelek felé irányuló hálózati csomagokat, és nem úgy tervezték, hogy közvetlenül az Azure Virtual Networks szolgáltatásba telepítse őket.
+**Útmutató:** Nem alkalmazható; Ez a javaslat olyan ajánlatokhoz ajánlott, amelyek az ügyfelek által rögzíthet és megtekinthető hálózati csomagokat hoznak létre. IoT Hub nem hoz létre az ügyfelek számára elérhető hálózati csomagokat, és nem úgy tervezték, hogy közvetlenül az Azure-beli virtuális hálózatokon üzembe helyezhetők.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Hálózatalapú behatolásészlelési/behatolásvédelmi rendszerek (IDS/IPS) üzembe helyezése
 
-**Útmutató**: válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az azonosítók/IP-címek funkciót a hasznos adatok vizsgálatával.  Ha a hasznos adatok ellenőrzése nem követelmény, Azure Firewall a veszélyforrások felderítése is használható. Azure Firewall veszélyforrások felderítésére szolgáló szűrés a riasztások és/vagy az ismert kártékony IP-címek és tartományok felé irányuló, illetve azokból való adatforgalom letiltására szolgál. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
+**Útmutató:** Válasszon ki egy olyan ajánlatot a Azure Marketplace amely támogatja az IDS/IPS funkciót és a hasznos vizsgálatot.  Ha a hasznos információk vizsgálata nem követelmény, Azure Firewall fenyegetési intelligencia használható. Azure Firewall veszélyforrás-felderítésen alapuló szűrés az ismert kártékony IP-címek és tartományok be- és/vagy letiltásán alapul. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
-Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy blokkolhatja a kártékony forgalmat. 
+Telepítse a választott tűzfalmegoldást a szervezet minden hálózati határán a rosszindulatú forgalom észlelése és/vagy blokkolása érdekében. 
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
+- [A virtuális gép Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Riasztások konfigurálása Azure Firewall](../firewall/threat-intel.md)
-
-**Felelősség**: Ügyfél
-
-**Azure Security Center figyelés**: nincs
-
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
-
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
-
-**Felelősség**: nem alkalmazható
-
-**Azure Security Center figyelés**: nincs
-
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
-
-**Útmutató**: az Azure-IoT hub elérését igénylő erőforrások esetében Virtual Network szolgáltatás-címkék használatával határozhatja meg a hálózati biztonsági csoportokon vagy a Azure Firewallokon a hálózati hozzáférés-vezérlést. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének (például AzureIoTHub) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
-
-- [Szolgáltatás-címkék használata az Azure IoT](iot-hub-understand-ip-address.md)
-- [További információ a szolgáltatási címkék használatáról](../virtual-network/service-tags-overview.md)
+- [Riasztások konfigurálása a Azure Firewall](../firewall/threat-intel.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Webalkalmazások forgalmának kezelése
 
-**Útmutató**: az Azure IoT hub névterekhez társított hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. Devices" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Machine Learning névterek hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. 
+**Útmutató:** Nem alkalmazható; Ez a javaslat a számítási erőforrásokon futó webalkalmazások Azure App Service ajánlott.
+
+**Felelősség:** Nem alkalmazható
+
+**Azure Security Center monitorozás:** Nincs
+
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
+
+**Útmutató:** A hálózati biztonsági csoportok vagy Azure IoT Hub hozzáféréssel Virtual Network erőforrásokhoz Virtual Network szolgáltatáscímkék használatával határozhatja meg a hálózati hozzáférés-vezérlés Azure Firewall t. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha megadja a szolgáltatáscímke nevét (például AzureIoTHub) egy szabály megfelelő forrás- vagy célmezőben, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásával.
+
+- [Szolgáltatáscímkék használata az Azure IoT-hez](iot-hub-understand-ip-address.md)
+- [További információ a szolgáltatáscímkék használatával kapcsolatban](../virtual-network/service-tags-overview.md)
+
+**Felelősség**: Ügyfél
+
+**Azure Security Center:** Nincs
+
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációjának fenntartása
+
+**Útmutató:** Szabványos biztonsági konfigurációkat határozhat meg és valósíthat meg a Azure IoT Hub-névterekkel társított hálózati erőforrásokhoz a Azure Policy. A Azure Policy a "Microsoft.Devices" és a "Microsoft.Network" névterek aliasai segítségével egyéni szabályzatokat hozhat létre a hálózati konfiguráció naplózásához Machine Learning kényszerítéséhez. 
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
+### <a name="110-document-traffic-configuration-rules"></a>1.10: A forgalom konfigurációs szabályainak dokumentálása
 
-**Útmutató**: az Azure IoT hub üzembe helyezéséhez társított hálózati erőforrásokhoz használjon címkéket, hogy logikailag szervezze őket egy besorolásba.
+**Útmutató:** Az üzembe helyezéshez társított hálózati erőforrások címkéinek Azure IoT Hub, hogy logikailag rendszerezze őket egy rendszerezésbe.
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrások konfigurációjának figyelése és a változások észlelése érdekében
 
-**Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és az Azure IoT hub-hoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
+**Útmutató:** Az Azure-tevékenységnaplóval monitorozható a hálózati erőforrások konfigurációja, és észlelhetők a hálózati erőforrások változásai a Azure IoT Hub. Hozzon létre riasztásokat a Azure Monitor, amelyek akkor aktiválódnak, ha a kritikus hálózati erőforrások módosulnak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
+- [Az Azure-tevékenységnapló eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
+*További információ: [Azure biztonsági teljesítményteszt: Naplózás és monitorozás.](../security/benchmarks/security-control-logging-monitoring.md)*
 
-### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
+### <a name="22-configure-central-security-log-management"></a>2.2: Központi biztonsági naplókezelés konfigurálása
 
-**Útmutató**: naplók beolvasása Azure monitor segítségével az Azure-IoT hub által generált biztonsági adatokat összesítve. Azure Monitor a Log Analytics-munkaterületek használatával kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM).
+**Útmutató:** Naplók Azure Monitor a Azure IoT Hub által létrehozott biztonsági adatok Azure IoT Hub. A Azure Monitor Log Analytics-munkaterületek használatával végezhet lekérdezést és elemzést, valamint tárfiókokat használhat a hosszú távú/archiválási tárterülethez. Másik lehetőségként engedélyezheti és bevetheti az adatokat egy Azure Sentinel egy külső biztonsági incidens- és eseménykezelés (SIEM) számára.
 
 - [Azure IoT-naplók beállítása](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#resource-logs)
 
-- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
+- [A Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Azure-erőforrások naplózásának engedélyezése
 
-**Útmutató**: az Azure IoT diagnosztikai beállításainak engedélyezése az Azure-erőforrásokon a naplózási, biztonsági és erőforrás-naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek.
+**Útmutató:** Az Azure IoT diagnosztikai beállításainak engedélyezése az Azure-erőforrásokon a naplózási, biztonsági és erőforrásnaplókhoz való hozzáféréshez. Az automatikusan elérhető tevékenységnaplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscímek, a célcímek és egyéb hasznos elemek.
 
-- [Azure IoT Hub-naplók beállítása](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#resource-logs)
+- [A naplók Azure IoT Hub beállítása](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#resource-logs)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Platformnaplók és -metrikák gyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
+- [A naplózás és a különböző naplótípusok az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center monitorozás**: az [Azure biztonsági teljesítményteszt](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) a Security Center alapértelmezett házirend-kezdeményezése, és a [Security Center ajánlásainak](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)alapja. A vezérlőhöz kapcsolódó Azure Policy-definíciók Security Center automatikusan engedélyezve vannak. Az ehhez a vezérlőhöz kapcsolódó riasztásokhoz szükség lehet egy [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -csomagra a kapcsolódó szolgáltatásokhoz.
+**Azure Security Center monitorozása:** Az [Azure Biztonsági](/azure/governance/policy/samples/azure-security-benchmark) teljesítményteszt a Security Center alapértelmezett szabályzati kezdeményezése, amely a Security Center [javaslatainak alapja.](/azure/security-center/security-center-recommendations) A Azure Policy vezérlővel kapcsolatos összes definíciót automatikusan engedélyezi a Security Center. Az ehhez a vezérlőhez kapcsolódó riasztások esetében szükség [lehet Azure Defender](/azure/security-center/azure-defender) kapcsolódó szolgáltatásokra vonatkozó tervre.
 
-**Azure Policy beépített definíciók – Microsoft. Devices**:
+**Azure Policy definíciók – Microsoft.Devices:**
 
 [!INCLUDE [Resource Policy for Microsoft.Devices 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.devices-2-3.md)]
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Biztonsági naplók gyűjtése operációs rendszerekről
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz ajánlott.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
+### <a name="25-configure-security-log-storage-retention"></a>2.5: A biztonsági naplók tárolásának megőrzésének konfigurálása
 
-**Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján állítsa be az Azure-IoT hub példányaihoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
+**Útmutató:** A Azure Monitor a vállalat megfelelőségi szabályzatainak megfelelően állítsa be a naplómegőrzési megőrzési időszakot a Azure IoT Hub-példányokhoz társított Log Analytics-munkaterületeken.
 
-- [Napló-megőrzési paraméterek beállítása](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
+- [Naplómegőrzési paraméterek beállítása](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
+### <a name="26-monitor-and-review-logs"></a>2.6: Naplók figyelése és áttekintése
 
-**Útmutató**: elemezze és figyelje a rendellenes viselkedésre vonatkozó naplókat, és rendszeresen tekintse át az Azure-IoT hub eredményeit. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor és egy Log Analytics munkaterületet.
+**Útmutató:** Elemezze és figyelje a rendellenes viselkedést a naplókban, és rendszeresen tekintse át a naplók Azure IoT Hub. A Azure Monitor és egy Log Analytics-munkaterület használatával áttekinthet naplókat, és lekérdezéseket hajthatja végre a naplóadatokon.
 
-Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
+Másik lehetőségként engedélyezheti és be is használhatja az adatokat Azure Sentinel külső SIEM-hez. 
 
 - [Az Azure IoT állapotának figyelése](monitor-iot-hub.md)
 
-- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
+- [A Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Ismerkedés a Log Analytics-lekérdezésekkel](../azure-monitor/logs/log-analytics-tutorial.md)
    
-- [ Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
+- [ Egyéni lekérdezések végrehajtása a Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Riasztások engedélyezése rendellenes tevékenységekhez
 
-**Útmutató**: a IoT Azure Security Center használata a biztonsági naplókban és eseményekben található rendellenes tevékenységek figyelésére és riasztására log Analytics munkaterülettel. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel szolgáltatásban való ellátását. Olyan Azure Monitor is meghatározhat működési riasztásokat, amelyek biztonsági következményekkel járhatnak, például ha a forgalom váratlanul csökken.
+**Útmutató:** Az Azure Security Center for IoT használata Log Analytics-munkaterülettel a biztonsági naplókban és eseményekben található rendellenes tevékenységek monitorozásához és riasztásához. Másik lehetőségként engedélyezheti és be is használhatja az adatokat a Azure Sentinel. Az üzemeltetési riasztásokat olyan riasztásokkal is Azure Monitor amelyek biztonsági következményekkel járhatnak, például ha a forgalom váratlanul csökken.
 
-- [Az Azure IoT Hub állapotának figyelése](monitor-iot-hub.md)
+- [A Azure IoT Hub állapotának figyelése](monitor-iot-hub.md)
 
-- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
+- [A Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [IoT-riasztások Azure Security Center](/azure/asc-for-iot/concept-security-alerts)
+- [Azure Security Center IoT-riasztások](/azure/asc-for-iot/concept-security-alerts)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
+- [Naplóelemzési naplóadatokra vonatkozó riasztások](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
+### <a name="28-centralize-anti-malware-logging"></a>2.8: A kártevőirtó naplózás központosította
 
-**Útmutató**: nem alkalmazható; Az Azure IoT Hub nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
+**Útmutató:** Nem alkalmazható; Azure IoT Hub nem készít kártevőirtó naplókat.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
+### <a name="29-enable-dns-query-logging"></a>2.9: DNS-lekérdezésnaplózás engedélyezése
 
-**Útmutató**: nem alkalmazható; Az Azure IoT Hub a DNS-sel kapcsolatos naplókat nem dolgozza fel és nem hozza létre.
+**Útmutató:** Nem alkalmazható; Azure IoT Hub nem készít DNS-sel kapcsolatos naplókat.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Parancssori naplózás engedélyezése
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
+*További információ: [Azure Biztonsági teljesítményteszt: Identitás és Access Control.](../security/benchmarks/security-control-identity-access-control.md)*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: A rendszergazdai fiókok nyilvántartása
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure IoT hub elérésének kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket leltározott vagy lekérdezheti az olyan eszközökkel, mint például az Azure CLI vagy a Azure PowerShell, vagy a Azure Portal.
+**Útmutató:** Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szerepkör-hozzárendelésekkel teszi lehetővé az Azure IoT Hubhoz való hozzáférés kezelését. Ezeket a szerepköröket felhasználókhoz, csoportokhoz, szolgáltatásnévhez és felügyelt identitásokhoz rendelheti hozzá. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök is rendelkezésre állnak, és ezek a szerepkörök leltárba menthetőek vagy lekérdezhetőek olyan eszközökkel, mint az Azure CLI, Azure PowerShell vagy a Azure Portal.
 
-- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Címtárszerepkomó le Azure Active Directory (Azure AD) a PowerShell használatával](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
-
-**Felelősség**: Ügyfél
-
-**Azure Security Center figyelés**: nincs
-
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
-
-**Útmutató**: az Azure IoT hub-erőforrásokhoz való hozzáférés-kezelést Azure Active Directory (Azure ad) szabályozza. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával.
+- [Címtárbeli szerepkör tagjainak lekérte az Azure AD-ban a PowerShell használatával](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Az alapértelmezett jelszavak módosítása, ha vannak
 
-**Útmutató**: szabványos üzemeltetési eljárások létrehozása a dedikált rendszergazdai fiókok használata körül.
+**Útmutató:** A Azure IoT Hub hozzáférés-vezérlése a Azure Active Directory (Azure AD) használatával történik. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával.
 
-Az igény szerinti hozzáférést a rendszergazdai fiókokhoz is engedélyezheti Azure Active Directory (Azure AD) Privileged Identity Management és Azure Resource Manager használatával.
+**Felelősség**: Ügyfél
+
+**Azure Security Center monitorozás:** Nincs
+
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Dedikált rendszergazdai fiókok használata
+
+**Útmutató:** Szabványos üzemeltetési eljárások létrehozása a dedikált rendszergazdai fiókok használatával kapcsolatban.
+
+A rendszergazdai fiókokhoz az azure-Azure Active Directory (Azure AD) használatával is Privileged Identity Management és Azure Resource Manager.
 
 - [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató**: a IoT hubhoz hozzáférő felhasználók Azure Active Directory (Azure ad) egyszeri bejelentkezést használhatnak. Azure Security Center identitás és hozzáférési javaslatok használata.
+**Útmutató:** Az alkalmazáshoz IoT Hub felhasználók Azure Active Directory (Azure AD) SSO-t. Használja Azure Security Center és hozzáférési javaslatokat.
 
-- [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Az SSO azure aD-val való használatának a](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Többtényezős hitelesítés használata minden Azure Active Directory hozzáféréshez
 
-**Útmutató**: engedélyezze az Azure Active Directory (Azure ad) többtényezős hitelesítést a teljes Azure-bérlője számára, és használja ki az összes szolgáltatást. IoT Hub szolgáltatás nem rendelkezik többtényezős hitelesítés támogatásával.
+**Útmutató:** Engedélyezze Azure Active Directory (Azure AD) többtényezős hitelesítést a teljes Azure-bérlő védelme érdekében, így minden szolgáltatás kihasználható. IoT Hub szolgáltatás nem támogatja a többtényezős hitelesítést.
 
 - [Többtényezős hitelesítés engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
+- [Identitás és hozzáférés figyelése a Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Dedikált gépek (Emelt szintű hozzáférésű munkaállomások) használata az összes felügyeleti feladathoz
 
-**Útmutató**: emelt szintű jogosultságokat igénylő felügyeleti feladatokhoz használjon biztonságos jogosultságú hozzáférési munkaállomást (Paw).
+**Útmutató:** Emelt szintű jogosultságot igénylő rendszergazdai feladatokhoz használjon biztonságos emelt szintű hozzáférési munkaállomást (PAW).
 
-- [A biztonságos, privilegizált hozzáférési munkaállomások megismerése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [A biztonságos, emelt szintű hozzáférésű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [A Azure Active Directory (Azure AD) többtényezős hitelesítésének engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Többtényezős Azure Active Directory (Azure AD) engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: A rendszergazdai fiókokból származó gyanús tevékenységek naplózása és riasztása
 
-**Útmutató**: a Azure Active Directory (Azure ad) biztonsági jelentéseinek és figyelésének használata annak észlelésére, hogy a környezetben gyanús vagy nem biztonságos tevékenységek történnek-e. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
+**Útmutató:** Azure Active Directory (Azure AD) biztonsági jelentésekkel és monitorozással észlelheti, ha gyanús vagy nem biztonságos tevékenység történik a környezetben. A Azure Security Center identitás- és hozzáférési tevékenységek figyelése.
 
 - [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -359,102 +359,102 @@ Az igény szerinti hozzáférést a rendszergazdai fiókokhoz is engedélyezheti
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: csak a jóváhagyott helyekről származó Azure-erőforrások kezelése
+### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8: Azure-erőforrások kezelése csak jóváhagyott helyekről
 
-**Útmutató**: IoT hubhoz hozzáférő felhasználók esetén a feltételes hozzáférés nem támogatott. Ennek enyhítéséhez használja a Azure Active Directory (Azure AD) nevű helyet, hogy csak a teljes Azure-bérlőhöz tartozó IP-címtartományok vagy országok/régiók számára engedélyezze a hozzáférést, így az összes szolgáltatást, beleértve a IoT Hub is.
+**Útmutató:** A IoT Hub felhasználók számára a feltételes hozzáférés nem támogatott. Ennek mérséklése érdekében használjon Azure Active Directory (Azure AD) nevű helyeket, hogy csak az IP-címtartományok vagy országok/régiók meghatározott logikai csoportosításaiból engedélyezze a hozzáférést a teljes Azure-bérlő számára, így az összes szolgáltatás, köztük a IoT Hub.
 
-- [Az Azure AD nevesített helyeinek konfigurálása](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
+- [Az Azure AD nevestűs helyek konfigurálása](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
+### <a name="39-use-azure-active-directory"></a>3.9: A Azure Active Directory
 
-**Útmutató**: IoT hubhoz való felhasználói hozzáféréshez használja a Azure Active Directory (Azure ad) központi hitelesítési és engedélyezési rendszerként. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
+**Útmutató:** A felhasználói hozzáféréshez IoT Hub használja a Azure Active Directory (Azure AD) központi hitelesítési és engedélyezési rendszerként. Az Azure AD erős titkosítással védi az adatokat az átvitel alatt és az átvitel alatt. Az Azure AD emellett a felhasználói hitelesítő adatokat is megsóz, hashekkel és biztonságosan tárolja.
 
-Eszköz-és szolgáltatás-hozzáférés esetén a IoT Hub biztonsági jogkivonatokat és közös hozzáférésű aláírási (SAS-) jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok küldését a hálózaton. 
+Eszköz- és szolgáltatás-hozzáférés esetén a IoT Hub biztonsági jogkivonatok és közös hozzáférésű jogosultsági jogosultságú (SAS-) jogkivonatok használatával hitelesíti az eszközöket és szolgáltatásokat, hogy elkerülje a kulcsok hálózaton való küldését. 
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
-- [Biztonsági jogkivonatok IoT Hub](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
+- [IoT Hub biztonsági jogkivonatok](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: A felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
+**Útmutató:** Azure Active Directory (Azure AD) naplókat biztosít az elavult fiókok felderítésének segítésekor. Emellett az Azure AD-identitás és -hozzáférési felülvizsgálatok használatával hatékonyan kezelheti a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férnek hozzá.
 
-A naplók és a riasztások generálásához használjon Azure AD Privileged Identity Management (PIM), ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
+A Azure AD Privileged Identity Management (PIM) használatával naplókat és riasztásokat generáljon, ha gyanús vagy nem biztonságos tevékenység történik a környezetben.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD-jelentéskészítés](/azure/active-directory/reports-monitoring/)
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) üzembe helyezése](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Üzembe Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: a figyelő megkísérli a deaktivált hitelesítő adatok elérését
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Az inaktivált hitelesítő adatok elérésére tett kísérletek figyelése
 
-**Útmutató**: hozzáférhet Azure Active Directory (Azure ad) bejelentkezési tevékenységhez, naplózáshoz és kockázati Eseménynapló-forrásokhoz, amelyek lehetővé teszik bármely Siem/monitoring eszköz integrálását.
+**Útmutató:** Hozzáféréssel rendelkezik Azure Active Directory (Azure AD) bejelentkezési tevékenységéhez, naplózási és kockázati eseménynapló-forrásaihoz, amelyek lehetővé teszik az integrációt bármely SIEM-/monitorozási eszközzel.
 
-Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
+Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi az auditnaplókat és a bejelentkezési naplókat egy Log Analytics-munkaterületre. A kívánt riasztásokat a Log Analytics-munkaterületen konfigurálhatja.
 
-A felhasználó Azure Monitor erőforrás-naplókat a kapcsolatok kategóriában a jogosulatlan kapcsolódási kísérletek figyelésére.
+A Azure Monitor erőforrásnaplókat a Kapcsolatok kategóriában a jogosulatlan kapcsolódási kísérletek figyelése során.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Az IoT hub erőforrás-naplófájljainak konfigurálása](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing)
-
-**Felelősség**: Ügyfél
-
-**Azure Security Center figyelés**: nincs
-
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
-
-**Útmutató**: az Azure Active Directory (Azure ad) Identity Protection-funkciókkal konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
-
-- [ Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
-
-- [ Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
-
-- [ Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
+- [Erőforrásnaplók konfigurálása az IoT Hubhoz](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Riasztás a fiók bejelentkezési viselkedésének eltéréséről
 
-**Útmutató**: a támogatási forgatókönyvekben, ahol a Microsoftnak hozzá kell férnie az ügyféladatok eléréséhez, közvetlenül az ügyféltől kérhető.
+**Útmutató:** A Azure Active Directory (Azure AD) Identity Protection funkcióival konfigurálhatja a felhasználói identitásokkal kapcsolatos észlelt gyanús műveletekre adott automatikus válaszokat. Az adatokat be is Azure Sentinel vizsgálathoz.
+
+- [ Kockázatos Azure AD-bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
+
+- [ Az Identity Protection kockázati szabályzatok konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
+
+- [ A Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Hozzáférés biztosítanak a Microsoft számára a releváns ügyféladatokhoz a támogatási forgatókönyvek során
+
+**Útmutató:** Olyan támogatási forgatókönyvekben, ahol a Microsoftnak hozzá kell férni az ügyféladatokhoz, azt közvetlenül az ügyféltől kell kérnie.
+
+**Felelősség**: Ügyfél
+
+**Azure Security Center:** Nincs
 
 ## <a name="data-protection"></a>Adatvédelem
 
 *További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Bizalmas adatok leltárának fenntartása
 
-**Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
+**Útmutató:** A címkék segítségével nyomon lehet követni a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrásokat.
  
 - [ Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Bizalmas adatokat tároló vagy feldolgozó rendszerek elkülönítése
 
-**Útmutató**: az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure RBAC segítségével szabályozhatja.
+**Útmutató:** Elkülönítés implementálás különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezet típusához és az adatok bizalmasságához. Korlátozhatja az alkalmazások és a vállalati környezetek számára az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure RBAC-n keresztül szabályozhatja.
   
 - [ További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
@@ -464,48 +464,48 @@ A felhasználó Azure Monitor erőforrás-naplókat a kapcsolatok kategóriában
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Bizalmas adatok jogosulatlan átvitelének figyelése és blokkolása
 
-**Útmutató**: külső féltől származó megoldás használata az Azure Marketplace-en a hálózati kerületekben a bizalmas információk jogosulatlan átvitelének figyelése és az ilyen átvitelek blokkolása az adatbiztonsági szakemberek értesítése mellett.
+**Útmutató:** Külső megoldás használata a Azure Marketplace peremhálózatán a bizalmas adatok jogosulatlan átvitelének figyelése és az ilyen átvitelek blokkolása az információbiztonsági szakemberek riasztása során.
 
-A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+A Microsoft által felügyelt mögöttes platform esetén a Microsoft minden ügyféltartalmat bizalmasként kezel, és védelmet biztosít az ügyfelek adatvesztése és kitettsége ellen. Annak érdekében, hogy az Azure-beli ügyféladatok biztonságban maradnak, a Microsoft robusztus adatvédelmi vezérlőket és képességeket valósított meg és tart karban.
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Az átvitel során bizalmas adatok titkosítása
 
-**Útmutató**: a IoT hub TRANSPORT Layer Security (TLS) protokollt használ a IoT-eszközök és-szolgáltatások közötti kapcsolatok biztonságossá tételéhez. A TLS protokoll három verziója jelenleg támogatott, azaz a 1,0, 1,1 és 1,2 verziókat. Javasoljuk, hogy a TLS 1,2-et használja elsődleges TLS-verzióként IoT Hubhoz való csatlakozáskor.
+**Útmutató:** IoT Hub iot-Transport Layer Security (TLS) segítségével biztosítja az IoT-eszközök és -szolgáltatások közötti kapcsolatokat. Jelenleg a TLS protokoll három verziója támogatott, ezek az 1.0-s, 1.1-es és 1.2-es verziók. Erősen ajánlott a TLS 1.2-t használni előnyben részesített TLS-verzióként a IoT Hub.
 
-Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
+Kövesse Azure Security Center az átvitel közbeni, valamint az átvitel közbeni titkosításra vonatkozó javaslatokat.
 
 - [TLS-támogatás a IoT Hub](iot-hub-tls-support.md)
-- [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Az átvitel során az Azure-ral történő titkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Aktív felderítési eszköz használata a bizalmas adatok azonosításához
 
-**Útmutató**: az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el az Azure IoT hub számára. Harmadik féltől származó megoldás implementálása, ha az szükséges a megfelelőség szempontjából.
+**Útmutató:** Az adatazonosítási, besorolási és adatveszteség-megelőzési funkciók még nem érhetők el a Azure IoT Hub. Ha megfelelőségi célokból szükség van rá, implementálja a harmadik féltől származó megoldást.
 
-A Microsoft által felügyelt mögöttes Azure platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésének és a kitettségének védelme érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+A Microsoft által felügyelt mögöttes Azure-platform esetén a Microsoft bizalmasként kezeli az ügyfelek tartalmait, és nagy terjedelmüknek megfelelő védelmet biztosít az ügyfelek adatvesztése és -kitettsége ellen. Annak érdekében, hogy az Azure-beli ügyféladatok biztonságban maradnak, a Microsoft robusztus adatvédelmi vezérlőket és képességeket valósított meg és tart karban.
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Az Erőforrásokhoz való hozzáférés kezelése az Azure RBAC használatával
 
-**Útmutató**: a IoT hubhoz való felhasználói hozzáférés vezérléséhez használja az Azure RBAC a hozzáférés szabályozásához. Az adatsíkok IoT Hubhoz való hozzáféréséhez használja a IoT Hubhoz tartozó megosztott hozzáférési házirendeket.
+**Útmutató:** A vezérlősík felhasználói hozzáférése IoT Hub azure RBAC használatával szabályozhatja a hozzáférést. Az adatsík hozzáféréséhez a IoT Hub használja a megosztott hozzáférési szabályzatokat a IoT Hub.
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
@@ -513,71 +513,71 @@ A Microsoft által felügyelt mögöttes Azure platform esetében a Microsoft az
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Kritikus fontosságú Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure IoT hub és más kritikus vagy kapcsolódó erőforrások éles példányain végezheti el a módosításokat.
+**Útmutató:** Azure Monitor Azure-tevékenységnaplóval használva riasztásokat hozhat létre, amikor változásokra kerül sor az éles példányok Azure IoT Hub kritikus vagy kapcsolódó erőforrásokon.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységnapló eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](../security/benchmarks/security-control-vulnerability-management.md)című témakört.*
+*További információ: [Azure biztonsági teljesítményteszt: Biztonsági rések kezelése.](../security/benchmarks/security-control-vulnerability-management.md)*
 
-### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: automatikus javítási megoldás üzembe helyezése harmadik féltől származó szoftverek címeihez
+### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3: Automatikus javításkezelési megoldás üzembe helyezése külső szoftvercímek számára
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: A biztonsági rések biztonsági rések biztonsági vizsgálatának összehasonlítása
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Kockázatminősítési folyamat használata a felderített biztonsági rések szervizelésének rangsorolására
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
+*További információ: [Azure biztonsági teljesítményteszt: Leltár és eszközkezelés.](../security/benchmarks/security-control-inventory-asset-management.md)*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Automatizált eszközfelderítési megoldás használata
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
+### <a name="62-maintain-asset-metadata"></a>6.2: Objektum metaadatainak karbantartása
 
-**Útmutató**: címkék alkalmazása az Azure-erőforrásokra (nem minden erőforrás támogatja a címkéket, de a legtöbb esetben), hogy logikailag szervezze őket egy besorolásba.
+**Útmutató:** Címkék alkalmazása Azure-erőforrásokra (nem minden erőforrás támogatja a címkéket, de a legtöbb igen), hogy logikailag rendszerezze őket egy taxonómiában.
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Nem engedélyezett Azure-erőforrások törlése
 
-**Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
+**Útmutató:** Az eszközök rendszerezéséhez és nyomon követéséhez használjon címkézést, felügyeleti csoportokat és különálló előfizetéseket, ha szükséges. Rendszeresen összeegyezteti a leltárat, és gondoskodik arról, hogy a jogosulatlan erőforrások időben törlődjenek az előfizetésből.
   
 - [ További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
@@ -587,25 +587,25 @@ A Microsoft által felügyelt mögöttes Azure platform esetében a Microsoft az
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
+### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Jóváhagyott Azure-erőforrások készletének meghatározása és karbantartása
 
-**Útmutató**: a számítási erőforrásokhoz jóváhagyott Azure-erőforrások és jóváhagyott szoftverek leltárának létrehozása a szervezeti igényeknek megfelelően.
+**Útmutató:** Leltár létrehozása a jóváhagyott Azure-erőforrásokról és a számítási erőforrásokhoz jóváhagyott szoftverekről a szervezeti igényeknek megfelelően.
 
-Minden IoT Hub rendelkezik egy azonosító beállításjegyzékgel, amely a szolgáltatásban eszközönkénti erőforrások létrehozására használható. Az eszközök hozzáférésének teljes körű szabályozása lehetővé teszi, hogy egy engedélyezési vagy egy Blocklist lehessen bevenni az eszközök egyedi vagy csoportjait.
+Minden IoT Hub rendelkezik egy identitásjegyzékkel, amely segítségével eszközönkénti erőforrások hozhatók létre a szolgáltatásban. Az eszköz identitások egyéni vagy csoportjai hozzáadhatók egy engedélyezési listához vagy egy tiltólistához, ami lehetővé teszi az eszköz hozzáférésének teljes vezérlését.
 
-- [IoT Hub Identity Registry](iot-hub-devguide-identity-registry.md)
+- [IoT Hub identity registry](iot-hub-devguide-identity-registry.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Nem jóváhagyott Azure-erőforrások figyelése
 
-**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az előfizetésekben létrehozható erőforrásokra vonatkozóan. 
+**Útmutató:** A Azure Policy az előfizetésben létrehozható erőforrások típusára vonatkozó korlátozásokat. 
 
-Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva. 
+Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat.  Győződjön meg arról, hogy a környezetben jelen van minden Azure-erőforrás jóvá van hagyva. 
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -613,384 +613,384 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Nem jóváhagyott Azure-erőforrások és -szoftveralkalmazások eltávolítása
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
+### <a name="68-use-only-approved-applications"></a>6.8: Csak jóváhagyott alkalmazások használata
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
+### <a name="69-use-only-approved-azure-services"></a>6.9: Csak jóváhagyott Azure-szolgáltatások használata
 
-**Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az ügyfél-előfizetésekben létrehozható erőforrások típusára a következő beépített szabályzat-definíciók használatával:
+**Útmutató:** Azure Policy az alábbi beépített szabályzatdefiníciók használatával az ügyfél-előfizetésben létrehozható erőforrások típusára vonatkozó korlátozásokat a Azure Policy használatával:
 
 * Nem engedélyezett erőforrástípusok
 * Engedélyezett erőforrástípusok
 
-Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetéseken belüli erőforrásokat.
+Emellett a Azure Resource Graph az előfizetések erőforrásait is lekérdezheti/felderítheti.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: A jóváhagyott szoftvercímek leltárának fenntartása
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz ajánlott.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Korlátozza a felhasználók számára a Azure Resource Manager
 
-**Útmutató**: az Azure Active Directory (Azure ad) feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra a "Microsoft Azure felügyelet" alkalmazás "hozzáférés letiltása" beállításával.
+**Útmutató:** A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a felhasználók Azure Resource Manager-val való interakcióját a "Hozzáférés blokkolása" beállításával a "Microsoft Azure Management" alkalmazáshoz.
 
-- [ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
+- [ Feltételes hozzáférés konfigurálása a hozzáférés letilt Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokban
+### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12: A felhasználók szkriptek számítási erőforrásokban való végrehajtásának korlátozása
 
-**Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez a javaslat számítási erőforrásokhoz ajánlott.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Magas kockázatú alkalmazások fizikai vagy logikai elkülönítése
 
-**Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
+**Útmutató:** Nem alkalmazható; ez a javaslat a számítási erőforrásokon futó webalkalmazások Azure App Service ajánlott.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md)című témakörben talál.*
+*További információ: [Azure biztonsági teljesítményteszt: Biztonságos konfiguráció.](../security/benchmarks/security-control-secure-configuration.md)*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: az Azure IOT hub szolgáltatás szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. A "Microsoft. Devices" névtérben Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Azure IoT Hub-szolgáltatások konfigurációjának naplózásához vagy érvényesítéséhez.
+**Útmutató:** Standard biztonsági konfigurációk meghatározása és megvalósítása az Azure Iot Hub szolgáltatáshoz a Azure Policy. A Azure Policy a "Microsoft.Devices" névtérben az aliasok használatával egyéni szabályzatokat hozhat létre, amelyek naplót végeznek vagy kikényszeríteni Azure IoT Hub konfigurációját.
 
-A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Object Notation (JSON), amelyet át kell tekinteni annak érdekében, hogy a konfigurációk megfeleljenek a szervezete biztonsági követelményeinek.
+Azure Resource Manager képes exportálni a sablont az JavaScript Object Notation -ban (JSON), amelyet át kell vizsgálni annak biztosítása érdekében, hogy a konfigurációk megfelelnek a szervezet biztonsági követelményeinek.
 
-A Azure Security Center javaslatai az Azure-erőforrások biztonságos alapkonfigurációja is használhatók.
+Az Azure-erőforrások biztonságos alapkonfigurációjaként Azure Security Center az azure-erőforrásokra vonatkozó javaslatokat is használhatja.
 
-- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
+- [Az elérhető aliasok Azure Policy megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
+- [Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez](../governance/policy/tutorials/create-and-manage.md)
 
-- [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
+- [Egy- és többerőforrásos exportálás sablonba a Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
 - [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Biztonságos operációsrendszer-konfigurációk létrehozása
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Biztonságos Azure-erőforráskonfigurációk fenntartása
 
-**Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget. Emellett Azure Resource Manager-sablonokkal is megőrizheti a szervezete által igényelt Azure-erőforrások biztonsági konfigurációját.  
+**Útmutató:** A Azure Policy [deny] és a [deploy if not exist] használatával kényszerítheti a biztonságos beállításokat az Azure-erőforrásokon. Emellett a sablonsablonok Azure Resource Manager a szervezet által megkövetelt Azure-erőforrások biztonsági konfigurációjának fenntartásához.  
  
-- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
+- [A Azure Policy hatásainak](../governance/policy/concepts/effects.md)
 - [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Az operációs rendszer biztonságos konfigurációjának fenntartása
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások konfigurációjának biztonságos tárolása
 
-**Útmutató**: Ha az azure-IoT hub vagy a kapcsolódó erőforrásokhoz egyéni Azure Policy-definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
+**Útmutató:** Ha egyéni Azure Policy definíciókat használ a Azure IoT Hub vagy a kapcsolódó erőforrásokhoz, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
+- [Kód tárolása az Azure DevOpsban](/azure/devops/repos/git/gitworkflow)
 
 - [Az Azure Repos dokumentációja](/azure/devops/repos)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Konfigurációkezelési eszközök üzembe helyezése Azure-erőforrásokhoz
 
-**Útmutató**: a "Microsoft. Devices" névtérben található Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
+**Útmutató:** A Azure Policy a "Microsoft.Devices" névtérben aliasokkal hozhat létre egyéni szabályzatokat a rendszerkonfigurációk riasztásához, naplózásához és kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és folyamatot a szabályzati kivételek kezeléséhez.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: konfigurációs felügyeleti eszközök telepítése operációs rendszerekhez
+### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Konfigurációkezelő eszközök központi telepítése operációs rendszerekhez
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: automatikus konfigurációs monitorozás megvalósítása Azure-erőforrásokhoz
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Automatizált konfigurációfigyelés megvalósítása Azure-erőforrásokhoz
 
-**Útmutató**: a Azure Security Center használata az Azure-erőforrások alapkonfigurációjának vizsgálatához. Emellett az Azure-erőforrások konfigurációjának riasztására és naplózására Azure Policy is használhatja. 
+**Útmutató:** A Azure Security Center az Azure-erőforrások alapkonfiguráció-vizsgálatának végrehajtásához. Emellett az Azure Azure Policy konfigurációk riasztása és naplózása is használható. 
  
-- [ Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
+- [ Javaslatok szervizlének Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Automatikus konfigurációfigyelés megvalósítása operációs rendszerekhez
 
-**Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
+**Útmutató:** Nem alkalmazható; Ez az útmutató a számítási erőforrásokhoz való.
 
-**Felelősség**: nem alkalmazható
+**Felelősség:** Nem alkalmazható
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-beli titkos kulcsok biztonságos kezelése
 
-**Útmutató**: a IoT hub biztonsági jogkivonatokat és közös hozzáférésű aláírási (SAS) jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok küldését a hálózaton. 
+**Útmutató:** IoT Hub biztonsági jogkivonatok és közös hozzáférésű jogosultsági jogosultságú (SAS)-jogkivonatok használatával hitelesíti az eszközöket és szolgáltatásokat, hogy elkerülje a kulcsok hálózati küldését. 
 
-A felügyelt identitásokat a Azure Key Vaultekkel együtt használva egyszerűsítheti a Felhőbeli alkalmazások titkos kezelését.
+A felügyelt identitások és a Azure Key Vault segítségével egyszerűsítheti a felhőalkalmazások titkos adatok kezelését.
 
-- [Biztonsági jogkivonatok IoT Hub](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
+- [IoT Hub biztonsági jogkivonatok](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
-- [Felügyelt identitások használata IoT Hubhoz](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
+- [Felügyelt identitások használata IoT Hub](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
 
 - [Kulcstartó létrehozása](../key-vault/general/quick-create-portal.md)
 
-- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/assign-access-policy-portal.md)
+- [Felügyelt identitással Key Vault hitelesítésének engedélyezése](../key-vault/general/assign-access-policy-portal.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Identitások biztonságos és automatikus kezelése
 
-**Útmutató**: a IoT hub biztonsági jogkivonatokat és közös hozzáférésű aláírási (SAS) jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok küldését a hálózaton.
+**Útmutató:** IoT Hub biztonsági jogkivonatokat és közös hozzáférésű jogosultsági (SAS) jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok hálózaton való küldését.
 
-Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (Azure AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+Felügyelt identitások használatával biztosítson egy automatikusan felügyelt identitást az Azure-szolgáltatások számára a Azure Active Directory (Azure AD) szolgáltatásban. A felügyelt identitások lehetővé teszik az Azure AD-hitelesítést támogató bármely szolgáltatásban történő hitelesítést, beleértve a Key Vault szolgáltatást is, anélkül, hogy a hitelesítő adatokat a kódban lenne.
 
-- [Biztonsági jogkivonatok IoT Hub](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
+- [IoT Hub biztonsági jogkivonatok](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
-- [Felügyelt identitások konfigurálása a IoT Hubhoz](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
+- [Felügyelt identitások konfigurálása a IoT Hub](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A hitelesítő adatok nem szándékolt kitettségének megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz. 
+**Útmutató:** Hitelesítőadat-ellenőrző implementálja a hitelesítő adatokat a kódban. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz. 
  
-- [  A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
+- [  Hitelesítőadat-ellenőrző beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md)című témakörben talál.*
+*További információ: [Azure biztonsági teljesítményteszt: Kártevővédelem.](../security/benchmarks/security-control-malware-defense.md)*
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: a nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgálata
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: A nem számítási Azure-erőforrásokba feltölteni szükséges fájlok előzetes beolvasása
 
-**Útmutató**: a Microsoft kártevő szoftverrel való ellátása engedélyezve van az Azure-szolgáltatásokat (például Azure IoT hub) támogató mögöttes gazdagépen, azonban az nem az ügyfél tartalmán fut.
+**Útmutató:** A Microsoft kártevőirtó engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például Azure IoT Hub), de nem fut az ügyfelek tartalmai között.
 
-Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-erőforrásokra feltöltött tartalmakat. A Microsoft nem fér hozzá az ügyféladatok eléréséhez, így az Ön nevében nem végezhet kártevő-ellenőrzéseket az ügyfél-tartalmakon.
+Az Ön felelőssége, hogy előzetesen megvizsgálja a nem számítási Azure-erőforrásokra feltöltött tartalmakat. A Microsoft nem fér hozzá az ügyféladatokhoz, ezért nem tudja az Ön nevében kártevőirtó vizsgálatot végezni az ügyféltartalmakban.
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md)című témakörben talál.*
+*További információ: [Azure biztonsági teljesítményteszt: Adat-helyreállítás.](../security/benchmarks/security-control-data-recovery.md)*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Rendszeres automatikus biztonságimentás-frissítések biztosítása
 
-**Útmutató**: az Azure IoT hub Service olyan módszereket és keretrendszert biztosít, amelyekkel a IoT hub szolgáltatások elérhetővé válnak, és a katasztrófák a meghatározott üzleti célkitűzések alapján állíthatók helyre. 
+**Útmutató:** Azure IoT Hub szolgáltatás olyan módszereket és keretrendszereket biztosít, amelyek segítségével a IoT Hub-szolgáltatások magas rendelkezésre állásban és vészhelyreállításban állíthatók helyre adott üzleti célkitűzések alapján. 
 
 - [IoT Hub magas rendelkezésre állása és vészhelyreállítása](iot-hub-ha-dr.md)
 
-- [A IoT Hub klónozása](iot-hub-how-to-clone.md)
+- [Klónozási IoT Hub](iot-hub-how-to-clone.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és minden ügyfél által felügyelt kulcs biztonsági mentése
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Teljes rendszer-biztonsági mentések és az ügyfelek által kezelt kulcsok biztonsági mentése
 
-**Útmutató**: az Azure IoT hub javasolja, hogy a másodlagos IoT hub minden olyan eszköz-identitást tartalmazzon, amely képes csatlakozni a megoldáshoz. A megoldásnak meg kell őriznie az eszköz-identitások földrajzilag replikált biztonsági mentését, és fel kell töltenie őket a másodlagos IoT hubhoz, mielőtt az aktív végpontot átváltja az eszközökre. A IoT Hub eszköz-identitás exportálási funkciója hasznos ebben a környezetben.
+**Útmutató:** Azure IoT Hub azt javasolja, hogy a másodlagos IoT Hubnak tartalmaznia kell a megoldáshoz csatlakozni képes összes eszköz identitását. A megoldásnak meg kell tartania az eszköz identitásai georeplikált biztonsági másolatát, és fel kell töltenie őket a másodlagos IoT Hubra, mielőtt átváltja az eszközök aktív végpontját. A szolgáltatás eszközidentitás-exportálási IoT Hub hasznos ebben a környezetben.
 
 - [IoT Hub magas rendelkezésre állása és vészhelyreállítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#achieve-cross-region-ha)
 
-- [IoT Hub eszköz identitásának exportálása](iot-hub-bulk-identity-mgmt.md)
+- [IoT Hub identitás exportálása](iot-hub-bulk-identity-mgmt.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által kezelt kulcsokat is
 
-**Útmutató**: az Azure IoT hub javasolja, hogy a másodlagos IoT hub minden olyan eszköz-identitást tartalmazzon, amely képes csatlakozni a megoldáshoz. A megoldásnak meg kell őriznie az eszköz-identitások földrajzilag replikált biztonsági mentését, és fel kell töltenie őket a másodlagos IoT hubhoz, mielőtt az aktív végpontot átváltja az eszközökre. A IoT Hub eszköz-identitás exportálási funkciója hasznos ebben a környezetben.
+**Útmutató:** Azure IoT Hub azt javasolja, hogy a másodlagos IoT Hubnak tartalmaznia kell a megoldáshoz csatlakozni képes összes eszköz identitását. A megoldásnak meg kell tartania az eszköz identitásai georeplikált biztonsági másolatát, és fel kell töltenie őket a másodlagos IoT Hubra, mielőtt átváltja az eszközök aktív végpontját. Ebben a környezetben hasznos IoT Hub eszközidentitás exportálási funkciója.
 
-A tartalom biztonsági mentésének rendszeres időközönkénti helyreállítása. Győződjön meg arról, hogy visszaállíthatja az ügyfél által felügyelt kulcsok biztonsági mentését.
+Rendszeres időközönként végezze el a biztonsági másolatban található tartalom visszaállítását. Győződjön meg arról, hogy vissza tudja állítani az ügyfél által kezelt biztonsági másolatok kulcsait.
 
 - [IoT Hub magas rendelkezésre állása és vészhelyreállítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#achieve-cross-region-ha)
 
-- [IoT Hub eszköz identitásának exportálása](iot-hub-bulk-identity-mgmt.md)
+- [IoT Hub eszközidentitás exportálása](iot-hub-bulk-identity-mgmt.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: A biztonsági másolatok és az ügyfél által kezelt kulcsok védelmének biztosítása
 
-**Útmutató**: a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Key Vault a védelem törlését és kiürítését. Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor.
+**Útmutató:** A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Key Vault és végleges törlés elleni védelmet. Ha az Azure Storage biztonsági másolatokat tárol, engedélyezze a helyreállítható törlést az adatok mentéséhez és helyreállításához blobok vagy blob-pillanatképek törlésekor.
 
  
-- [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
+- [Az Azure RBAC](../role-based-access-control/overview.md)
 
-- [Soft DELETE az Azure Blob Storage-hoz](../storage/blobs/soft-delete-blob-overview.md)
+- [Az Azure Blob Storage soft delete parancsa](../storage/blobs/soft-delete-blob-overview.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
 *További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-control-incident-response.md).*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
+### <a name="101-create-an-incident-response-guide"></a>10.1: Incidensválasz-útmutató létrehozása
 
-**Útmutató**: incidensek kifejlesztése útmutató a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az incidensek vizsgálatát követően. 
+**Útmutató:** Incidensválasz-útmutató kidolgozása a szervezet számára. Győződjön meg arról, hogy vannak olyan írásos incidenskezelési tervek, amelyek meghatározzák a személyzet összes szerepkörét, valamint az incidenskezelés és -kezelés fázisát az észleléstől az incidens utáni felülvizsgálaton át az incidensek áttekintéséhez. 
   
-- [ Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [ Útmutató saját biztonsági incidensek válaszadási folyamatának építéshez](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
   
-- [ Microsoft Security Response Center – incidens anatómiája](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
+- [ Microsoft Biztonsági reagálási központ az incidensek felépítése](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
  
-- [  A NIST számítógépes biztonsági incidensek kezelésével kapcsolatos útmutató a saját incidens-válasz tervének létrehozásához](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [  Az NIST számítógépes biztonsági incidenskezelési útmutatójának használata saját incidenskezelési terv létrehozásához](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Incidenspontozási és -rangsorolási eljárás létrehozása
 
-**Útmutató**: a Azure Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy a megbízhatósági Security Center hol van a megállapításban, illetve a riasztás kibocsátására használt analitikai módszer, valamint a riasztást eredményező tevékenység mögött rosszindulatú szándékkal rendelkező megbízhatósági szint.
+**Útmutató:** Azure Security Center súlyosságot rendel az egyes riasztásokhoz, így fontossági sorrendbe adhatja, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy Security Center mennyire magabiztos a riasztás kiadásához használt eredmény vagy elemzési eredmény, valamint az, hogy a riasztáshoz vezető tevékenység mögött rosszindulatú szándék volt-e.
 
   
- Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat egy elnevezési rendszert az Azure-erőforrások azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
+ Emellett címkék használatával jelölje meg az előfizetéseket, és hozzon létre egy elnevezési rendszert az Azure-erőforrások azonosításához és kategorizálásához, különösen a bizalmas adatokat feldolgozók számára. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését azon Azure-erőforrások és -környezet kritikussága alapján, ahol az incidens történt.
   
-- [ Biztonsági riasztások Azure Security Center](../security-center/security-center-alerts-overview.md)
+- [ Biztonsági riasztások a Azure Security Center](../security-center/security-center-alerts-overview.md)
   
-- [ Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
+- [ Címkék használata az Azure-erőforrások rendszerezése érdekében](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
+### <a name="103-test-security-response-procedures"></a>10.3: Biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a hézagokat, majd szükség szerint módosítsa a választ.
+**Útmutató:** Gyakorlatok a rendszerek incidensválasz-képességeinek rendszeres teszteléséhez az Azure-erőforrások védelme érdekében. Azonosítsa a gyenge pontokat és hiányosságokat, majd szükség szerint módosítsa a választervet.
   
-- [ A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+- [ Az NIST kiadványa – Útmutató az it-csomagokhoz és képességekhez szükséges tesztelési, képzési és gyakorlatprogramokhoz](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center monitorozás:** Nincs
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Adja meg a biztonsági incidens kapcsolattartási adatait, és konfigurálja a riasztási értesítéseket a biztonsági incidensek esetén
 
-**Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
+**Útmutató:** A Biztonsági incidensek kapcsolattartási adatait a Microsoft arra használja, hogy kapcsolatba lépjen Önnel, ha a Microsoft Biztonsági reagálási központ (MSRC) azt tapasztalja, hogy illetéktelen vagy jogosulatlan fél fért hozzá adataihoz. Tekintse át az incidenseket a tény után, és győződjön meg arról, hogy a problémák megoldódnak.
   
-- [ A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
+- [ A biztonsági kapcsolattartó Azure Security Center beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Biztonsági riasztások beépítése az incidensválasz-rendszerbe
 
-**Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
+**Útmutató:** A riasztások Azure Security Center és javaslatok exportálása a folyamatos exportálási funkcióval az Azure-erőforrásokat érintő kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi, hogy manuálisan vagy folyamatosan exportálja a riasztásokat és javaslatokat. A riasztásokat a Azure Security Center adat-összekötővel streamelheti a Azure Sentinel.
   
 - [ Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
  
-- [ Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
+- [ Riasztások streamelése Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: A biztonsági riasztások válaszának automatizálása
 
-**Útmutató**: a munkafolyamat-automatizálási szolgáltatás használata Azure Security Center a biztonsági riasztásokra és az Azure-erőforrások védelmére vonatkozó ajánlásokra adott válaszok automatikus elindítására.
+**Útmutató:** A munkafolyamat-automatizálási Azure Security Center az Azure-erőforrások védelmére vonatkozó biztonsági riasztásokhoz és javaslatokhoz adott válaszok automatikus aktiválásához.
   
-- [ A Munkafolyamat-automatizálás konfigurálása a Security Centerban](../security-center/workflow-automation.md)
+- [ Munkafolyamat-automatizálás konfigurálása a Security Center](../security-center/workflow-automation.md)
 
 **Felelősség**: Ügyfél
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakört.*
+*További információ: [Azure biztonsági teljesítményteszt: Behatolási tesztek és Red Team-gyakorlatok.](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Az Azure-erőforrások rendszeres behatolástesztelése és az összes kritikus fontosságú biztonsági eredmény szervizelésének biztosítása
 
-**Útmutató**: kövesse a Microsoft Cloud penetráció tesztelési szabályait, amelyekkel biztosíthatja, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét.
+**Útmutató:** Kövesse a Microsoft Cloud behatolástesztelési szabályait annak ellenőrzéséhez, hogy a behatolási tesztek nem sértik-e meg a Microsoft szabályzatát. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét.
 
 - [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -998,7 +998,7 @@ A tartalom biztonsági mentésének rendszeres időközönkénti helyreállítá
 
 **Felelősség**: Megosztott
 
-**Azure Security Center figyelés**: nincs
+**Azure Security Center:** Nincs
 
 ## <a name="next-steps"></a>Következő lépések
 

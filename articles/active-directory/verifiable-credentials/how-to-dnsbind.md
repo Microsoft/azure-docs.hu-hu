@@ -1,6 +1,6 @@
 ---
-title: A tartomány összekapcsolása a decentralizált azonosítóval (nem) (előzetes verzió) – Azure Active Directory ellenőrizhető hitelesítő adatok
-description: Ismerje meg a DNS-kötést?
+title: Tartomány összekapcsolása a decentralizált azonosítóval (DID) (előzetes verzió) – Azure Active Directory hitelesítő adatok
+description: Ismerje meg, hogyan lehet DNS-kötést kötni?
 documentationCenter: ''
 author: barclayn
 manager: daveba
@@ -9,43 +9,43 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222815"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588445"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>A tartomány összekapcsolása a decentralizált azonosítóval (DID)
 
 > [!IMPORTANT]
-> Azure Active Directory ellenőrizhető hitelesítő adatok jelenleg nyilvános előzetes verzióban érhetők el.
+> Azure Active Directory hitelesítő adatok ellenőrizhetővé tehetők jelenleg nyilvános előzetes verzióban.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A cikk tartalma:
 > [!div class="checklist"]
-> * Miért van szükségünk a tartományhoz való csatlakozásra?
-> * Hogyan lehet összekapcsolni a DIDs és a tartományokat?
+> * Miért kell a DID-et a tartományhoz kapcsolnunk?
+> * Hogyan kapcsolhatóak össze a DID-ket és a tartományokat?
 > * Hogyan működik a tartomány-összekapcsolási folyamat?
-> * Hogyan működik az ellenőrzés/nem ellenőrzött tartomány logikája?
+> * Hogyan működik az ellenőrző/nem ellenőrzött tartományi logika?
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha a saját tartományához szeretné kapcsolni, a következőket kell elvégeznie.
+Ahhoz, hogy a DID-t a tartományhoz csatolja, a következőket kell végrehajtania.
 
-- Fejezze be a [első lépések](get-started-verifiable-credentials.md) és az azt követő [oktatóanyag-készletet](enable-your-tenant-verifiable-credentials.md).
+- Töltse ki [az Első lépések és](get-started-verifiable-credentials.md) az azt követő [oktatóanyag-készletet.](enable-your-tenant-verifiable-credentials.md)
 
-## <a name="why-do-we-need-to-link-our-did-to-our-domain"></a>Miért van szükségünk a tartományhoz való csatlakozásra?
+## <a name="why-do-we-need-to-link-our-did-to-our-domain"></a>Miért kell a DID-et a tartományhoz kapcsolnunk?
 
-A nem a meglévő rendszerekhez rögzített azonosítóként indul el. A nem hasznos, mert egy felhasználó vagy szervezet maga is rendelkezhet, és szabályozhatja azt. Ha a szervezettel kommunikáló entitás nem tudja, hogy "ki" az a tagja, akkor a DID nem annyira hasznos.
+A DID azonosítóként indul, amely nem a meglévő rendszerekhez van horgonyozva. A DID azért hasznos, mert egy felhasználó vagy szervezet tulajdonában lehet, és vezérelheti azt. Ha a szervezettel kommunikáló entitás nem tudja, hogy a DID kihez tartozik, akkor a DID nem olyan hasznos.
 
-Ha a-t egy tartományhoz csatolja, azzal megoldja a kezdeti megbízhatósági problémát azáltal, hogy lehetővé teszi bármely entitás számára, hogy kriptográfiailag ellenőrizze a DID és a tartomány közötti kapcsolatot.
+A DID tartományhoz kapcsolása azzal oldja meg a kezdeti megbízhatósági problémát, hogy lehetővé teszi bármely entitás számára a DID és a tartomány közötti kapcsolat titkosítását.
 
-## <a name="how-do-we-link-dids-and-domains"></a>Hogyan lehet összekapcsolni a DIDs és a tartományokat?
+## <a name="how-do-we-link-dids-and-domains"></a>Hogyan kapcsolhatóak össze a DID-ket és a tartományokat?
 
-Létrehozunk egy kapcsolatot egy tartomány és egy között egy olyan nyílt szabvány bevezetésével, amelyet a decentralizált identitási alaprendszer írt be [jól ismert DID-konfiguráció](https://identity.foundation/.well-known/resources/did-configuration/)néven. A Azure Active Directory (Azure AD) ellenőrizhető hitelesítő adatok szolgáltatása segít a szervezetnek a DID és a tartomány közötti kapcsolat létrehozásában, amely tartalmazza a DID-ban megadott tartományi információkat, és létrehozta a jól ismert konfigurációs fájlt:
+Kapcsolatot hozunk létre egy tartomány és egy DID között egy, a Decentralized Identity Foundation által írt nyílt szabvány megvalósításával, amelyet [Well-Known DID-konfigurációnak nevezünk.](https://identity.foundation/.well-known/resources/did-configuration/) Az Azure Active Directory (Azure AD) ellenőrizhető hitelesítőadat-szolgáltatása segít a szervezetnek a DID és a tartomány közötti kapcsolat létrehozásában azáltal, hogy tartalmazza a DID-fájlban megadott tartományadatokat, és létrehozza a jól ismert konfigurációs fájlt:
 
-1. Az Azure AD a szervezet beállítása során megadott tartományi információkat használja a szolgáltatási végpontnak a DID-dokumentumon belüli írásához. Az Ön által folytatott kommunikációt végző felek láthatják azt a tartományt, amelyet a saját jogcímei alapján társít.  
+1. Az Azure AD a szervezeti beállítás során a DID-dokumentumban található szolgáltatásvégpont írására használja fel a tartományi adatokat. A DID-sel kapcsolatba lépő összes fél láthatja azt a tartományt, amelyhez a DID-t társították.  
 
     ```json
         "service": [
@@ -60,7 +60,7 @@ Létrehozunk egy kapcsolatot egy tartomány és egy között egy olyan nyílt sz
           }
     ```
 
-2. Az Azure AD-ben ellenőrizhető hitelesítőadat-szolgáltatás egy megfelelő, jól ismert konfigurációs erőforrást hoz létre, amelyet a tartományában tárolhat. A konfigurációs fájl tartalmazza a "DomainLinkageCredential" credentialType önaláírt hitelesítő adatait, amely a saját tartományának eredetével rendelkezik. Itt látható egy példa arra a konfigurációs dokumentumra, amelyet a rendszer a gyökértartomány URL-címén tárol.
+2. Az Azure AD ellenőrizhető hitelesítőadat-szolgáltatása egy jól ismert, megfelelő konfigurációs erőforrást hoz létre, amely a saját tartományán is létrehozható. A konfigurációs fájl tartalmazza a "DomainLinkageCredential" hitelesítő adatok önkibocsátott, ellenőrizhető hitelesítő adatait, amelyet a DID-fájl írt alá, és amely a tartomány eredetét tartalmazza. Példa a konfigurációs dokumentumra, amely a gyökértartomány URL-címében van tárolva.
 
 
     ```json
@@ -72,65 +72,65 @@ Létrehozunk egy kapcsolatot egy tartomány és egy között egy olyan nyílt sz
     }
     ```
 
-Miután elvégezte a jól ismert konfigurációs fájl használatát, a fájlt elérhetővé kell tennie a HRE a ellenőrizhető hitelesítő adatokhoz való engedélyezésekor megadott tartománynév használatával.
+A jól ismert konfigurációs fájl létrehozása után elérhetővé kell tennie a fájlt az AAD ellenőrizhető hitelesítő adatokhoz való engedélyezésekor megadott tartománynév használatával.
 
-* A jól ismert, a tartomány gyökerében található konfigurációs fájl üzemeltetése.
-* Ne használja az átirányítást.
-* A konfigurációs fájl terjesztéséhez használja a HTTPS protokollt.
+* A jól ismert DID konfigurációs fájlt a tartomány gyökerében kell elosztani.
+* Ne használjon átirányításokat.
+* A konfigurációs fájl terjesztéséhez használja a https protokollt.
 
 >[!IMPORTANT]
->Microsoft Authenticator nem tartja tiszteletben az átirányításokat, a megadott URL-címnek a végső cél URL-címnek kell lennie.
+>Microsoft Authenticator nem támogatja az átirányításokat, a megadott URL-címnek a végső cél URL-címnek kell lennie.
 
 ## <a name="user-experience"></a>Felhasználó felület 
 
-Ha egy felhasználó egy kiállítási folyamaton vagy egy ellenőrizhető hitelesítő adaton alapul, tudnia kell, hogy a szervezetről és a vállalatról van szó. Ha a tartomány a hitelesíthető hitelesítőadat-tárca, Microsoft Authenticator, ellenőrzi, hogy történt-e kapcsolat a DID-dokumentum tartományával, és az eredménytől függően két különböző tapasztalatot jelenít meg a felhasználók számára.
+Amikor egy felhasználó egy kiállítási folyamaton megy keresztül, vagy ellenőrizhető hitelesítő adatokat ad meg, tudnia kell valamit a szervezetről és a DID-ről. Ha a tartomány az ellenőrizhető hitelesítőadat-Microsoft Authenticator, a ellenőrzi a DID és a tartomány közötti kapcsolatot a DID dokumentumban, és az eredménytől függően két különböző felhasználói élményt nyújt a felhasználóknak.
 
 ## <a name="verified-domain"></a>Ellenőrzött tartomány
 
-Mielőtt Microsoft Authenticator egy **ellenőrzött** ikont jelenít meg, néhány dolognak igaznak kell lennie:
+Mielőtt Microsoft Authenticator megjelenít egy **Ellenőrzött** ikont, néhány dolognak igaznak kell lennie:
 
-* A saját maga által kibocsátott Open ID-(SIOP-) kérelem aláírásának rendelkeznie kell egy szolgáltatási végponttal a csatolt tartományhoz.
-* A gyökértartomány nem használ átirányítást, és HTTPS-t használ.
-* A DID dokumentumban felsorolt tartomány feloldható, jól ismert erőforrással rendelkezik.
-* A jól ismert erőforrás ellenőrizhető hitelesítő adatainak aláírása ugyanazzal a TETTtel történt, mint a folyamat elindításához Microsoft Authenticator használt SIOP aláírásához.
+* Az önkibocsátott nyitott azonosítóra (SIOP) vonatkozó DID-kérelemnek szolgáltatási végponttal kell lennie a csatolt tartományhoz.
+* A gyökértartomány nem használ átirányítást, és https-t használ.
+* A DID-dokumentumban felsorolt tartomány feloldható, jól ismert erőforrással rendelkezik.
+* A jól ismert erőforrás ellenőrizhető hitelesítő adata ugyanazokkal a DID-ekkel van aláírva, mint amely a folyamat indítani Microsoft Authenticator SIOP aláírásával történt.
 
-Ha az összes korábban említett érték igaz, akkor Microsoft Authenticator egy ellenőrzött lapot jelenít meg, és tartalmazza az érvényesített tartományt.
+Ha az előzőek mind igazak, akkor a Microsoft Authenticator egy ellenőrzött oldalt jelenít meg, és tartalmazza az ellenőrzött tartományt.
 
-![új engedély kérése](media/how-to-dnsbind/new-permission-request.png) 
+![új engedélykérés](media/how-to-dnsbind/new-permission-request.png) 
 
 ## <a name="unverified-domain"></a>Nem ellenőrzött tartomány
 
-Ha a fentiek bármelyike nem igaz, a Microsoft Authenticator teljes oldal figyelmeztetést jelenít meg a felhasználónak, hogy a tartomány nem ellenőrzött, a felhasználó egy kockázatos tranzakció közepén található, és körültekintően kell eljárnia. Úgy döntöttünk, hogy ezt az útvonalat használja:
+Ha a fentiek bármelyike nem igaz, a Microsoft Authenticator teljes oldalú figyelmeztetést jelenít meg a felhasználónak arról, hogy a tartomány ellenőrizetlen, a felhasználó egy kockázatos tranzakció közepén van, és óvatosan kell eljárnia. Azért választottuk ezt az útvonalat, mert:
 
-* A DID nem egy tartományhoz van rögzítve.
-* A konfiguráció beállítása nem megfelelő.
-* Az a felhasználó, aki interakcióban van, rosszindulatú, és valójában nem tudja bizonyítani, hogy a tartomány tulajdonosa (mivel valójában nem). Ennek az utolsó pontnak az az oka, hogy a figyelmeztető üzenet propagálásának elkerülése érdekében fontos, hogy a felhasználót a felhasználó által ismert tartományhoz csatolja.
+* A DID vagy nincs tartományhoz horgonyozva.
+* A konfiguráció nem lett megfelelően beállítva.
+* A felhasználó által kommunikált DID rosszindulatú, és valójában nem tudja igazolni, hogy a felhasználó a tartományhoz van-e használhatja (mivel valójában nem). Az utolsó pont miatt rendkívül fontos, hogy a DID-t a felhasználó által ismert tartományhoz csatolja, hogy elkerülje a figyelmeztető üzenet propagálását.
 
-![nem ellenőrzött tartományi figyelmeztetés a hitelesítő adatok hozzáadása képernyőn](media/how-to-dnsbind/add-credential-not-verified-authenticated.png)
+![nem ellenőrzött tartományra vonatkozó figyelmeztetés a hitelesítő adatok hozzáadása képernyőn](media/how-to-dnsbind/add-credential-not-verified-authenticated.png)
 
 ## <a name="distribute-well-known-config"></a>Jól ismert konfiguráció terjesztése
 
-1. Navigáljon a Beállítások lapra a ellenőrizhető hitelesítő adatok között, és válassza a **tartomány ellenőrzése** lehetőséget.
+1. Lépjen a Beállítások lapra az Ellenőrizhető hitelesítő adatok területen, és válassza **a Tartomány ellenőrzése lehetőséget.**
 
    ![A tartomány ellenőrzése a beállításokban](media/how-to-dnsbind/settings-verify.png) 
 
-2. Töltse le az alábbi képen látható did-configuration.jsfájlt.
+2. Töltse le did-configuration.jsaz alábbi képen látható fájlban található fájlt.
 
    ![Jól ismert konfiguráció letöltése](media/how-to-dnsbind/verify-download.png) 
 
-3. Másolja a JWT, nyissa meg a [JWT.MS](https://www.jwt.ms) , és ellenőrizze, hogy helyes-e a tartomány.
+3. Másolja a JWT-t, nyissa [meg jwt.ms](https://www.jwt.ms) és ellenőrizze, hogy a tartomány helyes-e.
 
-4. Másolja a DID-t, és nyissa meg az [ion Network Explorert](https://identity.foundation/ion/explorer) , és ellenőrizze, hogy a DID-dokumentum tartalmazza-e ugyanezt a tartományt. 
+4. Másolja ki a DID-t, és nyissa meg az [ION-Hálózattallózó,](https://identity.foundation/ion/explorer) és ellenőrizze, hogy a DID-dokumentum tartalmazza-e ugyanazt a tartományt. 
 
-5. A jól ismert konfigurációs erőforrást a megadott helyen tárolja. Például: https://www.example.com/.well-known/did-configuration.json
+5. A jól ismert konfigurációs erőforrást a megadott helyen kell megadni. Például: `https://www.example.com/.well-known/did-configuration.json`
 
-6. Tesztelje a kiállítást vagy a bemutatót Microsoft Authenticator az ellenőrzéshez. Győződjön meg arról, hogy a hitelesítő "figyelmeztetés a nem biztonságos alkalmazásokról" beállítás be van kapcsolva.
+6. Tesztelje az érvényesíthető Microsoft Authenticator kiadását vagy bemutatóját. Győződjön meg arról, hogy az Authenticator "Figyelmeztetés a nem biztonságos alkalmazásokról" beállítása be van-e bekapcsolva.
 
 >[!NOTE]
->Alapértelmezés szerint a "figyelmeztetés a nem biztonságos alkalmazásokról" beállítás be van kapcsolva.
+>Alapértelmezés szerint a "Figyelmeztetés a nem biztonságos alkalmazásokról" beállítás be van kapcsolva.
 
-Gratulálunk, most már bootstrapped a megbízható webes megbízhatóságot!
+Gratulálunk, ezzel elindította a megbízhatósági hálót a DID-el!
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a bevezetéskor nem a megfelelő tartományi adatokat adja meg, akkor a módosítást el kell [végeznie](how-to-opt-out.md). Jelenleg nem támogatjuk a DID-dokumentum frissítését. A kikapcsolás és a visszahívása új márka létrehozását eredményezi.
+Ha az regisztráció során nem a megfelelő tartományinformációt adja meg, és úgy dönt, hogy módosítja azt, le kell majd mondania a [következőt:](how-to-opt-out.md). Jelenleg nem támogatjuk a DID-dokumentum frissítését. A lemondás és a lemondás teljesen új DID-t hoz létre.

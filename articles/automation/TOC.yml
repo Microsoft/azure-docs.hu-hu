@@ -43,7 +43,7 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
-    - name: Automation hálózati konfiguráció részletei
+    - name: Az Automation hálózati konfigurációjának részletei
       href: automation-network-configuration.md
     - name: Biztonság
       items:
@@ -66,13 +66,19 @@
           href: automation-create-standalone-account.md
         - name: Automation-fiók létrehozása Resource Manager-sablonnal
           href: quickstart-create-automation-account-template.md
+        - name: Felügyelt identitás
+          items:
+            - name: Felügyelt identitás engedélyezése
+              href: enable-managed-identity-for-automation.md
+            - name: Felügyelt identitás letiltása
+              href: disable-managed-identity-for-automation.md
         - name: Futtató fiók
           items:
-            - name: Futtató fiók létrehozása
+            - name: Futtatás fiók létrehozása
               href: create-run-as-account.md
             - name: Futtató fiók törlése
               href: delete-run-as-account.md
-            - name: Futtató fiók kezelése
+            - name: Run As-fiók kezelése
               href: manage-runas-account.md
         - name: Hitelesítés konfigurálása az Amazon Web Services segítségével
           href: automation-config-aws-account.md
@@ -254,7 +260,7 @@
           href: automation-solution-vm-management-config.md
         - name: Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
           href: automation-solution-vm-management-logs.md
-        - name: Start/Stop VMs during off-hours eltávolítása
+        - name: A Start/Stop VMs during off-hours
           href: automation-solution-vm-management-remove.md
         - name: Virtuális gépek munkaidőn kívüli indításának és leállításának hibaelhárítása
           href: troubleshoot/start-stop-vm.md

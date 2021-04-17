@@ -1,261 +1,260 @@
 ---
-title: Az alkalmazások konfigurációjának megtervezése Azure Active Directory
-description: Tervezési útmutató a saját alkalmazások hatékony használatához a szervezetben.
+title: A Azure Active Directory Saját alkalmazások megterve
+description: Tervezési útmutató a szervezeti Saját alkalmazások hatékony alkalmazáshoz.
 services: active-directory
 author: barbaraselden
-manager: daveba
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: kenwith
-ms.reviewer: baselden
-ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: baselden
+ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543958"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376596"
 ---
-# <a name="plan-azure-active-directory-my-apps-configuration"></a>Az alkalmazások konfigurációjának megtervezése Azure Active Directory
+# <a name="plan-azure-active-directory-my-apps-configuration"></a>A Azure Active Directory Saját alkalmazások megterve
 
 > [!NOTE]
-> Ez a cikk olyan informatikai szakemberek számára készült, akiknek meg kell tervezniük a szervezetem saját alkalmazások portáljának konfigurációját. 
+> Ez a cikk olyan informatikai szakemberek számára készült, akiknek meg kell tervezni a céges portál Saját alkalmazások konfigurálását. 
 >
-> **A végfelhasználói dokumentációért lásd: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md)**.
+> **A végfelhasználói dokumentációt [lásd: Bejelentkezés](../user-help/my-apps-portal-end-user-access.md)** és alkalmazások Saját alkalmazások portálon.
 
-Azure Active Directory (Azure AD) saját alkalmazások webalapú portál alkalmazások indításához és kezeléséhez. A saját alkalmazások lap egyetlen helyet biztosít a felhasználóknak a munkájuk elindításához és az összes olyan alkalmazás megkereséséhez, amelyhez hozzáféréssel rendelkeznek. A felhasználók a következő címen férhetnek hozzá az alkalmazásokhoz: [https://myapps.microsoft.com](https://myapps.microsoft.com/) .
+Azure Active Directory (Azure AD) Saját alkalmazások egy webalapú portál az alkalmazások indításához és kezeléséhez. Az Saját alkalmazások oldalon a felhasználók egyetlen helyen kezdhetik el a munkájukat, és megkeresik az összes alkalmazást, amelyhez hozzáféréssel rendelkezik. A felhasználók a Saját alkalmazások [https://myapps.microsoft.com](https://myapps.microsoft.com/) eléréséhez.
 
 > [!VIDEO https://www.youtube.com/embed/atj6Ivn5m0k]
 
-## <a name="why-configure-my-apps"></a>A saját alkalmazások konfigurálása
+## <a name="why-configure-my-apps"></a>Miért érdemes konfigurálni Saját alkalmazások
 
-A My apps portál alapértelmezés szerint elérhető a felhasználók számára, és nem kapcsolható ki. Fontos, hogy úgy konfigurálja, hogy a lehető legjobb felhasználói élményt használják, és a portál hasznos maradjon. 
+A Saját alkalmazások portál alapértelmezés szerint elérhető a felhasználók számára, és nem lehet kikapcsolni. Fontos, hogy úgy konfigurálja, hogy a lehető legjobb felhasználói élményben legyen része, és a portál mindig hasznos maradjon. 
 
-Ha a következő feltételek mindegyike teljesül, a Azure Active Directory vállalati alkalmazások listájában szereplő bármely alkalmazás megjelenik:
+A vállalati alkalmazások listájában Azure Active Directory alkalmazás akkor jelenik meg, ha mindkét alábbi feltétel teljesül:
 
-* Az alkalmazás láthatósági tulajdonsága igaz értékre van állítva. 
+* Az alkalmazás láthatósági tulajdonsága igazra van állítva. 
 
-* Az alkalmazás minden felhasználóhoz vagy csoporthoz hozzá van rendelve. Megjelenik a hozzárendelt felhasználók számára.
+* Az alkalmazás bármely felhasználóhoz vagy csoporthoz hozzá van rendelve. Megjelenik a hozzárendelt felhasználók számára.
 
 A portál konfigurálása biztosítja, hogy a megfelelő személyek könnyen megtalálják a megfelelő alkalmazásokat.
 
  
-### <a name="how-is-the-my-apps-portal-used"></a>Hogyan használják a My apps portált?
+### <a name="how-is-the-my-apps-portal-used"></a>Hogyan használható Saját alkalmazások portál?
 
-A felhasználók a saját alkalmazások portálon érhetik el a következőket:
+A felhasználók a következő Saját alkalmazások férnek hozzá az Saját alkalmazások portálhoz:
 
-* Felderítheti és elérheti a szervezete Azure AD-hez csatlakoztatott alkalmazásait, amelyhez hozzáféréssel rendelkezik.
+* A szervezet összes olyan Azure AD-hez csatlakoztatott alkalmazásának felderítése és elérése, amelyhez hozzáféréssel rendelkezik.
 
-   * Javasoljuk, hogy az alkalmazások egyszeri bejelentkezésre (SSO) legyenek konfigurálva, hogy a felhasználók a lehető legjobb élményt nyújtsanak.
+   * A legjobb, ha az alkalmazások egyszeri bejelentkezésre (SSO) vannak konfigurálva, hogy a lehető legjobb felhasználói élményt nyújtják.
 
-* Hozzáférés kérése az önkiszolgáló szolgáltatáshoz konfigurált új alkalmazásokhoz.
+* Kérjen hozzáférést az önkiszolgáló konfigurált új alkalmazásokhoz.
 
-* Személyes gyűjteményeket hozhat létre.
+* Személyes alkalmazásgyűjtemények létrehozása.
 
-* Kezelheti mások számára az alkalmazásokhoz való hozzáférést, ha a csoport tulajdonosának vagy delegált vezérlőnek a szerepkörét rendeli hozzá az alkalmazás (ok) hoz való hozzáférés biztosításához.
+* Kezelheti mások alkalmazás-hozzáférését, ha csoporttulajdonosi szerepkörhöz vagy delegált vezérléshez van hozzárendelve az alkalmazás(nak) hozzáférésének megadásához használt csoport.
 
-A rendszergazdák a következőket konfigurálhatják:
+A rendszergazdák a következő beállításokat konfigurálhatják:
 
-* Belefoglalási feltételek [, beleértve a](../manage-apps/configure-user-consent.md) szolgáltatási feltételeket.
+* [Hozzájárulási élmények,](../manage-apps/configure-user-consent.md)  beleértve a szolgáltatási feltételeket is.
 
-* [Önkiszolgáló alkalmazás-felderítési és hozzáférési kérelmek](../manage-apps/access-panel-manage-self-service-access.md).
+* [Önkiszolgáló alkalmazásfelderítési és -hozzáférési kérések.](../manage-apps/access-panel-manage-self-service-access.md)
 
-* [Alkalmazások gyűjteményei](../manage-apps/access-panel-collections.md).
+* [Alkalmazásgyűjtemények.](../manage-apps/access-panel-collections.md)
 
 * Ikonok hozzárendelése alkalmazásokhoz
 
 * Alkalmazások felhasználóbarát nevei
 
-* Az alkalmazásokban látható vállalati arculat
+* A vállalati arculat Saját alkalmazások
 
  
 
-## <a name="plan-consent-configuration"></a>A engedélyezési konfiguráció megtervezése
+## <a name="plan-consent-configuration"></a>Hozzájárulási konfiguráció megterve
 
-### <a name="user-consent-for-applications"></a>Felhasználói beleegyező alkalmazások 
+### <a name="user-consent-for-applications"></a>Felhasználói jóváhagyás az alkalmazásokhoz 
 
-Ahhoz, hogy egy felhasználó be tudja jelentkezni egy alkalmazásba, és az alkalmazás hozzáférhessen a szervezet adataihoz, egy felhasználónak vagy rendszergazdának meg kell adnia az alkalmazás engedélyeit. Megadhatja, hogy engedélyezett-e a felhasználói beleegyezettség, és hogy milyen feltételek mellett. **A Microsoft azt javasolja, hogy csak az ellenőrzött közzétevők alkalmazásai számára engedélyezze a felhasználói jóváhagyást.**
+Ahhoz, hogy egy felhasználó bejelentkezhet egy alkalmazásba, és az alkalmazás hozzáfér a szervezet adataihoz, a felhasználónak vagy a rendszergazdának meg kell adnunk az alkalmazásnak az engedélyeket. Megadhatja, hogy a felhasználói jóváhagyás engedélyezve legyen-e, és milyen feltételek mellett. **A Microsoft azt javasolja, hogy csak az ellenőrzött közzétevőktől származó alkalmazásokhoz engedélyezze a felhasználói jóváhagyást.**
 
-További információ: a [végfelhasználók beleegyezett az alkalmazásokkal való megadásának beállítása](../manage-apps/configure-user-consent.md)
+További információ: Annak konfigurálása, hogy a [végfelhasználók hogyan járulnak hozzá az alkalmazásokhoz.](../manage-apps/configure-user-consent.md)
 
-### <a name="group-owner-consent-for-apps-accessing-data"></a>Az adatokhoz hozzáférő alkalmazások csoportjának tulajdonosi engedélye
+### <a name="group-owner-consent-for-apps-accessing-data"></a>Csoporttulajdonosi jóváhagyás az adatokhoz hozzáférő alkalmazásokhoz
 
-A csoport-és csapat tulajdonosai engedélyezhetik az alkalmazások, például a külső gyártók által közzétett alkalmazások számára, hogy hozzáférjenek a szervezet adataihoz a csoporthoz társítva. További információ: [erőforrás-specifikus beleegyezett a Microsoft Teams-ben](https://docs.microsoft.com/microsoftteams/resource-specific-consent) . 
+A csoport- és csoporttulajdonosok engedélyezhetik az alkalmazások , például a külső szállítók által közzétett alkalmazások számára a szervezet egy csoporthoz társított adatainak hozzáférését. További [információ: Erőforrás-specifikus hozzájárulás a Microsoft Teamsben.](https://docs.microsoft.com/microsoftteams/resource-specific-consent) 
 
-Beállíthatja, hogy engedélyezi vagy letiltja ezt a funkciót.
+Beállíthatja, hogy szeretné-e engedélyezni vagy letiltani ezt a funkciót.
 
-További információ: csoporttagság- [engedélyezési engedélyek konfigurálása](../manage-apps/configure-user-consent-groups.md).
+További információ: [Csoport-hozzájárulási engedélyek konfigurálása.](../manage-apps/configure-user-consent-groups.md)
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 
-A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon tájékoztathatja a felhasználókat arról, hogy hogyan és Mikor változnak, és hogyan szerezhet támogatást, ha szükséges.
+A kommunikáció kritikus fontosságú az új szolgáltatások sikerességéhez. Proaktív módon tájékoztassa a felhasználókat arról, hogy a felhasználói élmény hogyan és mikor változik meg, és szükség esetén hogyan lehet támogatást szerezni.
 
-Bár az alkalmazások általában nem hoznak létre felhasználói problémákat, fontos, hogy előkészítse őket. Hozzon létre útmutatókat és a támogatási személyzet összes erőforrását az elindítása előtt.
+Bár Saját alkalmazások nem hoz létre általában felhasználói problémákat, fontos felkészülni. Az indítás előtt hozzon létre útmutatókat és a támogatási munkatársak összes erőforrásának listáját.
 
 #### <a name="communications-templates"></a>Kommunikációs sablonok
 
-A Microsoft [testreszabható sablonokat biztosít az e-mailekhez és](https://aka.ms/APTemplates) az alkalmazásokhoz kapcsolódó egyéb kommunikációhoz. Ezeket az eszközöket más kommunikációs csatornákon is használhatja a vállalati kulturális környezetnek megfelelően.
+A Microsoft testre [szabható sablonokat biztosít az e-mailekhez](https://aka.ms/APTemplates) és más kommunikációs Saját alkalmazások. Ezeket az eszközöket a vállalati kultúra szerint más kommunikációs csatornákon való használatra is adaptálhatja.
 
  
 
-## <a name="plan-your-sso-configuration"></a>Az egyszeri bejelentkezés konfigurációjának megtervezése
+## <a name="plan-your-sso-configuration"></a>Az SSO-konfiguráció megterve
 
-A legjobb megoldás, ha az egyszeri bejelentkezés engedélyezve van a saját alkalmazások portálon található összes alkalmazáshoz, így a felhasználók zökkenőmentesen használhatják a hitelesítő adatok megadása nélkül.
+A legjobb, ha az SSO engedélyezve van az Saját alkalmazások portálon elérhető összes alkalmazáshoz, hogy a felhasználók zökkenőmentes felhasználói élményt tapasztalnak anélkül, hogy meg kellene adnia a hitelesítő adataikat.
 
-Az Azure AD több SSO-beállítást is támogat. 
+Az Azure AD több SSO-lehetőséget is támogat. 
 
-* További információ: [az egyszeri bejelentkezés lehetőségei az Azure ad-ben](sso-options.md).
+* További információ: Egyszeri bejelentkezési lehetőségek az [Azure AD-ban.](sso-options.md)
 
-* Ha többet szeretne megtudni az Azure AD-alkalmazás identitás-szolgáltatóként való használatáról az alkalmazáshoz, tekintse meg a gyors üzembe helyezési [sorozatot az alkalmazások kezelésében](../manage-apps/view-applications-portal.md).
+* Az Azure AD alkalmazásidentitás-szolgáltatóként való használatával kapcsolatos további információkért lásd az alkalmazáskezelés rövid [útmutatóját.](../manage-apps/view-applications-portal.md)
 
-### <a name="use-federated-sso-if-possible"></a>Összevont egyszeri bejelentkezés használata, ha lehetséges
+### <a name="use-federated-sso-if-possible"></a>Összevont SSO használata, ha lehetséges
 
-A saját alkalmazások oldal legjobb felhasználói élményéhez kezdje az összevont egyszeri bejelentkezés (OpenID Connect vagy SAML) által elérhető felhőalapú alkalmazások integrálásával. Az összevont egyszeri bejelentkezés lehetővé teszi a felhasználók számára, hogy egységes, egykattintásos élményt biztosítsanak az alkalmazások indítási felületei között, és a konfiguráció-ellenőrzés során egyre erőteljesebbek.
+A legjobb felhasználói élmény érdekében a Saját alkalmazások az összevont SSO -hez (OpenID Connect VAGY SAML-hez) elérhető felhőalkalmazások integrációjával kezdje. Az összevont SSO lehetővé teszi, hogy a felhasználók egységes, egyetlen kattintással indítható felületet használjanak az alkalmazás indításához, és általában robusztusabb konfiguráció-vezérléssel rendelkeznek.
 
-További információ a szolgáltatott szoftverek (SaaS) egyszeri bejelentkezéshez való konfigurálásáról: [SaaS SSO üzembehelyezési terv].. /Desktop/plan-sso-deployment.md).
+A szolgáltatott szoftver (SaaS) alkalmazások SSO-hoz való konfigurálásával kapcsolatos további információkért lásd: [SaaS SSO deployment plan]. /Desktop/plan-sso-deployment.md).
 
-### <a name="considerations-for-special-sso-circumstances"></a>Speciális egyszeri bejelentkezési körülményekkel kapcsolatos megfontolások
+### <a name="considerations-for-special-sso-circumstances"></a>Speciális SSO-körülmények esetén megfontolandó szempontok
 
 > [!TIP]
-> A jobb felhasználói élmény érdekében használja az összevont egyszeri bejelentkezést az Azure AD-vel (OpenID Connect/SAML), ha egy alkalmazás támogatja azt a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.
+> A jobb felhasználói élmény érdekében használjon összevont SSO-t az Azure AD-val (OpenID Connect/SAML), ha egy alkalmazás támogatja azt a jelszóalapú SSO és az ADFS helyett.
 
-A jelszó-alapú egyszeri bejelentkezéses alkalmazásokhoz vagy az Azure AD Application Proxy által elért alkalmazásokhoz való bejelentkezéshez a felhasználóknak telepíteniük és használniuk kell a saját alkalmazások biztonságos bejelentkezési bővítményét. A rendszer felkéri a felhasználókat, hogy telepítse a bővítményt, amikor először elindítja a jelszó-alapú egyszeri bejelentkezés vagy alkalmazásproxy alkalmazást. 
+A jelszóalapú SSO-alkalmazásokba vagy az Azure AD alkalmazásproxy által elért alkalmazásokba való bejelentkezéshez a felhasználóknak telepítenie és használnia kell a Saját alkalmazások biztonságos bejelentkezési bővítményt. Amikor először indítják el a jelszóalapú SSO-t vagy az alkalmazást, a rendszer felkéri a alkalmazásproxy telepítésére. 
 
-![Képernyőfelvétel a](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
+![Képernyőkép a következőről:](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
-A bővítmény részletes ismertetését lásd: [saját alkalmazások böngésző-bővítmény telepítése](../user-help/my-apps-portal-end-user-access.md).
+A bővítővel kapcsolatos részletes információkért lásd: [Installing Saját alkalmazások browser extension (Böngészőbővítmény telepítése).](../user-help/my-apps-portal-end-user-access.md)
 
-Ha integrálnia kell ezeket az alkalmazásokat, meg kell határoznia egy mechanizmust, amellyel a bővítményt a [támogatott böngészőkkel](../user-help/my-apps-portal-end-user-access.md)lehet méretezni. A lehetőségek a következők:
+Ha integrálni kell ezeket az alkalmazásokat, meg kell határoznia egy mechanizmust, amely lehetővé teszi a bővítmény nagy léptékű üzembe helyezését a [támogatott böngészőkkel.](../user-help/my-apps-portal-end-user-access.md) A lehetőségek a következők:
 
-* [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](../user-help/my-apps-portal-end-user-access.md)
+* [Felhasználó által vezérelt letöltés és konfiguráció Chrome, Firefox, Microsoft Edge vagy IE böngészőhöz](../user-help/my-apps-portal-end-user-access.md)
 
-* [Configuration Manager az Internet Explorerben](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Konfigurációkezelő Internet Explorer](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
-A bővítmény lehetővé teszi, hogy a felhasználók bármelyik alkalmazást elindítsák a keresősáv használatával, megkeressék a legutóbb használt alkalmazásokhoz való hozzáférést, és a saját alkalmazások lapra mutató hivatkozást is megkereshetnek.
+A bővítmény lehetővé teszi a felhasználók számára, hogy a keresősávból indítsanak el alkalmazásokat, hozzáférést találjanak a legutóbb használt alkalmazásokhoz, és Saját alkalmazások lapra.
 
-![Képernyőkép a saját alkalmazások bővítmény kereséséről](./media/my-apps-deployment-plan/my-app-extsension.png)
+![Képernyőkép az alkalmazásbővítmények keresésről](./media/my-apps-deployment-plan/my-app-extsension.png)
 
-#### <a name="plan-for-mobile-access"></a>Mobil hozzáférés tervezése
+#### <a name="plan-for-mobile-access"></a>A mobil hozzáférés megterve
 
-A jelszó-alapú SSO-t használó vagy [Microsoft Azure ad alkalmazásproxy](../manage-apps/application-proxy.md)használatával elért alkalmazások esetén a Microsoft Edge Mobile használatát kell használnia. Más alkalmazások esetén bármilyen mobil böngésző használható. 
+A jelszóalapú SSO-t használó vagy [](../manage-apps/application-proxy.md)a Microsoft Azure AD alkalmazásproxy használatával elért alkalmazásokhoz mobileszközökön Microsoft Edge kell. Más alkalmazásokhoz bármilyen mobilböngésző használható. 
 
-### <a name="linked-sso"></a>Csatolt egyszeri bejelentkezés
+### <a name="linked-sso"></a>Összekapcsolt SSO
 
-Az alkalmazások a csatolt egyszeri bejelentkezés lehetőség használatával adhatók hozzá. Beállíthat egy olyan alkalmazás-csempét, amely a meglévő webalkalmazás URL-címére hivatkozik. A csatolt egyszeri bejelentkezés lehetővé teszi, hogy a felhasználókat a saját alkalmazások portálra irányítsa anélkül, hogy az összes alkalmazást áttelepíti az Azure AD SSO-ba. Fokozatosan áthelyezheti az Azure AD SSO-ra konfigurált alkalmazásokat a felhasználói élmény megszakítása nélkül.
+Az alkalmazások a Csatolt SSO beállítással adhatók hozzá. Konfigurálhat egy alkalmazáscsempét, amely a meglévő webalkalmazás URL-címére mutat. A csatolt SSO lehetővé teszi, hogy anélkül indítsa el a felhasználók Saját alkalmazások portálra, hogy az összes alkalmazást átküldi az Azure AD SSO-ba. Fokozatosan áttérhet az Azure AD SSO-val konfigurált alkalmazásokra a felhasználói élmény megzavarása nélkül.
 
-## <a name="plan-the-user-experience"></a>A felhasználói élmény megtervezése
+## <a name="plan-the-user-experience"></a>A felhasználói élmény megterve
 
-Alapértelmezés szerint minden olyan alkalmazás, amelyhez a felhasználó hozzáfér, és az önkiszolgáló felderítéshez konfigurált összes alkalmazás megjelenik a felhasználó saját alkalmazások paneljén. Sok szervezet esetében ez lehet egy nagyon nagy lista, amely nehézkes lehet, ha nincs rendszerezve
+Alapértelmezés szerint minden alkalmazás, amelyhez a felhasználó hozzáfér, és az önkiszolgáló felderítéshez konfigurált összes alkalmazás megjelenik a felhasználó Saját alkalmazások panelen. Sok szervezet számára ez egy nagyon nagy lista lehet, amely nehézkessé válhat, ha nincs szervezve
 
-### <a name="plan-my-apps-collections"></a>Alkalmazások gyűjteményének megtervezése
+### <a name="plan-my-apps-collections"></a>A Saját alkalmazások megterve
 
-Minden Azure AD-alkalmazás, amelyhez a felhasználó hozzáfér, megjelenik az alkalmazásokban a minden alkalmazás gyűjteményben. Gyűjtemények használata a kapcsolódó alkalmazások csoportosításához és egy külön lapon való megjelenítéséhez, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például létrehozhat logikai csoportosításokat az alkalmazások számára adott feladatok, feladatok, projektek és így tovább. 
+Minden olyan Azure AD-alkalmazás, amelyhez a felhasználó hozzáféréssel rendelkezik, megjelenik Saját alkalmazások Minden alkalmazás gyűjteményben. Gyűjtemények használatával csoportosítja a kapcsolódó alkalmazásokat, és egy külön lapon mutatja be őket, így könnyebben megtalálja őket. Gyűjtemények használatával például alkalmazások logikai csoportosítását hozhatja létre adott feladatszerepk számára, tevékenységekhez, projektekhez stb. 
 
-A végfelhasználók a saját tapasztalataikat is testre szabhatják
+A végfelhasználók a következővel is testre szabhatják a felhasználói élményt:
 
-* Saját alkalmazás-gyűjtemények létrehozása.
+* Saját alkalmazásgyűjtemények létrehozása.
 
-* [Alkalmazás-gyűjtemények elrejtése és átrendezése](access-panel-collections.md).
+* [Alkalmazásgyűjtemények elrejtése és átrendezésük.](access-panel-collections.md)
 
 ![Képernyőkép az önkiszolgáló konfigurációról](./media/my-apps-deployment-plan/collections.png)
 
-Lehetőség van az alkalmazások elrejtésére a saját alkalmazások portálján, miközben más helyekről, például a Microsoft 365-portálról is engedélyezheti a hozzáférést. További információ: [alkalmazás elrejtése a felhasználók Azure Active Directoryban való felhasználói felületéről](hide-application-from-user-portal.md).
+Lehetőség van arra, hogy elrejtse az alkalmazásokat a Saját alkalmazások portálról, miközben továbbra is engedélyezi a hozzáférést más helyekről, például a Microsoft 365 portálról. További információ: Alkalmazás elrejtése a felhasználói élmény elől a [Azure Active Directory.](hide-application-from-user-portal.md)
 
 > [!IMPORTANT]
-> Az alkalmazásokban csak azok a 950-alkalmazások érhetők el, amelyekhez a felhasználó hozzáféréssel rendelkezik. Ide tartoznak a felhasználó vagy a rendszergazda által rejtett alkalmazások is. 
+> A felhasználók csak 950 alkalmazáshoz férhetnek hozzá a Saját alkalmazások. Ide tartoznak a felhasználó vagy a rendszergazda által rejtett alkalmazások is. 
 
-### <a name="plan-self-service-group-management-membership"></a>Önkiszolgáló csoport felügyeleti tagságának megtervezése
+### <a name="plan-self-service-group-management-membership"></a>Önkiszolgáló csoportkezelési tagság megterve
 
-Lehetővé teheti a felhasználók számára, hogy saját biztonsági csoportokat vagy Microsoft 365 csoportokat hozzanak létre és kezeljenek az Azure AD-ben. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezési biztonsági csoportokhoz vagy terjesztési listához.
+Engedélyezheti a felhasználóknak, hogy saját biztonsági csoportokat vagy Microsoft 365 azure AD-ban hozzanak létre és kezeljenek. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoportkezelési funkciók nem érhetők el levelezési biztonsági csoportokhoz vagy terjesztési listákhoz.
 
-Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyezi-e a szervezet összes felhasználója számára, hogy csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részhalmazát. Ha engedélyezi a felhasználók egy részhalmazát, be kell állítania egy csoportot, amelyhez hozzá kívánja adni a felhasználókat. 
+Az önkiszolgáló csoporttagság tervezéséhez határozza meg, hogy engedélyezi-e, hogy a szervezetben minden felhasználó csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részcsoportját. Ha a felhasználók egy részhalmazát engedélyezi, be kell állítania egy csoportot, amelyhez hozzáadja ezeket a személyeket. 
 
-A forgatókönyvek engedélyezésével kapcsolatban lásd: [az önkiszolgáló csoport felügyeletének beállítása a Azure Active Directoryban](../enterprise-users/groups-self-service-management.md) .
+Az ilyen forgatókönyvek engedélyezésével kapcsolatos részletekért tekintse meg az önkiszolgáló csoportkezelés beállítását a Azure Active Directory a következőben: Set [up self-service group management in Azure Active Directory.](../enterprise-users/groups-self-service-management.md)
 
-### <a name="plan-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés megtervezése
+### <a name="plan-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés megterve
 
-Lehetővé teheti a felhasználók számára, hogy a saját alkalmazások paneljén keresztül hozzáférjenek az alkalmazásokhoz. Ehhez először meg kell adnia 
+A felhasználók a panelen engedélyezhetik, hogy a felhasználók alkalmazásokat derítsnek fel és Saját alkalmazások hozzáférést. Ezt először önnek kell megtennie 
 
-* önkiszolgáló csoportok felügyeletének engedélyezése
+* önkiszolgáló csoportkezelés engedélyezése
 
-* alkalmazás engedélyezése egyszeri bejelentkezéshez
+* alkalmazás engedélyezése az SSO számára
 
-* Csoport létrehozása az alkalmazás-hozzáféréshez
+* csoport létrehozása az alkalmazás-hozzáféréshez
 
-![Képernyőfelvétel a saját alkalmazások önkiszolgáló konfigurációjával](./media/my-apps-deployment-plan/my-apps-self-service.png)
+![Képernyőfelvétel az Saját alkalmazások konfigurálásról](./media/my-apps-deployment-plan/my-apps-self-service.png)
 
-Ha a felhasználó hozzáférést kér, a rendszer hozzáférést kér az alapul szolgáló csoporthoz, és a csoport tulajdonosai engedélyt kaphatnak a csoporttagság kezelésére, és így az alkalmazások elérésére. A jóváhagyási munkafolyamatok az alkalmazások eléréséhez használhatók explicit jóváhagyásra. A jóváhagyó felhasználók a saját alkalmazások portálon kapnak értesítéseket, amikor az alkalmazáshoz való hozzáférésre vonatkozó kérelem van folyamatban.
+Amikor a felhasználók hozzáférést kérnek, hozzáférést kérnek a mögöttes csoporthoz, és a csoporttulajdonosok engedélyt kaphatnak a csoporttagság és így az alkalmazás-hozzáférés kezelésére. Az alkalmazásokhoz való hozzáféréshez jóváhagyási munkafolyamatok érhetők el explicit jóváhagyásra. A jóváhagyó felhasználók értesítést kapnak a Saját alkalmazások portálon, ha az alkalmazáshoz való hozzáférésre vonatkozó kérelem van függőben.
 
-## <a name="plan-reporting-and-auditing"></a>Jelentéskészítés és naplózás tervezése
+## <a name="plan-reporting-and-auditing"></a>Jelentéskészítés és naplózás megtervezése
 
-Az Azure AD [olyan jelentéseket biztosít, amelyek technikai és üzleti ismereteket kínálnak]. /reports-monitoring/overview-reports.md). Az üzleti és műszaki alkalmazások tulajdonosai együttműködve vállalják a jelentések tulajdonjogát, és rendszeresen használják azokat. A következő táblázat néhány példát mutat be a tipikus jelentéskészítési forgatókönyvekre.
+Az Azure AD [műszaki és üzleti elemzéseket lehetővé tő jelentéseket] biztosít. /reports-monitoring/overview-reports.md). Működjön együtt az üzleti és technikai alkalmazások tulajdonosaival, hogy felvezék a jelentések tulajdonjogát, és rendszeresen használják őket. Az alábbi táblázat néhány példát mutat be a tipikus jelentéskészítési forgatókönyvekre.
 
-| Példa| A kockázatok kezelése| Termelékenység növelése| Cégirányítás és megfelelőség |
+| Példa| A kockázatok kezelése| A hatékonyság növelése| Cégirányítás és megfelelőség |
 | - | - | - | -|
-| Jelentéstípusok| Alkalmazás-engedélyek és-használat| Fiók létesítési tevékenysége| Tekintse át, ki fér hozzá az alkalmazásokhoz |
-| Lehetséges műveletek| Hozzáférés naplózása; engedélyek visszavonása| Kiépítési hibák szervizelése| Hozzáférés visszavonása |
+| Jelentéstípusok| Alkalmazásengedélyek és használat| Fiók-kiépítési tevékenység| Az alkalmazásokhoz hozzáférő felhasználók áttekintése |
+| Lehetséges műveletek| Hozzáférés naplózása; engedélyek visszavonása| Kiépítési hibák javítása| Hozzáférés visszavonása |
 
 
-Az Azure AD a legtöbb naplózási adattal 30 napig tart. Az adatai az Azure felügyeleti portálon vagy API-n keresztül érhetők el az elemzési rendszerbe való letöltéshez.
+Az Azure AD 30 napig őrzi meg a legtöbb naplózási adatot. Az adatok az Azure felügyeleti portálon vagy API-n keresztül érhetők el, és letölthetők az elemzési rendszerekbe.
 
 #### <a name="auditing"></a>Naplózás
 
-Az alkalmazás-hozzáférés naplófájljai 30 napig érhetők el. Ha a szervezete nagyobb adatmegőrzést igényel, exportálja a naplókat egy biztonsági információs esemény és felügyelet (SIEM) eszközre, például splunk vagy ArcSight.
+Az alkalmazás-hozzáférés auditnaplói 30 napig érhetők el. Ha a szervezet hosszabb megőrzést igényel, exportálja a naplókat egy security information event and management (SIEM) eszközbe, például a Splunkba vagy az ArcSightba.
 
-Naplózási, jelentéskészítési és vész-helyreállítási biztonsági másolatok esetén dokumentálja a letöltés szükséges gyakoriságát, a megcélzott rendszerét, valamint az egyes biztonsági másolatok kezeléséért felelős személyeket. Előfordulhat, hogy nincs szüksége külön naplózási és jelentéskészítési biztonsági másolatokra. A vész-helyreállítási biztonsági mentésnek különálló entitásnak kell lennie.
+A naplózási, jelentéskészítési és vészhelyreállítási biztonsági mentések esetén dokumentálja a letöltés szükséges gyakoriságát, a célrendszert, és hogy ki felelős az egyes biztonsági mentések kezeléséért. Előfordulhat, hogy nincs szükség külön naplózásra és biztonsági mentések jelentésére. A vészhelyreállítási biztonsági mentésnek egy különálló entitásnak kell lennie.
 
 ## <a name="validate-your-deployment"></a>Az üzemelő példány ellenőrzése
 
-Győződjön meg arról, hogy a saját alkalmazások üzembe helyezését alaposan tesztelték, és a visszaállítási terv van érvényben.
+Győződjön meg Saját alkalmazások, hogy az üzembe helyezés alapos tesztelésen és visszaállítási terven van.
 
-A következő teszteket a vállalati tulajdonú eszközökkel és a személyes eszközökkel is elvégezheti. Ezeknek a tesztelési eseteknek az üzleti használati eseteit is tükröznie kell. A következő néhány eset a tipikus technikai forgatókönyvek alapján. Adja hozzá az igényeinek megfelelő egyéb szolgáltatásokat.
+Végezze el a következő teszteket a vállalati és a személyes eszközökkel is. Ezeknek a tesztelési eseteknek az üzleti felhasználást is tükrözniük kell. Az alábbiakban néhány, a tipikus technikai forgatókönyveken alapuló esetet követünk. Adjon hozzá az igényeinek megfelelőket.
 
-#### <a name="application-sso-access-test-case-examples"></a>Alkalmazás egyszeri bejelentkezéses hozzáférésének tesztelésére vonatkozó példák:
+#### <a name="application-sso-access-test-case-examples"></a>Példák az alkalmazás-SSO-hozzáférés tesztesetére:
 
 
 | Üzleti eset| Várt eredmény |
 | - | - |
-| A felhasználó bejelentkezik a saját alkalmazások portálra| A felhasználó bejelentkezhet, és megtekintheti az alkalmazásaikat |
-| A felhasználó egy összevont SSO-alkalmazást indít el| A felhasználó automatikusan bejelentkezik az alkalmazásba |
-| A felhasználó első alkalommal indítja el a jelszó-SSO-alkalmazást| A felhasználónak telepítenie kell a saját alkalmazások bővítményt |
+| A felhasználó bejelentkezik a Saját alkalmazások portálra| A felhasználó bejelentkezhet, és láthatja az alkalmazásait |
+| A felhasználó elindít egy összevont SSO-alkalmazást| A felhasználó automatikusan bejelentkezik az alkalmazásba |
+| A felhasználó először indít el egy jelszó-SSO-alkalmazást| A felhasználónak telepítenie kell a Saját alkalmazások bővítményt |
 | A felhasználó a következő alkalommal indít el egy jelszó-SSO-alkalmazást| A felhasználó automatikusan bejelentkezik az alkalmazásba |
-| A felhasználó elindít egy alkalmazást Microsoft 365 portálról| A felhasználó automatikusan bejelentkezik az alkalmazásba |
+| A felhasználó elindít egy alkalmazást a Microsoft 365 portálról| A felhasználó automatikusan bejelentkezik az alkalmazásba |
 | A felhasználó elindít egy alkalmazást a Managed Browser| A felhasználó automatikusan bejelentkezik az alkalmazásba |
 
 
-#### <a name="application-self-service-capabilities-test-case-examples"></a>Alkalmazások önkiszolgáló képességei – tesztelési példák
+#### <a name="application-self-service-capabilities-test-case-examples"></a>Példák az alkalmazás önkiszolgáló képességeinek tesztelésére
 
 
 | Üzleti eset| Várt eredmény |
 | - | - |
-| A felhasználó kezelheti a tagságot az alkalmazásban| A felhasználó hozzáadhat vagy eltávolíthat olyan tagokat, akik hozzáféréssel rendelkeznek az alkalmazáshoz |
-| A felhasználó szerkesztheti az alkalmazást| A felhasználó szerkesztheti az alkalmazás leírását és a jelszó egyszeri bejelentkezéses alkalmazásaihoz tartozó hitelesítő adatokat. |
+| A felhasználó kezelheti az alkalmazás tagságát| A felhasználó hozzáadhat vagy eltávolíthat olyan tagokat, akik hozzáféréssel rendelkezik az alkalmazáshoz |
+| A felhasználó szerkesztheti az alkalmazást| A felhasználó szerkesztheti az alkalmazás leírását és hitelesítő adatait a jelszó-SSO-alkalmazásokhoz |
 
 
 ### <a name="rollback-steps"></a>Visszaállítási lépések
 
-Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezett módon történik. Ha az egyszeri bejelentkezés konfigurálása nem sikerül az üzembe helyezés során, meg kell ismernie az [egyszeri bejelentkezés hibáinak elhárítását](../hybrid/tshoot-connect-sso.md) és a felhasználókra gyakorolt hatás csökkentését. Szélsőséges körülmények között előfordulhat, hogy vissza kell [állítania az egyszeri bejelentkezést](plan-sso-deployment.md).
+Fontos, hogy megtervezze, mi a feladat, ha az üzembe helyezés nem a terv szerint működik. Ha az SSO konfigurálása sikertelen az üzembe helyezés során, tisztában kell lennie az [SSO-problémák](../hybrid/tshoot-connect-sso.md) elhárításának és a felhasználókra gyakorolt hatásának csökkentésével. Szélsőséges körülmények között szükség lehet az [SSO visszaállításra.](plan-sso-deployment.md)
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
-A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../roles/permissions-reference.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+A legkevesebb kiemelt szerepkör használatával elvégez egy szükséges feladatot a Azure Active Directory. [Tekintse át a rendelkezésre álló szerepköröket,](../roles/permissions-reference.md) és válassza ki a megfelelőt az alkalmazás minden egyes személyre vonatkozó igényeinek megoldásához. Előfordulhat, hogy egyes szerepköröket ideiglenesen kell alkalmazni, és az üzembe helyezés befejezése után el kell távolítani őket.
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör |
 | - | - | - |
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincsenek |
-| Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
-| Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
+| Helpdesk admin| 1. rétegbeli támogatás| Nincsenek |
+| Identitás-rendszergazda| Konfigurálás és hibakeresés, ha problémák befolyásolják az Azure AD-t| Globális rendszergazda |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, konfigurálás engedélyekkel rendelkező felhasználókon| Nincsenek |
+| Infrastruktúra-rendszergazdák| Tanúsítványváltás tulajdonosa| Globális rendszergazda |
+| Üzlettulajdonos/érintett| Felhasználói igazolás az alkalmazásban, konfigurálás engedélyekkel rendelkező felhasználókon| Nincsenek |
 
 
-A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
+A [címtár-Privileged Identity Management](../privileged-identity-management/pim-configure.md) kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtárengedélyekkel rendelkező felhasználók számára.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Az Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)
+[Az Azure AD Multi-Factor Authentication üzembe helyezésének megterve](../authentication/howto-mfa-getstarted.md)
 
 [Alkalmazásproxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md)
 

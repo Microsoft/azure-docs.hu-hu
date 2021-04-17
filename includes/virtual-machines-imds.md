@@ -8,17 +8,17 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 3da4f8f946b11985d93be35fa2748e7f25015a71
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564513"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588129"
 ---
 Az Azure Instance Metadata Service (IMDS) a jelenleg futó virtuálisgép-példányokkal kapcsolatos információkat biztosít. Ezzel kezelheti és konfigurálhatja a virtuális gépeket.
 Ezek az információk tartalmazzák a termékváltozatot, a tárolást, a hálózati konfigurációkat és a közelgő karbantartási eseményeket. Az elérhető adatok teljes listáját a Végpontkategóriák [összegzése tartalmazza.](#endpoint-categories)
 
-Az IMDS virtuálisgép-példányok (virtuális gépek) és virtuálisgép-méretezésikészlet-példányok futtatásához érhető el. Minden végpont támogatja a használatával létrehozott és kezelt virtuális gépeket [Azure Resource Manager.](/rest/api/resources/) A klasszikus üzembe helyezési modell használatával létrehozott virtuális gépeket csak a Példány kategória Tanúsítva kategória és Hálózat része támogatja. Az igazolt végpont ezt csak korlátozott mértékben teszi meg.
+Az IMDS virtuálisgép-példányok (virtuális gépek) és virtuálisgép-méretezésikészlet-példányok futtatásához érhető el. Minden végpont támogatja a használatával létrehozott és kezelt virtuális gépeket [Azure Resource Manager.](/rest/api/resources/) A klasszikus üzembe helyezési modell használatával létrehozott virtuális gépeket csak a példánykategória Tanúsítva kategória és Hálózat része támogatja. Az igazolt végpont ezt csak korlátozott mértékben teszi meg.
 
 Az IMDS egy REST API, amely egy jól ismert, nem átirányítható IP-címen () érhető `169.254.169.254` el. Csak a virtuális gépen belülről férhet hozzá. A virtuális gép és az IMDS közötti kommunikáció soha nem hagyja el a gazdagépet.
 Az IMDS lekérdezésekor a HTTP-ügyfelek megkerüljék a virtuális gépen belüli webes proxykat, és ugyanúgy `169.254.169.254` kezelje őket, mint [`168.63.129.16`](../articles/virtual-network/what-is-ip-address-168-63-129-16.md) a .
@@ -149,12 +149,12 @@ A például `/metatadata/instance` a következő json-objektumot adja vissza:
 }
 ```
 
-Ha a választ csak a compute tulajdonságra szeretnénk szűrni, elküldjük a kérést: 
+Ha a választ csak a compute tulajdonságra szeretnénk szűrni, a kérést a következő választ küldjük el: 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=<version>
 ```
 
-Hasonlóképpen, ha beágyazott tulajdonságra vagy adott tömbelemre szeretnénk szűrni, továbbra is hozzáfűzünk kulcsokat: 
+Hasonlóképpen, ha beágyazott tulajdonságra vagy tömbelemre szeretnénk szűrni, továbbra is hozzáfűzünk kulcsokat: 
 ```
 http://169.254.169.254/metadata/instance/network/interface/0?api-version=<version>
 ```
@@ -209,7 +209,7 @@ A JSON-válaszokban minden primitív típusú lesz, és a hiányzó vagy nem alk
 
 ### <a name="versioning"></a>Verziókezelés
 
-Az IMDS verziószámozása és az API-verzió megadása kötelező a HTTP-kérésben. Ez alól az egyetlen [](#versions) kivétel a verzióvégpont, amely dinamikusan lekéri az elérhető API-verziókat.
+Az IMDS verziószámozása és az API-verzió megadása kötelező a HTTP-kérésben. Ez alól az egyetlen [](#versions) kivétel a verzióvégpont, amely az elérhető API-verziók dinamikus lekérését teszi lehetővé.
 
 Az újabb verziók hozzáadásakor a régebbi verziók továbbra is elérhetők a kompatibilitás érdekében, ha a szkriptek adott adatformátumtól függnek.
 
@@ -333,13 +333,13 @@ Sémalebontás:
 | Adatok | Description | Bevezetett verzió |
 |------|-------------|--------------------|
 | `azEnvironment` | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
-| `customData` | Ez a funkció elavult és le van tiltva. A következővel lett átiratva: `userData` | 2019-02-01
+| `customData` | Ez a funkció elavult, és le van tiltva az [IMDS-ban.](#frequently-asked-questions) A következővel lett átiratva: `userData` | 2019-02-01
 | `evictionPolicy` | Beállítja a [spot virtuális](../articles/virtual-machines/spot-vms.md) gépek kiesésének a beállítását. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Megállapítja, hogy a virtuális gép a gazdagép kompatibilitási rétegében fut-e | 2020-06-01
 | `licenseType` | A licenc típusa a [Azure Hybrid Benefit.](https://azure.microsoft.com/pricing/hybrid-benefit) Ez csak a AHB-kompatibilis virtuális gépek esetén van jelen | 2020-09-01
 | `location` | A virtuális gép által futtatott Azure-régió | 2017-04-02
 | `name` | A virtuális gép neve | 2017-04-02
-| `offer` | Információk a virtuálisgép-rendszerképről, és csak az Azure-rendszerképgyűjteményből üzembe helyezett rendszerképekhez érhető el | 2017-04-02
+| `offer` | Információk a virtuálisgép-rendszerképhez, és csak az Azure-rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
 | `osProfile.adminUsername` | Megadja a rendszergazdai fiók nevét | 2020-07-15
 | `osProfile.computerName` | A számítógép nevét adja meg | 2020-07-15
 | `osProfile.disablePasswordAuthentication` | Megadja, hogy a jelszó-hitelesítés le van-e tiltva. Ez csak Linux rendszerű virtuális gépeken van jelen | 2020-10-01
@@ -531,7 +531,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Department:IT;ReferenceNumber:123456;TestStatus:Pending
 ```
 
-A `tags` mező egy pontosvesszővel elválasztott címkékkel elválasztott sztring. Ez a kimenet problémát jelent, ha maguk a címkék pontosvesszőket használnak. Ha egy elemző programozott módon kinyeri a címkéket, akkor a mezőre kell `tagsList` támaszkodnia. A mező egy JSON-tömb, amely nem tartalmaz elválasztó karaktert, és így könnyebben `tagsList` elemez. A virtuális géphez rendelt tagsList az alábbi kérés használatával kérhető le.
+A `tags` mező egy pontosvesszővel elválasztott címkékkel elválasztott sztring. Ez a kimenet problémát jelent, ha maguk a címkék pontosvesszőket használnak. Ha egy elemző a címkék programozott kinyeréseként van megírva, akkor a mezőre kell `tagsList` támaszkodnia. A mező egy JSON-tömb, amely nem tartalmaz elválasztó karaktert, és így könnyebben `tagsList` elemez. A virtuális géphez rendelt tagsList az alábbi kérés használatával kérhető le.
 
 **Kérés**
 
@@ -597,7 +597,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 #### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>4. minta: További információ a virtuális gépről a támogatási eset során
 
-Szolgáltatóként előfordulhat, hogy kap egy támogatási hívást, amelyben további információkat szeretne tudni a virtuális gépről. Ha megkéri az ügyfelet, hogy ossza meg a számítási metaadatokat, az alapvető információkat nyújthat a támogatási szakembernek, hogy tudja, milyen típusú virtuális gép található az Azure-ban.
+Szolgáltatóként előfordulhat, hogy kap egy támogatási hívást, amelyben további információkat szeretne tudni a virtuális gépről. Ha megkéri az ügyfelet, hogy ossza meg a számítási metaadatokat, az alapvető információkat nyújthat a támogatási szakembernek az Azure-beli virtuális gépekről.
 
 **Kérés**
 
@@ -938,7 +938,7 @@ GET /metadata/attested/document
 | Name | Kötelező vagy nem kötelező | Leírás |
 |------|-------------------|-------------|
 | `api-version` | Kötelező | A kérés kiszolgálására használt verzió.
-| `nonce` | Választható | Egy 10 jegyű sztring, amely kriptográfiai nonce-ként szolgál. Ha nincs megadva érték, az IMDS az aktuális UTC időbélyeget használja.
+| `nonce` | Választható | Egy 10 jegyű sztring, amely kriptográfiai kódként szolgál. Ha nincs megadva érték, az IMDS az aktuális UTC időbélyeget használja.
 
 #### <a name="response"></a>Reagálás
 
@@ -1111,7 +1111,7 @@ Az `nonce` aláírt dokumentumban található érték akkor hasonlítható össz
 > [!NOTE]
 > Előfordulhat, hogy a tanúsítványok nem egyeznek pontosan a nyilvános `metadata.azure.com` felhővel. Ezért a tanúsítványérvényesítésnek minden altartományból engedélyeznie kell egy `.metadata.azure.com` köznevet.
 
-Ha a köztes tanúsítvány az érvényesítés során hálózati korlátozások miatt nem tölthető le, rögzítheti a köztes tanúsítványt. Az Azure átveszi a tanúsítványokat, ami szabványos PKI-eljárás. A visszaállításkor frissítenie kell a rögzített tanúsítványokat. A köztes tanúsítvány frissítésének tervezett módosításakor frissül az Azure blogja, és értesítést kap az Azure-ügyfelekről. 
+Ha a köztes tanúsítvány az érvényesítés során hálózati korlátozások miatt nem tölthető le, rögzítheti a köztes tanúsítványt. Az Azure átveszi a tanúsítványokat, ami szabványos PKI-eljárás. A visszaállításkor frissítenie kell a rögzített tanúsítványokat. A köztes tanúsítvány frissítésének tervezett módosításakor az Azure blog frissül, és az Azure-ügyfelek értesítést kapnak. 
 
 A köztes tanúsítványokat a [PKI-adattárban találja.](https://www.microsoft.com/pki/mscorp/cps/default.htm) Az egyes régiók köztes tanúsítványai eltérőek is lehet.
 
@@ -1168,19 +1168,19 @@ Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Me
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 - A következő hibaüzenet jelenik `400 Bad Request, Required metadata header not specified` meg: . Mit jelent ez?
-  - Az IMDS megköveteli, hogy a `Metadata: true` fejlécet át kell a kérésben. Ennek a fejlécnek a REST-hívásban való átadása lehetővé teszi az IMDS-hez való hozzáférést.
+  - Az IMDS megköveteli, hogy a fejléc `Metadata: true` a kérésben legyen átkért. Ennek a fejlécnek a REST-hívásban való átadása lehetővé teszi az IMDS-hez való hozzáférést.
 
 - Miért nem kapok számítási adatokat a virtuális gépemről?
   - Az IMDS jelenleg csak a létrehozott példányokat Azure Resource Manager.
 
 - Egy ideje már létrehoztam a Azure Resource Manager a virtuális gépemet. Miért nem látom a számítási metaadatok adatait?
-  - Ha 2016 szeptembere után hozta létre a virtuális gépet, adjon hozzá egy [címkét,](../articles/azure-resource-manager/management/tag-resources.md) amely elkezdi látni a számítási metaadatokat. Ha 2016 szeptembere előtt hozta létre a virtuális gépet, a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányból.
+  - Ha 2016 szeptembere után hozta létre [a](../articles/azure-resource-manager/management/tag-resources.md) virtuális gépet, adjon hozzá egy címkét, amely elkezdi látni a számítási metaadatokat. Ha 2016 szeptembere előtt hozta létre a virtuális gépet, a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányból.
 
 - A felhasználói adatok ugyanazok, mint az egyéni adatok?
   - A felhasználói adatok az egyéni adatokhoz hasonló funkciókat kínálnak, így a saját metaadatait is át lehet adni a virtuálisgép-példánynak. A különbség az, hogy a felhasználói adatokat az IMDS-en keresztül lehet lekérni, és a virtuálisgép-példány teljes élettartama során állandóak maradnak. A meglévő egyéni adatok funkció továbbra is működni fog a cikkben [leírtak szerint.](https://docs.microsoft.com/azure/virtual-machines/custom-data) Egyéni adatokat azonban csak a helyi rendszermappán keresztül kaphat, az IMDS-en keresztül nem.
 
 - Miért nem látom az új verzióhoz feltöltve az összes adatot?
-  - Ha 2016 szeptembere után hozta létre a virtuális gépet, adjon hozzá egy [címkét,](../articles/azure-resource-manager/management/tag-resources.md) amely elkezdi látni a számítási metaadatokat. Ha 2016 szeptembere előtt hozta létre a virtuális gépet, a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
+  - Ha 2016 szeptembere után hozta létre [a](../articles/azure-resource-manager/management/tag-resources.md) virtuális gépet, adjon hozzá egy címkét, amely elkezdi látni a számítási metaadatokat. Ha 2016 szeptembere előtt hozta létre a virtuális gépet, a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányból.
 
 - Miért jelenik meg a vagy a `500 Internal Server Error` `410 Resource Gone` hibaüzenet?
   - Próbálja újra a kérést. További információ: Átmeneti [hibák kezelése.](/azure/architecture/best-practices/transient-faults) Ha a probléma továbbra is fennáll, hozzon létre egy támogatási problémát a Azure Portal virtuális géphez.
@@ -1194,7 +1194,7 @@ Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Me
 - Miért nem látom a virtuális gép termékváltozat-információit a részletek `instance/compute` között?
   - Az egyéni rendszerképek Azure Marketplace azure platform nem őrzi meg az egyéni rendszerkép termékváltozat-adatait és az egyéni rendszerképből létrehozott virtuális gépek adatait. Ez a kialakításból ered, és ezért nem a virtuális gép részleteiben van `instance/compute` kivetve.
 
-- Miért van a kérésem időkorrekta a szolgáltatás hívása miatt?
+- Miért van a kérésem időkorrekta a szolgáltatáshoz való hívásom miatt?
   - A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyájára rendelt elsődleges IP-címről kell kezdeményezni. Ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában lennie kell a 169.254.169.254/32 címnek.
 
     ### <a name="windows"></a>[Windows](#tab/windows/)
@@ -1243,11 +1243,11 @@ Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Me
         }
         # Output: wintest767 True 00-0D-3A-E5-1C-C0
         ```
-    1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges hálózati adaptert és az IP-címet célozza meg.
+    1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges hálózati adaptert és ip-címet célozza meg.
 
     ### <a name="linux"></a>[Linux](#tab/linux/)
 
-    1. Írja ki a helyi útválasztási táblázatot egy paranccsal, például és keresse meg az `netstat -r` IMDS bejegyzést (például):
+    1. Írja ki a helyi útválasztási táblázatot egy paranccsal, például a és a paranccsal, és keresse meg az `netstat -r` IMDS bejegyzést (például:
         ```console
         ~$ netstat -r
         Kernel IP routing table
@@ -1335,7 +1335,7 @@ Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Me
 
 ## <a name="support"></a>Támogatás
 
-Ha több kísérlet után nem tud metaadat-választ kapni, létrehozhat egy támogatási problémát a Azure Portal.
+Ha több kísérlet után nem kap metaadat-választ, létrehozhat egy támogatási problémát a Azure Portal.
 
 ## <a name="product-feedback"></a>Termékkel kapcsolatos visszajelzés
 

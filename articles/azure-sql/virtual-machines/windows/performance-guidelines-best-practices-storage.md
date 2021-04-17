@@ -1,6 +1,6 @@
 ---
-title: 'Tárolás: ajánlott eljárások a teljesítményhez & irányelvek'
-description: Ajánlott eljárásokat és irányelveket biztosít a SQL Server Azure-beli virtuális gépen (VM) való teljesítményének optimalizálásához.
+title: 'Storage: Teljesítménnyel kapcsolatos ajánlott eljárások és & útmutató'
+description: Ajánlott tárolási eljárásokat és irányelveket biztosít a virtuális gépek SQL Server azure-beli virtuális gépeken való használatának optimalizálásához.
 services: virtual-machines-windows
 documentationcenter: na
 author: dplessMSFT
@@ -15,231 +15,231 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23e006c637285ad484e98b23b2a9f506156f519c
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572414"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389723"
 ---
-# <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Tárolás: ajánlott eljárások az Azure-beli virtuális gépek SQL Serveréhez
+# <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Tárolás: Azure-beli virtuális gépeken SQL Server teljesítményre vonatkozó ajánlott eljárások
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk az Azure Virtual Machines (VM) SQL Server teljesítményének optimalizálására szolgáló ajánlott eljárásokat és irányelveket tartalmazza.
+Ez a cikk ajánlott eljárásokat és irányelveket tartalmaz a tároláshoz az Azure SQL Server virtuális gépeken Virtual Machines teljesítmény optimalizálásához.
 
-Általában a költségek optimalizálása és a teljesítmény optimalizálása közötti kompromisszumok állnak fenn. A teljesítményre vonatkozó ajánlott eljárások sorozat az Azure Virtual Machines SQL Server *legjobb* teljesítményének beszerzésére koncentrál. Ha a számítási feladat kevésbé igényes, előfordulhat, hogy nem igényel minden javasolt optimalizálást. A javaslatok kiértékelése során vegye figyelembe a teljesítményre vonatkozó igényeket, a költségeket és a számítási feladatok mintáit.
+Általában a költségek optimalizálása és a teljesítményre való optimalizálás között van különbség. A teljesítménnyel kapcsolatos ajánlott eljárások  sorozatának célja, hogy a lehető legjobb teljesítményt SQL Server Azure-Virtual Machines. Ha a számítási feladat kevésbé teljesítményigényes, előfordulhat, hogy nincs szükség minden javasolt optimalizálásra. A javaslatok kiértékelése során vegye figyelembe a teljesítménybeli igényeket, a költségeket és a számítási feladatok mintáit.
 
-További információ: a sorozat egyéb cikkei: [teljesítmény ellenőrzőlista](performance-guidelines-best-practices-checklist.md), virtuálisgép- [méret](performance-guidelines-best-practices-vm-size.md)és alapkonfiguráció [gyűjtése](performance-guidelines-best-practices-collect-baseline.md). 
+További tudnivalókért tekintse meg a sorozat további cikkeit: Teljesítmény-ellenőrzőlista, virtuálisgép-méret [és](performance-guidelines-best-practices-vm-size.md) [Alapkonfiguráció gyűjtése.](performance-guidelines-best-practices-collect-baseline.md) [](performance-guidelines-best-practices-checklist.md) 
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
-Tekintse át a következő feladatlistát, amely röviden áttekinti az ajánlott eljárásokat, amelyekkel a cikk további részében részletesebben tájékozódhat: 
+Tekintse át az alábbi ellenőrzőlistát, amely rövid áttekintést nyújt a tárolási ajánlott eljárásokról, amelyekről a cikk további részében részletesebben is olvashat: 
 
-- A lemez típusának kiválasztása előtt figyelje az alkalmazást, és [határozza meg a tárolási sávszélességet és a késési követelményeket](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) a SQL Server adat-, napló-és tempdb-fájlok esetében. 
-- A tárolási teljesítmény optimalizálása érdekében tervezze meg a rendelkezésre álló legmagasabb gyorsítótárban lévő IOPS, és az adatolvasások teljesítménybeli szolgáltatásaként használja az adat-gyorsítótárazást, miközben elkerüli a [virtuális gép és a lemezek maximális korlátját](../../../virtual-machines/premium-storage-performance.md#throttling).
-- Az adatfájlok, a naplók és a tempdb fájljait külön meghajtókon helyezheti el.
-    - Az adatmeghajtó esetében csak a [prémium szintű P30 és a P40 lemezeket](../../../virtual-machines/disks-types.md#premium-ssd) használja a gyorsítótár-támogatás rendelkezésre állásának biztosításához
-    - A [prémium szintű P30-P80 lemezek](../../../virtual-machines/disks-types.md#premium-ssd) kiértékelése során a kapacitás és a tesztelési teljesítmény, valamint a költséghatékony
-      - Ha az almilliszekundum tárolási késése szükséges, használja az [Azure Ultra Disks](../../../virtual-machines/disks-types.md#ultra-disk) -t a tranzakciónaplóhoz. 
-      - Az M-sorozatú virtuális gépek központi telepítései esetében érdemes lehet az Azure Ultra Disks szolgáltatással [írni a gázpedált](../../../virtual-machines/how-to-enable-write-accelerator.md) .
-    - A virtuális gépek optimális méretének kiválasztása után helyezze a [tempdb](/sql/relational-databases/databases/tempdb-database) a helyi ideiglenes SSD- `D:\` meghajtón a legtöbb SQL Server számítási feladathoz. 
-      - Ha a helyi meghajtó kapacitása nem elegendő a tempdb, vegye fontolóra a virtuális gép méretezését. További információért lásd: [adatfájl-gyorsítótárazási szabályzatok](#data-file-caching-policies) .
-- Több Azure-adatlemezt is megtalálhat a [tárolóhelyek](/windows-server/storage/storage-spaces/overview) szolgáltatással, hogy növelje az I/O-sávszélességet a célként megadott virtuális gép IOPS és átviteli korlátaival.
-- A [gazdagép-gyorsítótárazás](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) beállítása az adatfájlok lemezei csak olvashatók.
-- Állítsa be a [gazdagép-gyorsítótárazást](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) a Nincs értékre a naplófájlok lemezein.
-    - Ne engedélyezze az olvasási/írási gyorsítótárazást SQL Server fájlokat tartalmazó lemezeken. 
-    - A lemez gyorsítótár-beállításainak módosítása előtt mindig állítsa le a SQL Server szolgáltatást.
-- A fejlesztési és tesztelési feladatokhoz, valamint a hosszú távú biztonsági mentési archiváláshoz a standard szintű tárolást kell használni. Az éles számítási feladatokhoz nem ajánlott standard HDD/SDD használata.
-- A [kredit-alapú lemez kitörése](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) csak kisebb fejlesztési/tesztelési feladatokhoz és részlegi rendszerekhez vehető figyelembe.
-- A Storage-fiók kiépítése ugyanabban a régióban, mint a SQL Server VM. 
-- Tiltsa le az Azure geo-redundáns tárterületet (Geo-Replication), és használja a LRS (helyi redundáns tárolás) a Storage-fiókon.
-- Formázza az adatlemezt úgy, hogy az a 64 KB-os foglalási egység méretét használja az ideiglenes meghajtótól eltérő meghajtón elhelyezett összes adatfájlhoz `D:\` (amely alapértelmezés szerint 4 KB). SQL Server az Azure Marketplace-en üzembe helyezett virtuális gépekhez a kiosztási egység méretével formázott adatlemezek tartoznak, és a Storage-készlet 64 KB-ra van állítva. 
+- A lemez [](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) típusának kiválasztása előtt figyelje az alkalmazást, és határozza meg SQL Server adatok, naplók és tempdb fájlok tárolási sávszélességére és késésére vonatkozó követelményeket. 
+- A tárolási teljesítmény optimalizálása érdekében tervezze meg a lehető legjobb elérhető IOPS-t, és [](../../../virtual-machines/premium-storage-performance.md#throttling)használja az adat-gyorsítótárazást teljesítmény-szolgáltatásként az adatbeolvasott adatokhoz, miközben a virtuális gép és a lemezek nem korlátoznak.
+- Helyezze az adatokat, a naplókat és a tempdb-fájlokat külön meghajtókra.
+    - Az adatmeghajtóhoz csak prémium [szintű P30- és P40-lemezeket](../../../virtual-machines/disks-types.md#premium-ssd) használjon a gyorsítótár-támogatás rendelkezésre állásának biztosításához
+    - A kapacitásra és a teljesítményt és a költségeket vizsgáló naplómeghajtóra vonatkozó tervhez a prémium [P30– P80 lemezek értékelésekor](../../../virtual-machines/disks-types.md#premium-ssd)
+      - Ha ezredmásodperc alatti tárolási késésre van szükség, használja az [Azure ultralemezeket](../../../virtual-machines/disks-types.md#ultra-disk) a tranzakciónaplóhoz. 
+      - Az M-sorozatú virtuális gépek üzembe helyezésekor fontolja meg az [írásgyorsító](../../../virtual-machines/how-to-enable-write-accelerator.md) azure-beli ultralemezek használatával való felhasználásával való használatot.
+    - A legtöbb számítási feladathoz helyezze a [tempdb-t](/sql/relational-databases/databases/tempdb-database) a helyi rövid SQL Server SSD-meghajtóra az `D:\` optimális virtuálisgép-méret kiválasztása után. 
+      - Ha a helyi meghajtó kapacitása nem elegendő a tempdb számára, fontolja meg a virtuális gép méretezését. További [információ: Adatfájl-gyorsítótárazás házirendek.](#data-file-caching-policies)
+- Több Azure-beli adatlemez csíkozása a [Tárolóhelyek](/windows-server/storage/storage-spaces/overview) használatával az I/O-sávszélességnek a cél virtuális gép IOPS- és átviteli sebességkorlátjainak megfelelő növeléséhez.
+- Állítsa [a gazdagép gyorsítótárazása](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) csak olvashatóra az adatfájllemezek számára.
+- A [naplófájllemezek](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) gazdagép-gyorsítótárazása beállításnál adja meg a nincs adatokat.
+    - Ne engedélyezze az olvasási/írási gyorsítótárazást olyan lemezeken, amelyek SQL Server tartalmaznak. 
+    - Mindig állítsa le a SQL Server szolgáltatást a lemez gyorsítótár-beállításainak módosítása előtt.
+- A fejlesztési és tesztelési számítási feladatokhoz, valamint a hosszú távú biztonsági mentési archiváláshoz érdemes lehet standard szintű tárolót használni. Éles számítási feladatokhoz nem ajánlott standard HDD/SDD-t használni.
+- [A hitelképesség-alapú lemezlökesztés](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) csak kisebb fejlesztési/tesztelési számítási feladatokhoz és részlegek rendszeréhez megfontolható.
+- A tárfiókot a tárfiókkal azonos régióban SQL Server VM. 
+- Tiltsa le az Azure georedundáns tárolást (georeplikáció), és használjon LRS-t (helyileg redundáns tárolást) a tárfiókon.
+- Formázza az adatlemezt úgy, hogy a 64 KB-os blokkméretet (a lemezfoglalási egység méretét) használja az ideiglenes meghajtón (alapértelmezés szerint 4 KB-os) meghajtón elhelyezett összes `D:\` adatfájlhoz. SQL Server virtuális gépek Azure Marketplace blokkmérettel formázott adatlemezekkel és 64 KB-ra beállított tárolókészlet összefűzével vannak. 
 
-Ha össze szeretné hasonlítani a tárolási ellenőrzőlistát a többiekkel, tekintse meg az átfogó [teljesítményre vonatkozó ajánlott eljárásokat tartalmazó feladatlistát](performance-guidelines-best-practices-checklist.md). 
+A tárolási ellenőrzőlista és a többi összehasonlításához tekintse meg a teljesítménnyel kapcsolatos ajánlott eljárások átfogó [ellenőrzőlistát.](performance-guidelines-best-practices-checklist.md) 
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-beli virtuális gépen SQL Server munkaterhelések leghatékonyabb konfigurációjának megkereséséhez kezdje az [üzleti alkalmazás tárolási teljesítményének mérésével](performance-guidelines-best-practices-collect-baseline.md#storage). A tárolási követelmények ismerete után válasszon ki egy virtuális gépet, amely támogatja a szükséges IOPS és átviteli sebességet a megfelelő memória-virtuális mag aránnyal. 
+Az Azure-beli virtuális gépeken SQL Server számítási feladatok leghatékonyabb konfigurációjának megkereséhez kezdje az üzleti alkalmazás tárolási [teljesítményének mérésével.](performance-guidelines-best-practices-collect-baseline.md#storage) Ha már ismertek a tárolási követelmények, válasszon ki egy virtuális gépet, amely támogatja a szükséges IOPS-t és átviteli sebességet a megfelelő memória–virtuális mag arány mellett. 
 
-Válasszon olyan virtuálisgép-méretet, amely elegendő tárterület-méretezhetőséggel rendelkezik a számítási feladatokhoz, valamint egy olyan lemez (általában egy tárolóban), amely megfelel a vállalat kapacitási és teljesítménybeli követelményeinek. 
+Válasszon egy olyan virtuálisgép-méretet, amely elegendő tárolómérettel rendelkezik a számítási feladatokhoz, és olyan lemezeket vegyesen (általában egy tárolókészletben), amelyek megfelelnek a vállalat kapacitási és teljesítménybeli követelményeinek. 
 
-A lemez típusa a lemezen tárolt fájl típusától és a maximális teljesítmény követelményeitől függ.
+A lemez típusa a lemezen üzemeltetett fájltípustól és a csúcsteljesítményre vonatkozó követelményektől is függ.
 
 > [!TIP]
-> A SQL Server VM a Azure Portal segítségével történő kiépítésével végigvezeti a tárolási konfigurációs folyamaton, és megvalósíthatja a legtöbb tárolási ajánlott eljárást, például külön tárolók létrehozását az adataihoz és naplófájljaihoz, a tempdb célzáshoz, `D:\` valamint az optimális gyorsítótárazási házirend engedélyezéséhez. További információ a tároló üzembe helyezéséről és konfigurálásáról: [SQL VM Storage-konfiguráció](storage-configuration.md). 
+> A SQL Server VM Azure Portal segítségével kiépítve végigvezeti a tárolókonfigurációs folyamaton, és megvalósítja a legtöbb ajánlott tárolási eljárást, például különálló tárolókészleteket hoz létre az adatokhoz és a naplófájlok számára, célként a tempdb-t a meghajtóra, és engedélyezi az optimális gyorsítótárazás `D:\` házirendet. További információ a tárolók üzembehelyezésről és konfigurálásról: [SQL-alapú virtuális gépek tárolókonfigurációja.](storage-configuration.md) 
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
-A lemezek teljesítmény szintjén választhat. A mögöttes tárolóként elérhető felügyelt lemezek típusai (a teljesítmény növelésével) szabványos merevlemez-meghajtók (HDD), standard SSD-k, prémium SSD-meghajtók (SSD) és ultra Disks. 
+A lemezek teljesítményszintje alapján választhat. A mögöttes tárolóként (a teljesítmény növelése alapján listázva) elérhető felügyelt lemezek típusai a standard merevlemez-meghajtók (HDD), a standard SSD-k, a prémium SSD-meghajtók és az ultralemezek. 
 
-A lemez teljesítménye a kapacitással nő, [prémium szintű lemezes címkék](../../../virtual-machines/disks-types.md#premium-ssd) szerint csoportosítva, mint például a P1, 4 GIB szóközzel és 120 IOPS a P80 a 32 TiB Storage és a 20 000 IOPS. A Premium Storage olyan tárolási gyorsítótárat támogat, amely bizonyos számítási feladatok esetében segít az olvasási és írási teljesítmény javításában. További információ: [Managed Disks – áttekintés](../../../virtual-machines/managed-disks-overview.md). 
+A lemez teljesítménye a kapacitással együtt [](../../../virtual-machines/disks-types.md#premium-ssd) nő, prémium lemezcímkék szerint csoportosítva, például a P1 4 GiB-hellyel és 120 IOPS-sel a P80-ra, 32 TiB tárhelytel és 20 000 IOPS-sel. A Premium Storage támogatja a tárolási gyorsítótárat, amely bizonyos számítási feladatok olvasási és írási teljesítményének javításához nyújt segítséget. További információ: [Felügyelt lemezek áttekintése.](../../../virtual-machines/managed-disks-overview.md) 
 
-A SQL Server az Azure-beli virtuális gépen (operációsrendszer-lemez, ideiglenes lemez és az adatlemezek) is [figyelembe kell venni](../../../virtual-machines/managed-disks-overview.md#disk-roles) . Körültekintően válassza ki, hogy mit tárol az operációs rendszer meghajtóján `(C:\)` és az ideiglenes átmeneti meghajtón `(D:\)` . 
+Az Azure-beli virtuális gépen SQL Server lemeztípust is érdemes figyelembe venni: egy operációsrendszer-lemez, egy ideiglenes lemez és az adatlemezek esetében. [](../../../virtual-machines/managed-disks-overview.md#disk-roles) Gondosan válassza ki az operációsrendszer-meghajtón és a ideiglenes ideiglenes `(C:\)` meghajtón tárolt `(D:\)` adatokat. 
 
 ### <a name="operating-system-disk"></a>Operációsrendszer-lemez
 
-Az operációsrendszer-lemez olyan virtuális merevlemez, amely az operációs rendszer futó verziójának megfelelően indítható el és csatlakoztatható, és meghajtóként van megjelölve `C:\` . Azure-beli virtuális gép létrehozásakor a platform legalább egy lemezt csatlakoztat a virtuális géphez az operációsrendszer-lemezhez. A `C:\` meghajtó az alkalmazás telepítésének és a fájl konfigurációjának alapértelmezett helye. 
+Az operációsrendszer-lemezek olyan vhD-fájlok, amelyek az operációs rendszer futó verziójaként indíthatóak el és csatlakoztathatóak, és meghajtóként vannak `C:\` megcímkézve. Azure-beli virtuális gép létrehozásakor a platform legalább egy lemezt csatol a virtuális géphez az operációsrendszer-lemez számára. A meghajtó az alkalmazástelepítések és a `C:\` fájlkonfiguráció alapértelmezett helye. 
 
-Éles SQL Server környezetekben ne használja az operációs rendszer lemezét adatfájlokhoz, naplófájlokhoz és hibanaplóekhez. 
+Éles környezetekben SQL Server ne használja az operációsrendszer-lemezt adatfájlokhoz, naplófájlokhoz és hibanaplókhoz. 
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-Számos Azure-beli virtuális gép tartalmaz egy másik, az ideiglenes lemezt ( `D:\` meghajtóként megjelölt) lemezt. A virtuálisgép-sorozattól és méretétől függően a lemez kapacitása eltérő lesz. Az ideiglenes lemez elmúló jellegű, ami azt jelenti, hogy a lemez tárterületét újra létrehozza a rendszer (a (z)-ben, a lefoglalást és a foglalást újra lefoglalják), a virtuális gép újraindításakor vagy egy másik gazdagépre (például a [szolgáltatás-gyógyításra](/troubleshoot/azure/virtual-machines/understand-vm-reboot)) áthelyezve. 
+Számos Azure-beli virtuális gép tartalmaz egy másik lemeztípust, az úgynevezett ideiglenes lemezt (meghajtóként `D:\` címkézve). A virtuálisgép-sorozattól és mérettől függően a lemez kapacitása eltérő lehet. Az ideiglenes lemez ideiglenes lemez, ami azt jelenti, hogy a lemeztároló újból létre lesz hozva (például felszabadítja és újból lefoglalja), [](/troubleshoot/azure/virtual-machines/understand-vm-reboot)a virtuális gép újraindításakor vagy egy másik gazdagépre való áthelyezésekor (például a szolgáltatás javítóeszközeként). 
 
-Az ideiglenes tárolóeszköz nem marad meg a távoli tárolóban, ezért nem szabad tárolni a felhasználói adatbázisfájlok, a tranzakciós naplófájlok fájljait, vagy bármit, amelyet meg kell őrizni. 
+Az ideiglenes tárolót nem őrzi meg a rendszer a távoli tárolóban, ezért nem tárolhat felhasználói adatbázisfájlokat, tranzakciós naplófájlokat vagy bármi olyan fájlt, amit meg kell őrizni. 
 
-Helyezze a tempdb a helyi ideiglenes SSD-meghajtóra SQL Server számítási feladatokhoz, `D:\` kivéve, ha a helyi gyorsítótár használata aggodalomra ad okot. Ha olyan virtuális gépet használ, amely [nem rendelkezik ideiglenes lemezzel](../../../virtual-machines/azure-vms-no-temp-disk.md) , javasoljuk, hogy a tempdb a saját elkülönített lemezére vagy a Storage-készletbe helyezze a gyorsítótárazási beállítással, hogy csak olvasható legyen. További információ: tempdb- [adatgyorsítótárazási szabályzatok](performance-guidelines-best-practices-storage.md#data-file-caching-policies).
+Helyezze a tempdb-t a helyi ideiglenes SSD-meghajtóra SQL Server számítási feladatokhoz, kivéve, ha a helyi gyorsítótár `D:\` használata aggodalomra ad okot. Ha olyan virtuális gépet használ, amely nem rendelkezik ideiglenes lemezzel, javasoljuk, hogy a tempdb-t [helyezze a](../../../virtual-machines/azure-vms-no-temp-disk.md) saját elkülönített lemezére vagy tárolókészletére úgy, hogy a gyorsítótárazás csak olvasható legyen. További információ: [tempdb adat-gyorsítótárazás szabályzatok.](performance-guidelines-best-practices-storage.md#data-file-caching-policies)
 
 ### <a name="data-disks"></a>Adatlemezek
 
-Az adatlemezek olyan távoli tároló lemezek, amelyek gyakran jönnek létre a [tárolókban](/windows-server/storage/storage-spaces/overview) , hogy meghaladják azt a kapacitást és teljesítményt, amelyet egyetlen lemez kínálhat a virtuális géphez.
+Az adatlemezek olyan távoli tárolólemezek, amelyek gyakran tárolókészletekbe vannak létrehozva, hogy meghaladják azt a kapacitást és teljesítményt, amit bármely lemez kínálhat a virtuális gépnek. [](/windows-server/storage/storage-spaces/overview)
 
-Csatolja a számítási feladatok IOPS, átviteli sebességére és kapacitására vonatkozó követelményeket teljesítő lemezek minimális számát. Ne lépje túl az átméretezni kívánt legkisebb virtuális gép adatlemezek maximális számát.
+Csatolja a számítási feladat IOPS-, átviteli és kapacitáskövetelményeinek megfelelő lemezek minimális számát. Ne lépi túl az átméretezni tervezni tervezhető legkisebb virtuális gép adatlemezei maximális számát.
 
-Az adat-és naplófájlok elhelyezése az adatlemezeken a legjobb teljesítménybeli követelményeknek megfelelően. 
+Helyezze az adatokat és a naplófájlokat a teljesítménybeli követelményeknek leginkább megfelelő kiépített adatlemezre. 
 
-Formázza az adatlemezt úgy, hogy az a 64 KB-os foglalási egység méretét használja az ideiglenes meghajtótól eltérő meghajtón elhelyezett összes adatfájlhoz `D:\` (amely alapértelmezés szerint 4 KB). SQL Server az Azure Marketplace-en üzembe helyezett virtuális gépekhez a kiosztási egység méretével formázott adatlemezek tartoznak, és a Storage-készlet 64 KB-ra van állítva. 
+Formázza az adatlemezt úgy, hogy 64 KB-os lemezfoglalási egységméretet használjon az ideiglenes meghajtótól (alapértelmezés szerint 4 KB-os) meghajtón elhelyezett összes `D:\` adatfájlhoz. SQL Server virtuális gépek Azure Marketplace lemezei foglalási egységmérettel vannak formázva, és összefűzve a 64 KB-ra beállított tárolókészlethez. 
 
 ## <a name="premium-disks"></a>Prémium szintű lemezek
 
-Az adatokhoz és naplófájlokhoz prémium szintű SSD-lemezeket használjon éles SQL Server munkaterhelések esetén. Prémium SSD IOPS és a sávszélesség a [lemez méretétől és típusától](../../../virtual-machines/disks-types.md)függően változik. 
+Prémium SSD-lemezek használata adatokhoz és naplófájlokhoz éles SQL Server számítási feladatokhoz. prémium SSD IOPS és sávszélesség mérete a lemez méretétől és [típusától függ.](../../../virtual-machines/disks-types.md) 
 
-Éles számítási feladatokhoz használja a P30 és/vagy a P40 lemezeket SQL Server adatfájlok számára, hogy biztosítsa a gyorsítótárazást, és használja a P30 legfeljebb P80 SQL Server tranzakciós naplófájlok számára.  A legjobb teljes tulajdonlási díjas P30s (5000 IOPS/200 MBPS) az adatfájlok és a naplófájlok esetében, és csak akkor válassza a nagyobb kapacitást, ha a virtuális gépek lemezének számát kell vezérelni.
+Éles számítási feladatokhoz használja a P30- és/vagy P40-lemezeket SQL Server-adatfájlokhoz a gyorsítótárazás támogatásához, és használja a P30–P80 SQL Server tranzakciós naplófájlok esetében.  A legjobb teljes tulajdonosi költség eléréséhez kezdje a P30-asokkal (5000 IOPS/200 MBPS) az adatok és naplófájlok esetén, és csak akkor válasszon magasabb kapacitást, ha szabályozni kell a virtuális gép lemezszámát.
 
-A OLTP számítási feladatokhoz a IOPS (vagy a Storage-készletet) a teljesítményre vonatkozó követelményekkel kell megegyeznie a munkaterhelések csúcsidőben és a teljesítményszámlálók használatával `Disk Reads/sec`  +  `Disk Writes/sec` . Az adatraktár-és jelentéskészítési számítási feladatokhoz a munkaterhelések csúcsidőben és a `Disk Read Bytes/sec`  +  `Disk Write Bytes/sec` . 
+OLTP számítási feladatok esetén a lemezenkénti (vagy tárolókészletenkénti) cél IOPS-értékeket a számítási feladatok csúcsidőszakokban és teljesítményszámlálók használatával teljesítménnyel kapcsolatos `Disk Reads/sec`  +  `Disk Writes/sec` követelményeinek megfelelően kell megfeleltetni. Az adattárház és a jelentéskészítési számítási feladatok esetében a számítási feladatok csúcsidőszakokban és a használatával egyeznek meg a cél átviteli `Disk Read Bytes/sec`  +  `Disk Write Bytes/sec` sebességet. 
 
-Használja a tárolóhelyeket az optimális teljesítmény eléréséhez, konfigurálja a két készletet, egyet a naplófájl (ok) hoz és a másikat az adatfájlokhoz. Ha nem használ lemezes csíkozást, használjon két, különálló meghajtókra leképezett prémium SSD-lemezt, ahol az egyik meghajtó tartalmazza a naplófájlt, a másik pedig tartalmazza az adatfájlt.
+A Tárolóhelyek használatával optimális teljesítményt érhet el, konfigurálnia kell két készletet, egyet a naplófájl(k)hoz, egyet pedig az adatfájlokhoz. Ha nem használ lemezsávolást, használjon két prémium SSD-lemezt, amelyek külön meghajtókra vannak leképezve, ahol az egyik meghajtó tartalmazza a naplófájlt, a másik pedig az adatokat.
 
-A tárolási készlet részeként használt [kiépített IOPS és átviteli sebesség](../../../virtual-machines/disks-types.md#premium-ssd) . A lemezek együttes IOPS és átviteli kapacitása a virtuális gép átviteli sebességére vonatkozó korlátok maximális kapacitása.
+A [tárolókészlet részeként használt,](../../../virtual-machines/disks-types.md#premium-ssd) lemezenkénti kiépített IOPS és átviteli sebesség. A lemezek kombinált IOPS- és átviteli sebességi képességei a virtuális gép átviteli sebességének maximuma.
 
-Az ajánlott eljárás a lehető legkevesebb lemez használata a IOPS (és az átviteli sebesség) és a kapacitás minimális követelményeinek teljesítése során. Az ár és a teljesítmény egyensúlya azonban sokkal nagyobb méretű kis méretű lemezekkel, nem pedig kis számú nagyméretű lemezzel.
+Az ajánlott eljárás az, ha a lehető legkevesebb lemezt használja, ugyanakkor megfelel az IOPS (és az átviteli sebesség) és a kapacitás minimális követelményeinek. Az ár és a teljesítmény egyensúlya azonban általában jobb, ha nagy számú kis lemezzel, és nem kevés nagy lemezzel.
 
 ### <a name="scaling-premium-disks"></a>Prémium szintű lemezek skálázása
 
-Egy Azure-beli felügyelt lemez első telepítésekor a lemez teljesítményszint a kiosztott lemez méretétől függ. Jelölje ki a teljesítmény szintet a telepítéskor, vagy később módosítsa azt a lemez méretének módosítása nélkül. Ha a kereslet növekszik, növelheti a teljesítmény szintjét az üzleti igények kielégítése érdekében. 
+Az Azure Managed Disk első üzembe helyezésekor az adott lemez teljesítményszintja a kiépített lemezméreten alapul. Jelölje ki a teljesítményszintet az üzembe helyezéskor, vagy ezt követően módosítsa a lemez méretének módosítása nélkül. Ha az igények növekednek, az üzleti igényeknek megfelelően növelheti a teljesítményszintet. 
 
-A teljesítmény szintjének módosítása lehetővé teszi a rendszergazdák számára, hogy a [lemezre való kitörés](../../../virtual-machines/disk-bursting.md#credit-based-bursting)nélkül készítsék elő és találkozzanak magasabb igényekkel. 
+A teljesítményszint módosítása lehetővé teszi a rendszergazdák számára, hogy lemezlökés-igénye nélkül készüljenek fel a nagyobb igényekre, és hogy ki is [egészüljenek.](../../../virtual-machines/disk-bursting.md#credit-based-bursting) 
 
-Ha a számlázást úgy tervezték, hogy az megfeleljen a tárolási teljesítmény szintjének, használja a nagyobb teljesítményt, ha szükséges. A kapacitás növelése nélkül frissítse a szintet, hogy az megfeleljen a teljesítmény követelményeinek. Térjen vissza az eredeti szintjére, ha a további teljesítmény már nem szükséges.
+Szükség esetén használja a nagyobb teljesítményt, ha a számlázást úgy tervezték, hogy megfeleljen a tárolási teljesítményszintnek. A kapacitás növelése nélkül frissítse a szintet, hogy megfeleljen a teljesítményre vonatkozó követelményeknek. Térjen vissza az eredeti szintre, ha már nincs szükség további teljesítményre.
 
-Ez a költséghatékony és a teljesítmény átmeneti bővülése erős használati eset olyan megcélzó eseményekhez, mint például a vásárlás, a teljesítmény tesztelése, a betanítási események és más rövid ablakok, ahol nagyobb teljesítményre van szükség, csak rövid távon. 
+Ez a költséghatékony és ideiglenes teljesítménybővítés erős eset olyan célzott eseményeknél, mint a vásárlás, a teljesítményttesztelés, a betanítási események és egyéb rövid időtartamok, ahol csak rövid távon van szükség nagyobb teljesítményre. 
 
-További információ: [teljesítmény szintjei a felügyelt lemezekhez](../../../virtual-machines/disks-change-performance.md). 
+További információ: Felügyelt lemezek [teljesítményszintek.](../../../virtual-machines/disks-change-performance.md) 
 
-## <a name="azure-ultra-disk"></a>Azure Ultra Disk
+## <a name="azure-ultra-disk"></a>Azure ultralemez
 
-Ha kisebb késéssel rendelkező ezredmásodperces válaszidő szükséges, érdemes lehet [Azure Ultra diskt](../../../virtual-machines/disks-types.md#ultra-disk) használni a SQL Server log meghajtóhoz, vagy akár az adatmeghajtót olyan alkalmazásokhoz is, amelyek rendkívül érzékenyek az I/O-késésre. 
+Ha kisebb késésű, ezredmásodperc alatti válaszidőre van szükség, fontolja meg [az Azure ultralemezt](../../../virtual-machines/disks-types.md#ultra-disk) az SQL Server-naplómeghajtóhoz, vagy akár az adatmeghajtót olyan alkalmazásokhoz, amelyek rendkívül érzékenyek az I/O-késésre. 
 
-Az ultra Disk konfigurálható, ahol a kapacitás és a IOPS egymástól függetlenül méretezhető. Az ultra Disk-rendszergazdák a kapacitással, a IOPS és az átviteli sebességgel kapcsolatos követelményekkel rendelkezhetnek az alkalmazás igényei alapján. 
+Az ultralemez konfigurálható úgy, hogy a kapacitás és az IOPS egymástól függetlenül skálázható legyen. Az ultralemezek rendszergazdái az alkalmazás igényeinek megfelelően kiépíthet egy lemezt a kapacitásra, az IOPS-teljesítményre és az átviteli sebességre vonatkozó követelményekkel. 
 
-Az ultravékony lemez nem támogatott az összes virtuálisgép-sorozatban, és más korlátozásokkal rendelkezik, mint például a régió rendelkezésre állása, a redundancia és a Azure Backup támogatása. További információ: az [Azure Ultra Disks használata](../../../virtual-machines/disks-enable-ultra-ssd.md) a korlátozások teljes listájára. 
+Az ultralemez nem támogatott minden virtuálisgép-sorozaton, és más korlátozásokkal rendelkezik, például a régiók rendelkezésre állása, a redundancia és a virtuális gépek Azure Backup. További információ: [Az Azure ultralemezek használata](../../../virtual-machines/disks-enable-ultra-ssd.md) a korlátozások teljes listájáért. 
 
-## <a name="standard-hdds-and-ssds"></a>Standard HDD-k és SSD-k
+## <a name="standard-hdds-and-ssds"></a>Standard HDD-k és HDD-k
 
-A [szabványos HDD](../../../virtual-machines/disks-types.md#standard-hdd) -k és SSD-k eltérő késéssel és sávszélességgel rendelkeznek, és csak fejlesztési/tesztelési feladatokhoz ajánlottak. Az éles számítási feladatoknak prémium SSD-ket kell használniuk. Ha standard SSD (fejlesztési/tesztelési forgatókönyvet) használ, a javaslat a virtuálisgép- [méret](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) által támogatott adatlemezek maximális számának hozzáadására szolgál, és a lehető legjobb teljesítmény érdekében a lemezes csíkozást használja a tárolóhelyekkel.
+[A standard HDD-k](../../../virtual-machines/disks-types.md#standard-hdd) és az SSD-k késése és sávszélessége eltérő, és csak fejlesztési/tesztelési számítási feladatokhoz ajánlottak. Az éles számítási feladatoknak prémium SZINTŰ SSD-ket kell használniuk. Ha virtuális gépeket standard SSD (fejlesztési/tesztelési forgatókönyvek), javasoljuk, hogy adja hozzá a [](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) virtuális gép mérete által támogatott adatlemezek maximális számát, és használjon lemezes csíkozást a Tárolóhelyekkel a legjobb teljesítmény érdekében.
 
 ## <a name="caching"></a>Gyorsítótárazás
 
-A Premium Storage gyorsítótárazást támogató virtuális gépek kihasználhatják az Azure BlobCache vagy a gazdagép gyorsítótárazása nevű további funkciót, amely kibővíti a virtuális gépek IOPS és átviteli kapacitását. A Premium Storage-hoz és a Premium Storage-gyorsítótárazáshoz engedélyezett virtuális gépekhez két különböző tárolási sávszélességre vonatkozó korlátozás vonatkozik, amelyek együttesen használhatók a tárolási teljesítmény javítása érdekében.
+A Premium Storage-gyorsítótárazást támogató virtuális gépek kihasználhatják az Azure BlobCache vagy a gazdagép-gyorsítótárazás nevű további funkciót a virtuális gépek IOPS- és átviteli sebességi képességeinek kibővítésében. A Premium Storage és a Premium Storage gyorsítótárazása számára is engedélyezett virtuális gépekre ez a két különböző sávszélesség-korlátozás vonatkozik, amelyek együttesen a tárolási teljesítmény javítására használhatók.
 
-A gyorsítótárazás nélküli IOPS és MB/s átviteli sebesség a virtuális gép nem gyorsítótárazott lemezes átviteli sebességének korlátaira vonatkozik. A gyorsítótárazott maximális határértékek egy további puffert biztosítanak, amely segít a növekedés és a váratlan csúcsok kezelésében.
+Az IOPS és MBps átviteli sebesség gyorsítótárazás nélküli száma a virtuális gép gyorsítótárazás nélküli lemez-átviteli sebességkorlátai között. A gyorsítótárazott maximális korlátok egy további puffert biztosítanak az olvasáshoz, amely segít a növekedés és a váratlan csúcsok címében.
 
-A prémium szintű gyorsítótárazás engedélyezése, ha a lehetőség támogatott az adatmeghajtón lévő olvasási teljesítmény jelentős javítása érdekében további díjak nélkül. 
+Engedélyezze a prémium gyorsítótárazást, ha a beállítás támogatott, hogy további költségek nélkül jelentősen javítsa az adat meghajtón való olvasások teljesítményét. 
 
-Az Azure BlobCache (gyorsítótárazott IOPS és átviteli sebesség) beolvasása és írása nem számít bele a virtuális gép nem gyorsítótárazott IOPS és átviteli sebességére vonatkozó korlátozásokkal.
+Az Azure BlobCache-be való olvasások és írások (gyorsítótárazott IOPS és átviteli sebesség) nem számítanak bele a virtuális gép gyorsítótárazott IOPS- és átviteli sebességkorlátaiba.
 
 > [!NOTE]
-> A lemezes gyorsítótárazás nem támogatott a 4 TiB-s és nagyobb (P50 és nagyobb) lemezek esetén. Ha több lemez van csatlakoztatva a virtuális géphez, akkor minden 4 TiB-nál kisebb lemez támogatja a gyorsítótárazást. További információ: [lemezes gyorsítótárazás](../../../virtual-machines/premium-storage-performance.md#disk-caching). 
+> A lemez-gyorsítótárazás nem támogatott a 4 TiB és nagyobb (P50 vagy nagyobb) lemezeken. Ha több lemez van csatlakoztatva a virtuális géphez, minden 4 TiB-osnál kisebb lemez támogatni fogja a gyorsítótárazást. További információ: [Lemez-gyorsítótárazás.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
 
-### <a name="uncached-throughput"></a>Nem gyorsítótárazott átviteli sebesség
+### <a name="uncached-throughput"></a>Nem gyorsítótárazó átviteli sebesség
 
-A nem gyorsítótárazott lemez maximális IOPS és átviteli sebessége a virtuális gép által kezelhető maximális tárterület. Ez a korlát a virtuális gépen van meghatározva, és nem korlátozza a mögöttes lemezes tárolást. Ez a korlát csak az I/O-re vonatkozik a virtuális géphez távolról csatlakoztatott adatmeghajtókon, nem pedig a helyi I/O-t a temp meghajtón ( `D:\` meghajtón) vagy az operációsrendszer-meghajtón.
+A lemez maximális nem gyorsítótárazó IOPS-értékével és átviteli sebességével a virtuális gép által kezelhető maximális távoli tárterület-korlát. Ez a korlát a virtuális gépen van meghatározva, és nem a mögöttes lemeztároló korlátja. Ez a korlát csak a virtuális géphez távolról csatlakoztatott adatmeghajtókra vonatkozik, az ideiglenes meghajtón (meghajtón) vagy az operációsrendszer-meghajtón található helyi I/O-re `D:\` nem.
 
-A virtuális gép számára elérhető nem gyorsítótárazott IOPS és átviteli sebesség ellenőrizhető a virtuális géphez tartozó dokumentációban.
+A virtuális gépekhez elérhető gyorsítótárazás nélküli IOPS-érték és átviteli sebesség a virtuális gép dokumentációjában ellenőrizhető.
 
-Az [M-sorozat](../../../virtual-machines/m-series.md) dokumentációja például azt mutatja, hogy a Standard_M8ms virtuális gép maximális gyorsítótár nélküli átviteli sebessége 5000 IOPS és 125 Mbps a nem gyorsítótárazott lemez átviteli sebessége. 
+Az [M-sorozat](../../../virtual-machines/m-series.md) dokumentációja például azt mutatja, hogy a Standard_M8ms virtuális gép maximális gyorsítótárazás nélküli átviteli sebessége 5000 IOPS és 125 MB/s gyorsítótárazás nélküli lemez-átviteli sebesség. 
 
-![Képernyőfelvétel: az M-sorozat nem gyorsítótárazott lemez-átviteli sebességének dokumentációja.](./media/performance-guidelines-best-practices/m-series-table.png)
+![Az M-sorozat nem gyorsítótárazású lemez átviteli sebességének dokumentációját bemutató képernyőkép.](./media/performance-guidelines-best-practices/m-series-table.png)
 
-Hasonlóképpen láthatja, hogy a Standard_M32ts támogatja a 20 000 gyorsítótár nélküli lemez-IOPS és a 500 MBps gyorsítótár nélküli lemez átviteli sebességét. Ez a korlát a virtuális gép szintjére vonatkozik, függetlenül az alapul szolgáló prémium szintű lemezes tárterülettől.
+Hasonlóképpen azt is láthatja, hogy a Standard_M32ts 20 000 nem gyorsítótárazó lemez IOPS-t és 500 MB/s gyorsítótárazás nélküli lemez-átviteli sebességet támogat. Ez a korlát a virtuális gép szintjén van korlátozva, függetlenül a mögöttes prémium szintű lemeztárolótól.
 
-További információ: nem [gyorsítótárazott és gyorsítótárazott korlátok](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits).
+További információ: [gyorsítótárazásmentes és gyorsítótárazott korlátok.](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits)
 
 
-### <a name="cached-and-temp-storage-throughput"></a>Gyorsítótárazott és ideiglenes tárolási sebesség
+### <a name="cached-and-temp-storage-throughput"></a>Gyorsítótárazott és ideiglenes tároló átviteli sebesség
 
-A maximális gyorsítótárazott és ideiglenes tárolási átviteli sebesség korlátja a virtuális gép nem gyorsítótárazott átviteli korlátjának külön korlátja. Az Azure-BlobCache a virtuális gép gazdagépének véletlen elérésű memóriájának és helyileg csatlakoztatott SSD-hálózatának kombinációjából áll. A virtuális gép Temp meghajtója ( `D:\` meghajtója) is ezen a helyi SSD-n fut.
+A gyorsítótárazott és az ideiglenes tárterület maximális átviteli sebességének korlátja külön korlát a virtuális gép gyorsítótárazáson nem tárolt átviteli sebességének korlátja. Az Azure BlobCache a virtuális gép gazdagépe véletlenszerűen elérhető memóriája és a helyileg csatlakoztatott SSD kombinációjából áll. A virtuális gépen található ideiglenes meghajtó (meghajtó) ezen a helyi `D:\` SSD-n is üzemel.
 
-A gyorsítótárazott és a temp tároló maximális átviteli sebességének korlátja csak akkor szabályozza az I/O-t a helyi ideiglenes meghajtón ( `D:\` meghajtón) és az Azure BlobCache, **Ha** engedélyezve van a gazdagép gyorsítótárazása. 
+A gyorsítótárazott és ideiglenes tároló maximális átviteli sebességének korlátja csak akkor szabályozza az I/O-t a helyi ideiglenes meghajtóra (meghajtó) és az Azure BlobCache-re, ha a gazdagép `D:\` gyorsítótárazása engedélyezve van.  
 
-Ha a gyorsítótárazás engedélyezve van a Premium Storage-on, a virtuális gépek a távoli tárolók nem gyorsítótárazott virtuális gép IOPS és az átviteli sebesség korlátain túl is méretezhetők.  
+Ha a gyorsítótárazás engedélyezve van a prémium szintű tárolón, a virtuális gépek a távoli tároló nem gyorsítótárazású virtuálisgép-IOPS-korlátja és az átviteli sebesség korlátain túl is skálázhatók.  
 
-Csak bizonyos virtuális gépek támogatják a Premium Storage-t és a Premium Storage-gyorsítótárazást (amelyet ellenőrizni kell a virtuális gép dokumentációjában). Az [M-sorozat](../../../virtual-machines/m-series.md) dokumentációja például azt jelzi, hogy a Premium Storage és a Premium Storage gyorsítótárazása is támogatott: 
+Csak bizonyos virtuális gépek támogatják a prémium szintű tárolást és a prémium szintű tárolók gyorsítótárazást is (ezt a virtuális gépek dokumentációjában kell ellenőrizni). Az [M-sorozat dokumentációja](../../../virtual-machines/m-series.md) például azt jelzi, hogy a prémium szintű tárolás és a prémium szintű tárolók gyorsítótárazása is támogatott: 
 
-![Az M-sorozat Premium Storage támogatását ábrázoló képernyőkép.](./media/performance-guidelines-best-practices/m-series-table-premium-support.png)
+![Képernyőkép az M sorozatú Premium Storage támogatásról.](./media/performance-guidelines-best-practices/m-series-table-premium-support.png)
 
-A gyorsítótár korlátai a virtuális gép méretétől függően változnak. Például a Standard_M8ms virtuális gép a 10000 gyorsítótárazott lemez IOPS és 1000 MBps gyorsítótárazott lemez átviteli sebességét támogatja a 793 GiB teljes gyorsítótár-méretével. Hasonlóképpen, a Standard_M32ts virtuális gép a 40000 gyorsítótárazott lemez IOPS és 400 MBps gyorsítótárazott lemez átviteli sebességét támogatja a 3174 GiB teljes gyorsítótár-méretével. 
+A gyorsítótár korlátai a virtuális gép méretétől függően változnak. Az Standard_M8ms virtuális gép például 10000 gyorsítótárazott lemez IOPS-t és 1000 MB/s gyorsítótárazott lemez-átviteli sebességet támogat 793 GiB teljes gyorsítótár-mérettel. Hasonlóképpen, a Standard_M32ts virtuális gép 40000 gyorsítótárazott lemez IOPS-t és 400 MBps gyorsítótárazott lemez-átviteli sebességet támogat 3174 GiB teljes gyorsítótár-mérettel. 
 
-![Az M-sorozat gyorsítótárazott lemezének adatátviteli dokumentációját ábrázoló képernyőfelvétel.](./media/performance-guidelines-best-practices/m-series-table-cached-temp.png)
+![Képernyőkép az M-sorozat gyorsítótárazott lemezének átviteli sebességével kapcsolatos dokumentációról.](./media/performance-guidelines-best-practices/m-series-table-cached-temp.png)
 
-A gazdagépek gyorsítótárazását manuálisan is engedélyezheti egy meglévő virtuális gépen. A virtuális gép gyorsítótárazási házirendjének módosítása előtt állítsa le az összes alkalmazás-munkaterhelést és a SQL Server-szolgáltatást. A virtuális gép gyorsítótár-beállításainak bármelyikének módosításakor a rendszer leválasztja a célként megadott lemezt, és a beállítások alkalmazása után újra csatolja őket.
+A gazdagépek gyorsítótárazása manuálisan is engedélyezhető egy meglévő virtuális gépen. Állítsa le az alkalmazás számítási feladatait és SQL Server a virtuális gép gyorsítótárazó házirendjére vonatkozó módosítások előtt. A virtuális gép gyorsítótár-beállításainak módosítása esetén a céllemez a beállítások alkalmazása után lesz leválasztva, majd újra lesz gyorsítótárazva.
 
-### <a name="data-file-caching-policies"></a>Adatfájl-gyorsítótárazási házirendek
+### <a name="data-file-caching-policies"></a>Adatfájl-gyorsítótárazás házirendek
 
-A tárolási gyorsítótárazási házirend a meghajtón tárolt SQL Server adatfájlok típusától függően változhat. 
+A tároló-gyorsítótárazás szabályzata a meghajtón SQL Server adatfájlok típusától függően változik. 
 
-A következő táblázat összefoglalja az ajánlott gyorsítótárazási házirendeket az SQL Server-adattípusok alapján: 
+Az alábbi táblázat összefoglalja az ajánlott gyorsítótárazó házirendeket a gyorsítótárazás típusa SQL Server alapján: 
 
 |SQL Server lemez |Ajánlás |
 |---------|---------|
-| **Adatlemez** | Engedélyezze `Read-only` a gyorsítótárazást a SQL Server adatfájlokat üzemeltető lemezeken. <br/> A gyorsítótárból való beolvasás gyorsabb lesz, mint az adatlemezről származó nem gyorsítótárazott olvasások. <br/> A nem gyorsítótárazott IOPS és az átviteli sebesség, valamint a gyorsítótárazott IOPS és az átviteli sebesség a virtuális gépek teljes lehetséges teljesítményét eredményezi a virtuális gép korlátain belül, a tényleges teljesítmény azonban a munkaterhelés a gyorsítótár használatának lehetősége alapján változhat (gyorsítótár-találati arány). <br/>|
-|**Tranzakciós napló lemeze**|Állítsa be a gyorsítótárazási házirendet a `None` tranzakciós naplót üzemeltető lemezekre.  Nincs teljesítménybeli előny a tranzakciónapló-lemez gyorsítótárazásának engedélyezéséhez, és ha a `Read-only` naplófájlban engedélyezve van vagy gyorsítótárazás engedélyezett, a meghajtón lévő `Read/Write` írások teljesítménye csökkenhet, és csökkentheti az adatmeghajtón való olvasáshoz elérhető gyorsítótár mennyiségét.  |
-|**Operációs rendszer lemeze** | Az alapértelmezett gyorsítótárazási házirend lehet `Read-only` vagy `Read/write` az operációsrendszer-meghajtó. <br/> Az operációs rendszer meghajtójának gyorsítótárazási szintjének módosítása nem ajánlott.  |
-| **tempdb**| Ha a tempdb nem helyezhetők el az ideiglenes meghajtón a `D:\` Kapacitási okok miatt, vagy méretezze át a virtuális gépet úgy, hogy egy nagyobb, ideiglenes meghajtót kapjon, vagy helyezze el a tempdb egy külön adatmeghajtón, amelyen a `Read-only` gyorsítótárazás konfigurálva van. <br/> A virtuális gép gyorsítótára és az ideiglenes meghajtó egyaránt a helyi SSD-t használja, ezért ne feledje, hogy a tempdb I/O-méretezése a gyorsítótárazott IOPS és az átviteli sebességű virtuális gépekre vonatkozó korlátok alapján történik, amikor az ideiglenes meghajtón fut.| 
+| **Adatlemez** | Engedélyezze `Read-only` a gyorsítótárazást az adatfájlokat SQL Server lemezeken. <br/> A gyorsítótárból való olvasás gyorsabb lesz, mint az adatlemez gyorsítótárazásmentes olvasása. <br/> A nem gyorsítótárazott IOPS és átviteli sebesség, valamint a gyorsítótárazott IOPS és az átviteli sebesség a virtuális gép által a virtuális gépek korlátain belül elérhető teljes lehetséges teljesítményt fogja eredményezni, de a tényleges teljesítmény a számítási feladat gyorsítótár-használatra vonatkozó képességének (gyorsítótár-találati arány) függvényében változik. <br/>|
+|**Tranzakciónapló-lemez**|Állítsa a gyorsítótárazás házirendet a következőre `None` a tranzakciónaplót üzemeltető lemezeken: .  A tranzakciós naplólemez gyorsítótárazása nem jár teljesítménnyel, és akár az, akár a naplózási meghajtón engedélyezve van, csökkentheti a meghajtó írási teljesítményét, és csökkentheti az adatmeghajtón való olvasáshoz rendelkezésre álló gyorsítótár `Read-only` `Read/Write` mennyiségét.  |
+|**Operációsrendszer-lemez** | Az alapértelmezett gyorsítótárazás házirend az operációs rendszer `Read-only` meghajtója vagy `Read/write` lehet. <br/> Az operációsrendszer-meghajtó gyorsítótárazási szintjének módosítása nem ajánlott.  |
+| **tempdb**| Ha a tempdb a kapacitás miatt nem helyezhető el a ideiglenes meghajtón, méretezze át a virtuális gépet, hogy nagyobb ideiglenes meghajtót kap, vagy helyezze a tempdb-t egy külön adat meghajtóra, konfigurált `D:\` `Read-only` gyorsítótárazással. <br/> A virtuális gép gyorsítótára és a ideiglenes meghajtó is a helyi SSD-t használja, ezért ezt tartsa szem előtt, amikor tempdb I/O-méretezést használ, beleszámol a gyorsítótárazott IOPS-értékbe és az átviteli sebesség virtuálisgép-korlátaiba, ha a ideiglenes meghajtón van üzemeltetve.| 
 | | | 
 
 
-További információ: [lemezes gyorsítótárazás](../../../virtual-machines/premium-storage-performance.md#disk-caching). 
+További információ: [Lemez-gyorsítótárazás.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
 
 
-## <a name="disk-striping"></a>Lemezek csíkozása
+## <a name="disk-striping"></a>Lemezsávolás
 
-Elemezze az SQL-adatfájlokhoz szükséges átviteli sebességet és sávszélességet az adatlemezek számának meghatározásához, beleértve a naplófájlt és a tempdb is. Az átviteli sebesség és a sávszélesség korlátai a virtuális gépek méretétől függően változnak. További információ: [virtuális gép mérete](../../../virtual-machines/sizes.md)
+Elemezze az SQL-adatfájlokhoz szükséges átviteli sebességet és sávszélességet az adatlemezek számának meghatározásához, beleértve a naplófájlt és a tempdb-t. Az átviteli sebességre és a sávszélességre vonatkozó korlátok a virtuális gép méretétől függően változnak. További információ: Virtuális gép [mérete](../../../virtual-machines/sizes.md)
 
-További adatlemezeket adhat hozzá, és további átviteli sebességhez használhatja a lemezes sávokat. Például egy 12 000 IOPS és 180 MB/s sebességű adatátviteli sebességet igénylő alkalmazás három csíkozott P30-lemezt is használhat a 15 000 IOPS és a 600 MB/s átviteli sebesség eléréséhez. 
+Adjon hozzá további adatlemezeket, és használjon lemezsávolást a nagyobb átviteli sebesség érdekében. Egy 12 000 IOPS-t és 180 MB/s átviteli sebességet igényló alkalmazás például három csíkozott P30-lemezt használhat a 15 000 IOPS és 600 MB/s átviteli sebesség kézbesítésére. 
 
-A lemezek csíkozásának konfigurálásához lásd: [lemezes csíkozás](storage-configuration.md#disk-striping). 
+A lemezek csíkozásának konfigurálását lásd: [lemezsávolás.](storage-configuration.md#disk-striping) 
 
-## <a name="disk-capping"></a>Lemezterület-korlátozó 
+## <a name="disk-capping"></a>Lemezkorlátozás 
 
-A lemez és a virtuális gép szintjén is vannak átviteli korlátok. A virtuális gépen és a lemezen lévő maximális IOPS határértékek eltérnek egymástól.
+A lemez és a virtuális gép szintjén is vannak átviteli korlátok. A virtuális gépekre és lemezekre vonatkozó maximális IOPS-korlátok különböznek, és egymástól függetlenek.
 
-Azokat az alkalmazásokat, amelyek ezen korlátokon túl erőforrásokat használnak, szabályozva lesznek (más néven a határértékek is). Válassza ki a virtuális gépet és a lemez méretét egy olyan szalagon, amely megfelel az alkalmazás követelményeinek, és nem fogja megszabni a korlátozásokat. A maximális kapacitás eléréséhez használja a gyorsítótárazást, vagy hangolja az alkalmazást úgy, hogy kevesebb átviteli sebességre van szükség.
+Az ezeken a korlátokon túli erőforrásokat felhozó alkalmazások szabályozása (más néven korlátozott). Válasszon ki egy olyan virtuális gépet és lemezméretet egy olyan lemezsávon, amely megfelel az alkalmazás követelményeinek, és nem fog korlátozásokkal szembesülni. A korlátozott használathoz használjon gyorsítótárazást, vagy finomhangolja az alkalmazást úgy, hogy kisebb átviteli sebességre van szükség.
 
-Például egy 12 000 IOPS és 180 MB/s kapacitást igénylő alkalmazás a következőket teheti: 
-- Használja azt a [Standard_M32ms](../../../virtual-machines/m-series.md) , amely a 20 000 IOPS és 500 Mbps max.
-- Az 15 000 IOPS és a 600 MB/s átviteli sebesség biztosításához három P30 lemezt kell megadnia.
-- Használjon [Standard_M16ms](../../../virtual-machines/m-series.md) virtuális gépet, és használja a gazdagép-gyorsítótárazást a helyi gyorsítótár felhasználásához az adatátviteli sebesség használatával. 
+Egy 12 000 IOPS-t és 180 MB/s-t szükséges alkalmazás például a következőre képes: 
+- Használja a [Standard_M32ms](../../../virtual-machines/m-series.md) 20 000 IOPS és 500 MB/s maximális gyorsítótárazás nélküli lemez-átviteli sebességgel rendelkezik.
+- Három P30 lemez csíkozása 15 000 IOPS és 600 MB/s átviteli sebesség érdekében.
+- Használjon egy [Standard_M16ms](../../../virtual-machines/m-series.md) virtuális gépet, és használja a gazdagép-gyorsítótárazást, hogy a helyi gyorsítótárat használja a felhasznált átviteli sebességhez. 
 
-A magas kihasználtsági idő alatt felskálázásra konfigurált virtuális gépeknek elegendő IOPS és átviteli sebességű tárterületet kell kiépíteniük a virtuális gép maximális méretének támogatásához, miközben a lemezek teljes számát a használni kívánt legkisebb VM-SKU által támogatott maximális számmal vagy azzal egyenlően kell tartani.
+A nagy kihasználtság idején a felskálához konfigurált virtuális gépeknek elegendő IOPS-t és átviteli sebességet kell kiépítenünk a tárolóban a maximális virtuálisgép-méret támogatásához, miközben a lemezek teljes számát a használni kívánt legkisebb virtuálisgép-termékváltozat által támogatott maximális számnál kisebb vagy egyenlően kell tartani.
 
-További információ a lemezes korlátok korlátozásáról és a maximálisan szükséges gyorsítótárazás használatáról: a [lemez i/o-határértékének](../../../virtual-machines/disks-performance.md)korlátozása.
+A lemezkorlátozási korlátozásokkal és a gyorsítótárazás korlátozásának elkerülésével kapcsolatos további információkért lásd: [Lemez I/O-korlátja.](../../../virtual-machines/disks-performance.md)
 
 > [!NOTE] 
-> Előfordulhat, hogy a lemezek maximális korlátja továbbra is kielégítő teljesítményt eredményezhet a felhasználók számára; a munkaterhelések finomhangolása és karbantartása ahelyett, hogy átméretezni egy nagyobb virtuális gépre, hogy kiegyensúlyozzák a vállalat költségeit és teljesítményét. 
+> Bizonyos lemezkorlátozások továbbra is kielégítő teljesítményt eredményezhetnek a felhasználók számára; A vállalat költségeinek és teljesítményének kiegyensúlyozása érdekében a számítási feladatok finomhangolása és fenntartása ahelyett, hogy átméretez egy nagyobb virtuális gépre. 
 
 
-## <a name="write-acceleration"></a>Írási gyorsítás
+## <a name="write-acceleration"></a>Írásgyorsítás
 
-Az írási gyorsítás egy olyan lemez-szolgáltatás, amely csak az [M sorozatú](https://docs.microsoft.com/azure/virtual-machines/m-series) Virtual Machines (VM) esetében érhető el. Az írási gyorsítás célja, hogy javítsa az írások I/O-késését az Azure-Premium Storageon, ha a nagy mennyiségű, kritikus fontosságú OLTP számítási feladatnak vagy adattárház-környezetnek köszönhetően egyszámjegyű I/O-késésre van szüksége. 
+Az írásgyorsítás egy olyan lemez funkció, amely csak [az M sorozatú](https://docs.microsoft.com/azure/virtual-machines/m-series) virtuális gépekhez Virtual Machines érhető el. Az írásgyorsítás célja, hogy javítsa az Írások I/O-késését az Azure Premium Storage-ban, ha egyszámjegyű I/O-késésre van szükség a nagy mennyiségű kritikus fontosságú OLTP számítási feladatok vagy adattárház-környezetek miatt. 
 
-Az írási gyorsítással javíthatja az írási késést a naplófájlokat üzemeltető meghajtón. Ne használjon írási gyorsítást SQL Server adatfájlokhoz. 
+Az írásgyorsítással javíthatja a naplófájlokat üzemeltető meghajtó írási késését. Ne használja az írásgyorsítást SQL Server adatfájlokhoz. 
 
-Írásgyorsító lemezek ugyanazt a IOPS-korlátot használják, mint a virtuális gép. A csatlakoztatott lemezek nem haladhatják meg a virtuális gép írásgyorsító IOPS korlátját.  
+írásgyorsító lemez IOPS-korlátja megegyezik a virtuális gépével. A csatlakoztatott lemezek nem haladhatják írásgyorsító virtuális gép IOPS-korlátját.  
 
-Az alábbi táblázat a virtuális gépek által támogatott adatlemezek és IOPS számát ismerteti: 
+Az alábbi táblázat a virtuális gépenként támogatott adatlemezek és IOPS-értékeket ismerteti: 
 
-| Virtuális gép termékváltozata  | írásgyorsító lemezek száma  | írásgyorsító lemez IOPS virtuális gépenként  |
+| Virtuális gép termékváltozata  | # írásgyorsító lemezek  | írásgyorsító lemez IOPS-értékének virtuális gépenkénti lekezelése  |
 |---|---|---|
 | M416ms_v2, M416s_v2  | 16  | 20000  |
 | M128ms, M128s  | 16  | 20000  |
@@ -247,42 +247,42 @@ Az alábbi táblázat a virtuális gépek által támogatott adatlemezek és IOP
 | M64ms, M64ls, M64s  |  8 | 10000 |
 | M32ms, M32ls, M32ts, M32s  | 4  | 5000  |
 | M16ms, M16s  | 2 | 2500 |
-| M8ms  | 1 | 1250 |
+| M8ms, M8s  | 1 | 1250 |
 
-Az írási gyorsulás használatának számos korlátozása van. További információ: korlátozások a [írásgyorsító használatakor](../../../virtual-machines/how-to-enable-write-accelerator.md#restrictions-when-using-write-accelerator).
+Az írásgyorsítás használatának számos korlátozása van. További információ: [Korlátozások a](../../../virtual-machines/how-to-enable-write-accelerator.md#restrictions-when-using-write-accelerator)írásgyorsító.
 
 
-### <a name="comparing-to-azure-ultra-disk"></a>Összehasonlítás az Azure Ultra Disk használatával
+### <a name="comparing-to-azure-ultra-disk"></a>Az Azure ultralemezének összehasonlítása
 
-Az írási gyorsulás és az Azure Ultra Disks közötti legnagyobb különbség az, hogy az írási gyorsulás egy virtuálisgép-funkció, amely csak az M sorozathoz és az Azure Ultra Disks szolgáltatáshoz használható. Az írási gyorsítás a virtuális gép méretétől függően a saját korlátozásait tartalmazó írható gyorsítótár. Az Azure Ultra Disks alacsony késésű lemezes tárolást biztosít az Azure Virtual Machines számára. 
+Az írásgyorsítás és az Azure-beli ultralemezek között az a legnagyobb különbség, hogy az írásgyorsítás egy csak M sorozatú virtuálisgép-funkció, az Azure-beli ultralemezek pedig tárolási lehetőségek. Az írásgyorsítás egy írásra optimalizált gyorsítótár, amely a virtuális gép méretétől függően saját korlátozásokkal is jár. Az Azure ultralemezei alacsony késésű lemeztárolási lehetőséget kínálnak az Azure Virtual Machines. 
 
-Ha lehetséges, a tranzakciós napló lemezéhez használja az írási gyorsítást az ultrakönnyű lemezeken. Olyan virtuális gépek esetében, amelyek nem támogatják az írási gyorsítást, de kis késleltetést igényelnek a tranzakciónaplóban, használja az Azure Ultra Disks használatát. 
+Ha lehetséges, használja az írásgyorsítást az ultralemezek felett a tranzakciónapló-lemezhez. Olyan virtuális gépek esetében, amelyek nem támogatják az írásgyorsítást, de kis késést igényelnek a tranzakciónaplóhoz, azure-beli ultralemezeket használjon. 
 
 ## <a name="monitor-storage-performance"></a>Tárolási teljesítmény figyelése
 
-A tárolási igények felmérése és a tárolási feladatok elvégzésének meghatározása érdekében meg kell ismernie, hogy mit kell mérni, és mit jelent ezek a mutatók. 
+A tárolási igények felmérése és a tárterület végrehajtásához szükséges teljesítmény meghatározásához tisztában kell vele, hogy mit kell mérni, és mit jelentenek ezek a mutatók. 
 
-A [IOPS (bemeneti/kimeneti/másodpercenkénti)](../../../virtual-machines/premium-storage-performance.md#iops) érték az alkalmazás által a tárterület tárolására szolgáló kérések másodpercenkénti száma. IOPS mérése a teljesítményfigyelő számlálóinak használatával `Disk Reads/sec` és `Disk Writes/sec` . Az optimális teljesítmény érdekében a [OLTP (online tranzakció-feldolgozási)](/azure/architecture/data-guide/relational-data/online-transaction-processing) alkalmazásoknak magasabb IOPS kell vezetniük. Az olyan alkalmazások, mint például a fizetési feldolgozó rendszerek, az online vásárlás és a kereskedelmi pénztári rendszerek mind a OLTP-alkalmazások példái.
+[Az IOPS (bemenet/kimenet másodpercenként) az](../../../virtual-machines/premium-storage-performance.md#iops) alkalmazás által a tárterületre másodpercenként lekért kérelmek száma. Az IOPS mérése teljesítményfigyelő számlálók és `Disk Reads/sec` `Disk Writes/sec` használatával. [Az OLTP- (online tranzakciófeldolgozási) alkalmazásoknak](/azure/architecture/data-guide/relational-data/online-transaction-processing) magasabb IOPS-t kell elérniük az optimális teljesítmény eléréséhez. OLTP-alkalmazások például például a fizetési rendszerek, az online vásárlás és az értékesítési pontrendszerek.
 
-Az [átviteli sebesség](../../../virtual-machines/premium-storage-performance.md#throughput) a mögöttes tárolóba küldendő adatok mennyisége, amelyet általában megabájt/másodperc alapján mérnek. Mérje fel az átviteli sebességet a Teljesítményfigyelő számlálókkal `Disk Read Bytes/sec` és `Disk Write Bytes/sec` . Az [adattárházak](/azure/architecture/data-guide/relational-data/data-warehousing) a IOPS-on keresztüli maximális átviteli sebességre optimalizáltak. Az adattárolási alkalmazások, például az Analysis, a Reporting, az ETL workstreams és más üzleti intelligenciát használó alkalmazások az adattárház-alkalmazásokra vonatkozó példák.
+[Az átviteli](../../../virtual-machines/premium-storage-performance.md#throughput) sebesség a mögöttes tárolóba küldött adatok mennyisége, amelyet gyakran megabájt/másodpercben mérnek. Az átviteli sebesség mérése a Teljesítményfigyelő számlálói és `Disk Read Bytes/sec` `Disk Write Bytes/sec` segítségével. [Az adatraktározás](/azure/architecture/data-guide/relational-data/data-warehousing) az IOPS-hez maximális átviteli sebességre van optimalizálva. Az olyan alkalmazások, mint az elemzési, jelentéskészítési, ETL-munkafolyamok és más üzletiintelligencia-célok, mind példaként szolgálnak az adatraktározási alkalmazásokra.
 
-Az i/O-egységek mérete befolyásolja a IOPS és az átviteli kapacitást, mivel a kisebb I/O-méretek nagyobb IOPS és nagyobb I/O-méretet eredményeznek. SQL Server automatikusan kiválasztja az optimális I/O-méretet. A szolgáltatással kapcsolatos további információkért lásd: az [alkalmazások IOPS, átviteli sebességének és késésének optimalizálása](../../../virtual-machines/premium-storage-performance.md#optimize-iops-throughput-and-latency-at-a-glance). 
+Az I/O-egységek méretei befolyásolják az IOPS-t és az átviteli sebességet, mivel a kisebb I/O-méretek nagyobb IOPS-t eredményeznek, a nagyobb I/O-méretek pedig nagyobb átviteli sebességet eredményeznek. SQL Server az optimális I/O-méretet választja automatikusan. További információ: [Optimize IOPS, throughput, and latency for your applications (Az IOPS,](../../../virtual-machines/premium-storage-performance.md#optimize-iops-throughput-and-latency-at-a-glance)az átviteli sebesség és a késés optimalizálása az alkalmazások számára). 
 
-Vannak olyan Azure Monitor mérőszámok, amelyek nem értékesek a virtuális gép és a lemez szintjén, valamint a AzureBlob cache felhasználásának és állapotának megállapításához. A figyelési megoldáshoz és Azure Portal irányítópulthoz hozzáadandó teljesítményszámlálók azonosításához tekintse meg a [tárolási kihasználtsági metrikákat](../../../virtual-machines/disks-metrics.md#storage-io-utilization-metrics). 
+Vannak olyan Azure Monitor metrikák, amelyek felbecsülhetetlen értékűek a virtuális gép és a lemez szintjén, valamint az AzureBlob-gyorsítótár használatának és állapotának felderítésére. A monitorozási megoldáshoz hozzáadható legfontosabb számlálók azonosításához és az irányítópult Azure Portal: [Storage utilization metrics (Tárhelyhasználati metrikák).](../../../virtual-machines/disks-metrics.md#storage-io-utilization-metrics) 
 
 > [!NOTE]
-> A Azure Monitor jelenleg nem biztosít lemez szintű metrikákat az ideiglenes Temp meghajtóhoz `(D:\)` . A virtuális gép gyorsítótárazott IOPS felhasznált százalék és a virtuális gép gyorsítótárazott sávszélességének százalékos aránya a IOPS és az átviteli sebesség értékét is tükrözi az ideiglenes Temp meghajtó `(D:\)` és a gazdagép gyorsítótárazása között.
+> Azure Monitor jelenleg nem kínál lemezszintű metrikákat a ideiglenes `(D:\)` meghajtóhoz. A vm cached IOPS Consumed Percentage (Virtuális gép gyorsítótárazott IOPS-kihasznált aránya) és a Vm Cached Bandwidth Consumed Percentage (A virtuális gép gyorsítótárazott sávszélességének kihasznált százaléka) a ideiglenes meghajtó és a gazdagép gyorsítótárazása együttes IOPS-értékét és átviteli sebességét `(D:\)` tükrözi.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a teljesítményre vonatkozó ajánlott eljárásokról, tekintse meg a sorozat további cikkeit:
+A teljesítménnyel kapcsolatos ajánlott eljárásokkal kapcsolatos további információkért tekintse meg a sorozat további cikkeit:
 - [Gyors ellenőrzőlista](performance-guidelines-best-practices-checklist.md)
 - [Virtuális gép mérete](performance-guidelines-best-practices-vm-size.md)
-- [Alapterv összegyűjtése](performance-guidelines-best-practices-collect-baseline.md)
+- [Alapkonfiguráció gyűjtése](performance-guidelines-best-practices-collect-baseline.md)
 
-Az ajánlott biztonsági eljárásokért tekintse [meg az Azure Virtual Machines SQL Server biztonsági szempontjait](security-considerations-best-practices.md).
+A biztonsággal kapcsolatos ajánlott eljárásokért lásd: Biztonsági szempontok az [Azure SQL Server való Virtual Machines.](security-considerations-best-practices.md)
 
-Az Azure-beli virtuális gépeken a TPC-E és a TPC_C referenciaértékekkel rendelkező SQL Server teljesítményének részletes teszteléséhez tekintse meg a blogot, hogy [optimalizálja a OLTP teljesítményét](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794).
+Az Azure-beli virtuális SQL Server TPC-E és TPC_C teljesítménytesztek használatával végzett részletes teszteléséhez tekintse meg az [Optimize OLTP performance (OLTP](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794)teljesítményének optimalizálása) blogot.
 
-Tekintse át az Azure-beli SQL Server SQL Server virtuális gépekkel kapcsolatos további cikkeket [Virtual Machines áttekintését](sql-server-on-azure-vm-iaas-what-is-overview.md). Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
+Tekintse át a SQL Server virtuális gépekről az [Azure SQL Server áttekintésében Virtual Machines cikkeket.](sql-server-on-azure-vm-iaas-what-is-overview.md) Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).

@@ -1,34 +1,34 @@
 ---
-title: 'Route-alapú Azure-VPN Gateway létrehozása: parancssori felület'
-description: Az Azure CLI használatával gyorsan létrehozhat egy Route-alapú Azure VPN-átjárót a helyszíni hálózathoz való VPN-kapcsolathoz vagy a virtuális hálózatok összekapcsolásához.
+title: 'Útvonalalapú Azure-VPN Gateway: CLI'
+description: Gyorsan létrehozhat útvonalalapú Azure VPN-átjárót az Azure CLI használatával, egy helyszíni hálózathoz való VPN-kapcsolathoz vagy virtuális hálózatok csatlakoztatásához.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2bbd7e39ee65ba304ec62697b6fcc77bea133b41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87e3490711990944e017d2d463090f3c8697956c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94737217"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484219"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-cli"></a>Route-alapú VPN-átjáró létrehozása a parancssori felület használatával
+# <a name="create-a-route-based-vpn-gateway-using-cli"></a>Útvonalalapú VPN-átjáró létrehozása a CLI használatával
 
-Ez a cikk segítséget nyújt egy Route-alapú Azure VPN-átjáró gyors létrehozásához az Azure CLI használatával. VPN-átjárót a helyszíni hálózathoz való VPN-kapcsolat létrehozásakor használ a rendszer. VPN-átjárót is használhat a virtuális hálózatok összekapcsolásához.
+Ez a cikk segít gyorsan létrehozni egy útvonalalapú Azure VPN-átjárót az Azure CLI használatával. A VPN-átjárók a helyszíni hálózathoz való VPN-kapcsolat létrehozásakor használatosak. A virtuális hálózatokat VPN-átjáróval is csatlakoztathatja.
 
-A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhálózatot és egy Route-alapú VPN-átjárót (virtuális hálózati átjárót) hoznak létre. A virtuális hálózati átjárók létrehozása akár 45 percet is igénybe vehet. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezeknek a lépéseknek Azure-előfizetésre van szükségük.
+A cikkben található lépések létrehoznak egy VNetet, egy alhálózatot, egy átjáró-alhálózatot és egy útvonalalapú VPN-átjárót (virtuális hálózati átjárót). A virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezekhez a lépésekhez Azure-előfizetés szükséges.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot [az az group create paranccsal.](/cli/azure/group) Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 
 ```azurecli-interactive
@@ -37,7 +37,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az az [Network vnet Create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy **VNet1** nevű virtuális hálózatot a **EastUS** helyen:
+Hozzon létre egy virtuális hálózatot [az az network vnet create paranccsal.](/cli/azure/network/vnet) Az alábbi példa egy **VNet1** nevű virtuális hálózatot hoz létre az **EastUS helyen:**
 
 ```azurecli-interactive
 az network vnet create \
@@ -51,7 +51,7 @@ az network vnet create \
 
 ## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Átjáróalhálózat hozzáadása
 
-Az átjáró-alhálózat tartalmazza azokat a fenntartott IP-címeket, amelyeket a Virtual Network Gateway Services használ. Átjáró-alhálózat hozzáadásához használja az alábbi példákat:
+Az átjáró-alhálózat tartalmazza a virtuális hálózati átjáró szolgáltatásai által használt fenntartott IP-címeket. Átjáró-alhálózat hozzáadásához használja az alábbi példákat:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -63,7 +63,7 @@ az network vnet subnet create \
 
 ## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Nyilvános IP-cím kérése
 
-A VPN-átjárónak dinamikusan lefoglalt nyilvános IP-címmel kell rendelkeznie. A nyilvános IP-címet a rendszer a virtuális hálózathoz létrehozott VPN-átjáróhoz rendeli. Nyilvános IP-cím igényléséhez használja a következő példát:
+A VPN-átjárónak dinamikusan lefoglalt nyilvános IP-címmel kell lennie. A nyilvános IP-cím a virtuális hálózathoz létrehozott VPN-átjáróhoz lesz lefoglalva. A következő példával kérhet nyilvános IP-címet:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -74,9 +74,9 @@ az network public-ip create \
 
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>A VPN-átjáró létrehozása
 
-Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/group) paranccsal.
+Hozza létre a VPN Gateway-t az [az network vnet-gateway create](/cli/azure/network/vnet-gateway) paranccsal.
 
-Ha ezt a parancsot a `--no-wait` paraméterrel futtatja, nem jelenik meg visszajelzés vagy kimenet. A `--no-wait` paraméter lehetővé teszi, hogy az átjáró a háttérben legyen létrehozva. Ez nem jelenti azt, hogy a VPN-átjárót azonnal létrehozták.
+Ha ezt a parancsot a paraméterrel futtatja, nem fog visszajelzést `--no-wait` vagy kimenetet látni. A `--no-wait` paraméter lehetővé teszi az átjáró a háttérben való létrejöttét. Ez nem jelenti azt, hogy a VPN-átjáró azonnal létrejön.
 
 ```azurecli-interactive
 az network vnet-gateway create \
@@ -101,7 +101,7 @@ az network vnet-gateway show \
   -g TestRG1
 ```
 
-A válasz a következőhöz hasonlóan néz ki:
+A válasz a következőre hasonlít:
 
 ```output
 {
@@ -149,7 +149,7 @@ A válasz a következőhöz hasonlóan néz ki:
 
 ### <a name="view-the-public-ip-address"></a>A nyilvános IP-cím megtekintése
 
-Az átjáróhoz rendelt nyilvános IP-cím megtekintéséhez használja az alábbi példát:
+Az átjáróhoz rendelt nyilvános IP-cím megtekintéséhez használja a következő példát:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -157,7 +157,7 @@ az network public-ip show \
   --resource-group TestRG11
 ```
 
-Az **IP** -cím mezőhöz társított érték a VPN-átjáró nyilvános IP-címe.
+Az **ipAddress** mezőhöz társított érték a VPN-átjáró nyilvános IP-címe.
 
 Példaválasz:
 
@@ -175,7 +175,7 @@ Példaválasz:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a létrehozott erőforrásokra, az az [Group delete](/cli/azure/group) paranccsal törölheti az erőforráscsoportot. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
+Ha már nincs szüksége a létrehozott erőforrásokra, [az az group delete](/cli/azure/group) parancs használatával törölheti az erőforráscsoportot. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes
@@ -183,9 +183,9 @@ az group delete --name TestRG1 --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután az átjáró elkészült, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik VNet között. Vagy hozzon létre kapcsolatot a virtuális hálózat és a helyszíni hely között.
+Miután az átjáró létrehozása befejeződött, létrehozhat egy kapcsolatot a virtuális hálózat és egy másik virtuális hálózat között. Vagy hozzon létre kapcsolatot a virtuális hálózat és egy helyszíni hely között.
 
 > [!div class="nextstepaction"]
 > [Helyek közötti kapcsolat létrehozása](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Pont–hely kapcsolat létrehozása](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Kapcsolatok létrehozása másik VNet](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Kapcsolat létrehozása egy másik virtuális hálózattal](vpn-gateway-vnet-vnet-rm-ps.md)

@@ -1,18 +1,18 @@
 ---
 title: WAF konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy webalkalmazási tűzfalat (WAF) a App Service Environment előtt az Azure Application Gateway vagy egy külső gyártótól származó WAF használatával.
+description: Megtudhatja, hogyan konfigurálhatja a webalkalmazási tűzfalat (WAF) a App Service Environment előtt, akár Azure Application Gateway, akár külső WAF segítségével.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56d931f2346e5a0b615d3f11dce3b06396e586b4
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90973708"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588717"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -26,7 +26,7 @@ Az Azure Application Gatewayen túl több piactéri lehetőség is rendelkezésr
 ## <a name="setup"></a>Beállítás
 Ebben a dokumentumban a Barracuda WAF több elosztott terhelésű példánya mögül konfigurálja az App Service Environment környezetet, így csak a WAF-ból érkező forgalom érheti el az App Service Environmentet, a DMZ-ből érkező nem. Ezenkívül Azure Traffic Managert is elhelyezünk a Barracuda WAF példányai előtt, hogy el legyen osztva a terhelés az Azure-adatközpontok és -régiók között. Az összeállítás áttekintő jellegű diagramja az alábbi képen láthatóhoz hasonló:
 
-![A diagram egy opcionális Azure-Traffic Manager, amely a webalkalmazási tűzfal példányaihoz csatlakozik, és A hálózathoz csatlakozik, és csak egy olyan App Service Environment engedélyezi a tűzfalon keresztüli forgalmat, amely egy webes, P I és Mobile alkalmazást tartalmaz két régióban.][Architecture] 
+![Az ábrán egy választható Azure Traffic Manager látható, amely Web Application Firewall-példányokhoz csatlakozik, és csatlakozik az A C L hálózathoz, hogy csak a webet, A P I-t és mobilalkalmazást tartalmazó App Service Environment tűzfalról engedélyezze a forgalmat két régióban.][Architecture] 
 
 > [!NOTE]
 > Az [ILB App Service Environment környezetre irányuló támogatásának](app-service-environment-with-internal-load-balancer.md) bevezetésével konfigurálhatja úgy az ASE-t, hogy az elérhetetlen legyen a DMZ-ről, és csak a privát hálózat számára legyen elérhető. 
@@ -66,12 +66,12 @@ Ha bejelentkezett, az alábbi képen láthatóhoz hasonló irányítópultot fog
 
 ![Felügyeleti irányítópult][ManagementDashboard]
 
-A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://techlib.barracuda.com/waf/getstarted1). A következő példában egy, a HTTP-n és HTTPS-en forgalmat kiszolgáló App Service alkalmazást konfiguráltunk.
+A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolgáltatásokra, amelyeket védelmez. A Barracuda WAF további konfigurálásáért lásd a [dokumentációt](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259884/configure-the-barracuda-web-application-firewall-from-the-web-interface/). A következő példában egy http App Service HTTPS-kapcsolaton forgalmat kiszolgáló alkalmazás lett konfigurálva.
 
 ![Felügyelet – Szolgáltatások hozzáadása][ManagementAddServices]
 
 > [!NOTE]
-> Attól függően, hogy az alkalmazások hogyan vannak konfigurálva, és milyen funkciókat használ a App Service Environmentban, továbbítania kell a forgalmat a 80-es és 443-es TCP-portok esetében, például ha egy App Service alkalmazáshoz rendelkezik IP TLS-beállítással. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
+> Az alkalmazások konfigurálásától és az App Service Environment-ben használt szolgáltatásoktól függően a 80-as és a 443-as porttól eltérő TCP-portokra kell forgalmat továbbítanunk, például ha IP TLS-beállítással rendelkezik egy App Service-alkalmazáshoz. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
 > 
 > 
 
@@ -89,7 +89,7 @@ A Traffic Manager-pingeknek a WAF-ról az alkalmazásához történő továbbít
 ![Website Translations][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Az App Service Environment környezet felé irányuló forgalom biztonságossá tétele hálózati biztonsági csoportok (NSG-k) használatával
-Kövesse a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) utasításait, így megtudhatja, hogyan korlátozza a WAF-ból az App Service Environment környezetébe irányuló forgalmát, csak a felhőszolgáltatás VIP-címét használva. Íme egy PowerShell-parancs a feladat végrehajtásához a 80-es TCP-porton.
+Kövesse a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) utasításait, így megtudhatja, hogyan korlátozza a WAF-ból az App Service Environment környezetébe irányuló forgalmát, csak a felhőszolgáltatás VIP-címét használva. Példa PowerShell-parancs a feladat végrehajtásához a 80-as TCP-porton.
 
 ```azurepowershell-interactive
 Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP

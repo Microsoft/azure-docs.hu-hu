@@ -1,6 +1,6 @@
 ---
-title: Redundancia-beállítások az Azure Managed Disks szolgáltatáshoz
-description: Ismerje meg a zóna-redundáns tárolást és a helyileg redundáns tárolást az Azure Managed Disks szolgáltatásban.
+title: Redundanciabeállítások azure-beli felügyelt lemezekhez
+description: Ismerje meg a zónaredundáns tárolást és a helyileg redundáns tárolást az Azure-beli felügyelt lemezeken.
 author: roygara
 ms.author: rogarana
 ms.date: 03/02/2021
@@ -8,55 +8,55 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0882efeccfc8dc83686d75ab39b8364219c3b5f1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043643"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588088"
 ---
-# <a name="redundancy-options-for-managed-disks"></a>A felügyelt lemezek redundancia beállításai
+# <a name="redundancy-options-for-managed-disks"></a>Redundanciabeállítások felügyelt lemezekhez
 
-Az Azure Managed Disks két tárolási redundancia-beállítást kínál, a zóna-redundáns tárolást (ZRS) előzetes verzióként, valamint helyileg redundáns tárolást. A ZRS magasabb rendelkezésre állást biztosít a felügyelt lemezeken, mint a helyileg redundáns tárolás (LRS). A LRS lemezek írási késése azonban jobb, mint a ZRS-lemezek esetében, mert a LRS-lemezek szinkron módon írják le az adatközpont három példányára.
+Az Azure managed Disks két tárhelyredundanca-lehetőséget kínál, a zónaredundáns tárolást (ZRS) előzetes verzióként és a helyileg redundáns tárolást. A ZRS magasabb rendelkezésre állást biztosít a felügyelt lemezek számára, mint a helyileg redundáns tárolás (LRS). Az LRS-lemezek írási késése azonban jobb, mint a ZRS-lemezek esetén, mivel az LRS-lemezek szinkron módon három példányba írnak adatokat egyetlen adatközpontban.
 
-## <a name="locally-redundant-storage-for-managed-disks"></a>Helyileg redundáns tárolás a felügyelt lemezekhez
+## <a name="locally-redundant-storage-for-managed-disks"></a>Helyileg redundáns tárolás felügyelt lemezekhez
 
-A helyileg redundáns tárolás (LRS) háromszor replikálja az adatait a kiválasztott régió egyetlen adatközpontjában. A LRS megvédi adatait a Server rack és a meghajtó meghibásodása ellen. 
+A helyileg redundáns tárolás (LRS) háromszor replikálja az adatokat a kiválasztott régió egyetlen adatközpontjában. Az LRS megvédi adatait a kiszolgálóállványok és meghajtóhibák ellen. 
 
-Az alkalmazás a természeti katasztrófák vagy a hardveres problémák miatt esetlegesen előforduló teljes LRS-lemezek használatával többféleképpen védhető:
-- Használjon olyan alkalmazást, mint például a SQL Server AlwaysOn, amely szinkron módon tud írni két zónába, és egy katasztrófa során automatikusan feladatátvételt hajt végre egy másik zónában.
-- Készítsen gyakori biztonsági mentést a LRS-lemezekről a ZRS-pillanatképekkel.
-- A LRS-lemezeken a [Azure site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)használatával engedélyezhető a zónák közötti vész-helyreállítás. A zónák közötti vész-helyreállítás azonban nem biztosít nulla helyreállítási időkorlátot (RPO).
+Az alkalmazás több módon is védheti LRS-lemezekkel egy teljes zóna meghibásodása esetén, amely természeti katasztrófák vagy hardverhibák miatt következhet be:
+- Használjon egy olyan alkalmazást, SQL Server AlwaysOn, amely szinkron módon tud adatokat írni két zónába, és automatikusan feladatátvételt képes átveszni egy másik zónába egy katasztrófa esetén.
+- Az LRS-lemezek gyakori biztonsági mentése ZRS-pillanatképekkel.
+- Az LRS-lemezek zónaközi vészhelyreállításának engedélyezése a [Azure Site Recovery.](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md) A zónák közötti vészhelyreállítás azonban nem biztosít nulla helyreállítási időkorrekta (RPO) értéket.
 
-Ha a munkafolyamat nem támogatja az alkalmazás szintű szinkron írásokat a zónák között, vagy az alkalmazásnak meg kell felelnie a nulla RPO, akkor a ZRS-lemezek ideálisak.
+Ha a munkafolyamat nem támogatja a zónák közötti alkalmazásszintű szinkron írásokat, vagy az alkalmazásnak nulla RPO-t kell teljesítenie, akkor a ZRS-lemezek ideálisak.
 
-## <a name="zone-redundant-storage-for-managed-disks-preview"></a>Zóna – redundáns tárolás felügyelt lemezekhez (előzetes verzió)
+## <a name="zone-redundant-storage-for-managed-disks-preview"></a>Zónaredundáns tárolás felügyelt lemezekhez (előzetes verzió)
 
-A Zone-redundáns tárolás (ZRS) a kiválasztott régió három Azure-beli rendelkezésre állási zónájában szinkron módon replikálja az Azure felügyelt lemezt. Minden rendelkezésreállási zóna egy fizikailag elkülönített, független áramforrással, hűtéssel és hálózatkezelési megoldással rendelkező hely. 
+A zónaredundáns tárolás (ZRS) szinkron módon replikálja az Azure-beli felügyelt lemezt a kiválasztott régió három Azure rendelkezésre állási zónájában. Minden rendelkezésreállási zóna egy fizikailag elkülönített, független áramforrással, hűtéssel és hálózatkezelési megoldással rendelkező hely. 
 
-A ZRS lemezek lehetővé teszik a helyreállítást a rendelkezésre állási zónák hibáiból. Ha egy teljes zóna leállt, egy ZRS-lemez csatlakoztatható egy másik zónában lévő virtuális géphez. A ZRS-lemezeket megosztott lemezként is használhatja a fürtözött vagy elosztott alkalmazások, például az SQL-verzió, az SAP ASCS/SCS vagy a GFS2 jobb rendelkezésre állásának biztosításához. Az elsődleges és a másodlagos virtuális gépekhez közös ZRS csatlakoztathat különböző zónákban, így kihasználhatja a ZRS és a [Availability Zones](../availability-zones/az-overview.md)előnyeit is. Ha az elsődleges zóna meghibásodik, gyorsan átadhatja a feladatátvételt a másodlagos virtuális géphez a [SCSI állandó foglalás](disks-shared-enable.md#supported-scsi-pr-commands)használatával.
+A ZRS-lemezek lehetővé teszik a rendelkezésre állási zónákban lévő hibákból való helyreállítást. Ha egy teljes zóna leállt, egy ZRS-lemez csatolható egy másik zónában lévő virtuális géphez. A ZRS-lemezeket megosztott lemezként is használhatja, hogy jobb rendelkezésre állást biztosítson az olyan fürtözött vagy elosztott alkalmazások számára, mint az SQL FCI, az SAP ASCS/SCS vagy a GFS2. Egy megosztott ZRS-lemezt csatlakoztathat a különböző zónákban lévő elsődleges és másodlagos virtuális gépekhez, hogy kihasználja a ZRS és a [Availability Zones.](../availability-zones/az-overview.md) Ha az elsődleges zóna meghibásodik, gyorsan átveheti a feladatátvételt a másodlagos virtuális gépre az [állandó SCSI-foglalás használatával.](disks-shared-enable.md#supported-scsi-pr-commands)
 
 ### <a name="limitations"></a>Korlátozások
 
-Az előzetes verzióban a felügyelt lemezek ZRS a következő korlátozásokkal rendelkezik:
+Az előzetes verzióban a felügyelt lemezek ZRS-ére a következő korlátozások vonatkoznak:
 
-- Csak prémium szintű SSD-meghajtók és standard SSD-k esetén támogatott.
+- Csak prémium SSD-meghajtók és standard SSD-k esetén támogatott.
 - Jelenleg csak az EastUS2EUAP régióban érhető el.
-- Az ZRS-lemezek csak az API használatával hozhatók létre Azure Resource Manager-sablonokkal `2020-12-01` .
+- ZRS-lemezek csak API-t használó Azure Resource Manager hoznak `2020-12-01` létre.
 
-Regisztráljon [az előzetes](https://aka.ms/ZRSDisksPreviewSignUp)verzióra.
+Az előzetes verzióra itt [regisztrál.](https://aka.ms/ZRSDisksPreviewSignUp)
 
-### <a name="billing-implications"></a>Számlázási következmények
+### <a name="billing-implications"></a>Számlázással kapcsolatos következmények
 
-További részletekért tekintse meg az [Azure díjszabási oldalát](https://azure.microsoft.com/pricing/details/managed-disks/).
+Részletekért lásd az [Azure díjszabását tartalmazó oldalt.](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-### <a name="comparison-with-other-disk-types"></a>Összehasonlítás más típusú lemezekkel
+### <a name="comparison-with-other-disk-types"></a>Összehasonlítás más lemeztípusokkal
 
-A további írási késések kivételével a ZRS-t használó lemezek azonosak a LRS-t használó lemezekkel. Ugyanazok a teljesítménnyel kapcsolatos célok.
+A nagyobb írási késés kivételével a ZRS-t használó lemezek megegyeznek az LRS-t használó lemezekkel. Azonos teljesítménycéljaik vannak. Javasoljuk, hogy végezzen lemez-teljesítménytesztet az alkalmazás számítási feladatainak szimulálása érdekében az LRS- és [ZRS-lemezek](disks-benchmarks.md) közötti késés összehasonlításához. 
 
-### <a name="create-zrs-managed-disks"></a>ZRS Managed Disks létrehozása
+### <a name="create-zrs-managed-disks"></a>ZRS felügyelt lemezek létrehozása
 
-`2020-12-01`ZRS-lemez létrehozásához használja az API-t a Azure Resource Manager sablonnal.
+`2020-12-01`ZRS-lemez létrehozásához használja az API-Azure Resource Manager sablonnal.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>Virtuális gép létrehozása ZRS-lemezekkel
 
@@ -80,7 +80,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 -dataDiskType $dataDiskType
 ```
 
-#### <a name="create-vms-with-a-shared-zrs-disk-attached-to-the-vms-in-different-zones"></a>Virtuális gépek létrehozása a különböző zónákba tartozó virtuális gépekhez csatlakoztatott megosztott ZRS lemezzel
+#### <a name="create-vms-with-a-shared-zrs-disk-attached-to-the-vms-in-different-zones"></a>Virtuális gépek létrehozása különböző zónákban lévő virtuális gépekhez csatolt megosztott ZRS-lemezzel
 
 ```
 $vmNamePrefix = "yourVMNamePrefix"
@@ -123,4 +123,4 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ezekkel a minta [Azure Resource Manager sablonokkal ZRS-lemezekkel rendelkező virtuális gépeket hozhat létre](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks).
+- Ezekkel a [mintasablonokkal Azure Resource Manager virtuális gépet hozhat létre ZRS-lemezekkel.](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks)

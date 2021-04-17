@@ -1,29 +1,29 @@
 ---
 title: Hibrid Azure Active Directory-csatlakoztatott eszközök manuális konfigurálása | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja manuálisan a hibrid Azure Active Directory csatlakoztatott eszközöket.
+description: Megtudhatja, hogyan konfigurálhatja manuálisan a hibrid Azure Active Directory eszközöket.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aafcd8ace846d7da65d95d4148872d5a6eddeee
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577988"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587850"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
-Az Azure Active Directory (Azure AD) eszközkezelés révén biztosíthatja, hogy a felhasználók hozzáférhessenek az erőforrásokhoz a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről. További információ: a [Azure Active Directory eszköz-felügyeletének bemutatása](overview.md).
+A Azure Active Directory (Azure AD) eszközkezelésével biztosíthatja, hogy a felhasználók olyan eszközökről férnek hozzá az ön erőforrásaihoz, amelyek megfelelnek a biztonsági és megfelelőségi szabványoknak. További információ: Bevezetés az [eszközkezelésbe a Azure Active Directory.](overview.md)
 
 > [!TIP]
-> Ha a Azure AD Connect használata lehetőséggel rendelkezik, tekintse meg a kapcsolódó oktatóanyagokat a [felügyelt](hybrid-azuread-join-managed-domains.md) vagy [összevont](hybrid-azuread-join-federated-domains.md) tartományokhoz. A Azure AD Connect használatával jelentősen egyszerűsítheti a hibrid Azure AD-csatlakozás konfigurációját.
+> Ha a Azure AD Connect a lehetőség, tekintse meg a [](hybrid-azuread-join-managed-domains.md) felügyelt vagy összevont tartományokra [vonatkozó oktatóanyagokat.](hybrid-azuread-join-federated-domains.md) A Azure AD Connect jelentősen leegyszerűsítheti a hibrid Azure AD-csatlakozás konfigurációját.
 
 Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -37,48 +37,48 @@ Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni sze
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy már ismeri a következőket:
+Ez az oktatóanyag feltételezi, hogy Ön ismeri a következőt:
 
 * [Az Azure Active Directory eszközkezelésének alapjai](./overview.md)
-* [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)
+* [A hibrid csatlakozás implementáció Azure Active Directory megterve](hybrid-azuread-join-plan.md)
 * [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
 
-Mielőtt elkezdené a hibrid Azure AD-hez csatlakoztatott eszközök engedélyezését a szervezetben, győződjön meg a következőket:
+Mielőtt elkezdené engedélyezni a hibrid Azure AD-hez csatlakozott eszközöket a szervezetben, győződjön meg a következő szolgáltatásokról:
 
-* A Azure AD Connect naprakész verzióját futtatja.
-* Azure AD Connect szinkronizálta azon eszközök számítógép-objektumait, amelyeket hibrid Azure AD-hez csatlakoztatni szeretne az Azure AD-hez. Ha a számítógép-objektumok adott szervezeti egységekhez (OU) tartoznak, ezeket a szervezeti egységeket Azure AD Connect is be kell állítani a szinkronizáláshoz.
+* Az alkalmazás egy naprakész verzióját Azure AD Connect.
+* Azure AD Connect szinkronizálta az Azure AD-hez hibriden csatlakozni kívánt eszközök számítógép-objektumát. Ha a számítógép-objektumok adott szervezeti egységekhez (OM-khoz) tartoznak, ezeket a szervezeti egységeket is konfigurálni kell a szinkronizáláshoz a Azure AD Connect is.
 
 Azure AD Connect:
 
-* Megtartja a számítógép fiókja közötti társítást a helyszíni Active Directory-példányban, valamint az eszköz objektumát az Azure AD-ben.
-* Más eszközökhöz kapcsolódó funkciók (például a vállalati Windows Hello) engedélyezése.
+* Megtartja a társítást a számítógépfiók között a helyi Active Directory-példányban és az eszközobjektum között az Azure AD-ban.
+* Engedélyezi az eszközhöz kapcsolódó egyéb funkciókat, például a Vállalati Windows Hello.
 
-Győződjön meg arról, hogy az alábbi URL-címek elérhetők a szervezet hálózatán belüli számítógépekről a számítógépek Azure AD-be való regisztrálásához:
+Győződjön meg arról, hogy a következő URL-címek elérhetők a szervezet hálózatán belüli számítógépekről a számítógépek Azure AD-be való regisztrálásához:
 
 * `https://enterpriseregistration.windows.net`
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
-* A szervezet STS-je (összevont tartományok esetében), amelyet a felhasználó helyi intranetes beállításaiban kell szerepeltetni
+* A szervezet STS-ét (összevont tartományok esetén), amelynek szerepelnie kell a felhasználó helyi intranetbeállításai között
 
 > [!WARNING]
-> Ha a szervezet olyan proxykiszolgálót használ, amelyek az SSL-forgalmat az adatveszteség-megelőzési vagy az Azure AD-bérlői korlátozások miatt észlelik, ügyeljen arra, hogy a (z) "" forgalom ne legyen https://device.login.microsoftonline.com kizárva a TLS-megszakítás és-vizsgálat alól. A (z) "" kizárása az https://device.login.microsoftonline.com ügyféltanúsítvány-alapú hitelesítés zavarásával járhat, ami problémákat okoz az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés miatt.
+> Ha a szervezet olyan proxykiszolgálókat használ, amelyek elfogják az SSL-forgalmat olyan helyzetekben, mint az adatveszteség-megelőzés vagy az Azure AD-bérlőkorlátozások, győződjön meg arról, hogy a () szolgáltatásba irányuló forgalom ki van zárva a https://device.login.microsoftonline.com TLS-törésből és -vizsgálatból. A kizárásának elmulasztása interferenciát okozhat az ügyfél-tanúsítvány hitelesítésében, ami az eszközregisztrációval és az eszközalapú feltételes https://device.login.microsoftonline.com hozzáféréssel kapcsolatos problémákat okozhat.
 
-Ha a szervezete a zökkenőmentes SSO használatát tervezi, a következő URL-címnek elérhetőnek kell lennie a szervezeten belüli számítógépekről. Emellett hozzá kell adni a felhasználó helyi intranet zónához is.
+Ha a szervezet közvetlen egyszeri bejelentkezést tervez használni, az alábbi URL-címnek elérhetőnek kell lennie a szervezetben lévő számítógépekről. A felhasználó helyi intranetes zónájában is hozzá kell adni.
 
 * `https://autologon.microsoftazuread-sso.com`
 
 Emellett a következő beállításokat kell engedélyezni a felhasználó intranetes zónájában: „Az állapotsor szkriptekkel való frissítése.”
 
-Ha a szervezet felügyelt (nem összevont) beállítást használ a helyszíni Active Directory, és nem használja a Active Directory összevonási szolgáltatások (AD FS) (AD FS) szolgáltatást az Azure AD-vel való összevonása, akkor a hibrid Azure AD-csatlakozás a Windows 10-es verzióban az Azure AD-vel való szinkronizáláshoz a Active Directory számítógép-objektumaira támaszkodik. Győződjön meg arról, hogy minden olyan szervezeti egység, amely a hibrid Azure AD-hez szükséges számítógép-objektumokat tartalmazza, szinkronizálásra van engedélyezve a Azure AD Connect szinkronizálási konfigurációjában.
+Ha a szervezet felügyelt (nem összevont) telepítést használ az helyi Active Directory-val, és nem használja az Active Directory összevonási szolgáltatások (AD FS) (AD FS) az Azure AD-val való összecsukását, akkor az Windows 10-hoz való hibrid Azure AD-csatlakozás az Active Directory számítógép-objektumaitól függ az Azure AD-val való szinkronizáláshoz. Győződjön meg arról, hogy az Azure AD-hez hibriden összekapcsolni szükséges számítógép-objektumokat tartalmazó minden OUs esetében engedélyezve van a szinkronizálás a Azure AD Connect konfigurációjában.
 
-A 1703-es vagy korábbi verziójú Windows 10-es eszközök esetén, ha a szervezet kimenő proxyn keresztül kíván hozzáférni az internethez, a Windows 10-es számítógépek Azure AD-ba való regisztrálásának engedélyezéséhez be kell vezetnie a webproxy automatikus felderítése (WPAD) szolgáltatást.
+Az 1703-as vagy korábbi verziójú Windows 10-eszközök esetében, ha a szervezet kimenő proxyn keresztüli internet-hozzáférést igényel, a webproxy automatikus felderítését (WPAD) kell megvalósítania, hogy az Windows 10 számítógépek regisztrálva tudjanak az Azure AD-be.
 
-A Windows 10 1803-től kezdve, még akkor is, ha egy összevont tartományban található eszköz hibrid Azure AD-csatlakoztatási kísérlete AD FS meghiúsul, és ha Azure AD Connect úgy van konfigurálva, hogy a számítógép/eszköz objektumait az Azure AD-be szinkronizálja, az eszköz a szinkronizált számítógép/eszköz használatával próbálja befejezni a hibrid Azure AD-csatlakozást.
+Az 1803.Windows 10-től kezdődően, még ha egy összevont tartományban lévő eszköz hibrid Azure AD-beléptatási kísérlete sem sikerül az AD FS-ban, és a Azure AD Connect úgy van konfigurálva, hogy szinkronizálja a számítógépet/eszközobjektumokat az Azure AD-val, az eszköz megpróbálja befejezni a hibrid Azure AD-csatlakozást a szinkronizált számítógép/eszköz használatával.
 
 > [!NOTE]
-> Ahhoz, hogy az eszköz regisztrációjának szinkronizálása sikeres legyen, az eszköz regisztrációs konfigurációjának részeként ne zárja ki az alapértelmezett eszköz attribútumokat a Azure AD Connect Sync konfigurációból. Ha többet szeretne megtudni az Azure AD-vel szinkronizált alapértelmezett eszközök attribútumairól, tekintse meg az [Azure ad Connect által szinkronizált attribútumokat](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
+> Ahhoz, hogy az eszközregisztráció szinkronizálási csatlakozása sikeres legyen, az eszközregisztrációs konfiguráció részeként ne zárja ki az alapértelmezett eszközattribútumokat a szinkronizálási Azure AD Connect konfigurációból. Az Azure AD-be szinkronizált alapértelmezett eszközattribútumokkal kapcsolatos további információkért lásd a következővel szinkronizált [Azure AD Connect.](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)
 
-Annak ellenőrzéséhez, hogy az eszköz képes-e hozzáférni a fenti Microsoft-erőforrásokhoz a rendszerfiókban, használhatja a [teszt eszköz regisztrációjának kapcsolati](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) parancsfájlját.
+Annak ellenőrzéséhez, hogy az eszköz hozzáfér-e a fenti Microsoft-erőforrásokhoz a rendszerfiók alatt, használhatja az Eszközregisztrációs kapcsolat [tesztelése szkriptet.](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)
 
 ## <a name="verify-configuration-steps"></a>Konfigurációs lépések ellenőrzése
 
@@ -95,7 +95,7 @@ Az alábbi táblázatban áttekintheti a forgatókönyvéhez szükséges lépés
 
 ## <a name="configure-a-service-connection-point"></a>Szolgáltatáskapcsolódási pont konfigurálása
 
-Az eszközök a regisztráció során szolgáltatáskapcsolódási pont (SCP) objektumot használnak az Azure AD-bérlői információk felderítéséhez. A helyszíni Active Directory-példányban a hibrid Azure AD-hez csatlakoztatott eszközök SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának léteznie kell a számítógép erdőjának konfigurációs névhasználati környezet partíciójában. Erdőnként egy konfigurációs névhasználati környezet létezik. A többerdős Active Directory konfigurációjában a szolgáltatás kapcsolódási pontjának minden olyan erdőben léteznie kell, amely tartományhoz csatlakoztatott számítógépeket tartalmaz.
+Az eszközök szolgáltatáskapcsolati pont (SCP) objektumot használnak a regisztráció során az Azure AD-bérlő információinak felderítéséhez. A helyi Active Directory-példányban a hibrid Azure AD-hez csatlakozott eszközök SCP-objektumának léteznie kell a számítógép erdőjéhez a konfigurációs névhasználati környezet partíciójában. Erdőnként egy konfigurációs névhasználati környezet létezik. Többerdős konfigurációban Active Directory szolgáltatáskapcsolati pontnak minden olyan erdőben léteznie kell, amely tartományhoz csatlakozó számítógépeket tartalmaz.
 
 Használja a [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) parancsmagot az erdő konfigurációs névhasználati környezetének lekéréséhez.  
 
@@ -107,8 +107,8 @@ A tartományokhoz csatlakoztatott eszközök automatikus regisztrációjának SC
 
 `CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[Your Configuration Naming Context]`
 
-A Azure AD Connect telepítésének módjától függően előfordulhat, hogy az SCP-objektum már konfigurálva van.
-A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum létezését, és beolvashatja a felderítési értékeket:
+Attól függően, hogy hogyan telepítette Azure AD Connect, előfordulhat, hogy az SCP-objektum már konfigurálva van.
+Az objektum meglétének ellenőrzéséhez és a felderítési értékek lekéréséhez használja a következő Windows PowerShell szkriptet:
 
    ```PowerShell
    $scp = New-Object System.DirectoryServices.DirectoryEntry;
@@ -118,7 +118,7 @@ A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum lét
    $scp.Keywords;
    ```
 
-A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Bemutatunk egy példát:
+A **$scp. A kulcsszavak** kimenete az Azure AD-bérlő adatait jeleníti meg. Bemutatunk egy példát:
 
    ```
    azureADName:microsoft.com
@@ -129,8 +129,8 @@ Ha a szolgáltatáskapcsolódási pont nem létezik, a létrehozásához futtass
 
 A parancsmag:
 
-* Létrehozza a szolgáltatási kapcsolódási pontot abban a Active Directory erdőben, amelyhez Azure AD Connect csatlakozik.
-* Az `AdConnectorAccount` paraméter megadása szükséges hozzá. Ez a fiók a Azure AD Connect Active Directory-összekötő fiókként van konfigurálva.
+* Létrehozza a szolgáltatáskapcsolati pontot abban Active Directory erdőben, Azure AD Connect csatlakozik.
+* Az `AdConnectorAccount` paraméter megadása szükséges hozzá. Ez a fiók lesz az összekötő Active Directory a Azure AD Connect.
 
 
 Az alábbi szkriptben egy példa látható a parancsmag használatára. A szkript `$aadAdminCred = Get-Credential` eleme esetében egy felhasználónév megadása szükséges. A felhasználónevet egyszerű felhasználónév (UPN) formátumban kell megadni (`user@example.com`).
@@ -145,11 +145,11 @@ Az alábbi szkriptben egy példa látható a parancsmag használatára. A szkrip
 
 Az `Initialize-ADSyncDomainJoinedComputerSync` parancsmag:
 
-* A Active Directory PowerShell-modult és Azure Active Directory Domain Services (Azure AD DS) eszközöket használja. Ezek az eszközök a tartományvezérlőn futó Active Directory webszolgáltatásokra támaszkodnak. Az Active Directory webszolgáltatások Windows Server 2008 R2 vagy újabb rendszerű tartományvezérlőkön támogatott.
-* Kizárólag az MSOnline PowerShell modul 1.1.166.0-s verziója támogatja. A modul letöltéséhez használja [ezt a hivatkozást](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
-* Ha a AD DS-eszközök nincsenek telepítve, a `Initialize-ADSyncDomainJoinedComputerSync` művelet sikertelen lesz. A AD DS eszközök a Kiszolgálókezelő segítségével telepíthetők a **szolgáltatások**  >  **Távoli kiszolgálófelügyelet eszközei**  >  **szerepkör-felügyeleti eszközök** lehetőségre.
+* Az Active Directory PowerShell-modult és Active Directory Domain Services (AD DS) eszközöket használja. Ezek az eszközök Active Directory tartományvezérlőn futó webszolgáltatásokra támaszkodnak. Az Active Directory webszolgáltatások Windows Server 2008 R2 vagy újabb rendszerű tartományvezérlőkön támogatott.
+* Kizárólag az MSOnline PowerShell modul 1.1.166.0-s verziója támogatja. A modul letöltéséhez használja ezt [a hivatkozást.](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+* Ha a AD DS eszközök nincsenek telepítve, `Initialize-ADSyncDomainJoinedComputerSync` a sikertelen lesz. A kiszolgálókezelő AD DS a Szerepkör-felügyeleti eszközök szolgáltatások Távoli kiszolgálófelügyelet eszközei  >    >  **keresztül telepítheti.**
 
-A Windows Server 2008-es vagy korábbi verzióit futtató tartományvezérlők esetén használja a következő parancsfájlt a szolgáltatás kapcsolódási pontjának létrehozásához. Többerdős konfiguráció esetén a következő parancsfájl használatával hozza létre a szolgáltatási kapcsolódási pontot minden olyan erdőben, ahol a számítógépek léteznek.
+Windows Server 2008 vagy korábbi verziójú tartományvezérlők esetén használja a következő szkriptet a szolgáltatáskapcsolati pont létrehozásához. Többerdős konfigurációban a következő szkript használatával hozza létre a szolgáltatáskapcsolati pontot minden olyan erdőben, ahol számítógépek vannak.
 
    ```PowerShell
    $verifiedDomain = "contoso.com" # Replace this with any of your verified domain names in Azure AD
@@ -168,9 +168,9 @@ A Windows Server 2008-es vagy korábbi verzióit futtató tartományvezérlők e
    $deSCP.CommitChanges()
    ```
 
-Az előző szkriptben `$verifiedDomain = "contoso.com"` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Ahhoz, hogy használni tudja a tartományt, rendelkeznie kell a tartományhoz.
+Az előző szkriptben `$verifiedDomain = "contoso.com"` a egy helyőrző. Cserélje le az egyik ellenőrzött tartománynévre az Azure AD-ban. Használat előtt a tartománynak a tulajdonában kell lennie.
 
-További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).
+Az ellenőrzött tartománynevekkel kapcsolatos további információkért lásd: Egyéni tartománynév hozzáadása [a Azure Active Directory.](../fundamentals/add-custom-domain.md)
 
 Az ellenőrzött vállalati tartományok listáját a [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) parancsmaggal kaphatja meg.
 
@@ -178,11 +178,11 @@ Az ellenőrzött vállalati tartományok listáját a [Get-AzureADDomain](/power
 
 ## <a name="set-up-issuance-of-claims"></a>Jogcímek kiállításának beállítása
 
-Az összevont Azure AD-konfigurációban az eszközök AD FS vagy egy Microsoft-partner helyszíni összevonási szolgáltatásán alapulnak az Azure AD-ben való hitelesítéshez. Az eszközök a hitelesítés révén kapnak hozzáférési jogkivonatokat, amelyekkel regisztrálhatnak az Azure Active Directory eszközregisztrációs szolgáltatásába (Azure DRS).
+Összevont Azure AD-konfigurációkban az eszközök egy Microsoft AD FS partnertől származó virtuális vagy helyszíni összevonási szolgáltatásra támaszkodnak az Azure AD-hitelesítéshez. Az eszközök a hitelesítés révén kapnak hozzáférési jogkivonatokat, amelyekkel regisztrálhatnak az Azure Active Directory eszközregisztrációs szolgáltatásába (Azure DRS).
 
-A Windows jelenlegi eszközei a helyi összevonási szolgáltatás által üzemeltetett aktív WS-Trust végpontra (1,3 vagy 2005 verzió) integrált Windows-hitelesítéssel végzik a hitelesítést.
+A jelenlegi Windows-eszközök hitelesítése integrált Windows-hitelesítés helyszíni összevonási szolgáltatás által üzemeltetett aktív WS-Trust-végponttal (1.3-as vagy 2005-ös verzió) történik.
 
-AD FS használatakor engedélyeznie kell a következő WS-Trust-végpontokat
+A végpontok AD FS engedélyeznie kell a következő WS-Trust végpontokat
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -191,12 +191,12 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust-végpontokat
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok** alatt.
+> Az **adfs/services/trust/2005/windowstransport** és az **adfs/services/trust/13/windowstransport** csak intranetes végpontként kell engedélyezni, és NEM szabad extranetes végpontként elérhetővé tenni a Web alkalmazásproxy. További információ a Windows-végpontok WS-Trust letiltásához: [WindowsWS-Trust végpont letiltása a proxyn.](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet) A szolgáltatásvégpontokkal kapcsolatos AD FS konzolján **láthatja,** hogy milyen  >  **végpontok vannak engedélyezve.**
 
 > [!NOTE]
->Ha nem rendelkezik AD FS a helyszíni összevonási szolgáltatásként, kövesse a gyártó utasításait, és győződjön meg arról, hogy támogatják WS-Trust 1,3 vagy 2005 végpontot, és hogy ezek a metaadatok Exchange-fájlján (MEX) keresztül lesznek közzétéve.
+>Ha nem használja AD FS-t helyszíni összevonási szolgáltatásként, kövesse a szállító utasításait, és győződjön meg arról, hogy támogatják az WS-Trust 1.3-as vagy 2005-ös végpontokat, és hogy ezeket a metaadat-cserélő fájlon (MEX) keresztül teszi közzé.
 
-Az eszközök regisztrációjának befejezéséhez a következő jogcímeknek léteznie kell az Azure DRS által fogadott jogkivonatban. Az Azure DRS egy eszköz-objektumot hoz létre az Azure AD-ben néhány ilyen információval. Azure AD Connect ezt az információt használja az újonnan létrehozott eszköz objektum és a helyszíni számítógépfiók hozzárendeléséhez.
+Az eszközregisztráció befejezéséhez a következő jogcímnek kell lennie az Azure DRS által kapott jogkivonatban. Az Azure DRS létrehoz egy eszközobjektumot az Azure AD-ban ezen információk egy része alapján. Azure AD Connect ezt az információt felhasználva társítja az újonnan létrehozott eszközobjektumot a helyszíni számítógépfiókkal.
 
 * `http://schemas.microsoft.com/ws/2012/01/accounttype`
 * `http://schemas.microsoft.com/identity/claims/onpremobjectguid`
@@ -206,14 +206,14 @@ Ha több ellenőrzött tartománynévvel rendelkezik, a következő jogcímeket 
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Ha már kiadott egy ImmutableID-jogcímet (például a `mS-DS-ConsistencyGuid` vagy más attribútumot használja a ImmutableID), meg kell adnia egy megfelelő jogcímet a számítógépeknek:
+Ha már egy ImmutableID jogcímet ad ki (például a vagy egy másik attribútumot az ImmutableID forrásértékeként), meg kell adnia egy megfelelő jogcímet a számítógépek `mS-DS-ConsistencyGuid` számára:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
 A következő szakaszokban az alábbiakról talál információt:
 
-* Az egyes jogcímek értékeit.
-* A definíciók megjelenése AD FS.
+* Az egyes jogcímek által tartalmazott értékek.
+* Hogyan nézne ki egy definíció a AD FS.
 
 A meghatározás segít ellenőrizni, hogy az értékek léteznek-e már, vagy még létre kell őket hozni.
 
@@ -222,7 +222,7 @@ A meghatározás segít ellenőrizni, hogy az értékek léteznek-e már, vagy m
 
 ### <a name="issue-account-type-claim"></a>Fióktípusra vonatkozó jogcím kiállítása
 
-A `http://schemas.microsoft.com/ws/2012/01/accounttype` jogcímnek a **DJ** értéket kell tartalmaznia, amely az eszközt tartományhoz csatlakoztatott számítógépként azonosítja. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
+A `http://schemas.microsoft.com/ws/2012/01/accounttype` jogcímnek tartalmaznia kell a **DJ értéket,** amely tartományhoz csatlakozott számítógépként azonosítja az eszközt. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
 
    ```
    @RuleName = "Issue account type for domain-joined computers"
@@ -239,7 +239,7 @@ A `http://schemas.microsoft.com/ws/2012/01/accounttype` jogcímnek a **DJ** ért
 
 ### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>A helyszíni számítógépfiók objectGUID értékének kiállítása
 
-A `http://schemas.microsoft.com/identity/claims/onpremobjectguid` jogcímnek tartalmaznia kell a helyszíni számítógépfiók **ObjectGUID** értékét. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
+A jogcímnek tartalmaznia kell a helyszíni `http://schemas.microsoft.com/identity/claims/onpremobjectguid` számítógépfiók **objectGUID** értékét. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
 
    ```
    @RuleName = "Issue object GUID for domain-joined computers"
@@ -263,7 +263,7 @@ A `http://schemas.microsoft.com/identity/claims/onpremobjectguid` jogcímnek tar
 
 ### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>A helyszíni számítógépfiók objectSID értékének kiállítása
 
-A `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` jogcímnek tartalmaznia kell a helyszíni számítógépfiók **objectSid** értékét. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
+A jogcímnek tartalmaznia kell a helyszíni `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` számítógépfiók **objectSid** értékét. Az AD FS-ben hozzáadhat egy kiállítási átalakítószabályt, amely a következőképpen néz ki:
 
    ```
    @RuleName = "Issue objectSID for domain-joined computers"
@@ -280,9 +280,9 @@ A `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` jogcímne
    => issue(claim = c2);
    ```
 
-### <a name="issue-issuerid-for-the-computer-when-multiple-verified-domain-names-are-in-azure-ad"></a>A számítógép issuerID kiadása, ha több ellenőrzött tartománynév van az Azure AD-ben
+### <a name="issue-issuerid-for-the-computer-when-multiple-verified-domain-names-are-in-azure-ad"></a>A számítógép kiállítóazonosítójának kiállítása, ha több ellenőrzött tartománynév található az Azure AD-ban
 
-A `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` jogcímnek tartalmaznia kell a jogkivonatot kiállító helyszíni összevonási szolgáltatással (AD FS vagy partnerrel) csatlakozó ellenőrzött tartománynevek Uniform Resource Identifier (URI) nevét. AD FS az előzőek után az alábbihoz hasonló kiállítási átalakítási szabályokat adhat hozzá az adott sorrendben: Vegye figyelembe, hogy az egyik szabály a felhasználókra vonatkozó szabály explicit kikibocsátására van szükség. A következő szabályokban a felhasználó és számítógép hitelesítését azonosító első szabály lesz hozzáadva.
+A jogcímnek tartalmaznia kell Uniform Resource Identifier jogkivonatot kiállító helyszíni összevonási szolgáltatáshoz (AD FS vagy partnerhez) kapcsoló ellenőrzött tartománynevek `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` URI-ját. Ebben AD FS az előzőek után hozzáadhat olyan kiállítási átalakítási szabályokat, amelyek az alábbihoz hasonlók az adott sorrendben. Vegye figyelembe, hogy a szabály felhasználók számára való explicit kiadására vonatkozó egyik szabályra van szükség. A következő szabályokban egy, a felhasználó és a számítógép hitelesítését azonosító első szabály lesz hozzáadva.
 
    ```
    @RuleName = "Issue account type with the value User when its not a computer"
@@ -327,15 +327,15 @@ A `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` jogcímnek 
    );
    ```
 
-Az előző jogcímben `<verified-domain-name>` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Használja például a következőt: `Value = "http://contoso.com/adfs/services/trust/"` .
+Az előző jogcímben `<verified-domain-name>` a egy helyőrző. Cserélje le egy ellenőrzött tartománynévre az Azure AD-ban. Használja például a `Value = "http://contoso.com/adfs/services/trust/"` következőt: .
 
-További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).  
+Az ellenőrzött tartománynevekkel kapcsolatos további információkért lásd: Egyéni tartománynév hozzáadása [a Azure Active Directory.](../fundamentals/add-custom-domain.md)  
 
 Az ellenőrzött vállalati tartományok listáját a [Get-MsolDomain](/powershell/module/msonline/get-msoldomain) parancsmaggal kaphatja meg.
 
 ![Vállalati tartományok listája](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Probléma ImmutableID a számítógépen, ha az egyik a felhasználók számára létezik (például mS-DS-ConsistencyGuid használata a ImmutableID forrásaként)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>A számítógép ImmutableID-jának kiállítása, ha létezik egy a felhasználók számára (például az mS-DS-ConsistencyGuid használata az ImmutableID forrásaként)
 
 A `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` jogcímnek érvényes értéket kell tartalmaznia a számítógépek számára. Az AD FS-ben a következő módon hozhat létre kiállítási átalakítószabályt:
 
@@ -361,7 +361,7 @@ A `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` jogcímne
 
 ### <a name="helper-script-to-create-the-ad-fs-issuance-transform-rules"></a>Az AD FS kiállítási átalakítószabályainak létrehozását segítő szkript
 
-A következő szkript segítséget nyújt a korábban ismertetett kiadási átalakítási szabályok létrehozásában.
+A következő szkript segít a korábban ismertetett kiállítási átalakítási szabályok létrehozásában.
 
    ```
    $multipleVerifiedDomainNames = $false
@@ -486,8 +486,8 @@ A következő szkript segítséget nyújt a korábban ismertetett kiadási átal
 
 #### <a name="remarks"></a>Megjegyzések
 
-* A szkript hozzáfűzi a szabályokat a meglévő szabályokhoz. Ne futtassa kétszer a parancsfájlt, mert a szabályok halmaza kétszer lesz hozzáadva. A szkript újbóli futtatása előtt ellenőrizze, hogy a jogcímekre nem vonatkoznak kapcsolódó szabályok (a kapcsolódó feltételek mellett).
-* Ha több ellenőrzött tartományneve van (ahogy az az Azure AD-portálon vagy a **Get-MsolDomain** parancsmagon keresztül is látható), a parancsfájlban állítsa be a **$multipleVerifiedDomainNames** értékét **$truere**. Győződjön meg arról is, hogy minden olyan meglévő **issuerid** -jogcímet eltávolít, amelyet Azure ad Connect vagy más módon hoztak létre. Példa erre a szabályra:
+* A szkript hozzáfűzi a szabályokat a meglévő szabályokhoz. Ne futtassa kétszer a szkriptet, mert a szabálykészlet kétszer lesz hozzáadva. A szkript újbóli futtatása előtt ellenőrizze, hogy a jogcímekre nem vonatkoznak kapcsolódó szabályok (a kapcsolódó feltételek mellett).
+* Ha több ellenőrzött tartománynévvel is (az Azure AD portálon vagy a **Get-MsolDomain** parancsmagon keresztül) van, állítsa a **szkriptben** a $multipleVerifiedDomainNames értékét a következőre: **$true.** Győződjön meg arról is, hogy eltávolít minden meglévő **issuerid** jogcímet, amelyet a Azure AD Connect más módon hozott létre. Példa erre a szabályra:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -502,20 +502,20 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
 
 * Állítson be egy szabályzatot az Azure AD-ben, amellyel a felhasználók eszközeinek regisztrációját engedélyezheti.
 * Konfigurálja a helyszíni összevonási szolgáltatást arra, hogy jogcímek kiállításával támogassa az integrált Windows-hitelesítést (IWA) az eszközök regisztrációjához.
-* Adja hozzá az Azure AD-alapú hitelesítési végpontot a helyi intranetes zónákhoz, hogy elkerülje a tanúsítvány kérését az eszköz hitelesítése során.
-* A Windows leállási szintű eszközeinek szabályozása.
+* Adja hozzá az Azure AD-eszközhitelesítési végpontot a helyi intranetes zónákhoz, hogy elkerülje a tanúsítványkérelmeket az eszköz hitelesítése során.
+* A windowsos eszközök szabályozása.
 
-### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Házirend beállítása az Azure AD-ben, amely lehetővé teszi a felhasználók számára az eszközök regisztrálását
+### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Szabályzat beállítása az Azure AD-ban annak engedélyezéséhez, hogy a felhasználók regisztrálják az eszközöket
 
-A Windows Down-szintű eszközök regisztrálásához engedélyezze a felhasználók számára az eszközök regisztrálását az Azure AD-ben beállítás engedélyezését. A Azure Portal a beállítás **Azure Active Directory**  >  **felhasználók és csoportok**  >  **eszköz beállításai** területen található.
+A windowsos eszközök regisztrálásához győződjön meg arról, hogy engedélyezve van a beállítás, amely lehetővé teszi a felhasználók számára az eszközök regisztrálását az Azure AD-ban. A Azure Portal ezt a beállítást a Felhasználók **és** csoportok eszközbeállítások Azure Active Directory  >    >  **alatt találja.**
 
-Az alábbi szabályzatot **minden** értékre kell állítani: a **felhasználók regisztrálhatják eszközeiket az Azure ad**-ben.
+A következő szabályzatot a Minden: A felhasználók regisztrálhatja eszközeiket az **Azure AD-ban beállításra kell állítani.**
 
-![Az összes gomb, amely lehetővé teszi a felhasználók számára az eszközök regisztrálását](./media/hybrid-azuread-join-manual/23.png)
+![A Minden gomb, amely lehetővé teszi a felhasználók számára az eszközök regisztrálását](./media/hybrid-azuread-join-manual/23.png)
 
 ### <a name="configure-the-on-premises-federation-service"></a>A helyszíni összevonási szolgáltatás konfigurálása
 
-A helyszíni összevonási szolgáltatásnak támogatnia kell a **AuthenticationMethod** és a **wiaormultiauthn** jogcímek kiállítását, amikor hitelesítési kérést kap az Azure ad függő entitásnak, amely a következő kódolt értékkel rendelkező resource_params paramétert tartja:
+A helyszíni összevonási szolgáltatásnak támogatnia kell az **authenticationmethod** és **a wiaormultiauthn** jogcímek kiadását, amikor hitelesítési kérést kap egy resource_params-paramétert tároló Azure AD-függő félhez az alábbi kódolt értékkel:
 
    ```
    eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
@@ -523,103 +523,103 @@ A helyszíni összevonási szolgáltatásnak támogatnia kell a **Authentication
    which decoded is {"Properties":[{"Key":"acr","Value":"wiaormultiauthn"}]}
    ```
 
-Ha ilyen kérés érkezik, a helyszíni összevonási szolgáltatásnak integrált Windows-hitelesítéssel kell hitelesítenie a felhasználót. Ha a hitelesítés sikeres, az összevonási szolgáltatásnak a következő két jogcímet kell kiállítania:
+Ilyen kérés esetén a helyszíni összevonási szolgáltatásnak hitelesítenie kell a felhasználót a integrált Windows-hitelesítés. Ha a hitelesítés sikeres, az összevonási szolgáltatásnak ki kell adnunk a következő két jogcímet:
 
    `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows` `http://schemas.microsoft.com/claims/wiaormultiauthn`
 
-AD FSban hozzá kell adnia egy kiállítási átalakítási szabályt, amely áthalad a hitelesítési módszeren. A szabály hozzáadásához:
+A AD FS hozzá kell adni egy kiállítási átalakítási szabályt, amely áthalad a hitelesítési módszeren. A szabály hozzáadásához:
 
-1. A AD FS felügyeleti konzolon lépjen a **AD FS**  >  **megbízhatósági kapcsolatok**  >  **függő entitások megbízhatóságai** elemre.
+1. Az AD FS felügyeleti konzolon a **Megbízhatósági kapcsolatok AD FS** megbízható függőben  >    >  **van.**
 1. Kattintson a jobb gombbal a Microsoft Office 365 Identity Platform megbízható függő entitás elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 1. A **Kiállítási átalakítószabályok** lapon válassza a **Szabály hozzáadása** lehetőséget.
 1. A **Jogcímszabály** sablonlistában válassza a **Jogcímek küldése egyéni szabállyal** lehetőséget.
 1. Kattintson a **Tovább** gombra.
-1. A **jogcím-szabály neve** mezőbe írja be az **Auth Method jogcím szabályt**.
-1. A **jogcím szabály** mezőjébe írja be a következő szabályt:
+1. A **Jogcímszabály neve mezőbe írja** be az **Auth metódus jogcímszabálya nevet.**
+1. A **Jogcímszabály mezőbe** írja be a következő szabályt:
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Az összevonási kiszolgálón adja meg a következő PowerShell-parancsot. Cserélje le az értékét **\<RPObjectName\>** Az Azure ad függő entitás megbízhatósági objektumának függő entitás nevű objektumára. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
+1. Az összevonási kiszolgálón írja be a következő PowerShell-parancsot. Cserélje le a helyére az Azure AD függő függő fél **\<RPObjectName\>** megbízhatósági objektumának függő fél objektumának nevét. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
-### <a name="add-the-azure-ad-device-authentication-endpoint-to-the-local-intranet-zones"></a>Adja hozzá az Azure AD-alapú hitelesítési végpontot a helyi intranetes zónákhoz
+### <a name="add-the-azure-ad-device-authentication-endpoint-to-the-local-intranet-zones"></a>Az Azure AD-eszköz hitelesítési végpontjának hozzáadása a helyi intranetes zónákhoz
 
-Ha el szeretné kerülni, hogy a rendszer a regisztrált eszközök felhasználóinak hitelesítse magát az Azure AD-ben, leküldheti a szabályzatot a tartományhoz csatlakoztatott eszközökre, hogy hozzáadja a következő URL-címet a helyi intranet zónához az Internet Explorerben:
+Ha el szeretne kerülni a tanúsítványkérelmeket, amikor a regisztrált eszközök felhasználói hitelesítik magukat az Azure AD-ben, lekkulálhat egy házirendet a tartományhoz csatlakozott eszközökre, hogy a következő URL-címet adja hozzá a helyi intranetes zónához a Internet Explorer:
 
 `https://device.login.microsoftonline.com`
 
 ### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése
 
-A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információkért lásd: [hibrid Azure ad-csatlakozás ellenőrzése a Windows Down-szintű eszközökön](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
+A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információkért lásd a hibrid Azure AD-csatlakozás szabályozott érvényesítését a windowsos, alacsony szintű [eszközökön című szakaszt.](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices)
 
 ## <a name="verify-joined-devices"></a>Csatlakoztatott eszközök ellenőrzése
 
-Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3 módszer használható:
+3 módszer az eszköz állapotának megkeresére és ellenőrzésére:
 
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
 2. Írja be a következő szöveget: `dsregcmd /status`.
-3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen** értékre van-e állítva.
-4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
+3. Ellenőrizze, hogy **az AzureAdJoined** és **a DomainJoined** is **YES (IGEN) beállításra van-e állítva.**
+4. A **DeviceId** használatával összehasonlíthatja a szolgáltatás állapotát a Azure Portal PowerShell használatával.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
-2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](./device-management-azure-portal.md#manage-devices)című témakörben talál információt.
-3. Ha a **regisztrált** oszlop **függőben** van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
-4. Ha a **regisztrált** oszlop egy **dátumot és időpontot** tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
+1. A közvetlen hivatkozással kattintson az Eszközök [lapra.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)
+2. Az eszközök keresésével kapcsolatos információkért keresse meg az Eszköz identitásának kezelése [a](./device-management-azure-portal.md#manage-devices)Azure Portal.
+3. Ha a **Regisztrált oszlopban** **a Függőben érték látható,** akkor a hibrid Azure AD-csatlakozás még nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha nem sikerült regisztrálnia, és az AAD Connect konfigurálva van az eszközök szinkronizálásához.
+4. Ha a **Regisztrált oszlop** **dátum/idő** értékeket tartalmaz, akkor a hibrid Azure AD-csatlakozás befejeződött.
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-A **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/active-directory/install-msonlinev1)található.
+Ellenőrizze az eszközregisztráció állapotát az Azure-bérlőben a **[Get-MsolDevice használatával.](/powershell/module/msonline/get-msoldevice)** Ez a parancsmag a [Azure Active Directory PowerShell-modulban található.](/powershell/azure/active-directory/install-msonlinev1)
 
-Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
+Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek ellenőrzéshez:
 
-- Léteznie kell egy olyan objektumnak **, amely megfelel a Windows** -ügyfél azonosítójának.
-- A **DeviceTrustType** értéke **tartományhoz van csatlakoztatva**. Ez a beállítás megegyezik a **hibrid Azure ad-hez csatlakoztatott** állapottal az Azure ad-portál **eszközök** lapján.
-- A feltételes hozzáférésben használt eszközök esetében az **enabled** érték **true (igaz** ), a **DeviceTrustLevel** pedig **felügyelt**.
+- Léteznie kell egy **objektumnak,** amely a Windows-ügyfélen található azonosítóval egyezik az eszközazonosítóval.
+- A **DeviceTrustType értéke** **Tartományhoz csatlakozik.** Ez a beállítás megegyezik az Azure AD portál Eszközök lapján található Hibrid **Azure AD-hez** csatlakozott állapotával. 
+- A feltételes hozzáférésben használt eszközök esetében az **Engedélyezve** értéke **Igaz,** a **DeviceTrustLevel** pedig **Felügyelt.**
 
 1. Nyissa meg a Windows PowerShellt rendszergazdaként.
-2. Az `Connect-MsolService` Azure-bérlőhöz való kapcsolódáshoz adja meg a következőt:.
+2. Az `Connect-MsolService` Azure-bérlőhöz való csatlakozáshoz írja be a(a) et.
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz száma (a **függő** állapot kizárása nélkül)
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Az összes hibrid Azure AD-hez csatlakozott eszköz száma (a **függőben lévő állapot kivételével)**
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
 ```
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz száma
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes Függő állapotban lévő hibrid Azure **AD-hez csatlakozott eszköz száma**
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
 ```
 
-#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz listázása
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Az összes hibrid Azure AD-hez csatlakozott eszköz felsorolása
 
 ```azurepowershell
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
 ```
 
-#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz listázása
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes Függő állapotban lévő hibrid Azure AD-hez **csatlakozott eszköz felsorolása**
 
 ```azurepowershell
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
 ```
 
-#### <a name="list-details-of-a-single-device"></a>Egyetlen eszköz részleteinek listázása:
+#### <a name="list-details-of-a-single-device"></a>Egyetlen eszköz részleteinek felsorolása:
 
-1. ENTER `get-msoldevice -deviceId <deviceId>` (ez az eszközön helyileg beszerzett **DeviceID** ).
+1. Írja be a következőt: (Ez az eszközön `get-msoldevice -deviceId <deviceId>` helyileg lekért **DeviceId).**
 2. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
 
 ## <a name="troubleshoot-your-implementation"></a>A megvalósítás hibaelhárítása
 
-Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
+Ha problémákat tapasztal a tartományhoz csatlakozott Windows-eszközök hibrid Azure AD-csatlakozása során, tekintse meg a következőt:
 
 - [Eszközök hibaelhárítása a dsregcmd paranccsal](./troubleshoot-device-dsregcmd.md)
 - [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
-- [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
+- [Hibrid hálózati Azure Active Directory, lefelé csatlakozott eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

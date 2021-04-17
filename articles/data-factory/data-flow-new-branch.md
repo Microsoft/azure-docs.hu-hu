@@ -1,29 +1,36 @@
 ---
 title: Több ág a leképezési adatfolyamban
-description: Adatfolyamok replikálása a leképezési adatfolyamban több ág
+description: Adatfolyamok replikálása több ággal rendelkező leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378196"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588751"
 ---
-# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Új ág létrehozása a leképezési adatfolyamban
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Új ág létrehozása leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Egy új ág hozzáadásával több művelet és átalakítás végezhető el ugyanazon adatfolyamon. Az új ág hozzáadása akkor lehet hasznos, ha ugyanazt a forrást szeretné használni több mosogatóhoz, vagy az önkiszolgáló adategyesítéshez.
+Adjon hozzá egy új ágat több művelet és átalakítás ugyanazon az adatfolyamon való végrehajtásához. Új ág hozzáadása akkor hasznos, ha ugyanazt a forrást szeretné használni több fogadóhoz vagy az adatok önálló egymáshoz való egymáshoz kötéséhez.
 
-Az átalakítási listáról más átalakításokhoz hasonló új ág is felvehető. Az **új ág** csak akkor érhető el műveletként, ha már van egy meglévő átalakítás, amely azt követi, hogy milyen átalakítást végez az elágazásban.
+A transzformációs listából a többi átalakításhoz hasonlóan új ág is hozzáadható. **Az Új ág** csak akkor lesz elérhető műveletként, ha már létezik átalakítás az elágaztatási műveletet követően.
 
-![Képernyőfelvétel: az új ág lehetőség a több bemenet/kimenet menüben.](media/data-flow/new-branch2.png "Új ág hozzáadása")
+![Képernyőkép az Új ág lehetőségről a Több bemenet /kimenet menüben.](media/data-flow/new-branch2.png "Új ág hozzáadása")
 
-Az alábbi példában az adatfolyam beolvassa a taxi-adatforgalmat. A napi és a szállító által összesített kimenet megadása kötelező. Ahelyett, hogy két különálló adatfolyamatot hozna létre ugyanabból a forrásból, új ágat adhat hozzá. Így az összesítések ugyanúgy hajthatók végre, mint az adatfolyamatok részeként. 
+Az alábbi példában az adatfolyam a taxis utazások adatait olvassa. A napi és a beszállító által összesített kimenetre van szükség. Ahelyett, hogy két különálló adatfolyamot hoz létre, amelyek ugyanattól a forrástól olvasnak, új ágat is hozzá lehet adni. Így mindkét összesítés végrehajtható ugyanannak az adatfolyamnak a részeként. 
 
-![A képernyőfelvételen a forrás két ága látható az adatfolyam.](media/data-flow/new-branch.png "Új ág hozzáadása")
+![Képernyőkép az adatfolyamról a forrásból származó két ággal.](media/data-flow/new-branch.png "Új ág hozzáadása")
+
+> [!NOTE]
+> Ha a plusz (+) jelre kattintva átalakításokat ad hozzá a gráfhoz, az Új ág lehetőség csak akkor látható, ha további átalakítási blokkok is vannak. Ennek az az oka, hogy a New Branch létrehoz egy hivatkozást a meglévő streamre, és további, upstream feldolgozási műveleteket igényel a művelethez. Ha nem látja az Új ág lehetőséget, először adjon hozzá egy Származtatott oszlopot vagy más átalakítást, majd térjen vissza az előző blokkhoz, és az Új ág lehetőség látható.
+
+## <a name="next-steps"></a>Következő lépések
+
+Az elágaztatás után előfordulhat, hogy [adatfolyam-átalakításokat szeretne használni](data-flow-transformation-overview.md)

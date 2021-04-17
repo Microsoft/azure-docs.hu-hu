@@ -4,26 +4,26 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f20099943d3cfa3dd4afc161c26e5582e467ca8d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073181"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107590081"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy központilag telepített kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
-- Felhasználói hozzáférési jogkivonat a hívó ügyfél engedélyezéséhez. További információ: [hozzáférési tokenek létrehozása és kezelése](../../access-tokens.md).
-- Nem kötelező: fejezze be a gyors üzembe helyezést, és [adja hozzá a hanghívást az alkalmazásához](../getting-started-with-calling.md).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Egy üzembe helyezett Communication Services erőforrás. [Hozzon létre egy Communication Services erőforrást.](../../create-communication-resource.md)
+- Felhasználói hozzáférési jogkivonat a hívó ügyfél engedélyezéséhez. További információ: [Hozzáférési jogkivonatok létrehozása és kezelése.](../../access-tokens.md)
+- Nem kötelező: A hanghívás alkalmazáshoz való hozzáadásának rövid [útmutatója .](../getting-started-with-calling.md)
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
 > [!NOTE]
-> Ez a dokumentum az ACS Calling web SDK-t használja.
+> Ez a dokumentum ACS-t hívó Webes SDK-t használ.
 
-A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatásokat hívó és gyakori SDK-kat a JavaScript használatára.
+Az `npm install` paranccsal telepítse a Azure Communication Services és a JavaScripthez használható gyakori SZOFTVERDK-okat.
 
 ```console
 npm install @azure/communication-common --save
@@ -33,24 +33,24 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek az Azure kommunikációs szolgáltatások Meghívási SDK-val kapcsolatos főbb funkcióit kezelik:
+Az alábbi osztályok és felületek a hívó SDK néhány fő funkcióját Azure Communication Services kezelik:
 
 | Név                             | Leírás                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CallClient`                      | A hívó SDK fő belépési pontja.                                                                       |
-| `CallAgent`                        | A hívások indításához és kezeléséhez használatos.                                                                                            |
-| `DeviceManager`                    | A média eszközök kezelésére szolgál.                                                                                           |
-| `AzureCommunicationTokenCredential` | Implementálja a `CommunicationTokenCredential` felületet, amely a létrehozásához használatos `callAgent` . |
+| `CallAgent`                        | Hívásokat indít és kezel.                                                                                            |
+| `DeviceManager`                    | Médiaeszközök kezelésére használható.                                                                                           |
+| `AzureCommunicationTokenCredential` | Implementálja `CommunicationTokenCredential` a illesztőt, amely a példányának megvalósításához `callAgent` használható. |
 
-## <a name="initialize-a-callclient-instance-create-a-callagent-instance-and-access-devicemanager"></a>CallClient-példány inicializálása, CallAgent-példány létrehozása és hozzáférés a deviceManager
+## <a name="initialize-a-callclient-instance-create-a-callagent-instance-and-access-devicemanager"></a>CallClient-példány inicializálása, CallAgent-példány létrehozása és deviceManager elérése
 
-Hozzon létre egy új `CallClient` példányt. Konfigurálhatja az egyéni beállításokkal, például a Logger-példánnyal.
+Hozzon létre egy új `CallClient` példányt. Egyéni beállításokkal, például naplózó példányokkal konfigurálhatja.
 
-Ha van egy `CallClient` példánya, létrehozhat egy `CallAgent` példányt úgy, hogy meghívja a `createCallAgent` metódust a `CallClient` példányon. Ez aszinkron módon ad vissza egy `CallAgent` példány objektumot.
+Ha már van példánya, a példányon a metódus hívásával hozhat `CallClient` `CallAgent` létre `createCallAgent` `CallClient` példányt. Ez aszinkron módon egy `CallAgent` példányobjektumot ad vissza.
 
-A `createCallAgent` metódus `CommunicationTokenCredential` argumentumként használja. [Felhasználói hozzáférési tokent](../../access-tokens.md)fogad el.
+A `createCallAgent` metódus `CommunicationTokenCredential` argumentumként a metódust használja. Felhasználói hozzáférési [jogkivonatot fogad el.](../../access-tokens.md)
 
-A példányok létrehozása után használhatja a `callAgent` `getDeviceManager` példányon a metódust a `CallClient` hozzáféréshez `deviceManager` .
+A példányon `getDeviceManager` a metódussal `CallClient` férhet hozzá a következő `deviceManager` hez: .
 
 ```js
 // Set the logger's log level
@@ -64,29 +64,29 @@ const callAgent = await callClient.createCallAgent(tokenCredential, {displayName
 const deviceManager = await callClient.getDeviceManager()
 ```
 
-## <a name="place-a-call"></a>Hívás elhelyezése
+## <a name="place-a-call"></a>Hívás el helyezése
 
-Hívás létrehozásához és elindításához használja az API-k egyikét, `callAgent` és adja meg a kommunikációs szolgáltatások Identity SDK használatával létrehozott felhasználót.
+Hívás létrehozásához és indításához használja az egyik API-t a-ban, és adjon meg egy, a Communication Services `callAgent` Identity SDK-val létrehozott felhasználót.
 
-A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehetővé teszi a hívási eseményekre való előfizetést.
+A hívás létrehozása és az indítás szinkron. A hívási példány lehetővé teszi az események hívásának feliratkozását.
 
-### <a name="place-a-1n-call-to-a-user-or-pstn"></a>Helyezzen egy 1: n hívást egy felhasználónak vagy PSTN-nek
+### <a name="place-a-1n-call-to-a-user-or-pstn"></a>1:n hívás a felhasználónak vagy PSTN-nek
 
-Egy másik kommunikációs szolgáltatás felhasználójának meghívásához használja a `startCall` metódust, `callAgent` és adja át a címzettet, `CommunicationUserIdentifier` amelyet a [kommunikációs szolgáltatások felügyeleti könyvtárával hozott létre](../../access-tokens.md).
+Ha egy másik Communication Services, használja a metódust, és adja át a felügyeleti könyvtárral létrehozott `startCall` `callAgent` `CommunicationUserIdentifier` [címzettek Communication Services számára.](../../access-tokens.md)
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
 const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-Nyilvános kapcsolós telefonhálózat (PSTN) hívásához használja a `startCall` metódust, `callAgent` és adja át a címzettet `PhoneNumberIdentifier` . A kommunikációs szolgáltatások erőforrását úgy kell konfigurálni, hogy engedélyezze a PSTN-hívást.
+Nyilvános telefonhálózatra (PSTN) való híváshoz használja a metódust, és adja át a `startCall` `callAgent` címzettnek a `PhoneNumberIdentifier` metódust. A Communication Services erőforrást úgy kell konfigurálni, hogy engedélyezze a PSTN-hívásokat.
 
-Ha egy PSTN-számot hív meg, adja meg a másodlagos hívó AZONOSÍTÓját. Az alternatív hívóazonosító egy olyan telefonszám (az E. 164 szabvány alapján), amely a hívót egy PSTN-hívásban azonosítja. Ez a telefonszám, amelyet a hívás címzettje lát a bejövő híváshoz.
+PSTN-szám hívkor adja meg a másodlagos hívóazonosítóját. A másik hívóazonosító egy telefonszám (az E.164 szabvány alapján), amely azonosítja a hívót egy PSTN-hívásban. Ezt a telefonszámot látja a hívás címzettje a bejövő híváshoz.
 
 > [!NOTE]
-> A PSTN-hívás jelenleg privát előzetes verzióban érhető el. A hozzáféréshez [alkalmazza a korai örökbefogadó programot](https://aka.ms/ACS-EarlyAdopter).
+> A PSTN-hívás jelenleg privát előzetes verzióban érhető el. A hozzáféréshez [alkalmazza a korai befogadó programot.](https://aka.ms/ACS-EarlyAdopter)
 
-1:1-híváshoz használja a következő kódot:
+1:1-es híváshoz használja a következő kódot:
 
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
@@ -94,7 +94,7 @@ const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
 const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
-1: n hívás esetén használja a következő kódot:
+1:n híváshoz használja a következő kódot:
 
 ```js
 const userCallee = { communicationUserId: <ACS_USER_ID> }
@@ -104,14 +104,15 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 
 ```
 
-### <a name="place-a-11-call-with-video-camera"></a>1:1-hívás elhelyezése videokameráról
+### <a name="place-a-11-call-with-video-camera"></a>1:1-es hívás videokamerával
 
 > [!IMPORTANT]
-> Jelenleg legfeljebb egy kimenő helyi videó stream lehet.
+> Jelenleg nem lehet egynél több kimenő helyi videóstream.
 
-Videohívás létrehozásához az metódusának használatával kell megadnia a kamerákat `getCameras()` `deviceManager` .
+Videóhíváshoz számba kell veszi a helyi kamerákat a `getCameras()` `deviceManager` metódusával.
 
-A kamera kiválasztása után egy példány létrehozásához használhatja azt `LocalVideoStream` . A `videoOptions` tömbön belüli elemként adja át `localVideoStream` a `startCall` metódusnak.
+Miután kiválasztott egy kamerát, a használatával építsen ki egy `LocalVideoStream` példányt. Adja át a `videoOptions` metódusnak elemként a `localVideoStream` `startCall` tömbben.
+
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -123,17 +124,17 @@ const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
-Ha a hívása csatlakozik, a automatikusan elindít egy video streamet a kiválasztott kameráról a másik résztvevőhöz. Ez a `Call.Accept()` videó beállításaira és a `CallAgent.join()` videó lehetőségeire is vonatkozik.
+Amikor a hívás csatlakozik, automatikusan elindítja egy videóstream küldését a kiválasztott kamerából a másik résztvevőnek. Ez a `Call.Accept()` videóbeállításokra és a `CallAgent.join()` videóbeállításokra is vonatkozik.
 
 ### <a name="join-a-group-call"></a>Csatlakozás csoportos híváshoz
 
 > [!NOTE]
-> A `groupId` paraméter rendszermetaadatoknak minősül, és a Microsoft a rendszer futtatásához szükséges műveletekhez használhatja azokat. Az értékben ne szerepeljenek személyes értékek `groupId` . A Microsoft nem kezeli ezt a paramétert személyes adatként, és annak tartalma látható lesz a Microsoft alkalmazottai számára, vagy hosszú távon tárolható.
+> A paraméter rendszer-metaadatoknak minősül, és a Microsoft a rendszer futtatásához szükséges műveletekhez `groupId` használható. Személyes adatokat ne foglaljon bele az `groupId` értékbe. A Microsoft ezt a paramétert nem személyes adatként kezeli, és a tartalma látható lehet a Microsoft alkalmazottai számára, vagy hosszú távon tárolható.
 >
-> A `groupId` paraméterhez GUID formátumú érték szükséges. Azt javasoljuk, hogy véletlenszerűen generált GUID azonosítókat használjon, amelyek nem számítanak személyes adatként a rendszerekben.
+> A `groupId` paraméterhez az adatokNAK GUID formátumúnak kell lennie. Javasoljuk, hogy véletlenszerűen generált GUID azonosítókat használ, amelyek nem számítanak a rendszerekben személyes adatoknak.
 >
 
-Új csoportos hívás indításához vagy egy folyamatos csoportos híváshoz való csatlakozáshoz használja a `join` metódust, és adjon át egy objektumot egy `groupId` tulajdonsággal. Az `groupId` értéknek GUID azonosítónak kell lennie.
+Egy új csoporthíváshoz vagy egy folyamatban lévő csoporthíváshoz való csatlakozáshoz használja a metódust, és adja át az objektumot `join` egy `groupId` tulajdonsággal. Az `groupId` értéknek GUID-nak kell lennie.
 
 ```js
 
@@ -144,18 +145,18 @@ const call = callAgent.join(context);
 
 ### <a name="join-a-teams-meeting"></a>Csatlakozás Teams-értekezlethez
 > [!NOTE]
-> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Az API a webes SDK-t hívó ACS bétaverziós kiadásának használatával használható
 
-Ha csatlakozni szeretne egy csapathoz, használja a `join` metódust, és adja át az értekezlet hivatkozását vagy koordinátáit.
+Egy Teams-értekezlethez való csatlakozáshoz használja a metódust, és adja át az értekezlet `join` hivatkozását vagy egy értekezlet koordinátáit.
 
-Csatlakozás egy értekezleti hivatkozás használatával:
+Csatlakozás értekezlet-hivatkozással:
 
 ```js
 const locator = { meetingLink: <meeting link>}
 const call = callAgent.join(locator);
 ```
 
-Csatlakozás az értekezlet koordinátáinak használatával:
+Csatlakozás értekezletkoordinátákkal:
 
 ```js
 const locator = {
@@ -169,13 +170,17 @@ const call = callAgent.join(locator);
 
 ## <a name="receive-an-incoming-call"></a>Bejövő hívás fogadása
 
-A `callAgent` példány olyan `incomingCall` eseményt bocsát ki, amikor a bejelentkezett identitás bejövő hívást kap. Ha ezt az eseményt szeretné meghallgatni, a következő lehetőségek egyikének használatával fizethet elő:
+A példány egy eseményt bocsát ki, amikor a bejelentkezett identitás `callAgent` bejövő hívást `incomingCall` fogad. Ha figyelni szeretne erre az eseményre, iratkozzon fel az alábbi lehetőségek egyikének használatával:
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-
-    //Get incoming call ID
+    const incomingCall = args.incomingCall; 
+    // Get incoming call ID
     var incomingCallId = incomingCall.id
+    // Get information about this Call. This API is provided as a preview for developers
+    // and may change based on feedback that we receive. Do not use this API in a production environment.
+    // To use this api please use 'beta' release of ACS Calling Web SDK
+    var callInfo = incomingCall.info;
 
     // Get information about caller
     var callerInfo = incomingCall.callerInfo
@@ -197,27 +202,33 @@ const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
 
-Az `incomingCall` esemény olyan `incomingCall` példányt tartalmaz, amelyet elfogad vagy visszautasíthat.
+Az `incomingCall` esemény tartalmaz egy olyan `incomingCall` példányt, amely elfogadhat vagy elutasíthat.
 
 ## <a name="manage-calls"></a>Hívások kezelése
 
-Hívás közben elérheti a hívási tulajdonságokat, és kezelheti a videó-és hangbeállításokat.
+A hívás során hozzáférhet a hívás tulajdonságaihoz, és kezelheti a videó- és hangbeállításokat.
 
-### <a name="check-call-properties"></a>Hívási tulajdonságok keresése
+### <a name="check-call-properties"></a>A hívás tulajdonságainak ellenőrzése
 
-A hívás egyedi AZONOSÍTÓjának (karakterláncának) beolvasása:
+Egy hívás egyedi azonosítójának (sztringének) lehívása:
 
    ```js
     const callId: string = call.id;
    ```
+A hívásra vonatkozó információk lehívása:
+> [!NOTE]
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Az API a webes SDK-t hívó ACS bétaverziós kiadását használja
+   ```js
+   const callInfo = call.info;
+   ```
 
-Ismerje meg a hívás többi résztvevőjét a `remoteParticipants` "hívás" példányon található gyűjtemény vizsgálatával:
+A hívás más résztvevőinek megismeréséhez vizsgálja meg a `remoteParticipants` gyűjteményt a "hívás" példányon:
 
    ```js
    const remoteParticipants = call.remoteParticipants;
    ```
 
-A bejövő hívások hívójának azonosítása:
+Egy bejövő hívás hívója:
 
    ```js
    const callerIdentity = call.callerInfo.identifier;
@@ -225,25 +236,26 @@ A bejövő hívások hívójának azonosítása:
 
    `identifier` az egyik `CommunicationIdentifier` típus.
 
-Hívás állapotának beolvasása:
+A hívás állapotának lehívása:
 
    ```js
    const callState = call.state;
    ```
 
-   Ez egy olyan sztringet ad vissza, amely a hívás aktuális állapotát jelöli:
+   Ez visszaad egy sztringet, amely a hívás aktuális állapotát ábrázolja:
 
-  - `None`: Kezdeti hívás állapota.
-  - `Connecting`: Kezdeti átmeneti állapot, ha a rendszer hívást helyez el vagy fogad el.
-  - `Ringing`: Kimenő hívás esetén azt jelzi, hogy a hívás a távoli résztvevők számára csörög. Ez `Incoming` a saját oldalán van.
-  - `EarlyMedia`: Azt az állapotot jelzi, amelyben a rendszer meghívja a bejelentést a hívás csatlakoztatása előtt.
+  - `None`: Kezdeti hívási állapot.
+  - `Connecting`: Kezdeti átváltási állapot a hívás elhelyezve vagy elfogadva.
+  - `Ringing`: Kimenő hívás esetében a azt jelzi, hogy egy hívás a távoli résztvevők számára cseng. Ez az `Incoming` ő oldalukon van.
+  - `EarlyMedia`: Azt az állapotot jelzi, amelyben a híváshoz való csatlakozás előtt egy bejelentés lejátszódott.
   - `Connected`: Azt jelzi, hogy a hívás csatlakoztatva van.
-  - `LocalHold`: Azt jelzi, hogy a hívást egy helyi résztvevő helyezi el. A helyi végpont és a távoli résztvevők között nem folyik média.
-  - `RemoteHold`: Azt jelzi, hogy a hívás távoli résztvevő általi tárolásra került. A helyi végpont és a távoli résztvevők között nem folyik média.
-  - `Disconnecting`: Átmeneti állapot, mielőtt a hívás `Disconnected` állapota állapotba kerül.
-  - `Disconnected`: Végső hívás állapota. Ha a hálózati kapcsolat megszakad, az állapot `Disconnected` két perc után módosul.
+  - `LocalHold`: Azt jelzi, hogy a hívást egy helyi résztvevő függtette fel. Nem folyik média a helyi végpont és a távoli résztvevők között.
+  - `RemoteHold`: Azt jelzi, hogy a hívást távoli résztvevő függtette fel. Nem folyik média a helyi végpont és a távoli résztvevők között.
+  - `InLobby`: Azt jelzi, hogy a felhasználó az előtérben van.
+  - `Disconnecting`: Állapotváltás a hívás állapotát `Disconnected` megelőzően.
+  - `Disconnected`: Végső hívás állapota. Ha a hálózati kapcsolat megszakad, az állapot két perc múlva `Disconnected` állapotra változik.
 
-Megtudhatja, miért ért véget a hívás a tulajdonság vizsgálatával `callEndReason` :
+A tulajdonság vizsgálatán derítse ki, miért ért véget egy `callEndReason` hívás:
 
    ```js
    const callEndReason = call.callEndReason;
@@ -251,46 +263,37 @@ Megtudhatja, miért ért véget a hívás a tulajdonság vizsgálatával `callEn
    const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
    ```
 
-Megtudhatja, hogy az aktuális hívás bejövő vagy kimenő a tulajdonság vizsgálatával `direction` . Visszaadja `CallDirection` .
+A tulajdonság vizsgálatán megtudhatja, hogy az aktuális hívás bejövő vagy `direction` kimenő. A értéket adja `CallDirection` vissza.
 
   ```js
    const isIncoming = call.direction == 'Incoming';
    const isOutgoing = call.direction == 'Outgoing';
    ```
 
-Ellenőrizze, hogy az aktuális mikrofon el van-e némítva. Visszaadja `Boolean` .
+Ellenőrizze, hogy az aktuális mikrofon el van-e némítva. A értéket adja `Boolean` vissza.
 
    ```js
    const muted = call.isMuted;
    ```
 
-Annak megállapítása, hogy a képernyő-megosztási adatfolyamot egy adott végponton küldik-e el a tulajdonság ellenőrzésével `isScreenSharingOn` . Visszaadja `Boolean` .
+Ellenőrizze a tulajdonságot, hogy a képernyőmegosztási stream egy adott végpontról `isScreenSharingOn` van-e elküldve. A értéket adja `Boolean` vissza.
 
    ```js
    const isScreenSharingOn = call.isScreenSharingOn;
    ```
 
-Ellenőrizze az aktív videó streameket a `localVideoStreams` gyűjtemény ellenőrzésével. Objektumokat ad vissza `LocalVideoStream` .
+Vizsgálja meg az aktív videóstreameket a gyűjtemény `localVideoStreams` ellenőrzéséhez. Objektumokat `LocalVideoStream` ad vissza.
 
    ```js
    const localVideoStreams = call.localVideoStreams;
    ```
 
-### <a name="check-a-callended-event"></a>CallEnded-esemény keresése
 
-A `call` példány eseményt bocsát ki, `callEnded` Amikor a hívás véget ér. Az esemény figyeléséhez a következő kód használatával kell előfizetnie:
 
-```js
-const callEndHander = async (args: { callEndReason: CallEndReason }) => {
-    console.log(args.callEndReason)
-};
 
-call.on('callEnded', callEndHander);
-```
+### <a name="mute-and-unmute"></a>Némítás és némítás némításának némítása
 
-### <a name="mute-and-unmute"></a>Némítás és némítás feloldása
-
-A helyi végpont némításához vagy lenémításához használhatja a és az `mute` `unmute` aszinkron API-kat:
+A helyi végpont elnémításhoz vagy némításának feloldáshoz használhatja `mute` az és `unmute` aszinkron API-kat:
 
 ```js
 
@@ -302,9 +305,9 @@ await call.unmute();
 
 ```
 
-### <a name="start-and-stop-sending-local-video"></a>Helyi videó küldésének elindítása és leállítása
+### <a name="start-and-stop-sending-local-video"></a>Helyi videó küldésének elkezdését és küldésének leállítását
 
-A videók elindításához meg kell adnia a kamerákat az `getCameras` objektum metódusának használatával `deviceManager` . Ezután hozzon létre egy új példányt a `LocalVideoStream` metódusban a kívánt kamera argumentumként való átadásával `startVideo` :
+A videókhoz a objektum metódusával kell enumerálnia `getCameras` a `deviceManager` kamerákat. Ezután hozzon létre egy új példányt a kívánt kamerával, majd adja át az `LocalVideoStream` `LocalVideoStream` objektumot a `startVideo` metódusnak:
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -314,19 +317,19 @@ const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
 ```
 
-A videó küldésének sikeres megkezdése után egy `LocalVideoStream` példány kerül a `localVideoStreams` gyűjteménybe egy hívási példányon.
+A videóküldés sikeres elkezdését követően a rendszer hozzáad egy példányt a gyűjteményhez `LocalVideoStream` `localVideoStreams` egy híváspéldányon.
 
 ```js
 call.localVideoStreams[0] === localVideoStream;
 ```
 
-A helyi videó leállításához adja át a `localVideoStream` gyűjteményben elérhető példányt `localVideoStreams` :
+A helyi videó leállításhoz adja át a gyűjteményben elérhető `localVideoStream` `localVideoStreams` példányt:
 
 ```js
 await call.stopVideo(localVideoStream);
 ```
 
-Átválthat egy másik kamera-eszközre, miközben egy videót küld egy példányon való meghívásával `switchSource` `localVideoStream` :
+A videó küldése közben átválthat egy másik kameraeszközre, ha egy példányra `switchSource` inkoktál: `localVideoStream`
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
@@ -336,50 +339,51 @@ localVideoStream.switchSource(camera);
 
 ## <a name="manage-remote-participants"></a>Távoli résztvevők kezelése
 
-Az összes távoli résztvevő típus szerint jelenik `RemoteParticipant` meg, és a gyűjteményen keresztül érhető el a `remoteParticipants` hívási példányon.
+Minden távoli résztvevő típus szerint van `RemoteParticipant` ábrázolva, és egy híváspéldány `remoteParticipants` gyűjteményében érhető el.
 
-### <a name="list-the-participants-in-a-call"></a>Egy hívás résztvevőinek listázása
+### <a name="list-the-participants-in-a-call"></a>Egy hívás résztvevőinek felsorolása
 
-A `remoteParticipants` gyűjtemény a távoli résztvevők listáját adja vissza egy hívásban:
+A `remoteParticipants` gyűjtemény egy hívás távoli résztvevőinek listáját adja vissza:
 
 ```js
 call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 ```
 
-### <a name="access-remote-participant-properties"></a>Hozzáférés a távoli résztvevő tulajdonságaihoz
+### <a name="access-remote-participant-properties"></a>Távoli résztvevő tulajdonságainak elérése
 
-A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is magukban foglalják:
+A távoli résztvevők társított tulajdonságokkal és gyűjteményekkel rendelkeznek:
 
-- `CommunicationIdentifier`: Távoli résztvevő azonosítójának beolvasása. Az identitás az egyik `CommunicationIdentifier` típusa:
+- `CommunicationIdentifier`: Szerezze be egy távoli résztvevő azonosítóját. Az identitás az egyik `CommunicationIdentifier` típus:
 
   ```js
   const identifier = remoteParticipant.identifier;
   ```
 
-  A következő típusok egyike lehet `CommunicationIdentifier` :
+  A következő típusok egyike `CommunicationIdentifier` lehet:
 
-  - `{ communicationUserId: '<ACS_USER_ID'> }`: Az ACS-felhasználót jelképező objektum.
-  - `{ phoneNumber: '<E.164>' }`: Az E. 164 formátumú telefonszámot képviselő objektum.
-  - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: A csapat felhasználót jelképező objektum.
-  - `{ id: string }`: az Object repredenting azonosítója, amely nem felel meg a többi azonosító típusának sem
+  - `{ communicationUserId: '<ACS_USER_ID'> }`: Az ACS-felhasználót képviselő objektum.
+  - `{ phoneNumber: '<E.164>' }`: A telefonszámot E.164 formátumban képviselő objektum.
+  - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: A Teams-felhasználót képviselő objektum.
+  - `{ id: string }`: a többi azonosítótípushoz nem illeszkedő objektum-ismétlődő azonosító
 
-- `state`: Távoli résztvevő állapotának beolvasása.
+- `state`: Egy távoli résztvevő állapotának lekért állapota.
 
   ```js
   const state = remoteParticipant.state;
   ```
 
-  Az állapot a következőket teheti:
+  Az állapot a következő lehet:
 
   - `Idle`: Kezdeti állapot.
-  - `Connecting`: Átmeneti állapot, amikor egy résztvevő csatlakozik a híváshoz.
-  - `Ringing`: A résztvevő csengetés.
+  - `Connecting`: Állapotváltás, amíg egy résztvevő csatlakozik a híváshoz.
+  - `Ringing`: A résztvevő csenget.
   - `Connected`: A résztvevő csatlakozik a híváshoz.
-  - `Hold`: A résztvevő tart.
-  - `EarlyMedia`: A résztvevőnek a híváshoz való csatlakozása előtt lejátszott közlemény.
-  - `Disconnected`: Végleges állapot. A résztvevő nem kapcsolódik a híváshoz. Ha a távoli résztvevő elveszíti hálózati kapcsolatát, az állapotuk `Disconnected` két perc után módosul.
+  - `Hold`: A résztvevő fel van függve.
+  - `EarlyMedia`: Közlemény, amely akkor játszik szerepet, amikor egy résztvevő csatlakozik a híváshoz.
+  - `InLobby`: Azt jelzi, hogy a távoli résztvevő a számítógépben van.
+  - `Disconnected`: Végső állapot. A résztvevő nem csatlakozik a híváshoz. Ha a távoli résztvevő elveszíti hálózati kapcsolatát, az állapota két perc után `Disconnected` állapotra változik.
 
-- `callEndReason`: Ha meg szeretné tudni, hogy a résztvevő miért hagyta el a hívást, tekintse meg a következő `callEndReason` tulajdonságot:
+- `callEndReason`: Ha meg szeretne tudni arról, hogy egy résztvevő miért távozott a hívástól, ellenőrizze a `callEndReason` tulajdonságot:
 
   ```js
   const callEndReason = remoteParticipant.callEndReason;
@@ -387,24 +391,24 @@ A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is ma
   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
   ```
 
-- `isMuted` állapot: Ha meg szeretné tudni, hogy a távoli résztvevő el van-e némítva, ellenőrizze a `isMuted` tulajdonságot. Visszaadja `Boolean` .
+- `isMuted` status: Annak ellenőrzéshez, hogy egy távoli résztvevő el van-e némítva, ellenőrizze a `isMuted` tulajdonságot. A értéket adja `Boolean` vissza.
 
   ```js
   const isMuted = remoteParticipant.isMuted;
   ```
 
-- `isSpeaking` állapot: Ha szeretné megtudni, hogy egy távoli résztvevő beszél-e, ellenőrizze a `isSpeaking` tulajdonságot. Visszaadja `Boolean` .
+- `isSpeaking` status: Ha meg kell tudni, hogy egy távoli résztvevő beszél-e, ellenőrizze a `isSpeaking` tulajdonságot. A értéket adja `Boolean` vissza.
 
   ```js
   const isSpeaking = remoteParticipant.isSpeaking;
   ```
 
-- `videoStreams`: Az adott résztvevő által a hívásban küldött összes videó stream vizsgálatához ellenőrizze a `videoStreams` gyűjteményt. Objektumokat tartalmaz `RemoteVideoStream` .
+- `videoStreams`: Az adott résztvevő által a hívásban küldött összes videóstream vizsgálatéhez ellenőrizze a `videoStreams` gyűjteményt. Objektumokat `RemoteVideoStream` tartalmaz.
 
   ```js
   const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
   ```
-- `displayName`: A távoli résztvevő megjelenítendő nevének beolvasásához vizsgálja meg a tulajdonságot, amely a `displayName` karakterláncot adja vissza. 
+- `displayName`: A távoli résztvevő megjelenített nevének lekért megjelenítéséhez vizsgálja meg `displayName` a tulajdonságot, amely sztringet ad vissza. 
 
   ```js
   const displayName = remoteParticipant.displayName;
@@ -412,7 +416,7 @@ A távoli résztvevők a társított tulajdonságokat és gyűjteményeket is ma
 
 ### <a name="add-a-participant-to-a-call"></a>Résztvevő hozzáadása egy híváshoz
 
-Ha egy résztvevőt (vagy egy felhasználót vagy egy telefonszámot) szeretne felvenni egy hívásba, használhatja a következőt: `addParticipant` . Adja meg az egyik `Identifier` típust. A példányt adja vissza `remoteParticipant` .
+Ha egy résztvevőt (egy felhasználót vagy egy telefonszámot) szeretne hozzáadni egy híváshoz, használhatja a `addParticipant` et. Adja meg az egyik `Identifier` típust. Szinkron módon adja vissza a `remoteParticipant` példányt. A Hívás esemény akkor történik, amikor egy résztvevő sikeresen hozzáadódik a `remoteParticipantsUpdated` híváshoz.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -423,7 +427,7 @@ const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId
 
 ### <a name="remove-a-participant-from-a-call"></a>Résztvevő eltávolítása egy hívásból
 
-Ha egy résztvevőt (vagy egy felhasználót vagy egy telefonszámot) szeretne eltávolítani egy hívásból, meghívhatja a következőt: `removeParticipant` . Az egyik típust kell átadnia `Identifier` . Ez aszinkron módon oldódik fel, miután a résztvevő el lett távolítva a hívásból. A résztvevőt a gyűjteményből is eltávolítja a rendszer `remoteParticipants` .
+Ha el szeretne távolítani egy résztvevőt (egy felhasználót vagy egy telefonszámot) egy hívásból, meghívhatja a `removeParticipant` metódust. Az egyik típust meg kell `Identifier` adni. Ez aszinkron módon oldódik fel, miután a résztvevőt eltávolították a hívásból. A résztvevő is el lesz távolítva a `remoteParticipants` gyűjteményből.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -432,18 +436,18 @@ await call.removeParticipant(userIdentifier);
 await call.removeParticipant(pstnIdentifier);
 ```
 
-## <a name="render-remote-participant-video-streams"></a>A távoli résztvevő video streamek megjelenítése
+## <a name="render-remote-participant-video-streams"></a>Távoli résztvevő videóstreamek renderelése
 
-A távoli résztvevők videó streamek és a képernyő-megosztási streamek listázásához vizsgálja meg a `videoStreams` gyűjteményeket:
+A távoli résztvevők videóstreamek és képernyőmegosztási streamek felsorolásához vizsgálja meg a `videoStreams` gyűjteményeket:
 
 ```js
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-A megjelenítéshez `RemoteVideoStream` elő kell fizetnie egy `isAvailableChanged` eseményre. Ha a `isAvailable` tulajdonság módosul `true` , a távoli résztvevő egy streamet küld. Ezután hozzon létre egy új példányt a alkalmazásban `VideoStreamRenderer` , majd hozzon létre egy új `VideoStreamRendererView` példányt az aszinkron `createView` metódus használatával.  Ezután csatolhat `view.target` bármely felhasználóifelület-elemhez.
+A `RemoteVideoStream` megjelenítéséhez elő kell fizetni az `isAvailableChanged` eseményére. Ha a `isAvailable` tulajdonság a következőre változik: `true` , egy távoli résztvevő streamet küld. Ezt követően hozzon létre egy új -példányt, majd hozzon létre egy új példányt `VideoStreamRenderer` `VideoStreamRendererView` az aszinkron `createView` metódussal.  Ezt követően bármely felhasználói `view.target` felületi elemhez csatolhat.
 
-Ha a távoli adatfolyamok változásai elérhetők, eldöntheti, hogy az egészet `VideoStreamRenderer` , egy adott `VideoStreamRendererView` vagy megtartja-e, de ez az üres videó keretének megjelenítését eredményezi.
+Ha egy távoli stream rendelkezésre állása megváltozik, dönthet úgy, hogy megsemmisíti a teljes , egy adott folyamot, vagy megtartja őket, de ez üres videókeret `VideoStreamRenderer` `VideoStreamRendererView` megjelenítését eredményezi.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
@@ -465,37 +469,36 @@ function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
 }
 ```
 
-### <a name="remote-video-stream-properties"></a>Távoli video stream tulajdonságai
+### <a name="remote-video-stream-properties"></a>Távoli videóstream tulajdonságai
 
-A távoli videó streamek a következő tulajdonságokkal rendelkeznek:
+A távoli videóstreamek a következő tulajdonságokkal rendelkeznek:
 
-- `id`: Egy távoli video stream azonosítója.
+- `id`: Egy távoli videóstream azonosítója.
 
   ```js
   const id: number = remoteVideoStream.id;
   ```
 
-- `mediaStreamType`: Lehet `Video` vagy `ScreenSharing` .
+- `mediaStreamType`: Lehet vagy `Video` `ScreenSharing` .
 
   ```js
   const type: MediaStreamType = remoteVideoStream.mediaStreamType;
   ```
 
-- `isAvailable`: Azt határozza meg, hogy egy távoli résztvevői végpont aktívan küldjön-e adatfolyamot.
+- `isAvailable`: Azt határozza meg, hogy egy távoli résztvevő végpontja aktívan küld-e streamet.
 
   ```js
   const type: boolean = remoteVideoStream.isAvailable;
   ```
 
 ### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer metódusok és tulajdonságok
-
-Hozzon létre egy olyan `VideoStreamRendererView` példányt, amely csatolható az alkalmazás felhasználói felületén a távoli video stream megjelenítéséhez, aszinkron `createView()` módszerrel, amely akkor oldódik fel, ha a stream készen áll a megjelenítésre, és egy olyan objektumot ad vissza, amely egy, `target` `video` a DOM-fában tetszőlegesen hozzáfűzhető elemet jelképező tulajdonságot képvisel.
+Hozzon létre egy példányt, amely csatolható az alkalmazás felhasználói felületén a távoli videóstream renderelése és aszinkron metódus használata esetén, amikor a stream készen áll a renderelésre, és egy objektumot ad vissza olyan tulajdonsággal, amely a `VideoStreamRendererView` `createView()` `target` `video` DOM-fában bárhol hozzáfűzhető elemet képvisel
 
   ```js
   videoStreamRenderer.createView()
   ```
 
-A és az `videoStreamRenderer` összes társított `VideoStreamRendererView` példány:
+A és `videoStreamRenderer` az összes társított példány `VideoStreamRendererView` eldobás:
 
   ```js
   videoStreamRenderer.dispose()
@@ -503,19 +506,19 @@ A és az `videoStreamRenderer` összes társított `VideoStreamRendererView` pé
 
 ### <a name="videostreamrendererview-methods-and-properties"></a>VideoStreamRendererView metódusok és tulajdonságok
 
-A létrehozásakor `VideoStreamRendererView` megadhatja a és a `scalingMode` `isMirrored` tulajdonságokat. `scalingMode` lehet `Stretch` , `Crop` , vagy `Fit` . Ha meg `isMirrored` van adva, a megjelenített adatfolyam függőlegesen van tükrözve.
+A létrehozásakor `VideoStreamRendererView` megadhatja a és a `scalingMode` `isMirrored` tulajdonságot. `scalingMode` A lehet `Stretch` , `Crop` vagy `Fit` . Ha `isMirrored` meg van adva, a renderelt stream függőlegesen tükrözve lesz.
 
 ```js
 const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-Minden `VideoStreamRendererView` példány rendelkezik egy `target` tulajdonsággal, amely a renderelési felületet jelképezi. Csatolja ezt a tulajdonságot az alkalmazás felhasználói felületén:
+Minden `VideoStreamRendererView` példány rendelkezik egy `target` tulajdonságokkal, amelyek a renderelési felületet jelölik. Csatolja ezt a tulajdonságot az alkalmazás felhasználói felületén:
 
 ```js
 htmlElement.appendChild(view.target);
 ```
 
-`scalingMode`A módszert a metódus meghívásával frissítheti `updateScalingMode` :
+A frissítést a `scalingMode` metódussal `updateScalingMode` frissítheti:
 
 ```js
 view.updateScalingMode('Crop')
@@ -523,17 +526,17 @@ view.updateScalingMode('Crop')
 
 ## <a name="device-management"></a>Eszközfelügyelet
 
-A alkalmazásban `deviceManager` megadhatja azokat a helyi eszközöket, amelyek továbbítják a hang-és video-adatfolyamokat egy hívásban. Emellett segítséget nyújt egy másik felhasználó mikrofonjának és kamerájának a natív böngésző API használatával való eléréséhez.
+A-ban számba veszi a helyi eszközöket, amelyek hívásokkal továbbíthatják a hang- és `deviceManager` videostreameket. Arra is használhatja, hogy engedélyt kérjen a helyi eszköz mikrofonja és kamerái elérésére.
 
-`deviceManager`A metódus meghívásával érheti el a `callClient.getDeviceManager()` következőket:
+A metódus `deviceManager` hívásával férhet `callClient.getDeviceManager()` hozzá:
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
 ```
 
-### <a name="get-local-devices"></a>Helyi eszközök beolvasása
+### <a name="get-local-devices"></a>Helyi eszközök be- és lekért
 
-A helyi eszközökhöz való hozzáféréshez használhat enumerálási metódusokat `deviceManager` .
+A helyi eszközök eléréséhez enumerációs metódusokat használhat a `deviceManager` oldalon. Az enumerálás aszinkron művelet
 
 ```js
 //  Get a list of available video devices for use.
@@ -546,9 +549,9 @@ const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceIn
 const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 ```
 
-### <a name="set-the-default-microphone-and-speaker"></a>Az alapértelmezett mikrofon és hangszóró beállítása
+### <a name="set-the-default-microphone-and-speaker"></a>Az alapértelmezett mikrofon és beszélő beállítása
 
-A alkalmazásban beállíthat `deviceManager` egy alapértelmezett eszközt, amelyet a hívás elindításához fog használni. Ha az ügyfél alapértékei nincsenek beállítva, a kommunikációs szolgáltatások az operációs rendszer alapértelmezett értékeit használják.
+A-ban beállíthatja a híváshoz használt `deviceManager` alapértelmezett eszközt. Ha az ügyfél alapértelmezései nincsenek beállítva, a Communication Services az operációs rendszer alapértelmezését használja.
 
 ```js
 // Get the microphone device that is being used.
@@ -564,9 +567,9 @@ const defaultSpeaker = deviceManager.selectedSpeaker;
 await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
-### <a name="local-camera-preview"></a>Helyi kamera előzetes verziója
+### <a name="local-camera-preview"></a>Helyi kamera előnézete
 
-A `deviceManager` és `VideoStreamRenderer` a segítségével megkezdheti a streamek megjelenítését a helyi kameráról. Ezt a streamet nem lehet elküldeni a többi résztvevőnek; Ez egy helyi előnézeti hírcsatorna.
+A és a használatával megkezdheti a helyi kamerából `deviceManager` `VideoStreamRenderer` származó streamek renderelését. Ez a stream nem lesz elküldve a többi résztvevőnek; ez egy helyi előzetes verziójú hírcsatorna.
 
 ```js
 const cameras = await deviceManager.getCameras();
@@ -578,32 +581,32 @@ htmlElement.appendChild(view.target);
 
 ```
 
-### <a name="request-permission-to-camera-and-microphone"></a>Engedély kérése a kamera és a mikrofon számára
+### <a name="request-permission-to-camera-and-microphone"></a>Kamera- és mikrofonengedély kérése
 
-Kérje meg a felhasználót, hogy adja meg a kamera és a mikrofon engedélyeit:
+Felhasználó kérése kamera- és mikrofonengedélyek megadására:
 
 ```js
 const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
 
-Ez egy olyan objektummal oldható fel, amely jelzi, hogy a `audio` és az `video` engedélyek megadása megtörtént-e:
+Ez egy objektummal oldódik fel, amely jelzi, hogy a és az `audio` `video` engedély meg van-e adni:
 
 ```js
 console.log(result.audio);
 console.log(result.video);
 ```
 
-## <a name="record-calls"></a>Hívások rögzítése
+## <a name="record-calls"></a>Hívások rekordja
 > [!NOTE]
-> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Az API használatának lépéseként használja az ACS hívó Web SDK bétaverziós kiadását
 
-A Call Recording a Core API kiterjesztett funkciója `Call` . Először be kell szereznie a rögzítési funkció API-objektumát:
+A hívásrögzítés a fő API kibővített `Call` funkciója. Először be kell szereznie a rögzítési funkció API-objektumát:
 
 ```js
 const callRecordingApi = call.api(Features.Recording);
 ```
 
-Ezután ellenőrizze, hogy a hívás rögzítése folyamatban van-e `isRecordingActive` `callRecordingApi` . Visszaadja `Boolean` .
+Ezután annak ellenőrzéshez, hogy a hívás rögzítve van-e, vizsgálja meg `isRecordingActive` a `callRecordingApi` tulajdonságát. A értéket adja `Boolean` vissza.
 
 ```js
 const isResordingActive = callRecordingApi.isRecordingActive;
@@ -622,31 +625,31 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 
 ## <a name="transfer-calls"></a>Hívások átvitele
 > [!NOTE]
-> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Ha ezt az API-t szeretné használni, használja az ACS Calling web SDK "Beta" kiadását
+> Ez az API fejlesztői előzetes verzióként szolgál, és a kapott visszajelzések alapján változhat. Ne használja ezt az API-t éles környezetben. Az API a webes SDK-t hívó ACS bétaverziós kiadását használja
 
-A hívásátirányítás a Core API kiterjesztett funkciója `Call` . Először be kell szereznie az átvitel funkció API-objektumát:
+A hívásátvitel a fő API kibővített `Call` funkciója. Először be kell szereznie az átviteli szolgáltatás API-objektumát:
 
 ```js
 const callTransferApi = call.api(Features.Transfer);
 ```
 
-A Call Transfers három felet érint:
+A hívásátadások három felet érintnek:
 
-- *Átadó*: az a személy, aki kezdeményezi az áthelyezési kérelmet.
-- *Átvevő*: az átvitt személy.
-- *Továbbítási cél*: az a személy, aki átkerül a szolgáltatásba.
+- *Transferor*: Az átadási kérelmet elindítani felelős személy.
+- *Átvitt:* Az átvitt személy.
+- *Átadási cél:* Az a személy, akinek az átadása folyamatban van.
 
-Az átvitelek az alábbi lépéseket követik:
+Az átvitelek a következő lépéseket követik:
 
-1. Már van egy csatlakoztatott hívás az *átadó* és a *kedvezményezett* között. Az *átadó* úgy dönt, hogy áthelyezi a hívást a *kedvezményezetttől* az *átvitel* céljáig.
-1. Az *átadó* meghívja az `transfer` API-t.
-1. A *megszerző* dönti el, hogy az `accept` `reject` átadási kérelem az *átvitel céljára* vonatkozik-e egy `transferRequested` esemény használatával.
-1. Az *átvitel célja* csak akkor fogad bejövő hívást, ha a *kedvezményezett* elfogadja az átvitelre vonatkozó kérelmet.
+1. Az átvevő és az  átvevő között már van *egy csatlakoztatott hívás.* Az *átvevő úgy* dönt,  hogy a hívást az átvevőtől az átadási cél *felé továbbítja.*
+1. A *továbbító az* `transfer` API-t hívja meg.
+1. Az *átvevő egy* esemény használatával dönti el, hogy az átadási cél felé vagy felé `accept` `reject` továbbítja-e a  `transferRequested` kérést.
+1. Az *átviteli cél* csak akkor fogad bejövő hívást, ha az átvevő elfogadja az átadási kérelmet. 
 
-Egy aktuális hívás átviteléhez használhatja az API-t `transfer` . `transfer` a választható `transferCallOptions` lehetőséget veszi fel, amely lehetővé teszi a `disableForwardingAndUnanswered` jelző beállítását:
+Az aktuális hívás átviteléhez használhatja az `transfer` API-t. `transfer` A az opcionális `transferCallOptions` jelölőt veszi fel, amely lehetővé teszi egy jelző `disableForwardingAndUnanswered` beállítását:
 
-- `disableForwardingAndUnanswered = false`: Ha az átviteli *cél* nem válaszol az átviteli hívásra, az átvitel a továbbítási *cél* továbbítását és a nem válaszoló beállításokat követi.
-- `disableForwardingAndUnanswered = true`: Ha az átviteli *cél* nem válaszol az átviteli hívásra, az átviteli kísérlet véget ér.
+- `disableForwardingAndUnanswered = false`: Ha az *átviteli cél* nem válaszol az átadási  hívásra, az átvitel követi az átviteli céltovábbozási és a megválaszolatlan beállításokat.
+- `disableForwardingAndUnanswered = true`: Ha az *átviteli cél* nem válaszol az átadási hívásra, az átviteli kísérlet véget ér.
 
 ```js
 // transfer target can be an ACS user
@@ -658,7 +661,7 @@ const id = { communicationUserId: <ACS_USER_ID> };
 const transfer = callTransferApi.transfer({targetParticipant: id});
 ```
 
-Az `transfer` API lehetővé teszi az előfizetést `transferStateChanged` és az `transferRequested` eseményeket. Az `transferRequested` esemény egy `call` példányból származik; egy `transferStateChanged` esemény és egy `state` `error` példányból származnak `transfer` .
+Az `transfer` API-val feliratkozhat a és `transferStateChanged` `transferRequested` eseményekre. Az `transferRequested` esemény egy példányból származik; egy eseményből és egy átvitelből, valamint egy `call` `transferStateChanged` `state` `error` `transfer` példányból.
 
 ```js
 // transfer state
@@ -668,7 +671,7 @@ const transferState = transfer.state; // None | Transferring | Transferred | Fai
 const transferError = transfer.error; // transfer error code that describes the failure if a transfer request failed
 ```
 
-A *kedvezményezett* elfogadhatja vagy elutasíthatja az *átadó* által az `transferRequested` eseményen a vagy a használatával kezdeményezett adatátviteli kérelmet `accept()` `reject()` `transferRequestedEventArgs` . A alkalmazásban `targetParticipant` információk és `accept` `reject` metódusok érhetők el `transferRequestedEventArgs` .
+Az *átvevő elfogadhatja* vagy elutasíthatja  az átadási kérelmet, amelyet az átadás kezdeményez az eseményben a vagy a `transferRequested` `accept()` `reject()` `transferRequestedEventArgs` használatával. Az információit `targetParticipant` és a `accept` metódusokat a `reject` következőben tudja `transferRequestedEventArgs` elérni: .
 
 ```js
 // Transferee to accept the transfer request
@@ -682,9 +685,9 @@ callTransferApi.on('transferRequested', args => {
 });
 ```
 
-## <a name="learn-about-eventing-models"></a>További tudnivalók az eseményvezérelt modellekről
+## <a name="learn-about-eventing-models"></a>További információ az eseménymodellekről
 
-Vizsgálja meg a jelenlegi értékeket, és fizessen elő a későbbi értékek frissítési eseményeire.
+Vizsgálja meg az aktuális értékeket, és iratkozzon fel az események későbbi értékeinek frissítésére.
 
 ### <a name="properties"></a>Tulajdonságok
 

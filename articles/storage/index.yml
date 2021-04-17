@@ -1,149 +1,143 @@
 ### YamlMime:Hub
 title: Az Azure Storage dokumentációja
-summary: Az Azure Storage objektumok, fájlok, lemezek, üzenetsorok és táblák tárolásáról gondoskodik. Hibrid tárolási megoldásokhoz, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez is elérhetők benne szolgáltatások.
+summary: 'Az Azure Storage objektumok, fájlok, lemezek, üzenetsorok és táblák tárolásáról gondoskodik. Hibrid tárolási megoldásokhoz, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez is elérhetők benne szolgáltatások.'
 brand: azure
 metadata:
   title: Az Azure Storage dokumentációja
-  description: Az Azure Storage dokumentációjának központi oldala. A felhőbeli és hibrid tárolási megoldások, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez elérhető szolgáltatások szolgáltatási dokumentációjára mutató hivatkozásokat tartalmaz.
+  description: 'Az Azure Storage dokumentációjának központi oldala. A felhőbeli és hibrid tárolási megoldások, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez elérhető szolgáltatások szolgáltatási dokumentációjára mutató hivatkozásokat tartalmaz.'
   ms.service: storage
   ms.topic: hub-page
   author: twooley
   ms.author: twooley
-  ms.date: 05/01/2020
-  ms.openlocfilehash: 886f61206bdc87dc5283a46e50ff438041be1a2f
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98878476"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Az alapvető tárolási szolgáltatások ismertetése
-    itemType: concept
-    url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Tudnivalók a tárfióktípusokról
-    itemType: concept
-    url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Tárfiók létrehozása
-    itemType: how-to-guide
-    url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Tudnivalók az adatredundanciáról
-    itemType: concept
-    url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Adatátvitel az Azure-ba
-    itemType: concept
-    url: ./common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Az alapvető tárolási szolgáltatások ismertetése
+      itemType: concept
+      url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Tudnivalók a tárfióktípusokról
+      itemType: concept
+      url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Tárfiók létrehozása
+      itemType: how-to-guide
+      url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Tudnivalók az adatredundanciáról
+      itemType: concept
+      url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Adatok áttelepítése az Azure Storage-ba
+      itemType: concept
+      url: ./common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 additionalContent:
   sections:
-  - title: Felhőtárhely-megoldások
-    items:
-    - title: Objektumtárolás az alkalmazásokhoz
-      links:
-      - url: ./blobs/storage-blobs-introduction.md
-        text: Strukturálatlan adatok számára elérhető tárolási megoldások ismertetése (Blob Storage)
-      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
-        text: A blokk-, hozzáfűző és lapblobok ismertetése
-      - url: ./blobs/index.yml
-        text: Több megjelenítése >
-    - title: Tárolási megoldások big data-elemzésekhez
-      links:
-      - url: ./blobs/data-lake-storage-introduction.md
-        text: Tudnivalók a nagyvállalati adattavakhoz elérhető tárolási megoldásokról (Data Lake Storage)
-      - url: ./blobs/data-lake-storage-data-scenarios.md
-        text: A big data feldolgozásához elérhető lehetőségek és eszközök ismertetése
-    - title: Felhőben üzemeltetett fájlmegosztások
-      links:
-      - url: ./files/storage-files-introduction.md
-        text: A fő Azure Storage-platform által biztosított fájlmegosztások használata (Azure Files)
-      - url: ../azure-netapp-files/azure-netapp-files-introduction.md
-        text: A NetApp ONTAP által biztosított kötetek használata (Azure NetApp Files)
-    - title: Lemezes tárolás IaaS számítási feladatokhoz
-      links:
-      - url: ../virtual-machines/managed-disks-overview.md
-        text: Tudnivalók az Azure-beli virtuális gépekhez elérhető blokkszintű tárolókötetekről
-      - url: ../virtual-machines/disks-types.md
-        text: Az elérhető lemeztípusok ismertetése
-      - url: ../virtual-machines/windows/attach-managed-disk-portal.md
-        text: Új lemez hozzáadása egy virtuális géphez – Windows
-      - url: ../virtual-machines/linux/attach-disk-portal.md
-        text: Adatlemez csatolása egy virtuális géphez – Linux
-    - title: Tárolási megoldások aszinkron üzenetsor-kezeléshez
-      links:
-      - url: ./queues/storage-queues-introduction.md
-        text: Tudnivalók az üzenetsorokhoz elérhető Azure Storage-megoldásról (Queue Storage)
-      - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
-        text: Queue Storage- és Service Bus-üzenetsorok összehasonlítása
-      - url: ./queues/index.yml
-        text: Több megjelenítése >
-    - title: Tárolási megoldások strukturált NoSQL-adatokhoz
-      links:
-      - url: ./tables/table-storage-overview.md
-        text: Strukturált NoSQL-adatok felhőbeli tárolása (Table Storage és Cosmos DB)
-      - url: ../cosmos-db/table-support.md
-        text: A Table Storage és a Cosmos DB Table API összehasonlítása
-      - url: ./tables/index.yml
-        text: Több megjelenítése >
-  - title: Hibrid tárolási megoldások
-    items:
-    - title: Helyszíni fájlmegosztás kiterjesztése a felhőbe
-      links:
-      - url: ./files/storage-sync-files-planning.md
-        text: Azure-fájlmegosztások szinkronizálása Windows-fájlkiszolgálóval (Azure File Sync)
-      - url: ./files/storage-sync-files-deployment-guide.md
-        text: Az Azure File Sync üzembe helyezése
-      - url: ./files/index.yml
-        text: Több megjelenítése >
-    - title: Online adatátvitel (a helyszíni rendszerből az Azure-ba)
-      links:
-      - url: ../databox-gateway/data-box-gateway-overview.md
-        text: Zökkenőmentes adatátvitel az Azure-ba (Data Box Gateway)
-      - url: ../databox-online/azure-stack-edge-overview.md
-        text: Adatok helyi feldolgozása az Azure-ba történő átvitel előtt (Azure Stack Edge)
-      - url: ../databox-online/index.yml
-        text: Több megjelenítése >
-    - title: Gyorsítótárazás nagy teljesítményű feldolgozási (HPC) számítási feladatokhoz
-      links:
-      - url: ../hpc-cache/hpc-cache-overview.md
-        text: Teljes körűen felügyelt fájl-gyorsítótárazási szolgáltatás használata (Azure HPC Cache)
-      - url: ../avere-vfxt/avere-vfxt-overview.md
-        text: Helyszíni NAS gyorsítótárazása az Azure-ban (Avere vFXT for Azure)
-      - url: ../fxt-edge-filer/fxt-overview.md
-        text: Helyszíni gyorsítótárazási berendezés üzembe helyezése (Azure FXT Edge Filer)
-  - title: Adatműveletek
-    items:
-    - title: Offline tömeges átvitel az Azure-ba
-      links:
-      - url: ../databox/data-box-disk-overview.md
-        text: 40 TB-nál kevesebb adat átvitele (Data Box Disk)
-      - url: ../databox/data-box-overview.md
-        text: 40–500 TB adat átvitele (Data Box)
-      - url: ../databox/data-box-heavy-overview.md
-        text: 500 TB-nál több adat átvitele (Data Box Heavy)
-      - url: ../databox/index.yml
-        text: Több megjelenítése >
-    - title: Kis adatkészletek átvitele (online)
-      links:
-      - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        text: Az AzCopy parancssori eszköz használata
-      - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
-        text: Az Azure Storage Explorer GUI-alapú eszköz használata
-    - title: A költségek szabályozása
-      links:
-      - url: ./blobs/storage-blob-storage-tiers.md
-        text: Blobadatok költséghatékony módon történő rétegzése (gyakori, ritka elérésű és archív)
-    - title: Az adatok megosztása
-      links:
-      - url: ../data-share/index.yml
-        text: Adatok megosztása ügyfelekkel és partnerekkel (Azure Data Share)
-      - url: ../data-share/supported-data-stores.md
-        text: Megosztáshoz támogatott adattárak
-      - url: ../data-share/index.yml
-        text: Több megjelenítése >
-    - title: Adatok biztonsági mentése
-      links:
-      - url: ../backup/quick-backup-vm-portal.md
-        text: Virtuális gépek biztonsági mentése (Azure Backup)
-      - url: ../backup/backup-afs.md
-        text: Azure-fájlmegosztások biztonsági mentése
-      - url: ../backup/index.yml
-        text: Több megjelenítése >
+    - title: Felhőtárhely-megoldások
+      items:
+        - title: Objektumtárolás az alkalmazásokhoz
+          links:
+            - url: ./blobs/storage-blobs-introduction.md
+              text: Strukturálatlan adatok számára elérhető tárolási megoldások ismertetése (Blob Storage)
+            - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+              text: 'A blokk-, hozzáfűző és lapblobok ismertetése'
+            - url: ./blobs/index.yml
+              text: Több megjelenítése >
+        - title: Tárolási megoldások big data-elemzésekhez
+          links:
+            - url: ./blobs/data-lake-storage-introduction.md
+              text: Tudnivalók a nagyvállalati adattavakhoz elérhető tárolási megoldásokról (Data Lake Storage)
+            - url: ./blobs/data-lake-storage-data-scenarios.md
+              text: A big data feldolgozásához elérhető lehetőségek és eszközök ismertetése
+        - title: Felhőben üzemeltetett fájlmegosztások
+          links:
+            - url: ./files/storage-files-introduction.md
+              text: A fő Azure Storage-platform által biztosított fájlmegosztások használata (Azure Files)
+            - url: ../azure-netapp-files/azure-netapp-files-introduction.md
+              text: A NetApp ONTAP által biztosított kötetek használata (Azure NetApp Files)
+        - title: Lemezes tárolás IaaS számítási feladatokhoz
+          links:
+            - url: ../virtual-machines/managed-disks-overview.md
+              text: Tudnivalók az Azure-beli virtuális gépekhez elérhető blokkszintű tárolókötetekről
+            - url: ../virtual-machines/disks-types.md
+              text: Az elérhető lemeztípusok ismertetése
+            - url: ../virtual-machines/windows/attach-managed-disk-portal.md
+              text: Új lemez hozzáadása egy virtuális géphez – Windows
+            - url: ../virtual-machines/linux/attach-disk-portal.md
+              text: Adatlemez csatolása egy virtuális géphez – Linux
+        - title: Tárolási megoldások aszinkron üzenetsor-kezeléshez
+          links:
+            - url: ./queues/storage-queues-introduction.md
+              text: Tudnivalók az üzenetsorokhoz elérhető Azure Storage-megoldásról (Queue Storage)
+            - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+              text: Queue Storage- és Service Bus-üzenetsorok összehasonlítása
+            - url: ./queues/index.yml
+              text: Több megjelenítése >
+        - title: Tárolási megoldások strukturált NoSQL-adatokhoz
+          links:
+            - url: ./tables/table-storage-overview.md
+              text: Strukturált NoSQL-adatok felhőbeli tárolása (Table Storage és Cosmos DB)
+            - url: ../cosmos-db/table-support.md
+              text: A Table Storage és a Cosmos DB Table API összehasonlítása
+            - url: ./tables/index.yml
+              text: Több megjelenítése >
+    - title: Hibrid tárolási megoldások
+      items:
+        - title: Helyszíni fájlmegosztás kiterjesztése a felhőbe
+          links:
+            - url: ./files/storage-sync-files-planning.md
+              text: Azure-fájlmegosztások szinkronizálása Windows-fájlkiszolgálóval (Azure File Sync)
+            - url: ./files/storage-sync-files-deployment-guide.md
+              text: Az Azure File Sync üzembe helyezése
+            - url: ./files/index.yml
+              text: Több megjelenítése >
+        - title: Online adatátvitel (a helyszíni rendszerből az Azure-ba)
+          links:
+            - url: ../databox-gateway/data-box-gateway-overview.md
+              text: Zökkenőmentes adatátvitel az Azure-ba (Data Box Gateway)
+            - url: ../databox-online/azure-stack-edge-overview.md
+              text: Adatok helyi feldolgozása az Azure-ba történő átvitel előtt (Azure Stack Edge)
+            - url: ../databox-online/index.yml
+              text: Több megjelenítése >
+        - title: Gyorsítótárazás nagy teljesítményű feldolgozási (HPC) számítási feladatokhoz
+          links:
+            - url: ../hpc-cache/hpc-cache-overview.md
+              text: Teljes körűen felügyelt fájl-gyorsítótárazási szolgáltatás használata (Azure HPC Cache)
+            - url: ../avere-vfxt/avere-vfxt-overview.md
+              text: Helyszíni NAS gyorsítótárazása az Azure-ban (Avere vFXT for Azure)
+            - url: ../fxt-edge-filer/fxt-overview.md
+              text: Helyszíni gyorsítótárazási berendezés üzembe helyezése (Azure FXT Edge Filer)
+    - title: Adatműveletek
+      items:
+        - title: Offline tömeges átvitel az Azure-ba
+          links:
+            - url: ../databox/data-box-disk-overview.md
+              text: 40 TB-nál kevesebb adat átvitele (Data Box Disk)
+            - url: ../databox/data-box-overview.md
+              text: 40–500 TB adat átvitele (Data Box)
+            - url: ../databox/data-box-heavy-overview.md
+              text: 500 TB-nál több adat átvitele (Data Box Heavy)
+            - url: ../databox/index.yml
+              text: Több megjelenítése >
+        - title: Kis adatkészletek átvitele (online)
+          links:
+            - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              text: Az AzCopy parancssori eszköz használata
+            - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
+              text: Az Azure Storage Explorer GUI-alapú eszköz használata
+        - title: A költségek szabályozása
+          links:
+            - url: ./blobs/storage-blob-storage-tiers.md
+              text: 'Blobadatok költséghatékony módon történő rétegzése (gyakori, ritka elérésű és archív)'
+        - title: Az adatok megosztása
+          links:
+            - url: ../data-share/index.yml
+              text: Adatok megosztása ügyfelekkel és partnerekkel (Azure Data Share)
+            - url: ../data-share/supported-data-stores.md
+              text: Megosztáshoz támogatott adattárak
+            - url: ../data-share/index.yml
+              text: Több megjelenítése >
+        - title: Adatok biztonsági mentése
+          links:
+            - url: ../backup/quick-backup-vm-portal.md
+              text: Virtuális gépek biztonsági mentése (Azure Backup)
+            - url: ../backup/backup-afs.md
+              text: Azure-fájlmegosztások biztonsági mentése
+            - url: ../backup/index.yml
+              text: Több megjelenítése >
