@@ -1,115 +1,119 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz az Azure AD-vel
-description: Megtudhatja, hogyan konfigurálhat szerepköralapú hozzáférés-vezérlést a Azure Cosmos DB-fiókhoz Azure Active Directory
+title: Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB azure AD-val
+description: Megtudhatja, hogyan konfigurálhatja a szerepköralapú hozzáférés-vezérlést Azure Active Directory a Azure Cosmos DB fiókjához
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/16/2021
 ms.author: thweiss
-ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 145c60784ec9cef60d0863e1eb03aa564dea2b55
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063474"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600828"
 ---
-# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz Azure Active Directoryhoz (előzetes verzió)
+# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása Azure Active Directory fiókhoz Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB szerepköralapú hozzáférés-vezérlés jelenleg előzetes verzióban érhető el. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB szerepköralapú hozzáférés-vezérlés jelenleg előzetes verzióban érhető el. Ez az előzetes verzió nem érhető el szolgáltatói szerződés, és nem ajánlott éles számítási feladatokhoz. További információ: Kiegészítő használati feltételek a Microsoft Azure [előzetes verziókhoz.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!NOTE]
-> Ez a cikk a Azure Cosmos DB adatsíkjas műveleteinek szerepköralapú hozzáférés-vezérlését ismerteti. Ha felügyeleti sík-műveleteket használ, tekintse meg a felügyeleti sík műveleteire alkalmazott [szerepköralapú hozzáférés-vezérlés](role-based-access-control.md) című cikket.
+> Ez a cikk az adatsík-műveletek szerepköralapú hozzáférés-vezérlését Azure Cosmos DB. Felügyeletisík-műveletek használata esetén lásd a felügyeleti sík műveleteire alkalmazott szerepköralapú [hozzáférés-vezérlést.](role-based-access-control.md)
 
-A Azure Cosmos DB egy beépített szerepköralapú hozzáférés-vezérlési (RBAC) rendszert tesz elérhetővé, amely a következőket teszi lehetővé:
+Azure Cosmos DB elérhetővé teszi a beépített szerepköralapú hozzáférés-vezérlési (RBAC) rendszert, amely a következőt teszi lehetővé:
 
-- Az adatkérések hitelesítése Azure Active Directory (Azure AD) identitással.
-- A részletes, szerepköralapú engedélyezési modellel engedélyezheti az adatkéréseket.
+- Hitelesítheti az adatkéréseket egy Azure Active Directory (Azure AD) identitással.
+- Engedélyezze az adatkéréseket egy finomhangolt, szerepköralapú engedélymodellel.
 
 ## <a name="concepts"></a>Alapelvek
 
-A Azure Cosmos DB adatsík RBAC olyan fogalmakra épül, amelyek más RBAC rendszerek, például az [Azure RBAC](../role-based-access-control/overview.md)esetében általában megtalálhatók:
+Az Azure Cosmos DB adatsík RBAC-je olyan fogalmakra épül, amelyek gyakran előfordulnak más RBAC-rendszerekben, például az [Azure RBAC-ben:](../role-based-access-control/overview.md)
 
-- Az [engedélyezési modell](#permission-model) több **műveletből** áll; a műveletek mindegyike egy vagy több adatbázis-művelethez van leképezve. Néhány példa a műveletekre: elemek olvasása, elemek írása vagy lekérdezés végrehajtása.
-- Azure Cosmos DB felhasználók az engedélyezett műveletek listáját tartalmazó **[szerepkör-definíciókat](#role-definitions)** hozhatnak létre.
-- A szerepkör-definíciók meghatározott Azure AD-identitásokhoz vannak rendelve **[szerepkör-hozzárendeléseken](#role-assignments)** keresztül. A szerepkör-hozzárendelés meghatározza azt a hatókört is, amelyre a szerepkör-definíció vonatkozik; Jelenleg három hatókör van:
+- Az [engedélymodell](#permission-model) műveletekből **áll;** Ezen műveletek mindegyikét egy vagy több adatbázis-művelethez lehet leképezni. Néhány művelet lehet például egy elem olvasása, egy elem írása vagy egy lekérdezés végrehajtása.
+- Azure Cosmos DB felhasználók **[az](#role-definitions)** engedélyezett műveletek listáját tartalmazó szerepkör-definíciókat hoznak létre.
+- A szerepkör-definíciók adott Azure AD-identitásokhoz vannak hozzárendelve a **[szerepkör-hozzárendelésekkel.](#role-assignments)** A szerepkör-hozzárendelés azt a hatókört is meghatározza, amelyre a szerepkör-definíció vonatkozik; jelenleg három hatókör van:
     - Egy Azure Cosmos DB fiók,
-    - Egy Azure Cosmos DB-adatbázis,
+    - Egy Azure Cosmos DB adatbázis,
     - Egy Azure Cosmos DB tároló.
 
-  :::image type="content" source="./media/how-to-setup-rbac/concepts.png" alt-text="RBAC fogalmak":::
+  :::image type="content" source="./media/how-to-setup-rbac/concepts.png" alt-text="RBAC-fogalmak":::
 
 > [!NOTE]
 > A Azure Cosmos DB RBAC jelenleg nem tesz elérhetővé beépített szerepkör-definíciókat.
 
-## <a name="permission-model"></a><a id="permission-model"></a> Engedélyezési modell
+## <a name="permission-model"></a><a id="permission-model"></a> Engedélymodell
 
-Az alábbi táblázat felsorolja az engedélyezési modell által elérhető összes műveletet.
+> [!IMPORTANT]
+> Ez az engedélymodell csak azokat az adatbázis-műveleteket fedi le, amelyek segítségével adatokat olvashat és írhat. Nem fed **le semmilyen** felügyeleti műveletet, például tárolók létrehozását vagy az átviteli sebességük megváltoztatását. Ez azt jelenti, hogy nem használhat egyetlen Azure Cosmos DB **SDK-t** sem a felügyeleti műveletek AAD-identitással való hitelesítéséhez. Ehelyett az [Azure RBAC-t a következőn keresztül kell](role-based-access-control.md) használnia:
+> - [ARM-sablonok](manage-with-templates.md)
+> - [Azure PowerShell szkriptek,](manage-with-powershell.md)
+> - [Azure CLI-szkriptek,](manage-with-cli.md)
+> - [Azure felügyeleti kódtárak.](https://azure.github.io/azure-sdk/releases/latest/index.html)
 
-| Name | Megfelelő adatbázis-művelet (ek) |
+Az alábbi táblázat az engedélymodell által elérhetővé tett összes műveletet felsorolja.
+
+| Name | Megfelelő adatbázis-műveletek |
 |---|---|
-| `Microsoft.DocumentDB/databaseAccounts/readMetadata` | Fiók metaadatainak olvasása. További részletekért lásd a [metaadat-kérelmeket](#metadata-requests) . |
+| `Microsoft.DocumentDB/databaseAccounts/readMetadata` | Fiók metaadatainak olvasása. A [részleteket lásd: Metaadat-kérelmek.](#metadata-requests) |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create` | Hozzon létre egy új elemet. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read` | Az azonosító és a partíciós kulcs (pont – olvasás) alapján olvassa be az egyes elemeket. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace` | Meglévő elemek cseréje |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert` | "Upsert" egy elem, ami azt jelenti, hogy nem létezik, vagy ha létezik, cserélje le. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete` | Egy tétel törlése. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery` | SQL- [lekérdezés](sql-query-getting-started.md)végrehajtása. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | Olvassa el a tároló [változási csatornáját](read-change-feed.md). |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure` | [Tárolt eljárás](stored-procedures-triggers-udfs.md)végrehajtása. |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/manageConflicts` | A többszörös írási régió fiókjainak [ütközései](conflict-resolution-policies.md) (azaz az ütköző hírcsatornából származó elemek listázása és törlése). |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read` | Egy adott elem olvasása az azonosító és a partíciókulcs (point-read) alapján. |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace` | Meglévő elem cseréje. |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert` | Egy elem "Upsert" (be- és be- vagy beikl) létrehozása. |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete` | Elem törlése. |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery` | Hajtson végre [egy SQL-lekérdezést.](sql-query-getting-started.md) |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | Olvassa el a tároló [változáscsatornáját.](read-change-feed.md) |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure` | Hajtsa végre a [tárolt eljárást.](stored-procedures-triggers-udfs.md) |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/manageConflicts` | Kezelheti [a több](conflict-resolution-policies.md) írási régióból álló fiókok ütközését (ez azt jelenti, hogy listába kell sorolni és törölni kell az elemeket az ütközéscsatornából). |
 
-A helyettesítő karakterek a *tárolók* és az *elemek* szintjein is támogatottak:
+A helyettesítő karakterek tároló- és *elemszinten* is *támogatottak:*
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
 
-> [!IMPORTANT]
-> Ez az engedélyezési modell csak olyan adatbázis-műveletekre vonatkozik, amelyek lehetővé teszik az adatok olvasását és írását. **Nem** fedi le a felügyeleti műveleteket, például a tárolók létrehozását vagy az átviteli sebesség módosítását. A felügyeleti műveletek HRE-identitással történő hitelesítéséhez használja helyette az [Azure RBAC](role-based-access-control.md) .
-
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> Metaadat-kérelmek
 
-Azure Cosmos DB SDK-k használata esetén ezek az SDK-k az inicializáláskor és az adott adatkérések kiszolgálásához csak olvasási metaadatokat állítanak ki. Ezek a metaadat-kérelmek különböző konfigurációs adatokat olvasnak be, például: 
+Az Azure Cosmos DB az SDK-k csak olvasható metaadat-kéréseket adnak ki az inicializálás során, és adott adatkéréseket szolgálnak ki. Ezek a metaadat-kérések különböző konfigurációs adatokat kérnek le, például: 
 
 - A fiók globális konfigurációja, amely tartalmazza azokat az Azure-régiókat, amelyekben a fiók elérhető.
-- A tárolók partíciós kulcsa vagy az indexelési szabályzat.
-- A tárolót és azok címeit alkotó fizikai partíciók listája.
+- A tárolók partíciókulcsa vagy azok indexelési szabályzata.
+- A tárolót és azok címeit tartalmazó fizikai partíciók listája.
 
-*Nem* kérik le a fiókjában tárolt összes adathalmazt.
+Nem *tudják lekérni* a fiókjában tárolt adatokat.
 
-Az engedélyezési modell lehető legjobb átláthatóságának biztosítása érdekében ezeket a metaadatokat a művelet kifejezetten szabályozza `Microsoft.DocumentDB/databaseAccounts/readMetadata` . Ezt a műveletet minden olyan helyzetben engedélyezni kell, amelyben a Azure Cosmos DB-fiókja a Azure Cosmos DB SDK-k egyikén keresztül érhető el. Hozzárendelhető (szerepkör-hozzárendeléssel) a Azure Cosmos DB hierarchia bármely szintjén (azaz fiók, adatbázis vagy tároló).
+Az engedélymodell lehető legjobb átláthatóságának biztosítása érdekében a művelet kifejezetten lefedi ezeket a `Microsoft.DocumentDB/databaseAccounts/readMetadata` metaadat-kéréseket. Ezt a műveletet minden olyan esetben el kell Azure Cosmos DB, amikor a Azure Cosmos DB keresztül fér hozzá. Hozzárendelhető (szerepkör-hozzárendelésen keresztül) a Azure Cosmos DB (vagyis fiók, adatbázis vagy tároló) bármely szintjén.
 
-A művelet által engedélyezett tényleges metaadat `Microsoft.DocumentDB/databaseAccounts/readMetadata` -kérelmek attól a hatókörtől függenek, amelyre a művelet hozzá van rendelve:
+A művelet által engedélyezett tényleges metaadat-kérelmek attól függnek, hogy a művelet `Microsoft.DocumentDB/databaseAccounts/readMetadata` milyen hatókörhöz van hozzárendelve:
 
 | Hatókör | A művelet által engedélyezett kérelmek |
 |---|---|
-| Fiók | -A fiókban lévő adatbázisok listázása<br>– A fiók alatt lévő összes adatbázishoz az adatbázis hatókörében engedélyezett műveletek |
-| Adatbázis | -Adatbázis metaadatainak olvasása<br>-Az adatbázishoz tartozó tárolók listázása<br>– Az adatbázis alatti összes tárolónál a tároló hatókörében engedélyezett műveletek |
-| Tároló | -Tároló metaadatainak olvasása<br>-A tárolóban lévő fizikai partíciók listázása<br>– Az egyes fizikai partíciók címeinek feloldása |
+| Fiók | – A fiókhoz sorolja fel az adatbázisokat<br>– A fiókhoz tartozó összes adatbázishoz az adatbázis hatókörében engedélyezett műveletek |
+| Adatbázis | - Adatbázis metaadatainak olvasása<br>– Az adatbázis alatt található tárolók listázása<br>– Az adatbázis minden tárolója számára a tároló hatókörében engedélyezett műveletek |
+| Tároló | – Tároló metaadatainak olvasása<br>– Fizikai partíciók listázása a tároló alatt<br>- Az egyes fizikai partíciók címének feloldása |
 
 ## <a name="create-role-definitions"></a><a id="role-definitions"></a> Szerepkör-definíciók létrehozása
 
-A szerepkör-definíciók létrehozásakor a következőket kell megadnia:
+Szerepkör-definíció létrehozásakor meg kell adnia a következő adatokat:
 
-- A Azure Cosmos DB fiókjának neve.
+- A fiók Azure Cosmos DB neve.
 - A fiókját tartalmazó erőforráscsoport.
-- A szerepkör-definíció típusa; `CustomRole` jelenleg csak a támogatott.
+- A szerepkör-definíció típusa; csak `CustomRole` a jelenleg támogatott.
 - A szerepkör-definíció neve.
-- Azoknak a [műveleteknek](#permission-model) a listája, amelyeknek engedélyezni szeretné a szerepkört.
-- Egy vagy több olyan hatókör (ek), amelyhez a szerepkör-definíció társítható; a támogatott hatókörök a következők:
-    - `/` (fiók szintű),
-    - `/dbs/<database-name>` (adatbázis-szint),
-    - `/dbs/<database-name>/colls/<container-name>` (Container-Level).
+- A szerepkör [által](#permission-model) engedélyezni kívánt műveletek listája.
+- Egy vagy több hatókör, amely(ök)hez a szerepkör-definíció hozzárendelhető; támogatott hatókörök:
+    - `/` (fiókszintű),
+    - `/dbs/<database-name>` (adatbázisszintű),
+    - `/dbs/<database-name>/colls/<container-name>` (tárolószintű).
 
 > [!NOTE]
-> Az alább ismertetett műveletek jelenleg a következő címen érhetők el:
-> - Azure PowerShell: [az. CosmosDB Version 2.0.1 – előzetes verzió](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI: ["cosmosdb-Preview" bővítmény verziója 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> Az alábbiakban ismertetett műveletek jelenleg a következőben érhetők el:
+> - Azure PowerShell: [Az.CosmosDB 2.0.1-preview verziója](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: [cosmosdb-preview bővítmény 0.4.0-s verzió](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Hozzon létre egy *MyReadOnlyRole* nevű szerepkört, amely csak olvasási műveleteket tartalmaz:
+Hozzon létre egy *MyReadOnlyRole nevű szerepkört,* amely csak olvasási műveleteket tartalmaz:
 
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
@@ -125,7 +129,7 @@ New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -AssignableScope "/"
 ```
 
-Hozzon létre egy *MyReadWriteRole* nevű szerepkört, amely az összes műveletet tartalmazza:
+Hozzon létre egy *MyReadWriteRole nevű szerepkört,* amely az összes műveletet tartalmazza:
 
 ```powershell
 New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
@@ -138,7 +142,7 @@ New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -AssignableScope "/"
 ```
 
-Az azonosítók beolvasásához létrehozott szerepkör-definíciók listázása:
+Sorolja fel a létrehozott szerepkör-definíciókat, hogy lekérni tudja az 1D-jüket:
 
 ```powershell
 Get-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
@@ -165,7 +169,7 @@ AssignableScopes : {/subscriptions/<mySubscriptionId>/resourceGroups/<myResource
 
 ### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
-Hozzon létre egy *MyReadOnlyRole* nevű szerepkört, amely csak olvasási műveleteket tartalmaz:
+Hozzon létre egy *MyReadOnlyRole nevű szerepkört,* amely csak olvasási műveleteket tartalmaz:
 
 ```json
 // role-definition-ro.json
@@ -190,7 +194,7 @@ accountName='<myCosmosAccount>'
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-ro.json
 ```
 
-Hozzon létre egy *MyReadWriteRole* nevű szerepkört, amely az összes műveletet tartalmazza:
+Hozzon létre egy *MyReadWriteRole nevű szerepkört,* amely az összes műveletet tartalmazza:
 
 ```json
 // role-definition-rw.json
@@ -212,7 +216,7 @@ Hozzon létre egy *MyReadWriteRole* nevű szerepkört, amely az összes művelet
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-rw.json
 ```
 
-Az azonosítók beolvasásához létrehozott szerepkör-definíciók listázása:
+Sorolja fel a létrehozott szerepkör-definíciókat, hogy lekérni tudja az 1D-jüket:
 
 ```azurecli
 az cosmosdb sql role definition list --account-name $accountName --resource-group $resourceGroupName
@@ -268,30 +272,30 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> Szerepkör-hozzárendelések létrehozása
 
-A szerepkör-definíciók létrehozása után társíthatja őket a HRE-identitásokhoz. Szerepkör-hozzárendelés létrehozásakor meg kell adnia a következőket:
+Miután létrehozta a szerepkör-definíciókat, társíthatja őket az AAD-identitásokkal. Szerepkör-hozzárendelés létrehozásakor meg kell adnia a következő adatokat:
 
-- A Azure Cosmos DB fiókjának neve.
+- A fiók Azure Cosmos DB neve.
 - A fiókját tartalmazó erőforráscsoport.
-- A hozzárendelni kívánt szerepkör-definíció azonosítója.
-- Annak az identitásnak a fő azonosítója, amelyhez a szerepkör-definíciót hozzá kell rendelni.
-- A szerepkör-hozzárendelés hatóköre; a támogatott hatókörök a következők:
-    - `/` (fiók szintű)
-    - `/dbs/<database-name>` (adatbázis szintű)
-    - `/dbs/<database-name>/colls/<container-name>` (Container-Level)
+- A hozzárendelni fog szerepkör-definíció azonosítója.
+- Annak az identitásnak az egyszerű azonosítója, amelyhez a szerepkör-definíciót hozzá kell rendelni.
+- A szerepkör-hozzárendelés hatóköre; támogatott hatókörök:
+    - `/` (fiókszintű)
+    - `/dbs/<database-name>` (adatbázisszintű)
+    - `/dbs/<database-name>/colls/<container-name>` (tárolószintű)
 
-  A hatókörnek egyeznie kell, vagy az egyik szerepkör-definíció hozzárendelhető hatókörének egy alhatókörének kell lennie.
-
-> [!NOTE]
-> Ha szerepkör-hozzárendelést szeretne létrehozni egy egyszerű szolgáltatáshoz, ügyeljen arra, hogy a **Azure Active Directory** portál panel **vállalati alkalmazások** szakaszában található **objektumazonosítót** használja.
+  A hatókörnek egyeznie kell, vagy a szerepkör-definíció egyik hozzárendelhető hatókörének alhatókörének kell lennie.
 
 > [!NOTE]
-> Az alább ismertetett műveletek jelenleg a következő címen érhetők el:
-> - Azure PowerShell: [az. CosmosDB Version 2.0.1 – előzetes verzió](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI: ["cosmosdb-Preview" bővítmény verziója 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> Ha szerepkör-hozzárendelést szeretne létrehozni egy szolgáltatásnévhez,  ügyeljen arra, hogy  a portál panelének Vállalati alkalmazások szakaszában található objektumazonosítóját **Azure Active Directory** használja.
+
+> [!NOTE]
+> Az alábbiakban ismertetett műveletek jelenleg a következőben érhetők el:
+> - Azure PowerShell: [Az.CosmosDB 2.0.1-preview verziója](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: [cosmosdb-preview bővítmény 0.4.0-s verzió](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Szerepkör társítása identitáshoz:
+Szerepkör hozzárendelése identitáshoz:
 
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
@@ -307,7 +311,7 @@ New-AzCosmosDBSqlRoleAssignment -AccountName $accountName `
 
 ### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
-Szerepkör társítása identitáshoz:
+Szerepkör hozzárendelése identitáshoz:
 
 ```azurecli
 resourceGroupName='<myResourceGroup>'
@@ -317,21 +321,21 @@ principalId = '<aadPrincipalId>'
 az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
-## <a name="initialize-the-sdk-with-azure-ad"></a>Az SDK inicializálása az Azure AD-vel
+## <a name="initialize-the-sdk-with-azure-ad"></a>Az SDK inicializálása az Azure AD-val
 
-Ha a Azure Cosmos DB RBAC szeretné használni az alkalmazásban, frissítenie kell az Azure Cosmos DB SDK inicializálási módját. A fiók elsődleges kulcsának átadása helyett át kell adnia egy osztály egy példányát `TokenCredential` . Ez a példány biztosítja a Azure Cosmos DB SDK-t a használni kívánt identitás nevében egy HRE-jogkivonat beolvasásához szükséges környezettel.
+Ahhoz, hogy a Azure Cosmos DB RBAC-t használnia az alkalmazásban, frissítenie kell a Azure Cosmos DB SDK inicializálását. A fiók elsődleges kulcsának átadása helyett át kell adni egy osztály egy `TokenCredential` példányát. Ez a példány biztosítja az Azure Cosmos DB SDK számára a használni kívánt identitás nevében az AAD-jogkivonat lekéréséhez szükséges környezetet.
 
-A példány létrehozásának módja `TokenCredential` meghaladja a jelen cikk hatókörét. Számos módon hozhat létre ilyen példányt a használni kívánt HRE-identitás típusától függően (felhasználói tag, egyszerű szolgáltatásnév, csoport stb.). Ami a legfontosabb, hogy a `TokenCredential` példánynak fel kell oldania az identitást (a résztvevő azonosítóját), amelyhez hozzárendelte a szerepköröket. Példákat talál egy `TokenCredential` osztály létrehozására:
+A példányok `TokenCredential` létrehozási módja túlmutat ennek a cikknek a hatókörében. Az ilyen példányok számos módon létrehozhatóak a használni kívánt AAD-identitás típusától függően (felhasználónév, szolgáltatásnév, csoport stb.). A legfontosabb, hogy a példánynak arra az identitásra (rendszerbiztonsági tagazonosítóra) kell feloldva lennie, `TokenCredential` amelyhöz a szerepköröket rendelte. Példákat találhat egy osztály `TokenCredential` létrehozására:
 
-- [a .NET-ben](/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java-ban](/java/api/overview/azure/identity-readme#credential-classes)
-- [a JavaScriptben](/javascript/api/overview/azure/identity-readme#credential-classes)
+- [a .NET-en](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [Java nyelven](/java/api/overview/azure/identity-readme#credential-classes)
+- [JavaScriptben](/javascript/api/overview/azure/identity-readme#credential-classes)
 
-Az alábbi példák egy egyszerű szolgáltatást használnak egy `ClientSecretCredential` példánnyal.
+Az alábbi példák szolgáltatásnévvel és egy példán keresztül `ClientSecretCredential` mutatnak be egy példányt.
 
-### <a name="in-net"></a>A .NET-ben
+### <a name="in-net"></a>A .NET-en
 
-Az Azure Cosmos DB RBAC jelenleg a `preview` [.net SDK v3](sql-api-sdk-dotnet-standard.md)verziója támogatja.
+A Azure Cosmos DB RBAC jelenleg a `preview` [.NET SDK V3 verziójában támogatott.](sql-api-sdk-dotnet-standard.md)
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -343,7 +347,7 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 
 ### <a name="in-java"></a>A Javában
 
-A Azure Cosmos DB RBAC jelenleg támogatott a [Java SDK v4](sql-api-sdk-java-v4.md)-ben.
+A Azure Cosmos DB RBAC jelenleg a [Java SDK V4-ben támogatott.](sql-api-sdk-java-v4.md)
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -358,9 +362,9 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .build();
 ```
 
-### <a name="in-javascript"></a>A JavaScriptben
+### <a name="in-javascript"></a>JavaScriptben
 
-A Azure Cosmos DB RBAC jelenleg a [JavaScript SDK v3](sql-api-sdk-node.md)verzióban támogatott.
+A Azure Cosmos DB RBAC jelenleg a [JavaScript SDK V3-ban támogatott.](sql-api-sdk-node.md)
 
 ```javascript
 const servicePrincipal = new ClientSecretCredential(
@@ -375,20 +379,20 @@ const client = new CosmosClient({
 
 ## <a name="auditing-data-requests"></a>Adatkérések naplózása
 
-A Azure Cosmos DB RBAC használatakor a [diagnosztikai naplók](cosmosdb-monitor-resource-logs.md) kibővülnek az egyes adatműveletek identitás-és engedélyezési adataival. Így részletes naplózást hajthat végre, és lekérheti a Azure Cosmos DB-fiókjába eljuttatott minden adatkéréshez használt HRE-identitást.
+Az RBAC Azure Cosmos DB a diagnosztikai [](cosmosdb-monitor-resource-logs.md) naplók az egyes adatműveletekkel kapcsolatos identitás- és engedélyezési információkkal egészülnek ki. Ez lehetővé teszi a részletes naplózást, és lekérheti a fiókba küldött minden adatkéréshez használt AAD Azure Cosmos DB használt.
 
-Ez a további információ a **DataPlaneRequests** -napló kategóriájában folyik, és két további oszlopból áll:
+Ez a további információ a **DataPlaneRequests naplókategóriában** található, és két további oszlopból áll:
 
-- `aadPrincipalId_g` Megjeleníti a kérelem hitelesítéséhez használt HRE-identitás résztvevő-AZONOSÍTÓját.
-- `aadAppliedRoleAssignmentId_g` Megjeleníti a kérés engedélyezésekor tiszteletben lévő [szerepkör-hozzárendelést](#role-assignments) .
+- `aadPrincipalId_g` A a kérés hitelesítéséhez használt AAD-identitás egyszerű azonosítóját jeleníti meg.
+- `aadAppliedRoleAssignmentId_g` A azt [a szerepkör-hozzárendelést](#role-assignments) jeleníti meg, amely a kérelem érvénybe lett véve.
 
 ## <a name="limits"></a>Korlátok
 
-- Azure Cosmos DB-fiókkal akár 100 szerepkör-definíciót és 2 000 szerepkör-hozzárendelést is létrehozhat.
-- Szerepkör-definíciókat csak olyan Azure AD-identitásokhoz rendelhet hozzá, amelyek ugyanahhoz az Azure AD-bérlőhöz tartoznak, mint a Azure Cosmos DB-fiókja.
-- Az Azure AD-csoport feloldása jelenleg nem támogatott olyan identitások esetén, amelyek több mint 200 csoporthoz tartoznak.
-- Az Azure AD-jogkivonatot a rendszer jelenleg a Azure Cosmos DB szolgáltatásnak küldött egyes kérések fejlécében adja át, ami növeli a hasznos adatok teljes méretét.
-- Az adatok Azure AD-vel való elérése a [Azure Cosmos db Explorerben](data-explorer.md) még nem támogatott. A Azure Cosmos DB Explorerrel továbbra is szükség van arra, hogy a felhasználó most hozzáférhessen a fiók elsődleges kulcsához.
+- Fiókonként legfeljebb 100 szerepkör-definíciót és 2000 szerepkör-hozzárendelést Azure Cosmos DB létre.
+- Szerepkör-definíciókat csak olyan Azure AD-identitásokhoz rendelhet hozzá, amelyek ugyanakhoz az Azure AD-bérlőhöz tartoznak, mint a Azure Cosmos DB fiókja.
+- Az Azure AD-csoportfeloldás jelenleg nem támogatott a 200-asnál több csoporthoz tartozó identitások esetében.
+- Az Azure AD-jogkivonat jelenleg fejlécként van átküldve a Azure Cosmos DB szolgáltatásnak küldött minden egyes kéréssel, ami növeli a hasznos tartalom általános méretét.
+- Az Adatok elérése az Azure [](data-explorer.md) AD-val Azure Cosmos DB Explorer még nem támogatott. A Azure Cosmos DB Explorer használatához a felhasználónak most is hozzá kell férni a fiók elsődleges kulcsához.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -400,9 +404,9 @@ Jelenleg csak az SQL API támogatott.
 
 A szerepkörkezelés az Azure Portalon még nem érhető el.
 
-### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Mely SDK-k támogatják a Azure Cosmos DB SQL API-t? RBAC?
+### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Az SQL API mely AZURE COSMOS DB támogatja az RBAC-t?
 
-A [.net v3](sql-api-sdk-dotnet-standard.md) és a [Java v4](sql-api-sdk-java-v4.md) SDK-k jelenleg támogatottak.
+A [.NET V3](sql-api-sdk-dotnet-standard.md) és [a Java V4](sql-api-sdk-java-v4.md) SDK-k jelenleg támogatottak.
 
 ### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Az Azure Cosmos DB SDK-i automatikusan frissítik az Azure AD-jogkivonatot, amikor az lejár?
 
@@ -414,5 +418,5 @@ A fiók elsődleges kulcsának letiltása jelenleg nem lehetséges.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át a [Cosmos db lévő adathozzáférések biztonságos elérését](secure-access-to-data.md)ismertető cikket.
-- További információ a [Azure Cosmos db felügyeletének RBAC](role-based-access-control.md).
+- Az adatok biztonságos [elérésének áttekintése](secure-access-to-data.md)a Cosmos DB.
+- További információ a [felügyelethez Azure Cosmos DB RBAC-ről.](role-based-access-control.md)

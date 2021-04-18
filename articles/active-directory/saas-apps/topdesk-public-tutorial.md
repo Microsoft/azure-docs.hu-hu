@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d16fd87b01db69d3f55e22aad573b7847b9048c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b787102065f93588cd796027123d61072e9d5aea
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518083"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Azure Active Directory topdesk integrációja – Nyilvános
 
-Ez az oktatóanyag bemutatja, hogyan integrálhatja a TOPdesk – Nyilvános szolgáltatásokat a Azure Active Directory (Azure AD) használatával. A TOPdesk – Nyilvános és az Azure AD integrálása után a következő funkciókat használhatja:
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a TOPdesk – Nyilvános szolgáltatásokat a Azure Active Directory (Azure AD) használatával. A TOPdesk – Public és az Azure AD integrálása után a következő funkciókat használhatja:
 
 * Az Azure AD vezérlése, aki hozzáféréssel rendelkezik a TOPdesk – Nyilvános hozzáféréshez.
 * Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve jelentkeznek be a TOPdesk – Nyilvános szolgáltatásba az Azure AD-fiókjukkal.
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezését konfigurálja é
 
 ## <a name="add-topdesk---public-from-the-gallery"></a>TOPdesk – Nyilvános hozzáadása a katalógusból
 
-A TOPdesk – Nyilvános az Azure AD-be integrálásának konfigurálásához hozzá kell adni a toPdesk – Public szolgáltatásokat a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A TOPdesk – Nyilvános az Azure AD-be integrálásának konfigurálához hozzá kell adni a TOPdesk – Public szolgáltatásokat a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes fiókkal Microsoft-fiók.
 1. A bal oldali navigációs panelen válassza ki **a Azure Active Directory** szolgáltatást.
@@ -52,7 +52,7 @@ A TOPdesk – Nyilvános az Azure AD-be integrálásának konfigurálásához ho
 
 ## <a name="configure-and-test-azure-ad-sso-for-topdesk---public"></a>Azure AD SSO konfigurálása és tesztelése TOPdeskhez – Nyilvános
 
-Az Azure AD SSO konfigurálása és tesztelése TOPdesk használatával – Nyilvános egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között a TOPdesk – Nyilvános helyen.
+Azure AD SSO konfigurálása és tesztelése TOPdesk használatával – Nyilvános egy **B.Simon nevű tesztfelhasználóval.** Ahhoz, hogy az SSO működjön, kapcsolati kapcsolatot kell létesítenie egy Azure AD-felhasználó és a kapcsolódó felhasználó között a TOPdesk – Nyilvános helyen.
 
 Az Azure AD SSO nyilvános TOPdesk használatával való konfiguráláshoz és teszteléshez hajtsa végre a következő lépéseket:
 
@@ -92,12 +92,12 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Port
 
     e. Az Azonosító **URL-címe** szövegmezőben adja meg a TOPdesk-metaadatok URL-címét, amely a TOPdesk konfigurációból olvasható be. A következő mintát kell használnia: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
-    f. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet az alábbi mintát használva: `https://<companyname>.topdesk.net/tas/public/login/verify`
+    f. A Válasz **URL-cím** szövegmezőbe írjon be egy URL-címet a következő mintával: `https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
-    > Ha az **Azonosító és** a **Válasz URL-cím** értékeket a rendszer nem tölti ki automatikusan, manuálisan kell megadnia őket. Az Azonosító mezőben kövesse a fent említett mintát, és a VÁLASZ URL-cím értékét a **TOPdesk** konfigurálása – Nyilvános egyszeri bejelentkezés szakaszból fogja kapni, amelyet az oktatóanyag későbbi részében ismertetünk. A **Bejelentkezési URL-cím** értéke nem valós, ezért az értéket a tényleges URL-Sign-On kell frissítenie. Az értékért lépjen kapcsolatba a [TOPdesk – Nyilvános](https://help.topdesk.com/saas/enterprise/user/) ügyféltámogatási csapattal. Az **SAML** alapkonfiguráció szakaszában látható mintákra is hivatkozhat a Azure Portal.
+    > Ha az **Azonosító és** a **Válasz URL-cím** értékeket a rendszer nem tölti ki automatikusan, manuálisan kell megadnia őket. Az Azonosító mezőben kövesse a fent említett mintát, és a VÁLASZ URL-cím értékét a **TOPdesk** konfigurálása – Nyilvános egyszeri bejelentkezés szakaszból fogja kapni, amelyet az oktatóanyag későbbi részében ismertetünk. A **Bejelentkezési URL-cím** értéke nem valós, ezért az értéket a tényleges URL-Sign-On kell frissítenie. Az értékért lépjen kapcsolatba a [TOPdesk – Nyilvános](https://my.topdesk.com/) ügyféltámogatási csapattal. Az **SAML** alapkonfiguráció szakaszában látható mintákat is használhatja a Azure Portal.
 
-5. A **Set up Single Sign-On with SAML** (Egyszeri bejelentkezés beállítása SAML-tanúsítványsal) lapon, az **SAML signing Certificate (SAML-aláíró** tanúsítvány) szakaszban kattintson a **Download** (Letöltés) elemre az összevonási metaadatok **XML-fájljának** letöltéséhez a megadott beállításokból igény szerint, majd mentse a számítógépre.
+5. Az Egyoldalas Sign-On **beállítása SAML-tanúsítványsal** lapon, az **SAML** aláíró tanúsítvány szakaszában kattintson a Letöltés elemre az összevonási metaadatok **XML-fájljának** letöltéséhez a megadott beállításokból igény szerint, majd mentse a számítógépre. 
 
     ![A Tanúsítvány letöltése hivatkozás](common/metadataxml.png)
 
@@ -109,24 +109,24 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez a Azure Port
 
 Ebben a szakaszban egy B.Simon nevű tesztfelhasználót fog létrehozni a Azure Portal területen.
 
-1. A bal oldali panelen válassza Azure Portal lehetőséget, **Azure Active Directory** **a Felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
-1. Válassza **az Új felhasználó** lehetőséget a képernyő tetején.
+1. A bal oldali panelen válassza a Azure Portal **lehetőséget,** Azure Active Directory **felhasználók** lehetőséget, majd válassza a Minden **felhasználó lehetőséget.**
+1. Válassza **a képernyő tetején** található Új felhasználó lehetőséget.
 1. A Felhasználó **tulajdonságai** között kövesse az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév **mezőbe írja** be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket. 
+   1. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja fel a Jelszó mezőben megjelenő értéket. 
    1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Az Azure AD tesztfelhasználó hozzárendelése
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát. Ehhez hozzáférést biztosít a TOPdesk – Public szolgáltatáshoz.
+Ebben a szakaszban engedélyezheti a B.Simon számára az Azure-beli egyszeri bejelentkezés használatát úgy, hogy hozzáférést biztosít a TOPdesk – Nyilvános hozzáféréshez.
 
-1. A Azure Portal válassza a **Vállalati alkalmazások,** majd a **Minden alkalmazás lehetőséget.**
+1. A Azure Portal válassza a Vállalati **alkalmazások,** majd a Minden **alkalmazás lehetőséget.**
 1. Az alkalmazások listájában válassza a **TOPdesk – Nyilvános lehetőséget.**
 1. Az alkalmazás áttekintő oldalán keresse meg a Kezelés **szakaszt,** és válassza a **Felhasználók és csoportok lehetőséget.**
-1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza a** Felhasználók és **csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása** lehetőséget, majd a Hozzárendelés hozzáadása **párbeszédpanelen válassza** a Felhasználók és **csoportok** lehetőséget.
 1. A Felhasználók **és csoportok** párbeszédpanelen válassza a **B.Simon**  lehetőséget a Felhasználók listában, majd kattintson a képernyő alján található Kijelölés gombra.
-1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja **azt a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az &quot;Alapértelmezett hozzáférés&quot; szerepkör van kiválasztva.
+1. Ha azt várja, hogy egy szerepkör hozzá lesz rendelve a felhasználókhoz, kiválaszthatja azt **a Szerepkör kiválasztása** legördülő menüből. Ha nincs beállítva szerepkör ehhez az alkalmazáshoz, az &quot;Alapértelmezett hozzáférés&quot; szerepkör lesz kiválasztva.
 1. A Hozzárendelés **hozzáadása párbeszédpanelen** kattintson a Hozzárendelés **gombra.**
 
 ## <a name=&quot;configure-topdesk---public-sso&quot;></a>A TOPdesk konfigurálása – Nyilvános SSO
@@ -149,13 +149,13 @@ Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszer
    
     ![Technikai beállítások](./media/topdesk-public-tutorial/public.png "Technikai beállítások")
    
-    a. Kattintson **a Letöltés** gombra a nyilvános metaadatfájl letöltéséhez, majd mentse helyileg a számítógépre.
+    a. Kattintson **a Letöltés gombra** a nyilvános metaadatfájl letöltéséhez, majd mentse helyileg a számítógépre.
    
     b. Nyissa meg a letöltött metaadatfájlt, majd keresse meg az **AssertionConsumerService csomópontot.**
 
     ![AssertionConsumerService](./media/topdesk-public-tutorial/service.png "AssertionConsumerService")
    
-    c. Másolja ki **az AssertionConsumerService** értéket, és illessze be ezt az értéket a Válasz **URL-cím** szövegmezőbe az **Alapszintű SAML-konfiguráció szakaszban.**      
+    c. Másolja ki **az AssertionConsumerService** értéket, és illessze be ezt az értéket az SamL-alapkonfiguráció szakasz Válasz **URL-címe szövegmezőjbe.**       
    
 6. Tanúsítványfájl létrehozásához hajtsa végre a következő lépéseket:
     
@@ -163,7 +163,7 @@ Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszer
     
     a. Nyissa meg a letöltött metaadatfájlt a Azure Portal.
     
-    b. Bontsa ki azt a **RoleDescriptor** csomópontot, amely **xsi:type** **típusú fed:ApplicationServiceType.**
+    b. Bontsa ki az **xsi:type** **fed:ApplicationServiceType** típusú **RoleDescriptor** csomópontot.
     
     c. Másolja ki az **X509Certificate csomópont** értékét.
     
@@ -175,15 +175,15 @@ Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszer
 
 8. Az **SAML konfigurációs segéd párbeszédpanelén** hajtsa végre a következő lépéseket:
     
-    ![SAML konfigurációs segéd](./media/topdesk-public-tutorial/configuration.png "SAML Konfigurációs asszisztens")
+    ![SAML Konfigurációs asszisztens](./media/topdesk-public-tutorial/configuration.png "SAML Konfigurációs asszisztens")
     
     a. A letöltött metaadatfájl feltöltéséhez a Azure Portal **összevonási** metaadatok alatt kattintson a Tallózás **gombra.**
 
     b. A tanúsítványfájl feltöltése a Tanúsítvány **(RSA) alatt kattintson** a Tallózás **gombra.**
 
-    c. A TOPdesk támogatási csapattól kapott emblémafájl feltöltéshez kattintson a Tallózás gombra az **Embléma ikon** **alatt.**
+    c. A TOPdesk támogatási csapattól kapott emblémafájl feltöltését az Embléma **ikon** alatt kattintson a Tallózás **gombra.**
 
-    d. A Felhasználónév **attribútuma** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
+    d. A Felhasználónév **attribútum szövegmezőbe** írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     e. A **Megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
@@ -191,9 +191,9 @@ Ebben a szakaszban engedélyezni fogja a B.Simon számára az Azure-beli egyszer
 
 ### <a name="create-topdesk---public-test-user"></a>TOPdesk létrehozása – Nyilvános tesztfelhasználó
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkeznek a TOPdesk – Nyilvános szolgáltatásba, ki kell őket kiépítenünk a TOPdesk – Nyilvános helyen. TOPdesk – Nyilvános esetén a kiépítés manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkeznek a TOPdesk – Nyilvános szolgáltatásba, a TOPdesk – Public helyen kell kiépítenünk őket. TOPdesk – Nyilvános esetén a kiépítés manuális feladat.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>A felhasználókiépítés konfiguráláshoz hajtsa végre a következő lépéseket:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>A felhasználókiépítés konfigurálásának lépései a következők:
 
 1. Jelentkezzen be a **TOPdesk – Nyilvános vállalati** webhelyre rendszergazdaként.
 
@@ -209,20 +209,20 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkeznek a TOPdesk – Nyilvános s
 
     b. A **Vezetéknév szövegmezőbe** írja be a felhasználó vezetéknevét (például Simon)
  
-    c. Válasszon egy **webhelyet** a fiókhoz.
+    c. Válasszon ki egy **webhelyet** a fiókhoz.
  
     d. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
-> Bármely más TOPdesk – A TOPdesk által biztosított nyilvános felhasználói fiókok létrehozására használható eszközök vagy API-k – Nyilvános az Azure AD felhasználói fiókok létrehozásához.
+> Bármilyen más TOPdesk – A TOPdesk által biztosított nyilvános felhasználói fiókok létrehozására használható eszközök vagy API-k – Nyilvános az Azure AD felhasználói fiókok létrehozására.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Az SSO tesztelése 
 
 Ebben a szakaszban az alábbi beállításokkal teszteli az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-* Kattintson az **Alkalmazás tesztelése elemre a** Azure Portal. Ez átirányítja a TOPdesk – Nyilvános bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
+* Kattintson az **Alkalmazás tesztelése elemre** a Azure Portal. Ez átirányítja a TOPdesk – Nyilvános bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-* Lépjen közvetlenül a TOPdesk – Nyilvános bejelentkezési URL-címre, és onnan indítsa el a bejelentkezési folyamatot.
+* Lépjen közvetlenül a TOPdesk – Nyilvános bejelentkezési URL-cím pontra, és onnan indítsa el a bejelentkezési folyamatot.
 
 * Használhatja a Microsoft Saját alkalmazások. Amikor a toPdesk – Nyilvános csempére kattint a Saját alkalmazások, a rendszer átirányítja a TOPdesk – Nyilvános bejelentkezési URL-címre. További információ a Saját alkalmazások: [Bevezetés a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)Saját alkalmazások.
 

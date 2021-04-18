@@ -1,85 +1,85 @@
 ---
-title: HPC-alkalmazások méretezése – Azure Virtual Machines | Microsoft Docs
-description: Ismerje meg, hogyan méretezheti a HPC-alkalmazásokat az Azure-beli virtuális gépeken.
+title: HPC-alkalmazások skálázása – Azure Virtual Machines | Microsoft Docs
+description: Megtudhatja, hogyan skálázhatóak a HPC-alkalmazások az Azure-beli virtuális gépeken.
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81d40abdf402b1e19090c5375dfa8c335418248
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606776"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600964"
 ---
-# <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
+# <a name="scaling-hpc-applications"></a>HPC-alkalmazások skálázása
 
-Az Azure-beli HPC-alkalmazások optimális, vertikális Felskálázási teljesítménye az adott számítási feladathoz szükséges teljesítmény-hangolási és optimalizálási kísérleteket igényli. Ez a szakasz és a virtuálisgép-sorozat-specifikus lapok általános útmutatást nyújtanak az alkalmazások skálázásához.
+Az Azure-beli HPC-alkalmazások optimális fel- és felskálás teljesítménye teljesítmény-finomhangolási és optimalizálási kísérleteket igényel az adott számítási feladathoz. Ez a szakasz és a virtuálisgép-sorozatra vonatkozó oldalak általános útmutatást nyújtanak az alkalmazások méretezéséhez.
 
 ## <a name="application-setup"></a>Alkalmazásbeállítás
-A [azurehpc](https://github.com/Azure/azurehpc) -tárház számos példát tartalmaz:
-- [Alkalmazások](https://github.com/Azure/azurehpc/tree/master/apps) optimális beállítása és futtatása.
-- [Fájlrendszerek és fürtök](https://github.com/Azure/azurehpc/tree/master/examples)konfigurálása.
-- [Oktatóanyagok](https://github.com/Azure/azurehpc/tree/master/tutorials) a gyakori alkalmazás-munkafolyamatok használatáról.
+Az [azurehpc-repo számos](https://github.com/Azure/azurehpc) példát tartalmaz:
+- Alkalmazások optimális [beállítása](https://github.com/Azure/azurehpc/tree/master/apps) és futtatása.
+- Fájlrendszerek [és fürtök konfigurálása.](https://github.com/Azure/azurehpc/tree/master/examples)
+- [Oktatóanyagok](https://github.com/Azure/azurehpc/tree/master/tutorials) a gyakori alkalmazás-munkafolyamatok könnyű elkezdésében.
 
-## <a name="optimally-scaling-mpi"></a>Az MPI optimális méretezése 
+## <a name="optimally-scaling-mpi"></a>Az MPI optimális skálázása 
 
-A következő javaslatok alkalmazhatók az alkalmazások optimális méretezésének hatékonyságára, teljesítményére és konzisztenciájára:
+Az alábbi javaslatok az optimális alkalmazásméretezés hatékonyságát, teljesítményét és konzisztenciáját biztosítják:
 
-- A kisebb léptékű feladatokhoz (például < 256K-kapcsolatokhoz) használja a következő lehetőséget:
+- Kisebb méretű feladatokhoz (például 256 < kapcsolatokhoz) használja a következő lehetőséget:
    ```bash
    UCX_TLS=rc,sm
    ```
 
-- Nagyobb léptékű feladatokhoz (például > 256K-kapcsolatokhoz) használja a következő lehetőséget:
+- Nagyobb méretű feladatokhoz (például 256 000 >) használja a következő lehetőséget:
    ```bash
    UCX_TLS=dc,sm
    ```
 
-- A fentiekben az MPI-feladatokhoz tartozó kapcsolatok számának kiszámításához használja a következőt:
+- A fentiekben az MPI-feladat kapcsolatainak számának kiszámításához használja a következőt:
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
 
-## <a name="adaptive-routing"></a>Adaptív Útválasztás
-Az adaptív útválasztás (AR) lehetővé teszi a EDR és a HDR InfiniBand futtató Azure Virtual Machines (VM-EK) számára a hálózati torlódások automatikus észlelését és elkerülését azáltal, hogy dinamikusan kiválasztja az optimális hálózati útvonalakat. Ennek eredményeképpen az AR továbbfejlesztett késést és sávszélességet biztosít a InfiniBand-hálózaton, ami nagyobb teljesítményt és méretezési hatékonyságot eredményez. További részletekért tekintse meg a [TechCommunity című cikket](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217).
+## <a name="adaptive-routing"></a>Adaptív útválasztás
+Az adaptív útválasztás (AR) lehetővé teszi, hogy az Azure Virtual Machines (virtuális gépek) EDR-t és AI InfiniBandet futtató azure-beli virtuális gépek automatikusan észleljék és elkerüljék a hálózati torlódást az optimálisabb hálózati útvonalak dinamikus kiválasztásával. Ennek eredményeképpen az AR nagyobb késést és sávszélességet biztosít az InfiniBand hálózaton, ami pedig nagyobb teljesítményt és skálázást eredményez. További részletekért tekintse meg a [TechCo új cikket.](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217)
 
-## <a name="process-pinning"></a>Folyamat-rögzítés
+## <a name="process-pinning"></a>Folyamat rögzítése
 
-- A folyamatokat egy szekvenciális rögzítési megközelítéssel rögzítheti a magokon (szemben az autobalance megközelítéssel). 
-- A Numa/Core/HwThread kötése jobb, mint az alapértelmezett kötés.
-- A hibrid párhuzamos alkalmazások (OpenMP dokumentáció + MPI) esetében 4 szálat és 1 MPI-besorolást használhat CCX a HB és a HBv2 virtuálisgép-méretekben.
-- A tiszta MPI-alkalmazások esetében az 1-4 MPI Range CCX a HB és a HBv2 virtuálisgép-méretek optimális teljesítményére.
-- Egyes alkalmazások, amelyek rendkívül érzékenyek a memória sávszélességére, kisebb számú magot használhatnak a CCX. Ezekhez az alkalmazásokhoz 3 vagy 2 mag/CCX használatával csökkentheti a memória sávszélességének növelését, és magasabb, valós teljesítményt vagy konzisztens méretezhetőséget eredményezhet. Az MPI-Allreduce különösen hasznos lehet ennek a megközelítésnek a kihasználása.
-- A nagyobb méretű méretezési futtatásokhoz javasolt az UD vagy a Hybrid RC + UD átvitel használata. Számos MPI-függvénytár/futásidejű kódtár végzi ezt belsőleg (például UCX vagy MVAPICH2). Ellenőrizze a nagy léptékű futtatások átviteli konfigurációit.
+- Folyamatok rögzítése magokra szekvenciális rögzítési megközelítéssel (és nem az automatikus kiegyensúlyozási megközelítéssel). 
+- A Numa/Core/HwThread kötés jobb, mint az alapértelmezett kötés.
+- Hibrid párhuzamos alkalmazásokhoz (OpenMP+MPI) használjon 4 szálat és 1 MPI rangot CCX-enként a HB- és HBv2-virtuálisgép-méretek esetében.
+- Tiszta MPI-alkalmazások esetén a HB- és HBv2-virtuálisgép-méretek optimális teljesítménye érdekében kísérletezzen CCX-enként 1–4 MPI-rangsorolással.
+- Egyes, a memória sávszélességére rendkívül érzékeny alkalmazások esetében előnyös lehet a CCX-enkénti kevesebb mag használata. Ezen alkalmazások esetében a CCX-enkénti 3 vagy 2 mag használata csökkentheti a memória-sávszélességért való összeesést, és magasabb valós teljesítményt vagy egységesebb méretezhetőséget eredményez. Különösen az MPI Allreduce számára előnyös lehet ez a megközelítés.
+- A jelentősen nagyobb léptékű futtatás esetén ajánlott UD vagy hibrid RC+UD szállítást használni. Ezt számos MPI-kódtár/futásidejű kódtár (például UCX vagy MVAPICH2) belsőleg. A nagy léptékű futtatásokat az átviteli konfigurációkban ellenőrizheti.
 
 ## <a name="compiling-applications"></a>Alkalmazások fordítása
 <br>
 <details>
-<summary>Kattintson ide a kibontáshoz</summary>
+<summary>Kattintással bontsa ki</summary>
 
-Bár nem szükséges, az alkalmazások megfelelő optimalizálási jelzővel való fordítása biztosítja a legjobb méretezési teljesítményt a HB és a HC sorozatú virtuális gépeken.
+Bár nem szükséges, az alkalmazások fordítása a megfelelő optimalizálási jelzőkkel biztosítja a legjobb felskálás teljesítményt a HB- és HC-sorozatú virtuális gépeken.
 
-### <a name="amd-optimizing-cc-compiler"></a>A C/C++ fordító AMD optimalizálása
+### <a name="amd-optimizing-cc-compiler"></a>AMD C/C++ fordító optimalizálása
 
-Az AMD-optimalizáló C/C++ Compiler (AOCC) fordítórendszer magas szintű fejlett optimalizálási, többszálas és processzor-támogatást kínál, amely globális optimalizációt, vektorizációt, eljárások közötti elemzéseket, hurkos átalakításokat és a kód generálását is magában foglalja. A AOCC Compiler bináris fájljai a 2,17-es és újabb verziójú GNU C-függvénytárat (folyékonyan) futtató Linux rendszerekhez alkalmasak. A Compiler Suite egy C/C++ fordítóprogramból (csenget), egy Fortran fordítóból (FLANG) és egy Fortran előtérből áll a csenget (Dragon Egg).
+Az AMD C/C++ fordítóprogram (AOCC) fordítórendszer magas szintű fejlett optimalizálást, többszálas és processzortámogatást kínál, amely globális optimalizálást, vektorizációt, eljárásközi elemzéseket, ciklusátalakításokat és kódgenerációt tartalmaz. Az AOCC-fordító bináris fájlok olyan Linux rendszerekhez megfelelőek, amelyek 2.17-es vagy újabb GNU C-kódtára (cinbc) verzióval futnak. A fordítócsomag egy C/C++ fordítóból (tor), egy Fortran-fordítóból (FLANG) és egy Fortran-előlapból és a Lettg (Dragon Egg) felé.
 
-### <a name="clang"></a>Csenget
+### <a name="clang"></a>Fogag
 
-A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az elemzést, az optimalizálást, a kód generálását, a szerelvényt és a csatolást kezeli. A csenget támogatja a  `-march=znver1` jelölőt, amely lehetővé teszi a legjobb kód generálását és finomhangolását az AMD Zen-alapú x86-architektúrája számára.
+A Fogg egy C, C++ és Objective-C fordító, amely előfeldolgozást, -kezelést, -optimalizálást, kód generálást, -szerelvényt és -összekapcsolást kezel. A The Flagg támogatja a legjobb kódgenerációt és -finomhangolást  `-march=znver1` az AMD Zen-alapú x86 architektúrája számára.
 
-### <a name="flang"></a>FLANG
+### <a name="flang"></a>FLANG (FLANG)
 
-A FLANG Compiler a AOCC Suite (2018. április) újabb verziója, és jelenleg előzetes kiadásban érhető el a fejlesztők számára a letöltéshez és teszteléshez. A FORTRAN 2008 alapján az AMD kiterjeszti a FLANG GitHub-verzióját ( https://github.com/flang-compiler/flang) . A FLANG Compiler támogatja az összes csenget-fordítói beállítást és a FLANG-specifikus fordítási lehetőségek további számát.
+A FLANG-fordító az AOCC csomag (2018. áprilistól hozzáadva) egy új része, és jelenleg előzetes kiadásban érhető el a fejlesztők számára letöltésre és tesztelésre. A Fortran 2008 alapján az AMD kibővíti a FLANG ( ) GitHub-verzióját. https://github.com/flang-compiler/flang) A FLANG-fordító támogatja az összes Compileg fordítóprogram-lehetőséget, és további számú FLANG-specifikus fordítói lehetőséget.
 
 ### <a name="dragonegg"></a>DragonEgg
 
-A DragonEgg egy GCC beépülő modul, amely felváltja a GCC optimalizálási és programkód-generátorait a LLVM projektből származókkal. A AOCC-vel együtt használható DragonEgg a GCC-4.8. x-mel lett tesztelve az x86-32/x86-64 célokhoz, és számos Linux platformon sikeresen használatos.
+A DragonEgg egy gcc beépülő modul, amely lecseréli a GCC optimalizálóit és kódgenerátorát az LLVM-projektből származókra. Az AOCC-hez elérhető DragonEgg együttműködik a gcc-4.8.x-szel, x86-32/x86-64-es célokhoz lett tesztelve, és számos Linux-platformon sikeresen használható.
 
-A GFortran az előfeldolgozásra, elemzésre és szemantikai elemzésre szolgáló Fortran-programok tényleges előállítása, amely a GCC-GIMPLE köztes ábrázolást (IR) hozza létre. A DragonEgg egy GNU beépülő modul, amely a GFortran fordítási folyamatához csatlakozik. Implementálja a GNU beépülő modul API-ját. A beépülő modul architektúrájában a DragonEgg lesz a fordító illesztőprogramja, amely a fordítás különböző fázisait hajtja majd meg.  A letöltési és telepítési utasítások követése után a Dragon Egg a következő használatával hívható meg: 
+A GFortran a GCC GIMPLE köztes reprezentációt (IR) generáló előfeldolgozásért, elemzésért és szemantikai elemzésért felelős Fortran programok tényleges előtérde. A DragonEgg egy GNU beépülő modul, amely a GFortran-fordítási folyamathoz csatlakozik. Megvalósítja a GNU beépülő modul API-ját. A beépülő modul architektúrája során a DragonEgg lesz a fordító illesztője, amely a fordítás különböző fázisaiért hajtód.  A letöltési és telepítési utasításokat követve a Dragon Dragon a következővel hívható meg: 
 
 ```bash
 $ gfortran [gFortran flags] 
@@ -88,22 +88,22 @@ $ gfortran [gFortran flags]
    -c xyz.f90 $ clang -O3 -lgfortran -o xyz xyz.o $./xyz
 ```
    
-### <a name="pgi-compiler"></a>OFJ-fordító
-OFJ Community Edition ver. a 17 megerősítve az AMD-EPYC való együttműködésre. A STREAM OFJ-vel lefordított verziója teljes memória-sávszélességet biztosít a platform számára. Az újabb közösségi kiadás 18,10 (nov 2018) is jól működik. Az alábbi példa a CLI-t az Intel Compiler használatával optimálisan fordítóprogramba foglalja:
+### <a name="pgi-compiler"></a>PGI-fordító
+PGI Community Edition ver. A program megerősíti, hogy 17-et működik együtt az AMD EPYC-val. A STREAM PGI által lefordított verziója biztosítja a platform teljes memória-sávszélességét. Az újabb Community Edition 18.10 (2018. nov.) szintén jól működik. Az alábbiakban egy cli-minta látható, amely optimálisan fordítja le a fordítót az Intel Compiler segítségével:
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
-### <a name="intel-compiler"></a>Intel fordító
-Intel Compiler ver. a 18 megerősítve az AMD EPYC való együttműködésre. Az alábbi példa a CLI-t mutatja be optimálisan az Intel fordítóval.
+### <a name="intel-compiler"></a>Intel Compiler
+Intel Compiler ver. A program megerősíti, hogy 18 működik együtt az AMD EPYC-val. Az alábbiakban egy cli-mintát olvashat az Intel Compiler optimális fordításához.
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp
 ```
 
 ### <a name="gcc-compiler"></a>GCC-fordító 
-A HPC esetében az AMD a GCC Compiler 7,3-es vagy újabb verzióját javasolja. A régebbi verziók, például a RHEL/CentOS 7,4-es verzióban található 4.8.5 használata nem ajánlott. A GCC 7,3 és újabb verziók jelentősen nagyobb teljesítményt tesznek elérhetővé a HPL, a HPCG és a DGEMM teszteken.
+A HPC esetében az AMD a GCC-fordító 7.3-as vagy újabb használatát javasolja. A régebbi verziók, például az RHEL/CentOS 7.4 által tartalmazott 4.8.5 nem ajánlottak. A GCC 7.3-as és újabb verziók jelentősen nagyobb teljesítményt fognak eredményezni a HPL-, HPCG- és a FOGEMM-teszteken.
 
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
@@ -112,4 +112,7 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure-beli [HPC](/azure/architecture/topics/high-performance-computing/) -ről.
+- Tesztelje tudását egy tanulási modullal, amely a HPC-alkalmazások azure-beli [optimalizálását használja.](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/)
+- Tekintse át a [HBv3 sorozat áttekintését és](hbv3-series-overview.md) [a HC sorozat áttekintését.](hc-series-overview.md)
+- Olvassa el a legújabb közleményeket, HPC számítási feladatok példáit és a teljesítményeredményeket a [Azure Compute Tech Community Blogon.](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)
+- További információ az [Azure-beli](/azure/architecture/topics/high-performance-computing/) HPC-ről.

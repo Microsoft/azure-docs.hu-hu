@@ -1,50 +1,51 @@
 ---
-title: Nagy teljesítményű számítástechnika az InfiniBand-ben engedélyezett H-és N-sorozatú virtuális gépek – Azure Virtual Machines
-description: Ismerje meg a HPC használatára optimalizált H-sorozatú és N sorozatú virtuális gépek InfiniBand funkcióit és képességeit.
+title: Nagy teljesítményű számítás infiniBand-kompatibilis H- és N-sorozatú virtuális gépeken – Azure Virtual Machines
+description: Ismerje meg a HPC-re optimalizált InfiniBand-kompatibilis H- és N-sorozatú virtuális gépek funkcióit és képességeit.
 author: vermagit
 ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 554764b89e5da4cd6777ec89fcb2f2d5ad104ebf
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720593"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600267"
 ---
-# <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Nagy teljesítményű számítástechnika a InfiniBand-t használó H-és N-sorozatú virtuális gépeken
+# <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Nagy teljesítményű számítás infiniBand-kompatibilis H- és N-sorozatú virtuális gépeken
 
-Az Azure InfiniBand-kompatibilis H-sorozatú és N sorozatú virtuális gépeket úgy tervezték, hogy vezetői szintű teljesítményt, Message Passing Interface (MPI) skálázhatóságot és költséghatékonyságot nyújtsanak a különböző valós HPC-és AI-munkaterhelésekhez. Ezeknek a nagy teljesítményű számítástechnikai (HPC) optimalizált virtuális gépeknek a segítségével megoldhatja a legtöbb számítási feladattal kapcsolatos problémát a tudományok és a mérnöki tudományok terén, például: Fluid Dynamics, föld modellezés, időjárási szimulációk stb.
+Az Azure InfiniBand-kompatibilis H- és N-sorozatú virtuális gépeket arra tervezték, hogy vezető osztályú teljesítményt, Message Passing Interface (MPI) méretezhetőséget és költséghatékonyságot nyújtsunk számos valós HPC- és AI-számítási feladathoz. Ezek a nagy teljesítményű számítástechnikára (HPC) optimalizált virtuális gépek a tudományos és mérnöki tevékenység legnagyobb számítási igényű problémáinak (például folyadékdinamika, földmodellezés, időjárás-szimulációk stb.) megoldására szolgálnak.
 
-Ezek a cikkek ismertetik, hogyan kezdheti el a InfiniBand-kompatibilis H-sorozatú és N sorozatú virtuális gépeket az Azure-ban, valamint a HPC-és AI-munkaterhelések optimális konfigurációját a virtuális gépeken a méretezhetőség érdekében.
+Ezek a cikkek ismertetik az Azure InfiniBand-kompatibilis H- és N-sorozatú virtuális gépekkel kapcsolatos első lépések, valamint a HPC- és AI-számítási feladatok optimális konfigurációját a virtuális gépeken a méretezhetőség érdekében.
 
 ## <a name="features-and-capabilities"></a>Funkciók és képességek
 
-A InfiniBand enabled H-sorozatú és N sorozatú virtuális gépek úgy vannak kialakítva, hogy a legjobb HPC-teljesítményt, az MPI skálázhatóságot és a költséghatékonyságot használják a HPC számítási feladatokhoz. A virtuális gépek funkcióinak és képességeinek megismeréséhez lásd a [H-sorozat](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gépek című témakört.
+Az InfiniBand-kompatibilis H- és N-sorozatú virtuális gépek úgy vannak kialakítva, hogy a legjobb HPC-teljesítményt, MPI-méretezhetőséget és költséghatékonyságot biztosítják a HPC számítási feladatokhoz. A [H- és](../../sizes-hpc.md) [N-sorozatú](../../sizes-gpu.md) virtuális gépekről további információt a virtuális gépek funkcióiról és képességeiről itt olvashat.
 
 ### <a name="rdma-and-infiniband"></a>RDMA és InfiniBand
 
-A [RDMA képes](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépek kommunikációja az alacsony késésű és a nagy sávszélességű InfiniBand-hálózaton keresztül történik. Az RDMA képesség kritikus fontosságú a elosztott csomópontok és az AI-munkaterhelések méretezhetőségének és teljesítményének növelése érdekében. Az InfiniBand enabled H-sorozatú és N sorozatú virtuális gépek egy nem blokkoló FAT-fában vannak csatlakoztatva, amely alacsony átmérőjű kialakítást biztosít az optimalizált és konzisztens RDMA teljesítményhez.
-A InfiniBand-kompatibilis virtuális gépek InfiniBand beállításával kapcsolatos további tudnivalókért tekintse meg a [InfiniBand engedélyezése](enable-infiniband.md) című témakört.
+[Az RDMA-kompatibilis](../../sizes-hpc.md#rdma-capable-instances) [H-](../../sizes-hpc.md) és [N-sorozatú](../../sizes-gpu.md) virtuális gépek kis késésű és nagy sávszélességű InfiniBand-hálózaton keresztül kommunikálnak. Az ilyen összekapcsoláson keresztüli RDMA-képesség kritikus fontosságú az elosztott csomópontos HPC- és AI-számítási feladatok skálázhatóságának és teljesítményének növelése érdekében. Az InfiniBand-kompatibilis H- és N-sorozatú virtuális gépek egy nem blokkoló, fat fában vannak csatlakoztatva, alacsony szintű kialakítással az optimalizált és konzisztens RDMA-teljesítmény érdekében.
+Az InfiniBand beállításával kapcsolatos további információkért lásd: Enable [InfiniBand](enable-infiniband.md) (InfiniBand engedélyezése).
 
-### <a name="message-passing-interface"></a>Üzenet átadása illesztőfelület
+### <a name="message-passing-interface"></a>Üzenetát átadási felület
 
-Az SR-IOV-kompatibilis H-sorozat és az N-sorozat szinte minden MPI-könyvtárat és-verziót támogat. A leggyakrabban használt MPI-kódtárak a következők: Intel MPI, OpenMPI, HPC-X, MVAPICH2, MPICH, platform MPI. A távoli közvetlen memória-hozzáférés (RDMA) összes művelete támogatott.
-A különböző támogatott MPI-könyvtárak telepítésével és az optimális konfigurációval kapcsolatos további tudnivalókért tekintse meg az [MPI beállítása](setup-mpi.md) című témakört.
+Az SR-IOV-kompatibilis H- és N-sorozat szinte minden MPI-kódtárat és -verziót támogat. Néhány a leggyakrabban használt MPI-kódtárak közül: Intel MPI, OpenMPI, HPC-X, MVAPICH2, MPICH, Platform MPI. Minden távoli közvetlen memóriaelérési (RDMA) művelet támogatott.
+A [különböző támogatott MPI-kódtárak](setup-mpi.md) telepítésével és azok optimális konfigurációjának telepítésével kapcsolatos további információkért lásd az MPI beállítását.
 
 ## <a name="get-started"></a>Bevezetés
 
-Első lépésként válassza a [H-sorozat](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gép típusát a számítási feladatokhoz a virtuálisgép-specifikációk és a [RDMA képesség](../../sizes-hpc.md#rdma-capable-instances)alapján.
-Másodszor konfigurálja a virtuális gépet a InfiniBand engedélyezésével. Ezt többféleképpen is elvégezheti, beleértve az optimalizált virtuálisgép-rendszerképek használatát a besütött illesztőprogramokkal; a részletekért lásd: [a Linux optimalizálása](configure.md) és a [InfiniBand engedélyezése](enable-infiniband.md) .
-Harmadszor, az elosztott csomópontok számítási feladataihoz elengedhetetlen az MPI megfelelő kiválasztása és konfigurálása. További részleteket az [MPI beállítása](setup-mpi.md) című témakörben talál.
-Negyedszer, a teljesítmény és a méretezhetőség érdekében optimálisan konfigurálja a munkaterheléseket a virtuálisgép-családra jellemző útmutatást követve, például a [HBv3-sorozat áttekintéséhez](hbv3-series-overview.md) és a [HC-sorozatok áttekintéséhez](hc-series-overview.md).
+Az első lépés a [virtuálisgép-specifikációk](../../sizes-hpc.md) és az RDMA-képesség alapján optimális H- és [N-sorozatú virtuálisgép-típus](../../sizes-gpu.md) kiválasztása a számítási [feladathoz.](../../sizes-hpc.md#rdma-capable-instances)
+Másodszor konfigurálja a virtuális gépet az InfiniBand engedélyezésével. Ennek többféle módja is van, beleértve az optimalizált virtuálisgép-rendszerképek és a be vannak ékelt illesztőprogramok használatával; Részletekért [lásd: Optimalizálás Linuxra](configure.md) és [InfiniBand](enable-infiniband.md) engedélyezése.
+Harmadszor, az elosztott csomópontok számítási feladatai esetében az MPI megfelelő kiválasztása és konfigurálása kritikus fontosságú. A [részletekért lásd az MPI](setup-mpi.md) beállítását.
+Negyedszer, a teljesítmény és a méretezhetőség érdekében optimálisan konfigurálja a számítási feladatokat a virtuálisgép-családra vonatkozó útmutatás alapján, például a [HBv3-sorozat](hbv3-series-overview.md) áttekintéséhez és a [HC-sorozat áttekintéséhez.](hc-series-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg [, hogyan konfigurálhatja és optimalizálhatja](configure.md) a [H-sorozatú](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gépek InfiniBand.
-- Tekintse át az [HBv3-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
-- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.
+- Ismerje meg [az](configure.md) InfiniBand-kompatibilis [H- és N-sorozatú](../../sizes-hpc.md) virtuális gépek konfigurálását és optimalizálását. [](../../sizes-gpu.md)
+- Tekintse át [a HBv3-sorozat](hb-series-overview.md) áttekintését és a [HC-sorozat](hc-series-overview.md) áttekintését, amelyből megtudhatja, hogyan konfigurálható a számítási feladatok optimális konfigurálása a teljesítmény és a méretezhetőség érdekében.
+- Olvassa el a legújabb közleményeket, HPC számítási feladatok példáit és a teljesítményeredményeket a [Azure Compute Tech Community Blogon.](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)
+- Tesztelje tudását egy tanulási modullal, amely a HPC-alkalmazások azure-beli [optimalizálását használja.](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/)
+- A HPC számítási feladatok futtatásának magasabb szintű architekturális nézetét lásd: Nagy teljesítményű [számítástechnika (HPC) az Azure-ban.](/azure/architecture/topics/high-performance-computing/)

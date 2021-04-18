@@ -3,12 +3,12 @@ title: Application Insights rendelkezésre állás áttekintése
 description: Ismétlődő webes teszteket állíthat be az alkalmazás vagy webhely rendelkezésre állásának és válaszkészségének figyelése érdekében.
 ms.topic: conceptual
 ms.date: 04/15/2021
-ms.openlocfilehash: c3b7a1d0bf8c50c77e5062a702bcdd7600d98d7a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3c2d248df98fcb9f75f5de9c05b9f600955cbac7
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520736"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600794"
 ---
 # <a name="availability-tests-overview"></a>Rendelkezésre állási tesztek áttekintése
 
@@ -18,11 +18,9 @@ Rendelkezésre állási teszteket állíthat be bármely olyan HTTP- vagy HTTPS-
 
 ## <a name="types-of-availability-tests"></a>Rendelkezésre állási tesztek típusai
 
-A rendelkezésre állási teszteknek négy típusa van:
+A rendelkezésre állási teszteknek három típusa van:
 
 * [URL-ping teszt:](monitor-web-app-availability.md)Ez a kategória két egyszerű tesztet tartalmaz, amelyek a portálon keresztül hozhatók létre.
-    - Alapszintű pingelési teszt: Egy egyszerű teszt, amely a Azure Portal.
-    - Szabványos pingelési teszt: Fejlettebb szabványos pingteszt olyan funkciókkal, mint bármely HTTP-kérési metódus (például `GET` `HEAD` , , stb.) használata vagy egyéni `POST` fejlécek hozzáadása.
 * [Többlépéses webes](availability-multistep.md)teszt: Webes kérések sorozatának rögzítése, amely visszajátszható összetettebb forgatókönyvek teszteléséhez. A többlépéses webes tesztek az Enterprise Visual Studio, és fel vannak töltve a portálra végrehajtásra.
 * [Egyéni rendelkezésre állási tesztek](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)nyomon követése: Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a metódussal elküldheti az eredményeket a `TrackAvailability()` Application Insights.
 

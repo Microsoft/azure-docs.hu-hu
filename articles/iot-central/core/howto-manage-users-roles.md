@@ -1,155 +1,154 @@
 ---
-title: Felhasználók és szerepkörök kezelése az Azure IoT Central alkalmazásban | Microsoft Docs
-description: Rendszergazdaként, hogyan kezelheti az Azure IoT Central-alkalmazás felhasználóit és szerepköreit
-author: lmasieri
-ms.author: lmasieri
-ms.date: 12/05/2019
+title: Felhasználók és szerepkörök kezelése Azure IoT Central alkalmazások | Microsoft Docs
+description: Rendszergazdaként a felhasználók és szerepkörök kezelése a Azure IoT Central alkalmazásban
+author: vishwam
+ms.author: vishwams
+ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92122977"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599060"
 ---
-# <a name="manage-users-and-roles-in-your-iot-central-application"></a>Felhasználók és szerepkörök kezelése a IoT Central alkalmazásban
+# <a name="manage-users-and-roles-in-your-iot-central-application"></a>Felhasználók és szerepkörök kezelése az IoT Central-alkalmazásban
 
-Ez a cikk azt ismerteti, hogyan adhat hozzá, szerkeszthet és törölhet felhasználókat az Azure IoT Central alkalmazásban. A cikk azt is ismerteti, hogyan kezelheti a szerepköröket az Azure IoT Central alkalmazásban.
-
-Az **Adminisztráció** szakasz eléréséhez és használatához **rendszergazdai** szerepkörrel kell rendelkeznie egy Azure IoT Central-alkalmazáshoz. Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan hozzáadja az alkalmazáshoz tartozó **rendszergazdai** szerepkörhöz.
+Ez a cikk azt ismerteti, hogy rendszergazdaként hogyan adhat hozzá, szerkeszthet és törölhet felhasználókat a Azure IoT Central alkalmazásban. A cikk azt is bemutatja, hogyan kezelheti az alkalmazás szerepköreit.
 
 ## <a name="add-users"></a>Felhasználók hozzáadása
 
-Minden felhasználónak rendelkeznie kell egy felhasználói fiókkal, mielőtt bejelentkeznek, és hozzá tudnak férni egy Azure IoT Central alkalmazáshoz. Az Azure IoT Central támogatja a Microsoft-fiókok és a Azure Active Directory-fiókok használatát. Azure Active Directory csoportok jelenleg nem támogatottak az Azure IoT Centralban.
+Minden felhasználónak felhasználói fiókkal kell lennie, mielőtt bejelentkezhet és hozzáférhet egy alkalmazáshoz. IoT Central jelenleg támogatja a Microsoft-fiókokat és Azure Active Directory fiókokat, de a Azure Active Directory nem.
 
-További információ: [Microsoft-Fiók Súgó](https://support.microsoft.com/products/microsoft-account?category=manage-account) és gyors útmutató  [: új felhasználók hozzáadása Azure Active Directoryhoz](../../active-directory/fundamentals/add-users-azure-active-directory.md).
+További információkért lásd a Microsoft-fiók [gyorsútmutató: Új](../../active-directory/fundamentals/add-users-azure-active-directory.md)felhasználók hozzáadása a Azure Active Directory. [](https://support.microsoft.com/products/microsoft-account?category=manage-account)
 
-1. Ha felhasználót szeretne felvenni egy IoT Central alkalmazásba, lépjen a **felhasználók** lapra az **Adminisztráció** szakaszban.
+1. Ha hozzá szeretne adni egy felhasználót egy IoT Central alkalmazáshoz, az Adminisztráció **szakasz Felhasználók** **lapjára kell** majd átmenni.
     
     > [!div class="mx-imgBorder"]
     >![Felhasználók kezelése](media/howto-manage-users-roles/manage-users-pnp.png)
 
-1. Felhasználó hozzáadásához a **felhasználók** lapon válassza a **+ felhasználó hozzáadása** elemet.
+1. Felhasználó hozzáadásához a Felhasználók **lapon** válassza a **+ Felhasználó hozzáadása lehetőséget.**
 
-1. Válasszon egy szerepkört a felhasználó számára a **szerepkör** legördülő menüből. További információ a jelen cikk szerepkörök [kezelése](#manage-roles) című szakaszában található szerepkörökről.
+1. Válasszon egy szerepkört a felhasználó számára a **Szerepkör** legördülő menüből. A szerepkörökről további információt a cikk [Szerepkörök](#manage-roles) kezelése szakaszában talál.
 
     > [!div class="mx-imgBorder"]
     >![Felhasználó hozzáadása és szerepkör kiválasztása](media/howto-manage-users-roles/add-user-pnp.png)
 
     > [!NOTE]
-    > Egy egyéni szerepkörbe tartozó felhasználó, aki más felhasználók hozzáadására engedélyt ad nekik, csak a saját szerepkörük alapján adhat hozzá felhasználókat a szerepkörhöz, vagy kevesebb jogosultsággal.
-
-Ha a rendszer töröl egy IoT Central felhasználói azonosítót Azure Active Directoryről, majd újra hozzáadja, a felhasználó nem fog tudni bejelentkezni a IoT Central alkalmazásba. A hozzáférés újbóli engedélyezéséhez a IoT Central rendszergazdájának törölnie kell és el kell olvasnia a felhasználót az alkalmazásban.
+    > Azok a felhasználók, akik olyan egyéni szerepkörben vannak, amely engedélyt ad nekik más felhasználók hozzáadására, csak a saját szerepkörükhöz azonos vagy kevesebb engedéllyel rendelkező szerepkörhöz adhatnak hozzá felhasználókat.
+    > 
+    > Ha egy felhasználót törölnek a Azure Active Directory, majd újra hozzáadják, nem fog tudni automatikusan bejelentkezni az IoT Central alkalmazásba. A hozzáférés újra engedélyezéséhez az alkalmazás rendszergazdájának törölnie kell, majd újra hozzá kell adni a felhasználót az alkalmazásban.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>A felhasználókhoz rendelt szerepkörök szerkesztése
 
-A szerepkörök hozzárendelése után nem módosíthatók. A felhasználóhoz rendelt szerepkör módosításához törölje a felhasználót, majd adja hozzá újra a felhasználót egy másik szerepkörrel.
+A szerepköröket a hozzárendelésük után nem lehet módosítani. A felhasználóhoz rendelt szerepkört úgy módosíthatja, hogy törli a felhasználót, majd ismét hozzáadja egy másik szerepkörhöz.
 
 > [!NOTE]
-> A hozzárendelt szerepkörök a IoT Central alkalmazásra vonatkoznak, és az Azure Portalról nem kezelhetők.
+> A hozzárendelt szerepkörök a IoT Central alkalmazáshoz vannak rendelve, és nem kezelhetők az Azure Portalról.
 
 ## <a name="delete-users"></a>Felhasználók törlése
 
-A felhasználók törléséhez jelöljön ki egy vagy több jelölőnégyzetet a **felhasználók** lapon. Ezután válassza a **Törlés** elemet.
+Felhasználók törléséhez jelöljön be egy vagy több jelölőnégyzetet a **Felhasználók** lapon. Ezután válassza a **Törlés** elemet.
 
 ## <a name="manage-roles"></a>Szerepkörök kezelése
 
-A szerepkörök segítségével szabályozhatja, hogy a szervezeten belül kik végezhetnek el különböző feladatokat IoT Centralban. Az alkalmazás felhasználóihoz három beépített szerepkör rendelhető. Ha finomabb vezérlőre van szüksége, [létrehozhat egyéni szerepköröket](#create-a-custom-role) is.
+A szerepkörökkel szabályozhatja, hogy a szervezeten belül ki számára engedélyezett a különböző feladatok elvégzése a IoT Central. Három beépített szerepkört rendelhet hozzá az alkalmazás felhasználóihoz. Ha [finomabb szabályozásra](#create-a-custom-role) van szüksége, egyéni szerepköröket is létrehozhat.
 
 > [!div class="mx-imgBorder"]
-> ![Szerepkörök kijelölésének kezelése](media/howto-manage-users-roles/manage-roles-pnp.png)
+> ![Szerepkörök kiválasztása](media/howto-manage-users-roles/manage-roles-pnp.png)
 
 ### <a name="administrator"></a>Rendszergazda
 
-A **rendszergazdai** szerepkörben lévő felhasználók az alkalmazás minden részét kezelhetik és vezérelhetik, beleértve a számlázást is.
+A Rendszergazda **szerepkörben a** felhasználók kezelhetik és vezérelheti az alkalmazás minden részét, beleértve a számlázást is.
 
-Az alkalmazást létrehozó felhasználó automatikusan hozzá lesz rendelve a **rendszergazdai** szerepkörhöz. A **rendszergazdai** szerepkörnek mindig legalább egy felhasználónak kell lennie.
+Az alkalmazást létrehozó felhasználó automatikusan hozzá lesz rendelve a **Rendszergazda szerepkörhöz.** A Rendszergazda szerepkörben mindig legalább egy **felhasználónak kell** lennie.
 
 ### <a name="builder"></a>Szerkesztő
 
-A **Builder** szerepkör felhasználói kezelhetik az alkalmazás minden részét, de nem módosíthatják a felügyeletet vagy a folyamatos adatexportálási lapokat.
+A Szerkesztő **szerepkörben** a felhasználók az alkalmazás minden részét kezelhetik, de nem módosíthatnak az Adminisztráció vagy a Folyamatos adatexportáció lapokon.
 
 ### <a name="operator"></a>Operátor
 
-A **kezelői** szerepkörben lévő felhasználók az eszköz állapotát és állapotát tudják figyelni. Nem módosíthatják az eszközök sablonjait, vagy felügyelhetik az alkalmazást. Az operátorok hozzáadhatnak és törölhetnek eszközöket, kezelhetik az eszközök készleteit, és futtathatják az elemzéseket és a feladatokat. 
+Az Operátor **szerepkörben a** felhasználók figyelhetik az eszközök állapotát. Az eszközsablonok módosítása és az alkalmazás felügyelete nem engedélyezett. A kezelők eszközöket adhatnak hozzá és törölhet, eszközkészleteket kezelnek, valamint elemzéseket és feladatokat futtatnak. 
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Ha a megoldás finomabb hozzáférés-vezérlést igényel, egyéni szerepköröket hozhat létre egyéni engedélyekkel. Egyéni szerepkör létrehozásához navigáljon az alkalmazás **felügyelet** szakaszának **szerepkörök** lapjára. Ezután válassza az **+ Új szerepkör** lehetőséget, és adja meg a szerepkör nevét és leírását. Válassza ki a szerepkör által igényelt engedélyeket, majd válassza a **Mentés** lehetőséget.
+Ha a megoldáshoz finomabb hozzáférés-vezérlésre van szükség, egyéni engedélykészletekkel is létrehozhat szerepköröket. Egyéni szerepkör létrehozásához lépjen  az alkalmazás  Felügyelet szakaszában található Szerepkörök lapra. Ezután válassza **az + Új szerepkör lehetőséget,** és adja meg a szerepkör nevét és leírását. Válassza ki a szerepkörhöz szükséges engedélyeket, majd válassza a **Mentés lehetőséget.**
 
-A felhasználókat ugyanúgy adhatja hozzá az egyéni szerepkörhöz, ahogyan a felhasználókat egy beépített szerepkörhöz adja.
+A felhasználókat ugyanúgy használhatja az egyéni szerepkörhöz, mint a beépített szerepkörhöz.
 
 > [!div class="mx-imgBorder"]
 > ![Egyéni szerepkör létrehozása](media/howto-manage-users-roles/create-custom-role-pnp.png)
 
-### <a name="custom-role-options"></a>Egyéni szerepkör beállításai
+### <a name="custom-role-options"></a>Egyéni szerepkör-beállítások
 
-Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó milyen engedélyekkel rendelkezik, ha tagja a szerepkörnek. Bizonyos engedélyek másoktól függenek. Ha például hozzáadja az **alkalmazás-irányítópultok frissítése** jogosultságot egy szerepkörhöz, a rendszer automatikusan hozzáadja az **alkalmazás megtekintése irányítópultok** engedélyt. Az alábbi táblázatok összefoglalják a rendelkezésre álló engedélyeket és azok függőségeit, amelyek egyéni szerepkörök létrehozásakor használhatók.
+Amikor egyéni szerepkört határoz meg, kiválaszthatja azokat az engedélyeket, amelyekhez a felhasználó a szerepkör tagja lesz. Egyes engedélyek másoktól függenek. Ha például hozzáadja  az Alkalmazás irányítópultjának frissítése engedélyt egy szerepkörhöz, akkor az Alkalmazás-irányítópultok megtekintése engedélyre **is szüksége** lesz. Az alábbi táblázatok összefoglalják az egyéni szerepkörök létrehozásakor használható elérhető engedélyeket és azok függőségeit.
 
 #### <a name="managing-devices"></a>Eszközök kezelése
 
-**Eszköz sablonjának engedélyei**
+**Eszközsablon engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
 | Nézet | Nincsenek     |
-| Kezelés | Nézet <br/> Egyéb függőségek: eszközök példányainak megtekintése  |
-| Teljes hozzáférés | Megtekintés, kezelés <br/> Egyéb függőségek: eszközök példányainak megtekintése |
+| Kezelés | Nézet <br/> Egyéb függőségek: Eszközpéldányok megtekintése  |
+| Teljes hozzáférés | Megtekintés, kezelés <br/> Egyéb függőségek: Eszközpéldányok megtekintése |
 
-**Eszköz-példány engedélyei**
-
-| Name | Függőségek |
-| ---- | -------- |
-| Nézet | Nincsenek <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait |
-| Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Létrehozás | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Törlés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Parancsok végrehajtása | Frissítés, megtekintés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-| Teljes hozzáférés | Megtekintheti, frissítheti, létrehozhatja, törölheti, végrehajthatja a parancsokat <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
-
-**Eszközök csoportjai engedélyei**
+**Eszközpéldány engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Nézet | Nincsenek <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
-| Frissítés | Nézet <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
-| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
-| Törlés | Nézet <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
+| Nézet | Nincsenek <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
+| Létrehozás | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
+| Törlés | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
+| Parancsok végrehajtása | Frissítés, Megtekintés <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
+| Nyers adatok megtekintése | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
+| Teljes hozzáférés | View, Update, Create, Delete, Execute commands, View raw data <br/> Egyéb függőségek: Eszközsablonok és eszközcsoportok megtekintése  |
 
-**Eszköz kapcsolati kezelési engedélyei**
+**Eszközcsoportok engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Példány olvasása | Nincsenek <br/> Egyéb függőségek: eszköz-sablonok, eszközcsoport, eszköz-példányok megtekintése |
-| Példány kezelése | Nincsenek |
+| Nézet | Nincsenek <br/> Egyéb függőségek: Eszközsablonok és eszközpéldányok megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközpéldányok megtekintése   |
+| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: Eszközsablonok és eszközpéldányok megtekintése   |
+| Törlés | Nézet <br/> Egyéb függőségek: Eszközsablonok és eszközpéldányok megtekintése  |
+| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés <br/> Egyéb függőségek: Eszközsablonok és eszközpéldányok megtekintése |
+
+**Eszközkapcsolat-kezelési engedélyek**
+
+| Name | Függőségek |
+| ---- | -------- |
+| Olvasási példány | Nincsenek <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, eszközpéldányok megtekintése |
+| Példány kezelése | Olvasási példány <br /> Egyéb függőségek: Eszközsablonok, eszközcsoportok, eszközpéldányok megtekintése |
 | Globális olvasás | Nincsenek   |
 | Globális kezelés | Globális olvasás |
-| Teljes hozzáférés | Példány olvasása, példány kezelése, globális olvasás, globális kezelés. <br/> Egyéb függőségek: eszköz-sablonok, eszközcsoport, eszköz-példányok megtekintése |
+| Teljes hozzáférés | Read instance, Manage instance, Read global, Manage global <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, eszközpéldányok megtekintése |
 
 **Feladatok engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Nézet | Nincsenek <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Törlés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
-| Végrehajtás | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait; Eszköz példányainak frissítése; Parancsok végrehajtása az eszköz példányain |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés, végrehajtás <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait; Eszköz példányainak frissítése; Parancsok végrehajtása az eszköz példányain |
+| Nézet | Nincsenek <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése |
+| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése |
+| Végrehajtás | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése; Eszközpéldányok frissítése; Parancsok végrehajtása eszközpéldányon |
+| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés, végrehajtás <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok és eszközcsoportok megtekintése; Eszközpéldányok frissítése; Parancsok végrehajtása eszközpéldányon |
 
 **Szabályok engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Nézet | Nincsenek <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Frissítés | Nézet <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Törlés | Nézet <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
+| Nézet | Nincsenek <br/> Egyéb függőségek: Eszközsablonok megtekintése |
+| Frissítés | Nézet <br/> Egyéb függőségek: Eszközsablonok megtekintése |
+| Létrehozás | Megtekintés, frissítés <br/> Egyéb függőségek: Eszközsablonok megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: Eszközsablonok megtekintése |
+| Teljes hozzáférés | Megtekintés, Frissítés, Létrehozás, Törlés <br/> Egyéb függőségek: Eszközsablonok megtekintése |
 
 #### <a name="managing-the-app"></a>Az alkalmazás kezelése
 
@@ -159,17 +158,25 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | ---- | -------- |
 | Nézet | Nincsenek     |
 | Frissítés | Nézet   |
-| Másolás | Nézet <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
+| Másolás | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok, eszközcsoportok, irányítópultok, adatexport, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
 | Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, frissítés, másolás, törlés <br/> Egyéb függőségek: megtekintheti az eszközöket, az eszközöket, az alkalmazás-irányítópultokat, az adatexportálást, a branding, a Súgó hivatkozásait, az egyéni szerepköröket |
+| Teljes hozzáférés | Megtekintés, Frissítés, Másolás, Törlés <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, alkalmazás-irányítópultok, adatexportáció, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
 
-**Alkalmazásspecifikus sablon exportálási engedélyei**
+**Alkalmazássablon exportálási engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
 | Nézet | Nincsenek     |
-| Exportálás | Nézet <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
-| Teljes hozzáférés | Megtekintés, exportálás <br/> Egyéb függőségek: megtekintheti az eszközöket, az eszközöket, az alkalmazás-irányítópultokat, az adatexportálást, a branding, a Súgó hivatkozásait, az egyéni szerepköröket |
+| Exportálás | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok, eszközcsoportok, irányítópultok, adatexport, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
+| Teljes hozzáférés | Megtekintés, Exportálás <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, alkalmazás-irányítópultok, adatexportáció, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
+
+**Eszközfájl feltöltési engedélyei**
+
+| Name | Függőségek |
+| ---- | -------- |
+| Nézet | Nincsenek     |
+| Kezelés | Nézet   |
+| Teljes hozzáférés | Megtekintés, kezelés |
 
 **Számlázási engedélyek**
 
@@ -190,17 +197,17 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | Törlés | Nézet |
 | Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
 
-**Felhasználói kezelési engedélyek**
+**Felhasználókezelési engedélyek**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Nézet | Nincsenek <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
-| Hozzáadás | Nézet <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
-| Törlés | Nézet <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
-| Teljes hozzáférés | Megtekintés, Hozzáadás, törlés <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
+| Nézet | Nincsenek <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Hozzáadás | Nézet <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Teljes hozzáférés | Megtekintés, Hozzáadás, Törlés <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
 
 > [!NOTE]
-> Egy egyéni szerepkörbe tartozó felhasználó, aki más felhasználók hozzáadására engedélyt ad nekik, csak a saját szerepkörük alapján adhat hozzá felhasználókat a szerepkörhöz, vagy kevesebb jogosultsággal.
+> Azok a felhasználók, akik olyan egyéni szerepkörben vannak, amely engedélyt ad nekik más felhasználók hozzáadására, csak olyan szerepkörhöz adhatnak hozzá felhasználókat, amelyek a saját szerepkörüknél azonos vagy kevesebb engedéllyel rendelkezik.
 
 #### <a name="customizing-the-app"></a>Az alkalmazás testreszabása
 
@@ -212,7 +219,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés |
 | Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
+| Teljes hozzáférés | Megtekintés, Frissítés, Létrehozás, Törlés |
 
 **Személyes irányítópultok engedélyei**
 
@@ -222,9 +229,9 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés   |
 | Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
+| Teljes hozzáférés | Megtekintés, Frissítés, Létrehozás, Törlés |
 
-**A branding, a favicon és a Colors engedélyek**
+**Márkajelzési, favicon- és színengedélyek**
 
 | Name | Függőségek |
 | ---- | -------- |
@@ -232,7 +239,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | Frissítés | Nézet   |
 | Teljes hozzáférés | Megtekintés, frissítés |
 
-**Súgó hivatkozásainak engedélyei**
+**Súgóhivatkozások engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
@@ -242,7 +249,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 #### <a name="extending-the-app"></a>Az alkalmazás kiterjesztése
 
-**Adatexportálási engedélyek**
+**Adatexport-engedélyek**
 
 | Name | Függőségek |
 | ---- | -------- |
@@ -250,17 +257,17 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 | Frissítés | Nézet   |
 | Létrehozás | Megtekintés, frissítés  |
 | Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, frissítés, létrehozás, törlés |
+| Teljes hozzáférés | Megtekintés, Frissítés, Létrehozás, Törlés |
 
 **API-jogkivonat engedélyei**
 
 | Name | Függőségek |
 | ---- | -------- |
-| Nézet | Nincsenek     |
-| Létrehozás | Nézet   |
-| Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, létrehozás, törlés |
+| Nézet | Nincsenek  <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Létrehozás | Nézet <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Törlés | Nézet <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
+| Teljes hozzáférés | Megtekintés, Létrehozás, Törlés <br/> Egyéb függőségek: Egyéni szerepkörök megtekintése |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan kezelheti a felhasználókat és a szerepköröket az Azure IoT Central alkalmazásban, a javasolt következő lépés a [számla kezelésének](howto-view-bill.md)megismerése.
+Most, hogy megtanulta, hogyan kezelheti a felhasználókat és a szerepköröket a IoT Central-alkalmazásban, a következő javasolt lépés a számla [kezelése.](howto-view-bill.md)

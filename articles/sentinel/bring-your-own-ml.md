@@ -1,6 +1,6 @@
 ---
-title: Saját ML-t hozhat az Azure Sentinelbe | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre és használhat saját gépi tanulási algoritmusokat az adatelemzéshez az Azure Sentinelben.
+title: Saját gépi tanulási Azure Sentinel | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre és használhat saját gépi tanulási algoritmusokat adatelemzéshez a Azure Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,99 +15,99 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2164b8ac6e62b8826d5879da07384769c503bfb5
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99807003"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598601"
 ---
-# <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját Machine Learning (ML) bekapcsolása az Azure Sentinelbe
+# <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját gépi Machine Learning (ML) a Azure Sentinel
 
-A Machine Learning (ML) az Azure Sentinel egyik fő kitűzése, és az egyik fő attribútum, amelyik egymás mellett van beállítva. Az Azure Sentinel számos különböző élményt kínál: a [fúziós](fusion.md) korrelációs motor és a Jupyter notebookok beépített részét, valamint az újonnan elérhető Build-saját ml (byo ml) platformot. 
+Machine Learning (ML) a Azure Sentinel egyik fő alapja, és az egyik fő attribútum, amely miatt ez a különbség. Azure Sentinel kínál gépi tanulási lehetőségeket számos különböző módon: [beépítetten](fusion.md) a Fusion korrelációs motorba és a Jupyter-jegyzetfüzetekbe, valamint az újonnan elérhető Saját gépi tanulási (BYO ML) platformba. 
 
-A ML-észlelési modellek alkalmazkodnak az egyes környezetekhez és a felhasználói viselkedés változásaihoz, így csökkenthetik a téves pozitív állapotot, és azonosítják azokat a fenyegetéseket, amelyek hagyományos megközelítéssel nem találhatók meg. Számos biztonsági szervezet ismeri az ML-t a biztonság szempontjából, de nem sok közülük olyan szakembereket, akik szakértelemmel rendelkeznek mind a biztonságban, mind a ML-ben. Úgy terveztük, hogy a biztonsági szervezeteknek és szakembereknek szóló, a ML-vel való növekedéshez szükséges keretrendszer. Azok a szervezetek, amelyek a megfelelő szaktudással rendelkeznek, akár nem, akár nem, jelentős mértékű védelmi értéket szerezhetnek az Azure Sentinel beépített ML-képességeiből.
+A gépi tanulási észlelési modellek alkalmazkodhatnak az egyes környezetekhez és a felhasználói viselkedés változásaihoz a téves riasztások számának csökkentése és a hagyományos megközelítéssel nem észlelt fenyegetések azonosítása érdekében. Számos biztonsági szervezet tisztában van a gépi tanulási biztonsággal kapcsolatos értékével, de közülük nem sok rendelkezik a biztonsággal és a gépi gépekkel kapcsolatos szakértelemmel rendelkező szakemberek luxusával. Az itt bemutatott keretrendszert úgy alakítottuk ki, hogy a biztonsági szervezetek és a szakemberek együtt fejlődjenek a gépi tanulási úton. A gépi tanulási képességekkel nem rendelkező vagy a szükséges szakértelem nélküli szervezetek jelentős védelmi értéket kaphatnak Azure Sentinel gépi tanulási képességekből.
 
-:::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="Machine learning-keretrendszer":::
+:::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="gépi tanulási keretrendszer":::
 
-## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Mi a saját Machine Learning (BYO-ML) platform?
+## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Mi az a saját Machine Learning (BYO-ML) platform?
 
-A ML-erőforrásokkal rendelkező és egyedi üzleti igényeknek megfelelő egyéni ML-modelleket használó szervezetek esetében a **byo-ml platformot** kínáljuk. A platform lehetővé teszi a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) -környezet és a Jupyter notebookok használatát a ml-környezet létrehozásához. A következő összetevőket tartalmazza:
+Az olyan szervezetek számára, amelyek gépi tanulási erőforrásokkal rendelkezik, és személyre szabott gépi tanulási modelleket szeretne felépíteni az egyedi üzleti igényeiknek megfelelően, a **BYO-ML platformot kínáljuk.** A platform a gépi tanulási környezet [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / [Apache Spark](http://spark.apache.org/) Jupyter Notebookokat használja az ML-környezet előállításához. A következő összetevőket biztosítja:
 
-- egy BYO-ML csomag, amely olyan kódtárakat tartalmaz, amelyek segítenek az adatelérésben és az eredmények visszaküldésében Log Analytics (LA), így az eredmények az észleléssel, a vizsgálattal és a vadászattal is integrálhatók. 
+- egy BYO-ML-csomag, amely kódtárakat tartalmaz az adatok eléréséhez és az eredmények Log Analyticsbe (LA) való visszaküldéséhez, hogy az eredményeket integrálni tudja az észleléssel, vizsgálattal és kereséssel. 
 
-- ML algoritmus-sablonok, amelyekkel testre szabhatja a szervezet bizonyos biztonsági problémáit. 
+- Gépi tanulási algoritmussablonok, amelyek testre szabhatók, hogy illeszkedjenek a szervezet adott biztonsági problémáihoz. 
 
-- minta jegyzetfüzetek a modell betanításához és a modell pontozási tervének megadásához. 
+- mintajegyzetfüzetek a modell betanításához és a modell pontozásának ütemezéséhez. 
 
-Emellett a saját ML-modelljeit és/vagy saját Spark-környezetét is használhatja az Azure Sentinel integrálásához.
+Mindezek mellett saját gépi tanulási modelleket és/vagy saját Spark-környezetet is használhatja a gépi tanulási modellekkel való Azure Sentinel.
 
-A BYO-ML platform használatával a saját ML-modelljeinek kiépítésekor a következő lépésekkel kezdheti meg a munkát: 
+A BYO-ML platformmal ugorhat a saját ML-modellek építésében: 
 
-- A mintaadatok használatával teljes körű tapasztalatokat szerezhet, így nem kell aggódnia a termelési adat kezelésével kapcsolatban.
+- A mintaadatokat tartalmazó jegyzetfüzet teljes gyakorlati tapasztalatot nyújt anélkül, hogy aggódnia kellene az éles adatok kezelése miatt.
 
-- A Spark-környezettel integrált csomag csökkenti az infrastruktúra kezelése során felmerülő kihívásokat és súrlódásokat.
+- A Spark-környezettel integrált csomag csökkenti az infrastruktúra kezelésével kapcsolatos kihívásokat és súrlódásokat.
 
-- A kódtárak támogatják az adatáthelyezést. A betanítási és pontozási jegyzetfüzetek a teljes körű élményt mutatják be, és sablonként szolgálnak a környezethez való alkalmazkodáshoz.
+- A kódtárak támogatják az adatmozgást. A képzési és pontozási jegyzetfüzetek bemutatják a végpontok között használható élményt, és sablonként szolgálnak a környezethez való alkalmazkodáshoz.
 
 ### <a name="use-cases"></a>Használati esetek
  
-A BYO-ML platform és csomag jelentősen csökkenti a saját ML-észlelések kialakításához szükséges időt és erőfeszítést, és felszabadítja az Azure Sentinel bizonyos biztonsági problémáinak elhárítására alkalmas képességet. A platform a következő használati eseteket támogatja:
+A BYO-ML platform és -csomag jelentősen csökkenti a saját gépi tanulási észlelések építéséhez szükséges időt és energiát, és lehetővé teszi bizonyos biztonsági problémák megoldását a Azure Sentinel. A platform a következő eseteket támogatja:
 
-**Egy ml-algoritmus betanítása testreszabott modell beszerzéséhez:** Egy meglévő ML-algoritmust (amelyet a Microsoft vagy a felhasználói közösség is megoszthat) és egyszerűen betaníthat a saját adataiba, hogy egy testreszabott ML-modellt kapjon, amely jobban megfelel az adatainak és a környezetnek.
+**Gépi tanulási algoritmus betanítás egy testreszabott modellhez:** Egy meglévő gépi tanulási algoritmust (amelyet a Microsoft vagy a felhasználói közösség közösen használ), és könnyedén betaníthatja saját adataival, hogy az adatokhoz és a környezethez jobban illeszkedő, testreszabott ML-modellt kap.
 
-**Egy ml-algoritmus sablonjának módosítása testreszabott modell beszerzéséhez:** Módosítható egy ML-algoritmus sablon (amelyet a Microsoft vagy a felhasználói közösség is megoszthat), és betaníthatja a módosított algoritmust a saját adataira, hogy egy testreszabott modellt származtatjon az adott problémához.
+**Gépi tanulási algoritmus sablonjának módosítása a testreszabott modell leához:** Módosíthatja a gépi tanulási algoritmus sablonját (amelyet a Microsoft vagy a felhasználói közösség osztott meg), és saját adatai alapján betaníthatja a módosított algoritmust, hogy az adott problémához illeszkedő, testreszabott modellt képezzen le.
 
-**Saját modell létrehozása:** Hozzon létre saját modellt az Azure Sentinel BYO-ML platformjának és segédprogramjainak használatával.
+**Saját modell létrehozása:** Hozzon létre egy saját modellt az Azure Sentinel BYO-ML platformjának és segédprogramjainak használatával.
 
-**A Databricks/Spark-környezet integrálása:** Integrálja meglévő Databricks-vagy Spark-környezetét az Azure Sentinelbe, és használjon BYO ML-kódtárakat és-sablonokat, hogy az egyedi helyzetekhez ML modelleket hozzon létre.
+**A Databricks-/Spark-környezet integrálása:** Integrálja meglévő Databricks-/Spark-környezetét a Azure Sentinel- és BYO-ML-kódtárakkal és -sablonokkal gépi tanulási modelleket hoz létre az egyedi helyzetekhez.
 
-**Importálja a saját ml-modelljét:** Importálhatja saját ML-modelljeit, és a BYO-ML platformot és segédprogramokat használva integrálhatja őket az Azure Sentinel használatával.
+**Importálja saját gépi tanulási modelljét:** Importálhatja saját gépi tanulási modelljeit, és a BYO-ML platformmal és -segédprogramokkal integrálhatja azokat a Azure Sentinel.
 
-**Ml-algoritmus megosztása:** A Közösség által elfogadott és alkalmazkodó ML-algoritmus megosztása.
+**Gépi tanulási algoritmus megosztása:** Egy gépi tanulási algoritmus megosztása, hogy a közösség beveszi és alkalmazkodjon.
 
-**Használja a ml-t a SecOps meghatalmazása érdekében:** saját egyéni ml-modelljét és a vadászat, az észlelés, a vizsgálat és a válasz eredményét használja.
+**Az ML segítségével lehetővé teszi a SecOps használatát: saját** egyéni ML-modellt és -eredményeket használhat a kereséshez, az észleléshez, a vizsgálathoz és a válaszadáshoz.
 
-Ez a cikk bemutatja a BYO-ML platform összetevőit, valamint azt, hogyan használhatja a platformot és a rendellenes erőforrás-hozzáférési algoritmust, hogy testreszabott ML-észlelést nyújtson az Azure Sentinel használatával.
+Ez a cikk bemutatja a BYO-ML platform összetevőit, valamint azt, hogyan használhatja a platformot és a Rendellenes erőforrás-hozzáférési algoritmust a gépi tanulási észlelés testreszabott Azure Sentinel.
 
 ## <a name="azure-databricksspark-environment"></a>Azure Databricks/Spark-környezet
 
-[Apache Spark™](http://spark.apache.org/) az adatfolyamatok létrehozásához szükséges egységes keretrendszer kialakításával elvégezte a Big Data egyszerűsítését. A Azure Databricks a Sparkon alapuló, zéró felügyeletű felhőalapú platformot biztosít. Javasoljuk, hogy a Databricks-t használja a BYO-ML platformhoz, hogy az adatfolyamatok és a platformmal kapcsolatos problémák megoldása helyett olyan válaszokat találjon, amelyek azonnali hatást gyakorolnak a vállalatra.
-Ha már rendelkezik Databricks vagy bármely más Spark-környezettel, és inkább a meglévő telepítést szeretné használni, akkor a BYO-ML csomag is jól működik rajtuk. 
+[Apache Spark™](http://spark.apache.org/) egy ugrást tett a folyamat-big data egyszerűsítése érdekében azáltal, hogy egységes keretrendszert nyújtott az adat folyamatok építéséhez. Azure Databricks a Sparkra épített, felügyelet nélkül nyújtott felhőplatformot biztosít. Javasoljuk, hogy a Databrickset használja a BYO-ML platformhoz, hogy az adat folyamatokkal és platformokkal kapcsolatos problémák kezelése helyett olyan válaszokat találjon, amelyek azonnali hatással vannak az üzletre.
+Ha már rendelkezik a Databricks vagy bármely más Spark-környezettel, és inkább a meglévő beállítást szeretné használni, a BYO-ML csomag is jól fog működni. 
 
 ## <a name="byo-ml-package"></a>BYO-ML csomag
 
-A BYO ML-csomag tartalmazza a Microsoft ajánlott eljárásait és kutatását az ML-ben a biztonság érdekében. Ebben a csomagban a biztonsági problémákkal kapcsolatos segédprogramok, jegyzetfüzetek és algoritmus-sablonok következő listáját biztosítjuk.
+A BYO ML-csomag a Biztonság érdekében a Microsoft ajánlott eljárásait és kutatásait tartalmazza a gépi tanulási rendszer előterében. Ebben a csomagban a biztonsági problémákhoz szükséges segédprogramok, jegyzetfüzetek és algoritmussablonok alábbi listáját biztosítjuk.
 
-| Fájlnév | Leírás |
+| Fájlnév | Description |
 | --------- | ----------- |
-| azure_sentinel_utilities. WHL | A Blobok Azure-ból való olvasására és Log Analyticsba írására szolgáló segédprogramokat tartalmaz. |
-| AnomalousRASampleData | A notebook a rendellenes erőforrás-hozzáférési modell használatát mutatja be az Azure Sentinel-ben az előállított képzési és tesztelési mintaadatok használatával. |
-| AnomalousRATraining. ipynb | Jegyzetfüzet az algoritmus betanításához, a modellek létrehozásához és mentéséhez. |
-| AnomalousRAScoring. ipynb | Jegyzetfüzet a modell futtatásához, az eredmény megjelenítéséhez és a pontszám visszaírásához vissza az Azure Sentinelbe. |
+| azure_sentinel_utilities.whl | Segédprogramokat tartalmaz a blobok Azure-ból való beolvasáshoz és a Log Analyticsbe való íráshoz. |
+| AnomalousRASampleData | A jegyzetfüzet bemutatja a Rendellenes erőforrás-hozzáférési modell használatát a Azure Sentinel betanítás és tesztelés mintaadatokkal. |
+| AnomalousRATraining.ipynb | Jegyzetfüzet az algoritmus betanítása, a modellek létrehozása és mentése érdekében. |
+| AnomalousRAScoring.ipynb | Jegyzetfüzet, amely ütemezi a modell futtatását, vizualizálja az eredményt, és írja vissza a Azure Sentinel. |
 |
 
-Az általunk kínált első ML-algoritmus a [rendellenes erőforrás-hozzáférés észlelésére](https://github.com/Azure/Azure-Sentinel/tree/master/BYOML)szolgál. Ez egy együttműködési szűrési algoritmuson alapul, és a Windows fájlmegosztás-hozzáférési naplóival van betanítva (biztonsági események a 5140-es AZONOSÍTÓJÚ eseménnyel). A naplóban a modellhez szükséges legfontosabb információk az elért felhasználók és erőforrások párosítása. 
+Az első elérhető ml-algoritmussablon a [Rendellenes erőforrás-hozzáférés észlelése.](https://github.com/Azure/Azure-Sentinel/tree/master/BYOML) Együttműködésen alapuló szűrési algoritmuson alapul, és Windows-fájlmegosztási hozzáférési naplók (5140-es eseményazonosítójú biztonsági események) használatával van betanítva. A modellhez a naplóban a legfontosabb információ az elért felhasználók és erőforrások párosítása. 
 
-## <a name="example-walkthrough-anomalous-file-share-access-detection"></a>Példa a forgatókönyvre: rendellenes fájlmegosztás hozzáférésének észlelése 
+## <a name="example-walkthrough-anomalous-file-share-access-detection"></a>Bemutató: Rendellenes fájlmegosztás-hozzáférés észlelése 
 
-Most, hogy megismerte a BYO-ML platform főbb összetevőit, itt látható egy példa arra, hogy miként használható a platform és az összetevők a testreszabott ML-észlelések továbbítására.
+Most, hogy megismerkedett a BYO-ML platform fő összetevőivel, az alábbi példa bemutatja, hogyan használható a platform és az összetevők testreszabott gépi tanulási észlelésre.
 
-### <a name="setup-the-databricksspark-environment"></a>A Databricks/Spark-környezet beállítása
+### <a name="setup-the-databricksspark-environment"></a>A Databricks-/Spark-környezet beállítása
 
-Ha még nem rendelkezik ilyennel, a saját Databricks-környezetét kell beállítania. Útmutatásért tekintse meg a [Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) gyors üzembe helyezési dokumentumát.
+Ha még nem rendelkezik databricks-környezettel, be kell beállítania a saját Databricks-környezetét. Útmutatásért tekintse meg [a Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) rövid útmutatóját.
 
 ### <a name="auto-export-instruction"></a>Automatikus exportálási utasítás
 
-Ha saját adatai alapján szeretne egyéni ML-modelleket létrehozni az Azure Sentinelben, exportálnia kell az adatait Log Analytics egy blob Storage vagy Event hub-erőforrásba, hogy a ML-modell hozzáférhessen a Databricks. Ismerje meg, hogyan lehet az [Azure sentinelbe bevenni az adatmennyiséget](connect-data-sources.md).
+Ahhoz, hogy a Azure Sentinel-ben saját adatai alapján egyéni gépi tanulási modelleket hoz létre, exportálni kell az adatokat a Log Analyticsből egy Blob Storage- vagy Event Hub-erőforrásba, hogy az ML-modell el tudja férni a Databricksből. Ismerje meg, hogyan [lehet adatokat behozni a Azure Sentinel.](connect-data-sources.md)
 
-Ebben a példában az Azure Blob Storage-ban be kell állítania a fájlmegosztás hozzáférési naplójának betanítási adatait. Az adat formátuma a jegyzetfüzetben és a tárakban van dokumentálva.
+Ebben a példában szüksége lesz a fájlmegosztás-hozzáférési napló betanítás adataira az Azure Blob Storage-ban. Az adatok formátuma a jegyzetfüzetben és a kódtárakban van dokumentálva.
 
-Az [Azure parancssori felületének (CLI)](/cli/azure/monitor/log-analytics)használatával automatikusan exportálhatja log Analytics adatait. 
+Az Azure parancssori felület (CLI) használatával automatikusan exportálhatja az adatokat a Log [Analyticsből.](/cli/azure/monitor/log-analytics) 
 
-A parancsok futtatásához hozzá kell rendelnie a **közreműködő** szerepkört a log Analytics munkaterületen, a Storage-fiókban és a EventHub-erőforrásban. 
+A parancsok futtatásához Közreműködő szerepkört kell hozzárendelni a Log Analytics-munkaterülethez, a Storage-fiókhoz és az EventHub-erőforráshoz.  
 
-Az alábbi példa az automatikus exportálás beállítására szolgáló parancsokat mutat be:
+Itt egy példa az automatikus exportálás beállítására irányuló parancskészletre:
 
 ```azurecli
 
@@ -135,43 +135,43 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
  az monitor log-analytics workspace data-export delete --resource-group "RG_NAME" --workspace-name "WS_NAME" --name "NAME"
 ```
 
-### <a name="export-custom-data"></a>Egyéni adatértékek exportálása
+### <a name="export-custom-data"></a>Egyéni adatok exportálása
 
-Az automatikus exportálás Log Analytics által nem támogatott egyéni adatértékek esetén a Logic app vagy más megoldások használatával helyezheti át az adatait. A [log Analytics-adatexportálás a blob Store](https://www.borninthecloud.com/exporting-log-analytics-data-to-blob-store/?preview=true) -ba blogon és a parancsfájlon keresztül is megtekinthető.
+A Log Analytics automatikus exportálása által nem támogatott egyéni adatok esetén a Logikai alkalmazás vagy más megoldások használatával áthelyezheti az adatokat. Tekintse meg a [Log Analytics-adatok blobtárolóba exportálása blogot](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530) és szkriptet.
 
-### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Az Azure Sentinelen kívüli adatkezelés
+### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Korrelál az adatokkal a Azure Sentinel
 
-Az Azure Sentinelen kívülről is átviheti az adatait a blob Storage-ba vagy az Event hub-ra, és összekapcsolhatja őket az Azure Sentinel-adatokkal, hogy felkészítse az ML-modell 
+Az adatok külső tárolóból is Azure Sentinel blobtárolóba vagy eseményközpontba, és korrelálhatja őket a Azure Sentinel-adatokkal az ML-modellek felépítéséhez. 
  
 ### <a name="copy-and-install-the-related-packages"></a>A kapcsolódó csomagok másolása és telepítése
 
-Másolja a BYO-ML csomagot a fent említett Azure Sentinel GitHub-adattárból a Databricks-környezetbe. Ezután nyissa meg a jegyzetfüzeteket, és kövesse a jegyzetfüzetben található utasításokat a szükséges kódtárak telepítéséhez a fürtökön.
+Másolja a BYO-ML csomagot a fent említett Azure Sentinel GitHub-adattárból a Databricks-környezetbe. Ezután nyissa meg a notebookokat, és kövesse a jegyzetfüzetben található utasításokat a szükséges kódtárak fürtökön való telepítéséhez.
 
-### <a name="model-training-and-scoring"></a>Modellek betanítása és pontozása
+### <a name="model-training-and-scoring"></a>Modell betanítás és pontozás
 
-Kövesse a két jegyzetfüzetben található utasításokat a konfigurációk saját környezetének és erőforrásainak megfelelően történő módosításához, kövesse a modell betanítása és kiépítésének lépéseit, majd ütemezze a modellt a bejövő fájlmegosztás hozzáférési naplóihoz.
+A két jegyzetfüzet utasításait követve módosítsa a konfigurációkat a saját környezetének és erőforrásainak megfelelően, kövesse a modell betanítási és buildelésekor szükséges lépéseket, majd ütemezi a modellt a bejövő fájlmegosztási hozzáférési naplók pontozására.
 
-### <a name="write-results-to-log-analytics"></a>Eredmények Log Analyticsba írása
+### <a name="write-results-to-log-analytics"></a>Eredmények írása a Log Analyticsbe
 
-Miután beolvasta a pontozást, a pontozási jegyzetfüzet moduljának használatával megírhatja a pontszám eredményeit az Azure Sentinel-példányhoz társított Log Analytics munkaterületre.
+Ha a pontozás ütemezve van, a pontozási jegyzetfüzet modulját használva a pontozási jegyzetfüzetben megírhatja a pontszám eredményeit az Azure Sentinel-példányhoz társított Log Analytics-munkaterületre.
 
-### <a name="check-results-in-azure-sentinel"></a>Eredmények keresése az Azure Sentinelben
+### <a name="check-results-in-azure-sentinel"></a>Eredmények ellenőrzése a Azure Sentinel
 
-Ha a kapcsolódó napló részleteivel együtt szeretné megtekinteni az eredményül kapott eredményeket, térjen vissza az Azure Sentinel-portálra. A **naplók** > egyéni naplókban az eredményeket a **AnomalousResourceAccessResult_CL** táblában (vagy a saját egyéni táblanév) fogja látni. Ezeket az eredményeket használhatja a nyomozási és a vadászati élmény fokozásához.
+A pontozási eredmények és a kapcsolódó naplóadatok együttesen való megtekintése érdekében lépjen vissza a Azure Sentinel portálra. Az **Egyéni** > naplók naplóiban az eredmények  a AnomalousResourceAccessResult_CL táblában (vagy a saját egyéni táblanevében) fognak látszatra. Ezeket az eredményeket felhasználhatja a vizsgálati és keresési élmény továbbfejlesztése érdekében.
 
 :::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="rendellenes erőforrás-hozzáférési naplók":::
 
-### <a name="build-custom-analytics-rule-with-ml-results"></a>Egyéni elemzési szabály készítése ML-eredményekkel
+### <a name="build-custom-analytics-rule-with-ml-results"></a>Egyéni elemzési szabály létrehozása gépi tanulási eredményekkel
 
-Miután megerősítette, hogy a ML-eredmények szerepelnek az egyéni naplók táblában, és elégedett a pontszámok hűségével, az eredmények alapján létrehozhat egy észlelést. Nyissa meg az **Analytics szolgáltatást** az Azure Sentinel portálon, és [hozzon létre egy új észlelési szabályt](tutorial-detect-threats-custom.md). Az alábbi példa az észlelés létrehozásához használt lekérdezést mutatja be.
+Miután meggyőződött arról, hogy a gépi tanulási eredmények az egyéni naplók táblában vannak, és elégedett a pontszámok hűségével, az eredmények alapján észlelést hozhat létre. A **portálon az Elemzés** Azure Sentinel, és [hozzon létre egy új észlelési szabályt.](tutorial-detect-threats-custom.md) Az alábbi példa az észlelés létrehozásához használt lekérdezést mutatja be.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Egyéni elemzési szabály létrehozása B Y O M L-észlelésekhez":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="egyéni elemzési szabály létrehozása A B Y O M L észleléséhez":::
 
-### <a name="view-and-respond-to-incidents"></a>Incidensek megtekintése és reagálás
-Miután beállította az elemzési szabályt az ML-eredmények alapján, ha a lekérdezésben beállított küszöbérték felett van eredmény, akkor az Azure Sentinel **incidensek** lapján létrejön egy incidens. 
+### <a name="view-and-respond-to-incidents"></a>Incidensek megtekintése és válaszadás az incidensekre
+Miután beállította az elemzési szabályt a gépi tanulási eredmények alapján, és az eredmények a lekérdezésben beállított küszöbérték  fölé esnek, a rendszer létrehoz egy incidenst, és felszínre hoz egy incidenst az Azure Sentinel. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a dokumentumból megtanulta, hogyan használhatja az Azure Sentinel BYO-ML platformját saját gépi tanulási algoritmusok létrehozására vagy importálására az adatelemzés és a fenyegetések észlelése érdekében.
+Ebben a dokumentumban megtanulta, hogyan használhatja a Azure Sentinel BYO-ML platformját saját gépi tanulási algoritmusok létrehozására vagy importálására az adatok elemzéséhez és a fenyegetések észleléséhez.
 
-- Tekintse meg az [Azure Sentinel blogjában](https://aka.ms/azuresentinelblog)a gépi tanulással és sok más témával kapcsolatos témakört.
+- A gépi tanulással kapcsolatos bejegyzéseket és számos egyéb kapcsolódó témakört az [Azure Sentinel blogban talál.](https://aka.ms/azuresentinelblog)

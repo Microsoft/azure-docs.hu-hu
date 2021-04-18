@@ -1,6 +1,6 @@
 ---
-title: Alcide-kAudit-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a Alcide kAudit-adatkészletek az Azure Sentinelhez.
+title: Alcide kAudit-adatok csatlakoztatása Azure Sentinel| Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatja az Alcide kAudit-adatokat Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b146e228de13109975a76b0e4c6c9fd183fd362d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096871"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600404"
 ---
-# <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>A Alcide-kAudit összekötése az Azure Sentinel használatával
+# <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Az Alcide kAudit csatlakoztatása a Azure Sentinel
 
 > [!IMPORTANT]
-> Az Azure Sentinel Alcide kAudit-adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Alcide kAudit adat-összekötő Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a funkció szolgáltatói szerződés nélkül biztosított, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) segítségével azonosíthatja a rendellenes Kubernetes viselkedéseket, és az észlelési idő csökkentése mellett a Kubernetes és az incidensekre koncentrálhat. Ez a cikk azt ismerteti, hogyan csatlakoztatható a Alcide kAudit-megoldás az Azure Sentinelhez. A Alcide kAudit adatösszekötője lehetővé teszi a kAudit-naplózási adatai egyszerű üzembe helyezését az Azure Sentinelben, így megtekintheti a munkafüzetekbe, és egyéni riasztásokat hozhat létre, és a vizsgálat javítására is felhasználhatja azt. A Alcide kAudit és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
+[Az Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) segítségével azonosíthatja a rendellenes Kubernetes-viselkedéseket, és a Kubernetes-incidensekkel és -incidensekkel kapcsolatos problémákra összpontosíthat, miközben csökkenti az észlelési időt. Ez a cikk azt ismerteti, hogyan csatlakoztathatja az Alcide kAudit megoldást a Azure Sentinel. Az Alcide kAudit adat-összekötő lehetővé teszi a kAudit-naplóadatok egyszerű behozását az Azure Sentinel-ba, így megtekintheti azokat munkafüzetekben, egyéni riasztásokat hozhat létre, és beépítheti őket a vizsgálat javítása érdekében. Az Alcide kAudit és a Azure Sentinel közötti integráció a REST API.
 
 > [!NOTE]
-> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+> Az adatok annak a munkaterületnek a földrajzi helyén lesznek tárolva, amelyen a munkaterületet Azure Sentinel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Olvasási és írási engedélyekkel kell rendelkeznie az Azure Sentinel munkaterületen.
+- Olvasási és írási engedéllyel kell rendelkeznie a Azure Sentinel munkaterületen.
 
-- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz.
+- A munkaterület megosztott kulcsait olvasási engedélyekkel kell rendelkeznie.
 
-## <a name="configure-and-connect-alcide-kaudit"></a>Alcide-kAudit konfigurálása és összekapcsolása
+## <a name="configure-and-connect-alcide-kaudit"></a>Az Alcide kAudit konfigurálása és csatlakoztatása
 
-A Alcide kAudit közvetlenül az Azure Sentinelbe is exportálhatja a naplókat.
+Az Alcide kAudit közvetlenül exportálhatja a naplókat a Azure Sentinel.
 
-1. Az Azure Sentinel-portálon kattintson a navigációs menü **adatösszekötők** elemére.
+1. A Azure Sentinel a navigációs **menüben** kattintson az Adat-összekötők elemre.
 
-1. Válassza a **Alcide kAudit** elemet a katalógusból, majd kattintson az **összekötő megnyitása lapra** .
+1. A katalógusban válassza az **Alcide kAudit** lehetőséget, majd kattintson az **Összekötő oldal megnyitása gombra.**
 
-1. Kövesse a [Alcide KAudit telepítési útmutatójának](https://get.alcide.io/hubfs/Azure%20Sentinel%20Integration%20with%20kAudit.pdf)lépésenkénti útmutatóját.
+1. Kövesse az [Alcide kAudit](https://awesomeopensource.com/project/alcideio/kaudit?categoryPage=29#before-installing-alcide-kaudit)telepítési útmutatóban található részletes utasításokat.
 
-1. Amikor a rendszer a munkaterület-azonosítót és az elsődleges kulcsot kéri, a Alcide kAudit-adatösszekötő lapról másolhatja őket.
+1. Ha a rendszer kéri a munkaterület azonosítóját és az elsődleges kulcsot, átmásolhatja őket az Alcide kAudit adat-összekötő oldalára.
 
     :::image type="content" source="media/connect-alcide-kaudit/alcide-workspace-id-primary-key.png" alt-text="Munkaterület-azonosító és elsődleges kulcs":::
 
-## <a name="find-your-data"></a>Az adatai megkeresése
+## <a name="find-your-data"></a>Az adatok megkeresása
 
-A sikeres kapcsolatok létrejötte után az adat a **naplókban** a következő adattípusok alatt jelenik meg a **CustomLogs**:
+A sikeres kapcsolat létrejötte után az  adatok a Következő adattípusok alatt jelennek meg a Naplókban a **CustomLogsban:**
 
-- **alcide_kaudit_detections_1_CL** – Alcide kaudit észlelések 
-- **alcide_kaudit_activity_1_CL** – Alcide kaudit
-- **alcide_kaudit_selections_count_1_CL** – Alcide kaudit-tevékenységek száma
-- **alcide_kaudit_selections_details_1_CL** – Alcide kaudit-tevékenység részletei
+- **alcide_kaudit_detections_1_CL** – Alcide kAudit észlelése 
+- **alcide_kaudit_activity_1_CL** – Alcide kAudit tevékenységnaplók
+- **alcide_kaudit_selections_count_1_CL** – Alcide kAudit-tevékenységek száma
+- **alcide_kaudit_selections_details_1_CL** – Alcide kAudit tevékenység részletei
 
-Ha a Alcide kAudit tartozó naplókban szeretné használni a megfelelő sémát, keresse meg a fent említett adattípusokat.
+Az Alcide kAudit naplóiban a megfelelő séma használatával keresse meg a fent említett adattípusokat.
 
-Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
+Akár 20 percig is eltarthat, amíg a naplók megjelennek a Log Analyticsben.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Alcide kAudit az Azure Sentinelhez. Az adatösszekötőhöz beépített képességek teljes kihasználásához kattintson a **következő lépések** lapra az adatösszekötő lapon. Itt talál néhány kész minta lekérdezést, hogy megismerkedjen a hasznos információk megtalálásával.
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja az Alcide kAuditet a Azure Sentinel. Az adat-összekötő beépített képességeinek teljes körű kihasználása  érdekében kattintson az adat-összekötő oldalÁnak További lépések lapjára. Itt talál néhány használatra kész mintalekérdezéseket, hogy elkezdhet hasznos információkat találni.
 
-Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+A további Azure Sentinel a következő cikkekben talál:
 
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
-- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+- Megtudhatja, [hogyan olvashatja be az adatokat és a lehetséges fenyegetéseket.](quickstart-get-visibility.md)
+- A fenyegetések [észlelésének első Azure Sentinel.](tutorial-detect-threats-built-in.md)
+- [Munkafüzetek használata](tutorial-monitor-your-data.md) az adatok figyelése érdekében.

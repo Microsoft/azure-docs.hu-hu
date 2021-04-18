@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538867"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600862"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Új bérlő regisztrálása Power BI beolvasása (előzetes verzió)
 
@@ -49,7 +49,7 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
 
 ## <a name="associate-the-security-group-with-the-tenant"></a>A biztonsági csoport társítása a bérlővel
 
-1. Jelentkezzen be a [Power BI portálra.](https://app.powerbi.com/admin-portal/tenantSettings)
+1. Jelentkezzen be a [felügyeleti Power BI portálra.](https://app.powerbi.com/admin-portal/tenantSettings)
 1. Válassza a **Bérlői beállítások** lapot.
 
     > [!Important]
@@ -70,15 +70,11 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
 
 Most, hogy a Felügyelt identitás véglegesnézete jogosultságot adott a Power BI-bérlő rendszergazdai API-jának való csatlakozáshoz, beállíthatja a vizsgálatot az Azure Purview Studióban.
 
-1. Válassza a **Felügyeleti központ** ikont.
+1. Válassza a **források lehetőséget** a bal oldali navigációs sávon.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Felügyeleti központ ikon.":::
+1. Válassza a **Regisztráció** lehetőséget.
 
-1. Ezután válassza **az + Új lehetőséget** az **Adatforrások oldalon.**
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Új adatforrás gomb képe":::
-
-    Adatforrásként **Power BI** az Adatforrás lehetőséget.
+    Adatforrásként **Power BI** válassza az Adatforrás lehetőséget.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="A kiválasztható adatforrások listáját bemutató kép":::
 
@@ -86,9 +82,9 @@ Most, hogy a Felügyelt identitás véglegesnézete jogosultságot adott a Power
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Adatforrás-Power BI nevét bemutató kép":::
 
-    A névnek 3–63 karakter hosszúságúnak kell lennie, és csak betűket, számokat, aláhúzásjeleket és kötőjeleket tartalmazhat.  A szóközök nem engedélyezettek.
+    A név 3–63 karakter hosszúságú lehet, és csak betűket, számokat, aláhúzásjeleket és kötőjeleket tartalmazhat.  A szóközök nem engedélyezettek.
 
-    Alapértelmezés szerint a rendszer megkeresi az Power BI bérlőt, amely ugyanabban az Azure-előfizetésben található.
+    Alapértelmezés szerint a rendszer megkeresi a Power BI bérlőt, amely ugyanabban az Azure-előfizetésben található.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI adatforrás regisztrálva":::
 

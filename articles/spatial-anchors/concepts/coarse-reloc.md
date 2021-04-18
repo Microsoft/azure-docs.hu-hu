@@ -1,6 +1,6 @@
 ---
 title: Durva helyzet-újrameghatározás
-description: Megtudhatja, hogyan és mikor kell használni a durva újrahonosítást. A durva újrahonosítás segít megtalálni a közeli horgonyokat.
+description: Megtudhatja, hogyan és mikor használjon durva újraszámítást. A durva újralokalizálás segít megtalálni a közelében lévő horgonyokat.
 author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
@@ -9,151 +9,151 @@ ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f0b04183c4df469d4f723486103790c4f97671b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2737f58fa95d1aa45d9952e8b501c1b9be4d1b0
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656175"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600352"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
-A durva újrahonosítás egy olyan szolgáltatás, amely nagy léptékű honosítást tesz lehetővé azáltal, hogy hozzávetőleges, de gyors választ biztosít ezekre a kérdésekre: 
-- *Hol van most az eszközem?* 
-- *Milyen tartalmat érdemes megfigyelni?* 
+A durva újralokalizálás egy olyan funkció, amely lehetővé teszi a nagy léptékű honosítást azáltal, hogy hozzávetőleges, de gyors választ ad ezekre a kérdésekre: 
+- *Hol van az eszközöm?* 
+- *Milyen tartalmat kell megfigyelni?* 
  
-A válasz nem pontos. Ezen az űrlapon jelennek meg: *Ön ezen horgonyokhoz közeledik. Keresse meg az egyiket*.
+A válasz nem pontos. Ebben a formában: Közel áll ezekhez a *horgonyokhoz. Próbálja meg megkeresni az egyiket.*
 
-A durva újrahonosítás a különböző, a gyors lekérdezéshez használatos, az eszközön lévő érzékelőkkel rendelkező, különféle szenzorokkal rendelkező adatolvasások címkézésével működik. A kültéri forgatókönyvek esetében az érzékelő adatok általában az eszköz GPS (globális helymeghatározási rendszer) pozíciója. Ha a GPS nem érhető el vagy nem megbízható, például ha bezárták, az érzékelő az Wi-Fi hozzáférési pontokból és a hatótávolságon belüli Bluetooth-figyelőből áll. Az összegyűjtött érzékelők adatai hozzájárulnak az Azure térbeli horgonyok által használt térbeli indexek fenntartásához, hogy gyorsan meghatározhassa, hogy mely horgonyok vannak az eszközhöz közeledve.
+A durva újraméretezés úgy működik, hogy a horgonyokat különböző, később a gyors lekérdezéshez használt, az eszközön található érzékelőkre vonatkozó adatokkal címkézi. A kültéri forgatókönyvekben az érzékelőadatok általában az eszköz GPS-ének (Globális helymegadó rendszer) pozícióját használják. Ha a GPS nem érhető el vagy megbízhatatlan, például ha beltéri, az érzékelő adatai az Wi-Fi hozzáférési pontokból és Bluetooth-adatgyűjtő jelekből állnak, amelyek tartományon belül vannak. Az összegyűjtött érzékelőadatok hozzájárulnak az Azure Spatial Anchors által használt térbeli index fenntartásához, amellyel gyorsan meghatározható, hogy mely horgonyok egymáshoz közel vannak az eszközhöz.
 
-## <a name="when-to-use-coarse-relocalization"></a>Mikor használjon durva újrahonosítást
+## <a name="when-to-use-coarse-relocalization"></a>Mikor kell durva újralokalizálást használni?
 
-Ha több mint 35 térbeli horgonyt szeretne kezelni egy olyan térben, amely nagyobb, mint egy teniszpálya, akkor valószínűleg kihasználhatja a durva újrahonosítási térbeli indexelést.
+Ha több mint 35 térbeli horgonyt tervez kezelni egy olyan térben, amely nagyobb, mint egy tárgyalóterm, valószínűleg hasznát fogja látni a durva újralokalizációs térindexelésnek.
 
-A durva újrahonosítás által engedélyezett horgonyok gyors keresése úgy lett kialakítva, hogy leegyszerűsítse az alkalmazások globális gyűjteményekkel támogatott fejlesztését, azaz több millió földrajzilag elosztott horgonyt. A térbeli indexelés összetettsége minden rejtett, így az alkalmazás logikája is koncentrálhat. Az Azure térbeli horgonyai az összes nehéz munkát elvégzik a színfalak mögött.
+A coarse relocalization által lehetővé tett horgonyok gyors keresésének célja, hogy leegyszerűsítse a világméretű, például több millió geo elosztott horgonyból áll gyűjteményre alapozható alkalmazások fejlesztését. A térbeli indexelés összetettsége rejtve van, így ön az alkalmazáslogikákra összpontosíthat. Minden nehéz munkát a háttérben végez az Azure Spatial Anchors.
 
-## <a name="using-coarse-relocalization"></a>Durva újrahonosítás használata
+## <a name="using-coarse-relocalization"></a>Durva újraszámítás használata
 
-Az alábbi tipikus munkafolyamat a durva újrahonosítással rendelkező Azure térbeli horgonyok létrehozásához és lekérdezéséhez használható:
-1.  Hozzon létre és konfiguráljon egy érzékelő ujjlenyomat-szolgáltatót a kívánt Sensor-adatok gyűjtéséhez.
-2.  Indítsa el az Azure térbeli horgonyok munkamenetét, és hozza létre a horgonyokat. Mivel az érzékelő ujjlenyomatának engedélyezése engedélyezve van, a rendszer a horgonyokat a durva újrahonosítással végzi.
-3.  A térbeli horgonyok munkamenetben a dedikált keresési feltételek használatával a környező horgonyokat durva újrahonosítással keresheti meg.
+Az Azure-erőforrások létrehozása és lekérdezése jellemzően a következő Spatial Anchors újralokalizálással:
+1.  Érzékelő ujjlenyomat-szolgáltatójának létrehozása és konfigurálása a kívánt érzékelőadatok gyűjtéséhez.
+2.  Indítson el egy Azure Spatial Anchors munkamenetet, és hozza létre a horgonyokat. Mivel az érzékelő ujjlenyomat-használata engedélyezve van, a horgonyok térbeli indexelése durva újralokalizálással.
+3.  A horgonyokat körülvevő lekérdezések durva újraméretezéssel, az adott munkamenetben a dedikált keresési feltételek Spatial Anchors használatával.
 
-Az alábbi oktatóanyagok egyikével megadhatja az alkalmazásban a durva újrahonosítást:
-* [Durva újrahonosítás az egységben](../how-tos/set-up-coarse-reloc-unity.md)
-* [Durva újrahonosítás az Objective-C-ben](../how-tos/set-up-coarse-reloc-objc.md)
-* [Durva újrahonosítás a Swift-ben](../how-tos/set-up-coarse-reloc-swift.md)
-* [Durva újrahonosítás Java-ban](../how-tos/set-up-coarse-reloc-java.md)
-* [Durva újrahonosítás a C++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md)
-* [Durva újrahonosítás a C++/WinRT](../how-tos/set-up-coarse-reloc-cpp-winrt.md)
+Az alábbi oktatóanyagok egyikében állíthatja be a durva újraméretezést az alkalmazásban:
+* [Durva újraméretezés a Unityben](../how-tos/set-up-coarse-reloc-unity.md)
+* [Durva újraméretezés az Objective-C-ben](../how-tos/set-up-coarse-reloc-objc.md)
+* [Durva újraméretezés a Swiftben](../how-tos/set-up-coarse-reloc-swift.md)
+* [Durva újralokalizálás Java nyelven](../how-tos/set-up-coarse-reloc-java.md)
+* [Durva újrahelyezés a C++/NDK-ban](../how-tos/set-up-coarse-reloc-cpp-ndk.md)
+* [Durva újrahelyezés a C++/WinRT-ben](../how-tos/set-up-coarse-reloc-cpp-winrt.md)
 
 ## <a name="sensors-and-platforms"></a>Érzékelők és platformok
 
 ### <a name="platform-availability"></a>Platform rendelkezésre állása
 
-Ezeket az adattípusokat elküldheti a Anchor szolgáltatásnak:
+Ezeket az érzékelőadatokat elküldheti a horgonyszolgáltatásnak:
 
-* GPS-pozíció: szélesség, hosszúság, magasság
-* Wi-Fi hozzáférési pontok jelerőssége a tartományon belül
-* Bluetooth-figyelők jelerőssége a tartományon belül
+* GPS-helyzet: szélesség, hosszúság, magasság
+* A Wi-Fi hozzáférési pontok jelerősségét
+* Bluetooth-jelek jelerősségének tartományon belül
 
-Ez a táblázat összefoglalja az érzékelő által támogatott platformokon elérhető adatok rendelkezésre állását, és információt nyújt arról, hogy tisztában legyenek az alábbiakkal:
+Ez a táblázat összefoglalja az érzékelők adatainak elérhetőségét a támogatott platformokon, és a következő információkat tartalmazza:
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **GPS**         | Nem<sup>1</sup>  | Igen<sup>2</sup> | Igen<sup>3</sup> |
+| **Gps**         | Nem<sup>1</sup>  | Igen<sup>2</sup> | Igen<sup>3</sup> |
 | **Wi-Fi**        | Igen<sup>4</sup> | Igen<sup>5</sup> | No  |
-| **Egyazon figyelő** | Igen<sup>6</sup> | Igen<sup>6</sup> | Igen<sup>6</sup>|
+| **BLE-jelek** | Igen<sup>6</sup> | Igen<sup>6</sup> | Igen<sup>6</sup>|
 
 
-<sup>1</sup> külső GPS-eszköz társítható a HoloLens. Vegye fel [a kapcsolatot a támogatási szolgálattal](../spatial-anchor-support.md) , ha szeretné használni a HoloLens-t egy GPS Tracker használatával.<br/>
-<sup>2</sup> támogatott a [LocationManager][3] API-kon keresztül (a GPS és a hálózat is).<br/>
-<sup>3</sup> támogatott a [CLLocationManager][4] API-kon keresztül.<br/>
-<sup>4</sup> minden 3 másodpercenként körülbelül egy vizsgálattal támogatott. <br/>
-<sup>5</sup> a 28. API-val kezdődően a Wi-Fi vizsgálatok két percenként négy hívásra vannak szabályozva. Az Android 10 verziótól kezdődően letilthatja ezt a szabályozást a **fejlesztői beállítások** menüből. További információt az [Android dokumentációjában][5]talál.<br/>
-<sup>6</sup> a [Eddystone][1] és a [iBeacon][2].
+<sup>1</sup> Külső GPS-eszköz társítható a HoloLenshez. Ha [szívesen használna](../spatial-anchor-support.md) a HoloLenst GPS-követővel, lépjen kapcsolatba a támogatási szolgálattal.<br/>
+<sup>2</sup> A [LocationManager][3] API-kon keresztül támogatott (GPS és NETWORK is).<br/>
+<sup>3.</sup> A [CLLocationManager API-kon][4] keresztül támogatott.<br/>
+<sup>4</sup> 3 másodpercenként körülbelül egy vizsgálat esetén támogatott. <br/>
+<sup>5</sup> A 28. API-szinttől kezdődően a Wi-Fi 2 percenként négy hívásra vannak leszűkve. Az Android 10-től kezdődően ezt a szabályozást a Fejlesztői beállítások **menüből tilthatja** le. További információt az [Android dokumentációjában talál.][5]<br/>
+<sup>6</sup> [Eddystone-ra és][1] [iBeacon-ra korlátozva.][2]
 
-### <a name="which-sensor-to-enable"></a>Az engedélyezni kívánt érzékelő
+### <a name="which-sensor-to-enable"></a>Melyik érzékelőt kell engedélyezni?
 
-Az érzékelő kiválasztása a fejlesztett alkalmazástól és a platformtól függ.
-Ez az ábra egy kiindulási pontot biztosít annak meghatározásához, hogy mely érzékelők legyenek engedélyezve, a honosítási forgatókönyvtől függően:
+Az érzékelő megválasztása a fejlesztésen és a platformon múlik.
+Ez az ábra kiindulási pontot biztosít annak meghatározásához, hogy a honosítási forgatókönyvtől függően melyik érzékelőkombináció engedélyezhető:
 
-![A különböző forgatókönyvekhez engedélyezett érzékelőket megjelenítő diagram.](media/coarse-relocalization-enabling-sensors.png)
+![Diagram a különböző forgatókönyvek engedélyezett érzékelőiről.](media/coarse-relocalization-enabling-sensors.png)
 
-A következő szakaszokban részletesebben ismertetjük az egyes érzékelők típusának előnyeit és korlátozásait.
+A következő szakaszok további betekintést nyújtanak az egyes érzékelőtípusok előnyeibe és korlátaiba.
 
-### <a name="gps"></a>GPS
+### <a name="gps"></a>Gps
 
-A GPS a kültéri forgatókönyvek esetében is elérhető.
-Ha az alkalmazásban GPS-t használ, vegye figyelembe, hogy a hardver által megadott olvasások jellemzően a következők:
+A GPS a szabadban történő használatra vonatkozó lehetőség.
+Ha GPS-t használ az alkalmazásban, ne feledje, hogy a hardver által biztosított adatok általában a következő adatok:
 
-* Aszinkron és alacsony gyakoriságú (kevesebb mint 1 Hz).
-* Megbízhatatlan/zajos (átlagosan 7 méteres szórás).
+* Aszinkron és alacsony gyakoriság (1 Hz-nél kisebb).
+* Megbízhatatlan/zajos (átlagosan 7 m szórás).
 
-Általánosságban elmondható, hogy az eszköz operációs rendszere és a térbeli horgonyok is kiszűrik és kikövetkeztetik a nyers GPS-jelet a problémák enyhítésére tett kísérlet során. A további feldolgozáshoz idő szükséges a konvergenciához, ezért a legjobb eredmény érdekében a következőket kell tennie:
+Általánosságban elmondható, hogy az eszköz operációs Spatial Anchors a nyers GPS-jel szűrését és extrapolálását is el fogja látni a problémák enyhítése érdekében. A további feldolgozáshoz időre van szükség a konvergenciához, ezért a legjobb eredmény érdekében a következőt kell megpróbálni:
 
-* A lehető leghamarabb hozzon létre egy érzékelő ujjlenyomat-szolgáltatót az alkalmazásban.
-* Tartsa életben az érzékelő ujjlenyomat-szolgáltatóját több munkamenet között.
-* Ossza meg az érzékelő ujjlenyomat-szolgáltatóját több munkamenet között.
+* Hozzon létre egy érzékelő ujjlenyomat-szolgáltatót a lehető leghamarabb az alkalmazásban.
+* Tartsa az érzékelő ujjlenyomat-szolgáltatóját több munkamenet között.
+* Az érzékelő ujjlenyomat-szolgáltatójának megosztása több munkamenet között.
 
-A fogyasztói minőségű GPS-eszközök jellemzően nem pontosak. A [Zandenbergen és a Barbeau (2011)][6] által készített tanulmány azt jelenti, hogy a GPS-t (a-GPS-t) támogató mobiltelefonok medián pontossága körülbelül 7 méter. Ez elég nagy érték a mellőzéshez! Ezeknek a mérési hibáknak a kiszámításához a szolgáltatás a GPS-térben lévő valószínűségi Eloszlásként kezeli a horgonyokat. Tehát a horgony az a terület, amely a legvalószínűbb (több mint 95%-os megbízhatósággal) tartalmazza az igaz, ismeretlen GPS-pozíciót.
+A fogyasztói szintű GPS-eszközök általában nem jól használhatók. Zandosságen és [Barbosság (2011)][6] egyik tanulmánya szerint a GPS-t (A-GPS) használó mobiltelefonok medián pontossága körülbelül 7 méter. Ez egy elég nagy érték, amit figyelmen kívül kell hagyni! A mérési hibák figyelembe vétele érdekében a szolgáltatás a horgonyokat a GPS-tér valószínűségi eloszlásaként kezeli. Tehát a horgony az a terület régiója, ahol a legvalószínűbb (több mint 95%-os megbízhatósággal) a valódi, ismeretlen GPS-pozícióját tartalmazza.
 
-Ugyanez az indoklás a GPS használatával történő lekérdezés esetén is érvényes. Az eszköz egy másik térbeli megbízhatósági régióként jelenik meg a valódi, ismeretlen GPS-pozíciója körül. A közeli horgonyok felderítése lefordítja, hogy a megbízhatósági régiókban található horgonyok *elég közel* legyenek az eszköz bizalmas régiójához, ahogy az itt látható:
+Ugyanez az érvelés érvényes a GPS-sel való lekérdezésre is. Az eszköz egy másik térbeli megbízhatósági régióként van ábrázolva a valódi, ismeretlen GPS-pozíciójához. A közeli horgonyok felfedezése azt jelenti, hogy  az eszköz megbízhatósági régiójához elég közeli megbízhatósági régióval találja meg a horgonyokat, ahogy az alábbi ábrán látható:
 
-![Diagram, amely bemutatja a horgony jelöltek a GPS használatával való megtalálását.](media/coarse-reloc-gps-separation-distance.png)
+![Diagram, amely bemutatja, hogyan lehet megtalálni a horgonyra jelölteket GPS használatával.](media/coarse-reloc-gps-separation-distance.png)
 
 ### <a name="wi-fi"></a>Wi-Fi
 
-A HoloLens és az Android esetében Wi-Fi a jelerősség jó módszer lehet a beltéri, durva újrahonosítást is lehetővé tenni.
-Az előny az Wi-Fi hozzáférési pontok (például az irodai és a bevásárlóközpontokban közös) azonnali rendelkezésre állásának lehetősége, amely nem igényel további telepítést.
+HoloLensen és Androidon Wi-Fi jelerősség jó módja lehet a beltéri durva újraméretezés engedélyezésének.
+Ennek az az előnye, hogy Wi-Fi hozzáférési pontok (például az irodai terekben és a bevásárlókban gyakoriak) azonnali rendelkezésre állása további beállítások nélkül.
 
 > [!NOTE]
-> az iOS nem biztosít API-t a Wi-Fi jelerősségének olvasásához, így a Wi-Fi-n keresztül engedélyezett durva újrahonosítás nem használható.
+> Az iOS nem biztosít API-t a jelerősség Wi-Fi olvasásához, így nem használható a Wi-Fi-n keresztül engedélyezett durva újraméretezéshez.
 
-Ha az alkalmazásban Wi-Fi használ, vegye figyelembe, hogy a hardver által megadott olvasások jellemzően a következők:
+Ha alkalmazásában Wi-Fi használ, ne feledje, hogy a hardver által biztosított adatok általában a következő adatok:
 
-* Aszinkron és alacsony gyakoriságú (kevesebb mint 0,1 Hz).
-* Potenciálisan szabályozható az operációs rendszer szintjén.
-* Megbízhatatlan/zajos (átlagosan 3 dBm standard szórás).
+* Aszinkron és kis gyakoriságú (0,1 Hz-nél kisebb).
+* Lehetséges, hogy az operációs rendszer szintjén van szabályozás alatt.
+* Megbízhatatlan/zajos (átlagosan 3-dBm szórás).
 
-A térbeli horgonyok megpróbálják felépíteni Wi-Fi jelerősségű szűrt térképet egy munkamenet során a problémák enyhítésére tett kísérlet során. A legjobb eredmények eléréséhez próbálkozzon a következővel:
+Spatial Anchors megpróbál szűrt térképet összeépíteni a Wi-Fi jelerősségről egy munkamenet során, hogy megpróbálja enyhíteni ezeket a problémákat. A legjobb eredmény érdekében próbálja meg a következőt:
 
-* Az első horgony elhelyezése előtt hozza létre a munkamenetet.
-* Tartsa életben a munkamenetet, amíg lehetséges. (Azaz hozzon létre minden horgonyt és lekérdezést egy munkamenetben.)
+* Az első horgony létrehozása előtt hozza létre a munkamenetet.
+* A munkamenetet addig tartsa életben, amíg csak lehetséges. (Ez azt jelenti, hogy egyetlen munkamenetben hozza létre az összes horgonyt és lekérdezést.)
 
-### <a name="bluetooth-beacons"></a>Bluetooth-figyelők
+### <a name="bluetooth-beacons"></a>Bluetooth-jeljelzők
 <a name="beaconsDetails"></a>
 
-A Bluetooth-figyelő gondos üzembe helyezése jó megoldás a nagyméretű beltéri, durva áttelepítési forgatókönyvek esetén, ahol a GPS hiányzik vagy pontatlan. Ez az egyetlen olyan beltéri módszer is, amelyet mindhárom platformon támogat.
+A Bluetooth-jeljelzők gondos üzembe helyezése jó megoldás nagy léptékű beltéri coarse-relokalizációs forgatókönyvekhez, ahol a GPS hiányzik vagy pontatlan. Emellett ez az egyetlen beltéri módszer, amely mindhárom platformon támogatott.
 
-A figyelők általában sokoldalú eszközök, amelyeken minden konfigurálható, beleértve az UUID-ket és a MAC-címeket is. Az Azure térbeli horgonyok a figyelőket a saját UUID-azonosítóik alapján egyedileg azonosítják. Ha nem biztosítja ezt az egyediséget, valószínűleg helytelen eredményt fog kapni. A legjobb eredmények érdekében:
+A jelzők jellemzően sokoldalú eszközök, amelyeken minden konfigurálható, beleértve az UUID-ket és a MAC-címeket is. Az Azure Spatial Anchors azt várja, hogy a jelgyűjtő jelek egyedileg azonosíthatók az UUID-jük alapján. Ha nem biztosítja ezt az egyediséget, valószínűleg helytelen eredményeket fog kapni. A legjobb eredmény érdekében:
 
-* Rendeljen egyedi UUID-ket a figyelőhöz.
-* A figyelőket olyan módon helyezheti üzembe, amely egységesen fedi le a tárhelyet, így legalább három figyelő elérhető bármely pontról a helyről.
-* Adja át az egyedi Beacon UUID-azonosítók listáját az érzékelő ujjlenyomat-szolgáltatójának.
+* Egyedi UUID-ket rendelhet az adatgyűjtő jelekhez.
+* A jeljelzőket úgy helyezheti üzembe, hogy egységesen fedje le a teret, és hogy legalább három adatgyűjtő jel a világűr bármely pontjáról elérhető legyen.
+* Adja át az egyedi jelgyűjtő UUID-ket az érzékelő ujjlenyomat-szolgáltatójának.
 
-A hangjeleket, például a Bluetooth-jeleket érintik az akadályok, és zavarhatja a többi választógombot is. Így nehéz lehet kitalálni, hogy a tárhelye egységesen van-e lefoglalva. A jobb felhasználói élmény garantálása érdekében javasoljuk, hogy manuálisan tesztelje a figyelők lefedettségét. A tesztet elvégezheti a tárhelynek a tagjelölt eszközökkel való bejárásával, valamint egy olyan alkalmazással, amely a hatótávolságon belüli Bluetooth-t jeleníti A lefedettség tesztelése során győződjön meg arról, hogy legalább három figyelőt tud elérni a tárhely bármely stratégiai pozíciójában. A túl sok figyelővel több interferencia lehet, és nem feltétlenül javítja a durva újrahonosítás pontosságát.
+A Bluetooth-jelekhez hasonló választójelekre akadály van hatással, és befolyásolhatják a többi választójelet. Így nehéz lehet kitalálni, hogy a tér egységesen fedve van-e. A jobb felhasználói élmény biztosítása érdekében javasoljuk, hogy manuálisan tesztelje az adatgyűjtő jelek lefedettségét. A teszteket úgy végezheti el, hogy körbeveszi a teret a jelölt eszközökkel és egy olyan alkalmazással, amely a Bluetooth-tartományt mutatja. A lefedettség tesztelése közben győződjön meg arról, hogy legalább három adatgyűjtő jelet el tud érni a térben bármilyen stratégiai pozícióból. A túl sok adatgyűjtő jel nagyobb interferenciát eredményezhet közöttük, és nem feltétlenül javítja a durva újraméretezés pontosságát.
 
-A Bluetooth-figyelők jellemzően 80 métert fedik le, ha nincs akadály a térben.
-Tehát egy olyan helyhez, amely nem rendelkezik nagyméretű akadályokkal, a figyelőket üzembe helyezhetjük egy rácsos mintában, 40 méteren.
+A Bluetooth-jeladók általában 80 métert fednek le, ha nincs akadály a térben.
+Így egy olyan térhez, amely nem rendelkezik nagy akadályokkal, adatgyűjtő jelek helyezhetők üzembe egy rácsmintában 40 méterenként.
 
-Az akkumulátoron kívüli jeladók hatással vannak az eredményekre, ezért ügyeljen arra, hogy a központi telepítést időnként figyelje alacsony vagy nem feltöltött akkumulátorok esetén.
+Az akkumulátorból hamarosan eltöltött adatgyűjtő jelek hatással vannak az eredményekre, ezért rendszeresen figyelje az üzembe helyezést alacsony vagy nem töltött akkumulátorok esetén.
 
-Az Azure térbeli horgonyok csak az ismert-Beacon közelségi UUID-i listán szereplő Bluetooth-figyelőket fogják követni. A allowlisted UUID-ket tartalmazó rosszindulatú figyelők azonban negatív hatással lehetnek a szolgáltatás minőségére. Így a legjobb eredményt kapja a kitalált területeken, ahol vezérelheti a Beacon üzembe helyezését.
+Az Azure Spatial Anchors csak azokat a Bluetooth-jeljelzőket fogja nyomon követni, amelyek az ismert közelségi UUID-listában vannak. Az engedélyezőlistára bevont UUID-ket beprogramozó kártevő kártevők azonban negatívan befolyásolhatják a szolgáltatás minőségét. Így a legjobb eredményeket olyan összecsukott terekben fogja kapni, ahol vezérelheti az adatgyűjtő jelek üzembe helyezését.
 
 ### <a name="sensor-accuracy"></a>Érzékelő pontossága
 
-A GPS-jel pontossága a horgony létrehozásakor és a lekérdezések során jelentős mértékben befolyásolja a visszaadott horgonyok készletét. Ezzel szemben a Wi-Fi/figyelőn alapuló lekérdezések az összes olyan horgonyt figyelembe veszik, amelynek legalább egy hozzáférési pontja/Beacon-je közös a lekérdezéssel. Ebben az értelemben a Wi-Fi/figyelőn alapuló lekérdezés eredményét többnyire a hozzáférési pontok/irányjelzők és a környezeti akadályok fizikai tartománya határozza meg.
-Ez a tábla a várt keresési helyet becsüli meg az egyes érzékelők típusainál:
+A GPS-jel pontossága a horgonyok létrehozása során és a lekérdezések során is jelentős hatással van a visszaadott horgonyok készletére. Ezzel szemben a Wi-Fi-n/adatgyűjtő jeleken alapuló lekérdezések minden olyan horgonyt figyelembe fognak venni, amely a lekérdezésben közös hozzáférési ponttal/adatgyűjtő jelekkel rendelkezik. Ebben az értelemben a Wi-Fi-n/adatgyűjtő jeleken alapuló lekérdezések eredményét főleg a hozzáférési pontok/adatgyűjtő jelek és a környezeti adatgyűjtő jelek fizikai tartománya határozza meg.
+Ez a táblázat az egyes érzékelőtípusokkal várható keresési területet becsüli meg:
 
 | Érzékelő      | Keresési terület sugara (hozzávetőleges) | Részletek |
 |-------------|:-------:|---------|
-| **GPS**         | 20 millió – 30 m | A GPS-bizonytalanság határozza meg más tényezők között. A jelentett számok a-GPS: 7 méteres mobil telefonok átlagos GPS-pontosságának becslése. |
-| **Wi-Fi**        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
-| **Egyazon figyelő** |  70 m | A jeladó tartománya határozza meg. A gyakoriságtól, az átviteli erősségtől, a fizikai akadályoktól, a beavatkozástól és egyebektől függ. |
+| **Gps**         | 20 m és 30 m között | Többek között a GPS-bizonytalanság határozza meg. A jelentett számok becsült értéke a mobiltelefonok GPS-pontosságának mediánja, 7 méter. |
+| **Wi-Fi**        | 50 m és 100 m között | A vezeték nélküli hozzáférési pontok tartománya határozza meg. Függ a gyakoriságtól, a készülék erősségétől, a fizikai sűrűségtől, az interferenciától stb. |
+| **BLE-jelek** |  70 m | Az adatgyűjtő jel tartománya határozza meg. Függ a gyakoriságtól, az átvitel erősségétől, a fizikai zavartól, az interferenciától stb. |
 
 <!-- Reference links in article -->
-[1]: https://developers.google.com/beacons/eddystone
+[1]: https://developer.estimote.com/eddystone/
 [2]: https://developer.apple.com/ibeacon/
 [3]: https://developer.android.com/reference/android/location/LocationManager
 [4]: https://developer.apple.com/documentation/corelocation/cllocationmanager?language=objc

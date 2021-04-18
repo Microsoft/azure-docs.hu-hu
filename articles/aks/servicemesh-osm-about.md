@@ -7,20 +7,20 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d266021a666070fdbade819eadb819b973768a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480844"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599471"
 ---
-# <a name="open-service-mesh-aks-add-on-preview"></a>A Service Mesh AKS bővítmény megnyitása (előzetes verzió)
+# <a name="open-service-mesh-aks-add-on-preview"></a>A Service Mesh AKS bővítményének megnyitása (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 
-Az [Open Service Mesh (OSM)](https://docs.openservicemesh.io/) egy egyszerű, kitehető, natív felhőszolgáltatás-háló, amely lehetővé teszi a felhasználók számára a rendkívül dinamikus mikroszolgáltatás-környezetek egységes kezelését, biztonságát és használatra való használatra alkalmas megfigyelhetőségét.
+Az [Open Service Mesh (OSM)](https://docs.openservicemesh.io/) egy egyszerűsített, méretezhető, natív felhőszolgáltatás-háló, amely lehetővé teszi a felhasználók számára a rendkívül dinamikus mikroszolgáltatás-környezetek egységesen kezelhető, biztonságos és használatra alkalmas megfigyelhetőségi funkcióinak lekértségét.
 
-Az OSM egy Envoy-alapú vezérlősíkot futtat a Kubernetesben, [konfigurálható SMI](https://smi-spec.io/) API-okkal, és úgy működik, hogy egy Envoy proxyt injektál oldalkocsi tárolóként az alkalmazás minden példánya mellé. A envoy proxy a hozzáférés-vezérlési szabályzatokkal kapcsolatos szabályokat tartalmaz és hajt végre, útválasztási konfigurációt implementál, és metrikákat rögzít. A vezérlősík folyamatosan konfigurálja a proxykat, hogy a szabályzatok és az útválasztási szabályok naprakészek maradjanak, és hogy a proxyk kifogástalan állapotúak maradjanak.
+Az OSM egy Envoy-alapú vezérlősíkot futtat a Kubernetesben, [konfigurálható SMI](https://smi-spec.io/) API-okkal, és úgy működik, hogy egy Envoy proxyt injektál oldalkocsi tárolóként az alkalmazás minden példánya mellé. Az Envoy proxy a hozzáférés-vezérlési házirendekkel kapcsolatos szabályokat tartalmaz és hajt végre, útválasztási konfigurációt implementál, és metrikákat rögzít. A vezérlősík folyamatosan konfigurálja a proxykat, hogy a házirendek és az útválasztási szabályok naprakészek maradjanak, és hogy a proxyk kifogástalan állapotúak maradjanak.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -32,7 +32,7 @@ Az OSM a következő képességeket és funkciókat biztosítja, hogy natív fel
 
 - Az Envoy proxy automatikus oldalkocsi-injektálásának engedélyezésével könnyedén beveheti az alkalmazásokat a hálóba
 
-- Egyszerű és átlátható konfigurációk az üzemelő példányok forgalmának megváltozása esetén
+- Könnyen és átlátható konfigurációk az üzemelő példányok forgalmának áttolása érdekében
 
 - Lehetőség a szolgáltatásokra vonatkozó, finomhangolt hozzáférés-vezérlési szabályzatok meghatározására és végrehajtására
 
@@ -44,13 +44,13 @@ Az OSM a következő képességeket és funkciókat biztosítja, hogy natív fel
 
 Az OSM a következő helyzetekben segíti az AKS-környezetek üzembe helyezését:
 
-- Titkosított kommunikáció létrehozása a fürtben üzembe helyezett szolgáltatásvégpont között
+- Titkosított kommunikáció létrehozása a fürtben üzembe helyezett szolgáltatásvégpontokkal
 
 - Http/HTTPS- és TCP-forgalom engedélyezése a hálóban
 
 - Súlyozott forgalomvezérlők konfigurálása két vagy több szolgáltatás között A/B vagy canary üzemelő példányok esetén
 
-- KPI-k gyűjtése és megtekintése az alkalmazásforgalomból
+- KPI-k gyűjtése és megtekintése az alkalmazás forgalmából
 
 ## <a name="osm-service-quotas-and-limits-preview"></a>OSM-szolgáltatáskvóták és -korlátok (előzetes verzió)
 
@@ -124,7 +124,7 @@ Most üzembe fog helyezni egy új AKS-fürtöt, engedélyezett OSM-bővítménys
 az aks create -n osm-addon-cluster -g <myosmaksgroup> --kubernetes-version 1.19.6 --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
 ```
 
-#### <a name="get-aks-cluster-access-credentials"></a>Az AKS-fürt hozzáférési hitelesítő adatainak lekért hitelesítő adatai
+#### <a name="get-aks-cluster-access-credentials"></a>AKS-fürt hozzáférési hitelesítő adatainak leözése
 
 Szerezze be az új felügyelt Kubernetes-fürt hozzáférési hitelesítő adatait.
 
@@ -144,7 +144,7 @@ Az AKS OSM-bővítmény engedélyezéséhez futtatnia kell a parancsot a paramé
 az aks enable-addons --addons open-service-mesh -g <resource group name> -n <AKS cluster name>
 ```
 
-Az alábbi kimenethez hasonló kimenetnek kell lennie annak megerősítéséhez, hogy az AKS OSM bővítmény telepítve van.
+Az AKS OSM-bővítmény telepítésének megerősítéséhez az alábbi kimenethez hasonló kimenetnek kell látsza.
 
 ```json
 {- Finished ..
@@ -204,7 +204,7 @@ Az OSM-konfigurációtérkép kimenetének az alábbihoz hasonlónak kell lennie
 }
 ```
 
-Figyelje **meg permissive_traffic_policy_mode** hogy a beállítás true (igaz) értékre **van konfigurálva.** Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI-forgalom](https://smi-spec.io/) szabályzatának kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxy-oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
+Figyelje **meg permissive_traffic_policy_mode** hogy a beállítás true (igaz) értékre **van konfigurálva.** Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxyoldali oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
 
 > [!WARNING]
 > Mielőtt továbblépne, ellenőrizze, hogy a megengedő forgalom szabályzatmódja igazra van-e állítva, ha nem, módosítsa **true (igaz)** módra az alábbi paranccsal
@@ -346,11 +346,11 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felületének kell lennie a böngészőben.
+Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felülete látható a böngészőben.
 
 ![Az OSM bookbuyer alkalmazás felhasználói felületének képe](./media/aks-osm-addon/osm-bookbuyer-service-ui.png)
 
-Azt is észreveheti, hogy a megvásárolt könyvek teljes száma továbbra is növekszik a könyváruház v1 szolgáltatásában. A bookstore v2 szolgáltatás még nem lett üzembe helyezni. A bookstore v2 szolgáltatást az SMI forgalomfosztó szabályzatok szemléltetését bemutatva fogjuk üzembe helyezni.
+Azt is észreveheti, hogy a megvásárolt könyvek teljes száma továbbra is növekszik a könyváruház v1 szolgáltatásában. A könyváruház v2 szolgáltatás még nincs üzembe helyezni. A bookstore v2 szolgáltatást az SMI forgalomfosztó szabályzatok szemléltetését bemutatva fogjuk üzembe helyezni.
 
 Ugyanezt ellenőrizheti a bookthief szolgáltatáshoz is.
 
@@ -391,7 +391,7 @@ Az alábbihoz hasonló kimenetnek kell megjelennie. A bookthief podhoz hozzá le
 configmap/osm-config patched
 ```
 
-Annak ellenőrzéséhez, hogy a megengedő forgalmi mód le van-e tiltva, továbbítsa vissza a portot a bookbuyer vagy a bookthief podra, hogy megtekintse a felhasználói felületet a böngészőben, és ellenőrizze, hogy a megvásárolt vagy ellopott könyvek száma már nem növekszik-e. Frissítse a böngészőt. Ha a növekmény le lett állítva, a szabályzat megfelelően lett alkalmazva. Sikeresen leállította a könyvthief-et a könyvek ellopásában, de sem a könyvbuyer, sem a könyváruház nem tud könyveket lekérni a könyváruházból. A következő lépésként [SMI-szabályzatokat](https://smi-spec.io/) alkalmazunk, hogy csak a hálóban csak azokkal a szolgáltatásokkal engedélyezünk szolgáltatásokat, amelyekről kommunikálni szeretne.
+Annak ellenőrzéséhez, hogy a megengedő forgalmi mód le van-e tiltva, továbbítsa vissza a portot a bookbuyer vagy a bookthief podra, hogy megtekintse a felhasználói felületet a böngészőben, és ellenőrizze, hogy a megvásárolt vagy ellopott könyvek száma már nem növekszik-e. Frissítse a böngészőt. Ha a növekmény le lett állítva, a szabályzat megfelelően lett alkalmazva. Sikeresen leállította a könyvthief-et a könyvek ellopásában, de sem a könyvbuyer, sem a könyváruház nem tud könyveket lekérni a könyváruházból. A következő lépésként [SMI-szabályzatokat](https://smi-spec.io/) alkalmazunk, hogy csak a hálóban olyan szolgáltatásokat engedélyezünk, amelyekről kommunikálni szeretne.
 
 ### <a name="apply-service-mesh-interface-smi-traffic-access-policies"></a>Service Mesh-felület (SMI) forgalom-hozzáférési szabályzatok alkalmazása
 
@@ -499,7 +499,7 @@ Most már port-továbbítási munkamenetet állíthat be a könyvbuyeren vagy a 
 
 Az utolsó bemutatóban létrehozunk egy SMI-forgalomfedő szabályzatot, amely háttérként konfigurálja az egyik szolgáltatás és több szolgáltatás közötti kommunikáció súlyozását. [](https://smi-spec.io/) A forgalom felosztása funkció lehetővé teszi a kapcsolatok fokozatos áthelyezését az egyik szolgáltatásba a forgalom 0 és 100 közötti súlyozása révén.
 
-Az alábbi ábra az üzembe helyező [SMI](https://smi-spec.io/) Traffic Split szabályzatot ábrázolja. Üzembe helyezünk egy újabb, 2. verziójú könyváruházat, majd elosztjuk a bookbuyertől érkező forgalmat, a forgalom 25%-át a könyvestár v1 szolgáltatásra, 75%-át pedig a könyvesáruház v2 szolgáltatásra.
+Az alábbi ábra az üzembe helyező [SMI](https://smi-spec.io/) Traffic Split szabályzatot ábrázolja. Üzembe helyezünk egy további, 2. verziójú könyváruházat, majd elosztjuk a bookbuyertől érkező forgalmat, a forgalom 25%-át a könyvestár v1 szolgáltatásra, 75%-át pedig a könyvesáruház v2 szolgáltatásra.
 
 ![Az OSM Bookbuyer forgalmi felosztási diagramja](./media/aks-osm-addon/osm-bookbuyer-traffic-split-diagram.png)
 
@@ -618,7 +618,7 @@ A következő kimenetnek kell megjelennie.
 trafficsplit.split.smi-spec.io/bookstore-split created
 ```
 
-Állítson be egy port továbbító alagutat a bookbuyer podhoz, és látnia kell a könyváruház v2 szolgáltatástól vásárolt könyveket. Ha továbbra is a vásárlások növekményét nézi, a vásárlások gyorsabb növekedésével kell majd történnie a könyvestár v2 szolgáltatáson keresztül.
+Állítson be egy port forward alagutat a bookbuyer podhoz, és most már látnia kell a könyváruház v2 szolgáltatástól vásárolt könyveket. Ha továbbra is a vásárlások növekményét nézi, a vásárlások gyorsabb növekedésével kell majd történnie a könyvestár v2 szolgáltatáson keresztül.
 
 ![OSM bookbuyer books boough UI](./media/aks-osm-addon/osm-bookbuyer-traffic-split-ui.png)
 
@@ -637,7 +637,7 @@ A következő erőforrásoknak kell telepítve lennie:
 
 ### <a name="verify-the-open-service-mesh-osm-permissive-traffic-mode-policy"></a>Ellenőrizze az Open Service Mesh (OSM) megengedő forgalommód szabályzatát
 
-Az OSM megengedő forgalom-szabályzat mód olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxyoldali oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
+Az OSM megengedő forgalom-szabályzat mód olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és programja az egyes envoy proxy-oldalkocsikra vonatkozó adatforgalmi házirendszabályokat, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
 
 A fürthöz jelenleg megengedő OSM-forgalom módjának ellenőrzéséhez futtassa a következő parancsot:
 
@@ -761,7 +761,7 @@ Containers:
 
 Ellenőrizze, hogy az alkalmazás továbbra is működőképes-e az Envoy sidecar proxy injektálás után.
 
-### <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>Meglévő üzembe helyezett alkalmazások létrehozása hamisként konfigurált Open Service Mesh (OSM) megengedő forgalom-szabályzattal
+### <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>Meglévő üzembe helyezett alkalmazások beállítása hamisként konfigurált Open Service Mesh (OSM) megengedő forgalom-szabályzattal
 
 Ha a megengedő adatforgalmi szabályzat OSM-konfigurációja , az OSM-nek explicit SMI forgalom-hozzáférési szabályzatokat kell telepítenie a szolgáltatások közötti kommunikációhoz a `false` fürtön belül. [](https://smi-spec.io/) Az OSM jelenleg Kubernetes-szolgáltatásfiókokat is használ a szolgáltatások közötti kommunikáció használatának lehetővé tágító részeként. Annak érdekében, hogy a meglévő telepített alkalmazások kommunikáljanak az OSM-háló kezelésekor, ellenőrizni kell, hogy létezik-e a használni szükséges szolgáltatásfiók, frissíteni kell az alkalmazás üzembe helyezését a szolgáltatásfiók adataival, alkalmazni kell az [SMI](https://smi-spec.io/) forgalom-hozzáférési szabályzatait.
 
@@ -826,7 +826,7 @@ Pod Template:
 
 ```
 
-Az üzemelő példány többféle módszerrel frissítheti kubernetes-szolgáltatásfiókok hozzáadásához. Tekintse át a Kubernetes dokumentációját [az üzemelő példány](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) beágyazott frissítéséről vagy a podok [szolgáltatásfiókjának konfigurálásáról.](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) Miután frissítette az üzembe helyezési specifikációt a szolgáltatásfiókkal, alkalmazza újra (kubectl apply -f your-deployment.yaml) az üzemelő példányot a fürtön.
+Az üzemelő példány többféle módszerrel frissítve hozzáad egy Kubernetes-szolgáltatásfiókot. Tekintse át a Kubernetes dokumentációját [az üzemelő példány](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) beágyazott frissítéséről vagy a podok [szolgáltatásfiókjának konfigurálásáról.](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) Miután frissítette az üzembe helyezési specifikációt a szolgáltatásfiókkal, alkalmazza újra (kubectl apply -f your-deployment.yaml) az üzemelő példányot a fürtön.
 
 #### <a name="deploy-the-necessary-service-mesh-interface-smi-policies"></a>A szükséges Service Mesh-felületi (SMI)-szabályzatok üzembe helyezése
 
@@ -861,7 +861,7 @@ spec:
 
 A fenti TrafficTarget-specifikációban a a cél forrásszolgáltatáshoz konfigurált `destination` szolgáltatásfiókot jelöli. Ne feledje, hogy a rendszer a korábban az üzemelő példányhoz hozzáadott szolgáltatásfiókkal engedélyezi a hozzáférést ahhoz az üzemelő példányhoz, amelyhez csatolva van. Ebben a példában a szakasz határozza meg a kapcsolaton engedélyezett `rules` HTTP-forgalom típusát. A HTTP-fejlécek részletes regex-mintáit úgy konfigurálhatja, hogy pontosan megszabadják a HTTP-n keresztül engedélyezett forgalmat. A `sources` szakasz a kommunikációt kezdeményező szolgáltatás. Ez a specifikáció azt olvassa, hogy a bookbuyernek kommunikálnia kell a könyváruházval.
 
-A HTTPRouteGroup erőforrás a HTTP-fejlécinformációk egyezéseit tartalmazó egy vagy tömbből áll, és a TrafficTarget specifikáció követelménye. Az alábbi példában láthatja, hogy a HTTPRouteGroup három HTTP-műveletet ad meg: két GET és egy POST műveletet.
+A HTTPRouteGroup erőforrás a HTTP-fejlécinformációk egyezéseit tartalmazó tömbből vagy egy tömbből áll, és a TrafficTarget specifikáció követelménye. Az alábbi példában láthatja, hogy a HTTPRouteGroup három HTTP-műveletet ad meg: két GET és egy POST műveletet.
 
 ```HTTPRouteGroup Example Spec
 apiVersion: specs.smi-spec.io/v1alpha4
@@ -994,7 +994,7 @@ Az oktatóanyagban a következőket végezheti el:
 >
 > - Az OSM-fürt aktuális konfigurációjának megtekintése
 > - Hozza létre a névter(eket) az OSM számára az üzembe helyezett alkalmazások kezeléséhez a névtérben(nak)
-> - Az OSM által felügyelt névterekboard
+> - Az OSM által felügyelt névterek
 > - A mintaalkalmazás üzembe helyezése
 > - Az AKS-fürtön futó alkalmazás ellenőrzése
 > - Az alkalmazáshoz használt NGINX bejövő vezérlő létrehozása
@@ -1035,7 +1035,7 @@ A kimenet a fürt aktuális OSM-konfigurációját jeleníti meg.
 }
 ```
 
-Figyelje **meg permissive_traffic_policy_mode** hogy a beállítás true (igaz) értékre **van konfigurálva.** Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI-forgalom](https://smi-spec.io/) szabályzatának kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxy-oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
+Figyelje **meg permissive_traffic_policy_mode** hogy a beállítás true (igaz) értékre **van konfigurálva.** Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxyoldali oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
 
 ### <a name="create-namespaces-for-the-application"></a>Névterek létrehozása az alkalmazáshoz
 
@@ -1061,9 +1061,9 @@ namespace/bookthief created
 namespace/bookwarehouse created
 ```
 
-### <a name="onboard-the-namespaces-to-be-managed-by-osm"></a>Az OSM által felügyelt névterek
+### <a name="onboard-the-namespaces-to-be-managed-by-osm"></a>Az OSM által felügyelt névterekboard
 
-Ha hozzáadja a névtereket az OSM-hálóhoz, az OSM-vezérlő automatikusan be fogja injektálni az Envoy sidecar proxytárolókat az alkalmazásba. Futtassa a következő parancsot az OSM-könyváruház alkalmazásnévterének a bevetéshez.
+Ha hozzáadja a névtereket az OSM-hálóhoz, az OSM-vezérlő automatikusan be fogja injektálni az envoy sidecar proxytárolókat az alkalmazásba. Futtassa a következő parancsot az OSM-könyváruház alkalmazásnévterének a bevetéshez.
 
 ```azurecli-interactive
 osm namespace add bookstore bookbuyer bookthief bookwarehouse
@@ -1155,7 +1155,7 @@ NAME                         READY   STATUS    RESTARTS   AGE
 bookbuyer-7676c7fcfb-mtnrz   2/2     Running   0          7m8s
 ```
 
-Ha már megvan a pod neve, a port forward paranccsal beállíthatjuk az alagutat a helyi rendszer és az AKS-fürtön belüli alkalmazás között. Futtassa a következő parancsot a helyi rendszer 8080-as portjának beállítására. Használja ismét a megadott bookbuyer podnevet.
+Ha már megvan a pod neve, a port forward paranccsal állíthatunk be egy alagutat a helyi rendszertől az AKS-fürtön belüli alkalmazásig. Futtassa a következő parancsot a helyi rendszer 8080-as portjának beállítására. Használja ismét a megadott bookbuyer podnevet.
 
 ```azurecli-interactive
 kubectl port-forward bookbuyer-7676c7fcfb-mtnrz -n bookbuyer 8080:14001
@@ -1168,7 +1168,7 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felületének kell lennie a böngészőben.
+Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felülete látható a böngészőben.
 
 ![AZ NGINX UI-hez elérhető OSM bookbuyer alkalmazás képe](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
@@ -1202,7 +1202,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Amikor létrejön a Kubernetes terheléselosztási szolgáltatása az NGINX bejövő forgalomvezérlőhöz, a rendszer dinamikus nyilvános IP-címet rendel hozzá, ahogy az az alábbi példakimenetben is látható:
+Amikor létrejön a Kubernetes terheléselosztási szolgáltatása az NGINX bejövő forgalomvezérlőhöz, a rendszer dinamikus nyilvános IP-címet rendel hozzá, ahogyan az alábbi példakimenetben látható:
 
 ```Output
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
@@ -1211,7 +1211,7 @@ NAME                                     TYPE           CLUSTER-IP    EXTERNAL-I
 nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
-Még nem hoztak létre bejövő szabályokat, így az NGINX bejövő forgalomvezérlő alapértelmezett 404-es lapja jelenik meg, ha a belső IP-címet tallózással megkeresi. A következő lépésekben konfiguráljuk a bejövő forgalomra vonatkozó szabályokat.
+Még nem hoztak létre bejövő szabályokat, így az NGINX bejövő forgalomvezérlő alapértelmezett 404-es lapja jelenik meg, ha a belső IP-címet tallózással megkeresi. A bejövő forgalomra vonatkozó szabályokat a következő lépésekben konfiguráljuk.
 
 ### <a name="expose-the-bookbuyer-service-to-the-internet"></a>A bookbuyer szolgáltatás elérhetővé téve az interneten
 
@@ -1357,10 +1357,10 @@ Az oktatóanyagban a következőket végezheti el:
 >
 > - Az OSM-fürt aktuális konfigurációjának megtekintése
 > - Hozza létre a névter(eket) az OSM számára az üzembe helyezett alkalmazások kezeléséhez a névtérben(nak)
-> - Az OSM által felügyelt névterekboard
+> - Az OSM által felügyelt névterek
 > - A mintaalkalmazás üzembe helyezése
 > - Az AKS-fürtön futó alkalmazás ellenőrzése
-> - Hozzon Azure Application Gateway, amely az alkalmazás bejövő vezérlőjeként lesz használva
+> - Hozzon létre Azure Application Gateway, amely az alkalmazás bejövő vezérlőjeként lesz használva
 > - Szolgáltatás elérhetővé Azure Application Gateway bejövő forgalomból az internetre
 
 ### <a name="before-you-begin"></a>Előkészületek
@@ -1377,7 +1377,7 @@ A következő erőforrásoknak kell telepítve lennie:
 
 ### <a name="view-and-verify-the-current-osm-cluster-configuration"></a>Az OSM-fürt aktuális konfigurációjának megtekintése és ellenőrzése
 
-Ha az AKS-hez használható OSM-bővítmény engedélyezve van az AKS-fürtön, az aktuális konfigurációs paramétereket az osm-config Kubernetes ConfigMap könyvtárban tudja megtekinteni. Futtassa a következő parancsot a ConfigMap tulajdonságainak megtekintéséhez:
+Ha az AKS-hez használható OSM-bővítmény engedélyezve van az AKS-fürtön, az aktuális konfigurációs paramétereket az osm-config Kubernetes ConfigMap fájlban tudja megtekinteni. Futtassa a következő parancsot a ConfigMap tulajdonságainak megtekintéséhez:
 
 ```azurecli-interactive
 kubectl get configmap -n kube-system osm-config -o json | jq '.data'
@@ -1399,7 +1399,7 @@ A kimenet a fürt aktuális OSM-konfigurációját jeleníti meg.
 }
 ```
 
-Figyelje **meg, hogy permissive_traffic_policy_mode** beállítása igaz.  Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxy-oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
+Figyelje **meg, hogy permissive_traffic_policy_mode** beállítása igaz.  Az OSM megengedő forgalmi szabályzat üzemmódja olyan mód, amelyben a rendszer megkerüli az [SMI](https://smi-spec.io/) forgalmi szabályzat kényszerítését. Ebben a módban az OSM automatikusan felderíti a szolgáltatási háló részét képezi szolgáltatásokat, és az egyes envoy proxyoldali oldalkocsikra vonatkozó adatforgalmi házirendszabályokat programja, hogy kommunikálni tudjanak ezekkel a szolgáltatásokkal.
 
 ### <a name="create-namespaces-for-the-application"></a>Névterek létrehozása az alkalmazáshoz
 
@@ -1427,7 +1427,7 @@ namespace/bookwarehouse created
 
 ### <a name="onboard-the-namespaces-to-be-managed-by-osm"></a>Az OSM által felügyelt névterek
 
-Amikor hozzáadja a névtereket az OSM-hálóhoz, az lehetővé teszi, hogy az OSM-vezérlő automatikusan bejektálja az Envoy sidecar proxytárolókat az alkalmazásba. Futtassa a következő parancsot az OSM-könyváruház alkalmazásnévterének a táblába való be- és feliratkához.
+Amikor hozzáadja a névtereket az OSM-hálóhoz, az lehetővé teszi, hogy az OSM-vezérlő automatikusan bejektálja az Envoy sidecar proxytárolókat az alkalmazásba. Futtassa a következő parancsot az OSM-könyváruház alkalmazásnévterének az alkalmazásba való be- és feliratkához.
 
 ```azurecli-interactive
 osm namespace add bookstore bookbuyer bookthief bookwarehouse
@@ -1519,7 +1519,7 @@ NAME                         READY   STATUS    RESTARTS   AGE
 bookbuyer-7676c7fcfb-mtnrz   2/2     Running   0          7m8s
 ```
 
-Ha már megvan a pod neve, a port forward paranccsal beállíthatjuk az alagutat a helyi rendszer és az AKS-fürtön belüli alkalmazás között. Futtassa a következő parancsot a helyi rendszer 8080-as portjának beállítására. Használja ismét az adott bookbuyer podnevet.
+Ha már megvan a pod neve, a port forward paranccsal beállíthatjuk az alagutat a helyi rendszer és az AKS-fürtön belüli alkalmazás között. Futtassa a következő parancsot a helyi rendszer 8080-as portjának beállítására. Használja ismét a könyvbuyer podnevét.
 
 ```azurecli-interactive
 kubectl port-forward bookbuyer-7676c7fcfb-mtnrz -n bookbuyer 8080:14001
@@ -1532,21 +1532,21 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felületének kell lennie a böngészőben.
+Amíg a port-továbbítási munkamenet a helyén van, nyissa meg a következő URL-címet egy `http://localhost:8080` böngészőben. Most már az alábbi képen láthatóhoz hasonló bookbuyer alkalmazás felhasználói felülete látható a böngészőben.
 
 ![OsM bookbuyer alkalmazás App Gateway felhasználói felülethez – kép](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
 ### <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application-outside-the-aks-cluster"></a>Hozzon létre Azure Application Gateway, hogy elérhetővé tegye a bookbuyer alkalmazást az AKS-fürtön kívül
 
 > [!NOTE]
-> Az alábbi utasítások a bejövő forgalomhoz Azure Application Gateway új példányt hoznak létre. Ha már van meglévő Azure Application Gateway szeretne használni, ugorjon a bejövő Application Gateway vezérlő bővítmény engedélyezésére vonatkozó szakaszra.
+> Az alábbi utasítások a bejövő forgalomhoz Azure Application Gateway új példányt hoznak létre. Ha meglévő Azure Application Gateway szeretne használni, ugorjon a bejövő Application Gateway vezérlő bővítmény engedélyezésére vonatkozó szakaszra.
 
 #### <a name="deploy-a-new-application-gateway"></a>Új alkalmazás Application Gateway
 
 > [!NOTE]
 > A meglévő AKS-fürtökhöz Application Gateway dokumentációra hivatkozunk a bejövő Application Gateway vezérlő bővítményének engedélyezéséhez. Az OSM-anyagoknak megfelelően módosítottunk néhányat. A témával kapcsolatos részletes dokumentáció itt [található.](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
 
-Most üzembe fog helyezni egy új Application Gateway, hogy szimulálja, hogy egy meglévő Application Gateway szeretne használni az AKS-fürt, a _myCluster_ forgalmának terheléselosztása érdekében. A név Application Gateway _myApplicationGateway_ lesz, de először létre kell hoznia egy nyilvános IP-erőforrást. A neve _myPublicIp,_ és egy _myVnet_ nevű új virtuális hálózat 11.0.0.0/8 címtérbe, valamint egy mySubnet nevű, 11.1.0.0/16 címtérű alhálózatba, és telepítse az Application Gateway-t a _mySubnetben_ a _myPublicIp használatával._ 
+Most üzembe fog helyezni egy új Application Gateway, hogy szimulálja egy meglévő Application Gateway, amely a forgalom terheléselosztását szeretné használni az AKS-fürtre, a _myClusterre._ A név Application Gateway _myApplicationGateway_ lesz, de először létre kell hoznia egy nyilvános IP-erőforrást. A neve _myPublicIp,_ és egy _myVnet_ nevű új virtuális hálózat 11.0.0.0/8 címtérbe, valamint egy mySubnet nevű, 11.1.0.0/16 címtérű alhálózatba, és telepítse az Application Gateway-t a _mySubnetben_ a _myPublicIp használatával._ 
 
 Ha AKS-fürtöt használ, és Application Gateway virtuális hálózatokban található, a két virtuális hálózat címterei nem lehetnek átfedésben. Az AKS-fürt által üzembe helyezett alapértelmezett címtér a 10.0.0.0/8, ezért a Application Gateway virtuális hálózat címelőtagját a 11.0.0.0/8 címre állítva állítva.
 
@@ -1562,7 +1562,7 @@ az network application-gateway create -n myApplicationGateway -l eastus2 -g myRe
 
 #### <a name="enable-the-agic-add-on-for-an-existing-aks-cluster-through-azure-cli"></a>A meglévő AKS-fürt AGIC-bővítményének engedélyezése az Azure CLI-ben
 
-Ha továbbra is használni szeretné az Azure CLI-t, továbbra is engedélyezheti az AGIC-bővítményt a létrehozott AKS-fürtben _(myCluster)_ és megadhatja az AGIC-bővítményt a már létrehozott Application Gateway _myApplicationGateway használatára._
+Ha továbbra is használni szeretné az Azure CLI-t, továbbra is engedélyezheti az AGIC-bővítményt a létrehozott AKS-fürtben _(myCluster)_ és megadhatja az AGIC-bővítményt a létrehozott meglévő Application Gateway _myApplicationGateway használatára._
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id")
@@ -1579,7 +1579,7 @@ A parancs kimenetének a következőnek kell lennie: `true` .
 
 #### <a name="peer-the-two-virtual-networks-together"></a>Társviszony létesítása a két virtuális hálózat között
 
-Mivel az AKS-fürtöt a saját virtuális hálózatában, az Application Gateway-t pedig egy másik virtuális hálózatban helyeztünk üzembe, társviszonyt kell létesítenünk a két virtuális hálózat között ahhoz, hogy a Application Gateway felől a fürt podjaiba áramló forgalom el tudja végezni. A két virtuális hálózat közötti társviszony létesítéséhez az Azure CLI-parancs két külön futtatására van szükség, hogy a kapcsolat kétirányú legyen. Az első parancs társviszony-kapcsolatot hoz létre az Application Gateway és az AKS virtuális hálózat között; A második parancs létrehoz egy társviszony-kapcsolatot a másik irányban.
+Mivel az AKS-fürtöt a saját virtuális hálózatában, az Application Gateway-t pedig egy másik virtuális hálózatban helyeztünk üzembe, társviszonyt kell létesítenünk a két virtuális hálózat között ahhoz, hogy a Application Gateway felől a fürt podjaiba áramló forgalom átáramlik. A két virtuális hálózat közötti társviszony létesítéséhez az Azure CLI-parancs két külön futtatására van szükség, hogy a kapcsolat kétirányú legyen. Az első parancs társviszony-kapcsolatot hoz létre az Application Gateway és az AKS virtuális hálózat között; A második parancs létrehoz egy társviszony-kapcsolatot a másik irányban.
 
 ```azurecli-interactive
 nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
@@ -1708,18 +1708,18 @@ A következő kimenetnek kell megjelennie
 
 Az Azure Monitor és az Azure Application Insights is segít maximalizálni az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy egy átfogó megoldást kínál a felhőbeli és helyszíni környezetből származó telemetriai adatok gyűjtésére, elemzésére és a telemetriára való cselekvésre.
 
-Az OSM AKS-bővítmény mindkét Azure-szolgáltatásba mély integrációt biztosít, és az OSM-metrikák által biztosított kritikus KPI-k megtekintéséhez és az ezekre való válaszadáshoz egy látszólagos Azure-élményt biztosít. Ha további információt szeretne arról, hogyan engedélyezheti és konfigurálhatja ezeket a szolgáltatásokat az OSM AKS-bővítményhez, további információt a Azure Monitor [for OSM oldalán](https://aka.ms/azmon/osmpreview) található.
+Az OSM AKS bővítmény mély integrációt biztosít mindkét Azure-szolgáltatásba, és az OSM-metrikák által biztosított kritikus KPI-k megtekintéséhez és az ezekre való válaszadáshoz egy látszólagos Azure-élményt biztosít. Ha további információt szeretne arról, hogyan engedélyezheti és konfigurálhatja ezeket a szolgáltatásokat az OSM AKS-bővítményhez, további információt a Azure Monitor [for OSM oldalán](https://aka.ms/azmon/osmpreview) található.
 
 ## <a name="tutorial-manually-deploy-prometheus-grafana-and-jaeger-to-view-open-service-mesh-osm-metrics-for-observability"></a>Oktatóanyag: A Prometheus, a Grafana és a Jaeger manuális üzembe helyezése az Open Service Mesh- (OSM-) metrikák megtekintéséhez a megfigyelhetőség érdekében
 
 > [!WARNING]
-> A Prometheus, a Grafana és a Jaeger telepítése általános útmutatásként szolgál, amely bemutatja, hogyan használhatók ezek az eszközök az OSM metrikaadatok megtekintéséhez. A telepítési útmutató nem használható éles környezetben való telepítéshez. Tekintse meg az egyes eszközök dokumentációját arról, hogy mi a legmegfelelőbb a telepítésükhöz. A legfontosabb az állandó tároló hiánya, ami azt jelenti, hogy a Prometheus Grafana és/vagy Jaeger-podok leállása után minden adat elveszik.
+> A Prometheus, a Grafana és a Jaeger telepítése általános útmutatásként szolgál, amely bemutatja, hogyan használhatók ezek az eszközök az OSM metrikaadatok megtekintéséhez. A telepítési útmutató nem használható éles környezetben való telepítéshez. Tekintse meg az egyes eszközök dokumentációját arról, hogy mi a legmegfelelőbb az Ön igényeinek megfelelő telepítéshez. A legfontosabb az állandó tároló hiánya, ami azt jelenti, hogy a Prometheus Grafana és/vagy Jaeger-podok leállása után minden adat elveszik.
 
-Az Open Service Mesh (OSM) részletes metrikákat hoz létre a hálón belüli összes forgalomhoz. Ezek a metrikák betekintést nyújtanak az alkalmazások viselkedésbe a hálóban, és segítenek a felhasználóknak az alkalmazások hibaelhárításában, karbantartásában és elemzésében.
+Az Open Service Mesh (OSM) részletes metrikákat hoz létre a hálón belüli összes forgalomhoz. Ezek a metrikák betekintést nyújtanak az alkalmazások viselkedésbe a hálóban, így segítve a felhasználókat az alkalmazások hibaelhárításában, karbantartásában és elemzésében.
 
 A mai naptól az OSM közvetlenül az oldalkocsi proxykról (Envoy) gyűjt metrikákat. Az OSM részletes metrikákat biztosít a bejövő és kimenő forgalomhoz a hálóban lévő összes szolgáltatáshoz. Ezekkel a metrikákkal a felhasználó információkat kaphat a teljes forgalom mennyiségről, a forgalomon belüli hibákról és a kérések válaszidejről.
 
-Az OSM a Prometheus segítségével konzisztens forgalmi metrikákat és statisztikákat gyűjt és tárol a hálóban futó összes alkalmazáshoz. A Prometheus egy nyílt forráskódú monitorozási és riasztási eszközkészlet, amelyet gyakran használnak (de nem kizárólagosan) Kubernetes- és Service Mesh-környezetekben.
+Az OSM a Prometheus segítségével konzisztens forgalmi metrikákat és statisztikákat gyűjt és tárol a hálóban futó összes alkalmazáshoz. A Prometheus egy nyílt forráskódú monitorozási és riasztási eszközkészlet, amelyet gyakran használnak (de nem kizárólagosan) a Kubernetes- és Service Mesh-környezetekben.
 
 A háló részét képezi minden alkalmazás egy podban fut, amely egy Envoy sidecart tartalmaz, amely Prometheus formátumban teszi közzé a metrikákat (proxymetrikákat). Emellett minden pod, amely a háló része, Prometheus-jegyzetekkel rendelkezik, ami lehetővé teszi, hogy a Prometheus-kiszolgáló dinamikusan lekaparja az alkalmazást. Ez a mechanizmus automatikusan engedélyezi a metrikák lekért mintákat, amikor új névteret/podot/szolgáltatást adnak a hálóhoz.
 
@@ -1802,7 +1802,7 @@ Annak érdekében, hogy az OSM-összetevők konfigurálva vannak **a** Prometheu
 kubectl get configmap -n kube-system osm-config -o json | jq '.data.prometheus_scraping'
 ```
 
-Az előző parancs kimenetének akkor kell visszaadnia, ha az OSM konfigurálva `true` van a Prometheus-leselkedéshez. Ha a visszaadott érték , akkor a konfigurációt a következőre `false` kell frissítenünk: `true` . Futtassa a következő parancsot **az** OSM Prometheus-leselkedés bekapcsoláshoz:
+Az előző parancs kimenetének akkor kell visszaadnia, ha az `true` OSM prometheus-leselejtezésre van konfigurálva. Ha a visszaadott érték , akkor a konfigurációt a következőre `false` kell frissíteni: `true` . Futtassa a következő parancsot **az** OSM Prometheus-leselkedés bekapcsoláshoz:
 
 ```azurecli-interactive
 kubectl patch ConfigMap -n kube-system osm-config --type merge --patch '{"data":{"prometheus_scraping":"true"}}'
@@ -1827,7 +1827,7 @@ stable-prometheus-alertmanager   1      4h34m
 stable-prometheus-server         5      4h34m
 ```
 
-A **stable-prometheus-server** konfigurációban található prometheus.yml konfigurációt az alábbi OSM-konfigurációra kell cserélnünk. Ezt a feladatot többféle fájlszerkesztési módszerrel is el lehet érni. Egy egyszerű és biztonságos módszer a konfigurációs térkép exportálása, másolat készítése a biztonsági mentéshez, majd szerkesztése egy szerkesztővel, például egy Visual Studio kód használatával.
+A **stable-prometheus-server** konfigurációban található prometheus.yml konfigurációt az alábbi OSM-konfigurációra kell cserélnünk. Ezt a feladatot többféle fájlszerkesztési módszerrel is el lehet érni. Egy egyszerű és biztonságos módszer a konfigurációs térkép exportálása, másolat készítése a biztonsági mentéshez, majd szerkesztés egy szerkesztővel, például egy Visual Studio szerkesztéssel.
 
 > [!NOTE]
 > Ha nincs telepítve Visual Studio Code, töltse le és telepítse [itt.](https://code.visualstudio.com/Download)
@@ -2130,7 +2130,7 @@ kubectl port-forward $GRAF_POD_NAME 3000
 
 Nyisson meg egy böngészőt a `http://localhost:3000`
 
-Az alábbi bejelentkezési képernyőn adja meg az **admin** felhasználónevet, és használja a korábban rögzített Grafana-jelszót.
+Az alábbi bejelentkezési képernyőn felhasználónévként adja meg az **admin** nevet, és használja a korábban rögzített Grafana-jelszót.
 
 ![Az OSM Grafana bejelentkezési oldal felhasználói felületének képe](./media/aks-osm-addon/osm-grafana-ui-login.png)
 
@@ -2144,13 +2144,13 @@ Kattintson az **Adatforrás hozzáadása gombra,** és válassza a Prometheus le
 
 ![Kép: OSM Grafana Datasources Selection Page UI (OSM Grafana-adatforrások kiválasztása) oldal felhasználói felületének képe](./media/aks-osm-addon/osm-grafana-ui-datasources-select-prometheus.png)
 
-A **Prometheus-adatforrás** konfigurálása lenti lapon adja meg a Kubernetes-fürt FQDN-jét a Prometheus szolgáltatáshoz a HTTP URL-cím beállításnál. Az alapértelmezett FQDN-nek a következőnek kell lennie: `stable-prometheus-server.default.svc.cluster.local` . Miután megadta a Prometheus szolgáltatásvégpontot, görgessen az oldal aljára, és válassza a **Save & Test (Teszt mentése) lehetőséget.** Egy zöld jelölőnégyzetet kell kapnia, amely jelzi, hogy az adatforrás működik.
+A **Prometheus-adatforrás** konfigurálása lenti lapon adja meg a Kubernetes-fürt teljes tartományát a Prometheus szolgáltatáshoz a HTTP URL-cím beállításaként. Az alapértelmezett FQDN-nek a következőnek kell lennie: `stable-prometheus-server.default.svc.cluster.local` . Miután megadta a Prometheus szolgáltatásvégpontot, görgessen az oldal aljára, és válassza a **Save & Test (Teszt mentése) lehetőséget.** Egy zöld jelölőnégyzetet kell kapnia, amely jelzi, hogy az adatforrás működik.
 
 #### <a name="importing-osm-dashboards"></a>OSM-irányítópultok importálása
 
 Az OSM-irányítópultok a következőn keresztül érhetők el:
 
-- [A és a adattár](/charts/osm/grafana)json-blobként importálható a webes felügyeleti portálon keresztül
+- [A és a adattár](https://github.com/grafana/grafana)json-blobként importálható a webes felügyeleti portálon keresztül
 - vagy [online a Grafana.com](https://grafana.com/grafana/dashboards/14145)
 
 Irányítópult importálásához keresse meg a jelet a bal oldali `+` menüben, és válassza a `import` lehetőséget.
@@ -2299,11 +2299,11 @@ osm-controller-b5bd66db-wglzl   0/1     Evicted   0          61m
 osm-controller-b5bd66db-wvl9w   1/1     Running   0          31m
 ```
 
-Bár egy bizonyos ponton egy vezérlőt ki is űsztünk, van egy READY 1/1 (KÉSZ 1/1) és Running with 0 restarts (Futtatás 0 újraindítással). Ha a READY oszlop nem 1/1, akkor a szolgáltatási háló hibás állapotban lenne.
+Annak ellenére, hogy egy bizonyos ponton egy vezérlőt ki lett űnve, van egy READY 1/1 és Running with 0 restarts (Kész 1/1, Futtatás 0 újraindítással) vezérlő. Ha a READY oszlop nem 1/1, akkor a szolgáltatási háló hibás állapotban lenne.
 A READY oszlop 0/1 értékekkel azt jelzi, hogy a vezérlősík tárolója összeomlik – le kell szereznünk a naplókat. Lásd az OSM Controller Logs from Azure ügyfélszolgálata Center (OSM-vezérlő naplóinak le Azure ügyfélszolgálata Centerből) című szakaszt. A READY oszlop 1-esnél nagyobb számmal a / után azt jelezné, hogy oldalkocsik vannak telepítve. Az OSM-vezérlő valószínűleg nem fog működni a csatlakoztatott oldalkocsival.
 
 > [!NOTE]
-> A 0.8.2-es verziótól az OSM-vezérlő nem HA módban van, és egy üzembe helyezett, 1 podos replikaszámmal fog futni. A pod rendelkezik állapot-mintavételekkel, és szükség esetén a kubelet újraindítja.
+> A 0.8.2-es verziótól az OSM-vezérlő nem HA módban van, és egy üzembe helyezett, 1 podos replikaszámmal fog futni. A pod állapot-mintavételekkel rendelkezik, és szükség esetén a kubelet újraindítja.
 
 #### <a name="check-osm-controller-service"></a>Ellenőrizze az OSM-vezérlőszolgáltatást
 
@@ -2386,7 +2386,7 @@ NAME           ENDPOINTS           AGE
 osm-injector   10.240.1.172:9090   75m
 ```
 
-#### <a name="check-validating-and-mutating-webhooks"></a>Tekintse meg az érvényesség ellenőrzése és a webhookok mutatása jelölőnégyzetet
+#### <a name="check-validating-and-mutating-webhooks"></a>A webhookok ellenőrzése és mutatása
 
 ```azurecli-interactive
 kubectl get ValidatingWebhookConfiguration --selector app=osm-controller
@@ -2410,7 +2410,7 @@ NAME              WEBHOOKS   AGE
 aks-osm-webhook-osm   1      102m
 ```
 
-#### <a name="check-for-the-service-and-the-ca-bundle-of-the-validating-webhook"></a>Ellenőrizze a szolgáltatást és az érvényesítő webhook hitelesítésszolgáltatói csomagját
+#### <a name="check-for-the-service-and-the-ca-bundle-of-the-validating-webhook"></a>Ellenőrizze az érvényesítő webhook szolgáltatását és ca csomagját
 
 ```azurecli-interactive
 kubectl get ValidatingWebhookConfiguration aks-osm-webhook-osm -o json | jq '.webhooks[0].clientConfig.service'
@@ -2542,17 +2542,17 @@ kubectl get ConfigMap -n kube-system osm-config -o json | jq '.data'
 | service_cert_validity_duration   | sztring | 24 óra, 1h30m (bármely időtartam)                          | `"24h"`                                | Beállítja a szolgáltatás tanúsítványának érvényességi időtartamát, amely tizedes törtek sorozatával és egy egység utótaggal egészül ki.                                                                                             |
 | tracing_enable                   | logikai   | true, false                                             | `"false"`                              | Engedélyezi a Jaeger-nyomkövetést a hálóhoz.                                                                                                                                                                                                    |
 | tracing_address                  | sztring | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | A Jaeger üzemelő példányának címe, ha a nyomkövetés engedélyezve van.                                                                                                                                                                                |
-| tracing_endpoint                 | sztring | /api/v2/spans                                           | /api/v2/spans                          | Az adatok nyomkövetésének végpontja, ha a nyomkövetés engedélyezve van.                                                                                                                                                                                          |
-| tracing_port                     | int    | bármely nem nulla egész szám                              | `"9411"`                               | Az a port, amelyen a nyomkövetés engedélyezve van.                                                                                                                                                                                                       |
+| tracing_endpoint                 | sztring | /api/v2/spans                                           | /api/v2/spans                          | Az adatok nyomkövetésének végpontja, ha engedélyezve van a nyomkövetés.                                                                                                                                                                                          |
+| tracing_port                     | int    | bármely nem nulla egész szám                              | `"9411"`                               | Az a port, amelyen engedélyezve van a nyomkövetés.                                                                                                                                                                                                       |
 | use_https_ingress                | logikai   | true, false (igaz, hamis)                                             | `"false"`                              | Engedélyezi a HTTPS bejövő forgalom használatát a hálón.                                                                                                                                                                                                      |
-| config_resync_interval           | sztring | 1 perc alatt letiltja ezt                            | 0 (letiltva)                           | Ha egy 1m (60-as) feletti érték van megadva, az OSM-vezérlő az összes rendelkezésre álló konfigurációt elküldi az egyes csatlakoztatott envoy-knak a megadott időközönként                                                                                                    |
+| config_resync_interval           | sztring | 1 perc alatt letiltja ezt                            | 0 (letiltva)                           | Ha az 1m (60-as) feletti érték van megadva, az OSM-vezérlő az összes rendelkezésre álló konfigurációt elküldi az egyes csatlakoztatott envoy-knak a megadott időközönként                                                                                                    |
 
 #### <a name="check-namespaces"></a>Névterek ellenőrzése
 
 > [!NOTE]
 > A kube-system névtér soha nem vesz részt a szolgáltatási hálóban, és soha nem lesz címkézve és/vagy jegyzetekkel megcímkézve az alábbi kulccsal/értékekkel.
 
-A névterek egy adott szolgáltatási hálóhoz való illesztésében `osm namespace add` az parancsot használjuk.
+A parancs `osm namespace add` használatával a névtereket egy adott szolgáltatási hálóhoz illesztjük.
 Ha egy k8s-névtér a háló része (vagy ahhoz, hogy a háló része legyen), az alábbiaknak igaznak kell lennie:
 
 A jegyzetek megtekintése a következővel:
@@ -2650,7 +2650,7 @@ v1alpha2
 v1alpha1
 ```
 
-Az OSM Controller 0.8.2-es verziójához a következő verziókra van szükség:
+Az OSM-vezérlő 0.8.2-es verziójához a következő verziókra van szükség:
 
 - traffictargets.access.smi-spec.io – [v1alpha3](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-access/v1alpha3/traffic-access.md)
 - httproutegroups.specs.smi-spec.io – [v1alpha4](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-specs/v1alpha4/traffic-specs.md#httproutegroup)

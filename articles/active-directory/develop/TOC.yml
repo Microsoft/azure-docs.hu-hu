@@ -24,13 +24,13 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: Szögletes hitelesítésű kód folyamatábrája
+        - name: Angular – Hitelesítési kódfolyam
           href: quickstart-v2-javascript-auth-code-angular.md
         - name: JavaScript – Auth-kódfolyamat
           href: quickstart-v2-javascript-auth-code.md
         - name: JavaScript – Implicit folyamat
           href: quickstart-v2-javascript.md
-        - name: Reagálás – Auth kód folyamatábrája
+        - name: React – Hitelesítési kódfolyam
           href: quickstart-v2-javascript-auth-code-react.md
     - name: Webalkalmazás
       items:
@@ -74,9 +74,9 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konzol-démon
           href: quickstart-v2-python-daemon.md
-        - name: Node.js konzol démon
+        - name: Node.js-démon
           href: quickstart-v2-nodejs-console.md
-        - name: Java-konzol démon
+        - name: Java-konzol démonja
           href: quickstart-v2-java-daemon.md
 - name: Oktatóanyagok
   items:
@@ -96,7 +96,7 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
-        - name: Node.js webalkalmazás-oktatóanyag
+        - name: Node.js webalkalmazás oktatóanyaga
           href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobil és asztali
       items:
@@ -117,7 +117,7 @@
       items:
         - name: ASP.NET démon-webalkalmazása
           href: tutorial-v2-aspnet-daemon-web-app.md
-        - name: Node.js konzol démon
+        - name: Node.js-démon
           href: tutorial-v2-nodejs-console.md
 - name: Példák
   href: sample-v2-code.md
@@ -489,7 +489,7 @@
           href: reference-third-party-cookies-spas.md
         - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
-    - name: A jelszóval nem rendelkező hitelesítés támogatása
+    - name: Jelszó nélküli hitelesítés támogatása
       items:
         - name: FIDO2-hitelesítés támogatása
           href: support-fido2-authentication.md
@@ -551,7 +551,7 @@
           href: vs-active-directory-error.md
     - name: Alkalmazás regisztrációjának eltávolítása
       href: quickstart-remove-app.md
-    - name: Törölt alkalmazások regisztrációjának visszaállítása vagy eltávolítása
+    - name: Törölt alkalmazásregisztráció visszaállítása vagy eltávolítása
       href: quickstart-restore-app.md
 - name: Referencia
   items:
@@ -633,6 +633,8 @@
       href: reference-v2-libraries.md
     - name: A Microsoft Graph identitási és hozzáférési API-jai
       href: /graph/api/resources/azure-ad-overview
+    - name: Jogcím-leképezési szabályzat típusa
+      href: reference-claims-mapping-policy-type.md
     - name: Hitelesítés és hitelesítési hibakódok
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

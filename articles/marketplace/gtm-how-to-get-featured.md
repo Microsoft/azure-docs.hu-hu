@@ -1,51 +1,51 @@
 ---
-title: Piaci megjelenést bemutató szolgáltatások – a piactéren elérhető funkciók beszerzése | Azure piactér
-description: Piacra jutási szolgáltatások – ez a szakasz azt ismerteti, hogyan szerezhet be egy listát az Azure Marketplace-en
+title: Go-To-Market Services – Hogyan lehet kiemeltként szerepelni a piactéri | Azure Marketplace
+description: Piaci szolgáltatások – Ez a szakasz a termékoldalakon és szolgáltatásokban Microsoft AppSource és Azure Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.openlocfilehash: caa2b3171e80439fedd8941ebc864a226f1a21b8
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878714"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599995"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>A Kiemelt funkciók beszerzése a AppSource-ben és az Azure Marketplace-en
+# <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>Hogyan lehet kiemeltként szerepeltetni a Microsoft AppSource és Azure Marketplace
 
-Az Azure Marketplace-en és a AppSource-ban **Kiemelt alkalmazások szerepelnek** , ahol az alkalmazást a következőkkel érheti el:
+Azure Marketplace és az AppSource kiemelt alkalmazásokat **tartalmaz,** ahol kiemeltként szerepeltetheti az alkalmazást:
 
-* Először is, ha PRÓBAVERZIÓs vagy TRANZAKCIÓs ajánlatunk van, a [kereskedelmi piactéren nyújtott előnyökkel](gtm-your-marketplace-benefits.md)a "kategória előléptetése" kedvezményt használhatja.
-* Másodszor, tekintse át az alábbi ajánlott eljárások és feltételek listáját a hely megszerzéséhez.
+* Először is, ha próbaverziós, TANÁCSADÁSi vagy TRANZAKCIÓs ajánlattal rendelkezik, akkor jogosult lehet a kereskedelmi **piactér** kiemelt kategória elhelyezési juttatására a [kereskedelmi piactér előnyei révén.](/azure/marketplace/gtm-your-marketplace-benefits) A jogosult kereskedelmi piactéri termékoldal automatikusan megjelenik a termékoldal bal oldalán található kategóriák egyikében. A kiemelt elhelyezés kategóriája és időzítése a rendelkezésre állástól függ. Annak érdekében, hogy a piactéri termékoldal még robusztusabb legyen, tekintse meg ezt a videót a termékoldal optimalizálásának [ajánlott microsoft.com).](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4)
+* Másodszor tekintse át az alábbi ajánlott eljárások és kritériumok listáját a pontszerzéshez.
 
-A Kiemelt alkalmazások kiválasztási algoritmusa egy pontszámot hoz létre egy Microsoft-alkalmazásnak, akárcsak az Egyesült államokbeli kreditek pontszáma.  A Kiemelt alkalmazások heti kiválasztása az alkalmazás és a szolgáltatás teljesítményének kiszámítása alapján történik.
+A kiemelt alkalmazások kiválasztási algoritmusa pontozást hoz létre egy alkalmazáshoz a Microsofttól, pont úgy, mint az Egyesült Államokbeli személyek kreditpontszáma.  A kiemelt alkalmazások heti kiválasztása az alkalmazás és a szolgáltatás teljesítményének számításán alapul.
 
-## <a name="steps-to-take"></a>Elvégzendő lépések
+## <a name="steps-to-improve-your-score"></a>A pontszám javításának lépései
 
-A pontszám növeléséhez a következő műveleteket hajthatja végre:
+A pontszám javításához a következő műveletelemeket használhatja:
 
-1. *Győződjön meg arról, hogy az alkalmazás vagy szolgáltatás megfelelően van kategorizálva*: válasszon három kategóriát, amelyek az alkalmazást vagy a szolgáltatás képességeit képviselik.
-2. *Azure Marketplace-alkalmazások: növelje az Azure-fogyasztás hónapját.* Ha havonta 1 000 órányi Azure-használatot tud elérni, nagy mértékben növelheti a funkcionalitását.
-3. *AppSource-alkalmazások: növelje az ajánlathoz közeledő beszerzéseket.* Ha havonta 10 beszerzést tud elérni, nagy mértékben növelheti a funkcionalitását.
-4. *Co-Sell Üzemkész állapot elérése*: végezze el a [közös értékesítésre való felkészülés követelményeit](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
-5. *Az ajánlat minőségének javítása*: az ajánlat módosításával kapcsolatos információkért tekintse meg a  [tartalom listázására vonatkozó irányelveket](marketplace-criteria-content-validation.md) .
-6. Több ajánlat közzététele a piactéren: a felsorolt alapvető alkalmazások és szolgáltatások? Van próbaverziója?
-7. Ösztönözze ügyfeleit az értékelések írásához.
+1. *Győződjön meg arról, hogy* az alkalmazás vagy szolgáltatás megfelelően van kategorizálva: válasszon három kategóriát, amelyek az alkalmazás vagy a szolgáltatás képességeit képviselik.
+2. *Azure Marketplace Apps: az Azure-használat hónapról hónapra való növekedését.* Ha havonta 1000 órányi Azure-használatot tud elérni, nagyban növeli a kiemelt funkciók esélyét.
+3. *AppSource Apps: az ajánlathoz érkező beszerzések számának növelése.* Ha havonta 10 felvásárlást tud elérni, nagy eséllyel lesz kiemelt.
+4. *Az együtt értékesítésre kész állapot elérése:* teljes körű követelményeket kell megfelelnie [az értékesítésre késznek.](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)
+5. *Az ajánlat minőségének javítása:*  [az](marketplace-criteria-content-validation.md) ajánlat módosításával kapcsolatos információkért tekintse meg a tartalomjegyzékre vonatkozó irányelveket
+6. Több ajánlat közzététele a Marketplace-en: szerepel az összes alapvető alkalmazás és szolgáltatás? Rendelkezik próbaverzióval?
+7. Bátorítsa az ügyfeleket, hogy írjanak értékeléseket.
 
-A Kiemelt alkalmazások promóciók a keresési algoritmustól függetlenül működnek.
+A kiemelt alkalmazások promóciói a keresési algoritmustól függetlenül működnek.
 
 >[!Note]
->Ha a megoldás a keresési eredmények között nem jelenik meg megfelelően, a [partner Center](https://partner.microsoft.com/)Súgó menüjében talál egy támogatási jegyet.
+>Ha a megoldás nem megfelelően jelenik meg a keresési eredmények között, jelentsen be egy támogatási jegyet az [Partnerközpont.](https://partner.microsoft.com/)
 
-A GTM-támogatás magában foglalja az önsegítő sablonok, a webes tartalmak, a képzések és az eszközök teljes könyvtárát is, amely segít a listák és a vállalata további előléptetésében.
+A GTM-támogatás magában foglalja az önsegítő sablonok, webes tartalmak, képzések és eszközök teljes könyvtárát is, amely segít a termékoldalak és a vállalkozás további népszerűsítésében.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [kereskedelmi piactér előnyeiről](gtm-your-marketplace-benefits.md).
+További információ a kereskedelmi piactér [előnyeiről.](gtm-your-marketplace-benefits.md)
 
-Az ajánlat létrehozásához és konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+Jelentkezzen be a [Partnerközpont](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához és konfiguráláshoz.
 
 ---

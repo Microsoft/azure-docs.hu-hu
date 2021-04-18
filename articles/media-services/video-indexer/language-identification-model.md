@@ -1,7 +1,7 @@
 ---
-title: A beszélt nyelvek automatikus azonosításának Video Indexer használata az Azure-ban
+title: Beszélt Video Indexer automatikus azonosítása a Video Indexer használatával – Azure
 titleSuffix: Azure Media Services
-description: Ez a cikk azt ismerteti, hogyan használható a Video Indexer nyelvi azonosító modell a beszélt nyelvnek a videóban való automatikus azonosítására.
+description: Ez a cikk azt ismerteti, Video Indexer nyelvi azonosítási modell hogyan használható a beszélt nyelv automatikus azonosítására egy videóban.
 services: media-services
 author: juliako
 manager: femila
@@ -10,34 +10,34 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40f2e146956919e154f59d90b56a1b03379abbb2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81687124"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600637"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus felismerése nyelvazonosítási modellel
 
-A Video Indexer támogatja az automatikus nyelvi azonosítást (FEDŐt), amely automatikusan azonosítja a beszélt nyelvi tartalmakat a hangból, és elküldi a médiafájlt a dominánsan azonosított nyelven. 
+Video Indexer támogatja az automatikus nyelvazonosítást (AUTOMATIC), amely a hanganyagból származó beszélt nyelvi tartalom automatikus azonosítását és a médiafájlnak a domináns azonosított nyelven történő átírását jelenti. 
 
-A fedél jelenleg a következőket támogatja: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, orosz és portugál (brazíliai). 
+Jelenleg a KÖVETKEZŐ nyelveket támogatja: angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál (brazíliai). 
 
-Tekintse át az alábbi [irányelvek és korlátozások](#guidelines-and-limitations) szakaszt.
+Mindenképpen tekintse át az [alábbi Irányelvek és korlátozások](#guidelines-and-limitations) szakaszt.
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>Automatikus nyelvi azonosítás kiválasztása az indexeléshez
+## <a name="choosing-auto-language-identification-on-indexing"></a>Az indexelés automatikus nyelvazonosításának kiválasztása
 
-Ha az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `auto detect` paraméterben található lehetőséget `sourceLanguage` .
+Amikor az API [használatával indexel](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) vagy újra indexel egy videót, válassza a `auto detect` paraméterben a `sourceLanguage` lehetőséget.
 
-A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdőlapján keresse meg a **fiókja videóit** , és vigye az egérmutatót az újra indexelni kívánt videó nevére. A jobb alsó sarokban kattintson az újra index gombra. A **videó újraindexelése** párbeszédpanelen válassza az *automatikus észlelés* lehetőséget a **videó forrása nyelv** legördülő listából.
+A portál használata esetén  a kezdőlapon Video Indexer fiókvideóit, és vigye az egérmutatót az újraindexelni kívánt videó nevére. [](https://www.videoindexer.ai/) A jobb alsó sarokban kattintson az Index újraindexelése gombra. A Videó **újraindexelése párbeszédpanelen** válassza az *Automatikus észlelés* lehetőséget a **Videó forrásnyelve** legördülő listában.
 
 ![automatikus észlelés](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>A modell kimenete
 
-Video Indexer a videót a legvalószínűbb nyelven írja át, ha az adott nyelv megbízhatósága `> 0.6` . Ha a nyelv nem azonosítható magabiztosan, feltételezi, hogy a beszélt nyelv angol. 
+Video Indexer a legvalószínűbb nyelvnek megfelelően írja át a videót, ha a nyelv megbízhatósága `> 0.6` . Ha a nyelv nem azonosítható magabiztosan, azt feltételezi, hogy a beszélt nyelv az angol. 
 
-A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attribútumként érhető el (a root/videos/bepillantás alatt). A megfelelő megbízhatósági pontszám az attribútum alatt is elérhető `sourceLanguageConfidence` .
+A modell domináns nyelve attribútumként érhető el az elemzés JSON-fájlban `sourceLanguage` (a root/videos/insights alatt). A attribútum alatt egy megfelelő megbízhatósági pontszám is `sourceLanguageConfidence` elérhető.
 
 ```json
 "insights": {
@@ -53,16 +53,16 @@ A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attr
 
 ## <a name="guidelines-and-limitations"></a>Irányelvek és korlátozások
 
-* Az automatikus nyelvi azonosító (fedél) a következő nyelveket támogatja: 
+* Az automatikus nyelvazonosítás (AUTOMATIC Language Identification, A MIT) a következő nyelveket támogatja: 
 
-    Angol, spanyol, francia, német, olasz, mandarin Chines, Japán, orosz és portugál (brazíliai).
-* Bár a Video Indexer támogatja az Arab (modern standard és levantei), a hindi és a Koreai nyelvet, a fedél nem támogatja ezeket a nyelveket.
-* Ha a hang a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény nem várt.
-* Ha Video Indexer nem tudja azonosítani a nyelvet elég magas megbízhatósággal ( `>0.6` ), a tartalék nyelv angol.
-* A vegyes nyelvi hanggal rendelkező fájlok jelenleg nem támogatottak. Ha a hang vegyes nyelveket tartalmaz, az eredmény nem várt. 
-* Az alacsony minőségű hang befolyásolhatja a modell eredményeit.
-* A modellhez legalább egy perces beszéd szükséges a hanganyagban.
-* A modell úgy lett kialakítva, hogy felismerje a spontán társalgási beszédeket (nem hangparancsokat, éneklést stb.).
+    Angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál (brazíliai).
+* Bár a Video Indexer támogatja az arab (Modern Standard és Levantine), hindi és koreai nyelveket, ezek a nyelvek nem támogatottak a TUD-ban.
+* Ha a hanganyag a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény váratlan lesz.
+* Ha Video Indexer nem tudja azonosítani a nyelvet elég magabiztosan ( ), a tartalék nyelv `>0.6` az angol.
+* A vegyes nyelvű hangfájlokat jelenleg nem támogatja a rendszer. Ha a hanganyag vegyes nyelveket tartalmaz, az eredmény váratlan. 
+* A gyenge minőségű hanganyag hatással lehet a modell eredményeire.
+* A modellnek legalább egy perc beszédre van szüksége a hanganyagban.
+* A modell úgy lett kialakítva, hogy felismerje a beszélgetési beszédeket (nem pedig hangparancsokat, egyebeket).
 
 ## <a name="next-steps"></a>Következő lépések
 

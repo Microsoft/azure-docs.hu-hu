@@ -1,18 +1,18 @@
 ---
-title: Az Azure Route Serverrel kapcsolatos gyakori kérdések
-description: Válaszokat talál az Azure Route Serverrel kapcsolatos gyakori kérdésekre.
+title: Gyakori kérdések az Azure Route Serverről
+description: Választ találhat az Azure Route Serverrel kapcsolatos gyakori kérdésekre.
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932369"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599536"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (előzetes verzió) – gyakori kérdések
 
@@ -25,56 +25,65 @@ ms.locfileid: "105932369"
 
 Az Azure Route Server egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a hálózati virtuális berendezés (NVA) és a virtuális hálózat közötti útválasztás egyszerű kezelését.
 
-### <a name="is-azure-route-server-just-a-vm"></a>Csak egy virtuális gép az Azure Route Server?
+### <a name="is-azure-route-server-just-a-vm"></a>Az Azure Route Server csak egy virtuális gép?
 
-Nem. Az Azure Route Server magas rendelkezésre állással tervezett szolgáltatás. Ha egy [Availability Zonest](../availability-zones/az-overview.md)támogató Azure-régióban van üzembe helyezve, akkor a zóna szintű redundancia lesz.
+Nem. Az Azure Route Server egy magas rendelkezésre állású szolgáltatás. Ha olyan Azure-régióban van üzembe helyezni, amely támogatja a [Availability Zones,](../availability-zones/az-overview.md)zónaszintű redundanciával fog kiesni.
 
-### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Milyen útválasztási protokollok támogatják az Azure Route Servert?
+### <a name="how-many-route-servers-can-i-create-in-a-virtual-network"></a>Hány útvonalkiszolgálót hozhatok létre egy virtuális hálózaton?
 
-Az Azure Route Server csak Border Gateway Protocol (BGP) használatát támogatja. A NVA támogatnia kell a Többugrásos külső BGP-t, mert az Azure Route Servert a virtuális hálózat egy dedikált alhálózatán kell telepítenie. Az Ön által választott [ASN](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) -nek eltérőnek kell lennie az Azure Route-kiszolgálótól, amikor a BGP-t KONFIGURÁLJA a NVA.
+Egy virtuális hálózatban csak egy útvonalkiszolgálót hozhat létre. Ezt a *RouteServerSubnet* nevű kijelölt alhálózaton kell üzembe helyezni.
 
-### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Az Azure Route Server irányítja az adatforgalmat a saját NVA és a saját virtuális gépek között?
+### <a name="does-azure-route-server-support-vnet-peering"></a>Támogatja az Azure Route Server a virtuális hálózatok közötti társviszonyt?
 
-Nem. Az Azure Route Server csak BGP-útvonalakat cserél a NVA. Az adatforgalom közvetlenül a NVA a kiválasztott virtuális gépre, és közvetlenül a virtuális gépről a NVA kerül.
+Igen. Ha társviszonyt létesít egy Azure Route Servert üzemeltető virtuális hálózat és egy másik virtuális hálózat között, és engedélyezi a Távoli átjáró használata az utóbbi virtuális hálózatban, az Azure Route Server megtanulja a virtuális hálózat címterét, és elküldi azokat az összes virtuális társviszonyban található NVA-nak. Emellett beprogramja az NVA-k útvonalait a virtuális társhálózatban található virtuális gépek útválasztási táblázatába. 
 
-### <a name="does-azure-route-server-store-customer-data"></a>Az Azure Route Server tárolja az ügyféladatokat?
-Nem. Az Azure Route Server csak BGP-útvonalakat cserél a NVA, majd propagálja őket a virtuális hálózatra.
 
-### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Ha az Azure Route Server ugyanazt az útvonalat kapja több NVA, akkor az útvonal összes példányát (de mindegyiket egy másik következő ugrással) fogja programozni a virtuális hálózatban lévő virtuális gépekre?
+### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Milyen útválasztási protokollokat támogat az Azure Route Server?
 
-Igen, csak akkor, ha az útvonal megegyezik az elérési út hosszával. Ha a virtuális gépek forgalmat küldenek az útvonal célhelyére, a virtuálisgép-gazdagépek Equal-Cost többutas (ECMP) útválasztást tesznek elérhetővé. Ha azonban az egyik NVA az útvonalat rövidebb, mint a többi NVA, akkor az útvonalat is elküldheti. Az Azure Route Server csak azt az útvonalat fogja programozni, amelyen a következő ugrás van beállítva erre a NVA a virtuális hálózatban lévő virtuális gépekre.
+Az Azure Route Server csak Border Gateway Protocol (BGP)-t támogat. Az NVA-nak támogatnia kell a többugrásos külső BGP-t, mert az Azure Route Servert a virtuális hálózat egy dedikált alhálózatán kell üzembe helyeznie. A [választott ASN-nek](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) eltérnie kell az Azure Route Server által használttól, amikor konfigurálja a BGP-t az NVA-n.
 
-### <a name="does-azure-route-server-support-vnet-peering"></a>Támogatja az Azure Route Server a VNet-társítást?
+### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Az Azure Route Server irányít adatforgalmat az NVA és a virtuális gépek között?
 
-Igen. Ha olyan VNet, amely az Azure Route Servert egy másik VNet üzemelteti, és engedélyezi a távoli átjáró használatát a VNet. Az Azure Route Server megismeri a VNet, és elküldi őket az összes társ NVA.
+Nem. Az Azure Route Server csak BGP-útvonalakat cseréje az NVA-val. Az adatforgalom közvetlenül az NVA-ból a cél virtuális gépre, és közvetlenül a virtuális gépről az NVA-hoz kerül.
 
-### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>Milyen autonóm rendszerszámokat (ASN) használhatok?
+### <a name="does-azure-route-server-store-customer-data"></a>Az Azure Route Server ügyféladatokat tárol?
+Nem. Az Azure Route Server csak BGP-útvonalakat hoz létre az NVA-val, majd propagálja őket a virtuális hálózatra.
 
-Saját nyilvános ASN vagy saját ASN is használhat a hálózati virtuális berendezésben. Az Azure vagy az IANA által fenntartott tartományok nem használhatók.
-Az Azure vagy az IANA az alábbi ASN foglalja le:
+### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Ha az Azure Route Server ugyanazt az útvonalat kapja egynél több NVA-tól, hogyan kezeli őket?
 
-* Az Azure által fenntartott ASN:
+Ha az útvonal hossza megegyezik az AS elérési út hosszával, az Azure Route Server az útvonal több példányát programja a virtuális hálózat virtuális gépei felé, mindegyiket eltérő következő ugrással. Amikor a virtuális gépek forgalmat küldenek ennek az útvonalnak a céljához, a virtuálisgép-Equal-Cost (ECMP) útválasztást. Ha azonban egy NVA a többi NVA-hoz rövidebb AS-útvonalhosszúságot küld, mint a többi NVA, az Azure Route Server csak azt az útvonalat programja, amelynél a következő ugrás erre az NVA-re van beállítva a virtuális hálózat virtuális gépei felé.
+
+### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Megőrzi az Azure Route Server a kapott útvonal BGP-közösségét?
+
+Igen, az Azure Route Server propagálja az útvonalat a BGP-közösségekkel.
+
+### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>Milyen autonómrendszer-számokat (ASN-eket) használhatok?
+
+Saját nyilvános ASN-eket vagy privát ASN-eket használhat a hálózati virtuális berendezésben. Az Azure vagy az IANA által fenntartott tartományok nem használhatók.
+Az Azure vagy az IANA az alábbi ASN-eket foglalta le:
+
+* Az Azure által fenntartott ASN-ek:
     * Nyilvános ASN-ek: 8074, 8075, 12076
     * Privát ASN-ek: 65515, 65517, 65518, 65519, 65520
-* [Az IANA által fenntartott](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)ASN:
+* Az IANA által [fenntartott ASN-ek:](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)
     * 23456, 64496-64511, 65535-65551
 
-### <a name="can-i-use-32-bit-4-byte-asns"></a>Használhatok 32 bites (4 bájtos) ASN?
+### <a name="can-i-use-32-bit-4-byte-asns"></a>Használhatok 32 bites (4 bájtos) ASN-eket?
 
-Nem, az Azure Route Server csak a 16 bites (2 bájtos) ASN támogatja.
+Nem, az Azure Route Server csak a 16 bites (2 bájtos) ASN-eket támogatja.
 
-## <a name="route-server-limits"></a><a name = "limitations"></a>Útvonal-kiszolgáló korlátai
+## <a name="route-server-limits"></a><a name = "limitations"></a>Útválasztási kiszolgáló korlátai
 
-Az Azure Route Server a következő korlátozásokkal rendelkezik (üzemelő példányok esetében).
+Az Azure Route Serverre a következő korlátozások vonatkoznak (üzemelő példányonként).
 
 | Erőforrás | Korlát |
 |----------|-------|
-| Támogatott BGP-társak száma | 8 |
-| Az egyes BGP-társak által az Azure Route Server-be hirdetett útvonalak száma | 200 |
-| Az Azure Route Server által a ExpressRoute-vagy VPN-átjáróra hirdetett útvonalak száma | 200 |
+| A támogatott BGP-társviszonyok száma | 8 |
+| Az egyes BGP-társ által az Azure Route Serveren meghirdethet útvonalak száma | 200 |
+| Az Azure Route Server által az ExpressRoute-ban vagy VPN-átjáróban meghirdetni képes útvonalak száma | 200 |
 
-Ha a NVA több útvonalat hirdet meg a korlátnál, a BGP-munkamenet el lesz dobva. Ha ez történik az átjáróval és az Azure Route Serverrel, akkor a helyszíni hálózatról az Azure-ba való kapcsolódás elvész. További információ: Azure-beli [virtuális gépek útválasztási problémájának diagnosztizálása](../virtual-network/diagnose-network-routing-problem.md).
+Ha az NVA a korlátnál több útvonalat hirdet meg, a BGP-munkamenet el lesz dobva. Ha ez történik az átjáróval és az Azure Route Serverrel, megszakad a kapcsolat a helyszíni hálózat és az Azure között. További információ: [Azure-beli virtuális gépek útválasztási problémájának diagnosztizálása.](../virtual-network/diagnose-network-routing-problem.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [konfigurálhatja az Azure Route Servert](quickstart-configure-route-server-powershell.md).
+Ismerje meg, hogyan [konfigurálhatja az Azure Route Servert.](quickstart-configure-route-server-powershell.md)

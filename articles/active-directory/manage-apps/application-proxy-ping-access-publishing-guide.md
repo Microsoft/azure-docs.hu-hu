@@ -1,6 +1,6 @@
 ---
-title: Fejléc-alapú hitelesítés a PingAccess for Azure AD Application Proxy
-description: Alkalmazások közzététele a PingAccess és az App proxyval a fejléc-alapú hitelesítés támogatásához.
+title: Fejlécalapú hitelesítés PingAccess használatával az Azure AD-alkalmazásproxy
+description: Alkalmazások közzététele a PingAccess és az Alkalmazásproxy használatával a fejlécalapú hitelesítés támogatásához.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -11,170 +11,170 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23008d785c27b901f3487d3eddff7cb8e7529f6e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643796"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600080"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítés alkalmazásproxyval és PingAccess segítségével történő egyszeri bejelentkezéshez
 
-Az Azure Active Directory (Azure AD) alkalmazásproxy partneri kapcsolatban áll a PingAccess, így az Azure AD-ügyfelek több alkalmazáshoz is hozzáférhetnek. A PingAccess egy másik lehetőséget biztosít [az integrált fejléc-alapú egyszeri bejelentkezésnél](application-proxy-configure-single-sign-on-with-headers.md).
+Azure Active Directory (Azure AD) alkalmazásproxy a PingAccessvel, hogy az Azure AD-ügyfelek több alkalmazáshoz is hozzáférnek. A PingAccess az integrált fejlécalapú egyszeri bejelentkezésen kívül egy másik lehetőséget [is kínál.](application-proxy-configure-single-sign-on-with-headers.md)
 
-## <a name="whats-pingaccess-for-azure-ad"></a>Mi a PingAccess az Azure AD-hez?
+## <a name="whats-pingaccess-for-azure-ad"></a>Mi az az Azure AD-hez tartozó PingAccess?
 
-A PingAccess for Azure AD lehetővé teszi a felhasználók számára, hogy hozzáférést és egyszeri bejelentkezést (SSO) biztosítson a fejléceket használó alkalmazásokhoz a hitelesítéshez. Az alkalmazásproxy ezeket az alkalmazásokat, mint bármely más, az Azure AD használatával hitelesíti a hozzáférést, majd továbbítja a forgalmat az összekötő szolgáltatáson keresztül. A PingAccess az alkalmazások előtt ül, és lefordítja a hozzáférési jogkivonatot az Azure AD-ből egy fejlécbe. Az alkalmazás ezután az általa olvasható formátumban fogadja a hitelesítést.
+Az Azure AD-hez használható PingAccess segítségével hozzáférést és egyszeri bejelentkezést (SSO) adhat a felhasználóknak az olyan alkalmazásoknak, amelyek fejléceket használnak a hitelesítéshez. alkalmazásproxy úgy kezeli ezeket az alkalmazásokat, mint bármely más alkalmazást, az Azure AD használatával hitelesíti a hozzáférést, majd az összekötő szolgáltatáson keresztül halad át a forgalomon. A PingAccess az alkalmazások előtt található, és fejlécre fordítja le a hozzáférési jogkivonatot az Azure AD-ból. Az alkalmazás ezután az olvasható formátumban kapja meg a hitelesítést.
 
-A felhasználók nem láthatnak mást, amikor bejelentkeznek a céges alkalmazásai használatára. Továbbra is bárhonnan dolgozhatnak bármely eszközről. Az alkalmazásproxy összekapcsolja az összes alkalmazáshoz való közvetlen távoli forgalmat a hitelesítési típusuk nélkül, így továbbra is automatikusan betöltődik.
+A felhasználók semmit sem fognak észre venni, amikor bejelentkeznek a vállalati alkalmazások használatára. Továbbra is bárhonnan dolgozhatnak bármilyen eszközön. A alkalmazásproxy a távoli forgalmat minden alkalmazáshoz a hitelesítés típusától függően irányítják, így továbbra is automatikusan el tudják egyensúlyba hozni a terhelést.
 
-## <a name="how-do-i-get-access"></a>Hogyan a hozzáférés?
+## <a name="how-do-i-get-access"></a>Hogyan kap hozzáférést?
 
-Mivel ez a forgatókönyv Azure Active Directory és PingAccess közötti partnerségből származik, mindkét szolgáltatáshoz licenc szükséges. Prémium szintű Azure Active Directory előfizetések azonban egy alapszintű PingAccess-licencet tartalmaznak, amely akár 20 alkalmazást is magában foglal. Ha több mint 20 fejléc-alapú alkalmazást kell közzétennie, vásárolhat további licencet a PingAccess.
+Mivel ez a forgatókönyv a Azure Active Directory És a PingAccess közötti együttműködésből származik, mindkét szolgáltatáshoz licencre van szüksége. A prémium szintű Azure Active Directory azonban tartalmaznak egy alapszintű PingAccess-licencet, amely legfeljebb 20 alkalmazást fed le. Ha több mint 20 fejlécalapú alkalmazást kell közzétennie, vásárolhat egy további licencet a PingAccess szolgáltatásból.
 
-További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
+További információ: Azure Active Directory [kiadása.](../fundamentals/active-directory-whatis.md)
 
 ## <a name="publish-your-application-in-azure"></a>Az alkalmazás közzététele az Azure-ban
 
-Ez a cikk azt ismerteti, hogy a felhasználók első alkalommal teszik közzé az alkalmazást ebben a forgatókönyvben. A közzétételi lépések részletes ismertetése mellett végigvezeti Önt az alkalmazásproxy és a PingAccess első lépésein is. Ha már konfigurálta mindkét szolgáltatást, de a közzétételi lépéseket szeretné frissíteni, ugorjon az [alkalmazás hozzáadása az Azure ad](#add-your-application-to-azure-ad-with-application-proxy) -hez az alkalmazásproxy szakaszban.
+Ez a cikk az alkalmazás első közzétételét teszi lehetővé ezzel a forgatókönyvvel. A közzétételi lépések részletezés mellett végigvezeti a alkalmazásproxy és a PingAccess alkalmazásproxy is. Ha már mindkét szolgáltatást konfigurálta, de szeretné, hogy frissítsen a közzétételi lépésekről, ugorjon az Add [your application to Azure AD with alkalmazásproxy](#add-your-application-to-azure-ad-with-application-proxy) (Alkalmazás hozzáadása az Azure AD-hez a alkalmazásproxy szakaszban.
 
 > [!NOTE]
-> Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti együttműködés, néhány útmutató létezik a ping Identity webhelyen.
+> Mivel ez a forgatókönyv az Azure AD és a PingAccess együttműködése, néhány utasítás a Ping Identity webhelyen található.
 
-### <a name="install-an-application-proxy-connector"></a>Alkalmazásproxy-összekötő telepítése
+### <a name="install-an-application-proxy-connector"></a>Összekötő alkalmazásproxy telepítése
 
-Ha engedélyezte az alkalmazásproxy engedélyezését, és már telepített egy összekötőt, ugorja át ezt a szakaszt, és lépjen az [alkalmazás hozzáadása az Azure ad-hez az alkalmazásproxy](#add-your-application-to-azure-ad-with-application-proxy)használatával lehetőségre.
+Ha már engedélyezte a alkalmazásproxy és telepített egy összekötőt, kihagyhatja ezt a szakaszt, és az Alkalmazás hozzáadása az Azure AD-hez a következővel: [alkalmazásproxy.](#add-your-application-to-azure-ad-with-application-proxy)
 
-Az alkalmazásproxy-összekötő egy olyan Windows Server-szolgáltatás, amely a távoli alkalmazottaktól a közzétett alkalmazásokba irányítja a forgalmat. Részletesebb telepítési útmutatót a következő témakörben talál [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az Application proxyn keresztül Azure Active Directory](application-proxy-add-on-premises-application.md).
+A alkalmazásproxy összekötő egy Windows Server-szolgáltatás, amely a távoli alkalmazottaktól származó forgalmat a közzétett alkalmazásokhoz irányítja. Részletesebb telepítési utasításokért [lásd: Oktatóanyag: Helyszíni](application-proxy-add-on-premises-application.md)alkalmazás hozzáadása táveléréshez alkalmazásproxy a Azure Active Directory.
 
-1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) alkalmazás-rendszergazdaként. Megjelenik a **Azure Active Directory felügyeleti központ** lap.
-1. Válassza az **Azure Active Directory**  >  **alkalmazásproxy**  >  **letöltése összekötő szolgáltatást**. Megjelenik az **alkalmazásproxy-összekötő letöltési** lapja.
+1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) alkalmazás-rendszergazdaként. Megjelenik **Azure Active Directory Felügyeleti központ** lapja.
+1. Válassza **Azure Active Directory**  >  **alkalmazásproxy**  >  **összekötő-szolgáltatás letöltése lehetőséget.** Megjelenik **alkalmazásproxy Összekötő letöltése** lap.
 
    ![Alkalmazásproxy-összekötő letöltése](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
 1. Kövesse a telepítési utasításokat.
 
-Az összekötő letöltésének automatikusan engedélyeznie kell az alkalmazásproxy-t a címtárban, de ha nem, akkor válassza az **alkalmazásproxy engedélyezése** lehetőséget.
+Az összekötő letöltésének automatikusan engedélyeznie kell alkalmazásproxy címtárhoz való csatlakozást, de ha nem, válassza az **Enable alkalmazásproxy** lehetőséget.
 
-### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>Alkalmazás felvétele az Azure AD-be alkalmazásproxy használatával
+### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>Az alkalmazás hozzáadása az Azure AD-hez alkalmazásproxy
 
-A Azure Portal két műveletet kell végrehajtania. Először közzé kell tennie az alkalmazást az Application proxyval. Ezután össze kell gyűjtenie az alkalmazással kapcsolatos adatokat, amelyeket a PingAccess lépések során használhat.
+A következő két műveletet kell Azure Portal. Először közzé kell tennie az alkalmazást a alkalmazásproxy. Ezután be kell gyűjtenie néhány információt az alkalmazásról, amely a PingAccess lépései során használható.
 
 #### <a name="publish-your-application"></a>Az alkalmazás közzététele
 
-Először közzé kell tennie az alkalmazást. Ez a művelet a következőket foglalja magában:
+Először közzé kell tennie az alkalmazást. Ez a művelet a következőt foglalja magában:
 
 - Helyszíni alkalmazás hozzáadása az Azure AD-hez
-- Felhasználó kiosztása az alkalmazás teszteléséhez és a fejléc-alapú egyszeri bejelentkezés kiválasztásához
+- Felhasználó hozzárendelése az alkalmazás teszteléséhez és a fejlécalapú SSO kiválasztásához
 - Az alkalmazás átirányítási URL-címének beállítása
-- Engedélyek megadása a felhasználók és más alkalmazások számára a helyszíni alkalmazás használatához
+- Engedélyek megadása a felhasználók és más alkalmazások számára a helyszíni alkalmazás használatára
 
 Saját helyszíni alkalmazás közzététele:
 
-1. Ha nem az utolsó szakaszban, jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) alkalmazás-rendszergazdaként.
-1. Válassza a **vállalati alkalmazások**  >  **új alkalmazás**  >  **helyi alkalmazás hozzáadása lehetőséget**. Megjelenik a **saját helyszíni alkalmazás hozzáadása** lap.
+1. Ha az előző szakaszban nem, jelentkezzen be a Azure Active Directory [portálra](https://aad.portal.azure.com/) alkalmazás-rendszergazdaként.
+1. Válassza **a Vállalati alkalmazások** Új  >  **alkalmazás** Helyszíni alkalmazás hozzáadása  >  **lehetőséget.** Megjelenik **a Saját helyszíni alkalmazás hozzáadása** lap.
 
    ![Saját helyszíni alkalmazás hozzáadása](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
-1. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkkal. Az alábbi útmutatást használhatja a beállításokhoz.
+1. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkkal. A beállításokhoz használja az alábbi útmutatást.
 
    > [!NOTE]
-   > A lépés részletes ismertetését lásd: helyszíni [alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)hez.
+   > A lépés részletesebb bemutatójért lásd: Helyszíni alkalmazás hozzáadása az [Azure AD-hez.](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)
 
-   1. **Belső URL-cím**: általában megadja azt az URL-címet, amely az alkalmazás bejelentkezési lapjára viszi, amikor a vállalati hálózaton dolgozik. Ebben az esetben az összekötőnek a PingAccess-proxyt kell kezelnie az alkalmazás első oldalán. Használja ezt a formátumot: `https://<host name of your PingAccess server>:<port>` . Alapértelmezés szerint a port 3000, de a PingAccess-ben is konfigurálható.
+   1. **Belső** URL-cím: Általában azt az URL-címet adja meg, amely az alkalmazás bejelentkezési oldalára viszi, amikor a vállalati hálózaton van. Ebben a forgatókönyvben az összekötőnek a PingAccess-proxyt kell az alkalmazás kezdőlapjaként kezelnie. Használja a következő formátumot: `https://<host name of your PingAccess server>:<port>` . A port alapértelmezés szerint 3000, de a PingAccessben konfigurálhatja.
 
       > [!WARNING]
-      > Az ilyen típusú egyszeri bejelentkezéshez a belső URL-címnek kell használnia, `https` és nem használható `http` . Emellett meg kell adni egy korlátozást, ha egy olyan alkalmazást konfigurál, amely nem rendelkezik két alkalmazással ugyanazzal a belső URL-címmel, mivel ez lehetővé teszi az alkalmazás-proxy számára az alkalmazások közötti különbségtételt.
+      > Az ilyen típusú egyszeri bejelentkezéshez a belső URL-címnek a következőt kell használnia: , és `https` nem használhatja a következőt: `http` . Emellett az alkalmazások konfigurálásakor egy olyan korlátozás is érvényes, amely szerint két alkalmazásnak nem kell ugyanazokkal a belső URL-címével lennie, mivel így az alkalmazásproxy képes megkülönböztetést tartani az alkalmazások között.
 
-   1. **Előhitelesítési módszer**: válassza a **Azure Active Directory** lehetőséget.
-   1. **URL-cím lefordítása a fejlécekben**: válassza a **nem** lehetőséget.
+   1. **Előhitelesítési módszer:** Válassza a **Azure Active Directory.**
+   1. **URL fordítása a fejlécek között:** Válassza a **Nem lehetőséget.**
 
    > [!NOTE]
-   > Ha ez az első alkalmazása, az 3000-es porton kezdje el, és térjen vissza a beállítás frissítéséhez, ha módosítja a PingAccess-konfigurációt. További alkalmazások esetén a portnak meg kell egyeznie a PingAccess-ben konfigurált figyelővel. További információ a [PingAccess lévő figyelőkről](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
+   > Ha ez az első alkalmazása, indítsa el a 3000-es portot, és ha módosítja a PingAccess konfigurációját, akkor frissítse ezt a beállítást. A további alkalmazások esetében a portnak meg kell egyeznie a PingAccessben konfigurált figyelővel. További információ a [PingAccess figyelőiről:](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
-1. Válassza a **Hozzáadás** lehetőséget. Megjelenik az új alkalmazás Áttekintés lapja.
+1. Válassza a **Hozzáadás** lehetőséget. Megjelenik az új alkalmazás áttekintő oldala.
 
-Most rendeljen hozzá egy felhasználót az alkalmazás teszteléséhez, és válassza a fejléc-alapú egyszeri bejelentkezés lehetőséget:
+Most rendeljen hozzá egy felhasználót az alkalmazás teszteléséhez, és válassza a fejlécalapú egyszeri bejelentkezést:
 
-1. Az alkalmazás-oldalsávon válassza a **felhasználók és csoportok**  >  **felhasználói**  >  **felhasználók és csoportok hozzáadása lehetőséget ( \<Number> kiválasztva)**. Megjelenik a felhasználók és csoportok listája.
+1. Az alkalmazás oldalsávon válassza a **Felhasználók** és csoportok Felhasználók és csoportok hozzáadása  >    >  **\<Number> (Kijelölt) lehetőséget.** Megjelenik a felhasználók és csoportok listája, amelyek közül választhat.
 
-   ![A felhasználók és csoportok listájának megjelenítése](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
+   ![A felhasználók és csoportok listáját jeleníti meg](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
-1. Válasszon ki egy felhasználót az alkalmazás teszteléséhez, és válassza a **kiválasztás** lehetőséget. Győződjön meg arról, hogy a teszt fiók hozzáfér a helyszíni alkalmazáshoz.
+1. Válasszon ki egy felhasználót az alkalmazásteszteléshez, majd válassza a **Kijelölés lehetőséget.** Győződjön meg arról, hogy a tesztfiók hozzáfér a helyszíni alkalmazáshoz.
 1. Válassza a **Hozzárendelés** elemet.
-1. Az alkalmazás-oldalsávon válassza az **egyszeri bejelentkezés**  >  **fejléc-alapú** lehetőséget.
+1. Az alkalmazás oldalsávon válassza az **Egyszeri bejelentkezés**  >  **fejlécalapú lehetőséget.**
 
    > [!TIP]
-   > Ha első alkalommal használja a fejléc-alapú egyszeri bejelentkezést, telepítenie kell a PingAccess. Annak ellenőrzéséhez, hogy az Azure-előfizetés automatikusan társítva van-e a PingAccess-telepítéshez, a PingAccess letöltéséhez használja az egyszeri bejelentkezési oldalon található hivatkozást. Most már megnyithatja a letöltési helyet, vagy később is visszatérhet erre a lapra.
+   > Ha most először használ fejlécalapú egyszeri bejelentkezést, telepítenie kell a PingAccesst. Annak érdekében, hogy az Azure-előfizetés automatikusan hozzá legyen társítva a PingAccess-telepítéshez, használja az egyszeri bejelentkezési oldalon található hivatkozást a PingAccess letöltéséhez. Most megnyithatja a letöltési webhelyet, vagy később visszatérhet erre az oldalra.
 
-   ![Fejléc-alapú bejelentkezési képernyő és PingAccess megjelenítése](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
+   ![A fejlécalapú bejelentkezési képernyő és a PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
 1. Kattintson a **Mentés** gombra.
 
-Ezután ellenőrizze, hogy az átirányítási URL-cím be van-e állítva a külső URL-címre:
+Ezután ellenőrizze, hogy az átirányítási URL-cím a külső URL-címre van-e állítva:
 
-1. A **Azure Active Directory felügyeleti központ** oldalsávján válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk** lehetőséget. Megjelenik az alkalmazások listája.
+1. A **felügyeleti Azure Active Directory oldalsávjában** válassza **a** Azure Active Directory  >  **Alkalmazásregisztrációk** lehetőséget. Megjelenik az alkalmazások listája.
 1. Válassza ki az alkalmazást.
-1. Válassza az **átirányítási URI**-k elem melletti hivatkozást, amely megjeleníti a webes és a nyilvános ügyfelek számára beállított átirányítási URI-k számát. Megjelenik a **\<application name> -Authentication** lap.
-1. Győződjön meg arról, hogy az alkalmazáshoz hozzárendelt külső URL-cím az **átirányítási URI** -k listájában van-e. Ha nem, adja hozzá a külső URL-címet most a **webes** ÁTirányítási URI-típus használatával, majd válassza a **Mentés** lehetőséget.
+1. Válassza az Átirányítási **URI-k melletti** hivatkozást, amely a webes és nyilvános ügyfelek számára beállított átirányítási URI-k számát mutatja. Megjelenik **\<application name> a - Authentication** (Hitelesítés) lap.
+1. Ellenőrizze, hogy az alkalmazáshoz korábban hozzárendelt külső URL-cím szerepel-e az **Átirányítási URI-k listában.** Ha nem, adja hozzá most a külső URL-címet egy webes átirányítási URI-típussal, majd válassza a **Mentés lehetőséget.**
 
-A külső URL-címen kívül az átirányítási URI-k listájához fel kell venni Azure Active Directory a külső URL-címen található engedélyezési végpontot is.
+A külső URL-cím mellett a külső URL-Azure Active Directory egy engedélyezett végpontját is hozzá kell adni az Átirányítási URI-k listához.
 
 `https://*.msappproxy.net/pa/oidc/cb`
 `https://*.msappproxy.net/`
 
-Végül állítsa be a helyszíni alkalmazást úgy, hogy a felhasználók olvasási hozzáféréssel rendelkezzenek, és más alkalmazásokhoz írási/olvasási hozzáférésük van:
+Végül állítsa be a helyszíni alkalmazást úgy, hogy a felhasználók olvasási, más alkalmazások pedig olvasási/írási hozzáféréssel is rendelkeziknak:
 
-1. Az alkalmazáshoz tartozó **Alkalmazásregisztrációk** oldalsávon válassza az **API-engedélyek**  >  **Hozzáadás engedély**  >  **Microsoft API**-k  >  **Microsoft Graph** lehetőséget. Megjelenik a **Microsoft Graph** **API-engedélyei** lap, amely a Windows Azure Active Directory API-kat tartalmazza.
+1. Az **Alkalmazásregisztrációk** oldalsávon válassza az **API-engedélyek** Engedély hozzáadása  >    >  **Microsoft** API-khoz a  >  **Microsoft Graph.** Megjelenik **az Api-engedélyek kérése** Microsoft Graph lap, amely a Windows-alkalmazások API-ját Azure Active Directory. 
 
-   ![Megjeleníti a kérelem API-engedélyei lapot.](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+   ![Megjeleníti a Request API permissions (API-engedélyek kérése) lapot](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
-1. Válassza a **delegált engedélyek**  >  **felhasználói**  >  **felhasználó. olvasás** lehetőséget.
-1. Válassza az **Application permissions**  >  **Application**  >  **Application. ReadWrite. All** elemet.
-1. Válassza az **engedélyek hozzáadása** lehetőséget.
-1. Az **API-engedélyek** lapon válassza a **\<your directory name> rendszergazdai jóváhagyás megadása** lehetőséget.
+1. Válassza **a Delegált engedélyek**  >  **User**  >  **User.Read lehetőséget.**
+1. Válassza **az Application**  >    >  **Application.ReadWrite.All alkalmazásengedélyeket.**
+1. Válassza **az Engedélyek hozzáadása lehetőséget.**
+1. Az **API-engedélyek lapon** válassza a **Rendszergazdai jóváhagyás megadása lehetőséget. \<your directory name>**
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>Információk gyűjtése a PingAccess lépéseiről
 
-Az alkalmazás PingAccess való beállításához össze kell gyűjtenie ezeket a három információt (az összes GUID-azonosítót):
+Az alkalmazás PingAccess segítségével való beállításához össze kell gyűjtenie ezt a három információt (az összes GUID azonosítót):
 
-| Az Azure AD-mező neve | PingAccess mező neve | Adatformátum |
+| Az Azure AD-mező neve | A PingAccess mező neve | Adatformátum |
 | --- | --- | --- |
 | **Alkalmazás (ügyfél) azonosítója** | **Ügyfél-azonosító** | GUID |
 | **Címtár (bérlő) azonosítója** | **Kibocsátó** | GUID |
-| `PingAccess key` | **Ügyfél titka** | Véletlenszerű karakterlánc |
+| `PingAccess key` | **Titkos ügyfél titkos** | Véletlenszerű sztring |
 
-Az adatok összegyűjtése:
+Az információk gyűjtéséhez:
 
-1. A **Azure Active Directory felügyeleti központ** oldalsávján válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk** lehetőséget. Megjelenik az alkalmazások listája.
-1. Válassza ki az alkalmazást. Megjelenik az alkalmazás **Alkalmazásregisztrációk** lapja.
+1. A **felügyeleti Azure Active Directory oldalsávon** válassza **a** Azure Active Directory  >  **Alkalmazásregisztrációk** lehetőséget. Megjelenik az alkalmazások listája.
+1. Válassza ki az alkalmazást. Megjelenik **Alkalmazásregisztrációk** alkalmazás kezdőlapja.
 
-   ![Az alkalmazások regisztrációjának áttekintése](./media/application-proxy-configure-single-sign-on-with-ping-access/registration-overview-for-an-application.png)
+   ![Egy alkalmazás regisztrációja – áttekintés](./media/application-proxy-configure-single-sign-on-with-ping-access/registration-overview-for-an-application.png)
 
-1. Az **alkalmazás (ügyfél) azonosítójának** értéke mellett válassza a **Másolás vágólapra** ikont, majd másolja és mentse. Ezt az értéket később a PingAccess ügyfél-AZONOSÍTÓJAként kell megadni.
-1. A **könyvtár (bérlő) azonosítójának** értékeként válassza a **Másolás a vágólapra** lehetőséget, majd másolja és mentse. Ezt az értéket később a PingAccess kiállítójának kell megadnia.
-1. Az alkalmazás **Alkalmazásregisztrációk** oldalsávján válassza a **tanúsítványok és titkos kulcsok**  >  **új ügyfél titka** lehetőséget. Megjelenik az **ügyfél titkos kulcsának hozzáadása** lap.
+1. Az Alkalmazás **-azonosító értéke** mellett válassza  a Másolás a vágólapra ikont, majd másolja és mentse azt. Ezt az értéket később a PingAccess ügyfél-azonosítójaként adhatja meg.
+1. A Címtár **-azonosító (bérlő)** értéke mellett válassza a **Másolás** a vágólapra lehetőséget is, majd másolja és mentse azt. Ezt az értéket később a PingAccess kiállítójaként adhatja meg.
+1. Az alkalmazáshoz az alkalmazáshoz **Alkalmazásregisztrációk** oldalsávon válassza a **Tanúsítványok és** titkos kulcsok Új titkos ügyfél  >  **titkos ügyféltitk.** Megjelenik **az Ügyfél titkos gombra való** felvételének oldala.
 
-   ![Az ügyfél titkos kulcsának hozzáadása oldal megjelenítése](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
+   ![Megjeleníti a Titkos ügyfél titkos gombra való felvételét bemutató oldalt](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
 
-1. A **Leírás** mezőbe írja be a következőt: `PingAccess key` .
-1. A **lejárat** szakaszban válassza ki a PingAccess kulcs beállításának módját: **1 év**, **2 év** vagy **soha**.
-1. Válassza a **Hozzáadás** lehetőséget. A PingAccess kulcs az ügyfél titkos kulcsainak táblázatában jelenik meg, és egy véletlenszerű karakterláncot, amely az **érték** mezőben kitöltést eredményez.
-1. A PingAccess kulcs **értéke** mező mellett válassza a **Másolás vágólapra** ikont, majd másolja és mentse. Ezt az értéket később is megadhatja a PingAccess-ügyfél titkos kulcsaként.
+1. A Leírás **mezőbe** írja be a következőt: `PingAccess key` .
+1. A **Lejárat alatt** válassza ki, hogyan állítsa be a PingAccess-kulcsot: **1** év, **2 év,** vagy **Soha.**
+1. Válassza a **Hozzáadás** lehetőséget. A PingAccess-kulcs megjelenik a titkos ügyfélkulcsok táblázatában egy véletlenszerű sztringgel, amely automatikusan kitölti a **VALUE** mezőt.
+1. A PingAccess-kulcs **VALUE** (ÉRTÉK)  mezője mellett válassza a Másolás a vágólapra ikont, majd másolja és mentse azt. Ezt az értéket később a PingAccess titkos ügyféltitkának adja meg.
 
-**A `acceptMappedClaims` mező frissítése:**
+**Frissítse a `acceptMappedClaims` mezőt:**
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) alkalmazás-rendszergazdaként.
-1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**. Megjelenik az alkalmazások listája.
+1. Válassza **a Azure Active Directory**  >  **Alkalmazásregisztrációk** lehetőséget. Megjelenik az alkalmazások listája.
 1. Válassza ki az alkalmazást.
-1. Az alkalmazás **Alkalmazásregisztrációk** oldalának oldalsávján válassza a **jegyzékfájl** lehetőséget. Megjelenik az alkalmazás regisztrálásához tartozó JSON-kód.
-1. Keresse meg a `acceptMappedClaims` mezőt, és módosítsa az értéket a következőre: `True` .
+1. Az alkalmazás Alkalmazásregisztrációk **oldalának** oldalsávján válassza a **Jegyzékfájl lehetőséget.** Megjelenik az alkalmazás regisztrációjához szükséges JSON-jegyzékkód.
+1. Keresse meg a `acceptMappedClaims` mezőt, és módosítsa az értéket `True` értékre.
 1. Kattintson a **Mentés** gombra.
 
 ### <a name="use-of-optional-claims-optional"></a>Választható jogcímek használata (nem kötelező)
 
-A választható jogcímek lehetővé teszik, hogy a felhasználók és a bérlők által biztosított szabványos, de nem belefoglalt alapértelmezett jogcímeket adja hozzá. Az alkalmazás jegyzékfájljának módosításával opcionális jogcímeket konfigurálhat az alkalmazáshoz. További információ: az [Azure ad-alkalmazás jegyzékfájljának ismertetése.](../develop/reference-app-manifest.md)
+A nem kötelező jogcímek lehetővé teszik szabványos, de nem tartalmazott alapértelmezett jogcímek hozzáadását, amelyek minden felhasználóhoz és bérlőhöz tartoznak. Az alkalmazásjegyzék módosításával konfigurálhatja az alkalmazás opcionális jogcímeit. További információ: [Az Azure AD-alkalmazásjegyzék ismertetése](../develop/reference-app-manifest.md)
 
-Például az e-mail-cím belefoglalása a access_tokenba, amelyet a PingAccess fog használni:
+Példa a PingAccess által access_token e-mail-címnek a fiókba való bekérésére:
 
 ```json
     "optionalClaims": {
@@ -191,16 +191,16 @@ Például az e-mail-cím belefoglalása a access_tokenba, amelyet a PingAccess f
     },
 ```
 
-### <a name="use-of-claims-mapping-policy-optional"></a>Jogcím-hozzárendelési szabályzat használata (opcionális)
+### <a name="use-of-claims-mapping-policy-optional"></a>Jogcím-leképezési szabályzat használata (nem kötelező)
 
-A [jogcím-hozzárendelési szabályzat (előzetes verzió)](../develop/active-directory-claims-mapping.md#claims-mapping-policy-properties) olyan attribútumok esetében, amelyek nem léteznek a AzureAD-ben. A jogcímek leképezése lehetővé teszi a régi helyszíni alkalmazások áttelepítése a felhőbe olyan további egyéni jogcímek hozzáadásával, amelyeket az ADFS vagy a felhasználói objektumok támogatnak.
+[Az AzureAD-ban](../develop/reference-claims-mapping-policy-type.md#claims-mapping-policy-properties) nem létező attribútumok jogcímleképezési szabályzata (előzetes verzió). A jogcím-leképezés lehetővé teszi a régi, a felhőbe telepített alkalmazások áttelepítését további egyéni jogcímek hozzáadásával, amelyek az ADFS-sel vagy a felhasználói objektumokkal vannak kiegészítve
 
-Ahhoz, hogy az alkalmazás egyéni jogcímet használjon, és további mezőket is tartalmazzon, győződjön meg arról, hogy [létrehozta az egyéni jogcím-hozzárendelési szabályzatot, és hozzárendelte azt az alkalmazáshoz](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Ahhoz, hogy az alkalmazás egyéni jogcímet használjon, és további mezőket is tartalmazjon, győződjön meg arról, hogy egyéni jogcím-leképezési szabályzatot is létrehozott, és hozzárendeli az [alkalmazáshoz.](../develop/active-directory-claims-mapping.md)
 
 > [!NOTE]
-> Egyéni jogcím használatához egyéni szabályzatot is meg kell adni, és hozzá kell rendelni az alkalmazáshoz. Ennek a szabályzatnak tartalmaznia kell az összes kötelező egyéni attribútumot.
+> Egyéni jogcímek csak akkor használhatók, ha egyéni szabályzatot határoz meg és rendel hozzá az alkalmazáshoz. A szabályzatnak tartalmaznia kell az összes szükséges egyéni attribútumot.
 >
-> A házirend-definíciót és a hozzárendelést a PowerShell vagy a Microsoft Graph használatával végezheti el. Ha ezeket a PowerShellben végzi el, előfordulhat, hogy először a alkalmazáshoz kell használnia, `New-AzureADPolicy` majd hozzá kell rendelnie az alkalmazást `Add-AzureADServicePrincipalPolicy` . További információ: jogcím- [hozzárendelési szabályzat-hozzárendelés](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+> A szabályzatdefiníciót és -hozzárendelést a PowerShell vagy a Microsoft Graph. Ha ezeket a PowerShellben teszi meg, előfordulhat, hogy először a parancsot kell használnia, majd hozzárendelni az `New-AzureADPolicy` alkalmazáshoz az `Add-AzureADServicePrincipalPolicy` használatával. További információ: [Jogcím-hozzárendelési szabályzat hozzárendelése.](../develop/active-directory-claims-mapping.md)
 
 Példa:
 ```powershell
@@ -209,26 +209,26 @@ $pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"Inc
 Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id
 ```
 
-### <a name="enable-pingaccess-to-use-custom-claims"></a>Egyéni jogcímek használatának engedélyezése a PingAccess
+### <a name="enable-pingaccess-to-use-custom-claims"></a>Egyéni jogcímek használatának engedélyezése a PingAccess számára
 
-A PingAccess egyéni jogcímek használatára való engedélyezése nem kötelező, de szükség van rá, ha azt szeretné, hogy az alkalmazás további jogcímeket használjon.
+A PingAccess egyéni jogcímek használatára való engedélyezése nem kötelező, de kötelező, ha azt várja, hogy az alkalmazás további jogcímeket használjon.
 
-Ha a következő lépésben konfigurálja a PingAccess, a létrehozandó webes munkamenetnek (Settings->Access->web Sessions) tartalmaznia kell a **kérelem profilját** , és a **nem** értékre állított **felhasználói attribútumokat kell frissítenie** .
+Amikor a következő lépésben konfigurálja a PingAccesst, a létrehozott webes munkamenetnek (Settings->Access->Web Sessions)  a Kérelemprofilt ki kelljelölve, a Felhasználói attribútumok frissítése beállítást pedig Nemre kell **állítania** 
 
-## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess letöltése és az alkalmazás konfigurálása
+## <a name="download-pingaccess-and-configure-your-application"></a>A PingAccess letöltése és az alkalmazás konfigurálása
 
-Most, hogy végrehajtotta az összes Azure Active Directory telepítési lépést, áthelyezheti a PingAccess konfigurálásához.
+Most, hogy az összes beállítási lépést Azure Active Directory, továbbléphet a PingAccess konfigurálásához.
 
-A forgatókönyv PingAccess részének részletes lépései a ping Identity dokumentációjában olvashatók. Kövesse a PingAccess konfigurálása az Azure AD-hoz című témakör utasításait a ping Identity webhelyen [Microsoft Azure ad alkalmazásproxy használatával közzétett alkalmazások számára](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) , és töltse le a [PingAccess legújabb verzióját](https://www.pingidentity.com/en/lp/azure-download.html?).
+A forgatókönyv PingAccess részének részletes lépései a Ping Identity dokumentációjában folytatódnak. Kövesse a PingAccess konfigurálása az Azure AD-hez útmutatót a [pingelési](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) identitás webhelyén Microsoft Azure AD alkalmazásproxy közzétett alkalmazások védelméhez, és töltse le a [PingAccess legújabb verzióját.](https://www.pingidentity.com/en/lp/azure-download.html?)
 
-Ezek a lépések segítséget nyújtanak a PingAccess telepítéséhez és egy PingAccess-fiók beállításához (ha még nem rendelkezik ilyennel). Ezután egy Azure AD OpenID Connect-(OIDC-) kapcsolat létrehozásához állítson be egy jogkivonat-szolgáltatót az Azure AD-portálról másolt **címtár-(bérlői) azonosító** értékkel. Következő lépésként hozzon létre egy webes munkamenetet a PingAccess, és használja az **alkalmazás (ügyfél) azonosítóját** és `PingAccess key` értékeit. Ezután beállíthatja az identitás-hozzárendelést, és létrehozhat egy virtuális gazdagépet, webhelyet és alkalmazást.
+Ezek a lépések segítenek a PingAccess telepítésében és a PingAccess-fiók beállításában (ha még nem rendelkezik ilyen fiókkal). Ezután egy Azure AD OpenID Connect-kapcsolat (OIDC) létrehozásához be kell állítania egy jogkivonat-szolgáltatót az Azure AD portálról kimásott **címtár- (bérlő-)** azonosító értékkel. Ezután webes munkamenet létrehozásához a PingAccess szolgáltatásban az alkalmazás **(ügyfél)** azonosítóját és `PingAccess key` értékeit kell használnia. Ezt követően beállíthatja az identitásleképezést, és létrehozhat egy virtuális gazdagépet, webhelyet és alkalmazást.
 
 ### <a name="test-your-application"></a>Az alkalmazás tesztelése
 
-Az összes lépés elvégzése után az alkalmazásnak futnia kell. A teszteléshez nyisson meg egy böngészőt, és navigáljon arra a külső URL-címre, amelyet az alkalmazás Azure-ban való közzétételekor hozott létre. Jelentkezzen be az alkalmazáshoz rendelt tesztelési fiókkal.
+Az összes lépés befejezése után az alkalmazásnak futnia kell. A teszteléshez nyisson meg egy böngészőt, és keresse meg az alkalmazás Azure-ban való közzétételekor létrehozott külső URL-címet. Jelentkezzen be az alkalmazáshoz rendelt tesztfiókkal.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A PingAccess konfigurálása az Azure AD-hoz a Microsoft Azure AD alkalmazásproxy használatával közzétett alkalmazások védelemmel való ellátásához](https://docs.pingidentity.com/bundle/pingaccess-60/page/jep1564006742933.html)
-- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](what-is-single-sign-on.md)
+- [A PingAccess konfigurálása az Azure AD-hez a Microsoft Azure AD alkalmazásproxy](https://docs.pingidentity.com/bundle/pingaccess-60/page/jep1564006742933.html)
+- [Egyszeri bejelentkezés az alkalmazásokba a Azure Active Directory](what-is-single-sign-on.md)
 - [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)

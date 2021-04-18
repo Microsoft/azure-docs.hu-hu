@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a Maverics Identity Orchestrator SAML-összekötővel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Maverics Identity Orchestrator SAML-összekötő között.
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory És a Maverics Identity Orchestrator SAML-összekötő között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,58 +11,58 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 19f6b0601afe9ad84f02c93d7f6e1ae3a71a06a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 402f6cd6961108cdf1e9c94fb4f93309fbf15ead
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585094"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599026"
 ---
 # <a name="integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
-A rétegek Maverics Identity Orchestrator egyszerű módszert kínál a helyszíni alkalmazások integrálására Azure Active Directory (Azure AD) használatával a hitelesítéshez és a hozzáférés-vezérléshez. A Maverics Orchestrator képes az olyan alkalmazások hitelesítésének és engedélyezésének modernizálására, amelyek jelenleg a fejlécek, a cookie-k és más védett hitelesítési módszerek alapján működnek. A Maverics Orchestrator-példányok a helyszínen vagy a felhőben is üzembe helyezhetők. 
+A Strata Maverics Identity Orchestrator szolgáltatása egyszerű módszert kínál a helyszíni alkalmazások és az Azure Active Directory (Azure AD) integrálására a hitelesítés és a hozzáférés-vezérlés érdekében. A Maverics Orchestrator képes modernizálni a hitelesítést és az engedélyezést az olyan alkalmazások esetében, amelyek jelenleg fejléceket, cookie-kat és más jogvédett hitelesítési módszereket alkalmaznak. A Maverics Orchestrator-példányok a helyszínen vagy a felhőben is üzembe helyezhetők. 
 
-Ez a hibrid hozzáférési oktatóanyag bemutatja, hogyan telepíthet át egy örökölt Web Access Management-termék által védett helyszíni webalkalmazást az Azure AD hitelesítéshez és hozzáférés-vezérléshez való használatához. Az alapszintű lépések a következők:
+Ez a hibrid hozzáféréssel kapcsolatos oktatóanyag azt mutatja be, hogyan lehet az Azure AD-t hitelesítésre és hozzáférés-vezérlésre használni az örökölt webes hozzáférés-kezelési termék által jelenleg védett helyszíni webalkalmazások áttelepítésére. Az alapvető lépések a következőek:
 
 1. A Maverics Orchestrator beállítása
-1. Alkalmazás proxy
-1. Vállalati alkalmazás regisztrálása az Azure AD-ben
-1. Hitelesítés az Azure-on keresztül és az alkalmazáshoz való hozzáférés engedélyezése
-1. Fejlécek hozzáadása a zökkenőmentes alkalmazás-hozzáféréshez
-1. Több alkalmazás használata
+1. Alkalmazás proxybeállítása
+1. Vállalati alkalmazás regisztrálása az Azure AD-ban
+1. Hitelesítés az Azure-on keresztül és az alkalmazáshoz való hozzáférés jogosultsága
+1. Fejlécek hozzáadása az alkalmazások zökkenőmentes eléréséhez
+1. Több alkalmazással való munka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Egy Maverics Identity Orchestrator SAML-összekötő SSO-kompatibilis előfizetés. A Maverics szoftver beszerzéséhez vegye fel a kapcsolatot a [rétegek értékesítésével](mailto:sales@strata.io).
-* Legalább egy olyan alkalmazás, amely fejléc-alapú hitelesítést használ. A példák egy Sonar nevű alkalmazással működnek, amely a (z) helyen található https://app.sonarsystems.com , és egy Connectulum nevű alkalmazás, amely a következő helyen található: https://app.connectulum.com .
-* Egy Linux rendszerű gép, amely a Maverics-Orchestrator üzemelteti
-  * Operációs rendszer: RHEL 7,7 vagy újabb, CentOS 7 +
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes fiókot [is kaphat.](https://azure.microsoft.com/free/)
+* Maverics Identity Orchestrator SAML Connector SSO-kompatibilis előfizetés. A Maverics szoftver lekértért lépjen kapcsolatba a [Réteg értékesítési csoportával.](mailto:sales@strata.io)
+* Legalább egy fejlécalapú hitelesítést használó alkalmazás. A példák egy Connectulum nevű alkalmazással működnek, amely a következőn `https://app.connectulum.com` található: .
+* A Maverics Orchestratort tároló Linux rendszerű gép
+  * Operációs rendszer: RHEL 7.7 vagy újabb, CentOS 7+
   * Lemez: >= 10 GB
   * Memória: >= 4 GB
   * Portok: 22 (SSH/SCP), 443, 7474
-  * Rendszergazdai jogosultságok a telepítési/felügyeleti feladatokhoz
-  * Hálózati kimenő forgalom a Maverics-identitást futtató kiszolgálóról a védett alkalmazásba Orchestrator
+  * Gyökér hozzáférés a telepítési/felügyeleti feladatokhoz
+  * Hálózati forgalom a Maverics Identity Orchestratort üzemeltető kiszolgálóról a védett alkalmazásba
 
-## <a name="step-1-set-up-the-maverics-orchestrator"></a>1. lépés: a Maverics Orchestrator beállítása
+## <a name="step-1-set-up-the-maverics-orchestrator"></a>1. lépés: A Maverics Orchestrator beállítása
 
 ### <a name="install-maverics"></a>A Maverics telepítése
 
-1. Szerezze be a legújabb Maverics RPM-t. Másolja a csomagot arra a rendszerre, amelyre telepíteni kívánja a Maverics szoftvert.
+1. Szerezze be a legújabb Maverics RPM-et. Másolja a csomagot arra a rendszerre, amelyre telepíteni szeretné a Maverics szoftvert.
 
-1. Telepítse a Maverics csomagot, és cserélje le a fájlnevét a helyére `maverics.rpm` .
+1. Telepítse a Maverics-csomagot, és a helyére a saját fájlnevét kell `maverics.rpm` behelyettesítenünk.
 
    `sudo rpm -Uvf maverics.rpm`
 
-   A Maverics telepítése után a szolgáltatás a következőként fog futni: `systemd` . A szolgáltatás futásának ellenőrzéséhez hajtsa végre a következő parancsot:
+   A Maverics telepítése után az szolgáltatásként fog futni a `systemd` alatt. A szolgáltatás futásának ellenőrzéséhez hajtsa végre a következő parancsot:
 
    `sudo systemctl status maverics`
 
-1. A Orchestrator újraindításához és a naplók követéséhez futtassa a következő parancsot:
+1. Az Orchestrator újraindításához és a naplók futtatásához futtassa a következő parancsot:
 
    `sudo service maverics restart; sudo journalctl --identifier=maverics -f`
 
-A Maverics telepítése után a rendszer az alapértelmezett `maverics.yaml` fájlt hozza létre a `/etc/maverics` címtárban. Mielőtt szerkeszti a konfigurációt a `appgateways` (z) és a konfigurációban `connectors` , a konfigurációs fájl a következőhöz hasonlóan fog kinézni:
+A Maverics telepítése után az alapértelmezett fájl `maverics.yaml` létrejön a `/etc/maverics` könyvtárban. Mielőtt szerkeszti a konfigurációt a és a fájlba, a konfigurációs `appgateways` `connectors` fájl a következő z-hez hasonló lesz:
 
 ```yaml
 # © Strata Identity Inc. 2020. All Rights Reserved. Patents Pending.
@@ -73,29 +73,29 @@ listenAddress: ":7474"
 
 ### <a name="configure-dns"></a>DNS konfigurálása
 
-A DNS hasznos lesz, így nem kell megemlékeznie a Orchestrator-kiszolgáló IP-címére.
+A DNS hasznos lesz, így nem kell megjegyeznie az Orchestrator-kiszolgáló IP-címét.
 
-Szerkessze a böngésző számítógépének (laptopjának) hosts fájlját a 12.34.56.78 feltételezett Orchestrator IP-címének használatával. Linux-alapú operációs rendszereken a fájl a következő helyen található: `/etc/hosts` . Windows rendszeren a következő helyen található: `C:\windows\system32\drivers\etc` .
+Szerkessze a böngészőgép (a laptopja) gazdagépfájlját egy feltételezett, 12.34.56.78-as Orchestrator IP-címmel. Linux-alapú operációs rendszereken ez a fájl a következő helyen található: `/etc/hosts` . Windows rendszeren ez a helyen `C:\windows\system32\drivers\etc` található.
 
 ```
 12.34.56.78 sonar.maverics.com
 12.34.56.78 connectulum.maverics.com
 ```
 
-Annak ellenőrzéséhez, hogy a DNS a várt módon van-e konfigurálva, kérheti a Orchestrator az állapot végpontját. A böngészőből kérjen kérelmet http://sonar.maverics.com:7474/status .
+Annak megerősítéséhez, hogy a DNS a várt módon van konfigurálva, kérelmet kérhet az Orchestrator állapotvégpontjára. A böngészőből kérje a http://sonar.maverics.com:7474/status kérést.
 
 ### <a name="configure-tls"></a>TLS konfigurálása
 
-A biztonság fenntartása érdekében fontos, hogy a biztonságos csatornákon keresztül kommunikáljon a Orchestrator. Ennek eléréséhez hozzáadhat egy tanúsítványt/kulcspárt a `tls` szakaszhoz.
+A biztonság fenntartása érdekében elengedhetetlen a biztonságos csatornákon keresztüli kommunikáció az Orchestratorral való kommunikációhoz. Ehhez hozzáadhat egy tanúsítvány-/kulcspárt a `tls` szakaszban.
 
-Ha önaláírt tanúsítványt és kulcsot szeretne előállítani a Orchestrator-kiszolgálóhoz, futtassa a következő parancsot a `/etc/maverics` címtárból:
+Az Orchestrator-kiszolgáló önaírt tanúsítványának és kulcsának létrehozásához futtassa a következő parancsot a `/etc/maverics` könyvtárból:
 
 `openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out maverics.crt -keyout maverics.key`
 
 > [!NOTE]
-> Éles környezetekben valószínűleg egy ismert HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványt szeretne használni, hogy elkerülje a figyelmeztetéseket a böngészőben. A [titkosítás](https://letsencrypt.org/) egy jó és ingyenes lehetőség, ha megbízható hitelesítésszolgáltatót keres.
+> Éles környezetben valószínűleg egy ismert hitelesítésszolgáltató által aláírt tanúsítványt szeretne használni, hogy elkerülje a figyelmeztetéseket a böngészőben. [A Let's Encrypt](https://letsencrypt.org/) egy jó és ingyenes lehetőség, ha megbízható hitelesítésszolgáltatót keres.
 
-Most használja az újonnan létrehozott tanúsítványt és kulcsot a Orchestrator. A konfigurációs fájlnak most a következő kódot kell tartalmaznia:
+Most használja az Orchestrator újonnan létrehozott tanúsítványát és kulcsát. A konfigurációs fájlnak most a következő kódot kell tartalmaznia:
 
 ```yaml
 version: 0.1
@@ -107,11 +107,11 @@ tls:
     keyFile: /etc/maverics/maverics.key
 ```
 
-Annak ellenőrzéséhez, hogy a TLS a várt módon van-e konfigurálva, indítsa újra a Maverics szolgáltatást, és tegyen egy kérést az állapot végpontjának. A böngészőből kérjen kérelmet https://sonar.maverics.com/status .
+Annak megerősítéséhez, hogy a TLS a várt módon van konfigurálva, indítsa újra a Maverics szolgáltatást, és indítson egy kérést az állapot végpontjára.
 
-## <a name="step-2-proxy-an-application"></a>2. lépés: az alkalmazás proxyja
+## <a name="step-2-proxy-an-application"></a>2. lépés: Alkalmazás proxybeállítása
 
-Ezután konfigurálja az alapszintű proxyt a Orchestrator a használatával `appgateways` . Ez a lépés segít ellenőrizni, hogy a Orchestrator rendelkezik-e a védett alkalmazáshoz szükséges kapcsolattal.
+Ezután konfigurálja az alapszintű proxyzást az Orchestratorban a `appgateways` használatával. Ezzel a lépéssel ellenőrizheti, hogy az Orchestrator rendelkezik-e a szükséges kapcsolattal a védett alkalmazással.
 
 A konfigurációs fájlnak most a következő kódot kell tartalmaznia:
 
@@ -131,44 +131,44 @@ appgateways:
     upstream: https://app.sonarsystems.com
 ```
 
-Annak ellenőrzéséhez, hogy a proxy a várt módon működik-e, indítsa újra a Maverics szolgáltatást, és küldjön egy kérést az alkalmazásnak a Maverics-proxyn keresztül. A böngészőből kérjen kérelmet https://sonar.maverics.com . Igény szerint elvégezheti az adott alkalmazás-erőforrásokra vonatkozó kérést, például a `https://sonar.maverics.com/RESOURCE` `RESOURCE` védett felsőbb rétegbeli alkalmazás érvényes alkalmazásspecifikus erőforrását.
+Annak megerősítéséhez, hogy a proxyzás a várt módon működik, indítsa újra a Maverics szolgáltatást, és a Maverics-proxyn keresztül indítson kérést az alkalmazásnak. Igény szerint kérést is kérhet adott alkalmazás-erőforrásokhoz.
 
-## <a name="step-3-register-an-enterprise-application-in-azure-ad"></a>3. lépés: vállalati alkalmazás regisztrálása az Azure AD-ben
+## <a name="step-3-register-an-enterprise-application-in-azure-ad"></a>3. lépés: Vállalati alkalmazás regisztrálása az Azure AD-ben
 
-Most hozzon létre egy új vállalati alkalmazást az Azure AD-ben, amelyet a rendszer a végfelhasználók hitelesítéséhez fog használni.
+Most hozzon létre egy új vállalati alkalmazást az Azure AD-ban, amely a végfelhasználók hitelesítésére lesz használva.
 
 > [!NOTE]
-> Az Azure AD-szolgáltatások, például a feltételes hozzáférés használata esetén fontos, hogy helyszíni alkalmazásként hozzon létre egy vállalati alkalmazást. Ez lehetővé teszi az alkalmazáson belüli feltételes hozzáférést, az alkalmazáson belüli kockázat kiértékelését, az alkalmazáshoz hozzárendelt engedélyeket és így tovább. Az Azure AD-ben a vállalati alkalmazások általában egy Azure-összekötőre mutatnak a Maverics-ben.
+> Ha Azure AD-funkciókat, például feltételes hozzáférést használ, fontos, hogy helyszíni alkalmazásonként hozzon létre egy vállalati alkalmazást. Ez lehetővé teszi az alkalmazásonkénti feltételes hozzáférést, az alkalmazásonkénti kockázatértékelést, az alkalmazásonként hozzárendelt engedélyeket és így tovább. Az Azure AD-beli nagyvállalati alkalmazások általában egy Azure-összekötőhöz csatlakoznak a Mavericsben.
 
-Vállalati alkalmazás regisztrálása az Azure AD-ben:
+Vállalati alkalmazás regisztrálása az Azure AD-ban:
 
-1. Az Azure AD-bérlőben lépjen a **vállalati alkalmazások** elemre, majd válassza az **új alkalmazás** lehetőséget. Az Azure AD-katalógusban keresse meg a **Maverics Identity Orchestrator SAML-összekötőt**, majd jelölje ki.
+1. Az Azure AD-bérlőben válassza a Vállalati **alkalmazások** lehetőséget, majd válassza az **Új alkalmazás lehetőséget.** Az Azure AD-katalógusban keressen rá a **Maverics Identity Orchestrator SAML-összekötő** kifejezésre, majd jelölje ki.
 
-1. A Maverics Identity Orchestrator SAML-összekötő **tulajdonságai** ablaktáblán adja meg a **felhasználó-hozzárendelés szükséges lehetőséget?** a **nem** értékkel engedélyezheti, hogy az alkalmazás működjön a címtárban lévő összes felhasználó számára.
+1. A Maverics Identity Orchestrator SAML Connector **Properties** (SAML-összekötő tulajdonságai) panelen állítsa a User **assignment required?** (Felhasználó-hozzárendelésre van szükség? ) **gombra,** hogy az alkalmazás a címtár összes felhasználója számára működjön.
 
-1. Az Maverics Identity Orchestrator SAML-összekötő **Áttekintés** paneljén válassza az **egyszeri bejelentkezés beállítása** lehetőséget, majd válassza az **SAML** lehetőséget.
+1. A Maverics Identity Orchestrator SAML Connector **Overview** (SAML-összekötő áttekintése) panelen válassza az **Egyszeri** bejelentkezés beállítása lehetőséget, majd válassza az **SAML lehetőséget.**
 
-1. A Maverics Identity Orchestrator SAML-összekötő **SAML-alapú bejelentkezési** paneljén szerkessze az **alapszintű SAML-konfigurációt** a **Szerkesztés** (ceruza ikon) gomb kiválasztásával.
+1. A Maverics Identity Orchestrator **SAML-összekötő SAML-alapú** bejelentkezési panelen szerkessze az SAML-alapkonfigurációt a Szerkesztés **(ceruza** ikon) gombra kattintva. 
 
-   ![Képernyőkép az "alapszintű SAML-konfiguráció" szerkesztés gombról.](common/edit-urls.png)
+   ![Képernyőkép az "SamL-alapkonfiguráció" Szerkesztés gombról.](common/edit-urls.png)
 
-1. Adja meg a **entitás azonosítóját** `https://sonar.maverics.com` . Az entitás AZONOSÍTÓjának egyedinek kell lennie a bérlő alkalmazásai között, és tetszőleges érték lehet. Ezt az értéket fogja használni, amikor a `samlEntityID` következő szakaszban meghatározza az Azure-összekötő mezőjét.
+1. Adja meg a **entitásazonosítóját.** `https://sonar.maverics.com` Az entitásazonosítónak egyedinek kell lennie a bérlőben lévő alkalmazások között, és tetszőleges érték is lehet. Ezt az értéket akkor fogja használni, amikor a következő szakaszban meghatározza az `samlEntityID` Azure-összekötő mezőjét.
 
-1. Adja meg a **Válasz URL-címét** `https://sonar.maverics.com/acs` . Ezt az értéket fogja használni, amikor a `samlConsumerServiceURL` következő szakaszban meghatározza az Azure-összekötő mezőjét.
+1. Adja meg a **válasz URL-címét.** `https://sonar.maverics.com/acs` Ezt az értéket akkor fogja használni, amikor a következő szakaszban meghatározza az `samlConsumerServiceURL` Azure-összekötő mezőjét.
 
-1. Adja meg a **bejelentkezési URL-címét** `https://sonar.maverics.com/` . A Maverics nem használja ezt a mezőt, de az Azure AD-ben engedélyezni kell, hogy a felhasználók hozzáférhessenek az alkalmazáshoz az Azure AD saját alkalmazások portálján.
+1. Adja meg a **bejelentkezési URL-címet.** `https://sonar.maverics.com/` Ezt a mezőt a Maverics nem használja, de az Azure AD-ban szükség van rá, hogy a felhasználók az Azure AD Saját alkalmazások portálján keresztül hozzáférjenek az alkalmazáshoz.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd mentse a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban  kattintson a Másolás gombra az Alkalmazás-összevonási metaadatok **URL-cím** értékének másoláshoz, majd mentse a számítógépére.
 
-   ![Képernyőkép az "SAML aláíró tanúsítvány" másolási gombról.](common/copy-metadataurl.png)
+   ![Képernyőkép az SAML aláíró tanúsítvány másolása gombról.](common/copy-metadataurl.png)
 
-## <a name="step-4-authenticate-via-azure-and-authorize-access-to-the-application"></a>4. lépés: hitelesítés az Azure-on keresztül és az alkalmazáshoz való hozzáférés engedélyezése
+## <a name="step-4-authenticate-via-azure-and-authorize-access-to-the-application"></a>4. lépés: Hitelesítés az Azure-on keresztül és az alkalmazáshoz való hozzáférés jogosultsága
 
-Ezután helyezze el az imént létrehozott vállalati alkalmazást az Azure Connector Maverics-ben való konfigurálásával. Ez `connectors` a konfiguráció a `idps` blokkmal párosítva lehetővé teszi, hogy a Orchestrator hitelesítse a felhasználókat.
+Következő lépésként helyezze el az újonnan létrehozott vállalati alkalmazást az Azure-összekötő konfigurálásával a Mavericsben. Ez `connectors` a blokkgal párosított konfiguráció lehetővé `idps` teszi, hogy az Orchestrator hitelesítse a felhasználókat.
 
-A konfigurációs fájlnak most a következő kódot kell tartalmaznia. Ügyeljen arra, hogy az `METADATA_URL` előző lépésben az alkalmazás-összevonási metaadatok URL-címének értékét cserélje le.
+A konfigurációs fájlnak most a következő kódot kell tartalmaznia. A helyére írja be az előző lépés `METADATA_URL` alkalmazás-összevonási metaadatainak URL-címét.
 
 ```yaml
 version: 0.1
@@ -203,11 +203,11 @@ connectors:
     samlEntityID: https://sonar.maverics.com
 ```
 
-Annak ellenőrzéséhez, hogy a hitelesítés a várt módon működik-e, indítsa újra a Maverics szolgáltatást, és tegyen kérelmet az alkalmazás-erőforráshoz a Maverics-proxyn keresztül. Az erőforráshoz való hozzáférés előtt át kell irányítani az Azure-ba a hitelesítéshez.
+Annak megerősítéséhez, hogy a hitelesítés a várt módon működik, indítsa újra a Maverics szolgáltatást, és a Maverics-proxyn keresztül indítson kérést egy alkalmazás-erőforrásnak. Az erőforrás elérése előtt a rendszer átirányítja az Azure-ba a hitelesítéshez.
 
-## <a name="step-5-add-headers-for-seamless-application-access"></a>5. lépés: fejlécek hozzáadása a zökkenőmentes alkalmazás-hozzáféréshez
+## <a name="step-5-add-headers-for-seamless-application-access"></a>5. lépés: Fejlécek hozzáadása az alkalmazások zökkenőmentes eléréséhez
 
-Még nem küld fejléceket a felsőbb szintű alkalmazásnak. Vegyük fel `headers` a kérést, ahogy az a Maverics-proxyn keresztül halad, hogy a felsőbb szintű alkalmazás azonosítsa a felhasználót.
+Még nem küld fejléceket a felfelé irányuló alkalmazásnak. Adjuk hozzá a kérelmet a Maverics-proxyn keresztüli áthaladás során, hogy a felfelé irányuló alkalmazás azonosítani tudja `headers` a felhasználót.
 
 A konfigurációs fájlnak most a következő kódot kell tartalmaznia:
 
@@ -249,13 +249,13 @@ connectors:
     samlEntityID: https://sonar.maverics.com
 ```
 
-Annak ellenőrzéséhez, hogy a hitelesítés a várt módon működik-e, kérjen egy kérelmet az alkalmazás-erőforráshoz a Maverics-proxyn keresztül. A védett alkalmazásnak most el kell fogadnia a fejléceket a kérelemben. 
+Annak megerősítéséhez, hogy a hitelesítés a várt módon működik, a Maverics-proxyn keresztül kérést kell kérnie egy alkalmazás-erőforráshoz. A védett alkalmazásnak mostantól fejléceket kell kapnia a kéréshez. 
 
-Ha az alkalmazás különböző fejléceket vár, szerkessze a fejléc kulcsait. Az Azure AD-ből az SAML-folyamat részeként visszaérkező jogcímek a fejlécekben használhatók. Megadhat például egy másik fejlécet `secondary_email: azureSonarApp.email` , ahol az az `azureSonarApp` összekötő neve, és `email` Az Azure ad által visszaadott jogcím. 
+Ha az alkalmazás eltérő fejléceket vár, nyugodtan szerkessze a fejléckulcsokat. Az SAML-folyamat részeként az Azure AD-ból származó összes jogcím használható fejlécben. Megadhatja például a egy másik fejlécét, ahol az az összekötő neve, a pedig az Azure AD által visszaadott `secondary_email: azureSonarApp.email` `azureSonarApp` `email` jogcím. 
 
-## <a name="step-6-work-with-multiple-applications"></a>6. lépés: több alkalmazás használata
+## <a name="step-6-work-with-multiple-applications"></a>6. lépés: Több alkalmazással való munka
 
-Most vessünk egy pillantást arra, hogy mi szükséges a különböző gazdagépeken található több alkalmazáshoz való proxyhoz. Ennek a lépésnek a megvalósításához konfiguráljon egy másik app Gatewayt, egy másik vállalati alkalmazást az Azure AD-ben és egy másik összekötőt.
+Most vessünk egy pillantást arra, hogy mi szükséges ahhoz, hogy több, különböző gazdagépen telepített alkalmazáshoz proxyt használj. Ennek a lépésnek az eléréséhez konfigurálnia kell egy App Gateway, egy másik vállalati alkalmazást az Azure AD-ban és egy másik összekötőt.
 
 A konfigurációs fájlnak most a következő kódot kell tartalmaznia:
 
@@ -323,23 +323,23 @@ connectors:
     samlEntityID: https://connectulum.maverics.com
 ```
 
-Előfordulhat, hogy észrevette, hogy a kód felvette a `host` mezőt az App Gateway-definícióba. A `host` mező lehetővé teszi, hogy a Maverics-Orchestrator megkülönböztetni, hogy a felsőbb rétegbeli gazdagép hogyan irányítsa át a forgalmat.
+Talán észrevette, hogy a kód egy mezőt ad hozzá a `host` App Gateway definícióihoz. A mező lehetővé teszi, hogy a Maverics Orchestrator meg tudja különböztetni, hogy melyik `host` upstream gazdagépnek kell proxyforgalmat generálni.
 
-Annak ellenőrzéséhez, hogy az újonnan hozzáadott alkalmazás-átjáró a várt módon működik-e, kérjen meg egy kérést https://connectulum.maverics.com .
+Annak megerősítéséhez, hogy az újonnan App Gateway az elvárt módon működik, kérést kell kérnie a következőnek: `https://connectulum.maverics.com` .
 
 ## <a name="advanced-scenarios"></a>Speciális forgatókönyvek
 
-### <a name="identity-migration"></a>Identitás-áttelepítés
+### <a name="identity-migration"></a>Identitás migrálása
 
-Nem lehet a teljes körű Web Access Management eszköz, de nem tudja áttelepíteni a felhasználókat a tömeges jelszó-visszaállítások nélkül? A Maverics Orchestrator a használatával támogatja az identitás-áttelepítést `migrationgateways` .
+Nem tudja használni a webes hozzáférés-kezelési eszközt, de nincs mód arra, hogy tömeges jelszó-visszaállítás nélkül miminálja a felhasználókat? A Maverics Orchestrator a használatával támogatja az identitások migrálását. `migrationgateways`
 
 ### <a name="web-server-gateways"></a>Webkiszolgáló-átjárók
 
-Nem szeretné újradolgozni a hálózat és a proxy forgalmát a Maverics-Orchestrator? Nem probléma. A Maverics-Orchestrator a webkiszolgáló-átjárókkal (modulok) párosítható, és proxy nélkül is megegyező megoldásokat biztosíthatnak.
+Nem szeretné átdolgozni a hálózati és proxyforgalmat a Maverics Orchestratoron keresztül? Ez nem jelent problémát. A Maverics Orchestrator webkiszolgáló-átjárókkal (modulokkal) párosítható, hogy proxy nélkül kínálják ugyanezeket a megoldásokat.
 
-## <a name="wrap-up"></a>Becsomagolás
+## <a name="wrap-up"></a>Wrap-up
 
-Ekkor telepítette a Maverics-Orchestrator, létrehozott és konfigurált egy vállalati alkalmazást az Azure AD-ben, és konfigurálta a Orchestrator-t egy védett alkalmazásra, miközben hitelesítésre és kényszerítésre vonatkozó házirendet igényel. Ha többet szeretne megtudni arról, hogyan használhatók az Maverics-Orchestrator elosztott Identitáskezelés használatára, [vegye fel a kapcsolatot a rétegek](mailto:sales@strata.io)lehetőséggel.
+Ezen a ponton telepítette a Maverics Orchestratort, létrehozott és konfigurált egy vállalati alkalmazást az Azure AD-ban, és úgy konfigurálta az Orchestratort, hogy proxyt állítson be egy védett alkalmazáshoz, miközben hitelesítési és érvényesítési szabályzatra van szükség. Ha többet szeretne megtudni arról, hogyan használható a Maverics Orchestrator az elosztott identitáskezelési esetekhez, lépjen kapcsolatba a [Réteggal.](mailto:sales@strata.io)
 
 ## <a name="next-steps"></a>Következő lépések
 

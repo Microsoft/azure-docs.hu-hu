@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9abd00035ccd779fcbe5dcf29b90f47758ff403
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588649"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599009"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Egy alkalmazás általános állapotának IoT Central figyelése
 
@@ -31,11 +31,11 @@ Az ingyenes próbatervet használó alkalmazások nem társított Azure-előfize
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Metrikák megtekintése a Azure Portal
 
-A következő lépések azt feltételezik, hogy [](./tutorial-connect-device.md) IoT Central [van](./quick-deploy-iot-central.md) egy csatlakoztatott eszközzel vagy egy futó [adatexportál-alkalmazással.](howto-export-data.md)
+A következő lépések azt feltételezik, hogy [](./tutorial-connect-device.md) IoT Central [néhány](./quick-deploy-iot-central.md) csatlakoztatott eszközzel vagy egy futó adatexportál-alkalmazással. [](howto-export-data.md)
 
 A IoT Central megtekintése a portálon:
 
-1. Lépjen a IoT Central alkalmazás erőforrásához a portálon. Alapértelmezés szerint a IoT Central erőforrások egy **IOTC nevű erőforráscsoportban találhatók.**
+1. Lépjen a IoT Central-alkalmazás erőforrásához a portálon. Alapértelmezés szerint a IoT Central erőforrások egy **IOTC nevű erőforráscsoportban találhatók.**
 1. Diagram létrehozásához az alkalmazás metrikákból válassza a **Metrikák** lehetőséget a **Monitorozás szakaszban.**
 
 ![Azure-metrikák](media/howto-monitor-application-health/metrics.png)
@@ -54,7 +54,7 @@ A metrikák eltérhetnek a számlán szereplő Azure IoT Central számtól. Ez a
 
 - IoT Central [tarifacsomagok két](https://azure.microsoft.com/pricing/details/iot-central/) eszközt tartalmaznak, és ingyenesen különböző üzenetkvótákat tartalmaznak. Bár az ingyenes elemek ki vannak zárva a számlázásból, továbbra is beleszámulnak a metrikákba.
 
-- IoT Central egy teszteszköz-azonosítót automatikusan generál az alkalmazás minden eszközsablonja számára. Ez az eszközazonosító az eszközsablon **Teszteszköz** kezelése lapján látható. A megoldáskészítők [](./overview-iot-central.md#connect-devices) dönthetnek úgy, hogy ellenőrzik az eszközsablonokat, mielőtt közzétenik azokat, ha olyan kódot hoznak létre, amely ezeket a teszteszköz-kódokat használja. Bár ezek az eszközök ki vannak zárva a számlázásból, továbbra is beleszámulnak a metrikákba.
+- IoT Central egy teszteszköz-azonosítót automatikusan generál az alkalmazás minden eszközsablonja számára. Ez az eszközazonosító az eszközsablon **Teszteszköz** kezelése lapján látható. A megoldáskészítők dönthetnek úgy, hogy ellenőrzik az eszközsablonokat, mielőtt közzétenik azokat, ha olyan kódot hoznak létre, amely ezeket a teszteszköz-kódokat használja. Bár ezek az eszközök ki vannak zárva a számlázásból, továbbra is beleszámulnak a metrikákba.
 
 - Bár a metrikák az eszközről a felhőbe való kommunikáció egy részkészletét mutatják, az eszköz és a felhő közötti összes kommunikáció a [számlázás üzenetének számít.](https://azure.microsoft.com/pricing/details/iot-central/)
 

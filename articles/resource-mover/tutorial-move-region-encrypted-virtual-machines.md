@@ -1,6 +1,6 @@
 ---
-title: Titkosított Azure-beli virtuális gépek áthelyezése régiók között az Azure-erőforrás-mozgatóval
-description: Megtudhatja, hogyan helyezhet át titkosított Azure-beli virtuális gépeket egy másik régióba az Azure Resource mozgató használatával
+title: Titkosított Azure-beli virtuális gépek áthelyezése régiók között az Azure Resource Mover
+description: Megtudhatja, hogyan helyezze át a titkosított Azure-beli virtuális gépeket egy másik Azure Resource Mover.
 manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
@@ -8,389 +8,396 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 457c4c4752b4d78434b1fb90710472b1998f1c4e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361009"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600692"
 ---
-# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Oktatóanyag: titkosított Azure-beli virtuális gépek áthelyezése régiók között
+# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Oktatóanyag: Titkosított Azure-beli virtuális gépek áthelyezése régiók között
 
-Ebből a cikkből megtudhatja, hogyan helyezhet át titkosított Azure-beli virtuális gépeket egy másik Azure-régióba az [Azure-erőforrás-mozgató](overview.md)használatával. A titkosítás a következőképpen értendő:
+Ez a cikk azt ismerteti, hogyan lehet titkosított Azure-beli virtuális gépeket (VIRTUÁLIS gépeket) áthelyezni egy [másik Azure-régióba](overview.md)a Azure Resource Mover. 
 
-- Azok a virtuális gépek, amelyeken engedélyezve van az Azure Disk Encryption szolgáltatás. [További információ](../virtual-machines/windows/disk-encryption-portal-quickstart.md)
-- Vagy az ügyfél által felügyelt kulcsokat (CMKs) használó virtuális gépek a titkosításhoz (kiszolgálóoldali titkosítás). [További információ](../virtual-machines/disks-enable-customer-managed-keys-portal.md)
+A titkosított virtuális gépek leírása a következő lehet:
+
+- Olyan virtuális gépek, amelyeken engedélyezve vannak Azure Disk Encryption lemezekkel. További információ: Windows rendszerű virtuális gép létrehozása és titkosítása a [Azure Portal.](../virtual-machines/windows/disk-encryption-portal-quickstart.md)
+- Az ügyfelek által felügyelt kulcsokat (CMK-okat) az adatok titkosítására használt virtuális gépek, illetve kiszolgálóoldali titkosítás. További információ: A felügyelt lemezek kiszolgálóoldali Azure Portal ügyfél által kezelt kulcsokkal való titkosításának engedélyezése a [következőben:](../virtual-machines/disks-enable-customer-managed-keys-portal.md).
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Előfeltételek ellenőrzése. 
-> * Az Azure Disk Encryption szolgáltatást használó virtuális gépek esetében a forrás régió kulcstárolóból másolja a kulcsokat és a titkos kulcsokat a célként megadott régió kulcstartóba.
-> * Készítse elő a virtuális gépeket a mozgatásához, majd válassza ki az áthelyezni kívánt forrás régió erőforrásait.
+> * Ellenőrizze az előfeltételeket. 
+> * Az engedélyezett Azure Disk Encryption esetén másolja át a kulcsokat és titkos kulcsokat a forrás-régió kulcstartóból a cél-régió kulcstartóba.
+> * Készítse elő a virtuális gépek áthelyezését és az erőforrások kiválasztását abban a forrás-régióban, amelyből át szeretné őket áthelyezni.
 > * Erőforrás-függőségek feloldása.
-> * Az Azure Disk Encryption szolgáltatást használó virtuális gépek esetében manuálisan rendelje hozzá a célként megadott Key vaultot. Az ügyfél által felügyelt kulcsokkal rendelkező, kiszolgálóoldali titkosítást használó virtuális gépek esetében manuálisan rendeljen hozzá egy lemezes titkosítási készletet a célhelyhez.
-> * Helyezze át a Key vaultot és/vagy a lemez titkosítási készletét.
-> * A forrás erőforráscsoport előkészítése és áthelyezése. 
-> * A többi erőforrás előkészítése és áthelyezése.
-> * Döntse el, hogy el kívánja-e dobni vagy véglegesíteni az áthelyezést. 
-> * Az áthelyezést követően szükség esetén eltávolíthatja az erőforrásokat a forrás régióban.
+> * Az engedélyezett Azure Disk Encryption virtuális gépekhez manuálisan rendelje hozzá a célkulcstartót. Az ügyfél által felügyelt kulcsokkal kiszolgálóoldali titkosítást felhasználó által felügyelt virtuális gépek esetén manuálisan rendeljen hozzá egy lemeztitkosítási készletet a célhelyen.
+> * Helyezze át a kulcstartót vagy a lemeztitkosítási készletet.
+> * Készítse elő és helyezze át a forrás erőforráscsoportot. 
+> * Készítse elő és helyezze át a többi erőforrást.
+> * Döntse el, hogy elveti vagy véglegesi az áthelyezést. 
+> * Ha szeretné, távolítsa el az erőforrásokat a forrás régióban az áthelyezés után.
 
 > [!NOTE]
-> Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják. 
+> Ez az oktatóanyag a forgatókönyv kipróbálásának leggyorsabb útvonalát mutatja be. Csak az alapértelmezett beállításokat használja. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portal.](https://portal.azure.com)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Követelmény** |**Részletek**
+Követelmény |Részletek
 --- | ---
-**Előfizetés engedélyei** | Győződjön meg arról, hogy *tulajdonosi* hozzáféréssel rendelkezik az áthelyezni kívánt erőforrásokat tartalmazó előfizetéshez.<br/><br/> **Miért van szükség tulajdonosi hozzáférésre?** Amikor először ad hozzá egy erőforrást egy adott forráshoz és célhoz egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint. Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő és felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
-**VM-támogatás** | Győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek támogatottak.<br/><br/> - [Ellenőrizze](support-matrix-move-region-azure-vm.md#windows-vm-support) a támogatott Windows-alapú virtuális gépeket.<br/><br/> - [Ellenőrizze](support-matrix-move-region-azure-vm.md#linux-vm-support) a támogatott Linux-alapú virtuális gépek és kernel-verziók ellenőrzését.<br/><br/> – A támogatott [számítási](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [tárolási](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)és [hálózati](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) beállítások keresése.
-**Key Vault-követelmények (Azure Disk Encryption)** | Ha az Azure Disk Encryption engedélyezve van a virtuális gépek számára, a forrástartomány kulcstartóján kívül egy kulcstartó is szükséges a céltartományban. [Hozzon létre egy kulcstartót](../key-vault/general/quick-create-portal.md).<br/><br/> A forrás-és a célként megadott régióban található kulcstartók esetében a következő engedélyekre van szükség:<br/><br/> -Kulcs engedélyei: kulcskezelő műveletek (Beolvasás, Listázás); Titkosítási műveletek (visszafejtés és titkosítás).<br/><br/> -Titkos engedélyek: titkos felügyeleti műveletek (Beolvasás, Listázás és beállítás)<br/><br/> -Tanúsítvány (Listázás és lekérés).
-**Lemezes titkosítási csoport (kiszolgálóoldali titkosítás CMK)** | Ha kiszolgálóoldali titkosítással rendelkező virtuális gépeket használ egy CMK, a forrásoldali régióban lévő lemezes titkosítás mellett a céltartományban is szükség van egy lemezes titkosítási csoportra. [Hozzon létre egy lemezes titkosítási készletet](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set).<br/><br/> A régiók közötti áthelyezés nem támogatott, ha HSM-kulcsokat használ az ügyfél által felügyelt kulcsokhoz.
-**Cél régió kvótája** | Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy létrehozza a célhelyen áthelyezett erőforrásokat. Ha nem rendelkezik kvótával, [kérjen további korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md).
-**A célként megadott régió díjai** | Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
+**Előfizetési engedélyek** | Ellenőrizze, hogy rendelkezik-e *Tulajdonosi* hozzáféréssel az áthelyezni kívánt erőforrásokat tartalmazó előfizetésben.<br/><br/> *Miért van szükség tulajdonosi hozzáférésre?* Amikor első alkalommal ad hozzá erőforrást egy [Azure-előfizetésben](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)egy adott forrás- és célpárhoz, a Resource Mover létrehoz egy rendszer által hozzárendelt felügyelt identitást , korábbi nevén a felügyeltszolgáltatás-identitást (MSI). Ezt az identitást az előfizetés megbízhatónak bízik meg. Mielőtt létrehozhatja az identitást, és hozzárendelheti  a szükséges szerepkörökhöz *(Közreműködő* és Felhasználói hozzáférés  rendszergazdája a forrás-előfizetésben), az erőforrások hozzáadásához használt fióknak tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben. További információ: [Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök.](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)
+**Virtuális gépek támogatása** | A következő lépésekkel ellenőrizze, hogy az áthelyezni kívánt virtuális gépek támogatottak-e:<li>[Ellenőrizze a](support-matrix-move-region-azure-vm.md#windows-vm-support) támogatott Windows rendszerű virtuális gépeket.<li>[Ellenőrizze a](support-matrix-move-region-azure-vm.md#linux-vm-support) támogatott Linux rendszerű virtuális gépeket és kernelverziókat.<li>Ellenőrizze a [támogatott számítási,](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings) [tárolási](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)és [hálózati beállításokat.](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)
+**Key Vault-követelmények (Azure Disk Encryption)** | Ha a virtuális Azure Disk Encryption engedélyezve van, a forrás- és a célrégióban is szüksége lesz egy kulcstartóra. További információ: [Kulcstartó létrehozása.](../key-vault/general/quick-create-portal.md)<br/><br/> A forrás- és célrégió kulcstartóihoz a következő engedélyekre van szüksége:<li>Kulcsengedélyek: Kulcskezelési műveletek (Get, List) és Titkosítási műveletek (Visszafejtés és titkosítás)<li>Titkos listára vonatkozó engedélyek: Secret Management Operations (Get, List és Set)<li>Tanúsítvány (List and Get)
+**Lemeztitkosítási készlet (kiszolgálóoldali titkosítás CMK-val)** | Ha cmK-t használó kiszolgálóoldali titkosítást használó virtuális gépeket használ, a forrás- és a célrégióban egyaránt szüksége lesz egy lemeztitkosítási készletre. További információ: [Lemeztitkosítási készlet létrehozása.](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)<br/><br/> A régiók közötti áthelyezés nem támogatott, ha ügyfél által kezelt kulcsokhoz hardveres biztonsági modult (HSM-kulcsokat) használ.
+**Cél-régió kvótája** | Az előfizetésnek elegendő kvótára van szüksége a célterületen átköltöztetni szükséges erőforrások létrehozásához. Ha nem áll benne kvóta, kérjen [további korlátokat.](../azure-resource-manager/management/azure-subscription-service-limits.md)
+**Célterület díjai** | Ellenőrizze a célterülethez társított díjszabást és díjakat, amelyekbe a virtuális gépeket átköltözteti. Használja a [díjkalkulátort.](https://azure.microsoft.com/pricing/calculator/)
 
 
-## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>A Key vaulton lévő virtuális gépekre vonatkozó felhasználói engedélyek ellenőrzése Azure Disk Encryption (ADE) használatával
+## <a name="verify-permissions-in-the-key-vault"></a>Engedélyek ellenőrzése a kulcstartóban
 
-Ha olyan virtuális gépeket helyez át, amelyeken engedélyezve van az Azure Disk Encryption, le kell futtatnia egy parancsfájlt az [alább](#copy-the-keys-to-the-destination-key-vault) leírtak szerint, amelyhez a parancsfájlt végrehajtó felhasználónak megfelelő engedélyekkel kell rendelkeznie. A szükséges engedélyekről az alábbi táblázatból tájékozódhat. Az engedélyek módosításához a Azure Portal a Key vaultra navigálva, a **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget.
+Ha olyan virtuális gépeket mozgat, amelyeken engedélyezve Azure Disk Encryption, futtatnia kell egy [](#copy-the-keys-to-the-destination-key-vault) szkriptet a Kulcsok másolása a célkulcs-tárolóba című szakaszban említettek szerint. A szkriptet végrehajtó felhasználóknak megfelelő engedélyekkel kell rendelkezniük ehhez. A szükséges engedélyeket az alábbi táblázatban lehet megérteni. Az engedélyek módosításának lehetőségeit úgy találhatja meg, hogy a kulcstartóra vált a Azure Portal. A **Beállítások alatt** válassza a Hozzáférési **szabályzatok lehetőséget.**
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Gomb a Key Vault hozzáférési házirendjeinek megnyitásához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="A Key Vault Beállítások panelének &quot;Hozzáférési szabályzatok&quot; hivatkozásának képernyőképe." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-Ha nincsenek felhasználói engedélyek, válassza a **hozzáférési házirend hozzáadása** lehetőséget, és adja meg az engedélyeket. Ha a felhasználói fiók már rendelkezik szabályzattal, a **felhasználó** területen állítsa be az engedélyeket az alábbi táblázat szerint.
+Ha nincsenek meg a felhasználói engedélyek, válassza a **Hozzáférési** szabályzat hozzáadása lehetőséget, majd adja meg az engedélyeket. Ha a felhasználói fiók már rendelkezik szabályzatokkal, a **Felhasználó** alatt állítsa be az engedélyeket az alábbi táblázatban található utasításoknak megfelelően.
 
-Az ADE-t használó Azure-beli virtuális gépek a következő variációkkal rendelkezhetnek, és ennek megfelelően kell beállítani az engedélyeket a megfelelő összetevőkhöz.
-- Alapértelmezett beállítás, amelyben a lemez csak titok használatával titkosított
-- Biztonság hozzáadva a [kulcs titkosítási kulcsával](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
+Az alkalmazásokat Azure Disk Encryption Azure-beli virtuális gépek a következő változatokkal is rendelkezni tudnak, és az engedélyeket a megfelelő összetevőknek megfelelően kell beállítania. A virtuális gépek a következővel lehetnek:
+- Egy alapértelmezett beállítás, amelyben a lemez csak titkos kódokkal van titkosítva.
+- A kulcstitkosítási kulcsot [(KEK) használó biztonság hozzáadva.](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-### <a name="source-region-keyvault"></a>Forrás régió kulcstartója
+### <a name="source-region-key-vault"></a>Forrás-régió kulcstartója
 
-A parancsfájlt végrehajtó felhasználónak be kell állítania az alábbi engedélyeket 
+A szkriptet használó felhasználók számára állítsa be az engedélyeket a következő összetevőkhöz: 
 
-**Összetevő** | **Engedély szükséges**
+Összetevő | Szükséges engedélyek
 --- | ---
-Titkos kulcsok|  Engedély kérése <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beolvasás** lehetőséget. 
-Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Lekérési és visszafejtési engedély <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** lehetőséget. A **titkosítási műveletek** területen válassza a **Visszafejtés** lehetőséget.
+Titkos kulcsok |  *Lekérés* <br></br> Válassza **a Secret permissions** Secret Management Operations (Titkos engedélyek Titkos kezelés  >  **műveletei)** lehetőséget, majd a Get (Lekért) **lehetőséget.** 
+Kulcsok <br></br> KEK használata esetén ezekre az engedélyekre a titkos kulcsokra vonatkozó engedélyek mellett szüksége lesz rá. | *Be-* és *visszafejtése* <br></br> Válassza **a Kulcsengedélyek**  >  **kulcskezelési műveletek** lehetőséget, majd a **Lekért lehetőséget.** A **Titkosítási műveletek alatt válassza** a **Visszafejtés lehetőséget.**
 
-### <a name="destination-region-keyvault"></a>Rendeltetési régió kulcstartója
+### <a name="destination-region-key-vault"></a>Cél-régió kulcstartója
 
-A **hozzáférési házirendek** területen győződjön meg arról, hogy a **kötet titkosításának Azure Disk Encryption** engedélyezve van. 
+Győződjön **meg arról,** hogy a Hozzáférési szabályzatok **Azure Disk Encryption kötettitkosításhoz engedélyezve van.** 
 
-A parancsfájlt végrehajtó felhasználónak be kell állítania az alábbi engedélyeket 
+A szkriptet használó felhasználók számára állítsa be az engedélyeket a következő összetevőkhöz: 
 
-**Összetevő** | **Engedély szükséges**
+Összetevő | Szükséges engedélyek
 --- | ---
-Titkos kulcsok|  Engedély beállítása <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beállítás** lehetőséget. 
-Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Engedély beszerzése, létrehozása és titkosítása <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** és **Létrehozás** elemet. A **titkosítási műveletek** területen válassza a **titkosítás** lehetőséget.
+Titkos kulcsok |  *Set* <br></br> Válassza **a Titkos engedélyek** Secret Management  >  **Operations (Titkos engedélyek) lehetőséget,** majd a Set (Beállítás) **lehetőséget.** 
+Kulcsok <br></br> KEK használata esetén ezekre az engedélyekre a titkos kulcsokra vonatkozó engedélyek mellett szüksége lesz rá. | *Get*, *Create* és *Encrypt* <br></br> Válassza **a Key Permissions** Key Management Operations (Kulcskezelési  >  **műveletek)** lehetőséget, majd a Get and Create **(Be-** és **létrehozás) lehetőséget.** A **Titkosítási műveletek alatt válassza** a Titkosítás **lehetőséget.**
 
-A fenti engedélyek mellett a célként megadott Key vaultban engedélyeket kell adni ahhoz a [felügyelt Rendszeridentitáshoz](./common-questions.md#how-is-managed-identity-used-in-resource-mover) , amelyet az erőforrás-mozgató használ az Azure-erőforrások eléréséhez az Ön nevében. 
+<br>
 
-1. A **Beállítások** területen válassza a **hozzáférési házirendek hozzáadása** elemet. 
-2. A **rendszerbiztonsági tag kiválasztása** területen keresse meg az MSI-t. Az MSI neve: ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
-3. Adja hozzá a következő engedélyeket az MSI-hez
+A fenti engedélyek mellett a célkulcstartóban engedélyeket kell hozzáadnia [](./common-questions.md#how-is-managed-identity-used-in-resource-mover) ahhoz a felügyeltrendszer-identitáshoz, amely alapján a Mover erőforrás az Ön nevében hozzáfér az Azure-erőforrásokhoz. 
 
-**Összetevő** | **Engedély szükséges**
---- | ---
-Titkos kulcsok|  Engedélyek beolvasása és listázása <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beolvasás** és **Listázás** lehetőséget. 
-Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Letöltés, engedélyek listázása <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** és **lista** lehetőséget.
+1. A **Beállítások alatt** válassza a Hozzáférési **szabályzatok hozzáadása lehetőséget.** 
+1. A **Rendszerbiztonsági tag kiválasztása mezőben** keresse meg az MSI-t. Az MSI neve ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+1. Az MSI-hez adja hozzá a következő engedélyeket:
 
+    Összetevő | Szükséges engedélyek
+    --- | ---
+    Titkos kulcsok|  *Le- és* *lista* <br></br> Válassza **a Titkos hozzáférések** Secret Management Operations (Titkos hozzáférések)  >  **lehetőséget,** majd a Get and List **(Lekért és** lista) **lehetőséget.** 
+    Kulcsok <br></br> KEK használata esetén ezekre az engedélyekre a titkos kulcsokra vonatkozó engedélyek mellett szüksége lesz rá. | *Le- és* *lista* <br></br> Válassza **a Kulcsengedélyek**  >  **kulcskezelési műveletek,** majd a **Lekért és lista** **lehetőséget.**
 
+<br>
 
-### <a name="copy-the-keys-to-the-destination-key-vault"></a>A kulcsok másolása a cél Key vaultba
+### <a name="copy-the-keys-to-the-destination-key-vault"></a>A kulcsok másolása a célkulcstartóba
 
-A forrás Key vaultban lévő titkosítási titkokat és kulcsokat át kell másolnia a cél Key vaultba egy általunk biztosított parancsfájl használatával.
+Másolja a titkosítási titkos kódokat és kulcsokat [a](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) forráskulcs-tárolóból a célkulcs-tárolóba egy általunk megírt szkript használatával.
 
-- Futtatja a szkriptet a PowerShellben. Javasoljuk, hogy futtassa a legújabb PowerShell-verziót.
-- Pontosabban, a parancsfájlhoz a következő modulok szükségesek:
+- Futtassa a szkriptet a PowerShellben. Javasoljuk, hogy a PowerShell legújabb verzióját használja.
+- A szkripthez a következő modulokra van szükség:
     - Az.Compute
-    - Az. kulcstartó (3.0.0-es verzió)
-    - Az. accounts (2.2.3-es verzió)
+    - Az.KeyVault (3.0.0-s verzió)
+    - Az.Accounts (2.2.3-as verzió)
 
-A parancsokat a következő sorrendben futtassa le:
+A szkript futtatásához tegye a következőket:
 
-1. Navigáljon a [szkripthez](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) a githubon.
-2. Másolja a parancsfájl tartalmát egy helyi fájlba, és nevezze el *Copy-keys.ps1*.
-3. Futtassa a szkriptet.
-4. Jelentkezzen be az Azure-ba.
-5. A **felhasználói bemeneti** előugró ablakban válassza ki a forrás-előfizetést, az erőforráscsoportot és a forrás virtuális gépet. Ezután válassza ki a célhelyet és a tárolókat a lemez és a kulcs titkosításához.
+1. Nyissa meg [a szkriptet](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) a GitHubon.
+1. Másolja a szkript tartalmát egy helyi fájlba, és nevezze *el* Copy-keys.ps1.
+1. Futtassa a szkriptet.
+1. Jelentkezzen be az Azure Portalra.
+1. A Felhasználói bemenetek ablak  legördülő listáiban válassza ki a forrás-előfizetést, az erőforráscsoportot és a forrás virtuális gépet, majd válassza ki a célhelyet, valamint a lemez- és kulcstitkosítás céltartóit.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/script-input.png" alt-text="A bemeneti parancsfájl értékeinek beugró ablaka." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/script-input.png" alt-text="Képernyőkép a &quot;Felhasználói bemenetek&quot; ablakról a szkriptértékek beviteléhez." :::
 
-
-6. A szkript befejezésekor a képernyő kimenete azt jelzi, hogy a CopyKeys sikeres volt.
+1. Kattintson a **Kiválasztás** gombra. 
+   
+   Ha a szkript futása befejeződött, egy üzenet értesíti, hogy a CopyKeys sikeresen lefutott.
 
 ## <a name="prepare-vms"></a>Virtuális gépek előkészítése
 
-1. Miután [ellenőrizte, hogy a virtuális gépek megfelelnek](#prerequisites)-e a követelményeknek, győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek be vannak kapcsolva. A célként megadott régióban elérhetővé kívánt összes virtuális gép lemezét csatolni és inicializálni kell a virtuális gépen.
-3. Győződjön meg arról, hogy a virtuális gépek rendelkeznek a legújabb megbízható főtanúsítványokkal, valamint a visszavont tanúsítványok listájának (CRL) frissítésével. Ehhez tegye a következőket:
+1. Miután ellenőrizte, hogy a virtuális gépek megfelelnek-e az előfeltételeknek, [](#prerequisites)győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek be vannak kapcsolva. A cél régióban elérhetővé tenni kívánt összes virtuálisgép-lemezt csatolni és inicializálni kell a virtuális gépen.
+1. Annak biztosításához, hogy a virtuális gépek a legújabb megbízható főtanúsítvánnyal és frissített tanúsítvány-visszavonási listával (CRL) rendelkezik, tegye a következőket:
     - Windows rendszerű virtuális gépeken telepítse a legújabb Windows-frissítéseket.
-    - Linux rendszerű virtuális gépeken kövesse a terjesztői útmutatót, hogy a számítógépek rendelkezzenek a legújabb tanúsítványokkal és CRL-vel. 
-4. A virtuális gépek kimenő kapcsolatának engedélyezése a következőképpen:
-    - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi [URL-címek](support-matrix-move-region-azure-vm.md#url-access) elérését
-    - Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsolatok vezérléséhez, hozza létre ezeket a [szolgáltatási kódelemek szabályait](support-matrix-move-region-azure-vm.md#nsg-rules).
+    - Linux rendszerű virtuális gépeken kövesse a terjesztői útmutatót, hogy a gépek a legújabb tanúsítványokkal és CRL-ekkel is rendelkezésre edz. 
+1. A virtuális gépek kimenő kapcsolatának engedélyezése érdekében tegye a következők egyikét:
+    - Ha URL-alapú tűzfalproxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze a hozzáférést a [URL-címekhez.](support-matrix-move-region-azure-vm.md#url-access)
+    - Ha hálózati biztonsági csoportra (NSG) vonatkozó szabályokat használ a kimenő kapcsolat vezérléséhez, hozza létre ezeket a [szolgáltatáscímke-szabályokat.](support-matrix-move-region-azure-vm.md#nsg-rules)
 
-## <a name="select-resources-to-move"></a>Válassza ki az áthelyezni kívánt erőforrásokat
+## <a name="select-the-resources-to-move"></a>Az áthelyezni kívánt erőforrások kiválasztása
 
+- Bármelyik támogatott erőforrástípust kiválaszthatja a kiválasztott forrás régióban található bármelyik erőforráscsoportban.  
+- Az erőforrásokat áthelyezheti egy olyan célterületre, amely ugyanabban az előfizetésben található, mint a forrás-régió. Ha módosítani szeretné az előfizetést, azt az erőforrások áthelyezte után is megteheti.
 
-- Bármelyik támogatott erőforrástípust kiválaszthatja a kiválasztott forrás régió bármelyik erőforráscsoporthoz.  
-- Az erőforrásokat egy olyan célcsoportba helyezi át, amely ugyanabban az előfizetésben található, mint a forrás-régió. Ha módosítani szeretné az előfizetést, ezt az erőforrások áthelyezése után teheti meg.
+Az erőforrások kiválasztásához tegye a következőket:
 
-Válassza az erőforrások lehetőséget a következők szerint:
+1. A Azure Portal keressen rá az **erőforrás-átvétel kifejezésre.** Ezután a **Szolgáltatások alatt válassza** a Azure Resource Mover. 
 
-1. A Azure Portal keresse meg az *erőforrás-mozgató* kifejezést. Ezután a **szolgáltatások** területen válassza az **Azure-erőforrás mozgató** lehetőséget.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/search.png" alt-text="Képernyőkép a keresési eredményekről a Azure Resource Mover keresési Azure Portal." :::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/search.png" alt-text="Keresési eredmények az erőforrás-mozgató Azure Portalban." :::
+1. A Azure Resource Mover **panelen** válassza az Áthelyezés **régiók között lehetőséget.**
 
-2. Az **Áttekintés** területen kattintson az **Áthelyezés régiók között** elemre.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png" alt-text="Képernyőkép az &quot;Áthelyezés régiók között&quot; gombról, ahol erőforrásokat adhat hozzá egy másik régióba való áthelyezéshez." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png" alt-text="Gomb egy másik régióba való áthelyezéshez szükséges erőforrások hozzáadásához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png":::
+1. Az Erőforrások **áthelyezése panelen** válassza a **Forrás + cél lapot.** Ezután a legördülő listában válassza ki a forrás-előfizetést és -régiót.
 
-3. Az **erőforrások áthelyezése**  >  **forrás + cél** területen válassza ki a forrás-előfizetést és a régiót.
-4. A **cél** mezőben válassza ki azt a régiót, amelyre át szeretné helyezni a virtuális gépeket. Ezután kattintson a **Tovább** gombra.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/source-target.png" alt-text="A forrás- és cél régiót kiválasztó oldal." :::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/source-target.png" alt-text="Lap a forrás és a cél régió kiválasztásához.." :::
+1. A **Cél területen** válassza ki a régiót, ahová át szeretné áthelyezni a virtuális gépeket, majd válassza a Tovább **lehetőséget.**
 
-5. Az **áthelyezni kívánt erőforrások** területen kattintson az **erőforrások kiválasztása** elemre.
+1. Válassza az **Áthelyezni kívánt erőforrások** lapot, majd az **Erőforrások kiválasztása lehetőséget.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-resources.png" alt-text="Gombra kattintva válassza ki az áthelyezni kívánt erőforrást.]." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-resources.png" alt-text="Képernyőkép az &quot;Erőforrások áthelyezése&quot; panelről és az &quot;Erőforrások kiválasztása&quot; gombról.]." :::
 
-6. Az **erőforrások kiválasztása** területen válassza ki a virtuális gépeket. Csak [az áthelyezéshez támogatott](#prepare-vms)erőforrásokat adhat hozzá. Ezután kattintson a **kész** gombra.
+1. Az Erőforrások **kiválasztása panelen** válassza ki az áthelyezni kívánt virtuális gépeket. Ahogy azt a [Select the resources to move](#select-the-resources-to-move) (Áthelyezni kívánt erőforrások kiválasztása) szakaszban említettük, csak az áthelyezéshez támogatott erőforrásokat adhat hozzá.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-vm.png" alt-text="Lapon válassza ki az áthelyezni kívánt virtuális gépeket." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-vm.png" alt-text="Képernyőkép az &quot;Erőforrások kiválasztása&quot; panelről az áthelyezni kívánt virtuális gépek kiválasztásához." :::
 
     > [!NOTE]
-    >  Ebben az oktatóanyagban egy olyan virtuális gépet választunk ki, amely kiszolgálóoldali titkosítást (a (()-VM-t) használ egy ügyfél által felügyelt kulccsal, valamint egy virtuális gépet, amelyen engedélyezve van a lemezes titkosítás (a-beli-VM-ade).
+    >  Ebben az oktatóanyagban egy olyan virtuális gépet választ, amely kiszolgálóoldali titkosítást (rayne-vm) használ egy ügyfél által felügyelt kulccsal, és egy virtuális gépet, amelynél engedélyezve van a lemeztitkosítás (rayne-vm-ade).
 
-7.  Az **áthelyezni kívánt erőforrásokhoz** kattintson a **tovább** gombra.
-8. A **felülvizsgálat** területen ellenőrizze a forrás-és a célhely beállításait. 
+1. Válassza a **Kész** lehetőséget.
+1. Válassza az **Áthelyezni kívánt erőforrások lapot,** majd kattintson a Tovább **gombra.**
+1. Válassza az **Áttekintés lapot,** majd ellenőrizze a forrás- és célbeállításokat. 
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/review.png" alt-text="Lapon ellenőrizheti a beállításokat, és folytathatja az áthelyezést." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/review.png" alt-text="A forrás- és célbeállítások áttekintésére vonatkozó panel képernyőképe." :::
 
-9. Az erőforrások hozzáadásának megkezdéséhez kattintson a **Folytatás** gombra.
-10. A folyamat nyomon követéséhez válassza az értesítések ikont. A hozzáadási folyamat sikeres befejeződése után válassza a **hozzáadott erőforrások** lehetőséget az értesítések áthelyezéséhez.
+1. Válassza **a Folytatás** lehetőséget az erőforrások hozzáadásának megkezdéséhez.
+1. A folyamat nyomon követéséhez válassza az értesítések ikont. A folyamat sikeres befejezése után az Értesítések **panelen** válassza az **Áthelyezni kívánt erőforrások hozzáadva lehetőséget.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png" alt-text="A rendszer sikeresen hozzáadta az erőforrások megerősítésének értesítését." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png" alt-text="Képernyőkép az &quot;Értesítések&quot; panelről annak megerősítéséhez, hogy az erőforrások hozzáadása sikeres volt." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png":::
     
-    
-11. Az értesítésre való kattintás után tekintse át az erőforrásokat az **egyes régiók között** oldalon.
+1. Az értesítés kiválasztása után tekintse át az erőforrásokat a **Régiók között** lapon.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-prepare-pending.png" alt-text="A függőben lévő előkészítéssel hozzáadott erőforrásokat bemutató lapok." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-prepare-pending.png" alt-text="A hozzáadott erőforrások &quot;Előkészítés függőben&quot; állapottal való képernyőképe." :::
 
 > [!NOTE]
-> - A hozzáadott erőforrások *előkészítése függő* állapotba kerülnek.
-> - A virtuális gépek erőforráscsoport hozzáadása automatikusan megtörténik.
-> - Ha módosítja a **célként megadott konfigurációs** bejegyzéseket olyan erőforrás használatára, amely már létezik a célhelyen, az erőforrás állapota *függőben* állapotra van állítva, mert nincs szükség áthelyezésre.
-> - Ha el kívánja távolítani egy hozzáadott erőforrást, akkor az a metódus, amely az áthelyezési folyamat helyétől függ. [További információk](remove-move-resources.md).
+> - A hozzáadt erőforrások Előkészítés függő állapotban *vannak.*
+> - A rendszer automatikusan hozzáadja a virtuális gépek erőforráscsoportját.
+> - Ha úgy  módosítja a Célkonfigurációs bejegyzéseket, hogy a cél régióban már létező erőforrást használjanak, az erőforrás állapota Véglegesítés *függőben* lesz, mert nem kell áthelyezést kezdeményezni hozzá.
+> - Ha egy hozzáadott erőforrást szeretne eltávolítani, a használt metódus attól függ, hogy hol van az áthelyezési folyamatban. További információ: [Áthelyezési gyűjtemények és erőforráscsoportok kezelése.](remove-move-resources.md)
 
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 
-1. Ha bármelyik erőforrás egy *érvényesítési függőségek* üzenetet jelenít meg a **problémák** oszlopban, válassza a **függőségek ellenőrzése** gombot.
+1. Ha valamelyik erőforrás a *Függőségek* ellenőrzése üzenetet mutatja a **Problémák** oszlopban, válassza a **Függőségek ellenőrzése** gombot.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png" alt-text="NButton a függőségek vizsgálatához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png" alt-text="A &quot;Függőségek ellenőrzése&quot; gombot bemutató képernyőkép." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png":::
 
-    Az érvényesítési folyamat megkezdődik.
-2. Ha függőségek találhatók, kattintson a **függőségek hozzáadása** elemre.  
+    Megkezdődik az ellenőrzési folyamat.
+1. Ha találhatók függőségek, válassza a **Függőségek hozzáadása lehetőséget.**  
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png" alt-text="Gombra a függőségek hozzáadásához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png" alt-text="A &quot;Függőségek hozzáadása&quot; gomb képernyőképe." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png":::
 
 
-3. A **függőségek hozzáadása** területen hagyja meg az alapértelmezett **összes függőség megjelenítése** beállítást.
+1. A **Függőségek hozzáadása panelen** hagyja meg az alapértelmezett **Minden függőség megjelenítése beállítást.**
 
-    - Az **összes függőség megjelenítése** az erőforrás közvetlen és közvetett függőségein keresztül. Egy virtuális gép esetében például a NIC, a Virtual Network, a hálózati biztonsági csoportok (NSG) stb.
-    - Az **első szint függőségeinek megjelenítése csak** a közvetlen függőségeket jeleníti meg. Egy virtuális gép esetében például a hálózati ADAPTERt jeleníti meg, a virtuális hálózatot azonban nem.
+    - **Az összes függőség megjelenítése** egy erőforrás összes közvetlen és közvetett függősége között iterál. Virtuális gépek esetén például a hálózati adaptert, a virtuális hálózatot, a hálózati biztonsági csoportokat (NSG-ket) és így tovább.
+    - **Az első szintű függőségek megjelenítése csak a** közvetlen függőségeket jeleníti meg. Egy virtuális gép esetén például a hálózati adapter látható, a virtuális hálózat nem.
  
-4. Válassza ki azokat a függő erőforrásokat, amelyeket hozzá szeretne adni > **függőségek hozzáadása** elemet.
+1. Válassza ki a hozzáadni kívánt függő erőforrásokat, majd válassza a **Függőségek hozzáadása lehetőséget.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png" alt-text="A függőségek listából válassza a függőségek lehetőséget." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png" alt-text="Képernyőkép a függőségek listájáról és a &quot;Függőségek hozzáadása&quot; gombról." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png":::
 
-5. Újból érvényesítse a függőségeket. 
+1. Ellenőrizze újra a függőségeket. 
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png" alt-text="Oldalt az újbóli ellenőrzéshez." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png" alt-text="A függőségek újraértékezésére vonatkozó panel képernyőképe." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png":::
 
-## <a name="assign-destination-resources"></a>Cél erőforrások kiosztása
+## <a name="assign-destination-resources"></a>Célerőforrások hozzárendelése
 
-A titkosításhoz társított cél erőforrásokhoz manuális hozzárendelés szükséges.
+A titkosításhoz társított célerőforrásokat manuálisan kell hozzárendelni.
 
-- Ha olyan virtuális gépet helyez át, amely rendelkezik az Azure Disk Encryption (ADE) szolgáltatással, a célként megadott régióban található kulcstartó függőségként fog megjelenni.
-- Ha olyan virtuális gépet helyez át, amely az egyéni által felügyelt kulcsokat (CMKs) használó kiszolgálóoldali titkosítást használ, akkor a célként kijelölt lemez titkosítása függőségként jelenik meg. 
-- Mivel ez az oktatóanyag egy olyan virtuális gépet helyez át, amelyen az ADE engedélyezve van, a CMK használó virtuális gépek pedig függőségként jelennek meg a célszámítógép és a lemez titkosítási készlete között.
+- Ha olyan virtuális gépet mozgat, amely Azure Disk Encryption engedélyezve van, a cél régióban található kulcstartó függőségként jelenik meg.
+- Ha cmK-ket használó kiszolgálóoldali titkosítást használó virtuális gépet mozgat, a cél régióban lévő lemeztitkosítási készlet függőségként jelenik meg. 
+- Mivel ez az oktatóanyag egy olyan virtuális gép áthelyezését mutatja be, amely Azure Disk Encryption engedélyezett, és cmK-t használ, a célkulcs-tároló és a lemeztitkosítási készlet is függőségként fog mutatni.
 
-Rendeljen hozzá manuálisan a következő módon:
+A célerőforrások manuális hozzárendeléshez tegye a következőket:
 
-1. A lemez titkosítási készletének bejegyzésében válassza ki az **erőforrás nincs hozzárendelve** elemet a **cél konfiguráció** oszlopban.
-2. A **konfigurációs beállítások** területen válassza ki a céllemez titkosítási készletét. Ezután válassza a **módosítások mentése** elemet.
-3. Kiválaszthatja, hogy menti és érvényesítse a módosítani kívánt erőforrás függőségeit, vagy csak mentse a módosításokat, és ellenőrizze, hogy az egyik menetben hogyan módosítható.
+1. A lemeztitkosítási készlet bejegyzésben válassza a Cél konfigurációja **oszlopban** a Nincs hozzárendelve **erőforrás** lehetőséget.
+1. A **Konfigurációs beállítások lapon** válassza ki a céllemez titkosítási készletét, majd válassza a Módosítások mentése **lehetőséget.**
+1. Mentheti és ellenőrizheti a módosított erőforrás függőségeit, vagy mentheti csak a módosításokat, majd egyszerre ellenőrizheti a módosításokat.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png" alt-text="Lapon válassza ki a lemezterület-titkosítási készletet a célhely területen." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png" alt-text="Képernyőkép a &quot;Célkonfiguráció&quot; panelről a módosítások cél régióban való mentésére." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png":::
 
-    A célként megadott erőforrás hozzáadása után a lemez titkosítási készlet állapota a *függőben lévő áthelyezésre* vált.
-3. A Key Vault-bejegyzésben válassza ki az **erőforrás nincs hozzárendelve** elemet a **cél konfiguráció** oszlopban. **Konfigurációs beállítások**, válassza ki a cél kulcstartót. Mentse a módosításokat. 
+    A célerőforrás hozzáadása után a lemeztitkosítási készlet állapota *Véglegesítés függőben állapotúra változik.*
 
-Ebben a szakaszban a lemez titkosítási készlete és a Key Vault állapota is a *függőben lévő áthelyezésre* vált.
+1. A Key Vault-bejegyzésben válassza a **Célkonfiguráció oszlopban** a Nincs hozzárendelve **erőforrás** lehetőséget. A **Konfigurációs beállítások alatt** válassza ki a célkulcstartót, majd mentse a módosításokat. 
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png" alt-text="Lapon válassza ki az egyéb erőforrások előkészítését." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png":::
+Ebben a szakaszban a lemeztitkosítási készlet és a kulcstartó állapota *Véglegesítés függőben állapotúra változik.*
 
-A titkosítási erőforrások áthelyezési folyamatának véglegesítéséhez és befejezéséhez.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png" alt-text="Képernyőkép az egyéb erőforrások előkészítésére vonatkozó panelről." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png":::
 
-1. Az **egyes régiókban** válassza ki az erőforrást (a lemez titkosítási készletét vagy a kulcstartót) > **véglegesíti az áthelyezést**.
-2. ln **erőforrások áthelyezése**, kattintson a **véglegesítés** elemre.
+A titkosítási erőforrások áthelyezési folyamatának véglegesítéshez és befejezéséhez tegye a következőket:
+
+1. A **Régiók között beállításban** válassza ki az erőforrást (lemeztitkosítási készlet vagy kulcstartó), majd válassza **az Áthelyezés véglegesítése lehetőséget.**
+1. Az **Erőforrások áthelyezése mezőben** válassza a **Véglegesítés lehetőséget.**
 
 > [!NOTE]
-> Az áthelyezés véglegesítése után az erőforrás a *forrás törlés függőben* állapotú.
+> Miután véglegeste az áthelyezést, az erőforrás állapota Delete source pending (Forrás *törlése függőben) állapotra változik.*
 
 
-## <a name="move-the-source-resource-group"></a>A forrás erőforráscsoport áthelyezése 
+## <a name="move-the-source-resource-group"></a>A forrásként szükséges erőforráscsoport áthelyezése 
 
-A virtuális gépek előkészítése és áthelyezése előtt a virtuálisgép-erőforráscsoporthoz a célként megadott régióban kell lennie. 
+A virtuális gépek előkészítése és áthelyezése előtt a virtuálisgép-erőforráscsoportnak jelen kell lennie a cél régióban. 
 
 ### <a name="prepare-to-move-the-source-resource-group"></a>Felkészülés a forrásként szolgáló erőforráscsoport áthelyezésére
 
-Az előkészítési folyamat során az erőforrás-mozgató Azure Resource Manager (ARM) sablonokat hoz létre az erőforráscsoport-beállítások használatával. Az erőforráscsoport erőforrásai nem érintettek.
+Az előkészítési folyamat során a Resource Mover Azure Resource Manager (ARM) sablonokat hoz létre az erőforráscsoport beállításaiból. Az erőforráscsoporton belüli erőforrásokra ez nem lesz hatással.
 
-Előkészítés a következőképpen történik:
+A forrás erőforráscsoport áthelyezésének előkészítéséhez tegye a következőket:
 
-1. Az **egyes régiókban** válassza ki a forrásként szolgáló erőforráscsoportot > **előkészítése**.
+1. A **Régiók között mezőben** válassza ki a forrásként kiválasztott erőforráscsoportot, majd válassza a Prepare (Előkészítés) **lehetőséget.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png" alt-text="Erőforráscsoport előkészítése." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png" alt-text="Az &quot;Erőforrások előkészítése&quot; panel &quot;Előkészítés&quot; gombjának képernyőképe." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png":::
 
-2. Az **erőforrások előkészítése** területen kattintson az **előkészítés** gombra.
+1. Az **Erőforrások előkészítése mezőben** válassza a **Prepare (Előkészítés) lehetőséget.**
 
 > [!NOTE]
-> Az erőforráscsoport előkészítése után a folyamatban van a *mozgatás függőben* állapotba állítása. 
+> Miután előkészítette az áthelyezést, az erőforráscsoport állapota *Függőben az Áthelyezés kezdeményezése állapotra változik.* 
 
  
-### <a name="move-the-source-resource-group"></a>A forrás erőforráscsoport áthelyezése
+### <a name="move-the-source-resource-group"></a>A forrásként szükséges erőforráscsoport áthelyezése
 
-Az áthelyezést a következőképpen indíthatja el:
+Kezdje el a forráskénti erőforráscsoport áthelyezését az alábbiak szerint:
 
-1. Az **egyes régiókban** válassza ki az erőforráscsoportot > **Áthelyezés kezdeményezése**
+1. A Régiók **közötti panelen** válassza ki az erőforráscsoportot, majd válassza az **Áthelyezés kezdeményezése lehetőséget.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png" alt-text="Gombra az áthelyezés indításához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png" alt-text="Képernyőkép az &quot;Áthelyezés kezdeményezése&quot; gombról a Régiók között panelen." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png":::
 
-2. ln **erőforrások áthelyezése**, kattintson az **Áthelyezés kezdeményezése** lehetőségre. Az erőforráscsoport *folyamatban* állapotba lép.   
-3. Az áthelyezés kezdeményezése után létrejön a célként megadott erőforráscsoport, amely a generált ARM-sablon alapján történik. A forrás erőforráscsoport egy véglegesített *Áthelyezés függő* állapotba kerül.
+1. Az Erőforrások **áthelyezése panelen** válassza az **Áthelyezés kezdeményezése lehetőséget.** Az erőforráscsoport állapota *Folyamatban lévő áthelyezés kezdeményezése állapotra változik.*   
+1. Az áthelyezés kezdeményezése után létrejön a célként szolgáló erőforráscsoport a létrehozott ARM-sablon alapján. A forrás erőforráscsoport állapota *Véglegesítés áthelyezés függőben állapotra változik.*
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png" alt-text="Tekintse át a véglegesített áthelyezés függőben állapotot." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png" alt-text="Az &quot;Erőforrások áthelyezése&quot; panel képernyőképe, amely azt mutatja, hogy az erőforráscsoport állapota &quot;Áthelyezés véglegesítés függőben&quot; állapotra változott." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png":::
 
-Az áthelyezési folyamat véglegesítése és befejezése:
+Az áthelyezés véglegesítéshez és a folyamat befejezéséhez tegye a következőket:
 
-1. Az **egyes régiókban** válassza ki az erőforráscsoportot > **véglegesíti az áthelyezést**.
-2. ln **erőforrások áthelyezése**, kattintson a **véglegesítés** elemre.
+1. A Régiók **közötti panelen** válassza ki az erőforráscsoportot, majd válassza az **Áthelyezés véglegesítése lehetőséget.**
+1. Az Erőforrások **áthelyezése panelen** válassza a **Véglegesítés lehetőséget.**
 
 > [!NOTE]
-> Miután véglegesíti az áthelyezést, a forrás erőforráscsoport *függő* állapotban van.
+> Miután véglegeste az áthelyezést, a forrásként kijelölt erőforráscsoport állapota *Delete source pending (Forrás törlése függőben) állapotra változik.*
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png" alt-text="Tekintse át a törlés függőben állapotot." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png":::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png" alt-text="Képernyőkép a forrásként kijelölt erőforráscsoportról, amely a &quot;Forrás törlése függőben&quot; állapotra változott." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png":::
 
-## <a name="prepare-resources-to-move"></a>Az áthelyezni kívánt erőforrások előkészítése
+## <a name="prepare-resources-to-move"></a>Erőforrások előkészítése az áthelyezéshez
 
-Most, hogy áthelyezi a titkosítási erőforrásokat és a forrás-erőforráscsoportot, előkészítheti az *előkészítés függő* állapotú egyéb erőforrások áthelyezését.
+Most, hogy áthelyezte a titkosítási erőforrásokat és a forrásként használt erőforráscsoportot, előkészítheti a többi olyan erőforrás áthelyezését, amelynek aktuális állapota *Prepare pending*.
 
 
-1. Az **egyes régiókban** ismételje meg a műveletet, és hárítsa el a problémákat.
-2. Ha a cél beállításait a mozgatás megkezdése előtt szeretné szerkeszteni, válassza ki a hivatkozást az erőforráshoz tartozó **cél konfiguráció** oszlopban, és szerkessze a beállításokat. Ha szerkeszti a cél virtuális gép beállításait, a cél virtuális gép mérete nem lehet kisebb, mint a forrás virtuális gép mérete.
-3. Válassza az erőforrások **előkészítése** lehetőséget az áthelyezni kívánt *előkészítési* állapotban.
-3. Az **erőforrások előkészítése** területen válassza az **előkészítés** lehetőséget.
+1. A Régiók **közötti panelen ellenőrizze** újra az áthelyezést, és oldja meg a problémákat.
+1. Ha az áthelyezés megkezdése előtt szerkeszteni szeretné a célbeállításokat, válassza az erőforrás Célkonfiguráció oszlopában található hivatkozást, majd szerkessze a beállításokat.  Ha szerkeszti a cél virtuális gép beállításait, a cél virtuális gép mérete nem lehet kisebb, mint a forrás virtuális gép mérete.
+1. Az áthelyezni kívánt *Előkészítés függő* állapotú erőforrásokhoz válassza az Előkészítés **lehetőséget.**
+1. Az Erőforrások **előkészítése panelen** válassza az Előkészítés **lehetőséget.**
 
-    - Az előkészítési folyamat során a rendszer a Azure Site Recovery mobilitási ügynököt telepíti a virtuális gépekre a replikáláshoz.
-    - A virtuálisgép-adatreplikációt a rendszer rendszeres időközönként replikálja a célhelyre. Ez nem befolyásolja a forrás virtuális gépet.
-    - Az erőforrás áthelyezése ARM-sablonokat hoz létre a többi forrás erőforráshoz.
+    - Az előkészítés során a Azure Site Recovery mobilitási ügynök telepítve lesz a virtuális gépekre a replikálásukhoz.
+    - A rendszer rendszeres időközönként replikálja a virtuális gép adatait a célterületre. Ez nincs hatással a forrás virtuális gépre.
+    - Az erőforrás áthelyezése ARM-sablonokat hoz létre a többi forráserőforráshoz.
 
-Az erőforrások előkészítése után folyamatban van egy *függőben lévő áthelyezési* állapot.
+> [!NOTE]
+> Miután előkészítette az erőforrásokat, az állapotuk *Áthelyezés kezdeményezése függőben állapotra változik.*
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png" alt-text="Az a lap, amely megjeleníti az erőforrásokat a függőben lévő áthelyezés állapotának kezdeményezéséhez." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png":::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png" alt-text="Az &quot;Erőforrások előkészítése&quot; panel képernyőképe, amely az &quot;Áthelyezés kezdeményezése függőben&quot; állapotú erőforrásokat mutatja." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png":::
 
 
 
 ## <a name="initiate-the-move"></a>Az áthelyezés kezdeményezése
 
-Az előkészített erőforrások segítségével most már elindíthatja az áthelyezést. 
+Most, hogy előkészítette az előkészített erőforrásokat, megkezdheti az áthelyezést. 
 
-1. Az **egyes régiókban** válassza az állapot *elindítása függőben* állapotú erőforrások lehetőséget. Ezután kattintson az **Áthelyezés kezdeményezése** lehetőségre.
-2. Az **erőforrások áthelyezése** területen kattintson az **Áthelyezés kezdeményezése** lehetőségre.
-3. Nyomon követheti a folyamat lépéseit az értesítések sávján.
+1. A Régiók **közötti panelen** válassza ki azokat az erőforrásokat, amelyeknek az *Állapota Áthelyezés kezdeményezése függőben,* majd válassza az Áthelyezés **kezdeményezése lehetőséget.**
+1. Az Erőforrások **áthelyezése panelen** válassza az **Áthelyezés kezdeményezése lehetőséget.**
+1. Az áthelyezés előrehaladását az értesítési sávon követheti nyomon.
 
-    - Virtuális gépek esetén a replika virtuális gépek a célként megadott régióban jönnek létre. A forrás virtuális gép le van állítva, és néhány állásidő (általában perc).
-    - Az erőforrás-mozgató újra létrehozza a többi erőforrást az előkészített ARM-sablonok használatával. Általában nincs leállás.
-    - Az erőforrások áthelyezése után a rendszer végrehajtja a *függőben lévő* véglegesített állapotot.
+    - Virtuális gépekhez a replika virtuális gépek a célterületen vannak létrehozva. A forrás virtuális gép leáll, és némi állásidő (általában percek) következik be.
+    - A Resource Mover az előkészített ARM-sablonok használatával hoz létre újra más erőforrásokat. Általában nincs állásidő.
+    - Miután áthelyezte az erőforrásokat, az állapotuk *Véglegesítés áthelyezés függőben állapotra változik.*
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" alt-text="Az a lap, amely egy véglegesített állapotba helyezi az erőforrásokat." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" :::
-
-
-## <a name="discard-or-commit"></a>Elveti vagy véglegesíti?
-
-A kezdeti áthelyezés után eldöntheti, hogy véglegesíteni kívánja-e az áthelyezést, vagy elveti azt. 
-
-- **Elvetés**: Ha teszteli a tesztet, elkerülheti az áthelyezést, és nem szeretné ténylegesen áthelyezni a forrás erőforrást. Az áthelyezés elvetése visszaadja az erőforrást a *függőben lévő áthelyezés indításának* állapotára.
-- **Véglegesítés**: a véglegesítés befejezi az áthelyezést a célként megadott régióba. A véglegesítést követően a forrás erőforrás a *delete Source függőben* állapotba kerül, és eldöntheti, hogy szeretné-e törölni.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" alt-text="Képernyőkép az erőforrások &quot;Áthelyezés véglegesítésének függőben&quot; állapotával való listájáról." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" :::
 
 
-## <a name="discard-the-move"></a>Áthelyezés elvetése 
+## <a name="discard-or-commit"></a>Elveti vagy véglegesítést ad vissza?
 
-Az áthelyezés a következőképpen törölhető:
+A kezdeti áthelyezés után eldöntheti, hogy véglegesítést vagy elveti az áthelyezést. 
 
-1. Az **egyes régiókban** válassza az állapot- *végrehajtási áthelyezés függőben* lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elvetése** lehetőségre.
-2. Az **Áthelyezés elvetése** területen kattintson az **Elvetés** gombra.
-3. Nyomon követheti a folyamat lépéseit az értesítések sávján.
+- **Elvetés:** Ha teszteli az áthelyezést, és nem szeretné ténylegesen áthelyezni a forráserőforrást, elvetheti az áthelyezést. Az áthelyezés elvetve az erőforrást *Függőben állapotú áthelyezés kezdeményezése állapotra adja* vissza.
+- **Véglegesítés:** A véglegesítés befejezi a célterületre való áthelyezést. Miután véglegeste a forráserőforrást, az állapota Delete *source pending*(Forrás törlése függőben) állapotra változik, és eldöntheti, hogy törölni szeretné-e.
 
 
-> [!NOTE]
-> Az erőforrások elvetése után a virtuális gépek egy *függőben lévő áthelyezési* állapotba kerülnek.
+## <a name="discard-the-move"></a>Az áthelyezés elvetve 
 
-## <a name="commit-the-move"></a>Az áthelyezés elkövetése
+Az áthelyezés elvethez tegye a következőket:
 
-Ha szeretné befejezni az áthelyezési folyamatot, véglegesítse az áthelyezést. 
+1. A Régiók **közötti panelen** jelölje ki azokat az erőforrásokat, amelyeknek az állapota *Commit move pending*(Áthelyezés véglegesítés függőben) állapotú, majd válassza **az Áthelyezés elvetása lehetőséget.**
+1. Az Áthelyezés **elvetése panelen** válassza az Elvetés **lehetőséget.**
+1. Az áthelyezés előrehaladását az értesítési sávon követheti nyomon.
 
-1. Az **egyes régiókban** válassza az állapot- *végrehajtási áthelyezés függőben* lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elkövetése** elemre.
-2. Az **erőforrások elkövetése** területen kattintson a **véglegesítés** elemre.
-
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" alt-text="A lap, amelybe erőforrásokat szeretne véglegesíteni." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" :::
-
-3. Nyomon követheti a végrehajtás előrehaladását az értesítések sávon.
 
 > [!NOTE]
-> - Az áthelyezés véglegesítése után a virtuális gépek replikációja leáll. A forrás virtuális gépet nem érinti a véglegesítés.
-> - A commit művelet nem befolyásolja a forrás hálózatkezelési erőforrásokat.
-> - Az áthelyezés véglegesítése után az erőforrások a *forrás törlés függőben* állapotban vannak.
+> Miután elvette az erőforrásokat, a virtuális gép állapota *Függőben állapotra változik Áthelyezés kezdeményezése függőben állapotra.*
+
+## <a name="commit-the-move"></a>Az áthelyezés véglegesítése
+
+Az áthelyezési folyamat befejezéséhez véglegesítést kell végrehajtania az alábbi műveletekkel: 
+
+1. A Régiók **közötti panelen** válassza ki azokat az erőforrásokat, amelyeknek az állapota *Commit move pending*(Áthelyezés véglegesítésre függőben) , majd válassza **a Commit move (Áthelyezés véglegesítése) lehetőséget.**
+1. Az Erőforrások **véglegesítése panelen** válassza a **Véglegesítés lehetőséget.**
+
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" alt-text="Képernyőkép azon erőforrások listájáról, amelyek véglegesítenie kell az erőforrásokat az áthelyezés véglegesítéshez." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" :::
+
+1. Kövesse nyomon a véglegesítési folyamat előrehaladását az értesítési sávon.
+
+> [!NOTE]
+> - Az áthelyezést követően a virtuális gépek replikálása leáll. A véglegesítés nem befolyásolja a forrás virtuális gépet.
+> - A véglegesítési folyamat nincs hatással a forráshálózati erőforrásokra.
+> - Miután véglegeste az áthelyezést, az erőforrás állapota a Forrás törlése *függőben állapotra változik.*
 
 
 
 ## <a name="configure-settings-after-the-move"></a>Beállítások konfigurálása az áthelyezés után
 
-- A mobilitási szolgáltatás nem lesz automatikusan eltávolítva a virtuális gépekről. Távolítsa el manuálisan, vagy hagyja meg, ha azt tervezi, hogy újra áthelyezi a kiszolgálót.
-- Módosítsa az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szabályait az áthelyezés után.
+- A mobilitási szolgáltatás nem törlődik automatikusan a virtuális gépekről. Távolítsa el manuálisan, vagy hagyja meg, ha azt tervezi, hogy újra áthelyezi a kiszolgálót.
+- Módosítsa az Azure szerepköralapú hozzáférés-vezérlési (RBAC-) szabályait az áthelyezés után.
 
-## <a name="delete-source-resources-after-commit"></a>Forrás erőforrásainak törlése a véglegesítés után
+## <a name="delete-source-resources-after-commit"></a>Forráserőforrások törlése véglegesítés után
 
-Az áthelyezést követően lehetőség van a forrás régió erőforrásainak törlésére is. 
+Az áthelyezés után igény szerint törölheti a forrás régióban található erőforrásokat. 
 
-1. A **régiók között** válassza ki a törölni kívánt forrás-erőforrásokat. Ezután válassza a **forrás törlése** lehetőséget.
-2. A **forrás törlése** lapon tekintse át, hogy mit szeretne törölni, és a **Törlés megerősítése** mezőbe írja be az **Igen értéket**. A művelet visszafordíthatatlan, ezért alaposan passzoljon.
-3. Az **Igen** érték beírása után válassza a **forrás törlése** lehetőséget.
+1. A Régiók **közötti panelen** jelölje ki a törölni kívánt forráserőforrásokat, majd válassza a **Forrás törlése lehetőséget.**
+1. A **Delete source (Forrás törlése)** mezőbe írja be a yes (igen) parancsot, majd a **Confirm delete**(Törlés megerősítése) mezőbe írja be a **következőt:**. A művelet nem visszafordítható, ezért gondosan ellenőrizze!
+1. Miután beírta a **yes (igen)** választ, válassza **a Delete source (Forrás törlése) lehetőséget.**
 
 > [!NOTE]
->  Az erőforrás-áthelyezési portálon nem törölhet erőforráscsoportok, kulcstartók vagy SQL Server-kiszolgálók. Ezeket egyenként kell törölnie az egyes erőforrások tulajdonságlapján.
+>  Az Erőforrás áthelyezése portálon nem törölhet erőforráscsoportokat, kulcstartókat vagy SQL Server példányokat. Mindegyiket külön-külön kell törölnie az egyes erőforrások tulajdonságok lapján.
 
 
-## <a name="delete-additional-resources-created-for-move"></a>Az áthelyezéshez létrehozott további erőforrások törlése
+## <a name="delete-resources-that-you-created-for-the-move"></a>Az áthelyezéshez létrehozott erőforrások törlése
 
-Az áthelyezést követően manuálisan törölheti az áthelyezési gyűjteményt, és Site Recovery a létrehozott erőforrásokat.
+Az áthelyezés után manuálisan törölheti az áthelyezési gyűjteményt, és Site Recovery a folyamat során létrehozott erőforrásokat.
 
-- Az áthelyezési gyűjtemény alapértelmezés szerint el van rejtve. Ha szeretné látni, be kell kapcsolnia a rejtett erőforrásokat.
-- A gyorsítótár-tárolónak olyan zárolása van, amelyet törölni kell, mielőtt törölni lehet.
+- Az áthelyezési gyűjtemény alapértelmezés szerint rejtett. Hogy lássa, be kell kapcsolnia a rejtett erőforrásokat.
+- A gyorsítótár tárolója rendelkezik egy zárolással, amely a törlés előtt törölhető.
 
-A következőképpen törölheti: 
-1. Keresse meg az erőforrásokat az erőforráscsoporthoz ```RegionMoveRG-<sourceregion>-<target-region>``` .
-2. Győződjön meg arról, hogy a forrás régióban lévő összes virtuális gép és más forrás erőforrás át lett helyezve vagy törölve lett. Ezzel biztosíthatja, hogy ne legyenek használatban függő erőforrások.
-2. Erőforrások törlése:
+Az erőforrások törléséhez tegye a következőket: 
+1. Keresse meg az erőforrásokat az ```RegionMoveRG-<sourceregion>-<target-region>``` erőforráscsoportban.
+1. Ellenőrizze, hogy a forrás régióban található összes virtuális gép és egyéb forráserőforrás át lett-e helyezték vagy törölték-e. Ez a lépés biztosítja, hogy ne használja őket függőben lévő erőforrások.
+1. Törölje az erőforrásokat:
 
-    - Az áthelyezési gyűjtemény neve: ```movecollection-<sourceregion>-<target-region>``` .
-    - A cache Storage-fiók neve ```resmovecache<guid>```
-    - A tár neve: ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
+    - Gyűjtemény nevének áthelyezése: ```movecollection-<sourceregion>-<target-region>```
+    - Gyorsítótár-tárfiók neve: ```resmovecache<guid>```
+    - Tároló neve: ```ResourceMove-<sourceregion>-<target-region>-GUID```
 ## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
@@ -399,7 +406,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Titkosított Azure-beli virtuális gépeket és azok függő erőforrásait áthelyezte egy másik Azure-régióba.
 
 
-Az Azure SQL Database-adatbázisok és a rugalmas készletek másik régióba való áthelyezésének kipróbálása folyamatban van.
+Következő lépésként próbáljon meg adatbázisokat Azure SQL és rugalmas készleteket egy másik régióba.
 
 > [!div class="nextstepaction"]
-> [Azure SQL-erőforrások áthelyezése](./tutorial-move-region-sql.md)
+> [Erőforrások Azure SQL áthelyezése](./tutorial-move-region-sql.md)

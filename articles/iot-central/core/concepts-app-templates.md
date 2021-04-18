@@ -1,62 +1,58 @@
 ---
-title: Mik az Azure-IoT Centralban található alkalmazások sablonjai | Microsoft Docs
-description: Az Azure IoT Central alkalmazás-sablonok lehetővé teszik, hogy beugorjon a IoT megoldás-fejlesztésbe.
-author: philmea
-ms.author: philmea
+title: Mik azok az alkalmazássablonok a Azure IoT Central | Microsoft Docs
+description: Azure IoT Central az alkalmazássablonokkal az IoT-megoldásfejlesztésbe ugorhat.
+author: ankitscribbles
+ms.author: ankitgup
 ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8309a567436d1526c1341f3d7db774acf4879dc2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797128"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600619"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
-Az Azure IoT Central alkalmazás-sablonjai segítenek a megoldás-építők számára a IoT-megoldás fejlesztésében. Az alkalmazás-sablonokkal mindent megtalálhat, hogy a lehető legtöbbet tudja, teljes mértékben testre szabhatja, és az alkalmazást értékesítheti ügyfelei számára.
+Az alkalmazássablonok Azure IoT Central eszköz, amely segít a megoldáskészítőknek az IoT-megoldásfejlesztésük első útjára. Az alkalmazássablonokat a lehetőségek teljes körű testreszabásán és az ügyfeleknek való újraeladáson át átveheti, és mindenhez használhatja az alkalmazássablonokat.
 
-Az alkalmazás sablonjai a következőkből állnak:
+Az alkalmazássablonok a következőkből állnak:
 
-- Minta operátor irányítópultok
-- Mintául szolgáló eszközök sablonjai
-- Valós idejű adatfeldolgozást biztosító szimulált eszközök
+- Minta operátori irányítópultok
+- Eszközsablonok mintája
+- Valós idejű adatokat előállító szimulált eszközök
 - Előre konfigurált szabályok és feladatok
-- Részletes dokumentáció, beleértve az oktatóanyagokat és a TOS
+- Részletes dokumentáció, beleértve az oktatóanyagokat és az útmutatókat
 
-Az alkalmazás létrehozásakor kiválaszthatja az alkalmazás sablonját. Az alkalmazás létrehozása után a sablon nem módosítható.
+Az alkalmazás létrehozásakor kiválaszthatja az alkalmazássablont. Az alkalmazás létrehozása után nem módosíthatja a sablont.
 
 ## <a name="custom-templates"></a>Egyéni sablonok
 
-Ha létre szeretné hozni az alkalmazást a semmiből, válassza az egyik **egyéni alkalmazás** sablont.
+Ha az alkalmazást az nulláról szeretné létrehozni, válasszon egyet az Egyéni **alkalmazássablonok** közül.
 
-## <a name="industry-focused-templates"></a>Iparági fókuszált sablonok
+## <a name="industry-focused-templates"></a>Iparág-központú sablonok
 
-Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalmazás-sablonok olyan iparági fókuszált példák, amelyek manapság elérhetők a jövőben:
+Azure IoT Central egy iparágfüggetlen alkalmazásplatform. Az alkalmazássablonok iparág-központú példák, amelyek jelenleg ezen iparágak számára érhetők el, és a jövőben többre is lesz majd lehetőség:
 
 - [Retail](../retail/overview-iot-central-retail.md)
   - Összekapcsolt logisztika
   - Digitális terjesztési központ
-  - Tárolt elemzési állapot figyelése
-  - Tárolt elemzések – pénztár
-  - Intelligens leltár kezelése
+  - Áruházbeli elemzés – feltételfigyelés
+  - Áruházbeli elemzés – kijelentkezés
+  - Intelligens leltárkezelés
   - Videóelemzés – objektum- és mozgásérzékelés
-- [Energiafogyasztás](../energy/overview-iot-central-energy.md)
-  - Intelligens fogyasztásmérő figyelése
-  - Napelemek figyelése
+- [Energia](../energy/overview-iot-central-energy.md)
+  - Intelligens fogyasztásmérő monitorozása
+  - Napelempanel monitorozása
 - [Államigazgatás](../government/overview-iot-central-government.md)
-  - Csatlakoztatott hulladékgazdálkodás
-  - A víz felhasználásának figyelése
-  - A víz minőségének monitorozása
-- [Egészségügyi ellátás](../healthcare/overview-iot-central-healthcare.md).
-  - Folyamatos beteg monitorozása
-
-## <a name="application-versions"></a>Alkalmazás-verziók
-
-A sablonok adott IoT Central alkalmazás-verziókhoz vannak társítva. Az alkalmazások verzióját az alkalmazás [névjegye](./howto-get-app-info.md) oldalon találja a **Súgó** hivatkozásra kattintva.
+  - Összekapcsolt szemétkezelés
+  - Vízfogyasztás monitorozása
+  - Vízminőség monitorozása
+- [Healthcare .](../healthcare/overview-iot-central-healthcare.md)
+  - Folyamatos betegfigyelés
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy tudja, mi IoT Central alkalmazás-sablonok, első lépésként [hozzon létre egy IoT Central alkalmazást](quick-deploy-iot-central.md).
+Most, hogy már tudja, IoT Central mik az alkalmazássablonok, első lépésekként hozzon létre [egy IoT Central alkalmazást.](quick-deploy-iot-central.md)

@@ -13,7 +13,7 @@
           href: add-publishers.md
         - name: Saját fiók kezelése
           href: manage-account.md
-        - name: Fiókok váltása
+        - name: Fiókváltás
           href: switch-accounts.md
         - name: Bérlők kezelése
           href: manage-tenants.md
@@ -27,7 +27,7 @@
       items:
         - name: Felhasználók hozzáadása és kezelése
           href: add-manage-users.md
-        - name: Felhasználói szerepkörök kiosztása
+        - name: Felhasználói szerepkörök hozzárendelése
           href: user-roles.md
         - name: Csoportok kezelése
           href: manage-groups.md
@@ -37,7 +37,7 @@
   items:
     - name: Terméklistázási lehetőségek
       href: determine-your-listing-type.md
-    - name: Transact-képességek
+    - name: Tranzakciós képességek
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Személyes ajánlatok
       href: private-offers.md
@@ -61,7 +61,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Az Azure-előfizetés beállítása szolgáltatott tesztverziókhoz
           href: test-drive-azure-subscription-setup.md
-    - name: Azure Customer használati jóváírás
+    - name: Az Azure-ügyfelek használatának forrásmegjelölése
       href: azure-partner-customer-usage-attribution.md
     - name: Piaci bevezetési beállítások
       items:
@@ -70,13 +70,13 @@
           items: null
         - name: Együttes értékesítés a Microsofttal
           items:
-            - name: Közös értékesítés – áttekintés
+            - name: Az együtt értékesítés áttekintése
               href: co-sell-overview.md
-            - name: Közös értékesítésre vonatkozó követelmények
+            - name: Közös értékesítés követelményei
               href: co-sell-requirements.md
-            - name: Közös értékesítés konfigurálása
+            - name: Az együtt értékesítés konfigurálása
               href: co-sell-configure.md
-            - name: A közös értékesítés állapotának ellenőrzése
+            - name: Az együtt értékesítés állapotának ellenőrzése
               href: co-sell-status.md
             - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
               href: co-sell-solution-migration.md
@@ -228,7 +228,7 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: IoT Edge-modulok technikai eszközeinek előkészítése
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Előzetes tanúsítási ellenőrzőlista
+        - name: Előtanúsítási ellenőrzőlista
           href: iot-edge-checklist.md
     - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
       items:
@@ -276,11 +276,11 @@
               href: create-new-saas-offer-technical.md
             - name: Csomagok létrehozása
               href: create-new-saas-offer-plans.md
-            - name: Tesztelési ajánlat létrehozása
+            - name: Tesztajánlat létrehozása
               href: create-saas-dev-test-offer.md
             - name: SaaS-ajánlat tesztelése és közzététele
               href: test-publish-saas-offer.md
-        - name: Az SaaS-ajánlat értékesítése
+        - name: SaaS-ajánlat eladása
           href: create-new-saas-offer-marketing.md
     - name: Ajánlatok felülvizsgálata és közzététele
       href: review-publish-offer.md
@@ -328,15 +328,15 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Értékelések és vélemények irányítópult
       href: partner-center-portal/ratings-reviews.md
-    - name: Programozott hozzáférés az elemzésekhez
+    - name: Programozott hozzáférés az elemzéshez
       items:
         - name: Bevezetés
           href: analytics-get-started.md
-        - name: Programozott hozzáférési előfeltételek
+        - name: Programozott hozzáférés előfeltételei
           href: analytics-prerequisites.md
-        - name: Programozott hozzáférés paradigma
+        - name: Programozott hozzáférési paradigma
           href: analytics-programmatic-access.md
-        - name: Az első API-hívás készítése
+        - name: Az első API-hívás hívása
           href: analytics-make-your-first-api-call.md
         - name: Rendszerlekérdezések listája
           href: analytics-system-queries.md
@@ -346,31 +346,31 @@
           href: analytics-sample-application.md
         - name: Egyéni lekérdezési specifikáció
           href: analytics-custom-query-specification.md
-        - name: Programozási elemzés – gyakori kérdések
+        - name: Programozott elemzés – gyakori kérdések
           href: analytics-programmatic-faq.md
-        - name: Elemzési API-referenciák
+        - name: Analytics API-referencia
           items:
             - name: API-k listája
               href: analytics-available-apis.md
-            - name: Az összes adatkészlet lekérése
+            - name: Az összes adatkészlet lekérte
               href: analytics-api-get-all-datasets.md
-            - name: Jelentési lekérdezési API beolvasása
+            - name: Jelentéslekérdezések API-jának le kérése
               href: analytics-api-get-report-queries.md
-            - name: Jelentés lekérdezési API törlése
+            - name: Jelentéslekérdezések törlése API
               href: analytics-api-delete-report-queries.md
-            - name: A Report lekérdezési API kipróbálása
+            - name: A jelentéslekérdezések API-jának kipróbálja
               href: analytics-api-try-report-queries.md
-            - name: Jelentés API beolvasása
+            - name: A jelentés API-jának lekérte
               href: analytics-api-get-report.md
-            - name: A jelentés API frissítése
+            - name: Jelentési API frissítése
               href: analytics-api-update-report.md
-            - name: Jelentés API törlése
+            - name: Jelentési API törlése
               href: analytics-api-delete-report.md
-            - name: Jelentések végrehajtásának szüneteltetése API
+            - name: Jelentés-végrehajtási API szüneteltetése
               href: analytics-api-pause-report-executions.md
-            - name: Jelentések végrehajtásának folytatása API
+            - name: Jelentés-végrehajtások folytatása API
               href: analytics-api-resume-report-executions.md
-    - name: Mért számlázási rendellenességek kezelése
+    - name: Forgalmi díjas számlázási anomáliák kezelése
       href: anomaly-detection.md
     - name: Gyakori kérdések az elemzésről
       href: analytics-faq.md
@@ -384,6 +384,10 @@
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Az Azure Marketplace használati feltételei
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Microsoft közzétevői megállapodás
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: A Microsoft Publisher-szerződés módosítási előzményei
+      href: /legal/marketplace/mpa-change-history
 - name: Referencia
   items:
     - name: CPP API-referencia
@@ -466,7 +470,7 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Együttes értékesítés államkódjai
       href: commercial-marketplace-co-sell-states.md
-    - name: Hivatkozási architektúra diagramja
+    - name: Referenciaarchitektúra ábrája
       href: reference-architecture-diagram.md
     - name: Kategóriák és alkategóriák
       href: categories.md

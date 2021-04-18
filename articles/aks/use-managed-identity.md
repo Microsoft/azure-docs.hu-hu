@@ -1,57 +1,57 @@
 ---
-title: Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
-description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azure Kubernetes szolgáltatásban (ak)
+title: Felügyelt identitások használata a Azure Kubernetes Service
+description: Megtudhatja, hogyan használhatja a felügyelt identitásokat Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 58813504c5de057e06433b2e955931b37560d825
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176093"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600658"
 ---
-# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata a Azure Kubernetes Service
 
-Jelenleg egy Azure Kubernetes Service (ak) fürt (konkrétan a Kubernetes Cloud Provider) identitást igényel további erőforrások, például terheléselosztó és felügyelt lemezek létrehozásához az Azure-ban. Ez az identitás *felügyelt identitás* vagy *egyszerű szolgáltatásnév* lehet. Ha [szolgáltatásnevet](kubernetes-service-principal.md)használ, meg kell adnia egy vagy AK-t az Ön nevében. Ha felügyelt identitást használ, a rendszer automatikusan létrehozza ezt. Az egyszerű szolgáltatásokat használó fürtök végül olyan állapotot érnek el, amelyben az egyszerű szolgáltatásnevet meg kell újítani a fürt működésének megtartása érdekében. Az egyszerű szolgáltatások kezelése bonyolultságot biztosít, ezért a felügyelt identitások könnyebben használhatók. Ugyanezek az engedélyezési követelmények érvényesek az egyszerű szolgáltatásokra és a felügyelt identitásokra is.
+Jelenleg az Azure Kubernetes Service -fürtöknek (különösen a Kubernetes-felhőszolgáltatónak) identitásra van szüksége további erőforrások, például terheléselosztások és felügyelt lemezek létrehozásához az Azure-ban. Ez az identitás lehet felügyelt *identitás vagy* *szolgáltatásnév.* Ha egyszerű szolgáltatást [használ,](kubernetes-service-principal.md)meg kell adnia egyet, vagy az AKS létrehoz egyet az Ön nevében. Ha felügyelt identitást használ, azt az AKS automatikusan létre fogja hozni. A szolgáltatásnévvel működő fürtök végül olyan állapotba jutnak, amelyben meg kell újítani őket a fürt megfelelő állapotának eléréséhez. A szolgáltatásnév kezelése összetettebbé teszi a szolgáltatást, ezért egyszerűbb a felügyelt identitások használata. Ugyanezek az engedélykövetelmények vonatkoznak a szolgáltatásnévre és a felügyelt identitásra is.
 
-A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. A hitelesítő adatok elforgatása az Azure Active Directory alapértelmezett értékének megfelelően automatikusan megtörténik a 46 naponta. Az AK rendszerhez hozzárendelt és felhasználó által hozzárendelt felügyelt identitási típusokat használ. Ezek az identitások jelenleg nem változtathatók meg. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](../active-directory/managed-identities-azure-resources/overview.md)ismertető témakört.
+*A felügyelt identitások* lényegében a szolgáltatásnév burkolói, és egyszerűbbé teszik a felügyeletüket. A MI hitelesítő adatainak rotációja 46 naponta automatikusan megtörténik az Azure Active Directory szerint. Az AKS rendszer által hozzárendelt és felhasználó által hozzárendelt felügyelt identitástípusokat is használ. Ezek az identitások jelenleg nem módosíthatók. További tudnivalókért olvassa el az [Azure-erőforrások felügyelt identitásokkal kapcsolatos cikkét.](../active-directory/managed-identities-azure-resources/overview.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A következő erőforrást kell telepítenie:
+A következő erőforrásnak kell telepítve lennie:
 
-- Az Azure CLI, 2.15.1 vagy újabb verzió
+- Az Azure CLI 2.15.1-es vagy újabb verziója
 
 ## <a name="limitations"></a>Korlátozások
 
-* A felügyelt identitást engedélyező fürtök áthelyezési/áttelepíti a bérlők nem támogatottak.
-* Ha a fürt `aad-pod-identity` engedélyezve van, Node-Managed Identity (NMI) hüvely módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
-  Kivétel konfigurálásához telepítse a [MIC-Exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+* A felügyelt identitással kompatibilis fürtök bérlői áthelyezése/áttelepítése nem támogatott.
+* Ha a fürt engedélyezve `aad-pod-identity` van, Node-Managed Identity- (NMI-) podok úgy módosítják a csomópontok iptable-it, hogy elfogják az Azure Instance Metadata végpontra való hívásokat. Ez a konfiguráció azt jelenti, hogy az NMI elfogja a metaadat-végpontra vonatkozó kéréseket, még akkor is, ha a pod nem használja a `aad-pod-identity` et. Az AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa arról, hogy a CRD-ben meghatározott címkéknek megfelelő podból származó metaadat-végpontra vonatkozó kéréseket az NMI-ben történő feldolgozás nélkül kell proxyra `aad-pod-identity` állítani. A kube-system névtérben címkével jelölt rendszerpodokat ki kell zárni a fájlból az `kubernetes.azure.com/managedby: aks`  `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [Disable aad-pod-identity for a specific pod or application (Aad-pod-identitás letiltása adott podhoz vagy alkalmazáshoz).](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)
+  Kivétel konfiguráláshoz telepítse a [mic-exception YAML-t.](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)
 
 ## <a name="summary-of-managed-identities"></a>Felügyelt identitások összefoglalása
 
-Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
+Az AKS számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitással
 |----------------------------|-----------|----------|
-| Vezérlősík | nem látható | Az AK-vezérlési sík összetevői használják a fürt erőforrásainak kezelésére, beleértve a bejövő terheléselosztást és az AK által felügyelt nyilvános IP-címeket, valamint a fürt automatikus méretezési műveleteit | A csomópont-erőforráscsoport közreműködői szerepköre | támogatott
-| Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott
-| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | No
-| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | No
-| Bővítmény | Azure-Policy (forgalomirányító) | Nincs szükség identitásra | NA | No
-| Bővítmény | Azure-szabályzat | Nincs szükség identitásra | NA | No
-| Bővítmény | Calico | Nincs szükség identitásra | NA | No
-| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | No
-| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | No
-| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | No
-| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | No
-| Bővítmény | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | No
-| OSS-projekt | HRE-Pod-Identity | Lehetővé teszi az alkalmazások számára a felhőalapú erőforrások biztonságos elérését Azure Active Directory (HRE) használatával | NA | Az engedélyek megadásának lépései https://github.com/Azure/aad-pod-identity#role-assignment .
+| Vezérlősík | nem látható | Az AKS-vezérlősík összetevői használják a fürterőforrások kezelésére, beleértve a bejövő terheléselosztásokat és az AKS által felügyelt nyilvános IP-eket, valamint az automatikus fürtméretezői műveleteket | Közreműködői szerepkör a Node-erőforráscsoporthoz | támogatott
+| Kubelet | AKS-fürt név-ügynökkészlete | Hitelesítés Azure Container Registry (ACR) használatával | NA (kubernetes v1.15+) | Egyelőre nem támogatott
+| Összead | AzureNPM | Nincs szükség identitásra | NA | No
+| Összead | AzureCNI hálózatfigyelés | Nincs szükség identitásra | NA | No
+| Összead | azure-policy (gatekeeper) | Nincs szükség identitásra | NA | No
+| Összead | azure-policy | Nincs szükség identitásra | NA | No
+| Összead | Calico | Nincs szükség identitásra | NA | No
+| Összead | Irányítópult | Nincs szükség identitásra | NA | No
+| Összead | HTTPApplicationRouting | A szükséges hálózati erőforrásokat kezeli | Olvasó szerepkör a csomópont-erőforráscsoporthoz, közreműködői szerepkör a DNS-zónához | No
+| Összead | Bejövő forgalom alkalmazásátjárója | A szükséges hálózati erőforrásokat kezeli| Közreműködői szerepkör a csomópont-erőforráscsoporthoz | No
+| Összead | omsagent | AKS-metrikák elküldését Azure Monitor | Monitorozási metrikák közzétevője szerepkör | No
+| Összead | Virtual-Node (ACIConnector) | Felügyeli a hálózati erőforrásokat az Azure Container Instances (ACI) számára | Közreműködői szerepkör a csomópont-erőforráscsoporthoz | No
+| OSS-projekt | aad-pod-identity | Lehetővé teszi, hogy az alkalmazások biztonságosan hozzáférjenek a felhőbeli erőforrásokhoz Azure Active Directory (AAD) használatával | NA | Az engedély megadásának lépései a következőnél: https://github.com/Azure/aad-pod-identity#role-assignment .
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal
+## <a name="create-an-aks-cluster-with-managed-identities"></a>AKS-fürt létrehozása felügyelt identitásokkal
 
-Most már létrehozhat egy AK-fürtöt a felügyelt identitásokkal a következő CLI-parancsok használatával.
+Most már létrehozhat felügyelt identitásokkal egy AKS-fürtöt az alábbi CLI-parancsokkal.
 
 Először hozzon létre egy Azure-erőforráscsoportot:
 
@@ -60,93 +60,102 @@ Először hozzon létre egy Azure-erőforráscsoportot:
 az group create --name myResourceGroup --location westus2
 ```
 
-Ezután hozzon létre egy AK-fürtöt:
+Ezután hozzon létre egy AKS-fürtöt:
 
 ```azurecli-interactive
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-A felügyelt identitásokat használó sikeres fürtök az egyszerű szolgáltatás profiljának adatait tartalmazzák:
+A fürt létrehozása után üzembe helyezheti az alkalmazás számítási feladatait az új fürtön, és úgy használhatja azt, mint a szolgáltatásnév-alapú AKS-fürtök esetében.
 
-```output
-"servicePrincipalProfile": {
-    "clientId": "msi"
-  }
-```
-
-Az alábbi paranccsal lekérdezheti a vezérlési sík felügyelt identitásának ObjectId:
-
-```azurecli-interactive
-az aks show -g myResourceGroup -n myManagedCluster --query "identity"
-```
-
-Az eredménynek a következőhöz hasonlóan kell kinéznie:
-
-```output
-{
-  "principalId": "<object_id>",   
-  "tenantId": "<tenant_id>",      
-  "type": "SystemAssigned"                                 
-}
-```
-
-Miután létrehozta a fürtöt, az alkalmazás számítási feladatait telepítheti az új fürtre, és ugyanúgy kezelheti azt, mint a Service-Principal-alapú AK-fürtökkel.
-
-> [!NOTE]
-> Saját VNet, statikus IP-cím vagy csatolt Azure-lemez létrehozásához és használatához, ahol az erőforrások a munkavégző csomópont-erőforráscsoporton kívül esnek, a szerepkör-hozzárendelés végrehajtásához használja a fürthöz rendelt felügyelt identitás PrincipalID. A szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [hozzáférés delegálása más Azure-erőforrásokhoz](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
->
-> Az engedélyek az Azure Cloud Provider által használt fürtözött felügyelt identitáshoz való jogosultsága akár 60 percet is igénybe vehet.
-
-Végül kapjon hitelesítő adatokat a fürt eléréséhez:
+Végül szerezze be a fürt eléréséhez szükséges hitelesítő adatokat:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AK-fürt frissítése felügyelt identitásokra (előzetes verzió)
 
-Most már frissítheti az egyszerű szolgáltatásnév használatával működő AK-fürtöt a felügyelt identitásokkal való együttműködéshez a következő CLI-parancsokkal.
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS-fürt frissítése felügyelt identitásra (előzetes verzió)
 
-Először regisztrálja a szolgáltatás jelölőjét a rendszer által hozzárendelt identitáshoz:
+A szolgáltatásnévvel jelenleg működő AKS-fürtök mostantól a következő PARANCSSORi felületi parancsokkal frissítve kezelhetők a felügyelt identitásokkal.
+
+Először regisztrálja a funkciójelölőt a rendszer által hozzárendelt identitáshoz:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
 ```
 
-A rendszer által hozzárendelt identitás frissítése:
+Frissítse a rendszer által hozzárendelt identitást:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Regisztrálja a szolgáltatás jelölőjét a felhasználó által hozzárendelt identitáshoz:
+Regisztrálja a funkciójelölőt a felhasználó által hozzárendelt identitáshoz:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
 ```
 
-A felhasználó által hozzárendelt identitás frissítése:
+Frissítse a felhasználó által hozzárendelt identitást:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitásokat frissítette a felügyelt identitásra, hajtson végre egy műveletet a `az aks nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
+> Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitások felügyelt identitásra frissültek, hajtson végre egy műveletet a csomópontokon a felügyelt identitás `az aks nodepool upgrade --node-image-only` frissítésének befejezéséhez.
 
-## <a name="bring-your-own-control-plane-mi"></a>Saját vezérlő síkja
-Az egyéni vezérlő sík identitása lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítson a meglévő identitáshoz. Ez a funkció olyan forgatókönyveket tesz lehetővé, mint például az egyéni VNET vagy a UDR outboundType egy előre létrehozott felügyelt identitás használatával.
+## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>A rendszer által hozzárendelt felügyelt identitás beszerzése és használata az AKS-fürthöz
 
-Telepítenie kell az Azure CLI, a 2.15.1 vagy a újabb verzióját.
+Az alábbi CLI-paranccsal ellenőrizze, hogy az AKS-fürt felügyelt identitást használ-e:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "servicePrincipalProfile"
+```
+
+Ha a fürt felügyelt identitásokat használ, az `clientId` "msi" értéket fogja látni. A szolgáltatásnévvel használt fürtök ehelyett az objektumazonosítót fogják mutatni. Például: 
+
+```output
+{
+  "clientId": "msi"
+}
+```
+
+Miután ellenőrizte, hogy a fürt felügyelt identitásokat használ-e, a vezérlősík rendszer által hozzárendelt identitásának objektumazonosítóját a következő paranccsal találhatja meg:
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "identity"
+```
+
+```output
+{
+    "principalId": "<object-id>",
+    "tenantId": "<tenant-id>",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+},
+```
+
+> [!NOTE]
+> Saját virtuális hálózat, statikus IP-cím vagy csatlakoztatott Azure-lemez létrehozásához és használatához, ahol az erőforrások a munkavégző csomópont erőforráscsoportján kívül esnek, használja a fürt Rendszer által hozzárendelt felügyelt identitás PrincipalID azonosítóját a szerepkör-hozzárendelés végrehajtásához. További információ a szerepkör-hozzárendelésről: [Más Azure-erőforrásokhoz való hozzáférés delegálása.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
+>
+> Az Azure-felhőszolgáltató által használt fürt felügyelt identitásának engedélyengedélyeinek feltöltése akár 60 percet is igénybe vehet.
+
+
+## <a name="bring-your-own-control-plane-mi"></a>Saját vezérlősík mi-hez
+Az egyéni vezérlősík-identitás lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítsunk a meglévő identitáshoz. Ez a funkció olyan forgatókönyveket tesz lehetővé, mint például egyéni VNET vagy UDR outboundType használata előre létrehozott felügyelt identitással.
+
+Telepítve kell lennie az Azure CLI 2.15.1-es vagy újabb verziójának.
 
 ### <a name="limitations"></a>Korlátozások
-* A Azure Government jelenleg nem támogatott.
-* Az Azure China 21Vianet jelenleg nem támogatott.
+* Azure Government jelenleg nem támogatott.
+* Azure China 21Vianet jelenleg nem támogatott.
 
-Ha még nem rendelkezik felügyelt identitással, folytassa a következő lépéssel, és hozzon létre egyet például az [az Identity CLI][az-identity-create]használatával.
+Ha még nincs felügyelt identitása, hozzon létre egyet például az [az identity CLI használatával.][az-identity-create]
 
 ```azurecli-interactive
 az identity create --name myIdentity --resource-group myResourceGroup
 ```
-Az eredménynek a következőhöz hasonlóan kell kinéznie:
+Az eredménynek így kell kinéznie:
 
 ```output
 {                                                                                                                                                                                 
@@ -163,13 +172,13 @@ Az eredménynek a következőhöz hasonlóan kell kinéznie:
 }
 ```
 
-Ha a felügyelt identitás része az előfizetésnek, akkor az [az Identity CLI paranccsal][az-identity-list] kérdezheti le.  
+Ha a felügyelt identitás az előfizetés része, az [az identity CLI-paranccsal][az-identity-list] lekérdezheti.  
 
 ```azurecli-interactive
 az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
 ```
 
-Most a következő paranccsal hozhatja létre a fürtöt a meglévő identitásával:
+Most már használhatja a következő parancsot a fürt meglévő identitással való létrehozásához:
 
 ```azurecli-interactive
 az aks create \
@@ -184,7 +193,7 @@ az aks create \
     --assign-identity <identity-id> \
 ```
 
-A saját felügyelt identitások használatával történő sikeres fürtök a userAssignedIdentities-profil adatait tartalmazzák:
+A saját felügyelt identitásait használó sikeres fürtlétrehozás tartalmazza a userAssignedIdentities profiladatokat:
 
 ```output
  "identity": {
@@ -201,7 +210,7 @@ A saját felügyelt identitások használatával történő sikeres fürtök a u
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat ][aks-arm-template] .
+* Felügyelt [identitást Azure Resource Manager (ARM)-sablonokkal ][aks-arm-template] hozhat létre.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

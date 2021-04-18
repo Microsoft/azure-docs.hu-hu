@@ -1,6 +1,6 @@
 ---
-title: Teljes körű tartalomvédelem az Azure AD-vel
-description: Ez a cikk bemutatja, hogyan védhető meg a tartalma Azure Media Services és Azure Active Directory
+title: Végpontok között található tartalomvédelem az Azure AD használatával
+description: Ez a cikk bemutatja, hogyan védheti meg a tartalmakat Azure Media Services és Azure Active Directory
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -13,127 +13,127 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 16e45d8d64bbe30c6fde88f7226db807f1a325d7
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9c81a9b48ff9fa305385c45266d88deb4047f70f
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276926"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599485"
 ---
-# <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
+# <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: Végpontok között tartalomvédelem az Azure AD használatával
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ebben az oktatóanyagban és a megadott Player-mintában a Azure Media Services (AMS) és a Azure Active Directory (HRE) teljes körű Media Content Protection-alrendszert állíthat be, hogy az összes AMS támogatott DRM/AES-128, Streaming Protocol, codec és Container formátummal továbbítsa a médiatartalmakat. A minta elég általános ahhoz, hogy biztonságos hozzáférést biztosítson a 2. OAuth által védett REST APIhoz a Code Exchange (PKCE) igazolási kulcsával. (Azure Media Services a licenc kézbesítési szolgáltatása csupán egyike.) Emellett Microsoft Graph API-val vagy bármely, a 2. OAuth-engedélyezési kóddal védett, egyéni fejlesztésű REST API is működik. Ez a [mintakód](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)kísérő dokumentuma.
+Ebben az oktatóanyagban és a biztosított lejátszómintában teljes médiatartalom-védelmi alrendszert állíthat be az Azure Media Services (AMS) és az Azure Active Directory (AAD) szolgáltatásban, hogy médiatartalmakat streamelje az AMS által támogatott DRM/AES-128, streamelési protokollok, kodek és tárolóformátumok használatával. A minta elég általános ahhoz, hogy biztonságos hozzáférést biztosítsunk az OAuth 2 által védett bármely REST API a Kódcsere (PKCE) hitelesítési kódfolyamán keresztül. (Azure Media Services szolgáltatás csak egy ilyen szolgáltatás.) Emellett a Microsoft Graph API-val vagy az OAuth 2 engedélyezési kódfolyamával REST API fejlesztett egyéni szolgáltatásokkal is működik. Ez a mintakód [társdokumentuma.](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)
 
 Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 >
-> * Tekintse át a hitelesítési követelményeket
-> * Az alkalmazás működésének megismerése
+> * Vegye figyelembe a hitelesítési követelményeket
+> * Az alkalmazás működése
 > * Háttérbeli erőforrás-alkalmazás regisztrálása
 > * Ügyfélalkalmazás regisztrálása
-> * A Media Services-fiók tartalmi kulcs-házirendjének és folyamatos átviteli házirendjeinek beállítása
-> * A Player alkalmazás beállítása
+> * A Media Services-fiók tartalomkulcs-szabályzatának és streamelési szabályzatának beállítása
+> * A lejátszóalkalmazás beállítása
 
-Ha nem rendelkezik Azure Media Services-előfizetéssel, hozzon létre egy ingyenes Azure- [próbaverziós fiókot](https://azure.microsoft.com/free/) , majd hozzon létre egy Media Services fiókot.
+Ha nem rendelkezik előfizetéssel Azure Media Services hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) Azure-próbafiókot, majd hozzon létre egy Media Services fiókot.
 
 ### <a name="duration"></a>Időtartam
-Az oktatóanyagnak körülbelül két órát kell elvégeznie ahhoz, hogy az előfeltételként szükséges technológia azonnal elérhető legyen.
+Az oktatóanyag befejezése körülbelül két órát vehet igénybe, miután az előfeltételként szükséges technológia használatra kész.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rendszer a következő legújabb technológiai verziókat és fogalmakat használja. Javasoljuk, hogy ismerkedjen meg velük az oktatóanyag megkezdése előtt.
+Az alábbi technológiai verziókat és fogalmakat használjuk. Javasoljuk, hogy az oktatóanyag megkezdése előtt ismerkedjen meg velük.
 
 ### <a name="prerequisite-knowledge"></a>Ismeretekre vonatkozó előfeltételek
 
-Nem kötelező, de javasoljuk, hogy Ismerje meg a következő fogalmakat az oktatóanyag megkezdése előtt:
+Az oktatóanyag megkezdése előtt nem kötelező, de ajánlott, hogy tisztában van az alábbi fogalmakkal:
 
-* Digitális Rights Management (DRM)
+* Digital Rights Management (DRM)
 * [Azure Media Services (AMS) v3](./media-services-overview.md)
-* A [tartalmi kulcsokra vonatkozó HÁZIRENDEK](drm-content-key-policy-concept.md) AMS API v3, Azure Portal vagy a [Azure Media Services Explorer (AMSE) eszköz](https://github.com/Azure/Azure-Media-Services-Explorer) használatával
-* Azure AD v2-végpontok a [Microsoft Identity platformon](../../active-directory/develop/index.yml)
-* Modern felhőalapú hitelesítés, például [OAuth 2,0 és OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
-  * [Engedélyezési kód flow a OAuth 2,0-ben](../../active-directory/develop/v2-oauth2-auth-code-flow.md) és miért szükséges a PKCE
-  * [Delegált engedély vs alkalmazás engedélye](../../active-directory/develop/developer-glossary.md#permissions)
-* [JWT-jogkivonat](../../active-directory/develop/access-tokens.md), jogcímek és az aláíró kulcsok átállítása (a mintában szerepel)
+* AMS [tartalomkulcs-szabályzatok](drm-content-key-policy-concept.md) az AMS API 3-as, Azure Portal- vagy [Azure Media Services Explorer (AMSE) eszköz használatával](https://github.com/Azure/Azure-Media-Services-Explorer)
+* Azure AD v2-végpontok a [Microsoft Identity Platformon](../../active-directory/develop/index.yml)
+* Modern felhőalapú hitelesítés, például [OAuth 2.0 és OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
+  * [Engedélyezési kódfolyam az OAuth 2.0-ban és](../../active-directory/develop/v2-oauth2-auth-code-flow.md) A PKCE-hez miért van szükség
+  * [Delegált engedély és alkalmazásengedély](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT-jogkivonat,](../../active-directory/develop/access-tokens.md)jogcímek és aláírókulcs-visszaállítás (a mintában szerepel)
 
 ### <a name="prerequisite-code-and-installations"></a>Előfeltételként szükséges kód és telepítések
 
-* A mintakód. A [mintakód](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)letöltése.
-* A Visual Studio Code telepítése. Töltse le itt a Visual Studio Code-ot [https://code.visualstudio.com/download](https://code.visualstudio.com/download) .
-* Node.js telepítése. Itt töltheti le Node.js [https://nodejs.org](https://nodejs.org) . A NPM a telepítéshez tartozik.
+* A mintakód. Töltse le [a mintakódot.](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)
+* A kód Visual Studio telepítése. Töltse le Visual Studio Code-kódot [https://code.visualstudio.com/download](https://code.visualstudio.com/download) itt: .
+* A Node.js. A Node.js itt tölthető [https://nodejs.org](https://nodejs.org) le. Az NPM a telepítéssel együtt jár.
 * Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-* Egy Azure Media Services-(AMS-) fiók.
-* @azure/msal-browser v 2.0, a [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK termékcsalád egyik tagja a különböző ügyféloldali platformokhoz
-* A [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)legújabb verziója (a minta része)
-* FPS hitelesítő adatok az Apple-től, ha a FairPlay DRM-t és az CORS-ben üzemeltetett alkalmazás-tanúsítványt is szeretné használni az ügyféloldali JavaScript használatával.
+* Egy Azure Media Services (AMS)-fiók.
+* @azure/msal-browser 2.0-s verziója, a [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK-család tagjainak egyike a különböző ügyfélplatformok esetében
+* Az alkalmazás legújabb [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(a mintában található).)
+* AZ Apple HITELESÍTŐ adatai, ha a FairPlay DRM-et és a CORS által üzemeltetett, ügyféloldali JavaScripten keresztül elérhető alkalmazás-tanúsítványt szeretné tartalmazni.
 
 > [!IMPORTANT]
-> Ez az oktatóanyag a .NET-et használja a tartalmi kulcsokra vonatkozó házirend korlátozásának létrehozásához.  Ha Ön nem .NET-fejlesztő, de szeretné kipróbálni Node.js Azure Media Serviceshoz való kapcsolódáshoz, olvassa el [a kapcsolódás Media Services V3 API-Node.js](configure-connect-nodejs-howto.md). Egy Node.js modul is elérhető a kulcsok automatikus átváltásához, lásd: Node.js [Passport-ad modul](https://github.com/AzureAD/passport-azure-ad).
+> Ez az oktatóanyag a .NET-et használja a tartalomkulcs-szabályzat korlátozásának létrehozásához.  Ha Ön nem .NET-fejlesztő, de Node.js szeretne csatlakozni az Azure Media Services-hoz, olvassa el a Connect [to Media Services v3 API - Node.js](configure-connect-nodejs-howto.md)(Csatlakozás Media Services v3 API-hoz – Node.js. Egy új Node.js is elérhető a kulcsváltás automatikus kezeléséhez. Lásd: Node.js [passport-ad modul.](https://github.com/AzureAD/passport-azure-ad)
 
-## <a name="consider-the-authentication-and-authorization-requirements"></a>A hitelesítési és engedélyezési követelmények megfontolása
+## <a name="consider-the-authentication-and-authorization-requirements"></a>Vegye figyelembe a hitelesítési és engedélyezési követelményeket
 
-Néhány kihívás az alrendszer megtervezése során jelenik meg. Több mozgó részből áll, az ügyfélalkalmazások megkötései, valamint az Azure AD-kulcs rolloverje hat hetente történik.
+Az alrendszer megtervezésekor néhány kihívással kell szembesülni. Több mozgó részből áll, az ügyfélalkalmazások korlátozásokkal és az Azure AD-kulcsváltással, amely hat hetente történik.
 
-Az oktatóanyagban használt Single-Page alkalmazás (SPA) figyelembe veszi a hitelesítési követelményekkel és az azt követő korlátozásokkal kapcsolatos kihívásokat. A következőket használja:
+Az Single-Page használt alkalmazás (SPA) figyelembe veszi a hitelesítési követelményekkel kapcsolatos kihívásokat és az alábbi korlátozásokat. A következőket használja:
 
-* Az Azure ad v2-végpontok, mint az Azure AD fejlesztői platform (v1-végpontok) a Microsoft Identity platformra (v2-végpontokra) változnak.
-* Az engedélyezési kód folyamata, mert a OAuth 2 implicit engedélyezési folyamat elavult.
-* A következő korlátozások alá eső alkalmazások:
-    * Egy nyilvános ügyfél nem tudja elrejteni az ügyfél titkos kulcsát.  Az engedélyezési kód csak az ügyfél titkos kulcsának elrejtését igényli, így az engedélyezési kód a PKCE-sel van használatban.
-    * Böngésző-alapú alkalmazás, amely a böngésző biztonsági Homokozójában (CORS/elővizsgálati korlátozás) van kitéve.
-    * Egy böngészőalapú alkalmazás, amely a JavaScript biztonsági korlátozásokkal (Egyéni fejléc kisegítő lehetőségek, korrelációs azonosító) függ.
+* Az Azure AD v2-végpontok, mint az Azure AD fejlesztői platform (v1-végpontok) a Microsoft Identity Platformra (v2-végpontok) változnak.
+* Engedélyezési kódfolyam, mert az OAuth 2 implicit engedélyezési folyamat elavult.
+* Olyan alkalmazás, amelyre a következő korlátozások vonatkoznak:
+    * A nyilvános ügyfelek nem rejtik el az ügyfél titkos titkos ját.  Az engedélyezési kódfolyamhoz önmagában szükség van az ügyfél titkos kódának elrejtésére, ezért A PKCE-t engedélyező kódfolyamot kell használni.
+    * Böngészőalapú alkalmazás, amely a böngésző biztonsági védőfala (CORS/előzetes korlátozás) hatálya alá esik.
+    * Egy modern JavaScriptet használó böngészőalapú alkalmazás, amely a JavaScript biztonsági korlátozásai (egyéni fejléc akadálymentessége, korrelációs azonosító) vonatkozik rá.
 
-## <a name="understand-the-subsystem-design"></a>Az alrendszer kialakításának megismerése
+## <a name="understand-the-subsystem-design"></a>Az alrendszer kialakításának a leírása
 
 Az alrendszer kialakítása az alábbi ábrán látható.  Három rétegből áll:
 
-* Back-Office réteg (fekete) a tartalmi kulcs házirendjének konfigurálásához és tartalom közzétételéhez a streaminghez
-* Nyilvános végpontok (kék színnel), amelyek a hitelesítéssel, engedélyezéssel, DRM-licenccel és titkosított tartalommal rendelkező lejátszó/ügyfél felé irányuló végpontok
-* Az összes összetevőt integráló lejátszó alkalmazás (világoskék)
-    * kezeli a felhasználói hitelesítést az Azure AD-n keresztül.
-    * kezeli access_token beszerzését az Azure AD-ből.
-    * a rendszer az AMS/CDN által küldött jegyzékfájlokat és titkosított tartalmakat fogadja.
-    * DRM-licencet vásárol a Azure Media Servicesból.
-    * kezeli a tartalom visszafejtését, dekódolását és megjelenítését.
+* Háttérréteg (fekete színben) a tartalomkulcs-szabályzat konfigurálásához és a tartalom streameléshez való közzétételéhez
+* Nyilvános végpontok (kék színben), amelyek a lejátszó/ügyfél felé néző végpontok, amelyek hitelesítést, engedélyezést, DRM-licencet és titkosított tartalmakat szolgáltatásokat license (DRM) szolgáltatásokat nak
+* Lejátszóalkalmazás (világoskék színben), amely az összes összetevőt és
+    * az Azure AD-n keresztüli felhasználói hitelesítést kezeli.
+    * A kezeli access_token Azure AD-től való beszerzését.
+    * A jegyzékfájlt és titkosított tartalmat fogad az AMS-től/CDN-től.
+    * drm-licencet szerez be a Azure Media Services.
+    * A kezeli a tartalom visszafejtése, dekódolása és megjelenítése.
 
-![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/subsystem.svg)
+![JWT-jogkivonatok elemzési képernyője](media/aad-ams-content-protection/subsystem.svg)
 
-Az alrendszersel kapcsolatos további részletekért olvassa el a [multi-DRM tartalomkezelő rendszer kialakítását az Access Control](./architecture-design-multi-drm-system.md) használatával.
+További [információ az alrendszerről: Több DRM-tartalomvédelmi](./architecture-design-multi-drm-system.md) rendszer tervezése hozzáférés-vezérléssel.
 
-## <a name="understand-the-single-page-app"></a>Az egyoldalas alkalmazás megismerése
+## <a name="understand-the-single-page-app"></a>Az egyoldalas alkalmazás
 
-A Player alkalmazás egy egyoldalas alkalmazás (SPA), amelyet a Visual Studio Code-ban fejlesztettünk ki a következő használatával:
+A lejátszóalkalmazás egy egyoldalas alkalmazás (SPA), amely a Visual Studio kódban a következővel van kifejlesztve:
 
-* Node.js with ES 6 JavaScript
-* @azure/msal-browser 2,0 Beta
+* Node.js ES 6 JavaScripttel
+* @azure/msal-browser 2.0 bétaverzió
 * Azure Media Player SDK
-* OAuth 2 folyamat az Azure AD v2-végpontokon (Microsoft Identity platform)
+* OAuth 2-folyamat az Azure AD v2-végpontokkal (Microsoft Identity Platform)
 
-A SPA Player alkalmazás a következő műveleteket hajtja végre:
+Az SPA lejátszóalkalmazás a következő műveleteket követi:
 
-* Felhasználói hitelesítés a bérlőhöz natív felhasználók számára, valamint más HRE-bérlők vagy MSA-fiókok vendégeit használó felhasználók számára. A felhasználók dönthetnek úgy, hogy bejelentkeznek a böngésző felugró ablakával vagy átirányításával (olyan böngészőknél, amelyek nem engedélyezik a Safarit).
-* `access_token`Engedélyezési programkódon keresztüli adatforgalom beszerzése a PKCE-mel.
-* A `access_token` (HRE által kiállított jogkivonatok 1 órára érvényesek), amely esetében az `refresh_token` is beszerzésre kerül.
-* JWT-tokenek (mindkettő `access_token` és `id_token` ) elemzése teszteléshez/vizsgálathoz.
-* DRM-licencek beszerzése mindhárom DRMs vagy AES-128 tartalmi kulcshoz.
-* Tartalom folyamatos átvitele a DRM vs Streaming Protocol vs Container Format különböző kombinációi alapján. Minden kombinációhoz a megfelelő formázó karakterlánc jön létre.
+* Felhasználók hitelesítése a bérlő natív felhasználói számára, valamint vendégfelhasználók más AAD-bérlőkből vagy MSA-fiókokból. A felhasználók dönthetnek úgy, hogy egy böngésző előugró ablakán vagy átirányításán keresztül jelentkeznek be (olyan böngészők esetén, amelyek nem engedélyezik az előugró ablakokat, például a Safarit).
+* Beszerzés engedélyezési `access_token` kódfolyamon keresztül a PKCE-val.
+* Megújítása (az AAD által kiadott jogkivonatok 1 órán át `access_token` érvényesek), amelyekhez `refresh_token` szintén be kell szerezni.
+* JWT-jogkivonatok (mind a , mind `access_token` `id_token` a ) elemezése teszteléshez/vizsgálathoz.
+* DRM-licencek beszerzése mindhárom DRM-hez vagy AES-128 tartalomkulcshoz.
+* Tartalmak streamelése a DRM különböző kombinációi és a streamelési protokoll és a tárolóformátum között. A rendszer minden kombinációhoz a megfelelő formátumsringet generálja.
 * Visszafejtés, dekódolás és megjelenítés.
-* Microsoft Graph API-hívások hibaelhárítási célból. <!--See more details in the subsection Shortest path: testing my protected asset in my subscription with your hosted player app and underlying tenant. -->
+* Microsoft Graph API-hívásokat hibaelhárítási célokra. <!--See more details in the subsection Shortest path: testing my protected asset in my subscription with your hosted player app and underlying tenant. -->
 
-A bejelentkezés, a jogkivonat beszerzése, a jogkivonat-megújítás és a jogkivonat-megjelenítés képernyője:
+A bejelentkezés, a jogkivonat beszerzésének, a jogkivonat megújításának és a jogkivonat megjelenítésének képernyője:
 
- ![Képernyő a bejelentkezéshez, a jogkivonat-beszerzéshez, a jogkivonat-megújításhoz és a jogkivonat-megjelenítéshez](media/aad-ams-content-protection/token-acquisition.png)
+ ![A bejelentkezést, a jogkivonat beszerzését, a jogkivonat megújítását és a jogkivonat megjelenítését megjelenítő képernyő](media/aad-ams-content-protection/token-acquisition.png)
 
-A JWT-tokenek elemzésére szolgáló képernyő (access_token vagy id_token):
+A JWT-jogkivonatok (access_token vagy id_token):
 
-![A J W T-tokenek elemzését bemutató képernyőkép.](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![J W T-jogkivonatok elemzési képernyőképe.](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
-A védett tartalom tesztelésére szolgáló képernyő a DRM/AES vs streaming protokollok és a tároló formátumának különböző kombinációjával:
+A DRM/AES és a streamelési protokollok és a tárolóformátum különböző kombinációit tartalmazó védett tartalmak tesztelésére szolgáló képernyő:
 
-![Képernyőkép a védett tartalom teszteléséről, amely a D R M különböző kombinációit vagy az E-k és A tárolók közötti adatátviteli protokollokat](media/aad-ams-content-protection/testing-protected-content.png)
+![Képernyőkép a D R M vagy A E S különböző kombinációival és a streamelési protokollok és a tárolóformátumok különböző kombinációival tesztelt védett tartalmakról](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -141,57 +141,57 @@ A védett tartalom tesztelésére szolgáló képernyő a DRM/AES vs streaming p
 ## <a name="choose-an-azure-ad-tenant"></a>Azure AD-bérlő kiválasztása
 
 > [!NOTE]
-> Innentől kezdve feltételezzük, hogy bejelentkezett a Azure Portalba, és legalább egy Azure AD-Bérlővel rendelkezik.
+> Ettől a lépéstől azt feltételezzük, hogy bejelentkezett a Azure Portal és már rendelkezik legalább egy Azure AD-bérlővel.
 
-Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre két lehetősége van:
+Válasszon ki egy Azure AD-bérlőt a teljes mintaalkalmazáshoz. Erre két lehetősége van:
 
-* Egy meglévő Azure AD-bérlő. Minden Azure-előfizetéshez egy Azure AD-Bérlőnek kell tartoznia, de az Azure AD-bérlőt több Azure-előfizetés is használhatja.
-* Új Azure AD-bérlő, amelyet egyetlen Azure-előfizetés *sem* használ. Ha az új bérlő lehetőséget választja, a Media Service-fióknak és a minta-lejátszó alkalmazásnak olyan Azure-előfizetésben kell lennie, amely külön Azure AD-bérlőt használ. Ez némi rugalmasságot biztosít. Használhatja például saját Azure AD-bérlőjét, de az ügyfél Media Service-fiókját is az ügyfél Azure-előfizetésében.
+* Egy meglévő Azure AD-bérlő. Minden Azure-előfizetésnek egy Azure AD-bérlővel kell lennie, de egy Azure AD-bérlőt több Azure-előfizetés is használhat.
+* Egy új Azure AD-bérlő, *amelyet egyik Azure-előfizetés* sem használ. Ha az új bérlőt választja, a Media Service-fióknak és a mintalejátszó alkalmazásnak egy külön Azure AD-bérlőt használó Azure-előfizetésben kell lennie. Ez némi rugalmasságot biztosít. Használhatja például a saját Azure AD-bérlőt, de az ügyfél médiaszolgáltatás-fiókját is az ügyfél Azure-előfizetésében.
 
-## <a name="register-the-backend-resource-app"></a>A háttérbeli erőforrás alkalmazás regisztrálása
+## <a name="register-the-backend-resource-app"></a>A háttérerőforrás-alkalmazás regisztrálása
 
-1. Navigáljon a kiválasztott vagy létrehozott Azure AD-bérlőhöz.
-1. A menüből válassza a **Azure Active Directory** lehetőséget.
-1. A menüből válassza a **Alkalmazásregisztrációk** lehetőséget.
-1. Kattintson az **+ új regisztráció** elemre.
-1. Nevezze el az alkalmazás *LicenseDeliveryResource2* (ahol a 2 a HRE v2 végpontot jelzi).
-1. **Csak a szervezeti címtárban válassza a fiókok lehetőséget ([*a bérlő neve*] csak egyetlen bérlő)**. Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válassza a további több-bérlős lehetőségek egyikét.
-1. Az **átirányítási URI** nem kötelező, és később is módosítható.
-1. Kattintson a **Regisztrálás** parancsra. Ekkor megjelenik a Alkalmazásregisztrációk nézet.
-1. Válassza ki a **jegyzékfájlt** a menüből. Ekkor megjelenik a jegyzékfájl nézet.
-1. Módosítsa a értékét a `accessTokenAcceptedVersion` *2* értékre (idézőjelek nélkül).
+1. Keresse meg a kiválasztott vagy létrehozott Azure AD-bérlőt.
+1. Válassza **Azure Active Directory** lehetőséget a menüből.
+1. Válassza **Alkalmazásregisztrációk** lehetőséget a menüből.
+1. Kattintson **az + Új regisztráció elemre.**
+1. Az alkalmazásnak adja a *LicenseDeliveryResource2* nevet (ahol a 2 az AAD v2-végpontokat jelöli).
+1. Válassza **a Csak ebben a szervezeti címtárban ([ a bérlő *neve*] csak egyetlen** bérlő) lehetőséget. Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válasszon egyet a többi több-bérlős lehetőségek közül.
+1. Az **Átirányítási URI** nem kötelező, és később módosítható.
+1. Kattintson a **Regisztrálás** parancsra. Megjelenik Alkalmazásregisztrációk nézet.
+1. A menüben válassza a **Jegyzékfájl** lehetőséget. Megjelenik a Jegyzéknézet.
+1. Módosítsa a értékét `accessTokenAcceptedVersion` *2-re* (idézőjelek nélkül).
 1. Módosítsa a értékét `groupMembershipClaims` *"SecurityGroup"* értékre (idézőjelekkel).
 1. Kattintson a **Mentés** gombra.
-1. Válassza ki az **API közzététele** lehetőséget a menüből. Ekkor megjelenik a hatókör hozzáadása nézet. (Az Azure egy alkalmazás-azonosító URI-t biztosít, de ha módosítani szeretné, szerkesztheti az alkalmazás-azonosító URI-ja mezőben.)
-1. Kattintson **a Mentés és folytatás** gombra. A nézet meg fog változni. Az alábbi táblázat Setting (beállítás) oszlopában az érték oszlopban adja meg az értéket, majd kattintson a **hatókör hozzáadása** elemre.
+1. Válassza **az API megjelenítése lehetőséget** a menüben. Megjelenik a Hatókör hozzáadása nézet. (Az Azure biztosít egy alkalmazásazonosító URI-t, de ha módosítani szeretné, az Alkalmazásazonosító URI mezőben szerkesztheti.)
+1. Kattintson a **Mentés gombra, és folytassa a gombra.** A nézet megváltozik. Az alábbi táblázat Beállítás oszlopában található beállítások mindegyikéhez adja meg az értéket az Érték oszlopban, majd kattintson a **Hatókör hozzáadása lehetőségre.**
 
 | Beállítás | Érték | Leírás |
 | ------- | ----- | ----------- |
-| Hatókör neve | *DRM. Licenc. Delivery* | A hatókör megjelenése abban az esetben, ha az API-hoz való hozzáférést kérik, illetve a hozzáférési jogkivonatokban, ha a hatókört megadták egy ügyfélalkalmazás számára. Ennek az alkalmazáson belül egyedinek kell lennie. Az ajánlott eljárás az "erőforrás. Operation. megkötés" használata mintaként a név létrehozásához. |
-| Ki tud hozzájárulni? | *Rendszergazdák és felhasználók* | Meghatározza, hogy a felhasználók beleegyeznek-e a hatókörbe olyan címtárakban, amelyeken engedélyezve van a felhasználói engedély. |
-| Rendszergazdai hozzájárulás megjelenítendő neve | *DRM-licenckézbesítés* | A hatókör a beleegyezési képernyőn lesz meghívva, amikor a rendszergazdák beleegyeznek ehhez a hatókörhöz. |
-| Rendszergazdai engedély leírása * * | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | A hatókör részletes leírása, amely akkor jelenik meg, ha a bérlői rendszergazdák kibővítik a hatókört a beleegyezési képernyőn. |
-| Felhasználói jóváhagyás megjelenítendő neve | *DRM. Licenc. Delivery* | A hatókör a beleegyezési képernyőn lesz meghívva, amikor a felhasználók beleegyeznek ehhez a hatókörhöz. |
-| Felhasználói jóváhagyás leírása | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | Ez a hatókör részletes leírása, amely akkor jelenik meg, amikor a felhasználók kibontanak egy hatókört a beleegyezési képernyőn. |
-| Állapot | *Engedélyezve* | Meghatározza, hogy a hatókör elérhető legyen-e az ügyfelek számára. Állítsa "Letiltva" értékre azon hatókörök esetében, amelyeket nem szeretne látni az ügyfelek számára. A rendszer csak a letiltott hatóköröket törölheti, és azt javasoljuk, hogy legalább egy hetet várjon a hatókör letiltását követően, hogy az ügyfelek ne használják tovább. |
+| Hatókör neve | *Drm. License.Delivery* | A hatókör megjelenése az API-hoz való hozzáférés kérésekor, illetve a hozzáférési jogkivonatok között, ha a hatókört megadták egy ügyfélalkalmazásnak. Ennek egyedinek kell lennie az alkalmazásban. Ajánlott eljárás a "resource.operation.constraint" minta használata a név létrehozásához. |
+| Ki járulhat hozzá? | *Rendszergazdák és felhasználók* | Meghatározza, hogy a felhasználók beleegyeznek-e ebbe a hatókörbe az olyan könyvtárakban, amelyekben engedélyezve van a felhasználói jóváhagyás. |
+| Rendszergazdai hozzájárulás megjelenítendő neve | *DRM-licenckézbesítés* | A hatókör neve a hozzájárulási képernyőn, amikor a rendszergazdák hozzájárulnak ehhez a hatókörhöz. |
+| Rendszergazdai jóváhagyás leírása** | *DRM-licencküldetés háttérerőforrás-hatóköre* | A hatókör részletes leírása, amely akkor jelenik meg, ha a bérlői rendszergazdák kibontják a hatókört a hozzájárulási képernyőn. |
+| Felhasználói jóváhagyás megjelenítendő neve | *Drm. License.Delivery* | A hatókör neve a hozzájárulási képernyőn, amikor a felhasználók hozzájárulnak ehhez a hatókörhöz. |
+| Felhasználói jóváhagyás leírása | *DRM-licencküldetés háttérerőforrás-hatóköre* | Ez a hatókör részletes leírása, amely akkor jelenik meg, amikor a felhasználók kibontják a hatókört a hozzájárulási képernyőn. |
+| Állapot | *Engedélyezve* | Meghatározza, hogy ez a hatókör elérhető-e az ügyfelek számára a lekéréshez. Állítsa "Letiltva" beállításra az ügyfelek számára nem látható hatókörök esetében. Csak a letiltott hatókörök törölhetők, ezért javasoljuk, hogy a törlés előtt legalább egy hetet várnia kell, hogy az ügyfelek továbbra is használják azt. |
 
 ## <a name="register-the-client-app"></a>Az ügyfélalkalmazás regisztrálása
 
-1. Navigáljon a kiválasztott vagy létrehozott Azure AD-bérlőhöz.
-1. A menüből válassza a **Azure Active Directory** lehetőséget.
-1. A menüből válassza a **Alkalmazásregisztrációk** lehetőséget.
-1. Kattintson az **+ új regisztráció** elemre.
-1. Adja meg az ügyfélalkalmazás nevét, például: *AMS hre Content Protection*.
-1. **Csak a szervezeti címtárban válassza a fiókok lehetőséget ([*a bérlő neve*] csak egyetlen bérlő)**. Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válassza a további több-bérlős lehetőségek egyikét.
-1. Az **átirányítási URI** nem kötelező, és később is módosítható.
+1. Keresse meg a kiválasztott vagy létrehozott Azure AD-bérlőt.
+1. Válassza **Azure Active Directory** lehetőséget a menüből.
+1. Válassza **Alkalmazásregisztrációk** lehetőséget a menüből.
+1. Kattintson **az + Új regisztráció elemre.**
+1. Nevezze el az ügyfélalkalmazást, például *AMS AAD-Content Protection.*
+1. Válassza **a Csak ebben a szervezeti címtárban ([ a bérlő *neve*] csak egyetlen bérlő) lehetőséget.** Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válasszon egyet a többi több-bérlős lehetőségek közül.
+1. Az **Átirányítási URI** nem kötelező, és később módosítható.
 1. Kattintson a **Regisztrálás** parancsra.
-1. Válassza ki az **API-engedélyeket** a menüből.
-1. Kattintson **az + engedély hozzáadása** lehetőségre. Ekkor megnyílik a kérelem API-engedélyeinek nézete.
-1. Kattintson a **saját API** fülre, és válassza ki az utolsó szakaszban létrehozott *LicenseDeliveryResource2* alkalmazást.
-1. Kattintson a DRM nyílra, és jelölje be a DRM-t *. Licenc. Delivery* engedély.
-1. Kattintson az **engedélyek hozzáadása** lehetőségre. Az engedélyek hozzáadása nézet be lesz zárva.
-1. Válassza ki a **jegyzékfájlt** a menüből. Ekkor megjelenik a jegyzékfájl nézet.
-1. Keresse meg és adja hozzá a következő érték párokat az `replyUrlsWithType` attribútumhoz:
+1. Válassza **az API-engedélyek** lehetőséget a menüben.
+1. Kattintson **a + Engedély hozzáadása elemre.** Megnyílik a Request API permissions (API-engedélyek kérése) nézet.
+1. Kattintson a **Saját API fülre,** és válassza ki az előző szakaszban létrehozott *LicenseDeliveryResource2* alkalmazást.
+1. Kattintson a DRM nyílra, és ellenőrizze a *DRM-et. License.Delivery* engedély.
+1. Kattintson **az Engedélyek hozzáadása elemre.** Az Engedélyek hozzáadása nézet bezárul.
+1. A menüben válassza a **Jegyzékfájl** lehetőséget. Megjelenik a Jegyzéknézet.
+1. Keresse meg és adja hozzá a következő értékpárokat az `replyUrlsWithType` attribútumhoz:
 
    ```json
    "replyUrlsWithType": [
@@ -207,21 +207,21 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
    ```
 
     > [!NOTE]
-    > Ezen a ponton még nem rendelkezik a Player-alkalmazás URL-címével.  Ha az alkalmazást a localhost webkiszolgálóról futtatja, akkor csak a localhost érték párokat használhatja. A Player alkalmazás üzembe helyezése után itt adhatja hozzá a bejegyzést a központilag telepített URL-címhez.  Ha elfelejti, hibaüzenet jelenik meg az Azure AD-bejelentkezésben.
+    > Ezen a ponton még nincs meg a lejátszóalkalmazás URL-címe.  Ha az alkalmazást a localhost webkiszolgálóról futtatja, használhatja csak a localhost értékpárt. A lejátszóalkalmazás üzembe helyezése után itt használhatja az üzembe helyezett URL-címet.  Ha elfelejti ezt megtenni, hibaüzenet jelenik meg az Azure AD-bejelentkezésben.
 
 1. Kattintson a **Mentés** gombra.
-1. Végül ellenőrizze, hogy a konfiguráció megfelelő-e, majd válassza a **hitelesítés** lehetőséget.  Ekkor megjelenik a hitelesítési nézet. Az ügyfélalkalmazás egy egyoldalas alkalmazásként (SPA) jelenik meg, az átirányítási URI a listáról lesz listázva, a Grant típus pedig a PKCE-vel való engedélyezési kód lesz.
+1. Végül a konfiguráció helyességét a Hitelesítés lehetőséget **választva ellenőrizheti.**  Megjelenik a Hitelesítés nézet. Az ügyfélalkalmazás egyoldalas alkalmazásként (SPA) lesz listázva, az átirányítási URI megjelenik, a engedélyezés típusa pedig Authorization Code Flow with PKCE (Hitelesítési kódfolyam PKCE-val).
 
-### <a name="set-up-the-media-services-account-content-key-policy-and-streaming-policies"></a>A Media Services fiók tartalmi kulcsára vonatkozó házirend és folyamatos átviteli szabályzatok beállítása
+### <a name="set-up-the-media-services-account-content-key-policy-and-streaming-policies"></a>Az Media Services-fiók tartalomkulcs-szabályzatának és streamelési szabályzatának beállítása
 
-**Ez a szakasz azt feltételezi, hogy Ön .NET-fejlesztő, és ismeri az AMS V3 API használatát.**
+**Ez a szakasz feltételezi, hogy Ön .NET-fejlesztő, és ismeri az AMS v3 API használatát.**
 
 > [!NOTE]
-> A jelen cikk írásakor nem használhatja a Media Services-fiókhoz tartozó kulcs házirend-beállításának Azure Portal, mert nem támogatja az OpenID-config-val rendelkező aszimmetrikus jogkivonat-aláíró kulcs használatát.  A telepítőnek támogatnia kell az Azure AD-kulcs átváltását, mert az Azure AD által kibocsátott jogkivonatot egy aszimmetrikus kulcs aláírja, és a kulcs 6 hetente összesíti. Ezért ez az oktatóanyag a .NET-et és az AMS V3 API-t használja.
+> A jelen cikk írásakor nem használhatja a Azure Portal-t a Media Services-fiókkulcs szabályzatának beállításához, mert az nem támogatja az aszimmetrikus jogkivonat-aláírókulcs openID-Config használatával való használatát.  A beállításnak támogatnia kell az Azure AD-kulcsváltást, mert az Azure AD által kiadott jogkivonatot egy aszimmetrikus kulcs írta alá, és a kulcs hat hetente le lesz állítva. Ezért ez az oktatóanyag a .NET-et és az AMS v3 API-t használja.
 
-A [tartalom kulcsára vonatkozó házirend](drm-content-key-policy-concept.md) és a DRM és AES-128 [streaming-szabályzatok](stream-streaming-policy-concept.md) konfigurálása érvényes.  Módosítsa a `ContentKeyPolicyRestriction` tartalmat a tartalmi kulcs házirendjében.
+A DRM és [](stream-streaming-policy-concept.md) az AES-128 tartalomkulcs-szabályzatának és streamelési szabályzatának konfigurálása érvényes. [](drm-content-key-policy-concept.md)  Módosítsa a `ContentKeyPolicyRestriction` tartalmát a tartalomkulcs-szabályzatban.
 
-Alább látható a .NET-kód a tartalmi kulcs házirend-korlátozásának létrehozásához.
+Az alábbiakban a tartalomkulcs-szabályzat korlátozásának létrehozására vonatkozó .NET-kódot olvashatja.
 
 ```dotnetcli
 ContentKeyPolicyRestriction objContentKeyPolicyRestriction;
@@ -245,32 +245,32 @@ objContentKeyPolicyRestriction = objContentKeyPolicyTokenRestriction;
 return objContentKeyPolicyRestriction;
 ```
 
-Módosítsa a `ida_AADOpenIdDiscoveryDocument` , a `ida_audience` és a `ida_issuer` értékeket a fenti kódban. Ezen elemek értékeinek megkereséséhez a Azure Portalban:
+Módosítsa a `ida_AADOpenIdDiscoveryDocument` fenti kód , és `ida_audience` `ida_issuer` értékeit. A következő elemek értékeinek megkeresása a Azure Portal:
 
-1. Válassza ki a korábban használt HRE-bérlőt, kattintson **Alkalmazásregisztrációk** gombra a menüben, majd kattintson a **végpontok** hivatkozásra.
-1. Válassza ki és másolja ki a **OpenIdConnect metaadat-dokumentum** mezőjének értékét, és illessze be a kódot az `ida_AADOpenIdDiscoveryDocument` Érték mezőbe.
-1. Az `ida_audience` érték a regisztrált alkalmazás *LicenseDeliveryResource2*(ügyfél) azonosítója.
-1. Az `ida_issuer` érték az URL-cím `https://login.microsoftonline.com/[tenant_id]/v2.0` . Cserélje le a [*tenant_id*]-t a BÉRLŐi azonosítóra.
+1. Válassza ki a korábban használt AAD-bérlőt, Alkalmazásregisztrációk a menüben, majd kattintson a **Végpontok hivatkozásra.** 
+1. Jelölje ki és másolja ki az **OpenIdConnect** metaadat-dokumentummező értékét, és illessze be értékként a `ida_AADOpenIdDiscoveryDocument` kódba.
+1. Az `ida_audience` érték a *licenseDeliveryResource2* regisztrált alkalmazás alkalmazás- (ügyfél-) azonosítója.
+1. Az `ida_issuer` érték a `https://login.microsoftonline.com/[tenant_id]/v2.0` URL-cím. Cserélje le a [*tenant_id*] helyére a bérlőazonosítóját.
 
-## <a name="set-up-the-sample-player-app"></a>A minta lejátszó alkalmazás beállítása
+## <a name="set-up-the-sample-player-app"></a>A mintalejátszó alkalmazás beállítása
 
-Ha még nem tette meg, akkor az alkalmazást a forrás-tárházból is megnyithatja vagy letöltheti: [https://github.com/Azure-Samples/media-services-content-protection-azure-ad](https://github.com/Azure-Samples/media-services-content-protection-azure-ad) .
+Ha még nem tette meg, klónozza vagy töltse le az alkalmazást a forrás-fájlból: [https://github.com/Azure-Samples/media-services-content-protection-azure-ad](https://github.com/Azure-Samples/media-services-content-protection-azure-ad) .
 
-A Player alkalmazás beállítása két lehetőség közül választhat:
+A lejátszóalkalmazást két lehetőség közül választhatja:
 
-* Minimális testreszabás (csak bizonyos konstans karakterlánc-értékek, például client_id, tenant_id és streaming URL-cím helyett), de a Visual Studio Code és a Node.jst kell használnia.
-* Ha inkább egy másik IDE-és webplatformot szeretne használni, például a ASP.NET Coret, akkor a weblapok fájljait, a JavaScript-fájlokat és a CSS-fájlt a projektbe helyezheti, mivel maga a Player alkalmazás nem használ kiszolgálóoldali kódokat.
+* Minimális testreszabás (csak néhány állandó sztringérték, például a client_id, tenant_id és a streamelési URL-cím cseréje), de az Visual Studio Code és a Node.js.
+* Ha inkább egy másik IDE-t és webes platformot szeretne használni, például a ASP.NET Core-t, a weblapfájlokat, a JavaScript-fájlokat és a CSS-fájlokat a projektben is használhatja, mivel maga a lejátszóalkalmazás nem használ kiszolgálóoldali kódot.
 
 ### <a name="option-1"></a>1\. lehetőség
 
 1. A Visual Studio Code elindítása.
-1. A projekt megnyitásához kattintson a fájl-> mappa megnyitása lehetőségre, > tallózással keresse meg és válassza ki a fájl *package.jsjának* szülő mappáját.
-1. Nyissa meg a JavaScript *-fájl nyilvános/JavaScript/constants.js*.
-1. Cserélje le `OAUTH2_CONST.CLIENT_ID` a `client_id` regisztrált ÜGYFÉLALKALMAZÁS a HRE-bérlőben.  A `client_id` Azure Portal található regisztrált alkalmazás Áttekintés szakaszában talál. Megjegyzés: ez az ügyfél-azonosító, nem objektumazonosító.
-1. Cserélje le `OAUTH2_CONST.TENANT_ID` az `tenant_id` Azure ad-bérlőre. A `tenant_id` Azure Active Directory menüre kattintva érheti el. A tenant_id megjelenik az Áttekintés szakaszban.
-1. Helyettesítse `OAUTH2_CONST.SCOPE` be a regisztrált ügyfélalkalmazás által hozzáadott hatókört. A hatókört úgy tekintheti meg, hogy a **Alkalmazásregisztrációk** menüből navigál a regisztrált ügyfélalkalmazás számára, majd kiválasztja az ügyfélalkalmazás:
-    1. Válassza ki az ügyfélalkalmazás, kattintson az **API-engedélyek** menüre, majd válassza ki a hatókört a DRM-hez *. Licenc. Delivery* az API engedély *LicenseDeliveryResource2*. Az engedélynek a következő formátumúnak kell lennie: *API://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM. Licenc. Delivery*. **Fontos**: tartsa meg a helyet a ( `offline_access` z `OAUTH2_CONST.SCOPE` ) előtt.
-1. Cserélje le a két konstans karakterláncot az `AMS_CONST` alább látható módon. Az egyik a tesztelési eszköz védett adatfolyam-továbbítási URL-címe, a másik az FPS-alkalmazás tanúsítványának URL-címe, ha meg szeretné adni a FairPlay tesztelési esetét is. Ellenkező esetben hagyja a következőt: `AMS_CONST.APP_CERT_URL` . Ezután kattintson a **Mentés** gombra.
+1. A projekt megnyitásához kattintson a File -> Open Folder -> browse to and select the parent folder of thepackage.js *on* file ..
+1. Nyissa meg a *public/javascript/constants.js.*
+1. Cserélje `OAUTH2_CONST.CLIENT_ID` le a `client_id` helyére az AAD-bérlőben regisztrált ügyfélalkalmazást.  A következőt `client_id` a regisztrált alkalmazás Áttekintés szakaszában találja a Azure Portal. Megjegyzés: ez nem az objektumazonosító, hanem az ügyfél-azonosító.
+1. Cserélje `OAUTH2_CONST.TENANT_ID` le a `tenant_id` helyére az Azure AD-bérlője helyére. A elemet a `tenant_id` menüben Azure Active Directory találhatja meg. A tenant_id az Áttekintés szakaszban fog megjelenni.
+1. Cserélje `OAUTH2_CONST.SCOPE` le a helyére a regisztrált ügyfélalkalmazásban hozzáadott hatókört. A hatókör megkereséhez navigálhat a regisztrált ügyfélalkalmazáshoz a Alkalmazásregisztrációk **menüből,** majd válassza ki az ügyfélalkalmazást:
+    1. Válassza ki az ügyfélalkalmazást, kattintson az **API-engedélyek menüre,** majd válassza ki a *DRM hatókört. License.Delivery a* *LicenseDeliveryResource2 API-engedély alatt.* Az engedély formátumának a következő formátumban kell lennie: *api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM. License.Delivery*. **Fontos:** Tartsa a helyet a `offline_access` `OAUTH2_CONST.SCOPE` előtt.
+1. Cserélje le a két konstans sztringet `AMS_CONST` az alábbi módon. Az egyik a teszteszköz védett streamelési URL-címe, a másik pedig a TANÚSÍTVÁNY-alkalmazás tanúsítványának URL-címe, ha szeretné szerepelni a FairPlay-tesztesetet. Ellenkező esetben meghagyhatja a következőt: `AMS_CONST.APP_CERT_URL` . Ezután kattintson a **Mentés gombra.**
 
 ```javascript
 //defaults in ams.js
@@ -287,48 +287,48 @@ class AMS_CONST {
 
 Helyi tesztelés:
 
-1. A Visual Studio Code (VSC) eszközben válassza a **nézet** lehetőséget a főmenüben, majd a **terminál** elemet.
-1. Ha még nem telepítette a NPM-et, a parancssorba írja be a parancsot `npm install` .
-1. Írja be `npm start` a parancsot a parancssorba. (Ha a NPM nem indul el, próbálja meg módosítani a könyvtárat a `npmweb` parancssorba való beírásával `cd npmweb` .)
-1. Böngésző használatával keresse meg a következőt: `http://localhost:3000` .
+1. A Visual Studio Code (VSC) menüben válassza a Nézet **lehetőséget** a főmenüben, majd válassza a **Terminál lehetőséget.**
+1. Ha még nem telepítette az npm-et, a parancssorba írja be a következőt: `npm install` .
+1. Írja `npm start` be a parancsot a parancssorba. (Ha az npm nem indul el, próbálja meg a könyvtárat a következőre megváltoztatni: a parancssorba `npmweb` `cd npmweb` beírása.)
+1. Böngészőben nyissa meg a `http://localhost:3000` webhelyet.
 
-A használt böngészőtől függően válassza ki a DRM/AES vs streaming protokoll és a tároló formátumának megfelelő kombinációját a bejelentkezés ( `access_token` Beszerzés) utáni teszteléshez. Ha macOS rendszeren végez tesztelést a Safariban, tekintse át az átirányítási API lehetőséget, mivel a Safari nem engedélyezi a felugró ablakokat. A legtöbb böngésző a felugró ablakokat és az átirányítási lehetőségeket is lehetővé teszi.
+A használt böngészőtől függően válassza ki a DRM/AES vs Streaming Protocol és a Container Format megfelelő kombinációját a bejelentkezés utáni teszteléshez `access_token` (beszerzés). Ha macOS rendszeren teszteli a Safarit, jelölje be az Átirányítási API lehetőséget, mivel a Safari nem engedélyezi az előugró ablakokat. A legtöbb más böngészőben felugró ablakok és átirányítási beállítások is elérhetőek.
 
 ### <a name="option-2"></a>2\. lehetőség
 
-Ha egy másik IDE/webplatformot és/vagy egy webkiszolgálót, például a fejlesztői gépen futó IIS-t szeretne használni, másolja a következő fájlokat egy új könyvtárba a helyi webkiszolgálón. Az alábbi elérési utak a letöltött kódban találhatók.
+Ha egy másik IDE/webplatformot és/vagy egy webkiszolgálót ,például az IIS-t használ a fejlesztői gépen, másolja a következő fájlokat egy új könyvtárba a helyi webkiszolgálón. Az alábbi elérési utakon találja meg őket a letöltött kódban.
 
-* *views/index. EJS* (utótag módosítása. html)
-* *views/JWT. EJS* (az utótag módosítása. html)
-* *views/info. EJS* (az utótag módosítása HTML-re)
-* *nyilvános/** (JavaScript-fájlok, CSS, képek az alább láthatók szerint)
+* *views/index.ejs* (az utótag módosítása .html formátumra)
+* *views/jwt.ejs* (az utótag módosítása .html formátumra)
+* *views/info.ejs* (az utótag módosítása html-re)
+* *public/** (JavaScript-fájlok, CSS, képek az alább látható módon)
 
-1. Másolja a *View (nézet* ) mappában található fájlokat az új könyvtár gyökerébe.
-1. Másolja a *nyilvános* mappában található *mappákat* az új könyvtár gyökerébe.
-1. Módosítsa a fájlok kiterjesztéseit a következőre: `.ejs` `.html` . (A rendszer nem használja a kiszolgálóoldali változót, így biztonságosan módosíthatja azt.)
-1. Nyissa meg *index.html* -t a VSC-ben (vagy más szerkesztőprogramban), és módosítsa a `<script>` és az `<link>` elérési utakat úgy, hogy azok tükrözzék a fájlok helyét.  Ha követte az előző lépéseket, csak az `\` elérési úton kell törölnie.  Például a következő `<script type="text/javascript" src="/javascript/constants.js"></script>` lesz: `<script type="text/javascript" src="javascript/constants.js"></script>` .
-1. Szabja testre az állandókat a *JavaScript/constants.js* fájlban az 1. lehetőségnek megfelelően.
+1. Másolja a nézet mappában található *fájlokat* az új könyvtár gyökeréhez.
+1. Másolja *a nyilvános* mappában található *mappákat* az új könyvtár gyökerében.
+1. Módosítsa a fájlok `.ejs` bővítményét a következőre: `.html` . (A rendszer nem használ kiszolgálóoldali változót, így biztonságosan módosíthatja.)
+1. Nyissa *index.html* fájlt a VSC-ban (vagy más kódszerkesztőben), és módosítsa a és az elérési utat úgy, hogy azok tükrözzék a fájlok `<script>` `<link>` helyét.  Ha követte az előző lépéseket, csak az elérési úton kell törölnie a `\` et.  A például `<script type="text/javascript" src="/javascript/constants.js"></script>` a következő lesz: `<script type="text/javascript" src="javascript/constants.js"></script>` .
+1. Szabja testre a *javascript/constants.js* állandókat az 1. lehetőségnek megfelelően.
 
-## <a name="common-customer-scenarios"></a>Gyakori felhasználói forgatókönyvek
+## <a name="common-customer-scenarios"></a>Gyakori ügyfélforgatókönyvek
 
-Most, hogy elvégezte az oktatóanyagot, és rendelkezik egy működő alrendszerrel, a következő felhasználói forgatókönyvekhez is kipróbálhatja a módosítást:
+Most, hogy befejezte az oktatóanyagot, és van egy működő alrendszere, megpróbálhatja módosítani a következő ügyfélforgatókönyvek szerint:
 
-### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az Azure AD-csoporttagság használatával történő licenc-továbbításhoz
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az Azure AD-csoporttagságon keresztüli licenck kézbesítéshez
 
-Eddig a rendszer lehetővé teszi minden olyan felhasználó számára, aki bejelentkezhet egy érvényes licenc beszerzéséhez és a védett tartalom lejátszásához.
+A rendszer eddig minden bejelentkező felhasználó számára lehetővé teszi, hogy érvényes licencet kap, és lejátssa a védett tartalmat.
 
-Ez egy gyakori ügyfél-követelmény, hogy a hitelesített felhasználók egy részhalmaza számára engedélyezett a tartalom megtekintése, míg mások nem, például olyan ügyfelek, akik alapszintű és prémium előfizetéseket biztosítanak a videó tartalmához. Az alapszintű előfizetés után fizetett ügyfelek nem tekinthetik meg a prémium szintű előfizetést igénylő tartalmakat. A követelmények teljesítéséhez szükséges további lépések az alábbiak:
+Gyakori ügyfélkövetelmény, hogy a hitelesített felhasználók egy részéhez engedélyezve van a tartalom megtekintése, míg mások nem, például olyan ügyfelek, akik alapszintű és prémium szintű előfizetéseket kínálnak a videótartalmakhoz. Az alapszintű előfizetésért fizető ügyfelek nem figyelik a prémium előfizetést igénylő tartalmakat. Az alábbiakban a követelménynek való megfelelő további lépések olvashatók:
 
 #### <a name="set-up-the-azure-ad-tenant"></a>Az Azure AD-bérlő beállítása
 
-1. Két fiók beállítása a bérlőben. Ezek neve *premium_user* és *basic_user*;
-1. Hozzon létre egy felhasználói csoportot, és hívja meg a *PremiumGroup*.
-1. Adja hozzá a *premium_usert* a *PremiumGroup* tagként, de ne adja hozzá a *basic_usert* a csoporthoz.
-1. Jegyezze fel a *PremiumGroup* **objektum-azonosítóját** .
+1. Állítson be két fiókot a bérlőben. Ezek neve lehet *premium_user* és *basic_user;*
+1. Hozzon létre egy felhasználói csoportot, és hívja *meg PremiumGroup-nak.*
+1. Adja hozzá *premium_user* prémium szintű *csoporthoz* tagként, de ne  adja hozzá a basic_user a csoporthoz.
+1. Jegyezze fel **a** *PremiumGroup objektumazonosítóját.*
 
-#### <a name="set-up-the-media-services-account"></a>A Media Services fiók beállítása
+#### <a name="set-up-the-media-services-account"></a>A Media Services beállítása
 
-Módosítsa `ContentKeyPolicyRestriction` (ahogy az a fenti részben látható a Media Service-fiókban), adjon hozzá egy *csoportok* nevű jogcímet, ahol `ida_EntitledGroupObjectId` a *PremiumGroup* objektumazonosító értéke:
+Módosítsa a (Beállítás a Media Service-fiókban című szakaszban látható módon) egy groups nevű jogcím hozzáadásával, amelyben a `ContentKeyPolicyRestriction`  `ida_EntitledGroupObjectId` *PremiumGroup* objektumazonosítója az értéke:
 
 ```dotnetcli
 
@@ -342,44 +342,44 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-A *groups* jogcím egy [korlátozott jogcímek készletének](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) tagja az Azure ad-ben.
+A *groups* jogcím egy korlátozott jogcímkészlet [tagja](../../active-directory/develop/reference-claims-mapping-policy-type.md#claim-sets) az Azure AD-ban.
 
 #### <a name="test"></a>Tesztelés
 
-1. Jelentkezzen be a *premium_user* -fiókkal. Képesnek kell lennie a védett tartalom lejátszására.
-1. Jelentkezzen be a *basic_user* -fiókkal. Olyan hibaüzenetet kap, amely jelzi, hogy a videó titkosított, de nincs kulcs a visszafejtéshez. Ha megtekinti az eseményeket, a hibákat és a letöltéseket a lejátszó diagnosztikai átfedésének alján lévő legördülő listáról, akkor a hibaüzenetnek jeleznie kell, hogy az Azure AD-jogkivonat végpontja által kiállított JWT esetében a hiányzó jogcím értéke miatt sikertelen volt a licenc.
+1. Jelentkezzen be az *premium_user* fiókkal. Képesnek kell lennie lejátszani a védett tartalmat.
+1. Jelentkezzen be az *basic_user* fiókkal. Hibaüzenetet kell kapnia, amely jelzi, hogy a videó titkosított, de nincs kulcs a visszafejtéséhez. Ha megtekinti az eseményeket, a hibákat és a letöltéseket a lejátszó diagnosztikai átfedésének alján található legördülő menüvel, a hibaüzenetnek azt kell jeleznie, hogy a licenc beszerzése sikertelen volt, mert a csoportok jogcímértékének hiányzik az Azure AD-jogkivonat végpontja által kiadott JWT-beli jogcímben.
 
-### <a name="supporting-multiple-media-service-accounts-across-multiple-subscriptions"></a>Több Media Service-fiók támogatása (több előfizetés között)
+### <a name="supporting-multiple-media-service-accounts-across-multiple-subscriptions"></a>Több médiaszolgáltatás-fiók támogatása (több előfizetésben)
 
-Egy ügyfél több Media Service-fiókkal is rendelkezhet egy vagy több Azure-előfizetésen belül. Előfordulhat például, hogy egy ügyfél rendelkezik egy Media Service-fiókkal elsődlegesként, egy másikat másodlagosként/biztonsági mentésként, egy másikat pedig fejlesztési és tesztelési célokra.
+Egy ügyfél több médiaszolgáltatás-fiókkal is lehet egy vagy több Azure-előfizetésben. Egy ügyfél például egy Media Service-fiókkal elsődlegesként, egy másikkal másodlagos/biztonsági másolatként, egy másikkal pedig fejlesztési/tesztelési célokat biztosít.
 
-Mindössze annyit kell tennie, hogy ugyanazt a paramétert használja, mint amelyet a (a Media Service-fiók beállítása) szakaszban használt, az `ContentKeyPolicyRestriction` összes Media Service-fiók létrehozásához.
+Mindössze meg kell győződni arról, hogy ugyanazt a paraméterkészletet használja, mint amit a (Beállítás a Media Service-fiókban) szakaszban használt az létrehozásához az összes `ContentKeyPolicyRestriction` Media Service-fiókban.
 
-### <a name="supporting-a-customer-its-vendors-andor-subsidiaries-across-multiple-aad-tenants"></a>Ügyfelek, szállítóik és/vagy leányvállalatok támogatása több HRE-bérlőn keresztül
+### <a name="supporting-a-customer-its-vendors-andor-subsidiaries-across-multiple-aad-tenants"></a>Ügyfél, annak beszállítói és/vagy leányvállalatok támogatása több AAD-bérlőn
 
-A megoldás felhasználói, az ügyfél leányvállalatai, szállítói/partnerei pedig különböző HRE-bérlők, például,, `mycustomer.com` `mysubsidiary.com` és `myparther.com` . Habár ez a megoldás egyetlen konkrét HRE-bérlőre épül, például a `mycustomer.com` -ben, más bérlők felhasználói számára is dolgozhat.
+A megoldás felhasználóiként az ügyfél leányvállalatai, szállítói/partnerei különböző AAD-bérlőkben lehetnek, például `mycustomer.com` , `mysubsidiary.com` és `myparther.com` . Bár ez a megoldás egyetlen adott AAD-bérlőre épül, például a bérlőre, más bérlők felhasználói számára `mycustomer.com` is lehetővé teszi a megoldás megfelelő megoldását.
 
-`mycustomer.com`Ha ezt a megoldást használja, vegyen fel egy felhasználót a `mypartner.com` vendég felhasználóként a `mycustomer.com` bérlőbe. Győződjön meg arról, hogy a `mypartner.com` felhasználó aktiválja a vendég fiókot. A vendég fiók lehet egy másik HRE-bérlő vagy egy `outlook.com` fiók.
+Ehhez a megoldáshoz adjon hozzá egy felhasználót `mycustomer.com` vendégfelhasználóként a `mypartner.com` `mycustomer.com` bérlőhöz. Győződjön meg `mypartner.com` arról, hogy a felhasználó aktiválja a vendégfiókot. A vendégfiók egy másik AAD-bérlőből vagy egy fiókból `outlook.com` is lehet.
 
-Figyelje meg, hogy a felhasználótól a rendszerbe való `mypartner.com` aktiválást követően a `mycustomer.com` rendszer továbbra is a saját/eredeti HRE-bérlőn keresztül hitelesíti magát, `mypartner.com` de a `access_token` kiállítója `mycustomer.com` .
+Figyelje meg, hogy a vendégfelhasználói a -ban való aktiválása után is a saját/eredeti AAD-bérlőjükben hitelesítve vannak, de az a által `mypartner.com` `mycustomer.com` van `mypartner.com` `access_token` kibocsátva. `mycustomer.com`
 
-### <a name="supporting-a-customer-tenantsubscription-with-a-setup-in-your-subscriptiontenant"></a>Ügyfél-bérlő/előfizetés támogatása az előfizetésben/bérlőben lévő beállításokkal
+### <a name="supporting-a-customer-tenantsubscription-with-a-setup-in-your-subscriptiontenant"></a>Ügyfélbérlő/-előfizetés támogatása egy beállítással az előfizetésben/bérlőben
 
-A telepítő segítségével tesztelheti a védett tartalmakat az ügyfél Media Service-fiókjában/előfizetésében. Egy Azure AD-Bérlővel és egy, az előfizetéshez tartozó Media Service-fiókkal kell beállítania. Az ügyfél Media Service-fiókja az Azure-előfizetésében saját Azure AD-Bérlővel lenne.
+A beállítással tesztelheti a védett tartalmakat az ügyfél Media Service-fiókjában/-előfizetésében. Ezt egy Azure AD-bérlővel és egy media service-fiókkal kell beállítania ugyanabban az előfizetésben. Az ügyfél Media Service-fiókja a saját Azure AD-bérlővel az Azure-előfizetésében lenne.
 
-1. Adja hozzá az ügyfél fiókját a bérlőhöz vendég fiókként.
-1. Az ügyféllel együttműködve előkészítheti a védett tartalmakat az ügyfél Media Service-fiókjába úgy, hogy a következő három paramétert adja meg a Media Service-fiók beállítása szakaszban felsoroltak szerint.
+1. Adja hozzá az ügyfélfiókot a bérlőhöz vendégfiókként.
+1. Az ügyféllel való munka során készítse elő a védett tartalmakat az ügyfél médiaszolgáltatás-fiókjában a Beállítás a Media Service-fiókban szakaszban felsorolt három paraméter megszava segítségével.
 
-Az ügyfél ezután megkeresheti a beállításokat, bejelentkezhet a vendég fiókkal, és tesztelheti saját védett tartalmát. Saját fiókjával is bejelentkezhet, és tesztelheti az ügyfél tartalmát.
+Az ügyfél ezután tallózással megkeresheti a beállítást, bejelentkezhet a vendégfiókkal, és tesztelheti a saját védett tartalmát. A saját fiókjával is bejelentkezhet, és tesztelheti az ügyfél tartalmát.
 
-Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben vagy a Microsoft-előfizetéssel rendelkező egyéni bérlőn belül a mintaoldat is be van állítva. Az Azure Media Service-példány a Bérlővel egy másik előfizetésből is származhat.
+A mintamegoldás egy Microsoft-előfizetéssel vagy Microsoft-előfizetéssel egy egyéni bérlővel is beállítható egy Microsoft-bérlőben. Az Azure Media Service-példány egy másik előfizetésből is lehet a bérlővel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!WARNING]
-> Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
+> Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag során létrehozott erőforrásokat. Ellenkező esetben díjat számítunk fel értük.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: tartalom titkosítása](drm-encrypt-content-how-to.md)
+> [Rövid útmutató: Tartalom titkosítása](drm-encrypt-content-how-to.md)
