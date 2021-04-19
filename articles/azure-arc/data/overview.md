@@ -1,61 +1,72 @@
 ---
 title: Mik azok az Azure Arc-kompatibilis adatszolgáltatások?
-description: Az Azure arc-kompatibilis adatszolgáltatások bemutatása
+description: A Azure Arc-kompatibilis adatszolgáltatások
+ms.custom: references_regions
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: overview
-ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609139"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716096"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Mik azok az Azure Arc-kompatibilis adatszolgáltatások (előzetes verzió)?
 
-Az Azure arc lehetővé teszi az Azure-beli adatszolgáltatások helyszíni, peremhálózati és nyilvános felhőben történő futtatását a Kubernetes és az Ön által választott infrastruktúra használatával.
+Azure Arc lehetővé teszi az Azure-beli adatszolgáltatások helyszíni, peremhálózati és nyilvános felhőkben való futtatását a Kubernetes és a választott infrastruktúra használatával.
 
-Jelenleg a következő Azure arc-kompatibilis adatszolgáltatások érhetők el előzetes verzióban:
+Jelenleg az alábbi Azure Arc-kompatibilis adatszolgáltatások érhető el előzetes verzióban:
 
 - SQL Managed Instance
-- PostgreSQL nagy kapacitású
+- PostgreSQL Hyperscale
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="always-current"></a>Mindig aktuális
 
-Az Azure arc-kompatibilis adatszolgáltatások, például az Azure arc-kompatibilis SQL felügyelt példány és az Azure arc-kompatibilis PostgreSQL-nagy kapacitású rendszeresen frissítéseket kapnak, beleértve a karbantartási javításokat és az Azure-hoz hasonló új szolgáltatásokat. A Microsoft Container Registry frissítései az Ön számára biztosítottak, és az üzembe helyezési lépésszám a szabályzatoknak megfelelően van beállítva. Így a helyszíni adatbázisok naprakészek maradhatnak, miközben biztosítjuk a vezérlés fenntartását. Mivel az Azure arc-kompatibilis adatszolgáltatások egy előfizetési szolgáltatás, többé nem fog megszűnni az adatbázisainak támogatásával kapcsolatos helyzetek.
+Azure Arc-kompatibilis adatszolgáltatások sql Azure Arc példány és a Azure Arc-kompatibilis PostgreSQL – rugalmas skálázás rendszeresen kap frissítéseket, beleértve a karbantartási javításokat és az Azure-beli élményhez hasonló új funkciókat. A rendszer Microsoft Container Registry frissítéseket biztosít Önnek, és az üzembe helyezési ütemet Ön állíthatja be a házirendek szerint. Így a helyszíni adatbázisok naprakészek maradhatnak, miközben gondoskodnak az irányítás fenntartásáról. Mivel Azure Arc-kompatibilis adatszolgáltatások előfizetési szolgáltatásról van szó, az adatbázisok támogatása többé nem fog véget érni.
 
 ## <a name="elastic-scale"></a>Rugalmas méretezés
 
-A helyszíni rugalmas rugalmasság lehetővé teszi, hogy az adatbázisok méretezése dinamikusan, ugyanúgy, mint az Azure-ban, az infrastruktúra rendelkezésre álló kapacitása alapján. Ezzel a képességgel az illékony igényekkel rendelkező burst forgatókönyvek is megtalálhatók, beleértve azokat a forgatókönyveket, amelyekben valós időben kell bevenni az adatok betöltését és lekérdezését, és a másodpercben megadott időpontig. Emellett az adatbázis-példányokat az Azure Database for PostgreSQL nagy kapacitású egyedi Hyper-skála üzembe helyezési lehetőségével is felskálázással bővítheti. Ez a funkció lehetővé teszi az adatok számítási feladatait a kapacitás optimalizálásának növelésére, az egyedi kibővített *olvasási és írási műveletek* használatával.
+A felhőhöz hasonló helyszíni rugalmasság lehetővé teszi, hogy az adatbázisokat dinamikusan, az infrastruktúra rendelkezésre álló kapacitásának megfelelő módon, dinamikusan skálázható fel vagy le, ugyanúgy, mint az Azure-ban. Ez a képesség megfelelhet az ideiglenes igényekkel rendelkező adatlökés-forgatókönyveknek, beleértve azokat az eseteket is, amelyekhez valós időben, bármilyen léptékben, másodpercnél másodpercnél nagyobb válaszidővel kell adatokat be- és lekérdezni. Emellett az adatbázispéldányokat horizontálisan fel is skálázhatja a hyperscale egyedi, Azure Database for PostgreSQL üzembe helyezési lehetőségének használatával. Ez a képesség tovább növeli az adatterhelések kapacitásoptimalizálását az egyedi horizontális *felskálásos* olvasások és írások használatával.
 
 ## <a name="self-service-provisioning"></a>Önkiszolgáló kiépítés
 
-Az Azure arc más Felhőbeli előnyöket is biztosít, például a gyors üzembe helyezést és az automatizálást a skálán. A Kubernetes-alapú előkészítésnek köszönhetően másodpercek alatt üzembe helyezhet egy adatbázist a grafikus felhasználói felületen vagy a CLI-eszközökkel.
+Azure Arc más felhőbeli előnyöket is kínál, például a gyors üzembe helyezést és a nagy léptékű automatizálást. A Kubernetes-alapú vezénylésnek köszönhetően másodpercek alatt üzembe helyezhet egy adatbázist grafikus felhasználói felülettel vagy CLI-eszközökkel.
 
 ## <a name="unified-management"></a>Egységes felügyelet
 
-A jól ismert eszközök, például a Azure Portal, a Azure Data Studio és a segítségével az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure arc használatával üzembe helyezett adategységek egyesített nézetét is megtekintheti. A környezetében és az Azure-ban nem csupán számos különböző, a környezetben és az Azure-ban található, valamint a Kubernetes API-kkal kapcsolatos napló-és telemetria lehet megtekinteni és elemezni a mögöttes infrastruktúra kapacitásának és állapotának elemzéséhez. A honosított log Analytics és a teljesítmény monitorozása mellett mostantól kihasználhatja a Azure Monitort a teljes hagyatékon keresztüli átfogó operatív elemzésekhez.
+Az olyan ismerős eszközök használatával, mint a Azure Portal, a Azure Data Studio és a , mostantól egységes nézetet kaphat az összes, a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Arc. A környezetben és az Azure-ban számos különféle relációs adatbázist megtekinthet és kezelhet, de naplókat és telemetriai adatokat is le tud kapni a Kubernetes API-kból a mögöttes infrastruktúra kapacitásának és állapotának elemzéséhez. A honosított naplóelemzés és a teljesítményfigyelés mellett mostantól a Azure Monitor átfogó működési elemzésekhez is használhatja a teljes tulajdont.
 
-## <a name="disconnected-scenario-support"></a>Leválasztott forgatókönyvek támogatása
+## <a name="disconnected-scenario-support"></a>Leválasztott forgatókönyv támogatása
 
-A szolgáltatások számos szolgáltatása, például az önkiszolgáló üzembe helyezés, az automatizált biztonsági mentések/visszaállítás és a figyelés helyileg is futtatható az infrastruktúrában az Azure-hoz való közvetlen kapcsolódással vagy anélkül. A közvetlenül az Azure-hoz való csatlakozás további lehetőségeket biztosít a más Azure-szolgáltatásokkal való integrációhoz, például a Azure Monitorhoz, és lehetővé teszi, hogy a világ bármely pontjáról a Azure Portal és Azure Resource Manager API-kat használja az Azure arc-kompatibilis adatszolgáltatások kezeléséhez.
+Számos szolgáltatás, például az önkiszolgáló kiépítés, az automatikus biztonsági mentések/visszaállítás és a monitorozás helyileg futtathatók az infrastruktúrában az Azure-hoz való közvetlen kapcsolattal vagy anélkül. Ha közvetlenül csatlakozik az Azure-hoz, további lehetőségeket tárhat fel a más Azure-szolgáltatásokkal, például az Azure Monitor-val való integrációhoz, valamint a Azure Portal- és Azure Resource Manager API-k a világ bármely részén való használatának Azure Arc-kompatibilis adatszolgáltatások.
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+Az alábbi táblázat azokat a forgatókönyveket ismerteti, amelyek az Arc-kompatibilis adatszolgáltatások esetében jelenleg támogatottak.
+
+|Azure-régiók  |Közvetlen csatlakoztatott mód  |Közvetett csatlakoztatott mód  |
+|---------|---------|---------|
+|USA keleti régiója|Elérhető|Elérhető
+|Nyugat-Európa |Elérhető |Elérhető
+|Észak-Európa|Elérhető|Elérhető
 
 ## <a name="next-steps"></a>Következő lépések
 
-> **Csak szeretné kipróbálni a dolgokat?**  
-> Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
+> **Csak ki szeretné próbálni a dolgokat?**  
+> Az Azure Arc [Jump Azure Kubernetes Service start](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) (AKS), az AWS Elastic Kubernetes Service (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gép gyors üzembe helyezési útmutatója.
 
 [Az ügyféleszközök telepítése](install-client-tools.md)
 
-[Hozza létre az Azure arc-adatkezelőt](create-data-controller.md) (először telepítenie kell az ügyféleszközök telepítését)
+[A Azure Arc létrehozása](create-data-controller.md) (ehhez először telepítenie kell az ügyféleszközöket)
 
-[Azure SQL felügyelt példány létrehozása az Azure arc](create-sql-managed-instance.md) szolgáltatásban (először létre kell hoznia egy Azure arc-adatkezelőt)
+[Hozzon létre Azure SQL felügyelt](create-sql-managed-instance.md) példányt a Azure Arc (először létre kell hoznia egy Azure Arc adatkezelőt)
 
-[Hozzon létre egy Azure Database for PostgreSQL nagy kapacitású-kiszolgáló csoportot az Azure-ív](create-postgresql-hyperscale-server-group.md) (először egy Azure arc-adatkezelőt kell létrehozni)
+[Hozzon létre Azure Database for PostgreSQL hyperscale kiszolgálócsoportot](create-postgresql-hyperscale-server-group.md) a Azure Arc (először létre kell hoznia egy Azure Arc adatkezelőt)
