@@ -1,53 +1,54 @@
 ---
 title: Felhasználók és szerepkörök kezelése Azure IoT Central alkalmazások | Microsoft Docs
 description: Rendszergazdaként a felhasználók és szerepkörök kezelése a Azure IoT Central alkalmazásban
-author: vishwam
-ms.author: vishwams
+author: lmasieri
+ms.author: lmasieri
 ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: cff8830d180b0c234e54f7578ed9fafafeb598f0
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599060"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719168"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Felhasználók és szerepkörök kezelése az IoT Central-alkalmazásban
 
 Ez a cikk azt ismerteti, hogy rendszergazdaként hogyan adhat hozzá, szerkeszthet és törölhet felhasználókat a Azure IoT Central alkalmazásban. A cikk azt is bemutatja, hogyan kezelheti az alkalmazás szerepköreit.
 
+Az Adminisztráció szakasz eléréséhez **és eléréséhez** rendszergazdai szerepkörben kell lennie egy Azure IoT Central alkalmazáshoz.  Ha létrehoz egy Azure IoT Central alkalmazást, a rendszer automatikusan  hozzáadja Az alkalmazás rendszergazdai szerepkörhöz.
+
 ## <a name="add-users"></a>Felhasználók hozzáadása
 
 Minden felhasználónak felhasználói fiókkal kell lennie, mielőtt bejelentkezhet és hozzáférhet egy alkalmazáshoz. IoT Central jelenleg támogatja a Microsoft-fiókokat és Azure Active Directory fiókokat, de a Azure Active Directory nem.
 
-További információkért lásd a Microsoft-fiók [gyorsútmutató: Új](../../active-directory/fundamentals/add-users-azure-active-directory.md)felhasználók hozzáadása a Azure Active Directory. [](https://support.microsoft.com/products/microsoft-account?category=manage-account)
+További információkért lásd [a Microsoft-fiók gyorsútmutató:](https://support.microsoft.com/products/microsoft-account?category=manage-account)  [Új](../../active-directory/fundamentals/add-users-azure-active-directory.md)felhasználók hozzáadása a Azure Active Directory.
 
-1. Ha hozzá szeretne adni egy felhasználót egy IoT Central alkalmazáshoz, az Adminisztráció **szakasz Felhasználók** **lapjára kell** majd átmenni.
-    
-    > [!div class="mx-imgBorder"]
-    >![Felhasználók kezelése](media/howto-manage-users-roles/manage-users-pnp.png)
+1. Ha hozzá szeretne adni egy felhasználót egy IoT Central alkalmazáshoz, a Felügyelet **szakasz Felhasználók** **lapjára kell** majd átmenni.
+
+  :::image type="content" source="media/howto-manage-users-roles/manage-users-pnp.png" alt-text="Felhasználók kezelése":::
 
 1. Felhasználó hozzáadásához a Felhasználók **lapon** válassza a **+ Felhasználó hozzáadása lehetőséget.**
 
 1. Válasszon egy szerepkört a felhasználó számára a **Szerepkör** legördülő menüből. A szerepkörökről további információt a cikk [Szerepkörök](#manage-roles) kezelése szakaszában talál.
 
-    > [!div class="mx-imgBorder"]
-    >![Felhasználó hozzáadása és szerepkör kiválasztása](media/howto-manage-users-roles/add-user-pnp.png)
+  :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="Adjon hozzá egy felhasználót, és válasszon ki egy szerepkört.":::
 
-    > [!NOTE]
-    > Azok a felhasználók, akik olyan egyéni szerepkörben vannak, amely engedélyt ad nekik más felhasználók hozzáadására, csak a saját szerepkörükhöz azonos vagy kevesebb engedéllyel rendelkező szerepkörhöz adhatnak hozzá felhasználókat.
-    > 
-    > Ha egy felhasználót törölnek a Azure Active Directory, majd újra hozzáadják, nem fog tudni automatikusan bejelentkezni az IoT Central alkalmazásba. A hozzáférés újra engedélyezéséhez az alkalmazás rendszergazdájának törölnie kell, majd újra hozzá kell adni a felhasználót az alkalmazásban.
+  > [!NOTE]
+  > Egy egyéni szerepkörben rendelkező felhasználó, aki engedélyt ad neki más felhasználók hozzáadására, csak a saját szerepkörével azonos vagy kevesebb engedéllyel rendelkező szerepkörhöz adhat hozzá felhasználókat.
+
+  > [!NOTE]
+  > Ha egy felhasználót törölnek a Azure Active Directory, majd újra hozzáadják, nem fog tudni bejelentkezni az IoT Central alkalmazásba. A hozzáférés újra engedélyezéséhez az alkalmazás rendszergazdájának törölnie kell, majd újra hozzá kell adni a felhasználót az alkalmazásban.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>A felhasználókhoz rendelt szerepkörök szerkesztése
 
 A szerepköröket a hozzárendelésük után nem lehet módosítani. A felhasználóhoz rendelt szerepkört úgy módosíthatja, hogy törli a felhasználót, majd ismét hozzáadja egy másik szerepkörhöz.
 
 > [!NOTE]
-> A hozzárendelt szerepkörök a IoT Central alkalmazáshoz vannak rendelve, és nem kezelhetők az Azure Portalról.
+> A hozzárendelt szerepkörök a IoT Central alkalmazásra vonatkoznak, és nem kezelhetők az Azure Portalról.
 
 ## <a name="delete-users"></a>Felhasználók törlése
 
@@ -62,7 +63,7 @@ A szerepkörökkel szabályozhatja, hogy a szervezeten belül ki számára enged
 
 ### <a name="administrator"></a>Rendszergazda
 
-A Rendszergazda **szerepkörben a** felhasználók kezelhetik és vezérelheti az alkalmazás minden részét, beleértve a számlázást is.
+A Rendszergazda **szerepkörben a** felhasználók az alkalmazás minden részét kezelhetik és vezérelheti, beleértve a számlázást is.
 
 Az alkalmazást létrehozó felhasználó automatikusan hozzá lesz rendelve a **Rendszergazda szerepkörhöz.** A Rendszergazda szerepkörben mindig legalább egy **felhasználónak kell** lennie.
 
@@ -72,7 +73,7 @@ A Szerkesztő **szerepkörben** a felhasználók az alkalmazás minden részét 
 
 ### <a name="operator"></a>Operátor
 
-Az Operátor **szerepkörben a** felhasználók figyelhetik az eszközök állapotát. Az eszközsablonok módosítása és az alkalmazás felügyelete nem engedélyezett. A kezelők eszközöket adhatnak hozzá és törölhet, eszközkészleteket kezelnek, valamint elemzéseket és feladatokat futtatnak. 
+A Kezelő **szerepkörben a** felhasználók figyelhetik az eszközök állapotát. Az eszközsablonok módosítása és az alkalmazás felügyelete nem engedélyezett. A kezelők eszközöket adhatnak hozzá és törölhet, eszközkészleteket kezelnek, valamint elemzéseket és feladatokat futtatnak.
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -85,7 +86,7 @@ A felhasználókat ugyanúgy használhatja az egyéni szerepkörhöz, mint a be�
 
 ### <a name="custom-role-options"></a>Egyéni szerepkör-beállítások
 
-Amikor egyéni szerepkört határoz meg, kiválaszthatja azokat az engedélyeket, amelyekhez a felhasználó a szerepkör tagja lesz. Egyes engedélyek másoktól függenek. Ha például hozzáadja  az Alkalmazás irányítópultjának frissítése engedélyt egy szerepkörhöz, akkor az Alkalmazás-irányítópultok megtekintése engedélyre **is szüksége** lesz. Az alábbi táblázatok összefoglalják az egyéni szerepkörök létrehozásakor használható elérhető engedélyeket és azok függőségeit.
+Amikor egyéni szerepkört határoz meg, kiválaszthatja azokat az engedélyeket, amelyekre a felhasználónak jogosultságot kell adni, ha tagja a szerepkörnek. Egyes engedélyek másoktól függenek. Ha például hozzáadja  a Személyes irányítópultok frissítése engedélyt  egy szerepkörhöz, a Személyes irányítópultok megtekintése engedély automatikusan hozzá lesz adva. Az alábbi táblázatok összefoglalják az egyéni szerepkörök létrehozásakor használható elérhető engedélyeket és azok függőségeit.
 
 #### <a name="managing-devices"></a>Eszközök kezelése
 
@@ -160,7 +161,7 @@ Amikor egyéni szerepkört határoz meg, kiválaszthatja azokat az engedélyeket
 | Frissítés | Nézet   |
 | Másolás | Nézet <br/> Egyéb függőségek: Eszközsablonok, eszközpéldányok, eszközcsoportok, irányítópultok, adatexport, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
 | Törlés | Nézet   |
-| Teljes hozzáférés | Megtekintés, Frissítés, Másolás, Törlés <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, alkalmazás-irányítópultok, adatexportáció, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
+| Teljes hozzáférés | Megtekintés, frissítés, másolás, törlés <br/> Egyéb függőségek: Eszközsablonok, eszközcsoportok, alkalmazás-irányítópultok, adatexportáció, védjegyezés, súgóhivatkozások, egyéni szerepkörök, szabályok megtekintése |
 
 **Alkalmazássablon exportálási engedélyei**
 

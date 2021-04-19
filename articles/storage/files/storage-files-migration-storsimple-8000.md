@@ -1,329 +1,329 @@
 ---
-title: StorSimple 8000 sorozat migrálása Azure File Syncre
-description: Megtudhatja, hogyan telepíthet át egy StorSimple 8100-es vagy 8600-es készüléket Azure File Syncba.
+title: StorSimple 8000 sorozat áttelepítése Azure File Sync
+description: Útmutató storSimple 8100- vagy 8600-as berendezés mikori Azure File Sync.
 author: fauhse
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7bde8fe404e0839bf14500bff4fb92ce8cc4ea04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075582"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717350"
 ---
-# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
+# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 migrálás Azure File Sync
 
-Az StorSimple 8000 sorozatot a 8100, a 8600 fizikai, a helyszíni készülékek és a Cloud Service-összetevők jelölik. Ezeknek a készülékeknek az adatait áttelepítheti egy Azure File Sync környezetbe. A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
+A StorSimple 8000 sorozatot a 8100-as vagy a 8600-as fizikai, helyszíni berendezés és azok felhőszolgáltatás-összetevői képviselik. Az adatokat bármelyik berendezésről át lehet mikalálni egy Azure File Sync környezetbe. Azure File Sync az alapértelmezett és stratégiai hosszú távú Azure-szolgáltatás, amelybe a StorSimple-berendezések migrálhatóak.
 
-A StorSimple 8000 sorozat a 2022 decemberében ér [véget](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) . Fontos, hogy a lehető leghamarabb megkezdje az áttelepítés megtervezését. Ez a cikk a Azure File Syncba való sikeres áttelepítéshez szükséges háttérbeli ismereteket és áttelepítési lépéseket ismerteti.
+A StorSimple 8000-es [](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) sorozat 2022 decemberéig fog véget érni. Fontos, hogy a lehető leghamarabb megkezdődhet a migrálás megtervezése. Ez a cikk a sikeres áttelepítéshez szükséges háttérismereteket és migrálási lépéseket Azure File Sync.
 
-## <a name="phase-1-prepare-for-migration"></a>1. fázis: Felkészülés az áttelepítésre
+## <a name="phase-1-prepare-for-migration"></a>1. fázis: Felkészülés a migrálásra
 
-Ez a szakasz azokat a lépéseket tartalmazza, amelyeket a StorSimple-kötetekről az Azure-fájlmegosztásba való áttelepítés kezdetekor kell végrehajtania.
+Ez a szakasz a StorSimple-kötetek Azure-fájlmegosztásokbe való migrálásának elején szükséges lépéseket tartalmazza.
 
 ### <a name="inventory"></a>Leltár
 
-Amikor megkezdi az áttelepítés megtervezését, először azonosítsa az összes áttelepíteni kívánt StorSimple-berendezést és kötetet. Ezt követően eldöntheti, hogy a legjobb áttelepítési útvonalat választotta-e.
+A migrálás megtervezésekor először azonosítsa az összes migrálni szükséges StorSimple-berendezést és -kötetet. Miután ezt megtette, eldöntheti, melyik migrálási útvonal a legmegfelelőbb az Ön számára.
 
-* A StorSimple fizikai berendezések (8000 sorozat) ezt az áttelepítési útmutatót használják.
-* A Virtual Appliances, [a StorSimple 1200 sorozat egy másik áttelepítési útmutatót használ](storage-files-migration-storsimple-1200.md).
+* A StorSimple fizikai berendezések (8000-es sorozat) ezt a migrálási útmutatót használják.
+* A [StorSimple 1200](storage-files-migration-storsimple-1200.md)sorozatú virtuális berendezésekhez használjon egy másik migrálási útmutatót.
 
-### <a name="migration-cost-summary"></a>Áttelepítési ár összegzése
+### <a name="migration-cost-summary"></a>A migrálás költségeinek összegzése
 
-A StorSimple Data Manager-erőforrások áttelepítési feladataival az Azure-fájlmegosztás StorSimple-köteteiről történő áttelepítése díjmentes. A Migrálás során és azt követően további költségek merülhetnek fel:
+A StorSimple-kötetek Azure-fájlmegosztásaiba migrálási feladatokon keresztüli migrálás ingyenes StorSimple Data Manager erőforrásban. A migrálás során és után egyéb költségek is felmerülnek:
 
-* **Kimenő hálózati forgalom:** A StorSimple-fájlok egy adott Azure-régióban lévő Storage-fiókban laknak. Ha kiépíti az áttelepített Azure-fájlmegosztást egy olyan Storage-fiókba, amely ugyanabban az Azure-régióban található, a kimenő forgalomért nem kell fizetnie. A fájlokat áthelyezheti egy másik régióban lévő Storage-fiókba az áttelepítés részeként. Ebben az esetben a kimenő forgalomra vonatkozó költségek Önre lesznek érvényesek.
-* **Azure-fájlmegosztás tranzakciói:** Ha a fájlok egy Azure-fájlmegosztás részébe másolódnak (az áttelepítés részeként vagy az egyiken kívül), a rendszer a tranzakciós költségeket a fájlok és a metaadatok írásakor alkalmazza. Ajánlott eljárásként indítsa el az Azure-fájlmegosztást a tranzakció optimalizált szintjére az áttelepítés során. Az áttelepítés befejezése után váltson a kívánt szintjére. A következő fázisok ezt a pontot fogják hívni a megfelelő pontra.
-* **Azure-fájlmegosztás szintjeinek módosítása:** Az Azure fájlmegosztás költségei tranzakcióinak szintje változó. A legtöbb esetben költséghatékonyabb lesz az előző pont javaslatainak követésére.
-* **Tárolási díj:** Amikor az áttelepítés megkezdi a fájlok másolását egy Azure-fájlmegosztásba, Azure Files a tárolót felhasználja és számlázza. Az áttelepített biztonsági másolatok az [Azure fájlmegosztás pillanatképei](storage-snapshots-files.md)lesznek. A fájlmegosztás-Pillanatképek csak a bennük lévő különbségek tárolási kapacitását használják.
-* **StorSimple:** Amíg nincs esélye a StorSimple-eszközök és a Storage-fiókok kiépítésére, a tárolás, a biztonsági másolatok és a berendezések StorSimple költségeit továbbra is megtörténik.
+* **Hálózati forgalom:** A StorSimple-fájlok egy adott Azure-régión belüli tárfiókban vannak. Ha az átkért Azure-fájlmegosztásokat egy ugyanabban az Azure-régióban található tárfiókba osztja ki, a rendszer nem számít fel ki- és visszalépési költségeket. A migrálás részeként áthelyezheti a fájlokat egy másik régióban található tárfiókba. Ebben az esetben a ki- és visszalépési költségek vonatkoznak Önre.
+* **Azure-fájlmegosztási tranzakciók:** Amikor fájlokat másol egy Azure-fájlmegosztásba (a migrálás részeként vagy azon kívül), a tranzakciós költségek a fájlok és metaadatok írása során jelentkeznek. Ajánlott eljárásként indítsa el az Azure-fájlmegosztást a tranzakcióoptimalált szinten a migrálás során. A migrálás befejezése után váltson a kívánt szintre. Ezt a következő fázisok a megfelelő ponton mutatják be.
+* **Azure-fájlmegosztási szint módosítása:** Azure-fájlmegosztás költségtranzakcióinak módosítása. A legtöbb esetben költséghatékonyabb, ha követi az előző pont tanácsait.
+* **Tárolási költségek:** Amikor a migrálás elkezd fájlokat másolni egy Azure-fájlmegosztásba, Azure Files a rendszer felhasználja és kiszámlázja a tárterületet. A migrált biztonsági másolatok [Azure-fájlmegosztási pillanatképek lesznek.](storage-snapshots-files.md) A fájlmegosztási pillanatképek csak a tárkapacitást fogyasztják az eltéréseikhez.
+* **StorSimple:** Amíg nincs lehetősége megszüntetni a StorSimple-eszközöket és -tárfiókokat, a StorSimple tárolási, biztonsági mentési és berendezési költségei továbbra is bekövetkeznek.
 
-### <a name="direct-share-access-vs-azure-file-sync"></a>Közvetlen megosztás – hozzáférés vagy Azure File Sync
+### <a name="direct-share-access-vs-azure-file-sync"></a>Közvetlen megosztás-hozzáférés és Azure File Sync
 
-Az Azure-fájlmegosztás a Fájlszolgáltatások üzembe helyezéséhez szükséges lehetőségek teljes új világát nyitja meg. Az Azure-fájlmegosztás csak egy SMB-megosztás a felhőben, amellyel beállíthatja, hogy a felhasználók közvetlenül az SMB protokollon keresztül férhessenek hozzá az ismerős Kerberos-hitelesítéssel és a meglévő NTFS-engedélyekkel (fájlok és mappák ACL-ekkel), amelyek natív módon működnek. További információ az [Azure-fájlmegosztás identitás-alapú eléréséről](storage-files-active-directory-overview.md).
+Az Azure-fájlmegosztások új lehetőségeket nyitnak meg a fájlszolgáltatások üzembe helyezésének strukturálása terén. Az Azure-fájlmegosztások csupán SMB-megosztások a felhőben, amelyek segítségével a felhasználók közvetlenül az SMB protokollon keresztül férhetnek hozzá a már ismerős Kerberos-hitelesítéssel és a meglévő NTFS-engedélyekkel (fájl- és mappa ACL-ek) natív módon. További információ az [Azure-fájlmegosztások identitásalapú hozzáférésről.](storage-files-active-directory-overview.md)
 
-A közvetlen hozzáférés alternatívája [Azure file Sync](./storage-sync-files-planning.md). Azure File Sync egy közvetlen analóg, amellyel a StorSimple képes gyorsítótárazni a gyakran használt fájlokat a helyszínen.
+A közvetlen hozzáférés alternatívája a [Azure File Sync.](./storage-sync-files-planning.md) Azure File Sync a StorSimple azon képességének közvetlen analógiása, hogy a gyakran használt fájlokat a helyszínen gyorsítótárazza.
 
-A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
+Azure File Sync microsoftos felhőszolgáltatás, amely két fő összetevőn alapul:
 
-* A fájlok szinkronizálása és a Felhőbeli rétegek a teljesítmény-hozzáférési gyorsítótár létrehozásához bármely Windows-kiszolgálón.
-* A fájlmegosztás natív tárolóként az Azure-ban, amely több protokollon, például az SMB-és a file REST-en keresztül is elérhető.
+* Fájlszinkronizálás és felhőbeli rétegezés a teljesítmény-hozzáférési gyorsítótár létrehozásához bármely Windows Serveren.
+* A fájlmegosztások natív tárolóként érhetők el az Azure-ban, amely több protokollon, például az SMB-protokollon és a fájl REST-en keresztül érhető el.
 
-Az Azure-fájlmegosztás a tárolt fájlokhoz (például attribútumok, engedélyek és időbélyegek) fontos fájl-megbízhatósági szempontokat tart fenn. Az Azure-fájlmegosztás esetében már nincs szükség egy alkalmazásra vagy szolgáltatásra a felhőben tárolt fájlok és mappák értelmezéséhez. Ezeket natív módon érheti el az ismerős protokollokkal és az ügyfelekkel, például a Windows fájlkezelővel. Az Azure file shares lehetővé teszi az általános célú fájlkiszolgáló-adat és az alkalmazásadatok felhőben történő tárolását. Az Azure-fájlmegosztás biztonsági mentése egy beépített funkció, amelyet a Azure Backup tovább javíthat.
+Az Azure-fájlmegosztások megőrzik a tárolt fájlok( például attribútumok, engedélyek és időbélyegek) fontos fájlhűségi szempontjait. Az Azure-fájlmegosztások esetében már nincs szükség arra, hogy egy alkalmazás vagy szolgáltatás értelmezze a felhőben tárolt fájlokat és mappákat. Ezeket natív módon, ismerős protokollokkal és ügyfelekkel, például a Windows-ügyféllel Fájlkezelő. Az Azure-fájlmegosztások lehetővé teszik, hogy általános célú fájlkiszolgálói adatokat és alkalmazásadatokat tárol a felhőben. Az Azure-fájlmegosztások biztonsági mentése egy beépített funkció, amely tovább javítható a Azure Backup.
 
-Ez a cikk az áttelepítési lépésekre összpontosít. Ha többet szeretne megtudni Azure File Sync az áttelepítés előtt, tekintse meg a következő cikkeket:
+Ez a cikk a migrálási lépésekre összpontosít. Ha többet szeretne megtudni az áttelepítés Azure File Sync előtt, tekintse meg a következő cikkeket:
 
-* [Azure File Sync áttekintése](./storage-sync-files-planning.md "Áttekintés")
-* [Azure File Sync telepítési útmutató](storage-sync-files-deployment-guide.md)
+* [Azure File Sync áttekintés](./storage-sync-files-planning.md "Áttekintés")
+* [Azure File Sync üzembe helyezési útmutató](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple szolgáltatás adattitkosítási kulcsa
 
-A StorSimple-berendezés első beállításakor a rendszer létrehozta a "szolgáltatás adattitkosítási kulcsát", és arra utasította, hogy biztonságosan tárolja a kulcsot. Ezzel a kulccsal titkosíthatja a társított Azure Storage-fiókban lévő összes olyan adatforrást, amelyben a StorSimple-berendezés tárolja a fájlokat.
+A StorSimple-berendezés első beállításakor az létrehozott egy "szolgáltatásadat-titkosítási kulcsot", és arra kérte, hogy tárolja biztonságosan a kulcsot. Ezzel a kulccsal titkosíthatja a társított Azure-tárfiók összes adatát, ahol a StorSimple-berendezés tárolja a fájlokat.
 
-A sikeres áttelepítéshez a "szolgáltatás adattitkosítási kulcsa" szükséges. Most már jó ideje beolvasni ezt a kulcsot a rekordokból, egyet a leltárban szereplő összes készülékhez.
+A "szolgáltatásadat-titkosítási kulcs" szükséges a sikeres migráláshoz. Ideje lekérni ezt a kulcsot a rekordokból, egyet a leltárban minden egyes berendezéshez.
 
-Ha nem találja a kulcsokat a rekordokban, létrehozhat egy új kulcsot a készülékről. Minden berendezés egyedi titkosítási kulccsal rendelkezik.
+Ha nem találja a kulcsokat a rekordokban, létrehozhat egy új kulcsot a berendezésből. Minden berendezés egyedi titkosítási kulccsal rendelkezik.
 
-#### <a name="change-the-service-data-encryption-key"></a>A szolgáltatásban tárolt adattitkosítási kulcs módosítása
+#### <a name="change-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs módosítása
 
 [!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
-> Ha úgy dönt, hogyan csatlakozhat a StorSimple-berendezéshez, vegye figyelembe a következőket:
+> Amikor a StorSimple-berendezéshez való csatlakozásról dönt, vegye figyelembe a következőket:
 >
-> * A HTTPS-munkameneten keresztüli csatlakozás a legbiztonságosabb és ajánlott lehetőség.
-> * Az eszköz soros konzoljának közvetlen csatlakoztatása biztonságos, de a soros konzol hálózati kapcsolókon keresztül történő csatlakoztatása nem.
-> * A HTTP-munkamenetek kapcsolatai egy lehetőség, de nincsenek *titkosítva*. Nem ajánlott, kivéve, ha egy zárt, megbízható hálózaton belül vannak használatban.
+> * A HTTPS-munkameneten keresztüli csatlakozás a legbiztonságosabb és ajánlott megoldás.
+> * Az eszköz soros konzoljához való közvetlen csatlakozás biztonságos, de a soros konzolhoz hálózati kapcsolókon keresztül nem.
+> * A HTTP-munkamenet-kapcsolatok választhatók, de *nincsenek titkosítva.* Csak akkor ajánlottak, ha zárt, megbízható hálózaton belül használják őket.
 
-### <a name="storsimple-volume-backups"></a>StorSimple mennyiségi biztonsági mentések
+### <a name="storsimple-volume-backups"></a>StorSimple-kötetek biztonsági mentései
 
-A StorSimple különbözeti biztonsági másolatokat biztosít a kötet szintjén. Az Azure file shares is rendelkezik ezzel a képességgel, amelyet megosztási pillanatképeknek nevezünk.
-Az áttelepítési feladatok csak a biztonsági mentéseket helyezhetik át, nem az élő kötetről származó adatokat. Így a legutóbbi biztonsági mentésnek mindig az áttelepítés során áthelyezett biztonsági másolatok listáján kell szerepelnie.
+A StorSimple különbségi biztonsági mentéseket biztosít a kötet szintjén. Az Azure-fájlmegosztások is képesek erre a képességre, az úgynevezett megosztási pillanatképek.
+Az áttelepítési feladatok csak biztonsági másolatokat tudnak áthelyezni, adatokat nem az élő kötetről. Ezért a legutóbbi biztonsági mentésnek mindig szerepel a migrálás során áthelyezve készült biztonsági másolatok listájában.
 
-Döntse el, hogy át kell-e helyeznie a régebbi biztonsági másolatokat az áttelepítés során.
-Az ajánlott eljárás a lista lehető legkisebb mértékű megtartása, így az áttelepítési feladatok gyorsabban elvégezhető.
+Döntse el, hogy kell-e áthelyezni a régebbi biztonsági másolatokat a migrálás során.
+Ajánlott minél kisebb méretű listát tartani, hogy az áttelepítési feladatok gyorsabban befejeződnek.
 
-Az áttelepíteni kívánt kritikus biztonsági másolatok azonosításához készítse el a biztonsági mentési szabályzatok feladatlistáját. Ilyenek például a következők:
-* A legutóbbi biztonsági mentés. (Megjegyzés: a legutóbbi biztonsági mentésnek mindig a lista részét kell képeznie.)
-* Egy hónapra szóló biztonsági mentés 12 hónapig.
-* Egy biztonsági másolat egy évben három évig. 
+Az áttelepíteni szükséges kritikus fontosságú biztonsági mentések azonosításához készítse el a biztonsági mentési szabályzatok ellenőrzőlistát. Ilyenek például a következők:
+* A legutóbbi biztonsági mentés. (Megjegyzés: A legutóbbi biztonsági mentésnek mindig a lista részének kell lennie.)
+* Havonta egy biztonsági másolat 12 hónapig.
+* Évente egy biztonsági másolat három évre. 
 
-Később, az áttelepítési feladatok létrehozásakor a lista segítségével azonosíthatja azokat a StorSimple-köteteket, amelyeket át kell telepíteni a listán szereplő követelmények kielégítése érdekében.
+Később, az áttelepítési feladatok létrehozásakor a lista segítségével azonosíthatja a StorSimple-kötetek pontosan azokat a biztonsági másolatokat, amelyek át lesznek telepítve a listában található követelmények kielégítéséhez.
 
 > [!CAUTION]
-> A több mint **50** StorSimple mennyiségi biztonsági mentések kiválasztása nem támogatott.
-> Az áttelepítési feladatok csak a biztonsági mentéseket helyezhetik át, az élő kötetről soha nem végeznek adatokat. Ezért a legutóbbi biztonsági mentés a legközelebb esik az élő adatokat, így mindig az áttelepítés során áthelyezendő biztonsági másolatok listájának kell lennie.
+> **50-esnél több** StorSimple-kötet biztonsági mentésének kiválasztása nem támogatott.
+> Az áttelepítési feladatok csak biztonsági másolatokat tudnak áthelyezni, adatokat soha nem az élő kötetről. Ezért a legutóbbi biztonsági mentés az élő adatokhoz a legközelebb áll, ezért mindig az áttelepítés során áthelyezni szükséges biztonsági másolatok listájának kell lennie.
 
-### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>Meglévő StorSimple-kötetek leképezése az Azure-fájlmegosztás számára
+### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>Meglévő StorSimple-kötetek leképezása Azure-fájlmegosztásra
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-### <a name="number-of-storage-accounts"></a>Storage-fiókok száma
+### <a name="number-of-storage-accounts"></a>Tárfiókok száma
 
-Az áttelepítés valószínűleg kihasználja a több Storage-fiók üzembe helyezését, amelyek mindegyike kisebb számú Azure-fájlmegosztást tart fenn.
+A migrálás valószínűleg előnyös lehet több tárfiók üzembe helyezésének, amelyek mindegyikében kevesebb Azure-fájlmegosztás található.
 
-Ha a fájlmegosztás nagymértékben aktív (számos felhasználó vagy alkalmazás használja), akkor két Azure-fájlmegosztás elérheti a Storage-fiókja teljesítménybeli korlátját. Ezért az ajánlott eljárás az, hogy több Storage-fiókba telepítse át őket, amelyek mindegyike saját egyéni fájlmegosztást használ, és általában legfeljebb kettő vagy három megosztást tárol.
+Ha a fájlmegosztások rendkívül aktívak (sok felhasználó vagy alkalmazás használja őket), két Azure-fájlmegosztás elérheti a tárfiók teljesítménykorlátját. Ezért az ajánlott eljárás az, ha több tárfiókba mikalkulál, amelyek mindegyikének saját fájlmegosztása van, és általában tárfiókonként kettő vagy három megosztásnál nem több.
 
-Ajánlott eljárás a Storage-fiókok üzembe helyezése egy fájlmegosztás használatával. Ha archiválási megosztással rendelkezik, több Azure-fájlmegosztás is egyesíthető ugyanabba a Storage-fiókba.
+Az ajánlott eljárás a tárfiókok üzembe helyezése egy-egy fájlmegosztással. Ha archiválási megosztásokkal rendelkezik, több Azure-fájlmegosztást is készletbe tud venni ugyanabban a tárfiókban.
 
-Ezek a szempontok többek között a [Felhőbeli hozzáférés](#direct-share-access-vs-azure-file-sync) (Azure-beli virtuális gépen vagy szolgáltatáson keresztül) a Azure file Syncra vonatkoznak. Ha azt tervezi, hogy kizárólag a Azure File Sync használja ezeket a megosztásokat, az egyetlen Azure Storage-fiókba való csoportosítása rendben van. A jövőben érdemes lehet olyan alkalmazást felemelni és áttérni a felhőbe, amely közvetlenül hozzáfér egy fájlmegosztáshoz, ez a forgatókönyv a magasabb IOPS és adatátviteli kapacitást is élvezi. Vagy megkezdheti egy olyan szolgáltatás használatát az Azure-ban, amely a magasabb IOPS és adatátviteli kapacitást is élvezi.
+Ezek a szempontok inkább a közvetlen [felhőalapú](#direct-share-access-vs-azure-file-sync) hozzáférésre (egy Azure-beli virtuális gépen vagy szolgáltatáson keresztül) vonatkoznak, mint a Azure File Sync. Ha kizárólag a megosztások Azure File Sync használni, akkor több is egyetlen Azure-tárfiókba csoportosít. A jövőben előfordulhat, hogy olyan alkalmazást szeretne átemelni a felhőbe, amely közvetlenül hozzáfér egy fájlmegosztáshoz. Ez a forgatókönyv jobb IOPS-t és átviteli sebességet biztosít. Vagy elkezdhet olyan szolgáltatást használni az Azure-ban, amely szintén nagyobb IOPS-t és átviteli sebességet biztosít.
 
-Ha létrehozta a megosztások listáját, minden egyes megosztást hozzárendel a Storage-fiókhoz, ahol a tároló található.
+Ha listát készített a megosztásokról, leképezi az egyes megosztásokat arra a tárfiókra, ahol a megosztás található.
 
 > [!IMPORTANT]
-> Döntse el egy Azure-régiót, és győződjön meg arról, hogy minden egyes Storage-fiók és Azure File Sync erőforrás megfelel a kiválasztott régiónak.
-> Most ne konfigurálja a hálózati és a tűzfalbeállítások beállításait a Storage-fiókok számára. Ezen konfigurációk ezen a ponton való megváltoztatásával lehetetlenné válik az áttelepítés. Konfigurálja ezeket az Azure Storage-beállításokat az áttelepítés befejezése után.
+> Döntsön egy Azure-régiót, és győződjön meg arról, hogy minden tárfiók és Azure File Sync erőforrás megegyezik a kiválasztott régióval.
+> Most ne konfigurálja a tárfiókok hálózati és tűzfalbeállítását. Ezen konfigurációk ezen a ponton való beállítása lehetetlenné tenné a migrálást. A migrálás befejezése után konfigurálja ezeket az Azure Storage-beállításokat.
 
-### <a name="phase-1-summary"></a>1. fázis – összefoglalás
+### <a name="phase-1-summary"></a>1. fázis összegzése
 
 Az 1. fázis végén:
 
-* Jó áttekintést nyújt a StorSimple eszközeiről és köteteiről.
-* A Data Manager szolgáltatás készen áll a felhőben lévő StorSimple-kötetek elérésére, mert minden egyes StorSimple-eszközhöz lekérte a "szolgáltatás adattitkosítási kulcsát".
-* Van egy terve, amely szerint a köteteket és a biztonsági mentéseket (ha a legutóbbi verzión kívül) át kell telepíteni.
-* Tudja, hogyan képezheti le a köteteket a megfelelő számú Azure-fájlmegosztás és-Storage-fiók számára.
+* A StorSimple-eszközök és -kötetek áttekintése jól áttekinthető.
+* A Data Manager szolgáltatás készen áll a felhőben található StorSimple-kötetek elérésére, mivel minden StorSimple-eszközhöz lekérte a "szolgáltatásadat-titkosítási kulcsot".
+* Van egy terve arra, hogy mely köteteket és biztonsági másolatokat kell migrálni (ha azok a legutóbbiakon túliak).
+* Tudja, hogyan lehet leképezni a köteteket a megfelelő számú Azure-fájlmegosztásra és tárfiókra.
 
-## <a name="phase-2-deploy-azure-storage-and-migration-resources"></a>2. fázis: az Azure Storage és az áttelepítési erőforrások üzembe helyezése
+## <a name="phase-2-deploy-azure-storage-and-migration-resources"></a>2. fázis: Az Azure Tárolási és migrálási erőforrásainak üzembe helyezése
 
-Ez a szakasz az Azure-ban szükséges különböző erőforrástípusok üzembe helyezésének szempontjait ismerteti. Egyesek megtartják az adataikat az áttelepítés után, néhányat pedig kizárólag az áttelepítéshez szükséges. Ne kezdje el az erőforrások telepítését, amíg véglegesíti a telepítési tervet. Az üzembe helyezésük után az Azure-erőforrások bizonyos aspektusait nehéz, esetenként lehetetlen megváltoztatnia.
+Ez a szakasz az Azure-ban szükséges különböző erőforrástípusok üzembe helyezésével kapcsolatos szempontokat ismerteti. Néhány a migrálás után fogja tartalmazni az adatokat, néhány pedig csak a migráláshoz szükséges. Ne kezdje el üzembe helyezni az erőforrásokat, amíg el nem véglegesítette az üzembe helyezési tervet. Az üzembe helyezésük után nehéz, néha lehetetlen megváltoztatni az Azure-erőforrások bizonyos aspektusait.
 
-### <a name="deploy-storage-accounts"></a>Storage-fiókok telepítése
+### <a name="deploy-storage-accounts"></a>Tárfiókok üzembe helyezése
 
-Valószínűleg több Azure Storage-fiókot kell telepítenie. A jelen cikk előző szakaszában a telepítési tervnek megfelelően egy kisebb számú Azure-fájlmegosztást fog tárolni. A [tervezett Storage-fiókok telepítéséhez](../common/storage-account-create.md#create-a-storage-account)lépjen a Azure Portal. Vegye figyelembe az új Storage-fiókok következő alapvető beállításait.
+Valószínűleg több Azure Storage-fiókot is üzembe kell helyeznie. Mindegyik kisebb számú Azure-fájlmegosztást fog tartani a telepítési tervnek megfelelően, a cikk előző szakaszában befejezettek szerint. A tervezett tárfiókok Azure Portal a következő [hellyel:](../common/storage-account-create.md#create-a-storage-account). Fontolja meg az alábbi alapbeállításokat minden új tárfiókhoz.
 
 > [!IMPORTANT]
-> Most ne konfigurálja a hálózati és a tűzfalbeállítások beállításait a Storage-fiókok számára. A konfigurációk ezen a ponton való létrehozása lehetetlenné tenné az áttelepítés megváltoztatását. Konfigurálja ezeket az Azure Storage-beállításokat az áttelepítés befejezése után.
+> Most ne konfigurálja a tárfiókok hálózati és tűzfalbeállítását. Ezen konfigurációk ezen a ponton való beállítása lehetetlenné tenné a migrálást. A migrálás befejezése után konfigurálja ezeket az Azure Storage-beállításokat.
 
 #### <a name="subscription"></a>Előfizetés
 
-Használhatja ugyanazt az előfizetést, amelyet a StorSimple-telepítéshez vagy egy másikhoz használt. Az egyetlen korlátozás, hogy az előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia, mint a StorSimple-előfizetésnek. Az áttelepítés megkezdése előtt érdemes áthelyeznie a StorSimple-előfizetést a megfelelő bérlőre. Csak a teljes előfizetés helyezhető át, az egyes StorSimple-erőforrások nem helyezhetők át másik bérlőbe vagy előfizetésbe.
+Használhatja ugyanazt az előfizetést, mint amit a StorSimple üzembe helyezéséhez használt, vagy egy másikat. Az egyetlen korlátozás az, hogy az előfizetésnek a StorSimple-előfizetéssel Azure Active Directory bérlőben kell lennie. A migrálás előtt fontolja meg a StorSimple-előfizetés áthelyezését a megfelelő bérlőre. Csak a teljes előfizetést áthelyezheti, az egyes StorSimple-erőforrásokat nem lehet másik bérlőbe vagy előfizetésbe áthelyezni.
 
 #### <a name="resource-group"></a>Erőforráscsoport
 
-Az erőforráscsoportok segítséget nyújtanak az erőforrások és a rendszergazdai kezelési engedélyek szervezésében. Tudjon meg többet [Az Azure-beli erőforráscsoportok](../../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)használatáról.
+Az erőforráscsoportok segítenek az erőforrások és a rendszergazdai felügyeleti engedélyek rendszerezésében. További információ az [Azure-beli erőforráscsoportokról.](../../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)
 
 #### <a name="storage-account-name"></a>Tárfiók neve
 
-A Storage-fiók neve egy URL-cím részévé válik, és bizonyos jellegű korlátozásokkal rendelkezik. A névadási konvencióban vegye figyelembe, hogy a Storage-fiókok neveinek egyedieknek kell lenniük a világon, csak kisbetűket és számokat kell megadni, 3 – 24 karakter hosszúságú, és nem szabad speciális karaktereket (például kötőjeleket vagy aláhúzásokat) engedélyezni. További információ: [Azure Storage erőforrás-elnevezési szabályok](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage).
+A tárfiók neve egy URL-cím része lesz, és bizonyos karakterkorlátozásokkal rendelkezik. Az elnevezési konvenció szerint a tárfiókok nevének egyedinek kell lennie a világon, csak kisbetűket és számokat kell engedélyeznie, 3–24 karakter hosszúságúnak kell lennie, és nem engedélyez olyan speciális karaktereket, mint a kötőjel vagy az aláhúzásjel. További információ: [Az Azure Storage erőforrás-elnevezési szabályai.](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage)
 
 #### <a name="location"></a>Hely
 
-A Storage-fiók helye vagy az Azure-régió nagyon fontos. Ha Azure File Sync használ, az összes Storage-fióknak ugyanabban a régióban kell lennie, mint a Storage Sync Service-erőforrásnak. Az Ön által választott Azure-régiónak a helyi kiszolgálók és felhasználók bezárására vagy központira kell esnie. Az erőforrás üzembe helyezését követően a régiója nem módosítható.
+A tárfiók helye vagy Azure-régiója nagyon fontos. Ha a Azure File Sync használja, az összes tárfióknak ugyanabban a régióban kell lennie, mint a Storage Sync Service-erőforrásnak. A megfelelő Azure-régiónak a helyi kiszolgálók és felhasználók közelében vagy központilag kell lennie. Az erőforrás üzembe helyezése után nem módosíthatja annak régióját.
 
-Választhat egy másik régiót, ahol a StorSimple-adatok (Storage-fiók) jelenleg találhatóak.
+Választhat egy másik régiót is attól a régiótól, ahol a StorSimple-adatok (tárfiók) jelenleg találhatók.
 
 > [!IMPORTANT]
-> Ha egy másik régiót választ a jelenlegi StorSimple-fiókjának a helyén, a kimenő forgalomra vonatkozó költségek az áttelepítés során [lesznek érvényesek](https://azure.microsoft.com/pricing/details/bandwidth) . Az adatközpont elhagyja a StorSimple régiót, és megadja az új Storage-fiók régióját. Ha ugyanabban az Azure-régióban marad, a sávszélességért nem kell fizetnie.
+> Ha az aktuális StorSimple-tárfiók helyétől eltérő régiót [választ,](https://azure.microsoft.com/pricing/details/bandwidth) a migrálás során a rendszer díjat fog fizetni a forgalomért. Az adatok elhagyják a StorSimple régiót, és meg fogják adnia az új tárfiók régióját. Ha ugyanabban az Azure-régióban marad, sávszélességgel nem kell fizetni.
 
 #### <a name="performance"></a>Teljesítmény
 
-Lehetősége van a Premium Storage (SSD) kiválasztására az Azure-fájlmegosztás vagy a standard Storage számára. A standard szintű tárterület több szintet is tartalmaz a [fájlmegosztás számára](storage-how-to-create-file-share.md#changing-the-tier-of-an-azure-file-share). A standard szintű tárolás a StorSimple-ből áttelepítésre használt legtöbb ügyfél számára megfelelő lehetőség.
+Választhat prémium szintű tárolót (SSD) az Azure-fájlmegosztások vagy a standard szintű tárolók számára. A Standard szintű [tárolás több réteget tartalmaz a fájlmegosztáshoz.](storage-how-to-create-file-share.md#change-the-tier-of-an-azure-file-share) A standard szintű tárolás a megfelelő választás a StorSimple-ről mirating legtöbb ügyfél számára.
 
-Még mindig nem biztos?
+Még mindig nem biztos benne?
 
-* Ha [prémium szintű Azure-fájlmegosztás teljesítményére](understanding-billing.md#provisioned-model)van szüksége, válassza a Premium Storage lehetőséget.
-* Válassza a standard Storage lehetőséget az általános célú fájlkiszolgáló számítási feladataihoz, amely magában foglalja a gyors és az archivált adatok mennyiségét. Akkor is válassza a standard Storage-t, ha a felhőben lévő megosztáson csak a terhelés Azure File Sync.
+* Válassza a Premium Storage lehetőséget, ha [prémium szintű Azure-fájlmegosztás teljesítményére van szüksége.](understanding-billing.md#provisioned-model)
+* Válassza a standard szintű tárolót az általános célú fájlkiszolgálói számítási feladatokhoz, beleértve a gyors adatokat és az archív adatokat. Akkor is válassza a standard szintű tárolást, ha a felhőbeli megosztáson az egyetlen számítási feladat Azure File Sync.
 
 #### <a name="account-kind"></a>Fiók altípusa
 
-* A standard szintű tároláshoz válassza a *StorageV2 (általános célú v2)* lehetőséget.
-* A prémium fájlmegosztás esetében válassza a *FileStorage* lehetőséget.
+* Standard szintű tároláshoz válassza a *StorageV2 (általános célú v2) lehetőséget.*
+* Prémium fájlmegosztások esetén válassza a *FájlStorage lehetőséget.*
 
 #### <a name="replication"></a>Replikáció
 
-Több replikációs beállítás is rendelkezésre áll. További információ a különböző replikációs típusokról.
+Számos replikációs beállítás érhető el. További információ a különböző replikációs típusokról.
 
-Csak a következő két lehetőség közül választhat:
+Csak az alábbi két lehetőség közül választhat:
 
-* *Helyileg redundáns tárolás (LRS)*.
-* A *zóna redundáns tárolási (ZRS)*, amely nem érhető el az összes Azure-régióban.
+* *Helyileg redundáns tárolás (LRS).*
+* *Zónaredundáns tárolás (ZRS),* amely nem minden Azure-régióban érhető el.
 
 > [!NOTE]
-> Csak a LRS és a ZRS redundancia-típusok kompatibilisek a nagyméretű 100-TiB-Capacity Azure-fájlmegosztás-megosztásokkal.
+> Csak az LRS és a ZRS redundanciatípus kompatibilis a nagy, 100 TiB-kapacitású Azure-fájlmegosztásokkal.
 
-A földrajzi redundáns tárolás (GRS) az összes változatban jelenleg nem támogatott. Később átválthatja a redundanciát, és átválthat a GRS-ra, ha a támogatás az Azure-ban érkezik.
+A georedundáns tárolás (GRS) jelenleg minden változatban nem támogatott. A redundancia típusát később átválthatja GRS-re, ha az Azure-ba érkezik támogatás.
 
-#### <a name="enable-100-tib-capacity-file-shares"></a>100 – TiB kapacitású fájlmegosztás engedélyezése
+#### <a name="enable-100-tib-capacity-file-shares"></a>100 TiB-kapacitású fájlmegosztás engedélyezése
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png" alt-text="Egy rendszerkép, amely a Azure Portal speciális lapját jeleníti meg a Storage-fiók létrehozásához.":::
+        :::image type="content" source="media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png" alt-text="A tárfiók létrehozásához Azure Portal speciális lapot bemutató kép.":::
     :::column-end:::
     :::column:::
-        A Azure Portal új Storage-fiók varázslójának **speciális** szakaszában engedélyezheti a **nagyméretű fájlmegosztás** támogatását ebben a Storage-fiókban. Ha ez a beállítás nem érhető el, valószínűleg a helytelen redundancia-típust választotta. Győződjön meg róla, hogy csak a LRS vagy a ZRS lehetőséget választja, hogy elérhetővé váljon ehhez a beállításhoz.
+        Az új **tárfiók** varázsló Speciális szakaszában a Azure Portal engedélyezheti a  nagyméretű fájlmegosztások támogatását ebben a tárfiókban. Ha ez a lehetőség nem érhető el, valószínűleg nem a megfelelő redundanciatípust választotta. Győződjön meg arról, hogy csak az LRS vagy a ZRS lehetőséget választja, hogy ez a lehetőség elérhetővé váljon.
     :::column-end:::
 :::row-end:::
 
-A nagyméretű, 100-TiB-Capacity fájlmegosztás számos előnnyel jár:
+A nagyméretű, 100 TiB-kapacitású fájlmegosztások mellett több előnye is van:
 
-* A teljesítmény jelentősen megnő a kisebb 5 TiB-kapacitású fájlmegosztás (például 10-szer a IOPS) képest.
-* A Migrálás jelentősen gyorsabban befejeződik.
-* Győződjön meg arról, hogy a fájlmegosztás elegendő kapacitással rendelkezik ahhoz, hogy az összes áttelepíteni kívánt adatokat tartalmazza, beleértve a tárolási kapacitás különbözeti biztonsági másolatait.
-* A jövőbeli növekedés hatálya alá esik.
+* A teljesítmény jelentősen megnő a kisebb, 5 TiB-kapacitású fájlmegosztások (például az IOPS 10-szer nagyobb) méretéhez képest.
+* A migrálás jelentősen gyorsabb lesz.
+* Biztosíthatja, hogy a fájlmegosztás elegendő kapacitással rendelkezik az összes átemelni kívánt adat tárolásához, beleértve a tárolási kapacitás különbségi biztonsági mentéséhez szükséges adatokat is.
+* A jövőbeli növekedést is lefedjük.
 
-### <a name="azure-file-shares"></a>Azure-fájlmegosztás
+### <a name="azure-file-shares"></a>Azure-fájlmegosztások
 
-A Storage-fiókok létrehozása után nyissa meg a Storage-fiók **fájlmegosztás** szakaszát, és telepítse a megfelelő számú Azure-fájlmegosztást az 1. fázisból származó áttelepítési terv szerint. Vegye figyelembe a következő alapvető beállításokat az Azure új fájlmegosztás számára.
+A tárfiókok létrehozása után  a tárfiók Fájlmegosztás szakaszában üzembe helyezheti a megfelelő számú Azure-fájlmegosztást az 1. fázisból származó migrálási tervnek megfelelően. Fontolja meg a következő alapbeállításokat az Azure-beli új fájlmegosztások esetében.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Egy Azure Portal képernyőkép, amely az új fájlmegosztás felhasználói felületét jeleníti meg.":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Képernyőkép Azure Portal új fájlmegosztás felhasználói felületről.":::
     :::column-end:::
     :::column:::
-        </br>**Név**</br>A kisbetűs karakterek, számok és kötőjelek támogatottak.</br></br>**Kvóta**</br>A kvóta itt hasonlítható össze egy Windows Server-példányon található SMB-beli merevlemez-kvótával. Az ajánlott eljárás az, hogy ne állítson be kvótát, mert az áttelepítés és más szolgáltatások sikertelenek lesznek a kvóta elérésekor.</br></br>**Szolgáltatási szintek**</br>Válassza ki az új fájlmegosztás számára **optimalizált tranzakciót** . Az áttelepítés során számos tranzakció fog történni. Hatékonyabban módosíthatja a szintet a számítási feladatok legmegfelelőbb szintjére.
+        </br>**Név**</br>Kisbetűk, számok és kötőjelek is támogatottak.</br></br>**Kvóta**</br>A kvóta itt a Windows Server-példányon található SMB-kvótához hasonlítható. Az ajánlott eljárás az, hogy itt ne állítson be kvótát, mert a migrálás és más szolgáltatások sikertelenek lesznek a kvóta elérésekor.</br></br>**Szolgáltatási szintek**</br>Válassza **az új fájlmegosztáshoz** optimalizált tranzakció lehetőséget. A migrálás során számos tranzakció történik. Költséghatékonyabb, ha később a számítási feladatnak leginkább megfelelő szintre módosítja a szintet.
     :::column-end:::
 :::row-end:::
 
 ### <a name="storsimple-data-manager"></a>StorSimple Data Manager
 
-Az áttelepítési feladatokat tároló Azure-Erőforrás neve **StorSimple Data Manager**. Válassza ki az **új erőforrást**, és keressen rá. Ezután kattintson a **Létrehozás** elemre.
+A migrálási feladatokat kezelő Azure-erőforrás neve **StorSimple Data Manager.** Válassza **az Új erőforrás** lehetőséget, és keresse meg. Ezután kattintson a **Létrehozás** elemre.
 
-Ez az ideiglenes erőforrás a koordináláshoz használatos. Az áttelepítés befejezése után kiépíti azt. A StorSimple-fióknak ugyanabban az előfizetésben, erőforráscsoporthoz és régióban kell lennie.
+Ez az ideiglenes erőforrás a vezényléshez használatos. A migrálás befejezése után megszünteti azt. Ugyanabban az előfizetésben, erőforráscsoportban és régióban kell üzembe helyezni, mint a StorSimple-tárfiók.
 
 ### <a name="azure-file-sync"></a>Azure File Sync
 
-A Azure File Sync a leggyakrabban használt fájlok helyszíni gyorsítótárazását is felveheti. A StorSimple gyorsítótárazási képességeihez hasonlóan a Azure File Sync Cloud rétegű szolgáltatás a helyi hozzáférés késését is biztosítja a Windows Server-példány és a többhelyes szinkronizálás elérhető gyorsítótár-kapacitásának jobb szabályozása érdekében. Ha a helyszíni gyorsítótár a cél, akkor a helyi hálózaton készítsen elő egy Windows Server rendszerű virtuális gépet (a fizikai kiszolgálókat és a feladatátvételi fürtöket is támogatja) megfelelő, közvetlenül csatlakoztatott tárolókapacitással.
+A Azure File Sync a leggyakrabban használt fájlok helyszíni gyorsítótárazása is hozzáadható. A StorSimple gyorsítótárazási képességeihez hasonlóan az Azure File Sync felhőbeli rétegezés helyi hozzáférési késést is kínál, valamint nagyobb kontrollt biztosít a Windows Server-példányon elérhető gyorsítótár-kapacitás és a többhelyű szinkronizálás felett. Ha a helyszíni gyorsítótár használata a cél, akkor a helyi hálózaton készítsen elő egy Windows Server rendszerű virtuális gépet (a fizikai kiszolgálók és feladatátvevő fürtök is támogatottak) megfelelő, közvetlenül csatlakoztatott tárolókapacitással.
 
 > [!IMPORTANT]
-> Még ne állítson be Azure File Sync. A Azure File Sync beállítása a megosztás áttelepítésének befejezése után ajánlott. Azure File Sync üzembe helyezése nem kezdődhet az áttelepítés 4. fázisa előtt.
+> Még ne állítsa be Azure File Sync- A megosztás migrálásának Azure File Sync után ajánlott beállítani. A Azure File Sync nem kezdődhet a migrálás 4. fázisa előtt.
 
-### <a name="phase-2-summary"></a>2. fázis – összefoglalás
+### <a name="phase-2-summary"></a>2. fázis összegzése
 
-A 2. fázis végén üzembe helyezte a Storage-fiókokat és az összes Azure-fájlmegosztást. Emellett StorSimple Data Manager erőforrással is rendelkezik. Az utóbbit a 3. fázisban fogja használni az áttelepítési feladatok konfigurálásakor.
+A 2. fázis végén üzembe fogja helyezni a tárfiókokat és az összes Azure-fájlmegosztást. Emellett egy új erőforrással StorSimple Data Manager is. Az utóbbit a 3. fázisban fogja használni az áttelepítési feladatok konfigurálásakor.
 
-## <a name="phase-3-create-and-run-a-migration-job"></a>3. fázis: áttelepítési feladatok létrehozása és futtatása
+## <a name="phase-3-create-and-run-a-migration-job"></a>3. fázis: Áttelepítési feladat létrehozása és futtatása
 
-Ez a szakasz azt ismerteti, hogyan állítható be áttelepítési feladatok, és hogyan végezhető el egy olyan StorSimple-kötet könyvtárainak leképezve, amelyet a kiválasztott Azure-fájlmegosztás részévé kell másolni. Első lépésként nyissa meg a StorSimple Data Manager, keresse meg a menüben a **Feladatdefiníciók** elemet, majd válassza a **+ feladatdefiníció** lehetőséget. A helyes cél tárolási típus az alapértelmezett: **Azure-fájlmegosztás**.
+Ez a szakasz azt ismerteti, hogyan állíthat be migrálási feladatot, és hogyan lehet gondosan leképezni a StorSimple-kötet könyvtárát a kiválasztott cél Azure-fájlmegosztásba. Első lépésekként keresse meg a StorSimple Data Manager, keresse meg a **feladatdefiníciókat** a menüben, majd válassza **a + Feladatdefiníció lehetőséget.** A megfelelő céltárolótípus az alapértelmezett: **Azure-fájlmegosztás.**
 
-![StorSimple 8000 adatsorozat-áttelepítési feladattípusok.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "A feladatütemezés képernyőképe Azure Portal a megnyíló új feladatdefiníció párbeszédpanelt, amely a következő feladatot kéri: másolás fájlmegosztás vagy blob-tárolóba.")
+![A StorSimple 8000 sorozat áttelepítési feladattípusa.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "Képernyőkép a megnyitott feladatdefiníciókról Azure Portal megnyílik egy új feladatdefiníciók párbeszédpanel, amely a feladat típusát kéri: Másolás fájlmegosztásba vagy blobtárolóba.")
 
 :::row:::
     :::column:::
-        ![StorSimple 8000 sorozat áttelepítési feladata.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Képernyőkép az áttelepítési feladatokhoz tartozó új feladatok létrehozási űrlapról.")
+        ![StorSimple 8000 sorozatú migrálási feladat.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Képernyőkép az áttelepítési feladat új feladat-létrehozási űrlapról.")
     :::column-end:::
     :::column:::
-        **Feladatdefiníció neve**</br>Ennek a névnek szerepelnie kell az áthelyezett fájlok készletén. Ha az Azure-fájlmegosztás hasonló nevet ad, az jó megoldás. </br></br>**A feladatot futtató hely**</br>Régió kiválasztásakor ugyanazt a régiót kell kiválasztania, mint a StorSimple Storage-fiókja, vagy ha ez nem érhető el, akkor egy régiót kell megadnia. </br></br><h3>Forrás</h3>**Forrás-előfizetés**</br>Válassza ki azt az előfizetést, amelyben a StorSimple Eszközkezelő erőforrást tárolja. </br></br>**StorSimple erőforrás**</br>Válassza ki a StorSimple Eszközkezelő a készülék regisztrálva van. </br></br>**Szolgáltatás adattitkosítási kulcsa**</br>Ha nem találja a kulcsot a rekordokban, tekintse meg a jelen [cikk előző szakaszát](#storsimple-service-data-encryption-key) . </br></br>**Eszköz**</br>Válassza ki azt a StorSimple-eszközt, amely az áttelepíteni kívánt kötetet tárolja. </br></br>**Kötet**</br>Válassza ki a forrás kötetet. Később eldöntheti, hogy szeretné-e áttelepíteni a teljes kötetet vagy alkönyvtárakat a cél Azure-fájlmegosztásba.</br></br> **Kötetek biztonsági mentése**</br>A *biztonsági másolatok kiválasztása* lehetőség kiválasztásával kiválaszthatja a feladatok részeként áthelyezni kívánt biztonsági másolatokat. A cikk közelgő, [dedikált szakasza](#selecting-volume-backups-to-migrate) részletesen ismerteti a folyamatot.</br></br><h3>Cél</h3>Válassza ki az előfizetést, a Storage-fiókot és az Azure-fájlmegosztást az áttelepítési feladatok céljaként.</br></br><h3>Címtár-hozzárendelés</h3>[A cikk egy dedikált szakasza az](#directory-mapping)összes vonatkozó részletet tárgyalja.
+        **Feladatdefiníció neve**</br>Ennek a névnek jeleznie kell az áthelyezés alatt lévő fájlokat. Az Azure-fájlmegosztáshoz hasonló nevet kell adni neki. </br></br>**A feladat futtatás helye**</br>Egy régió kiválasztásakor ugyanazt a régiót kell kiválasztania, mint a StorSimple-tárfiók, vagy ha ez nem érhető el, akkor egy ahhoz közeli régiót. </br></br><h3>Forrás</h3>**Forrás-előfizetés**</br>Válassza ki azt az előfizetést, amelyben a StorSimple-Eszközkezelő tárolja. </br></br>**StorSimple-erőforrás**</br>Válassza ki a StorSimple Eszközkezelő amikor a berendezés regisztrálva van. </br></br>**Szolgáltatásadat-titkosítási kulcs**</br>Tekintse meg [a cikk előző szakaszát,](#storsimple-service-data-encryption-key) ha nem találja a kulcsot a rekordokban. </br></br>**Eszköz**</br>Válassza ki azt a StorSimple-eszközt, amely azt a kötetet tartalmazza, ahová az áttelepítést szeretné. </br></br>**Kötet**</br>Válassza ki a forráskötetet. Később eldöntheti, hogy a teljes kötetet vagy alkönyvtárakat át szeretné-e miolni a cél Azure-fájlmegosztásba.</br></br> **Kötetek biztonsági mentései**</br>A Kötet biztonsági *mentésének kiválasztása* lehetőséget választva kiválaszthatja a feladat részeként áthelyezni kívánt biztonsági másolatokat. A cikk egy hamarosan megjelenő, [dedikált szakasza](#selecting-volume-backups-to-migrate) részletesen ismerteti a folyamatot.</br></br><h3>Cél</h3>Válassza ki az előfizetést, a tárfiókot és az Azure-fájlmegosztást a migrálási feladat céljaként.</br></br><h3>Címtárleképezés</h3>[A cikk egy dedikált szakasza](#directory-mapping)az összes releváns részletet tárgyalja.
     :::column-end:::
 :::row-end:::
 
-### <a name="selecting-volume-backups-to-migrate"></a>Az áttelepíteni kívánt kötetek biztonsági másolatainak kiválasztása
+### <a name="selecting-volume-backups-to-migrate"></a>Az áttérni kívánt kötetek biztonsági mentésének kiválasztása
 
-Az áttelepíteni kívánt biztonsági másolatok kiválasztásával kapcsolatban fontos szempontokat kell figyelembe venni:
+A migrálni szükséges biztonsági másolatok kiválasztásakor fontos szempontokat kell figyelembe venni:
 
-- Az áttelepítési feladatok csak a biztonsági mentéseket helyezhetik át, és nem az élő kötetről származó adatokat. Így a legutóbbi biztonsági mentés a legközelebb esik az élő adatmennyiséghez, és mindig az áttelepítés során áthelyezett biztonsági másolatok listáján kell szerepelnie.
-- Győződjön meg arról, hogy a legutóbbi biztonsági mentés a közelmúltban van, hogy a változás a lehető legkisebb legyen az élő megosztáson. Az áttelepítési feladatok létrehozása előtt érdemes lehet egy másik kötet biztonsági mentését manuálisan elindítani és befejezni. Az élő megosztás kis eltérése javítja az áttelepítés során felmerülő változásokat. Ha ez a Delta nulla lehet = a StorSimple köteten nem történt több változás a legújabb biztonsági mentés után a listában – ezt követően az 5. fázisban: a felhasználói felskálázás drasztikusan leegyszerűsítve lesz, és felgyorsult.
-- A biztonsági mentéseket vissza kell játszani az Azure-fájlmegosztás **legrégebbi és legújabb** verziójának használatával. Az áttelepítési feladatok futtatása után a régebbi biztonsági mentés nem lehet "rendezve" az Azure-fájlmegosztás biztonsági másolatainak listájában. Ezért a feladatok létrehozása *előtt* meg kell győződnie arról, hogy a biztonsági mentések listája elkészült. 
-- A feladatokban szereplő biztonsági másolatok listája a feladatok létrehozása után nem módosítható, még akkor is, ha a feladatot nem futtatták. 
+- Az áttelepítési feladatok csak biztonsági másolatokat tudnak áthelyezni, élő kötetről származó adatokat nem. Így a legutóbbi biztonsági mentés az élő adatokhoz a legközelebb áll, és mindig az áttelepítés során áthelyezve lévő biztonsági másolatok listájában kell lennie.
+- Győződjön meg arról, hogy a legutóbbi biztonsági mentés friss, hogy az élő megosztás eltérése a lehető legkisebb legyen. Az áttelepítési feladat létrehozása előtt érdemes lehet manuálisan aktiválni és elvégezni egy másik kötet biztonsági mentését. Az élő megosztás kis eltérése javítja a migrálási élményt. Ha ez a változás lehet nulla = nincs több módosítás a StorSimple-köteten, miután a legújabb biztonsági mentés készült a listában – akkor az 5. fázis: A felhasználói átvágás jelentősen leegyszerűsödött és felgyorsült.
+- A biztonsági másolatokat vissza kell játszani az Azure-fájlmegosztásba a legrégebbitől a **legújabbig.** A régebbi biztonsági másolatok nem rendezhetőek az Azure-fájlmegosztás biztonsági másolatai listájába a migrálási feladat futtatása után. Ezért a feladat létrehozása előtt győződjön  meg arról, hogy a biztonsági másolatok listája befejeződött. 
+- A feladatban található biztonsági másolatok listája nem módosítható a feladat létrehozása után, még akkor sem, ha a feladat soha nem futott. 
 
 :::row:::
     :::column:::        
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups.png" alt-text="Az új feladatok létrehozásának űrlapja, amely részletezi a StorSimple biztonsági mentések áttelepítésre kijelölt részét." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-expanded.png":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups.png" alt-text="Képernyőkép az új feladat-létrehozási űrlapról, amely azt a részt részletezi, ahol a StorSimple biztonsági másolatai ki vannak választva a migráláshoz." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-expanded.png":::
     :::column-end:::
     :::column:::
-        Ha ki szeretné választani az áttelepítési feladatokhoz tartozó StorSimple-kötet biztonsági másolatait, válassza a *kötet biztonsági mentések kiválasztása* lehetőséget a feladatok létrehozási űrlapján.
+        Az áttelepítési feladathoz a StorSimple-kötet biztonsági mentésének kiválasztásához válassza a *Kötet* biztonsági mentésének kiválasztása lehetőséget a feladat létrehozási űrlapján.
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png" alt-text="Egy kép, amely azt mutatja, hogy a biztonsági másolatok kiválasztásához használt panel felső fele felsorolja az összes elérhető biztonsági mentést. A kijelölt biztonsági mentés szürkén jelenik meg a listában, és a panel alsó felén egy második listára kerül. Ott is törölhető újra." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png" alt-text="Egy kép, amely azt mutatja, hogy a panel felső része a biztonsági másolatok kiválasztásához felsorolja az összes rendelkezésre álló biztonsági másolatot. A kiválasztott biztonsági másolat szürkén jelenik meg ebben a listában, és a panel alsó részén található második listához lesz hozzáadva. Itt ismét törölhető." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png":::
     :::column-end:::
     :::column:::
-        Amikor megnyílik a biztonsági mentés kiválasztása panel, két listán van elválasztva. Az első listában megjelenik az összes elérhető biztonsági másolat. Az eredményhalmaz kibontása és szűkítése egy adott időtartomány szűrésével végezhető el. (lásd a következő szakaszt) </br></br>A kiválasztott biztonsági mentés szürkén jelenik meg, és a panel alsó felén egy második listára kerül. A második lista megjeleníti az áttelepítéshez kiválasztott összes biztonsági mentést. A hiba lehetőséggel kiválasztott biztonsági másolat is eltávolítható.
+        Amikor megnyílik a biztonsági mentést kiválasztó panel, két lista választja el egymástól. Az első listában az összes rendelkezésre álló biztonsági másolat megjelenik. Az eredményhalmazt egy adott időtartományra szűrve bővítheti és szűkítheti. (lásd a következő szakaszt) </br></br>A kiválasztott biztonsági mentés szürkén jelenik meg, és a panel alsó felén egy második listához lesz hozzáadva. A második lista a migráláshoz kiválasztott összes biztonsági másolatot megjeleníti. A hibában kiválasztott biztonsági másolat szintén eltávolítható.
         > [!CAUTION]
-        > Ki kell választania **az összes** áttelepíteni kívánt biztonsági mentést. Később nem adhat hozzá régebbi biztonsági másolatokat. A feladatot nem módosíthatja úgy, hogy a feladatot a létrehozás után megváltoztassa.
+        > Ki kell **választania az** összes átemelni kívánt biztonsági másolatot. A későbbiekben nem adhat hozzá régebbi biztonsági másolatokat. A feladat létrehozása után nem módosíthatja a kiválasztott feladatot.
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="A biztonsági mentés kiválasztása panel időtartományának kijelölését ábrázoló képernyőkép." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="Képernyőkép a biztonsági mentés kijelölési panelje időtartományának kiválasztásáról." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
     :::column-end:::
     :::column:::
-        Alapértelmezés szerint a lista úgy van szűrve, hogy megjelenjen a StorSimple mennyiségi biztonsági mentése az elmúlt hét napban, így egyszerűen kiválaszthatja a legfrissebb biztonsági mentést. A korábbi biztonsági mentésekhez használja a panel tetején található időtartomány szűrőt. Kiválaszthat egy meglévő szűrőt, vagy beállíthat egy egyéni időtartományt, amely csak az ezen időszak alatt készített biztonsági másolatok szűrésére használható.
+        Alapértelmezés szerint a lista úgy van szűrve, hogy az elmúlt hét napban a StorSimple-kötetek biztonsági másolatai is könnyen kiválaszthatóak legyen. A múltban további biztonsági mentések készítéséhez használja a panel tetején található időtartomány-szűrőt. Választhat egy meglévő szűrőt, vagy egyéni időtartományt állíthat be, hogy csak az ebben az időszakban készült biztonsági másolatokat szűrje.
     :::column-end:::
 :::row-end:::
 
 > [!CAUTION]
-> A több mint 50 StorSimple mennyiségi biztonsági mentések kiválasztása nem támogatott. A nagy mennyiségű biztonsági mentéssel rendelkező feladatok sikertelenek lehetnek.
+> 50-esnél több StorSimple-kötet biztonsági mentésének kiválasztása nem támogatott. A nagy számú biztonsági mentéssel való feladatok meghiúsulhatnak.
 
-### <a name="directory-mapping"></a>Címtár-hozzárendelés
+### <a name="directory-mapping"></a>Címtárleképezés
 
-A címtár-hozzárendelés nem kötelező az áttelepítési feladatokhoz. Ha üresen hagyja a szakaszt, a rendszer a StorSimple-kötet gyökerében lévő *összes* fájlt és mappát a cél Azure-fájlmegosztás gyökerébe helyezi át. A legtöbb esetben a teljes kötet tartalmának egy Azure-fájlmegosztás keretében történő tárolása nem a legjobb megoldás. Az Azure-ban gyakran több fájlmegosztás között is érdemes megosztani a kötet tartalmát. Ha még nem hozott létre csomagot, először tekintse [meg a StorSimple-kötet leképező Azure-fájlmegosztás számára](#map-your-existing-storsimple-volumes-to-azure-file-shares) című témakört.
+A címtárleképezés nem kötelező az áttelepítési feladathoz. Ha üresen hagyja  a szakaszt, a StorSimple-kötet gyökerében található összes fájl és mappa a cél Azure-fájlmegosztás gyökerében lesz áthelyezve. A legtöbb esetben egy teljes kötet tartalmának Azure-fájlmegosztásban való tárolása nem a legjobb megoldás. Gyakran jobb, ha egy kötet tartalmát több fájlmegosztásra osztja szét az Azure-ban. Ha még nem készített tervet, először tekintse meg a [StorSimple-kötet Azure-fájlmegosztásra való leképezéséről való használatát.](#map-your-existing-storsimple-volumes-to-azure-file-shares)
 
-Az áttelepítési terv részeként dönthet úgy, hogy a StorSimple-köteten lévő mappákat több Azure-fájlmegosztás között kell megosztani. Ha ez a helyzet, ezt a felosztást a következőket teheti:
+Előfordulhat, hogy a migrálási terv részeként úgy döntött, hogy a StorSimple-kötetek mappáit több Azure-fájlmegosztás között kell szétosztani. Ebben az esetben ezt a felosztást a következővel valósíthatja meg:
 
-1. Több feladat definiálásával telepítheti át a mappákat egy köteten. Mindegyiknek ugyanaz a StorSimple, hanem egy másik Azure-fájlmegosztás is.
-1. Pontosan meghatározza, hogy a StorSimple-kötetből mely mappákat kell áttelepíteni a megadott fájlmegosztást a feladatok létrehozási űrlapjának **címtár-hozzárendelési** szakaszának használatával, és az adott [leképezési szemantika](#semantic-elements)követésével.
+1. Több feladat definiálása egy kötet mappáinak áttelepítése érdekében. Mindegyik ugyanazokkal a StorSimple-kötetforrással, de a célként egy másik Azure-fájlmegosztással fog.
+1. Adja meg pontosan, hogy a StorSimple-kötet mely mappáit kell áttelepíteni a megadott fájlmegosztásba a feladat-létrehozási űrlap **Könyvtárleképezés** szakaszának használatával, és az adott leképezési [szemantikát követi.](#semantic-elements)
 
 > [!IMPORTANT]
-> Az űrlap elküldésekor nem lehet érvényesíteni az elérési utakat és a leképezési kifejezéseket. Ha a leképezések helytelenül vannak megadva, előfordulhat, hogy a feladat teljesen meghiúsul, vagy nem kívánatos eredményt hoz létre. Ebben az esetben általában törölni kell az Azure-fájlmegosztást, újra létre kell hozni, majd ki kell javítani a leképezési utasításokat egy új áttelepítési feladatokban a megosztáshoz. Az új feladatok rögzített hozzárendelési utasításokkal való futtatása javíthatja az elhagyott mappákat, és a meglévő megosztásba helyezheti azokat. Így azonban csak azok a mappák jelennek meg, amelyek elérési útja miatt nem lettek kihagyva.
+> Az űrlap elérési útjai és leképezési kifejezései nem érvényesíthetőek az űrlap beküldésekor. Ha a leképezések helytelenül vannak megadva, előfordulhat, hogy egy feladat teljesen meghiúsul, vagy nem kívánt eredményt ad. Ebben az esetben általában az a legjobb, ha törli az Azure-fájlmegosztást, újra létrehozza, majd kijavítja a leképezési utasításokat egy új migrálási feladatban a megosztáshoz. Ha rögzített leképezési utasításokkal futtat egy új feladatot, azzal kijavíthatja a kihagyott mappákat, és behozhatja azokat a meglévő megosztásba. Ezzel a módszersel azonban csak az elérésiút-helytelenül írt mappákat lehet kezelni.
 
 #### <a name="semantic-elements"></a>Szemantikai elemek
 
-A leképezés balról jobbra: [\Source Path] \> [\Target Path].
+A leképezés balról jobbra haladva van kifejezve: [\forrás elérési útja] \> [\cél elérési útja].
 
 |Szemantikai karakter          | Értelmezés  |
 |:---------------------------|:---------|
-| **\\**                     | Legfelső szintű kijelző.       |
-| **\>**                     | [Forrás] és [cél-hozzárendelés] operátor.     |
-|**\|** vagy RETURN (új sor) | Két mappa-hozzárendelési utasítás elválasztója </br>Azt is megteheti, hogy kihagyja ezt a karaktert, és az **ENTER** billentyűt lenyomva lekéri a következő leképezési kifejezést a saját sorában.        |
+| **\\**                     | Gyökérszintű jelző.       |
+| **\>**                     | [Source] és [target-mapping] operátor.     |
+|**\|** vagy RETURN (új sor) | Két mappaleképezési utasítás elválasztója. </br>Másik lehetőségként kihagyhatja ezt a karaktert, és az **Enter** billentyűt választva saját sorában is lekérte a következő leképezési kifejezést.        |
 
 ### <a name="examples"></a>Példák
-Áthelyezi a mappa *felhasználói adatokat* a cél fájlmegosztás gyökerébe:
+Áthelyezi a Felhasználói adatok *mappa tartalmát* a célfájlmegosztás gyökerére:
 ``` console
 \User data > \
 ```
-A teljes kötet tartalmát egy új elérési útra helyezi a célfájl megosztásán:
+Áthelyezi a teljes kötet tartalmát egy új elérési útra a célfájlmegosztáson:
 ``` console
 \ > \Apps\HR tracker
 ```
-Áthelyezi a forrás mappa tartalmát a célfájl egy új elérési útjára:
+Áthelyezi a forrásmappa tartalmát egy új elérési útra a célfájlmegosztáson:
 ``` console
 \HR resumes-Backup > \Backups\HR\resumes
 ```
-Több forrás helyszínét rendezi egy új címtár-struktúrába:
+Több forráshelyet új könyvtárstruktúrába rendez:
 ``` console
 \HR\Candidate Tracker\v1.0 > \Apps\Candidate tracker
 \HR\Candidates\Resumes > \HR\Candidates\New
@@ -332,192 +332,192 @@ Több forrás helyszínét rendezi egy új címtár-struktúrába:
 
 ### <a name="semantic-rules"></a>Szemantikai szabályok
 
-* A mappa elérési útját mindig a gyökér szintjéhez viszonyítva határozza meg.
-* Minden mappa elérési útjának megkezdése egy gyökérszintű kijelzővel ( \\ "").
-* Ne szerepeljenek a meghajtóbetűjelek.
-* Több elérési út megadásakor a forrás-vagy cél elérési utak nem lehetnek átfedésben:</br>
-   Érvénytelen a forrás elérési útjának átfedési példája:</br>
+* A mappa elérési útjait mindig a gyökérszinthez viszonyítva adja meg.
+* Kezdje el az egyes mappaútvonalak gyökérszintű jelzővel" \\ ".
+* Ne foglalja bele a meghajtóbetűket.
+* Több elérési út megadásakor a forrás- vagy célútvonalak nem fedhetik át egymást:</br>
+   Érvénytelen forrásútvonal átfedése – példa:</br>
     *\\folder\1 > \\ mappa*</br>
-    *\\1. mappa \\ \\ 2 > \\ Mappa2*</br>
-   A célként megadott elérési út átfedő példája érvénytelen:</br>
+    *\\folder \\ 1 \\ 2 > \\ folder2*</br>
+   Érvénytelen célútvonal átfedése – példa:</br>
    *\\mappa > \\*</br>
-   *\\Mappa2 > \\*</br>
-* A nem létező forrásoldali mappák figyelmen kívül lesznek hagyva.
-* A célhelyen nem létező mappastruktúrát lesz létrehozva.
-* A Windowshoz hasonlóan a mappák neve nem különbözteti meg a kis-és nagybetűket.
+   *\\folder2 > \\*</br>
+* A rendszer figyelmen kívül hagyja a nem létező forrásmappákat.
+* Létrejönnek a célon nem létező mappastruktúrák.
+* A Windowshoz hasonlóan a mappanevek is nem a kis- és a nagy- és
 
 > [!NOTE]
-> Az áttelepítési feladatban nem másolja a rendszer a *\System kötet információs* mappájának tartalmát és a StorSimple-köteten lévő *$Recycle. bin* fájlt.
+> Az áttelepítési feladat nem másolja át a StorSimple-köteten található *\System Volume Information* mappa és *$Recycle.Bin* fájl tartalmát.
 
-### <a name="run-a-migration-job"></a>Áttelepítési feladatok futtatása
+### <a name="run-a-migration-job"></a>Áttelepítési feladat futtatása
 
-Az áttelepítési feladatok a Data Manager erőforrásban, amelyet az erőforráscsoporthoz telepített, a *feladattípusok* szakaszban találhat.
+Az áttelepítési feladatok az *erőforráscsoportban* üzembe helyezett Data Manager erőforrás feladatdefiníciói alatt vannak felsorolva.
 A feladatdefiníciók listájából válassza ki a futtatni kívánt feladatot.
 
-A megnyíló feladatok panelen megtekintheti a feladatok futtatását az alsó listában. A lista kezdetben üres lesz. A panel tetején található egy *Run Job* nevű parancs. A parancs nem fogja azonnal futtatni a feladatot, megnyílik a **feladatok futtatási** panelje:
+A megnyíló feladat panelen az alsó listában láthatja a feladatfutokat. Ez a lista kezdetben üres lesz. A panel tetején található egy Run job (Feladat *futtatása) nevű parancs.* Ez a parancs nem futtatja azonnal a feladatot, hanem megnyitja a **Feladatfuttatás panelt:**
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="Egy kép, amely a feladatok futtatására szolgáló panelt nyitja meg a legördülő menüvel, és megjeleníti az áttelepítendő kiválasztott biztonsági másolatokat. A legrégebbi biztonsági mentés ki van emelve, először ki kell választani." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="Kép a feladatfuttassa panelről megnyitott legördülő vezérlővel, amely az áttelepítendő kiválasztott biztonsági másolatokat jeleníti meg. A legrégebbi biztonsági mentés ki van emelve, először ki kell választani." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
     :::column-end:::
     :::column:::
-        Ebben a kiadásban minden feladatot többször kell futtatni. </br></br>**A legrégebbi biztonsági mentést az áttelepíteni kívánt biztonsági másolatok listájáról kell kezdeni.** (a képen kiemelve)</br></br>A feladatot újra futtathatja, ahányszor a biztonsági mentések vannak kijelölve, és minden alkalommal egy fokozatosan újabb biztonsági mentéssel.
+        Ebben a kiadásban minden feladatot többször kell futtatni. </br></br>**Az átemelni kívánt biztonsági másolatok listájából a legrégebbi biztonsági másolatból kell indulni.** (a képen kiemelve)</br></br>A feladatot annyiszor futtatja újra, ahányszor kiválasztotta a biztonsági másolatokat, minden alkalommal egy fokozatosan újabb biztonsági mentéssel.
         </br></br>
         > [!CAUTION]
-        > Fontos, hogy az áttelepítési feladatot először a legrégebbi biztonsági mentéssel futtassa, majd minden alkalommal, amikor egy fokozatosan újabb biztonsági mentést végez. A biztonsági másolatok sorrendjét manuálisan kell megtartania – a legrégebbitől a legújabbig.
+        > Rendkívül fontos, hogy az áttelepítési feladatot úgy futtassa, hogy először a legrégebbi biztonsági másolatot válassza ki, majd újra, minden alkalommal egy fokozatosan újabb biztonsági mentéssel. Mindig manuálisan kell karbantartani a biztonsági másolatok sorrendjét – a legrégebbitől a legújabbig.
     :::column-end:::
 :::row-end:::
 
-### <a name="phase-3-summary"></a>3. fázis – összefoglalás
+### <a name="phase-3-summary"></a>3. fázis összegzése
 
-A 3. fázis végén legalább az egyik áttelepítési feladatot futtatnia kell a StorSimple-kötetekről az Azure-fájlmegosztás (ok) ba. Ugyanezt az áttelepítési feladatot több alkalommal is futtathatja, a legrégebbi és a legújabb biztonsági másolatok között, amelyeket át kell telepíteni. Mostantól a megosztáshoz (a megosztások áttelepítési feladatainak elvégzése után) vagy a megosztási hozzáférés az Azure-fájlmegosztás számára történő irányításához is koncentrálhat Azure File Sync beállítására.
+A 3. fázis végén futtatnia kell legalább egy migrálási feladatát a StorSimple-kötetek és az Azure-fájlmegosztások között. Ugyanazt az áttelepítési feladatot többször is futtatni fogja, a legrégebbitől a legújabbig, áttelepíteni kell a biztonsági mentéseket. Most arra összpontosíthat, hogy be kell Azure File Sync a megosztáshoz (miután befejeződött a megosztás migrálási feladatának befejezése), vagy az információs munkatársak és alkalmazások megosztási hozzáférését az Azure-fájlmegosztáshoz irányíthatja.
 
-## <a name="phase-4-access-your-azure-file-shares"></a>4. fázis: az Azure-fájlmegosztás elérése
+## <a name="phase-4-access-your-azure-file-shares"></a>4. fázis: Az Azure-fájlmegosztások elérése
 
-Az Azure-fájlmegosztás eléréséhez két fő stratégia van:
+Az Azure-fájlmegosztások elérésének két fő stratégiája van:
 
-* **Azure file Sync**: [Azure file Sync üzembe helyezése](#deploy-azure-file-sync) helyszíni Windows Server-példányon. Azure File Sync rendelkezik a helyi gyorsítótár összes előnyével, akárcsak a StorSimple.
-* **Közvetlen megosztás – hozzáférés**: [közvetlen megosztású hozzáférés üzembe helyezése](#deploy-direct-share-access). Akkor használja ezt a stratégiát, ha az adott Azure-fájlmegosztás hozzáférési forgatókönyve nem részesül a helyi gyorsítótárazásban, vagy ha már nem tud helyszíni Windows Server-példányt üzemeltetni. Itt a felhasználók és az alkalmazások továbbra is hozzáférhetnek az SMB protokollon keresztüli SMB-megosztásokhoz. Ezek a megosztások már nem egy helyszíni kiszolgálón, hanem közvetlenül a felhőben is elérhetők.
+* **Azure File Sync:** [Azure File Sync](#deploy-azure-file-sync) üzembe helyezése egy helyszíni Windows Server-példányon. Azure File Sync helyi gyorsítótár összes előnye a StorSimple-höz hasonló.
+* **Közvetlen megosztás-hozzáférés:** [Közvetlen megosztás-hozzáférés üzembe helyezése.](#deploy-direct-share-access) Akkor használja ezt a stratégiát, ha egy adott Azure-fájlmegosztás hozzáférési forgatókönyve nem használja ki a helyi gyorsítótárazást, vagy ha már nem tud helyszíni Windows Server-példányt üzembe tartani. Itt a felhasználók és az alkalmazások továbbra is az SMB-protokollon keresztül érik el az SMB-megosztásokat. Ezek a megosztások már nem helyszíni kiszolgálón, hanem közvetlenül a felhőben vannak.
 
-Meg kell határoznia, hogy melyik lehetőség a legmegfelelőbb az útmutató [1. fázisában](#phase-1-prepare-for-migration) .
+Már el kellett döntenünk, hogy melyik lehetőség a legmegfelelőbb az Ön számára az [útmutató 1.](#phase-1-prepare-for-migration) fázisában.
 
-A szakasz további része az üzembe helyezési utasításokra összpontosít.
+A szakasz további részében az üzembe helyezési utasításokra összpontosítunk.
 
 ### <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 
-Itt az ideje, hogy a Azure File Sync egy részét telepítse.
+Itt az ideje, hogy üzembe helyezd a Azure File Sync.
 
-1. Hozza létre a Azure File Sync felhőalapú erőforrást.
-1. Telepítse a Azure File Sync ügynököt a helyszíni kiszolgálóra.
-1. Regisztrálja a kiszolgálót a Felhőbeli erőforrással.
+1. Hozza létre Azure File Sync felhőerőforrást.
+1. Telepítse a Azure File Sync ügynököt a helyszíni kiszolgálón.
+1. Regisztrálja a kiszolgálót a felhőerőforrásban.
 
-Még ne hozzon létre szinkronizálási csoportokat. Az Azure-fájlmegosztás szinkronizálásának beállítása csak akkor történhet meg, ha az áttelepítési feladatok egy Azure-fájlmegosztás esetében befejeződik. Ha az áttelepítés befejeződése előtt kezdte el Azure File Sync használni az áttelepítést, akkor szükségtelenül megnehezíti az áttelepítés elvégzését, mivel nem tudta könnyen megállapítani, hogy mikor kezdeményezték a kivágást.
+Még ne hozzon létre szinkronizálási csoportokat. Az Azure-fájlmegosztással való szinkronizálás beállítása csak akkor történhet meg, ha az Azure-fájlmegosztásba való migrálási feladatok befejeződtek. Ha a migrálás Azure File Sync előtt kezdte el használni a Azure File Sync, az feleslegesen megnehezítheti a migrálást, mivel nem lehetett könnyen tudatni vele, hogy mikor kellett elindítani az átállást.
 
-#### <a name="deploy-the-azure-file-sync-cloud-resource"></a>A Azure File Sync felhőalapú erőforrás üzembe helyezése
+#### <a name="deploy-the-azure-file-sync-cloud-resource"></a>A felhőalapú Azure File Sync üzembe helyezése
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
 > [!TIP]
-> Ha módosítani szeretné az Azure-régió adatait az áttelepítés befejezése után, telepítse a Storage Sync szolgáltatást ugyanabban a régióban, mint az áttelepítéshez célként megadott Storage-fiókokat.
+> Ha módosítani szeretné azt az Azure-régiót, ahol az adatok a migrálás befejezése után találhatók, a Storage Sync Service-t ugyanabban a régióban kell üzembe helyeznie, mint a migrálás céltárfiókját.
 
 #### <a name="deploy-an-on-premises-windows-server-instance"></a>Helyszíni Windows Server-példány üzembe helyezése
 
-* Hozza létre a Windows Server 2019 (minimális 2012R2) virtuális gépet vagy fizikai kiszolgálót. A Windows Server feladatátvevő fürtök is támogatottak. Ne használja újra a kiszolgálót a 8100-es vagy a 8600-es StorSimple.
-* Közvetlenül csatlakoztatott tároló kiépítése vagy hozzáadása. A hálózatra csatlakoztatott tároló nem támogatott.
+* Hozza létre a Windows Server 2019-et (legalább 2012R2) virtuális gépként vagy fizikai kiszolgálóként. A Windows Server feladatátvevő fürt is támogatott. Ne használja újra a StorSimple 8100-as vagy 8600-as portot elvezető kiszolgálót.
+* Közvetlenül csatlakoztatott tároló kiépítése vagy hozzáadása. A hálózati tárolók nem támogatottak.
 
-Javasoljuk, hogy az új Windows Server-példány számára a StorSimple 8100-as vagy a 8600-es készüléken elérhetőnél nagyobb mennyiségű tárterületet adjon meg a gyorsítótárazáshoz. A Windows Server-példányt ugyanúgy használhatja, mint a StorSimple berendezést. Ha ugyanazt a tárterületet használja, mint a berendezés, a gyorsítótárazási élménynek hasonlónak kell lennie, ha nem ugyanaz. A (z) a Windows Server-példányból is hozzáadhat vagy eltávolíthat tárolót. Ez a funkció lehetővé teszi a helyi kötet méretének és a gyorsítótárazáshoz elérhető helyi tárterület mennyiségének a méretezését.
+Ajánlott az új Windows Server-példány számára a StorSimple 8100-as vagy 8600-as berendezés helyi gyorsítótárazható kapacitásával megegyező vagy nagyobb tárterületet adni. A Windows Server-példányt ugyanúgy fogja használni, mint a StorSimple-berendezést. Ha a tárterülete megegyezik a berendezés tárolókapacitásának, a gyorsítótárazásnak hasonlónak kell lennie, ha nem ugyanaz. A Windows Server-példányhoz hozzáadhat tárhelyet, vagy eltávolíthatja onnan. Ezzel a képességgel skálázható a helyi kötet mérete és a gyorsítótárazható helyi tárterület mennyisége.
 
-#### <a name="prepare-the-windows-server-instance-for-file-sync"></a>A Windows Server-példány előkészítése a fájl-szinkronizáláshoz
+#### <a name="prepare-the-windows-server-instance-for-file-sync"></a>A Windows Server-példány előkészítése fájlszinkronizáláshoz
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-#### <a name="configure-azure-file-sync-on-the-windows-server-instance"></a>Azure File Sync konfigurálása a Windows Server-példányon
+#### <a name="configure-azure-file-sync-on-the-windows-server-instance"></a>A Azure File Sync konfigurálása a Windows Server-példányon
 
-A regisztrált helyszíni Windows Server-példánynak készen kell állnia, és az internethez kell csatlakoznia ehhez a folyamathoz.
+A folyamathoz a regisztrált helyszíni Windows Server-példánynak készen kell állnia, és csatlakozva kell lennie az internethez.
 
 > [!IMPORTANT]
-> A folytatás előtt el kell végeznie a fájlok és mappák StorSimple áttelepítését az Azure-fájlmegosztást. Győződjön meg arról, hogy a fájlmegosztás nem végez több módosítást.
+> A folytatás előtt be kell fejeződnie a fájlok és mappák Azure-fájlmegosztásba történő StorSimple-migrálásának. Győződjön meg arról, hogy a fájlmegosztáson nem történt további módosítás.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy bekapcsolja a Felhőbeli rétegek bekapcsolását. A felhő-rétegek a Azure File Sync funkció, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárolókapacitással rendelkezzen, mint amennyit a felhőben tárolnak, de a teljes névtér elérhető. A helyileg érdekes adat a gyors, helyi hozzáférési teljesítmény érdekében helyileg is gyorsítótárazható. Egy másik ok a Felhőbeli rétegek bekapcsolására ebben a lépésben, hogy jelenleg nem szeretnénk szinkronizálni a fájl tartalmát. Most csak a névteret kell áthelyezni.
+> Mindenképpen kapcsolja be a felhőbeli rétegezést. A felhőbeli rétegezés az a Azure File Sync, amely lehetővé teszi, hogy a helyi kiszolgáló kevesebb tárkapacitással rendelkezik, mint a felhőben tároltak, de a teljes névtér elérhető. A helyileg érdekes adatokat a rendszer helyileg is gyorsítótárazza a gyors, helyi hozzáférési teljesítmény érdekében. A felhőbeli rétegezés ezen a lépésen való bekapcsolásának egy másik oka az, hogy ebben a szakaszban nem szeretnénk szinkronizálni a fájltartalmat. Jelenleg csak a névtérnek szabad továbblépni.
 
-### <a name="deploy-direct-share-access"></a>Közvetlen megosztás – hozzáférés üzembe helyezése
+### <a name="deploy-direct-share-access"></a>Közvetlen megosztási hozzáférés üzembe helyezése
 
 :::row:::
     :::column:::
         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     :::column-end:::
     :::column:::
-        Ebből a videóból megtudhatja, hogyan teheti lehetővé az Azure-fájlmegosztás közvetlen biztonságos kihelyezését az információkkal dolgozó szakemberek és alkalmazások számára öt egyszerű lépésben.</br>
-        A videó az egyes témakörökre vonatkozó dedikált dokumentációra hivatkozik:
+        Ez a videó egy útmutató és bemutató arról, hogyan teheti biztonságossá az Azure-fájlmegosztásokat közvetlenül az információkkal dolgozó munkatársak és alkalmazások számára öt egyszerű lépésben.</br>
+        A videó egyes témakörök dedikált dokumentációira hivatkozik:
 
 * [Az identitások áttekintése](storage-files-active-directory-overview.md)
-* [A tartományhoz való csatlakozás egy Storage-fiókhoz](storage-files-identity-auth-active-directory-enable.md)
-* [Az Azure-fájlmegosztás hálózatkezelésének áttekintése](storage-files-networking-overview.md)
-* [Nyilvános és magánhálózati végpontok konfigurálása](storage-files-networking-endpoints.md)
-* [S2S VPN konfigurálása](storage-files-configure-s2s-vpn.md)
+* [Tárfiók tartományhoz való csatlakozása](storage-files-identity-auth-active-directory-enable.md)
+* [Az Azure-fájlmegosztások hálózatának áttekintése](storage-files-networking-overview.md)
+* [Nyilvános és privát végpontok konfigurálása](storage-files-networking-endpoints.md)
+* [A konfiguráció S2S VPN](storage-files-configure-s2s-vpn.md)
 * [Windows P2S VPN konfigurálása](storage-files-configure-p2s-vpn-windows.md)
 * [Linux P2S VPN konfigurálása](storage-files-configure-p2s-vpn-linux.md)
-* [A DNS-továbbítás konfigurálása](storage-files-networking-dns.md)
-* [Az elosztott fájlrendszer konfigurálása – N](/windows-server/storage/dfs-namespaces/dfs-overview)
+* [DNS-továbbítás konfigurálása](storage-files-networking-dns.md)
+* [Az DFS-N konfigurálása](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
-### <a name="phase-4-summary"></a>4. fázis – összefoglalás
+### <a name="phase-4-summary"></a>4. fázis összegzése
 
-Ebben a fázisban több áttelepítési feladatot hozott létre és futtatott a StorSimple Data Managerban. Ezek a feladatok áttelepítették fájljait és mappáit az Azure-fájlmegosztást. Emellett üzembe helyezte Azure File Sync vagy felkészítette a hálózati és a Storage-fiókokat a közvetlen megosztás eléréséhez.
+Ebben a fázisban több áttelepítési feladat létrehozása és futtatása is StorSimple Data Manager. Ezek a feladatok áttelepítik a fájlokat és mappákat az Azure-fájlmegosztásba. Emellett üzembe is Azure File Sync vagy előkészítette a hálózati és tárfiókokat a közvetlen megosztás-hozzáféréshez.
 
-## <a name="phase-5-user-cut-over"></a>5. fázis: felhasználói kivágás
+## <a name="phase-5-user-cut-over"></a>5. fázis: Felhasználó-átvágás
 
-Ebben a fázisban a Migrálás felfedéséről van szó:
+Ez a fázis a migrálás burkolt folyamatának a körére szól:
 
 * Tervezze meg az állásidőt.
-* A 3. fázisban lévő áttelepítési feladatok futtatásával megtekintheti a StorSimple által létrehozott felhasználókat és alkalmazásokat.
-* A felhasználók az új Windows Server-példányra Azure File Sync vagy az Azure-fájlmegosztás közvetlen megosztáson keresztüli eléréssel való használatát elmulasztják.
+* A StorSimple oldalon a 3. fázisban a migrálási feladatok futtatása közben végrehajtott felhasználói és alkalmazásai változásainak kezelése.
+* A felhasználók feladatátvétele az új Windows Server-példányra Azure File Sync azure-fájlmegosztásokkal közvetlen megosztási hozzáféréssel.
 
-### <a name="plan-your-downtime"></a>A leállás megtervezése
+### <a name="plan-your-downtime"></a>Az állásidő megterve
 
-Ez az áttelepítési módszer bizonyos állásidőt igényel a felhasználók és az alkalmazások számára. A cél az állásidő minimálisra tartása. A következő szempontok segíthetnek:
+Ehhez a migrálási megközelítéshez némi állásidőre van szükség a felhasználók és az alkalmazások számára. A cél az állásidő minimálisra emelése. A következő szempontok segíthetnek:
 
-* Az áttelepítési feladatok futtatása közben tartsa elérhetővé a StorSimple-köteteket.
-* Amikor befejezte az adatáttelepítési feladatok egy megosztáshoz való futtatását, ideje eltávolítani a felhasználói hozzáférést (legalább írási hozzáféréssel) a StorSimple-kötetekből vagy-megosztásokból. A végső RoboCopy az Azure-fájlmegosztást fogja felfogni. Ezt követően elvégezheti a felhasználók kivágását. A RoboCopy futtatásának helye attól függ, hogy Azure File Sync vagy közvetlen megosztású hozzáférést használ-e. A RoboCopy a következő szakasza kiterjed a tárgyra.
-* Miután végrehajtotta a RoboCopy szolgáltatást, készen áll arra, hogy az Azure-fájlmegosztás közvetlenül vagy egy SMB-megosztáson keresztül tegye elérhetővé a felhasználókat az Azure File Sync-t futtató Windows Server-példányon. Az elosztott fájlrendszerbeli telepítések gyakran segítenek gyorsan és hatékonyan elvégezni a kivágást. A meglévő megosztási címek konzisztensek maradnak, és az áttelepített fájlokat és mappákat tartalmazó új helyre mutatnak.
+* Tartsa rendelkezésre a StorSimple-köteteket a migrálási feladatok futtatása közben.
+* Ha befejezte egy megosztás adatáttelepítési feladatának futtatását, ideje eltávolítani a felhasználói hozzáférést (legalább írási hozzáférést) a StorSimple-kötetről vagy -megosztásról. A végső RoboCopy be fogja kapni az Azure-fájlmegosztást. Ezután átveheti a felhasználókat. A RoboCopy futtatásának helyétől függ, hogy a Azure File Sync vagy a közvetlen megosztási hozzáférést választotta. A RoboCopy következő szakasza ezt a témát fedi le.
+* Miután befejezte a RoboCopy-catchet, készen áll arra, hogy közvetlenül az Azure-fájlmegosztás vagy egy Windows Server-példányon található SMB-megosztás segítségével tegye elérhetővé az új helyet a Azure File Sync. A DFS-N üzembe helyezése gyakran segít a gyors és hatékony átvágásban. Így a meglévő megosztási címek konzisztensek maradnak, és egy új helyre fognak visszapontosodni, amely az áttelepített fájlokat és mappákat tartalmazza.
 
-### <a name="determine-when-your-namespace-has-fully-synced-to-your-server"></a>Annak megállapítása, hogy a névtér teljes mértékben szinkronizálva van-e a kiszolgálóval
+### <a name="determine-when-your-namespace-has-fully-synced-to-your-server"></a>Annak megállapítása, hogy a névtér mikor szinkronizált teljesen a kiszolgálóval
 
-Ha Azure File Synct használ egy Azure-fájlmegosztás esetében, akkor fontos, hogy a teljes névteret a helyi RoboCopy elindítása *előtt* is letöltse a kiszolgálóra. A névtér letöltéséhez szükséges idő az Azure-fájlmegosztás elemeinek számától függ. Két módszer van annak meghatározására, hogy a névtér teljesen megérkezett-e a kiszolgálón.
+Ha a Azure File Sync azure-fájlmegosztáshoz használja, fontos, hogy a helyi RoboCopy elkezdését  megelőzően megállapítsa, hogy a teljes névtér befejezte-e a letöltést a kiszolgálóra. A névtér letöltéséhez szükséges idő az Azure-fájlmegosztásban lévő elemek számától függ. Két módszerrel lehet meghatározni, hogy a névtér teljesen megérkezett-e a kiszolgálóra.
 
 #### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal használatával megtekintheti, hogy a névtér teljesen megérkezett-e.
+A névtér Azure Portal láthatja, ha a névtér teljesen megérkezett.
 
-* Jelentkezzen be a Azure Portalba, és lépjen a szinkronizálási csoportba. A szinkronizálási csoport és a kiszolgálói végpont szinkronizálási állapotának bejelölése.
-* Az érdekes irány letöltése. Ha a kiszolgálói végpont újonnan lett kiépítve, akkor megjelenik a **kezdeti szinkronizálás**, ami azt jelzi, hogy a névtér még mindig leáll.
-Ezt követően a névtér teljes mértékben ki lesz töltve a kiszolgálón. Most már folytathatja a helyi RoboCopyt is.
+* Jelentkezzen be a Azure Portal, és a szinkronizálási csoporthoz. Ellenőrizze a szinkronizálási csoport és a kiszolgálóvégpont szinkronizálási állapotát.
+* Az érdekes irány a letöltés. Ha a kiszolgálóvégpont újonnan ki van építve, kezdeti szinkronizálást fog mutatni, ami azt jelzi, hogy a névtér továbbra is leáll.
+Miután a kezdeti szinkronizáláson már nem történt **változás,** a névtér teljesen ki lesz töltve a kiszolgálón. Most folytathatja a helyi RoboCopyval.
 
 #### <a name="windows-server-event-viewer"></a>Windows Server Eseménynapló
 
-A Windows Server-példányon lévő Eseménynapló is megadhatja, ha a névtér teljesen megérkezett.
+A Windows Server-példány Eseménynapló is használhatja annak nevére, hogy a névtér mikor érkezett meg teljesen.
 
-1. Nyissa meg a **Eseménynapló**, és lépjen az **alkalmazások és szolgáltatások** elemre.
-1. Nyissa meg a **Microsoft\FileSync\Agent\Telemetry**.
-1. Keresse meg a legutóbbi, **9102**-as eseményt, amely megfelel egy befejezett szinkronizálási munkamenetnek.
-1. Válassza a **részletek** lehetőséget, és győződjön meg arról, hogy egy olyan eseményt keres, ahol a **SyncDirection** érték **le van letöltve**.
-1. Arra az időre, amikor a névtér befejezte a letöltést a-kiszolgálóra, egyetlen esemény lesz a **forgatókönyv**, a **FullGhostedSync** érték és a **HResult**  =  **0**.
-1. Ha kihagyja ezt az eseményt, további **9102 eseményt** is megkereshet a **SyncDirection**  =  **letöltésével** és a   =  **"RegularSync"** forgatókönyvvel. Az események egyikének megkeresése azt is jelzi, hogy a névtér befejezte a letöltést és a szinkronizálást a rendszeres szinkronizálási munkamenetek miatt, függetlenül attól, hogy van-e valami szinkronizálás, vagy sem.
+1. Nyissa meg **a Eseménynapló,** majd nyissa meg az **Alkalmazások és szolgáltatások szolgáltatásokat.**
+1. Nyissa meg a **Microsoft\FileSync\Agent\Telemetry fájlt.**
+1. Keresse meg a **legutóbbi 9102-es** eseményt, amely egy befejezett szinkronizálási munkamenetnek felel meg.
+1. Válassza **a Részletek** lehetőséget, és ellenőrizze, hogy olyan eseményt keres-e, ahol a **SyncDirection** értéke **Download (Letöltés).**
+1. Abban az időpontban, amikor a névtér letöltve lett a kiszolgálóra, egyetlen esemény lesz, a **FullGhostedSync** és a **HResult**  =  **0 értékkel.**
+1. Ha kihagyja ezt az eseményt, más **9102-es** eseményeket is keresnie kell a **SyncDirection** Download és  =   **a**  =  **Scenario "RegularSync" forgatókönyv használatával.** Az egyik ilyen esemény megkeresése azt is jelzi, hogy a névtér letöltése és szinkronizálása befejeződött a normál szinkronizálási munkamenetek között, függetlenül attól, hogy van-e szinkronizálható vagy nem szinkronizálható esemény.
 
 ### <a name="a-final-robocopy"></a>A végső RoboCopy
 
-Ezen a ponton a helyszíni Windows Server-példány és a StorSimple 8100-es vagy a 8600-es készülék közötti különbségek vannak.
+Ezen a ponton különbségek vannak a helyszíni Windows Server-példány és a StorSimple 8100 vagy 8600 berendezés között.
 
-1. Fel kell vennie azokat a módosításokat, amelyeket a StorSimple a felhasználók vagy alkalmazások a Migrálás közben készítettek.
-1. A Azure File Sync használata esetén: a StorSimple-berendezés feltölthető gyorsítótárral vagy a Windows Server-példánnyal, és csak egy olyan névtérrel rendelkezik, amely nem tartalmaz helyileg tárolt tartalmat. Az utolsó RoboCopy segítheti a helyi Azure File Sync gyorsítótárának indítását úgy, hogy a helyileg gyorsítótárazott fájlok tartalmát a rendelkezésre álló értékre húzza, és elfér a Azure File Sync-kiszolgálón.
-1. Előfordulhat, hogy néhány fájlt az áttelepítési feladatoknak az érvénytelen karakterek miatt hagyott hátra. Ha igen, másolja őket a Azure File Sync-kompatibilis Windows Server-példányra. Később beállíthatja, hogy szinkronizálja őket. Ha nem használ Azure File Sync egy adott megosztáshoz, akkor jobb, ha a fájlok átnevezése érvénytelen karaktereket tartalmaz a StorSimple köteten. Ezután futtassa közvetlenül a RoboCopy parancsot az Azure-fájlmegosztás ellen.
-
-> [!WARNING]
-> A Robocopy a Windows Server 2019-ben jelenleg olyan problémát tapasztal, amelynek hatására a rendszer a célkiszolgálón Azure File Sync a fájlok újramásolását a forrásból, és a Robocopy/MIR funkciójának használatakor újra feltölti az Azure-ba. Fontos, hogy a Robocopy szolgáltatást a 2019-től eltérő Windows Serveren használja. Az előnyben részesített választás a Windows Server 2016. A rendszer frissíti a problémát Windows Update használatával.
+1. Be kell látnia a felhasználók vagy alkalmazások által a StorSimple oldalán a migrálás során végrehajtott módosításokat.
+1. A StorSimple Azure File Sync használata esetén: A StorSimple-berendezés ki van töltve a Windows Server-példánysal szemben, és csak egy névtérrel rendelkezik, amely jelenleg nem tárol helyileg tárolt fájltartalmat. A végső RoboCopy segítségével gyorsan elindíthatja a helyi Azure File Sync-gyorsítótárat azáltal, hogy a helyileg gyorsítótárazott fájlok tartalmát a rendelkezésre álló helyére húzza, és elfér a Azure File Sync kiszolgálón.
+1. Előfordulhat, hogy egyes fájlokat az áttelepítési feladat érvénytelen karakterek miatt maradt hátra. Ha igen, másolja őket a Azure File Sync Windows Server-példányra. Később módosíthatja őket, hogy szinkronizálva legyenek. Ha nem használ Azure File Sync megosztáshoz, jobb, ha a StorSimple-köteten érvénytelen karaktereket tartalmaznak. Ezután futtassa a RoboCopyt közvetlenül az Azure-fájlmegosztáson.
 
 > [!WARNING]
-> A RoboCopyt *nem kell* elindítania ahhoz, hogy a kiszolgáló egy teljesen letöltött Azure-fájlmegosztás névterét használja. További információ: [annak meghatározása, hogy a névtér teljes mértékben le legyen-e töltve a kiszolgálóra](#determine-when-your-namespace-has-fully-synced-to-your-server).
+> A Windows Server 2019-ben a Robocopy jelenleg olyan problémát tapasztal, amely miatt a célkiszolgáló Azure File Sync által rétegzett fájljainak hatókörét a rendszer a forrásból újra fel fogja tölteni, majd újra feltölti az Azure-ba a robocopy /COPY függvényének használata során. Rendkívül fontos, hogy a Robocopyt a 2019-től más Windows Serveren használja. Az előnyben részesített lehetőség a Windows Server 2016. Ez a megjegyzés akkor lesz frissítve, ha a probléma a következőn keresztül Windows Update.
 
- Csak azokat a fájlokat szeretné átmásolni, amelyeket az áttelepítési feladat utolsó futtatása után módosítottak, és azokat a fájlokat, amelyek korábban nem lettek áthelyezve. A Migrálás befejezése után a probléma megoldásához, hogy miért nem mozdultak el később a kiszolgálón. További információ: [Azure file Sync hibaelhárítás](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+> [!WARNING]
+> Nem *szabad elindítani a* RoboCopyt, mielőtt a kiszolgáló teljesen letölti egy Azure-fájlmegosztás névterét. További információ: Annak meghatározása, hogy a névtér mikor lett teljesen [letöltve a kiszolgálóra.](#determine-when-your-namespace-has-fully-synced-to-your-server)
 
-A RoboCopy több paraméterrel rendelkezik. Az alábbi példa egy befejezett parancsot és a paraméterek kiválasztásának okait mutatja be.
+ Csak olyan fájlokat szeretne másolni, amelyek az áttelepítési feladat utolsó futtatása után módosultak, és olyan fájlokat, amelyek korábban még nem helyezték át ezeket a feladatokat. A probléma megoldásához meg kell oldania, hogy a migrálás befejezése után miért nem voltak később áthelyezve a kiszolgálón. További információ: Azure File Sync [hibaelhárítása.](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
+
+A RoboCopy számos paraméterrel rendelkezik. Az alábbi példa egy befejezett parancsot és a paraméterek kiválasztásának okait mutatja be.
 
 ```console
 Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Háttér
+Háttér:
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi, hogy a RoboCopy több szálon fusson. Az alapértelmezett érték 8, a maximális érték 128.
+      Lehetővé teszi a RoboCopy többszálas futtatását. Az alapértelmezett érték 8, a maximális érték pedig 128.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -525,7 +525,7 @@ Háttér
       /UNILOG:<file name>
    :::column-end:::
    :::column span="1":::
-      Az állapotot a NAPLÓFÁJLba UNICODE-ként adja vissza (felülírja a meglévő naplót).
+      A NAPLÓFÁJLba UNICODE-ként írja ki az állapotot (felülírja a meglévő naplót).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -533,7 +533,7 @@ Háttér
       /TEE
    :::column-end:::
    :::column span="1":::
-      A konzol ablakának kimenete. Egy naplófájlban a kimenettel együtt használatos.
+      Kimenetek a konzolablakban. Egy naplófájl kimenetével együtt használva.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -541,7 +541,7 @@ Háttér
       /NP
    :::column-end:::
    :::column span="1":::
-      Kihagyja az előrehaladás naplózását, hogy a napló olvasható legyen.
+      Kihagyja az előrehaladás naplózását, hogy a napló olvasható maradjon.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -549,15 +549,15 @@ Háttér
       /B
    :::column-end:::
    :::column span="1":::
-      A RoboCopy szolgáltatást ugyanazon a módban futtatja, amikor a biztonságimásolat-készítő alkalmazás használni fogja. Lehetővé teszi, hogy a RoboCopy olyan fájlokat helyezzen át, amelyekhez az aktuális felhasználónak nincs engedélye.
+      Ugyanabban a módban futtatja a RoboCopyt, mint a biztonsági mentési alkalmazás. Lehetővé teszi a RoboCopy számára olyan fájlok áthelyezését, amelyekhez az aktuális felhasználó nem rendelkezik engedélyekkel.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /MIR
+      /FOG
    :::column-end:::
    :::column span="1":::
-      Lehetővé teszi, hogy a RoboCopy csak a forrás (StorSimple-készülék) és a cél (Windows Server Directory) közötti különbözeteket vegye figyelembe.
+      Lehetővé teszi, hogy a RoboCopy csak a forrás (StorSimple-berendezés) és a cél (Windows Server-címtár) közötti változásokat vegye figyelembe.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -565,15 +565,15 @@ Háttér
       /IT
    :::column-end:::
    :::column span="1":::
-      Gondoskodik arról, hogy a hűség megőrzése bizonyos tükrözési helyzetekben megmaradjon.</br>Példa: két Robocopy között a fájl egy ACL-változást és egy attribútum-frissítést is futtat, például *rejtettként*. Az/IT nélkül a Robocopy nem tudja kihagyni az ACL-t, így nem kerül át a célhelyre.
+      Bizonyos tükrözött forgatókönyvekben megőrzi a hűséget.</br>Példa: Két Robocopy futtatása között egy fájl ACL-változást és attribútumfrissítést tapasztal, például rejtettként van *megjelölve.* /IT nélkül a Robocopy kihagyhatja az ACL-változást, így nem továbbíthatja a célhelyre.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY: copyflag [s]
+      /COPY:copyflag[s]
    :::column-end:::
    :::column span="1":::
-      A fájl másolatának hűsége (alapértelmezett értéke/COPY: DAT), másolási jelzők: D = adat, A = attribútumok, T = timestamps, S = Security = NTFS ACL, O = tulajdonosi információ, U = naplózási információ.
+      A fájlmásolás részletessége (alapértelmezés szerint /COPY:DAT), másolásjelzők: D=Data, A=Attributes, T=Timestamps, S=Security=NTFS ACL, O=Owner information, U=aUditing information.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -581,62 +581,62 @@ Háttér
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      MÁSOLJA a fájl összes adatát (ezzel egyenértékű a következő/COPY: DATSOU).
+      MÁSOLJA AZ ÖSSZES fájl információit (egyenértékű a /COPY:DATSOU értékekkel).
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY: copyflag [s]
+      /DCOPY:copyflag[s]
    :::column-end:::
    :::column span="1":::
-      A címtárak másolásának hűsége (az alapértelmezett érték a/DCOPY: DA), a másolási jelzők: D = az adat, A = attribútumok, A T = timestamps.
+      A könyvtárak másolásának fidelitása (alapértelmezés szerint /DCOPY:DA), másolásjelölők: D=Data, A=Attributes, T=Timestamps.
    :::column-end:::
 :::row-end:::
 
-A RoboCopy parancs forrás-és célhelyének konfigurálásakor ellenőrizze, hogy a forrás és a cél szerkezete megfelel-e a célnak. Ha az áttelepítési feladathoz tartozó címtár-leképezési funkciót használta, a gyökérkönyvtár szerkezete eltérő lehet a StorSimple-kötet struktúrájától. Ha ez a helyzet, előfordulhat, hogy több RoboCopy-feladatra is szüksége van, egyet az egyes alkönyvtárakhoz. Ha nem biztos abban, hogy a parancs a várt módon fog-e elindulni, használhatja a */l* paramétert, amely a parancsot szimulálja anélkül, hogy a módosítások végrehajtása ténylegesen megtörténik.
+A RoboCopy-parancs forrás- és célhelyének konfigurálásakor ellenőrizze, hogy a forrás és a cél struktúrája egyezik-e. Ha az áttelepítési feladat könyvtárleképezési funkcióját használta, a gyökérkönyvtár szerkezete különbözhet a StorSimple-kötet struktúrájától. Ebben az esetben előfordulhat, hogy több RoboCopy-feladatra lesz szüksége, mindegyik alkönyvtárhoz egyet. Ha nem biztos abban, hogy a parancs a várt módon fog-e teljesíteni, használhatja az */L* paramétert, amely a parancsot szimulálja anélkül, hogy ténylegesen módosításokat hajt végre.
 
-Ez a RoboCopy parancs/MIR használ, ezért nem helyezi át azokat a fájlokat, amelyek azonosak (például rétegű fájlok). Ha azonban a forrás és a cél elérési útja nem megfelelő, a/MIR a Windows Server-példány vagy az Azure-fájlmegosztás StorSimple is törli, amely nem szerepel a forrás elérési útján. Pontosan meg kell egyezniük ahhoz, hogy a RoboCopy-feladatok elérjék az áttelepített tartalom frissítésének célját, és az áttelepítés során végrehajtott legújabb módosításokat.
+Ez a RoboCopy-parancs a /REL-t használja, így nem fogja áthelyezni az azonos fájlokat (például rétegzett fájlokat). Ha azonban a forrás és a cél elérési útja helytelen, a /ABBAN az esetben is kiüríti a Könyvtárstruktúrákat a Windows Server-példányon vagy az Azure-fájlmegosztáson, amelyek nem találhatóak meg a StorSimple-forrásútvonalon. Pontosan meg kell egyezniük a RoboCopy-feladat céllal, hogy a migrált tartalmat a migrálás során végrehajtott legújabb módosításokkal frissítve legyen.
 
-Tekintse meg a RoboCopy naplófájlt, és ellenőrizze, hogy a fájlok le vannak-e maradva. Ha problémák jelentkeznek, javítsa ki, majd futtassa újra a RoboCopy parancsot. Ne szüntesse meg a StorSimple-erőforrások kiépítését, mielőtt kijavította az Ön számára fontos fájlok vagy mappák fennálló problémáit.
+Tekintse át a RoboCopy naplófájlját, és nézze meg, hogy nem maradtak-e fájlok. Ha problémák vannak, javítsa ki őket, majd futtassa újra a RoboCopy-parancsot. A fontos fájlok vagy mappák megoldatlan problémáinak megoldása előtt ne megszüntetje a StorSimple-erőforrásokat.
 
-Ha nem használja a Azure File Sync az adott Azure-fájlmegosztás gyorsítótárba helyezését, hanem a közvetlen megosztás elérését választotta:
+Ha nem használja a Azure File Sync a szóban forgó Azure-fájlmegosztás gyorsítótárazára, hanem a közvetlen megosztás-hozzáférést választotta:
 
-1. [Csatlakoztassa az Azure-fájlmegosztást](storage-how-to-use-files-windows.md#mount-the-azure-file-share) hálózati meghajtóként egy helyi Windows-gép számára.
-1. Hajtsa végre a RoboCopyt a StorSimple és a csatlakoztatott Azure-fájlmegosztás között. Ha a fájlok nem kerülnek másolásra, javítsa a nevüket a StorSimple oldalon az érvénytelen karakterek eltávolításához. Ezután próbálja megismételni a RoboCopy programot. A korábban felsorolt RoboCopy-parancs többször is futtatható, anélkül, hogy szükségtelenül StorSimple a felidézést.
+1. [Csatlakoztassa az Azure-fájlmegosztást](storage-how-to-use-files-windows.md#mount-the-azure-file-share) hálózati meghajtóként egy helyi Windows-géphez.
+1. Hajtsa végre a RoboCopyt a StorSimple és a csatlakoztatott Azure-fájlmegosztás között. Ha a fájlok nem másolnak, javítsa ki a nevüket a StorSimple oldalon az érvénytelen karakterek eltávolításához. Ezután próbálja újra a RoboCopyt. A korábban felsorolt RoboCopy-parancs többször is futtatható anélkül, hogy feleslegesen idézné elő a StorSimple-t.
 
-### <a name="user-cut-over"></a>Felhasználó kivágása
+### <a name="user-cut-over"></a>Felhasználó-átvágás
 
-Ha Azure File Sync használ, valószínűleg létre kell hoznia az SMB-megosztásokat azon a Azure File Sync-kompatibilis Windows Server-példányon, amely megfelel a StorSimple-köteteken lévő megosztásoknak. Ezt a lépést előre betöltheti, és megteheti, hogy itt nem veszít időt. Azonban meg kell győződnie arról, hogy a pont előtt senki nem fér hozzá a Windows Server-példány változásaihoz.
+Ha a Azure File Sync használja, valószínűleg létre kell hoznia az SMB-megosztásokat az Azure File Sync-kompatibilis Windows Server-példányon, amelyek megegyeznek a StorSimple-köteten található megosztásokkal. Ezt a lépést előre betöltheti, és korábban is meg is használhatja, hogy itt ne veszítsen időt. Azonban meg kell győződnie arról, hogy a pont előtt senki sem férhet hozzá a Windows Server-példány módosításaihoz.
 
-Ha van DFS-N üzemelő példánya, akkor a DFN-Namespaces az új kiszolgáló mappájának helyeire irányíthatja. Ha nincs DFS-N üzemelő példánya, és a 8100-es vagy 8600-es készüléket helyileg, egy Windows Server-példánnyal elvégezte, akkor a kiszolgálót kikapcsolhatja a tartományból. Ezután a tartományhoz csatlakoztassa az új Azure File Sync-kompatibilis Windows Server-példányt. A folyamat során a kiszolgálónak ugyanazt a kiszolgálónevet és neveket kell megadnia, mint a régi kiszolgálót, így a felhasználók, a csoportházirend és a parancsfájlok átláthatóbb maradnak.
+Ha DFS-N üzemelő példánytal rendelkezik, a DFN-Namespaces az új kiszolgálómappába mutathat. Ha nincs DFS-N üzemelő példánya, és a 8100-as vagy 8600-as berendezést helyileg egy Windows Server-példányon tárolta, akkor a kiszolgálót kiveheti a tartományból. Ezután csatlakozzon tartományhoz az új Azure File Sync Windows Server-példányhoz. A folyamat során a kiszolgálónak ugyanazt a kiszolgálónevet és megosztási nevet adja meg, mint a régi kiszolgálónak, hogy az átvágás átlátható maradjon a felhasználók, a csoportházirend és a parancsfájlok számára.
 
-További információ az [elosztott fájlrendszerről – N](/windows-server/storage/dfs-namespaces/dfs-overview).
+További információ a [DFS-N-ről.](/windows-server/storage/dfs-namespaces/dfs-overview)
 
-## <a name="deprovision"></a>Megszüntetése
+## <a name="deprovision"></a>Megszüntetés
 
-Amikor kiépít egy erőforrást, elveszíti az adott erőforrás és a hozzá tartozó adat konfigurációját. A megszüntetés nem vonható vissza. Ne folytassa, amíg meg nem erősítette a következőket:
+Amikor megszüntet egy erőforrást, elveszíti a hozzáférését az erőforrás és az adatok konfigurációja között. Megszüntetés nem vonható vissza. Csak akkor folytassa, ha már megerősítette a következőt:
 
-* A Migrálás befejeződött.
-* Nincsenek függőségek a StorSimple-fájlokon, mappákon vagy mennyiségi biztonsági másolatokon, amelyeket fel szeretne venni.
+* A migrálás befejeződött.
+* Nincsenek függőségek a megszüntetni kívánt StorSimple-fájlokon, -mappákon vagy kötetek biztonsági másolatán.
 
-Mielőtt elkezdené, érdemes megfigyelni az új Azure File Sync üzembe helyezését egy ideig. Ez az idő lehetőséget biztosít az esetlegesen felmerülő problémák kijavítására. Miután megfigyelte Azure File Sync üzemelő példányát legalább néhány napig, megkezdheti az erőforrások kiépítését ebben a sorrendben:
+Mielőtt hozzákezd, ajánlott megfigyelni az új Azure File Sync éles környezetben való üzembe helyezését. Ez az idő lehetőséget ad az esetlegesen felmerülő problémák megoldására. Miután legalább néhány napja megfigyelte a Azure File Sync üzembe helyezését, megkezdheti az erőforrások megszüntetését ebben a sorrendben:
 
-1. A StorSimple Data Manager erőforrás kiépítése a Azure Portal használatával. Az összes DTS-feladatot törölni fogjuk. Nem lehet egyszerűen beolvasni a másolási naplókat. Ha fontosak a rekordok számára, a kivonás előtt kérje le őket.
-1. Győződjön meg arról, hogy a StorSimple fizikai berendezések át lettek telepítve, majd törölje a regisztrációját. Ha nem teljesen biztos abban, hogy áttelepítette őket, ne folytassa. Ha kiépíti ezeket az erőforrásokat, miközben továbbra is szükségesek, nem fogja tudni helyreállítani az adatokat vagy azok konfigurációját.<br>Ha szeretné, először kiépítheti a StorSimple mennyiségi erőforrását, ami törli a berendezésen lévő adatmennyiséget. Ez több napot is igénybe vehet, és a készüléken lévő adatfeldolgozás **nem** nulla. Ha ez fontos az Ön számára, akkor az erőforrás-kiépítés és a szabályzatok alapján a lemez lenullázása külön kezelhető.
-1. Ha nincs több regisztrált eszköz a StorSimple Eszközkezelő, akkor továbbra is eltávolíthatja a Eszközkezelő erőforrást.
-1. Most már ideje törölni a StorSimple Storage-fiókot az Azure-ban. A folytatás előtt állítsa le és erősítse meg a Migrálás befejeződését, és hogy semmi sem függ az adatoktól.
-1. Húzza ki a StorSimple fizikai berendezést az adatközpontból.
-1. Ha a StorSimple készülék tulajdonosa, a számítógép újrahasznosítja a számítógépet. Ha az eszköz bérelt, tájékoztassa a Bérbeadót, és szükség szerint adja vissza az eszközt.
+1. Megszüntetni a StorSimple Data Manager erőforrást a Azure Portal. Ezzel az összes DTS-feladat törlődik. A másolási naplókat nem fogja tudni egyszerűen lekérni. Ha fontosak a rekordok számára, a megszüntetés előtt olvassa be őket.
+1. Győződjön meg arról, hogy a StorSimple fizikai berendezések migrálva vannak, majd azok regisztrációját meg kell újulni. Ha nem biztos abban, hogy migrálták őket, ne folytassa. Ha megszünteti ezeket az erőforrásokat, amíg még szükség van rá, nem tudja helyreállítani az adatokat vagy azok konfigurációját.<br>Szükség esetén először megszüntetheti a StorSimple-kötet erőforrását, amely megtisztítja a berendezésen az adatokat. Ez több napot is igénybe **vehet,** és nem állítja ki kriminalisztikailag a berendezésen az adatokat. Ha ez fontos Önnek, kezelje a lemez nullázását az erőforrás-megszüntetéstől és a szabályzatok szerint.
+1. Ha már nem maradt több regisztrált eszköz a StorSimple-Eszközkezelő, akkor eltávolíthatja az adott Eszközkezelő erőforrást.
+1. Ideje törölni a StorSimple-tárfiókot az Azure-ban. A folytatás előtt állítsa le és ellenőrizze, hogy a migrálás befejeződött-e, és hogy ezektől az adatoktól semmi és senki sem függ.
+1. Válassza le a StorSimple fizikai berendezést az adatközpontból.
+1. Ha Ön a StorSimple-berendezés a tulajdonában van, akkor ingyenesen újrahasznosítható a számítógépen. Ha az eszköz bérletben van, tájékoztassa a bérlőt, és szükség szerint adja vissza az eszközt.
 
-A Migrálás befejeződött.
+A migrálás befejeződött.
 
 > [!NOTE]
-> Továbbra is kérdése van vagy probléma merült fel?</br>
-> Itt segítünk AzureFilesMigration@microsoft.com .
+> Továbbra is kérdései vannak vagy problémákba ütközött?</br>
+> Azért vagyunk itt, hogy segítsünk AzureFilesMigration@microsoft.com a(nak)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
-* Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering-overview.md) házirendek rugalmasságát.
-* Az Azure-fájlmegosztás [Azure Backupának engedélyezése](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) a pillanatképek ütemezett és a biztonsági mentési adatmegőrzési ütemtervek definiálásához.
-* Ha a Azure Portal úgy látja, hogy egyes fájlok véglegesen nem szinkronizálhatók, tekintse át a [hibaelhárítási útmutatót](storage-sync-files-troubleshoot.md) a problémák megoldásához szükséges lépésekért.
+* Ismerkedjen meg a [Azure File Sync: aka.ms/AFS.](./storage-sync-files-planning.md)
+* A felhőbeli rétegezés [szabályzatának rugalmassága.](storage-sync-cloud-tiering-overview.md)
+* [Engedélyezze Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) azure-fájlmegosztáson a pillanatképek ütemezéséhez és a biztonsági másolatok megőrzési ütemezésének meghatározásához.
+* Ha azt látja a Azure Portal, hogy egyes fájlok véglegesen [](storage-sync-files-troubleshoot.md) nem szinkronizálódnak, tekintse át a hibaelhárítási útmutatót a problémák megoldásához.

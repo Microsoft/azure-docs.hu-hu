@@ -1,36 +1,36 @@
 ---
-title: Az Azure Defender és a rendelkezésre álló csomagok áttekintése
-description: Ismerje meg az Azure Defender terveit, védelmét és riasztásait. Ezután engedélyezze az Azure Defender számára a fokozott biztonságú előfizetéseket.
+title: A Azure Defender és az elérhető csomagok áttekintése
+description: A Azure Defender, védelmi és riasztási csomagokat. Ezután engedélyezze Azure Defender az előfizetései számára a speciális biztonság érdekében.
 author: memildin
 ms.author: memildin
 ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: aafd4c6695101042cb30a44e1d2bd30611256779
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0bd0d9c2230b8400aa3197044f944daceb93c715
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096156"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718520"
 ---
 # <a name="introduction-to-azure-defender"></a>Bevezetés az Azure Defender használatába
 
-Azure Security Center funkciói a Felhőbeli biztonság két fő pillérét fedik le:
+Azure Security Center funkciói a felhőbiztonság két alappillérét fedik le:
 
-- **Cloud Security testtartás-felügyelet (CSPM)** – Security Center **ingyenesen** elérhető az összes Azure-felhasználó számára. Az ingyenes élmény olyan CSPM funkciókat tartalmaz, mint például a biztonságos pontszám, az Azure-gépek biztonsági konfigurációs beállításainak észlelése, az eszközök leltára stb. Ezekkel a CSPM funkciókkal erősítheti a hibrid Felhőbeli testtartást, és nyomon követheti a beépített szabályzatoknak való megfelelést.
+- **Felhőbiztonsági környezet kezelése (CSPM)** – a Security Center minden Azure-felhasználó **számára** ingyenesen elérhető. Az ingyenes felhasználói élmény olyan CSPM-funkciókat tartalmaz, mint például a biztonsági pontszám, az Azure-beli gépek biztonsági hibás konfigurációinak észlelése, az eszközleltár stb. Ezekkel a CSPM-funkciókkal megerősítheti a hibrid felhő környezetét, és nyomon követheti a beépített szabályzatok megfelelőségét.
 
-- **Cloud munkaterhelés Protection (CWP)** – a Security Center integrált felhőalapú munkaterhelés-védelmi platformja (CWPP), az **Azure Defender**, fejlett, intelligens, Azure-és hibrid erőforrások és számítási feladatok védelmét teszi lehetővé. Az Azure Defender engedélyezésének számos további biztonsági funkciója van, az ezen a lapon leírtak szerint. A beépített szabályzatok mellett, ha engedélyezte valamelyik Azure Defender-csomagot, egyéni szabályzatokat és kezdeményezéseket adhat hozzá. Hozzáadhat szabályozási szabványokat – például a NIST és az Azure CIS –, valamint az Azure biztonsági teljesítménytesztet a megfelelőségének valóban testreszabott nézetéhez.
+- Felhőbeli számítási feladatok védelme **(CWP)** – Security Center integrált felhőalapú számítási feladatvédelmi platformja (CWPP), **a Azure Defender**, fejlett, intelligens védelmet nyújt az Azure- és hibrid erőforrások és számítási feladatok számára. A Azure Defender ezen az oldalon leírtak szerint számos további biztonsági funkciót is elérhető. A beépített szabályzatok mellett, ha engedélyezte a Azure Defender, egyéni szabályzatokat és kezdeményezéseket is hozzáadhat. Szabályozási szabványokat – például az NIST-t és az Azure CIS-t – adhat hozzá, valamint az [Azure biztonsági](https://docs.microsoft.com/security/benchmark/azure/introduction) teljesítménytesztet a megfelelőség valóban testre szabott nézetének megtekintéséhez.
 
-Az Azure Defender irányítópultja Security Center a környezethez tartozó CWP-funkciók láthatóságát és felügyeletét teszi lehetővé:
+A Azure Defender irányítópultja Security Center biztosítja a CWP-funkciók láthatóságát és szabályozását a környezet számára:
 
-:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Példa az Azure Defender irányítópultra" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
+:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Példa a Azure Defender irányítópultra" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
-## <a name="what-resource-types-can-azure-defender-secure"></a>Milyen típusú erőforrástípusok biztonságosak az Azure Defender?
+## <a name="what-resource-types-can-azure-defender-secure"></a>Milyen erőforrástípusok Azure Defender biztonságossá?
 
-Az Azure Defender biztonsági riasztásokat és komplex veszélyforrások elleni védelmet biztosít a virtuális gépek, az SQL-adatbázisok, a tárolók, a webalkalmazások, a hálózat és egyebek tekintetében.
+Azure Defender biztonsági riasztásokat és fejlett fenyegetésvédelmet biztosít a virtuális gépekhez, SQL-adatbázisokhoz, tárolókhoz, webalkalmazásokhoz, a hálózathoz és sok máshoz.
 
-Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjszabási és beállítási** területét, a következő Defender-csomagok egyidejűleg engedélyezve vannak, és átfogó védelmet biztosítanak a környezet számítási, adatés szolgáltatási rétegei számára:
+Ha engedélyezi Azure Defender-t  a Azure Security Center Díjszabás és beállítások területén, a következő Defender-csomagok egyidejűleg vannak engedélyezve, és átfogó védelmet biztosítanak a környezet számítási, adat- és szolgáltatási rétegei számára:
 
 - [Azure Defender kiszolgálókhoz](defender-for-servers-introduction.md)
 - [Azure Defender App Service-hez](defender-for-app-service-introduction.md)
@@ -42,61 +42,61 @@ Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjsz
 - [Azure Defender a Resource Managerhez](defender-for-resource-manager-introduction.md)
 - [Azure Defender DNS-hez](defender-for-dns-introduction.md)
 
-Ezeket a csomagokat a Security Center dokumentációjában külön ismertetjük.
+A fenti tervek mindegyikét külön ismertetjük az Security Center dokumentációjában.
 
 > [!TIP]
-> A IoT készült Azure Defender (előzetes verzió) egy külön termék. Az [Azure Defender IoT (előzetes verzió) bevezetésével kapcsolatos](../defender-for-iot/overview.md)összes részletet megtalálja. 
+> Azure Defender for IoT (előzetes verzió) egy különálló termék. Az összes részletet a [Introducing Azure Defender for IoT (Preview) (Az](../defender-for-iot/overview.md)előzetes verzió Azure Defender for IoT) rész tartalmazza. 
 
-## <a name="hybrid-cloud-protection"></a>Hibrid Felhőbeli védelem
+## <a name="hybrid-cloud-protection"></a>Hibrid felhővédelem
 
-Az Azure-környezet védelme mellett hozzáadhat Azure Defender-képességeket is a hibrid felhőalapú környezethez:
+Az Azure-környezet védelme érdekében új Azure Defender is hozzáadhat a hibrid felhőkörnyezethez:
 
-- A nem Azure-beli kiszolgálók elleni védelem
-- A virtuális gépeket más felhőkben (például AWS és GCP) is védetté teheti
+- Nem Azure-beli kiszolgálók védelme
+- Más felhőkben (például az AWS-ben és a GCP-ben) lévő virtuális gépek védelme
 
-Az adott környezetnek megfelelően testre szabott fenyegetési intelligenciát és rangsorolt riasztásokat kap, így a leginkább a legfontosabb dolgokra koncentrálhat.
+Az adott környezetnek megfelelően testreszabott fenyegetésintelligencia- és rangsorolási riasztásokat kap, így a legfontosabb dolgokra összpontosíthat.
 
-A virtuális gépek és a más Felhőbeli vagy helyszíni SQL-adatbázisok védelmének kiterjesztéséhez telepítse az [Azure-ívet](https://azure.microsoft.com/services/azure-arc/) , és engedélyezze az Azure Defendert. Az Azure arc for Servers egy ingyenes szolgáltatás, de az ív használatára képes kiszolgálókon használt szolgáltatások, például az Azure Defender a szolgáltatás díjszabása szerint lesznek felszámítva. További információ: [nem Azure-beli gépek hozzáadása az Azure arc szolgáltatással](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
+Ha ki szeretné terjeszteni a védelmet a más felhőkben vagy [](https://azure.microsoft.com/services/azure-arc/) a helyszínen található virtuális gépekre és SQL-adatbázisokra, üzembe kell helyeznie Azure Arc és engedélyeznie kell Azure Defender. kiszolgálói Azure Arc ingyenes szolgáltatás, de az Arc-kompatibilis kiszolgálókon (például Azure Defender) használt szolgáltatásokért a szolgáltatás díjszabása alapján kell fizetni. További információ: [Nem Azure-beli](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)gépek hozzáadása Azure Arc.
 
 > [!TIP]
-> Az AWS natív összekötője transzparens módon kezeli az Azure arc üzembe helyezését. További információ az [AWS-fiókok Azure Security Center való összekapcsolásáról](quickstart-onboard-aws.md).
+> Az AWS natív összekötői transzparens módon kezelik Azure Arc üzembe helyezést. További információ: [Az AWS-fiókok csatlakoztatása a Azure Security Center.](quickstart-onboard-aws.md)
 
 
 
 ## <a name="azure-defender-security-alerts"></a>Azure Defender biztonsági riasztások 
 
-Ha az Azure Defender fenyegetést észlel a környezet bármely területén, biztonsági riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.
+Amikor Azure Defender a környezet bármely területén fenyegetést észlel, biztonsági riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt javítási lépéseket, és bizonyos esetekben egy logikai alkalmazás aktiválásának lehetőségét.
 
-Azt jelzi, hogy a riasztást egy Security Center hozza-e létre, vagy a Security Center egy integrált biztonsági terméktől fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [stream-riasztások a Siem, a SOAR vagy az IT Service Management megoldásban](export-to-siem.md)című témakör utasításait.
+Exportálhatja, hogy egy riasztást egy Security Center generált, Security Center egy integrált biztonsági terméktől kapott riasztás. Ha a riasztásokat Azure Sentinel, külső SIEM-be vagy bármely más külső eszközbe exportálni, kövesse a Stream-riasztások [SIEM-, SOAR- vagy IT-szolgáltatáskezelési](export-to-siem.md)megoldásba történő küldését.
 
 > [!NOTE]
-> A különböző forrásokból származó riasztások eltérő mennyiségű időt vehetnek igénybe. Előfordulhat például, hogy a hálózati forgalom elemzését igénylő riasztások hosszabb ideig tartanak, mint a virtuális gépeken futó gyanús folyamatokkal kapcsolatos riasztások.
+> A különböző forrásokból származó riasztások megjelenése különböző mennyiségű időt is vehet. A hálózati forgalom elemzését igénylő riasztások például hosszabb ideig is megjelenhetnek, mint a virtuális gépeken futó gyanús folyamatokhoz kapcsolódó riasztások.
 
 
-## <a name="azure-defender-advanced-protection-capabilities"></a>Az Azure Defender speciális védelmi képességei
+## <a name="azure-defender-advanced-protection-capabilities"></a>Azure Defender védelmi képességek
 
-Az Azure Defender fejlett analitikai megoldásokkal rendelkezik az erőforrásokkal kapcsolatos személyre szabott javaslatokhoz. 
+Azure Defender speciális elemzéseket használ az erőforrásokhoz kapcsolódó testre szabott javaslatokhoz. 
 
-A védelem magában foglalja a virtuális gépek felügyeleti portjainak az igény szerinti hozzáféréssel és az adaptív alkalmazás-vezérlőkkel való védelmét, amelyek lehetővé teszik, hogy a számítógépeken milyen alkalmazásokat kell és ne futtasson. 
+A védelmi intézkedések közé tartozik a virtuális gépek felügyeleti portjainak védelme a megfelelő időben való hozzáféréssel és adaptív alkalmazásvezérlőkkel, amelyek lehetővé teszik listák létrehozásához, hogy mely alkalmazások fusson és mit ne futtassanak a gépeken. 
 
-Az Azure Defender irányítópultjának speciális védelmi csempéi segítségével figyelheti és konfigurálhatja ezeket a védelmi lépéseket. 
+Az irányítópulton található speciális védelemcsempék Azure Defender és konfigurálják ezeket a védelmi funkciókat. 
 
-## <a name="vulnerability-assessment-and-management"></a>Sebezhetőségi felmérés és felügyelet
+## <a name="vulnerability-assessment-and-management"></a>Biztonsági rések felmérése és kezelése
 
-Az Azure Defender külön díj nélkül tartalmazza a virtuális gépek és a tároló-beállításjegyzékek sebezhetőségi vizsgálatát. A képolvasókat a Qualys működteti, de nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Center-ben zökkenőmentesen kezelhető. 
+Azure Defender virtuális gépek és tárolóregisztrálók biztonsági rések vizsgálatával is jár többletköltség nélkül. A képolvasókat a Qualys működteti, de nincs szükség Qualys-licencre vagy Akár Qualys-fiókra sem – minden zökkenőmentesen kezelhető a Security Center. 
 
-Tekintse át a biztonsági rések képolvasóinak eredményeit, és válaszoljon rájuk mind Security Center belülről. Ennek köszönhetően a Felhőbeli biztonsági erőfeszítések mindegyikének egyetlen panelje Security Center.
+Tekintse át a biztonsági rések ellenőrzőeszközeiből származó eredményeket, és mindegyikre válaszoljon a Security Center. Ez közelebb Security Center, hogy az összes felhőbiztonsági erőfeszítés számára egy-egy ablaktáblát ássunk.
 
-További információ a következő lapokon:
+További információ a következő oldalakon található:
 
-- [Security Center az Azure Virtual Machines szolgáltatáshoz készült integrált sebezhetőségi felmérési megoldás](deploy-vulnerability-assessment-vm.md)
-- [Biztonsági rések azonosítása az Azure Container nyilvántartóban található lemezképekben](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
+- [Security Center Azure-beli virtuális gépek biztonsági rések felmérésére vonatkozó integrált megoldása](deploy-vulnerability-assessment-vm.md)
+- [Az Azure-beli tárolóregisztrálókban található rendszerképek biztonsági résének azonosítása](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az Azure Defender előnyeit. 
+Ebből a cikkből megtudtuk, milyen előnyökkel jár a Azure Defender. 
 
 > [!div class="nextstepaction"]
 > [Az Azure Defender engedélyezése](enable-azure-defender.md)

@@ -9,26 +9,26 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 564e7d3d2353661d0a69cbd15ad8b281defacf87
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600567"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718880"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
-Ez a cikk bemutatja a Azure IoT Central felhasználói felületét. A felhasználói felületen létrehozhat, kezelhet és használhat egy IoT Central csatlakoztatott eszközeit.
+Ez a cikk a felhasználói felület Azure IoT Central be. A felhasználói felületen létrehozhat, kezelhet és használhat egy IoT Central és csatlakoztatott eszközeit.
 
 ## <a name="iot-central-homepage"></a>IoT Central kezdőlapja
 
-A [IoT Central](https://aka.ms/iotcentral-get-started) kezdőlapján további információt talál a IoT Central elérhető legújabb hírekről és funkciókról, új alkalmazásokat hozhat létre, valamint meglévő alkalmazásokat láthat és elindítat.
+A [IoT Central](https://aka.ms/iotcentral-get-started) kezdőlapja az a hely, ahol további információt talál a IoT Central legújabb híreiről és funkcióiról, új alkalmazásokat hozhat létre, valamint meglévő alkalmazásait láthatja és elindítja.
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-homepage.png" alt-text="IoT Central kezdőlapja":::
 
 ### <a name="create-an-application"></a>Alkalmazás létrehozása
 
-A Build (Felépítés) szakaszban böngészhet az iparági IoT Central sablonok listájában, vagy egy egyéni alkalmazássablonnal kezdheti az egészet.  
+A **Build (Felépítés)** szakaszban böngészhet az iparágban releváns sablonokat IoT Central, vagy kezdheti az egészet egy egyéni alkalmazássablonnal.  
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-build.png" alt-text="IoT Central buildoldal":::
 
@@ -36,16 +36,16 @@ További tudnivalókért tekintse meg [a Create an Azure IoT Central application
 
 ### <a name="launch-your-application"></a>Az alkalmazás elindítása
 
-Az alkalmazás IoT Central az alkalmazás létrehozásakor kiválasztott URL-címre navigálva indítja el. Az alkalmazáskezelőben az összes olyan alkalmazás listáját is láthatja, amelyekhez [hozzáféréssel IoT Central rendelkezik.](https://aka.ms/iotcentral-apps)
+Az alkalmazás IoT Central az alkalmazás létrehozásakor kiválasztott URL-címre navigálva indítsa el az alkalmazást. Az alkalmazáskezelőben az összes olyan alkalmazás listáját is láthatja, amelyekhez [hozzáféréssel IoT Central rendelkezik.](https://aka.ms/iotcentral-apps)
 
 :::image type="content" source="media/overview-iot-central-tour/app-manager.png" alt-text="IoT Central app manager":::
 
 ## <a name="navigate-your-application"></a>Navigálás az alkalmazásban
 
-Miután belépett az IoT-alkalmazásba, a bal oldali panelen különböző funkciókhoz férhet hozzá. A bal oldali panelt kibonthatja vagy összecsukhatja a panel tetején található háromsoros ikonra kattintva:
+Miután belépett az IoT-alkalmazásba, a bal oldali panelen különböző funkciókhoz férhet hozzá. A bal oldali panel kibontásához vagy összecsukásához válassza a panel tetején található háromsoros ikont:
 
 > [!NOTE]
-> A bal oldali panelen látható elemek a felhasználói szerepkörtől függenek. További információ a [felhasználók és szerepkörök kezeléséről.](howto-manage-users-roles.md) 
+> A bal oldali panelen látható elemek a felhasználói szerepkörtől függnek. További információ a felhasználók [és szerepkörök kezeléséről.](howto-manage-users-roles.md) 
 
 :::row:::
   :::column span="":::
@@ -53,9 +53,9 @@ Miután belépett az IoT-alkalmazásba, a bal oldali panelen különböző funkc
 
   :::column-end:::
   :::column span="2":::
-     **Az irányítópultok** az összes alkalmazás- és személyes irányítópultot megjelenítik. 
+     **Az irányítópult** megjeleníti az összes alkalmazás- és személyes irányítópultot. 
      
-     **Az** eszközök lehetővé teszik az összes eszköz kezelését.
+     **Az** eszközök lehetővé teszi az összes eszköz kezelését.
 
      **Az eszközcsoportok** segítségével megtekintheti és létrehozhatja a lekérdezés által megadott eszközgyűjteményeket. Az eszközcsoportok az alkalmazásban tömeges műveletek végrehajtásához használhatók.
 
@@ -63,11 +63,11 @@ Miután belépett az IoT-alkalmazásba, a bal oldali panelen különböző funkc
 
      **Az** elemzés gazdag képességeket biztosít az előzménytrendek elemzéséhez és az eszközök különböző telemetrikáihoz való összefüggésekhez.
 
-     **A** feladatok tömeges műveletek futtatásával lehetővé teszik az eszközök nagy léptékű kezelését.
+     **A feladatok** tömeges műveletek futtatásával lehetővé teszi az eszközök nagy léptékű kezelését.
 
      **Az eszközsablonokkal** létrehozhatja és kezelheti az alkalmazáshoz csatlakozó eszközök jellemzőit.
 
-     **Az adatexportokkal** konfigurálhatja a külső szolgáltatásokba, például tárolókba és üzenetsorokbe történő folyamatos exportálást.
+     **Az adatexportmal** konfigurálhatja a folyamatos exportálást külső szolgáltatásokba, például tárolókba és üzenetsorokbe.
 
      **Az** adminisztráció lehetővé teszi az alkalmazás beállításainak, testreszabásának, számlázásának, felhasználóinak és szerepkörének kezelését.
 
@@ -82,10 +82,10 @@ Minden oldalon megjelenik a felső menü:
 
 :::image type="content" source="media/overview-iot-central-tour/toolbar.png" alt-text="IoT Central eszköztár":::
 
-* Az eszközök kereséséhez adjon meg egy **Keresési** értéket.
+* Az eszközök kereséséhez adjon meg egy **Search (Keresés)** értéket.
 * A felhasználói felület nyelvének vagy témájának módosításához válassza a **Beállítások ikont.** További információ az [alkalmazásbeállítások kezeléséről](howto-manage-preferences.md)
 * Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. Az [alkalmazással kapcsolatos információkat az](./howto-get-app-info.md) About your app (Tudnivalók az **alkalmazásról) hivatkozáson keresztül kaphatja** meg. Az ingyenes díjcsomagban elérhető alkalmazások támogatási erőforrásai közé tartozik az élő [csevegéshez való hozzáférés.](howto-show-hide-chat.md)
-* Az alkalmazásból való kijelentkezhez válassza a **Fiók ikont.**
+* Az alkalmazásból való kijelentkezhez válassza a Fiók **ikont.**
 
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
@@ -98,7 +98,7 @@ A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="Az irányítópult IoT Central képernyőképe.":::
 
-* Az irányítópult az első oldal, amely akkor látható, amikor bejelentkezik a IoT Central alkalmazásba. Több alkalmazás-irányítópultot is létrehozhat és testre szabhat. További információ [csempék irányítópulthoz való hozzáadásáról](howto-add-tiles-to-your-dashboard.md)
+* **Az** irányítópult az első oldal, amely akkor látható, amikor bejelentkezik a IoT Central alkalmazásba. Több alkalmazás-irányítópultot is létrehozhat és testre szabhat. További információ [csempék irányítópulthoz való hozzáadásáról](howto-add-tiles-to-your-dashboard.md)
 
 * Személyes irányítópultokat is létre lehet hozva az Ön számára fontos adatok figyeléseként. További tudnivalókért tekintse meg [a Személyes Azure IoT Central irányítópultok létrehozása útmutatót.](howto-create-personal-dashboards.md)
 
@@ -106,7 +106,7 @@ A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 :::image type="content" source="Media/overview-iot-central-tour/devices.png" alt-text="Az Eszközök lap képernyőképe.":::
 
-Ezen az oldalon az alkalmazáshoz IoT Central eszközsablon szerint _csoportosított eszközök megjelenik._ 
+Ezen az oldalon az alkalmazáshoz IoT Central eszközsablon szerint _csoportosított eszközök megjelenik._
 
 * Az eszközsablonok egy-egy olyan eszköztípust határoznak meg, amelyek csatlakozhatnak az alkalmazáshoz.
 * Egy eszköz egy valós vagy szimulált eszközt jelöl az alkalmazásban.
@@ -122,7 +122,7 @@ Ezen az oldalon eszközcsoportokat hozhat létre és IoT Central alkalmazásban.
 ### <a name="rules"></a>Szabályok
 :::image type="content" source="Media/overview-iot-central-tour/rules.png" alt-text="Képernyőkép a Szabályok lapról.":::
 
-Ezen az oldalon eszközadatokon alapuló szabályokat lehet megtekinteni és létrehozni. Amikor egy szabály aktiválódik, elindíthat egy vagy több műveletet, például e-mailt küldhet vagy webhookot hívhat meg. További tudnivalókért lásd a szabályok [konfigurálását ismertető](tutorial-create-telemetry-rules.md) oktatóanyagot. 
+Ezen az oldalon megtekintheti és létrehozhatja az eszközadatokon alapuló szabályokat. Amikor egy szabály aktiválódik, elindíthat egy vagy több műveletet, például e-mailt küld vagy webhookot indít el. További tudnivalókért lásd a szabályok [konfigurálását ismertető](tutorial-create-telemetry-rules.md) oktatóanyagot.
 
 ### <a name="analytics"></a>Elemzés
 
@@ -138,21 +138,21 @@ Ezen az oldalon megtekintheti és létrehozhatja az eszközökön a tömeges esz
 
 ### <a name="device-templates"></a>Eszközsablonok
 
-:::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Az Eszközsablonok képernyőképe.":::
+:::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Az eszközsablonok képernyőképe.":::
 
-Az eszközsablonok lapon megtekintheti és létrehozhatja az alkalmazásban az eszközsablonokat. További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalmazásokban történő definiálását](howto-set-up-template.md) ismertető szakaszt. 
+Az eszközsablonok lapon megtekintheti és létrehozhatja az alkalmazásban az eszközsablonokat. További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalmazásokban történő definiálását](howto-set-up-template.md) ismertető szakaszt.
 
 ### <a name="data-export"></a>Adatexportálás
 
 :::image type="content" source="Media/overview-iot-central-tour/export.png" alt-text="Adatexport":::
 
-Az adatexportelés lehetővé teszi adatstreamek beállítását külső rendszerekbe. További tudnivalókért tekintse meg az [Adatok exportálása](./howto-export-data.md) a Azure IoT Central cikkben.
+Az adatexportelés lehetővé teszi adatstreamek beállítását külső rendszerekbe. További tudnivalókért tekintse meg az [Adatok exportálása a](./howto-export-data.md) Azure IoT Central cikkben.
 
 ### <a name="administration"></a>Felügyelet
 
 :::image type="content" source="media/overview-iot-central-tour/administration.png" alt-text="Az IoT-felügyelet képernyőképe.":::
 
-A felügyeleti lapon konfigurálhatja és testre szabhatja IoT Central alkalmazást. Itt módosíthatja az alkalmazás nevét, URL-címét, a címeket, kezelheti a felhasználókat és a szerepköröket, API-jogkivonatokat hozhat létre, és exportálhatja az alkalmazást. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
+A felügyeleti lapon konfigurálhatja és testre szabhatja IoT Central alkalmazást. Itt módosíthatja az alkalmazás nevét, URL-címét, a csoportokat, kezelheti a felhasználókat és a szerepköröket, API-jogkivonatokat hozhat létre, és exportálhatja az alkalmazást. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
 
 ## <a name="next-steps"></a>Következő lépések
 

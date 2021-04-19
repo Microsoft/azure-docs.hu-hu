@@ -1,45 +1,45 @@
 ---
 title: A felhasználói felület testreszabása HTML-sablonokkal
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan szabhatja testre a felhasználói felületet a Azure Active Directory B2C-t használó alkalmazásaihoz tartozó HTML-sablonokkal.
+description: Megtudhatja, hogyan szabhatja testre a felhasználói felületet HTML-sablonokkal a felhasználói felületet használó Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104675825"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717440"
 ---
-# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása HTML-sablonokkal Azure Active Directory B2C
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása HTML-sablonokkal a Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) felhasználói felületének védjegyezése és testreszabása az ügyfelek számára a zökkenőmentes felhasználói élményt nyújtja az alkalmazásában. Ezek a tapasztalatok közé tartozik a regisztráció, a bejelentkezés, a profil szerkesztése és a jelszó-visszaállítás. Ez a cikk bemutatja a felhasználói felület (UI) testreszabásának módszereit. 
+Az ügyfelek számára Azure Active Directory B2C (Azure AD B2C) által látható felhasználói felület védjegyezése és testreszabása segít zökkenőmentes felhasználói élményt nyújtani az alkalmazásban. Ilyen szolgáltatás például a regisztráció, a bejelentkezés, a profilszerkesztés és a jelszó-visszaállítás. Ez a cikk bemutatja a felhasználói felület (UI) testreszabásának módszereit. 
 
 > [!TIP]
-> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, kipróbálhatja a [vállalati védjegyezés](customize-ui.md) funkciót.
+> Ha csak a szalagcím emblémáját, a háttérképet és a felhasználói folyamatoldalak háttérszínét szeretné módosítani, kipróbálhatja a Vállalati arculat [funkciót.](customize-ui.md)
 
 ## <a name="custom-html-and-css-overview"></a>Egyéni HTML és CSS – áttekintés
 
-A Azure AD B2C a kódot az ügyfél böngészőjében futtathatja, ha az [erőforrás-megosztást (CORS)](https://www.w3.org/TR/cors/)használja. Futásidőben a tartalom betöltődik a felhasználói folyamat vagy az egyéni házirendben megadott URL-címről. A felhasználói felület minden lapja betölti a tartalmat az adott laphoz megadott URL-címről. Miután betöltötte a tartalmat az URL-címről, a rendszer egyesít egy, a Azure AD B2C által beszúrt HTML-kódrészlettel, majd megjeleníti a lapot az ügyfél számára.
+Azure AD B2C kódot futtat az ügyfél böngészőjében az [Eredetközi erőforrás-megosztás (CORS) használatával.](https://www.w3.org/TR/cors/) Futásidőben a rendszer betölti a tartalmat egy, a felhasználói folyamatban vagy egyéni szabályzatban megadott URL-címről. A felhasználói felület minden oldala betölti annak tartalmát az adott oldalhoz megadott URL-címből. Miután betöltötte a tartalmat az URL-címről, a rendszer egyesíti azt egy, a Azure AD B2C által beszúrt HTML-töredéktel, majd az oldal megjelenik az ügyfél számára.
 
-![Egyéni oldal tartalmának margója](./media/customize-ui-with-html/html-content-merging.png)
+![Egyéni oldaltartalom margója](./media/customize-ui-with-html/html-content-merging.png)
 
 ### <a name="custom-html-page-content"></a>Egyéni HTML-oldal tartalma
 
-Hozzon létre egy HTML-oldalt saját arculatával az egyéni oldal tartalmának kiszolgálásához. Ez a lap lehet statikus `*.html` oldal vagy dinamikus oldal, például .net, Node.js vagy php.
+Hozzon létre egy HTML-oldalt saját védjegyezéssel az egyéni oldal tartalmának kiszolgálására. Ez az oldal lehet statikus oldal, vagy dinamikus oldal, például `*.html` .NET, Node.js PHP.
 
-Az egyéni oldal tartalma bármilyen HTML-elemet tartalmazhat, beleértve a CSS-t és a JavaScriptet is, de nem tartalmazhat olyan nem biztonságos elemeket, mint az iframe elemek. Az egyetlen szükséges elem egy div-elem, amely a `id` következőre van beállítva: `api` , például ez `<div id="api"></div>` a html-oldalon.
+Az egyéni oldal tartalma bármilyen HTML-elemet tartalmazhat, beleértve a CSS-t és a JavaScriptet is, de nem tartalmazhat nem biztonságos elemeket, például iframe-eket. Az egyetlen kötelező elem egy div elem, amely beállítása `id` , például ez a `api` `<div id="api"></div>` HTML-oldalon belül.
 
 ```html
 <!DOCTYPE html>
@@ -53,68 +53,68 @@ Az egyéni oldal tartalma bármilyen HTML-elemet tartalmazhat, beleértve a CSS-
 </html>
 ```
 
-#### <a name="customize-the-default-azure-ad-b2c-pages"></a>Az alapértelmezett Azure AD B2C lapok testreszabása
+#### <a name="customize-the-default-azure-ad-b2c-pages"></a>Az alapértelmezett lap Azure AD B2C testreszabása
 
-Ahelyett, hogy az egyéni oldal tartalmait a semmiből hozza létre, testreszabhatja az Azure AD B2C's alapértelmezett oldalának tartalmát.
+Az egyéni oldal tartalmának létrehozása helyett testreszabhatja a Azure AD B2C alapértelmezett oldaltartalmat.
 
-A következő táblázat felsorolja a Azure AD B2C által biztosított alapértelmezett oldal tartalmát. Töltse le a fájlokat, és használja kiindulási pontként a saját egyéni oldalai létrehozásához.
+A következő táblázatban a szolgáltatás által biztosított alapértelmezett oldaltartalom Azure AD B2C. Töltse le a fájlokat, és használja őket kiindulási pontként saját egyéni lapok létrehozásához.
 
-| Alapértelmezett lap | Leírás | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
+| Alapértelmezett oldal | Description | Tartalomdefiníció azonosítója<br/>(csak egyéni szabályzatok esetén) |
 |:-----------------------|:--------|-------------|
-| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
-| [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
-| [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication oldal**. Ezen a lapon a felhasználók megtekinthetik a telefonszámokat (szöveg vagy hang használatával) a regisztráció vagy a bejelentkezés során. | *API. phonefactor* |
-| [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználók frissíthetnek a profiljuk frissítéséhez. Ez az oldal hasonló a közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. | *API. selfasserted. profileUpdate* |
-| [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal**. Ez a lap kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. | *API. signuporsignin* |
+| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hibalap:**. Ez a lap kivétel vagy hiba esetén jelenik meg. | *api.error* |
+| [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Önfeltételes oldal.** Ezt a fájlt egyéni oldaltartalomként használhatja közösségi fiókok bejelentkezési oldalához, helyi fiók-bejelentkezési oldalhoz, helyi fiók bejelentkezési oldalához, jelszó-visszaállításhoz stb. Az űrlap különböző beviteli vezérlőket tartalmazhat, például szövegbeviteli mezőt, jelszóbeviteli mezőt, választógombot, egyszeres kijelöléses legördülő jelölőnégyzeteket és több jelölőnégyzetet. | *api.localaccountsignin*, *api.localaccountsignup*, *api.localaccountpasswordreset*, *api.selfasserted* |
+| [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Többtényezős hitelesítés lap.** Ezen az oldalon a felhasználók ellenőrizhetik telefonszámukat (szöveg vagy hang használatával) a regisztráció vagy a bejelentkezés során. | *api.phonefactor* |
+| [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profilfrissítési oldal.** Ez az oldal egy űrlapot tartalmaz, amelyhez a felhasználók hozzáférhetnek a profiljuk frissítéséhez. Ez az oldal hasonló a közösségi fiókok bejelentkezési oldalához, kivéve a jelszóbeviteli mezőket. | *api.selfasserted.profileupdate* |
+| [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztráció vagy** bejelentkezési oldal. Ez az oldal kezeli a felhasználó regisztrációját és bejelentkezési folyamatát. A felhasználók használhatnak vállalati identitásszolgáltatókat, közösségi identitásszolgáltatókat, például a Facebookot vagy a Google+-t, vagy helyi fiókokat. | *api.signuporsignin* |
 
-## <a name="hosting-the-page-content"></a>Az oldal tartalmának üzemeltetése
+## <a name="hosting-the-page-content"></a>A lap tartalmának üzemeltetése
 
-Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabásához, a felhasználói felület tartalmát a CORS támogató bármely nyilvánosan elérhető HTTPS-végponton üzemeltetheti. Például: [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure app Services](../app-service/index.yml), webkiszolgálók, CDNs, AWS S3 vagy fájlmegosztó rendszerek.
+Ha saját HTML- és CSS-fájlokat használ a felhasználói felület testreszabásához, a felhasználói felület tartalmát bármely, a CORS-t támogató, nyilvánosan elérhető HTTPS-végponton kell elosztani. Ilyen például az [Azure Blob Storage,](../storage/blobs/storage-blobs-introduction.md)az [Azure App Services,](../app-service/index.yml)webkiszolgálók, CDN-ek, AWS S3 vagy fájlmegosztási rendszerek.
 
-## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni lapok tartalmának használatához
+## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni oldaltartalmakhoz
 
-- Használjon abszolút URL-címet, ha olyan külső erőforrásokat is tartalmaz, mint például a média, a CSS és a JavaScript-fájlok a HTML-fájlban.
-- Ha a 1.2.0 vagy újabb [verzióját](page-layout.md) használja, a `data-preload="true"` HTML-címkékben lévő attribútumot hozzáadhatja a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload="true"` -ben az oldal a felhasználó előtt jön létre. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a címke használatát mutatja be `data-preload` .
+- Abszolút URL-címet használjon, ha külső erőforrásokat, például média-, CSS- és JavaScript-fájlokat foglal bele a HTML-fájlba.
+- Az [oldalelrendezés](page-layout.md) 1.2.0-s vagy újabb verziójának használatával hozzáadhatja az attribútumot a HTML-címkékhez a CSS és a JavaScript betöltési sorrendjének `data-preload="true"` szabályozására. A `data-preload="true"` alkalmazással a lap a felhasználó számára való megjelenik előtt lesz felépítve. Ez az attribútum segít megakadályozni, hogy az oldal "őzése" a CSS-fájl előzetes betöltése nélkül, a felhasználó számára megjelenő stílus nélküli HTML-kód nélkül megjelenik. Az alábbi HTML-kódrészlet a címke használatát `data-preload` mutatja be.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
-- Javasoljuk, hogy kezdje az alapértelmezett oldal tartalmával, és készítsen rá rá.
-- Az egyéni tartalomban [JavaScripteket](javascript-and-page-layout.md) is hozzáadhat.
-- A támogatott böngésző-verziók a következők:
+- Javasoljuk, hogy kezdje az alapértelmezett oldaltartalommal, és építsen rá.
+- Egyéni [tartalmaiba JavaScriptet](javascript-and-page-layout.md) is foglalhat.
+- A támogatott böngészőverziók a következőek:
   - Internet Explorer 11, 10 és Microsoft Edge
-  - Korlátozott támogatás az Internet Explorer 9 és 8 rendszerhez
-  - Google Chrome 42,0 és újabb verziók
-  - Mozilla Firefox 38,0 és újabb verziók
+  - Korlátozott támogatás a 9 Internet Explorer 8-as és 8-as
+  - Google Chrome 42.0 és magasabb
+  - Mozilla Firefox 38.0 és magasabb verziók
   - Safari iOS és macOS rendszerekhez, 12-es vagy újabb verzió
-- Biztonsági korlátozások miatt Azure AD B2C nem támogatja `frame` , `iframe` vagy `form` HTML-elemeket.
+- Biztonsági korlátozások miatt a Azure AD B2C nem támogatja a `frame` `iframe` , vagy `form` HTML-elemeket.
 
-## <a name="localize-content"></a>Tartalom honosítása
+## <a name="localize-content"></a>Tartalom honosizálása
 
-A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C az OpenID Connect paramétert továbbítsa a `ui_locales` végpontnak. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
+A HTML-tartalmat úgy honosíthatja, hogy [engedélyezi](language-customization.md) a nyelv testreszabását a Azure AD B2C bérlőben. A funkció engedélyezésével Azure AD B2C a OpenID Connect a `ui_locales` végpontra. A tartalomkiszolgáló ezzel a paraméterrel biztosít nyelvspecifikus HTML-oldalakat.
 
-A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a helyettesítő karaktert használja, hívja meg a megfelelőt `{Culture:RFC5646}` .
+A tartalom különböző helyekről is lekért adatok a használt területi adatok alapján. A CORS-kompatibilis végponton be kell állítania egy mappastruktúrát, amely meghatározott nyelveken fog tartalmat gazdagépként beállítani. Ha a helyettesítő karakter értéket használja, a megfelelőt fogja `{Culture:RFC5646}` hívni.
 
-Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
+Az egyéni oldal URI-ja például a következő lehet:
 
 ```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
-A lapot francia nyelven is betöltheti, ha tartalmat húz a következő helyről:
+Az oldalt francia nyelven is betöltheti, ha a tartalmakat a következő ről húzza le:
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
-## <a name="custom-page-content-walkthrough"></a>Egyéni oldal tartalmi útmutatója
+## <a name="custom-page-content-walkthrough"></a>Egyéni oldal tartalmának bemutatója
 
 A folyamat áttekintése:
 
-1. Készítse elő az egyéni oldal tartalmának (nyilvánosan elérhető, CORS-kompatibilis HTTPS-végpont) üzemeltetésére szolgáló helyet.
-1. Töltse le és szabja testre az alapértelmezett oldal tartalmi fájlját, például: `unified.html` .
-1. Közzéteheti az egyéni oldal tartalmát a nyilvánosan elérhető HTTPS-végponton.
-1. Állítsa be a CORS a webalkalmazáshoz.
-1. Irányítsa a szabályzatot az egyéni házirend-tartalom URI-ra.
+1. Készítsen elő egy helyet az egyéni oldal tartalmának (egy nyilvánosan elérhető, CORS-kompatibilis HTTPS-végpont) számára.
+1. Letölthet és testreszabhat egy alapértelmezett oldaltartalomfájlt, `unified.html` például: .
+1. Tegye közzé az egyéni oldal tartalmát a nyilvánosan elérhető HTTPS-végponton.
+1. Az eredetközi erőforrás-megosztás (CORS) beállítása a webalkalmazáshoz.
+1. Mutasson a szabályzatra az egyéni szabályzat tartalmának URI-ján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -122,9 +122,9 @@ A folyamat áttekintése:
 
 ### <a name="1-create-your-html-content"></a>1. HTML-tartalom létrehozása
 
-Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címben.
+Hozzon létre egy egyéni oldaltartalmat a termék márkanevének címében.
 
-1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy üres elemmel, amelynek neve *\<div id="api"\>\</div\>* a címkék között található *\<body\>* . Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
+1. Másolja ki az alábbi HTML-kódrészletet. Jól formázott HTML5, amely a címkékben található üres nevű *\<div id="api"\>\</div\>* elemmel *\<body\>* rendelkezik. Ez az elem jelzi, Azure AD B2C tartalom hová lesz beszúrva.
 
    ```html
    <!DOCTYPE html>
@@ -138,8 +138,8 @@ Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címb
    </html>
    ```
 
-1. A másolt kódrészlet beillesztése egy szövegszerkesztőbe
-1. A CSS használatával a Azure AD B2C beszúrható felhasználói felületi elemeket alakíthatja át az oldalára. Az alábbi példa egy egyszerű CSS-fájlt mutat be, amely a regisztrációs beszúrt HTML-elemek beállításait is tartalmazza:
+1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe
+1. A CSS használatával stílust használhat az oldalba Azure AD B2C beszúrt felhasználói felületi elemekhez. Az alábbi példa egy egyszerű CSS-fájlt mutat be, amely a regisztrációba injektált HTML-elemek beállításait is tartalmazza:
 
     ```css
     h1 {
@@ -164,111 +164,111 @@ Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címb
     }
     ```
 
-1.  Mentse a fájlt *customize-ui.html* néven.
+1.  Mentse a fájlt a *következőcustomize-ui.htm: .*
 
 > [!NOTE]
-> A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, [használja a b2clogin.com](b2clogin.md).
+> A HTML-űrlapelemek biztonsági korlátozások miatt el lesznek távolítva, ha login.microsoftonline.com. Ha HTML-űrlapelemeket szeretne használni az egyéni HTML-tartalomban, használja a [b2clogin.com.](b2clogin.md)
 
 ### <a name="2-create-an-azure-blob-storage-account"></a>2. Azure Blob Storage-fiók létrehozása
 
-Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhez. Dönthet úgy, hogy webkiszolgálón üzemelteti a tartalmat, de engedélyeznie kell a [CORS a webkiszolgálón](https://enable-cors.org/server.html).
+Ebben a cikkben az Azure Blob Storage-et használjuk a tartalom tárolására. Dönthet úgy, hogy egy webkiszolgálón szeretné a tartalmakat, de engedélyeznie kell a CORS-t a [webkiszolgálón.](https://enable-cors.org/server.html)
 
-A HTML-tartalom blob Storage-ban való üzemeltetéséhez hajtsa végre a következő lépéseket:
+A HTML-tartalom Blob Storage-ban való tárolásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A **központi** menüben válassza az **új**  >  **Storage**  >  **Storage-fiók** lehetőséget.
-1. Válasszon egy **előfizetést** a Storage-fiókjához.
-1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
-1. Adja meg a Storage-fiók egyedi **nevét** .
-1. Válassza ki a tárolási fiók **földrajzi helyét** .
-1. A **telepítési modell** maradhat a **Resource Managerben**.
-1. A **teljesítmény** továbbra is **standard** maradhat.
-1. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
-1. A **replikáció** az **ra-GRS** is maradhat.
-1. A **hozzáférési szint** is **megmaradhat**.
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a Storage-fiók létrehozásához.
-    A telepítés befejezése után a Storage- **fiók** lap automatikusan megnyílik.
+1. A központi **menüben** válassza az **Új**  >  **Tárfiók**  >  **lehetőséget.**
+1. Válasszon ki **egy előfizetést** a tárfiókhoz.
+1. Hozzon **létre egy erőforráscsoportot,** vagy válasszon ki egy meglévőt.
+1. Adjon meg egy egyedi **nevet** a tárfiók számára.
+1. Válassza ki **a tárfiók** földrajzi helyét.
+1. **Az üzembe helyezési** modell továbbra **is Resource Manager.**
+1. **A teljesítmény** továbbra is **Standard maradhat.**
+1. Módosítsa **a Fiók fajtáját** **Blob Storage-fiókra.**
+1. **A replikáció** **ra-GRS maradhat.**
+1. **A hozzáférési szint** továbbra is **hot (gyors elérésű) maradhat.**
+1. A **tárfiók létrehozásához válassza** az Áttekintés + létrehozás lehetőséget.
+    Az üzembe helyezés befejezése után a **Tárfiók** lap automatikusan megnyílik.
 
-#### <a name="21-create-a-container"></a>2,1 tároló létrehozása
+#### <a name="21-create-a-container"></a>2.1 Tároló létrehozása
 
-Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a következő lépéseket:
+Nyilvános tároló Blob Storage-ban való létrehozásához hajtsa végre a következő lépéseket:
 
-1. A bal oldali menüben a **blob Service** alatt válassza a **Blobok** elemet.
-1. Válassza a **+ tároló** elemet.
-1. A **név** mezőbe írja be a *root* értéket. A név lehet a választott név, például a *contoso*, de ebben a példában az egyszerűség kedvéért használjuk a *root* -t.
-1. **Nyilvános hozzáférési szint** esetén válassza a **blob** lehetőséget, majd **az OK gombot**.
-1. Válassza ki a **root** elemet az új tároló megnyitásához.
+1. A **Blob service** menüben válassza a **Blobok lehetőséget.**
+1. Válassza **a +Tároló lehetőséget.**
+1. A **Name (Név) alatt** adja meg a root *(gyökér) nevet.* A név lehet egy választott név, például *contoso*  , de ebben a példában az egyszerűség kedvéért a gyökért használjuk.
+1. A **Nyilvános hozzáférés szint beállításhoz** válassza a **Blob** lehetőséget, majd az **OK lehetőséget.**
+1. Az **új tároló megnyitásához** válassza a root lehetőséget.
 
-#### <a name="22-upload-your-custom-page-content-files"></a>2,2 az egyéni oldal tartalmi fájljainak feltöltése
+#### <a name="22-upload-your-custom-page-content-files"></a>2.2 Az egyéni oldaltartalomfájlok feltöltése
 
 1. Válassza a **Feltöltés** lehetőséget.
-1. Válassza ki a **fájl kiválasztása** melletti mappa ikont.
-1. Navigáljon a lapra, és válassza ki **customize-ui.html**, amelyet korábban hozott létre az oldal felhasználói felületének testreszabása szakaszban.
-1. Ha egy almappában szeretne feltölteni, bontsa ki a **speciális** elemet, és adja meg a mappa nevét a **feltöltés mappába**.
+1. Válassza a Fájl kiválasztása melletti mappa **ikont.**
+1. Keresse meg és válassza **customize-ui.htma** lap felhasználói felületének testreszabása szakaszban korábban létrehozott 3. 000 000 000 000 000 000,
+1. Ha egy almappába szeretne feltölteni, bontsa ki a **Speciális** gombra, és adja meg a mappa nevét a **Feltöltés mappába részbe.**
 1. Válassza a **Feltöltés** lehetőséget.
-1. Válassza ki a feltöltött **customize-ui.html** blobot.
-1. Az **URL-cím** szövegmező jobb oldalán válassza a **Másolás vágólapra** ikont az URL-cím vágólapra másolásához.
-1. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibát tapasztal, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
+1. Válassza ki **customize-ui.htmfeltöltött blobot.**
+1. Az **URL-cím** szövegmező jobb  gombja mellett válassza a Másolás a vágólapra ikont, hogy az URL-címet a vágólapra másolja.
+1. A webböngészőben lépjen a kimásott URL-címre, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha például hibába ütközik, ellenőrizze, hogy a tároló hozzáférési típusa blobra `ResourceNotFound` **van-e állítva.**
 
-### <a name="3-configure-cors"></a>3. a CORS konfigurálása
+### <a name="3-configure-cors"></a>3. A CORS konfigurálása
 
-Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen eredetű erőforrás-megosztáshoz:
+Konfigurálja a Blob Storage-et az eredetközi erőforrás-megosztáshoz az alábbi lépések elvégzésével:
 
-1. A menüben válassza a **CORS** lehetőséget.
-1. Az **engedélyezett eredetek** mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használja az összes kisbetűt.
-1. Az **engedélyezett módszerek** esetében válassza a mindkettő és a lehetőséget `GET` `OPTIONS` .
-1. Az **engedélyezett fejlécek** mezőbe írjon be egy csillagot (*).
-1. A közzétett **fejlécek** esetében írjon be egy csillagot (*).
-1. A **Max Age** értéknél adja meg a 200 értéket.
+1. A menüben válassza a **CORS lehetőséget.**
+1. Az **Engedélyezett eredetek esetében adja** meg a et. `https://your-tenant-name.b2clogin.com` Cserélje le a helyére a Azure AD B2C `your-tenant-name` nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használjon minden kisbetűt.
+1. Az **Allowed Methods (Engedélyezett metódusok) mezőben** válassza ki a és `GET` a lehetőséget `OPTIONS` is.
+1. Az **Engedélyezett fejlécek mezőben** adjon meg egy csillagot (*).
+1. Az Exposed Headers (Elérhető **fejlécek) mezőben** írjon be egy csillag (*) karaktert.
+1. A **Maximális életkor értéknél** adja meg a 200-as értékeket.
 1. Kattintson a **Mentés** gombra.
 
-#### <a name="31-test-cors"></a>3,1 teszt CORS
+#### <a name="31-test-cors"></a>3.1 CORS-teszt
 
-Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
+A következő lépések elvégzésével ellenőrizze, hogy készen áll-e:
 
-1. Ismételje meg a CORS konfigurálása lépést. Az **engedélyezett eredetek** mezőben adja meg a következőt: `https://www.test-cors.org`
-1. Navigáljon a [www.test-CORS.org](https://www.test-cors.org/) 
-1. A **távoli URL-cím** mezőben illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
-1. Válassza a **küldési kérelem** lehetőséget.
-    Ennek az eredménynek kell lennie `XHR status: 200` . 
-    Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a CORS beállításai. Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.
+1. Ismételje meg a CORS konfigurálás lépését. Az **Engedélyezett eredetek esetében adja** meg a `https://www.test-cors.org`
+1. Lépjen a [www.test-cors.org](https://www.test-cors.org/) 
+1. A Távoli **URL mezőben** illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
+1. Válassza a **Kérés küldése lehetőséget.**
+    Az eredménynek a következőnek kell `XHR status: 200` lennie: . 
+    Ha hibaüzenetet kap, ellenőrizze, hogy a CORS-beállítások helyesek-e. Szükség lehet a böngésző gyorsítótárának kiürítése vagy egy privát böngészési munkamenet megnyitására a Ctrl+Shift+P billentyűkombináció lenyomásával.
 
 ::: zone pivot="b2c-user-flow"
 
-### <a name="4-update-the-user-flow"></a>4. a felhasználói folyamat frissítése
+### <a name="4-update-the-user-flow"></a>4. A felhasználói folyamat frissítése
 
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza a **felhasználói folyamatok** lehetőséget, majd válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
-1. Válassza **ki a lapelrendezések lehetőséget**, majd **az egyesített regisztráció vagy a bejelentkezés lapon** kattintson az **Igen** lehetőségre az **Egyéni oldal tartalmának használatához**.
-1. Az **Egyéni lap URI-ja** mezőben adja meg a korábban feljegyzett *custom-ui.html* fájl URI azonosítóját.
-1. A lap tetején válassza a **Mentés** lehetőséget.
+1. Válassza **a bal felső** sarokban található Minden szolgáltatás Azure Portal, majd keresse meg és válassza a **Azure AD B2C.**
+1. Válassza **a Felhasználói folyamatok** lehetőséget, majd B2C_1_signupsignin1 felhasználói folyamatot. 
+1. Válassza **az Oldalelrendezések** lehetőséget, majd az Egyesített regisztráció vagy bejelentkezési oldal alatt kattintson az **Igen** gombra az Egyéni oldaltartalom **használata beállításnál.** 
+1. Az **Egyéni oldal URI-jában** adja meg a *korábbancustom-ui.html* fájl URI-ját.
+1. Az oldal tetején válassza a Mentés **lehetőséget.**
 
-### <a name="5-test-the-user-flow"></a>5. a felhasználói folyamat tesztelése
+### <a name="5-test-the-user-flow"></a>5. A felhasználói folyamat tesztelése
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget, és válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
-1. A lap tetején kattintson a **felhasználói folyamat futtatása** elemre.
-1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A saját Azure AD B2C válassza a **Felhasználói folyamatok lehetőséget,** majd válassza ki *B2C_1_signupsignin1* felhasználói folyamatot.
+1. Az oldal tetején kattintson a **Felhasználói folyamat futtatása elemre.**
+1. Kattintson a **Felhasználói folyamat futtatása gombra.**
 
-A létrehozott CSS-fájl alapján a következő példához hasonló oldalnak kell megjelennie:
+Az alábbi példához hasonló oldalnak kell jelen lennie, a létrehozott CSS-fájl alapján középre ékelő elemekkel:
 
-![Webböngészőt, amely az egyéni felhasználói felületi elemekkel való regisztrációt vagy bejelentkezési oldalt jeleníti meg](./media/customize-ui-with-html/run-now.png)
+![A felhasználói felület egyéni elemeit megjelenítő regisztrációt vagy bejelentkezési oldalt megjelenítő webböngésző](./media/customize-ui-with-html/run-now.png)
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-### <a name="4-modify-the-extensions-file"></a>4. a bővítmények fájljának módosítása
+### <a name="4-modify-the-extensions-file"></a>4. A bővítményfájl módosítása
 
-A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
+A felhasználói felület testreszabásának konfigurálását a **ContentDefinition** és annak gyermekelemei az alapfájlból a bővítményfájlba másolja.
 
-1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](./custom-policy-get-started.md).
-1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
-1. Nyissa meg a kiterjesztési fájlt. Például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
-1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
-1. Keresse meg a  `Id="api.signuporsignin"` másolt XML-fájlban található ContentDefinition elemet.
-1. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Ez az alapfájl az egyéni szabályzat-kezdőcsomag egyik szabályzatfájlja, amelyet az Egyéni szabályzatok – első lépések előfeltételében [kell beszereznie.](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+1. Keresse meg és másolja ki a **ContentDefinitions elem teljes** tartalmát.
+1. Nyissa meg a bővítményfájlt. Például: *TrustFrameworkExtensions.xml.* Keresse meg a **BuildingBlocks** elemet. Ha a elem nem létezik, adja hozzá.
+1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amit a **BuildingBlocks elem gyermekeként másolt** ki.
+1. Keresse meg a **contentDefinition elemet,** amely a kimásott `Id="api.signuporsignin"` XML-fájlban található.
+1. Módosítsa a **LoadUri** értékét a tárolóba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
-    Az egyéni szabályzatnak a következő kódrészlethez hasonlóan kell kinéznie:
+    Az egyéni szabályzatnak az alábbi kódrészlethez hasonlónak kell lennie:
 
     ```xml
     <BuildingBlocks>
@@ -285,30 +285,30 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
     </BuildingBlocks>
     ```
 
-1. Mentse a bővítmények fájlt.
+1. Mentse a bővítményfájlt.
 
-### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. a frissített egyéni szabályzat feltöltése és tesztelése
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. A frissített egyéni szabályzat feltöltése és tesztelése
 
-#### <a name="51-upload-the-custom-policy"></a>5,1 az egyéni szabályzat feltöltése
+#### <a name="51-upload-the-custom-policy"></a>5.1 Az egyéni szabályzat feltöltése
 
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Keresse meg és válassza ki a **Azure ad B2C**.
-1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
-1. Válassza az **egyéni házirend feltöltése** lehetőséget.
-1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
+1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó címtárat használja. A felső menüben válassza a Címtár **és** előfizetés szűrőt, és válassza ki a bérlőt tartalmazó címtárat.
+1. Keresse meg és válassza a **Azure AD B2C.**
+1. A **Szabályzatok alatt** **válassza** a Identity Experience Framework lehetőséget.
+1. Válassza az **Egyéni szabályzat feltöltése lehetőséget.**
+1. Töltse fel a korábban módosított kiterjesztésfájlt.
 
-#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5,2 az egyéni házirend tesztelése a **Futtatás most** használatával
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Az egyéni szabályzat tesztelése a **Futtatás most használatával**
 
-1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most** lehetőséget.
-1. Regisztrálnia kell egy e-mail-cím használatával.
+1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most lehetőséget.**
+1. A regisztrációhoz e-mail-címet kell használnia.
 
-## <a name="configure-dynamic-custom-page-content-uri"></a>Dinamikus egyéni oldal tartalmi URI-ja konfigurálása
+## <a name="configure-dynamic-custom-page-content-uri"></a>Dinamikus egyéni oldaltartalom URI-ének konfigurálása
 
-Azure AD B2C egyéni szabályzatok használatával az URL-címen vagy egy lekérdezési karakterláncban is elküldheti a paramétereket. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter lehet bármely [jogcím-feloldó](claim-resolver-overview.md), például az alkalmazás azonosítója, a nyelvi azonosító vagy az egyéni lekérdezési karakterlánc paraméter, például: `campaignId` .
+Egyéni Azure AD B2C használatával paramétert küldhet az URL-címben, vagy egy lekérdezési sztringet. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter bármilyen jogcímfel feloldó [lehet,](claim-resolver-overview.md)például az alkalmazásazonosító, a nyelvazonosító vagy az egyéni lekérdezési sztring paraméter, például `campaignId` .
 
-### <a name="sending-query-string-parameters"></a>Lekérdezési karakterlánc paramétereinek küldése
+### <a name="sending-query-string-parameters"></a>Lekérdezési sztring paramétereinek küldése
 
-Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás házirendjében](relyingparty.md)adjon hozzá egy `ContentDefinitionParameters` elemet az alább látható módon.
+A lekérdezési sztring paramétereinek elküldéhez a [függő](relyingparty.md)fél szabályzatában adjon hozzá egy elemet az alább `ContentDefinitionParameters` látható módon.
 
 ```xml
 <RelyingParty>
@@ -324,7 +324,7 @@ Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás h�
 </RelyingParty>
 ```
 
-A tartalom definíciójában módosítsa a értékét a következőre: `LoadUri` `https://<app_name>.azurewebsites.net/home/unified` . Az egyéni szabályzatnak `ContentDefinition` a következő kódrészlethez hasonlóan kell kinéznie:
+A tartalomdefinícióban módosítsa a értékét `LoadUri` `https://<app_name>.azurewebsites.net/home/unified` értékre. Az egyéni `ContentDefinition` szabályzatnak az alábbi kódrészlethez hasonlónak kell lennie:
 
 ```xml
 <ContentDefinition Id="api.signuporsignin">
@@ -333,15 +333,15 @@ A tartalom definíciójában módosítsa a értékét a következőre: `LoadUri`
 </ContentDefinition>
 ```
 
-Amikor Azure AD B2C betölti a lapot, meghívja a webkiszolgáló-végpontot:
+Amikor Azure AD B2C betölti az oldalt, hívást tesz a webkiszolgáló végpontjára:
 
 ```http
 https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f893d6d3-3b6d-480d-a330-1707bf80ebea
 ```
 
-### <a name="dynamic-page-content-uri"></a>Dinamikus oldal tartalmi URI-ja
+### <a name="dynamic-page-content-uri"></a>Dinamikus oldaltartalom URI-ja
 
-A tartalom a használt paraméterek alapján különböző helyekről is kihúzható. A CORS-kompatibilis végponton állítsa be a mappa szerkezetét a tartalom tárolására. Például a következő struktúrában rendezheti a tartalmakat. Gyökérmappa */mappa/nyelv/a HTML-fájlok*. Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
+A használt paraméterek alapján a tartalmak különböző helyekről is lekértek. A CORS-kompatibilis végponton állítson be egy mappastruktúrát a tartalom gazdagépeként. A tartalmat például a következő struktúrában rendszerezheti. *Gyökérmappa/mappa nyelvenként/a HTML-fájlokban.* Az egyéni oldal URI-ja például a következő lehet:
 
 ```xml
 <ContentDefinition Id="api.signuporsignin">
@@ -350,7 +350,7 @@ A tartalom a használt paraméterek alapján különböző helyekről is kihúzh
 </ContentDefinition>
 ```
 
-A Azure AD B2C a francia nyelvhez a két betűs ISO-kódot küldi el `fr` :
+Azure AD B2C a kétbetűs ISO-kódot küldi el a nyelvhez, `fr` a francia nyelvhez:
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
@@ -360,7 +360,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="sample-templates"></a>Példasablonok
 
-A felhasználói felület testreszabásához itt talál példákat:
+A felhasználói felület testreszabásához szükséges mintasablonokat itt találja:
 
 ```bash
 git clone https://github.com/azure-ad-b2c/html-templates
@@ -368,15 +368,15 @@ git clone https://github.com/azure-ad-b2c/html-templates
 
 Ez a projekt a következő sablonokat tartalmazza:
 - [Ocean Blue](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
-- [Szürke pala](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Slate Gray](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
 - [Klasszikus](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
 - [Sablonerőforrások](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 A minta használata:
 
-1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/AzureBlue` , `/MSA` vagy `/classic` .
-1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/src` blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg `\*.html` az egyes fájlokat a sablon mappájába. Ezután cserélje le az URL-címek összes példányát `https://login.microsoftonline.com` a 2. lépésben feltöltött URL-címre. Például:
+1. Klónozza a helyi gépen található repo-t. Válasszon egy , `/AzureBlue` `/MSA` vagy sablonmappát. `/classic`
+1. Töltse fel a sablon mappájában és mappájában található összes fájlt a Blob Storage-be az előző `/src` szakaszokban leírtak szerint.
+1. Ezután nyissa meg a `\*.html` sablon mappájában lévő összes fájlt. Ezután cserélje le az URL-címek összes példányát a `https://login.microsoftonline.com` 2. lépésben feltöltött URL-címre. Például:
     
     Forrás:
     ```html
@@ -388,13 +388,13 @@ A minta használata:
     https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
     
-1. Mentse a `\*.html` fájlokat, és töltse fel őket a blob Storage-ba.
-1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
-1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.
+1. Mentse a `\*.html` fájlokat, és töltse fel őket a Blob Storage-be.
+1. Most módosítsa a szabályzatot, és mutasson a HTML-fájlra a korábban említettek szerint.
+1. Ha hiányzó betűtípusokat, képeket vagy CSS-eket lát, ellenőrizze a hivatkozásokat a bővítmény-szabályzatban és a `\*.html` fájlokban.
 
-## <a name="use-company-branding-assets-in-custom-html"></a>Vállalati arculati eszközök használata egyéni HTML-kódban
+## <a name="use-company-branding-assets-in-custom-html"></a>Vállalati arculat eszközeinek használata egyéni HTML-ben
 
-Ha egyéni HTML-kódban szeretné használni a [vállalati védjegyezési](customize-ui.md#configure-company-branding) eszközöket, adja hozzá a következő címkéket a `<div id="api">` címkén kívül. A képforrást a háttérkép és a szalagcím emblémája helyettesíti.
+Ha egyéni [HTML-ben](customize-ui.md#configure-company-branding) szeretne vállalati védjegyezést használni, adja hozzá a következő címkéket a `<div id="api">` címkén kívül. A rendszer lecseréli a kép forrását a háttérkép és a szalagcímembléma jelére.
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -403,4 +403,4 @@ Ha egyéni HTML-kódban szeretné használni a [vállalati védjegyezési](custo
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan engedélyezheti az [ügyféloldali JavaScript-kódokat](javascript-and-page-layout.md).
+Ismerje meg, hogyan engedélyezheti [az ügyféloldali JavaScript-kódot.](javascript-and-page-layout.md)

@@ -1,55 +1,55 @@
 ---
-title: Magas rendelkezésre állás az Azure cache Redis
-description: Ismerje meg az Azure cache Redis magas rendelkezésre állású funkcióit és lehetőségeit
+title: Magas rendelkezésre állás Azure Cache for Redis
+description: Tudnivalók a Azure Cache for Redis funkciókról és lehetőségekről
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308353"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719096"
 ---
-# <a name="high-availability-for-azure-cache-for-redis"></a>Magas rendelkezésre állás az Azure cache Redis
+# <a name="high-availability-for-azure-cache-for-redis"></a>Magas rendelkezésre állás Azure Cache for Redis
 
-A Redis készült Azure cache beépített magas rendelkezésre állást biztosít. Magas rendelkezésre állású architektúrájának célja annak biztosítása, hogy a felügyelt Redis-példányok akkor is működőképesek legyenek, ha az alapul szolgáló virtuális gépeket a tervezett vagy nem tervezett kimaradások befolyásolják. Sokkal nagyobb százalékos arányt biztosít, mint amit a Redis egyetlen virtuális gépen való üzemeltetésével érhet el.
+Azure Cache for Redis beépített magas rendelkezésre állású. Magas rendelkezésre állású architektúrája célja annak biztosítása, hogy a felügyelt Redis-példány akkor is működjön, ha a mögöttes virtuális gépeket (VM-eket) a tervezett vagy nem tervezett leállások befolyásolják. Sokkal nagyobb százalékos arányt biztosít, mint amit a Redis egyetlen virtuális gépen való üzemeltetése elérhető.
 
-A Redis készült Azure cache magas rendelkezésre állást biztosít a gyorsítótárhoz több, *csomópontok* nevű virtuális gép használatával. Ezeket a csomópontokat úgy konfigurálja, hogy az adatreplikáció és a feladatátvétel koordinált módon történjen. Emellett a karbantartási műveleteket, például a Redis-szoftverek javítását is elvégezheti. A standard, Premium és Enterprise szinten számos magas rendelkezésre állási lehetőség érhető el:
+Azure Cache for Redis a magas rendelkezésre állást több virtuális gép, más néven csomópontok használatával valósítja meg a gyorsítótárakhoz. Úgy konfigurálja ezeket a csomópontokat, hogy az adatreplikáció és a feladatátvétel koordinált módon történjen. Emellett olyan karbantartási műveleteket is vezényel, mint a Redis szoftverjavítása. A Standard, a Prémium és a Nagyvállalati szinten különböző magas rendelkezésre állási lehetőségek érhetők el:
 
 | Beállítás | Leírás | Rendelkezésre állás | Standard | Prémium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Normál replikáció](#standard-replication)| Két csomópontos replikált konfiguráció egyetlen adatközpontban automatikus feladatátvételsel | 99,9% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |✔|✔|-|
-| [Zónaredundancia](#zone-redundancy) | Több csomópontos replikált konfiguráció a AZs-ben automatikus feladatátvételsel | Akár 99,99% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |-|Előnézet|Előnézet|
-| [Georeplikáció](#geo-replication) | Csatolt gyorsítótár-példányok két régióban, felhasználó által vezérelt feladatátvételsel | Akár 99,999% ( [részletek](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)megtekintése) |-|✔|Előnézet|
+| [Standard replikáció](#standard-replication)| Kétcsomópontos replikált konfiguráció egyetlen adatközpontban automatikus feladatátvételsel | 99,9% [(részletek)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
+| [Zónaredundancia](#zone-redundancy) | Többcsomópontos replikált konfiguráció a különböző AZ-kben automatikus feladatátvételsel | Akár 99,99% [(részletek)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|Előnézet|✔|
+| [Georeplikáció](#geo-replication) | Összekapcsolt gyorsítótárpéldányok két régióban, felhasználó által vezérelt feladatátvételsel | Akár 99,999% [(részletek)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|✔|Előnézet|
 
-## <a name="standard-replication"></a>Normál replikáció
+## <a name="standard-replication"></a>Standard replikáció
 
-A standard vagy a prémium szint Redis tartozó Azure cache alapértelmezés szerint egy pár Redis-kiszolgálón fut. A két kiszolgáló dedikált virtuális gépeken fut. A nyílt forráskódú Redis lehetővé teszi, hogy csak egy kiszolgáló kezelje az adatírási kérelmeket. Ez a kiszolgáló az *elsődleges* csomópont, míg a másik *replika*. A kiszolgálói csomópontok kiépítését követően az Azure cache for Redis az elsődleges és a replika szerepköröket rendeli hozzájuk. Az elsődleges csomópont általában az írás és a Redis-ügyfelek olvasási kéréseinek kiszolgálására szolgál. Írási művelet esetén egy új kulcsot és egy kulcs frissítését véglegesíti a belső memóriájában, és azonnal válaszol a-ügyfélre. Aszinkron módon továbbítja a műveletet a replikának.
+A Azure Cache for Redis standard vagy prémium szinten található kiszolgálók alapértelmezés szerint két Redis-kiszolgálón futnak. A két kiszolgáló dedikált virtuális gépeken üzemel. A nyílt forráskódú Redis csak egy kiszolgáló számára teszi lehetővé az adatírási kérelmeket. Ez a kiszolgáló az *elsődleges csomópont,* míg a másik *replika.* Miután kiosztja a kiszolgáló-csomópontokat, Azure Cache for Redis elsődleges és replika szerepköröket rendel hozzájuk. Az elsődleges csomópont általában a Redis-ügyfelek írási és olvasási kéréseit is kiszolgálja. Írási művelet során egy új kulcsot és egy kulcsfrissítést véglegesít a belső memóriában, és azonnal válaszol az ügyfélnek. Aszinkron módon továbbítja a műveletet a replikának.
 
 :::image type="content" source="media/cache-high-availability/replication.png" alt-text="Adatreplikáció beállítása":::
    
 >[!NOTE]
->A Redis-ügyfél általában az összes olvasási és írási kérelem esetében egy Redis gyorsítótárban kommunikál az elsődleges csomóponttal. Bizonyos Redis-ügyfelek úgy konfigurálhatók, hogy a replika csomópontról olvassák a beolvasást.
+>A Redis-ügyfelek általában az összes olvasási és írási kéréshez kommunikálnak a Redis Cache elsődleges csomópontján. Bizonyos Redis-ügyfelek konfigurálhatók úgy, hogy a replikacsomópontból olvassanak.
 >
 >
 
-Ha egy Redis-gyorsítótár elsődleges csomópontja nem érhető el, akkor a replika az új elsődleges automatikusan lesz előléptetve. Ezt a folyamatot *feladatátvételnek* nevezzük. Ha az elsődleges csomópont gyorsan helyreállítható, a replika elég hosszú időt vár a megkezdése előtt. Feladatátvétel esetén az Azure cache for Redis kiépít egy új virtuális gépet, és a replika csomópontként csatlakoztatja a gyorsítótárhoz. A replika teljes adatszinkronizálást végez az elsődlegesen, hogy a gyorsítótár-adatok egy másik példánya legyen.
+Ha a Redis Cache-gyorsítótár elsődleges csomópontja nem érhető el, a replika előlépteti magát, hogy automatikusan az új elsődleges csomópont legyen. Ezt a folyamatot *feladatátvételnek nevezzük.* A replika elég hosszú ideig várakozik, mielőtt átveszi az et, hogy az elsődleges csomópont gyorsan helyreálljon. Feladatátvétel esetén a Azure Cache for Redis új virtuális gépet hoz létre, és a replikacsomópontként a gyorsítótárhoz csatlakozik. A replika teljes adatszinkronizálást hajt végre az elsődleges adatbázissal, hogy a gyorsítótár-adatok egy másik másolatával is rendelkezik.
 
-Egy elsődleges csomópont egy tervezett karbantartási tevékenység részeként kiléphet a szolgáltatásból, például a Redis szoftver vagy az operációs rendszer frissítése során. Emellett a nem tervezett események, például a mögöttes hardver-, szoftver-és hálózati hibák miatt is leállhat. A [Redis Azure cache feladatátvétele és javítása](cache-failover.md) részletes magyarázatot nyújt a Redis-feladatátvételek típusairól. A Redis készült Azure cache számos feladatátvételt hajt végre az élettartama során. A magas rendelkezésre állású architektúra úgy van kialakítva, hogy az ügyfelek számára a lehető legátlátható módon végezze el a módosításokat a gyorsítótáron belül.
+Az elsődleges csomópontok egy tervezett karbantartási tevékenység, például a Redis szoftver vagy az operációs rendszer frissítése során leállnak. Emellett leállhat nem tervezett események, például a mögöttes hardver, szoftver vagy hálózat meghibásodása miatt is. [A redis feladatátvételi Azure Cache for Redis](cache-failover.md) a redis feladatátvételek típusairól nyújt részletes magyarázatot. A Azure Cache for Redis számos feladatátvételen megy keresztül az élettartama során. A magas rendelkezésre állású architektúra úgy lett kialakítva, hogy ezeket a módosításokat a gyorsítótárban a lehető legátláthatóbbá tegye az ügyfelek számára.
 
 >[!NOTE]
->A következő előzetes verzióként érhető el.
+>Az alábbiak előzetes verzióként érhetők el.
 >
 >
 
-Emellett az Azure cache for Redis lehetővé teszi további replika-csomópontok használatát a prémium szinten. A [több replika gyorsítótára](cache-how-to-multi-replicas.md) legfeljebb három replika csomóponttal konfigurálható. A további replikák általában javítják a rugalmasságot, mert az elsődleges biztonsági másolatokat tartalmazó további csomópontok miatt. Még ha több replikával is rendelkezik, a Redis-példányhoz tartozó Azure cache-t továbbra is súlyosan befolyásolhatja az adatközpontok vagy AZ AZ-szintű leállás. A gyorsítótár rendelkezésre állását több replikával is növelheti a [zóna redundancia](#zone-redundancy)szolgáltatásával együtt.
+Emellett a Azure Cache for Redis további replikacsomópontokat is lehetővé tesz a Prémium szinten. Több [replikagyorsítótár](cache-how-to-multi-replicas.md) legfeljebb három replikacsomóponttal konfigurálható. A több replika általában növeli a rugalmasságot, mivel az elsődleges csomópontok további csomópontok biztonsági másolatai is vannak. Még több replika esetén is Azure Cache for Redis adatközpont- vagy AZ-szintű szolgáltatáskimaradás súlyosan befolyásolhatja a példánypéldányt. A gyorsítótár rendelkezésre állását több replika és zónaredundania együttes használatával [növelheti.](#zone-redundancy)
 
 ## <a name="zone-redundancy"></a>Zónaredundancia
 
-Az Azure cache for Redis támogatja a zóna redundáns konfigurációit a prémium és a nagyvállalati szinteken. A [zóna redundáns gyorsítótára](cache-how-to-zone-redundancy.md) a csomópontokat ugyanazon régió különböző [Azure Availability Zonesi](../availability-zones/az-overview.md) között helyezheti el. Kiküszöböli az adatközpontot vagy az kimaradást egyetlen meghibásodási pontként, és növeli a gyorsítótár teljes rendelkezésre állását.
+Azure Cache for Redis támogatja a zónaredundáns konfigurációkat a Prémium és a Nagyvállalati szinten. A [zónaredundáns gyorsítótár](cache-how-to-zone-redundancy.md) [](../availability-zones/az-overview.md) a csomópontokat különböző Azure Availability Zones ugyanabban a régióban helyezze el. Kiküszöböli az adatközpont vagy az AZ szolgáltatáskimaradását, mivel ez egy rendszerkéssértő pont, és növeli a gyorsítótár általános rendelkezésre állását.
 
 ### <a name="premium-tier"></a>Prémium szintű csomag
 
@@ -58,34 +58,34 @@ Az Azure cache for Redis támogatja a zóna redundáns konfigurációit a prémi
 >
 >
 
-A következő ábra szemlélteti a prémium szintű zóna redundáns konfigurációját:
+Az alábbi ábra a prémium szint zónaredundáns konfigurációját mutatja be:
 
-:::image type="content" source="media/cache-high-availability/zone-redundancy.png" alt-text="Zóna redundancia beállítása":::
+:::image type="content" source="media/cache-high-availability/zone-redundancy.png" alt-text="Zónaredundania beállítása":::
    
-A Redis-hez készült Azure cache egy ciklikusan elosztott zónában lévő csomópontokat oszt szét a kiválasztott AZs szemben. Azt is meghatározza, hogy melyik csomópont lesz kezdetben elsődlegesként kiszolgálva.
+Azure Cache for Redis a csomópontokat egy zónaredundáns gyorsítótárban, a kiválasztott AZ-hez időzített módon osztja el. Azt is meghatározza, hogy kezdetben melyik csomópont szolgál elsődleges csomópontként.
 
-A zóna redundáns gyorsítótára automatikus feladatátvételt biztosít. Ha az aktuális elsődleges csomópont nem érhető el, az egyik replikát átveszi a rendszer. Előfordulhat, hogy az alkalmazás magasabb gyorsítótár-válaszidőt észlel, ha az új elsődleges csomópont más az-ban található. A AZs földrajzilag el vannak különítve. Az alkalmazás és a gyorsítótár közötti fizikai távolságot az egyikről a másikra váltva változtathatja meg. Ez a módosítás az alkalmazásból a gyorsítótárba való átállási hálózati késéseket is befolyásolja. Az extra késés várhatóan a legtöbb alkalmazás elfogadható tartományán belül esik. Javasoljuk, hogy tesztelje az alkalmazást, és győződjön meg arról, hogy az jól használható-e a zóna redundáns gyorsítótárával.
+A zónaredundáns gyorsítótár automatikus feladatátvételt biztosít. Ha az aktuális elsődleges csomópont nem érhető el, az egyik replika átveszi az áramot. Az alkalmazás magasabb gyorsítótár-válaszidőt tapasztalhat, ha az új elsődleges csomópont egy másik AZ-ban található. Az AZ-k földrajzilag elkülönülnek egymástól. Az egyik AZ-ről a másikra való váltás megváltoztatja az alkalmazás és a gyorsítótár közötti fizikai távolságot. Ez a módosítás hatással van az alkalmazás és a gyorsítótár közötti adatváltási hálózati késésre. A többletkésés várhatóan a legtöbb alkalmazás esetében elfogadható tartományba esik. Javasoljuk, hogy tesztelje az alkalmazást, hogy jól teljesítsen a zónaredundáns gyorsítótárral.
 
 ### <a name="enterprise-tiers"></a>Nagyvállalati szintek
 
-A vállalati szintű gyorsítótárak egy Redis vállalati fürtön futnak. A kvórum létrehozásához minden esetben páratlan számú kiszolgálói csomópontra van szükség. Alapértelmezés szerint három csomópontból áll, amelyek mindegyike egy dedikált virtuális gépen fut. A vállalati gyorsítótár két azonos méretű *adatcsomóponttal* és egy kisebb *kvórum csomóponttal* rendelkezik. A vállalati Flash-gyorsítótár három azonos méretű adatcsomóponttal rendelkezik. A vállalati fürt a Redis az adatpartíciókat belsőleg osztja szét. Minden partíció rendelkezik egy *elsődleges* és legalább egy *replikával*. Minden adatcsomópont egy vagy több partícióval rendelkezik. A vállalati fürt biztosítja, hogy a partíciók elsődleges és replikája soha ne legyen ugyanazon az adatcsomóponton elhelyezve. A partíciók aszinkron módon replikálják az adatokból a megfelelő replikákat.
+A vállalati szinten lévő gyorsítótárak Redis Enterprise-fürtön futnak. Ahhoz, hogy kvórumot hoz létre, mindig páratlan számú kiszolgálócsomópontra van szükség. Alapértelmezés szerint három csomópontból áll, amelyek mindegyikét egy dedikált virtuális gép üzemelteti. A vállalati gyorsítótár két  azonos méretű adatcsomóponttal és egy kisebb kvórumcsomóponttal *rendelkezik.* A Enterprise Flash gyorsítótár három azonos méretű adatcsomóponttal rendelkezik. A vállalati fürt belső partíciókra osztja a Redis-adatokat. Minden partíció rendelkezik egy *elsődleges és* legalább egy *replikával.* Minden adatcsomópont egy vagy több partíciót tartalmaz. A vállalati fürt gondoskodik arról, hogy a partíciók elsődleges és replikapéldányai soha ne ugyanazon az adatcsomóponton található(k) együtt. A partíciók aszinkron módon replikálják az adatokat az adatbázisból a megfelelő replikákba.
 
-Ha egy adatcsomópont elérhetetlenné válik, vagy egy hálózati megosztás történik, a [normál replikációban](#standard-replication) leírthoz hasonló feladatátvétel zajlik. A vállalati fürt kvórum-alapú modellt használ annak meghatározására, hogy mely túlélő csomópontok fognak részt venni egy új kvórumban. Emellett a csomópontokon belüli replika-partíciókat is támogatja, ha szükséges.
+Ha egy adatcsomópont elérhetetlenné válik, vagy hálózati felosztás történik, a standard replikációban leírthoz hasonló [feladatátvétel](#standard-replication) történik. A vállalati fürt kvórumalapú modellel határozza meg, hogy mely megmaradt csomópontok vesznek részt az új kvórumban. Emellett szükség szerint az ezeken a csomópontokon belüli replikapartíciókat is előlépteti az ries partíciókra.
 
 ## <a name="geo-replication"></a>Georeplikáció
 
-A [geo-replikáció](cache-how-to-geo-replication.md) egy olyan mechanizmus, amellyel két vagy több Azure cache-t Redis-példányokhoz is összekapcsolhat, jellemzően két Azure-régióra. 
+[A georeplikáció](cache-how-to-geo-replication.md) egy olyan mechanizmus, amely két vagy több virtuális Azure Cache for Redis kapcsol össze, általában két Azure-régióra kiterjedően. 
 
 ### <a name="premium-tier"></a>Prémium szintű csomag
 
 >[!NOTE]
->A prémium szintű geo-replikáció főleg a vész-helyreállításhoz lett tervezve.
+>A prémium szintű georeplikáció főleg vészhelyreállításhoz lett kialakítva.
 >
 >
 
-A különböző prémium szintű gyorsítótár-példányok a [geo-replikáción](cache-how-to-geo-replication.md) keresztül csatlakoztathatók, így a gyorsítótár-adataikat egy másik régióba lehet biztonsági másolatot készíteni. A csatolást követően az egyik példány az elsődleges csatolt gyorsítótárként, a másik pedig másodlagos csatolt gyorsítótárként van kijelölve. Csak az elsődleges gyorsítótár fogadja az olvasási és írási kérelmeket. Az elsődleges gyorsítótárba írt adatkészletek a másodlagos gyorsítótárba lesznek replikálva. Az alkalmazás az elsődleges és másodlagos gyorsítótárak külön végpontján keresztül fér hozzá a gyorsítótárhoz. Az alkalmazásnak az összes írási kérelmet az elsődleges gyorsítótárba kell küldenie, ha több Azure-régióban van üzembe helyezve. Az elsődleges vagy másodlagos gyorsítótárból is olvasható. Általánosságban elmondható, hogy az alkalmazás számítási példányainak a legközelebbi gyorsítótárból kell olvasniuk a késés csökkentése érdekében. A két gyorsítótár-példány közötti adatátvitelt a TLS védi.
+Két prémium szintű gyorsítótárpéldányt [](cache-how-to-geo-replication.md) csatlakoztathat georeplikációval, így a gyorsítótárazott adatokról egy másik régióba is mentheti a biztonsági adatokat. Az összekapcsolás után az egyik példány lesz az elsődleges csatolt gyorsítótár, a másik pedig másodlagos csatolt gyorsítótár. Csak az elsődleges gyorsítótár fogadja el az olvasási és írási kéréseket. A rendszer replikálja az elsődleges gyorsítótárba írt adatokat a másodlagos gyorsítótárba. Az alkalmazások az elsődleges és másodlagos gyorsítótárak külön végpontjaival férnek hozzá a gyorsítótárhoz. Az alkalmazásnak az összes írási kérést el kell küldenie az elsődleges gyorsítótárba, ha több Azure-régióban van telepítve. Képes olvasni az elsődleges vagy a másodlagos gyorsítótárból. Általában azt szeretné, hogy az alkalmazás számítási példányai a legközelebbi gyorsítótárból olvassanak a késés csökkentése érdekében. A két gyorsítótárpéldány közötti adatátvitelt a TLS biztonságos.
 
-A Geo-replikáció nem biztosít automatikus feladatátvételt, mivel a további hálózati oda-és bekapcsolási idő a régiók között történik, ha az alkalmazás többi része az elsődleges régióban marad. A másodlagos gyorsítótár leválasztásával kell kezelnie és kezdeményeznie a feladatátvételt. Ez az új elsődleges példány lesz.
+A georeplikáció nem biztosít automatikus feladatátvételt a régiók közötti hálózati adatváltási idővel kapcsolatos problémák miatt, ha az alkalmazás többi része az elsődleges régióban marad. A feladatátvételt a másodlagos gyorsítótár leválasztása segítségével kell kezelnie és elindítania. Ez előlépteti az új elsődleges példányként.
 
 ### <a name="enterprise-tiers"></a>Nagyvállalati szintek
 
@@ -94,13 +94,13 @@ A Geo-replikáció nem biztosít automatikus feladatátvételt, mivel a további
 >
 >
 
-A vállalati rétegek a Geo-replikálás fejlettebb formáját támogatják, amelyet [aktív geo-replikálásnak](cache-how-to-active-geo-replication.md)nevezünk. Az ütközés nélküli replikált adattípusok kihasználása esetén a Redis Enterprise szoftver támogatja több gyorsítótár-példány írását, és szükség esetén gondoskodik a módosítások egyesítéséről és az ütközések feloldásáról. A különböző Azure-régiókban lévő két vagy több vállalati rétegbeli gyorsítótár-példány csatlakoztatható aktív geo-replikált gyorsítótár létrehozásához. Az ilyen gyorsítótárat használó alkalmazások a megfelelő végpontokon keresztül olvashatnak és írhatnak a földrajzilag elosztott gyorsítótár-példányokat. Az egyes számítási példányokhoz legközelebb eső értéket kell használnia, amely a legalacsonyabb késést adja. Az alkalmazásnak emellett figyelnie kell a gyorsítótár-példányokat, és váltania kell egy másik régióra, ha az egyik példány elérhetetlenné válik. További információ az aktív geo-replikáció működéséről: [aktív-aktív Geo-Distriubtion (CRDTs-alapú)](https://redislabs.com/redis-enterprise/technology/active-active-geo-distribution/).
+A vállalati szintek támogatják a georeplikáció egy fejlettebb formáját, az aktív [georeplikációt.](cache-how-to-active-geo-replication.md) Az ütközésmentes replikált adattípusok használata esetén a Redis Enterprise szoftver támogatja a több gyorsítótárpéldányba történő írást, és gondoskodik a módosítások egyesítése és szükség esetén az ütközések feloldása között. A különböző Azure-régiókban lévő két vagy több vállalati szintű gyorsítótárpéldány aktív georeplikált gyorsítótárként összekapcsolható. Az ilyen gyorsítótárat használó alkalmazások a megfelelő végpontok használatával olvashatják és írnak a földrajzi elosztott gyorsítótárpéldányokra. Az egyes számítási példányok legközelebbi példányát kell használnia, ami a legkisebb késést biztosítja. Az alkalmazásnak emellett figyelnie kell a gyorsítótárpéldányokat, és át kell váltania egy másik régióra, ha az egyik példány elérhetetlenné válik. További információ az aktív georeplikációról: [Aktív-aktív Geo-Distriubtion (CRDT-alapú).](https://redislabs.com/redis-enterprise/technology/active-active-geo-distribution/)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ arról, hogyan konfigurálható az Azure cache a Redis magas rendelkezésre állási lehetőségeihez.
+További információ a magas Azure Cache for Redis konfigurálásról.
 
-* [Azure cache a Redis prémium szintű szolgáltatási szintjeihez](cache-overview.md#service-tiers)
-* [Replikák hozzáadása az Azure cache-hez a Redis-hez](cache-how-to-multi-replicas.md)
-* [Zónák redundanciának engedélyezése az Azure cache számára a Redis](cache-how-to-zone-redundancy.md)
-* [Az Azure cache geo-replikációjának beállítása a Redis](cache-how-to-geo-replication.md)
+* [Azure Cache for Redis Prémium szolgáltatási szintek](cache-overview.md#service-tiers)
+* [Replikák hozzáadása Azure Cache for Redis](cache-how-to-multi-replicas.md)
+* [Zónaredundania engedélyezése Azure Cache for Redis](cache-how-to-zone-redundancy.md)
+* [Georeplikáció beállítása Azure Cache for Redis](cache-how-to-geo-replication.md)

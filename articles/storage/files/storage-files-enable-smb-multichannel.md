@@ -1,22 +1,22 @@
 ---
 title: Többcsatornás SMB engedélyezése
-description: Ismerje meg, hogyan engedélyezheti a többcsatornás SMB-t az Azure Premium-fájlmegosztás esetében.
+description: Megtudhatja, hogyan engedélyezheti a többcsatornás SMB-t prémium szintű Azure-fájlmegosztások esetében.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732538"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718977"
 ---
-# <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Többcsatornás SMB engedélyezése FileStorage-fiókban (előzetes verzió) 
+# <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Többcsatornás SMB engedélyezése fileStorage-fiókon (előzetes verzió) 
 
-Az Azure FileStorage-fiókok támogatják a többcsatornás SMB-t (előzetes verzió), ami növeli az SMB 3. x ügyfél teljesítményét úgy, hogy több hálózati kapcsolatot létesít a prémium szintű fájlmegosztás számára. Ez a cikk részletes útmutatást nyújt a többcsatornás SMB egy meglévő Storage-fiókban való engedélyezéséhez. Azure Files többcsatornás SMB-vel kapcsolatos részletes információkért lásd: többcsatornás SMB-teljesítmény.
+Az Azure FileStorage-fiókok támogatják a többcsatornás SMB -t (előzetes verzió), amely növeli a teljesítményt egy SMB 3.x-ügyféltől azáltal, hogy több hálózati kapcsolatot hoz létre a prémium fájlmegosztásokkal. Ez a cikk részletes útmutatást nyújt a többcsatornás SMB meglévő tárfiókon való engedélyezéséhez. A többcsatornás SMB Azure Files részletes információkért lásd: Többcsatornás SMB teljesítménye.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -28,12 +28,12 @@ Az Azure FileStorage-fiókok támogatják a többcsatornás SMB-t (előzetes ver
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy FileStorage-fiókot](./storage-how-to-create-file-share.md).
-- Ha a Azure PowerShell modult szeretné használni, [telepítse a modul 3.0.1-Preview verzióját](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).
+- [Hozzon létre egy FileStorage fiókot.](./storage-how-to-create-file-share.md)
+- Ha a Azure PowerShell modult szeretné használni, telepítse a modul [3.0.1-es](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview)előzetes verzióját.
 
 ## <a name="getting-started"></a>Első lépések
 
-Nyisson meg egy PowerShell-ablakot, és jelentkezzen be az Azure-előfizetésbe. Innen regisztrálhat a többcsatornás SMB előzetes verziójára az alábbi parancsokkal.
+Nyisson meg egy PowerShell-ablakot, és jelentkezzen be Az Azure-előfizetésbe. Innen regisztrálhat a többcsatornás SMB előzetes verzióra az alábbi parancsokkal.
 
 ```azurepowershell
 Connect-AzAccount
@@ -47,11 +47,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 > [!NOTE]
-> A regisztráció akár egy óráig is eltarthat.
+> A regisztráció akár egy órát is előfordulhat.
 
-### <a name="verify-that-feature-registration-is-complete"></a>A szolgáltatás regisztrációjának ellenőrzése befejeződött
+### <a name="verify-that-feature-registration-is-complete"></a>A szolgáltatásregisztráció befejezésének ellenőrzése
 
-Mivel akár egy órát is igénybe vehet, hogy engedélyezze a szolgáltatást a Storage-fiókjában, a következő paranccsal ellenőrizheti, hogy regisztrálva van-e az előfizetéséhez:
+Mivel a szolgáltatás tárfiókon való engedélyezése akár egy órát is el is vehet, a következő paranccsal ellenőrizheti, hogy regisztrálva van-e az előfizetésében:
 
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowSMBMultichannel -ProviderNamespace Microsoft.Storage
@@ -59,22 +59,22 @@ Get-AzProviderFeature -FeatureName AllowSMBMultichannel -ProviderNamespace Micro
 
 
 ## <a name="enable-smb-multichannel"></a>Többcsatornás SMB engedélyezése 
-Miután létrehozott egy FileStorage-fiókot, kövesse az utasításokat a Storage-fiókhoz tartozó többcsatornás SMB-beállítások frissítéséhez.
+Miután létrehozott egy FileStorage-fiókot, kövesse az utasításokat a tárfiók többcsatornás SMB-beállításainak frissítéséhez.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Jelentkezzen be a Azure Portalba, és navigáljon ahhoz a FileStorage Storage-fiókhoz, amelyen be szeretné állítani a többcsatornás SMB-t.
-1. Válassza **a fájlmegosztás lehetőséget** a **Fájlszolgáltatások** területen, majd válassza a **fájlmegosztás beállításai** lehetőséget.
-1. Állítsa be a **többcsatornás SMB** -t **a be** (vagy **ki** a letiltáshoz), majd válassza a **Mentés** lehetőséget.
+1. Jelentkezzen be a Azure Portal, és lépjen arra a FileStorage tárfiókra, amelybe a többcsatornás SMB-t konfigurálni szeretné.
+1. A **Fájlszolgáltatás alatt** válassza a **Fájlmegosztások** lehetőséget, majd a **Fájlmegosztás beállításai lehetőséget.**
+1. Kapcsolja be a **Többcsatornás SMB-t** **(vagy** kapcsolja ki a letiltásához), majd válassza a **Mentés lehetőséget.** 
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Képernyőfelvétel a Storage-fiókról: a többcsatornás SMB bekapcsolva.":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Képernyőkép a tárfiókról, amely bekapcsolja a többcsatornás SMB-t."  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
-Ha a többcsatornás SMB lehetőség nem látható a **fájlmegosztás beállításai** között, vagy ha nem sikerül frissíteni a beállítási hibát a konfiguráció frissítése közben, győződjön meg arról, hogy az előfizetés regisztrálva van, és a fiókja az egyik [támogatott régióban](#regional-availability) támogatott fióktípus és replikálás.
+Ha a Többcsatornás SMB beállítás  nem látható a Fájlmegosztás beállításai között, vagy a konfiguráció frissítése közben sikertelenül frissülő beállítási [](#regional-availability) hibát kap, győződjön meg arról, hogy az előfizetés regisztrálva van, és a fiókja a támogatott fióktípussal és replikációval támogatott régiók valamelyikében van.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha a többcsatornás SMB-t a Azure PowerShell modul használatával szeretné engedélyezni, [telepítenie kell a modul 3.0.1-Preview verzióját](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview) .
+Ha a többcsatornás SMB-t a Azure PowerShell modullal szeretné engedélyezni, telepítenie kell a modul [3.0.1-es](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview) előzetes verzióját.
 
-Adja meg a változókat `$resourceGroupName` és az `$storageAccountName` erőforráscsoportot és a Storage-fiókot a PowerShell-parancsok futtatása előtt.
+A PowerShell-parancsok futtatása előtt állítsa be az és a változót az erőforráscsoportra és a `$resourceGroupName` `$storageAccountName` tárfiókra.
 
 ```azurepowershell
 # Enable SMB Multichannel on the premium storage account that's in one of the supported regions
@@ -82,17 +82,17 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $resourceGroupName -Stora
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Az Azure CLI még nem támogatja a többcsatornás SMB konfigurálását. Tekintse meg a portál utasításait a többcsatornás SMB konfigurálásához a Storage-fiókban.
+Az Azure CLI még nem támogatja a többcsatornás SMB konfigurálását. A portál utasításait követve konfigurálhatja a többcsatornás SMB-t a tárfiókon.
 
 ---
 
 > [!NOTE]
-> A többcsatornás SMB konfigurációs beállításainak módosítása a Storage-fiókban lévő összes fájlmegosztás esetében érvényes lesz. A módosítások életbe léptetéséhez újra kell csatlakoztatnia a megosztást az ügyfélen.
+> A többcsatornás SMB konfigurációs beállításainak bármilyen módosítása a tárfiók alatt található összes fájlmegosztásra érvényes lesz. Ahhoz azonban, hogy a módosítások életbe lépnek, újra le kell szerelni a megosztást az ügyfélen.
 
 
 ## <a name="next-steps"></a>Következő lépések 
 
-- [Csatlakoztassa újra a fájlmegosztást](storage-how-to-use-files-windows.md) , hogy kihasználhassa a többcsatornás SMB előnyeit.
-- A [többcsatornás SMB-vel kapcsolatos problémák elhárítása](storage-troubleshooting-files-performance.md#smb-multichannel-option-not-visible-under-file-share-settings).
-- További információ a tökéletesítésekről: [többcsatornás SMB-teljesítmény](storage-files-smb-multichannel-performance.md)
- - További információ a Windows SMB többcsatornás szolgáltatásáról: az [SMB-Mulitchannel kezelése](/azure-stack/hci/manage/manage-smb-multichannel).
+- [A többcsatornás](storage-how-to-use-files-windows.md) SMB előnyeinek kihasználása után újra kell csatolnia a fájlmegosztást.
+- Hárítsa el a többcsatornás [SMB-hez kapcsolódó problémákat.](storage-troubleshooting-files-performance.md#smb-multichannel-option-not-visible-under-file-share-settings)
+- A fejlesztésekkel kapcsolatos további információkért lásd: [Többcsatornás SMB-teljesítmény](storage-files-smb-multichannel-performance.md)
+ - További információ a Többcsatornás Windows SMB szolgáltatásról: [Manage SMB Mulitchannel ( Többcsatornás SMB kezelése).](/azure-stack/hci/manage/manage-smb-multichannel)

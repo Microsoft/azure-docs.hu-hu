@@ -1,36 +1,39 @@
 ---
-title: Azure nagyméretű példányok magas rendelkezésre állása SAP on RHEL
-description: Megtudhatja, hogyan automatizálhat egy SAP HANA adatbázis-feladatátvételt egy pacemaker-fürt használatával Red Hat Enterprise Linuxban.
+title: Az Azure Large Instances magas rendelkezésre állása az SAP on RHEL-hez
+description: Megtudhatja, hogyan automatizálhat egy SAP HANA-feladatátvételt egy Pacemaker-fürt használatával a Red Hat Enterprise Linux.
 author: jaawasth
 ms.author: jaawasth
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc27fd67a3801815464ecd37fea567c02dee6e49
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182434"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719042"
 ---
-# <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Azure nagyméretű példányok magas rendelkezésre állása SAP on RHEL
+# <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Az Azure Large Instances magas rendelkezésre állása az SAP on RHEL-hez
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a pacemaker-fürtöt a RHEL 7,6-ben egy SAP HANA adatbázis feladatátvételének automatizálásához. A jelen útmutató lépéseinek elvégzéséhez ismernie kell a Linux, a SAP HANA és a pacemaker megfelelő ismeretét.
+> [!NOTE]
+> Ez a cikk a feketelista kifejezésre mutató hivatkozásokat *tartalmaz,* amely a Microsoft által már nem használt kifejezés. Ha ezt a kifejezést eltávolítjuk a szoftverből, eltávolítjuk a cikkből.
 
-A következő táblázat tartalmazza az ebben a cikkben használt állomásnevek nevét. A cikkben szereplő kódrészletek megjelenítik a futtatandó parancsokat, valamint a parancsok kimenetét. Ügyeljen arra, hogy az egyes parancsok melyik csomópontra legyenek hivatkozva.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Pacemaker-fürtöt az RHEL 7.6-ban egy adatbázis-SAP HANA automatizálásához. Az útmutató lépéseit a Linux, a SAP HANA és a Pacemaker ismerete szükséges.
+
+Az alábbi táblázat a cikkben használt állomásneveket tartalmazza. A cikkben található kódblokkok a futtatandó parancsokat, valamint a parancsok kimenetét mutatják. Figyelje meg, hogy az egyes parancsok melyik csomópontra hivatkoznak.
 
 | Típus | Állomásnév | Csomópont|
 |-------|-------------|------|
 |Elsődleges gazdagép|`sollabdsm35`|1. csomópont|
 |Másodlagos gazdagép|`sollabdsm36`|2. csomópont|
 
-## <a name="configure-your-pacemaker-cluster"></a>A pacemaker-fürt konfigurálása
+## <a name="configure-your-pacemaker-cluster"></a>A Pacemaker-fürt konfigurálása
 
 
-A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere lehetőséget a csomópontok közötti megbízhatósági kapcsolat létrehozásához.
+Mielőtt elkezdené a fürt konfigurálását, állítsa be az SSH-kulcscserét a csomópontok közötti megbízhatósági kapcsolat létrehozására.
 
-1. A következő parancsokkal azonos módon hozható létre `/etc/hosts` mindkét csomóponton.
+1. A következő parancsokkal hozzon létre azonos adatokat `/etc/hosts` mindkét csomóponton.
 
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
@@ -56,13 +59,13 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
     ```
 
 2.  Hozza létre és cserélje le az SSH-kulcsokat.
-    1. Ssh-kulcsok generálása.
+    1. SSH-kulcsok létrehozása.
 
        ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
        ```
-    2. Másolja a kulcsokat a többi gazdagépre a jelszóval nem rendelkező SSH-hoz.
+    2. Másolja a kulcsokat a többi gazdagépre a jelszó nélküli SSH-hoz.
     
        ```
        [root@sollabdsm35 ~]# ssh-copy-id -i /root/.ssh/id_rsa.pub sollabdsm35
@@ -71,7 +74,7 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
        [root@sollabdsm36 ~]# ssh-copy-id -i /root/.ssh/id_rsa.pub sollabdsm36
        ```
 
-3.  Tiltsa le a SELinux mindkét csomóponton.
+3.  Tiltsa le a selinuxot mindkét csomóponton.
     ```
     [root@sollabdsm35 ~]# vi /etc/selinux/config
 
@@ -89,7 +92,7 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
 
     ```  
 
-4. Indítsa újra a kiszolgálókat, majd az alábbi parancs használatával ellenőrizze a SELinux állapotát.
+4. Indítsa újra a kiszolgálókat, majd a következő paranccsal ellenőrizze a selinux állapotát.
     ```
     [root@sollabdsm35 ~]# sestatus
 
@@ -102,8 +105,8 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
     SELinux status: disabled
     ```
 
-5. Konfigurálja az NTP (Network Time Protocol) protokollt. A fürtcsomópontok időtartamának és időzónájának egyeznie kell. A `chrony.conf` fájl tartalmának megnyitásához és ellenőrzéséhez használja a következő parancsot.
-    1. A konfigurációs fájlba a következő tartalmakat kell hozzáadni. Módosítsa a tényleges értékeket a környezetének megfelelően.
+5. Konfigurálja az NTP-t (Network Time Protocol). Mindkét fürtcsomópont időzónának egyeznie kell. Az alábbi paranccsal nyissa meg és `chrony.conf` ellenőrizze a fájl tartalmát.
+    1. Az alábbi tartalmakat kell hozzáadni a konfigurációs fájlhoz. Módosítsa a tényleges értékeket a környezetnek megfelelő értékekkel.
         ```
         vi /etc/chrony.conf
     
@@ -148,9 +151,9 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
         ^- tick.srs1.ntfo.org 3 10 177 801 -3429us[-3427us] +/- 100ms
         ```
 
-6. A System frissítése
-    1. Először telepítse a rendszer legújabb frissítéseit a SBD-eszköz telepítése előtt.
-    1. Ha nem szeretné, hogy a rendszer teljes frissítése legyen, még akkor is, ha az ajánlott, legalább a következő csomagokat kell frissítenie.
+6. A rendszer frissítése
+    1. Először telepítse a legújabb frissítéseket a rendszeren, mielőtt elkezdené az SBD-eszköz telepítését.
+    1. Ha nem szeretné a rendszer teljes frissítését, még ha javasolt is, legalább az alábbi csomagokat frissítse.
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
         1. `iscsi-initiator-utils`
@@ -161,7 +164,7 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
         ```
  
 
-7. Telepítse a SAP HANA és a RHEL-HA adattárakat.
+7. Telepítse a SAP HANA és RHEL-HA adattárakat.
 
     ```
     subscription-manager repos –list
@@ -173,18 +176,18 @@ A fürt konfigurálásának megkezdése előtt állítsa be az SSH-kulcscsere le
     ```
       
 
-8. Telepítse a pacemaker, a SBD, a OpenIPMI, a ipmitools és a fencing_sbd eszközöket az összes csomópontra.
+8. Telepítse a Pacemaker, SBD, OpenIPMI, ipmitools és fencing_sbd összes csomópontra.
 
     ``` 
     yum install pcs sbd fence-agent-sbd.x86_64 OpenIPMI
     ipmitools
     ```
 
-  ## <a name="configure-watchdog"></a>A watchdog konfigurálása
+  ## <a name="configure-watchdog"></a>A Watchdog konfigurálása
 
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a szakasz ugyanazokat a két gazdagépet használja, `sollabdsm35` és a `sollabdsm36` cikk elején hivatkozik rá.
+Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a Watchdogot. Ebben a szakaszban ugyanazt a két gazdagépet (és) használjuk, amelyekre a cikk `sollabdsm35` `sollabdsm36` elején hivatkozunk.
 
-1. Győződjön meg arról, hogy a watchdog démon nem fut semmilyen rendszeren.
+1. Győződjön meg arról, hogy a watchdog démon nem fut egyik rendszeren sem.
     ```
     [root@sollabdsm35 ~]# systemctl disable watchdog
     [root@sollabdsm36 ~]# systemctl disable watchdog
@@ -205,8 +208,8 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
 
     ```
 
-2. A telepítés során telepítendő alapértelmezett Linux watchdog a iTCO watchdog, amelyet az FKR és a HPE SDFlex Systems nem támogat. Ezért ezt a watchdogot le kell tiltani.
-    1. Helytelen watchdog van telepítve és betöltve a rendszeren:
+2. Az alapértelmezett Linux Watchdog, amely a telepítés során lesz telepítve, az az iTCO watchdog, amelyet az UCS és a HPE SDFlex rendszerek nem támogatnak. Ezért ezt a figyelőőrt le kell tiltani.
+    1. Nem a megfelelő watchdog van telepítve és betöltve a rendszeren:
        ```
    
        sollabdsm35:~ # lsmod |grep iTCO
@@ -216,14 +219,14 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
        iTCO_vendor_support 13718 1 iTCO_wdt
        ```
 
-    2. Távolítsa el a helytelen illesztőprogramot a környezetből:
+    2. A nem megfelelő illesztőprogram eltávolítása a környezetből:
        ```  
        sollabdsm35:~ # modprobe -r iTCO_wdt iTCO_vendor_support
    
        sollabdsm36:~ # modprobe -r iTCO_wdt iTCO_vendor_support
        ```  
         
-    3. Annak biztosítása érdekében, hogy az illesztőprogram ne legyen betöltve a következő rendszerindításkor, blocklisted kell lennie. A iTCO modulok Blocklist adja hozzá a következőt a fájl végéhez `50-blacklist.conf` :
+    3. Annak érdekében, hogy az illesztőprogram ne legyen betöltve a következő rendszerindítás során, az illesztőprogramnak blokkolva kell lennie. Az iTCO-modulok listára való felvételéhez adja hozzá a következőket a fájl `50-blacklist.conf` végéhez:
        ```
    
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
@@ -240,7 +243,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
        /etc/modprobe.d/50-blacklist.conf
        ```  
 
-    5. Ellenőrizze, hogy elindult-e a IPMI szolgáltatás. Fontos, hogy a IPMI időzítője ne fusson. Az időzítő kezelése a SBD pacemaker szolgáltatásból történik.
+    5. Ellenőrizze, hogy az ipmi szolgáltatás elindult-e. Fontos, hogy az IPMI-időzítő ne fut. Az időzítő kezelése az SBD Pacemaker szolgáltatásból történik.
        ```
        sollabdsm35:~ # ipmitool mc watchdog get
    
@@ -260,7 +263,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
    
        ``` 
 
-3. Alapértelmezés szerint a rendszer nem hozza létre a szükséges eszközt a/dev/watchdog.
+3. Alapértelmezés szerint a szükséges eszköz a /dev/watchdog nem jön létre.
 
     ```
     No watchdog device was created
@@ -270,7 +273,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
     ls: cannot access /dev/watchdog: No such file or directory
     ```
 
-4. Konfigurálja a IPMI watchdogot.
+4. Konfigurálja az IPMI watchdogot.
 
     ``` 
     sollabdsm35:~ # mv /etc/sysconfig/ipmi /etc/sysconfig/ipmi.org
@@ -286,12 +289,12 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
     IPMI_POWERCYCLE=no
     IPMI_IMB=no
     ```
-5. Másolja a watchdog konfigurációs fájlját a másodlagosra.
+5. Másolja a watchdog konfigurációs fájlt a másodlagosba.
     ```
     sollabdsm35:~ # scp /etc/sysconfig/ipmi
     sollabdsm36:/etc/sysconfig/ipmi
     ```
-6.  Engedélyezze és indítsa el a IPMI szolgáltatást.
+6.  Engedélyezze és indítsa el az ipmi szolgáltatást.
     ```
     [root@sollabdsm35 ~]# systemctl enable ipmi
 
@@ -309,8 +312,8 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
 
     [root@sollabdsm36 ~]# systemctl start ipmi
     ```
-     Most a IPMI szolgáltatás elindult, és az eszköz/dev/watchdog jön létre – az időzítő azonban továbbra is leáll. Később a SBD fogja kezelni a watchdog alaphelyzetbe állítását, és engedélyezi a IPMI időzítőt.
-7.  Győződjön meg arról, hogy a/dev/watchdog létezik, de nincs használatban.
+     Most, hogy az IPMI szolgáltatás elindult, és létrejött a /dev/watchdog eszköz – az időzítő azonban továbbra is le van állítva. Később az SBD felügyeli a watchdog alaphelyzetbe állítását, és engedélyezi az IPMI-időzítőt.
+7.  Ellenőrizze, hogy a /dev/watchdog létezik-e, de nincs-e használatban.
     ```
     [root@sollabdsm35 ~]# ipmitool mc watchdog get
     Watchdog Timer Use: SMS/OS (0x04)
@@ -327,12 +330,12 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a watchdogot. Ez a sza
     ```
 
 ## <a name="sbd-configuration"></a>SBD-konfiguráció
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ugyanazokat a két gazdagépet használja, `sollabdsm35` és a `sollabdsm36` cikk elején hivatkozik rá.
+Ebben a szakaszban az SBD konfigurálásán ismerkedik meg. Ebben a szakaszban ugyanazt a két gazdagépet (és) használjuk, amelyekre a cikk elején `sollabdsm35` `sollabdsm36` hivatkozunk.
 
-1.  Győződjön meg arról, hogy az iSCSI-vagy az FC-lemez mindkét csomóponton látható. Ez a példa egy FC-alapú SBD-eszközt használ. A SBD-kerítéssel kapcsolatos további információkért tekintse meg a [dokumentációt](http://www.linux-ha.org/wiki/SBD_Fencing).
-2.  A LUN-AZONOSÍTÓnak azonosnak kell lennie az összes csomóponton.
+1.  Győződjön meg arról, hogy az iSCSI- vagy FC-lemez mindkét csomóponton látható. Ez a példa FC-alapú SBD-eszközt használ. Az SBD-elkerítésről a [referenciadokumentációban talál további információt.](http://www.linux-ha.org/wiki/SBD_Fencing)
+2.  A LUN-ID azonosítónak minden csomóponton azonosnak kell lennie.
   
-3.  A SBD-eszköz többutas állapotának megkeresése.
+3.  Ellenőrizze az sbd eszköz többpathos állapotát.
     ```
     multipath -ll
     3600a098038304179392b4d6c6e2f4b62 dm-5 NETAPP ,LUN C-Mode
@@ -346,7 +349,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ug
     `- 10:0:3:2 sdl 8:176 active ready running
     ```
 
-4.  Hozza létre a SBD-lemezeket, és állítsa be a fürt primitív kerítését. Ezt a lépést az első csomóponton kell végrehajtani.
+4.  Az SBD-lemezek létrehozása és a fürt primitív elkerítésének beállítása. Ezt a lépést az első csomóponton kell végrehajtani.
     ```
     sbd -d /dev/mapper/3600a098038304179392b4d6c6e2f4b62 -4 20 -1 10 create 
 
@@ -359,7 +362,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ug
     Device /dev/mapper/3600a098038304179392b4d6c6e2f4b62 is initialized.
     ```
 
-5.  Másolja a SBD-konfigurációt a Csomópont2-be.
+5.  Másolja az SBD-konfigurációt a node2 csomópontra.
     ```
     vi /etc/sysconfig/sbd
 
@@ -376,7 +379,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ug
     scp /etc/sysconfig/sbd node2:/etc/sysconfig/sbd
     ```
 
-6.  Győződjön meg arról, hogy a SBD lemez mindkét csomópontról látható.
+6.  Ellenőrizze, hogy az SBD-lemez látható-e mindkét csomóponton.
     ```
     sbd -d /dev/mapper/3600a098038304179392b4d6c6e2f4b62 dump
 
@@ -396,7 +399,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ug
     ==Header on disk /dev/mapper/3600a098038304179392b4d6c6e2f4b62 is dumped
     ```
 
-7.  Adja hozzá a SBD eszközt a SBD konfigurációs fájlhoz.
+7.  Adja hozzá az SBD-eszközt az SBD konfigurációs fájlhoz.
 
     ```
     \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
@@ -415,19 +418,19 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SBD. Ez a szakasz ug
     ```
 
 ## <a name="cluster-initialization"></a>Fürt inicializálása
-Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két gazdagépet használja, `sollabdsm35` és a `sollabdsm36` cikk elején hivatkozik rá.
+Ebben a szakaszban inicializálja a fürtöt. Ebben a szakaszban ugyanazt a két gazdagépet (és) használjuk, amelyekre a cikk `sollabdsm35` `sollabdsm36` elején hivatkozunk.
 
-1.  A fürt felhasználói jelszavának (minden csomópont) beállítása.
+1.  Állítsa be a fürt felhasználói jelszavát (az összes csomópontot).
     ```
     passwd hacluster
     ```
-2.  SZÁMÍTÓGÉPEK elindítása minden rendszeren.
+2.  Indítsa el a PCS-t minden rendszeren.
     ```
     systemctl enable pcsd
     ```
   
 
-3.  Állítsa le a tűzfalat, és tiltsa le (az összes csomóponton).
+3.  Állítsa le a tűzfalat, és tiltsa le (minden csomóponton).
     ```
     systemctl disable firewalld 
 
@@ -443,7 +446,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
   
   
 
-5.  A fürt hitelesítését csak a csomópont1 futtassa.
+5.  A fürthitelesítést csak a node1 csomópontból futtassa.
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
@@ -466,7 +469,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     ```
   
 
-7.  Keresse meg a fürt állapotát.
+7.  Ellenőrizze a fürt állapotát.
 
     ```
     pcs cluster status
@@ -504,24 +507,24 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     pcsd: active/disabled
     ```
 
-8. Ha az egyik csomópont nem csatlakozik a fürthöz, ellenőrizze, hogy a tűzfal továbbra is fut-e.
+8. Ha egy csomópont nem csatlakozik a fürthöz, ellenőrizze, hogy fut-e még a tűzfal.
 
   
 
-9. A SBD-eszköz létrehozása és engedélyezése
+9. Az SBD-eszköz létrehozása és engedélyezése
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
 
-10. Állítsa le a fürtöt a fürtszolgáltatások újraindításával (az összes csomóponton).
+10. Állítsa le a fürtöt, és indítsa újra a fürtszolgáltatást (minden csomóponton).
 
     ```
     pcs cluster stop --all
     ```
 
 
-11. Indítsa újra a fürtszolgáltatásokat (az összes csomóponton).
+11. Indítsa újra a fürtszolgáltatást (minden csomóponton).
 
     ```
     systemctl stop pcsd
@@ -533,7 +536,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     systemctl start pcsd
     ```
 
-12. A Corosync el kell indítania a SBD szolgáltatást.
+12. A Corosyncnek el kell kezdenie az SBD-szolgáltatást.
 
     ```
     systemctl status sbd
@@ -546,7 +549,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     Active: active (running) since Wed 2021-01-20 01:43:41 EST; 9min ago
     ```
 
-13. Indítsa újra a fürtöt (ha nem indul el automatikusan a pcsd).
+13. Indítsa újra a fürtöt (ha nem indul el automatikusan a pcsd-ről).
 
     ```
     pcs cluster start –-all
@@ -561,7 +564,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     ```
   
 
-14. Stonith beállításainak engedélyezése.
+14. Engedélyezze a Stonith-beállításokat.
     ```
     pcs stonith enable SBD --device=/dev/mapper/3600a098038304179392b4d6c6e2f4d65
     pcs property set stonith-watchdog-timeout=20
@@ -569,7 +572,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     ```
   
 
-15. Győződjön meg arról, hogy az új fürt állapota most egy erőforrás.
+15. Ellenőrizze az új fürt állapotát egy erőforrással.
     ```
     pcs status
 
@@ -609,7 +612,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     ```
   
 
-16. Most a IPMI időzítőnek futnia kell, és a/dev/watchdog eszközt a SBD-nek kell megnyitnia.
+16. Most le kell futnia az IPMI-időzítőnek, és az sbd-nek meg kell nyitnia a /dev/watchdog eszközt.
 
     ```
     ipmitool mc watchdog get
@@ -635,7 +638,7 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     sbd 117569 root 5w CHR 10,130 0t0 323812 /dev/watchdog
     ```
 
-17. Keresse meg a SBD állapotát.
+17. Ellenőrizze az SBD állapotát.
 
     ```
     sbd -d /dev/mapper/3600a098038304445693f4c467446447a list
@@ -646,9 +649,9 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
     ```
   
 
-18. Tesztelje a SBD-kerítést a kernel összeomlásával.
+18. Tesztelje az SBD-elkerítést a kernel összeomlása által.
 
-    * A kernel összeomlásának kiváltása.
+    * Aktiválja a kernel összeomlását.
 
       ```
       echo c > /proc/sysrq-trigger
@@ -657,34 +660,34 @@ Ebben a szakaszban inicializálja a fürtöt. Ez a szakasz ugyanazokat a két ga
       set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
       ```
   
-    * A második teszt futtatása a csomópontok számítógép-parancsok használatával történő kerítése.
+    * A futtatás második tesztje egy csomópont körülkerítése PCS-parancsokkal.
 
       ```
       pcs stonith fence sollabdsm36
       ```
   
 
-19. A SAP HANA-fürtözés további részében a következő beállítással tilthatja le a STONITH:
+19. A fürtözés további SAP HANA letilthatja a STONITH-t a következő beállítással:
 
-   * számítógépek tulajdonság beállítása `stonith-enabled=false`
-   * Ezt a paramétert igaz értékre kell beállítani a produktív használathoz. Ha a paraméter értéke nem True (igaz), a fürt nem lesz támogatott.
-   * számítógépek tulajdonság beállítása `stonith-enabled=true`
+   * pcs tulajdonságkészlet `stonith-enabled=false`
+   * A produktív használathoz ezt a paramétert true (igaz) értékre kell állítani. Ha ez a paraméter nem true (igaz) értékre van állítva, a fürt nem lesz támogatva.
+   * pcs tulajdonságkészlet `stonith-enabled=true`
 
 ## <a name="hana-integration-into-the-cluster"></a>HANA-integráció a fürtbe
 
-Ebben a szakaszban a HANA-t integrálja a fürtbe. Ez a szakasz ugyanazokat a két gazdagépet használja, `sollabdsm35` és a `sollabdsm36` cikk elején hivatkozik rá.
+Ebben a szakaszban a HANA-t integrálja a fürtbe. Ebben a szakaszban ugyanazt a két gazdagépet (és) használjuk, amelyekre a cikk elején `sollabdsm35` `sollabdsm36` hivatkozunk.
 
-A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetőség egy költségtakarékos megoldás, amely a másodlagos rendszer használatával futtathatja a QAS rendszerét. Ezt a metódust nem javasoljuk, mert nem hagy a rendszertől a fürt szoftverén, az operációs rendszeren vagy a HANA-on lévő frissítések tesztelését, és a konfigurációs frissítések a PRD rendszer nem tervezett leállásához vezethetnek. Továbbá, ha a PRD rendszer aktiválása szükséges a másodlagos rendszeren, a QAS le kell állítani a másodlagos csomóponton. A második lehetőség a QAS rendszer telepítése egy fürtön, és egy második fürt használata a PRD. Ez a beállítás lehetővé teszi az összes összetevő tesztelését az éles környezetbe helyezés előtt. Ez a cikk bemutatja, hogyan konfigurálhatja a második lehetőséget.
+Két lehetőség van a HANA integrálására. Az első lehetőség egy költségoptimalált megoldás, amelyben a másodlagos rendszert használhatja a QAS-rendszer futtatásához. Ez a módszer nem ajánlott, mivel nem hagy rendszert a fürtszoftver, az operációs rendszer vagy a HANA frissítésének tesztelésére, és a konfigurációs frissítések a PRD-rendszer nem tervezett leállását is vezethetik. Emellett ha a PRD-rendszert aktiválni kell a másodlagos rendszeren, a QAS-t le kell kapcsolni a másodlagos csomóponton. A második lehetőség a QAS rendszer telepítése az egyik fürtre, és egy második fürt használata a prD-hez. Ez a beállítás azt is lehetővé teszi, hogy tesztelje az összes összetevőt, mielőtt azok éles környezetbe kerülnek. Ez a cikk bemutatja, hogyan konfigurálhatja a második beállítást.
 
 
-* Ez a folyamat a RHEL leírásának összeállítása a következő oldalon:
+* Ez a folyamat az RHEL leírásának buildszáma a lapon:
 
   * https://access.redhat.com/articles/3004101
 
- ### <a name="steps-to-follow-to-configure-hsr"></a>A HSR konfigurálásának lépései
+ ### <a name="steps-to-follow-to-configure-hsr"></a>A HSR konfigurálás lépései
 
-1.  Ezek a csomópont1 végrehajtandó műveletek (elsődleges).
-    1. Győződjön meg arról, hogy az adatbázis-naplózási mód normál értékre van beállítva.
+1.  Ezeket a műveleteket kell végrehajtani a node1 (elsődleges) csomóponton.
+    1. Győződjön meg arról, hogy az adatbázis napló üzemmódja normálra van állítva.
 
        ```  
    
@@ -699,7 +702,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
    
        "normal"
        ```
-    2. SAP HANA a rendszer replikálása csak a kezdeti biztonsági mentés végrehajtása után fog működni. A következő parancs létrehoz egy kezdeti biztonsági másolatot a `/tmp/` címtárban. Válasszon ki egy megfelelő biztonsági mentési állományrendszert az adatbázishoz. 
+    2. SAP HANA rendszerreplikáció csak a kezdeti biztonsági mentés után fog működni. A következő parancs létrehoz egy kezdeti biztonsági mentést a `/tmp/` könyvtárban. Válasszon ki egy megfelelő biztonsági mentési fájlrendszert az adatbázishoz. 
        ```
        * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
        ('/tmp/backup')"
@@ -721,7 +724,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        ```
     
 
-    3. Az adatbázis összes adatbázis-tárolójának biztonsági mentése.
+    3. Az adatbázis összes adatbázistárolója biztonsági mentése.
        ```
    
        * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA USING
@@ -734,7 +737,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
    
        ```
 
-    4. Engedélyezze a HSR folyamatot a forrásoldali rendszeren.
+    4. Engedélyezze a HSR-folyamatot a forrásrendszeren.
        ```
        hdbnsutil -sr_enable --name=DC1
 
@@ -745,7 +748,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        done.
        ```
 
-    5. Az elsődlegesrendszer állapotának megkeresése.
+    5. Ellenőrizze az elsődleges rendszer állapotát.
        ```
        hdbnsutil -sr_state
     
@@ -793,7 +796,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        done.
        ```
 
- 2. Ezek a Csomópont2 végrehajtandó műveletek (másodlagos).
+ 2. Ezeket a műveleteket kell végrehajtani a node2 (másodlagos) csomóponton.
      1. Állítsa le az adatbázist.
        ```
        su – hr2adm
@@ -802,7 +805,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        ```
     
 
-     2. Csak SAP HANA 2.0 esetében másolja a SAP HANA rendszer `PKI SSFS_HR2.KEY` és a `SSFS_HR2.DAT` fájlok elsődleges csomópontról másodlagos csomópontra.
+     2. Csak az SAP HANA2.0 esetén másolja a SAP HANA rendszerből és fájlokból az elsődleges csomópontról `PKI SSFS_HR2.KEY` `SSFS_HR2.DAT` a másodlagos csomópontra.
        ```
        scp
        root@node1:/usr/sap/HR2/SYS/global/security/rsecssfs/key/SSFS_HR2.KEY
@@ -815,7 +818,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        /usr/sap/HR2/SYS/global/security/rsecssfs/data/SSFS_HR2.DAT
        ```
 
-     3. A másodlagos engedélyezése replikációs helyként.
+     3. Engedélyezze a másodlagos replikációs helyet.
        ``` 
        su - hr2adm
    
@@ -843,7 +846,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        sapcontrol -nr 00 -function StartSystem 
        ```
     
-     5. Keresse meg az adatbázis állapotát.
+     5. Ellenőrizze az adatbázis állapotát.
        ```
        hdbnsutil -sr_state
    
@@ -916,7 +919,7 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
        ~~~~~~~~~~~~~~
        ```
 
-3. További információkat is megtudhat a replikálás állapotáról:
+3. A replikációs állapottal kapcsolatos további információk is lekértek:
     ```
     ~~~~~
     hr2adm@node1:/usr/sap/HR2/HDB00> python
@@ -954,64 +957,64 @@ A HANA integrálására két lehetőség áll rendelkezésre. Az első lehetős�
     ```
   
 
-#### <a name="log-replication-mode-description"></a>Naplózási replikálási mód leírása
+#### <a name="log-replication-mode-description"></a>Naplóreplikációs mód leírása
 
-A naplózási replikációs móddal kapcsolatos további információkért tekintse meg a [hivatalos SAP dokumentációját](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html).
+A naplóreplikációs móddal kapcsolatos további információkért tekintse meg a hivatalos [SAP-dokumentációt.](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html)
   
 
-#### <a name="network-setup-for-hana-system-replication"></a>A HANA rendszer replikálásának hálózati beállítása
+#### <a name="network-setup-for-hana-system-replication"></a>Hálózat beállítása a HANA rendszerreplikációhoz
 
 
-Annak biztosítása érdekében, hogy a replikálási forgalom a megfelelő VLAN-t használja a replikációhoz, megfelelően kell konfigurálni a-ben `global.ini` . Ha kihagyja ezt a lépést, a HANA a replikáláshoz a hozzáférési VLAN-t fogja használni, ami esetleg nemkívánatos lehet.
+Annak biztosításához, hogy a replikációs forgalom a megfelelő VLAN-t használja a replikációhoz, megfelelően kell konfigurálni a `global.ini` fájlban. Ha kihagyja ezt a lépést, a HANA a VLAN hozzáférési VLAN-t fogja használni a replikációhoz, ami lehet, hogy nem szükséges.
 
 
-Az alábbi példák az állomásnév-feloldási konfigurációt mutatják be a rendszer replikálásához egy másodlagos helyre. Három különböző hálózat azonosítható:
+Az alábbi példák a másodlagos helyre történő rendszerreplikáció gazdagépnév-feloldási konfigurációját mutatják be. Három különböző hálózat azonosítható:
 
-* Nyilvános hálózat 10.0.1-tartományhoz tartozó címmel. *
+* Nyilvános hálózat, 10.0.1-es tartományú címekkel.
 
-* Hálózat belső SAP HANA kommunikációhoz a gazdagépek között az egyes helyeken: 192.168.1. *
+* Belső hálózati SAP HANA a gazdagépek között az egyes telephelyek között: 192.168.1.*
 
-* Dedikált hálózat rendszer-replikáláshoz: 10.5.1. *
+* Dedikált hálózat a rendszerreplikációhoz: 10.5.1.*
 
-Az első példában a `[system_replication_communication]listeninterface` paraméter be van állítva, és a `.global` rendszer csak a szomszédos replikálási hely gazdagépeit adja meg.
+Az első példában a paraméter értéke , és csak a szomszédos replikálási hely gazdagépe `[system_replication_communication]listeninterface` `.global` van megadva.
 
-A következő példában a `[system_replication_communication]listeninterface` paraméter be van állítva, és a `.internal` mindkét hely összes gazdagépe meg van adva.
-
-  
-
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>Forrás SAP AG SAP HANA óra hálózatkezelés
+A következő példában a paraméter értéke , és `[system_replication_communication]listeninterface` `.internal` mindkét hely összes gazdagépe meg van adva.
 
   
 
-A rendszerreplikációhoz nincs szükség a fájl szerkesztésére `/etc/hosts` , a belső ("virtuális") állomásneveket a fájlban lévő IP-címekre kell leképezni, `global.ini` hogy dedikált hálózatot hozzanak létre a rendszer-replikáláshoz. Ennek szintaxisa a következő:
+### <a name="source-sap-ag-sap-hana-hrs-networking"></a>Forrás SAP AG SAP HANA HRS-hálózat
+
+  
+
+Rendszerreplikáció esetén nem szükséges szerkeszteni a fájlt, a belső (virtuális) gazdagépneveket a fájlban lévő IP-címekre kell leképezni egy dedikált hálózat létrehozásához `/etc/hosts` `global.ini` a rendszerreplikációhoz. Ennek szintaxisa a következő:
 
 global.ini
 
 [system_replication_hostname_resolution]
 
-<IP-address_site>=<belső gazdagép – name_site>
+<ip-address_site>=<belső gazdagép-name_site>
 
 
-## <a name="configure-sap-hana-in-a-pacemaker-cluster"></a>SAP HANA konfigurálása a pacemaker-fürtben
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a SAP HANAt egy pacemaker-fürtben. Ez a szakasz ugyanazokat a két gazdagépet használja, `sollabdsm35` és a `sollabdsm36` cikk elején hivatkozik rá.
+## <a name="configure-sap-hana-in-a-pacemaker-cluster"></a>A SAP HANA pacemaker-fürtben való konfigurálás
+Ebben a szakaszban megtudhatja, hogyan konfigurálhatja a SAP HANA egy Pacemaker-fürtben. Ebben a szakaszban ugyanazt a két gazdagépet (és) használjuk, amelyekre a cikk `sollabdsm35` `sollabdsm36` elején hivatkozunk.
 
-Győződjön meg arról, hogy teljesítette a következő előfeltételeket:  
+Győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:  
 
-* A pacemaker-fürt a dokumentációnak megfelelően van konfigurálva, és megfelelő és működő kerítéssel rendelkezik
+* A Pacemaker-fürt a dokumentációnak megfelelően van konfigurálva, és megfelelő és működő elkerítési eljárásokkal rendelkezik
 
-* SAP HANA indítás a rendszerindításkor beállítás le van tiltva az összes fürtcsomóponton, mivel az Indítás és a leállítás a fürt által lesz kezelve.
+* SAP HANA rendszerindításkor le van tiltva az összes fürtcsomóponton, mivel az indítást és a leállítást a fürt kezeli
 
-* SAP HANA a rendszerreplikáció és az átvétel az SAP-eszközök használatával, megfelelően működik a fürtcsomópontok között
+* SAP HANA SAP-eszközök használatával történő rendszerreplikáció és -feladatátvétel megfelelően működik a fürtcsomópontok között
 
-* SAP HANA olyan figyelési fiókot tartalmaz, amelyet a fürt mindkét fürtcsomóponton használhat.
+* SAP HANA a fürt által mindkét fürtcsomópontról használható figyelési fiókot tartalmaz
 
-* Mindkét csomópont a "magas rendelkezésre állás" és a "RHEL for SAP HANA" (RHEL 6, RHEL 7) csatornára van előfizetve.
+* Mindkét csomópont elő van fizetve a "Magas rendelkezésre állás" és a "RHEL for SAP HANA" (RHEL 6,RHEL 7) csatornákra
 
   
 
-* Általánosságban elmondható, hogy csak a csomópontból futtassa az összes számítógép parancsot, mert a CIB automatikusan frissül a számítógépek rendszerhéjból.
+* Általánosságban elmondható, hogy az összes pcs-parancsot csak a csomópontról hajtsa végre, mert a CIB automatikusan frissül a pcs-rendszerhéjból.
 
-* [További információ a kvórum házirendről](https://access.redhat.com/solutions/645843)
+* [További információ a kvórum szabályzatról](https://access.redhat.com/solutions/645843)
 
 ### <a name="steps-to-configure"></a>A konfigurálás lépései 
 1. Számítógépek konfigurálása.
@@ -1020,7 +1023,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
     [root@node1 ~]# pcs resource defaults resource-stickiness=1000
     [root@node1 ~]# pcs resource defaults migration-threshold=5000
     ```
-2.  Konfigurálja a Corosync.
+2.  A corosync konfigurálása.
     ```
     https://access.redhat.com/solutions/1293523 --> quorum information RHEL7
 
@@ -1087,7 +1090,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
     ```
   
 
-1.  Klónozott SAPHanaTopology-erőforrás létrehozása.
+1.  Klónozott SAPHanaTopology erőforrás létrehozása.
     ```
     pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1 interleave=true
     SAPHanaTopology resource is gathering status and configuration of SAP
@@ -1248,7 +1251,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
     + primary-SAPHana_HR2_00 : 100
     ```
 
-6.  Hozzon létre egy virtuális IP-cím erőforrást.
+6.  Virtuális IP-cím erőforrás létrehozása.
 
     ```
     Cluster will contain Virtual IP address in order to reach the Primary instance of SAP HANA. Below is example command to create IPaddr2  resource with IP 10.7.0.84/24
@@ -1268,7 +1271,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
         stop interval=0s timeout=20s (vip_HR2_00-stop-interval-0s)
     ```
 
-7.  Megkötések létrehozása.
+7.  Korlátozások létrehozása.
 
     ```
     For correct operation we need to ensure that SAPHanaTopology resources are started before starting the SAPHana resources and also that  the virtual IP address is present on the node where the Primary resource of SAPHana is running. To achieve this, the following 2    constraints need to be created.
@@ -1277,16 +1280,16 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
     pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
     ```
 
-###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>SAPHana-erőforrás manuális mozgatásának tesztelése egy másik csomópontra
+###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>Az SAPHana-erőforrás másik csomópontra való manuális áthelyezésének tesztelése
 
-#### <a name="sap-hana-takeover-by-cluster"></a>(SAP Hana-átvétel fürt szerint)
+#### <a name="sap-hana-takeover-by-cluster"></a>(SAP Hana-feladatátvétel fürtönként)
 
 
-Ha ki szeretné próbálni a SAPHana-erőforrás áthelyezését az egyik csomópontról a másikra, használja az alábbi parancsot. Vegye figyelembe, hogy a beállítás `--primary` nem használható a következő parancs futtatásakor, mert a SAPHana-erőforrás belsőleg működik.
+Az SAPHana erőforrás egyik csomópontról egy másikra való áthelyezésének tesztelésére használja az alábbi parancsot. Vegye figyelembe, hogy az SAPHana erőforrás belső működése miatt a következő parancs futtatásakor ne `--primary` használja a kapcsolót.
 ```pcs resource move SAPHana_HR2_00-primary```
 
-Az egyes számítógépek erőforrás-áthelyezési parancs meghívása után a fürt létrehozza a hely megkötéseit az erőforrás áthelyezésének eléréséhez. Ezeket a korlátozásokat el kell távolítani, hogy a jövőben engedélyezze az automatikus feladatátvételt.
-A következő parancs használatával távolíthatja el őket.
+Az egyes pcs erőforrás-áthelyezési parancsok meghívása után a fürt helykorlátozásokat hoz létre az erőforrás áthelyezéséhez. Ezeket a korlátozásokat el kell távolítani, hogy a jövőben lehetővé tegye az automatikus feladatátvételt.
+Az eltávolításukhoz használhatja a következő parancsot.
 ```
 pcs resource clear SAPHana_HR2_00-primary
 crm_mon -A1
@@ -1317,9 +1320,9 @@ Node Attributes:
 ```
   
 
-* Jelentkezzen be a HANA-ba ellenőrzésként.
+* Jelentkezzen be a HANA-hoz ellenőrzésként.
 
-  * lefokozott gazdagép:
+  * lefokozásos gazdagép:
 
     ```
     hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
@@ -1354,9 +1357,9 @@ Node Attributes:
     ```
   
 
-A kapcsolóval `AUTOMATED_REGISTER=false` nem válthat vissza.
+A `AUTOMATED_REGISTER=false` kapcsolóval nem válthat oda-vissza.
 
-Ha a beállítás értéke false (hamis), akkor újra regisztrálnia kell a csomópontot:
+Ha ez a beállítás false (hamis) értéket ad meg, akkor újra regisztrálnia kell a csomópontot:
 
   
 ```
@@ -1364,9 +1367,9 @@ hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=
 ```
   
 
-Most a Csomópont2, amely az elsődleges, a másodlagos gazdagépként működik.
+Most a node2, amely az elsődleges volt, másodlagos gazdagépként működik.
 
-Ha a lefokozott gazdagép regisztrációját automatizálni szeretné, érdemes lehet True értékre beállítani ezt a beállítást.
+A lefokozásos gazdagép regisztrációját automatizálhatja, ha ezt a beállítást true (igaz) értékre automatizálja.
 
   
 ```

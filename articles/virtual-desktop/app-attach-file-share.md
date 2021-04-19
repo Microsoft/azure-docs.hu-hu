@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366402"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717656"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>Fájlmegosztás beállítása AZ MSIX-alkalmazás csatolása számára
 
@@ -57,54 +57,54 @@ Az MSIX-alkalmazás csatolási teljesítményének optimalizálása érdekében 
 
 ## <a name="how-to-set-up-the-file-share"></a>A fájlmegosztás beállítása
 
-Az MSIX-alkalmazás csatolási fájlmegosztásának telepítési folyamata nagyrészt megegyezik az [FSLogix-profilfájlmegosztások telepítési folyamatának folyamatához.](create-host-pools-user-profile.md) Ehhez azonban különböző engedélyeket kell hozzárendelni a felhasználókhoz. Az MSIX-alkalmazás csatolásához csak olvasási engedélyekre van szükség a fájlmegosztás eléréséhez.
+Az MSIX-alkalmazás csatolási fájlmegosztásának telepítési folyamata nagyrészt megegyezik az FSLogix-profil fájlmegosztások [beállítási folyamatának folyamatához.](create-host-pools-user-profile.md) Ehhez azonban különböző engedélyeket kell hozzárendelni a felhasználókhoz. Az MSIX-alkalmazás csatolásához csak olvasási engedélyekre van szükség a fájlmegosztás eléréséhez.
 
 Ha MSIX-alkalmazásait az Azure Files-ban tárolja, akkor a munkamenetgazdákhoz minden munkamenetgazda virtuális géphez hozzá kell rendelnie tárfiók szerepköralapú hozzáférés-vezérlési (RBAC) és fájlmegosztási Új technológiai fájlrendszer (NTFS) engedélyeket a megosztáson.
 
 | Azure-objektum                      | Szükséges szerepkör                                     | Szerepköri függvény                                  |
 |-----------------------------------|--------------------------------------------------|-----------------------------------------------|
-| Munkamenetgazda (virtuális gép számítógép-objektumai)| Storage-fájladatok SMB-megosztásának közreműködője          | Read and Execute, Read, List folder contents (Mappa tartalmának olvasása és végrehajtása, olvasása, listása)  |
-| Fájlmegosztás rendszergazdái              | Storage-fájladatok SMB-megosztásának emelt szintű közreműködője | Teljes hozzáférés                                  |
-| Fájlmegosztáson található felhasználók               | Storage-fájladatok SMB-megosztásának közreműködője          | Read and Execute, Read, List folder contents (Mappa tartalmának olvasása és végrehajtása, olvasása, listása)  |
+| Munkamenetgazda (virtuális gép számítógép-objektumai)| Storage-fájladatok SMB-megosztásának közreműködője          | Mappa tartalmának olvasása és végrehajtása, olvasása és listása  |
+| Fájlmegosztási rendszergazdák              | Storage-fájladatok SMB-megosztásának emelt szintű közreműködője | Teljes hozzáférés                                  |
+| Fájlmegosztáson található felhasználók               | Storage-fájladatok SMB-megosztásának közreműködője          | Mappa tartalmának olvasása és végrehajtása, olvasása és listása  |
 
 Munkamenetgazda virtuális gépek engedélyeinek hozzárendelése a tárfiókhoz és a fájlmegosztáshoz:
 
 1. Hozzon létre Active Directory Domain Services (AD DS) biztonsági csoportot.
 
-2. Vegye fel a munkamenetgazda virtuális gépek számítógépfiókját a csoport tagjaiként.
+2. Vegye fel a csoport tagjaiként az összes munkamenetgazda virtuális gép számítógépfiókját.
 
-3. Szinkronizálja az AD DS csoportot Azure Active Directory (Azure AD) használatával.
+3. Szinkronizálja a AD DS csoportot Azure Active Directory (Azure AD) használatával.
 
 4. Tárfiók létrehozása.
 
-5. Hozzon létre egy fájlmegosztást a tárfiók alatt az Azure-fájlmegosztás [létrehozása útmutatását követve.](../storage/files/storage-how-to-create-file-share.md#create-file-share)
+5. Hozzon létre egy fájlmegosztást a tárfiók alatt az Azure-fájlmegosztás [létrehozása útmutatását követve.](../storage/files/storage-how-to-create-file-share.md#create-a-file-share)
 
-6. Csatlakozzon a tárfiókhoz a AD DS az első rész utasításait követve: engedélyezze AD DS [azure-fájlmegosztások hitelesítését.](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)
+6. Csatlakozzon a tárfiókhoz a AD DS az első rész utasításait követve: engedélyezze AD DS hitelesítést az [Azure-fájlmegosztások számára.](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)
 
-7. Rendelje hozzá a szinkronizált AD DS csoportot az Azure AD-hez, és rendelje hozzá a tárfiókhoz a Storage-fájladatok SMB-megosztási közreműködője szerepkört.
+7. Rendelje hozzá a szinkronizált AD DS csoportot az Azure AD-hez, és rendelje hozzá a tárfiókhoz a Storage-fájladatok SMB-megosztásának közreműködője szerepkört.
 
-8. Csatlakoztassa a fájlmegosztást bármely munkamenetgazda számára a következő részben található utasításokat követve: megosztási szintű engedélyek hozzárendelése egy [identitáshoz.](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)
+8. Csatlakoztassa a fájlmegosztást bármely munkamenetgazda számára a második rész [utasításait követve: megosztási](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)szintű engedélyek hozzárendelése egy identitáshoz.
 
 9. Adjon NTFS-engedélyeket a fájlmegosztásnak a AD DS számára.
 
-10. Állítson be NTFS-engedélyeket a felhasználói fiókokhoz. Szüksége lesz egy olyan üzemeltetési egységre (OU), amely abból a AD DS amelybe a virtuális gép fiókjai tartoznak.
+10. Állítson be NTFS-engedélyeket a felhasználói fiókokhoz. Szüksége lesz egy olyan üzemeltetési egységre (OU), amely abból a virtuális gépből származik AD DS amelyhez a virtuális gép fiókjai tartoznak.
 
 Miután hozzárendelt egy identitást a tárolóhoz, a [](#next-steps) Következő lépések cikkben található utasításokat követve adjon meg más szükséges engedélyeket a virtuális gépekhez rendelt identitáshoz.
 
-Arról is meg kell győződni, hogy a munkamenetgazda virtuális gépei new Technology File System (NTFS) engedélyekkel rendelkezik. Rendelkeznie kell egy operatívegység-tárolóval, amely a Active Directory Domain Services -től (AD DS) származik, és a felhasználóknak ennek az üzemeltetési egységnek a tagjainak kell lennie az engedélyek használhatja.
+Arról is meg kell győződni, hogy a munkamenetgazda virtuális gépei new Technology File System (NTFS) engedélyekkel rendelkezik. Rendelkeznie kell egy operatívegység-tárolóval, amely a Active Directory Domain Services -ból AD DS), és a felhasználóknak az adott üzemeltetési egység tagjainak kell lennie az engedélyek használatának érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 
 A fájlmegosztás beállítása után a következő további dolgokat kell még megtennie:
 
-- A profiltárolók Azure Active Directory Domain Services (AD DS) beállítását a Profiltároló létrehozása Azure Files [és a AD DS.](create-file-share.md)
-- A profiltárolók Azure Files és Azure AD DS beállítását [a Profiltároló](create-profile-container-adds.md)létrehozása a Azure Files és a Azure AD DS.
-- Az MSIX-Azure NetApp Files beállítását a Profiltároló létrehozása a Azure NetApp Files és a [AD DS.](create-fslogix-profile-container.md)
-- A virtuálisgép-alapú fájlmegosztások használatát a Profiltároló létrehozása gazdagépkészlethez [fájlmegosztás használatával.](create-host-pools-user-profile.md)
+- A profiltárolók Azure Active Directory Domain Services (AD DS) beállítását a Profiltároló létrehozása Azure Files [és AD DS.](create-file-share.md)
+- További információ a profiltárolók Azure Files és Azure AD DS beállításával: Profiltároló létrehozása Azure Files [és Azure AD DS.](create-profile-container-adds.md)
+- Az MSIX-Azure NetApp Files beállítását [a Profiltároló](create-fslogix-profile-container.md)létrehozása a Azure NetApp Files és a AD DS.
+- Ismerje meg, hogyan használhat virtuálisgép-alapú fájlmegosztást: Profiltároló létrehozása gazdagépkészlethez [fájlmegosztás használatával.](create-host-pools-user-profile.md)
 
 Ha végzett, íme néhány további erőforrás, amelyek hasznosak lehetnek:
 
 - A funkcióval kapcsolatos kérdéseit a [TechCo Windows Virtual Desktop fel.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
-- Visszajelzést is küldhet a Windows Virtual Desktop a [Windows Virtual Desktop visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
-- [MSIX-alkalmazás csatolása – szószedet](app-attach-glossary.md)
+- Visszajelzést is küldhet a Windows Virtual Desktop a Windows Virtual Desktop [visszajelzési központban.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
+- [MSIX-alkalmazás csatolási szószedete](app-attach-glossary.md)
 - [MSIX-alkalmazás csatolása – GYIK](app-attach-faq.md)

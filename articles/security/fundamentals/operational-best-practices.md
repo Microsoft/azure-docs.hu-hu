@@ -1,7 +1,7 @@
 ---
-title: Ajánlott biztonsági eljárások az Azure-eszközökhöz
+title: Az Azure-beli eszközök ajánlott biztonsági gyakorlatai
 titleSuffix: Azure security
-description: Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
+description: Ez a cikk üzemeltetési ajánlott eljárásokat tartalmaz az adatok, alkalmazások és egyéb Azure-beli eszközök védelméhez.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,214 +16,214 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498846"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717422"
 ---
-# <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
-Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
+# <a name="azure-operational-security-best-practices"></a>Azure Operational Security – ajánlott eljárások
+Ez a cikk üzemeltetési ajánlott eljárásokat tartalmaz az adatok, alkalmazások és egyéb Azure-beli eszközök védelméhez.
 
-Az ajánlott eljárások a vélemények konszenzusán alapulnak, és a jelenlegi Azure platform-képességekkel és-szolgáltatásokkal működnek. A vélemények és technológiák idővel változnak, és ez a cikk rendszeresen frissül, hogy tükrözze ezeket a módosításokat.
+Az ajánlott eljárások a vélemények megegyezésére épülnek, és az Azure platform jelenlegi képességeivel és funkciókészletekkel működnek együtt. A vélemények és technológiák idővel változnak, és a cikk rendszeresen frissül, hogy tükrözze ezeket a változásokat.
 
-## <a name="define-and-deploy-strong-operational-security-practices"></a>Erős működési biztonsági eljárások definiálása és üzembe helyezése
-Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti az Azure-ban tárolt adatok, alkalmazások és egyéb erőforrások védelméhez. Az Azure Operational Security olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi képességekkel szerzett ismereteket, beleértve a [biztonsági fejlesztési életciklust (SDL)](https://www.microsoft.com/sdl), a [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programot, valamint a kiberbiztonsági fenyegetések tájképének alapos ismeretét.
+## <a name="define-and-deploy-strong-operational-security-practices"></a>Erős működési biztonsági eljárások meghatározása és üzembe helyezése
+Az Azure működési biztonsága azokat a szolgáltatásokat, vezérlőket és funkciókat jelenti, amelyek a felhasználók számára az adatok, alkalmazások és egyéb Azure-beli eszközök védelmére szolgálnak. Az Azure működési biztonsága egy olyan keretrendszerre épül, amely magában foglalja a Microsoft egyedi képességeivel szerzett ismereteket, beleértve a biztonsági fejlesztési [életciklust (SDL),](https://www.microsoft.com/sdl)az [Microsoft Biztonsági reagálási központ-programot](https://www.microsoft.com/msrc?rtc=1) és a kiberbiztonsági fenyegetések környezetének mélyebb ismeretét.
 
 ## <a name="manage-and-monitor-user-passwords"></a>Felhasználói jelszavak kezelése és figyelése
-A következő táblázat felsorolja a felhasználói jelszavak kezelésével kapcsolatos ajánlott eljárásokat:
+Az alábbi táblázat a felhasználói jelszavak kezelésével kapcsolatos ajánlott eljárásokat sorolja fel:
 
-**Ajánlott eljárás**: gondoskodjon arról, hogy megfelelő szintű jelszavas védelmet biztosítson a felhőben.   
-**Részletek**: kövesse a Microsoft- [jelszóval kapcsolatos útmutató](https://www.microsoft.com/research/publication/password-guidance/)útmutatását, amely a microsoft Identity platform (Azure Active Directory, Active Directory és Microsoft-fiók) felhasználóira terjed ki.
+**Ajánlott eljárás:** Győződjön meg arról, hogy a megfelelő szintű jelszóvédelem van a felhőben.   
+**Részletek:** Kövesse a [Microsoft](https://www.microsoft.com/research/publication/password-guidance/)jelszó-útmutató útmutatását, amely a Microsoft identitásplatformjainak felhasználóira terjed ki (Azure Active Directory, Active Directory és Microsoft-fiók).
 
-**Ajánlott eljárás**: a felhasználói fiókokkal kapcsolatos gyanús műveletek figyelése.   
-**Részletek**: az Azure ad-alapú biztonsági jelentések segítségével figyelje a [veszélyeztetett felhasználókat](../../active-directory/identity-protection/overview-identity-protection.md) és a [kockázatos bejelentkezéseket](../../active-directory/identity-protection/overview-identity-protection.md) .
+**Ajánlott eljárás:** Figyelje a felhasználói fiókokhoz kapcsolódó gyanús műveleteket.   
+**Részletek:** A veszélyeztetett [felhasználók](../../active-directory/identity-protection/overview-identity-protection.md) és a kockázatos bejelentkezések figyelése az Azure AD biztonsági jelentésekkel. [](../../active-directory/identity-protection/overview-identity-protection.md)
 
-**Ajánlott eljárás**: a nagy kockázatú jelszavak automatikus észlelése és szervizelése.   
-**Részletek**: a [Azure ad Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) a prémium szintű Azure ad P2 kiadás egyik funkciója, amely a következőket teszi lehetővé:
+**Ajánlott eljárás:** A magas kockázatú jelszavak automatikus észlelése és szervize.   
+**Részletek:** [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) A prémium szintű Azure AD P2 kiadás egyik funkciója, amely a következő funkciókat teszi lehetővé:
 
-- A szervezet identitásait érintő lehetséges sebezhetőségek észlelése
-- A szervezete identitásával kapcsolatos gyanús műveletekre vonatkozó automatizált válaszok konfigurálása
-- Gyanús incidensek kivizsgálásával és a megoldáshoz szükséges megfelelő műveletek elvégzésével
+- A szervezet identitását érintő lehetséges biztonsági rések észlelése
+- Automatikus válaszok konfigurálása a szervezet identitásával kapcsolatos gyanús műveletek észlelésére
+- Gyanús incidensek kivizsgálása és a megoldásukhoz szükséges lépések meghozása
 
-## <a name="receive-incident-notifications-from-microsoft"></a>Incidens-értesítések fogadása a Microsofttól
-Győződjön meg arról, hogy a Security Operations csapata fogadja az Azure incidensekkel kapcsolatos értesítéseket a Microsofttól. Az incidensek értesítése lehetővé teszi a biztonsági csapatnak, hogy feltörte az Azure-erőforrásokat, így gyorsan reagálhat a lehetséges biztonsági kockázatokra, és javíthatja azokat.
+## <a name="receive-incident-notifications-from-microsoft"></a>Incidensértesítések fogadása a Microsofttól
+Győződjön meg arról, hogy a biztonsági üzemeltetési csapat megkapja a Microsoft Azure-incidensekkel kapcsolatos értesítését. Az incidensértesítések tudatják a biztonsági csapattal, hogy feltörte az Azure-erőforrásokat, így gyorsan reagálhat a lehetséges biztonsági kockázatokra, és orvosolhatja őket.
 
-Az Azure beléptetési portálon gondoskodhat arról, hogy a rendszergazdai kapcsolattartási adatok a biztonsági műveleteket értesítő részleteket tartalmazzanak. A kapcsolattartási adatok egy e-mail-cím és egy telefonszám.
+Az Azure regisztrációs portálon biztosíthatja, hogy a rendszergazdai kapcsolattartási adatok tartalmazzák a biztonsági műveleteket értesítő adatokat. A kapcsolattartási adatok egy e-mail-cím és egy telefonszám.
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure-előfizetések rendszerezése felügyeleti csoportokba
-Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. Az [Azure felügyeleti csoportjai](../../governance/management-groups/create-management-group-portal.md) magasabb szintű hatókört biztosítanak az előfizetésekhez. Az előfizetéseket felügyeleti csoportnak nevezett tárolókban rendezi, és ezekre a csoportokra alkalmazza a szabályozási feltételeket. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
+Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. [Az Azure-beli](../../governance/management-groups/create-management-group-portal.md) felügyeleti csoportok az előfizetések fölötti hatókörszintet biztosítanak. Az előfizetéseket felügyeleti csoportnak nevezett tárolókban rendezi, és ezekre a csoportokra alkalmazza a szabályozási feltételeket. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
 
-A felügyeleti csoportok és előfizetések rugalmas struktúráját létrehozhatja egy könyvtárba. Minden címtár egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A felügyeleti csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva.
+A felügyeleti csoportok és előfizetések rugalmas szerkezetét egy címtárba építheti be. Minden címtárhoz tartozik egy legfelső szintű felügyeleti csoport, a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A gyökérszintű felügyeleti csoport lehetővé teszi a globális szabályzatok és az Azure-beli szerepkör-hozzárendelések címtárszinten való alkalmazását.
 
-Íme néhány ajánlott eljárás a felügyeleti csoportok használatához:
+Íme néhány ajánlott eljárás a felügyeleti csoportok használatával kapcsolatban:
 
-**Ajánlott eljárás**: gondoskodjon arról, hogy az új előfizetések olyan irányítási elemeket alkalmazzanak, mint például a hozzáadott szabályzatok és engedélyek.   
-**Részletek**: az összes Azure-eszközre érvényes, nagyvállalati szintű biztonsági elemek hozzárendeléséhez használja a gyökérszintű felügyeleti csoportot. A szabályzatok és az engedélyek például elemek.
+**Ajánlott eljárás:** Győződjön meg arról, hogy az új előfizetések olyan irányítási elemeket alkalmaznak, mint a szabályzatok és engedélyek a hozzáadásukkor.   
+**Részletek:** A gyökér felügyeleti csoporttal az összes Azure-eszközre érvényes vállalati szintű biztonsági elemeket rendelhet hozzá. A szabályzatok és engedélyek példák elemekre.
 
-**Ajánlott eljárás**: a felügyeleti csoportok legfelső szintjének igazítása a szegmentálási stratégiával, hogy az egyes szegmenseken belül a szabályozás és a házirendek egységességét biztosítsa.   
-**Részletek**: hozzon létre egyetlen felügyeleti csoportot a legfelső szintű felügyeleti csoportba tartozó egyes szegmensekhez. Ne hozzon létre más felügyeleti csoportokat a gyökér alatt.
+**Ajánlott eljárás:** A felügyeleti csoportok legfelső szintjeinek igazítása a szegmentációs stratégiához, hogy az egyes szegmensek vezérlési és szabályzatkonzisztenciáját biztosítsa.   
+**Részletek:** Hozzon létre egy felügyeleti csoportot minden szegmenshez a gyökér felügyeleti csoport alatt. Ne hozzon létre más felügyeleti csoportokat a gyökér alatt.
 
-**Ajánlott eljárás**: a felügyeleti csoport mélységének korlátozása a félreértések elkerülése érdekében, amely akadályozza a műveleteket és a biztonságot.   
-**Részletek**: a hierarchiát három szintre korlátozza, beleértve a gyökeret is.
+**Ajánlott eljárás:** Korlátozza a felügyeleti csoportok mélységét a műveleteket és a biztonságot egyaránt akadályozó félreértések elkerülése érdekében.   
+**Részletek:** Korlátozza a hierarchiát három szintre, beleértve a gyökérszintet is.
 
-**Ajánlott eljárás**: gondosan válassza ki, hogy mely elemeket kell alkalmazni a teljes vállalatra a legfelső szintű felügyeleti csoporttal.   
-**Részletek**: gondoskodjon arról, hogy a gyökérszintű felügyeleti csoportok elemeinek minden erőforrásban egyértelműek legyenek, és hogy ne legyenek kevésbé hatással.
+**Ajánlott eljárás:** Gondosan válassza ki a gyökér felügyeleti csoporttal együtt a teljes vállalatra alkalmazni kívánt elemeket.   
+**Részletek:** Győződjön meg arról, hogy a gyökér felügyeleti csoport elemeit egyértelműen alkalmazni kell minden erőforrásra, és hogy azok alacsony hatással vannak.
 
-A jó jelöltek a következők:
+A megfelelő jelöltek közé tartoznak a következők:
 
-- Egyértelmű üzleti hatású szabályozási követelmények (például az adatszuverenitással kapcsolatos korlátozások)
-- Azok a követelmények, amelyekhez közel nulla lehetséges negatív hatással vannak a műveletekre, mint például a szabályzat vagy a naplózási hatás, vagy az Azure RBAC engedélyek hozzárendelései, amelyeket alaposan ellenőriztek
+- Egyértelmű üzleti hatást gyakoroló szabályozási követelmények (például az adatok önállóságával kapcsolatos korlátozások)
+- Olyan követelmények, amelyek nulla vagy akár negatív hatással lehetnek a műveletekre, például naplózással rendelkező szabályzat vagy az Azure RBAC engedély-hozzárendelései, amelyek alaposan át vannak nézve
 
-**Ajánlott eljárás**: körültekintően tervezze meg és tesztelje a legfelső szintű felügyeleti csoport összes nagyvállalati módosítását, mielőtt alkalmazná őket (házirend, Azure RBAC modell stb.).   
-**Részletek**: a gyökérszintű felügyeleti csoport változásai hatással lehetnek az Azure összes erőforrására. Habár hatékony módszert biztosítanak a vállalaton belüli konzisztencia biztosítására, a hibák és a helytelen használat negatív hatással lehet a termelési műveletekre. Tesztelje a gyökérszintű felügyeleti csoport összes módosítását tesztkörnyezetben vagy éles próbaüzem során.
+**Ajánlott eljárás:** Az összes vállalati szintű módosítást alaposan meg kell tervezni és tesztelni kell a gyökér felügyeleti csoporton azok alkalmazása előtt (szabályzat, Azure RBAC-modell stb.).   
+**Részletek:** A gyökér felügyeleti csoport módosításai hatással lehetnek az Azure összes erőforrásra. Bár hatékony lehetőséget biztosítanak a vállalaton belül a konzisztencia biztosítására, a hibák vagy a helytelen használat negatív hatással lehet az éles műveletekre. Tesztelje a gyökér felügyeleti csoport módosításait egy tesztlaborban vagy éles tesztkörnyezetben.
 
-## <a name="streamline-environment-creation-with-blueprints"></a>Környezetek létrehozásának egyszerűsítése tervrajzokkal
-[Az Azure BluePrints](../../governance/blueprints/overview.md) szolgáltatás lehetővé teszi a felhőalapú építészek és a központi informatikai csoportok számára, hogy meghatározhatnak egy olyan Azure-erőforrást, amely megvalósítja és betartja a szervezet szabványait, mintáit és követelményeit. Az Azure-tervezetek lehetővé teszik a fejlesztői csapatoknak, hogy gyorsan építsenek és hozzanak létre új környezeteket a beépített összetevőkkel, valamint azt, hogy ezek a környezetek a szervezeti megfelelőségen belül legyenek létrehozva.
+## <a name="streamline-environment-creation-with-blueprints"></a>Környezetek létrehozásának egyszerűsítése tervekkel
+[Az Azure Blueprints](../../governance/blueprints/overview.md) szolgáltatás lehetővé teszi a felhőszolgáltatás-tervezők és központi információs technológiai csoportok számára, hogy megismételhető Azure-erőforrásokat határozzanak meg, amelyek megvalósítják és betartják a szervezet szabványait, mintáit és követelményeit. Azure Blueprints lehetővé teszi a fejlesztői csapatok számára, hogy gyorsan építsenek ki és állítsanak fel új környezeteket beépített összetevőkkel, és biztos abban, hogy ezeket a környezeteket a szervezeti megfelelőségen belül létrehozására használják.
 
-## <a name="monitor-storage-services-for-unexpected-changes-in-behavior"></a>Tárolási szolgáltatások figyelése a működés közbeni váratlan változásokhoz
-A felhőalapú környezetben üzemeltetett elosztott alkalmazások hibáinak diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben. Az alkalmazások a IaaS-infrastruktúrában, a helyszínen, a mobileszközön vagy a környezetek valamilyen kombinációjában is üzembe helyezhetők. Előfordulhat, hogy az alkalmazás hálózati forgalma nyilvános és magánhálózati hálózatokon halad át, és az alkalmazás több tárolási technológiát is használhat.
+## <a name="monitor-storage-services-for-unexpected-changes-in-behavior"></a>A tárolási szolgáltatások figyelése a viselkedés váratlan változásainak ellenőrzésére
+A felhőalapú környezetben üzemeltetett elosztott alkalmazások problémáinak diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben. Az alkalmazások üzembe helyezhetők PaaS- vagy IaaS-infrastruktúrában, helyszínen, mobileszközön vagy ezek valamilyen kombinációjában. Az alkalmazás hálózati forgalma nyilvános és privát hálózatokon is áthaladhat, és az alkalmazás több tárolási technológiát is használhat.
 
-Folyamatosan figyelnie kell az alkalmazás által a működés közben felmerülő váratlan változásokra (például a lassabb válaszidő) vonatkozó tárolási szolgáltatásokat. A naplózás használatával részletesebb adatokat gyűjthet, és részletesen elemezheti a problémát. A monitorozási és naplózási adatokból beszerzett diagnosztikai információk segítségével meghatározható az alkalmazás által észlelt probléma kiváltó oka. Ezután hárítsa el a problémát, és határozza meg a megfelelő lépéseket a megoldásához.
+Folyamatosan figyelnie kell az alkalmazás által használt tárolási szolgáltatásokat a viselkedés váratlan változásaihoz (például lassabb válaszidőkhez). Naplózással részletesebb adatokat gyűjthet, és részletesen elemezheti a problémákat. A monitorozásból és naplózásból származó diagnosztikai információk segítenek meghatározni az alkalmazás által észlelt probléma kiváltó okát. Ezután elháríthatja a problémát, és meghatározhatja a megfelelő lépéseket a megoldásához.
 
-[Azure Storage Analytics](../../storage/common/storage-analytics.md) naplózást végez, és metrikai adatokat biztosít egy Azure Storage-fiókhoz. Javasoljuk, hogy ezeket az adatokat a kérelmek nyomon követéséhez, a használati trendek elemzéséhez és a Storage-fiókkal kapcsolatos problémák diagnosztizálásához használja.
+[Azure Storage Analytics](../../storage/common/storage-analytics.md) naplózást végez, és metrikák adatait szolgáltatja egy Azure-tárfiókhoz. Javasoljuk, hogy ezeket az adatokat használja a kérelmek nyomkövetéséhez, a használati trendek elemzéséhez és a tárfiókkal kapcsolatos problémák diagnosztizálásához.
 
-## <a name="prevent-detect-and-respond-to-threats"></a>Fenyegetések megelőzése, észlelése és elhárítása
-[Azure Security Center](../../security-center/security-center-introduction.md) segít megakadályozni, észlelni és reagálni a fenyegetésekre azáltal, hogy megnövelte az Azure-erőforrások biztonságának növelését (és felügyeletét). Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között, segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és különböző biztonsági megoldásokkal működnek.
+## <a name="prevent-detect-and-respond-to-threats"></a>Fenyegetések megelőzése, észlelése és válaszadás a fenyegetésekre
+[Azure Security Center](../../security-center/security-center-introduction.md) segít megelőzni, észlelni és reagálni a fenyegetésekre azáltal, hogy nagyobb betekintést (és irányítást) biztosít az Azure-erőforrások biztonságába. Integrált biztonsági monitorozást és szabályzatkezelést biztosít az Összes Azure-előfizetésben, segít észlelni a fenyegetéseket, amelyek egyébként észrevétlenül maradnak, és különböző biztonsági megoldásokkal is együttműködik.
 
-A Security Center ingyenes szintje csak az Azure-erőforrások számára biztosít korlátozott biztonságot. A standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center Standard segítségével megtalálhatja és elháríthatja a biztonsági réseket, a hozzáférési és alkalmazás-vezérlőket a kártékony tevékenységek blokkolására, az elemzések és az intelligencia használatával azonosíthatja a fenyegetéseket, és gyorsan reagálhat a támadásokra. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját. Javasoljuk, hogy az [Azure-előfizetését Security Center Standard verzióra frissítse](../../security-center/security-center-get-started.md).
+Az ingyenes Security Center csak az Azure-erőforrások számára nyújt korlátozott biztonságot. A Standard szint ezeket a képességeket kiterjeszti a helyszíni és más felhőkre. Security Center Standard segítségével megkeresheti és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolására, észlelheti a fenyegetéseket elemzéssel és intelligenciával, és gyorsan reagálhat, ha támadás alatt áll. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját. Javasoljuk, hogy frissítse [Azure-előfizetését a Security Center standard verzióra.](../../security-center/security-center-get-started.md)
 
-Az Security Center segítségével megtekintheti az Azure-erőforrások biztonsági állapotának központi nézetét. Egy pillantással ellenőrizze, hogy a megfelelő biztonsági vezérlők megfelelően vannak-e konfigurálva, és hogy gyorsan azonosítson-e minden olyan erőforrást, amelyhez figyelmet igényel.
+A Security Center megtekintheti az összes Azure-erőforrás biztonsági állapotát. Első pillantásra ellenőrizze, hogy a megfelelő biztonsági vezérlők működnek-e és megfelelően vannak-e konfigurálva, és gyorsan azonosítson minden figyelmet igényelő erőforrást.
 
-A Security Center a [Microsoft Defender komplex veszélyforrások elleni védelem (ATP)](../../security-center/security-center-wdatp.md)szolgáltatással is integrálható, amely átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosít. A Microsoft Defender ATP-integrációval szokatlanokat lehet kimutatni. A Security Center által figyelt kiszolgálói végpontokon a speciális támadások észlelésére és reagálására is lehetőség van.
+Security Center a Microsoft Defender [Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md)alkalmazással is integrálható, amely átfogó végpontészlelési és -válaszképességet biztosít. A Microsoft Defender ATP integrációjával észlelheti a rendellenességeket. Emellett észlelheti a monitorozási szolgáltatás által figyelt kiszolgálóvégpontokat, és reagálhat Security Center.
 
-Szinte minden vállalati szervezet rendelkezik biztonsági információkkal és eseménykezelővel (SIEM), amely segít azonosítani az újonnan felmerülő fenyegetéseket azáltal, hogy összevonja a különböző Signal Gathering-eszközök naplójának adatait. A naplók elemzését egy adatelemzési rendszer elemzi, amely segít azonosítani, hogy milyen "érdekes" lehet a zaj, amely minden naplózási és elemzési megoldás esetében elkerülhetetlen.
+Szinte minden nagyvállalatnak van biztonsági információs és eseménykezelési (SIEM) rendszere, amely segít azonosítani a felmerülő fenyegetéseket azáltal, hogy összevonja a különböző jelgyűjtő eszközök naplóinformációit. A naplókat ezután egy adatelemzési rendszer elemzi, hogy azonosítsa, mi az "érdekes" a zajból, amely minden naplógyűjtési és elemzési megoldásban elkerülhetetlen.
 
-Az [Azure Sentinel](../../sentinel/overview.md) egy skálázható, Felhőbeli natív, biztonsági információ-és rendezvényszervezés (SIEM) és biztonsági előkészítést szolgáló automatizált válasz (SOAR) megoldás. Az Azure Sentinel intelligens biztonsági elemzési és veszélyforrási intelligenciát biztosít a riasztások észlelése, a fenyegetések láthatósága, a proaktív vadászat és az automatizált veszélyforrások miatt.
+[Azure Sentinel](../../sentinel/overview.md) egy skálázható, natív felhőbeli, biztonsági információk és események kezelése (SIEM) és biztonsági vezénylési automatizált válaszadási (SOAR) megoldás. Azure Sentinel intelligens biztonsági elemzést és fenyegetésészlelést biztosít a riasztások észlelése, a fenyegetések láthatósága, a proaktív veszélyforrás-felderítés és az automatizált fenyegetés-reagálás révén.
 
-Íme néhány ajánlott eljárás a fenyegetések megelőzéséhez, észleléséhez és megválaszolásához:
+Íme néhány ajánlott eljárás a fenyegetések megelőzéséhez, észleléshez és a fenyegetésekre való reagáláshoz:
 
-**Ajánlott eljárás**: az Siem-megoldás sebességének és méretezhetőségének növelése felhőalapú Siem használatával.   
-**Részletek**: vizsgálja meg az [Azure Sentinel](../../sentinel/overview.md) funkcióit és képességeit, és hasonlítsa össze őket a jelenleg a helyszínen használt funkciókkal. Vegye fontolóra az Azure Sentinel bevezetését, ha az megfelel a szervezet SIEM-követelményeinek.
+**Ajánlott eljárás:** A SIEM-megoldás sebességének és méretezhetőságának növelése felhőalapú SIEM használatával.   
+**Részletek:** Megvizsgálhatja a [](../../sentinel/overview.md) Azure Sentinel funkcióit és képességeit, és összehasonlíthatja őket a jelenleg helyszíni használatban lévő funkciókkal. Fontolja meg a Azure Sentinel, ha az megfelel a szervezet SIEM-követelményeinek.
 
-**Ajánlott eljárás**: keresse meg a legsúlyosabb biztonsági réseket, hogy rangsorolja a vizsgálatot.   
-**Részletek**: Tekintse át az Azure-beli [biztonsági pontszámát](../../security-center/secure-score-security-controls.md) , és tekintse meg a Azure Security Center beépített Azure-szabályzatok és-kezdeményezések által létrehozott javaslatokat. Ezek a javaslatok segítenek a legfontosabb kockázatok, például a biztonsági frissítések, az Endpoint Protection, a titkosítás, a biztonsági konfigurációk, a hiányzó WAF, az internetkapcsolattal rendelkező virtuális gépek és sok más megoldás kezelésében.
+**Ajánlott eljárás:** A súlyos biztonsági rések megkeresve rangsorolhatja a vizsgálatot.   
+**Részletek:** Tekintse át [az Azure biztonsági pontszámát,](../../security-center/secure-score-security-controls.md) és tekintse át az Azure-szabályzatok és -kezdeményezések beépített Azure Security Center. Ezek a javaslatok segítenek az olyan legfontosabb kockázatok, mint a biztonsági frissítések, a végpontvédelem, a titkosítás, a biztonsági konfigurációk, a hiányzó WAF, az internethez csatlakozó virtuális gépek stb. kezelése.
 
-A biztonságos pontszám, amely a Center for Internet Security (CIS) vezérlőkön alapul, lehetővé teszi, hogy a szervezet Azure-beli biztonsága a külső forrásokkal szemben is mérhető legyen. A külső érvényesítés segíti a csapat biztonsági stratégiájának érvényesítését és bővítését.
+A Center for Internet Security (CIS) vezérlőin alapuló biztonsági pontszám lehetővé teszi a szervezet Azure-beli biztonságának külső forrásokkal való összehasonlítását. A külső ellenőrzés segít a csapat biztonsági stratégiájának ellenőrzésében és gazdagításában.
 
-**Ajánlott eljárás**: a gépek, hálózatok, tárolási és adatszolgáltatások, valamint alkalmazások biztonsági állapotának monitorozása a lehetséges biztonsági problémák felderítése és rangsorolása érdekében.  
-**Részletek**: kövesse a Security Center kezdődő [biztonsági javaslatokat](../../security-center/security-center-recommendations.md) a legmagasabb prioritású elemekkel.
+**Ajánlott eljárás:** A gépek, hálózatok, tárolási és adatszolgáltatások, valamint alkalmazások biztonsági biztonságának figyelése a potenciális biztonsági problémák felderítése és rangsorolása érdekében.  
+**Részletek:** Kövesse [a](../../security-center/security-center-recommendations.md) Security Center, a legmagasabb prioritású elemekkel kezdve.
 
-**Ajánlott eljárás**: Security Center riasztások integrálása a biztonsági információk és az Event Management (SIEM) megoldásba.   
-**Részletek**: a legtöbb Siem-et használó szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által készített feldolgozott események közzé lesznek téve az Azure-tevékenység naplójában, amely az Azure Monitoron keresztül elérhető naplók egyike. A Azure Monitor összevont folyamatot biztosít a figyelési adatainak egy SIEM-eszközre történő átirányításához. Útmutatásért lásd: [stream-riasztások egy Siem, SOAR vagy IT Service Management megoldáshoz](../../security-center/export-to-siem.md) . Ha az Azure Sentinelt használja, tekintse meg a [Azure Security Center összekapcsolását](../../sentinel/connect-azure-security-center.md)ismertető témakört.
+**Ajánlott eljárás:** Security Center riasztásokat integrálhatja a biztonsági információk és események kezelési (SIEM) megoldásába.   
+**Részletek:** A legtöbb SIEM-et igénylő szervezet központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztások esetében. A naplók által Security Center eseményeket a rendszer közzéteszi az Azure-tevékenységnaplóban, amely a Azure Monitor. Azure Monitor egy összevont folyamatot kínál a monitorozási adatok SIEM-eszközbe való átirányításához. Útmutatásért [lásd: Stream-riasztások SIEM-, SOAR- vagy IT-szolgáltatáskezelési](../../security-center/export-to-siem.md) megoldásba. Ha az alkalmazásokat használja, Azure Sentinel [Connect Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
-**Ajánlott eljárás**: az Azure-naplók integrálása a Siem-szel.   
-**Részletek**: [Azure monitor használata adatok gyűjtésére és exportálására](../../azure-monitor/overview.md#integrate-and-export-data). Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának engedélyezéséhez, és az online napló megtartásának korlátozása. Ha Azure Sentinelt használ, tekintse meg [az adatforrások összekapcsolását](../../sentinel/connect-data-sources.md)ismertető témakört.
+**Ajánlott eljárás:** Azure-naplók integrálása a SIEM-sel.   
+**Részletek:** Az [Azure Monitor adatokat gyűjthet és exportálhatja.](../../azure-monitor/overview.md#integrate-and-export-data) Ez a gyakorlat kritikus fontosságú a biztonsági incidensek vizsgálatának lehetővé tételében, és az online naplómegőrzés korlátozott. Ha az adatforrásokat használja Azure Sentinel: [Adatforrások csatlakoztatása.](../../sentinel/connect-data-sources.md)
 
-**Ajánlott** eljárás: a vizsgálat és a vadászat folyamatának felgyorsítása, valamint a téves pozitív érték csökkentése a támadási vizsgálat során a végpont-észlelési és a reagálási (EDR) képességek integrálásával.   
-**Részletek**: [a Microsoft Defender for Endpoint Integration engedélyezése](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) a Security Center biztonsági házirend segítségével. Vegye fontolóra az Azure Sentinel használatát a fenyegetések vadászatához és az incidensek megválaszolásához.
+**Ajánlott eljárás:** Felgyorsíthatja a vizsgálati és a támadáskeresési folyamatokat, és csökkentheti a téves riasztásokat azáltal, hogy az Endpoint Detection and Response (EDR) képességeket integrálja a támadási vizsgálatba.   
+**Részletek:** [Engedélyezze a Microsoft Defender végpontintegrációját](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) a Security Center szabályzattal. Fontolja meg a Azure Sentinel veszélyforrás-veszélyforrás-veszélyforrás-kereséshez és incidensválaszhoz való használatának.
 
-## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Végpontok közötti forgatókönyv-alapú Hálózatfigyelő figyelése
-Az ügyfelek egy végpontok közötti hálózatot építenek ki az Azure-ban a hálózati erőforrások, például a virtuális hálózat, a ExpressRoute, a Application Gateway és a terheléselosztó kombinálásával. A figyelés minden hálózati erőforráson elérhető.
+## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Végpontok között forgatókönyv-alapú hálózatmonitorozás figyelése
+Az ügyfelek végpontok közötti hálózatot építenek ki az Azure-ban olyan hálózati erőforrások kombinálásával, mint a virtuális hálózat, az ExpressRoute, a Application Gateway és a terheléseltöltők. A figyelés minden hálózati erőforráson elérhető.
 
-Az [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy regionális szolgáltatás. A diagnosztikai és vizualizációs eszközeivel figyelheti és diagnosztizálhatja a feltételeket a hálózati forgatókönyvek szintjén, az Azure-ban és az-ban.
+[Az Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) egy regionális szolgáltatás. Diagnosztikai és vizualizációs eszközeivel monitorhatja és diagnosztizálhatja a feltételeket az Azure-ban, illetve az Azure-ban a hálózati forgatókönyvek szintjén.
 
-A következő ajánlott eljárások a hálózati figyeléshez és a rendelkezésre álló eszközökhöz.
+Az alábbiakban a hálózatfigyelés és az elérhető eszközök ajánlott eljárásait íme.
 
-**Ajánlott eljárás**: a távoli hálózat figyelésének automatizálása a csomagok rögzítésével.  
-**Részletek**: hálózati problémák figyelése és diagnosztizálása a virtuális gépekre való bejelentkezés nélkül Network Watcher használatával. A [csomagok rögzítése](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) a riasztások beállításával és a valós idejű teljesítményadatokat a csomagok szintjén érheti el. Ha problémát tapasztal, részletesen megvizsgálhatja a jobb diagnosztizálást.
+**Ajánlott eljárás:** Távoli hálózatfigyelés automatizálása csomagrögzítéssel.  
+**Részletek:** Hálózati problémák monitorozása és diagnosztizálása anélkül, hogy bejelentkezik a virtuális gépekre a Network Watcher. Aktiválja [a csomagrögzítést](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) a riasztások beállításával, és a csomag szintjén valós idejű teljesítményinformációkhoz férhet hozzá. Ha problémát lát, részletesen megvizsgálhatja a jobb diagnosztizálásokat.
 
-**Ajánlott eljárás**: betekintést nyerhet a hálózati forgalomba a flow-naplók használatával.  
-**Részletek**: a hálózati forgalom mintáinak mélyebb megismerése a [hálózati biztonsági csoport folyamatábráinak](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)használatával. A flow-naplókban található információk segítséget biztosítanak a hálózati biztonsági profil megfelelőségének, naplózásának és figyelésének adatainak gyűjtéséhez.
+**Ajánlott eljárás:** Forgalmi naplók használatával betekintést nyerhet a hálózati forgalomba.  
+**Részletek:** A hálózati biztonsági csoport forgalmi naplói segítségével részletesebben is megérthet hálózati forgalmi [mintákat.](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) A folyamatnaplókban található információk segítségével adatokat gyűjthet a hálózati biztonsági profil megfelelősége, naplózása és figyelése érdekében.
 
-**Ajánlott eljárás**: a VPN-kapcsolati problémák diagnosztizálása.  
-**Részletek**: Network Watcher használata a leggyakoribb [VPN Gateway és a kapcsolódási problémák diagnosztizálásához](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Nem csak a probléma azonosítására, hanem a részletes naplók használatára is lehetőség van a további vizsgálathoz.
+**Ajánlott eljárás:** VPN-kapcsolati problémák diagnosztizálása.  
+**Részletek:** A Network Watcher segítségével diagnosztizálhatja a leggyakoribb VPN Gateway [és csatlakozási problémákat.](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md) Nem csupán azonosíthatja a problémát, de részletes naplókat is használhat a további vizsgálathoz.
 
-## <a name="secure-deployment-by-using-proven-devops-tools"></a>Biztonságos üzembe helyezés bevált DevOps-eszközök használatával
-A következő DevOps ajánlott eljárásokat követve biztosíthatja, hogy a vállalat és a csapatok hatékonyak és hatékonyak legyenek.
+## <a name="secure-deployment-by-using-proven-devops-tools"></a>Biztonságos üzembe helyezés bevált DevOps-eszközökkel
+Az alábbi Ajánlott DevOps-eljárások segítségével biztosíthatja a vállalat és a csapatok hatékonyságát és hatékonyságát.
 
-**Ajánlott eljárás**: a szolgáltatások kiépítésének és üzembe helyezésének automatizálása.  
-**Részletek**: az [infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) olyan technikák és gyakorlatok összessége, amelyek segítségével az informatikai szakemberek el tudnak távolítani a moduláris infrastruktúra napi felépítésének és kezelésének terheit. Lehetővé teszi az informatikai szakemberek számára, hogy modern kiszolgálói környezetet hozzanak létre és tartanak karban úgy, ahogy a szoftverfejlesztők az alkalmazás kódjának kiépítésével és karbantartásával kapcsolatosak.
+**Ajánlott eljárás:** A szolgáltatások felépítésének és üzembe helyezésének automatizálása.  
+**Részletek:** [Az infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) olyan technikák és eljárások készlete, amelyek segítenek az it-szakembereknek eltávolítani a moduláris infrastruktúra mindennapos felépítésének és felügyeletének terhét. Lehetővé teszi az it-szakemberek számára, hogy a szoftverfejlesztőkhez hasonló módon építsenek ki és tartsnak karban modern kiszolgálókörnyezetet.
 
-Az alkalmazások deklaratív sablonnal történő kiépítéséhez [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) használható. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont használja az alkalmazás életciklusának minden fázisában történő ismételt üzembe helyezéséhez.
+Az [alkalmazásokat Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) deklaratív sablonnal is kiépítheti. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont használja az alkalmazás ismételt üzembe helyezéséhez az alkalmazás életciklusának minden szakaszában.
 
-**Ajánlott eljárás**: az Azure Web Apps vagy a Cloud Services automatikus létrehozása és üzembe helyezése.  
-**Részletek**: beállíthatja, hogy a Azure DevOps projects  [automatikusan létrejöjjön és üzembe helyezhető](/azure/devops/pipelines/index) az Azure Web Apps vagy a Cloud Services szolgáltatásban. Az Azure DevOps automatikusan telepíti a bináris fájlokat az Azure-hoz való kiépítést követően, miután minden kód bejelentkezett. A csomag-összeállítási folyamat egyenértékű a Visual Studióban található Package paranccsal, és a közzétételi lépések egyenértékűek a Visual Studióban található publish paranccsal.
+**Ajánlott eljárás:** Automatikus build és üzembe helyezés Azure-webalkalmazásokban vagy felhőszolgáltatásokban.  
+**Részletek:** Konfigurálhatja úgy a  [Azure DevOps Projects,](/azure/devops/pipelines/index) hogy automatikusan azure-webalkalmazásokat vagy felhőszolgáltatásokat építsen ki és telepítsen. Az Azure DevOps automatikusan üzembe helyezheti a bináris fájlokat, miután minden kódbe bejelentkezés után buildel az Azure-ba. A csomag buildfolyamata megegyezik az Visual Studio Csomag parancsának, a közzétételi lépések pedig a közzétételi parancs közzétételi Visual Studio.
 
-**Ajánlott eljárás**: a kiadási felügyelet automatizálása.  
-**Részletek**: az [Azure-folyamatok](/azure/devops/pipelines/index) egy megoldás a többfázisú üzembe helyezés automatizálására és a kiadási folyamat kezelésére. Felügyelt folyamatos üzembe helyezési folyamatokat hozhat létre gyorsan, egyszerűen és gyakran. Az Azure-folyamatok segítségével automatizálhatja a kiadási folyamatot, és előre definiált jóváhagyási munkafolyamatokat is használhat. A helyszíni és a felhő üzembe helyezése, bővítése és testreszabása szükség szerint.
+**Ajánlott eljárás:** A kiadáskezelés automatizálása.  
+**Részletek:** [Az Azure Pipelines](/azure/devops/pipelines/index) megoldást kínál a többszakaszos üzembe helyezés automatizálására és a kiadási folyamat kezelésére. Felügyelt folyamatos üzembe helyezési folyamatok létrehozása a gyors, egyszerű és gyakori kiadáshoz. Az Azure Pipelines segítségével automatizálhatja a kiadási folyamatot, és előre meghatározott jóváhagyási munkafolyamatokat is használhat. A helyszínen és a felhőben is üzembe helyezheti, igény szerint kibővítheti és testre szabhatja.
 
-**Ajánlott eljárás**: megtekintheti az alkalmazás teljesítményét, mielőtt elindítja vagy telepíti a frissítéseket az éles környezetbe.  
-**Részletek**: felhőalapú [terhelési tesztek](/azure/devops/test/load-test/overview#alternatives) futtatása a következőre:
+**Ajánlott eljárás:** Mielőtt elindítja az alkalmazást, vagy frissítéseket telepít éles környezetbe, ellenőrizze az alkalmazás teljesítményét.  
+**Részletek:** Felhőalapú terheléses [tesztek futtatása a](/azure/devops/test/load-test/overview#alternatives) következőre:
 
-- Teljesítménnyel kapcsolatos problémák keresése az alkalmazásban.
-- A központi telepítés minőségének javítása.
+- Teljesítményproblémák megkeresása az alkalmazásban.
+- Az üzembe helyezés minőségének javítása.
 - Győződjön meg arról, hogy az alkalmazás mindig elérhető.
-- Győződjön meg arról, hogy az alkalmazás képes a következő indítási vagy marketing kampány forgalmát kezelni.
+- Győződjön meg arról, hogy az alkalmazás képes kezelni a forgalmat a következő indítási vagy marketingkampány során.
 
-Az [Apache JMeter](https://jmeter.apache.org/) egy ingyenes, népszerű nyílt forráskódú eszköz, amely erős közösségi háttérrel rendelkezik.
+[Az Apache JMeter](https://jmeter.apache.org/) egy ingyenes, népszerű, nyílt forráskódú eszköz, erős közösségi támogatással.
 
-**Ajánlott eljárás**: az alkalmazás teljesítményének figyelése.  
-**Részletek**: az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás több platformon futó webes fejlesztőknek. Az élő webalkalmazás figyeléséhez használja a Application Insights. Automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket. Olyan elemzési eszközöket tartalmaz, amelyekkel diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+**Ajánlott eljárás:** Az alkalmazás teljesítményének figyelése.  
+**Részletek:** [Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) egy többplatformos webfejlesztők számára készült, extensible application performance management (APM) szolgáltatás. Az Application Insights az élő webalkalmazás figyelése. Automatikusan észleli a teljesítményanomáliákat. Elemzési eszközöket tartalmaz, amelyek segítenek diagnosztizálni a problémákat, és megérteni, hogy a felhasználók valójában mit tegyenek az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
-## <a name="mitigate-and-protect-against-ddos"></a>A DDoS elleni védelem enyhítése
-Az elosztott szolgáltatásmegtagadás (DDoS) olyan támadási típus, amely megpróbálja kimeríteni az alkalmazás erőforrásait. A cél az alkalmazás rendelkezésre állásának és a legitim kérelmek kezelésére való képességének a befolyásolása. Ezek a támadások egyre kifinomultabbak és nagyobb méretekben és hatással vannak. Az interneten keresztül nyilvánosan elérhető végpontokat is megcélozhat.
+## <a name="mitigate-and-protect-against-ddos"></a>A DDoS mérséklése és a DDoS elleni védelem
+Az elosztott szolgáltatásmegtagadás (DDoS) egy olyan típusú támadás, amely megpróbálja kimerítani az alkalmazás erőforrásait. A cél az alkalmazás rendelkezésre állásának és a megbízható kérések kezelésének képessége. Ezek a támadások egyre kifinomultabbá válnak, és méretük és hatásuk is nagyobb. Bármely olyan végpontot megcélzhat, amely nyilvánosan elérhető az interneten keresztül.
 
-A DDoS rugalmasság megtervezése és kiépítése számos különböző meghibásodási mód megtervezését és kialakítását igényli. A következő ajánlott eljárások az Azure-beli DDoS-rugalmasságú szolgáltatások létrehozásához.
+A DDoS rugalmasságának tervezéséhez és kialakításához különböző hibamódok tervezésére és tervezésére van szükség. Az alábbiakban a DDoS-rugalmas szolgáltatások Azure-ban való építésével kapcsolatos ajánlott eljárások találhatók.
 
-**Ajánlott eljárás**: gondoskodjon arról, hogy a biztonság az alkalmazások teljes életciklusa alatt, a tervezéstől és a megvalósítástól az üzembe helyezésig és a műveletekig legyen prioritás. Az alkalmazások olyan hibákkal rendelkezhetnek, amelyek lehetővé teszik, hogy viszonylag alacsony mennyiségű kérést használjon sok erőforrás használatára, ami a szolgáltatás leállását eredményezi.  
-**Részletek**: a Microsoft Azureon futó szolgáltatások védelmének elősegítése érdekében érdemes megismernie az alkalmazás architektúráját, és a [szoftver minőségének öt pillérére](/azure/architecture/guide/pillars)kell összpontosítania. Ismernie kell a jellemző adatforgalmi köteteket, a kapcsolati modellt az alkalmazás és más alkalmazások között, valamint a nyilvános interneten elérhető szolgáltatási végpontokat.
+**Ajánlott eljárás:** Győződjön meg arról, hogy a biztonság az alkalmazás teljes életciklusában prioritást élvez, a tervezéstől és implementációtól az üzembe helyezésig és a műveletekig. Az alkalmazások olyan hibákat okozhatnak, amelyek viszonylag kevés erőforrás használatát teszik lehetővé, ami szolgáltatáskimaradást eredményez.  
+**Részletek:** A Microsoft Azure-on futó szolgáltatások védelme érdekében jól kell értenie az alkalmazásarchitektúrát, és a szoftverminőség öt [alappillérére kell összpontosítania.](/azure/architecture/guide/pillars) Tudnia kell a tipikus adatforgalmat, az alkalmazás és más alkalmazások közötti kapcsolati modellt, valamint a nyilvános interneten elérhető szolgáltatásvégpontokat.
 
-Fontos, hogy az alkalmazások elég rugalmasak legyenek ahhoz, hogy az alkalmazásra irányuló szolgáltatásmegtagadás ne legyen a legfontosabb. A biztonság és az adatvédelem az Azure platformra épül, a [biztonsági fejlesztési életciklussal (SDL)](https://www.microsoft.com/sdl)kezdve. Az SDL minden fejlesztési fázisban kezeli a biztonságot, és gondoskodik arról, hogy az Azure-t folyamatosan frissítsék, hogy még biztonságosabb legyen.
+A legfontosabb annak biztosítása, hogy egy alkalmazás elég rugalmas legyen ahhoz, hogy kezelni tudja az alkalmazást célzó szolgáltatásmegtagadást. A biztonság és az adatvédelem az Azure platformba van beépítve, a Security [Development Lifecycle (SDL) (Biztonsági fejlesztési életciklussal (SDL) kezdve).](https://www.microsoft.com/sdl) Az SDL minden fejlesztési fázisban foglalkozik a biztonsággal, és gondoskodik arról, hogy az Azure folyamatosan frissül, hogy még biztonságosabb legyen.
 
-**Ajánlott eljárás**: Tervezze meg, hogy az alkalmazások [horizontálisan méretezhetők](/azure/architecture/guide/design-principles/scale-out) legyenek, hogy megfeleljenek egy felerősített terhelés igényének, különösen a DDOS-támadások esetén. Ha az alkalmazása egy szolgáltatás egyetlen példányán múlik, akkor az egyetlen meghibásodási pontot hoz létre. A több példány kiépítés révén a rendszerek rugalmasabbak és méretezhetők.  
-**Részletek**: [Azure app Service](../../app-service/overview.md)esetében válasszon ki egy olyan [app Service tervet](../../app-service/overview-hosting-plans.md) , amely több példányt is kínál.
+**Ajánlott eljárás:** Az [](/azure/architecture/guide/design-principles/scale-out) alkalmazásokat úgy tervezz meg, hogy horizontálisan skálázva, az amplified terhelési igényeknek megfelelően skálázva, különösen DDoS-támadás esetén. Ha az alkalmazás egy szolgáltatás egyetlen példányától függ, egyetlen meghibásodási pontot hoz létre. Több példány kiépítése rugalmasbbá és skálázhatóbbá teszi a rendszert.  
+**Részletek:** A [Azure App Service](../../app-service/overview.md)válasszon ki egy [App Service több](../../app-service/overview-hosting-plans.md) példányt is kínál.
 
-Az Azure Cloud Services esetében konfigurálja az egyes szerepköröket [több példány](../../cloud-services/cloud-services-choose-me.md)használatára.
+A Azure Cloud Services konfigurálja az egyes szerepköröket úgy, hogy több [példányt használjanak.](../../cloud-services/cloud-services-choose-me.md)
 
-Az [Azure Virtual Machines](../../virtual-machines/windows/overview.md)esetén győződjön meg arról, hogy a virtuálisgép-architektúra több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](../../virtual-machines/windows/tutorial-availability-sets.md)tartozik. Javasoljuk, hogy használjon virtuálisgép-méretezési csoportokat az automatikus skálázási képességekhez.
+Az Azure Virtual Machines győződjön meg [arról,](../../virtual-machines/windows/overview.md)hogy a virtuálisgép-architektúra egynél több virtuális gépet tartalmaz, és hogy mindegyik virtuális gép szerepel egy [rendelkezésre állási készletben.](../../virtual-machines/windows/tutorial-availability-sets.md) Az automatikus skálázáshoz a virtuálisgép-méretezési készletek használatát javasoljuk.
 
-**Ajánlott eljárás**: a biztonsági védelem egy alkalmazásban való rétegződése csökkenti a sikeres támadás esélyét. Hozzon létre biztonságos terveket az alkalmazásaihoz az Azure platform beépített képességeinek használatával.  
-**Részletek**: a támadás kockázata az alkalmazás méretével (felszíni területével) növekszik. A felszín területét egy jóváhagyási lista használatával csökkentheti a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok figyelése ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) és az [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)).
+**Ajánlott eljárás:** A biztonsági védelem alkalmazáson való rétegezése csökkenti a sikeres támadások esélyét. Biztonságos kialakításokat valósíthat meg alkalmazásai számára az Azure platform beépített képességeinek használatával.  
+**Részletek:** A támadás kockázata az alkalmazás méretével (felületével) együtt növekszik. A felület csökkentéséhez egy jóváhagyási lista segítségével bezárhatja a felfedett IP-címteret, és figyelheti azokat a portokat, amelyekre nincs szükség a terheléseltöltőkben[(Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) és [Azure Application Gateway).](../../application-gateway/application-gateway-create-probe-portal.md)
 
-A [hálózati biztonsági csoportok](../../virtual-network/network-security-groups-overview.md) egy másik módszer a támadási felület csökkentésére. A [szolgáltatási címkék](../../virtual-network/network-security-groups-overview.md#service-tags) és az [alkalmazás-biztonsági csoportok](../../virtual-network/network-security-groups-overview.md#application-security-groups) használatával csökkentheti a biztonsági szabályok létrehozásának összetettségét, és konfigurálhatja a hálózati biztonságot az alkalmazások struktúrájának természetes kiterjesztéseként.
+[A hálózati biztonsági csoportok](../../virtual-network/network-security-groups-overview.md) egy másik módja a támadási felület csökkentésének. A szolgáltatáscímkék [](../../virtual-network/network-security-groups-overview.md#application-security-groups) [és](../../virtual-network/network-security-groups-overview.md#service-tags) alkalmazásbiztonsági csoportok használatával minimalizálhatja a biztonsági szabályok létrehozásának és a hálózati biztonság konfigurálásának összetettségét az alkalmazás struktúrájának természetes kiterjesztéseként.
 
-Amikor csak lehetséges, üzembe kell helyeznie az Azure-szolgáltatásokat egy [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) . Ez a gyakorlat lehetővé teszi a szolgáltatási erőforrások számára, hogy magánhálózati IP-címeken keresztül kommunikáljanak egymással. A virtuális hálózatról származó Azure-szolgáltatási forgalom alapértelmezés szerint a nyilvános IP-címeket használja forrás IP-címként.
+Amikor csak lehetséges, üzembe kell helyeznie az [Azure-szolgáltatásokat](../../virtual-network/virtual-networks-overview.md) egy virtuális hálózatban. Ez a gyakorlat lehetővé teszi, hogy a szolgáltatási erőforrások magánhálózati IP-címeken keresztül kommunikáljanak. A virtuális hálózatról származó Azure-szolgáltatások forgalma alapértelmezés szerint nyilvános IP-címeket használ forrás IP-címként.
 
-A [szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) használatával a szolgáltatás forgalma virtuális hálózati magánhálózati címeket használ forrás IP-címként, amikor egy virtuális hálózatról érik el az Azure-szolgáltatást.
+A [szolgáltatásvégpontokkal](../../virtual-network/virtual-network-service-endpoints-overview.md) a szolgáltatásforgalom átváltható a virtuális hálózat magánhálózati címeinek forrás IP-címként való használatára, amikor egy virtuális hálózatról férnek hozzá az Azure-szolgáltatáshoz.
 
-Gyakran tekintjük meg az ügyfelek helyszíni erőforrásait az Azure-beli erőforrásaikkal együtt. Ha helyszíni környezetet csatlakoztat az Azure-hoz, csökkentse a helyszíni erőforrások a nyilvános internethez való hozzáférését.
+Gyakran előfordul, hogy az azure-beli erőforrásokkal együtt az ügyfelek helyszíni erőforrásait is megtámadják. Ha helyszíni környezetet csatlakoztat az Azure-hoz, minimalizálja a helyszíni erőforrások nyilvános internettel való kitettségét.
 
-Az Azure két DDoS [Service-ajánlattal](../../ddos-protection/ddos-protection-overview.md) rendelkezik, amelyek védelmet biztosítanak a hálózati támadásoktól:
+Az Azure két [](../../ddos-protection/ddos-protection-overview.md) DDoS-szolgáltatásajánlattal rendelkezik, amelyek védelmet nyújtanak a hálózati támadások ellen:
 
-- Alapértelmezés szerint az alapszintű védelem az Azure-ba van integrálva, felár nélkül. A globálisan üzembe helyezett Azure-hálózat skálázása és kapacitása védelmet nyújt a közös hálózati rétegbeli támadásokkal szemben a folyamatos forgalom monitorozása és a valós idejű mérséklés révén. Az alapszintű felhasználónak nincs szükség felhasználói konfigurációra vagy alkalmazásra, és megvédheti az összes Azure-szolgáltatást, beleértve a Pásti-szolgáltatásokat, mint a Azure DNS.
-- A standard szintű védelem fejlett DDoS-elhárítási képességeket biztosít a hálózati támadásokkal szemben. A rendszer automatikusan hangolja az adott Azure-erőforrások megóvására. A védelem egyszerűen engedélyezhető a virtuális hálózatok létrehozása során. A létrehozás után is elvégezhető, és nem igényel alkalmazás-vagy erőforrás-módosítást.
+- Az alapszintű védelem alapértelmezés szerint további költségek nélkül integrálva van az Azure-ba. A globálisan üzembe helyezett Azure-hálózat skálája és kapacitása védelmet nyújt a gyakori hálózati rétegbeli támadások ellen a folyamatos forgalomfigyelés és a valós idejű kockázatcsökkentés révén. Az Alapszintű szolgáltatás nem igényel felhasználói konfigurációt vagy alkalmazásváltozásokat, és segít megvédeni az összes Azure-szolgáltatást, beleértve az olyan PaaS-szolgáltatásokat is, mint Azure DNS.
+- A standard szintű védelem fejlett DDoS-kockázatcsökkentési képességeket biztosít a hálózati támadások ellen. A rendszer automatikusan behangolja az adott Azure-erőforrások védelme érdekében. A virtuális hálózatok létrehozása során a védelem egyszerűen engedélyezhető. A létrehozás után is használhatja, és nem igényel alkalmazás- vagy erőforrás-módosításokat.
 
-## <a name="enable-azure-policy"></a>Azure Policy engedélyezése
-[Azure Policy](../../governance/policy/overview.md) a szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez használt Azure-szolgáltatás. Ezek a szabályzatok kikényszerítik az erőforrásokra vonatkozó szabályokat és hatásokat, így ezek az erőforrások megfelelnek a vállalati szabványoknak és a szolgáltatói szerződéseknek. Az Azure Policy úgy tesz eleget ezeknek az elvárásoknak, hogy kiértékeli, megfelelnek-e az erőforrások a hozzájuk rendelt szabályzatoknak.
+## <a name="enable-azure-policy"></a>A Azure Policy
+[Azure Policy](../../governance/policy/overview.md) azure-beli szolgáltatás, amely szabályzatok létrehozására, hozzárendelésére és kezelésére használható. Ezek a szabályzatok szabályokat és hatásokat kényszerítik ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy úgy tesz eleget ezeknek az elvárásoknak, hogy kiértékeli, megfelelnek-e az erőforrások a hozzájuk rendelt szabályzatoknak.
 
-Engedélyezze Azure Policy a szervezet írásos szabályzatának figyelését és betartatását. Ez biztosítja a vállalat vagy a szabályozás biztonsági követelményeinek való megfelelést azáltal, hogy központilag kezeli a biztonsági szabályzatokat a hibrid felhőalapú számítási feladatokban. Ismerje meg, hogyan [hozhat létre és kezelhet szabályzatokat a megfelelőség érvényesítéséhez](../../governance/policy/tutorials/create-and-manage.md). A szabályzat elemeinek áttekintéséhez tekintse meg [Azure Policy definíciós struktúrát](../../governance/policy/concepts/definition-structure.md) .
+Engedélyezze Azure Policy a szervezet írásos szabályzatának figyelése és betartatás érdekében. Ez biztosítja a vállalat vagy a jogszabályi biztonsági követelmények betartását a hibrid felhőalapú számítási feladatok biztonsági szabályzatai központi felügyeletével. Megtudhatja, hogyan [hozhat létre és kezelhet szabályzatokat a megfelelőség kikényszerítenie.](../../governance/policy/tutorials/create-and-manage.md) A [Azure Policy elemeinek](../../governance/policy/concepts/definition-structure.md) áttekintéséhez tekintse meg a Azure Policy definíciószerkezetét ismertető témakört.
 
-Íme néhány ajánlott biztonsági eljárás, amelyet a Azure Policy elfogadása után követhet nyomon:
+Az alábbi ajánlott biztonsági eljárásokat kell követnie a Azure Policy:
 
-**Ajánlott eljárás**: a szabályzat többféle típusú effektust is támogat. Ezekről [Azure Policy definíciós struktúrában](../../governance/policy/concepts/definition-structure.md#policy-rule)olvashat. Az üzleti műveleteket negatívan érintheti a **megtagadási** hatás és a **szervizelési** hatás, ezért a **naplózási** hatás megadásával korlátozhatja a házirend negatív hatásának kockázatát.   
-**Részletek**: [megkezdi a házirend központi telepítését a naplózási módban](../../governance/policy/concepts/definition-structure.md#policy-rule) , majd később **elutasítja** vagy **szervizelni** a folyamatot. A **Megtagadás** vagy a **szervizelés** előtt tesztelje és tekintse át a naplózási effektus eredményét.
+**Ajánlott eljárás:** A szabályzat számos hatástípust támogat. A definíciók szerkezetében olvashat [Azure Policy őket.](../../governance/policy/concepts/definition-structure.md#policy-rule) Az üzleti műveleteket hátrányosan érintheti a  megtagadási és a javítási  hatás, ezért kezdje a naplózási hatással, hogy korlátozza a szabályzat negatív hatásainak kockázatát.    
+**Részletek:** [Indítsa el a házirendek központi telepítését naplózási módban,](../../governance/policy/concepts/definition-structure.md#policy-rule) majd később tiltsa le vagy **orvosolja a következőt:**.  Tesztelje és tekintse át a naplózási  hatás eredményeit, mielőtt továbblép a megtagadási vagy **szervizeléssel kapcsolatosra.**
 
-További információ: [házirendek létrehozása és kezelése a megfelelőség kikényszerítása érdekében](../../governance/policy/tutorials/create-and-manage.md).
+További információ: Szabályzatok [létrehozása és kezelése a megfelelőség kényszerítéséhez.](../../governance/policy/tutorials/create-and-manage.md)
 
-**Ajánlott eljárás**: a szabályzat megsértésének figyeléséhez felelős szerepkörök azonosítása, valamint a megfelelő szervizelési műveletek gyors elvégzésének biztosítása.   
-**Részletek**: a hozzárendelt szerepkör-figyelő megfelelősége a [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) vagy a [parancssoron](../../governance/policy/how-to/get-compliance-data.md#command-line)keresztül.
+**Ajánlott eljárás:** Azonosítsa a szabályzatsértések monitorozásáért felelős szerepköröket, és biztosítsa a megfelelő szervizelési művelet gyors követését.   
+**Részletek:** A hozzárendelt szerepkör-figyelő megfelelőségét a Azure Portal [vagy](../../governance/policy/how-to/get-compliance-data.md#portal) a [parancssor használatával kell ellenőrizni.](../../governance/policy/how-to/get-compliance-data.md#command-line)
 
-**Ajánlott eljárás**: Azure Policy a szervezet írásos szabályzatának technikai ábrázolása. Társítsa az összes Azure Policy definíciót a szervezeti házirendekhez, hogy csökkentse a zavart és növelje a konzisztenciát.   
-**Részletek**: dokumentumok leképezése a szervezet dokumentációjában vagy maga a Azure Policy-definícióban a szervezeti házirendre mutató hivatkozás hozzáadásával a [házirend-definícióban](../../governance/policy/concepts/definition-structure.md#display-name-and-description) vagy a [kezdeményezés definíciójának](../../governance/policy/concepts/initiative-definition-structure.md#metadata) leírása.
+**Ajánlott eljárás:** Azure Policy a szervezet írásos szabályzatának technikai reprezentációja. Az összes Azure Policy leképezheti a szervezeti szabályzatokat a félreértések csökkentése és a konzisztencia növelése érdekében.   
+**Részletek:** Dokumentumleképezés a szervezet dokumentációjában vagy magában a Azure Policy-definícióban úgy, [](../../governance/policy/concepts/definition-structure.md#display-name-and-description) hogy hozzáad egy hivatkozást a szervezeti szabályzathoz a szabályzatdefinícióban vagy a kezdeményezési definíció [leírásában.](../../governance/policy/concepts/initiative-definition-structure.md#metadata)
 
-## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
-A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/identity-protection/overview-identity-protection.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/identity-protection/overview-identity-protection.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/identity-protection/overview-identity-protection.md).
+## <a name="monitor-azure-ad-risk-reports"></a>Az Azure AD kockázati jelentésének figyelése
+A biztonsági incidensek túlnyomó többsége akkor történik, amikor a támadók egy felhasználó identitásának ellopása által hozzáférést szereznek a környezethez. A feltört identitások felderítése nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikát használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. Minden észlelt gyanús művelet egy kockázatészlelési nevű [rekordban van tárolva.](../../active-directory/identity-protection/overview-identity-protection.md) A kockázatészleléseket az Azure AD biztonsági jelentései rögzítik. További információért olvassa [](../../active-directory/identity-protection/overview-identity-protection.md) el a veszélyeztetett felhasználókról szóló biztonsági jelentést és a kockázatos bejelentkezések [biztonsági jelentését.](../../active-directory/identity-protection/overview-identity-protection.md)
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
+A [felhőalapú](best-practices-and-patterns.md) megoldások Azure-ral való tervezésekor, üzembe helyezésekor és kezelésekor használható további ajánlott biztonsági eljárásokért tekintse meg az Azure biztonsági ajánlott eljárásait és mintáit.
 
-Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
-* Az [Azure Security csapatának blogja](/archive/blogs/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, jelentések vagy e-mailen keresztül secure@microsoft.com
+Az Alábbi források általánosabb információkat nyújtanak az Azure biztonságával és a kapcsolódó Microsoft-szolgáltatások:
+* [Az Azure Security csapat blogja](/archive/blogs/azuresecurity/) – naprakész információk az Azure Security legújabb verziójáról
+* [Microsoft Biztonsági reagálási központ](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági réseit, beleértve az Azure-ral kapcsolatos problémákat, jelenteni lehet, vagy e-mailben a következő címre: secure@microsoft.com

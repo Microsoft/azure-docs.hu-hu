@@ -371,7 +371,7 @@
           displayName: bulk import
         - name: Partnerintegráció
           items:
-            - name: N8identity (N8-azonosító)
+            - name: N8identity (N8identity)
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
@@ -460,6 +460,8 @@
                   href: aad-sspr-technical-profile.md
                 - name: Jogcím-átalakítás
                   href: claims-transformation-technical-profile.md
+                - name: Feltételes hozzáférés
+                  href: conditional-access-technical-profile.md
                 - name: Azonosító jogkivonatokra vonatkozó tippek
                   href: id-token-hint.md
                 - name: JWT-jogkivonatkiállító

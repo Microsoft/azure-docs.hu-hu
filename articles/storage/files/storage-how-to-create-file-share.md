@@ -5,95 +5,98 @@ description: Azure-fájlmegosztás létrehozása a Azure Portal, a PowerShell va
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 1/20/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 91f42ae671cb1696e5b088bafde8362cf19ce856
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211022"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717960"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
+Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolni a használatával kapcsolatban:
 
-- **Mik az Azure-fájlmegosztás teljesítményével kapcsolatos követelmények?**  
-    A Azure Files a merevlemez-alapú (HDD-alapú) hardverek és a prémium fájlmegosztás (SSD-alapú) hardveren üzemeltetett szabványos fájlmegosztást kínálja.
+- **Mik az Azure-fájlmegosztás teljesítménykövetelményei?**  
+    Azure Files standard fájlmegosztásokat biztosít, amelyek merevlemez-alapú (HDD-alapú) hardveren, valamint prémium fájlmegosztásokat kínálnak, amelyek SSD-alapú hardveren vannak üzemeltetve.
 
-- **Milyen redundancia-követelményeket támaszt az Azure-fájlmegosztás?**  
-    A standard fájlmegosztás a helyileg redundáns (LRS), a Zone redundáns (ZRS), a Geo-redundáns (GRS) vagy a Geo-zóna-redundáns (GZRS) tárolókat kínálja, azonban a nagyméretű fájlmegosztás funkció csak a helyileg redundáns és a zóna redundáns fájlmegosztás esetén támogatott. A prémium szintű fájlmegosztás nem támogatja a Geo-redundancia bármely formáját.
+- **Mik az Azure-fájlmegosztás redundanciakövetelményei?**  
+    A standard fájlmegosztások helyileg redundáns (LRS), zónaredundáns (ZRS), georedundáns (GRS) vagy geo-zónaredundáns (GZRS) tárolást kínálnak, a nagyméretű fájlmegosztási funkció azonban csak a helyileg redundáns és zónaredundáns fájlmegosztások esetében támogatott. A prémium fájlmegosztások semmilyen georedundaniát nem támogatnak.
 
-    A prémium szintű fájlmegosztás a régiók egy részhalmazában érhető el a helyi redundancia és a zóna-redundancia révén. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . További információ a ZRS támogató régiókkal kapcsolatban: [Azure Storage redundancia](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    A prémium fájlmegosztások helyi redundanciával és zónaredundanssal érhetők el a régiók egy részében. Ha meg kell tudni, hogy a prémium szintű [](https://azure.microsoft.com/global-infrastructure/services/?products=storage) fájlmegosztások jelenleg elérhetők-e az Ön régiójában, tekintse meg az Azure régiónként elérhető termékeit. A ZRS-t támogató régiókról az [Azure Storage redundanciával kapcsolatos cikk nyújt tájékoztatást.](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-- **Milyen méretű fájlmegosztás szükséges?**  
-    A helyi és a zónában redundáns Storage-fiókok esetében az Azure-fájlmegosztás akár 100 TiB-ra is terjedhet, azonban a Geo-és a Geo-zónában redundáns tárolási fiókok esetében az Azure-fájlmegosztás csak legfeljebb 5 TiB-ra terjedhet. 
+- **Milyen méretű fájlmegosztásra van szüksége?**  
+    A helyi és zónaredundáns tárfiókok esetében az Azure-fájlmegosztások akár 100 TiB-ra is kitérnek, a geo- és geozónaredundáns tárfiókok esetében azonban az Azure-fájlmegosztások legfeljebb 5 TiB-ra is átívelnek. 
 
-A három lehetőségről további információt a [Azure Files központi telepítésének tervezése](storage-files-planning.md)című témakörben talál.
+További információ a három lehetőségről: [Planning for an Azure Files deployment](storage-files-planning.md)..
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Ez a cikk azt feltételezi, hogy már létrehozott egy Azure-előfizetést. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
-- Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
+- Ez a cikk feltételezi, hogy már létrehozott egy Azure-előfizetést. Ha még nem rendelkezik előfizetéssel, először [](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) hozzon létre egy ingyenes fiókot.
+- Ha az alkalmazást szeretné Azure PowerShell, [telepítse a legújabb verziót.](/powershell/azure/install-az-ps)
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót.](/cli/azure/install-azure-cli)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
-Az Azure-fájlmegosztás *tárolási fiókokra* van telepítve, amelyek a tárolók megosztott készletét képviselő legfelső szintű objektumok. Ez a tárterület több fájlmegosztás üzembe helyezésére is használható. 
+Az Azure-fájlmegosztások tárfiókban *vannak üzembe* osztva. Ezek olyan legfelső szintű objektumok, amelyek egy megosztott tárolókészletet képviselnek. Ez a tárolókészlet több fájlmegosztás üzembe helyezésére is használható. 
 
-Az Azure több típusú Storage-fiókot támogat a különböző tárolási forgatókönyvekhez, de a Azure Files két fő típusa van. A létrehozandó Storage-fiók típusa attól függ, hogy szabványos fájlmegosztást vagy prémium szintű fájlmegosztást szeretne-e létrehozni: 
+Az Azure többféle tárfióktípust támogat az ügyfelek különböző tárolási forgatókönyvei esetében, de a tárfiókok két fő típusa Azure Files. A létrehozni kívánt tárfiók típusa attól függ, hogy standard vagy prémium szintű fájlmegosztást szeretne létrehozni: 
 
-- **Általános célú 2-es verziójú (GPv2) Storage-fiókok**: a GPv2 Storage-fiókok lehetővé teszik az Azure-fájlmegosztás szabványos/merevlemez-alapú (HDD-alapú) hardveren való üzembe helyezését. Az Azure-fájlmegosztás tárolásán kívül a GPv2 más tárolási erőforrásokat is tárolhat, például blob-tárolókat, várólistákat vagy táblákat. A fájlmegosztás üzembe helyezhető a tranzakcióra optimalizált (alapértelmezett), a gyors vagy a lassú elérésű szinteken.
+- **Általános célú, 2. verziójú (GPv2)** tárfiókok: A GPv2-tárfiókok lehetővé teszik az Azure-fájlmegosztások standard/merevlemez-alapú (HDD-alapú) hardveren való üzembe helyezését. Az Azure-fájlmegosztások tárolása mellett a GPv2-tárfiókok más tárolási erőforrásokat, például blobtárolókat, üzenetsorokat vagy táblákat is tárolnak. A fájlmegosztások üzembe helyezhetők a tranzakcióoptimalált (alapértelmezett), a gyors és a hűtési szinten.
 
-- **FileStorage Storage-fiókok**: a FileStorage Storage-fiókok lehetővé teszik az Azure-fájlmegosztás prémium/SSD-alapú (SSD-alapú) hardveren való üzembe helyezését. FileStorage-fiókokat csak az Azure-fájlmegosztás tárolására lehet használni; egy FileStorage-fiókban nem helyezhetők üzembe más tárolási erőforrások (blob-tárolók, várólisták, táblák stb.).
+- **FileStorage** tárfiókok: A FileStorage tárfiókok lehetővé teszik azure-fájlmegosztások prémium/SSD-alapú (SSD-alapú) hardveren való üzembe helyezését. A FileStorage-fiókok csak Azure-fájlmegosztások tárolására használhatók; A FileStorage-fiókban nem helyezhetők üzembe más tárolási erőforrások (blobtárolók, üzenetsorok, táblák stb.).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Ha Storage-fiókot szeretne létrehozni a Azure Portalon keresztül, válassza az **+ erőforrás létrehozása** lehetőséget az irányítópulton. Az eredményül kapott Azure Marketplace keresési ablakban keresse meg a **Storage-fiók** elemet, és válassza ki a találatok eredményét. Ez egy, a Storage-fiókok áttekintő lapjára fog vezetni; Válassza a **Létrehozás** lehetőséget a Storage-fiók létrehozása varázsló folytatásához.
+Tárfiók létrehozásához a Azure Portal válassza **az + Erőforrás** létrehozása lehetőséget az irányítópultról. Az eredményül kapott Azure Marketplace keresési ablakban keressen rá a **tárfiók** kifejezésre, és válassza ki az eredményül kapott keresési eredményt. Ez a tárfiókok áttekintő oldalára vezet; Válassza **a Létrehozás** lehetőséget a tárfiók-létrehozási varázslóval való folytatáshoz.
 
-![A Storage-fiók gyors létrehozási lehetőségének képernyőképe egy böngészőben](media/storage-how-to-create-file-share/create-storage-account-0.png)
+![Képernyőkép a tárfiók böngészőben való gyors létrehozási lehetőségével](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
 #### <a name="basics"></a>Alapvető beállítások
-A Storage-fiók létrehozásához szükséges első szakasz az **alapok** címkéje. Ez tartalmazza az összes kötelező mezőt a Storage-fiók létrehozásához. GPv2-fiók létrehozásához győződjön meg arról, hogy a **teljesítmény** választógomb a *standard* értékre van beállítva, és a **Fiók típusa** legördülő lista *StorageV2 (általános célú v2)* van kiválasztva.
+A tárfiók létrehozásához szükséges első szakasz a **Basics (Alapvető adatok) címkével van megcímkézve.** Ez tartalmazza a tárfiók létrehozásához szükséges összes mezőt. GPv2-tárfiók létrehozásához győződjön  meg arról, hogy a  Teljesítmény választógomb *Standard,* a Fiók aljának legördülő listája pedig *StorageV2 (általános célú v2)*.
 
-![Képernyőfelvétel a teljesítmény választógombról a szabványos kiválasztott és a StorageV2 kiválasztott fiókkal](media/storage-how-to-create-file-share/create-storage-account-1.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-standard.png" alt-text="Képernyőkép a teljesítmény választógombról, a standard és a fiók fajtájával, a storagev2 elem kijelölve.":::
 
-FileStorage-fiók létrehozásához győződjön meg arról, hogy a **teljesítmény** választógomb a *prémium* értékre van beállítva, és a **Fiók típusa** legördülő lista *FileStorage* van kiválasztva.
+FileStorage tárfiók létrehozásához győződjön  meg arról, hogy a Teljesítmény választógomb *a Prémium,* a **Fájlmegosztások** pedig a **Prémium** fiók típusa legördülő listában van kiválasztva.
 
-![Képernyőkép a teljesítmény választógombról a prémium kiválasztott és a FileStorage kiválasztott fiókkal](media/storage-how-to-create-file-share/create-storage-account-2.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Képernyőkép a teljesítmény választógombról, a prémium elem és a fiók fajtája a kiválasztott filestorage elemekkel.":::
 
-A többi alapvető mező független a választható Storage-fióktól:
-- **Storage-fiók neve**: a létrehozandó Storage-fiók erőforrásának neve. Ennek a névnek globálisan egyedinek kell lennie, de bármilyen más nevet is megadhat. Az Azure-fájlmegosztás SMB-n keresztüli csatlakoztatásakor a rendszer a Storage-fiók nevét fogja használni.
-- **Hely**: az-ban telepítendő Storage-fiók régiója. Ez lehet az erőforráscsoporthoz vagy bármely más elérhető régióhoz társított régió.
-- **Replikáció**: bár ez a replikáció címkével van ellátva, ez a mező valójában **redundanciát** jelent. Ez a kívánt redundancia-szint: helyileg redundancia (LRS), Zone redundancia (ZRS), Geo-redundancia (GRS) és geo-Zone-redundancia (GZRS). Ez a legördülő lista olvasási hozzáférésű geo-redundancia (RA-GRS) és olvasási hozzáférésű geo-Zone redundancia (RA-GZRS) is tartalmaz, amelyek nem vonatkoznak az Azure-fájlmegosztás; a kiválasztott Storage-fiókban létrehozott fájlmegosztás valójában geo-redundáns vagy geo-Zone-redundáns lesz. 
+A többi alapvető mező független a választott tárfióktól:
+- **Tárfiók neve:** A létrehozni szükséges tárfiók-erőforrás neve. Ennek a névnek globálisan egyedinek kell lennie, de más esetben bármilyen nevet kíván. Amikor SMB-n keresztül csatlakoztat egy Azure-fájlmegosztást, a rendszer a tárfiók nevét használja kiszolgálónévként.
+- **Hely:** A tárfiók üzembe helyezési régiója. Ez lehet az erőforráscsoporthoz társított régió vagy bármely más elérhető régió.
+- **Replikáció:** Bár ez a replikáció címkével van megcímkézve, ez a mező valójában **redundanciát jelent;** Ez a kívánt redundanciaszint: helyi redundancia (LRS), zónaredundania (ZRS), georedundania (GRS) és geo-zónaredundania (GZRS). Ez a legördülő lista az írási hozzáférésű georedundaniát (RA-GRS) és az írási hozzáférésű geozóna-redundanciát (RA-GZRS) is tartalmazza, amelyek nem vonatkoznak az Azure-fájlmegosztások esetében; A kiválasztott tárfiókban létrehozott fájlmegosztások valójában georedundánsak vagy geo-zónaredundánsak lesznek. 
 
 #### <a name="networking"></a>Hálózatkezelés
-A hálózatkezelés szakasz a hálózatkezelési beállítások konfigurálását teszi lehetővé. Ezek a beállítások nem kötelezőek a Storage-fiók létrehozásához, és szükség esetén később is konfigurálhatók. További információ ezekről a lehetőségekről: [Azure Files hálózatkezelési megfontolások](storage-files-networking-overview.md).
+A hálózat szakaszban konfigurálhatja a hálózati beállításokat. Ezek a beállítások nem kötelezők a tárfiók létrehozásához, és szükség esetén később is konfigurálhatóak. További információ ezekről a lehetőségekről: Azure Files [megfontolandó szempontok.](storage-files-networking-overview.md)
 
 #### <a name="data-protection"></a>Adatvédelem
-Az adatvédelem szakasz lehetővé teszi az Azure-fájlmegosztás törlésére vonatkozó szabályzat konfigurálását a Storage-fiókban. A Blobok, tárolók, időponthoz való visszaállítás a tárolók, a verziószámozás és a módosítási hírcsatorna esetében csak az Azure Blob Storage szolgáltatásra vonatkozik.
+Az adatvédelemről szóló szakaszban konfigurálhatja a tárfiókban található Azure-fájlmegosztások törlési szabályzatát. A blobok, tárolók, tárolók helyreállítható törléséhez, a tárolók időponthoz megadott visszaállításához, a verziószámozáshoz és a változáscsatornához kapcsolódó egyéb beállítások csak az Azure Blob Storage-ban érvényesek.
 
 #### <a name="advanced"></a>Felsőfokú
-A speciális szakasz számos fontos beállítást tartalmaz az Azure-fájlmegosztás számára:
+A speciális szakasz az Azure-fájlmegosztások számos fontos beállítását tartalmazza:
 
-- **Biztonságos átvitel szükséges**: ebben a mezőben azt jelzi, hogy a Storage-fiókhoz szükség van-e a Storage-fiókkal folytatott kommunikáció titkosítására. Ha az SMB 2,1-támogatásra van szüksége, le kell tiltania ezt.
-- **Nagyméretű fájlmegosztás**: ebben a mezőben engedélyezhető a fájlmegosztást a 100 TiB-ra felölelő fájlmegosztás. Ha engedélyezi ezt a funkciót, a Storage-fiók csak a helyileg redundáns és a zónák redundáns tárolási lehetőségeire lesz korlátozva. Ha a GPv2 Storage-fiók engedélyezve lett a nagyméretű fájlmegosztás esetében, nem tilthatja le a nagyméretű fájlmegosztás funkciót. A FileStorage Storage-fiókok (Storage-fiókok prémium fájlmegosztás esetén) nem rendelkeznek ezzel a lehetőséggel, mivel az összes prémium fájlmegosztás akár 100 TiB-ra is méretezhető. 
+- **Biztonságos átvitelre van** szükség: Ez a mező azt jelzi, hogy a tárfiók titkosítást igényel-e az átvitel során a tárfiókkal való kommunikációhoz. Ha SMB 2.1-támogatásra van szüksége, ezt le kell tiltania.
 
-![Képernyőkép a Azure Files vonatkozó fontos speciális beállításokról](media/storage-how-to-create-file-share/create-storage-account-3.png)
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-secure-transfer.png" alt-text="Képernyőkép a tárfiók speciális beállításaiban engedélyezett biztonságos átvitelről.":::
 
-A Speciális lapon elérhető egyéb beállítások (a Azure Data Lake-tároló (2. generációs, alapértelmezett blob-réteg, NFSv3 stb.) nem vonatkoznak a Azure Filesra.
+- **Nagyméretű fájlmegosztások:** Ez a mező engedélyezi a legfeljebb 100 TiB méretű fájlmegosztások tárfiókját. A funkció engedélyezésével a tárfiók csak helyileg redundáns és zónaredundáns tárolási lehetőségekre lesz korlátozva. Miután engedélyezte a GPv2-tárfiókot a nagyméretű fájlmegosztások számára, nem tilthatja le a nagyméretű fájlmegosztási képességet. A FileStorage tárfiókok (a prémium fájlmegosztások tárfiókja) nem használhatja ezt a lehetőséget, mivel az összes prémium fájlmegosztás akár 100 TiB-ra is skálázhat. 
+
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-large-file-shares.png" alt-text="Képernyőkép a nagyméretű fájlmegosztás beállításról a tárfiók speciális panelen.":::
+
+A speciális lapon elérhető egyéb beállítások (hierarchikus névtér az Azure Data Lake Storage Gen2-hez, alapértelmezett blobszint, NFSv3 blobtárolókhoz stb.) nem vonatkoznak a Azure Files.
 
 > [!Important]  
-> A blob-hozzáférési szintek kiválasztásakor nincs hatással a fájlmegosztás szintjére.
+> A blob-hozzáférési szint kiválasztása nincs hatással a fájlmegosztás rétegére.
 
 #### <a name="tags"></a>Címkék
-A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését, ha ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. Ezek opcionálisak, és a Storage-fiók létrehozása után is alkalmazhatók.
+A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését azáltal, hogy ugyanazt a címkét több erőforrásra és erőforráscsoportra is alkalmazza. Ezek nem kötelezőek, és a tárfiók létrehozása után alkalmazhatók.
 
 #### <a name="review--create"></a>Ellenőrzés és létrehozás
-A Storage-fiók létrehozásának utolsó lépése a **Létrehozás** gomb kijelölése a **felülvizsgálat + létrehozás** lapon. Ez a gomb nem érhető el, ha a Storage-fiók összes kötelező mezője nincs kitöltve.
+A tárfiók létrehozásához utolsó lépésként  válassza a Létrehozás gombot az **Áttekintés + létrehozás lapon.** Ez a gomb nem lesz elérhető, ha a tárfiók összes kötelező mezője nincs kitöltve.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Ha a PowerShell használatával hoz létre egy Storage-fiókot, a `New-AzStorageAccount` parancsmagot fogjuk használni. Ennek a parancsmagnak számos lehetősége van; csak a szükséges beállítások jelennek meg. A speciális beállításokkal kapcsolatos további tudnivalókért tekintse meg a [ `New-AzStorageAccount` parancsmag dokumentációját](/powershell/module/az.storage/new-azstorageaccount).
+Tárfiók PowerShell használatával való létrehozásához a `New-AzStorageAccount` parancsmagot fogjuk használni. Ez a parancsmag számos beállítási lehetőséget kínál; csak a szükséges beállítások jelennek meg. A speciális beállításokkal kapcsolatos további információkért tekintse meg a [ `New-AzStorageAccount` parancsmagok dokumentációját.](/powershell/module/az.storage/new-azstorageaccount)
 
-A Storage-fiók és a további fájlmegosztás létrehozásának egyszerűbbé tételéhez több paramétert is tárolunk a változókban. A változó tartalmait tetszés szerinti értékre cserélheti, azonban vegye figyelembe, hogy a Storage-fiók nevének globálisan egyedinek kell lennie.
+A tárfiók és az azt követő fájlmegosztás létrehozásának egyszerűsítése érdekében számos paramétert tárolunk változókban. A változó tartalmát lecserélheti bármilyen kívánt értékre, azonban vegye figyelembe, hogy a tárfiók nevének globálisan egyedinek kell lennie.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -101,7 +104,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `-SkuName` paraméter a kívánt redundancia típusára vonatkozik; ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne használni, akkor a paramétert is el kell távolítania `-EnableLargeFileShare` .
+A standard Azure-fájlmegosztások tárolására alkalmas tárfiók létrehozásához a következő parancsot fogjuk használni. A paraméter a kívánt redundancia típusával kapcsolatos. Ha georedundáns vagy geozónaredundáns tárfiókot szeretne, akkor a paramétert is el kell `-SkuName` `-EnableLargeFileShare` távolítania.
 
 ```powershell
 $storAcct = New-AzStorageAccount `
@@ -113,7 +116,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a `-SkuName` paraméter úgy módosult, hogy mindkettőt `Premium` és a helyileg redundáns () kívánt redundancia szintjét is tartalmazza `LRS` . A `-Kind` paraméter azért van, `FileStorage` mert a `StorageV2` prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
+A prémium szintű Azure-fájlmegosztások tárolására alkalmas tárfiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a paraméter úgy módosult, hogy tartalmazza a helyileg redundáns ( ) kívánt `-SkuName` `Premium` redundanciaszintet `LRS` is. A paraméter helyett a prémium fájlmegosztásokat egy FileStorage tárfiókban kell létrehozni `-Kind` `FileStorage` `StorageV2` GPv2-tárfiók helyett.
 
 ```powershell
 $storAcct = New-AzStorageAccount `
@@ -125,9 +128,9 @@ $storAcct = New-AzStorageAccount `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Ha a Storage-fiókot az Azure CLI használatával szeretné létrehozni, az az Storage Account Create parancsot fogjuk használni. Ennek a parancsnak számos lehetősége van; csak a szükséges beállítások jelennek meg. A speciális beállításokkal kapcsolatos további tudnivalókért tekintse meg a [ `az storage account create` parancs dokumentációját](/cli/azure/storage/account).
+Ha tárfiókot szeretnénk létrehozni az Azure CLI használatával, az az storage account create parancsot fogjuk használni. Ez a parancs számos beállítási lehetőséget kínál; csak a szükséges beállítások jelennek meg. A speciális beállításokkal kapcsolatos további információkért tekintse meg a [ `az storage account create` parancsdokumentációt.](/cli/azure/storage/account)
 
-A Storage-fiók és a további fájlmegosztás létrehozásának egyszerűbbé tételéhez több paramétert is tárolunk a változókban. A változó tartalmait tetszés szerinti értékre cserélheti, azonban vegye figyelembe, hogy a Storage-fiók nevének globálisan egyedinek kell lennie.
+A tárfiók és az azt követő fájlmegosztás létrehozásának egyszerűsítése érdekében számos paramétert tárolunk változókban. A változó tartalmát lecserélheti bármilyen kívánt értékre, azonban vegye figyelembe, hogy a tárfiók nevének globálisan egyedinek kell lennie.
 
 ```azurecli
 resourceGroupName="myResourceGroup"
@@ -135,7 +138,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `--sku` paraméter a kívánt redundancia típusára vonatkozik; ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne használni, akkor a paramétert is el kell távolítania `--enable-large-file-share` .
+A standard Azure-fájlmegosztások tárolására alkalmas tárfiók létrehozásához a következő parancsot fogjuk használni. A paraméter a kívánt redundancia típusával kapcsolatos. Ha georedundáns vagy geozónaredundáns tárfiókot szeretne, akkor a paramétert is el kell `--sku` `--enable-large-file-share` távolítania.
 
 ```azurecli
 az storage account create \
@@ -147,7 +150,7 @@ az storage account create \
     --output none
 ```
 
-Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a `--sku` paraméter úgy módosult, hogy mindkettőt `Premium` és a helyileg redundáns () kívánt redundancia szintjét is tartalmazza `LRS` . A `--kind` paraméter azért van, `FileStorage` mert a `StorageV2` prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
+A prémium szintű Azure-fájlmegosztások tárolására alkalmas tárfiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a paraméter úgy módosult, hogy tartalmazza a helyileg redundáns ( ) kívánt `--sku` `Premium` redundanciaszintet `LRS` is. A paraméter helyett a prémium fájlmegosztásokat egy FileStorage tárfiókban kell létrehozni `--kind` `FileStorage` `StorageV2` GPv2-tárfiók helyett.
 
 ```azurecli
 az storage account create \
@@ -160,42 +163,40 @@ az storage account create \
 
 ---
 
-## <a name="create-file-share"></a>Fájlmegosztás létrehozása
-Miután létrehozta a Storage-fiókját, az összes marad a fájlmegosztás létrehozása. Ez a folyamat többnyire azonos, függetlenül attól, hogy prémium szintű fájlmegosztást vagy szabványos fájlmegosztást használ-e. Vegye figyelembe a következő különbségeket.
+## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
+A tárfiók létrehozása után már csak létre kell hoznia a fájlmegosztást. Ez a folyamat többnyire ugyanaz, függetlenül attól, hogy prémium vagy standard fájlmegosztást használ. Vegye figyelembe a következő különbségeket.
 
-A standard fájlmegosztás a standard szintekre telepíthető: a tranzakció optimalizált (alapértelmezett), a gyors vagy a ritka elérésű. Ez egy olyan fájlmegosztási réteg, amelyet a Storage-fiók blob- **hozzáférési rétege** nem érint (ez a tulajdonság csak az Azure Blob Storage-hoz kapcsolódik – nem kapcsolódik a Azure Fileshoz). A megosztás szintjét bármikor megváltoztathatja a telepítése után. A prémium fájlmegosztás nem alakítható át közvetlenül semmilyen standard szintre.
+A standard fájlmegosztások a standard szintek egyikében helyezhetők üzembe: tranzakcióoptimalált (alapértelmezett), forró vagy hűtési szinten. Ez egy fájlmegosztási szintenkénti szint, amelyet a tárfiók **blob-hozzáférési** rétege nem érint (ez a tulajdonság csak az Azure Blob Storage-hoz kapcsolódik – egyáltalán nem Azure Files kapcsolódik). Az üzembe helyezés után bármikor módosíthatja a megosztás rétegét. A prémium szintű fájlmegosztások nem konvertálhatók közvetlenül standard szintre.
 
 > [!Important]  
-> A fájlmegosztást a GPv2 belül is áthelyezheti (a tranzakció optimalizált, gyors és lassú). Megosztható a csomagok közötti váltások tranzakció: a melegebb szintről a hűvösebb szintre való áttéréskor a hűvösebb réteg írási tranzakciós díja a megosztás minden egyes fájljánál, míg a hűvösebb szintről a melegebb szintre való áttérés a ritka réteg olvasási tranzakciós díját terheli a megosztás összes fájlja esetében.
+> A fájlmegosztásokat áthelyezheti a GPv2-tárfióktípusok különböző rétegei között (tranzakcióoptimalált, gyors és hideg). A rétegek közötti megosztások között tranzakciók lépnek fel: a magasabb rétegű szintről egy hűtési szintre való áthelyezés esetén a megosztásban található egyes fájlok írási tranzakcióinak díjára kerül majd a rétegben, míg a hűtési szintről a hűtési szintre való áthelyezés esetén a hűtési szint olvasási tranzakciós díjának felszámít a megosztás minden fájlja esetében.
 
-A **kvóta** tulajdonság azt jelenti, hogy némileg eltérő a prémium és a standard fájlmegosztás között:
+A **kvóta** tulajdonság némileg eltérőt jelent a prémium és a standard fájlmegosztások között:
 
-- A standard fájlmegosztás esetében ez az Azure-fájlmegosztás felső határa, amelyen kívül a végfelhasználók nem mehetnek el. Ha nincs megadva kvóta, a normál fájlmegosztás akár 100 TiB-ra (vagy 5 TiB-ra) is terjedhet, ha a nagyméretű fájlmegosztás tulajdonság nincs beállítva a Storage-fiókhoz.
+- A standard fájlmegosztások esetében ez az Azure-fájlmegosztás felső határa, amelyen túl a végfelhasználók nem tudnak átmenni. Ha nincs kvóta megadva, a standard fájlmegosztás legfeljebb 100 TiB-ra (vagy 5 TiB-ra is vonatkozhat, ha a nagyméretű fájlmegosztások tulajdonság nincs beállítva a tárfiókhoz).
 
-- A prémium fájlmegosztás esetén a kvóta **kiépített méretet** jelent. A kiosztott méret az a mennyiség, amelyet a rendszer a tényleges használattól függetlenül számláz. A prémium szintű fájlmegosztás tervezésével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás](understanding-billing.md#provisioned-model)kiosztása című témakört.
+- Prémium fájlmegosztások esetében a kvóta a **kiépített méretet jelenti.** A kiépített méret az az összeg, amely után a tényleges használattól függetlenül ki lesz számlázva. A prémium szintű fájlmegosztások tervezésével kapcsolatos további információkért lásd: [Prémium fájlmegosztások kiépítése.](understanding-billing.md#provisioned-model)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Ha most hozta létre a Storage-fiókját, akkor az **erőforrás keresése** lehetőségre kattintva megnyithatja azt a telepítési képernyőről. Miután a Storage-fiókban kijelöli a **fájlmegosztás** címkét (a **fájlmegosztást** a Storage-fiók tartalomjegyzékében is megnyithatja).
+Ha most hozta létre a tárfiókot, az üzembe helyezési képernyőről az Erőforráshoz ugrás lehetőség kiválasztásával **navigálhat hozzá.** A tárfiókban válassza  ki a fájlmegosztásokat a tárfiók tartalomjegyzékében.
 
-![Képernyőfelvétel a fájlmegosztás csempéről](media/storage-how-to-create-file-share/create-file-share-1.png)
+A fájlmegosztások listában látnia kell az ebben a tárfiókban korábban létrehozott fájlmegosztásokat; egy üres táblát, ha még nem jött létre fájlmegosztás. Új **fájlmegosztás létrehozásához** válassza a + Fájlmegosztás lehetőséget.
 
-A fájlmegosztás listájában látnia kell minden olyan fájlmegosztást, amelyet korábban hozott létre ebben a Storage-fiókban. üres tábla, ha még nincs fájlmegosztás létrehozva. Válassza a **+ fájlmegosztás** lehetőséget egy új fájlmegosztás létrehozásához.
+Az új fájlmegosztás panelnek meg kell jelenni a képernyőn. Töltse ki az új fájlmegosztás panel mezőit egy fájlmegosztás létrehozásához:
 
-Az új fájlmegosztás panelnek a képernyőn kell megjelennie. Fájlmegosztás létrehozásához hajtsa végre az új fájlmegosztás panelen található mezőket:
+- **Név:** a létrehozni kívánt fájlmegosztás neve.
+- **Kvóta:** a fájlmegosztás kvótája standard fájlmegosztások esetében; a prémium fájlmegosztások fájlmegosztásának kiépített mérete.
+- **Szintek:** a fájlmegosztás kiválasztott rétege. Ez a mező csak általános célú **(GPv2) tárfiókban érhető el.** Választhat a tranzakcióoptimalált, a gyors vagy a gyors hűtési lehetőséget is. A megosztás rétege bármikor módosítható. Javasoljuk, hogy a migrálás során a lehető legkombosabb szintet válassza a tranzakciós költségek minimalizálása érdekében, majd váltson át egy alacsonyabb szintre, ha a migrálás befejeződött.
 
-- **Name (név**): a létrehozandó fájlmegosztás neve.
-- **Kvóta**: a fájlmegosztás kvótája a szabványos fájlmegosztás esetében; a prémium fájlmegosztás esetén a fájlmegosztás kiosztott mérete.
-- **Rétegek**: a fájlmegosztás kiválasztott szintje. Ez a mező csak **általános célú (GPv2) Storage-fiókban** érhető el. Kiválaszthatja az optimalizált, a gyors vagy a lassú tranzakciót is. A megosztás szintjei bármikor megváltoztathatók. Javasoljuk, hogy az áttelepítés során a lehető legforróbb szintet válassza, a tranzakciós költségek csökkentése érdekében, majd az áttelepítés befejezése után az alacsonyabb szintre váltson.
-
-Válassza a **Létrehozás** lehetőséget az új megosztás létrehozásának befejezéséhez.
+Az **új megosztás** létrehozásának befejezéséhez válassza a Létrehozás lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Létrehozhat egy Azure-fájlmegosztást a [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) parancsmaggal. A következő PowerShell-parancsok feltételezik, hogy beállította a változókat, a `$resourceGroupName` `$storageAccountName` Storage-fiók létrehozása Azure PowerShell szakaszban megadott módon. 
+Az Azure-fájlmegosztást a [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) parancsmaggal hozhatja létre. A következő PowerShell-parancsok feltételezik, hogy beállította a és a változókat a tárfiók létrehozását a Azure PowerShell szakaszban `$resourceGroupName` `$storageAccountName` leírtak szerint. 
 
-A következő példa egy explicit szintű fájlmegosztás létrehozását mutatja be a `-AccessTier` paraméter használatával. Ehhez az előnézet az. Storage modult kell használnia, ahogy az a példában is látható. Ha nincs megadva egy szint, vagy azért, mert a GA az. Storage modult használja, vagy mert nem adta meg ezt a parancsot, a normál fájlmegosztás alapértelmezett szintje a tranzakcióra optimalizált.
+Az alábbi példa egy explicit szintű fájlmegosztás létrehozását mutatja be a `-AccessTier` paraméterrel. Ehhez a példában látható előzetes verziójú Az.Storage modult kell használni. Ha nincs megadva szint, vagy azért, mert az általánosan rendelkezésre áll az Az.Storage modult használja, vagy mert nem tartalmazta ezt a parancsot, a standard fájlmegosztások alapértelmezett csomagja tranzakcióoptimal van optimalizálva.
 
 > [!Important]  
-> A prémium fájlmegosztás esetén a `-QuotaGiB` paraméter a fájlmegosztás kiépített méretére hivatkozik. A fájlmegosztás kiosztott mérete az a mennyiség, amelyet a rendszer a használattól függetlenül számláz. A standard fájlmegosztás számlázása a használat alapján történik, nem pedig kiosztott méret.
+> Prémium fájlmegosztások esetében a paraméter a fájlmegosztás `-QuotaGiB` kiépített méretére utal. A fájlmegosztás kiépített mérete a használattól függetlenül a kiszámlázható mennyiség. A standard fájlmegosztások számlázása a használat alapján, és nem a kiépített méret alapján van kiszámlázva.
 
 ```powershell
 # Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
@@ -213,10 +214,10 @@ New-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Létrehozhat egy Azure-fájlmegosztást a [`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) paranccsal. A következő Azure CLI-parancsok feltételezik, hogy a `$resourceGroupName` `$storageAccountName` Storage-fiók létrehozása az Azure CLI-vel című szakaszban leírt változókat beállította, és a fentiek szerint van megadva.
+Azure-fájlmegosztást az paranccsal [`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) hozhat létre. Az alábbi Azure CLI-parancsok feltételezik, hogy beállította a és a változókat a tárfiókok Azure CLI-val való létrehozásával szakaszban `$resourceGroupName` `$storageAccountName` fentebb meghatározottak szerint.
 
 > [!Important]  
-> A prémium fájlmegosztás esetén a `--quota` paraméter a fájlmegosztás kiépített méretére hivatkozik. A fájlmegosztás kiosztott mérete az a mennyiség, amelyet a rendszer a használattól függetlenül számláz. A standard fájlmegosztás számlázása a használat alapján történik, nem pedig kiosztott méret.
+> Prémium fájlmegosztások esetében a paraméter a fájlmegosztás `--quota` kiépített méretére utal. A fájlmegosztás kiépített mérete a használattól függetlenül a kiszámlázható mennyiség. A standard fájlmegosztások számlázása a használat alapján, és nem a kiépített méret alapján van kiszámlázva.
 
 ```azurecli
 shareName="myshare"
@@ -233,26 +234,26 @@ az storage share-rm create \
 ---
 
 > [!Note]  
-> A fájlmegosztás nevében csak kisbetű szerepelhet. A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+> A fájlmegosztás nevében csak kisbetű szerepelhet. A fájlmegosztások és fájlok elnevezésével kapcsolatos részletes információkért lásd: [Megosztások, könyvtárak,](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)fájlok és metaadatok elnevezése és hivatkozása.
 
-### <a name="changing-the-tier-of-an-azure-file-share"></a>Azure-fájlmegosztás rétegének módosítása
-Az **általános célú v2-(GPv2-) Storage-fiókban** üzembe helyezett fájlmegosztás lehet a tranzakciós optimalizált, a gyors vagy a lassú elérésű szint. Az Azure-fájlmegosztás szintje bármikor módosítható, a fentiekben leírtak szerint a tranzakciós költségekre is.
+### <a name="change-the-tier-of-an-azure-file-share"></a>Azure-fájlmegosztás rétegének módosítása
+Az általános célú **v2 -tárfiókban (GPv2)** üzembe helyezett fájlmegosztások a tranzakcióoptimalált, a gyors vagy a hűtési szinten is lehet. Az Azure-fájlmegosztás tárolási rétege bármikor megváltoztatható a fent leírt tranzakciós költségeknek megfelelő módon.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-A fő Storage-fiók **lapon válassza a fájlmegosztás lehetőséget,**  válassza ki **a fájlmegosztás címkét (a** **fájlmegosztást** a Storage-fiók tartalomjegyzékének használatával is megnyithatja).
+A tárfiók főoldalán  válassza a Fájlmegosztások lehetőséget, jelölje ki  a Fájlmegosztások címkével jelölt csempét **(a** tárfiók tartalomjegyzékében is navigálhat a Fájlmegosztások részhez).
 
-![Képernyőfelvétel a fájlmegosztás csempéről](media/storage-how-to-create-file-share/create-file-share-1.png)
+:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="Képernyőkép a tárfiók panelről, kiválasztott fájlmegosztásokkal.":::
 
-A fájlmegosztás táblázat listájában válassza ki azt a fájlmegosztást, amelynek a szintjét módosítani szeretné. A fájlmegosztás áttekintése lapon válassza a menü **szintek módosítása** elemét.
+A fájlmegosztások táblázatos listájában válassza ki azt a fájlmegosztást, amelynek a rétegét módosítani szeretné. A fájlmegosztás áttekintési oldalán válassza a **menü Réteg** módosítása parancsát.
 
-![A fájlmegosztás áttekintő oldalának képernyőképe a kijelölt szintet gomb kiemelésével](media/storage-how-to-create-file-share/change-tier-0.png)
+![Képernyőkép a fájlmegosztás áttekintési lapról, kiemelt Szint módosítása gombbal](media/storage-how-to-create-file-share/change-tier-0.png)
 
-Az eredményül kapott párbeszédpanelen válassza ki a kívánt szintet: a tranzakció optimalizált, a gyors vagy a lassú.
+Az eredményül kapott párbeszédpanelen válassza ki a kívánt szintet: tranzakcióoptimalált, gyors vagy hideg.
 
-![A szintek módosítása párbeszédpanel képernyőképe](media/storage-how-to-create-file-share/change-tier-1.png)
+![Képernyőkép a szintváltás párbeszédpanelről](media/storage-how-to-create-file-share/change-tier-1.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-A következő PowerShell-parancsmag feltételezi, hogy beállította a ( `$resourceGroupName` `$storageAccountName` `$shareName` ) változót a jelen dokumentum korábbi szakaszaiban leírtak szerint.
+A következő PowerShell-parancsmag feltételezi, hogy a dokumentum korábbi szakaszaiban leírtak szerint beállította a , a `$resourceGroupName` `$storageAccountName` `$shareName` változókat.
 
 ```PowerShell
 Update-AzRmStorageShare `
@@ -263,7 +264,7 @@ Update-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-A következő Azure CLI-parancs feltételezi, hogy a `$resourceGroupName` , a `$storageAccountName` és a `$shareName` változót a jelen dokumentum korábbi szakaszaiban ismertetett módon állította be.
+A következő Azure CLI-parancs feltételezi, hogy beállította a , és változókat a dokumentum korábbi `$resourceGroupName` `$storageAccountName` `$shareName` szakaszaiban leírtak szerint.
 
 ```azurecli
 az storage share-rm update \
@@ -276,6 +277,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>Következő lépések
-- [Tervezze meg Azure Files telepítését,](storage-files-planning.md) vagy [tervezze meg Azure file Sync központi telepítését](storage-sync-files-planning.md). 
-- [Hálózatkezelés – áttekintés](storage-files-networking-overview.md).
-- Windows, [MacOS](storage-how-to-use-files-mac.md)és [Linux](storage-how-to-use-files-linux.md) [rendszerű](storage-how-to-use-files-windows.md)fájlmegosztás csatlakoztatása és csatlakoztatása.
+- [Tervezze meg a Azure Files](storage-files-planning.md) vagy [a Plan for a deployment of Azure File Sync.](storage-sync-files-planning.md) 
+- [Hálózat – áttekintés.](storage-files-networking-overview.md)
+- Fájlmegosztás csatlakoztatása [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)és [Linux rendszeren.](storage-how-to-use-files-linux.md)

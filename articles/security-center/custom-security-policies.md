@@ -1,6 +1,6 @@
 ---
-title: Egyéni biztonsági szabályzatok létrehozása a Azure Security Centerban | Microsoft Docs
-description: A Azure Security Center által figyelt egyéni Azure-házirend-definíciók.
+title: Egyéni biztonsági szabályzatok létrehozása a Azure Security Center | Microsoft Docs
+description: Egyéni Azure-szabályzatdefiníciók monitorozása a Azure Security Center.
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -8,69 +8,69 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a41696ba92757550f9cbaa08ccf78d9a5da528d2
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441057"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718898"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
 
-A rendszerek és a környezet biztonságossá tételéhez Azure Security Center biztonsági javaslatokat hoz létre. Ezek a javaslatok az iparági ajánlott eljárásokon alapulnak, amelyek az összes ügyfél számára biztosított általános, alapértelmezett biztonsági szabályzatba vannak beépítve. Security Center az iparági és a szabályozási szabványok ismeretében is származhatnak.
+A rendszerek és a környezet biztonságossá Azure Security Center biztonsági javaslatokat hoz létre. Ezek az ajánlások az iparág ajánlott eljárásán alapulnak, amelyek be vannak építve az összes ügyfél számára biztosított általános, alapértelmezett biztonsági szabályzatba. Emellett az iparági és Security Center szabványokkal kapcsolatos tudását is kihasználhatja.
 
-Ezzel a funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a környezet nem követi a létrehozott házirendeket. Az Ön által létrehozott egyéni kezdeményezések a szabályozási megfelelőségi irányítópult beépített kezdeményezései mellett jelennek meg, [az oktatóanyagban](security-center-compliance-dashboard.md)ismertetett módon.
+Ezzel a funkcióval saját egyéni kezdeményezéseket *adhat* hozzá. Ezután javaslatokat kap, ha a környezet nem követi a létrehozott szabályzatokat. Az ön által létrehozott egyéni kezdeményezések a szabályozási megfelelőségi irányítópult beépített kezdeményezései mellett jelennek meg, amint az a jogszabályi megfelelőség javítását ismertető [oktatóanyagban szerepel.](security-center-compliance-dashboard.md)
 
-Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/definition-structure.md#definition-location)tárgyaljuk, az egyéni kezdeményezés helyének megadásakor felügyeleti csoportnak vagy előfizetésnek kell lennie. 
+Ahogy azt a Azure Policy [is](../governance/policy/concepts/definition-structure.md#definition-location)tárgyalja, amikor megad egy helyet az egyéni kezdeményezéshez, annak felügyeleti csoportnak vagy előfizetésnek kell lennie. 
 
 > [!TIP]
-> Az ezen a lapon található alapfogalmak áttekintését lásd: [Mik a biztonsági szabályzatok, kezdeményezések és javaslatok?](security-policy-concept.md).
+> Az ezen az oldalon található fő fogalmak áttekintését lásd: Mik azok a biztonsági szabályzatok, kezdeményezések [és javaslatok?](security-policy-concept.md).
 
 ::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Egyéni kezdeményezés hozzáadása az előfizetéshez 
 
-1. A Security Center oldalsávján nyissa meg a **biztonsági házirend** lapot.
+1. A Security Center oldalsávján nyissa meg a Biztonsági **szabályzat** lapot.
 
-1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez egyéni kezdeményezést szeretne hozzáadni.
+1. Válasszon ki egy előfizetést vagy felügyeleti csoportot, amelyhez egyéni kezdeményezést szeretne hozzáadni.
 
-    [![Válassza ki azt az előfizetést, amelyhez létre kívánja hozni az egyéni szabályzatot](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![Olyan előfizetés kiválasztása, amelyhez létre fogja hozni az egyéni szabályzatot](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Az előfizetési szinten (vagy magasabban) egyéni szabványokat kell hozzáadnia ahhoz, hogy kiértékeljék és megjelenjenek Security Centerban. 
+    > Egyéni szabványokat kell hozzáadnia az előfizetés szintjén (vagy magasabb szinten), hogy azok kiértékelése és megjelenítése a Security Center. 
     >
-    > Egyéni szabvány hozzáadásakor egy *kezdeményezést* rendel hozzá ehhez a hatókörhöz. Ezért javasoljuk, hogy válassza ki az adott hozzárendeléshez szükséges legszélesebb hatókört.
+    > Amikor hozzáad egy egyéni szabványt, az hozzárendel egy *kezdeményezést ehhez* a hatókörhez. Ezért javasoljuk, hogy válassza ki a hozzárendeléshez szükséges legszélesebb hatókört.
 
-1. A biztonsági szabályzat lap egyéni kezdeményezések területén kattintson az **Egyéni kezdeményezés hozzáadása** lehetőségre.
+1. A Biztonsági szabályzat lap Egyéni kezdeményezések területén kattintson az **Egyéni kezdeményezés hozzáadása elemre.**
 
-    [![Kattintson az egyéni kezdeményezés hozzáadása lehetőségre.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![Kattintson az Egyéni kezdeményezés hozzáadása elemre.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     Az alábbi oldal nyílik meg:
 
     ![Szabályzat létrehozása vagy hozzáadása](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. Az egyéni kezdeményezések hozzáadása oldalon tekintse át a szervezetében már létrehozott egyéni szabályzatok listáját. Ha megjelenik az előfizetéshez hozzárendelni kívánt fiók, kattintson a **Hozzáadás** gombra. Ha nincs olyan kezdeményezés a listában, amely megfelel az igényeinek, hagyja ki ezt a lépést.
+1. Az Egyéni kezdeményezések hozzáadása lapon tekintse át a szervezetben már létrehozott egyéni szabályzatok listáját. Ha azt látja, amit hozzá szeretne rendelni az előfizetéséhez, kattintson az **Add (Hozzáadás) gombra.** Ha a listában nincs olyan kezdeményezés, amely megfelel az igényeinek, hagyja ki ezt a lépést.
 
 1. Új egyéni kezdeményezés létrehozása:
 
-    1. Kattintson az **új létrehozása** gombra.
+    1. Kattintson az **Új létrehozása elemre.**
     1. Adja meg a definíció helyét és nevét.
-    1. Válassza ki a felvenni kívánt házirendeket, majd kattintson a **Hozzáadás** gombra.
+    1. Válassza ki a felvenni kívánt szabályzatokat, majd kattintson a **Hozzáadás gombra.**
     1. Adja meg a kívánt paramétereket.
     1. Kattintson a **Mentés** gombra.
-    1. Az egyéni kezdeményezések hozzáadása lapon kattintson a frissítés elemre. Az új kezdeményezés elérhetőként jelenik meg.
-    1. Kattintson a **Hozzáadás** gombra, és rendelje hozzá az előfizetéséhez.
+    1. Az Egyéni kezdeményezések hozzáadása lapon kattintson a Frissítés elemre. Az új kezdeményezés elérhetőként jelenik meg.
+    1. Kattintson **a Hozzáadás gombra,** és rendelje hozzá az előfizetéséhez.
 
     > [!NOTE]
-    > Az új kezdeményezések létrehozásához előfizetés-tulajdonosi hitelesítő adatokra van szükség. Az Azure-szerepkörökkel kapcsolatos további információkért tekintse [meg a Azure Security Center engedélyeit](security-center-permissions.md).
+    > Új kezdeményezések létrehozásához előfizetés-tulajdonosi hitelesítő adatokra van szükség. További információ az Azure-szerepkörökről: [Engedélyek](security-center-permissions.md)a Azure Security Center.
 
-    Az új kezdeményezés érvénybe lép, és a következő két módon láthatja a hatást:
+    Az új kezdeményezés életbe lép, és a hatást az alábbi két módon láthatja:
 
-    * A Security Center oldalsávon a szabályzat & megfelelőség területen válassza a **jogszabályi megfelelőség** lehetőséget. Megnyílik a megfelelőségi irányítópult, amely megjeleníti az új egyéni kezdeményezést a beépített kezdeményezésekkel együtt.
+    * A Security Center oldalsáv Szabályzatok és megfelelőség & területén válassza a **Jogszabályi megfelelőség lehetőséget.** Megnyílik a megfelelőségi irányítópult, és megjeleníti az új egyéni kezdeményezést a beépített kezdeményezésekkel együtt.
     
-    * Ha a környezet nem követi a definiált szabályzatokat, megkezdheti a javaslatok fogadását.
+    * Javaslatokat kap, ha a környezet nem követi a megadott szabályzatokat.
 
-1. A Szabályzathoz kapcsolódó javaslatok megtekintéséhez kattintson a **javaslatok** elemre az oldalsávon, és nyissa meg a javaslatok lapot. A javaslatok az "egyéni" címkével jelennek meg, és körülbelül egy órán belül elérhetők lesznek.
+1. A szabályzatra vonatkozó, eredményül  kapott javaslatokért kattintson az oldalsáv Javaslatok gombjára a javaslatok oldalának megnyitásához. A javaslatok "Egyéni" címkével jelennek meg, és körülbelül egy órán belül elérhetők lesznek.
 
     [![Egyéni javaslatok](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
@@ -78,31 +78,31 @@ Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/defin
 
 ::: zone pivot="rest-api"
 
-## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása Azure Policy a REST API használatával
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági szabályzat konfigurálása a Azure Policy a REST API
 
-A Azure Policyrel való natív integráció részeként Azure Security Center lehetővé teszi, hogy kihasználhassa a szabályzat-hozzárendelések létrehozásához szükséges Azure Policy REST API előnyeit. A következő utasítások végigvezetik a szabályzat-hozzárendelések létrehozásán, valamint a meglévő hozzárendelések testreszabásán. 
+A natív integráció részeként a Azure Policy Azure Security Center lehetővé teszi, hogy kihasználja Azure Policy házirend-hozzárendelések REST API előnyeit. Az alábbi utasítások végigkik a szabályzat-hozzárendelések létrehozásának, valamint a meglévő hozzárendelések testreszabásának folyamatán. 
 
-Fontos fogalmak a Azure Policyban: 
+Fontos fogalmak a Azure Policy: 
 
-- A **házirend-definíció** egy szabály 
+- A **szabályzatdefiníció** egy szabály 
 
-- A **kezdeményezés** szabályzat-definíciók (szabályok) gyűjteménye. 
+- A **kezdeményezés** szabályzatdefiníciók (szabályok) gyűjteménye 
 
-- A **hozzárendelés** egy adott hatókörre irányuló kezdeményezés vagy házirend alkalmazása (felügyeleti csoport, előfizetés stb.) 
+- A **hozzárendelés** egy kezdeményezés vagy szabályzat alkalmazása egy adott hatókörre (felügyeleti csoport, előfizetés stb.) 
 
-Security Center rendelkezik egy beépített kezdeményezéssel, az Azure biztonsági teljesítményteszttel, amely tartalmazza az összes biztonsági házirendjét. Az Security Center az Azure-erőforrásokra vonatkozó házirendjeinek értékeléséhez létre kell hoznia egy hozzárendelést a felügyeleti csoporton, vagy az előfizetést, amelyet fel szeretne mérni.
+Security Center rendelkezik egy [beépített Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction)kezdeményezéssel, amely az összes biztonsági szabályzatát tartalmazza. A Security Center Azure-erőforrásokra vonatkozó szabályzatok értékeléséhez létre kell hoznia egy hozzárendelést az értékelni kívánt felügyeleti csoporthoz vagy előfizetéshez.
 
-A beépített kezdeményezés alapértelmezés szerint a Security Center összes házirendjét engedélyezte. Dönthet úgy, hogy letilt bizonyos házirendeket a beépített kezdeményezésből. Ha például a **webalkalmazási tűzfal** kivételével a Security Center összes házirendjét szeretné alkalmazni, módosítsa a házirend Effect paraméterének értékét **Letiltva** értékre.
+A beépített kezdeményezés alapértelmezés szerint Security Center összes szabályzata engedélyezve van. Dönthet úgy, hogy letilt bizonyos szabályzatokat a beépített kezdeményezésből. Ha például a webalkalmazási tűzfal Security Center alkalmazni az összes szabályzatát, módosítsa a szabályzat hatásparaméterének értékét **Letiltva értékre.**
 
 ## <a name="api-examples"></a>API-példák
 
-Az alábbi példákban cserélje le ezeket a változókat:
+A következő példákban cserélje le ezeket a változókat:
 
-- **{scope}** adja meg annak a felügyeleti csoportnak vagy előfizetésnek a nevét, amelyre alkalmazni kívánja a szabályzatot
+- **{scope}** adja meg annak a felügyeleti csoportnak vagy előfizetésnek a nevét, amelyre a szabályzatot alkalmazza
 - **{policyAssignmentName}** adja meg a megfelelő szabályzat-hozzárendelés nevét
-- **{Name}** adja meg a nevét, vagy annak a rendszergazdának a nevét, aki jóváhagyta a szabályzat módosítását
+- **{name}** adja meg a nevét vagy a szabályzatváltozást jóváhagyó rendszergazda nevét
 
-Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez vagy egy felügyeleti csoporthoz.
+Ez a példa bemutatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez vagy felügyeleti csoporthoz
  
  ```
     PUT  
@@ -131,13 +131,13 @@ Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Securit
     } 
  ```
 
-Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez, a következő szabályzatok letiltásával: 
+Ez a példa bemutatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez úgy, hogy a következő szabályzatok le vannak tiltva: 
 
 - Rendszerfrissítések ("systemUpdatesMonitoringEffect") 
 
 - Biztonsági konfigurációk ("systemConfigurationsMonitoringEffect") 
 
-- Endpoint Protection ("endpointProtectionMonitoringEffect") 
+- Végpontvédelem ("endpointProtectionMonitoringEffect") 
 
  ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
@@ -172,7 +172,7 @@ Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Securit
     
     } 
  ```
-Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
+Ez a példa bemutatja, hogyan távolíthat el egy hozzárendelést:
  ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
@@ -181,16 +181,16 @@ Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
 ::: zone-end
 
 
-## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Részletes információkkal bővítheti egyéni javaslatait
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Egyéni javaslatok továbbfejlesztve részletes információkkal
 
-A Azure Security Centerhez mellékelt beépített ajánlások olyan részleteket tartalmaznak, mint például a súlyossági szintek és a Szervizelési utasítások. Ha ezt a típusú információt szeretné felvenni az egyéni javaslataiba, hogy az megjelenjen a Azure Portalban, vagy bárhol hozzáférjen a javaslataihoz, akkor a REST API kell használnia. 
+A beépített javaslatok között olyan Azure Security Center, mint a súlyossági szintek és a szervizelési utasítások. Ha az ilyen típusú információkat hozzá szeretné adni az egyéni javaslatokhoz, hogy az megjelenjen a Azure Portal vagy bárhol, ahol hozzáfér a javaslatokhoz, a következőt kell REST API. 
 
-A felvehető két típusú információ a következőkből áll:
+Kétféle információt adhat hozzá:
 
-- **RemediationDescription** – sztring
-- **Súlyosság** – enumerálás [alacsony, közepes, magas]
+- **RemediationDescription – Sztring**
+- **Súlyosság** – Felsorolás [Alacsony, Közepes, Magas]
 
-A metaadatokat fel kell venni az egyéni kezdeményezés részét képező szabályzathoz tartozó szabályzat-definícióba. A "securityCenter" tulajdonságnak kell lennie, ahogy az alábbi ábrán látható:
+A metaadatokat hozzá kell adni az egyéni kezdeményezés részét képezi szabályzatdefinícióhoz. Ennek a "securityCenter" tulajdonságban kell lennie, ahogy az alábbi képen is látható:
 
 ```json
  "metadata": {
@@ -200,7 +200,7 @@ A metaadatokat fel kell venni az egyéni kezdeményezés részét képező szab�
     },
 ```
 
-Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadatok/securityCenter tulajdonságot:
+Az alábbiakban egy példa látható egy egyéni szabályzatra, amely tartalmazza a metadata/securityCenter tulajdonságot:
 
   ```json
   {
@@ -248,14 +248,14 @@ Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadato
 }
   ```
 
-A securityCenter tulajdonság használatának egy másik példáját a [REST API dokumentációjának ezen szakasza](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)tartalmazza.
+A securityCenter tulajdonság használatának egy másik példáját a dokumentáció ezen [REST API találhatja.](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendeket. 
+Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági szabályzatokat. 
 
-Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
+Egyéb kapcsolódó anyagokért tekintse meg a következő cikkeket: 
 
-- [A biztonsági házirendek áttekintése](tutorial-security-policy.md)
+- [A biztonsági szabályzatok áttekintése](tutorial-security-policy.md)
 - [A beépített biztonsági szabályzatok listája](./policy-reference.md)

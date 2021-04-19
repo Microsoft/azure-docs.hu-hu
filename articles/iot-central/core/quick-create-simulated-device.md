@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Szimulált eszköz hozzáadása a Azure IoT Central
+title: Rövid útmutató – Szimulált eszköz hozzáadása Azure IoT Central
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre eszközsablont, és hogyan adhat hozzá szimulált eszközt IoT Central alkalmazásához.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0396c028c8c0e1a18baf037fed4efc21aad944f1
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715099"
+ms.locfileid: "107718826"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rövid útmutató: Szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
 
@@ -44,7 +44,7 @@ Az eszközsablonok a következőket meghatározó eszközmodellt tartalmaznak:
 
 ### <a name="add-a-device-template"></a>Eszközsablon hozzáadása
 
-Több lehetőség is van arra, hogy eszközmodellt ad a IoT Central alkalmazásához. Létrehozhat új modellt, importálhat egy modellt egy fájlból, vagy kiválaszthat egy eszközt az eszközkatalógusból. IoT Central az eszközre  vonatkozó megközelítést is támogatja, amelyben az alkalmazás automatikusan importál egy modellt egy adattárból, amikor egy valós eszköz először csatlakozik.
+Az eszközmodellt többféle módon is hozzá lehet IoT Central alkalmazáshoz. Létrehozhat új modellt, importálhat egy modellt egy fájlból, vagy kiválaszthat egy eszközt az eszközkatalógusból. IoT Central az eszközre  vonatkozó megközelítést is támogatja, amelyben az alkalmazás automatikusan importál egy modellt egy adattárból, amikor egy valós eszköz először csatlakozik.
 
 Ebben a rövid útmutatóban kiválaszt egy eszközt az eszközkatalógusból egy eszközsablon létrehozásához.
 
@@ -94,7 +94,7 @@ Az alapértelmezett nézetekkel gyorsan hozzá lehet kezdeni a fontos eszközinf
 * Az **Áttekintés** nézet diagramok és metrikák segítségével jeleníti meg az eszköz telemetriai adatait.
 * Az **About (About)** nézet megjeleníti az eszköztulajdonságokat.
 
-Válassza ki **a Nézetek csomópontot** az eszközsablonban. Láthatja, hogy a **IoT Central,** az  About (Áttekintés) nézetet és a **Raw Data** (Nyers adatok) nézetet generálta a sablon hozzáadásakor.
+Válassza ki **a Nézetek csomópontot** az eszközsablonban. Láthatja, hogy IoT Central a sablon hozzáadásakor létrehozott **Áttekintés,** Az adatok és a **Nyers** adatok nézetet.
 
 Új űrlap hozzáadása az eszköz kezeléséhez:
 
@@ -130,15 +130,15 @@ Ha szimulált eszközt szeretne hozzáadni az alkalmazáshoz, használja a létr
 
 1. Szimulált DevKit-eszköz hozzáadásához válassza **az + Új lehetőséget.** Használja a javasolt **eszközazonosítót,** vagy adja meg a sajátját. Az eszközazonosítók betűket, számokat és karaktereket `-` tartalmazhatnak. Az új eszköz nevét is megadhatja. Győződjön meg arról, hogy **az Eszköz szimulálása** beállítás igen, majd válassza a Létrehozás **lehetőséget.** 
 
-    :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="Képernyőkép a szimulált Sensor Controller eszközről":::
+    :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="A szimulált Sensor Controller eszközt bemutató képernyőkép":::
 
 Most már használhatja a korábban létrehozott nézeteket szimulált adatok használatával:
 
-1. A szimulált eszköz kiválasztása az **Eszközök lapon**
+1. Válassza ki a szimulált eszközt az **Eszközök lapon**
 
     * Az **Áttekintés** nézet a szimulált telemetria ábrázolása:
 
-        :::image type="content" source="media/quick-create-simulated-device/simulated-telemetry.png" alt-text="Képernyőkép a szimulált eszköz áttekintő oldaléről":::
+        :::image type="content" source="media/quick-create-simulated-device/simulated-telemetry.png" alt-text="Képernyőkép a szimulált eszköz áttekintő oldalának megjelenítéséről":::
 
     * Az **About** (About) nézet a tulajdonságértékeket jeleníti meg.
 
@@ -150,7 +150,7 @@ Most már használhatja a korábban létrehozott nézeteket szimulált adatok ha
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta,  hogyan hozhat létre egy Érzékelővezérlő eszközsablont egy ESP32-eszközhöz, és hogyan adhat hozzá szimulált eszközt az alkalmazáshoz.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy **Érzékelővezérlő** eszközsablont egy ESP32-eszközhöz, és hogyan adhat hozzá szimulált eszközt az alkalmazáshoz.
 
 Az alkalmazáshoz csatlakoztatott eszközök figyelésével kapcsolatos további információkért folytassa a rövid útmutatóval:
 

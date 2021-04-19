@@ -107,8 +107,6 @@
       href: reference-reports-data-retention.md
     - name: Jelentéskészítési késések
       href: reference-reports-latencies.md
-    - name: Bejelentkezési hibakódok
-      href: reference-sign-ins-error-codes.md
     - name: Gyakori kérdések
       href: reports-faq.md
     - name: Auditnapló sémája
