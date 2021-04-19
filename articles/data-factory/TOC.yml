@@ -13,9 +13,9 @@
   items:
     - name: Adat-előállító létrehozása – felhasználói felület (UI)
       href: quickstart-create-data-factory-portal.md
-    - name: Adatfeldolgozó létrehozása – az Adatmásolás eszköz
+    - name: Adat-előállító létrehozása – Adatok másolása eszköz
       href: quickstart-create-data-factory-copy-data-tool.md
-    - name: Az adatelőállító létrehozása – Azure CLI
+    - name: Adat-előállító létrehozása – Azure CLI
       href: quickstart-create-data-factory-azure-cli.md
     - name: Adat-előállító létrehozása – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -38,7 +38,7 @@
       items:
         - name: Az Azure Blob Storage-ból az Azure SQL Database-be
           items:
-            - name: Adatmásolás eszköz
+            - name: Adatok másolása eszköz
               href: tutorial-copy-data-tool.md
             - name: Felhasználói felület (UI)
               href: tutorial-copy-data-portal.md
@@ -46,7 +46,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: SQL Server-adatbázisból az Azure Blob Storage-ba
           items:
-            - name: Adatmásolás eszköz
+            - name: Adatok másolása eszköz
               href: tutorial-hybrid-copy-data-tool.md
             - name: Felhasználói felület (UI)
               href: tutorial-hybrid-copy-portal.md
@@ -107,15 +107,15 @@
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal
           items:
-            - name: Ajánlott eljárások az adattároláshoz a tóban ADLS Gen2
+            - name: Ajánlott eljárások adatok a lake-ben való ADLS Gen2
               href: tutorial-data-flow-write-to-lake.md
-            - name: Adatátalakítás a tavon a Delta Lake-szel
+            - name: Adatok átalakítása a lake-ben a Delta Lake-el
               href: tutorial-data-flow-delta-lake.md
             - name: Adatok átalakítása leképezési adatfolyamokkal
               href: tutorial-data-flow.md
             - name: Adatfolyamok leképezését ismertető oktatóvideók
               href: data-flow-tutorials.md
-        - name: Az adatelőkészítés a huzavona
+        - name: Adatok előkészítése a rendszerezéssel
           href: wrangling-tutorial.md
         - name: Külső szolgáltatások használata
           items:
@@ -199,9 +199,9 @@
               href: concepts-data-flow-expression-builder.md
             - name: Kifejezés nyelve
               href: data-flow-expression-functions.md
-        - name: Az adatelőkészítés Power Query adathuzavonatal
+        - name: Adatok előkészítése Power Query adatrendezéssel
           items:
-            - name: Az adathuzavona áttekintése
+            - name: Adatrendezés áttekintése
               href: wrangling-overview.md
             - name: Támogatott függvények
               href: wrangling-functions.md
@@ -225,7 +225,7 @@
           href: source-control.md
         - name: Folyamatos integráció és teljesítés
           href: continuous-integration-deployment.md
-        - name: Automatikus közzététel
+        - name: Automatizált közzététel
           href: continuous-integration-deployment-improvements.md
     - name: Összekötők
       items:
@@ -433,13 +433,13 @@
           href: connector-zoho.md
     - name: Adatok áthelyezése
       items:
-        - name: Adatmásolás a másolási tevékenység használatával
+        - name: Adatok másolása másolási tevékenységgel
           href: copy-activity-overview.md
         - name: Másolási tevékenység figyelése
           href: copy-activity-monitoring.md
-        - name: Fájlok törlése törlési tevékenység használatával
+        - name: Fájlok törlése a Törlés tevékenységgel
           href: delete-activity.md
-        - name: Adatmásolás eszköz
+        - name: Adatok másolása eszköz
           href: copy-data-tool.md
         - name: Formátum- és tömörítéstámogatás
           href: supported-file-formats-and-compression-codecs.md
@@ -466,25 +466,25 @@
     - name: Adatok átalakítása
       href: transform-data.md
       items:
-        - name: Adatfolyam-tevékenység végrehajtása
+        - name: Tevékenység Adatfolyam végrehajtása
           href: control-flow-execute-data-flow-activity.md
-        - name: Power Query tevékenység végrehajtása
+        - name: Tevékenység Power Query végrehajtása
           href: control-flow-power-query-activity.md
-        - name: Azure Function tevékenység
+        - name: Azure-függvények tevékenysége
           href: control-flow-azure-function-activity.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Databricks jar-tevékenység
+        - name: Databricks Jar-tevékenység
           href: transform-data-databricks-jar.md
-        - name: Databricks-jegyzetfüzet tevékenység
+        - name: Databricks-jegyzetfüzetek tevékenysége
           href: transform-data-databricks-notebook.md
         - name: Databricks Python-tevékenység
           href: transform-data-databricks-python.md
-        - name: Adatkezelő parancs tevékenység
+        - name: Adatkezelő parancstevékenység
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
-        - name: U-SQL-Data Lake tevékenység
+        - name: Data Lake U-SQL-tevékenység
           href: transform-data-using-data-lake-analytics.md
-        - name: HDInsight-struktúra tevékenység
+        - name: HDInsight Hive-tevékenység
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce-tevékenység
           href: transform-data-using-hadoop-map-reduce.md
@@ -492,13 +492,13 @@
           href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark-tevékenység
           href: transform-data-using-spark.md
-        - name: HDInsight streaming-tevékenység
+        - name: HDInsight Streaming-tevékenység
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning folyamat végrehajtása tevékenység
+        - name: Machine Learning Execute Pipeline tevékenység
           href: transform-data-machine-learning-service.md
-        - name: Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység
+        - name: Machine Learning Studio (klasszikus) Batch Execution tevékenység
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység
+        - name: Machine Learning Studio (klasszikus) Erőforrás frissítése tevékenység
           href: update-machine-learning-models.md
         - name: Tárolt eljárási tevékenység
           href: transform-data-using-stored-procedure.md
@@ -506,33 +506,33 @@
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
-        - name: Változó tevékenységének hozzáfűzése
+        - name: Változótevékenység hozzáfűzése
           href: control-flow-append-variable-activity.md
-        - name: Folyamat végrehajtása tevékenység
+        - name: Execute Pipeline tevékenység
           href: control-flow-execute-pipeline-activity.md
-        - name: Szűrési tevékenység
+        - name: Tevékenység szűrése
           href: control-flow-filter-activity.md
         - name: Minden tevékenységhez
           href: control-flow-for-each-activity.md
-        - name: Metaadatok beolvasása tevékenység
+        - name: Metaadat-lekért tevékenység
           href: control-flow-get-metadata-activity.md
-        - name: Ha a feltétel tevékenység
+        - name: If Condition tevékenység
           href: control-flow-if-condition-activity.md
         - name: Keresési tevékenység
           href: control-flow-lookup-activity.md
-        - name: Változó tevékenység beállítása
+        - name: Változótevékenység beállítása
           href: control-flow-set-variable-activity.md
-        - name: Váltási tevékenység
+        - name: Tevékenységváltás
           href: control-flow-switch-activity.md
-        - name: Tevékenységig
+        - name: Until tevékenység
           href: control-flow-until-activity.md
-        - name: Érvényesítési tevékenység
+        - name: Ellenőrzési tevékenység
           href: control-flow-validation-activity.md
         - name: Várakozási tevékenység
           href: control-flow-wait-activity.md
         - name: Webes tevékenység
           href: control-flow-web-activity.md
-        - name: Webhook tevékenység
+        - name: Webhooktevékenység
           href: control-flow-webhook-activity.md
     - name: Adatfolyam-átalakítások
       items:
@@ -592,7 +592,7 @@
           href: control-flow-system-variables.md
         - name: Leképezési adatfolyamok paraméterezése
           href: parameters-data-flow.md
-        - name: Parametrizálja
+        - name: Paraméter megadása
           href: how-to-expression-language-functions.md
     - name: Biztonság
       items:
@@ -600,7 +600,7 @@
           href: data-movement-security-considerations.md
         - name: Adathozzáférési stratégiák
           href: data-access-strategies.md
-        - name: Azure Integration Runtime IP-címei
+        - name: Azure-beli integrációskörnyezet IP-címei
           href: azure-integration-runtime-ip-addresses.md
         - name: Hitelesítő adatok tárolása az Azure Key Vaultban
           href: store-credentials-in-key-vault.md
@@ -610,11 +610,11 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Felügyelt identitás Data Factoryhoz
           href: data-factory-service-identity.md
-        - name: Az adatgyár titkosítása az ügyfél által felügyelt kulccsal
+        - name: Adat-előállító titkosítása ügyfél által felügyelt kulccsal
           href: enable-customer-managed-key.md
         - name: Felügyelt virtuális hálózat
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure-beli privát hivatkozás Data Factory
+        - name: Azure privát hivatkozás Data Factory
           href: data-factory-private-link.md
         - name: Az Azure biztonsági alapkonfigurációja
           href: security-baseline.md
@@ -706,17 +706,17 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
           href: tumbling-window-trigger-dependency.md
-        - name: Tárolási esemény eseményindítójának létrehozása
+        - name: Storage-eseményindító létrehozása
           href: how-to-create-event-trigger.md
         - name: Egyéni eseményindító létrehozása
           href: how-to-create-custom-event-trigger.md
-        - name: Hivatkozás trigger metaadatainak a folyamatban
+        - name: Az eseményindító metaadatainak hivatkozása a folyamatban
           href: how-to-use-trigger-parameterization.md
     - name: Adatkatalógus és adatgazdálkodás
       items:
         - name: Data Factory csatlakozása az Azure Purview-hoz
           href: connect-data-factory-to-azure-purview.md
-        - name: Az ADF-ben lévő adatfelderítés és-vizsgálat a hatáskörébe
+        - name: Adatok felderítése és feltárása az ADF-ben a Purview használatával
           href: how-to-discover-explore-purview-data.md
     - name: Forgatókönyvek
       items:
@@ -744,7 +744,7 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Deduplikáció és NULL ellenőrzés kódrészletekkel
               href: how-to-data-flow-dedupe-nulls-snippets.md
-            - name: A pénzmosás-modellből származó adatok feldolgozása az adatfolyam használatával
+            - name: Aml-modellekből származó adatok feldolgozása adatfolyam használatával
               href: scenario-dataflow-process-data-aml-models.md
         - name: SSIS-migrálás helyszínről
           items:
@@ -774,9 +774,9 @@
           href: solution-template-databricks-notebook.md
     - name: A díjszabás ismertetése
       items:
-        - name: Adatfolyamok számára fenntartott kapacitás áttekintése
+        - name: Fenntartott adatfolyam-kapacitás áttekintése
           href: data-flow-reserved-capacity-overview.md
-        - name: Az adatforgalom ismertetése a foglalási díjakról
+        - name: Az adatfolyam a foglalási díjakat érti
           href: data-flow-understand-reservation-charges.md
         - name: Költségtervezés és a költségek kezelése
           href: plan-manage-costs.md
@@ -793,7 +793,11 @@
         - name: Folyamattriggerek
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Adatfolyamok
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: Adatfolyamok áttekintése
+              href: data-flow-troubleshoot-guide.md
+            - name: Összekötő és formátum
+              href: data-flow-troubleshoot-connector-format.md
         - name: Folyamatos integráció és üzembe helyezés
           href: ci-cd-github-troubleshoot-guide.md
         - name: Biztonság és hozzáférés-vezérlés

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 22920e6535a19b1ab0ce970c1195cee676d9363f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed83fdde4e005b0db76b9edf30faef5e8c732998
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057728"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714037"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
 
@@ -34,7 +34,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Az oktatóanyag követéséhez rendelkeznie kell az Eszközszimuláció egy üzembe helyezett példányával az Azure-előfizetésében.
 
-Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
+Ha még nem telepítette az Eszközszimulációt, tekintse meg az [eszközszimuláció üzembe](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) helyezését a GitHubon.
 
 ## <a name="view-your-device-models"></a>Eszközmodellek megtekintése
 
@@ -80,7 +80,7 @@ Az eszközmodellek klónozásával létrehozhatja egy meglévő eszközmodell m�
 
 Egy eszközmodell klónozásához jelölje be a modell mellett található jelölőnégyzetet, majd kattintson a **Klónozás** gombra a műveletsávon:
 
-![Képernyőkép a kiválasztott modell és a klónozás gomb kiemeléséhez.](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![Képernyőkép a kiválasztott modellről és a Klónozás gombról.](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>Eszközmodellek törlése
 

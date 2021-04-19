@@ -1,6 +1,6 @@
 ---
-title: Az eszköz szimulációjának áttekintése – Azure | Microsoft Docs
-description: Az eszköz szimulációs megoldás-gyorsító és képességeinek leírása.
+title: Az eszközszimuláció áttekintése – Azure | Microsoft Docs
+description: Az eszközszimulációs megoldásgyorsító és képességeinek leírása.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 979643c76b8bded51e30232228b7fe7485a1f53b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 27a23ff924c2fa9e9e35fec010ca2a177868eacc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057677"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713911"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Az eszközszimulációs megoldásgyorsító áttekintése
 
-Felhőalapú IoT-megoldás esetén az eszközök egy Felhőbeli végponthoz csatlakozva telemetria, például hőmérsékletet, helyet és állapotot küldenek. A megoldás ezt a telemetria használja, amely lehetővé teszi, hogy a műveletek elvégzéséhez vagy az adatokból származtatott eredményekhez jussanak.
+Egy felhőalapú IoT-megoldásban az eszközök egy felhőbeli végponthoz csatlakoznak, és telemetriai adatokat, például hőmérsékletet, helyet és állapotot küldenek. A megoldás felhasználja ezt a telemetriát, lehetővé téve a műveleteket, vagy elemzések származtatását.
 
-IoT-megoldás fejlesztésekor a kísérletezés és a tesztelés a folyamat alapvető részei. A szimuláció egy fontos eszköz a folyamat során. Az eszköz szimulálásával a következőket teheti:
+IoT-megoldás fejlesztésekor a kísérletezés és a tesztelés a folyamat alapvető része. A szimuláció fontos eszköz a folyamat során. Az Eszközszimulációval a következőt használhatja:
 
-* Gyorsan lekérhet egy prototípust, majd megismételheti a szimulált eszköz viselkedésének menet közbeni módosítását. Ez a folyamat lehetővé teszi, hogy kiderítse az ötletet, mielőtt befektet a költséges hardverbe. A webes felületen keresztül létrehozhat egyéni eszközöket a prototípus-eszköz létrehozásához másodpercek alatt.
-* Ellenőrizze, hogy a megoldás a várt módon működik-e az eszközről a megoldásra a valós eszközök viselkedésének szimulálása révén. A JavaScript használatával összetett eszköz-viselkedést is létrehozhat a reális szimulált telemetria létrehozásához.
-* A megoldást a normál, a csúcs és a maximális terhelési feltételek szimulálása révén méretezheti a megoldásban. A méretezési tesztek segítenek a megoldás futtatásához szükséges Azure-erőforrások méretének megfelelő méretekben is.
+* Gyorsan beállíthatja a prototípus működését, majd a szimulált eszköz viselkedésének működés közbeni módosításával iterálhat. Ez a folyamat lehetővé teszi, hogy bizonyítsa az ötletet, mielőtt költséges hardverbe fektetne. A webes felhasználói felületen egyéni eszközöket hozhat létre másodpercek alatt egy prototípus létrehozásához.
+* Valós eszközviselkedés szimulálásával ellenőrizze, hogy a megoldás az elvárt módon működik-e az eszköztől a megoldáson át. A JavaScript használatával összetett eszközviselkedéseket szkripteltethet valós szimulált telemetria létrehozásához.
+* Skálázásával tesztelje a megoldást a normál, a csúcsidős és a csúcsterhelési körülményeken túli szimulálásával. A méretezési tesztek a megoldás futtatásához szükséges Azure-erőforrások megfelelő méretezésében is segítenek.
 
-![Példa a drone-szimulációra](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
+![Drónszimulációs minta](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Az eszköz-szimulációval megadhatja az eszközök modelljeit, hogy szimulálja a valódi eszközöket. Ez a modell az üzenetek formátumait, a Twin tulajdonságokat és a metódusokat tartalmazza. A JavaScript használatával is szimulálhatja a komplex eszközök viselkedését.
+Az Eszközszimulációval eszközmodelleket definiálhat a valós eszközök szimulálására. Ez a modell üzenetformátumokat, ikertulajdonságokat és metódusokat tartalmaz. A JavaScripttel összetett eszközviselkedéseket is szimulálhat.
 
-A szimulációkat egy vagy több ezer eszközhöz is futtathatja, amely bármely IoT-hubhoz csatlakozik. Ha segítségre van szüksége a teszteléshez, telepítheti az IoT hubot, valamint az eszköz-szimulációt önálló környezetben.
+Szimulációkat futtathat egy vagy több ezer, bármely IoT Hubhoz csatlakozó eszközről. A teszteléshez szükség esetén üzembe helyezhet egy IoT Hubot az Eszközszimulációval együtt egy önálló környezetben.
 
-Az eszköz szimulációja ingyenes. Az eszköz szimulációja azonban üzembe helyezi az Azure-előfizetését a felhőben, és az Azure-erőforrásokat használja fel. Ha az eszköz szimulációja nem felel meg a követelményeknek, a [forráskód a githubon is elérhető](https://github.com/Azure/device-simulation-dotnet) a másoláshoz és a módosításhoz.
+Az Eszközszimuláció ingyenes. Az Eszközszimuláció azonban a felhőben helyez üzembe egy Azure-előfizetést, és felhasználja az Azure-erőforrásokat. Ha az eszközszimuláció nem felel meg a követelményeknek, a forráskód a [GitHubon](https://github.com/Azure/azure-iot-pcs-device-simulation) is elérhető a másoláshoz és módosításhoz.
 
-## <a name="sample-simulations"></a>Példa szimulációk
+## <a name="sample-simulations"></a>Mintaszimulációk
 
-Az eszköz-szimuláció üzembe helyezése során néhány példa szimulációt és minta-eszközt kap. Ezekkel a mintákkal megtudhatja, hogyan használhatja az eszköz-szimulációt. Első lépésként futtasson egy [minta szimulációt](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md). [Saját szimulációt is létrehozhat a számos megadott eszköz egyikének használatával](iot-accelerators-device-simulation-create-simulation.md).
+Az Eszközszimuláció üzembe helyezésekor mintaszimulációkat és mintaeszközöket kap. Ezekkel a mintákkal megismerheti az Eszközszimuláció használatát. Első lépésekként futtatassa a [mintaszimulációt.](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) Saját szimulációt is létrehozhat a rendelkezésre bocsátott [mintaeszközök egyikével.](iot-accelerators-device-simulation-create-simulation.md)
 
 ![Szimuláció konfigurálása](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Egyéni szimulált eszközök
 
-Az eszköz szimulációjának használatával [Egyéni modelleket hozhat létre](iot-accelerators-device-simulation-create-custom-device.md) a szimulációkban való használatra. Megadhat például egy új hűtőszekrény-eszköz modellt, amely hőmérséklet-és páratartalom-telemetria küld. Az egyéni szimulált eszközök ideálisak az egyszerű eszközök működéséhez véletlenszerű, növekvő vagy csökkenő telemetria-értékekkel.
+Az Eszközszimulációval [egyéni eszközmodelleket](iot-accelerators-device-simulation-create-custom-device.md) hozhat létre a szimulációkban való használathoz. Meghatározhat például egy új hűtőeszközmodellt, amely hőmérséklet- és páratartalom-telemetriát küld. Az egyéni szimulált eszközök ideálisak az egyszerű eszközviselkedéshez véletlenszerű, növekvő vagy csökkenő telemetriaértékekkel.
 
 ![Eszközmodell létrehozása](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
 ## <a name="advanced-simulated-devices"></a>Speciális szimulált eszközök
 
-Ha nagyobb mértékű vezérlésre van szüksége az eszköz által küldött telemetria értékek felett, használhatja a speciális eszköz modelljét. A speciális eszközbeállítások lehetővé teszik a JavaScript támogatását az eljuttatott telemetria-értékek kezeléséhez. Megteheti például, hogy egy forró napsütéses nap belső hőmérsékletét szimulálja, ahogy a külső hőmérséklet növekszik, a belső hőmérséklet exponenciálisan növekszik.
+Ha nagyobb felügyeletre van szüksége az eszközök által küldött telemetriai értékek felett, speciális eszközmodellt használhat. A speciális eszközmodellek lehetővé teszik a JavaScript-támogatást az elküldött telemetriaértékek manipulálására. Szimulálhatja például egy leparkolt autó belső hőmérsékletét egy meleg, meleg napon – a hőmérséklet emelkedése után a belső hőmérséklet exponenciálisan növekszik.
 
-A speciális eszközbeállítások lehetővé teszik [a saját eszköz-modelljeinek létrehozását és feltöltését](iot-accelerators-device-simulation-advanced-device.md) , amelyek egy JSON-eszköz definíciós fájljából és a megfelelő JavaScript-fájlokból állnak.
+A fejlett eszközmodellekkel saját eszközmodelleket hozhat létre és tölthet fel, amelyek egy JSON-eszközdefiníciós fájlból és a megfelelő JavaScript-fájlokból állnak. [](iot-accelerators-device-simulation-advanced-device.md)
 
-A speciális eszköz modelljei a következőket teszik lehetővé:
+A speciális eszközmodellek a következő funkciókat ják:
 
-* Az eszközről a telemetria-típusokkal együtt küldött üzenet formátumának megadása.
-* Egyéni parancsfájlok használatával olyan telemetria-értékeket hozhat elő, amelyek az eszköz állapotát az idő múlásával őrzik meg.
-* Egyéni parancsfájlok használata annak megadásához, hogy a szimulált eszköz hogyan válaszoljon a metódusokra.
+* Adja meg az eszközről küldött üzenetformátumot és a telemetriatípusokat.
+* Egyéni szkriptek használatával olyan telemetriai értékeket hozhat létre, amelyek fenntartják az eszköz állapotát az idő alatt.
+* Egyéni szkriptek használatával adhatja meg, hogyan reagáljon a szimulált eszköz a metódusra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az eszköz-szimulációs megoldás-gyorsító és annak képességeit. A megoldás-gyorsító üzembe helyezéséhez látogasson el a GitHub-tárházba:
+Ebben a cikkben az eszközszimulációs megoldásgyorsítóról és annak képességeiről tanult. A megoldásgyorsító üzembe helyezéséhez látogasson el a GitHub-adattárba:
 
 > [!div class="nextstepaction"]
-> [IoT-eszköz szimulációjának üzembe helyezése és futtatása az Azure-ban](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)
+> [IoT-eszközszimuláció üzembe helyezése és futtatása az Azure-ban](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)

@@ -1,29 +1,29 @@
 ---
-title: Egyéni e-mail-ellenőrzés a SendGrid
+title: Egyéni e-mail-ellenőrzés a SendGriddel
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan integrálható a SendGrid az ügyfeleknek küldött ellenőrző e-mailek testreszabásához, amikor a Azure AD B2C-kompatibilis alkalmazások használatára jelentkeznek.
+description: Megtudhatja, hogyan integrálhatja a SendGridet, hogy testre szabja az ügyfeleknek a regisztrációkor küldött ellenőrző e-mailt, és használja Azure AD B2C kompatibilis alkalmazásokat.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44ba2e39de37703de66aefd1fe843d0ca5002b6b
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256973"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713443"
 ---
-# <a name="custom-email-verification-with-sendgrid"></a>Egyéni e-mail-ellenőrzés a SendGrid
+# <a name="custom-email-verification-with-sendgrid"></a>Egyéni e-mail-ellenőrzés a SendGriddel
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a testreszabott e-mailek küldése az alkalmazásait használó felhasználók számára. A külső gyártótól származó e-mail-szolgáltató SendGrid használhatja a saját e-mail-sablonját, a cím és *a* tárgy lehetőséggel, valamint a honosítási és egyéni egyszeri jelszó (OTP) beállítások támogatásával.
+Egyéni e-mail-Azure Active Directory B2C (Azure AD B2C) egyéni e-maileket küldhet az alkalmazások használatára regisztráló felhasználóknak. A SendGrid külső e-mail-szolgáltató használatával használhatja a saját e-mail-sablonját és a *From:* address and subject (Cím és tárgy) lehetőséget, valamint támogatja a honosítást és az egyéni egyszeri jelszó (OTP) beállításait.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -33,40 +33,43 @@ Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a test
 
 ::: zone pivot="b2c-custom-policy"
 
-Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató, például [SendGrid](https://sendgrid.com), [mailjet](https://Mailjet.com)vagy [SparkPost](https://sparkpost.com), egyéni REST API vagy bármilyen HTTP-alapú e-mail-szolgáltató használata szükséges (beleértve a sajátját is). Ez a cikk a SendGrid-t használó megoldások beállítását ismerteti.
+Az egyéni e-mail-ellenőrzéshez külső e-mail-szolgáltatót kell használni, például [a SendGridet,](https://sendgrid.com)a [Mailjetet](https://Mailjet.com)vagy a [SparkPostot,](https://sparkpost.com)az egyéni REST API-t vagy bármely HTTP-alapú e-mail-szolgáltatót (beleértve a sajátját is). Ez a cikk a SendGridet használó megoldások beállítását ismerteti.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid-fiók létrehozása
 
-Ha még nem rendelkezik ilyennel, kezdje egy SendGrid-fiók beállításával (az Azure-ügyfelek minden hónapban feloldják a 25 000 ingyenes e-maileket). A beállítási utasításokért tekintse meg a [SendGrid-fiók létrehozása](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) című szakaszt, amely [bemutatja, hogyan küldhet e-mailt az Azure SendGrid használatával](../sendgrid-dotnet-how-to-send-email.md).
+Ha még nem rendelkezik ilyen fiókkal, először egy SendGrid-fiókot kell beállításakor (az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhat fel). A beállítási utasításokért lásd az E-mailek küldése [a SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) és az Azure használatával című cikk [SendGrid-fiók létrehozása című szakaszát.](../sendgrid-dotnet-how-to-send-email.md)
 
-Mindenképpen fejezze be azt a szakaszt, amelyben [létrehoz egy SENDGRID API-kulcsot](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key). Jegyezze fel az API-kulcsot egy későbbi lépésben való használatra.
+Mindenképpen töltse ki azt a szakaszt, amelyben [létrehozza a SendGrid API-kulcsot.](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key) Jegyezd fel az API-kulcsot egy későbbi lépésben való használatra.
 
-## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C házirend-kulcs létrehozása
+> [!IMPORTANT]
+> A SendGrid lehetővé teszi, hogy az ügyfelek megosztott IP-címekről és dedikált IP-címekről küldjenek [e-maileket.](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) Dedikált IP-címek használata esetén az IP-címek bemelegítésével ki kell építenie a saját jó hírnevét. További információ: [IP-cím bemelegítése.](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)
 
-Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C házirend-kulcsban a szabályzatok hivatkozásához.
+## <a name="create-azure-ad-b2c-policy-key"></a>Szabályzatkulcs Azure AD B2C létrehozása
+
+Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C szabályzatkulcsban, hogy a szabályzatokra hivatkozni fog.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
-1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-1. A **Beállítások** területen válassza a **manuális** lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `SendGridSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített SendGrid API-kulcsot.
-1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
+1. Győződjön meg arról, hogy a saját bérlőt tartalmazó könyvtárat Azure AD B2C használja. Válassza ki **a Címtár és előfizetés** szűrőt a felső menüben, és válassza ki Azure AD B2C címtárat.
+1. Válassza **a bal felső** sarokban található Minden szolgáltatás Azure Portal, majd keresse meg és válassza a **Azure AD B2C.**
+1. Az Áttekintés lapon válassza **a** Identity Experience Framework.
+1. Válassza **a Házirendkulcsok,** majd a Hozzáadás **lehetőséget.**
+1. A **Beállítások beállításhoz** válassza a **Manuális lehetőséget.**
+1. Adja meg a **szabályzatkulcs** Nevét. Például: `SendGridSecret`. Az `B2C_1A_` előtag automatikusan hozzáadódik a kulcs nevéhez.
+1. A **Titkos kulcs** résznél adja meg a korábban rögzített SendGrid API-kulcsot.
+1. A **Kulcshasználat beállításhoz válassza** az Aláírás **lehetőséget.**
 1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-sendgrid-template"></a>SendGrid-sablon létrehozása
 
-Egy Azure AD B2C SendGrid-fiókkal létrehozott és SendGrid API-kulcs használatával hozzon létre egy SendGrid [dinamikus tranzakciós sablont](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
+Ha létrehozott egy SendGrid-fiókot, és egy SendGrid API-kulcsot tárol egy Azure AD B2C szabályzatkulcsban, hozzon létre egy SendGrid dinamikus tranzakciós [sablont.](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)
 
-1. A SendGrid webhelyen nyissa meg a [tranzakciós sablonok](https://sendgrid.com/dynamic_templates) lapot, és válassza a **sablon létrehozása** lehetőséget.
-1. Adjon meg egy egyedi nevet a sablonhoz `Verification email` , majd válassza a **Mentés** lehetőséget.
-1. Az új sablon szerkesztésének megkezdéséhez válassza a **verzió hozzáadása** lehetőséget.
-1. Válassza ki a **Kódszerkesztő** elemet, majd **folytassa a művelettel**.
-1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A `{{otp}}` és a `{{email}}` Paraméterek dinamikusan lesznek lecserélve az egyszeri jelszóval és a felhasználói e-mail-címmel.
+1. A SendGrid webhelyén nyissa meg a [tranzakciós sablonok oldalát,](https://sendgrid.com/dynamic_templates) és válassza a **Sablon létrehozása lehetőséget.**
+1. Adjon meg egy egyedi sablonnevet(pl.) `Verification email` , majd válassza a Mentés **lehetőséget.**
+1. Az új sablon szerkesztésének megkezdéséhez válassza a **Verzió hozzáadása lehetőséget.**
+1. Válassza a **Kódszerkesztő,** majd a **Folytatás lehetőséget.**
+1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A és a paramétert a rendszer dinamikusan lecseréli az egyszeres jelszóértékre és a felhasználói `{{otp}}` `{{email}}` e-mail-címre.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -161,16 +164,16 @@ Egy Azure AD B2C SendGrid-fiókkal létrehozott és SendGrid API-kulcs használa
     </html>
     ```
 
-1. Bontsa ki a bal oldalon a **Beállítások** elemet, és az **e-mail tárgya** mezőbe írja be a következőt: `{{subject}}` .
-1. Válassza a **sablon mentése** lehetőséget.
-1. A vissza nyílra kattintva térjen vissza a **tranzakciós sablonok** oldalára.
-1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Például: `d-989077fbba9746e89f3f6411f596fb96`. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
+1. **Bontsa ki a Beállítások** gombra a bal oldalon, majd az **E-mail tárgya beállításnál adja** meg a következőt: `{{subject}}` .
+1. Válassza **a Sablon mentése lehetőséget.**
+1. A vissza **nyílra** kattintva térjen vissza a Tranzakciós sablonok lapra.
+1. Jegyezd **fel** a későbbi lépésben való használatra létrehozott sablon azonosítóját. Például: `d-989077fbba9746e89f3f6411f596fb96`. Ezt az azonosítót a [jogcím-átalakítás hozzáadásakor adhatja meg.](#add-the-claims-transformation)
 
-## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C jogcím-típusok hozzáadása
+## <a name="add-azure-ad-b2c-claim-types"></a>Új Azure AD B2C jogcímtípusok hozzáadása
 
-A szabályzatban adja hozzá a következő típusú jogcímeket a `<ClaimsSchema>` elemhez: `<BuildingBlocks>` .
+A szabályzatban adja hozzá a következő jogcímtípusokat `<ClaimsSchema>` a `<BuildingBlocks>` elemhez.
 
-Ezek a jogcím-típusok szükségesek az e-mail-cím egyszeri jelszavas (OTP) kóddal történő létrehozásához és ellenőrzéséhez.
+Ezek a jogcímtípusok szükségesek az e-mail-cím egyszeri jelszóval (OTP) való létrehozásához és ellenőrzéséhez.
 
 ```xml
 <!-- 
@@ -195,17 +198,17 @@ Ezek a jogcím-típusok szükségesek az e-mail-cím egyszeri jelszavas (OTP) k�
 </BuildingBlocks> -->
 ```
 
-## <a name="add-the-claims-transformation"></a>Jogcím-átalakítás hozzáadása
+## <a name="add-the-claims-transformation"></a>A jogcím-átalakítás hozzáadása
 
-Ezután szükség van egy jogcím-átalakításra, amely egy JSON-karakterlánc-jogcím kimenetét adja meg, amely a kérelem törzse lesz, amelyet a SendGrid küld.
+Ezután szükség lesz egy jogcím-átalakításra egy JSON-sztring jogcímének kimeneteként, amely a SendGridnek küldött kérelem törzse lesz.
 
-A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak. A JSON-jogcímek átalakításával kapcsolatos további információkért lásd a [JSON-jogcímek átalakítását](json-transformations.md)ismertető témakört.
+A JSON-objektum struktúráját az InputParameters és az InputClaims TransformationClaimTypes tulajdonságának dot not notation (Az InputParameters és a TransformationClaimTypes) határozzák meg. A pont-kiosztásban a számok tömbökre utalnak. Az értékek az InputClaims értékeiből és az InputParameters "Value" tulajdonságaiból jönnek. További információ a JSON-jogcímek átalakításáról: [JSON-jogcímek átalakítása.](json-transformations.md)
 
-Adja hozzá a következő jogcím-átalakítást a `<ClaimsTransformations>` elemen belül `<BuildingBlocks>` . Hajtsa végre a következő frissítéseket a jogcím-átalakítási XML-ben:
+Adja hozzá a következő jogcím-átalakítást `<ClaimsTransformations>` a elemhez a elemen `<BuildingBlocks>` belül. A jogcím-átalakítási XML-fájlon az alábbi frissítéseket kell követnie:
 
-* Frissítse a `template_id` InputParameter értéket a [SendGrid létrehozása sablonban](#create-sendgrid-template)korábban létrehozott SendGrid tranzakciós sablon azonosítójával.
-* Módosítsa a `from.email` címtartomány értékét. Érvényes e-mail-cím használatával megakadályozhatja, hogy az ellenőrző e-mailek levélszemétként legyenek megjelölve.
-* Frissítse a `personalizations.0.dynamic_template_data.subject` Tárgy sor bemeneti paraméter értékét a szervezete számára megfelelő tárgyi vonallal.
+* Frissítse az InputParameter értékét a SendGrid-sablon létrehozása során korábban létrehozott SendGrid tranzakciós sablon `template_id` [azonosítójával.](#create-sendgrid-template)
+* Frissítse a `from.email` cím értékét. Érvényes e-mail-cím használatával megakadályozhatja, hogy az ellenőrző e-mail levélszemétként legyen megjelölve.
+* Frissítse a tárgysor bemeneti paraméterének értékét a szervezetének megfelelő `personalizations.0.dynamic_template_data.subject` tárgysokkal.
 
 ```xml
 <!-- 
@@ -233,9 +236,9 @@ Adja hozzá a következő jogcím-átalakítást a `<ClaimsTransformations>` ele
 </BuildingBlocks> -->
 ```
 
-## <a name="add-datauri-content-definition"></a>DataUri-definíció hozzáadása
+## <a name="add-datauri-content-definition"></a>DataUri-tartalomdefiníció hozzáadása
 
-A jogcím-átalakítások alatt `<BuildingBlocks>` adja hozzá a következő [ContentDefinition](contentdefinitions.md) a 2.1.2 adaturi-verzióra való hivatkozáshoz:
+A jogcím-átalakításai alatt adja hozzá a következő `<BuildingBlocks>` [ContentDefinition](contentdefinitions.md) adatokat a 2.1.2-es adat URI-verziójára való hivatkozáshoz:
 
 ```xml
 <!--
@@ -254,18 +257,18 @@ A jogcím-átalakítások alatt `<BuildingBlocks>` adja hozzá a következő [Co
 
 ## <a name="create-a-displaycontrol"></a>DisplayControl létrehozása
 
-A rendszer ellenőrzi, hogy az e-mail-cím a felhasználónak küldött ellenőrző kóddal van-e meghatározva.
+Az ellenőrző kijelző vezérlője ellenőrzi az e-mail-címet a felhasználónak küldött ellenőrzőkóddal.
 
-Ez a példa megjelenítési vezérlő a következőre van konfigurálva:
+Ez a példa megjelenítendő vezérlő a következőre van konfigurálva:
 
-1. Gyűjtse össze a `email` jogcím típusát a felhasználótól.
-1. Várjon, amíg a felhasználó meg nem adja a `verificationCode` jogcím típusát a felhasználónak továbbított kóddal.
-1. Térjen vissza a visszaadott `email` technikai profilhoz, amely erre a megjelenítési vezérlőelemre hivatkozik.
-1. A `SendCode` művelettel egy egyszeri jelszavas kódot kell előállítania, és e-mailt kell küldenie az OTP-kóddal a felhasználónak.
+1. Gyűjtse össze `email` a cím jogcímtípusát a felhasználótól.
+1. Várjon, amíg a felhasználó meg nem adja `verificationCode` a jogcímtípust a felhasználónak küldött kóddal.
+1. Térjen vissza a vissza ahhoz az önfeltételes technikai profilhoz, amely `email` hivatkozik erre a megjelenítési vezérlőre.
+1. A művelet használatával hozzon létre egy otP-kódot, és küldjön egy e-mailt az `SendCode` otP-kóddal a felhasználónak.
 
-![Ellenőrző kód e-mail-műveletének küldése](media/custom-email-sendgrid/display-control-verification-email-action-01.png)
+![Ellenőrző kód küldése e-mail-művelet](media/custom-email-sendgrid/display-control-verification-email-action-01.png)
 
-A tartalmi definíciók területen még `<BuildingBlocks>` a-ban is adja hozzá a következő [DisplayControl](display-controls.md) típusú [VerificationControl](display-control-verification.md) a szabályzathoz.
+A tartalomdefiníciók alatt, még a alatt adja hozzá a `<BuildingBlocks>` [következő, VerificationControl](display-controls.md) típusú [DisplayControl](display-control-verification.md) vezérlőt a szabályzathoz.
 
 ```xml
 <!--
@@ -298,9 +301,9 @@ A tartalmi definíciók területen még `<BuildingBlocks>` a-ban is adja hozzá 
 </BuildingBlocks> -->
 ```
 
-## <a name="add-otp-technical-profiles"></a>OTP technikai profilok hozzáadása
+## <a name="add-otp-technical-profiles"></a>Egyszeri egyszeri megoldás technikai profiljainak hozzáadása
 
-A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-cím számára. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címmel társított kódot. Módosíthatja a formátum konfigurációját és az egyszeri jelszó lejárati idejét. Az OTP technikai profiljaival kapcsolatos további információkért lásd: [egyszeri jelszóval kapcsolatos technikai profil meghatározása](one-time-password-technical-profile.md).
+A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-címhez. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címhez társított kódot. Módosíthatja a formátum konfigurációját és az egyszeres jelszó lejáratát. Az egyszeri jelszavas technikai profilokkal kapcsolatos további információkért [lásd: Egyszeri jelszó technikai profiljának definiálása.](one-time-password-technical-profile.md)
 
 Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
@@ -346,11 +349,11 @@ Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 </ClaimsProviders> -->
 ```
 
-## <a name="add-a-rest-api-technical-profile"></a>REST API technikai profil hozzáadása
+## <a name="add-a-rest-api-technical-profile"></a>Technikai REST API hozzáadása
 
-Ez a REST API technikai profil az e-mail-tartalmat hozza létre (a SendGrid formátum használatával). További információ a REST-technikai profilokról: [Rest-technikai profil meghatározása](restful-technical-profile.md).
+Ez REST API technikai profil hozza létre az e-mail-tartalmat (SendGrid formátumban). A RESTful technikai profilokkal kapcsolatos további információkért [lásd: RESTful technikai profil definiálása.](restful-technical-profile.md)
 
-Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
+Ahogy az egyszeri egyszeri megoldás technikai profiljai esetében, itt is adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
 ```xml
 <ClaimsProvider>
@@ -379,11 +382,11 @@ Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai pro
 </ClaimsProvider>
 ```
 
-## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás készítése a DisplayControl
+## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás a DisplayControl vezérlőre
 
-Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl. Cserélje le a meglévő `LocalAccountSignUpWithLogonEmail` és `LocalAccountDiscoveryUsingEmailAddress` saját maga által vezérelt technikai profilokat az alábbira. Ha a Azure AD B2C szabályzat korábbi verzióját használta. Ezek a műszaki profilok a `DisplayClaims` DisplayControl mutató hivatkozást használják.
+Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl vezérlőre. Cserélje le a `LocalAccountSignUpWithLogonEmail` meglévő és `LocalAccountDiscoveryUsingEmailAddress` az önkiszolgáló műszaki profilokat a következőre. Ha a szabályzat egy korábbi verzióját Azure AD B2C használni. Ezek a technikai profilok `DisplayClaims` a DisplayControl-vezérlőre való hivatkozással együtt használhatók.
 
-További információ: [önérvényesített technikai profil](restful-technical-profile.md) és [DisplayControl](display-controls.md).
+További információ: Önkiszolgáló technikai [profil és](restful-technical-profile.md) [DisplayControl.](display-controls.md)
 
 ```xml
 <ClaimsProvider>
@@ -422,14 +425,14 @@ További információ: [önérvényesített technikai profil](restful-technical-
 </ClaimsProvider>
 ```
 
-## <a name="optional-localize-your-email"></a>Választható E-mail honosítása
+## <a name="optional-localize-your-email"></a>[Nem kötelező] Az e-mail honosizálása
 
-Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie a SendGrid vagy az e-mail-szolgáltatónak. Honosíthatja például az e-mail-tárgyat, a törzset, az Ön kódjának üzenetét vagy az e-mail aláírását. Ehhez használhatja a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterláncok jogcím-típusokra való másolásához. A `GenerateEmailRequestBody` JSON-adattartalmat generáló jogcím-átalakítás a honosított karakterláncokat tartalmazó bemeneti jogcímeket használja.
+Az e-mail honosizáláshoz honosított sztringeket kell küldenie a SendGridnek vagy az e-mail-szolgáltatónak. Honosíthatja például az e-mail tárgyát, törzsét, a kódüzenetét vagy az e-mail aláírását. Erre a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítással másolhat honosított sztringeket jogcímtípusokba. A JSON hasznos adatokat generáló jogcím-átalakítás a honosított sztringeket tartalmazó bemeneti `GenerateEmailRequestBody` jogcímeket használ.
 
-1. A szabályzatban adja meg a következő karakterlánc-jogcímeket: tulajdonos, üzenet, codeIntro és aláírás.
-1. Definiáljon egy [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterlánc-értékek helyettesítéséhez az 1. lépésben szereplő jogcímekbe.
-1. Módosítsa a `GenerateEmailRequestBody` jogcím-átalakítást a bemeneti jogcímek használatára a következő XML-kódrészlettel.
-1. Frissítse a SendGrid-sablont a dinamikus paraméterek használatára a Azure AD B2C által honosított összes karakterlánc helyett.
+1. A szabályzatban adja meg a következő sztring jogcímeket: tárgy, üzenet, codeIntro és aláírás.
+1. Definiálja a [GetLocalizedStringsTransformation](string-transformations.md) jogcímátalakítást, hogy a honosított sztringértékeket az 1. lépésben megadott jogcímekbe helyettesítse.
+1. Módosítsa a `GenerateEmailRequestBody` jogcímek átalakítását úgy, hogy bemeneti jogcímeket használjanak az alábbi XML-kódrészlettel.
+1. Frissítse a SendGrid-sablont, hogy dinamikus paramétereket használjon az összes olyan sztring helyére, amelyet a Azure AD B2C.
 
     ```xml
     <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
@@ -460,7 +463,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </ClaimsTransformation>
     ```
 
-1. Adja hozzá a következő [honosítási](localization.md) elemet.
+1. Adja hozzá a [következő Honosítás elemet.](localization.md)
 
     ```xml
     <!--
@@ -493,7 +496,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </BuildingBlocks> -->
     ```
 
-1. A [ContentDefinitions](contentdefinitions.md) elem frissítésével adjon hozzá hivatkozásokat a LocalizedResources elemekhez.
+1. A LocalizedResources elemekre mutató hivatkozásokat a [ContentDefinitions elem frissítésével adhat](contentdefinitions.md) hozzá.
 
     ```XML
     <!--
@@ -518,7 +521,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </BuildingBlocks> -->
     ```
 
-1. Végül adja hozzá a következő bemeneti jogcímek átalakítását a `LocalAccountSignUpWithLogonEmail` és a `LocalAccountDiscoveryUsingEmailAddress` technikai profilokhoz.
+1. Végül adja hozzá a következő bemeneti jogcím-átalakítást a `LocalAccountSignUpWithLogonEmail` és `LocalAccountDiscoveryUsingEmailAddress` a technikai profilhoz.
 
     ```XML
     <InputClaimsTransformations>
@@ -526,9 +529,9 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </InputClaimsTransformations>
     ```
     
-## <a name="optional-localize-the-ui"></a>Választható A felhasználói felület honosítása
+## <a name="optional-localize-the-ui"></a>[Nem kötelező] A felhasználói felület honosizálása
 
-A honosítási elem lehetővé teszi, hogy a felhasználói útvonalakhoz tartozó szabályzatban több területi beállítást vagy nyelvet támogasson. A házirendek honosítási támogatása lehetővé teszi nyelvspecifikus karakterláncok megadását a [felhasználói felület elemeihez](localization-string-ids.md#verification-display-control-user-interface-elements)és a [jelszó egyszeri jelszavához](localization-string-ids.md#one-time-password-error-messages). Adja hozzá a következő LocalizedString a LocalizedResources. 
+A Honosítás elem lehetővé teszi több területi beállítás vagy nyelv támogatását a szabályzatban a felhasználói utakhoz. A szabályzatok honosítási támogatása lehetővé teszi, hogy nyelvspecifikus sztringeket adjon meg az Ellenőrzés megjelenítési vezérlő felhasználói felületének elemeihez [és](localization-string-ids.md#verification-display-control-user-interface-elements)az Egyszer megjelenő jelszó [hibaüzenethez is.](localization-string-ids.md#one-time-password-error-messages) Adja hozzá a következő LocalizedString karakterláncot a LocalizedResources erőforráshoz. 
 
 ```XML
 <LocalizedResources Id="api.custom-email.en">
@@ -559,13 +562,13 @@ A honosítási elem lehetővé teszi, hogy a felhasználói útvonalakhoz tartoz
 </LocalizedResources>
 ```
 
-A honosított karakterláncok hozzáadása után távolítsa el az egyszeri jelszavas érvényesítési hibaüzenetek metaadatait a LocalAccountSignUpWithLogonEmail és a LocalAccountDiscoveryUsingEmailAddress technikai profiljaiból.
+A honosított sztringek hozzáadása után távolítsa el az egyszeri jelszóval kapcsolatos érvényesítési hibaüzenetek metaadatait a LocalAccountSignUpWithLogonEmail és LocalAccountDiscoveryUsingEmailAddress technikai profilokból.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
+Az egyéni e-mail-ellenőrzési szabályzatra a GitHubon találhat példát:
 
 - [Egyéni e-mail-ellenőrzés – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
-- Az egyéni REST API vagy bármely HTTP-alapú SMTP e-mail-szolgáltató használatáról további információt a [Rest műszaki profil definiálása egy Azure ad B2C egyéni szabályzatban](restful-technical-profile.md)című témakörben talál.
+- Az egyéni házirendek és a HTTP REST API SMTP e-mail-szolgáltatók használatával kapcsolatos további információkért [lásd: RESTful](restful-technical-profile.md)technikai profil definiálása egyéni házirendben Azure AD B2C házirendben.
 
 ::: zone-end

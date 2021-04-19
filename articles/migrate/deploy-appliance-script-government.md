@@ -1,55 +1,55 @@
 ---
-title: Azure Migrate berendezés beállítása Azure Government
-description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a Azure Government
+title: Beállít egy Azure Migrate berendezést a Azure Government
+description: Megtudhatja, hogyan állíthat be Azure Migrate berendezést a Azure Government
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0bc2b69a4a1ec31cfa560d51920378fe1ab52b8
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775204"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714793"
 ---
-# <a name="set-up-an-appliance-in-azure-government"></a>Berendezés beállítása Azure Government 
+# <a name="set-up-an-appliance-in-azure-government"></a>Berendezés beállítása a Azure Government 
 
-Ezt a cikket követve üzembe helyezhet egy [Azure Migrate berendezést](./migrate-appliance-architecture.md) a VMware-környezetben, a Hyper-V-kiszolgálókon és a fizikai kiszolgálókon lévő kiszolgálókon egy Azure Government-felhőben. Parancsfájl futtatásával hozza létre a készüléket, és ellenőrizze, hogy tud-e csatlakozni az Azure-hoz. Ha a készüléket a nyilvános felhőben szeretné beállítani, kövesse [ezt a cikket](deploy-appliance-script.md).
+Ebből a cikkből [](./migrate-appliance-architecture.md) Azure Migrate VMware-környezetben található kiszolgálókhoz, Hyper-V-kiszolgálókhoz és fizikai kiszolgálókhoz egy virtuális Azure Government üzembe. Egy szkript futtatásával hozza létre a berendezést, és ellenőrizze, hogy tud-e csatlakozni az Azure-hoz. Ha berendezést szeretne beállítani a nyilvános felhőben, kövesse [ezt a cikket.](deploy-appliance-script.md)
 
 
 > [!NOTE]
-> Ha a készüléket sablon használatával (a VMware-környezet és a Hyper-V környezetben található kiszolgálók esetében) szeretné telepíteni, Azure Government nem támogatott.
+> A VMware-környezetben és Hyper-V-környezetben található kiszolgálók esetén a sablonnal való üzembe helyezés lehetősége nem támogatott a Azure Government.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A parancsfájl egy meglévő fizikai kiszolgálón vagy virtualizált kiszolgálón állítja be a Azure Migrate készüléket.
+A szkript beállítja a Azure Migrate berendezést egy meglévő fizikai kiszolgálón vagy egy virtualizált kiszolgálón.
 
-- A készülékként működni kívánó kiszolgálónak Windows Server 2016, 32 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezterülettel és külső virtuális kapcsolóval kell futnia. Statikus vagy dinamikus IP-címet igényel, és hozzáférést biztosít az internethez.
-- A készülék üzembe helyezése előtt tekintse át a VMware, [a Hyper-V és a](migrate-appliance.md#appliance---hyper-v) [fizikai kiszolgálók](migrate-appliance.md#appliance---physical) [kiszolgálóinak](migrate-appliance.md#appliance---vmware)részletes készülékekre vonatkozó követelményeit.
-- Ne futtassa a parancsfájlt egy meglévő Azure Migrate berendezésen.
+- A berendezésként szolgáló kiszolgálónak Windows Server 2016 rendszert kell futtatónak lennie, 32 GB memóriával, nyolc vCPU-val, körülbelül 80 GB lemezterülettel és egy külső virtuális kapcsolóval. Statikus vagy dinamikus IP-címet igényel. 
+- A berendezés üzembe helyezése előtt tekintse át a [VMware,](migrate-appliance.md#appliance---vmware) [Hyper-V](migrate-appliance.md#appliance---hyper-v)és fizikai kiszolgálók kiszolgálóira vonatkozó részletes [berendezéskövetelményeket.](migrate-appliance.md#appliance---physical)
+- Ne futtassa a szkriptet egy meglévő Azure Migrate berendezésen.
 
-## <a name="set-up-the-appliance-for-vmware"></a>A készülék beállítása a VMware-hez
+## <a name="set-up-the-appliance-for-vmware"></a>A berendezés beállítása A VMware-hez
 
-A készülék VMware-hez való beállításához töltse le a tömörített fájlt a Azure Portalból, és bontsa ki a tartalmat. Futtatja a PowerShell-szkriptet a készülék webalkalmazásának elindításához. Állítsa be a készüléket, és konfigurálja az első alkalommal. Ezután regisztrálja a készüléket a projektben.
+A berendezés VMware-hez való beállításhoz töltsön le egy tömörített fájlt a Azure Portal, és bontsa ki a tartalmát. A berendezés webalkalmazásának elindításához futtassa a PowerShell-szkriptet. Először beállítja és konfigurálja a berendezést. Ezután regisztrálja a berendezést a projektben.
 
-### <a name="download-the-script"></a>A parancsfájl letöltése
+### <a name="download-the-script"></a>A szkript letöltése
 
-1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** területen kattintson **a felderítés** gombra.
-2. A **felderítési kiszolgálón** a  >  **kiszolgálók virtualizáltak?**, válassza **az igen, VMware vSphere Hypervisort**.
-3. A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra.
+1. A **Windows,** Linux és SQL Servers áttelepítési célok Azure Migrate: Felderítés és értékelés  >    >  alatt kattintson a **Felderítés elemre.**
+2. A **Kiszolgáló felderítése**  >  **Virtualizáltak a kiszolgálók?** beállításban válassza az **Igen, VMware vSphere hipervizorral lehetőséget.**
+3. Kattintson **a Download (Letöltés)** gombra a tömörített fájl letöltéséhez.
 
-### <a name="verify-file-security"></a>A fájl biztonságának ellenőrzése
+### <a name="verify-file-security"></a>Fájlbiztonság ellenőrzése
 
-A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
+Az üzembe helyezés előtt ellenőrizze, hogy a tömörített fájl biztonságos-e.
 
-1. Nyisson meg egy rendszergazdai parancssorablakot azon a kiszolgálón, amelyre letöltötte a fájlt.
-2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
+1. A kiszolgálón, amelyre letöltötte a fájlt, nyisson meg egy rendszergazdai parancsablakot.
+2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
-3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
+3. Ellenőrizze a berendezés legújabb verzióját és kivonatértékét:
 
     **Algoritmus** | **Letöltés** | **SHA256**
     --- | --- | ---
@@ -58,142 +58,142 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
 ### <a name="run-the-script"></a>A szkript futtatása
 
-A szkript a következőket teszi:
+A szkript a következőt teszi:
 
-- Ügynököket és webalkalmazásokat telepít.
+- Ügynököket és egy webalkalmazást telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
-- Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
-- A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
-    - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
-    - **Naplófájlok**:%ProgramData%\Microsoft Azure\Logs
+- Letölt és telepít egy újraírható IIS-modult. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Frissíti a beállításkulcsot (HKLM) a kulcs állandó Azure Migrate.
+- A következőképpen hozza létre a napló- és konfigurációs fájlokat:
+    - **Konfigurációs fájlok:**%ProgramData%\Microsoft Azure\Config
+    - **Naplófájlok:**%ProgramData%\Microsoft Azure\Logs
 
 A szkript futtatása:
 
-1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezéssel rendelkező kiszolgálón.
-2. Indítsa el a PowerShellt a kiszolgálón, rendszergazdai (emelt szintű) jogosultságokkal.
-3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa **AzureMigrateInstaller.ps1** szkriptet a következő módon:
+1. Bontsa ki a tömörített fájlt a berendezést tartalmazó kiszolgáló egyik mappájába. Győződjön meg arról, hogy a szkriptet nem olyan kiszolgálón futtatja, amely már Azure Migrate berendezést.
+2. Indítsa el a PowerShellt a kiszolgálón rendszergazdai (emelt szintű) jogosultságokkal.
+3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kicsomagolt tartalmat tartalmazza.
+4. Futtassa a **AzureMigrateInstaller.ps1** a következőképpen:
     
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
-1. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+1. Miután a szkript sikeresen lefutott, elindítja a berendezés webalkalmazását, hogy be tudja állítani a berendezést. Ha bármilyen probléma merül fel, tekintse át a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log fájlban található szkriptnaplókat.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
 
-Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címeihez a [kormányzati felhőkhöz](migrate-appliance.md#government-cloud-urls).
+Győződjön meg arról, hogy a berendezés képes csatlakozni a kormányzati felhők Azure [URL-címeihez.](migrate-appliance.md#government-cloud-urls)
 
 
-## <a name="set-up-the-appliance-for-hyper-v"></a>A készülék beállítása a Hyper-V-hez
+## <a name="set-up-the-appliance-for-hyper-v"></a>A berendezés beállítása Hyper-V-hez
 
-A Hyper-V berendezésének beállításához töltse le a tömörített fájlt a Azure Portalból, és bontsa ki a tartalmat. Futtatja a PowerShell-szkriptet a készülék webalkalmazásának elindításához. Állítsa be a készüléket, és konfigurálja az első alkalommal. Ezután regisztrálja a készüléket a projektben.
+A berendezés Hyper-V-hez való beállításhoz töltsön le egy tömörített fájlt a Azure Portal, és bontsa ki a tartalmát. A berendezés webalkalmazásának elindításához futtassa a PowerShell-szkriptet. Először beállítja és konfigurálja a berendezést. Ezután regisztrálja a berendezést a projektben.
 
-### <a name="download-the-script"></a>A parancsfájl letöltése
+### <a name="download-the-script"></a>A szkript letöltése
 
-1.  Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** területen kattintson **a felderítés** gombra.
-2.  A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, a Hyper-V** lehetőséget.
-3.  A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra. 
+1.  A **Windows,** Linux és SQL Servers áttelepítési célok Azure Migrate: Felderítés és értékelés  >    >  alatt kattintson a **Felderítés elemre.**
+2.  A **Kiszolgálók felderítése**  >  **Virtualizáltak a kiszolgálók?** alatt válassza az **Igen, a Hyper-V-vel lehetőséget.**
+3.  Kattintson **a Download (Letöltés)** gombra a tömörített fájl letöltéséhez. 
 
 
-### <a name="verify-file-security"></a>A fájl biztonságának ellenőrzése
+### <a name="verify-file-security"></a>Fájlbiztonság ellenőrzése
 
-A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
+Az üzembe helyezés előtt ellenőrizze, hogy a tömörített fájl biztonságos-e.
 
-1. Nyisson meg egy rendszergazdai parancssorablakot azon a kiszolgálón, amelyre letöltötte a fájlt.
-2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
+1. A kiszolgálón, amelyre letöltötte a fájlt, nyisson meg egy rendszergazdai parancsablakot.
+2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
-3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
+3. Ellenőrizze a berendezés legújabb verzióját és kivonatértékét:
 
     **Forgatókönyv** | **Letöltés** | **SHA256**
     --- | --- | ---
-    Hyper-V (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
+    Hyper-V (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a167183a94e8347456db9c5749c7332ff2eb4b77798765e48
 
           
 
 ### <a name="run-the-script"></a>A szkript futtatása
 
-A szkript a következőket teszi:
+A szkript a következőt teszi:
 
-- Ügynököket és webalkalmazásokat telepít.
+- Ügynököket és egy webalkalmazást telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
-- Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
-- A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
-    - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
-    - **Naplófájlok**:%ProgramData%\Microsoft Azure\Logs
+- Letölt és telepít egy újraírható IIS-modult. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Frissíti a beállításkulcsot (HKLM) a kulcs állandó Azure Migrate.
+- A következőképpen hozza létre a napló- és konfigurációs fájlokat:
+    - **Konfigurációs fájlok:**%ProgramData%\Microsoft Azure\Config
+    - **Naplófájlok:**%ProgramData%\Microsoft Azure\Logs
 
 A szkript futtatása:
 
-1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate készüléket futtató kiszolgálón.
-2. Indítsa el a PowerShellt a kiszolgálón, rendszergazdai (emelt szintű) jogosultságokkal.
-3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa **AzureMigrateInstaller.ps1** szkriptet a következő módon: 
+1. Bontsa ki a tömörített fájlt a berendezést tartalmazó kiszolgáló egyik mappájába. Győződjön meg arról, hogy nem futtatja a szkriptet egy meglévő Azure Migrate kiszolgálón.
+2. Indítsa el a PowerShellt a kiszolgálón rendszergazdai (emelt szintű) jogosultságokkal.
+3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kicsomagolt tartalmat tartalmazza.
+4. Futtassa a **AzureMigrateInstaller.ps1** a következőképpen: 
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
-1. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+1. Miután a szkript sikeresen lefutott, elindítja a berendezés webalkalmazását, hogy be tudja állítani a berendezést. Ha bármilyen problémába ütközik, tekintse át a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log fájlban található szkriptnaplókat.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
 
-Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címeihez a [kormányzati felhőkhöz](migrate-appliance.md#government-cloud-urls).
+Győződjön meg arról, hogy a berendezés képes csatlakozni a kormányzati felhőkHöz való Azure [URL-címekhez.](migrate-appliance.md#government-cloud-urls)
 
 
-## <a name="set-up-the-appliance-for-physical-servers"></a>A készülék beállítása fizikai kiszolgálókhoz
+## <a name="set-up-the-appliance-for-physical-servers"></a>A berendezés beállítása fizikai kiszolgálókhoz
 
-A készülék VMware-hez való beállításához töltse le a tömörített fájlt a Azure Portalból, és bontsa ki a tartalmat. Futtatja a PowerShell-szkriptet a készülék webalkalmazásának elindításához. Állítsa be a készüléket, és konfigurálja az első alkalommal. Ezután regisztrálja a készüléket a projektben.
+A berendezés VMware-hez való beállításhoz töltsön le egy tömörített fájlt a Azure Portal, és bontsa ki a tartalmát. A berendezés webalkalmazásának elindításához futtassa a PowerShell-szkriptet. Először beállítja és konfigurálja a berendezést. Ezután regisztrálja a berendezést a projektben.
 
-### <a name="download-the-script"></a>A parancsfájl letöltése
+### <a name="download-the-script"></a>A szkript letöltése
 
-1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** területen kattintson **a felderítés** gombra.
-2. A **felderítési kiszolgálók**  >  **kiszolgálók virtualizáltak?** területen válassza a **nem virtualizált/egyéb** lehetőséget.
-3. A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra.
+1. A **Windows,** Linux és SQL Servers áttelepítési célok Azure Migrate: Felderítés és értékelés  >    >  alatt kattintson a **Felderítés elemre.**
+2. A **Kiszolgálók felderítése**  >  **Virtualizáltak a kiszolgálók?** alatt válassza a Nem **virtualizált/Egyéb lehetőséget.**
+3. Kattintson **a Download (Letöltés)** gombra a tömörített fájl letöltéséhez.
 
-### <a name="verify-file-security"></a>A fájl biztonságának ellenőrzése
+### <a name="verify-file-security"></a>Fájlbiztonság ellenőrzése
 
-A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
+Az üzembe helyezés előtt ellenőrizze, hogy a tömörített fájl biztonságos-e.
 
-1. Nyisson meg egy rendszergazdai parancssorablakot azon kiszolgálókon, amelyeken letöltötte a fájlt.
-2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
+1. A kiszolgálókon, amelyekre letöltötte a fájlt, nyisson meg egy rendszergazdai parancsablakot.
+2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
-3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
+3. Ellenőrizze a berendezés legújabb verzióját és kivonatértékét:
 
-    **Forgatókönyv** | **Letöltés** _ | _ *Kivonatoló érték**
+    **Forgatókönyv** | **Letöltés** _ | _ *Kivonatérték**
     --- | --- | ---
     Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           
 
 ### <a name="run-the-script"></a>A szkript futtatása
 
-A szkript a következőket teszi:
+A szkript a következőt teszi:
 
-- Ügynököket és webalkalmazásokat telepít.
+- Ügynököket és egy webalkalmazást telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
-- Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
-- A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
-    - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
-    - **Naplófájlok**:%ProgramData%\Microsoft Azure\Logs
+- Letölt és telepít egy újraírható IIS-modult. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Frissíti a beállításkulcsot (HKLM) a kulcs állandó Azure Migrate.
+- A következőképpen hozza létre a napló- és konfigurációs fájlokat:
+    - **Konfigurációs fájlok:**%ProgramData%\Microsoft Azure\Config
+    - **Naplófájlok:**%ProgramData%\Microsoft Azure\Logs
 
 A szkript futtatása:
 
-1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate készüléket futtató kiszolgálón.
-2. Indítsa el a PowerShellt a kiszolgálón, rendszergazdai (emelt szintű) jogosultságokkal.
-3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa **AzureMigrateInstaller.ps1** szkriptet a következő módon:
+1. Bontsa ki a tömörített fájlt a berendezést tartalmazó kiszolgáló egyik mappájába. Győződjön meg arról, hogy nem futtatja a szkriptet egy meglévő Azure Migrate kiszolgálón.
+2. Indítsa el a PowerShellt a kiszolgálón rendszergazdai (emelt szintű) jogosultságokkal.
+3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kicsomagolt tartalmat tartalmazza.
+4. Futtassa a **AzureMigrateInstaller.ps1** a következőképpen:
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
-1. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
+1. Miután a szkript sikeresen lefutott, elindítja a berendezés webalkalmazását, hogy be tudja állítani a berendezést. Ha bármilyen problémába ütközik, tekintse át a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log fájlban található szkriptnaplókat.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
 
-Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címeihez a [kormányzati felhőkhöz](migrate-appliance.md#government-cloud-urls).
+Győződjön meg arról, hogy a berendezés képes csatlakozni a kormányzati felhőkHöz való Azure [URL-címekhez.](migrate-appliance.md#government-cloud-urls)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A készülék telepítése után először konfigurálnia kell, és regisztrálnia kell a projektben.
+A berendezés üzembe helyezése után először konfigurálnia kell azt, és regisztrálnia kell a projektben.
 
-- Állítsa be a készüléket a [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance)-hez.
-- Állítsa be a készüléket a [Hyper-V-](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)hez.
-- Állítsa be a készüléket [fizikai kiszolgálókhoz](how-to-set-up-appliance-physical.md).
+- A berendezés beállítása a [VMware-hez.](how-to-set-up-appliance-vmware.md#4-configure-the-appliance)
+- A berendezés beállítása a [Hyper-V-hez.](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)
+- A berendezés beállítása fizikai [kiszolgálókhoz.](how-to-set-up-appliance-physical.md)

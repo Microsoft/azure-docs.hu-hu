@@ -1,94 +1,94 @@
 ---
-title: A roll X. 509 tanúsítványok az Azure-ban IoT Central
-description: X. 509 tanúsítványok elvégzése a IoT Central alkalmazással
+title: X.509-tanúsítványok Azure IoT Central
+description: X.509-tanúsítványok dobás a IoT Central alkalmazással
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c25af944b4c748307f4f974ca8616ecc9f7b28c3
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92000059"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714523"
 ---
-# <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>X. 509 eszköz tanúsítványának legördülő IoT Central alkalmazásban
+# <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>X.509-eszköztanúsítványok begörgetése az IoT Central alkalmazásban
 
-A IoT-megoldás életciklusa során be kell állítania a tanúsítványokat. A működés közbeni tanúsítványoknak két fő oka lehet a biztonsági szerződésszegés és a tanúsítványok lejárata.
+Az IoT-megoldás életciklusa során tanúsítványokat kell begördülni. A működés közbeni tanúsítványok egyik fő oka a biztonsági incidens és a tanúsítvány lejárata.
 
-Ha biztonsági problémákba ütközik, a működés közbeni tanúsítványok a rendszer biztonságának biztosítása érdekében ajánlott biztonsági eljárás. A [szabálysértési módszer elvállalásának](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)részeként a Microsoft azt javasolja, hogy a megelőző intézkedésekkel párhuzamosan legyen szükség reaktív biztonsági folyamatokra. Az eszköz tanúsítványait a biztonsági folyamatok részeként kell szerepeltetni. A tanúsítványok bevezetésének gyakorisága a megoldás biztonsági igényeitől függ. A fokozottan bizalmas adatokat tartalmazó megoldásokkal rendelkező ügyfelek napi rendszerességgel lefoglalhatják a tanúsítványokat, míg mások a tanúsítványokat minden pár évben elérhetik.
+Biztonsági incidens esetén a működés közbeni tanúsítványok használata ajánlott biztonsági eljárás a rendszer biztonságának segítése érdekében. A Biztonsági incidens [feltételezése módszertan](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)részeként a Microsoft azt javasolja, hogy a megelőző intézkedések mellett reaktív biztonsági folyamatokra is szükség van. Az eszköztanúsítványok gördülő folyamatának szerepelnie kell a biztonsági folyamatokban. A tanúsítványok leváltásának gyakorisága a megoldás biztonsági igényeitől függ. A kiemelten bizalmas adatokat tartalmazó megoldásokkal az ügyfelek naponta, míg mások néhány évente tanúsítványokat dobnak be.
 
 
-## <a name="obtain-new-x509-certificates"></a>Új X. 509 tanúsítványok beszerzése
+## <a name="obtain-new-x509-certificates"></a>Új X.509-tanúsítványok beszerzése
 
-Saját X. 509 tanúsítványokat is létrehozhat egy olyan eszközzel, mint az OpenSSL. Ez a módszer az X. 509 tanúsítványok tesztelésére szolgál, de a biztonsággal kapcsolatos néhány garanciát nyújt. Csak akkor használja ezt a módszert tesztelésre, ha nem a saját HITELESÍTÉSSZOLGÁLTATÓI szolgáltatóként való használatra készült.
+Létrehozhat saját X.509-tanúsítványokat egy olyan eszközzel, mint az OpenSSL. Ez a módszer remek az X.509-tanúsítványok tesztelésére, de kevés biztonsági garanciát nyújt. Ezt a módszert csak akkor használja tesztelésre, ha készen áll arra, hogy saját hitelesítésszolgáltatóként viselkedjen.
 
-## <a name="enrollment-groups-and-security-breaches"></a>Regisztrációs csoportok és biztonsági rések
+## <a name="enrollment-groups-and-security-breaches"></a>Regisztrációs csoportok és biztonsági incidensek
 
-Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretné frissíteni, a következő módszert kell használnia, amely azonnal frissíti az aktuális tanúsítványt:
+Ha biztonsági incidensre reagálva frissítenie kell egy csoportos regisztrációt, a következő módszert kell alkalmaznia, amely azonnal frissíti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás** lehetőséget.
+1. A bal **oldali panelen lépjen** az Adminisztráció elemre, és válassza az **Eszközkapcsolat lehetőséget.**
 
-2. Válassza a **regisztrációs csoportok** lehetőséget, majd válassza ki a csoport nevét a listában.
+2. Válassza **a Regisztrációs csoportok lehetőséget,** majd válassza ki a csoport nevét a listában.
 
-3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése** vagy a **másodlagos kezelése** lehetőséget.
+3. Tanúsítványfrissítéshez válassza az **Elsődleges kezelése vagy** a Másodlagos kezelése **lehetőséget.**
 
-4. Adja hozzá és ellenőrizze a root X. 509 tanúsítványt a beléptetési csoportban.
+4. Adja hozzá és ellenőrizze az X.509-főtanúsítványt a regisztrációs csoportban.
 
-   Hajtsa végre ezeket a lépéseket az elsődleges és a másodlagos tanúsítvány esetében, ha mindkettő sérült.
+   Ha mindkét tanúsítvány biztonsága sérül, kövesse ezeket a lépéseket az elsődleges és a másodlagos tanúsítványok esetében.
 
-## <a name="enrollment-groups-and-certificate-expiration"></a>Regisztrációs csoportok és a tanúsítvány lejárata
+## <a name="enrollment-groups-and-certificate-expiration"></a>Regisztrációs csoportok és tanúsítvány lejárata
 
-Ha a tanúsítványok lejáratának kezelésére végzi a tanúsítványokat, a következő módszer használatával azonnal frissítheti az aktuális tanúsítványt:
+Ha működés közbeni tanúsítványokat használ a tanúsítvány lejáratának kezeléséhez, az alábbi módszer használatával azonnal frissítheti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás** lehetőséget.
+1. A bal **oldali panelen lépjen** az Adminisztráció elemre, és válassza az **Eszközkapcsolat lehetőséget.**
 
-2. Válassza a **regisztrációs csoportok** lehetőséget, majd válassza ki a csoport nevét a listában.
+2. Válassza **a Regisztrációs csoportok lehetőséget,** majd válassza ki a csoport nevét a listában.
 
-3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése** lehetőséget.
+3. Tanúsítványfrissítéshez válassza az **Elsődleges kezelése lehetőséget.**
 
-4. Adja hozzá és ellenőrizze a root X. 509 tanúsítványt a beléptetési csoportban.
+4. Adja hozzá és ellenőrizze az X.509 főtanúsítványt a regisztrációs csoportban.
 
-5. Később, amikor a másodlagos tanúsítvány lejárt, térjen vissza a másodlagos tanúsítványra, és frissítse azt.
+5. Később, amikor a másodlagos tanúsítvány lejárt, vissza kell jönnie, és frissítenie kell a másodlagos tanúsítványt.
 
-## <a name="individual-enrollments-and-security-breaches"></a>Egyéni regisztrációk és biztonsági rések
+## <a name="individual-enrollments-and-security-breaches"></a>Egyéni regisztrációk és biztonsági incidensek
 
-Ha a tanúsítványokat biztonsági szabálysértésre válaszul végzi, a következő módszer használatával azonnal frissítheti az aktuális tanúsítványt:
+Ha biztonsági incidensre reagálva vezet be tanúsítványokat, az alábbi módszer használatával azonnal frissítheti az aktuális tanúsítványt:
 
-1. Válassza az **eszközök** lehetőséget, és válassza ki az eszközt.
+1. Válassza **az Eszközök** lehetőséget, majd válassza ki az eszközt.
 
-2. Válassza a **Csatlakozás** lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
+2. Válassza **a Csatlakozás** lehetőséget, majd válassza a Kapcsolódási módszer lehetőséget egyéni **regisztrációként**
 
-3. Válassza a **tanúsítványok (X. 509)** lehetőséget a mechanizmusként.
-
-    ![Egyéni regisztrációk kezelése](./media/how-to-roll-x509-certificates/certificate-update.png)
-
-4. A tanúsítvány frissítése területen válassza a mappa ikont a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
-
-    Hajtsa végre ezeket a lépéseket az elsődleges és a másodlagos tanúsítvány esetében, ha mindkettő sérül
-
-## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni regisztrációk és a tanúsítvány lejárata
-
-Ha a tanúsítványok lejáratának kezeléséhez a tanúsítványokat végzi, a következő módon kell használnia a másodlagos tanúsítvány konfigurációját, hogy csökkentse a kiépíteni próbált eszközök leállását.
-
-Ha a másodlagos tanúsítvány közel van a lejárati időponthoz, és azt el kell érnie, elforgathatja az elsődleges konfiguráció használatával. Az elsődleges és a másodlagos tanúsítványok közötti rotáció csökkenti az állásidőt a kiépíteni próbált eszközök esetében.
-
-1. Válassza az **eszközök** lehetőséget, és válassza ki az eszközt.
-
-2. Válassza a **Csatlakozás** lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
-
-3. Válassza a **tanúsítványok (X. 509)** lehetőséget a mechanizmusként.
+3. Válassza **a Tanúsítványok (X.509) lehetőséget** mechanizmusként.
 
     ![Egyéni regisztrációk kezelése](./media/how-to-roll-x509-certificates/certificate-update.png)
 
-4. A másodlagos tanúsítvány frissítése elemnél válassza a mappa ikont a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
+4. Tanúsítványfrissítéshez válassza a mappa ikont a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
-5. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza az elsődleges tanúsítványra, és frissítse azt.
+    Ha mindkét tanúsítvány biztonsága sérül, kövesse az alábbi lépéseket az elsődleges és a másodlagos tanúsítványok esetében.
+
+## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni regisztrációk és tanúsítvány lejárata
+
+Ha működés közbeni tanúsítványokat használ a tanúsítvány lejáratának kezeléséhez, a következőképpen használja a másodlagos tanúsítványkonfigurációt a kiépítni próbáló eszközök állásideje csökkentéséhez.
+
+Ha a másodlagos tanúsítvány lejárata közeledik, és meg kell újulni, az elsődleges konfiguráció használatával válthat a következőre: . Az elsődleges és a másodlagos tanúsítványok közötti rotozás ily módon csökkenti a kiépítni kívánt eszközök állásideje.
+
+1. Válassza **az Eszközök** lehetőséget, majd válassza ki az eszközt.
+
+2. Válassza **a Csatlakozás** lehetőséget, majd válassza a Kapcsolódási módszer lehetőséget egyéni **regisztrációként**
+
+3. Válassza **a Tanúsítványok (X.509) lehetőséget** mechanizmusként.
+
+    ![Egyéni regisztrációk kezelése](./media/how-to-roll-x509-certificates/certificate-update.png)
+
+4. Másodlagos tanúsítvány frissítésekor válassza a mappa ikont a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
+
+5. Később, amikor az elsődleges tanúsítvány lejárt, vissza kell jönnie, és frissítenie kell az elsődleges tanúsítványt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan lehet X. 509 tanúsítványokat beolvasni az Azure IoT Central alkalmazásban, csatlakozhat [az azure IoT Centralhoz](concepts-get-connected.md).
+Most, hogy megtanulta, hogyan dobhat be X.509-tanúsítványokat a Azure IoT Central-alkalmazásban, kapcsolódhat a [Azure IoT Central.](concepts-get-connected.md)
 
 

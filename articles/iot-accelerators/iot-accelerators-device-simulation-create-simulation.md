@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 3376b3714dc41c7d5ce33756671050d19471a757
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df658a95069f39026daab7afb14c5f1d0f47c5a5
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057711"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713893"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: IoT-eszközszimuláció üzembe helyezése és futtatása
 
@@ -34,7 +34,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Az oktatóanyag követéséhez rendelkeznie kell az Eszközszimuláció üzembe helyezett példányával az Azure-előfizetésében.
 
-Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
+Ha még nem telepítette az Eszközszimulációt, tekintse meg az [](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) eszközszimuláció üzembe helyezését a GitHubon.
 
 ## <a name="view-simulations"></a>Szimulációk megtekintése
 

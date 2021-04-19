@@ -26,7 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 – Felhasználói folyamatok létrehozása
       href: tutorial-create-user-flows.md
-    - name: 4 – felhasználók hitelesítése
+    - name: 4 – Felhasználók hitelesítése
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -37,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 5 – API-hozzáférés biztosítása
+    - name: 5 – API-hozzáférés megadása
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -82,7 +82,7 @@
     - name: Felhasználó felület
       expanded: true
       items:
-        - name: Felhasználói folyamatok és egyéni házirendek
+        - name: Felhasználói folyamatok és egyéni szabályzatok
           href: user-flow-overview.md
         - name: Egyéni szabályzatok áttekintése
           href: custom-policy-overview.md
@@ -96,6 +96,8 @@
       href: policy-keys-overview.md
 - name: Útmutatók
   items:
+    - name: A bérlő kezelése
+      href: tenant-management.md
     - name: Alkalmazásintegráció
       items:
         - name: Webalkalmazás regisztrációja
@@ -107,7 +109,7 @@
             - name: SAML-alkalmazás konfigurálása
               href: saml-service-provider.md
               displayName: 'SP, service provider'
-            - name: SAML-alkalmazások beállításainak konfigurálása
+            - name: SAML-alkalmazásbeállítások konfigurálása
               href: saml-service-provider-options.md
               displayName: 'SP, service provider'
         - name: Microsoft Graph-alkalmazás regisztrálása
@@ -134,7 +136,7 @@
           items:
             - name: Új jelszó önkiszolgáló kérése
               href: add-password-reset-policy.md
-            - name: Önkiszolgáló jelszó-módosítás
+            - name: Önkiszolgáló jelszóváltozás
               href: add-password-change-policy.md
             - name: Jelszó alaphelyzetbe állításának kényszerítése
               href: force-password-reset.md
@@ -171,11 +173,11 @@
           href: identity-provider-facebook.md
         - name: Általános OpenId Connect
           href: identity-provider-generic-openid-connect.md
-        - name: Általános SAML-identitás szolgáltatója
+        - name: Általános SAML-identitásszolgáltató
           items:
-            - name: SAML-identitás szolgáltatójának konfigurálása
+            - name: SAML-identitásszolgáltató konfigurálása
               href: identity-provider-generic-saml.md
-            - name: SAML-identitás szolgáltatói beállításainak konfigurálása
+            - name: SAML-identitásszolgáltató beállításainak konfigurálása
               href: identity-provider-generic-saml-options.md
         - name: GitHub
           href: identity-provider-github.md
@@ -215,7 +217,7 @@
           href: customize-ui-with-html.md
         - name: JavaScript és oldalelrendezések
           href: javascript-and-page-layout.md
-        - name: Beágyazott bejelentkezés iframe-sel
+        - name: Beágyazott bejelentkezés iFrame-keretben
           displayName: iframe
           href: embedded-login.md
         - name: Nyelv testreszabása
@@ -267,7 +269,7 @@
       href: user-flow-custom-attributes.md
     - name: Kockázatalapú hitelesítés
       items:
-        - name: Kockázat vizsgálata az Identity Protection szolgáltatással
+        - name: Kockázat kivizsgálása az Identity Protectionvel
           href: identity-protection-investigate-risk.md
         - name: Feltételes hozzáférés konfigurálása
           href: conditional-access-user-flow.md
@@ -298,7 +300,7 @@
             - name: Naplók gyűjtése az Application Insights használatával
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: Egyéni házirendek hibaelhárítása
+            - name: Egyéni szabályzatok hibaelhárítása
               href: troubleshoot-custom-policies.md
     - name: UserInfo végpont
       href: userinfo-endpoint.md
@@ -306,9 +308,9 @@
       items:
         - name: Azure AD B2C – partnerkatalógus
           href: partner-gallery.md
-    - name: Személyazonosság ellenőrzése és ellenőrzés
+    - name: Személyazonosság ellenőrzése és igazolása
       items:
-        - name: Személyazonosság-ellenőrző és ellenőrző partnerek
+        - name: Személyazonosság ellenőrzése és igazolási partnerek
           href: identity-verification-proofing.md
           displayName: 'id verify, id verification, azure ad b2c proofing, id proofing'
         - name: Experian
@@ -321,17 +323,17 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: Csalások elleni védelem
+    - name: Csalás elleni védelem
       items:
-        - name: Microsoft Dynamics 365 – csalások elleni védelem
+        - name: Microsoft Dynamics 365 Fraud Protection
           href: partner-dynamics-365-fraud-protection.md
           displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
         - name: Arkose Labs
           href: partner-arkose-labs.md
           displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-    - name: Az örökölt és a helyszíni alkalmazások védelme
+    - name: Örökölt és helyszíni alkalmazások biztonságossá
       items:
-        - name: Pingelési identitás
+        - name: Identitás pingelése
           href: partner-ping-identity.md
         - name: Strata
           href: partner-strata.md
@@ -369,11 +371,11 @@
           displayName: bulk import
         - name: Partnerintegráció
           items:
-            - name: N8identity
+            - name: N8identity (N8-azonosító)
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: Naplók és figyelés
+    - name: Naplók és monitorozás
       items:
         - name: Naplók
           href: view-audit-logs.md
@@ -384,7 +386,7 @@
         - name: Használatelemzés
           href: analytics-with-application-insights.md
           displayName: 'application insights, app insights, reports, reporting'
-        - name: Biztonságos telefon alapú MFA
+        - name: Biztonságos telefonalapú MFA
           href: phone-based-mfa.md
           displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: Megfelelőség
@@ -397,7 +399,7 @@
           displayName: GDPR
 - name: Referencia
   items:
-    - name: Egyéni házirend-séma
+    - name: Egyéni szabályzatséma
       items:
         - name: TrustFrameworkPolicy
           href: trustframeworkpolicy.md

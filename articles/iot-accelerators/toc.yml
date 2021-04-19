@@ -22,7 +22,7 @@
 - name: Rövid útmutatók
   items:
     - name: Az eszközszimulációs megoldástámogató üzembe helyezése
-      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
+      href: 'https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md'
     - name: Csatlakoztatottgyár-megoldás kipróbálása
       href: quickstart-connected-factory-deploy.md
   expanded: true
@@ -38,9 +38,9 @@
   items:
     - name: Ipari IoT
       items:
-        - name: OPC Twin architektúra
+        - name: OPC-ikerarchitektúra
           href: overview-opc-twin-architecture.md
-        - name: OPC-tár architektúrája
+        - name: OPC-tároló architektúrája
           href: overview-opc-vault-architecture.md
 - name: Útmutatók
   items:
@@ -92,7 +92,7 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
-    - name: IoT Szószedet
+    - name: IoT-szószedet
       href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
@@ -127,7 +127,7 @@
         - name: Fejlesztői referencia-útmutató
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
         - name: GitHub-adattár
-          href: 'https://github.com/Azure/device-simulation-dotnet'
+          href: 'https://github.com/Azure/azure-iot-pcs-device-simulation'
     - name: Referenciaarchitektúra
       href: /azure/architecture/reference-architectures/iot
       items:
@@ -135,7 +135,7 @@
           href: /azure/architecture/reference-architectures/iot
     - name: GYIK
       items:
-        - name: Megoldás-gyorssegédek – gyakori kérdések
+        - name: Megoldásgyorsítók – gyakori kérdések
           href: iot-accelerators-faq.md
         - name: Csatlakoztatott gyár – GYIK
           href: iot-accelerators-faq-cf.md

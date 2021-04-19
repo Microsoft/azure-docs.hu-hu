@@ -36,7 +36,7 @@
           items:
             - name: VMware virtuális gépek felmérése Azure-beli virtuális gépekbe történő migráláshoz
               href: tutorial-assess-vmware-azure-vm.md
-            - name: SQL-példányok felmérése az Azure SQL-re való áttelepítéshez
+            - name: SQL-példányok felmérése a Azure SQL
               href: tutorial-assess-sql.md
             - name: VMware virtuális gépek felmérése AVS-be történő migráláshoz
               href: tutorial-assess-vmware-azure-vmware-solution.md
@@ -70,11 +70,11 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: GCP-példányok migrálása
           href: tutorial-migrate-gcp-virtual-machines.md
-    - name: Tárolóba helyezése
+    - name: Tárolóba való ásás
       items:
-        - name: Tárolóba helyezése ASP.NET alkalmazások és Migrálás AK-ra
+        - name: Tárolóba ASP.NET alkalmazásokba és áttelepítés az AKS-be
           href: tutorial-app-containerization-aspnet-kubernetes.md
-        - name: Java-webalkalmazások tárolóba helyezése és migrálása AK-ra
+        - name: Java-webalkalmazások tárolóba való telepítése és áttelepítés az AKS-be
           href: tutorial-containerize-java-kubernetes.md
 - name: Alapelvek
   items:
@@ -104,7 +104,7 @@
       items:
         - name: Felmérések áttekintése (migrálás Azure-beli virtuális gépre)
           href: concepts-assessment-calculation.md
-        - name: Értékelések áttekintése (Migrálás az Azure SQL-be)
+        - name: Értékelések áttekintése (áttelepítés Azure SQL)
           href: concepts-azure-sql-assessment-calculation.md
         - name: Felmérések áttekintése (migrálás AVS-re)
           href: concepts-azure-vmware-solution-assessment-calculation.md
@@ -130,6 +130,8 @@
   items:
     - name: Azure Migrate-projektek létrehozása és kezelése
       href: create-manage-projects.md
+    - name: Az Azure Migrate használata privát kapcsolathoz
+      href: how-to-use-azure-migrate-with-private-endpoints.md
     - name: A független szoftverszállítótól származó eszközökkel vagy Moverével folytatott munka előkészítése
       href: prepare-isv-movere.md
     - name: Felderítés
@@ -148,11 +150,11 @@
               href: deploy-appliance-script-government.md
         - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
           href: set-discovery-scope.md
-        - name: Kiszolgáló hitelesítő adatainak hozzáadása
+        - name: Kiszolgálói hitelesítő adatok hozzáadása
           href: add-server-credentials.md
         - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
           href: how-to-discover-applications.md
-        - name: SQL-példányok felderítése meglévő projektekben
+        - name: SQL-példányok felderítése meglévő projektben
           href: how-to-discover-sql-existing-project.md
         - name: A gép függőségeinek elemzése (ügynökalapú)
           href: how-to-create-group-machine-dependencies.md
@@ -166,7 +168,7 @@
           href: how-to-create-a-group.md
         - name: Azure-beli virtuális gép felmérésének létrehozása
           href: how-to-create-assessment.md
-        - name: Azure SQL-Értékelés létrehozása
+        - name: Felmérés Azure SQL létrehozása
           href: how-to-create-azure-sql-assessment.md
         - name: AVS-felmérés létrehozása
           href: how-to-create-azure-vmware-solution-assessment.md
@@ -186,7 +188,7 @@
       items:
         - name: Migrálási eszközök hozzáadása
           href: how-to-migrate.md
-        - name: Replikálás a ExpressRoute használatával
+        - name: Replikálás Az ExpressRoute használatával
           href: replicate-using-expressroute.md
         - name: Gépek előkészítése migrálásra
           href: prepare-for-migration.md
@@ -198,7 +200,7 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: Migrálás skálázása
           items:
-            - name: VMware virtuális gépek áttelepítésének méretezése az ügynök nélküli replikációs módszer használatával
+            - name: VMware virtuális gépek nagy léptékű áttelepítése az ügynök nélküli replikációs módszerrel
               href: how-to-scale-out-for-migration.md
             - name: Nagy számú virtuális gép migrálásának automatizálása
               href: how-to-migrate-at-scale.md
@@ -210,7 +212,7 @@
           href: how-to-delete-project.md
         - name: Az Azure Migrate előző verziójának használata
           href: migrate-v1.md
-        - name: Áttelepítési projektek kezelése az Azure Lighthouse-vel
+        - name: Migrálási projektek kezelése a Azure Lighthouse
           href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: Hibaelhárítás
   items:

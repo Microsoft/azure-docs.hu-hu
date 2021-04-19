@@ -1,134 +1,134 @@
 ---
-title: Az Azure-Virtual Machines zóna vész-helyreállításának engedélyezése a zónában
-description: Ez a cikk azt ismerteti, hogy mikor és hogyan használható a zóna az Azure-beli virtuális gépekkel kapcsolatos vész-helyreállításhoz.
+title: Zónák és zónák vészhelyreállításának engedélyezése az Azure Virtual Machines
+description: Ez a cikk azt ismerteti, hogy mikor és hogyan használható az Azure-beli virtuális gépek zóna–zóna vészhelyreállítása.
 author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 786d877328b1ab3d0f03a75604b7345dba14aa9d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035237"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713407"
 ---
-# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gép vész-helyreállításának engedélyezése rendelkezésre állási zónák között
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gépek rendelkezésre állási zónák közötti vészhelyreállításának engedélyezése
 
-Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónából egy másikba való replikálását, feladatátvételét és feladat-visszavételét ismerteti ugyanazon az Azure-régióban.
+Ez a cikk bemutatja, hogyan replikálhat, feladatátvételt és feladat-visszavételt azure-beli virtuális gépeket egy rendelkezésre állási zónából egy másikba, ugyanabban az Azure-régióban.
 
 >[!NOTE]
 >
->- A zóna és a zóna vész-helyreállításának támogatása jelenleg a következő régiókban érhető el: Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Egyesült Királyság déli régiója, Nyugat-Európa, Észak-Európa, USA középső régiója, USA keleti régiója, USA 2. keleti régiója és USA 2. nyugati  
->- A Site Recovery nem helyezi át és nem tárolja az ügyféladatokat azon a régión kívül, amelyben az ügyfél üzembe helyezése történik, amikor a felhasználó a zónát használja a zóna vész-helyreállítási feladataihoz. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
+>- A zóna–zóna vészhelyreállítás támogatása jelenleg a következő régiókra korlátozódik: Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Nyugat-India JIO, Egyesült Királyság déli régiója, Nyugat-Európa, Észak-Európa, USA középső régiója, USA keleti régiója, USA 2. keleti régiója és USA 2. nyugati régiója.  
+>- Site Recovery nem helyez át vagy tárol ügyféladatokat az üzembe helyezési régióból, ha az ügyfél zónák és zónák között vészhelyreállítást használ. Ha úgy döntenek, az ügyfelek egy másik régióból választhatnak recovery services-tárolót. A Recovery Services-tároló metaadatokat tartalmaz, tényleges ügyféladatokat azonban nem.
 
-A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.
+Site Recovery szolgáltatás úgy járul hozzá az üzletmenet-folytonossági és vészhelyreállítási stratégiához, hogy az üzleti alkalmazásokat a tervezett és nem tervezett leállások során is működésben tartja. Regionális kimaradás esetén ez az ajánlott vészhelyreállítási lehetőség az alkalmazások futtatására.
 
-A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden zónához egy vagy több adatközpont tartozik. 
+A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden zóna egy vagy több adatközponttal rendelkezik. 
 
-Ha a virtuális gépeket egy másik régióban lévő rendelkezésre állási zónába szeretné áthelyezni, [tekintse át ezt a cikket](../resource-mover/move-region-availability-zone.md).
+Ha a virtuális gépeket egy másik régióban található rendelkezésre állási zónába szeretné áthelyezni, tekintse át ezt a [cikket.](../resource-mover/move-region-availability-zone.md)
 
-## <a name="using-availability-zones-for-disaster-recovery"></a>A Availability Zones használata a vész-helyreállításhoz 
+## <a name="using-availability-zones-for-disaster-recovery"></a>Az Availability Zones használata vészhelyreállításhoz 
 
-Availability Zones a virtuális gépek magas rendelkezésre állású konfigurációban való üzembe helyezésére szolgálnak. Előfordulhat, hogy túl közel vannak egymáshoz, hogy vészhelyzeti helyreállítási megoldásként szolgálnak a természeti katasztrófák esetén.
+Az Availability Zones a virtuális gépek magas rendelkezésre állású konfigurációban való üzembe helyezésére használatosak. Előfordulhat, hogy túl közel vannak egymáshoz, hogy természeti katasztrófa esetén vészhelyreállítási megoldásként szolgáljanak.
 
-Bizonyos helyzetekben azonban a Availability Zones a vész-helyreállításhoz is kihasználható:
+Bizonyos esetekben azonban az Availability Zones vészhelyreállításhoz is használhatók:
 
-- Sok ügyfelünk, akik egy Metro vész-helyreállítási stratégiával rendelkeztek, és az alkalmazások helyszíni üzemeltetése során időnként úgy tekintenek, hogy ezt a stratégiát úgy utánozzák, hogy az alkalmazásokat az Azure-ba Ezek az ügyfelek tudomásul veszik, hogy a Metro vész-helyreállítási stratégia nem működik nagy mennyiségű fizikai katasztrófa esetén, és elfogadja ezt a kockázatot. Az ilyen ügyfelek esetében a zóna és a zóna vész-helyreállítási lehetősége vész-helyreállítási megoldásként használható.
+- Sok olyan ügyfél, aki egy vészhelyreállítási stratégiával és az alkalmazásoknak a helyen való üzemeltetése során is volt, olykor az alkalmazások Azure-ba való áttelepítése után is ezt a stratégiát kell utánoznia. Ezek az ügyfelek tudomásul veszik, hogy a vészhelyreállítási stratégia nagy léptékű fizikai katasztrófa esetén nem fog működni, és elfogadja ezt a kockázatot. Az ilyen ügyfelek esetében a zónák és zónák vészhelyreállítása használható vészhelyreállítási lehetőségként.
 
-- Számos más ügyfél bonyolult hálózati infrastruktúrával rendelkezik, és nem kívánja újra létrehozni azt egy másodlagos régióban a kapcsolódó költségeket és összetettséget figyelembe véve. A Zone to Zone vész-helyreállítási szolgáltatás csökkenti a bonyolultságot, mivel a redundáns hálózatkezelési fogalmakat használja Availability Zones a konfigurálás sokkal egyszerűbbé tétele érdekében. Az ilyen ügyfelek előnyben részesítik az egyszerűséget, és a Availability Zones is használhatják a vész-helyreállításhoz.
+- Sok más ügyfél bonyolult hálózati infrastruktúrával is jár, és a kapcsolódó költségek és összetettség miatt nem szeretné újból létrehozni egy másodlagos régióban. A zónák közötti vészhelyreállítás csökkenti az összetettséget, mivel redundáns hálózati fogalmakat Availability Zones a konfigurációt egyszerűbbé teszi. Az ilyen ügyfelek az egyszerűséget részesítik előnyben, és vészhelyreállítási Availability Zones is használhatók.
 
-- Egyes régiókban, amelyekben nem szerepel a párosított régió ugyanazon a jogi joghatóság alatt (például Délkelet-Ázsiában), a zóna-zóna vész-helyreállítási megoldásként a katasztrófa-visszaeséses helyreállítási megoldásként szolgálhat, mivel az alkalmazások és az információk nem kerülnek át a nemzeti határokon. 
+- Egyes régiókban, ahol nincs párosított régió ugyanabban a jogi joghatóságban (például Délkelet-Ázsia), a zónák közötti vészhelyreállítás tulajdonképpen vészhelyreállítási megoldásként szolgálhat, mivel segít biztosítani a jogi megfelelőséget, mivel az alkalmazások és az adatok nem lépnek át az országos határokon. 
 
-- A zónák közötti vész-helyreállítás az Azure-hoz az Azure vész-helyreállításhoz képest rövidebb idő alatt replikálja az adatreplikációt, így az alacsonyabb késés és az alacsonyabb RPO is megjelenhet.
+- A zónák közötti vészhelyreállítás azt jelenti, hogy az Azure-beli vészhelyreállítással összehasonlítva rövidebb távolságban replikálja az adatokat, ezért kisebb késést és ezáltal alacsonyabb RPO-t láthat.
 
-Habár ezek jelentős előnyökkel járnak, lehetséges, hogy a zónák közötti vész-helyreállítás a teljes régióra kiterjedő természeti katasztrófák esetén a rugalmasságra vonatkozó követelmények hiányában is csökkenhet.
+Bár ezek jelentős előnyök, fennáll a lehetőség, hogy a zónák és zónák vészhelyreállítása a teljes régióra kiterjedő természeti katasztrófa esetén nem állja meg a rugalmassági követelményeket.
 
-## <a name="networking-for-zone-to-zone-disaster-recovery"></a>A zóna és a zóna vész-helyreállításának hálózatkezelése
+## <a name="networking-for-zone-to-zone-disaster-recovery"></a>Hálózatok zónák és zónák vészhelyreállításához
 
-A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szolgáltatás csökkenti a bonyolultságot, mivel a redundáns hálózatkezelési fogalmakat használja Availability Zones a konfiguráció sokkal egyszerűbbé tétele érdekében. A zónában lévő hálózatkezelési összetevők viselkedése a zóna vész-helyreállítási forgatókönyve a következő: 
+Ahogy korábban említettük, a zónák közötti vészhelyreállítás csökkenti az összetettséget, mivel redundáns hálózati fogalmakat Availability Zones a konfigurációt egyszerűbbé teszi. A zóna–zóna vészhelyreállítás forgatókönyv hálózati összetevőinek viselkedését az alábbiakban ismertetjük: 
 
-- Virtual Network: ugyanazt a virtuális hálózatot használja, mint a forrásoldali hálózat a tényleges feladatátvételekhez. Használjon másik virtuális hálózatot a forrásként szolgáló virtuális hálózathoz a feladatátvételi tesztekhez.
+- Virtual Network: A tényleges feladatátvételhez használhatja ugyanazt a virtuális hálózatot, mint a forráshálózat. A feladatátvételi tesztekhez a forrás virtuális hálózattól eltérő virtuális hálózatot használjon.
 
-- Alhálózat: az azonos alhálózatra történő feladatátvétel támogatott.
+- Alhálózat: Az azonos alhálózatra történő feladatátvétel támogatott.
 
-- Magánhálózati IP-cím: Ha statikus IP-címeket használ, akkor ugyanazokat az IP-címeket használhatja a célként megadott zónában, ha úgy dönt, hogy azokat ilyen módon konfigurálja.
+- Magánhálózati IP-cím: Ha statikus IP-címeket használ, ugyanezeket az IP-címeket használhatja a célzónában is, ha úgy dönt, hogy ezeket ilyen módon konfigurálja.
 
-- Gyorsított hálózatkezelés: az Azure-hoz az Azure vész-helyreállításhoz hasonlóan a gyorsított hálózatkezelést is engedélyezheti, ha a VM SKU támogatja.
+- Gyorsított hálózat: Az Azure-hoz és az Azure-beli vészhelyreállításhoz hasonlóan engedélyezheti a gyorsított hálózatépítést, ha a virtuális gép termékváltozata támogatja azt.
 
-- Nyilvános IP-cím: egy korábban létrehozott szabványos nyilvános IP-címet is csatolhat ugyanabban a régióban a célként megadott virtuális géphez. Az alapszintű nyilvános IP-címek nem támogatják a rendelkezésre állási zónákhoz kapcsolódó forgatókönyveket.
+- Nyilvános IP-cím: A korábban létrehozott standard nyilvános IP-címet ugyanabban a régióban csatolhatja a cél virtuális géphez. Az alapszintű nyilvános IP-címek nem támogatják a rendelkezésre állási zónákkal kapcsolatos forgatókönyveket.
 
-- Load Balancer: a standard Load Balancer egy regionális erőforrás, ezért a célként megadott virtuális gép csatlakoztatható ugyanahhoz a terheléselosztó háttér-készletéhez. Nincs szükség új Load balancerre.
+- Terheléselosztás: A standard terheléselosztás egy regionális erőforrás, ezért a cél virtuális gép csatolható ugyanannak a terheléselosztásnak a háttérkészletével. Új terheléselosztásra nincs szükség.
 
-- Hálózati biztonsági csoport: ugyanazokat a hálózati biztonsági csoportokat használhatja, mint amelyek a forrásoldali virtuális gépen is alkalmazhatók.
+- Hálózati biztonsági csoport: Használhatja a forrás virtuális gépre alkalmazott hálózati biztonsági csoportokat.
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
+Mielőtt zónák közötti vészhelyreállítást helyez üzembe a virtuális gépeken, fontos biztosítani, hogy a virtuális gépen engedélyezett egyéb funkciók együttműködnek a zónák közötti vészhelyreállítással.
 
 |Szolgáltatás  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |
-|Azure Disk Encryption v1 (Dual Pass, Azure Active Directory (Azure AD))     |     Támogatott   |
-|Azure Disk Encryption v2 (Single pass, Azure AD nélkül)    |    Támogatott    |
+|Azure Disk Encryption v1 (kettős pass, Azure Active Directory (Azure AD))     |     Támogatott   |
+|Azure Disk Encryption v2 (egy pass, Azure AD nélkül)    |    Támogatott    |
 |Nem felügyelt lemezek    |    Nem támogatott    |
 |Felügyelt lemezek    |    Támogatott    |
 |Felhasználó által kezelt kulcsok    |    Támogatott    |
 |Közelségi elhelyezési csoportok    |    Támogatott    |
-|Biztonsági mentési együttműködés    |    A fájlok szintjének biztonsági mentése és visszaállítása támogatott. A lemezes és a virtuális gép szintjének biztonsági mentése és visszaállítása nem támogatott.    |
-|Gyors Hozzáadás/Eltávolítás    |    Lemezek a zónák replikálásának engedélyezése után adhatók hozzá. A lemezek eltávolítása a zónák replikálásának engedélyezése után nem támogatott.    | 
+|Biztonsági másolatok együttműködési képessége    |    A fájlszintű biztonsági mentés és visszaállítás támogatott. Lemez- és virtuálisgép-szintű biztonsági mentés és visszaállítás, és nem támogatott.    |
+|Gyors hozzáadás/eltávolítás    |    A zónák közötti replikáció engedélyezése után lemezek is hozzáadhatóak. A zónák közötti replikáció engedélyezése után a lemezek eltávolítása nem támogatott.    | 
 
-## <a name="set-up-site-recovery-zone-to-zone-disaster-recovery"></a>Site Recovery zónák beállítása a zóna vész-helyreállításához
+## <a name="set-up-site-recovery-zone-to-zone-disaster-recovery"></a>Zónák és Site Recovery vészhelyreállítás beállítása
 
 ### <a name="log-in"></a>Bejelentkezés
 
 Jelentkezzen be az Azure Portalra.
 
-### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Replikáció engedélyezése a Zona Azure-beli virtuális gép számára
+### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>A zónabeli Azure-beli virtuális gép replikációjának engedélyezése
 
-1. A Azure Portal menüben válassza a virtuális gépek lehetőséget, vagy keresse meg és válassza ki a virtuális gépeket bármely oldalon. Válassza ki a replikálni kívánt virtuális gépet. Ahhoz, hogy a zóna vész-helyreállítási zónába kerüljön, a virtuális gépnek már rendelkezésre állási zónában kell lennie.
+1. A Azure Portal válassza a Virtuális gépek lehetőséget, vagy keresse meg és válassza a Virtuális gépek lehetőséget bármely oldalon. Válassza ki a replikálni kívánt virtuális gépet. A zónák és zónák vészhelyreállításához a virtuális gépnek már rendelkezésre állási zónában kell lennie.
 
 2. A Műveletek részen válassza a Vészhelyreállítás elemet.
 
-3. Ahogy az alábbi ábrán is látható, az alapok lapon válassza az Igen lehetőséget a "vész-helyreállítás Availability Zones között?" lehetőségre.
+3. Ahogy az alábbi képen is látható, az Alapvető beállítások lapon válassza az "Igen" lehetőséget a vészhelyreállítás két Availability Zones?
 
-    ![Alapszintű beállítások lap](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-basic-settings-blade.png)
+    ![Alapszintű beállítások oldal](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-basic-settings-blade.png)
 
-4. Ha elfogadja az összes alapértelmezett beállítást, kattintson a "felülvizsgálat + replikáció indítása" elemre, majd a "replikáció indítása" gombra.
+4. Ha elfogadja az összes alapértelmezett beállítást, kattintson az Áttekintés + Replikáció kezdete, majd a Replikáció kezdete elemre.
 
-5. Ha módosítani szeretné a replikációs beállításokat, kattintson a Tovább: speciális beállítások elemre.
+5. Ha módosítani szeretné a replikációs beállításokat, kattintson a "Tovább: Speciális beállítások" elemre.
 
-6. Ha szükséges, módosítsa a beállításokat az alapértelmezetttől függetlenül. Az Azure-ból az Azure-ba irányuló vész-helyreállítási felhasználók számára ez az oldal ismerős lehet. Az ezen a panelen bemutatott beállításokkal kapcsolatos további részletek [itt](./azure-to-azure-tutorial-enable-replication.md) találhatók
+6. Ha szükséges, módosítsa a beállításokat az alapértelmezetttől távolról. Az Azure–Azure vészhelyreállítás felhasználói számára ismerősnek tűnhet ez az oldal. A panelen megjelenő lehetőségekkel kapcsolatos további részleteket itt [talál](./azure-to-azure-tutorial-enable-replication.md)
 
-    ![Speciális beállítások lap](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
+    ![Speciális beállítások oldal](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
-7. Kattintson a következőre: felülvizsgálat + replikáció indítása, majd a "replikáció elindítása".
+7. Kattintson a "Tovább: Áttekintés + Replikáció kezdete" gombra, majd a Replikáció kezdete elemre.
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-**1. Hogyan működik az árképzés a zónák közötti vész-helyreállításhoz?**
-A zónák közötti vész-helyreállítás díjszabása megegyezik az Azure és az Azure vész-helyreállítás díjszabásával. További részleteket a díjszabási [oldalról itt talál](https://azure.microsoft.com/pricing/details/site-recovery/) [.](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) Vegye figyelembe, hogy az olyan kimenő forgalom díja, amelyet a zónában, a zóna vész-helyreállítási feladatoknál látni fog, alacsonyabb lesz, mint a régió-és a katasztrófa utáni
+**1. Hogyan működik a díjszabás a zónák és zónák vészhelyreállítása esetén?**
+A zónák és zónák vészhelyreállításának díjszabása megegyezik az Azure–Azure vészhelyreállítás díjszabásának. További részleteket a díjszabási oldalon talál [itt](https://azure.microsoft.com/pricing/details/site-recovery/) és [itt.](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) Vegye figyelembe, hogy a zónák és zónák vészhelyreállítása esetén a bejövő forgalom díja alacsonyabb, mint a régiók és régiók vészhelyreállítása.
 
-**2. Mi a RTO és a RPO SLA-ja?**
-A RTO SLA ugyanaz, mint a Site Recovery általános. A RTO akár 2 óráig is Megígérjük. Nincs definiált SLA a RPO számára.
+**2. Mi az RTO és RPO SLA-ja?**
+Az RTO SLA megegyezik a teljes Site Recovery sla-val. Az RTO legfeljebb 2 óra lehet. Az RPO nem határoz meg SLA-t.
 
-**3. a kapacitás garantált a másodlagos zónában?**
-A Site Recovery csapat és az Azure Capacity Management csapata elegendő infrastrukturális kapacitást tervez. A feladatátvétel indításakor a csapatok is segítenek biztosítani, hogy Site Recovery által védett virtuálisgép-példányok a célzóna számára legyenek telepítve.
+**3. A kapacitás garantált a másodlagos zónában?**
+Az Site Recovery és az Azure kapacitáskezelési csapata megfelelő infrastruktúra-kapacitást tervez. Amikor feladatátvételt indít el, a csapatok azt is biztosítják, hogy a virtuális gép által Site Recovery virtuálisgép-példányok üzembe helyezése a célzónában történik.
 
-**4. mely operációs rendszerek támogatottak?**
-A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](./azure-to-azure-support-matrix.md).
+**4. Mely operációs rendszerek támogatottak?**
+A zónák és zónák vészhelyreállítása ugyanazt az operációs rendszert támogatja, mint az Azure-beli vészhelyreállítás. A támogatási mátrixot itt [tekintse meg.](./azure-to-azure-support-matrix.md)
 
-**5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
-Nem, a feladatátvételt egy másik erőforráscsoporthoz kell átadnia.
+**5. A forrás- és célerőforráscsoportok azonosak?**
+Nem, a feladatátvételt másik erőforráscsoportba kell átvesznie.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A vész-helyreállítási részletezés, feladatátvétel, ismételt védelem és feladat-visszavétel futtatásához követendő lépések megegyeznek az Azure-beli vész-helyreállítási forgatókönyv lépéseivel.
+A vészhelyreállítási próba, feladatátvétel, védelem helyreállítása és feladat-visszavétel futtatásához szükséges lépések ugyanazok, mint az Azure–Azure vészhelyreállítási forgatókönyv lépései.
 
-A vész-helyreállítási részletezés végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-dr-drill.md)ismertetett lépéseket.
+Vészhelyreállítási próba végrehajtásához kövesse az itt ismertetett [lépéseket.](./azure-to-azure-tutorial-dr-drill.md)
 
-A másodlagos zónában lévő virtuális gépek feladatátvételének és újravédésének végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-failover-failback.md)ismertetett lépéseket.
+A másodlagos zónában található virtuális gépek feladatátvételének és vélmének ismételt végrehajtásához kövesse az itt leírt [lépéseket.](./azure-to-azure-tutorial-failover-failback.md)
 
-Az elsődleges zónába történő feladat-visszavételhez kövesse az [itt](./azure-to-azure-tutorial-failback.md)ismertetett lépéseket.
+Az elsődleges zónába való feladat-visszavételhez kövesse az itt ismertetett [lépéseket.](./azure-to-azure-tutorial-failback.md)

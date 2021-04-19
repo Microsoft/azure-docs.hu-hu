@@ -173,7 +173,7 @@
           items:
             - name: Adatredundancia
               href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Ügyfél által felügyelt feladatátvétel vészhelyreállításhoz
+            - name: Felhasználó által felügyelt feladatátvétel vészhelyreállításhoz
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Objektumreplikáció
           href: object-replication-overview.md
@@ -266,11 +266,9 @@
       items:
         - name: Tárfiókok létrehozása és kezelése
           items:
-            - name: Általános célú tárfiók létrehozása
+            - name: Tárfiók létrehozása
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Blokkblob-tárfiók létrehozása
-              href: storage-blob-create-account-block-blob.md
             - name: Tárfiók frissítése
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Törölt tárfiók helyreállítása
@@ -413,9 +411,9 @@
               href: soft-delete-container-enable.md
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
-            - name: Blobok soft delete funkció engedélyezése és kezelése
+            - name: Blobok soft delete parancsának engedélyezése és kezelése
               items:
-                - name: Blobok soft delete funkció engedélyezése
+                - name: Blobok végleges törlésének engedélyezése
                   href: soft-delete-blob-enable.md
                 - name: Helyreállíthatóan törölt blobok kezelése és visszaállítása
                   href: soft-delete-blob-manage.md
@@ -585,7 +583,7 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage Explorer parancssori beállítások használata
+            - name: Storage Explorer parancssori beállítások
               href: ../common/storage-explorer-command-line-options.md
             - name: Storage Explorer hivatkozás létrehozása
               href: ../common/storage-explorer-direct-link.md

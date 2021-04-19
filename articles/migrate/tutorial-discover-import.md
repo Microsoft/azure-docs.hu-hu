@@ -1,25 +1,25 @@
 ---
-title: Helyszíni kiszolgálók értékelése az importált CSV-fájllal Azure Migrate Server Assessment használatával
-description: Ismerteti, hogyan lehet felderíteni a helyszíni kiszolgálókat az Azure-ba való áttelepítéshez egy importált CSV-fájllal Azure Migrate Server Assessment használatával
+title: Helyszíni kiszolgálók értékelése importált CSV-fájllal az Azure Migrate Server Assessment használatával
+description: Ismerteti, hogyan derítheti fel a helyszíni kiszolgálókat az Azure-ba való migráláshoz egy importált CSV-fájl használatával a Azure Migrate Server Assessmentben
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c142cae3e96d800488b67da613181d1a91ba5b5b
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96753109"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713317"
 ---
-# <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Oktatóanyag: kiszolgálók értékelése importált CSV-fájl használatával
+# <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Oktatóanyag: Kiszolgálók értékelése importált CSV-fájl használatával
 
-Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és munkaterheléseket. 
+Az Azure-ba való migrálás részeként felderítheti a helyszíni leltárt és a számítási feladatokat. 
 
-Ebből az oktatóanyagból megtudhatja, hogyan értékelheti a helyszíni gépeket a Azure Migrate: Server Assessment Tool eszközzel, az importált vesszővel elválasztott értékeket tartalmazó (CSV) fájl használatával. 
+Ez az oktatóanyag bemutatja, hogyan értékelheti ki a helyszíni gépeket a Azure Migrate: Server Assessment eszközzel egy importált, vesszővel elválasztott értékeket (CSV) használó fájl használatával. 
 
-Ha CSV-fájlt használ, nem kell beállítania a Azure Migrate berendezést a kiszolgálók felderítéséhez és értékeléséhez. Megadhatja a fájlban megosztott adatmennyiséget, és az adatmennyiség nagy része nem kötelező. Ez a módszer a következő esetekben hasznos:
+Ha CSV-fájlt használ, nem kell beállítania a Azure Migrate kiszolgálók felderítéséhez és értékeléséhez. Szabályozhatja a fájlban megosztani kívánt adatokat, és az adatok nagy része opcionális. Ez a módszer a következő esetben hasznos:
 
 - Gyors, kezdeti felmérést szeretne végezni a berendezés üzembe helyezése előtt.
 - Nem tudja a szervezetében üzembe helyezni az Azure Migrate-berendezést.
@@ -27,7 +27,7 @@ Ha CSV-fájlt használ, nem kell beállítania a Azure Migrate berendezést a ki
 - A biztonsági korlátozások megakadályozzák, hogy a berendezés adatokat gyűjtsön, és hogy ezeket az adatokat elküldje az Azure-ba.
 
 > [!NOTE]
-> A CSV-fájllal importált kiszolgálók nem telepíthetők át.
+> CSV-fájllal importált kiszolgálók nem miigálhatók.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -38,64 +38,66 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Kiszolgálók értékelése
 
 > [!NOTE]
-> Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
+> Az oktatóanyagok a forgatókönyv kipróbálásának leggyorsabb útvonalát mutatják be, és ahol lehetséges, az alapértelmezett beállításokat használják. 
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Legfeljebb 20 000 kiszolgálót adhat hozzá egyetlen CSV-fájlban és egy Azure Migrate-projektben. 
-- A CSV-fájlban megadott operációsrendszer-neveknek tartalmaznia kell és meg kell egyezniük a [támogatott nevekkel](#supported-operating-system-names).
+- Akár 20 000 kiszolgálót is hozzáadhat egyetlen CSV-fájlban és egy Azure Migrate projektben. 
+- A CSV-fájlban megadott operációsrendszer-neveknek tartalmazni kell a támogatott neveket, és meg [kell egyezniük a következőkkel:](#supported-operating-system-names).
 
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
-Azure Migrate projekt létrehozásához az alábbiakkal rendelkező fiókra van szükség:
-- Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
-- Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
+Egy új Azure Migrate létrehozásához a következővel kell fiókot létrehoznia:
+- Közreműködői vagy tulajdonosi engedélyek egy Azure-előfizetésben.
+- Engedélyek a Azure Active Directory regisztráláshoz.
 
-Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
+Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt rendelje hozzá az engedélyeket az alábbiak szerint:
 
-1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások** területen válassza az **előfizetések** lehetőséget.
+1. A Azure Portal keressen rá az "előfizetések" kifejezésre, majd a **Szolgáltatások alatt** válassza az **Előfizetések lehetőséget.**
 
-    ![Az Azure-előfizetés kereséséhez használt keresőmező](./media/tutorial-discover-import/search-subscription.png)
+    ![Keresőmező az Azure-előfizetés kereséséhez](./media/tutorial-discover-import/search-subscription.png)
 
-2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben Azure Migrate projektet kíván létrehozni. 
-3. Az előfizetésben válassza a hozzáférés- **vezérlés (iam)**  >  **jelölőnégyzetet**.
-4. A **hozzáférés-ellenőrzési** területen keresse meg a megfelelő felhasználói fiókot.
-5. A **szerepkör-hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzáadás** gombra.
+2. Az **Előfizetések lapon** válassza ki azt az előfizetést, amelyben létre szeretne hozni egy Azure Migrate projektet. 
+3. Az előfizetésben válassza a **Hozzáférés-vezérlés (IAM)**  >  **Hozzáférés ellenőrzése lehetőséget.**
+4. A **Hozzáférés ellenőrzése között** keresse meg a megfelelő felhasználói fiókot.
+5. A **Szerepkör-hozzárendelés hozzáadása mezőben válassza a** Hozzáadás **lehetőséget.**
 
-    ![Felhasználói fiók keresése a hozzáférés ellenőrzését és a szerepkör hozzárendelését](./media/tutorial-discover-import/azure-account-access.png)
+    ![Felhasználói fiók keresése a hozzáférés ellenőrzéshez és szerepkör hozzárendeléshez](./media/tutorial-discover-import/azure-account-access.png)
 
-6. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a közreműködő vagy a tulajdonos szerepkört, és válassza ki a fiókot (azmigrateuser a példánkban). Ezután kattintson a **Mentés** gombra.
+6. A **Szerepkör-hozzárendelés hozzáadása mezőben** válassza a Közreműködő vagy a Tulajdonos szerepkört, majd a fiókot (a példánkban az azmigrateuser). Kattintson a **Mentés** gombra.
 
-    ![A szerepkör-hozzárendelés hozzáadása lap megnyitása a szerepkör a fiókhoz való hozzárendeléséhez](./media/tutorial-discover-import/assign-role.png)
+    ![Megnyitja a Szerepkör-hozzárendelés hozzáadása oldalt, hogy hozzárendelje a szerepkört a fiókhoz](./media/tutorial-discover-import/assign-role.png)
 
-7. A portálon keressen felhasználókat, és a **szolgáltatások** területen válassza a **felhasználók** lehetőséget.
-8. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
+7. A portálon keressen rá a felhasználókra, és a **Szolgáltatások alatt válassza** a Felhasználók **lehetőséget.**
+8. A **Felhasználói beállítások lapon** ellenőrizze, hogy az Azure AD-felhasználók regisztrálnak-e alkalmazásokat (alapértelmezés szerint **igen).**
 
-    ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-import/register-apps.png)
+    ![Ellenőrizze a Felhasználói beállításokban, hogy a felhasználók regisztrálnak-e Active Directory alkalmazásokat](./media/tutorial-discover-import/register-apps.png)
 
 
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
-Hozzon létre egy új Azure Migrate projektet, ha még nem rendelkezik ilyennel.
+Ha még nem Azure Migrate, állítson be egy új projektprojektet.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
-3. Az **Áttekintés** területen válassza a **projekt létrehozása** lehetőséget.
-5. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
-6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+3. Az **Áttekintés oldalon** válassza a Projekt létrehozása **lehetőséget.**
+5. A **Projekt létrehozása mezőben** válassza ki az Azure-előfizetését és -erőforráscsoportját. Ha még nincs erőforráscsoportja, hozzon létre egyet.
+6. A **Project Details (Projekt részletei)** alatt adja meg a projekt nevét és a földrajzi helyeket, ahol létre szeretné hozni a projektet. Tekintse át a nyilvános és kormányzati [felhők](migrate-support-matrix.md#supported-geographies-public-cloud) [támogatott földrajzi helyeket.](migrate-support-matrix.md#supported-geographies-azure-government)
 
-   ![A projekt neve és a régió mezői](./media/tutorial-discover-import/new-project.png)
+   ![A projekt nevének és régiójának mezői](./media/tutorial-discover-import/new-project.png)  
+    > [!Note]
+    > A Speciális **konfiguráció** szakaszban létrehozhat egy privát végpontkapcsolatú Azure Migrate-projektet. [További információ](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity)
 
 7. Válassza a **Létrehozás** lehetőséget.
 8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
 
-A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
+A **Azure Migrate: Server Assessment** eszköz alapértelmezés szerint hozzá van adva az új projekthez.
 
-![Az alapértelmezés szerint hozzáadott kiszolgáló-értékelési eszközt megjelenítő oldal](./media/tutorial-discover-import/added-tool.png)
+![Az alapértelmezetten hozzáadott Server Assessment eszközt megjelenítő oldal](./media/tutorial-discover-import/added-tool.png)
 
 ## <a name="prepare-the-csv"></a>A CSV-fájl előkészítése
 
@@ -135,10 +137,10 @@ Az alábbi táblázat a kitöltendő fájlmezőket összegzését tartalmazza:
 **1. lemez írási teljesítménye** | No | A lemezre másodpercenként írt adatok mennyisége, MB/s-ben.
 **Processzor százalékos kihasználtsága** | No | A processzorhasználat százalékos aránya.
 **Memória százalékos kihasználtsága** | No | A memóriahasználat százalékos aránya.
-**Minden lemez olvasási műveletei** | No | Lemezes olvasási műveletek másodpercenként.
-**Minden lemez írási műveletei** | No | Lemezes írási műveletek másodpercenként.
-**Minden lemez olvasási teljesítménye** | No | A lemezről beolvasott adatok (MB/s).
-**Minden lemez írási teljesítménye** | No | Lemezre írt, másodpercenként MB-ban tárolt adatmennyiség.
+**Minden lemez olvasási műveletei** | No | Lemez olvasási műveleteinek másodpercenkénti száma.
+**Minden lemez írási műveletei** | No | Lemezírási műveletek másodpercenként.
+**Minden lemez olvasási teljesítménye** | No | A lemezről beolvasott adatok, MB/s-ban.
+**Minden lemez írási teljesítménye** | No | Lemezre írt adatok, MB/s-ban.
 **Bejövő hálózati teljesítmény** | No | A kiszolgáló által fogadott adatok mennyisége, MB/s-ben.
 **Kimenő hálózati teljesítmény** | No | A kiszolgáló által továbbított adatok mennyisége, MB/s-ben.
 **Belső vezérlőprogram típusa** | No | A kiszolgáló belső vezérlőprogramja. Az érték „BIOS” vagy „UEFI” lehet.
@@ -164,7 +166,7 @@ Például a második lemez minden mezőjének megadásához adja hozzá a követ
 
 ## <a name="import-the-server-information"></a>Kiszolgálói adatok importálása
 
-Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a CSV-fájlt a kiszolgáló-értékelésbe.
+Miután adatokat adott a CSV-sablonhoz, importálja a CSV-fájlt a Server Assessmentbe.
 
 1. Az Azure Migrate **Gépek felderítése** területén keresse meg a véglegesített sablont.
 2. Válassza az **Importálás** lehetőséget.
@@ -176,7 +178,7 @@ Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a CSV-fájlt a kiszo
         1. Töltse le a CSV-fájlt, amely tartalmazza a hiba részleteit.
         1. Szükség szerint tekintse át és kezelje a hibákat. 
         1. Töltse fel ismét a módosított fájlt.
-4. Ha az importálás állapota **Befejezve**, akkor a kiszolgálói adatok importálva lettek. Frissítés, ha az importálási folyamat úgy tűnik, hogy nem fejeződött be.
+4. Ha az importálás állapota **Befejezve**, akkor a kiszolgálói adatok importálva lettek. Frissítsen, ha úgy tűnik, hogy az importálási folyamat nem fejeződött be.
 
 ## <a name="update-server-information"></a>Kiszolgálói adatok frissítése
 
@@ -194,11 +196,11 @@ Annak ellenőrzése, hogy a kiszolgálók megjelennek-e az Azure Portalon a feld
 
 ## <a name="supported-operating-system-names"></a>Támogatott operációsrendszer-nevek
 
-A CSV-fájlban megadott operációs rendszer nevének tartalmaznia kell és egyeznie kell. Ha nem, akkor nem fogja tudni értékelni őket. 
+A CSV-fájlban megadott operációsrendszer-neveknek tartalmazni kell a és a egyezniük kell. Ha nem, akkor nem fogja tudni felmérni őket. 
 
-**A – H** | **I-R** | **S-T** | **U-Z**
+**A-H** | **I-R** | **S-T** | **U-Z**
 --- | --- | --- | ---
-Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity Systems eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>macOS X 10<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity Systems eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 ## <a name="next-steps"></a>További lépések
 
@@ -206,4 +208,4 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Létrehozott egy Azure Migrate projektet 
-> * Egy importált CSV-fájlt használó felderített kiszolgálók. Most futtasson egy értékelést a [VMWare virtuális gép Azure-beli virtuális gépekre való áttelepítéséről](./tutorial-assess-vmware-azure-vm.md).
+> * Importált CSV-fájllal felderített kiszolgálók. Most futtatassa a VMware virtuális gépek Azure-beli virtuális gépekre [való migrálásának értékelését.](./tutorial-assess-vmware-azure-vm.md)

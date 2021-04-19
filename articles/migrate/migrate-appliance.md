@@ -1,590 +1,627 @@
 ---
 title: Azure Migrate-berendezés
-description: A Azure Migrate készülék támogatásának összegzését tartalmazza.
+description: Összegzést nyújt a Azure Migrate támogatásról.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075695"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714667"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
-Ez a cikk összefoglalja az Azure Migrate berendezés előfeltételeinek és támogatási követelményeit.
+Ez a cikk a Azure Migrate előfeltételeit és támogatási követelményeit foglalja össze.
 
 ## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
-A Azure Migrate készüléket a következő esetekben használja a rendszer.
+A Azure Migrate berendezést a következő forgatókönyvekben használjuk.
 
-**Forgatókönyv** | **Eszköz** | **A következőhöz használatos**
+**Forgatókönyv** | **Eszköz** | **Itt használható:**
 --- | --- | ---
-**A VMware-környezetben futó kiszolgálók felderítése és értékelése** | Azure Migrate: felderítés és Értékelés | A VMware-környezetben futó kiszolgálók felderítése<br/><br/> A telepített szoftverek leltárának, az ügynök nélküli függőségek elemzésének és a SQL Server példányok és adatbázisok felderítésének elvégzése.<br/><br/> Összegyűjti a kiszolgáló konfigurációját és a teljesítménnyel kapcsolatos metaadatokat az értékelésekhez.
-**A VMware-környezetben futó kiszolgálók ügynök nélküli áttelepítése** | Azure Migrate: kiszolgáló áttelepítése | A VMware-környezetben futó kiszolgálók felderítése. <br/><br/> Kiszolgálók replikálása anélkül, hogy ügynököket kellene telepíteni rajtuk.
-**A Hyper-V környezetben futó kiszolgálók felderítése és értékelése** | Azure Migrate: felderítés és Értékelés | A Hyper-V környezetben futó kiszolgálók felderítése.<br/><br/> Összegyűjti a kiszolgáló konfigurációját és a teljesítménnyel kapcsolatos metaadatokat az értékelésekhez.
-**A helyszíni fizikai vagy virtualizált kiszolgálók felderítése és értékelése** |  Azure Migrate: felderítés és Értékelés |  Helyszíni fizikai vagy virtualizált kiszolgálók felderítése.<br/><br/> Összegyűjti a kiszolgáló konfigurációját és a teljesítménnyel kapcsolatos metaadatokat az értékelésekhez.
+**VMware-környezetben futó kiszolgálók felderítése és értékelése** | Azure Migrate: Felderítés és értékelés | A VMware-környezetben futó kiszolgálók felderítése<br/><br/> A telepített szoftverleltár és az ügynök nélküli függőségelemzés felderítése, valamint a SQL Server és adatbázisok felderítése.<br/><br/> Gyűjtse össze a kiszolgálókonfiguráció és a teljesítmény metaadatait az értékelésekhez.
+**VMware-környezetben futó kiszolgálók ügynök nélküli áttelepítése** | Azure Migrate:Server Migration | A VMware-környezetben futó kiszolgálók felderítése. <br/><br/> Kiszolgálók replikálása ügynökök telepítése nélkül.
+**Hyper-V környezetben futó kiszolgálók felderítése és értékelése** | Azure Migrate: Felderítés és értékelés | A Hyper-V-környezetben futó kiszolgálók felderítése.<br/><br/> Gyűjtse össze a kiszolgálókonfiguráció és a teljesítmény metaadatait az értékelésekhez.
+**Helyszíni fizikai vagy virtualizált kiszolgálók felderítése és értékelése** |  Azure Migrate: Felderítés és értékelés |  Fizikai vagy virtualizált kiszolgálók felderítése a helyszínen.<br/><br/> Gyűjtse össze a kiszolgálókonfiguráció és a teljesítmény metaadatait az értékelésekhez.
 
 ## <a name="deployment-methods"></a>Üzembe helyezési módszerek
 
-A készülék több módszer használatával is üzembe helyezhető:
+A berendezés több módszerrel is üzembe helyezhető:
 
-- A készülék a VMware vagy a Hyper-V környezetben futó kiszolgálók sablonjának használatával telepíthető (a VMware-hez vagy [a virtuális merevlemezhez a Hyper-v-hez](how-to-set-up-appliance-hyper-v.md)készült[petesejtek sablonja](how-to-set-up-appliance-vmware.md) ).
-- Ha nem szeretne sablont használni, telepítheti a készüléket VMware vagy Hyper-V környezetben egy [PowerShell-telepítő parancsfájl](deploy-appliance-script.md)használatával.
-- Azure Government a készüléket egy PowerShell-telepítő parancsfájl használatával kell telepítenie. Tekintse át az üzembe helyezés lépéseit [itt](deploy-appliance-script-government.md).
-- A helyszíni vagy más Felhőbeli fizikai vagy virtualizált kiszolgálók esetében mindig PowerShell-telepítő parancsfájl használatával telepítse a készüléket. Tekintse át az üzembe helyezés lépéseit [itt](how-to-set-up-appliance-physical.md).
+- A berendezés VMware- vagy Hyper-V-környezetben futó kiszolgálók sablonjának használatával helyezhető üzembe[(VMware esetén OVA-sablon,](how-to-set-up-appliance-vmware.md) [Hyper-V esetén VHD).](how-to-set-up-appliance-hyper-v.md)
+- Ha nem szeretne sablont használni, üzembe helyezheti a berendezést VMware- vagy Hyper-V-környezetben egy [PowerShell-telepítő szkripttel.](deploy-appliance-script.md)
+- A Azure Government üzembe kell helyeznie a berendezést egy PowerShell-telepítő szkript használatával. Az üzembe helyezés lépéseit itt [található.](deploy-appliance-script-government.md)
+- A fizikai vagy virtualizált helyszíni kiszolgálók vagy bármely más felhő esetén a berendezést mindig Egy PowerShell-telepítő szkript használatával kell üzembe helyezni. Az üzembe helyezés lépéseit itt [található.](how-to-set-up-appliance-physical.md)
 - A letöltési hivatkozások az alábbi táblázatokban érhetők el.
 
-## <a name="appliance---vmware"></a>Készülék – VMware
+## <a name="appliance---vmware"></a>Berendezés – VMware
 
-A következő táblázat összefoglalja a VMware Azure Migrate készülékre vonatkozó követelményeit.
+Az alábbi táblázat összefoglalja a Azure Migrate VMware-re vonatkozó követelményeit.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-SQL Server futó virtuális gépek és adatbázisok felderítése és értékelése jelenleg előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 **Követelmény** | **VMware**
 --- | ---
-**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék Configuration Managert, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
-**Berendezés-szolgáltatások** | A készülék a következő szolgáltatásokat nyújtja:<br/><br/> - **Készülék Configuration Manager**: ez egy webalkalmazás, amely a forrás részleteivel konfigurálható a kiszolgálók felderítésének és értékelésének elindításához.<br/> - **VMware Discovery Agent**: az ügynök összegyűjti a kiszolgálói konfigurációs metaadatokat, amelyek segítségével helyszíni értékelésként hozható létre.<br/>- **VMware Assessment Agent**: az ügynök gyűjti a kiszolgáló teljesítményére vonatkozó metaadatokat, amelyek a teljesítmény-alapú értékelések létrehozásához használhatók.<br/>- **Automatikus frissítési szolgáltatás**: a szolgáltatás naprakészen tartja a készüléken futó összes ügynököt. A szolgáltatás 24 óránként egyszer automatikusan fut.<br/>- **DRA-ügynök**: összehangolja a kiszolgálók replikálását, és koordinálja a replikált kiszolgálók és az Azure közötti kommunikációt. Csak a kiszolgálók az Azure-ba való replikálásához használatos ügynök nélküli áttelepítés használatával.<br/>- **Átjáró**: replikált adatokat küld az Azure-nak. Csak a kiszolgálók az Azure-ba való replikálásához használatos ügynök nélküli áttelepítés használatával.<br/>- **SQL-felderítési és-értékelő ügynök**: SQL Server példányok és adatbázisok konfigurációs és teljesítménybeli metaadatait elküldi az Azure-nak.
-**Projekt korlátai** |  A készülékek csak egyetlen projektben regisztrálhatók.<br/> Egyetlen projekt több regisztrált berendezéssel is rendelkezhet.
-**Felderítési korlátok** | A készülékek vCenter Serveron futó, akár 10 000-es kiszolgálót is felfedezhetnek.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
-**Támogatott központi telepítés** | Telepítsen vCenter Server-t futtató új kiszolgálóként a petesejtek sablon használatával.<br/><br/> Üzembe helyezés Windows Server 2016 rendszert futtató meglévő kiszolgálón PowerShell-telepítő parancsfájl használatával.
-**PETESEJT-sablon** | Letöltés a projektből vagy [innen](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> A letöltési méret 11,9 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes.<br/>Ha a próbaidőszak majdnem lejár, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket a petesejtek sablonnal, vagy aktiválja a berendezés-kiszolgáló operációs rendszerének licencét.
-**PETESEJTEK ellenőrzése** | [Ellenőrizze](tutorial-discover-vmware.md#verify-security) a projektből letöltött petesejtek-sablont a kivonatoló értékek ellenőrzésével.
-**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-vmware) , amely bemutatja, hogyan helyezhet üzembe egy készüléket a PowerShell telepítő parancsfájl használatával.<br/><br/> 
-**Hardver-és hálózati követelmények** |  A készüléknek a kiszolgálón kell futnia a Windows Server 2016, 32-GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolás és egy külső virtuális kapcsoló alapján.<br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/><br/> Ha a készüléket a petesejtek sablonnal telepíti, elegendő erőforrásra van szüksége a vCenter Server egy olyan kiszolgáló létrehozásához, amely megfelel a hardverkövetelmények követelményeinek.<br/><br/> Ha a készüléket egy meglévő kiszolgálón futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/>_(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_
-**VMware-követelmények** | Ha a készüléket vCenter Server-kiszolgálóként telepíti, akkor azt a 5,5, 6,0, 6,5 vagy 6,7 rendszert futtató vCenter Server kell telepíteni, valamint egy 5,5 vagy újabb verziót futtató ESXi-gazdagépet.<br/><br/> 
-**VDDK (ügynök nélküli áttelepítés)** | Ha a készüléket a kiszolgálók ügynök nélküli áttelepítésére szeretné használni, a VMware vSphere VDDK telepíteni kell a berendezés-kiszolgálóra.
+**Engedélyek** | A berendezéskonfiguráció-kezelő helyi vagy távoli eléréséhez rendszergazdai jogosultságokkal rendelkező helyi vagy tartományi felhasználói fiókkal kell lennie a berendezéskiszolgálón.
+**Berendezésszolgáltatások** | A berendezés a következő szolgáltatásokkal rendelkezik:<br/><br/> - **Berendezés konfigurációkezelője:** Ez egy webalkalmazás, amely konfigurálható a forrás adataival a kiszolgálók felderítésének és értékelésének elkezdéséhez.<br/> - **VMware-felderítési ügynök:** Az ügynök a kiszolgáló konfigurációs metaadatait gyűjti, amelyek felhasználhatók helyszíni értékelésként való létrehozáshoz.<br/>- **VMware-értékelési ügynök:** Az ügynök a kiszolgálói teljesítmény metaadatait gyűjti, amelyek segítségével teljesítményalapú értékelések hozhatók létre.<br/>- **Automatikus frissítési szolgáltatás:** A szolgáltatás naprakészen tartja a berendezésen futó összes ügynököt. 24 óránként automatikusan lefut.<br/>- **DRA-ügynök:** Összehangolja a kiszolgálóreplikációt, és koordinálja a replikált kiszolgálók és az Azure közötti kommunikációt. Csak akkor használatos, ha kiszolgálókat replikál az Azure-ba ügynök nélküli migrálás használatával.<br/>- **Átjáró:** Replikált adatokat küld az Azure-ba. Csak akkor használatos, ha kiszolgálókat replikál az Azure-ba ügynök nélküli migrálás használatával.<br/>- **SQL-felderítési és -értékelési ügynök:** elküldi a konfigurációs és SQL Server metaadatait az Azure-nak.
+**Projektkorlátok** |  Egy berendezés csak egyetlen projektben regisztrálható.<br/> Egy projekthez több regisztrált berendezés is lehet.
+**Felderítési korlátok** | A berendezés akár 10 000, egy kiszolgálón futó kiszolgálót is vCenter Server.<br/> A berendezés csatlakozhat egyetlen vCenter Server.
+**Támogatott központi telepítés** | Üzembe helyezés új kiszolgálón futó vCenter Server OVA-sablon használatával.<br/><br/> Üzembe helyezés Windows Server 2016-ot futtató meglévő kiszolgálón PowerShell-telepítő szkript használatával.
+**OVA-sablon** | Letöltés a projektből vagy [innen](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> A letöltés mérete 11,9 GB.<br/><br/> A letöltött berendezéssablonhoz Egy Windows Server 2016 értékelési licenc is jár, amely 180 napig érvényes.<br/>Ha a kiértékelési időszak hamarosan lejár, javasoljuk, hogy töltsön le és helyezzen üzembe egy új berendezést az OVA-sablonnal, vagy aktiválja a berendezéskiszolgáló operációs rendszerének licencét.
+**OVA-ellenőrzés** | [Ellenőrizze a](tutorial-discover-vmware.md#verify-security) projektből letöltött OVA-sablont a kivonatértékek ellenőrzésével.
+**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-vmware) arról, hogyan helyezhet üzembe egy berendezést a PowerShell-telepítő szkript használatával.<br/><br/> 
+**Hardver- és hálózati követelmények** |  A berendezésnek Windows Server 2016- és 32 GB RAM-mal, 8 virtuálispu-val, körülbelül 80 GB lemezterülettel és külső virtuális kapcsolóval rendelkező kiszolgálón kell futnia.<br/> A berendezéshez közvetlenül vagy proxyn keresztüli internet-hozzáférés szükséges.<br/><br/> Ha OVA-sablonnal telepíti a berendezést, elegendő erőforrásra lesz szüksége a vCenter Server a hardverkövetelményeknek megfelelő kiszolgáló létrehozásához.<br/><br/> Ha a berendezést egy meglévő kiszolgálón futtatja, ellenőrizze, hogy Windows Server 2016 fut-e, és megfelel-e a hardverkövetelményeknek.<br/>_(A berendezés üzembe helyezése jelenleg csak Windows Server 2016 rendszeren támogatott.)_
+**VMware-követelmények** | Ha a berendezést kiszolgálóként telepíti az vCenter Server-ban, akkor azt egy 5.5-ös, 6.0-s, 6.5-ös vagy 6.7-es verziójú vCenter Server és egy 5.5-ös vagy újabb verziót futtató ESXi-gazdagépen kell üzembe helyezni.<br/><br/> 
+**VDDK (ügynök nélküli migrálás)** | Ahhoz, hogy a berendezést kihasználhatja a kiszolgálók ügynök nélküli áttelepítéséhez, VMware vSphere VDDK-t telepíteni kell a berendezéskiszolgálóra.
 
-## <a name="appliance---hyper-v"></a>Készülék – Hyper-V
+## <a name="appliance---hyper-v"></a>Berendezés – Hyper-V
 
 **Követelmény** | **Hyper-V**
 --- | ---
-**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék Configuration Managert, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
-**Berendezés-szolgáltatások** | A készülék a következő szolgáltatásokat nyújtja:<br/><br/> - **Készülék Configuration Manager**: ez egy webalkalmazás, amely a forrás részleteivel konfigurálható a kiszolgálók felderítésének és értékelésének elindításához.<br/> - **Felderítési ügynök**: az ügynök a kiszolgálói konfigurációs metaadatokat gyűjti, amelyek a helyszíni értékelésekhez használhatók.<br/>- **Értékelő ügynök**: az ügynök a kiszolgáló teljesítményére vonatkozó metaadatokat gyűjt, amelyek a teljesítmény-alapú értékelések létrehozásához használhatók.<br/>- **Automatikus frissítési szolgáltatás**: a szolgáltatás naprakészen tartja a készüléken futó összes ügynököt. A szolgáltatás 24 óránként egyszer automatikusan fut.
-**Projekt korlátai** |  A készülékek csak egyetlen projektben regisztrálhatók.<br/> Egyetlen projekt több regisztrált berendezéssel is rendelkezhet.
-**Felderítési korlátok** | A berendezések a Hyper-V környezetben futó, akár 5000-es kiszolgálót is felfedezhetnek.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
-**Támogatott központi telepítés** | A Hyper-V-gazdagépen futó kiszolgálóként egy VHD-sablon használatával telepíthető.<br/><br/> Üzembe helyezés Windows Server 2016 rendszert futtató meglévő kiszolgálón PowerShell-telepítő parancsfájl használatával.
-**VHD-sablon** | A VHD-t tartalmazó Zip-fájl. Letöltés a projektből vagy [innen.](https://go.microsoft.com/fwlink/?linkid=2140422)<br/><br/> A letöltési méret 8,91 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes.<br/> Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a berendezés-kiszolgáló operációs rendszerének licencét.
-**VHD-ellenőrzés** | [Ellenőrizze](tutorial-discover-hyper-v.md#verify-security) a projektből letöltött VHD-sablont a kivonatoló értékek ellenőrzésével.
-**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v) , amely bemutatja, hogyan helyezhet üzembe egy készüléket a PowerShell telepítő parancsfájl használatával.<br/>
-**Hardver-és hálózati követelmények**  |  A készüléknek a kiszolgálón kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület és egy külső virtuális kapcsoló esetében.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a berendezést Hyper-V-gazdagépen futó kiszolgálóként futtatja, elegendő erőforrásra van szüksége a gazdagépen ahhoz, hogy olyan kiszolgálót hozzon létre, amely megfelel a hardverkövetelmények követelményeinek.<br/><br/> Ha a készüléket egy meglévő kiszolgálón futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/>_(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_
-**Hyper-V követelmények** | Ha a készüléket a VHD sablonnal telepíti, a Azure Migrate által biztosított készülék a Hyper-V VM 5,0-es verziója.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.
+**Engedélyek** | A berendezéskonfiguráció-kezelő helyi vagy távoli eléréséhez rendszergazdai jogosultságokkal rendelkező helyi vagy tartományi felhasználói fiókkal kell lennie a berendezéskiszolgálón.
+**Berendezésszolgáltatások** | A berendezés a következő szolgáltatásokkal rendelkezik:<br/><br/> - **Berendezés konfigurációkezelője:** Ez egy webalkalmazás, amely konfigurálható a forrás adataival a kiszolgálók felderítésének és értékelésének elkezdéséhez.<br/> - **Felderítési ügynök:** Az ügynök a kiszolgáló konfigurációs metaadatait gyűjti, amelyek felhasználhatók helyszíni értékelésekként való létrehozáshoz.<br/>- **Értékelési ügynök:** Az ügynök gyűjti a kiszolgálói teljesítmény metaadatait, amelyek segítségével teljesítményalapú értékelések hozhatók létre.<br/>- **Automatikus frissítési szolgáltatás:** A szolgáltatás naprakészen tartja a berendezésen futó összes ügynököt. 24 óránként automatikusan fut.
+**Projektkorlátok** |  Egy berendezés csak egyetlen projektben regisztrálható.<br/> Egy projekthez több regisztrált berendezés is lehet.
+**Felderítési korlátok** | Egy berendezés legfeljebb 5000 Hyper-V-környezetben futó kiszolgáló felderítésére képes.<br/> Egy berendezés legfeljebb 300 Hyper-V-gazdagéphez csatlakozhat.
+**Támogatott központi telepítés** | Üzembe helyezés Hyper-V-gazdagépen futó kiszolgálóként VHD-sablon használatával.<br/><br/> Üzembe helyezés Windows Server 2016-ot futtató meglévő kiszolgálón PowerShell-telepítő szkript használatával.
+**VHD-sablon** | VhD-t tartalmazó zip-fájl. Töltse le a projektet vagy [innen:](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> A letöltés mérete 8,91 GB.<br/><br/> A letöltött berendezéssablonhoz Egy Windows Server 2016 értékelési licenc is jár, amely 180 napig érvényes.<br/> Ha a kiértékelési időszak hamarosan lejár, javasoljuk, hogy töltsön le és helyezzen üzembe egy új berendezést, vagy aktiválja a berendezéskiszolgáló operációs rendszerének licencét.
+**VHD-ellenőrzés** | [Ellenőrizze a](tutorial-discover-hyper-v.md#verify-security) projektből letöltött VHD-sablont a kivonatértékek ellenőrzésével.
+**PowerShell-parancsprogram** | A berendezés [](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v) PowerShell-telepítő szkript használatával való üzembe helyezéséről ebben a cikkben olvashat.<br/>
+**Hardver- és hálózati követelmények**  |  A berendezésnek Windows Server 2016- és 16 GB RAM-mal, 8 virtuálispu-val, körülbelül 80 GB lemezterülettel és külső virtuális kapcsolóval rendelkező kiszolgálón kell futnia.<br/> A berendezésnek statikus vagy dinamikus IP-címre van szüksége, és internet-hozzáférést igényel közvetlenül vagy proxyn keresztül.<br/><br/> Ha a berendezést Egy Hyper-V-gazdagépen futó kiszolgálóként futtatja, elegendő erőforrásra lesz szüksége a gazdagépen a hardverkövetelményeknek megfelelő kiszolgáló létrehozásához.<br/><br/> Ha a berendezést egy meglévő kiszolgálón futtatja, ellenőrizze, hogy Windows Server 2016 fut-e, és megfelel-e a hardverkövetelményeknek.<br/>_(A berendezés üzembe helyezése jelenleg csak Windows Server 2016 rendszeren támogatott.)_
+**A Hyper-V követelményei** | Ha a berendezést a VHD-sablonnal telepíti, az Azure Migrate a Hyper-V virtuális gép 5.0-s verziója lesz.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.
 
-## <a name="appliance---physical"></a>Berendezés – fizikai
+## <a name="appliance---physical"></a>Berendezés – Fizikai
 
 **Követelmény** | **Fizikai**
 --- | ---
-**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék Configuration Managert, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
-**Berendezés-szolgáltatások** | A készülék a következő szolgáltatásokat nyújtja:<br/><br/> - **Készülék Configuration Manager**: ez egy webalkalmazás, amely a forrás részleteivel konfigurálható a kiszolgálók felderítésének és értékelésének elindításához.<br/> - **Felderítési ügynök**: az ügynök a kiszolgálói konfigurációs metaadatokat gyűjti, amelyek a helyszíni értékelésekhez használhatók.<br/>- **Értékelő ügynök**: az ügynök a kiszolgáló teljesítményére vonatkozó metaadatokat gyűjt, amelyek a teljesítmény-alapú értékelések létrehozásához használhatók.<br/>- **Automatikus frissítési szolgáltatás**: a szolgáltatás naprakészen tartja a készüléken futó összes ügynököt. A szolgáltatás 24 óránként egyszer automatikusan fut.
-**Projekt korlátai** |  A készülékek csak egyetlen projektben regisztrálhatók.<br/> Egyetlen projekt több regisztrált berendezéssel is rendelkezhet.<br/>
-**Felderítési korlátok** | A berendezések akár 1000 fizikai kiszolgálót is felfedezhetnek.
-**Támogatott központi telepítés** | Üzembe helyezés Windows Server 2016 rendszert futtató meglévő kiszolgálón PowerShell-telepítő parancsfájl használatával.
-**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy [zip-fájlba](https://go.microsoft.com/fwlink/?linkid=2140334)a projektből vagy innen. [További információk](tutorial-discover-physical.md).<br/><br/> A letöltési méret 85,8 MB.
-**Szkript ellenőrzése** | [Ellenőrizze](tutorial-discover-physical.md#verify-security) a PowerShell telepítőjének a projektből letöltött parancsfájlját a kivonatoló értékek ellenőrzésével.
-**Hardver-és hálózati követelmények** |  A készüléknek a kiszolgálón kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolással.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket egy meglévő kiszolgálón futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/>_(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_
+**Engedélyek** | A berendezéskonfiguráció-kezelő helyi vagy távoli eléréséhez rendszergazdai jogosultságokkal rendelkező helyi vagy tartományi felhasználói fiókkal kell lennie a berendezéskiszolgálón.
+**Berendezésszolgáltatások** | A berendezés a következő szolgáltatásokkal rendelkezik:<br/><br/> - **Berendezés konfigurációkezelője:** Ez egy webalkalmazás, amely konfigurálható a kiszolgálók felderítésének és értékelésének a forrás adataival.<br/> - **Felderítési ügynök:** Az ügynök a kiszolgáló konfigurációs metaadatait gyűjti, amelyek felhasználhatók helyszíni értékelésekként való létrehozáshoz.<br/>- **Értékelési ügynök:** Az ügynök gyűjti a kiszolgálói teljesítmény metaadatait, amelyek segítségével teljesítményalapú értékelések hozhatók létre.<br/>- **Automatikus frissítési szolgáltatás:** A szolgáltatás naprakészen tartja a berendezésen futó összes ügynököt. 24 óránként automatikusan lefut.
+**Projektkorlátok** |  Berendezés csak egyetlen projektben regisztrálható.<br/> Egy projekthez több regisztrált berendezés is lehet.<br/>
+**Felderítési korlátok** | A berendezés akár 1000 fizikai kiszolgálót is felderíthet.
+**Támogatott központi telepítés** | Üzembe helyezés Windows Server 2016-ot futtató meglévő kiszolgálón PowerShell-telepítő szkript használatával.
+**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller.ps1) egy zip-fájlba a projektből vagy [innen.](https://go.microsoft.com/fwlink/?linkid=2140334) [További információ](tutorial-discover-physical.md).<br/><br/> A letöltés mérete 85,8 MB.
+**Szkript ellenőrzése** | [Ellenőrizze a](tutorial-discover-physical.md#verify-security) projektből letöltött PowerShell-telepítő szkriptjét a kivonatértékek ellenőrzésével.
+**Hardver- és hálózati követelmények** |  A berendezésnek Windows Server 2016, 16 GB RAM, 8 virtuálispu-val, körülbelül 80 GB lemezterülettel rendelkező kiszolgálón kell futnia.<br/> A berendezésnek statikus vagy dinamikus IP-címre van szüksége, és közvetlenül vagy proxyn keresztüli internet-hozzáférésre van szüksége.<br/><br/> Ha a berendezést egy meglévő kiszolgálón futtatja, győződjön meg arról, hogy Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelményeknek.<br/>_(A berendezés üzembe helyezése jelenleg csak Windows Server 2016 rendszeren támogatott.)_
 
 ## <a name="url-access"></a>URL-hozzáférés
 
-Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
+A Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 
-- A berendezés központi telepítésekor Azure Migrate a szükséges URL-címek kapcsolatát.
-- Engedélyeznie kell a hozzáférést a lista összes URL-címéhez. Ha csak értékelést végez, kihagyhatja a VMware ügynök nélküli áttelepítéshez szükségesként megjelölt URL-címeket.
-- Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat.
+- A berendezés üzembe helyezésekor a Azure Migrate ellenőrzi a szükséges URL-címeket.
+- Engedélyeznie kell a hozzáférést a listában található összes URL-címhez. Ha csak értékelést ad, kihagyhatja a VMware ügynök nélküli áttelepítéséhez kötelezőként megjelölt URL-címeket.
+- Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, győződjön meg arról, hogy a proxy feloldja az URL-címek kiása közben kapott CNAME-rekordokat.
 
-### <a name="public-cloud-urls"></a>Nyilvános Felhőbeli URL-címek
+### <a name="public-cloud-urls"></a>Nyilvános felhőBELI URL-címek
 
 **URL-cím** | **Részletek**  
 --- | --- |
 *.portal.azure.com  | Lépjen az Azure Portalra.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com <br/> *. office.com | Jelentkezzen be az Azure-előfizetésbe.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Azure Active Directory-(AD-) alkalmazásokat a berendezés számára a Azure Migratesal való kommunikációhoz.
-management.azure.com | Hozzon létre Azure AD-alkalmazásokat a készülékhez a Azure Migrate való kommunikációhoz.
-*.services.visualstudio.com | Belső figyeléshez használt készülék-naplók feltöltése.
-*.vault.azure.net | A Azure Key Vault titkainak kezelése.<br/> Megjegyzés: Győződjön meg róla, hogy a replikálni kívánt kiszolgálók rendelkeznek hozzáféréssel.
-aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz; a Appliance Services legújabb frissítéseinek letöltésére és telepítésére szolgál.
-download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltőközpontból.
-*.servicebus.windows.net | A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*.blob.core.windows.net |  **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/>Adatok feltöltése a Storage-ba áttelepítéshez.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Jelentkezzen be az Azure-előfizetésbe.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon Azure Active Directory (AD) alkalmazásokat a berendezéshez a Azure Migrate.
+management.azure.com | Hozzon létre Azure AD-alkalmazásokat a berendezéshez a Azure Migrate.
+*.services.visualstudio.com | Belső monitorozáshoz használt berendezésnaplók feltöltése.
+*.vault.azure.net | Titkos kulcsok kezelése a Azure Key Vault.<br/> Megjegyzés: Győződjön meg arról, hogy a replikálni szükséges kiszolgálók hozzáférnek ehhez.
+aka.ms/* | Hozzáférés engedélyezése más néven hivatkozásokhoz; A a készülékszolgáltatások legújabb frissítésének letöltésére és telepítésére használható.
+download.microsoft.com/download | Letöltések engedélyezése a Microsoft letöltőközpontból.
+*.servicebus.windows.net | A berendezés és a Azure Migrate közötti kommunikáció.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Csatlakozzon Azure Migrate szolgáltatás URL-címhez.
+*.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> Csatlakozzon Azure Migrate szolgáltatás URL-címhez.
+*.blob.core.windows.net |  **VMware ügynök nélküli migráláshoz használatos**<br/><br/>Adatok feltöltése a tárolóba migráláshoz.
 
-### <a name="government-cloud-urls"></a>Kormányzati Felhőbeli URL-címek
+### <a name="government-cloud-urls"></a>Kormányzati felhőBELI URL-címek
 
 **URL-cím** | **Részletek**  
 --- | --- |
-*. portal.azure.us  | Lépjen az Azure Portalra.
+*.portal.azure.us  | Lépjen az Azure Portalra.
 graph.windows.net | Jelentkezzen be az Azure-előfizetésbe.
-login.microsoftonline.us  | Hozzon létre Azure Active Directory-(AD-) alkalmazásokat a berendezés számára a Azure Migratesal való kommunikációhoz.
-management.usgovcloudapi.net | Azure AD-alkalmazások létrehozása a berendezés számára a Azure Migrate szolgáltatással való kommunikációhoz.
-*.services.visualstudio.com | Belső figyeléshez használt készülék-naplók feltöltése.
-*. vault.usgovcloudapi.net | A Azure Key Vault titkainak kezelése.
-aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz; a Appliance Services legújabb frissítéseinek letöltésére és telepítésére szolgál.
-download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltőközpontból.
-*. servicebus.usgovcloudapi.net  | A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
-*. discoverysrv.windowsazure.us <br/> *. migration.windowsazure.us | Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*. hypervrecoverymanager.windowsazure.us | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*. blob.core.usgovcloudapi.net  |  **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/>Adatok feltöltése a Storage-ba áttelepítéshez.
-*. applicationinsights.us | Belső figyeléshez használt készülék-naplók feltöltése.
+login.microsoftonline.us  | Hozzon Azure Active Directory (AD) alkalmazásokat a berendezéshez a Azure Migrate.
+management.usgovcloudapi.net | Hozzon létre Azure AD-alkalmazásokat a berendezéshez, hogy kommunikáljon Azure Migrate szolgáltatással.
+*.services.visualstudio.com | Töltse fel a belső monitorozáshoz használt berendezésnaplókat.
+*.vault.usgovcloudapi.net | Titkos kulcsok kezelése a Azure Key Vault.
+aka.ms/* | Hozzáférés engedélyezése más néven hivatkozásokhoz; A a készülékszolgáltatások legújabb frissítésének letöltésére és telepítésére használható.
+download.microsoft.com/download | A Microsoft letöltőközpontból való letöltések engedélyezése.
+*.servicebus.usgovcloudapi.net  | A berendezés és a Azure Migrate közötti kommunikáció.
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Csatlakozás Azure Migrate szolgáltatás URL-címhez.
+*.hypervrecoverymanager.windowsazure.us | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> Csatlakozás Azure Migrate szolgáltatás URL-címhez.
+*.blob.core.usgovcloudapi.net  |  **VMware ügynök nélküli migráláshoz használatos**<br/><br/>Adatok feltöltése a tárolóba migráláshoz.
+*.applicationinsights.us | Belső monitorozáshoz használt berendezésnaplók feltöltése.  
+
+### <a name="public-cloud-urls-for-private-link-connectivity"></a>Nyilvános felhőBELI URL-címek a privát kapcsolati kapcsolatokhoz
+
+A berendezésnek a következő URL-címekhez kell hozzáférnie (közvetlenül vagy proxyn keresztül) privát kapcsolati hozzáférésen keresztül és felett. 
+
+**URL-cím** | **Részletek**  
+--- | --- | 
+*.portal.azure.com  | Lépjen az Azure Portalra.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Jelentkezzen be az Azure-előfizetésbe.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon Azure Active Directory (AD) alkalmazásokat a berendezéshez a Azure Migrate.
+management.azure.com | Hozzon létre Azure AD-alkalmazásokat a berendezéshez a Azure Migrate.
+*.services.visualstudio.com (nem kötelező) | Belső monitorozáshoz használt berendezésnaplók feltöltése.
+aka.ms/* (nem kötelező) | Hozzáférés engedélyezése más néven hivatkozásokhoz; A a készülékszolgáltatások legújabb frissítésének letöltésére és telepítésére használható.
+download.microsoft.com/download | Letöltések engedélyezése a Microsoft letöltőközpontból.
+*.servicebus.windows.net | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> A berendezés és a Azure Migrate közötti kommunikáció.
+*.vault.azure.net | **A VMware ügynök nélküli migráláshoz használatos**<br/><br/>  Győződjön meg arról, hogy a replikálni szükséges kiszolgálók hozzáférnek ehhez.
+*.hypervrecoverymanager.windowsazure.com | **A VMware ügynök nélküli migráláshoz használatos**<br/><br/> Csatlakozás Azure Migrate szolgáltatás URL-címhez.
+*.blob.core.windows.net |  **A VMware ügynök nélküli migráláshoz használatos**<br/><br/>Adatok feltöltése a tárolóba migráláshoz.
+
+### <a name="government-cloud-urls-for-private-link-connectivity"></a>Kormányzati felhőbeli URL-címek a privát kapcsolathoz való csatlakozáshoz   
+
+A berendezésnek a következő URL-címekhez kell hozzáférnie (közvetlenül vagy proxyn keresztül) a privát kapcsolat elérésén keresztül és felett. 
+
+**URL-cím** | **Részletek**  
+--- | --- |
+*.portal.azure.us  | Lépjen az Azure Portalra.
+graph.windows.net | Jelentkezzen be az Azure-előfizetésbe.
+login.microsoftonline.us  | Hozzon Azure Active Directory (AD) alkalmazásokat a berendezéshez a Azure Migrate.
+management.usgovcloudapi.net | Hozzon létre Azure AD-alkalmazásokat a berendezéshez, hogy kommunikáljon Azure Migrate szolgáltatással.
+*.services.visualstudio.com (nem kötelező) | Töltse fel a belső monitorozáshoz használt berendezésnaplókat.
+aka.ms/* (nem kötelező) | Hozzáférés engedélyezése más néven hivatkozásokhoz; A a készülékszolgáltatások legújabb frissítésének letöltésére és telepítésére használható.
+download.microsoft.com/download | A Microsoft letöltőközpontból való letöltések engedélyezése.
+*.servicebus.usgovcloudapi.net  | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> A berendezés és a Azure Migrate közötti kommunikáció. 
+*.vault.usgovcloudapi.net | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> Titkos kulcsok kezelése a Azure Key Vault.
+*.hypervrecoverymanager.windowsazure.us | **VMware ügynök nélküli migráláshoz használatos**<br/><br/> Csatlakozzon Azure Migrate szolgáltatás URL-címhez.
+*.blob.core.usgovcloudapi.net  |  **VMware ügynök nélküli migráláshoz használatos**<br/><br/>Adatok feltöltése a tárolóba migráláshoz.
+*.applicationinsights.us (nem kötelező) | Belső monitorozáshoz használt berendezésnaplók feltöltése.  
 
 ## <a name="collected-data---vmware"></a>Összegyűjtött adatok – VMware
 
-A készülék a konfigurációs metaadatokat, a teljesítmény metaadatait és a kiszolgáló függőségeinek adatait gyűjti (ha az ügynök nélküli [függőségi elemzés](concepts-dependency-visualization.md) van használatban).
+A berendezés konfigurációs metaadatokat, teljesítmény-metaadatokat és kiszolgálófüggőség-adatokat gyűjt (ha ügynök nélküli [függőségelemzést](concepts-dependency-visualization.md) használ).
 
 ### <a name="metadata"></a>Metaadatok
 
-Az Azure Migrate készülék által felderített metaadatok segítenek megállapítani, hogy a kiszolgálók készen állnak-e az Azure-ba való áttelepítésre, a megfelelő méretű kiszolgálókra, a csomagok költségeire és az alkalmazások függőségeinek elemzésére. A Microsoft nem használja ezeket az összes licenc-megfelelőségi naplózást.
+A Azure Migrate berendezés által felderített metaadatok segítségével eldöntheti, hogy a kiszolgálók készen állnak-e az Azure-ba való migrálásra, megfelelő méretű kiszolgálókat, csomagköltségeket és az alkalmazásfüggőségeket elemzi. A Microsoft ezeket az adatokat semmilyen licencelési auditban nem használja fel.
 
-Itt látható a készülék által gyűjtött és az Azure-ba küldött kiszolgálói metaadatok teljes listája.
+Itt található a berendezés által gyűjtött és az Azure-ba küldött kiszolgálói metaadatok teljes listája.
 
-**ADATOK** | **SZÁMLÁLÓ**
+**Adatok** | **Counter**
 --- | ---
 **Kiszolgáló adatai** |
-Kiszolgáló azonosítója | vm.Config. Értékű
+Kiszolgálóazonosító | vm.Config. InstanceUuid (Példány)Uid
 Kiszolgálónév | vm.Config. név
-vCenter Server azonosítója | VMwareClient. instance. UUID
-Kiszolgáló leírása | vm.Summary.Config. Jegyzet
-Licenc terméknév | VM. Client. ServiceContent. about. LicenseProductName
-Operációs rendszer típusa | VM. SummaryConfig. GuestFullName
-Rendszerindítás típusa | vm.Config. Belső vezérlőprogram
-Magok száma | vm.Config. Hardware. NumCPU
-Memória (MB) | vm.Config. Hardware. MemoryMB
-Lemezek száma | vm.Config. Hardver. Device. ToList (). FindAll (x => VirtualDisk). darabszám
-Lemez mérete lista | vm.Config. Hardver. Device. ToList (). FindAll (x => VirtualDisk)
-Hálózati adapterek listája | vm.Config. Hardver. Device. ToList (). FindAll (x => VirtualEthernet). darabszám
-Processzorhasználat | CPU. használat. átlag
-Memória kihasználtsága |mem. használat. átlag
-**/Lemez adatai** |
-Lemez kulcsának értéke | lemez. Kulcs
-Dikunit száma | lemez. UnitNumber
-Lemezvezérlő-kulcs értéke | lemez. ControllerKey. Value
-Kiépített gigabájt | virtualDisk. DeviceInfo. Summary
-Lemez neve | A lemez használatával generált érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey. VAlue
-Olvasási műveletek másodpercenként | virtualDisk. numberReadAveraged. Average
-Írási műveletek másodpercenként | virtualDisk. numberWriteAveraged. Average
-Olvasási sebesség (MB/s) | virtualDisk. Read. Average
-Írási sebesség (MB/s) | virtualDisk. Write. Average
-**Hálózati adapter adatai** |
-Hálózati adapter neve | hálózati. Kulcs
-MAC-cím | ((VirtualEthernetCard) NIC). MacAddress
+vCenter Server azonosítója | VMwareClient.Instance.Uuid
+Kiszolgáló leírása | vm.Summary.Config. Megjegyzés
+Licenctermék neve | vm.Client.ServiceContent.About.LicenseProductName
+Operációs rendszer típusa | vm.SummaryConfig.GuestFullName
+Rendszerindítás típusa | vm.Config. Firmware
+Magok száma | vm.Config. Hardware.NumCPU
+Memória (MB) | vm.Config. Hardware.MemoryMB
+Lemezek száma | vm.Config. Hardware.Device.ToList(). FindAll(x => értéke VirtualDisk).count
+Lemezméretek listája | vm.Config. Hardware.Device.ToList(). FindAll(x => is VirtualDisk)
+Hálózati adapterek listája | vm.Config. Hardware.Device.ToList(). FindAll(x => értéke VirtualEthernet).count
+Processzorhasználat | cpu.usage.average
+Memóriahasználat |mem.usage.average
+**Lemezenkénti részletek** |
+Lemezkulcs értéke | Lemez. Kulcs
+Dikunit-szám | Lemez. UnitNumber (Egységszám)
+Lemezvezérlő kulcsértéke | Lemez. ControllerKey.Value
+Kiépítve gigabájtok | virtualDisk.DeviceInfo.Summary
+Lemez neve | Lemezzel létrehozott érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey.VAlue
+Olvasási műveletek száma másodpercenként | virtualDisk.numberReadAveraged.average
+Írási műveletek száma másodpercenként | virtualDisk.numberWriteAveraged.average
+Olvasási átviteli sebesség (MB/s) | virtualDisk.read.average
+Írási átviteli sebesség (MB/s) | virtualDisk.write.average
+**Hálózati adapterenkénti részletek** |
+Hálózati adapter neve | Nic. Kulcs
+MAC-cím | ((VirtualEthernetCard)nic). MacAddress (Mac-cím)
 IPv4-címek | vm.Guest.Net
 IPv6-címek | vm.Guest.Net
-Olvasási sebesség (MB/s) | net. Received. Average
-Írási sebesség (MB/s) | net. továbbítandó. Average
-**Leltár elérési útja – részletek** |
-Name | tároló. GetType (). név
-Gyermekobjektum típusa | tároló. ChildType
-Hivatkozás részletei | tároló. MoRef
-Szülő részletei | Container. Parent
-Mappa adatai kiszolgálónkénti bontásban | ((Mappa) tároló). ChildEntity. Type
-Adatközpont részletei kiszolgálónként | (Datacenter) tároló. VmFolder
-Az adatközpont részletei egy gazdagép mappájában | (Datacenter) tároló. HostFolder
-Fürt adatai egy gazdagépen | ((ClusterComputeResource) tároló). Gazdagép
-Gazdagép adatai kiszolgálónkénti bontásban | ((HostSystem) tároló). VM
+Olvasási átviteli sebesség (MB/s) | net.received.average
+Írási átviteli sebesség (MB/s) | net.transmitted.average
+**Leltár elérési útjának részletei** |
+Name | Konténer. GetType(). név
+A gyermekobjektum típusa | Konténer. ChildType (Gyermektípus)
+Referencia részletei | Konténer. MoRef
+Szülő részletei | Container.Parent
+Mappa részletei kiszolgálónként | ((Mappa)tároló). ChildEntity.Type
+Adatközpont részletei kiszolgálónként | ((Datacenter)container). VmFolder
+Adatközpont részletei gazdagépmappánként | ((Datacenter)container). HostFolder (Gazdaszámítógép)
+Fürt részletei gazdagépenként | ((ClusterComputeResource)container). Fogadó
+Gazdagép adatai kiszolgálónként | ((HostSystem)container). Vm
 
 ### <a name="performance-data"></a>Teljesítményadatok
 
-Itt láthatók azok a teljesítményadatok, amelyeket a készülék egy VMware-en futó kiszolgáló számára gyűjt, és az Azure-ba küldi az adatokat.
+A berendezés által a VMware-ben futó kiszolgálóról gyűjtött és az Azure-ba küldött teljesítményadatok.
 
 **Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-Processzorhasználat | CPU. használat. átlag | Ajánlott kiszolgáló mérete/díja
-Memória kihasználtsága | mem. használat. átlag | Ajánlott kiszolgáló mérete/díja
-Lemez olvasási sebessége (MB/s) | virtualDisk. Read. Average | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Lemez írási sebessége (MB/s) | virtualDisk. Write. Average | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Lemez olvasási műveletei másodpercenként | virtualDisk. numberReadAveraged. Average | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Lemez írási műveletei másodpercenként | virtualDisk. numberWriteAveraged. Average  | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | Kiszolgáló méretének kiszámítása
-Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |Kiszolgáló méretének kiszámítása
+Processzorhasználat | cpu.usage.average | Javasolt kiszolgálóméret/-költség
+Memóriahasználat | mem.usage.average | Javasolt kiszolgálóméret/-költség
+Lemez olvasási átviteli sebesség (MB/s) | virtualDisk.read.average | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Lemezírás átviteli sebesség (MB/s) | virtualDisk.write.average | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Lemez olvasási műveletei másodpercenként | virtualDisk.numberReadAveraged.average | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Lemezírási műveletek másodpercenként | virtualDisk.numberWriteAveraged.average  | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Hálózati adapter olvasási átviteli sebesség (MB/s) | net.received.average | A kiszolgáló méretének kiszámítása
+Hálózati adapter írási átviteli sebesség (MB/s) | net.transmitted.average  |A kiszolgáló méretének kiszámítása
 
-### <a name="installed-software-inventory"></a>Telepített szoftverek leltára
+### <a name="installed-software-inventory"></a>Telepített szoftverleltár
 
-A készülék adatokat gyűjt a telepített szoftverekről a kiszolgálókon.
+A berendezés adatokat gyűjt a kiszolgálókon telepített szoftverleltárról.
 
-#### <a name="windows-server-software-inventory-data"></a>A Windows Server szoftver leltározási adatkészlete
+#### <a name="windows-server-software-inventory-data"></a>Windows Server szoftverleltár adatai
 
-Itt látható a szoftver leltározási adatai, amelyeket a készülék a VMware-környezetben felderített Windows serverekről gyűjt.
+A berendezés által a VMware-környezetben felderített windowsos kiszolgálókról gyűjtött szoftverleltár-adatok.
 
 **Adatok** | **Beállításjegyzékbeli hely** | **Kulcs**
 --- | --- | ---
-Alkalmazásnév  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Verzió  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion
-Szolgáltató  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+Alkalmazásnév  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Verzió  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion (Verzió megjelenítése)
+Szolgáltató  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
-#### <a name="windows-server-features-data"></a>A Windows Server funkcióinak adatvédelme
+#### <a name="windows-server-features-data"></a>Windows Server-szolgáltatások adatai
 
-Itt találja azokat a funkciókat, amelyeket a készülék a VMware-környezetben felderített Windows serverekről gyűjt.
+A berendezés által a VMware-környezetben felderített windowsos kiszolgálókról gyűjtött szolgáltatások adatai.
 
 **Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
 --- | --- | ---
 Name  | Get-WindowsFeature  | Name
-Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
+Funkciótípus | Get-WindowsFeature  | FeatureType (Jellemzőtípus)
 Szülő  | Get-WindowsFeature  | Szülő
 
-#### <a name="sql-server-metadata"></a>Metaadatok SQL Server
+#### <a name="sql-server-metadata"></a>SQL Server metaadatok hozzáadása
 
-Itt láthatók azok a SQL Server adatok, amelyeket a készülék a VMware-környezetben felderített Windows serverekről gyűjt.
+Itt találhatóak a SQL Server vMware-környezetben felderített windowsos kiszolgálókról gyűjtött adatok.
 
 **Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
-Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás
-Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
-Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió
+Name  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Kiadás  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Kiadás
+Szervizcsomag  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Sp
+Verzió  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Verzió
 
-#### <a name="windows-server-operating-system-data"></a>Windows Server operációs rendszerre vonatkozó információ
+#### <a name="windows-server-operating-system-data"></a>Windows Server operációs rendszer adatai
 
-Az alábbi, az operációs rendszer által a VMware-környezetben felderített Windows-kiszolgálókról gyűjtött operációsrendszer-adatok.
+Itt vannak a berendezés által a VMware-környezetben felderített windowsos kiszolgálókról gyűjtött operációsrendszer-adatok.
 
-**Adatok**  | **WMI-osztály**  | **WMI-osztály tulajdonsága**
+**Adatok**  | **WMI-osztály**  | **WMI-osztálytulajdonság**
 --- | --- | ---
 Name  | Win32_operatingsystem  | Képaláírás
 Verzió  | Win32_operatingsystem  | Verzió
 Architektúra  | Win32_operatingsystem  | OSArchitecture
 
-#### <a name="linux-server-software-inventory-data"></a>Linux Server szoftver leltározási adatkészlete
+#### <a name="linux-server-software-inventory-data"></a>Linux-kiszolgáló szoftverleltárának adatai
 
-A szoftver leltározási adatai alapján a készülék összegyűjti a VMware-környezetben felderített Linux-kiszolgálókat. A-kiszolgáló operációs rendszere alapján egy vagy több parancs fut.
-
-**Adatok**  | **Parancsok**
---- | ---
-Name | RPM, dpkg-Query, Snap
-Verzió | RPM, dpkg-Query, Snap
-Szolgáltató | RPM, dpkg-Query, Snap
-
-#### <a name="linux-server-operating-system-data"></a>Linux Server operációs rendszerre vonatkozó információ
-
-A készülék által a VMware-környezetben felderített Linux-kiszolgálókról összegyűjtött operációsrendszer-adatok.
+A berendezés a VMware-környezetben felderített linuxos kiszolgálókról gyűjtött szoftverleltár-adatok. A kiszolgáló operációs rendszere alapján a rendszer egy vagy több parancsot futtat.
 
 **Adatok**  | **Parancsok**
 --- | ---
-Name <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
-Architektúra | uname
+Name | rpm, dpkg-query, snap
+Verzió | rpm, dpkg-query, snap
+Szolgáltató | rpm, dpkg-query, snap
 
-### <a name="sql-server-instances-and-databases-data"></a>A példányok és az adatbázisok SQL Server
+#### <a name="linux-server-operating-system-data"></a>Linux-kiszolgáló operációsrendszer-adatai
 
-A készülék adatokat gyűjt SQL Server példányokról és adatbázisokról.
+Itt vannak a berendezés által a VMware-környezetben felderített linuxos kiszolgálókról gyűjtött operációsrendszer-adatok.
+
+**Adatok**  | **Parancsok**
+--- | ---
+Name <br/> version | A következő fájlok közül egy vagy többből gyűjtve:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
+Architektúra | Uname
+
+### <a name="sql-server-instances-and-databases-data"></a>SQL Server-példányok és adatbázisok adatai
+
+A berendezés adatokat gyűjt SQL Server-példányról és -adatbázisokról.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-SQL Server futó virtuális gépek és adatbázisok felderítése és értékelése jelenleg előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 #### <a name="sql-database-metadata"></a>SQL Database-metaadatok
 
-**Adatbázis-metaadatok** | **Nézetek/SQL Server tulajdonságai**
+**Adatbázis metaadatai** | **Nézetek/SQL Server tulajdonságai**
 --- | ---
 Az adatbázis egyedi azonosítója | sys.databases
-Kiszolgáló által definiált adatbázis-azonosító | sys.databases
+Kiszolgáló által megadott adatbázis-azonosító | sys.databases
 Az adatbázis neve | sys.databases
-Adatbázis kompatibilitási szintje | sys.databases
-Az adatbázis rendezési neve | sys.databases
+Az adatbázis kompatibilitási szintje | sys.databases
+Adatbázis rendezésneve | sys.databases
 Az adatbázis állapota | sys.databases
-Az adatbázis mérete (MB) | sys.master_files
-Az adatfájlokat tartalmazó hely meghajtóbetűjele | SERVERPROPERTY és Software\Microsoft\MSSQLServer\MSSQLServer
-Adatbázisfájlok listája | sys. Databases, sys.master_files
-A Service Broker engedélyezve van vagy nem | sys.databases
-Az adatbázis az adatváltozások rögzítésére van engedélyezve, vagy nem | sys.databases
+Az adatbázis mérete (MBS) | sys.master_files
+Adatfájlokat tartalmazó hely meghajtóbetűjele | SERVERPROPERTY és Software\Microsoft\MSSQLServer\MSSQLServer
+Adatbázisfájlok listája | sys.databases, sys.master_files
+A szolgáltatásközvetítő engedélyezve van vagy sem | sys.databases
+Az adatbázis engedélyezve van a változásadatok rögzítésére vagy nem | sys.databases
 
-#### <a name="sql-server-metadata"></a>Metaadatok SQL Server
+#### <a name="sql-server-metadata"></a>SQL Server metaadatok
 
-**Kiszolgálói metaadatok** | **Nézetek/SQL Server-tulajdonságok**
+**Kiszolgáló metaadatai** | **Nézetek/ SQL Server tulajdonságai**
 --- | ---
-Kiszolgálónév |SERVERPROPERTY
-FQDN | Telepített alkalmazások felderítésével származtatott kapcsolatok karakterlánca
+Kiszolgálónév |SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+FQDN | A telepített alkalmazások felderítése során származtatott kapcsolati sztring
 Telepítési azonosító | sys.dm_server_registry
-Kiszolgáló verziója | SERVERPROPERTY
-Server Edition | SERVERPROPERTY
-Server Host platform (Windows/Linux) | SERVERPROPERTY
-A kiszolgáló termékének szintje (RTM SP CTP) | SERVERPROPERTY
-Alapértelmezett biztonsági mentési útvonal | SERVERPROPERTY
+Kiszolgáló verziója | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Server edition (Kiszolgáló kiadása) | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Kiszolgálói gazdaplatform (Windows/Linux) | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+A kiszolgáló termékszintje (RTM SP CTP) | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Alapértelmezett biztonsági mentési útvonal | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
 Az adatfájlok alapértelmezett elérési útja | SERVERPROPERTY és Software\Microsoft\MSSQLServer\MSSQLServer
 A naplófájlok alapértelmezett elérési útja | SERVERPROPERTY és Software\Microsoft\MSSQLServer\MSSQLServer
-Nem. a-kiszolgálón lévő magok | sys.dm_os_schedulers, sys.dm_os_sys_info
-Kiszolgáló rendezésének neve | SERVERPROPERTY
-Nem. a-kiszolgálón lévő magok látható ONLINE állapottal | sys.dm_os_schedulers
-Egyedi kiszolgáló azonosítója | sys.dm_server_registry
-HA engedélyezve van, vagy nem | SERVERPROPERTY
-Puffer-bővítmény engedélyezve vagy nem | sys.dm_os_buffer_pool_extension_configuration
-A feladatátvevő fürt konfigurálva van vagy nem | SERVERPROPERTY
-Csak Windows-hitelesítési módot használó kiszolgáló | SERVERPROPERTY
-A kiszolgáló alapszintű telepítést telepít | SERVERPROPERTY
-Nem. a rendszeren található logikai processzorok | sys.dm_server_registry, sys.dm_os_sys_info
-Egy fizikai processzor-csomag által elérhető logikai vagy fizikai magok aránya | sys.dm_os_schedulers, sys.dm_os_sys_info
-A rendszer nem rendelkezik fizikai processzorokkal | sys.dm_os_schedulers, sys.dm_os_sys_info
-A dátum-és időkiszolgáló utolsó indítása | sys.dm_server_registry
-Kiszolgáló maximális memóriájának használata (MB) | sys.dm_os_process_memory
-Összesen nem. az összes adatbázisban lévő felhasználók | sys. Databases, sys. bejelentkezések
+Nem. magok a kiszolgálón | sys.dm_os_schedulers, sys.dm_os_sys_info
+Kiszolgáló rendezésének neve | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Nem. A kiszolgálón látható ONLINE állapotú magok | sys.dm_os_schedulers
+Egyedi kiszolgálóazonosító | sys.dm_server_registry
+A ha engedélyezve van vagy sem | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Pufferkészlet-bővítmény engedélyezve vagy nem | sys.dm_os_buffer_pool_extension_configuration
+Konfigurált vagy nem konfigurált feladatátvevő fürt | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Csak Windows hitelesítési módot használó kiszolgáló | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+A kiszolgáló telepíti a PolyBase-t | SERVERPROPERTY (KISZOLGÁLÓTULAJDONSÁG)
+Nem. logikai processzorok a rendszeren | sys.dm_server_registry, sys.dm_os_sys_info
+Egy fizikai processzorcsomag által elérhetővé tért logikai vagy fizikai magok nemének aránya | sys.dm_os_schedulers, sys.dm_os_sys_info
+A rendszeren a fizikai processzorok nem | sys.dm_os_schedulers, sys.dm_os_sys_info
+A kiszolgáló legutóbbi elindulásának dátuma és időpontja | sys.dm_server_registry
+Maximális kiszolgálómemória-használat (MBS) | sys.dm_os_process_memory
+Összesen nem. az összes adatbázis felhasználóinak száma | sys.databases, sys.logins
 Az összes felhasználói adatbázis teljes mérete | sys.databases
-A temp adatbázis mérete | sys.master_files, sys.configurations, sys.dm_os_sys_info
-Nem. a bejelentkezések | sys. bejelentkezések
-A csatolt kiszolgálók listája | sys. kiszolgálók
-Ügynöki feladatok listája | [msdb]. [dbo]. [sysjobs], [sys]. [syslogins], [msdb]. [dbo]. [syscategories]
+Az ideiglenes adatbázis mérete | sys.master_files, sys.config, sys.dm_os_sys_info
+Nem. bejelentkezések | sys.logins
+Csatolt kiszolgálók listája | sys.servers
+Ügynök feladatának listája | [msdb]. [dbo]. [sysjobs], [sys]. [syslogins], [msdb]. [dbo]. [syscategories]
 
-### <a name="performance-metadata"></a>Teljesítmény metaadatainak
+### <a name="performance-metadata"></a>Teljesítmény-metaadatok
 
-**Teljesítmény** | **Nézetek/SQL Server-tulajdonságok** | **Értékelés hatása**
+**Teljesítmény** | **Nézetek/ SQL-kiszolgáló tulajdonságai** | **Értékelés hatása**
 --- | --- | ---
-CPU-kihasználtság SQL Server| sys.dm_os_ring_buffers| Ajánlott SKU-méret (CPU-dimenzió)
-SQL logikai PROCESSZORok száma| sys.dm_os_sys_info| Ajánlott SKU-méret (CPU-dimenzió)
-SQL fizikai memória használatban| sys.dm_os_process_memory| Nem használt
-SQL-memória kihasználtsága (%)| sys.dm_os_process_memory | Nem használt
-Adatbázis CPU-kihasználtsága| sys.dm_exec_query_stats, sys.dm_exec_plan_attributes| Ajánlott SKU-méret (CPU-dimenzió)
-Használatban lévő adatbázis memória (puffer készlet)| sys.dm_os_buffer_descriptors| Ajánlott SKU-méret (memória dimenzió)
-Fájl olvasási/írási IO| sys.dm_io_virtual_file_stats, sys.master_files| Ajánlott SKU-méret (IO-dimenzió)
-Olvasás/írás típusú fájl| sys.dm_io_virtual_file_stats, sys.master_files| Ajánlott SKU-méret (átviteli dimenzió)
-Fájl IO Stall írási/olvasási (MS)| sys.dm_io_virtual_file_stats, sys.master_files| Ajánlott SKU-méret (IO-késési dimenzió)
-Fájlméret| sys.master_files| Ajánlott SKU-méret (tárolási dimenzió)
+SQL Server cpu-kihasználtság| sys.dm_os_ring_buffers| Javasolt termékváltozat-méret (CPU-dimenzió)
+SQL logikai PROCESSZORok száma| sys.dm_os_sys_info| Javasolt termékváltozat-méret (CPU-dimenzió)
+Használatban álló SQL fizikai memória| sys.dm_os_process_memory| Használatlan
+SQL-memória kihasználtságának százalékos aránya| sys.dm_os_process_memory | Használatlan
+Adatbázis CPU-kihasználtsága| sys.dm_exec_query_stats, sys.dm_exec_plan_attributes| Javasolt termékváltozat-méret (CPU-dimenzió)
+Használatban található adatbázismemória (pufferkészlet)| sys.dm_os_buffer_descriptors| Javasolt termékváltozat-méret (memóriadimenzió)
+Fájl olvasási/írási I/O-ját| sys.dm_io_virtual_file_stats, sys.master_files| Javasolt termékváltozat-méret (IO-dimenzió)
+Az olvasások/írások fájlszáma| sys.dm_io_virtual_file_stats, sys.master_files| Javasolt termékváltozat-méret (átviteli sebesség dimenzió)
+A fájl IO-jában található olvasási/írási/írási idő (ms)| sys.dm_io_virtual_file_stats, sys.master_files| Javasolt termékváltozat-méret (IO-késés dimenzió)
+Fájlméret| sys.master_files| Javasolt termékváltozat-méret (tárolási dimenzió)
 
 
-### <a name="application-dependency-data"></a>Alkalmazás-függőségi adatértékek
+### <a name="application-dependency-data"></a>Alkalmazásfüggőségek adatai
 
-Az ügynök nélküli függőségi elemzés gyűjti a kapcsolatokat és dolgozza fel az adatokat.
+Az ügynök nélküli függőségelemzés a kapcsolati és a folyamatadatokat gyűjti.
 
-#### <a name="windows-server-dependencies-data"></a>A Windows Server függőségeinek adatvédelme
+#### <a name="windows-server-dependencies-data"></a>Windows Server függőségi adatai
 
-Itt láthatók azok a kapcsolatok, amelyekkel a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett összes Windows-kiszolgálóról gyűjti az adatokat.
+A berendezés által az egyes Windows-kiszolgálókról gyűjtött kapcsolati adatok, amelyeken engedélyezve van az ügynök nélküli függőségelemzés.
 
 **Adatok** | **Parancsok**
 --- | ---
-Helyi port | netstat
-Helyi IP-cím | netstat
-Távoli port | netstat
-Távoli IP-cím | netstat
-TCP-kapcsolatok állapota | netstat
-Folyamatazonosító | netstat
-Aktív kapcsolatok száma | netstat
+Helyi port | Netstat
+Helyi IP-cím | Netstat
+Távoli port | Netstat
+Távoli IP-cím | Netstat
+TCP-kapcsolat állapota | Netstat
+Folyamatazonosító | Netstat
+Aktív kapcsolatok száma | Netstat
 
-Itt láthatók azok a kapcsolatok, amelyekkel a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett összes Windows-kiszolgálóról gyűjti az adatokat.
+A berendezés által az egyes Windows-kiszolgálókról gyűjtött kapcsolati adatok, amelyeken engedélyezve van az ügynök nélküli függőségelemzés.
 
-**Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
+**Adatok** | **WMI-osztály** | **WMI-osztálytulajdonság**
 --- | --- | ---
-Folyamatnév | Win32_Process | ExecutablePath
-Folyamat argumentumai | Win32_Process | CommandLine
-Alkalmazásnév | Win32_Process | A ExecutablePath tulajdonság VersionInfo. ProductName paramétere
+Folyamatnév | Win32_Process | ExecutablePath (Végrehajthatópath)
+Argumentumok feldolgozása | Win32_Process | Commandline
+Alkalmazásnév | Win32_Process | A ExecutablePath tulajdonság VersionInfo.ProductName paramétere
 
-#### <a name="linux-server-dependencies-data"></a>Linux-kiszolgáló függőségeinek adatvédelme
+#### <a name="linux-server-dependencies-data"></a>Linux-kiszolgáló függőségi adatai
 
-Itt láthatók a készülék által az ügynök nélküli függőségek elemzéséhez engedélyezett kapcsolatok adatai.
+Itt vannak a berendezés által az egyes Linux-kiszolgálókról gyűjtött kapcsolati adatok, amelyek engedélyezve vannak az ügynök nélküli függőségelemzéshez.
 
 **Adatok** | **Parancsok**
 --- | ---
-Helyi port | netstat
-Helyi IP-cím | netstat
-Távoli port | netstat
-Távoli IP-cím | netstat
-TCP-kapcsolatok állapota | netstat
-Aktív kapcsolatok száma | netstat
-Folyamatazonosító  | netstat
-Folyamatnév | PS
-Folyamat argumentumai | PS
+Helyi port | Netstat
+Helyi IP-cím | Netstat
+Távoli port | Netstat
+Távoli IP-cím | Netstat
+TCP-kapcsolat állapota | Netstat
+Aktív kapcsolatok száma | Netstat
+Folyamatazonosító  | Netstat
+Folyamatnév | Ps
+Argumentumok feldolgozása | Ps
 Alkalmazásnév | dpkg vagy rpm
 
 ## <a name="collected-data---hyper-v"></a>Összegyűjtött adatok – Hyper-V
 
-A készülék konfigurációs és teljesítménybeli metaadatokat gyűjt a Hyper-V környezetben futó kiszolgálókról.
+A berendezés konfigurációs és teljesítmény-metaadatokat gyűjt a Hyper-V környezetben futó kiszolgálókról.
 
 ### <a name="metadata"></a>Metaadatok
-Az Azure Migrate készülék által felderített metaadatok segítenek megállapítani, hogy a kiszolgálók készen állnak-e az Azure-ba való Migrálás, a megfelelő méretű kiszolgálók és a csomagok költségeire. A Microsoft nem használja ezeket az összes licenc-megfelelőségi naplózást.
+A Azure Migrate berendezés által felderített metaadatok segítenek annak kiderítésében, hogy a kiszolgálók készen állnak-e az Azure-ba való migrálásra, megfelelő méretű kiszolgálókra és a csomagok költségeire. A Microsoft ezeket az adatokat semmilyen licencelési auditban nem használja fel.
 
-Itt látható a készülék által gyűjtött és az Azure-ba küldött kiszolgálói metaadatok teljes listája.
+Itt található a berendezés által gyűjtött és az Azure-ba küldött kiszolgálói metaadatok teljes listája.
 
-**Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
+**Adatok** | **WMI-osztály** | **WMI-osztálytulajdonság**
 --- | --- | ---
 **Kiszolgáló adatai** | 
 BIOS sorozatszáma | Msvm_BIOSElement | BIOSSerialNumber
-Kiszolgáló típusa (1. vagy 2. generációs) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+Kiszolgáló típusa (Gen 1 vagy 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 Kiszolgáló megjelenítendő neve | Msvm_VirtualSystemSettingData | ElementName
-Kiszolgáló verziója | Msvm_ProcessorSettingData | VirtualQuantity
-Memória (bájt) | Msvm_MemorySettingData | VirtualQuantity
-A kiszolgáló által felhasználható maximális memória | Msvm_MemorySettingData | Korlát
+Kiszolgáló verziója | Msvm_ProcessorSettingData | VirtualQuantity (Virtuálisquantitás)
+Memória (bájt) | Msvm_MemorySettingData | VirtualQuantity (Virtuálisquantitás)
+A kiszolgáló által maximálisan igénybeható memória | Msvm_MemorySettingData | Korlát
 Dinamikus memória engedélyezve | Msvm_MemorySettingData | DynamicMemoryEnabled
-Operációs rendszer neve/verziója/teljes tartományneve | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems
-Kiszolgáló energiaellátási állapota | Msvm_ComputerSystem | EnabledState
-**/Lemez adatai** |
-Lemez azonosítója | Msvm_VirtualHardDiskSettingData | VirtualDiskId
+Operációs rendszer neve/verziója/teljes tartományneve | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems névadatok
+Kiszolgáló energiaállapota | Msvm_ComputerSystem | EnabledState
+**Lemezenkénti részletek** |
+Lemezazonosító | Msvm_VirtualHardDiskSettingData | VirtualDiskId (Virtuális lemezazonosító)
 Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Típus
 Virtuális merevlemez mérete | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-Virtuális merevlemez szülőjének | Msvm_VirtualHardDiskSettingData | ParentPath
-**Hálózati adapter adatai** |
-IP-címek (szintetikus hálózati adapterek) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-DHCP engedélyezve (szintetikus hálózati adapterek) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC-azonosító (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | InstanceID
+Virtuális merevlemez szülője | Msvm_VirtualHardDiskSettingData | ParentPath (Szülőpath)
+**Hálózati adapterenkénti részletek** |
+IP-címek (szintetikus hálózati protokollok) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
+DHCP engedélyezve (szintetikus hálózati eszközök) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+Hálózati adapter azonosítója (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | InstanceID
 Hálózati adapter MAC-címe (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | Cím
-NIC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting-adathalmazok | InstanceID
-NIC MAC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting-adathalmazok | Cím
+Hálózati adapter azonosítója (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | InstanceID
+Hálózati adapter MAC-azonosítója (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | Cím
 
 ### <a name="performance-data"></a>Teljesítményadatok
 
-Itt láthatók azok a kiszolgálói teljesítményadatok, amelyeket a készülék gyűjt és küld az Azure-nak.
+A berendezés által gyűjtött és az Azure-ba küldött kiszolgálóteljesítmény-adatok.
 
-**Teljesítményszámláló osztálya** | **Számláló** | **Értékelés hatása**
+**Teljesítményszámláló-osztály** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-Hyper-V hypervisor virtuális processzor | Vendég futási ideje (%) | Ajánlott kiszolgáló mérete/díja
-Hyper-V dinamikus memória kiszolgáló | Aktuális nyomás (%)<br/> Vendég látható fizikai memóriája (MB) | Ajánlott kiszolgáló mérete/díja
-Hyper-V virtuális tárolóeszköz | Olvasási bájt/másodperc | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Hyper-V virtuális tárolóeszköz | Írási bájt/másodperc | A lemez méretére, a tárolási díjakra, a kiszolgáló méretére vonatkozó számítás
-Hyper-V Virtual Network adapter | Fogadott bájtok/másodperc | Kiszolgáló méretének kiszámítása
-Hyper-V Virtual Network adapter | Elküldett bájtok/másodperc | Kiszolgáló méretének kiszámítása
+Hyper-V hipervizor virtuális processzor | Vendég futási ideje (% ) | Javasolt kiszolgálóméret/-költség
+Hyper-V dinamikus memória Server | Aktuális nyomás (%)<br/> Vendég látható fizikai memória (MB) | Javasolt kiszolgálóméret/-költség
+Hyper-V virtuális tárolóeszköz | Olvasási bájt/másodperc | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Hyper-V virtuális tárolóeszköz | Írási bájt/másodperc | A lemezméret, a tárolási költségek és a kiszolgálóméret kiszámítása
+Hyper-V Virtual Network Adapter | Fogadott bájtok/másodperc | A kiszolgáló méretének kiszámítása
+Hyper-V Virtual Network Adapter | Küldött bájtok másodpercenként | A kiszolgáló méretének kiszámítása
 
-- A CPU-kihasználtság az összes használat összege a kiszolgálóhoz csatolt összes virtuális processzor esetében.
-- A memória kihasználtsága (aktuális nyomás * vendég látható fizikai memória)/100.
-- A rendszer a lemez-és hálózati kihasználtsági értékeket a felsorolt Hyper-V teljesítményszámlálók alapján gyűjti.
+- A cpu-kihasználtság a kiszolgálóhoz csatolt összes virtuális processzor összes kihasználtságának összege.
+- A memóriahasználat (aktuális nyomás * Vendég látható fizikai memória) / 100.
+- A lemez- és hálózathasználati értékeket a rendszer a felsorolt Hyper-V teljesítményszámlálókból gyűjti.
 
-## <a name="collected-data---physical"></a>Összegyűjtött adatok – fizikai
+## <a name="collected-data---physical"></a>Összegyűjtött adatok – Fizikai
 
-A berendezés konfigurációs és teljesítménybeli metaadatokat gyűjt a helyszínen futó fizikai vagy virtuális kiszolgálókról.
+A berendezés konfigurációs és teljesítmény-metaadatokat gyűjt a helyszínen futó fizikai vagy virtuális kiszolgálókról.
 
 ### <a name="metadata"></a>Metaadatok
 
-Az Azure Migrate készülék által felderített metaadatok segítenek megállapítani, hogy a kiszolgálók készen állnak-e az Azure-ba való Migrálás, a megfelelő méretű kiszolgálók és a csomagok költségeire. A Microsoft nem használja ezeket az összes licenc-megfelelőségi naplózást.
+Az Azure Migrate berendezés által felderített metaadatok segítenek annak kiderítésében, hogy a kiszolgálók készen állnak-e az Azure-ba való migrálásra, megfelelő méretű kiszolgálókra és csomagokra vonatkozó költségeket. A Microsoft ezeket az adatokat semmilyen licencelési auditban nem használja fel.
 
 ### <a name="windows-server-metadata"></a>Windows Server-metaadatok
 
-Itt látható a Windows Server metaadatainak teljes listája, amelyet a készülék az Azure-ba gyűjt és küld.
+Itt található a berendezés által az Azure-ba gyűjtött és az Azure-ba küldött Windows Server-metaadatok teljes listája.
 
-**Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
+**Adatok** | **WMI-osztály** | **WMI-osztálytulajdonság**
 --- | --- | ---
-FQDN | Win32_ComputerSystem | Tartomány, név, PartOfDomain
-Processzor magjainak száma | Win32_PRocessor | NumberOfCores
+FQDN | Win32_ComputerSystem | Tartomány, Név, PartOfDomain
+Processzormagok száma | Win32_PRocessor | NumberOfCores (Magok száma)
 Lefoglalt memória | Win32_ComputerSystem | TotalPhysicalMemory
-BIOS sorozatszáma | Win32_ComputerSystemProduct | IdentifyingNumber
-BIOS GUID | Win32_ComputerSystemProduct | UUID
-Rendszerindítás típusa | Win32_DiskPartition | A (z) = **GPT: System** for EFI/BIOS típusú partíció keresése
+BIOS-sorozatszám | Win32_ComputerSystemProduct | IdentifyingNumber (Szám azonosítása)
+BIOS GUID | Win32_ComputerSystemProduct | Uuid
+Rendszerindítás típusa | Win32_DiskPartition | Ellenőrizze a type = **GPT:System** for EFI/BIOS partíciót
 Operációs rendszer neve | Win32_OperatingSystem | Képaláírás
 Operációs rendszer verziója |Win32_OperatingSystem | Verzió
 Operációs rendszer architektúrája | Win32_OperatingSystem | OSArchitecture
-Lemezek száma | Win32_DiskDrive | Modell, méret, DeviceID, MediaType, név
+Lemezek száma | Win32_DiskDrive | Modell, méret, eszközazonosító, mediatype, név
 Lemezméret | Win32_DiskDrive | Méret
-Hálózati adapterek listája | Win32_NetworkAdapterConfiguration | Leírás, index
+Hálózati adapterek listája | Win32_NetworkAdapterConfiguration | Leírás, Index
 Hálózati adapter IP-címe | Win32_NetworkAdapterConfiguration | IPAddress
-Hálózati adapter MAC-címe | Win32_NetworkAdapterConfiguration | MACAddress
+Hálózati adapter MAC-címe | Win32_NetworkAdapterConfiguration | MACAddress (MAC-cím)
 
-### <a name="linux-server-metadata"></a>Linux Server-metaadatok
+### <a name="linux-server-metadata"></a>Linux-kiszolgáló metaadatai
 
-Itt látható a Linux-kiszolgálói metaadatok teljes listája, amelyet a készülék az Azure-ba gyűjt és küld.
+Itt található a berendezés által gyűjtött és az Azure-ba küldött Linux-kiszolgálói metaadatok teljes listája.
 
 **Adatok** | **Parancsok**
 --- | ---
-FQDN | cat/proc/sys/kernel/hostname, állomásnév-f
-Processzor magjainak száma |  /proc/cpuinfo \| awk "/^ processzor/{print $3}" \| WC-l
-Lefoglalt memória | cat/proc/meminfo \| grep MemTotal \| awk "{printf"%. 0f ", $2/1024}"
-BIOS sorozatszáma | lshw \| grep "Serial:" \| Head-N1 \| awk "{Print $2}" <br/> /usr/sbin/dmidecode-t 1 \| grep "Serial" \| awk "{$1 =" "; $2 =" "; Print}"
-BIOS GUID | Cat/sys/Class/DMI/ID/product_uuid
-Rendszerindítás típusa | [-d/sys/firmware/EFI]  && echo EFI \| \| echo BIOS
-Operációs rendszer neve/verziója | Ezeket a fájlokat az operációs rendszer verziójához és nevéhez is elérjük:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
-Operációs rendszer architektúrája | Uname – m
-Lemezek száma | fdisk-l \| egrep "Disk. * Bytes" \| awk "{Print $2}" \| Cut-F1-d ":"
-Rendszerindító lemez | DF/boot \| sed-n 2p \| awk {Print $1}
-Lemezméret | fdisk-l \| egrep ' Disk. * bájtok ' \| egrep $Disk: \| awk ' {Print $5} '
-Hálózati adapterek listája | IP-o-4 cím a \| (z) {print $2} awk megjelenítése
-Hálózati adapter IP-címe | IP-cím megjelenítése $nic \| grep inet \| awk ' {Print $2} ' \| Cut-F1-d "/" 
-Hálózati adapter MAC-címe | IP-cím megjelenítése $nic \| grep-éter  \| awk ({print $2})
+FQDN | cat /proc/sys/kernel/hostname, hostname -f
+Processzormagok száma |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+Lefoglalt memória | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
+BIOS-sorozatszám | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
+BIOS GUID | cat /sys/class/dmi/id/product_uuid
+Rendszerindítás típusa | [ -d /sys/firmware/efi ] && echo EFI \| \| echo BIOS
+Operációs rendszer neve/verziója | Ezeket a fájlokat az operációs rendszer verziójához és nevéhez tudjuk elérni:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+Operációs rendszer architektúrája | Uname -m
+Lemezek száma | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
+Rendszerindító lemez | df /boot \| sed -n 2p \| awk '{print $1}'
+Lemezméret | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'
+Hálózati adapterek listája | ip -o -4 addr show \| awk '{print $2}'
+Hálózati adapter IP-címe | ip addr show $nic \| grep inet \| awk '{print $2}' \| cut -f1 -d "/" 
+Hálózati adapter MAC-címe | ip addr show $nic \| grep ether  \| awk '{print $2}'
 
 ### <a name="windows-performance-data"></a>Windows-teljesítményadatok
 
-Az alábbi Windows Server teljesítményadatokat gyűjti és küldi el az Azure-nak.
+A berendezés által gyűjtött és az Azure-ba küldött Windows Server teljesítményadatok a következőek.
 
-**Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
+**Adatok** | **WMI-osztály** | **WMI-osztálytulajdonság**
 --- | --- | ---
-Processzorhasználat | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
-Memóriahasználat | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
-Hálózati adapterek száma | Win32_PerfFormattedData_Tcpip_NetworkInterface | A hálózati eszközök számának beolvasása.
-Fogadott adatmennyiség/NIC | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
-Továbbított adatok száma hálózati adapteren | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+Processzorhasználat | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime (PercentIdleTime)
+Memóriahasználat | Win32_PerfFormattedData_PerfOS_Memory | Rendelkezésre álló memória (MB)
+Hálózati adapterek száma | Win32_PerfFormattedData_Tcpip_NetworkInterface | A hálózati eszközök számának lekért száma.
+Fogadott adatok hálózati adapterenként | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+Hálózati adapterenként továbbított adatok | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BájtokSentPersec
 Lemezek száma | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | Lemezek száma
-Lemez adatai | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+Lemez részletei | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
 
 ### <a name="linux-performance-data"></a>Linuxos teljesítményadatok
 
-Itt látható a Linux-kiszolgálói teljesítményadatok, amelyeket a készülék gyűjt és küld az Azure-nak.
+A berendezés által gyűjtött és az Azure-ba küldött Linux-kiszolgáló teljesítményadatok a következőek.
 
 | **Adatok** | **Parancsok** |
 | --- | --- |
-| Processzorhasználat | cat/proc/stat/ \| grep "CPU"/proc/stat |
-| Memóriahasználat | ingyenes \| grep mem \| awk {Print $3/$ 2 * 100,0} |
-| Hálózati adapterek száma | lshw-Class hálózati \| grep ETH [0-60] \| WC-l |
-| Fogadott adatmennyiség/NIC | Cat/sys/Class/net/ETH $ NIC/Statistics/rx_bytes |
-| Továbbított adatok száma hálózati adapteren | Cat/sys/Class/net/ETH $ NIC/Statistics/tx_bytes |
-| Lemezek száma | az fdisk-l \| egrep lemeze. \* bájtok " \| awk" {print $2} " \| Cut-F1-d": " |
-| Lemez adatai | cat/proc/diskstats |
+| Processzorhasználat | cat /proc/stat/ \| grep 'cpu' /proc/stat |
+| Memóriahasználat | free \| grep Mem \| awk '{print $3/$2 * 100.0}' |
+| Hálózati adapterek száma | lshw -class network \| grep eth[0-60] \| wc -l |
+| Fogadott adatok hálózati adapterenként | cat /sys/class/net/eth$nic/statistics/rx_bytes |
+| Továbbított adatok hálózati adapterenként | cat /sys/class/net/eth$nic/statistics/tx_bytes |
+| Lemezek száma | fdisk -l \| egrep 'Disk. \* bytes' \| awk '{print $2}' \| cut -f1 -d ':' |
+| Lemez részletei | cat /proc/diskstats |
 
-## <a name="appliance-upgrades"></a>Berendezések frissítése
+## <a name="appliance-upgrades"></a>Berendezésfrissítések
 
-A berendezés frissült, mivel a készüléken futó Azure Migrate szolgáltatások frissülnek. Ez automatikusan megtörténik, mivel alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken. Az alapértelmezett beállítás módosításával manuálisan frissítheti a berendezési szolgáltatásokat.
+A berendezés a Azure Migrate futó szolgáltatások frissítésekor frissül. Ez automatikusan történik, mert az automatikus frissítés alapértelmezés szerint engedélyezve van a berendezésen. Ezt az alapértelmezett beállítást módosíthatja a berendezés szolgáltatásainak manuális frissítéséhez.
 
-### <a name="turn-off-auto-update"></a>Automatikus frissítés kikapcsolása
+### <a name="turn-off-auto-update"></a>Az automatikus frissítés kikapcsolása
 
-1. A készüléket futtató kiszolgálón nyissa meg a beállításszerkesztőt.
-2. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
-3. Az automatikus frissítés kikapcsolásához hozzon létre egy, a 0 DWORD értékű beállításkulcs- **frissítési** kulcsot.
+1. A berendezést futtató kiszolgálón nyissa meg a Beállításszerkesztőt.
+2. Lépjen a **következőHKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance:**.
+3. Az automatikus frissítés kikapcsolához hozzon létre egy **AutoUpdate** key (Automatikus frissítési kulcs) beállításkulcsot 0 DWORD értékkel.
 
     ![Beállításkulcs beállítása](./media/migrate-appliance/registry-key.png)
 
 
-### <a name="turn-on-auto-update"></a>Automatikus frissítés bekapcsolása
+### <a name="turn-on-auto-update"></a>Az automatikus frissítés bekapcsolás
 
-Az automatikus frissítés bekapcsolható a következő módszerek bármelyikével:
+Az automatikus frissítés az alábbi módszerek egyikével kapcsolhatja be:
 
-- Az AutoUpdate beállításkulcs HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureApplianceból való törlésével.
-- Az automatikus frissítés bekapcsolásához kattintson a **berendezések megtekintése** lehetőségre a legújabb frissítési ellenőrzésekben az **Előfeltételek beállítása** panelen.
+- Az AutoUpdate beállításkulcs törlésével a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
+- Kattintson a **Berendezésszolgáltatások megtekintése elemre** a legújabb frissítési ellenőrzések között az Előfeltételek beállítása **panelen** az automatikus frissítés bekapcsoláshoz.
 
 A beállításkulcs törlése:
 
-1. A készüléket futtató kiszolgálón nyissa meg a beállításszerkesztőt.
-2. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
-3. Törölje az **automatikus frissítés** kikapcsolásához korábban létrehozott beállításkulcsot.
+1. A berendezést futtató kiszolgálón nyissa meg a Beállításszerkesztőt.
+2. Lépjen a **következőHKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance:**.
+3. Törölje a korábban az automatikus frissítés kikapcsolához létrehozott **AutoUpdate** beállításkulcsot.
 
-A berendezés Configuration Manager bekapcsolásához a felderítés befejezése után:
+A berendezésről való Konfigurációkezelő a felderítés befejezése után:
 
-1. A készülék Configuration Manager felületén lépjen az **Előfeltételek beállítása** panelre.
-2. A legújabb frissítések esetében kattintson a **készülék megtekintése** elemre, majd az automatikus frissítés bekapcsolásához kattintson a hivatkozásra.
+1. A berendezéskonfiguráció-kezelőben válassza az **Előfeltételek beállítása panelt**
+2. A legújabb frissítések ellenőrzéséhez  kattintson a Berendezésszolgáltatások megtekintése elemre, majd kattintson a hivatkozásra az automatikus frissítés bekapcsoláshoz.
 
-    ![Automatikus frissítések bekapcsolása](./media/migrate-appliance/autoupdate-off.png)
+    ![Automatikus frissítések bekapcsolás](./media/migrate-appliance/autoupdate-off.png)
 
-### <a name="check-the-appliance-services-version"></a>A Appliance Services verziójának keresése
+### <a name="check-the-appliance-services-version"></a>Ellenőrizze a berendezés szolgáltatásainak verzióját
 
-Az alábbi módszerek bármelyikével ellenőrizhető a Appliance Services-verzió:
+A berendezés-szolgáltatások verzióját az alábbi módszerek egyikével ellenőrizheti:
 
-- A készülék Configuration Manager felületén lépjen az **Előfeltételek beállítása** panelre.
-- A készüléken, a **Vezérlőpult**  >  **programok és szolgáltatások** paneljén.
+- A Berendezéskonfiguráció-kezelőben válassza az **Előfeltételek beállítása panelt.**
+- A berendezésen, a **Vezérlőpult**  >  **programok és szolgáltatások között.**
 
-A készülék Configuration managerének beadásához:
+A Berendezéskonfiguráció-kezelő ellenőrzése:
 
-1. A készülék Configuration Manager felületén lépjen az **Előfeltételek beállítása** panelre.
-2. A legújabb frissítések keresése területen kattintson a **berendezés-szolgáltatások megtekintése** elemre.
+1. A berendezéskonfiguráció-kezelőben válassza az **Előfeltételek beállítása panelt**
+2. A legújabb frissítések ellenőrzéséhez kattintson a **Berendezésszolgáltatások megtekintése elemre.**
 
-    ![Verzió keresése](./media/migrate-appliance/versions.png)
+    ![Verzió ellenőrzése](./media/migrate-appliance/versions.png)
 
-A Vezérlőpulton való ellenőrzéshez:
+A következő Vezérlőpult:
 
-1. A készüléken kattintson a   >  **Vezérlőpult**  >  **programok és szolgáltatások** indítása elemére.
-2. A listában keresse meg a berendezés-szolgáltatások verzióját.
+1. A berendezésen kattintson a **Start Vezérlőpult** Programs and Features (Programok  >  **és**  >  **szolgáltatások) elemre.**
+2. Ellenőrizze a berendezésszolgáltatások verzióit a listában.
 
-    ![A Vezérlőpult verziójának ellenőrzése](./media/migrate-appliance/programs-features.png)
+    ![A verzió ellenőrzése a Vezérlőpult](./media/migrate-appliance/programs-features.png)
 
 ### <a name="manually-update-an-older-version"></a>Régebbi verzió manuális frissítése
 
-Ha valamelyik szolgáltatáshoz egy régebbi verziót futtat, akkor el kell távolítania a szolgáltatást, és manuálisan kell frissítenie a legújabb verzióra.
+Ha valamelyik szolgáltatáshoz régebbi verziót futtat, el kell távolítania a szolgáltatást, és manuálisan frissítenie kell a legújabb verzióra.
 
-1. A készülék legújabb verziójának megkereséséhez [töltse le](https://aka.ms/latestapplianceservices) a LatestComponents.jsfájlt.
-2. A letöltés után nyissa meg a LatestComponents.jsfájlt a Jegyzettömbben.
-3. Keresse meg a legújabb szolgáltatási verziót a fájlban, és a letöltési hivatkozást. Például:
+1. A berendezésszolgáltatás legújabb verzióinak ellenőrzéséhez [töltse](https://aka.ms/latestapplianceservices) le a LatestComponents.jsfájlt.
+2. A letöltés után nyissa meg LatestComponents.jsfájlt a Jegyzettömbben.
+3. Keresse meg a fájlban a legújabb szolgáltatásverziót, és a hozzá elérhető letöltési hivatkozást. Például:
 
-    "Név": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+    "Name": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a6a81e75469b84"
 
-4. Töltse le egy elavult szolgáltatás legújabb verzióját a fájl letöltési hivatkozásával.
+4. Töltse le egy elavult szolgáltatás legújabb verzióját a fájlban található letöltési hivatkozással.
 5. A letöltés után futtassa a következő parancsot egy rendszergazdai parancsablakban a letöltött MSI integritásának ellenőrzéséhez.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ``` Például: C: \> Certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ``` Például: C: \> CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
 
-5. Győződjön meg arról, hogy a parancs kimenete megfelel a szolgáltatáshoz tartozó kivonatoló érték bejegyzésének (például a fenti MD5-kivonat értéke).
-6. Most futtassa az MSI-t a szolgáltatás telepítéséhez. Ez egy csendes telepítés, és a telepítés befejezése után bezárul.
-7. A telepítés befejezése után keresse meg a szolgáltatás verziószámát a **Vezérlőpult**  >  **programok és szolgáltatások** paneljén. A szolgáltatási verziót most frissíteni kell a JSON-fájlban látható legújabb verzióra.
+5. Ellenőrizze, hogy a parancs kimenete megegyezik-e a fájlban található szolgáltatás kivonatértékével (például a fenti MD5 kivonatértékkel).
+6. Most futtassa az MSI-t a szolgáltatás telepítéséhez. Ez egy csendes telepítés, és a telepítési ablak bezárul, miután végzett.
+7. A telepítés befejezése után ellenőrizze a szolgáltatás verzióját a Vezérlőpult  >  **Programok és szolgáltatások menüjében.** A szolgáltatásverziót most frissíteni kell a json-fájlban megjelenő legújabb verzióra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
-- [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.
-- [Megtudhatja, hogyan](how-to-set-up-appliance-physical.md) állíthatja be a készüléket fizikai kiszolgálókhoz.
+- [Megtudhatja,](how-to-set-up-appliance-vmware.md) hogyan állíthatja be a berendezést a VMware-hez.
+- [Megtudhatja,](how-to-set-up-appliance-hyper-v.md) hogyan állíthatja be a berendezést a Hyper-V-hez.
+- [Megtudhatja,](how-to-set-up-appliance-physical.md) hogyan állíthatja be a berendezést fizikai kiszolgálókhoz.

@@ -1,29 +1,29 @@
 ---
-title: Egyéni e-mail-ellenőrzés a mailjet
+title: Egyéni e-mail-ellenőrzés a Mailjetben
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan integrálható a mailjet az ügyfeleknek küldött ellenőrző e-mailek testreszabásához, amikor a Azure AD B2C-kompatibilis alkalmazások használatára jelentkeznek.
+description: Megtudhatja, hogyan integrálhatja a Mailjetet az ügyfelek számára a regisztrációkor küldött ellenőrző e-mailek testreszabásához, hogy Azure AD B2C alkalmazásokat.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f48135523238711eb9058b35348895c851a95403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256956"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713821"
 ---
-# <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
+# <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a Mailjetben
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a testreszabott e-mailek küldése az alkalmazásait használó felhasználók számára. A külső gyártótól származó e-mail-szolgáltató mailjet használhatja a saját e-mail-sablonját, a cím és *a* tárgy lehetőséggel, valamint a honosítási és egyéni egyszeri jelszó (OTP) beállítások támogatásával.
+Egyéni e-mail-Azure Active Directory B2C (Azure AD B2C) egyéni e-maileket küldhet az alkalmazások használatára regisztráló felhasználóknak. A Mailjet külső e-mail-szolgáltató használatával használhatja saját e-mail-sablonját és a *Cím:* cím és tárgy mezőket, valamint támogathatja a honosítást és az egyéni egyszeri jelszó (OTP) beállításokat.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -33,47 +33,51 @@ Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a test
 
 ::: zone pivot="b2c-custom-policy"
 
-Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató, például [mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)vagy [SparkPost](https://sparkpost.com), egyéni REST API vagy bármilyen HTTP-alapú e-mail-szolgáltató használata szükséges (beleértve a sajátját is). Ez a cikk a mailjet-t használó megoldások beállítását ismerteti.
+Az egyéni e-mail-ellenőrzéshez külső e-mail-szolgáltató, például a [Mailjet,](https://Mailjet.com)a [SendGrid](./custom-email-sendgrid.md)vagy a [SparkPost,](https://sparkpost.com)egy egyéni REST API vagy bármely HTTP-alapú e-mail-szolgáltató szükséges (beleértve a sajátját is). Ez a cikk egy Mailjetet használó megoldás beállítását ismerteti.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-mailjet-account"></a>Mailjet-fiók létrehozása
 
-Ha még nem rendelkezik ilyennel, kezdje egy mailjet-fiók beállításával (az Azure-ügyfelek legfeljebb 200 e-maileket állíthatnak fel 6 000 e-mailben). 
+Ha még nem rendelkezik ilyen fiókkal, először egy Mailjet-fiókot kell beindítania (az Azure-ügyfelek 6000 e-mail zárolását oldják fel naponta legfeljebb 200 e-mail-cím használatával). 
 
-1. Kövesse a telepítési utasításokat a [mailjet-fiók létrehozása](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)című részben.
-1. E-mailek küldéséhez [regisztráljon és érvényesítse](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) a küldő e-mail-címét vagy tartományát.
-2. Navigáljon az [API-kulcs kezelése lapra](https://app.mailjet.com/account/api_keys). Jegyezze fel az **API-kulcsot** és a **titkos kulcsot** egy későbbi lépésben való használatra. A fiók létrehozásakor mindkét kulcs automatikusan létrejön.  
+1. Kövesse a [Mailjet-fiók létrehozása beállítási utasításait.](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)
+1. E-mail küldhető, [regisztrálható](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) és érvényesíthető a küldő e-mail-címe vagy tartománya.
+2. Lépjen az [API Kulcskezelés oldalára.](https://app.mailjet.com/account/api_keys) Rögzítse az **API-kulcsot** és a **titkos** kulcsot egy későbbi lépésben való használatra. A fiók létrehozásakor a rendszer mindkét kulcsot automatikusan generálja.  
 
-## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C házirend-kulcs létrehozása
+> [!IMPORTANT]
+> A Mailjet lehetővé teszi az ügyfeleknek, hogy megosztott IP-címekről és dedikált IP-címekről küldjenek [e-maileket.](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP) Dedikált IP-címek használata esetén az IP-címek bemelegítésével fel kell építenie a saját hírnevét. További információ: Hogyan [bemelegíti az IP-címemet?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
 
-Ezután tárolja a mailjet API-kulcsot egy Azure AD B2C házirend-kulcsban a szabályzatok hivatkozásához.
+
+## <a name="create-azure-ad-b2c-policy-key"></a>Szabályzatkulcs Azure AD B2C létrehozása
+
+Ezután tárolja a Mailjet API-kulcsot egy Azure AD B2C szabályzatkulcsban, hogy a szabályzatokra hivatkozni fog.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Az **Áttekintés** lapon válassza az **identitási élmény keretrendszert**.
-1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-1. A **Beállítások** területen válassza a **manuális** lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetApiKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített mailjet **API-kulcsot** .
-1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
+1. Győződjön meg arról, hogy a saját bérlőt tartalmazó Azure AD B2C használja. Válassza ki **a Címtár és előfizetés** szűrőt a felső menüben, és válassza ki Azure AD B2C címtárat.
+1. Válassza **a Bal felső** sarokban található Minden szolgáltatás Azure Portal, majd keresse meg és válassza a **Azure AD B2C.**
+1. Az Áttekintés **lapon** válassza **a** Identity Experience Framework.
+1. Válassza **a Házirendkulcsok,** majd a Hozzáadás **lehetőséget.**
+1. A **Beállítások beállításhoz** válassza a **Manuális lehetőséget.**
+1. Adja meg a **szabályzatkulcs** nevét. Például: `MailjetApiKey`. A rendszer automatikusan hozzáadja az előtagot `B2C_1A_` a kulcs nevéhez.
+1. A **Titkos kulcsban** adja meg a korábban feljegyzett Mailjet **API-kulcsot.**
+1. A **Kulcshasználat mezőben** válassza az **Aláírás lehetőséget.**
 1. Válassza a **Létrehozás** lehetőséget.
-1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-1. A **Beállítások** területen válassza a **manuális** lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetSecretKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített **titkos** mailjet.
-1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
+1. Válassza **a Házirendkulcsok,** majd a **Hozzáadás lehetőséget.**
+1. A **Beállítások beállításhoz** válassza a **Manuális lehetőséget.**
+1. Adja meg a **szabályzatkulcs** nevét. Például: `MailjetSecretKey`. A rendszer automatikusan hozzáadja az előtagot `B2C_1A_` a kulcs nevéhez.
+1. A **Titkos kulcsban** adja meg a mailjet **titkos kulcsát,** amelyet korábban rögzített.
+1. A **Kulcshasználat mezőben** válassza az **Aláírás lehetőséget.**
 1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-mailjet-template"></a>Mailjet-sablon létrehozása
 
-Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)a létrehozott mailjet-fiókkal és egy Azure ad B2Ci mailjet API-kulccsal.
+Hozzon létre egy Mailjet-fiókot, és tárolja a Mailjet API-kulcsot egy Azure AD B2C szabályzatkulcsban, hozzon létre egy dinamikus Tranzakciós [Mailjet-sablont.](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)
 
-1. A mailjet webhelyen nyissa meg a [tranzakciós sablonok](https://app.mailjet.com/templates/transactional) lapot, és válassza az **új sablon létrehozása** lehetőséget.
-1. Válassza **a HTML**-kódban való kódolással lehetőséget, majd válassza **a teljesen új kód** lehetőséget.
-1. Adjon meg egy egyedi nevet, például: `Verification email` , majd válassza a **Létrehozás** lehetőséget.
-1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A `{{var:otp:""}}` és a `{{var:email:""}}` Paraméterek dinamikusan lesznek lecserélve az egyszeri jelszóval és a felhasználói e-mail-címmel.
+1. A Mailjet webhelyen nyissa meg a [tranzakciósablonok](https://app.mailjet.com/templates/transactional) lapot, és válassza **az Új sablon létrehozása lehetőséget.**
+1. Válassza **a Kódolás HTML-ben** lehetőséget, majd válassza a **Kód az nulláról lehetőséget.**
+1. Adjon meg egy egyedi sablonnevet, például `Verification email` : , majd válassza a Létrehozás **lehetőséget.**
+1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A és a paramétert a rendszer dinamikusan lecseréli az egyszeres jelszóértékre és a felhasználói `{{var:otp:""}}` `{{var:email:""}}` e-mail-címre.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -169,20 +173,20 @@ Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/
     </html>
     ```
 
-1. A bal felső rész **szerkesztési tárgyának** kibontása
-    1. A **Tárgy** mezőben adja meg a tárgy alapértelmezett értékét. A mailjet ezt az értéket használja, ha az API nem tartalmaz tárgy paramétert.
-    1. A **név** mezőbe írja be a vállalat nevét.
-    1. A **cím** mezőben válassza ki az e-mail-címét
+1. **Bontsa ki a** Tulajdonos szerkesztése gombra a bal felső sarokban
+    1. A **Tárgy mezőben** adjon meg egy alapértelmezett értéket a tárgyhoz. A Mailjet akkor használja ezt az értéket, ha az API nem tartalmaz tárgyparamétert.
+    1. A Név **mezőbe** írja be a vállalata nevét.
+    1. A Cím **mezőben** válassza ki az e-mail-címét
     1. Kattintson a **Mentés** gombra.
-1. A jobb felső sarokban válassza a **mentés & közzététel**, majd az **Igen, a módosítások közzététele** lehetőséget.
-1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
+1. A jobb felső sarokban válassza a Save & Publish (Közzététel) **lehetőséget,** majd az **Igen, publish changes (Módosítások közzététele) lehetőséget.**
+1. Jegyezd **fel a** későbbi lépésben való használatra létrehozott sablon sablonazonosítóját. Ezt az azonosítót a [jogcím-átalakítás hozzáadásakor adhatja meg.](#add-the-claims-transformation)
 
 
-## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C jogcím-típusok hozzáadása
+## <a name="add-azure-ad-b2c-claim-types"></a>Jogcímtípusok Azure AD B2C hozzáadása
 
-A szabályzatban adja hozzá a következő típusú jogcímeket a `<ClaimsSchema>` elemhez: `<BuildingBlocks>` .
+A szabályzatban adja hozzá a következő jogcímtípusokat `<ClaimsSchema>` a `<BuildingBlocks>` elemhez.
 
-Ezek a jogcím-típusok szükségesek az e-mail-cím egyszeri jelszavas (OTP) kóddal történő létrehozásához és ellenőrzéséhez.
+Ezek a jogcímtípusok az e-mail-cím egyszeri jelszóval (OTP) való létrehozásához és ellenőrzéséhez szükségesek.
 
 ```XML
 <!--
@@ -207,17 +211,17 @@ Ezek a jogcím-típusok szükségesek az e-mail-cím egyszeri jelszavas (OTP) k�
 </BuildingBlocks> -->
 ```
 
-## <a name="add-the-claims-transformation"></a>Jogcím-átalakítás hozzáadása
+## <a name="add-the-claims-transformation"></a>A jogcím-átalakítás hozzáadása
 
-Ezután szükség van egy jogcím-átalakításra, amely egy JSON-karakterlánc-jogcím kimenetét adja meg, amely a kérelem törzse lesz, amelyet a mailjet küld.
+Ezután szükség lesz egy jogcím-átalakításra egy JSON-sztring jogcímének kimeneteként, amely a Mailjetnek küldött kérelem törzse lesz.
 
-A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak. A JSON-jogcímek átalakításával kapcsolatos további információkért lásd a [JSON-jogcímek átalakítását](json-transformations.md)ismertető témakört.
+A JSON-objektum struktúráját az InputParameters és az InputClaims TransformationClaimTypes tulajdonságának dot notation (InputParameters és TransformationClaimTypes) határozzák meg. A pont-kiosztásban a számok tömbökre utalnak. Az értékek az InputClaims értékeiből és az InputParameters "Value" tulajdonságaiból jönnek. További információ a JSON-jogcímek átalakításáról: [JSON-jogcímek átalakítása.](json-transformations.md)
 
-Adja hozzá a következő jogcím-átalakítást a `<ClaimsTransformations>` elemen belül `<BuildingBlocks>` . Hajtsa végre a következő frissítéseket a jogcím-átalakítási XML-ben:
+Adja hozzá a következő jogcím-átalakítást `<ClaimsTransformations>` a elemhez a elemen `<BuildingBlocks>` belül. A jogcím-átalakítási XML-fájlon az alábbi frissítéseket kell követnie:
 
-* Frissítse a `Messages.0.TemplateID` InputParameter értéket a [mailjet-sablon létrehozása](#create-a-mailjet-template)során korábban létrehozott mailjet tranzakciós sablon azonosítójával.
-* Módosítsa a `Messages.0.From.Email` címtartomány értékét. Érvényes e-mail-cím használatával megakadályozhatja, hogy az ellenőrző e-mailek levélszemétként legyenek megjelölve.
-* Frissítse a `Messages.0.Subject` Tárgy sor bemeneti paraméter értékét a szervezete számára megfelelő tárgyi vonallal.
+* Frissítse az InputParameter értéket a Mailjet-sablon létrehozása során korábban létrehozott Mailjet tranzakciós `Messages.0.TemplateID` [sablon azonosítójával.](#create-a-mailjet-template)
+* Frissítse a `Messages.0.From.Email` cím értékét. Érvényes e-mail-cím használatával megakadályozhatja, hogy az ellenőrző e-mail levélszemétként legyen megjelölve.
+* Frissítse a tárgysor bemeneti paraméterének értékét a szervezetének megfelelő `Messages.0.Subject` tárgysokkal.
 
 ```XML
 <!-- 
@@ -249,9 +253,9 @@ Adja hozzá a következő jogcím-átalakítást a `<ClaimsTransformations>` ele
 </BuildingBlocks> -->
 ```
 
-## <a name="add-datauri-content-definition"></a>DataUri-definíció hozzáadása
+## <a name="add-datauri-content-definition"></a>DataUri-tartalomdefiníció hozzáadása
 
-A jogcím-átalakítások alatt `<BuildingBlocks>` adja hozzá a következő [ContentDefinition](contentdefinitions.md) a 2.1.2 adaturi-verzióra való hivatkozáshoz:
+A jogcím-átalakításai alatt adja hozzá a következő `<BuildingBlocks>` [ContentDefinition](contentdefinitions.md) adatokat a 2.1.2-es adat URI-verziójára való hivatkozáshoz:
 
 ```XML
 <!--
@@ -270,18 +274,18 @@ A jogcím-átalakítások alatt `<BuildingBlocks>` adja hozzá a következő [Co
 
 ## <a name="create-a-displaycontrol"></a>DisplayControl létrehozása
 
-A rendszer ellenőrzi, hogy az e-mail-cím a felhasználónak küldött ellenőrző kóddal van-e meghatározva.
+Az ellenőrző kijelző vezérlője ellenőrzi az e-mail-címet a felhasználónak küldött ellenőrzőkóddal.
 
-Ez a példa megjelenítési vezérlő a következőre van konfigurálva:
+Ez a példa megjelenítendő vezérlő a következőre van konfigurálva:
 
-1. Gyűjtse össze a `email` jogcím típusát a felhasználótól.
-1. Várjon, amíg a felhasználó meg nem adja a `verificationCode` jogcím típusát a felhasználónak továbbított kóddal.
-1. Küldje vissza a `email` -t az önérvényesített technikai profilba, amely erre a megjelenítési vezérlőelemre hivatkozik.
-1. A `SendCode` művelettel egy egyszeri jelszavas kódot kell előállítania, és e-mailt kell küldenie az OTP-kóddal a felhasználónak.
+1. Gyűjtse össze `email` a cím jogcímtípusát a felhasználótól.
+1. Várja meg, amíg a felhasználó meg nem adja a jogcím típusát a felhasználónak küldött `verificationCode` kóddal.
+1. Adja vissza a et annak az önfeltételes technikai profilnak, amely `email` hivatkozik erre a megjelenítési vezérlőre.
+1. A művelet használatával hozzon létre egy OTP-kódot, és küldjön egy e-mailt az `SendCode` otP-kóddal a felhasználónak.
 
-   ![Ellenőrző kód e-mail-műveletének küldése](media/custom-email-mailjet/display-control-verification-email-action-01.png)
+   ![Ellenőrzőkód küldése e-mail-művelet](media/custom-email-mailjet/display-control-verification-email-action-01.png)
 
-A tartalmi definíciók területen még `<BuildingBlocks>` a-ban is adja hozzá a következő [DisplayControl](display-controls.md) típusú [VerificationControl](display-control-verification.md) a szabályzathoz.
+A tartalomdefiníciók alatt még mindig a alatt adja hozzá a következő `<BuildingBlocks>` [VerificationControl](display-controls.md) típusú [DisplayControl](display-control-verification.md) vezérlőt a szabályzathoz.
 
 ```XML
 <!--
@@ -314,9 +318,9 @@ A tartalmi definíciók területen még `<BuildingBlocks>` a-ban is adja hozzá 
 </BuildingBlocks> -->
 ```
 
-## <a name="add-otp-technical-profiles"></a>OTP technikai profilok hozzáadása
+## <a name="add-otp-technical-profiles"></a>Egyszeri egyszeri alkalmazás műszaki profiljainak hozzáadása
 
-A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-cím számára. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címmel társított kódot. Módosíthatja a formátum konfigurációját és az egyszeri jelszó lejárati idejét. Az OTP technikai profiljaival kapcsolatos további információkért lásd: [egyszeri jelszóval kapcsolatos technikai profil meghatározása](one-time-password-technical-profile.md).
+A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-címhez. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címhez társított kódot. Módosíthatja a formátum konfigurációját és az egyszeres jelszó lejáratát. Az egyszeri jelszavas technikai profilokkal kapcsolatos további információkért [lásd: Egyszeri jelszó technikai profiljának definiálása.](one-time-password-technical-profile.md)
 
 Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
@@ -362,11 +366,11 @@ Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 </ClaimsProviders> -->
 ```
 
-## <a name="add-a-rest-api-technical-profile"></a>REST API technikai profil hozzáadása
+## <a name="add-a-rest-api-technical-profile"></a>Technikai REST API hozzáadása
 
-Ez a REST API technikai profil az e-mail-tartalmat hozza létre (a mailjet formátum használatával). További információ a REST-technikai profilokról: [Rest-technikai profil meghatározása](restful-technical-profile.md).
+Ez REST API technikai profil hozza létre az e-mail-tartalmat (Mailjet formátumban). A RESTful műszaki profilokkal kapcsolatos további információkért [lásd: RESTful technikai profil definiálása.](restful-technical-profile.md)
 
-Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
+Ahogyan az egyszeri egyszeri megoldás technikai profiljai esetében, itt is adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
 ```XML
 <ClaimsProvider>
@@ -396,11 +400,11 @@ Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai pro
 </ClaimsProvider>
 ```
 
-## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás készítése a DisplayControl
+## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás a DisplayControl vezérlőre
 
-Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl. Cserélje le a meglévő `LocalAccountSignUpWithLogonEmail` és `LocalAccountDiscoveryUsingEmailAddress` saját maga által vezérelt technikai profilokat az alábbira. Ha a Azure AD B2C szabályzat korábbi verzióját használta. Ezek a műszaki profilok a `DisplayClaims` DisplayControl mutató hivatkozást használják.
+Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl vezérlőre. Cserélje le a `LocalAccountSignUpWithLogonEmail` meglévő és `LocalAccountDiscoveryUsingEmailAddress` az önkiszolgáló műszaki profilokat a következőre. Ha a szabályzat egy korábbi verzióját Azure AD B2C használni. Ezek a technikai profilok `DisplayClaims` a DisplayControl vezérlőre való hivatkozással együtt használhatók.
 
-További információ: [önérvényesített technikai profil](restful-technical-profile.md) és [DisplayControl](display-controls.md).
+További információ: Önkiszolgáló technikai [profil](restful-technical-profile.md) és [DisplayControl.](display-controls.md)
 
 ```XML
 <ClaimsProvider>
@@ -439,14 +443,14 @@ További információ: [önérvényesített technikai profil](restful-technical-
 </ClaimsProvider>
 ```
 
-## <a name="optional-localize-your-email"></a>Választható E-mail honosítása
+## <a name="optional-localize-your-email"></a>[Nem kötelező] Az e-mail honosizálása
 
-Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie a mailjet vagy az e-mail-szolgáltatónak. Honosíthatja például az e-mail-tárgyat, a törzset, az Ön kódjának üzenetét vagy az e-mail aláírását. Ehhez használhatja a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterláncok jogcím-típusokra való másolásához. A `GenerateEmailRequestBody` JSON-adattartalmat generáló jogcím-átalakítás a honosított karakterláncokat tartalmazó bemeneti jogcímeket használja.
+Az e-mail honosítania kell a honosított sztringeket a Mailjetnek vagy az e-mail-szolgáltatónak. Honosíthatja például az e-mail tárgyát, törzsét, a kódüzenetet vagy az e-mail aláírását. Erre a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítással másolhat honosított sztringeket jogcímtípusokba. A JSON hasznos adatokat generáló jogcím-átalakítás olyan bemeneti jogcímeket használ, amelyek `GenerateEmailRequestBody` tartalmazzák a honosított sztringeket.
 
-1. A szabályzatban adja meg a következő karakterlánc-jogcímeket: tulajdonos, üzenet, codeIntro és aláírás.
-1. Definiáljon egy [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterlánc-értékek helyettesítéséhez az 1. lépésben szereplő jogcímekbe.
-1. Módosítsa a `GenerateEmailRequestBody` jogcím-átalakítást a bemeneti jogcímek használatára a következő XML-kódrészlettel.
-1. Frissítse a mailjet-sablont a dinamikus paraméterek használatára a Azure AD B2C által honosított összes karakterlánc helyett.
+1. A szabályzatban adja meg a következő sztring jogcímeket: tárgy, üzenet, codeIntro és aláírás.
+1. Definiálhat [egy GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást, amely honosított sztringértékeket helyettesít az 1. lépésben megadott jogcímek között.
+1. Módosítsa a `GenerateEmailRequestBody` jogcímek átalakítását úgy, hogy bemeneti jogcímeket használjanak a következő XML-kódrészlettel.
+1. Frissítse a Mailjet-sablont, hogy dinamikus paramétereket használjon az összes olyan sztring helyett, amelyet a Azure AD B2C.
 
     ```XML
     <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
@@ -481,7 +485,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </ClaimsTransformation>
     ```
 
-1. Adja hozzá a következő [honosítási](localization.md) elemet.
+1. Adja hozzá a [következő Honosítás elemet.](localization.md)
 
     ```xml
     <!--
@@ -513,7 +517,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </BuildingBlocks> -->
     ```
 
-1. A [ContentDefinitions](contentdefinitions.md) elem frissítésével adjon hozzá hivatkozásokat a LocalizedResources elemekhez.
+1. A LocalizedResources elemekre mutató hivatkozásokat a [ContentDefinitions elem frissítésével adhat](contentdefinitions.md) hozzá.
 
     ```xml
     <!--
@@ -538,7 +542,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </BuildingBlocks> -->
     ```
 
-1. Végül adja hozzá a következő bemeneti jogcímek átalakítását a `LocalAccountSignUpWithLogonEmail` és a `LocalAccountDiscoveryUsingEmailAddress` technikai profilokhoz.
+1. Végül adja hozzá a következő bemeneti jogcím-átalakítást a `LocalAccountSignUpWithLogonEmail` és `LocalAccountDiscoveryUsingEmailAddress` a technikai profilhoz.
 
     ```xml
     <InputClaimsTransformations>
@@ -546,9 +550,9 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </InputClaimsTransformations>
     ```
     
-## <a name="optional-localize-the-ui"></a>Választható A felhasználói felület honosítása
+## <a name="optional-localize-the-ui"></a>[Nem kötelező] A felhasználói felület honosizálása
 
-A honosítási elem lehetővé teszi, hogy a felhasználói útvonalakhoz tartozó szabályzatban több területi beállítást vagy nyelvet támogasson. A házirendek honosítási támogatása lehetővé teszi nyelvspecifikus karakterláncok megadását a [felhasználói felület elemeihez](localization-string-ids.md#verification-display-control-user-interface-elements)és a [jelszó egyszeri jelszavához](localization-string-ids.md#one-time-password-error-messages). Adja hozzá a következő LocalizedString a LocalizedResources. 
+A Honosítás elem lehetővé teszi több területi beállítás vagy nyelv támogatását a szabályzatban a felhasználói utakhoz. A szabályzatok honosítási támogatása lehetővé teszi, hogy nyelvspecifikus sztringeket adjon meg az Ellenőrzés megjelenítési vezérlő felhasználói felületének elemeihez [és](localization-string-ids.md#verification-display-control-user-interface-elements)az Egy alkalommal megjelenő jelszó [hibaüzenethez is.](localization-string-ids.md#one-time-password-error-messages) Adja hozzá a következő LocalizedString karakterláncot a LocalizedResources erőforráshoz. 
 
 ```XML
 <LocalizedResources Id="api.custom-email.en">
@@ -579,13 +583,13 @@ A honosítási elem lehetővé teszi, hogy a felhasználói útvonalakhoz tartoz
 </LocalizedResources>
 ```
 
-A honosított karakterláncok hozzáadása után távolítsa el az egyszeri jelszavas érvényesítési hibaüzenetek metaadatait a LocalAccountSignUpWithLogonEmail és a LocalAccountDiscoveryUsingEmailAddress technikai profiljaiból.
+Miután hozzáadta a honosított sztringeket, távolítsa el az egyszeri jelszóval kapcsolatos érvényesítési hibaüzenetek metaadatait a LocalAccountSignUpWithLogonEmail és LocalAccountDiscoveryUsingEmailAddress technikai profilokból.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
+Az egyéni e-mail-ellenőrzési szabályzatra a GitHubon találhat példát:
 
 - [Egyéni e-mail-ellenőrzés – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
-- Az egyéni REST API vagy bármely HTTP-alapú SMTP e-mail-szolgáltató használatáról további információt a [Rest műszaki profil definiálása egy Azure ad B2C egyéni szabályzatban](restful-technical-profile.md)című témakörben talál.
+- Az egyéni házirendek vagy BÁRMELY HTTP REST API SMTP e-mail-szolgáltató használatával kapcsolatos információkért lásd: RESTful technikai profil definiálása egyéni [házirendben Azure AD B2C házirendben.](restful-technical-profile.md)
 
 ::: zone-end
