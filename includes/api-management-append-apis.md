@@ -2,25 +2,43 @@
 author: vladvino
 ms.service: api-management
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/16/2021
 ms.author: vlvinogr
-ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329ea156b296810395eb7b8e8310bed5ee0ee4c9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183826"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601910"
 ---
 ## <a name="append-other-apis"></a>Egyéb API-k hozzáfűzése
 
-Az API-k tartalmazhatnak különböző szolgáltatások által elérhetővé tett API-kat, beleértve az OpenAPI-specifikációt, egy SOAP API-t, valamint az Azure App Service, az Azure Function App, az Azure Logic Apps és az Azure Service Fabric API Apps funkcióját.
+Különböző szolgáltatások által elérhetővé téve API-kat is összeállíthat, például:
+* Az OpenAPI-specifikáció
+* A SOAP API
+* A API Apps funkció Azure App Service
+* Azure-függvényalkalmazás
+* Azure Logic Apps
+* Azure Service Fabric
 
-![API importálása](./media/api-management-append-apis/import.png)
+Az alábbi lépésekkel fűz hozzá egy másik API-t a meglévő API-hoz. 
 
-A következő lépésekkel fűzhet hozzá egy meglévő API-hoz egy másik API-t. Egy másik API importálásakor a műveletek hozzáfűződnek az aktuális API-hoz.
+>[!NOTE] 
+> Egy másik API importálásakor a műveletek hozzáfűződnek az aktuális API-hoz.
 
 1. Nyissa meg az Azure API Management-példányát az Azure Portalon.
-2. A bal oldali menüből válassza ki az **API-k** elemet.
-3. Kattintson a **...** elemre azon API mellett, amelyhez egy másik API-t szeretne hozzáfűzni.
-4. Válassza az **Importálás** elemet a legördülő menüből.
-5. Válasszon egy szolgáltatást, amelyből importálni fogja az API-t.
+
+    :::image type="content" source="./media/api-management-append-apis/service-page.png" alt-text="Ugrás az Azure API Mgmt-példányra":::
+
+1. A bal oldali menüből válassza ki az **API-k** elemet.
+
+    :::image type="content" source="./media/api-management-append-apis/api-select.png" alt-text="API-k kiválasztása":::
+
+1. Kattintson a **...** elemre azon API mellett, amelyhez egy másik API-t szeretne hozzáfűzni.
+1. Válassza az **Importálás** elemet a legördülő menüből.
+
+    :::image type="content" source="./media/api-management-append-apis/append-01.png" alt-text="Importálás kiválasztása":::
+
+1. Válasszon egy szolgáltatást, amelyből importálni fogja az API-t.
+
+    :::image type="content" source="./media/api-management-append-apis/select-to-import.png" alt-text="Szolgáltatás kiválasztása":::

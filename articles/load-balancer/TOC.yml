@@ -31,25 +31,27 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Virtuális gép terheléselosztása adott rendelkezésre állási zónán belül
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Több rendelkezésre állási készletet rendelkező virtuális gépek terheléselosztása
+      href: tutorial-multi-availability-sets-portal.md
     - name: Porttovábbítás konfigurálása a Load Balancerben
       href: tutorial-load-balancer-port-forwarding-portal.md
     - name: Régiók közötti terheléselosztó
       items:
         - name: Régiók közötti terheléselosztó létrehozása – Portal
           href: tutorial-cross-region-portal.md
-        - name: Régiók közötti Load Balancer létrehozása – PowerShell
+        - name: Régiók közötti terheléselosztás létrehozása – PowerShell
           href: tutorial-cross-region-powershell.md
-        - name: Régiók közötti Load Balancer létrehozása – Azure CLI
+        - name: Régiók közötti terheléselosztás létrehozása – Azure CLI
           href: tutorial-cross-region-cli.md
     - name: NAT-átjáró
       items:
-        - name: NAT-átjáró nyilvános Load Balancer integrálása
+        - name: NAT-átjáró nyilvános terheléselosztásának integrálása
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
-        - name: NAT-átjáró belső terheléselosztó integrálása
+        - name: NAT-átjáró belső terheléselosztásának integrálása
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
-    - name: IP-alapú háttérrendszer
+    - name: IP-alapú háttér
       items:
-        - name: Nyilvános terheléselosztó létrehozása IP-alapú háttérrel – portál
+        - name: Nyilvános terheléselosztás létrehozása IP-alapú háttérséggel – Portál
           href: tutorial-load-balancer-ip-backend-portal.md
 - name: Példák
   items:
@@ -107,7 +109,7 @@
       href: backend-pool-management.md
     - name: A Standard Load Balancer és a Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-    - name: Adatok lekérése az Azure Instance Metadata Service használatával
+    - name: Információk lekérése az Azure Instance Metadata Service
       href: instance-metadata-service-load-balancer.md
 - name: Használati útmutató
   items:
@@ -162,7 +164,7 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Csak kifelé irányuló terheléselosztó konfigurációja
       href: egress-only.md
-    - name: Metaadatok beolvasása az Azure IMDS
+    - name: Metaadatok lekérése az Azure IMDS használatával
       href: howto-load-balancer-imds.md
     - name: Hibaelhárítás
       items:
@@ -199,7 +201,7 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
-    - name: Gyakori hibakódok az Azure Instance Metadata Service (IMDS) szolgáltatáshoz
+    - name: Gyakori hibakódok az Azure Instance Metadata Service (IMDS) esetén
       href: troubleshoot-load-balancer-imds.md
     - name: Gyakori telepítési hibák
       href: load-balancer-common-deployment-errors.md

@@ -1,77 +1,76 @@
 ---
-title: IoT Central kezelése a Azure Portalból | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet IoT Central-alkalmazásokat a Azure Portal.
+title: Az IoT Central kezelése a Azure Portal | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet IoT Central alkalmazásokat a Azure Portal.
 services: iot-central
 ms.service: iot-central
-author: dominicbetts
-ms.author: dobett
-ms.date: 02/11/2020
+author: vishwam
+ms.author: vishwams
+ms.date: 04/17/2021
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 2af97206db00d683ab409710bc71a3b5048bf6ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed65e85c7428bf59fe770534e97afdd53564086a
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104658465"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107601974"
 ---
-# <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central kezelése a Azure Portal
+# <a name="manage-iot-central-from-the-azure-portal"></a>Az IoT Central kezelése a Azure Portal
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-IoT Central alkalmazások az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén való létrehozása és kezelése helyett a [Azure Portal](https://portal.azure.com) használatával kezelheti az alkalmazásokat.
+Az alkalmazáskezelő [Azure Portal](https://portal.azure.com) hasonló IoT Central alkalmazásokat hozhat létre és kezelhet a IoT Central [alkalmazáskezelőben.](https://apps.azureiotcentral.com/myapps)
 
-## <a name="create-iot-central-applications"></a>IoT Central-alkalmazások létrehozása
+## <a name="create-iot-central-applications"></a>Új IoT Central létrehozása
 
 [!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
+Alkalmazás létrehozásához nyissa meg a create IoT Central Application (Alkalmazás létrehozása [IoT Central)](https://ms.portal.azure.com/#create/Microsoft.IoTCentral) lapot a Azure Portal és töltse ki az űrlapot.
 
-Alkalmazás létrehozásához navigáljon a [Azure Portal](https://ms.portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget.
+![Űrlap IoT Central létrehozása](media/howto-manage-iot-central-from-portal/image6a.png)
 
-A **Keresés a piactéren** sávon írja be *IoT Central*:
+* **Az erőforrásnév** egy egyedi név, amely a IoT Central az Azure-erőforráscsoportban.
 
-![Felügyeleti portál: keresés](media/howto-manage-iot-central-from-portal/image0a1.png)
+* **Az alkalmazás URL-címe** az alkalmazás eléréséhez használható URL-cím.
 
-Válassza ki a **IoT Central alkalmazás** csempét a keresési eredmények között:
+* **A** Hely az [a földrajzi hely,](https://azure.microsoft.com/global-infrastructure/geographies/) ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény elérése érdekében általában azt a helyet érdemes választani, amely fizikailag a legközelebb van az eszközeihez. Azure IoT Central jelenleg a következő helyeken érhető el:
+    * Ázsia és a Csendes-óceáni térség
+    * Ausztrália
+    * Európa
+    * Japán
+    * Egyesült Királyság
+    * Egyesült Államok
 
-![Felügyeleti portál: keresési eredmények](media/howto-manage-iot-central-from-portal/image0b1.png)
+  Miután választott egy helyet, később nem tudja áthelyezni az alkalmazást egy másik helyre.
 
-Most válassza a **Létrehozás** elemet:
+Az összes mező kitöltése után válassza a **Létrehozás lehetőséget.** További információért tekintse meg [a Create an IoT Central application (Alkalmazás IoT Central létrehozása)](quick-deploy-iot-central.md) rövid útmutatót.
 
-![Felügyeleti portál: IoT Central erőforrás](media/howto-manage-iot-central-from-portal/image0c1.png)
+## <a name="manage-existing-iot-central-applications"></a>Meglévő alkalmazás IoT Central kezelése
 
-Töltse ki az űrlap összes mezőjét. Ez az űrlap hasonló az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén az alkalmazások létrehozásához kitöltött űrlaphoz. További információt az [IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md) című témakörben talál.
-
-![IoT Central űrlap létrehozása](media/howto-manage-iot-central-from-portal/image6a.png)
-
-A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) **hely** , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Az Azure IoT Central jelenleg **Ausztráliában**, **Ázsia és a csendes-óceáni térség**, **Európa**, **Egyesült Államok**, **Egyesült Királyság** és **japán** régiókban érhető el. A hely kiválasztása után később nem helyezheti át az alkalmazást egy másik helyre.
-
-Az összes mező kitöltése után válassza a **Létrehozás** lehetőséget.
-
-## <a name="manage-existing-iot-central-applications"></a>Meglévő IoT Central alkalmazások kezelése
-
-Ha már rendelkezik Azure IoT Central-alkalmazással, törölheti, vagy áthelyezheti egy másik előfizetésre vagy erőforráscsoporthoz a Azure Portal.
+Ha már rendelkezik Azure IoT Central alkalmazással, törölheti, vagy áthelyezheti egy másik előfizetésbe vagy erőforráscsoportba a Azure Portal.
 
 > [!NOTE]
-> Az *ingyenes* csomag használatával létrehozott alkalmazások nem igényelnek Azure-előfizetést, ezért az Azure-előfizetésében nem találhatók meg az Azure Portal. Az ingyenes alkalmazásokat csak a IoT Central-portálról tekintheti meg és kezelheti.
+> Az ingyenes csomag használatával létrehozott *alkalmazásokhoz* nincs szükség Azure-előfizetésre, ezért nem fogja megtalálni őket az Azure-előfizetésében a Azure Portal. Az ingyenes alkalmazásokat csak a portálon IoT Central kezelheti.
 
-Első lépésként válassza ki az **összes erőforrást** a portálon. Válassza a **rejtett típusok megjelenítése** lehetőséget, és kezdje el begépelni az alkalmazás nevét a **szűrés név alapján** , hogy megkeresse. Ezután válassza ki azt a IoT Central alkalmazást, amelyet kezelni szeretne.
+Első lépésekként keressen rá az alkalmazásra a képernyő tetején található Azure Portal. Az összes alkalmazást megtekintheti úgy is, hogy rákeres a "IoT Central Alkalmazások" szóra, és kiválasztja a szolgáltatást:
 
-Az alkalmazás eléréséhez válassza ki a **IoT Central alkalmazás URL-címét**:
+![Képernyőkép a "IoT Central alkalmazások" keresési eredményeiről, az első kijelölt szolgáltatással.](media/howto-manage-iot-central-from-portal/search-iot-central.png)
 
-![Képernyőkép: az "áttekintés" oldal, amelyben a "IoT Central alkalmazás URL-címe" ki van emelve.](media/howto-manage-iot-central-from-portal/image3.png)
+Miután kiválasztott egy alkalmazást a keresési eredmények között, a Azure Portal megjeleníti annak áttekintését. A tényleges alkalmazáshoz az alkalmazás URL-címének kiválasztásával **IoT Central meg:**
 
-Az alkalmazás más erőforráscsoporthoz való áthelyezéséhez válassza az erőforráscsoport melletti **módosítás** lehetőséget. Az **erőforrások áthelyezése** lapon válassza ki azt az erőforráscsoportot, amelyre át szeretné helyezni az alkalmazást:
+![Képernyőkép az "Áttekintés" oldalról, kiemelt "IoT Central URL-címével.](media/howto-manage-iot-central-from-portal/image3.png)
 
-![Képernyőkép, amely az "erőforrás-csoport (módosítás)" nevű "áttekintés" oldalt jeleníti meg.](media/howto-manage-iot-central-from-portal/image4a.png)
+Az alkalmazás másik erőforráscsoportba való áthelyezéshez válassza az **erőforráscsoport melletti** módosítás lehetőséget. Az Erőforrások **áthelyezése lapon** válassza ki azt az erőforráscsoportot, amelybe át szeretné áthelyezni az alkalmazást:
 
-Ha át szeretné helyezni az alkalmazást egy másik előfizetésre, válassza az előfizetés melletti  **módosítás** lehetőséget. Az **erőforrások áthelyezése** lapon válassza ki azt az előfizetést, amelyre át szeretné helyezni az alkalmazást:
+![Képernyőkép az "Áttekintés" oldalról, az "Erőforráscsoport (módosítás)" kiemeléssel.](media/howto-manage-iot-central-from-portal/image4a.png)
+
+Az alkalmazás másik előfizetésbe való áthelyezéséhez válassza az  **előfizetés melletti** módosítás lehetőséget. Az Erőforrások **áthelyezése lapon** válassza ki azt az előfizetést, amelybe át szeretné áthelyezni az alkalmazást:
 
 ![Felügyeleti portál: erőforrás-kezelés](media/howto-manage-iot-central-from-portal/image5a.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan kezelheti az Azure IoT Central-alkalmazásokat a Azure Portalból, itt látható a következő lépés:
+Most, hogy megtanulta, hogyan kezelheti Azure IoT Central alkalmazásokat a Azure Portal, a következő javasolt lépés:
 
 > [!div class="nextstepaction"]
 > [Alkalmazás felügyelése](howto-administer.md)

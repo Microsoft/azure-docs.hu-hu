@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 04/14/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7098cfbc2fbe2236687eb7d621a0e587497fcebc
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: feff8b003428fd61fba826d05f8212fa8d9788f9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516413"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601930"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -31,22 +31,22 @@ ms.locfileid: "107516413"
 
 * Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
 * ANode.js[](https://nodejs.org/)
-* Egy Azure Storage-blob, amely betanításadatok készletét tartalmazza. A [betanítás adatkészletének összeállítására](../../build-training-data-set.md) vonatkozó tippekért és lehetőségekért tekintse meg a betanítás adatkészletének összeállítása egyéni modellhez való összeállítását. Ebben a rövid útmutatóban a mintaadatkészlet **Betanítás** mappájában [található](https://go.microsoft.com/fwlink/?linkid=2090451) fájlokat használhatja (töltse le és bontsa ki a *sample_data.zip).*
-* Az Azure-előfizetés létrehozása után hozzon létre egy Form Recognizer-erőforrást, Form Recognizer a Azure Portal a kulcs és a végpont <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> </a> lekért létrehozásához. Az üzembe helyezés után válassza az **Erőforráshoz ugrás lehetőséget.**
-  * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a Form Recognizer API-hoz. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+* Egy Azure Storage-blob, amely betanító adatok egy halmazát tartalmazza. A [betanítás adatkészletének összeállítására](../../build-training-data-set.md) vonatkozó tippekért és lehetőségekért tekintse meg a betanítás adatkészletének összeállítása egyéni modellhez való összeállítását. Ebben a rövid útmutatóban a mintaadatkészlet **Betanítás** mappájában [található](https://go.microsoft.com/fwlink/?linkid=2090451) fájlokat használhatja (töltse le és bontsa ki a *sample_data.zip).*
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Form Recognizer-erőforrást, Form Recognizer erőforrást a Azure Portal a kulcs és a végpont <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> </a> lekért létrehozásához. Az üzembe helyezés után válassza az **Erőforráshoz ugrás lehetőséget.**
+  * Szüksége lesz a létrehozott erőforrás kulcsra és végpontra az alkalmazás a Form Recognizer API-hoz való csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
   * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
 ## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa `npm init` az parancsot egy node-alkalmazás fájllal való `package.json` létrehozásához.
+Az parancs `npm init` futtatásával hozzon létre egy node-alkalmazást egy `package.json` fájllal.
 
 ```console
 npm init
@@ -88,23 +88,23 @@ A Form Recognizer két különböző ügyféltípust hozhat létre. Az első az 
 
 * Űrlapmezők és tartalmak felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellekkel. Ezeket az értékeket objektumok gyűjteményében lehet `RecognizedForm` visszaadni.
 * Űrlaptartalmak, köztük táblák, vonalak és szavak felismerése modell betanítása nélkül. Az űrlap tartalma objektumgyűjteményben lesz `FormPage` visszaadva.
-* Gyakori mezők felismerése az USA-nyugtákból, névjegykártyákból, számlákból és személyazonossági dokumentumokból egy előre betanított modellel a Form Recognizer szolgáltatásban.
+* A közös mezők felismerése az USA-nyugtákból, névjegykártyákból, számlákból és személyazonossági dokumentumokból a Form Recognizer modellel.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
 `FormTrainingClient` A a következő műveleteket biztosítja:
 
-* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez. A visszaadott érték a modell által elemzett űrlaptípusokat és az egyes űrlaptípusokhoz `CustomFormModel` kinyert mezőket jelzi. _További_ [részletekért tekintse](#train-a-model-without-labels) meg a szolgáltatás címkézetlen modellek betanítási dokumentációját.
-* Egyéni modellek betanítása adott mezők és értékek elemzéséhez az egyéni űrlapok címkézése segítségével. A visszaadott érték jelzi a modell által kinyert mezőket, valamint az egyes mezők becsült `CustomFormModel` pontosságát. A címkék [betanítás adatkészletre](#train-a-model-with-labels) való alkalmazásának részletesebb magyarázatát a szolgáltatás címkézett modellbeképező dokumentációjában találhatja meg.
+* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez. A visszaadott érték jelzi a modell által elemzett űrlaptípusokat és az egyes űrlaptípusokhoz `CustomFormModel` kinyert mezőket. _További_ [részletekért tekintse](#train-a-model-without-labels) meg a szolgáltatás címkézetlen modellbeképező dokumentációját.
+* Egyéni modellek betanítása adott mezők és értékek elemzéséhez az egyéni űrlapok címkézése segítségével. A visszaadott érték jelzi a modell által kinyert mezőket, valamint az egyes mezők becsült `CustomFormModel` pontosságát. A címkék [betanítása](#train-a-model-with-labels) a betanítás adatkészletére való alkalmazásának részletesebb magyarázatát a szolgáltatás címkézett modellbeképező dokumentációjában találhatja meg.
 * A fiókjában létrehozott modellek kezelése.
 * Egyéni modell másolása egyik erőforrásból Form Recognizer másikba.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betaníthatóak, például a [Form Recognizer eszköz használatával.](../../quickstarts/label-tool.md)
+> A modellek grafikus felhasználói felülettel, például a Form Recognizer eszközzel is [betaníthatóak.](../../quickstarts/label-tool.md)
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan kell elvégezni a következő feladatokat a JavaScripthez Form Recognizer ügyféloldali kódtárával:
+Ezek a kódrészletek azt mutatják be, hogyan kell elvégezni a következő feladatokat a JavaScripthez Form Recognizer ügyfélkódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Elrendezés elemzése](#analyze-layout)
@@ -118,7 +118,7 @@ Ezek a kódrészletek azt mutatják be, hogyan kell elvégezni a következő fel
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Hitelesítsen egy ügyfélobjektumot a megadott előfizetési változók használatával. Egy objektumot fog használni, így ha szükséges, új ügyfélobjektumok létrehozása nélkül frissítheti az `AzureKeyCredential` API-kulcsot. Létre fog hozni egy betanítás ügyfélobjektumot is.
+Hitelesítsen egy ügyfélobjektumot a megadott előfizetési változók használatával. Egy objektumot fog használni, így szükség esetén új ügyfélobjektumok létrehozása nélkül frissítheti az `AzureKeyCredential` API-kulcsot. Létre fog hozni egy betanítás ügyfélobjektumot is.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_auth)]
 
@@ -129,16 +129,16 @@ A betanítás és a tesztelési adatok URL-címére mutató hivatkozásokat is h
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-lekérés":::
-* Használja az alábbi mintákban található (a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)is elérhető) mintaképeit és nyugtaképeit, vagy a fenti lépésekkel lekérhetők egy adott dokumentum SAS URL-címei a Blob Storage-ban.
+* Használja az alábbi mintákban szereplő (a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/assets)is elérhető) képekből és nyugtákból származó mintát, vagy a fenti lépésekkel le tudja szerezni egy adott dokumentum SAS URL-címét a Blob Storage-ban.
 
 ## <a name="analyze-layout"></a>Elrendezés elemzése
 
-A modell betanítása Form Recognizer nélkül elemezheti a táblákat, sorokat és szavakat a dokumentumokban. Az elrendezéskinyerésről az Elrendezés fogalmi [útmutatója nyújt további információt.](../../concept-layout.md) Egy adott URI-fájl tartalmának elemzéséhez használja a `beginRecognizeContentFromUrl` metódust.
+A dokumentumokkal Form Recognizer, vonalakat és szavakat elemezhet a dokumentumokban anélkül, hogy modellt kellene betanítanunk. Az elrendezéskinyerésről az Elrendezés [fogalmi útmutatóban található további információ.](../../concept-layout.md) Egy fájl tartalmának egy adott URI-hez való elemzéséhez használja a `beginRecognizeContentFromUrl` metódust.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
 > [!TIP]
-> Helyi fájlból is lekért tartalom. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeContent metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
+> Helyi fájlból is lekért tartalom. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeContent metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
 
 ### <a name="output"></a>Kimenet
 
@@ -158,14 +158,14 @@ cell [1,5] has text PT
 
 ## <a name="analyze-receipts"></a>Nyugták elemzése
 
-Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki közös mezőket az USA-nyugtákból egy előre betanított nyugtamodell használatával. A nyugták elemzésével kapcsolatos további információkért lásd a [nyugta fogalmi útmutatóját.](../../concept-receipts.md)
+Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki közös mezőket az USA-nak megfelelő nyugtákból egy előre betanított nyugtamodell használatával. A nyugtaelemzéssel kapcsolatos további információkért lásd a [nyugták fogalmi útmutatóját.](../../concept-receipts.md)
 
-Az URI-ból származó nyugták elemzéséhez használja a `beginRecognizeReceiptsFromUrl` metódust. A következő kód feldolgoz egy nyugtát az adott URI-ban, és kinyomtatja a fő mezőket és értékeket a konzolon.
+Az URI-ból származó nyugták elemzéséhez használja a `beginRecognizeReceiptsFromUrl` metódust. Az alábbi kód feldolgoz egy nyugtát az adott URI-ban, és kiírja a fő mezőket és értékeket a konzolra.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> A helyi nyugták képeit is elemezheti. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeReceipts metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
+> A helyi nyugták rendszerképét is elemezheti. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeReceipts metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -184,14 +184,14 @@ First receipt:
 
 ## <a name="analyze-business-cards"></a>Névjegykártyák elemzése
 
-Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki gyakori mezőket angol nyelvű névjegykártyákból egy előre betanított modell használatával. A névjegykártya-elemzéssel kapcsolatos további információkért lásd a [névjegykártyák fogalmi útmutatóját.](../../concept-business-cards.md)
+Ez a szakasz bemutatja, hogyan elemezhet és vonhet ki általános mezőket angol nyelvű névjegykártyákból egy előre betanított modell használatával. A névjegykártya-elemzéssel kapcsolatos további információkért lásd a [névjegykártyák fogalmi útmutatóját.](../../concept-business-cards.md)
 
 A névjegykártyák URL-címből való elemzéséhez használja a `beginRecognizeBusinessCardsFromURL` metódust.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_bc":::
 
 > [!TIP]
-> Helyi névjegykártya-képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeBusinessCards metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
+> Helyi névjegykártya-képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeBusinessCards metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
 
 ## <a name="analyze-invoices"></a>Számlák elemzése
 
@@ -202,11 +202,11 @@ A számlák URL-címről való elemzéséhez használja a `beginRecognizeInvoice
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_invoice":::
 
 > [!TIP]
-> Helyi névjegykártya-képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeInvoices metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
+> Helyi névjegykártya-képeket is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeInvoices metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
 
 ## <a name="analyze-identity-documents"></a>Identitásdokumentumok elemzése
 
-Ez a szakasz azt mutatja be, hogyan elemezheti és vonhat ki kulcsfontosságú információkat a kormány által kiadott azonosítási dokumentumokból ( világszerte használt útlevelek és az Egyesült Államok sofőrlicencei) az előre összeállított Form Recognizer használatával. A számlaelemzéssel kapcsolatos további információkért tekintse meg az előre összeállított azonosítási modell [fogalmi útmutatóját.](../../concept-identification-cards.md)
+Ez a szakasz azt mutatja be, hogyan elemezheti és vonhat ki kulcsinformációkat a kormányzati jogú azonosítási dokumentumokból ( globális útlevelek és az Egyesült Államok sofőrlicencei) az Form Recognizer előre összeállított azonosítómodell használatával. A számlaelemzéssel kapcsolatos további információkért tekintse meg az előre összeállított azonosítási modell [fogalmi útmutatóját.](../../concept-identification-cards.md)
 
 Az URL-címből származó identitásdokumentumok elemzéséhez használja a `beginRecognizeIdDocumentsFromUrl` metódust.
 
@@ -214,14 +214,14 @@ Az URL-címből származó identitásdokumentumok elemzéséhez használja a `be
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-Ez a szakasz bemutatja, hogyan betanítható egy modell a saját adataival. A betanított modell olyan strukturált adatokat képes kihozni, amelyek tartalmazzák a kulcs/érték kapcsolatokat az eredeti űrlapdokumentumban. A modell betanítása után tesztelheti és újra betaníthatja, és végül arra használhatja, hogy az igényeinek megfelelően megbízhatóan kinyerje az adatokat több űrlapról.
+Ez a szakasz bemutatja, hogyan betanítható egy modell a saját adataival. A betanított modell olyan strukturált adatokat képes kihozni, amelyek tartalmazzák a kulcs/érték kapcsolatokat az eredeti űrlapdokumentumban. A modell betanítása után tesztelheti és újra betaníthatja, majd végül arra használhatja, hogy az igényeinek megfelelően megbízhatóan kinyerje az adatokat több űrlapról.
 
 > [!NOTE]
 > A modelleket grafikus felhasználói felülettel is betaníthatja, például a Form Recognizer [eszköz mintacímkéző eszközével.](../../quickstarts/label-tool.md)
 
 ### <a name="train-a-model-without-labels"></a>Modell betanítása címkék nélkül
 
-Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzésére a betanító dokumentumok manuális címkézése nélkül.
+Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzésére a betanítás dokumentumainak manuális címkézése nélkül.
 
 Az alábbi függvény egy modellt készít ki egy adott dokumentumkészleten, és kiírja a modell állapotát a konzolra.
 
@@ -306,14 +306,14 @@ Document errors: undefined
 Ez a szakasz azt mutatja be, hogyan lehet kulcs/érték információkat és egyéb tartalmakat kinyerni az egyéni űrlaptípusokból a saját űrlapokkal betanított modellek használatával.
 
 > [!IMPORTANT]
-> Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az azonosítóját az alábbi metódusnak tovább tudja adni. Lásd [a Modell betanítás szakaszát.](#train-a-model-without-labels)
+> Ennek a forgatókönyvnek a megvalósításához már betanított egy modellt, hogy az azonosítóját az alábbi metódusnak tovább tudja adni. Lásd [a Modell betanítás szakaszát.](#train-a-model-without-labels)
 
 A metódust fogja `beginRecognizeCustomFormsFromUrl` használni. A visszaadott érték objektumok gyűjteménye: egy az elküldött dokumentum minden `RecognizedForm` oldalához.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> Helyi fájlokat is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeCustomForms metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakódot a helyi rendszerképeket érintő forgatókönyvekért.
+> Helyi fájlokat is elemezhet. Lásd a [FormRecognizerClient metódusokat,](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) például **a beginRecognizeCustomForms metódust.** Vagy tekintse meg a [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) a helyi rendszerképekkel kapcsolatos forgatókönyveket tartalmazó mintakódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -359,13 +359,13 @@ Ez a szakasz bemutatja, hogyan kezelheti a fiókjában tárolt egyéni modelleke
 
 ### <a name="get-number-of-models"></a>Modellek számának lekért száma
 
-A következő kódblokk a fiókban jelenleg található modellek számát kapja meg.
+Az alábbi kódblokk a fiókban jelenleg található modellek számát tartalmazza.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_count)]
 
 ### <a name="get-list-of-models-in-account"></a>A fiókban található modellek listájának lekért listája
 
-A következő kódblokk a fiókban elérhető modellek teljes listáját tartalmazza, beleértve a modell létrehozási dátumával és aktuális állapotával kapcsolatos információkat.
+Az alábbi kódblokk a fiókban elérhető modellek teljes listáját tartalmazza, beleértve a modell létrehozási dátumával és aktuális állapotával kapcsolatos információkat.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
 
@@ -424,7 +424,7 @@ Az alábbi függvény egy modellazonosítót vesz fel, és lekérte az egyező m
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Modell törlése az erőforrásfiókból
 
-Az azonosítójára való hivatkozásokkal törölheti is a modellt a fiókjából. Ez a függvény törli a modellt a megadott azonosítóval. Ezt a függvényt a rendszer alapértelmezés szerint nem hívja meg.
+Az azonosítójára való hivatkozás segítségével törölheti is a modellt a fiókjából. Ez a függvény törli a modellt a megadott azonosítóval. Ezt a függvényt a rendszer alapértelmezés szerint nem hívja meg.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_delete)]
 
@@ -436,7 +436,7 @@ Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást az `node` paranccsal a gyorsindítási fájlban.
+Futtassa az alkalmazást a `node` gyorsindítási fájlban található paranccsal.
 
 ```console
 node index.js
@@ -444,7 +444,7 @@ node index.js
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha törölni vagy eltávolítani szeretne egy Cognitive Services előfizetést, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított összes többi erőforrást is törli.
+Ha törölni vagy eltávolítani szeretne egy Cognitive Services előfizetést, törölheti az erőforrást vagy erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított összes többi erőforrást is törli.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -463,7 +463,7 @@ A naplók engedélyezésére vonatkozó részletes útmutatásért tekintse meg 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban a Form Recognizer JavaScript ügyféloldali kódtár használatával betanított modelleket és elemezte az űrlapokat. Ezután tippeket tanulhat egy jobb betanítású adathalmaz létrehozásához és pontosabb modellek létrehozásához.
+Ebben a rövid útmutatóban az Form Recognizer JavaScript ügyféloldali kódtár használatával betanított modelleket és elemezte az űrlapokat. Ezután megtudhatja, hogyan hozhat létre egy jobb betanítású adathalmazt, és készíthet pontosabb modelleket.
 
 > [!div class="nextstepaction"]
 > [Betanítási adathalmaz létrehozása](../../build-training-data-set.md)
