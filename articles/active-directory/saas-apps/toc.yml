@@ -323,7 +323,7 @@
           href: chatwork-tutorial.md
         - name: Chargebee
           href: chargebee-tutorial.md
-        - name: Check Point identitástudatosság
+        - name: Check Point Identity Awareness
           href: check-point-identity-awareness-tutorial.md
         - name: Cherwell
           href: cherwell-tutorial.md
@@ -1031,7 +1031,7 @@
           href: kisi-physical-security-tutorial.md
         - name: Kiteworks
           href: kiteworks-tutorial.md
-        - name: Fogaján SAML
+        - name: Xoon SAML
           href: klaxoon-saml-tutorial.md
         - name: Klue
           href: klue-tutorial.md
@@ -1357,7 +1357,7 @@
           href: panorays-tutorial.md
         - name: Pantheon
           href: pantheon-tutorial.md
-        - name: Parkalot – Autóspark-kezelés
+        - name: Parkalot – Autópark-kezelés
           href: parkalot-car-park-management-tutorial.md
         - name: PatentSQUARE
           href: patentsquare-tutorial.md
@@ -1413,7 +1413,7 @@
           href: podbean-tutorial.md
         - name: PolicyStat
           href: policystat-tutorial.md
-        - name: PoolParty Szemantikai csomag
+        - name: PoolParty szemantikai csomag
           href: poolparty-semantic-suite-tutorial.md
         - name: PostBeyond
           href: postbeyond-tutorial.md
@@ -1629,7 +1629,7 @@
           href: screensteps-tutorial.md
         - name: SD Elements
           href: sd-elements-tutorial.md
-        - name: SDS & Chemical Information Management
+        - name: SDS & Vegyi információkezelés
           href: sds-chemical-information-management-tutorial.md
         - name: Secret Server (On-Premises)
           href: secretserver-on-premises-tutorial.md
@@ -2204,6 +2204,8 @@
           href: druva-provisioning-tutorial.md
         - name: Envoy
           href: envoy-provisioning-tutorial.md
+        - name: Eletive
+          href: eletive-provisioning-tutorial.md
         - name: Elium
           href: elium-provisioning-tutorial.md
         - name: Összevont címtár

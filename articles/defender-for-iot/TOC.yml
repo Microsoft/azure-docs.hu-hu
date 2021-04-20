@@ -5,11 +5,12 @@
   href: overview.md
   items:
     - name: Újdonságok
+      displayName: 'version, versions, servicing, information, timeline, support, support date, dates, versioning, policy'
       href: release-notes.md
-    - name: Mi az ügynök nélküli megoldás architektúrája?
+    - name: Mi az az ügynök nélküli megoldásarchitektúra?
       displayName: 'deployment, where to deploy'
       href: architecture.md
-    - name: Mi az az ügynök-alapú megoldás architektúrája?
+    - name: Mi az az ügynökalapú megoldásarchitektúra?
       href: architecture-agent-based.md
 - name: Rövid útmutatók
   expanded: true
@@ -24,20 +25,20 @@
           href: getting-started.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: A Defender IoT-ügynökön alapuló megoldás beléptetése
+        - name: A Defender for IoT ügynökalapú megoldásának beállítása
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: A Defender telepítése a IoT Micro agenthez (előzetes verzió)
+        - name: A Defender for IoT mikroügynök telepítése (előzetes verzió)
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
+        - name: Defender IoT-mikroügynök modulikon létrehozása (előzetes verzió)
           href: quickstart-create-micro-agent-module-twin.md
-        - name: A IoT Micro Agent Defender létrehozása a forráskódból (előzetes verzió)
+        - name: A Defender for IoT mikroügynök összeállítása forráskódból (előzetes verzió)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
-        - name: A Defender-IoT-Micro-Agent konfigurálása az Azure RTOS
+        - name: A Defender-IoT-micro-agent konfigurálása Azure RTOS
           href: quickstart-azure-rtos-security-module.md
-        - name: Azure-erőforrások hozzáadása a IoT-megoldáshoz
+        - name: Azure-erőforrások hozzáadása az IoT-megoldáshoz
           displayName: 'resources, monitored, resource'
           href: quickstart-configure-your-solution.md
         - name: Klasszikus
@@ -45,7 +46,7 @@
             - name: A biztonsági ügynök áttekintése
               displayName: 'platforms, C, C#, agent,'
               href: security-agent-architecture.md
-            - name: Twin azureiotsecurity-modul létrehozása
+            - name: Azureiotsecurity ikermodul létrehozása
               displayName: 'module twin, security module'
               href: quickstart-create-security-twin.md
 - name: Alapelvek
@@ -56,33 +57,33 @@
           href: concept-key-concepts.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
+        - name: Ügynökportfólió áttekintése és operációsrendszer-támogatás (előzetes verzió)
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: Önálló Micro Agent – áttekintés (előzetes verzió)
+        - name: Önálló mikroügynök áttekintése (előzetes verzió)
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
         - name: Biztonsági ügynök hitelesítése (előzetes verzió)
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
-        - name: Biztonsági helyzet – CIS-teljesítményteszt
+        - name: Biztonsági rendszer – CIS-teljesítményteszt
           href: concept-security-posture.md
-        - name: Esemény összesítése (előzetes verzió)
+        - name: Eseményösszesítő (előzetes verzió)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
-        - name: Beépített riasztások a IoT Hubhoz
+        - name: Beépített riasztások a IoT Hub
           displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
-        - name: IoT Hub egyéni biztonsági riasztásai
+        - name: Egyéni biztonsági riasztások IoT Hub
           href: concept-customizable-security-alerts.md
-        - name: A IoT Hub biztonsági javaslatai
+        - name: Biztonsági javaslatok a IoT Hub
           href: concept-recommendations.md
         - name: Klasszikus
           items:
-            - name: Defender-IoT-Micro-Agent
+            - name: Defender-IoT-mikroügynök
               displayName: 'device twins, Defender-IoT-micro-agent twin'
               href: concept-security-module.md
-            - name: Edge Defender – IoT-Micro-Agent
+            - name: Edge Defender-IoT-mikroügynök
               href: security-edge-architecture.md
             - name: Biztonsági ügynökök
               href: overview-security-agents.md
@@ -92,17 +93,17 @@
             - name: Alapkonfiguráció
               displayName: 'custom, setting, properties'
               href: concept-baseline.md
-            - name: Azure Security alapkonfiguráció a IoT készült Azure Defender számára
+            - name: Az Azure biztonsági alapkonfigurációja Azure Defender for IoT
               displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: Defender-IoT-Micro-Agent klasszikus esemény összesítése
+            - name: Defender-IoT-mikroügynök klasszikus eseményösszesítő
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
-            - name: Ügynök-alapú biztonsági riasztások
+            - name: Ügynökalapú biztonsági riasztások
               href: agent-based-security-alerts.md
-            - name: Ügynök-alapú biztonsági egyéni riasztások
+            - name: Ügynökalapú biztonsági egyéni riasztások
               href: agent-based-security-custom-alerts.md
-            - name: Ügynök-alapú javaslatok
+            - name: Ügynökalapú javaslatok
               href: agent-based-recommendations.md
 - name: Útmutatók
   items:
@@ -183,14 +184,14 @@
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Az érzékelők által észlelt riasztások kezelése
           items:
-            - name: Az érzékelőkkel kapcsolatos riasztások ismertetése
+            - name: Az érzékelői riasztások
               href: how-to-work-with-alerts-on-your-sensor.md
-            - name: Riasztások szűrése és kezelése a riasztások lapról
+            - name: Riasztások szűrése és kezelése a Riasztások oldalról
               href: how-to-view-alerts.md
-            - name: Tudnivalók a riasztási üzenetekről
+            - name: A riasztási üzenetek
               href: how-to-view-information-provided-in-alerts.md
               displayName: 'PCAP, metadata, alerts, link, device map,'
-            - name: A riasztás típusai és leírása
+            - name: Riasztástípusok és leírások
               href: alert-engine-messages.md
               displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational, severity, minor, major, critical, warning, alerts list, security alerts,'
             - name: Riasztási események kezelése
@@ -205,17 +206,17 @@
         - name: 'A globális, regionális és helyi fenyegetések megismerése'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
           displayName: 'site, business unit, region, map'
-        - name: 'Néhány információs eszköz, riasztás és érzékelő/zóna'
+        - name: 'Kevés információs eszköz, riasztás és érzékelő zónánként'
           href: how-to-view-information-per-zone.md
           displayName: zones
         - name: Riasztások kezelése a helyszíni felügyeleti konzolon
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Jelentések létrehozása
           items:
-            - name: Kockázatértékelési jelentések létrehozása
+            - name: Kockázatfelmérési jelentések létrehozása
               href: how-to-create-risk-assessment-reports.md
               displayName: 'vulnerability, security score, score, CVE'
-            - name: Támadási vektoros jelentések létrehozása
+            - name: Támadásvektor-jelentések létrehozása
               href: how-to-create-attack-vector-reports.md
               displayName: 'Attack surface, prediction,simulation'
             - name: Adatbányászati jelentések létrehozása
@@ -262,22 +263,22 @@
         - name: Csatlakozás az Azure Sentinelhez
           displayName: 'log analytics, service notes'
           href: how-to-configure-with-sentinel.md
-        - name: Az Azure Defender konfigurálása IoT-ügynökön alapuló megoldáshoz
+        - name: Ügynökalapú Azure Defender for IoT konfigurálása
           displayName: 'data, collection, geolocation, log analytics, raw events'
           href: how-to-configure-agent-based-solution.md
-        - name: A CIS benchmark javaslatának vizsgálata
+        - name: CIS-teljesítménytesztre vonatkozó javaslat kivizsgálása
           href: how-to-investigate-cis-benchmark.md
         - name: Egyéni riasztások létrehozása
           displayName: security group
           href: quickstart-create-custom-alerts.md
-        - name: Defender-IoT-Micro-Agent az Azure RTOS
+        - name: Defender-IoT-mikroügynök a Azure RTOS
           href: iot-security-azure-rtos.md
           items:
-            - name: A Defender-IoT-Micro-Agent használata az Azure RTOS
+            - name: A Defender-IoT-micro-agent for Azure RTOS
               href: how-to-azure-rtos-security-module.md
-            - name: Az Azure RTOS Defender-IoT-Micro-Agent megismerése
+            - name: A Defender-IoT-micro-agent for Azure RTOS
               href: concept-rtos-security-module.md
-            - name: Defender-IoT-Micro-Agent Azure RTOS-riasztások és-javaslatok
+            - name: Defender-IoT-micro-agent Azure RTOS riasztások és javaslatok
               href: concept-rtos-security-alerts-recommendations.md
         - name: Klasszikus
           items:
@@ -299,7 +300,7 @@
                   href: azure-iot-security-local-configuration-c.md
                 - name: Helyi konfiguráció – C#
                   href: azure-iot-security-local-configuration-csharp.md
-            - name: Edge Defender üzembe helyezése – IoT-Micro-Agent
+            - name: Edge Defender-IoT-mikroügynök üzembe helyezése
               href: how-to-deploy-edge.md
             - name: Biztonsági ügynökök konfigurálása
               displayName: property
@@ -314,7 +315,7 @@
               href: how-to-investigate-device.md
     - name: Hibaelhárítás
       items:
-        - name: Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
+        - name: Defender IoT-mikroügynök hibaelhárítása (előzetes verzió)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: Referencia
@@ -336,7 +337,7 @@
           href: resources-frequently-asked-questions.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: Defender-IoT-Micro-Agent az Azure RTOS API-hoz
+        - name: Defender-IoT-mikroügynök az Azure RTOS API-hoz
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Gyakori kérdések – ügynök
@@ -346,30 +347,28 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: A Defender for IoT szószedete
       href: references-defender-for-iot-glossary.md
-    - name: Szolgáltatások támogatása és kivonulás
+    - name: Funkciók támogatása és kiesása
       items:
-        - name: Szolgáltatások támogatása és kivonulás
+        - name: Funkciók támogatása és kiesása
           displayName: 'C, C#, deprecation, support'
           href: edge-security-module-deprecation.md
 - name: Erőforrás
   items:
+    - name: Fejlessze a biztonsági készségeit a Microsoft Learnnel
+      href: /learn/browse/?term=securityS&terms=securityS
+    - name: Az Azure Security Center dokumentációja
+      href: ../security-center/
+    - name: Az Azure biztonsági dokumentációja
+      href: ../security/index.yml
+    - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: Fejlessze a biztonsági készségeit a Microsoft Learnnel
-          href: /learn/browse/?term=securityS&terms=securityS
-        - name: Az Azure Security Center dokumentációja
-          href: ../security-center/
-        - name: Az Azure biztonsági dokumentációja
-          href: ../security/index.yml
-        - name: Azure RTOS Defender – IoT-Micro-Agent Stack Overflow
+        - name: Azure RTOS Defender-IoT-micro-agent on Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
-        - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
-          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
-        - name: Régiónkénti rendelkezésre állás
-          href: 'https://azure.microsoft.com/regions/services/'
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
-        - name: Támogatási szabályzatok az Azure Defender for IoT-hez
-          href: support-policies.md
-        - name: Videók
-          href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

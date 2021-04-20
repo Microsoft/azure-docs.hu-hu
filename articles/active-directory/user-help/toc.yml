@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: A bejelentkezés menete
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Munkahelyi vagy iskolai fiókba való bejelentkezés
+      href: multi-factor-authentication-end-user-signin.md
     - name: Segítségkérés
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Új jelszó kérésének súgója
@@ -50,7 +52,7 @@
       href: auth-app-android-china.md
     - name: Fiókok biztonsági mentése és helyreállítása
       href: user-help-auth-app-backup-recovery.md
-    - name: Jelszavak importálása a hitelesítő alkalmazásba
+    - name: Jelszavak importálása az Authenticator alkalmazásba
       href: user-help-authenticator-app-import-passwords.md
     - name: GYIK
       href: user-help-auth-app-faq.md
@@ -72,7 +74,7 @@
       href: my-account-portal-sign-ins-page.md
     - name: A portálbeállítások módosítása
       href: my-account-portal-settings.md
-    - name: Fiók rendszergazdájának megkeresése
+    - name: Saját fiók rendszergazdájának megkerese
       href: my-account-find-administrator.md
     - name: Váltás másik szervezetre
       href: cross-tenant-switcher.md

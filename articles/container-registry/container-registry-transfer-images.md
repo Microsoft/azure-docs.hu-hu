@@ -1,46 +1,46 @@
 ---
 title: Összetevők átvitele
-description: Rendszerképek vagy más összetevők gyűjteményének átvitele egy tároló-beállításjegyzékből egy másikba egy átviteli folyamat Azure Storage-fiókokkal történő létrehozásával
+description: Rendszerképek vagy egyéb összetevők gyűjteményének átvitele egy tároló-beállításjegyzékből egy másikba egy átviteli folyamat Azure Storage-fiókokkal történő létrehozásával
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7784ce3e5e0171c84fb1f1da6e69f7d38bec9637
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497982"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737405"
 ---
-# <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik regisztrációs adatbázisba
+# <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
 Ez a cikk bemutatja, hogyan továbbíthatók rendszerképek vagy más beállításjegyzék-összetevők gyűjteményei az egyik Azure Container Registryből egy másikba. A forrás- és célregisztrálók azonos vagy eltérő előfizetésben, bérlőkben, Azure-felhőkben Active Directory vagy fizikailag leválasztott felhőkben is lehetek. 
 
-Az összetevők átviteléhez létre  kell hoznia egy átviteli folyamatot, amely két regisztrációs adatbázis között replikálja az összetevőket a [Blob Storage használatával:](../storage/blobs/storage-blobs-introduction.md)
+Az összetevők átviteléhez létre  kell hoznia egy átviteli folyamatot, amely két regisztrációs adatbázis között replikálja az összetevőket a [blobtároló használatával:](../storage/blobs/storage-blobs-introduction.md)
 
 * A forrás-beállításjegyzékből származó összetevők egy forrás tárfiókban lévő blobba vannak exportálva 
 * A rendszer átmásolja a blobot a forrás tárfiókból egy cél tárfiókba
-* A cél tárfiókban lévő blob összetevőkként lesz importálva a céljegyzékbe. Beállíthatja, hogy az importálási folyamat akkor aktiválódik, amikor az összetevő blobja frissül a céltárolóban.
+* A cél tárfiókban lévő blob összetevőkként lesz importálva a cél beállításjegyzékbe. Beállíthatja, hogy az importálási folyamat akkor aktiválódik, amikor az összetevő blobja frissül a céltárolóban.
 
-Az átvitel ideális a tartalom másolására két, fizikailag leválasztott felhőben található Azure-beli tárolóregisztráló között, az egyes felhők tárfiókjai által közvetítve. Ha ehelyett rendszerképeket szeretne másolni a csatlakoztatott felhőkben található tárolóregisztrálókból, beleértve a Docker Hub és más felhőgyártókat [is,](container-registry-import-images.md) javasoljuk a rendszerképek importálását.
+Az átvitel ideális két Azure-beli tárolóregisztráló közötti tartalom másolására fizikailag leválasztott felhőkben, az egyes felhők tárfiókja által közvetítve. Ha ehelyett rendszerképeket szeretne másolni a csatlakoztatott felhőkben található tárolóregisztrálókból, beleértve a Docker Hub és más felhőgyártókat [is,](container-registry-import-images.md) a rendszerkép importálása ajánlott.
 
-Ebben a cikkben sablon-Azure Resource Manager használhatja az átviteli folyamat létrehozásához és futtatásához. Az Azure CLI használatával kiépíti a társított erőforrásokat, például a titkos tárolókat. Az Azure CLI 2.2.0-s vagy újabb verziója ajánlott. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
+Ebben a cikkben sablon Azure Resource Manager használatával hozza létre és futtatja az átviteli folyamatot. Az Azure CLI használatával kiépíti a társított erőforrásokat, például a titkos tárolókat. Az Azure CLI 2.2.0-s vagy újabb verziója ajánlott. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
-Ez a szolgáltatás a **Prémium** tároló-beállításjegyzék szolgáltatási szinten érhető el. A beállításjegyzék szolgáltatási rétegeiről és korlátairól további információt a következő [Azure Container Registry tartalmaz:](container-registry-skus.md).
+Ez a szolgáltatás a Prémium tároló-beállításjegyzék **szolgáltatási** szinten érhető el. A beállításjegyzék szolgáltatásszintekkel és korlátozásokkal kapcsolatos információkért lásd a Azure Container Registry [rétegeket.](container-registry-skus.md)
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Tároló-beállításjegyzékek** – Szüksége van egy meglévő forrás-beállításjegyzékre, amely átveszi az adatokat, valamint egy célregisztrálójegyzéket. Az ACR-átvitel célja a fizikailag leválasztott felhők közötti mozgás. A teszteléshez a forrás- és célregisztrálók ugyanabban vagy egy másik Azure-előfizetésben, Active Directory vagy felhőben is lehetnek. 
+* **Tároló-beállításjegyzékek** – Szükség van egy meglévő forrás-beállításjegyzékre, amely az átvitelhez szükséges összetevőkből és egy céljegyzékből is létezik. Az ACR-átvitel célja a fizikailag leválasztott felhők közötti mozgás. A teszteléshez a forrás- és célregisztrálók ugyanabban vagy egy másik Azure-előfizetésben, Active Directory vagy felhőben is lehetnek. 
 
-   Ha létre kell hoznia egy beállításjegyzéket, tekintse meg a rövid [útmutatót: Privát](container-registry-get-started-azure-cli.md)tároló-beállításjegyzék létrehozása az Azure CLI használatával. 
-* **Tárfiókok** – Forrás- és céltárfiókokat hozhat létre egy ön által választott előfizetésben és helyen. Tesztelési célokra használhatja ugyanazt az előfizetést vagy előfizetéseket, mint a forrás- és célregisztrálók. A több felhőre vonatkozó forgatókönyvek esetében általában külön tárfiókot hoz létre az egyes felhőkben. 
+   Ha létre kell hoznia egy regisztrációs adatbázist, lásd: Rövid útmutató: Privát tároló-beállításjegyzék létrehozása [az Azure CLI használatával.](container-registry-get-started-azure-cli.md) 
+* **Tárfiókok** – Forrás- és céltárfiókokat hozhat létre egy ön által választott előfizetésben és helyen. Tesztelési célokra használhatja ugyanazt az előfizetést vagy előfizetéseket, mint a forrás- és célregisztrálók. A több felhőre vonatkozó forgatókönyvek esetében általában külön tárfiókot kell létrehozni az egyes felhőkben. 
 
   Ha szükséges, hozza létre a tárfiókokat az [Azure CLI vagy](../storage/common/storage-account-create.md?tabs=azure-cli) más eszközök használatával. 
 
-  Hozzon létre egy blobtárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy transfer nevű *tárolót.* Két vagy több átviteli folyamat osztozhat ugyanazon a tárfiókon, de különböző tárolóhatókört kell használnia.
-* **Kulcstartók** – Kulcstartókra van szükség a forrás- és céltárfiókok eléréséhez használt SAS-jogkivonatok titkos kulcsának tárolásához. Hozza létre a forrás- és célkulcstartókat ugyanabban az Azure-előfizetésben vagy -előfizetésben, mint a forrás- és célregisztrálókat. Bemutatási célból a cikkben használt sablonok és parancsok azt is feltételezik, hogy a forrás- és a célkulcstartó ugyanabban az erőforráscsoportban található, mint a forrás- és a célregisztráló. A gyakori erőforráscsoportok használata nem szükséges, de leegyszerűsíti a cikkben használt sablonokat és parancsokat.
+  Hozzon létre egy blobtárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy transfer nevű *tárolót.* Két vagy több átviteli folyamat osztozhat ugyanazon a tárfiókon, de különböző tárolók hatókörét kell használnia.
+* **Kulcstartók** – Kulcstartókra van szükség a forrás- és céltárfiókok eléréséhez használt SAS-jogkivonatok titkos kulcsának tárolásához. Hozza létre a forrás- és célkulcstartókat ugyanabban az Azure-előfizetésben vagy -előfizetésben, mint a forrás- és célregisztrálókat. Bemutatási célból a cikkben használt sablonok és parancsok azt is feltételezik, hogy a forrás- és célkulcstartók ugyanabban az erőforráscsoportban találhatók, mint a forrás- és célregisztrálók. A gyakori erőforráscsoportok használata nem szükséges, de leegyszerűsíti a cikkben használt sablonokat és parancsokat.
 
    Ha szükséges, hozzon létre kulcstartókat az [Azure CLI vagy](../key-vault/secrets/quick-create-cli.md) más eszközök használatával.
 
@@ -56,32 +56,32 @@ Ez a szolgáltatás a **Prémium** tároló-beállításjegyzék szolgáltatási
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
-A következő három folyamaterőforrást hozza létre a regisztrációs jegyzékek közötti képátvitelhez. Mindegyik PUT-műveletekkel jön létre. Ezek az erőforrások a  forrás- *és* célregisztrálókat és a tárfiókokat is működtetik. 
+A következő három folyamaterőforrást hozza létre a regisztrációs jegyzékek közötti rendszerképátvitelhez. Mindegyik PUT-műveletekkel jön létre. Ezek az erőforrások a forrás- *és* célregisztrálókon és a tárfiókon működnek.  
 
 A tárolóhitelesítés SAS-jogkivonatokat használ, amelyek titkos kulcsként vannak kezeltek a kulcstartókban. A folyamatok felügyelt identitások használatával olvassák a tárolókban tárolt titkos kulcsokat.
 
-* **[ExportPipeline](#create-exportpipeline-with-resource-manager)** – Tartós erőforrás, amely magas szintű  információkat tartalmaz a forrás-beállításjegyzékről és a tárfiókról. Ezek az információk tartalmazzák a forrástároló blobtároló URI-ját és a forrás SAS-jogkivonatot kezelő kulcstartót. 
-* **[ImportPipeline](#create-importpipeline-with-resource-manager)** – Tartós erőforrás, amely magas szintű  információkat tartalmaz a cél beállításjegyzékről és a tárfiókról. Ezek az információk tartalmazzák a céltároló blobtároló URI-ját és a cél SAS-jogkivonatot kezelő kulcstartót. Az importálási eseményindító alapértelmezés szerint engedélyezve van, így a folyamat automatikusan fut, amikor egy összetevő blobja a céltárolóba kerül. 
+* **[ExportPipeline –](#create-exportpipeline-with-resource-manager)** Tartós erőforrás, amely magas szintű  információkat tartalmaz a forrás beállításjegyzékről és a tárfiókról. Ezek az információk tartalmazzák a forrástároló blobtároló URI-ját és a forrás SAS-jogkivonatot kezelő kulcstartót. 
+* **[ImportPipeline –](#create-importpipeline-with-resource-manager)** Tartós erőforrás, amely magas szintű  információkat tartalmaz a cél beállításjegyzékről és a tárfiókról. Ezek az információk tartalmazzák a céltároló blobtároló URI-ját és a cél SAS-jogkivonatot kezelő kulcstartót. Az importálási eseményindító alapértelmezés szerint engedélyezve van, így a folyamat automatikusan lefut, amikor egy összetevőblob a céltárolóba kerül. 
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** – Az ExportPipeline vagy az ImportPipeline erőforrás meghívására használt erőforrás.  
   * Az ExportPipeline manuális futtatásához hozzon létre egy PipelineRun erőforrást, és adja meg az exportálni kívánt munkatermékeket.  
-  * Ha engedélyezve van egy importálási eseményindító, az ImportPipeline automatikusan lefut. Manuálisan is futtatható a PipelineRun használatával. 
+  * Ha egy importálási eseményindító engedélyezve van, az ImportPipeline automatikusan lefut. Manuálisan is futtatható a PipelineRun használatával. 
   * Jelenleg legfeljebb **50** összetevő továbbítható az egyes PipelineRun értékekkel.
 
 ### <a name="things-to-know"></a>Tudnivalók
-* Az ExportPipeline és az ImportPipeline jellemzően eltérő Active Directory a forrás- és célfelhőkhöz társított bérlőkben. Ehhez a forgatókönyvhöz külön felügyelt identitások és kulcstartókra van szükség az erőforrások exportálásához és importálásához. Tesztelési célból ezek az erőforrások elhelyezhetőek ugyanabban a felhőben, és megoszthatják az identitásokat.
-* Alapértelmezés szerint az ExportPipeline és az ImportPipeline sablonokkal a rendszer által hozzárendelt felügyelt identitások hozzáférhetnek a Key Vault titkos kulcsához. Az ExportPipeline és az ImportPipeline sablon az Ön által megadott, felhasználó által hozzárendelt identitást is támogatja. 
+* Az ExportPipeline és az ImportPipeline jellemzően különböző Active Directory a forrás- és célfelhőkhöz társított bérlőkben. Ehhez a forgatókönyvhöz külön felügyelt identitások és kulcstartókra van szükség az erőforrások exportálásához és importálásához. Tesztelési célból ezek az erőforrások elhelyezhetőek ugyanabban a felhőben, és megoszthatják az identitásokat.
+* Alapértelmezés szerint az ExportPipeline és az ImportPipeline sablonok lehetővé teszik, hogy a rendszer által hozzárendelt felügyelt identitás hozzáférjen a Key Vault titkos kulcsához. Az ExportPipeline és az ImportPipeline sablon az Ön által megadott, felhasználó által hozzárendelt identitást is támogatja. 
 
 ## <a name="create-and-store-sas-keys"></a>SAS-kulcsok létrehozása és tárolása
 
-Az átvitel közös hozzáférésű jogosultság jogosultsági (SAS) jogkivonatokat használ a tárfiókok eléréséhez a forrás- és célkörnyezetekben. Hozza létre és tárolja a jogkivonatokat a következő szakaszokban leírtak szerint.  
+Az átvitel közös hozzáférésű jogosultság jogosultsági (SAS) jogkivonatokat használ a forrás- és célkörnyezetekben a tárfiókok eléréséhez. Hozza létre és tárolja a jogkivonatokat a következő szakaszokban leírtak szerint.  
 
 ### <a name="generate-sas-token-for-export"></a>SAS-jogkivonat létrehozása exportáláshoz
 
-Futtassa [az az storage container generate-sas][az-storage-container-generate-sas] parancsot, hogy létrehoz egy SAS-jogkivonatot a forrás tárfiókban található tárolóhoz, amely az összetevő exportálására használható.
+Futtassa [az az storage container generate-sas][az-storage-container-generate-sas] parancsot egy SAS-jogkivonat létrehozásához a forrás tárfiókban található tárolóhoz, amely az összetevő exportálására használható.
 
 *Ajánlott jogkivonat-engedélyek:* Olvasás, Írás, Lista, Hozzáadás. 
 
-A következő példában a parancskimenet a EXPORT_SAS környezeti változóhoz van rendelve, a "?" karakter előtaggal. Frissítse `--expiry` a környezet értékét:
+A következő példában a parancs kimenete a EXPORT_SAS környezeti változóhoz van rendelve, a "?" karakter előtaggal. Frissítse `--expiry` a környezet értékét:
 
 ```azurecli
 EXPORT_SAS=?$(az storage container generate-sas \
@@ -106,7 +106,7 @@ az keyvault secret set \
 
 ### <a name="generate-sas-token-for-import"></a>SAS-jogkivonat létrehozása importáláshoz
 
-Futtassa [az az storage container generate-sas parancsot,][az-storage-container-generate-sas] hogy létrehoz egy SAS-jogkivonatot a cél tárfiókban található tárolóhoz, amely az összetevő importálására használható.
+Futtassa [az az storage container generate-sas][az-storage-container-generate-sas] parancsot egy SAS-jogkivonat létrehozásához a cél tárfiókban található tárolóhoz, amely az összetevő importálására használható.
 
 *Ajánlott jogkivonat-engedélyek:* Olvasás, Törlés, Lista
 
@@ -135,7 +135,7 @@ az keyvault secret set \
 
 ## <a name="create-exportpipeline-with-resource-manager"></a>ExportPipeline létrehozása Resource Manager
 
-Hozzon létre egy ExportPipeline erőforrást a forrásként szolgáló tárolójegyzékhez a sablon Azure Resource Manager használatával.
+Hozzon létre egy ExportPipeline erőforrást a forrásként szolgáló tárolójegyzékhez a Azure Resource Manager használatával.
 
 Másolja az ExportPipeline Resource Manager [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines) egy helyi mappába.
 
@@ -155,13 +155,13 @@ Az `options` exportálási folyamatok tulajdonsága támogatja a választható l
 
 |Paraméter  |Érték  |
 |---------|---------|
-|Lehetőségek | OverwriteBlobs – Meglévő célblobok felülírása<br/>ContinueOnErrors – Ha egy összetevő exportálása meghiúsul, folytassa a fennmaradó összetevők exportálását a forrásjegyzékben.
+|Lehetőségek | OverwriteBlobs – Meglévő célblobok felülírása<br/>ContinueOnErrors – Folytathatja a fennmaradó összetevők exportálását a forrásjegyzékben, ha egy összetevő exportálása meghiúsul.
 
 ### <a name="create-the-resource"></a>Az erőforrás létrehozása
 
 Futtassa [az az deployment group create parancsokat][az-deployment-group-create] egy *exportPipeline* nevű erőforrás létrehozásához az alábbi példákban látható módon. Alapértelmezés szerint a példasablon az első lehetőséggel engedélyezi a rendszer által hozzárendelt identitást az ExportPipeline erőforrásban. 
 
-A második lehetőséggel meg lehet adni az erőforrásnak egy felhasználó által hozzárendelt identitást. (A felhasználó által hozzárendelt identitás létrehozása nem jelenik meg.)
+A második lehetőséggel meg lehet adni az erőforrásnak egy felhasználó által hozzárendelt identitást. (A felhasználó által hozzárendelt identitás létrehozása nem látható.)
 
 Bármelyik lehetőséget is választja, a sablon úgy konfigurálja az identitást, hogy hozzáférjen az SAS-jogkivonathoz az exportálási kulcstartóban. 
 
@@ -228,7 +228,7 @@ Az [az deployment group create parancs][az-deployment-group-create] futtatásáv
 
 A második lehetőséggel meg lehet adni az erőforrásnak egy felhasználó által hozzárendelt identitást. (A felhasználó által hozzárendelt identitás létrehozása nem látható.)
 
-Bármelyik lehetőséget is választja, a sablon úgy konfigurálja az identitást, hogy hozzáférjen az SAS-jogkivonathoz az importálási kulcstartóban. 
+Bármelyik lehetőséget is választja, a sablon konfigurálja az identitást, hogy hozzáférjen az SAS-jogkivonathoz az importálási kulcstartóban. 
 
 #### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>1. lehetőség: Erőforrás létrehozása és a rendszer által hozzárendelt identitás engedélyezése
 
@@ -335,7 +335,7 @@ Ha nem engedélyezték az importálási folyamat paraméterét, futtassa manuál
 
 ## <a name="create-pipelinerun-for-import-with-resource-manager-optional"></a>Create PipelineRun for import with Resource Manager (nem kötelező) 
  
-A PipelineRun erőforrást is használhatja egy ImportPipeline eseményindítóhoz a cél tárolójegyzékbe történő összetevő-importáláshoz.
+A PipelineRun erőforrás használatával is aktiválhat egy ImportPipeline indítót a cél tárolójegyzékbe történő összetevő-importáláshoz.
 
 Másolja a PipelineRun Resource Manager [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import) egy helyi mappába.
 
@@ -346,7 +346,7 @@ Adja meg a következő paraméterértékeket a `azuredeploy.parameters.json` fá
 |registryName (beállításjegyzék neve)     | A céltároló regisztrációs adatbázisának neve      |
 |pipelineRunName     |  A futtatáshoz választott név       |
 |pipelineResourceId     |  Az importálási folyamat erőforrás-azonosítója.<br/>Például: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
-|sourceName (forrásnév)     |  A tárfiókban lévő exportált összetevők (például *myblob)* meglévő blobneve
+|sourceName (forrásnév)     |  A tárfiókban exportált összetevők (például *myblob)* meglévő blobneve
 
 Ha a PipelineRun erőforrást azonos tulajdonságokkal újraalkotja, a [forceUpdateTag](#redeploy-pipelinerun-resource) tulajdonságot is használnia kell.
 
@@ -376,9 +376,9 @@ Ha az üzembe helyezés sikeresen befejeződött, ellenőrizze az összetevők i
 az acr repository list --name <target-registry-name>
 ```
 
-## <a name="redeploy-pipelinerun-resource"></a>Folyamat ismételt üzembeásaErőforrás újrafuttatása
+## <a name="redeploy-pipelinerun-resource"></a>Folyamat ismételt üzembeásaErőforrás újratelepítése
 
-Ha a PipelineRun erőforrást azonos tulajdonságokkal újraalkotja, akkor a **forceUpdateTag tulajdonságot kell** használnia. Ez a tulajdonság azt jelzi, hogy a PipelineRun erőforrást akkor is újra létre kell hozni, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal eltérő, amikor újra üzembe lép a PipelineRun erőforrás. Az alábbi példa újra létrehoz egy PipelineRun for export adatokat. Az aktuális dátum/idő érték a forceUpdateTag beállítására használható, ezzel biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
+Ha a PipelineRun erőforrást azonos tulajdonságokkal újraalkotja, akkor a **forceUpdateTag** tulajdonságot kell használnia. Ez a tulajdonság azt jelzi, hogy a PipelineRun erőforrást akkor is újra létre kell hozni, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal eltérő, amikor újra üzembe lép a PipelineRun erőforrás. Az alábbi példa újra létrehoz egy PipelineRun for export adatokat. Az aktuális dátum/idő érték a forceUpdateTag beállítására használható, ezzel biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
@@ -416,19 +416,25 @@ az resource delete \
 * **Template deployment vagy hibák**
   * Ha egy folyamat futtatása sikertelen, nézze meg `pipelineRunErrorMessage` a futtatás erőforrásának tulajdonságát.
   * A sablonok üzembe helyezési hibáival kapcsolatos gyakori hibákért lásd: [ARM-sablonok üzembe helyezésének hibaelhárítása](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+* **A tároló elérésével kapcsolatos problémák**<a name="problems-accessing-storage"></a>
+  * Ha hibát lát a `403 Forbidden` tárolóban, valószínűleg problémája van az SAS-jogkivonattal.
+  * Előfordulhat, hogy az SAS-jogkivonat jelenleg nem érvényes. Előfordulhat, hogy az SAS-jogkivonat lejárt, vagy a tárfiók kulcsai megváltoztak az SAS-jogkivonat létrehozása óta. Ellenőrizze, hogy az SAS-jogkivonat érvényes-e. Próbálja meg használni az SAS-jogkivonatot a tárfiók tárolóhoz való hozzáféréshez való hitelesítéshez. Például helyezzen egy meglévő blobvégpontot, majd az SAS-jogkivonatot egy új Microsoft Edge InPrivate-ablak címsorába, vagy töltsön fel egy blobot a tárolóba az SAS-jogkivonattal a `az storage blob upload` használatával.
+  * Előfordulhat, hogy az SAS-jogkivonat nem rendelkezik elegendő engedélyezett erőforrástípussal. Ellenőrizze, hogy az SAS-jogkivonat rendelkezik-e engedélyekkel a szolgáltatáshoz, a tárolóhoz és az objektumhoz az Engedélyezett erőforrástípusok alatt ( a `srt=sco` SAS-jogkivonatban).
+  * Előfordulhat, hogy az SAS-jogkivonat nem rendelkezik megfelelő engedélyekkel. Az exportálási folyamatokhoz a szükséges SAS-jogkivonat-engedélyek a következőek: Olvasás, Írás, Lista és Hozzáadás. Importálási folyamatok esetén a szükséges SAS-jogkivonat-engedélyek a következőek: Olvasás, Törlés és Lista. (A Törlés engedélyre csak akkor van szükség, ha az importálási folyamaton `DeleteSourceBlobOnSuccess` engedélyezve van a beállítás.)
+  * Előfordulhat, hogy az SAS-jogkivonat nem csak HTTPS használatára van konfigurálva. Ellenőrizze, hogy az SAS-jogkivonat csak HTTPS használatára van-e konfigurálva ( `spr=https` a SAS-jogkivonatban).
 * **Tárolási blobok exportálásával vagy importálásával kapcsolatos problémák**
-  * Előfordulhat, hogy az SAS-jogkivonat lejárt, vagy nem rendelkezik megfelelő engedélyekkel a megadott exportálási vagy importálási futtatáshoz
-  * Előfordulhat, hogy a forrás tárfiókban lévő meglévő tárolóblob nem lesz felülírva több exportálási futtatás során. Ellenőrizze, hogy az OverwriteBlob beállítás be van-e állítva az exportálási futtatásban, és hogy az SAS-jogkivonat megfelelő engedélyekkel rendelkezik-e.
+  * Előfordulhat, hogy az SAS-jogkivonat érvénytelen, vagy nem rendelkezik megfelelő engedélyekkel a megadott exportálási vagy importálási futtatáshoz. Lásd: [Storage-hozzáféréssel kapcsolatos problémák.](#problems-accessing-storage)
+  * Előfordulhat, hogy a forrás tárfiók meglévő storage blobja nem lesz felülírva több exportálási futtatás során. Győződjön meg arról, hogy az OverwriteBlob beállítás be van állítva az exportálási futtatásban, és hogy az SAS-jogkivonat megfelelő engedélyekkel rendelkezik.
   * Előfordulhat, hogy a cél tárfiókban lévő Storage-blob nem törlődik a sikeres importálási futtatás után. Ellenőrizze, hogy a DeleteBlobOnSuccess beállítás be van-e állítva az importálási futtatásban, és hogy az SAS-jogkivonat megfelelő engedélyekkel rendelkezik-e.
   * A Storage-blob nincs létrehozva vagy törölve. Győződjön meg arról, hogy az exportálási vagy importálási futtatás során megadott tároló létezik, vagy a megadott tárolóblob létezik manuális importálási futtatáshoz. 
 * **AzCopyval kapcsolatos problémák**
-  * Lásd: [Az AzCopy-hibák elhárítása.](../storage/common/storage-use-azcopy-configure.md)  
-* **Az összetevők átvitelével kapcsolatos problémák**
-  * Nem minden összetevő lesz átadva, vagy egyik sem. Erősítse meg az összetevők helyesírását az exportálási futtatás során, valamint a blob nevét az exportálási és importálási futtatás során. Győződjön meg arról, hogy legfeljebb 50 összetevőt ad át.
-  * Előfordulhat, hogy a folyamat futtatása nem fejeződött be. Az exportálási vagy importálási futtatás némi időt is el fog venni. 
-  * Egyéb folyamatokkal kapcsolatos problémák [](../azure-resource-manager/templates/deployment-history.md) esetén adja meg az exportálási futtatás vagy az importálási futtatás üzembe helyezési korrelációs azonosítóját a Azure Container Registry csapat számára.
+  * Lásd: [AzCopy-problémák elhárítása.](../storage/common/storage-use-azcopy-configure.md)  
+* **Összetevők átvitelével kapcsolatos problémák**
+  * Nem minden összetevő lesz átadva, vagy egyik sem. Erősítse meg az összetevők helyesírását az exportálási futtatás során, valamint a blob nevét az exportálási és importálási futtatás során. Győződjön meg arról, hogy legfeljebb 50 összetevő átvitelét kezdeményezi.
+  * Előfordulhat, hogy a folyamat futtatása nem fejeződött be. Az exportálási vagy importálási futtatás egy kis időt is vegyen át. 
+  * Egyéb folyamatokkal kapcsolatos problémák [](../azure-resource-manager/templates/deployment-history.md) esetén adja meg az exportálási futtatás vagy az importálási futtatás üzembe helyezési korrelációs azonosítóját a Azure Container Registry csapatnak.
 * **Problémák a kép fizikai elkülönített környezetben való lekért lehúzása esetén**
-  * Ha külső rétegekkel kapcsolatos hibákat lát, vagy megkísérli feloldani a mcr.microsoft.com amikor fizikailag elkülönített környezetben kísérel meg le egy képet, a rendszerkép jegyzékfájlja valószínűleg nem terjeszthető rétegekkel rendelkezik. A fizikailag elkülönített környezet természetéből adódóan ezek a lemezképek gyakran nem lesznek leküldve. Erről meggyőződhet, ha ellenőrzi a rendszerkép jegyzékfájlját, hogy vannak-e külső regisztrációs adatokra mutató hivatkozások. Ebben az esetben le kell helyeznie a nem terjeszthető rétegeket a nyilvános felhőbeli ACR-be, mielőtt üzembe helyez egy exportálási folyamatfuttatást a rendszerképhez. Ehhez a nem terjeszthető rétegek beállításjegyzékbe való [leküldését Hogyan útmutatót.](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+  * Ha külső rétegekkel kapcsolatos hibákat lát, vagy megkísérli feloldani a mcr.microsoft.com amikor fizikailag elkülönített környezetben kísérel meg le egy képet, a rendszerkép jegyzékfájlja valószínűleg nem terjeszthető rétegekkel rendelkezik. A fizikailag elkülönített környezet természetéből adódóan ezek a lemezképek gyakran nem lesznek lekértek. Erről meggyőződhet, ha ellenőrzi a rendszerkép jegyzékfájlját, hogy vannak-e külső regisztrációs adatokra mutató hivatkozások. Ebben az esetben le kell helyeznie a nem terjeszthető rétegeket a nyilvános felhőbeli ACR-be, mielőtt üzembe helyez egy exportálási folyamatfuttatást a rendszerképhez. Ehhez a nem terjeszthető rétegek beállításjegyzékbe való leküldését Hogyan tekintse [meg.](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Következő lépések
 

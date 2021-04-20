@@ -1,89 +1,89 @@
 ---
-title: A biztonsági szabályzatok, a kezdeményezések és a javaslatok megismerése Azure Security Center
-description: A biztonsági szabályzatok, kezdeményezések és javaslatok megismerése Azure Security Centerban.
+title: A biztonsági szabályzatok, kezdeményezések és javaslatok Azure Security Center
+description: Ismerje meg a biztonsági szabályzatokat, kezdeményezéseket és javaslatokat a Azure Security Center.
 author: memildin
 ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4eea2611997732a263e9e824bc150b45ed145ecd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176433"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738971"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Mik azok a biztonsági szabályzatok, kezdeményezések és javaslatok?
 
-Security Center az előfizetések biztonsági kezdeményezéseit alkalmazza. Ezek a kezdeményezések egy vagy több biztonsági házirendet tartalmaznak. Ezen szabályzatok mindegyike biztonsági javaslatot eredményez a biztonsági helyzet javítására. Ez az oldal részletesen ismerteti ezeket az ötleteket.
+Security Center biztonsági kezdeményezéseket alkalmaz az előfizetéseire. Ezek a kezdeményezések egy vagy több biztonsági szabályzatot tartalmaznak. A szabályzatok mindegyikének eredménye egy biztonsági javaslat, amely javítja a biztonsági helyzetét. Ez az oldal részletesen ismerteti ezeket az ötleteket.
 
 
 ## <a name="what-is-a-security-policy"></a>Mi az a biztonsági szabályzat?
 
-Az Azure Policy-ben létrehozott Azure Policy-definíció egy szabály az ellenőrzött biztonsági feltételekről. A beépített definíciók olyan dolgok, mint például annak szabályozása, hogy milyen típusú erőforrásokat lehet telepíteni, vagy érvényesíteni a címkék használatát az összes erőforráson. Létrehozhat saját egyéni házirend-definíciókat is.
+A Azure Policy létrehozott Azure-szabályzatdefiníciók meghatározott biztonsági feltételekre vonatkozó szabályok. A beépített definíciók olyan lehetőségeket tartalmaznak, mint például az üzembe helyezhető erőforrások típusának szabályozása vagy a címkék használatának kényszerítése az összes erőforráson. Saját egyéni szabályzatdefiníciókat is létrehozhat.
 
-A szabályzat-definíciók (beépített vagy egyéni) megvalósításához hozzá kell rendelnie őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
+A szabályzatdefiníciók megvalósításához (akár beépített, akár egyéni) hozzá kell rendelnie őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
 
-A Azure Policy különböző típusú házirendekkel rendelkezik. Security Center főleg olyan "naplózási" házirendeket használ, amelyek bizonyos feltételeket és konfigurációkat ellenőriznek, majd jelentést tesznek a megfelelőségről. Léteznek olyan "kényszerítő" szabályzatok is, amelyek a biztonságos beállítások alkalmazására használhatók.
+A szabályzatok különböző Azure Policy. Security Center "Naplózás" szabályzatokat használ, amelyek ellenőrzik az adott feltételeket és konfigurációkat, majd jelentést készítnek a megfelelőségről. Emellett "Kikényszeríteni" szabályzatok is használhatók a biztonságos beállítások alkalmazáshoz.
 
 ## <a name="what-is-a-security-initiative"></a>Mi az a biztonsági kezdeményezés?
 
-Az Azure-kezdeményezés olyan Azure-házirend-definíciók vagy-szabályok gyűjteménye, amelyek egy adott célhoz vagy célhoz vannak csoportosítva. Az Azure-kezdeményezések leegyszerűsítik a házirendek felügyeletét azáltal, hogy a szabályzatok egy készletét együtt, logikusan, egyetlen elemként csoportosítják.
+Az Azure-kezdeményezések azure-szabályzatdefiníciók vagy szabályok gyűjteményei, amelyek egy adott cél vagy cél elérése érdekében vannak csoportosítva. Az Azure-kezdeményezések leegyszerűsítik a szabályzatok kezelését azáltal, hogy logikailag egyetlen elemként csoportosítják a szabályzatokat.
 
-A biztonsági kezdeményezés meghatározza a számítási feladatok kívánt konfigurációját, és segít biztosítani, hogy megfeleljen a vállalat vagy a szabályozók biztonsági követelményeinek.
+A biztonsági kezdeményezés határozza meg a számítási feladatok kívánt konfigurációját, és segít biztosítani, hogy megfeleljen a vállalat vagy a szabályozások biztonsági követelményeinek.
 
-A biztonsági szabályzatokhoz hasonlóan Security Center kezdeményezések is létrejönnek a Azure Policy. A [Azure Policy](../governance/policy/overview.md) a házirendek kezeléséhez, a kezdeményezések létrehozásához, valamint a több előfizetéshez vagy a teljes felügyeleti csoportokhoz tartozó kezdeményezések hozzárendeléséhez használható.
+A biztonsági szabályzatok Security Center a kezdeményezések is a Azure Policy. A szabályzatokat [Azure Policy](../governance/policy/overview.md) kezelheti, kezdeményezéseket építhet ki, és kezdeményezéseket rendelhet hozzá több előfizetéshez vagy teljes felügyeleti csoportokhoz.
 
-Az alapértelmezett kezdeményezés automatikusan hozzá van rendelve a Azure Security Center minden előfizetéséhez az Azure biztonsági Teljesítményteszte. Ez a teljesítményteszt a Microsoft által létrehozott, az Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít. További tudnivalók az [Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+Az alapértelmezett kezdeményezés automatikusan hozzá van rendelve a Azure Security Center összes előfizetéséhez az Azure biztonsági teljesítményteszt. Ez a teljesítményteszt a Microsoft által írt, Azure-specifikus irányelvek készlete a közös megfelelőségi keretrendszeren alapuló biztonsági és megfelelőségi ajánlott eljárásokhoz. Ez a széles körben elterjedt teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a National Institute of Standards and Technology [(NIST)](https://www.nist.gov/) vezérlőire épül, és a felhőközpontú biztonságra összpontosít. További tudnivalók az [Azure-biztonsági teljesítménytesztről](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
-Security Center a következő lehetőségeket kínálja a biztonsági kezdeményezésekkel és házirendekkel való munkavégzéshez:
+Security Center következő lehetőségeket kínálja a biztonsági kezdeményezésekkel és szabályzatokkal való munkavégzéshez:
 
-- **A beépített alapértelmezett kezdeményezés megtekintése és szerkesztése** – a Security Center engedélyezésekor az "Azure biztonsági teljesítményteszt" nevű kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához a szabályzat paramétereinek szerkesztésével engedélyezheti vagy letilthatja az egyéni házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](./policy-reference.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
+- **A beépített alapértelmezett** kezdeményezés megtekintése és szerkesztése – Ha engedélyezi a Security Center, az "Azure Security Benchmark" nevű kezdeményezés automatikusan hozzá lesz rendelve az Security Center összes regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes szabályzatokat a szabályzat paramétereinek szerkesztésével. A beépített biztonsági [szabályzatok listájából](./policy-reference.md) további információkhoz is láthatja a beépített lehetőségeket.
 
-- **Saját egyéni kezdeményezések hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni szabályzatok létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági kezdeményezések és házirendek használata](custom-security-policies.md).
+- **Saját egyéni kezdeményezések hozzáadása** – Ha testre szeretné szabni az előfizetéséhez alkalmazott biztonsági kezdeményezéseket, ezt a saját Security Center. Ezután javaslatokat kap, ha a gépek nem követik a létrehozott szabályzatokat. Útmutatás egyéni szabályzatok létrehozásához és hozzárendeléshez: [Egyéni biztonsági kezdeményezések és szabályzatok használata.](custom-security-policies.md)
 
-- **Szabályozási megfelelőségi szabványok hozzáadása kezdeményezésként** – Security Center szabályozási megfelelőségi irányítópultja egy adott szabvány vagy szabályozás (például Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020) kontextusában jeleníti meg a környezet összes értékelésének állapotát. További információ: [a szabályozás megfelelőségének javítása](security-center-compliance-dashboard.md).
+-  Szabályozási megfelelőségi szabványok felvétele kezdeményezésekként – az Security Center szabályozási megfelelőségi irányítópultja egy adott szabvány vagy szabályozás (például az Azure CIS, az NIST SP 800-53 R4, a SWIFT CSP CSCF-v2020) kontextusában jeleníti meg a környezetben végzett értékelések állapotát. További információ: [A jogszabályi megfelelőség javítása.](security-center-compliance-dashboard.md)
 
 ## <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslat?
 
-A szabályzatok használatával Security Center rendszeresen elemzi az erőforrások megfelelőségi állapotát, hogy azonosítsa a lehetséges biztonsági hibás konfigurációkat és gyengeségeket. Ezután javaslatokat ad a problémák megoldására. A javaslatok az erőforrások a vonatkozó házirendekkel való értékelésének, valamint a meghatározott követelményeknek nem megfelelő erőforrások azonosításának eredményei.
+A szabályzatok Security Center rendszeresen elemzi az erőforrások megfelelőségi állapotát a lehetséges biztonsági konfigurációk és gyengeségek azonosítása érdekében. Ezután javaslatokat tesz a problémák megoldásához. A javaslatok az erőforrások megfelelő szabályzatokkal való értékelésének és a meghatározott követelményeknek nem megfelelő erőforrások azonosításának az eredménye.
 
-A Security Center a választott kezdeményezéseken alapuló biztonsági javaslatokat tesz. Ha a kezdeményezés szabályzata össze van hasonlítva az erőforrásokkal, és egy vagy több nem megfelelőnek minősül, akkor a Security Center.
+Security Center a kiválasztott kezdeményezések alapján teszi a biztonsági javaslatait. Ha a kezdeményezés egy szabályzatát összeveti az erőforrásokkal, és talál egy vagy több nem megfelelő szabályzatot, az a szabályzatot a Security Center.
 
-A javaslatok olyan műveletek, amelyekkel biztonságossá teheti és megerősítheti az erőforrásait. Minden javaslat a következő információkat tartalmazza:
+A javaslatok olyan műveletek, amelyek az erőforrások biztonságossá és biztonságossá te tehének. Minden javaslat a következő információkat biztosítja:
 
 - A probléma rövid leírása
-- A javaslat megvalósításának végrehajtásához szükséges szervizelési lépések
+- A javaslat megvalósításához szükséges javítási lépések
 - Az érintett erőforrások
 
-A gyakorlatban a következőképpen működik:
+A gyakorlatban ez a következő:
 
 1. Az Azure biztonsági teljesítményteszt egy ***kezdeményezés***
-1. Olyan ***szabályzatot*** tartalmaz, amely megköveteli az összes Azure Storage-fiók számára a hálózati hozzáférés korlátozását, így csökkentheti a támadási felületet. Ezt a házirendet "Storage-fiókoknak kell korlátoznia a virtuális hálózati szabályok használatával", és letiltható vagy engedélyezhető Azure Policy
-1. Ha Azure Security Center megtalál egy Azure Storage-fiókot a védett előfizetések bármelyikén, a rendszer kivizsgálja ezeket a fiókokat, hogy megtudja, vannak-e védve virtuális hálózati szabályokkal. Ha nem, a rendszer egy ***javaslatot*** jelenít meg a helyzet kijavításához és az erőforrások biztonságának megerősítéséhez. 
+1. Tartalmaz egy ***szabályzatot,*** amely megköveteli, hogy az összes Azure Storage-fiók korlátozza a hálózati hozzáférést a támadási felület csökkentése érdekében. Ennek a szabályzatnak a neve " A tárfiókok virtuális hálózati szabályokkal korlátozzák a hálózati hozzáférést", és letilthatók vagy engedélyezhetők a Azure Policy
+1. Ha Azure Security Center valamelyik védett előfizetésben talál Azure Storage-fiókot, akkor kiértékeli ezeket a fiókokat, és megállapítja, hogy virtuális hálózati szabályokkal vannak-e védve. Ha nem, megjelenik egy javaslat, hogy javítsa ki ***ezt*** a helyzetet, és javítsa az erőforrások biztonságát. 
 
-Ezért egy kezdeményezés (1) olyan szabályzatokat (2) tartalmaz, amelyek megfelelő (3) javaslatokat hoznak. 
+Így a kezdeményezés (1) olyan szabályzatokat (2) tartalmaz, amelyek szükség esetén javaslatokat hoznak létre (3). 
 
 ## <a name="viewing-the-relationship-between-a-recommendation-and-a-policy"></a>Javaslat és szabályzat közötti kapcsolat megtekintése
 
-Ahogy fent említettük, Security Center beépített javaslatai az Azure biztonsági Teljesítményteszten alapulnak. Szinte minden javaslat rendelkezik egy alapul szolgáló házirenddel, amely a teljesítményteszt követelményének megfelelően van származtatva.
+Ahogy korábban említettük, Security Center beépített javaslatok az Azure biztonsági teljesítményteszten alapulnak. Szinte minden javaslatnak van egy mögöttes szabályzata, amely a teljesítményteszt egyik követelménye alapján van kivezetve.
 
-A javaslatok részleteinek áttekintéséhez gyakran hasznos, ha látni szeretné a mögöttes szabályzatot. A szabályzat által támogatott minden javaslat esetében a javaslat részletei lapon található **házirend-definíció megtekintése** hivatkozásra kattintva lépjen közvetlenül a megfelelő szabályzat Azure Policy bejegyzésére:
+Egy javaslat részleteinek áttekintésekor gyakran hasznos lehet a mögöttes szabályzat megtekintése. A szabályzat által támogatott összes  javaslathoz a Javaslat részletei lap Szabályzatdefiníciók megtekintése hivatkozásával közvetlenül a megfelelő szabályzat Azure Policy használhatja:
 
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy lapra a javaslatot támogató konkrét szabályzathoz":::
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy javaslatot támogató adott szabályzat lapjára":::
 
-Ezzel a hivatkozással megtekintheti a szabályzat definícióját, és áttekintheti az értékelési logikát. 
+Ezen a hivatkozáson megtekintheti a szabályzatdefiníciót, és áttekinti a kiértékelési logikát. 
 
-Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási útmutatójában](recommendations-reference.md), akkor a szabályzat-definíciós lapokra mutató hivatkozásokat is láthatja:
+Ha áttekinti a biztonsági javaslatok referencia-útmutatójában található javaslatok [listáját,](recommendations-reference.md)a szabályzatdefiníciós oldalakra mutató hivatkozásokat is látni fog:
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok referenciaoldalán":::
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ezen az oldalon részletesen ismertetjük a házirendek, a kezdeményezések és a javaslatok közötti alapvető fogalmakat és kapcsolatokat. A kapcsolódó információk a következő témakörben találhatók:
+Ez az oldal magas szinten ismertette a szabályzatok, kezdeményezések és javaslatok alapvető fogalmait és kapcsolatait. A kapcsolódó információkért lásd:
 
 - [Egyéni kezdeményezések létrehozása](custom-security-policies.md)
-- [A javaslatok letiltására vonatkozó biztonsági szabályzatok letiltása](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)
-- [Megtudhatja, hogyan szerkesztheti a biztonsági házirendeket Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Biztonsági szabályzatok letiltása javaslatok letiltásához](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)
+- [Megtudhatja, hogyan szerkeszthet biztonsági szabályzatokat a Azure Policy](../governance/policy/tutorials/create-and-manage.md)

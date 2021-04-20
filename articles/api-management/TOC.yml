@@ -173,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: A fejlesztői élmény testreszabása
       items:
-        - name: Ismerkedés a fejlesztői portállal
-          href: api-management-howto-developer-portal.md
-        - name: Migrálás az elavultról az új fejlesztői portálra
-          href: developer-portal-deprecated-migration.md
-        - name: Hitelesítés az Azure AD-vel
-          href: api-management-howto-aad.md
-        - name: Hitelesítés az Azure AD B2C-vel
-          href: api-management-howto-aad-b2c.md
-        - name: Delegált hitelesítés
-          href: api-management-howto-setup-delegation.md
-        - name: E-mail-értesítések és sablonok
-          href: api-management-howto-configure-notifications.md
-        - name: OAuth-támogatás engedélyezése a konzolon
-          href: api-management-howto-oauth2.md
-        - name: Elavult portál – A portál testreszabása
-          href: api-management-customize-styles.md
-        - name: Elavult portál – Lapok tartalmának és elrendezésének módosítása
-          href: api-management-modify-content-layout.md
-        - name: Elavult portál – Testreszabás sablonokkal
-          href: api-management-developer-portal-templates.md
-    - name: Elavult portál sablonjai
-      items:
-        - name: Adatmodell-referencia
-          href: api-management-template-data-model-reference.md
-        - name: Oldalvezérlők
-          href: api-management-page-controls.md
-        - name: Sablonok
-          href: api-management-developer-portal-templates-reference.md
-        - name: API-k
-          href: api-management-api-templates.md
-        - name: Termékek
-          href: api-management-product-templates.md
-        - name: Alkalmazások
-          href: api-management-application-templates.md
-        - name: Hibák
-          href: api-management-issue-templates.md
-        - name: Felhasználói profil
-          href: api-management-user-profile-templates.md
-        - name: Oldalak
-          href: api-management-page-templates.md
-        - name: Sablonerőforrások
-          href: api-management-template-resources.md
+        - name: A fejlesztői portál használata
+          items:
+            - name: Ismerkedés a fejlesztői portállal
+              href: api-management-howto-developer-portal.md
+            - name: Gyakori kérdések
+              href: developer-portal-faq.md
+            - name: Portál üzembe helyezésének automatizálása
+              href: automate-portal-deployments.md
+            - name: Migrálás az elavultról az új fejlesztői portálra
+              href: developer-portal-deprecated-migration.md
+            - name: Hitelesítés az Azure AD-vel
+              href: api-management-howto-aad.md
+            - name: Hitelesítés az Azure AD B2C-vel
+              href: api-management-howto-aad-b2c.md
+            - name: Hitelesítés delegálása
+              href: api-management-howto-setup-delegation.md
+            - name: OAuth-támogatás engedélyezése a konzolon
+              href: api-management-howto-oauth2.md
+            - name: E-mail-értesítések és sablonok
+              href: api-management-howto-configure-notifications.md
+            - name: Integrációs Application Insights
+              href: developer-portal-integrate-application-insights.md
+            - name: Integrációs Google Címkekezelő
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: Saját gazdagép fejlesztői portálja
+          items:
+            - name: Saját üzemeltetett portál létrehozása
+              href: developer-portal-self-host.md
+            - name: Az önkiszolgáló üzemeltetés alternatív megközelítései
+              href: developer-portal-alternative-processes-self-host.md
+            - name: Widgetek implementálja
+              href: developer-portal-implement-widgets.md
+            - name: Közreműködési widgetek
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: Közösségi widgetek használata
+              href: developer-portal-use-community-widgets.md
+            - name: Saját üzemeltetett portál tesztelése
+              href: developer-portal-testing.md
+        - name: Elavult portál
+          items:
+            - name: Elavult portál – A portál testreszabása
+              href: api-management-customize-styles.md
+            - name: Elavult portál – Lapok tartalmának és elrendezésének módosítása
+              href: api-management-modify-content-layout.md
+            - name: Elavult portál – Testreszabás sablonokkal
+              href: api-management-developer-portal-templates.md
+        - name: Elavult portál sablonjai
+          items:
+            - name: Adatmodell-referencia
+              href: api-management-template-data-model-reference.md
+            - name: Oldalvezérlők
+              href: api-management-page-controls.md
+            - name: Sablonok
+              href: api-management-developer-portal-templates-reference.md
+            - name: API-k
+              href: api-management-api-templates.md
+            - name: Termékek
+              href: api-management-product-templates.md
+            - name: Alkalmazások
+              href: api-management-application-templates.md
+            - name: Hibák
+              href: api-management-issue-templates.md
+            - name: Felhasználói profil
+              href: api-management-user-profile-templates.md
+            - name: Oldalak
+              href: api-management-page-templates.md
+            - name: Sablonerőforrások
+              href: api-management-template-resources.md
     - name: Házirendek meghatározása
       items:
         - name: Házirendek beállítása vagy szerkesztése

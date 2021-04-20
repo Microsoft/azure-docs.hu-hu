@@ -1,12 +1,12 @@
 ---
 title: 'Rövid útmutató: Magas rendelkezésre állás beállítása Azure Front Door – Azure PowerShell'
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Front Door magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokat a Azure PowerShell.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat Azure Front Door magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokat a Azure PowerShell.
 services: front-door
 documentationcenter: na
 author: duongau
 ms.author: duau
 manager: KumudD
-ms.date: 09/21/2020
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-api
-ms.openlocfilehash: cd439a5931340f56401e5f6ba7a4e09f35ab7c7d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 17fa18e1f29622b941c281b9cdce27f6e72eb13a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107539050"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739979"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre álló globális webalkalmazáshoz a Azure PowerShell
 
-A Azure Front Door használatának első Azure PowerShell egy magas rendelkezésre álló és nagy teljesítményű globális webalkalmazás létrehozásához.
+A Azure Front Door használatának első Azure PowerShell segítségével hozzon létre egy magas rendelkezésre álló és nagy teljesítményű globális webalkalmazást.
 
-A Front Door a webes forgalmat egy háttérkészlet adott erőforrásaihoz irányítja. Meghatározta az előteretartományt, erőforrásokat adott hozzá egy háttérkészlethez, és létrehozott egy útválasztási szabályt. Ez a cikk az egyik háttérkészlet egyszerű konfigurációját használja két webalkalmazás-erőforrással és egyetlen útválasztási s szabálysal, amely az alapértelmezett elérésiút-egyeztetést (/*) használja.
+A Front Door a webes forgalmat a háttérkészlet adott erőforrásaihoz irányítja. Meghatározta az előteretartományt, erőforrásokat adott hozzá egy háttérkészlethez, és létrehozott egy útválasztási szabályt. Ez a cikk az egyik háttérkészlet egyszerű konfigurációját használja két webalkalmazás-erőforrással, valamint egyetlen útválasztási szabályt a "/*" alapértelmezett elérésiút-megfeleltetéssel.
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="A PowerShellt Front Door környezet diagramja." border="false":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +40,7 @@ A Front Door a webes forgalmat egy háttérkészlet adott erőforrásaihoz irán
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli hozzá. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup segítségével:](/powershell/module/az.resources/new-azresourcegroup)
 
@@ -48,24 +50,24 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 
 ## <a name="create-two-instances-of-a-web-app"></a>Webalkalmazás két példányának létrehozása
 
-Ehhez a rövid útmutatóhoz két példányra van szükség egy webalkalmazásból, amelyek különböző Azure-régiókban futnak. Mindkét webalkalmazáspéldány Aktív/Aktív módban fut, így bármelyik képes forgalmat venni. Ez a konfiguráció eltér az aktív/készenléti konfigurációtól, ahol az egyik feladatátvételként működik.
+Ehhez a rövid útmutatóhoz két példányra van szükség egy webalkalmazásból, amelyek különböző Azure-régiókban futnak. Mindkét webalkalmazás-példány aktív/aktív módban fut, így bármelyik képes forgalmat venni. Ez a konfiguráció eltér az aktív/készenléti konfigurációtól, ahol az egyik feladatátvételként működik.
 
 Ha még nem rendelkezik webalkalmazással, a következő szkript használatával állítson be két példa-webalkalmazást.
 
 ```azurepowershell-interactive
 # Create first web app in Central US region.
 $webapp1 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-1" `
 -Location centralus `
 -ResourceGroupName myResourceGroupFD `
 -AppServicePlan myAppServicePlanCentralUS
 
 # Create second web app in South Central US region.
 $webapp2 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-2" `
 -Location southcentralus `
 -ResourceGroupName myResourceGroupFD `
--AppServicePlan myAppServicePlanSouthCentralUS
+-AppServicePlan myAppServicePlanEastUS
 ```
 
 ## <a name="create-a-front-door"></a>Bejárati ajtó létrehozása
@@ -73,8 +75,8 @@ $webapp2 = New-AzWebApp `
 Ez a szakasz részletesen bemutatja, hogyan hozhatja létre és konfigurálhatja a Front Door:
     
 * Az előtereobjektum tartalmazza a Front Door alapértelmezett tartományt.
-* A háttérkészlet egyenértékű háttérkészletek halmaza, amelyekhez Front Door terheléselosztást az ügyfélkéréshez.
-* Az útválasztási szabályok leképezik az előtere gazdagépet és az egyező URL-elérésiút-mintát egy adott háttérkészletre.
+* A háttérkészlet olyan egyenértékű háttérkészletek készlete, amelyekre a Front Door terheléselosztást hoz létre.
+* Az útválasztási szabályok leképezik az előtere gazdagépet és az egyező URL-útvonalmintát egy adott háttérkészletre.
 
 ### <a name="create-a-frontend-object"></a>Előtereobjektum létrehozása
 
@@ -124,7 +126,7 @@ $BackendPoolObject = New-AzFrontDoorBackendPoolObject `
 
 ### <a name="create-a-routing-rule"></a>Útválasztási szabály létrehozása
 
-Az útválasztási szabály leképezi a háttérkészletet az előteretartományra, és az alapértelmezett elérésiút-egyeztetési értéket a "/*" értékre állítja.
+Az útválasztási szabály leképezi a háttérkészletet az előtere tartományra, és az alapértelmezett elérésiút-egyeztetési értéket a "/*" értékre állítja.
 
 ```azurepowershell-interactive
 # Create a routing rule mapping the frontend host to the backend pool

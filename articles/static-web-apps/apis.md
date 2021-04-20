@@ -1,42 +1,42 @@
 ---
-title: API-támogatás az Azure statikus Web Appsban Azure Functions
-description: Az Azure statikus Web Apps által támogatott API-funkciók ismertetése
+title: API-támogatás Azure Static Web Apps Azure Functions
+description: A támogatott API-Azure Static Web Apps megismeri
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6724d8eb8df29ccfb033f5951ec56b7770e3c413
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc5e1e6982686e7042e5b8ad55d72a4560b6aee
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90903572"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737477"
 ---
-# <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-támogatás az Azure statikus Web Apps előzetes verziójában Azure Functions
+# <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-támogatás Azure Static Web Apps előzetes verzióban Azure Functions
 
-Az Azure statikus Web Apps [Azure functions](../azure-functions/functions-overview.md)használatával biztosít kiszolgáló nélküli API-végpontokat. A Azure Functions, az API-k igény szerint dinamikusan méretezhetők, és a következő funkciókkal rendelkeznek:
+Azure Static Web Apps kiszolgáló nélküli API-végpontokat biztosít a [Azure Functions.](../azure-functions/functions-overview.md) Az API-k Azure Functions igény szerint dinamikusan skáláznak, és a következő funkciókat tartalmazzák:
 
-- **Integrált biztonság** közvetlen hozzáféréssel a felhasználói [hitelesítéshez és a szerepköralapú engedélyezési](user-information.md) adathoz.
-- **Zökkenőmentes útválasztás** , amely lehetővé teszi, hogy az _API_ -útvonal biztonságosan elérhető legyen a webalkalmazás számára anélkül, hogy egyéni CORS szabályokat kellene megadnia.
-- A **Azure functions** v3 kompatibilis a Node.js 12, a .net Core 3,1 és a Python 3,8 rendszerrel.
-- **Http-eseményindítók** és bemeneti/kimeneti kötések.
+- **Integrált biztonság** a felhasználói hitelesítéshez és a [szerepköralapú engedélyezési adatokhoz való közvetlen hozzáféréssel.](user-information.md)
+- **Zökkenőmentes útválasztás,** amely egyéni CORS-szabályok nélkül teszi biztonságossá az _API-útvonalat_ a webalkalmazás számára.
+- **HTTP-eseményindítók** és bemeneti/kimeneti kötések.
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az API-végpontok az _API_ -útvonalon keresztül érhetők el a webalkalmazás számára. Amíg ez az útvonal megoldódott, megadhatja a mappát és a projektet, ahol megkeresi a társított Azure Functions alkalmazást. Ezt a helyet a tárház _. GitHub/munkafolyamatok_ mappájában található [munkafolyamat YAML fájl szerkesztésével](github-actions-workflow.md#build-and-deploy) módosíthatja.
+Az API-végpontok az API-útvonalon keresztül érhetők el a _webalkalmazás_ számára. Bár ez az útvonal ki van javítva, ön szabályozhatja azt a mappát és projektet, ahol megkeresi a Azure Functions alkalmazást. Ezt a helyet az adattár _.github/workflows_ mappájában található [munkafolyamat YAML-fájl](github-actions-workflow.md#build-and-deploy) szerkesztésével módosíthatja.
 
 ## <a name="constraints"></a>Korlátozások
 
-Az Azure statikus Web Apps Azure Functionson keresztül biztosít API-t. A Azure Functions képességei olyan funkciókra összpontosítanak, amelyek lehetővé teszik, hogy API-t hozzon létre egy webalkalmazáshoz, és lehetővé tegye a webalkalmazás számára a biztonságos kapcsolódást az API-hoz. Ezek a funkciók bizonyos korlátozásokkal rendelkeznek, beleértve a következőket:
+Azure Static Web Apps API-t biztosít a Azure Functions. A Azure Functions funkciói olyan funkciókra összpontosítanak, amelyek lehetővé teszik api-k webalkalmazáshoz való létrehozásához, valamint a webalkalmazás biztonságos csatlakozását az API-hoz. Ezek a funkciók bizonyos korlátozásokat tartalmaznak, például:
 
-- Az API-útvonal előtagjának _API_-nak kell lennie.
-- Az API-nak JavaScript, C# vagy Python Azure Functions alkalmazásnak kell lennie.
-- Az API functions útválasztási szabályai csak az [átirányítások](routes.md#redirects) támogatását és [a szerepkörökkel rendelkező útvonalak biztonságossá](routes.md#securing-routes-with-roles)tételét támogatják.
-- Az eseményindítók [http](../azure-functions/functions-bindings-http-webhook.md)-re korlátozódnak.
-  - A bemeneti és kimeneti [kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) támogatottak.
-- A naplók csak akkor érhetők el, ha [Application Insightst](../azure-functions/functions-monitoring.md) ad hozzá a functions-alkalmazáshoz.
+- Az API útvonalelőtagjának api-nak _kell lennie._
+- Az API-nak egy 12Node.js, .NET Core 3.1 vagy Python 3.8 Azure Functions kell lennie.
+- Az API-függvények útválasztási szabályai csak az [átirányításokat és](routes.md#redirects) az útvonalak [szerepkörökkel való biztonságossá tételeit támogatják.](routes.md#securing-routes-with-roles)
+- Az eseményindítók [](../azure-functions/functions-bindings-http-webhook.md)http-alapúak.
+  - A bemeneti és [kimeneti kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) támogatottak.
+- A naplók csak akkor érhetők el, ha Application Insights [hozzáadja](../azure-functions/functions-monitoring.md) a függvényalkalmazáshoz.
+- Egyes alkalmazásbeállításokat a szolgáltatás kezeli. Nem konfigurálhat olyan alkalmazásbeállításokat, amelyek a következő előtagokkal kezdődnek: `APPSETTING_` , `AZUREBLOBSTORAGE_` , `AZUREFILESSTORAGE_` `AZURE_FUNCTION_` `CONTAINER_` `DIAGNOSTICS_` `DOCKER_` `FUNCTIONS_` `IDENTITY_` `MACHINEKEY_` `MAINSITE_` `MSDEPLOY_` `SCMSITE_` `SCM_` `WEBSITES_` `WEBSITE_` `WEBSOCKET_` `AzureWeb` .
 
 ## <a name="next-steps"></a>Következő lépések
 

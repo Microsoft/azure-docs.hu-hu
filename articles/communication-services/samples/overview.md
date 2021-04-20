@@ -1,7 +1,7 @@
 ---
-title: Minták – Áttekintés lap
+title: Minták áttekintő oldala
 titleSuffix: An Azure Communication Services sample overview.
-description: Az Azure kommunikációs szolgáltatásokhoz elérhető minták projektjeinek áttekintése.
+description: A szolgáltatáshoz elérhető mintaprojektek Azure Communication Services.
 author: probableprime
 manager: chpalm
 services: azure-communication-services
@@ -9,34 +9,35 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1803afa1fd274ca3a7b2d5668a836ff5ca0b62c6
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 185cd5d33b15c4c1976fa82ccc75dcd661a36449
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076087"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737531"
 ---
 # <a name="samples"></a>Példák
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include-android-ios.md)]
 
-Az Azure kommunikációs szolgáltatás számos elérhető mintát tartalmaz, amelyek segítségével saját alkalmazás vagy használati eset létrehozása előtt tesztelheti az ACS szolgáltatásait és szolgáltatásait.
+Azure Communication Services elérhető számos minta érhető el, amelyek segítségével tesztelheti az ACS-szolgáltatásokat és -funkciókat, mielőtt saját alkalmazást vagy alkalmazási esetet hoz létre.
 
-## <a name="application-samples"></a>Alkalmazások mintái
+## <a name="application-samples"></a>Alkalmazásminták
 
-| Minta neve                                                                                          | Leírás                                                         | Elérhető nyelvek/platformok      |
+| Mintanév                                                                                          | Description                                                         | Elérhető nyelvek/platformok      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
-| [Csoport hívása – hős minta](./calling-hero-sample.md)                                                | A csoportos hívási alkalmazás létrehozására szolgáló mintát nyújt.          | [Web](https://github.com/Azure-Samples/communication-services-web-calling-hero), [iOS](https://github.com/Azure-Samples/communication-services-ios-calling-hero), [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
-| [Webes hívás mintája](./web-calling-sample.md)                                                        | Lépésről lépésre haladó végigvezeti a webes ACS-hívási funkciókon. | [Web](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
-| [Csevegési hős minta](./chat-hero-sample.md)                                                            | A csevegési alkalmazások létrehozásának mintáját biztosítja.                   | [Web](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
-| [Contoso orvosi alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | A beteg orvos folyamatát bemutató minta alkalmazás.                     | Webes & Node.js                      |
-| [Contoso kiskereskedelmi alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Egy kiskereskedelmi támogatási folyamatot bemutató minta alkalmazás.                     | ASP.NET, .NET Core, JavaScript/Web |
-| [WPF-hívási minta](https://github.com/Azure-Samples/communication-services-web-calling-wpf-sample) | Példa a Windows bemutató funkciójának megadására          | WPF/Node.js                      |
+| [Csoportos hívás főképminta](./calling-hero-sample.md)                                                | Egy csoporthívási alkalmazás létrehozására vonatkozó mintát biztosít.          | [Web,](https://github.com/Azure-Samples/communication-services-web-calling-hero) [iOS,](https://github.com/Azure-Samples/communication-services-ios-calling-hero) [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
+| [Webes hívási minta](./web-calling-sample.md)                                                        | Az ACS webes hívási funkcióinak részletes útmutatója. | [Web](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
+| [Csevegési főképminta](./chat-hero-sample.md)                                                            | Egy csevegési alkalmazás létrehozására vonatkozó mintát biztosít.                   | [Web](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
+| [Contoso orvosi alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | A beteg-orvos folyamatot bemutató mintaalkalmazás.                     | Web & Node.js                      |
+| [Contoso Kiskereskedelmi alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Kiskereskedelmi támogatási folyamatot bemutató mintaalkalmazás.                     | ASP.NET, .NET Core, JavaScript/Web |
+| [WPF-hívási minta](https://github.com/Azure-Samples/communication-services-web-calling-wpf-sample) | Mintaalkalmazás a Windowshoz a hívási funkciókat bemutató bemutatóhoz          | WPF/Node.js                      |
 
-## <a name="quickstart-samples"></a>Gyors üzembe helyezési minták
-A dokumentációban található gyors útmutatóhoz hozzáférési kód mintákat talál.
+## <a name="quickstart-samples"></a>Gyorsútmutató-minták
+A dokumentációnkban található rövid útmutatókhoz hozzáférhet a kódmintákhoz.
  - [JavaScript](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/)
  - [.NET](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/)
+ - [Java](https://github.com/Azure-Samples/communication-services-java-quickstarts)
  - [iOS](https://github.com/Azure-Samples/communication-services-ios-quickstarts/)
  - [Android](https://github.com/Azure-Samples/communication-services-android-quickstarts/)
  - [Python](https://github.com/Azure-Samples/communication-services-python-quickstarts/)

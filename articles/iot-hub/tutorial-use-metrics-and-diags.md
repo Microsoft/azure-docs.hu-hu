@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – mérőszámok és naplók beállítása és használata Azure IoT hub használatával
-description: 'Oktatóanyag: mérőszámok és naplók beállítása és használata az Azure IoT hub használatával. Ez biztosítja az elemzéshez szükséges, a hub által esetlegesen felmerülő problémák diagnosztizálását.'
+title: Oktatóanyag – Metrikák és naplók beállítása és használata az Azure IoT Hubbal
+description: Oktatóanyag – Megtudhatja, hogyan állíthat be és használhat metrikákat és naplókat egy Azure IoT Hubbal. Ez olyan adatokat biztosít, amelyek segítségével elemezheti a központ problémáit.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,39 +12,39 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62958dc374598e6f530af398f722001e5ed51acd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889593"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739691"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és naplók beállítása és használata IoT hub használatával
+# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Oktatóanyag: Metrikák és naplók beállítása és használata IoT Hubbal
 
-A Azure Monitor használatával összegyűjtheti az IoT hub mérőszámait és naplóit, amelyek segítségével figyelheti a megoldás működését, és elháríthatja a problémákat, amikor azok bekövetkeznek. Ebből a cikkből megtudhatja, hogyan hozhat létre diagramokat mérőszámok alapján, hogyan hozhat létre mérőszámokat kiváltó riasztásokat, hogyan küldheti el IoT Hub műveleteit és hibáit Azure Monitor naplókba, és hogyan ellenőrizze a hibákat a naplókban.
+A Azure Monitor gyűjtheti az IoT Hub metrikákat és naplókat, amelyek segítségével figyelheti a megoldás működését, és elháríthatja a problémákat, amikor azok bekövetkeznek. Ebben a cikkben látni fogja, hogyan hozhat létre metrikákon alapuló diagramokat, hogyan hozhat létre metrikákat aktiváló riasztásokat IoT Hub, hogyan küldhet műveleteket és hibákat Azure Monitor-naplókba, és hogyan ellenőrizheti a hibákat a naplókban.
 
-Ez az oktatóanyag az Azure-mintát használja a [.net send telemetria](quickstart-send-telemetry-dotnet.md) rövid útmutatójában, hogy üzeneteket küldjön az IoT hub-nak. Az üzenetek küldéséhez mindig használhat egy eszközt vagy egy másik mintát, de előfordulhat, hogy módosítania kell néhány lépést ennek megfelelően.
+Ez az oktatóanyag a [.NET Send telemetry (Telemetria](quickstart-send-telemetry-dotnet.md) küldése) rövid útmutató Azure-mintáját használja az üzenetek az IoT Hubra való küldelmének. Az üzenetek küldését mindig használhatja egy eszközön vagy egy másik mintán, de előfordulhat, hogy ennek megfelelően módosítania kell néhány lépést.
 
-Az oktatóanyag megkezdése előtt néhány ismerettel Azure Monitor fogalmak hasznosak lehetnek. További információért lásd: [IoT hub figyelése](monitor-iot-hub.md). Ha többet szeretne megtudni a IoT Hub által kibocsátott mérőszámokról és erőforrás-naplókról, tekintse meg a [figyelési adatok referenciáját](monitor-iot-hub-reference.md).
+Az oktatóanyag Azure Monitor hasznos lehet, ha ismeri a fogalmakat. További információ: [Monitor IoT Hub.](monitor-iot-hub.md) Az adatok által kibocsátott metrikákról és erőforrásnaplókról további IoT Hub adatok [referenciáját.](monitor-iot-hub-reference.md)
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 > [!div class="checklist"]
 >
-> * Az Azure CLI használatával hozzon létre egy IoT hubot, regisztráljon egy szimulált eszközt, és hozzon létre egy Log Analytics munkaterületet.  
-> * IoT Hub kapcsolatok és az eszköz telemetria erőforrás-naplófájljainak küldése a Log Analytics munkaterület Azure Monitor naplóiba.
-> * A metrika-kezelővel létrehozhat egy diagramot a kiválasztott mérőszámok alapján, és rögzítheti azt az irányítópulton.
-> * Hozzon létre metrikus riasztásokat, így e-mailben értesítheti, ha fontos feltételek történnek.
-> * Töltsön le és futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az IoT hub-nak.
-> * A riasztások megtekintése a feltételek bekövetkezésekor.
-> * Tekintse meg a metrikák diagramot az irányítópulton.
-> * IoT Hub hibák és műveletek megtekintése Azure Monitor naplókban.
+> * Az Azure CLI használatával létrehozhat egy IoT Hubot, regisztrálhat egy szimulált eszközt, és létrehozhat egy Log Analytics-munkaterületet.  
+> * Küldjön IoT Hub és az eszköz telemetriai erőforrásnaplóit a Log Analytics Azure Monitor naplókba.
+> * A Metrikakezelővel létrehozhat egy diagramot a kiválasztott metrikák alapján, és rögzítheti azt az irányítópulton.
+> * Hozzon létre metrikariasztásokat, így e-mailben értesítheti, ha fontos feltételek lépnek fel.
+> * Letölthet és futtathat egy alkalmazást, amely egy IoT-eszközt szimulál, és üzeneteket küld az IoT Hubnak.
+> * A feltételek bekövetkeztének riasztásai.
+> * Tekintse meg a metrikadiagramot az irányítópulton.
+> * Tekintse IoT Hub hibákat és műveleteket a Azure Monitor naplókban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- A fejlesztői gépen a .NET Core SDK 2,1-es vagy újabb szükséges. A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
+- A fejlesztői .NET Core SDK 2.1-es vagy annál nagyobb szükséges. A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
 
   A C# aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
@@ -52,35 +52,35 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
   dotnet --version
   ```
 
-- E-mail fiók, amely képes e-mailek fogadására.
+- E-mail fogadására alkalmas e-mail-fiók.
 
-- Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. Az oktatóanyagban található eszközminta MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy egyes vállalati és oktatási hálózati környezetek blokkolják ezt a portot. További információ és a probléma megoldásának módjai: Csatlakozás IoT Hub [(MQTT) .](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Erőforrások beállítása
 
-Ebben az oktatóanyagban szüksége lesz egy IoT hubhoz, egy Log Analytics munkaterületre és egy szimulált IoT-eszközre. Ezek az erőforrások létrehozhatók az Azure CLI vagy az Azure PowerShell használatával. Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Ezután az oktatóanyag elvégzése után eltávolíthatja az összes lépést az erőforráscsoport törlésével.
+Ehhez az oktatóanyaghoz szüksége lesz egy IoT Hubra, egy Log Analytics-munkaterületre és egy szimulált IoT-eszközre. Ezek az erőforrások létrehozhatók az Azure CLI vagy az Azure PowerShell használatával. Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Az oktatóanyag befejezése után az erőforráscsoport törlésével egyetlen lépésben távolíthat el mindent.
 
-Itt láthatók a szükséges lépések.
+A szükséges lépések a következőek.
 
-1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md).
+1. Hozzon létre [egy erőforráscsoportot.](../azure-resource-manager/management/overview.md)
 
-2. Hozzon létre egy IoT hubot.
+2. IoT Hub létrehozása.
 
 3. Egy Log Analytics-munkaterület létrehozása.
 
-4. Regisztrálja a szimulált eszköz identitását, amely üzeneteket küld az IoT hubhoz. Mentse a szimulált eszköz konfigurálásához használandó eszköz-kapcsolódási karakterláncot.
+4. Eszközidentitás regisztrálása ahhoz a szimulált eszközhöz, amely üzeneteket küld az IoT Hubnak. Mentse az eszköz kapcsolati sztringet a szimulált eszköz konfigurálására.
 
-### <a name="set-up-resources-using-azure-cli"></a>Erőforrások beállítása az Azure CLI-vel
+### <a name="set-up-resources-using-azure-cli"></a>Erőforrások beállítása az Azure CLI használatával
 
-Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. Néhány parancs végrehajtása hosszabb időt is igénybe vehet. Az új erőforrások az erőforráscsoport *ContosoResources* jönnek létre.
+Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. Egyes parancsok végrehajtása némi időt is vegyen el. Az új erőforrások a *ContosoResources erőforráscsoportban vannak létrehozva.*
 
-Egyes erőforrások nevének egyedinek kell lennie az Azure-ban. A szkript létrehoz egy véletlenszerű értéket a `$RANDOM` függvénnyel, és egy változóban tárolja. Ezekhez az erőforrásokhoz a parancsfájl hozzáfűzi ezt a véletlenszerű értéket az erőforrás alapneveként, így egyedivé teszi az erőforrás nevét.
+Egyes erőforrások nevének egyedinek kell lennie az Azure-ban. A szkript véletlenszerű értéket hoz létre a függvény `$RANDOM` használatával, és egy változóban tárolja azt. Ezekhez az erőforrásokhoz a szkript hozzáfűzi ezt a véletlenszerű értéket az erőforrás alapnevével, így az erőforrás neve egyedi lesz.
 
-Előfizetés esetén csak egy ingyenes IoT hub engedélyezett. Ha már rendelkezik egy ingyenes IoT-hubhoz az előfizetésében, törölje a parancsfájl futtatása előtt, vagy módosítsa a szkriptet az ingyenes IoT hub vagy a standard vagy alapszintű IoT Hub használatára.
+Előfizetésenként csak egy ingyenes IoT Hub használata engedélyezett. Ha már rendelkezik ingyenes IoT Hubbal az előfizetésében, törölje azt a szkript futtatása előtt, vagy módosítsa a szkriptet úgy, hogy az ingyenes IoT Hubot vagy egy IoT Hub standard vagy alapszintű szintet használjon.
 
-A szkript kinyomtatja az IoT hub nevét, a Log Analytics munkaterület nevét és az általa regisztrált eszközhöz tartozó kapcsolatok karakterláncát. Ügyeljen rá, hogy ezeket a cikk későbbi szakaszában jegyezze fel.
+A szkript kinyomtatja az IoT Hub nevét, a Log Analytics-munkaterület nevét és a regisztrált eszköz kapcsolati sztringét. Ezeket jegyezze fel, mert később szüksége lesz rájuk a cikkben.
 
 ```azurecli-interactive
 
@@ -134,208 +134,208 @@ az iot hub device-identity show-connection-string --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Az eszköz identitásának létrehozásakor a következő hibaüzenet jelenhet meg: *IoT hub ContosoTestHub házirend Iothubowner nem találhatók kulcsok*. A hiba elhárításához frissítse az Azure CLI IoT bővítményét, majd futtassa újra a parancsfájl utolsó két parancsát. 
+>Az eszközidentitás létrehozásakor a következő hibaüzenet jelenhet meg: *A ContosoTestHub szabályzatának iothubowner IoT Hub található.* A hiba kijavításért frissítse az Azure CLI IoT-bővítményt, majd futtassa újra az utolsó két parancsot a szkriptben. 
 >
->Itt látható a bővítmény frissítésére szolgáló parancs. Futtassa ezt a parancsot a Cloud Shell-példányban.
+>Itt van a bővítmény frissítésére való parancs. Futtassa ezt a parancsot a Cloud Shell példányában.
 >
 >```cli
 >az extension update --name azure-iot
 >```
 
-## <a name="collect-logs-for-connections-and-device-telemetry"></a>Naplók összegyűjtése a kapcsolatok és az eszközök telemetria
+## <a name="collect-logs-for-connections-and-device-telemetry"></a>Kapcsolatok és eszköz-telemetria naplóinak gyűjtése
 
-IoT Hub az erőforrás-naplókat a művelet számos kategóriájára kibocsátja; a naplók megtekintéséhez azonban létre kell hoznia egy diagnosztikai beállítást, amely a célhelyre küldi őket. Az egyik ilyen cél Azure Monitor naplók, amelyeket a rendszer egy Log Analytics munkaterületen gyűjt. IoT Hub az erőforrás-naplók különböző kategóriákba vannak csoportosítva. Kiválaszthatja, hogy mely kategóriákat szeretné elküldeni a diagnosztikai beállításban Azure Monitor naplókba. Ebben a cikkben a kapcsolatokkal és az eszközök telemetria kapcsolatban felmerülő műveletekkel és hibákkal kapcsolatos naplókat gyűjtjük. A IoT Hub által támogatott kategóriák teljes listáját lásd: [IoT hub erőforrás-naplók](monitor-iot-hub-reference.md#resource-logs).
+IoT Hub több működési kategóriához bocsát ki erőforrásnaplókat; Ahhoz azonban, hogy megtekintse ezeket a naplókat, létre kell hoznia egy diagnosztikai beállítást, amely elküldi őket egy célhelyre. Az egyik ilyen cél Azure Monitor Log Analytics-munkaterületen gyűjtött naplók. IoT Hub erőforrásnaplók különböző kategóriákba vannak csoportosítva. A diagnosztikai beállításban kiválaszthatja, hogy mely kategóriákat Azure Monitor naplókba. Ebben a cikkben naplókat gyűjtünk az olyan műveletekről és hibákról, amelyek a kapcsolatokkal és az eszköz-telemetriával kapcsolatosak. Az erőforrásnaplókhoz támogatott kategóriák teljes IoT Hub [erőforrásnaplók IoT Hub meg.](monitor-iot-hub-reference.md#resource-logs)
 
-A következő lépésekkel hozhat létre diagnosztikai beállítást IoT Hub erőforrás-naplók küldéséhez Azure Monitor naplókba:
+Diagnosztikai beállítás létrehozásához, amely az erőforrásnaplókat IoT Hub naplókba Azure Monitor naplókba, kövesse az alábbi lépéseket:
 
-1. Először is, ha a portálon még nem szerepel a központban, válassza az **erőforráscsoportok** lehetőséget, és válassza ki az erőforráscsoport ContosoResources. Válassza ki az IoT hubot a megjelenő erőforrások listájából.
+1. Először is, ha még nem a központban  van a portálon, válassza az Erőforráscsoportok lehetőséget, majd a ContosoResources erőforráscsoportot. Válassza ki az IoT Hubot a megjelenő erőforrások listájából.
 
-1. Keresse meg a **figyelés** szakaszt a IoT hub panelen. Válassza a **diagnosztikai beállítások** lehetőséget. Ezután válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
+1. Keresse meg a **Figyelés** szakaszt a IoT Hub panelen. Válassza **a Diagnosztikai beállítások lehetőséget.** Ezután válassza **a Diagnosztikai beállítás hozzáadása lehetőséget.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Képernyőfelvétel: a figyelés szakasz diagnosztikai beállításainak kiemelése.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Képernyőkép a Monitorozás szakaszban található Diagnosztikai beállítások kiemelésével.":::
 
-1. A **diagnosztika beállítása** panelen adjon meg egy leíró nevet, például a "kapcsolatok küldése és a telemetria a naplókhoz" beállítást.
+1. A **Diagnosztika beállításpanelen** adjon meg egy leíró nevet a beállításhoz, például: "Kapcsolatok és telemetria küldése naplókba".
 
-1. A **Kategória részletei** területen válassza a **kapcsolatok** és az **eszköz telemetria** elemet.
+1. A **Kategória részletei alatt** válassza a Kapcsolatok **és** **eszköz-telemetria lehetőséget.**
 
-1. A **célhely részletei** területen válassza a **Küldés log Analyticsba** lehetőséget, majd a log Analytics munkaterület-választó használatával válassza ki a korábban feljegyzett munkaterületet. Ha elkészült, a diagnosztikai beállításnak az alábbi képernyőképhez hasonlóan kell kinéznie:
+1. A **Cél adatai alatt** válassza a Küldés a Log **Analyticsbe** lehetőséget, majd a Log Analytics-munkaterületválasztóval válassza ki a korábban feljegyzett munkaterületet. Ha elkészült, a diagnosztikai beállításnak az alábbi képernyőképhez hasonlóan kell kinéznie:
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="A diagnosztikai napló utolsó beállításait bemutató képernyőkép.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="Képernyőkép a diagnosztikai napló végső beállításairól.":::
 
-1. A beállítások mentéséhez válassza a **Mentés** lehetőséget. A **diagnosztikai beállítások** panel bezárásához. Az új beállításokat a diagnosztikai beállítások listájában tekintheti meg.
+1. A beállítások mentéséhez válassza a **Mentés** lehetőséget. Zárja be **a Diagnosztika beállításpanelt.** Az új beállítás megjelenik a diagnosztikai beállítások listájában.
 
-## <a name="set-up-metrics"></a>Mérőszámok beállítása
+## <a name="set-up-metrics"></a>Metrikák beállítása
 
-Most a metrikák Explorerrel hozzunk létre egy diagramot, amely a nyomon követni kívánt metrikákat jeleníti meg. Ezt a diagramot a Azure Portal alapértelmezett irányítópultján fogja rögzíteni.
+Most a Metrikakezelővel létrehozunk egy diagramot, amely a követni kívánt metrikákat jeleníti meg. Ezt a diagramot az alapértelmezett irányítópulton rögzítheti a Azure Portal.
 
-1. Az IoT hub bal oldali paneljén válassza a **metrikák** lehetőséget a **figyelés** szakaszban.
+1. Az IoT Hub bal oldali panelen válassza a **Monitorozás szakaszban a** **Metrikák** lehetőséget.
 
-1. A képernyő felső részén válassza az **elmúlt 24 óra (automatikus)** lehetőséget. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az **időtartományhoz** lehetőséget, állítsa az **időrészletességet** **1 percre**, majd válassza a **helyi** lehetőséget az **idő megjelenítéséhez**. A beállítások mentéséhez kattintson az **alkalmaz** gombra. A beállításnak most a helyi idő szerint kell megjelennie **: az elmúlt 4 óra (1 perc)**.
+1. A képernyő tetején válassza az **Elmúlt 24 óra (automatikus) lehetőséget.** A megjelenő legördülő menüben válassza az Elmúlt  **4** óra lehetőséget az Időtartomány beállításnál, állítsa az Idő **részletességét** **1** percre, majd válassza a **Helyi** lehetőséget az Idő megjelenítése **értékként.** A **beállítások mentéséhez** válassza az Alkalmaz lehetőséget. A beállításnak most Helyi **idő: Az elmúlt 4 óra (1 perc) értéknek kell lennie.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="A metrikák időbeállítását bemutató képernyőkép.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="Képernyőkép a metrikák időbeállításairól.":::
 
-1. A diagramon egy részleges metrikai beállítás jelenik meg, amely az IoT hub hatókörén alapul. Hagyja meg a **hatókör** és a **metrika névterének** értékeit az alapértelmezett értékeken. Válassza ki a **mérőszám** beállítását, írja be a "telemetria" kifejezést, majd válassza ki a legördülő menüből **küldött telemetria-üzeneteket** . Az **Összesítés** automatikusan a **Sum** értékre lesz beállítva. Figyelje meg, hogy a diagram címe is megváltozik.
+1. A diagramon látható egy részleges metrikabeállítás, amely az IoT Hub hatókörében jelenik meg. Hagyja meg **a Hatókör és** a Metrika **névterének** alapértelmezett értékeit. Válassza a **Metrika** beállítást, írja be a "Telemetria" parancsot, majd válassza a legördülő menüből küldött **telemetriai** üzenetek lehetőséget. **Az összesítés** automatikusan Sum **(Összeg)** lesz. Figyelje meg, hogy a diagram címe is megváltozik.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Képernyőkép, amely megjeleníti a metrika a diagramba küldött telemetria-üzenetek hozzáadását.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Képernyőkép a diagramhoz küldött telemetriai üzenetek hozzáadásáról.":::
 
-1. Most válassza a **metrika hozzáadása** lehetőséget, ha egy másik mérőszámot szeretne hozzáadni a diagramhoz. A **metrika** területen válassza ki **a felhasznált üzenetek teljes számát**. Az **Összesítés** automatikusan **AVG** értékre lesz állítva. Figyelje meg, hogy a diagram címe módosult, hogy tartalmazza ezt a metrikát.
+1. Most válassza a **Metrika hozzáadása** lehetőséget egy másik metrika diagramhoz való hozzáadásához. A **Metrika alatt** válassza **a Használt üzenetek teljes száma lehetőséget.** **Az összesítés** automatikusan Avg **(Átlag)** lesz. Figyelje meg ismét, hogy a diagram címe megváltozott, hogy tartalmazza ezt a metrikát.
 
-   Mostantól a képernyőn látható az *elküldött telemetria-üzenetek* kisméretű mérőszáma, valamint a *felhasznált üzenetek teljes számának* új mérőszáma.
+   Most a képernyőn látható az elküldött *telemetriai* üzenetek minimális mérőszáma, valamint a Használt üzenetek teljes száma új *metrika.*
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Képernyőfelvétel: a diagramhoz felhasznált üzenetek teljes számának hozzáadása.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Képernyőkép a metrikák diagramhoz való hozzáadásáról.":::
 
-1. A diagram jobb felső sarkában válassza a **rögzítés az irányítópulton** lehetőséget.
+1. A diagram jobb felső sarkában válassza a Rögzítés **az irányítópulton lehetőséget.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="Képernyőkép, amely kiemeli a rögzítés az irányítópulton gombot.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="A Rögzítés az irányítópulton gombot kiemelő képernyőkép.":::
 
-1. A **rögzítés az irányítópulton** ablaktáblán válassza a **meglévő** lapot. Válassza a **magánjellegű** lehetőséget, majd az irányítópult legördülő listából válassza az **irányítópult** lehetőséget. Végül a **rögzítés** gombra kattintva rögzítheti a diagramot az alapértelmezett irányítópulton Azure Portalban. Ha nem rögzít a diagramot egy irányítópulton, a beállítások nem maradnak meg a metrika Explorer bezárásakor.
+1. A Rögzítés **az irányítópulton panelen** válassza a Meglévő **lapot.** Válassza **a Privát,** majd **az** Irányítópult lehetőséget az Irányítópult legördülő menüből. Végül válassza a **Rögzítés lehetőséget** a diagram alapértelmezett irányítópultra való Azure Portal. Ha nem tűzi ki a diagramot egy irányítópultra, a rendszer nem őrzi meg a beállításokat, amikor kilép a Metrikák explorerből.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="Az irányítópulton a rögzítés beállításait megjelenítő képernyőkép.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="Képernyőkép a Rögzítés az irányítópulton beállításról.":::
 
-## <a name="set-up-metric-alerts"></a>Metrikai riasztások beállítása
+## <a name="set-up-metric-alerts"></a>Metrikákra vonatkozó riasztások beállítása
 
-Most be kell állítania a riasztásokat, hogy a rendszer *elküldje két metrika telemetria-üzenetét* és a *felhasznált üzenetek teljes számát*.
+Most riasztásokat állíthatunk be, amelyek két metrikát aktiválnak Az elküldött *telemetriai* üzenetek és a *Használt üzenetek teljes száma.*
 
-Az *elküldött telemetria-üzenetek* jó mérőszámot biztosítanak az üzenetek átviteli sebességének nyomon követéséhez és a szabályozás elkerüléséhez. Az ingyenes szinten lévő IoT Hub esetén a szabályozási korlát 100 üzenet/mp. Egyetlen eszköz esetében nem tudjuk elérni ezt az átviteli sebességet, ezért a riasztást úgy állítjuk be, hogy aktiválja, ha az üzenetek száma meghaladja az 1000-et egy 5 perces időszakban. Éles környezetben a jelzést a IoT hub szintjei, kiadása és egységeinek száma alapján sokkal jelentősebb értékre állíthatja.
+*Az elküldött telemetriai* üzenetek megfelelő metrikák az üzenetek átviteli sebességének nyomon követéséhez és a szabályozás elkerüléséhez. Az IoT Hub szinten a szabályozási korlát másodpercenként 100 üzenet. Egyetlen eszköz esetén nem tudjuk elérni ezt az átviteli sebességet, ezért ehelyett úgy fogjuk beállítani a riasztást, hogy akkor aktiválódik, ha az üzenetek száma 5 percen belül meghaladja az 1000-et. Éles környezetben a jelet nagyobb értékre állíthatja az IoT Hub rétege, kiadása és egységeinek száma alapján.
 
-A *felhasznált üzenetek teljes száma* nyomon követi a felhasznált üzenetek napi számát. Ez a metrika minden nap 00:00 UTC időpontban alaphelyzetbe áll. Ha túllépi a napi kvótát egy bizonyos küszöbértéknél, akkor a IoT Hub többé nem fogad üzeneteket. Az ingyenes szintű IoT Hub a napi üzenet kvótája 8000. Beállítjuk a riasztást, amely akkor aktiválódik, ha az üzenetek teljes száma meghaladja a kvóta 4000, 50%-át. A gyakorlatban valószínűleg magasabb értékre állítja ezt a százalékot. A napi kvóta értéke az IoT hub szintjétől, kiadástól és egységeinek számától függ.
+*A használt üzenetek teljes száma* a használt üzenetek napi számát követi nyomon. Ez a metrika minden nap 00:00(UTC) időpontban áll alaphelyzetbe. Ha túllépi a napi kvótát egy adott küszöbértéken túl, a IoT Hub nem fogja fogadni az üzeneteket. Az ingyenes IoT Hub esetében a napi üzenetkvóta 8000. Úgy fogjuk beállítani a riasztást, hogy akkor aktiválódik, ha az üzenetek teljes száma meghaladja a 4000-et, azaz a kvóta 50%-át. A gyakorlatban ezt a százalékos arányt valószínűleg magasabb értékre kellene állítani. A napi kvóta értéke az IoT Hub rétegtől, kiadástól és egységek számtól függ.
 
-A kvóta-és szabályozási korlátozásokkal kapcsolatos további információkért lásd: [kvóták és sávszélesség-szabályozás](iot-hub-devguide-quotas-throttling.md)IoT hub.
+A kvóta- és szabályozási korlátokkal kapcsolatos további IoT Hub lásd: [Kvóták és szabályozás.](iot-hub-devguide-quotas-throttling.md)
 
-Metrikai riasztások beállítása:
+Metrikariasztás beállítása:
 
-1. Nyissa meg Azure Portal a IoT hubot.
+1. Az IoT Hubhoz a következő Azure Portal.
 
-1. A **figyelés** területen válassza a **riasztások** lehetőséget. Ezután válassza az **új riasztási szabály** lehetőséget.  Megnyílik a **riasztási szabály létrehozása** panel.
+1. A **Figyelés alatt** válassza a **Riasztások lehetőséget.** Ezután válassza az **Új riasztási szabály lehetőséget.**  Megnyílik **a Riasztási szabály** létrehozása panel.
 
-    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="A riasztási szabály létrehozása panelt ábrázoló képernyőfelvétel":::
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="A Riasztási szabály létrehozása panel képernyőképe.":::
 
-    A **riasztási szabály létrehozása** panelen négy szakaszt talál:
+    A **Riasztási szabály létrehozása panelen** négy szakasz található:
 
-    * A **hatókör** már be van állítva az IoT hub-ra, ezért ezt a szakaszt külön fogjuk hagyni.
-    * A **feltétel** megadja a riasztást kiváltó jeleket és feltételeket.
-    * A **műveletek** azt konfigurálják, hogy mi történjen a riasztás indításakor.
-    * A **riasztási szabály részletei** lehetővé teszi a riasztás nevének és leírásának megadását.
+    * **A** hatókör már be van állítva az IoT Hubra, ezért ezt a szakaszt nem hagyjuk ki.
+    * **A Feltétel** beállítja a riasztást kiváltó jelet és feltételeket.
+    * **A Műveletek** beállítás azt konfigurálja, hogy mi történjen, ha a riasztás aktiválódik.
+    * **A riasztási szabály részletei** lehetővé teszi a riasztás nevének és leírásának beállítását.
 
-1. Először konfigurálja azt a feltételt, amelyet a riasztás aktivál majd.
+1. Először konfigurálja azt a feltételt, amely alapján a riasztás aktiválódni fog.
 
-    1. A **feltétel** területen válassza a **feltétel hozzáadása** lehetőséget. A **jel logikájának konfigurálása** panelen írja be a "telemetria" kifejezést a keresőmezőbe, és válassza ki a **telemetria küldött üzeneteket**.
+    1. A **Feltétel alatt** válassza a Feltétel hozzáadása **lehetőséget.** A **Jellogika** konfigurálása panelen írja be a "telemetria" elemet a keresőmezőbe, és válassza az **Elküldött telemetriai üzenetek lehetőséget.**
 
-       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="A metrika kijelölését bemutató képernyőkép.":::
+       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="A metrika kiválasztását bemutató képernyőkép.":::
 
-    1. A **jel logikájának konfigurálása** panelen állítsa be vagy erősítse meg a következő mezőket a **riasztási logika** alatt (figyelmen kívül hagyhatja a diagramot):
+    1. A **Jellogika konfigurálása panelen** állítsa be vagy erősítse meg a következő mezőket a **Riasztási logika** területen (figyelmen kívül hagyhatja a diagramot):
 
-       **Küszöbérték**:  *statikus*.
+       **Küszöbérték:**  *Statikus*.
 
-       **Operátor**: *nagyobb, mint*.
+       **Operátor:** *Nagyobb, mint*.
 
-       **Összesítés típusa**: *összesen*.
+       **Összesítés típusa:** *Összesen.*
 
-       **Küszöbérték**: 1000.
+       **Küszöbérték:** 1000.
 
-       **Összesítés részletessége (időszak)**: *5 perc*.
+       **Összesítés részletessége (időszak):** *5 perc.*
 
-       **Értékelés gyakorisága**: *1 percenként*
+       **Értékelés gyakorisága:** *1 percenként*
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="A riasztási feltételek beállításait megjelenítő képernyőkép.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Képernyőkép a riasztási feltételek beállításairól.":::
 
-       Ezek a beállítások úgy állítja be a jelet, hogy az üzenetek száma összesen 5 percen belül megtörténjen. Ez az összeg percenként lesz kiértékelve, és ha az előző 5 percben megadott összeg meghaladja az 1000-as üzenetet, a riasztás elindul.
+       Ezek a beállítások az üzenetek teljes számát 5 percesre állítva állítják a jelet. Ez az összeg percenként lesz kiértékelve, és ha az előző 5 perc összege meghaladja az 1000 üzenetet, a riasztás aktiválódik.
 
-       A jel logikájának mentéséhez válassza a **kész** lehetőséget.
+       A **jellogika** mentéshez válassza a Kész lehetőséget.
 
-1. Most konfigurálja a riasztás műveletét.
+1. Most konfigurálja a műveletet a riasztáshoz.
 
-    1. Vissza a **riasztási szabály létrehozása** panel **műveletek** területén válassza a **műveleti csoportok hozzáadása** elemet. A **riasztási szabályhoz csatolni kívánt műveleti csoport kiválasztása** panelen válassza a **műveleti csoport létrehozása** lehetőséget.
+    1. A Riasztási szabály **létrehozása** panel műveletek alatt válassza a **Műveletcsoportok hozzáadása lehetőséget.** A **Riasztási szabályhoz csatolni kívánt** műveletcsoport kiválasztása panelen válassza a **Műveletcsoport létrehozása lehetőséget.**
 
-    1. A **műveleti csoport létrehozása** panel **alapismeretek** lapján adja meg a műveleti csoport nevét és a megjelenítendő nevet.
+    1. A **Műveletcsoport létrehozása** panel Alapvető beállítások **lapján** adjon nevet és megjelenítendő nevet a műveletcsoportnak.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="Képernyőfelvétel: a műveleti csoport létrehozása ablaktábla alapok lapja.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="A Műveletcsoport létrehozása panel Alapvető beállítások lapját bemutató képernyőkép.":::
 
-    1. Válassza az **értesítések** lapot. Az **értesítés típusa** beállításnál válassza a legördülő listából az **e-mail/SMS-üzenet/leküldés/hang** lehetőséget. Megnyílik az **e-mail/SMS-üzenet/leküldéses/hang** panel.
+    1. Válassza az **Értesítések** lapot. Az **Értesítés típusa mezőben** válassza az **E-mail/SMS-üzenet/Leküldéses/Hang** lehetőséget a legördülő menüből. Megnyílik **az E-mail/SMS-üzenet/Leküldéses/Hang** panel.
 
-    1. Az **e-mail/SMS-üzenet/leküldés/hang** panelen válassza az e-mail lehetőséget, és adja meg az e-mail-címét, majd kattintson **az OK gombra**.
+    1. Az **E-mail/SMS-üzenet/Leküldéses/Hang** panelen válassza az e-mail lehetőséget, adja meg az e-mail-címét, majd kattintson az **OK gombra.**
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="Az e-mail cím beállítását megjelenítő képernyőfelvétel":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="Képernyőkép az e-mail-cím beállításról.":::
 
-    1. Az **értesítések** ablaktáblán lépjen vissza az értesítés nevére.
+    1. Az Értesítések **panelre visszatérve** adja meg az értesítés nevét.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="A befejezett értesítések panelt bemutató képernyőkép.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="Képernyőkép a befejezett értesítések panelről.":::
 
-    1. Választható Ha a **műveletek** lapot választja, majd kiválasztja a **művelet típusa** legördülő menüt, láthatja, hogy milyen típusú műveleteket indíthat el riasztással. Ebben a cikkben csak az értesítéseket fogjuk használni, így figyelmen kívül hagyhatja az ezen a lapon lévő beállításokat.
+    1. (Nem kötelező) Ha a **Műveletek lapot,** majd  a Művelet típusa legördülő menüt választja, láthatja a riasztással aktiválható műveleteket. Ebben a cikkben csak értesítéseket fogunk használni, így figyelmen kívül hagyhatja a lap alatti beállításokat.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="Képernyőfelvétel a Műveletek ablaktáblán elérhető tevékenységtípusok megjelenítéséhez.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="A Műveletek panelen elérhető művelettípusokat bemutató képernyőkép.":::
 
-    1. Válassza a **felülvizsgálat és létrehozás** lapot, ellenőrizze a beállításokat, majd válassza a **Létrehozás** lehetőséget.
+    1. Válassza az **Áttekintés és létrehozás lapot,** ellenőrizze a beállításokat, majd válassza a **Létrehozás lehetőséget.**
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="A felülvizsgálat és létrehozás ablaktáblát ábrázoló képernyőkép.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Az Áttekintés és létrehozás panel képernyőképe.":::
 
-    1. Vissza a **riasztási szabály létrehozása** panelen, figyelje meg, hogy az új műveleti csoport hozzá lett adva a riasztás műveleteihez.  
+    1. A **Riasztási szabály létrehozása panelre** visszatérve figyelje meg, hogy az új műveletcsoport hozzá lett adva a riasztáshoz szükséges műveletekhez.  
 
 1. Végül konfigurálja a riasztási szabály részleteit, és mentse a riasztási szabályt.
 
-    1. A riasztási **szabály létrehozása** ablaktábla riasztási szabály részletei területén adja meg a riasztás nevét és leírását; például: "riasztás, ha több mint 1000 üzenet 5 perc alatt". Győződjön meg arról, hogy a **létrehozáskor a riasztási szabály engedélyezése** jelölőnégyzet be van jelölve. A befejezett riasztási szabály ehhez a képernyőképhez hasonlóan fog kinézni.
+    1. A **Riasztási szabály létrehozása panel** Riasztási szabály részletei alatt adja meg a riasztás nevét és leírását; Például: "Riasztás 1000-esnél több üzenet esetén 5 percen keresztül". Győződjön meg arról, **hogy a Riasztási szabály engedélyezése létrehozáskor beállítás be** van jelölve. A kész riasztási szabály az alábbi képernyőképhez hasonlóan fog kinézni.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="Képernyőfelvétel: a befejezési riasztási szabály létrehozása panel.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="A kész Riasztási szabály létrehozása panel képernyőképe.":::
 
-    1. Az új szabály mentéséhez válassza a **riasztási szabály létrehozása** lehetőséget.
+    1. Az **új szabály mentéshez válassza a** Riasztási szabály létrehozása lehetőséget.
 
-1. Most állítson be egy újabb riasztást a *felhasznált üzenetek teljes számára* vonatkozóan. Ez a metrika akkor lehet hasznos, ha riasztást szeretne küldeni, ha a felhasznált üzenetek száma közeledik az IoT hub napi kvótájának eléréséhez, ekkor az IoT hub elutasítja az üzenetek elutasítását. Kövesse a korábban végrehajtott lépéseket a következő eltérésekkel.
+1. Most állítson be egy újabb riasztást a *használt üzenetek teljes számára.* Ez a metrika akkor hasznos, ha riasztást szeretne küldeni, ha a használt üzenetek száma megközelíti az IoT Hub napi kvótáját, és az IoT Hub elkezdi elutasítani az üzeneteket. Kövesse a korábban tett lépéseket az alábbi eltérésekkel.
 
-    * A **jel logikai beállítása** ablaktáblán válassza ki a **használt üzenetek teljes számát**.
+    * A Jellogika konfigurálása **panelen** található jelhez válassza a **Használt üzenetek teljes száma lehetőséget.**
 
-    * A **jel logikájának konfigurálása** panelen állítsa be vagy erősítse meg a következő mezőket (a diagram figyelmen kívül hagyható):
+    * A **Jellogika konfigurálása panelen** állítsa be vagy erősítse meg a következő mezőket (figyelmen kívül hagyhatja a diagramot):
 
-       **Küszöbérték**:  *statikus*.
+       **Küszöbérték:**  *Statikus*.
 
-       **Operátor**: *nagyobb, mint*.
+       **Operátor:** *Nagyobb, mint*.
 
-       **Összesítés típusa**: *maximum*.
+       **Összesítés típusa:** *Maximum*.
 
-       **Küszöbérték**: 4000.
+       **Küszöbérték:** 4000.
 
-       **Összesítés részletessége (időszak)**: *1 perc*.
+       **Összesítés részletessége (időszak):** *1 perc.*
 
-       **Értékelés gyakorisága**: *1 percenként*
+       **Értékelés gyakorisága:** *1 percenként*
 
-       Ezekkel a beállításokkal állítható be a jel, ha az üzenetek száma eléri a 4000 értéket. A metrika percenként lesz kiértékelve.
+       Ezek a beállítások úgy állítják a jelet, hogy akkor jelezzen, ha az üzenetek száma eléri a 4000-et. A rendszer percenként kiértékeli a metrikát.
 
-    * Amikor megadja a riasztási szabályhoz tartozó műveletet, egyszerűen válassza ki a korábban létrehozott műveleti csoportot.
+    * Ha megadja a riasztási szabályhoz szükséges műveletet, csak válassza ki a korábban létrehozott műveletcsoportot.
 
-    * A riasztás részleteinek megtekintéséhez válasszon egy másik nevet és leírást, mint korábban.
+    * A riasztás részleteihez válasszon egy másik nevet és leírást, mint korábban.
 
-1. Válassza a **riasztások** lehetőséget a **figyelés** elemnél az IoT hub bal oldali paneljén. Most válassza a **riasztási szabályok kezelése** elemet a **riasztások** ablaktábla tetején található menüben. Megnyílik a **szabályok** ablaktábla. Ekkor megjelenik a két riasztás:
+1. Az IoT  Hub bal oldali panelének Figyelés részen válassza a Riasztások lehetőséget. Most válassza **a Riasztási szabályok kezelése** lehetőséget a Riasztások panel felső **menüjében.** Megnyílik **a Szabályok** panel. Most már két riasztást kell látnia:
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Képernyőfelvétel: a szabályok panel az új riasztási szabályokkal.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Képernyőkép a Szabályok panelről az új riasztási szabályokkal.":::
 
-1. A **szabályok** ablaktábla bezárásához.
+1. Zárja be **a Szabályok panelt.**
 
-Ezekkel a beállításokkal a rendszer riasztást küld, és e-mailben értesítést fog kapni, ha több mint 1000 üzenetet küld egy 5 perces időtartamon belül, valamint azt is, hogy a felhasznált üzenetek teljes száma meghaladja a 4000 (az ingyenes szinten lévő IoT hub napi kvótájának 50%-ában).
+Ezekkel a beállításokkal aktiválódik egy riasztás, és e-mail-értesítést kap, ha 5 percen belül több mint 1000 üzenetet küld a rendszer, és ha a felhasznált üzenetek teljes száma meghaladja a 4000-et (az ingyenes szinten található IoT Hub napi kvótája 50%-a).
 
-## <a name="run-the-simulated-device-app"></a>A szimulált eszköz alkalmazásának futtatása
+## <a name="run-the-simulated-device-app"></a>A szimulált eszközalkalmazás futtatása
 
-Az [erőforrások beállítása](#set-up-resources) szakaszban regisztrálta a IoT-eszköz használatával történő szimulálás során használt eszköz identitását. Ebben a szakaszban olyan .NET-konzol alkalmazást tölt le, amely egy eszközről a felhőbe irányuló üzeneteket küldő eszközt szimulál egy IoT Hubba, konfigurálja úgy, hogy elküldi ezeket az üzeneteket az IoT hubhoz, majd futtassa azt.
+Az Erőforrások [beállítása szakaszban](#set-up-resources) regisztrált egy eszközidentitást, amely egy IoT-eszköz használatával szimulálható. Ebben a szakaszban egy .NET-konzolalkalmazást tölt le, amely az eszközről a felhőbe küldött üzeneteket egy IoT Hub-nek indító eszközt szimulál, konfigurálja úgy, hogy ezeket az üzeneteket az IoT Hubra küldje, majd futtassa.
 
 > [!IMPORTANT]
 >
-> A riasztások akár 10 percet is igénybe vehetnek, hogy IoT Hub. Várjon legalább 10 percet a legutóbbi riasztás konfigurálása és a szimulált eszköz alkalmazás futtatása között.
+> A riasztások teljes konfigurálása és engedélyezése akár 10 percet is IoT Hub. Várjon legalább 10 percet a legutóbbi riasztás konfigurálása és a szimulált eszközalkalmazás futtatása között.
 
-Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás egy tárházat tölt le több alkalmazással; a keresett IOT-hub/rövid útmutató/szimulált eszköz/.
+Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás letölt egy olyan repo-t, amely több alkalmazást is ad; A keresett eszköz az iot-hub/Quickstarts/simulated-device/ eszközben található.
 
-1. A helyi terminál ablakban navigáljon a megoldás gyökérkönyvtárához. Ezután lépjen az **iot-hub\Quickstarts\simulated-device** mappába.
+1. Egy helyi terminálablakban keresse meg a megoldás gyökérmappát. Ezután lépjen az **iot-hub\Quickstarts\simulated-device** mappába.
 
 1. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    1. Cserélje le a változó értékét `s_connectionString` arra az eszköz-kapcsolódási sztringre, amelyet a parancsfájlnak az erőforrások beállításához való futtatásakor feljegyzett.
+    1. Cserélje le a változó értékét arra az eszközkapcsolati sztringre, amely az erőforrások beállítását a szkript futtatásakor `s_connectionString` feljegyzett.
 
-    1. A `SendDeviceToCloudMessagesAsync` metódusban módosítsa a `Task.Delay` 1000 – 1 értéket, amely csökkenti az üzenetek 1 másodperc és 0,001 másodperc közötti elküldésének időtartamát. A késleltetés lerövidítése növeli az elküldött üzenetek számát. (Előfordulhat, hogy a másodpercenkénti 100-as üzenet-arányt nem fogja kapni.)
+    1. A metódusban módosítsa az 1000-ről az 1-re, ami csökkenti az üzenetek küldése közötti időt 1 másodpercről `SendDeviceToCloudMessagesAsync` `Task.Delay` 0,001 másodpercre. A késés lerövidítése növeli az elküldött üzenetek számát. (Valószínűleg nem fog másodpercenként 100 üzenetet kapni.)
 
         ```csharp
         await Task.Delay(1);
         ```
 
-    1. Mentse a módosításokat a **SimulatedDevice. cs** fájlba.
+    1. Mentse a **SimulatedDevice.cs módosításait.**
 
-1. A helyi terminál ablakban futtassa a következő parancsot a szükséges csomagok telepítéséhez a szimulált eszköz alkalmazáshoz:
+1. A szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez futtassa a következő parancsot a helyi terminálablakban:
 
     ```cmd/sh
     dotnet restore
@@ -349,65 +349,65 @@ Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-sa
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="A szimulált eszköz kimenetét ábrázoló képernyőkép.":::
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="Képernyőkép a szimulált eszköz kimenetéről.":::
 
-Hagyja, hogy az alkalmazás legalább 10-15 percig fusson. Ideális esetben futtassa a futtatást, amíg leállítja az üzenetek küldését (körülbelül 20-30 perc). Ez akkor fordulhat elő, ha túllépte az IoT hub napi üzenetének kvótáját, és leállt a további üzenetek fogadása.
+Hagyja, hogy az alkalmazás legalább 10–15 percig fusson. Ideális esetben hagyja futni, amíg le nem áll az üzenetek küldése (körülbelül 20–30 perc). Ez akkor fordul elő, ha túllépte az IoT Hub napi üzenetkvótáját, és már nem fogad több üzenetet.
 
 > [!NOTE]
-> Ha az alkalmazás nem az üzenetek küldésének leállítását követően hosszabb ideig nem fut az eszközön, kivételt tapasztalhat. Ezt a kivételt nyugodtan figyelmen kívül hagyhatja, és az alkalmazás ablakát is lezárhatja.
+> Ha az eszközalkalmazást hosszabb ideig hagyja futni, miután az már nem küld üzeneteket, kivételt okozhat. Nyugodtan figyelmen kívül hagyhatja ezt a kivételt, és bezárhatja az alkalmazás ablakát.
 
-## <a name="view-metrics-chart-on-your-dashboard"></a>Metrikai diagram megtekintése az irányítópulton
+## <a name="view-metrics-chart-on-your-dashboard"></a>Metrikadiagram megtekintése az irányítópulton
 
-1. A Azure Portal bal felső sarkában nyissa meg a portál menüt, majd válassza az **irányítópult** lehetőséget.
+1. Az irányítópult bal felső sarkában Azure Portal a portál menüjét, majd válassza az Irányítópult **lehetőséget.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Képernyőkép az irányítópult kiválasztásáról.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Az irányítópult kiválasztásának képernyőképe.":::
 
-1. Keresse meg a korábban rögzített diagramot, és kattintson a diagramon a csempén kívül bárhová a kibontáshoz. Megjeleníti az elküldött telemetria-üzeneteket, valamint a diagramon használt üzenetek teljes számát. A legfrissebb számok a diagram alján jelennek meg. A kurzort áthelyezheti a diagramon a megadott időpontok metrikai értékeinek megjelenítéséhez. Az időértéket és a részletességet a diagram tetején is megváltoztathatja, hogy szűkítse vagy bővítse az adatokat egy adott időpontra.
+1. Keresse meg a korábban rögzített diagramot, és kattintson bárhová a csempén a diagramadatokon kívül annak kibontásához. Megjeleníti az elküldött telemetriai üzeneteket és a diagramon használt üzenetek teljes számát. A legutóbbi számok a diagram alján jelennek meg. A diagramon a kurzort mozgatva adott időpontokban láthatja a metrikaértékeket. A diagram tetején módosíthatja az időértéket és a részletességet is, így leszűkítheti vagy kibonthatja az adatokat egy adott időszakra.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="A metrikák diagramját ábrázoló képernyőfelvétel":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="Képernyőkép a metrikadiagramról.":::
 
-   Ebben a forgatókönyvben a szimulált eszköz üzeneteinek átviteli sebessége nem elég nagy ahhoz, hogy IoT Hub az üzeneteinek szabályozásához. Az olyan forgatókönyvekben, amelyek ténylegesen szabályozzák a szabályozást, láthatják, hogy az elküldött telemetria-üzenetek túllépik a IoT hub korlátozási korlátját korlátozott ideig. Ez a burst forgalom befogadására szolgál. Részletekért lásd: [Traffic Shaping](iot-hub-devguide-quotas-throttling.md#traffic-shaping).
+   Ebben a forgatókönyvben a szimulált eszköz üzenetátvitele nem elég nagy ahhoz, hogy IoT Hub az üzeneteket. Egy olyan forgatókönyvben, amely ténylegesen szabályozást tartalmaz, előfordulhat, hogy az elküldött telemetriai üzenetek korlátozott ideig túllépik az IoT Hub szabályozási korlátját. Ennek az a fontos, hogy igazodjon az adatlódásos forgalomhoz. Részletekért lásd: [forgalomformálás.](iot-hub-devguide-quotas-throttling.md#traffic-shaping)
 
-## <a name="view-the-alerts"></a>Riasztások megtekintése
+## <a name="view-the-alerts"></a>A riasztások megtekintése
 
-Ha az elküldött üzenetek száma meghaladja a riasztási szabályokban beállított korlátokat, elindíthatja az értesítő e-maileket.
+Ha az elküldött üzenetek száma meghaladja a riasztási szabályokban beállított korlátokat, elkezd e-mailes riasztásokat kapni.
 
-Ha meg szeretné tudni, hogy vannak-e aktív riasztások, válassza a **riasztások** elemet a **figyelés** elemnél az IoT hub bal oldali paneljén. A **riasztások** ablaktábla megjeleníti a megadott időtartomány súlyossági sorrendje szerint rendezett riasztások számát.
+Ha látnia kell, hogy vannak-e  aktív riasztások, válassza az IoT Hub bal oldali panelének Figyelés alatti Riasztások lehetőséget.  A **Riasztások** panel a riasztások számát jeleníti meg súlyosság szerint rendezve a megadott időtartományban.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/view-alerts.png" alt-text="A riasztások összegzését bemutató képernyőkép.":::
 
-Válassza ki a 3. súlyossági szinthez tartozó sort. Ekkor megnyílik a **minden riasztás** panel, és megjeleníti a kilőtt 3. három riasztást.
+Válassza ki a 3. súlyosságú sort. Megnyílik **a Minden riasztás panel,** és listázza az Sev 3 riasztásokat, amelyek el vannak bocsátva.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="Képernyőfelvétel a minden riasztás panelről.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="A Minden riasztás panel képernyőképe.":::
 
-Válassza ki az egyik riasztást a riasztás részleteinek megtekintéséhez.
+Válassza ki az egyik riasztást a riasztás részleteinek kiválasztásához.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="A riasztás részleteit megjelenítő képernyőkép.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="Képernyőkép a riasztás részleteiről.":::
 
-A Beérkezett üzenetek mappában található e-mailek Microsoft Azure. A Tárgy sor az aktivált riasztást írja le. Például az *Azure: aktivált súlyosság: 3 riasztás, ha több mint 1000 üzenet 5 percen belül*. A törzs a következő képhez hasonlóan fog kinézni:
+Ellenőrizze, hogy van-e e-mail-e-mail a Microsoft Azure. A tárgysor az aktivált riasztást írja le. Például: *Azure: Aktivált súlyosság: 3 Riasztás 5 perc alatt több mint 1000 üzenet esetén.* A törzs az alábbi képen láthatóhoz hasonlóan fog kinézni:
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/alert-mail.png" alt-text="A riasztásokat bemutató e-mail képernyőképe.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/alert-mail.png" alt-text="Képernyőkép az e-mailről, amely azt mutatja, hogy a riasztások el vannak küldve.":::
 
-## <a name="view-azure-monitor-logs"></a>Azure Monitor naplók megtekintése
+## <a name="view-azure-monitor-logs"></a>Naplók Azure Monitor megtekintése
 
-A [kapcsolatok és eszközök telemetria gyűjtése](#collect-logs-for-connections-and-device-telemetry) című szakaszban létrehozott egy diagnosztikai beállítást, amellyel az IoT hub által kibocsátott erőforrás-naplókat küldhet a kapcsolatok és az eszközök telemetria műveleteihez a naplók Azure monitor. Ebben a szakaszban egy Kusto-lekérdezést fog futtatni Azure Monitor naplókon, hogy figyelje az esetleges hibákat.
+A [Kapcsolatok és](#collect-logs-for-connections-and-device-telemetry) eszköz-telemetria naplóinak gyűjtése szakaszban létrehozott egy diagnosztikai beállítást, amely az IoT Hub által kibocsátott erőforrásnaplókat továbbítja a kapcsolati és eszköz-telemetriaműveleteket a Azure Monitor naplókba. Ebben a szakaszban kusto-lekérdezést fog futtatni a Azure Monitor naplókban, hogy megfigyelje az esetlegesen előforduló hibákat.
 
-1. Az IoT hub bal oldali ablaktáblájának **figyelés** területén Azure Portal válassza a **naplók** lehetőséget. Ha megnyílik, a kezdeti **lekérdezések** ablak bezárásához.
+1. Az **IoT** Hub bal oldali panelének Figyelés Azure Portal válassza a **Naplók lehetőséget.** Ha megnyílik, **zárja** be a kezdeti Lekérdezések ablakot.
 
-1. Az új lekérdezés ablaktáblán válassza a **lekérdezések** fület, majd bontsa ki **IoT hub** az alapértelmezett lekérdezések listájának megtekintéséhez.
+1. Az Új lekérdezés panelen  válassza a  Lekérdezések lapot, majd bontsa ki a IoT Hub gombra az alapértelmezett lekérdezések listájának a listájához.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Képernyőkép IoT Hub alapértelmezett lekérdezésekről.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Az alapértelmezett IoT Hub képernyőképe.":::
 
-1. Válassza ki a *hiba összegző* lekérdezését. A lekérdezés megjelenik a lekérdezés-szerkesztő ablaktáblán. Válassza a **Futtatás** lehetőséget a szerkesztő ablaktáblán, és figyelje meg a lekérdezés eredményeit. Bontsa ki az egyik sort a részletek megjelenítéséhez.
+1. Válassza a *Hibaösszegzés lekérdezést.* A lekérdezés a Lekérdezésszerkesztő panelen jelenik meg. Válassza **a Futtatás** lehetőséget a szerkesztőpanelen, és figyelje meg a lekérdezés eredményeit. Bontsa ki az egyik sort a részletekért.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="Képernyőfelvétel a hibák összegző lekérdezés által visszaadott naplókról.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="Képernyőkép az Errors summary lekérdezés által visszaadott naplókról.":::
 
    > [!NOTE]
-   > Ha nem lát hibát, próbálja meg futtatni a *nemrégiben csatlakoztatott eszközök* lekérdezését. Ennek egy sort kell visszaadnia a szimulált eszközhöz.
+   > Ha nem lát hibát, próbálja meg a Legutóbb csatlakoztatott eszközök lekérdezés *futtatását.* Ennek egy sort kell visszaadni a szimulált eszközhöz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT hubot, a Log Analytics munkaterületet és magát az erőforráscsoportot. Ha rögzített mérőszámokat tartalmazó diagramokat az irányítópulthoz, akkor manuálisan el kell távolítania őket a diagram jobb felső sarkában található három pontra, majd az **Eltávolítás** lehetőséget választva. A diagramok törlése után ne felejtse el menteni a módosításokat.
+Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT Hubot, a Log Analytics-munkaterületet és magát az erőforráscsoportot. Ha rögzített metrikák diagramokat az irányítópulton, manuálisan kell eltávolítania őket. Kattintson az egyes diagramok jobb felső sarkában található három pontra, majd válassza az Eltávolítás **gombra.** A diagramok törlése után mindenképpen mentse a módosításokat.
 
 Az erőforráscsoport az [az group delete](/cli/azure/group#az-group-delete) paranccsal távolítható el.
 
@@ -417,18 +417,18 @@ az group delete --name ContosoResources
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja IoT Hub metrikákat és naplókat a következő feladatok végrehajtásával:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja IoT Hub metrikákat és naplókat a következő feladatok elvégzésével:
 
 > [!div class="checklist"]
 >
-> * Az Azure CLI használatával hozzon létre egy IoT hubot, regisztráljon egy szimulált eszközt, és hozzon létre egy Log Analytics munkaterületet.  
-> * IoT Hub kapcsolatok és az eszköz telemetria erőforrás-naplófájljainak küldése a Log Analytics munkaterület Azure Monitor naplóiba.
-> * A metrika-kezelővel létrehozhat egy diagramot a kiválasztott mérőszámok alapján, és rögzítheti azt az irányítópulton.
-> * Hozzon létre metrikus riasztásokat, így e-mailben értesítheti, ha fontos feltételek történnek.
-> * Töltsön le és futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az IoT hub-nak.
-> * A riasztások megtekintése a feltételek bekövetkezésekor.
-> * Tekintse meg a metrikák diagramot az irányítópulton.
-> * IoT Hub hibák és műveletek megtekintése Azure Monitor naplókban.
+> * Az Azure CLI használatával létrehozhat egy IoT Hubot, regisztrálhat egy szimulált eszközt, és létrehozhat egy Log Analytics-munkaterületet.  
+> * Küldjön IoT Hub és az eszköz telemetriai erőforrásnaplóit a Log Analytics Azure Monitor naplókba.
+> * A Metrikakezelővel létrehozhat egy diagramot a kiválasztott metrikák alapján, és rögzítheti azt az irányítópulton.
+> * Hozzon létre metrikariasztásokat, így e-mailben értesítheti, ha fontos feltételek lépnek fel.
+> * Letölthet és futtathat egy alkalmazást, amely egy IoT-eszközt szimulál, és üzeneteket küld az IoT Hubnak.
+> * A feltételek bekövetkeztének riasztásai.
+> * Tekintse meg a metrikadiagramot az irányítópulton.
+> * Tekintse IoT Hub hibákat és műveleteket a Azure Monitor naplókban.
 
 A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja be. 
 

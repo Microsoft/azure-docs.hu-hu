@@ -3,19 +3,19 @@ title: Áthelyezési művelet támogatása erőforrástípus szerint
 description: Felsorolja az új erőforráscsoportba, előfizetésbe vagy régióba áthelyezható Azure-erőforrástípusokat.
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: c159b6e5f64f3052a6584034aa58b058b1426b16
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725565"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740087"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrások áthelyezési műveleteinek támogatása
 
 Ez a cikk felsorolja, hogy egy Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett információkat nyújt az erőforrások áthelyezésének speciális feltételeiről is.
 
 > [!IMPORTANT]
-> A legtöbb esetben a gyermekerőforrás nem mozgatható a szülőerőforrástól függetlenül. A gyermekerőforrások erőforrástípusa formátuma `<resource-provider-namespace>/<parent-resource>/<child-resource>` . A például `Microsoft.ServiceBus/namespaces/queues` a gyermekerőforrása. `Microsoft.ServiceBus/namespaces` A szülőerőforrás áthelyezésekor a gyermekerőforrás is automatikusan át lesz helyezték. Ha ebben a cikkben nem lát gyermekerőforrást, feltételezheti, hogy a szülőerőforrással együtt van áthelyezve. Ha a szülőerőforrás nem támogatja az áthelyezést, a gyermekerőforrást nem lehet áthelyezni.
+> A legtöbb esetben a gyermekerőforrás nem mozgatható a szülőerőforrástól függetlenül. A gyermekerőforrások erőforrástípusa a `<resource-provider-namespace>/<parent-resource>/<child-resource>` következő: . A például `Microsoft.ServiceBus/namespaces/queues` a gyermekerőforrása. `Microsoft.ServiceBus/namespaces` A szülőerőforrás áthelyezésekor a gyermekerőforrás is automatikusan át lesz helyezték. Ha ebben a cikkben nem lát gyermekerőforrást, feltételezheti, hogy a szülőerőforrással együtt van áthelyezve. Ha a szülőerőforrás nem támogatja az áthelyezést, a gyermekerőforrást nem lehet áthelyezni.
 
 Ugrás egy erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
@@ -236,7 +236,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | konfiguráció | Nem | Nem | Nem |
 > | naplók | Nem | Nem | Nem |
 > | jelentések | Nem | Nem | Nem |
-> | servicehealthmetrics | Nem | Nem | Nem |
+> | servicehealthmetrics (szolgáltatás-egészségmetriák) | Nem | Nem | Nem |
 > | services | Nem | Nem | Nem |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
@@ -348,8 +348,8 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
 > | ------------- | ----------- | ---------- | ----------- |
 > | automationaccounts | Igen | Yes | Igen (sablon használatával) <br/><br/> [Georeplikáció használata](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |
-> | automationaccounts / konfigurációk | Igen | Igen | Nem |
-> | automationaccounts /runbookok | Igen | Igen | Nem |
+> | automationaccounts /configurations | Igen | Igen | Nem |
+> | automationaccounts/runbookok | Igen | Igen | Nem |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -399,7 +399,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
 > | ------------- | ----------- | ---------- | ----------- |
-> | batchaccounts (kötegek száma) | Igen | Yes | A Batch-fiókok nem helyezhetők át közvetlenül az egyik régióból a másikba, de sablon használatával exportálhat, módosíthat és üzembe helyezheti a sablont az új régióban. <br/><br/> Tudnivalók a [Batch-fiókok régiók közötti áthelyezésével kapcsolatban](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts (kötegek száma) | Igen | Yes | A Batch-fiókok nem helyezhetők át közvetlenül egy régióból egy másikba, de sablon használatával exportálhat, módosíthat és üzembe helyezheti a sablont az új régióban. <br/><br/> Tudnivalók a [Batch-fiókok régiók közötti áthelyezésével kapcsolatban](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -465,13 +465,13 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!IMPORTANT]
-> Ha a Azure Cache for Redis-példány virtuális hálózattal van konfigurálva, a példány nem mozgatható másik előfizetésbe. Lásd: [Hálózati áthelyezés korlátozásai.](./move-limitations/networking-move-limitations.md)
+> Ha a Azure Cache for Redis-példány virtuális hálózattal van konfigurálva, a példányt nem lehet másik előfizetésbe áthelyezni. Lásd: [Hálózati áthelyezés korlátozásai.](./move-limitations/networking-move-limitations.md)
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
 > | ------------- | ----------- | ---------- | ----------- |
 > | redis | Igen | Igen | Nem |
-> | redisenterprise | Nem | Nem | Nem |
+> | redisenterprise (redisenterprise) | Nem | Nem | Nem |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -547,7 +547,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | képességek | Nem | Nem | Nem |
 > | expressroutecsconnections | Nem | Nem | Nem |
 > | expressroutecsconnections /társviszonyok | Nem | Nem | Nem |
-> | gatewaysupporteddevices | Nem | Nem | Nem |
+> | gatewaysupporteddevices (átjárókupportáltdevices) | Nem | Nem | Nem |
 > | networksecuritygroups | Nem | Nem | Nem |
 > | kvóták | Nem | Nem | Nem |
 > | reservedips | Nem | Nem | Nem |
@@ -565,7 +565,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | images | Nem | Nem | Nem |
 > | oszimages | Nem | Nem | Nem |
 > | osplatformimages | Nem | Nem | Nem |
-> | publicimages (nyilvános) | Nem | Nem | Nem |
+> | publicimages | Nem | Nem | Nem |
 > | kvóták | Nem | Nem | Nem |
 > | storageaccounts (tárfiókok) | Igen | Nem | Igen |
 > | vmimages | Nem | Nem | Nem |
@@ -607,7 +607,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | rendelkezésre állási készlet | Igen | Igen |  Yes <br/><br/> A [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) készleteket a rendelkezésre állási készletek áthelyezésére használhatja. |
 > | diskaccesses | Nem | Nem | Nem |
 > | diskencryptionsets | Nem | Nem | Nem |
-> | Lemezek | Igen | Igen | Yes <br/><br/> A [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Azure-beli virtuális gépek és a kapcsolódó lemezek áthelyezésére. |
+> | Lemezek | Igen | Igen | Yes <br/><br/> Az [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) azure-beli virtuális gépek és a kapcsolódó lemezek áthelyezésére. |
 > | Galériák | Nem | Nem | Nem |
 > | katalógusok /képek | Nem | Nem | Nem |
 > | katalógusok / képek / verziók | Nem | Nem | Nem |
@@ -669,7 +669,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | Nyilvántartások | Igen | Igen | Nem |
 > | beállítás-nyilvántartások/ügynökkészletek | Igen | Igen | Nem |
 > | beállításregisztrálók /buildtasks | Igen | Igen | Nem |
-> | beállítás-nyilvántartások/replikációk | Igen | Igen | Nem |
+> | beállításregisztrációs tartományvezérlők/replikációk | Igen | Igen | Nem |
 > | beállításregisztrálók /feladatok | Igen | Igen | Nem |
 > | beállításregisztrálók /webhookok | Igen | Igen | Nem |
 
@@ -844,7 +844,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
 > | ------------- | ----------- | ---------- | ----------- |
-> | Szerverek | Igen | Yes | A régiók közötti olvasási replikával áthelyezhet egy meglévő kiszolgálót. [További információ](../../postgresql/howto-move-regions-portal.md).<br/><br/> Ha a szolgáltatás georedundáns biztonsági mentési tárolóval van kiépítve, akkor a georedundáns visszaállítással más régiókban is visszaállíthat. [További információ](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
+> | Szerverek | Igen | Yes | A régiók közötti olvasási replikával áthelyezhet egy meglévő kiszolgálót. [További információ](../../postgresql/howto-move-regions-portal.md).<br/><br/> Ha a szolgáltatás georedundáns biztonsági mentési tárolóval van kiépítve, a georedundáns visszaállítással más régiókban is visszaállíthatja a szolgáltatást. [További információ](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -861,7 +861,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- | ----------- |
 > | flexibleServers | Nem | Nem | Nem |
 > | kiszolgálócsoportok | Nem | Nem | Nem |
-> | Szerverek | Igen | Yes | A régiók közötti olvasási replikával áthelyezhet egy meglévő kiszolgálót. [További információ:](../../postgresql/howto-move-regions-portal.md).
+> | Szerverek | Igen | Yes | A régiók közötti olvasási replikával áthelyezhet egy meglévő kiszolgálót. [További információ](../../postgresql/howto-move-regions-portal.md).
 > | serversv2 | Igen | Igen | Nem |
 > | singleservers (egykiszolgálós) | Igen | Igen | Nem |
 
@@ -946,7 +946,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- | ----------- |
 > | Tartományok | Igen | Igen | Nem |
 > | generatessorequest | Nem | Nem | Nem |
-> | topleveldomains (legfelső szintű tartomány) | Nem | Nem | Nem |
+> | topleveldomains (legfelső szintűtartományok) | Nem | Nem | Nem |
 > | validatedomainregistrationinformation | Nem | Nem | Nem |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -1021,7 +1021,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | guestconfigurationassignments | Nem | Nem | Nem |
 > | Szoftver | Nem | Nem | Nem |
 > | softwareupdateprofile | Nem | Nem | Nem |
-> | softwareupdates (szoftverupdates) | Nem | Nem | Nem |
+> | softwareupdates (szoftveres frissítés) | Nem | Nem | Nem |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
@@ -1119,11 +1119,11 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | guestdiagnosticsettings | Nem | Nem | Nem |
 > | listmigrationdate (listamigrációdate) | Nem | Nem | Nem |
 > | logdefinitions (naplódefiníciók) | Nem | Nem | Nem |
-> | logprofilok | Nem | Nem | Nem |
+> | logprofiles | Nem | Nem | Nem |
 > | naplók | Nem | Nem | Nem |
-> | metricalerts (metrika-mérőszámok) | Nem | Nem | Nem |
+> | metricalerts (mérőszám-mérőszámok) | Nem | Nem | Nem |
 > | metricbaselines | Nem | Nem | Nem |
-> | metricbatch | Nem | Nem | Nem |
+> | metricbatch (metrikabatch) | Nem | Nem | Nem |
 > | metricdefinitions (metrikadefiníciók) | Nem | Nem | Nem |
 > | metricnamespaces (metrikanévterek) | Nem | Nem | Nem |
 > | metrics | Nem | Nem | Nem |
@@ -1325,7 +1325,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
 > | ------------- | ----------- | ---------- | ----------- |
 > | fiókok | Igen | Yes | Nem, Azure Maps térinformatikai szolgáltatás. |
-> | accounts /privateatlases | Igen | Igen | Nem |
+> | fiókok /privát fiókok | Igen | Igen | Nem |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1424,11 +1424,11 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | expressroutecircuits | Nem | Nem | Nem |
 > | expressroutegateways | Nem | Nem | Nem |
 > | expressrouteserviceproviders | Nem | Nem | Nem |
-> | tűzfalszabályok | Igen | Igen | Nem |
+> | firewallpolicies (tűzfalszabályok) | Igen | Igen | Nem |
 > | frontdoors (előtők) | Nem | Nem | Nem |
 > | ipallocations (ipallocations) | Igen | Igen | Nem |
 > | ipgroups | Igen | Igen | Nem |
-> | loadbalancers | Igen – Alapszintű termékváltozat<br> Igen – Standard termékváltozat | Igen – Alapszintű termékváltozat<br>Nem – Standard termékváltozat | Yes <br/><br/> Belső [és Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) terheléselosztások áthelyezésére használja a terheléselosztást. |
+> | terheléselosztási terhelések | Igen – Alapszintű termékváltozat<br> Igen – Standard termékváltozat | Igen – Alapszintű termékváltozat<br>Nem – Standard termékváltozat | Yes <br/><br/> Belső [és Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) terheléselosztások áthelyezésére használja a terheléselosztást. |
 > | localnetworkgateways | Igen | Igen | Nem |
 > | natgateways | Nem | Nem | Nem |
 > | networkexperimentprofiles | Nem | Nem | Nem |
@@ -1696,7 +1696,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | automatizálások | Igen | Igen | Nem |
 > | autoprovisioningsettings | Nem | Nem | Nem |
 > | complianceresults (megfelelőségresults) | Nem | Nem | Nem |
-> | megfelelőség | Nem | Nem | Nem |
+> | megfelelőségek | Nem | Nem | Nem |
 > | datacollectionagents | Nem | Nem | Nem |
 > | devicesecuritygroups | Nem | Nem | Nem |
 > | felderített biztonságimegoldások | Nem | Nem | Nem |
@@ -1837,7 +1837,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | managedinstances | Nem | Nem | Igen <br/><br/> [További információ a](../../azure-sql/database/move-resources-across-regions.md) felügyelt példányok régiók közötti áthelyezésről. |
 > | managedinstances /databases | Nem | Nem | Igen |
 > | Szerverek | Igen | Igen |Yes |
-> | kiszolgálók/adatbázisok | Igen | Igen | Yes <br/><br/> [További információ az](../../azure-sql/database/move-resources-across-regions.md) adatbázisok régiók közötti áthelyezéséhez.<br/><br/> [További információ a](../../resource-mover/tutorial-move-region-sql.md) Azure Resource Mover adatbázisok Azure SQL való áthelyezésről.  |
+> | kiszolgálók /adatbázisok | Igen | Igen | Yes <br/><br/> [További információ az](../../azure-sql/database/move-resources-across-regions.md) adatbázisok régiók közötti áthelyezéséhez.<br/><br/> [További információ a](../../resource-mover/tutorial-move-region-sql.md) Azure Resource Mover adatbázisok Azure SQL való áthelyezésről.  |
 > | servers /databases / backuplongtermretentionpolicies | Igen | Igen | Nem |
 > | servers /elasticpools | Igen | Igen | Yes <br/><br/> [További információ a](../../azure-sql/database/move-resources-across-regions.md) rugalmas készletek régiók közötti áthelyezésével kapcsolatban.<br/><br/> [További információ a](../../resource-mover/tutorial-move-region-sql.md) rugalmas Azure Resource Mover rugalmas készletek Azure SQL való áthelyezésével kapcsolatban.  |
 > | servers /jobaccounts | Igen | Igen | Nem |
@@ -1963,7 +1963,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
 > [!IMPORTANT]
-> Az Azure DevOps-előfizetés módosítása: A számlázáshoz [használt Azure-előfizetés módosítása.](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+> Az Azure DevOps-előfizetés módosítása: [A számlázáshoz használt Azure-előfizetés módosítása.](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés | Régió áthelyezése |
@@ -2027,7 +2027,7 @@ Ugrás egy erőforrás-szolgáltatói névtérre:
 > | törölt webhelyek | Nem | Nem | Nem |
 > | üzembehelyezések | Nem | Nem | Nem |
 > | georégiók | Nem | Nem | Nem |
-> | üzemeltetési környezetek | Nem | Nem | Nem |
+> | üzemeltetéskörnyezetek | Nem | Nem | Nem |
 > | kubeenvironments | Igen | Igen | Nem |
 > | közzétételihasználók | Nem | Nem | Nem |
 > | Ajánlások | Nem | Nem | Nem |

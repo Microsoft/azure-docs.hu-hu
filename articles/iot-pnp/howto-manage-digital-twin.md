@@ -1,32 +1,32 @@
 ---
-title: A IoT Plug and Play digitális ikrek kezelése
-description: A IoT Plug and Play-eszköz kezelése digitális Twin API-k használatával
+title: Az IoT-Plug and Play kezelése
+description: IoT-Plug and Play kezelése digitális iker API-k használatával
 author: prashmo
 ms.author: prashmo
-ms.date: 07/20/2020
+ms.date: 12/17/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e68003878dc0e9275461100a59e0f45486c2978f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97654608"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739871"
 ---
-# <a name="manage-iot-plug-and-play-digital-twins"></a>IoT-Plug and Play digitális ikrek kezelése
+# <a name="manage-iot-plug-and-play-digital-twins"></a>IoT-Plug and Play kezelése
 
-A IoT Plug and Play **támogatja a digitális iker és** a digitális **dupla műveletek frissítését** a digitális ikrek kezelésére. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) vagy az egyik [Service SDK](libraries-sdks.md)-t is.
+Az IoT Plug and Play **támogatja** a Digitális iker lekért és **a Digitális ikerművelet** frissítése műveleteket a digitális ikerműveletek kezeléséhez. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) vagy valamelyik szolgáltatási [API-t.](libraries-sdks.md)
 
-Az írás időpontjában a digitális Twin API verziója a következő: `2020-09-30` .
+A cikk írásakor a Digital Twin API verziója `2020-09-30` a következő: .
 
 ## <a name="update-a-digital-twin"></a>Digitális iker frissítése
 
-A IoT Plug and Play-eszközök a [digitális Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)által leírt modellt implementálják. A megoldás fejlesztői a **digitális Twin API frissítésével** frissíthetik az összetevő állapotát és a digitális iker tulajdonságait.
+Az IoT Plug and Play eszköz megvalósít egy modellt, amelyet a [Digital Twins Definition Language v2 (DTDL) ismertet.](https://github.com/Azure/opendigitaltwins-dtdl) A megoldásfejlesztők a **Digital Twins API frissítésével** frissítheti az összetevő állapotát és a digitális iker tulajdonságait.
 
-A cikkben példaként használt IoT Plug and Play eszköz a [hőmérséklet-vezérlő modelljét](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) implementálja [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -összetevőkkel.
+A cikkben példaként Plug and Play IoT-eszköz a Temperature [Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modellt implementálja [Termosztát-összetevőkkel.](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)
 
-A következő kódrészlet a **Get Digital Twin** kérelem JSON-objektumként való formázásának válaszát mutatja. Ha többet szeretne megtudni a digitális kettős formátumról, tekintse meg a [IoT Plug and Play digitális ikrek ismertetése](./concepts-digital-twin.md#digital-twin-example)című témakört:
+Az alábbi kódrészlet egy JSON-objektumként formázott **Digitális ikereszköz** lekérése kérelemre adott választ mutatja be. További információ a digitális ikerformátumról: [Az IoT-alkalmazások Plug and Play:](./concepts-digital-twin.md#digital-twin-example)
 
 ```json
 {
@@ -58,9 +58,9 @@ A következő kódrészlet a **Get Digital Twin** kérelem JSON-objektumként va
 }
 ```
 
-A digitális Twins lehetővé teszi, hogy egy teljes összetevőt vagy tulajdonságot egy [JSON-javítás](http://jsonpatch.com/)használatával frissítsen.
+A digitális ikerekkel egy teljes összetevőt vagy tulajdonságot frissítheti [egy JSON-javítással.](http://jsonpatch.com/)
 
-A tulajdonságot például a következőképpen frissítheti `targetTemperature` :
+Például a következőképpen `targetTemperature` frissítheti a tulajdonságot:
 
 ```json
 [
@@ -72,7 +72,7 @@ A tulajdonságot például a következőképpen frissítheti `targetTemperature`
 ]
 ```
 
-Az előző frissítés egy tulajdonság kívánt értékét állítja be a megfelelő összetevő-szinten `$metadata` , ahogy az a következő kódrészletben látható. IoT Hub frissíti a tulajdonság kívánt verzióját:
+Az előző frissítés beállítja egy tulajdonság kívánt értékét a megfelelő összetevőszinten, az alábbi `$metadata` kódrészletben látható módon. IoT Hub frissíti a tulajdonság kívánt verzióját:
 
 ```json
 "thermostat1": {
@@ -92,13 +92,13 @@ Az előző frissítés egy tulajdonság kívánt értékét állítja be a megfe
 
 ### <a name="add-replace-or-remove-a-component"></a>Összetevő hozzáadása, cseréje vagy eltávolítása
 
-Az összetevő szintű műveletekhez üres objektum `$metadata` jelölőre van szükség az értéken belül.
+Az összetevőszintű műveletekhez üres objektumjelölőre van `$metadata` szükség az értéken belül.
 
-A Hozzáadás vagy csere összetevő-művelet beállítja a megadott tulajdonságok kívánt értékeit. Emellett törli a kívánt értékeket a frissítéshez nem megadott írható tulajdonságok esetében is.
+Egy összetevő hozzáadása vagy cseréje művelet beállítja az összes megadott tulajdonság kívánt értékeit. Emellett törli a kívánt értékeket minden olyan írható tulajdonságnál, amely nem található meg a frissítésben.
 
-Az összetevők eltávolítása törli az összes írható tulajdonság kívánt értékét. Az eszköz végül szinkronizálja az eltávolítást, és leállítja az egyes tulajdonságok jelentését. Az összetevő ezután el lesz távolítva a digitális Twin-ből.
+Egy összetevő eltávolítása törli az összes írható tulajdonság kívánt értékeit. Az eszközök végül szinkronizálják ezt az eltávolítást, és nem jelentik az egyes tulajdonságokat. Ezután eltávolítja az összetevőt a digitális ikereszközből.
 
-A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet vagy távolíthat el egy összetevőt:
+A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélheti le vagy távolíthat el egy összetevőt:
 
 ```json
 [
@@ -128,11 +128,11 @@ A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet v
 
 ### <a name="add-replace-or-remove-a-property"></a>Tulajdonság hozzáadása, cseréje vagy eltávolítása
 
-A Hozzáadás vagy csere művelet beállítja egy tulajdonság kívánt értékét. Az eszköz szinkronizálhatja az állapotot, és a `ack` kóddal, a verzióval és a leírással együtt az érték frissítését is bejelentheti.
+Egy hozzáadási vagy csere művelet beállítja egy tulajdonság kívánt értékét. Az eszköz szinkronizálhatja az állapotot, és jelentést készít az érték frissítéséről egy kóddal, verzióval `ack` és leírással együtt.
 
-A tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja ezt a tulajdonságot, és eltávolíthatja azt az összetevőből. Ha ez a tulajdonság az utolsó az összetevőben, akkor a rendszer eltávolítja az összetevőt is.
+Egy tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja a tulajdonság jelentését, és el lesz távolítva az összetevőből. Ha ez a tulajdonság az összetevő utolsó eleme, akkor az összetevő is el lesz távolítva.
 
-A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet vagy távolíthat el egy tulajdonságot egy összetevőn belül:
+A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélheti le vagy távolíthat el egy tulajdonságot egy összetevőn belül:
 
 ```json
 [
@@ -153,45 +153,45 @@ A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet v
 ]
 ```
 
-### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>A digitális Twin tulajdonság kívánt értékének beállítására vonatkozó szabályok
+### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>Digitális ikertulajdonság kívánt értékének beállítására vonatkozó szabályok
 
 **Név**
 
-Egy összetevő vagy tulajdonság nevének érvényes DTDL v2-névnek kell lennie.
+Az összetevő vagy tulajdonság nevének érvényes DTDL v2 névnek kell lennie.
 
-Az engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter), az aláhúzás (nem pedig az első vagy az utolsó karakter).
+Megengedett karakterek: a-z, A-Z, 0-9 (nem az első karakter) és aláhúzásjel (nem az első vagy az utolsó karakter).
 
-A név 1-64 karakter hosszú lehet.
+A név 1–64 karakter hosszú lehet.
 
-**Tulajdonság értéke**
+**Tulajdonságérték**
 
-Az értéknek érvényes [DTDL v2 tulajdonságnak](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)kell lennie.
+Az értéknek érvényes [DTDL v2 tulajdonságnak kell lennie.](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)
 
-Az összes primitív típus támogatott. Összetett típusokon, enumerálásokon, térképeken és objektumokon belül támogatottak. További információ: [DTDL v2 sémák](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas).
+Minden primitív típus támogatott. Az összetett típusokon belül az enumok, térképek és objektumok támogatottak. További információ: [DTDL v2-sémák.](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas)
 
-A tulajdonságok nem támogatják a tömböt vagy a tömbhöz tartozó összetett sémákat.
+A tulajdonságok nem támogatják a tömböt vagy a tömböt tartalmazó összetett sémákat.
 
-Egy összetett objektum esetében az öt szint maximális mélysége támogatott.
+Összetett objektumok esetén legfeljebb öt szint mélysége támogatott.
 
-Az összetett objektumon belüli összes mezőnév érvényes DTDL v2-névvel kell rendelkeznie.
+A komplex objektumon belül minden mezőnévnek érvényes DTDL v2-névnek kell lennie.
 
-Az összes térképi kulcsnak érvényes DTDL v2-névnek kell lennie.
+Minden térképkulcsnak érvényes DTDL v2-névnek kell lennie.
 
-## <a name="troubleshoot-update-digital-twin-api-errors"></a>A digitális Twin API-hibák frissítésének hibaelhárítása
+## <a name="troubleshoot-update-digital-twin-api-errors"></a>A Digital Twin API frissítésével kapcsolatos hibák elhárítása
 
-A digitális Twin API a következő általános hibaüzenetet jeleníti meg:
+A digital twin API a következő általános hibaüzenetet jelenik meg:
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-Ha ezt a hibát látja, győződjön meg arról, hogy a frissítési javítás a [digitális Twin tulajdonság kívánt értékének beállítására vonatkozó szabályokat](#rules-for-setting-the-desired-value-of-a-digital-twin-property) követi
+Ha ezt a hibát látja, győződjön meg arról, hogy a frissítési javítás követi a digitális ikertulajdonság kívánt értékének [beállítására vonatkozó szabályokat](#rules-for-setting-the-desired-value-of-a-digital-twin-property)
 
-Amikor frissít egy összetevőt, győződjön meg arról, hogy az [üres objektum $metadata jelölője](#add-replace-or-remove-a-component) be van állítva.
+Összetevő frissítésekor győződjön meg arról, hogy az üres objektum [$metadata jelölő be](#add-replace-or-remove-a-component) van állítva.
 
-A frissítések sikertelenek lehetnek, ha egy eszköz jelentett értékei nem felelnek meg a [IoT Plug and Play konvencióinak](./concepts-convention.md#writable-properties).
+A frissítések meghiúsulnak, ha egy eszköz jelentett értékei nem felelnek meg az [IoT plug and play konvencióinak.](./concepts-convention.md#writable-properties)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
+Most, hogy már megtanulta a digitális ikereket, íme néhány további forrás:
 
 - [Kommunikáció egy eszközzel a megoldásból](quickstart-service.md)
 - [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)

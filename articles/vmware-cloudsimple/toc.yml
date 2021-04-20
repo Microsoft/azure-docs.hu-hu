@@ -152,6 +152,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: Számítási feladatot futtató virtuális gépek migrálása magánfelhőbe
               href: migrate-workloads.md
+            - name: Migrálás az Azure Data Box használatával
+              href: migration-using-azure-data-box.md
             - name: VMware-alkalmazások magas rendelkezésre állásának biztosítása az Azure-ban
               href: ensuring-high-availability.md
             - name: Terheléselosztási megoldás kiválasztása

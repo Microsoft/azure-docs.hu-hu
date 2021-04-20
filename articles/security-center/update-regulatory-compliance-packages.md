@@ -1,6 +1,6 @@
 ---
-title: A szabályozási megfelelőségi irányítópult használata Azure Security Center
-description: Megtudhatja, hogyan adhat hozzá és távolíthat el szabályozási szabványokat a megfelelőségi irányítópultról Security Center
+title: A jogszabályi megfelelési irányítópult használata a Azure Security Center
+description: Megtudhatja, hogyan adhat hozzá és távolíthat el szabályozási szabványokat a megfelelőségi irányítópulton a Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,115 +13,115 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381732"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738953"
 ---
-# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabványok halmazának testreszabása a jogszabályi megfelelési irányítópulton
 
-Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurációját az iparági szabványok, rendeletek és referenciaértékek követelményeivel. A megfelelőségi **irányítópult** az adott megfelelőségi követelmények teljesítése alapján nyújt betekintést a megfelelőségi helyzetbe.
-
-
-## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Hogyan jelennek meg a Security Centerban szereplő szabályozási megfelelőségi szabványok?
-
-Az iparági szabványok, a szabályozási szabványok és a referenciaértékek a Security Center szabályozási megfelelőségi irányítópultján jelennek meg. Mindegyik standard egy Azure Policyban definiált kezdeményezés.
-
-Az irányítópulton kiértékelt megfelelőségi adatok megtekintéséhez a **biztonsági házirend** lapon adja meg a felügyeleti csoport vagy előfizetés megfelelőségi szabványát. Ha többet szeretne megtudni a Azure Policy és a kezdeményezésekről, tekintse meg a [biztonsági szabályzatok használata](tutorial-security-policy.md)című témakört.
-
-Ha standard vagy teljesítménytesztet rendelt hozzá a kiválasztott hatókörhöz, a szabvány a szabályzatoknak megfelelő megfelelőségi irányítópulton jelenik meg, és az összes hozzá tartozó megfelelőségi adat az értékelésként van leképezve. A hozzárendelt szabványok bármelyikére vonatkozó összegző jelentéseket is letöltheti.
-
-A Microsoft saját maga követi nyomon a szabályozási szabványokat, és az egyes csomagokban automatikusan javítja annak lefedettségét. Amikor a Microsoft új tartalmat szabadít fel a kezdeményezéshez, automatikusan megjelenik az irányítópulton, mivel a szabványos vezérlőkhöz hozzárendelt új szabályzatok jelennek meg.
+Azure Security Center az erőforrások konfigurációját az iparági szabványok, szabályozások és teljesítménytesztek követelményeivel. A **jogszabályi megfelelőségi irányítópult** a megfelelőségi követelményeknek való megfelelés alapján nyújt betekintést a megfelelőségi követelményeknek.
 
 
-## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Milyen szabályozási megfelelőségi szabályok érhetők el Security Centerban?
+## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Hogyan mutatja a jogszabályi megfelelőségi szabványokat a Security Center?
 
-Alapértelmezés szerint minden előfizetéshez hozzá van rendelve az **Azure biztonsági teljesítményteszte** . Ez a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi ajánlott eljárások számára, a közös megfelelőségi keretrendszerek alapján. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+Az iparági szabványokat, szabályozási szabványokat és teljesítményteszteket a Security Center megfelelőségi irányítópultja képviseli. Minden szabvány egy kezdeményezés, amely a Azure Policy.
 
-Emellett olyan szabványokat is hozzáadhat, mint például a:
+Ha az irányítópulton értékelésként leképezett megfelelőségi adatokat szeretne látni, adjon hozzá egy megfelelőségi szabványt a felügyeleti csoporthoz vagy előfizetéshez a Biztonsági **szabályzat lapon.** A biztonsági szabályzatokkal és Azure Policy kapcsolatos további információkért lásd: [Working with security policies (A biztonsági szabályzatok munkavégzése).](tutorial-security-policy.md)
+
+Ha hozzárendelt egy standard vagy teljesítménytesztet a kiválasztott hatókörhöz, a szabvány megjelenik a jogszabályi megfelelőségi irányítópulton, és az összes kapcsolódó megfelelőségi adat értékelésként van leképezve. Az összesítő jelentéseket a hozzárendelt szabványok bármelyikéhez letöltheti.
+
+A Microsoft maga követi nyomon a szabályozási szabványokat, és bizonyos csomagokban idővel automatikusan javítja lefedettségét. Amikor a Microsoft új tartalmat ad ki a kezdeményezéshez, az automatikusan megjelenik az irányítópulton, ahogy új szabályzatok vannak leképezve a vezérlőkre a szabványban.
+
+
+## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Milyen szabályozási megfelelőségi szabványok érhetők el a Security Center?
+
+Alapértelmezés szerint minden előfizetéshez hozzá van rendelve az **Azure biztonsági teljesítményteszt.** Ez a Microsoft által írt, azure-specifikus irányelvek a közös megfelelőségi keretrendszeren alapuló biztonsági és megfelelőségi ajánlott eljárásokhoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](https://docs.microsoft.com/security/benchmark/azure/introduction).
+
+A következő szabványokat is hozzáadhatja:
 
 - NIST SP 800-53 R4
-- SWIFT CSP CSCF – v2020
-- Egyesült Királyság hivatalos és egyesült királysági NHS
+- SWIFT CSP CSCF-v2020
+- Uk Official és uk NHS
 - Canada Federal PBMM
 - Azure CIS 1.1.0
 
-A szabványokat a rendszer hozzáadja az irányítópulthoz, amint azok elérhetővé válnak.
+Amint elérhetővé válnak, a szabványokat a szolgáltatás hozzáadja az irányítópulthoz.
 
 
 ## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Szabályozási szabvány hozzáadása az irányítópulthoz
 
-A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfelelőség monitorozásához a támogatott szabályozási szabványok egyikével.
+Az alábbi lépések azt ismertetik, hogyan adhat hozzá egy csomagot, amely az egyik támogatott szabályozási szabványnak való megfelelést figyeli.
 
 > [!NOTE]
-> Ha szabványokat szeretne hozzáadni az irányítópulthoz, az előfizetésnek engedélyezve kell lennie az Azure Defender számára. Emellett csak azok a felhasználók férhetnek hozzá a megfelelőségi szabványokhoz, akik tulajdonosi vagy házirend közreműködők. 
+> Ha szabványokat szeretne hozzáadni az irányítópulthoz, az előfizetésnek engedélyeznie kell Azure Defender használatát. Emellett csak a tulajdonos vagy a szabályzat közreműködője rendelkezik a megfelelőségi szabványok hozzáadásához szükséges engedélyekkel. 
 
-1. A Security Center oldalsávján válassza a **jogszabályi megfelelőség** lehetőséget a megfelelőségi irányítópult megnyitásához. Itt láthatja az aktuálisan kijelölt előfizetésekhez jelenleg hozzárendelt megfelelőségi szabványokat.   
+1. A Security Center oldalsávján válassza a **Jogszabályi** megfelelőség lehetőséget a jogszabályi megfelelési irányítópult megnyitásához. Itt láthatja az aktuálisan kiválasztott előfizetéshez rendelt megfelelőségi szabványokat.   
 
-1. A lap tetején válassza a **megfelelőségi szabályzatok kezelése** lehetőséget. Megjelenik a házirend-kezelés lap.
+1. A lap tetején válassza a **Megfelelőségi szabályzatok kezelése lehetőséget.** Megjelenik a Házirendkezelés lap.
 
-1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez felügyelni kívánja a szabályozási megfelelőségi állapotot. 
+1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a jogszabályi megfelelési környezetét kezelni szeretné. 
 
     > [!TIP]
-    > Azt javasoljuk, hogy válassza ki a legmagasabb hatókört, amelyre a standard érvényes, hogy a megfelelőségi adatokat összesítsék és nyomon kövessék az összes beágyazott erőforrás esetében. 
+    > Javasoljuk, hogy a megfelelőségi adatok összesítése és nyomon követése érdekében válassza ki azt a hatókört, amelyre a standard vonatkozik. 
 
-1. A szervezethez kapcsolódó szabványok hozzáadásához kattintson a **további szabványok hozzáadása** lehetőségre. 
+1. A szervezet számára releváns szabványok hozzáadásához kattintson a **További szabványok hozzáadása elemre.** 
 
-1. A **szabályozási megfelelőségi szabványok hozzáadása** lapon bármely elérhető szabványra rákereshet, többek között a következőkre:
+1. A Jogszabályi **megfelelőségi szabványok hozzáadása lapon** bármely elérhető szabványt megkeresheti, beleértve a következőket:
 
     - **NIST SP 800-53 R4**
     - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF v2020**
-    - **UKO és egyesült királysági NHS**
+    - **UKO és az Egyesült Királyság Nemzeti NemzetiHS-e**
     - **Canada Federal PBMM**
     - **HIPAA HITRUST**
     - **Azure CIS 1.1.0**
     
-    ![Szabályozási szabványok hozzáadása a Azure Security Center szabályozási megfelelőségi irányítópulthoz](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Szabályozási szabványok hozzáadása Azure Security Center megfelelőségi irányítópultjához](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
-1. Válassza a **Hozzáadás** lehetőséget, és adja meg az adott kezdeményezéshez szükséges összes adatot, például a hatókört, a paramétereket és a szervizelést.
+1. Válassza **a Hozzáadás** lehetőséget, és adja meg az adott kezdeményezéshez szükséges összes adatot, például a hatókört, a paramétereket és a szervizelést.
 
-1. A Security Center oldalsávján válassza a **szabályozás megfelelősége** ismét lehetőséget a megfelelőségi irányítópultra való visszatéréshez.
+1. A Security Center oldalsávján válassza  ismét a Jogszabályi megfelelőség lehetőséget, hogy visszatérjön a jogszabályi megfelelési irányítópultra.
 
-    Az új szabvány megjelenik az iparági & szabályozási szabványainak listájában. 
-
-    > [!NOTE]
-    > A megfelelőségi irányítópulton néhány órát is igénybe vehet, hogy egy újonnan hozzáadott szabvány megjelenjen.
-
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Szabályozási megfelelőségi irányítópult" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
-
-## <a name="remove-a-standard-from-your-dashboard"></a>Standard eltávolítása az irányítópultról
-
-Ha a megadott szabályozási szabványok bármelyike nem felel meg a szervezete számára, egy egyszerű folyamat, amellyel eltávolíthatja őket a felhasználói felületről. Ez lehetővé teszi a szabályozási megfelelőségi irányítópult további testreszabását, és csak az Önre vonatkozó szabványokra koncentrálhat.
-
-Standard eltávolítása:
-
-1. A Security Center menüjében válassza a **biztonsági szabályzat** elemet.
-
-1. Válassza ki a megfelelő előfizetést, amelyből el kívánja távolítani a standardot.
+    Az új szabvány megjelenik az iparági szabályozási & listájában. 
 
     > [!NOTE]
-    > A standardokat eltávolíthat egy előfizetésből, de nem felügyeleti csoportból. 
+    > Az újonnan hozzáadott szabvány megjelenése a megfelelőségi irányítópulton több órát is igénybe vehet.
 
-    Megnyílik a biztonsági házirend lap. A kiválasztott előfizetéshez az alapértelmezett házirend, az iparági és a szabályozási szabványok, valamint a létrehozott egyéni kezdeményezések láthatók.
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Jogszabályi megfelelési irányítópult" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Szabályozási szabvány eltávolítása a szabályozási megfelelőségi irányítópultról Azure Security Center":::
+## <a name="remove-a-standard-from-your-dashboard"></a>Szabvány eltávolítása az irányítópultról
 
-1. Az eltávolítani kívánt szabványhoz válassza a **Letiltás** lehetőséget. Megjelenik egy megerősítő ablak.
+Ha a megadott szabályozási szabványok bármelyike nem releváns a szervezet számára, akkor egyszerű eljárás eltávolítani őket a felhasználói felületről. Ez lehetővé teszi a jogszabályi megfelelési irányítópult további testreszabását, és csak az Ön számára érvényes szabványokra összpontosíthat.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Erősítse meg, hogy valóban el kívánja távolítani a kiválasztott szabályozási szabványt":::
+A standardok eltávolítása:
 
-1. Válassza az **Igen** lehetőséget. A standard el lesz távolítva. 
+1. A Security Center menüjében válassza a Biztonsági **szabályzat lehetőséget.**
+
+1. Válassza ki azt az előfizetést, amelyből el szeretné távolítani a szabványt.
+
+    > [!NOTE]
+    > A standardokat eltávolíthatja az előfizetésből, de a felügyeleti csoportból nem. 
+
+    Megnyílik a biztonsági szabályzat lapja. A kiválasztott előfizetéshez az alapértelmezett szabályzatot, az iparági és szabályozási szabványokat, valamint az Ön által létrehozott egyéni kezdeményezéseket jeleníti meg.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Szabályozási szabvány eltávolítása a jogszabályi megfelelési irányítópultról a Azure Security Center":::
+
+1. Az eltávolítani kívánt szabványhoz válassza a **Letiltás lehetőséget.** Megjelenik egy megerősítési ablak.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Erősítse meg, hogy valóban el szeretné távolítani a kiválasztott szabályozási szabványt":::
+
+1. Válassza az **Igen** lehetőséget. A rendszer eltávolítja a szabványt. 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi szabványokat** a szabályozási és iparági szabványoknak való megfelelés monitorozásához.
+Ebben a cikkben megtanulta, hogyan adhat hozzá megfelelőségi **szabványokat** a jogszabályi és az iparági szabványoknak való megfelelés figyelése érdekében.
 
-Kapcsolódó anyagok esetében tekintse meg a következő lapokat:
+Kapcsolódó anyagokért tekintse meg a következő oldalakat:
 
-- [Azure-biztonsági teljesítményteszt](../security/benchmarks/introduction.md)
-- A [Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md) – megtudhatja, hogyan követheti nyomon és exportálhatja a szabályozási megfelelőségi adatait Security Center és külső eszközökkel
+- [Azure-biztonsági teljesítményteszt](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [A Security Center jogszabályi megfelelési irányítópultja](security-center-compliance-dashboard.md) – Útmutató a jogszabályi megfelelőségi adatok nyomon követéséhez és exportálásához Security Center és külső eszközökkel
 - [Biztonsági szabályzatok használata](tutorial-security-policy.md)

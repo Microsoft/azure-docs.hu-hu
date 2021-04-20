@@ -356,6 +356,8 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: Automatikus skálázási szolgáltatások
               href: service-fabric-cluster-resource-manager-autoscaling.md
+            - name: Csomópont-címkézés
+              href: service-fabric-cluster-resource-manager-node-tagging.md
     - name: Monitorozás és diagnosztika
       items:
         - name: Monitorozás áttekintése
@@ -440,19 +442,19 @@
                   href: service-fabric-develop-csharp-applications-with-vs-code.md
                 - name: Java Service Fabric-alkalmazások fejlesztése a VS Code-dal
                   href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Service Fabric felügyelt fürtök használata
+    - name: Felügyelt Service Fabric használata
       items:
         - name: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz
           href: how-to-managed-cluster-vmss-extension.md
         - name: A felügyelt fürt konfigurálása
           href: how-to-managed-cluster-configuration.md
-        - name: NSG-szabályok és egyéb felügyelt fürt hálózati beállításainak hozzáadása
+        - name: NSG-szabályok és egyéb felügyelt fürthálózati beállítások hozzáadása
           href: how-to-managed-cluster-networking.md
-        - name: Felügyelt fürtözött alkalmazások üzembe helyezése ARM-sablon használatával
+        - name: Felügyelt fürtalkalmazások üzembe helyezése ARM-sablonnal
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Lemez titkosításának engedélyezése a felügyelt fürtcsomópontok esetében
+        - name: Lemeztitkosítás engedélyezése felügyelt fürtcsomópontokhoz
           href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: Felügyelt fürt csomópontjainak használata
+        - name: Felügyelt identitás használata felügyelt fürtcsomópontokhoz
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Tervezés és előkészítés
       items:
@@ -502,7 +504,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Frissítés
               items:
-                - name: Service Fabric-fürt frissítéseinek kezelése
+                - name: Fürtfrissítések Service Fabric kezelése
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Fürtkonfiguráció frissítése
                   href: service-fabric-cluster-config-upgrade-azure.md
@@ -618,7 +620,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Futtatható vendégalkalmazás Windows rendszeren
           href: quickstart-guest-app.md
-    - name: Alkalmazások készítése
+    - name: Alkalmazások összeállítása
       items:
         - name: Futtatható vendégszolgáltatás készítése
           items:

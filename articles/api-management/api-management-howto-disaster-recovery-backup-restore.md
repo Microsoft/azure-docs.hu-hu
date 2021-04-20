@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: ad0936fddacf8f5b2e4917441f5feaa41aad9de4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587320"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739799"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -33,7 +33,7 @@ Ez az útmutató bemutatja, hogyan automatizálhatja a biztonsági mentési és 
 > [!IMPORTANT]
 > A visszaállítási művelet nem módosítja a célszolgáltatás egyéni állomásnév-konfigurációját. Javasoljuk, hogy használja ugyanazt az egyéni állomásnevet és TLS-tanúsítványt az aktív és a készenléti szolgáltatásokhoz is, hogy a visszaállítási művelet befejezése után a forgalom egy egyszerű DNS CNAME-módosítással ismét a készenléti példányra irányítható legyen.
 >
-> A biztonsági mentési művelet nem rögzíti az elemzés panel elemzés panelének jelentéseiben használt, előre összesített Azure Portal.
+> A biztonsági mentési művelet nem rögzíti az elemzés panel elemzés panelének jelentéseiben használt, előre összesített naplóadatokat Azure Portal.
 
 > [!WARNING]
 > Minden biztonsági mentés 30 nap után lejár. Ha a 30 napos lejárati idő lejárta után megkísérli visszaállítani a biztonsági mentést, a visszaállítás egy üzenettel `Cannot restore: backup expired` meghiúsul.
@@ -45,7 +45,7 @@ Ez az útmutató bemutatja, hogyan automatizálhatja a biztonsági mentési és 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Hitelesítő Azure Resource Manager kérések
 
 > [!IMPORTANT]
-> A REST API biztonsági mentéshez és visszaállításhoz használt Azure Resource Manager és más hitelesítési mechanizmussal rendelkezik, mint a REST API-k az API Management kezeléséhez. Az ebben a szakaszban található lépések a kérések hitelesítését Azure Resource Manager ismertetik. További információ: [Hitelesítő adatok Azure Resource Manager kérelmekhez.](/rest/api/index)
+> A REST API biztonsági mentéshez és visszaállításhoz használt Azure Resource Manager és más hitelesítési mechanizmussal rendelkezik, mint a REST API-k az API Management kezeléséhez. Az ebben a szakaszban található lépések a kérések hitelesítését Azure Resource Manager ismertetik. További információ: Hitelesítő adatok Azure Resource Manager [kérelmekhez.](/rest/api/index)
 
 Az erőforrásokon az erőforrásokkal kapcsolatos összes feladatot Azure Resource Manager kell hitelesíteni Azure Active Directory következő lépésekkel:
 
@@ -122,7 +122,7 @@ Cserélje `{tenant id}` le a , és `{application id}` `{redirect uri}` helyére 
 
     ![Végpontok][api-management-endpoint]
 
-2. Cserélje le a értéket a lekért értékre a Beállítások `{application id}` **lapra való navigálással.**
+2. Cserélje `{application id}` le a értéket a lekért értékre a Beállítások **lapra navigálva.**
 3. Cserélje le a értéket a saját alkalmazás `{redirect uri}` **Átirányítási URI-k** Azure Active Directory értékére.
 
     Az értékek megszabadása után a példakódnak az alábbi példához hasonló jogkivonatot kell visszaadni:
@@ -200,27 +200,27 @@ A kérés törzsében adja meg a biztonsági mentési fájl helyét. Ez azt jele
 
 Állítsa a kérés `Content-Type` fejlécének értékét `application/json` értékre.
 
-A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több percet is igénybe vehet. Ha a kérés sikeres volt, és a visszaállítási folyamat megkezdődött, egy fejléccel együtt kapott `202 Accepted` válaszállapot-kódot `Location` kap. A fejlécben található URL-címre "GET" kérésekkel deríthető ki `Location` a művelet állapota. Amíg a visszaállítás folyamatban van, továbbra is a 202 Accepted (Elfogadva) állapotkódot kapja. A válaszkód `200 OK` a visszaállítási művelet sikeres befejezését jelzi.
+A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több percet is igénybe vehet. Ha a kérés sikeres volt, és a visszaállítási folyamat megkezdődött, egy fejléccel együtt kapott `202 Accepted` válaszállapot-kódot `Location` kap. A fejlécben található URL-címre "GET" kérésekkel derítse ki `Location` a művelet állapotát. Amíg a visszaállítás folyamatban van, továbbra is a 202 Accepted (Elfogadva) állapotkódot kapja. A válaszkód `200 OK` a visszaállítási művelet sikeres befejezését jelzi.
 
 > [!IMPORTANT]
-> **A helyre** visszaállított szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági mentést eltárolt szolgáltatás termékváltozatának. 
+> **A helyre visszaállított** szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági másolati szolgáltatás termékváltozatának. 
 >
-> **A** szolgáltatás konfigurációján (például API-kon, szabályzaton, fejlesztői portálon való megjelenés) a visszaállítási művelet közben végrehajtott módosításokat felül lehet **írni.**
+> **A** szolgáltatás konfigurációján (például API-k, szabályzatok, fejlesztői portál megjelenése) a visszaállítási művelet közben végrehajtott módosításokat felül lehet **írni.**
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsaival is elvégezhetők.
 
-## <a name="constraints-when-making-backup-or-restore-request"></a>Korlátozások a biztonsági mentési vagy visszaállítási kérések készítéskor
+## <a name="constraints-when-making-backup-or-restore-request"></a>Biztonsági mentési vagy visszaállítási kérések megkötései
 
 -   **A** kérelem törzsében megadott tárolónak **léteznie kell.**
--   Amíg a biztonsági mentés folyamatban **van,** kerülje a szolgáltatás felügyeleti módosításait, például a termékváltozatok frissítését vagy visszalépését, a tartománynév változását stb.
+-   Amíg a biztonsági mentés folyamatban **van,** kerülje a szolgáltatás felügyeletének változásait, például a termékváltozat frissítését vagy visszalépését, a tartománynév változását stb.
 -   A biztonsági másolatok visszaállítása a létrehozás pillanata óta csak **30** napig garantált.
--   **Előfordulhat,** hogy a biztonsági mentési művelet közben a szolgáltatás konfigurációján (például API-kon, szabályzaton és megjelenésen) végrehajtott módosítások ki lesznek zárva a biztonsági mentésből, és **elvesznek.**
--   Ha az Azure [][azure-storage-ip-firewall] Storage-fiók engedélyezve van  a tűzfalon, az ügyfélnek engedélyeznie kell az Azure API Management vezérlősík IP-címkészletét a tárfiókon a biztonsági mentéshez vagy a visszaállításhoz a munkához. [][control-plane-ip-address] Az Azure Storage-fiók bármely Azure-régióban lehet, kivéve azt, ahol API Management szolgáltatás található. Ha például az API Management szolgáltatás az USA nyugati régiója, akkor az Azure Storage-fiók lehet az USA 2. nyugati régiója, és az ügyfélnek meg kell nyitnia a vezérlő 13.64.39.16 (API Management vezérlősík IP-címe az USA nyugati régiója) vezérlőt a tűzfalon. Ennek az az oka, hogy az Azure Storage-hoz való kérések nem egy nyilvános IP-címre vannak SNAT-n átvéve a Compute (Azure API Management vezérlősík) által ugyanabban az Azure-régióban. A régiók közötti tárolási kérések A nyilvános IP-címre lesznek SNAT-vé va.
--   [Az eredetközi erőforrás-megosztás (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) **nem** engedélyezhető az Azure Storage-fiók blobszolgáltatásában.
--   **A helyre** visszaállított szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági mentést eltárolt szolgáltatás termékváltozatának. 
+-   **Előfordulhat,** hogy a biztonsági mentési művelet közben a szolgáltatás konfigurációján (például API-kon, szabályzatokon és a fejlesztői portálon) végrehajtott módosítások ki lesznek zárva a biztonsági mentésből, és **elvesznek.**
+-   Ha az Azure [][azure-storage-ip-firewall] Storage-fiók engedélyezve van  a tűzfalon, az ügyfélnek engedélyeznie kell az Azure API Management vezérlősík [IP-címeinek][control-plane-ip-address] készletét a tárfiókjukban a biztonsági mentéshez vagy a visszaállításhoz. Az Azure Storage-fiók bármely Azure-régióban lehet, kivéve azt, ahol API Management szolgáltatás található. Ha például az API Management szolgáltatás az USA nyugati régiója, akkor az Azure Storage-fiók lehet az USA 2. nyugati régiója, és az ügyfélnek meg kell nyitnia a vezérlő 13.64.39.16 (API Management control Plane IP of West US) vezérlősíkját a tűzfalon. Ennek az az oka, hogy az Azure Storage-hoz való kérések nem egy nyilvános IP-címre vannak SNAT-n átvéve a Compute (Azure API Management vezérlősík) által ugyanabban az Azure-régióban. A régiók közötti tárolási kérések A nyilvános IP-címre lesznek SNAT-vé va.
+-   [Az azure storage-fiók](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) blobszolgáltatásában ne legyen engedélyezve az eredetközi erőforrás-megosztás (CORS). 
+-   **A helyre** visszaállított szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági másolati szolgáltatás termékváltozatának. 
 
 ## <a name="what-is-not-backed-up"></a>Miről nem történik biztonságimentás
 -   **Az elemzési** jelentések létrehozásához használt használati **adatok nem szerepelnek a** biztonsági másolatban. Az [Azure API Management REST API][azure api management rest api] rendszeres időközönként lekéri az elemzési jelentéseket a biztonság érdekében.
@@ -230,18 +230,18 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 -   [Felügyelt identitás konfigurálása.](api-management-howto-use-managed-service-identity.md)
 -   [Azure Monitor diagnosztika](api-management-howto-use-azure-monitor.md) Konfigurációs.
 -   [Protokollok és titkosítási](api-management-howto-manage-protocols-ciphers.md) beállítások.
--   [A fejlesztői portál](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) tartalma.
+-   [A fejlesztői portál](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) tartalma.
 
-A szolgáltatási biztonsági mentések gyakoriságát a helyreállítási időkorrekta befolyásolja. A minimálisra csökkentése érdekében javasoljuk a rendszeres biztonsági mentések és igény szerinti biztonsági mentések elvégzését, miután végrehajtotta a API Management szolgáltatásban.
+A szolgáltatás biztonsági mentésének gyakorisága hatással van a helyreállítási időkorrekta célkitűzésére. A minimálisra csökkentése érdekében javasoljuk a rendszeres biztonsági mentések és igény szerinti biztonsági mentések elvégzését, miután végrehajtotta a API Management szolgáltatásban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg az alábbi erőforrásokat a biztonsági mentési/visszaállítási folyamat különböző útmutatóiért.
+A biztonsági mentési/visszaállítási folyamat különböző útmutatóiért tekintse meg az alábbi erőforrásokat.
 
 -   [Azure-beli API Management fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Az API Management biztonsági mentésének és helyreállításának automatizálása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: Biztonsági mentés és konfiguráció visszaállítása](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
-     _A The Point által részletezett megközelítés nem felel meg a hivatalos útmutatónak, de érdekes._
+-   [Azure API Management: Konfiguráció biztonsági mentése és visszaállítása](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
+     A Rendszer által részletezett megközelítés nem felel meg a _hivatalos útmutatásnak, de érdekes._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

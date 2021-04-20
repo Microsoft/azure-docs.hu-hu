@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag: alias-rekord létrehozása egy zónában lévő erőforrás-rekordra való hivatkozáshoz'
+title: 'Oktatóanyag: Aliasrekord létrehozása egy zónában található erőforrásrekordra való hivatkozáshoz'
 titleSuffix: Azure DNS
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Azure DNS-aliasrekordot a zónán belüli erőforrásrekordra való hivatkozáshoz.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c20f079fdbccdf003d96a1b2683060c2cd6d0e5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76939250"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737369"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Oktatóanyag: Hozzon létre egy aliasrekordot a zónában lévő erőforrásrekordra való hivatkozáshoz
 
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az aliasrekord tesztelése.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, [](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) kezdés előtt hozzon létre egy ingyenes fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
@@ -57,8 +57,8 @@ Aliasrekord létrehozása, amely egy erőforrásrekordra mutat a zónában.
 
 ## <a name="test-the-alias-record"></a>Az aliasrekord tesztelése
 
-1. Indítsa el a kedvenc nslookup eszközét. Az egyik lehetőség, hogy megkeresi a következőt: [https://network-tools.com/nslook](https://network-tools.com/nslook) .
-2. Adja meg a rekordok lekérdezési típusát, és keresse meg a **tesztet. \<your domain name\>** A válasz: **10.10.10.10**.
+1. Indítsa el a kedvenc nslookup eszközét. Az egyik lehetőség a webhely [https://network-tools.com/nslook](https://network-tools.com/nslook) tallózása.
+2. Állítsa be az A rekordok lekérdezéstípusát, és keresse meg a **teszt adatokat. \<your domain name\>**. A válasz: **10.10.10.10**.
 3. Az Azure Portalon módosítsa a **kiszolgáló** A rekordjának értékét a következőre: **10.11.11.11**.
 4. Várjon néhány percig, és használja újra az nslookup eszközt a **teszt** rekordhoz. A válasz: **10.11.11.11**.
 

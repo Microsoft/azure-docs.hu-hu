@@ -1,22 +1,23 @@
 ### YamlMime:Landing
 title: Vállalati felhasználókezelési dokumentáció – Azure AD
-summary: Az Azure AD felhasználókezelési szolgáltatásokat biztosít, például csoportokat és licenceket, amelyek segítségével gyorsabban hajthatja végre a gyakori felhasználókezelési feladatokat. Licenceket vagy alkalmazás-hozzáférést rendelhet csoportokhoz vagy felhasználókhoz, valamint tartományneveket adhat hozzá vagy kezelhet.
+summary: Az Azure AD felhasználókezelési szolgáltatásokat biztosít a licencek hozzárendeléséhez, a csoportok és felhasználók kezeléséhez, valamint tartománynevek hozzáadásához és kezeléséhez.
 metadata:
-  title: Az Azure Active Directory felhasználóinak, csoportjainak, licenceinek és tartományainak dokumentációja
-  description: Megtudhatja, hogyan használhatja a csoportokat, a tartományneveket és a licenceket a felhasználói hitelesítés kezeléséhez az Azure AD-szervezetben.
+  title: Azure Active Directory, csoportok, licencek és tartományok dokumentációja
+  description: Megtudhatja, hogyan használhatja a csoportokat, tartományneveket és licenceket a felhasználói hitelesítés kezelésére az Azure AD-szervezetben.
   services: active-directory
   ms.service: active-directory
-  manager: daveba
+  ms.subservice: enterprise-users
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 10/19/2020
+  ms.date: 04/18/2021
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: a919a9785163776cfbcfb52a378405c0ac870035
-  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-  ms.translationtype: HT
+  ms.openlocfilehash: 8a129cf6e000a2e644f2fc7168d9e3105de0f957
+  ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/23/2020
-  ms.locfileid: "95503036"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107739295"
 landingContent:
 - title: A vállalati felhasználókezelés ismertetése
   linkLists:

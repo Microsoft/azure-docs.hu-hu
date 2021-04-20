@@ -1,49 +1,49 @@
 ---
-title: Erőforrások eltávolítása egy áthelyezési gyűjteményből az Azure-erőforrás-Mozgatóban
-description: Ismerje meg, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből az Azure-erőforrás-Mozgatóban.
+title: Erőforrások eltávolítása a Azure Resource Mover
+description: Megtudhatja, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből a Azure Resource Mover.
 manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/22/2020
 ms.author: raynew
-ms.openlocfilehash: 25311e93e1081b3c7638c275c39153b2c357048d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 067aa245223bce0e8fa009b88af760a26f7ce3dc
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559118"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739025"
 ---
-# <a name="manage-move-collections-and-resource-groups"></a>Gyűjtemények és erőforráscsoportok kezelése
+# <a name="manage-move-collections-and-resource-groups"></a>Áthelyezési gyűjtemények és erőforráscsoportok kezelése
 
-Ez a cikk azt ismerteti, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből, illetve hogyan távolíthat el egy áthelyezési gyűjteményt vagy erőforráscsoportot az Azure-beli [erőforrás-mozgatóban](overview.md). A gyűjtemények áthelyezése az Azure-erőforrások Azure-régiók közötti áthelyezéséhez használatos.
+Ez a cikk azt ismerteti, hogyan távolíthat el erőforrásokat egy áthelyezési gyűjteményből, illetve hogyan távolíthat el egy áthelyezési gyűjteményt/erőforráscsoportot a [Azure Resource Mover.](overview.md) Az áthelyezési gyűjtemények az Azure-erőforrások Azure-régiók közötti áthelyezésekor használatosak.
 
 ## <a name="remove-a-resource-portal"></a>Erőforrás eltávolítása (portál)
 
-Az áthelyezési gyűjtemény erőforrásai a következőképpen távolíthatók el az erőforrás-mozgató portálon:
+Az áthelyezési gyűjtemények erőforrásait a resource Mover portálon a következőképpen távolíthatja el:
 
-1. Az **egyes régiókban** válassza ki az összes olyan erőforrást, amelyet el szeretne távolítani a gyűjteményből, majd válassza az **Eltávolítás** lehetőséget. 
+1. A **Régiók között beállításban** jelölje ki a gyűjteményből eltávolítani kívánt összes erőforrást, majd válassza az Eltávolítás **lehetőséget.** 
 
-    ![Eltávolításra kijelölt gomb](./media/remove-move-resources/portal-select-resources.png)
+    ![Az eltávolítani kívánt gomb](./media/remove-move-resources/portal-select-resources.png)
 
-2. Az **erőforrások eltávolítása** területen kattintson az **Eltávolítás** gombra.
+2. Az **Erőforrások eltávolítása menüben** kattintson az **Eltávolítás elemre.**
 
-    ![Az erőforrások áthelyezési gyűjteményből való eltávolításának kiválasztására szolgáló gomb](./media/remove-move-resources/remove-portal.png)
+    ![Az erőforrások áthelyezési gyűjteményből való eltávolítását kiválasztó gomb](./media/remove-move-resources/remove-portal.png)
 
-## <a name="remove-a-move-collectionresource-group-portal"></a>Áthelyezési gyűjtemény/erőforráscsoport (portál) eltávolítása
+## <a name="remove-a-move-collectionresource-group-portal"></a>Áthelyezési gyűjtemény/erőforráscsoport eltávolítása (portál)
 
-A portálon törölheti az áthelyezési gyűjteményt/erőforráscsoportot.
+Az áthelyezési gyűjteményt/erőforráscsoportot a portálon távolíthatja el.
 
-1. Az erőforrások gyűjteményből való eltávolításához kövesse a fenti eljárás utasításait. Ha eltávolít egy erőforráscsoportot, győződjön meg róla, hogy nem tartalmaz erőforrást.
-2. Törölje az áthelyezési gyűjteményt vagy az erőforráscsoportot.  
+1. Az erőforrások gyűjteményből való eltávolításához kövesse a fenti eljárás utasításait. Ha egy erőforráscsoportot távolít el, győződjön meg arról, hogy az nem tartalmaz erőforrásokat.
+2. Törölje az áthelyezési gyűjteményt vagy erőforráscsoportot.  
 
 ## <a name="remove-a-resource-powershell"></a>Erőforrás eltávolítása (PowerShell)
 
-A PowerShell-parancsmagok használatával egyetlen erőforrást is eltávolíthat egy MoveCollection, vagy több erőforrást is eltávolíthat.
+A PowerShell-parancsmagok használatával egyetlen erőforrást távolíthat el a MoveCollection-ból, vagy több erőforrást is.
 
 ### <a name="remove-a-single-resource"></a>Egyetlen erőforrás eltávolítása
 
-Távolítson el egy erőforrást (példánkban a Virtual Network *psdemorm-vnet*) az alábbiak szerint:
+Távolítsa el az erőforrást (a példánkban a *psdemorm-vnet* virtuális hálózatot) a következőképpen:
 
 ```azurepowershell-interactive
 # Remove a resource using the resource ID
@@ -51,11 +51,11 @@ Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS
 ```
 **Kimenet a parancsmag futtatása után**
 
-![Kimeneti szöveg az erőforrás áthelyezési gyűjteményből való eltávolítása után](./media/remove-move-resources/powershell-remove-single-resource.png)
+![Kimeneti szöveg egy erőforrás áthelyezése utáni gyűjteményből való eltávolítása után](./media/remove-move-resources/powershell-remove-single-resource.png)
 
 ### <a name="remove-multiple-resources"></a>Több erőforrás eltávolítása
 
-Az alábbiak szerint távolítson el több erőforrást:
+A következőképpen távolíthat el több erőforrást:
 
 1. Függőségek ellenőrzése:
 
@@ -124,6 +124,7 @@ What happens when you remove a VM resource from a move collection depends on the
 **Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
 **Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
 **Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
+**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region. |  Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
 
 ## SQL resource state after removing
 
@@ -143,6 +144,7 @@ What happens when you remove an Azure SQL resource from a move collection depend
 **Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
 **Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
 **Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
+**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
 
 ## Next steps
 

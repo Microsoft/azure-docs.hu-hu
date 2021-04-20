@@ -1,7 +1,7 @@
 ---
 title: Privát végpont konfigurálása
 titleSuffix: Azure Machine Learning
-description: Az Azure Private link használatával biztonságosan férhet hozzá a Azure Machine Learning-munkaterülethez egy virtuális hálózatról.
+description: A Azure Private Link használatával biztonságosan elérheti a Azure Machine Learning munkaterületét egy virtuális hálózatról.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,44 +11,44 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0ea4e3ae0113608203dad63f636ae4adb4eeff9b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056011"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737513"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Munkaterület Azure Private Link konfigurálása Azure Machine Learning munkaterülethez
 
-Ebből a dokumentumból megtudhatja, hogyan használhatja az Azure Private-hivatkozást a Azure Machine Learning munkaterülettel. Azure Machine Learning virtuális hálózatának létrehozásával kapcsolatos információkért lásd: a [virtuális hálózatok elkülönítése és az adatvédelem áttekintése](how-to-network-security-overview.md)
+Ebből a dokumentumból megtudhatja, hogyan használhatja a Azure Private Link a Azure Machine Learning munkaterülettel. A virtuális hálózatokhoz való virtuális hálózatok létrehozásával kapcsolatos Azure Machine Learning lásd: Virtuális hálózatok elkülönítése [és adatvédelmi áttekintése](how-to-network-security-overview.md)
 
-Az Azure Private link segítségével privát végponton keresztül csatlakozhat a munkaterülethez. A magánhálózati végpont a virtuális hálózaton belüli magánhálózati IP-címek készlete. Ezután korlátozhatja a hozzáférést a munkaterülethez, hogy csak a magánhálózati IP-címeken keresztül történjen. A privát hivatkozás segít csökkenteni az adatkiszűrése kockázatát. Ha többet szeretne megtudni a privát végpontokról, tekintse meg az [Azure privát hivatkozását](../private-link/private-link-overview.md) ismertető cikket.
+Azure Private Link lehetővé teszi, hogy privát végpont használatával csatlakozzon a munkaterülethez. A privát végpont magánhálózati IP-címek készlete a virtuális hálózaton belül. Ezt követően korlátozhatja a munkaterülethez való hozzáférést, hogy az csak a magánhálózati IP-címeken keresztül következhet be. Private Link csökkenti az adatok kiszivárgásának kockázatát. A privát végpontokkal kapcsolatos további információkért tekintse meg a Azure Private Link [cikket.](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> Az Azure Private-hivatkozás nem befolyásolja az Azure Control Plant (felügyeleti műveletek), például a munkaterület törlését vagy a számítási erőforrások kezelését. Például létrehozhatja, frissítheti vagy törölheti a számítási célt. Ezeket a műveleteket a rendszer a szokásos módon, a nyilvános interneten hajtja végre. Az adatsík műveletei, például a Azure Machine Learning Studio, az API-k (beleértve a közzétett folyamatokat is), vagy az SDK használja a privát végpontot.
+> Azure Private Link nincs hatással az Azure-beli vezérlősíkra (felügyeleti műveletekre), például a munkaterület törlésére vagy a számítási erőforrások kezelésére. Például egy számítási cél létrehozása, frissítése vagy törlése. Ezeket a műveleteket a rendszer a szokásos módon, a nyilvános interneten keresztül végzi el. Az adatsík műveletei, például az Azure Machine Learning stúdió, API-k (beleértve a közzétett folyamatokat is) vagy az SDK a privát végpontot használják.
 >
-> A Mozilla Firefox használata esetén problémák merülhetnek fel a munkaterület privát végpontjának elérésére tett kísérlet során. Ez a probléma a HTTPS-en keresztül a Mozilla-on keresztül köthető a DNS-hez. Javasoljuk, hogy megkerülő megoldásként használja a Google Chrome Microsoft Edge használatát.
+> Ha Mozilla Firefox böngészőt használ, problémákba ütközhet, amikor megpróbálja elérni a munkaterület privát végpontját. Ez a probléma a Mozilla HTTPS-protokollon keresztüli DNS-ével kapcsolatos lehet. Áthidaló megoldásként javasoljuk, Microsoft Edge vagy a Google Chrome böngészőt használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha egy ügyfél által felügyelt kulccsal rendelkező magánhálózati kapcsolaton alapuló munkaterületet tervez használni, ezt a szolgáltatást támogatási jegy használatával kell kérnie. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Ha privát kapcsolattal rendelkező munkaterületet tervez használni egy ügyfél által felügyelt kulccsal, ezt a funkciót egy támogatási jegy használatával kell igényelnie. További információ: [Kvóták kezelése és növelése.](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)
 
-* A privát végpont létrehozásához rendelkeznie kell egy meglévő virtuális hálózattal. A privát végpont hozzáadása előtt [le kell tiltania a magánhálózati végpontok hálózati házirendjeit](../private-link/disable-private-endpoint-network-policy.md) is.
+* A privát végpont létrehozásához meglévő virtuális hálózat szükséges. A privát [végpontok hozzáadása](../private-link/disable-private-endpoint-network-policy.md) előtt le kell tiltania a hálózati házirendeket a privát végpontok számára.
 ## <a name="limitations"></a>Korlátozások
 
-* A magánhálózati kapcsolattal rendelkező Azure Machine Learning munkaterület nem érhető el a Azure Government régiókban.
-* Ha engedélyezi a nyilvános hozzáférést egy privát kapcsolattal védett munkaterülethez, és a nyilvános interneten keresztül használja a Azure Machine Learning studiót, néhány funkció, például a tervező nem tud hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók.
+* A Azure Machine Learning nem használható privát kapcsolatokkal a Azure Government régióban.
+* Ha engedélyezi a nyilvános hozzáférést egy privát kapcsolattal védett munkaterületen, és Azure Machine Learning stúdió használja a nyilvános interneten keresztüli hozzáférést, előfordulhat, hogy egyes funkciók, például a tervező nem férnek hozzá az adataihoz. Ez a probléma akkor fordul elő, ha az adatokat egy, a virtuális hálózat mögött védett szolgáltatás tárolja. Például egy Azure Storage-fiók.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Privát végpontot használó munkaterület létrehozása
 
-A következő módszerek egyikével hozzon létre egy olyan munkaterületet, amely privát végpontot használ. Mindkét módszerhez __egy meglévő virtuális hálózat szükséges__:
+Privát végponttal a következő módszerek egyikével hozhat létre munkaterületet. Ezen módszerek mindegyikéhez __egy meglévő virtuális hálózatra van szükség:__
 
 > [!TIP]
-> Ha egy munkaterületet, privát végpontot és virtuális hálózatot szeretne egyszerre létrehozni, tekintse meg a [Azure Resource Manager sablon használata munkaterületek Azure Machine Learninghoz való létrehozásával foglalkozó](how-to-create-workspace-template.md)témakört.
+> Ha egyidejűleg szeretne létrehozni egy munkaterületet, egy privát végpontot és egy virtuális hálózatot, tekintse meg a Következőt: Munkaterület létrehozása Azure Resource Manager-sablonnal a [Azure Machine Learning.](how-to-create-workspace-template.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Azure Machine Learning Python SDK biztosítja a [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) osztályt, amely a [munkaterülettel együtt használható. hozzon létre ()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) egy olyan munkaterületet, amely privát végponttal rendelkezik. Ehhez az osztályhoz egy meglévő virtuális hálózat szükséges.
+A Azure Machine Learning Python SDK biztosítja a [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) osztályt, amely a [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) használatával használható egy privát végponttal létrehozott munkaterülethez. Ehhez az osztályhoz egy meglévő virtuális hálózatra van szükség.
 
 ```python
 from azureml.core import Workspace
@@ -66,15 +66,15 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [Machine learninghez készült Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az az [ml Workspace Create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) parancsot biztosítja. Ehhez a parancshoz a következő paraméterek használhatók egy privát hálózattal rendelkező munkaterület létrehozásához, de egy meglévő virtuális hálózatra van szükség:
+A [gépi tanuláshoz használt Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace create parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) biztosítja. A parancs alábbi paraméterei használhatók egy magánhálózattal létrehozott munkaterület létrehozásához, de ehhez egy meglévő virtuális hálózatra van szükség:
 
 * `--pe-name`: A létrehozott privát végpont neve.
-* `--pe-auto-approval`: Azt határozza meg, hogy a rendszer automatikusan jóváhagyja-e a személyes végponti kapcsolatokat a munkaterülethez.
-* `--pe-resource-group`: Az az erőforráscsoport, amelyben létre kell hozni a magánhálózati végpontot a alkalmazásban. A virtuális hálózatot tartalmazó csoportnak kell lennie.
-* `--pe-vnet-name`: A meglévő virtuális hálózat, amely létrehozza a magánhálózati végpontot a alkalmazásban.
-* `--pe-subnet-name`: Annak az alhálózatnak a neve, amelybe a magánhálózati végpontot létre kívánja hozni. Az alapértelmezett érték `default`.
+* `--pe-auto-approval`: Azt határozza meg, hogy a munkaterület privát végponti kapcsolatait automatikusan jóvá kell-e hagyni.
+* `--pe-resource-group`: Az erőforráscsoport, amely a privát végpontot létrehozza. Egy csoportnak kell lennie, amely a virtuális hálózatot tartalmazza.
+* `--pe-vnet-name`: A meglévő virtuális hálózat, amely a privát végpontot létrehozza.
+* `--pe-subnet-name`: Annak az alhálózatnak a neve, amely a privát végpontot létrehozza. Az alapértelmezett érték `default`.
 
-Ezek a paraméterek a Create parancshoz tartozó egyéb kötelező paraméterek mellett is szerepelnek. Az alábbi parancs például egy új munkaterületet hoz létre az USA nyugati régiójában egy meglévő erőforráscsoport és VNet használatával:
+Ezek a paraméterek a create parancshoz szükséges egyéb paraméterek mellett vannak. A következő parancs például egy új munkaterületet hoz létre az USA nyugati régiójában egy meglévő erőforráscsoport és virtuális hálózat használatával:
 
 ```azurecli
 az ml workspace create -r myresourcegroup \
@@ -89,17 +89,17 @@ az ml workspace create -r myresourcegroup \
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Machine Learning Studio __hálózatkezelés__ lapja lehetővé teszi privát végpontok konfigurálását. Azonban szükség van egy meglévő virtuális hálózatra. További információ: [munkaterületek létrehozása a portálon](how-to-manage-workspace.md).
+Az __alkalmazás Hálózat Azure Machine Learning stúdió__ segítségével konfigurálhatja a privát végpontot. Ehhez azonban egy meglévő virtuális hálózatra van szükség. További információ: [Munkaterületek létrehozása a portálon.](how-to-manage-workspace.md)
 
 ---
 
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Privát végpont hozzáadása munkaterülethez
 
-A következő módszerek egyikével adhat hozzá privát végpontot egy meglévő munkaterülethez:
+Privát végpont meglévő munkaterülethez való hozzáadásához használja az alábbi módszerek egyikét:
 
 > [!WARNING]
 >
-> Ha rendelkezik a munkaterülethez kapcsolódó meglévő számítási célokkal, és nem ugyanazon a virtuális hálózat mögött található, a titkos végpont a-ben jön létre, nem fog működni.
+> Ha a munkaterülethez meglévő számítási célok vannak társítva, és nem ugyanazon a virtuális hálózaton vannak, ahol a privát végpont létre lett hozva, nem fognak működni.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -112,11 +112,11 @@ ws = Workspace.from_config()
 ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
 ```
 
-Az ebben a példában használt osztályokkal és módszerekkel kapcsolatos további információkért lásd: [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) és [Workspace.add_private_endpoint](/python/api/azureml-core/azureml.core.workspace(class)#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
+A példában használt osztályokkal és metódusokkal kapcsolatos további információkért lásd: [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) [és Workspace.add_private_endpoint.](/python/api/azureml-core/azureml.core.workspace(class)#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [Machine learninghez készült Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az az [ml munkaterület Private-Endpoint Add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) parancsot biztosítja.
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) parancsot biztosítja.
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -124,23 +124,23 @@ az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A portál Azure Machine Learning munkaterületén válassza ki a __privát végponti kapcsolatok__ elemet, majd válassza a __+ privát végpont__ lehetőséget. Hozzon létre egy új privát végpontot a mezők használatával.
+A portál Azure Machine Learning munkaterületén válassza a  Privát végponti kapcsolatok, majd a + Privát __végpont lehetőséget.__ A mezők használatával hozzon létre egy új privát végpontot.
 
-* A __régió__ kiválasztásakor válassza ki a virtuális hálózattal megegyező régiót. 
-* Az __erőforrástípus__ kiválasztásakor használja a __Microsoft. MachineLearningServices/workspaces__ elemet. 
-* Állítsa az __erőforrást__ a munkaterület nevére.
+* A Régió __kiválasztásakor válassza__ ki ugyanazt a régiót, mint a virtuális hálózat. 
+* Az __Erőforrástípus kiválasztásakor__ használja a __Microsoft.MachineLearningServices/workspaces et.__ 
+* Állítsa az __Erőforrást__ a munkaterület nevére.
 
-Végül a __Létrehozás__ gombra kattintva hozza létre a privát végpontot.
+Végül válassza a __Létrehozás lehetőséget__ a privát végpont létrehozásához.
 
 ---
 
 ## <a name="remove-a-private-endpoint"></a>Privát végpont eltávolítása
 
-A következő módszerek egyikével távolíthatja el a privát végpontot egy munkaterületről:
+Privát végpont munkaterületről való eltávolításához használja az alábbi módszerek egyikét:
 
 # <a name="python"></a>[Python](#tab/python)
 
-A [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) használatával távolíthat el egy privát végpontot.
+Privát [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) eltávolításához használja a Workspace.delete_private_endpoint_connection.
 
 ```python
 from azureml.core import Workspace
@@ -153,35 +153,35 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [Machine learninghez készült Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az az [ml Workspace Private-Endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) parancsot biztosítja.
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint delete parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) biztosítja.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A portál Azure Machine Learning munkaterületén válassza a __privát végponti kapcsolatok__ lehetőséget, majd válassza ki az eltávolítani kívánt végpontot. Végül válassza az __Eltávolítás__ lehetőséget.
+A Azure Machine Learning munkaterületén válassza a Privát végponti kapcsolatok lehetőséget, majd válassza ki az eltávolítani kívánt végpontot. Végül válassza az __Eltávolítás lehetőséget.__
 
 ---
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>Munkaterület használata privát végponton keresztül
+## <a name="using-a-workspace-over-a-private-endpoint"></a>Munkaterület használata privát végponton
 
-Mivel a munkaterület felé irányuló kommunikáció csak a virtuális hálózatról engedélyezett, a munkaterületet használó fejlesztési környezeteknek a virtuális hálózat tagjának kell lenniük. Például egy virtuális gép a virtuális hálózaton.
+Mivel a munkaterülettel való kommunikáció csak a virtuális hálózatról engedélyezett, a munkaterületet használni képes fejlesztési környezetnek a virtuális hálózat tagjának kell lennie. Például egy virtuális gép a virtuális hálózatban.
 
 > [!IMPORTANT]
-> A kapcsolat ideiglenes megszakadásának elkerülése érdekében a Microsoft javasolja a DNS-gyorsítótár kiürítését a munkaterülethez csatlakozó számítógépeken a privát hivatkozás engedélyezése után. 
+> A kapcsolat ideiglenes megszakadása elkerülése érdekében a Microsoft a DNS-gyorsítótár kiürítését javasolja a munkaterülethez csatlakozó gépeken az Private Link. 
 
-Az Azure Virtual Machinesról a [Virtual Machines dokumentációjában](../virtual-machines/index.yml)olvashat bővebben.
+Az Azure-Virtual Machines lásd a Virtual Machines [dokumentációját.](../virtual-machines/index.yml)
 
 ## <a name="enable-public-access"></a>Nyilvános hozzáférés engedélyezése
 
-Bizonyos helyzetekben előfordulhat, hogy engedélyezni szeretné, hogy valaki egy nyilvános végponton keresztül kapcsolódjon a védett munkaterülethez a VNet helyett. Miután a munkaterületet privát végponttal konfigurálta, igény szerint engedélyezheti a munkaterülethez való nyilvános hozzáférést. Így nem távolítja el a privát végpontot. A VNet mögötti összetevők közötti kommunikáció továbbra is védett. A VNet keresztüli privát hozzáférésen kívül csak a munkaterülethez való nyilvános hozzáférést teszi lehetővé.
+Bizonyos helyzetekben előfordulhat, hogy engedélyezni szeretné, hogy valaki nyilvános végponton keresztül csatlakozzon az Ön biztonságos munkaterületéhez a virtuális hálózat helyett. Miután konfigurált egy munkaterületet egy privát végponttal, opcionálisan engedélyezheti a munkaterülethez való nyilvános hozzáférést. Ezzel nem távolítja el a privát végpontot. A VNet mögötti összetevők közötti összes kommunikáció továbbra is biztonságos. A VNeten keresztüli privát hozzáférés mellett csak a munkaterülethez engedélyezi a nyilvános hozzáférést.
 
 > [!WARNING]
-> A nyilvános végponton való kapcsolódáskor a Studio egyes funkciói nem fognak hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók. Vegye figyelembe, hogy a számítási példány Jupyter/JupyterLab/RStudio funkciója és a jegyzetfüzetek futtatása nem fog működni.
+> A nyilvános végponton keresztüli csatlakozáskor a Studio egyes funkciói nem fognak tudni hozzáférni az adatokhoz. Ez a probléma akkor fordul elő, ha az adatokat egy, a virtuális hálózat mögött védett szolgáltatás tárolja. Például egy Azure Storage-fiók. Azt is vegye figyelembe, hogy a Jupyter/JupyterLab/RStudio számítási példány működése és a notebookok futtatása nem fog működni.
 
-A magánhálózati kapcsolattal rendelkező munkaterülethez való nyilvános hozzáférés engedélyezéséhez kövesse az alábbi lépéseket:
+A privát kapcsolat használatára képes munkaterülethez való nyilvános hozzáférés engedélyezéséhez kövesse az alábbi lépéseket:
 
 # <a name="python"></a>[Python](#tab/python)
 
-A [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) használatával távolíthat el egy privát végpontot.
+Privát [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)#delete-private-endpoint-connection-private-endpoint-connection-name-) eltávolításához használja a Workspace.delete_private_endpoint_connection.
 
 ```python
 from azureml.core import Workspace
@@ -192,17 +192,17 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [Machine learninghez készült Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az az [ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) parancsot biztosítja. A munkaterület nyilvános elérésének engedélyezéséhez adja hozzá a paramétert `--allow-public-access true` .
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace update parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) biztosítja. A munkaterülethez való nyilvános hozzáférés engedélyezéséhez adja hozzá a `--allow-public-access true` paramétert.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Jelenleg nincs lehetőség a funkció engedélyezésére a portálon.
+Ezt a funkciót jelenleg nem lehet engedélyezni a portálon.
 
 ---
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [Virtual Network elkülönítés és adatvédelem áttekintése](how-to-network-security-overview.md) című cikket.
+* A hálózati munkaterület biztonságossá Azure Machine Learning virtuális hálózatok elkülönítését és adatvédelmét [áttekintő cikkben talál további](how-to-network-security-overview.md) információt.
 
-* Ha egyéni DNS-megoldást szeretne használni a virtuális hálózaton, tekintse meg a [munkaterületek egyéni DNS-kiszolgálóval való használatát](how-to-custom-dns.md)ismertető témakört.
+* Ha egyéni DNS-megoldást tervez használni a virtuális hálózatban, tekintse meg a munkaterület egyéni DNS-kiszolgálóval való [használatát.](how-to-custom-dns.md)

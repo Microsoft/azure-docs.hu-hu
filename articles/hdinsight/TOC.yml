@@ -42,15 +42,15 @@
       items:
         - name: Verziókezelés
           items:
-            - name: Verziószámozás bemutatása
+            - name: Verziószámozás – bevezetés
               href: ./hdinsight-overview-versioning.md
             - name: HDInsight-verziók
               href: ./hdinsight-component-versioning.md
-            - name: 'HDInsight 4,0-es verzió'
+            - name: HDInsight 4.0-s verzió
               href: ./hdinsight-40-component-versioning.md
             - name: A HDInsight 3.6-os verziója
               href: ./hdinsight-36-component-versioning.md
-            - name: Kivont HDInsight-verziók
+            - name: Kivezetett HDInsight-verziók
               href: ./hdinsight-retired-versions.md
         - name: Enterprise Security Package
           href: ./enterprise-security-package.md
@@ -190,7 +190,7 @@
                   href: ./optimize-hive-ambari.md
                 - name: Az Apache Pig optimalizálása
                   href: ./optimize-pig-ambari.md
-            - name: Fürtcsomópontok állomásneve
+            - name: Fürtcsomópontok állomásnevének megkeresása
               href: ./find-host-name.md
             - name: Fürtcsomópontok újraindítása
               href: ./cluster-reboot-vm.md
@@ -246,7 +246,7 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Spark- és Hive-eszközök a VSCode-hoz
               href: ./hdinsight-for-vscode.md
-            - name: HDInsight-konfigurációs beállítások referenciája
+            - name: HDInsight konfigurációs beállítások referenciája
               href: ./hdinsight-config-for-vscode.md
         - name: Figyelés
           items:
@@ -260,6 +260,8 @@
               href: ./hdinsight-cluster-availability.md
             - name: Fürt rendelkezésre állása – Azure Monitor-naplók
               href: ./cluster-availability-monitor-logs.md
+            - name: Azure Monitor táblafrissítések
+              href: ./log-analytics-migration.md
         - name: Hibaelhárítás
           items:
             - name: A processzormagkvóta növelésének kérése
@@ -270,7 +272,7 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Az Apache Oozie hibaelhárítása
               href: ./troubleshoot-oozie.md
-            - name: Az Apache Sqoop hibáinak megoldása
+            - name: Az Apache Sqoop hibaelhárítása
               href: ./troubleshoot-sqoop.md
             - name: WebHCat-hibák megértése és megoldása
               href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
@@ -835,9 +837,9 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Kezelés
           items:
-            - name: Struktúra-táblák másolása a Storage-fiókok között
+            - name: Hive-táblák másolása tárfiókok között
               href: ./interactive-query/hive-migration-across-storage-accounts.md
-            - name: Alapértelmezett Hive-metaadattár migrálása külső metaadattár az Azure HDInsight
+            - name: Alapértelmezett Hive-metaadattár áttelepítése külső metaadattárba a Azure HDInsight
               href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Hive számítási feladatok migrálása HDInsight 4.0-be
               href: ./interactive-query/apache-hive-migrate-workloads.md

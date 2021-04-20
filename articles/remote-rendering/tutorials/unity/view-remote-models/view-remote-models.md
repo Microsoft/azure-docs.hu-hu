@@ -1,147 +1,147 @@
 ---
 title: Távolról renderelt modell megtekintése
-description: Az Azure távoli renderelés "Hello World" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
+description: A Hello World "Azure Remote Rendering oktatóanyag bemutatja, hogyan lehet megtekinteni egy, az Azure által távolról renderelt modellt
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8784bc4744e2d4beb6a72fdc0df0fd0b32346f9
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: f43e5b77580b7071ce48b39190c26a53f99f8cf5
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605008"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740169"
 ---
-# <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
+# <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: Távolról renderelt modell megtekintése
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> * Azure-beli távoli renderelés (ARR) példányának kiépítése
-> * Renderelési munkamenet létrehozása és leállítása
-> * Meglévő renderelési munkamenet újrafelhasználása
-> * Csatlakozás és a munkamenetek közötti kapcsolat bontása
+> * Üzembe Azure Remote Rendering (ARR) példányt
+> * Renderelési munkamenet létrehozása és befejezése
+> * Meglévő renderelési munkamenet újbóli újrafelhasználása
+> * Csatlakozás és a munkamenetek leválasztása
 > * Modellek betöltése renderelési munkamenetbe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
+Ehhez az oktatóanyaghoz a következőre lesz szüksége:
 
-* Aktív utólagos elszámolású Azure-előfizetés [fiók létrehozása](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)
+* Aktív használat alapú Azure-előfizetés [Fiók létrehozása](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Az Visual Studio 2019 [legújabb verziója (letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(letöltés)](https://git-scm.com/downloads)
-* Unity (lásd a támogatott verziók [rendszerkövetelményeit](../../../overview/system-requirements.md#unity) )
-* Az Unity és a C# nyelv közbenső ismerete (például parancsfájlok és objektumok létrehozása panelekkel, az egység eseményeinek konfigurálása stb.)
+* Unity (lásd [a támogatott verziók](../../../overview/system-requirements.md#unity) rendszerkövetelményét)
+* A Unity és a C# nyelv középhaladó ismerete (például szkriptek és objektumok létrehozása, prefabs használata, Unity-események konfigurálása stb.)
 
-## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Azure-beli távoli renderelés (ARR) példányának kiépítése
+## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Üzembe Azure Remote Rendering (ARR) példányt
 
-Ahhoz, hogy hozzáférjen az Azure távoli renderelési szolgáltatáshoz, először [létre kell hoznia egy fiókot](../../../how-tos/create-an-account.md#create-an-account).
+A Azure Remote Rendering eléréséhez először létre kell hoznia [egy fiókot.](../../../how-tos/create-an-account.md#create-an-account)
 
 ## <a name="create-a-new-unity-project"></a>Új Unity-projekt létrehozása
 
 > [!TIP]
-> Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) tartalmaz egy projektet, amely az összes oktatóanyagot befejezte, hivatkozásként használható. A teljes Unity projekthez tekintse meg a *Unity\Tutorial-Complete* .
+> Az [ARR-mintatár](https://github.com/Azure/azure-remote-rendering) egy projektet tartalmaz, amely az összes befejezett oktatóanyagot tartalmazza. Referenciaként használható. A teljes *Unity-projektet keresse meg a Unity\Tutorial-Complete* mappában.
 
-Hozzon létre egy új projektet az Unity hub-ból.
-Ebben a példában feltételezzük, hogy a projekt létrehozása egy **RemoteRendering** nevű mappában történik.
+A Unity Hubban hozzon létre egy új projektet.
+Ebben a példában feltételezzük, hogy a projekt egy **RemoteRendering** nevű mappában jön létre.
 
 :::image type="content" source="./media/unity-new-project.PNG" alt-text="Új Unity-projekt":::
 
-## <a name="include-the-azure-remote-rendering-package"></a>Az Azure távoli renderelési csomag belefoglalása
+## <a name="include-the-azure-remote-rendering-package"></a>A Azure Remote Rendering csomagba
 
-[Kövesse az](../../../how-tos/unity/install-remote-rendering-unity-package.md) Azure-beli távoli renderelési csomag Unity-projekthez való hozzáadásának utasításait.
+[Kövesse az utasításokat](../../../how-tos/unity/install-remote-rendering-unity-package.md) a Azure Remote Rendering Unity-projekthez való hozzáadásához.
 
 
 ## <a name="configure-the-camera"></a>A kamera konfigurálása
 
-1. Válassza ki a **fő kamera** csomópontot.
+1. Válassza a **Main Camera csomópontot.**
 
-1. A helyi menü megnyitásához kattintson a jobb gombbal az *átalakítás* összetevőre, és válassza az **Alaphelyzetbe állítás** lehetőséget:
+1. A helyi menü megnyitásához kattintson a jobb gombbal az *Átalakítás* összetevőre, és válassza az Alaphelyzetbe **állítás** lehetőséget:
 
-    ![kamera átalakításának alaphelyzetbe állítása](./media/camera-reset-transform.png)
+    ![kamera-átalakítás alaphelyzetbe állítása](./media/camera-reset-transform.png)
 
-1. **Tiszta jelzők** beállítása a *folytonos színre*
+1. A **Clear jelzők beállítása Folytonos** *színre*
 
-1. **Háttér** beállítása *feketére* (#000000), teljes transzparens (0) alfa (A) értékkel
+1. Állítsa **a Háttérszínt** *Fekete* (#000000) teljes mértékben átlátszó (0) alfa (A) beállításra
 
     ![Színkerék](./media/color-wheel-black.png)
 
-1. A **kivágási síkok** a *közel = 0,3* és a *Far = 20* értékre állíthatók be. Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél nagyobb méretű klipet ábrázol.
+1. Állítsa **a Vágólapra a** Közel = *0,3 és* a Távol = *20 értékeket.* Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél távolabbi geometriát levágja.
 
-    ![Unity kamera tulajdonságai](./media/camera-properties.png)
+    ![Unity kameratulajdonságok](./media/camera-properties.png)
 
-## <a name="adjust-the-project-settings"></a>A projekt beállításainak módosítása
+## <a name="adjust-the-project-settings"></a>A projektbeállítások módosítása
 
-1. Nyissa meg a *> projekt beállításainak szerkesztése...*
-1. Válassza a **minőség** lehetőséget a bal oldali lista menüben
-1. Az összes platform **alapértelmezett minőségi szintjének** módosítása *alacsonyra*. Ez a beállítás lehetővé teszi a helyi tartalmak hatékonyabb megjelenítését, és nem befolyásolja a távolról renderelt tartalom minőségét.
+1. Nyissa *meg > Projektbeállítások szerkesztése...*
+1. Válassza **a Quality (Minőség)** lehetőséget a bal oldali listából
+1. Módosítsa az **összes platform alapértelmezett minőségi** szintjét *Alacsonyra.* Ez a beállítás lehetővé teszi a helyi tartalom hatékonyabb renderelését, és nincs hatással a távolról renderelt tartalom minőségére.
 
-    ![a projekt minőségi beállításainak módosítása](./media/settings-quality.png)
+    ![projektminőségi beállítások módosítása](./media/settings-quality.png)
 
-1. Válasszon **grafikát** a bal oldali lista menüből
-1. Módosítsa a **szkriptek renderelési folyamatának** beállítását a *HybridRenderingPipeline*. \
-    ![Képernyőkép, amely arra utal, hogy hol változtatja meg a szkriptek renderelési folyamatának beállításait a HybridRenderingPipeline értékre.](./media/settings-graphics-render-pipeline.png)\
-    Előfordulhat, hogy a felhasználói felület nem tölti fel a csomagok közül a rendelkezésre álló folyamat-típusok listáját. Ha ez történik, a *HybridRenderingPipeline* eszközt kézzel kell húzni a mezőre: \
-    ![a Project Graphics beállításainak módosítása](./media/hybrid-rendering-pipeline.png)
+1. A **bal oldali lista** menüjében válassza a Grafikák lehetőséget
+1. Módosítsa **a Scriptable Rendering Pipeline (Szkriptelhető renderelési folyamat)** beállítást *HybridRenderingPipeline beállításra*.\
+    ![Képernyőkép arról, hogy hol változott a Scriptable Rendering Pipeline beállítás a HybridRenderingPipeline beállításra.](./media/settings-graphics-render-pipeline.png)\
+    Előfordulhat, hogy a felhasználói felület nem tölti fel az elérhető folyamattípusok listáját a csomagokból. Ha ez történik, a *HybridRenderingPipeline* eszközt manuálisan kell a mezőre húzni:\
+    ![a projektgrafikonok beállításainak módosítása](./media/hybrid-rendering-pipeline.png)
 
     > [!NOTE]
-    > Ha nem tudja áthúzni a *HybridRenderingPipeline* objektumot a renderelési folyamat objektuma mezőbe (valószínűleg azért, mert a mező nem létezik!), győződjön meg arról, hogy a csomag konfigurációja tartalmazza a `com.unity.render-pipelines.universal` csomagot.
+    > Ha nem tudja áthúzni a *HybridRenderingPipeline* adateszközt a Renderelési folyamat adateszköze mezőbe (valószínűleg azért, mert a mező nem létezik!), győződjön meg arról, hogy a csomagkonfiguráció tartalmazza a `com.unity.render-pipelines.universal` csomagot.
 
-1. Válassza ki a **lejátszót** a bal oldali lista menüből
-1. Válassza a Windows-ikonként jelölt **univerzális Windows-platform beállítások** lapot.
-1. Módosítsa az **XR beállításait** a Windows vegyes valóságának támogatásához az alábbi ábrán látható módon:
-    1. **Virtuális valóság támogatásának** engedélyezése
-    1. Nyomja meg a "+" gombot, és vegye fel a **Windows vegyes valóságot**
-    1. **Mélységi formátum** beállítása *16 bites mélységre*
-    1. Győződjön meg arról, hogy engedélyezve van a **mélységi puffer megosztása**
-    1. **Sztereó renderelési mód** beállítása *egyszeri pass-példányra*
+1. A **bal oldali** lista menüjében válassza a Player (Lejátszó) lehetőséget
+1. Válassza a **Univerzális Windows-platform beállítások lapját,** amelyet Windows ikon jelöl.
+1. Módosítsa az **XR-beállításokat** a Windows Mixed Reality az alábbiak szerint:
+    1. A **Virtual Reality támogatása**
+    1. Nyomja meg a "+" gombot, és adjon **hozzá Windows Mixed Reality**
+    1. Mélységformátum **beállítása** *16 bites mélységre*
+    1. Győződjön meg arról, hogy a **Mélységi puffer megosztása** engedélyezve van
+    1. A **Sztereikus renderelési mód beállítása** Single Pass *Instancedre*
 
     ![lejátszó beállításai](./media/xr-player-settings.png)
 
-1. Ugyanebben az ablakban, az **XR beállításai** felett bontsa ki a **közzétételi beállítások** elemet.
-1. Görgessen le a **képességek** menüponthoz, és válassza a következőket:
+1. Ugyanabban az ablakban, az **XR-beállítások felett bontsa** ki a **Közzétételi beállítások gombra**
+1. Görgessen le a **Képességek lapra,** és válassza a következő lehetőségeket:
     * **InternetClient**
     * **InternetClientServer**
-    * **SpatialPerception**
-    * **PrivateNetworkClientServer** (nem *kötelező*). Válassza ezt a lehetőséget, ha az Unity távoli hibakeresőt az eszközhöz szeretné kapcsolni.
+    * **SpatialPerception (Térbeli pont)**
+    * **PrivateNetworkClientServer** *(nem kötelező).* Válassza ezt a lehetőséget, ha csatlakoztatni szeretné a Unity távoli hibakeresőt az eszközhöz.
 
-1. A **támogatott eszközökhöz tartozó családok** területen engedélyezze a **holografikus** és **asztali**
-1. A **Project Settings** panel lezárása vagy dokkolása
-1. A *fájl->Build beállításainak* megnyitása
-1. **Univerzális Windows-platform** kiválasztása
-1. Konfigurálja úgy a beállításokat, hogy megfeleljenek az alább találhatóknak
-1. Nyomja meg a **platform váltása** gombot. \
-![összeállítási beállítások](./media/build-settings.png)
-1. Az egység módosítása után lépjen a Build panelre.
+1. A **Támogatott eszközcsaládok alatt** engedélyezze a **Holographic és** a Desktop **alkalmazást**
+1. A Project **Settings panel bezárása vagy dokkolása**
+1. A *Fájl->buildbeállítások megnyitása*
+1. Válassza **a Univerzális Windows-platform**
+1. Konfigurálja a beállításokat úgy, hogy azok megegyeznek az alábbi beállításokkal
+1. Kattintson a **Switch Platform (Platformváltás)** gombra.\
+![buildbeállítások](./media/build-settings.png)
+1. Miután a Unity platformot változtat, zárja be a build panelt.
 
 ## <a name="validate-project-setup"></a>A projekt beállításának ellenőrzése
 
-A következő lépések végrehajtásával ellenőrizheti, hogy helyesek-e a projekt beállításai.
+A projektbeállítások helyességét az alábbi lépésekkel ellenőrizheti.
 
-1. Válassza ki a **ValidateProject** bejegyzést a **RemoteRendering** menüből az Unity Editor eszköztáron.
-1. A hibákért tekintse át a **ValidateProject** ablakot, és szükség esetén javítsa ki a projekt beállításait.
+1. Válassza a **ValidateProject** bejegyzést a **Unity szerkesztő eszköztárának RemoteRendering** menüjében.
+1. Tekintse át **a ValidateProject ablakot** a hibákért, és szükség esetén javítsa ki a projektbeállításokat.
 
-    ![Unity Editor projekt ellenőrzése](./media/remote-render-unity-validation.png)
+    ![Unity-szerkesztő projektérvényesítése](./media/remote-render-unity-validation.png)
 
-## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Parancsfájl létrehozása az Azure távoli renderelési kapcsolatok és az állapot koordinálásához
+## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Szkript létrehozása a kapcsolat és Azure Remote Rendering koordinálása
 
-Az alábbi folyamatábrában négy alapvető szakasz mutatja be a távolról renderelt modellek megjelenítését. Az egyes fázisokat sorrendben kell végrehajtani. A következő lépés egy olyan parancsfájl létrehozása, amely kezeli az alkalmazás állapotát, és folytatja az egyes szükséges szakaszokat.
+A távolról renderelt modellek megjelenítésének négy alapvető szakasza van, amelyek az alábbi folyamatábrában vannak felvázolva. Minden szakaszt sorrendben kell végrehajtani. A következő lépés egy olyan szkript létrehozása, amely kezeli az alkalmazás állapotát, és végiglépked minden szükséges fázison.
 
-![ARR verem 0](./media/remote-render-stack-0.png)
+![ARR-verem 0](./media/remote-render-stack-0.png)
 
-1. A *projekt* ablaktábla **eszközök** területén hozzon létre egy új, *RemoteRenderingCore* nevű mappát. Ezután a *RemoteRenderingCore* belül hozzon létre egy másik, *parancsfájl* nevű mappát.
+1. A *Project (Projekt) ablaktáblán* az **Assets (Eszközök) alatt hozzon** létre egy *remoteRenderingCore* nevű új mappát. Ezután a *RemoteRenderingCore parancsmagon belül* hozzon létre egy másik, *Scripts nevű mappát.*
 
-1. Hozzon létre egy új, **RemoteRenderingCoordinator** nevű [C#-szkriptet](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) .
+1. Hozzon létre egy **remoteRenderingCoordinator** nevű új [C#-szkriptet.](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)
 A projektnek így kell kinéznie:
 
-    ![Projekt-hierarchia](./media/project-structure.png)
+    ![Projekthierarchia](./media/project-structure.png)
 
-    Ez a koordinátori parancsfájl nyomon követheti és felügyelheti a távoli renderelési állapotot. Megjegyzés: a kód egy részét az állapot fenntartására, a más összetevők működésének kiváltására, az események aktiválására és az olyan alkalmazásspecifikus adatok tárolására használja, amelyek nem kapcsolódnak *közvetlenül* az Azure távoli rendereléshez. Kiindulási pontként használja az alábbi kódot, és az oktatóanyag későbbi részében megkeresjük és Implementáljuk az adott Azure távoli renderelési kódot.
+    Ez a koordinátor-szkript nyomon követi és kezeli a távoli renderelés állapotát. Fontos megjegyezni, hogy a kód egy része az állapot fenntartására, a funkciók más összetevők számára történő  felfedésére, események aktiválására és az alkalmazásspecifikus adatok tárolására használatos, amelyek nem kapcsolódnak közvetlenül a Azure Remote Rendering. Használja kiindulási pontként az alábbi kódot, és az oktatóanyag későbbi Azure Remote Rendering implementálja az adott kódhoz.
 
-1. Nyissa meg a **RemoteRenderingCoordinator** a Kódszerkesztőben, és cserélje le a teljes tartalmat az alábbi kódra:
+1. Nyissa **meg a RemoteRenderingCoordinator kódot** a kódszerkesztőben, és cserélje le a teljes tartalmát az alábbi kódra:
 
 ```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -182,14 +182,15 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static RemoteRenderingCoordinator instance;
 
-    // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
+    // Account
+    // RemoteRenderingDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
+    // For most people '<region>' is either 'westus2' or 'westeurope'
     [SerializeField]
-    private string accountDomain = "westus2.mixedreality.azure.com";
-    public string AccountDomain
+    private string remoteRenderingDomain = "westus2.mixedreality.azure.com";
+    public string RemoteRenderingDomain
     {
-        get => accountDomain.Trim();
-        set => accountDomain = value;
+        get => remoteRenderingDomain.Trim();
+        set => remoteRenderingDomain = value;
     }
 
     [Header("Development Account Credentials")]
@@ -201,12 +202,12 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
-    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
-    public string AccountAuthenticationDomain
+    private string accountDomain = "<enter your account domain here>";
+    public string AccountDomain
     {
-        get => accountAuthenticationDomain.Trim();
-        set => accountAuthenticationDomain = value;
-    }   
+        get => accountDomain.Trim();
+        set => accountDomain = value;
+    }    
 
     [SerializeField]
     private string accountKey = "<enter your account key here>";
@@ -272,7 +273,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
             if (currentCoordinatorState != value)
             {
                 currentCoordinatorState = value;
-                Debug.Log($"State changed to: {currentCoordinatorState}");
+                Debug.LogFormat(LogType.Log, LogOption.NoStacktrace, null, "{0}", $"State changed to: {currentCoordinatorState}");
                 CoordinatorStateChange?.Invoke(currentCoordinatorState);
             }
         }
@@ -297,7 +298,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountDomain, RemoteRenderingDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -523,31 +524,31 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 }
 ```
 
-## <a name="create-the-azure-remote-rendering-gameobject"></a>Az Azure távoli renderelési GameObject létrehozása
+## <a name="create-the-azure-remote-rendering-gameobject"></a>A Azure Remote Rendering GameObject létrehozása
 
-A távoli renderelési koordinátor és a szükséges parancsfájl (*ARRServiceUnity*) mindkét MonoBehaviours, amelyet a jelenet egyik GameObject kell csatolni. A *ARRServiceUnity* parancsfájlt az ARR biztosítja, hogy a távoli munkamenetek eléréséhez és kezeléséhez használt ARR-funkciók nagy részét tegye elérhetővé.
+A távoli renderelési koordinátor és a hozzá szükséges szkript *(ARRServiceUnity)* egyaránt MonoBehaviours, amelyek egy GameObjecthez kell csatolva a jelenetben. Az *ARRServiceUnity* szkriptet az ARR biztosítja, hogy elérhetővé tegye az ARR távoli munkamenetekhez való csatlakozására és kezelésére szolgáló funkcióinak nagy része.
 
-1. Hozzon létre egy új GameObject a jelenetben (Ctrl + Shift + N vagy *GameObject->Create Empty*), és nevezze el **RemoteRenderingCoordinator**.
-1. Adja hozzá a *RemoteRenderingCoordinator* parancsfájlt a **RemoteRenderingCoordinator** GameObject. \
-![RemoteRenderingCoordinator-összetevő hozzáadása](./media/add-coordinator-script.png)
-1. Erősítse meg, hogy a *ARRServiceUnity* parancsfájl, amely a Inspector *szolgáltatásként* jelenik meg, automatikusan hozzáadódik a GameObject. Ha kíváncsi, ez az eredmény a `[RequireComponent(typeof(ARRServiceUnity))]` **RemoteRenderingCoordinator** szkript elejétől.
-1. Adja hozzá az Azure távoli renderelési hitelesítő adatait, a fiók hitelesítési tartományát és a fiók tartományát a koordinátori parancsfájlhoz: \
+1. Hozzon létre egy új GameObjectet a jelenetben (Ctrl+Shift+N vagy *GameObject->Create Empty*) és nevezze el **RemoteRenderingCoordinator néven.**
+1. Adja hozzá *a RemoteRenderingCoordinator* szkriptet a **RemoteRenderingCoordinator** GameObject.\ parancsprogramhoz.
+![RemoteRenderingCoordinator összetevő hozzáadása](./media/add-coordinator-script.png)
+1. Győződjön meg arról, hogy az inspectorban Szolgáltatásként megjelenő *ARRServiceUnity* szkript automatikusan hozzáadódik a GameObjecthez.  Ha érdekli, ez az eredmény a `[RequireComponent(typeof(ARRServiceUnity))]` **RemoteRenderingCoordinator szkript tetején** található.
+1. Adja hozzá Azure Remote Rendering hitelesítő adatait, a fióktartományt és a Remote Rendering tartományt a koordinátor-szkripthez:\
 ![Hitelesítő adatok hozzáadása](./media/configure-coordinator-script.png)
 
-## <a name="initialize-azure-remote-rendering"></a>Az Azure távoli renderelésének inicializálása
+## <a name="initialize-azure-remote-rendering"></a>Inicializálja Azure Remote Rendering
 
-Most, hogy már rendelkezünk a koordinátori keretrendszerrel, a négy fázist fogjuk megvalósítani a **távoli renderelés inicializálásával**.
+Most, hogy már van keretrendszerünk a koordinátorunkhoz, implementáljuk mind a négy szakaszt, kezdve az **Inicializálással Remote Rendering.**
 
-![ARR verem 1](./media/remote-render-stack-1.png)
+![ARR stack 1](./media/remote-render-stack-1.png)
 
-Az **inicializálás** azt mutatja be, hogy az Azure távoli renderelés melyik kamera-objektumot használja az állapot megjelenítéséhez és a **NotAuthorized** való előrehaladáshoz. Ez azt jelenti, hogy inicializálva van, de még nem rendelkezik jogosultsággal a munkamenethez való kapcsolódáshoz. Mivel az ARR-munkamenetek megkezdése költségekkel jár, meg kell erősítenie a felhasználót a folytatáshoz.
+**Az inicializálás** Azure Remote Rendering jelzi, hogy melyik kameraobjektumot kell használni a rendereléshez, és a **NotAuthorized (Nemhorizált)** állapotgépre halad át. Ez azt jelenti, hogy inicializálva van, de még nem jogosult egy munkamenethez való csatlakozásra. Mivel egy ARR-munkamenet indítása költségeket is jár, meg kell erősítenie, hogy a felhasználó folytatni kívánja a műveletet.
 
-A **NotAuthorized** állapotának megadásakor a rendszer meghívja a **CheckAuthorization** , amely meghívja a **RequestingAuthorization** eseményt, és meghatározza, hogy melyik fiók hitelesítő adatait szeretné használni (a **AccountInfo** az osztály felső részén van meghatározva, és a fenti lépésben a Unity Inspector segítségével megadott hitelesítő adatokat használja.)
+A **NotAuthorized** állapot beírásakor a **CheckAuthorization** lesz meghívva, amely meghívja a **RequestingAuthorization** eseményt, és meghatározza, hogy mely fiók hitelesítő adatait kell használni ( Az **AccountInfo** az osztály tetején van meghatározva, és a Unity Inspectorban a fenti lépésben meghatározott hitelesítő adatokat használja).
 
    > [!NOTE]
-   > Az ARR nem támogatja a futtatókörnyezet újrafordítását. Ha módosítja a szkriptet, és menti azt, miközben a lejátszási mód aktív, az Unity befagyasztást eredményezhet, és kényszeríteni kell a feladat-kezelőn keresztüli leállítást. A parancsfájlok szerkesztése előtt mindig győződjön meg arról, hogy leállította a lejátszási módot.
+   > Az ARR nem támogatja a futásidejű újrabefejtést. Ha módosítja és menti a szkriptet, miközben a play mód aktív, a Unity lefagyhat, és kényszerítenie kell a leállítást a feladatkezelőn keresztül. Mindig ellenőrizze, hogy leállította-e a lejátszás módot a szkriptek szerkesztése előtt.
 
-1. Cserélje le a **InitializeARR** és a **InitializeSessionService** tartalmát az alábbi befejezett kóddal:
+1. Cserélje le az **InitializeARR** és **az InitializeSessionService** tartalmát az alábbi befejezett kódra:
 
  ```cs
 /// <summary>
@@ -580,32 +581,32 @@ public async void InitializeSessionService()
 }
 ```
 
-Ahhoz, hogy a **NotAuthorized** -ről a további **munkamenetre** lehessen jutni, általában egy modális párbeszédpanelt mutatunk be a felhasználónak, hogy kiválasszák (és ezt egy másik fejezetben tesszük). Egyelőre a **ByPassAuthentication** meghívásával automatikusan kikerüljük az engedélyezési ellenőrzéseket, amint a **RequestingAuthorization** esemény elindul.
+A **NotAuthorized** és a **NoSession** között való előrehaladáshoz általában egy modális párbeszédpanelt szeretnénk bemutatni a felhasználónak, hogy kiválasztható (és ezt egy másik fejezetben fogjuk megtenni). Jelenleg automatikusan megkerüljük az engedélyezési ellenőrzést a **ByPassAuthentication** hívásával, amint a **RequestingAuthorization** esemény aktiválódik.
 
-1. Válassza ki a **RemoteRenderingCoordinator** GameObject, és keresse meg a **RemoteRenderingCoordinator** összetevő Ellenőrében elérhető **OnRequestingAuthorization** Unity eseményt.
+1. Válassza ki **a RemoteRenderingCoordinator** GameObject et, és keresse meg az **OnRequestingAuthorization** Unity-eseményt, amely a **RemoteRenderingCoordinator** összetevő Vizsgálójében található.
 
-1. Adjon hozzá egy új eseményt a jobb alsó sarokban található "+" gomb megnyomásával.
-1. Húzza az összetevőt a saját eseményre, és hivatkozzon magára. \
-![Hitelesítés mellőzése](./media/bypass-authorization-add-event.png)\
-1. A legördülő listából válassza a **RemoteRenderingCoordinator-> BypassAuthorization**. \
-![A kiválasztott RemoteRenderingCoordinator. BypassAuthorization beállítást megjelenítő képernyőkép.](./media/bypass-authorization-event.png)
+1. Adjon hozzá egy új eseményt a jobb alsó sarokban a "+" billentyű lenyomásával.
+1. Húzza az összetevőt a saját eseményére, hogy hivatkozni fog magára.\
+![Hitelesítés megkerülése](./media/bypass-authorization-add-event.png)\
+1. A legördülő menüben válassza a **RemoteRenderingCoordinator -> BypassAuthorization**.\ lehetőséget.
+![A kiválasztott RemoteRenderingCoordinator.BypassAuthorization beállítást bemutató képernyőkép.](./media/bypass-authorization-event.png)
 
-## <a name="create-or-join-a-remote-session"></a>Távoli munkamenet létrehozása vagy csatlakoztatása
+## <a name="create-or-join-a-remote-session"></a>Távoli munkamenet létrehozása vagy csatlakozás hozzá
 
-A második lépés egy távoli renderelési munkamenet létrehozása vagy csatlakoztatása (további információért lásd a [távoli renderelési munkameneteket](../../../concepts/sessions.md) ).
+A második fázis egy új munkamenet létrehozása vagy Remote Rendering (további Remote Rendering [munkamenetek](../../../concepts/sessions.md) létrehozása).
 
-![ARR verem 2](./media/remote-render-stack-2.png)
+![ARR stack 2](./media/remote-render-stack-2.png)
 
-A távoli munkamenetben a modellek lesznek megjelenítve. A **JoinRemoteSession ()** metódus megpróbál csatlakozni egy meglévő munkamenethez, nyomon követve a **LastUsedSessionID** tulajdonsággal, vagy ha van hozzárendelve aktív munkamenet-azonosító a **SessionIDOverride**-on. A **SessionIDOverride** kizárólag hibakeresési célokra szolgál, csak akkor használható, ha ismeri a munkamenetet, és szeretne explicit módon csatlakozni hozzá.
+A távoli munkamenetben renderelik a modelleket. A **JoinRemoteSession( ) metódus** egy meglévő, a **LastUsedSessionID** tulajdonsággal nyomon követni kívánt munkamenetet kísérel meg, vagy ha van hozzárendelt aktív munkamenet-azonosító a **SessionIDOverride tulajdonságban.** **A SessionIDOverride** csak hibakeresési célokra szolgál, csak akkor használja, ha tudja, hogy a munkamenet létezik, és explicit módon szeretne csatlakozni hozzá.
 
-Ha nem áll rendelkezésre munkamenet, új munkamenet jön létre. Egy új munkamenet létrehozása azonban időigényes művelet. Ezért csak szükség esetén kell létrehoznia a munkameneteket, és ha lehetséges, újra fel kell használni őket (lásd: [kereskedelmi használatra kész: munkamenet-készletezés, ütemezés és ajánlott eljárások](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) a munkamenetek kezelésével kapcsolatban).
+Ha nincsenek elérhető munkamenetek, a rendszer új munkamenetet hoz létre. Egy új munkamenet létrehozása azonban időigényes művelet. Ezért csak szükség esetén próbáljon munkameneteket létrehozni, és amikor csak lehetséges, használja újra őket (a munkamenetek kezelésével kapcsolatos további információkért lásd: Kereskedelmi felhasználásra kész: Munkamenetek készletezése, [ütemezése és](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) ajánlott eljárások).
 
 > [!TIP]
-> A **StopRemoteSession ()** befejezi az aktív munkamenetet. A szükségtelen költségek elkerülése érdekében mindig le kell állítania a munkameneteket, ha már nincs rájuk szükség.
+> **A StopRemoteSession() leállítja** az aktív munkamenetet. A szükségtelen díjak elkerülése érdekében mindig állítsa le a munkameneteket, amikor már nincs rájuk szükség.
 
-Az állapotú gép mostantól a rendelkezésre álló munkamenetek függvényében a **ConnectingToNewRemoteSession** vagy a **ConnectingToExistingRemoteSession** folyamatba kerül. Ha egy meglévő munkamenetet nyit meg, vagy új munkamenetet hoz létre, a rendszer elindítja a **ARRSessionService. OnSessionStatusChanged** eseményt, és végrehajtja a **OnRemoteSessionStatusChanged** metódust. Ideális esetben ez azt eredményezi, hogy az állapotot a gép **RemoteSessionReady**.
+Az állapotgép a rendelkezésre álló munkamenetek függvényében a **ConnectingToNewRemoteSession** vagy **a ConnectingToExistingRemoteSession** állapotba lép. Ha megnyit egy meglévő munkamenetet, vagy új munkamenetet hoz létre, az aktiválja az **ARRSessionService.OnSessionStatusChanged** eseményt, és végrehajtja az **OnRemoteSessionStatusChanged metódust.** Ideális esetben ez az állapotgép **RemoteSessionReady** állapotra való fejlesztését eredményezi.
 
-1. Új munkamenethez való csatlakozáshoz módosítsa a kódot a **JoinRemoteSession ()** és a **StopRemoteSession ()** metódus cseréjére az alábbi befejezett példákkal:
+1. Új munkamenethez való csatlakozáshoz módosítsa a kódot úgy, hogy az lecseréli a **JoinRemoteSession( )** és a **StopRemoteSession( )** metódusokat az alábbi példákra:
 
 ```cs
 /// <summary>
@@ -649,21 +650,21 @@ public void StopRemoteSession()
 }
 ```
 
-Ha időt szeretne megtakarítani a munkamenetek újbóli használatával, ügyeljen arra, hogy inaktiválja az **automatikus leállítási munkamenetet** a *ARRServiceUnity* összetevőben. Ne feledje, hogy ez a munkamenetek futását is elhagyja, még akkor is, ha senki sem csatlakozik hozzájuk. A munkamenet addig futhat mindaddig, amíg a *MaxLeaseTime* a kiszolgáló leállása előtt (a *MaxLeaseTime* értéke módosítható a távoli renderelési Koordinátorban az *új munkamenet alapértelmezései* között). Ha azonban a kapcsolat bontásakor automatikusan leállítja az összes munkamenetet, meg kell várnia, hogy az új munkamenet minden alkalommal induljon el, ami valamivel hosszadalmas folyamat lehet.
+Ha időt szeretne megtakarékosni a munkamenetek újrahasználása által, inaktiválja az Automatikus **munkamenet-leállítás** beállítást az *ARRServiceUnity összetevőben.* Ne feledje, hogy ez akkor is futni hagyja a munkameneteket, ha senki sincs hozzájuk csatlakoztatva. A munkamenet addig futhat, amíg a *MaxLeaseTime* értéke le nem áll a kiszolgáló számára (a *MaxLeaseTime* értéke az Remote Rendering Koordinátorban módosítható az Új munkamenet alapértelmezései *alatt).* Ha azonban a kapcsolat bontásakor automatikusan leállít minden munkamenetet, meg kell várnia, hogy minden alkalommal elinduljon egy új munkamenet, ami egy kissé hosszadalmas folyamat lehet.
 
 > [!NOTE]
-> A munkamenet leállítása azonnal érvénybe lép, és nem vonható vissza. Ha leállt, létre kell hoznia egy új munkamenetet ugyanazzal az indítási terheléssel.
+> A munkamenet leállítása azonnal életbe lép, és nem vonható vissza. Ha leállt, létre kell hoznia egy új munkamenetet, ugyanazokkal az indítási terheléssel.
 
-## <a name="connect-the-local-runtime-to-the-remote-session"></a>A helyi futtatókörnyezet összekötése a távoli munkamenettel
+## <a name="connect-the-local-runtime-to-the-remote-session"></a>A helyi futásidő csatlakoztatása a távoli munkamenethez
 
-Ezután az alkalmazásnak kapcsolódnia kell a helyi futtatókörnyezethez a távoli munkamenethez.
+Ezután az alkalmazásnak csatlakoztatnia kell a helyi futásidejűt a távoli munkamenethez.
 
-![ARR verem 3](./media/remote-render-stack-3.png)
+![ARR-verem 3](./media/remote-render-stack-3.png)
 
-Az alkalmazásnak a futtatókörnyezet és az aktuális munkamenet közötti kapcsolat eseményeiről is figyelnie kell. ezeket az állapot-változásokat a rendszer a **OnLocalRuntimeStatusChanged** kezeli. Ez a kód a **ConnectingToRuntime** állapotát fogja előre megtenni. A **OnLocalRuntimeStatusChanged**-ben való csatlakozás után az állapot továbbra is **RuntimeConnected**. A futtatókörnyezethez való csatlakozás utolsó olyan állapotban van, amely a koordinátorra vonatkozik, ami azt jelenti, hogy az alkalmazás az összes közös konfigurációval elkészült, és készen áll a betöltési és renderelési modellek munkamenet-specifikus működésének megkezdésére.
+Az alkalmazásnak a futásidő és az aktuális munkamenet közötti kapcsolattal kapcsolatos eseményeket is figyelnie kell; Ezeket az állapotváltozásokat az **OnLocalRuntimeStatusChanged kezeli.** Ez a kód a **ConnectingToRuntime állapotra lép.** Miután csatlakozott az **OnLocalRuntimeStatusChanged** alatt, az állapot **a RuntimeConnected állapotra változik.** A runtime-hoz való csatlakozás az utolsó állapot, amellyel a koordinátornak aggályai vannak, ami azt jelenti, hogy az alkalmazás az összes közös konfigurációval elkészült, és készen áll a modellek betöltésével és rendereléssel kapcsolatos munkamenet-specifikus munka megkezdésére.
 
- 1. Cserélje le a **ConnectRuntimeToRemoteSession ()** és a **DisconnectRuntimeFromRemoteSession ()** metódust az alábbi befejezett verzióra.
- 1. Fontos megjegyezni az **LateUpdate** Unity metódust, valamint azt, hogy az aktuális aktív munkamenetet frissíti. Ez lehetővé teszi az aktuális munkamenet számára üzenetek küldését/fogadását és a keret pufferének frissítését a távoli munkamenetből fogadott keretekkel. Fontos, hogy az ARR megfelelően működjön.
+ 1. Cserélje le a **ConnectRuntimeToRemoteSession( ) és** **a DisconnectRuntimeFromRemoteSession( )** metódust az alábbi befejezett verziókra.
+ 1. Fontos, hogy jegyezze fel a **LateUpdate** Unity-metódust, és hogy ez frissíti az aktuális aktív munkamenetet. Ez lehetővé teszi, hogy az aktuális munkamenet üzeneteket küldjön/fogad, és frissítse a keretpuffert a távoli munkamenetből fogadott képkockákra. Az ARR megfelelő működése kritikus fontosságú.
 
 ```cs
 /// <summary>
@@ -709,17 +710,17 @@ private void LateUpdate()
 ```
 
 > [!NOTE]
-> A helyi futtatókörnyezet távoli munkamenethez való csatlakoztatása a jelenleg aktív munkameneten meghívott **frissítéstől** függ. Ha úgy találja, hogy az alkalmazás még soha nem halad előre a **ConnectingToRuntime** állapotban, győződjön meg róla, hogy rendszeresen hívja meg a **frissítést** az aktív munkamenetben.
+> A helyi futásidő távoli munkamenethez való csatlakoztatása attól függ, hogy az **aktuálisan** aktív munkameneten a Frissítés van-e meghívva. Ha azt találja, hogy az alkalmazás soha nem halad tovább **a ConnectingToRuntime** állapoton túl, ellenőrizze, hogy az aktív munkamenetben rendszeresen hívja-e az Update-et. 
 
 ## <a name="load-a-model"></a>Modell betöltése
 
-A szükséges alapszintű létrehozás után készen áll a modell betöltésére a távoli munkamenetbe, és a keretek fogadásának megkezdése.
+A szükséges alapokkal készen áll arra, hogy betöltsen egy modellt a távoli munkamenetbe, és elkezdje a képkockák fogadását.
 
-![A modell betöltésének és megtekintésének előkészítési folyamatát bemutató diagram.](./media/remote-render-stack-4.png)
+![A modell betöltésének és megtekintésének folyamatát bemutató ábra.](./media/remote-render-stack-4.png)
 
-A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési útját, a folyamatjelzőt és a szülő-átalakítást. Ezek az argumentumok a modellnek a távoli munkamenetbe való betöltéséhez használhatók, frissíti a felhasználót a betöltési folyamaton, majd a fölérendelt átalakító alapján a távolról megjelenített modellt.
+A **LoadModel metódus** a modell elérési útjának, folyamatkezelőinek és szülő-átalakításának elfogadására lett kialakítva. Ezekkel az argumentumokkal tölt be egy modellt a távoli munkamenetbe, frissíti a felhasználót a betöltési folyamat során, és el tudja látni a távolról renderelt modellt a szülő-átalakítás alapján.
 
-1. Cserélje le a **LoadModel** metódust teljes egészében az alábbi kódra:
+1. Cserélje le **a LoadModel metódust** teljes egészében az alábbi kódra:
 
     ```cs
     /// <summary>
@@ -768,22 +769,22 @@ A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési
     }
     ```
 
-A fenti kód a következő lépéseket hajtja végre:
+A fenti kód a következő lépéseket végzi el:
 
-1. Hozzon létre egy [távoli entitást](../../../concepts/entities.md).
-1. Hozzon létre egy helyi GameObject, amely a távoli entitást jelöli.
-1. Konfigurálja úgy a helyi GameObject, hogy szinkronizálja az állapotát (azaz átalakítja) a távoli entitásba minden keretben.
-1. Állítson be egy nevet, és adjon hozzá egy [**WorldAnchor**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) a stabilizáció támogatásához.
-1. Blob Storage modell adatainak betöltése a távoli entitásba.
-1. A fölérendelt entitás visszaküldése a későbbi hivatkozáshoz.
+1. Hozzon létre [egy távoli entitást.](../../../concepts/entities.md)
+1. Hozzon létre egy helyi GameObjectet, amely a távoli entitást képviseli.
+1. Konfigurálja a helyi GameObjectet úgy, hogy az állapota (vagyis átalakítás) szinkronizálva legyenek a távoli entitással minden keretben.
+1. Adjon meg egy nevet, és adjon hozzá egy [**WorldAnchort**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) a stabilitáshoz.
+1. Modelladatok betöltése a Blob Storage a távoli entitásba.
+1. Adja vissza a szülőentitást későbbi referenciaként.
 
-## <a name="view-the-test-model"></a>A tesztelési modell megtekintése
+## <a name="view-the-test-model"></a>A tesztmodell megtekintése
 
-Most már minden kód szükséges a távolról renderelt modell megtekintéséhez, a távoli renderelés összes szükséges szakasza befejeződött. Most hozzá kell adnia egy kis kódot a modell betöltési folyamatának elindításához.
+Most már minden kód megvan, amely egy távolról renderelt modell megtekintéséhez szükséges, és a távoli rendereléshez szükséges mind a négy szakasz befejeződött. Most hozzá kell adnunk egy kis kódot a modellbetöltési folyamat elindítani.
 
 ![ARR verem 4](./media/remote-render-stack-5.png)
 
-1. Adja hozzá a következő kódot a **RemoteRenderingCoordinator** osztályhoz, amely közvetlenül a **LoadModel** metódus alá esik:
+1. Adja hozzá a következő kódot a **RemoteRenderingCoordinator osztályhoz,** pont a **LoadModel** metódus alatt:
 
     ```cs
     private bool loadingTestModel = false;
@@ -811,28 +812,28 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
     }
     ```
     
-    Ez a kód egy GameObject hoz létre, amely szülőként működik a tesztelési modellben. Ezután meghívja a **LoadModel** metódust a "Builtin://Engine" modell betöltésére, amely egy, az Azure Remote rendering szolgáltatásba beépített eszköz, amely a renderelés tesztelésére szolgál.
+    Ez a kód létrehoz egy GameObjectet, amely a tesztmodell szülőjeként működik. Ezután a **LoadModel** metódust hívja meg a "builtin://Engine" modell betöltéséhez, amely a Azure Remote Rendering-ba épített eszköz a renderelés tesztelése céljából.
 
 1. Mentse a kódot.
-1. A Unity Editor Lejátszás gombjára kattintva elindíthatja az Azure-beli távoli rendereléshez való csatlakozás folyamatát, és új munkamenetet hozhat létre.
-1. A játék nézetében nem sokat fog látni, de a konzolon megjelenik az alkalmazás állapota változó. Ez várhatóan a következő időpontig fog haladni `ConnectingToNewRemoteSession` , és ott is marad, akár öt percig is.
-1. Válassza ki a **RemoteRenderingCoordinator** GameObject, és tekintse meg a csatolt parancsfájlokat az ellenőrben. Tekintse meg a **szolgáltatás** -összetevő frissítését, ahogy az az inicializálási és a kapcsolati lépésein keresztül halad.
-1. A konzol kimenetének figyelése – várakozás arra, hogy az állapot változása **RuntimeConnected**.
-1. Ha a futtatókörnyezet csatlakoztatva van, kattintson a jobb gombbal a **RemoteRenderingCoordinator** a helyi menüben elérhetővé tenni. Ezután kattintson a **terhelési modell** beállítása lehetőségre a helyi menüben, amelyet a `[ContextMenu("Load Test Model")]` fenti kód része ad hozzá.
+1. Nyomja le a Play gombot a Unity-szerkesztőben a csatlakozás Azure Remote Rendering új munkamenet létrehozásához.
+1. A Game (Játék) nézetben azonban nem sokat fog látni, a konzolon azonban az alkalmazás változó állapota látható. Ez valószínűleg a (igaz) lesz, és akár öt percig is `ConnectingToNewRemoteSession` ott maradhat.
+1. A **RemoteRenderingCoordinator** GameObject kiválasztásával láthatja a csatolt szkripteket a vizsgálóban. Figyelje **meg, ahogy** a szolgáltatás-összetevő frissülni fog az inicializálási és a kapcsolódási lépések során.
+1. Figyelje a konzol kimenetét – várja meg, amíg az állapot **RuntimeConnected (Futtatás) állapotra vált.**
+1. A futtatás csatlakoztatása után kattintson a jobb gombbal a **RemoteRenderingCoordinator** elemre az vizsgálóban a helyi menü felfedéshez. Ezután kattintson a **Load Test Model** (Modell betöltése) lehetőségre a helyi menüben, amelyet a fenti kód rész `[ContextMenu("Load Test Model")]` ad hozzá.
 
     ![Betöltés a helyi menüből](./media/load-test-model.png)
 
-1. Tekintse meg a konzolon a **LoadModel** metódusnak átadott **ProgressHandler** kimenetét.
+1. Figyelje meg a Konzolon a **LoadModel** metódusba átadott **ProgressHandler** kimenetét.
 1. Tekintse meg a távolról renderelt modellt!
 
 > [!NOTE]
-> A távoli modell soha nem jelenik meg a jelenet nézetben, csak a játék nézetben. Ennek az az oka, hogy az ARR a képkockákat távolról teszi elérhetővé a game View kamera szempontjából, és nem ismeri a szerkesztői kamerát (a jelenet nézet megjelenítéséhez használatos).
+> A távoli modell soha nem lesz látható a Scene (Jelenet) nézetben, csak a játéknézetben. Ennek az az oka, hogy az ARR távolról rendereli a képkockákat kifejezetten a Game view kamera szempontjából, és nem ismeri a Szerkesztő kameráját (amely a Scene nézet megjelenítésére használatos).
 
 ## <a name="next-steps"></a>Következő lépések
 
-![Modell betöltve](./media/test-model-rendered.png)
+![Betöltött modell](./media/test-model-rendered.png)
 
-Gratulálunk! Létrehozott egy alapszintű alkalmazást, amely képes a távolról renderelt modellek megtekintésére az Azure távoli renderelés használatával. A következő oktatóanyagban integráljuk a MRTK, és importáljuk a saját modelljeiket.
+Gratulálunk! Létrehozott egy alapszintű alkalmazást, amely képes távolról renderelt modelleket a Azure Remote Rendering. A következő oktatóanyagban integráljuk az MRTK-t, és importáljuk a saját modelljeinket.
 
 > [!div class="nextstepaction"]
-> [Next: felületek és egyéni modellek](../custom-models/custom-models.md)
+> [Következő: Felületek és egyéni modellek](../custom-models/custom-models.md)
