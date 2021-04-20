@@ -1,7 +1,7 @@
 ---
-title: Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
+title: Tevékenység egyéni parancsok ügyfélalkalmazásnak
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan küldhet tevékenységeket egyéni parancsok alkalmazásából a Speech SDK-t futtató ügyfélalkalmazás számára.
+description: Ebből a cikkből megtudhatja, hogyan küldhet tevékenységet egy egyéni parancsok a Speech SDK-t futtató ügyfélalkalmazásnak.
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,34 +10,34 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e0b750f02044afafe233a76e4f43755d9ed303
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94566095"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725097"
 ---
-# <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
+# <a name="send-custom-commands-activity-to-client-application"></a>Tevékenység egyéni parancsok ügyfélalkalmazásnak
 
-Ebből a cikkből megtudhatja, hogyan küldhet tevékenységeket egyéni parancsok alkalmazásából a Speech SDK-t futtató ügyfélalkalmazás számára.
+Ebből a cikkből megtudhatja, hogyan küldhet tevékenységet egy egyéni parancsok a Speech SDK-t futtató ügyfélalkalmazásnak.
 
-A következő feladatokat hajtja végre:
+A következő feladatokat kell elvégeznie:
 
-- Egyéni JSON-adattartalom definiálása és küldése az egyéni parancsok alkalmazásából
-- Egyéni JSON-adattartalom tartalmának fogadása és megjelenítése C# UWP Speech SDK-ügyfélalkalmazás alapján
+- Egyéni JSON-adat definiálás és küldése a egyéni parancsok alkalmazásból
+- Egyéni JSON hasznos adatok tartalmának fogadása és vizualizációja egy C# UWP Speech SDK-ügyfélalkalmazásból
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class = "checklist"]
-> * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-et használja
+> * [Visual Studio 2019-es vagy újabb](https://visualstudio.microsoft.com/downloads/) verzió. Ez az útmutató a Visual Studio 2019-et használja
 > * Egy Azure-előfizetői azonosító a Speech szolgáltatáshoz: [Szerezzen be egyet ingyen](overview.md#try-the-speech-service-for-free), vagy hozza létre az [Azure Portalon](https://portal.azure.com)
 > * Egy korábban [létrehozott Custom Commands-alkalmazás](quickstart-custom-commands-application.md)
-> * Egy Speech SDK-kompatibilis ügyfélalkalmazás: [útmutató: integrálás egy ügyfélalkalmazás használatával a SPEECH SDK-val](./how-to-custom-commands-setup-speech-sdk.md)
+> * Speech SDK-kompatibilis ügyfélalkalmazás: [How-to: Integrate with a client application using Speech SDK](./how-to-custom-commands-setup-speech-sdk.md) (Beszéd SDK-kompatibilis ügyfélalkalmazással való integráció a Speech SDK használatával)
 
-## <a name="setup-send-activity-to-client"></a>A telepítő tevékenység küldése az ügyfélnek 
-1. Nyissa meg a korábban létrehozott egyéni parancsok alkalmazást
-1. Válassza a **TurnOnOff** parancsot, válassza a **ConfirmationResponse** lehetőséget a befejezési szabály területen, majd válassza **a művelet hozzáadása** lehetőséget.
-1. Az **új művelet típusa** területen válassza a **tevékenység küldése ügyfélnek** lehetőséget.
-1. Az alábbi JSON másolása a **tevékenység tartalmába**
+## <a name="setup-send-activity-to-client"></a>Tevékenység küldése az ügyfélnek beállítás 
+1. Nyissa meg egyéni parancsok korábban létrehozott alkalmazásalkalmazást
+1. Válassza **a TurnOnOff parancsot,** válassza **a ConfirmationResponse** lehetőséget a befejezési szabály alatt, majd válassza **a Művelet hozzáadása lehetőséget**
+1. Az **Új művelet-típus alatt válassza** a Tevékenység küldése az **ügyfélnek lehetőséget.**
+1. Másolja az alábbi JSON-t a **Tevékenység tartalmaiba**
    ```json
    {
       "type": "event",
@@ -48,16 +48,16 @@ A következő feladatokat hajtja végre:
       }
     }
    ```
-1. Kattintson a **Save (Mentés** ) gombra egy új szabály létrehozásához egy küldési tevékenység művelettel, a **betanítással** és a módosítás **közzétételével**
+1. Kattintson **a Mentés gombra** egy új szabály létrehozásához egy Tevékenység küldése művelet, a **módosítás** betanítás és **közzététel** műveletével
 
    > [!div class="mx-imgBorder"]
-   > ![Tevékenység-befejezési szabály küldése](media/custom-commands/send-activity-to-client-completion-rules.png)
+   > ![Tevékenység befejezési szabályának küldése](media/custom-commands/send-activity-to-client-completion-rules.png)
 
 ## <a name="integrate-with-client-application"></a>Integrálás ügyfélalkalmazással
 
-[Útmutató: az ügyfélalkalmazás beállítása a SPEECH SDK-val (előzetes verzió)](./how-to-custom-commands-setup-speech-sdk.md), a Speech SDK-val létrehozott UWP-ügyfélalkalmazás olyan parancsokat kezelt, mint például a `turn on the tv` , `turn off the fan` . Néhány vizualizáció hozzáadásával megtekintheti a parancsok eredményét.
+Az [How-to: Setup client application with Speech SDK (Preview) (Ügyfélalkalmazás](./how-to-custom-commands-setup-speech-sdk.md)beállítása a Speech SDK előzetes verziójával) dokumentumban létrehozott egy UWP-ügyfélalkalmazást a Speech SDK-val, amely olyan parancsokat kezelt, mint a `turn on the tv` , `turn off the fan` . Néhány vizualizáció hozzáadása után láthatja ezeknek a parancsoknak az eredményét.
 
-Ha **be** -vagy **kikapcsolt** szöveggel rendelkező címkével ellátott mezőket szeretne felvenni, adja hozzá a következő XML-blokkot a StackPanel `MainPage.xaml` .
+Ha be- vagy kikapcsolt  szöveget tartalmazó címkével jelölt mezőket szeretne **hozzáadni,** adja hozzá a stackpanel alábbi XML-blokkját a `MainPage.xaml` elemhez.
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -80,20 +80,20 @@ Ha **be** -vagy **kikapcsolt** szöveggel rendelkező címkével ellátott mező
 <MediaElement ....../>
 ```
 
-### <a name="add-reference-libraries"></a>Hivatkozási kódtárak hozzáadása
+### <a name="add-reference-libraries"></a>Referenciakódtárak hozzáadása
 
-Mivel létrehozott egy JSON-adattartalmat, a deszerializálás kezeléséhez hozzá kell adnia egy hivatkozást a [JSON.net](https://www.newtonsoft.com/json) -könyvtárhoz.
+Mivel létrehozott egy hasznos JSON-referenciát, hozzá kell [](https://www.newtonsoft.com/json) adni egy hivatkozást a JSON.NET kódtárhoz a deserializálás kezeléshez.
 
-1. A jobb ügyfél a megoldás.
-1. Válassza **a megoldás NuGet-csomagok kezelése** lehetőséget, majd kattintson a **Tallózás gombra** . 
-1. Ha már telepített **Newtonsoft.jsa-on**, győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez**, és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
+1. Jobb ügyfélprogram a megoldáshoz.
+1. Válassza **a Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) lehetőséget,** majd a Browse (Tallózás) **gombra.** 
+1. Ha már telepítette **aNewtonsoft.js,** győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, a **Manage NuGet Packages for Solution - Updates (NuGet-csomagok** kezelése megoldáshoz – frissítésekhez) oldalon keressen rá a **Newtonsoft.jsa** frissítéséhez. Ez az útmutató a 12.0.3-as verziót használja.
 
     > [!div class="mx-imgBorder"]
-    > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > ![Tevékenység hasznos ának küldése](media/custom-commands/send-activity-to-client-json-nuget.png)
 
-1. Győződjön meg arról is, hogy a **Microsoft. NETCore. UniversalWindowsPlatform** NuGet-csomag legalább 6.2.10. Ez az útmutató a 6.2.10 verzióját használja.
+1. Arról is győződjön meg, hogy a **Microsoft.NETCore.UniversalWindowsPlatform** NuGet-csomag legalább 6.2.10-es. Ez az útmutató a 6.2.10-es verziót használja.
 
-A "Főoldal. XAML. cs" elemnél adja hozzá a következőt:
+A MainPage.xaml.cs fájlban adja hozzá a következőt:
 
 ```C#
 using Newtonsoft.Json; 
@@ -101,9 +101,9 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 ```
 
-### <a name="handle-the-received-payload"></a>A fogadott tartalom kezelése
+### <a name="handle-the-received-payload"></a>A fogadott hasznos tartalom kezelés
 
-A alkalmazásban `InitializeDialogServiceConnector` cserélje le az `ActivityReceived` eseménykezelőt a következő kódra. A módosított `ActivityReceived` eseménykezelő Kinyeri a hasznos adatokat a tevékenységből, és megváltoztatja a televízió vagy a ventilátor vizualizációs állapotát.
+`InitializeDialogServiceConnector`A-ban cserélje le az `ActivityReceived` eseménykezelőt a következő kódra. A módosított eseménykezelő kinyeri a hasznos okat a tevékenységből, és módosítja a tv vagy a ventilátor vizuális `ActivityReceived` állapotát.
 
 ```C#
 connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
@@ -154,11 +154,11 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Válassza a Mikrofon engedélyezése lehetőséget
 1. Válassza a Beszéd gombot
 1. Mondja a következőt: `turn on the tv`
-1. A TV vizualizációs állapotának "on" értékre kell váltania
+1. A tv vizuális állapotának "on" (be) állapotra kell változnia
    > [!div class="mx-imgBorder"]
-   > ![Képernyőkép, amely azt mutatja, hogy a T V vizualizációs állapota most már be van kapcsolva.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![Képernyőkép, amely azt mutatja, hogy a TV vizualizációs állapota be van stb.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató: webes végpontok beállítása (előzetes verzió)](./how-to-custom-commands-setup-web-endpoints.md)
+> [Webes végpontok beállítása](./how-to-custom-commands-setup-web-endpoints.md)
