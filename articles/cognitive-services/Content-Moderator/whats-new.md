@@ -1,36 +1,36 @@
 ---
-title: A Content Moderator újdonságai
+title: Újdonságok a Content Moderator?
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Content Moderatorával kapcsolatos híreket tartalmaz.
+description: Ez a cikk a cikkel kapcsolatos Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
-ms.openlocfilehash: 86cbd1e1d51af3a2f9a594e7e87a7896e70d6635
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8bbb6033fd4045664a20df7e2b2c14b8a8837214
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758593"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725043"
 ---
-# <a name="whats-new-in-content-moderator"></a>A Content Moderator újdonságai
+# <a name="whats-new-in-content-moderator"></a>A Content Moderator
 
-Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
+Ismerje meg a szolgáltatás újdonságát. Ezek lehetnek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. Az oldal könyvjelzővel való kiszolgálása, hogy naprakész maradjon a szolgáltatással.
 
 ## <a name="august-2020"></a>2020. augusztus
 
-### <a name="new-video-moderation-ui"></a>Új videó-moderálás felhasználói felület
+### <a name="new-video-moderation-ui"></a>Új videomoderálási felhasználói felület
 
-* A felülvizsgálati eszköz videó-moderálási lapja számos új eszközzel és funkcióval bővült, amelyek megkönnyítik a videók és a videók egyes részeinek címkézését és feldolgozását. További információt a [videó moderálási útmutatójában](./video-moderation-human-review.md) talál.
+* A felülvizsgálati eszköz videomoderálási lapja számos új eszközzel és funkcióval frissült, amelyek megkönnyítik a videók és a videók egyes részeinek címkézését és feldolgozását. További [információért tekintse meg a Videómoderálási](./video-moderation-human-review.md) útmutatót.
 
 ### <a name="new-dashboard"></a>Új irányítópult
 
-* A felülvizsgálati eszköz irányítópultja frissítve lett a nyitott, függőben lévő és befejezett felülvizsgálatokkal kapcsolatos további információk megjelenítéséhez. Az új funkciókkal kapcsolatos információkért tekintse meg a [felülvizsgálati eszköz útmutatóját](./Review-Tool-User-Guide/human-in-the-loop.md) .
+* A Felülvizsgálati eszköz irányítópultja frissült, hogy további információkat tartalmaz a nyitott, függőben lévő és befejezett felülvizsgálatokkal kapcsolatban. Az új [funkciókat](./Review-Tool-User-Guide/human-in-the-loop.md) a felülvizsgálati eszköz útmutatója alapján tárja fel.
 
 ## <a name="cognitive-services-updates"></a>Cognitive Services frissítések
 
-[Cognitive Services Azure Update-hirdetmények](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Az Azure frissítésére vonatkozó közlemények Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

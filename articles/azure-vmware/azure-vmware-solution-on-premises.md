@@ -1,47 +1,45 @@
 ---
-title: Azure VMware-megoldás összekapcsolása a helyszíni környezettel
-description: Ismerje meg, hogyan csatlakoztatható az Azure VMware-megoldás a helyszíni környezethez.
+title: Csatlakozás Azure VMware Solution helyszíni környezethez
+description: Ismerje meg, hogyan Azure VMware Solution a helyszíni környezethez.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 0b26dc4756cb37544c2b2f8c5a75df0ac1a9d629
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: 392d82a9aca9b60b394a5d5f4a7e6b0111438e59
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491792"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725614"
 ---
-# <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Azure VMware-megoldás összekapcsolása a helyszíni környezettel
+# <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Csatlakozás Azure VMware Solution helyszíni környezethez
 
-Ebben a cikkben az Azure VMware-megoldás helyszíni környezethez való csatlakozásának [megtervezése során összegyűjtött információkat](production-ready-deployment-steps.md) fogja használni.
+Ebben a cikkben továbbra is [](production-ready-deployment-steps.md) a tervezés során összegyűjtött információkat fogja használni a Azure VMware Solution helyszíni környezethez való csatlakozáshoz.
 
-Mielőtt elkezdené, két előfeltétel van az Azure VMware-megoldás helyszíni környezethez való csatlakoztatásához:
+Mielőtt hozzákezd, létre kell hoznunk egy ExpressRoute-kapcsolatkört a helyszíni környezetből az Azure-ba.
 
-- Egy ExpressRoute áramkör a helyszíni környezetből az Azure-ba.
-- A/29 nem átfedésben lévő CIDR a ExpressRoute Global Reach-társításhoz, amelyet a [tervezési fázis](production-ready-deployment-steps.md)részeként adott meg.
 
 >[!NOTE]
-> Csatlakozhat VPN-kapcsolaton keresztül, de ez a gyors üzembe helyezési dokumentum hatókörén kívül esik.
+> Csatlakozhat VPN-en keresztül, de ez a rövid útmutató nem erre a dokumentumra terjed ki.
 
-## <a name="establish-an-expressroute-global-reach-connection"></a>ExpressRoute-Global Reach kapcsolat létrehozása
+## <a name="establish-an-expressroute-global-reach-connection"></a>ExpressRoute-kapcsolat Global Reach létrehozása
 
-Ha helyszíni kapcsolatot szeretne létesíteni az Azure VMware-megoldás privát felhővel a ExpressRoute Global Reach használatával, kövesse a [helyszíni környezeteket egy privát felhőalapú](tutorial-expressroute-global-reach-private-cloud.md) oktatóanyagban.
+A helyszíni és a magánfelhőhöz Azure VMware Solution ExpressRoute Global Reach használatával való helyszíni kapcsolat létesítéhez kövesse a helyszíni környezetek magánfelhővel való társviszony-létesítését ismertető [oktatóanyagot.](tutorial-expressroute-global-reach-private-cloud.md)
 
-Ez az oktatóanyag egy, az ábrán láthatóhoz tartozó kapcsolatokat eredményez.
+Ez az oktatóanyag a diagramon látható kapcsolatot hoz létre.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="A ExpressRoute Global Reach a helyszíni hálózati kapcsolati diagramot." lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="Az ExpressRoute Global Reach helyszíni hálózati kapcsolat diagramja." lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" border="false":::
 
 ## <a name="verify-on-premises-network-connectivity"></a>Helyszíni hálózati kapcsolat ellenőrzése
 
-Ekkor látnia kell a helyszíni **peremhálózati útválasztón** , ahol a ExpressRoute csatlakoztatja a NSX-T hálózati szegmenseket és az Azure VMware megoldás-felügyeleti szegmenseit.
+Most már látnia kell a helyszíni **peremhálózati** útválasztón, ahol az ExpressRoute csatlakoztatja az NSX-T hálózati szegmenseket és a Azure VMware Solution felügyeleti szegmenseket.
 
 >[!IMPORTANT]
->Mindenki más környezettel rendelkezik, és néhánynak lehetővé kell tennie, hogy ezeket az útvonalakat vissza lehessen terjeszteni a helyszíni hálózatra.  
+>Mindenki más környezettel rendelkezik, néhánynak pedig lehetővé kell tennie, hogy ezek az útvonalak újra a helyszíni hálózatra propagálva leselkednek.  
 
-Egyes környezetek tűzfallal védik a ExpressRoute áramkört.  Ha nincsenek tűzfalak, és nincs útvonal-metszés, Pingelje az Azure VMware-megoldás vCenter-kiszolgálóját vagy egy virtuális gépet a helyszíni környezetből származó [NSX-T szegmensen](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) . Emellett a NSX-T szegmensben lévő virtuális gépről elérheti a helyszíni környezetben lévő erőforrásokat is.
+Egyes környezetek tűzfallal védik az ExpressRoute-kapcsolatkört.  Ha nem történik tűzfal és útvonal-csonkolás, pingelni kell a Azure VMware Solution vCenter-kiszolgálót vagy egy, az [NSX-T szegmensben](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) található virtuális gépet a helyszíni környezetből. Emellett az NSX-T szegmensben található virtuális gépről elérheti a helyszíni környezet erőforrásait.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Folytassa a következő szakasszal a VMware HCX üzembe helyezéséhez és konfigurálásához
+Folytassa a következő szakaszokkal a VMware HCX üzembe helyezéséhez és konfiguráláshoz
 
 > [!div class="nextstepaction"]
 > [A VMware HCX üzembe helyezése és konfigurálása](tutorial-deploy-vmware-hcx.md)

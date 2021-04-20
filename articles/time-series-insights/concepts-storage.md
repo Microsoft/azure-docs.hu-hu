@@ -1,6 +1,6 @@
 ---
 title: A Storage áttekintése – Azure Time Series Insights Gen2 | Microsoft Docs
-description: Tudnivalók az adattárolásról Azure Time Series Insights Gen2.
+description: Ismerje meg a Gen2-ben Azure Time Series Insights adattárolást.
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -10,119 +10,122 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: cd26df1de86ee4bdb33050d0bc4769663707733e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505195"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725025"
 ---
 # <a name="data-storage"></a>Adattárolás
 
-Ez a cikk a Azure Time Series Insights Gen2 tárolt adattárolást ismerteti. A szolgáltatás a meleg és a hideg, az adatelérhetőség és az ajánlott eljárásokat fedi le.
+Ez a cikk a Gen2-ben Azure Time Series Insights adattárolást ismerteti. Lefedi a meleg és hideg adatokat, az adatok rendelkezésre állását és az ajánlott eljárásokat.
 
 ## <a name="provisioning"></a>Kiépítés
 
-Azure Time Series Insights Gen2-környezet létrehozásakor a következő lehetőségek közül választhat:
+2. generációs Azure Time Series Insights létrehozásakor a következő lehetőségek állnak rendelkezésre:
 
 * Hideg adattárolás:
-  * Hozzon létre egy új Azure Storage-erőforrást az előfizetésben és a régióban, amelyet kiválasztott a környezetéhez.
-  * Egy már meglévő Azure Storage-fiók csatolása. Ez a beállítás csak Azure Resource Manager [sablonból](/azure/templates/microsoft.timeseriesinsights/allversions)telepíthető, és nem látható a Azure Portalban.
+  * Hozzon létre egy új Azure Storage-erőforrást a környezetéhez kiválasztott előfizetésben és régióban.
+  * Meglévő Azure Storage-fiók csatolása. Ez a lehetőség csak akkor érhető el, ha egy Azure Resource Manager [sablonból](/azure/templates/microsoft.timeseriesinsights/allversions)telepíti, és nem látható a Azure Portal.
 * Meleg adattárolás:
-  * A meleg tároló nem kötelező, és a kiépítés ideje alatt vagy után is engedélyezhető vagy letiltható. Ha úgy dönt, hogy egy későbbi időpontban engedélyezi a meleg tárolást, és a hűtőházi tárolóban már van [ilyen](concepts-storage.md#warm-store-behavior) , a várt működés megismeréséhez tekintse át az alábbi szakaszt. A meleg tároló adatmegőrzési ideje 7 – 31 nap lehet, és szükség szerint módosítható.
+  * A meleg tároló nem kötelező, és a kiépítés ideje alatt vagy után engedélyezhető vagy letiltható. Ha úgy dönt, hogy később engedélyezi a meleg tárolást, és [](concepts-storage.md#warm-store-behavior) már vannak adatok a hidegen tárolt tárolóban, tekintse át az alábbi szakaszt, hogy megértse az elvárt viselkedést. A meleg tároló adatmegőrzési ideje 7–31 napra konfigurálható, és ez szükség szerint módosítható.
 
-Egy esemény betöltése esetén a rendszer a meleg tárolóban (ha engedélyezve van) és a hűtőházi tárolóban is indexelve van.
+Amikor egy esemény be van úsodva, a rendszer a meleg tárolóban (ha engedélyezve van) és a hidegen tárolt tárolóban is indexeli.
 
-[![A tárterület áttekintése](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
+[![A Storage áttekintése](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
-> Az Azure Blob Storage-fiók tulajdonosaként, ahol a hűtőházi adattárolási adat található, teljes hozzáférése van a fiókban lévő összes adathoz. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkessze vagy törölje azokat az adatAzure Time Series Insights Gen2, amelyek adatvesztést okozhatnak.
+> A hidegen tárolt adatokat tároló Azure Blob Storage-fiók tulajdonosaként teljes hozzáféréssel rendelkezik a fiókban lévő összes adathoz. Ez a hozzáférés magában foglalja az írási és törlési engedélyeket is. Ne szerkessze vagy törölje a Gen2 írási Azure Time Series Insights adatokat, mert ez adatvesztést okozhat.
 
 ## <a name="data-availability"></a>Adatok rendelkezésre állása
 
-Azure Time Series Insights Gen2 partíciókat és indexeli az optimális lekérdezési teljesítményt. Az adatok elérhetővé válnak mind a meleg (ha engedélyezve), mind a hűtőházi tároló lekérdezéséhez az indexelés után. A betöltött adatok mennyisége és a partíción belüli átviteli sebesség is befolyásolhatja a rendelkezésre állást. Tekintse át az eseményforrás [átviteli sebességére vonatkozó korlátozásokat](./concepts-streaming-ingress-throughput-limits.md) és [ajánlott eljárásokat](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) a legjobb teljesítmény érdekében. Egy késési [riasztást](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) is beállíthat, ha értesítést szeretne kapni, ha a környezete problémákat tapasztal az adatfeldolgozás során.
+Azure Time Series Insights Gen2 partíciókat és indexeli az adatokat az optimális lekérdezési teljesítmény érdekében. Az adatok a meleg (ha engedélyezve) és a hideg tárolóból is lekérdezhetővé válnak az indexelés után. A betöltött adatok mennyisége és a partíciónkénti átviteli sebesség hatással lehet a rendelkezésre állásra. A legjobb teljesítmény érdekében tekintse át az eseményforrás [átviteli](./concepts-streaming-ingress-throughput-limits.md) sebességére vonatkozó korlátozásokat [és](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) ajánlott eljárásokat. Egy késési riasztást is konfigurálhat, hogy értesítést kap, ha a környezetben problémákat tapasztal az adatok feldolgozása során. [](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)
 
 > [!IMPORTANT]
-> Előfordulhat, hogy az adatmennyiség akár 60 másodpercig is eltarthat, amíg az adatmennyiség elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, küldjön egy támogatási jegyet a Azure Portalon keresztül.
+> Akár 60 másodperc is eltelhet, amíg az adatok elérhetővé válnak. Ha 60 másodpercnél nagyobb késést tapasztal, küldjön támogatási jegyet a Azure Portal.
 
 ## <a name="warm-store"></a>Meleg tároló
 
-A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./concepts-query-overview.md)-kon, az [Azure Time Series Insights ÁME explorerben](./concepts-ux-panels.md)vagy az [Power bi-összekötőn](./how-to-connect-power-bi.md)keresztül érhetők el. A meleg áruházbeli lekérdezések ingyenesek, és nincs kvóta, de legfeljebb [30](/rest/api/time-series-insights/reference-api-limits#query-apis---limits) egyidejű kérés van.
+A meleg tárolóban tárolt adatok csak a [Time Series Query](./concepts-query-overview.md)API-kon, a Azure Time Series Insights [TSI Exploreren](./concepts-ux-panels.md)vagy a [Power BI-összekötőn keresztül érhetők el.](./how-to-connect-power-bi.md) A meleg tároló lekérdezései ingyenesek, és nincs kvóta, de az egyidejű kérések száma [legfeljebb 30](/rest/api/time-series-insights/reference-api-limits#query-apis---limits) lehet.
 
-### <a name="warm-store-behavior"></a>Meleg tárolási viselkedés
+### <a name="warm-store-behavior"></a>A meleg tároló viselkedése
 
-* Ha ez a beállítás engedélyezve van, a rendszer a környezetbe áramló összes adatfolyamot átirányítja a meleg tárolóba, függetlenül az esemény időbélyegzőtől. Vegye figyelembe, hogy a streaming betöltési folyamat közel valós idejű folyamatos átvitelhez készült, és a múltbeli események betöltése [nem támogatott](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
-* A megőrzési időtartamot attól függően számítjuk ki, hogy az eseményt a meleg tárolóban indexelték, nem az esemény időbélyegét. Ez azt jelenti, hogy az adatok már nem érhetők el a meleg tárolóban a megőrzési időszak lejárta után, még akkor is, ha az esemény időbélyege a jövőre vonatkozik.
-  * Példa: a 10 napos időjárás-előrejelzést tartalmazó esemény betöltése és indexelése egy 7 napos megőrzési időtartammal konfigurált meleg tárolóban történik. 7 nap elteltével az előrejelzés már nem érhető el a meleg áruházban, de a lekérdezhető a hidegtől.
-* Ha olyan meglévő környezetben engedélyezi a meleg tárolást, amely már rendelkezik a legutóbbi, a hűtőházi tárolóban tárolt adataival, a meleg tároló nem lesz visszatöltve ezekkel az adataival.
-* Ha most engedélyezte a meleg tárolást, és problémákba ütközik a legutóbbi adatai megtekintésével a Explorerben, ideiglenesen válthat a meleg tárolási lekérdezések közül:
+* Ha engedélyezve van, a környezetbe streamelt összes adat a meleg tárolóba lesz irányítva, az esemény időbélyegétől függetlenül. Vegye figyelembe, hogy a streamelési adatbecslési folyamat közel valós idejű streamelésre és előzményesemények be nem átvitele nem [támogatott.](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)
+* A megőrzési idő kiszámítása az esemény meleg tárolóban történt indexelésének ideje alapján történik, nem az esemény időbélyege alapján. Ez azt jelenti, hogy az adatok már nem érhetők el a meleg tárolóban a megőrzési időtartam eltelte után, még akkor sem, ha az esemény időbélyegzője a jövőre vonatkozik.
+  * Példa: egy 10 napos időjárás-előrejelzést tartalmazó esemény egy 7 napos megőrzési időtartammal konfigurált, meleg tárolóba van beállítva és indexelve. Hét nap után az előrejelzés már nem érhető el a meleg tárolóban, de lekérdezhető a hidegtől.
+* Ha olyan meglévő környezetben engedélyezi a meleg tárolást, amely már tartalmaz friss adatokat indexelt a hideg tárolásban, vegye figyelembe, hogy a meleg tároló nem lesz feltöltve az adatokkal.
+* Ha most engedélyezte a meleg tárolót, és problémákat tapasztal a legutóbbi adatok megtekintésekor az Explorerben, ideiglenesen ki- és bekapcsolhatja a tárolók lekérdezéseit:
 
-   [![Meleg lekérdezések letiltása](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+   [![Az meleg lekérdezések letiltása](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
 
-## <a name="cold-store"></a>Hűtőházi tároló
+## <a name="cold-store"></a>Hidegtároló
 
-Ez a szakasz a Azure Time Series Insights Gen2 vonatkozó Azure Storage-adatokat ismerteti.
+Ez a szakasz az Azure Storage 2. generációs Azure Time Series Insights ismerteti.
 
-Az Azure Blob Storage részletes ismertetését olvassa el a [Storage Blobok bemutatása](../storage/blobs/storage-blobs-introduction.md)című cikkből.
+Az Azure Blob Storage részletes ismertetését a [Storage-blobok bemutatásában olvashatja el.](../storage/blobs/storage-blobs-introduction.md)
 
-### <a name="your-cold-storage-account"></a>A hűtőházi Storage-fiók
+### <a name="your-cold-storage-account"></a>A hidegen ázott tárfiókja
 
-Azure Time Series Insights a Gen2 az Azure Storage-fiók minden eseményének két példányát megőrzi. Az egyik másolat a betöltési idő alapján rendezi az eseményeket, így mindig lehetővé teszi az események elérését egy időben rendezett sorrendben. Az idő múlásával Azure Time Series Insights Gen2 is létrehoz egy újraparticionált másolatot az adatokról, így optimalizálva a végrehajtás alatt álló lekérdezéseket.
+Azure Time Series Insights Gen2 legfeljebb két példányt őriz meg az Azure Storage-fiókban az egyes eseményekből. Az egyik példány a behozási idő szerint rendezett eseményeket tárolja, és mindig engedélyezi az eseményekhez való hozzáférést egy időrendbe rendezett sorrendben. Idővel a Azure Time Series Insights Gen2 létrehoz egy újraparticionált másolatot is az adatokról a nagy teljesítményű lekérdezésekhez való optimalizálás érdekében.
 
-Az összes adatait a rendszer határozatlan ideig tárolja az Azure Storage-fiókjában.
+Minden adata határozatlan ideig az Azure Storage-fiókban lesz tárolva.
+
+> [!WARNING]
+> Ne korlátozza a nyilvános internet-hozzáférést egy központra vagy eseményforrásra, Time Series Insights a szükséges kapcsolat megszakad.
 
 #### <a name="writing-and-editing-blobs"></a>Blobok írása és szerkesztése
 
-A lekérdezés teljesítményének és az adatelérhetőségnek a biztosításához ne szerkessze vagy törölje azokat a blobokat, amelyeket Azure Time Series Insights Gen2 hozott létre.
+A lekérdezési teljesítmény és az adatok rendelkezésre állásának biztosítása érdekében ne szerkessze vagy törölje a Gen2 által Azure Time Series Insights blobokat.
 
-#### <a name="accessing-cold-store-data"></a>A hűtőházi adattárolási adatok elérése
+#### <a name="accessing-cold-store-data"></a>Hozzáférés a hidegen tárolt adatokhoz
 
-Az adatoknak a [Azure Time Series Insights Explorer](./concepts-ux-panels.md) és az [idősorozat lekérdezési API](./concepts-query-overview.md)-kkal való elérésén kívül az adatok közvetlenül a hűtőházi tárolóban tárolt Parquet-fájlokból is elérhetők. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
+Az adatoknak a Azure Time Series Insights [Explorerből](./concepts-ux-panels.md) és a [Time Series Query](./concepts-query-overview.md)API-kból való elérése mellett előfordulhat, hogy közvetlenül is hozzá szeretne férni az adatokhoz a ritkán tárolt Parquet-fájlokból. Például olvashatja, átalakíthatja és megtisztíthatja az adatokat egy Jupyter-notebookban, majd a használatával betaníthatja Azure Machine Learning modellét ugyanabban a Spark-munkafolyamatban.
 
-Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Azure Time Series Insights Gen2-adatok tárolására használt fiókhoz. Ezután a Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget az `PT=Time` alább ismertetett mappában található parketta- [fájl formátuma](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/anonymous-read-access-configure.md).
+Ha közvetlenül az Azure Storage-fiókjából fér hozzá az adatokhoz, olvasási hozzáférésre van szüksége ahhoz a fiókhoz, amely a 2. generációs Azure Time Series Insights tárolására szolgál. Ezután a Parquet-fájl létrehozási ideje alapján beolvashatja a kiválasztott adatokat, amelyek a `PT=Time` [Parquet-fájlformátum](#parquet-file-format-and-folder-structure) szakaszban leírt mappában találhatók.  További információ a tárfiók olvasási hozzáférésének engedélyezéséről: A tárfiók erőforrásaihoz való [hozzáférés kezelése.](../storage/blobs/anonymous-read-access-configure.md)
 
 #### <a name="data-deletion"></a>Adattörlés
 
-Ne törölje a Azure Time Series Insights Gen2-fájljait. A kapcsolódó adatok csak Azure Time Series Insights Gen2 belül kezelhetők.
+A Gen2-Azure Time Series Insights ne törölje. A kapcsolódó adatok kezelése csak a Gen2 Azure Time Series Insights belülről.
 
-### <a name="parquet-file-format-and-folder-structure"></a>A parketta fájlformátuma és a mappa szerkezete
+### <a name="parquet-file-format-and-folder-structure"></a>A Parquet fájlformátuma és mappastruktúrája
 
-A Parquet egy nyílt forráskódú, oszlopos fájlformátum, amely hatékony tárolást és teljesítményt nyújt. Azure Time Series Insights a Gen2 a parketta használatával engedélyezi az idősoros azonosító-alapú lekérdezési teljesítményt a skálán.
+A Parquet egy nyílt forráskódú oszlopos fájlformátum, amelyet hatékony tárolásra és teljesítményre terveztek. Azure Time Series Insights Gen2 a Parquet használatával engedélyezi a Time Series ID-alapú lekérdezési teljesítményt nagy méretekben.
 
-A Parquet fájltípussal kapcsolatos további információkért olvassa el a [parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
+A Parquet-fájltípussal kapcsolatos további információkért olvassa el a [Parquet dokumentációját.](https://parquet.apache.org/documentation/latest/)
 
-Azure Time Series Insights Gen2 az alábbi módon tárolja az adatai másolatait:
+Azure Time Series Insights Gen2 a következőképpen tárolja az adatok másolatát:
 
-* Az első, a kezdeti másolat a betöltési idő alapján van particionálva, és nagyjából megérkezésük sorrendjében tárolja az adatot. Ez az adat a `PT=Time` mappában található:
+* Az első, kezdeti másolat a beérkezés ideje szerint van particionálva, és nagyjából érkezési sorrendben tárolja az adatokat. Ezek az adatok a következő mappában `PT=Time` találhatók:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* A második, újraparticionált másolat az idősorozat-azonosítók szerint van csoportosítva, és a `PT=TsId` mappában található:
+* A második, újraparticionált másolat idősor-adatok szerint van csoportosítva, és a mappában `PT=TsId` található:
 
   `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
 
-A mappában lévő Blobok neveinek timestamp a `PT=Time` Azure Time Series Insights Gen2, és nem az események időbélyege.
+A mappában lévő blobnevek időbélyegzői nem az események időbélyegének, Azure Time Series Insights Gen2-nek, és nem az adatok érkezési `PT=Time` idejét egyezik.
 
-A mappában lévő adatok a `PT=TsId` lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus. Az újraparticionálás során előfordulhat, hogy egyes események több blobban is szerepelnek. A mappában lévő Blobok elnevezése nem garantált, hogy változatlan maradjon.
+A mappában lévő adatok idővel lekérdezésre lesznek optimalizálva, `PT=TsId` és nem statikusak. Az újraparticionáció során előfordulhat, hogy egyes események több blobban is jelen vannak. Az ebben a mappában lévő blobok elnevezése nem garantált, hogy változatlan marad.
 
-Általánosságban elmondható, hogy ha közvetlenül a Parquet-fájlokon keresztül fér hozzá az adataihoz, használja a `PT=Time` mappát.  A jövőbeli funkciók lehetővé teszik a mappa hatékony elérését `PT=TsId` .
+Ha az adatokat általában közvetlenül Parquet-fájlokon keresztül kell elérnie, használja a `PT=Time` mappát.  A jövőbeli funkciók lehetővé teszik a mappa hatékony `PT=TsId` hozzáférését.
 
 > [!NOTE]
 >
-> * `<YYYY>` leképezi a négy számjegyű év ábrázolását.
-> * `<MM>` leképezi a kétjegyű hónapok ábrázolását.
-> * `<YYYYMMDDHHMMSSfff>` leképezi a kétjegyű (), kétjegyű hónap (), kétjegyű (), kétjegyű (), kétjegyű (), `YYYY` `MM` `DD` `HH` `MM` kétszámjegyű második ( `SS` ) és három számjegyű ezredmásodperc ( `fff` ) közötti időbélyegzőt ábrázoló ábrázolást.
+> * `<YYYY>` A egy négyjegyű évképre van leképezve.
+> * `<MM>` A egy kétjegyű havi megjelenítésre van leképezve.
+> * `<YYYYMMDDHHMMSSfff>` egy időbélyegző-ábrázolás négyjegyű évszámmal ( ), kétjegyű hónappal ( ), két számjegyű nap ( ), két számjegyű óra ( ), két számjegyű perc ( ), két számjegyű másodperc ( ), és három számjegyű `YYYY` `MM` `DD` `HH` `MM` `SS` ezredmásodperc ( `fff` ).
 
-Azure Time Series Insights Gen2-események a következő módon vannak leképezve a parketta-fájl tartalmára:
+Azure Time Series Insights Gen2-események a Következőképpen vannak leképezve a Parquet-fájlok tartalmára:
 
 * Minden esemény egyetlen sorra van leképezve.
-* Minden sor tartalmazza az **időbélyegző** oszlopot egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null értékű. Alapértelmezés szerint az **Event várólistán lévő idő** , ha nincs megadva az időbélyegző tulajdonság az eseményforrás számára. A tárolt időbélyegző mindig UTC szerint van.
-* Minden sor tartalmazza a Azure Time Series Insights Gen2-környezet létrehozásakor meghatározott idősoros azonosító (TSID) oszlop (oka) t. A TSID-tulajdonság neve tartalmazza az `_string` utótagot.
-* A telemetria-adatként elküldett összes többi tulajdonság a `_bool` tulajdonság típusától függően (logikai), `_datetime` (időbélyegző), ( `_long` hosszú), `_double` (Double), ( `_string` String) vagy `dynamic` (dinamikus) oszlopokra van leképezve.  További információt a [támogatott adattípusokról](./concepts-supported-data-types.md)szóló témakörben olvashat.
-* Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
+* Minden sor tartalmazza az **időbélyegző oszlopot** egy esemény-időbélyeggel. Az időbélyeg-tulajdonság soha nem null értékű. Ha az időbélyeg tulajdonság nincs megadva az eseményforrásban, az alapértelmezett érték az eseménysorba állítva.  A tárolt időbélyeg mindig UTC időzónában van megadva.
+* Minden sor tartalmazza a 2. generációs Azure Time Series Insights létrehozásakor meghatározott Time Series ID (TSID) oszlopokat. A TSID tulajdonság neve tartalmazza az `_string` utótagot.
+* A telemetriai adatokként küldött többi tulajdonság a tulajdonság típusától függően olyan oszlopnevekre van leképezve, amelyek végződnek `_bool` `_datetime` (logikai), (időbélyeg), `_long` (hosszú), `_double` (dupla), `_string` (sztring) vagy (dinamikus) végződő `dynamic` oszlopnevekre.  További információ: Támogatott [adattípusok.](./concepts-supported-data-types.md)
+* Ez a leképezési séma a fájlformátum első verziójára vonatkozik, amely **V=1** néven hivatkozik rá, és az azonos nevű alapmappában van tárolva. A funkció fejlődésével ez a leképezési séma változhat, és a hivatkozás neve növekszik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az [adatmodellezésről](./concepts-model-overview.md).
+* További információ az [adatmodellezésről:](./concepts-model-overview.md).
 
-* Tervezze meg [Azure Time Series Insights Gen2-környezetét](./how-to-plan-your-environment.md).
+* Tervezze meg [Azure Time Series Insights Gen2-környezetet.](./how-to-plan-your-environment.md)

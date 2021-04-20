@@ -1,0 +1,469 @@
+### YamlMime:FAQ
+metadata:
+  title: Cost Management + Billing kérdések (GYIK)
+  titleSuffix: Azure Cost Management + Billing
+  description: Gyakori kérdések és válaszok.
+  author: bandersmsft
+  ms.reviewer: adwise
+  ms.service: cost-management-billing
+  ms.topic: conceptual
+  ms.date: 04/15/2021
+  ms.author: banders
+  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
+  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/19/2021
+  ms.locfileid: "107728624"
+title: Azure Cost Management + Billing kérdések (GYIK)
+summary: ''
+sections:
+- name: Általános számlázási kérdések
+  questions:
+  - question: Hogyan az Azure számlázási ügyfélszolgálatához?
+    answer: >
+      Hozzon létre egy támogatási kérést a [Azure Portal.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+  - question: Hogyan a számlámat?
+    answer: >
+      Lásd: [Az Azure-előfizetés esedékességére vonatkozó korábbi egyenleg feloldása.](manage/resolve-past-due-balance.md)
+  - question: Hogyan a számlát?
+    answer: >
+      Lásd: View and download your Microsoft Azure invoice (Számla [megtekintése Microsoft Azure letöltése).](understand/download-azure-invoice.md)
+  - question: Miért kell díjat fizetni? Ingyenes Azure-fiókkal vagyok.
+    answer: >
+      Az ingyenes szolgáltatásokra korlátozások vonatkoznak. Valószínűleg túllépte az ingyenes korlátokat. Lásd: [Díjak elkerülése az ingyenes Azure-fiókkal.](manage/avoid-charges-free-account.md)
+  - question: Hogyan a számlámat?
+    answer: >
+      Ha az Azure-előfizetését az Azure webhelyén keresztül vásárolta meg, tekintse meg [az egyéni Azure-előfizetési számla áttekintésével kapcsolatos weblapot.](understand/review-individual-bill.md)
+  - question: Hogyan gyorsan látni a díjakat?
+    answer: >
+      Lásd: [Költségek feltárása és elemzése költségelemzéssel.](costs/quick-acm-cost-analysis.md)
+  - question: Váratlan díjakat kell fizetni. Hogyan érti ezeket?
+    answer: >
+      Lásd: [Váratlan költségek elemzése.](understand/analyze-unexpected-charges.md)
+  - question: Hogyan Azure-előfizetésemet?
+    answer: >
+      Lásd: [Az Azure-előfizetés lemondása.](manage/cancel-azure-subscription.md)
+- name: Cost Management kérdések
+  questions:
+  - question: Hogyan engedélyezem a hozzáférést a költségek megtekintéséhez?
+    answer: >
+      Lásd: [Hozzáférés hozzárendelése Cost Management adatokhoz.](costs/assign-access-acm-data.md)
+  - question: Milyen partneri ajánlatokat támogatnak Cost Management?
+    answer: >
+      Cost Management olyan partnerek számára érhető el, akiknek azure-csomagja van. A szabályzatbeállítás engedélyezésével a partnerek engedélyezhetik az ügyfeleik számára a költséginformációk megtekintését. További információ: [Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással](costs/get-started-partners.md). A klasszikus CSP-t nem támogatja a Cost Management.
+  - question: Hogyan láthatom az előrejel jelzett költségeket?
+    answer: >
+      Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Management** > **Költségelemzés** lehetőséget. Az alapértelmezett nézetben a felső diagramon található egy tényleges/amortizált költség és egy előrejelzett költség szakasz. A diagramon a sötétebb színű terület mutatja a tényleges/amortizált költséget. A világosabb terület az előrejelzett költséget mutatja.
+  - question: Hogyan azure-szolgáltatásonkénti költséglebontást?
+    answer: >
+      A Azure Portal navigáljon a **Cost Management + Billing**  >  **Cost Management**  >  **elemzéséhez.** Válassza a **Díj szolgáltatás szerint** elemet, majd végezze el a csoportosítást **Szolgáltatásszint** szerint. Módosítsa a nézetet a következőre: **Táblázat**.
+  - question: Hogyan a számlám költségeit?
+    answer: >
+      A Azure Portal keresse meg az elemzniált számlához társított hatókör Költségelemzés elemét. Válassza a **Számla részletei** nézetet. A számla részletei a számlán látható módon mutatják be a díjakat.
+  - question: Hogyan egy címke költségeit?
+    answer: >
+      Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Management** > **Költségelemzés** lehetőséget. Válassza ki a címkéhez tartozó **Csoportosítás szempont** elemet. A címkék nem érhetők el a vásárlásokhoz, az előfizetésekhez nem társított bérlői erőforrásokhoz, az erőforráscsoporthoz nem üzembe helyezett előfizetési erőforrásokhoz vagy a klasszikus erőforrásokhoz. Egyes szolgáltatások nem tartalmaznak címkéket a használati adatokban. További információ: [Címketámogatás Azure-erőforrásokhoz.](../azure-resource-manager/management/tag-support.md)
+  - question: Hogyan ea-regisztrációm költségeit?
+    answer: >
+      A Azure Portal lépjen az Áttekintés **Cost Management + Billing** > lapra. Válassza a **Lebontás** hivatkozást.
+  - question: Hogyan tudom megtekinteni az AWS-költségeim Cost Management?
+    answer: >
+      Lásd: Az AWS költség- és használati [jelentés integrációjának beállítása és konfigurálása.](costs/aws-integration-set-up-configure.md)
+  - question: Hogyan költségvetést hoz létre?
+    answer: >
+      Lásd az [Azure-költségvetések létrehozása és kezelése oktatóanyagot.](costs/tutorial-acm-create-budgets.md)
+  - question: Hogyan egy adott szűrő vagy címke költségvetését?
+    answer: >
+      A Költségvetés létrehozása ablakban válassza ki a létrehozni kívánt költségvetés hatókörét. A **Szűrő hozzáadása lehetőséget** választva kiválaszthatja a költségvetéshez hozzáadni kívánt szűrőket vagy címkéket. További információkért lásd az Azure-költségvetések [létrehozása és kezelése oktatóanyagot.](costs/tutorial-acm-create-budgets.md#create-a-budget-in-the-azure-portal)
+  - question: Hogyan költségkezelési adatokat?
+    answer: >
+      Lásd az [exportált adatok létrehozása és kezelése oktatóanyagot.](costs/tutorial-export-acm-data.md)
+  - question: Hogyan exportálni a költségkezelési adatokat partnerként, ha nem rendelkezik Azure-előfizetéssel a bérlőmben?
+    answer: >
+      Lásd a [költségadatok Exportálása Azure Storage-fiók SAS-kulcsával cikket.](costs/export-cost-data-storage-account-sas-key.md)
+  - question: CSP-partnerként támogatott Cost Management az Azure-csomag klasszikus CSP-ajánlata?
+    answer: "A klasszikus CSP-ügyfelek új kereskedelmi felhasználói [](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)élményű Azure-csomagra való áttérésének tervei miatt a Azure Cost Management csak az Azure-csomag közvetlen partnerei és közvetett szolgáltatói számára lesz elérhető. \n"
+  - question: CSP-partnerként (globális rendszergazdaként) hogyan engedélyezhetim a költség láthatósági szabályzatát az előfizetési hatókörben a végfelhasználók és az Azure-csomag viszonteladói számára?
+    answer: >
+      Az [Előfizetések Cost Management](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions) engedélyezése az ügyfélbérlői előfizetések számára a költségek láthatósági szabályzatának az előfizetés Azure RBAC-felhasználói számára kiskereskedelmi díjszabással való engedélyezéséhez. Egy közvetlen partner vagy egy közvetett szolgáltató globális rendszergazdájaként a szabályzattól függetlenül megtekintheti az ügyfélbérlő költségeit.
+  - question: Hogyan lehet költségsértő díjat fizetni?
+    answer: >
+      A költségelemzésben lefoglalhatja Cost Management előfizetések, erőforráscsoportok vagy címkék között szétosztott költségeket. További információt az [Azure](costs/allocate-costs.md) költségfelosztási szabályok létrehozása és kezelése cikkben talál.
+  - question: Használhatom a Power BI a költségek megtekintéséhez?
+    answer: >
+      Igen, a [Power BI Desktop használatával csatlakozhat Cost Management](/power-bi/connect-data/desktop-connect-azure-cost-management) adatokhoz, vagy használhatja a Cost Management Power BI App for [EA-t.](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)
+  - question: Melyek a támogatott ajánlattípusok a Cost Management?
+    answer: >
+      Lásd: [Támogatott Microsoft Azure ajánlatok.](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)
+  - question: Milyen hamar látom a költség- és használati adatokat a Azure Cost Management?
+    answer: >
+      Lásd: [Költség- és használati adatok frissítése és megőrzése.](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)
+  - question: Megtalálom az összes költséggel kapcsolatos információt a Azure Cost Management?
+    answer: >
+      Lásd [a következőben található Cost Management.](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)
+  - question: Bele vannak-e osztva a költségek a költségvetésekbe és az előrejelzési nézetekbe?
+    answer: >
+      <a name="budgets-forecast"></a>Igen. A költségvetések és az előrejelzések támogatják a költségfelosztást, és szerepelnek bennük a felosztott költségek. A költségvetési és előrejelzési nézetekben megjelennek a költségfelosztási szabályoknak megfelelően konfigurált, hozzájuk rendelt költségek.
+  - question: Mi történik egy költségfelosztási szabály törlésekor?
+    answer: >
+      <a name="delete-rule"></a>Egy költségfelosztási szabály törlésekor az aktuális számlázási hónap minden, a célokhoz hozzárendelt, le nem zárt költsége törlődik. Ha a költségfelosztási szabály több hónapon át érvényben volt, a korábbi hónapok költségfelosztási előzményadatai a költségfelosztási szabály beállításainak megfelelő állapotban maradnak.
+  - question: Miért szükséges egy regisztrációs rendszergazda vagy számlázásifiók-rendszergazda a költségfelosztási szabályok létrehozásához?
+    answer: >
+      <a name="why-admin"></a>A költségfelosztási szabályok létrehozása a beléptetési hatókörben (Nagyvállalati Szerződés esetén) vagy a számlázási fiók hatókörében (Microsoft Ügyfélszerződés esetén) történik. Ezekben a hatókörökben csak számlázási rendszergazdai jogosultsággal lehet módosításokat végrehajtani.
+  - question: Miért van a költségfelosztási források és célok szabályonként 25-re korlátozva?
+    answer: >
+      <a name="source-target-rule-limit"></a>Ez egy előzetes verziójú korlátozás a költségfelosztási funkció jó teljesítményének és skálázhatóságának biztosítása érdekében. A korlátokat valószínűleg növelni fogjuk vagy eltávolítjuk, amikor a költségfelosztási funkció az általánosan elérhető (GA) verzióra tér át.
+  - question: Mi történik, ha a költségfelosztási szabályok (források/célok) között átfedés van?
+    answer: >
+      <a name="rule-overlap"></a>Nem javasolt olyan szabályokat létrehozni, amelyek forrásai vagy céljai átfedik egymást. A költségfelosztási szabályok alkalmazása létrehozásuk időpontja szerint történik, vagyis ha a költségfelosztási szabályok között átfedés van, a legkorábban létrehozott felosztási szabály élvez elsőbbséget.
+- name: Cost Management + Billing API-val kapcsolatos kérdések
+  questions:
+  - question: Mikor lesznek elavultak az EA Reporting API-k?
+    answer: >
+      A Cost Management + Billing még nem jelentett be elalasztó ütemtervet az API-khoz. Az API-k már nem fejlesztés alatt állnak. Javasoljuk, hogy tervezze meg az esetlegesen szükséges munkát, hogy el tudja őket milaniálni.
+  - question: Hogyan EA Reporting API-król, és milyen új API-kat kell hívnom?
+    answer: >
+      Lásd: [Miigrate from EA reporting to Azure Resource Manager API-k (Miigrate from EA reporting to Azure Resource Manager API-k).](costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md)
+  - question: Miért kapok Használati adatok API-időtúllépéseket?
+    answer: >
+      A Usage Details (Használati adatok) adatkészlet gyakran nagyon nagy (több GBs vagy több méretes) lehet. Minél nagyobb a kért adatkészlet mérete, annál hosszabb ideig tart az adatok fordítása, mielőtt elküldeik Önnek. A késés miatt az olyan szinkron API-megoldások, mint a lapszámozott [JSON Usage Details API](/rest/api/consumption/usagedetails/list) időtúllépést okozhatnak az adatok megszaporodása előtt. Ha időtúllépésekbe ütközik, vagy olyan folyamatokkal találkozik, amelyek gyakran lekérnek nagy mennyiségű használati adatot, tekintse meg a nagyméretű használati adatkészletek ismétlődő lekérését az Exports (Exportálások) [nézettel.](costs/ingest-azure-usage-at-scale.md)
+  - question: Hogyan AZ EA Reporting API-król a Microsoft Ügyfélszerződés API-kra?
+    answer: >
+      Lásd: [Migrate from Nagyvállalati Szerződés to Microsoft Ügyfélszerződés APIs (Áttelepítés Nagyvállalati Szerződés API-kba).](costs/migrate-cost-management-api.md)
+- name: Azure Reservations – kérdések
+  questions:
+  - question: Hogyan a foglalási díjakat?
+    answer: >
+      Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Management** > **Költségelemzés** lehetőséget. Adjon hozzá egy szűrőt a **Foglalás díjszabási modellhez**. A Hatókör alatt és a megjelenő költség mellett válassza a  lefelé mutató nyilat, majd válassza a Tényleges költség vagy az **Amortizált költség metrika** lehetőséget.
+  - question: Hogyan a foglalási megtakarításokat?
+    answer: >
+      A megtakarítások többféleképpen is megtekinthetők.
+
+      -  Ha Ön EA-ügyfél, használhatja a Azure Cost Management Power BI App for EA-t az RI Savings jelentés [megtekintéséhez.](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)
+
+      -  A Használat + díjak adatfájllal manuálisan [meghatározhatja a foglalási megtakarításokat.](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)
+  - question: Hogyan a foglalás kihasználatlan voltát?
+    answer: >
+      Jelentkezzen be az Azure Portalra. Ezután válassza a Minden szolgáltatás > **Foglalások lehetőséget,** és jegyezze fel a foglalás **Kihasználtság (%)** beállítását. Válasszon ki egy foglalást. Tekintse át a foglalás kihasználtságának időre vetített trendjét. További információkért lásd a [foglaláshasználat megtekintését a Azure Portal.](reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json#view-reservation-use-in-the-azure-portal) A fel nem [használt foglalási költségeket a költségelemzésben is megtekintheti.](costs/cost-analysis-common-uses.md#view-unused-ri-costs-in-cost-analysis)
+  - question: Hogyan találhatom meg a foglalási költségeket, hogy vissza tudjam fizetni őket?
+    answer: >
+      Részletes [információkért lásd az Azure-foglalások](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json) költségeinek visszafoglalását.
+  - question: Hogyan tudom megtekinteni a spot virtuális gépek költségeit?
+    answer: >
+      Lásd: [Spot virtuális gépek díjának megtekintése.](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)
+  - question: Hogyan a foglalás részleteiről szóló jelentést?
+    answer: >
+      A foglalás részleteiről szóló jelentés létrehozásához olvassa el az API [dokumentációját.](/rest/api/cost-management/generatereservationdetailsreport)
+- name: Az Azure Nagyvállalati Szerződés (EA) és az EA Portallal kapcsolatos kérdések
+  questions:
+  - question: Hogyan SPN-engedélyeket a regisztrációmhoz?
+    answer: >
+      Lásd: [Szerepkörök hozzárendelése EA SPN-hez.](manage/assign-roles-azure-service-principals.md)
+  - question: Miért nem kapott aktiválási e-mailt?
+    answer: >
+      Az Azure EA Portal aktiválási e-mailje a *waep@microsoft.com* címről érkezik. Ha nem kapott aktiválási e-mailt, ellenőrizze a levélszemét mappát. Az üzenet tárgya a következő: _Invitation to View/Manage the Microsoft Azure service_subject_ (Meghívás a Microsoft Azure-szolgáltatás megtekintésére/kezelésére). Minden újonnan hozzáadott nagyvállalati rendszergazda megkapja ezt az e-mailt.
+
+
+      Ha biztos benne, hogy Ön vállalati rendszergazdaként lett beállítva, nem kell megvárnia az aktiválási e-mail megérkezését, hogy bejelentkezhessen az Azure EA Portalra. A https://ea.azure.com címen bejelentkezhet a munkahelyi, iskolai vagy Microsoft-fiókjához tartozó e-mail-címével és jelszavával.
+  - question: Hogyan ea-rendszergazdát szeretne hozzáadni a regisztrációhoz?
+    answer: >
+      Az új vállalati rendszergazdát meglévő vállalati rendszergazdák adhatják hozzá. Ha Ön az EA-rendszergazda, jelentkezzen be az EA Portalra, majd kattintson a **Kezelés** > **+ Rendszergazda hozzáadása** gombra a jobb felső sarokban az új EA-rendszergazda hozzáadásához. A felhasználók hozzáadásához győződjön meg arról, hogy ismeri az e-mail-címüket és az előnyben részesített bejelentkezési módszerüket (például munkahelyi/iskolai hitelesítés vagy Microsoft Live ID).
+
+
+      Ha nem Ön az EA-rendszergazda, forduljon EA-rendszergazdáihoz, és kérvényezze, hogy adják hozzá Önt a regisztrációhoz. Miután hozzáadták Önt a regisztrációhoz, aktiválási e-mailt fog kapni.
+
+
+      Ha azonban az EA-rendszergazdák nem tudnak segítséget nyújtani, mi is hozzáadhatjuk Önt a regisztrációhoz a nevükben, ha megadja az alábbi adatokat:
+
+      - regisztrációs szám.
+
+      - a hozzáadni kívánt e-mail-cím és a hitelesítés típusa (munkahelyi/iskolai/MS).
+
+      - e-mailes jóváhagyás az EA-rendszergazdától.
+
+
+      Ha minden szükséges információval rendelkezik, küldjön be egy kérelmet a következő helyen: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)
+  - question: Hogyan a regisztráció első EA-rendszergazdája?
+    answer: >
+      Az első EA-rendszergazda a mennyiségilicenc-szolgáltatási központban (VLSC) frissíthető az értesítési kapcsolattartó és az online rendszergazda portálon való frissítésével. Az EA Portal frissítése körülbelül 24 órát vesz igénybe. A frissítést követően az új EA-rendszergazda aktiválási e-mailt fog kapni.
+
+
+      Ha nincs hozzáférése a VLSC portálhoz, vagy ha az elsődleges vállalti rendszergazda már nem tudja kezelni a regisztrációt és nincs hozzáférése az EA Portalhoz, kérvényezze a frissítést a [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) webhelyen az alábbi adatok megadásával:
+
+      - Regisztrációs szám
+
+      - A hozzáadni kívánt e-mail-cím és a hitelesítés típusa (munkahelyi/iskolai/MS)
+
+      - Az elsődleges EA-rendszergazda módosításának oka
+
+      - E-mailes jóváhagyás az elsődleges EA-rendszergazdától
+  - question: A jelenlegi EA-rendszergazda már nem a vállalattal van. Mit tegyek?
+    answer: >
+      Egy EA-regisztrációhoz több EA-rendszergazda is tartozhat, így egy másik EA-rendszergazdával is felveheti a kapcsolatot, hogy új EA-rendszergazdát, fióktulajdonost vagy részlegszintű rendszergazdát adjon hozzá. Ha azonban nem biztos abban, hogy ki az EA-rendszergazda, vagy nincs elérhető EA-rendszergazda a regisztrációban, vegye fel velünk a kapcsolatot a következő adatok megadásával:
+
+      - Regisztrációs szám
+
+      - A hozzáadni kívánt e-mail-cím és a hitelesítés típusa (munkahelyi/iskolai/MS)
+
+      - Információ megadása, miszerint a jelenlegi EA-rendszergazda már nem dolgozik a cégnél
+
+
+      Ne feledje, hogy ha a regisztrációhoz más EA-rendszergazdák is tartoznak, velük is fel fogjuk venni a kapcsolatot, hogy kérvényezzük a regisztrációt érintő adminisztratív jellegű változtatások jóváhagyását.
+  - question: A regisztráció állapota függőben van. Hogyan aktiválhatom a regisztrációt?
+    answer: >
+      Ha az elsődleges EA-rendszergazda még nem lépett be a regisztrációba, akkor az „Függőben” állapotú lesz. Ha Ön az EA-rendszergazda, jelentkezzen be az Azure EA Portalra. Előfordulhat, hogy a regisztrációs számokat megjelenítő kezdőlapon nem találja a függőben levő regisztrációt. Törölje az EA Portal jobb felső sarkában található „aktív” jelölőnégyzet jelölését. Ezután megjelenik a függőben lévő regisztráció. Kattintson a regisztrációra az adatok eléréséhez, majd a regisztráció Kezelés lapjának elérése után az állapot „Függőben” értékről „Aktív” értékre módosul.
+  - question: Miért maradt a fiók „Függőben” állapotban?
+    answer: >
+      Amikor az új fióktulajdonosokat (AO) először hozzáadják a regisztrációhoz, mindig „Függő” állapot jelenik meg náluk. Az aktiválási üdvözlő e-mail fogadása után az AO bejelentkezhet a fiókja aktiválásához. A bejelentkezéssel a fiók állapota „Függő” értékről „Aktív” értékre módosul.
+  - question: Miért jelenik meg hiba az Azure EA Portalra való bejelentkezve?
+    answer: "Az Azure EA Portalon a bejelentkezéskor megjelenő hibaüzenetnek több oka is lehet. Kövesse az alábbi hibaelhárítási lépéseket:\n\n 1. A következő webhelyen győződjön meg róla, hogy az EA Portalra vonatkozó megfelelő URL-címet használja: [https://ea.azure.com](https://ea.azure.com).\n 1. Állapítsa meg, hogy az Azure EA Portalhoz munkahelyi vagy iskolai fiókkal, illetve Microsoft Live ID-vel regisztrált. Ha a munkahelyi fiókját használja, adja meg munkahelyi e-mail-címét és jelszavát. Ha a Microsoft Live ID-t használja, adja meg a Live ID-hez tartozó e-mail-címét és jelszavát. Ha elfelejtette a Microsoft Live ID-hoz tartozó jelszavát, kérje annak visszaállítását a következő webhelyen: [https://account.live.com/password/reset](https://account.live.com/password/reset).\n 1. Javasoljuk, hogy privát böngészőt használjon a bejelentkezéshez, hogy megakadályozza a korábbi vagy a jelenlegi munkamenetek cookie-jainak és gyorsítótárazott adatainak megtartását. Törölje a gyorsítótárat, és használjon privát vagy inkognitó módú ablakot a [https://ea.azure.com](https://ea.azure.com) webhely megnyitásához.\n 1. A Microsoft-fiókja használatakor megjelenő Érvénytelen felhasználó hiba azért jelenhet meg, mert több Microsoft-fiókkal rendelkezik, és nem az az elsődleges alias, amelybe megpróbál bejelentkezni. Az elsődleges alias ellenőrzéséhez látogasson el az account.live.com webhelyre:\n     - Nyissa meg a „Saját adatok” > „Bejelentkezési e-mail-cím vagy telefonszám kezelése” oldalt.\n     - A képernyőn megjelenő útmutatást követve ellenőrizze a másodlagos e-mail-címet, és igényeljen egy kódot a bizalmas információk eléréséhez.\n     - Adja meg a biztonsági kódot.\n     - Ha később szeretné beállítani a kétlépéses hitelesítést, válassza a „Beállítás később” lehetőséget.\n     - Ezután megjelenik a „Fiók aliasainak kezelése” oldal, ahol megtekintheti a fiókhoz tartozó aliasokat. Ellenőrizze, hogy az elsődleges aliast használja-e az Azure EA Portalra történő bejelentkezéshez. Ha nem, beállíthatja elsődleges aliasaként, vagy használhatja az elsődleges aliasát az EA Portalra való bejelentkezéshez.\n \n Ha a fenti hibaelhárítási lépésekkel sem sikerült megoldani a problémát, küldjön be egy kérelmet a [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) webhelyen a következő információk megadásával:\n   - A használt böngészők és azok verziója.\n   - A hibaüzenet képernyőképe.\n   - A hibát jelző oldal URL-címe.  \n   - A hiba előfordulásának dátuma, időpontja és időzónája.\n\n- Emellett segíthet, ha egy naplófájlt is beszerez. A következő lépéseket végrehajtva rögzítheti a hálózat nyomon követési adatait:\n\n1. Nyissa meg az Internet Explorert.\n1. Nyomja meg az F12 billentyűt, amely megnyit egy mezőt az IE alsó részén.\n1. Válassza a **Hálózat** lapot.\n1. Kattintson a **Rögzítés megkezdése** lehetőségre.\n1. Hajtsa végre a hibát okozó műveletet.\n1. A hiba megjelenése után kattintson a **Rögzítés leállítása** gombra.\n1. Mentse a fájlt, majd csatolja az adatokat a támogatási kéréshez.\n1. Győződjön meg arról, hogy a regisztrációja számát és az e-mail-címét is megadja a támogatási kérésben.\n"
+  - question: Mi a különbség a munkahelyi/iskolai fiók és a Microsoft-fiók között?
+    answer: >
+      **Microsoft-fiók:** Olyan fiókok, amelyek a Live ID-hoz lettek társítva a következő webhelyen: [https://signup.live.com](https://signup.live.com).
+
+
+      **Munkahelyi/iskolai fiók:** Csak olyan szervezetek számára érhető el, amelyek felhőbeli összevonással telepítették az Active Directoryt, és amelyek esetében az összes fiók egyetlen bérlőn található. A felhasználók akkor adhatóak hozzá munkahelyi vagy iskolai hitelesítési módszerrel, ha a szervezet belső Active Directoryja a felhőben van összevonva.
+
+
+      2016. szeptemberétől a Microsoft nem engedélyezi a munkahelyi vagy iskolai e-mail-címek Microsoft-fiókokként történő regisztrációját. További részletekért tekintse meg a következő anyagokat: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
+
+
+      Ha a szervezet nincs összevonva a felhőben, akkor nem fogja tudni használni a munkahelyi vagy iskolai e-mail-címét. Ehelyett regisztráljon vagy hozzon létre egy új e-mail-címet, és regisztrálja Microsoft-fiókként.
+  - question: Elfelejtettem az Azure EA Portal jelszavamat. Mit tegyek?
+    answer: >
+      Ha elfelejtette a Microsoft Live ID-hoz tartozó jelszavát, kérje annak visszaállítását a következő webhelyen: [https://account.live.com/password/reset](https://account.live.com/password/reset).
+
+
+      Ha elfelejtette a munkahelyi jelszavát, forduljon a vállalat rendszergazdájához.
+  - question: Van egy érvényes munkahelyi vagy iskolai fiókom. Miért nem tudom hozzáadni az EA Portalhoz?
+    answer: >
+      Ha más bérlőhöz tartozó munkahelyi vagy iskolai fiókkal rendelkezik, módosítsa az engedélyezési szintet a regisztráció részleteit tartalmazó oldalon „Munkahelyi vagy iskolai fiókok több bérlőn” értékre. Ezután hozzá fogja tudni adni a fiókot.
+  - question: Véletlenül társítottam a meglévő Azure-fiókot az Azure EA-regisztrációval. Ennek eredményeképpen elveszítettem a havi kreditet. Vissza tudom szerezni a havi kreditjeimet?
+    answer: >
+      Ha ugyanazokkal a hitelesítő adatokkal jelentkezett be az Azure EA-fiók tulajdonosaként, mint amikkel a Visual Studio-előfizetésébe szokott, a következő műveletek valamelyikével helyreállíthatja a Visual Studio-előfizetés Azure-előnyeit:
+
+
+      - Távolítsa el a fióktulajdonosát az Azure Enterprise portálról a kapcsolódó Azure-előfizetések eltávolítása vagy áthelyezése után. Ezután regisztráljon újból a Visual Studio Azure-előnyeire.
+
+      - Törölje a Visual Studio-előfizetőt a felügyeleti webhelyen a VLSC-ben, majd rendelje hozzá újra az előfizetést egy eltérő hitelesítési adatokkal rendelkező fiókhoz. Ezután regisztráljon újból a Visual Studio Azure-előnyeire.
+  - question: Milyen típusú előfizetést kell létrehoznom?
+    answer: >
+      Az Azure Enterprise portál két előfizetés-típust kínál a vállalati ügyfelek számára:
+
+
+      - A Microsoft Azure Enterprise a következőkhöz ideális:
+
+      - Minden éles használat
+
+      - A legjobb árak az infrastruktúrakiadások alapján
+
+
+      Bővebb információkért [lépjen kapcsolatba az Azure értékesítési csapatával](https://azure.microsoft.com/pricing/enterprise-agreement/).
+
+
+      - Az Enterprise Dev/Test a következőkhöz ideális:
+
+      - Minden, csapatban zajló fejlesztési/tesztelési számítási feladat
+
+      - A közepestől a nagy méretűig terjedő egyéni fejlesztési/tesztelési számítási feladatok
+
+      - Hozzáférés különleges MSDN-lemezképekhez és kedvezményes szolgáltatási díjakhoz
+
+
+      Bővebb információért lásd az [Enterprise Dev/Test ajánlatot](https://azure.microsoft.com/offers/ms-azr-0148p/).
+  - question: Az előfizetésem neve megegyezik az ajánlat nevével. Módosítsam az előfizetés nevét a vállalatom számára jelentéssel bíró névre?
+    answer: >
+      A létrehozott előfizetések alapértelmezés szerint a kiválasztott ajánlattípus nevét kapják. Javasoljuk, hogy módosítsa az előfizetés nevét olyan névre, amellyel könnyebben követheti nyomon az előfizetést.
+
+
+      A név módosítása:
+
+
+      1. Jelentkezzen be itt: [https://account.windowsazure.com](https://account.windowsazure.com).
+
+      1. Válassza ki az előfizetések listáját.
+
+      1. Válassza ki a módosítani kívánt előfizetést.
+
+      1. Válassza az **Előfizetés kezelése** ikont.
+
+      1. Szerkessze az előfizetés adatait.
+  - question: Hogyan követhetem nyomon a felmerült költségeket költséghely alapján?
+    answer: >
+      A költség költséghely alapján történő nyomon követéséhez a következő szintek egyikén meg kell adnia egy költséghelyet:
+
+
+      - Részleg
+
+      - Fiók
+
+      - Előfizetés
+
+
+      Ha szükséges, ugyanezzel a költséghellyel követheti nyomon az adott költséghelyhez kapcsolódó használatot és költségeket.
+
+
+      Ha például egy olyan különleges projekt költségeit szeretné nyomon követni, amelyben több részleg is részt vesz, a költséghelyet célszerű előfizetési szinten használni a használat és a költség nyomon követéséhez.
+
+
+      Költséghely nem definiálható szolgáltatási szinten. Ha szolgáltatási szinten szeretné nyomon követni a használatot, a szolgáltatási szinten elérhető _Címke_ funkciót használhatja.
+  - question: Hogyan követhetem nyomon a használatot és a kiadást a szervezet különböző részlegei alapján?
+    answer: >
+      Az Azure EA-regisztrációban tetszőleges számú részleget hozhat létre. A használat megfelelő nyomon követéséhez gondoskodnia kell arról, hogy az előfizetések ne legyenek megosztva a részlegek között.
+
+
+      A részleg és az előfizetés létrehozásának befejezése után a használati jelentésben láthatja az információkat. Ezek az információk segítséget nyújtanak a használat nyomon követésében és a költségek kezelésében, valamint a részlegszinten való költésben.
+
+
+      A jelentéskészítő API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](manage/ea-portal-rest-apis.md) dokumentációját.
+  - question: Megadhatom a költségkvótát, és kérhetek riasztásokat, ha közelítek a korlát felé?
+    answer: >
+      Költségkvótát a részleg szintjén állíthat be, és a rendszer automatikusan értesíti Önt, amikor a költségkeret eléri a megadott kvóta 50%-át, 75%-át, 90%-át és 100%-át.
+
+
+      A költségkvóta meghatározásához válasszon egy részleget, majd válassza a Szerkesztés ikont. A költségkeret részleteinek szerkesztése után válassza a **Mentés** parancsot.
+  - question: Erőforráscsoportokat használtam az Azure RBAC implementálásához és a használat nyomon követéséhez. Hogyan tekinthetem meg a kapcsolódó használati adatokat?
+    answer: >
+      Ha használ _erőforráscsoportokat_ és _címkéket_, ezen információk nyomon követése a szolgáltatás szintjén történik, és az információk a részletes használati adatokat tartalmazó (.csv) fájlban érhetők el. Lásd a [Használati jelentés letöltése](https://ea.azure.com/report/downloadusage) szakaszt az Azure Enterprise portálon.
+
+
+      Az API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](manage/ea-portal-rest-apis.md) dokumentációját.
+
+
+      > [!NOTE]
+
+      > Csak olyan erőforrásokra alkalmazhat címkéket, amelyek támogatják az Azure Resource Manager-műveleteket. Ha egy virtuális gépet, virtuális hálózatot vagy tárolót a klasszikus üzemi modellel (például a klasszikus portált használva) hozott létre, akkor nem alkalmazhat címkét az adott erőforrásra. A címkézés támogatásához ismételten üzembe kell helyeznie ezeket az erőforrásokat a Resource Managerrel. Minden más erőforrás támogatja a címkézést.
+  - question: Végezhetek elemzéseket Power BI használatával?
+    answer: >
+      Igen, a Azure Cost Management [Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management) összekötővel hatékony, testreszabott vizualizációkat és jelentéseket hozhat létre, amelyek segítenek jobban megérteni az Azure-beli szolgáltatásokat. Ha ön egy Nagyvállalati Szerződés (EA) használ, használhatja a Azure Cost Management [sablonalkalmazást is.](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md) A Azure Cost Management alkalmazás előre létrehozott jelentésekkel segíti a költségek monitorozását, a szolgáltatáshasználati trendek megfigyelését, valamint a költségoptimalizálási lehetőségek azonosítását a kiadások csökkentése érdekében.               A Power BI-jelentések készítése olyan közvetlen, partneri és közvetett Azure EA-szerződéssel rendelkező ügyfelek számára érhető el, akik meg tudják tekinteni a számlázási adatokat.
+  - question: Társíthatom a meglévő Azure-fiókomat Azure EA-regisztrációhoz?
+    answer: >
+      Igen. Az összes olyan Azure-előfizetés, amely esetén Ön a fióktulajdonos, a Nagyvállalati Szerződésre lesz átváltva. Ez magában foglalja a havi kreditet (pl. Visual Studio, AzurePass, MPN, BizSpark stb.) használó előfizetéseket. Az ilyen előfizetésekre való átváltással elveszíti a havi kreditet.
+  - question: Hány Azure-fióktulajdonos lehet előfizetésenként?
+    answer: >
+      Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök az [Azure Portal](https://portal.azure.com) bal felső sarkában található előfizetési fülön adhatók hozzá a szerepköralapú hozzáférés vagy a Hozzáférés-vezérlés (IAM) használatával.
+  - question: Lehetséges az előfizetés tulajdonjogának átadása egy másik fióknak?
+    answer: >
+      Igen, az előfizetés tulajdonjoga átadható egy másik fióknak. Ha például az „A” fiók három előfizetéssel rendelkezik, a vállalati rendszergazda átvihet egy-egy előfizetést a „B”, a „C” és a „D” fiókba, vagy mindegyiket az „E” fiókba.
+
+
+      Előfizetések átvitele:
+
+
+      1. Az Azure Enterprise portálon válassza a **Kezelés** > **Fiók** elemet.
+
+      1. Vigye a mutatót a **Fiók** fölé a jobb szélen, és látni fogja a **Tulajdonjogok átadása** (portré ikon) és az **Előfizetés átadása** (lista ikon) lehetőséget. Ezek a lehetőségek csak aktív fiókok esetén jelennek meg.
+  - question: Szerepelhet egy Azure-fiók tulajdonosa több részlegen is?
+    answer: >
+      Nem, egy fióktulajdonos csak egyetlen részleghez társítható. A szabályzat segít biztosítani a részleg költségeinek és kiadásainak pontos monitorozását és felosztását az Azure EA Portalon, az EA-regisztrációhoz igazodva.
+  - question: Szerepelhet egy Azure-fiók tulajdonosa biztonsági csoportként?
+    answer: >
+      Nem, az előfizetés tulajdonosának egyedi Microsoft-fiók- (MSA-) vagy Azure Active Directory- (Azure AD-) hitelesítéssel kell rendelkeznie. A szervezeten belüli utódláshoz érdemes lehet általános fiókokat létrehozni és az Azure AD használatával kezelni az előfizetéshez való hozzáférést.
+  - question: Egy egyedi felhasználó lehet több előfizetés tulajdonosa?
+    answer: >
+      Egy Azure-fiók tulajdonosa korlátlan számú előfizetést hozhat létre és kezelhet.
+  - question: Hogyan lehet hozzáférni és megtekinteni a szervezet összes előfizetését?
+    answer: >
+      Jelenleg ezt szabályzat alapján kell végezni, vagyis minden létrehozott előfizetés esetében a fiókot hozzá kell adni egy előfizetési szerepkörhöz szerepköralapú hozzáférés használatával.
+  - question: Hol hozhatok létre előfizetést?
+    answer: >
+      Nagyvállalati Azure-előfizetés létrehozása előtt a fiókját az EA-regisztráció rendszergazdájának hozzá kell adnia a fióktulajdonosi szerepkörhöz az Azure EA Portalon. Ezután be kell jelentkeznie az Azure EA Portalra, hogy megkapja a jogosultságát az EA-ajánlat típusú előfizetések létrehozásához. Javasoljuk, hogy az első EA-előfizetését az EA Portal előfizetési lapján található „+ Előfizetés hozzáadása” hivatkozással hozza létre.  Miután azonban a fiókja rendelkezik a megfelelő jogosultsággal, könnyebb lehet a portal.azure.com webhelyen, az oldal bal felső sarkában található előfizetési fülön létrehozni az előfizetéseket, ahol egyetlen lépésben létrehozhatja és átnevezheti az adott előfizetést.
+  - question: Ki hozhat létre előfizetést?
+    answer: >
+      Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdonosi szerepkörrel kell rendelkeznie az [EA Portalon](https://ea.azure.com).
+  - question: Miért 0 dollárként mutatja a költségem?
+    answer: >
+      **Közvetlen regisztrációval** rendelkező ügyfeleink esetén a vállalati rendszergazdák hozzáférést biztosíthatnak a fióktulajdonosok és a részlegszintű rendszergazdák számára a használati jelentésekhez tartozó költség- és díjszabási információkhoz. Kövesse az alábbi lépéseket:
+
+
+      1. Az Azure Enterprise Portalon válassza a **Kezelés** elemet a bal oldali navigációs sávon.
+
+      1. Válassza a kék ceruza szimbólumot a Díjtételek megtekintése a részlegszintű rendszergazda számára elem mellett.
+
+      1. Válassza az **Engedélyezve** lehetőséget, majd a mentést.
+
+      1. Válassza a kék ceruza elemet a Díjtételek megtekintése a fióktulajdonos számára elem mellett.
+
+      1. Válassza az **Engedélyezve** lehetőséget, majd a mentést.
+
+
+      > [!NOTE]
+
+      > Ha Ön fióktulajdonos vagy részlegszintű rendszergazda, a díjszabási funkció engedélyezéséhez forduljon a vállalati rendszergazdához.
+
+
+      Ha Ön **közvetett regisztrációval** rendelkező ügyfél, ellenőrizze, hogy partnere engedélyezte-e a díjszabási funkciót. Ezt csak a partner végezheti el. A funkció bekapcsolása után vállalati rendszergazdaként tekintheti meg regisztrációja költségét és díjszabását.
+
+
+      A partnerek, ha engedélyezni szeretnék a díjtételek megtekintését a fióktulajdonosok és a részlegszintű rendszergazdák számára, kövessék a **Közvetlen regisztráció** szakaszban felsorolt lépéseket.
+  - question: Miért nem találhatók termékváltozat-adatok a használati adatokról szóló jelentésben?
+    answer: >
+      A használati adatokról szóló jelentés nem tartalmaz termékváltozat-adatokat. A jelentés tartalmazza azonban a használati adatokat, így a termékváltozat-adatok beszerzéséhez letöltheti az árlistajelentést.
+  - question: Miért nem egyezik az Azure Marketplace-en lévő teljes összeg a használati összesítésben szereplő összegzéssel?
+    answer: >
+      Az Azure Marketplace-jelentés csak a használatalapú díjakat jeleníti meg. Az egyszeri díjak nem jelennek meg. A használati adatokat összegző oldalon megtalálja a használatalapú és az egyszeri díjakra vonatkozó legfrissebb használati információkat.
+  - question: Miért nincs információ az API-jelentésről?
+    answer: >
+      Az API-kulcsok érvényessége hathavonta lejár. Ha probléma merül fel, a vállalati rendszergazdának létre kell hoznia egy új API-kulcsot. Kövesse az API-jelentésekkel kapcsolatos gyakori kérdések lépéseit.
+  - question: Miért nem működik a Power BI-jelentés?
+    answer: >
+      A Power BI-jal kapcsolatos probléma esetén küldjön egy hibajegyet a [Power BI támogatási csapatának](https://support.powerbi.com).
+  - question: Miért nem ömlnek az erőforráscímkéim a jelentéseiben?
+    answer: >
+      Az erőforráscímkék felügyelete az Azure Portalon történik. Az Azure előfizetési csapatával az [Azure Portalon](https://portal.azure.com) veheti fel a kapcsolatot. Kövesse az [Azure-támogatáskérések létrehozása](../azure-portal/supportability/how-to-create-azure-support-request.md) cikkben leírt lépéseket.
+  - question: Miért változik naponta az erőforrás-díjszabás?
+    answer: >
+      A részletes használati jelentésben szereplő erőforrás-díjszabás számított érték. A szolgáltatásra vonatkozó átlagos havi díjat jelöli. Az erőforrás-díjszabás kiszámítása a havi keret és a havi túlhasználati díj átlaga alapján történik a szolgáltatási egység vonatkozásában. A keret terhére elszámolt használat aránya és a túlhasználati díjak a hónap végéig változnak. Ezért az erőforrás-díjszabás is változik a hónap folyamán. Az erőforrás-díjszabás a hónap végét követő ötödik napon zárolódik.
+  - question: Mi változott az Azure Marketplace-szolgáltatásokkal és az Azure EA-előrefizetéssel kapcsolatban?
+    answer: >
+      2018. március 1-től egyes külső viszonteladói szolgáltatások azure EA-előrefizetést használnak fel. Az Azure Reserved VM Instances kivételével ezeknek a szolgáltatásoknak a számlázása korábban az Azure EA-előrefizetési kereten kívül, külön számlákkal történt.
+
+
+      Kiterjesztettük az Azure-előrefizetési keret felhasználhatóságát, hogy az ügyfeleink által leggyakrabban vásárolt, külső féltől származó Azure Marketplace-szolgáltatásokat is lefedje. Az Azure Marketplace-en érvényes Azure EA-előrefizetési keret kiterjesztése ezen szolgáltatásokra hozzájárul az Ön vásárlás- és fizetéskezelésének egyszerűsítéséhez.
+
+
+      A változás azért történt, mert az ügyfelek más módokon szeretnék használni az előrefizetési Azure-előrefizetést. Ezzel egy gyakran felmerülő vásárlói kérésre adtunk választ, illetve Azure Marketplace-ügyfeleink jelentős részének kedveztünk általa.
+  - question: Hogyan azure-előrefizetési Azure Marketplace nagyvállalati szerződéssel történő vásárlásokért?
+    answer: >
+      Egyszerűbb lesz a számlázás az ügyfelek számára, és könnyebbé válik az Azure EA-előrefizetési keret teljes kihasználása. Mivel a szolgáltatásokat az Azure-előrefizetés tartalmazza, az Azure EA-előrefizetés értékesebb lesz.
+  - question: Melyik Azure Marketplace-szolgáltatások használják az Azure EA-előrefizetést? Honnan lehet ezt tudni?
+    answer: >
+      Ha olyan szolgáltatást vásárol, amely az Azure-előrefizetést használja, az Azure Marketplace felhívja erre a figyelmét. Egyes támogatott szolgáltatásokat a Red Hat, a SUSE, az Autodesk és az Oracle tesz közzé. Más szolgáltatók által közzétett hasonló nevű szolgáltatások jelenleg nem fedezhetők az Azure-előrefizetési keretből. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-előrefizetést](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) igénybe vevő külső szolgáltatások listáját.
+  - question: Mi történik, ha elfogy az Azure EA-előrefizetési Azure Marketplace vásárlások esetén?
+    answer: >
+      Ha felhasználta a teljes Azure-előrefizetési keretet, és jelenleg azon túl használja a szolgáltatásokat, a velük kapcsolatos díjak a soron következő túlhasználati számlán jelennek meg a többi használatalapú szolgáltatással együtt. A 2018. március 1. előtti változtatást megelőzően ezek a díjak a többi Azure Marketplace-szolgáltatással együtt lettek kiszámlázva.
+  - question: Miért nem használja az Azure Marketplace összes szolgáltatása az Azure EA-előrefizetést?
+    answer: >
+      Sokat dolgozunk azon, hogy az Azure EA-előrefizetéshez kapcsolódóan a legjobb felhasználói élményt nyújthassuk. Az Azure EA-előrefizetés legutóbbi változásai számos ügyfelet, valamint a teljes kiadás jelentős részét Azure Marketplace. A későbbiekben további szolgáltatásokkal is bővülhet a kör.
+  - question: Hogyan befolyásolják Azure Marketplace szolgáltatások és az Azure EA előrefizetési változásai a közvetett regisztrációt és partnereket?
+    answer: >
+      Mindennek nincs hatása a közvetett regisztrációs ügyfeleinkre és partnereinkre. Ezekre a szolgáltatásokra ugyanazok a partneri árréslehetőségek vonatkoznak, mint más használatalapú szolgáltatások esetében. Az egyetlen változás az, hogy a díjak egy másik számlán jelennek meg, és a díjak ellenértéke az ügyfél Azure EA-előrefizetési keretéből vonódik le.
+  - question: Hol látom az Azure EA Azure Marketplace-előrefizetést felhasználhatjaó összes szolgáltatási szolgáltatásokat?
+    answer: >
+      Bizonyos Azure Marketplace-ajánlatokhoz az Azure-előrefizetési keret is felhasználható. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-előrefizetést](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) igénybe vevő külső szolgáltatások listáját.
+- name: Partneri kérdések
+  questions:
+  - question: Ki csatolja a partnerazonosítót?
+    answer: >
+      A partnerszervezet bármely felhasználója, aki az ügyfél Power Apps erőforrásokon dolgozik, a partnerazonosítót a fiókhoz csatolhatja. Ideális esetben a PAL-hez való társítást a projekt elején kell eltennünk. Ez azonban bármikor elvégezhető, ha hozzáféréssel rendelkezik az ügyfél címtárához.
+  - question: A csatolás után módosítható a partnerazonosító?
+    answer: >
+      Igen. A csatolt partnerazonosító módosítható, hozzáadható vagy eltávolítható. Ilyen helyzet lehet például, ha a vállalat egyik alkalmazottja elhagyja a szervezetet. Egy másik példa lehet, ha egy ügyféllel kötött projekt vagy szerződés véget ér.
+  - question: Mi történik, ha egy felhasználó több ügyfélbérlőben is rendelkezik fiókkal?
+    answer: >
+      A partnerazonosító és a fiók közötti hivatkozás minden ügyfél bérlője számára elkészül. Partnerazonosító csatolása az egyes ügyfélbérlőkben.
+  - question: Más partnerek vagy ügyfelek is szerkeszthetik vagy eltávolíthatják a partnerazonosítóra mutató hivatkozást?
+    answer: >
+      A hivatkozás a felhasználói fiók szintjéhez kapcsolódik. Csak Ön szerkesztheti vagy távolíthatja el a partnerazonosítóra mutató hivatkozást. Az ügyfél vagy más partnerek nem szerkeszthetik vagy távolíthatják el a partnerazonosítóra mutató hivatkozást.
+  - question: Melyik MPN-azonosítót kell használnom, ha a vállalat többel is rendelkezik?
+    answer: >
+      Ügyeljen arra, hogy a partnerprofilban szereplő **társított MPN-azonosítót** használja. Általában ez a szervezet helyi fiókazonosító-társítása.
+  - question: Hogyan a PAL-t az ügyfélnek?
+    answer: >
+      A PAL lehetővé teszi, hogy a Microsoft azonosítsa és felismerje azokat a partnereket, akik segítik az ügyfeleket az üzleti célok elérésében és a felhőbeli érték elérésében. Az ügyfeleknek először hozzáférést kell biztosítaniuk a partnernek a Power Apps erőforráshoz. A hozzáférés után a partner Microsoft Partner Network (MPN-azonosító) lesz társítva. Ez a társítás segít a Microsoftnak megérteni a szolgáltatókat, és finomítani az ügyfelek legjobb támogatásához szükséges eszközöket és programokat.
+  - question: Milyen adatokat gyűjt a PAL?
+    answer: >
+      A PAL meglévő hitelesítő adatokkal történő társítása nem küld új ügyféladatokat a Microsoftnak. Információkat szolgáltat a Microsoftnak, ha egy partner aktívan részt vesz az ügyfél üzleti Power Apps környezetében. A Microsoft az ügyfél által a partner számára a partner számára biztosított fiókengedélyek (Power Apps-szerepkör) és hatókör (bérlő, erőforráscsoport, erőforrás) alapján ki tudja adni a használatot és a befolyást az ügyfélkörnyezetből a partnerszervezetnek.
+  - question: Befolyásolja a PAL-társítás az ügyfél Power Apps biztonságát?
+    answer: A PAL társítása csak a partner MPN-azonosítóját hozzáadja a már kiépített hitelesítő adatokhoz. Nem módosítja az engedélyeket (Power Apps szerepkört), és nem biztosít további Power Apps adatokat a partnernek vagy a Microsoftnak.

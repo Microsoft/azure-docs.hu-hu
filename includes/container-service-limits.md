@@ -5,28 +5,27 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: include
-ms.date: 11/22/2019
+ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 1c2dec106ae72ddead7bda54792fa74e38eb6660
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 15e91e6f275c3a6ebe44690441404a38e8f61394
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081017"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732641"
 ---
 | Erőforrás                                                                                                           | Korlát                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fürtök maximális száma előfizetéskor                                                                                  | 1000                                                                                                                                                                                                        |
-| Csomópontok maximális száma a virtuális gépek rendelkezésre állási csoportjaival és az alapszintű Load Balancer SKU-val                       | 100                                                                                                                                                                                                         |
-| Csomópontok maximális száma fürtön Virtual Machine Scale Sets és [standard Load BALANCER SKU][standard-load-balancer] -val | 1000 (100 csomópont/ [csomópont-készlet][node-pool])                                                                                                                                                                 |
-| Maximális hüvely/csomópont: [alapszintű hálózatkezelés][basic-networking] a Kubenet                                           | 110                                                                                                                                                                                                         |
-| A hüvelyek maximális száma/csomópont: [speciális hálózatkezelés][advanced-networking] az Azure Container Network Interface felülettel        | Azure CLI üzemelő példány: 30<sup>1</sup><br />Azure Resource Manager sablon: 30<sup>1</sup><br />Portálon keresztüli üzembe helyezés: 30                                                                                        |
-| A Open Service Mesh (OSM) AK addon előzetes verziója                                                                          | Kubernetes-fürt verziója: 1.19 +<sup>2</sup><br />OSM-vezérlők/fürt: 1<sup>2</sup><br />Hüvely/OSM-vezérlő: 500<sup>2</sup><br />Az OSM által kezelt Kubernetes-szolgáltatásfiókok: 50<sup>2</sup> |
+| Fürtök maximális száma előfizetésenként                                                                                  | 1000                                                                                                                                                                                                        |
+| Fürtönkénti csomópontok maximális száma virtuálisgép-rendelkezésre állási csoportokkal és alapszintű Load Balancer termékváltozattal                       | 100                                                                                                                                                                                                         |
+| Fürtönkénti csomópontok maximális száma Virtual Machine Scale Sets [termékváltozattal standard Load Balancer termékváltozattal][standard-load-balancer] | 1000 (az összes [csomópontkészletben)][node-pool]                                            |
+| Csomópontkészletek maximális száma fürtönként                                                                                     | 100                                                                                  |
+| Podok maximális száma csomópontonként: [Alapszintű hálózat a][basic-networking] Kubenetben                                           | Maximum: 250 <br /> Azure CLI alapértelmezett: 110 <br /> Azure Resource Manager sablon alapértelmezett beállítása: 110 <br /> Azure Portal alapértelmezett beállítás: 30          |
+| Podok maximális száma csomópontonként: [Speciális hálózat Azure Container Networking Interface][advanced-networking]        | Maximum: 250 <br /> Alapértelmezett: 30                                                      |
+| Előzetes verziójú AKS-bővítmény megnyitása a Service Meshben (OSM)                                                                          | Kubernetes-fürt verziója: 1.19+<sup>1</sup><br />OSM-vezérlők fürtönként: 1<sup>1</sup><br />Podok OSM-vezérlőnként: 500<sup>1</sup><br />Az OSM által felügyelt Kubernetes-szolgáltatásfiókok: 50<sup>1</sup> |
 
-<sup>1</sup> Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal helyez üzembe egy Azure Kubernetes Service (ak) fürtöt, ez az érték legfeljebb 250 hüvelyre konfigurálható. Ha már üzembe helyezett egy AK-fürtöt, a csomópontok maximális száma nem konfigurálható, vagy ha a Azure Portal használatával helyez üzembe egy fürtöt.<br />
-
-<sup>2</sup> Az AK-hoz készült OSM-bővítmény előzetes verzióban érhető el, és az általánosan elérhetővé tétel (GA) előtt további fejlesztéseket fog végezni. Az előzetes verzió ideje alatt nem ajánlott túlszárnyalni a megjelenő korlátokat.<br />
+<sup>1</sup> Az OSM AKS-bővítménye előzetes verziójú állapotban van, és további fejlesztéseken megy keresztül az általánosan elérhető (GA) verzió előtt. Az előzetes verzió fázisában javasoljuk, hogy ne lépje túl a megjelenő korlátokat.<br />
 
 <!-- LINKS - Internal -->
 

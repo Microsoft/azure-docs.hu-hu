@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0af6c97d6179a645b078f2335ff38f48890c42a3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327200"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728193"
 ---
 <a name="HOLTop"></a>
 
@@ -26,7 +26,7 @@ A Képelemzés ügyféloldali kódtára segítségével címkéket, szövegleír
 
 * Azure-előfizetés – [Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) vagy a [.NET Core aktuális verziója.](https://dotnet.microsoft.com/download/dotnet-core)
-* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Computer Vision-erőforrást, Computer Vision erőforrást a Azure Portal a kulcs és a <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás gombra.**
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Computer Vision-erőforrást, és hozzon létre egy Computer Vision-erőforrást a Azure Portal a kulcs és a <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás gombra.**
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontjára az alkalmazás a Computer Vision csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
     * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
@@ -40,7 +40,7 @@ A Visual Studio hozzon létre egy új .NET Core-alkalmazást.
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat. Kattintson a jobb gombbal a projektmegoldásra a Megoldáskezelő majd válassza a **Manage NuGet Packages (NuGet-csomagok** kezelése) gombra.  A megnyíló csomagkezelőben válassza a **Tallózás** lehetőséget, jelölje be **az Include prerelease**(Előzetes) jelölőnégyzetet, és keressen rá a következőre: `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Válassza a `7.0.0` verziót, majd a **Telepítés lehetőséget.** 
+Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat. Kattintson a jobb gombbal a projektmegoldásra a Megoldáskezelő majd válassza a **Manage NuGet Packages (NuGet-csomagok** kezelése) gombra.  A megnyíló csomagkezelőben válassza a **Tallózás** lehetőséget, jelölje be **az Include prerelease**(Előzetes) jelölőnégyzetet, és keressen a következőre: `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Válassza a `7.0.0` verziót, majd a **Telepítés lehetőséget.** 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
@@ -79,7 +79,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!TIP]
 > Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ezt a [GitHubon találhatja](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)meg, amely ebben a rövid útmutatóban található példakódokat tartalmazza.
 
-A projektkönyvtárból nyissa meg a *ComputerVisionQuickstart.cs* fájlt az előnyben részesített szerkesztőben vagy IDE-ban. Adja hozzá a következő `using` irányelveket:
+A projektkönyvtárból nyissa meg a *Program.cs* fájlt a kívánt szerkesztőben vagy IDE-ban. Adja hozzá a következő `using` irányelveket:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
@@ -92,7 +92,7 @@ Az alkalmazás **Program** osztályában hozzon létre változókat az erőforr�
 >
 > Ne felejtse el eltávolítani a kulcsot a kódból, amikor végzett, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módon tárolni és elérni a hitelesítő adatokat. További információt Cognitive Services [biztonsági cikk](../../../cognitive-services-security.md) tartalmaz.
 
-Az alkalmazás metódusában adja hozzá az ebben a rövid útmutatóban használt metódusok `Main` hívásait. Ezeket később fogja létrehozni.
+Az alkalmazás metódusában adja hozzá az ebben a rövid útmutatóban `Main` használt metódusok hívásait. Ezeket később fogja létrehozni.
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
@@ -122,7 +122,7 @@ Ezek a kódrészletek a következő feladatok elvégzését mutatják be a .NET 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató [](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) feltételezi, hogy létrehozott környezeti változókat a Computer Vision kulcshoz és végponthoz, a neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és a `COMPUTER_VISION_ENDPOINT` .
+> Ez a rövid útmutató [](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) azt feltételezi, hogy létrehozott környezeti változókat a Computer Vision kulcshoz és végponthoz, névvel és `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` névvel.
 
 A **Program** osztály egy új metódusában példányosíthat egy ügyfelet a végponttal és a kulccsal. Hozzon létre **[egy ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** objektumot a kulccsal, és használja a végponttal egy **[ComputerVisionClient objektum létrehozásához.](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)**
 
@@ -150,19 +150,19 @@ Definiálja az új képelemzési módszert. Adja hozzá az alábbi kódot, amely
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
-Szúrja be az alábbi kódblokkok bármelyikét az **AnalyzeImageUrl metódusba** a funkcióik megvalósításához. Ne felejtsen el záró zárójelet hozzáadni a véghez.
-
-```csharp
-}
-```
-
-### <a name="analyze"></a>Elemzés
+### <a name="call-the-analyze-api"></a>Az Analyze API hívása
 
 Az **AnalyzeImageAsync** metódus egy **ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 A következő szakaszok ismertetik, hogyan elemezze részletesen ezt az információt.
+
+Szúrja be az alábbi kódblokkok bármelyikét az **AnalyzeImageUrl metódusba** a fent kért vizuális jellemzők adatainak elemzéséhez. Ne felejtsen el záró zárójelet hozzáadni a véghez.
+
+```csharp
+}
+```
 
 ### <a name="get-image-description"></a>Kép leírásának lekérte
 
@@ -190,7 +190,7 @@ Az alábbi kód észleli a képen látható gyakori objektumokat, és kinyomtatj
 
 ### <a name="detect-brands"></a>Márkák észlelése
 
-A következő kód észleli a képen látható vállalati márkákat és emblémákat, és kiírja őket a konzolra. További [részletekért lásd:](../../concept-brand-detection.md) Márkaészlelés.
+Az alábbi kód észleli a képen látható vállalati márkákat és emblémákat, és kiírja őket a konzolra. További [részletekért lásd:](../../concept-brand-detection.md) Márkaészlelés.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_brands)]
 
@@ -214,7 +214,7 @@ A következő kód kinyomtatja a képen észlelt színattribútumokat, például
 
 ### <a name="get-domain-specific-content"></a>Tartományspecifikus tartalom lekérte
 
-A Képelemzés speciális modellekkel további elemzéseket képes végzett képeken. További [részletekért lásd:](../../concept-detecting-domain-content.md) Tartományspecifikus tartalom. 
+A Képelemzés speciális modellek használatával további elemzéseket képes tenni a képeken. További [részletekért lásd:](../../concept-detecting-domain-content.md) Tartományspecifikus tartalom. 
 
 Az alábbi kód a képen észlelt hírességek adatait elemezi.
 
@@ -239,7 +239,7 @@ Az alábbi kód a kép típusával kapcsolatos információkat nyomtatja ki, leg
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Futtassa az alkalmazást  az IDE ablak tetején található Hibakeresés gombra kattintva.
+Futtassa az alkalmazást  az IDE ablakának tetején található Hibakeresés gombra kattintva.
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 

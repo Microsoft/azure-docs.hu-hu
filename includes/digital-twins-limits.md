@@ -1,60 +1,61 @@
 ---
 author: baanders
-description: fájl belefoglalása az Azure-beli digitális ikrek korlátaira
+description: fájlba foglalhatja a Azure Digital Twins korlátokat
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370101"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728020"
 ---
 ### <a name="functional-limits"></a>Működési korlátok
 
-A következő táblázat felsorolja az Azure digitális ikrek működési korlátait. 
+Az alábbi táblázat a tartomány működési korlátait Azure Digital Twins. 
 
 > [!TIP]
-> Ha modellezési javaslatokat szeretne végezni ezen működési korlátokon belül, tekintse meg az [ajánlott eljárásokat a modellek tervezéséhez](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)című témakörben.
+> A funkcionális korlátokon belüli működésre vonatkozó modellezési javaslatokért tekintse meg a [modellek tervezésének ajánlott eljárásait.](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)
 
-| Terület | Képesség | Alapértelmezett korlát | Módosítható? |
+| Terület | Képesség | Alapértelmezett korlát | Állítható? |
 | --- | --- | --- | --- |
-| Azure-erőforrás | Azure digitális Twins-példányok száma egy adott régióban, előfizetés szerint | 10 | Yes |
-| Digital Twins | Az ikrek száma egy Azure-beli digitális Twins-példányban | 200,000 | Yes |
-| Digital Twins | Egyetlen Twin típusú bejövő kapcsolatok száma | 5000 | No |
-| Digital Twins | Egyetlen Twin kimenő kapcsolatainak száma | 5000 | No |
-| Digital Twins | Egyetlen Twin-fájl maximális mérete (JSON-törzs egy PUT vagy PATCH kérelemben) | 32 KB | No |
-| Digital Twins | Kérelmek maximális hasznos mérete | 32 KB | No | 
-| Útválasztás | Végpontok száma egyetlen Azure Digital Twins-példányhoz | 6 | No |
-| Útválasztás | Egyetlen Azure Digital Twins-példány útvonalai száma | 6 | Yes |
-| Modellek | Egyetlen Azure Digital Twins-példányon belüli modellek száma | 10,000 | Yes |
-| Modellek | Egyetlen API-hívásban feltölthethető modellek száma | 250 | No |
-| Modellek | Egyetlen modellben lévő JSON-törzs maximális mérete (egy PUT vagy PATCH kérelemben) | 1 MB | No |
-| Modellek | Egyetlen oldalon visszaadott elemek száma | 100 | No |
-| Lekérdezés | Egyetlen oldalon visszaadott elemek száma | 100 | Igen |
-| Lekérdezés | Kifejezések száma `AND`  /  `OR` egy lekérdezésben | 50 | Igen |
-| Lekérdezés | Egy `IN`  /  `NOT IN` záradékban található tömb elemeinek száma | 50 | Igen |
-| Lekérdezés | A lekérdezésben szereplő karakterek száma | 8,000 | Igen |
-| Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 5 | Yes |
+| Azure-erőforrás | Egy Azure Digital Twins példányainak száma előfizetésenként | 10 | Yes |
+| Digital Twins | Ikerpéldányok száma Azure Digital Twins példányban | 200,000 | Yes |
+| Digital Twins | Egy ikereszköz bejövő kapcsolatainak száma | 5000 | No |
+| Digital Twins | Egy ikerből kimenő kapcsolatok száma | 5000 | No |
+| Digital Twins | Egyetlen ikereszköz maximális mérete (JSON-törzs egy PUT- vagy PATCH-kérelemben) | 32 KB | No |
+| Digital Twins | A kérelem hasznos fájlméretének maximális mérete | 32 KB | No | 
+| Útválasztás | Egyetlen példány végpontjainak Azure Digital Twins száma | 6 | No |
+| Útválasztás | Egyetlen példány útvonalának Azure Digital Twins száma | 6 | Yes |
+| Modellek | Modellek száma egy adott Azure Digital Twins példányban | 10,000 | Yes |
+| Modellek | Az egyetlen API-hívásba feltölthetők modellek száma | 250 | No |
+| Modellek | Egyetlen modell maximális mérete (JSON-törzs egy PUT- vagy PATCH-kérelemben) | 1 MB | No |
+| Modellek | Az egy oldalon visszaadott elemek száma | 100 | No |
+| Lekérdezés | Az egy oldalon visszaadott elemek száma | 100 | Igen |
+| Lekérdezés | Kifejezések `AND`  /  `OR` száma egy lekérdezésben | 50 | Igen |
+| Lekérdezés | Tömbelemek száma egy `IN`  /  `NOT IN` záradékban | 50 | Igen |
+| Lekérdezés | Karakterek száma egy lekérdezésben | 8,000 | Igen |
+| Lekérdezés | Száma `JOINS` egy lekérdezésben | 5 | Yes |
 
 ### <a name="rate-limits"></a>Sebességkorlátok
 
-Az alábbi táblázat a különböző API-k díjszabását mutatja be.
+Az alábbi táblázat a különböző API-k sebességkorlátját tükrözi.
 
-| API | Képesség | Alapértelmezett korlát | Módosítható? |
+| API | Képesség | Alapértelmezett korlát | Állítható? |
 | --- | --- | --- | --- |
-| Modellek API | Kérelmek másodpercenkénti száma | 100 | Yes |
-| Digitális Twins API | Kérelmek másodpercenkénti száma | 2000 | Yes |
-| Digitális Twins API | A létrehozási/törlési műveletek másodpercenkénti száma az **összes ikrek és kapcsolat** között | 50 | Yes |
-| Digitális Twins API | A létrehozási/frissítési/törlési műveletek másodpercenkénti száma **egyetlen dupla** vagy a kapcsolatain | 10 | No |
-| Lekérdezési API | Kérelmek másodpercenkénti száma | 500 | Yes |
-| Lekérdezési API | [Lekérdezési egység](../articles/digital-twins/concepts-query-units.md) másodpercenként | 4,000 | Yes |
-| Event Routes API | Kérelmek másodpercenkénti száma | 100 | Yes |
+| Models API | Kérelmek száma másodpercenként | 100 | Yes |
+| Digital Twins API | Olvasási kérelmek másodpercenkénti száma | 1,000 | Yes |
+| Digital Twins API | Javítási kérelmek másodpercenkénti száma | 1,000 | Yes |
+| Digital Twins API | Létrehozási/törlési műveletek másodpercenkénti száma az összes **ikereszköz és kapcsolat között** | 50 | Yes |
+| Digital Twins API | Létrehozási/frissítési/törlési műveletek másodpercenkénti száma egy ikeren vagy **annak** kapcsolatain | 10 | No |
+| Lekérdezési API | Kérelmek száma másodpercenként | 500 | Yes |
+| Lekérdezési API | [Lekérdezési egységek](../articles/digital-twins/concepts-query-units.md) száma másodpercenként | 4,000 | Yes |
+| Event Routes API | Kérelmek száma másodpercenként | 100 | Yes |
 
 ### <a name="other-limits"></a>Egyéb korlátok
 
-Az Azure digitális Twins-modellekhez tartozó DTDL-dokumentumokban lévő adattípusokra és mezőkre vonatkozó korlátozások a GitHub dokumentációjában találhatók: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+A DTDL-dokumentumokban az Azure Digital Twins-modellek adattípusára és mezőire vonatkozó korlátozásokat a GitHub specifikációs dokumentációjában találja: [*Digital Twins Definition Language (DTDL) – 2-es verzió.*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)
  
-A lekérdezés késésének részletei és más lekérdezési korlátozások a következő [*útmutatóban találhatók: a Twin gráf lekérdezése*](../articles/digital-twins/how-to-query-graph.md).
+A lekérdezések késésével kapcsolatos részleteket és egyéb lekérdezési korlátozásokat az ikergráf lekérdezését bemutató bemutató [*oldalon talál.*](../articles/digital-twins/how-to-query-graph.md)

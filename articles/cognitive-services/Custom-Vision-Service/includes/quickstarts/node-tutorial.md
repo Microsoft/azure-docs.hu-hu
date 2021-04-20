@@ -4,19 +4,19 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2d0cb2e9fed754cd373a37c1477b3133a83f3e76
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 617db5594af682bcdb67101e3317ec184e874d73
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803388"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725328"
 ---
-Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision ügyféloldali függvénytárának használatának megkezdéséhez a Node.js számára a rendszerkép-besorolási modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+Ez az útmutató utasításokat és mintakódot tartalmaz, amelyek segítenek a Custom Vision ügyféloldali kódtárának Node.js képbesorolási modell felépítésében. Létre fog hozni egy projektet, címkéket fog hozzáadni, betanítja a projektet, és a projekt előrejelzési végponti URL-címével programozott módon teszteli azt. Ezt a példát sablonként használhatja saját képfelismerő alkalmazásának építéséhez.
 
 > [!NOTE]
-> Ha a besorolási modellt kód írása _nélkül_ szeretné felépíteni és betanítani, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
+> Ha kódírás nélkül szeretne besorolási modellt felépíteni és betaníteni, tekintse meg helyette a [böngészőalapú útmutatót.](../../getting-started-build-a-classifier.md) 
 
-A .NET-hez készült Custom Vision ügyféloldali kódtára a következőre használható:
+Használja a Custom Vision .NET-hez használható ügyféloldali kódtárát a következőre:
 
 * Új Custom Vision-projekt létrehozása
 * Címkék hozzáadása a projekthez
@@ -25,27 +25,27 @@ A .NET-hez készült Custom Vision ügyféloldali kódtára a következőre hasz
 * Az aktuális iteráció közzététele
 * Az előrejelzési végpont tesztelése
 
-Hivatkozási dokumentáció [(képzés)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(előrejelzés)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | Könyvtár forráskódja [(képzés)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(előrejelzés)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Csomag (NPM) [(képzési)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(előrejelzési)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [minták](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+[Referenciadokumentáció (betanítás)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(előrejelzés)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | Kódtár [forráskódja (betanítás)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(előrejelzés)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Csomag (npm) [(betanítás)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(előrejelzés)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [minták](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* A [Node.js](https://nodejs.org/) aktuális verziója
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" hozzon létre egy Custom Vision erőforrást egy "  target="_blank"> Custom Vision erőforrás létrehozásához </a> a Azure Portal egy képzési és előrejelzési erőforrás létrehozásához, valamint a kulcsok és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Az alkalmazás Custom Visionhoz való összekapcsolásához szüksége lesz a létrehozott erőforrások kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
+* ANode.js[](https://nodejs.org/)
+* Az Azure-előfizetés létrehozása után hozzon létre egy Custom Vision-erőforrást, és hozzon létre egy Custom Vision-erőforrást a Azure Portal-ban egy betanítás és előrejelzési erőforrás létrehozásához, valamint a kulcsok és a végpont lekért <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> </a> létrehozásához. Várja meg az üzembe helyezést, majd kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrások kulcsának és végpontjának létrehozására ahhoz, hogy az alkalmazást a Custom Vision. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init` parancsot egy Node-alkalmazás fájlhoz való létrehozásához `package.json` . 
+Futtassa `npm init` az parancsot egy node-alkalmazás fájllal való `package.json` létrehozásához. 
 
 ```console
 npm init
@@ -53,35 +53,35 @@ npm init
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Ahhoz, hogy Node.js Custom Vision rendszerkép-elemzési alkalmazást, szüksége lesz a Custom Vision NPM-csomagokra. A telepítéséhez futtassa a következő parancsot a PowerShellben:
+Ha olyan képelemző alkalmazást Custom Vision a Node.js, szüksége lesz a Custom Vision NPM-csomagokra. A telepítésükhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
+Az alkalmazás `package.json` fájlja frissül a függőségekkel.
 
-Hozzon létre egy nevű fájlt `index.js` , és importálja a következő könyvtárakat:
+Hozzon létre egy nevű fájlt, `index.js` és importálja a következő kódtárakat:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_imports)]
 
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ez a [GitHubon található,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js)amely az ebben a rövid útmutatóban található példakódokat tartalmazza.
 
-Hozzon létre változókat az erőforrás Azure-végpontja és kulcsainak létrehozásához. 
+Hozzon létre változókat az erőforrás Azure-végpontja és kulcsai számára. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision képzési erőforrás sikeresen telepítve lett, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcs és a végpont az erőforrás **kulcs és végpont** lapján található. 
+> Nyissa meg az Azure Portalt. Ha az Custom Vision szakaszban létrehozott Custom Vision  betanítás erőforrás sikeresen üzembe lett gombra kattintott, kattintson az **Ugrás** az erőforráshoz gombra a **Következő lépések területen.** A kulcsot és a végpontot az erőforrás kulcs- és **végpontoldalán találja.** 
 >
->A jóslat erőforrás-azonosító értékét az erőforrás **Tulajdonságok** lapján, az **előfizetés azonosítója** mezőben találja.
+>Az előrejelzési erőforrás-azonosító értékét az  erőforrás Tulajdonságok lapján találja, amely **előfizetés-azonosítóként van felsorolva.**
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, amikor végzett, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módon tárolni és elérni a hitelesítő adatokat. További információt a biztonsági Cognitive Services [talál.](../../../cognitive-services-security.md)
 
-Adja hozzá a projekt nevét és az aszinkron hívások időtúllépési paraméterét is.
+Adjon hozzá mezőket a projekt nevéhez és egy időtúllépési paramétert az aszinkron hívásokhoz.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_vars)]
 
@@ -91,12 +91,12 @@ Adja hozzá a projekt nevét és az aszinkron hívások időtúllépési paramé
 |Név|Leírás|
 |---|---|
 |[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) | Ez az osztály kezeli a modellek létrehozását, betanítását és közzétételét. |
-|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| Ez az osztály kezeli a modellek lekérdezését a képbesorolási előrejelzésekhez.|
-|[Jóslás](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| Ez az illesztőfelület egyetlen előrejelzést definiál egyetlen rendszerképhez. Az objektum AZONOSÍTÓjának és nevének, valamint a megbízhatósági pontszámnak a tulajdonságait tartalmazza.|
+|[PredictionAPIClient (ElőrejelzésAPIClient)](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| Ez az osztály kezeli a modellek képbesorolási előrejelzésekhez való lekérdezését.|
+|[Jóslás](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| Ez az interfész egyetlen előrejelzést határoz meg egyetlen képhez. Ez tartalmazza az objektumazonosító és -név tulajdonságait, valamint egy megbízhatósági pontszámot.|
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a JavaScript Custom Vision ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan kell elvégezni a következő feladatokat Custom Vision JavaScript ügyféloldali kódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Új Custom Vision-projekt létrehozása](#create-a-new-custom-vision-project)
@@ -108,14 +108,14 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Ügyféloldali objektumok példányainak a végponttal és a kulccsal való létrehozásával. Hozzon létre egy **ApiKeyCredentials** objektumot a kulccsal, és használja a végpontján egy [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) és egy [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) objektum létrehozásához.
+Példányosíthatja az ügyfélobjektumokat a végponttal és a kulccsal. Hozzon létre **egy ApiKeyCredentials** objektumot a kulccsal, és használja a végponttal egy [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) és [PredictionAPIClient objektum](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) létrehozásához.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
 
 ## <a name="create-a-new-custom-vision-project"></a>Új Custom Vision-projekt létrehozása
 
-Indítson el egy új függvényt, amely tartalmazza az összes Custom Vision függvény hívását. Adja hozzá a következő kódot egy új Custom Vision szolgáltatási projekt létrehozásához.
+Indítson el egy új függvényt, amely az összes Custom Vision tartalmazza. Adja hozzá a következő kódot a alkalmazáshoz egy új Custom Vision szolgáltatásprojekt létrehozásához.
 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_create)]
@@ -130,45 +130,45 @@ Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a köve
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Először töltse le a projekthez tartozó mintaképeket. Mentse a [Sample images mappa](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) tartalmát a helyi eszközre.
+Először töltse le a projekthez a mintaképeket. Mentse a Képek [mintamappa tartalmát](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) a helyi eszközre.
 
 > [!NOTE]
-> Szüksége van egy szélesebb körű rendszerképekre a képzés befejezéséhez? A Microsoft garázs-projekt, amely lehetővé teszi, hogy beszerezze a betanítási célokra szánt lemezképek készleteit. A képek összegyűjtése után letöltheti őket, majd a szokásos módon importálhatja őket a Custom Vision-projektbe. További információért látogasson el az [adattárház oldalára](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) .
+> A betanítás befejezéséhez szélesebb képkészletre van szüksége? A Microsoft Sets-projekt, a Trove lehetővé teszi képek gyűjtését és megvásárlását betanítás céljából. Miután összegyűjtötte a képeket, letöltheti őket, majd a szokásos módon importálhatja Custom Vision saját projektjére. További [információért látogasson el a Trove](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) oldalára.
 
 A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_upload)]
 
 > [!IMPORTANT]
-> Módosítania kell a lemezképek elérési útját ( `sampleDataRoot` ) a Cognitive Services PYTHON SDK-minták tárházának letöltése alapján.
+> Módosítania kell az images ( ) elérési útját az alapján, hogy hová letöltötte a `sampleDataRoot` Cognitive Services Python SDK-minták tárhelyét.
 
 ## <a name="train-the-project"></a>A projekt betanítása
 
-Ez a kód az előrejelzési modell első iterációját hozza létre. 
+Ez a kód hozza létre az előrejelzési modell első iterációját. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_train)]
 
 ## <a name="publish-the-current-iteration"></a>Az aktuális iteráció közzététele
 
-Ez a kód közzéteszi a betanított iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód közzéteszi a betanított iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Az iteráció nem érhető el az előrejelzési végponton, amíg közzé nem tette.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_publish)]
 
 
 ## <a name="test-the-prediction-endpoint"></a>Az előrejelzési végpont tesztelése
 
-Ha képet szeretne küldeni az előrejelzési végpont számára, és le szeretné kérni az előrejelzést, adja hozzá a következő kódot a függvényhez. 
+Ha képet szeretne küldeni az előrejelzési végpontra, és lekérni az előrejelzést, adja hozzá a következő kódot a függvényhez. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_test)]
 
-Ezután zárjunk be Custom Vision függvényt, és hívja meg.
+Ezután zárja be a Custom Vision függvényt, és hívja meg.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_function_close)]
 
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
+Futtassa az alkalmazást az `node` paranccsal a gyorsindítási fájlban.
 
 ```console
 node index.js
@@ -190,18 +190,18 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-Ezt követően ellenőrizheti, hogy a **<sampleDataRoot> /test/** található-e. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
+Ezután ellenőrizheti, hogy a tesztkép (a **<sampleDataRoot> /Test/** fájlban található) megfelelően van-e megcímkézve. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
+Láthatta, hogyan használhatja kódban az objektumészlelési folyamat minden lépését. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell majd képezni és tesztelni kell a modellt, hogy pontosabb legyen.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
 
 * [Mi a Custom Vision?](../../overview.md)
-* A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js)
-* [SDK-referenciák dokumentációja (képzés)](/javascript/api/@azure/cognitiveservices-customvision-training/)
-* [SDK-referenciák dokumentációja (előrejelzés)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)
+* A minta forráskódja a [GitHubon található](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js)
+* [SDK-referenciadokumentáció (képzés)](/javascript/api/@azure/cognitiveservices-customvision-training/)
+* [SDK-referenciadokumentáció (előrejelzés)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)

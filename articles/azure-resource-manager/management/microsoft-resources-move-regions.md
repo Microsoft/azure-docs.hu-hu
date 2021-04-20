@@ -1,26 +1,26 @@
 ---
-title: Régiók áthelyezése a Microsoft. Resources erőforrásaiba
-description: Bemutatjuk, hogyan helyezheti át a Microsoft. Resources névtérben lévő erőforrásokat új régiókba.
+title: Erőforrások régióinak áthelyezése a Microsoft.Resources szolgáltatásban
+description: A Microsoft.Resources névtérben található erőforrások áthelyezése új régiókba.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88951053"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725871"
 ---
-# <a name="move-microsoftresources-resources-to-new-region"></a>A Microsoft. Resources erőforrásainak áthelyezése új régióba
+# <a name="move-microsoftresources-resources-to-new-region"></a>Microsoft.Resources-erőforrások áthelyezése új régióba
 
-Lehetséges, hogy egy meglévő erőforrást egy új régióba kell áthelyeznie. Ez a cikk bemutatja, hogyan helyezhet át két erőforrástípust – templateSpecs és deploymentScripts –, amelyek a Microsoft. Resources névtérben találhatók.
+Előfordulhat, hogy egy meglévő erőforrást kell áthelyezni egy új régióba. Ez a cikk bemutatja, hogyan mozgathat két erőforrástípust ( templateSpecs és deploymentScripts) a Microsoft.Resources névtérben.
 
-## <a name="move-template-specs-to-new-region"></a>Sablon specifikációinak áthelyezése új régióba
+## <a name="move-template-specs-to-new-region"></a>Sablonsokdiák áthelyezése új régióba
 
-Ha az egyik régióban van egy [sablon](../templates/template-specs.md) , és szeretné áthelyezni az új régióba, exportálhatja a sablon specifikációját, és újból üzembe helyezheti azt.
+Ha egy régióban [van](../templates/template-specs.md) egy sablonsokaját, és át szeretné áthelyezni egy új régióba, exportálhatja a sablon specifikációját, és újra üzembe is használhatja.
 
-1. Egy meglévő sablon exportálásához használja az parancsot. A paraméterek értékeinek megadásához adja meg az exportálni kívánt sablonhoz tartozó specifikációnak megfelelő értékeket.
+1. A paranccsal exportálhatja a meglévő sablonsokaját. A paraméterértékek értékeként adja meg az exportálni kívánt sablonsokkjának megfelelő értékeket.
 
-   Azure PowerShell esetén használja a következőt:
+   A Azure PowerShell használja a következőt:
 
    ```azurepowershell
    Export-AzTemplateSpec `
@@ -40,9 +40,9 @@ Ha az egyik régióban van egy [sablon](../templates/template-specs.md) , és sz
      --output-folder c:\export
    ```
 
-1. Az exportált sablon specifikációjának használatával hozzon létre egy új sablont. Az alábbi példák az új régiót mutatják be, de megadhatja `westus` a kívánt régiót.
+1. Az exportált sablon specifikációi alapján hozzon létre egy új sablonsokaját. Az alábbi példák bemutatják `westus` az új régiót, de meg is használhatja a kívánt régiót.
 
-   Azure PowerShell esetén használja a következőt:
+   A Azure PowerShell használja a következőt:
 
    ```azurepowershell
    New-AzTemplateSpec `
@@ -64,33 +64,33 @@ Ha az egyik régióban van egy [sablon](../templates/template-specs.md) , és sz
      --template-file "c:\export\demoTemplateSpec.json"
    ```
 
-## <a name="move-deployment-scripts-to-new-region"></a>Üzembe helyezési parancsfájlok áthelyezése új régióba
+## <a name="move-deployment-scripts-to-new-region"></a>Üzembe helyezési szkriptek áthelyezése új régióba
 
-1. Válassza ki azt az erőforráscsoportot, amely az új régióba áthelyezni kívánt telepítési parancsfájlt tartalmazza.
+1. Válassza ki azt az erőforráscsoportot, amely az új régióba áthelyezni kívánt üzembe helyezési szkriptet tartalmazza.
 
-1. [Exportálja a sablont](../templates/export-template-portal.md). Exportáláskor válassza ki a telepítési parancsfájlt és a többi szükséges erőforrást.
+1. [Exportálja a sablont.](../templates/export-template-portal.md) Exportáláskor válassza ki az üzembe helyezési szkriptet és az egyéb szükséges erőforrásokat.
 
 1. Az exportált sablonban törölje a következő tulajdonságokat:
 
-   * tenantId
+   * tenantId (bérlőazonosító)
    * principalId
    * ügyfél-azonosító
 
-1. Az exportált sablon hardcoded értékkel rendelkezik az üzembehelyezési parancsfájl régiójában.
+1. Az exportált sablon szoftveres értékkel rendelkezik az üzembe helyezési szkript régiójához.
 
    ```json
    "location": "westus2",
    ```
 
-   Módosítsa a sablont úgy, hogy engedélyezze a paramétert a hely beállításához. További információ: [erőforrás helyének beállítása az ARM-sablonban](../templates/resource-location.md)
+   Módosítsa a sablont úgy, hogy engedélyezze a hely beállításának paraméterét. További információ: Erőforrás [helyének beállítása az ARM-sablonban](../templates/resource-location.md)
 
    ```json
    "location": "[parameters('location')]",
    ```
 
-1. [Telepítse az exportált sablont](../templates/deploy-powershell.md) , és adjon meg egy új régiót az üzembe helyezési parancsfájlhoz.
+1. [Telepítse az exportált sablont,](../templates/deploy-powershell.md) és adjon meg egy új régiót az üzembe helyezési szkript számára.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
-* Az erőforrások új régióba való áthelyezésével kapcsolatos további információkért lásd: [Azure-erőforrások áthelyezése régiók között](move-region.md).
+* További információ az erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezésével kapcsolatban: Erőforrások áthelyezése új [erőforráscsoportba vagy előfizetésbe.](move-resource-group-and-subscription.md)
+* További információ az erőforrások új régióba való áthelyezésről: [Erőforrások áthelyezése régiók között.](move-resources-overview.md#move-resources-across-regions)

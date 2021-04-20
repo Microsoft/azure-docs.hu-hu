@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet a Azure NetApp Fileshoz | Microsoft Docs
-description: Ismerteti, hogyan hozhat létre olyan kötetet, amely a NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználók leképezésének támogatásával.
+title: Hozzon létre egy kettős protokollú (NFSv3 és SMB) kötetet a Azure NetApp Files | Microsoft Docs
+description: Ismerteti, hogyan hozhat létre olyan kötetet, amely az NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználóleképezés támogatására.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,66 +12,66 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: c702c41228512eceebeaf45ccae709db38a85a51
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258418"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725680"
 ---
-# <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
+# <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy kettős protokollú (NFSv3 és SMB) kötetet a Azure NetApp Files
 
-Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy kettős protokollt használó létrehozását. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan kötetet, amely a NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználók leképezésének támogatásával. 
+Azure NetApp Files NFS (NFSv3 és NFSv4.1), SMB3 vagy kettős protokoll használatával támogatja a kötetek létrehozását. Ez a cikk bemutatja, hogyan hozhat létre olyan kötetet, amely az NFSv3 és az SMB kettős protokollját használja az LDAP-felhasználóleképezés támogatásával. 
 
-Az NFS-kötetek létrehozásával kapcsolatban lásd: [NFS-kötet létrehozása](azure-netapp-files-create-volumes.md). Az SMB-kötetek létrehozásával kapcsolatban tekintse meg [az SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)című témakört. 
+NFS-kötetek létrehozásához lásd: [NFS-kötet létrehozása.](azure-netapp-files-create-volumes.md) SMB-kötetek létrehozásához lásd: [SMB-kötet létrehozása.](azure-netapp-files-create-volumes-smb.md) 
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
-* Már létre kell hoznia egy kapacitás-készletet.  
-    Lásd: [Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md).   
-* Az alhálózatot delegálni kell Azure NetApp Files.  
-    Lásd: [alhálózat delegálása Azure NetApp Filesra](azure-netapp-files-delegate-subnet.md).
+* Már létrehozott egy kapacitáskészletet.  
+    Lásd: [Kapacitáskészlet beállítása.](azure-netapp-files-set-up-capacity-pool.md)   
+* Az alhálózatot delegálni kell a Azure NetApp Files.  
+    Lásd: [Alhálózat delegálása](azure-netapp-files-delegate-subnet.md)a Azure NetApp Files.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* Győződjön meg arról, hogy megfelel a [Active Directory kapcsolatok követelményeinek](create-active-directory-connections.md#requirements-for-active-directory-connections). 
-* Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
+* Győződjön meg arról, hogy [megfelel a kapcsolatokra vonatkozó Active Directory követelményeknek.](create-active-directory-connections.md#requirements-for-active-directory-connections) 
+* Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot az AD-gazdagéphez a névkeresési zónában. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
 * Ellenőrizze, hogy az NFS-ügyfél naprakész állapotban van-e, illetve hogy az operációs rendszer legfrissebb verziója fut-e rajta.
-* Győződjön meg arról, hogy a Active Directory (AD) LDAP-kiszolgáló működik és fut az AD-ben. Ezt úgy teheti meg, ha telepíti és konfigurálja a [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkört az ad-gépen.
-* A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Servicest (AADDS). A AADDS használata esetén a TLS protokollon keresztüli LDAP-t nem szabad engedélyezni.
-* A kettős protokollú kötet által használt NFS-verzió NFSv3. Ennek megfelelően a következő szempontokat kell figyelembe venni:
-    * A kettős protokoll nem támogatja a Windows ACL-ek bővített attribútumait az `set/get` NFS-ügyfelekről.
-    * Az NFS-ügyfelek nem változtathatják meg az NTFS biztonsági stílus engedélyeit, és a Windows-ügyfelek nem változtathatják meg a UNIX-stílusú kettős protokollú kötetek engedélyeit.   
+* Győződjön meg arról, Active Directory (AD) LDAP-kiszolgáló működik az AD-on. Ezt az AD-gépen Active Directory Lightweight Directory-szolgáltatások [(AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkör telepítésével és konfigurálásával teheti meg.
+* A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Services (AADDS) protokollt. Az AADDS használata esetén a TLS-hez tartozó LDAP nem engedélyezhető.
+* A kettős protokollú kötet által használt NFS-verzió az NFSv3. Ezért a következő szempontokat kell figyelembe venni:
+    * A kettős protokoll nem támogatja az NFS-ügyfelektől származó Kiterjesztett Windows `set/get` ACLS-attribútumokat.
+    * Az NFS-ügyfelek nem módosíthatják az NTFS biztonsági stílus engedélyeit, és a Windows-ügyfelek nem módosíthatják a UNIX stílusú kettős protokollú kötetek engedélyeit.   
 
-    A következő táblázat ismerteti a biztonsági stílusokat és azok hatásait:  
+    A következő táblázat a biztonsági stílusokat és azok hatásait ismerteti:  
     
-    | Biztonsági stílus    | Engedélyek módosítására képes ügyfelek   | Az ügyfelek által használható engedélyek  | Eredményül kapott biztonsági stílus    | Fájlok elérésére képes ügyfelek     |
+    | Biztonsági stílus    | Engedélyeket módosító ügyfelek   | Az ügyfelek által használható engedélyek  | Hatékony biztonsági stílus    | Fájlokhoz hozzáférő ügyfelek     |
     |-  |-  |-  |-  |-  |
-    | `Unix`    | NFS   | NFSv3 mód BITS   | UNIX  | NFS és Windows   |
+    | `Unix`    | NFS   | NFSv3 módú bitek   | UNIX  | NFS és Windows   |
     | `Ntfs`    | Windows   | NTFS ACL-ek     | NTFS  |NFS és Windows|
-* Az NTFS biztonsági stílusú kötetet az NFS használatával csatlakoztató UNIX-felhasználók Windows-felhasználóként lesznek hitelesítve a `root` UNIX `root` és `pcuser` az összes többi felhasználó számára. Győződjön meg arról, hogy ezek a felhasználói fiókok léteznek a Active Directory a kötet csatlakoztatása előtt, amikor az NFS-t használja. 
-* Ha nagyméretű topológiákkal rendelkezik, és a `Unix` biztonsági stílust kettős protokollos kötettel vagy bővített csoportokkal rendelkező LDAP-vel használja, akkor előfordulhat, hogy Azure NetApp Files nem fér hozzá a topológiákban lévő összes kiszolgálóhoz.  Ha ez a helyzet fordul elő, segítségért forduljon a fiók csapatához.  <!-- NFSAAS-15123 --> 
-* A kettős protokollú kötetek létrehozásához nincs szükség kiszolgálói legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Csak akkor szükséges, ha engedélyezve van a TLS protokollon keresztüli LDAP.
+* Az NTFS biztonsági stílusú kötetET NFS-sel felrakó UNIX-felhasználóként és az összes többi felhasználónál `root` `root` `pcuser` windowsos felhasználóként lesz hitelesítve. Győződjön meg arról, hogy ezek a felhasználói fiókok léteznek a Active Directory a kötet csatlakoztatása előtt NFS használata esetén. 
+* Ha nagyméretű topológiákkal rendelkezik, és a biztonsági stílust kettős protokollú kötethez vagy LDAP-hoz használja kiterjesztett csoportokkal, előfordulhat, hogy az Azure NetApp Files nem tudja elérni a topológiákban található összes `Unix` kiszolgálót.  Ha ez a helyzet, forduljon a fiók ügyfélszolgálathoz segítségért.  <!-- NFSAAS-15123 --> 
+* Két protokollos kötet létrehozásához nincs szükség kiszolgálói legfelső szintű hitelesítésszolgáltatói tanúsítványra. Csak akkor szükséges, ha a TLS-hez tartozó LDAP engedélyezve van.
 
 
 ## <a name="create-a-dual-protocol-volume"></a>Kettős protokollú kötet létrehozása
 
-1.  Kattintson a **kötetek** panelre a kapacitási készletek panelen. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához. 
+1.  Kattintson **a Kötetek panelre** a Kapacitáskészletek panelen. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához. 
 
-    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
+    ![Navigálás a kötetek között](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait az alapok lapon:   
+2.  A Kötet létrehozása ablakban kattintson a **Létrehozás** elemre, és adja meg az alábbi mezők adatait az Alapvető beállítások lapon:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A kötet nevének egyedinek kell lennie az egyes kapacitási készleteken belül. Legalább három karakter hosszúnak kell lennie. Bármely alfanumerikus karaktert használhat.   
+        A kötet nevének minden kapacitáskészleten belül egyedinek kell lennie. Legalább három karakter hosszúnak kell lennie. Bármilyen alfanumerikus karaktert használhat.   
 
-        `default` `bin` A vagy a kötet neve nem használható.
+        Kötetnévként `default` nem használhatja a vagy `bin` a et.
 
-    * **Kapacitási készlet**  
-        Határozza meg azt a kapacitási készletet, amelyben létre szeretné hozni a kötetet.
+    * **Kapacitáskészlet**  
+        Adja meg a kapacitáskészletet, ahol létre szeretné hozatni a kötetet.
 
     * **Kvóta**  
         Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
@@ -79,78 +79,99 @@ Az NFS-kötetek létrehozásával kapcsolatban lásd: [NFS-kötet létrehozása]
         A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.  
 
     * **Átviteli sebesség (MiB/S)**   
-        Ha a kötet kézi QoS-kapacitású készletben lett létrehozva, akkor határozza meg a kötet kívánt átviteli sebességét.   
+        Ha a kötet manuális QoS-kapacitáskészletben jön létre, adja meg a kötet kívánt átviteli sebességét.   
 
-        Ha a kötet egy automatikus QoS-kapacitási készletben jön létre, az ebben a mezőben megjelenő érték (kvóta x szolgáltatási szint átviteli sebessége).   
+        Ha a kötet egy automatikus QoS-kapacitáskészletben jön létre, az ebben a mezőben megjelenő érték (kvóta x szolgáltatási szint átviteli sebesség).   
 
     * **Virtuális hálózat**  
-        Itt adhatja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
+        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről hozzá szeretne férni a kötethez.  
 
-        A megadott vnet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a vnet érhető el, vagy egy olyan vnet, amely ugyanabban a régióban található, mint a kötet vnet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
+        A megadott virtuális hálózatnak delegált alhálózatot kell Azure NetApp Files. A Azure NetApp Files szolgáltatás csak ugyanattól a virtuális hálózattól vagy egy olyan virtuális hálózatról érhető el, amely a kötettel azonos régióban van virtuális hálózatok közötti társviszony létesítésen keresztül. A kötetet a helyszíni hálózatról is elérheti az Express Route-on keresztül.   
 
     * **Alhálózat**  
-        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
-        A megadott alhálózatot delegálni kell Azure NetApp Files. 
+        Adja meg a kötethez használni kívánt alhálózatot.  
+        A megadott alhálózatot delegálni kell a Azure NetApp Files. 
         
-        Ha nem delegált alhálózatot, a kötet létrehozása lapon kattintson az **új létrehozása** lehetőségre. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden vnet csak egy alhálózat delegálható Azure NetApp Filesra.   
+        Ha nem delegált alhálózatot,  a Kötet létrehozása lapon kattintson az Új létrehozása elemre. Ezután az Alhálózat létrehozása lapon adja meg az alhálózati adatokat, és válassza a **Microsoft.NetApp/volumes** lehetőséget az alhálózat delegálható Azure NetApp Files. Minden virtuális hálózatban csak egy alhálózat delegálható a Azure NetApp Files.   
  
         ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, adja meg, hogy el kívánja-e rejteni a pillanatkép elérési útját, majd válassza ki a pillanatkép-szabályzatot a legördülő menüben. 
+    * Ha meglévő pillanatkép-házirendet szeretne alkalmazni a  kötetre, kattintson a Speciális szakasz megjelenítése elemre annak kibontásához, adja meg, hogy el szeretné-e rejteni a pillanatkép elérési útját, majd válasszon ki egy pillanatkép-szabályzatot a lekért menüben. 
 
-        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Kattintson a **protokoll** elemre, majd hajtsa végre a következő műveleteket:  
-    * Válassza a **kettős protokoll (NFSv3 és SMB)** lehetőséget a kötethez.   
+3. Kattintson **a Protokoll** elemre, majd a következő műveleteket kell végrehajtania:  
+    * Válassza **a kettős protokoll (NFSv3 és SMB)** protokolltípust a kötethez.   
 
-    * A kötet **kötetének elérési útját** határozza meg.   
-    Ez a kötet elérési útja a megosztott kötet neve. A névnek betűvel kell kezdődnie, és az egyes előfizetésekben és régiókban egyedinek kell lennie.  
+    * Adja meg **a kötet kötetútvonalát.**   
+    Ez a kötet elérési útja a megosztott kötet neve. A névnek betűrendes karakterrel kell kezdődnie, és egyedinek kell lennie az egyes előfizetések és régiók között.  
 
-    * Határozza meg a használni kívánt **biztonsági stílust** : NTFS (alapértelmezett) vagy UNIX.
+    * Adja meg **a használni kívánt biztonsági** stílust: NTFS (alapértelmezett) vagy UNIX.
 
-    * Szükség esetén [a kötethez tartozó exportálási szabályzatot is konfigurálhatja](azure-netapp-files-configure-export-policy.md).
+    * Ha engedélyezni szeretné az SMB3 protokolltitkosítást a kettős protokollú köteten, válassza az **SMB3 protokolltitkosítás engedélyezése lehetőséget.**   
 
-    ![Kettős protokoll meghatározása](../media/azure-netapp-files/create-volume-protocol-dual.png)
+        Ez a funkció csak az SMB3-adatokat titkosítja. Nem titkosítja az NFSv3 adatokat. Az SMB3-titkosítást nem használó SMB-ügyfelek nem fogják tudni elérni ezt a kötetet. A rendszer a beállítástól függetlenül titkosítja az adatok titkosítását. További [információ: SMB-titkosítás](azure-netapp-files-faqs.md#smb-encryption-faqs) – gyakori kérdések. 
 
-4. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre. Ezután kattintson a **Létrehozás** gombra a kötet létrehozásához.
+        Az **SMB3 protokolltitkosítási** szolgáltatás jelenleg előzetes verzióban érhető el. Ha most használja először ezt a funkciót, regisztrálja a funkciót a használata előtt: 
 
-    A létrehozott kötet megjelenik a kötetek lapon. 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Ellenőrizze a szolgáltatásregisztráció állapotát: 
+
+        > [!NOTE]
+        > A **RegistrationState** állapot akár 60 percig is lehet, `Registering` mielőtt a következőre vált: `Registered` . A folytatás előtt várja meg, amíg `Registered` az állapot el nem áll.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        A szolgáltatás regisztrálására és a regisztráció állapotának megjelenítésére [azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` is `az feature show` használhat.  
+
+    * Ha szükséges, [konfigurálja a kötet exportálási szabályzatát.](azure-netapp-files-configure-export-policy.md)
+
+    ![Kettős protokoll megadása](../media/azure-netapp-files/create-volume-protocol-dual.png)
+
+4. Kattintson **a Felülvizsgálat + létrehozás elemre** a kötet részleteinek áttekintéshez. Ezután kattintson a **Létrehozás** gombra a kötet létrehozásához.
+
+    A létrehozott kötet megjelenik a Kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
-## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>A helyi NFS-felhasználók LDAP-vel való elérésének engedélyezése kettős protokollú kötethez 
+## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>Az LDAP-t használó helyi NFS-felhasználók hozzáférhetnek egy kettős protokollú kötethez 
 
-Engedélyezheti a Windows LDAP-kiszolgálón nem szereplő helyi NFS-ügyfelek számára a kettős protokollú kötetek elérését, amelyeken engedélyezve van az LDAP és a kiterjesztett csoportok használata. Ehhez engedélyezze a **helyi NFS-felhasználók engedélyezése LDAP** -sel beállítást a következő módon:
+Engedélyezheti a Windows LDAP-kiszolgálón nem jelen található helyi NFS-ügyfélfelhasználók számára, hogy hozzáférjenek egy olyan kettős protokollt használó kötethez, amelynél engedélyezve vannak a bővített csoportokkal rendelkező LDAP-k. A következőképpen engedélyezze az LDAP-val használó helyi **NFS-felhasználók** engedélyezése beállítást:
 
-1. Kattintson **Active Directory kapcsolatok** elemre.  Egy meglévő Active Directory-kapcsolatban kattintson a helyi menüre (a három pontra `…` ), majd válassza a **Szerkesztés** lehetőséget.  
+1. Kattintson **a Active Directory elemre.**  Egy meglévő kapcsolaton Active Directory kattintson a helyi menüre (három pont), majd válassza a `…` **Szerkesztés lehetőséget.**  
 
-2. A megjelenő **Active Directory beállítások szerkesztése** ablakban jelölje be a **helyi NFS-felhasználók engedélyezése LDAP** -beállítással beállítást.  
+2. A megjelenő **Edit Active Directory settings (Helyi** NFS-felhasználók engedélyezése **LDAP-val)** lehetőséget.  
 
-    ![Képernyőfelvétel a helyi NFS-felhasználók engedélyezése LDAP-beállítással](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
+    ![Képernyőkép az LDAP-val használó helyi NFS-felhasználók engedélyezése lehetőségről](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
 
 
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX-attribútumok kezelése
 
-Az Active Directory felhasználók és számítógépek MMC beépülő modullal kezelheti a POSIX-attribútumokat, például a UID-t, a kezdőkönyvtárat és az egyéb értékeket.  A következő példa a Active Directory attribútum-szerkesztőt mutatja be:  
+A POSIX-attribútumok, például az UID, a Kezdőkönyvtár és más értékek az MMC beépülő modul Active Directory - felhasználók és számítógépek kezelhetők.  Az alábbi példa a Active Directory attribútumszerkesztőt mutatja be:  
 
-![Active Directory Attribute Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
+![Active Directory attribútumszerkesztő](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
-A következő attribútumokat kell beállítania az LDAP-felhasználók és az LDAP-csoportok számára: 
-* Az LDAP-felhasználók kötelező attribútumai:   
+Az LDAP-felhasználókhoz és LDAP-csoportokhoz a következő attribútumokat kell beállítania: 
+* LdAP-felhasználók kötelező attribútumai:   
     `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
-* Az LDAP-csoportok szükséges attribútumai:   
+* LdAP-csoportokhoz szükséges attribútumok:   
     `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>Az NFS-ügyfél konfigurálása 
 
-Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
+Az NFS-ügyfél konfigurálásán az [NFS-ügyfél konfigurálásán Azure NetApp Files NFS-ügyfél](configure-nfs-clients.md) konfigurálásán.  
 
 ## <a name="next-steps"></a>Következő lépések  
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
-* [SMB-vagy kettős protokollú kötetek hibáinak megoldása](troubleshoot-dual-protocol-volumes.md)
-* [Az LDAP-kötetek problémáinak elhárítása](troubleshoot-ldap-volumes.md)
+* [SMB- vagy kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)
+* [LDAP-kötetekkel kapcsolatos problémák elhárítása](troubleshoot-ldap-volumes.md)

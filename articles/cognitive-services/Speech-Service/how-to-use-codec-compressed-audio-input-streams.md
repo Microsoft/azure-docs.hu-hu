@@ -1,7 +1,7 @@
 ---
-title: Stream codec tömörített hang a Speech SDK-Speech szolgáltatással
+title: Kodekkel tömörített hang streamelése a Speech SDK – Speech service használatával
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan továbbíthat tömörített hangot a beszédfelismerési szolgáltatásnak a Speech SDK-val. Elérhető a C++, a C# és a Java for Linux, a Java az Androidban és az Objective-C-ben iOS-ben.
+description: Megtudhatja, hogyan streamelhet tömörített hangot a Speech Service-be a Speech SDK-val. Elérhető C++, C# és Java rendszerekhez Linux, Java androidos és Objective-C iOS rendszeren.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -12,27 +12,27 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 1e08203076de2073e39c5b5f5eb40b66c88490d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f02a9a3b493ed0f3068e6e0ccd2daa40850a4fb6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417706"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726177"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Kodekkel tömörített hangbemenet használata a Speech SDK-val
 
-A Speech Service SDK **tömörített hangbemeneti stream** API lehetővé teszi a tömörített hang továbbítását a beszédfelismerési szolgáltatásba vagy a vagy a használatával `PullStream` `PushStream` .
+A Speech service SDK lehetővé teszi tömörített hangformátumok közvetlen elküldését a Speech service-nek a vagy a használatával (egyik megközelítés sem streamel közvetlenül a háttérbe, a nyers PCM továbbra is a szolgáltatásnak `PullStream` `PushStream` lesz elküldve).
 
 Platform | Nyelvek | Támogatott GStreamer-verzió
 | :--- | ---: | :---:
-Windows (UWP nélkül)  | C++, C#, Java, Python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/)
-Linux  | C++, C#, Java, Python | [támogatott Linux-disztribúciók és-megcélzott architektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Windows (az UWP kivételével)  | C++, C#, Java, Python | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/windows/1.18.3/)
+Linux  | C++, C#, Java, Python | [támogatott Linux-disztribúciók és célarchitektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)
 Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.18.3/)
 
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>A tömörített hangbemenethez szükséges Speech SDK-verzió
-* A Speech SDK 1.10.0 vagy újabb verziójára van szükség a RHEL 8 és a CentOS 8 esetében
-* A Windows rendszerhez a Speech SDK 1.11.0 vagy újabb verziója szükséges.
-* A Windows és az Android rendszerhez készült legújabb GStreamer a Speech SDK 1.16.0 vagy újabb verziója.
+* A Speech SDK 1.10.0-s vagy újabb verziójára van szükség az RHEL 8 és a CentOS 8 esetében
+* A Windowshoz a Speech SDK 1.11.0-s vagy újabb verziójára van szükség.
+* A Speech SDK 1.16.0-s vagy újabb verziója a legújabb gstreamerhez Windows és Android rendszeren.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -54,7 +54,7 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Kód tömörített hangbemenetet használó programkód
+## <a name="example-code-using-codec-compressed-audio-input"></a>Kódkód például kodek tömörített hangbemenet használatával
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/examples.md)]
@@ -75,4 +75,4 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Megtudhatja, hogyan ismerheti fel a beszédfelismerést](./get-started-speech-to-text.md)
+> [A beszédfelismerés elsajátítás](./get-started-speech-to-text.md)

@@ -5,13 +5,13 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 40281211e5eb70089f4168dcb02720c912120a35
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576108"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728517"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Készlet létrehozása a lemeztitkosítás engedélyezése mellett
 
@@ -19,7 +19,7 @@ Amikor a virtuálisgép-konfigurációval [](nodes-and-pools.md#virtual-machine-
 
 Ez a cikk bemutatja, hogyan hozhat létre engedélyezett lemeztitkosítással rendelkező Batch-készletet.
 
-## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Miért érdemes lemeztitkosítási konfigurációval készletet használni?
+## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Miért érdemes lemeztitkosítási konfigurációval konfigurált készletet használni?
 
 A Batch-készlettel elérheti és tárolhatja az adatokat a számítási csomópont operációs rendszerén és ideiglenes lemezén. A kiszolgálóoldali lemez platform által felügyelt kulccsal való titkosítása alacsony többletterheléssel és kényelmes védelemmel védi az adatokat.
 

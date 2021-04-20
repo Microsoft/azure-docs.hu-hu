@@ -1,5 +1,5 @@
 ---
-title: Anomália-detektor többváltozós JavaScript ügyféloldali kódtár gyors üzembe helyezése
+title: anomáliadetektor JavaScript ügyféloldali kódtár létrehozása – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,46 +8,48 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 4e0f2d1bae07f0814b4f096d8be315bd92cd42fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 03fbd5e641c72a03a4a3cb19219678bc3d3fff51
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316027"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732207"
 ---
-Ismerkedjen meg a következővel: anomália-detektor többváltozós ügyféloldali kódtár a JavaScripthez. A következő lépésekkel telepítheti a csomagot, és megkezdheti a szolgáltatás által biztosított algoritmusok használatát. Az új többváltozós anomália-észlelési API-k lehetővé teszik a fejlesztők számára, hogy a speciális AI-t egyszerűen integrálják a mérőszámokból származó rendellenességek észlelése érdekében, anélkül, hogy gépi tanulási ismeretekre vagy címkézett adatokra lenne A különböző jelek közötti függőségek és korrelációk közötti összefüggések automatikusan kulcsfontosságú tényezőként számítanak. Ezzel a megoldással proaktív módon védhető meg az összetett rendszerek hibái.
+A JavaScripthez anomáliadetektor ügyféloldali kódtár első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez és a szolgáltatás által biztosított algoritmusok használatának elkezdéhez. Az új többváltozós anomáliadetektálási API-k a fejlett AI egyszerű integrálásával teszik lehetővé a fejlesztők számára a metrikák csoportjaiból származó anomáliadetektálást anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
-A következőhöz tartozó anomália-detektor többváltozós ügyféloldali kódtárat használja a JavaScripthez:
+A JavaScripthez anomáliadetektor ügyféloldali kódtár használatával a következőt használhatja:
 
-* A rendszerszintű rendellenességek észlelése idősorozatok csoportjából.
-* Ha az egyes idősorozatok nem sokat mondanak, és az összes jelet meg kell vizsgálnia a probléma észlelése érdekében.
-* A Predicative több száz különböző típusú érzékelővel, a rendszerállapot különböző szempontjainak mérésével a költséges fizikai eszközök karbantartását is megfigyelheti.
+* Rendszerszintű anomáliák észlelése idősorok egy csoportjából.
+* Ha egy adott idősor nem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
+* Költséges fizikai eszközök predikatív karbantartása több tíz-száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
+
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector)  |  [Csomag (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* A [Node.js](https://nodejs.org/) aktuális verziója
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* ANode.js[](https://nodejs.org/)
+* Az Azure-előfizetés létrehozása után hozzon létre egy anomáliadetektor-erőforrást, anomáliadetektor erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, majd kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a anomáliadetektor API-hoz. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init` parancsot egy Node-alkalmazás fájlhoz való létrehozásához `package.json` . 
+Az parancs `npm init` futtatásával hozzon létre egy node-alkalmazást egy `package.json` fájllal. 
 
 ```console
 npm init
 ```
 
-Hozzon létre egy nevű fájlt `index.js` , és importálja a következő kódtárakat:
+Hozzon létre egy nevű fájlt, `index.js` és importálja a következő kódtárakat: '
 ```javascript
 'use strict'
 
@@ -57,7 +59,7 @@ const { AnomalyDetectorClient } = require('@azure/ai-anomaly-detector');
 const { AzureKeyCredential } = require('@azure/core-auth');
 ```
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásakor. Hozzon létre egy másik változót a példaként szolgáló adatfájlhoz.
+Hozza létre az erőforrás Azure-végpontját és kulcsát. Hozzon létre egy másik változót a példaadatfájlhoz.
 
 ```javascript
 const apiKey = "YOUR_API_KEY";
@@ -65,31 +67,31 @@ const endpoint = "YOUR_ENDPOINT";
 const data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- Az anomáliák többváltozós API-k használatához az észlelés használata előtt be kell tanítani a saját modelljét. A betanításhoz használt adatmennyiség az idősorozatok egy kötege, minden egyes idősorozatnak CSV formátumúnak kell lennie két oszloppal, egy időbélyeggel és egy értékkel. Az összes idősorozatot egy zip-fájlba kell csomagolni, és fel kell tölteni az [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md)-ba. Alapértelmezés szerint a rendszer a fájlnevet fogja használni az idősorozat változójának ábrázolásához. Azt is megteheti, hogy a fájl egy további meta.jsis tartalmazhatja a zip-fájlban, ha azt szeretné, hogy a változó neve eltér a. zip-fájl nevétől. Ha a [blob sas (közös hozzáférésű aláírás) URL-címet](../../../../storage/common/storage-sas-overview.md)generálta, a betanításhoz használhatja a zip-fájl URL-címét.
+ A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy SAS- (közös hozzáférésű [jogosultságú) URL-címet,](../../../../storage/common/storage-sas-overview.md)a zip-fájl URL-címét használjuk a betanításhoz.
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és a `azure-ai-anomalydetector` NPM csomagokat. Ebben a rövid útmutatóban a CSV-elemzési függvénytárat is használják:
+Telepítse az `ms-rest-azure` és az `azure-ai-anomalydetector` NPM-csomagot. Ebben a rövid útmutatóban a csv-parse kódtárat is használjuk:
 
 ```console
 npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 ```
 
-Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
+Az alkalmazás `package.json` fájlja frissül a függőségekkel.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js rendellenesség-Kiderítő ügyféloldali kódtár használatával:
+Ezek a kódrészletek a következőt mutatják be a anomáliadetektor ügyféloldali kódtárával Node.js:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Modell betanítása](#train-a-model)
-* [Rendellenességek észlelése](#detect-anomalies)
+* [Anomáliák észlelése](#detect-anomalies)
 * [Modell exportálása](#export-model)
 * [Modell törlése](#delete-model)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Objektumot hoz létre `AnomalyDetectorClient` a végponttal és a hitelesítő adatokkal.
+Objektum példányosodása a végponttal és a `AnomalyDetectorClient` hitelesítő adatokkal.
 
 ```javascript
 const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey)).client;
@@ -97,9 +99,9 @@ const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey
 
 ## <a name="train-a-model"></a>Modell betanítása
 
-### <a name="construct-a-model-result"></a>Modell eredményének létrehozása
+### <a name="construct-a-model-result"></a>Modell eredményének megépítése
 
-Először létre kell hoznia egy modell-kérelmet. Győződjön meg arról, hogy a kezdési és befejezési idő igazodik az adatforráshoz.
+Először létre kell hoznunk egy modellkérést. Győződjön meg arról, hogy a kezdési és a záró időpont igazodik az adatforráshoz.
 
 ```javascript
 const Modelrequest = {
@@ -110,9 +112,9 @@ const Modelrequest = {
     };    
 ```
 
-### <a name="train-a-new-model"></a>Új modell betanítása
+### <a name="train-a-new-model"></a>Új modell betanítás
 
-A modellre vonatkozó kérelmet át kell adnia az anomália-detektor ügyfél- `trainMultivariateModel` metódusának.
+A modellkérést át kell adnia a anomáliadetektor ügyfél `trainMultivariateModel` metódusának.
 
 ```javascript
 console.log("Training a new model...")
@@ -121,7 +123,7 @@ var model_id = train_response.location.split("/").pop()
 console.log("New model ID: " + model_id)
 ```
 
-Annak ellenőrzését, hogy a modell betanítása befejeződött-e, nyomon követheti a modell állapotát:
+Annak ellenőrzéshez, hogy a modell betanítás befejeződött-e, nyomon követheti a modell állapotát:
 
 ```javascript
 var model_response = await client.getMultivariateModel(model_id)
@@ -136,9 +138,9 @@ while (model_status != 'READY'){
 console.log("TRAINING FINISHED.")
 ```
 
-## <a name="detect-anomalies"></a>Rendellenességek észlelése
+## <a name="detect-anomalies"></a>Anomáliák észlelése
 
-A `detectAnomaly` és a `getDectectionResult` függvények segítségével meghatározhatja, hogy vannak-e rendellenességek az adatforráson belül.
+A és `detectAnomaly` `getDectectionResult` a függvény használatával állapítsa meg, hogy vannak-e anomáliák az adatforrásban.
 
 ```javascript
 console.log("Start detecting...")
@@ -161,7 +163,7 @@ while (result_status != 'READY'){
 
 ## <a name="export-model"></a>Modell exportálása
 
-A betanított modell exportálásához használja a `exportModel` függvényt.
+A betanított modell exportáláshoz használja a `exportModel` függvényt.
 
 ```javascript
 const export_result = await client.exportModel(model_id)
@@ -182,7 +184,7 @@ console.log("New model has been deleted.")
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
+Futtassa az alkalmazást a `node` gyorsindítási fájlban található paranccsal.
 
 ```console
 node index.js
@@ -190,4 +192,4 @@ node index.js
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Anomália-érzékelő többváltozós ajánlott eljárásai](../../concepts/best-practices-multivariate.md)
+* [anomáliadetektor többválékos ajánlott eljárások](../../concepts/best-practices-multivariate.md)

@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 0f2d3c830f27eec9f521e6f79ac8dce3bce818e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
-ms.translationtype: HT
+ms.openlocfilehash: ce9dff017a796e420586ad191a59c149bed07190
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442564"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726825"
 ---
 # <a name="azure-marketplace"></a>Azure Piactér
 
@@ -74,45 +74,7 @@ Az alábbi szolgáltatások számlázása a nagyvállalati szerződés esetében
 
 Ha nagyvállalati szerződéssel rendelkezik, akkor az Azure RemoteAppért a nagyvállalati szerződésben megállapított árszint alapján fizet. Nem számítunk fel további díjakat. A standard ár a kezdeti 40 órát tartalmazza. A korlátlan díjszabás a kezdeti 80 órát fedezi. A RemoteApp a 80 órán túl nem bocsátja ki a használatot.
 
-## <a name="azure-marketplace-faq"></a>Azure Marketplace – Gyakori kérdések
-
-Ez a szakasz elmagyarázza, hogy az Azure-előrefizetési keret hogyan vonatkozhat egyes harmadik felek viszonteladói szolgáltatásaira az Azure Marketplace-en.
-
-### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Mi változott az Azure Marketplace-szolgáltatásokkal és az Azure EA-előrefizetéssel kapcsolatban?
-
-2018. március 1-től néhány külső viszonteladói szolgáltatás is az Azure EA-előrefizetési keretet használja. Az Azure Reserved VM Instances kivételével ezeknek a szolgáltatásoknak a számlázása korábban az Azure EA-előrefizetési kereten kívül, külön számlákkal történt.
-
-Kiterjesztettük az Azure-előrefizetési keret felhasználhatóságát, hogy az ügyfeleink által leggyakrabban vásárolt, külső féltől származó Azure Marketplace-szolgáltatásokat is lefedje. Az Azure Marketplace-en érvényes Azure EA-előrefizetési keret kiterjesztése ezen szolgáltatásokra hozzájárul az Ön vásárlás- és fizetéskezelésének egyszerűsítéséhez.
-
-### <a name="why-did-we-make-this-change"></a>Mi oka van ennek a változtatásnak?
-
-Az ügyfelek folyamatosan további lehetőségeket keresnek, hogy kihasználhassák az Azure-előrefizetés előnyeit. Ezzel egy gyakran felmerülő vásárlói kérésre adtunk választ, illetve Azure Marketplace-ügyfeleink jelentős részének kedveztünk általa.
-
-### <a name="how-do-you-benefit"></a>Milyen előnyt jelent ez az Ön számára?
-
-Egyszerűbb lesz a számlázás az ügyfelek számára, és könnyebbé válik az Azure EA-előrefizetési keret teljes kihasználása. Mivel ezeket a szolgáltatásokat fedezi az Azure-előrefizetés, az Azure EA-előrefizetés értékesebb lesz.
-
-### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Melyik Azure Marketplace-szolgáltatások használják az Azure EA-előrefizetést? Honnan lehet ezt tudni?
-
-Ha olyan szolgáltatást vásárol, amely az Azure-előrefizetést használja, az Azure Marketplace felhívja erre a figyelmét. A jelenleg támogatottak közé a Red Hat, a SUSE, az Autodesk és az Oracle által közzétett egyes szolgáltatások tartoznak. Más szolgáltatók által közzétett hasonló nevű szolgáltatások jelenleg nem fedezhetők az Azure-előrefizetési keretből. A GYIK végén a teljes lista elérhető.
-
-### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Mi a teendő, ha kimerítem az Azure EA-előrefizetési keretemet?
-
-Ha felhasználta a teljes Azure-előrefizetési keretet, és jelenleg azon túl használja a szolgáltatásokat, a velük kapcsolatos díjak a soron következő túlhasználati számlán jelennek meg a többi használatalapú szolgáltatással együtt. A 2018. március 1. előtti változtatást megelőzően ezek a díjak a többi Azure Marketplace-szolgáltatással együtt lettek kiszámlázva.
-
-### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Miért nem használja az Azure Marketplace összes szolgáltatása az Azure EA-előrefizetést?
-
-Sokat dolgozunk azon, hogy az Azure EA-előrefizetéshez kapcsolódóan a legjobb felhasználói élményt nyújthassuk. Ez a változás számos ügyfelet érint, és az Azure Marketplace-beli teljes költés jelentős részére hatással van. A későbbiekben további szolgáltatásokkal is bővülhet a kör.
-
-### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Hogyan befolyásolja ez a közvetett regisztrációt és partnereket?
-
-Mindennek nincs hatása a közvetett regisztrációs ügyfeleinkre és partnereinkre. Ezekre a szolgáltatásokra ugyanazok a partneri árréslehetőségek vonatkoznak, mint más használatalapú szolgáltatások esetében. Az egyetlen változás az, hogy a díjak egy másik számlán jelennek meg, és a díjak ellenértéke az ügyfél Azure EA-előrefizetési keretéből vonódik le.
-
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Van lista azokról az Azure Marketplace-szolgáltatásokról, amelyek az Azure EA-előrefizetési keretét használják?
-
-Bizonyos Azure Marketplace-ajánlatokhoz az Azure-előrefizetési keret is felhasználható. A programban részt vevő termékek teljes listájáért tekintse meg [az Azure-előrefizetést használó, harmadik féltől származó szolgáltatások](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) szakaszát.
-
-
 ## <a name="next-steps"></a>További lépések
 
 - Itt további információt találhat a [díjszabásról](ea-pricing-overview.md).
+- A gyakori [Cost Management + Billing tekintse](../cost-management-billing-faq.yml) meg a szolgáltatásokra és az Azure EA Azure Marketplace-előrefizetésre vonatkozó kérdések és válaszok listáját.

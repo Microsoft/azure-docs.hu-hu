@@ -26,7 +26,7 @@
           href: ../../cloud-shell/overview.md
         - name: Kapcsolódás a Media Services szolgáltatáshoz
           items:
-            - name: Kapcsolódás a REST és a Postman segítségével
+            - name: Kapcsolódás REST és Postman segítségével
               href: setup-postman-rest-how-to.md
             - name: Csatlakozás Javával
               href: configure-connect-java-howto.md
@@ -85,6 +85,8 @@
       items:
         - name: Egy távoli fájl kódolása és streamelése Node.js használatával
           href: stream-files-nodejs-quickstart.md
+        - name: Élő streamelés Node.js
+          href: stream-live-tutorial-with-nodejs.md
     - name: Python
       items:
         - name: Python alapszintű kódolás
@@ -147,12 +149,12 @@
           href: encode-content-aware-concept.md
         - name: Fenntartott médiaegységek
           href: concept-media-reserved-units.md
-    - name: Elemzés és újrafésítés
+    - name: Elemzés és újrafedés
       items:
         - name: Áttekintés
           href: analyze-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Arcok észlelése és kirekedés (elmosódás)
+        - name: Arcok észlelése és kirekedés (elmosott arcok)
           href: analyze-face-redaction-concept.md
           displayName: 'analyze, redact, face, detect, presets, jobs, blur, faces, redaction'
     - name: Átalakítások és feladatok
@@ -287,7 +289,7 @@
             - name: API-hozzáférés
               href: migrate-v-2-v-3-differences-api-access.md
               displayName: 'migration, api'
-            - name: Funkció hézagok
+            - name: Funkciók hiányosságai
               href: migrate-v-2-v-3-differences-feature-gaps.md
               displayName: 'migration, features'
             - name: Terminológia és entitásváltozások
@@ -338,14 +340,14 @@
           href: transform-create-transform-how-to.md
         - name: Alapszintű hangátalakítás létrehozása a REST használatával
           href: transform-create-basic-audio-how-to.md
-        - name: Miniatűr-sprite-fájlok létrehozása
+        - name: Miniatűrök sprite-jeinek létrehozása
           href: transform-create-thumbnail-sprites-how-to.md
         - name: Két vagy több videofájl összefűzése a .NET-en
           href: transform-stitch-how-to.md
         - name: Videó alklipre (.NET)
           href: transform-subclip-video-dotnet-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: Video REST alklipekbe helyezése
+        - name: Videó rest alklipre helyezése
           href: transform-subclip-video-rest-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
         - name: Kódoló előzetes beállításkészletének testreszabása .NET
@@ -361,7 +363,7 @@
         - name: Kódoló előzetes beállításkészletének testreszabása REST
           displayName: 'encode, encoding, custom, transform'
           href: transform-custom-preset-rest-how-to.md
-        - name: Miniatűrök létrehozása REST
+        - name: Miniatűrök REST létrehozása
           href: transform-generate-thumbnails-rest-how-to.md
         - name: copyAllBitrateNonInterleaved átalakítás létrehozása a REST használatával
           href: transform-create-copyallbitratenoninterleaved-how-to.md
@@ -378,7 +380,7 @@
           href: job-multiple-transform-outputs-how-to.md
         - name: HTTPS mint feladatbemenet
           href: job-input-from-http-how-to.md
-    - name: Fenntartott médiaegységek méretezése – CLI
+    - name: Fenntartott médiaegységek skálázhatók a CLI-hez
       href: media-reserved-units-cli-how-to.md
     - name: Élő stream
       items:

@@ -4,19 +4,19 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b247613ba02f897d2c0b02fc12ecd4a974cffdf4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3fcc3598348dcfd3e0d0b81bded40161743126d3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113217"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725304"
 ---
-Ismerkedjen meg a .NET-hez készült Custom Vision ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a képbesorolási modell létrehozásához szükséges példát. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
+Első lépések a Custom Vision .NET-hez való ügyféloldali kódtárával. Kövesse az alábbi lépéseket a csomag telepítéséhez, és próbálja ki a képbesorolási modell építéséhez szükséges példakódot. Létre fog hozni egy projektet, címkéket fog hozzáadni, betanítja a projektet, és a projekt előrejelzési végponti URL-címével programozott módon teszteli azt. Ezt a példát sablonként használhatja saját képfelismerő alkalmazásának építéséhez.
 
 > [!NOTE]
-> Ha a besorolási modellt kód írása _nélkül_ szeretné felépíteni és betanítani, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
+> Ha kódírás nélkül szeretne besorolási modellt felépíteni és betaníteni, tekintse meg helyette a [böngészőalapú útmutatót.](../../getting-started-build-a-classifier.md) 
 
-A .NET-hez készült Custom Vision ügyféloldali kódtára a következőre használható:
+Használja a Custom Vision .NET-hez használható ügyféloldali kódtárát a következőre:
 
 * Új Custom Vision-projekt létrehozása
 * Címkék hozzáadása a projekthez
@@ -25,44 +25,44 @@ A .NET-hez készült Custom Vision ügyféloldali kódtára a következőre hasz
 * Az aktuális iteráció közzététele
 * Az előrejelzési végpont tesztelése
 
-[Referenciák dokumentációja](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | Könyvtár forráskódja [(képzés)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(előrejelzés)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Csomag (NuGet) [(képzési)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(előrejelzési)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [minták](/samples/browse/?products=azure&term=vision&terms=vision)
+[Referenciadokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | Kódtár [forráskódja (betanítás)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(előrejelzés)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Csomag (NuGet) [(betanítás)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(előrejelzés)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [minták](/samples/browse/?products=azure&term=vision&terms=vision)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* A [Visual Studio ide](https://visualstudio.microsoft.com/vs/) vagy a [.net Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója.
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" hozzon létre egy Custom Vision erőforrást egy "  target="_blank"> Custom Vision erőforrás létrehozásához </a> a Azure Portal egy képzési és előrejelzési erőforrás létrehozásához, valamint a kulcsok és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Az alkalmazás Custom Visionhoz való összekapcsolásához szüksége lesz a létrehozott erőforrások kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
+* A [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) vagy a [.NET Core aktuális verziója.](https://dotnet.microsoft.com/download/dotnet-core)
+* Az Azure-előfizetés létrehozása után hozzon létre egy Custom Vision-erőforrást, és hozzon létre egy Custom Vision-erőforrást a Azure Portal-ban egy betanítás és előrejelzési erőforrás létrehozásához, valamint a kulcsok és a végpont lekért <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> </a> létrehozásához. Várja meg az üzembe helyezést, majd kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrások kulcsának és végpontjának létrehozására ahhoz, hogy az alkalmazást a Custom Vision. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Hozzon létre egy új .NET Core-alkalmazást a Visual Studióval. 
+A Visual Studio hozzon létre egy új .NET Core-alkalmazást. 
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** , majd a **NuGet-csomagok kezelése** lehetőségre kattint a jobb gombbal a projekt megoldásra. A megnyíló csomagkezelő válassza a **Tallózás** lehetőséget, jelölje be az **előzetes verzió** használata jelölőnégyzetet, és keressen rá a és a kifejezésre `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . Válassza ki a legújabb verziót, majd **telepítse** a programot. 
+Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat. Kattintson a jobb gombbal a projektmegoldásra a Megoldáskezelő majd válassza a **Manage NuGet Packages (NuGet-csomagok** **kezelése)** gombra. A megnyíló csomagkezelőben válassza a **Tallózás** lehetőséget, jelölje be az **Include prerelease**(Előzetes) jelölőnégyzetet, majd keresse meg a és a `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` et. Válassza ki a legújabb verziót, majd telepítse a **következőt:**. 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `custom-vision-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) az paranccsal hozzon létre egy új konzolalkalmazást `dotnet new` `custom-vision-quickstart` néven. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájllal: *program.cs*. 
 
 ```console
 dotnet new console -n custom-vision-quickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappába. Az alkalmazást a következővel építheti fel:
 
 ```console
 dotnet build
 ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
+A build kimenete nem tartalmazhat figyelmeztetéseket vagy hibákat. 
 
 ```console
 ...
@@ -74,7 +74,7 @@ Build succeeded.
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Az alkalmazás könyvtárában telepítse az Custom Vision .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
+Telepítse a .NET-hez Custom Vision ügyféloldali kódtárat az alkalmazáskönyvtárban a következő paranccsal:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training --version 2.0.0
@@ -84,25 +84,25 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 ---
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ez a [GitHubon található,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)amely az ebben a rövid útmutatóban található példakódokat tartalmazza.
 
-A projekt könyvtárában nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` irányelveket:
+A projektkönyvtárból nyissa meg a *program.cs fájlt,* és adja hozzá a következő `using` irányelveket:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_imports)]
 
 
-Az alkalmazás **fő** metódusában hozzon létre változókat az erőforrás kulcsa és végpontja számára. Emellett néhány alapvető objektumot is meg kell adnia, amelyeket később fel kell használni.
+Az alkalmazás **Main** metódusában hozzon létre változókat az erőforrás kulcsához és végpontjához. Néhány alapvető objektumot is deklarál, hogy később szükség legyen rá.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsok és a végpont az erőforrások **kulcs és végpont** oldalain található. Be kell szereznie a képzési és előrejelzési erőforrások kulcsait, valamint a képzési erőforrás API-végpontját.
+> Nyissa meg az Azure Portalt. Ha az Custom Vision szakaszban létrehozott erőforrás-erőforrások telepítése sikeresen megtörtént, kattintson az **Erőforráshoz** ugrás gombra a **Következő lépések területen.**  A kulcsokat és a végpontot az erőforrások kulcs- és végpontoldalán **találja.** Le kell szereznie a betanítás és az előrejelzési erőforrások kulcsait, valamint a betanító erőforrás API-végpontját.
 >
-> A jóslat erőforrás-azonosító értékét az erőforrás **Tulajdonságok** lapján, az **előfizetés azonosítója** mezőben találja.
+> Az előrejelzési erőforrás-azonosító értékét az  erőforrás Tulajdonságok lapján találja, amely **előfizetés-azonosítóként van felsorolva.**
 > 
-> Ne felejtse el eltávolítani a kulcsokat a kódból, amikor elkészült, és soha ne tegye közzé őket nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsokat a kódból, amikor végzett, és soha ne tegye közzé őket nyilvánosan. Éles környezetben érdemes lehet biztonságos módon tárolni és elérni a hitelesítő adatokat. További információért tekintse meg a Cognitive Services [cikkét.](../../../cognitive-services-security.md)
 
-Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid útmutatóban használt módszerekhez. Ezeket később fogja megvalósítani.
+Az alkalmazás **Main** metódusában adja hozzá az ebben a rövid útmutatóban használt metódusok hívásait. Ezeket később fogja megvalósítani.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_maincalls)]
 
@@ -111,12 +111,12 @@ Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid 
 |Név|Leírás|
 |---|---|
 |[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Ez az osztály kezeli a modellek létrehozását, betanítását és közzétételét. |
-|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Ez az osztály kezeli a modellek lekérdezését a képbesorolási előrejelzésekhez.|
-|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| Ez az osztály egyetlen előrejelzést definiál egyetlen rendszerképhez. Az objektum AZONOSÍTÓjának és nevének, valamint a megbízhatósági pontszámnak a tulajdonságait tartalmazza.|
+|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Ez az osztály kezeli a modellek képbesorolási előrejelzésekre való lekérdezését.|
+|[PredictionModel (Előrejelzési modell)](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| Ez az osztály egyetlen előrejelzést határoz meg egyetlen képen. Tartalmazza az objektumazonosító és -név tulajdonságait, valamint egy megbízhatósági pontszámot.|
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az Custom Vision .NET-hez készült ügyféloldali kódtára használatával:
+Ezek a kódrészletek a következő feladatok elvégzését mutatják be a .NET-hez Custom Vision ügyféloldali kódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Új Custom Vision-projekt létrehozása](#create-a-new-custom-vision-project)
@@ -129,53 +129,53 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Egy új metódusban hozza létre a képzési és előrejelzési ügyfeleket a végpont és a kulcsok használatával.
+Egy új metódusban példányoshatja a betanító és előrejelzési ügyfeleket a végpont és a kulcsok használatával.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_auth)]
 
 ## <a name="create-a-new-custom-vision-project"></a>Új Custom Vision-projekt létrehozása
 
-A következő kódrészlet egy rendszerkép-besorolási projektet hoz létre. A létrehozott projekt megjelenik a [Custom Vision webhelyén](https://customvision.ai/). Tekintse meg a [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) metódust a projekt létrehozásakor a többi beállítás megadásához (az [osztályozó webportál összeállításával](../../getting-started-build-a-classifier.md) foglalkozó útmutatóban).  
+A következő kód egy képosztályozási projektet hoz létre. A létrehozott projekt a következő webhelyen [Custom Vision meg:](https://customvision.ai/). A [createProject metódusban](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) további beállításokat is megadhat a projekt létrehozásakor (lásd [az](../../getting-started-build-a-classifier.md) osztályozó webportáljának összeállítása útmutatót).  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
 
 
 ## <a name="add-tags-to-the-project"></a>Címkék hozzáadása a projekthez
 
-Ez a módszer határozza meg azokat a címkéket, amelyeken a modellt be fogja tanítani.
+Ez a metódus határozza meg azokat a címkéket, amelyeken a modellt betanítja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_addtags)]
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Először töltse le a projekthez tartozó mintaképeket. Mentse a [Sample images mappa](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) tartalmát a helyi eszközre.
+Először töltse le a projekthez a mintaképeket. Mentse a Képek [mintamappa tartalmát](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) a helyi eszközre.
 
 > [!NOTE]
-> Szüksége van egy szélesebb körű rendszerképekre a képzés befejezéséhez? A Microsoft garázs-projekt, amely lehetővé teszi, hogy beszerezze a betanítási célokra szánt lemezképek készleteit. A képek összegyűjtése után letöltheti őket, majd a szokásos módon importálhatja őket a Custom Vision-projektbe. További információért látogasson el az [adattárház oldalára](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) .
+> A betanítás befejezéséhez szélesebb képkészletre van szüksége? A Microsoft Garage projekt, a Trove lehetővé teszi képek gyűjtését és megvásárlását betanítás céljából. Miután összegyűjtötte a képeket, letöltheti őket, majd a szokásos módon importálhatja Custom Vision saját projektjére. További [információért látogasson el a Trove](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) oldalára.
 
-Ezután Definiáljon egy segítő módszert a lemezképek feltöltéséhez ebben a könyvtárban. Előfordulhat, hogy szerkesztenie kell a **GetFiles** argumentumot, hogy arra a helyre mutasson, ahová a lemezképek mentve lesznek.
+Ezután határozzon meg egy segítő metódust, amely ebbe a könyvtárba tölti fel a képeket. Előfordulhat, hogy úgy kell szerkesztenie a **GetFiles** argumentumot, hogy a képek mentésének helyére mutasson.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_loadimages)]
 
-Ezután Definiáljon egy módszert a lemezképek feltöltésére, a címkék a mappa helye szerint történő alkalmazására (a képek már rendezettek). A képeket feltöltheti és címkézheti iteratív, vagy egy kötegben (legfeljebb 64/batch). Ez a kódrészlet példákat is tartalmaz. 
+Ezután határozzon meg egy metódust a képek feltöltésének, és alkalmazza a címkéket a mappa helye alapján (a képek már rendezve vannak). A képeket feltöltheti és címkézheti iteratívan vagy kötegben (kötegenként legfeljebb 64-et). Ez a kódrészlet mindkettőre tartalmaz példákat. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
 
 ## <a name="train-the-project"></a>A projekt betanítása
 
-Ez a metódus létrehozza az első betanítási iterációt a projektben. A szolgáltatás lekérdezi a szolgáltatást, amíg a képzés be nem fejeződik.
+Ez a metódus hozza létre az első betanítási iterációt a projektben. A betanítás befejezéséig lekérdezi a szolgáltatást.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
 > [!TIP]
-> Betanítás kiválasztott címkékkel
+> Betanítás kijelölt címkékkel
 >
-> Igény szerint betaníthatja az alkalmazott címkék egy részhalmazát. Ezt akkor érdemes megtenni, ha még nem alkalmazta elég bizonyos címkéket, de másokkal is rendelkezik. A [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) -hívásban használja a *trainingParameters* paramétert. Hozzon létre egy [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters) , és állítsa be a **SelectedTags** tulajdonságát a használni kívánt címkék azonosítóinak listájára. A modell betanításával csak a listán szereplő címkéket ismeri fel a rendszer.
+> Igény szerint az alkalmazott címkéknek csak egy részkészletét is betaníthatja. Akkor is ezt tegye, ha még nem alkalmazott elég címkét, de van elég más címkéből. A [TrainProject hívásban](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) használja a *trainingParameters paramétert.* Állítson össze [egy TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters) tulajdonságot, és állítsa be annak **SelectedTags** tulajdonságát a használni kívánt címkék azonosítóinak listájára. A modell betanítja, hogy csak a listában található címkéket ismerje fel.
 
 ## <a name="publish-the-current-iteration"></a>Az aktuális iteráció közzététele
 
-Ezzel a módszerrel elérhetővé válik a modell aktuális iterációja a lekérdezéshez. A modell neve hivatkozásként használható az előrejelzési kérelmek küldéséhez. Meg kell adnia a saját értékét `predictionResourceId` . Az előrejelzési erőforrás azonosítója az erőforrás **Áttekintés** lapján, az **előfizetés-azonosítóként** felsorolt Azure Portalban található.
+Ez a metódus elérhetővé teszi a modell aktuális iterációját a lekérdezéshez. A modell nevét használhatja hivatkozásként az előrejelzési kérések elküldését. A saját értékét kell `predictionResourceId` megadnia. Az előrejelzési erőforrás azonosítóját az  erőforrás Áttekintés lapján találja a Azure Portal előfizetés azonosítója **listában.**
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_publish)]
 
@@ -191,11 +191,11 @@ A szkript ezen része betölti a teszt képét, lekérdezi a modell végpontját
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Futtassa az alkalmazást az IDE-ablak felső részén található **Debug (hibakeresés** ) gombra kattintva.
+Futtassa az alkalmazást  az IDE ablak tetején található Hibakeresés gombra kattintva.
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
+Futtassa az alkalmazást az alkalmazáskönyvtárból az `dotnet run` paranccsal.
 
 ```dotnet
 dotnet run
@@ -224,11 +224,11 @@ Ezután ellenőrizheti, hogy a tesztkép (az **Images/Test/** mappában találha
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most elvégezte a képbesorolási folyamat minden lépését a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
+Ezzel a képosztályozási folyamat minden lépését kódban tette meg. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell majd betanítanunk és tesztelnünk kell a modellt, hogy pontosabb legyen.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
 
 * [Mi a Custom Vision?](../../overview.md)
-* A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
-* [Az SDK dokumentációja](/dotnet/api/overview/azure/cognitiveservices/client/customvision)
+* A minta forráskódja megtalálható a [GitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
+* [SDK-referenciadokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/customvision)

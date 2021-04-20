@@ -1,31 +1,31 @@
 ---
-title: Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en saját rendszerkép használatával
-description: Ismerje meg, hogyan tehet közzé egy virtuálisgép-ajánlatot az Azure Marketplace-en saját rendszerkép használatával.
+title: Azure-beli virtuálisgép-ajánlat létrehozása Azure Marketplace rendszerkép használatával
+description: Megtudhatja, hogyan tehet közzé virtuálisgép-ajánlatot Azure Marketplace rendszerkép használatával.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200467"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727120"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Virtuális gép létrehozása saját rendszerkép használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy felhasználó által biztosított virtuális gépet (VM) tartalmazó lemezképet.
+Ez a cikk azt ismerteti, hogyan hozhat létre és helyezhet üzembe felhasználó által megadott virtuálisgép-rendszerképeket.
 
 > [!NOTE]
-> Az eljárás megkezdése előtt tekintse át az Azure-beli virtuális gépekre vonatkozó [technikai követelményeket](marketplace-virtual-machines.md#technical-requirements) , beleértve a virtuális merevlemez (VHD) követelményeit.
+> Mielőtt elkezdené ezt az [](marketplace-virtual-machines.md#technical-requirements) eljárást, tekintse át az Azure-beli virtuális gépekre vonatkozó ajánlatok műszaki követelményeit, beleértve a virtuális merevlemezre (VHD) vonatkozó követelményeket.
 
-Ha ehelyett egy jóváhagyott alaprendszerképet szeretne használni, kövesse a virtuálisgép- [rendszerkép létrehozása jóváhagyott alapból](azure-vm-create-using-approved-base.md)című témakör utasításait.
+Ha ehelyett jóváhagyott alapként használt rendszerképet használ, kövesse a Virtuálisgép-rendszerkép létrehozása [jóváhagyott alapból útmutatót.](azure-vm-create-using-approved-base.md)
 
 ## <a name="configure-the-vm"></a>A virtuális gép konfigurálása
 
-Ez a szakasz azt ismerteti, hogyan lehet méretezni, frissíteni és általánosítani egy Azure-beli virtuális gépet. Ezek a lépések szükségesek ahhoz, hogy előkészítse a virtuális gépet az Azure Marketplace-en való üzembe helyezéshez.
+Ez a szakasz az Azure-beli virtuális gépek méretének, frissítésének és általánosizálásának a módszerét ismerteti. Ezek a lépések szükségesek a virtuális gép előkészítéséhez a virtuális gép Azure Marketplace.
 
 ### <a name="size-the-vhds"></a>A virtuális merevlemezek mérete
 
@@ -35,7 +35,7 @@ Ez a szakasz azt ismerteti, hogyan lehet méretezni, frissíteni és általános
 
 [!INCLUDE [Discussion of most current updates](includes/most-current-updates.md)]
 
-### <a name="perform-more-security-checks"></a>Több biztonsági ellenőrzés végrehajtása
+### <a name="perform-more-security-checks"></a>További biztonsági ellenőrzések végrehajtása
 
 [!INCLUDE [Discussion of addition security checks](includes/additional-security-checks.md)]
 
@@ -43,26 +43,29 @@ Ez a szakasz azt ismerteti, hogyan lehet méretezni, frissíteni és általános
 
 [!INCLUDE [Discussion of custom configuration and scheduled tasks](includes/custom-config.md)]
 
-### <a name="generalize-the-image"></a>A rendszerkép általánosítása
+### <a name="generalize-the-image"></a>A rendszerkép általánosizálása
 
-Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelhasználhatónak kell lennie. Ennek eléréséhez általánosítva kell lennie az operációs rendszer virtuális merevlemezének, egy olyan műveletnek, amely eltávolítja az összes példány-specifikus azonosítót és a szoftver illesztőprogramjait egy virtuális gépről.
+A rendszerképnek Azure Marketplace általános módon újrahasználhatónak kell lennie. Ehhez az operációs rendszer virtuális merevlemezét általánosított művelettel kell elérni, amely eltávolítja az összes példányspecifikus azonosítót és szoftverillesztőt a virtuális gépről.
 
-## <a name="bring-your-image-into-azure"></a>Rendszerkép beolvasása az Azure-ba
+## <a name="bring-your-image-into-azure"></a>Rendszerkép behozása az Azure-ba
 
-A rendszerképet háromféleképpen lehet az Azure-ba hozni:
+> [!NOTE]
+> A SIG-t tartalmazó Azure-előfizetésnek a közzétevői fiókkal azonos bérlőn kell lennie a közzétételhez. Emellett a közzétevői fióknak legalább Közreműködői hozzáféréssel kell lennie a SIG-t tartalmazó előfizetéshez.
 
-1. Töltse fel a virtuális merevlemezt egy megosztott képtárba (SIG).
+A rendszerképet háromféleképpen hozhatja be az Azure-ba:
+
+1. Töltse fel a vhd-t egy Shared Image Gallery (SIG).
 1. Töltse fel a VHD-t egy Azure Storage-fiókba.
-1. A virtuális merevlemez kibontása felügyelt rendszerképből (rendszerkép-építési szolgáltatások használata esetén).
+1. Bontsa ki a vhd-t egy felügyelt rendszerképből (ha rendszerkép-építési szolgáltatásokat használ).
 
-A következő három szakasz ezeket a beállításokat ismerteti.
+A következő három szakasz ezeket a lehetőségeket ismerteti.
 
-### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>1. lehetőség: a virtuális merevlemez feltöltése megosztott rendszerkép-gyűjteményként
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>1. lehetőség: Töltse fel a virtuális merevlemezt Shared Image Gallery
 
-1. Töltse fel a VHD (ka) t a Storage-fiókba.
-2. A Azure Portal keresse meg az **egyéni sablon üzembe helyezése** kifejezést.
-3. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
-4. Másolja a következő Azure Resource Manager (ARM) sablont.
+1. Vhd(k) feltöltése a Tárfiókba.
+2. A Azure Portal keresse meg **a Deploy a custom template (Egyéni sablon üzembe helyezése) et.**
+3. Válassza **a Build your own template (Saját sablon létrehozása a szerkesztőben) lehetőséget.**
+4. Másolja ki a következő Azure Resource Manager (ARM) sablont.
 
     ```json
     {
@@ -153,76 +156,76 @@ A következő három szakasz ezeket a beállításokat ismerteti.
 
 5. Illessze be a sablont a szerkesztőbe.
 
-    :::image type="content" source="media/create-vm/vm-sample-code-screen.png" alt-text="Minta kód képernyő a virtuális géphez.":::
+    :::image type="content" source="media/create-vm/vm-sample-code-screen.png" alt-text="Mintakódképernyő virtuális géphez.":::
 
 1. Kattintson a **Mentés** gombra.
-1. Az ebben a táblázatban szereplő paraméterek segítségével hajtsa végre az alábbi képernyőn látható mezőket.
+1. A táblázatban található paraméterekkel töltse ki a következő képernyő mezőit.
 
-| Paraméterek | Leírás |
+| Paraméterek | Description |
 | --- | --- |
-| sourceStorageAccountResourceId | Azon forrás-tárolási fiók erőforrás-azonosítója, amelyben a blob VHD található.<br><br>Az erőforrás-azonosító beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, válassza a **Tulajdonságok menüpontot**, és másolja a **ResourceId** értéket. |
-| sourceBlobUri | Az operációsrendszer-lemez VHD-blobjának blob URI-ja (a megadott Storage-fiókban kell lennie).<br><br>A blob URL-címének beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, nyissa meg a **blobot**, és másolja az **URL-címet** . |
-| sourceBlobDataDisk0Uri | Az adatlemez VHD-blobjának blob URI-ja (a megadott Storage-fiókban kell lennie). Ha nem rendelkezik adatlemezzel, távolítsa el ezt a paramétert a sablonból.<br><br>A blob URL-címének beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, nyissa meg a **blobot**, és másolja az **URL-címet** . |
-| sourceBlobDataDisk1Uri | További adatlemez VHD-blobjának blob URI-ja (a megadott Storage-fiókban kell lennie). Ha nem rendelkezik további adatlemezzel, távolítsa el ezt a paramétert a sablonból.<br><br>A blob URL-címének beszerzéséhez nyissa meg a **Storage-fiókját** **Azure Portalon**, nyissa meg a **blobot**, és másolja az **URL-címet** . |
-| galleryName | A megosztott Képtár neve |
-| galleryImageDefinitionName | A rendszerkép definíciójának neve |
-| galleryImageVersionName | A létrehozandó rendszerkép-verzió neve, ebben a formátumban: `<MajorVersion>.<MinorVersion>.<Patch>` |
+| sourceStorageAccountResourceId | Annak a forrás tárfióknak az erőforrás-azonosítója, amelyben a blob vhd található.<br><br>Az erőforrás-azonosítót a  tárfiókban, a Azure Portal **a** **Tulajdonságok** oldalon, és másolja ki a **ResourceID** értékét. |
+| sourceBlobUri | Az operációsrendszer-lemez VHD-blobja blob URI-ját (a megadott tárfiókban kell lennie).<br><br>A blob URL-címének le Azure Portal a **storage-fiókjához,** majd a **blobhoz,** és másolja ki **az URL-értéket.** |
+| sourceBlobDataDisk0Uri | Az adatlemez VHD-blobja blob URI-ját (a megadott tárfiókban kell lennie). Ha nem tartalmaz adatlemezt, távolítsa el ezt a paramétert a sablonból.<br><br>A blob URL-címének  le Azure Portal a Storage-fiókjához, majd a **blobhoz,** és másolja ki az **URL-címet.** |
+| sourceBlobDataDisk1Uri | A további adatlemez vhd-blobja blob URI-ját (a megadott tárfiókban kell lennie). Ha nincs további adatlemeze, távolítsa el ezt a paramétert a sablonból.<br><br>A blob URL-címének  le Azure Portal a Storage-fiókjához, majd a **blobhoz,** és másolja ki az **URL-címet.** |
+| galleryName (katalógusnév) | A Shared Image Gallery |
+| galleryImageDefinitionName | A képdefiníció neve |
+| galleryImageVersionName | A létrehozni kívánt rendszerképverzió neve a következő formátumban: `<MajorVersion>.<MinorVersion>.<Patch>` |
 |
 
-:::image type="content" source="media/create-vm/custom-deployment-window.png" alt-text="Megjeleníti az egyéni központi telepítési ablakot.":::
+:::image type="content" source="media/create-vm/custom-deployment-window.png" alt-text="Megjeleníti az egyéni üzembe helyezési ablakot.":::
 
-8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejeződése után válassza a **Létrehozás** lehetőséget.
+8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás lehetőséget.**
 
 > [!TIP]
-> A kiadói fióknak tulajdonosi hozzáféréssel kell rendelkeznie a SIG-rendszerkép közzétételéhez. Ha szükséges, kövesse az alábbi lépéseket a hozzáférés biztosításához:
+> A közzétevői fióknak "Tulajdonos" hozzáféréssel kell lennie a SIG-rendszerkép közzétételéhez. Szükség esetén kövesse az alábbi lépéseket a hozzáférés megadásához:
 >
-> 1. Nyissa meg a megosztott rendszerkép-katalógust (SIG).
-> 2. A bal oldali panelen válassza a **hozzáférés-vezérlés** (iam) lehetőséget.
-> 3. Válassza a **Hozzáadás** lehetőséget, majd **adja hozzá a szerepkör-hozzárendelést**.
-> 4. A **szerepkör** területen válassza a **tulajdonos** lehetőséget.
-> 5. A **hozzáférésének hozzárendeléséhez** válassza a **felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
-> 6. Adja meg a képet közzétevő személy Azure-beli e-mail-címét.
+> 1. Ugrás a Shared Image Gallery (SIG).
+> 2. A **bal oldali panelen** válassza a Hozzáférés-vezérlés (IAM) lehetőséget.
+> 3. Válassza **a Hozzáadás,** majd a **Szerepkör-hozzárendelés hozzáadása lehetőséget.**
+> 4. A **Szerepkör mezőben** válassza a **Tulajdonos lehetőséget.**
+> 5. A **Hozzáférés hozzárendelése a szolgáltatáshoz beállításnál** válassza a **Felhasználó, csoport vagy szolgáltatásnév lehetőséget.**
+> 6. Adja meg a rendszerképet közzétenő személy Azure-e-mail-címét.
 > 7. Kattintson a **Mentés** gombra.<br><br>
-> :::image type="content" source="media/create-vm/add-role-assignment.png" alt-text="Megjelenik a szerepkör-hozzárendelés hozzáadása ablak.":::
+> :::image type="content" source="media/create-vm/add-role-assignment.png" alt-text="Megjelenik a Szerepkör-hozzárendelés hozzáadása ablak.":::
 
-### <a name="option-2-upload-the-vhd-to-a-storage-account"></a>2. lehetőség: a virtuális merevlemez feltöltése egy Storage-fiókba
+### <a name="option-2-upload-the-vhd-to-a-storage-account"></a>2. lehetőség: A VHD feltöltése egy tárfiókba
 
-Konfigurálja és készítse elő a virtuális gépet, amelyet a [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) -ba való feltöltéshez, illetve [linuxos virtuális merevlemez létrehozásához és feltöltéséhez](../virtual-machines/linux/create-upload-generic.md)című cikkben ismertetett módon kell feltölteni.
+Konfigurálja és készítse elő a virtuális gépet a feltöltéshez [a Prepare a Windows VHD or VHDX to upload to Azure (Windows VHD vagy VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md) előkészítése az Azure-ba való feltöltéshez) vagy Create and Upload a Linux VHD (Linux rendszerű virtuális merevlemez létrehozása és [feltöltése) dokumentumban leírtak szerint.](../virtual-machines/linux/create-upload-generic.md)
 
-### <a name="option-3-extract-the-vhd-from-managed-image-if-using-image-building-services"></a>3. lehetőség: a virtuális merevlemez kibontása a felügyelt rendszerképből (rendszerkép-építési szolgáltatások használata esetén)
+### <a name="option-3-extract-the-vhd-from-managed-image-if-using-image-building-services"></a>3. lehetőség: Virtuális merevlemez kinyerása felügyelt rendszerképből (ha rendszerkép-építési szolgáltatásokat használ)
 
-Ha olyan rendszerkép-építési szolgáltatást használ, mint a [csomagoló](https://www.packer.io/), előfordulhat, hogy ki kell bontania a virtuális merevlemezt a rendszerképből. Erre nincs közvetlen mód. Létre kell hoznia egy virtuális gépet, és ki kell bontania a virtuális merevlemezt a virtuálisgép-lemezről.
+Ha olyan rendszerkép-építési szolgáltatást használ, mint a [Packer,](https://www.packer.io/)előfordulhat, hogy ki kell csomagolni a virtuális merevlemezt a lemezképből. Erre nincs közvetlen mód. Létre kell hoznia egy virtuális gépet, és ki kell bonta a virtuális merevlemezt a virtuálisgép-lemezről.
 
-## <a name="create-the-vm-on-the-azure-portal"></a>A virtuális gép létrehozása a Azure Portal
+## <a name="create-the-vm-on-the-azure-portal"></a>Hozza létre a virtuális gépet a Azure Portal
 
-Az alábbi lépéseket követve hozza létre az alapszintű VM-rendszerképet a [Azure Portal](https://ms.portal.azure.com/).
+Kövesse az alábbi lépéseket az alap virtuálisgép-rendszerkép létrehozásához a [Azure Portal.](https://ms.portal.azure.com/)
 
 1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/).
 2. Válassza a **Virtuális gépek** lehetőséget.
-3. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozása** képernyő megnyitásához.
-4. Válassza ki a lemezképet a legördülő listából, vagy válassza az **összes nyilvános és privát rendszerkép tallózása** lehetőséget a rendelkezésre álló virtuálisgép-lemezképek kereséséhez vagy tallózásához.
-5. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
+3. Válassza **a + Hozzáadás** lehetőséget a Virtuális gép létrehozása képernyő **megnyitásához.**
+4. Válassza ki a rendszerképet  a legördülő listából, vagy válassza az Összes nyilvános és privát rendszerkép tallózása lehetőséget az összes elérhető virtuálisgép-rendszerkép keresésére vagy tallózásra.
+5. **2. generációs** virtuális gép létrehozásához kattintson a Speciális **lapra,** és válassza a **Gen 2** lehetőséget.
 
-    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
+    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza a Gen 1 vagy Gen 2 lehetőséget.":::
 
-6. Válassza ki a telepítendő virtuális gép méretét.
+6. Válassza ki az üzembe helyezni kívánt virtuális gép méretét.
 
-    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy ajánlott virtuálisgép-méretet a kiválasztott képhez.":::
+    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy javasolt virtuálisgép-méretet a kiválasztott rendszerképhez.":::
 
 7. Adja meg a virtuális gép létrehozásához szükséges egyéb adatokat.
-8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a **Létrehozás** lehetőséget.
+8. Válassza **az Áttekintés + létrehozás lehetőséget** a választási lehetőségek áttekintéshez. Amikor **megjelenik az Ellenőrzésen** áteső üzenet, válassza a **Létrehozás lehetőséget.**
 
-Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali menü **Virtual Machines** lapját. Miután létrehozta a virtuális gép változásait a **futtatásra**.
+Az Azure elkezdi kiépítni a megadott virtuális gépet. A folyamat előrehaladásának nyomon követéséhez válassza **Virtual Machines** fület a bal oldali menüben. A létrehozása után a Virtuális gép állapota Fut **állapotra változik.**
 
 ## <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
-A Windows vagy [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) [rendszerű](../virtual-machines/windows/connect-logon.md) virtuális géphez való kapcsolódáshoz tekintse meg az alábbi dokumentációt.
+A Windows vagy [Linux](../virtual-machines/windows/connect-logon.md) rendszerű virtuális géphez való csatlakozáshoz tekintse meg a következő [dokumentációt.](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm)
 
 [!INCLUDE [Discussion of addition security checks](includes/size-connect-generalize.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tesztelje a virtuálisgép-rendszerképet](azure-vm-image-test.md) , és győződjön meg arról, hogy az megfelel az Azure Marketplace közzétételi követelményeinek. Ez nem kötelező.
-- Ha nem szeretné tesztelni a virtuálisgép-rendszerképet, jelentkezzen be a [partner Centerben](https://partner.microsoft.com/) , és tegye közzé a SIG-rendszerképet (#1).
-- Ha követte a #2 vagy #3 lehetőséget, akkor [létrehozza az SAS URI](azure-vm-get-sas-uri.md)-t.
-- Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg [Az Azure Marketplace-hez készült virtuális gépekkel kapcsolatos gyakori kérdéseket](azure-vm-create-faq.md).
+- [Tesztelje a virtuálisgép-rendszerképet,](azure-vm-image-test.md) hogy az megfeleljen Azure Marketplace követelményeknek. Ez nem kötelező.
+- Ha nem szeretné tesztelni a virtuálisgép-rendszerképet, jelentkezzen be az Partnerközpont, és tegye közzé a SIG-rendszerképet (#1). [](https://partner.microsoft.com/)
+- Ha követte a #2 vagy #3, hozza létre a [SAS URI-t.](azure-vm-get-sas-uri.md)
+- Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a virtuális gépekkel kapcsolatos gyakori [kérdéseket a Azure Marketplace.](azure-vm-create-faq.md)

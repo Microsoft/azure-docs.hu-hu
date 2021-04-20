@@ -1,14 +1,14 @@
 ---
-title: 'Gyors útmutató: ügyféloldali függvénytár vagy REST API olvasása'
+title: 'Rövid útmutató: Ügyféloldali kódtár vagy REST API'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használható az optikai karakterfelismerés (OCR) az alkalmazásban natív ügyféloldali kódtár használatával a választott nyelven.
+description: Megtudhatja, hogyan használhatja az optikai karakterfelismerést (OCR) az alkalmazásban egy natív ügyféloldali kódtáron keresztül, az Ön által választott nyelven.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/21/2020
+ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -16,17 +16,17 @@ ms.custom:
 - devx-track-csharp
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
-keywords: Computer vízió, Computer vízió szolgáltatás
-ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+keywords: computer vision, computer vision szolgáltatás
+ms.openlocfilehash: bd6fcec1544e20c119018df2595cc27c8c368824
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284780"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728255"
 ---
-# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Gyors útmutató: az ügyféloldali függvénytár vagy REST API használata
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Rövid útmutató: Az Olvasás ügyféloldali kódtár vagy REST API
 
-Ismerkedjen meg az olvasási REST API vagy az ügyféloldali kódtárakkal. Az olvasási szolgáltatás AI-algoritmusokat biztosít a látható szöveg képekből való kinyeréséhez és strukturált karakterláncként való visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
+Első lépések a Read REST API vagy ügyfélkódtárak használatával. Az Olvasási szolgáltatás AI-algoritmusokat biztosít a látható szövegek képekből való kinyerésére és strukturált sztringekként való visszaadása érdekében. Kövesse az alábbi lépéseket egy csomag alkalmazásba való telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges mintakódot.
 
 
 

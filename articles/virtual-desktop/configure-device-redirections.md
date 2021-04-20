@@ -1,116 +1,118 @@
 ---
-title: Eszköz-átirányítások konfigurálása – Azure
-description: Eszközök átirányításának konfigurálása a Windows rendszerű virtuális asztali számítógépekhez.
+title: Eszközátirányítások konfigurálása – Azure
+description: Eszközátirányítások konfigurálása Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 37ecd06c4e3e71234e8fb1b6bad0cd05482dd31b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448151"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727846"
 ---
 # <a name="configure-device-redirections"></a>Eszközátirányítások konfigurálása
 
-A Windows rendszerű virtuális asztali környezethez tartozó eszközök átirányításának konfigurálása lehetővé teszi, hogy a távoli munkamenetben nyomtatókat, USB-eszközöket, mikrofonokat és más perifériákat használjon. Egyes eszközök átirányításához a RDP protokoll (RDP) tulajdonságok és a Csoportházirend beállítások módosítása szükséges.
+Ha az eszközátirányítást a Windows Virtual Desktop konfigurálja, akkor a távoli munkamenetben nyomtatókat, USB-eszközöket, mikrofonokat és egyéb perifériaeszközöket használhat. Egyes eszközátirányítások megkövetelik a két RDP protokoll (RDP) és a Csoportházirend módosításait.
 
-## <a name="supported-device-redirections"></a>Támogatott eszközök átirányítása
+## <a name="supported-device-redirections"></a>Támogatott eszközátirányítások
 
-Minden ügyfél támogatja a különböző eszközök átirányítását. Tekintse meg az [ügyfelek összevetését](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) az egyes ügyfelek támogatott eszköz-átirányításának teljes listájához.
+Minden ügyfél különböző eszközátirányításokat támogat. Az egyes [ügyfelek támogatott](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) eszközátirányításait az Ügyfelek összehasonlítása cikk tartalmazza.
 
-## <a name="customizing-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP-tulajdonságainak testreszabása
+## <a name="customizing-rdp-properties-for-a-host-pool"></a>Gazdagépkészlet RDP-tulajdonságainak testreszabása
 
-Ha többet szeretne megtudni a gazdagépek RDP-tulajdonságainak testreszabásáról a PowerShell vagy a Azure Portal használatával, tekintse meg az [RDP-tulajdonságokat](customize-rdp-properties.md). A támogatott RDP-tulajdonságok teljes listájáért lásd: [támogatott RDP-fájl beállításai](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
+Ha többet szeretne megtudni a gazdagépkészlet RDP-tulajdonságainak a PowerShell vagy a Azure Portal való testreszabásáról, tekintse meg az [RDP-tulajdonságokat.](customize-rdp-properties.md) A támogatott RDP-tulajdonságok teljes listáját lásd: Supported RDP file settings (Támogatott [RDP-fájlbeállítások).](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)
 
-## <a name="setup-device-redirections"></a>Eszköz átirányításának beállítása
+## <a name="setup-device-redirections"></a>Eszközátirányítások beállítása
 
-Az eszköz átirányításának konfigurálásához a következő RDP-tulajdonságokat és Csoportházirend beállításokat használhatja.
+Az alábbi RDP-tulajdonságok és -beállítások Csoportházirend konfigurálhatja az eszközátirányítást.
 
 ### <a name="audio-input-microphone-redirection"></a>Hangbemenet (mikrofon) átirányítása
 
-Állítsa be a következő RDP-tulajdonságot a hangbemenetek átirányításának konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot a hangbemenet átirányításának konfiguráléhez:
 
-- `audiocapturemode:i:1` engedélyezi a hangbemenet átirányítását.
-- `audiocapturemode:i:0` letiltja a hangbemenetek átirányítását.
+- `audiocapturemode:i:1` A engedélyezi a hangbemenet átirányítását.
+- `audiocapturemode:i:0` letiltja a hangbemenet átirányítását.
 
-### <a name="audio-output-speaker-redirection"></a>Hangkimenet (hangsugárzó) átirányítása
+### <a name="audio-output-speaker-redirection"></a>Hangkimenet (beszélő) átirányítása
 
-Állítsa be a következő RDP-tulajdonságot a hangkimeneti átirányítás konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot a hangkimenet átirányításának konfigurálához:
 
-- `audiomode:i:0` a hangkimenet átirányításának engedélyezése.
-- `audiomode:i:1` vagy `audiomode:i:2` Tiltsa le a hangkimenet átirányítását.
+- `audiomode:i:0` A engedélyezi a hangkimenet átirányítását.
+- `audiomode:i:1` vagy `audiomode:i:2` tiltsa le a hangkimenet átirányítását.
 
 ### <a name="camera-redirection"></a>Kamera átirányítása
 
-Állítsa be a következő RDP-tulajdonságot a kamera átirányításának konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot a kameraátirányítás konfigurálhoz:
 
 - `camerastoredirect:s:*` átirányítja az összes kamerát.
-- `camerastoredirect:s:` letiltja a kamera átirányítását.
+- `camerastoredirect:s:` letiltja a kameraátirányítást.
 
 >[!NOTE]
->Annak ellenére, hogy a `camerastoredirect:s:` tulajdonság le van tiltva, a helyi kamerák átirányíthatók a `devicestoredirect:s:` tulajdonságon keresztül. A kamera-átirányítási készlet teljes letiltásához `camerastoredirect:s:` , illetve `devicestoredirect:s:` a Plug and Play eszközök olyan részhalmazának beállításához vagy definiálásához, amely nem tartalmaz kamerát.
+>A helyi kamerák akkor is átirányíthatók a tulajdonságon keresztül, ha a tulajdonság le van `camerastoredirect:s:` `devicestoredirect:s:` tiltva. A kameraátirányítási készlet teljes letiltásához, valamint a plug and play eszközök bizonyos olyan részhalmazának beállításához vagy definiálásához, amely nem tartalmaz `camerastoredirect:s:` `devicestoredirect:s:` kamerát.
 
-Az egyes kamerákat a KSCATEGORY_VIDEO_CAMERA felületek pontosvesszővel tagolt listája alapján is átirányíthatja, például: `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` . 
+Adott kamerákat pontosvesszővel tagolt listában is átirányíthat KSCATEGORY_VIDEO_CAMERA, például a következővel: `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` .
 
-### <a name="clipboard-redirection"></a>Vágólap-átirányítás
+### <a name="clipboard-redirection"></a>Vágólap átirányítása
 
-A vágólap átirányításának konfigurálásához állítsa be a következő RDP-tulajdonságot:
+Állítsa be a következő RDP-tulajdonságot a vágólap átirányításának konfigurálhoz:
 
-- `redirectclipboard:i:1` engedélyezi a vágólap átirányítását.
+- `redirectclipboard:i:1` A engedélyezi a vágólap átirányítását.
 - `redirectclipboard:i:0` letiltja a vágólap átirányítását.
 
-### <a name="com-port-redirections"></a>COM-portok átirányítása
+### <a name="com-port-redirections"></a>COM-portátirányítások
 
-Állítsa be a következő RDP-tulajdonságot a COM-port átirányításának konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot a COM-port átirányításának konfiguráljához:
 
-- `redirectcomports:i:1` engedélyezi a COM-portok átirányítását.
-- `redirectcomports:i:0` letiltja a COM-portok átirányítását.
+- `redirectcomports:i:1` A engedélyezi a COM-port átirányítását.
+- `redirectcomports:i:0` letiltja a COM-port átirányítását.
 
 ### <a name="usb-redirection"></a>USB-átirányítás
 
-Először állítsa be a következő RDP-tulajdonságot az USB-eszközök átirányításának engedélyezéséhez:
+Először állítsa be a következő RDP-tulajdonságot az USB-eszköz átirányításának engedélyezéséhez:
 
-- `usbdevicestoredirect:s:*` engedélyezi az USB-eszközök átirányítását.
-- `usbdevicestoredirect:s:` letiltja az USB-eszközök átirányítását.
+- `usbdevicestoredirect:s:*` A engedélyezi az USB-eszközök átirányítását.
+- `usbdevicestoredirect:s:` letiltja az USB-eszköz átirányítását.
 
 Másodszor állítsa be a következő Csoportházirend a felhasználó helyi eszközén:
 
-- Navigáljon a **számítógép-konfigurációs**  >  **házirendek** >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztali kapcsolat ügyfél** távoli elérési útjának  >  **USB-eszközök átirányítása**.
-- Válassza a **más támogatott távoli USB-eszközök RDP-átirányítása a számítógépről lehetőséget**.
-- Válassza az **engedélyezve** lehetőséget, majd válassza ki a **rendszergazdákat és a felhasználókat a távoli USB-átirányítás hozzáférési jogosultságok** mezőben.
+- Lépjen a **Számítógép-konfigurációs**  >  **házirendek** >  **lapra, Felügyeleti sablonok**  >  **Windows-összetevők között**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztali kapcsolat**  >  **RemoteFX USB-eszközátirányítást.**
+- Jelölje **be Az egyéb támogatott RemoteFX USB-eszközök RDP-átirányításának** lehetővé teszi ezt a lehetőséget erről a számítógépről.
+- Válassza az **Engedélyezve** lehetőséget, majd jelölje be a Rendszergazdák és felhasználók a **RemoteFX USB-átirányítás hozzáférési jogosultságai között jelölőnégyzetet.**
 - Válassza az **OK** lehetőséget.
 
-### <a name="plug-and-play-device-redirection"></a>Plug and Play eszközök átirányítása
+### <a name="plug-and-play-device-redirection"></a>Plug and Play-eszközök átirányítása
 
-A Plug and Play eszközök átirányításának konfigurálásához állítsa be a következő RDP-tulajdonságot:
+Állítsa be a következő RDP-tulajdonságot a plug and play eszköz átirányításának konfiguráléhez:
 
-- `devicestoredirect:s:*` engedélyezi az összes plug and Play eszköz átirányítását.
-- `devicestoredirect:s:` letiltja a Plug and Play eszközök átirányítását.
+- `devicestoredirect:s:*` lehetővé teszi az összes Plug and Play-eszköz átirányítását.
+- `devicestoredirect:s:` letiltja a plug and play eszközök átirányítását.
 
-Az adott plug and Play eszközöket pontosvesszővel tagolt listával is kiválaszthatja, például: `devicestoredirect:s:root\*PNP0F08` .
+Pontosvesszővel tagolt listával is kiválaszthat adott plug and play eszközöket, `devicestoredirect:s:root\*PNP0F08` például: .
 
 ### <a name="local-drive-redirection"></a>Helyi meghajtó átirányítása
 
-Állítsa be a következő RDP-tulajdonságot a helyi meghajtó átirányításának konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot a helyi meghajtó átirányításának konfigurálhoz:
 
-- `drivestoredirect:s:*` engedélyezi az összes lemezmeghajtó átirányítását.
+- `drivestoredirect:s:*` lehetővé teszi az összes lemezmeghajtó átirányítását.
 - `drivestoredirect:s:` letiltja a helyi meghajtó átirányítását.
 
-Az egyes meghajtókat pontosvesszővel tagolt listával is kiválaszthatja, például: `drivestoredirect:s:C:;E:;` .
+Pontosvesszővel tagolt listával is kiválaszthat adott meghajtókat, `drivestoredirect:s:C:;E:;` például: .
 
-### <a name="printer-redirection"></a>Nyomtató átirányítása
+A webes ügyfél fájlátvitelének konfigurálhoz állítsa be a következőt: `drivestoredirect:s:*` .
 
-Állítsa be a következő RDP-tulajdonságot a nyomtató átirányításának konfigurálásához:
+### <a name="printer-redirection"></a>Nyomtatóátirányítás
 
-- `redirectprinters:i:1` engedélyezi a nyomtatók átirányítását.
-- `redirectprinters:i:0` letiltja a nyomtató átirányítását.
+Állítsa be a következő RDP-tulajdonságot a nyomtatóátirányítás konfigurálához:
+
+- `redirectprinters:i:1` A engedélyezi a nyomtatóátirányítást.
+- `redirectprinters:i:0` letiltja a nyomtatóátirányítást.
 
 ### <a name="smart-card-redirection"></a>Intelligens kártya átirányítása
 
-Állítsa be a következő RDP-tulajdonságot az intelligens kártya átirányításának konfigurálásához:
+Állítsa be a következő RDP-tulajdonságot az intelligens kártya átirányításának konfigurálhoz:
 
-- `redirectsmartcards:i:1` engedélyezi az intelligens kártya átirányítását.
-- `redirectsmartcards:i:0` letiltja az intelligens kártyák átirányítását.
+- `redirectsmartcards:i:1` az intelligens kártya átirányítását teszi lehetővé.
+- `redirectsmartcards:i:0` letiltja az intelligens kártya átirányítását.

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: A szolgáltatás korlátait Azure Digital Twins diagram.
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 04/08/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 15c76bc042cb66dafbdeebac2951f5cb68310aa4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 651922837b2193f7a8387c4dec6a1e20b84a41a5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482791"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728021"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure Digital Twins szolgáltatási korlátok
 
@@ -33,7 +33,7 @@ A korlát elérésekor a szolgáltatás további kéréseket korlátoz. Ez a ké
 
 Ennek kezeléséhez íme néhány javaslat a korlátok kezeléséhez.
 * **Használjon újrapróbálkozási logikát.** A [Azure Digital Twins SDK-k](how-to-use-apis-sdks.md) implementálja a sikertelen kérelmek újrapróbálkozási logikáját, így ha egy megadott SDK-val dolgozik, ez már beépített. Ellenkező esetben fontolja meg az újrapróbálkozási logika alkalmazását a saját alkalmazásában. A szolgáltatás visszaküld egy fejlécet a hibaválaszban, amellyel meghatározhatja, hogy mennyi ideig kell várnia `Retry-After` az újrapróbálkozás előtt.
-* **Használjon küszöbértékeket és értesítéseket, hogy figyelmeztetést ad a megközelítő korlátokról.** A szolgáltatási korlátok némelyike Azure Digital Twins megfelelő [](troubleshoot-metrics.md) metrikákkal, amelyek a használat nyomon követésére használhatók ezeken a területeken. A küszöbértékek konfigurálásáról és a küszöbértékeket megközelítő metrikákra vonatkozó riasztások beállításáról a [*Hibaelhárítás: Riasztások beállításacímű témakörben található utasításokban található.*](troubleshoot-alerts.md) Ha olyan egyéb korlátokhoz is be kell állítania értesítéseket, amelyek nem biztosítanak metrikákat, fontolja meg a logika alkalmazását a saját alkalmazáskódjában.
+* **Használjon küszöbértékeket és értesítéseket, hogy figyelmeztetést ad a megközelítő korlátokról.** A szolgáltatási korlátok egy része Azure Digital Twins [](troubleshoot-metrics.md) vonatkozó metrikával, amelyek a használat nyomon követésére használhatók ezeken a területeken. A küszöbértékek konfigurálásáról és a küszöbértékek megközelítése esetén bármilyen metrikáról riasztást állíthat be, tekintse meg a Hibaelhárítás: Riasztások [*beállítása témakör utasításait.*](troubleshoot-alerts.md) Ha olyan egyéb korlátokhoz is beállít értesítéseket, amelyek nem biztosítanak metrikákat, fontolja meg a logika alkalmazását a saját alkalmazáskódjában.
 
 ## <a name="next-steps"></a>Következő lépések
 

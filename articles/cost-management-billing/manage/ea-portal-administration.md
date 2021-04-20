@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259438"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728409"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -36,9 +36,9 @@ Csak meglévő Azure vállalati rendszergazdák hozhatnak létre más vállalati
 
 ### <a name="create-another-enterprise-administrator"></a>Másik vállalati rendszergazda létrehozása
 
-Használja az alábbi lehetőségek egyikét a helyzet alapján.
+A helyzettől függően használja az alábbi lehetőségek egyikét.
 
-#### <a name="if-youre-already-an-enterprise-administrator"></a>Ha már vállalati rendszergazda
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Ha Ön már vállalati rendszergazda
 
 1. Jelentkezzen be az [Azure Enterprise portálra](https://ea.azure.com).
 1. Lépjen a **Kezelés** > **Regisztráció részletei** menüpontra.
@@ -46,9 +46,9 @@ Használja az alábbi lehetőségek egyikét a helyzet alapján.
 
 Győződjön meg arról, hogy tudja a felhasználó e-mail-címét és előnyben részesített hitelesítési módszerét (például munkahelyi, iskolai vagy Microsoft-fiók használatával végzett hitelesítés).
 
-#### <a name="if-youre-not-an-enterprise-administrator"></a>Ha nem vállalati rendszergazda
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Ha Ön nem vállalati rendszergazda
 
-Ha nem vállalati rendszergazda, forduljon a vállalati rendszergazdához, és kérje meg, hogy adjanak hozzá a regisztrációhoz. A vállalati rendszergazda az előző lépésekkel adja hozzá Önt vállalati rendszergazdaként. Miután hozzá lett adva egy regisztrációhoz, egy aktiválási e-mailt fog kapni.
+Ha Ön nem vállalati rendszergazda, forduljon egy vállalati rendszergazdához, és kérje meg, hogy adja hozzá a regisztrációhoz. A vállalati rendszergazda az előző lépések alapján adja hozzá Vállalati rendszergazdaként. Miután hozzá lett adva egy regisztrációhoz, egy aktiválási e-mailt fog kapni.
 
 #### <a name="if-your-enterprise-administrator-cant-help-you"></a>Ha a vállalati rendszergazda nem tud segíteni
 
@@ -424,51 +424,6 @@ A kezdéshez:
 1. A Microsoft-fiók most már nem rendelkezik aktív előfizetésekkel, és törölhető.
 1. A törölt fiókok korábbi számlázási okokból inaktív állapotban megtekinthetőek maradnak a portálon.  Kiszűrheti őket a nézetből, ha bejelöli a kizárólag aktív fiókok megjelenítésére vonatkozó jelölőnégyzetet.
 
-## <a name="account-subscription-ownership-faq"></a>Gyakori kérdések a fiókhoz tartozó előfizetés tulajdonjogával kapcsolatban
-
-Ez a dokumentum a fiókhoz tartozó előfizetés tulajdonjogával kapcsolatos gyakori kérdésekre ad választ.
-
-### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>Társíthatom a meglévő Azure-fiókomat Azure EA-regisztrációhoz?
-
-Igen. Az összes olyan Azure-előfizetés, amely esetén Ön a fióktulajdonos, a Nagyvállalati Szerződésre lesz átváltva. Ez magában foglalja a havi kreditet (pl. Visual Studio, AzurePass, MPN, BizSpark stb.) használó előfizetéseket. Az ilyen előfizetésekre való átváltással elveszíti a havi kreditet.
-
-### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Hány Azure-fióktulajdonos lehet előfizetésenként?
-
-Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök az [Azure Portal](https://portal.azure.com) bal felső sarkában található előfizetési fülön adhatók hozzá a szerepköralapú hozzáférés vagy a Hozzáférés-vezérlés (IAM) használatával.
-
-### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Lehetséges az előfizetés tulajdonjogának átadása egy másik fióknak?
-
-Igen, az előfizetés tulajdonjoga átadható egy másik fióknak. Ha például az „A” fiók három előfizetéssel rendelkezik, a vállalati rendszergazda átvihet egy-egy előfizetést a „B”, a „C” és a „D” fiókba, vagy mindegyiket az „E” fiókba.
-
-Előfizetések átvitele:
-
-1. Az Azure Enterprise portálon válassza a **Kezelés** > **Fiók** elemet.
-1. Vigye a mutatót a **Fiók** fölé a jobb szélen, és látni fogja a **Tulajdonjogok átadása** (portré ikon) és az **Előfizetés átadása** (lista ikon) lehetőséget. Ezek a lehetőségek csak aktív fiókok esetén jelennek meg.
-
-### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Szerepelhet egy Azure-fiók tulajdonosa több részlegen is?
-
-Nem, egy fióktulajdonos csak egyetlen részleghez társítható. A szabályzat segít biztosítani a részleg költségeinek és kiadásainak pontos monitorozását és felosztását az Azure EA Portalon, az EA-regisztrációhoz igazodva.
-
-### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Szerepelhet egy Azure-fiók tulajdonosa biztonsági csoportként?
-
-Nem, az előfizetés tulajdonosának egyedi Microsoft-fiók- (MSA-) vagy Azure Active Directory- (Azure AD-) hitelesítéssel kell rendelkeznie. A szervezeten belüli utódláshoz érdemes lehet általános fiókokat létrehozni és az Azure AD használatával kezelni az előfizetéshez való hozzáférést.
-
-### <a name="can-an-individual-user-own-multiple-subscriptions"></a>Egy egyedi felhasználó lehet több előfizetés tulajdonosa?
-
-Egy Azure-fiók tulajdonosa korlátlan számú előfizetést hozhat létre és kezelhet.
-
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Hogyan lehet hozzáférni és megtekinteni a szervezet összes előfizetését?
-
-Jelenleg ezt szabályzat alapján kell végezni, vagyis minden létrehozott előfizetés esetében a fiókot hozzá kell adni egy előfizetési szerepkörhöz szerepköralapú hozzáférés használatával.
-
-### <a name="where-do-i-go-to-create-a-subscription"></a>Hol hozhatok létre előfizetést?
-
-Nagyvállalati Azure-előfizetés létrehozása előtt a fiókját az EA-regisztráció rendszergazdájának hozzá kell adnia a fióktulajdonosi szerepkörhöz az Azure EA Portalon. Ezután be kell jelentkeznie az Azure EA Portalra, hogy megkapja a jogosultságát az EA-ajánlat típusú előfizetések létrehozásához. Javasoljuk, hogy az első EA-előfizetését az EA Portal előfizetési lapján található „+ Előfizetés hozzáadása” hivatkozással hozza létre.  Miután azonban a fiókja rendelkezik a megfelelő jogosultsággal, könnyebb lehet a portal.azure.com webhelyen, az oldal bal felső sarkában található előfizetési fülön létrehozni az előfizetéseket, ahol egyetlen lépésben létrehozhatja és átnevezheti az adott előfizetést.
-
-### <a name="who-can-create-a-subscription"></a>Ki hozhat létre előfizetést?
-
-Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdonosi szerepkörrel kell rendelkeznie az [EA Portalon](https://ea.azure.com).
-
 ## <a name="azure-ea-term-glossary"></a>Azure EA-kifejezések szószedete
 
 - **Fiók**: Az Azure Enterprise portálon található szervezeti egység. Az előfizetések felügyeletére, valamint jelentéskészítésre szolgál.
@@ -510,3 +465,4 @@ Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdono
 
 - Olvassa el, hogyan takaríthat meg pénzt a [virtuális gépek lefoglalásával](ea-portal-vm-reservations.md).
 - Ha segítségre van szüksége az Azure EA Portallal kapcsolatos hibák elhárításához, olvassa el a következő részt: [A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása](ea-portal-troubleshoot.md).
+- Az [EA-Cost Management + Billing tulajdonjogára](../cost-management-billing-faq.yml) vonatkozó kérdésekért olvassa el a gyakori kérdéseket.

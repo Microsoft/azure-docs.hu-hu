@@ -1,81 +1,81 @@
 ---
-title: Kérelmek korlátai – Translator
+title: Kérelemkorlátok – Translator
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a fordítóra vonatkozó kérelmek korlátozásait sorolja fel. A díjak a karakterek száma alapján merülnek fel, a kérelmek gyakorisága pedig a 5 000 karakteres korlátot kéri. A karakterkészletek az előfizetés-alapúak, a F0 pedig óránként 2 000 000 karakterre van korlátozva.
+description: Ez a cikk felsorolja a Translator kérelmekre vonatkozó korlátait. A díjakat a karakterszám alapján kell fizetni, nem a kérelmek gyakorisága alapján, kérésenként legfeljebb 5000 karakter hosszú lehet. A karakterkorlátok előfizetés-alapúak, és az F0 legfeljebb 2 millió karaktert tartalmazhat óránként.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 04/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5beb222ec20b1e7941f9438c0aacf98879a567a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895407"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727941"
 ---
-# <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
+# <a name="request-limits-for-translator"></a>A Translatorra vonatkozó kérelemkorlátok
 
-Ez a cikk a fordító számára biztosít szabályozási korlátozásokat. A szolgáltatások közé tartoznak a fordítás, az írás, a mondatok hosszának észlelése, a nyelvfelismerés és az alternatív fordítások.
+Ez a cikk szabályozási korlátokat tartalmaz a Translator-fordításhoz, -átíráshoz, mondathossz-észleléshez, nyelvfelismeréshez és alternatív fordításhoz.
 
-## <a name="character-and-array-limits-per-request"></a>Karakter és tömb korlátja kérelmek szerint
+## <a name="character-and-array-limits-per-request"></a>Karakter- és tömbkorlátok kérésenként
 
-Az összes fordítási kérelem 10 000 karakterből áll, az összes megcélzott nyelven. Ha például egy 3 000 karakterből álló fordítási kérelem küldése 3 különböző nyelvre, a kérelem mérete 3000x3 = 9 000 karakter, amely megfelel a kérelem korlátjának. A díjat nem a kérelmek száma alapján számítjuk fel. A rövidebb kérelmek küldését javasoljuk.
+Minden fordítási kérelem legfeljebb 10 000 karakterből állhat az összes lefordított célnyelven. Ha például egy 3000 karakter hosszúságú fordítási kérést küld három különböző nyelvre, a kérés mérete 3000x3 = 9000 karakter lesz, amely megfelel a kérelemkorlátnak. A díjat karakterenként kell fizetni, nem a kérelmek száma alapján. Javasoljuk, hogy rövidebb kérelmeket küldjön.
 
-A következő táblázat a fordító egyes műveleteinek tömb elemeit és karakteres korlátait sorolja fel.
+Az alábbi táblázat a Translator egyes műveleteinek tömbelem- és karakterkorlátokat sorolja fel.
 
-| Művelet | Tömb elemének maximális mérete |    Tömb elemeinek maximális száma |    Kérelmek maximális mérete (karakter) |
+| Művelet | Tömbelem maximális mérete |    Tömbelemek maximális száma |    Kérelem maximális mérete (karakter) |
 |:----|:----|:----|:----|
-| Translate | 10,000    | 100   | 10,000 |
-| Átírás | 5000 | 10    | 5000 |
-| Észlelés | 50,000 | 100 |   50,000 |
-| BreakSentence | 50,000    | 100 | 50,000 |
-| Keresés a szótárban| 100 |  10  | 1,000 |
-| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2000 |
+| Translate | 10,000| 100| 10,000 |
+| Átírás | 5000| 10| 5000 |
+| Észlelés | 50,000 |100 |50,000 |
+| BreakSentence | 50,000| 100 |50,000 |
+| Keresés a szótárban| 100 |10| 1,000 |
+| Szótár – példák | 100 szöveg, 100 fordítás (összesen 200)| 10|2000 |
 
-## <a name="character-limits-per-hour"></a>Karakteres korlátok óránként
+## <a name="character-limits-per-hour"></a>Karakterkorlátok óránként
 
-A karakteres korlát/óra a fordítói előfizetés szintjétől függ. 
+Az óránkénti karakterkorlát a Translator-előfizetési szinten alapul.
 
-Az óránkénti kvótát egyenletesen kell használni az egész órában. Például a F0 küszöbértéke óránként 2 000 000 karakter, a karaktereket nem lehet kevesebb, mint durván 33 300 karakter/perc csúszó ablak (2 000 000 karakter, amely 60 perc).
+Az óránkénti kvótát egyenletesen kell felhasználta az óra során. Az F0 csomag óránkénti 2 millió karakteres korlátja mellett például a karaktereket nem szabad gyorsabban felosztani, mint percenként 33 300 karaktert (2 millió karakter 60 perccel elosztva).
 
-Ha eléri vagy meghaladja ezeket a korlátokat, vagy a kvóta egy részének rövid időn belül túl nagy részét küldi el, valószínű, hogy a kvóta kiválasztva lesz. Az egyidejű kérések esetében nincsenek korlátok.
+Ha eléri vagy túllépi ezeket a korlátokat, vagy rövid időn belül túl nagy mennyiségű kvótát küld, valószínűleg a kvóta túllépését kapja válaszként. Az egyidejű kérések nincsenek korlátozva.
 
-| Szint | Karakteres korlát |
+| Szint | Karakterkorlát |
 |------|-----------------|
-| F0 | 2 000 000 karakter/óra |
-| S1 | 40 000 000 karakter/óra |
-| S2/C2 | 40 000 000 karakter/óra |
-| S3/C3 | 120 000 000 karakter/óra |
-| S4/C4 | 200 000 000 karakter/óra |
+| F0 | Óránként 2 millió karakter |
+| S1 | 40 millió karakter/óra |
+| S2 / C2 | 40 millió karakter/óra |
+| S3 / C3 | Óránként 120 millió karakter |
+| S4 / C4 | Óránként 200 millió karakter |
 
-A [több szolgáltatásra vonatkozó előfizetések](./reference/v3-0-reference.md#authentication) korlátai megegyeznek az S1 szinttel.
+A [többszolgáltatású előfizetések korlátai](./reference/v3-0-reference.md#authentication) ugyanazok, mint az S1 csomag esetében.
 
-Ezek a korlátok a Microsoft szabványos fordítási modelljeire korlátozódnak. Az egyéni fordítót használó egyéni fordítási modellek másodpercenként 1 800 karakterre vannak korlátozva.
+Ezek a korlátok a Microsoft szabványos fordítási modelljeire korlátozódnak. Az egyéni fordítási modellek Custom Translator legfeljebb 1800 karakter/másodperc lehet modellenként.
 
 ## <a name="latency"></a>Késés
 
-A fordító a standard modellekkel és az 120 másodperces késleltetéssel 15 másodperces késést használ egyéni modellek használata esetén. A *100 karakternél hosszabb szövegre* adott válaszokat a rendszer a 150 ezredmásodpercben, 300 ezredmásodpercben adja vissza. Az egyéni fordítói modellek hasonló késési jellemzőkkel rendelkeznek a tartós kérelmek arányában, és nagyobb késéssel járhatnak, ha a kérések sebessége időszakos. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](./reference/v3-0-reference.md#errors) az adott időkereten belül, ellenőrizze a kódot, a hálózati kapcsolatokat, és próbálkozzon újra. 
+A Translator maximális késése 15 másodperc, az egyéni modellek használata esetén pedig 120 másodperc. A *100 karakteren* belüli szövegre adott válaszokat általában 150 ezredmásodperc és 300 ezredmásodperc között juk vissza. Az egyéni fordítómodellek hasonló késési jellemzőkkel rendelkeznek a tartós kérések arányában, és magasabb késéssel is rendelkeznek, ha a kérések sebessége időszakos. A válaszidők a kérés és a nyelvpár méretétől függően változnak. Ha nem kap fordítási vagy [](./reference/v3-0-reference.md#errors) hibaválaszt az adott időkereten belül, ellenőrizze a kódot, a hálózati kapcsolatot, majd próbálja újra.
 
-## <a name="sentence-length-limits"></a>Mondat hosszának korlátai
+## <a name="sentence-length-limits"></a>Mondathosszkorlátok
 
-A [BreakSentence](./reference/v3-0-break-sentence.md) függvény használatakor a mondat hossza 275 karakterre van korlátozva. Ezekhez a nyelvekhez kivételek tartoznak:
+A [BreakSentence](./reference/v3-0-break-sentence.md) függvény használata esetén a mondatok hossza legfeljebb 275 karakter lehet. A következő nyelvek alól kivételek vannak:
 
-| Nyelv | Code | Karakteres korlát |
+| Nyelv | Code | Karakterkorlát |
 |----------|------|-----------------|
-| Kínai | zh | 166 |
+| Kínai | Zh | 166 |
 | Német | de | 800 |
-| Olasz | Ez | 800 |
-| Japán | Japán | 166 |
+| Olasz | it | 800 |
+| Japán | ja | 166 |
 | Portugál | pt | 800 |
 | spanyol | es | 800 |
-| Thai | adik | 180 |
+| Thai | Th | 180 |
 
 > [!NOTE]
-> Ez a korlát nem vonatkozik a fordításokra.
+> Ez a korlát nem vonatkozik a fordításra.
 
 ## <a name="next-steps"></a>Következő lépések
 

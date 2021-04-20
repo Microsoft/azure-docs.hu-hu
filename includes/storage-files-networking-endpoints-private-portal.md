@@ -5,30 +5,30 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 5/11/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958c40ed311ebe8b2a83ce0d4d394d00f48d1afa
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93375878"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732628"
 ---
-Navigáljon ahhoz a Storage-fiókhoz, amelyhez privát végpontot szeretne létrehozni. A Storage-fiók tartalomjegyzékében válassza a **privát végponti kapcsolatok** lehetőséget, majd a **+ privát végpontot** egy új privát végpont létrehozásához. 
+Keresse meg azt a tárfiókot, amelyhez privát végpontot szeretne létrehozni. A tárfiók tartalomjegyzékében válassza a Hálózat, a Privát végpontkapcsolatok, majd a **+** Privát végpont lehetőséget egy új privát végpont létrehozásához. 
 
-[![A Storage-fiók tartalomjegyzékében található Private Endpoint Connections elemek képernyőképe](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png)](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png#lightbox)
+[![Képernyőkép a privát végponti kapcsolatok elemről a tárfiók tartalomjegyzékében](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png)](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png#lightbox)
 
-Az eredményül kapott varázslónak több lapja is van.
+Az eredményül kapott varázsló több lapot is tartalmaz.
 
-Az **alapvető beállítások** panelen válassza ki a saját végpontja számára a kívánt erőforráscsoportot, nevet és régiót. Lehet, hogy bármit is szeretne, nem kell semmilyen módon megegyezniük a Storage-fiókkal, bár a magánhálózati végpontot abban a régióban kell létrehoznia, amelyben a privát végpontot létre kívánja hozni.
+Az Alapvető **beállítások panelen** válassza ki a kívánt erőforráscsoportot, nevet és régiót a privát végponthoz. Ezek bármilyenek lehetnek, de nem kell semmilyen módon egyezniük a tárfiókkal, bár a privát végpontot ugyanabban a régióban kell létrehoznia, mint ahol a virtuális hálózatot létre szeretné hozni.
 
-![A privát végpont létrehozása szakasz alapjai szakaszának képernyőképe](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
+![Képernyőkép a Privát végpont létrehozása szakasz Alapvető funkciók szakaszról](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
 
-Az **erőforrás** panelen válassza a **saját címtárban található Azure-erőforráshoz való kapcsolódáshoz** használandó választógombot. Az **erőforrástípus** területen válassza ki a **Microsoft. Storage/storageAccounts** elemet az erőforrás típushoz. Az **erőforrás** mező annak az Azure-fájlmegosztásnak a Storage-fiókja, amelyhez csatlakozni szeretne. A cél alerőforrás **fájl**, mivel Azure files.
+Az Erőforrás **panelen** válassza a Csatlakozás a címtárban lévő Azure-erőforráshoz **választógombot.** Az **Erőforrás típusa alatt** válassza a **Microsoft.Storage/storageAccounts** erőforrástípust. Az **Erőforrás** mező az a tárfiók, amelybe az Azure-fájlmegosztást csatlakoztatni szeretné. A cél-alerőforrás a **fájl,** mivel ez a Azure Files.
 
-A **konfiguráció** panelen kiválaszthatja azt a virtuális hálózatot és alhálózatot, amelyhez hozzá szeretné adni a privát végpontot. Ki kell választania egy különálló alhálózatot abból az alhálózatból, amelyhez a szolgáltatási végpontot hozzáadta. A konfiguráció panelen a saját DNS-zóna létrehozásához/frissítéséhez szükséges információk is szerepelnek. Azt javasoljuk, hogy az alapértelmezett `privatelink.file.core.windows.net` zónát használja.
+A **Konfiguráció** panelen kiválaszthatja azt a virtuális hálózatot és alhálózatot, amelybe hozzá szeretné adni a privát végpontot. Ki kell választania egy eltérő alhálózatot abból az alhálózatból, amelybe a szolgáltatásvégpontot hozzáadta. A Konfiguráció panel a privát DNS-zóna létrehozására/frissítésére vonatkozó információkat is tartalmazza. Javasoljuk, hogy az alapértelmezett zónát `privatelink.file.core.windows.net` használja.
 
-![A konfigurációs szakasz képernyőképe](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-2.png)
+![Képernyőkép a Konfiguráció szakaszról](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-2.png)
 
-A privát végpont létrehozásához kattintson a **felülvizsgálat + létrehozás** gombra. 
+Kattintson **az Áttekintés + létrehozás gombra** a privát végpont létrehozásához. 

@@ -1,5 +1,5 @@
 ---
-title: Anomália-detektor többváltozós Java ügyféloldali kódtár gyors üzembe helyezése
+title: anomáliadetektor Java-ügyfélkönyvtár rövid útmutatója
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,53 +8,55 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f2e227b2a589955191a2e602495cf0ffbb3f6d8b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316022"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732587"
 ---
-Ismerkedjen meg a Javához készült anomália-detektor többváltozós ügyféloldali függvénytárával. Az alábbi lépéseket követve telepítheti a csomagot a szolgáltatás által biztosított algoritmusok használatával. Az új többváltozós anomália-észlelési API-k lehetővé teszik a fejlesztők számára, hogy a speciális AI-t egyszerűen integrálják a mérőszámokból származó rendellenességek észlelése érdekében, anélkül, hogy gépi tanulási ismeretekre vagy címkézett adatokra lenne A különböző jelek közötti függőségek és korrelációk közötti összefüggések automatikusan kulcsfontosságú tényezőként számítanak. Ezzel a megoldással proaktív módon védhető meg az összetett rendszerek hibái.
+A Javához anomáliadetektor ügyféloldali kódtár első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez, és kezdje el használni a szolgáltatás által biztosított algoritmusokat. Az új többváltozós anomáliadetektálási API-k lehetővé teszik a fejlesztők számára a fejlett AI integrálását a metrikák csoportjaiból származó anomáliák észleléséhez anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
-A következőhöz tartozó anomália-detektor többváltozós ügyféloldali kódtárat használja a Javához:
+Használja a anomáliadetektor java-ügyféloldali kódtárat a következőre:
 
-* A rendszerszintű rendellenességek észlelése idősorozatok csoportjából.
-* Ha az egyes idősorozatok nem sokat mondanak, és az összes jelet meg kell vizsgálnia a probléma észlelése érdekében.
-* A Predicative több száz különböző típusú érzékelővel, a rendszerállapot különböző szempontjainak mérésével a költséges fizikai eszközök karbantartását is megfigyelheti.
+* Rendszerszintű anomáliák észlelése idősorok egy csoportjából.
+* Ha egyetlen idősor sem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
+* Drága fizikai eszközök predikatív karbantartása több tíz vagy több száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
+
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
-* A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* A Java fejlesztői készlet [(JDK) aktuális verziója](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* A [Gradle buildeszköz ,](https://gradle.org/install/)vagy egy másik függőségkezelő.
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy anomáliadetektor-erőforrást, és hozzon létre anomáliadetektor erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, és kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrás kulcsra és végpontra az alkalmazás a anomáliadetektor API-hoz való csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
-Ez a rövid útmutató a Gradle függőség-kezelőt használja. További ügyféloldali függvénytár-információkat a [Maven központi adattárában](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)talál.
+Ez a rövid útmutató a Gradle függőségkezelőt használja. További ügyféloldali kódtár-információkat a [Maven központi adattárában talál.](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `gradle init` parancsot a munkakönyvtárból. Ez a parancs alapvető Build-fájlokat hoz létre a Gradle számára, beleértve a *Build. Gradle. KTS* fájlt, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához.
+Futtassa `gradle init` a parancsot a munkakönyvtárból. Ez a parancs alapvető buildfájlokat hoz létre a Gradle-hez, beleértve a *build.gradle.kts* fájlt, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához.
 
 ```console
 gradle init --type basic
 ```
 
-Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
+Amikor a rendszer kéri, hogy válasszon **egy DSL-t,** válassza a **Kotlin lehetőséget.**
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegszerkesztővel. Ezután másolja ezt a Build-konfigurációt. Ügyeljen arra, hogy a projekt függőségei is szerepeljenek.
+Keresse *meg a build.gradle.kts* et, és nyissa meg a kívánt IDE-val vagy szövegszerkesztővel. Ezután másolja be ezt a buildkonfigurációt. Mindenképpen foglalja bele a projektfüggőségeket.
 
 ```kotlin
 dependencies {
@@ -64,13 +66,13 @@ dependencies {
 
 ### <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Hozzon létre egy mappát a minta alkalmazáshoz. A munkakönyvtárból futtassa a következő parancsot:
+Hozzon létre egy mappát a mintaalkalmazáshoz. Futtassa a következő parancsot a munkakönyvtárból:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Navigáljon az új mappára, és hozzon létre egy *MetricsAdvisorQuickstarts. Java* nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
+Lépjen az új mappába, és hozzon létre egy *MetricsQuickstarts.java nevű fájlt.* Nyissa meg a kívánt szerkesztőben vagy IDE-ban, és adja hozzá a következő `import` utasításokat:
 
 ```java
 package com.azure.ai.anomalydetector;
@@ -101,28 +103,28 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 ```
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásakor. Hozzon létre egy másik változót a példaként szolgáló adatfájlhoz.
+Hozza létre az erőforrás Azure-végpontját és kulcsát. Hozzon létre egy másik változót a példaadatfájlhoz.
 
 ```java
 String key = "YOUR_API_KEY";
 String endpoint = "YOUR_ENDPOINT";
 ```
 
- Az anomáliák többváltozós API-k használatához az észlelés használata előtt be kell tanítani a saját modelljét. A betanításhoz használt adatmennyiség az idősorozatok egy kötege, minden egyes idősorozatnak CSV formátumúnak kell lennie két oszloppal, egy időbélyeggel és egy értékkel. Az összes idősorozatot egy zip-fájlba kell csomagolni, és fel kell tölteni az [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md)-ba. Alapértelmezés szerint a rendszer a fájlnevet fogja használni az idősorozat változójának ábrázolásához. Azt is megteheti, hogy a fájl egy további meta.jsis tartalmazhatja a zip-fájlban, ha azt szeretné, hogy a változó neve eltér a. zip-fájl nevétől. Ha a [blob sas (közös hozzáférésű aláírás) URL-címet](../../../../storage/common/storage-sas-overview.md)generálta, a betanításhoz használhatja a zip-fájl URL-címét.
+ A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorozatok, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy SAS- (közös hozzáférésű [jogosultságú) URL-címet,](../../../../storage/common/storage-sas-overview.md)a zip-fájl URL-címét használjuk a betanításhoz.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js rendellenesség-Kiderítő ügyféloldali kódtár használatával:
+Ezek a kódrészletek a következőt mutatják be a anomáliadetektor ügyféloldali kódtárával Node.js:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Modell betanítása](#train-a-model)
-* [Rendellenességek észlelése](#detect-anomalies)
+* [Anomáliák észlelése](#detect-anomalies)
 * [Modell exportálása](#export-model)
 * [Modell törlése](#delete-model)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Objektumot hoz létre `anomalyDetectorClient` a végponttal és a hitelesítő adatokkal.
+Objektum `anomalyDetectorClient` példányosodása a végponttal és a hitelesítő adatokkal.
 
 ```java
 HttpHeaders headers = new HttpHeaders()
@@ -147,11 +149,11 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 ## <a name="train-a-model"></a>Modell betanítása
 
-### <a name="construct-a-model-result-and-train-model"></a>Modell eredményének és betanítási modellének létrehozása
+### <a name="construct-a-model-result-and-train-model"></a>Modell eredményének és betanításának eredménye
 
-Először létre kell hoznia egy modell-kérelmet. Győződjön meg arról, hogy a kezdési és befejezési idő igazodik az adatforráshoz.
+Először létre kell hoznunk egy modellkérést. Ügyeljen arra, hogy a kezdési és a záró időpont igazodjon az adatforráshoz.
 
- Az anomáliák többváltozós API-k használatához az észlelés használata előtt be kell tanítani a saját modelljét. A betanításhoz használt adatmennyiség az idősorozatok egy kötege, minden egyes idősorozatnak CSV formátumúnak kell lennie két oszloppal, egy időbélyeggel és egy értékkel. Az összes idősorozatot egy zip-fájlba kell csomagolni, és fel kell tölteni az [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs)-ba. Alapértelmezés szerint a rendszer a fájlnevet fogja használni az idősorozat változójának ábrázolásához. Azt is megteheti, hogy a fájl egy további meta.jsis tartalmazhatja a zip-fájlban, ha azt szeretné, hogy a változó neve eltér a. zip-fájl nevétől. Ha a [blob sas (közös hozzáférésű aláírás) URL-címet](../../../../storage/common/storage-sas-overview.md)generálta, a betanításhoz használhatja a zip-fájl URL-címét.
+ A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy SAS- (közös hozzáférésű [jogosultságú) URL-címet,](../../../../storage/common/storage-sas-overview.md)a zip-fájl URL-címét használjuk a betanításhoz.
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -205,7 +207,7 @@ while (true) {
 }
 ```
 
-## <a name="detect-anomalies"></a>Rendellenességek észlelése
+## <a name="detect-anomalies"></a>Anomáliák észlelése
 
 ```java
 DetectionRequest detectionRequest = new DetectionRequest().setSource(source).setStartTime(startTime).setEndTime(endTime);
@@ -228,7 +230,7 @@ while (true) {
 
 ## <a name="export-model"></a>Modell exportálása
 
-A betanított modell exportálásához használja a következőt: `exportModelWithResponse` .
+A betanított modell exportáláshoz használja a `exportModelWithResponse` következőt: .
 
 ```java
 StreamResponse response_export = anomalyDetectorClient.exportModelWithResponse(model_id, Context.NONE);
@@ -247,14 +249,14 @@ Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.delet
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazást az alábbiakkal hozhatja létre:
+Az alkalmazást a következővel építheti fel:
 
 ```console
 gradle build
 ```
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a `run` célnak megfelelően:
+Futtassa az alkalmazást a következő `run` céllal:
 
 ```console
 gradle run
@@ -262,4 +264,4 @@ gradle run
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Anomália-érzékelő többváltozós ajánlott eljárásai](../../concepts/best-practices-multivariate.md)
+* [anomáliadetektor többválékos ajánlott eljárások](../../concepts/best-practices-multivariate.md)

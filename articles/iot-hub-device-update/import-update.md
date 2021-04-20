@@ -1,25 +1,24 @@
 ---
 title: Új frissítési | Microsoft Docs
-description: How-To útmutató az új frissítések importáláshoz a IoT Hub eszközfrissítésbe a IoT Hub.
+description: How-To útmutató új frissítés hozzáadásához az eszközfrissítéshez a IoT Hub.
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e90253100b86397c5ca4873d5c38a3511ba21555
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717746"
+ms.locfileid: "107728571"
 ---
-# <a name="import-new-update"></a>Új frissítés importálása
-Ismerje meg, hogyan importálhat új frissítéseket a IoT Hub. Ha még nem tette meg, ismerkedjen meg az importálás alapvető [fogalmaival.](import-concepts.md)
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>Frissítés hozzáadása az eszközfrissítéshez a IoT Hub
+Ismerje meg, hogyan adhat hozzá új frissítést az eszközfrissítéshez a IoT Hub.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy meglévő frissítési fájl, amely az eszközökre telepítve van. Ez lehet képalapú frissítéshez szükséges képfájl, csomagalapú [frissítéshez](device-update-apt-manifest.md) pedig APT-jegyzékfájl. ([Hogyan válassza?](understand-device-update.md#support-for-a-wide-range-of-update-artifacts))
-* [Hozzáférés IoT Hub eszközfrissítéssel rendelkező](create-device-update-account.md)IoT Hub számára. 
+* [Hozzáférés az IoT Hub eszközfrissítéssel rendelkező](create-device-update-account.md)IoT Hub számára. 
 * Eszközfrissítéshez kiépítve egy IoT-eszköz (vagy szimulátor) a IoT Hub.
 * [PowerShell 5 vagy](/powershell/scripting/install/installing-powershell) újabb (linuxos, macOS- és Windows-telepítéseket is tartalmaz)
 * Támogatott böngészők:
@@ -27,15 +26,25 @@ Ismerje meg, hogyan importálhat új frissítéseket a IoT Hub. Ha még nem tett
   * Google Chrome
 
 > [!NOTE]
-> Előfordulhat, hogy a szolgáltatásba beküldött adatok egy része azon a régión kívüli régióban lesz feldolgozva, ahol a példányt létrehozták.
+> Előfordulhat, hogy a szolgáltatásba beküldött adatok egy része azon a régión kívüli régióban lesz feldolgozva, ahol a példány létre lett hozva.
 
-## <a name="create-device-update-import-manifest"></a>Eszközfrissítés importálási jegyzékének létrehozása
+## <a name="obtain-an-update-for-your-devices"></a>Az eszközök frissítésének beszerzése
 
-1. Ha még nem tette meg, szerezze be az eszközökre telepíteni kívánt képfájlt vagy APT-jegyzékfájlt. Ez lehet az eszközök gyártójától vagy egy ön által használt rendszerintegrátortól, vagy akár a szervezet egy csoportjától is. Győződjön meg arról, hogy a frissítési képfájl vagy az APT-jegyzékfájl a PowerShellből elérhető könyvtárban található.
+Most, hogy beállította az [eszközfrissítést,](create-device-update-account.md)készen áll az eszközök frissítésére. Először azonban szüksége lesz a tényleges frissítési fájl(ak)re a telepíteni kívánt eszközökhöz.
+
+Ha oem-től vagy megoldás-rendszerintegrátortól vásárolt eszközöket, akkor a szervezet valószínűleg frissítési fájlokat biztosít Önnek anélkül, hogy létre kellene hoznia a frissítéseket. Lépjen kapcsolatba az OEM-rel vagy a megoldás-rendszerintegrátorsal, hogy megtudja, hogyan teszik elérhetővé a frissítéseket.
+
+Ha a szervezet már hoz létre szoftvereket a használt eszközökhöz, ugyanez a csoport hozza létre a frissítéseket a szoftverhez. Amikor az eszközfrissítéssel telepíti a frissítést a IoT Hub, a [](understand-device-update.md#support-for-a-wide-range-of-update-artifacts) forgatókönyvtől függően kezdje a rendszerkép- vagy csomagalapú megközelítéssel. Megjegyzés: ha saját frissítéseket szeretne létrehozni, de még csak most kezdi, a GitHub remek választás a fejlesztés kezeléséhez. A forráskódot tárolhatja és kezelheti, a folyamatos integrációt (CI) és folyamatos üzembe helyezést (CD) pedig az [GitHub Actions.](https://docs.github.com/en/actions/guides/about-continuous-integration)
+
+## <a name="create-a-device-update-import-manifest"></a>Eszközfrissítés importálási jegyzékfájl létrehozása
+
+Ha még nem tette meg, ismerkedjen meg az importálás alapvető [fogalmaival.](import-concepts.md)
+
+1. Győződjön meg arról, hogy a frissítési fájl(k) a PowerShellből elérhető könyvtárban találhatók.
 
 2. Hozzon létre egy **AduUpdate.psm1** nevű szövegfájlt abban a könyvtárban, ahol a frissítési képfájl vagy az APT-jegyzékfájl található. Ezután nyissa meg [az AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell-parancsmagot, másolja a tartalmát a szövegfájlba, majd mentse a szövegfájlt.
 
-3. A PowerShellben keresse meg azt a könyvtárat, amelyben létrehozta a PowerShell-parancsmagot a 2. lépésben. Használja az alábbi Másolás lehetőséget, majd illessze be a PowerShellbe a parancsok futtatásához:
+3. A PowerShellben keresse meg azt a könyvtárat, amelyben létrehozta a PowerShell-parancsmagot a 2. lépésben. Használja az alábbi Másolás lehetőséget, majd illessze be a powershellbe a parancsok futtatásához:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -53,7 +62,7 @@ Ismerje meg, hogyan importálhat új frissítéseket a IoT Hub. Ha még nem tett
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Rövid összefoglalásként íme néhány példaérték a fenti paraméterekhez. További részletekért megtekintheti a teljes [importálási](import-schema.md) jegyzéksémát is.
+    A gyors áttekintéshez íme néhány példaérték a fenti paraméterekhez. További részletekért megtekintheti a teljes [importálási jegyzéksémát](import-schema.md) is.
 
     | Paraméter | Leírás |
     | --------- | ----------- |
@@ -61,13 +70,13 @@ Ismerje meg, hogyan importálhat új frissítéseket a IoT Hub. Ha még nem tett
     | deviceModel (eszközmodell) | Annak az eszköznek a modellje, amely a frissítéssel kompatibilis, például a Toasterrel. Meg kell _egyeznie a modell_ [eszköztulajdonságának.](./device-update-plug-and-play.md#device-properties)
     | updateProvider | A frissítést létrehozására vagy közvetlenül felelős entitásra. Ez gyakran a vállalat neve lesz.
     | updateName (frissítés neve) | A frissítések egy osztályának azonosítója. A osztály bármi lehet, amit csak választ. Ez gyakran egy eszköz- vagy modellnév.
-    | updateVersion | Verziószám, amely megkülönbözteti a frissítést az azonos Provider és Name verziójúaktól. Nem egyezik az eszköz egyes szoftverösszetevőinek verziójával (de igen, ha ön ezt választja).
+    | updateVersion | Verziószám, amely megkülönbözteti ezt a frissítést az azonos Provider és Name szolgáltatóval. Nem egyezik az eszközön található egyes szoftverösszetevők verziójával (de igen, ha ön választja).
     | updateType (frissítés típusa) | <ul><li>`microsoft/swupdate:1`Képfrissítéshez adja meg a következőt:</li><li>Csomagfrissítéshez adja meg a `microsoft/apt:1` következőt:</li></ul>
     | installedCriteria | <ul><li>A SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja **meg a name-version (névverzió)** értéket, ahol _a name_ (név) az APT-jegyzékfájl neve, a _verzió_ pedig az APT-jegyzékfájl verziója. Például: contoso-iot-edge-1.0.0.0.
     | updateFilePath(s) | A számítógépen található frissítési fájl(ak) elérési útja
 
 
-## <a name="review-generated-import-manifest"></a>A létrehozott importálási jegyzék áttekintése
+## <a name="review-the-generated-import-manifest"></a>A létrehozott importálási jegyzék áttekintése
 
 Példa:
 ```json
@@ -110,7 +119,7 @@ Példa:
 }
 ```
 
-## <a name="import-update"></a>Frissítés importálása
+## <a name="import-an-update"></a>Frissítés importálása
 
 > [!NOTE]
 > Az alábbi utasítások azt mutatják be, hogyan importálhat frissítéseket a Azure Portal felhasználói felületén. A frissítés importálását az [eszközfrissítési API IoT Hub is](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) használhatja. 
@@ -145,7 +154,7 @@ Példa:
 
    :::image type="content" source="media/import-update/publish-update.png" alt-text="Frissítés közzététele" lightbox="media/import-update/publish-update.png":::
 
-9. Megkezdődik az importálási folyamat, és a képernyő átvált az "Előzmények importálása" szakaszra. Válassza a "Frissítés" lehetőséget az importálási folyamat befejezéséig (a frissítés méretétől függően ez néhány percen belül befejeződhet, de tovább is tarthat).
+9. Megkezdődik az importálási folyamat, és a képernyő átvált az "Előzmények importálása" szakaszra. Válassza a "Frissítés" lehetőséget az importálási folyamat befejezéséig látható folyamat megtekintéséhez (a frissítés méretétől függően ez néhány percen belül befejeződhet, de tovább is tarthat).
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Importálási alkalmazás-alkalmazás frissítése" lightbox="media/import-update/update-publishing-sequence-2.png":::
 

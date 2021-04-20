@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598244"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728049"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     Az API-kulcsot az Azure Enterprise Portalon, a **Használati adatok letöltése** lapon szerezheti be. Válassza az **API hozzáférési kulcsa** elemet, majd másolja és illessze be a kulcsot a **Fiókkulcs** mezőbe.
 1. Az adathalmaz méretétől függően az adatok betöltése a Power BI-ba 5–30 percet vesz igénybe.
-
-## <a name="reports-faq"></a>Jelentések – Gyakori kérdések
-
-Ez a szakasz a jelentésekkel kapcsolatos gyakori kérdéseket tárgyalja.
-
-### <a name="why-is-my-cost-showing-as-0"></a>Miért jelenik meg 0 dollár a költségeim értékeként?
-
-**Közvetlen regisztrációval** rendelkező ügyfeleink esetén a vállalati rendszergazdák hozzáférést biztosíthatnak a fióktulajdonosok és a részlegszintű rendszergazdák számára a használati jelentésekhez tartozó költség- és díjszabási információkhoz. Kövesse az alábbi lépéseket:
-
-1. Az Azure Enterprise Portalon válassza a **Kezelés** elemet a bal oldali navigációs sávon.
-1. Válassza a kék ceruza szimbólumot a Díjtételek megtekintése a részlegszintű rendszergazda számára elem mellett.
-1. Válassza az **Engedélyezve** lehetőséget, majd a mentést.
-1. Válassza a kék ceruza elemet a Díjtételek megtekintése a fióktulajdonos számára elem mellett.
-1. Válassza az **Engedélyezve** lehetőséget, majd a mentést.
-
-> [!NOTE]
-> Ha Ön fióktulajdonos vagy részlegszintű rendszergazda, a díjszabási funkció engedélyezéséhez forduljon a vállalati rendszergazdához.
-
-Ha Ön **közvetett regisztrációval** rendelkező ügyfél, ellenőrizze, hogy partnere engedélyezte-e a díjszabási funkciót. Ezt csak a partner végezheti el. A funkció bekapcsolása után vállalati rendszergazdaként tekintheti meg regisztrációja költségét és díjszabását.
-
-A partnerek, ha engedélyezni szeretnék a díjtételek megtekintését a fióktulajdonosok és a részlegszintű rendszergazdák számára, kövessék a **Közvetlen regisztráció** szakaszban felsorolt lépéseket.
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>Miért nem találhatók termékváltozat-adatok a használati adatokról szóló jelentésben?
-
-A használati adatokról szóló jelentés nem tartalmaz termékváltozat-adatokat. A jelentés tartalmazza azonban a használati adatokat, így a termékváltozat-adatok beszerzéséhez letöltheti az árlistajelentést.
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Miért nem egyezik az Azure Marketplace-en lévő teljes összeg a használati összesítésben szereplő összegzéssel?
-
-Az Azure Marketplace-jelentés csak a használatalapú díjakat jeleníti meg. Az egyszeri díjak nem jelennek meg. A használati adatokat összegző oldalon megtalálja a használatalapú és az egyszeri díjakra vonatkozó legfrissebb használati információkat.
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>Miért nincs információ az API-jelentésről?
-
-Az API-kulcsok érvényessége hathavonta lejár. Ha probléma merül fel, a vállalati rendszergazdának létre kell hoznia egy új API-kulcsot. Kövesse az API-jelentésekkel kapcsolatos gyakori kérdések lépéseit.
-
-### <a name="why-isnt-my-power-bi-report-working"></a>Miért nem működik a Power BI-jelentés?
-
-A Power BI-jal kapcsolatos probléma esetén küldjön egy hibajegyet a [Power BI támogatási csapatának](https://support.powerbi.com).
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Miért nem jelennek meg az erőforráscímkék a jelentéseimben?
-
-Az erőforráscímkék felügyelete az Azure Portalon történik. Az Azure előfizetési csapatával az [Azure Portalon](https://portal.azure.com) veheti fel a kapcsolatot. Kövesse az [Azure-támogatáskérések létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md) cikkben leírt lépéseket.
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>Miért változik naponta az erőforrás-díjszabás?
-
-A részletes használati jelentésben szereplő erőforrás-díjszabás számított érték. A szolgáltatásra vonatkozó átlagos havi díjat jelöli. Az erőforrás-díjszabás kiszámítása a havi keret és a havi túlhasználati díj átlaga alapján történik a szolgáltatási egység vonatkozásában. A keret terhére elszámolt használat aránya és a túlhasználati díjak a hónap végéig változnak. Ezért az erőforrás-díjszabás is változik a hónap folyamán. Az erőforrás-díjszabás a hónap végét követő ötödik napon zárolódik.
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>Az erőforrás-díjszabás kiszámítására szolgáló folyamatok szószedete
 

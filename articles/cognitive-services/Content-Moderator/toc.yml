@@ -124,7 +124,7 @@
       items:
         - name: Régiós támogatás
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: Megfelelőség és tanúsítvány
+        - name: Megfelelőség és minősítés
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Támogatási és súgólehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
@@ -135,6 +135,6 @@
     - name: Azure Government globális Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure-frissítések
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

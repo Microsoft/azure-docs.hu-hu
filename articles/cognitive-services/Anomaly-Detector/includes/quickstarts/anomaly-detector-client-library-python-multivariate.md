@@ -1,5 +1,5 @@
 ---
-title: Anomália-detektor Python többváltozós ügyféloldali kódtár rövid útmutatója
+title: anomáliadetektor Python többváltozós ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,36 +8,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316018"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732398"
 ---
-Ismerkedjen meg a Pythonhoz készült, többváltozós ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot a szolgáltatás által biztosított algoritmusok használatával. Az új többváltozós anomália-észlelési API-k lehetővé teszik a fejlesztők számára, hogy a speciális AI-t egyszerűen integrálják a mérőszámokból származó rendellenességek észlelése érdekében, anélkül, hogy gépi tanulási ismeretekre vagy címkézett adatokra lenne A különböző jelek közötti függőségek és korrelációk közötti összefüggések automatikusan kulcsfontosságú tényezőként számítanak. Ezzel a megoldással proaktív módon védhető meg az összetett rendszerek hibái.
+A Pythonhoz készült anomáliadetektor ügyféloldali kódtár első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez, és kezdje el használni a szolgáltatás által biztosított algoritmusokat. Az új többváltozós anomáliadetektálási API-k lehetővé teszik a fejlesztők számára a fejlett AI integrálását a metrikák csoportjaiból származó anomáliák észleléséhez anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
-A következőhöz használhatja a Python többváltozós ügyféloldali függvénytárát:
+Használja a anomáliadetektor Pythonhoz készült ügyféloldali kódtárát a következőre:
 
-* A rendszerszintű rendellenességek észlelése idősorozatok csoportjából.
-* Ha az egyes idősorozatok nem sokat mondanak, és az összes jelet meg kell vizsgálnia a probléma észlelése érdekében.
-* A Predicative több száz különböző típusú érzékelővel, a rendszerállapot különböző szempontjainak mérésével a költséges fizikai eszközök karbantartását is megfigyelheti.
+* Rendszerszintű anomáliák észlelése idősorok egy csoportjából.
+* Ha egyetlen idősor sem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
+* Drága fizikai eszközök predikatív karbantartása több tíz vagy több száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
+
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.x](https://www.python.org/)
-* A [Panda adatelemzési könyvtára](https://pandas.pydata.org/)
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* A [Pandas adatelemzési kódtára](https://pandas.pydata.org/)
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy anomáliadetektor-erőforrást, és hozzon létre anomáliadetektor erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, és kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrás kulcsra és végpontra az alkalmazás a anomáliadetektor API-hoz való csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
- Hozzon létre egy új Python-fájlt, és importálja a következő könyvtárakat.
+ Hozzon létre egy új Python-fájlt, és importálja a következő kódtárakat.
 
 ```python
 import os
@@ -50,7 +52,7 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 ```
 
-Hozzon létre változókat a kulcshoz környezeti változóként, egy idősorozat-adatfájl elérési útját, valamint az előfizetés Azure-beli helyét. Például: `westus2`.
+Hozzon létre változókat a kulcshoz környezeti változóként, egy idősorozat-adatfájl elérési útjának és az előfizetés Azure-beli helyének. Például: `westus2`.
 
 ```python
 subscription_key = "ANOMALY_DETECTOR_KEY"
@@ -59,7 +61,7 @@ anomaly_detector_endpoint = "ANOMALY_DETECTOR_ENDPOINT"
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-A Python telepítése után az ügyféloldali kódtár a következővel telepíthető:
+A Python telepítése után a következővel telepítheti az ügyféloldali kódtárat:
 
 ```console
 pip install --upgrade azure-ai-anomalydetector
@@ -67,19 +69,19 @@ pip install --upgrade azure-ai-anomalydetector
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtár használatával:
+Ezek a kódrészletek a következőket mutatják be a Pythonhoz készült anomáliadetektor kódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [A modell betanítása](#train-the-model)
-* [Rendellenességek észlelése](#detect-anomalies)
+* [Anomáliák észlelése](#detect-anomalies)
 * [Modell exportálása](#export-model)
 * [Modell törlése](#delete-model)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Egy új anomália-detektor ügyfelének létrehozásához át kell adnia az anomália-detektor előfizetési kulcsát és a hozzá tartozó végpontot. Létrehozunk egy adatforrást is.  
+Egy új anomáliadetektor példányának példányosíthoz át kell adni a anomáliadetektor előfizetői előfizetési kulcsot és a társított végpontot. Létrehozunk egy adatforrást is.  
 
-Az anomáliák többváltozós API-k használatához az észlelés használata előtt be kell tanítani a saját modelljét. A betanításhoz használt adatmennyiség az idősorozatok egy kötege, minden egyes idősorozatnak CSV formátumúnak kell lennie két oszloppal, egy időbélyeggel és egy értékkel. Az összes idősorozatot egy zip-fájlba kell csomagolni, és fel kell tölteni az [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs)-ba. Alapértelmezés szerint a rendszer a fájlnevet fogja használni az idősorozat változójának ábrázolásához. Azt is megteheti, hogy a fájl egy további meta.jsis tartalmazhatja a zip-fájlban, ha azt szeretné, hogy a változó neve eltér a. zip-fájl nevétől. Ha a [blob sas (közös hozzáférésű aláírás) URL-címet](../../../../storage/common/storage-sas-overview.md)generálta, a betanításhoz használhatja a zip-fájl URL-címét.
+A többváltozós ANOMÁLIADETEKTOR használata előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorozatok, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk [egy BLOB SAS-url-címet (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságú jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
 
 ```python
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
@@ -101,7 +103,7 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
 
 ## <a name="train-the-model"></a>A modell betanítása
 
-Először betanítjuk a modellt, és betanítjuk a modell állapotát a képzés befejezését követően, majd lekérik a legújabb modell-azonosítót, amelyre szükség lesz az észlelési fázisra való áttéréskor.
+Először betanítjuk a modellt, ellenőrizzük a modell állapotát a betanítás során, hogy megállapítsuk, mikor fejeződött be a betanítás, majd lek kérjük a legújabb modellazonosítót, amelyre az észlelési fázisra való továbblépéskor szükségünk lesz.
 
 ```python
 def train(self, start_time, end_time, max_tryout=500):
@@ -139,9 +141,9 @@ def train(self, start_time, end_time, max_tryout=500):
 
 ```
 
-## <a name="detect-anomalies"></a>Rendellenességek észlelése
+## <a name="detect-anomalies"></a>Anomáliák észlelése
 
-A `detect_anomaly` és a `get_dectection_result` segítségével határozza meg, hogy van-e rendellenesség az adatforráson belül. A modell AZONOSÍTÓját át kell adni az imént betanított modellhez.
+A és a használatával állapítsa meg, hogy vannak-e `detect_anomaly` `get_dectection_result` anomáliák az adatforrásban. Át kell adnia az előbb betanított modell modellazonosítóját.
 
 ```python
 def detect(self, model_id, start_time, end_time, max_tryout=500):
@@ -175,7 +177,7 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
 
 ## <a name="export-model"></a>Modell exportálása
 
-Ha modellt szeretne exportálni `export_model` , és át szeretné adni az exportálni kívánt modell azonosítóját:
+Ha exportálni szeretne egy modellt, és át szeretné adni az exportálni kívánt `export_model` modell modellazonosítóját:
 
 ```python
 def export_model(self, model_id, model_path="model.zip"):
@@ -194,7 +196,7 @@ def export_model(self, model_id, model_path="model.zip"):
 
 ## <a name="delete-model"></a>Modell törlése
 
-A modell törléséhez használja a modellt, `delete_multivariate_model` és adja át a törölni kívánt modell azonosítóját:
+A modell használatának törléséhez és a törölni kívánt modell `delete_multivariate_model` azonosítójának áteshez:
 
 ```python
 def delete_model(self, model_id):
@@ -207,7 +209,7 @@ def delete_model(self, model_id):
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazás futtatása előtt hozzá kell adnia egy kódot az újonnan létrehozott függvények meghívásához.
+Az alkalmazás futtatása előtt hozzá kell adnunk néhány kódot az újonnan létrehozott függvények hívásához.
 
 ```python
 if __name__ == '__main__':
@@ -234,6 +236,6 @@ if __name__ == '__main__':
 
 ```
 
-Futtassa az alkalmazást a `python` paranccsal és a fájl nevével.
+Futtassa az alkalmazást a `python` paranccsal és a fájlnévvel.
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

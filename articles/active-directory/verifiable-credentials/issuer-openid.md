@@ -1,6 +1,6 @@
 ---
-title: Kiállítói szolgáltatás kommunikációs példái (előzetes verzió) – Azure Active Directory ellenőrizhető hitelesítő adatok
-description: Az Identity Provider és a kiállító szolgáltatás közötti kommunikáció részletei
+title: Példák kiállító szolgáltatáskommunikációra (előzetes verzió) – Azure Active Directory hitelesítő adatok megjelenítése
+description: Az identitásszolgáltató és a kiállító szolgáltatás közötti kommunikáció részletei
 author: barclayn
 manager: davba
 ms.service: identity
@@ -9,40 +9,40 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220198"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726267"
 ---
-# <a name="issuer-service-communication-examples-preview"></a>A kiállítói szolgáltatás kommunikációs példái (előzetes verzió)
+# <a name="issuer-service-communication-examples-preview"></a>Példák kiállító szolgáltatáskommunikációra (előzetes verzió)
 
-A ellenőrizhető hitelesítő adat kiállító szolgáltatása a szervezet OpenID-kompatibilis identitás-szolgáltatója által generált jogcímek beolvasásával ellenőrizhető hitelesítő adatokat adhat ki. Ebből a cikkből megtudhatja, hogyan állíthatja be az identitás-szolgáltatót, hogy a hitelesítő képes legyen kommunikálni vele, és beolvasni a megfelelő azonosító tokent, hogy átadja a kiállító szolgáltatásnak. 
+Az Azure AD ellenőrizhető hitelesítőadat-szolgáltatása igazolható hitelesítő adatokat tud kiadni a szervezet OpenID-kompatibilis identitásszolgáltatója által létrehozott azonosító jogkivonat jogcímek leolvasásával. Ez a cikk bemutatja, hogyan állíthatja be az identitásszolgáltatót úgy, hogy az Authenticator kommunikáljon vele, és lekérje a megfelelő azonosító jogkivonatot, hogy átadja azt a kiállító szolgáltatásnak. 
 
 > [!IMPORTANT]
-> Azure Active Directory ellenőrizhető hitelesítő adatok jelenleg nyilvános előzetes verzióban érhetők el.
+> Azure Active Directory hitelesítő adatok ellenőrizhetővé tehetők jelenleg nyilvános előzetes verzióban.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Egy ellenőrizhető hitelesítő adat kiállításához a hitelesítő utasítást kap a szerződés letöltésével a felhasználótól érkező adatok begyűjtéséhez és az információknak a kiállító szolgáltatásba való elküldéséhez. Ha azonosító tokent kell használnia, úgy kell beállítania az identitás-szolgáltatót, hogy engedélyezze a hitelesítő számára, hogy az OpenID Connect protokoll használatával jelentkezzen be egy felhasználóba. Az eredményül kapott azonosító jogkivonatban található jogcímek a ellenőrizhető hitelesítő adatok tartalmának feltöltésére szolgálnak. A hitelesítő hitelesíti a felhasználót az OpenID Connect engedélyezési kódjának folyamata alapján. Az OpenID-szolgáltatónak támogatnia kell a következő OpenID Connect-funkciókat: 
+Az Ellenőrizhető hitelesítő adatok kiállításához az Authenticator a szerződés letöltésével arra utasítja, hogy gyűjtsön adatokat a felhasználótól, és küldje el az adatokat a kiállító szolgáltatásnak. Ha azonosító jogkivonatot kell használnia, úgy kell beállítania az identitásszolgáltatót, hogy az Authenticator bejelentkeztetsen egy felhasználót a OpenID Connect protokoll használatával. Az eredményül kapott azonosító jogkivonatban a jogcímek az ellenőrizhető hitelesítő adatok tartalmának feltöltéséhez használatosak. Az Authenticator az engedélyezési kódfolyam OpenID Connect hitelesíti a felhasználót. Az OpenID-szolgáltatónak támogatnia kell a következő OpenID Connect funkciókat: 
 
 | Szolgáltatás | Leírás |
 | ------- | ----------- |
-| Engedélyezési típus | Az engedélyezési kód támogatásának típusát kell támogatnia. |
-| Jogkivonat formátuma | Titkosítatlan kompakt JWTs kell létrehoznia. |
-| Aláírási algoritmus | JWTs-aláírást kell létrehoznia az RSA 256 használatával. |
-| Konfigurációs dokumentum | Támogatnia kell az OpenID Connect konfigurációs dokumentumot és a-t `jwks_uri` . | 
-| Ügyfél-regisztráció | A nyilvános ügyfél-regisztrációt kell támogatnia a `redirect_uri` értékének használatával `vclient://openid/` . | 
+| Engedély típusa | Támogatnia kell az engedélyezési kód engedélyezési típusát. |
+| Jogkivonat formátuma | Titkosítatlan, kompakt JWT-ket kell előállítania. |
+| Aláírási algoritmus | RSA 256 használatával aláírt JWT-ket kell előállítania. |
+| Konfigurációs dokumentum | Támogatnia kell OpenID Connect konfigurációs dokumentumát és `jwks_uri` a et. | 
+| Ügyfélregisztráció | Támogatnia kell a nyilvános ügyfélregisztrációt a `redirect_uri` érték `vclient://openid/` használatával. | 
 | PKCE | Biztonsági okokból ajánlott, de nem kötelező. |
 
-Az Ön személyazonosság-szolgáltatójának küldött HTTP-kérelmekre az alábbi példák tartoznak. Az azonosító szolgáltatónak el kell fogadnia és válaszolnia kell ezekre a kérelmekre az OpenID Connect hitelesítési szabványnak megfelelően.
+Az alábbiakban példákat talál az identitásszolgáltatónak küldött HTTP-kérelmekre. Az identitásszolgáltatónak el kell fogadnia ezeket a kéréseket, és válaszolnia kell ezekre a OpenID Connect szabványnak megfelelően.
 
-## <a name="client-registration"></a>Ügyfél-regisztráció
+## <a name="client-registration"></a>Ügyfélregisztráció
 
-Ellenőrizhető hitelesítő adatok fogadásához a felhasználóknak be kell jelentkezniük a IDENTITÁSSZOLGÁLTATÓ az Microsoft Authenticator alkalmazásból. 
+Az ellenőrizhető hitelesítő adatok fogadása érdekében a felhasználóknak be kell jelentkeznie az internetszolgáltatóba az Microsoft Authenticator alkalmazásból. 
 
-Az Exchange engedélyezéséhez regisztráljon egy alkalmazást az identitás-szolgáltatóval. Ha az Azure AD-t használja, [itt](../develop/quickstart-register-app.md)találja az utasításokat. A regisztráláskor használja a következő értékeket.
+Az adatcsere engedélyezéséhez regisztráljon egy alkalmazást az identitásszolgáltatónál. Ha az Azure AD-t használja, itt találja az [utasításokat.](../develop/quickstart-register-app.md) A regisztrációhoz használja a következő értékeket.
 
 | Beállítás | Érték |
 | ------- | ----- |
@@ -50,13 +50,13 @@ Az Exchange engedélyezéséhez regisztráljon egy alkalmazást az identitás-sz
 | Átirányítási URI | `vcclient://openid/ ` |
 
 
-Miután regisztrált egy alkalmazást az identitás-szolgáltatónál, jegyezze fel az ügyfél-AZONOSÍTÓját. Ezt a következő szakaszban fogja használni. Le kell írnia az URL-címet a jól ismert végpontra is a OIDC-kompatibilis identitás-szolgáltató számára. A kiállító szolgáltatás ezt a végpontot használja az azonosító jogkivonat ellenőrzéséhez szükséges nyilvános kulcsok letöltéséhez, amint azt a hitelesítő küldi.
+Miután regisztrált egy alkalmazást az identitásszolgáltatónál, jegyezte fel annak ügyfél-azonosítóját. Ezt a következő szakaszban fogja használni. Le kell írnia az OIDC-kompatibilis identitásszolgáltató jól ismert végpontjára mutató URL-címet is. A kiállító szolgáltatás ezt a végpontot használja az azonosító jogkivonat érvényesítéséhez szükséges nyilvános kulcsok letöltéséhez, miután az Authenticator elküldte azt.
 
-A konfigurált átirányítási URI-t a hitelesítő használja, hogy tudja, mikor fejeződik be a bejelentkezés, és lekérheti az azonosító tokent. 
+Az Authenticator a konfigurált átirányítási URI-t használja, így tudja, mikor fejeződött be a bejelentkezés, és le tudjakérni az azonosító jogkivonatot. 
 
 ## <a name="authorization-request"></a>Engedélyezési kérelem
 
-Az identitás-szolgáltatónak küldött engedélyezési kérelem formátuma a következő:
+Az identitásszolgáltatónak küldött engedélyezési kérelem formátuma a következő.
 
 ```HTTP
 GET /authorize?client_id=<client-id>&redirect_uri=portableidentity%3A%2F%2Fverify&response_mode=query&response_type=code&scope=openid&state=12345&nonce=12345 HTTP/1.1
@@ -66,17 +66,17 @@ Connection: Keep-Alive
 
 | Paraméter | Érték |
 | ------- | ----------- |
-| `client_id` | Az alkalmazás regisztrációs folyamata során kapott ügyfél-azonosító. |
-| `redirect_uri` | A-t kell használnia `vcclient://openid/` . |
-| `response_mode` | Támogatásnak kell lennie `query` . |
-| `response_type` | Támogatásnak kell lennie `code` . |
-| `scope` | Támogatásnak kell lennie `openid` . |
-| `state` | Az OpenID Connect standard szerint vissza kell adni az ügyfélnek. |
-| `nonce` | Az ID-tokenben jogcímként kell visszaadni az OpenID Connect standard alapján. |
+| `client_id` | Az alkalmazásregisztrációs folyamat során lekért ügyfél-azonosító. |
+| `redirect_uri` | A-t kell `vcclient://openid/` használnia. |
+| `response_mode` | Támogatnia kell a `query` et. |
+| `response_type` | Támogatnia kell a `code` et. |
+| `scope` | Támogatnia kell a `openid` et. |
+| `state` | Az ügyfélnek a következő szabványnak megfelelően kell OpenID Connect vissza. |
+| `nonce` | Jogcímként kell visszaadni az azonosító jogkivonatban a OpenID Connect szerint. |
 
-Amikor engedélyezési kérelmet kap, az identitás-szolgáltatónak hitelesítenie kell a felhasználót, és el kell végeznie a bejelentkezés befejezéséhez szükséges lépéseket, például a többtényezős hitelesítést.
+Amikor megkapja az engedélyezési kérelmet, az identitásszolgáltatónak hitelesítenie kell a felhasználót, és meg kell tennie a bejelentkezéshez szükséges lépéseket, például a többtényezős hitelesítést.
 
-Az igényeinek megfelelően testreszabhatja a bejelentkezési folyamatot. Megkérheti a felhasználókat további információk megadására, a használati feltételek elfogadására, a hitelesítő adatok megfizetésére és egyebekre. Az összes lépés befejezése után válaszoljon az engedélyezési kérelemre úgy, hogy átirányítja az átirányítási URI-ra az alábbi ábrán látható módon. 
+A bejelentkezési folyamatot igény szerint testreszabhatja. Megkérhet felhasználókat, hogy adjanak meg további információkat, fogadjanak el szolgáltatási feltételeket, fizessen a hitelesítő adataikért stb. Ha minden lépés befejeződött, válaszoljon az engedélyezési kérésre az átirányítási URI-hoz való átirányítással, az alább látható módon. 
 
 ```HTTP
 vcclient://openid/?code=nbafhjbh1ub1yhbj1h4jr1&state=12345
@@ -84,12 +84,12 @@ vcclient://openid/?code=nbafhjbh1ub1yhbj1h4jr1&state=12345
 
 | Paraméter | Érték |
 | ------- | ----------- |
-| `code` |  Az identitás-szolgáltató által visszaadott engedélyezési kód. |
-| `state` | Az OpenID Connect standard szerint vissza kell adni az ügyfélnek. |
+| `code` |  Az identitásszolgáltató által visszaadott engedélyezési kód. |
+| `state` | Az ügyfélnek a következő szabványnak megfelelően kell OpenID Connect vissza. |
 
 ## <a name="token-request"></a>Jogkivonat-kérelem
 
-Az identitás-szolgáltatónak elküldett jogkivonat-kérelem a következő formában fog szerepelni.
+Az identitásszolgáltatónak küldött jogkivonat-kérelem a következő űrlapot fogja tartalmazza.
 
 ```HTTP
 POST /token HTTP/1.1
@@ -102,13 +102,13 @@ client_id=<client-id>&redirect_uri=vcclient%3A%2F%2Fopenid%2F&grant_type=authori
 
 | Paraméter | Érték |
 | ------- | ----------- |
-| `client_id` | Az alkalmazás regisztrációs folyamata során kapott ügyfél-azonosító. |
-| `redirect_uri` | A-t kell használnia `vcclient://openid/` . |
-| `scope` | Támogatásnak kell lennie `openid` . |
-| `grant_type` | Támogatásnak kell lennie `authorization_code` . |
-| `code` | Az identitás-szolgáltató által visszaadott engedélyezési kód. |
+| `client_id` | Az alkalmazásregisztrációs folyamat során lekért ügyfél-azonosító. |
+| `redirect_uri` | A-t kell `vcclient://openid/` használnia. |
+| `scope` | Támogatnia kell a `openid` et. |
+| `grant_type` | Támogatnia kell a `authorization_code` et. |
+| `code` | Az identitásszolgáltató által visszaadott engedélyezési kód. |
 
-A jogkivonat-kérelem kézhezvétele után az identitás-szolgáltatónak egy azonosító jogkivonattal kell válaszolnia.
+A jogkivonat-kérelem fogadása után az identitásszolgáltatónak egy azonosító jogkivonattal kell válaszolnia.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -130,18 +130,18 @@ Pragma: no-cache
 }
 ```
 
-Az azonosító tokennek a JWT Compact szerializálási formátumát kell használnia, és nem lehet titkosított. Az azonosító tokennek tartalmaznia kell a következő jogcímeket.
+Az azonosító jogkivonatnak a JWT kompakt szerializálási formátumot kell használnia, és nem lehet titkosítva. Az azonosító jogkivonatnak a következő jogcímeket kell tartalmaznia.
 
 | Jogcím | Érték |
 | ------- | ----------- |
-| `kid` | Az azonosító jogkivonat aláírásához használt kulcs azonosítója, amely az OpenID-szolgáltató egyik bejegyzésének felel meg `jwks_uri` . |
-| `aud` | Az alkalmazás regisztrációs folyamata során kapott ügyfél-azonosító. |
-| `iss` | Az `issuer` OpenID Connect konfigurációs dokumentum értékének kell lennie. |
-| `exp` | Tartalmaznia kell az azonosító token lejárati idejét. |
-| `iat` | Az azonosító jogkivonat kiállításának időpontját kell tartalmaznia. |
+| `kid` | Az azonosító jogkivonatának aláíráshoz használt kulcs azonosítója, amely megfelel az OpenID-szolgáltató `jwks_uri` bejegyzésének. |
+| `aud` | Az alkalmazásregisztrációs folyamat során lekért ügyfél-azonosító. |
+| `iss` | A konfigurációs `issuer` dokumentumban a OpenID Connect értéknek kell lennie. |
+| `exp` | Tartalmaznia kell az azonosító jogkivonat lejárati idejét. |
+| `iat` | Tartalmaznia kell az azonosító jogkivonat kibocsátásának idejét. |
 | `nonce` | Az engedélyezési kérelemben szereplő érték. |
-| További jogcímek | Az azonosító jogkivonatnak tartalmaznia kell minden olyan további jogcímet, amelynek az értékei szerepelni fognak a kiállított ellenőrizhető hitelesítő adatokban. Ebben a szakaszban szerepelnie kell a felhasználóval kapcsolatos attribútumok, például a nevük. |
+| További jogcímek | Az azonosító jogkivonatnak tartalmaznia kell minden olyan további jogcímet, amelynek az értékei szerepelni fognak az ellenőrizhető hitelesítő adatokban, amelyek ki lesznek bocsátva. Ebben a szakaszban meg kell adnunk a felhasználóval kapcsolatos attribútumokat, például a nevüket. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Azure Active Directory ellenőrizhető hitelesítő adatainak testreszabása](credential-design.md)
+- [A hitelesítő adatok Azure Active Directory testreszabása](credential-design.md)

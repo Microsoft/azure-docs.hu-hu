@@ -1,5 +1,5 @@
 ---
-title: Anomália-detektor .NET többváltozós ügyféloldali kódtár rövid útmutatója
+title: anomáliadetektor .NET többváltozós ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,46 +8,48 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 1318a8c410f14f4a1dc91072d66f18e39f7ca7e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b3acea520859de10825468a4d37c3030f9b862bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316028"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732586"
 ---
-Ismerkedjen meg a következővel: rendellenesség-érzékelő többváltozós ügyféloldali kódtára a .NET-hez. A következő lépésekkel telepítheti a csomagot, és megkezdheti a szolgáltatás által biztosított algoritmusok használatát. Az új többváltozós anomália-észlelési API-k lehetővé teszik a fejlesztők számára, hogy a speciális AI-t egyszerűen integrálják a mérőszámokból származó rendellenességek észlelése érdekében, anélkül, hogy gépi tanulási ismeretekre vagy címkézett adatokra lenne A különböző jelek közötti függőségek és korrelációk közötti összefüggések automatikusan kulcsfontosságú tényezőként számítanak. Ezzel a megoldással proaktív módon védhető meg az összetett rendszerek hibái.
+A .NET-anomáliadetektor ügyféloldali kódtárával való első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez és a szolgáltatás által biztosított algoritmusok használatának elkezdéhez. Az új többváltozós anomáliadetektálási API-k lehetővé teszik a fejlesztők számára a fejlett AI integrálását a metrikák csoportjaiból származó anomáliák észleléséhez anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
-A (z) rendszerben a következőhöz tartozó anomália-detektor többváltozós ügyféloldali kódtára használható:
+Használja a anomáliadetektor .NET-hez használható ügyféloldali kódtárát a következőre:
 
-* A rendszerszintű rendellenességek észlelése idősorozatok csoportjából.
-* Ha az egyes idősorozatok nem sokat mondanak, és az összes jelet meg kell vizsgálnia a probléma észlelése érdekében.
-* A Predicative több száz különböző típusú érzékelővel, a rendszerállapot különböző szempontjainak mérésével a költséges fizikai eszközök karbantartását is megfigyelheti.
+* Rendszerszintű anomáliák észlelése idősorok egy csoportjából.
+* Ha egyetlen idősor sem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
+* Drága fizikai eszközök predikatív karbantartása több tíz vagy több száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
+
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/anomalydetector/Azure.AI.AnomalyDetector)  |  [Package (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core) jelenlegi verziója
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. Illessze be a kulcsot és a végpontot a rövid útmutató későbbi részében található kódra.
-    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* A [.NET Core aktuális verziója](https://dotnet.microsoft.com/download/dotnet-core)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy anomáliadetektor-erőforrást, és hozzon létre anomáliadetektor erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, és válassza az **Erőforráshoz ugrás** gombot.
+    * Szüksége lesz a létrehozott erőforrás kulcsra és végpontra az alkalmazás a anomáliadetektor API-hoz való csatlakoztatásához. Illessze be a kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába.
+    Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `anomaly-detector-quickstart-multivariate` . Ez a parancs egy egyszerű "Hello World" projektet hoz létre egyetlen C# forrásfájl: *program. cs*.
+Egy konzolablakban (például cmd, PowerShell vagy Bash) az paranccsal hozzon létre egy új konzolalkalmazást `dotnet new` `anomaly-detector-quickstart-multivariate` néven. Ez a parancs egy egyszerű "Hello World" projektet hoz létre egyetlen C#-forrásfájllal: *Program.cs*.
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart-multivariate
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappába. Az alkalmazást a következővel építheti fel:
 
 ```dotnetcli
 dotnet build
 ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
+A build kimenete nem tartalmazhat figyelmeztetéseket vagy hibákat.
 
 ```output
 ...
@@ -59,13 +61,13 @@ Build succeeded.
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Az alkalmazás könyvtárában telepítse a következő paranccsal a .NET-hez készült rendellenesség-Kiderítő ügyféloldali kódtárat:
+Telepítse a .NET-hez anomáliadetektor ügyféloldali kódtárat az alkalmazás könyvtárába a következő paranccsal:
 
 ```dotnetcli
 dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.3
 ```
 
-A projekt könyvtárában nyissa meg a *program. cs* fájlt, és adja hozzá a következőt a használatával `directives` :
+A projektkönyvtárból nyissa meg a *program.cs fájlt,* és adja hozzá a következőt a `directives` használatával:
 
 ```csharp
 using System;
@@ -84,7 +86,7 @@ using Microsoft.Identity.Client;
 using NUnit.Framework;
 ```
 
-Az alkalmazás `main()` metódusában hozzon létre változókat az erőforrás Azure-végpontja, az API-kulcs és egy egyéni adatforrás számára.
+Az alkalmazás metódusában hozzon létre változókat az erőforrás Azure-végpontja, az API-kulcs és egy egyéni `main()` adatforrás számára.
 
 ```csharp
 string endpoint = "YOUR_API_KEY";
@@ -92,21 +94,21 @@ string apiKey =  "YOUR_ENDPOINT";
 string datasource = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- Az anomáliák többváltozós API-k használatához az észlelés használata előtt be kell tanítani a saját modelljét. A betanításhoz használt adatmennyiség az idősorozatok egy kötege, minden egyes idősorozatnak CSV formátumúnak kell lennie két oszloppal, egy időbélyeggel és egy értékkel. Az összes idősorozatot egy zip-fájlba kell csomagolni, és fel kell tölteni az [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs)-ba. Alapértelmezés szerint a rendszer a fájlnevet fogja használni az idősorozat változójának ábrázolásához. Azt is megteheti, hogy a fájl egy további meta.jsis tartalmazhatja a zip-fájlban, ha azt szeretné, hogy a változó neve eltér a. zip-fájl nevétől. A [blob sas (közös hozzáférésű aláírások) URL-címének](../../../../storage/common/storage-sas-overview.md)létrehozása után a betanításhoz használhatja a zip-fájl URL-címét.
+ A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, amelyek minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítve feltölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy [BLOB SAS (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságú jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el az alábbi műveleteket a "a" rendellenesség-Kiderítő többváltozós ügyféloldali kódtár .NET-hez:
+Ezek a kódrészletek a következőket mutatják be a .NET-hez anomáliadetektor ügyfélkódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [A modell betanítása](#train-the-model)
-* [Rendellenességek észlelése](#detect-anomalies)
+* [Anomáliák észlelése](#detect-anomalies)
 * [Modell exportálása](#export-model)
 * [Modell törlése](#delete-model)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Anomália-detektor ügyfelet hoz létre a végponttal és a kulccsal.
+Példányosíthat egy anomáliadetektor-ügyfelet a végponttal és a kulccsal.
 
 ```csharp
 var endpointUri = new Uri(endpoint);
@@ -117,7 +119,7 @@ AnomalyDetectorClient client = new AnomalyDetectorClient(endpointUri, credential
 
 ## <a name="train-the-model"></a>A modell betanítása
 
-Hozzon létre egy új, privát aszinkron feladatot a modell képzésének kezeléséhez. Ezzel a paranccsal `TrainMultivariateModel` betaníthatja a modellt, és `GetMultivariateModelAysnc` megtekintheti a képzés befejeződését.
+Hozzon létre egy új privát aszinkron feladatot az alábbiak szerint a modell betanításának kezeléshez. A használatával fogja `TrainMultivariateModel` betanítni a modellt, és `GetMultivariateModelAysnc` ellenőrizni, hogy mikor fejeződött be a betanítás.
 
 ```csharp
 private async Task trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
@@ -172,9 +174,9 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 }
 ```
 
-## <a name="detect-anomalies"></a>Rendellenességek észlelése
+## <a name="detect-anomalies"></a>Anomáliák észlelése
 
-Az újonnan betanított modellel felhasználható rendellenességek észleléséhez hozzon létre egy `private async Task` nevesített nevet `detectAsync` . Hozzon létre egy újat, `DetectionRequest` és adja át a paraméterként `DetectAnomalyAsync` .
+Ha az újonnan betanított modellel észlelni tudja az anomáliákat, hozzon létre egy `private async Task` `detectAsync` nevűt. Létre fog hozni egy újat, `DetectionRequest` és paraméterként át fogja adni a következőnek: `DetectAnomalyAsync` .
 
 ```csharp
 private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
@@ -216,7 +218,7 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
 
 ## <a name="export-model"></a>Modell exportálása
 
-A korábban betanított modell exportálásához hozzon létre egy `private async Task` nevesített nevet `exportAysnc` . Ezt fogja használni `ExportModelAsync` , majd továbbítja a modell azonosítóját, amelyet exportálni szeretne.
+A korábban betanított modell exportáláshoz hozzon létre egy `private async Task` `exportAysnc` nevűt. Az exportálni kívánt modell modellazonosítóját fogja használni és `ExportModelAsync` átadni.
 
 ```csharp
 private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, string model_path = "model.zip")
@@ -244,7 +246,7 @@ private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, stri
 
 ## <a name="delete-model"></a>Modell törlése
 
-A korábban létrehozott modell törléséhez adja meg a `DeleteMultivariateModelAsync` törölni kívánt modell azonosítóját. A modell AZONOSÍTÓjának lekéréséhez a `getModelNumberAsync` következőket teheti:
+A korábban létrehozott modell törléséhez használja a parancsot, és adja át a törölni kívánt `DeleteMultivariateModelAsync` modell modellazonosítóját. A modellazonosító lekérése a következőt `getModelNumberAsync` használhatja:
 
 ```csharp
 private async Task deleteAsync(AnomalyDetectorClient client, Guid model_id)
@@ -272,7 +274,7 @@ private async Task<int> getModelNumberAsync(AnomalyDetectorClient client, bool d
 
 ## <a name="main-method"></a>A fő metódus
 
-Most, hogy már rendelkezik az összes összetevő részével, további kódokat kell hozzáadnia a Main metódushoz az újonnan létrehozott feladatok meghívásához.
+Most, hogy minden összetevővel megvan, további kódot kell hozzáadnia a fő metódushoz az újonnan létrehozott feladatok hívásához.
 
 ```csharp
 
@@ -332,7 +334,7 @@ Most, hogy már rendelkezik az összes összetevő részével, további kódokat
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a `dotnet run` paranccsal az alkalmazás könyvtárából.
+Futtassa az alkalmazást az `dotnet run` alkalmazás könyvtárában található paranccsal.
 
 ```dotnetcli
 dotnet run
@@ -340,4 +342,4 @@ dotnet run
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Anomália-érzékelő többváltozós ajánlott eljárásai](../../concepts/best-practices-multivariate.md)
+* [anomáliadetektor többválékos ajánlott eljárások](../../concepts/best-practices-multivariate.md)

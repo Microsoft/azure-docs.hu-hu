@@ -1,7 +1,7 @@
 ---
-title: Webes végpontok beállítása (előzetes verzió)
+title: Webes végpontok beállítása
 titleSuffix: Azure Cognitive Services
-description: webes végpontok beállítása a custom commands-alkalmazáshoz
+description: webes végpontok beállítása egyéni parancsok
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 95f27827950c5ed38caa1f83ede266afb57a1697
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 5f1d5318140dd14c5024e8dd3ad0def0afc7f378
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515634"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725907"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -31,66 +31,66 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 > * Egy Azure-előfizetői azonosító a Speech szolgáltatáshoz: [Szerezzen be egyet ingyen](overview.md#try-the-speech-service-for-free), vagy hozza létre az [Azure Portalon](https://portal.azure.com)
-> * Egy korábban [létrehozott Custom Commands-alkalmazás](quickstart-custom-commands-application.md)
-> * Ügyfélalkalmazás engedélyezett Speech SDK-val: [Útmutató: Az ügyfélalkalmazással folytatott tevékenység befejezése](./how-to-custom-commands-setup-speech-sdk.md)
+> * Egy egyéni parancsok alkalmazás [(lásd: Hangsegéd létrehozása a egyéni parancsok](quickstart-custom-commands-application.md)használatával)
+> * Speech SDK-kompatibilis ügyfélalkalmazás (lásd: [Integrálás ügyfélalkalmazással a Speech SDK használatával)](how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="deploy-an-external-web-endpoint-using-azure-function-app"></a>Külső webes végpont üzembe helyezése az Azure-függvényalkalmazással
 
-* Az oktatóanyag kedvéért szüksége lesz egy HTTP-végpontra, amely az egyéni parancsalkalmazás **TurnOnOff** parancsában beállított összes eszközre fenntartja az államokat.
+Ebben az oktatóanyagban egy OLYAN HTTP-végpontra lesz szüksége, amely az összes olyan eszközre fenntartja az államokat, amelyek az alkalmazás **TurnOnOff** egyéni parancsok vannak beállítva.
 
-* Ha már rendelkezik hívni kívánt webes végponttal, ugorjon a [következő szakaszra.](#setup-web-endpoints-in-custom-commands) A következő szakaszban egy alapértelmezett üzemeltetett webes végpontot is biztosítottunk, amelyet akkor használhat, ha ki szeretné hagyni ezt a szakaszt.
+Ha már rendelkezik hívni kívánt webes végponttal, ugorjon a [következő szakaszra.](#setup-web-endpoints-in-custom-commands) A következő szakasz egy alapértelmezett üzemeltetett webes végpont részleteit is tartalmazza, amely akkor használható, ha ki szeretné hagyni ezt a szakaszt.
 
 ### <a name="input-format-of-azure-function"></a>Az Azure-függvény bemeneti formátuma
-* A következő lépés egy végpont üzembe helyezése a [következő Azure Functions.](../../azure-functions/index.yml)
-A következő az Azure-függvénynek egyéni parancsok esemény általános formátuma. Ezt az információt függvényalkalmazás írásakor használhatja.
 
-    ```json
-    {
-      "conversationId": "string",
-      "currentCommand": {
-        "name": "string",
-        "parameters": {
-          "SomeParameterName": "string",
-          "SomeOtherParameterName": "string"
-        }
-      },
-      "currentGlobalParameters": {
-          "SomeGlobalParameterName": "string",
-          "SomeOtherGlobalParameterName": "string"
-      }
+A következő lépés egy végpont üzembe helyezése a [következő Azure Functions.](../../azure-functions/index.yml)
+Az alábbiakban az Azure-függvénynek egyéni parancsok esemény formátuma van meg. Ezt az információt az Azure-függvényalkalmazás írásakor használhatja.
+
+```json
+{
+  "conversationId": "string",
+  "currentCommand": {
+    "name": "string",
+    "parameters": {
+      "SomeParameterName": "string",
+      "SomeOtherParameterName": "string"
     }
-    ```
+  },
+  "currentGlobalParameters": {
+      "SomeGlobalParameterName": "string",
+      "SomeOtherGlobalParameterName": "string"
+  }
+}
+```
 
     
-* Nézzük át a bemenet legfontosabb attribútumát:
+A következő táblázat ennek a bemenetnek a fő attribútumát ismerteti:
         
-    | Attribútum | Magyarázat |
-    | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | **conversationId (beszélgetésazonosító)** | A beszélgetés egyedi azonosítója. Vegye figyelembe, hogy ez az azonosító az ügyfélalkalmazásból generálható. |
-    | **currentCommand** | A beszélgetésben jelenleg aktív parancs. |
-    | **név** | A parancs neve. Az `parameters` attribútum egy térkép, amely a paraméterek aktuális értékeit tartalmaz. |
-    | **currentGlobalParameters (aktuálisglobalparaméterek)** | Egy olyan térkép, mint `parameters` a , de globális paraméterekhez használatos. |
+| Attribútum | Magyarázat |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **conversationId (beszélgetésazonosító)** | A beszélgetés egyedi azonosítója. Vegye figyelembe, hogy ezt az azonosítót az ügyfélalkalmazás generálhatja. |
+| **currentCommand** | A beszélgetésben jelenleg aktív parancs. |
+| **név** | A parancs neve. Az `parameters` attribútum egy térkép, amely a paraméterek aktuális értékeit tartalmaz. |
+| **currentGlobalParameters (aktuális globálisparaméterek)** | Egy olyan térkép, `parameters` mint a , de globális paraméterekhez használatos. |
 
 
-* A **DeviceState** Azure-függvényhez egy példa egyéni parancsok az alábbihoz hasonló lesz. Ez a függvényalkalmazás **bemeneteként** fog működni.
+A **DeviceState** Azure-függvényhez egy példa egyéni parancsok az alábbihoz hasonló lesz. Ez a függvényalkalmazás **bemeneteként** fog működni.
     
-    ```json
-    {
-      "conversationId": "someConversationId",
-      "currentCommand": {
-        "name": "TurnOnOff",
-        "parameters": {
-          "item": "tv",
-          "value": "on"
-        }
-      }
+```json
+{
+  "conversationId": "someConversationId",
+  "currentCommand": {
+    "name": "TurnOnOff",
+    "parameters": {
+      "item": "tv",
+      "value": "on"
     }
-    ```
+  }
+}
+```
 
-### <a name="output-format-of-azure-function"></a>Az Azure-függvény kimeneti formátuma
+### <a name="azure-function-output-for-a-custom-command-app"></a>Azure-függvény kimenete egyéni parancsalkalmazáshoz
 
-#### <a name="output-consumed-by-a-custom-commands--application"></a>Egy alkalmazás által egyéni parancsok kimenet
-Ebben az esetben beállíthatja, hogy a kimeneti formátumnak meg kell felelnie a következő formátumnak. További részletekért kövesse az Update [a command from a web endpoint (Parancs frissítése webes](./how-to-custom-commands-update-command-from-web-endpoint.md) végpontról) parancsot.
+Ha az Azure-függvény kimenetét egy egyéni parancsok használja, a következő formátumban kell megjelennie. Részletekért [lásd: Parancs frissítése webes végpontról.](./how-to-custom-commands-update-command-from-web-endpoint.md)
 
 ```json
 {
@@ -107,41 +107,46 @@ Ebben az esetben beállíthatja, hogy a kimeneti formátumnak meg kell felelnie 
 }
 ```
 
-#### <a name="output-consumed-by-a-client-application"></a>Ügyfélalkalmazás által felhasznált kimenet
-Ebben az esetben beállíthatja a kimeneti formátumot az ügyfél igényei szerint.
-* A **DeviceState** végpont esetén az Azure-függvény kimenetét egy ügyfélalkalmazás használja a egyéni parancsok helyett. Az **Azure-függvény** példakimenetének az alábbihoz hasonlónak kell lennie:
+### <a name="azure-function-output-for-a-client-application"></a>Azure-függvény kimenete ügyfélalkalmazáshoz
+
+Ha az Azure-függvény kimenetét egy ügyfélalkalmazás használja, a kimenet az ügyfélalkalmazás által megkövetelt formát is használhatja.
+
+A **DeviceState** végpont esetén az Azure-függvény kimenetét egy ügyfélalkalmazás használja a egyéni parancsok helyett. Az Azure-függvény példakimenetének az alábbihoz hasonlónak kell lennie:
     
-    ```json
-    {
-      "TV": "on",
-      "Fan": "off"
-    }
-    ``` 
+```json
+{
+  "TV": "on",
+  "Fan": "off"
+}
+``` 
 
-*  Ezt a kimenetet egy külső tárolóba kell írni, hogy ennek megfelelően fenntartsa az eszközök állapotát. A külső tárolási állapot az Integrálás [ügyfélalkalmazással szakaszban lesz használva.](#integrate-with-client-application)
+Ezt a kimenetet egy külső tárolóba kell írni, hogy megtartsa az eszközök állapotát. A külső tárolási állapotot az alábbi Integrálás [ügyfélalkalmazással](#integrate-with-client-application) szakaszban használjuk.
 
 
-### <a name="host-azure-function"></a>Azure-függvények gazdagépe
+### <a name="deploy-azure-function"></a>Az Azure-függvény üzembe helyezése
 
-1. Hozzon létre egy Table Storage-fiókot az eszköz állapotának mentéséhez.
-    1. A Azure Portal, és hozzon létre egy storage **account** típusú új erőforrást **devicestate néven.**
-        1. Másolja ki **a Kapcsolati sztring** értékét a **devicestate -> hozzáférési kulcsokból.**
-        1. Ezt a sztringet hozzá kell adni a letöltött minta függvényalkalmazás kódhoz.
-    1. Töltse le a [minta függvényalkalmazás kódját.](https://aka.ms/speech/cc-function-app-sample)
-    1. Nyissa meg a letöltött megoldást a VS 2019-ben. A **fájlbanConnections.jsa** fájlban cserélje **STORAGE_ACCOUNT_SECRET_CONNECTION_STRING** értéket az a lépésben kimásott *titkos helyére.*
+Biztosítunk egy mintaalkalmazásként konfigurálható és üzembe Azure Functions alkalmazást. Ha tárfiókot hoz létre a mintához, kövesse az alábbi lépéseket.
+ 
+1. Táblatároló létrehozása az eszköz állapotának mentéséhez. A Azure Portal hozzon létre egy tárfiók típusú új erőforrást **devicestate néven.** 
+1. Másolja ki **a Kapcsolati sztring** értékét **a devicestate -> hozzáférési kulcsokból.** Ezt a sztringkódot hozzá kell adni a letöltött függvényalkalmazás-kódhoz.
+1. Töltse le a [minta függvényalkalmazás kódját.](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/main/custom-commands/quick-start)
+1. Nyissa meg a letöltött megoldást a 2019 Visual Studio ban. A **Connections.jsa helyére** STORAGE_ACCOUNT_SECRET_CONNECTION_STRING 2. lépésben lekért titkos helyére. 
 1.  Töltse le **a DeviceStateAzureFunction** kódot.
-1. [A Functions-alkalmazás](../../azure-functions/index.yml) üzembe helyezése az Azure-ban.
-    
-    1.  Várja meg, amíg az üzembe helyezés sikeres lesz, és az üzembe helyezett erőforrást a Azure Portal. 
-    1. A **bal oldali panelen** válassza a Függvények, majd a **DeviceState lehetőséget.**
-    1.  Az új ablakban válassza a **Kód + tesztelés,** majd a **Függvény URL-címének le szolgáltatása lehetőséget.**
+
+A mintaalkalmazás üzembe helyezéséhez kövesse Azure Functions lépéseket.
+
+1. [A](../../azure-functions/index.yml) Azure Functions üzembe helyezése.
+1. Várja meg, amíg az üzembe helyezés sikeres lesz, és az üzembe helyezett erőforrást a Azure Portal. 
+1. A **bal oldali panelen** válassza a Függvények, majd a **DeviceState lehetőséget.**
+1.  Az új ablakban válassza a **Kód + teszt,** majd a **Függvény URL-címének bejőt.**
  
 ## <a name="setup-web-endpoints-in-custom-commands"></a>Webes végpontok beállítása a egyéni parancsok
+
 Most pedig az Azure-függvényt a meglévő alkalmazással egyéni parancsok össze.
-Ebben a szakaszban egy meglévő alapértelmezett **DeviceState végpontot fog** használni. Ha az Azure-függvény használatával vagy egyéb módon hozta létre a saját webes végpontját, használja azt az alapértelmezett https://webendpointexample.azurewebsites.net/api/DeviceState helyett.
+Ebben a szakaszban egy meglévő alapértelmezett **DeviceState végpontot fog** használni. Ha az Azure-függvény használatával vagy egyéb módon hozta létre a saját webes végpontját, használja azt az alapértelmezett `https://webendpointexample.azurewebsites.net/api/DeviceState` helyett.
 
 1. Nyissa meg a korábban létrehozott Custom Commands-alkalmazást.
-1. Nyissa meg a „Webes végpontok” elemet, majd kattintson az „Új webes végpont” lehetőségre.
+1. A Webes **végpontok menüben** kattintson a **New web endpoint (Új webes végpont) elemre.**
 
    > [!div class="mx-imgBorder"]
    > ![Új webes végpont](media/custom-commands/setup-web-endpoint-new-endpoint.png)
@@ -154,10 +159,10 @@ Ebben a szakaszban egy meglévő alapértelmezett **DeviceState végpontot fog**
    | Fejlécek | Kulcs: alkalmazás, Érték: az applicationId első 8 számjegye | A kérelemfejlécben megadandó fejlécparaméterek.|
 
     > [!NOTE]
-    > - Az [Azure-függvény](../../azure-functions/index.yml)használatával létrehozott példa webes végpont, amely a TV és a ventilátor eszközállapotát mentő adatbázishoz van kötve
-    > - A javasolt fejléc csak a példavégponthoz szükséges
-    > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példában szereplő végpontban, használja az applicationId első 8 számjegyét
-    > - Valós helyzetben a webes végpont az eszközeit kezelő [IoT Hub](../../iot-hub/about-iot-hub.md) végpontja lehet.
+    > - A használatával létrehozott példa webes végpont [Azure Functions,](../../azure-functions/index.yml)amely a TV és a ventilátor eszközállapotát mentő adatbázishoz van kötve.
+    > - A javasolt fejléc csak a példavégponthoz szükséges.
+    > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példavégpontban, használja az applicationId első 8 **számjegyét.**
+    > - A való életben a webes végpont lehet az eszközöket felügyelő [IOT Hub](../../iot-hub/about-iot-hub.md) végpontja.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -209,19 +214,17 @@ Ebben a szakaszban egy meglévő alapértelmezett **DeviceState végpontot fog**
    > - A példában szereplő végpontban a HTTP-választ részletes hibaüzenetekkel küldjük vissza, amelyek olyan gyakori hibákról értesítenek, mint például a hiányzó fejlécparaméterek.
 
 ### <a name="try-it-out-in-test-portal"></a>Próbálja ki a tesztportálon
-- Válasz Siker esetén\
-Mentés, betanítás és tesztelés
+- A sikeres válaszra mentse, betanítsa és tesztelje.
    > [!div class="mx-imgBorder"]
    > ![A Sikeres válasz képernyőképe.](media/custom-commands/setup-web-endpoint-on-success-response.png)
-- Válasz Hiba esetén\
-Egy lekérdezési paraméter eltávolítása, mentés, betanítás és tesztelés
+- A Sikertelen válaszban távolítsa el az egyik lekérdezési paramétert, majd mentse, tesztelje újra és tesztelje.
    > [!div class="mx-imgBorder"]
    > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-on-fail-response.png)
 
 ## <a name="integrate-with-client-application"></a>Integrálás ügyfélalkalmazással
 
-Az [How-to: Send activity to client application](./how-to-custom-commands-send-activity-to-client.md)(Tevékenység küldése az ügyfélalkalmazásba) során hozzáadott egy Tevékenység küldése az **ügyfélnek** műveletet. A rendszer attól függetlenül elküldi a tevékenységet az ügyfélalkalmazásnak, hogy a **Webes végpont hívása** művelet sikeres volt-e.
-A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az ügyfélalkalmazásnak, amikor a webes végpont hívása sikeres. Ebben a példában ez akkor történik, amikor az eszköz állapota sikeresen frissül.
+A [Tevékenység egyéni parancsok ügyfélalkalmazásnak](./how-to-custom-commands-send-activity-to-client.md)lépésnél hozzáadott egy **Tevékenység küldése az ügyfélnek** műveletet. A rendszer attól függetlenül elküldi a tevékenységet az ügyfélalkalmazásnak, hogy a **Webes végpont hívása** művelet sikeres volt-e.
+Általában azonban csak akkor szeretne tevékenységet küldeni az ügyfélalkalmazásnak, ha a webes végpont hívása sikeres volt. Ebben a példában ez akkor történik, amikor az eszköz állapota sikeresen frissül.
 
 1. Törölje a korábban hozzáadott **Tevékenység küldése az ügyfélnek** műveletet.
 1. Webes végpont hívásának szerkesztése:
@@ -238,10 +241,11 @@ A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az 
       }
     }
    ```
-Mostantól a tevékenységet csak akkor küldi el az ügyfélnek, ha a webes végpontra irányuló kérés sikeres.
+Most csak akkor küld tevékenységet az ügyfélnek, ha a webes végpontra küldött kérés sikeres volt.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Vizualizációk létrehozása az eszközállapotok szinkronizálásához
-Adja hozzá a következő XML-t a `MainPage.xaml` fájlhoz az `"EnableMicrophoneButton"` blokk felett.
+
+Adja hozzá a következő XML-t `MainPage.xaml` az **EnableMicrophoneButton blokk fölé.**
 
 ```xml
 <Button x:Name="SyncDeviceStateButton" Content="Sync Device State"
@@ -253,7 +257,7 @@ Adja hozzá a következő XML-t a `MainPage.xaml` fájlhoz az `"EnableMicrophone
 
 ### <a name="sync-device-state"></a>Eszközállapot szinkronizálása
 
-A `MainPage.xaml.cs` alatt vegye fel az `using Windows.Web.Http;` hivatkozást. Adja hozzá az alábbi kódot a `MainPage` osztályhoz. Ez a metódus egy GET-kérést küld a példavégpontnak, és kinyeri az aktuális eszközállapotot az alkalmazása számára. Ne feledje megváltoztatni a `<your_app_name>` kifejezést arra az értékre, amelyet a Custom Command webes végpontjának **fejlécében** használt
+A `MainPage.xaml.cs` alatt vegye fel az `using Windows.Web.Http;` hivatkozást. Adja hozzá az alábbi kódot a `MainPage` osztályhoz. Ez a metódus egy GET-kérést küld a példavégpontnak, és kinyeri az aktuális eszközállapotot az alkalmazása számára. Mindenképpen módosítsa a Custom Command webes végpont fejlécében `<your_app_name>` használtra. 
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -293,17 +297,16 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 }
 ```
 
-## <a name="try-it-out"></a>Próba
+## <a name="try-it-out"></a>Próbálja ki
 
-1. Az alkalmazás elindítása
+1. Indítsa el az alkalmazást.
 1. Kattintson az Eszközállapot szinkronizálása elemre.\
-Ha az előző szakaszban az alkalmazást a `turn on tv` használatával tesztelte, a televízió „on” (bekapcsolva) állapotban jelenik meg.
+Ha az előző szakaszban tesztelte az alkalmazást, a TV-sorozat a `turn on tv` következőként jelenik **meg:**.
     > [!div class="mx-imgBorder"]
     > ![Eszközállapot szinkronizálása](media/custom-commands/setup-web-endpoint-sync-device-state.png)
-1. Válassza a Mikrofon engedélyezése lehetőséget
-1. Válassza a Beszéd gombot
-1. Mondja a következőt: `turn on the fan`
-1. A ventilátor vizuális állapotának „on” (bekapcsolva) állapotra kell váltania
+1. Válassza a **Mikrofon engedélyezése lehetőséget.**
+1. Válassza a **Beszéd gombot.**
+1. Például: `turn on the fan` . A ventilátor vizuális állapota a következőre változik: **.**
     > [!div class="mx-imgBorder"]
     > ![Ventilátor bekapcsolása](media/custom-commands/setup-web-endpoint-turn-on-fan.png)
 
@@ -311,4 +314,3 @@ Ha az előző szakaszban az alkalmazást a `turn on tv` használatával tesztelt
 
 > [!div class="nextstepaction"]
 > [Alkalmazás egyéni parancsok exportálása távoli képességként](./how-to-custom-commands-integrate-remote-skills.md)
-

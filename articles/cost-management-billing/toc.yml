@@ -48,7 +48,7 @@
           href: understand/analyze-unexpected-charges.md
         - name: Költségek kezelése automatizálással
           href: costs/manage-automation.md
-        - name: Nagy méretű adatkészletek lekérése exportálással
+        - name: Nagy adatkészletek lekérése exportálással
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management partnerek számára
           href: costs/get-started-partners.md
@@ -394,7 +394,7 @@
       href: /rest/api/cost-management
     - name: Azure használati REST API
       href: /rest/api/consumption
-    - name: Használat REST API ARM-költségvetés sablonja
+    - name: Használat REST API ARM-költségvetéssablon
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API-minták
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
@@ -420,7 +420,7 @@
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
         - name: Azure PowerShell foglalási parancsmagok
           href: /powershell/module/azurerm.reservations
-        - name: Azure CLI foglaláshoz
+        - name: Azure CLI foglalások számára
           href: /cli/azure/reservations/reservation
         - name: Használati adatok REST API
           href: /rest/api/consumption/usagedetails
@@ -428,6 +428,8 @@
           href: /rest/api/consumption/reservationsdetails
 - name: További források
   items:
+    - name: GYIK
+      href: cost-management-billing-faq.yml
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-cost-management
     - name: Cost Management visszajelzési fóruma

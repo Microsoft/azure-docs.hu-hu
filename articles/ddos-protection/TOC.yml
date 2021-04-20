@@ -35,6 +35,8 @@
       href: ddos-response-strategy.md
     - name: Referenciaarchitektúrák
       href: ddos-protection-reference-architectures.md
+    - name: Az üzletmenet folytonossága
+      href: ddos-disaster-recovery-guidance.md
     - name: Biztonsági alapkonfiguráció
       href: ../security/fundamentals/ddos-protection-security-baseline.md?toc=%2fazure%2fddos-protection%2ftoc.json
 - name: Útmutatók

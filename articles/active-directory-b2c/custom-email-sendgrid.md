@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713443"
+ms.locfileid: "107725763"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Egyéni e-mail-ellenőrzés a SendGriddel
 
@@ -33,9 +33,7 @@ Egyéni e-mail-Azure Active Directory B2C (Azure AD B2C) egyéni e-maileket kül
 
 ::: zone pivot="b2c-custom-policy"
 
-Az egyéni e-mail-ellenőrzéshez külső e-mail-szolgáltatót kell használni, például [a SendGridet,](https://sendgrid.com)a [Mailjetet](https://Mailjet.com)vagy a [SparkPostot,](https://sparkpost.com)az egyéni REST API-t vagy bármely HTTP-alapú e-mail-szolgáltatót (beleértve a sajátját is). Ez a cikk a SendGridet használó megoldások beállítását ismerteti.
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+Az egyéni e-mail-ellenőrzéshez külső e-mail-szolgáltatót kell használni, például [a SendGridet,](https://sendgrid.com)a [Mailjetet](https://Mailjet.com)vagy a [SparkPostot,](https://sparkpost.com)egy egyéni REST API-t vagy bármely HTTP-alapú e-mail-szolgáltatót (beleértve a sajátját is). Ez a cikk a SendGridet használó megoldások beállítását ismerteti.
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid-fiók létrehozása
 
@@ -44,15 +42,15 @@ Ha még nem rendelkezik ilyen fiókkal, először egy SendGrid-fiókot kell beá
 Mindenképpen töltse ki azt a szakaszt, amelyben [létrehozza a SendGrid API-kulcsot.](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key) Jegyezd fel az API-kulcsot egy későbbi lépésben való használatra.
 
 > [!IMPORTANT]
-> A SendGrid lehetővé teszi, hogy az ügyfelek megosztott IP-címekről és dedikált IP-címekről küldjenek [e-maileket.](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) Dedikált IP-címek használata esetén az IP-címek bemelegítésével ki kell építenie a saját jó hírnevét. További információ: [IP-cím bemelegítése.](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)
+> A SendGrid lehetővé teszi, hogy az ügyfelek megosztott IP-címekről és dedikált IP-címekről küldjenek [e-maileket.](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) Dedikált IP-címek használata esetén az IP-címek bemelegítésével, megfelelően kell építenie a jó hírnevét. További információ: [IP-cím bemelegítése.](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Szabályzatkulcs Azure AD B2C létrehozása
 
 Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C szabályzatkulcsban, hogy a szabályzatokra hivatkozni fog.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Győződjön meg arról, hogy a saját bérlőt tartalmazó könyvtárat Azure AD B2C használja. Válassza ki **a Címtár és előfizetés** szűrőt a felső menüben, és válassza ki Azure AD B2C címtárat.
-1. Válassza **a bal felső** sarokban található Minden szolgáltatás Azure Portal, majd keresse meg és válassza a **Azure AD B2C.**
+1. Győződjön meg arról, hogy a saját bérlőt tartalmazó Azure AD B2C használja. Válassza ki **a Címtár és előfizetés** szűrőt a felső menüben, és válassza ki Azure AD B2C címtárat.
+1. Válassza **a Bal felső** sarokban található Minden szolgáltatás Azure Portal, majd keresse meg és válassza a **Azure AD B2C.**
 1. Az Áttekintés lapon válassza **a** Identity Experience Framework.
 1. Válassza **a Házirendkulcsok,** majd a Hozzáadás **lehetőséget.**
 1. A **Beállítások beállításhoz** válassza a **Manuális lehetőséget.**
@@ -66,7 +64,7 @@ Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C szabályzatkulcsban, ho
 Ha létrehozott egy SendGrid-fiókot, és egy SendGrid API-kulcsot tárol egy Azure AD B2C szabályzatkulcsban, hozzon létre egy SendGrid dinamikus tranzakciós [sablont.](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)
 
 1. A SendGrid webhelyén nyissa meg a [tranzakciós sablonok oldalát,](https://sendgrid.com/dynamic_templates) és válassza a **Sablon létrehozása lehetőséget.**
-1. Adjon meg egy egyedi sablonnevet(pl.) `Verification email` , majd válassza a Mentés **lehetőséget.**
+1. Adjon meg egy egyedi sablonnevet (például) `Verification email` , majd válassza a Save **(Mentés) lehetőséget.**
 1. Az új sablon szerkesztésének megkezdéséhez válassza a **Verzió hozzáadása lehetőséget.**
 1. Válassza a **Kódszerkesztő,** majd a **Folytatás lehetőséget.**
 1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A és a paramétert a rendszer dinamikusan lecseréli az egyszeres jelszóértékre és a felhasználói `{{otp}}` `{{email}}` e-mail-címre.
@@ -268,7 +266,7 @@ Ez a példa megjelenítendő vezérlő a következőre van konfigurálva:
 
 ![Ellenőrző kód küldése e-mail-művelet](media/custom-email-sendgrid/display-control-verification-email-action-01.png)
 
-A tartalomdefiníciók alatt, még a alatt adja hozzá a `<BuildingBlocks>` [következő, VerificationControl](display-controls.md) típusú [DisplayControl](display-control-verification.md) vezérlőt a szabályzathoz.
+A tartalomdefiníciók alatt, még mindig a alatt adja hozzá a `<BuildingBlocks>` [következő, VerificationControl](display-controls.md) típusú [DisplayControl](display-control-verification.md) vezérlőt a szabályzathoz.
 
 ```xml
 <!--
@@ -301,9 +299,12 @@ A tartalomdefiníciók alatt, még a alatt adja hozzá a `<BuildingBlocks>` [kö
 </BuildingBlocks> -->
 ```
 
-## <a name="add-otp-technical-profiles"></a>Egyszeri egyszeri megoldás technikai profiljainak hozzáadása
+## <a name="add-otp-technical-profiles"></a>OtP technikai profilok hozzáadása
 
 A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-címhez. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címhez társított kódot. Módosíthatja a formátum konfigurációját és az egyszeres jelszó lejáratát. Az egyszeri jelszavas technikai profilokkal kapcsolatos további információkért [lásd: Egyszeri jelszó technikai profiljának definiálása.](one-time-password-technical-profile.md)
+
+> [!NOTE]
+> A Web.TPEngine.Providers.OneTimePasswordProtocolProvider protokoll által létrehozott egyszeri jelszó-kódok a böngésző-munkamenethez vannak kötve. Ez azt jelenti, hogy a felhasználó egyedi egyszeri jelszókódokat hozhat létre különböző böngésző-munkamenetekben, amelyek a megfelelő munkamenetekhez érvényesek. Ezzel szemben a beépített felhasználói folyamat által generált egyszeri jelszó kódja független a böngésző-munkamenettől, így ha a felhasználó új otP-kódot hoz létre egy új böngésző-munkamenetben, azzal felülírja az előző otP-kódot.
 
 Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
@@ -351,7 +352,7 @@ Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
 ## <a name="add-a-rest-api-technical-profile"></a>Technikai REST API hozzáadása
 
-Ez REST API technikai profil hozza létre az e-mail-tartalmat (SendGrid formátumban). A RESTful technikai profilokkal kapcsolatos további információkért [lásd: RESTful technikai profil definiálása.](restful-technical-profile.md)
+Ez REST API technikai profil hozza létre az e-mail-tartalmat (SendGrid formátumban). A RESTful műszaki profilokkal kapcsolatos további információkért [lásd: RESTful technikai profil definiálása.](restful-technical-profile.md)
 
 Ahogy az egyszeri egyszeri megoldás technikai profiljai esetében, itt is adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
@@ -384,7 +385,7 @@ Ahogy az egyszeri egyszeri megoldás technikai profiljai esetében, itt is adja 
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás a DisplayControl vezérlőre
 
-Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl vezérlőre. Cserélje le a `LocalAccountSignUpWithLogonEmail` meglévő és `LocalAccountDiscoveryUsingEmailAddress` az önkiszolgáló műszaki profilokat a következőre. Ha a szabályzat egy korábbi verzióját Azure AD B2C használni. Ezek a technikai profilok `DisplayClaims` a DisplayControl-vezérlőre való hivatkozással együtt használhatók.
+Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl vezérlőre. Cserélje le a `LocalAccountSignUpWithLogonEmail` meglévő és `LocalAccountDiscoveryUsingEmailAddress` az önkiszolgáló műszaki profilokat a következőre. Ha a szabályzat egy korábbi verzióját Azure AD B2C használta. Ezek a technikai profilok `DisplayClaims` a DisplayControl-vezérlőre való hivatkozással együtt használhatók.
 
 További információ: Önkiszolgáló technikai [profil és](restful-technical-profile.md) [DisplayControl.](display-controls.md)
 
@@ -531,7 +532,7 @@ Az e-mail honosizáláshoz honosított sztringeket kell küldenie a SendGridnek 
     
 ## <a name="optional-localize-the-ui"></a>[Nem kötelező] A felhasználói felület honosizálása
 
-A Honosítás elem lehetővé teszi több területi beállítás vagy nyelv támogatását a szabályzatban a felhasználói utakhoz. A szabályzatok honosítási támogatása lehetővé teszi, hogy nyelvspecifikus sztringeket adjon meg az Ellenőrzés megjelenítési vezérlő felhasználói felületének elemeihez [és](localization-string-ids.md#verification-display-control-user-interface-elements)az Egyszer megjelenő jelszó [hibaüzenethez is.](localization-string-ids.md#one-time-password-error-messages) Adja hozzá a következő LocalizedString karakterláncot a LocalizedResources erőforráshoz. 
+A Honosítás elem lehetővé teszi több területi beállítás vagy nyelv támogatását a szabályzatban a felhasználói utakhoz. A szabályzatok honosítási támogatása lehetővé teszi, hogy nyelvspecifikus sztringeket adjon meg az Ellenőrzés megjelenítési vezérlő felhasználói felületének elemeihez [és](localization-string-ids.md#verification-display-control-user-interface-elements)az Egy alkalommal megjelenő jelszó [hibaüzenethez is.](localization-string-ids.md#one-time-password-error-messages) Adja hozzá a következő LocalizedString karakterláncot a LocalizedResources erőforráshoz. 
 
 ```XML
 <LocalizedResources Id="api.custom-email.en">
@@ -562,7 +563,7 @@ A Honosítás elem lehetővé teszi több területi beállítás vagy nyelv tám
 </LocalizedResources>
 ```
 
-A honosított sztringek hozzáadása után távolítsa el az egyszeri jelszóval kapcsolatos érvényesítési hibaüzenetek metaadatait a LocalAccountSignUpWithLogonEmail és LocalAccountDiscoveryUsingEmailAddress technikai profilokból.
+A honosított sztringek hozzáadása után távolítsa el az egyszeri jelszó érvényesítési hibaüzenetei metaadatait a LocalAccountSignUpWithLogonEmail és a LocalAccountDiscoveryUsingEmailAddress technikai profilokból.
 
 ## <a name="next-steps"></a>Következő lépések
 

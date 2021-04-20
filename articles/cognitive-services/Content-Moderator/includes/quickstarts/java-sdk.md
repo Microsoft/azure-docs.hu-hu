@@ -1,7 +1,7 @@
 ---
-title: Content Moderator Java ügyféloldali kódtár gyors üzembe helyezése
+title: Content Moderator Java-ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el az Azure Content Moderator a Javához készült ügyféloldali kódtárat. Tartalom-szűrési szoftvereket hozhat létre az alkalmazásban, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan ismerkedés az Azure Content Moderator Java-ügyféloldali kódtárával. Tartalomszűrő szoftvereket építhet az alkalmazásába, hogy megfeleljen az előírásoknak, vagy fenntartsa a kívánt környezetet a felhasználók számára.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,54 +11,54 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: d1574d9728036bac393cbecb37e2097be6ef90e7
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 76d62806541e0a3186cd17712b7af3930d9ccf9f
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104311"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726159"
 ---
-Ismerkedjen meg a Javához készült Azure Content Moderator ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a Maven-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. 
+Az Azure Content Moderator Java-ügyféloldali kódtár használatának első lépések. Kövesse az alábbi lépéseket a Maven-csomag telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges példakódot. 
 
-Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos tartalmak kezelését. A AI-alapú Content moderációs szolgáltatással szövegeket, képeket és videókat kereshet, és automatikusan alkalmazhatja a tartalmi jelzőket. Tartalom-szűrési szoftvereket hozhat létre az alkalmazásban, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
+Content Moderator egy olyan AI-szolgáltatás, amely lehetővé teszi a potenciálisan sértő, kockázatos vagy egyéb módon nem kívánt tartalmak kezelését. Az AI-alapú tartalommoderálási szolgáltatással szövegeket, képeket és videókat vizsgálhatnak meg, és tartalomjelölőket alkalmazhatnak automatikusan. Tartalomszűrő szoftvereket építhet az alkalmazásába, hogy megfeleljen az előírásoknak, vagy fenntartsa a kívánt környezetet a felhasználók számára.
 
-A Javához készült Content Moderator ügyféloldali kódtár a következőre használható:
+Használja a Content Moderator Java-ügyféloldali kódtárát a következőre:
 
-* Mérsékelt szöveg
-* Közepes méretű képek
+* Szöveg moderálása
+* Képek moderálása
 
-[Dokumentáció](/java/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | Összetevő [(Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Példák](/samples/browse/?products=azure&term=content-moderator)
+[Referenciadokumentáció](/java/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Összetevő (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Minták](/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
-* A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" hozzon létre egy Content moderator erőforrást, "  target="_blank"> és hozzon létre egy Content moderator-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Content Moderatorhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés – [Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
+* A Java fejlesztői készlet [(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
+* A [Gradle buildeszköz ,](https://gradle.org/install/)vagy egy másik függőségkezelő.
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Content Moderator-erőforrást, Content Moderator erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, majd kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a Content Moderator. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `gradle init` parancsot a munkakönyvtárból. Ez a parancs alapvető Build-fájlokat hoz létre a Gradle számára, beleértve a *Build. Gradle. KTS* fájlt, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához.
+Futtassa `gradle init` a parancsot a munkakönyvtárból. Ez a parancs alapvető buildfájlokat hoz létre a Gradle-hez, beleértve a *build.gradle.kts* fájlt, amely futásidőben használatos az alkalmazás létrehozásához és konfigurálásához.
 
 ```console
 gradle init --type basic
 ```
 
-Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
+Amikor a rendszer kéri, hogy válasszon **egy DSL-t,** válassza a **Kotlin lehetőséget.**
 
 ## <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Keresse meg a *Build. gradle. KTS* , és nyissa meg a kívánt ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba. Ez a konfiguráció definiálja a projektet olyan Java-alkalmazásként, amelynek belépési pontja a **ContentModeratorQuickstart** osztály. Importálja az Content Moderator ügyféloldali kódtárat, valamint a GSON SDK-t a JSON-szerializáláshoz.
+Keresse *meg a build.gradle.kts* et, és nyissa meg a kívánt IDE-val vagy szövegszerkesztővel. Ezután másolja be a következő buildkonfigurációt. Ez a konfiguráció java-alkalmazásként definiálja a projektet, amelynek belépési pontja a **ContentModeratorQuickstart osztály.** Importálja a Content Moderator ügyféloldali kódtárat és a JSON-szerializáláshoz készült GSON SDK-t.
 
 ```kotlin
 plugins {
@@ -83,158 +83,158 @@ dependencies{
 ### <a name="create-a-java-file"></a>Java-fájl létrehozása
 
 
-A munkakönyvtárból futtassa a következő parancsot egy projekt forrás mappájának létrehozásához:
+Futtassa a következő parancsot a munkakönyvtárban egy projektforrásmappa létrehozásához:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Navigáljon az új mappára, és hozzon létre egy *ContentModeratorQuickstart. Java* nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
+Lépjen az új mappába, és hozzon létre egy *ContentModeratorQuickstart.java nevű fájlt.* Nyissa meg a kívánt szerkesztőben vagy IDE-ban, és adja hozzá a következő `import` utasításokat:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ezt a [GitHubon találhatja](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)meg, amely ebben a rövid útmutatóban található példakódokat tartalmazza.
 
-Az alkalmazás **ContentModeratorQuickstart** osztályában hozzon létre változókat az erőforrás kulcsa és végpontja számára.
+Az alkalmazás **ContentModeratorQuickstart osztályában** hozzon létre változókat az erőforrás kulcsához és végpontjához.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Content moderator erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
+> Nyissa meg az Azure Portalt. Ha az Content Moderator szakaszban létrehozott  erőforrás sikeresen üzembe lett folyamatban, kattintson az **Erőforrás** ugrás gombra a **Következő lépések területen.** A kulcsot és a végpontot az  erőforrás kulcs- és végpontoldalán, az **erőforrás-kezelés alatt találja.** 
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, amikor végzett, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módon tárolni és elérni a hitelesítő adatokat. További információt a biztonsági Cognitive Services [talál.](../../../cognitive-services-security.md)
 
-Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid útmutatóban használt módszerekhez. Ezeket később is megadhatja.
+Az alkalmazás fő **metódusában** adja hozzá az ebben a rövid útmutatóban használt metódusok hívásait. Ezeket a metódusokat később fogja definiálni.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_maincalls)]
 
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok a Content Moderator Java ügyféloldali kódtár főbb funkcióit kezelik.
+Az alábbi osztályok a Java-ügyféloldali kódtár néhány Content Moderator kezelik.
 
 |Név|Leírás|
 |---|---|
-|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
-|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
-|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|Ez az osztály a nyelv, a káromkodás, a hibák és a személyes adatok szövegének elemzéséhez nyújt funkciókat.|
-|[Felülvizsgálatok](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
+|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|Erre az osztályra az összes Content Moderator szükség. Példányosodhat az előfizetés adataival, és más osztályok példányainak előállítására használhatja.|
+|[ImageModeration (Képmoderálás)](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|Ez az osztály a felnőtt tartalmak, személyes adatok vagy emberi arcok képelemzési funkcióját biztosítja.|
+|[TextModerations (Szövegmódok)](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|Ez az osztály biztosítja a nyelv, trágárság, hibák és személyes adatok szövegelemzési funkcióját.|
+|[Felülvizsgálatok](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|Ez az osztály biztosítja a Felülvizsgálati API-k funkcióit, beleértve a feladatok létrehozásának módszereit, az egyéni munkafolyamatokat és az emberi felülvizsgálatokat.|
 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült Content Moderator ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan kell elvégezni a következő feladatokat Content Moderator Java-ügyfélkódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Mérsékelt szöveg](#moderate-text)
-* [Közepes méretű képek](#moderate-images)
+* [Szöveg moderálása](#moderate-text)
+* [Képek moderálása](#moderate-images)
 
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Az alkalmazás `main` metódusában hozzon létre egy [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) objektumot az előfizetési végpont értéke és az előfizetés kulcsa alapján.
+Az alkalmazás metódusában hozzon létre egy `main` [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) objektumot az előfizetés végpontértékével és előfizetői kulcsával.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 
 
-## <a name="moderate-text"></a>Mérsékelt szöveg
+## <a name="moderate-text"></a>Szöveg moderálása
 
-### <a name="set-up-sample-text"></a>Minta szövegének beállítása
+### <a name="set-up-sample-text"></a>Mintaszöveg beállítása
 
-A **ContentModeratorQuickstart** osztály tetején Definiáljon egy helyi szövegfájlra mutató hivatkozást. Vegyen fel egy. txt fájlt a projekt könyvtárába, és írja be az elemezni kívánt szöveget.
+A **ContentModeratorQuickstart** osztály tetején definiálja a helyi szövegfájlra való hivatkozást. Adjon hozzá egy .txt fájlt a projektkönyvtárhoz, és írja be az elemezni kívánt szöveget.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
 
 ### <a name="analyze-text"></a>Szöveg elemzése
 
-Hozzon létre egy új metódust, amely beolvassa a. txt fájlt, és minden sorban meghívja a **screenText** metódust.
+Hozzon létre egy új metódust, amely beolvassa a .txt fájlt, és minden sorban behívja **a screenText** metódust.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
 
-### <a name="print-text-moderation-results"></a>Szöveg moderálási eredményeinek nyomtatása
+### <a name="print-text-moderation-results"></a>Szövegmoderálási eredmények nyomtatása
 
-Adja hozzá a következő kódot a moderálási eredmények egy. JSON-fájlba való nyomtatásához a projekt könyvtárába.
+Adja hozzá a következő kódot, hogy a moderálási eredményeket a projektkönyvtárban található .json fájlba nyomtassa.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
 
-A `try` metódus befejezéséhez lépjen ki a és a `catch` utasításból.
+Zárja be az `try` és az utasítást a metódus `catch` befejezéséhez.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
 
 
-## <a name="moderate-images"></a>Közepes méretű képek
+## <a name="moderate-images"></a>Képek moderálása
 
-### <a name="set-up-sample-image"></a>Minta rendszerképének beállítása
+### <a name="set-up-sample-image"></a>Mintakép beállítása
 
-Egy új metódusban állítson össze egy **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** objektumot egy adott URL-karakterlánccal, amely egy képre mutat.
+Egy új metódusban egy **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** objektumot hoz létre egy adott URL-sztring használatával, amely egy képre mutat.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
 
 
-### <a name="define-helper-class"></a>Segítő osztály definiálása
+### <a name="define-helper-class"></a>Segítőosztály meghatározása
 
-Ezután adja hozzá a *ContentModeratorQuickstart. Java* fájlban a következő osztály-definíciót a **ContentModeratorQuickstart** osztályban. Ez a belső osztály a képmoderálási folyamat során használatos.
+Ezután a *ContentModeratorQuickstart.java* fájlban adja hozzá a következő osztálydefiníciót a **ContentModeratorQuickstart osztályban.** Ez a belső osztály használatos a képmoderálási folyamatban.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
 
 ### <a name="analyze-content"></a>Tartalom elemzése
-Ez a kódrészlet a megadott URL-címen ellenőrzi a felnőtt vagy a zamatos tartalomhoz tartozó képet. A jelen feltételekkel kapcsolatos információkért tekintse meg a képmoderálás fogalmi útmutatóját.
+Ez a kódsor ellenőrzi a képet a megadott URL-címen, hogy nem tartalmaz-e felnőtteknek szóló vagy ritka tartalmat. Ezekkel a kifejezésekkel kapcsolatos információkért tekintse meg a képmoderálási fogalmi útmutatót.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
-### <a name="check-for-text"></a>Szöveg keresése
-Ez a kódrészlet a képen látható szöveget ellenőrzi.
+### <a name="check-for-text"></a>Szöveg ellenőrzése
+Ez a kódsor ellenőrzi, hogy látható-e a kép.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
-### <a name="check-for-faces"></a>Arcok keresése
-Ez a kódrészlet ellenőrzi az emberi arcok képét.
+### <a name="check-for-faces"></a>Arcok ellenőrzése
+Ez a kódsor emberi arcokat keres a képen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
-Végül a listában tárolja a visszaadott adatokat `EvaluationData` .
+Végül tárolja a visszaadott adatokat a `EvaluationData` listában.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
-### <a name="print-results"></a>Nyomtatási eredmények
+### <a name="print-results"></a>Eredmények nyomtatása
 
-A `while` hurok után adja hozzá a következő kódot, amely kiírja az eredményeket a konzolra, valamint egy kimeneti fájlba, az *src/Main/Resources/ModerationOutput.json* értékre.
+A hurok után adja hozzá a következő kódot, amely kiírja az eredményeket a konzolra és egy kimeneti fájlba `while` *(src/main/resources/ModerationOutput.jsa következőn:*.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
-Fejezze be az `try` utasítást, és adjon hozzá egy `catch` utasítást a metódus végrehajtásához.
+Zárja be az `try` utasítást, és adjon hozzá egy utasítást a `catch` metódus befejezéséhez.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazást az alábbiakkal hozhatja létre:
+Az alkalmazást a következővel építheti fel:
 
 ```console
 gradle build
 ```
 
-Futtassa az alkalmazást a `gradle run` paranccsal:
+Futtassa az alkalmazást az `gradle run` paranccsal:
 
 ```console
 gradle run
 ```
 
-Ezután navigáljon a fájlhoz tartozó *src/Main/Resources/ModerationOutput.js* elemre, és tekintse meg a tartalom moderálásának eredményét.
+Ezután lépjen az *src/main/resources/ModerationOutput.jsa* fájlban, és tekintse meg a tartalommoderálás eredményeit.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
+Ha törölni vagy eltávolítani szeretne egy Cognitive Services előfizetést, törölheti az erőforrást vagy erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított összes többi erőforrást is törli.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator Java-függvénytárat moderálási feladatok végrehajtásához. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Java-kódtárat moderálási feladatok végrehajtásához. Ezután egy fogalmi útmutatót elolvasva további információt olvashat a képek vagy más médiatartalmak moderálásának módjáról.
 
 > [!div class="nextstepaction"]
-> [Képek moderálási fogalmai](../../image-moderation-api.md)
+> [Képmoderálási fogalmak](../../image-moderation-api.md)

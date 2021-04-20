@@ -1,6 +1,6 @@
 ---
-title: SMB-kötet létrehozása a Azure NetApp Fileshoz | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre egy SMB3-kötetet a Azure NetApp Filesban. A Active Directory kapcsolatok és a tartományi szolgáltatások követelményeinek megismerése.
+title: SMB-kötet létrehozása a Azure NetApp Files | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre SMB3-kötetet a Azure NetApp Files. Ismerje meg a hálózati kapcsolatok Active Directory tartományi szolgáltatások követelményeit.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,49 +12,49 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9bb995e5e3038d7a4cd24f0db2608461c8848497
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259625"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726292"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMB3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. 
+Azure NetApp Files nfs (NFSv3 és NFSv4.1), SMB3 vagy kettős protokoll (NFSv3 és SMB) használatával támogatja a kötetek létrehozását. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. 
 
-Ez a cikk bemutatja, hogyan hozhat létre SMB3-köteteket. Az NFS-kötetek esetében tekintse meg [az NFS-kötet létrehozása](azure-netapp-files-create-volumes.md)című témakört. A kettős protokollú kötetek esetében lásd: [kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md).
+Ez a cikk bemutatja, hogyan hozhat létre SMB3-kötetet. NFS-kötetek esetén lásd: [NFS-kötet létrehozása.](azure-netapp-files-create-volumes.md) A kettős protokollú kötetekért [lásd: Create a dual-protocol volume (Kettős protokollú kötet létrehozása).](create-volumes-dual-protocol.md)
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
-* A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet. Lásd: [Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md).     
-* Az alhálózatot delegálni kell Azure NetApp Files. Lásd: [alhálózat delegálása Azure NetApp Filesra](azure-netapp-files-delegate-subnet.md).
+* A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet. Lásd: [Kapacitáskészlet beállítása.](azure-netapp-files-set-up-capacity-pool.md)     
+* Az alhálózatot delegálni kell a Azure NetApp Files. Lásd: [Alhálózat delegálása](azure-netapp-files-delegate-subnet.md)a Azure NetApp Files.
 
-## <a name="configure-active-directory-connections"></a>Active Directory kapcsolatok konfigurálása 
+## <a name="configure-active-directory-connections"></a>A Active Directory konfigurálása 
 
-Az SMB-kötetek létrehozása előtt létre kell hoznia egy Active Directory-kapcsolatokat. Ha nem konfigurált Active Directory kapcsolatokat az Azure NetApp-fájlokhoz, kövesse az [Active Directory-kapcsolatok létrehozása és kezelése](create-active-directory-connections.md)című témakör útmutatását.
+Az SMB-kötet létrehozása előtt létre kell hoznia egy Active Directory kapcsolatot. Ha még nem konfigurálta az Azure NetApp Active Directory kapcsolatokat, kövesse a Kapcsolati kapcsolatok [létrehozása és Active Directory útmutatását.](create-active-directory-connections.md)
 
 ## <a name="add-an-smb-volume"></a>SMB-kötet hozzáadása
 
-1. Kattintson a **kötetek** panelre a kapacitási készletek panelen. 
+1. Kattintson **a Kötetek panelre** a Kapacitáskészletek panelen. 
 
-    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Navigálás a kötetek között](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
-    Megjelenik a kötet létrehozása ablak.
+    Megjelenik a Kötet létrehozása ablak.
 
-3. A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait az alapok lapon:   
+3. A Kötet létrehozása ablakban kattintson a Létrehozás **gombra,** és adja meg az alapvető beállítások lap alábbi mezőinek adatait:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A kötet nevének egyedinek kell lennie az egyes kapacitási készleteken belül. Legalább három karakter hosszúnak kell lennie. Bármely alfanumerikus karaktert használhat.   
+        A kötet nevének minden kapacitáskészleten belül egyedinek kell lennie. Legalább három karakter hosszúnak kell lennie. Bármilyen alfanumerikus karaktert használhat.   
 
-        `default` `bin` A vagy a kötet neve nem használható.
+        Kötetnévként nem `default` `bin` használhatja a vagy a et.
 
-    * **Kapacitási készlet**  
-        Határozza meg azt a kapacitási készletet, amelyben létre szeretné hozni a kötetet.
+    * **Kapacitáskészlet**  
+        Adja meg a kapacitáskészletet, ahol létre szeretné hozatni a kötetet.
 
     * **Kvóta**  
         Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
@@ -62,41 +62,61 @@ Az SMB-kötetek létrehozása előtt létre kell hoznia egy Active Directory-kap
         A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.  
 
     * **Átviteli sebesség (MiB/S)**   
-        Ha a kötet kézi QoS-kapacitású készletben lett létrehozva, akkor határozza meg a kötet kívánt átviteli sebességét.   
+        Ha a kötet manuális QoS-kapacitáskészletben jön létre, adja meg a kötet kívánt átviteli sebességét.   
 
-        Ha a kötet egy automatikus QoS-kapacitási készletben jön létre, az ebben a mezőben megjelenő érték (kvóta x szolgáltatási szint átviteli sebessége).   
+        Ha a kötet egy automatikus QoS-kapacitáskészletben jön létre, az ebben a mezőben megjelenő érték (kvóta x szolgáltatási szint átviteli sebesség).   
 
     * **Virtuális hálózat**  
-        Itt adhatja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
+        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről hozzá szeretne férni a kötethez.  
 
-        A megadott VNet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. A Azure NetApp Files szolgáltatás csak ugyanarról a VNet érhető el, vagy egy olyan VNet, amely ugyanabban a régióban található, mint a kötet VNet-társításon keresztül. Az Express Route használatával is elérheti a kötetet a helyszíni hálózatról.   
+        A megadott virtuális hálózatnak delegált alhálózatot kell Azure NetApp Files. A Azure NetApp Files szolgáltatás csak ugyanattól a VNettől vagy egy olyan virtuális hálózatról érhető el, amely a virtuális hálózatok közötti társviszony-létesítésen keresztül ugyanabban a régióban van, mint a kötet. A kötetet a helyszíni hálózatról is elérheti az Express Route-on keresztül.   
 
     * **Alhálózat**  
-        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
-        A megadott alhálózatot delegálni kell Azure NetApp Files. 
+        Adja meg a kötethez használni kívánt alhálózatot.  
+        A megadott alhálózatot delegálni kell a Azure NetApp Files. 
         
-        Ha még nem delegált alhálózatot, kattintson az **új létrehozása** lehetőségre a kötet létrehozása lapon. Ezután az alhálózat létrehozása lapon adja meg az alhálózati adatokat, majd válassza a **Microsoft. NetApp/kötetek** lehetőséget az alhálózat delegálásához Azure NetApp Files számára. Minden VNet csak egy alhálózat delegálható Azure NetApp Filesra.   
+        Ha még nem delegált alhálózatot, a Kötet létrehozása lapon kattintson az **Új** létrehozása elemre. Ezután az Alhálózat létrehozása lapon adja meg az alhálózati adatokat, és válassza a **Microsoft.NetApp/volumes** lehetőséget az alhálózat delegálható Azure NetApp Files. Minden virtuális hálózatban csak egy alhálózat delegálható a Azure NetApp Files.   
  
         ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alhálózat létrehozása](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, adja meg, hogy el kívánja-e rejteni a pillanatkép elérési útját, majd válassza ki a pillanatkép-szabályzatot a legördülő menüben. 
+    * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a  kötetre, kattintson a Speciális szakasz megjelenítése elemre annak kibontásához, adja meg, hogy el szeretné-e rejteni a pillanatkép elérési útját, majd válasszon ki egy pillanatkép-szabályzatot a lekért menüben. 
 
-        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. Kattintson a **protokoll** elemre, és hajtsa végre a következő információkat:  
-    * Válassza az **SMB** lehetőséget a kötethez tartozó protokoll típusaként. 
-    * Válassza ki a **Active Directory** -kapcsolatokat a legördülő listából.
-    * Adja meg a megosztott kötet nevét a  **megosztási névben**.
-    * Ha engedélyezni szeretné a folyamatos rendelkezésre állást az SMB-kötethez, válassza a **folyamatos rendelkezésre állás engedélyezése** lehetőséget.    
+4. Kattintson **a Protokoll** elemre, és töltse ki a következő információkat:  
+    * A kötet protokolltípusaként válassza az **SMB** lehetőséget. 
+    * Válassza ki **Active Directory** kapcsolatát a legördülő listából.
+    * Adja meg a megosztott kötet nevét a **Megosztás neve alatt.**
+    * Ha engedélyezni szeretné az SMB3 titkosítását, válassza az **SMB3 protokolltitkosítás engedélyezése lehetőséget.**   
+        Ez a funkció lehetővé teszi az SMB3-adatok titkosítását. Az SMB3-titkosítást nem használó SMB-ügyfelek nem fogják tudni elérni ezt a kötetet.  A rendszer a beállítástól függetlenül titkosítja az adatok titkosítását.  
+        További [információ: SMB-titkosítás](azure-netapp-files-faqs.md#smb-encryption-faqs) – gyakori kérdések. 
+
+        Az **SMB3 protokolltitkosítási** szolgáltatás jelenleg előzetes verzióban érhető el. Ha most használja először ezt a funkciót, regisztrálja a funkciót a használata előtt: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Ellenőrizze a szolgáltatásregisztráció állapotát: 
+
+        > [!NOTE]
+        > A **RegistrationState** állapot akár 60 percig is lehet, `Registering` mielőtt a következőre vált: `Registered` . A folytatás előtt várja meg, amíg `Registered` az állapot meg nem áll.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        Használhatja az Azure CLI és [parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is a funkció `az feature register` `az feature show` regisztrálására és a regisztráció állapotának megjelenítésére.  
+    * Ha engedélyezni szeretné a folyamatos rendelkezésre állást az SMB-köteten, válassza a **Folyamatos rendelkezésre állás engedélyezése lehetőséget.**    
 
         > [!IMPORTANT]   
-        > Az SMB folyamatos rendelkezésre állása szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Be kell küldenie egy várólistára vonatkozó kérelmet a szolgáltatás eléréséhez az **[Azure NETAPP Files SMB folyamatos rendelkezésre állási megosztások nyilvános előzetese-várólista beküldési lapján](https://aka.ms/anfsmbcasharespreviewsignup)**. Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól a folyamatos rendelkezésre állási funkció használata előtt.   
+        > Az SMB folyamatos rendelkezésre állása funkció jelenleg nyilvános előzetes verzióban érhető el. A szolgáltatáshoz való hozzáférésre vonatkozó várakozásilista-kérelmet kell beküldött Azure NetApp Files SMB folyamatos rendelkezésre állási megosztások nyilvános előzetes verziójú **[várakozásilista-beküldési oldalán.](https://aka.ms/anfsmbcasharespreviewsignup)** A folyamatos rendelkezésre állás funkció használata előtt várja meg a Azure NetApp Files megerősítő e-mail-címét.   
         > 
-        > A folyamatos rendelkezésre állást csak az SQL-munkaterhelések esetében ajánlott engedélyezni. Az SMB folyamatos rendelkezésre állási megosztások használata a SQL Servertól eltérő munkaterhelések esetén *nem* támogatott. Ez a funkció jelenleg Windows SQL Server rendszeren támogatott. A Linux SQL Server jelenleg nem támogatott. Ha nem rendszergazdai (tartományi) fiókot használ a SQL Server telepítéséhez, győződjön meg arról, hogy a fiók rendelkezik a szükséges biztonsági jogosultságokkal. Ha a tartományi fiók nem rendelkezik a szükséges biztonsági jogosultságokkal ( `SeSecurityPrivilege` ), és a jogosultság nem állítható be a tartományi szinten, akkor a jogosultságot a fiókhoz a Active Directory kapcsolatok **biztonsági jogosultságok felhasználói** mezőjének használatával adhatja meg. Lásd: [Active Directory-kapcsolatok létrehozása](create-active-directory-connections.md#create-an-active-directory-connection).
+        > A folyamatos rendelkezésre állást csak AZ SQL számítási feladatokhoz engedélyezze. Az SMB folyamatos rendelkezésre állási megosztások használata nem támogatott a SQL Server számítási *feladatokhoz.* Ez a funkció jelenleg Windows rendszerű SQL Server. A Linux SQL Server jelenleg nem támogatott. Ha nem rendszergazdai (tartományi) fiókot használ az SQL Server, győződjön meg arról, hogy a fiókhoz hozzá van rendelve a szükséges biztonsági jogosultság. Ha a tartományi fiók nem rendelkezik a szükséges biztonsági jogosultságokkal ( ), és a jogosultságot nem lehet tartományszinten beállítani, akkor a jogosultságot a kapcsolat Biztonsági jogosultság felhasználói mezője alapján Active Directory `SeSecurityPrivilege` meg.  Lásd: [Kapcsolat Active Directory létrehozása.](create-active-directory-connections.md#create-an-active-directory-connection)
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 
@@ -116,38 +136,38 @@ Az SMB-kötetek létrehozása előtt létre kell hoznia egy Active Directory-kap
         You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
     --> 
 
-    ![Az SMB-kötetek létrehozásának protokoll lapját ismertető képernyőkép.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+    ![Képernyőkép az SMB-kötet létrehozásához használt Protokoll lapról.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
-5. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra az SMB-kötet létrehozásához.
+5. Kattintson **a Felülvizsgálat + létrehozás elemre** a kötet részleteinek áttekintéshez.  Ezután kattintson a **Létrehozás gombra** az SMB-kötet létrehozásához.
 
-    A létrehozott kötet megjelenik a kötetek lapon. 
+    A létrehozott kötet megjelenik a Kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
 ## <a name="control-access-to-an-smb-volume"></a>SMB-kötethez való hozzáférés szabályozása  
 
-Az SMB-kötetekhez való hozzáférést az engedélyek szabályozzák.  
+Az SMB-kötethez való hozzáférést az engedélyek kezelik.  
 
 ### <a name="share-permissions"></a>Megosztási engedélyek  
 
-Alapértelmezés szerint az új kötet a **mindenki/teljes hozzáférés** megosztás engedélyekkel rendelkezik. A Tartománygazdák csoport tagjai a következőképpen módosíthatják a megosztási engedélyeket:  
+Alapértelmezés szerint egy új kötet rendelkezik a **Mindenki/Teljes** hozzáférés megosztási engedélyekkel. A Tartománygazdák csoport tagjai a következőképpen módosíthatják a megosztási engedélyeket:  
 
-1. Képezze le a megosztást egy meghajtóra.  
-2. Kattintson a jobb gombbal a meghajtóra, válassza a **Tulajdonságok** lehetőséget, majd lépjen a **Biztonság** lapra.
+1. Leképezi a megosztást egy meghajtóra.  
+2. Kattintson a jobb gombbal a meghajtóra, válassza a **Tulajdonságok lehetőséget,** majd válassza a **Biztonság lapot.**
 
 [![Megosztási engedélyek beállítása](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
-### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fájl és mappa engedélyei  
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fájl- és mappaengedélyek  
 
-A fájlokra vagy mappákra vonatkozó engedélyeket a Windows SMB-ügyfélben található objektum tulajdonságainak **Biztonság** lapján állíthatja be.
+Egy fájlra vagy mappára vonatkozó engedélyeket az objektum tulajdonságainak Biztonság lapján állíthat be a Windows SMB-ügyfélben. 
  
-![Fájl-és mappa engedélyeinek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
+![Fájl- és mappaengedélyek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>Következő lépések  
 
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [SMB – gyakori kérdések](./azure-netapp-files-faqs.md#smb-faqs)
-* [SMB-vagy kettős protokollú kötetek hibáinak megoldása](troubleshoot-dual-protocol-volumes.md)
-* [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](../virtual-network/virtual-network-for-azure-services.md)
-* [Új Active Directory erdő telepítése az Azure CLI-vel](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [SMB- vagy kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)
+* [Tudnivalók az Azure-szolgáltatások virtuális hálózati integrációjáról](../virtual-network/virtual-network-for-azure-services.md)
+* [Új új Active Directory telepítése az Azure CLI használatával](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

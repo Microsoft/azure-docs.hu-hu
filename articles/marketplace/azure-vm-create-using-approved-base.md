@@ -1,65 +1,65 @@
 ---
 title: Azure-beli virtuálisgép-ajánlat (VM) létrehozása jóváhagyott alapból, Azure Marketplace
-description: Megtudhatja, hogyan hozhat létre egy virtuális gép (VM) ajánlatot egy jóváhagyott alapból.
+description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot egy jóváhagyott alapból.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 94d21cb82290e59ebb003969a566c1bfc877713e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 19ae4b929964aaeb971bef75a2a620e40e4667f5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200446"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727167"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Virtuális gép létrehozása jóváhagyott alap használatával
 
-Ez a cikk azt ismerteti, hogyan használható az Azure egy olyan virtuális gép (VM) létrehozásához, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz. Ha ez nem kompatibilis a megoldással, lehetséges, hogy a helyszíni virtuális gépet egy jóváhagyott operációs rendszer használatával [hozza létre és konfigurálja](azure-vm-create-using-own-image.md) .
+Ez a cikk azt ismerteti, hogyan használható az Azure egy előre konfigurált, támogatott operációs rendszert tartalmazó virtuális gép (VM) létrehozására. Ha ez nem kompatibilis az Ön megoldásával, létrehozhat és konfigurálható egy helyszíni virtuális gép [egy](azure-vm-create-using-own-image.md) jóváhagyott operációs rendszer használatával.
 
 > [!NOTE]
-> Az eljárás megkezdése előtt tekintse át az Azure-beli virtuális gépekre vonatkozó [technikai követelményeket](marketplace-virtual-machines.md#technical-requirements) , beleértve a virtuális merevlemez (VHD) követelményeit.
+> Mielőtt elkezdené ezt az [](marketplace-virtual-machines.md#technical-requirements) eljárást, tekintse át az Azure-beli virtuális gépekre vonatkozó ajánlatok műszaki követelményeit, beleértve a virtuális merevlemezre (VHD) vonatkozó követelményeket.
 
-## <a name="select-an-approved-base-image"></a>Jóváhagyott alaprendszerkép kiválasztása
+## <a name="select-an-approved-base-image"></a>Jóváhagyott alapként kiválasztott rendszerkép
 
-Válassza ki az alábbi Windows-vagy Linux-rendszerképek egyikét a bázisként.
+Válassza ki az alábbi Windows- vagy Linux-rendszerképek egyikét alapként.
 
 ### <a name="windows"></a>Windows
 
 - [Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)
-- SQL Server [2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ws2019?tab=Overview), [2014](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2?tab=Overview), [2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2012sp4-ws2012r2?tab=Overview)
+- SQL Server [2019,](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ws2019?tab=Overview) [2014,](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2?tab=Overview) [2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2012sp4-ws2012r2?tab=Overview)
 
 ### <a name="linux"></a>Linux
 
-Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](../virtual-machines/linux/endorsed-distros.md)foglalkozó Linux című témakört.
+Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listát az Azure által támogatott disztribúciók [linuxos listájában láthatja.](../virtual-machines/linux/endorsed-distros.md)
 
 ## <a name="create-vm-on-the-azure-portal"></a>Virtuális gép létrehozása a Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/).
 2. Válassza a **Virtuális gépek** lehetőséget.
-3. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozása** képernyő megnyitásához.
-4. Válassza ki a lemezképet a legördülő listából, vagy válassza az **összes nyilvános és privát rendszerkép tallózása** lehetőséget a rendelkezésre álló virtuálisgép-lemezképek kereséséhez vagy tallózásához.
-5. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
+3. Válassza **a + Hozzáadás** lehetőséget a Virtuális gép létrehozása képernyő **megnyitásához.**
+4. Válassza ki a rendszerképet  a legördülő listából, vagy válassza az Összes nyilvános és privát rendszerkép tallózása lehetőséget az összes elérhető virtuálisgép-rendszerkép kereséshez vagy tallózáshoz.
+5. **2. generációs** virtuális gép létrehozásához kattintson a Speciális **lapra,** és válassza a **Gen 2** lehetőséget.
 
-    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
+    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza a Gen 1 vagy a Gen 2 lehetőséget.":::
 
-6. Válassza ki a telepítendő virtuális gép méretét.
+6. Válassza ki az üzembe helyezni kívánt virtuális gép méretét.
 
-    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy ajánlott virtuálisgép-méretet a kiválasztott képhez.":::
+    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy javasolt virtuálisgép-méretet a kiválasztott rendszerképhez.":::
 
 7. Adja meg a virtuális gép létrehozásához szükséges egyéb adatokat.
-8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a  **Létrehozás** lehetőséget.
+8. Válassza **az Áttekintés + létrehozás lehetőséget** a választási lehetőségek áttekintéshez. Amikor **megjelenik az Ellenőrzésen** áteső üzenet, válassza a **Létrehozás lehetőséget.**
 
-Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali menü **Virtual Machines** lapját. A létrehozást követően a virtuális gép állapota **fut** értékre változik.
+Az Azure elkezdi kiépítni a megadott virtuális gépet. A folyamat előrehaladását a bal **oldali Virtual Machines** lapfülre választva követheti nyomon. A létrehozása után a Virtuális gép állapota Fut **állapotúra változik.**
 
 ## <a name="configure-the-vm"></a>A virtuális gép konfigurálása
 
-Ez a szakasz azt ismerteti, hogyan lehet méretezni, frissíteni és általánosítani egy Azure-beli virtuális gépet. Ezek a lépések szükségesek ahhoz, hogy előkészítse a virtuális gépet az Azure Marketplace-en való üzembe helyezéshez.
+Ez a szakasz az Azure-beli virtuális gépek méretének, frissítésének és általánosizálásának a módszerét ismerteti. Ezek a lépések szükségesek a virtuális gép előkészítéséhez a virtuális gép Azure Marketplace.
 
 ### <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
-A Windows vagy [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) [rendszerű](../virtual-machines/windows/connect-logon.md) virtuális géphez való kapcsolódáshoz tekintse meg az alábbi dokumentációt.
+A Windows vagy [Linux](../virtual-machines/windows/connect-logon.md) rendszerű virtuális géphez való csatlakozáshoz tekintse meg a következő [dokumentációt.](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm)
 
 ### <a name="install-the-most-current-updates"></a>A legújabb frissítések telepítése
 
@@ -77,6 +77,6 @@ A Windows vagy [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Javasolt következő lépés: [a virtuálisgép-rendszerkép tesztelése](azure-vm-image-test.md) , hogy az megfeleljen az Azure Marketplace közzétételi követelményeinek. Ez nem kötelező.
-- Ha nem szeretné tesztelni a virtuálisgép-rendszerképet, jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/) a rendszerkép közzétételéhez.
-- Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg [Az Azure Marketplace-hez készült virtuális gépekkel kapcsolatos gyakori kérdéseket](azure-vm-create-faq.md).
+- Javasolt következő lépés: [Tesztelje a virtuálisgép-rendszerképet,](azure-vm-image-test.md) hogy az megfeleljen a Azure Marketplace követelményeinek. Ez nem kötelező.
+- Ha nem szeretné tesztelni a virtuálisgép-rendszerképet, jelentkezzen be a Partnerközpont [a](https://partner.microsoft.com/) rendszerkép közzétételéhez.
+- Ha nehézségekbe ütközik az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a virtuális gépekkel kapcsolatos gyakori [kérdéseket a Azure Marketplace.](azure-vm-create-faq.md)

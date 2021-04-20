@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: objektumok észlelése Custom Vision ügyféloldali kódtár'
+title: 'Rövid útmutató: Objektumészlelés Custom Vision ügyféloldali kódtárak segítségével'
 titleSuffix: Azure Cognitive Services
-description: 'Gyors útmutató: objektum-észlelési projekt létrehozása, Címkék hozzáadása, lemezképek feltöltése, a projekt betanítása és objektumok észlelése az Custom Vision ügyféloldali kódtár használatával.'
+description: 'Rövid útmutató: Objektumészlelési projekt létrehozása, címkék hozzáadása, képek feltöltése, projekt betanítása és objektumok észlelése Custom Vision ügyféloldali kódtár használatával.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 02/25/2021
+ms.date: 04/19/2021
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-keywords: Egyéni jövőkép
+keywords: egyéni látás
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5eb910ed4f7c15a4755dd8f494771a56c4c64230
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ac9fb96a6b8c0d5e20b616cf99b27e599f99fe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102184217"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725131"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Gyors útmutató: objektum-észlelési projekt létrehozása az Custom Vision ügyféloldali kódtár
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Rövid útmutató: Objektumészlelési projekt létrehozása Custom Vision ügyféloldali kódtára segítségével
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

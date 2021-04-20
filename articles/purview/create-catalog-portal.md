@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535160"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728589"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rövid útmutató: Azure Purview-fiók létrehozása a Azure Portal
 
@@ -36,8 +36,8 @@ Ebben a rövid útmutatóban egy Azure Purview-fiókot hoz létre.
     > [!important]
     > Nem kell követnie ezt a lépést, ha nem Azure Policy vagy egy meglévő Azure Policy nem blokkolja a **Storage-fiók** és az **EventHub-névtér létrehozását.**
 
-    1. Lépjen a Azure Portal, és keressen rá a Szabályzat **kifejezésre**
-    1. Kövesse [az Egyéni szabályzatdefiníció létrehozása vagy a](../governance/policy/tutorials/create-custom-policy-definition.md) meglévő szabályzat módosítása szabályzatot két kivétel operátorral és `not` címkével való `resourceBypass` hozzáadásához:
+    1. Lépjen a Azure Portal, és keressen rá a Szabályzat **kifejezésre.**
+    1. Operátorral [és címkével két](../governance/policy/tutorials/create-custom-policy-definition.md) kivétel hozzáadásához kövesse az Egyéni szabályzatdefiníció létrehozása vagy a meglévő szabályzat `not` módosítása `resourceBypass` szabályzatot:
 
         ```json
         {
@@ -95,7 +95,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
-Ha szükséges, az alábbi lépésekkel konfigurálhatja az előfizetését úgy, hogy az Azure Purview fusson az előfizetésében:
+Ha szükséges, az alábbi lépésekkel konfigurálhatja az előfizetését, hogy engedélyezze az Azure Purview futtatását az előfizetésben:
 
    1. A Azure Portal keresse meg és válassza az **Előfizetések lehetőséget.**
 
@@ -110,26 +110,26 @@ Ha szükséges, az alábbi lépésekkel konfigurálhatja az előfizetését úgy
       
       Ha nincsenek regisztrálva, regisztrálja a Regisztráció **lehetőség kiválasztásával.**
 
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="A Microsoft Dot Azure Purview erőforrás-szolgáltató regisztrálását bemutató képernyőkép a Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Képernyőkép a Microsoft dot Azure Purview erőforrás-szolgáltató regisztrálásának Azure Portal.":::
 
 ## <a name="create-an-azure-purview-account-instance"></a>Azure Purview-fiókpéldány létrehozása
 
-1. Az új Azure **Purview-fiók** létrehozásához Azure Portal a  Nézetfiókok lapra, majd válassza a Hozzáadás lehetőséget. Másik lehetőségként a Marketplace-en keresse meg a **Purview Accounts (Purview-fiókok)** et, és válassza a **Create (Létrehozás) lehetőséget.** Vegye figyelembe, hogy egyszerre csak egy Azure Purview-fiókot adhat hozzá.
+1. Az új Azure **Purview-fiók** létrehozásához Azure Portal a  Fiók véglegesnézete lapra, majd válassza a Hozzáadás lehetőséget. Másik lehetőségként a Marketplace-en keresse meg a **Purview Accounts (Fiók** végleges keresése) et, és válassza a **Create (Létrehozás) lehetőséget.** Vegye figyelembe, hogy egyszerre csak egy Azure Purview-fiókot adhat hozzá.
 
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Képernyőkép az Azure Purview-fiókpéldány létrehozásáról a Azure Portal.":::
 
     > [!Note] 
-    > Az Azure Purview nem támogatja a fiók régiók közötti áthelyezését. Erről az Azure által támogatott szolgáltatások [oldalán talál további információt.](../azure-resource-manager/management/region-move-support.md)
+    > Az Azure Purview nem támogatja a fiók régiók közötti áthelyezését. Erről az Áthelyezési művelet támogatása [erőforrásokhoz oldalon talál további információt.](../azure-resource-manager/management/move-support-resources.md)
 
 1. Az Alapvető **beállítások lapon** tegye a következőket:
     1. Válasszon ki egy **erőforráscsoportot.**
-    1. Adja meg a katalógus Purview-fióknevét.  Szóközök és szimbólumok nem használhatók.
+    1. Adja meg a **katalógus Purview-fiókjának** nevét. Szóközök és szimbólumok nem használhatók.
     1. Válasszon egy **helyet,** majd válassza a **Tovább: Konfiguráció lehetőséget.**
 1. A **Konfiguráció lapon** válassza ki a kívánt **platformméretet** – az engedélyezett értékek 4 kapacitásegység (CU) és 16 CU. Válassza **a Tovább: Címkék lehetőséget.**
 1. A Címkék **lapon** hozzáadhat egy vagy több címkét is. Ezek a címkék csak az azure Azure Portal ban használhatók, az Azure Purview-ban nem. 
 
     > [!Note] 
-    > Ha már van **Azure Policy,** és kivételt kell hozzáadnia az **Előfeltételek** részen, akkor a megfelelő címkét kell hozzáadnia. Hozzáadhatja például a következő `resourceBypass` címkét: Címke hozzáadása a :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Purview fiókhoz.":::
+    > Ha már van **Azure Policy,** és kivételt kell hozzáadnia az **Előfeltételek** részen, akkor hozzá kell adni a megfelelő címkét. Hozzáadhatja például a következő `resourceBypass` címkét: Címke hozzáadása a :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Purview fiókhoz.":::
 
 1. Válassza **a & létrehozása,** majd a Létrehozás **lehetőséget.** A létrehozás befejezése néhány percet vesz igénybe. Az újonnan létrehozott Azure Purview-fiókpéldány megjelenik a **Purview-fiókok oldalán található** listában.
 1. Ha az új fiók kiépítése befejeződött, válassza az **Erőforráshoz való ugrás lehetőséget.**
@@ -138,7 +138,7 @@ Ha szükséges, az alábbi lépésekkel konfigurálhatja az előfizetését úgy
     > Ha a kiépítés állapottal meghiúsult, az azt jelenti, hogy egy Azure-szabályzat blokkolja `Conflict` a Purview-t a **Storage-fiók** és a **EventHub-névtér létrehozásában.** A kivételek hozzáadásához  végig kell mennie az Előfeltételek lépésen.
     > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Az ütközések végleges nézetének hibaüzenete":::
 
-1. Válassza **a Launch purview account (Végleges fiók indítása) lehetőséget.**
+1. Válassza **a Launch purview account (Új fiók indítása) lehetőséget.**
 
    :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="Képernyőkép az Azure Purview-fiókkatalógus indításához kiválasztott beállításról.":::
 
@@ -148,7 +148,7 @@ Ahhoz, hogy Ön vagy csapata megkezdje az Azure Purview használatát, hozzá ke
 
 Rendszerbiztonsági tag hozzáadása a **Purview Data Curator** adatsík-szerepkörhöz egy Azure Purview-fiókban:
 
-1. A nézet [**Nézetfiókok**](https://aka.ms/purviewportal) lapjára Azure Portal.
+1. A [**nézetben**](https://aka.ms/purviewportal) válassza a Fiók végleges Azure Portal.
 
 1. Válassza ki a módosítani kívánt Azure Purview-fiókot.
 
@@ -156,15 +156,15 @@ Rendszerbiztonsági tag hozzáadása a **Purview Data Curator** adatsík-szerepk
 
 1. Kattintson **a + Hozzáadás gombra**
 
-Ha a Hozzáadás gombra kattintva két választási lehetőséget lát, amelyeken mindkét lehetőség meg van jelölve (letiltva), az azt jelenti, hogy nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy valakit adatsík-szerepkörhöz adjon az Azure Purview-fiókban. Meg kell találnia egy tulajdonost, egy felhasználói hozzáférés-rendszergazdát vagy egy másik szerepkör-hozzárendelési jogosultsággal rendelkező felhasználót az Azure Purview-fiókjában. A megfelelő személyeket a  Szerepkör-hozzárendelések lap kiválasztásával, majd lefelé görgetve megkeresheti a tulajdonost vagy a felhasználói hozzáférés rendszergazdáját, és kapcsolatba léphet velük.
+Ha a Hozzáadás gombra kattintva két választási lehetőség jelenik meg, amelyeken mindkét lehetőség meg van jelölve (letiltva), az azt jelenti, hogy nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy valakit adatsík-szerepkörhöz adjon az Azure Purview-fiókban. Meg kell találnia egy tulajdonost, egy felhasználói hozzáférés-rendszergazdát vagy egy másik szerepkör-hozzárendelési jogosultsággal rendelkező felhasználót az Azure Purview-fiókjában. A megfelelő személyeket a  Szerepkör-hozzárendelések lap kiválasztásával, majd lefelé görgetve megkeresheti a tulajdonost vagy a felhasználói hozzáférés rendszergazdáját, és kapcsolatba léphet velük.
 
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-1. A Purview Data Curator Role (Purview **Data Curator** szerepkör) vagy a **Purview Data** [](catalog-permissions.md) Source Administrator Role (Szerepkör típusa) esetén attól függően, hogy a rendszerbiztonsági tag mire lesz használva (a részletekért tekintse meg a katalógus engedélyekkel és alkalmazás- és [szolgáltatásnév-objektumokkal](../active-directory/develop/app-objects-and-service-principals.md) kapcsolatos Azure Active Directory).
+1. A **Purview Data Curator Role** (A Purview Data Curator szerepkör vagy a **Purview** Data [](catalog-permissions.md) Source Administrator Role) szerepkör esetén attól függően, hogy a rendszerbiztonsági tag mire lesz használva (a részletekért tekintse meg a katalógus engedélyeinek és alkalmazás- és [szolgáltatásnév-objektumokkal](../active-directory/develop/app-objects-and-service-principals.md) kapcsolatos részt a Azure Active Directory).
 
-1. A **Hozzáférés hozzárendelése beállításnál** hagyja meg az alapértelmezett **Felhasználó, csoport vagy szolgáltatásnév értéket.**
+1. A **Hozzáférés hozzárendelése beállításnál** hagyja meg az alapértelmezett **felhasználó, csoport vagy szolgáltatásnév értéket.**
 
-1. A **Kijelölés** mezőben adja meg a hozzárendelni kívánt Azure Active Directory vagy szolgáltatásnevet, majd kattintson a nevére az eredménypanelen.
+1. A **Kijelölés** mezőben adja meg a felhasználó nevét, Azure Active Directory hozzárendelni kívánt csoportot vagy szolgáltatásnevet, majd kattintson a nevére az eredménypanelen.
 
 1. Kattintson a **Mentés gombra.**
 
@@ -172,7 +172,7 @@ Ha a Hozzáadás gombra kattintva két választási lehetőséget lát, amelyeke
 
 Ha már nincs szüksége erre az Azure Purview-fiókra, törölje a következő lépésekkel:
 
-1. A nézet **Nézetfiókok** lapjára Azure Portal.
+1. A **nézetben** válassza a Fiók végleges Azure Portal.
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure Purview-fiókot. Válassza **a Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a Törlés **lehetőséget.**
 
@@ -180,7 +180,7 @@ Ha már nincs szüksége erre az Azure Purview-fiókra, törölje a következő 
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Purview-fiókot.
 
-A következő cikk azt is bemutatja, hogyan engedélyezheti a felhasználóknak az Azure Purview-fiókhoz való hozzáférést. 
+A következő cikkből megtudhatja, hogyan engedélyezheti a felhasználóknak az Azure Purview-fiókhoz való hozzáférést. 
 
 > [!div class="nextstepaction"]
 > [Felhasználók hozzáadása az Azure Purview-fiókhoz](catalog-permissions.md)

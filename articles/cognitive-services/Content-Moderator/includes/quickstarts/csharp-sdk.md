@@ -1,7 +1,7 @@
 ---
-title: Content Moderator .NET ügyféloldali kódtár gyors üzembe helyezése
+title: Content Moderator .NET ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti meg a .NET-hez készült Azure Content Moderator ügyféloldali kódtárat. Tartalom-szűrési szoftvereket hozhat létre az alkalmazásban, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan ismerkedik meg az Azure Content Moderator .NET-hez való ügyféloldali kódtárával. Tartalomszűrő szoftvereket építhet be az alkalmazásába, hogy megfeleljen a szabályozásnak, vagy fenntartsa a kívánt környezetet a felhasználók számára.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,60 +11,60 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: bdf49f16b003c25da9fe8972a3fb7e3837d62819
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 573778316802b6e445b4c9d78576a8813af514a6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104038"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726137"
 ---
-Ismerkedés az Azure Content Moderator .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a NuGet csomagot, és próbálja ki az alapszintű feladatok példáját. 
+Első lépések az Azure Content Moderator .NET-hez való ügyféloldali kódtárával. Kövesse az alábbi lépéseket a NuGet-csomag telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges példakódot. 
 
-Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos tartalmak kezelését. A AI-alapú Content moderációs szolgáltatással szövegeket, képeket és videókat kereshet, és automatikusan alkalmazhatja a tartalmi jelzőket. Ezután integrálhatja alkalmazását a felülvizsgálati eszközzel, amely egy online moderátori környezet az emberi véleményezők csapatának. Tartalom-szűrési szoftvereket hozhat létre az alkalmazásban, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
+Content Moderator egy olyan AI-szolgáltatás, amely lehetővé teszi a potenciálisan sértő, kockázatos vagy egyéb nem kívánt tartalmak kezelését. Az AI-alapú tartalommoderálási szolgáltatással szöveget, képet és videókat vizsgál, és automatikusan alkalmazhat tartalomjelölőket. Ezután integrálja az alkalmazást a felülvizsgálati eszközzel, amely egy online moderator-környezet egy emberi felülvizsgáló csapat számára. Tartalomszűrő szoftvereket építhet be az alkalmazásába, hogy megfeleljen a szabályozásnak, vagy fenntartsa a kívánt környezetet a felhasználók számára.
 
-A .NET-hez készült Content Moderator ügyféloldali kódtára a következőre használható:
+Használja a Content Moderator .NET-hez használható ügyféloldali kódtárát a következőre:
 
-* Mérsékelt szöveg
-* Közepes méretű képek
+* Szöveg moderálása
+* Képek moderálása
 * Felülvizsgálat létrehozása
 
-[Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Példák](../../samples-dotnet.md)
+[Referenciadokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Minták](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* A [Visual Studio ide](https://visualstudio.microsoft.com/vs/) vagy a [.net Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója.
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" hozzon létre egy Content moderator erőforrást, "  target="_blank"> és hozzon létre egy Content moderator-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Content Moderatorhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services/)
+* A [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) vagy a [.NET Core aktuális verziója.](https://dotnet.microsoft.com/download/dotnet-core)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Content Moderator-erőforrást, és hozzon létre egy Content Moderator-erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Várja meg az üzembe helyezést, és kattintson az **Erőforráshoz ugrás gombra.**
+    * Szüksége lesz a létrehozott erőforrás kulcsra és végpontra ahhoz, hogy az alkalmazást a Content Moderator. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Hozzon létre egy új .NET Core-alkalmazást a Visual Studióval. 
+A Visual Studio hozzon létre egy új .NET Core-alkalmazást. 
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** , majd a **NuGet-csomagok kezelése** lehetőségre kattint a jobb gombbal a projekt megoldásra. A megnyíló csomagkezelő válassza a **Tallózás** lehetőséget, jelölje be az **előzetes verzió** használata jelölőnégyzetet, és keressen rá `Microsoft.Azure.CognitiveServices.ContentModerator` . Válassza `2.0.0` a verzió, majd a **telepítés** lehetőséget. 
+Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat. Kattintson a jobb gombbal a projektmegoldásra a Megoldáskezelő majd válassza a **NuGet-csomagok** **kezelése gombra.** A megnyíló csomagkezelőben válassza a **Tallózás** lehetőséget, jelölje be **az Include prerelease**(Előzetes) jelölőnégyzetet, és keressen a következőre: `Microsoft.Azure.CognitiveServices.ContentModerator` . Válassza ki a `2.0.0` verziót, majd telepítse a **alkalmazást.** 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
+Egy konzolablakban (például cmd, PowerShell vagy Bash) az paranccsal hozzon létre egy új konzolalkalmazást `dotnet new` `content-moderator-quickstart` néven. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájllal: *Program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappába. Az alkalmazást a következővel építheti fel:
 
 ```console
 dotnet build
 ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
+A build kimenete nem tartalmazhat figyelmeztetéseket vagy hibákat. 
 
 ```console
 ...
@@ -76,7 +76,7 @@ Build succeeded.
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
 
-Az alkalmazás könyvtárában telepítse az Content Moderator .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
+Telepítse a .NET-hez Content Moderator ügyféloldali kódtárat az alkalmazáskönyvtárban a következő paranccsal:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
@@ -85,23 +85,23 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 ---
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ez a [GitHubon található,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs)amely a rövid útmutatóban található példakódokat tartalmazza.
 
-A projekt könyvtárában nyissa meg a *program. cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
+A projektkönyvtárból nyissa meg a *Program.cs* fájlt a kívánt szerkesztőben vagy IDE-ban. Adja hozzá a következő `using`-utasításokat:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
-A **program** osztályban hozzon létre változókat az erőforrás kulcsa és végpontja számára.
+A **Program osztályban** hozzon létre változókat az erőforrás kulcsának és végpontjának.
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Content moderator erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
+> Nyissa meg az Azure Portalt. Ha az Content Moderator szakaszban létrehozott  erőforrás sikeresen üzembe lett folyamatban, kattintson az **Erőforrás** ugrás gombra a **Következő lépések területen.** A kulcsot és a végpontot az  erőforrás kulcs- és végpontoldalán, az **erőforrás-kezelés alatt találja.** 
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, amikor végzett, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módon tárolni és elérni a hitelesítő adatokat. További információt a biztonsági Cognitive Services [talál.](../../../cognitive-services-security.md)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
 
-Az alkalmazás `main()` metódusában adjon hozzá hívásokat az ebben a rövid útmutatóban használt módszerekhez. Ezeket később fogja létrehozni.
+Az alkalmazás metódusában adja hozzá az ebben a rövid útmutatóban használt metódusok `main()` hívásait. Ezeket később fogja létrehozni.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
 
@@ -114,37 +114,37 @@ Az alkalmazás `main()` metódusában adjon hozzá hívásokat az ebben a rövid
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok a Content Moderator .NET ügyféloldali kódtár főbb funkcióit kezelik.
+Az alábbi osztályok a .NET ügyféloldali kódtár néhány fő funkcióját Content Moderator kezelik.
 
 |Név|Leírás|
 |---|---|
-|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
-|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
-|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation)|Ez az osztály a nyelv, a káromkodás, a hibák és a személyes adatok szövegének elemzéséhez nyújt funkciókat.|
-|[Felülvizsgálatok](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient)|Erre az osztályra az összes Content Moderator szükség. Példányosodhat az előfizetés adataival, és más osztályok példányainak előállítására használhatja.|
+|[ImageModeration (Képmoderálás)](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation)|Ez az osztály a felnőtt tartalmak, személyes adatok vagy emberi arcok képelemzési funkcióját biztosítja.|
+|[TextModeration (Szövegmoderálás)](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation)|Ez az osztály biztosítja a nyelv, trágárság, hibák és személyes adatok szövegelemzési funkcióját.|
+|[Felülvizsgálatok](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews)|Ez az osztály biztosítja a Felülvizsgálati API-k funkcióit, beleértve a feladatok létrehozásának módszereit, az egyéni munkafolyamatokat és az emberi felülvizsgálatokat.|
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az Content Moderator .NET-hez készült ügyféloldali kódtára használatával:
+Ezek a kódrészletek a következő feladatok elvégzését mutatják be a .NET-hez Content Moderator ügyféloldali kódtárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Mérsékelt szöveg](#moderate-text)
-* [Közepes méretű képek](#moderate-images)
+* [Szöveg moderálása](#moderate-text)
+* [Képek moderálása](#moderate-images)
 * [Felülvizsgálat létrehozása](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Egy új metódusban hozza létre az ügyféloldali objektumokat a végponttal és a kulccsal.
+Egy új metódusban példányosíthatja az ügyfélobjektumokat a végponttal és a kulccsal.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_auth)]
 
-## <a name="moderate-text"></a>Mérsékelt szöveg
+## <a name="moderate-text"></a>Szöveg moderálása
 
-A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegtörzsének elemzésére és az eredmények a konzolra való kinyomtatására. A **program** osztály gyökérkönyvtárában adja meg a bemeneti és kimeneti fájlokat:
+A következő kód egy Content Moderator használ a szöveg törzsének elemzéséhez és az eredmények konzolra való ki kinyomtatása érdekében. A Program osztály **gyökerében** adja meg a bemeneti és kimeneti fájlokat:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-Ezután a projekt gyökerében adjon hozzá egy *TextFile.txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
+Ezután a projekt gyökerében adjon hozzá egyTextFile.txt *fájlt.* Adja hozzá a saját szövegét ehhez a fájlhoz, vagy használja a következő mintaszöveget:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -152,107 +152,107 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 
-Ezután adja meg a Text moderációs metódust a **program** osztályban:
+Ezután határozza meg a szövegmoderálási metódust valahol a **Program osztályban:**
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 
-## <a name="moderate-images"></a>Közepes méretű képek
+## <a name="moderate-images"></a>Képek moderálása
 
-A következő kód egy Content Moderator ügyfelet használ a [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation) objektummal együtt, hogy elemezze a felnőtteknek és a zamatos tartalomnak a távoli lemezképeit.
+A következő kód egy Content Moderator és egy [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation) objektumot használ a távoli képek felnőtteknek szóló és ritka tartalmú elemzéséhez.
 
 > [!NOTE]
-> Elemezheti egy helyi rendszerkép tartalmát is. A helyi rendszerképekkel működő módszerekhez és műveletekhez a [dokumentációban](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) talál útmutatást.
+> Egy helyi kép tartalmát is elemezheti. A helyi [rendszerképekkel](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) használható metódusokat és műveleteket a referenciadokumentációban találhatja meg.
 
-### <a name="get-sample-images"></a>Mintaképek beolvasása
+### <a name="get-sample-images"></a>Mintaképek lekérte
 
-Adja meg a bemeneti és kimeneti fájlokat a **program** osztályának gyökerében:
+Adja meg a bemeneti és kimeneti fájlokat a **Program osztály gyökerében:**
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-Ezután hozza létre a bemeneti fájlt *ImageFiles.txt* a projekt gyökerében. Ebben a fájlban hozzá kell adnia a lemezképek URL-címeit az &mdash; egyes sorokon egy URL-cím elemzéséhez. A következő minta lemezképeket használhatja:
+Ezután hozza létre a bemenetiImageFiles.txt *a* projekt gyökerében. Ebben a fájlban hozzáadja a képek URL-címeit, hogy minden sorban egy &mdash; URL-címet elemezze. Az alábbi mintaképeket használhatja:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="define-helper-class"></a>Segítő osztály definiálása
+### <a name="define-helper-class"></a>Segítőosztály meghatározása
 
-Adja hozzá a következő osztály-definíciót a **program** osztályon belül. Ez a belső osztály a képek moderálásának eredményeit fogja kezelni.
+Adja hozzá a következő osztálydefiníciót a **Program osztályon** belül. Ez a belső osztály kezeli a képmoderálási eredményeket.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_dataclass)]
 
-### <a name="define-the-image-moderation-method"></a>A képmoderálási módszer megadása
+### <a name="define-the-image-moderation-method"></a>A képmoderálási metódus meghatározása
 
-A következő módszer a képurl-címek egy szövegfájlban való megismétlését, egy **EvaluationData** -példány létrehozását, valamint a felnőtt/zamatos tartalom, a szöveg és az emberi arcok rendszerképének elemzését végzi. Ezután hozzáadja a végső **EvaluationData** -példányt egy listához, és a visszaadott adatot a konzolra írja.
+A következő metódus végig lépked a kép URL-címeit egy szövegfájlban, létrehoz egy **EvaluationData** példányt, és elemzi a képet a felnőtteknek szóló/ritka tartalom, szöveg és emberi arcok alapján. Ezután hozzáadja a végső **EvaluationData** példányt egy listához, és kiírja a visszaadott adatok teljes listáját a konzolra.
 
-#### <a name="iterate-through-images"></a>Iteráció a képeken
+#### <a name="iterate-through-images"></a>Iteráljon a képeken
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_iterate)]
 
 #### <a name="analyze-content"></a>Tartalom elemzése
 
-További információ a Content Moderator képernyőt tartalmazó képattribútumokról: a [képek moderálási fogalmi](../../image-moderation-api.md) útmutatója.
+A képernyőkhöz Content Moderator képattribútumokkal kapcsolatos további információkért tekintse meg a [Képmoderálási fogalmak útmutatót.](../../image-moderation-api.md)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_analyze)]
 
-#### <a name="write-moderation-results-to-file"></a>Moderációs eredmények írása fájlba
+#### <a name="write-moderation-results-to-file"></a>Moderálási eredmények írása fájlba
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_save)]
 
 ## <a name="create-a-review"></a>Felülvizsgálat létrehozása
 
-A Content Moderator .NET ügyféloldali kódtár használatával tartalmat adhat a [felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com) , így az emberi moderátorok áttekinthetik azt. További információ a felülvizsgálati eszközről: a [felülvizsgálati eszköz fogalmi útmutatója](../../review-tool-user-guide/human-in-the-loop.md).
+A .NET Content Moderator kódtár használatával tartalmat használhatja [](https://contentmoderator.cognitive.microsoft.com) a felülvizsgálati eszközbe, hogy az emberi moderátorok át tudjanak vizsgálni. A felülvizsgálati eszközzel kapcsolatos további információkért tekintse meg a felülvizsgálati [eszköz fogalmi útmutatóját.](../../review-tool-user-guide/human-in-the-loop.md)
 
-Az ebben a szakaszban szereplő metódus a [Reviews osztály használatával](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews) hozza létre a felülvizsgálatot, beolvassa az azonosítóját, és az emberi adatoknak a felülvizsgálati eszköz webportálon való fogadása után ellenőrizze annak adatait. Az összes információt egy kimeneti szövegfájlban naplózza. 
+Az ebben a szakaszban található metódus a [Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews) osztály használatával létrehoz egy felülvizsgálatot, lekéri az azonosítóját, és ellenőrzi annak részleteit, miután emberi bevitelt kapott a felülvizsgálati eszköz webes portálján. Ezt az információt egy kimeneti szövegfájlban naplózza. 
 
-### <a name="get-sample-images"></a>Mintaképek beolvasása
+### <a name="get-sample-images"></a>Mintaképek lekérte
 
-Deklarálja a következő tömböt a **program** osztályának gyökerében. Ez a változó a felülvizsgálat létrehozásához használandó mintát ábrázolja.
+Deklarálja a következő tömböt a **Program osztály gyökerében.** Ez a változó egy mintaképre hivatkozik, amely a felülvizsgálat létrehozásához használható.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_urls)]
 
-### <a name="get-review-credentials"></a>Felülvizsgálati hitelesítő adatok beolvasása
+### <a name="get-review-credentials"></a>Hitelesítő adatok áttekintése
 
-Jelentkezzen be a [felülvizsgálati eszközbe](https://contentmoderator.cognitive.microsoft.com) , és kérje le a csapat nevét. Ezután rendelje hozzá a **program** osztály megfelelő változóhoz. Megadhat egy visszahívási végpontot is, amely a felülvizsgálat tevékenységére vonatkozó frissítéseket fogad.
+Jelentkezzen be a felülvizsgálati [eszközbe,](https://contentmoderator.cognitive.microsoft.com) és olvassa be a csapat nevét. Ezután rendelje hozzá a Program osztályban a **megfelelő változóhoz.** Igény szerint be is állíthat egy visszahívási végpontot, hogy megkapja a felülvizsgálat tevékenységével kapcsolatos frissítéseket.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_vars)]
 
-### <a name="define-helper-class"></a>Segítő osztály definiálása
+### <a name="define-helper-class"></a>Segítőosztály meghatározása
 
-Adja hozzá a következő osztály-definíciót a **program** osztályán belül. Ez az osztály a felülvizsgálati eszközhöz elküldött egyetlen felülvizsgálati példányra lesz felhasználva.
+Adja hozzá a következő osztálydefiníciót a **Program osztályhoz.** Ez az osztály egyetlen felülvizsgálati példányt képvisel, amely a felülvizsgálati eszköznek lesz elküldve.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_item)]
 
-### <a name="define-helper-method"></a>Segítő módszer definiálása
+### <a name="define-helper-method"></a>Segítő metódus meghatározása
 
-Adja hozzá a következő metódust a **program** osztályhoz. Ez a metódus a lekérdezési lekérdezések eredményét fogja írni a kimeneti szövegfájlba.
+Adja hozzá a következő metódust a **Program osztályhoz.** Ez a metódus a kimeneti szövegfájlba írja a felülvizsgálati lekérdezések eredményeit.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_writeline)]
 
-### <a name="define-the-review-creation-method"></a>A felülvizsgálati módszer megadása
+### <a name="define-the-review-creation-method"></a>A felülvizsgálati létrehozási módszer meghatározása
 
-Most már készen áll arra, hogy meghatározza azt a metódust, amely kezeli a felülvizsgálat létrehozását és lekérdezését. Adjon hozzá egy új metódust, **CreateReviews**, és adja meg a következő helyi változókat.
+Most már készen áll az áttekintés létrehozását és lekérdezését kezelő metódus meghatározására. Adjon hozzá egy **új, CreateReviews** metódust, és határozza meg a következő helyi változókat.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 
-#### <a name="post-reviews-to-the-review-tool"></a>A felülvizsgálati eszközre vonatkozó felülvizsgálatok közzététele
+#### <a name="post-reviews-to-the-review-tool"></a>Felülvizsgálatok közzététe a felülvizsgálati eszközben
 
-Ezután adja hozzá a következő kódot, hogy megismételje az adott mintaképeket, adjon hozzá metaadatokat, és küldje el őket a felülvizsgálati eszközre egyetlen kötegben. 
+Ezután adja hozzá a következő kódot, amely végig lépked az adott mintaképeken, hozzáadja a metaadatokat, és egyetlen kötegben elküldi őket a felülvizsgálati eszköznek. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_create)]
 
-Az API-hívás által visszaadott objektum egyedi azonosító értékeket tartalmaz minden feltöltött rendszerképhez. A következő kód elemzi ezeket az azonosítókat, majd a kötegben lévő egyes rendszerképek állapotának lekérdezéséhez használja azokat Content Moderator.
+Az API-hívásból visszaadott objektum minden feltöltött kép egyedi azonosítóértékét tartalmazza. Az alábbi kód ezeket az adatokat elemezi, majd Content Moderator a kötegben az egyes lemezképek állapotát.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_ids)]
 
-### <a name="get-review-details"></a>Áttekintés részleteinek beolvasása
+### <a name="get-review-details"></a>Áttekintés részleteinek lekérte
 
-A következő kód azt eredményezi, hogy a program megvárja a felhasználói bevitelt. Ha ezt a lépést futásidőben futtatja, nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com) , és ellenőrizze, hogy a minta rendszerképe fel lett-e töltve, és hogyan használhatja azt. A felülvizsgálattal való interakcióval kapcsolatos információkért tekintse meg a következő témakört: ismertető [útmutató](../../review-tool-user-guide/review-moderated-images.md). Ha elkészült, a billentyű lenyomásával folytathatja a programot, és lekérheti a felülvizsgálati folyamat eredményét.
+Az alábbi kód hatására a program megvárja a felhasználói bevitelt. Ha futásidőben kerül erre a lépésre, [](https://contentmoderator.cognitive.microsoft.com) ön is használhatja a felülvizsgálati eszközt, ellenőrizheti, hogy a mintakép fel lett-e töltve, és használhatja azt. A felülvizsgálatokkal kapcsolatos további információkért tekintse meg a [Felülvizsgálatok útmutatót.](../../review-tool-user-guide/review-moderated-images.md) Ha végzett, bármelyik billentyű lenyomása után folytathatja a programot, és lekérheti a felülvizsgálati folyamat eredményeit.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
-Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a következő formátumú eseményt kell kapnia:
+Ha ebben a forgatókönyvben visszahívási végpontot használt, a következő formátumú eseményt kell kapnia:
 
 ```console
 {'callback_endpoint': 'https://requestb.in/qmsakwqm',
@@ -272,11 +272,11 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Futtassa az alkalmazást az IDE-ablak felső részén található **Debug (hibakeresés** ) gombra kattintva.
+Futtassa az alkalmazást  az IDE ablakának tetején található Hibakeresés gombra kattintva.
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
+Futtassa az alkalmazást az alkalmazáskönyvtárból az `dotnet run` paranccsal.
 
 ```dotnet
 dotnet run
@@ -286,14 +286,14 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
+Ha törölni vagy eltávolítani szeretne egy Cognitive Services előfizetést, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított összes többi erőforrást is törli.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator .NET-függvénytárat moderálási feladatok elvégzésére. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator .NET-kódtárat moderálási feladatok elvégzésére. Ezután egy fogalmi útmutatóban további információt olvashat a képek vagy más médiafájlok moderálásának módjáról.
 
 > [!div class="nextstepaction"]
-> [Képek moderálási fogalmai](../../image-moderation-api.md)
+> [Képmoderálási fogalmak](../../image-moderation-api.md)

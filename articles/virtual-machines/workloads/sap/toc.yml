@@ -76,6 +76,8 @@
           href: hana-li-portal.md
         - name: Magas rendelkezésre állás beállítása a STONITH használatával
           href: ha-setup-with-stonith.md
+        - name: Az Azure Large Instances magas rendelkezésre állása az SAP on RHEL-hez
+          href: large-instance-high-availability-rhel.md
         - name: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
           href: os-backup-type-ii-skus.md
         - name: A Kdump engedélyezése a HANA nagyméretű példányaihoz

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025526"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726519"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure-beli költségfelosztási szabályok létrehozása és kezelése (előzetes verzió)
 
@@ -96,7 +96,7 @@ Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Ma
 
 :::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="A címkézett elemek költségeit bemutató példa" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
-Íme egy videó, amely bemutatja, hogyan hozhat létre egy Cost foglalási szabályt.
+Az alábbi videó bemutatja, hogyan hozhat létre költségfelosztási szabályt.
 
 >[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
 
@@ -105,12 +105,7 @@ Az Azure Portalon keresse meg a **Költségkezelés + Számlázás** > **Cost Ma
 
 A költségfelosztási szabályok szerkeszthetők, hogy megváltoztassa a forrásukat vagy a céljukat, vagy frissítse az előre megadott százalékos arányokat a számítási, tárolási vagy hálózati lehetőségekhez. A szabályok szerkesztésekor ugyanúgy járjon el, ahogy a létrehozásukkor. A meglévő szabályok módosításának újbóli feldolgozása akár két órát is igénybe vehet.
 
-## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
-
-Az alábbi szakaszok a költségfelosztással kapcsolatos gyakori kérdéseket tartalmazzák.
-
-### <a name="what-are-the-current-limitations-with-cost-allocation-in-public-preview"></a>Milyen korlátozásokkal működik a költségfelosztási funkció a nyilvános előzetes verzióban?
-<a name="limitations"></a>
+## <a name="current-limitations"></a>Aktuális korlátozások
 
 A költségfelosztási funkció jelenleg a költségelemzésben, a költségvetésekben és az előrejelzési nézetekben támogatott a Cost Managementben. A felosztott költségek megjelennek az előfizetések listáján és az Előfizetések áttekintése oldalon is.
 
@@ -122,32 +117,9 @@ A költségfelosztási funkció nyilvános előzetes verziója jelenleg nem tám
 - [Cost Management Power BI-alkalmazás](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
 - [Power BI Desktop-összekötő](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
-### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>A költségek szerepelnek a költségvetésekben és az előrejelzési nézetekben?
-<a name="budgets-forecast"></a>
-
-Igen. A költségvetések és az előrejelzések támogatják a költségfelosztást, és szerepelnek bennük a felosztott költségek. A költségvetési és előrejelzési nézetekben megjelennek a költségfelosztási szabályoknak megfelelően konfigurált, hozzájuk rendelt költségek.
-
-### <a name="if-a-cost-allocation-rule-is-deleted-what-happens"></a>Mi történik egy költségfelosztási szabály törlésekor?
-<a name="delete-rule"></a>
-
-Egy költségfelosztási szabály törlésekor az aktuális számlázási hónap minden, a célokhoz hozzárendelt, le nem zárt költsége törlődik. Ha a költségfelosztási szabály több hónapon át érvényben volt, a korábbi hónapok költségfelosztási előzményadatai a költségfelosztási szabály beállításainak megfelelő állapotban maradnak.
-
-### <a name="why-is-an-enrollment-admin-or-a-billing-account-admin-needed-to-create-cost-allocation-rules"></a>Miért szükséges egy regisztrációs rendszergazda vagy számlázásifiók-rendszergazda a költségfelosztási szabályok létrehozásához?
-<a name="why-admin"></a>
-
-A költségfelosztási szabályok létrehozása a beléptetési hatókörben (Nagyvállalati Szerződés esetén) vagy a számlázási fiók hatókörében (Microsoft Ügyfélszerződés esetén) történik. Ezekben a hatókörökben csak számlázási rendszergazdai jogosultsággal lehet módosításokat végrehajtani.
-
-### <a name="why-are-sources-and-targets-limited-to-25-per-rule"></a>A források és célok száma miért van szabályonként 25-re korlátozva?
-<a name="source-target-rule-limit"></a>
-
-Ez egy előzetes verziójú korlátozás a költségfelosztási funkció jó teljesítményének és skálázhatóságának biztosítása érdekében. A korlátokat valószínűleg növelni fogjuk vagy eltávolítjuk, amikor a költségfelosztási funkció az általánosan elérhető (GA) verzióra tér át.
-
-### <a name="what-can-happen-if-cost-allocation-rules-sourcestargets-overlap"></a>Mi történik, ha a költségfelosztási szabályok (források/célok) között átfedés van?
-<a name="rule-overlap"></a>
-
-Nem javasolt olyan szabályokat létrehozni, amelyek forrásai vagy céljai átfedik egymást. A költségfelosztási szabályok alkalmazása létrehozásuk időpontja szerint történik, vagyis ha a költségfelosztási szabályok között átfedés van, a legkorábban létrehozott felosztási szabály élvez elsőbbséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
+- A [költségfelosztásra vonatkozó Cost Management + Billing és](../cost-management-billing-faq.yml) válaszokat a gyakori kérdések között olvashatja el.
 - Felosztási szabályok létrehozása vagy frissítése a [Cost allocation Rest API](/rest/api/cost-management/costallocationrules) használatával
 - További információ [a felhővel kapcsolatos befektetés optimalizálásáról az Azure Cost Management használatával](cost-mgt-best-practices.md)

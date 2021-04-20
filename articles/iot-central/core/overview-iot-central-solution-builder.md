@@ -1,6 +1,6 @@
 ---
-title: Megoldás-létrehozás az Azure IoT Centralhoz | Microsoft Docs
-description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az integrált megoldások IoT Central segítségével történő létrehozásáról.
+title: Megoldás kiépítése Azure IoT Central | Microsoft Docs
+description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az integrált megoldások IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/11/2021
@@ -8,54 +8,55 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100417802"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728555"
 ---
-# <a name="iot-central-solution-builder-guide"></a>IoT Central megoldás-előkészítő útmutató
+# <a name="iot-central-solution-builder-guide"></a>IoT Central útmutató a megoldáskészítők számára
 
-*Ez a cikk a megoldás-építők esetében érvényes.*
+*Ez a cikk a megoldáskészítőkre vonatkozik.*
 
-Egy IoT Central alkalmazás lehetővé teszi több millió eszköz figyelését és kezelését életciklusuk során. Ez az útmutató olyan megoldás-építők számára készült, akik a IoT Central használatával integrált megoldásokat építhetnek ki. Az IoT Central alkalmazások lehetővé teszi az eszközök kezelését, az eszköz telemetria elemzését és más háttér-szolgáltatásokkal való integrálását.
+Egy IoT Central alkalmazással eszközök millióit figyelheti és kezelheti azok életciklusa során. Ez az útmutató olyan megoldáskészítők számára nyújt útmutatást, IoT Central integrált megoldásokat hoznak létre. A IoT Central lehetővé teszi az eszközök kezelését, az eszköz telemetriai adatainak elemzését és más háttérszolgáltatásokkal való integrációt.
 
-Egy megoldás-szerkesztő:
+Megoldáskészítő:
 
-- Az irányítópultokat és nézeteket konfigurálja a IoT Central webes felhasználói felületén.
-- A beépített szabályok és elemzési eszközök segítségével az üzleti elemzéseket származtathatja a csatlakoztatott eszközökről.
-- Az adatexportálási és-szabályi képességeket használja a IoT Central más háttér-szolgáltatásokkal való integrálására.
+- Irányítópultokat és nézeteket konfigurál a IoT Central felhasználói felületén.
+- A beépített szabályok és elemzési eszközök használatával üzleti elemzéseket nyer ki a csatlakoztatott eszközökből.
+- Az adatexport és a szabályok képességeinek segítségével integrálja IoT Central más háttérszolgáltatásokkal.
 
 ## <a name="configure-dashboards-and-views"></a>Irányítópultok és nézetek konfigurálása
 
-Egy IoT Central alkalmazás egy vagy több irányítópulttal is rendelkezhet, amelyeket az operátor az alkalmazás megtekintésére és használatára használ. Megoldás-szerkesztőként testreszabhatja az alapértelmezett irányítópultot, és létrehozhat speciális irányítópultokat:
+A IoT Central egy vagy több irányítópultot is használhatnak, amelyek használatával az operátorok megtekinthetik és interakcióba léphetnek az alkalmazással. Megoldáskészítőként testre szabhatja az alapértelmezett irányítópultot, és speciális irányítópultokat hozhat létre:
 
-- A testreszabott irányítópultok néhány példájának megtekintéséhez tekintse meg az [iparági fókuszált sablonok](concepts-app-templates.md#industry-focused-templates)című témakört.
-- További információ az irányítópultokról: [több irányítópult létrehozása és kezelése](howto-create-personal-dashboards.md) és [az alkalmazás irányítópultjának konfigurálása](howto-add-tiles-to-your-dashboard.md).
+- A testreszabott irányítópultok néhány példáját lásd: [Iparág-központú sablonok.](concepts-app-templates.md#industry-focused-templates)
+- Az irányítópultokkal kapcsolatos további információkért lásd: [Több](howto-create-personal-dashboards.md) irányítópult létrehozása és kezelése és [Az alkalmazás irányítópultjának konfigurálása.](howto-add-tiles-to-your-dashboard.md)
 
-Amikor egy eszköz csatlakozik egy IoT Centralhoz, az eszköz társítva van az eszköz típusához tartozó eszköz sablonnal. Az eszközök sablonja testreszabható nézeteket tartalmaz, amelyeket az operátor az egyes eszközök kezelésére használ. Megoldás fejlesztőként létrehozhatja és testreszabhatja az eszköz típusához elérhető nézeteket. További információt a [nézetek hozzáadása](howto-set-up-template.md#add-views)című témakörben talál.
+Amikor egy eszköz csatlakozik egy IoT Central, az eszköz az eszköztípushoz tartozó eszközsablonhoz lesz társítva. Az eszközsablonok testre szabható nézetekkel rendelkezik, amelyek segítségével az operátorok kezelhetik az egyes eszközöket. Megoldásfejlesztőként létrehozhatja és testre szabhatja az eszköztípushoz elérhető nézeteket. További információ: [Nézetek hozzáadása.](howto-set-up-template.md#add-views)
 
 ## <a name="use-built-in-rules-and-analytics"></a>Beépített szabályok és elemzések használata
 
-A megoldás fejlesztője szabályokat adhat hozzá egy olyan IoT Central alkalmazáshoz, amely testreszabható műveleteket futtat. A szabályok az eszközről érkező adatok alapján értékelik ki a feltételeket az adott művelet futtatásának megállapításához. A szabályokkal kapcsolatos további információkért lásd:
+A megoldásfejlesztők testre szabható műveleteket futtató IoT Central adhatnak hozzá szabályokat egy alkalmazáshoz. A szabályok az eszközről érkező adatok alapján értékelik ki a feltételeket annak meghatározásához, hogy mikor fusson egy művelet. A szabályokkal kapcsolatos további információkért lásd:
 
 - [Oktatóanyag: Szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban](tutorial-create-telemetry-rules.md)
 - [Webhookműveletek létrehozása szabályokon az Azure IoT Centralban](howto-create-webhooks.md)
 - [Több művelet csoportosítása egy vagy több szabályból való futtatáshoz](howto-use-action-groups.md)
 
-A IoT Central beépített elemzési képességekkel rendelkezik, amelyek segítségével az operátor elemezheti a csatlakoztatott eszközökről áramló adatfolyamokat. További információért lásd: [az eszközök](howto-create-analytics.md)elemzésének használata
+IoT Central beépített elemzési képességekkel rendelkezik, amelyek segítségével az operátor elemezheti a csatlakoztatott eszközökről áramló adatokat. További tudnivalókért lásd: [Az eszközadatok elemzése az elemzésekkel.](howto-create-analytics.md)
 
 ## <a name="integrate-with-other-services"></a>Integráció más szolgáltatásokkal
 
-Megoldás-szerkesztőként a IoT Central adatexportálási és-szabályi képességeivel integrálhat más szolgáltatásokkal. További információ:
+Megoldáskészítőként használhatja az adatexport- és szabályexport képességeket a IoT Central más szolgáltatásokkal való integrációhoz. További információ:
 
-- [IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával](howto-export-data.md)
-- [Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal](howto-configure-rules-advanced.md)
+- [IoT-adatok exportálása felhőbeli célhelyre adatexportáció használatával](howto-export-data.md)
+- [Adatok átalakítása IoT Central](howto-transform-data.md)
+- [Munkafolyamatok használata a Azure IoT Central más felhőszolgáltatásokkal való integrálásához](howto-configure-rules-advanced.md)
 - [Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával](howto-create-custom-rules.md)
-- [Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával](howto-create-custom-analytics.md)
-- [Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése](howto-connect-powerbi.md)
+- [Az Azure IoT Central kibővítése egyéni elemzésekkel az Azure Databricks használatával](howto-create-custom-analytics.md)
+- [A vizualizáció és Azure IoT Central vizualizációja és elemzése egy Power BI irányítópulton](howto-connect-powerbi.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a IoT Central használatáról, a javasolt következő lépések az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md)című rövid útmutatók kipróbálása.
+Ha többet szeretne megtudni a IoT Central használatával kapcsolatban, a következő javasolt lépések a gyorsútmutatók, kezdve a Create an Azure IoT Central application (Új alkalmazás [létrehozása) Azure IoT Central lépésekkel.](./quick-deploy-iot-central.md)
