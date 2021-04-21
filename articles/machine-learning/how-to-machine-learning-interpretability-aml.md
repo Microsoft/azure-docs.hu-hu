@@ -1,7 +1,7 @@
 ---
 title: Gépi tanulási modellek & értelmezése Pythonban (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan kérhető le magyarázat arra, hogy a gépi tanulási modell hogyan határozza meg a funkciók fontosságát, és hogyan tesz előrejelzéseket az Azure Machine Learning SDK használatakor.
+description: Megtudhatja, hogyan kap magyarázatot arra, hogy a gépi tanulási modell hogyan határozza meg a funkciók fontosságát, és hogyan tesz előrejelzéseket az Azure Machine Learning SDK használatakor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 2d60c6dbedb24847b95ce268bedafcb073421319
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576516"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763288"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az értelmezhetőségi csomaggal ismertetheti a gépi tanulási modelleket és & Pythonban (előzetes verzió)
 
@@ -34,11 +34,12 @@ Ebből az útmutatóból megtudhatja, hogyan használhatja az Azure Machine Lear
 * Üzembe helyezhet egy pontozó magyarázó pontot a modell mellett, hogy megfigyelje a magyarázatokat a következtetés során.
 
 
-
 A támogatott értelmezési technikákkal és gépi tanulási [](how-to-machine-learning-interpretability.md) modellekkel kapcsolatos további információkért lásd: Modellértelmezhetőség Azure Machine Learning [notebookok esetében.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
 
+Az automatizált gépi tanulással betanított modellek értelmezhetőségének engedélyezésével kapcsolatos útmutatásért lásd: Értelmezhetőség: modellek magyarázatai automatizált gépi tanulási [modellekhez (előzetes verzió).](how-to-machine-learning-interpretability-automl.md) 
+
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Fontosságérték létrehozása a személyes gépen 
-Az alábbi példa bemutatja, hogyan használható az értelmezhetőségi csomag a személyes gépen anélkül, hogy kapcsolatba lépünk az Azure-szolgáltatásokkal.
+Az alábbi példa bemutatja, hogyan használható az értelmezhetőségi csomag a személyes gépen anélkül, hogy kapcsolatba lépnek az Azure-szolgáltatásokkal.
 
 1. Telepítse az `azureml-interpret` csomagot.
     ```bash
@@ -71,7 +72,7 @@ Az alábbi példa bemutatja, hogyan használható az értelmezhetőségi csomag 
 
    A következő kódblokkok azt mutatják be, hogyan példányosulhat egy magyarázó objektum a `TabularExplainer` , a és a helyi `MimicExplainer` `PFIExplainer` példányával.
    * `TabularExplainer` az alatta lévő három SHAP-magyarázó `TreeExplainer` (, `DeepExplainer` , vagy ) valamelyikét hívja `KernelExplainer` meg.
-   * `TabularExplainer` A automatikusan kiválasztja a legmegfelelőbbet az Adott esethez, de a három mögöttes magyarázó mindegyikét közvetlenül is meg lehet hívni.
+   * `TabularExplainer` automatikusan kiválasztja a legmegfelelőbbet az Ön számára, de a három mögöttes magyarázó mindegyikét közvetlenül is meg lehet hívni.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -142,7 +143,7 @@ global_explanation.get_feature_importance_dict()
 ```
 
 ### <a name="explain-an-individual-prediction-local-explanation"></a>Egyéni előrejelzés magyarázata (helyi magyarázat)
-A különböző adatpontok egyéni fontosságértékének lehívása az egyes példányok vagy példányok egy csoportjának magyarázatainak hívása alapján.
+A különböző adatpontok egyedi fontosságértékének lehívása egy adott példány vagy példánycsoport magyarázatainak hívása alapján.
 > [!NOTE]
 > `PFIExplainer` nem támogatja a helyi magyarázatokat.
 
@@ -231,7 +232,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="generate-feature-importance-values-via-remote-runs"></a>Funkció fontos értékeinek létrehozása távoli futtatásokkal
 
-Az alábbi példa bemutatja, hogyan engedélyezheti a modell értelmezhetőségét a távoli `ExplanationClient` futtatáshoz a osztály használatával. Ez fogalmilag hasonló a helyi folyamathoz, kivéve a következőt:
+Az alábbi példa bemutatja, hogyan engedélyezheti a modell értelmezhetőségét a távoli futtatáshoz a `ExplanationClient` osztály használatával. Ez fogalmilag hasonló a helyi folyamathoz, kivéve a következőt:
 
 * Az `ExplanationClient` értelmezhetőségi környezet feltöltése a távoli futtatásban a használatával.
 * Töltse le a környezetet később egy helyi környezetben.
@@ -304,14 +305,14 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 A vizualizációk mind a tervezett, mind a nyers jellemzők magyarázatát támogatják. A nyers magyarázatok az eredeti adatkészlet jellemzőin alapulnak, a megtervezett magyarázatok pedig az adatkészlet funkcióin alapulnak, és jellemzőkitervezést alkalmaznak.
 
-Amikor az eredeti adatkészletre vonatkozó modellt próbál értelmezni, ajánlott nyers magyarázatokat használni, mivel az egyes funkciók fontossága az eredeti adatkészlet egyik oszlopának felel meg. Az egyik forgatókönyv, ahol a megtervezett magyarázatok hasznosak lehetnek, ha megvizsgáljuk egy kategorikus jellemző egyes kategóriáinak hatását. Ha egy one-hot kódolást alkalmaznak egy kategorikus jellemzőre, akkor az eredményül kapott megtervezett magyarázatok kategóriánként eltérő fontosságértéket fognak tartalmazni, egy-egy one-hot-mérnöki jellemző esetén. Ez hasznos lehet, ha leszűkíti, hogy az adatkészlet melyik része a leg informatívabb a modell számára.
+Amikor az eredeti adatkészletre vonatkozó modellt próbál értelmezni, ajánlott nyers magyarázatokat használni, mivel az egyes funkciók fontossága az eredeti adatkészlet egy oszlopának felel meg. Az egyik forgatókönyv, ahol a megtervezett magyarázatok hasznosak lehetnek, ha megvizsgáljuk egy kategorikus jellemző egyes kategóriáinak hatását. Ha egy one-hot kódolást alkalmaznak egy kategorikus jellemzőre, akkor az eredményül kapott megtervezett magyarázatok kategóriánként eltérő fontosságértéket fognak tartalmazni, egy-egy one-hot-mérnöki jellemző esetén. Ez hasznos lehet, ha leszűkíti, hogy az adatkészlet melyik része a leg informatívabb a modell számára.
 
 > [!NOTE]
 > A kitervezett és nyers magyarázatok számítása egymást követő módon történt. Először a modell és a featurizálási folyamat alapján hozunk létre egy megtervezett magyarázatot. Ezután a nyers magyarázat a megtervezett magyarázat alapján jön létre, és összefűszi az ugyanattól a nyers jellemzőtől származó tervezett jellemzők fontosságát.
 
 ### <a name="create-edit-and-view-dataset-cohorts"></a>Adatkészlet-kohorszok létrehozása, szerkesztése és megtekintése
 
-A felső menüszalag a modell és az adatok általános statisztikáit jeleníti meg. Az adatokat adatcsoport-kohorszokra vagy alcsoportokra szeletelheti, így megvizsgálhatja vagy összehasonlíthatja a modell teljesítményét és magyarázatát ezekben a meghatározott alcsoportokban. Ha összehasonlítja az adatkészletek statisztikáit és magyarázatát az egyes alcsoportokban, akkor érzékelheti, hogy miért történnek lehetséges hibák az egyik csoportban a másikkal szemben.
+A felső menüszalag a modell és az adatok általános statisztikáit jeleníti meg. Az adatokat adatkészletek kohorszjaira vagy alcsoportjaira szeletelheti, és megvizsgálhatja vagy összehasonlíthatja a modell teljesítményét és magyarázatát ezekben a meghatározott alcsoportokban. Ha összehasonlítja az adatkészletek statisztikáit és magyarázatát az egyes alcsoportokban, akkor érzékelheti, hogy miért történnek lehetséges hibák az egyik csoportban a másikkal szemben.
 
 [![Adatkészletek kohorszok létrehozása, szerkesztése és megtekintése](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
 
@@ -320,7 +321,7 @@ A felső menüszalag a modell és az adatok általános statisztikáit jeleníti
 A magyarázat irányítópultjának első három lapja átfogó elemzést nyújt a betanított modellről, valamint annak előrejelzéseit és magyarázatait.
 
 #### <a name="model-performance"></a>A modell teljesítménye
-A modell teljesítményének kiértékeléséhez vizsgálja meg az előrejelzési értékek eloszlását és a modell teljesítménymetrikák értékeit. Tovább vizsgálhatja a modellt, ha összehasonlítja annak teljesítményét az adatkészlet különböző kohorszai vagy alcsoportjai esetében. A különböző dimenziók közötti átvágáshoz válassza az y-value és az x-value mellett lévő szűrőket. Megtekintheti az olyan metrikákat, mint a pontosság, a pontosság, a felidézés, a téves pozitív arány (FPR) és a téves negatív arány (FNR).
+A modell teljesítményének kiértékeléséhez vizsgálja meg az előrejelzési értékek eloszlását és a modell teljesítménymetrikák értékeit. A modell további vizsgálathoz megvizsgálhatja az adatkészlet különböző kohorszai vagy alcsoportjai teljesítményének összehasonlító elemzését. A különböző dimenziókra való átvágáshoz válassza az y-value és az x-value mellett lévő szűrőket. Megtekintheti az olyan metrikákat, mint a pontosság, a pontosság, a felidézés, a téves pozitív arány (FPR) és a téves negatív arány (FNR).
 
 [![Modellteljesítmény lap a magyarázatvizualizációban](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
 
@@ -332,7 +333,7 @@ Az adatok különböző dimenziók mentén való szeletelése érdekében az X, 
 #### <a name="aggregate-feature-importance"></a>A funkció fontosságának összesítése
 Ismerje meg a legfontosabb jellemzőket, amelyek hatással vannak az általános modell-előrejelzésekre (más néven globális magyarázat). A csúszkával a jellemző fontosságértékek csökkenő sorrendbe állíthatók. Jelöljön ki legfeljebb három kohorsztot, hogy a fontosságukat egymás mellett lássa. Kattintson a diagram bármelyik funkciósávra, hogy lássa, hogy a kiválasztott jellemzőértékek hogyan befolyásolják a modell előrejelzését az alábbi függőségi diagramon.
 
-[![A funkció fontosságának összesítése lap a magyarázatok vizualizációban](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+[![A funkció fontosságának összesítése lap a magyarázatvizualizációban](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
 
 ### <a name="understand-individual-predictions-local-explanation"></a>Az egyéni előrejelzések magyarázata (helyi magyarázat) 
 
@@ -561,13 +562,13 @@ Kövesse az alábbi útvonalak valamelyikét a magyarázatok irányítópultján
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* **Ritka adatok nem támogatottak:** A modellmagaló irányítópult sok funkcióval jelentősen leáll/lelassul, ezért jelenleg nem támogatjuk a ritka adatformátumot. Emellett általános memória-problémák merülnek fel a nagy méretű adatkészletekkel és sok jellemzővel kapcsolatban. 
+* **Ritka adatok nem támogatottak:** A modellmagaló irányítópult sok funkcióval jelentősen leomlik/lelassul, ezért jelenleg nem támogatjuk a ritka adatformátumokat. Emellett általános memória-problémák merülnek fel a nagy méretű adatkészletekkel és sok jellemzővel kapcsolatban. 
 
 * A modell magyarázatai által nem támogatott előrejelzési **modellek:** Az értelmezhetőség, a legjobb modell magyarázata nem érhető el az AutoML-előrejelzési kísérletekhez, amelyek a következő algoritmusokat javasolják a legjobb modellként: TCNForecaster, AutoArima, Following, ExponentialSmoemeting, Average, Naive, Seasonal Naive és Seasonal Naive. Az AutoML-előrejelzés olyan regressziós modellekkel rendelkezik, amelyek támogatják a magyarázatokat. A magyarázatok irányítópultján azonban az "Egyéni funkció fontossága" lap csak az adat-folyamatok összetettsége miatt nem támogatott az előrejelzéshez.
 
-* **Az** adatindex helyi magyarázata: A magyarázat-irányítópult nem támogatja a helyi fontosságértékek és az eredeti ellenőrzési adatkészlet sorazonosítóinak a 5000 adatpontnál nagyobb adatpontokkal való összeszámítását, mivel az irányítópult véletlenszerűen lefelé mintavétele az adatokat. Az irányítópult azonban nyers adat adatkészlet-funkciók értékeit jeleníti meg az irányítópultnak az Egyéni funkció fontossága lapon átadott egyes adatpontokhoz. A felhasználók a nyers adatkészlet jellemzőértékeivel leképezhetik a helyi fontosságokat az eredeti adatkészletre. Ha az ellenőrzési adatkészlet mérete kisebb, mint 5000 minta, az AzureML Studio szolgáltatása megfelel az ellenőrzési adatkészletben lévő `index` indexnek.
+* **Az** adatindex helyi magyarázata: A magyarázat-irányítópult nem támogatja a helyi fontosságértékek és az eredeti ellenőrzési adatkészlet sorazonosítóinak a 5000 adatpontnál nagyobb adatpontokkal való összeszámítását, mivel az irányítópult véletlenszerűen lefelé mintavétele az adatokat. Az irányítópult azonban nyers adatkészlet-funkciók értékeit jeleníti meg az irányítópultnak az Egyéni funkció fontossága lapon átadott egyes adatpontokhoz. A felhasználók a nyers adattárak jellemzőértékeivel leképezhetik a helyi fontosságokat az eredeti adatkészletre. Ha az ellenőrzési adatkészlet mérete kisebb, mint 5000 minta, az AzureML Studio szolgáltatása megfelel az ellenőrzési adatkészletben lévő `index` indexnek.
 
-* A **What-if/ICE-ábrázolás** nem támogatott a Studióban: az What-If és az egyéni feltételes elvárás (ICE) ábrázolásai nem támogatottak az Azure Machine Learning stúdió Explanations (Magyarázatok) lapon, mivel a feltöltött magyarázathoz aktív számításra van szükség az előrejelzések újraszámítása és a zavarba került jellemzők valószínűségének újraszámítása érdekében. Ez jelenleg a Jupyter-notebookok esetében támogatott, ha az SDK-t használó widgetként fut.
+* A **What-if/ICE-ábrázolás** nem támogatott a Studióban: az What-If és az egyéni feltételes várhatóság (ICE) ábrázolásai a Magyarázatok lapon nem támogatottak az Azure Machine Learning stúdió-ban, mivel a feltöltött magyarázatnak aktív számításra van szüksége az előrejelzések újraszámítása és a zavarba került jellemzők valószínűségének újraszámítása érdekében. A Jupyter-notebookok jelenleg támogatják, ha az SDK-t használó widgetként fut.
 
 
 ## <a name="next-steps"></a>Következő lépések

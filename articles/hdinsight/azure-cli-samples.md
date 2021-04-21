@@ -1,35 +1,35 @@
 ---
 title: 'Azure HDInsight: Azure CLI-minták'
-description: Azure CLI-példák az Azure HDInsight gyakori feladataihoz.
+description: Azure CLI-példák gyakori feladatokhoz a Azure HDInsight.
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4502cb26b4aeedff4223aaf5a592581aee36a0e6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946880"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775100"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-minták
 
 > [!div class="op_single_selector"]
-> [.Net-példák](hdinsight-sdk-dotnet-samples.md) 
+> [.NET-példák](hdinsight-sdk-dotnet-samples.md) 
 >  [Python-példák](hdinsight-sdk-python-samples.md) 
 >  [Java-példák](hdinsight-sdk-java-samples.md)
 
-Ez a cikk a gyakori feladatokhoz nyújt példákat. Mindegyik példához frissítse a változókat a megfelelő értékekkel, majd hajtsa végre a parancsot.
+Ez a cikk mintaszkprogramokat tartalmaz a gyakori feladatokhoz. Minden példához frissítse a változókat a megfelelő értékekkel, majd hajtsa végre a parancsot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) lépések.
+* Azure CLI. A [lépésekért lásd: Az Azure CLI](/cli/azure/install-azure-cli) telepítése.
 
-* Nem kötelező: bash. A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](/windows/wsl/install-win10) rendszerhez.  A példák bizonyos kis módosításokkal egy Windows-parancssorból fognak működni.
+* Nem kötelező: Bash. A cikkben látható példák a Bash-rendszerhéjat használják a Windows 10. A [Linuxos Windows-alrendszer a telepítési útmutatóban Windows 10](/windows/wsl/install-win10) útmutatót.  A példák egy Windows-parancssorból működnek, néhány apró módosítással.
 
 ## <a name="az-login"></a>az login
 
-[Jelentkezzen be az Azure-](/cli/azure/reference-index#az-login)ba.
+[Jelentkezzen be az Azure-ba.](/cli/azure/reference-index#az_login)
 
 ```azurecli
 az login
@@ -38,11 +38,11 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="az-hdinsight-create"></a>az hdinsight Create
+## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[Létrehoz egy új fürtöt](/cli/azure/hdinsight#az-hdinsight-create).
+[Létrehoz egy új fürtöt.](/cli/azure/hdinsight#az_hdinsight_create)
 
-### <a name="create-a-cluster-with-an-existing-storage-account"></a>Fürt létrehozása meglévő Storage-fiókkal
+### <a name="create-a-cluster-with-an-existing-storage-account"></a>Fürt létrehozása meglévő tárfiókkal
 
 ```azurecli
 # set variables
@@ -88,7 +88,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Kafka-fürt létrehozása [lemezes titkosítással](./disk-encryption.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Kafka-fürt létrehozása [lemeztitkosítással](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -133,7 +133,7 @@ az hdinsight create \
     --storage-account-managed-identity $sami
 ```
 
-### <a name="create-a-cluster-with-configuration-from-json-string"></a>Konfigurációt tartalmazó fürt létrehozása JSON-karakterláncból
+### <a name="create-a-cluster-with-configuration-from-json-string"></a>Fürt létrehozása JSON-sztringből származó konfigurációval
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -171,11 +171,11 @@ az hdinsight create \
     --cluster-configuration $clusterConfiguration
 ```
 
-## <a name="az-hdinsight-application-create"></a>az hdinsight Application Create
+## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[Hozzon létre egy alkalmazást egy HDInsight-fürthöz](/cli/azure/hdinsight/application#az-hdinsight-application-create).
+[Hozzon létre egy alkalmazást egy HDInsight-fürthöz.](/cli/azure/hdinsight/application#az_hdinsight_application_create)
 
-### <a name="create-an-application-with-a-script-uri"></a>Alkalmazás létrehozása parancsfájl-URI-val
+### <a name="create-an-application-with-a-script-uri"></a>Alkalmazás létrehozása szkript URI-val
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -194,7 +194,7 @@ az hdinsight application create \
     --script-parameters "$scriptParameters"
 ```
 
-### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Alkalmazás létrehozása parancsfájl-URI-val és az Edge-csomópont megadott mérete
+### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Alkalmazás létrehozása szkript URI-val és megadott élcsomópont-mérettel
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -238,11 +238,11 @@ az hdinsight application create \
     --sub-domain-suffix $subDomainSuffix
 ```
 
-## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-Action Execute
+## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[Parancsfájl-műveletek végrehajtása a megadott HDInsight-fürtön](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
+[Szkriptműveletek végrehajtása a megadott HDInsight-fürtön.](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)
 
-### <a name="execute-a-script-action-and-persist-on-success"></a>Parancsfájl-művelet végrehajtása és sikeres megtartása
+### <a name="execute-a-script-action-and-persist-on-success"></a>Parancsfájl-művelet végrehajtása és sikeres megőrzésének végrehajtása
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME

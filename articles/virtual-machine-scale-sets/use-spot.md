@@ -1,6 +1,6 @@
 ---
-title: Azure spot Virtual Machinest használó méretezési csoport létrehozása
-description: Ismerje meg, hogyan hozhat létre olyan Azure-beli virtuálisgép-méretezési csoportokat, amelyek az Azure spot Virtual Machinest használják a költségek megtakarítására.
+title: Azure Spot-adathalmazt használó méretezési csoport Virtual Machines
+description: Megtudhatja, hogyan hozhat létre Olyan Azure-beli virtuálisgép-méretezési csoportokat, amelyek az Azure Spot Virtual Machines a költségek csökkentése érdekében.
 author: JagVeerappan
 ms.author: jagaveer
 ms.topic: how-to
@@ -9,111 +9,111 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722565"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762946"
 ---
-# <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines a virtuálisgép-méretezési csoportokhoz 
+# <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure Spot Virtual Machines virtuálisgép-méretezési készletekhez 
 
-Az Azure spot Virtual Machines a méretezési csoportokon keresztül jelentős költségmegtakarítást biztosít a fel nem használt kapacitás kihasználásához. Az Azure-infrastruktúra minden olyan időpontban kizárja az Azure spot virtuálisgép-példányokat, amikor az Azure-nak szüksége van a kapacitásra. Ezért az Azure spot virtuálisgép-példányok kiválóan alkalmasak olyan munkaterhelések kezelésére, mint például a kötegelt feldolgozási feladatok, a fejlesztési/tesztelési környezetek, a nagy számítási feladatok és egyebek.
+Az Azure Spot Virtual Machines méretezési készleteken való használata lehetővé teszi, hogy jelentős költségmegtakarítás mellett használja ki a kihasználatlan kapacitásunkat. Amikor az Azure-nak bármikor szüksége van a kapacitásra, az Azure-infrastruktúra ki fogja egyenlíti az Azure Spot virtuálisgép-példányokat. Ezért az Azure Spot virtuálisgép-példányok nagyszerűen használhatók olyan számítási feladatokhoz, amelyek kezelni tudnak olyan megszakításokat, mint a kötegelt feldolgozási feladatok, a fejlesztési/tesztelési környezetek, a nagy számítási feladatok stb.
 
-A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. Az Azure spot virtuálisgép-példányok méretezési csoportokon történő telepítésekor az Azure csak akkor osztja ki a példányt, ha rendelkezésre áll kapacitás, de ezekhez a példányokhoz nem tartozik SLA. Az Azure direkt virtuálisgép-méretezési csoport egyetlen tartalék tartományban van üzembe helyezve, és nem biztosít magas rendelkezésre állású garanciát.
+A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a nap napjétől és sok mástól függően változhat. Az Azure Spot virtuálisgép-példányok méretezési készletekben való üzembe helyezésekor az Azure csak akkor foglal le példányt, ha van elérhető kapacitás, de ezekhez a példányokhoz nem áll rendelkezésre SLA. Az Azure Spot virtuálisgép-méretezési csoport egyetlen tartalék tartományban van üzembe állítva, és nem nyújt magas rendelkezésre állást.
 
 
 ## <a name="pricing"></a>Díjszabás
 
-Az Azure spot virtuálisgép-példányok díjszabása a régió és az SKU alapján változó. További információ: a [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) és a [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)díjszabása. 
+Az Azure Spot virtuálisgép-példányok díjszabása régió és termékváltozat alapján változó. További információ: A [Linux és a](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) Windows [díjszabása.](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/) 
 
 
-A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb öt tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a példány árát a rendszer nem fogja kizárni. A példány díja az Azure spot virtuális gép aktuális díja, vagy egy standard példány díjszabása, amely még nem kevesebb, ha rendelkezésre áll kapacitás és kvóta.
+Változó díjszabással beállíthatja a maximális árat amerikai dollárban (USD), legfeljebb öt tizedesjegy használatával. Az érték lehet például `0.98765` egy 0,98765 USD/óra maximális ára. Ha a maximális árat a következőre adja meg: , a példány nem lesz az ár alapján `-1` lesz kiszűkülve. A példány ára az Azure Spot virtuális gép aktuális ára vagy egy standard példány ára lesz, amely a kapacitás és a kvóta rendelkezésre áll.
 
 
 ## <a name="limitations"></a>Korlátozások
 
-Az Azure spot Virtual Machines esetében a következő méretek nem támogatottak:
+Az Alábbi méretek nem támogatottak az Azure Spot Virtual Machines:
  - B sorozat
- - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
+ - Bármilyen méretű promóciós verziók (például Dv2, NV, NC, H promóciós méretek)
 
-Az Azure helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
+Az Azure Spot virtuális gép bármely régióban üzembe helyezhető, kivéve Microsoft Azure China 21Vianet.
 
 <a name="channel"></a>
 
-Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
+Jelenleg a [következő ajánlattípusok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
 
 -   Nagyvállalati Szerződés
--   Utólagos elszámolású ajánlat kódja (003P)
+-   A fizetéses ajánlat kódja (003P)
 -   Szponzorált (0036P és 0136P)
-- A felhőalapú szolgáltató (CSP) esetében tekintse meg a [partneri központot](/partner-center/azure-plan-get-started) , vagy forduljon közvetlenül a partneréhez.
+- Felhőszolgáltató (CSP) esetén [](/partner-center/azure-plan-get-started) tekintse meg a Partnerközpont partnerével való közvetlen kapcsolatfelvételt.
 
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
 
-Amikor az Azure spot Virtual Machines használatával hoz létre méretezési készletet, beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
+Ha az Azure Spot Virtual Machines használatával hoz létre méretezési csoportokat, a kiépítési szabályzatot a *Felszabadítás* (alapértelmezett) vagy a Törlés beállításra *állíthatja.* 
 
-A *felszabadított* házirend áthelyezi a kizárt példányokat a leállított, lefoglalt állapotba, ami lehetővé teszi a kizárt példányok újratelepítését. Azonban nem garantálható, hogy a foglalás sikeres lesz. A delefoglalt virtuális gépek a méretezési csoport példánya kvótájának számítanak, és a mögöttes lemezek után díjat számítunk fel. 
+A *Felszabadítás* szabályzat a kiürült példányokat a leállított-felszabadított állapotba áthelyezi, lehetővé téve a kiürült példányok ismételt üzembe állását. Azonban nem garantálható, hogy a foglalás sikeres lesz. A felszabadított virtuális gépek beleszámnak a méretezésicsoport-példányok kvótáiba, és a mögöttes lemezekért díjat számítunk fel. 
 
-Ha szeretné, hogy a példányok törölve legyenek a kizárásakor, beállíthatja a *törlési* szabályzatot. A törlési házirend beállításával új virtuális gépeket hozhat létre a méretezési csoport példányainak száma tulajdonság növelésével. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, ezért a tárterületért nem számítunk fel díjat. A méretezési csoportok automatikus skálázási funkciójának használatával automatikusan kipróbálhatja és kompenzálhatja a kizárt virtuális gépeket, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak az Azure-beli virtuálisgép-méretezési csoportokban használja az autoscale funkciót, ha a törlési szabályzatot a DELETE értékre állítja, hogy elkerülje a lemezek költségeit és a kvóták korlátait. 
+Ha azt szeretné, hogy a példányok a kiesésükkor törlődjön, a kiépítési szabályzatban a törlést *állíthatja be.* Ha a törlési szabályzat van beállítva, új virtuális gépeket hozhat létre a méretezési csoport példányszám tulajdonságának növelésével. A rendszer a mögöttes lemezekkel együtt törli az törölt virtuális gépeket, ezért nem számítunk fel díjat a tárterületért. A méretezési készletek automatikus skálázásának funkcióját is használhatja a kieső virtuális gépek automatikus kompenzációja érdekében, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak akkor használja az automatikus skálázási funkciót az Azure-beli spot virtuálisgép-méretezési készleteken, ha a törlésre vonatkozó kilakoltatási szabályzatot a lemezek költségeinek elkerülése és a kvótakorlátok túllépése érdekében állítja be. 
 
-A felhasználók bejelentkezhetnek a virtuális gépekre vonatkozó értesítések fogadására az [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)használatával. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
+A felhasználók az Azure-portálon keresztül fogadhatják a virtuális gépeken [Scheduled Events.](../virtual-machines/linux/scheduled-events.md) Ez értesíti, ha virtuális gépei ki lesznek ülve, és 30 másodperce lesz, hogy befejezze a feladatokat, és leállítási feladatokat hajtson végre a kiesés előtt. 
 
 <a name="bkmk_try"></a>
-## <a name="try--restore-preview"></a>Próbálkozzon & visszaállítással (előzetes verzió)
+## <a name="try--restore-preview"></a>Visszaállítás & (előzetes verzió)
 
-Ez az új platform szintű szolgáltatás a mesterséges intelligenciával automatikusan megpróbálja visszaállítani a kizárt Azure spot virtuálisgép-példányokat egy méretezési csoporton belül a cél példányszámának fenntartása érdekében. 
+Ez az új platformszintű funkció a mi segítségével automatikusan megpróbálja visszaállítani a kihelyzett Azure Spot virtuálisgép-példányokat egy méretezési készleten belül, hogy fenntartsa a célpéldányok számát. 
 
 > [!IMPORTANT]
-> Próbálja ki, & a visszaállítás jelenleg nyilvános előzetes verzióban érhető el.
+> Próbálja &, hogy a visszaállítás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Próbálkozzon & visszaállítási előnyökkel:
-- Megkísérli visszaállítani a kapacitás miatt kizárt Azure spot Virtual Machines.
-- A visszaállított Azure spot Virtual Machines várhatóan hosszabb ideig fut, és a kapacitás kiváltása kisebb valószínűséggel történik.
-- Javítja az Azure-beli helyszíni virtuális gépek élettartamát, így a számítási feladatok hosszabb ideig futnak.
-- Segít Virtual Machine Scale Sets fenntartani az Azure spot Virtual Machines céljának darabszámát, hasonlóan ahhoz, hogy megőrizze az utólagos elszámolású virtuális gépekhez már meglévő Target Count funkciót.
+Próbálja & a visszaállítás előnyeit:
+- Az Azure Spot-Virtual Machines kapacitás miatt ki van oltva.
+- A visszaállított Azure Virtual Machines-tárolók várhatóan hosszabb ideig futnak, és kisebb valószínűséggel indulnak ki a kapacitásból való kilakoltatások.
+- Javítja az Azure-beli spot virtuális gépek élettartamát, így a számítási feladatok hosszabb ideig futnak.
+- Segít Virtual Machine Scale Sets, hogy fenntartsa az Azure Spot-Virtual Machines célszámát, hasonlóan ahhoz, hogy fenntartsa a használat alapú fizetéses virtuális gépek célszám funkcióját.
 
-Próbálja meg & a visszaállítást az [autoskálázást](virtual-machine-scale-sets-autoscale-overview.md)használó méretezési csoportokban. A méretezési csoportba tartozó virtuális gépek számát az autoskálázási szabályok vezérlik.
+Próbálja &, hogy a visszaállítás le van tiltva az automatikus skálázást használni [próbáló méretezési készletekben.](virtual-machine-scale-sets-autoscale-overview.md) A méretezési készletben a virtuális gépek számát az automatikus méretezési szabályok szabálya adja meg.
 
-### <a name="register-for-try--restore"></a>Regisztrálás a Try & Restore
+### <a name="register-for-try--restore"></a>Regisztrálás a visszaállítási & való próbálkozásra
 
-A Try & Restore funkció használata előtt regisztrálnia kell az előfizetését az előzetes verzióra. A regisztráció elvégzése több percet is igénybe vehet. Az Azure CLI vagy a PowerShell használatával végezheti el a funkció regisztrációját.
+Mielőtt használhatta volna a visszaállítási & funkciót, regisztrálnia kell az előfizetését az előzetes verzióra. A regisztráció több percig is eltarthat. A szolgáltatásregisztráció befejezéséhez használhatja az Azure CLI-t vagy a PowerShellt.
 
 
 **A CLI használata**
 
-Az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal engedélyezheti az előfizetésének előnézetét. 
+Az [az feature register használatával](/cli/azure/feature#az_feature_register) engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SpotTryRestore 
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése: 
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Compute --name SpotTryRestore 
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot. 
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute 
 ```
 **A PowerShell használata** 
 
-Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot. 
+A [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmag használatával engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése: 
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot. 
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
@@ -121,14 +121,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
 ## <a name="placement-groups"></a>Elhelyezési csoportok
 
-Az elhelyezési csoport egy Azure rendelkezésre állási készlethez hasonló szerkezet, amely saját tartalék tartományokkal és frissítési tartománnyal rendelkezik. A méretezési csoport alapértelmezés szerint egy legfeljebb 100 virtuális gép méretű elhelyezési csoportból áll. Ha a nevű méretezési csoport tulajdonság értéke `singlePlacementGroup` *false (hamis*), a méretezési csoport több elhelyezési csoportból is állhat, és 0 – 1000 virtuális gépet tartalmaz. 
+Az elhelyezési csoport az Azure rendelkezésre állási csoporthoz hasonló szerkezet, amely saját tartalék tartományokkal és frissítési tartományokkal rendelkezik. A méretezési csoport alapértelmezés szerint egy legfeljebb 100 virtuális gép méretű elhelyezési csoportból áll. Ha a nevű méretezési csoport tulajdonsága hamis, akkor a méretezési csoport több elhelyezési csoportból is lehet, és `singlePlacementGroup` 0–1000 virtuális gépből áll. 
 
 > [!IMPORTANT]
-> Hacsak nem használ InfiniBand-t a HPC használatával, erősen ajánlott a méretezési csoport tulajdonságot false értékre állítani, `singlePlacementGroup` hogy több elhelyezési csoport legyen a jobb skálázás a régióban vagy a zónában.  
+> Hacsak nem infinibandet használ a HPC-vel, erősen ajánlott a méretezési csoport tulajdonságát false (hamis) értékre állítani, hogy több elhelyezési csoport is jobban skálázható legyen a régióban vagy `singlePlacementGroup` zónában.  
 
-## <a name="deploying-azure-spot-virtual-machines-in-scale-sets"></a>Azure spot Virtual Machines üzembe helyezése méretezési csoportokban
+## <a name="deploying-azure-spot-virtual-machines-in-scale-sets"></a>Azure Spot-Virtual Machines üzembe helyezése méretezési készletekben
 
-Az Azure spot Virtual Machines méretezési csoportokon történő üzembe helyezéséhez beállíthatja az új *prioritás* jelzőt a *helyszínen*. A méretezési csoport összes virtuális gépe a következőre lesz beállítva:. Az Azure spot Virtual Machines használatával létrehozott méretezési csoport létrehozásához használja az alábbi módszerek egyikét:
+Az Azure Spot Virtual Machines méretezési készleteken való üzembe helyezéséhez beállíthatja az új *Prioritás* jelzőt Spot *(Spot) jelölőre.* A méretezési készletben minden virtuális gép Spot (Spot) lesz. Az Azure Spot Virtual Machines méretezési csoport létrehozásához használja az alábbi módszerek egyikét:
 - [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
@@ -136,12 +136,12 @@ Az Azure spot Virtual Machines méretezési csoportokon történő üzembe helye
 
 ## <a name="portal"></a>Portál
 
-Az Azure spot Virtual Machinest használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Méretezési csoport telepítésekor beállíthatja a direktszín jelölőt és a kizárási házirendet: ![ méretezési csoport létrehozása az Azure spot Virtual machines](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Az Azure Spot-adathalmazt használó méretezési csoport Virtual Machines megegyezik az első [lépésekről () cikkben olvashat.](quick-create-portal.md) Méretezési csoport üzembe helyezésekor beállíthatja a Spot jelzőt és a kiépítési szabályzatot: Méretezési csoport létrehozása Az Azure Spot Virtual Machines ![](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-A méretezési csoport Azure spot Virtual Machines használatával történő létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)leírtak szerint. Csak adja hozzá a "--priority spot"-t, és adja hozzá a következőt: `--max-price` . Ebben a példában `-1` a (z) `--max-price` rendszert használjuk, így a példány árát nem lehet kizárni.
+A méretezési csoport Azure Spot Virtual Machines létrehozása megegyezik az első [lépésekről () cikkben olvashat.](quick-create-cli.md) Egyszerűen adja hozzá a "--Priority Spot" gombra, és adja hozzá a `--max-price` következőt: . Ebben a példában a -et használjuk, így a példány nem lesz a price (ár) alapján `-1` `--max-price` lesz kiszűkülve.
 
 ```azurecli
 az vmss create \
@@ -158,8 +158,8 @@ az vmss create \
 
 ## <a name="powershell"></a>PowerShell
 
-A méretezési csoport Azure spot Virtual Machines használatával történő létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-powershell.md)leírtak szerint.
-Csak adja hozzá a "-priority spot" lehetőséget, és adjon meg egy- `-max-price` t a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
+A méretezési csoport Azure Spot Virtual Machines létrehozása megegyezik az első [lépésekről () cikkben olvashat.](quick-create-powershell.md)
+Egyszerűen adja hozzá a "-Priority Spot" et, és adjon meg egy et a `-max-price` [New-AzVmssConfig fájlhoz.](/powershell/module/az.compute/new-azvmssconfig)
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -173,11 +173,11 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-Az Azure spot Virtual Machinest használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépések című cikkben ismertetett eljárással. 
+Az Azure Spot-adathalmazt használó méretezési csoport Virtual Machines megegyezik a [Linuxra](quick-create-template-linux.md) vagy [Windowsra](quick-create-template-windows.md)vonatkozó első lépésekről. 
 
-Azure-beli virtuálisgép-sablonok üzembe helyezéséhez használja a `"apiVersion": "2019-03-01"` vagy újabb verziót. 
+Az Azure-beli spot virtuálisgép-sablonok üzembe helyezéséhez használja a vagy `"apiVersion": "2019-03-01"` újabb szolgáltatásokat. 
 
-Adja hozzá `priority` a `evictionPolicy` és a tulajdonságokat a `billingProfile` `"virtualMachineProfile":` szakaszhoz és a `"singlePlacementGroup": false,` tulajdonsághoz a `"Microsoft.Compute/virtualMachineScaleSets"` sablon szakaszához:
+Adja hozzá `priority` a , és `evictionPolicy` tulajdonságokat a szakaszhoz és a `billingProfile` `"virtualMachineProfile":` `"singlePlacementGroup": false,` tulajdonságot a `"Microsoft.Compute/virtualMachineScaleSets"` sablon szakaszhoz:
 
 ```json
 
@@ -197,14 +197,14 @@ Adja hozzá `priority` a `evictionPolicy` és a tulajdonságokat a `billingProfi
             },
 ```
 
-Ha törölni szeretné a példányt a kizárása után, módosítsa a paramétert a következőre: `evictionPolicy` `Delete` .
+Ha törölni szeretné a példányt a kiesés után, módosítsa a paramétert `evictionPolicy` a következőre: `Delete` .
 
 
-## <a name="simulate-an-eviction"></a>Kizárás szimulálása
+## <a name="simulate-an-eviction"></a>Kiesés szimulálása
 
-Az Azure-beli helyszíni virtuális gépek [kizárását szimulálhatja](/rest/api/compute/virtualmachines/simulateeviction) annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra. 
+Szimulálhatja [egy Azure-beli](/rest/api/compute/virtualmachines/simulateeviction) spot virtuális gép kilakoltatását annak tesztelésére, hogy az alkalmazás milyen jól reagál a hirtelen kiesésre. 
 
-Cserélje le a következőt az adataira: 
+Cserélje le az alábbiakat a saját adataira: 
 
 - `subscriptionId`
 - `resourceGroupName`
@@ -215,59 +215,59 @@ Cserélje le a következőt az adataira:
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
 ```
 
-`Response Code: 204` azt jelenti, hogy a szimulált kizárás sikeres volt. 
+`Response Code: 204` A azt jelenti, hogy a szimulált kiesés sikeres volt. 
 
 ## <a name="faq"></a>GYIK
 
-**K:** A létrehozása után egy Azure-beli virtuális gép példánya azonos a standard példánnyal?
+**K:** A létrehozás után az Azure Spot virtuálisgép-példány megegyezik a standard példányokkal?
 
-**A:** Igen, kivéve, ha az Azure spot Virtual Machineshoz nem biztosítunk SLA-t, de bármikor kizárható.
-
-
-**K:** Mi a teendő, ha kizárja, de továbbra is kapacitásra van szüksége?
-
-**A:** Javasoljuk, hogy a standard szintű virtuális gépeket az Azure spot Virtual Machines helyett használja, ha a kapacitásra azonnal szüksége van.
+**A:** Igen, kivéve, hogy az Azure Spot-Virtual Machines sla nincs, és bármikor ki is lehet őketlaktatni.
 
 
-**K:** Hogyan történik az Azure-beli helyszíni virtuális gépekre vonatkozó kvóta kezelése?
+**K:** Mi a mi a dol, ha kiesnek, de továbbra is kapacitásra van szüksége?
 
-**A:** Az Azure spot virtuálisgép-példányok és a standard példányok külön kvótákat fognak tartalmazni. Az Azure spot virtuálisgép-kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
-
-
-**K:** Igényelhetek további kvótát az Azure spot virtuális géphez?
-
-**A:** Igen, elküldheti a kérést, hogy növelje az Azure spot Virtual Machines kvótáját a [normál kvóta-igénylési folyamaton](../azure-portal/supportability/per-vm-quota-requests.md)keresztül.
+**A:** Ha azonnal kapacitásra van szüksége, javasoljuk, hogy Azure Spot Virtual Machines helyett standard virtuális gépeket használjon.
 
 
-**K:** Átalakíthatók a meglévő méretezési csoportok az Azure-beli virtuálisgép-méretezési csoportokra?
+**K:** Hogyan kezeli a kvóta az Azure-beli spot virtuális gépekre vonatkozó kvótát?
 
-**A:** Nem, a `Spot` jelző beállítása csak a létrehozási időszakban támogatott.
-
-
-**K:** Ha `low` alacsony prioritású méretezési csoportokhoz használok, érdemes inkább a használatot használni `Spot` ?
-
-**A:** Egyelőre mind a, mind a `low` `Spot` működni fog, de a használatára való áttérést kell kezdenie `Spot` .
+**A:** Az Azure-beli spot virtuálisgép-példányok és standard példányok külön kvótakészletet fognak tartalmazni. Az Azure-beli spot virtuális gépek kvótája meg lesz osztva a virtuális gépek és a méretezésikészlet-példányok között. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**K:** Létrehozhatok olyan méretezési készletet, amely normál virtuális gépekkel és Azure spot Virtual Machinesokkal is rendelkezik?
+**K:** Kérhetek további kvótát az Azure-beli spot virtuális gépekhez?
 
-**A:** Nem, a méretezési csoport legfeljebb egy prioritási típust támogat.
-
-
-**K:**  Használhatom az Azure spot virtuálisgép-méretezési csoportokkal való autoskálázást?
-
-**A:** Igen, beállíthatja az automatikus skálázási szabályokat az Azure spot virtuálisgép-méretezési csoportján. Ha a virtuális gépek ki vannak zárva, az autoscale új Azure spot Virtual Machines létrehozására is képes. Ne feledje, hogy ez a kapacitás azonban nem garantált. 
+**A:** Igen, a szabványos kvótakérési folyamattal elküldheti a kérést, hogy növelje az Azure Spot-Virtual Machines [kvótáját.](../azure-portal/supportability/per-vm-quota-requests.md)
 
 
-**K:**  Működik az autoskálázás a kizárási házirendekkel (felszabadítás és törlés)?
+**K:** Átalakíthatók a meglévő méretezési készletek Azure-beli spot virtuálisgép-méretezési készletekké?
 
-**A:** Igen, de javasoljuk, hogy a kizárási szabályzatot állítsa a törlésre az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A virtuálisgép-méretezési csoport példányai például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
+**A:** Nem, a jelző `Spot` beállítása csak a létrehozáskor támogatott.
 
 
-**K:** Hol tehetek közzé kérdéseket?
+**K:** Ha alacsony prioritású méretezési készletekhez használtam, akkor inkább az -t kell `low` `Spot` használnom?
 
-**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](/answers/topics/azure-spot.html). 
+**A:** Jelenleg a és a is működni fog, de érdemes átváltanunk az -ről a `low` `Spot` -re. `Spot`
+
+
+**K:** Létrehozhatok méretezési csoportokat normál virtuális gépekkel és Azure Spot Virtual Machines?
+
+**A:** Nem, a méretezési készlet nem támogathat egynél több prioritástípust.
+
+
+**K:**  Használhatok automatikus skálázást az Azure-beli spot virtuálisgép-méretezési készletekkel?
+
+**A:** Igen, automatikus méretezési szabályokat állíthat be az Azure-beli spot virtuálisgép-méretezési készlethez. Ha a virtuális gépek ki vannak ülve, az automatikus skálázás megpróbálhat új Azure Spot-Virtual Machines. Ne feledje azonban, hogy ez a kapacitás nem garantált. 
+
+
+**K:**  Működik az automatikus skálázás a kiépítési szabályzatokkal (felszabadítás és törlés)?
+
+**A:** Igen, de ajánlott úgy beállítani a törlésre vonatkozó kilakoltatási szabályzatot, ha automatikus skálázást használ. Ennek az az oka, hogy a felszabadított példányok beleszámulnak a méretezési készlet kapacitásának számba. Az automatikus skálázás használata esetén valószínűleg gyorsan el fogja érni a célpéldányok számát a felszabadított, kieső példányok miatt. A méretezési műveletekre a spot-kilakoltatások is hatással lehetnek. A virtuálisgép-méretezésihalmaz-példányok például a méretezési műveletek során történő több spot-kilakoltatás miatt a beállított minimális szám alá esnek. 
+
+
+**K:** Hol lehet kérdéseket feltenni?
+
+**A:** A Q&A-ban közzéteheti `azure-spot` [és címkézheti a kérdését.](/answers/topics/azure-spot.html) 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A díjszabással kapcsolatos részletekért tekintse meg a [virtuálisgép-méretezési csoport díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) .
+A díjszabás [részleteiért](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) tekintse meg a virtuálisgép-méretezési készlet díjszabását tartalmazó oldalt.

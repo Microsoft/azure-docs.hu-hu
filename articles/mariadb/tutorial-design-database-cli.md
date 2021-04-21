@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Database for MariaDB tervezése – Azure CLI'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet Azure Database for MariaDB-kiszolgálókat és-adatbázisokat az Azure CLI használatával a parancssorból.
+title: 'Oktatóanyag: Virtuális Azure Database for MariaDB tervezése – Azure CLI'
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet Azure Database for MariaDB-kiszolgálót és -adatbázist az Azure CLI használatával a parancssorból.
 author: savjani
 ms.author: pariks
 ms.service: mariadb
@@ -8,21 +8,21 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8f6f8d5a2cc9dc17d08486125fc2e44307c1be46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3a65d6b7fbf98d53b756b7f089e06f8a359ab3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664485"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789950"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Oktatóanyag: Azure Database for MariaDB tervezése az Azure CLI használatával
 
-A Azure Database for MariaDB egy, a Microsoft Cloud-on alapuló, a MariaDB Community Edition adatbázismotor alapján működő adatbázis-szolgáltatás. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
+Azure Database for MariaDB egy relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a MariaDB Community Edition adatbázismotoron alapul. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 
 > [!div class="checklist"]
 > * Azure Database for MariaDB létrehozása
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) használatával
+> * Adatbázis [létrehozása a mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancssori eszközzel
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
@@ -32,15 +32,15 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
-Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
+Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az_account_set) parancs segítségével.
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az_group_create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
@@ -49,9 +49,9 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló létrehozása
-Hozzon létre egy Azure Database for MariaDB-kiszolgálót a `az mariadb server create` paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
+Hozzon létre egy Azure Database for MariaDB-kiszolgálót az `az mariadb server create` paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-Az alábbi példa egy Azure Database for MariaDB-kiszolgálót hoz létre, amely a (z `westus` ) nevű erőforráscsoport alatt található `myresourcegroup` `mydemoserver` . A kiszolgáló egy `myadmin` nevű rendszergazdai bejelentkezéssel rendelkezik. Ez egy általános célú, Gen 5 kiszolgáló 2 virtuális mag. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példa egy nevű Azure Database for MariaDB hoz létre az `westus` erőforráscsoportban `myresourcegroup` található új `mydemoserver` kiszolgálót. A kiszolgáló egy `myadmin` nevű rendszergazdai bejelentkezéssel rendelkezik. Ez egy általános célú, 5. generációs kiszolgáló 2 virtuális maggal. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -68,7 +68,7 @@ A [Tarifacsomagok](./concepts-pricing-tiers.md) dokumentumban megtekintheti az �
 
 
 ## <a name="configure-firewall-rule"></a>Tűzfalszabály konfigurálása
-Hozzon létre egy Azure Database for MariaDB kiszolgáló szintű tűzfalszabály a `az mariadb server firewall-rule create` paranccsal. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például a **MySQL** parancssori eszköz vagy a MySQL Workbench számára a kiszolgálóhoz való kapcsolódást az Azure MariaDB szolgáltatás tűzfala segítségével.
+Hozzon létre Azure Database for MariaDB kiszolgálószintű tűzfalszabályt az `az mariadb server firewall-rule create` paranccsal. A kiszolgálószintű tűzfalszabályok lehetővé teszik, hogy egy külső alkalmazás, például a **mysql** parancssori eszköz vagy a MySQL Workbench csatlakozzon a kiszolgálóhoz az Azure MariaDB szolgáltatás tűzfalán keresztül.
 
 A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Helyettesítse be a csatlakozási helyének megfelelő IP-címet vagy IP-címtartományt.
 
@@ -120,7 +120,7 @@ mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
-Ha csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist.
+Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
@@ -131,7 +131,7 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Táblák létrehozása az adatbázisban
-Most, hogy már tudja, hogyan csatlakozhat a Azure Database for MariaDB adatbázishoz, hajtson végre néhány alapvető feladatot.
+Most, hogy már tudja, hogyan csatlakozhat a Azure Database for MariaDB adatbázishoz, végre kell végrehajtania néhány alapvető feladatot.
 
 Először hozzunk létre egy táblát, és töltsük fel adatokkal. Hozzunk létre egy táblát leltáradatok tárolásához.
 ```sql
@@ -168,7 +168,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
-Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ez nem olyasvalami, ami könnyen helyreállítható. Azure Database for MariaDB lehetővé teszi, hogy visszalépjen az elmúlt 35 nap bármely pontjára, és visszaállítsa ezt a pontot egy új kiszolgálóra. Az új kiszolgáló segítségével helyreállíthatja a törölt adatokat. Az alábbi lépések a mintakiszolgálót a tábla hozzáadása előtti időpontra állítják vissza.
+Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ez nem olyasvalami, ami könnyen helyreállítható. Azure Database for MariaDB lehetővé teszi, hogy az elmúlt 35 nap bármely pontjára visszatérve visszaállítsa ezt a pontot egy új kiszolgálóra. Az új kiszolgáló segítségével helyreállíthatja a törölt adatokat. Az alábbi lépések a mintakiszolgálót a tábla hozzáadása előtti időpontra állítják vissza.
 
 A visszaállításhoz a rendszer a következő információk megadását kéri:
 
@@ -199,7 +199,7 @@ Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure Database for MariaDB-kiszolgáló létrehozása
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) használatával
+> * Adatbázis [létrehozása a mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancssori eszközzel
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése

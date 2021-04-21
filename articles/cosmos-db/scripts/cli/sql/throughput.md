@@ -1,29 +1,29 @@
 ---
-title: Azure CLI-parancsfájlok az adatátviteli (RU/s) műveletekhez Azure Cosmos DB Core (SQL) API-erőforrásokhoz
-description: Azure CLI-parancsfájlok az adatátviteli (RU/s) műveletekhez Azure Cosmos DB Core (SQL) API-erőforrásokhoz
+title: Azure CLI-szkriptek átviteli sebesség (RU/s) műveletekhez Azure Cosmos DB Core (SQL) API-erőforrásokhoz
+description: Azure CLI-szkriptek átviteli sebesség (RU/s) műveletekhez Azure Cosmos DB Core (SQL) API-erőforrásokhoz
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 8310de5ce8fd3f90e422555a5111569fadcca982
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2df31e5903785b6e25ea79a107a53084849c66fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566392"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789086"
 ---
-# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Átviteli sebesség (RU/s) műveletek az Azure CLI-vel az Azure Cosmos DB Core (SQL) API-hoz készült adatbázishoz vagy tárolóhoz
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Átviteli sebességet (RU/s) használó műveletek az Azure CLI-hez egy adatbázishoz vagy tárolóhoz a Azure Cosmos DB Core (SQL) API-hoz
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.12.1 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.12.1-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript létrehoz egy core (SQL) API-adatbázist a megosztott átviteli sebességgel, valamint egy core (SQL) API-tárolót dedikált átviteli sebességgel, majd frissíti az adatátviteli sebességet az adatbázis és a tároló számára is. A szkript ezután áttelepíti a standard-ról az autoskálázási átviteli sebességre, majd beolvassa az átviteli sebesség értékét az áttelepítés után.
+Ez a szkript létrehoz egy Core (SQL) API-adatbázist megosztott átviteli sebességet és egy Core (SQL) API-tárolót dedikált átviteli sebességet, majd frissíti az adatbázis és a tároló átviteli sebességét. A szkript ezután migrál a standard értékről az automatikus skálázású átviteli sebességre, majd beolvassa az automatikus skálázás átviteli sebességének értékét a migrálását követően.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Throughput operations for a SQL database and container.")]
 
@@ -41,18 +41,18 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
-| [az cosmosdb SQL Database Create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Létrehoz egy Azure Cosmos Core-(SQL-) adatbázist. |
-| [az cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Létrehoz egy Azure Cosmos Core (SQL) tárolót. |
-| [az cosmosdb SQL Database átviteli sebességének frissítése](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Egy Azure Cosmos Core-(SQL-) adatbázis teljesítményének frissítése. |
-| [az cosmosdb SQL Container átviteli sebességének frissítése](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Egy Azure Cosmos Core-(SQL-) tároló frissítési sebességének frissítése. |
-| [az cosmosdb SQL Database átviteli sebesség migrálása](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-migrate) | Áttelepítési sebesség egy Azure Cosmos Core (SQL) adatbázishoz. |
-| [az cosmosdb SQL Container átviteli sebesség migrálása](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | Áttelepítési sebesség egy Azure Cosmos Core (SQL) tárolóhoz. |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Azure Cosmos DB-fiókot. |
+| [az cosmosdb sql database create](/cli/azure/cosmosdb/sql/database#az_cosmosdb_sql_database_create) | Létrehoz egy Azure Cosmos Core- (SQL-) adatbázist. |
+| [az cosmosdb sql container create](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create) | Létrehoz egy Azure Cosmos Core- (SQL-) tárolót. |
+| [az cosmosdb sql database átviteli sebességének frissítése](/cli/azure/cosmosdb/sql/database/throughput#az_cosmosdb_sql_database_throughput_update) | Azure Cosmos Core- (SQL-) adatbázis átviteli sebességének frissítése. |
+| [az cosmosdb sql container throughput update](/cli/azure/cosmosdb/sql/container/throughput#az_cosmosdb_sql_container_throughput_update) | Azure Cosmos Core- (SQL-) tároló átviteli sebességének frissítése. |
+| [az cosmosdb sql database throughput migrate](/cli/azure/cosmosdb/sql/database/throughput#az_cosmosdb_sql_database_throughput_migrate) | Azure Cosmos Core- (SQL-) adatbázis átviteli sebességének áttelepítése. |
+| [az cosmosdb sql container throughput migrate](/cli/azure/cosmosdb/sql/container/throughput#az_cosmosdb_sql_container_throughput_migrate) | Azure Cosmos Core- (SQL-) tároló átviteli sebességének áttelepítése. |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
+A cli-ről további Azure Cosmos DB a CLI [Azure Cosmos DB talál.](/cli/azure/cosmosdb)
 
-A CLI-szkriptek összes Azure Cosmos DB a [Azure Cosmos db CLI GitHub-tárházban](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)található.
+Minden Azure Cosmos DB CLI-szkriptminta megtalálható a Azure Cosmos DB [CLI GitHub-adattárában.](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)

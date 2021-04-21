@@ -1,53 +1,53 @@
 ---
-title: Üzembe helyezési szkriptek használata a sablonokban | Microsoft Docs
-description: üzembe helyezési szkripteket használhat Azure Resource Manager sablonokban.
+title: Üzembe helyezési szkriptek használata sablonokban | Microsoft Docs
+description: üzembe helyezési szkriptek használata Azure Resource Manager sablonokban.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c39b332e9ee62a8502d5e2fdf155819194a30e34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536956"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762190"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési szkriptek használata ARM-sablonokban
 
-Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket az Azure-erőforrássablonok (ARM-sablonok) használatával. A nevű új erőforrástípussal a felhasználók szkripteket hajthatnak végre a sablontelepítések során, `Microsoft.Resources/deploymentScripts` és áttekintheti a végrehajtási eredményeket. Ezek a szkriptek az alábbi egyéni lépések végrehajtásához használhatók:
+Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket az Azure-erőforrássablonok (ARM-sablonok) szolgáltatásban. A nevű új erőforrástípussal a felhasználók szkripteket hajthatnak végre a sablontelepítések során, `Microsoft.Resources/deploymentScripts` és áttekintheti a végrehajtási eredményeket. Ezek a szkriptek az alábbi egyéni lépések végrehajtásához használhatók:
 
 - felhasználók hozzáadása címtárhoz
 - adatsíkműveleteket hajthat végre, például blobokat vagy magadatbázist másolhat
 - licenckulcsok ki- és ellenőrzése
 - önaírt tanúsítvány létrehozása
 - objektum létrehozása az Azure AD-ban
-- IP-címblokkok egyéni rendszerből való ki keresnie
+- IP-címblokkok ki keresse meg az egyéni rendszerből
 
 Az üzembe helyezési szkript előnyei:
 
 - Könnyen kódolt, használható és hibakeresési. Üzembe helyezési szkripteket a kedvenc fejlesztési környezetében fejleszthet. A szkriptek beágyazhatók sablonokba vagy külső szkriptfájlokba.
-- Megadhatja a szkript nyelvét és platformját. Jelenleg a Azure PowerShell Azure CLI üzembehelyi szkriptek linuxos környezetben támogatottak.
+- Megadhatja a szkript nyelvét és platformját. Jelenleg a Azure PowerShell azure cli üzembehelyhelyi szkriptek támogatottak a Linux-környezetben.
 - Parancssori argumentumok parancsfájlnak való átadásának engedélyezése.
-- Megadhatja a szkriptkimeneteket, és visszaadhatja azokat az üzembe helyezésnek.
+- Megadhatja a szkriptkimeneteket, és visszaadhatja azokat az üzemelő példánynak.
 
-Az üzembe helyezési szkript erőforrása csak abban a régióban érhető el, ahol az Azure Container Instance elérhető.  Lásd: [Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban.](../../container-instances/container-instances-region-availability.md)
+Az üzembe helyezési szkript erőforrása csak abban a régióban érhető el, ahol az Azure Container Instance elérhető.  Lásd [az Azure-régiókban Azure Container Instances erőforrások rendelkezésre állását.](../../container-instances/container-instances-region-availability.md)
 
 > [!IMPORTANT]
 > A szkriptek végrehajtáshoz és hibaelhárításhoz tárfiókra és tárolópéldányra van szükség. Megadhat egy meglévő tárfiókot, ellenkező esetben a szkriptszolgáltatás automatikusan létrehoz egy tárfiókot és a tárolópéldányt. A szkriptszolgáltatás általában törli a két automatikusan létrehozott erőforrást, amikor az üzembe helyezési szkript végrehajtása terminálállapotba kerül. Az erőforrásokért a törlésig kell fizetni. További információ: Az üzembe [helyezési szkript erőforrásainak megtisztítása.](#clean-up-deployment-script-resources)
 
 > [!IMPORTANT]
-> A deploymentScripts erőforrás API 2020-10-01-es verziója támogatja az [OnBehalfofTokens(OBO) használatát.](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md) Az OBO használatával az üzembe helyezési szkript szolgáltatás az üzembe helyezési rendszerbiztonsági tag jogkivonatát használja az üzembehelyezés-szkriptek futtatásához szükséges mögöttes erőforrások létrehozásához, amelyek közé tartozik az Azure Container Instance, az Azure Storage-fiók és a felügyelt identitás szerepkör-hozzárendelései. A régebbi API-verziókban a felügyelt identitással hozhatók létre ezek az erőforrások.
+> A deploymentScripts erőforrás API 2020-10-01-es verziója támogatja az [OnBehalfofTokens(OBO) használatát.](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md) Az OBO használatával az üzembehelyezés-szkript szolgáltatás az üzembe helyezési rendszerbiztonsági tag jogkivonatát használja az üzembehelyezés-szkriptek futtatásához szükséges mögöttes erőforrások létrehozásához, amelyek közé tartozik az Azure Container Instance, az Azure Storage-fiók és a felügyelt identitás szerepkör-hozzárendelései. A régebbi API-verziókban a felügyelt identitással hozhatók létre ezek az erőforrások.
 > Az Azure-bejelentkezés újrapróbálkozási logikája már be van építve a burkoló szkriptbe. Ha ugyanabban a sablonban adja meg az engedélyeket, ahol az üzembe helyezési szkripteket futtatja. Az üzembe helyezési szkript szolgáltatás 10 percig, 10 másodperces időközzel újra bejelentkezik a felügyelt identitás szerepkör-hozzárendelésének replikálásáig.
 
 ## <a name="configure-the-minimum-permissions"></a>A minimális engedélyek konfigurálása
 
-A 2020-10-01-es vagy újabb verziójú üzembe helyezési szkript api-ja esetén az üzembe helyezési rendszerbiztonsági tag az üzembe helyezési szkript végrehajtásához szükséges mögöttes erőforrások – egy tárfiók és egy Azure-tárolópéldány – létrehozására szolgál. Ha a szkriptnek hitelesítenie kell magát az Azure-ban, és Azure-specifikus műveleteket kell végrehajtania, javasoljuk, hogy a szkriptet egy felhasználó által hozzárendelt felügyelt identitással biztosítsa. A felügyelt identitásnak a szkriptben a művelet végrehajtásához szükséges hozzáféréssel kell rendelkezik.
+A 2020-10-01-es vagy újabb verziójú üzembe helyezési szkriptek esetén az üzembe helyezési rendszerbiztonsági tag az üzembe helyezési szkript végrehajtásához szükséges mögöttes erőforrások – egy tárfiók és egy Azure-tárolópéldány – létrehozására szolgál. Ha a szkriptnek hitelesítenie kell magát az Azure-ban, és Azure-specifikus műveleteket kell végrehajtania, javasoljuk, hogy a szkriptet egy felhasználó által hozzárendelt felügyelt identitással biztosítsa. A felügyelt identitásnak a szkriptben a művelet végrehajtásához szükséges hozzáféréssel kell rendelkezik.
 
 A legkevesebb jogosultsággal rendelkező engedélyek konfiguráláshoz a következőre van szükség:
 
-- Rendeljen hozzá egy egyéni szerepkört az alábbi tulajdonságokkal az üzembe helyezési rendszerbiztonsági taghoz:
+- Rendeljen hozzá egy egyéni szerepkört a következő tulajdonságokkal az üzembe helyezési rendszerbiztonsági taghoz:
 
   ```json
   {
@@ -73,7 +73,7 @@ A legkevesebb jogosultsággal rendelkező engedélyek konfiguráláshoz a követ
 
   Ha az Azure Storage és az Azure Container Instance erőforrás-szolgáltatók még nincsenek regisztrálva, akkor a és a szolgáltatásokat is hozzá kell `Microsoft.Storage/register/action` `Microsoft.ContainerInstance/register/action` adni.
 
-- Felügyelt identitás használata esetén az üzembe helyezési rendszerbiztonsági tagnak a felügyelt identitás-erőforráshoz rendelt **felügyelt** identitáskezelői szerepkörre (beépített szerepkörre) van szüksége.
+- Felügyelt identitás használata esetén az üzembe helyezési rendszerbiztonsági tagnak a felügyelt identitás-erőforráshoz hozzárendelt **felügyelt** identitáskezelői szerepkörre (beépített szerepkör) van szüksége.
 
 ## <a name="sample-templates"></a>Példasablonok
 
@@ -129,30 +129,30 @@ Az alábbi JSON egy példa. További információkért lásd a legújabb [sablon
 ```
 
 > [!NOTE]
-> A példa szemléltető célokat szolgál. A és a tulajdonság nem használható együtt `scriptContent` `primaryScriptUri` egy sablonban.
+> A példa szemléltető célokat szolgál. A és `scriptContent` `primaryScriptUri` a tulajdonság nem használhatja együtt a sablonokat.
 
 > [!NOTE]
-> A _scriptContent egy_ többsoros szkriptet mutat.  A Azure Portal és az Azure DevOps-folyamat nem tudja több sokkal együtt elemezni az üzembe helyezési szkriptet. A PowerShell-parancsokat (pontosvesszők vagy r _\\ \\ n_ vagy _\\ n_ használatával) egyetlen sorba láncolhatja, vagy használhatja a tulajdonságot egy külső `primaryScriptUri` szkriptfájllal. Számos ingyenes JSON-sztring escape/une escape eszköz érhető el. Például: [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
+> A _scriptContent egy_ többsoros szkriptet mutat.  Az Azure Portal és az Azure DevOps-folyamat nem tudja több sokkal elemezni az üzembe helyezési szkripteket. Összefűheti a PowerShell-parancsokat (pontosvesszővel vagy _\\ r \\ n_ vagy _\\ n_ használatával) egy sorba, vagy használhatja a tulajdonságot egy külső `primaryScriptUri` szkriptfájllal. Számos ingyenes JSON-sztring-escape/une escape-eszköz érhető el. Például: [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
 
 Tulajdonságérték részletei:
 
-- `identity`: Az üzembe helyezési szkript API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás használata nem kötelező, kivéve, ha a szkriptben azure-specifikus műveleteket kell végrehajtania.  A 2019-10-01-preview API-verzióhoz felügyelt identitásra van szükség, mivel az üzembe helyezési szkriptszolgáltatás ezt használja a szkriptek végrehajtásához. Ha az identity tulajdonság meg van adva, a szkriptszolgáltatás a felhasználói szkript hívása előtt hívja meg `Connect-AzAccount -Identity` a hívást. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott. Ha másik identitással szeretne bejelentkezni, hívja meg a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsprogramot a szkriptben.
-- `kind`: Adja meg a parancsfájl típusát. Jelenleg a Azure PowerShell Azure CLI-szkriptek támogatottak. Az értékek az **AzurePowerShell és** az **AzureCLI.**
-- `forceUpdateTag`: Ha ezt az értéket a sablontelepítések között módosítja, az újra végre kell hajtania az üzembe helyezési szkriptet. Ha a vagy a függvényt használja, mindkét függvény csak egy paraméter `newGuid()` `utcNow()` alapértelmezett értékében használható. További információ: [Szkript futtatása egynél több alkalommal.](#run-script-more-than-once)
-- `containerSettings`: Adja meg az Azure Container Instance testreszabási beállításait. Az üzembe helyezési szkripthez egy új Azure Container Instance szükséges. Meglévő Azure Container Instance-példányt nem lehet megadni. A tárolócsoport nevét azonban testreszabhatja a `containerGroupName` használatával. Ha nincs megadva, a csoport neve automatikusan létrejön.
-- `storageAccountSettings`: Adja meg a meglévő tárfiókok használatára vonatkozó beállításokat. Ha `storageAccountName` nincs megadva, a rendszer automatikusan létrehoz egy tárfiókot. Lásd: [Meglévő tárfiók használata.](#use-existing-storage-account)
+- `identity`: A 2020-10-01-es vagy újabb verziójú üzembe helyezési szkript API-ja esetén a felhasználó által hozzárendelt felügyelt identitás használata nem kötelező, hacsak nem kell Azure-specifikus műveleteket végrehajtania a szkriptben.  A 2019-10-01-preview API-verzióhoz felügyelt identitásra van szükség, mivel az üzembe helyezési szkriptszolgáltatás ezt használja a szkriptek végrehajtásához. Ha az identity tulajdonság meg van adva, a szkriptszolgáltatás a felhasználói szkript hívása előtt hívja meg `Connect-AzAccount -Identity` a hívást. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott. Ha másik identitással szeretne bejelentkezni, hívja meg a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsprogramot a szkriptben.
+- `kind`: Adja meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-szkriptek támogatottak. Az értékek az **AzurePowerShell és** az **AzureCLI.**
+- `forceUpdateTag`: Ha ezt az értéket módosítja a sablontelepítések között, az újra végre kell hajtania az üzembe helyezési szkriptet. Ha a vagy a függvényt használja, mindkét függvény csak egy paraméter `newGuid()` `utcNow()` alapértelmezett értékében használható. További tudnivalókért lásd: [Szkript futtatása egynél több alkalommal.](#run-script-more-than-once)
+- `containerSettings`: Adja meg az Azure Container Instance testreszabásának beállításait. Az üzembe helyezési szkripthez egy új Azure Container Instance-példányra van szükség. Meglévő Azure Container Instance-példányt nem lehet megadni. A tárolócsoport nevét azonban testre szabhatja a `containerGroupName` használatával. Ha nincs megadva, a csoport neve automatikusan létrejön.
+- `storageAccountSettings`: Adja meg a meglévő tárfiók használatára vonatkozó beállításokat. Ha `storageAccountName` nincs megadva, a rendszer automatikusan létrehoz egy tárfiókot. Lásd: [Meglévő tárfiók használata.](#use-existing-storage-account)
 - `azPowerShellVersion`/`azCliVersion`: Adja meg a használni kívánt modulverziót. Tekintse meg a támogatott [Azure PowerShell listáját.](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list) Tekintse meg a támogatott [Azure CLI-verziók listáját.](https://mcr.microsoft.com/v2/azure-cli/tags/list)
 
   >[!IMPORTANT]
-  > Az üzembe helyezési szkript a rendelkezésre álló CLI-rendszerképeket használja Microsoft Container Registry (MCR). Egy CLI-rendszerkép tanúsítása az üzembe helyezési szkripthez körülbelül egy hónapba telik. Ne használja a 30 napon belül kiadott CLI-verziókat. A rendszerképek kiadási dátumának megkeresésében tekintse meg az [Azure CLI kibocsátási megjegyzéseit.](/cli/azure/release-notes-azure-cli) Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
+  > Az üzembe helyezési szkript a rendelkezésre álló CLI-rendszerképeket Microsoft Container Registry (MCR). A CLI-rendszerkép üzembe helyezési szkripthez való minősítése körülbelül egy hónapot vesz igénybe. Ne használja a 30 napon belül kiadott CLI-verziókat. A rendszerképek kiadási dátumának megkeresésért tekintse meg az [Azure CLI kibocsátási megjegyzéseit.](/cli/azure/release-notes-azure-cli) Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
 
 - `arguments`: Adja meg a paraméterértékeket. Az értékeket szóközök választják el egymástól.
 
-  Az üzembehelyezési szkriptek sztringtömbökre osztjuk fel az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás hívásával. Erre a lépésre azért van szükség, [](/rest/api/container-instances/containergroups/createorupdate#containerexec) mert az argumentumok parancstulajdonságként vannak átkényzve az Azure Container Instance-nek, és a parancstulajdonság egy sztringtömb.
+  Az üzembehelyezés-szkriptek sztringtömbökre osztjuk fel az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás hívásával. Erre a lépésre azért van szükség, [](/rest/api/container-instances/containergroups/createorupdate#containerexec) mert az argumentumok parancstulajdonságként vannak átkért az Azure Container Instance-nek, és a parancstulajdonság egy sztringtömb.
 
-  Ha az argumentumok escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával duplázhatja a karaktereket. Illessze be az eredeti escape-karakteres sztringet az eszközbe, majd válassza az **Escape (Escape) lehetőséget.**  Az eszköz egy dupla escape-karakteres sztringet ad vissza. Az előző mintasablonban például a Argumentum a `-name \"John Dole\"` . Az escape-karakteres sztring `-name \\\"John Dole\\\"` a következő: .
+  Ha az argumentumok escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával duplázhatja meg a karaktereket. Illessze be az eredeti escape-karaktersorozatot az eszközbe, majd válassza az **Escape (Escape) lehetőséget.**  Az eszköz egy dupla escape-karakteres sztringet ad vissza. Az előző mintasablonban például a Argumentum a `-name \"John Dole\"` . Az escape-karakteres sztring `-name \\\"John Dole\\\"` a következő: .
 
-  Ha egy objektum típusú ARM-sablonparamétert argumentumként kell átadni, konvertálja az objektumot sztringgé a [string()](./template-functions-string.md#string) függvény használatával, majd a [replace()](./template-functions-string.md#replace) függvény használatával cserélje le bármelyiket a értékre. `\"` `\\\"` Például:
+  Ha egy objektum típusú ARM-sablonparamétert argumentumként kell átadnia, konvertálja az objektumot sztringgé a [string()](./template-functions-string.md#string) függvény használatával, majd a [replace()](./template-functions-string.md#replace) függvény használatával cserélje le bármelyiket a-be. `\"` `\\\"` Például:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
@@ -161,29 +161,29 @@ Tulajdonságérték részletei:
   További információért tekintse meg a [mintasablont.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)
 
 - `environmentVariables`: Adja meg a szkriptnek átadni kívánt környezeti változókat. További információ: [Üzembe helyezési szkriptek fejlesztése.](#develop-deployment-scripts)
-- `scriptContent`: Adja meg a szkript tartalmát. Külső szkript futtatásához használja a `primaryScriptUri` parancsprogramot. Példákért lásd: Beágyazott szkript [használata](#use-inline-scripts) és [Külső szkript használata.](#use-external-scripts)
-- `primaryScriptUri`: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési szkripthez, támogatott fájlkiterjesztésekkel. További információ: [Külső szkriptek használata.](#use-external-scripts)
-- `supportingScriptUris`: Adja meg a vagy a által hívott támogató fájlok nyilvánosan elérhető URL-címeit `scriptContent` tartalmazó `primaryScriptUri` tömböt. További információ: [Külső szkriptek használata.](#use-external-scripts)
+- `scriptContent`: Adja meg a szkript tartalmát. Külső szkript futtatásához használja a `primaryScriptUri` parancsprogramot. Példákért lásd: [Beágyazott szkript használata és](#use-inline-scripts) Külső szkript [használata.](#use-external-scripts)
+- `primaryScriptUri`: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési szkripthez támogatott fájlkiterjesztésekkel. További információ: [Külső szkriptek használata.](#use-external-scripts)
+- `supportingScriptUris`: Nyilvánosan elérhető URL-címek tömbje a vagy a által hívott támogató `scriptContent` `primaryScriptUri` fájlokhoz. További információ: [Külső szkriptek használata.](#use-external-scripts)
 - `timeout`: Adja meg az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)formátumban megadott maximális engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték **a P1D.**
-- `cleanupPreference`. Adja meg az üzembe helyezési erőforrások tisztításának preferencia-beállítását, amikor a szkript végrehajtása terminálállapotba kerül. Az alapértelmezett beállítás **a Mindig**, ami azt jelenti, hogy a terminál állapota ellenére törli az erőforrásokat (Sikeres, Sikertelen, Megszakítva). További információ: Az üzembe [helyezési parancsfájl erőforrásainak megtisztítása.](#clean-up-deployment-script-resources)
-- `retentionInterval`: Adja meg, hogy a szolgáltatás milyen időközönként őrizze meg az üzembe helyezési szkript erőforrásait, miután az üzembe helyezési szkript végrehajtása elérte a terminálállapotot. Az üzembe helyezési szkript erőforrásai az időtartam lejártakor törlődnek. Az időtartam az [ISO 8601 mintán alapul.](https://en.wikipedia.org/wiki/ISO_8601) A megőrzési időtartam 1 és 26 óra között van (PT26H). Ez a tulajdonság akkor `cleanupPreference` használatos, ha **OnExpiration (Eltördítéskor) van beállítva.** További információ: Az üzembe [helyezési parancsfájl erőforrásainak megtisztítása.](#clean-up-deployment-script-resources)
+- `cleanupPreference`. Adja meg az üzembe helyezési erőforrások tisztításának preferencia-beállítását, amikor a szkript végrehajtása terminálállapotba kerül. Az alapértelmezett beállítás **a Mindig**, ami azt jelenti, hogy a terminál állapota ellenére is törli az erőforrásokat (Sikeres, Sikertelen, Megszakítva). További információ: Az üzembe [helyezési szkript erőforrásainak megtisztítása.](#clean-up-deployment-script-resources)
+- `retentionInterval`: Adja meg azt az időközt, amelynek időtartamára a szolgáltatás megőrzi az üzembe helyezési parancsfájl erőforrásait, miután az üzembe helyezési szkript végrehajtása elér egy terminálállapotot. Az üzembe helyezési szkript erőforrásai az időtartam lejártakor törlődnek. Az időtartam az [ISO 8601 mintán alapul.](https://en.wikipedia.org/wiki/ISO_8601) A megőrzési időtartam 1 és 26 óra között van (PT26H). Ez a tulajdonság akkor `cleanupPreference` használatos, ha **OnExpiration (Eltördítéskor) van beállítva.** További információ: Az üzembe [helyezési szkript erőforrásainak megtisztítása.](#clean-up-deployment-script-resources)
 
 ### <a name="additional-samples"></a>További minták
 
-- [1. minta:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)kulcstartó létrehozása és üzembe helyezési szkript használata tanúsítvány kulcstartóhoz való hozzárendeléséhez.
+- [1. minta:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)Kulcstartó létrehozása és üzembe helyezési szkript használata tanúsítvány kulcstartóhoz való hozzárendeléséhez.
 - [2.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json)minta: hozzon létre egy erőforráscsoportot az előfizetés szintjén, hozzon létre egy kulcstartót az erőforráscsoportban, majd az üzembe helyezési szkripttel rendeljen hozzá egy tanúsítványt a kulcstartóhoz.
 - [3. minta:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, rendelje hozzá a közreműködői szerepkört az identitáshoz az erőforráscsoport szintjén, hozzon létre egy kulcstartót, majd az üzembe helyezési szkripttel rendeljen hozzá egy tanúsítványt a kulcstartóhoz.
 
 ## <a name="use-inline-scripts"></a>Beágyazott szkriptek használata
 
-Az alábbi sablonban egy erőforrás van meghatározva a `Microsoft.Resources/deploymentScripts` típussal. A kiemelt rész a beágyazott szkript.
+Az alábbi sablonban egy erőforrás van definiálva a `Microsoft.Resources/deploymentScripts` típussal. A kiemelt rész a beágyazott szkript.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> Mivel a beágyazott üzembe helyezési szkriptek idézőjelek között vannak, az üzembe helyezési szkriptek sztringjéhez egy perjelet **(&#92;**) kell használni, vagy a sztringeket akként kell használni. Érdemes lehet sztringhelyettesítést is használni, ahogyan az előző JSON-mintában látható.
+> Mivel a beágyazott üzembe helyezési szkriptek idézőjelek között vannak, az üzembe helyezési szkriptek sztringjéhez egy perjelet **(&#92;)** kell használni, vagy egyszeres idézőjelek közé kell tenni őket. Érdemes megfontolni a sztringek helyettesítését is, ahogyan az az előző JSON-mintában látható.
 
-A szkript egy paramétert vesz fel, és kiírta a paraméter értékét. `DeploymentScriptOutputs` A a kimenetek tárolására használható. A kimenetek szakaszban a sor bemutatja, hogyan férhet `value` hozzá a tárolt értékekhez. `Write-Output` A hibakeresési céllal használható. A kimeneti fájl elérésével kapcsolatos további információkért lásd az üzembe helyezési szkriptek figyelése és [hibaelhárítása témakört.](#monitor-and-troubleshoot-deployment-scripts) A tulajdonságleírásokat lásd: [Mintasablonok.](#sample-templates)
+A szkript egy paramétert vesz fel, és kiírta a paraméter értékét. `DeploymentScriptOutputs` A a kimenetek tárolására használatos. A kimenetek szakaszban a sor bemutatja, hogyan férhet `value` hozzá a tárolt értékekhez. `Write-Output` A hibakeresési céllal használható. A kimeneti fájl elérésének elsajátítása: Telepítési szkriptek figyelése [és hibaelhárítása.](#monitor-and-troubleshoot-deployment-scripts) A tulajdonságleírásokat lásd: [Mintasablonok.](#sample-templates)
 
 A szkript futtatásához válassza a Próbálja **ki gombra** a Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj paneljére.
 
@@ -204,7 +204,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső szkriptek használata
 
-A beágyazott szkriptek mellett külső szkriptfájlokat is használhat. Csak a _ps1_ fájlkiterjesztésű elsődleges PowerShell-parancsfájlok támogatottak. A CLI-szkriptek számára az elsődleges szkriptek bármilyen kiterjesztéssel (vagy anélkül) használhatók, ha a szkriptek érvényes Bash-szkriptek. Külső szkriptfájlokhoz cserélje le a helyére a `scriptContent` `primaryScriptUri` következőt: . Például:
+A beágyazott szkriptek mellett külső szkriptfájlokat is használhat. Csak a _ps1_ fájlkiterjesztésű elsődleges PowerShell-parancsfájlok támogatottak. A CLI-szkriptek számára az elsődleges szkriptek bármilyen bővítménysel (vagy anélkül) használhatók, ha a szkriptek érvényes Bash-szkriptek. Külső szkriptfájlokhoz cserélje le a helyére a `scriptContent` `primaryScriptUri` következőt: . Például:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -212,9 +212,9 @@ A beágyazott szkriptek mellett külső szkriptfájlokat is használhat. Csak a 
 
 További információért tekintse meg a [példasablont.](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)
 
-A külső szkriptfájloknak elérhetőnek kell lenniük. Az Azure Storage-fiókokban tárolt szkriptfájlok biztonságának biztosítása érdekében hozzon létre egy SAS-jogkivonatot, és foglalja bele a sablon URI-jában. Állítsa be a lejárati időt úgy, hogy elegendő időt hagyjon az üzembe helyezés befejezésére. További információ: [Privát ARM-sablon üzembe helyezése SAS-jogkivonattal.](./secure-template-with-sas-token.md)
+A külső szkriptfájloknak elérhetőknek kell lenniük. Az Azure Storage-fiókokban tárolt szkriptfájlok biztonságának biztosítása érdekében hozzon létre egy SAS-jogkivonatot, és foglalja bele a sablon URI-jában. Állítsa be a lejárati időt úgy, hogy elég idő ássa le az üzembe helyezés befejezését. További információ: [Privát ARM-sablon üzembe helyezése SAS-jogkivonattal.](./secure-template-with-sas-token.md)
 
-Az Ön felelőssége, hogy biztosítsa az üzembehelyezés parancsfájlja által hivatkozott szkriptek integritását ( `primaryScriptUri` vagy `supportingScriptUris` ). Csak megbízható szkriptekre hivatkozhat.
+Az Ön felelőssége, hogy biztosítsa az üzembehelyezés parancsfájlja által hivatkozott szkriptek integritását( `primaryScriptUri` vagy `supportingScriptUris` ). Csak megbízható szkriptekre hivatkozhat.
 
 ## <a name="use-supporting-scripts"></a>Támogató szkriptek használata
 
@@ -290,7 +290,7 @@ Meglévő tárfiók megadásához adja hozzá a következő JSON-t a `Microsoft.
 ```
 
 - `storageAccountName`: adja meg a tárfiók nevét.
-- `storageAccountKey`: adja meg az egyik tárfiókkulcsot. A kulcs [lekérése a listKeys()](./template-functions-resource.md#listkeys) függvény használatával használhatja. Például:
+- `storageAccountKey`: adja meg az egyik tárfiókkulcsot. A kulcsot a [listKeys()](./template-functions-resource.md#listkeys) függvény használatával is lekérheti. Például:
 
     ```json
     "storageAccountSettings": {
@@ -299,17 +299,17 @@ Meglévő tárfiók megadásához adja hozzá a következő JSON-t a `Microsoft.
     }
     ```
 
-Teljes [definíciós minta:](#sample-templates) `Microsoft.Resources/deploymentScripts` Mintasablonok.
+A [teljes definíciómintát](#sample-templates) lásd: `Microsoft.Resources/deploymentScripts` Mintasablonok.
 
-Meglévő tárfiók használatakor a szkriptszolgáltatás létrehoz egy fájlmegosztást egyedi névvel. Az [üzembe helyezési szkripterőforrások megtisztítása a](#clean-up-deployment-script-resources) parancsfájl-szolgáltatás fájlmegosztásának tisztítását lásd: Az üzembe helyezési parancsfájl erőforrásainak megtisztítása.
+Meglévő tárfiók használatakor a szkriptszolgáltatás létrehoz egy fájlmegosztást egy egyedi névvel. Az [üzembe helyezési szkript erőforrásainak tisztítása](#clean-up-deployment-script-resources) a parancsfájlszolgáltatás fájlmegosztásának tisztítását lásd: Az üzembe helyezési szkript erőforrásainak megtisztítása.
 
 ## <a name="develop-deployment-scripts"></a>Üzembe helyezési szkriptek fejlesztése
 
-### <a name="handle-non-terminating-errors"></a>Megszakítást nem végződő hibák eltávolítása
+### <a name="handle-non-terminating-errors"></a>Megszakítást nem végződő hibákat kezel
 
 Az üzembe helyezési szkript változójának használatával szabályozhatja, hogy a PowerShell hogyan reagáljon a megszakítást nem végződő `$ErrorActionPreference` hibákra. Ha a változó nincs beállítva az üzembe helyezési szkriptben, a szkriptszolgáltatás az alapértelmezett Continue értéket **használja.**
 
-A szkriptszolgáltatás Sikertelenre állítja  az erőforrás-kiépítési állapotot, ha a szkript a beállítása ellenére hibát `$ErrorActionPreference` jelez.
+A szkriptszolgáltatás Sikertelenre állítja  az erőforrás-kiépítési állapotot, ha a szkript hibát jelez a beállítása `$ErrorActionPreference` ellenére.
 
 ### <a name="use-environment-variables"></a>Környezeti változók használata
 
@@ -318,7 +318,7 @@ Az üzembe helyezési szkript a következő környezeti változókat használja:
 |Környezeti változó|Alapértelmezett érték|Rendszer fenntartva|
 |--------------------|-------------|---------------|
 |AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
-|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration (Eltördítés alatt)|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration (Eltördítés)|N|
 |AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
 |AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
 |AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
@@ -333,36 +333,36 @@ A használatával kapcsolatos további információkért `AZ_SCRIPTS_OUTPUT_PATH
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos sztringek bérlete az üzembe helyezési szkriptnek
 
-A környezeti változók (EnvironmentVariable) tárolópéldányban való beállítása lehetővé teszi a tároló által futtatott alkalmazás vagy szkript dinamikus konfigurációját. Az üzembe helyezési szkript ugyanúgy kezeli a nem biztonságos és biztonságos környezeti változókat, mint az Azure Container Instance-t. További információ: [Set environment variables in container instances (Környezeti változók beállítása tárolópéldányban).](../../container-instances/container-instances-environment-variables.md#secure-values) Példaként tekintse meg a [mintasablonokat.](#sample-templates)
+A környezeti változók (EnvironmentVariable) tárolópéldányban való beállítása lehetővé teszi a tároló által futtatott alkalmazás vagy szkript dinamikus konfigurációjának beállítását. Az üzembe helyezési szkript ugyanúgy kezeli a nem biztonságos környezeti változókat, mint az Azure Container Instance. További információ: Set environment variables in container instances (Környezeti [változók beállítása tárolópéldányban).](../../container-instances/container-instances-environment-variables.md#secure-values) Példa: [Mintasablonok.](#sample-templates)
 
 A környezeti változók maximálisan engedélyezett mérete 64 KB.
 
-## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Üzembehelyi telepítési szkriptek figyelése és hibaelhárítása
+## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Üzembe helyezési szkriptek figyelése és hibaelhárítása
 
-A szkriptszolgáltatás létrehoz egy [tárfiókot](../../storage/common/storage-account-overview.md) (hacsak nem ad meg egy meglévő tárfiókot) és egy tárolópéldányt [a](../../container-instances/container-instances-overview.md) szkriptek végrehajtáshoz. Ha ezeket az erőforrásokat a szkriptszolgáltatás automatikusan hozta létre, mindkét erőforrás utótagja az `azscripts` erőforrásnevekben lesz.
+A szkriptszolgáltatás létrehoz egy [tárfiókot](../../storage/common/storage-account-overview.md) (hacsak nem ad meg egy meglévő tárfiókot) és egy tárolópéldányt [a](../../container-instances/container-instances-overview.md) szkriptek végrehajtáshoz. Ha ezeket az erőforrásokat a szkriptszolgáltatás automatikusan hozta létre, mindkét erőforrás rendelkezik az erőforrásnevekben szereplő `azscripts` utótaggal.
 
 ![Resource Manager üzembehely helyezési szkript erőforrásnevének létrehozása](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
 A felhasználói szkript, a végrehajtási eredmények és az stdout fájl a tárfiók fájlmegosztásában van tárolva. Van egy nevű `azscripts` mappa. A mappában két további mappa található a bemeneti és a kimeneti fájlokhoz: `azscriptinput` és `azscriptoutput` .
 
-A kimeneti mappa tartalmaz egy _executionresult.jsés_ a szkript kimeneti fájlját. A szkriptvégrehajtási hibaüzenet a következő _executionresult.jsjelenik meg:_. A kimeneti fájl csak akkor jön létre, ha a szkript sikeresen végre lett hajtva. A bemeneti mappa tartalmaz egy rendszer PowerShell-parancsfájlt és a felhasználótelepítési parancsfájlfájlokat. Lecserélheti a felhasználói üzembe helyezési szkriptfájlt egy módosított fájlra, és újra futtathatja az üzembe helyezési szkriptet az Azure Container Instance-ről.
+A kimeneti mappa tartalmaz egy _executionresult.jsbe és_ a szkript kimeneti fájlját. A szkriptvégrehajtási hibaüzenet a következő _executionresult.jsjelenik meg:_. A kimeneti fájl csak akkor jön létre, ha a szkript sikeresen végre lett hajtva. A bemeneti mappa tartalmazza a rendszer PowerShell-parancsfájlját és a felhasználótelepítési parancsfájl fájljait. Lecserélheti a felhasználói üzembe helyezési szkript fájlját egy módosított fájlra, majd újrafuttathatja az üzembe helyezési szkriptet az Azure Container Instance-ről.
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Miután üzembe helyezett egy üzembe helyezési szkripterőforrást, az erőforrás megjelenik az erőforráscsoportban a Azure Portal. Az alábbi képernyőképen egy üzembe **helyezési** szkripterőforrás Áttekintés lapja látható:
+Az üzembe helyezési szkript erőforrás üzembe helyezése után az erőforrás megjelenik az erőforráscsoportban a Azure Portal. Az alábbi képernyőképen egy **üzembehelyző** szkripterőforrás Áttekintés lapja látható:
 
-![Resource Manager üzembe helyezési szkriptportál áttekintése](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
+![Resource Manager üzembe helyezési szkriptjének áttekintése a portálon](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-Az áttekintő oldal fontos információkat jelenít meg az erőforrásról, például a **kiépítési** állapotról, a **Tárfiókról,** a **Tárolópéldányról** és a **Naplókról.**
+Az áttekintő oldal az erőforrással kapcsolatos fontos információkat jelenít meg, például a kiépítési **állapotot,** a tárfiókot, a tárolópéldányt és a  **naplókat.**
 
-A bal oldali menüben megtekintheti az üzembe helyezési szkript tartalmát, a szkriptnek átadott argumentumokat és a kimenetet. Az üzembe helyezési szkript sablonját is exportálhatja, beleértve az üzembe helyezési szkriptet is.
+A bal oldali menüben megtekintheti az üzembe helyezési szkript tartalmát, a szkriptnek átadott argumentumokat és a kimenetet. Exportálhat egy sablont is az üzembe helyezési szkripthez, beleértve az üzembe helyezési parancsfájlt is.
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
-A Azure PowerShell előfizetés vagy erőforráscsoport hatókörében kezelheti az üzembe helyezési szkripteket:
+A Azure PowerShell üzembe helyezési szkripteket előfizetésben vagy erőforráscsoport-hatókörben kezelheti:
 
 - [Get-AzDeploymentScript: Lekért](/powershell/module/az.resources/get-azdeploymentscript)vagy listázza az üzembe helyezési szkripteket.
-- [Get-AzDeploymentScriptLog: Lekérte](/powershell/module/az.resources/get-azdeploymentscriptlog)az üzembe helyezési szkript végrehajtásának naplóját.
+- [Get-AzDeploymentScriptLog:](/powershell/module/az.resources/get-azdeploymentscriptlog)Lekérte az üzembe helyezési szkript végrehajtásának naplóját.
 - [Remove-AzDeploymentScript:](/powershell/module/az.resources/remove-azdeploymentscript)Eltávolít egy üzembe helyezési szkriptet és a hozzá tartozó erőforrásokat.
 - [Save-AzDeploymentScriptLog:](/powershell/module/az.resources/save-azdeploymentscriptlog)Az üzembe helyezési szkript végrehajtásának naplóját lemezre menti.
 
@@ -395,12 +395,12 @@ Timeout             : PT1H
 
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
-Az Azure CLI használatával előfizetésben vagy erőforráscsoporti hatókörben kezelheti az üzembe helyezési szkripteket:
+Az Azure CLI használatával előfizetés vagy erőforráscsoport hatókörében kezelheti az üzembe helyezési szkripteket:
 
-- [az deployment-scripts delete:](/cli/azure/deployment-scripts#az-deployment-scripts-delete)Üzembe helyezési szkript törlése.
-- [az deployment-scripts list:](/cli/azure/deployment-scripts#az-deployment-scripts-list)List all deployment scripts.
-- [az deployment-scripts show:](/cli/azure/deployment-scripts#az-deployment-scripts-show)Üzembe helyezési szkript lekérése.
-- [az deployment-scripts show-log:](/cli/azure/deployment-scripts#az-deployment-scripts-show-log)Show deployment script logs.
+- [az deployment-scripts delete:](/cli/azure/deployment-scripts#az_deployment_scripts_delete)Telepítési szkript törlése.
+- [az deployment-scripts list:](/cli/azure/deployment-scripts#az_deployment_scripts_list)List all deployment scripts.
+- [az deployment-scripts show:](/cli/azure/deployment-scripts#az_deployment_scripts_show)Üzembe helyezési szkript lekérése.
+- [az deployment-scripts show-log:](/cli/azure/deployment-scripts#az_deployment_scripts_show_log)Show deployment script logs.
 
 A list parancs kimenete az alábbihoz hasonló:
 
@@ -464,7 +464,7 @@ A list parancs kimenete az alábbihoz hasonló:
 
 ### <a name="use-rest-api"></a>A REST API használata
 
-Az üzembe helyezési szkript erőforrás üzembe helyezési információit az erőforráscsoport és az előfizetés szintjén is lekérte a következő REST API:
+Az üzembe helyezési szkript erőforrás-telepítési információit az erőforráscsoport és az előfizetés szintjén is lekérte a következő REST API:
 
 ```rest
 /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2020-10-01
@@ -543,32 +543,32 @@ Ez csak az üzembe helyezési szkript erőforrásainak törlése előtt működi
 
 A deploymentScripts erőforrást a portálon a **Rejtett típusok megjelenítése lehetőséget választva láthatja:**
 
-![Resource Manager sablontelepítési szkript, rejtett típusok megjelenítése, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
+![Resource Manager üzembehely helyezési szkript, rejtett típusok megjelenítése, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
-## <a name="clean-up-deployment-script-resources"></a>Az üzembe helyezési szkript erőforrásainak megtisztítása
+## <a name="clean-up-deployment-script-resources"></a>Üzembe helyezési szkript erőforrásainak megtisztítása
 
-A szkriptek végrehajtáshoz és hibaelhárításhoz tárfiókra és tárolópéldányra van szükség. Megadhat egy meglévő tárfiókot, ellenkező esetben a szkriptszolgáltatás automatikusan létrehoz egy tárfiókot és egy tárolópéldányt. A szkriptszolgáltatás törli a két automatikusan létrehozott erőforrást, amikor az üzembe helyezési szkript végrehajtása terminálállapotba kerül. Az erőforrásokért a törlésig kell fizetni. Az árakkal kapcsolatos információkért lásd [a Container Instances](https://azure.microsoft.com/pricing/details/container-instances/) [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)díjszabását.
+A szkriptek végrehajtáshoz és hibaelhárításhoz tárfiókra és tárolópéldányra van szükség. Lehetőség van meglévő tárfiók megadására, ellenkező esetben a szkriptszolgáltatás automatikusan létrehoz egy tárfiókot és egy tárolópéldányt. A szkriptszolgáltatás törli a két automatikusan létrehozott erőforrást, amikor az üzembe helyezési szkript végrehajtása terminálállapotba kerül. Az erőforrásokért a törlésig kell fizetni. Az árakkal kapcsolatos információkért lásd [a Container Instances](https://azure.microsoft.com/pricing/details/container-instances/) és az Azure [Storage díjszabását.](https://azure.microsoft.com/pricing/details/storage/)
 
-Ezen erőforrások életciklusát a sablon következő tulajdonságai vezérlik:
+Ezeknek az erőforrásoknak az életciklusát a sablon következő tulajdonságai vezérlik:
 
-- `cleanupPreference`: Tisztítási beállítás, ha a szkript végrehajtása terminálállapotba kerül. A támogatott értékek a következőek:
+- `cleanupPreference`: A beállítás tisztítása, ha a szkript végrehajtása terminálállapotba kerül. A támogatott értékek a következőek:
 
-  - **Mindig:** Törölje az automatikusan létrehozott erőforrásokat, ha a szkript végrehajtása terminálállapotba kerül. Meglévő tárfiók használata esetén a szkriptszolgáltatás törli a tárfiókban létrehozott fájlmegosztást. Mivel az erőforrás továbbra is jelen lehet az erőforrások törlése után, a parancsfájl-szolgáltatás megőrzi a szkriptvégrehajtás eredményeit, például az stdout, a kimenetek és a visszaadott értéket az erőforrások `deploymentScripts` törlése előtt.
-  - **OnSuccess:** Csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a szkript végrehajtása sikeres volt. Meglévő tárfiók használata esetén a szkriptszolgáltatás csak akkor távolítja el a fájlmegosztást, ha a szkript végrehajtása sikeres volt. Továbbra is elérheti az erőforrásokat, hogy megtalálja a hibakeresési információkat.
+  - **Mindig:** Törölje az automatikusan létrehozott erőforrásokat, ha a szkript végrehajtása terminálállapotba kerül. Meglévő tárfiók használata esetén a szkriptszolgáltatás törli a tárfiókban létrehozott fájlmegosztást. Mivel az erőforrás az erőforrások törlése után is jelen lehet, a szkriptszolgáltatás az erőforrások törlése előtt is megőrzi a szkriptvégrehajtási eredményeket, például az stdout, a kimeneteket és a visszaadott `deploymentScripts` értéket.
+  - **OnSuccess:** Csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a szkript végrehajtása sikeres volt. Meglévő tárfiók használata esetén a szkriptszolgáltatás csak akkor távolítja el a fájlmegosztást, ha a szkript végrehajtása sikeres volt. A hibakeresési információkért továbbra is hozzáférhet az erőforrásokhoz.
   - **OnExpiration**: Csak akkor törölje az automatikusan létrehozott erőforrásokat, ha `retentionInterval` a beállítás lejárt. Meglévő tárfiók használata esetén a szkriptszolgáltatás eltávolítja a fájlmegosztást, de megtartja a tárfiókot.
 
-- `retentionInterval`: Adja meg azt az intervallumot, amely után egy szkripterőforrás meg lesz őrizve, és amely után a rendszer lejár és törölve lesz.
+- `retentionInterval`: Adja meg, hogy egy szkripterőforrást milyen időközönként őriz meg a rendszer, és mely idő után jár le és törlődik.
 
 > [!NOTE]
-> Nem ajánlott a szkriptszolgáltatás által más célokra létrehozott tárfiókot és tárolópéldányt használni. A szkript életciklusától függően előfordulhat, hogy a két erőforrás el lesz távolítva.
+> Más célokra nem ajánlott a tárfiókot és a szkriptszolgáltatás által létrehozott tárolópéldányt használni. A szkript életciklusától függően a két erőforrás el is távolítható.
 
-A tárolópéldány és a tárfiók a következő szerint `cleanupPreference` törlődik: . Ha azonban a szkript sikertelen, és nincs Always (Mindig) beállításra állítva, az üzembe helyezési folyamat egy órán keresztül automatikusan futtatja `cleanupPreference` a tárolót.  Ebben az órában a szkript hibaelhárítását is használhatja. Ha a sikeres üzembe helyezés után is futni szeretné a tárolót, adjon hozzá egy alvó lépést a szkripthez. Például adja hozzá [a Start-Sleep parancsprogramot](/powershell/module/microsoft.powershell.utility/start-sleep) a szkript véghez. Ha nem adja hozzá az alvó lépést, a tároló terminálállapotra lesz beállítva, és akkor sem érhető el, ha még nem lett törölve.
+A tárolópéldány és a tárfiók a következő szerint `cleanupPreference` törlődik: . Ha azonban a szkript sikertelen, és nincs Always (Mindig) beállításra állítva, az üzembe helyezési folyamat egy órán keresztül automatikusan futtatja `cleanupPreference` a tárolót.  Ebben az órában a szkript hibaelhárítását is használhatja. Ha a sikeres üzembe helyezés után is futni szeretné a tárolót, adjon hozzá egy alvó lépést a szkripthez. Például adja hozzá [a Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) parancsprogramot a szkript véghez. Ha nem adja hozzá az alvó lépést, a tároló terminálállapotra lesz beállítva, és akkor sem érhető el, ha még nem törölték.
 
 ## <a name="run-script-more-than-once"></a>Szkript futtatása egynél több alkalommal
 
-Az üzembe helyezési szkript végrehajtása idepotent művelet. Ha az erőforrás tulajdonságai (beleértve a beágyazott szkriptet is) egyike sem módosul, a szkript nem lesz végrehajtva a sablon `deploymentScripts` ismételt üzembe végrehajtásához. Az üzembe helyezési szkript szolgáltatás összehasonlítja a sablonban lévő erőforrásneveket az ugyanabban az erőforráscsoportban lévő meglévő erőforrásokkal. Ha ugyanazt az üzembe helyezési szkriptet többször is végre szeretné hajtani, két lehetőség áll rendelkezésre:
+Az üzembe helyezési szkript végrehajtása idempotent művelet. Ha az erőforrás tulajdonságai (beleértve a beágyazott szkriptet is) sem módosulnak, a szkript nem lesz végrehajtva a `deploymentScripts` sablon újratelepítésekor. Az üzembe helyezési szkriptszolgáltatás összehasonlítja a sablonban lévő erőforrásneveket az ugyanabban az erőforráscsoportban lévő meglévő erőforrásokkal. Ha ugyanazt az üzembe helyezési szkriptet többször is végre szeretné hajtani, két lehetőség áll rendelkezésre:
 
-- Módosítsa az erőforrás `deploymentScripts` nevét. Használja például az [utcNow](./template-functions-date.md#utcnow) sablonf függvényt az erőforrás neveként vagy az erőforrás nevének részeként. Az erőforrás nevének módosítása új erőforrást `deploymentScripts` hoz létre. Jó, ha a szkriptek végrehajtási előzményeit tartja meg.
+- Módosítsa az erőforrás `deploymentScripts` nevét. Használja például a [utcNow](./template-functions-date.md#utcnow) sablonf függvényt erőforrásnévként vagy az erőforrás nevének részeként. Az erőforrás nevének módosítása új erőforrást `deploymentScripts` hoz létre. Jó, ha a szkriptek végrehajtási előzményeit tartja szem előtt.
 
     > [!NOTE]
     > A függvény csak egy paraméter `utcNow` alapértelmezett értékében használható.
@@ -576,37 +576,37 @@ Az üzembe helyezési szkript végrehajtása idepotent művelet. Ha az erőforr�
 - Adjon meg egy másik értéket a `forceUpdateTag` sablontulajdonságban. Használja például a `utcNow` értéket értékként.
 
 > [!NOTE]
-> Írja meg az idempotent telepítési szkripteket. Ez biztosítja, hogy ha véletlenül újra futnak, az nem okoz rendszerváltozást. Ha például az üzembe helyezési szkripttel hoz létre egy Azure-erőforrást, ellenőrizze, hogy az erőforrás nem létezik-e a létrehozása előtt, hogy a szkript sikeres legyen, vagy ne hozza létre újra az erőforrást.
+> Írja meg az idempotent telepítési szkripteket. Ez biztosítja, hogy ha véletlenül újra futnak, az nem okoz rendszerváltozást. Ha például az üzembe helyezési szkripttel hoz létre egy Azure-erőforrást, a létrehozás előtt ellenőrizze, hogy az erőforrás nem létezik-e, hogy a szkript sikeres legyen, vagy ne hozza létre újra az erőforrást.
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-Üzembe helyezési szkript fejlesztőkörnyezeteként előre konfigurált tárolórendszerképet is használhat. További információ: [Configure development environment for deployment scripts in templates (Fejlesztési környezet konfigurálása üzembe helyezési szkriptek számára a sablonokban).](./deployment-script-template-configure-dev.md)
+Üzembe helyezési szkript fejlesztési környezeteként előre konfigurált tárolórendszerképet is használhat. További információ: Configure development environment for deployment scripts in templates (Fejlesztési környezet konfigurálása üzembe [helyezési szkriptek számára a sablonokban).](./deployment-script-template-configure-dev.md)
 
-A szkript sikeres tesztelése után használhatja üzembe helyezési szkriptként a sablonokban.
+A szkript sikeres tesztelése után üzembe helyezési szkriptként használhatja a sablonjaiban.
 
-## <a name="deployment-script-error-codes"></a>Üzembehelyi szkript hibakódja
+## <a name="deployment-script-error-codes"></a>Üzembe helyezési szkript hibakódja
 
-| Hibakód | Leírás |
+| Hibakód | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | A sablonban található üzembe helyezési szkript erőforrás-definíciója érvénytelen tulajdonságneveket tartalmaz. |
-| DeploymentScriptResourceConflict | Nem lehet törölni egy nem termináli állapotban található üzembe helyezési szkripterőforrást, és a végrehajtás nem haladta meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési szkriptet ugyanazokkal az erőforrás-azonosítóval (ugyanaz az előfizetés, erőforráscsoport-név és erőforrásnév), de különböző szkript törzstartalmakkal egyidejűleg. |
-| DeploymentScriptOperationFailed | Az üzembe helyezési szkript művelete belsőleg meghiúsult. Forduljon a Microsoft ügyfélszolgálatához. |
+| DeploymentScriptResourceConflict | Nem lehet törölni egy nem terminál állapotban található üzembe helyezési szkript erőforrást, és a végrehajtás nem haladta meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési szkriptet ugyanazokkal az erőforrás-azonosítóval (ugyanaz az előfizetés, erőforráscsoport neve és erőforrásnév), de a szkript törzsének eltérő tartalmával egyidejűleg. |
+| DeploymentScriptOperationFailed | Az üzembe helyezési szkript belsőleg meghiúsult. Forduljon a Microsoft ügyfélszolgálatához. |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | A hozzáférési kulcs nem lett megadva a meglévő tárfiókhoz.|
-| DeploymentScriptContainerGroupContainsInvalidContainers | Az üzembe helyezési szkriptszolgáltatás által létrehozott tárolócsoport külsőleg módosult, és érvénytelen tárolókat adott hozzá. |
-| DeploymentScriptContainerGroupInNonterminalState | Két vagy több üzembe helyezési szkripterőforrás ugyanazt az Azure-tárolópéldánynevet használja ugyanabban az erőforráscsoportban, és az egyik még nem fejezte be a végrehajtását. |
+| DeploymentScriptContainerGroupContainsInvalidContainers | Az üzembe helyezési szkriptszolgáltatás által létrehozott tárolócsoport külsőleg módosult, és érvénytelen tárolók lett hozzáadva. |
+| DeploymentScriptContainerGroupInNonterminalState | Két vagy több üzembe helyezési szkripterőforrás ugyanazt az Azure-tárolópéldánynevet használja ugyanabban az erőforráscsoportban, és az egyik még nem fejeződött be. |
 | DeploymentScriptStorageAccountInvalidKind | A BlobBlobStorage vagy BlobStorage típusú meglévő tárfiók nem támogatja a fájlmegosztásokat, és nem használható. |
 | DeploymentScriptStorageAccountInvalidKindAndSku | A meglévő tárfiók nem támogatja a fájlmegosztásokat. A támogatott tárfiókok fajtáiért lásd: [Meglévő tárfiók használata.](#use-existing-storage-account) |
 | DeploymentScriptStorageAccountNotFound | A tárfiók nem létezik, vagy egy külső folyamat vagy eszköz törölte. |
 | DeploymentScriptStorageAccountWithServiceEndpointEnabled | A megadott tárfiók rendelkezik szolgáltatásvégponttal. A szolgáltatásvégponttal nem használható tárfiók. |
 | DeploymentScriptStorageAccountInvalidAccessKey | Érvénytelen hozzáférési kulcs van megadva a meglévő tárfiókhoz. |
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | Érvénytelen tárfiókkulcs-formátum. Lásd: [Manage storage account access keys (Tárfiók hozzáférési kulcsának kezelése).](../../storage/common/storage-account-keys-manage.md) |
-| DeploymentScriptExceededMaxAllowedTime | Az üzembe helyezési szkript végrehajtási ideje túllépte az üzembe helyezési szkript erőforrás-definíciójában megadott időtúllépési értéket. |
+| DeploymentScriptExceededMaxAllowedTime | Az üzembe helyezési szkript végrehajtási ideje túllépte az üzembehelyi szkript erőforrás-definíciójában megadott időtúllépési értéket. |
 | DeploymentScriptInvalidOutputs | Az üzembe helyezési szkript kimenete nem érvényes JSON-objektum. |
-| DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás 10 kísérlet után, 1 perces időközzel nem tudott bejelentkezni. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás 10 próbálkozás után, 1 perces időközzel nem tudott bejelentkezni. |
 | DeploymentScriptContainerGroupNotFound | Az üzembe helyezési szkriptszolgáltatás által létrehozott tárolócsoportot egy külső eszköz vagy folyamat törölte. |
 | DeploymentScriptDownloadFailure | Nem sikerült letölteni egy támogató szkriptet. Lásd: [Támogató szkript használata.](#use-supporting-scripts)|
 | DeploymentScriptError | A felhasználói szkript hibát jelez. |
-| DeploymentScriptBootstrapScriptExecutionFailed | A bootstrap-szkript hibát jelez. A Bootstrap-szkript az üzembehelyési szkript végrehajtását vezénylő rendszerszk szkript. |
+| DeploymentScriptBootstrapScriptExecutionFailed | A bootstrap-szkript hibát jelez. A Bootstrap-szkript az üzembehelyző parancsfájl végrehajtását vezénylő rendszerszk szkript. |
 | DeploymentScriptExecutionFailed | Ismeretlen hiba történt az üzembe helyezési szkript végrehajtása során. |
 | DeploymentScriptContainerInstancesServiceUnavailable | Az Azure Container Instance (ACI) létrehozásakor az ACI hibát jelez, amely miatt a szolgáltatás nem érhető el. |
 | DeploymentScriptContainerGroupInNonterminalState | Az Azure Container Instance (ACI) létrehozásakor egy másik üzembe helyezési szkript ugyanazt az ACI-nevet használja ugyanabban a hatókörben (ugyanaz az előfizetés, erőforráscsoport neve és erőforrásnév). |

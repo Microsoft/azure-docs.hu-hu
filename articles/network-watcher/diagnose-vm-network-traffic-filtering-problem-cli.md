@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: virtuálisgép-hálózati forgalom szűrési hibáinak diagnosztizálása – Azure CLI'
+title: 'Rövid útmutató: Virtuális gép hálózati forgalmi szűrővel való problémájának diagnosztizálása – Azure CLI'
 titleSuffix: Azure Network Watcher
-description: Ismerje meg, hogyan diagnosztizálhatja a virtuális gép hálózati forgalmi szűrőjét az Azure CLI használatával, ha az IP-flow ellenőrzi az Azure Network Watcher funkcióját.
+description: Megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalomszűrési problémáját az Azure CLI használatával az Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 18e380345ef0caab52e9b1c537bada73e36d8b48
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063304"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763261"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása – Azure CLI
 
@@ -32,19 +32,19 @@ Ennek a rövid útmutatónak a követésével egy virtuális gépet fog üzembe 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+- Ehhez a rövid útmutatóhoz az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
-- Az ebben a rövid útmutatóban található Azure CLI-parancsok a bash-rendszerhéjban való futtatásra vannak formázva.
+- Az ebben a rövid útmutatóban az Azure CLI-parancsok Bash-rendszerhéjban való futtatásra vannak formázva.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A következő példa egy *myVm* nevű virtuális gépet hoz létre:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. Az alábbi példa egy *myVm* nevű virtuális gépet hoz létre:
 
 ```azurecli-interactive
 az vm create \
@@ -54,7 +54,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása előtt ne folytassa a hátralévő lépéseket, és az Azure CLI kimenetet ad vissza.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a további lépésekkel, amíg létre nem jön a virtuális gép, és az Azure CLI vissza nem adja a kimenetet.
 
 ## <a name="test-network-communication"></a>Hálózati kommunikáció tesztelése
 
@@ -62,7 +62,7 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha már van egy hálózati figyelő engedélyezve az USA keleti régiójában, folytassa az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépéssel. Használja az [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) parancsot hálózati figyelő létrehozásához az EastUS régióban:
+Ha már van egy hálózati figyelő engedélyezve az USA keleti régiójában, folytassa az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépéssel. Használja az [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) parancsot hálózati figyelő létrehozásához az EastUS régióban:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>IP-folyamat ellenőrzésének használata
 
-Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le. Annak megállapítására, hogy a különböző célokra irányuló vagy egy forrás IP-címről érkező forgalom engedélyezett vagy letiltott, használja az [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) parancsot.
+Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le. Annak megállapítására, hogy a különböző célokra irányuló vagy egy forrás IP-címről érkező forgalom engedélyezett vagy letiltott, használja az [az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow) parancsot.
 
 Tesztelje a virtuális gép kimenő kommunikációját a www.bing.com IP-címeinek egyikén:
 
@@ -125,7 +125,7 @@ A visszaadott eredmény tájékoztatja, hogy a hozzáférés egy **DefaultInboun
 
 ## <a name="view-details-of-a-security-rule"></a>Biztonsági szabály részleteinek megtekintése
 
-Annak meghatározásához, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) szabályai miért engedélyezik vagy akadályozzák meg a kommunikációt, tekintse át a hálózati adapter hatályban lévő biztonsági szabályait az [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) paranccsal:
+Annak meghatározásához, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) szabályai miért engedélyezik vagy akadályozzák meg a kommunikációt, tekintse át a hálózati adapter hatályban lévő biztonsági szabályait az [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) paranccsal:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

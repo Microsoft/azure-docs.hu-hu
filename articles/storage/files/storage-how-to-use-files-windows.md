@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717205"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789788"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -36,19 +36,19 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
 <sup>1</sup> Windows 10 1507-es, 1607-es, 1803-as, 1809-es, 1903-as, 1909-es és 2004-es verziók.  
 <sup>2</sup> Windows Server, 1809, 1903, 1909, 2004.  
-<sup>3</sup> A Windows 7 és a Windows Server 2008 R2 rendszeres Microsoft-támogatása véget ért. A biztonsági frissítésekhez csak a kiterjesztett biztonsági frissítés [(ESU)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)programon keresztül vásárolhat további támogatást. Erősen ajánlott ezekről az operációs rendszerekről áttűnni.
+<sup>3</sup> A Windows 7 és a Windows Server 2008 R2 rendszeres Microsoft-támogatása véget ért. A biztonsági frissítések további támogatása csak a bővített biztonsági frissítés [(ESU)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)programon keresztül lehetséges. Erősen ajánlott ezekről az operációs rendszerekről áttűnni.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Győződjön meg arról, hogy a 445-ös port nyitva van: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. A parancsmaggal ellenőrizheti, hogy a tűzfal blokkolja-e a 445-ös `Test-NetConnection` portot. A blokkolt 445-ös portok elhárításának módjairól a Windows hibaelhárítási [útmutatójának 1. ok: A 445-ös port](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) blokkolva van című szakaszában olvashat.
+Győződjön meg arról, hogy a 445-ös port nyitva van: Az SMB protokollhoz szükséges, hogy a 445-ös TCP port nyitva legyen; a csatlakozás nem sikerül, ha a 445-ös port blokkolva van. A parancsmaggal ellenőrizheti, hogy a tűzfal blokkolja-e a 445-ös `Test-NetConnection` portot. A letiltott 445-ös portok elhárításának módjairól a Windows hibaelhárítási [útmutatójának 1. ok: A 445-ös port](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) blokkolva van című szakaszában olvashat.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Az Azure-fájlmegosztások használata Windowson
 Az Azure-fájlmegosztások Windowson való használatához csatlakoztatnia kell azokat, azaz hozzájuk kell rendelnie egy meghajtó betűjelét vagy egy csatlakoztatási pont elérési útját, vagy pedig az [UNC-útvonalukon](/windows/win32/fileio/naming-a-file) keresztül érheti el azokat. 
 
-Ez a cikk a tárfiókkulcsot használja a fájlmegosztás eléréséhez. A tárfiókkulcs egy tárfiók rendszergazdai kulcsa, beleértve a rendszergazdai engedélyeket a fájlmegosztáson belüli összes fájlra és mappára, valamint a tárfiókban található összes fájlmegosztásra és egyéb tárolási erőforrásra (blobok, üzenetsorok, táblák stb.). Ha ez nem elegendő a [](storage-sync-files-planning.md) számítási feladathoz, Azure File Sync lehet használni, vagy identitásalapú hitelesítést használhat [SMB-protokollon keresztül.](storage-files-active-directory-overview.md)
+Ez a cikk a tárfiókkulcsot használja a fájlmegosztás eléréséhez. A tárfiókkulcs egy tárfiók rendszergazdai kulcsa, beleértve a rendszergazdai engedélyeket a fájlmegosztáson belüli összes fájlra és mappára, valamint a tárfiókban található összes fájlmegosztásra és egyéb tárolási erőforrásra (blobok, üzenetsorok, táblák stb.). Ha ez nem elegendő a [](../file-sync/file-sync-planning.md) számítási feladathoz, Azure File Sync lehet használni, vagy identitásalapú hitelesítést használhat [az SMB-protokollon keresztül.](storage-files-active-directory-overview.md)
 
 Az SMB-fájlmegosztást váró üzletági (LOB) alkalmazások Azure-ba való áthelyezése esetén gyakori megoldás az Azure-fájlmegosztások használata a dedikált Windows-fájlkiszolgálók Azure-beli virtuális gépeken történő futtatása helyett. Az üzletági alkalmazások egy Azure-fájlmegosztás használatára való sikeres migrálása érdekében fontos figyelembe venni, hogy számos üzletági alkalmazás, egy korlátozott rendszerengedélyekkel rendelkező dedikált szolgáltatásfiók környezetében fut a virtuális gép rendszergazdai fiókja helyett. Ezért győződjön meg róla, hogy az Azure-fájlmegosztáshoz szükséges hitelesítő adatokat a szolgáltatásfiók helyett a rendszergazdai fiókon keresztül csatlakoztatja/menti.
 

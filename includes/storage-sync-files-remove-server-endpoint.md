@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f730b2abad244132b06c0fa21f07a171559d22f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2f50a1d046b7b7d3fd7507ef87f8f29096a4faa4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96309948"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774563"
 ---
-Nem: a kiszolgálói végpont eltávolítása nem olyan, mint a kiszolgáló újraindítása. A kiszolgáló-végpont eltávolítása és újbóli létrehozása szinte soha nem megfelelő megoldás a szinkronizálási, a felhőalapú rétegek vagy a Azure File Sync egyéb aspektusainak kijavításához. A kiszolgálói végpontok eltávolítása romboló művelet. Adatvesztést okozhat abban az esetben, ha a többplatformos fájlok a kiszolgálói végpont névterén kívül vannak. További információért lásd: [miért léteznek a többplatformos fájlok a kiszolgálói végpont névterén kívül](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) . Vagy az is előfordulhat, hogy a kiszolgálói végponti névtérben található, többplatformos fájlokhoz nem érhető el fájlok. Ezek a problémák nem lesznek feloldva a kiszolgálói végpont újbóli létrehozásakor. A többhelyes fájlok akkor is létezhetnek a kiszolgálói végpont névterén belül, ha még nem volt engedélyezve a Felhőbeli rétegek használata. Ezért javasoljuk, hogy ne távolítsa el a kiszolgálói végpontot, hacsak nem szeretné leállítani az adott mappával való Azure File Sync használatát, vagy kifejezetten erre utasította a Microsoft mérnöke. A kiszolgálói végpontok eltávolításával kapcsolatos további információkért lásd: [kiszolgálói végpont eltávolítása](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint).    
+Nem: a kiszolgálóvégpont eltávolítása nem olyan, mint egy kiszolgáló újraindítása! A kiszolgálóvégpont eltávolítása és újralétrehozása szinte soha nem megfelelő megoldás a szinkronizálással, a felhőbeli rétegezéssel vagy a kiszolgáló egyéb aspektusainak Azure File Sync. A kiszolgálóvégpont eltávolítása kipusztító művelet. Adatvesztést okozhat abban az esetben, ha rétegzett fájlok léteznek a kiszolgálóvégpont névterében kívül. További információ: Miért léteznek rétegzett fájlok a [kiszolgálóvégpont-névtéren](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) kívül. Az is előfordulhat, hogy a kiszolgálóvégpont névterében található rétegzett fájlokhoz nem érhetőek el fájlok. Ezek a problémák nem oldják meg a kiszolgálóvégpont újbóli létrehozása esetén. A rétegzett fájlok akkor is létezhetnek a kiszolgálóvégpont névterében, ha még nem volt engedélyezve a felhőbeli rétegezés. Ezért javasoljuk, hogy csak akkor távolítsa el a kiszolgálóvégpontot, ha abba szeretné hagyni az Azure File Sync használatát ezzel a mappával, vagy ha egy Microsoft-mérnök kifejezetten erre utasítja. További információ a kiszolgálóvégpont eltávolításáról: [Kiszolgálóvégpont eltávolítása.](../articles/storage/file-sync/file-sync-server-endpoint.md#remove-a-server-endpoint)    

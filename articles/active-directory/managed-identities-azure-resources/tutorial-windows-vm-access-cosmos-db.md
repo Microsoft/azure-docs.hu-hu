@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: felügyelt identitás használata az Azure Cosmos DB-Windows-Azure AD eléréséhez'
+title: 'Oktatóanyag: Felügyelt identitás használata az Azure Cosmos DB eléréséhez – Windows – Azure AD'
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyeltszolgáltatás-identitással.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04508f1aa8ee9d6b4f730f57c60d959fab209122
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 15deae3de20de579bff880a6cb7c9e44719a63ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093788"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776428"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -38,10 +39,10 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Cosmos DB-hez egy Windows 
 
 - Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](overview.md). 
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A szükséges erőforrás-létrehozás és szerepkör-felügyelet végrehajtásához a fiókjának „Tulajdonos” jogosultságokkal kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg az Azure [-szerepkörök hozzárendelése az Azure-előfizetés erőforrásaihoz való hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-portal.md)című témakört
-- A [Azure PowerShell](/powershell/azure/install-az-ps) legújabb verziójának telepítése
-- Szükség van egy Windows rendszerű virtuális gépre is, amelyhez engedélyezve van a rendszerhez rendelt felügyelt identitások.
-  - Ha létre kell hoznia egy virtuális gépet ehhez az oktatóanyaghoz, kövesse a [virtuális gép létrehozása rendszer által hozzárendelt identitással](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) című cikket.
+- A szükséges erőforrás-létrehozás és szerepkör-felügyelet végrehajtásához a fiókjának „Tulajdonos” jogosultságokkal kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatos információkhoz, tekintse meg az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez szükséges [Azure-szerepkörök hozzárendelését.](../../role-based-access-control/role-assignments-portal.md)
+- Telepítse a Azure PowerShell [](/powershell/azure/install-az-ps)
+- Szüksége lesz egy Windows rendszerű virtuális gépre is, amelynél engedélyezve vannak a rendszer által hozzárendelt felügyelt identitások.
+  - Ha létre kell hoznia egy virtuális gépet ehhez az oktatóanyaghoz, kövesse a Virtuális gép létrehozása rendszer által hozzárendelt identitással című [cikket](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
 
@@ -65,9 +66,9 @@ Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lé
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Ez a szakasz bemutatja, hogyan biztosítható a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás hozzáférése a Cosmos DB fiók hozzáférési kulcsaihoz. A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. A rendszerhez rendelt felügyelt identitással azonban lekérhet egy Cosmos DB hozzáférési kulcsot a Resource Managerből, és a kulcs használatával férhet hozzá a Cosmos DBhoz. Ebben a lépésben hozzáférést biztosít a Windows VM rendszer által hozzárendelt felügyelt identitása számára a Cosmos DB-fiók kulcsaihoz.
+Ez a szakasz bemutatja, hogyan adhat hozzáférést a Windows VM-beli, rendszer által hozzárendelt felügyelt identitásnak a Cosmos DB hozzáférési kulcsához. A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. A rendszer által hozzárendelt felügyelt identitással azonban lekérhet egy Cosmos DB hozzáférési kulcsot a Resource Manager- és a kulcs használatával a Cosmos DB. Ebben a lépésben hozzáférést biztosít a Windows VM rendszer által hozzárendelt felügyelt identitása számára a Cosmos DB-fiók kulcsaihoz.
 
-A Windows VM rendszerhez rendelt felügyelt identitás elérésének megadásához Azure Resource Manager PowerShell használatával a Cosmos DB fiókhoz frissítse a következő értékeket:
+Ha hozzáférést ad a Windows VM rendszer által hozzárendelt felügyelt identitásának a Cosmos DB-fiókhoz Azure Resource Manager PowerShell használatával, frissítse a következő értékeket:
 
 - `<SUBSCRIPTION ID>`
 - `<RESOURCE GROUP>`
@@ -81,11 +82,11 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> Ne feledje, hogy ha nem tud végrehajtani egy műveletet, lehet, hogy nem rendelkezik a megfelelő engedélyekkel. Ha írási hozzáférést szeretne a kulcsokhoz, olyan Azure-szerepkört kell használnia, mint például a DocumentDB-fiók közreműködője, vagy létre kell hoznia egy egyéni szerepkört. További információkért tekintse át [Az Azure szerepköralapú hozzáférés-vezérlését Azure Cosmos db](../../cosmos-db/role-based-access-control.md)
+> Ne feledje, hogy ha nem tud végrehajtani egy műveletet, előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel. Ha írási hozzáférést szeretne a kulcsokhoz, Azure-szerepkört kell használnia, például a DocumentDB-fiók közreműködője szerepkört, vagy létre kell hoznia egy egyéni szerepkört. További információ: [Azure szerepköralapú hozzáférés-vezérlés a Azure Cosmos DB](../../cosmos-db/role-based-access-control.md)
 
 ## <a name="access-data"></a>Adatok elérése
 
-Ez a szakasz azt mutatja be, hogyan hívható meg Azure Resource Manager a Windows VM rendszerhez rendelt felügyelt identitáshoz tartozó hozzáférési jogkivonat használatával. Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
+Ez a szakasz bemutatja, hogyan hívhat meg Azure Resource Manager egy hozzáférési jogkivonattal a Windows VM rendszer által hozzárendelt felügyelt identitáshoz. Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
 
 Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli) legújabb verzióját a Windows rendszerű virtuális gépre.
 
@@ -114,9 +115,9 @@ Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli) legújabb verzió
    $ArmToken = $content.access_token
    ```
 
-### <a name="get-access-keys"></a>Hozzáférési kulcsok beolvasása 
+### <a name="get-access-keys"></a>Hozzáférési kulcsok lekérte 
 
-Ez a szakasz azt mutatja be, hogyan lehet hozzáférési kulcsokat lekérni a Azure Resource Managerról Cosmos DB-hívások létrehozásához. A PowerShell használatával hívja meg a Resource Managert az Cosmos DB fiók elérési kulcsának beolvasásához szükséges hozzáférési jogkivonattal. Amint megkaptuk a hozzáférési kulcsot, a Cosmos DB lekérdezhetővé válik. Használja a saját értékeit az alábbi bejegyzések lecseréléséhez:
+Ez a szakasz bemutatja, hogyan lehet hozzáférési kulcsokat le Azure Resource Manager a Cosmos DB hívásokhoz. A PowerShell használatával hívjuk meg a Resource Manager a korábban lekért hozzáférési jogkivonattal a Cosmos DB hozzáférési kulcsának lekérése érdekében. Amint megkaptuk a hozzáférési kulcsot, a Cosmos DB lekérdezhetővé válik. Cserélje le az alábbi bejegyzéseket a saját értékeire:
 
 - `<SUBSCRIPTION ID>`
 - `<RESOURCE GROUP>`
@@ -124,12 +125,12 @@ Ez a szakasz azt mutatja be, hogyan lehet hozzáférési kulcsokat lekérni a Az
 - Az `<ACCESS TOKEN>` paraméter értékét cserélje le a korábban lekért hozzáférési jogkivonattal. 
 
 >[!NOTE]
->Ha olvasási/írási kulcsokat szeretne lekérni, akkor `listKeys` típusú kulcsműveleteket használjon.  Ha csak olvasható kulcsokat szeretne beolvasni, használja a kulcs típusú műveletet `readonlykeys` . Ha nem tudja használni a "listkeys műveletének beolvasása", ellenőrizze, hogy a [megfelelő szerepkört](../../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) rendelte-e a felügyelt identitáshoz.
+>Ha olvasási/írási kulcsokat szeretne lekérni, akkor `listKeys` típusú kulcsműveleteket használjon.  Ha csak olvasható kulcsokat szeretne lekérni, használja a kulcsművelet `readonlykeys` típusát. Ha nem tudja használni a "listkeys" [](../../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) kulcsot, ellenőrizze, hogy a megfelelő szerepkört rendelte-e hozzá a felügyelt identitáshoz.
 
 ```powershell
 Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/readonlykeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
-A válasz megadja a kulcsok listáját.  Ha például írásvédett kulcsokat kap:
+A válaszban megjelenik a kulcsok listája.  Ha például írásvédett kulcsokat kap:
 
 ```powershell
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
@@ -213,4 +214,4 @@ Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 Az oktatóanyag bemutatta, hogyan használhatja egy Windows VM rendszer által hozzárendelt felügyelt identitásait a Cosmos DB eléréséhez.  További információ a Cosmos DB-ről:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB áttekintése](../../cosmos-db/introduction.md)
+>[Azure Cosmos DB áttekintés](../../cosmos-db/introduction.md)

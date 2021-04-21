@@ -1,40 +1,40 @@
 ---
-title: Privát hivatkozás – Azure CLI – Azure Database for MySQL
-description: Ismerje meg, hogyan konfigurálhatja a Azure Database for MySQLhez készült privát hivatkozást az Azure CLI-vel
+title: Private Link – Azure CLI – Azure Database for MySQL
+description: Megtudhatja, hogyan konfigurálhatja a privát hivatkozást Azure Database for MySQL Azure CLI-ről
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2fbf95dcf2d5e3447197bc71105e415cce6681e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998583"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763324"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Azure Database for MySQL magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Alkalmazáshoz való Private Link és Azure Database for MySQL a CLI használatával
 
-A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network és egy Azure Database for MySQL-kiszolgáló Azure-beli privát végponttal, hogyan lehet az Azure CLI használatával létrehozni.
+A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi, hogy az Azure-Virtual Machines (virtuális gépek) privát módon kommunikáljanak a privát kapcsolat erőforrásaival. Ebből a cikkből megtudhatja, hogyan hozhat létre azure-beli virtuális gépet az Azure CLI Virtual Network és egy azure-beli privát végponttal Azure Database for MySQL-kiszolgálón.
 
 > [!NOTE]
-> A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
+> A privát kapcsolat funkció csak a Azure Database for MySQL vagy memóriaoptimal általános célú tarifacsomagban lévő összes kiszolgálóhoz érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen tarifacsomagok valamelyikében található.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.28-as vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot a Virtual Network üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westeurope* helyen:
+Mielőtt bármilyen erőforrást létrehozhat, létre kell hoznia egy erőforráscsoportot a Virtual Network. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westeurope helyen:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy Virtual Network az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. Ez a példa egy *myVirtualNetwork* nevű alapértelmezett Virtual Network hoz létre egy *mySubnet* nevű alhálózattal:
+Hozzon létre egy Virtual Network [az az network vnet create gombra.](/cli/azure/network/vnet) Ez a példa létrehoz egy *myVirtualNetwork* Virtual Network nevű alapértelmezett alhálózatot egy *mySubnet nevű alhálózaton:*
 
 ```azurecli-interactive
 az network vnet create \
@@ -43,8 +43,8 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Alhálózat magánhálózati végponti házirendjeinek letiltása 
-Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok [hálózati házirendjeinek](../private-link/disable-private-endpoint-network-policy.md)letiltásához. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+## <a name="disable-subnet-private-endpoint-policies"></a>Alhálózati privátvégpont-szabályzatok letiltása 
+Az Azure erőforrásokat helyez üzembe egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a privát végpont hálózati szabályzatának [letiltásához.](../private-link/disable-private-endpoint-network-policy.md) Frissítse a *mySubnet* nevű alhálózati konfigurációt [az az network vnet subnet update frissítéssel:](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -54,17 +54,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>A virtuális gép létrehozása 
-Hozzon létre egy virtuális gépet az az VM Create paranccsal. Ha a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használandó jelszót. Ez a példa egy *myVm* nevű virtuális gépet hoz létre: 
+Hozzon létre egy virtuális gépet az az vm create segítségével. Amikor a rendszer kéri, adjon meg egy jelszót, amely a virtuális gép bejelentkezési hitelesítő adataiként lesz használva. Ez a példa létrehoz egy *myVm nevű virtuális gépet:* 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
-Jegyezze fel a virtuális gép nyilvános IP-címét. Ezt a lakcímet fogja használni a virtuális géphez az internetről a következő lépésben való kapcsolódáshoz.
+Jegyezze fel a virtuális gép nyilvános IP-címét. Ezzel a címmel csatlakozhat a virtuális géphez az internetről a következő lépésben.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz 
-Hozzon létre egy Azure Database for MySQL az az MySQL Server Create paranccsal. Ne feledje, hogy a MySQL-kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie: 
+Hozzon létre Azure Database for MySQL az az mysql server create paranccsal. Ne feledje, hogy a MySQL-kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért cserélje le a zárójelben lévő helyőrző értékét a saját egyedi értékére: 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -78,11 +78,11 @@ az mysql server create \
 ```
 
 > [!NOTE]
-> Bizonyos esetekben a Azure Database for MySQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
-> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforMySQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+> Bizonyos esetekben a Azure Database for MySQL és a VNet-alhálózat eltérő előfizetésben található. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Győződjön meg arról, hogy mindkét előfizetésben regisztrálva van a **Microsoft.DBforMySQL** erőforrás-szolgáltató. További információ: [resource-manager-registration][resource-manager-portal]
 
-## <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása 
-Hozzon létre egy privát végpontot a MySQL-kiszolgálóhoz a Virtual Networkban: 
+## <a name="create-the-private-endpoint"></a>A privát végpont létrehozása 
+Hozzon létre egy privát végpontot a MySQL-kiszolgálóhoz a Virtual Network: 
 
 ```azurecli-interactive
 az network private-endpoint create \  
@@ -95,8 +95,8 @@ az network private-endpoint create \
     --connection-name myConnection  
  ```
 
-## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása 
-Hozzon létre egy saját DNS zónát a MySQL-kiszolgáló tartományhoz, és hozzon létre egy társítási hivatkozást a Virtual Network. 
+## <a name="configure-the-private-dns-zone"></a>A saját DNS konfigurálása 
+Hozzon létre egy saját DNS zónát a MySQL-kiszolgáló tartományához, és hozzon létre társítási hivatkozást a Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.mysql.database.azure.com" 
@@ -120,36 +120,36 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> Az ügyfél DNS-beállításaiban található teljes tartománynevet nem a konfigurált magánhálózati IP-címre oldja fel a rendszer. Az [itt](../dns/dns-operations-recordsets-portal.md)látható módon konfigurálnia kell egy DNS-zónát a beállított FQDN-hez.
+> Az ügyfél DNS-beállításaiban található teljes tartománynevet nem a konfigurált magánhálózati IP-címre oldja fel a rendszer. Az itt látható módon be kell állítania egy DNS-zónát a konfigurált teljes [tartománynévhez.](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
+Csatlakozzon a *myVm virtuális géphez* az internetről a következőképpen:
 
 1. A portál keresési sávjába írja be a *myVm* szöveget.
 
-1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
+1. Kattintson a **Csatlakozás** gombra. A Csatlakozás **gomb kiválasztása** után **megnyílik a Csatlakozás virtuális géphez** lehetőség.
 
-1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*.rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a *letöltött. rdp* fájlt.
+1. Nyissa meg *a downloaded.rdp fájlt.*
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
+        > Előfordulhat, hogy a Virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a További lehetőségek Másik fiók használata lehetőséget kell  >  választania.
 
 1. Válassza az **OK** lehetőséget.
 
 1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
-1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
+1. Ha a virtuális gép asztala megjelenik, kis méretűre állíthatja, hogy visszatér a helyi asztalra.  
 
-## <a name="access-the-mysql-server-privately-from-the-vm"></a>A MySQL-kiszolgáló elérése a virtuális gépről
+## <a name="access-the-mysql-server-privately-from-the-vm"></a>A MySQL-kiszolgáló privát elérése a virtuális gépről
 
-1. A *myVM* távoli asztal nyissa meg a PowerShellt.
+1. A *myVM* Távoli asztal nyissa meg a PowerShellt.
 
 2. Írja be a következő szöveget:  `nslookup mydemomysqlserver.privatelink.mysql.database.azure.com`. 
 
@@ -162,36 +162,36 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     Address:  10.1.3.4
     ```
 
-3. Tesztelje a MySQL-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
+3. Tesztelje a MySQL-kiszolgáló privát kapcsolati kapcsolatát bármely elérhető ügyféllel. Az alábbi példában a [MySQL Workbencht](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használtam a művelet végrehajtásához.
 
 
-4. Az **új kapcsolatok** területen adja meg vagy válassza ki az alábbi adatokat:
+4. Az **Új kapcsolat mezőben** adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Kapcsolat neve| Válassza ki az Ön által választott kapcsolatok nevét.|
-    | Hostname (Gazdanév) | *Mydemoserver.privatelink.mysql.database.Azure.com* kiválasztása |
-    | Felhasználónév | Adja meg a felhasználónevet, *username@servername* amelyet a MySQL-kiszolgáló létrehozásakor adott meg. |
+    | Kapcsolat neve| Válassza ki a kívánt kapcsolat nevét.|
+    | Hostname (Gazdanév) | Válassza *a mydemoserver.privatelink.mysql.database.azure.com* |
+    | Felhasználónév | Adja meg a *username@servername* mySQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
     | Jelszó | Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
     ||
 
 5. Válassza a Csatlakozás lehetőséget.
 
-6. A bal oldali menüben lévő adatbázisok tallózása.
+6. Adatbázisok tallózása a bal oldali menüből.
 
-7. Opcionálisan Információk létrehozása vagy lekérdezése a MySQL-adatbázisból.
+7. (Nem kötelező) Hozzon létre vagy lekérdezést a MySQL-adatbázisból.
 
-8. A távoli asztali kapcsolat bezárásával myVm.
+8. Zárja be a myVm távoli asztali kapcsolatát.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást: 
+Ha már nincs rá szükség, az az group delete parancs használatával eltávolíthatja az erőforráscsoportot és az összes erőforrását: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ az [Azure Private Endpoint szolgáltatásról](../private-link/private-endpoint-overview.md)
+- További információ az [Azure privát végpontról](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -1,34 +1,34 @@
 ---
 title: PHP-alkalmazások konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy PHP-alkalmazást a natív Windows-példányokban vagy egy előre elkészített PHP-tárolóban Azure App Serviceban. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+description: Megtudhatja, hogyan konfigurálhatja a PHP-alkalmazásokat a natív Windows-példányban vagy egy előre felépített PHP-tárolóban a Azure App Service. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c40bc01553b9e848d668c0a699e9dcc9929f079e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90055299"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779326"
 ---
-# <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Servicehoz
+# <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Service
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja a PHP-webalkalmazásokat, a mobil háttér-és API-alkalmazásokat Azure App Serviceban.
+Ez az útmutató bemutatja, hogyan konfigurálhatja PHP-webalkalmazásait, mobil-háttéralkalmazásait és API-alkalmazásait a Azure App Service.
 
-Ez az útmutató a PHP-fejlesztőknek szóló alapfogalmakat és útmutatást tartalmaz, amelyek az alkalmazások App Service való telepítését végzik. Ha még soha nem használta a Azure App Servicet, először kövesse a [php](quickstart-php.md) gyors és a [php-t a MySQL-vel foglalkozó oktatóanyagban](tutorial-php-mysql-app.md) .
+Ez az útmutató alapvető fogalmakat és utasításokat tartalmaz a PHP-fejlesztők számára, akik alkalmazásokat telepítnek a App Service. Ha még soha nem használta a Azure App Service, először kövesse a [PHP rövid](quickstart-php.md) útmutatóját és a PHP [with MySQL oktatóanyagot.](tutorial-php-mysql-app.md)
 
 ## <a name="show-php-version"></a>PHP-verzió megjelenítése
 
 ::: zone pivot="platform-windows"  
 
-Az aktuális PHP-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+Az aktuális PHP-verzió futtatásához futtassa a következő parancsot a [Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query phpVersion
 ```
 
-Az összes támogatott PHP-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+Az összes támogatott PHP-verzió futtatásához futtassa a következő parancsot a [Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp list-runtimes | grep php
@@ -38,13 +38,13 @@ az webapp list-runtimes | grep php
 
 ::: zone pivot="platform-linux"
 
-Az aktuális PHP-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+Az aktuális PHP-verzió futtatásához futtassa a következő parancsot a [Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Az összes támogatott PHP-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+Az összes támogatott PHP-verzió futtatásához futtassa a következő parancsot a [Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep PHP
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep PHP
 
 ::: zone pivot="platform-windows"  
 
-Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a PHP-verzió 7,4-es értékre való beállításához:
+Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a PHP 7.4-es verziójának beállítására:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
@@ -66,7 +66,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ::: zone pivot="platform-linux"
 
-Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a PHP-verzió 7,2-es értékre való beállításához:
+Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a PHP 7.2-es verziójának beállításhoz:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
@@ -76,22 +76,22 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ::: zone pivot="platform-windows"  
 
-## <a name="run-composer"></a>Zeneszerző futtatása
+## <a name="run-composer"></a>A Composer futtatása
 
-Ha azt szeretné, hogy a App Service az üzembe helyezési időpontban futtassa a [zeneszerzőt](https://getcomposer.org/) , a legegyszerűbb módszer a zeneszerző belefoglalása a tárházba.
+Ha szeretné App Service a [Composert](https://getcomposer.org/) az üzembe helyezéskor, a legegyszerűbb módszer, ha a Composert is beveszi az adattárba.
 
-Egy helyi terminál ablakában váltson át a könyvtárra a tárház gyökerére, és kövesse a [zeneszerző](https://getcomposer.org/download/) *. farmakovigilancia* a könyvtár gyökeréhez való letöltéséhez szükséges utasításokat.
+Egy helyi terminálablakban váltsa át a könyvtárat az adattár gyökérkönyvtárára, és kövesse a [Composer](https://getcomposer.org/download/) letöltésével kapcsolatos utasításokat a *composer.phar* fájlnak a könyvtár gyökerére való letöltéséhez.
 
-Futtassa a következő parancsokat (telepítenie kell a [NPM](https://www.npmjs.com/get-npm) ):
+Futtassa a következő parancsokat (telepítenie kell az [npm-et):](https://www.npmjs.com/get-npm)
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-A tárház gyökerének most két további fájlja van: *. Deployment* és *Deploy.sh*.
+Az adattár gyökerének két további fájlja van: *.deployment* és *deploy.sh.*
 
-Nyissa meg a *Deploy.sh* , és keresse meg az `Deployment` alábbihoz hasonló szakaszt:
+Nyissa *deploy.sh,* és keresse meg a következő `Deployment` szakaszt:
 
 ```bash
 ##################################################################################################################################
@@ -99,7 +99,7 @@ Nyissa meg a *Deploy.sh* , és keresse meg az `Deployment` alábbihoz hasonló s
 # ----------
 ```
 
-Adja hozzá a Code *(kód)* szakaszt, amelyen futtatnia kell a szükséges eszközt a `Deployment` szakasz végén:
+Adja hozzá a szükséges eszköz futtatásához szükséges kódszakaszt *a* szakasz `Deployment` végén:
 
 ```bash
 # 4. Use composer
@@ -113,13 +113,13 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Véglegesítse az összes módosítást, és telepítse a kódot a git használatával vagy a zip üzembe helyezésével, ha a Build Automation engedélyezve van. A zeneszerzőnek most már futnia kell az üzembe helyezés automatizálásának részeként.
+Véglegesítenie kell az összes módosítást, és üzembe kell helyeznie a kódot a Git vagy a Zip használatával, engedélyezett buildautomatizálással. A Composernek most már futnia kell az üzembe helyezés automatizálásának részeként.
 
-## <a name="run-gruntbowergulp"></a>Morog/Bower/Nyelő futtatása
+## <a name="run-gruntbowergulp"></a>Run Fogt/Bower/Gulp
 
-Ha azt szeretné, hogy a App Service a népszerű Automation-eszközöket az üzembe helyezési időben, például a morog, a Bower vagy a Nyelő használatával futtassa, [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)kell megadnia. App Service futtatja ezt a parancsfájlt a git-vel való üzembe helyezéskor, vagy ha engedélyezve van a Build Automation szolgáltatással rendelkező [zip-telepítés](deploy-zip.md) . 
+Ha azt szeretné, App Service népszerű automatizálási eszközöket futtatassanak az üzembe helyezéskor, például a Amit, a Bower vagy a Gulp eszközt, egyéni üzembe helyezési szkriptet [kell használnia.](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) App Service szkriptet a Git vagy a [Zip](deploy-zip.md) üzembe helyezésekor futtatja, ha engedélyezve van a buildautomatizálás. 
 
-Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Például:
+Ahhoz, hogy az adattár futtatni tudja ezeket az eszközöket, hozzá kell azokat adni apackage.js *függőségeihez.* Például:
 
 ```json
 "dependencies": {
@@ -130,16 +130,16 @@ Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hoz
 }
 ```
 
-Egy helyi terminál ablakban váltson át a tárház gyökerére, és futtassa a következő parancsokat (telepítenie kell a [NPM](https://www.npmjs.com/get-npm) -t):
+Egy helyi terminálablakban váltsa át a könyvtárat az adattár gyökérkönyvtárára, és futtassa a következő parancsokat (telepítenie kell az [npm-et):](https://www.npmjs.com/get-npm)
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-A tárház gyökerének most két további fájlja van: *. Deployment* és *Deploy.sh*.
+Az adattár gyökérkönyvtárában most két további fájl található: *.deployment* és *deploy.sh.*
 
-Nyissa meg a *Deploy.sh* , és keresse meg az `Deployment` alábbihoz hasonló szakaszt:
+Nyissa *deploy.sh,* és keresse meg `Deployment` az alábbi szakaszt:
 
 ```bash
 ##################################################################################################################################
@@ -147,17 +147,17 @@ Nyissa meg a *Deploy.sh* , és keresse meg az `Deployment` alábbihoz hasonló s
 # ----------
 ```
 
-Ez a szakasz a futtatásával végződik `npm install --production` . Adja hozzá a Code *(kód)* szakaszt, amelyen futtatnia kell a szükséges eszközt a `Deployment` szakasz végén:
+Ez a szakasz a futtatásával `npm install --production` végződik. Adja hozzá a szükséges eszköz futtatásához szükséges kódszakaszt *a* szakasz `Deployment` végén:
 
 - [Bower](#bower)
-- [Gulp](#gulp)
+- [Nyelő](#gulp)
 - [Grunt](#grunt)
 
-Tekintse [meg a MEAN.js minta példáját](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135), ahol az üzembe helyezési parancsfájl egy egyéni parancsot is futtat `npm install` .
+A [mintaalkalmazásban MEAN.js példát,](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)amelyben az üzembe helyezési szkript egy egyéni parancsot `npm install` is futtat.
 
 ### <a name="bower"></a>Bower
 
-Ez a kódrészlet fut `bower install` .
+Ez a kódrészlet a (kódrészlet) et `bower install` futtatja.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
@@ -168,9 +168,9 @@ if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
 fi
 ```
 
-### <a name="gulp"></a>Gulp
+### <a name="gulp"></a>Nyelő
 
-Ez a kódrészlet fut `gulp imagemin` .
+Ez a kódrészlet a (kódrészlet) et `gulp imagemin` futtatja.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
@@ -183,7 +183,7 @@ fi
 
 ### <a name="grunt"></a>Grunt
 
-Ez a kódrészlet fut `grunt` .
+Ez a kódrészlet a (kódrészlet) et `grunt` futtatja.
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
@@ -198,30 +198,30 @@ fi
 
 ::: zone pivot="platform-linux"
 
-## <a name="customize-build-automation"></a>A Build Automation testreszabása
+## <a name="customize-build-automation"></a>Buildautomatizálás testreszabása
 
-Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
+Ha Git- vagy zip-csomagokkal, bekapcsolt buildautomatizálással telepíti az alkalmazást, a App Service az automatizálás lépéseit a következő lépéseken keresztül:
 
-1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
+1. Futtatassa az egyéni szkriptet, ha az meg van `PRE_BUILD_SCRIPT_PATH` adva.
 1. Futtassa az `php composer.phar install` parancsot.
-1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
+1. Futtatassa az egyéni szkriptet, ha az meg van `POST_BUILD_SCRIPT_PATH` adva.
 
-`PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
+`PRE_BUILD_COMMAND` A `POST_BUILD_COMMAND` és a környezeti változók, amelyek alapértelmezés szerint üresek. A build előtti parancsok futtatásához definiálja a következőt: `PRE_BUILD_COMMAND` . A build utáni parancsok futtatásához definiálja a következőt: `POST_BUILD_COMMAND` .
 
-A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+Az alábbi példa két változót ad meg parancsok sorozatára, vesszővel elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+A buildautomatizálás testreszabásához szükséges további környezeti változókért lásd: [Oryx-konfiguráció.](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)
 
-A PHP-alkalmazások Linux rendszeren való futtatásáról és App Serviceáról további információt a [Oryx dokumentációjában talál: a PHP-alkalmazások észlelése és építése](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
+A PHP-alkalmazások Linuxon való App Service és buildjével kapcsolatos további információkért lásd: [Oryx-dokumentáció: PHP-alkalmazások](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)észlelése és összeállítása.
 
 ## <a name="customize-start-up"></a>Indítás testreszabása
 
-Alapértelmezés szerint a beépített PHP-tároló futtatja az Apache-kiszolgálót. Indításkor a fut `apache2ctl -D FOREGROUND"` . Ha szeretné, egy másik parancsot is futtathat az indításkor, ha a következő parancsot futtatja a [Cloud Shellban](https://shell.azure.com):
+Alapértelmezés szerint a beépített PHP-tároló futtatja az Apache-kiszolgálót. Indításkor a futtatja a `apache2ctl -D FOREGROUND"` et. Ha szeretné, futtathat egy másik parancsot indításkor is, ha a következő parancsot futtatja a [Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -231,7 +231,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-Az App Service-szel az alkalmazás kódján kívül is [megadhatja az alkalmazások beállításait](configure-common.md#configure-app-settings). Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Például egy `DB_HOST` nevű alkalmazásbeállítás hozzáféréséhez használja a következő kódot:
+Az App Service-szel az alkalmazás kódján kívül is [megadhatja az alkalmazások beállításait](configure-common.md#configure-app-settings). Ezután a standard [getenv() minta](https://secure.php.net/manual/function.getenv.php) használatával elérheti őket. Például egy `DB_HOST` nevű alkalmazásbeállítás hozzáféréséhez használja a következő kódot:
 
 ```php
 getenv("DB_HOST")
@@ -241,23 +241,23 @@ getenv("DB_HOST")
 
 ::: zone pivot="platform-windows"  
 
-Az Ön által választott webes keretrendszer egy alkönyvtárt is használhat a hely gyökeréhez. Például a [Laravel](https://laravel.com/)a *nyilvános/* alkönyvtárat használja a hely gyökeréhez.
+A választott webes keretrendszer használhat alkönyvtárat a webhely gyökerének. A [Laravel például](https://laravel.com/)a *public/alkönyvtárat* használja webhelygyökerként.
 
-A hely gyökerének testreszabásához a parancs használatával állítsa be a virtuális alkalmazás elérési útját az alkalmazáshoz [`az resource update`](/cli/azure/resource#az-resource-update) . A következő példában a hely gyökerét a tárházban lévő *nyilvános/* alkönyvtárra állítja be. 
+A hely gyökerének testreszabásához állítsa be az alkalmazás virtuális alkalmazásának elérési útját az [`az resource update`](/cli/azure/resource#az_resource_update) paranccsal. A következő példa a webhely gyökerét az *adattár nyilvános/alkönyvtárára* állítja be. 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Alapértelmezés szerint a Azure App Service a virtuális alkalmazás elérési útját ( _/_ ) a telepített alkalmazásfájlok (_sites\wwwroot_) gyökérkönyvtárára mutat.
+Alapértelmezés szerint a Azure App Service a virtuális alkalmazás gyökérútvonalát ( ) az üzembe helyezett alkalmazásfájlok gyökérkönyvtárába _/_ _(sites\wwwroot ) mutat._
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-Az Ön által választott webes keretrendszer egy alkönyvtárt is használhat a hely gyökeréhez. Például a [Laravel](https://laravel.com/)az `public/` alkönyvtárat használja a hely gyökeréhez.
+A választott webes keretrendszer használhat alkönyvtárat a webhely gyökerének. A [Laravel](https://laravel.com/)például a `public/` alkönyvtárat használja webhelygyökerként.
 
-A App Service alapértelmezett PHP-rendszerképe Apache-t használ, és nem teszi lehetővé a hely gyökerének testreszabását az alkalmazáshoz. A korlátozás megkerüléséhez adjon hozzá egy *. htaccess* -fájlt a tárház gyökeréhez a következő tartalommal:
+Az alapértelmezett PHP-App Service Apache-t használ, és nem szabhatja testre az alkalmazás webhelygyökerét. A korlátozást a következő tartalommal adjuk hozzá az adattár gyökerében található *.htaccess-fájlhoz:*
 
 ```
 <IfModule mod_rewrite.c>
@@ -273,7 +273,7 @@ Ha inkább nem használná a *.htaccess* újraírást, üzembe helyezheti a Lara
 
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
+Ebben App Service esetben [az](https://wikipedia.org/wiki/TLS_termination_proxy) SSL-leépítés a hálózati terheléselosztásnál történik, így minden HTTPS-kérés titkosítatlan HTTP-kérésként éri el az alkalmazást. Ha az alkalmazáslogikának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
 
 ```php
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
@@ -281,23 +281,23 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 }
 ```
 
-A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi a értéket `X_FORWARDED_PROTO` .
+A népszerű webes keretrendszerekkel a szokásos `X-Forwarded-*` alkalmazásmintában található információkhoz férhet hozzá. A [CodeIgniterben](https://codeigniter.com/)a [is_https()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi a `X_FORWARDED_PROTO` értékét.
 
-## <a name="customize-phpini-settings"></a>php.ini beállítások testreszabása
+## <a name="customize-phpini-settings"></a>A php.ini testreszabása
 
-Ha módosítania kell a PHP-telepítést, a következő lépésekkel módosíthatja a [php.ini irányelvek](https://www.php.net/manual/ini.list.php) bármelyikét.
+Ha módosítania kell a PHP-telepítést, az alábbi lépésekkel bármelyikphp.ini [módosíthatja.](https://www.php.net/manual/ini.list.php)
 
 > [!NOTE]
-> A PHP-verzió és a jelenlegi *php.ini* konfiguráció megtekintésének legjobb módja az [phpinfo ()](https://php.net/manual/function.phpinfo.php) hívása az alkalmazásban.
+> A PHP-verzió és a jelenlegi konfigurációphp.ini *a* [phpinfo()](https://php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
 >
 
-### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Testreszabás – nem PHP_INI_SYSTEM irányelvek
+### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Nem PHP_INI_SYSTEM irányelvek testreszabása
 
 ::: zone pivot="platform-windows"  
 
-PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy `.user.ini` fájlt az alkalmazás gyökérkönyvtárához.
+A virtuális PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL (lásd aphp.ini [ irányelveket)](https://www.php.net/manual/ini.list.php)testreszabásához adjon hozzá egy fájlt az alkalmazás `.user.ini` gyökérkönyvtárához.
 
-Adja hozzá a konfigurációs beállításokat a `.user.ini` fájlhoz ugyanazzal a szintaxissal, amelyet egy `php.ini` fájlban szeretne használni. Ha például be szeretné kapcsolni a beállítást, és a `display_errors` `upload_max_filesize` beállítást 10 m-re állította, a `.user.ini` fájl a következő szöveget fogja tartalmazni:
+Adja hozzá a konfigurációs beállításokat a fájlhoz a fájlban használt `.user.ini` `php.ini` szintaxissal. Ha például be szeretné kapcsolni a beállítást, és 10 M-re szeretné állítani a beállítást, a fájl `display_errors` `upload_max_filesize` a következő szöveget `.user.ini` tartalmazná:
 
 ```
  ; Example Settings
@@ -308,17 +308,17 @@ Adja hozzá a konfigurációs beállításokat a `.user.ini` fájlhoz ugyanazzal
  ; log_errors=On
 ```
 
-Telepítse újra az alkalmazást a módosításokkal, majd indítsa újra.
+A módosításokkal újból üzembe kell indítani az alkalmazást, és újra kell indítani.
 
-Egy fájl használata helyett használhatja a `.user.ini` [ini_set ()](https://www.php.net/manual/function.ini-set.php) alkalmazást az alkalmazásban a nem PHP_INI_SYSTEM irányelvek testreszabásához.
+A fájlok használatának alternatívájaként a ini_set() használatával is testre szabhatja ezeket a nem PHP_INI_SYSTEM `.user.ini` irányelveket. [](https://www.php.net/manual/function.ini-set.php)
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
+Az PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL-irányelvek (lásd aphp.ini [ irányelveket)](https://www.php.net/manual/ini.list.php)testreszabásához adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárához.
 
-A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Például:
+A *.htaccess fájlban* adja hozzá az irányelveket a szintaxis `php_value <directive-name> <value>` használatával. Például:
 
 ```
 php_value upload_max_filesize 1000M
@@ -330,29 +330,29 @@ php_value display_errors On
 php_value upload_max_filesize 10M
 ```
 
-Telepítse újra az alkalmazást a módosításokkal, majd indítsa újra. Ha a kudu (például a [git](deploy-local-git.md)használatával) telepíti azt, akkor a telepítés után automatikusan újraindul.
+A módosításokkal újból üzembe kell indítani az alkalmazást, és újra kell indítani. Ha a Kuduval telepíti (például a [Git](deploy-local-git.md)használatával), az üzembe helyezés után automatikusan újraindul.
 
-A *. htaccess* használatának alternatívájaként a [ini_set ()](https://www.php.net/manual/function.ini-set.php) alkalmazással is testreszabhatja ezeket a nem PHP_INI_SYSTEM irányelveket.
+A *.htaccess* helyett a [ini_set()](https://www.php.net/manual/function.ini-set.php) használatával is testre szabhatja ezeket a nem PHP_INI_SYSTEM irányelveket.
 
 ::: zone-end
 
-### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
+### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>A PHP_INI_SYSTEM testreszabása
 
 ::: zone pivot="platform-windows"  
 
-PHP_INI_SYSTEM irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az Alkalmazásbeállítások használatával külön mechanizmust biztosít `PHP_INI_SCAN_DIR` .
+A .PHP_INI_SYSTEM (lásd [aphp.ini](https://www.php.net/manual/ini.list.php)irányelveket) testreszabásához nem használhatja a *.htaccess megközelítést.* App Service az alkalmazásbeállítással külön `PHP_INI_SCAN_DIR` mechanizmust biztosít.
 
-Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.com) egy, a következő nevű alkalmazás-beállítás hozzáadásához `PHP_INI_SCAN_DIR` :
+Először futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) egy nevű alkalmazásbeállítás `PHP_INI_SCAN_DIR` hozzáadásához:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="d:\home\site\ini"
 ```
 
-Navigáljon a kudu-konzolhoz ( `https://<app-name>.scm.azurewebsites.net/DebugConsole` ), és navigáljon a következőhöz: `d:\home\site` .
+Nyissa meg a Kudu-konzolt ( `https://<app-name>.scm.azurewebsites.net/DebugConsole` ), és navigáljon a következőre: `d:\home\site` .
 
-Hozzon létre egy könyvtárat a `d:\home\site` néven `ini` , majd hozzon létre egy *. ini* -fájlt a `d:\home\site\ini` könyvtárban (például *settings.ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php.ini* fájlban szeretne használni. 
+Hozzon létre egy nevű könyvtárat, majd hozzon létre egy .ini fájlt a könyvtárban (példáulsettings.ini) a testreszabni kívánt `d:\home\site` `ini`  `d:\home\site\ini` irányelvekkel.  Használja ugyanazt *a* szintaxist, mint aphp.inifájlban. 
 
-A [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) értékének módosításához például futtassa a következő parancsokat:
+Ha például módosítania kell a expose_php [a](https://php.net/manual/ini.core.php#ini.expose-php) következő parancsokat:
 
 ```bash
 cd /home/site
@@ -360,31 +360,31 @@ mkdir ini
 echo "expose_php = Off" >> ini/setting.ini
 ```
 
-A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
+A módosítások érvénybe lépnek, ha újraindítja az alkalmazást.
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-PHP_INI_SYSTEM irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az Alkalmazásbeállítások használatával külön mechanizmust biztosít `PHP_INI_SCAN_DIR` .
+A .PHP_INI_SYSTEM (lásd [aphp.ini](https://www.php.net/manual/ini.list.php)irányelveket) testreszabásához nem használhatja a *.htaccess megközelítést.* App Service az alkalmazásbeállítással külön `PHP_INI_SCAN_DIR` mechanizmust biztosít.
 
-Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.com) egy, a következő nevű alkalmazás-beállítás hozzáadásához `PHP_INI_SCAN_DIR` :
+Először futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) egy nevű alkalmazásbeállítás `PHP_INI_SCAN_DIR` hozzáadásához:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d` a *php.ini* létezésének alapértelmezett könyvtára. `/home/site/ini` az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
+`/usr/local/etc/php/conf.d` Az az alapértelmezett könyvtár, *php.ini* létezik. `/home/site/ini` Az az egyéni könyvtár, amelyben egyéni *.ini* fájlt fog hozzáadni. Az értékeket egy értékkel kell `:` elválasztani.
 
-Navigáljon a web SSH-munkamenethez a Linux-tárolóval ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
+Nyissa meg a webes SSH-munkamenetet a Linux-tárolóval ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Hozzon létre egy könyvtárat a `/home/site` néven `ini` , majd hozzon létre egy *. ini* -fájlt a `/home/site/ini` könyvtárban (például *settings.ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php.ini* fájlban szeretne használni. 
+Hozzon létre egy nevű könyvtárat, majd hozzon létre egy .ini fájlt a könyvtárban (példáulsettings.ini) a testreszabni kívánt `/home/site` `ini`  `/home/site/ini` irányelvekkel.  Használja ugyanazt *a* szintaxist, mint aphp.inifájlban. 
 
 > [!TIP]
-> A App Service beépített Linux-tárolókban a */Home* a megőrzött megosztott tárolóként szolgál. 
+> Az alkalmazás beépített Linux-tárolóiban a */home* App Service megőrzött megosztott tárolóként lesz használva. 
 >
 
-A [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) értékének módosításához például futtassa a következő parancsokat:
+Ha például módosítania kell a expose_php [alábbi](https://php.net/manual/ini.core.php#ini.expose-php) parancsokat:
 
 ```bash
 cd /home/site
@@ -392,7 +392,7 @@ mkdir ini
 echo "expose_php = Off" >> ini/setting.ini
 ```
 
-A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
+A módosítások érvénybe lépnek, ha újraindítja az alkalmazást.
 
 ::: zone-end
 
@@ -400,51 +400,51 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 
 ::: zone pivot="platform-windows"  
 
-A beépített PHP-telepítések a leggyakrabban használt bővítményeket tartalmazzák. A További bővítmények ugyanúgy engedélyezhetők, mint az [php.ini irányelvek testreszabása](#customize-php_ini_system-directives).
+A beépített PHP-telepítések tartalmazzák a leggyakrabban használt bővítményeket. A további bővítményeket ugyanúgy engedélyezheti, mint a(php.ini [irányelveket.](#customize-php_ini_system-directives)
 
 > [!NOTE]
-> A PHP-verzió és a jelenlegi *php.ini* konfiguráció megtekintésének legjobb módja az [phpinfo ()](https://php.net/manual/function.phpinfo.php) hívása az alkalmazásban.
+> A PHP-verzió és a jelenlegi konfigurációphp.ini *a* [phpinfo()](https://php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
 >
 
 További bővítmények engedélyezéséhez kövesse az alábbi lépéseket:
 
-Adjon hozzá egy `bin` könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.dll` bővítmény fájljait (például *mongodb.dll*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
+Adjon hozzá egy könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze bele a `bin` `.dll` *bővítményfájlokat (például* mongodb.dll). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, valamint a VC9 és a nem szálmentes (nts) verzióval.
 
-Telepítse a módosításokat.
+A módosítások üzembe helyezése.
 
-Kövesse az [PHP_INI_SYSTEM irányelvek testreszabása](#customize-php_ini_system-directives)című szakasz lépéseit, adja hozzá a bővítményeket az egyéni *. ini* -fájlhoz a [kiterjesztéssel](https://www.php.net/manual/ini.core.php#ini.extension) vagy [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) irányelvekkel.
+Kövesse a PHP_INI_SYSTEM irányelveinek testreszabása [lépéseit,](#customize-php_ini_system-directives)és adja hozzá a [](https://www.php.net/manual/ini.core.php#ini.extension) bővítményeket az egyéni *.ini* fájlhoz a kiterjesztéssel vagy a zend_extension [irányelvekkel.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
 
 ```
 extension=d:\home\site\wwwroot\bin\mongodb.dll
 zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
 ```
 
-A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
+A módosítások érvénybe lépnek, ha újraindítja az alkalmazást.
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-A beépített PHP-telepítések a leggyakrabban használt bővítményeket tartalmazzák. A További bővítmények ugyanúgy engedélyezhetők, mint az [php.ini irányelvek testreszabása](#customize-php_ini_system-directives).
+A beépített PHP-telepítések tartalmazzák a leggyakrabban használt bővítményeket. A további bővítményeket ugyanúgy engedélyezheti, mint a(php.ini [irányelveket.](#customize-php_ini_system-directives)
 
 > [!NOTE]
-> A PHP-verzió és a jelenlegi *php.ini* konfiguráció megtekintésének legjobb módja az [phpinfo ()](https://php.net/manual/function.phpinfo.php) hívása az alkalmazásban.
+> A PHP-verzió és a jelenlegi konfigurációphp.ini *a* [phpinfo()](https://php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
 >
 
 További bővítmények engedélyezéséhez kövesse az alábbi lépéseket:
 
-Adjon hozzá egy `bin` könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.so` bővítmény fájljait (például *mongodb.so*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
+Adjon hozzá egy könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze bele a `bin` `.so` bővítményfájlokat *(például* mongodb.so). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, valamint a VC9 és a nem szálmentes (nts) verzióval.
 
-Telepítse a módosításokat.
+A módosítások üzembe helyezése.
 
-Kövesse az [PHP_INI_SYSTEM irányelvek testreszabása](#customize-php_ini_system-directives)című szakasz lépéseit, adja hozzá a bővítményeket az egyéni *. ini* -fájlhoz a [kiterjesztéssel](https://www.php.net/manual/ini.core.php#ini.extension) vagy [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) irányelvekkel.
+Kövesse a PHP_INI_SYSTEM irányelveinek testreszabása [lépéseit,](#customize-php_ini_system-directives)és adja hozzá a [](https://www.php.net/manual/ini.core.php#ini.extension) bővítményeket az egyéni *.ini* fájlhoz a kiterjesztéssel vagy a zend_extension [irányelvekkel.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
 
 ```ini
 extension=/home/site/wwwroot/bin/mongodb.so
 zend_extension=/home/site/wwwroot/bin/xdebug.so
 ```
 
-A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
+A módosítások érvénybe lépnek, ha újraindítja az alkalmazást.
 
 ::: zone-end
 
@@ -452,7 +452,7 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 
 ::: zone pivot="platform-windows"  
 
-A standard [error_log ()](https://php.net/manual/function.error-log.php) segédprogrammal megtekintheti a diagnosztikai naplókat a Azure app Serviceban.
+A standard [error_log()](https://php.net/manual/function.error-log.php) segédprogrammal készítse el a diagnosztikai naplókat a Azure App Service.
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
@@ -466,14 +466,14 @@ A standard [error_log ()](https://php.net/manual/function.error-log.php) segédp
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
+Ha egy működő PHP-alkalmazás másképp viselkedik a App Service vagy hibákat tartalmaz, próbálkozzon a következővel:
 
-- [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Például:
-    - A *composer.jstól* függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
-    - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
-    - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
-- Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` `true` alkalmazás beállítását ](configure-common.md#configure-app-settings)adja meg.
+- [Hozzáférés a naplóstreamhez.](#access-diagnostic-logs)
+- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért győződjön meg arról, hogy a projekt a várt módon működik helyileg éles módban. Például:
+    - Attól függően, *hogycomposer.jsvan-e,* különböző csomagok telepíthetők az éles módhoz ( és nem `require` `require-dev` ).
+    - Bizonyos webes keretrendszerek eltérő módon helyezhetnek üzembe statikus fájlokat éles módban.
+    - Bizonyos webes keretrendszerek egyéni indítási szkripteket használhatnak éles módban való futtatáskor.
+- Futtassa az alkalmazást App Service módban. A [Laravelben](https://meanjs.org/)például úgy konfigurálhatja az alkalmazást, hogy éles környezetben is kiadja a hibakeresési üzeneteket, ha az alkalmazásbeállítást a következőre [ `APP_DEBUG` konfigurálja: `true` ](configure-common.md#configure-app-settings).
 
 ::: zone pivot="platform-linux"
 
@@ -492,4 +492,3 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 > [App Service a Linuxon – gyakori kérdések](faq-app-service-linux.md)
 
 ::: zone-end
-

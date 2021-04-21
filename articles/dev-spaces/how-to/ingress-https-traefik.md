@@ -4,33 +4,33 @@ services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
 description: Megtudhatja, hogyan konfigurálhatja az Azure Dev Spacest egyéni traefik bejövő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t ezzel a bejövő vezérlővel
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók, Helm, service mesh, service mesh routing, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók, Helm, szolgáltatási háló, szolgáltatási háló útválasztása, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: a04b46297d4eef6403f580206795bb492dd82516
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 76a89545b8edc700928c1c2fe0e91dfc5d3127b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374029"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777490"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni traefik bejövő vezérlő használata és HTTPS konfigurálása
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Dev Spacest egyéni traefik bejövő vezérlő használatára. Ez a cikk azt is bemutatja, hogyan konfigurálhatja az egyéni bejövő forgalomvezérlőt HTTPS használatára.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Dev Spacest egy egyéni traefik bejövő vezérlő használatára. Ez a cikk azt is bemutatja, hogyan konfigurálhatja az egyéni bejövő forgalomvezérlőt HTTPS használatára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot][azure-account-create].
 * [Telepítette az Azure CLI-t.][az-cli]
-* [Azure Kubernetes Service (AKS-) fürt engedélyezett Azure Dev Spaces használatával] [qs-cli].
-* [telepített kubectl.][kubectl]
+* [Azure Kubernetes Service (AKS-) fürt engedélyezett Azure Dev Spaces-sel] [qs-cli].
+* [kubectl][kubectl] telepítve.
 * [A Helm 3 telepítve van.][helm-installed]
-* [Egyéni tartomány][custom-domain] DNS-zónával. [][dns-zone] Ez a cikk feltételezi, hogy az egyéni tartomány és a DNS-zóna ugyanabban az erőforráscsoportban található, mint az AKS-fürt, de más erőforráscsoportban is használhat egyéni tartományt és DNS-zónát.
+* [Egyéni tartomány][custom-domain] DNS-zónával. [][dns-zone] Ez a cikk feltételezi, hogy az egyéni tartomány és a DNS-zóna ugyanabban az erőforráscsoportban található, mint az AKS-fürt, de egy másik erőforráscsoportban is használhat egyéni tartományt és DNS-zónát.
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Egyéni traefik bejövő vezérlő konfigurálása
 
-Csatlakozzon a fürthöz a [kubectl][kubectl]használatával, a Kubernetes parancssori ügyfelével. Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
+Csatlakozzon a fürthöz a [kubectl][kubectl], a Kubernetes parancssori ügyfél használatával. Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -61,19 +61,19 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> A fenti példa egy nyilvános végpontot hoz létre a bejövő forgalomvezérlőhöz. Ha ehelyett privát végpontot kell használnia a bejövő forgalomvezérlőhöz, adja hozzá a *--set service.annotations halmazt." service \\ .beta \\ .kubernetes \\ .io/azure-load-balancer-internal"=true* paraméter a *helm install parancshoz.*
+> A fenti példa létrehoz egy nyilvános végpontot a bejövő forgalom vezérlője számára. Ha ehelyett privát végpontot kell használnia a bejövő forgalomvezérlőhöz, adja hozzá a *--set service.annotations halmazt." service \\ .beta \\ .kubernetes \\ .io/azure-load-balancer-internal"=true* paraméter a *Helm install parancshoz.*
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
 > Ez a privát végpont az AKS-fürtöt üzembe helyező virtuális hálózaton belül van elérhető.
 
-A [kubectl][kubectl-get]get használatával szerezze be a traefik bejövő forgalomvezérlő szolgáltatás IP-címét.
+A [kubectl get][kubectl-get]használatával szerezze be a traefik bejövő forgalomvezérlő szolgáltatás IP-címét.
 
 ```console
 kubectl get svc -n traefik --watch
 ```
 
-A mintakimenet a *traefik* névtérben az összes szolgáltatás IP-címét megjeleníti.
+A mintakimenet a *traefik* névtér összes szolgáltatásához megjeleníti az IP-címeket.
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
@@ -94,7 +94,7 @@ az network dns record-set a add-record \
 
 A fenti példa egy *A* rekordot ad hozzá a *MY_CUSTOM_DOMAIN* DNS-zónához.
 
-Ebben a cikkben az [Azure Dev Spaces](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) Bike Sharing mintaalkalmazását használjuk az Azure Dev Spaces használatának szemléltető példáihoz. Klónozza az alkalmazást a GitHubról, és lépjen a könyvtárába:
+Ebben a cikkben az Azure Dev Spaces Bike [Sharing mintaalkalmazását](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használjuk az Azure Dev Spaces használatának szemléltető példáihoz. Klónozza az alkalmazást a GitHubról, és lépjen a könyvtárába:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -134,7 +134,7 @@ Hozza létre *a Dev* Space-t a mintaalkalmazással a `azds space select` haszná
 azds space select -n dev -y
 ```
 
-A mintaalkalmazás üzembe helyezése a `helm install` használatával.
+Telepítse a mintaalkalmazást a `helm install` használatával.
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -157,19 +157,19 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigáljon *a bikesharingweb szolgáltatáshoz* a parancsból a nyilvános URL-cím `azds list-uris` megnyitásával. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
+Navigáljon *a bikesharingweb szolgáltatáshoz* a parancs nyilvános URL-címének `azds list-uris` megnyitásával. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
-> Ha a *bikesharingweb* szolgáltatás helyett hibalap jelenik  meg,  ellenőrizze, hogy frissítette-e a kubernetes.io/ingress.class jegyzetet és a gazdagépet a *values.yaml fájlban.*
+> Ha a *bikesharingweb* szolgáltatás helyett hibalap jelenik  meg, ellenőrizze, hogy frissítette-e a kubernetes.io/ingress.class jegyzetet és a gazdagépet a *values.yaml fájlban.* 
 
-Az paranccsal hozzon létre egy gyermekhelyet a Dev alatt, és listába sorolja a gyermek Dev Space eléréséhez szükséges `azds space select` URL-címeket. 
+Az paranccsal hozzon létre egy gyermekhelyet a Dev alatt, és listába sorolja a gyermek `azds space select` Dev Space eléréséhez szükséges URL-címeket. 
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Az alábbi kimenetben a mintaalkalmazás azureuser1 gyermek Dev Space-beli eléréséhez szükséges `azds list-uris` URL-címeket  mutatjuk be.
+Az alábbi kimenet a minta URL-címeit mutatja be a mintaalkalmazás eléréséhez az `azds list-uris` *azureuser1* gyermek Dev Space-térben.
 
 ```console
 Uri                                                  Status
@@ -178,11 +178,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigáljon *a bikesharingweb szolgáltatáshoz* az *azureuser1* gyermek Dev Space-térben a parancs nyilvános URL-címének `azds list-uris` megnyitásával. A fenti példában az *azureuser1* gyermek Dev Space *bikesharingweb* szolgáltatásának nyilvános URL-címe `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` a következő: .
+Navigáljon *a bikesharingweb* szolgáltatáshoz az *azureuser1* gyermek Dev Space-térben a parancs nyilvános URL-címének `azds list-uris` megnyitásával. A fenti példában az *azureuser1* gyermek Dev Space *bikesharingweb* szolgáltatásának nyilvános URL-címe `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` a következő: .
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>A traefik bejövő forgalomvezérlő konfigurálása HTTPS használatára
 
-A [tanúsítványkezelővel][cert-manager] automatizálhatja a TLS-tanúsítvány kezelését, amikor a traefik bejövő vezérlőt HTTPS használatára konfigurálja. A `helm` *certmanager diagram telepítéséhez használja* a következőt: .
+A [tanúsítványkezelővel][cert-manager] automatizálhatja a TLS-tanúsítvány kezelését, amikor a traefik bejövő forgalomvezérlőt HTTPS használatára konfigurálja. A `helm` *certmanager diagram telepítéséhez használja* a következőt: .
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
@@ -192,7 +192,7 @@ helm repo update
 helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Hozzon létre `letsencrypt-clusterissuer.yaml` egy fájlt, és frissítse az e-mail-mezőt az e-mail-címével.
+Hozzon `letsencrypt-clusterissuer.yaml` létre egy fájlt, és frissítse az e-mail-mezőt az e-mail-címével.
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> A teszteléshez egy előkészítési kiszolgáló is rendelkezésre áll, [amely][letsencrypt-staging-issuer] használható a *ClusterIssuerhez.*
+> A teszteléshez egy előkészítési [kiszolgálót][letsencrypt-staging-issuer] is használhat a *ClusterIssuerhez.*
 
 Az `kubectl` alkalmazáshoz használja a következőt: `letsencrypt-clusterissuer.yaml` .
 
@@ -220,7 +220,7 @@ Az `kubectl` alkalmazáshoz használja a következőt: `letsencrypt-clusterissue
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Távolítsa el az előző traefik *ClusterRole* és *ClusterRoleBinding* *traefiket,* majd frissítse a traefiket a HTTPS használatára a `helm` használatával.
+Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding* fürtöt, majd frissítse a traefiket a HTTPS használatára a `helm` használatával.
 
 > [!NOTE]
 > Ha az AKS-fürtön nincs engedélyezve a Kubernetes RBAC, távolítsa el a *--set rbac.enabled=true paramétert.*
@@ -237,7 +237,7 @@ A [kubectl get][kubectl-get]használatával szerezze be a traefik bejövő forga
 kubectl get svc -n traefik --watch
 ```
 
-A mintakimenet a *traefik* névtér összes szolgáltatásához megjeleníti az IP-címeket.
+A mintakimenet a *traefik* névtérben az összes szolgáltatás IP-címét megjeleníti.
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP          PORT(S)                      AGE
@@ -306,13 +306,13 @@ Keresse meg a mintaalkalmazást a *dev/azureuser1* gyermektérben, és figyelje 
 > [!IMPORTANT]
 > A DNS-módosítások befejezése és a mintaalkalmazás elérhetővé tétele akár 30 percet is igénybe vehet.
 
-Figyelje meg azt is, hogy az oldal betöltődik, de a böngészőben néhány hiba jelenik meg. A böngészőkonzol megnyitásakor a hiba egy HTTP-erőforrásokat betöltő HTTPS-oldalhoz kapcsolódik. Például:
+Azt is figyelje meg, hogy az oldal betöltődik, de a böngésző néhány hibát mutat. A böngésző konzol megnyitásakor a hiba egy HTTP-erőforrásokat betöltő HTTPS-oldalhoz kapcsolódik. Például:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-A hiba kijavítása előtt frissítse a [BikeSharingWeb/azds.yaml][azds-yaml] fájlját úgy, hogy a *traefiket* használja *a kubernetes.io/ingress.class-hez* és a *$(hostSuffix) egyéni tartományát.* Például:
+A hiba kijavítása előtt frissítse a [BikeSharingWeb/azds.yaml][azds-yaml] fájlját, hogy a *traefiket* használja *a kubernetes.io/ingress.class-hoz* és az *$(hostSuffix) egyéni tartományát.* Például:
 
 ```yaml
 ...
@@ -325,7 +325,7 @@ A hiba kijavítása előtt frissítse a [BikeSharingWeb/azds.yaml][azds-yaml] f�
 ...
 ```
 
-Frissítse [a BikeSharingWeb/package.jsaz][package-json] URL-csomag *függőségével.*
+Frissítse [a BikeSharingWeb/package.jsbe][package-json] az URL-csomag *függőségével.*
 
 ```json
 {
@@ -372,9 +372,9 @@ További információ az Azure Dev Spacesről.
 
 
 [az-cli]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
-[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-remove-record
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_add_record
+[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_remove_record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml

@@ -1,38 +1,38 @@
 ---
-title: Function app-kód folyamatos frissítése az Azure DevOps
-description: Megtudhatja, hogyan állíthat be olyan Azure DevOps-folyamatot, amely Azure Functions célozza meg.
+title: Függvényalkalmazás kódszámának folyamatos frissítése az Azure DevOps használatával
+description: Megtudhatja, hogyan állíthat be olyan Azure DevOps-folyamatot, amely Azure Functions.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a99e313a0c3fe9093137d4acaa64e789ef5e10e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97563415"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762208"
 ---
-# <a name="continuous-delivery-by-using-azure-devops"></a>Folyamatos kézbesítés az Azure DevOps használatával
+# <a name="continuous-delivery-by-using-azure-devops"></a>Folyamatos teljesítés az Azure DevOps használatával
 
-A függvényt automatikusan üzembe helyezheti egy Azure Functions alkalmazásban az [Azure-folyamatok](/azure/devops/pipelines/)használatával.
+A függvényt automatikusan üzembe helyezheti egy Azure Functions az [Azure Pipelines használatával.](/azure/devops/pipelines/)
 
-A folyamat definiálásának két lehetősége van:
+A folyamat meghatározására két lehetőség közül választhat:
 
-- **YAML-fájl**: egy YAML-fájl leírja a folyamatot. Lehetséges, hogy a fájl létrehozási lépések szakasza és a kiadás szakasza. A YAML-fájlnak ugyanabban a tárházban kell lennie, mint az alkalmazásnak.
-- **Sablon**: a sablonok készen állnak az alkalmazás létrehozására vagy üzembe helyezésére.
+- **YAML-fájl:** A folyamatot egy YAML-fájl írja le. A fájlnak lehet egy build lépések szakasza és egy kiadási szakasza. A YAML-fájlnak és az alkalmazásnak ugyanabban az adattában kell lennie.
+- **Sablon:** A sablonok használatra kész feladatok, amelyek az alkalmazást buildlik vagy telepítik.
 
 ## <a name="yaml-based-pipeline"></a>YAML-alapú folyamat
 
-YAML-alapú folyamat létrehozásához először létre kell hoznia az alkalmazást, majd telepítenie kell az alkalmazást.
+YAML-alapú folyamat létrehozásához először hozza létre az alkalmazást, majd telepítse az alkalmazást.
 
 ### <a name="build-your-app"></a>Az alkalmazás létrehozása
 
-Az alkalmazás Azure-folyamatokban való létrehozása az alkalmazás programozási nyelvtől függ. Az egyes nyelveken olyan speciális összeállítási lépések vannak, amelyek üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevő használatával üzembe helyezhetők a Function alkalmazás az Azure-ban.
+Az alkalmazás Azure Pipelinesban való buildének módja az alkalmazás programozási nyelvétől függ. Minden nyelv rendelkezik egy adott build lépésekkel, amelyek létrehoznak egy üzembe helyezési összetevőt. A függvényalkalmazás az Azure-ban való üzembe helyezéséhez egy üzembe helyezési összetevőt használ.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-A következő minta használatával létrehozhat egy YAML-fájlt egy .NET-alkalmazás létrehozásához:
+A következő minta használatával yaml-fájlt hozhat létre .NET-alkalmazás létrehozásához:
 
 ```yaml
 pool:
@@ -63,7 +63,7 @@ steps:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő minta használatával létrehozhat egy YAML-fájlt egy JavaScript-alkalmazás létrehozásához:
+Az alábbi minta segítségével yaml-fájlt hozhat létre JavaScript-alkalmazás létrehozásához:
 
 ```yaml
 pool:
@@ -91,9 +91,9 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-A következő minták egyikével létrehozhat egy YAML-fájlt egy adott Python-verzióhoz készült alkalmazás létrehozásához. A Python csak Linux rendszeren futó Function apps esetén támogatott.
+Az alábbi minták egyikével YAML-fájlt hozhat létre egy adott Python-verzióhoz készült alkalmazás létrehozásához. A Python csak a Linuxon futó függvényalkalmazások esetében támogatott.
 
-**3,7-es verzió**
+**3.7-es verzió**
 
 ```yaml
 pool:
@@ -122,7 +122,7 @@ steps:
     artifactName: 'drop'
 ```
 
-**3,6-es verzió**
+**3.6-os verzió**
 
 ```yaml
 pool:
@@ -153,7 +153,7 @@ steps:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A következő minta használatával létrehozhat egy YAML-fájlt egy PowerShell-alkalmazás előkészítéséhez. A PowerShell csak Windows Azure Functions esetén támogatott.
+Az alábbi minta segítségével létrehozhat egy YAML-fájlt egy PowerShell-alkalmazás becsomagolához. A PowerShell csak Windows rendszerű Azure Functions.
 
 ```yaml
 pool:
@@ -177,9 +177,9 @@ steps:
 
 Az üzemeltetési operációs rendszertől függően az alábbi YAML-minták egyikét kell tartalmaznia a YAML-fájlban.
 
-#### <a name="windows-function-app"></a>Windows-függvény alkalmazás
+#### <a name="windows-function-app"></a>Windows-függvényalkalmazás
 
-A következő kódrészlet használatával telepítheti a Windows Function alkalmazást:
+A windowsos függvényalkalmazások üzembe helyezéséhez a következő kódrészletet használhatja:
 
 ```yaml
 steps:
@@ -194,9 +194,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linuxos Function-alkalmazás
+#### <a name="linux-function-app"></a>Linux-függvényalkalmazás
 
-A Linux-függvények alkalmazásának üzembe helyezéséhez a következő kódrészletet használhatja:
+A Linux-függvényalkalmazás üzembe helyezéséhez a következő kódrészletet használhatja:
 
 ```yaml
 steps:
@@ -212,61 +212,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>Sablon alapú folyamat
+## <a name="template-based-pipeline"></a>Sablonalapú folyamat
 
-Az Azure DevOps lévő sablonok előre definiált, alkalmazások létrehozására vagy üzembe helyezésére szolgáló tevékenységek.
+Az Azure DevOps-sablonok előre definiált feladatcsoportok, amelyek egy alkalmazást hoznak létre vagy helyeznek üzembe.
 
 ### <a name="build-your-app"></a>Az alkalmazás létrehozása
 
-Az alkalmazás Azure-folyamatokban való létrehozása az alkalmazás programozási nyelvtől függ. Az egyes nyelveken olyan speciális összeállítási lépések vannak, amelyek üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevő segítségével frissítheti a Function alkalmazást az Azure-ban.
+Az alkalmazás Azure Pipelinesban való buildének módja az alkalmazás programozási nyelvétől függ. Minden nyelvhez külön összeállítási lépések vannak, amelyek egy üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevővel frissítheti a függvényalkalmazást az Azure-ban.
 
-Ha beépített Build-sablonokat szeretne használni, hozzon létre egy új összeállítási folyamatot, és válassza **a klasszikus szerkesztő használata** folyamat létrehozásához tervezői sablonok használatával lehetőséget.
+Ha beépített buildsablonokat használ, új build-folyamat létrehozásakor válassza a Use the **classic editor** to create a pipeline by using designer templates (Folyamat létrehozása tervezősablonokkal a klasszikus szerkesztővel) lehetőséget.
 
-![Válassza ki az Azure-folyamatok klasszikus szerkesztőjét](media/functions-how-to-azure-devops/classic-editor.png)
+![Az Azure Pipelines klasszikus szerkesztőjének kiválasztása](media/functions-how-to-azure-devops/classic-editor.png)
 
-A kód forrásának konfigurálása után keressen rá Azure Functions Build sablonok elemre. Válassza ki azt a sablont, amely megfelel az alkalmazás nyelvének.
+A kód forrásának konfigurálása után keresse meg a Azure Functions buildsablonokat. Válassza ki az alkalmazás nyelvének megfelelő sablont.
 
-![Azure Functions létrehozási sablon kiválasztása](media/functions-how-to-azure-devops/build-templates.png)
+![Válasszon ki egy Azure Functions-sablont](media/functions-how-to-azure-devops/build-templates.png)
 
-Bizonyos esetekben az összetevők kiépítése egy adott mappastruktúrát is tartalmaz. Előfordulhat, hogy ki kell jelölnie a kiindulási **gyökérmappa nevét az archiválási elérési utakhoz** jelölőnégyzet.
+Bizonyos esetekben a build-összetevők egy adott mappastruktúrával is rendelkezik. Előfordulhat, hogy be kell választania a **Prepend root folder name to archive paths (Gyökérmappa** neve az archiváláshoz archivált elérési utakhoz) jelölőnégyzetet.
 
-![A gyökérmappa nevének megadására szolgáló lehetőség](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![A gyökérmappa nevének előtagként való be- és be-](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript-alkalmazások
 
-Ha a JavaScript-alkalmazás függőséget tartalmaz a Windows natív moduljaival, frissítenie kell az ügynök készletének verzióját az **üzemeltetett VS2017**.
+Ha a JavaScript-alkalmazás natív Windows-moduloktól függ, frissítenie kell az ügynökkészlet verzióját **Üzemeltetett VS2017 verzióra.**
 
-![Az ügynök-készlet verziójának frissítése](media/functions-how-to-azure-devops/change-agent.png)
+![Az ügynökkészlet verziójának frissítése](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>Az alkalmazás üzembe helyezése
 
 Új kiadási folyamat létrehozásakor keresse meg a Azure Functions kiadási sablont.
 
-![A Azure Functions kiadási sablon keresése](media/functions-how-to-azure-devops/release-template.png)
+![Keresse meg a Azure Functions kiadási sablont](media/functions-how-to-azure-devops/release-template.png)
 
-A kiadási sablon nem támogatja az üzembe helyezést az üzembe helyezési pontokon.
+Az üzembe helyezés az üzembe helyezési tárolóhelyen nem támogatott a kiadási sablonban.
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Build folyamat létrehozása az Azure CLI használatával
 
-Az Azure-beli build-folyamat létrehozásához használja az `az functionapp devops-pipeline create` [parancsot](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). A létrehozási folyamat úgy jön létre, hogy felépítse és felszabadítsa a tárházban végrehajtott bármely kód módosításait. A parancs létrehoz egy új YAML-fájlt, amely meghatározza a létrehozási és a kiadási folyamatot, majd véglegesíti azt a tárházban. A parancs előfeltételei a kód helyétől függenek.
+Build folyamat Azure-ban való létrehozásához használja a `az functionapp devops-pipeline create` [parancsot.](/cli/azure/functionapp/devops-pipeline#az_functionapp_devops_pipeline_create) A build folyamatának létrehozása az adattában végrehajtott kódváltozások buildlését és kiadását jelenti. A parancs létrehoz egy új YAML-fájlt, amely meghatározza a build- és kiadási folyamatot, majd véglegesít az adattáraban. A parancs előfeltételei a kód helyétől függnek.
 
-- Ha a kód a GitHubban található:
-
-    - Az előfizetéséhez **írási** engedéllyel kell rendelkeznie.
-
-    - A projekt rendszergazdájának kell lennie az Azure DevOps-ben.
-
-    - A megfelelő engedélyekkel rendelkező GitHub személyes hozzáférési jogkivonat (PAT) létrehozásához engedélyekkel kell rendelkeznie. További információ: [GITHUB Pat engedélyekre vonatkozó követelmények.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
-
-    - Az automatikusan létrehozott YAML-fájl elvégzéséhez jogosultnak kell lennie arra, hogy véglegesítse a GitHub-tárház fő ágát.
-
-- Ha a kódja az Azure Reposban van:
+- Ha a kód a GitHubon található:
 
     - Az előfizetéséhez **írási** engedéllyel kell rendelkeznie.
 
-    - A projekt rendszergazdájának kell lennie az Azure DevOps-ben.
+    - Önnek kell a projekt rendszergazdájának lennie az Azure DevOpsban.
+
+    - Rendelkeznie kell a megfelelő engedélyekkel rendelkező személyes GitHub hozzáférési jogkivonat (PAT) létrehozásához szükséges engedélyekkel. További információ: [A GitHub PAT engedélykövetelményei.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
+
+    - Az automatikusan létrehozott YAML-fájl véglegesítéshez rendelkeznie kell a GitHub-adattár fő ágában való véglegesítéshez szükséges engedélyekkel.
+
+- Ha a kód az Azure Reposban van:
+
+    - Az előfizetéséhez **írási** engedéllyel kell rendelkeznie.
+
+    - Önnek kell a projekt rendszergazdájának lennie az Azure DevOpsban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át a [Azure functions áttekintését](functions-overview.md).
-- Tekintse át az [Azure DevOps áttekintését](/azure/devops/pipelines/).
+- Tekintse át a [Azure Functions áttekintését.](functions-overview.md)
+- Tekintse át az [Azure DevOps áttekintését.](/azure/devops/pipelines/)

@@ -4,21 +4,21 @@ description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvények
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef3886c4b9b73f87238bf386d1320ecbac8ad181
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374896"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777580"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functions
 
 Ez a cikk bemutatja, hogyan tilthatja le a függvényeket a Azure Functions. Egy *függvény* letiltásához a futásidőt figyelmen kívül kell hagyni a függvényhez definiált automatikus eseményindítóval. Ez lehetővé teszi egy adott függvény futtatásának megakadályozását a teljes függvényalkalmazás leállítása nélkül.
 
-A függvények letiltására az ajánlott módszer, ha egy alkalmazásbeállítás formátuma `AzureWebJobs.<FUNCTION_NAME>.Disabled` a következőre van állítva: `true` . Ezt az alkalmazásbeállítást többféleképpen is létrehozhatja és módosíthatja, többek között  az [Azure CLI](/cli/azure/) használatával, valamint a függvény Áttekintés lapján a [Azure Portal.](https://portal.azure.com) 
+A függvények letiltására az ajánlott módszer, ha egy alkalmazásbeállítás `AzureWebJobs.<FUNCTION_NAME>.Disabled` formátuma a következőre van állítva: `true` . Ezt az alkalmazásbeállítást többféleképpen is létrehozhatja és módosíthatja, többek között  az [Azure CLI](/cli/azure/) használatával, valamint a függvény Áttekintés lapján a [Azure Portal.](https://portal.azure.com) 
 
 > [!NOTE]  
-> Ha letilt egy HTTP-eseményindítóval aktivált függvényt a cikkben ismertetett módszerekkel, a végpont elérhető marad a helyi számítógépen való futtatáskor.  
+> Ha letilt egy HTTP-eseményindítóval aktivált függvényt a cikkben ismertetett módszerekkel, a végpont elérhető lehet a helyi számítógépen való futtatáskor.  
 
 ## <a name="disable-a-function"></a>Függvény letiltása
 
@@ -28,14 +28,14 @@ Használja **az Engedélyezés** és a **Letiltás** gombot a függvény **Átte
 
 ![Függvényállapot-kapcsoló](media/disable-function/function-state-switch.png)
 
-Akkor is letilthatja a függvényeket a portálon, ha egy helyi projektből teszi közzé a függvényalkalmazásban. 
+Akkor is letilthatja a függvényeket a függvényalkalmazásban, ha egy helyi projektből teszi közzé a függvényalkalmazásban a portált. 
 
 > [!NOTE]  
 > A portállal integrált tesztelési funkció figyelmen kívül hagyja a `Disabled` beállítást. Ez azt jelenti, hogy a letiltott  függvény továbbra is fut, amikor a portál Teszt ablakából indult el. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Az Azure CLI-ban az paranccsal hozhatja létre és [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) módosíthatja az alkalmazásbeállítást. A következő parancs egy nevű függvény letiltásához létrehoz egy nevű `QueueTrigger` alkalmazásbeállítást, és `AzureWebJobs.QueueTrigger.Disabled` a következőre be van omkantva: `true` . 
+Az Azure CLI-ban az paranccsal hozhatja létre és [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) módosíthatja az alkalmazásbeállítást. A következő parancs egy nevű függvény letiltásához létrehoz egy nevű `QueueTrigger` alkalmazásbeállítást, `AzureWebJobs.QueueTrigger.Disabled` és be kell kapcsolnia a következőre: `true` . 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
@@ -118,7 +118,7 @@ A függvények ugyanúgy letilthatók, mint a helyi futtatáskor. Egy nevű füg
 
 ## <a name="other-methods"></a>Egyéb módszerek
 
-Bár az alkalmazásbeállítási módszer minden nyelvhez és minden futásidejű verzióhoz ajánlott, a függvények letiltására többféle módszer is rendelkezésre áll. Ezek a nyelvi és futásidejű verziónként eltérő metódusok a visszamenőleges kompatibilitás érdekében megmaradnak. 
+Bár az alkalmazásbeállítási módszer minden nyelvhez és az összes futásidejű verzióhoz ajánlott, a függvények letiltására számos más módszer is rendelkezésre áll. Ezek a nyelvi és futásidejű verziónként eltérő metódusok a visszamenőleges kompatibilitás érdekében megmaradnak. 
 
 ### <a name="c-class-libraries"></a>C#-osztálytárak
 
@@ -140,7 +140,7 @@ public static class QueueFunctions
 
 Ez a metódus lehetővé teszi a függvény engedélyezését és letiltását az alkalmazás beállításának módosításával, újrakompatinálás vagy ismételt üzembe ásás nélkül. Ha módosít egy alkalmazásbeállítást, a függvényalkalmazás újraindul, így a letiltott állapotváltozást a rendszer azonnal felismeri.
 
-A paraméterhez egy konstruktor is rendelkezésre van, amely nem fogad el sztringet a beállítás neveként. Az attribútum ezen verziója nem ajánlott. Ha ezt a verziót használja, a függvény letiltott állapotának a módosítása érdekében újra le kell egészülnie és újra kell üzembe kell nie a projektet.
+A paraméternek van egy konstruktora is, amely nem fogad el sztringet a beállítás neveként. Az attribútum ezen verziója nem ajánlott. Ha ezt a verziót használja, a függvény letiltott állapotának a módosítása érdekében újra le kell egészülnie és újra kell üzembe kell nie a projektet.
 
 ### <a name="functions-1x---scripting-languages"></a>Functions 1.x – parancsnyelvek
 

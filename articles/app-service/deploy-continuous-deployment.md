@@ -1,125 +1,125 @@
 ---
 title: Folyamatos üzembe helyezés konfigurálása
-description: Megtudhatja, hogyan engedélyezheti a CI/CD-t a GitHub, a BitBucket, az Azure Repos vagy más repók Azure App Service. Válassza ki az igényeinek megfelelő Build-folyamatot.
+description: Megtudhatja, hogyan engedélyezheti a CI/CD-Azure App Service GitHubból, a BitBucketből, az Azure Reposból vagy más adattárakból. Válassza ki az igényeinek megfelelő build folyamatot.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470268"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789482"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a> Folyamatos üzembe helyezés az Azure App Service-be
 
-[Azure app Service](overview.md) lehetővé teszi a [GitHub](https://help.github.com/articles/create-a-repo), a [BitBucket](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)és az [Azure Repos](/azure/devops/repos/git/creatingrepo) -Tárházak folyamatos üzembe helyezését a legújabb frissítések behúzásával.
+[Azure App Service](overview.md) [github-,](https://help.github.com/articles/create-a-repo) [BitBucket-](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)és Azure [Repos-adattárakból](/azure/devops/repos/git/creatingrepo) a legújabb frissítések lehúzásával teszi lehetővé a folyamatos üzembe helyezést.
 
 > [!NOTE]
-> A Azure Portal, amely a régi telepítési élmény, a **fejlesztői központ (klasszikus)** lapja 2021 márciusában elavulttá válik. Ez a módosítás nem befolyásolja az alkalmazásban meglévő központi telepítési beállításokat, és az alkalmazás központi telepítését továbbra is kezelheti a **központi telepítési központ** lapon.
+> A **fejlesztői központ (klasszikus)** Azure Portal, amely a régi üzembe helyezési folyamat, 2021 márciusában elavult lesz. Ez a módosítás nem érinti az alkalmazás meglévő telepítési beállításait, és az alkalmazástelepítést a Központi telepítési központ **lapon folytathatja.**
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="configure-deployment-source"></a>Központi telepítési forrás konfigurálása
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a app Service alkalmazás felügyeleti lapjára.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a felügyeleti lapot a App Service alkalmazáshoz.
 
-1. A bal oldali menüben kattintson a **központi telepítési központ**  >  **beállításai** elemre. 
+1. A bal oldali menüben kattintson a **Központi telepítési központ beállításai**  >  **elemre.** 
 
-1. A **forrás** területen válassza ki az egyik CI/CD beállítást.
+1. A **Forrás mezőben** válassza ki az egyik CI/CD-lehetőséget.
 
-    ![Bemutatja, hogyan választható ki a központi telepítési forrás a központi telepítési központban Azure App Service](media/app-service-continuous-deployment/choose-source.png)
+    ![Bemutatja, hogyan választhatja ki az üzembe helyezési forrást a központi telepítési Azure App Service](media/app-service-continuous-deployment/choose-source.png)
 
-Válassza ki azt a fület, amely megfelel a lépéseknek.
+Válassza ki a lépésekhez kiválasztott lapfület.
 
 # <a name="github"></a>[GitHub](#tab/github)
 
-4. A [GitHub-műveletek](#how-the-github-actions-build-provider-works) az alapértelmezett Build-szolgáltató. A módosításhoz kattintson a **szolgáltató**  >  **app Service Build Service** (kudu) elemre > **OK gombra**.
+4. [GitHub Actions](#how-the-github-actions-build-provider-works) alapértelmezett buildszolgáltató. A módosításhoz kattintson a **Change provider** App Service Build Service (Kudu) (Szolgáltató módosítása a  >  **Build Service** (Kudu) > OK **gombra.**
 
     > [!NOTE]
-    > Ha az Azure-folyamatokat a App Service-alkalmazáshoz tartozó Build szolgáltatóként szeretné használni, ne konfigurálja App Service. Ehelyett konfigurálja a CI/CD-t közvetlenül az Azure-folyamatokból. Az **Azure-folyamatok** lehetőség csak a megfelelő irányba mutat.
+    > Ha az Azure Pipelinest az alkalmazás buildszolgáltatójaként App Service, ne konfigurálja azt a App Service. Ehelyett konfigurálja a CI/CD-t közvetlenül az Azure Pipelinesból. Az **Azure Pipelines lehetőség** csak a megfelelő irányba mutat.
 
-1. Ha első alkalommal telepít üzembe a GitHubról, kattintson az **Engedélyezés** elemre, és kövesse az engedélyezési utasításokat. Ha egy másik felhasználó adattárát szeretné telepíteni, kattintson a **fiók módosítása** gombra.
+1. Ha először helyez üzembe a GitHubról, kattintson az Engedélyezés gombra, **és** kövesse az engedélyezési utasításokat. Ha egy másik felhasználó adattárában szeretne üzembe helyezést, kattintson a **Fiók módosítása elemre.**
 
-1. Miután engedélyezte az Azure-fiókját a GitHubon, válassza ki a **szervezetet**, a **tárházat** és az **ágat** a CI/CD konfigurálásához.
+1. Miután engedélyezte azure-fiókját a GitHubbal, válassza ki az **Organization**(Szervezet) , **Repository**(Tárház) és **Branch** (Ág) szolgáltatásokat a CI/CD konfiguráláshoz.
 
-1. Ha a GitHub-műveletek a kiválasztott Build-szolgáltató, kiválaszthatja a kívánt munkafolyamat-fájlt a **futásidejű verem** és a **verziók** legördülő lista használatával. Az Azure elvégzi ezt a munkafolyamat-fájlt a kiválasztott GitHub-tárházban a létrehozási és üzembe helyezési feladatok kezeléséhez. Ha meg szeretné tekinteni a fájlt a módosítások mentése előtt, kattintson az **előnézet fájl** elemre.
+1. Ha GitHub Actions a kiválasztott buildszolgáltató, kiválaszthatja a kívánt munkafolyamat-fájlt a **Futásidejű** verem és a **Verzió** legördülő menüben. Az Azure véglegesít egy munkafolyamat-fájlt a kiválasztott GitHub-adattárban a buildfeladatok kezeléséhez és üzembe helyezéséhez. A módosítások mentése előtt a fájl megtekintéséhez kattintson a Preview file (Fájl **előnézete) elemre.**
 
     > [!NOTE]
-    > App Service észleli az alkalmazás [nyelvi verem beállítását](configure-common.md#configure-language-stack-settings) , és kiválasztja a legmegfelelőbb munkafolyamat-sablont. Ha másik sablont választ, előfordulhat, hogy olyan alkalmazást telepít, amely nem megfelelően fut. További információ: [How the GitHub Actions Build Provider működik](#how-the-github-actions-build-provider-works).
+    > App Service észleli az alkalmazás nyelvi verembeállítását, és kiválasztja a legmegfelelőbb munkafolyamat-sablont. [](configure-common.md#configure-language-stack-settings) Ha másik sablont választ, előfordulhat, hogy olyan alkalmazást helyez üzembe, amely nem megfelelően fut. További információ: [A GitHub Actions buildszolgáltató működése.](#how-the-github-actions-build-provider-works)
 
 1. Kattintson a **Mentés** gombra.
    
-    Új véglegesíti a kiválasztott tárházban és ág-ban, most már folyamatosan üzembe helyezi a App Service alkalmazást. A commit és a központi telepítéseket a **naplók** lapon követheti nyomon.
+    A kiválasztott adattárban és ágban az új véglegesítések mostantól folyamatosan üzembe helyezhetők a App Service alkalmazásban. A véglegesítéseket és az üzembe helyezéseket a Naplók lapon **követheti** nyomon.
 
 # <a name="bitbucket"></a>[BitBucket](#tab/bitbucket)
 
-A BitBucket-integráció a App Service Build Services (kudu) szolgáltatást használja a Build Automation számára.
+A BitBucket-integráció a App Service Build Services (Kudu) szolgáltatást használja a build automatizálásához.
 
-4. Ha első alkalommal telepíti a BitBucket-t, kattintson az **Engedélyezés** elemre, és kövesse az engedélyezési utasításokat. Ha egy másik felhasználó adattárát szeretné telepíteni, kattintson a **fiók módosítása** gombra.
+4. Ha először helyez üzembe a BitBucketből, kattintson az **Engedélyezés** gombra, és kövesse az engedélyezési utasításokat. Ha egy másik felhasználó adattárában szeretne üzembe helyezést, kattintson a **Fiók módosítása elemre.**
 
-1. A bitbucket területen válassza ki azt a bitbucket- **csoportot**, **tárat** és **ágat** , amelyet folyamatosan telepíteni szeretne.
+1. A Bitbucket mezőben válassza ki a bitbucket  **csapat,** adattár **és** ág folyamatos üzembe helyezését.
 
 1. Kattintson a **Mentés** gombra.
    
-    Új véglegesíti a kiválasztott tárházban és ág-ban, most már folyamatosan üzembe helyezi a App Service alkalmazást. A commit és a központi telepítéseket a **naplók** lapon követheti nyomon.
+    A kiválasztott adattárban és ágban az új véglegesítések mostantól folyamatosan üzembe helyezhetők a App Service alkalmazásban. A véglegesítéseket és az üzembe helyezéseket a Naplók lapon **követheti** nyomon.
    
 # <a name="local-git"></a>[Helyi Git](#tab/local)
 
-Lásd: [helyi git-telepítés Azure app Service](deploy-local-git.md).
+Lásd: [Local Git deployment to Azure App Service](deploy-local-git.md).
 
 # <a name="azure-repos"></a>[Azure Repos](#tab/repos)
 
 > [!NOTE]
-> Az Azure Repos központi telepítési forrása a Windows-alkalmazások támogatása.
+> Az Azure Repos mint üzembe helyezési forrás támogatja a Windows-alkalmazásokat.
 >
 
-4. A App Service Build Service (kudu) az alapértelmezett Build-szolgáltató.
+4. App Service Build Service (Kudu) az alapértelmezett buildszolgáltató.
 
     > [!NOTE]
-    > Ha az Azure-folyamatokat a App Service-alkalmazáshoz tartozó Build szolgáltatóként szeretné használni, ne konfigurálja App Service. Ehelyett konfigurálja a CI/CD-t közvetlenül az Azure-folyamatokból. Az **Azure-folyamatok** lehetőség csak a megfelelő irányba mutat.
+    > Ha az Azure Pipelinest az alkalmazás buildszolgáltatójaként App Service, ne konfigurálja a App Service. Ehelyett konfigurálja a CI/CD-t közvetlenül az Azure Pipelinesból. Az **Azure Pipelines lehetőség** csak a megfelelő irányba mutat.
 
-1. Válassza ki azt az **Azure DevOps-szervezetet**, **projektet**, **tárházat** és **ágat** , amelyet folyamatosan szeretne üzembe helyezni. 
+1. Válassza ki a folyamatosan üzembe helyezni kívánt Azure  **DevOps-szervezetet,**  **Projektet,** Adattárat és Ágat. 
 
-    Ha a DevOps-szervezet nem szerepel a listáján, még nem kapcsolódik az Azure-előfizetéséhez. További információ: Azure- [szolgáltatásbeli kapcsolatok létrehozása](/azure/devops/pipelines/library/connect-to-azure).
+    Ha a DevOps-szervezet nem szerepel a listában, még nincs azure-előfizetéséhez kapcsolva. További információ: [Azure-szolgáltatáskapcsolat létrehozása.](/azure/devops/pipelines/library/connect-to-azure)
 
 -----
 
 ## <a name="disable-continuous-deployment"></a>Folyamatos üzembe helyezés letiltása
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a app Service alkalmazás felügyeleti lapjára.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a felügyeleti lapot a App Service alkalmazáshoz.
 
-1. A bal oldali menüben kattintson a **központi telepítési központ**  >  **beállításai**  >  **Leválasztás** lehetőségre. 
+1. A bal oldali menüben kattintson az **Üzembe helyezési központ beállításai**  >    >  **Leválasztása elemre.** 
 
-    ![Bemutatja, hogyan lehet leválasztani a Cloud Folder syncet a App Service alkalmazással a Azure Portal.](media/app-service-continuous-deployment/disable.png)
+    ![Bemutatja, hogyan bonthatja a felhőmappa szinkronizálását a App Service alkalmazással a Azure Portal.](media/app-service-continuous-deployment/disable.png)
 
-1. Alapértelmezés szerint a GitHub-műveletek munkafolyamat-fájlja megmarad a tárházban, de továbbra is elindítja az üzembe helyezést az alkalmazásban. Ha törölni szeretné a tárházból, válassza a **munkafolyamat-fájl törlése** lehetőséget.
+1. Alapértelmezés szerint a GitHub Actions munkafolyamat-fájl megőrzve marad az adattárban, de továbbra is elindítja az alkalmazáson belüli üzembe helyezést. Ha törölni szeretné az adattárból, válassza a **Munkafolyamat-fájl törlése lehetőséget.**
 
 1. Kattintson az **OK** gombra.
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="how-the-github-actions-build-provider-works"></a>A GitHub-műveletek Build-szolgáltatójának működése
+## <a name="how-the-github-actions-build-provider-works"></a>Az GitHub Actions buildszolgáltató működése
 
-A GitHub-műveletek Build Provider a [CI/CD a githubból](#configure-deployment-source)való beállítása, valamint a CI/CD beállításához a következők szükségesek:
+A GitHub Actions buildszolgáltató a CI/CD lehetőség a [GitHubról,](#configure-deployment-source)és a következő lépéseket teszi a CI/CD beállításhoz:
 
-- Egy GitHub-művelet munkafolyamati fájljának a GitHub-adattárba való beléptetésével kezeli a felépítési és üzembe helyezési feladatokat a App Service.
-- Hozzáadja az alkalmazás közzétételi profilját GitHub-titokként. A munkafolyamat-fájl ezt a titkot használja a App Service való hitelesítéshez.
-- Rögzíti az adatokat a [munkafolyamat-futtatási naplókból](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs) , és megjeleníti az alkalmazás **központi telepítési központ** **naplók** lapján.
+- Egy GitHub Actions munkafolyamatfájlt a GitHub-adattárba, hogy kezelni tudja az összeállítási és üzembe helyezési App Service.
+- Hozzáadja az alkalmazás közzétételi profilját GitHub-titokként. A munkafolyamat-fájl ezt a titkos adatokat használja a hitelesítéshez App Service.
+- Rögzíti a munkafolyamat futtatási naplóiból  [származó](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs) adatokat, és megjeleníti azokat az alkalmazás Üzembe helyezési központjának **Naplók lapján.**
 
-A GitHub-műveletek Build szolgáltatóját a következő módokon szabhatja testre:
+Az alkalmazás-GitHub Actions a következő módokon szabhatja testre:
 
-- A munkafolyamat-fájl testreszabása a GitHub-tárházban való létrehozása után. További információ: [a GitHub-műveletek munkafolyamat-szintaxisa](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions). Győződjön meg arról, hogy a munkafolyamat üzembe helyezése az [Azure/webapps-Deploy](https://github.com/Azure/webapps-deploy) művelettel app Service.
-- Ha a kiválasztott ág védett, a konfiguráció mentése nélkül is megtekintheti a munkafolyamat-fájlt, majd manuálisan hozzáadhatja azt a tárházhoz. Ez a metódus nem biztosítja a naplózási integrációt a Azure Portal.
-- A közzétételi profil helyett telepítsen egy [egyszerű szolgáltatásnevet](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) a Azure Active Directory-ben.
+- Testreszabhatja a munkafolyamat-fájlt, miután az már létre van hozva a GitHub-adattárban. További információ: [Munkafolyamat-szintaxis GitHub Actions.](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions) Csak győződjön meg arról, hogy a munkafolyamat App Service [azure/webapps-deploy művelet](https://github.com/Azure/webapps-deploy) használatával.
+- Ha a kiválasztott ág védett, akkor is megtekintheti a munkafolyamat-fájl előnézetét a konfiguráció mentése nélkül, majd manuálisan hozzáadhatja azt az adattárhoz. Ez a metódus nem adja meg a napló és a Azure Portal.
+- Közzétételi profil helyett az üzembe helyezést [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) használatával kell Azure Active Directory.
 
-#### <a name="authenticate-with-a-service-principal"></a>Hitelesítés egy egyszerű szolgáltatással
+#### <a name="authenticate-with-a-service-principal"></a>Hitelesítés szolgáltatásnévvel
 
-Ez a választható konfiguráció helyettesíti az alapértelmezett hitelesítést a közzétételi profilokkal a generált munkafolyamat-fájlban.
+Ez a választható konfiguráció lecseréli az alapértelmezett hitelesítést a létrehozott munkafolyamat-fájlban található közzétételi profilokra.
 
-1. Hozzon létre egy egyszerű szolgáltatást az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) paranccsal az [Azure CLI](/cli/azure/)-ben. A következő példában cserélje le a, a *\<subscription-id>* *\<group-name>* és a értéket a *\<app-name>* saját értékeire:
+1. Hozzon létre egy egyszerű szolgáltatást [az az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) az [Azure CLI-n.](/cli/azure/) A következő példában cserélje le a *\<subscription-id>* , *\<group-name>* és *\<app-name>* értékeket a saját értékeire:
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -128,15 +128,15 @@ Ez a választható konfiguráció helyettesíti az alapértelmezett hitelesíté
     ```
     
     > [!IMPORTANT]
-    > A biztonság érdekében adja meg az egyszerű szolgáltatáshoz szükséges minimális hozzáférést. Az előző példában szereplő hatókör az adott App Service alkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
+    > A biztonság érdekében adja meg a minimálisan szükséges hozzáférést a szolgáltatásnévhez. Az előző példában a hatókör nem a teljes erőforráscsoportra, App Service alkalmazásra van korlátozva.
     
-1. Mentse a következő lépéshez a teljes JSON-kimenetet, beleértve a legfelső szintűt is `{}` .
+1. Mentse a teljes JSON-kimenetet a következő lépéshez, beleértve a legfelső szintű kimenetet `{}` is.
 
-1. A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
+1. A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Beállítások > **Titkos > Új titkos kód hozzáadása lehetőséget.**
 
-1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adjon egy nevet a titoknak `AZURE_CREDENTIALS` .
+1. Illessze be az Azure CLI-parancs teljes JSON-kimenetét a titkos gombra. Adjon a titkos nak egy nevet, `AZURE_CREDENTIALS` például: .
 
-1. A **központi telepítési központ** által létrehozott munkafolyamat-fájlban módosítsa a lépést a `azure/webapps-deploy` következő példához hasonló kóddal (amely Node.js munkafolyamat-fájlból módosul):
+1. Az Üzembe helyezési központ által létrehozott munkafolyamat-fájlban módosítsa a lépést az alábbi példához hasonló kóddal (amelyet egy Node.js `azure/webapps-deploy` módosít):
 
     ```yaml
     - name: Sign in to Azure 
@@ -158,11 +158,11 @@ Ez a választható konfiguráció helyettesíti az alapértelmezett hitelesíté
     
 ## <a name="deploy-from-other-repositories"></a>Üzembe helyezés más adattárakból
 
-Windows-alkalmazások esetén manuálisan is konfigurálhatja a folyamatos üzembe helyezést egy olyan felhőalapú git-vagy Mercurial-adattárból, amelyet a portál közvetlenül nem támogat, például [GitLab](https://gitlab.com/). Ezt úgy teheti meg, hogy kijelöli a külső git elemet a **forrás** legördülő menüben. További információ: a [folyamatos üzembe helyezés beállítása manuális lépésekkel](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Windows-alkalmazások esetében manuálisan konfigurálhatja a folyamatos üzembe helyezést egy felhőalapú Git- vagy Mercurial-adattárból, amely a portál által közvetlenül nem támogatott, például a [GitLab.](https://gitlab.com/) Ezt a Source (Forrás) legördülő menü External Git (Külső **Git) legördülő menüében érhetők** el. További információ: Folyamatos üzembe helyezés [beállítása manuális lépésekkel.](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)
 
 ## <a name="more-resources"></a>További erőforrások
 
-* [Üzembe helyezés Azure-folyamatokból az Azure-ba App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
-* [A folyamatos üzembe helyezéssel kapcsolatos gyakori problémák vizsgálata](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Üzembe helyezés az Azure Pipelinesból az Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
+* [A folyamatos üzembe helyezés gyakori problémáinak kivizsgálása](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Azure PowerShell használatával](/powershell/azure/)
 * [A Kudu projekt](https://github.com/projectkudu/kudu/wiki)

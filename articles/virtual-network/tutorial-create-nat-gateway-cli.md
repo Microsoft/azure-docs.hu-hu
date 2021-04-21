@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: d312702f441cfe2ad94e347cadcdfc88d4cc2a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60436b8d4a0f338f4ece59ad4cd11c14c9e4c352
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479321"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762640"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-cli"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával
 
@@ -92,7 +92,7 @@ Hozzon létre egy **myVnet** nevű virtuális hálózatot egy **mySubnet** [az n
 
 Hozzon létre Azure Bastion **myBastionHost** nevű gazdagépet a virtuális gép eléréséhez. 
 
-Az [az network vnet subnet create használatával](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) hozzon létre egy Azure Bastion alhálózatot.
+Az [az network vnet subnet create használatával](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) hozzon létre egy Azure Bastion alhálózatot.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -111,7 +111,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-A [megerősített gazdagép létrehozásához használja](/cli/azure/network/bastion#az-network-bastion-create) az az network bastion create használhatja. 
+A [megerősített gazdagép létrehozásához használja](/cli/azure/network/bastion#az_network_bastion_create) az az network bastion create használhatja. 
 
 ```azurecli-interactive
 az network bastion create \
@@ -124,7 +124,7 @@ az network bastion create \
 
 ### <a name="configure-nat-service-for-source-subnet"></a>NAT-szolgáltatás konfigurálása a forrás alhálózathoz
 
-A **myVnet** virtuális hálózat **mySubnet** forrás-alhálózatát úgy konfiguráljuk, hogy egy **adott MYNATgateway** NAT-átjáró-erőforrást használjon az [az network vnet subnet update frissítéssel.](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) Ez a parancs aktiválja a NAT-szolgáltatást a megadott alhálózaton.
+A **myVnet** virtuális hálózat **mySubnet** forrás alhálózatát úgy konfiguráljuk, hogy a **myNATgateway** NAT-átjáró-erőforrást használja az [az network vnet subnet update frissítéssel.](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) Ez a parancs aktiválja a NAT-szolgáltatást a megadott alhálózaton.
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -141,7 +141,7 @@ Az internetes célhelyre irányuló összes kimenő forgalom mostantól a NAT-á
 
 Ebben a szakaszban egy virtuális gépet fog létrehozni a NAT-átjáró teszteléséhez a kimenő kapcsolat nyilvános IP-címének ellenőrzéséhez.
 
-Hozza létre a virtuális gépet az [az vm create gombra.](/cli/azure/vm#az-vm-create)
+Hozza létre a virtuális gépet az [az vm create gombra.](/cli/azure/vm#az_vm_create)
 
 ```azurecli-interactive
 az vm create \
@@ -158,21 +158,21 @@ Várja meg, amíg a virtuális gép létrehozása befejeződik, mielőtt tovább
 
 ## <a name="test-nat-gateway"></a>NAT-átjáró tesztelése
 
-Ebben a szakaszban a NAT-átjárót fogjuk tesztelni. Először felderítjük a NAT-átjáró nyilvános IP-címét. Ezután csatlakozunk a teszt virtuális géphez, és ellenőrizzük a kimenő kapcsolatot a NAT-átjárón keresztül.
+Ebben a szakaszban a NAT-átjárót fogjuk tesztelni. Először a NAT-átjáró nyilvános IP-címét derítjük fel. Ezután csatlakozunk a teszt virtuális géphez, és ellenőrizzük a kimenő kapcsolatot a NAT-átjárón keresztül.
     
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-1. Keresse meg a NAT-átjáró nyilvános IP-címét az **Áttekintés képernyőn.** A **bal oldali menüben** válassza a Minden szolgáltatás, majd a **Minden** erőforrás lehetőséget, végül a **myPublicIP elemet.**
+1. Keresse meg a NAT-átjáró nyilvános IP-címét az **Áttekintés képernyőn.** A **bal oldali menüben** válassza a Minden szolgáltatás, majd a Minden erőforrás **lehetőséget,** végül pedig a **myPublicIP elemet.**
 
 2. Jegyezze fel a nyilvános IP-címet:
 
     :::image type="content" source="./media/tutorial-create-nat-gateway-portal/find-public-ip.png" alt-text="NAT-átjáró nyilvános IP-címének felderítése" border="true":::
 
-3. A **bal oldali menüben** válassza a Minden szolgáltatás, majd az Összes erőforrás elemet, majd az erőforrások listájából válassza ki a **myResourceGroupNAT** erőforráscsoportban található **myVM** elemet.
+3. Válassza **a Minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **Minden** erőforrás lehetőséget, majd az erőforrások listájából válassza ki a **myResourceGroupNAT** erőforráscsoportban található **myVM** elemet.
 
-4. Az Áttekintés **lapon** válassza **a** Csatlakozás, majd a **Bastion lehetőséget.**
+4. Az Áttekintés **lapon** válassza a **Csatlakozás,** majd a **Bastion lehetőséget.**
 
-5. Válassza a kék **Bastion használata** gombot.
+5. Kattintson a kék **Bastion használata gombra.**
 
 6. Adja meg a virtuális gép létrehozása során megadott felhasználónevet és jelszót.
 
@@ -182,7 +182,7 @@ Ebben a szakaszban a NAT-átjárót fogjuk tesztelni. Először felderítjük a 
 
 9. Ellenőrizze, hogy a megjelenített IP-cím megegyezik-e az előző lépésben feljegyzett NAT-átjáró címével:
 
-    :::image type="content" source="./media/tutorial-create-nat-gateway-portal/my-ip.png" alt-text="Internet Explorer kimenő IP-cím megjelenítése" border="true":::
+    :::image type="content" source="./media/tutorial-create-nat-gateway-portal/my-ip.png" alt-text="Internet Explorer külső kimenő IP-cím megjelenítése" border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

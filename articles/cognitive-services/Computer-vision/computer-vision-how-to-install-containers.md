@@ -1,7 +1,7 @@
 ---
-title: Telepítse az OCR Docker-tárolók beolvasása Computer Vision
+title: OcR Docker-tárolók olvasása a Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A képekből és dokumentumokból származó szöveg kinyeréséhez használja az OCR Docker-tárolók beolvasása a Computer Visionból lehetőséget.
+description: Az OCR Docker-tárolók Computer Vision képekből és dokumentumokból származó szövegek helyszíni kinyerése.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,96 +12,96 @@ ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: dead48d7d449d1d403359c518eb842b32a54c634
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308776"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779092"
 ---
-# <a name="install-read-ocr-docker-containers"></a>Az OCR Docker-tárolók beolvasása
+# <a name="install-read-ocr-docker-containers"></a>Read OCR Docker-tárolók telepítése
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja Computer Vision tárolókat.
+A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ebből a cikkből megtudhatja, hogyan tölthet le, telepíthet és futtathat Computer Vision tárolókat.
 
-Az *olvasási* OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ: az [API-k olvasása útmutató](Vision-API-How-to-Topics/call-read-api.md).
+Az *OCR-tároló* olvasása lehetővé teszi nyomtatott és kézzel írt szövegek kinyerése JPEG-, PNG-, BMP-, PDF- és TIFF-fájlformátumokat támogató képekből és dokumentumokból. További információkért tekintse meg a [Read API útmutatóját.](Vision-API-How-to-Topics/call-read-api.md)
 
-## <a name="read-32-container"></a>3,2-tároló olvasása
+## <a name="read-32-container"></a>3.2-es tároló olvasása
 
-Az olvasási 3,2 OCR-tároló a következőket biztosítja:
+A Read 3.2 OCR-tároló a következő eket biztosítja:
 * Új modellek a nagyobb pontosság érdekében.
 * Több nyelv támogatása ugyanazon a dokumentumon belül.
-* Összesen 73 nyelv támogatása. Tekintse meg az [OCR által támogatott nyelvek](./language-support.md#optical-character-recognition-ocr)teljes listáját.
-* Egyetlen művelet a dokumentumok és a lemezképek esetében.
-* Nagyobb méretű dokumentumok és rendszerképek támogatása.
+* Összesen 73 nyelv támogatása. Lásd az [OCR által támogatott nyelvek teljes listáját.](./language-support.md#optical-character-recognition-ocr)
+* Egyetlen művelet a dokumentumokhoz és a képekhez.
+* Nagyobb méretű dokumentumok és képek támogatása.
 * Megbízhatósági pontszámok.
-* A nyomtatott és a kézzel írott szöveggel rendelkező dokumentumok támogatása.
-* Lehetőség szöveg kinyerésére csak a dokumentum kiválasztott oldaláról.
-* Válassza ki a Text Line kimeneti sorrendet az alapértelmezetttől a latin nyelvek természetesebb olvasási sorrendjéhez.
-* Szöveges sor besorolása kézzel írott stílusként, vagy csak latin nyelvekhez.
+* Nyomtatásra és kézzel írt szöveggel is írt dokumentumok támogatása.
+* A dokumentumban csak a kijelölt oldal(ak)ból lehet szöveget kinyerni.
+* Szövegsor kimeneti sorrendjének alapértelmezett értékről természetesebb olvasási sorrendre való kiválasztása csak latin nyelvek esetén.
+* A szövegsorok besorolása kézzel írott stílusként vagy nem csak latin nyelvű szövegként.
 
-Ha jelenleg olvasási 2,0-tárolót használ, tekintse meg az [áttelepítési útmutatót](read-container-migration-guide.md) az új verziók változásainak megismeréséhez.
+Ha jelenleg Read 2.0-tárolókat használ, [](read-container-migration-guide.md) tekintse meg a migrálási útmutatót az új verziók változásainak megismeréséért.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
+A tárolók használata előtt teljesítenie kell az alábbi előfeltételeket:
 
 |Kötelező|Cél|
 |--|--|
-|A Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a** Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
-|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 
-|Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
+|A Docker-motor| Telepítenie kell a Docker Engine-t egy [gazdagépre.](#the-host-computer) A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy engedélyezze a tárolók számára a kapcsolódást és a számlázási adatok Azure-ba való elküldését. <br><br> **Windows rendszeren** a Docker-t is úgy kell konfigurálni, hogy támogassa a Linux-tárolókat.<br><br>|
+|A Docker ismerete | Alapszintű ismeretekkel kell rendelkezik a Docker olyan fogalmairól, mint a regisztrációs jegyzékek, adattárak, tárolók és tároló rendszerképek, valamint az alapszintű `docker` parancsok ismerete.| 
+|Computer Vision erőforrás |A tároló csak akkor használható, ha:<br><br>Egy Azure **Computer Vision** erőforrás és a társított API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás Áttekintés és Kulcsok oldalán, amelyek szükségesek a tároló elindítani.<br><br>**{API_KEY}**: A Kulcsok lapon elérhető két **erőforráskulcs** egyike<br><br>**{ENDPOINT_URI}**: Az Áttekintés oldalon megadott **végpont**|
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="request-approval-to-run-the-container"></a>Kérelem jóváhagyása a tároló futtatásához
+## <a name="request-approval-to-run-the-container"></a>Jóváhagyás kérése a tároló futtatásához
 
-Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/csgate) a tároló futtatásához jóváhagyás kéréséhez. 
+Töltse ki és küldje el a [kéreleműrlapon,](https://aka.ms/csgate) hogy jóváhagyást kérjen a tároló futtatásához. 
 
 [!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>A gazdaszámítógép
+### <a name="the-host-computer"></a>A gazdagép
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Speciális vektoros bővítmény támogatása
+### <a name="advanced-vector-extension-support"></a>Speciális vektorbővítmények támogatása
 
-A **gazdaszámítógép** a Docker-tárolót futtató számítógép. A gazdagépnek *támogatnia kell* a [speciális vektoros bővítményeket](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). A Linux-gazdagépek AVX2-támogatását a következő paranccsal tekintheti meg:
+A **gazdaszámítógép** futtatja a Docker-tárolót. A *gazdagépnek támogatnia* kell [az Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) bővítményeket. A Linux-gazdagépek AVX2-támogatását a következő paranccsal ellenőrizheti:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 
 > [!WARNING]
-> A AVX2 támogatásához a gazdaszámítógép *szükséges* . A tároló *nem fog* megfelelően működni AVX2-támogatás nélkül.
+> A gazdagépnek *támogatnia kell* az AVX2-t. A tároló *nem fog megfelelően* működni az AVX2 támogatása nélkül.
 
-### <a name="container-requirements-and-recommendations"></a>A tárolóra vonatkozó követelmények és javaslatok
+### <a name="container-requirements-and-recommendations"></a>Tárolókra vonatkozó követelmények és javaslatok
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének lekérte a következővel: `docker pull`
 
-Az olvasáshoz tároló lemezképek érhetők el.
+Elérhetőek az Olvasáshoz használható tároló-rendszerképek.
 
-| Tároló | Container Registry/adattár/rendszerkép neve |
+| Tároló | Container Registry / Adattár / Rendszerkép neve |
 |-----------|------------|
-| Olvasás 2,0 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Olvasási 3,2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
+| 2.0-s előzetes verzió olvasása | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
+| Olvasás 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
-A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
+A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltsön le egy tároló-rendszerképet.
 
-### <a name="docker-pull-for-the-read-ocr-container"></a>Docker-lekérés az olvasási OCR-tárolóhoz
+### <a name="docker-pull-for-the-read-ocr-container"></a>Docker-lekért írás az OCR-tárolóhoz
 
-# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3.2-es verzió](#tab/version-3-2)
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
-# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+# <a name="version-20-preview"></a>[2.0-s előzetes verzió](#tab/version-2)
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
@@ -113,18 +113,18 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a [gazdagépen](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Ha a tároló már a gazdagépen [van,](#the-host-computer)a következő folyamattal dolgozhat a tárolóval.
 
-1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal. További [példák](computer-vision-resource-container-config.md) a `docker run` parancsra. 
-1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint). 
+1. [Futtassa a tárolót](#run-the-container-with-docker-run)a szükséges számlázási beállításokkal. További [példák](computer-vision-resource-container-config.md) érhetők el `docker run` a parancsra. 
+1. [A tároló előrejelzési végpontjának lekérdezése.](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a `docker run`
+## <a name="run-the-container-with-docker-run"></a>Futtassa a tárolót a következővel: `docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
+Futtassa a tárolót a [docker run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal. A és [az érték lekért](#gathering-required-parameters) részleteiért tekintse meg a szükséges paraméterek `{ENDPOINT_URI}` összegyűjtését. `{API_KEY}`
 
-[](computer-vision-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
+[Példák](computer-vision-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra.
 
-# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3.2-es verzió](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
@@ -136,12 +136,12 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* Futtatja az olvasási OCR-tárolót a tároló rendszerképből.
-* 8 CPU-mag és 18 gigabájt (GB) memóriát foglal le.
-* Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
-* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+* Futtatja az OCR-tároló olvasása a tároló rendszerképből.
+* 8 processzormagot és 18 gigabájt (GB) memóriát foglal le.
+* Elérhetővé teszi az 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
+* A rendszer automatikusan eltávolítja a tárolót, miután az kilép. A tároló rendszerképe továbbra is elérhető a gazdagépen.
 
-# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+# <a name="version-20-preview"></a>[2.0-s előzetes verzió](#tab/version-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -153,28 +153,28 @@ ApiKey={API_KEY}
 
 A parancs a következőket hajtja végre:
 
-* Futtatja az olvasási OCR-tárolót a tároló rendszerképből.
-* 8 CPU-mag és 16 gigabájt (GB) memóriát foglal le.
-* Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
-* A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+* Futtatja az OCR-tároló olvasása a tároló rendszerképből.
+* 8 processzormagot és 16 gigabájt (GB) memóriát foglal le.
+* Elérhetővé teszi az 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
+* A rendszer automatikusan eltávolítja a tárolót, miután az kilép. A tároló rendszerképe továbbra is elérhető a gazdagépen.
 
 ---
 
 
-További [példák](./computer-vision-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra. 
+További [példák](./computer-vision-resource-container-config.md#example-docker-run-commands) érhetők `docker run` el a parancsra. 
 
 > [!IMPORTANT]
-> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+> A , és beállításokat meg kell adni a tároló futtatásához; ellenkező esetben a tároló `Eula` `Billing` nem indul `ApiKey` el.  További információ: [Számlázás.](#billing)
 
-Ha nagyobb átviteli sebességre van szüksége (például többoldalas fájlok feldolgozásakor), érdemes több tárolót üzembe helyezni [egy Kubernetes-fürtön](deploy-computer-vision-on-premises.md)az [Azure Storage](../../storage/common/storage-account-create.md) és az [Azure üzenetsor](../../storage/queues/storage-queues-introduction.md)használatával.
+Ha nagyobb átviteli sebességre van szüksége (például többoldalas fájlok feldolgozásakor), fontolja meg több tároló üzembe helyezését egy [Kubernetes-fürtön](deploy-computer-vision-on-premises.md)az [Azure Storage](../../storage/common/storage-account-create.md) és az Azure [Queue használatával.](../../storage/queues/storage-queues-introduction.md)
 
-Ha az Azure Storage-t használja a lemezképek feldolgozásra történő tárolására, létrehozhat egy, a tároló meghívásakor használandó [kapcsolódási karakterláncot](../../storage/common/storage-configure-connection-string.md) .
+Ha az Azure Storage-ban tárolja [a](../../storage/common/storage-configure-connection-string.md) képek feldolgozásra való tárolását, létrehozhat egy kapcsolati sztringet, amely a tároló hívása során használható.
 
-A kapcsolódási karakterlánc megkeresése:
+A kapcsolati sztring megkeresi:
 
-1. Navigáljon a Azure Portal **Storage-fiókjaihoz** , és keresse meg a fiókját.
-2. A bal oldali navigációs listában kattintson a **hozzáférési kulcsok** elemre.
-3. A kapcsolatok karakterlánca a **kapcsolatok karakterlánca** alatt lesz.
+1. Lépjen a **tárfiókok lapra** a Azure Portal, és keresse meg a fiókját.
+2. Kattintson a **hozzáférési kulcsok elemre** a bal oldali navigációs listában.
+3. A kapcsolati sztring a Kapcsolati sztring **alatt található**
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -186,29 +186,29 @@ A kapcsolódási karakterlánc megkeresése:
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt. 
 
-# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3.2-es verzió](#tab/version-3-2)
 
-A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A Swagger elérési útja a következő: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
 
-# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+# <a name="version-20-preview"></a>[2.0-s előzetes verzió](#tab/version-2)
 
-A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A hencegő útvonalat a következő helyen tekintheti meg: `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` .
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`). A Swagger elérési útja a következő: `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` .
 
 ---
 
 ### <a name="asynchronous-read"></a>Aszinkron olvasás
 
 
-# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3.2-es verzió](#tab/version-3-2)
 
-A `POST /vision/v3.2/read/analyze` koncerten a és a `GET /vision/v3.2/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
+A és a művelettel aszinkron módon olvashatja a képeket, hasonlóan ahhoz, ahogy az Computer Vision szolgáltatás ezeket a megfelelő `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` REST-műveleteket használja. Az aszinkron POST metódus egy olyan metódust ad vissza, amely a `operationId` HTTP GET-kérés azonosítójaként lesz használva.
 
 
-A hencegő felhasználói felületen válassza a elemet a `Analyze` böngészőben való kibontáshoz. Ezután válassza a **kipróbálom** a  >  **fájl** elemet. Ebben a példában a következő képet fogjuk használni:
+A swagger felhasználói felületen válassza a lehetőséget a `Analyze` böngészőben való kibontásához. Ezután válassza **a Try it out Choose** file  >  **(Fájl kiválasztása) lehetőséget.** Ebben a példában a következő képet fogjuk használni:
 
 ![tabulátorok és szóközök](media/tabs-vs-spaces.png)
 
-Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vissza. A válasz részeként van egy `operation-location` fejléc, amely tartalmazza a kérelem eredmény-végpontját.
+Ha az aszinkron POST sikeresen lefutott, **http 202-es** állapotkódot ad vissza. A válasz részeként egy fejléc tartalmazza a kérés `operation-location` eredményvégpontját.
 
 ```http
  content-length: 0
@@ -217,7 +217,7 @@ Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vi
  server: Kestrel
 ```
 
-A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával érhető el. Itt látható az `operation-location` előző rendszerképből származó URL-cím végrehajtásának JSON-válasza:
+A `operation-location` a teljes URL-cím, amely egy HTTP GET-en keresztül érhető el. Itt látható az előző képen látható `operation-location` URL-cím végrehajtására adott JSON-válasz:
 
 ```json
 {
@@ -325,15 +325,15 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 }
 ```
 
-# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+# <a name="version-20-preview"></a>[2.0-s előzetes verzió](#tab/version-2)
 
-A `POST /vision/v2.0/read/core/asyncBatchAnalyze` koncerten a és a `GET /vision/v2.0/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
+A és a művelettel aszinkron módon olvashatja a képeket, hasonlóan ahhoz, ahogy az Computer Vision szolgáltatás ezeket a megfelelő `POST /vision/v2.0/read/core/asyncBatchAnalyze` `GET /vision/v2.0/read/operations/{operationId}` REST-műveleteket használja. Az aszinkron POST metódus egy metódust ad vissza, amely a `operationId` HTTP GET-kérés azonosítójaként lesz használva.
 
-A hencegő felhasználói felületen válassza a elemet a `asyncBatchAnalyze` böngészőben való kibontáshoz. Ezután válassza a **kipróbálom** a  >  **fájl** elemet. Ebben a példában a következő képet fogjuk használni:
+A swagger felhasználói felületen válassza a lehetőséget a `asyncBatchAnalyze` böngészőben való kibontásához. Ezután válassza a Try it out Choose file **(Próbálja** ki  >  **a fájl kiválasztása) lehetőséget.** Ebben a példában a következő képet fogjuk használni:
 
 ![tabulátorok és szóközök](media/tabs-vs-spaces.png)
 
-Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vissza. A válasz részeként van egy `operation-location` fejléc, amely tartalmazza a kérelem eredmény-végpontját.
+Ha az aszinkron POST sikeresen lefutott, **http 202-es** állapotkódot ad vissza. A válasz részeként egy fejléc tartalmazza a kérés `operation-location` eredményvégpontját.
 
 ```http
  content-length: 0
@@ -342,7 +342,7 @@ Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vi
  server: Kestrel
 ```
 
-A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával érhető el. Itt látható az `operation-location` előző rendszerképből származó URL-cím végrehajtásának JSON-válasza:
+A `operation-location` a teljes URL-cím, és egy HTTP GET-en keresztül érhető el. Itt látható az előző képen látható `operation-location` URL-cím végrehajtására adott JSON-válasz:
 
 ```json
 {
@@ -389,23 +389,23 @@ A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával ér
 ---
 
 > [!IMPORTANT]
-> Ha több olvasási OCR-tárolót telepít egy terheléselosztó mögé, például a Docker-összeállítás vagy a Kubernetes alatt, külső gyorsítótárral kell rendelkeznie. Mivel előfordulhat, hogy a feldolgozó tároló és a GET kérelem tárolója nem azonos, a külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár-beállításokkal kapcsolatos további információkért lásd: [Computer Vision Docker-tárolók konfigurálása](./computer-vision-resource-container-config.md).
+> Ha több olvasási OCR-tárolót helyez üzembe egy terheléselosztási eszköz mögött, például a Docker Compose vagy a Kubernetes alatt, akkor külső gyorsítótárral kell lennie. Mivel a feldolgozó tároló és a GET kérelemtároló nem biztos, hogy azonos, egy külső gyorsítótár tárolja az eredményeket, és megosztja őket a tárolók között. A gyorsítótár beállításaival kapcsolatos részletekért lásd: [Computer Vision Docker-tárolók konfigurálása.](./computer-vision-resource-container-config.md)
 
 ### <a name="synchronous-read"></a>Szinkron olvasás
 
-A következő művelettel lehet szinkronban olvasni egy rendszerképet. 
+A következő művelettel szinkron módon olvashat be egy képet. 
 
-# <a name="version-32"></a>[3,2-es verzió](#tab/version-3-2)
+# <a name="version-32"></a>[3.2-es verzió](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
-# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+# <a name="version-20-preview"></a>[2.0-s előzetes verzió](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
 
 ---
 
-Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
+A kép teljes beolvasása után az API csak akkor ad vissza JSON-választ. Ez alól az egyetlen kivétel, ha hiba történik. Hiba esetén a rendszer a következő JSON-t ad vissza:
 
 ```json
 {
@@ -413,9 +413,9 @@ Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-vá
 }
 ```
 
-A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és szeretné beírni a biztonságot, érdemes lehet az írógéppel használni a JSON-válasz elküldéséhez.
+A JSON-válaszobjektum objektumdiagramja megegyezik az aszinkron verzióval. Ha Ön JavaScript-felhasználó, és a típusbiztonságot szeretné, fontolja meg a TypeScript használatát a JSON-válasz leadásáért.
 
-Példa a használati esetekre: Itt láthatja az <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">írógéppel Sandboxot</a> , és a **Futtatás** lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
+Példaként tekintse meg a <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">TypeScript-védőfalat</a>  itt, és válassza a Futtatás lehetőséget a könnyű használat megjelenítéséhez.
 
 ## <a name="stop-the-container"></a>A tároló leállítása
 
@@ -423,35 +423,35 @@ Példa a használati esetekre: Itt láthatja az <a href="https://aka.ms/ts-read-
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót egy kimeneti [csatlakoztatással](./computer-vision-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
+Ha úgy futtatja a [](./computer-vision-resource-container-config.md#mount-settings) tárolót, hogy engedélyezve van a kimeneti csatlakoztatás és a naplózás, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak lehetnek a tároló indítása vagy futtatása során történt problémák elhárításához.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Számlázás
 
-A Cognitive Services tárolók számlázási adatokat küldenek az Azure-nak az Azure-fiókja megfelelő erőforrásának használatával.
+A Cognitive Services a számlázási adatokat az Azure-fiók megfelelő erőforrásával küldik el az Azure-nak.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-További információ ezekről a beállításokról: [tárolók konfigurálása](./computer-vision-resource-container-config.md). 
+További információ ezekről a lehetőségekről: [Tárolók konfigurálása.](./computer-vision-resource-container-config.md) 
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben megtanulta Computer Vision tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
+Ebben a cikkben a tárolók letöltésével, telepítésével és futtatásával kapcsolatos fogalmakat és munkafolyamatokat Computer Vision. Összegezve:
 
-* A Computer Vision egy Linux-tárolót biztosít a Docker számára, és beolvassa a beágyazást.
-* Az olvasási tároló rendszerképének futtatásához alkalmazás szükséges. 
-* A tároló lemezképei a Docker-ben futnak.
-* Használhatja a REST API vagy az SDK-t az olvasási OCR-tárolóban végzett műveletek meghívásához a tároló gazda URI azonosítójának megadásával.
-* A tárolók létrehozásakor számlázási adatokat kell megadnia.
+* Computer Vision egy Linux-tárolót biztosít a Docker számára, amely az Olvasást teszi lehetővé.
+* Az olvasási tároló rendszerképének futtatásához egy alkalmazásra van szükség. 
+* A tároló rendszerképe a Dockerben fut.
+* A tároló gazda URI-ját meg REST API vagy AZ SDK használatával hívhatja meg az OCR-tárolók olvasása műveleteket.
+* A tárolók példányosulásakor meg kell adnia a számlázási adatokat.
 
 > [!IMPORTANT]
-> Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
+> Cognitive Services tárolók nem futnak az Azure-hoz való csatlakozás nélkül méréshez. Az ügyfeleknek lehetővé kell tenniük, hogy a tárolók mindig kommunikálják a számlázási adatokat a mérési szolgáltatással. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
-* Tekintse át az [OCR áttekintését](overview-ocr.md) , ha többet szeretne megtudni a nyomtatott és a kézírásos szöveg felismeréséről
-* A tároló által támogatott metódusokkal kapcsolatos részletekért tekintse meg az [OLVASÁSI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) -t.
-* A Computer Vision funkcióival kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](FAQ.md) című témakört.
-* További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata
+* Tekintse át a konfigurációs beállítások tárolókonfigurációját ismertető cikkeket. [](computer-vision-resource-container-config.md)
+* A nyomtatott és kézzel írt szövegek felismeréséről az [OCR](overview-ocr.md) áttekintésében talál további információt
+* A tároló [](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) által támogatott metódusokkal kapcsolatos részletekért tekintse meg a Read API-t.
+* A gyakori [kérdések (GYIK)](FAQ.md) című cikkből megtudhatja, hogyan háríthatja el a Computer Vision kapcsolatos problémákat.
+* További Cognitive Services [használata](../cognitive-services-container-support.md)

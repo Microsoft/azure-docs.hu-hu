@@ -1,6 +1,6 @@
 ---
-title: SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
-description: Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez a hitelesítési folyamat biztonságának javítása érdekében.
+title: SSH-kulcspár létrehozása és használata Linux rendszerű virtuális gépekhez az Azure-ban
+description: Nyilvános-titkos SSH-kulcspár létrehozása és használata Linux rendszerű virtuális gépekhez az Azure-ban a hitelesítési folyamat biztonságának növelése érdekében.
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
@@ -8,65 +8,65 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788132"
 ---
-# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: nyilvános SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
+# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: Nyilvános-titkos SSH-kulcspár létrehozása és használata Linux rendszerű virtuális gépekhez az Azure-ban
 
-A Secure Shell (SSH) kulcspár használatával olyan virtuális gépeket hozhat létre az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez. Ebből a cikkből megtudhatja, hogyan hozhat gyorsan elő és használhat nyilvános SSH-kulcspárt Linux rendszerű virtuális gépekhez. Ezeket a lépéseket a Azure Cloud Shell, egy macOS vagy Linux rendszerű gazdagép használatával hajthatja végre. 
+Secure Shell- (SSH-) kulcspár használatával SSH-kulcsokat használva hozhat létre olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez. Ez a cikk bemutatja, hogyan hozhat létre és használhat gyorsan egy nyilvános-titkos SSH-kulcspárt Linux rendszerű virtuális gépekhez. Ezeket a lépéseket a Azure Cloud Shell macOS- vagy Linux-gazdagépen. 
 
 > [!NOTE]
-> Az SSH-kulcsokkal létrehozott virtuális gépek alapértelmezés szerint letiltott jelszavakkal vannak konfigurálva, ami jelentősen növeli a találgatásos kitalált támadások nehézségét. 
+> Az SSH-kulcsokkal létrehozott virtuális gépek alapértelmezés szerint letiltott jelszavakkal vannak konfigurálva, ami jelentősen növeli a találgatásos támadásokkal szembeni nehézséget. 
 
-További hátteret és példákat a következő témakörben talál: [SSH-kulcspár létrehozásának részletes lépései](create-ssh-keys-detailed.md).
+További háttér-információkért és példákért lásd az SSH-kulcspárok [létrehozásához szükséges részletes lépéseket.](create-ssh-keys-detailed.md)
 
-Az SSH-kulcsok Windows-számítógépen való létrehozásával és használatával kapcsolatos további lehetőségekért lásd: [az ssh-kulcsok használata az Azure-ban Windowson](ssh-from-windows.md).
+Az SSH-kulcsok Windows rendszerű számítógépeken történő létrehozásáról és használatának további módjaiért lásd: SSH-kulcsok használata Windows rendszerrel [az Azure-ban.](ssh-from-windows.md)
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
-Használja az `ssh-keygen` parancsot az SSH nyilvános és titkos kulcs fájljainak létrehozásához. Alapértelmezés szerint ezek a fájlok a ~/.ssh könyvtárban jönnek létre. Megadhat egy másik helyet és egy opcionális *jelszót (jelszó*) a titkos kulcs fájljának eléréséhez. Ha a megadott helyen létezik egy azonos nevű SSH-kulcspár, a rendszer felülírja ezeket a fájlokat.
+A `ssh-keygen` paranccsal hozzon létre nyilvános és titkos SSH-kulcsfájlokat. Ezek a fájlok alapértelmezés szerint a ~/.ssh könyvtárban vannak létrehozva. Megadhat egy másik helyet és egy nem kötelező jelszót *(jelszót)* a titkos kulcsfájl eléréséhez. Ha a megadott helyen létezik azonos nevű SSH-kulcspár, a rendszer felülírja ezeket a fájlokat.
 
-Az alábbi parancs egy SSH-kulcspárt hoz létre RSA-titkosítással és 4096-es hosszúságú használatával:
+A következő parancs egy SSH-kulcspárt hoz létre RSA-titkosítással és 4096-os bithosszsal:
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Ha az [Azure CLI](/cli/azure) használatával hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, lehetősége van az SSH nyilvános és titkos kulcs fájljainak megadására a `--generate-ssh-keys` lehetőség használatával. A kulcs fájljait a ~/.ssh könyvtárban tárolja a rendszer, hacsak másként nincs megadva a `--ssh-dest-key-path` kapcsoló. Ha egy SSH-kulcspár már létezik, és a  `--generate-ssh-keys` kapcsolót használja, a rendszer nem generál új kulcspárt, hanem a meglévő kulcspárt fogja használni. A következő parancsban cserélje le a *VMname* és a *RGname* értéket a saját értékeire:
+Ha az [Azure CLI-t](/cli/azure) használja a virtuális gép létrehozásához [az az vm create](/cli/azure/vm#az_vm_create) paranccsal, az kapcsolóval is létrehozhat nyilvános és titkos SSH-kulcsfájlokat. `--generate-ssh-keys` A rendszer a ~/.ssh könyvtárban tárolja a kulcsfájlokat, kivéve, ha a kapcsolóval másként van `--ssh-dest-key-path` megadva. Ha már létezik SSH-kulcspár, és a beállítást használja, a rendszer nem hoz létre új kulcspárt, hanem a meglévő  `--generate-ssh-keys` kulcspárt használja. A következő parancsban cserélje le a *VMname és* *az RGname* értékeket a saját értékeire:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
-## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Nyilvános SSH-kulcs megadása virtuális gép telepítésekor
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Nyilvános SSH-kulcs megszabadása virtuális gép üzembe helyezésekor
 
-SSH-kulcsokat használó Linux rendszerű virtuális gép létrehozásához adja meg az SSH nyilvános kulcsát a virtuális gép létrehozásakor a Azure Portal, az Azure CLI, a Azure Resource Manager sablonok vagy más módszerek használatával:
+Olyan Linux rendszerű virtuális gép létrehozásához, amely SSH-kulcsokat használ a hitelesítéshez, adja meg a nyilvános SSH-kulcsot a virtuális gép létrehozásakor az Azure Portal, az Azure CLI, Azure Resource Manager sablonok vagy más módszerek használatával:
 
 * [Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md)
-* [Linux rendszerű virtuális gép létrehozása az Azure CLI-vel](quick-create-cli.md)
+* [Linux rendszerű virtuális gép létrehozása az Azure CLI használatával](quick-create-cli.md)
 * [Linux virtuális gép létrehozása Azure-sablon alapján](create-ssh-secured-vm-from-template.md)
 
-Ha nem ismeri az SSH nyilvános kulcs formátumát, a nyilvános kulcsot a következő paranccsal jelenítheti meg `cat` , `~/.ssh/id_rsa.pub` Ha szükséges, a saját nyilvános kulcsfájl elérési útját és fájlnevét cserélje le:
+Ha nem ismeri a nyilvános SSH-kulcs formátumát, a következő paranccsal jelenítse meg a nyilvános kulcsot, és szükség esetén cserélje le a adatokat a saját nyilvános kulcsfájljának elérési útjára és `cat` `~/.ssh/id_rsa.pub` fájlnevére:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-Egy tipikus nyilvánoskulcs-érték a következő példához hasonlóan néz ki:
+Egy tipikus nyilvános kulcsérték az alábbi példához hasonló:
 
 ```
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-Ha a Azure Portal vagy egy Resource Manager-sablonban használni kívánt nyilvánoskulcs-fájl tartalmát másolja és illeszti be, ügyeljen arra, hogy ne másolja a záró szóközöket. Egy nyilvános kulcs macOS-ben történő másolásához a nyilvános kulcs fájlját áthelyezheti a következőre: `pbcopy` . A Linux rendszerben hasonlóan a nyilvános kulcs fájlját is átadhatja olyan programokhoz, mint például a `xclip` .
+Ha a nyilvános kulcsfájl tartalmát másolja és beilleszti a Azure Portal- vagy Resource Manager-sablonba, ügyeljen rá, hogy ne másoljon záró szóközt. A macOS-hez elérhető nyilvános kulcs másolásához át kell másolnia a nyilvános kulcsfájlt a következőbe: `pbcopy` . Linux rendszeren hasonlóképpen a nyilvános kulcsfájlt olyan programoknak is átküldheti, mint a `xclip` .
 
-A Linux rendszerű virtuális gépen az Azure-ban tárolt nyilvános kulcs alapértelmezés szerint a ~/.ssh/id_rsa. pub helyen található, hacsak nem adott meg másik helyet a kulcspár létrehozásakor. Ha az [Azure CLI 2,0](/cli/azure) használatával szeretné létrehozni a virtuális gépet egy meglévő nyilvános kulccsal, adja meg az értéket és opcionálisan a nyilvános kulcs helyét az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal a `--ssh-key-values` kapcsolóval. A következő parancsban cserélje le a *myVM*, a *myResourceGroup*, a *UbuntuLTS*, az *azureuser* és a *mysshkey. pub* értéket a saját értékeire:
+A Linux rendszerű virtuális gépen az Azure-ban tárolt nyilvános kulcs alapértelmezés szerint a ~/.ssh/id_rsa.pub helyen található, hacsak nem adott meg másik helyet a kulcspár létrehozásakor. Ha az [Azure CLI 2.0-val](/cli/azure) meglévő nyilvános kulccsal hozza létre a virtuális gépet, adja meg az értéket és opcionálisan a nyilvános kulcs helyét az [az vm create](/cli/azure/vm#az_vm_create) paranccsal, az `--ssh-key-values` kapcsolóval. A következő parancsban cserélje le a *myVM,* *myResourceGroup,* *UbuntuLTS,* *azureuser*, és *mysshkey.pub* értékeket a saját értékeire:
 
 
 ```azurecli
@@ -78,23 +78,23 @@ az vm create \
   --ssh-key-values mysshkey.pub
 ```
 
-Ha több SSH-kulcsot szeretne használni a virtuális géppel, megadhatja őket egy szóközzel tagolt listában, például a következőhöz `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` .
+Ha több SSH-kulcsot szeretne használni a virtuális géphez, megadhatja őket egy szóköz-elválasztott listában, a következő `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` listában: .
 
 
 ## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
 
-Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren lévő titkos kulccsal, SSH-val a virtuális gépre a virtuális gép IP-címét vagy DNS-nevét használva. A következő parancsban cserélje le az *azureuser* és a *myvm.westus.cloudapp.Azure.com* nevet a rendszergazdai felhasználónévvel és a teljes TARTOMÁNYNÉVVEL (vagy IP-címmel):
+Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren található titkos kulccsal SSH-val a virtuális gép IP-címével vagy DNS-nevével csatlakozik a virtuális géphez. A következő parancsban cserélje le az *azureuser* és *myvm.westus.cloudapp.azure.com* a rendszergazda felhasználónevére és a teljes tartománynévre (vagy IP-címre):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Ha a kulcspár létrehozásakor jelszót adott meg, írja be a jelszót, amikor a rendszer a bejelentkezési folyamat során kéri. A virtuális gép hozzá van adva a ~/.ssh/known_hosts-fájlhoz, és a rendszer nem kéri újra a kapcsolódást, amíg az Azure-beli virtuális gép nyilvános kulcsa nem változik, vagy a kiszolgáló neve el lesz távolítva a ~/.ssh/known_hostsból.
+Ha a kulcspár létrehozásakor jelszót adott meg, adja meg ezt a jelszót, amikor a rendszer kéri a bejelentkezési folyamat során. A rendszer hozzáadja a virtuális gépet a ~/.ssh/known_hosts-fájlhoz, és addig nem fog újra csatlakozni, amíg meg nem változik az Azure-beli virtuális gép nyilvános kulcsa, vagy el nem távolítja a kiszolgáló nevét a ~/.ssh/known_hosts.
 
-Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja, a virtuális géphez való kapcsolódáshoz a hozzáférést kell kérnie. Az igény szerinti szabályzattal kapcsolatos további információkért lásd: [virtuális gépek hozzáférésének kezelése az igény szerinti házirend használatával](../../security-center/security-center-just-in-time.md).
+Ha a virtuális gép az "időben elérhető" hozzáférési szabályzatot használja, a virtuális géphez való csatlakozás előtt hozzáférést kell kérnie. További információ az "időben elérhető" szabályzatról: Manage virtual machine access using the just in time policy (Virtuális gépek hozzáférésének kezelése [az időben elérhető házirend használatával).](../../security-center/security-center-just-in-time.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az SSH-kulcspár használatával kapcsolatos további információkért tekintse meg az [SSH-kulcspár létrehozásának és kezelésének részletes lépéseit](create-ssh-keys-detailed.md).
+* További információ az SSH-kulcspárok kezeléséhez: SSH-kulcspárok létrehozásához és [kezeléséhez szükséges részletes lépések.](create-ssh-keys-detailed.md)
 
-* Ha problémái vannak az Azure-beli virtuális gépek SSH-kapcsolataival, tekintse meg az [SSH-kapcsolatok Azure Linux rendszerű virtuális géppel való megoldásával kapcsolatos](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)problémát
+* Ha nehézségekbe ütközik az Azure-beli virtuális gépekhez való SSH-kapcsolatok során, tekintse meg a Linux rendszerű Azure-beli virtuális gépek [SSH-kapcsolatainak hibaelhárításával kapcsolatos témakört.](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)

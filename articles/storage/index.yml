@@ -81,11 +81,13 @@ additionalContent:
       items:
         - title: Helyszíni fájlmegosztás kiterjesztése a felhőbe
           links:
-            - url: ./files/storage-sync-files-planning.md
+            - url: ./file-sync/file-sync-introduction.md
+              text: További információ a Azure File Sync
+            - url: ./file-sync/file-sync-planning.md
               text: Azure-fájlmegosztások szinkronizálása Windows-fájlkiszolgálóval (Azure File Sync)
-            - url: ./files/storage-sync-files-deployment-guide.md
+            - url: ./file-sync/file-sync-deployment-guide.md
               text: Az Azure File Sync üzembe helyezése
-            - url: ./files/index.yml
+            - url: ./file-sync/index.yml
               text: Több megjelenítése >
         - title: Online adatátvitel (a helyszíni rendszerből az Azure-ba)
           links:

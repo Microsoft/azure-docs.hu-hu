@@ -1,50 +1,50 @@
 ---
-title: Kapcsolat felügyelt identitással – Azure Database for MySQL
-description: Ismerje meg, hogyan csatlakozhat és végezhet hitelesítést felügyelt identitás használatával a hitelesítéshez Azure Database for MySQL
+title: Csatlakozás felügyelt identitással – Azure Database for MySQL
+description: Ismerje meg, hogyan csatlakozhat és hitelesítheti magát felügyelt identitással a Azure Database for MySQL
 author: sunilagarwal
 ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c5c938650d1932349f17bde6b30c65718ef72a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612602"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774682"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Csatlakozás felügyelt identitással az Azure Database for MySQL-hez
 
-Ez a cikk bemutatja, hogyan használható egy Azure-beli virtuális gép (VM) felhasználó által hozzárendelt identitása egy Azure Database for MySQL-kiszolgáló elérésére. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
+Ez a cikk bemutatja, hogyan használhat felhasználó által hozzárendelt identitást egy Azure-beli virtuális géphez (VM) egy Azure Database for MySQL eléréséhez. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- A virtuális gép hozzáférésének biztosítása egy Azure Database for MySQL-kiszolgálóhoz
-- Hozzon létre egy felhasználót a virtuális gép felhasználó által hozzárendelt identitását képviselő adatbázisban
-- Hozzáférési jogkivonat beszerzése a virtuálisgép-identitás használatával és a Azure Database for MySQL-kiszolgáló lekérdezéséhez
-- Token lekérésének implementálása C#-alkalmazásban
+- Hozzáférés megadása a virtuális gép számára egy Azure Database for MySQL kiszolgálóhoz
+- A virtuális gép felhasználó által hozzárendelt identitását képviselő felhasználó létrehozása az adatbázisban
+- Hozzáférési jogkivonat lekérdezése a virtuálisgép-identitással, majd lekérdezése egy Azure Database for MySQL használatával
+- A jogkivonat lekérésének megvalósítása egy C#-példaalkalmazásban
 
 > [!IMPORTANT]
-> A felügyelt identitással való csatlakozás csak a MySQL 5,7-es és újabb verzióiban érhető el.
+> A felügyelt identitással való csatlakozás csak a MySQL 5.7-es és újabb rendszer esetén érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](../../articles/active-directory/managed-identities-azure-resources/overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A szükséges erőforrás-létrehozási és szerepkör-kezelés végrehajtásához a fióknak a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) a tulajdonos engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg az Azure [-szerepkörök hozzárendelése az Azure-előfizetés erőforrásaihoz való hozzáférés kezeléséhez](../../articles/role-based-access-control/role-assignments-portal.md)című témakört
-- Szüksége lesz egy Azure-beli virtuális gépre (például a Ubuntu Linux), amelyet az adatbázis felügyelt identitással való eléréséhez szeretne használni.
-- Szüksége van egy Azure Database for MySQL adatbázis-kiszolgálóra, amelyen konfigurálva van az [Azure ad-hitelesítés](howto-configure-sign-in-azure-ad-authentication.md)
-- A C# példájának követéséhez először végezze el a következő útmutatót a [kapcsolódáshoz a c# használatával](connect-csharp.md)
+- A szükséges erőforrás-létrehozáshoz és szerepkörkezeléshez a fióknak "Tulajdonos" engedélyekkel kell rendelkeznie a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban). Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatos információkhoz, tekintse meg az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez [szükséges Azure-szerepkörök hozzárendelését.](../../articles/role-based-access-control/role-assignments-portal.md)
+- Szüksége van egy Azure-beli virtuális gépre (Ubuntu Linux), amely felügyelt identitással szeretné elérni az adatbázist
+- Szüksége van egy Azure Database for MySQL-adatbáziskiszolgálóra, amely konfigurálva van [az Azure AD-hitelesítéssel](howto-configure-sign-in-azure-ad-authentication.md)
+- A C#-példa követnie kell az útmutatót, amely bemutatja, hogyan csatlakozhat A [C# használatával](connect-csharp.md)
 
-## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Felhasználóhoz rendelt felügyelt identitás létrehozása a virtuális géphez
+## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása a virtuális géphez
 
-Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyben a virtuális gép fut, vagy egy másik.
+Hozzon létre egy identitást az előfizetésben [az az identity create paranccsal.](/cli/azure/identity#az_identity_create) Használhatja ugyanazt az erőforráscsoportot, mint a virtuális gép, vagy egy másikat.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Az identitásnak az alábbi lépésekben való konfigurálásához használja az az [Identity show](/cli/azure/identity#az-identity-show) parancsot az identitás erőforrás-azonosítójának és ügyfél-azonosítójának a változókban való tárolásához.
+Az identitás konfigurálához a következő lépésekben használja az [az identity show](/cli/azure/identity#az_identity_show) parancsot az identitás erőforrás-azonosítójának és ügyfél-azonosítójának változókban való tárolására.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,13 +54,13 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-Most már hozzárendelheti a felhasználó által hozzárendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity#az-vm-identity-assign) paranccsal:
+Most már hozzárendelheti a felhasználó által hozzárendelt identitást a virtuális géphez az [az vm identity assign paranccsal:](/cli/azure/vm/identity#az_vm_identity_assign)
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID
 ```
 
-A telepítés befejezéséhez jelenítse meg az ügyfél-azonosító értékét, amelyet a következő néhány lépésben kell megadnia:
+A beállítás befejezéséhez mutassa meg az ügyfél-azonosító értékét, amelyre a következő néhány lépésben szüksége lesz:
 
 ```bash
 echo $clientID
@@ -68,28 +68,28 @@ echo $clientID
 
 ## <a name="creating-a-mysql-user-for-your-managed-identity"></a>MySQL-felhasználó létrehozása a felügyelt identitáshoz
 
-Most kapcsolódjon az Azure AD-rendszergazda felhasználóként a MySQL-adatbázishoz, és futtassa a következő SQL-utasításokat:
+Most csatlakozzon Az Azure AD rendszergazdai felhasználójaként a MySQL-adatbázishoz, és futtassa a következő SQL-utasításokat:
 
 ```sql
 SET aad_auth_validate_oids_in_tenant = OFF;
 CREATE AADUSER 'myuser' IDENTIFIED BY 'CLIENT_ID';
 ```
 
-A felügyelt identitás most már rendelkezik hozzáféréssel a felhasználónévvel való hitelesítéshez `myuser` (a helyére a választott nevet kell cserélni).
+A felügyelt identitás most már hozzáféréssel rendelkezik a felhasználónévvel való hitelesítéskor (cserélje le a helyére `myuser` a választott nevet).
 
-## <a name="retrieving-the-access-token-from-azure-instance-metadata-service"></a>A hozzáférési jogkivonat lekérése az Azure instance metadata szolgáltatásból
+## <a name="retrieving-the-access-token-from-azure-instance-metadata-service"></a>A hozzáférési jogkivonat leolvasása az Azure Instance Metadata szolgáltatásból
 
-Az alkalmazás mostantól lekérhet egy hozzáférési jogkivonatot az Azure példány metaadatainak szolgáltatásból, és az adatbázissal való hitelesítéshez használhatja azt.
+Az alkalmazás mostantól lekérhet egy hozzáférési jogkivonatot az Azure Instance Metadata szolgáltatásból, és felhasználhatja azt az adatbázissal való hitelesítéshez.
 
-A jogkivonat lekérése egy HTTP-kérelem küldésével `http://169.254.169.254/metadata/identity/oauth2/token` és a következő paraméterek átadásával történik:
+A jogkivonat lekérése egy HTTP-kérés a címre való lekérésével és a következő paraméterek `http://169.254.169.254/metadata/identity/oauth2/token` átadása által történik:
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID` (a korábban lekért)
+* `client_id` = `CLIENT_ID` (korábban lekért)
 
-Egy olyan JSON-eredményt kap, amely egy `access_token` mezőt tartalmaz – ez a hosszú szöveges érték a felügyelt identitás-hozzáférési jogkivonat, amelyet jelszóként kell használni az adatbázishoz való csatlakozáskor.
+Egy mezőt tartalmazó JSON-eredményt fog kapni – ez a hosszú szöveges érték a felügyelt identitás hozzáférési jogkivonata, amely jelszóként használható az `access_token` adatbázishoz való csatlakozáskor.
 
-Tesztelési célból a következő parancsokat futtathatja a rendszerhéjban. Megjegyzés:, `curl` `jq` és a- `mysql` ügyfél telepítve van.
+Tesztelési célokra az alábbi parancsokat futtathatja a rendszerhéjban. Vegye figyelembe, hogy telepítenie kell a `curl` , és a `jq` `mysql` -ügyfelet.
 
 ```bash
 # Retrieve the access token
@@ -99,13 +99,13 @@ accessToken=$(curl -s 'http://169.254.169.254/metadata/identity/oauth2/token?api
 mysql -h SERVER --user USER@SERVER --enable-cleartext-plugin --password=$accessToken
 ```
 
-Ezzel csatlakozott a korábban konfigurált adatbázishoz.
+Most már csatlakozott a korábban konfigurált adatbázishoz.
 
-## <a name="connecting-using-managed-identity-in-c"></a>Csatlakozás felügyelt identitás használatával C-ben #
+## <a name="connecting-using-managed-identity-in-c"></a>Csatlakozás felügyelt identitással C-ben #
 
-Ez a szakasz bemutatja, hogyan kérhet hozzáférési tokent a virtuális gép felhasználó által hozzárendelt felügyelt identitásával, és hogyan hívhatja Azure Database for MySQL. Azure Database for MySQL natív módon támogatja az Azure AD-hitelesítést, így közvetlenül el tudja fogadni az Azure-erőforrások felügyelt identitásával kapott hozzáférési jogkivonatokat. A MySQL-kapcsolat létrehozásakor a jelszó mezőben adja át a hozzáférési jogkivonatot.
+Ez a szakasz bemutatja, hogyan lehet hozzáférési jogkivonatot lehívni a virtuális gép felhasználó által hozzárendelt felügyelt identitásával, és hogyan lehet a jogkivonat használatával Azure Database for MySQL. Azure Database for MySQL támogatja az Azure AD-hitelesítést, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásai használatával kapott hozzáférési jogkivonatokat. A MySQL-lel való kapcsolat létrehozásakor át kell adni a hozzáférési jogkivonatot a jelszó mezőben.
 
-Az alábbi .NET-kód példa arra, hogy egy hozzáférési jogkivonat használatával nyisson meg egy kapcsolatot a MySQL-lel. Ennek a kódnak a virtuális gépen kell futnia a virtuális gép felhasználó által hozzárendelt felügyelt identitási végpontjának eléréséhez. A hozzáférési jogkivonat metódusának használatához a .NET-keretrendszer 4,6-es vagy újabb verziójára vagy a .NET Core 2,2-es vagy újabb verziójára van szükség. Cserélje le a GAZDAGÉP, a felhasználó, az adatbázis és a CLIENT_ID értékeit.
+Az alábbi .NET-kód például a MySQL-lel való kapcsolat hozzáférési jogkivonattal való megnyitására mutat be példát. Ennek a kódnak a virtuális gépen kell futnia a virtuális gép felhasználó által hozzárendelt felügyelt identitásának végpontjának eléréséhez. .NET-keretrendszer hozzáférési jogkivonat-módszerhez 4.6-os vagy újabb, illetve .NET Core 2.2-es vagy újabb verzió szükséges. Cserélje le a HOST, USER, DATABASE és CLIENT_ID.
 
 ```csharp
 using System;
@@ -194,7 +194,7 @@ namespace Driver
 }
 ```
 
-A futtatáskor a parancs a következőhöz hasonló kimenetet fog adni:
+A futtatáskor ez a parancs a következő kimenetet adja:
 
 ```
 Getting access token from Azure Instance Metadata service...
@@ -207,4 +207,4 @@ MySQL version: 5.7.27
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
+* Tekintse át a Azure Active Directory [hitelesítés általános Azure Database for MySQL](concepts-azure-ad-authentication.md)

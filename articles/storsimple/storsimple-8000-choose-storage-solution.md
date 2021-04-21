@@ -1,43 +1,43 @@
 ---
-title: Az Azure-ba irányuló adatátviteli lehetőségek a készülék használatával | Microsoft Docs
-description: Megtudhatja, hogyan választhatja ki a megfelelő készüléket az Azure-ba irányuló helyszíni adatátvitelhez Data Box Edge, Azure File Sync és a StorSimple 8000 sorozat között.
+title: Az Azure-ba berendezés használatával történő adatátvitel | Microsoft Docs
+description: Megtudhatja, hogyan választhatja ki a megfelelő berendezést az Azure-ba történő helyszíni adatátvitelhez a Data Box Edge, Azure File Sync és a StorSimple 8000 sorozat között.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 4fc92146d6f076287fe37f64734bb07e8250792b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1345486e6bda7501a862612652b722b0075e190f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882212"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791164"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>A StorSimple összehasonlítása az Azure File Synckel és a Data Box Edge adatátviteli lehetőségeivel 
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
  
-Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekről az Azure-ba, összehasonlítva a következővel: Data Box Edge vs. Azure File Sync vs. StorSimple 8000 sorozat.
+Ez a dokumentum áttekintést nyújt az Azure-ba történő helyszíni adatátvitel lehetőségeiről, összehasonlítva a következővel: Data Box Edge és Azure File Sync StorSimple 8000 sorozat.
 
-- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** – a Data Box Edge egy helyszíni hálózati eszköz, amely az Azure-ba, illetve az Azure-ba helyezi át az adatátvitelt, és az AI-kompatibilis Edge számítási feladatokkal előre feldolgozza az adatok feltöltését. A Data Box Gateway az eszköz virtuális verziója, amely ugyanazokkal az adatátviteli képességekkel rendelkezik.
-- **[Azure file Sync](../storage/files/storage-sync-files-deployment-guide.md)** – a Azure file Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Azure File Sync általánosan elérhetővé vált a 2018-es verzióban.
-- **[StorSimple](./storsimple-overview.md)** – a StorSimple egy hibrid eszköz, amely segít a vállalatok számára az elsődleges tárterület, az adatvédelem, az archiválás és a vész-helyreállítás egyetlen megoldáson való összevonásával, az Azure Storage-nal való szoros integráció révén. A StorSimple termék-életciklusa [itt](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)található.
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** – Data Box Edge egy helyszíni hálózati eszköz, amely adatokat mozgat az Azure-ba és onnan ki, és AI-kompatibilis Peremhálózati számításokkal rendelkezik az adatok feltöltés közbeni előzetes feldolgozásához. A Data Box Gateway az eszköz virtuális verziója, amely ugyanazokkal az adatátviteli képességekkel rendelkezik.
+- **[Azure File Sync](../storage/file-sync/file-sync-deployment-guide.md)** – Azure File Sync segítségével központosíthatja a szervezet fájlmegosztását az Azure Files-ban, miközben a helyszíni fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását is biztosítja. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A szolgáltatások általános Azure File Sync 2018-ban már bejelentettük.
+- **[StorSimple](./storsimple-overview.md)** – A StorSimple egy hibrid eszköz, amely az Azure Storage-ral való szoros integráció révén egyetlen megoldáson segít a vállalatoknak egyesíteni tárolási infrastruktúrájukat elsődleges tárolásra, adatvédelemre, archiválásra és vészhelyreállításra. A StorSimple termék életciklusa itt [található:](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
-## <a name="comparison-summary"></a>Összehasonlító összefoglalás
+## <a name="comparison-summary"></a>Összehasonlítás összegzése
 
 |                           |StorSimple 8000   |Azure File Sync   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|**Áttekintés**     |Többplatformos hibrid tárolás és archiválás|Általános fájlkiszolgáló tároló a felhő-és többhelyes szinkronizálással.  |Tárolási megoldás az adatfeldolgozáshoz és a hálózatról az Azure-ba való küldéséhez.        |
-|**Forgatókönyvek**    |Fájlkiszolgáló, archiválás, biztonsági mentési cél |Fájlkiszolgáló, archiválás (többhelyes)   |Adatátvitel, adatok előfeldolgozása, beleértve a következőket: ML-következtetés, IoT, archiválás    |
-|**Edge-számítás** |Nem érhető el |Nem érhető el |Támogatja a futó tárolókat Azure IoT Edge    |
-|**Űrlap tényező**  |Fizikai eszköz   |A Windows Serverre telepített ügynök |Fizikai eszköz   |
-|**Hardver**     |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz | Ügyfél által megadott |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz  |
+|**Áttekintés**     |Rétegzett hibrid tárolás és archiválás|Általános fájlkiszolgáló-tároló felhőbeli rétegezéssel és több telephelyes szinkronizálással.  |Tárolási megoldás az adatok elő feldolgozásához és hálózaton keresztül az Azure-ba való elküldéhez.        |
+|**Forgatókönyvek**    |Fájlkiszolgáló, archiválás, biztonsági mentési cél |Fájlkiszolgáló, archiválás (több hely)   |Adatátvitel, adatok előzetes feldolgozása, beleértve a gépi tanulási következtetést, az IoT-t és az archiválást    |
+|**Peremhálózati számítás** |Nem érhető el |Nem érhető el |Támogatja a tárolók futtatását Azure IoT Edge    |
+|**Form factor (Űrlaptényező)**  |Fizikai eszköz   |A Windows Serveren telepített ügynök |Fizikai eszköz   |
+|**Hardver**     |A Microsofttól a szolgáltatás részeként biztosított fizikai eszköz | Az ügyfél által megadott |A Microsofttól a szolgáltatás részeként biztosított fizikai eszköz  |
 |**Adatformátum**  |Egyéni formátum   |Fájlok         |Blobok vagy fájlok    |
 |**Protokolltámogatás** |iSCSI          |SMB, NFS    | SMB vagy NFS      |
 |**Díjszabás**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) és a [Azure Data Box Gateway](../databox-gateway/data-box-gateway-overview.md) ismertetése
-- Tudnivalók a [Azure file Sync](../storage/files/storage-sync-files-deployment-guide.md)
+- Az [Edge Azure Data Box és](../databox-online/azure-stack-edge-overview.md) a [Azure Data Box Gateway](../databox-gateway/data-box-gateway-overview.md)
+- További információ a [Azure File Sync](../storage/file-sync/file-sync-deployment-guide.md)

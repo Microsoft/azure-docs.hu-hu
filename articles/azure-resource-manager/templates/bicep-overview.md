@@ -1,42 +1,53 @@
 ---
-title: Bicep nyelv a Azure Resource Manager-sablonokhoz
-description: Leírja az infrastruktúra Azure-beli üzembe helyezéséhez Azure Resource Manager sablonokon keresztül.
+title: Bicep nyelv a Azure Resource Manager sablonokhoz
+description: Az infrastruktúra Azure-ban való üzembe helyezésének bicep nyelvét ismerteti Azure Resource Manager sablonokon keresztül.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af207e6ca88eab50fe6030883379c87c0ec05691
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955907"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773746"
 ---
-# <a name="what-is-bicep-preview"></a>Mi az a bicep (előzetes verzió)?
+# <a name="what-is-bicep-preview"></a>Mi az a Bicep (előzetes verzió)?
 
-A bicep az Azure-erőforrások deklaratív üzembe helyezéséhez használt nyelv. A Azure Resource Manager-sablonok (ARM-sablonok) fejlesztéséhez JSON helyett a bicep-t használhatja. A bicep rövid szintaxissal egyszerűsíti a szerzői műveleteket, és jobb támogatást nyújt a kódok újrafelhasználásához, és javítja a típus biztonságát. A bicep egy tartományi-specifikus nyelv (DSL), ami azt jelenti, hogy egy adott forgatókönyvhöz vagy tartományhoz van tervezve. Nem az alkalmazások írására szolgáló általános programozási nyelv.
+A Bicep az Azure-erőforrások deklaratív üzembe helyezésének nyelve. A sablonsablonok (ARM-sablonok) fejlesztéséhez JSON helyett a Bicep Azure Resource Manager használhatja. A Bicep leegyszerűsíti a szerzői élményt azáltal, hogy tömör szintaxist, a kód újrafelhasználásának jobb támogatását és a jobb típusbiztonságot biztosítja. A Bicep egy tartományspecifikus nyelv (DSL), ami azt jelenti, hogy egy adott forgatókönyvhöz vagy tartományhoz tervezték. Nem az alkalmazások írásának általános programnyelveként szolgál.
 
-A sablon létrehozásához használt JSON-szintaxis részletesen és bonyolult kifejezéssel is megkövetelhető. A bicep a JSON-sablonok bármelyik funkciójának elvesztése nélkül javítja a felhasználói élményt. Ez egy transzparens absztrakt a JSON for ARM-sablonokhoz. Mindegyik bicep-fájl egy standard ARM-sablonhoz lett lefordítva. Az ARM-sablonban érvényes erőforrástípusok, API-verziók és tulajdonságok egy bicep-fájlban érvényesek. A jelenlegi kiadásban néhány [ismert korlátozás](#known-limitations) szerepel.
+A sablon létrehozására vonatkozó JSON-szintaxis lehet részletes, és bonyolult kifejezést igényel. A Bicep anélkül javítja ezt a felhasználói élményt, hogy elveszítené egy JSON-sablon képességeit. Ez egy transzparens absztrakció az ARM-sablonok JSON-ján. Minden Bicep-fájl egy szabványos ARM-sablonra van lefordítva. Az ARM-sablonokban érvényes erőforrástípusok, API-verziók és tulajdonságok érvényesek egy Bicep-fájlban. Az aktuális [kiadásnak van](#known-limitations) néhány ismert korlátja.
 
-A bicep jelenleg előzetes verzióban érhető el. A munka állapotának nyomon követéséhez tekintse meg a [bicep Project adattárát](https://github.com/Azure/bicep).
+A Bicep jelenleg előzetes verzióban érhető el. A munka állapotának nyomon követéséhez tekintse meg a [Bicep-projekt adattárát.](https://github.com/Azure/bicep)
 
-A bicep-ról a következő videóban olvashat bővebben.
+A Bicepről az alábbi videóban olvashat bővebben.
 
 > [!VIDEO https://www.youtube.com/embed/sc1kJfcRQgY]
 
 ## <a name="get-started"></a>Bevezetés
 
-A bicep elindításához [telepítse az eszközöket](bicep-install.md).
+A Bicep-hez először telepítse [a következő eszközöket:](bicep-install.md).
 
-Az eszközök telepítése után próbálja ki a [bicep oktatóanyagot](./bicep-tutorial-create-first-bicep.md). Az oktatóanyag-Sorozat végigvezeti a bicep felépítésen és képességein. A bicep-fájlok üzembe helyezése és az ARM-sablon átalakítása az egyenértékű bicep-fájlba.
+Az eszközök telepítése után próbálja ki a [Bicep-oktatóanyagot.](./bicep-tutorial-create-first-bicep.md) Az oktatóanyag-sorozat végigvezeti a Bicep felépítésén és képességein. A Bicep-fájlokat üzembe kell helyeznie, és az ARM-sablont az egyenértékű Bicep-fájlvá kell konvertálni.
 
-Az egyenértékű JSON-és bicep-fájlok egymás melletti megtekintéséhez tekintse meg a [bicep játszóteret](https://aka.ms/bicepdemo).
+Az egyenértékű JSON- és Bicep-fájlok egymás mellett történő megtekintéséhez tekintse meg a [Bicep-játszótereket.](https://aka.ms/bicepdemo)
 
-Ha van egy meglévő ARM-sablonja, amelyet a bicep-re szeretne átalakítani, olvassa el a [ARM-sablonok konvertálása JSON és a bicep között](bicep-decompile.md)című témakört.
+Ha van egy meglévő ARM-sablonja, amelyből Bicep-sablont szeretne létrehozni, tekintse meg az ARM-sablonok JSON és Bicep közötti [konvertálását.](bicep-decompile.md)
 
-## <a name="bicep-improvements"></a>A bicep fejlesztése
+## <a name="benefits-of-bicep-versus-other-tools"></a>A Bicep és más eszközök előnyei
 
-A bicep könnyebb és tömörebb szintaxist biztosít az egyenértékű JSON-hoz képest. Nem használ `[...]` kifejezéseket. Ehelyett közvetlenül hívja meg a függvényeket, és értékeket kell beolvasnia a paraméterekből és változókból. Minden üzembe helyezett erőforráshoz egy szimbolikus nevet kell adni, amely megkönnyíti a sablonban lévő erőforrások hivatkozását.
+A Bicep a következő előnyöket biztosítja az egyéb lehetőségekhez:
 
-A következő JSON például egy erőforrás-tulajdonságból származó kimeneti értéket ad vissza.
+* **Támogatás az összes erőforrástípushoz és API-verzióhoz:** A Bicep azonnal támogatja az Azure-szolgáltatások összes előzetes és általánosan elérhető verzióját. Amint egy erőforrás-szolgáltató új erőforrástípusokat és API-verziókat vezet be, használhatja őket a Bicep-fájlban. Az új szolgáltatások használata előtt nem kell megvárni az eszközök frissítését.
+* **Szerzői élmény:** Ha a VS Code használatával hozza létre a Bicep-fájlokat, első osztályú szerzői élményt kap. A szerkesztő részletes típusbiztonságot, intelliSense-t és szintaxis-ellenőrzést biztosít.
+* **Modularitás:** A modulokkal kezelhető részekre törheti a [Bicep-kódot.](bicep-modules.md) A modul egy kapcsolódó erőforráskészletet helyez üzembe. A modulok lehetővé teszik a kód újbóli felhasználását és a fejlesztés egyszerűsítését. A modult bármikor hozzáadhatja egy Bicep-fájlhoz, ha üzembe kell helyeznie ezeket az erőforrásokat.
+* **Integráció az Azure-szolgáltatásokkal:** A Bicep olyan Azure-szolgáltatásokkal van integrálva, mint Azure Policy, a sablonok specifikációi és a Blueprints.
+* **Nincs kezelve állapot- vagy állapotfájl:** Az Összes állapot az Azure-ban van tárolva. A felhasználók együttműködhetnek, és biztos lehet abban, hogy a frissítéseket a várt módon kezelik. A [what-if művelettel megtekintheti](template-deploy-what-if.md) a módosítások előnézetét a sablon üzembe helyezése előtt.
+* **Nincs költség és nyílt forráskódú:** A Bicep teljesen ingyenes. A prémium szintű képességekért nem kell fizetnie. A Microsoft ügyfélszolgálata is támogatja.
+
+## <a name="bicep-improvements"></a>Bicep-fejlesztések
+
+A Bicep egyszerűbb és tömörebb szintaxist kínál az egyenértékű JSON-hoz képest. Nem használ `[...]` kifejezéseket. Ehelyett közvetlenül függvényeket hívhat meg, és paraméterekből és változókból is lekért értékeket. Minden üzembe helyezett erőforrásnak szimbolikus nevet ad, így könnyen hivatkozhat rá a sablonban.
+
+Az alábbi JSON például egy kimeneti értéket ad vissza egy erőforrás-tulajdonságból.
 
 ```json
 "outputs": {
@@ -47,56 +58,52 @@ A következő JSON például egy erőforrás-tulajdonságból származó kimenet
 }
 ```
 
-A bicep megjelenő egyenértékű kimeneti kifejezés könnyebben írható. A következő példa ugyanazt a tulajdonságot adja vissza egy, a sablonban definiált erőforrás szimbolikus neve **publicIP** használatával:
+A Bicep megfelelő kimeneti kifejezését könnyebb megírni. Az alábbi példa ugyanazt a tulajdonságot adja vissza a **publicIP** szimbolikus név használatával a sablonban definiált erőforráshoz:
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
 ```
 
-A szintaxis teljes összehasonlítását lásd: [a JSON és a bicep a sablonok összehasonlítása](compare-template-syntax.md).
+A szintaxis teljes összehasonlítását lásd: [Comparing JSON and Bicep for templates (A JSON és a Bicep összehasonlítása sablonokhoz).](compare-template-syntax.md)
 
-A bicep automatikusan kezeli az erőforrások közötti függőségeket. Elkerülheti a beállítást, `dependsOn` Ha egy erőforrás szimbolikus neve egy másik erőforrás-deklarációban van használatban.
+A Bicep automatikusan kezeli az erőforrások közötti függőségeket. Ha egy erőforrás szimbolikus nevét egy másik erőforrás-deklarációban használja, elkerülheti a `dependsOn` beállítást.
 
-A bicep a projekt több modulra is feltörhet.
-
-A bicep-fájl szerkezete rugalmasabb, mint a JSON-sablon. A fájlokban bárhol deklarálhatja a paramétereket, a változókat és a kimeneteket. A JSON-ban be kell jelentenie az összes paramétert, változót és kimenetet a sablon megfelelő részein belül.
-
-A bicep VS Code-bővítmények széles körű érvényesítést és intellisenseot biztosítanak. Használhatja például a bővítmény IntelliSense eszközét az erőforrások tulajdonságainak lekéréséhez.
+A Bicep-fájl szerkezete rugalmasabb, mint a JSON-sablon. Paramétereket, változókat és kimeneteket a fájlban bárhol deklarálhat. A JSON-ban deklarálni kell a sablon megfelelő szakaszaiban található összes paramétert, változót és kimenetet.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-A következő korlátok jelenleg léteznek:
+Jelenleg a következő korlátok létezik:
 
-* A Mode vagy a Batch méret nem állítható be a másolási hurokban.
-* A hurkok és a feltételek nem kombinálhatók.
-* Az egysoros objektumok és tömbök, például `['a', 'b', 'c']` nem támogatottak.
+* Másolási hurkok esetén nem lehet beállítani a módot vagy a kötegméretet.
+* A hurkok és feltételek nem kombinálhatóak.
+* Az egysoros objektumok és tömbök, például a nem `['a', 'b', 'c']` támogatottak.
 
 ## <a name="faq"></a>GYIK
 
-**Miért érdemes új nyelvet létrehozni egy meglévő használata helyett?**
+**Miért érdemes új nyelvet létrehozni meglévő helyett?**
 
-Új nyelv helyett a meglévő ARM-sablon nyelvének változatát is megtekintheti a bicep. A szintaxis módosult, de az alapvető funkciók és a futtatókörnyezet változatlan marad.
+A Bicep a meglévő ARM-sablonnyelv változatának is használhatja, nem pedig új nyelvnek. A szintaxis megváltozott, de az alapvető funkciók és a futásidő változatlanok maradnak.
 
-A bicep fejlesztése előtt egy meglévő programozási nyelvet használunk. Úgy döntöttünk, hogy a célközönség könnyebben megtanulható a bicep, nem pedig egy másik nyelvvel való Ismerkedés.
+A Bicep fejlesztése előtt egy meglévő programozási nyelv használatával tekintettünk át. Úgy döntöttünk, hogy a célközönség könnyebb lesz a Bicep elsajátításában, mint egy másik nyelvvel való ismerkedésben.
 
-**Miért nem koncentrálhat Terraform vagy más, harmadik féltől származó infrastruktúrára, mint a kód ajánlatára?**
+**Miért ne összpontosítson a Terraformra vagy más külső infrastruktúra kódajánlatra?**
 
-A különböző felhasználók a különböző konfigurációs nyelveket és eszközöket részesítik előnyben. Szeretnénk gondoskodni arról, hogy az összes ilyen eszköz nagyszerű élményt nyújtson az Azure-ban. A bicep ennek a tevékenységnek a része.
+A különböző felhasználók a különböző konfigurációs nyelveket és eszközöket részesítik előnyben. Szeretnénk biztosítani, hogy az összes eszköz nagyszerű élményt nyújtson az Azure-ban. A Bicep része ennek az erőfeszítésnek.
 
-Ha elégedett a Terraform, nincs ok a váltásra. A Microsoft elkötelezett amellett, hogy Terraform az Azure-ban a legjobb megoldás.
+Ha elégedett a Terraform használatával, nincs ok a váltásra. A Microsoft elkötelezett amellett, hogy a Lehető legjobb Terraformot használja az Azure-ban.
 
-Úgy véljük, hogy az ARM-sablonokat kiválasztott ügyfeleknél a bicep a szerzői műveletek terén is javul. A bicep olyan ügyfelek esetében is segít, akik nem vezették be az infrastruktúrát programkódként.
+Az ARM-sablonokat kijelölve a Bicep használata javítja a szerzői élményt. A Bicep segít az olyan ügyfelek áttérésében is, akik még nem fogadták el kódként az infrastruktúrát.
 
-**Csak az Azure-hoz készült a bicep?**
+**A Bicep csak az Azure-ban van?**
 
-A bicep egy olyan DSL, amely teljes körű megoldásokat helyez üzembe az Azure-ban. A cél az Azure-on kívüli API-kkal való együttműködéshez szükséges. Arra számítunk, hogy bővíthető pontokat biztosítunk ezekhez a forgatókönyvekhez.
+A Bicep egy olyan DSL, amely teljes megoldások Azure-beli üzembe helyezésére összpontosít. Ennek a célnak az eléréséhez az Azure-n kívüli API-okkal kell dolgozni. Arra számítunk, hogy ezekhez a forgatókönyvekhez meg kell adni a szükséges extenzitási pontokat.
 
 **Mi történik a meglévő ARM-sablonokkal?**
 
-Továbbra is pontosan úgy működnek, ahogy mindig rendelkeznek. Semmilyen módosítást nem kell végeznie. Továbbra is támogatjuk az alapul szolgáló ARM-sablon JSON-nyelvét. A bicep-fájlok a JSON-be lettek lefordítva, és a JSON-t az Azure-ba történő telepítésre küldik.
+Továbbra is pontosan úgy működnek, mint mindig. Nem kell módosításokat tennie. Továbbra is támogatjuk a mögöttes ARM-sablon JSON-nyelvét. A BICEP-fájlok JSON-fájlba vannak fordítva, és ezt a JSON-t a rendszer elküldi az Azure-nak üzembe helyezésre.
 
-Ha elkészült, [átalakíthatja a JSON-fájlokat a bicep](bicep-decompile.md).
+Ha készen áll, átalakíthatja a [JSON-fájlokat Bicep formátumba.](bicep-decompile.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen meg a [bicep oktatóanyaggal](./bicep-tutorial-create-first-bicep.md).
+A [Bicep oktatóanyag – első lépések.](./bicep-tutorial-create-first-bicep.md)

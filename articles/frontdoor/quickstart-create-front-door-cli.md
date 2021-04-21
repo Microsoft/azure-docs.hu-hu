@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Magas rendelkezésre állás beállítása a Azure Front Door – Azure CLI'
-description: Ez a rövid útmutató bemutatja, hogyan hozhat Azure Front Door magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokat az Azure CLI használatával.
+title: 'Rövid útmutató: Magas rendelkezésre állás beállítása a Azure Front Door használatával – Azure CLI'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Front Door magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokat az Azure CLI használatával.
 services: front-door
 author: duongau
 manager: KumudD
@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: f697606e195f102d2bfb5535c92e5c78eb44cdbe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727210"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778773"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre álló globális webalkalmazáshoz az Azure CLI használatával
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazáshoz az Azure CLI használatával
 
-A Azure Front Door használatának első lépésekhez hozzon létre egy magas rendelkezésre álló és nagy teljesítményű globális webalkalmazást az Azure CLI használatával.
+Első lépések az Azure Front Door azure cli használatával egy magas rendelkezésre álló és nagy teljesítményű globális webalkalmazás létrehozásához.
 
-A Front Door a webes forgalmat a háttérkészlet adott erőforrásaihoz irányítja. Meghatározta az előteretartományt, erőforrásokat adott hozzá egy háttérkészlethez, és létrehozott egy útválasztási szabályt. Ez a cikk az egyik háttérkészlet egyszerű konfigurációját használja két webalkalmazás-erőforrással, valamint egyetlen útválasztási szabályt a "/*" alapértelmezett elérésiút-megfeleltetéssel.
+A Front Door a webes forgalmat egy háttérkészlet adott erőforrásaihoz irányítja. Meghatározta az előteretartományt, erőforrásokat adott hozzá egy háttérkészlethez, és létrehozott egy útválasztási szabályt. Ez a cikk az egyik háttérkészlet egyszerű konfigurációját használja két webalkalmazás-erőforrással és egyetlen útválasztási s szabálysal, amely az alapértelmezett elérésiút-egyeztetést (/*) használja.
 
 :::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Az üzembe Front Door Azure CLI használatával való üzembe helyezést szemléltető ábra." border="false":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Helyileg telepített Azure CLI vagy Azure Cloud Shell
+- Az Azure CLI helyileg vagy helyileg Azure Cloud Shell
 - Győződjön meg arról, hogy a front-door bővítmény hozzá van adva az Azure CLI-hez
 
 ```azurecli-interactive 
@@ -43,11 +43,11 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a rövid
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli hozzá. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Ehhez a rövid útmutatóhoz két erőforráscsoportra lesz szüksége. Az egyik *az USA középső részén,* a másik pedig az *USA déli középső részén található.*
+Ebben a rövid útmutatóban két erőforráscsoportra lesz szüksége. Az egyik az *USA középső* részén, a másik pedig az USA déli középső *részén található.*
 
-Hozzon létre egy erőforráscsoportot [az az group create gombra:](/cli/azure/group#az-group-create)
+Hozzon létre egy erőforráscsoportot [az az group create segítségével:](/cli/azure/group#az_group_create)
 
 ```azurecli-interactive
 az group create \
@@ -61,9 +61,9 @@ az group create \
 
 ## <a name="create-two-instances-of-a-web-app"></a>Webalkalmazás két példányának létrehozása
 
-A rövid útmutatóhoz egy webalkalmazás két példánya szükséges, amelyek különböző Azure-régiókban futnak. Mindkét webalkalmazáspéldány aktív/aktív módban fut, így bármelyik képes a forgalom kiszolgálására.
+A rövid útmutatóhoz egy webalkalmazás két példánya szükséges, amelyek különböző Azure-régiókban futnak. Mindkét webalkalmazás-példány Aktív/Aktív módban fut, így bármelyik képes a forgalom kiszolgálására.
 
-Ha még nem rendelkezik webalkalmazással, a következő szkript használatával állítson be két példa webalkalmazást.
+Ha még nem rendelkezik webalkalmazással, a következő szkript használatával állítson be két példa-webalkalmazást.
 
 ### <a name="create-app-service-plans"></a>App Service-csomagok létrehozása
 
@@ -83,7 +83,7 @@ az appservice plan create \
 
 ### <a name="create-web-apps"></a>Webalkalmazások létrehozása
 
-Az alábbi parancsok futtatásával egy webalkalmazást hozhat létre az előző lépésben található összes App Service-csomagban. A webalkalmazások nevének globálisan egyedinek kell lennie.
+Az alábbi parancsok futtatásával létrehoz egy webalkalmazást az előző lépésben található összes App Service-csomagban. A webalkalmazások nevének globálisan egyedinek kell lennie.
 
 Webalkalmazás létrehozása az [az webapp create használatával:](/cli/azure/webapp#az_webapp_create&preserve-view=true)
 
@@ -119,21 +119,21 @@ az network front-door create \
 
 **--name:** Adjon meg egy globálisan egyedi nevet a Azure Front Door. 
 
-**--accepted-protocols:** Az elfogadott értékek a **http és a** **https.** Ha mindkettőt használni szeretné, mindkettőt szóköz választja el egymástól.
+**--accepted-protocols:** Az elfogadott értékek a **http és** **a https.** Ha mindkettőt használni szeretné, mindkettőt szóköz választja el egymástól.
 
 **--backend-address:** Itt definiálja mindkét webalkalmazás gazdanevét szóközvel elválasztva.
 
-Miután az üzembe helyezés sikeresen befejeződött, jegyezze fel az állomásnevet a *frontEndpoints szakaszban.*
+Miután az üzembe helyezés sikeresen befejeződött, jegyezze fel a *frontEndpoints* szakaszban található állomásnevet.
 
 ## <a name="test-the-front-door"></a>A Front Door
 
 Nyisson meg egy webböngészőt, és írja be a parancsokból lekért gazdanevet. A Front Door a kérést az egyik háttérerőforráshoz irányítja.
 
-:::image type="content" source="./media/quickstart-create-front-door-cli/front-door-testing-page.png" alt-text="Front Door tesztelési oldal":::
+:::image type="content" source="./media/quickstart-create-front-door-cli/front-door-testing-page.png" alt-text="Front Door oldal":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a Front Door létrehozott erőforrásokra, törölje mindkét erőforráscsoportot. Az erőforráscsoport törlésekor törli a Front Door az összes kapcsolódó erőforrást is. 
+Ha már nincs szüksége a Front Door erőforráscsoportokkal létrehozott erőforrásokra. Az erőforráscsoport törlésekor törli az erőforráscsoportot Front Door az összes kapcsolódó erőforrást is. 
 
 Az erőforráscsoport törléséhez használja [az az group delete parancsot:](/cli/azure/group#az_group_delete&preserve-view=true)
 
@@ -151,7 +151,7 @@ Ebben a rövid útmutatóban a következőt hozta létre:
 * Front Door
 * Két webalkalmazás
 
-Ha meg szeretne ismerkedni az egyéni tartomány hozzáadásának Front Door, folytassa a Front Door oktatóanyagokkal.
+Ha meg szeretne tudni, hogyan adhat hozzá egyéni tartományt a Front Door, folytassa a Front Door oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](front-door-custom-domain.md)

@@ -10,16 +10,16 @@ ms.date: 04/19/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cb5caeb7f75834a317b222392c6e827185cfac00
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 8c0158ea4e93b4bbefa7b41b5a280fa804ede35f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714350"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791282"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Az Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, üzenetsorokat és táblákat. A tárfiók egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP- vagy HTTPS-kapcsolatokon keresztül. Az Azure Storage-fiókokkal kapcsolatos további információkért lásd: [Tárfiókok áttekintése.](storage-account-overview.md)
+Az Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, üzenetsorokat és táblákat. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP- vagy HTTPS-kapcsolatokon keresztül. Az Azure Storage-fiókokkal kapcsolatos további információkért lásd: [Tárfiókok áttekintése.](storage-account-overview.md)
 
 Ebből az útmutatóból megtudhatja, hogyan hozhat létre tárfiókot a [Azure Portal](https://portal.azure.com/), [Azure PowerShell,](/powershell/azure/) [Az Azure CLI](/cli/azure)vagy egy Azure Resource Manager [használatával.](../../azure-resource-manager/management/overview.md)
 
@@ -64,7 +64,7 @@ A gomb elindít egy interaktív rendszerhéjat, amely az ebben az útmutatóban 
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. A cikkben olvasható példákhoz az Azure CLI 2.0.4-es vagy újabb verziójára van szükség. A `az --version` telepített verzió megkereshez futtassa a (futtatás) futtatását. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Az Azure CLI-t helyben is telepítheti és használhatja. A cikkben olvasható példákhoz az Azure CLI 2.0.4-es vagy újabb verziójára van szükség. Keresse `az --version` meg a telepített verziót az futtatásával. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 # <a name="template"></a>[Sablon](#tab/template)
 
@@ -90,7 +90,7 @@ Connect-AzAccount
 
 A Azure Cloud Shell elindításához jelentkezzen be a [Azure Portal.](https://portal.azure.com)
 
-A parancssori felület helyi telepítésére való bejelentkezéshez futtassa [az az login](/cli/azure/reference-index#az-login) parancsot:
+A parancssori felület helyi telepítésére való bejelentkezéshez futtassa [az az login](/cli/azure/reference-index#az_login) parancsot:
 
 ```azurecli-interactive
 az login
@@ -115,7 +115,7 @@ Azure Storage-fiók létrehozásához a Azure Portal kövesse az alábbi lépés
 1. A bal oldali portál menüjében válassza a **Tárfiókok** lehetőséget a tárfiókok listájának megjelenítéséhez.
 1. A **Tárfiókok lapon** válassza az Új **lehetőséget.**
 
-Az új tárfiók beállításai lapra vannak rendezve a Tárfiók **létrehozása lapon.** A következő szakaszok ismertetik az egyes lapokat és azok beállításait.
+Az új tárfiók beállításai lapfülekre vannak rendezve **a Tárfiók létrehozása** oldalon. A következő szakaszok ismertetik az egyes lapokat és azok beállításait.
 
 ### <a name="basics-tab"></a>Alapvető beállítások lap
 
@@ -129,7 +129,7 @@ Az alábbi táblázat az Alapvető beállítások lapon található **mezőket**
 | Projekt részletei | Erőforráscsoport | Kötelező | Hozzon létre egy új erőforráscsoportot ehhez a tárfiókhoz, vagy válasszon ki egy meglévőt. További információ: [Erőforráscsoportok.](../../azure-resource-manager/management/overview.md#resource-groups) |
 | Példány adatai | Tárfiók neve | Kötelező | Válasszon egy egyedi nevet a tárfióknak. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. |
 | Példány adatai | Region | Kötelező | Válassza ki a tárfiókhoz megfelelő régiót. További információ: Régiók és Availability Zones [Azure-ban.](../../availability-zones/az-overview.md)<br /><br />Nem minden régió támogatott minden típusú tárfiókhoz vagy redundanciakonfigurációhoz. További információ: [Azure Storage-redundancia](storage-redundancy.md).<br /><br />A régióválasztás hatással lehet a számlázásra. További információ: [Storage-fiók számlázása.](storage-account-overview.md#storage-account-billing) |
-| Példány adatai | Teljesítmény | Kötelező | Válassza **a Standard** teljesítmény általános célú v2-tárfiókok esetében (alapértelmezett) lehetőséget. Ezt a fióktípust a Microsoft a legtöbb esetben ajánlott. További információ: [Tárfiókok típusai.](storage-account-overview.md#types-of-storage-accounts)<br /><br />Alacsony **késést** igénylő forgatókönyvek esetén válassza a Prémium lehetőséget. A Prémium **lehetőséget választva** válassza ki a létrehozni kívánt prémium szintű tárfiók típusát. A prémium szintű tárfiókok következő típusai érhetők el: <ul><li>[Blokkblobok](../blobs/storage-blob-performance-tiers.md)</li><li>[Fájlmegosztások](../files/storage-files-planning.md#management-concepts)</li><li>[Lapblobok](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
+| Példány adatai | Teljesítmény | Kötelező | Általános célú v2-tárfiókok esetén válassza a Standard teljesítmény lehetőséget (alapértelmezés).  Ezt a fióktípust a Microsoft a legtöbb esetben ajánlott. További információ: [Tárfiókok típusai.](storage-account-overview.md#types-of-storage-accounts)<br /><br />Alacsony **késést** igénylő forgatókönyvek esetén válassza a Prémium lehetőséget. A Prémium **lehetőséget választva** válassza ki a létrehozni kívánt prémium szintű tárfiók típusát. A prémium szintű tárfiókok következő típusai érhetők el: <ul><li>[Blokkblobok](../blobs/storage-blob-performance-tiers.md)</li><li>[Fájlmegosztások](../files/storage-files-planning.md#management-concepts)</li><li>[Lapblobok](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
 | Példány adatai | Redundancia | Kötelező | Válassza ki a kívánt redundanciakonfigurációt. Nem minden redundancia-beállítás érhető el minden tárfióktípushoz minden régióban. További információ a redundanciakonfigurációkról: [Azure Storage redundancia.](storage-redundancy.md)<br /><br />Ha georedundáns konfigurációt (GRS vagy GZRS) választ, a rendszer egy másik régióban található adatközpontba replikálja az adatokat. A másodlagos régióban található adatokhoz való olvasási hozzáféréshez válassza az Olvasási hozzáférés elérhetővé tenni az adatokhoz régiónkénti **elérhetetlenség esetén lehetőséget.** |
 
 Az alábbi képen egy új tárfiók standard konfigurációja látható.
@@ -147,8 +147,8 @@ Az alábbi táblázat a Speciális lapon található **mezőket** ismerteti.
 | Biztonság | Biztonságos átvitel engedélyezése | Választható | Engedélyezze a biztonságos átvitelt, hogy az ehhez a tárfiókhoz beérkező kérések csak HTTPS-kapcsolaton keresztül (alapértelmezés szerint) készülnek. Az optimális biztonság érdekében ajánlott. További információ: [Biztonságos átvitel megkövetelése a biztonságos kapcsolatok biztosításához.](storage-require-secure-transfer.md) |
 | Biztonság | Infrastruktúra titkosításának engedélyezése | Választható | Alapértelmezés szerint az infrastruktúra titkosítása nincs engedélyezve. Engedélyezze az infrastruktúra titkosítását az adatok szolgáltatás- és infrastruktúraszinten való titkosításához. További információ: Tárfiók létrehozása olyan infrastruktúra-titkosítással, amelynél engedélyezve van [az adatok kettős titkosítása.](infrastructure-encryption-enable.md) |
 | Biztonság | Nyilvános blobhozzáférés engedélyezése | Választható | Ha engedélyezve van, ez a beállítás lehetővé teszi a megfelelő engedélyekkel rendelkező felhasználók számára, hogy névtelen nyilvános hozzáférést engedélyezzenek a tárfiókban található tárolókhoz (alapértelmezés). A beállítás letiltása megakadályozza a tárfiók névtelen nyilvános hozzáférését. További információ: [Tárolók és blobok névtelen nyilvános](../blobs/anonymous-read-access-prevent.md)olvasási hozzáférésének megakadályozása.<br> <br> A blobok nyilvános hozzáférésének engedélyezése csak akkor teszi elérhetővé a blobadatokat, ha a felhasználó a további lépéssel explicit módon konfigurálja a tároló nyilvános hozzáférési beállítását. |
-| Biztonság | Tárfiókkulcs-hozzáférés engedélyezése (előzetes verzió) | Választható | Ha ez a beállítás engedélyezve van, az ügyfelek engedélyezhetik a tárfiókra vonatkozó kéréseket a fiók hozzáférési kulcsával vagy Azure Active Directory (Azure AD) fiókkal (alapértelmezés). A beállítás letiltása megakadályozza a fiók hozzáférési kulcsokkal való hitelesítését. További információ: Az Azure Storage-fiók megosztott kulcsos [hitelesítésének megakadályozása (előzetes verzió)](shared-key-authorization-prevent.md). |
-| Biztonság | TLS minimális verziója | Kötelező | Válassza ki a tárfiókhoz érkező Transport Layer Security (TLS) minimális verzióját. Az alapértelmezett érték a TLS 1.2-es verziója. Ha az alapértelmezett értékre van állítva, a rendszer elutasítja a TLS 1.0 vagy TLS 1.1 használatával érkező kérelmeket. További információkért lásd: A tárfiókra Transport Layer Security (TLS) minimálisan szükséges [verziójának kényszerítését.](transport-layer-security-configure-minimum-version.md) |
+| Biztonság | Tárfiókkulcs-hozzáférés engedélyezése (előzetes verzió) | Választható | Ha engedélyezve van, ez a beállítás lehetővé teszi az ügyfelek számára, hogy a fiók hozzáférési kulcsával vagy egy Azure Active Directory Azure AD-fiókkal (alapértelmezés) engedélyezzenek kéréseket a tárfiókhoz. A beállítás letiltása megakadályozza a fiók hozzáférési kulcsokkal való engedélyezést. További információ: Az Azure Storage-fiók megosztott kulcsos [hitelesítésének megakadályozása (előzetes verzió)](shared-key-authorization-prevent.md). |
+| Biztonság | TLS minimális verziója | Kötelező | Válassza ki a tárfiókhoz érkező Transport Layer Security (TLS) minimális verzióját. Az alapértelmezett érték a TLS 1.2-es verziója. Ha az alapértelmezett értékre van állítva, a rendszer elutasítja a TLS 1.0 vagy tLS 1.1 használatával beérkező kéréseket. További információkért lásd: A tárfiókra Transport Layer Security (TLS) minimálisan szükséges [verziójának kényszerítését.](transport-layer-security-configure-minimum-version.md) |
 | Data Lake Storage Gen2 | Hierarchikus névtér engedélyezése | Választható | Ha ezt a tárfiókot számítási feladatokhoz Azure Data Lake Storage Gen2, konfigurálnia kell egy hierarchikus névteret. További információ: [Bevezetés](../blobs/data-lake-storage-introduction.md)a Azure Data Lake Storage Gen2. |
 | Blob Storage | Hálózati fájlmegosztás (NFS) v3 (előzetes verzió) engedélyezése | Választható | Az NFS v3 linuxos fájlrendszer-kompatibilitást biztosít az objektumtárolás méretének megfelelően, lehetővé teszi a Linux-ügyfelek számára, hogy egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a Blob Storage-ban. További információ: Hálózati fájlrendszer [(NFS) 3.0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió).](../blobs/network-file-system-protocol-support.md) |
 | Blob Storage | Hozzáférési szint | Kötelező | A blob-hozzáférési szintek lehetővé teszik, hogy a használat alapján a legköltségköltségesebb módon tárolja a blobadatokat. A gyakran használt adatokhoz válassza a gyakori rétegű (alapértelmezett) lehetőséget. Válassza ki a ritkán használt adatokhoz használt ritka adatokat. További információ: Hozzáférési szintek a Azure Blob Storage [– elérésű, elérésű és archív.](../blobs/storage-blob-storage-tiers.md) |
@@ -175,11 +175,11 @@ Az alábbi táblázat az Adatvédelem lapon található **mezőket** ismerteti.
 | Section | Mező | Kötelező vagy választható | Description |
 |--|--|--|--|
 | Helyreállítási | Időponthoz időben való visszaállítás engedélyezése tárolókhoz | Választható | Az időponthoz időben való visszaállítás védelmet nyújt a véletlen törléssel vagy sérüléssel szemben azáltal, hogy lehetővé teszi a blokkblobadatok korábbi állapotába való visszaállítását. További információ: Időponthoz időben való visszaállítás [blokkblobok számára.](../blobs/point-in-time-restore-overview.md)<br /><br />Az időponthoz időben való visszaállítás engedélyezése lehetővé teszi a blobok verziószámozását, a blobok helyreállítható törlését és a blobok változáscsatornáját is. Ezek az előfeltétel-funkciók hatással lehetnek a költségekre. További információ: [Az](../blobs/point-in-time-restore-overview.md#pricing-and-billing) időponthoz való visszaállítás díjszabása és számlázása. |
-| Helyreállítási | Blobok helyreállítható törlésének engedélyezése | Választható | A blobok végleges törlése megvédi az egyes blobokat, pillanatképeket vagy verziókat a véletlen törléstől vagy felülírástól azáltal, hogy a törölt adatokat egy adott megőrzési időszakra megőrzi a rendszerben. A megőrzési időszak alatt visszaállíthat egy helyreállíthatóan törölt objektumot annak állapotába a törléskor. További információkért lásd: [Blobok soft delete (Blobok soft delete ) parancsa.](../blobs/soft-delete-blob-overview.md)<br /><br />A Microsoft azt javasolja, hogy a blobok esetében engedélyezni kell a blobok esetében a blobok törlését, és be kell tartani a minimális megőrzési megőrzési időszakot hét napban. |
-| Helyreállítási | Tárolókhoz való soft delete (előzetes verzió) engedélyezése | Választható | A tárolók és a tárolók végleges törlése megvédi a tárolót és annak tartalmát a véletlen törléstől azáltal, hogy a törölt adatokat egy adott megőrzési időszakra megőrzi a rendszerben. A megőrzési időszak alatt helyreállíthatóan törölt tárolók visszaállíthatóak annak állapotába a törléskor. További információ: [Tárolók soft delete for containers (preview) (Tárolók soft delete for containers (előzetes verzió) ).](../blobs/soft-delete-container-overview.md)<br /><br />A Microsoft azt javasolja, hogy a tárfiókok esetében a tárolók esetében engedélyezni kell a tárolók esetében a törlést, és be kell tartani a minimális megőrzési megőrzési időszakot hét nap alatt. |
+| Helyreállítási | Blobok helyreállítható törlésének engedélyezése | Választható | A blobok végleges törlése megvédi az egyes blobokat, pillanatképeket vagy verziókat a véletlen törléstől vagy felülírástól azáltal, hogy a törölt adatokat egy adott megőrzési időszakra megőrzi a rendszerben. A megőrzési időszak alatt visszaállíthat egy helyreállíthatóan törölt objektumot annak állapotába a törléskor. További információkért lásd: [Blobok soft delete (Blobok soft delete ) parancsa.](../blobs/soft-delete-blob-overview.md)<br /><br />A Microsoft azt javasolja, hogy a tárfiókok esetében engedélyezni kell a blobok esetében a blobok soft delete funkcióját, és be kell tartani a minimális megőrzési megőrzési időszakot hét napra. |
+| Helyreállítási | Tárolókhoz való soft delete (előzetes verzió) engedélyezése | Választható | A tárolók és a tárolók végleges törlése megvédi a tárolót és annak tartalmát a véletlen törléstől azáltal, hogy a törölt adatokat a rendszerben tartja egy adott megőrzési időtartamra. A megőrzési időszak alatt helyreállíthatóan törölt tárolók visszaállíthatóak annak állapotába a törléskor. További információ: [Tárolók soft delete for containers (preview) (Tárolók soft delete for containers (előzetes verzió) ).](../blobs/soft-delete-container-overview.md)<br /><br />A Microsoft azt javasolja, hogy a tárfiókok esetében a tárolók esetében engedélyezni kell a tárolók esetében a törlést, és be kell tartani a minimális megőrzési megőrzési időszakot hét napra. |
 | Helyreállítási | Fájlmegosztások soft delete funkciónak engedélyezése | Választható | A fájlmegosztások soft delete parancsa megvédi a fájlmegosztásokat és azok tartalmát a véletlen törlésektől azáltal, hogy a törölt adatokat egy adott megőrzési időszakra megőrzi a rendszerben. A megőrzési időszak alatt helyreállíthatóan törölt fájlmegosztást visszaállíthat annak állapotába a törléskor. További információ: [Az Azure-fájlmegosztások véletlen törlésének megakadályozása.](../files/storage-files-prevent-file-share-deletion.md)<br /><br />A Microsoft javasolja a fájlmegosztások Azure Files törlésének engedélyezését és a minimális megőrzési időtartam hét napos beállítását. |
 | Nyomon követés | Blobok verziószámozásának engedélyezése | Választható | A blobok verziószámozása automatikusan menti a blob állapotát egy korábbi verzióban, amikor felülírja a blobot. További információ: [Blobok verziószámozása.](../blobs/versioning-overview.md)<br /><br />A Microsoft javasolja a blobok verziószámozásának engedélyezését a tárfiók optimális adatvédelme érdekében. |
-| Nyomon követés | Blob változáscsatornája engedélyezése | Választható | A blob-változáscsatorna a tárfiók összes blobjának minden változását, valamint azok metaadatainak tranzakciónaplóit is biztosítja. További információ: [Változáscsatorna](../blobs/storage-blob-change-feed.md)támogatása a Azure Blob Storage. |
+| Nyomon követés | Blob változáscsatornája engedélyezése | Választható | A blob változáscsatornája tranzakciónaplókat biztosít a tárfiókban lévő összes blob módosításairól, valamint a metaadataikról. További információ: [Változáscsatorna](../blobs/storage-blob-change-feed.md)támogatása a Azure Blob Storage. |
 
 ### <a name="tags-tab"></a>Címkék lap
 
@@ -187,7 +187,7 @@ A **Címkék lapon** megadhatja a Resource Manager címkéket az Azure-erőforr�
 
 ### <a name="review--create-tab"></a>Áttekintés és létrehozás lap
 
-Amikor a Felülvizsgálat **+** létrehozás lapra navigál, az Azure érvényesítést futtat a kiválasztott tárfiók-beállításokon. Ha az érvényesítés megfelel, létrehozhatja a tárfiókot.
+Amikor a Felülvizsgálat + létrehozás **lapra** navigál, az Azure érvényesítést futtat a kiválasztott tárfiók-beállításokon. Ha az érvényesítés megfelel, létrehozhatja a tárfiókot.
 
 Ha az érvényesítés sikertelen, a portál jelzi, hogy mely beállításokat kell módosítani.
 
@@ -263,18 +263,18 @@ Ha engedélyezni szeretné egy hierarchikus névtér használatát a tárfiók s
 
 Az alábbi táblázat bemutatja, hogy mely értékeket kell használni a és paraméterekhez egy adott típusú tárfiók létrehozásához `-sku` `-kind` a kívánt redundanciakonfigurációval.
 
-| Tárfiók típusa | Támogatott redundanciakonfigurációk | Az -kind paraméter értéke | A -sku paraméter lehetséges értékei | Támogatja a hierarchikus névteret |
+| Tárfiók típusa | Támogatott redundanciakonfigurációk | A -kind paraméter értéke | A -sku paraméter lehetséges értékei | Támogatja a hierarchikus névteret |
 |--|--|--|--|--|
 | Standard általános célú v2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Yes |
 | Prémium szintű blokkblobok | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Yes |
-| Prémium fájlmegosztások | LRS /ZRS | FileStorage (Fájltartó) | Premium_LRS / Premium_ZRS | No |
+| Prémium fájlmegosztások | LRS / ZRS | FileStorage (Fájltartó) | Premium_LRS / Premium_ZRS | No |
 | Prémium lapblobok | LRS | StorageV2 | Premium_LRS | No |
 | Örökölt általános célú általános célú v1 | LRS / GRS / RA-GRS | Tárolás | Standard_LRS / Standard_GRS / Standard_RAGRS | No |
 | Örökölt Blob Storage | LRS / GRS / RA-GRS | BlobStorage | Standard_LRS / Standard_GRS / Standard_RAGRS | No |
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-A tárfiók létrehozásához Azure PowerShell azure cli használatával üzembe helyezhet egy Resource Manager-sablont. Az ebben az útmutatóban használt sablon a gyorsindítási [sablonokból Azure Resource Manager tartalmaz.](https://azure.microsoft.com/resources/templates/101-storage-account-create/) A szkriptek futtatásához kattintson a **Try it (Próbálja ki) gombra** a Azure Cloud Shell. A szkript beillesztéshez kattintson a jobb gombbal a rendszerhéjra, majd válassza a Beillesztés **lehetőséget.**
+A tárfiók létrehozásához Azure PowerShell azure cli használatával üzembe helyezhet egy Resource Manager-sablont. Az ebben az útmutatóban használt sablon a gyorsindítási [sablonokból Azure Resource Manager tartalmaz.](https://azure.microsoft.com/resources/templates/101-storage-account-create/) A szkriptek futtatásához válassza a **Próbálja ki a** szkriptet a Azure Cloud Shell. A szkript beillesztéshez kattintson a jobb gombbal a rendszerhéjra, majd válassza a Beillesztés **lehetőséget.**
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -323,7 +323,7 @@ Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-gro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A tárfiók törléséhez használja az [az storage account delete parancsot:](/cli/azure/storage/account#az-storage-account-delete)
+A tárfiók törléséhez használja az [az storage account delete parancsot:](/cli/azure/storage/account#az_storage_account_delete)
 
 ```azurecli-interactive
 az storage account delete --name <storage-account> --resource-group <resource-group>
@@ -349,7 +349,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-Másik megoldásként törölheti az erőforráscsoportot, amely törli a tárfiókot és az erőforráscsoportban minden más erőforrást. További információ az erőforráscsoportok törléséről: [Erőforráscsoport és erőforrások törlése.](../../azure-resource-manager/management/delete-resource-group.md)
+Másik megoldásként törölheti az erőforráscsoportot, amely törli a tárfiókot és az erőforráscsoportban minden más erőforrást. Az erőforráscsoportok törlésével kapcsolatos további információkért lásd: [Erőforráscsoport és erőforrások törlése.](../../azure-resource-manager/management/delete-resource-group.md)
 
 > [!WARNING]
 > A törölt tárfiókokat nem lehet visszaállítani, és nem lehet a törlés előtt abban tárolt tartalmakat helyreállítani. A fiók törlése előtt készítsen biztonsági másolatot minden menteni kívánt tartalomról. Ez igaz a fiókban lévő összes erőforrásra is – ha töröl egy blobot, táblát, üzenetsort vagy fájlt, az véglegesen törölve lesz.
