@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js, devx-track-azurecli
 ms.reviewer: sngun
-ms.openlocfilehash: 0690f7f6d0807af181740a7133ec5400fc64cc12
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 99edeff93bdf75596eea80a238e159548f00679c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482279"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790220"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Angular-alkalmazás létrehozása Azure Cosmos DB MongoDB API-jának használatával – Cosmos-fiók létrehozása
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -49,7 +49,7 @@ Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) va
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Hozzon létre egy Azure Cosmos DB fiókot az [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) paranccsal.
+Hozzon létre egy Azure Cosmos DB fiókot az [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) paranccsal.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB

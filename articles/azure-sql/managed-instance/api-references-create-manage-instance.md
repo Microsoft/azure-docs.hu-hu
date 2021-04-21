@@ -1,6 +1,6 @@
 ---
-title: Felügyeleti API-referenciák az Azure SQL felügyelt példányaihoz
-description: Tudnivalók a felügyelt Azure SQL-példányok felügyelt példányainak létrehozásáról és konfigurálásáról.
+title: Alkalmazáskezelés API referencia a Azure SQL Managed Instance
+description: Útmutató felügyelt példányok létrehozásához és Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -11,100 +11,100 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792633"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784370"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Az Azure SQL Managed Instance felügyelt API-referenciája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL felügyelt példányainak felügyelt példányait a Azure Portal, a PowerShell, az Azure CLI, az REST API és a Transact-SQL használatával hozhatja létre és konfigurálhatja. Ebben a cikkben a felügyelt példányok létrehozásához és konfigurálásához használható függvények és API-k áttekintését találhatja.
+Felügyelt példányokat hozhat létre és konfigurálhat a Azure SQL Managed Instance a Azure Portal, a PowerShell, az Azure CLI, a REST API és a Transact-SQL használatával. Ebben a cikkben áttekintheti a felügyelt példányok létrehozásához és konfigurálához használható függvényeket és API-t.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: felügyelt példány létrehozása
+## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Felügyelt példány létrehozása
 
-A felügyelt példányok létrehozásának módját bemutató rövid útmutató [: a felügyelt példány létrehozása](instance-create-quickstart.md).
+A felügyelt példányok létrehozásáról rövid útmutatóért lásd: Rövid [útmutató: Felügyelt példány létrehozása.](instance-create-quickstart.md)
 
-## <a name="powershell-create-and-configure-managed-instances"></a>PowerShell: felügyelt példányok létrehozása és konfigurálása
+## <a name="powershell-create-and-configure-managed-instances"></a>PowerShell: Felügyelt példányok létrehozása és konfigurálása
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRM modulok parancsainak argumentumai lényegében azonosak.
+> A PowerShell Azure Resource Manager modult továbbra is támogatja a Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modulhoz lesz. A parancsmagokért lásd: [AzureRM.Sql.](/powershell/module/AzureRM.Sql/) Az Az modulban és az AzureRM-modulokban található parancsok argumentumai lényegesen azonosak.
 
-Felügyelt példányok Azure PowerShell használatával történő létrehozásához és kezeléséhez használja a következő PowerShell-parancsmagokat. Ha telepítenie vagy frissítenie kell a PowerShellt, tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.
+Felügyelt példányok létrehozásához és kezeléséhez használja Azure PowerShell PowerShell-parancsmagokat. Ha telepítenie vagy frissítenie kell a PowerShellt, tekintse meg a következő modul [telepítését Azure PowerShell:](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> A PowerShell-parancsfájlok esetében lásd [: gyors útmutató parancsfájl: felügyelt példány létrehozása PowerShell-függvénytár használatával](/archive/blogs/sqlserverstorageengine/quick-start-script-create-azure-sql-managed-instance-using-powershell).
+> A PowerShell-példaszk szkriptekért lásd: Gyorsindítási parancsfájl: Felügyelt példány [létrehozása PowerShell-kódtár használatával.](/archive/blogs/sqlserverstorageengine/quick-start-script-create-azure-sql-managed-instance-using-powershell)
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[Új – AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy felügyelt példányt. |
+|[New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy felügyelt példányt. |
 |[Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)|Egy felügyelt példányra vonatkozó adatokat ad vissza.|
-|[Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)|Felügyelt példány tulajdonságainak beállítása.|
+|[Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)|Beállítja egy felügyelt példány tulajdonságait.|
 |[Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance)|Eltávolít egy felügyelt példányt.|
-|[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)|Lekéri a felügyelt példányon vagy adott műveleten végrehajtott felügyeleti műveletek listáját.|
-|[Leállítás – AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
-|[Új – AzSqlInstanceDatabase](/powershell/module/az.sql/new-azsqlinstancedatabase)|Létrehoz egy SQL-alapú felügyelt példány-adatbázist.|
-|[Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase)|Egy SQL felügyelt példány adatbázisával kapcsolatos információkat ad vissza.|
-|[Remove-AzSqlInstanceDatabase](/powershell/module/az.sql/remove-azsqlinstancedatabase)|Eltávolít egy SQL-alapú felügyelt példány-adatbázist.|
-|[Visszaállítás – AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)|Visszaállítja a felügyelt SQL-példányok adatbázisát.|
+|[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)|Lekérte a felügyelt példányon vagy adott műveleten végrehajtott felügyeleti műveletek listáját.|
+|[Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)|Megszakítja a felügyelt példányon végrehajtott adott felügyeleti műveletet.|
+|[New-AzSqlInstanceDatabase](/powershell/module/az.sql/new-azsqlinstancedatabase)|Létrehoz egy SQL Managed Instance adatbázist.|
+|[Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase)|Egy adatbázisra vonatkozó SQL Managed Instance ad vissza.|
+|[Remove-AzSqlInstanceDatabase](/powershell/module/az.sql/remove-azsqlinstancedatabase)|Eltávolít egy SQL Managed Instance adatbázist.|
+|[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)|Visszaállít egy SQL Managed Instance adatbázist.|
 
-## <a name="azure-cli-create-and-configure-managed-instances"></a>Azure CLI: felügyelt példányok létrehozása és konfigurálása
+## <a name="azure-cli-create-and-configure-managed-instances"></a>Azure CLI: Felügyelt példányok létrehozása és konfigurálása
 
-Felügyelt példányok [Azure CLI](/cli/azure)-vel történő létrehozásához és konfigurálásához használja az alábbi [Azure CLI-parancsokat az SQL felügyelt példányához](/cli/azure/sql/mi). [Azure Cloud Shell](../../cloud-shell/overview.md) használatával futtathatja a CLI-t a böngészőben, vagy [telepítheti](/cli/azure/install-azure-cli) MacOS, Linux vagy Windows rendszerre.
+Felügyelt példányok Azure [CLI-val](/cli/azure)való létrehozásához és konfiguráláshoz használja a következő Azure CLI-parancsokat [a SQL Managed Instance.](/cli/azure/sql/mi) A [Azure Cloud Shell](../../cloud-shell/overview.md) a CLI böngészőben való futtatásához, vagy macOS, Linux vagy Windows rendszeren való telepítéséhez. [](/cli/azure/install-azure-cli)
 
 > [!TIP]
-> Azure CLI-gyors útmutató: az [SQL felügyelt példány használata az Azure CLI használatával](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+> Az Azure CLI rövid útmutatóját lásd: Working with SQL Managed Instance using Azure CLI (Az Azure CLI használata a [SQL Managed Instance használatával).](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[az SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create) |Létrehoz egy felügyelt példányt.|
-|[az SQL mi List](/cli/azure/sql/mi#az-sql-mi-list)|Felsorolja az elérhető felügyelt példányokat.|
-|[az SQL mi show](/cli/azure/sql/mi#az-sql-mi-show)|A felügyelt példány részleteinek beolvasása.|
-|[az SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)|Felügyelt példány frissítése.|
-|[az SQL mi delete](/cli/azure/sql/mi#az-sql-mi-delete)|Eltávolít egy felügyelt példányt.|
-|[az SQL mi op List](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Lekéri a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
-|[az SQL mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|A felügyelt példányon végrehajtott adott felügyeleti művelet beolvasása.|
-|[az SQL mi op Cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
-|[az SQL MidB Create](/cli/azure/sql/midb#az-sql-midb-create) |Létrehoz egy felügyelt adatbázist.|
-|[az SQL MidB List](/cli/azure/sql/midb#az-sql-midb-list)|Felsorolja az elérhető felügyelt adatbázisokat.|
-|[az SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore)|Visszaállítja a felügyelt adatbázist.|
-|[az SQL MidB delete](/cli/azure/sql/midb#az-sql-midb-delete)|Eltávolít egy felügyelt adatbázist.|
+|[az sql mi create](/cli/azure/sql/mi#az_sql_mi_create) |Létrehoz egy felügyelt példányt.|
+|[az sql mi list](/cli/azure/sql/mi#az_sql_mi_list)|Felsorolja az elérhető felügyelt példányokat.|
+|[az sql mi show](/cli/azure/sql/mi#az_sql_mi_show)|Lekérte egy felügyelt példány részleteit.|
+|[az sql mi update](/cli/azure/sql/mi#az_sql_mi_update)|Frissíti a felügyelt példányt.|
+|[az sql mi delete](/cli/azure/sql/mi#az_sql_mi_delete)|Eltávolít egy felügyelt példányt.|
+|[az sql mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Lekérte a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
+|[az sql mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|Lekérte a felügyelt példányon végrehajtott konkrét felügyeleti műveletet.|
+|[az sql mi op cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Megszakítja a felügyelt példányon végrehajtott konkrét felügyeleti műveletet.|
+|[az sql midb create](/cli/azure/sql/midb#az_sql_midb_create) |Létrehoz egy felügyelt adatbázist.|
+|[az sql midb list](/cli/azure/sql/midb#az_sql_midb_list)|Listázza az elérhető felügyelt adatbázisokat.|
+|[az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)|Visszaállít egy felügyelt adatbázist.|
+|[az sql midb delete](/cli/azure/sql/midb#az_sql_midb_delete)|Eltávolít egy felügyelt adatbázist.|
 
-## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: példány-adatbázisok létrehozása és konfigurálása
+## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: Példányadatbázisok létrehozása és konfigurálása
 
-A felügyelt példány létrehozása után hozzon létre és konfiguráljon példány-adatbázisokat a következő T-SQL-parancsok használatával. Ezeket a parancsokat a Azure Portal, a [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), a [Azure Data Studio](/sql/azure-data-studio/what-is), a [Visual Studio Code](https://code.visualstudio.com/docs)vagy bármely más program használatával lehet kiadni, amely csatlakozhat egy kiszolgálóhoz, és átadhatja a Transact-SQL-parancsokat.
+A felügyelt példány létrehozása után a következő T-SQL-parancsokkal hozhat létre és konfigurálhatja a példány-adatbázisokat. Ezeket a parancsokat a Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](/sql/azure-data-studio/what-is), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más olyan program használatával használhatja, amely csatlakozni tud egy kiszolgálóhoz, és Transact-SQL-parancsokat tud átadni.
 
 > [!TIP]
-> A Microsoft Windows SQL Server Management Studio használatával felügyelt példányok konfigurálását és csatlakoztatását bemutató gyors útmutató: gyors üzembe helyezés az Azure [virtuális gép konfigurálása az Azure SQL felügyelt példányhoz való kapcsolódáshoz](connect-vm-instance-configure.md) és rövid útmutató [: pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányához a helyszínen](point-to-site-p2s-configure.md).
+> A felügyelt példányok microsoftos SQL Server Management Studio használatával történő konfigurálásával és csatlakoztatásával kapcsolatos rövid útmutatókért lásd: Rövid [útmutató:](connect-vm-instance-configure.md) Azure-beli virtuális gép konfigurálása az [Azure SQL Managed Instance-hoz](point-to-site-p2s-configure.md)való csatlakozáshoz és Rövid útmutató: Pont–hely kapcsolat konfigurálása Azure SQL Managed Instance-hez helyszíni rendszerről.
 
 > [!IMPORTANT]
 > Felügyelt példány nem hozható létre és nem törölhető a Transact-SQL használatával.
 
 | Parancs | Leírás |
 | --- | --- |
-|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Létrehoz egy új példányadatbázist a SQL Managed Instance. Új adatbázis létrehozásához a master adatbázishoz kell csatlakozva lennie.|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Módosít egy példányadatbázist a SQL Managed Instance.|
 
-## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: felügyelt példányok létrehozása és konfigurálása
+## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: Felügyelt példányok létrehozása és konfigurálása
 
-Felügyelt példányok létrehozásához és konfigurálásához használja ezeket a REST API kérelmeket.
+Felügyelt példányok létrehozásához és konfiguráláshoz használja ezeket REST API kéréseket.
 
 | Parancs | Leírás |
 | --- | --- |
-|[Felügyelt példányok – létrehozás vagy frissítés](/rest/api/sql/managedinstances/createorupdate)|Felügyelt példány létrehozása vagy frissítése.|
-|[Felügyelt példányok – törlés](/rest/api/sql/managedinstances/delete)|Felügyelt példány törlése.|
-|[Felügyelt példányok – Get](/rest/api/sql/managedinstances/get)|Felügyelt példány beolvasása.|
-|[Felügyelt példányok – lista](/rest/api/sql/managedinstances/list)|Egy előfizetésben lévő felügyelt példányok listáját adja vissza.|
-|[Felügyelt példányok – erőforráslista szerint csoportosítva](/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoport felügyelt példányainak listáját adja vissza.|
-|[Felügyelt példányok – frissítés](/rest/api/sql/managedinstances/update)|Felügyelt példány frissítése.|
-|[Felügyelt példányok műveletei – lista felügyelt példány alapján](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Lekéri a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
-|[Felügyelt példányok műveletei – Get](/rest/api/sql/managedinstanceoperations/get)|A felügyelt példányon végrehajtott adott felügyeleti művelet beolvasása.|
-|[Felügyelt példányok műveletei – Mégse](/rest/api/sql/managedinstanceoperations/cancel)|A felügyelt példányon végrehajtott adott felügyeleti művelet megszakítása.|
+|[Felügyelt példányok – Létrehozás vagy frissítés](/rest/api/sql/managedinstances/createorupdate)|Létrehoz vagy frissíti a felügyelt példányt.|
+|[Felügyelt példányok – Törlés](/rest/api/sql/managedinstances/delete)|Töröl egy felügyelt példányt.|
+|[Felügyelt példányok – Lekért](/rest/api/sql/managedinstances/get)|Lekért egy felügyelt példányt.|
+|[Felügyelt példányok – Lista](/rest/api/sql/managedinstances/list)|Egy előfizetésben található felügyelt példányok listáját adja vissza.|
+|[Felügyelt példányok – Listás erőforráscsoportok szerint](/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoportban található felügyelt példányok listáját adja vissza.|
+|[Felügyelt példányok – frissítés](/rest/api/sql/managedinstances/update)|Frissíti a felügyelt példányt.|
+|[Felügyelt példányok műveletei – Listás felügyelt példány szerint](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Lekérte a felügyelt példányon végrehajtott felügyeleti műveletek listáját.|
+|[Felügyelt példányok műveletei – Lekért](/rest/api/sql/managedinstanceoperations/get)|Lekérte a felügyelt példányon végrehajtott konkrét felügyeleti műveletet.|
+|[Felügyelt példányok műveletei – Megszakítás](/rest/api/sql/managedinstanceoperations/cancel)|Megszakítja a felügyelt példányon végrehajtott konkrét felügyeleti műveletet.|
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](../database/migrate-to-database-from-sql-server.md).
+- A virtuális adatbázis Azure SQL Server ba való áttelepítését lásd: [Áttelepítés](../database/migrate-to-database-from-sql-server.md)Azure SQL Database.
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](../database/features-comparison.md).

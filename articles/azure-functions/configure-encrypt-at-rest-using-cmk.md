@@ -1,123 +1,123 @@
 ---
-title: Az alkalmazás forrásának titkosítása nyugalmi állapotban
-description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag fájlként történő üzembe helyezése.
+title: Az alkalmazás forrásának titkosítása
+description: Titkosítsa az alkalmazásadatokat az Azure Storage-ban, és telepítse csomagfájlként.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71668bf27628bb2af2dfc7112d28ba10ecfdf9f3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92108031"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768812"
 ---
-# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásban tárolt adatok titkosítása az ügyfél által felügyelt kulcsok használatával
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásadatok titkosítása az ügyfelek által kezelt kulcsokkal
 
-A Function alkalmazásban tárolt alkalmazásadatok titkosításához Azure Storage-fiókra és egy Azure Key Vaultra van szükség. Ezeket a szolgáltatásokat akkor használja a rendszer, amikor az alkalmazást egy központi telepítési csomagból futtatja.
+A függvényalkalmazás használaton belüli alkalmazásadatának titkosításához Azure Storage-fiókra és Azure Key Vault. Ezek a szolgáltatások akkor használatosak, ha az alkalmazást egy központi telepítési csomagból futtatja.
 
-  - [Az Azure Storage lehetővé teszi a titkosítást a nyugalmi](../storage/common/storage-service-encryption.md)állapotban. Használhatja a rendszerszintű kulcsokat vagy a saját, az ügyfél által felügyelt kulcsokat. Itt tárolja az alkalmazás adatait, ha nem fut az Azure-beli Function alkalmazásban.
-  - A [központi telepítési csomagból való futtatás](run-functions-from-deployment-package.md) a app Service központi telepítési funkciója. Lehetővé teszi a webhely tartalmának Azure Storage-fiókból való üzembe helyezését egy közös hozzáférési aláírás (SAS) URL-cím használatával.
-  - [Key Vault referenciák](../app-service/app-service-key-vault-references.md) app Service biztonsági funkciója. Lehetővé teszi, hogy az alkalmazás beállításainak megfelelően importálja a titkokat futásidőben. Ezzel titkosíthatja az Azure Storage-fiók SAS URL-címét.
+  - [Az Azure Storage titkosítást biztosít az adatok tárolásához.](../storage/common/storage-service-encryption.md) Használhat rendszer által biztosított kulcsokat vagy saját, ügyfél által kezelt kulcsokat. Az alkalmazásadatok itt vannak tárolva, ha nem az Azure-beli függvényalkalmazásban futnak.
+  - [A központi telepítési csomagból való](run-functions-from-deployment-package.md) futtatás a központi telepítési App Service. Lehetővé teszi a webhely tartalmának üzembe helyezését egy Azure Storage-fiókból egy közös hozzáférésű jogosultság signature (SAS) URL-cím használatával.
+  - [Key Vault hivatkozások](../app-service/app-service-key-vault-references.md) az adatok biztonsági App Service. Lehetővé teszi a titkos kulcsok futásidőben történő importálását alkalmazásbeállításokként. Ezzel titkosíthatja az Azure Storage-fiók SAS URL-címét.
 
-## <a name="set-up-encryption-at-rest"></a>Titkosítás beállítása nyugalmi állapotban
+## <a name="set-up-encryption-at-rest"></a>Titkosítás beállítása az adattitkosításhoz
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , és [titkosítsa az ügyfél által felügyelt kulcsokkal](../storage/common/customer-managed-keys-overview.md). A Storage-fiók létrehozása után a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával töltse fel a csomagok fájljait.
+Először [hozzon létre egy Azure Storage-fiókot,](../storage/common/storage-account-create.md) [és titkosítsa azt ügyfél által kezelt kulcsokkal.](../storage/common/customer-managed-keys-overview.md) A tárfiók létrehozása után használja a Azure Storage Explorer [a](../vs-azure-tools-storage-manage-with-storage-explorer.md) csomagfájlok feltöltéséhez.
 
-Ezután a Storage Explorer használatával [állítson be sas](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)-t. 
+A következő lépés az Storage Explorer [SAS létrehozása.](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer) 
 
 > [!NOTE]
-> Mentse ezt az SAS URL-címet, amelyet később a központi telepítési csomag biztonságos elérésének engedélyezéséhez használhat futásidőben.
+> Mentse ezt az SAS URL-címet, mert később ezt használjuk majd a telepítési csomag biztonságos elérésének engedélyezéséhez futásidőben.
 
-### <a name="configure-running-from-a-package-from-your-storage-account"></a>A Futtatás beállítása csomagból a Storage-fiókból
+### <a name="configure-running-from-a-package-from-your-storage-account"></a>Futtatás konfigurálása egy csomagból a tárfiókból
   
-Miután feltöltötte a fájlt a blob Storage-ba, és egy SAS URL-címmel rendelkezik a fájlhoz, állítsa az `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítást a sas URL-címre. Az alábbi példa az Azure CLI-t használja:
+Miután feltöltötte a fájlt a Blob Storage-be, és már van SAS URL-címe a fájlhoz, állítsa az alkalmazásbeállítást a `WEBSITE_RUN_FROM_PACKAGE` SAS URL-címre. Az alábbi példa ezt az Azure CLI használatával teszi meg:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
 ```
 
-Az Alkalmazásbeállítás hozzáadása miatt a Function alkalmazás újraindul. Az alkalmazás újraindítása után tallózással keresse meg az alkalmazást, és ellenőrizze, hogy az alkalmazás megfelelően elindult-e a központi telepítési csomag használatával. Ha az alkalmazás nem indult el megfelelően, tekintse meg a [Futtatás a csomagban hibaelhárítási útmutatót](run-functions-from-deployment-package.md#troubleshooting).
+Ha hozzáadja ezt az alkalmazásbeállítást, a függvényalkalmazás újraindul. Az alkalmazás újraindítása után keresse meg, és ellenőrizze, hogy az alkalmazás megfelelően elindult-e a telepítőcsomaggal. Ha az alkalmazás nem indul el megfelelően, tekintse meg a Futtatás [csomagból hibaelhárítási útmutatót.](run-functions-from-deployment-package.md#troubleshooting)
 
-### <a name="encrypt-the-application-setting-using-key-vault-references"></a>Alkalmazás-beállítás titkosítása Key Vault hivatkozásokkal
+### <a name="encrypt-the-application-setting-using-key-vault-references"></a>Az alkalmazásbeállítás titkosítása a Key Vault használatával
 
-Most lecserélheti az `WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítások értékét egy Key Vault hivatkozással az SAS-kódolású URL-címre. Így az SAS URL-címe titkosítva van Key Vaultban, ami egy extra biztonsági réteget biztosít.
+Most lecserélheti az alkalmazásbeállítás értékét egy Key Vault `WEBSITE_RUN_FROM_PACKAGE` SAS-kódolású URL-címre mutató hivatkozásra. Ez titkosítva tartja az SAS URL-Key Vault, ami egy további biztonsági réteget biztosít.
 
-1. [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)Key Vault példány létrehozásához használja a következő parancsot.       
+1. Hozzon [`az keyvault create`](/cli/azure/keyvault#az_keyvault_create) létre egy új példányt a Key Vault paranccsal.       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
     ```    
 
-1. Kövesse [ezeket az utasításokat, hogy hozzáférést biztosítson az alkalmazáshoz](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a Key vaulthoz:
+1. Kövesse [az alábbi utasításokat, hogy hozzáférést biztosítson az alkalmazásnak](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a kulcstartóhoz:
 
-1. A következő [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) parancs használatával adja hozzá a külső URL-címet a kulcstartó titkos kódjához:   
+1. A következő [`az keyvault secret set`](/cli/azure/keyvault/secret#az_keyvault_secret_set) paranccsal adja hozzá a külső URL-címet titkos kódként a kulcstartóhoz:   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  A következő [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancs használatával hozza létre az `WEBSITE_RUN_FROM_PACKAGE` Application beállítást az értékkel Key Vault hivatkozásként a külső URL-címre:
+1.  A következő paranccsal hozza létre az alkalmazásbeállítást a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) `WEBSITE_RUN_FROM_PACKAGE` értékkel a Key Vault URL-címre mutató hivatkozásként:
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    A `<secret-version>` lesz az előző parancs kimenetében `az keyvault secret set` .
+    A `<secret-version>` az előző parancs kimenetében `az keyvault secret set` lesz.
 
-Az Alkalmazásbeállítás frissítése azt eredményezi, hogy a Function alkalmazás újraindul. Az alkalmazás újraindítása után keresse meg a következőt: Ellenőrizze, hogy megfelelően elindult-e a Key Vault hivatkozás használatával.
+Ha frissíti ezt az alkalmazásbeállítást, a függvényalkalmazás újraindul. Az alkalmazás újraindítása után tallózással ellenőrizze, hogy megfelelően elindult-e az Key Vault használatával.
 
 ## <a name="how-to-rotate-the-access-token"></a>A hozzáférési jogkivonat elforgatása
 
-Az ajánlott eljárás a Storage-fiók SAS-kulcsának rendszeres elforgatása. Annak biztosítása érdekében, hogy a Function alkalmazás véletlenül ne legyen laza hozzáférés, az SAS URL-címét is frissítenie kell Key Vaultban.
+A tárfiók SAS-kulcsának rendszeres időközönkénti váltogatása ajánlott. Annak érdekében, hogy a függvényalkalmazás véletlenül ne lazán elérést biztosítson, frissítenie kell az SAS URL-címet a Key Vault.
 
-1. Forgassa el az SAS-kulcsot úgy, hogy a Azure Portalban navigál a Storage-fiókjához. A **Beállítások**  >  **hozzáférési kulcsok** területen kattintson az ikonra az SAS-kulcs elforgatásához.
+1. Az SAS-kulcs elforgatása a tárfiókra való navigálással a Azure Portal. A **Beállítások hozzáférési** kulcsok  >  **alatt** kattintson a ikonra az SAS-kulcs váltogatni kívánt módosításához.
 
-1. Másolja az új SAS URL-címet, és a következő parancs használatával állítsa be a frissített SAS URL-címet a kulcstartóban:
+1. Másolja ki az új SAS URL-címet, és a következő paranccsal állítsa be a frissített SAS URL-címet a kulcstartóban:
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ``` 
 
-1. Frissítse a Key Vault-hivatkozást az alkalmazás beállításaiban az új titkos verzióra:
+1. Frissítse a Key Vault-referenciát az alkalmazásbeállításban az új titkos kulcsverzióra:
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    A `<secret-version>` lesz az előző parancs kimenetében `az keyvault secret set` .
+    A `<secret-version>` az előző parancs kimenetében `az keyvault secret set` lesz.
 
-## <a name="how-to-revoke-the-function-apps-data-access"></a>A Function alkalmazás adatelérésének visszavonása
+## <a name="how-to-revoke-the-function-apps-data-access"></a>A függvényalkalmazás adatelérésének visszavonása
 
-Kétféle módszerrel vonhatja vissza a Function alkalmazás hozzáférését a Storage-fiókhoz. 
+A függvényalkalmazás tárfiókhoz való hozzáférésének visszavonására két módszer létezik. 
 
 ### <a name="rotate-the-sas-key-for-the-azure-storage-account"></a>Az Azure Storage-fiók SAS-kulcsának elforgatása
 
-Ha a rendszer elforgatja a Storage-fiók SAS-kulcsát, a Function alkalmazás már nem fér hozzá a Storage-fiókhoz, de továbbra is a csomagfájl utolsó letöltött verziójával fog futni. Indítsa újra a Function alkalmazást az utolsó letöltött verzió törléséhez.
+Ha a tárfiók SAS-kulcsa le lesz forgatva, a függvényalkalmazás többé nem fog hozzáférni a tárfiókhoz, de továbbra is a csomagfájl utolsó letöltött verziójával fog futni. Indítsa újra a függvényalkalmazást a legutóbb letöltött verzió ürítéhez.
 
-### <a name="remove-the-function-apps-access-to-key-vault"></a>A Function alkalmazás hozzáférésének eltávolítása Key Vault
+### <a name="remove-the-function-apps-access-to-key-vault"></a>A függvényalkalmazás hozzáférésének eltávolítása Key Vault
 
-A Function alkalmazás hozzáférését visszavonhatja a hely adatához, ha letiltja a Function alkalmazás hozzáférését a Key Vaulthoz. Ehhez távolítsa el a Function alkalmazás identitásához tartozó hozzáférési szabályzatot. Ez ugyanaz az identitás, amelyet korábban hozott létre a Key Vault-referenciák konfigurálása során.
+A függvényalkalmazás webhelyadatokhoz való hozzáférésének visszavonásához tiltsa le a függvényalkalmazás hozzáférését a Key Vault. Ehhez távolítsa el a függvényalkalmazás identitásának hozzáférési szabályzatát. Ez ugyanaz az identitás, mint amit korábban a Key Vault-hivatkozások konfigurálásakor hozott létre.
 
 ## <a name="summary"></a>Összefoglalás
 
-Az alkalmazás fájljai mostantól titkosítva vannak a Storage-fiókban. A Function alkalmazás indításakor lekéri a SAS URL-címét a kulcstartóból. Végül a Function alkalmazás betölti az alkalmazás fájljait a Storage-fiókból. 
+Az alkalmazásfájlok mostantól titkosítva vannak a tárfiókban. Amikor a függvényalkalmazás elindul, lekéri az SAS URL-címet a kulcstartóból. Végül a függvényalkalmazás betölti az alkalmazásfájlokat a tárfiókból. 
 
-Ha vissza kell vonnia a Function alkalmazás hozzáférését a Storage-fiókhoz, visszavonhatja a Key vaulthoz való hozzáférést, vagy elforgathatja a Storage-fiók kulcsait, ami érvényteleníti a SAS URL-címét.
+Ha vissza kell vonnia a függvényalkalmazás tárfiókhoz való hozzáférését, visszavonhatja a kulcstartóhoz való hozzáférést, vagy elforgathatja a tárfiók kulcsait, ami érvényteleníti az SAS URL-címet.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="is-there-any-additional-charge-for-running-my-function-app-from-the-deployment-package"></a>Van-e további díj a Function alkalmazás a központi telepítési csomagból való futtatásához?
+### <a name="is-there-any-additional-charge-for-running-my-function-app-from-the-deployment-package"></a>Van további díj a függvényalkalmazásomnak az üzembe helyezési csomagból való futtatásáért?
 
-Csak az Azure Storage-fiókhoz társított költségek és a kimenő forgalomra vonatkozó költségek.
+Csak az Azure Storage-fiókhoz kapcsolódó költségeket és a vonatkozó bejövő forgalom díját.
 
-### <a name="how-does-running-from-the-deployment-package-affect-my-function-app"></a>Hogyan befolyásolja a rendszer az üzembehelyezési csomag futtatását a Function alkalmazásra?
+### <a name="how-does-running-from-the-deployment-package-affect-my-function-app"></a>Hogyan befolyásolja a függvényalkalmazásom az üzembe helyezési csomagból való futtatás?
 
-- Ha az alkalmazást a központi telepítési csomagból futtatja, az `wwwroot/` csak olvasható lesz. Az alkalmazás hibaüzenetet kap, amikor megkísérli a címtárba írni.
-- A TAR és a GZIP formátum nem támogatott.
+- Ha az alkalmazást a központi telepítési csomagból futtatja, `wwwroot/` az csak olvasható lesz. Az alkalmazás hibaüzenetet kap, amikor ebbe a könyvtárba próbál írni.
+- A TAR- és GZIP-formátumok nem támogatottak.
 - Ez a funkció nem kompatibilis a helyi gyorsítótárral.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [App Service Key Vault referenciái](../app-service/app-service-key-vault-references.md)
+- [Key Vault hivatkozások a App Service](../app-service/app-service-key-vault-references.md)
 - [Inaktív adatok Azure Storage-titkosítása](../storage/common/storage-service-encryption.md)

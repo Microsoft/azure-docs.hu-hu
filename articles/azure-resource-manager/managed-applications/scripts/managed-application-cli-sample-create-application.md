@@ -1,18 +1,18 @@
 ---
-title: Azure CLI parancsfájl-minta – felügyelt alkalmazás üzembe helyezése
-description: Olyan Azure CLI-parancsfájlt biztosít, amely egy Azure által felügyelt alkalmazás-definíciót telepít az előfizetésre.
+title: Azure CLI-példaszkret – Felügyelt alkalmazás üzembe helyezése
+description: Azure CLI-példaszk szkriptet biztosít, amely egy Azure Managed Application-definíciót helyez üzembe az előfizetésben.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a9912f5134c3596740ef53f23531d57fe9467682
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ea2baa897efb5c1a01b32e92e76a69c9d1f231c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497868"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775492"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Felügyelt alkalmazás üzembe helyezése a szolgáltatáskatalógusból az Azure CLI használatával
 
@@ -34,7 +34,7 @@ Ez a szkript a következő parancsot használja egy felügyelt alkalmazás üzem
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
+| [az managedapp create](/cli/azure/managedapp#az_managedapp_create) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -1,15 +1,15 @@
 ---
-title: Function-alkalmazás létrehozása Azure Cosmos DB-Azure CLI-vel
+title: Függvényalkalmazás létrehozása a Azure Cosmos DB – Azure CLI
 description: Azure CLI-példaszkript – Egy Azure Cosmos DB-hez kapcsolódó Azure-függvény létrehozása
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9ec4d3cb9d47608aa98075ba98aacfde51f341cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 261ede1493b93ccd3cfed19125bbabc3be871698
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934424"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786290"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Egy Azure Cosmos DB-hez kapcsolódó Azure-függvény létrehozása
 
@@ -19,7 +19,7 @@ Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, amelye
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+ - Az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -35,20 +35,16 @@ A szkript a következő parancsokat használja: A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot egy helyen |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Tárfiók létrehozása |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../consumption-plan.md). |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
-| [az cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Az adatbázis-fiókkal létesített kapcsolatok beolvasása. |
-| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Lekéri az adatbázis kulcsait. |
-| [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A függvény alkalmazásban beállíthatja a kapcsolatok karakterláncát. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot egy helyen |
+| [az storage accounts create](/cli/azure/storage/account#az_storage_account_create) | Tárfiók létrehozása |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatra szánt csomagban.](../consumption-plan.md) |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
+| [az cosmosdb show](/cli/azure/cosmosdb#az_cosmosdb_show)| Lekérte az adatbázisfiók kapcsolatát. |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az_cosmosdb_list_keys)| Lekérte az adatbázis kulcsait. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Beállítja a kapcsolati sztringet alkalmazásbeállításként a függvényalkalmazásban. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.
-
-
-
-

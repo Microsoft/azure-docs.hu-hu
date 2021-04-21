@@ -1,43 +1,43 @@
 ---
-title: Oktatóanyag – a Docker-összeállítás használata többtárolós csoport üzembe helyezéséhez
-description: Hozzon létre és futtasson egy többtárolós alkalmazást a Docker-összeállítás használatával, majd hozza létre az alkalmazást a Azure Container Instances
+title: Oktatóanyag – Többtárolós csoport üzembe helyezése a Docker Compose használatával
+description: A Docker Compose használatával többtárolós alkalmazást hozhat létre és futtathat, majd az alkalmazást a tárolóba Azure Container Instances
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef08b9f9e0f596f1d94c0e6edfd46f735fe78053
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92913840"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786915"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Oktatóanyag: több tárolós csoport üzembe helyezése a Docker-összeállítás használatával 
+# <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Oktatóanyag: Többtárolós csoport üzembe helyezése a Docker Compose használatával 
 
-Ebben az oktatóanyagban a [Docker-összeállítást](https://docs.docker.com/compose/) használja a többtárolós alkalmazások helyi definiálásához és futtatásához, [majd a Azure Container instances-ben való](container-instances-container-groups.md) üzembe helyezéséhez. 
+Ebben az oktatóanyagban a [Docker Compose](https://docs.docker.com/compose/) használatával helyileg definiálhat és futtathat egy többtárolós alkalmazást, majd üzembe helyezheti tárolócsoportként [a](container-instances-container-groups.md) Azure Container Instances. 
 
-Azure Container Instances igény szerint futtathat tárolókat, amikor Felhőbeli natív alkalmazásokat fejleszt a Docker használatával, és zökkenőmentesen szeretne váltani a helyi fejlesztéstől a felhőbe történő üzembe helyezésig. Ezt a funkciót a [Docker és az Azure integrációja](https://docs.docker.com/engine/context/aci-integration/)teszi lehetővé. A natív Docker-parancsokkal [egyetlen tároló-példány](quickstart-docker-cli.md) vagy több tárolós csoport futtatható az Azure-ban.
+A tárolókat igény Azure Container Instances futtathat, amikor natív felhőalkalmazásokat fejleszt a Docker segítségével, és zökkenőmentesen szeretne váltani a helyi fejlesztésről a felhőalapú üzembe helyezésre. Ezt a képességet a Docker és az Azure közötti integráció [teszi lehetővé.](https://docs.docker.com/engine/context/aci-integration/) Natív Docker-parancsokkal egyetlen tárolópéldányt vagy többtárolós csoportot futtathat az Azure-ban. [](quickstart-docker-cli.md)
 
 > [!IMPORTANT]
-> A Azure Container Instances egyik funkciója sem támogatott. Küldjön visszajelzést a Docker-Azure integrációról azáltal, hogy problémát hoz létre a [Docker ACI Integration](https://github.com/docker/aci-integration-beta) GitHub-tárházban.
+> Nem minden szolgáltatás Azure Container Instances támogatott. Adjon visszajelzést a Docker-Azure a [Docker ACI Integration](https://github.com/docker/aci-integration-beta) GitHub-adattárban található probléma létrehozásával.
 
 > [!TIP]
-> A [Docker-bővítmény a Visual Studio Code](https://aka.ms/VSCodeDocker) -hoz a tárolók, képek és környezetek fejlesztéséhez, futtatásához és kezeléséhez használható integrált felhasználói élmény érdekében.
+> A [Docker-bővítményt a Visual Studio Code-hoz](https://aka.ms/VSCodeDocker) használhatja a tárolók, rendszerképek és környezetek integrált fejlesztéséhez, futtatásához és kezeléséhez.
 
 Ebben a cikkben:
 
 > [!div class="checklist"]
 > * Azure tárolóregisztrációs adatbázis létrehozása
 > * Alkalmazás forráskódjának klónozása a GitHubról
-> * Hozzon létre egy rendszerképet, és futtasson helyileg egy többtárolós alkalmazást a Docker-összeállítás használatával
+> * Lemezkép összeállítása és többtárolós alkalmazás helyi futtatása a Docker Compose használatával
 > * Az alkalmazás rendszerképének leküldése a tároló-beállításjegyzékbe
-> * Azure-környezet létrehozása a Docker számára
-> * Az alkalmazás üzembe helyezése Azure Container Instances
+> * Azure-környezet létrehozása a Dockerhez
+> * Az alkalmazás Azure Container Instances
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure CLI** – a helyi számítógépen telepítve kell lennie az Azure CLI-nek. A 2.10.1 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+* **Azure CLI** – Az Azure CLI-nek telepítve kell lennie a helyi számítógépen. A 2.10.1-es vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-* **Docker Desktop** – a [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) vagy [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg)rendszerhez elérhető Docker Desktop 2.3.0.5 vagy újabb verziót kell használnia. Vagy telepítse a [Docker ACI Integration CLI-t a Linux rendszerhez](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux).
+* **Docker Desktop** – A Docker Desktop 2.3.0.5-ös vagy újabb verzióját kell használnia, amely [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) vagy [macOS rendszeren érhető el.](https://desktop.docker.com/mac/edge/Docker.dmg) Vagy telepítse a [Linuxhoz való Docker ACI integrációs CLI-t.](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux)
 
 [!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
@@ -51,17 +51,17 @@ A [git](https://git-scm.com/downloads) használatával klónozza a mintaalkalmaz
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Váltson a klónozott könyvtárra.
+Váltsa át a klónozott könyvtárra.
 
 ```console
 cd azure-voting-app-redis
 ```
 
-A könyvtáron belül az alkalmazás forráskódja, valamint egy előre létrehozott Docker-összeállítási fájl, Docker-levélírás. YAML.
+A könyvtárban található az alkalmazás forráskódja és egy előre létrehozott Docker Compose-fájl, a docker-compose.yaml.
 
-## <a name="modify-docker-compose-file"></a>Docker-összeállítási fájl módosítása
+## <a name="modify-docker-compose-file"></a>Docker Compose-fájl módosítása
 
-Nyissa meg a Docker-levélírás. YAML egy szövegszerkesztőben. A fájl konfigurálja a `azure-vote-back` és a `azure-vote-front` szolgáltatásokat.
+Nyissa meg a docker-compose.yaml fájlját egy szövegszerkesztőben. A fájl konfigurálja a `azure-vote-back` és a `azure-vote-front` szolgáltatást.
 
 ```yml
 version: '3'
@@ -84,12 +84,12 @@ services:
         - "8080:80"
 ```
 
-A `azure-vote-front` konfigurációban hajtsa végre a következő két módosítást:
+A `azure-vote-front` konfigurációban tegye a következő két módosítást:
 
-1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. Előtagként adja meg a rendszerkép nevét az Azure Container Registry ( \<acrName\> . azurecr.IO) bejelentkezési kiszolgálójának nevével. Ha például a beállításjegyzék neve *myregistry*, a bejelentkezési kiszolgáló neve *myregistry.azurecr.IO* (mind kisbetűs), a rendszerkép tulajdonság pedig ezután `myregistry.azurecr.io/azure-vote-front` .
-1. Módosítsa a leképezést a következőre: `ports` `80:80` . Mentse a fájlt.
+1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. A rendszerkép nevének előtagját az Azure Container Registry bejelentkezési kiszolgálójának \<acrName\> .azurecr.io. Ha például a regisztrációs adatbázis neve *myregistry,* a bejelentkezési kiszolgáló neve *myregistry.azurecr.io* (csak kisbetűs), a rendszerkép tulajdonsága pedig `myregistry.azurecr.io/azure-vote-front` .
+1. Módosítsa a `ports` leképezést a következőre: `80:80` . Mentse a fájlt.
 
-A frissített fájlnak a következőhöz hasonlóan kell kinéznie:
+A frissített fájlnak az alábbihoz hasonlóan kell kinéznie:
 
 ```yml
 version: '3'
@@ -112,20 +112,20 @@ services:
         - "80:80"
 ```
 
-A helyettesítéssel a `azure-vote-front` következő lépésben felépített rendszerképet az Azure Container registryhez címkézi, és a rendszerképet lehívhatja Azure Container instances futtatására.
+Ezekkel a helyettesítésekkel a következő lépésben felépített rendszerkép fel lesz címkézve az Azure Container Registryhez, és a rendszerkép leküldhető a `azure-vote-front` Azure Container Instances.
 
 > [!TIP]
-> Ehhez a forgatókönyvhöz nem kell Azure Container registryt használnia. Például választhat egy privát tárházat a Docker hub-ban az alkalmazás rendszerképének üzemeltetéséhez. Ha másik beállításjegyzéket választ, akkor megfelelően frissítse a rendszerkép tulajdonságot.
+> Ehhez a forgatókönyvhöz nem kell Azure Container Registryt használnia. Választhat például egy privát adattárat a Docker Hub az alkalmazás rendszerképének a gazdagépeként. Ha másik beállításjegyzéket választ, frissítse megfelelően a rendszerkép tulajdonságát.
 
 ## <a name="run-multi-container-application-locally"></a>Többtárolós alkalmazás helyi futtatása
 
-Futtassa a [Docker – build up](https://docs.docker.com/compose/reference/up/)parancsot, amely a mintaadatbázis használatával hozza `docker-compose.yaml` létre a tároló rendszerképét, töltse le a Redis-rendszerképet, és indítsa el az alkalmazást:
+Futtassa [a docker-compose fájlt,](https://docs.docker.com/compose/reference/up/)amely a mintafájlt használja a tárolólemezkép felépítéséhez, a Redis-rendszerkép letöltéséhez és az `docker-compose.yaml` alkalmazás indításához:
 
 ```console
 docker-compose up --build -d
 ```
 
-Amikor elkészült, a [docker images](https://docs.docker.com/engine/reference/commandline/images/) paranccsal tekintheti meg a létrehozott rendszerképeket. Három rendszerkép lett letöltve vagy jött létre. A `azure-vote-front` rendszerkép tartalmazza az előtér-alkalmazást, amely `uwsgi-nginx-flask` alapszintű képet használ. A `redis` rendszerkép használatával indítható el egy Redis-példány.
+Amikor elkészült, a [docker images](https://docs.docker.com/engine/reference/commandline/images/) paranccsal tekintheti meg a létrehozott rendszerképeket. Három rendszerkép lett letöltve vagy jött létre. A `azure-vote-front` rendszerkép tartalmazza az előoldali alkalmazást, amely a `uwsgi-nginx-flask` rendszerképet használja alapként. A `redis` rendszerkép használatával indítható el egy Redis-példány.
 
 ```
 $ docker images
@@ -148,9 +148,9 @@ b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/scr
 
 A futó alkalmazás megtekintéséhez lépjen a `http://localhost:80` helyre egy helyi böngészőben. A mintaalkalmazás betöltődik az alábbi példában látható módon:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote.png" alt-text="A szavazási alkalmazás képe":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote.png" alt-text="Szavazóalkalmazás képe":::
 
-A helyi alkalmazás kipróbálása után futtassa a [Docker-összeállít](https://docs.docker.com/compose/reference/down/) parancsot az alkalmazás leállításához és a tárolók eltávolításához.
+A helyi alkalmazás kipróbálása után futtassa a [docker-compose futtatásával](https://docs.docker.com/compose/reference/down/) állítsa le az alkalmazást, és távolítsa el a tárolókat.
 
 ```console
 docker-compose down
@@ -158,15 +158,15 @@ docker-compose down
 
 ## <a name="push-image-to-container-registry"></a>Rendszerkép leküldése a tároló-beállításjegyzékbe
 
-Az alkalmazás Azure Container Instancesre való telepítéséhez le kell küldenie a `azure-vote-front` lemezképet a tároló-beállításjegyzékbe. A [Docker-levélírás](https://docs.docker.com/compose/reference/push) futtatásával küldje le a rendszerképet:
+Az alkalmazás üzembe helyezéséhez a Azure Container Instances le kell helyeznie a rendszerképet `azure-vote-front` a tároló-beállításjegyzékbe. Futtassa [a docker-compose leküldést](https://docs.docker.com/compose/reference/push) a rendszerkép leküldéshez:
 
 ```console
 docker-compose push
 ```
 
-Eltarthat néhány percig, amíg leküldi a beállításjegyzéket.
+A beállításjegyzékbe való leküldés eltarthat néhány percig.
 
-A rendszerkép a beállításjegyzékben való tárolásának ellenőrzéséhez futtassa az az [ACR repository show](/cli/azure/acr/repository#az-acr-repository-show) parancsot:
+Annak ellenőrzéséhez, hogy a rendszerkép tárolva van-e a regisztrációs adatbázisban, futtassa az [az acr repository show](/cli/azure/acr/repository#az_acr_repository_show) parancsot:
 
 ```azurecli
 az acr repository show --name <acrName> --repository azure-vote-front
@@ -174,24 +174,24 @@ az acr repository show --name <acrName> --repository azure-vote-front
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
-## <a name="deploy-application-to-azure-container-instances"></a>Alkalmazás üzembe helyezése az Azure Container instances szolgáltatásban
+## <a name="deploy-application-to-azure-container-instances"></a>Alkalmazás üzembe helyezése az Azure Container Instancesben
 
-Ezután váltson az ACI-környezetre. A további Docker-parancsok ebben a környezetben futnak.
+Ezután váltsa át az ACI-környezetet. A további Docker-parancsok ebben a környezetben futnak.
 
 ```console
 docker context use myacicontext
 ```
 
-Futtassa `docker compose up` az alkalmazást az Azure Container instances-ben való alkalmazás indításához. A rendszer `azure-vote-front` lekéri a rendszerképet a tároló-beállításjegyzékből, és a tároló csoportot Azure Container instances hozza létre.
+Futtassa `docker compose up` a következőt az alkalmazás Azure Container Instances. A rendszer leküldi a rendszer a rendszerképet a tároló-beállításjegyzékből, és a `azure-vote-front` tárolócsoportot a Azure Container Instances.
 
 ```console
 docker compose up
 ```
 
 > [!NOTE]
-> Az ACI-környezetekben jelenleg elérhető Docker-összeállítási parancsok `docker compose up` és `docker compose down` . A parancsok között nem szerepel `docker` kötőjel `compose` .
+> Az ACI-környezetben jelenleg elérhető Docker Compose-parancsok a `docker compose up` következők: és `docker compose down` . Ezekben a parancsokban és között nincs `docker` `compose` kötőjel.
 
-Rövid idő alatt a rendszer üzembe helyezi a tároló csoportot. Példa a kimenetre:
+A rendszer rövid időn belül üzembe helyez egy tárolócsoportot. Példa a kimenetre:
 
 ```
 [+] Running 3/3
@@ -200,7 +200,7 @@ Rövid idő alatt a rendszer üzembe helyezi a tároló csoportot. Példa a kime
  ⠿ azure-vote-front           Done                             10.6s
 ```
 
-Futtassa a parancsot a `docker ps` futó tárolók és a tároló csoporthoz rendelt IP-cím megtekintéséhez.
+Futtassa `docker ps` a következőt: a futó tárolók és a tárolócsoporthoz rendelt IP-cím.
 
 ```console
 docker ps
@@ -214,38 +214,38 @@ azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8
 azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
-A futó alkalmazás Felhőbeli megjelenítéséhez adja meg a megjelenített IP-címet egy helyi böngészőben. Ebben a példában írja be a következőt: `52.179.23.131` . A mintaalkalmazás betöltődik az alábbi példában látható módon:
+A futó alkalmazás felhőben való megjelenítéséhez írja be a megjelenített IP-címet egy helyi webböngészőben. Ebben a példában adja meg a következőt: `52.179.23.131` . A mintaalkalmazás betöltődik az alábbi példában látható módon:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Az ACI-beli szavazási alkalmazás képe":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Szavazóalkalmazás képe az ACI-ban":::
 
-Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Például:
+Az előoldali tároló naplóinak megtekintéséhez futtassa a [docker logs parancsot.](https://docs.docker.com/engine/reference/commandline/logs) Például:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front
 ```
 
-A Azure Portal vagy más Azure-eszköz használatával is megtekintheti a telepített tároló csoport tulajdonságait és állapotát.
+Az üzembe helyezett tárolócsoport Azure Portal azure-eszközök használatával is láthatja az üzembe helyezett tárolócsoport tulajdonságait és állapotát.
 
-Amikor befejezte az alkalmazás kipróbálását, állítsa le az alkalmazást és a tárolókat az alábbiakkal `docker compose down` :
+Amikor befejezte az alkalmazás kipróbálását, állítsa le az alkalmazást és a tárolókat a `docker compose down` következővel:
 
 ```console
 docker compose down
 ```
 
-Ez a parancs törli a tároló csoportot Azure Container Instancesban.
+Ez a parancs törli a tárolócsoportot a Azure Container Instances.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban a Docker-összeállítást használta a többtárolós alkalmazások helyi futtatására a Azure Container Instances-ben való futtatáshoz. Megtanulta végrehajtani az alábbi műveleteket:
+Ebben az oktatóanyagban a Docker Compose segítségével váltott a többtárolós alkalmazások helyi futtatásáról a Azure Container Instances. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure tárolóregisztrációs adatbázis létrehozása
 > * Alkalmazás forráskódjának klónozása a GitHubról
-> * Hozzon létre egy rendszerképet, és futtasson helyileg egy többtárolós alkalmazást a Docker-összeállítás használatával
+> * Lemezkép összeállítása és többtárolós alkalmazás helyi futtatása a Docker Compose használatával
 > * Az alkalmazás rendszerképének leküldése a tároló-beállításjegyzékbe
-> * Azure-környezet létrehozása a Docker számára
-> * Az alkalmazás üzembe helyezése Azure Container Instances
+> * Azure-környezet létrehozása a Dockerhez
+> * Az alkalmazás Azure Container Instances
 
-A [Docker-bővítményt a Visual Studio Code](https://aka.ms/VSCodeDocker) -hoz is használhatja a tárolók, képek és környezetek fejlesztéséhez, futtatásához és kezeléséhez.
+Az Visual Studio [Code Docker-bővítményét](https://aka.ms/VSCodeDocker) is használhatja a tárolók, rendszerképek és környezetek integrált fejlesztéséhez, futtatásához és kezeléséhez.
 
-Ha szeretné kihasználni a Azure Container Instances további funkcióit, az Azure Tools segítségével megadhat egy többtárolós csoportot. Például tekintse meg az oktatóanyagokat, amelyekkel üzembe helyezhet egy tároló csoportot az Azure CLI-vel egy [YAML-fájllal](container-instances-multi-container-yaml.md), vagy üzembe helyezheti [Azure Resource Manager sablon](container-instances-multi-container-group.md)használatával. 
+Ha több funkciót is ki szeretne használni a Azure Container Instances, használjon Azure-eszközöket egy többtárolós csoport megadásához. Tekintse meg például a tárolócsoport az Azure CLI és egy [YAML-fájl](container-instances-multi-container-yaml.md)használatával való üzembe helyezését ismertető oktatóanyagokat, vagy egy Azure Resource Manager [használatával.](container-instances-multi-container-group.md) 

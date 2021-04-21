@@ -1,15 +1,15 @@
 ---
-title: Oktatóanyag – gyors tároló – rendszerkép összeállítása
+title: Oktatóanyag – Tároló rendszerképének gyors összeállítása
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 384c7bebea8ed8120a1bc8134e4189e5e7bcb8db
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 282e6ea56835fba679510a29af936c1fbcb3ead2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060278"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775348"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolólemezképek buildelése és üzembe helyezése a felhőben az Azure Container Registry Tasks használatával
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag egy sorozat első része, és az alábbiakat ismerteti:
 > * Tárolórendszerkép összeállítása az Azure-ban
 > * Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 
-A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. Az ACR-feladatok [több lépésből álló feladatokat](container-registry-tasks-multi-step.md)is futtathatnak, egy YAML-fájllal a több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez szükséges lépéseket határozzák meg.
+A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. ACR-feladatok többlépéses feladatokat is futtathat egy [YAML-fájl](container-registry-tasks-multi-step.md)használatával, amely több tároló építési, leküldési és opcionális tesztelési lépéseit határozza meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Ezután a GitHub felhasználói felületén ágaztassa le a mintaadattárat a Gi
 
 Miután leágaztatta az adattárat, klónozza a leágaztatást, és lépjen a helyi klónt tartalmazó könyvtárba.
 
-A tárház klónozása a (z) `git` helyére a **\<your-github-username\>** GitHub-felhasználónévvel:
+Klónozza az adattárat a `git` használatával, és cserélje **\<your-github-username\>** le a helyére a GitHub-felhasználónevét:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -68,7 +68,7 @@ Az oktatóanyag-sorozatban használt parancsok a Bash-felületnek megfelelően v
 
 Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzon lére egy tárolóregisztrációs adatbázist, és állítsa össze a tárolórendszerképet az ACR Tasks használatával.
 
-A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A helyére írja be az **\<registry-name\>** új tároló-beállításjegyzék egyedi nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
+A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. Cserélje **\<registry-name\>** le a helyére az új tárolójegyzék egyedi nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure-ban, csak kisbetűket tartalmazhat, és 5–50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
 
 ```console
 ACR_NAME=<registry-name>
@@ -199,7 +199,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush* értékre.
+Az előző parancs argumentuma az acrpull szerepkörrel konfigurálja a szolgáltatásnévt, amely csak lekért hozzáférést biztosít a `--role` beállításjegyzékhez.  Leküldéses és leküldéses hozzáférés megadásához módosítsa a argumentumot `--role` *acrpush (acrpush) argumentumra.*
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 
@@ -255,7 +255,7 @@ A tároló indítási folyamatának megtekintéséhez használja az [az containe
 az container attach --resource-group $RES_GROUP --name acr-tasks
 ```
 
-A `az container attach` kimenet először a tároló állapotát jeleníti meg, amikor lekéri a rendszerképet, és elindítja, majd a helyi konzol stdout és stderr kötését a tárolóhoz köti.
+A kimenet először a tároló állapotát jeleníti meg a rendszerkép leindításakor, majd a helyi konzol STDOUT és STDERR fájlját a tárolóhoz `az container attach` köti.
 
 ```output
 Container 'acr-tasks' is in state 'Running'...
@@ -270,7 +270,7 @@ Server running at http://localhost:80
 
 Amikor megjelenik a `Server running at http://localhost:80` üzenet, adja meg a tároló teljes tartománynevét a böngészőben a futó alkalmazás megtekintéséhez. A teljes tartománynévnek meg kell jelennie az előző szakaszban végrehajtott `az container create` parancs kimenetében.
 
-:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Böngészőben futó minta alkalmazás":::
+:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Böngészőben futó mintaalkalmazás":::
 
 A konzolt a `Control+C` billentyűkombinációval választhatja le a tárolóról.
 
@@ -301,14 +301,14 @@ Miután egy gyors feladattal tesztelte a belső ciklust, konfiguráljon egy **ö
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-container-attach]: /cli/azure/container#az-container-attach
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-delete]: /cli/azure/container#az-container-delete
-[az-keyvault-create]: /cli/azure/keyvault/secret#az-keyvault-create
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-keyvault-create]: /cli/azure/keyvault/secret#az_keyvault_create
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-login]: /cli/azure/reference-index#az_login
 [service-principal-auth]: container-registry-auth-service-principal.md
 
 <!-- IMAGES -->

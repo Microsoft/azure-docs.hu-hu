@@ -1,35 +1,35 @@
 ---
 title: Virtuális hálózat létrehozása – rövid útmutató – Azure CLI
 titlesuffix: Azure Virtual Network
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure CLI használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások kommunikációját egymással és az internettel.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure CLI használatával. A virtuális hálózatok lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak egymással és az internettel.
 author: KumudD
 ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0795404c2dc5377d60896863f6a088c4b2ffd1ad
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 407207c0dcb6270f08fb511a01e6e4e835b9fab9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060805"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776752"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure CLI-vel
 
-A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy privát módon kommunikáljanak egymással és az internettel. 
+A virtuális hálózatok lehetővé teszik, hogy az Azure-erőforrások, például a virtuális gépek (VM-ek) privát módon kommunikáljanak egymással és az internettel. 
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután kapcsolódhat a virtuális gépekhez az internetről, és magánjellegű módon kommunikálhat az új virtuális hálózaton keresztül.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozik a virtuális gépekhez az internetről, és privát módon kommunikál az új virtuális hálózaton keresztül.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Erőforráscsoport és virtuális hálózat létrehozása
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ez a példa létrehoz egy **CreateVNetQS-RG** nevű erőforráscsoportot a **Eastus** helyen:
+Virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat gazdagépeként. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ez a példa létrehoz egy **CreateVNetQS-rg nevű** erőforráscsoportot az **Eastus** helyen:
 
 ```azurecli-interactive
 az group create \
@@ -37,7 +37,7 @@ az group create \
     --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Ez a példa létrehoz egy **myVNet** nevű alapértelmezett virtuális hálózatot egy **alapértelmezett** nevű alhálózattal:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Ez a példa létrehoz egy **myVNet** nevű alapértelmezett virtuális hálózatot egy default nevű **alhálózattal:**
 
 ```azurecli-interactive
 az network vnet create \
@@ -54,11 +54,11 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
 
-Ha az SSH-kulcsok még nem találhatók meg az alapértelmezett kulcs helyén, a parancs létrehozza azokat. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. 
+Ha az SSH-kulcsok még nem léteznek az alapértelmezett kulcshelyen, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. 
 
-A `--no-wait` beállítás a háttérben hozza létre a virtuális gépet. Folytassa a következő lépéssel. 
+A `--no-wait` beállítás a háttérben hozza létre a virtuális gépet. Folytathatja a következő lépéssel. 
 
-Ez a példa egy **myVM1** nevű virtuális gépet hoz létre:
+Ez a példa létrehoz egy **myVM1 nevű virtuális gépet:**
 
 ```azurecli-interactive
 az vm create \
@@ -72,7 +72,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-Az `--no-wait` előző lépésben használt beállítást használta. Ezt megteheti, és létrehozhatja a **myVM2** nevű második virtuális gépet.
+Az előző `--no-wait` lépésben a kapcsolót használta. Létrehozhatja a második, **myVM2 nevű virtuális gépet.**
 
 ```azurecli-interactive
 az vm create \
@@ -83,9 +83,11 @@ az vm create \
   --generate-ssh-keys
 ```
 
-### <a name="azure-cli-output-message"></a>Azure CLI kimeneti üzenet
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
-A virtuális gépek létrehozása néhány percet vesz igénybe. Miután az Azure létrehozta a virtuális gépeket, az Azure CLI a következőhöz hasonló kimenetet ad vissza:
+### <a name="azure-cli-output-message"></a>Az Azure CLI kimeneti üzenete
+
+A virtuális gépek létrehozása néhány percet vesz igénybe. Miután az Azure létrehozza a virtuális gépeket, az Azure CLI a következő kimenetet adja vissza:
 
 ```output
 {
@@ -103,7 +105,7 @@ A virtuális gépek létrehozása néhány percet vesz igénybe. Miután az Azur
 
 ## <a name="vm-public-ip"></a>Virtuális gép nyilvános IP-címe
 
-A nyilvános IP- **myVM2** lekéréséhez használja az [az Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
+A **myVM2** nyilvános IP-cím lekért neveként használja [az az network public-ip show címet:](/cli/azure/network/public-ip#az_network_public_ip_show)
 
 ```azurecli-interactive
 az network public-ip show \
@@ -115,7 +117,7 @@ az network public-ip show \
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Ebben a parancsban cserélje le a parancsot a `<publicIpAddress>` **myVM2** virtuális gép nyilvános IP-címére:
+Ebben a parancsban cserélje le `<publicIpAddress>` a helyére a **myVM2** virtuális gép nyilvános IP-címét:
 
 ```bash
 ssh <publicIpAddress>
@@ -123,19 +125,19 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>Virtuális gépek közötti kommunikáció
 
-A **myVM2** és a **myVM1** virtuális gépek közötti privát kommunikáció megerősítéséhez írja be a következő parancsot:
+A **myVM2 és a myVM1** virtuális gépek közötti privát kommunikáció megerősítéséhez írja be a következő parancsot: 
 
 ```bash
 ping myVM1 -c 4
 ```
 
-Négy választ fog kapni a *10.0.0.4*.
+Négy választ fog kapni a *következőtől: 10.0.0.4*.
 
-Lépjen ki az SSH-munkamenetből a **myVM2** virtuális géppel.
+Lépjen ki a myVM2 virtuális gép **SSH-munkamenetből.**
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [az Group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást:
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) parancs használatával eltávolíthatja az erőforráscsoportot és az összes erőforrását:
 
 ```azurecli-interactive
 az group delete \
@@ -148,10 +150,10 @@ az group delete \
 Ebben a rövid útmutatóban: 
 
 * Létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. 
-* Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál.
+* Csatlakozott egy virtuális géphez az internetről, és privát módon kommunikált a két virtuális gép között.
 
-A virtuális gépek közötti magánhálózati kommunikáció nem korlátozott a virtuális hálózatokban. 
+A virtuális gépek közötti privát kommunikáció korlátlan a virtuális hálózatokon. 
 
-A következő cikkből megtudhatja, hogyan konfigurálhat különböző típusú virtuálisgép-hálózati kommunikációt:
+A virtuálisgép-hálózati kommunikáció különböző típusainak konfigurálásával kapcsolatos további információkért olvassa el a következő cikket:
 > [!div class="nextstepaction"]
 > [Hálózati forgalom szűrése](tutorial-filter-network-traffic.md)

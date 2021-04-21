@@ -1,6 +1,6 @@
 ---
-title: Az Azure-alkalmazások konfigurációjának integrálása Kubernetes-telepítéssel a Helm használatával
-description: Ismerje meg, hogyan használhatók a dinamikus konfigurációk a Kubernetes-telepítésben a Helm használatával.
+title: Integráció Azure App Configuration Kubernetes üzemelő példányával a Helm használatával
+description: Megtudhatja, hogyan használhatja a dinamikus konfigurációkat a Kubernetes üzembe helyezésében a Helm használatával.
 services: azure-app-configuration
 author: shenmuxiaosen
 manager: zhenlan
@@ -8,62 +8,62 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 4e38366ddcee07f38ca390acf9d580b8764c1c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6276fc2027e92d5b7baaf9237a928e7828a3b021
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979827"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775764"
 ---
-# <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
+# <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzemelő példányával a Helm használatával
 
-A Helm lehetővé teszi a Kubernetes-ben futó alkalmazások definiálását, telepítését és frissítését. A Helm diagram a Kubernetes-alkalmazások egy példányának létrehozásához szükséges információkat tartalmazza. A konfiguráció a diagramon kívül tárolódik, egy *Values. YAML* nevű fájlban. 
+A Helm segítségével definiálhatja, telepítheti és frissítheti a Kubernetesben futó alkalmazásokat. A Helm-diagramok a Kubernetes-alkalmazások példányának létrehozásához szükséges információkat tartalmaznak. A konfiguráció a diagramon kívül, a *values.yaml* nevű fájlban van tárolva. 
 
-A kiadási folyamat során a Helm a megfelelő konfigurációval egyesíti a diagramot az alkalmazás futtatásához. Például az *Values. YAML* definiált változók környezeti változókként is szerepelhetnek a futó tárolókban. A Helm támogatja a Kubernetes-titkok létrehozását is, amelyek adatkötetként vagy környezeti változókként tehetők elérhetővé.
+A kiadási folyamat során a Helm egyesíti a diagramot az alkalmazás futtatásához szükséges megfelelő konfigurációval. Például a *values.yaml* fájlban definiált változókra környezeti változókként lehet hivatkozni a futó tárolókban. A Helm támogatja a Kubernetes titkos kulcsok létrehozását is, amelyek adatkötetként csatlakoztathatóak vagy környezeti változókként tehetőek elérhetővé.
 
-A *Values. YAML* tárolt értékek felülbírálása érdekében további YAML konfigurációs fájlok is megadhatók a parancssorban a Helm futtatásakor. Az Azure app Configuration támogatja a konfigurációs értékek exportálását a YAML-fájlokba. Az exportálási funkció integrálása az üzembe helyezésbe lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják az alkalmazás konfigurációjában tárolt konfigurációs értékeket.
+A *values.yaml* fájlban tárolt értékeket felülírhatja, ha további YAML-alapú konfigurációs fájlokat ad meg a parancssorban a Helm futtatásakor. Azure App Configuration támogatja a konfigurációs értékek YAML-fájlokba exportálását. Az exportálási képesség üzembe helyezésbe való integrálása lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják a környezetben tárolt App Configuration.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Alkalmazások konfigurációjának használata az alkalmazás Kubernetes való telepítésekor a Helm használatával.
-> * Hozzon létre egy Kubernetes titkot egy Key Vault hivatkozás alapján az alkalmazás konfigurációjában.
+> * Az alkalmazás Kubernetesben App Configuration a Helm használatával való üzembe helyezésekor használja a virtuális gép értékeit.
+> * Hozzon létre egy Kubernetes Titkos referenciát a Key Vault hivatkozása App Configuration.
 
-Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyeletének alapvető ismerete. További információ az alkalmazások az [Azure Kubernetes szolgáltatásban](../aks/kubernetes-helm.md)történő telepítéséről.
+Ez az oktatóanyag feltételezi a Kubernetes Helm-sel való kezelésének alapvető ismereteit. További információ az alkalmazások Helm-sel való telepítéséről [a Azure Kubernetes Service.](../aks/kubernetes-helm.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- Az [Azure CLI](/cli/azure/install-azure-cli) telepítése (2.4.0 vagy újabb verzió)
-- A [Helm](https://helm.sh/docs/intro/install/) telepítése (2.14.0 vagy újabb verzió)
+- Az [Azure CLI telepítése](/cli/azure/install-azure-cli) (2.4.0-s vagy újabb verzió)
+- A [Helm](https://helm.sh/docs/intro/install/) telepítése (2.14.0-s vagy újabb verzió)
 - Egy Kubernetes-fürt.
 
-## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
+## <a name="create-an-app-configuration-store"></a>Új App Configuration létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. Válassza a **Configuration Explorer**  >  **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+7. Válassza **a Configuration Explorer**  >  **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
-    | Settings. Color | Fehér |
-    | Settings. Message | Adatok az Azure-alkalmazás konfigurációjától |
+    | settings.color | Fehér |
+    | settings.message | Adatok a Azure App Configuration |
 
-    Most hagyja üresen a **címke** és a **tartalom típusát** .
+    A **Címke és** a **Tartalomtípus mezőt** hagyja üresen.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és adjon hozzá egy titkos kulcsot a **jelszó** és az érték **SajátJelszó** [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) . 
-2. Válassza ki az előző szakaszban létrehozott alkalmazás-konfigurációs tároló példányát.
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Hivatkozás Key Vault a App Configuration
+1. Jelentkezzen be a Azure Portal, és adjon [](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) hozzá egy titkos  Key Vault jelszóval és **myPassword értékkel.** [](https://portal.azure.com) 
+2. Válassza ki App Configuration előző szakaszban létrehozott tárolópéldányt.
 
-3. Válassza a **Configuration Explorer** lehetőséget.
+3. Válassza a **Configuration Explorer lehetőséget.**
 
-4. Válassza a **+**  >  **Key Vault-hivatkozás** létrehozása lehetőséget, majd adja meg a következő értékeket:
-    - **Kulcs**: válassza a **Secrets. password** elemet.
-    - **Címke**: hagyja üresen ezt az értéket.
-    - **Előfizetés**, **erőforráscsoport** és **Key Vault**: adja meg az előző lépésben létrehozott kulcstartóban szereplőknek megfelelő értékeket.
-    - **Titkos** kód: válassza ki az előző szakaszban létrehozott **jelszó** nevű titkos kulcsot.
+4. Válassza **a +**  >  **Kulcstartó-referencia létrehozása lehetőséget,** majd adja meg a következő értékeket:
+    - **Kulcs:** Válassza ki **a secrets.password et.**
+    - **Címke:** Ezt az értéket hagyja üresen.
+    - **Előfizetés,** **Erőforráscsoport** és **Kulcstartó:** Adja meg az előző lépésben létrehozott kulcstartóban megadott értékeknek megfelelő értékeket.
+    - **Titkos:** Válassza ki az előző szakaszban létrehozott **Password** (Jelszó) nevű titkos jelszót.
 
 ## <a name="create-helm-chart"></a>Helm-diagram létrehozása ##
-Először hozzon létre egy minta Helm-diagramot a következő paranccsal
+Először hozzon létre egy Helm-mintadiagramot a következő paranccsal
 ```console
 helm create mychart
 ```
@@ -71,7 +71,7 @@ helm create mychart
 A Helm létrehoz egy mychart nevű új könyvtárat az alább látható struktúrával. 
 
 > [!TIP]
-> További információért kövesse ezt a [diagramot ismertető útmutatót](https://helm.sh/docs/chart_template_guide/getting_started/) .
+> További [információért kövesse ezt](https://helm.sh/docs/chart_template_guide/getting_started/) a diagramok útmutatóját.
 
 ```
 mychart
@@ -86,7 +86,7 @@ mychart
 `-- values.yaml
 ```
 
-Következő lépésként frissítse az *Deployment. YAML* fájl **spec: Template: spec: containers** szakaszát. Az alábbi kódrészlet két környezeti változót hoz létre a tárolóhoz. Az értékeket a telepítéskor dinamikusan kell beállítani.
+Ezután frissítse a *deployment.yaml* fájl **spec:template:spec:containers** szakaszát. Az alábbi kódrészlet két környezeti változót ad hozzá a tárolóhoz. Az értékeiket az üzembe helyezéskor dinamikusan fogja beállítani.
 
 ```yaml
 env:
@@ -96,7 +96,7 @@ env:
     value: {{ .Values.settings.message }}
 ``` 
 
-A frissítés után a teljes *telepítési. YAML* fájlnak az alábbihoz hasonlóan kell kinéznie.
+A frissítés *után a teljes deployment.yaml* fájlnak az alábbihoz hasonlónak kell lennie.
 
 ```yaml
 apiVersion: apps/v1beta2
@@ -157,10 +157,10 @@ spec:
     {{- end }}
 ```
 
-Bizalmas adatok Kubernetes-titokként való tárolásához vegyen fel egy *Secrets. YAML* fájlt a sablonok mappában.
+Ha bizalmas adatokat szeretne Kubernetes titkos kulcsokként tárolni, adjon hozzá egy *secrets.yaml fájlt* a templates mappához.
 
 > [!TIP]
-> További információ a [Kubernetes-titkok](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets)használatáról.
+> További információ a [Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets)titkos kulcsok használatával kapcsolatban.
 
 ```yaml
 apiVersion: v1
@@ -172,7 +172,7 @@ data:
   password: {{ .Values.secrets.password | b64enc }}
 ```
 
-Végül frissítse a *Values. YAML* fájlt a következő tartalommal, hogy opcionálisan adja meg az *üzembe helyezés. YAML* és *Secrets. YAML* fájlokban hivatkozott konfigurációs beállítások és titkos kódok alapértelmezett értékeit. Az alkalmazás konfigurációjától származó konfiguráció felülírja a tényleges értékeket.
+Végül frissítse a *values.yaml* fájlt a következő tartalommal, hogy az alapértelmezett értékeket adja meg a konfigurációs beállítások és titkos kulcsok számára, amelyekre a *deployment.yaml* és *secrets.yaml* fájl hivatkozik. A tényleges értékeiket a rendszer felülírja a kiszolgálóról lekért App Configuration.
 
 ```yaml
 # settings will be overwritten by App Configuration
@@ -181,32 +181,32 @@ settings:
     message: myMessage
 ```
 
-## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Konfiguráció átadása az alkalmazás konfigurációjában a Helm install szolgáltatásban ##
-Először töltse le a konfigurációt az alkalmazás konfigurációjától egy *konfig. YAML* fájlba. A kulcs szűrő használatával csak azokat a kulcsokat töltse le, amelyek a **beállításokkal** kezdődnek. Ha az adott esetben a kulcs szűrője nem elegendő a Key Vault hivatkozások kulcsainak kizárásához, akkor a **--skip-** kulcstartó argumentumot használhatja a kizáráshoz. 
+## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Konfiguráció pass configuration from App Configuration in Helm install ##
+Először töltse le a konfigurációt a App Configuration egy *myConfig.yaml fájlba.* Kulcsszűrővel csak azokat a kulcsokat töltse le, amelyek a beállításokkal **kezdődnek.**. Ha ebben az esetben a kulcsszűrő nem elegendő a Key Vault-hivatkozások kulcsának kizárására, a **--skip-keyvault argumentum** használatával kizárhatja őket. 
 
 > [!TIP]
-> További információ az [exportálási parancsról](/cli/azure/appconfig/kv#az-appconfig-kv-export). 
+> További információ az [exportálási parancsról:](/cli/azure/appconfig/kv#az_appconfig_kv_export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
 ```
 
-Ezután töltse le a titkokat egy *mySecrets. YAML* nevű fájlba. A parancssori argumentum **--feloldás-** kulcstartó feloldja a Key Vault hivatkozásokat, ha beolvassa a tényleges értékeket a Key Vaultban. Ezt a parancsot olyan hitelesítő adatokkal kell futtatnia, amelyek hozzáférési jogosultságokkal rendelkeznek a megfelelő Key Vaulthoz.
+Ezután töltse le a titkos okat a *mySecrets.yaml nevű fájlba.* A **--resolve-keyvault** parancssori argumentum úgy oldja fel a hivatkozásokat Key Vault hogy lekérte a tényleges értékeket a Key Vault. Ezt a parancsot olyan hitelesítő adatokkal kell futtatnia, amelyek megfelelő hozzáférési engedélyekkel Key Vault.
 
 > [!WARNING]
-> Mivel ez a fájl bizalmas adatokat tartalmaz, tartsa a fájlt körültekintően, és törölje, ha már nincs rá szükség.
+> Mivel ez a fájl bizalmas adatokat tartalmaz, tartsa gondban a fájlt, és ha már nincs rá szükség, ne takarítsa meg.
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path mySecrets.yaml --key "secrets.*" --separator "." --resolve-keyvault --format yaml
 ```
 
-A Helm upgrade 's **-f** argumentum használatával adja át a két létrehozott konfigurációs fájlt. A *Values. YAML* megadott konfigurációs értékeket felülbírálják az alkalmazás konfigurációjától származó értékekkel.
+A Helm-frissítés **-f argumentumának** használatával adja át a két létrehozott konfigurációs fájlt. Felülbírálják a *values.yaml* fájlban definiált konfigurációs értékeket a kódból exportált App Configuration.
 
 ```console
 helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart 
 ```
 
-A Helm verziófrissítéshez a **--set** argumentumot is használhatja a literális kulcs értékének átadásához. A **--set** argumentum használata jó módszer a bizalmas adatok lemezre való megőrzésének elkerülésére. 
+A Helm-frissítés **--set** argumentumát is használhatja konstanskulcs-értékek áterítésére. A **--set argumentum** használatával elkerülheti a bizalmas adatok lemezen való megőrzését. 
 
 ```powershell
 $secrets = az appconfig kv list -n myAppConfiguration --key "secrets.*" --resolve-keyvault --query "[*].{name:key, value:value}" | ConvertFrom-Json
@@ -225,13 +225,13 @@ else{
 
 ```
 
-A [Kubernetes irányítópultjának](../aks/kubernetes-dashboard.md)használatával ellenőrizze, hogy a konfigurációk és a titkos kulcsok beállítása sikeres volt-e. Láthatja, hogy az alkalmazás konfigurációjának **szín** -és **üzenet** -értékei a tároló környezeti változói között lettek feltöltve.
+Ellenőrizze, hogy a konfigurációk és titkos kulcsok sikeresen be vannak-e állítva a [Kubernetes-irányítópult eléréséhez.](../aks/kubernetes-dashboard.md) Látni fogja, hogy  a  tároló szín- App Configuration üzenetértékei fel vannak töltve a tároló környezeti változóiba.
 
-![Gyorsindítás alkalmazás elindítása helyi](./media/kubernetes-dashboard-env-variables.png)
+![Gyors üzembe helyezési alkalmazás helyi indítása](./media/kubernetes-dashboard-env-variables.png)
 
-Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jelszava**, tárolása is hozzá lett adva a Kubernetes Secrets szolgáltatáshoz. 
+A kubernetes **titkos kulcsokhoz** Key Vault titkos App Configuration egy titkos adatokat is hozzáadtunk. 
 
-![Képernyőkép, amely kiemeli a jelszót az adatszakaszban.](./media/kubernetes-dashboard-secrets.png)
+![Képernyőkép az Adatok szakaszban kiemelt jelszóról.](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -239,7 +239,7 @@ Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jel
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
+Ebben az oktatóanyagban exportálta a Azure App Configuration adatokat, hogy a Helm segítségével kubernetes-környezetben használhatók legyen. Ha többet szeretne megtudni a App Configuration, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]
 > [Azure CLI](/cli/azure/appconfig)

@@ -1,46 +1,46 @@
 ---
-title: Tároló csoport üzembe helyezése az Azure Virtual Networkben
-description: Megtudhatja, hogyan helyezhet üzembe egy tároló csoportot egy új vagy meglévő Azure-beli virtuális hálózaton az Azure parancssori felületének használatával.
+title: Tárolócsoport üzembe helyezése azure-beli virtuális hálózaton
+description: Megtudhatja, hogyan helyezhet üzembe egy tárolócsoportot egy új vagy meglévő Azure-beli virtuális hálózaton az Azure parancssori felületével.
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028879"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771046"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
 
-Az [azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos, privát hálózatkezelést biztosít az Azure-hoz és a helyszíni erőforrásokhoz. Ha tároló-csoportokat telepít egy Azure-beli virtuális hálózatba, a tárolók biztonságosan kommunikálhatnak a virtuális hálózat többi erőforrásával.
+[Az Azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos magánhálózatot biztosít az Azure-beli és a helyszíni erőforrások számára. Ha tárolócsoportokat helyez üzembe egy Azure-beli virtuális hálózatban, a tárolók biztonságosan kommunikálhatnak a virtuális hálózat más erőforrásaival.
 
-Ez a cikk bemutatja, hogyan helyezhet üzembe tároló csoportokat az az [Container Create][az-container-create] paranccsal az Azure CLI-ben egy új virtuális hálózatra vagy egy meglévő virtuális hálózatra. 
+Ez a cikk bemutatja, hogyan helyezhet üzembe tárolócsoportokat egy új virtuális hálózaton vagy egy meglévő virtuális hálózaton az Azure CLI [az container create][az-container-create] parancsával. 
 
-Hálózati forgatókönyvek és korlátozások esetén lásd: [virtuális hálózati forgatókönyvek és erőforrások Azure Container Instanceshoz](container-instances-virtual-network-concepts.md).
+Hálózati forgatókönyvek és korlátozások: Virtuális hálózati forgatókönyvek és erőforrások a [Azure Container Instances.](container-instances-virtual-network-concepts.md)
 
 > [!IMPORTANT]
-> A tároló csoportok üzembe helyezése virtuális hálózatra általánosan elérhető Linux-tárolók esetén, ahol a Azure Container Instances elérhető. Részletekért lásd: [régiók és erőforrás rendelkezésre állása][container-regions]. 
+> A tárolócsoport virtuális hálózaton való üzembe helyezése általánosan elérhető a Linux-tárolókhoz, ahol a legtöbb Azure Container Instances elérhető. Részletekért lásd: [Régiók és erőforrások rendelkezésre állása.][container-regions] 
 
-A cikkben szereplő példák a bash-rendszerhéjra vannak formázva. Ha egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, módosítsa a sor folytatási karaktereit ennek megfelelően.
+A cikk példái a Bash-rendszerhéjhoz vannak formázva. Ha egy másik rendszerhéjat, például a PowerShellt vagy a parancssort részesíti előnyben, ennek megfelelően módosítsa a sor folytatási karaktereit.
 
 
 ## <a name="deploy-to-new-virtual-network"></a>Üzembe helyezés új virtuális hálózaton
 
-Ha új virtuális hálózatra kíván üzembe helyezni, és az Azure-hoz automatikusan hozza létre a hálózati erőforrásokat, akkor a következőt kell megadnia az az [Container Create][az-container-create]:
+Ha új virtuális hálózatban kell üzembe helyeznie, és az Azure-ral automatikusan létre kell hoznia a hálózati erőforrásokat, adja meg a következőket az [az container create végrehajtásakor:][az-container-create]
 
 * Virtuális hálózat neve
-* CIDR formátumú virtuális hálózati címek előtagja
+* Virtuális hálózat címelőtagja CIDR formátumban
 * Alhálózat neve
-* Alhálózat CIDR formátuma
+* Alhálózati címelőtag CIDR formátumban
 
-A virtuális hálózat és az alhálózati címek előtagjai határozzák meg a virtuális hálózat és az alhálózat címterület-területét. Ezek az értékek az osztály nélküli Inter-Domain Routing (CIDR) jelöléssel jelennek meg, például: `10.0.0.0/16` . További információ az alhálózatok használatáról: [virtuális hálózati alhálózat hozzáadása, módosítása vagy törlése](../virtual-network/virtual-network-manage-subnet.md).
+A virtuális hálózat és az alhálózat címelőtagja adja meg a virtuális hálózat és az alhálózat címterét. Ezek az értékek az Útválasztás (CIDR) Inter-Domain, például: `10.0.0.0/16` . További információ az alhálózatok munkavégzésével kapcsolatban: Virtuális hálózat alhálózatának [hozzáadása, módosítása vagy törlése.](../virtual-network/virtual-network-manage-subnet.md)
 
-Miután telepítette az első tároló csoportját ezzel a módszerrel, a virtuális hálózat és az alhálózatok nevének megadásával, vagy az Azure által automatikusan létrehozott hálózati profil megadásával ugyanarra az alhálózatra is telepíthető. Mivel az Azure delegálja az alhálózatot Azure Container Instancesre, *csak* a tároló csoportokat telepítheti az alhálózatra.
+Miután üzembe helyezett egy első tárolócsoportot ezzel a módszerrel, ugyanazon az alhálózaton is üzembe helyezheti a virtuális hálózat és az alhálózat nevének vagy az Azure által automatikusan létrehozott hálózati profilnak a megadásával. Mivel az Azure delegálta az alhálózatot  a Azure Container Instances, csak tárolócsoportokat helyezhet üzembe az alhálózaton.
 
 ### <a name="example"></a>Példa
 
-Az alábbi az [Container Create][az-container-create] parancs egy új virtuális hálózat és alhálózat beállításait adja meg. Adja meg egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](container-instances-region-availability.md)a virtuális hálózaton. Ez a parancs központilag telepíti a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weblapot kiszolgáló kisméretű Node.js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
+Az alábbi [az container create parancs][az-container-create] egy új virtuális hálózat és alhálózat beállításait határozza meg. Adja meg annak az erőforráscsoportnak a nevét, amely egy olyan régióban lett létrehozva, amelyben a tárolócsoportok virtuális hálózatban való üzembe [helyezése](container-instances-region-availability.md)elérhető. Ez a parancs üzembe helyez egy nyilvános Microsoft [aci-helloworld][aci-helloworld] tárolót, amely egy Node.js webkiszolgálót futtat, amely egy statikus weboldalt szolgál ki. A következő szakaszban üzembe helyez egy második tárolócsoportot ugyanazon az alhálózaton, és teszteli a két tárolópéldány közötti kommunikációt.
 
 ```azurecli
 az container create \
@@ -53,23 +53,23 @@ az container create \
   --subnet-address-prefix 10.0.0.0/24
 ```
 
-Ha ezzel a módszerrel telepít egy új virtuális hálózatot, az üzembe helyezés eltarthat néhány percig, amíg a hálózati erőforrások létrejöttek. A kezdeti üzembe helyezést követően a további, egyazon alhálózatra történő központi telepítések gyorsabban megegyeznek.
+Ha ezzel a módszerrel helyez üzembe egy új virtuális hálózatot, az üzembe helyezés eltarthat néhány percig, amíg a hálózati erőforrások létrejönnek. A kezdeti üzembe helyezést követően a tárolócsoport ugyanazon az alhálózaton való üzembe helyezése gyorsabban befejeződik.
 
 ## <a name="deploy-to-existing-virtual-network"></a>Üzembe helyezés meglévő virtuális hálózaton
 
-Tároló csoport üzembe helyezése meglévő virtuális hálózaton:
+Tárolócsoport üzembe helyezése meglévő virtuális hálózaton:
 
-1. Hozzon létre egy alhálózatot a meglévő virtuális hálózaton belül, használjon olyan meglévő alhálózatot, amelyben már telepítve van egy tároló csoport, vagy használjon egy meglévő alhálózatot, amely az *összes* többi erőforrást kiüríti
-1. Helyezzen üzembe egy tároló csoportot az [az Container Create][az-container-create] paranccsal, és határozza meg a következők egyikét:
-   * Virtuális hálózat neve és alhálózatának neve
-   * Virtuális hálózati erőforrás-azonosító és alhálózati erőforrás-azonosító, amely lehetővé teszi, hogy egy másik erőforráscsoporthoz tartozó virtuális hálózatot használjon.
-   * A hálózati profil neve vagy azonosítója, amelyet az [az Network profil List][az-network-profile-list] paranccsal szerezhet be
+1. Hozzon létre egy alhálózatot a meglévő virtuális hálózaton belül, használjon egy meglévő alhálózatot, amelyben már üzembe van helyezni egy tárolócsoportot, vagy használjon egy meglévő, az összes többi erőforrásból *kiürített* alhálózatot
+1. Telepítsen egy tárolócsoportot [az az container create][az-container-create] segítségével, és adja meg a következők egyikét:
+   * Virtuális hálózat és alhálózat neve
+   * A virtuális hálózat erőforrás-azonosítója és az alhálózati erőforrás-azonosító, amely lehetővé teszi egy másik erőforráscsoportból származó virtuális hálózat használatát
+   * Hálózati profil neve vagy azonosítója, amelyet az [az network profile list][az-network-profile-list] használatával szerezhet be
 
 ### <a name="example"></a>Példa
 
-A következő példa egy második tároló-csoportot telepít ugyanarra az alhálózatra, amelyet korábban hozott létre, és ellenőrzi a két tároló példány közötti kommunikációt.
+Az alábbi példa üzembe helyez egy második tárolócsoportot a korábban létrehozott alhálózaton, és ellenőrzi a két tárolópéldány közötti kommunikációt.
 
-Először szerezze be az elsőként telepített Container-csoport IP-címét, a *appcontainer*:
+Először szerezze be az első üzembe helyezett tárolócsoport, az *appcontainer IP-címét:*
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -77,13 +77,13 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Például:
+A kimenet a privát alhálózaton lévő tárolócsoport IP-címét jeleníti meg. Például:
 
 ```console
 10.0.0.4
 ```
 
-Most állítsa be a `CONTAINER_GROUP_IP` paranccsal lekért IP-címet `az container show` , és hajtsa végre a következő `az container create` parancsot. Ez a második tároló, a *commchecker* egy alpesi Linux-alapú rendszerképet futtat, és `wget` az első tároló csoport privát alhálózatának IP-címén hajtja végre.
+Most állítsa be az parancsot a `CONTAINER_GROUP_IP` lekért IP-címre, `az container show` és hajtsa végre a következő `az container create` parancsot. A második, *commchecker* tároló egy Alpine Linux-alapú rendszerképet futtat, és az első tárolócsoport magánhálózati `wget` IP-címére hajt végre végrehajtást.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -98,35 +98,35 @@ az container create \
   --subnet aci-subnet
 ```
 
-A második tároló üzembe helyezésének befejezése után húzza le a naplókat, hogy láthassa az `wget` általa végrehajtott parancs kimenetét:
+Miután a második tároló üzembe helyezése befejeződött, le kell húznia a naplóit, hogy lássa a végrehajtott parancs `wget` kimenetét:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
 ```
 
-Ha a második tároló sikeresen kommunikált az elsővel, a kimenet a következőhöz hasonló:
+Ha a második tároló sikeresen kommunikált az elsővel, a kimenet a következőre hasonlít:
 
 ```console
 Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-A napló kimenetének azt kell megjelennie, hogy `wget` képes volt csatlakozni a fájlhoz, és letölti az indexfájl az első tárolóból a saját magánhálózati IP-címének használatával a helyi alhálózaton. A két tároló csoport közötti hálózati forgalom a virtuális hálózaton belül marad.
+A napló kimenetének azt kell mutatnia, hogy az képes volt csatlakozni az indexfájlhoz, és le tudta tölteni az első tárolóból a helyi alhálózat magánhálózati `wget` IP-címével. A két tárolócsoport közötti hálózati forgalom a virtuális hálózaton belül maradt.
 
 ### <a name="example---yaml"></a>Példa – YAML
 
-YAML-fájl, [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
-)vagy más programozott módszer, például a Python SDK használatával is üzembe helyezhet egy tároló csoportot egy meglévő virtuális hálózaton. 
+Tárolócsoportot YAML-fájl, [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)vagy más programozott módszer, például a Python SDK használatával is üzembe helyezhet egy meglévő virtuális hálózaton. 
 
-Ha például egy YAML-fájlt használ, központilag telepítheti egy olyan virtuális hálózatra, amelyhez Azure Container Instances delegált alhálózat tartozik. A következő tulajdonságokat kell megadnia:
+YAML-fájl használata esetén például üzembe helyezhet egy virtuális hálózatot egy alhálózattal, amely a Azure Container Instances. Adja meg a következő tulajdonságokat:
 
-* `ipAddress`: A tároló csoport magánhálózati IP-címének beállításai.
-  * `ports`: A megnyitni kívánt portok, ha vannak ilyenek.
+* `ipAddress`: A tárolócsoport magánhálózati IP-címének beállításai.
+  * `ports`: A megnyílik portok, ha van ilyen.
   * `protocol`: A megnyitott port protokollja (TCP vagy UDP).
 * `networkProfile`: A virtuális hálózat és az alhálózat hálózati beállításai.
-  * `id`: A teljes erőforrás-kezelő erőforrás-azonosítója `networkProfile` .
+  * `id`: a Resource Manager erőforrás-azonosítója. `networkProfile`
 
-A hálózati profil AZONOSÍTÓjának lekéréséhez futtassa az az [Network profil List][az-network-profile-list] parancsot, és adja meg az erőforráscsoport nevét, amely a virtuális hálózatot és a delegált alhálózatot tartalmazza.
+A hálózati profil azonosítójának leához futtassa az [az network profile list][az-network-profile-list] parancsot, és adja meg a virtuális hálózatot és a delegált alhálózatot tartalmazó erőforráscsoport nevét.
 
 ``` azurecli
 az network profile list --resource-group myResourceGroup \
@@ -139,7 +139,7 @@ Példa a kimenetre:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-A hálózati profil azonosítója után másolja a következő YAML egy új, *vnet-Deploy-ACI. YAML* nevű fájlba. A alatt `networkProfile` cserélje le az `id` imént beolvasott azonosítójú értéket, majd mentse a fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tároló csoportot a virtuális hálózatában.
+Ha már megvan a hálózati profil azonosítója, másolja a következő YAML-t egy új fájlba *vnet-deploy-aci.yaml névvel.* A alatt cserélje le az értéket az előbb `networkProfile` lekért azonosítóra, majd mentse a `id` fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tárolócsoportot a virtuális hálózatban.
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -170,14 +170,14 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a paraméter YAML-fájljának nevét `--file` :
+Telepítse a tárolócsoportot [az az container create paranccsal,][az-container-create] és adja meg a YAML-fájl nevét a `--file` paraméterhez:
 
 ```azurecli
 az container create --resource-group myResourceGroup \
   --file vnet-deploy-aci.yaml
 ```
 
-Miután az üzembe helyezés befejeződött, futtassa az az [Container show][az-container-show] parancsot az állapotának megjelenítéséhez. Példa a kimenetre:
+Az üzembe helyezés befejezése után futtassa [az az container show][az-container-show] parancsot az állapotának megjelenítéséhez. Példa a kimenetre:
 
 ```console
 Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
@@ -187,9 +187,9 @@ appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-hel
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-### <a name="delete-container-instances"></a>Tároló példányainak törlése
+### <a name="delete-container-instances"></a>Tárolópéldányok törlése
 
-Ha elkészült a létrehozott tároló-példányokkal, törölje azokat a következő parancsokkal:
+Ha végzett a létrehozott tárolópéldányokkal, törölje őket a következő parancsokkal:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name appcontainer -y
@@ -199,12 +199,12 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Hálózati erőforrások törlése
 
-Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat. A parancsfájl feltételezi, hogy az erőforráscsoport egyetlen hálózati profillal rendelkező egyetlen virtuális hálózatot tartalmaz.
+Ez a funkció jelenleg több további parancsot igényel a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk korábbi szakaszaiban példaparancsokat használt a virtuális hálózat és az alhálózat létrehozásához, akkor a következő szkripttel törölheti ezeket a hálózati erőforrásokat. A szkript feltételezi, hogy az erőforráscsoport egyetlen virtuális hálózatot tartalmaz, egyetlen hálózati profillal.
 
-A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törölni kívánt virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport nevére. Frissítse a virtuális hálózat nevét, ha nem a `aci-vnet` korábban javasolt nevet használta. A parancsfájl a bash-rendszerhéjhoz van formázva. Ha inkább egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, akkor ennek megfelelően módosítania kell a változó hozzárendelés és a hozzáférési jogosultságokat.
+A szkript végrehajtása előtt állítsa a változót a törölni szükséges virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport `RES_GROUP` nevére. Frissítse a virtuális hálózat nevét, ha nem a korábban javasolt `aci-vnet` nevet használja. A szkript a Bash-rendszerhéjhoz van formázva. Ha egy másik rendszerhéjat, például a PowerShellt vagy a parancssort részesíti előnyben, ennek megfelelően kell módosítania a változó-hozzárendelést és a hozzáférési okat.
 
 > [!WARNING]
-> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és a benne található összes alhálózatot. Győződjön meg arról, hogy a parancsfájl futtatása előtt már nincs szüksége a virtuális hálózatban lévő *összes* erőforrásra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók helyre**.
+> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és az összes benne lévő alhálózatot. A szkript futtatása előtt  győződjön meg arról, hogy már nincs szüksége a virtuális hálózatban lévő erőforrásokra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók vissza.**
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -224,8 +224,8 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
-)használatával című témakört.
+Új virtuális hálózat, alhálózat, hálózati profil és tárolócsoport Resource Manager sablonnal való üzembe helyezéséhez lásd: Azure-tárolócsoport létrehozása [virtuális hálózattal.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)
 
 <!-- IMAGES -->
 [aci-vnet-01]: ./media/container-instances-vnet/aci-vnet-01.png
@@ -234,8 +234,8 @@ Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló cs
 [aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
-[az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
+[az-network-profile-list]: /cli/azure/network/profile#az_network_profile_list
 [container-regions]: container-instances-region-availability.md

@@ -1,44 +1,44 @@
 ---
-title: Az ultra Disk támogatásának engedélyezése az Azure Kubernetes szolgáltatásban (ak)
-description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja az ultra-lemezeket egy Azure Kubernetes Service-(ak-) fürtben
+title: A utralemez (AKS) Azure Kubernetes Service engedélyezése
+description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja ultralemezek egy Azure Kubernetes Service -fürtben
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dbe0a75ce2079bdec752f7fee0c3e97e3ae2ffa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502569"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767348"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Az Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure ultralemezek használata a Azure Kubernetes Service (előzetes verzió)
 
-Az [Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) nagy teljesítményű, magas IOPS és konzisztens, kis késésű lemezes tárolást biztosít az állapot-nyilvántartó alkalmazások számára. Az ultra Disks szolgáltatás egyik legfőbb előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítani az ügynök csomópontjait. Az ultra-lemezek nagy adatigényes számítási feladatokhoz alkalmasak.
+[Az Azure ultralemezei](../virtual-machines/disks-enable-ultra-ssd.md) magas átviteli sebességet, magas IOPS-t és konzisztensen alacsony késésű lemeztárolást nyújtanak az állapot-alapú alkalmazások számára. Az ultralemezek egyik fő előnye, hogy az SSD teljesítményét dinamikusan módosíthatja a számítási feladatokkal együtt anélkül, hogy újra kellene indítania az ügynökcsomópontokat. Az ultralemezek nagy adatigényű számítási feladatokhoz megfelelőek.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehozási idején állítható be.
+Ez a szolgáltatás csak a fürt vagy a csomópontkészlet létrehozásakor lehet beállítani.
 
 > [!IMPORTANT]
-> Az Azure Ultra Disks szolgáltatáshoz a rendelkezésre állási zónákban és az ezeket a lemezeket támogató nodepools, valamint csak adott virtuálisgép-sorozatok szükségesek. Tekintse meg az [**Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
+> Az Azure-beli ultralemezek rendelkezésre állási zónákban és régiókban üzembe helyezett csomópontkészleteket igényelnek, amelyek támogatják ezeket a lemezeket, valamint csak bizonyos virtuálisgép-sorozatokat. Lásd: [**Ultralemezek GA hatóköre és korlátozásai.**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 
-### <a name="register-the-enableultrassd-preview-feature"></a>Az `EnableUltraSSD` előzetes verzió funkciójának regisztrálása
+### <a name="register-the-enableultrassd-preview-feature"></a>Az előzetes `EnableUltraSSD` verziójú funkció regisztrálása
 
-Ha egy AK-fürtöt vagy egy olyan csomópont-készletet szeretne létrehozni, amely képes az ultra-lemezek kihasználása, engedélyeznie kell a `EnableUltraSSD` szolgáltatás jelölőjét az előfizetésében.
+Az ultralemezeket kihasználó AKS-fürt vagy csomópontkészlet létrehozásához engedélyeznie kell a funkciójelölőt `EnableUltraSSD` az előfizetésén.
 
-Regisztrálja a `EnableUltraSSD` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+Regisztrálja `EnableUltraSSD` a funkciójelölőt az [az feature register paranccsal][az-feature-register] az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
 ```
 
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
+Eltarthat néhány percig, hogy az állapot Regisztrált *állapotúra mutasson.* A regisztráció állapotát az az feature list paranccsal [ellenőrizheti:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
+Amikor elkészült, frissítse a *Microsoft.ContainerService* erőforrás-szolgáltató regisztrációját [az az provider register paranccsal:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -48,7 +48,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 
-Ha olyan AK-fürtöt vagy csomópont-készletet szeretne létrehozni, amely Ultra-lemezeket használhat, szüksége lesz a legújabb *AK-előnézeti CLI-* bővítményre. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal:
+Ha olyan AKS-fürtöt vagy csomópontkészletet kell létrehoznia, amely ultralemezek, a legújabb *aks-preview CLI-bővítményre* lesz szüksége. Telepítse az *aks-preview* Azure CLI-bővítményt az [az extension add][az-extension-add] paranccsal, vagy telepítse az elérhető frissítéseket az az extension update [paranccsal:][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -59,48 +59,48 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>Korlátozások
-- Lásd az [ **Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
-- Az ultra-lemezek számára támogatott méretkorlát 100 és 1500 közé esik
+- Lásd: [ **Ultralemezek GA hatóköre és korlátozásai**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Az ultralemezek támogatott mérettartománya 100 és 1500 közé esik
 
-## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultra Disks-t használó új fürt létrehozása
+## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultralemezeket használni képes új fürt létrehozása
 
-Hozzon létre egy AK-fürtöt, amely az alábbi CLI-parancsokkal képes kihasználni az ultra-lemezeket. A `--aks-custom-headers` szolgáltatás beállításához használja a jelzőt `EnableUltraSSD` .
+Hozzon létre egy AKS-fürtöt, amely képes ultralemezek parancssori felület alábbi parancsokkal való használatával. A funkció `--aks-custom-headers` beállítását a `EnableUltraSSD` jelzővel használhatja.
 
-Azure-erőforráscsoport létrehozása:
+Hozzon létre egy Azure-erőforráscsoportot:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-Hozza létre az AK-fürtöt Ultra-lemezek támogatásával.
+Hozza létre az AKS-fürtöt a ultralemezek.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
-Ha olyan fürtöket szeretne létrehozni, amelyek nem támogatják az ultra Disk támogatást, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .
+Ha ultralemez-támogatás nélkül szeretne fürtöt létrehozni, ezt az egyéni paraméter kihagyása után `--aks-custom-headers` használhatja.
 
-## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Ultra-lemezek engedélyezése meglévő fürtön
+## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Ultralemezek engedélyezése meglévő fürtön
 
-A meglévő fürtökön engedélyezheti az ultravékony lemezeket, ha új csomópont-készletet ad hozzá a fürthöz, amely támogatja az ultra-lemezeket. Konfigurálja az új csomópont-készletet, hogy a jelző használatával Ultra-lemezeket használjon `--aks-custom-headers` .
+Az ultralemezek meglévő fürtökön való engedélyezéséhez új csomópontkészletet kell hozzáadnia a fürthöz, amely támogatja az ultralemezeket. Konfigurálja az új csomópontkészletet ultralemezek használatára a `--aks-custom-headers` jelzővel.
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
-Ha új csomópont-készleteket szeretne létrehozni az ultra-lemezek támogatása nélkül, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .
+Ha az ultralemezek támogatása nélkül szeretne új csomópontkészleteket létrehozni, ezt az egyéni paraméter kihagyása után `--aks-custom-headers` használhatja.
 
-## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>Az ultra-lemezek dinamikus használata tárolási osztállyal
+## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>Ultralemezek dinamikus használata tárolóosztályokkal
 
-Ha Ultra-lemezeket kíván használni az üzemelő példányokban vagy az állapot-nyilvántartó készletekben, használhat [tárolási osztályt a dinamikus](azure-disks-dynamic-pv.md)kiépítéshez.
+Ha ultralemezeket használ az üzemelő példányainkban vagy állapot-állapot-halmazainkban, használhat tárolóosztályt a [dinamikus üzembe helyezéshez.](azure-disks-dynamic-pv.md)
 
 ### <a name="create-the-storage-class"></a>A tárolási osztály létrehozása
 
-A tárolási osztály segítségével határozható meg, hogy egy adott tárolási egység hogyan legyen dinamikusan létrehozva állandó kötettel. További információ a Kubernetes tárolásával kapcsolatban: [Kubernetes Storage classs][kubernetes-storage-classes].
+A tárolóosztály annak meghatározására használható, hogy a rendszer hogyan hoz létre dinamikusan egy tárolóegységet egy állandó köteten. A Kubernetes-tárolóosztályokkal kapcsolatos további információkért lásd: [Kubernetes Storage-osztályok.][kubernetes-storage-classes]
 
-Ebben az esetben hozzunk létre egy olyan tárolási osztályt, amely az ultra-lemezekre hivatkozik. Hozzon létre egy nevű fájlt `azure-ultra-disk-sc.yaml` , és másolja a következő jegyzékbe.
+Ebben az esetben egy olyan tárolóosztályt hozunk létre, amely ultralemezre hivatkozik. Hozzon létre egy nevű `azure-ultra-disk-sc.yaml` fájlt, és másolja be a következő jegyzékfájlt.
 
 ```yaml
 kind: StorageClass
@@ -117,7 +117,7 @@ parameters:
   diskMbpsReadWrite: "320"   # minimum value: 0.032/GiB
 ```
 
-Hozza létre a tárolási osztályt a [kubectl Apply][kubectl-apply] paranccsal, és adja meg az *Azure-Ultra-Disk-SC. YAML* fájlt:
+Hozza létre a storage osztályt a [kubectl apply paranccsal,][kubectl-apply] és adja meg *az azure-ultra-disk-sc.yaml fájlt:*
 
 ```console
 $ kubectl apply -f azure-ultra-disk-sc.yaml
@@ -126,11 +126,11 @@ $ kubectl apply -f azure-ultra-disk-sc.yaml
 storageclass.storage.k8s.io/ultra-disk-sc created
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímek létrehozása
+## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímének létrehozása
 
-A tárolási osztályok alapján a tárolók automatikus kiépítéséhez állandó mennyiségi jogcím (PVC) használatos. Ebben az esetben a PVC a korábban létrehozott Storage osztály használatával hozza létre az ultra-lemezt.
+Az állandó kötet jogcímek (PERSISTENT) segítségével a rendszer automatikusan kiépíti a tárolót egy tárolóosztály alapján. Ebben az esetben a PVC a korábban létrehozott tárolóosztály használatával hozhat létre egy ultralemezt.
 
-Hozzon létre egy nevű fájlt `azure-ultra-disk-pvc.yaml` , és másolja a következő jegyzékbe. A jogcím a `ultra-disk` *ReadWriteOnce* -hozzáféréssel rendelkező *1000 GB* méretű lemezt kér. Az *Ultra-Disk-SC* tárolási osztály a tárolási osztályként van megadva.
+Hozzon létre egy nevű `azure-ultra-disk-pvc.yaml` fájlt, és másolja be az alábbi jegyzékfájlt. A jogcím egy `ultra-disk` *1000 GB* méretű, *ReadWriteOnce* hozzáféréssel rendelkező lemezt igényel. Az *ultra-disk-sc tárolási* osztály van megadva tárolási osztályként.
 
 ```yaml
 apiVersion: v1
@@ -146,7 +146,7 @@ spec:
       storage: 1000Gi
 ```
 
-Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal, és adja meg az *Azure-Ultra-Disk-PVC. YAML* fájlt:
+Hozza létre az állandó kötet jogcímét a [kubectl apply paranccsal,][kubectl-apply] és adja meg az *azure-ultra-disk-pvc.yaml fájlt:*
 
 ```console
 $ kubectl apply -f azure-ultra-disk-pvc.yaml
@@ -156,9 +156,9 @@ persistentvolumeclaim/ultra-disk created
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-Miután létrehozta az állandó kötet jogcímet, és a lemez sikeresen kiépítve, a lemezhez hozzáféréssel rendelkező Pod hozható létre. A következő jegyzékfájl létrehoz egy alapszintű NGINX-Pod-t, amely az *Ultra-Disk* nevű állandó kötet-jogcím használatával csatlakoztatja az Azure-lemezt az elérési útban `/mnt/azure` .
+Az állandó kötet jogcímének létrehozása és a lemez sikeres üzembe állítása után egy pod is létre lehet hozva a lemezhez való hozzáféréssel. A következő jegyzékfájl egy alapszintű NGINX-podot hoz létre, amely az ultra-disk nevű állandó kötet jogcímet használja az *Azure-lemez* csatlakoztatáshoz a elérési `/mnt/azure` úton.
 
-Hozzon létre egy nevű fájlt `nginx-ultra.yaml` , és másolja a következő jegyzékbe.
+Hozzon létre egy nevű `nginx-ultra.yaml` fájlt, és másolja be az alábbi jegyzékfájlt.
 
 ```yaml
 kind: Pod
@@ -185,7 +185,7 @@ spec:
         claimName: ultra-disk
 ```
 
-Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, ahogy az az alábbi példában is látható:
+Hozza létre a podot a [kubectl apply paranccsal][kubectl-apply] az alábbi példában látható módon:
 
 ```console
 $ kubectl apply -f nginx-ultra.yaml
@@ -193,7 +193,7 @@ $ kubectl apply -f nginx-ultra.yaml
 pod/nginx-ultra created
 ```
 
-Most már rendelkezik egy futó Pod lemezzel, amely a `/mnt/azure` címtárban van csatlakoztatva. Ez a konfiguráció megtekinthető a pod-on keresztüli vizsgálat során `kubectl describe pod nginx-ultra` , ahogy az az alábbi tömörített példában is látható:
+Most már van egy futó podja, amely az Azure-lemezt csatlakoztatja a `/mnt/azure` könyvtárhoz. Ez a konfiguráció akkor látható, amikor a segítségével megvizsgálja a podot, ahogy az a következő rövid `kubectl describe pod nginx-ultra` példában látható:
 
 ```console
 $ kubectl describe pod nginx-ultra
@@ -221,8 +221,8 @@ Events:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az ultra Disks [szolgáltatásról: Azure Ultra Disks használata](../virtual-machines/disks-enable-ultra-ssd.md).
-- További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-storage]
+- További információ az ultralemezekkel kapcsolatban: [Using Azure ultra disks (Azure ultralemezek használata).](../virtual-machines/disks-enable-ultra-ssd.md)
+- További információ a tárolással kapcsolatos ajánlott eljárásokról: Ajánlott tárolási és biztonsági mentési eljárások Azure Kubernetes Service [(AKS)][operator-best-practices-storage]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -236,18 +236,18 @@ Events:
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0b29b668b21c375dd1202652b5093526f648c300
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749599"
+ms.locfileid: "107772179"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Key Vault kezelése az Azure CLI használatával 
 
@@ -220,7 +220,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> A Key Vault speciális hozzáférési szabályzatának beállítása
 
-Az [az keyvault update parancs használatával](/cli/azure/keyvault#az-keyvault-update) engedélyezheti a speciális szabályzatokat a kulcstartóhoz.
+Az [az keyvault update parancs használatával](/cli/azure/keyvault#az_keyvault_update) engedélyezheti a speciális szabályzatokat a kulcstartóhoz.
 
  Az Key Vault engedélyezése: Engedélyezi a virtuális gépek számára a titkos kulcsként tárolt tanúsítványok lekérését a tárolóból.
 

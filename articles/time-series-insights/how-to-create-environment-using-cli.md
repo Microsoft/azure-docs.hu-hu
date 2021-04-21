@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 17c1ea19f3879f5490922ab4b54f21773191eebd
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: e2846b7ba07ec0a7678a8287fe6a84bc169497a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484227"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785126"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>2. generációs Azure Time Series Insights létrehozása az Azure CLI használatával
 
@@ -25,10 +25,10 @@ Ez a dokumentum végigvezeti egy új, 2. generációs Time Series Insights létr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy Azure Storage-fiókot a környezete hidegen [tárolt tárolója számára.](./concepts-storage.md#cold-store) Ez a fiók az előzményadatok hosszú távú megőrzésére és elemzésére lett kialakítva.
+* Hozzon létre egy Azure-tárfiókot a környezet hidegen [tárolt tárolója számára.](./concepts-storage.md#cold-store) Ez a fiók az előzményadatok hosszú távú megőrzésére és elemzésére lett kialakítva.
 
 > [!NOTE]
-> A kódban cserélje le a helyére a hideg `mytsicoldstore` tárfiók egyedi nevét.
+> A kódban cserélje le a helyére a hideg tárfiók `mytsicoldstore` egyedi nevét.
 
 Először hozza létre a tárfiókot:
 
@@ -44,7 +44,7 @@ key=$(az storage account keys list -g $rg -n $storage --query [0].value --output
 Most, hogy létrejött a tárfiók, és a neve és a felügyeleti kulcsa hozzá van rendelve a változókhoz, futtassa az alábbi parancsot a Azure Time Series Insights létrehozásához:
 
 > [!NOTE]
-> A kódban cserélje le a következőket a forgatókönyv egyedi nevére:
+> A kódban cserélje le a következőt a forgatókönyv egyedi nevére:
 >
 > * `my-tsi-env` a környezet nevével.
 > * `my-ts-id-prop` a Time Series Id tulajdonság nevével.
@@ -60,9 +60,9 @@ az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource
 
 ## <a name="remove-an-azure-time-series-insights-environment"></a>Új Azure Time Series Insights eltávolítása
 
-Az Azure CLI használatával törölhet egyéni erőforrásokat, például egy Time Series Insights-környezetet, vagy törölhet egy erőforráscsoportot és annak összes erőforrását, beleértve a Time Series Insights környezeteket is.
+Az Azure CLI használatával egyéni erőforrásokat, például Time Series Insights-környezeteket törölhet, vagy törölhet egy erőforráscsoportot és annak összes erőforrását, beleértve a Time Series Insights környezeteket is.
 
-Az [új Time Series Insights törléséhez](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete)futtassa a következő parancsot:
+Az [új környezetek Time Series Insights futtassa](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete)a következő parancsot:
 
 ```azurecli-interactive
 az tsi environment delete --name "my-tsi-env" --resource-group $rg
@@ -74,7 +74,7 @@ A [tárfiók törléséhez futtassa](/cli/azure/storage/account#az_storage_accou
 az storage account delete --name $storage --resource-group $rg
 ```
 
-Egy [erőforráscsoport és annak](/cli/azure/group#az-group-delete) összes erőforrásának törléséhez futtassa a következő parancsot:
+Egy [erőforráscsoport és annak](/cli/azure/group#az_group_delete) összes erőforrásának törléséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
 az group delete --name $rg
@@ -82,5 +82,5 @@ az group delete --name $rg
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [a 2.](./concepts-streaming-ingestion-event-sources.md) generációs környezethez Azure Time Series Insights streamelési eseményforrásokat.
-* Ismerje meg, hogyan csatlakozhat egy [IoT Hub](./how-to-ingest-data-iot-hub.md)
+* Ismerje meg [a 2.](./concepts-streaming-ingestion-event-sources.md) generációs Azure Time Series Insights streamelési eseményforrásokat.
+* Megtudhatja, hogyan csatlakozhat egy [IoT Hub](./how-to-ingest-data-iot-hub.md)

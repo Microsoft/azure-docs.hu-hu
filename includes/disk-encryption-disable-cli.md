@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed2b13077ff5809899097254dde0fa8406e1db3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37571a82ca73342b8edfc4702686ccd9091887c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85601384"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771503"
 ---
-A titkosítást a Azure PowerShell, az Azure CLI vagy egy Resource Manager-sablonnal is letilthatja. 
+A titkosítást letilthatja az Azure PowerShell, az Azure CLI vagy egy Resource Manager használatával. 
 
 >[!IMPORTANT]
->A Azure Disk Encryption Linux rendszerű virtuális gépeken való titkosításának letiltása csak az adatkötetek esetében támogatott. Ha az operációsrendszer-kötet titkosítva van, a rendszer nem támogatja az adatvagy operációsrendszer-köteteken.  
+>A linuxos virtuális gépeken Azure Disk Encryption titkosítás letiltása csak adatkötetek esetén támogatott. Az adat- vagy operációsrendszer-kötetek nem támogatják, ha az operációs rendszer kötete titkosított.  
 
-- **Lemez titkosításának letiltása a Azure PowerShell:** A titkosítás letiltásához használja a [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmagot. 
+- **Lemeztitkosítás letiltása a Azure PowerShell:** A titkosítás letiltásához használja a [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmagot. 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
      ```
 
-- **Titkosítás letiltása az Azure CLI-vel:** A titkosítás letiltásához használja az az [VM encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
+- **Titkosítás letiltása az Azure CLI-val:** A titkosítás letiltásához használja [az az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) parancsot. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
-- **A titkosítás letiltása Resource Manager-sablonnal:** A titkosítás letiltásához használja a [Linux rendszerű virtuális gép titkosításának letiltására](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) szolgáló sablont.
+- **Tiltsa le a titkosítást Resource Manager sablonnal:** A [titkosítás letiltásához használja a Titkosítás letiltása futó Linux rendszerű](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) virtuális gépen sablont.
      1. Kattintson az **Üzembe helyezés az Azure-ban** lehetőségre.
      2. Válassza ki az előfizetést, az erőforráscsoportot, a helyet, a virtuális gépet, a jogi feltételeket és a szerződést.

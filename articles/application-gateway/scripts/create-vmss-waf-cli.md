@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e9201f41c9552b6a60f9ccd8eacda60ac46f89eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e20a4324f46925b8f83d7519c481a1d5bfc06a9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99591635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789302"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Webes forgalom korlátozása az Azure CLI-vel
 
@@ -45,15 +45,15 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Virtuális hálózatot hoz létre. |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Alhálózatot hoz létre egy virtuális hálózatban. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Virtuális hálózatot hoz létre. |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Alhálózatot hoz létre egy virtuális hálózatban. |
 | [az network public-ip create](/cli/azure/network/public-ip) | Az alkalmazásátjáró nyilvános IP-címét hozza létre. |
 | [az network application-gateway create](/cli/azure/network/application-gateway) | Egy alkalmazásátjárót hoz létre. |
-| [az vmss create](/cli/azure/vmss#az-vmss-create) | Létrehoz egy virtuálisgép-méretezési csoportot. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |
-| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | Létrehoz egy tárfiókot. |
-| [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
+| [az vmss create](/cli/azure/vmss#az_vmss_create) | Létrehoz egy virtuálisgép-méretezési csoportot. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
+| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) | Létrehoz egy tárfiókot. |
+| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
 
 ## <a name="next-steps"></a>Következő lépések
 

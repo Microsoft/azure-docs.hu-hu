@@ -1,57 +1,57 @@
 ---
-title: Oktatóanyag – függvények hozzáadása Azure Resource Manager bicep-fájlokhoz
-description: Adja hozzá a függvényeket a bicep-fájlokhoz az értékek létrehozásához.
+title: Oktatóanyag – Függvények hozzáadása bicep Azure Resource Manager fájlokhoz
+description: Függvények hozzáadása a Bicep-fájlokhoz értékek felépítéséhez.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633155"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773800"
 ---
-# <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: függvények hozzáadása Azure Resource Manager bicep-fájlhoz
+# <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: Függvények hozzáadása Azure Resource Manager Bicep-fájlhoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá [sablon-függvényeket](template-functions.md) a bicep-fájlhoz. A függvények használatával dinamikusan hozhat létre értékeket. A rendszer által biztosított sablon-függvények mellett létrehozhat [felhasználó által definiált függvényeket](./template-user-defined-functions.md)is. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá [sablonfunkciókat a](template-functions.md) Bicep-fájlhoz. A függvények használatával dinamikusan lehet értékeket összeépíteni. A Bicep jelenleg nem támogatja a felhasználó által definiált függvényeket. Az oktatóanyag **befejezése 7** percet vesz igénybe.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy fejezze be a [paraméterekkel kapcsolatos oktatóanyagot](bicep-tutorial-add-parameters.md), de ez nem kötelező.
+Javasoljuk, hogy a paraméterekkel [kapcsolatos oktatóanyagot](bicep-tutorial-add-parameters.md)is töltse le, de ez nem kötelező.
 
-A bicep kiterjesztéssel rendelkező Visual Studio Code-nak, valamint Azure PowerShell vagy Azure CLI-nek kell lennie. További információ: [bicep Tools](bicep-tutorial-create-first-bicep.md#get-tools).
+A Code-Visual Studio Bicep kiterjesztéssel kell, és vagy a Azure PowerShell vagy az Azure CLI-nek kell lennie. További információ: [Bicep-eszközök.](bicep-tutorial-create-first-bicep.md#get-tools)
 
-## <a name="review-bicep-file"></a>A bicep-fájl áttekintése
+## <a name="review-bicep-file"></a>Bicep-fájl áttekintése
 
-Az előző oktatóanyag végén a bicep-fájl a következő tartalmakat használta:
+Az előző oktatóanyag végén a Bicep-fájl tartalma a következő volt:
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.bicep":::
 
-A Storage-fiók helye az **USA keleti** régiójában rögzített. Előfordulhat azonban, hogy más régiókban is telepítenie kell a Storage-fiókot. A bicep-fájl problémáját a rugalmasság hiánya okozta. Hozzáadhat egy paramétert a helyhez, de nagyszerű lenne, ha az alapértelmezett értéke több értelme, mint a nehezen kódolt érték.
+A tárfiók helye az USA keleti régiója. Előfordulhat azonban, hogy a tárfiókot más régiókban is üzembe kell helyeznie. Ismét a bicep-fájl rugalmasságának hiányával kell szembesülni. Hozzáadhatna egy paramétert a helyhez, de nagyszerű lenne, ha az alapértelmezett értéke érthetőbb lenne, mint egy nem kötelezően kódolt érték.
 
 ## <a name="use-function"></a>Függvény használata
 
-A függvények rugalmasságot biztosítanak a bicep-fájlhoz az üzembe helyezés során felmerülő értékek dinamikus beolvasásával. Ebben az oktatóanyagban egy függvény használatával beolvassa az üzembe helyezéshez használt erőforráscsoport helyét.
+A függvények rugalmasabbá teszi a Bicep-fájlt azáltal, hogy dinamikusan leküldik az értékeket az üzembe helyezés során. Ebben az oktatóanyagban egy függvény használatával lekérte az üzembe helyezéshez használt erőforráscsoport helyét.
 
-A következő példa a nevű paraméter hozzáadásának módosításait mutatja be `location` . A paraméter alapértelmezett értéke meghívja a [resourceGroup](template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
+Az alábbi példa egy nevű paraméter hozzáadásának módosításait mutatja `location` be. A paraméter alapértelmezett értéke a [resourceGroup függvényt hívja](template-functions-resource.md#resourcegroup) meg. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoportra vonatkozó információkat tartalmaz. Az objektum egyik tulajdonsága a location tulajdonság. Ha az alapértelmezett értéket használja, a tárfiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporton belüli erőforrásoknak nem kell ugyanazon a helyen osztozni. Szükség esetén másik helyet is meg lehet adni.
 
-Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
+Másolja a teljes fájlt, és cserélje le a Bicep-fájlt annak tartalmára.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.bicep" range="1-30" highlight="18,22":::
 
 ## <a name="deploy-bicep-file"></a>Bicep-fájl üzembe helyezése
 
-Az előző oktatóanyagokban létrehozott egy Storage-fiókot az USA keleti régiójában, de az erőforráscsoport az USA középső régiójában lett létrehozva. Ebben az oktatóanyagban a Storage-fiók ugyanabban a régióban jön létre, mint az erőforráscsoport. Használja az alapértelmezett értéket a helyhez, így nem kell megadnia a paraméter értékét. Meg kell adnia egy új nevet a Storage-fiókhoz, mert egy másik helyen hoz létre egy Storage-fiókot. Használja például a **store2** előtagot a **store1** helyett.
+Az előző oktatóanyagokban létrehozott egy tárfiókot az USA keleti részén, az erőforráscsoportot azonban az USA középső régiója hozta létre. Ebben az oktatóanyagban a tárfiók ugyanabban a régióban jön létre, mint az erőforráscsoport. A helynél használja az alapértelmezett értéket, így ezt a paraméterértéket nem kell adnia. Új nevet kell adnia a tárfióknak, mert egy másik helyen hoz létre tárfiókot. Például használja a **store2 előtagot** a **store1 helyett.**
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](bicep-tutorial-create-first-bicep.md#create-resource-group)című témakört. A példa feltételezi `bicepFile` , hogy a változót a bicep-fájl elérési útjára állította, ahogy az az [első oktatóanyagban](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)is látható.
+Ha még nem hozta létre az erőforráscsoportot, lásd: [Erőforráscsoport létrehozása.](bicep-tutorial-create-first-bicep.md#create-resource-group) A példa feltételezi, hogy a változót a Bicep-fájl elérési útjára beállította, ahogy az az `bicepFile` első [oktatóanyagban is látható.](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A központi telepítési parancsmag futtatásához a Azure PowerShell [legújabb verziójára](/powershell/azure/install-az-ps) van szükség.
+A telepítési parancsmag futtatásához a [](/powershell/azure/install-az-ps) parancsmag legújabb verziójával kell Azure PowerShell.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -76,31 +76,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
+> Ha az üzembe helyezés sikertelen volt, a `verbose` kapcsolóval lekért információ a létrehozott erőforrásokról. A `debug` kapcsolóval további információkhoz jut a hibakereséshez.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
+Az üzembe helyezés ellenőrzéséhez vizsgálja meg az erőforráscsoportot a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
-1. Láthatja, hogy a Storage-fiók erőforrása telepítve van, és ugyanazzal a hellyel rendelkezik, mint az erőforráscsoport.
+1. A bal oldali menüben válassza az **Erőforráscsoportok lehetőséget.**
+1. Válassza ki azt az erőforráscsoportot, amelybe üzembe helyezett.
+1. Láthatja, hogy a tárfiók-erőforrás üzembe lett helyezni, és a helye megegyezik az erőforráscsoport helyével.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
+Ha a következő oktatóanyagra lép, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+Ha most áll le, érdemes törölnie az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
+1. A Azure Portal bal oldali **menüben válassza** az Erőforráscsoport lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
+4. A **felső menüben válassza az** Erőforráscsoport törlése lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy függvényt használt egy paraméter alapértelmezett értékének definiálásához. Ebben az oktatóanyag-sorozatban továbbra is használhatja a functions funkciót. A sorozat végére a rendszer a bicep-fájl minden szakaszába felveszi a függvényeket.
+Ebben az oktatóanyagban egy függvényt használt egy paraméter alapértelmezett értékének definiálása során. Ebben az oktatóanyag-sorozatban továbbra is a függvényeket fogja használni. A sorozat végére függvényeket fog hozzáadni a Bicep-fájl minden szakaszához.
 
 > [!div class="nextstepaction"]
 > [Változók hozzáadása](bicep-tutorial-add-variables.md)

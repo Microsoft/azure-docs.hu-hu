@@ -1,35 +1,35 @@
 ---
-title: Azure-fájlmegosztás biztonsági másolatainak kezelése az Azure CLI-vel
-description: Megtudhatja, hogyan kezelheti és figyelheti Azure Backup által készített Azure-fájlmegosztás felügyeletét és figyelését az Azure CLI használatával.
+title: Azure-fájlmegosztások biztonsági mentésének kezelése az Azure CLI-val
+description: Megtudhatja, hogyan használhatja az Azure CLI-t a biztonsági Azure Backup.
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e389f5cde12734ef4bf0be4ecfba69ba33f5e030
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566452"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773602"
 ---
-# <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure-fájlmegosztás biztonsági másolatainak kezelése az Azure CLI-vel
+# <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure-fájlmegosztások biztonsági mentésének kezelése az Azure CLI-val
 
-Az Azure CLI parancssori felületet biztosít az Azure-erőforrások kezeléséhez. Ez nagyszerű eszköz az Azure-erőforrások használatára szolgáló egyéni automatizálás kialakításához. Ez a cikk bemutatja, hogyan végezheti el a [Azure Backup](./backup-overview.md)által készített biztonsági mentést végző Azure-fájlmegosztás felügyeletére és figyelésére vonatkozó feladatokat. Ezeket a lépéseket a [Azure Portal](https://portal.azure.com/)is végrehajthatja.
+Az Azure CLI parancssori felületeket biztosít az Azure-erőforrások kezeléséhez. Nagyszerű eszköz az Azure-erőforrások használatára vonatkozó egyéni automatizálások létrehozásához. Ez a cikk azt ismerteti, hogyan végezheti el az azure-fájlmegosztások kezeléséhez és monitorozásához szükséges feladatokat, amelyekről biztonsági [Azure Backup.](./backup-overview.md) Ezeket a lépéseket a következővel is [Azure Portal.](https://portal.azure.com/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már rendelkezik [Azure Backup](./backup-overview.md)által készített Azure-fájlmegosztás biztonsági mentésével. Ha még nem rendelkezik ilyennel, tekintse meg [Az Azure-fájlmegosztás biztonsági mentése a parancssori](backup-afs-cli.md) felülettel című témakört a fájlmegosztás biztonsági mentésének konfigurálásához. Ebben a cikkben a következő erőforrásokat használja:
-   -  **Erőforráscsoport**: *azurefiles*
-   -  **RecoveryServicesVault**: *azurefilesvault*
-   -  **Storage-fiók**: *afsaccount*
-   -  **Fájlmegosztás**: *azurefiles*
+Ez a cikk feltételezi, hogy már rendelkezik egy azure-fájlmegosztásról, amelyről biztonsági [Azure Backup.](./backup-overview.md) Ha még nem rendelkezik ilyensel, tekintse meg az Azure-fájlmegosztások biztonsági mentése a [CLI-val](backup-afs-cli.md) a fájlmegosztások biztonsági mentésének konfigurálásával. Ehhez a cikkhez a következő erőforrásokat használja:
+   -  **Erőforráscsoport:** *azurefiles*
+   -  **RecoveryServicesVault:** *azurefilesvault*
+   -  **Tárfiók:** *afsaccount*
+   -  **Fájlmegosztás:** *azurefiles*
   
   [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-   - Az oktatóanyaghoz az Azure CLI 2.0.18 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+   - Ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
 
-A biztonsági mentési vagy visszaállítási műveletek indításakor a Backup szolgáltatás létrehoz egy feladatot a követéshez. A befejezett vagy jelenleg futó feladatok figyeléséhez használja az az [Backup Job List](/cli/azure/backup/job#az-backup-job-list) parancsmagot. A CLI-vel [egy jelenleg futó feladatot is felfüggesztheti](/cli/azure/backup/job#az-backup-job-stop) , vagy [megvárhatja, amíg a feladatok befejeződik](/cli/azure/backup/job#az-backup-job-wait).
+Amikor biztonsági mentési vagy visszaállítási műveleteket indít el, a biztonsági mentési szolgáltatás létrehoz egy nyomkövetési feladatot. A befejezett vagy jelenleg futó feladatok monitorzához használja [az az backup job list](/cli/azure/backup/job#az_backup_job_list) parancsmagot. A CLI-val felfüggeszthet egy jelenleg futó feladatot, vagy megvárhatja, amíg [egy feladat befejeződik.](/cli/azure/backup/job#az_backup_job_wait) [](/cli/azure/backup/job#az_backup_job_stop)
 
-A következő példa a *azurefilesvault* Recovery Services-tároló biztonsági mentési feladatainak állapotát jeleníti meg:
+Az alábbi példa az *azurefilesvault* Recovery Services-tároló biztonsági mentési feladatának állapotát jeleníti meg:
 
 ```azurecli-interactive
 az backup job list --resource-group azurefiles --vault-name azurefilesvault
@@ -90,26 +90,26 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 ]
 ```
 
-## <a name="modify-policy"></a>Házirend módosítása
+## <a name="modify-policy"></a>Szabályzat módosítása
 
-A biztonsági mentési szabályzat módosításával módosíthatja a biztonsági mentési gyakoriságot vagy a megőrzési tartományt az [az Backup Item set-Policy](/cli/azure/backup/item#az-backup-item-set-policy)paranccsal.
+A biztonsági mentési szabályzat módosításával módosíthatja a biztonsági mentés gyakoriságát vagy a megőrzési tartományt [az az backup item set-policy használatával.](/cli/azure/backup/item#az_backup_item_set_policy)
 
-A szabályzat módosításához adja meg a következő paramétereket:
+A szabályzatot a következő paraméterek meghatározásával módosíthatja:
 
-* **--Container-Name**: a fájlmegosztást tároló Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
-* **--Name**: annak a fájlmegosztásnak a neve, amelyre módosítani szeretné a szabályzatot. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
-* **--Policy-Name**: a fájlmegosztás számára beállítani kívánt biztonsági mentési szabályzat neve. A tár összes szabályzatának megtekintéséhez használja az [az biztonsági mentési](/cli/azure/backup/policy#az-backup-policy-list) szabályzatok listáját.
+* **--container-name:** A fájlmegosztást tároló tárfiók neve. A tároló **nevének vagy** **rövid** nevének lekéréséhez használja az az backup [container list](/cli/azure/backup/container#az_backup_container_list) parancsot.
+* **--name:** Annak a fájlmegosztásnak a neve, amelyhez módosítani szeretné a házirendet. A biztonsági **mentési** elem **nevének** vagy rövid nevének lekéréséhez használja [az az backup item list](/cli/azure/backup/item#az_backup_item_list) parancsot.
+* **--policy-name:** A fájlmegosztáshoz beállítani kívánt biztonsági mentési házirend neve. Az az [backup policy list](/cli/azure/backup/policy#az_backup_policy_list) használatával megtekintheti a tároló összes szabályzatát.
 
-A következő példa a afsaccount *schedule2* található *azurefiles* -fájlmegosztás biztonsági mentési szabályzatát állítja be  .
+Az alábbi példa az *afsaccount* tárfiókban található *azurefiles* fájlmegosztás *schedule2* biztonsági mentési szabályzatát állítja be.
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --name "AzureFileShare;azurefiles" --backup-management-type azurestorage --out table
 ```
 
-Az előző parancsot az alábbi két további paraméter megadásával is futtathatja a tároló és az elemek felhasználóbarát neveivel:
+Az előző parancsot a tároló és az elem rövid nevének használatával is futtathatja a következő két paraméter megszabadításával:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--munkaterhelés-Type**: *azurefileshare*
+* **--backup-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -121,36 +121,36 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-A kimenet **Name** attribútuma a Change Policy művelethez a Backup szolgáltatás által létrehozott feladatok neve. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
+A **kimenet Name** attribútuma megegyezik a biztonsági mentési szolgáltatás által a módosítási szabályzat műveletéhez létrehozott feladat nevével. A feladat állapotának nyomon követéséhez használja [az az backup job show](/cli/azure/backup/job#az_backup_job_show) parancsmagot.
 
 ## <a name="stop-protection-on-a-file-share"></a>Egy fájlmegosztás védelmének leállítása
 
 Az Azure-fájlmegosztások védelmét kétféle módon szüntetheti meg:
 
-* Állítsa le az összes jövőbeli biztonsági mentési feladatot, és *törölje* az összes helyreállítási pontot.
-* Állítsa le az összes jövőbeli biztonsági mentési feladatot, de *hagyja* meg a helyreállítási pontokat.
+* Állítsa le az összes jövőbeli biztonsági mentési feladat, *és törölje az* összes helyreállítási pontot.
+* Állítsa le az összes jövőbeli biztonsági mentési feladat, de *hagyja meg a* helyreállítási pontokat.
 
-Előfordulhat, hogy a tárolóban lévő helyreállítási pontok elhagyása után a rendszer megőrzi a Azure Backup által létrehozott mögöttes pillanatképeket. Ha szeretné, a helyreállítási pontok elhagyása lehetőséggel később is visszaállíthatja a fájlmegosztást. A helyreállítási pontok elhagyása költségével kapcsolatos további információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/storage/files). Ha úgy dönt, hogy törli az összes helyreállítási pontot, a fájlmegosztás nem állítható vissza.
+Előfordulhat, hogy a helyreállítási pontok a tárolóban való meghagyása költségeket is jár, mert a rendszer megőrzi az Azure Backup által létrehozott mögöttes pillanatképeket. A helyreállítási pontok elhagyása a fájlmegosztás későbbi visszaállításának lehetősége, ha szeretné. A helyreállítási pontok elhagyási költségeivel kapcsolatos információkért tekintse meg a [díjszabás részleteit.](https://azure.microsoft.com/pricing/details/storage/files) Ha úgy dönt, hogy törli az összes helyreállítási pontot, nem tudja visszaállítani a fájlmegosztást.
 
-A fájlmegosztás védelmének leállításához adja meg a következő paramétereket:
+A fájlmegosztás védelmének leállításhoz adja meg a következő paramétereket:
 
-* **--Container-Name**: a fájlmegosztást tároló Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
-* **--Item-Name**: azon fájlmegosztás neve, amelynek a védelmét le szeretné állítani. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
+* **--container-name:** A fájlmegosztást tároló tárfiók neve. A tároló **nevének vagy** **rövid** nevének lekéréséhez használja az az backup [container list](/cli/azure/backup/container#az_backup_container_list) parancsot.
+* **--item-name:** Annak a fájlmegosztásnak a neve, amelynek védelmét le szeretné állítani. A biztonsági **mentési** elem **nevének** vagy rövid nevének lekéréséhez használja [az az backup item list](/cli/azure/backup/item#az_backup_item_list) parancsot.
 
-### <a name="stop-protection-and-retain-recovery-points"></a>Védelem leállítása és helyreállítási pontok megőrzése
+### <a name="stop-protection-and-retain-recovery-points"></a>Védelem leállítása és a helyreállítási pontok megőrzése
 
-Ha le szeretné állítani a védelmet az adatmegőrzés során, használja az az [Backup Protection disable](/cli/azure/backup/protection#az-backup-protection-disable) parancsmagot.
+Ha le szeretné állítani a védelmet az adatok megőrzése közben, használja [az az backup protection disable](/cli/azure/backup/protection#az_backup_protection_disable) parancsmagot.
 
-A következő példa leállítja a *azurefiles* -fájlmegosztás védelmét, de megőrzi az összes helyreállítási pontot.
+Az alábbi példa leállítja az *azurefiles* fájlmegosztás védelmét, de megtartja az összes helyreállítási pontot.
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --out table
 ```
 
-Az előző parancsot az alábbi két további paraméter megadásával is futtathatja a tároló és az elemek rövid nevével:
+Az előző parancsot a tároló és az elem rövid nevének használatával is futtathatja a következő két további paraméter megtételével:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--munkaterhelés-Type**: *azurefileshare*
+* **--backup-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -162,22 +162,22 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-A kimenetben található **Name** attribútum a stop Protection művelethez tartozó Backup szolgáltatás által létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
+A **kimenet Name** attribútuma megegyezik a biztonsági mentési szolgáltatás által a leállítási védelmi művelethez létrehozott feladat nevével. A feladat állapotának nyomon követéséhez használja [az az backup job show](/cli/azure/backup/job#az_backup_job_show) parancsmagot.
 
-### <a name="stop-protection-without-retaining-recovery-points"></a>A védelem leállítása a helyreállítási pontok megőrzése nélkül
+### <a name="stop-protection-without-retaining-recovery-points"></a>Védelem leállítása a helyreállítási pontok megőrzése nélkül
 
-A védelem a helyreállítási pontok megőrzése nélkül történő leállításához használja az az [Backup Protection disable](/cli/azure/backup/protection#az-backup-protection-disable) parancsmagot a **delete-Backup-retain (Törlés – biztonsági mentés** ) beállítással az **igaz** értékre.
+Ha le szeretné állítani a védelmet a helyreállítási pontok megőrzése nélkül, használja [az az backup protection disable](/cli/azure/backup/protection#az_backup_protection_disable) parancsmagot, és állítsa a **delete-backup-data** beállítást **true (igaz) értékre.**
 
-A következő példa leállítja a *azurefiles* -fájlmegosztás védelmét a helyreállítási pontok megőrzése nélkül.
+Az alábbi példa leállítja az *azurefiles* fájlmegosztás védelmét a helyreállítási pontok megőrzése nélkül.
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --delete-backup-data true --out table
 ```
 
-Az előző parancsot az alábbi két további paraméter megadásával is futtathatja a tároló és az elemek rövid nevével:
+Az előző parancsot a tároló és az elem rövid nevének használatával is futtathatja a következő két további paraméter megtételével:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--munkaterhelés-Type**: *azurefileshare*
+* **--backup-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -185,24 +185,24 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 ## <a name="resume-protection-on-a-file-share"></a>Egy fájlmegosztás védelmének folytatása
 
-Ha leállította egy Azure-fájlmegosztás védelmét, de megtartotta a helyreállítási pontokat, később is folytathatja a védelmet. Ha nem tartja meg a helyreállítási pontokat, nem folytathatja a védelmet.
+Ha leállította egy Azure-fájlmegosztás védelmét, de megőrizte a helyreállítási pontokat, később folytathatja a védelmet. Ha nem őrzi meg a helyreállítási pontokat, nem folytathatja a védelmet.
 
 A fájlmegosztás védelmének folytatásához adja meg a következő paramétereket:
 
-* **--Container-Name**: a fájlmegosztást tároló Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
-* **--Item-Name**: azon fájlmegosztás neve, amelynek a védelmét folytatni kívánja. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
-* **--Policy-Name**: annak a biztonsági mentési házirendnek a neve, amelyre a fájlmegosztás védelmét folytatni kívánja.
+* **--container-name:** A fájlmegosztást tároló tárfiók neve. A tároló **nevének vagy** **rövid** nevének lekéréséhez használja az az backup [container list](/cli/azure/backup/container#az_backup_container_list) parancsot.
+* **--item-name:** Annak a fájlmegosztásnak a neve, amelynek védelmét folytatni szeretné. A biztonsági **mentési** elem **nevének** vagy rövid nevének lekéréséhez használja [az az backup item list](/cli/azure/backup/item#az_backup_item_list) parancsot.
+* **--policy-name:** Annak a biztonsági mentési házirendnek a neve, amelyhez folytatni szeretné a fájlmegosztás védelmét.
 
-Az alábbi példa az az [Backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) parancsmagot használja a *azurefiles* -fájlmegosztás védelmének folytatásához a *schedule1* biztonsági mentési szabályzatának használatával.
+Az alábbi példa az [az backup protection resume](/cli/azure/backup/protection#az_backup_protection_resume) parancsmagot használja az *azurefiles* fájlmegosztás védelmének folytatásához a *schedule1* biztonsági mentési szabályzat használatával.
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
 ```
 
-Az előző parancsot az alábbi két további paraméter megadásával is futtathatja a tároló és az elemek rövid nevével:
+Az előző parancsot a tároló és az elem rövid nevének használatával is futtathatja a következő két további paraméter megtételével:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--munkaterhelés-Type**: *azurefileshare*
+* **--backup-management-type:** *azurestorage*
+* **--workload-type:** *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -214,23 +214,23 @@ Name                                  ResourceGroup
 75115ab0-43b0-4065-8698-55022a234b7f  azurefiles
 ```
 
-A kimenetben a **Name** attribútum a Backup szolgáltatás által a védelmi művelet folytatásához létrehozott feladatok neve. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
+A **kimenet Name** attribútuma megegyezik a biztonsági mentési szolgáltatás által a védelmi folytatási művelethez létrehozott feladat nevével. A feladat állapotának nyomon követéséhez használja [az az backup job show](/cli/azure/backup/job#az_backup_job_show) parancsmagot.
 
-## <a name="unregister-a-storage-account"></a>Storage-fiók regisztrációjának törlése
+## <a name="unregister-a-storage-account"></a>Tárfiók regisztrációjának a regisztrációja
 
-Ha egy adott Storage-fiókban lévő fájlmegosztást egy másik Recovery Services-tárolóval szeretne védelemmel ellátni, először állítsa le a Storage-fiókban lévő [összes fájlmegosztás védelmét](#stop-protection-on-a-file-share) . Ezután törölje a fiók regisztrációját a védelemhez jelenleg használt Recovery Services-tárból.
+Ha egy adott tárfiókban található fájlmegosztásokat egy másik Recovery [](#stop-protection-on-a-file-share) Services-tárolóval szeretné védeni, először állítsa le a tárfiókban található összes fájlmegosztás védelmét. Ezután válassza ki a fiók regisztrációját a védelemhez jelenleg használt Recovery Services-tárolóból.
 
-Meg kell adnia egy tároló nevét a Storage-fiók regisztrációjának megszüntetéséhez. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
+Meg kell adnia egy tárolónevet a tárfiók regisztrációjának a regisztrációjának a regisztrációja nélkül. A tároló **nevének vagy** **rövid** nevének lekéréséhez használja az az backup [container list](/cli/azure/backup/container#az_backup_container_list) parancsot.
 
-Az alábbi példa megszünteti a *afsaccount* Storage-fiók *azurefilesvault* való regisztrációját az az [Backup Container unregister](/cli/azure/backup/container#az-backup-container-unregister) parancsmag használatával.
+Az alábbi példa az [az backup container unregister](/cli/azure/backup/container#az_backup_container_unregister) parancsmag használatával nem regisztrálja az *afsaccount* tárfiókot az *azurefilesvault* fájlból.
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table
 ```
 
-Az előző parancsmagot a tároló rövid nevével is futtathatja a következő további paraméter megadásával:
+Az előző parancsmagot a tároló rövid nevének használatával is futtathatja a következő további paraméter megadva:
 
-* **--Backup-Management-Type**: *azurestorage*
+* **--backup-management-type:** *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table
@@ -238,4 +238,4 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: az [Azure-fájlmegosztás biztonsági mentésének hibája](troubleshoot-azure-files.md).
+További információ: [Azure-fájlmegosztások biztonsági mentésének hibaelhárítása.](troubleshoot-azure-files.md)
