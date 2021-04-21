@@ -1,76 +1,76 @@
 ---
 title: Diagnosztikai naplózás
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató lépésről lépésre bemutatja, hogyan engedélyezheti az Azure kognitív szolgáltatás diagnosztikai naplózását. Ezek a naplók részletes és gyakori információkat biztosítanak egy olyan erőforrás működéséről, amely az azonosításhoz és a hibakereséshez használatos.
+description: Ez az útmutató részletes útmutatást nyújt az Azure Cognitive Services diagnosztikai naplózásának engedélyezéséhez. Ezek a naplók részletes, gyakori adatokat biztosítanak a problémák azonosításához és hibakereséséhez használt erőforrások működéséhez.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a78e233a41bf3b6682f52bac912528d6bcab76c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100595357"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816333"
 ---
-# <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnosztikai naplózás engedélyezése az Azure Cognitive Services
+# <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnosztikai naplózás engedélyezése a Azure Cognitive Services
 
-Ez az útmutató lépésről lépésre bemutatja, hogyan engedélyezheti az Azure kognitív szolgáltatás diagnosztikai naplózását. Ezek a naplók részletes és gyakori információkat biztosítanak egy olyan erőforrás működéséről, amely az azonosításhoz és a hibakereséshez használatos. A folytatás előtt rendelkeznie kell egy olyan Azure-fiókkal, amely rendelkezik előfizetéssel legalább egy olyan kognitív szolgáltatáshoz, mint például a [Bing Web Search](./bing-web-search/overview.md), a [Speech Services](./speech-service/overview.md)vagy a [Luis](./luis/what-is-luis.md).
+Ez az útmutató részletes útmutatást nyújt az Azure Cognitive Services diagnosztikai naplózásának engedélyezéséhez. Ezek a naplók részletes, gyakori adatokat biztosítanak a problémák azonosításához és hibakereséséhez használt erőforrások működéséhez. A folytatás előtt olyan Azure-fiókkal kell rendelkezik, amely legalább egy Cognitive Services-előfizetéssel rendelkezik, például [Bing Web Search,](./bing-web-search/overview.md) [Speech Services](./speech-service/overview.md)vagy [LUIS.](./luis/what-is-luis.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A diagnosztikai naplózás engedélyezéséhez a naplófájlok tárolásához valahol szüksége lesz. Ez az oktatóanyag az Azure Storage és a Log Analytics használatát ismerteti.
+A diagnosztikai naplózás engedélyezéséhez szüksége lesz egy helyre a naplóadatok tárolására. Ez az oktatóanyag az Azure Storage és a Log Analytics szolgáltatást használja.
 
-* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – a házirend-naplózás, a statikus elemzés vagy a biztonsági mentés diagnosztikai naplóinak megőrzése. A Storage-fióknak nem kell ugyanahhoz az előfizetéshez tartoznia, mint az erőforrás-kibocsátó naplókat, ha a beállítást konfiguráló felhasználó rendelkezik mindkét előfizetéshez megfelelő Azure RBAC-hozzáféréssel.
-* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
-
-> [!NOTE]
-> További konfigurációs beállítások érhetők el. További információ: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/essentials/platform-logs-overview.md).
-
-## <a name="enable-diagnostic-log-collection"></a>Diagnosztikai naplók gyűjtésének engedélyezése  
-
-Kezdjük a diagnosztikai naplózás engedélyezésével a Azure Portal használatával.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – Megőrzi a diagnosztikai naplókat a szabályzatok naplózásához, a statikus elemzéshez vagy a biztonsági mentéshez. A tárfióknak nem kell ugyanabban az előfizetésben lennie, mint a naplókat kibocsátó erőforrásnak, ha a beállítást konfiguráló felhasználó megfelelő Azure RBAC-hozzáféréssel rendelkezik mindkét előfizetéshez.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – Egy rugalmas naplókeresési és -elemző eszköz, amely lehetővé teszi az Azure-erőforrások által létrehozott nyers naplók elemzését.
 
 > [!NOTE]
-> Ha engedélyezni szeretné a szolgáltatást a PowerShell vagy az Azure CLI használatával, kövesse az [Azure-erőforrások adatainak összegyűjtése és felhasználása](../azure-monitor/essentials/platform-logs-overview.md)című részben található utasításokat.
+> További konfigurációs beállítások érhetők el. További információ: Naplóadatok gyűjtése és [felhasználása az Azure-erőforrásokból.](../azure-monitor/essentials/platform-logs-overview.md)
 
-1. Lépjen az Azure Portalra. Ezután keresse meg és válassza ki a Cognitive Services erőforrást. Például a Bing Web Search előfizetése.   
-2. Ezután a bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a **diagnosztikai beállítások** lehetőséget. Ez a képernyő az erőforráshoz korábban létrehozott összes diagnosztikai beállítást tartalmazza.
-3. Ha egy korábban létrehozott erőforrást szeretne használni, kiválaszthatja most. Ellenkező esetben válassza a **+ diagnosztikai beállítás hozzáadása** elemet.
-4. Adja meg a beállítás nevét. Ezután válassza az **archiválás egy Storage-fiókba** lehetőséget, majd **küldje el a log Analyticsnek**.
-5. Ha a rendszer kéri a konfigurálását, válassza ki azt a Storage-fiókot és OMS-munkaterületet, amelyet a diagnosztikai naplók tárolására kíván használni. **Megjegyzés**: Ha nem rendelkezik Storage-fiókkal vagy OMS-munkaterülettel, kövesse az utasításokat, és hozzon létre egyet.
-6. Válassza a **naplózás**, a **RequestResponse** és a **AllMetrics** lehetőséget. Ezután állítsa be a megőrzési időszakot a diagnosztikai napló adataihoz. Ha egy adatmegőrzési szabály értéke nulla, a rendszer határozatlan ideig tárolja az adott naplóhoz tartozó eseményeket.
+## <a name="enable-diagnostic-log-collection"></a>Diagnosztikai naplógyűjtés engedélyezése  
+
+Kezdjük a diagnosztikai naplózás engedélyezésével a Azure Portal.
+
+> [!NOTE]
+> Ha a PowerShell vagy az Azure CLI használatával szeretné engedélyezni ezt a funkciót, kövesse a Naplóadatok gyűjtése és felhasználása az [Azure-erőforrásokból útmutatót.](../azure-monitor/essentials/platform-logs-overview.md)
+
+1. Lépjen az Azure Portalra. Ezután keresse meg és válassza ki Cognitive Services erőforrást. Például az előfizetése a Bing Web Search.   
+2. Ezután a bal oldali navigációs menüben keresse meg a **Figyelés elemet,** és válassza a **Diagnosztikai beállítások lehetőséget.** Ezen a képernyőn az erőforrás összes korábban létrehozott diagnosztikai beállítása látható.
+3. Ha korábban létrehozott erőforrást szeretne használni, most kiválaszthatja. Ellenkező esetben válassza **a + Diagnosztikai beállítás hozzáadása lehetőséget.**
+4. Adja meg a beállítás nevét. Ezután válassza **az Archive to a storage account (Archiválás tárfiókba) és a** Send to log Analytics **(Küldés a Log Analyticsbe) lehetőséget.**
+5. Amikor a rendszer a konfigurálás során kéri, válassza ki a diagnosztikai naplók tárolására használni kívánt tárfiókot és OMS-munkaterületet. **Megjegyzés:** Ha nincs tárfiókja vagy OMS-munkaterülete, kövesse az utasításokat a fiók létrehozásához.
+6. Válassza **az Audit**, **RequestResponse**, és **AllMetrics lehetőséget.** Ezután állítsa be a diagnosztikai naplóadatok megőrzési időszakát. Ha a megőrzési szabályzat nulla, az arra a naplózási kategóriára vonatkozó események határozatlan ideig tárolódnak.
 7. Kattintson a **Mentés** gombra.
 
-Akár két órát is igénybe vehet, mielőtt a naplózási szolgáltatás elérhetővé válik a lekérdezéshez és az elemzéshez. Ezért ne aggódjon, ha azonnal nem lát semmit.
+A naplózási adatok lekérdezése és elemzése akár két órát is igénybe vehet. Ne aggódjon, ha nem lát semmit azonnal.
 
 ## <a name="view-and-export-diagnostic-data-from-azure-storage"></a>Diagnosztikai adatok megtekintése és exportálása az Azure Storage-ból
 
-Az Azure Storage egy robusztus objektum-tárolási megoldás, amely nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. Ebben a szakaszban megtudhatja, hogyan kérdezheti le a Storage-fiókját az összes tranzakcióhoz egy 30 napos időkereten belül, és exportálhatja az adatait az Excelbe.
+Az Azure Storage egy robusztus objektumtárolási megoldás, amely nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. Ebben a szakaszban megtudhatja, hogyankérdezheti le a tárfiókban a 30 napos időszakra vonatkozó összes tranzakciót, és exportálhatja az adatokat az Excelbe.
 
-1. A Azure Portal keresse meg a legutóbbi szakaszban létrehozott Azure Storage-erőforrást.
-2. A bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a **metrikák** lehetőséget.
-3. A lekérdezés konfigurálásához használja a rendelkezésre álló legördülő listát. Ebben a példában beállítjuk az időtartományot az **utolsó 30 napra** , a metrikát pedig a **tranzakcióra**.
-4. A lekérdezés befejezésekor a tranzakció vizualizációja jelenik meg az elmúlt 30 napban. Az adatexportáláshoz használja az oldal tetején található **Exportálás az Excel programba** gombot.
+1. A Azure Portal keresse meg az előző szakaszban létrehozott Azure Storage-erőforrást.
+2. A bal oldali navigációs menüben keresse meg a **Figyelés elemet, és** válassza a **Metrikák lehetőséget.**
+3. Az elérhető legördülő menük használatával konfigurálhatja a lekérdezést. Ebben a példában az időtartományt az Elmúlt **30** nap, a metrikát pedig a Transaction (Tranzakció) **beállításra állítva adhatja meg.**
+4. Ha a lekérdezés befejeződött, az elmúlt 30 nap tranzakciós vizualizációja látható. Az adatok exportáláshoz használja az oldal tetején található Exportálás **Excelbe** gombot.
 
-További információ az [Azure Storage](../storage/blobs/storage-blobs-introduction.md)-ban található diagnosztikai információkról.
+További információ az Azure Storage diagnosztikai [adataival kapcsolatos funkciókról.](../storage/blobs/storage-blobs-introduction.md)
 
 ## <a name="view-logs-in-log-analytics"></a>Naplók megtekintése a Log Analyticsben
 
-Kövesse ezeket az utasításokat az erőforrás log Analytics-adatainak megismeréséhez.
+Kövesse ezeket az utasításokat az erőforrás naplóelemzési adatainak feltárására.
 
-1. A Azure Portalban keresse meg és válassza ki a **log Analytics** elemet a bal oldali navigációs menüből.
+1. A Azure Portal bal oldali navigációs menüben keresse meg és válassza ki a **Log Analytics** elemet.
 2. Keresse meg és válassza ki a diagnosztika engedélyezésekor létrehozott erőforrást.
-3. Az **általános** területen keresse meg és válassza ki a **naplókat**. Ezen az oldalon futtathat lekérdezéseket a naplókon.
+3. Az **Általános alatt** keresse meg és válassza a Naplók **lehetőséget.** Ezen az oldalon lekérdezéseket futtathat a naplókra.
 
 ### <a name="sample-queries"></a>Mintalekérdezések
 
-Íme néhány alapszintű Kusto-lekérdezés, amellyel megismerheti a naplózási adatait.
+Íme néhány alapszintű Kusto-lekérdezés, amelyek a naplóadatok feltárására használhatók.
 
-A lekérdezés futtatása az Azure Cognitive Services összes diagnosztikai naplójában egy adott időszakra vonatkozóan:
+Futtassa ezt a lekérdezést a Azure Cognitive Services megadott időszakra vonatkozó összes diagnosztikai naplóhoz:
 
 ```kusto
 AzureDiagnostics
@@ -85,14 +85,14 @@ AzureDiagnostics
 | take 10
 ```
 
-A lekérdezés futtatásával csoportosíthatja a műveleteket **erőforrás** szerint:
+Futtassa ezt a lekérdezést a műveletek erőforrás szerint való **csoportosításhoz:**
 
 ```kusto
 AzureDiagnostics
 | where ResourceProvider == "MICROSOFT.COGNITIVESERVICES" |
 summarize count() by Resource
 ```
-A lekérdezés futtatásával megkeresheti a művelet végrehajtásához szükséges átlagos időt:
+Futtassa ezt a lekérdezést a művelet végrehajtásához szükséges átlagos idő megkereséhez:
 
 ```kusto
 AzureDiagnostics
@@ -101,7 +101,7 @@ AzureDiagnostics
 by OperationName
 ```
 
-Ennek a lekérdezésnek a futtatásával megtekintheti a műveletek mennyiségét a OperationName és a Counts dobozolni megosztva az összes 10-es értéknél.
+Futtassa ezt a lekérdezést a műveletek műveletmennyiségének OperationName szerint felosztásban való megtekintéséhez, 10-edikre rekeszes számokkal.
 
 ```kusto
 AzureDiagnostics
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa el a Microsoft Azure [metrikáinak áttekintését](../azure-monitor/data-platform.md) , valamint az [Azure diagnosztikai naplók áttekintését ismertető](../azure-monitor/essentials/platform-logs-overview.md) cikket.
-* Az Event hubok megismeréséhez olvassa el az alábbi cikkeket:
+* A naplózás engedélyezésének, valamint a különböző Azure-szolgáltatások által támogatott metrikáknak [](../azure-monitor/data-platform.md) és naplókategóriáknak a megtekintéséhez olvassa el a metrikák áttekintését az Microsoft Azure-ban és az [Azure Diagnosztikai](../azure-monitor/essentials/platform-logs-overview.md) naplók áttekintése cikket.
+* Az event hubsról az alábbi cikkekben olvashat:
   * [Mi az Azure Event Hubs?](../event-hubs/event-hubs-about.md)
   * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
-* [Az Azure Storage-ból letölthető mérőszámok és diagnosztikai naplók](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)olvashatók.
-* Olvassa el [a Azure monitor naplókban végzett keresések ismertetése](../azure-monitor/logs/log-query-overview.md)című témakört.
+* Olvassa el [a Metrikák és diagnosztikai naplók letöltése az Azure Storage-ból szakaszt.](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)
+* Olvassa [el a Naplókeresések a naplókban Azure Monitor cikkeket.](../azure-monitor/logs/log-query-overview.md)

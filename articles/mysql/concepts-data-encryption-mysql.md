@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: bed0ccbc25c6fcc43d8fb0948182f229bce63edf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8e40cf9dac496266f67ad94e1e65db01e42f9d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764710"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816835"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL felhasználó által kezelt kulccsal való adattitkosítás
 
 Az Azure Database for MySQL ügyfél által felügyelt kulcsokkal történő titkosítása lehetővé teszi a saját kulcs használatát (BYOK) az inaktív adatok védelméhez. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
 
-Az ügyfél által felügyelt kulcsokkal való adattitkosítás Azure Database for MySQL a kiszolgáló szintjén van beállítva. Egy adott kiszolgálóhoz egy ügyfél által kezelt kulcs, a kulcstitkosítási kulcs (KEK) szolgál a szolgáltatás által használt adattitkosítási kulcs (DEK) titkosítására. A KEK egy aszimmetrikus kulcs, amely egy ügyfél tulajdonában lévő és ügyfél által felügyelt Azure Key Vault [tárol.](../key-vault/general/security-overview.md) A kulcstitkosítási kulcsot (KEK) és az adattitkosítási kulcsot (DEK) a cikk későbbi, későbbi, részletes leírása ismerteti.
+Az ügyfél által felügyelt kulcsokkal való adattitkosítás Azure Database for MySQL a kiszolgáló szintjén van beállítva. Egy adott kiszolgálóhoz egy ügyfél által kezelt kulcs, a kulcstitkosítási kulcs (KEK) szolgál a szolgáltatás által használt adattitkosítási kulcs (DEK) titkosítására. A KEK egy aszimmetrikus kulcs, amely egy ügyfél tulajdonában lévő és ügyfél által felügyelt Azure Key Vault [tárol.](../key-vault/general/security-features.md) A kulcstitkosítási kulcsot (KEK) és az adattitkosítási kulcsot (DEK) a cikk későbbi, későbbi, részletes leírása ismerteti.
 
 Key Vault egy felhőalapú, külső kulcskezelő rendszer. Magas rendelkezésre áll, és skálázható, biztonságos tárolást biztosít az RSA titkosítási kulcsok számára, opcionálisan a FIPS 140-2 2. szintje szerint ellenőrzött hardveres biztonsági modulok (HSM-ek) segítségével. Nem engedélyezi a tárolt kulcsokhoz való közvetlen hozzáférést, de titkosítási és visszafejtési szolgáltatásokat biztosít az engedélyezett entitások számára. Key Vault létrehozhatja, importálhatja a kulcsot, vagy átviheti egy helyszíni [HSM-eszközről.](../key-vault/keys/hsm-protected-keys.md)
 
