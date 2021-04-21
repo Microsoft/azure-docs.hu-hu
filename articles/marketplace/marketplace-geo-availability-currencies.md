@@ -1,34 +1,34 @@
 ---
-title: A földrajzi Elérhetőség és a pénznemek támogatása a Microsoft kereskedelmi piactéren
-description: A földrajzi Elérhetőség és a pénznemek támogatása a kereskedelmi piactéren lebonyolított tranzakciók esetében
+title: Földrajzi rendelkezésre állás és pénznemtámogatás a Microsoft kereskedelmi piacterén
+description: A földrajzi rendelkezésre állás és a pénznemtámogatás a kereskedelmi piactéren elérhető tranzakciókhoz
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
-ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4833a5779b9c9d5edcbbe70045f2ba2ca2d72ebe
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493033"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812533"
 ---
-# <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
+# <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Földrajzi rendelkezésre állás és pénznemtámogatás a kereskedelmi piactérhez
 
-## <a name="supported-geographic-locations"></a>Támogatott földrajzi helyszínek
+## <a name="supported-geographic-locations"></a>Támogatott földrajzi helyek
 
-A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. A következő táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
+A kereskedelmi piactéri ajánlatok az ügyfél számlázási címe alapján 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben teljesíthatók. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, [az ISO 3166 kétjegyű](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)alfakódját és a hozzárendelt pénznemet.
 
-A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Centerben, így ugyanezen pénznemben számlázhatja őket. Erről a [Gyakori kérdések](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf)között találhat további információt.
+A CSP vásárolhat egy ajánlatot Partnerközpont a végfelhasználó pénznemében, így ugyanabban a pénznemben számlázhatja ki őket. Erről további információt a következő gyakori [kérdések tartalmaznak:](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf).
 
-|   Ország/régió neve               |   ISO-2   |   Pénznem</br>(Az összes ajánlat típusa)  |    Pénznem</br>(Csak tanácsadási szolgáltatás ajánlata)    |
+|   Ország/régió neve               |   ISO-2   |   Pénznem</br>(Minden ajánlattípus)  |    Pénznem</br>(Csak tanácsadói szolgáltatásra van lehetőség)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|
 | Afganisztán                         | AF        | USD          | AFN, EUR, USD |
-| Albánia                             | AL        | USD          | ÖSSZES, EUR, USD |
+| Albánia                             | AL        | USD          | ALL, EUR, USD |
 | Algéria                             | DZ        | USD          | DZD, EUR, USD |
 | Andorra                             | AD        | EUR          | EUR, USD |
-| Angola                              | AO        | USD          | ALAPSZABÁLYT, EUR, USD |
+| Angola                              | AO        | USD          | AOA, EUR, USD |
 | Argentína                           | AR        | USD          | ARS, EUR, USD |
 | Örményország                             | AM        | USD          | AMD, EUR, USD |
 | Ausztrália                           | AU        | AUD          | AUD, EUR, USD |
@@ -36,11 +36,11 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Azerbajdzsán                          | AZ        | USD          | AZN, EUR, USD |
 | Bahrein                             | BH        | USD          | BHD, EUR, USD |
 | Banglades                          | BD        | USD          | BDT, EUR, USD |
-| Barbados                            | BB        | USD          | BBD, EUR, USD |
+| Barbados                            | BB        | USD          | ÉVA, EUR, USD |
 | Belarusz                             | BY        | USD          | BYN, EUR, USD |
 | Belgium                             | BE        | EUR          | EUR, USD  |
 | Belize                              | BZ        | USD          | BZD, EUR, USD |
-| Bermuda                             | BM        | USD          | BMD, EUR, USD |
+| Bermuda                             | Bm        | USD          | BMD, EUR, USD |
 | Bolívia                             | BO        | USD          | BOB, EUR, USD |
 | Bosznia-Hercegovina              | BA        | USD          | BAM, EUR, USD |
 | Botswana                            | BW        | USD          | BWP, EUR, USD |
@@ -57,9 +57,9 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Costa Rica                          | CR        | USD          | CRC, EUR, USD |
 | Côte d'Ivoire                       | CI        | USD          | EUR, USD, XOF |
 | Horvátország                             | HR        | EUR          | EUR, HRK, USD |
-| Curaçao                             | CW        | USD          | ANG, EUR, USD |
+| Curaçao                             | Cw        | USD          | ANG, EUR, USD |
 | Ciprus                              | CY        | EUR          | EUR, USD  |
-| Csehország                             | CZ        | EUR          | CZK, EUR, USD |
+| Csehország                             | CZ        | EUR          | FOGK, EUR, USD |
 | Dánia                             | DK        | DKK          | DKK, EUR, USD |
 | Dominikai Köztársaság                  | DO        | USD          | DOP, EUR, USD |
 | Ecuador                             | EC        | USD          | EUR, USD |
@@ -67,18 +67,18 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Salvador                         | SV        | USD          | EUR, USD |
 | Észtország                             | EE        | EUR          | EUR, USD |
 | Etiópia                            | ET        | USD          | ETB, EUR, USD |
-| Feröer szigetek                       | UTCÁN        | DKK          | DKK, EUR, USD |
+| Feröer szigetek                       | FO        | DKK          | DKK, EUR, USD |
 | Fidzsi                                | FJ        | AUD          | AUD, EUR, FJD, USD |
 | Finnország                             | FI        | EUR          | EUR, USD |
 | Franciaország                              | JK        | EUR          | EUR, USD |
-| Grúzia                             | GE        | USD          | EUR, GÉL, USD |
+| Grúzia                             | GE        | USD          | EUR, USD, USD |
 | Németország                             | DE        | EUR          | EUR, USD |
 | Ghána                               | GH        | USD          | EUR, GHS, USD |
 | Görögország                              | GR        | EUR          | EUR, USD |
 | Guatemala                           | GT        | USD          | EUR, GTQ, USD |
 | Honduras                            | HN        | USD          | EUR, HNL, USD |
 | Hongkong (KKT)                       | HK        | USD          | EUR, HKD, USD |
-| Magyarország                             | HU        | EUR          | EUR, HUF, USD |
+| Magyarország                             | HU        | EUR          | EUR, USD, USD |
 | Izland                             | IS        | EUR          | EUR, ISK, USD |
 | India                               | IN        | INR          | EUR, INR, USD |
 | Indonézia                           | ID (Azonosító)        | USD          | EUR, IDR, USD |
@@ -91,9 +91,9 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Jordánia                              | JO        | USD          | EUR, JOD, USD |
 | Kazahsztán                          | KZ        | USD          | EUR, KZT, USD |
 | Kenya                               | KE        | USD          | EUR, KES, USD |
-| Dél-Korea                       | KR        | KRW          | EUR, KRW, USD |
-| Kuvait                              | KW        | USD          | EUR, KWD, USD |
-| Kirgizisztán                          | KG        | USD          | EUR, KG, USD |
+| Dél-Korea (Dél-Korea)                       | KR        | KRW          | EUR, KRW, USD |
+| Kuvait                              | KW        | USD          | EUR, FOGD, USD |
+| Kirgizisztán                          | KG        | USD          | EUR, KGS, USD |
 | Lettország                              | LV        | EUR          | EUR, USD |
 | Libanon                             | LB        | USD          | EUR, LBP, USD |
 | Líbia                               | LY        | USD          | EUR, LYD, USD |
@@ -103,7 +103,7 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Makaó (KKT)                           | MO        | USD          | EUR, MOP, USD |
 | Malajzia                            | MY        | USD          | EUR, MYR, USD |
 | Málta                               | MT        | EUR          | EUR, USD |
-| Mauritius                           | MU        | USD          | EUR, MUR, USD |
+| Mauritius                           | Mu        | USD          | EUR, MUR, USD |
 | Mexikó                              | MX        | USD          | EUR, MXN, USD |
 | Moldova                             | MD        | USD          | EUR, MDL, USD |
 | Monaco                              | MC        | EUR          | EUR, USD |
@@ -130,7 +130,7 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Puerto Rico                         | PR        | USD          | EUR, USD |
 | Katar                               | QA        | USD          | EUR, QAR, USD |
 | Románia                             | RO        | EUR          | EUR, RON, USD |
-| Oroszország                              | RU        | RUB          | EUR, RUB, USD |
+| Oroszország                              | RU        | RUB          | EUR, FT, USD |
 | Ruanda                              | RW        | USD          | EUR, RWF, USD |
 | Saint Kitts és Nevis               | KN        | USD          | EUR, USD, XCD |
 | Szaúd-Arábia                        | SA        | USD          | EUR, SAR, USD |
@@ -145,65 +145,65 @@ A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Ce
 | Svédország                              | SE        | SEK          | EUR, SEK, USD  |
 | Svájc                         | CH        | CHF          | CHF, EUR, USD |
 | Tajvan                              | TW        | TWD          | EUR, TWD, USD |
-| Tádzsikisztán                          | TJ        | USD          | EUR, TJS, USD |
+| Tádzsikisztán                          | Tj        | USD          | EUR, TJS, USD |
 | Tanzánia                            | TZ        | USD          | EUR, TZS, USD |
 | Thaiföld                            | TH        | USD          | EUR, THB, USD |
 | Trinidad és Tobago                 | TT        | USD          | EUR, TTD, USD |
 | Tunézia                             | TN        | USD          | EUR, TND, USD |
-| Törökország                              | TR        | USD          | EUR, KIPRÓBÁLÁS, USD |
+| Törökország                              | TR        | USD          | EUR, TRY, USD |
 | Türkmenisztán                        | TM        | USD          | EUR, TMT, USD |
 | Uganda                              | UG        | USD          | EUR, UGX, USD |
-| Ukrajna                             | UA        | USD          | EUR, RUB, UAH, USD |
+| Ukrajna                             | UA        | USD          | EUR,AH, UAH, USD |
 | Egyesült Arab Emírségek                | AE        | USD          | AED, EUR, USD |
 | Egyesült Királyság                      | GB        | GBP          | EUR, GBP, USD |
 | Egyesült Államok                       | USA        | USD          | EUR, USD |
 | Amerikai Virgin-szigetek                 | VI        | USD          | EUR, USD|
 | Uruguay                             | UY        | USD          | EUR, USD, UYU |
 | Üzbegisztán                          | UZ        | USD          | EUR, USD, UZS |
-| Vatikáni Városállam (Szentszék)             | VA        | EUR          | EUR, USD |
+| Város (See)             | VA        | EUR          | EUR, USD |
 | Venezuela                           | VE        | USD          | EUR, USD, VES |
 | Vietnam                             | VN        | USD          | EUR, USD, VND |
-| Jemen                               | TI        | USD          | EUR, USD, YER |
+| Jemen                               | Ti        | USD          | EUR, USD, YER |
 | Zambia                              | ZM        | USD          | EUR, USD, ZMW |
 | Zimbabwe                            | ZW        | USD          | EUR, USD|
 |   |   |   |
 
-\* Brazíliában a kereskedelmi piactér a Cloud Solution Providers (CSP) használatával USD-t használ.
+\* A brazíliai ügyfelek számára a felhőszolgáltatókon (CSP) keresztüli kereskedelmi piactér amerikai dollárban (USD)-t használ.
 
-\** Csak az ingyenes és a BYOL VM-lemezképek.
+\** Csak ingyenes és BYOL virtuálisgép-rendszerképek.
 
-## <a name="how-we-convert-currency"></a>A pénznem átalakítása
+## <a name="how-we-convert-currency"></a>Pénznem konvertálása
 
-Az összes fizetős ajánlat esetében lehetősége van az árak USD-ben való megadására, illetve az árak helyi pénznemben történő feltöltésére. Az USD-ben megadott árakat a rendszer automatikusan helyi pénznemre konvertálja az oldal mentésekor. A partneri központ által használt díjak naponta frissülnek. Exportálhatja az árakat, és áttekintheti a konvertált megfelelőket.
+Az összes fizetős ajánlattípus esetében meg lehet ni az árakat USD-ben, vagy feltöltheti az árakat a helyi pénznemben. Az USD-ben megadott árak automatikusan a helyi pénznemre konvertálódnak az oldal mentésekor. A Partnerközpont naponta frissülnek. Exportálhatja az árakat, és áttekintheti a konvertált megfelelőket.
 
-Ha bármilyen árat szeretne módosítani a közzététel előtt, csak exportálja a díjszabási táblázatot, módosítsa, és töltse fel a módosításokat.
-
-> [!NOTE]
-> Miután közzétette a csomag egy piacának árát, nem módosítható. Annak érdekében, hogy a közzététel előtt a díjak megfelelőek legyenek, exportálja a díjszabási táblázatot, és tekintse át az árakat az egyes piacokon.
-
-Az ajánlat díja mindig az ügyfelek számára jelenik meg a helyi pénznemben. A partner Centerben kiválasztott árat az ügyfelek helyi pénznemére alakítja át az árfolyamok alapján, amikor az árat a partner Centerben mentette. Az online áruházakban lévő ügyfeleknek megjelenő ár nem változik, kivéve, ha újból közzéteszi az ajánlatot.
-
-A Microsoft a helyi pénznemben fogadja az ügyfelektől érkező befizetéseket, és a partner Centerben kiválasztott pénznemben fizet Önnek. A Microsoft az ügyfél helyi pénznemét a vásárlási nap árfolyama alapján alakítja át.
+Ha bármilyen árat módosítania kell a közzététel előtt, egyszerűen exportálja a díjszabási táblázatot, módosítsa, és töltse fel módosításokkal.
 
 > [!NOTE]
-> A Microsoft a Microsoft Treasury Exchange díjszabásával konvertálja az ajánlatok árát.
+> A tervben egy piaci ár közzététele után az már nem módosítható. Ha meg kell győződni arról, hogy az árak még a közzétételük előtt megfelelőek, exportálja a díjszabási táblázatot, és tekintse át az egyes piacokon elérhető árakat.
 
-[![A pénznem átalakítási folyamata.](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
+Az ajánlat ára mindig a helyi pénznemben jelenik meg az ügyfelek számára. A Partnerközpont kiválasztott ár az ügyfelek helyi pénznemére lesz átváltva az árnak a Partnerközpont. Az online áruházakban az ügyfelek számára megjelenő ár nem változik, kivéve, ha újra közzétened az ajánlatot.
 
-## <a name="retrieving-currency-information-by-api"></a>Pénznem információinak beolvasása API szerint
+A Microsoft az ügyfelektől a helyi pénznemben kapja meg a kifizetéseket, és az ebben a pénznemben kiválasztott Partnerközpont. A Microsoft a vásárlás napján átváltja az ügyfél helyi pénznemét.
 
-Az egyes árakat (amelyeknek a beállításaik attól függően, hogy milyen beállítások vonatkoznak rájuk) az API-k használatával lehet beolvasni az árfolyamok alapján. a pénznem adatai nem.
+> [!NOTE]
+> A Microsoft a Microsoft kincstári árfolyamok használatával konvertálja az ajánlatárakat.
 
-Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért tekintse meg a következő cikkeket:
+[![A pénznemátváltási folyamat.](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
+
+## <a name="retrieving-currency-information-by-api"></a>Pénzneminformációk leolvasása API-k szerint
+
+Az egyéni árak (amelyek a beállításuktól függően a mentésük napján átváltási árfolyamok miatt változhattak) API-val is lekértek; A pénzneminformációk nem.
+
+Az egyes ajánlattípusok árának megszabadlott részleteiért tekintse meg az alábbi cikkeket:
 
 - [Azure-alkalmazásajánlat létrehozása](create-new-azure-apps-offer.md)
-- [Azure Container-ajánlat létrehozása](./create-azure-container-offer.md)
+- [Azure-tárolóajánlat létrehozása](./create-azure-container-offer.md)
 - [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](azure-vm-create.md)
 - [Tanácsadási szolgáltatásajánlat létrehozása](./create-consulting-service-offer.md)
-- [Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Customer Engagement-& Power Apps létrehozása](dynamics-365-customer-engage-offer-setup.md)
 - [Dynamics 365 for Operations-ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)
 - [Microsoft Dynamics 365 Business Central-ajánlat létrehozása](partner-center-portal/create-new-business-central-offer.md)
 - [IoT Edge-modulajánlat létrehozása](partner-center-portal/azure-iot-edge-module-creation.md)
 - [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](./plan-managed-service-offer.md)
-- [Power BI-alkalmazás létrehozása](partner-center-portal/create-power-bi-app-offer.md)
+- [Új Power BI létrehozása](partner-center-portal/create-power-bi-app-offer.md)
 - [SaaS-ajánlat létrehozása](./create-new-saas-offer.md)
