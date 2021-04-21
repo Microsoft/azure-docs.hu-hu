@@ -1,39 +1,39 @@
 ---
-title: A AuthN/AuthZ speciális használata
-description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedélyezési funkciót App Service különböző forgatókönyvek esetén, valamint felhasználói jogcímeket és különböző jogkivonatokat kaphat.
+title: Az AuthN/AuthZ speciális használata
+description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedélyezési App Service különböző forgatókönyvekhez, valamint felhasználói jogcímeket és különböző jogkivonatokat olvashat be.
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076870"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775726"
 ---
-# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
+# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és engedélyezés speciális használata a Azure App Service
 
-Ez a cikk bemutatja, hogyan szabhatja testre a [app Service beépített hitelesítését és engedélyezését](overview-authentication-authorization.md), és hogyan kezelheti az alkalmazás identitását. 
+Ez a cikk bemutatja, hogyan szabhatja testre a beépített hitelesítést és engedélyezést a App Service [és](overview-authentication-authorization.md)az identitás az alkalmazásból való kezeléséhez. 
 
-A gyors kezdéshez tekintse meg a következő oktatóanyagok egyikét:
+A gyors első lépésekhez tekintse meg az alábbi oktatóanyagok egyikét:
 
 * [Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben](tutorial-auth-aad.md)
-* [Az alkalmazás konfigurálása a Microsoft Identity platform bejelentkezés használatára](configure-authentication-provider-aad.md)
+* [Az alkalmazás konfigurálása a Microsoft Identity Platform-bejelentkezés használatára](configure-authentication-provider-aad.md)
 * [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](configure-authentication-provider-facebook.md)
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](configure-authentication-provider-google.md)
 * [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](configure-authentication-provider-twitter.md)
-* [Alkalmazás konfigurálása OpenID Connect-szolgáltató használatával történő bejelentkezéshez (előzetes verzió)](configure-authentication-provider-openid-connect.md)
-* [Az alkalmazás konfigurálása az Apple-be való bejelentkezésre (előzetes verzió)](configure-authentication-provider-apple.md)
+* [Az alkalmazás konfigurálása a bejelentkezéshez egy OpenID Connect szolgáltatóval (előzetes verzió)](configure-authentication-provider-openid-connect.md)
+* [Az alkalmazás konfigurálása az Apple-bejelentkezéssel való bejelentkezésre (előzetes verzió)](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Több bejelentkezési szolgáltató használata
 
-A portál konfigurációja nem biztosít kulcsrakész módot arra, hogy több bejelentkezési szolgáltatót nyújtson be a felhasználók számára (például Facebook és Twitter). Azonban nem nehéz felvenni a funkciót az alkalmazáshoz. A lépéseket a következőképpen vázoljuk fel:
+A portálkonfiguráció nem kínál kulcsravezető lehetőséget több bejelentkezési szolgáltató (például a Facebook és a Twitter) felhasználóinak való bemutatni. A funkciókat azonban nem nehéz hozzáadni az alkalmazáshoz. A lépések a következők:
 
-Először a Azure Portal **hitelesítés/engedélyezés** lapján konfigurálja az összes engedélyezni kívánt identitás-szolgáltatót.
+Először konfigurálja az összes engedélyezni **kívánt** identitásszolgáltatót Azure Portal hitelesítés/engedélyezés lapon.
 
-**Ha a kérelem nem hitelesítve van**, válassza a **Névtelen kérelmek engedélyezése (nincs művelet)** lehetőséget.
+A **Művelet, ha a kérelem** nincs hitelesítve beállításnál válassza a Névtelen kérések engedélyezése **(nincs művelet) lehetőséget.**
 
-A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Például:
+A bejelentkezési oldalon, a navigációs sávon vagy az alkalmazás bármely más helyén adjon hozzá egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Például:
 
 ```html
 <a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
@@ -43,19 +43,19 @@ A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármel
 <a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
-Amikor a felhasználó rákattint az egyik hivatkozásra, megnyílik a megfelelő bejelentkezési oldal, amely bejelentkezik a felhasználóba.
+Amikor a felhasználó az egyik hivatkozásra kattint, megnyílik a megfelelő bejelentkezési oldal, amely bejelentkezik.
 
-Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-címre, használja a `post_login_redirect_url` lekérdezési karakterlánc paramétert (a rendszer nem tévesztendő össze az identitás-szolgáltatói konfigurációban található átirányítási URI azonosítóval). Ha például a felhasználót a bejelentkezés után szeretné navigálni `/Home/Index` , használja a következő HTML-kódot:
+Ha a bejelentkezés után átirányítja a felhasználót egy egyéni URL-címre, használja a lekérdezési sztring paramétert (nem tévesztendő össze az identitásszolgáltató konfigurációjában található `post_login_redirect_url` átirányítási URI-val). Ha például a bejelentkezés után a felhasználóhoz szeretne `/Home/Index` navigálni, használja a következő HTML-kódot:
 
 ```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
-## <a name="validate-tokens-from-providers"></a>Jogkivonatok érvényesítése a szolgáltatóktól
+## <a name="validate-tokens-from-providers"></a>Szolgáltatóktól származó jogkivonatok ellenőrzése
 
-Az ügyfél által irányított bejelentkezés során az alkalmazás manuálisan bejelentkezik a felhasználónak a szolgáltatóba, majd elküldi a hitelesítési jogkivonatot az ellenőrzéshez App Service (lásd: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow)). Ez az érvényesítés önmagában nem biztosít hozzáférést a kívánt alkalmazás-erőforrásokhoz, de sikeres ellenőrzés esetén egy munkamenet-tokent ad meg, amely az alkalmazás erőforrásainak elérésére használható. 
+Az ügyfél által irányított bejelentkezésben az alkalmazás manuálisan bejelentkezik a felhasználóval a szolgáltatóhoz, majd elküldi a hitelesítési jogkivonatot az App Service-nek ellenőrzés céljából (lásd a hitelesítési [folyamatot).](overview-authentication-authorization.md#authentication-flow) Ez az ellenőrzés maga nem ad hozzáférést a kívánt alkalmazás-erőforrásokhoz, de a sikeres ellenőrzés egy munkamenet-jogkivonatot ad, amely az alkalmazás erőforrásainak eléréséhez használható. 
 
-A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben a szolgáltatótól kapott hitelesítési jogkivonat lekérése után a tokent az `/.auth/login/<provider>` érvényesítéshez tegye közzé. Például: 
+A szolgáltatói jogkivonat érvényesítéséhez App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben, miután lekéri a hitelesítési jogkivonatot a szolgáltatótól, tegye közzé a jogkivonatot a `/.auth/login/<provider>` következőn érvényesítés céljából: . Például: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -64,18 +64,18 @@ Content-Type: application/json
 {"id_token":"<token>","access_token":"<token>"}
 ```
 
-A jogkivonat formátuma a szolgáltatótól függően némileg eltér. A részletekért tekintse meg az alábbi táblázatot:
+A jogkivonat formátuma a szolgáltatótól függően némileg eltérő. A részletekért tekintse meg az alábbi táblázatot:
 
-| Szolgáltató értéke | A kérelem törzsében kötelező | Megjegyzések |
+| Szolgáltató értéke | Kötelező a kérelem törzsében | Megjegyzések |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
-| `microsoftaccount` | `{"access_token":"<token>"}` | A `expires_in` tulajdonság megadása nem kötelező. <br/>Ha az élő szolgáltatásokból kér jogkivonatot, mindig kérje a `wl.basic` hatókört. |
-| `google` | `{"id_token":"<id_token>"}` | A `authorization_code` tulajdonság megadása nem kötelező. Ha meg van adva, azt is elvégezheti a `redirect_uri` tulajdonsággal együtt. |
-| `facebook`| `{"access_token":"<user_access_token>"}` | Érvényes [felhasználói hozzáférési tokent](https://developers.facebook.com/docs/facebook-login/access-tokens) használhat a Facebook-ból. |
+| `microsoftaccount` | `{"access_token":"<token>"}` | A `expires_in` tulajdonság megadása nem kötelező. <br/>Amikor a jogkivonatot a Live Servicesből kéri le, mindig kérje le a `wl.basic` hatókört. |
+| `google` | `{"id_token":"<id_token>"}` | A `authorization_code` tulajdonság megadása nem kötelező. Ha meg van adva, igény szerint a tulajdonság is `redirect_uri` csatolható hozzá. |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Érvényes [facebookos felhasználói hozzáférési jogkivonatot](https://developers.facebook.com/docs/facebook-login/access-tokens) használjon. |
 | `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
 | | | |
 
-Ha a szolgáltatói jogkivonat ellenőrzése sikeresen megtörtént, az API a `authenticationToken` Válasz törzsében, azaz a munkamenet-jogkivonatban tér vissza. 
+Ha a szolgáltatói jogkivonat érvényesítése sikeresen megtörtént, az API egy et ad vissza a válasz `authenticationToken` törzsében, amely a munkamenet-jogkivonat. 
 
 ```json
 {
@@ -86,20 +86,20 @@ Ha a szolgáltatói jogkivonat ellenőrzése sikeresen megtörtént, az API a `a
 }
 ```
 
-Ha ezzel a munkamenet-jogkivonattal rendelkezik, a védett alkalmazás erőforrásaihoz a `X-ZUMO-AUTH` fejlécet a http-kérelmekhez hozzáadva érheti el. Például: 
+Ha már rendelkezik ezzel a munkamenet-jogkivonattal, úgy férhet hozzá a védett alkalmazás erőforrásaihoz, hogy hozzáadja a fejlécet a `X-ZUMO-AUTH` HTTP-kérésekhez. Például: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
 X-ZUMO-AUTH: <authenticationToken_value>
 ```
 
-## <a name="sign-out-of-a-session"></a>Kijelentkezés a munkamenetből
+## <a name="sign-out-of-a-session"></a>Kijelentkezni egy munkamenetből
 
-A felhasználók elindíthatnak egy kijelentkezést `GET` az alkalmazás végpontjának küldött kérelem elküldésével `/.auth/logout` . A `GET` kérelem a következő műveleteket végzi el:
+A felhasználók úgy kezdeményezhetik a kijelentkezését, hogy kérést küldenek `GET` az alkalmazás `/.auth/logout` végpontjára. A `GET` kérés a következőket teszi:
 
 - Törli a hitelesítési cookie-kat az aktuális munkamenetből.
-- Törli az aktuális felhasználó jogkivonatait a jogkivonat-tárolóból.
-- A Azure Active Directory és a Google esetében a kiszolgálóoldali kijelentkezést hajt végre az identitás-szolgáltatón.
+- Törli az aktuális felhasználó jogkivonatát a jogkivonat-tárolóból.
+- A Azure Active Directory És a Google számára a kiszolgálóoldali kijelentkeztet az identitásszolgáltatón.
 
 A következő egy egyszerű kijelentkezési hivatkozás egy webhelyen:
 
@@ -107,21 +107,21 @@ A következő egy egyszerű kijelentkezési hivatkozás egy webhelyen:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Alapértelmezés szerint a sikeres kijelentkezés az URL-címre irányítja át az ügyfelet `/.auth/logout/done` . A kijelentkezési átirányítási lapot a lekérdezési paraméter hozzáadásával módosíthatja `post_logout_redirect_uri` . Például:
+Alapértelmezés szerint a sikeres kijelentkezás átirányítja az ügyfelet a `/.auth/logout/done` URL-címre. A kijelentkezés utáni átirányítási oldalt a lekérdezési paraméter hozzáadásával `post_logout_redirect_uri` módosíthatja. Például:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-Javasoljuk, hogy [kódolja](https://wikipedia.org/wiki/Percent-encoding) a értékét `post_logout_redirect_uri` .
+Javasoljuk, hogy kódolja [a](https://wikipedia.org/wiki/Percent-encoding) `post_logout_redirect_uri` értékét.
 
-Teljes URL-címek használatakor az URL-címnek vagy ugyanabban a tartományban kell lennie, vagy az alkalmazás számára engedélyezett külső átirányítási URL-címnek kell lennie. A következő példában a `https://myexternalurl.com` nem ugyanabban a tartományban üzemeltetett átirányítás:
+Teljes URL-címek használata esetén az URL-címet vagy ugyanabban a tartományban kell üzemeltetni, vagy az alkalmazás engedélyezett külső átirányítási URL-címeként kell konfigurálni. A következő példában az átirányítás nem ugyanabban a tartományban `https://myexternalurl.com` található:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-Futtassa a következő parancsot a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
+Futtassa a következő parancsot a [Azure Cloud Shell:](../cloud-shell/quickstart.md)
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -129,9 +129,9 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>URL-töredékek megőrzése
 
-Miután a felhasználók bejelentkeznek az alkalmazásba, általában ugyanarra a lapra szeretnének átirányítani, például: `/wiki/Main_Page#SectionZ` . Mivel azonban a rendszer soha nem küldi el a kiszolgálónak az [URL-töredékeket](https://wikipedia.org/wiki/Fragment_identifier) (például `#SectionZ` ), a rendszer alapértelmezés szerint nem őrzi meg őket a OAuth bejelentkezés befejezése után, és visszairányítja az alkalmazásba. A felhasználók ezt követően optimális élményt kapnak, amikor újra kell navigálni a kívánt horgonyhoz. Ez a korlátozás az összes kiszolgálóoldali hitelesítési megoldásra vonatkozik.
+Miután a felhasználók bejelentkeztek az alkalmazásba, általában ugyanazon oldal ugyanazon szakaszára szeretnék átirányítani őket, például a következőre: `/wiki/Main_Page#SectionZ` . Mivel azonban [](https://wikipedia.org/wiki/Fragment_identifier) az URL-töredékek (például a ) soha nem küldve a kiszolgálónak, alapértelmezés szerint nem maradnak meg, miután az OAuth-bejelentkezés befejeződött, és visszairányított az `#SectionZ` alkalmazásba. A felhasználók így az optimálisnál rosszabb élményt tapasztalnak, amikor ismét a kívánt horgonyra kell navigálniuk. Ez a korlátozás minden kiszolgálóoldali hitelesítési megoldásra vonatkozik.
 
-App Service hitelesítésnél megőrizheti az URL-töredékeket a OAuth-bejelentkezés során. Ehhez állítson be egy nevű alkalmazást `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` `true` . Ezt megteheti a [Azure Portalban](https://portal.azure.com), vagy egyszerűen futtathatja a következő parancsot a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
+A App Service megőrizheti az OAuth-bejelentkezés url-töredékeit. Ehhez állítsa be a nevű alkalmazásbeállítást a `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` `true` beállításra. Ezt a következő paranccsal [Azure Portal,](https://portal.azure.com)vagy egyszerűen futtassa a következő parancsot a [Azure Cloud Shell:](../cloud-shell/quickstart.md)
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
@@ -139,54 +139,54 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 ## <a name="access-user-claims"></a>Felhasználói jogcímek elérése
 
-A App Service speciális fejlécek használatával átadja az alkalmazásnak a felhasználói jogcímeket. A külső kérelmek nem állíthatják be ezeket a fejléceket, ezért csak akkor jelennek meg, ha App Service. A fejlécek például a következők:
+App Service speciális fejlécekkel továbbítja a felhasználói jogcímeket az alkalmazásnak. A külső kérések nem állíthatják be ezeket a fejléceket, ezért csak akkor vannak jelen, ha az App Service. Néhány példa fejlécre:
 
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-A bármely nyelven vagy keretrendszerben írt kód a fenti fejlécek által igényelt információkat kérheti le. A ASP.NET 4,6 alkalmazások esetében a **ClaimsPrincipal** automatikusan a megfelelő értékekkel van beállítva. ASP.NET Core azonban nem biztosít olyan hitelesítési middleware-t, amely App Service felhasználói jogcímekbe integrálódik. Megkerülő megoldásért tekintse meg a következőt: [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
+A bármely nyelven vagy keretrendszerben megírt kód le tudja szerezni a szükséges információkat ezekről a fejlécekről. A ASP.NET 4.6-os alkalmazások esetében a **ClaimsPrincipal** automatikusan be lesz állítva a megfelelő értékekkel. ASP.NET Core azonban nem biztosít olyan hitelesítési middleware-t, amely integrálható App Service felhasználói jogcímekkel. Megkerülő megoldásért [lásd: MaximeRouiller.Azure.AppService.EasyAuth.](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
 
-Ha a [jogkivonat-tároló](overview-authentication-authorization.md#token-store) engedélyezve van az alkalmazáshoz, a meghívásával további részleteket is megtudhat a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
+Ha a [jogkivonat-tároló](overview-authentication-authorization.md#token-store) engedélyezve van az alkalmazás számára, a hívással további részleteket is beszerezhet a hitelesített `/.auth/me` felhasználóról. A Mobile Apps kiszolgálói SDK-k segítő metódusokat biztosítanak az adatokkal való munkához. További információ: [Az Azure Mobile Apps Node.js SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)használata és Az Azure-hoz készült [.NET háttérkiszolgálói SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)használata az Azure Mobile Apps.
 
-## <a name="retrieve-tokens-in-app-code"></a>Jogkivonatok beolvasása az alkalmazás kódjában
+## <a name="retrieve-tokens-in-app-code"></a>Jogkivonatok lekérése az alkalmazáskódban
 
-A kiszolgáló kódjából a szolgáltatóra jellemző jogkivonatokat a rendszer a kérelem fejlécébe helyezi, így könnyen elérheti őket. A következő táblázat a lehetséges tokenek fejlécének neveit tartalmazza:
+A kiszolgálói kódból a szolgáltatóspecifikus jogkivonatokat a rendszer a kérés fejlécére injektálja, így könnyen elérheti őket. Az alábbi táblázatban a lehetséges tokenfejlécek nevei láthatóak:
 
-| Szolgáltató | Fejléc neve |
+| Szolgáltató | Fejlécnevek |
 |-|-|
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
-| Facebook-token | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
+| Facebook-jogkivonat | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Az ügyfél kódjából (például egy mobil alkalmazásból vagy egy böngészőből származó JavaScriptből) küldjön HTTP- `GET` kérelmet a `/.auth/me` (jogkivonat-[tárolónak](overview-authentication-authorization.md#token-store) engedélyezve kell lennie). A visszaadott JSON a szolgáltatóra jellemző jogkivonatokat tartalmaz.
+Az ügyfélkódból (például mobilalkalmazásból vagy böngészőbeli JavaScriptből) küldjön HTTP-kérést a következőnek: ( a jogkivonat-tárolót `GET` `/.auth/me` engedélyezni kell).[](overview-authentication-authorization.md#token-store) A visszaadott JSON-nak vannak szolgáltatóspecifikus jogkivonatai.
 
 > [!NOTE]
-> A hozzáférési tokenek a szolgáltatói erőforrások eléréséhez szükségesek, így csak akkor jelennek meg, ha a szolgáltatót egy ügyfél titkos kulcsával konfigurálja. A frissítési tokenek beszerzésével kapcsolatban lásd: hozzáférési tokenek frissítése.
+> A hozzáférési jogkivonatok a szolgáltatói erőforrásokhoz való hozzáférésre valók, így csak akkor állnak rendelkezésre, ha a szolgáltatót titkos ügyfélk titkos ügyfélk titkos okkal konfigurálja. A frissítési jogkivonatok lekért információkért lásd: Hozzáférési jogkivonatok frissítése.
 
-## <a name="refresh-identity-provider-tokens"></a>Identitás-szolgáltatói tokenek frissítése
+## <a name="refresh-identity-provider-tokens"></a>Identitásszolgáltatói jogkivonatok frissítése
 
-Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#extend-session-token-expiration-grace-period)) lejár, újra hitelesítenie kell a felhasználót, mielőtt újra felhasználja a tokent. A jogkivonat lejáratának elkerüléséhez `GET` hívja meg az `/.auth/refresh` alkalmazás végpontját. A híváskor App Service automatikusan frissíti a hitelesített felhasználó hozzáférési jogkivonatait a [jogkivonat-tárolóban](overview-authentication-authorization.md#token-store) . Az alkalmazás kódjának a jogkivonatokra vonatkozó későbbi kérelmei megkapják a frissített jogkivonatokat. Ahhoz azonban, hogy a jogkivonat-frissítés működjön, a jogkivonat-tárolónak tartalmaznia kell a szolgáltató [frissítési jogkivonatait](https://auth0.com/learn/refresh-tokens/) . A frissítési tokenek beszerzésének módját az egyes szolgáltatók dokumentálják, de a következő lista egy rövid összefoglalás:
+Amikor a szolgáltató hozzáférési jogkivonata (és nem a munkamenet-jogkivonat) [](#extend-session-token-expiration-grace-period)lejár, újra kell hitelesenie a felhasználót, mielőtt ismét használnia kellene a jogkivonatot. A jogkivonat lejáratának elkerülése érdekében hívja meg az alkalmazás `GET` `/.auth/refresh` végpontját. A rendszer App Service automatikusan frissíti a hitelesített felhasználó [](overview-authentication-authorization.md#token-store) jogkivonat-tárolójában tárolt hozzáférési jogkivonatokat. Az alkalmazás kódja által kért jogkivonatok a frissített jogkivonatokat kapják meg. Ahhoz azonban, hogy a jogkivonat-frissítés működjön, a jogkivonat-tárolónak tartalmaznia kell [a szolgáltató](https://auth0.com/learn/refresh-tokens/) frissítési jogkivonatát. A frissítési jogkivonatok lekért módját minden szolgáltató dokumentálja, de az alábbi lista röviden összefoglalja:
 
-- **Google**: fűzze hozzá a `access_type=offline` lekérdezési karakterlánc paramétert az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert a `LogicAsync` túlterhelések egyikéhez (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: nem biztosít frissítési jogkivonatokat. A hosszú élettartamú tokenek 60 nap múlva lejárnak (lásd [a Facebook lejáratát és a hozzáférési tokenek kiterjesztését](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: a hozzáférési tokenek nem járnak le (lásd: [Twitter OAuth – gyakori kérdések](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Azure Active Directory**: a-ben [https://resources.azure.com](https://resources.azure.com) végezze el a következő lépéseket:
-    1. Az oldal tetején válassza az **írás/írás** lehetőséget.
-    2. A bal oldali böngészőben navigáljon az **előfizetések** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **szolgáltatók**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings elemre**. 
+- **Google:** Lekérdezési sztring `access_type=offline` paraméter hozzáfűzése az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert az egyik `LogicAsync` túlterheléshez (lásd: Google Refresh [Tokens](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook:** Nem biztosít frissítési jogkivonatokat. A hosszú ideig tartó jogkivonatok 60 nap múlva lejárnak (lásd a Facebook lejáratát és [a hozzáférési jogkivonatok kiterjesztését).](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)
+- **Twitter:** A hozzáférési jogkivonatok nem járnak le [(lásd: Twitter OAuth GYIK).](https://developer.twitter.com/en/docs/authentication/faq)
+- **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) A-ban tegye a következőket:
+    1. Az oldal tetején válassza az **Olvasás/Írás lehetőséget.**
+    2. A bal oldali böngészőben lépjen az **előfizetések** > **_\<subscription\_name_** > **resourceGroups** > ** **_> \<resource\_group\_name> _**szolgáltatók**  >  **Microsoft.Web**  >  **Sites** > **_ \<app\_name> _** > **config**  >  **authsettings**. 
     3. Kattintson a **Szerkesztés** gombra.
-    4. Módosítsa a következő tulajdonságot. Cserélje le az helyére az _\<app\_id>_ elérni kívánt szolgáltatás Azure Active Directory alkalmazás-azonosítóját.
+    4. Módosítsa a következő tulajdonságot. A helyére Azure Active Directory elérni kívánt szolgáltatás _\<app\_id>_ alkalmazásazonosítóját.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. Kattintson a **put** elemre. 
+    5. Kattintson a **Put (Put)** gombra. 
 
-Miután konfigurálta a szolgáltatót, [megkeresheti a frissítési jogkivonatot és a hozzáférési token lejárati idejét](#retrieve-tokens-in-app-code) a jogkivonat-tárolóban. 
+A szolgáltató konfigurálása után a [](#retrieve-tokens-in-app-code) frissítési jogkivonat és a hozzáférési jogkivonat lejárati ideje a jogkivonat-tárolóban található. 
 
-Ha bármikor frissíteni szeretné a hozzáférési jogkivonatot, csak `/.auth/refresh` tetszőleges nyelven hívhat meg. A következő kódrészlet a jQuery használatával frissíti a hozzáférési jogkivonatait egy JavaScript-ügyfélről.
+Ha bármikor frissítenie kell a hozzáférési jogkivonatot, egyszerűen hívja meg a következőt `/.auth/refresh` bármely nyelven: . Az alábbi kódrészlet a jQuery használatával frissíti a hozzáférési jogkivonatokat egy JavaScript-ügyfélből.
 
 ```javascript
 function refreshTokens() {
@@ -199,59 +199,59 @@ function refreshTokens() {
 }
 ```
 
-Ha a felhasználó visszavonja az alkalmazás számára biztosított engedélyeket, a hívása `/.auth/me` sikertelen lehet `403 Forbidden` . A hibák diagnosztizálásához az alkalmazás naplófájljaiban tájékozódhat a részletekről.
+Ha egy felhasználó visszavonja az alkalmazáshoz megadott engedélyeket, a hívása `/.auth/me` meghiúsulhat egy `403 Forbidden` válaszból. A hibák diagnosztizálásához ellenőrizze az alkalmazásnaplókat a részletekért.
 
-## <a name="extend-session-token-expiration-grace-period"></a>Munkamenet-jogkivonat lejárati türelmi időszakának kiterjesztése
+## <a name="extend-session-token-expiration-grace-period"></a>Munkamenet-jogkivonat lejárati türelmi időszakának meghosszabbítása
 
-A hitelesített munkamenet 8 óra elteltével lejár. A hitelesített munkamenet lejárta után a rendszer alapértelmezés szerint 72 órás türelmi időszakot használ. A türelmi időszakon belül lehetősége van a munkamenet-jogkivonat frissítésére App Service a felhasználó ismételt hitelesítése nélkül. Csak akkor hívható meg `/.auth/refresh` , ha a munkamenet-jogkivonat érvénytelenné válik, és nem kell nyomon követnie a jogkivonat lejáratát. Ha a 72 órás türelmi időszak lejár, a felhasználónak újra be kell jelentkeznie, hogy érvényes munkamenet-tokent kapjon.
+A hitelesített munkamenet 8 óra után lejár. A hitelesített munkamenet lejárata után alapértelmezés szerint 72 órás türelmi időszak érvényes. Ebben a türelmi időszakban a felhasználó újbóli hitelesítése nélkül frissítheti App Service munkamenet-jogkivonatot. Ha a munkamenet-jogkivonat érvénytelenné válik, egyszerűen hívhatja a hívását, és nem kell saját maga követnie a `/.auth/refresh` jogkivonat lejáratát. Ha a 72 órás türelmi időszak már elajott, a felhasználónak újra be kell jelentkeznie egy érvényes munkamenet-jogkivonat lezétlése után.
 
-Ha a 72 órán belül nincs elég idő, kiterjesztheti ezt a lejárati időszakot. Ha hosszabb időn keresztül kiterjeszti a lejáratot, jelentős biztonsági következményekkel járhat (például egy hitelesítési jogkivonat kiszivárgásakor vagy ellopásakor). Ezért hagyja meg az alapértelmezett 72 órát, vagy állítsa a kiterjesztési időszakot a legkisebb értékre.
+Ha a 72 óra nem elég az Ön számára, meghosszabbíthatja ezt a lejárati időt. A lejárat hosszú időtartamra való kiterjesztése jelentős biztonsági következményekkel járhat (például ha egy hitelesítési jogkivonat kiszivárog vagy ellopják). Ezért hagyja meg az alapértelmezett 72 órát, vagy állítsa a meghosszabbítási időszakot a legkisebb értékre.
 
-Az alapértelmezett lejárati időszak meghosszabbításához futtassa a következő parancsot a [Cloud Shellban](../cloud-shell/overview.md).
+Az alapértelmezett lejárati időkeret kiterjesztéséhez futtassa a következő parancsot a [Cloud Shell.](../cloud-shell/overview.md)
 
 ```azurecli-interactive
 az webapp auth update --resource-group <group_name> --name <app_name> --token-refresh-extension-hours <hours>
 ```
 
 > [!NOTE]
-> A türelmi időszak csak a App Service hitelesített munkamenetre vonatkozik, nem az Identitáskezelő jogkivonatára. A lejárt szolgáltatói jogkivonatok esetében nincs türelmi időszak. 
+> A türelmi időszak csak a App Service munkamenetre vonatkozik, az identitásszolgáltatók jogkivonataira nem. A lejárt szolgáltatói jogkivonatok nem lejártak türelmi időszakra. 
 >
 
-## <a name="limit-the-domain-of-sign-in-accounts"></a>Bejelentkezési fiókok tartományának korlátozása
+## <a name="limit-the-domain-of-sign-in-accounts"></a>A bejelentkezési fiókok tartományának korlátozása
 
-A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_ és a _hotmail.com_ fiók használatát. Az Azure AD lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat azonban, hogy a felhasználóknak azonnal fel kell gyorsítania a saját márkás Azure AD bejelentkezési oldalát (például `contoso.com` ). Ha a bejelentkezési fiókok tartománynevét szeretné javasolni, kövesse az alábbi lépéseket.
+A Microsoft-fiók és Azure Active Directory is lehetővé teszi, hogy több tartományból jelentkezzen be. A Microsoft-fiók például _outlook.com_, _live.com_ és _hotmail.com_ fiókokat. Az Azure AD bármilyen számú egyéni tartományt lehetővé tesz a bejelentkezési fiókok számára. Azonban előfordulhat, hogy fel szeretné gyorsítani a felhasználókat közvetlenül a saját márkájú Azure AD bejelentkezési oldalára (például `contoso.com` ). A bejelentkezési fiókok tartománynevének javaslathoz kövesse az alábbi lépéseket.
 
-A alkalmazásban [https://resources.azure.com](https://resources.azure.com) navigáljon az **előfizetések** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **szolgáltatók**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings elemre**. 
+A fájlban lépjen a [https://resources.azure.com](https://resources.azure.com) Microsoft.Web  sites > **_\<subscription\_name_** > **resourceGroups** > ** **_>-szolgáltatókhoz a \<resource\_group\_name> _ >  **Microsoft.Web**  >  **Sites** > **_ _** > \<app\_name> **beállításokat.**  >   
 
-Kattintson a **Szerkesztés** gombra, módosítsa a következő tulajdonságot, majd kattintson a **put** elemre. Ne felejtse el lecserélni _\<domain\_name>_ a kívánt tartományra.
+Kattintson **a Szerkesztés gombra,** módosítsa a következő tulajdonságot, majd kattintson a **Put (Put) gombra.** Ne cserélje le _\<domain\_name>_ a helyére a kívánt tartományt.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-Ezzel a beállítással a rendszer hozzáfűzi a `domain_hint` lekérdezési karakterlánc paramétert a bejelentkezési átirányítás URL-címéhez. 
+Ez a beállítás hozzáfűzi `domain_hint` a lekérdezési sztring paramétert a bejelentkezési átirányítási URL-címhez. 
 
 > [!IMPORTANT]
-> Lehetséges, hogy az ügyfél el szeretné távolítani a `domain_hint` paramétert az átirányítási URL-cím fogadása után, majd egy másik tartományba való bejelentkezést. Így amíg ez a függvény kényelmes, nem biztonsági funkció.
+> Az ügyfél eltávolíthatja a paramétert az átirányítási URL-cím fogadása után, majd bejelentkezhet `domain_hint` egy másik tartománnyal. Tehát bár ez a függvény kényelmes, nem biztonsági funkció.
 >
 
-## <a name="authorize-or-deny-users"></a>Felhasználók engedélyezése vagy megtagadása
+## <a name="authorize-or-deny-users"></a>Felhasználók jogosultsága vagy elutasítása
 
-Míg App Service gondoskodik a legegyszerűbb engedélyezési esetről (azaz a nem hitelesített kérelmek elutasításáról), az alkalmazás részletesebb engedélyezési viselkedést igényelhet, például csak egy adott felhasználói csoportra korlátozhatja a hozzáférést. Bizonyos esetekben egyéni programkódot kell írnia a bejelentkezett felhasználó hozzáférésének engedélyezéséhez vagy megtagadásához. Más esetekben előfordulhat, hogy a App Service vagy az Ön személyazonosság-szolgáltatója a kód módosítása nélkül tud segítséget nyújtani.
+Bár App Service a legegyszerűbb hitelesítési esetet (azaz a nem hitelesített kérelmek elutasítását) is el kell látnia, az alkalmazás ennél finomabb hitelesítési viselkedést is megkövetelhet, például korlátozhatja a hozzáférést egy adott felhasználói csoportra. Bizonyos esetekben egyéni alkalmazáskódot kell írnia a bejelentkezett felhasználó hozzáférésének engedélyezése vagy megtagadása érdekében. Más esetekben a App Service vagy az identitásszolgáltató kódváltozások nélkül segíthet.
 
-- [Kiszolgáló szintje](#server-level-windows-apps-only)
-- [Identitás-szolgáltató szintje](#identity-provider-level)
-- [Alkalmazás szintje](#application-level)
+- [Kiszolgálói szint](#server-level-windows-apps-only)
+- [Identitásszolgáltatói szint](#identity-provider-level)
+- [Alkalmazásszint](#application-level)
 
-### <a name="server-level-windows-apps-only"></a>Kiszolgáló szintje (csak Windows-alkalmazások esetén)
+### <a name="server-level-windows-apps-only"></a>Kiszolgálói szint (csak Windows-alkalmazások esetén)
 
-Bármely Windows-alkalmazás esetében a *Web.config* fájl szerkesztésével megadhatja az IIS-webkiszolgáló engedélyezési viselkedését. A Linux-alkalmazások nem használják az IIS-t, és nem konfigurálhatók *Web.configon* keresztül.
+Bármely Windows-alkalmazás esetén megadhatja az IIS-webkiszolgáló engedélyezési  viselkedését az IIS-Web.configszerkesztésével. A Linux-alkalmazások nem használják az IIS-t, és nem konfigurálhatóak az *Web.config.*
 
 1. Navigáljon ide: `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. A App Service-fájlok böngésző-tallózójában navigáljon a *hely/wwwroot* elemre. Ha a *Web.config* nem létezik, hozza létre az **+**  >  **új fájl** kiválasztásával. 
+1. Az alkalmazásfájlok böngészőböngészőjében App Service *site/wwwroot webhelyre.* Ha egy *Web.config* nem létezik, a New File (Új fájl) lehetőség kiválasztásával **+**  >  **hozza létre.** 
 
-1. Válassza ki a ceruzát *Web.config* a szerkesztéshez. Adja hozzá a következő konfigurációs kódot, és kattintson a **Mentés** gombra. Ha *Web.config* már létezik, egyszerűen adja hozzá a `<authorization>` elemet a benne található összes elemhez. Adja hozzá azokat a fiókokat, amelyeket engedélyezni szeretne a `<allow>` elemben.
+1. A szerkesztéshez *Web.config* ceruza gombra. Adja hozzá a következő konfigurációs kódot, és kattintson a **Mentés gombra.** Ha *Web.config* már létezik, egyszerűen adja hozzá a `<authorization>` mindent tartalmazott elemet. Adja hozzá az elemben engedélyezni kívánt `<allow>` fiókokat.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -265,39 +265,39 @@ Bármely Windows-alkalmazás esetében a *Web.config* fájl szerkesztésével me
     </configuration>
     ```
 
-### <a name="identity-provider-level"></a>Identitás-szolgáltató szintje
+### <a name="identity-provider-level"></a>Identitásszolgáltatói szint
 
-Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Például:
+Az identitásszolgáltató nyújthat bizonyos kulcsraszavas hitelesítést. Például:
 
-- [Azure app Service](configure-authentication-provider-aad.md)esetében a [vállalati szintű hozzáférés](../active-directory/manage-apps/what-is-access-management.md) közvetlenül az Azure ad-ben is kezelhető. Útmutatásért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](../active-directory/manage-apps/methods-for-removing-user-access.md).
-- A [Google](configure-authentication-provider-google.md)-ban a [szervezethez](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) tartozó Google API-projektek konfigurálhatók úgy, hogy csak a szervezet felhasználói számára engedélyezzenek hozzáférést (lásd: a [Google **OAuth 2,0** -támogatás beállítása oldal](https://support.google.com/cloud/answer/6158849?hl=en)).
+- A [Azure App Service](configure-authentication-provider-aad.md)a vállalati szintű hozzáférést közvetlenül az Azure [AD-ban](../active-directory/manage-apps/what-is-access-management.md) kezelheti. Útmutatásért [lásd: How to remove a user's access to an application](../active-directory/manage-apps/methods-for-removing-user-access.md)(Felhasználó hozzáférésének eltávolítása egy alkalmazáshoz).
+- A [Google](configure-authentication-provider-google.md)esetében a szervezethez [](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) tartozó Google API-projektek konfigurálhatóak úgy, hogy csak a szervezet felhasználóinak engedélyezzenek hozzáférést (lásd a [Google **OAuth 2.0**](https://support.google.com/cloud/answer/6158849?hl=en)beállításával kapcsolatos támogatási oldalát).
 
-### <a name="application-level"></a>Alkalmazás szintje
+### <a name="application-level"></a>Alkalmazásszint
 
-Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy ha a platform vagy az identitás szolgáltatója nem támogatott, egyéni kódot kell írnia a felhasználók engedélyezéséhez a [felhasználói jogcímek](#access-user-claims)alapján.
+Ha a többi szint valamelyike nem biztosítja a szükséges engedélyt, vagy ha a platformja vagy az identitásszolgáltatója nem támogatott, egyéni kódot kell írnia, amely a felhasználói jogcímek alapján engedélyezi a [felhasználókat.](#access-user-claims)
 
 ## <a name="updating-the-configuration-version"></a>A konfigurációs verzió frissítése
 
-A felügyeleti API két verziója létezik a hitelesítés/engedélyezés szolgáltatáshoz. A (z) Azure Portal hitelesítési élményéhez a v2 verziója szükséges. Egy alkalmazás, amely már a v1 API-t használja, a v2 verzióra frissíthet néhány módosítás után. A titkos konfigurációt a tárolóhely-Sticky alkalmazás beállításaiba kell áthelyezni. Ezt automatikusan megteheti az alkalmazás portáljának "hitelesítés" részéből.
+A hitelesítési/engedélyezési szolgáltatásnak két verziója van a felügyeleti API-nak. A V2 verzió szükséges a hitelesítéshez a Azure Portal. A V1 API-t már használó alkalmazások néhány módosítás után frissíthet a V2 verzióra. Pontosabban a titkos konfigurációt át kell áthelyezni a ragadós alkalmazásbeállításokba. Ezt automatikusan is meg lehet tenni az alkalmazás portáljának "Hitelesítés" szakaszában.
 
 > [!WARNING]
-> A v2-be való Migrálás letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését bizonyos ügyfeleken keresztül, például a Azure Portal, az Azure CLI és a Azure PowerShell meglévő felhasználói felületén. Ez nem vonható vissza.
+> A V2-re való migrálás letiltja az App Service Authentication /Authorization szolgáltatás kezelését az alkalmazáshoz bizonyos ügyfeleken keresztül, például az Azure Portal, az Azure CLI és a Azure PowerShell. Ez nem fordítható meg.
 
-A v2 API nem támogatja a Microsoft-fiók létrehozását és szerkesztését a v1-ben végzett eltérő szolgáltatóként. Ehelyett kihasználja az átszervezett [Microsoft Identity platformot](../active-directory/develop/v2-overview.md) az Azure ad-vel és a személyes Microsoft-fiókokkal való bejelentkezési felhasználók számára. A v2 API-ra való áttéréskor a v1 Azure Active Directory konfiguráció a Microsoft Identity platform szolgáltatójának konfigurálására szolgál. Az áttelepítési folyamat során a v1 Microsoft-fiók szolgáltatója továbbra is a megszokott módon működik, de javasoljuk, hogy térjen át a Microsoft Identity platform újabb modelljére. További információért lásd: [Microsoft-fiókok szolgáltatói regisztrációjának támogatása](#support-for-microsoft-account-provider-registrations) .
+A V2 API nem támogatja a Microsoft-fiók külön szolgáltatóként való létrehozását vagy szerkesztését, ahogyan azt a V1-ben is tette. Használhatja inkább az átkonvergens [Microsoft Identity Platformot](../active-directory/develop/v2-overview.md) a felhasználók Azure AD- és személyes Microsoft-fiókkal való bejelentkezésére. A V2 API-re való váltáskor a V1 Azure Active Directory konfigurálja a Microsoft Identity Platform szolgáltatóját. A V1 Microsoft-fiókszolgáltató a migrálási folyamat során is a megszokott módon működik tovább, de javasoljuk, hogy lépjen az újabb Microsoft Identity Platform-modellre. További [információ: Microsoft-fiókszolgáltatói regisztrációk](#support-for-microsoft-account-provider-registrations) támogatása.
 
-Az automatizált áttelepítési folyamat áthelyezi a szolgáltatói titkokat az alkalmazásbeállításokbe, majd átalakítja a többi konfigurációt az új formátumba. Az automatikus áttelepítés használata:
+Az automatizált migrálási folyamat alkalmazásbeállításokba áthelyezi a szolgáltatói titkos adatokat, majd a konfiguráció többi részét új formátumba konvertálja. Az automatikus migrálás használata:
 
-1. Navigáljon az alkalmazáshoz a portálon, és válassza a **hitelesítés** menüpontot.
-1. Ha az alkalmazás a v1 modellel lett konfigurálva, megjelenik egy **frissítés** gomb.
-1. Tekintse át a leírást a megerősítő kérdésben. Ha készen áll az áttelepítés végrehajtására, kattintson a **frissítés** elemre a parancssorban.
+1. Lépjen az alkalmazásra a portálon, és válassza a **Hitelesítés** menüelemet.
+1. Ha az alkalmazás v1 modellel van konfigurálva, egy Frissítés gomb **látható.**
+1. Tekintse át a leírást a megerősítési kérésben. Ha készen áll az áttelepítésre, kattintson a frissítés **elemre** a parancssorban.
 
 ### <a name="manually-managing-the-migration"></a>Az áttelepítés manuális kezelése
 
-A következő lépésekkel manuálisan telepítheti át az alkalmazást a v2 API-ra, ha nem kívánja használni a fent említett automatikus verziót.
+Az alábbi lépések lehetővé teszik az alkalmazás manuális áttelepítését a V2 API-ba, ha nem szeretné a fent említett automatikus verziót használni.
 
-#### <a name="moving-secrets-to-application-settings"></a>A titkok áthelyezése az alkalmazás beállításaiba
+#### <a name="moving-secrets-to-application-settings"></a>Titkos kulcsok átköltöztetve az alkalmazásbeállításokba
 
-1. Szerezze be meglévő konfigurációját a v1 API használatával:
+1. Szerezze be a meglévő konfigurációt a V1 API használatával:
 
    ```azurecli
    # For Web Apps
@@ -307,20 +307,20 @@ A következő lépésekkel manuálisan telepítheti át az alkalmazást a v2 API
    az functionapp auth show -g <group_name> -n <site_name>
    ```
 
-   Az eredményül kapott JSON-adattartalomban jegyezze fel az egyes konfigurált szolgáltatóhoz használt titkos értéket:
+   Az eredményül kapott hasznos JSON-adatban jegyezze fel az egyes konfigurált szolgáltatókhoz használt titkos értéket:
 
-   * HRE `clientSecret`
-   * Google `googleClientSecret`
-   * Facebook `facebookAppSecret`
-   * Twitter `twitterConsumerSecret`
+   * AAD: `clientSecret`
+   * Google: `googleClientSecret`
+   * Facebook: `facebookAppSecret`
+   * Twitter: `twitterConsumerSecret`
    * Microsoft-fiók: `microsoftAccountClientSecret`
 
    > [!IMPORTANT]
-   > A titkos értékek fontos biztonsági hitelesítő adatok, és körültekintően kell kezelni őket. Ne ossza meg ezeket az értékeket, és ne maradjon meg a helyi gépen.
+   > A titkos értékek fontos biztonsági hitelesítő adatok, és körültekintően kell kezelni őket. Ne ossza meg ezeket az értékeket, és ne őrzd meg őket egy helyi gépen.
 
-1. Tárolóhely-Sticky Alkalmazásbeállítások létrehozása minden titkos értékhez. Megadhatja az egyes Alkalmazásbeállítások nevét. Az értéknek egyeznie kell azzal, amit az előző lépésben kapott, vagy az adott értékkel létrehozott [Key Vault titokra hivatkozik](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) .
+1. Minden titkos értékhez hozzon létre egy-egy ragadós alkalmazásbeállítást. Kiválaszthatja az egyes alkalmazásbeállítások nevét. Ennek az értéknek meg kell egyeznie [](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) az előző lépésben megszerzett értékkel, vagy hivatkozni kell egy Key Vault titkos adatokat, amelyet ezzel az értékkel hozott létre.
 
-   A beállítás létrehozásához használja a Azure Portal, vagy futtassa a következő variációját minden szolgáltatónál:
+   A beállítás létrehozásához használhatja a Azure Portal vagy futtathatja az alábbiak egy-egy változatát minden szolgáltatónál:
 
    ```azurecli
    # For Web Apps, Google example    
@@ -331,19 +331,19 @@ A következő lépésekkel manuálisan telepítheti át az alkalmazást a v2 API
    ```
 
    > [!NOTE]
-   > Ennek a konfigurációnak az alkalmazási beállításait tárolóhelyként kell megjelölni, ami azt jelenti, hogy a rendszer nem helyezi át a környezetek között egy [tárolóhely-swap művelet](./deploy-staging-slots.md)során. Ennek az az oka, hogy maga a hitelesítési konfiguráció a környezethez van kötve. 
+   > A konfiguráció alkalmazásbeállítását pontra ragadósként kell megjelölni, ami azt jelenti, hogy a pontcserélési művelet során nem fognak áthelyezni a [környezetek között.](./deploy-staging-slots.md) Ennek az az oka, hogy maga a hitelesítési konfiguráció a környezethez van kötve. 
 
-1. Hozzon létre egy nevű új JSON-fájlt `authsettings.json` . Végezze el a korábban kapott kimenetet, és távolítsa el az összes titkos értéket. Írja a fennmaradó kimenetet a fájlba, és ügyeljen arra, hogy a rendszer ne tartalmazza a titkos kulcsot. Bizonyos esetekben előfordulhat, hogy a konfiguráció üres karakterláncokat tartalmazó tömbökkel rendelkezik. Győződjön meg arról `microsoftAccountOAuthScopes` , hogy a nem, és ha igen, ezt az értéket állítsa a következőre: `null` .
+1. Hozzon létre egy nevű új JSON-fájlt. `authsettings.json` Vegyük a korábban kapott kimenetet, és távolítsa el az összes titkos értéket. Írja a fennmaradó kimenetet a fájlba, és győződjön meg arról, hogy a fájlban nincs titkos adat. Bizonyos esetekben előfordulhat, hogy a konfiguráció üres sztringeket tartalmazó tömbökből áll. Ügyeljen rá, hogy ez ne legyen így, és ha `microsoftAccountOAuthScopes` igen, váltsa át ezt az értéket `null` értékre.
 
-1. Adjon hozzá egy olyan tulajdonságot, `authsettings.json` amely az egyes szolgáltatóknál korábban létrehozott alkalmazás-beállítási névre mutat:
+1. Adjon hozzá egy tulajdonságot, amely az egyes szolgáltatókhoz korábban létrehozott alkalmazásbeállítás `authsettings.json` nevére mutat:
  
-   * HRE `clientSecretSettingName`
-   * Google `googleClientSecretSettingName`
-   * Facebook `facebookAppSecretSettingName`
-   * Twitter `twitterConsumerSecretSettingName`
+   * AAD: `clientSecretSettingName`
+   * Google: `googleClientSecretSettingName`
+   * Facebook: `facebookAppSecretSettingName`
+   * Twitter: `twitterConsumerSecretSettingName`
    * Microsoft-fiók: `microsoftAccountClientSecretSettingName`
 
-   A művelet után egy példa a következőhöz hasonlóan néz ki: ebben az esetben csak a HRE van konfigurálva:
+   A művelet utáni példafájl a következőhöz hasonlóan néz ki, ebben az esetben csak az AAD-hez van konfigurálva:
 
    ```json
    {
@@ -393,71 +393,71 @@ A következő lépésekkel manuálisan telepítheti át az alkalmazást a v2 API
    }
    ```
 
-1. A fájl elküldése az alkalmazás új hitelesítési/engedélyezési konfigurációjához:
+1. Küldje el ezt a fájlt az alkalmazás új hitelesítési/engedélyezési konfigurációjaként:
 
    ```azurecli
    az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
    ```
 
-1. Ellenőrizze, hogy az alkalmazás továbbra is a várt módon működik-e a kézmozdulat után.
+1. A kézmozdulat után ellenőrizze, hogy az alkalmazás továbbra is a várt módon működik-e.
 
 1. Törölje az előző lépésekben használt fájlt.
 
-Ekkor áttelepítette az alkalmazást, hogy az identitás-szolgáltatói titkokat az alkalmazás beállításainak megfelelően tárolja.
+Az alkalmazást áttelepítve alkalmazásbeállításként tárolta az identitásszolgáltatói titkos adatokat.
 
-#### <a name="support-for-microsoft-account-provider-registrations"></a>Microsoft-fiókok szolgáltatói regisztrációjának támogatása
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Microsoft-fiókszolgáltatói regisztrációk támogatása
 
-Ha a meglévő konfigurációja Microsoft-fiókot tartalmaz, és nem tartalmaz Azure Active Directory szolgáltatót, átválthatja a konfigurációt a Azure Active Directory szolgáltatóra, majd elvégezheti az áttelepítést. Ehhez tegye a következőket:
+Ha a meglévő konfiguráció microsoftos fiókszolgáltatót tartalmaz, és nem tartalmaz Azure Active Directory-szolgáltatót, átkapcsolhatja a konfigurációt az Azure Active Directory-szolgáltatóra, majd végrehajthatja a migrálást. Ehhez tegye a következőket:
 
-1. Nyissa meg [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portalban, és keresse meg a Microsoft-fiókjához társított regisztrációt. Előfordulhat, hogy a "személyes fiókból származó alkalmazások" fejléc alatt található.
-1. Navigáljon a "hitelesítés" lapra a regisztrációhoz. Az "URI-k átirányítása" alatt egy bejegyzést kell megjelennie `/.auth/login/microsoftaccount/callback` . Másolja ezt az URI-t.
-1. Vegyen fel egy olyan új URI-t, amely megfelel az imént másolt elemnek, kivéve, ha az már véget ért `/.auth/login/aad/callback` . Ez lehetővé teszi a regisztráció használatát a App Service hitelesítés/engedélyezés konfigurációjában.
-1. Navigáljon a App Service hitelesítés/engedélyezési konfigurációhoz az alkalmazáshoz.
-1. Gyűjtse össze a Microsoft-fiók szolgáltatójának konfigurációját.
-1. Konfigurálja a Azure Active Directory szolgáltatót a "speciális" felügyeleti mód használatával, és adja meg az előző lépésben összegyűjtött ügyfél-azonosítót és az ügyfél titkos kulcsának értékeit. A kibocsátó URL-címéhez használja a use (használat) `<authentication-endpoint>/<tenant-id>/v2.0` kifejezést, és cserélje le a (z) és a (z) helyére *\<authentication-endpoint>* a [felhőalapú környezet hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (például https://login.microsoftonline.com : "" a globális Azure-hoz) *\<tenant-id>* . 
-1. Miután mentette a konfigurációt, tesztelje a bejelentkezési folyamatot úgy, hogy a böngészőben navigál a `/.auth/login/aad` webhelyen található végponthoz, és befejezi a bejelentkezési folyamatot.
-1. Ezen a ponton sikeresen átmásolta a konfigurációt, de a Microsoft-fiókok meglévő konfigurációja továbbra is fennáll. Mielőtt eltávolítja, győződjön meg arról, hogy az alkalmazás összes része hivatkozik a Azure Active Directory szolgáltatóra a bejelentkezési hivatkozások használatával stb. Ellenőrizze, hogy az alkalmazás összes része a várt módon működik-e.
-1. Ha ellenőrizte, hogy a dolgok a HRE Azure Active Directory szolgáltatón keresztül működnek, eltávolíthatja a Microsoft-fiók szolgáltatójának konfigurációját.
+1. A [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portal, és keresse meg a Microsoft-fiókszolgáltatójához társított regisztrációt. Ez a "Személyes fiókból származó alkalmazások" fejléc alatt lehet.
+1. Lépjen a regisztráció "Hitelesítés" lapjára. Az "Átirányítási URI-k" alatt egy végződésnek kell `/.auth/login/microsoftaccount/callback` lennie. Másolja ki ezt az URI-t.
+1. Adjon hozzá egy új URI-t, amely megegyezik az előbb másolt URI-val, azzal a kivételt leszámítva, hogy a `/.auth/login/aad/callback` végződik. Ez lehetővé teszi a regisztráció használatát a App Service/engedélyezés konfigurációjában.
+1. Lépjen az App Service hitelesítés/engedélyezés konfigurációját.
+1. Gyűjtse össze a Microsoft-fiókszolgáltató konfigurációját.
+1. Konfigurálja Azure Active Directory szolgáltatót a "Speciális" felügyeleti móddal, és adja meg az előző lépésben gyűjtött ügyfél-azonosítót és titkos ügyfél titkos ügyfél-értékeket. A Kiállító URL-címe mezőben használja a címet, és cserélje le a helyére a felhőalapú környezet hitelesítési végpontját (például : " globális Azure esetén), a helyére pedig a saját `<authentication-endpoint>/<tenant-id>/v2.0` *\<authentication-endpoint>* [](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) https://login.microsoftonline.com *\<tenant-id>* **címtár-azonosítóját (bérlőazonosítóját) írja.**
+1. A konfiguráció mentése után tesztelje a bejelentkezési folyamatot úgy, hogy megnyitja a böngészőben a webhely végpontját, és befejezi a `/.auth/login/aad` bejelentkezési folyamatot.
+1. Ezen a ponton sikeresen átmásolta a konfigurációt, de a meglévő Microsoft-fiókszolgáltató konfigurációja megmarad. Mielőtt eltávolítja, győződjön meg arról, hogy az alkalmazás minden része hivatkozik a Azure Active Directory szolgáltatóra bejelentkezési hivatkozásokon keresztül stb. Ellenőrizze, hogy az alkalmazás minden része a várt módon működik-e.
+1. Miután ellenőrzi, hogy a dolgok működnek-e az AAD Azure Active Directory-szolgáltatóval, eltávolíthatja a Microsoft-fiókszolgáltató konfigurációját.
 
 > [!WARNING]
-> A két regisztráció megszervezése a HRE-alkalmazás által [támogatott fióktípus](../active-directory/develop/supported-accounts-validation.md) módosításával lehetséges. Ez azonban a Microsoft-fiókok felhasználói számára új beleegyezés-kérést kényszerít, és a felhasználók identitási jogcímei eltérőek lehetnek a szerkezetben, `sub` különösen az értékek módosítása óta, mivel új alkalmazás-azonosító van használatban. Ez a megközelítés nem ajánlott, ha alaposan megértette. Ehelyett várnia kell a két regisztráció támogatását a v2 API felületén.
+> A két regisztráció az AAD-alkalmazásregisztráció [](../active-directory/develop/supported-accounts-validation.md) támogatott fióktípusának módosításával konvergálhat. Ez azonban új jóváhagyás kérését kényszeríti a Microsoft-fiók felhasználói számára, és a felhasználók identitási jogcíme struktúrája eltérő lehet, különösen az értékek megváltozása miatt, mivel új alkalmazásazonosítót `sub` használ. Ez a megközelítés csak akkor ajánlott, ha alaposan megértettük. Ehelyett várja meg a V2 API felületének két regisztrációjának támogatását.
 
-#### <a name="switching-to-v2"></a>Váltás a v2-re
+#### <a name="switching-to-v2"></a>Váltás a V2-re
 
-A fenti lépések elvégzése után navigáljon az alkalmazáshoz a Azure Portal. Válassza a "hitelesítés (előzetes verzió)" szakaszt. 
+A fenti lépések után keresse meg az alkalmazást a Azure Portal. Válassza a "Hitelesítés (előzetes verzió)" szakaszt. 
 
-Azt is megteheti, hogy egy PUT-kérelmet helyez el az `config/authsettingsv2` erőforráshoz a hely erőforrása alatt. A hasznos adatok sémája ugyanaz, mint a [fájl használata](#config-file) szakaszban rögzített konfiguráció.
+Alternatív megoldásként put kérést is kérhet a helyerőforrás `config/authsettingsv2` alatt található erőforráshoz. A hasznos adatok sémája megegyezik a Konfigurálás fájl használatával [szakaszban rögzített sémával.](#config-file)
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurálás fájl használatával (előzetes verzió)
 
-Az Auth beállításai opcionálisan konfigurálhatók az üzemelő példány által biztosított fájlon keresztül is. Erre szükség lehet a App Service hitelesítés/engedélyezés bizonyos előzetes verziójú képességeitől.
+A hitelesítési beállítások opcionálisan konfigurálhatóak az üzemelő példány által biztosított fájllal. Erre a hitelesítés/engedélyezés bizonyos előzetes verziójú képességei App Service szükség lehet.
 
 > [!IMPORTANT]
-> Ne feledje, hogy az alkalmazás hasznos, ezért ez a fájl a környezetek között mozog, a [tárolóhelyek](./deploy-staging-slots.md)esetében. Valószínű, hogy egy másik, az egyes tárolóhelyekre rögzített alkalmazás-regisztrációt szeretne használni, és ezekben az esetekben a konfigurációs fájl használata helyett továbbra is a szabványos konfigurációs módszert kell használnia.
+> Ne feledje, hogy az alkalmazás hasznos adata és ezáltal ez a fájl a környezetek között is mozoghat, mint a [tárolóhelyek esetében.](./deploy-staging-slots.md) Valószínű, hogy minden egyes tárolóhelyhez más alkalmazásregisztrációt szeretne kitűzni, és ezekben az esetekben a konfigurációs fájl használata helyett továbbra is a szabványos konfigurációs módszert kell használnia.
 
-### <a name="enabling-file-based-configuration"></a>A fájl alapú konfiguráció engedélyezése
+### <a name="enabling-file-based-configuration"></a>Fájlalapú konfiguráció engedélyezése
 
 > [!CAUTION]
-> Az előzetes verzióban a fájl alapú konfiguráció engedélyezésével letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését bizonyos ügyfeleken, például a Azure Portal, az Azure CLI és a Azure PowerShell használatával.
+> Az előzetes verzióban a fájlalapú konfiguráció engedélyezése letiltja az App Service Authentication /Authorization szolgáltatás kezelését az alkalmazás számára bizonyos ügyfeleken keresztül, például a Azure Portal, az Azure CLI és a Azure PowerShell.
 
-1. Hozzon létre egy új JSON-fájlt a konfigurációhoz a projekt gyökérkönyvtárában (a web/Function alkalmazás D:\home\site\wwwroot üzembe helyezése). Adja meg a kívánt konfigurációt a [fájl alapú konfigurációs hivatkozás](#configuration-file-reference)alapján. Meglévő Azure Resource Manager konfigurációjának módosításakor ügyeljen arra, hogy a gyűjteményben rögzített tulajdonságokat a `authsettings` konfigurációs fájlba fordítsa.
+1. Hozzon létre egy új JSON-fájlt a konfigurációhoz a projekt gyökerében (a webes / függvényalkalmazásban a D:\home\site\wwwroot helyen üzembe helyezni). Töltse ki a kívánt konfigurációt a [fájlalapú konfigurációs referencia alapján.](#configuration-file-reference) Meglévő konfiguráció módosítása Azure Resource Manager, ügyeljen arra, hogy a gyűjteményben rögzített tulajdonságokat lefordítsa a `authsettings` konfigurációs fájlra.
 
-2. Módosítsa a meglévő konfigurációt, amely a [Azure Resource Manager](../azure-resource-manager/management/overview.md) API-ban van rögzítve `Microsoft.Web/sites/<siteName>/config/authsettings` . Ennek módosításához használhat [Azure Resource Manager sablont](../azure-resource-manager/templates/overview.md) vagy eszközt, például [Azure erőforrás-kezelőt](https://resources.azure.com/). A authsettings elemre gyűjteményben három tulajdonságot kell megadnia (és el is távolíthatja másokat):
+2. Módosítsa a meglévő konfigurációt, [](../azure-resource-manager/management/overview.md) amely a(Azure Resource Manager API-kban van `Microsoft.Web/sites/<siteName>/config/authsettings` rögzíti. Ennek módosításához használhat egy Azure Resource Manager [sablont](../azure-resource-manager/templates/overview.md) vagy egy olyan eszközt, mint a [Azure Erőforrás-kezelő.](https://resources.azure.com/) Az authsettings gyűjteményben három tulajdonságot kell beállítania (és más tulajdonságokat is eltávolíthat):
 
-    1.  Beállítás értéke `enabled` "true"
-    2.  Beállítás értéke `isAuthFromFile` "true"
-    3.  Állítsa a `authFilePath` fájl nevére (például "auth.json")
+    1.  Állítsa `enabled` "true" (igaz) értékre
+    2.  Állítsa `isAuthFromFile` "true" (igaz) értékre
+    3.  Állítsa `authFilePath` be a fájl nevét (például "auth.jsbe")
 
 > [!NOTE]
-> A `authFilePath` platformok közötti változó formátuma. Windows rendszeren a relatív és az abszolút elérési út is támogatott. A relatív érték használata javasolt. A Linux esetében jelenleg csak az abszolút elérési utak támogatottak, így a beállítás értéke "/Home/site/wwwroot/auth.json" vagy hasonló lehet.
+> A formátuma `authFilePath` platformonként eltérő. Windows rendszeren a relatív és az abszolút elérési utak is támogatottak. A relatív érték ajánlott. Linux esetén jelenleg csak az abszolút elérési utak támogatottak, ezért a beállítás értéke "/home/site/wwwroot/auth.json" vagy hasonló.
 
-Ha elvégezte ezt a konfigurációs frissítést, a rendszer a fájl tartalmát fogja használni App Service hitelesítés/engedélyezés viselkedésének meghatározásához az adott helyen. Ha bármikor vissza szeretne térni Azure Resource Manager konfigurációhoz, a `isAuthFromFile` "false" (hamis) értékre állíthatja vissza.
+A konfigurációs frissítés után a rendszer a fájl tartalma alapján határozza meg a App Service hitelesítés/engedélyezés működését. Ha bármikor vissza szeretne térni Azure Resource Manager konfigurációhoz, ezt a "false" (hamis) `isAuthFromFile` beállítással használhatja.
 
-### <a name="configuration-file-reference"></a>Konfigurációs fájl leírása
+### <a name="configuration-file-reference"></a>Konfigurációs fájl referenciája
 
-A konfigurációs fájlra hivatkozó összes titkot [alkalmazási beállításokként](./configure-common.md#configure-app-settings)kell tárolni. Megadhatja a beállításokat, amelyeket szeretne. Győződjön meg arról, hogy a konfigurációs fájl hivatkozásai ugyanazokat a kulcsokat használják.
+A konfigurációs fájlból hivatkozni kívánt titkos adatokat alkalmazásbeállításokként [kell tárolni.](./configure-common.md#configure-app-settings) A beállításoknak a kívánt nevet hatja. Csak győződjön meg arról, hogy a konfigurációs fájl hivatkozásai ugyanazt a kulcsot használják.
 
-Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
+Az alábbi kimeríti a fájlon belüli lehetséges konfigurációs beállításokat:
 
 ```json
 {
@@ -634,34 +634,34 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
 }
 ```
 
-## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Alkalmazás rögzítése egy adott hitelesítési futtatókörnyezet-verzióra
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Alkalmazás kitűzve egy adott hitelesítési futásidejű verzióra
 
-A hitelesítés/engedélyezés engedélyezésekor a platform middleware-t a [szolgáltatás áttekintése](overview-authentication-authorization.md#how-it-works)című témakörben leírtak szerint fecskendezik be a http-kérési folyamatba. Ezt a platformot rendszeresen frissítik a platform legújabb frissítéseinek részeként új funkciókkal és újdonságokkal. Alapértelmezés szerint a web vagy Function alkalmazás a platform middleware legújabb verziójában fog futni. Ezek az automatikus frissítések mindig visszafelé kompatibilisek. Azonban abban a ritka esetben, ha ez az automatikus frissítés futásidejű problémát jelent a web vagy Function alkalmazás számára, átmenetileg visszaállíthatja az előző middleware-verziót. Ez a cikk azt ismerteti, hogyan lehet ideiglenesen PIN-kódot rögzíteni az alkalmazások számára a hitelesítési middleware egy adott verziójához.
+Ha engedélyezi a hitelesítést/engedélyezést, a rendszer a platform középső szoftverét injektálja a HTTP-kérési folyamatba a szolgáltatás [áttekintésében leírtak szerint.](overview-authentication-authorization.md#how-it-works) Ezt a platform-közvetítőprogramot rendszeresen frissítjük új funkciókkal és fejlesztésekkel a rutinplatform-frissítések részeként. Alapértelmezés szerint a web- vagy függvényalkalmazás ennek a platformnak a legújabb verzióján fog futni. Ezek az automatikus frissítések mindig visszamenőlegesen kompatibilisek. Abban a ritka esetben azonban, amikor ez az automatikus frissítés futásidejű problémát vezet be a webes vagy a függvényalkalmazáshoz, ideiglenesen vissza lehet tért az előző, középső szoftveres verzióra. Ez a cikk azt ismerteti, hogyan lehet ideiglenesen kitűzni egy alkalmazást a hitelesítési middleware adott verziójára.
 
-### <a name="automatic-and-manual-version-updates"></a>Az automatikus és a manuális verzió frissítései 
+### <a name="automatic-and-manual-version-updates"></a>Automatikus és manuális verziófrissítések 
 
-Az alkalmazást az alkalmazás egy beállításának beállításával rögzítheti a platform middleware egy adott verziójához `runtimeVersion` . Az alkalmazás mindig a legújabb verzión fut, kivéve, ha úgy dönt, hogy kifejezetten egy adott verzióra szeretné rögzíteni. Egyszerre csak néhány támogatott verzió érhető el. Ha egy érvénytelen, már nem támogatott verzióra rögzít, az alkalmazás a legújabb verziót fogja használni. A legújabb verzió mindig futtatásához állítsa a következőt: `runtimeVersion` ~ 1. 
+Az alkalmazást rögzítheti a platform középső szoftverének egy adott verziójára az alkalmazás `runtimeVersion` beállításával. Az alkalmazás mindig a legújabb verzión fut, kivéve, ha úgy dönt, hogy explicit módon visszatűzi egy adott verzióra. Egyszerre több verzió is támogatott lesz. Ha olyan érvénytelen verzióhoz rögzít, amely már nem támogatott, az alkalmazás a legújabb verziót fogja használni. Ha mindig a legújabb verziót futtatja, állítsa `runtimeVersion` a ~1-et. 
 
-### <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése és frissítése
+### <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futásidejű verzió megtekintése és frissítése
 
-Módosíthatja az alkalmazás által használt futtatókörnyezet verzióját. Az új futtatókörnyezet verziója az alkalmazás újraindítása után lép érvénybe. 
+Módosíthatja az alkalmazás által használt futásidejű verziót. Az alkalmazás újraindítása után az új futásidejű verziónak érvénybe kell lép. 
 
-#### <a name="view-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése
+#### <a name="view-the-current-runtime-version"></a>Az aktuális futásidejű verzió megtekintése
 
-Megtekintheti a platform-hitelesítési middleware aktuális verzióját az Azure CLI használatával vagy az alkalmazás beépített HTTP-végpontjának egyikével.
+A platformhitelesítési middleware aktuális verzióját az Azure CLI használatával vagy az alkalmazás egyik beépített HTTP-végpontján keresztül is megtekintheti.
 
-##### <a name="from-the-azure-cli"></a>Az Azure CLI-ből
+##### <a name="from-the-azure-cli"></a>Az Azure CLI-ről
 
-Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth#az-webapp-auth-show) paranccsal.
+Az Azure CLI használatával tekintse meg az aktuális middleware verziót az [az webapp auth show paranccsal.](/cli/azure/webapp/auth#az_webapp_auth_show)
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
 --resource-group <my_resource_group>
 ```
 
-Ebben a kódban cserélje le az `<my_app_name>` alkalmazást az alkalmazás nevére. Az `<my_resource_group>` alkalmazáshoz tartozó erőforráscsoport nevét is cserélje le.
+Ebben a kódban cserélje `<my_app_name>` le a helyére az alkalmazás nevét. Cserélje le `<my_resource_group>` a helyére az alkalmazás erőforráscsoportja nevét is.
 
-Ekkor megjelenik a `runtimeVersion` CLI kimenetben lévő mező. A következő példához hasonló kimenetet fog hasonlítani, amelyet az egyértelműség érdekében csonkolt: 
+A mező a `runtimeVersion` CLI-kimenetben lesz látható. Az alábbi példakimenethez fog hasonlítani, amelyet az egyértelműség kedvéért csonkoltunk: 
 ```output
 {
   "additionalLoginParams": null,
@@ -672,18 +672,18 @@ Ekkor megjelenik a `runtimeVersion` CLI kimenetben lévő mező. A következő p
 }
 ```
 
-##### <a name="from-the-version-endpoint"></a>A verzió végpontján
+##### <a name="from-the-version-endpoint"></a>A verzióvégpontból
 
-Egy alkalmazás/.auth/Version-végpontját is elérheti, ha meg szeretné tekinteni az alkalmazás által futó aktuális middleware-verziót. A következő példához hasonló kimenetet fog kinézni:
+A /.auth/version végpontot egy alkalmazáson belül is megtekintheti, hogy az alkalmazás aktuálisan a középső szoftver aktuális verzióját futtatja. Ez az alábbi példakimenethez fog hasonlítani:
 ```output
 {
 "version": "1.3.2"
 }
 ```
 
-#### <a name="update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának frissítése
+#### <a name="update-the-current-runtime-version"></a>A jelenlegi futásidejű verzió frissítése
 
-Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
+Az Azure CLI használatával frissítheti az alkalmazás beállítását az `runtimeVersion` [az webapp auth update paranccsal.](/cli/azure/webapp/auth#az_webapp_auth_update)
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -691,9 +691,9 @@ az webapp auth update --name <my_app_name> \
 --runtime-version <version>
 ```
 
-A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_group>` alkalmazáshoz tartozó erőforráscsoport nevét is cserélje le. Továbbá cserélje le az értékét az `<version>` 1. x futtatókörnyezet érvényes verziójára vagy `~1` a legújabb verzióra. A kibocsátási megjegyzéseket a különböző futtatókörnyezet-verziókban találja ([ide]) (a https://github.com/Azure/app-service-announcements) rögzítéshez használt verzió meghatározásához.
+Cserélje `<my_app_name>` le a helyére az alkalmazás nevét. Cserélje le `<my_resource_group>` a helyére az alkalmazás erőforráscsoportja nevét is. Emellett cserélje `<version>` le a helyére az 1.x futtatás érvényes verzióját vagy `~1` a legújabb verziót. A különböző futásidejű verziók kibocsátási megjegyzéseit [itt] ( találja, hogy megállapítsa, melyik verzióra https://github.com/Azure/app-service-announcements) kell kitűzni a kódot.
 
-Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
+Ezt a parancsot a parancs futtatásához [Azure Cloud Shell](../cloud-shell/overview.md) **előző** kódmintában a Kipróbálom használhatja. Az Azure CLI-t helyileg [is használhatja](/cli/azure/install-azure-cli) a parancs végrehajtására az [az login](/cli/azure/reference-index#az_login) végrehajtása után a bejelentkezéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 

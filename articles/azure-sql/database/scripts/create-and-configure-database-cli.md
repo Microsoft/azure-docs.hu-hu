@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure CLI: hozzon létre egy önálló adatbázist'
-description: Az Azure CLI példa szkriptjét egyetlen adatbázis létrehozására használhatja.
+title: 'Az Azure CLI: Egyetlen adatbázis létrehozása'
+description: Használja ezt az Azure CLI-példaszk szkriptet egyetlen adatbázis létrehozásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: dc17ab55cb473036d8c40bd1e533bcc20c4c6259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92742264"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773818"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Egyetlen adatbázis létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez az Azure CLI-parancsfájl egyetlen adatbázist hoz létre a Azure SQL Databaseban, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. A szkript sikeres futtatása után az adatbázis az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
+Ez az Azure CLI-példaszkret egyetlen adatbázist hoz létre a Azure SQL Database, és konfigurál egy kiszolgálószintű tűzfalszabályt. A szkript sikeres futtatása után az adatbázis az összes Azure-szolgáltatásból és a konfigurált IP-címről elérhető.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
@@ -38,21 +38,21 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Minta leírása
+## <a name="sample-reference"></a>Mintahivatkozás
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Leírás |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Kiszolgálói parancsok |
-| [az SQL Server Firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Kiszolgálói tűzfal parancsai. |
-| [az SQL db](/cli/azure/sql/db#az-sql-db-create) | Adatbázis-parancsok. |
+| [az sql server](/cli/azure/sql/server#az_sql_server_create) | Kiszolgálói parancsok |
+| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | Kiszolgálói tűzfalparancsok. |
+| [az sql db](/cli/azure/sql/db#az_sql_db_create) | Adatbázisparancsok. |
 
 ## <a name="next-steps"></a>Következő lépések
 
